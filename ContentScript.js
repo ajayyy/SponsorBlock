@@ -1,4 +1,4 @@
-var v = $('video')
+var v = document.querySelector('video')
 video_id = youtube_parser(document.URL);
 
 if(video_id){
