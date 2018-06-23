@@ -1,12 +1,19 @@
-  {
-    "name": "YTSponsorSkip",
-	"web_accessible_resources": ["Main.js"],
-    "version": "1.0",
-    "description": "Skip youtube video sponsors",
-	"content_scripts": [
-   {
-     "matches": ["https://*.youtube.com/*"],
-     "js": ["ContentScript.js"]
-   }],
-    "manifest_version": 2
-  }
+{
+  "name": "YTSponsorSkip",
+  "web_accessible_resources": [
+    "Main.js"
+  ],
+  "version": "1.0",
+  "description": "Skip youtube video sponsors",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.youtube.com/*"
+      ],
+      "js": [
+        "ContentScript.js"
+      ]
+    }
+  ],
+  "manifest_version": 2
+}
