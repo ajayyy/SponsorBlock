@@ -1,8 +1,7 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if (request.message === 'ytvideo') {
-        video_id = youtube_parser(document.URL);
-        SponsorsLookup(video_id);
+    if (request.message === 'ytvideoid') {
+        SponsorsLookup(request.id);
     }
 });
 
@@ -27,10 +26,4 @@ function SponsorCheck() {
             v.currentTime = el[1];
         }
     });
-}
-
-function youtube_parser(url) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
 }
