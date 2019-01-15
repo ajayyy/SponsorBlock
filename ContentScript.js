@@ -1,11 +1,13 @@
-var v = document.querySelector('video')
-video_id = youtube_parser(document.URL);
-
-if (video_id) {
-    SponsorsLookup(video_id);
-}
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.message === 'ytvideo') {
+        video_id = youtube_parser(document.URL);
+        SponsorsLookup(video_id);
+    }
+});
 
 function SponsorsLookup(id) {
+    v = document.querySelector('video')
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', 'https://officialnoob.github.io/YTSponsorSkip-Dataset/' + id, true);
     xmlhttp.onreadystatechange = function () {
