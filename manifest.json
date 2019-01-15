@@ -1,8 +1,5 @@
 {
   "name": "YTSponsorSkip",
-  "web_accessible_resources": [
-    "Main.js"
-  ],
   "version": "1.0",
   "description": "Skip youtube video sponsors",
   "content_scripts": [
