@@ -5,7 +5,7 @@ if(id = youtube_parser(document.URL)){ // Direct Links
 
 chrome.runtime.onMessage.addListener( // Detect URL Changes
   function(request, sender, sendResponse) {
-    if (request.message === 'ytvideoid') { // Message for background script
+    if (request.message === 'ytvideoid') { // Message from background script
         SponsorsLookup(request.id);
     }
 });
