@@ -1,9 +1,9 @@
 chrome.tabs.onUpdated.addListener(
   function(tabId, changeInfo, tab) {
-    if (changeInfo.url) {
+    if (changeInfo.url && id = youtube_parser(changeInfo.url)) {
       chrome.tabs.sendMessage( tabId, {
         message: 'ytvideoid',
-        id: youtube_parser(changeInfo.url)
+        id: id
       })
     }
   }
