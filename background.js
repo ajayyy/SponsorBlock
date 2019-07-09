@@ -34,16 +34,16 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 function submitTimes(videoID) {
   //get the video times from storage
-  let sponsorTimeKey = 'videoTimes' + videoID;
+  let sponsorTimeKey = 'sponsorTimes' + videoID;
   chrome.storage.local.get([sponsorTimeKey], function(result) {
-    let videoTimes = result[sponsorTimeKey];
+    let sponsorTimes = result[sponsorTimeKey];
 
-    if (videoTimes != undefined && videoTimes != []) {
+    if (sponsorTimes != undefined && sponsorTimes != []) {
       //submit these times
-      for (let i = 0; i < videoTimes.length; i++) {
+      for (let i = 0; i < sponsorTimes.length; i++) {
         let xmlhttp = new XMLHttpRequest();
         //submit the sponsorTime
-        xmlhttp.open('GET', 'http://localhost/api/postVideoSponsorTimes?videoID=' + videoID + "&startTime=" + videoTimes[i][0] + "&endTime=" + videoTimes[i][1], true);
+        xmlhttp.open('GET', 'http://localhost/api/postVideoSponsorTimes?videoID=' + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1], true);
         xmlhttp.send();
       }
     }
@@ -54,11 +54,11 @@ function videoIDChange(currentVideoID) {
   //warn them if they had unsubmitted times
   if (previousVideoID != null) {
     //get the sponsor times from storage
-    let sponsorTimeKey = 'videoTimes' + previousVideoID;
+    let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
     chrome.storage.local.get([sponsorTimeKey], function(result) {
-      let videoTimes = result[sponsorTimeKey];
+      let sponsorTimes = result[sponsorTimeKey];
 
-      if (videoTimes != undefined && videoTimes.length > 0) {
+      if (sponsorTimes != undefined && sponsorTimes.length > 0) {
         //warn them that they have unsubmitted sponsor times
         chrome.notifications.create("stillThere" + Math.random(), {
           type: "basic",

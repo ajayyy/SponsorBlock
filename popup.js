@@ -6,7 +6,7 @@ document.getElementById("submitTimes").addEventListener("click", submitTimes);
 var startTimeChosen = false;
 
 //the start and end time pairs (2d)
-var videoTimes = [];
+var sponsorTimes = [];
 
 //current video ID of this tab
 var currentVideoID = null;
@@ -32,17 +32,17 @@ function loadTabData(tabs) {
   currentVideoID = getYouTubeVideoID(tabs[0].url);
 
   //load video times for this video 
-  let videoTimeKey = "videoTimes" + currentVideoID;
-  chrome.storage.local.get([videoTimeKey], function(result) {
-    videoTimes = result[videoTimeKey];
-    if (videoTimes != undefined && videoTimes != []) {
-      if (videoTimes[videoTimes.length - 1]!= undefined && videoTimes[videoTimes.length - 1].length < 2) {
+  let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+  chrome.storage.local.get([sponsorTimeKey], function(result) {
+    sponsorTimes = result[sponsorTimeKey];
+    if (sponsorTimes != undefined && sponsorTimes != []) {
+      if (sponsorTimes[sponsorTimes.length - 1]!= undefined && sponsorTimes[sponsorTimes.length - 1].length < 2) {
         startTimeChosen = true;
       }
 
-      displayVideoTimes();
+      displaySponsorTimes();
     } else {
-      videoTimes = []
+      sponsorTimes = []
     }
   });
 
@@ -70,7 +70,7 @@ function infoFound(request) {
     if (request.found) {
       document.getElementById("videoFound").innerHTML = "This video's sponsors are in the database!"
 
-      displayDownloadedVideoTimes(request);
+      displayDownloadedSponsorTimes(request);
     } else {
       document.getElementById("videoFound").innerHTML = "No sponsors found"
     }
@@ -99,16 +99,16 @@ function sendSponsorStartMessage() {
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   if (request.message == "time") {
-    let videoTimesIndex = videoTimes.length - (startTimeChosen ? 1 : 0);
+    let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
 
-    if (videoTimes[videoTimesIndex] == undefined) {
-      videoTimes[videoTimesIndex] = [];
+    if (sponsorTimes[sponsorTimesIndex] == undefined) {
+      sponsorTimes[sponsorTimesIndex] = [];
     }
 
-    videoTimes[videoTimesIndex][startTimeChosen ? 1 : 0] = request.time;
+    sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = request.time;
 
-    let videoTimeKey = "videoTimes" + currentVideoID;
-    chrome.storage.local.set({[videoTimeKey]: videoTimes});
+    let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+    chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
 
     //update startTimeChosen variable
     if (!startTimeChosen) {
@@ -120,26 +120,26 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     }
 
     //display video times on screen
-    displayVideoTimes();
+    displaySponsorTimes();
   }
 });
 
 //display the video times from the array
-function displayVideoTimes() {
+function displaySponsorTimes() {
   //set it to the message
-  document.getElementById("sponsorMessageTimes").innerHTML = getVideoTimesMessage(videoTimes);
+  document.getElementById("sponsorMessageTimes").innerHTML = getSponsorTimesMessage(sponsorTimes);
 }
 
 //display the video times from the array at the top, in a different section
-function displayDownloadedVideoTimes(request) {
+function displayDownloadedSponsorTimes(request) {
   if (request.sponsorTimes != undefined) {
     //set it to the message
-    document.getElementById("downloadedSponsorMessageTimes").innerHTML = getVideoTimesMessage(request.sponsorTimes);
+    document.getElementById("downloadedSponsorMessageTimes").innerHTML = getSponsorTimesMessage(request.sponsorTimes);
   }
 }
 
 //get the message that visually displays the video times
-function getVideoTimesMessage(sponsorTimes) {
+function getSponsorTimesMessage(sponsorTimes) {
   let sponsorTimesMessage = "";
 
   for (let i = 0; i < sponsorTimes.length; i++) {
@@ -161,12 +161,12 @@ function getVideoTimesMessage(sponsorTimes) {
 }
 
 function clearTimes() {
-  videoTimes = [];
+  sponsorTimes = [];
 
-  let videoTimeKey = "videoTimes" + currentVideoID;
-  chrome.storage.local.set({[videoTimeKey]: videoTimes});
+  let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+  chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
 
-  displayVideoTimes();
+  displaySponsorTimes();
 }
 
 function submitTimes() {
