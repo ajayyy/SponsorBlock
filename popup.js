@@ -35,12 +35,14 @@ function loadTabData(tabs) {
   let videoTimeKey = "videoTimes" + currentVideoID;
   chrome.storage.local.get([videoTimeKey], function(result) {
     videoTimes = result[videoTimeKey];
-    if (videoTimes != undefined && result.videoTimes != []) {
+    if (videoTimes != undefined && videoTimes != []) {
       if (videoTimes[videoTimes.length - 1]!= undefined && videoTimes[videoTimes.length - 1].length < 2) {
         startTimeChosen = true;
       }
 
       displayVideoTimes();
+    } else {
+      videoTimes = []
     }
   });
 
