@@ -7,43 +7,41 @@ var startTimeChosen = false;
 
 //the start and end time pairs (2d)
 var videoTimes = [];
-//load video times
-chrome.storage.local.get(['videoTimes'], function(result) {
-  if (result.videoTimes != undefined && result.videoTimes != []) {
-    videoTimes = result.videoTimes;
 
-    if (videoTimes[videoTimes.length - 1]!= undefined && videoTimes[videoTimes.length - 1].length < 2) {
-      startTimeChosen = true;
-    }
+//current video ID of this tab
+var currentVideoID = null;
 
-    displayVideoTimes();
-  }
-});
-
-//check if this video's sponsors are known
 chrome.tabs.query({
   active: true,
   currentWindow: true
-}, tabs => {
+}, loadTabData);
+
+function loadTabData(tabs) {
+  //set current videoID
+  currentVideoID = getYouTubeVideoID(tabs[0].url);
+
+  //load video times for this video 
+  let videoTimeKey = "videoTimes" + currentVideoID;
+  chrome.storage.local.get([videoTimeKey], function(result) {
+    videoTimes = result[videoTimeKey];
+    if (videoTimes != undefined && result.videoTimes != []) {
+      if (videoTimes[videoTimes.length - 1]!= undefined && videoTimes[videoTimes.length - 1].length < 2) {
+        startTimeChosen = true;
+      }
+
+      displayVideoTimes();
+    }
+  });
+
+  
+  
+  //check if this video's sponsors are known
   chrome.tabs.sendMessage(
     tabs[0].id,
     {from: 'popup', message: 'isInfoFound'},
     infoFound
   );
-})
-
-// //get the tab's video ID
-// var videoID = undefined;
-// chrome.tabs.query({
-//   active: true,
-//   currentWindow: true
-// }, tabs => {
-//   chrome.tabs.sendMessage(
-//     tabs[0].id,
-//     {from: 'popup', message: 'getVideoID'},
-//     setVideoID
-//   );
-// })
+}
 
 function infoFound(request) {
   //if request is undefined, then the page currently being browsed is not YouTube
@@ -88,7 +86,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
     videoTimes[videoTimesIndex][startTimeChosen ? 1 : 0] = request.time;
 
-    chrome.storage.local.set({"videoTimes": videoTimes});
+    let videoTimeKey = "videoTimes" + currentVideoID;
+    chrome.storage.local.set({[videoTimeKey]: videoTimes});
 
     //update startTimeChosen variable
     if (!startTimeChosen) {
@@ -110,7 +109,6 @@ function displayVideoTimes() {
   document.getElementById("sponsorMessageTimes").innerHTML = "";
 
   for (let i = 0; i < videoTimes.length; i++) {
-    console.log(videoTimes)
     for (let s = 0; s < videoTimes[i].length; s++) {
       let timeMessage = videoTimes[i][s] + "s";
       //if this is an end time
@@ -129,13 +127,23 @@ function displayVideoTimes() {
 function clearTimes() {
   videoTimes = [];
 
-  chrome.storage.local.set({"videoTimes": videoTimes});
+  let videoTimeKey = "videoTimes" + currentVideoID;
+  chrome.storage.local.set({[videoTimeKey]: videoTimes});
 
   displayVideoTimes();
 }
 
 function submitTimes() {
   chrome.runtime.sendMessage({
-    message: "submitTimes"
+    message: "submitTimes",
+    videoID: currentVideoID
+  }, function(request) {
+    clearTimes();
   });
+}
+
+function getYouTubeVideoID(url) { // Return video id or false
+  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+  var match = url.match(regExp);
+  return (match && match[7].length == 11) ? match[7] : false;
 }

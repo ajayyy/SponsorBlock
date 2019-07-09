@@ -12,28 +12,24 @@ chrome.tabs.onUpdated.addListener( // On tab update
   }
 );
 
-function getYouTubeVideoID(url) { // Return video id or false
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
-}
-
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   console.log(request.message)
   if (request.message == "submitTimes") {
     submitTimes(request.videoID);
+
+    callback({
+      success: true
+    });
   }
 });
 
 function submitTimes(videoID) {
   //get the video times from storage
-  chrome.storage.local.get(['videoTimes' + videoID], function(result) {
-    if (result.videoTimes != undefined && result.videoTimes != []) {
-      let videoTimes = result.videoTimes;
+  let sponsorTimeKey = 'videoTimes' + videoID;
+  chrome.storage.local.get([sponsorTimeKey], function(result) {
+    let videoTimes = result[sponsorTimeKey];
 
-      //TODO: remove this, just temp
-      let videoID = "TEST";
-  
+    if (videoTimes != undefined && result.videoTimes != []) {
       //submit these times
       for (let i = 0; i < videoTimes.length; i++) {
         let xmlhttp = new XMLHttpRequest();
@@ -43,4 +39,10 @@ function submitTimes(videoID) {
       }
     }
   });
+}
+
+function getYouTubeVideoID(url) { // Return video id or false
+  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+  var match = url.match(regExp);
+  return (match && match[7].length == 11) ? match[7] : false;
 }

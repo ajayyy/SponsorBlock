@@ -44,14 +44,14 @@ function sponsorsLookup(id) {
 
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            sponsorDataFound = true;
-
             sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
 
             // If the sponsor data exists, add the event to run on the videos "ontimeupdate"
             v.ontimeupdate = function () { 
                 sponsorCheck(sponsorTimes);
             };
+        } else {
+          sponsorDataFound = false;
         }
     };
     xmlhttp.send(null);
