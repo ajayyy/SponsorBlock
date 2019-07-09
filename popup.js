@@ -142,7 +142,7 @@ function getVideoTimesMessage(sponsorTimes) {
 
   for (let i = 0; i < sponsorTimes.length; i++) {
     for (let s = 0; s < sponsorTimes[i].length; s++) {
-      let timeMessage = sponsorTimes[i][s].toFixed(1) + "s";
+      let timeMessage = getFormattedTime(sponsorTimes[i][s]);
       //if this is an end time
       if (s == 1) {
         timeMessage = " to " + timeMessage;
@@ -174,6 +174,15 @@ function submitTimes() {
   }, function(request) {
     clearTimes();
   });
+}
+
+//converts time in seconds to minutes:seconds
+function getFormattedTime(seconds) {
+  let minutes = Math.floor(seconds / 60);
+  let secondsDisplay = Math.round(seconds - minutes * 60);
+  let formatted = minutes+ ":" + secondsDisplay;
+
+  return formatted;
 }
 
 function getYouTubeVideoID(url) { // Return video id or false
