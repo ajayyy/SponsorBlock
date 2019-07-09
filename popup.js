@@ -8,10 +8,10 @@ var startTimeChosen = false;
 var videoTimes = [];
 //load video times
 chrome.storage.local.get(['videoTimes'], function(result) {
-  if (result.videoTimes != undefined) {
+  if (result.videoTimes != undefined && result.videoTimes != []) {
     videoTimes = result.videoTimes;
 
-    if (videoTimes[videoTimes.length - 1].length < 2) {
+    if (videoTimes[videoTimes.length - 1]!= undefined && videoTimes[videoTimes.length - 1].length < 2) {
       startTimeChosen = true;
     }
 
@@ -19,16 +19,35 @@ chrome.storage.local.get(['videoTimes'], function(result) {
   }
 });
 
+//check if this video's sponsors are known
+chrome.tabs.query({
+  active: true,
+  currentWindow: true
+}, tabs => {
+  chrome.tabs.sendMessage(
+    tabs[0].id,
+    {from: 'popup', message: 'infoFound'},
+    infoFound
+  );
+})
+
+function infoFound(request) {
+  if (request.found) {
+    document.getElementById("videoFound").innerHTML = "This video's sponsors are in the database!"
+  } else {
+    document.getElementById("videoFound").innerHTML = "No sponsors found"
+  }
+}
+
 function sendSponsorStartMessage() {
     //the content script will get the message if a YouTube page is open
     chrome.tabs.query({
       active: true,
       currentWindow: true
     }, tabs => {
-      // ...and send a request for the DOM info...
       chrome.tabs.sendMessage(
         tabs[0].id,
-        {from: 'popup', subject: 'DOMInfo', message: 'sponsorStart'}
+        {from: 'popup', message: 'sponsorStart'}
       );
     });
 }

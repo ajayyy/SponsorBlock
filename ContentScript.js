@@ -9,9 +9,15 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
         SponsorsLookup(request.id);
     }
 
-    //message from popup script
+    //messages from popup script
     if (request.message === 'sponsorStart') {
       sponsorMessageStarted();
+    }
+
+    if (request.message === 'infoFound') {
+      sendResponse({
+        found: true
+      })
     }
 });
 
