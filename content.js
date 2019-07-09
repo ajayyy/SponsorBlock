@@ -1,4 +1,6 @@
 if(id = getYouTubeVideoID(document.URL)){ // Direct Links
+  //reset sponsor data found check
+  sponsorDataFound = false;
   sponsorsLookup(id);
 }
 
@@ -13,8 +15,11 @@ var lastTime;
 
 chrome.runtime.onMessage.addListener( // Detect URL Changes
   function(request, sender, sendResponse) {
-    if (request.message === 'ytvideoid') { // Message from background script
-        sponsorsLookup(request.id);
+    //message from background script
+    if (request.message === 'ytvideoid') { 
+      //reset sponsor data found check
+      sponsorDataFound = false;
+      sponsorsLookup(request.id);
     }
 
     //messages from popup script
@@ -44,12 +49,14 @@ function sponsorsLookup(id) {
 
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
+          sponsorDataFound = true;
 
-            // If the sponsor data exists, add the event to run on the videos "ontimeupdate"
-            v.ontimeupdate = function () { 
-                sponsorCheck(sponsorTimes);
-            };
+          sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
+
+          // If the sponsor data exists, add the event to run on the videos "ontimeupdate"
+          v.ontimeupdate = function () { 
+              sponsorCheck(sponsorTimes);
+          };
         } else {
           sponsorDataFound = false;
         }
