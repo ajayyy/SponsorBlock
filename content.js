@@ -22,9 +22,15 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
       sponsorMessageStarted();
     }
 
-    if (request.message === 'infoFound') {
+    if (request.message === 'isInfoFound') {
       sendResponse({
         found: sponsorDataFound
+      })
+    }
+
+    if (request.message === 'getVideoID') {
+      sendResponse({
+        videoID: getYouTubeVideoID(document.URL)
       })
     }
 });

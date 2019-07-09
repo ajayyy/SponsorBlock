@@ -1,5 +1,6 @@
 document.getElementById("sponsorStart").addEventListener("click", sendSponsorStartMessage);
 document.getElementById("clearTimes").addEventListener("click", clearTimes);
+document.getElementById("submitTimes").addEventListener("click", submitTimes);
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -26,10 +27,23 @@ chrome.tabs.query({
 }, tabs => {
   chrome.tabs.sendMessage(
     tabs[0].id,
-    {from: 'popup', message: 'infoFound'},
+    {from: 'popup', message: 'isInfoFound'},
     infoFound
   );
 })
+
+// //get the tab's video ID
+// var videoID = undefined;
+// chrome.tabs.query({
+//   active: true,
+//   currentWindow: true
+// }, tabs => {
+//   chrome.tabs.sendMessage(
+//     tabs[0].id,
+//     {from: 'popup', message: 'getVideoID'},
+//     setVideoID
+//   );
+// })
 
 function infoFound(request) {
   //if request is undefined, then the page currently being browsed is not YouTube
@@ -39,6 +53,13 @@ function infoFound(request) {
     } else {
       document.getElementById("videoFound").innerHTML = "No sponsors found"
     }
+  }
+}
+
+function setVideoID(request) {
+  //if request is undefined, then the page currently being browsed is not YouTube
+  if (request != undefined) {
+    videoID = request.videoID;
   }
 }
 
@@ -111,4 +132,10 @@ function clearTimes() {
   chrome.storage.local.set({"videoTimes": videoTimes});
 
   displayVideoTimes();
+}
+
+function submitTimes() {
+  chrome.runtime.sendMessage({
+    message: "submitTimes"
+  });
 }
