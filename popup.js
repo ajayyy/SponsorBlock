@@ -17,7 +17,7 @@ var isYouTubeTab = false;
 //if no response comes by this point, give up
 setTimeout(function() {
   if (!isYouTubeTab) {
-    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early." +
+    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
       "If you know this is a YouTube tab, close this popup and open it again.";
   }
 }, 100);
