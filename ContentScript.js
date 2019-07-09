@@ -8,6 +8,11 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
     if (request.message === 'ytvideoid') { // Message from background script
         SponsorsLookup(request.id);
     }
+
+    //message from popup script
+    if (request.message === 'sponsorStart') {
+      sponsorMessageStarted();
+    }
 });
 
 function SponsorsLookup(id) {
@@ -37,4 +42,16 @@ function youtube_parser(url) { // Returns with video id else returns false
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
     return (match && match[7].length == 11) ? match[7] : false;
+}
+
+function sponsorMessageStarted() {
+    let v = document.querySelector('video');
+
+    console.log(v.currentTime)
+
+    //send back current time
+    chrome.runtime.sendMessage({
+      message: "time",
+      time: v.currentTime
+    });
 }

@@ -1,20 +1,25 @@
 {
   "name": "YTSponsorSkip",
   "version": "1.0",
-  "description": "Skip youtube video sponsors",
+  "description": "Skip youtube video sponsors.",
   "content_scripts": [
     {
       "matches": [
         "https://*.youtube.com/*"
       ],
       "js": [
-        "ContentScript.js"
+        "contentScript.js"
       ]
     }
   ],
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
+  "browser_action": {
+    "default_title": "SponsorBlock",
+    "default_popup": "popup.html"
+  }, 
   "background": {
     "scripts":["background.js"]
   },
