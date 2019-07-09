@@ -8,7 +8,7 @@
         "https://*.youtube.com/*"
       ],
       "js": [
-        "contentScript.js"
+        "content.js"
       ]
     }
   ],
