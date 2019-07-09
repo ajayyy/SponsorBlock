@@ -32,10 +32,13 @@ chrome.tabs.query({
 })
 
 function infoFound(request) {
-  if (request.found) {
-    document.getElementById("videoFound").innerHTML = "This video's sponsors are in the database!"
-  } else {
-    document.getElementById("videoFound").innerHTML = "No sponsors found"
+  //if request is undefined, then the page currently being browsed is not YouTube
+  if (request != undefined) {
+    if (request.found) {
+      document.getElementById("videoFound").innerHTML = "This video's sponsors are in the database!"
+    } else {
+      document.getElementById("videoFound").innerHTML = "No sponsors found"
+    }
   }
 }
 
