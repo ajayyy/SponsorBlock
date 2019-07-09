@@ -7,6 +7,9 @@ if(id = getYouTubeVideoID(document.URL)){ // Direct Links
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 
+//the actual sponsorTimes if loaded
+var sponsorTimes = undefined;
+
 //the video
 var v;
 
@@ -28,8 +31,10 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
     }
 
     if (request.message === 'isInfoFound') {
+      //send the sponsor times along with if it's found
       sendResponse({
-        found: sponsorDataFound
+        found: sponsorDataFound,
+        sponsorTimes: sponsorTimes
       })
     }
 

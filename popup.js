@@ -67,6 +67,8 @@ function infoFound(request) {
 
     if (request.found) {
       document.getElementById("videoFound").innerHTML = "This video's sponsors are in the database!"
+
+      displayDownloadedVideoTimes(request);
     } else {
       document.getElementById("videoFound").innerHTML = "No sponsors found"
     }
@@ -95,8 +97,6 @@ function sendSponsorStartMessage() {
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   if (request.message == "time") {
-    let timeMessage = request.time.toFixed(2) + "s";
-
     let videoTimesIndex = videoTimes.length - (startTimeChosen ? 1 : 0);
 
     if (videoTimes[videoTimesIndex] == undefined) {
@@ -124,12 +124,25 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 //display the video times from the array
 function displayVideoTimes() {
-  //make sure the div is empty first
-  document.getElementById("sponsorMessageTimes").innerHTML = "";
+  //set it to the message
+  document.getElementById("sponsorMessageTimes").innerHTML = getVideoTimesMessage(videoTimes);
+}
 
-  for (let i = 0; i < videoTimes.length; i++) {
-    for (let s = 0; s < videoTimes[i].length; s++) {
-      let timeMessage = videoTimes[i][s] + "s";
+//display the video times from the array at the top, in a different section
+function displayDownloadedVideoTimes(request) {
+  if (request.sponsorTimes != undefined) {
+    //set it to the message
+    document.getElementById("downloadedSponsorMessageTimes").innerHTML = getVideoTimesMessage(request.sponsorTimes);
+  }
+}
+
+//get the message that visually displays the video times
+function getVideoTimesMessage(sponsorTimes) {
+  let sponsorTimesMessage = "";
+
+  for (let i = 0; i < sponsorTimes.length; i++) {
+    for (let s = 0; s < sponsorTimes[i].length; s++) {
+      let timeMessage = sponsorTimes[i][s].toFixed(1) + "s";
       //if this is an end time
       if (s == 1) {
         timeMessage = " to " + timeMessage;
@@ -138,9 +151,11 @@ function displayVideoTimes() {
         timeMessage = ", " + timeMessage;
       }
 
-      document.getElementById("sponsorMessageTimes").innerHTML += timeMessage;
+      sponsorTimesMessage += timeMessage;
     }
   }
+
+  return sponsorTimesMessage;
 }
 
 function clearTimes() {
