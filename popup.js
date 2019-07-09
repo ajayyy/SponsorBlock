@@ -11,6 +11,17 @@ var videoTimes = [];
 //current video ID of this tab
 var currentVideoID = null;
 
+//is this a YouTube tab?
+var isYouTubeTab = false;
+
+//if no response comes by this point, give up
+setTimeout(function() {
+  if (!isYouTubeTab) {
+    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early." +
+      "If you know this is a YouTube tab, close this popup and open it again.";
+  }
+}, 100);
+
 chrome.tabs.query({
   active: true,
   currentWindow: true
@@ -46,6 +57,14 @@ function loadTabData(tabs) {
 function infoFound(request) {
   //if request is undefined, then the page currently being browsed is not YouTube
   if (request != undefined) {
+    //this must be a YouTube video
+    //set variable
+    isYouTubeTab = true;
+
+    //remove loading text
+    document.getElementById("mainControls").style.display = "unset"
+    document.getElementById("loadingIndicator").innerHTML = "";
+
     if (request.found) {
       document.getElementById("videoFound").innerHTML = "This video's sponsors are in the database!"
     } else {
