@@ -46,7 +46,7 @@ function loadTabData(tabs) {
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
   chrome.storage.local.get([sponsorTimeKey], function(result) {
     let sponsorTimesStorage = result[sponsorTimeKey];
-    if (sponsorTimesStorage != undefined && sponsorTimesStorage != []) {
+    if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
       if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
         startTimeChosen = true;
       }
@@ -54,6 +54,9 @@ function loadTabData(tabs) {
       sponsorTimes = sponsorTimesStorage;
 
       displaySponsorTimes();
+
+      //show submission section
+      document.getElementById("submissionSection").style.display = "unset";
     }
   });
 
@@ -124,14 +127,17 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     //update startTimeChosen variable
     if (!startTimeChosen) {
       startTimeChosen = true;
-      document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends";
+      document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends Now";
     } else {
       startTimeChosen = false;
-      document.getElementById("sponsorStart").innerHTML = "Sponsorship Start";
+      document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
     }
 
     //display video times on screen
     displaySponsorTimes();
+
+    //show submission section
+    document.getElementById("submissionSection").style.display = "unset";
   }
 });
 
@@ -178,6 +184,9 @@ function clearTimes() {
   chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
 
   displaySponsorTimes();
+
+  //hide submission section
+  document.getElementById("submissionSection").style.display = "none";
 }
 
 function submitTimes() {

@@ -38,7 +38,7 @@ function submitTimes(videoID) {
   chrome.storage.local.get([sponsorTimeKey], function(result) {
     let sponsorTimes = result[sponsorTimeKey];
 
-    if (sponsorTimes != undefined && sponsorTimes != []) {
+    if (sponsorTimes != undefined && sponsorTimes.length > 0) {
       //submit these times
       for (let i = 0; i < sponsorTimes.length; i++) {
         let xmlhttp = new XMLHttpRequest();
