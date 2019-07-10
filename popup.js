@@ -34,6 +34,12 @@ function loadTabData(tabs) {
   //set current videoID
   currentVideoID = getYouTubeVideoID(tabs[0].url);
 
+  if (!currentVideoID) {
+    //this isn't a YouTube video then
+    displayNoVideo();
+    return;
+  }
+
   //load video times for this video 
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
   chrome.storage.local.get([sponsorTimeKey], function(result) {
@@ -66,8 +72,7 @@ function loadTabData(tabs) {
 function infoFound(request) {
   if(chrome.runtime.lastError) {
     //This page doesn't have the injected content script, or at least not yet
-    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
-      "If you know this is a YouTube tab, close this popup and open it again.";
+    displayNoVideo();
     return;
   }
 
@@ -213,6 +218,12 @@ function showNoticeAgain() {
   });
 
   document.getElementById("showNoticeAgain").style.display = "none";
+}
+
+//this is not a YouTube video page
+function displayNoVideo() {
+  document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
+      "If you know this is a YouTube tab, close this popup and open it again.";
 }
 
 //converts time in seconds to minutes:seconds
