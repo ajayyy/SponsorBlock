@@ -1,7 +1,11 @@
+.sponsorSkipObject {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 #sponsorSkipNotice {
     min-height: 120px;
     min-width: 400px;
-    background-color: rgba(153, 153, 153, 0.8);
+    background-color: rgba(217, 255, 220, 0.8);
     position: absolute;
     z-index: 1;
 }
@@ -11,6 +15,7 @@
     color: #000000;
     text-align: center;
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .sponsorSkipButton {
@@ -22,9 +27,8 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
-	font-size:16px;
-	padding:8px 15px;
+	font-size:14px;
+	padding:4px 15px;
 	text-decoration:none;
     text-shadow:0px 0px 0px #2f6627;
     
@@ -51,7 +55,6 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
 	font-size:13px;
 	padding:6px 24px;
 	text-decoration:none;

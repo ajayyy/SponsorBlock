@@ -12,7 +12,8 @@
         "content.js"
       ],
       "css": [
-        "content.css"
+        "content.css",
+        "Source+Sans+Pro.css"
       ]
     }
   ],

@@ -108,7 +108,7 @@ function sponsorCheck(sponsorTimes) { // Video skipping
           //send out the message saying that a sponsor message was skipped
           openSkipNotice();
 
-          setTimeout(closeSkipNotice, 2500);
+          // setTimeout(closeSkipNotice, 2500);
         }
 
         lastTime = v.currentTime;
@@ -133,9 +133,11 @@ function openSkipNotice(){
 
   var noticeElement = document.createElement("div");
   noticeElement.id = "sponsorSkipNotice";
+  noticeElement.className = "sponsorSkipObject";
 
   var noticeMessage = document.createElement("p");
   noticeMessage.id = "sponsorSkipMessage";
+  noticeMessage.className = "sponsorSkipObject";
 	noticeMessage.innerText = "Hey, you just skipped a sponsor!";
 
   var buttonContainer = document.createElement("div");
@@ -143,16 +145,19 @@ function openSkipNotice(){
 
   var goBackButton = document.createElement("button");
   goBackButton.innerText = "Go back";
+  goBackButton.className = "sponsorSkipObject";
   goBackButton.className = "sponsorSkipButton";
   goBackButton.addEventListener("click", goBackToPreviousTime);
 
   var hideButton = document.createElement("button");
-	hideButton.innerText = "Hide";
+  hideButton.innerText = "Hide";
+  hideButton.className = "sponsorSkipObject";
   hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", closeSkipNotice);
 
   var dontShowAgainButton = document.createElement("button");
-	dontShowAgainButton.innerText = "Don't Show This Again";
+  dontShowAgainButton.innerText = "Don't Show This Again";
+  dontShowAgainButton.className = "sponsorSkipObject";
   dontShowAgainButton.className = "sponsorSkipDontShowButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
