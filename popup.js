@@ -25,14 +25,6 @@ chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
   }
 });
 
-//if no response comes by this point, give up
-setTimeout(function() {
-  if (!isYouTubeTab) {
-    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
-      "If you know this is a YouTube tab, close this popup and open it again.";
-  }
-}, 100);
-
 chrome.tabs.query({
   active: true,
   currentWindow: true
@@ -72,6 +64,13 @@ function loadTabData(tabs) {
 }
 
 function infoFound(request) {
+  if(chrome.runtime.lastError) {
+    //This page doesn't have the injected content script, or at least not yet
+    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
+      "If you know this is a YouTube tab, close this popup and open it again.";
+    return;
+  }
+
   //if request is undefined, then the page currently being browsed is not YouTube
   if (request != undefined) {
     //this must be a YouTube video
