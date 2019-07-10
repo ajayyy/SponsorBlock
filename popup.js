@@ -129,14 +129,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
     chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
 
-    //update startTimeChosen variable
-    if (!startTimeChosen) {
-      startTimeChosen = true;
-      document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends Now";
-    } else {
-      startTimeChosen = false;
-      document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
-    }
+    updateStartTimeChosen();
 
     //display video times on screen
     displaySponsorTimes();
@@ -192,6 +185,8 @@ function clearTimes() {
 
   //hide submission section
   document.getElementById("submissionSection").style.display = "none";
+
+  resetStartTimeChosen();
 }
 
 function submitTimes() {
@@ -218,6 +213,22 @@ function showNoticeAgain() {
   });
 
   document.getElementById("showNoticeAgain").style.display = "none";
+}
+
+function updateStartTimeChosen() {
+  //update startTimeChosen variable
+  if (!startTimeChosen) {
+    startTimeChosen = true;
+  document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends Now";
+  } else {
+    resetStartTimeChosen();
+  }
+}
+
+//set it to false
+function resetStartTimeChosen() {
+  startTimeChosen = false;
+  document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
 }
 
 //this is not a YouTube video page
