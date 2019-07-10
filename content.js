@@ -134,7 +134,7 @@ function openSkipNotice(){
   var noticeElement = document.createElement("div");
   
   noticeElement.id = 'sponsorSkipNotice'
-  noticeElement.style.minHeight = "75px";
+  noticeElement.style.minHeight = "100px";
   noticeElement.style.minWidth = "400px";
   noticeElement.style.backgroundColor = "rgba(153, 153, 153, 0.8)";
   noticeElement.style.fontSize = "24px";
@@ -174,6 +174,7 @@ function openSkipNotice(){
 
   buttonContainer.appendChild(goBackButton);
   buttonContainer.appendChild(hideButton);
+  buttonContainer.appendChild(document.createElement("br"));
   buttonContainer.appendChild(dontShowAgainButton);
 
   noticeElement.appendChild(noticeMessage);
