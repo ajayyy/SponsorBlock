@@ -1,5 +1,8 @@
 var previousVideoID = null
 
+//the id of this user, randomly generated once per install
+var userID = null;
+
 chrome.tabs.onUpdated.addListener( // On tab update
   function(tabId, changeInfo, tab) {
     if (changeInfo != undefined && changeInfo.url != undefined) {
@@ -15,8 +18,6 @@ chrome.tabs.onUpdated.addListener( // On tab update
     }
   }
 );
-
-
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   if (request.message == "submitTimes") {
@@ -42,9 +43,13 @@ function submitTimes(videoID) {
       //submit these times
       for (let i = 0; i < sponsorTimes.length; i++) {
         let xmlhttp = new XMLHttpRequest();
-        //submit the sponsorTime
-        xmlhttp.open('GET', 'http://localhost/api/postVideoSponsorTimes?videoID=' + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1], true);
-        xmlhttp.send();
+
+        let userIDStorage = getUserID(function(userIDStorage) {
+          //submit the sponsorTime
+          xmlhttp.open('GET', 'http://localhost/api/postVideoSponsorTimes?videoID=' + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+          + "&userID=" + userIDStorage, true);
+          xmlhttp.send();
+        });
       }
     }
   });
@@ -72,9 +77,31 @@ function videoIDChange(currentVideoID) {
       previousVideoID = currentVideoID;
     });
   } else {
-    console.log(currentVideoID)
     previousVideoID = currentVideoID;
   }
+}
+
+function getUserID(callback) {
+  if (userID != null) {
+    callback(userID);
+  }
+
+  //if it is not cached yet, grab it from storage
+  chrome.storage.local.get(["userID"], function(result) {
+    let userIDStorage = result.userID;
+    if (userIDStorage != undefined) {
+      userID = userIDStorage;
+      callback(userID);
+    } else {
+      //generate a userID
+      userID = generateUUID();
+      
+      //save this UUID
+      chrome.storage.local.set({"userID": userID});
+
+      callback(userID);
+    }
+  });
 }
 
 function getYouTubeVideoID(url) { // Return video id or false
@@ -82,3 +109,6 @@ function getYouTubeVideoID(url) { // Return video id or false
   var match = url.match(regExp);
   return (match && match[7].length == 11) ? match[7] : false;
 }
+
+//uuid generator function from https://gist.github.com/jed/982883
+function generateUUID(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,generateUUID)}
