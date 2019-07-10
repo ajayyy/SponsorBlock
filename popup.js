@@ -1,6 +1,8 @@
+//setup click listeners
 document.getElementById("sponsorStart").addEventListener("click", sendSponsorStartMessage);
 document.getElementById("clearTimes").addEventListener("click", clearTimes);
 document.getElementById("submitTimes").addEventListener("click", submitTimes);
+document.getElementById("showNoticeAgain").addEventListener("click", showNoticeAgain);
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -13,6 +15,15 @@ var currentVideoID = null;
 
 //is this a YouTube tab?
 var isYouTubeTab = false;
+
+//if the don't show notice again variable is true, an option to 
+//  disable should be available
+chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
+  let dontShowNoticeAgain = result.dontShowNoticeAgain;
+  if (dontShowNoticeAgain != undefined && dontShowNoticeAgain) {
+    document.getElementById("showNoticeAgain").style.display = "unset";
+  }
+});
 
 //if no response comes by this point, give up
 setTimeout(function() {
@@ -51,7 +62,7 @@ function loadTabData(tabs) {
   //check if this video's sponsors are known
   chrome.tabs.sendMessage(
     tabs[0].id,
-    {from: 'popup', message: 'isInfoFound'},
+    {message: 'isInfoFound'},
     infoFound
   );
 }
@@ -178,6 +189,21 @@ function submitTimes() {
       clearTimes();
     });
   }
+}
+
+function showNoticeAgain() {
+  chrome.storage.local.set({"dontShowNoticeAgain": false});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "showNoticeAgain"
+    });
+  });
+
+  document.getElementById("showNoticeAgain").style.display = "none";
 }
 
 //converts time in seconds to minutes:seconds

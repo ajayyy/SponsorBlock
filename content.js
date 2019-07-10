@@ -26,21 +26,31 @@ var lastTime;
 //used for the go back button
 var lastSponsorTimeSkipped = null;
 
+//if the notice should not be shown
+//happens when the user click's the "Don't show notice again" button
+var dontShowNotice = false;
+chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
+  let dontShowNoticeAgain = result.dontShowNoticeAgain;
+  if (dontShowNoticeAgain != undefined) {
+    dontShowNotice = dontShowNoticeAgain;
+  }
+});
+
 chrome.runtime.onMessage.addListener( // Detect URL Changes
   function(request, sender, sendResponse) {
     //message from background script
-    if (request.message === 'ytvideoid') { 
+    if (request.message == "ytvideoid") { 
       //reset sponsor data found check
       sponsorDataFound = false;
       sponsorsLookup(request.id);
     }
 
     //messages from popup script
-    if (request.message === 'sponsorStart') {
+    if (request.message == "sponsorStart") {
       sponsorMessageStarted();
     }
 
-    if (request.message === 'isInfoFound') {
+    if (request.message == "isInfoFound") {
       //send the sponsor times along with if it's found
       sendResponse({
         found: sponsorDataFound,
@@ -48,10 +58,14 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
       })
     }
 
-    if (request.message === 'getVideoID') {
+    if (request.message == "getVideoID") {
       sendResponse({
         videoID: getYouTubeVideoID(document.URL)
       })
+    }
+
+    if (request.message == "showNoticeAgain") {
+      dontShowNotice = false;
     }
 });
 
@@ -112,6 +126,11 @@ function goBackToPreviousTime() {
 
 //Opens the notice that tells the user that a sponsor was just skipped
 function openSkipNotice(){
+  if (dontShowNotice) {
+    //don't show, return
+    return;
+  }
+
   var noticeElement = document.createElement("div");
   
   noticeElement.id = 'sponsorSkipNotice'
@@ -146,8 +165,16 @@ function openSkipNotice(){
   hideButton.style.marginTop = "5px";
   hideButton.addEventListener("click", closeSkipNotice);
 
+  var dontShowAgainButton = document.createElement("button");
+	dontShowAgainButton.innerText = "Don't Show This Again";
+  dontShowAgainButton.style.fontSize = "13px";
+  dontShowAgainButton.style.color = "#000000";
+  dontShowAgainButton.style.marginTop = "5px";
+  dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
+
   buttonContainer.appendChild(goBackButton);
   buttonContainer.appendChild(hideButton);
+  buttonContainer.appendChild(dontShowAgainButton);
 
   noticeElement.appendChild(noticeMessage);
   noticeElement.appendChild(buttonContainer);
@@ -166,6 +193,14 @@ function closeSkipNotice(){
   if (notice != null) {
     notice.remove();
   }
+}
+
+function dontShowNoticeAgain() {
+  chrome.storage.local.set({"dontShowNoticeAgain": true});
+
+  dontShowNotice = true;
+
+  closeSkipNotice();
 }
 
 function sponsorMessageStarted() {
