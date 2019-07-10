@@ -22,6 +22,10 @@ var v;
 //the last time looked at (used to see if this time is in the interval)
 var lastTime;
 
+//the last time in the video a sponsor was skipped
+//used for the go back button
+var lastSponsorTimeSkipped = null;
+
 chrome.runtime.onMessage.addListener( // Detect URL Changes
   function(request, sender, sendResponse) {
     //message from background script
@@ -85,6 +89,8 @@ function sponsorCheck(sponsorTimes) { // Video skipping
           //skip it
           v.currentTime = sponsorTime[1];
 
+          lastSponsorTimeSkipped = sponsorTime[0];
+
           //send out the message saying that a sponsor message was skipped
           openSkipNotice();
 
@@ -93,6 +99,15 @@ function sponsorCheck(sponsorTimes) { // Video skipping
 
         lastTime = v.currentTime;
     });
+}
+
+function goBackToPreviousTime() {
+  if (lastSponsorTimeSkipped != null) {
+    //add a tiny bit of time to make sure it is not skipped again
+    v.currentTime = lastSponsorTimeSkipped + 0.001;
+
+    closeSkipNotice();
+  }
 }
 
 //Opens the notice that tells the user that a sponsor was just skipped
@@ -109,13 +124,26 @@ function openSkipNotice(){
 
 	var noticeMessage = document.createElement("p");
 	noticeMessage.innerText = "Hey, you just skipped a sponsor!";
-  noticeMessage.style.marginLeft = "10px";
   noticeMessage.style.fontSize = "18px";
   noticeMessage.style.color = "#000000";
   noticeMessage.style.textAlign = "center";
   noticeMessage.style.marginTop = "10px";
 
-	noticeElement.appendChild(noticeMessage);
+  var buttonContainer = document.createElement("div");
+  buttonContainer.setAttribute("align", "center");
+
+  var goBackButton = document.createElement("button");
+	goBackButton.innerText = "Go back";
+  goBackButton.style.fontSize = "13px";
+  goBackButton.style.color = "#000000";
+  goBackButton.setAttribute("align", "center");
+  goBackButton.style.marginTop = "5px";
+  goBackButton.addEventListener("click", goBackToPreviousTime);
+
+  buttonContainer.appendChild(goBackButton);
+
+  noticeElement.appendChild(noticeMessage);
+  noticeElement.appendChild(buttonContainer);
 
   var referenceNode = document.getElementById("info");
   if (referenceNode == null) {
@@ -127,7 +155,10 @@ function openSkipNotice(){
 
 //Closes the notice that tells the user that a sponsor was just skipped
 function closeSkipNotice(){
-  document.getElementById("sponsorSkipNotice").remove();
+  let notice = document.getElementById("sponsorSkipNotice");
+  if (notice != null) {
+    notice.remove();
+  }
 }
 
 function sponsorMessageStarted() {
