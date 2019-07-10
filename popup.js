@@ -34,15 +34,15 @@ function loadTabData(tabs) {
   //load video times for this video 
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
   chrome.storage.local.get([sponsorTimeKey], function(result) {
-    sponsorTimes = result[sponsorTimeKey];
-    if (sponsorTimes != undefined && sponsorTimes != []) {
-      if (sponsorTimes[sponsorTimes.length - 1]!= undefined && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+    let sponsorTimesStorage = result[sponsorTimeKey];
+    if (sponsorTimesStorage != undefined && sponsorTimesStorage != []) {
+      if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
         startTimeChosen = true;
       }
 
+      sponsorTimes = sponsorTimesStorage;
+
       displaySponsorTimes();
-    } else {
-      sponsorTimes = []
     }
   });
 
@@ -170,12 +170,14 @@ function clearTimes() {
 }
 
 function submitTimes() {
-  chrome.runtime.sendMessage({
-    message: "submitTimes",
-    videoID: currentVideoID
-  }, function(request) {
-    clearTimes();
-  });
+  if (sponsorTimes.length > 0) {
+    chrome.runtime.sendMessage({
+      message: "submitTimes",
+      videoID: currentVideoID
+    }, function(request) {
+      clearTimes();
+    });
+  }
 }
 
 //converts time in seconds to minutes:seconds
