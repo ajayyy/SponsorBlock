@@ -1,0 +1,66 @@
+#sponsorSkipNotice {
+    min-height: 120px;
+    min-width: 400px;
+    background-color: rgba(153, 153, 153, 0.8);
+    position: absolute;
+    z-index: 1;
+}
+
+#sponsorSkipMessage {
+    font-size: 18px;
+    color: #000000;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.sponsorSkipButton {
+	background-color:#44c767;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	padding:8px 15px;
+	text-decoration:none;
+    text-shadow:0px 0px 0px #2f6627;
+    
+    margin-top: 5px;
+    margin-right: 15px;
+}
+.sponsorSkipButton:hover {
+	background-color:#5cbf2a;
+}
+.sponsorSkipButton:active {
+	position:relative;
+	top:1px;
+}
+
+.sponsorSkipDontShowButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background-color:#d0451b;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+}
+.sponsorSkipDontShowButton:hover {
+	background-color:#bc3315;
+}
+.sponsorSkipDontShowButton:active {
+	position:relative;
+	top:1px;
+}

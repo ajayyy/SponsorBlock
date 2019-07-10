@@ -132,48 +132,33 @@ function openSkipNotice(){
   }
 
   var noticeElement = document.createElement("div");
-  
-  noticeElement.id = 'sponsorSkipNotice'
-  noticeElement.style.minHeight = "100px";
-  noticeElement.style.minWidth = "400px";
-  noticeElement.style.backgroundColor = "rgba(153, 153, 153, 0.8)";
-  noticeElement.style.fontSize = "24px";
-  noticeElement.style.position = "absolute"
-  noticeElement.style.zIndex = "1";
+  noticeElement.id = "sponsorSkipNotice";
 
-	var noticeMessage = document.createElement("p");
+  var noticeMessage = document.createElement("p");
+  noticeMessage.id = "sponsorSkipMessage";
 	noticeMessage.innerText = "Hey, you just skipped a sponsor!";
-  noticeMessage.style.fontSize = "18px";
-  noticeMessage.style.color = "#000000";
-  noticeMessage.style.textAlign = "center";
-  noticeMessage.style.marginTop = "10px";
 
   var buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("align", "center");
 
   var goBackButton = document.createElement("button");
-	goBackButton.innerText = "Go back";
-  goBackButton.style.fontSize = "13px";
-  goBackButton.style.color = "#000000";
-  goBackButton.style.marginTop = "5px";
+  goBackButton.innerText = "Go back";
+  goBackButton.className = "sponsorSkipButton";
   goBackButton.addEventListener("click", goBackToPreviousTime);
 
   var hideButton = document.createElement("button");
 	hideButton.innerText = "Hide";
-  hideButton.style.fontSize = "13px";
-  hideButton.style.color = "#000000";
-  hideButton.style.marginTop = "5px";
+  hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", closeSkipNotice);
 
   var dontShowAgainButton = document.createElement("button");
 	dontShowAgainButton.innerText = "Don't Show This Again";
-  dontShowAgainButton.style.fontSize = "13px";
-  dontShowAgainButton.style.color = "#000000";
-  dontShowAgainButton.style.marginTop = "5px";
+  dontShowAgainButton.className = "sponsorSkipDontShowButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
   buttonContainer.appendChild(goBackButton);
   buttonContainer.appendChild(hideButton);
+  buttonContainer.appendChild(document.createElement("br"));
   buttonContainer.appendChild(document.createElement("br"));
   buttonContainer.appendChild(dontShowAgainButton);
 
