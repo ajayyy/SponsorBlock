@@ -136,11 +136,18 @@ function openSkipNotice(){
 	goBackButton.innerText = "Go back";
   goBackButton.style.fontSize = "13px";
   goBackButton.style.color = "#000000";
-  goBackButton.setAttribute("align", "center");
   goBackButton.style.marginTop = "5px";
   goBackButton.addEventListener("click", goBackToPreviousTime);
 
+  var hideButton = document.createElement("button");
+	hideButton.innerText = "Hide";
+  hideButton.style.fontSize = "13px";
+  hideButton.style.color = "#000000";
+  hideButton.style.marginTop = "5px";
+  hideButton.addEventListener("click", closeSkipNotice);
+
   buttonContainer.appendChild(goBackButton);
+  buttonContainer.appendChild(hideButton);
 
   noticeElement.appendChild(noticeMessage);
   noticeElement.appendChild(buttonContainer);
