@@ -84,13 +84,18 @@ function sponsorCheck(sponsorTimes) { // Video skipping
         if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTime[0] >= lastTime && sponsorTime[0] <= v.currentTime) {
           //skip it
           v.currentTime = sponsorTime[1];
+
+          //send out the message saying that a sponsor message was skipped
+          openSkipNotice();
+
+          setTimeout(closeSkipNotice, 2500);
         }
 
         lastTime = v.currentTime;
     });
 }
 
-//The notice that tells the user that a sponsor was just skipped
+//Opens the notice that tells the user that a sponsor was just skipped
 function openSkipNotice(){
   var noticeElement = document.createElement("div");
   
@@ -118,6 +123,11 @@ function openSkipNotice(){
     referenceNode = document.getElementById("watch-header");
   }
   referenceNode.prepend(noticeElement);
+}
+
+//Closes the notice that tells the user that a sponsor was just skipped
+function closeSkipNotice(){
+  document.getElementById("sponsorSkipNotice").remove();
 }
 
 function sponsorMessageStarted() {
