@@ -90,10 +90,34 @@ function sponsorCheck(sponsorTimes) { // Video skipping
     });
 }
 
-function getYouTubeVideoID(url) { // Returns with video id else returns false
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
+//The notice that tells the user that a sponsor was just skipped
+function openSkipNotice(){
+  var noticeElement = document.createElement("div");
+  
+  noticeElement.id = 'sponsorSkipNotice'
+  noticeElement.style.minHeight = "75px";
+  noticeElement.style.minWidth = "400px";
+  noticeElement.style.backgroundColor = "rgba(153, 153, 153, 0.8)";
+  noticeElement.style.fontSize = "24px";
+  noticeElement.style.position = "absolute"
+  noticeElement.style.zIndex = "1";
+
+	var noticeMessage = document.createElement("p");
+	noticeMessage.innerText = "Hey, you just skipped a sponsor!";
+  noticeMessage.style.marginLeft = "10px";
+  noticeMessage.style.fontSize = "18px";
+  noticeMessage.style.color = "#000000";
+  noticeMessage.style.textAlign = "center";
+  noticeMessage.style.marginTop = "10px";
+
+	noticeElement.appendChild(noticeMessage);
+
+  var referenceNode = document.getElementById("info");
+  if (referenceNode == null) {
+    //old YouTube
+    referenceNode = document.getElementById("watch-header");
+  }
+  referenceNode.prepend(noticeElement);
 }
 
 function sponsorMessageStarted() {
@@ -106,4 +130,10 @@ function sponsorMessageStarted() {
       message: "time",
       time: v.currentTime
     });
+}
+
+function getYouTubeVideoID(url) { // Returns with video id else returns false
+  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+  var match = url.match(regExp);
+  return (match && match[7].length == 11) ? match[7] : false;
 }
