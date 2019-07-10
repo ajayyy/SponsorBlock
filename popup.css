@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
 * {
-  font-family: 'Arial';
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
+  font-size: 14px;
   width: 300px;
+  background-color: #d9ffdc;
 }
 
 .greenButton {
@@ -15,7 +19,6 @@ body {
   display:inline-block;
   cursor:pointer;
   color:#ffffff;
-  font-family:Arial;
   font-size:16px;
   padding:8px 37px;
   text-decoration:none;
@@ -41,7 +44,6 @@ body {
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
 	font-size:13px;
 	padding:6px 24px;
 	text-decoration:none;
@@ -64,7 +66,6 @@ body {
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
 	font-size:14px;
 	padding:6px 10px;
 	text-decoration:none;
