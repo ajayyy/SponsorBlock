@@ -49,6 +49,7 @@ function loadTabData(tabs) {
     if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
       if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
         startTimeChosen = true;
+        document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends Now";
       }
 
       sponsorTimes = sponsorTimesStorage;
