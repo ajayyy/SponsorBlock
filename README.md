@@ -14,7 +14,7 @@ Hopefully this project can be combined with projects like [this](https://github.
 
 # Previous extension
 
-This project is partially based off of [this experimental extention](https://github.com/OfficialNoob/YTSponsorSkip). That extension has the basic video skipping functionality.
+This project is partially based off of [this experimental extension](https://github.com/OfficialNoob/YTSponsorSkip). That extension has the basic video skipping functionality.
 
 # Chrome extension
 
