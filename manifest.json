@@ -13,7 +13,7 @@
       ],
       "css": [
         "content.css",
-        "Source+Sans+Pro.css"
+        "./libs/Source+Sans+Pro.css"
       ]
     }
   ],
