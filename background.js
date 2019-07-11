@@ -69,7 +69,7 @@ function videoIDChange(currentVideoID) {
           type: "basic",
           title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
           message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
-          iconUrl: "icon.png"
+          iconUrl: "./icons/LogoSponsorBlocker256px.png"
         });
       }
 

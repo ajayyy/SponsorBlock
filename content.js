@@ -135,6 +135,10 @@ function openSkipNotice(){
   noticeElement.id = "sponsorSkipNotice";
   noticeElement.className = "sponsorSkipObject";
 
+  var logoElement = document.createElement("img");
+  logoElement.id = "sponsorSkipLogo";
+  logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+
   var noticeMessage = document.createElement("p");
   noticeMessage.id = "sponsorSkipMessage";
   noticeMessage.className = "sponsorSkipObject";
@@ -167,6 +171,7 @@ function openSkipNotice(){
   buttonContainer.appendChild(document.createElement("br"));
   buttonContainer.appendChild(dontShowAgainButton);
 
+  noticeElement.appendChild(logoElement);
   noticeElement.appendChild(noticeMessage);
   noticeElement.appendChild(buttonContainer);
 

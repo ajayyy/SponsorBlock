@@ -4,28 +4,32 @@
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+h1 {
+	margin-top: 0px;
+}
+
 body {
   font-size: 14px;
   width: 300px;
-  background-color: #d9ffdc;
+  background-color: #ffd9d9;
 }
 
 .greenButton {
-  background-color:#44c767;
+	background-color:#ec1c1c;
   -moz-border-radius:28px;
   -webkit-border-radius:28px;
   border-radius:28px;
-  border:1px solid #18ab29;
+  border:1px solid #d31919;
   display:inline-block;
   cursor:pointer;
   color:#ffffff;
   font-size:16px;
   padding:8px 37px;
   text-decoration:none;
-  text-shadow:0px 0px 0px #2f6627;
+  text-shadow:0px 0px 0px #662727;
 }
 .greenButton:hover {
-  background-color:#5cbf2a;
+  background-color:#bf2a2a;
 }
 .greenButton:active {
   position:relative;
@@ -58,11 +62,11 @@ body {
 }
 
 .smallButton {
-	background-color:#2dabf9;
+	background-color:#f9902d;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
-	border:1px solid #2dabf9;
+	border:1px solid #f9a72d;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -71,7 +75,7 @@ body {
 	text-decoration:none;
 }
 .smallButton:hover {
-	background-color:#0688fa;
+	background-color:#fa9806;
 }
 .smallButton:active {
 	position:relative;

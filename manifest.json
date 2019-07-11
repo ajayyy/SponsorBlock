@@ -17,6 +17,9 @@
       ]
     }
   ],
+  "web_accessible_resources": [
+    "icons/LogoSponsorBlocker256px.png"
+  ],
   "permissions": [
     "tabs",
     "storage",
@@ -28,6 +31,13 @@
   }, 
   "background": {
     "scripts":["background.js"]
+  },
+  "icons": {
+    "16": "icons/IconSponsorBlocker16px.png",
+    "32": "icons/IconSponsorBlocker32px.png",
+    "64": "icons/LogoSponsorBlocker64px.png",
+    "128": "icons/LogoSponsorBlocker128px.png",
+    "256": "icons/LogoSponsorBlocker256px.png"
   },
   "manifest_version": 2
 }

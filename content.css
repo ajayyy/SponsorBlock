@@ -2,10 +2,18 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+#sponsorSkipLogo {
+	height: 64px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
 #sponsorSkipNotice {
     min-height: 120px;
     min-width: 400px;
-    background-color: rgba(217, 255, 220, 0.8);
+    background-color: rgba(255, 217, 217, 0.8);
     position: absolute;
     z-index: 1;
 }
@@ -19,24 +27,24 @@
 }
 
 .sponsorSkipButton {
-	background-color:#44c767;
+	background-color:#ec1c1c;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
 	border-radius:28px;
-	border:1px solid #18ab29;
+	border:1px solid #d31919;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-size:14px;
 	padding:4px 15px;
 	text-decoration:none;
-    text-shadow:0px 0px 0px #2f6627;
+    text-shadow:0px 0px 0px #662727;
     
     margin-top: 5px;
     margin-right: 15px;
 }
 .sponsorSkipButton:hover {
-	background-color:#5cbf2a;
+	background-color:#bf2a2a;
 }
 .sponsorSkipButton:active {
 	position:relative;
