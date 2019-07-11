@@ -108,7 +108,7 @@ function sponsorCheck(sponsorTimes) { // Video skipping
           //send out the message saying that a sponsor message was skipped
           openSkipNotice();
 
-          setTimeout(closeSkipNotice, 2500);
+          setTimeout(closeSkipNotice, 5000);
         }
 
         lastTime = v.currentTime;
