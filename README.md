@@ -1,5 +1,5 @@
 ![Logo](icons/LogoSponsorBlocker256px.png)
-<sub>Logo by @munadikieh</sub>
+<br/><sub>Logo by [@munadikieh](https://github.com/munadikieh)</sub>
 
 # SponsorBlocker
 
