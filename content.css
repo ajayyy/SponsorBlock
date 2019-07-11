@@ -12,11 +12,12 @@
 }
 
 #sponsorSkipNotice {
-    min-height: 120px;
+    min-height: 125px;
     min-width: 400px;
     background-color: rgba(255, 217, 217, 0.8);
     position: absolute;
-    z-index: 1;
+	z-index: 1;
+	border: 3px solid rgba(0, 0, 0, 0.8);
 }
 
 #sponsorSkipMessage {
@@ -24,7 +25,13 @@
     color: #000000;
     text-align: center;
     margin-top: 10px;
-    font-weight: bold;
+	font-weight: bold;
+}
+
+#sponsorSkipInfo {
+	font-size: 10px;
+    color: #000000;
+    text-align: center;
 }
 
 .sponsorSkipButton {

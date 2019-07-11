@@ -108,7 +108,7 @@ function sponsorCheck(sponsorTimes) { // Video skipping
           //send out the message saying that a sponsor message was skipped
           openSkipNotice();
 
-          setTimeout(closeSkipNotice, 5000);
+          setTimeout(closeSkipNotice, 7000);
         }
 
         lastTime = v.currentTime;
@@ -139,10 +139,15 @@ function openSkipNotice(){
   logoElement.id = "sponsorSkipLogo";
   logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
 
-  var noticeMessage = document.createElement("p");
+  var noticeMessage = document.createElement("div");
   noticeMessage.id = "sponsorSkipMessage";
   noticeMessage.className = "sponsorSkipObject";
-	noticeMessage.innerText = "Hey, you just skipped a sponsor!";
+  noticeMessage.innerText = "Hey, you just skipped a sponsor!";
+  
+  var noticeInfo = document.createElement("p");
+  noticeInfo.id = "sponsorSkipInfo";
+  noticeInfo.className = "sponsorSkipObject";
+	noticeInfo.innerText = "This message will disapear in 7 seconds";
 
   var buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("align", "center");
@@ -154,7 +159,7 @@ function openSkipNotice(){
   goBackButton.addEventListener("click", goBackToPreviousTime);
 
   var hideButton = document.createElement("button");
-  hideButton.innerText = "Hide";
+  hideButton.innerText = "Dismiss";
   hideButton.className = "sponsorSkipObject";
   hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", closeSkipNotice);
@@ -173,6 +178,7 @@ function openSkipNotice(){
 
   noticeElement.appendChild(logoElement);
   noticeElement.appendChild(noticeMessage);
+  noticeElement.appendChild(noticeInfo);
   noticeElement.appendChild(buttonContainer);
 
   var referenceNode = document.getElementById("info");
