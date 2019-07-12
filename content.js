@@ -70,6 +70,10 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
     if (request.message == "showNoticeAgain") {
       dontShowNotice = false;
     }
+
+    if (request.message == "toggleStartSponsorButton") {
+      toggleStartSponsorButton();
+    }
 });
 
 function sponsorsLookup(id) {

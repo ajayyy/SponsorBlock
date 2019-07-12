@@ -41,7 +41,6 @@ function addSponsorTime(time) {
   let sponsorTimeKey = "sponsorTimes" + previousVideoID;
   chrome.storage.local.get([sponsorTimeKey], function(result) {
     let sponsorTimesStorage = result[sponsorTimeKey];
-    console.log(sponsorTimesStorage)
     if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
       sponsorTimes = sponsorTimesStorage;
     }
