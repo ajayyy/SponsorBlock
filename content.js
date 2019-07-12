@@ -124,6 +124,31 @@ function goBackToPreviousTime() {
   }
 }
 
+//Adds a sponsorship starts button to the player controls
+function addPlayerControlsButton(){
+  let startSponsorButton = document.createElement("button");
+  startSponsorButton.className = "ytp-button";
+  startSponsorButton.setAttribute("title", "Sponsor Starts Now");
+  startSponsorButton.addEventListener("click", console.log);
+
+  let startSponsorImage = document.createElement("img");
+  startSponsorImage.style.height = "60%";
+  startSponsorImage.style.top = "0";
+  startSponsorImage.style.bottom = "0";
+  startSponsorImage.style.display = "block";
+  startSponsorImage.style.margin = "auto";
+  startSponsorImage.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+
+  //add the image to the button
+  startSponsorButton.appendChild(startSponsorImage);
+
+  let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
+  
+  referenceNode.prepend(startSponsorButton);
+}
+
+addPlayerControlsButton();
+
 //Opens the notice that tells the user that a sponsor was just skipped
 function openSkipNotice(){
   if (dontShowNotice) {
@@ -131,40 +156,40 @@ function openSkipNotice(){
     return;
   }
 
-  var noticeElement = document.createElement("div");
+  let noticeElement = document.createElement("div");
   noticeElement.id = "sponsorSkipNotice";
   noticeElement.className = "sponsorSkipObject";
 
-  var logoElement = document.createElement("img");
+  let logoElement = document.createElement("img");
   logoElement.id = "sponsorSkipLogo";
   logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
 
-  var noticeMessage = document.createElement("div");
+  let noticeMessage = document.createElement("div");
   noticeMessage.id = "sponsorSkipMessage";
   noticeMessage.className = "sponsorSkipObject";
   noticeMessage.innerText = "Hey, you just skipped a sponsor!";
   
-  var noticeInfo = document.createElement("p");
+  let noticeInfo = document.createElement("p");
   noticeInfo.id = "sponsorSkipInfo";
   noticeInfo.className = "sponsorSkipObject";
 	noticeInfo.innerText = "This message will disapear in 7 seconds";
 
-  var buttonContainer = document.createElement("div");
+  let buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("align", "center");
 
-  var goBackButton = document.createElement("button");
+  let goBackButton = document.createElement("button");
   goBackButton.innerText = "Go back";
   goBackButton.className = "sponsorSkipObject";
   goBackButton.className = "sponsorSkipButton";
   goBackButton.addEventListener("click", goBackToPreviousTime);
 
-  var hideButton = document.createElement("button");
+  let hideButton = document.createElement("button");
   hideButton.innerText = "Dismiss";
   hideButton.className = "sponsorSkipObject";
   hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", closeSkipNotice);
 
-  var dontShowAgainButton = document.createElement("button");
+  let dontShowAgainButton = document.createElement("button");
   dontShowAgainButton.innerText = "Don't Show This Again";
   dontShowAgainButton.className = "sponsorSkipObject";
   dontShowAgainButton.className = "sponsorSkipDontShowButton";
@@ -181,7 +206,7 @@ function openSkipNotice(){
   noticeElement.appendChild(noticeInfo);
   noticeElement.appendChild(buttonContainer);
 
-  var referenceNode = document.getElementById("info");
+  let referenceNode = document.getElementById("info");
   if (referenceNode == null) {
     //old YouTube
     referenceNode = document.getElementById("watch-header");
