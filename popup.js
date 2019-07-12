@@ -56,6 +56,8 @@ function loadTabData(tabs) {
 
       //show submission section
       document.getElementById("submissionSection").style.display = "unset";
+
+      showSubmitTimesIfNecessary();
     }
   });
 
@@ -136,6 +138,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
     //show submission section
     document.getElementById("submissionSection").style.display = "unset";
+
+    showSubmitTimesIfNecessary();
   }
 });
 
@@ -229,6 +233,16 @@ function updateStartTimeChosen() {
 function resetStartTimeChosen() {
   startTimeChosen = false;
   document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
+}
+
+function showSubmitTimesIfNecessary() {
+  //check if an end time has been specified for the latest sponsor time
+  if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length > 1) {
+    //show submit times button
+    document.getElementById("submitTimes").style.display = "unset";
+  } else {
+    document.getElementById("submitTimes").style.display = "none";
+  }
 }
 
 //this is not a YouTube video page
