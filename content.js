@@ -26,6 +26,9 @@ var lastTime;
 //used for the go back button
 var lastSponsorTimeSkipped = null;
 
+//if showing the start sponsor button or the end sponsor button on the player
+var showingStartSponsor = true;
+
 //if the notice should not be shown
 //happens when the user click's the "Don't show notice again" button
 var dontShowNotice = false;
@@ -132,6 +135,7 @@ function addPlayerControlsButton() {
   startSponsorButton.addEventListener("click", startSponsorClicked);
 
   let startSponsorImage = document.createElement("img");
+  startSponsorImage.id = "startSponsorImage";
   startSponsorImage.style.height = "60%";
   startSponsorImage.style.top = "0";
   startSponsorImage.style.bottom = "0";
@@ -150,7 +154,15 @@ function addPlayerControlsButton() {
 addPlayerControlsButton();
 
 function startSponsorClicked() {
-  //send back current time witj message
+  if (showingStartSponsor) {
+    showingStartSponsor = false;
+    document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
+  } else {
+    showingStartSponsor = true;
+    document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+  }
+
+  //send back current time with message
   chrome.runtime.sendMessage({
     message: "addSponsorTime",
     time: v.currentTime
