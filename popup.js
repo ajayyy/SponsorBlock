@@ -61,8 +61,6 @@ function loadTabData(tabs) {
     }
   });
 
-  
-  
   //check if this video's sponsors are known
   chrome.tabs.sendMessage(
     tabs[0].id,

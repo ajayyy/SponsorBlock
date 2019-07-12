@@ -125,11 +125,11 @@ function goBackToPreviousTime() {
 }
 
 //Adds a sponsorship starts button to the player controls
-function addPlayerControlsButton(){
+function addPlayerControlsButton() {
   let startSponsorButton = document.createElement("button");
   startSponsorButton.className = "ytp-button";
   startSponsorButton.setAttribute("title", "Sponsor Starts Now");
-  startSponsorButton.addEventListener("click", console.log);
+  startSponsorButton.addEventListener("click", startSponsorClicked);
 
   let startSponsorImage = document.createElement("img");
   startSponsorImage.style.height = "60%";
@@ -148,6 +148,14 @@ function addPlayerControlsButton(){
 }
 
 addPlayerControlsButton();
+
+function startSponsorClicked() {
+  //send back current time witj message
+  chrome.runtime.sendMessage({
+    message: "addSponsorTime",
+    time: v.currentTime
+  });
+}
 
 //Opens the notice that tells the user that a sponsor was just skipped
 function openSkipNotice(){
@@ -232,8 +240,6 @@ function dontShowNoticeAgain() {
 
 function sponsorMessageStarted() {
     let v = document.querySelector('video');
-
-    console.log(v.currentTime)
 
     //send back current time
     chrome.runtime.sendMessage({

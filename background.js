@@ -30,8 +30,38 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     if (previousVideoID != request.videoID) {
       videoIDChange(request.videoID);
     }
+  } else if(request.message == "addSponsorTime") {
+    addSponsorTime(request.time);
   }
 });
+
+function addSponsorTime(time) {
+  //get sponsor times
+  let sponsorTimes = [];
+  let sponsorTimeKey = "sponsorTimes" + previousVideoID;
+  chrome.storage.local.get([sponsorTimeKey], function(result) {
+    let sponsorTimesStorage = result[sponsorTimeKey];
+    console.log(sponsorTimesStorage)
+    if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
+      sponsorTimes = sponsorTimesStorage;
+    }
+
+     //add to sponsorTimes
+    if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+      //it is an end time
+      sponsorTimes[sponsorTimes.length - 1][1] = parseInt(time);
+    } else {
+      //it is a start time
+      let sponsorTimesIndex = sponsorTimes.length;
+      sponsorTimes[sponsorTimesIndex] = [];
+
+      sponsorTimes[sponsorTimesIndex][0] = parseInt(time);
+    }
+
+    //save this info
+    chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
+  });
+}
 
 function submitTimes(videoID) {
   //get the video times from storage
