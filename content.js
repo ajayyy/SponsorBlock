@@ -154,6 +154,16 @@ function addPlayerControlsButton() {
 addPlayerControlsButton();
 
 function startSponsorClicked() {
+  toggleStartSponsorButton();
+
+  //send back current time with message
+  chrome.runtime.sendMessage({
+    message: "addSponsorTime",
+    time: v.currentTime
+  });
+}
+
+function toggleStartSponsorButton() {
   if (showingStartSponsor) {
     showingStartSponsor = false;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
@@ -161,12 +171,6 @@ function startSponsorClicked() {
     showingStartSponsor = true;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
   }
-
-  //send back current time with message
-  chrome.runtime.sendMessage({
-    message: "addSponsorTime",
-    time: v.currentTime
-  });
 }
 
 //Opens the notice that tells the user that a sponsor was just skipped
@@ -258,6 +262,9 @@ function sponsorMessageStarted() {
       message: "time",
       time: v.currentTime
     });
+
+    //update button
+    toggleStartSponsorButton();
 }
 
 function getYouTubeVideoID(url) { // Returns with video id else returns false
