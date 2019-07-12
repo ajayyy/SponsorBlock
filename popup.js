@@ -5,6 +5,7 @@ document.getElementById("submitTimes").addEventListener("click", submitTimes);
 document.getElementById("showNoticeAgain").addEventListener("click", showNoticeAgain);
 document.getElementById("hideVideoPlayerControls").addEventListener("click", hideVideoPlayerControls);
 document.getElementById("showVideoPlayerControls").addEventListener("click", showVideoPlayerControls);
+document.getElementById("optionsButton").addEventListener("click", openOptions);
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -299,6 +300,12 @@ function showSubmitTimesIfNecessary() {
   } else {
     document.getElementById("submitTimes").style.display = "none";
   }
+}
+
+//make the options div visisble
+function openOptions() {
+  document.getElementById("optionsButtonContainer").style.display = "none";
+  document.getElementById("options").style.display = "unset";
 }
 
 //this is not a YouTube video page

@@ -34,7 +34,7 @@ body {
   top:1px;
 }
 
-.noticeButton {
+.dangerButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
 	box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -51,10 +51,10 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #854629;
 }
-.noticeButton:hover {
+.dangerButton:hover {
 	background-color:#bc3315;
 }
-.noticeButton:active {
+.dangerButton:active {
 	position:relative;
 	top:1px;
 }
