@@ -1,7 +1,5 @@
 if(id = getYouTubeVideoID(document.URL)){ // Direct Links
-  //reset sponsor data found check
-  sponsorDataFound = false;
-  sponsorsLookup(id);
+  videoIDChange(id);
 
   //tell background.js about this
   chrome.runtime.sendMessage({
@@ -43,9 +41,7 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
   function(request, sender, sendResponse) {
     //message from background script
     if (request.message == "ytvideoid") { 
-      //reset sponsor data found check
-      sponsorDataFound = false;
-      sponsorsLookup(request.id);
+      videoIDChange(request.id);
     }
 
     //messages from popup script
@@ -75,6 +71,25 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
       toggleStartSponsorButton();
     }
 });
+
+function videoIDChange(id) {
+  //reset sponsor data found check
+  sponsorDataFound = false;
+  sponsorsLookup(id);
+
+  //see if the onvideo control image needs to be changed
+  chrome.runtime.sendMessage({
+    message: "getSponsorTimes",
+    videoID: id
+  }, function(response) {
+    if (response != undefined) {
+      let sponsorTimes = response.sponsorTimes;
+      if (sponsorTimes != undefined && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+        toggleStartSponsorButton();
+      }
+    }
+  });
+}
 
 function sponsorsLookup(id) {
     v = document.querySelector('video') // Youtube video player

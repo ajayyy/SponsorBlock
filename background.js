@@ -26,26 +26,42 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     callback({
       success: true
     });
-  } else if(request.message == "ytvideoid") {
+  } else if (request.message == "ytvideoid") {
     if (previousVideoID != request.videoID) {
       videoIDChange(request.videoID);
     }
-  } else if(request.message == "addSponsorTime") {
+  } else if (request.message == "addSponsorTime") {
     addSponsorTime(request.time);
+  } else if (request.message == "getSponsorTimes") {
+    getSponsorTimes(request.videoID, function(sponsorTimes) {
+      callback({
+        sponsorTimes: sponsorTimes
+      })
+    });
+
+    //this allows the callback to be called later
+    return true;
   }
 });
 
-function addSponsorTime(time) {
-  //get sponsor times
+
+//gets the sponsor times from memory
+function getSponsorTimes(videoID, callback) {
   let sponsorTimes = [];
-  let sponsorTimeKey = "sponsorTimes" + previousVideoID;
+  let sponsorTimeKey = "sponsorTimes" + videoID;
   chrome.storage.local.get([sponsorTimeKey], function(result) {
     let sponsorTimesStorage = result[sponsorTimeKey];
     if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
       sponsorTimes = sponsorTimesStorage;
     }
 
-     //add to sponsorTimes
+    callback(sponsorTimes)
+  });
+}
+
+function addSponsorTime(time) {
+  getSponsorTimes(previousVideoID, function(sponsorTimes) {
+    //add to sponsorTimes
     if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
       //it is an end time
       sponsorTimes[sponsorTimes.length - 1][1] = parseInt(time);
@@ -58,6 +74,7 @@ function addSponsorTime(time) {
     }
 
     //save this info
+    let sponsorTimeKey = "sponsorTimes" + previousVideoID;
     chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
   });
 }
