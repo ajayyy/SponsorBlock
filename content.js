@@ -27,6 +27,9 @@ var lastSponsorTimeSkipped = null;
 //if showing the start sponsor button or the end sponsor button on the player
 var showingStartSponsor = true;
 
+//should the video controls buttons be added
+var hideVideoPlayerControls = false;
+
 //if the notice should not be shown
 //happens when the user click's the "Don't show notice again" button
 var dontShowNotice = false;
@@ -70,6 +73,12 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
     if (request.message == "toggleStartSponsorButton") {
       toggleStartSponsorButton();
     }
+
+    if (request.message == "changeVideoPlayerControlsVisibility") {
+      hideVideoPlayerControls = request.value;
+
+      updateVisibilityOfPlayerControlsButton();
+    }
 });
 
 function videoIDChange(id) {
@@ -88,6 +97,15 @@ function videoIDChange(id) {
         toggleStartSponsorButton();
       }
     }
+  });
+
+  //see if video control buttons should be added
+  chrome.storage.local.get(["hideVideoPlayerControls"], function(result) {
+    if (result.hideVideoPlayerControls != undefined) {
+      hideVideoPlayerControls = result.hideVideoPlayerControls;
+    }
+
+    updateVisibilityOfPlayerControlsButton();
   });
 }
 
@@ -149,6 +167,7 @@ function goBackToPreviousTime() {
 //Adds a sponsorship starts button to the player controls
 function addPlayerControlsButton() {
   let startSponsorButton = document.createElement("button");
+  startSponsorButton.id = "startSponsorButton";
   startSponsorButton.className = "ytp-button";
   startSponsorButton.setAttribute("title", "Sponsor Starts Now");
   startSponsorButton.addEventListener("click", startSponsorClicked);
@@ -170,7 +189,18 @@ function addPlayerControlsButton() {
   referenceNode.prepend(startSponsorButton);
 }
 
-addPlayerControlsButton();
+function removePlayerControlsButton() {
+  document.getElementById("startSponsorButton").style.display = "none";
+}
+
+//adds or removes the player controls button to what it should be
+function updateVisibilityOfPlayerControlsButton() {
+  if (hideVideoPlayerControls) {
+    removePlayerControlsButton();
+  } else {
+    addPlayerControlsButton();
+  }
+}
 
 function startSponsorClicked() {
   toggleStartSponsorButton();

@@ -3,6 +3,8 @@ document.getElementById("sponsorStart").addEventListener("click", sendSponsorSta
 document.getElementById("clearTimes").addEventListener("click", clearTimes);
 document.getElementById("submitTimes").addEventListener("click", submitTimes);
 document.getElementById("showNoticeAgain").addEventListener("click", showNoticeAgain);
+document.getElementById("hideVideoPlayerControls").addEventListener("click", hideVideoPlayerControls);
+document.getElementById("showVideoPlayerControls").addEventListener("click", showVideoPlayerControls);
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -22,6 +24,15 @@ chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
   let dontShowNoticeAgain = result.dontShowNoticeAgain;
   if (dontShowNoticeAgain != undefined && dontShowNoticeAgain) {
     document.getElementById("showNoticeAgain").style.display = "unset";
+  }
+});
+
+//show proper video player controls option
+chrome.storage.local.get(["hideVideoPlayerControls"], function(result) {
+  let hideVideoPlayerControls = result.hideVideoPlayerControls;
+  if (hideVideoPlayerControls != undefined && hideVideoPlayerControls) {
+    document.getElementById("hideVideoPlayerControls").style.display = "none";
+    document.getElementById("showVideoPlayerControls").style.display = "unset";
   }
 });
 
@@ -228,6 +239,40 @@ function showNoticeAgain() {
   });
 
   document.getElementById("showNoticeAgain").style.display = "none";
+}
+
+function hideVideoPlayerControls() {
+  chrome.storage.local.set({"hideVideoPlayerControls": true});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "changeVideoPlayerControlsVisibility",
+      value: true
+    });
+  });
+
+  document.getElementById("hideVideoPlayerControls").style.display = "none";
+  document.getElementById("showVideoPlayerControls").style.display = "unset";
+}
+
+function showVideoPlayerControls() {
+  chrome.storage.local.set({"hideVideoPlayerControls": false});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "changeVideoPlayerControlsVisibility",
+      value: false
+    });
+  });
+
+  document.getElementById("hideVideoPlayerControls").style.display = "unset";
+  document.getElementById("showVideoPlayerControls").style.display = "none";
 }
 
 function updateStartTimeChosen() {
