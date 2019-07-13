@@ -21,7 +21,7 @@ This project is partially based off of [this experimental extension](https://git
 
 # Chrome extension
 
-It will be on the chrome webstore soon once I get some more UI features in, such as an icon. For now, you can load this project as an unpacked extension. Make sure to rename the `content-config.js.example` file to `content-config.js` before installing.
+It will be on the chrome webstore soon once I get some more UI features in, such as an icon. For now, you can load this project as an unpacked extension. Make sure to rename the `config.js.example` file to `config.js` before installing.
 
 # Firefox extension
 

@@ -92,7 +92,7 @@ function submitTimes(videoID) {
 
         let userIDStorage = getUserID(function(userIDStorage) {
           //submit the sponsorTime
-          xmlhttp.open('GET', 'http://localhost/api/postVideoSponsorTimes?videoID=' + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+          xmlhttp.open('GET', serverAddress + "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
           + "&userID=" + userIDStorage, true);
           xmlhttp.send();
         });

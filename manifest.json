@@ -8,7 +8,7 @@
         "https://*.youtube.com/*"
       ],
       "js": [
-        "content-config.js",
+        "config.js",
         "content.js"
       ],
       "css": [
@@ -33,7 +33,10 @@
     "default_popup": "popup.html"
   }, 
   "background": {
-    "scripts":["background.js"]
+    "scripts":[
+      "config.js",
+      "background.js"
+    ]
   },
   "icons": {
     "16": "icons/IconSponsorBlocker16px.png",
