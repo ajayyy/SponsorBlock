@@ -1,7 +1,5 @@
 if(id = getYouTubeVideoID(document.URL)){ // Direct Links
-  //reset sponsor data found check
-  sponsorDataFound = false;
-  sponsorsLookup(id);
+  videoIDChange(id);
 
   //tell background.js about this
   chrome.runtime.sendMessage({
@@ -26,6 +24,12 @@ var lastTime;
 //used for the go back button
 var lastSponsorTimeSkipped = null;
 
+//if showing the start sponsor button or the end sponsor button on the player
+var showingStartSponsor = true;
+
+//should the video controls buttons be added
+var hideVideoPlayerControls = false;
+
 //if the notice should not be shown
 //happens when the user click's the "Don't show notice again" button
 var dontShowNotice = false;
@@ -40,9 +44,7 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
   function(request, sender, sendResponse) {
     //message from background script
     if (request.message == "ytvideoid") { 
-      //reset sponsor data found check
-      sponsorDataFound = false;
-      sponsorsLookup(request.id);
+      videoIDChange(request.id);
     }
 
     //messages from popup script
@@ -67,7 +69,45 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
     if (request.message == "showNoticeAgain") {
       dontShowNotice = false;
     }
+
+    if (request.message == "toggleStartSponsorButton") {
+      toggleStartSponsorButton();
+    }
+
+    if (request.message == "changeVideoPlayerControlsVisibility") {
+      hideVideoPlayerControls = request.value;
+
+      updateVisibilityOfPlayerControlsButton();
+    }
 });
+
+function videoIDChange(id) {
+  //reset sponsor data found check
+  sponsorDataFound = false;
+  sponsorsLookup(id);
+
+  //see if the onvideo control image needs to be changed
+  chrome.runtime.sendMessage({
+    message: "getSponsorTimes",
+    videoID: id
+  }, function(response) {
+    if (response != undefined) {
+      let sponsorTimes = response.sponsorTimes;
+      if (sponsorTimes != undefined && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+        toggleStartSponsorButton();
+      }
+    }
+  });
+
+  //see if video control buttons should be added
+  chrome.storage.local.get(["hideVideoPlayerControls"], function(result) {
+    if (result.hideVideoPlayerControls != undefined) {
+      hideVideoPlayerControls = result.hideVideoPlayerControls;
+    }
+
+    updateVisibilityOfPlayerControlsButton();
+  });
+}
 
 function sponsorsLookup(id) {
     v = document.querySelector('video') // Youtube video player
@@ -108,7 +148,7 @@ function sponsorCheck(sponsorTimes) { // Video skipping
           //send out the message saying that a sponsor message was skipped
           openSkipNotice();
 
-          setTimeout(closeSkipNotice, 2500);
+          setTimeout(closeSkipNotice, 7000);
         }
 
         lastTime = v.currentTime;
@@ -124,6 +164,64 @@ function goBackToPreviousTime() {
   }
 }
 
+//Adds a sponsorship starts button to the player controls
+function addPlayerControlsButton() {
+  let startSponsorButton = document.createElement("button");
+  startSponsorButton.id = "startSponsorButton";
+  startSponsorButton.className = "ytp-button";
+  startSponsorButton.setAttribute("title", "Sponsor Starts Now");
+  startSponsorButton.addEventListener("click", startSponsorClicked);
+
+  let startSponsorImage = document.createElement("img");
+  startSponsorImage.id = "startSponsorImage";
+  startSponsorImage.style.height = "60%";
+  startSponsorImage.style.top = "0";
+  startSponsorImage.style.bottom = "0";
+  startSponsorImage.style.display = "block";
+  startSponsorImage.style.margin = "auto";
+  startSponsorImage.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+
+  //add the image to the button
+  startSponsorButton.appendChild(startSponsorImage);
+
+  let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
+  
+  referenceNode.prepend(startSponsorButton);
+}
+
+function removePlayerControlsButton() {
+  document.getElementById("startSponsorButton").style.display = "none";
+}
+
+//adds or removes the player controls button to what it should be
+function updateVisibilityOfPlayerControlsButton() {
+  if (hideVideoPlayerControls) {
+    removePlayerControlsButton();
+  } else {
+    addPlayerControlsButton();
+  }
+}
+
+function startSponsorClicked() {
+  toggleStartSponsorButton();
+
+  //send back current time with message
+  chrome.runtime.sendMessage({
+    message: "addSponsorTime",
+    time: v.currentTime
+  });
+}
+
+function toggleStartSponsorButton() {
+  if (showingStartSponsor) {
+    showingStartSponsor = false;
+    document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
+  } else {
+    showingStartSponsor = true;
+    document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+  }
+}
+
 //Opens the notice that tells the user that a sponsor was just skipped
 function openSkipNotice(){
   if (dontShowNotice) {
@@ -131,56 +229,57 @@ function openSkipNotice(){
     return;
   }
 
-  var noticeElement = document.createElement("div");
+  let noticeElement = document.createElement("div");
+  noticeElement.id = "sponsorSkipNotice";
+  noticeElement.className = "sponsorSkipObject";
+
+  let logoElement = document.createElement("img");
+  logoElement.id = "sponsorSkipLogo";
+  logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+
+  let noticeMessage = document.createElement("div");
+  noticeMessage.id = "sponsorSkipMessage";
+  noticeMessage.className = "sponsorSkipObject";
+  noticeMessage.innerText = "Hey, you just skipped a sponsor!";
   
-  noticeElement.id = 'sponsorSkipNotice'
-  noticeElement.style.minHeight = "100px";
-  noticeElement.style.minWidth = "400px";
-  noticeElement.style.backgroundColor = "rgba(153, 153, 153, 0.8)";
-  noticeElement.style.fontSize = "24px";
-  noticeElement.style.position = "absolute"
-  noticeElement.style.zIndex = "1";
+  let noticeInfo = document.createElement("p");
+  noticeInfo.id = "sponsorSkipInfo";
+  noticeInfo.className = "sponsorSkipObject";
+	noticeInfo.innerText = "This message will disapear in 7 seconds";
 
-	var noticeMessage = document.createElement("p");
-	noticeMessage.innerText = "Hey, you just skipped a sponsor!";
-  noticeMessage.style.fontSize = "18px";
-  noticeMessage.style.color = "#000000";
-  noticeMessage.style.textAlign = "center";
-  noticeMessage.style.marginTop = "10px";
-
-  var buttonContainer = document.createElement("div");
+  let buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("align", "center");
 
-  var goBackButton = document.createElement("button");
-	goBackButton.innerText = "Go back";
-  goBackButton.style.fontSize = "13px";
-  goBackButton.style.color = "#000000";
-  goBackButton.style.marginTop = "5px";
+  let goBackButton = document.createElement("button");
+  goBackButton.innerText = "Go back";
+  goBackButton.className = "sponsorSkipObject";
+  goBackButton.className = "sponsorSkipButton";
   goBackButton.addEventListener("click", goBackToPreviousTime);
 
-  var hideButton = document.createElement("button");
-	hideButton.innerText = "Hide";
-  hideButton.style.fontSize = "13px";
-  hideButton.style.color = "#000000";
-  hideButton.style.marginTop = "5px";
+  let hideButton = document.createElement("button");
+  hideButton.innerText = "Dismiss";
+  hideButton.className = "sponsorSkipObject";
+  hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", closeSkipNotice);
 
-  var dontShowAgainButton = document.createElement("button");
-	dontShowAgainButton.innerText = "Don't Show This Again";
-  dontShowAgainButton.style.fontSize = "13px";
-  dontShowAgainButton.style.color = "#000000";
-  dontShowAgainButton.style.marginTop = "5px";
+  let dontShowAgainButton = document.createElement("button");
+  dontShowAgainButton.innerText = "Don't Show This Again";
+  dontShowAgainButton.className = "sponsorSkipObject";
+  dontShowAgainButton.className = "sponsorSkipDontShowButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
   buttonContainer.appendChild(goBackButton);
   buttonContainer.appendChild(hideButton);
   buttonContainer.appendChild(document.createElement("br"));
+  buttonContainer.appendChild(document.createElement("br"));
   buttonContainer.appendChild(dontShowAgainButton);
 
+  noticeElement.appendChild(logoElement);
   noticeElement.appendChild(noticeMessage);
+  noticeElement.appendChild(noticeInfo);
   noticeElement.appendChild(buttonContainer);
 
-  var referenceNode = document.getElementById("info");
+  let referenceNode = document.getElementById("info");
   if (referenceNode == null) {
     //old YouTube
     referenceNode = document.getElementById("watch-header");
@@ -207,13 +306,14 @@ function dontShowNoticeAgain() {
 function sponsorMessageStarted() {
     let v = document.querySelector('video');
 
-    console.log(v.currentTime)
-
     //send back current time
     chrome.runtime.sendMessage({
       message: "time",
       time: v.currentTime
     });
+
+    //update button
+    toggleStartSponsorButton();
 }
 
 function getYouTubeVideoID(url) { // Returns with video id else returns false

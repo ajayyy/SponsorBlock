@@ -1,7 +1,106 @@
 * {
-  font-family: 'Arial';
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+	margin-top: 0px;
 }
 
 body {
+  font-size: 14px;
   width: 300px;
+  background-color: #ffd9d9;
+}
+
+.greenButton {
+	background-color:#ec1c1c;
+  -moz-border-radius:28px;
+  -webkit-border-radius:28px;
+  border-radius:28px;
+  border:1px solid #d31919;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-size:16px;
+  padding:8px 37px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #662727;
+}
+.greenButton:hover {
+  background-color:#bf2a2a;
+}
+.greenButton:active {
+  position:relative;
+  top:1px;
+}
+
+.dangerButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background-color:#d0451b;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+}
+.dangerButton:hover {
+	background-color:#bc3315;
+}
+.dangerButton:active {
+	position:relative;
+	top:1px;
+}
+
+.warningButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #cfbd6c;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cfbd6c;
+	box-shadow:inset 0px 1px 0px 0px #cfbd6c;
+	background-color:#d0821b;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #948b11;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #856829;
+}
+.warningButton:hover {
+	background-color:#bc8215;
+}
+.warningButton:active {
+	position:relative;
+	top:1px;
+}
+
+.smallButton {
+	background-color:#f9902d;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #f9a72d;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:14px;
+	padding:6px 10px;
+	text-decoration:none;
+}
+.smallButton:hover {
+	background-color:#fa9806;
+}
+.smallButton:active {
+	position:relative;
+	top:1px;
 }

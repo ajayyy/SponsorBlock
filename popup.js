@@ -3,6 +3,9 @@ document.getElementById("sponsorStart").addEventListener("click", sendSponsorSta
 document.getElementById("clearTimes").addEventListener("click", clearTimes);
 document.getElementById("submitTimes").addEventListener("click", submitTimes);
 document.getElementById("showNoticeAgain").addEventListener("click", showNoticeAgain);
+document.getElementById("hideVideoPlayerControls").addEventListener("click", hideVideoPlayerControls);
+document.getElementById("showVideoPlayerControls").addEventListener("click", showVideoPlayerControls);
+document.getElementById("optionsButton").addEventListener("click", openOptions);
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -25,13 +28,14 @@ chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
   }
 });
 
-//if no response comes by this point, give up
-setTimeout(function() {
-  if (!isYouTubeTab) {
-    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
-      "If you know this is a YouTube tab, close this popup and open it again.";
+//show proper video player controls option
+chrome.storage.local.get(["hideVideoPlayerControls"], function(result) {
+  let hideVideoPlayerControls = result.hideVideoPlayerControls;
+  if (hideVideoPlayerControls != undefined && hideVideoPlayerControls) {
+    document.getElementById("hideVideoPlayerControls").style.display = "none";
+    document.getElementById("showVideoPlayerControls").style.display = "unset";
   }
-}, 100);
+});
 
 chrome.tabs.query({
   active: true,
@@ -41,6 +45,12 @@ chrome.tabs.query({
 function loadTabData(tabs) {
   //set current videoID
   currentVideoID = getYouTubeVideoID(tabs[0].url);
+
+  if (!currentVideoID) {
+    //this isn't a YouTube video then
+    displayNoVideo();
+    return;
+  }
 
   //load video times for this video 
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
@@ -58,11 +68,11 @@ function loadTabData(tabs) {
 
       //show submission section
       document.getElementById("submissionSection").style.display = "unset";
+
+      showSubmitTimesIfNecessary();
     }
   });
 
-  
-  
   //check if this video's sponsors are known
   chrome.tabs.sendMessage(
     tabs[0].id,
@@ -72,6 +82,12 @@ function loadTabData(tabs) {
 }
 
 function infoFound(request) {
+  if(chrome.runtime.lastError) {
+    //This page doesn't have the injected content script, or at least not yet
+    displayNoVideo();
+    return;
+  }
+
   //if request is undefined, then the page currently being browsed is not YouTube
   if (request != undefined) {
     //this must be a YouTube video
@@ -125,20 +141,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
     chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
 
-    //update startTimeChosen variable
-    if (!startTimeChosen) {
-      startTimeChosen = true;
-      document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends Now";
-    } else {
-      startTimeChosen = false;
-      document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
-    }
+    updateStartTimeChosen();
 
     //display video times on screen
     displaySponsorTimes();
 
     //show submission section
     document.getElementById("submissionSection").style.display = "unset";
+
+    showSubmitTimesIfNecessary();
   }
 });
 
@@ -179,6 +190,19 @@ function getSponsorTimesMessage(sponsorTimes) {
 }
 
 function clearTimes() {
+  //check if the player controls should be toggled
+  if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        message: "toggleStartSponsorButton"
+      });
+    });
+  }
+
+  //reset sponsorTimes
   sponsorTimes = [];
 
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
@@ -188,6 +212,8 @@ function clearTimes() {
 
   //hide submission section
   document.getElementById("submissionSection").style.display = "none";
+
+  resetStartTimeChosen();
 }
 
 function submitTimes() {
@@ -216,10 +242,87 @@ function showNoticeAgain() {
   document.getElementById("showNoticeAgain").style.display = "none";
 }
 
+function hideVideoPlayerControls() {
+  chrome.storage.local.set({"hideVideoPlayerControls": true});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "changeVideoPlayerControlsVisibility",
+      value: true
+    });
+  });
+
+  document.getElementById("hideVideoPlayerControls").style.display = "none";
+  document.getElementById("showVideoPlayerControls").style.display = "unset";
+}
+
+function showVideoPlayerControls() {
+  chrome.storage.local.set({"hideVideoPlayerControls": false});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "changeVideoPlayerControlsVisibility",
+      value: false
+    });
+  });
+
+  document.getElementById("hideVideoPlayerControls").style.display = "unset";
+  document.getElementById("showVideoPlayerControls").style.display = "none";
+}
+
+function updateStartTimeChosen() {
+  //update startTimeChosen variable
+  if (!startTimeChosen) {
+    startTimeChosen = true;
+  document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends Now";
+  } else {
+    resetStartTimeChosen();
+  }
+}
+
+//set it to false
+function resetStartTimeChosen() {
+  startTimeChosen = false;
+  document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
+}
+
+function showSubmitTimesIfNecessary() {
+  //check if an end time has been specified for the latest sponsor time
+  if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length > 1) {
+    //show submit times button
+    document.getElementById("submitTimes").style.display = "unset";
+  } else {
+    document.getElementById("submitTimes").style.display = "none";
+  }
+}
+
+//make the options div visisble
+function openOptions() {
+  document.getElementById("optionsButtonContainer").style.display = "none";
+  document.getElementById("options").style.display = "unset";
+}
+
+//this is not a YouTube video page
+function displayNoVideo() {
+  document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
+      "If you know this is a YouTube tab, close this popup and open it again.";
+}
+
 //converts time in seconds to minutes:seconds
 function getFormattedTime(seconds) {
   let minutes = Math.floor(seconds / 60);
   let secondsDisplay = Math.round(seconds - minutes * 60);
+  if (secondsDisplay < 10) {
+    //add a zero
+    secondsDisplay = "0" + secondsDisplay;
+  }
+
   let formatted = minutes+ ":" + secondsDisplay;
 
   return formatted;

@@ -10,8 +10,18 @@
       "js": [
         "content-config.js",
         "content.js"
+      ],
+      "css": [
+        "content.css",
+        "./libs/Source+Sans+Pro.css"
       ]
     }
+  ],
+  "web_accessible_resources": [
+    "icons/LogoSponsorBlocker256px.png",
+    "icons/IconSponsorBlocker256px.png",
+    "icons/PlayerStartIconSponsorBlocker256px.png",
+    "icons/PlayerStopIconSponsorBlocker256px.png"
   ],
   "permissions": [
     "tabs",
@@ -24,6 +34,13 @@
   }, 
   "background": {
     "scripts":["background.js"]
+  },
+  "icons": {
+    "16": "icons/IconSponsorBlocker16px.png",
+    "32": "icons/IconSponsorBlocker32px.png",
+    "64": "icons/LogoSponsorBlocker64px.png",
+    "128": "icons/LogoSponsorBlocker128px.png",
+    "256": "icons/LogoSponsorBlocker256px.png"
   },
   "manifest_version": 2
 }

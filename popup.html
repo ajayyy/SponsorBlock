@@ -1,11 +1,14 @@
 <html>
   <head>
     <title>Set Page Color Popup</title>
+    <link rel="stylesheet" type="text/css" href="/libs/Source+Sans+Pro.css"/>
     <link rel="stylesheet" type="text/css" href="popup.css"/>
   </head>
 
   <center>
     <div id="app">
+        <img src="icons/LogoSponsorBlocker256px.png" height="64px"/>
+
         <h1>SponsorBlock</h1>
 
         <!-- Loading text -->
@@ -13,46 +16,62 @@
 
         <!-- Hidden until loading complete -->
         <div id="mainControls" class="main" style="display: none">
-            <!-- If the video was found in the database -->
-            <div id="videoFound">
-      
-            </div>
+          <!-- If the video was found in the database -->
+          <div id="videoFound">
+              
+          </div>
 
-            <div id="downloadedSponsorMessageTimes">
+          <div id="downloadedSponsorMessageTimes">
+
+          </div>
+          
+          <h2>Record the times of a sponsorship</h2>
+
+          <p> 
+            Click the button below when the sponsorship starts and ends to record and 
+            submit it to the database.
+          </p>
+  
+          <div>
+            <button id="sponsorStart" class="greenButton">Sponsorship Starts Now</button>
+          </div>
+    
+          <div id="submissionSection" style="display: none">
+            <h3>Latest Sponsor Message Times Chosen</h3>
+            <b>
+              <div id="sponsorMessageTimes">
       
-            </div>
+              </div>
+            </b>
+    
+            <button id="clearTimes" class="smallButton">Clear Times</button>
     
             <br/>
-
-            <h2>Record the times of a sponsorship</h2>
-
-            <p> 
-              Click the button below when the sponsorship starts and ends to record and 
-              submit it to the database.
-            </p>
+            <br/>
     
-            <div>
-              <button id="sponsorStart">Sponsorship Starts Now</button>
-            </div>
-      
-            <div id="submissionSection" style="display: none">
-              <h3>Latest Sponsor Message Times Chosen</h3>
-              <b>
-                <div id="sponsorMessageTimes">
-        
-                </div>
-              </b>
-      
-              <button id="clearTimes">Clear Times</button>
-      
+            <button id="submitTimes" style="display: none" class="smallButton">Submit Times</button>
+          </div>
+
+          <div id="optionsButtonContainer">
               <br/>
-      
-              <button id="submitTimes">Submit Times</button>
-            </div>
+              <br/>
+    
+              <button id="optionsButton" class="dangerButton">Options</button>
+          </div>
 
-            <br/>
-      
-            <button id="showNoticeAgain" style="display: none">Show Notice Again</button>
+          <div id="options" style="display: none">
+              <br/>
+
+              <h3>Options</h3>
+    
+              <button id="hideVideoPlayerControls" class="warningButton">Hide Button On YouTube Player</button>
+              <button id="showVideoPlayerControls" style="display: none" class="warningButton">Show Button On YouTube Player</button>
+    
+              <br/>
+              <br/>
+        
+              <button id="showNoticeAgain" style="display: none" class="dangerButton">Show Notice Again</button>
+          </div>
         </div>
       </div>
   </center>

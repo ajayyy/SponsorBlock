@@ -1,0 +1,85 @@
+.sponsorSkipObject {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#sponsorSkipLogo {
+	height: 64px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	margin-left: 10px;
+}
+
+#sponsorSkipNotice {
+    min-height: 125px;
+    min-width: 400px;
+    background-color: rgba(255, 217, 217, 0.8);
+    position: absolute;
+	z-index: 1;
+	border: 3px solid rgba(0, 0, 0, 0.8);
+}
+
+#sponsorSkipMessage {
+    font-size: 18px;
+    color: #000000;
+    text-align: center;
+    margin-top: 10px;
+	font-weight: bold;
+}
+
+#sponsorSkipInfo {
+	font-size: 10px;
+    color: #000000;
+    text-align: center;
+}
+
+.sponsorSkipButton {
+	background-color:#ec1c1c;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #d31919;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:14px;
+	padding:4px 15px;
+	text-decoration:none;
+    text-shadow:0px 0px 0px #662727;
+    
+    margin-top: 5px;
+    margin-right: 15px;
+}
+.sponsorSkipButton:hover {
+	background-color:#bf2a2a;
+}
+.sponsorSkipButton:active {
+	position:relative;
+	top:1px;
+}
+
+.sponsorSkipDontShowButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background-color:#d0451b;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+}
+.sponsorSkipDontShowButton:hover {
+	background-color:#bc3315;
+}
+.sponsorSkipDontShowButton:active {
+	position:relative;
+	top:1px;
+}
