@@ -166,6 +166,11 @@ function goBackToPreviousTime() {
 
 //Adds a sponsorship starts button to the player controls
 function addPlayerControlsButton() {
+  if (document.getElementById("startSponsorButton") != null) {
+    //it's already added
+    return;
+  }
+
   let startSponsorButton = document.createElement("button");
   startSponsorButton.id = "startSponsorButton";
   startSponsorButton.className = "ytp-button";
