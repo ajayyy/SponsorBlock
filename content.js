@@ -11,8 +11,9 @@ if(id = getYouTubeVideoID(document.URL)){ // Direct Links
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 
-//the actual sponsorTimes if loaded
+//the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = undefined;
+var UUIDs = undefined;
 
 //the video
 var v;
@@ -23,6 +24,8 @@ var lastTime;
 //the last time in the video a sponsor was skipped
 //used for the go back button
 var lastSponsorTimeSkipped = null;
+//used for ratings
+var lastSponsorTimeSkippedUUID = null;
 
 //if showing the start sponsor button or the end sponsor button on the player
 var showingStartSponsor = true;
@@ -121,6 +124,7 @@ function sponsorsLookup(id) {
           sponsorDataFound = true;
 
           sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
+          UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
 
           // If the sponsor data exists, add the event to run on the videos "ontimeupdate"
           v.ontimeupdate = function () { 
@@ -135,15 +139,16 @@ function sponsorsLookup(id) {
 
 function sponsorCheck(sponsorTimes) { // Video skipping
     //see if any sponsor start time was just passed
-    sponsorTimes.forEach(function (sponsorTime, index) { // Foreach Sponsor in video
+    for (let i = 0; i < sponsorTimes.length; i++) {
         //the sponsor time is in between these times, skip it
         //if the time difference is more than 1 second, than the there was probably a skip in time, 
         //  and it's not due to playback
-        if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTime[0] >= lastTime && sponsorTime[0] <= v.currentTime) {
+        if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime) {
           //skip it
-          v.currentTime = sponsorTime[1];
+          v.currentTime = sponsorTimes[i][1];
 
-          lastSponsorTimeSkipped = sponsorTime[0];
+          lastSponsorTimeSkipped = sponsorTimes[i][0];
+          lastSponsorTimeSkippedUUID = UUIDs[i]; 
 
           //send out the message saying that a sponsor message was skipped
           openSkipNotice();
@@ -152,7 +157,7 @@ function sponsorCheck(sponsorTimes) { // Video skipping
         }
 
         lastTime = v.currentTime;
-    });
+    }
 }
 
 function goBackToPreviousTime() {
