@@ -41,6 +41,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
     //this allows the callback to be called later
     return true;
+  } else if (request.message == "submitVote") {
+    submitVote(request.type, request.UUID)
   }
 });
 
@@ -77,6 +79,19 @@ function addSponsorTime(time) {
     let sponsorTimeKey = "sponsorTimes" + previousVideoID;
     chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
   });
+}
+
+function submitVote(type, UUID) {
+  let xmlhttp = new XMLHttpRequest();
+
+  getUserID(function(userID) {
+    //publish this vote
+    console.log(serverAddress + "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type);
+    xmlhttp.open('GET', serverAddress + "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, true);
+
+    //submit this vote
+    xmlhttp.send();
+  })
 }
 
 function submitTimes(videoID) {
@@ -130,6 +145,7 @@ function videoIDChange(currentVideoID) {
 function getUserID(callback) {
   if (userID != null) {
     callback(userID);
+    return;
   }
 
   //if it is not cached yet, grab it from storage

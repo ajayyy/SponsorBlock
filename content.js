@@ -264,10 +264,12 @@ function openSkipNotice(){
   let upvoteButton = document.createElement("img");
   upvoteButton.className = "sponsorSkipObject voteButton";
   upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
+  upvoteButton.addEventListener("click", upvote);
 
   let downvoteButton = document.createElement("img");
   downvoteButton.className = "sponsorSkipObject voteButton";
   downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
+  downvoteButton.addEventListener("click", downvote);
 
   //add thumbs up and down buttons to the container
   voteButtonsContainer.appendChild(upvoteButton);
@@ -309,6 +311,22 @@ function openSkipNotice(){
     referenceNode = document.getElementById("watch-header");
   }
   referenceNode.prepend(noticeElement);
+}
+
+function upvote() {
+  vote(1);
+}
+
+function downvote() {
+  vote(0);
+}
+
+function vote(type) {
+  chrome.runtime.sendMessage({
+    message: "submitVote",
+    type: type,
+    UUID: lastSponsorTimeSkippedUUID
+  });
 }
 
 //Closes the notice that tells the user that a sponsor was just skipped
