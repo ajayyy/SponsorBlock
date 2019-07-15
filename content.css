@@ -12,12 +12,13 @@
 }
 
 #sponsorSkipNotice {
-    min-height: 125px;
+    min-height: 165px;
     min-width: 400px;
     background-color: rgba(255, 217, 217, 0.8);
     position: absolute;
 	z-index: 1;
 	border: 3px solid rgba(0, 0, 0, 0.8);
+	margin-top: -50px;
 }
 
 #sponsorSkipMessage {
@@ -26,12 +27,23 @@
     text-align: center;
     margin-top: 10px;
 	font-weight: bold;
+	margin-top: 4px;
 }
 
 #sponsorSkipInfo {
 	font-size: 10px;
     color: #000000;
-    text-align: center;
+	text-align: center;
+	margin-top: 0px;
+}
+
+.voteButton {
+	height: 32px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.voteButton:hover {
+	filter: brightness(80%);
 }
 
 .sponsorSkipButton {
@@ -54,6 +66,12 @@
 .sponsorSkipButton:hover {
 	background-color:#bf2a2a;
 }
+
+.sponsorSkipButton:focus {
+	outline: none;
+	background-color:#bf2a2a;
+}
+
 .sponsorSkipButton:active {
 	position:relative;
 	top:1px;
@@ -79,6 +97,12 @@
 .sponsorSkipDontShowButton:hover {
 	background-color:#bc3315;
 }
+
+.sponsorSkipDontShowButton:focus {
+	outline: none;
+	background-color:#bc3315;
+}
+
 .sponsorSkipDontShowButton:active {
 	position:relative;
 	top:1px;

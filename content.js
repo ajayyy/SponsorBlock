@@ -250,26 +250,39 @@ function openSkipNotice(){
   let noticeInfo = document.createElement("p");
   noticeInfo.id = "sponsorSkipInfo";
   noticeInfo.className = "sponsorSkipObject";
-	noticeInfo.innerText = "This message will disapear in 7 seconds";
+  noticeInfo.innerText = "This message will disapear in 7 seconds";
+  
+  //thumbs up and down buttons
+  let voteButtonsContainer = document.createElement("div");
+  voteButtonsContainer.setAttribute("align", "center");
+
+  let upvoteButton = document.createElement("img");
+  upvoteButton.className = "sponsorSkipObject voteButton";
+  upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
+
+  let downvoteButton = document.createElement("img");
+  downvoteButton.className = "sponsorSkipObject voteButton";
+  downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
+
+  //add thumbs up and down buttons to the container
+  voteButtonsContainer.appendChild(upvoteButton);
+  voteButtonsContainer.appendChild(downvoteButton);
 
   let buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("align", "center");
 
   let goBackButton = document.createElement("button");
   goBackButton.innerText = "Go back";
-  goBackButton.className = "sponsorSkipObject";
   goBackButton.className = "sponsorSkipButton";
   goBackButton.addEventListener("click", goBackToPreviousTime);
 
   let hideButton = document.createElement("button");
   hideButton.innerText = "Dismiss";
-  hideButton.className = "sponsorSkipObject";
   hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", closeSkipNotice);
 
   let dontShowAgainButton = document.createElement("button");
   dontShowAgainButton.innerText = "Don't Show This Again";
-  dontShowAgainButton.className = "sponsorSkipObject";
   dontShowAgainButton.className = "sponsorSkipDontShowButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
@@ -282,6 +295,7 @@ function openSkipNotice(){
   noticeElement.appendChild(logoElement);
   noticeElement.appendChild(noticeMessage);
   noticeElement.appendChild(noticeInfo);
+  noticeElement.appendChild(voteButtonsContainer);
   noticeElement.appendChild(buttonContainer);
 
   let referenceNode = document.getElementById("info");
