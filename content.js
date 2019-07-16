@@ -259,14 +259,17 @@ function openSkipNotice(){
   
   //thumbs up and down buttons
   let voteButtonsContainer = document.createElement("div");
+  voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer";
   voteButtonsContainer.setAttribute("align", "center");
 
   let upvoteButton = document.createElement("img");
+  upvoteButton.id = "sponsorTimesUpvoteButtonsContainer"
   upvoteButton.className = "sponsorSkipObject voteButton";
   upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
   upvoteButton.addEventListener("click", upvote);
 
   let downvoteButton = document.createElement("img");
+  downvoteButton.id = "sponsorTimesDownvoteButtonsContainer"
   downvoteButton.className = "sponsorSkipObject voteButton";
   downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
   downvoteButton.addEventListener("click", downvote);
@@ -315,10 +318,31 @@ function openSkipNotice(){
 
 function upvote() {
   vote(1);
+
+  closeSkipNotice();
 }
 
 function downvote() {
   vote(0);
+
+  //change text to say thanks for voting
+  //remove buttons
+  document.getElementById("sponsorTimesVoteButtonsContainer").removeChild(document.getElementById("sponsorTimesUpvoteButtonsContainer"));
+  document.getElementById("sponsorTimesVoteButtonsContainer").removeChild(document.getElementById("sponsorTimesDownvoteButtonsContainer"));
+
+  //add thanks for voting text
+  let thanksForVotingText = document.createElement("p");
+  thanksForVotingText.id = "sponsorTimesThanksForVotingText";
+  thanksForVotingText.innerText = "Thanks for voting!"
+
+  //add extra info for voting
+  let thanksForVotingInfoText = document.createElement("p");
+  thanksForVotingInfoText.id = "sponsorTimesThanksForVotingInfoText";
+  thanksForVotingInfoText.innerText = "Hit go back to get to where you came from."
+
+  //add element to div
+  document.getElementById("sponsorTimesVoteButtonsContainer").appendChild(thanksForVotingText);
+  document.getElementById("sponsorTimesVoteButtonsContainer").appendChild(thanksForVotingInfoText);
 }
 
 function vote(type) {

@@ -37,6 +37,20 @@
 	margin-top: 0px;
 }
 
+#sponsorTimesThanksForVotingText {
+	font-size: 20px;
+	font-weight: bold;
+    color: #000000;
+	text-align: center;
+}
+
+#sponsorTimesThanksForVotingInfoText {
+	font-size: 12px;
+	font-weight: bold;
+    color: #000000;
+	text-align: center;
+}
+
 .voteButton {
 	height: 32px;
 	margin-right: 15px;
