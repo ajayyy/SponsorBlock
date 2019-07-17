@@ -11,8 +11,9 @@ if(id = getYouTubeVideoID(document.URL)){ // Direct Links
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 
-//the actual sponsorTimes if loaded
+//the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = undefined;
+var UUIDs = undefined;
 
 //the video
 var v;
@@ -23,6 +24,8 @@ var lastTime;
 //the last time in the video a sponsor was skipped
 //used for the go back button
 var lastSponsorTimeSkipped = null;
+//used for ratings
+var lastSponsorTimeSkippedUUID = null;
 
 //if showing the start sponsor button or the end sponsor button on the player
 var showingStartSponsor = true;
@@ -114,13 +117,14 @@ function sponsorsLookup(id) {
     let xmlhttp = new XMLHttpRequest();
     
     //check database for sponsor times
-    xmlhttp.open('GET', serverAddresss + "/api/getVideoSponsorTimes?videoID=" + id, true);
+    xmlhttp.open('GET', serverAddress + "/api/getVideoSponsorTimes?videoID=" + id, true);
 
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
           sponsorDataFound = true;
 
           sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
+          UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
 
           // If the sponsor data exists, add the event to run on the videos "ontimeupdate"
           v.ontimeupdate = function () { 
@@ -135,15 +139,16 @@ function sponsorsLookup(id) {
 
 function sponsorCheck(sponsorTimes) { // Video skipping
     //see if any sponsor start time was just passed
-    sponsorTimes.forEach(function (sponsorTime, index) { // Foreach Sponsor in video
+    for (let i = 0; i < sponsorTimes.length; i++) {
         //the sponsor time is in between these times, skip it
         //if the time difference is more than 1 second, than the there was probably a skip in time, 
         //  and it's not due to playback
-        if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTime[0] >= lastTime && sponsorTime[0] <= v.currentTime) {
+        if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime) {
           //skip it
-          v.currentTime = sponsorTime[1];
+          v.currentTime = sponsorTimes[i][1];
 
-          lastSponsorTimeSkipped = sponsorTime[0];
+          lastSponsorTimeSkipped = sponsorTimes[i][0];
+          lastSponsorTimeSkippedUUID = UUIDs[i]; 
 
           //send out the message saying that a sponsor message was skipped
           openSkipNotice();
@@ -152,7 +157,7 @@ function sponsorCheck(sponsorTimes) { // Video skipping
         }
 
         lastTime = v.currentTime;
-    });
+    }
 }
 
 function goBackToPreviousTime() {
@@ -166,6 +171,11 @@ function goBackToPreviousTime() {
 
 //Adds a sponsorship starts button to the player controls
 function addPlayerControlsButton() {
+  if (document.getElementById("startSponsorButton") != null) {
+    //it's already added
+    return;
+  }
+
   let startSponsorButton = document.createElement("button");
   startSponsorButton.id = "startSponsorButton";
   startSponsorButton.className = "ytp-button";
@@ -245,26 +255,44 @@ function openSkipNotice(){
   let noticeInfo = document.createElement("p");
   noticeInfo.id = "sponsorSkipInfo";
   noticeInfo.className = "sponsorSkipObject";
-	noticeInfo.innerText = "This message will disapear in 7 seconds";
+  noticeInfo.innerText = "This message will disapear in 7 seconds";
+  
+  //thumbs up and down buttons
+  let voteButtonsContainer = document.createElement("div");
+  voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer";
+  voteButtonsContainer.setAttribute("align", "center");
+
+  let upvoteButton = document.createElement("img");
+  upvoteButton.id = "sponsorTimesUpvoteButtonsContainer"
+  upvoteButton.className = "sponsorSkipObject voteButton";
+  upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
+  upvoteButton.addEventListener("click", upvote);
+
+  let downvoteButton = document.createElement("img");
+  downvoteButton.id = "sponsorTimesDownvoteButtonsContainer"
+  downvoteButton.className = "sponsorSkipObject voteButton";
+  downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
+  downvoteButton.addEventListener("click", downvote);
+
+  //add thumbs up and down buttons to the container
+  voteButtonsContainer.appendChild(upvoteButton);
+  voteButtonsContainer.appendChild(downvoteButton);
 
   let buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("align", "center");
 
   let goBackButton = document.createElement("button");
   goBackButton.innerText = "Go back";
-  goBackButton.className = "sponsorSkipObject";
   goBackButton.className = "sponsorSkipButton";
   goBackButton.addEventListener("click", goBackToPreviousTime);
 
   let hideButton = document.createElement("button");
   hideButton.innerText = "Dismiss";
-  hideButton.className = "sponsorSkipObject";
   hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", closeSkipNotice);
 
   let dontShowAgainButton = document.createElement("button");
   dontShowAgainButton.innerText = "Don't Show This Again";
-  dontShowAgainButton.className = "sponsorSkipObject";
   dontShowAgainButton.className = "sponsorSkipDontShowButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
@@ -277,6 +305,7 @@ function openSkipNotice(){
   noticeElement.appendChild(logoElement);
   noticeElement.appendChild(noticeMessage);
   noticeElement.appendChild(noticeInfo);
+  noticeElement.appendChild(voteButtonsContainer);
   noticeElement.appendChild(buttonContainer);
 
   let referenceNode = document.getElementById("info");
@@ -285,6 +314,43 @@ function openSkipNotice(){
     referenceNode = document.getElementById("watch-header");
   }
   referenceNode.prepend(noticeElement);
+}
+
+function upvote() {
+  vote(1);
+
+  closeSkipNotice();
+}
+
+function downvote() {
+  vote(0);
+
+  //change text to say thanks for voting
+  //remove buttons
+  document.getElementById("sponsorTimesVoteButtonsContainer").removeChild(document.getElementById("sponsorTimesUpvoteButtonsContainer"));
+  document.getElementById("sponsorTimesVoteButtonsContainer").removeChild(document.getElementById("sponsorTimesDownvoteButtonsContainer"));
+
+  //add thanks for voting text
+  let thanksForVotingText = document.createElement("p");
+  thanksForVotingText.id = "sponsorTimesThanksForVotingText";
+  thanksForVotingText.innerText = "Thanks for voting!"
+
+  //add extra info for voting
+  let thanksForVotingInfoText = document.createElement("p");
+  thanksForVotingInfoText.id = "sponsorTimesThanksForVotingInfoText";
+  thanksForVotingInfoText.innerText = "Hit go back to get to where you came from."
+
+  //add element to div
+  document.getElementById("sponsorTimesVoteButtonsContainer").appendChild(thanksForVotingText);
+  document.getElementById("sponsorTimesVoteButtonsContainer").appendChild(thanksForVotingInfoText);
+}
+
+function vote(type) {
+  chrome.runtime.sendMessage({
+    message: "submitVote",
+    type: type,
+    UUID: lastSponsorTimeSkippedUUID
+  });
 }
 
 //Closes the notice that tells the user that a sponsor was just skipped

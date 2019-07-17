@@ -29,6 +29,10 @@ body {
 .greenButton:hover {
   background-color:#bf2a2a;
 }
+.greenButton:focus {
+	outline: none;
+	background-color:#bf2a2a;
+}
 .greenButton:active {
   position:relative;
   top:1px;
@@ -52,6 +56,10 @@ body {
 	text-shadow:0px 1px 0px #854629;
 }
 .dangerButton:hover {
+	background-color:#bc3315;
+}
+.dangerButton:focus {
+	outline: none;
 	background-color:#bc3315;
 }
 .dangerButton:active {
@@ -79,6 +87,10 @@ body {
 .warningButton:hover {
 	background-color:#bc8215;
 }
+.warningButton:focus {
+	outline: none;
+	background-color:#bc8215;
+}
 .warningButton:active {
 	position:relative;
 	top:1px;
@@ -98,6 +110,10 @@ body {
 	text-decoration:none;
 }
 .smallButton:hover {
+	background-color:#fa9806;
+}
+.smallButton:focus {
+	outline: none;
 	background-color:#fa9806;
 }
 .smallButton:active {

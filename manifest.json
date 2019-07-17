@@ -8,7 +8,7 @@
         "https://*.youtube.com/*"
       ],
       "js": [
-        "content-config.js",
+        "config.js",
         "content.js"
       ],
       "css": [
@@ -21,7 +21,9 @@
     "icons/LogoSponsorBlocker256px.png",
     "icons/IconSponsorBlocker256px.png",
     "icons/PlayerStartIconSponsorBlocker256px.png",
-    "icons/PlayerStopIconSponsorBlocker256px.png"
+    "icons/PlayerStopIconSponsorBlocker256px.png",
+    "icons/upvote.png",
+    "icons/downvote.png"
   ],
   "permissions": [
     "tabs",
@@ -33,7 +35,10 @@
     "default_popup": "popup.html"
   }, 
   "background": {
-    "scripts":["background.js"]
+    "scripts":[
+      "config.js",
+      "background.js"
+    ]
   },
   "icons": {
     "16": "icons/IconSponsorBlocker16px.png",

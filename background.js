@@ -41,6 +41,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
     //this allows the callback to be called later
     return true;
+  } else if (request.message == "submitVote") {
+    submitVote(request.type, request.UUID)
   }
 });
 
@@ -79,6 +81,19 @@ function addSponsorTime(time) {
   });
 }
 
+function submitVote(type, UUID) {
+  let xmlhttp = new XMLHttpRequest();
+
+  getUserID(function(userID) {
+    //publish this vote
+    console.log(serverAddress + "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type);
+    xmlhttp.open('GET', serverAddress + "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, true);
+
+    //submit this vote
+    xmlhttp.send();
+  })
+}
+
 function submitTimes(videoID) {
   //get the video times from storage
   let sponsorTimeKey = 'sponsorTimes' + videoID;
@@ -92,7 +107,7 @@ function submitTimes(videoID) {
 
         let userIDStorage = getUserID(function(userIDStorage) {
           //submit the sponsorTime
-          xmlhttp.open('GET', 'http://localhost/api/postVideoSponsorTimes?videoID=' + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+          xmlhttp.open('GET', serverAddress + "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
           + "&userID=" + userIDStorage, true);
           xmlhttp.send();
         });
@@ -130,6 +145,7 @@ function videoIDChange(currentVideoID) {
 function getUserID(callback) {
   if (userID != null) {
     callback(userID);
+    return;
   }
 
   //if it is not cached yet, grab it from storage
