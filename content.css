@@ -2,7 +2,7 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-#sponsorSkipLogo {
+.sponsorSkipLogo {
 	height: 64px;
 	position: absolute;
 	top: 0;
@@ -11,7 +11,12 @@
 	margin-left: 10px;
 }
 
-#sponsorSkipNotice {
+@keyframes fadeIn {
+	from { opacity: 0; }
+	  to { opacity: 1; }
+}
+
+.sponsorSkipNotice {
     min-height: 165px;
     min-width: 400px;
     background-color: rgba(255, 217, 217, 0.8);
@@ -19,9 +24,18 @@
 	z-index: 1;
 	border: 3px solid rgba(0, 0, 0, 0.8);
 	margin-top: -50px;
+
+	animation: fadeIn 0.5s;
 }
 
-#sponsorSkipMessage {
+/* if two are very close to eachother */
+.secondSkipNotice {
+	margin-left: 500px;
+
+  	transition: margin-left 0.2s;
+}
+
+.sponsorSkipMessage {
     font-size: 18px;
     color: #000000;
     text-align: center;
@@ -30,7 +44,7 @@
 	margin-top: 4px;
 }
 
-#sponsorSkipInfo {
+.sponsorSkipInfo {
 	font-size: 10px;
     color: #000000;
 	text-align: center;
