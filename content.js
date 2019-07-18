@@ -59,7 +59,8 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
       //send the sponsor times along with if it's found
       sendResponse({
         found: sponsorDataFound,
-        sponsorTimes: sponsorTimes
+        sponsorTimes: sponsorTimes,
+        UUIDs: UUIDs
       })
     }
 

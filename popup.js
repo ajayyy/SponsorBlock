@@ -6,6 +6,7 @@ document.getElementById("showNoticeAgain").addEventListener("click", showNoticeA
 document.getElementById("hideVideoPlayerControls").addEventListener("click", hideVideoPlayerControls);
 document.getElementById("showVideoPlayerControls").addEventListener("click", showVideoPlayerControls);
 document.getElementById("optionsButton").addEventListener("click", openOptions);
+document.getElementById("reportAnIssue").addEventListener("click", reportAnIssue);
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -164,6 +165,56 @@ function displayDownloadedSponsorTimes(request) {
   if (request.sponsorTimes != undefined) {
     //set it to the message
     document.getElementById("downloadedSponsorMessageTimes").innerHTML = getSponsorTimesMessage(request.sponsorTimes);
+
+    //add them as buttons to the issue reporting container
+    let container = document.getElementById("issueReporterTimeButtons");
+    for (let i = 0; i < request.sponsorTimes.length; i++) {
+      let sponsorTimeButton = document.createElement("button");
+      sponsorTimeButton.className = "warningButton";
+      sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i][0]) + " to " + getFormattedTime(request.sponsorTimes[i][1]);
+      
+      let votingButtons = document.createElement("div");
+
+      let UUID = request.UUIDs[i];
+
+      //thumbs up and down buttons
+      let voteButtonsContainer = document.createElement("div");
+      voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
+      voteButtonsContainer.setAttribute("align", "center");
+      voteButtonsContainer.style.display = "none"
+
+      let upvoteButton = document.createElement("img");
+      upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
+      upvoteButton.className = "voteButton";
+      upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
+      upvoteButton.addEventListener("click", () => vote(1, UUID));
+
+      let downvoteButton = document.createElement("img");
+      downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
+      downvoteButton.className = "voteButton";
+      downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
+      downvoteButton.addEventListener("click", () => vote(0, UUID));
+
+      //add thumbs up and down buttons to the container
+      voteButtonsContainer.appendChild(document.createElement("br"));
+      voteButtonsContainer.appendChild(document.createElement("br"));
+      voteButtonsContainer.appendChild(upvoteButton);
+      voteButtonsContainer.appendChild(downvoteButton);
+
+      //add click listener to open up vote panel
+      sponsorTimeButton.addEventListener("click", function() {
+        voteButtonsContainer.style.display = "unset";
+      });
+
+      container.appendChild(sponsorTimeButton);
+      container.appendChild(voteButtonsContainer);
+
+      //if it is not the last iteration
+      if (i != request.sponsorTimes.length - 1) {
+        container.appendChild(document.createElement("br"));
+        container.appendChild(document.createElement("br"));
+      }
+    }
   }
 }
 
@@ -312,6 +363,33 @@ function openOptions() {
 function displayNoVideo() {
   document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
       "If you know this is a YouTube tab, close this popup and open it again.";
+}
+
+function reportAnIssue() {
+  document.getElementById("issueReporterContainer").style.display = "unset";
+  document.getElementById("reportAnIssue").style.display = "none";
+}
+
+function vote(type, UUID) {
+  let container = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
+  //remove all children
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+
+  let thanksForVotingText = document.createElement("h2");
+  thanksForVotingText.innerText = "Thanks for voting!";
+  //there are already breaks there
+  thanksForVotingText.style.marginBottom = "0px";
+
+  container.appendChild(thanksForVotingText);
+
+  //send the vote message to the tab
+  chrome.runtime.sendMessage({
+    message: "submitVote",
+    type: type,
+    UUID: UUID
+  });
 }
 
 //converts time in seconds to minutes:seconds
