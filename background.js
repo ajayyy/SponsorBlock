@@ -87,7 +87,7 @@ function addSponsorTime(time) {
 function submitVote(type, UUID, callback) {
   getUserID(function(userID) {
     //publish this vote
-    sendRequestToUser('GET', "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+    sendRequestToServer('GET', "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         callback({
           successType: 1
@@ -116,13 +116,10 @@ function submitTimes(videoID) {
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
       //submit these times
       for (let i = 0; i < sponsorTimes.length; i++) {
-        let xmlhttp = new XMLHttpRequest();
-
-        let userIDStorage = getUserID(function(userIDStorage) {
+        getUserID(function(userIDStorage) {
           //submit the sponsorTime
-          xmlhttp.open('GET', serverAddress + "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
-          + "&userID=" + userIDStorage, true);
-          xmlhttp.send();
+          sendRequestToServer('GET', "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+          + "&userID=" + userIDStorage);
         });
       }
     }
@@ -179,18 +176,20 @@ function getUserID(callback) {
   });
 }
 
-function sendRequestToUser(type, address, callback) {
+function sendRequestToServer(type, address, callback) {
   let xmlhttp = new XMLHttpRequest();
 
   xmlhttp.open(type, serverAddress + address, true);
 
-  xmlhttp.onreadystatechange = function () {
-    callback(xmlhttp, false);
-  };
-
-  xmlhttp.onerror = function(ev) {
-    callback(xmlhttp, true);
-  };
+  if (callback != undefined) {
+    xmlhttp.onreadystatechange = function () {
+      callback(xmlhttp, false);
+    };
+  
+    xmlhttp.onerror = function(ev) {
+      callback(xmlhttp, true);
+    };
+  }
 
   //submit this request
   xmlhttp.send();
