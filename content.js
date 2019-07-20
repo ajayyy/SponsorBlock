@@ -286,13 +286,13 @@ function openSkipNotice(){
   upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + lastSponsorTimeSkippedUUID;
   upvoteButton.className = "sponsorSkipObject voteButton";
   upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
-  upvoteButton.addEventListener("click", () => upvote(UUID));
+  upvoteButton.addEventListener("click", () => vote(1, UUID));
 
   let downvoteButton = document.createElement("img");
   downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + lastSponsorTimeSkippedUUID;
   downvoteButton.className = "sponsorSkipObject voteButton";
   downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
-  downvoteButton.addEventListener("click", () => downvote(UUID));
+  downvoteButton.addEventListener("click", () => vote(0, UUID));
 
   //add thumbs up and down buttons to the container
   voteButtonsContainer.appendChild(upvoteButton);
@@ -336,15 +336,7 @@ function openSkipNotice(){
   referenceNode.prepend(noticeElement);
 }
 
-function upvote(UUID) {
-  vote(1, UUID);
-
-  closeSkipNotice(UUID);
-}
-
-function downvote(UUID) {
-  vote(0, UUID);
-
+function afterDownvote(UUID) {
   //change text to say thanks for voting
   //remove buttons
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID));
@@ -365,11 +357,41 @@ function downvote(UUID) {
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingInfoText);
 }
 
+function votingError(message, UUID) {
+  //change text to say thanks for voting
+  //remove buttons
+  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID));
+  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID));
+
+  //add thanks for voting text
+  let thanksForVotingText = document.createElement("p");
+  thanksForVotingText.id = "sponsorTimesErrorMessage";
+  thanksForVotingText.innerText = message;
+
+  //add element to div
+  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
+}
+
 function vote(type, UUID) {
   chrome.runtime.sendMessage({
     message: "submitVote",
     type: type,
     UUID: UUID
+  }, function(response) {
+    if (response != undefined) {
+      //see if it was a success or failure
+      if (response.successType == 1) {
+        //success
+        if (type == 0) {
+          afterDownvote(UUID);
+        } else if (type == 1) {
+          closeSkipNotice(UUID);
+        }
+      } else if (response.successType == 0) {
+        //failure: duplicate vote
+        votingError("It seems you've already voted before", UUID)
+      }
+    }
   });
 }
 

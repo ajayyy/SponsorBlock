@@ -58,6 +58,13 @@
 	text-align: center;
 }
 
+#sponsorTimesErrorMessage {
+	font-size: 15px;
+	font-weight: bold;
+    color: #000000;
+	text-align: center;
+}
+
 #sponsorTimesThanksForVotingInfoText {
 	font-size: 12px;
 	font-weight: bold;
