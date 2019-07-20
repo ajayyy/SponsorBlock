@@ -339,8 +339,20 @@ function openSkipNotice(){
 function afterDownvote(UUID) {
   //change text to say thanks for voting
   //remove buttons
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID));
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID));
+  let upvoteButton = document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID);
+  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
+  if (upvoteButton != null) {
+    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(upvoteButton);
+  }
+  if (downvoteButton != null) {
+    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(downvoteButton);
+  }
+
+  let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
+  if (previousInfoMessage != null) {
+    //remove it
+    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(previousInfoMessage);
+  }
 
   //add thanks for voting text
   let thanksForVotingText = document.createElement("p");
@@ -357,15 +369,28 @@ function afterDownvote(UUID) {
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingInfoText);
 }
 
-function votingError(message, UUID) {
-  //change text to say thanks for voting
+function addLoadingInfo(message, UUID) {
+  //change text to say thanks for message
   //remove buttons
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID));
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID));
+  let upvoteButton = document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID);
+  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
+  if (upvoteButton != null) {
+    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(upvoteButton);
+  }
+  if (downvoteButton != null) {
+    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(downvoteButton);
+  }
+
+  let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
+  if (previousInfoMessage != null) {
+    //remove it
+    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(previousInfoMessage);
+  }
 
   //add thanks for voting text
   let thanksForVotingText = document.createElement("p");
-  thanksForVotingText.id = "sponsorTimesErrorMessage";
+  thanksForVotingText.id = "sponsorTimesInfoMessage" + UUID;
+  thanksForVotingText.className = "sponsorTimesInfoMessage";
   thanksForVotingText.innerText = message;
 
   //add element to div
@@ -373,6 +398,9 @@ function votingError(message, UUID) {
 }
 
 function vote(type, UUID) {
+  //add loading info
+  addLoadingInfo("Loading...", UUID)
+
   chrome.runtime.sendMessage({
     message: "submitVote",
     type: type,
@@ -389,10 +417,10 @@ function vote(type, UUID) {
         }
       } else if (response.successType == 0) {
         //failure: duplicate vote
-        votingError("It seems you've already voted before", UUID)
+        addLoadingInfo("It seems you've already voted before", UUID)
       } else if (response.successType == -1) {
         //failure: duplicate vote
-        votingError("A connection error has occured.", UUID)
+        addLoadingInfo("A connection error has occured.", UUID)
       }
     }
   });

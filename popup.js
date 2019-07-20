@@ -386,6 +386,9 @@ function addVoteMessage(message, UUID) {
 }
 
 function vote(type, UUID) {
+  //add loading info
+  addVoteMessage("Loading...", UUID)
+
   //send the vote message to the tab
   chrome.runtime.sendMessage({
     message: "submitVote",

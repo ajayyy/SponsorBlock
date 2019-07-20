@@ -56,17 +56,20 @@
 	font-weight: bold;
     color: #000000;
 	text-align: center;
-}
-
-#sponsorTimesErrorMessage {
-	font-size: 15px;
-	font-weight: bold;
-    color: #000000;
-	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 #sponsorTimesThanksForVotingInfoText {
 	font-size: 12px;
+	font-weight: bold;
+    color: #000000;
+	text-align: center;
+	margin-top: 0px;
+}
+
+.sponsorTimesInfoMessage {
+	font-size: 15px;
 	font-weight: bold;
     color: #000000;
 	text-align: center;
