@@ -21,11 +21,10 @@ chrome.tabs.onUpdated.addListener( // On tab update
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   if (request.message == "submitTimes") {
-    submitTimes(request.videoID);
+    submitTimes(request.videoID, callback);
 
-    callback({
-      success: true
-    });
+    //this allows the callback to be called later by the submitTimes function
+    return true;
   } else if (request.message == "ytvideoid") {
     if (previousVideoID != request.videoID) {
       videoIDChange(request.videoID);
@@ -107,7 +106,7 @@ function submitVote(type, UUID, callback) {
   })
 }
 
-function submitTimes(videoID) {
+function submitTimes(videoID, callback) {
   //get the video times from storage
   let sponsorTimeKey = 'sponsorTimes' + videoID;
   chrome.storage.local.get([sponsorTimeKey], function(result) {
@@ -119,7 +118,17 @@ function submitTimes(videoID) {
         getUserID(function(userIDStorage) {
           //submit the sponsorTime
           sendRequestToServer('GET', "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
-          + "&userID=" + userIDStorage);
+          + "&userID=" + userIDStorage, function(xmlhttp, error) {
+            if (xmlhttp.readyState == 4 && !error) {
+              callback({
+                statusCode: xmlhttp.status
+              });
+            } else if (error) {
+              callback({
+                statusCode: -1
+              });
+            }
+          });
         });
       }
     }

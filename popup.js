@@ -268,12 +268,35 @@ function clearTimes() {
 }
 
 function submitTimes() {
+  //make info message say loading
+  document.getElementById("submitTimesInfoMessage").innerText = "Loading...";
+  document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+
   if (sponsorTimes.length > 0) {
     chrome.runtime.sendMessage({
       message: "submitTimes",
       videoID: currentVideoID
-    }, function(request) {
-      clearTimes();
+    }, function(response) {
+      if (response != undefined) {
+        if (response.statusCode == 200) {
+          //hide loading message
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "none";
+  
+          clearTimes();
+        } else if(response.statusCode == 400) {
+          document.getElementById("submitTimesInfoMessage").innerText = "Server said this request was invalid";
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        } else if(response.statusCode == 429) {
+          document.getElementById("submitTimesInfoMessage").innerText = "You have submitted too many sponsor times for this one video, are you sure there are this many?";
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        } else if(response.statusCode == 409) {
+          document.getElementById("submitTimesInfoMessage").innerText = "This has already been submitted before";
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        } else {
+          document.getElementById("submitTimesInfoMessage").innerText = "There was an error submitting your sponsor times, please try again later";
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        }
+      }
     });
   }
 }
@@ -343,13 +366,15 @@ function resetStartTimeChosen() {
   document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
 }
 
+//hides and shows the submit times button when needed
 function showSubmitTimesIfNecessary() {
   //check if an end time has been specified for the latest sponsor time
   if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length > 1) {
     //show submit times button
-    document.getElementById("submitTimes").style.display = "unset";
+    document.getElementById("submitTimesContainer").style.display = "unset";
   } else {
-    document.getElementById("submitTimes").style.display = "none";
+    //hide submit times button
+    document.getElementById("submitTimesContainer").style.display = "none";
   }
 }
 
