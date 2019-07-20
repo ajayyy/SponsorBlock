@@ -390,6 +390,9 @@ function vote(type, UUID) {
       } else if (response.successType == 0) {
         //failure: duplicate vote
         votingError("It seems you've already voted before", UUID)
+      } else if (response.successType == -1) {
+        //failure: duplicate vote
+        votingError("A connection error has occured.", UUID)
       }
     }
   });

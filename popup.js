@@ -400,6 +400,9 @@ function vote(type, UUID) {
       } else if (response.successType == 0) {
         //failure: duplicate vote
         addVoteMessage("You have already voted this way before.", UUID)
+      } else if (response.successType == -1) {
+        //failure: duplicate vote
+        addVoteMessage("A connection error has occured.", UUID)
       }
     }
   });

@@ -87,7 +87,7 @@ function addSponsorTime(time) {
 function submitVote(type, UUID, callback) {
   getUserID(function(userID) {
     //publish this vote
-    sendRequestToUser('GET', "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp) {
+    sendRequestToUser('GET', "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         callback({
           successType: 1
@@ -96,6 +96,11 @@ function submitVote(type, UUID, callback) {
         //duplicate vote
         callback({
           successType: 0
+        });
+      } else if (error) {
+        //error while connect
+        callback({
+          successType: -1
         });
       }
     })
@@ -180,7 +185,11 @@ function sendRequestToUser(type, address, callback) {
   xmlhttp.open(type, serverAddress + address, true);
 
   xmlhttp.onreadystatechange = function () {
-    callback(xmlhttp);
+    callback(xmlhttp, false);
+  };
+
+  xmlhttp.onerror = function(ev) {
+    callback(xmlhttp, true);
   };
 
   //submit this request
