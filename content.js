@@ -529,8 +529,14 @@ function submitSponsorTimes() {
     if (response != undefined) {
       if (response.statusCode == 200) {
         //hide loading message
-        document.getElementById("submitButton").style.animation = "unset";
-        document.getElementById("submitButton").style.display = "none";
+        let submitButton = document.getElementById("submitButton");
+        //finish this animation
+        submitButton.style.animation = "rotate 1s";
+        //when the animation is over, hide the button
+        submitButton.addEventListener("animationend", function() {
+          submitButton.style.animation = "unset";
+          submitButton.style.display = "none";
+        });
 
         //clear the sponsor times
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
