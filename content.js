@@ -75,7 +75,7 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
     }
 
     if (request.message == "changeStartSponsorButton") {
-      changeStartSponsorButton(request.visibility, request.uploadButtonVisible);
+      changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
     }
 
     if (request.message == "changeVideoPlayerControlsVisibility") {
@@ -235,8 +235,8 @@ function startSponsorClicked() {
   });
 }
 
-function changeStartSponsorButton(visibility, uploadButtonVisible) {
-  if (visibility) {
+function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
+  if (showStartSponsor) {
     showingStartSponsor = true;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
 

@@ -243,14 +243,13 @@ function getSponsorTimesMessage(sponsorTimes) {
 function clearTimes() {
   //send new sponsor time state to tab
   if (sponsorTimes.length > 0) {
-    let visibility = sponsorTimes[sponsorTimes.length - 1].length >= 2;
     chrome.tabs.query({
       active: true,
       currentWindow: true
     }, function(tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {
         message: "changeStartSponsorButton",
-        visibility: visibility,
+        showStartSponsor: true,
         uploadButtonVisible: false
       });
     });
