@@ -36,7 +36,7 @@ var hideVideoPlayerControls = false;
 //if the notice should not be shown
 //happens when the user click's the "Don't show notice again" button
 var dontShowNotice = false;
-chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
+chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
   let dontShowNoticeAgain = result.dontShowNoticeAgain;
   if (dontShowNoticeAgain != undefined) {
     dontShowNotice = dontShowNoticeAgain;
@@ -106,7 +106,7 @@ function videoIDChange(id) {
   });
 
   //see if video control buttons should be added
-  chrome.storage.local.get(["hideVideoPlayerControls"], function(result) {
+  chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
     if (result.hideVideoPlayerControls != undefined) {
       hideVideoPlayerControls = result.hideVideoPlayerControls;
     }
@@ -495,7 +495,7 @@ function closeAllSkipNotices(){
 }
 
 function dontShowNoticeAgain() {
-  chrome.storage.local.set({"dontShowNoticeAgain": true});
+  chrome.storage.sync.set({"dontShowNoticeAgain": true});
 
   dontShowNotice = true;
 
@@ -540,7 +540,7 @@ function submitSponsorTimes() {
 
         //clear the sponsor times
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        chrome.storage.local.set({[sponsorTimeKey]: []});
+        chrome.storage.sync.set({[sponsorTimeKey]: []});
       } else {
         //for a more detailed error message, they should check the popup
         //show that the upload failed

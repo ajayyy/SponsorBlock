@@ -22,7 +22,7 @@ var isYouTubeTab = false;
 
 //if the don't show notice again variable is true, an option to 
 //  disable should be available
-chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
+chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
   let dontShowNoticeAgain = result.dontShowNoticeAgain;
   if (dontShowNoticeAgain != undefined && dontShowNoticeAgain) {
     document.getElementById("showNoticeAgain").style.display = "unset";
@@ -30,7 +30,7 @@ chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
 });
 
 //show proper video player controls option
-chrome.storage.local.get(["hideVideoPlayerControls"], function(result) {
+chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
   let hideVideoPlayerControls = result.hideVideoPlayerControls;
   if (hideVideoPlayerControls != undefined && hideVideoPlayerControls) {
     document.getElementById("hideVideoPlayerControls").style.display = "none";
@@ -55,7 +55,7 @@ function loadTabData(tabs) {
 
   //load video times for this video 
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-  chrome.storage.local.get([sponsorTimeKey], function(result) {
+  chrome.storage.sync.get([sponsorTimeKey], function(result) {
     let sponsorTimesStorage = result[sponsorTimeKey];
     if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
       if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
@@ -140,7 +140,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = request.time;
 
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
 
     updateStartTimeChosen();
 
@@ -260,7 +260,7 @@ function clearTimes() {
   sponsorTimes = [];
 
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-  chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
+  chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
 
   displaySponsorTimes();
 
@@ -305,7 +305,7 @@ function submitTimes() {
 }
 
 function showNoticeAgain() {
-  chrome.storage.local.set({"dontShowNoticeAgain": false});
+  chrome.storage.sync.set({"dontShowNoticeAgain": false});
 
   chrome.tabs.query({
     active: true,
@@ -320,7 +320,7 @@ function showNoticeAgain() {
 }
 
 function hideVideoPlayerControls() {
-  chrome.storage.local.set({"hideVideoPlayerControls": true});
+  chrome.storage.sync.set({"hideVideoPlayerControls": true});
 
   chrome.tabs.query({
     active: true,
@@ -337,7 +337,7 @@ function hideVideoPlayerControls() {
 }
 
 function showVideoPlayerControls() {
-  chrome.storage.local.set({"hideVideoPlayerControls": false});
+  chrome.storage.sync.set({"hideVideoPlayerControls": false});
 
   chrome.tabs.query({
     active: true,
