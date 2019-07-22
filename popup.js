@@ -38,6 +38,20 @@ chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
   }
 });
 
+//get the amount of times this user has contributed and display it to thank them
+chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
+  if (result.sponsorTimesContributed != undefined) {
+    let sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
+
+    if (result.sponsorTimesContributed > 1) {
+      sponsorTimesContributionsDisplay.innerText = "So far, you've submitted " + result.sponsorTimesContributed + " sponsor times.";
+    } else {
+      sponsorTimesContributionsDisplay.innerText = "So far, you've submitted " + result.sponsorTimesContributed + " sponsor time.";
+    }
+    sponsorTimesContributionsDisplay.style.display = "unset";
+  }
+});
+
 chrome.tabs.query({
   active: true,
   currentWindow: true

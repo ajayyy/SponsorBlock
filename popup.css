@@ -12,6 +12,10 @@ body {
   background-color: #ffd9d9;
 }
 
+.recordingSubtitle {
+	margin-bottom: 10px;
+}
+
 .voteButton {
 	height: 32px;
 	margin-right: 15px;
