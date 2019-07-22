@@ -1,8 +1,16 @@
+.playerButton {
+	height: 60%;
+	top: 0;
+	bottom: 0;
+	display: block;
+	margin: auto;
+}
+
 .sponsorSkipObject {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-#sponsorSkipLogo {
+.sponsorSkipLogo {
 	height: 64px;
 	position: absolute;
 	top: 0;
@@ -11,7 +19,12 @@
 	margin-left: 10px;
 }
 
-#sponsorSkipNotice {
+@keyframes fadeIn {
+	from { opacity: 0; }
+	  to { opacity: 1; }
+}
+
+.sponsorSkipNotice {
     min-height: 165px;
     min-width: 400px;
     background-color: rgba(255, 217, 217, 0.8);
@@ -19,9 +32,18 @@
 	z-index: 1;
 	border: 3px solid rgba(0, 0, 0, 0.8);
 	margin-top: -50px;
+
+	animation: fadeIn 0.5s;
 }
 
-#sponsorSkipMessage {
+/* if two are very close to eachother */
+.secondSkipNotice {
+	margin-left: 500px;
+
+  	transition: margin-left 0.2s;
+}
+
+.sponsorSkipMessage {
     font-size: 18px;
     color: #000000;
     text-align: center;
@@ -30,7 +52,7 @@
 	margin-top: 4px;
 }
 
-#sponsorSkipInfo {
+.sponsorSkipInfo {
 	font-size: 10px;
     color: #000000;
 	text-align: center;
@@ -42,10 +64,20 @@
 	font-weight: bold;
     color: #000000;
 	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 #sponsorTimesThanksForVotingInfoText {
 	font-size: 12px;
+	font-weight: bold;
+    color: #000000;
+	text-align: center;
+	margin-top: 0px;
+}
+
+.sponsorTimesInfoMessage {
+	font-size: 15px;
 	font-weight: bold;
     color: #000000;
 	text-align: center;
@@ -58,6 +90,42 @@
 }
 .voteButton:hover {
 	filter: brightness(80%);
+}
+
+.submitButton {
+	background-color:#ec1c1c;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #d31919;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:14px;
+	padding:4px 15px;
+	text-decoration:none;
+    text-shadow:0px 0px 0px #662727;
+    
+    margin-top: 5px;
+    margin-right: 15px;
+}
+.submitButton:hover {
+	background-color:#bf2a2a;
+}
+
+.submitButton:focus {
+	outline: none;
+	background-color:#bf2a2a;
+}
+
+.submitButton:active {
+	position:relative;
+	top:1px;
+}
+
+@keyframes rotate {
+	from { transform: rotate(0deg); }
+	  to { transform: rotate(360deg); }
 }
 
 .sponsorSkipButton {

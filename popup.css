@@ -12,6 +12,19 @@ body {
   background-color: #ffd9d9;
 }
 
+.recordingSubtitle {
+	margin-bottom: 10px;
+}
+
+.voteButton {
+	height: 32px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.voteButton:hover {
+	filter: brightness(80%);
+}
+
 .greenButton {
 	background-color:#ec1c1c;
   -moz-border-radius:28px;

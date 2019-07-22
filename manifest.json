@@ -22,6 +22,8 @@
     "icons/IconSponsorBlocker256px.png",
     "icons/PlayerStartIconSponsorBlocker256px.png",
     "icons/PlayerStopIconSponsorBlocker256px.png",
+    "icons/PlayerUploadIconSponsorBlocker256px.png",
+    "icons/PlayerUploadFailedIconSponsorBlocker256px.png",
     "icons/upvote.png",
     "icons/downvote.png"
   ],

@@ -6,6 +6,7 @@ document.getElementById("showNoticeAgain").addEventListener("click", showNoticeA
 document.getElementById("hideVideoPlayerControls").addEventListener("click", hideVideoPlayerControls);
 document.getElementById("showVideoPlayerControls").addEventListener("click", showVideoPlayerControls);
 document.getElementById("optionsButton").addEventListener("click", openOptions);
+document.getElementById("reportAnIssue").addEventListener("click", reportAnIssue);
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -21,7 +22,7 @@ var isYouTubeTab = false;
 
 //if the don't show notice again variable is true, an option to 
 //  disable should be available
-chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
+chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
   let dontShowNoticeAgain = result.dontShowNoticeAgain;
   if (dontShowNoticeAgain != undefined && dontShowNoticeAgain) {
     document.getElementById("showNoticeAgain").style.display = "unset";
@@ -29,11 +30,25 @@ chrome.storage.local.get(["dontShowNoticeAgain"], function(result) {
 });
 
 //show proper video player controls option
-chrome.storage.local.get(["hideVideoPlayerControls"], function(result) {
+chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
   let hideVideoPlayerControls = result.hideVideoPlayerControls;
   if (hideVideoPlayerControls != undefined && hideVideoPlayerControls) {
     document.getElementById("hideVideoPlayerControls").style.display = "none";
     document.getElementById("showVideoPlayerControls").style.display = "unset";
+  }
+});
+
+//get the amount of times this user has contributed and display it to thank them
+chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
+  if (result.sponsorTimesContributed != undefined) {
+    let sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
+
+    if (result.sponsorTimesContributed > 1) {
+      sponsorTimesContributionsDisplay.innerText = "So far, you've submitted " + result.sponsorTimesContributed + " sponsor times.";
+    } else {
+      sponsorTimesContributionsDisplay.innerText = "So far, you've submitted " + result.sponsorTimesContributed + " sponsor time.";
+    }
+    sponsorTimesContributionsDisplay.style.display = "unset";
   }
 });
 
@@ -54,7 +69,7 @@ function loadTabData(tabs) {
 
   //load video times for this video 
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-  chrome.storage.local.get([sponsorTimeKey], function(result) {
+  chrome.storage.sync.get([sponsorTimeKey], function(result) {
     let sponsorTimesStorage = result[sponsorTimeKey];
     if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
       if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
@@ -139,7 +154,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = request.time;
 
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
 
     updateStartTimeChosen();
 
@@ -164,6 +179,56 @@ function displayDownloadedSponsorTimes(request) {
   if (request.sponsorTimes != undefined) {
     //set it to the message
     document.getElementById("downloadedSponsorMessageTimes").innerHTML = getSponsorTimesMessage(request.sponsorTimes);
+
+    //add them as buttons to the issue reporting container
+    let container = document.getElementById("issueReporterTimeButtons");
+    for (let i = 0; i < request.sponsorTimes.length; i++) {
+      let sponsorTimeButton = document.createElement("button");
+      sponsorTimeButton.className = "warningButton";
+      sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i][0]) + " to " + getFormattedTime(request.sponsorTimes[i][1]);
+      
+      let votingButtons = document.createElement("div");
+
+      let UUID = request.UUIDs[i];
+
+      //thumbs up and down buttons
+      let voteButtonsContainer = document.createElement("div");
+      voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
+      voteButtonsContainer.setAttribute("align", "center");
+      voteButtonsContainer.style.display = "none"
+
+      let upvoteButton = document.createElement("img");
+      upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
+      upvoteButton.className = "voteButton";
+      upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
+      upvoteButton.addEventListener("click", () => vote(1, UUID));
+
+      let downvoteButton = document.createElement("img");
+      downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
+      downvoteButton.className = "voteButton";
+      downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
+      downvoteButton.addEventListener("click", () => vote(0, UUID));
+
+      //add thumbs up and down buttons to the container
+      voteButtonsContainer.appendChild(document.createElement("br"));
+      voteButtonsContainer.appendChild(document.createElement("br"));
+      voteButtonsContainer.appendChild(upvoteButton);
+      voteButtonsContainer.appendChild(downvoteButton);
+
+      //add click listener to open up vote panel
+      sponsorTimeButton.addEventListener("click", function() {
+        voteButtonsContainer.style.display = "unset";
+      });
+
+      container.appendChild(sponsorTimeButton);
+      container.appendChild(voteButtonsContainer);
+
+      //if it is not the last iteration
+      if (i != request.sponsorTimes.length - 1) {
+        container.appendChild(document.createElement("br"));
+        container.appendChild(document.createElement("br"));
+      }
+    }
   }
 }
 
@@ -190,14 +255,16 @@ function getSponsorTimesMessage(sponsorTimes) {
 }
 
 function clearTimes() {
-  //check if the player controls should be toggled
-  if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+  //send new sponsor time state to tab
+  if (sponsorTimes.length > 0) {
     chrome.tabs.query({
       active: true,
       currentWindow: true
     }, function(tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {
-        message: "toggleStartSponsorButton"
+        message: "changeStartSponsorButton",
+        showStartSponsor: true,
+        uploadButtonVisible: false
       });
     });
   }
@@ -206,7 +273,7 @@ function clearTimes() {
   sponsorTimes = [];
 
   let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-  chrome.storage.local.set({[sponsorTimeKey]: sponsorTimes});
+  chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
 
   displaySponsorTimes();
 
@@ -217,18 +284,41 @@ function clearTimes() {
 }
 
 function submitTimes() {
+  //make info message say loading
+  document.getElementById("submitTimesInfoMessage").innerText = "Loading...";
+  document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+
   if (sponsorTimes.length > 0) {
     chrome.runtime.sendMessage({
       message: "submitTimes",
       videoID: currentVideoID
-    }, function(request) {
-      clearTimes();
+    }, function(response) {
+      if (response != undefined) {
+        if (response.statusCode == 200) {
+          //hide loading message
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "none";
+  
+          clearTimes();
+        } else if(response.statusCode == 400) {
+          document.getElementById("submitTimesInfoMessage").innerText = "Server said this request was invalid";
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        } else if(response.statusCode == 429) {
+          document.getElementById("submitTimesInfoMessage").innerText = "You have submitted too many sponsor times for this one video, are you sure there are this many?";
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        } else if(response.statusCode == 409) {
+          document.getElementById("submitTimesInfoMessage").innerText = "This has already been submitted before";
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        } else {
+          document.getElementById("submitTimesInfoMessage").innerText = "There was an error submitting your sponsor times, please try again later";
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        }
+      }
     });
   }
 }
 
 function showNoticeAgain() {
-  chrome.storage.local.set({"dontShowNoticeAgain": false});
+  chrome.storage.sync.set({"dontShowNoticeAgain": false});
 
   chrome.tabs.query({
     active: true,
@@ -243,7 +333,7 @@ function showNoticeAgain() {
 }
 
 function hideVideoPlayerControls() {
-  chrome.storage.local.set({"hideVideoPlayerControls": true});
+  chrome.storage.sync.set({"hideVideoPlayerControls": true});
 
   chrome.tabs.query({
     active: true,
@@ -260,7 +350,7 @@ function hideVideoPlayerControls() {
 }
 
 function showVideoPlayerControls() {
-  chrome.storage.local.set({"hideVideoPlayerControls": false});
+  chrome.storage.sync.set({"hideVideoPlayerControls": false});
 
   chrome.tabs.query({
     active: true,
@@ -292,13 +382,15 @@ function resetStartTimeChosen() {
   document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
 }
 
+//hides and shows the submit times button when needed
 function showSubmitTimesIfNecessary() {
   //check if an end time has been specified for the latest sponsor time
   if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length > 1) {
     //show submit times button
-    document.getElementById("submitTimes").style.display = "unset";
+    document.getElementById("submitTimesContainer").style.display = "unset";
   } else {
-    document.getElementById("submitTimes").style.display = "none";
+    //hide submit times button
+    document.getElementById("submitTimesContainer").style.display = "none";
   }
 }
 
@@ -312,6 +404,52 @@ function openOptions() {
 function displayNoVideo() {
   document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
       "If you know this is a YouTube tab, close this popup and open it again.";
+}
+
+function reportAnIssue() {
+  document.getElementById("issueReporterContainer").style.display = "unset";
+  document.getElementById("reportAnIssue").style.display = "none";
+}
+
+function addVoteMessage(message, UUID) {
+  let container = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
+  //remove all children
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+
+  let thanksForVotingText = document.createElement("h2");
+  thanksForVotingText.innerText = message;
+  //there are already breaks there
+  thanksForVotingText.style.marginBottom = "0px";
+
+  container.appendChild(thanksForVotingText);
+}
+
+function vote(type, UUID) {
+  //add loading info
+  addVoteMessage("Loading...", UUID)
+
+  //send the vote message to the tab
+  chrome.runtime.sendMessage({
+    message: "submitVote",
+    type: type,
+    UUID: UUID
+  }, function(response) {
+    if (response != undefined) {
+      //see if it was a success or failure
+      if (response.successType == 1) {
+        //success
+        addVoteMessage("Thanks for voting!", UUID)
+      } else if (response.successType == 0) {
+        //failure: duplicate vote
+        addVoteMessage("You have already voted this way before.", UUID)
+      } else if (response.successType == -1) {
+        //failure: duplicate vote
+        addVoteMessage("A connection error has occured.", UUID)
+      }
+    }
+  });
 }
 
 //converts time in seconds to minutes:seconds
