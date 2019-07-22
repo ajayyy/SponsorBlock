@@ -131,8 +131,21 @@ function sponsorsLookup(id) {
         v.ontimeupdate = function () { 
             sponsorCheck(sponsorTimes);
         };
-      } else {
+      } else if (xmlhttp.readyState == 4) {
         sponsorDataFound = false;
+
+        //check if this video was uploaded recently
+        //use the invidious api to get the time published
+        sendRequestToCustomServer('GET', "https://invidio.us/api/v1/videos/" + id, function(xmlhttp, error) {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            let unixTimePublished = JSON.parse(xmlhttp.responseText).published;
+
+            //if less than 3 days old
+            if ((Date.now() / 1000) - unixTimePublished < 259200) {
+              setTimeout(() => sponsorsLookup(id), 10000);
+            }
+          }
+        });
       }
     });
 }
@@ -536,6 +549,25 @@ function sendRequestToServer(type, address, callback) {
   let xmlhttp = new XMLHttpRequest();
 
   xmlhttp.open(type, serverAddress + address, true);
+
+  if (callback != undefined) {
+    xmlhttp.onreadystatechange = function () {
+      callback(xmlhttp, false);
+    };
+  
+    xmlhttp.onerror = function(ev) {
+      callback(xmlhttp, true);
+    };
+  }
+
+  //submit this request
+  xmlhttp.send();
+}
+
+function sendRequestToCustomServer(type, fullAddress, callback) {
+  let xmlhttp = new XMLHttpRequest();
+
+  xmlhttp.open(type, fullAddress, true);
 
   if (callback != undefined) {
     xmlhttp.onreadystatechange = function () {
