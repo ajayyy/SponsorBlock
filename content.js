@@ -21,6 +21,9 @@ var v;
 //the last time looked at (used to see if this time is in the interval)
 var lastTime;
 
+//the last time skipped to
+var lastTimeSkippedTo = -1;
+
 //the last time in the video a sponsor was skipped
 //used for the go back button
 var lastSponsorTimeSkipped = null;
@@ -155,9 +158,13 @@ function sponsorCheck(sponsorTimes) { // Video skipping
     //the sponsor time is in between these times, skip it
     //if the time difference is more than 1 second, than the there was probably a skip in time, 
     //  and it's not due to playback
-    if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime) {
+    //also check if the last time skipped to is not too close to now, to make sure not to get too many
+    //  sponsor times in a row (from one troll)
+    if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime &&
+        (lastTimeSkippedTo == -1 || Math.abs(v.currentTime - lastTimeSkippedTo) > 1)) {
       //skip it
       v.currentTime = sponsorTimes[i][1];
+      lastTimeSkippedTo = sponsorTimes[i][1];
 
       lastSponsorTimeSkipped = sponsorTimes[i][0];
       
