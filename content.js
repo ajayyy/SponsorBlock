@@ -117,7 +117,6 @@ function videoIDChange(id) {
 
 function sponsorsLookup(id) {
     v = document.querySelector('video') // Youtube video player
-    let xmlhttp = new XMLHttpRequest();
     
     //check database for sponsor times
     sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
@@ -193,13 +192,13 @@ function addPlayerControlsButton() {
 
   let startSponsorButton = document.createElement("button");
   startSponsorButton.id = "startSponsorButton";
-  startSponsorButton.className = "ytp-button";
+  startSponsorButton.className = "ytp-button playerButton";
   startSponsorButton.setAttribute("title", "Sponsor Starts Now");
   startSponsorButton.addEventListener("click", startSponsorClicked);
 
   let startSponsorImage = document.createElement("img");
   startSponsorImage.id = "startSponsorImage";
-  startSponsorImage.className = "playerButton";
+  startSponsorImage.className = "playerButtonImage";
   startSponsorImage.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
 
   //add the image to the button
@@ -269,7 +268,7 @@ function addSubmitButton() {
   //make a submit button
   let submitButton = document.createElement("button");
   submitButton.id = "submitButton";
-  submitButton.className = "ytp-button";
+  submitButton.className = "ytp-button playerButton";
   submitButton.setAttribute("title", "Submit Sponsor Times");
   submitButton.addEventListener("click", submitSponsorTimes);
   //hide it at the start
@@ -277,7 +276,7 @@ function addSubmitButton() {
 
   let submitImage = document.createElement("img");
   submitImage.id = "submitButtonImage";
-  submitImage.className = "playerButton";
+  submitImage.className = "playerButtonImage";
   submitImage.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
 
   //add the image to the button

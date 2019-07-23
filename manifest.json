@@ -30,7 +30,8 @@
   "permissions": [
     "tabs",
     "storage",
-    "notifications"
+    "notifications",
+    "https://sponsor.ajay.app/*"
   ],
   "browser_action": {
     "default_title": "SponsorBlock",
@@ -48,6 +49,12 @@
     "64": "icons/LogoSponsorBlocker64px.png",
     "128": "icons/LogoSponsorBlocker128px.png",
     "256": "icons/LogoSponsorBlocker256px.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "sponsorBlocker@ajay.app",
+      "strict_min_version": "42.0"
+    }
   },
   "manifest_version": 2
 }

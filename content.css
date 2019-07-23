@@ -1,9 +1,13 @@
-.playerButton {
+.playerButtonImage {
 	height: 60%;
 	top: 0;
 	bottom: 0;
 	display: block;
 	margin: auto;
+}
+
+.playerButton {
+	vertical-align: top;
 }
 
 .sponsorSkipObject {
