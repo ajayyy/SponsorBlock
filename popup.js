@@ -41,16 +41,48 @@ chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
 //get the amount of times this user has contributed and display it to thank them
 chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
   if (result.sponsorTimesContributed != undefined) {
+    let sponsorTimesContributionsContainer = document.getElementById("sponsorTimesContributionsContainer");
     let sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
+    let sponsorTimesContributionsDisplayEndWord = document.getElementById("sponsorTimesContributionsDisplayEndWord");
 
     if (result.sponsorTimesContributed > 1) {
-      sponsorTimesContributionsDisplay.innerText = "So far, you've submitted " + result.sponsorTimesContributed + " sponsor times.";
+      sponsorTimesContributionsDisplayEndWord.innerText = "sponsors."
     } else {
-      sponsorTimesContributionsDisplay.innerText = "So far, you've submitted " + result.sponsorTimesContributed + " sponsor time.";
+      sponsorTimesContributionsDisplayEndWord.innerText = "sponsor."
     }
-    sponsorTimesContributionsDisplay.style.display = "unset";
+    sponsorTimesContributionsDisplay.innerText = result.sponsorTimesContributed;
+    sponsorTimesContributionsContainer.style.display = "unset";
+
+    //get the userID
+    chrome.storage.sync.get(["userID"], function(result) {
+      let userID = result.userID;
+      if (userID != undefined) {
+        //there are probably some views on these submissions then
+        //get the amount of views from the sponsors submitted
+        sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
+
+            if (viewCount != 0) {
+              let sponsorTimesViewsContainer = document.getElementById("sponsorTimesViewsContainer");
+              let sponsorTimesViewsDisplay = document.getElementById("sponsorTimesViewsDisplay");
+              let sponsorTimesViewsDisplayEndWord = document.getElementById("sponsorTimesViewsDisplayEndWord");
+      
+              if (viewCount > 1) {
+                sponsorTimesViewsDisplayEndWord.innerText = "sponsor segments."
+              } else {
+                sponsorTimesViewsDisplayEndWord.innerText = "sponsor segment."
+              }
+              sponsorTimesViewsDisplay.innerText = viewCount;
+              sponsorTimesViewsContainer.style.display = "unset";
+            }
+          }
+        });
+      }
+    });
   }
 });
+
 
 chrome.tabs.query({
   active: true,
@@ -464,6 +496,25 @@ function getFormattedTime(seconds) {
   let formatted = minutes+ ":" + secondsDisplay;
 
   return formatted;
+}
+
+function sendRequestToServer(type, address, callback) {
+  let xmlhttp = new XMLHttpRequest();
+
+  xmlhttp.open(type, serverAddress + address, true);
+
+  if (callback != undefined) {
+    xmlhttp.onreadystatechange = function () {
+      callback(xmlhttp, false);
+    };
+  
+    xmlhttp.onerror = function(ev) {
+      callback(xmlhttp, true);
+    };
+  }
+
+  //submit this request
+  xmlhttp.send();
 }
 
 function getYouTubeVideoID(url) { // Return video id or false
