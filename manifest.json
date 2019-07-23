@@ -1,7 +1,8 @@
 {
-  "name": "YTSponsorSkip",
+  "name": "SponsorBlock - YouTube Sponsorship Blocker",
+  "short_name": "SponsorBlock",
   "version": "1.0",
-  "description": "Skip youtube video sponsors.",
+  "description": "Skip YouTube video sponsors.",
   "content_scripts": [
     {
       "matches": [
