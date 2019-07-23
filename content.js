@@ -168,6 +168,9 @@ function sponsorCheck(sponsorTimes) { // Video skipping
           openSkipNotice();
 
           setTimeout(() => closeSkipNotice(currentUUID), 7000);
+
+          //send telemetry that a this sponsor was skipped happened
+          sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
         }
 
         lastTime = v.currentTime;
