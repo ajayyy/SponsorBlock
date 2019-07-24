@@ -5,6 +5,8 @@ document.getElementById("submitTimes").addEventListener("click", submitTimes);
 document.getElementById("showNoticeAgain").addEventListener("click", showNoticeAgain);
 document.getElementById("hideVideoPlayerControls").addEventListener("click", hideVideoPlayerControls);
 document.getElementById("showVideoPlayerControls").addEventListener("click", showVideoPlayerControls);
+document.getElementById("disableSponsorViewTracking").addEventListener("click", disableSponsorViewTracking);
+document.getElementById("enableSponsorViewTracking").addEventListener("click", enableSponsorViewTracking);
 document.getElementById("optionsButton").addEventListener("click", openOptions);
 document.getElementById("reportAnIssue").addEventListener("click", reportAnIssue);
 
@@ -35,6 +37,15 @@ chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
   if (hideVideoPlayerControls != undefined && hideVideoPlayerControls) {
     document.getElementById("hideVideoPlayerControls").style.display = "none";
     document.getElementById("showVideoPlayerControls").style.display = "unset";
+  }
+});
+
+//show proper tracking option
+chrome.storage.sync.get(["trackViewCount"], function(result) {
+  let trackViewCount = result.trackViewCount;
+  if (trackViewCount != undefined && !trackViewCount) {
+    document.getElementById("disableSponsorViewTracking").style.display = "none";
+    document.getElementById("enableSponsorViewTracking").style.display = "unset";
   }
 });
 
@@ -396,6 +407,40 @@ function showVideoPlayerControls() {
 
   document.getElementById("hideVideoPlayerControls").style.display = "unset";
   document.getElementById("showVideoPlayerControls").style.display = "none";
+}
+
+function disableSponsorViewTracking() {
+  chrome.storage.sync.set({"trackViewCount": false});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "trackViewCount",
+      value: false
+    });
+  });
+
+  document.getElementById("disableSponsorViewTracking").style.display = "none";
+  document.getElementById("enableSponsorViewTracking").style.display = "unset";
+}
+
+function enableSponsorViewTracking() {
+  chrome.storage.sync.set({"trackViewCount": true});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "trackViewCount",
+      value: true
+    });
+  });
+
+  document.getElementById("enableSponsorViewTracking").style.display = "none";
+  document.getElementById("disableSponsorViewTracking").style.display = "unset";
 }
 
 function updateStartTimeChosen() {
