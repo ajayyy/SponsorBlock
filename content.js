@@ -36,6 +36,17 @@ var showingStartSponsor = true;
 //should the video controls buttons be added
 var hideVideoPlayerControls = false;
 
+//should view counts be tracked
+var trackViewCount = false;
+chrome.storage.sync.get(["trackViewCount"], function(result) {
+  let trackViewCountStorage = result.trackViewCount;
+  if (trackViewCountStorage != undefined) {
+    trackViewCount = trackViewCountStorage;
+  } else {
+    trackViewCount = true;
+  }
+});
+
 //if the notice should not be shown
 //happens when the user click's the "Don't show notice again" button
 var dontShowNotice = false;
@@ -85,6 +96,10 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
       hideVideoPlayerControls = request.value;
 
       updateVisibilityOfPlayerControlsButton();
+    }
+
+    if (request.message == "trackViewCount") {
+      trackViewCount = request.value;
     }
 });
 
@@ -177,7 +192,9 @@ function sponsorCheck(sponsorTimes) { // Video skipping
       setTimeout(() => closeSkipNotice(currentUUID), 7000);
 
       //send telemetry that a this sponsor was skipped happened
-      sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+      if (trackViewCount) {
+        sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+      }
     }
   }
   lastTime = v.currentTime;
