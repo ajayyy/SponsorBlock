@@ -41,8 +41,26 @@
 
           <h2 class="recordingSubtitle">Record the times of a sponsorship</h2>
 
-          <p id="sponsorTimesContributionsDisplay" style="display: none">
-            So far, you've submitted no sponsor times.
+          <p>
+            <span id=sponsorTimesContributionsContainer style="display: none">
+                So far, you've submitted
+                <span id="sponsorTimesContributionsDisplay">
+                  0
+                </span>
+                <span id="sponsorTimesContributionsDisplayEndWord">
+                  sponsors.
+                </span>
+            </span>
+
+            <span id=sponsorTimesViewsContainer style="display: none">
+                You have saved people from 
+                <span id="sponsorTimesViewsDisplay">
+                  0
+                </span>
+                <span id="sponsorTimesViewsDisplayEndWord">
+                  sponsor segments.
+                </span>
+            </span>
           </p>
 
           <p> 
@@ -103,5 +121,8 @@
         </div>
       </div>
   </center>
+
+  <!-- Scripts that need to load after the html -->
+  <script src="config.js"></script>
   <script src="popup.js"></script>
 </html>

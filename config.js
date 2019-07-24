@@ -1,3 +1,0 @@
-//this file is loaded along iwth content.js
-//this file sets the server to connect to, and is gitignored
-var serverAddress = "http://localhost";

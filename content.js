@@ -21,6 +21,9 @@ var v;
 //the last time looked at (used to see if this time is in the interval)
 var lastTime;
 
+//the last time skipped to
+var lastTimeSkippedTo = -1;
+
 //the last time in the video a sponsor was skipped
 //used for the go back button
 var lastSponsorTimeSkipped = null;
@@ -117,7 +120,6 @@ function videoIDChange(id) {
 
 function sponsorsLookup(id) {
     v = document.querySelector('video') // Youtube video player
-    let xmlhttp = new XMLHttpRequest();
     
     //check database for sponsor times
     sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
@@ -151,28 +153,34 @@ function sponsorsLookup(id) {
 }
 
 function sponsorCheck(sponsorTimes) { // Video skipping
-    //see if any sponsor start time was just passed
-    for (let i = 0; i < sponsorTimes.length; i++) {
-        //the sponsor time is in between these times, skip it
-        //if the time difference is more than 1 second, than the there was probably a skip in time, 
-        //  and it's not due to playback
-        if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime) {
-          //skip it
-          v.currentTime = sponsorTimes[i][1];
+  //see if any sponsor start time was just passed
+  for (let i = 0; i < sponsorTimes.length; i++) {
+    //the sponsor time is in between these times, skip it
+    //if the time difference is more than 1 second, than the there was probably a skip in time, 
+    //  and it's not due to playback
+    //also check if the last time skipped to is not too close to now, to make sure not to get too many
+    //  sponsor times in a row (from one troll)
+    if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime &&
+        (lastTimeSkippedTo == -1 || Math.abs(v.currentTime - lastTimeSkippedTo) > 1)) {
+      //skip it
+      v.currentTime = sponsorTimes[i][1];
+      lastTimeSkippedTo = sponsorTimes[i][1];
 
-          lastSponsorTimeSkipped = sponsorTimes[i][0];
-          
-          let currentUUID =  UUIDs[i];
-          lastSponsorTimeSkippedUUID = currentUUID; 
+      lastSponsorTimeSkipped = sponsorTimes[i][0];
+      
+      let currentUUID =  UUIDs[i];
+      lastSponsorTimeSkippedUUID = currentUUID; 
 
-          //send out the message saying that a sponsor message was skipped
-          openSkipNotice();
+      //send out the message saying that a sponsor message was skipped
+      openSkipNotice();
 
-          setTimeout(() => closeSkipNotice(currentUUID), 7000);
-        }
+      setTimeout(() => closeSkipNotice(currentUUID), 7000);
 
-        lastTime = v.currentTime;
+      //send telemetry that a this sponsor was skipped happened
+      sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
     }
+  }
+  lastTime = v.currentTime;
 }
 
 function goBackToPreviousTime(UUID) {
@@ -193,13 +201,13 @@ function addPlayerControlsButton() {
 
   let startSponsorButton = document.createElement("button");
   startSponsorButton.id = "startSponsorButton";
-  startSponsorButton.className = "ytp-button";
+  startSponsorButton.className = "ytp-button playerButton";
   startSponsorButton.setAttribute("title", "Sponsor Starts Now");
   startSponsorButton.addEventListener("click", startSponsorClicked);
 
   let startSponsorImage = document.createElement("img");
   startSponsorImage.id = "startSponsorImage";
-  startSponsorImage.className = "playerButton";
+  startSponsorImage.className = "playerButtonImage";
   startSponsorImage.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
 
   //add the image to the button
@@ -269,7 +277,7 @@ function addSubmitButton() {
   //make a submit button
   let submitButton = document.createElement("button");
   submitButton.id = "submitButton";
-  submitButton.className = "ytp-button";
+  submitButton.className = "ytp-button playerButton";
   submitButton.setAttribute("title", "Submit Sponsor Times");
   submitButton.addEventListener("click", submitSponsorTimes);
   //hide it at the start
@@ -277,7 +285,7 @@ function addSubmitButton() {
 
   let submitImage = document.createElement("img");
   submitImage.id = "submitButtonImage";
-  submitImage.className = "playerButton";
+  submitImage.className = "playerButtonImage";
   submitImage.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
 
   //add the image to the button
