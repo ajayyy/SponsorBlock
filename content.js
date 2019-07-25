@@ -1,11 +1,5 @@
 if(id = getYouTubeVideoID(document.URL)){ // Direct Links
   videoIDChange(id);
-
-  //tell background.js about this
-  chrome.runtime.sendMessage({
-    message: "ytvideoid",
-    videoID: id
-  });
 }
 
 //was sponsor data found when doing SponsorsLookup
