@@ -352,7 +352,7 @@ function submitTimes() {
           document.getElementById("submitTimesInfoMessage").innerText = "This has already been submitted before";
           document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
         } else {
-          document.getElementById("submitTimesInfoMessage").innerText = "There was an error submitting your sponsor times, please try again later";
+          document.getElementById("submitTimesInfoMessage").innerText = "There was an error submitting your sponsor times, please try again later. Error code " + response.statusCode;
           document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
         }
       }
