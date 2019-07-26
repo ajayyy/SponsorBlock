@@ -3,21 +3,31 @@ var previousVideoID = null
 //the id of this user, randomly generated once per install
 var userID = null;
 
-chrome.tabs.onUpdated.addListener( // On tab update
-  function(tabId, changeInfo, tab) {
-    if (changeInfo != undefined && changeInfo.url != undefined) {
-      let id = getYouTubeVideoID(changeInfo.url);
-      if (changeInfo.url && id) { // If URL changed and is youtube video message contentScript the video id
-        videoIDChange(id);
+//when a new tab is highlighted
+chrome.tabs.onActivated.addListener(
+  function(activeInfo) {
+    chrome.tabs.get(activeInfo.tabId, function(tab) {
+      let id = getYouTubeVideoID(tab.url);
 
-        chrome.tabs.sendMessage( tabId, {
-          message: 'ytvideoid',
-          id: id
-        });
+      //if this even is a YouTube tab
+      if (id) {
+        videoIDChange(id, activeInfo.tabId);
       }
-    }
+    })
   }
 );
+
+//when a tab changes URLs
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    if (changeInfo != undefined && changeInfo.url != undefined) {
+      let id = getYouTubeVideoID(changeInfo.url);
+
+      //if URL changed and is youtube video message contentScript the video id
+      if (changeInfo.url && id) { 
+        videoIDChange(id, tabId);
+      }
+    }
+});
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   if (request.message == "submitTimes") {
@@ -25,10 +35,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
     //this allows the callback to be called later by the submitTimes function
     return true;
-  } else if (request.message == "ytvideoid") {
-    if (previousVideoID != request.videoID) {
-      videoIDChange(request.videoID);
-    }
   } else if (request.message == "addSponsorTime") {
     addSponsorTime(request.time);
   } else if (request.message == "getSponsorTimes") {
@@ -147,7 +153,13 @@ function submitTimes(videoID, callback) {
   });
 }
 
-function videoIDChange(currentVideoID) {
+function videoIDChange(currentVideoID, tabId) {
+  //send a message to the content script
+  chrome.tabs.sendMessage(tabId, {
+    message: 'ytvideoid',
+    id: currentVideoID
+  });
+
   //warn them if they had unsubmitted times
   if (previousVideoID != null) {
     //get the sponsor times from storage
