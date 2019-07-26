@@ -13,10 +13,10 @@ var UUIDs = undefined;
 var v;
 
 //the last time looked at (used to see if this time is in the interval)
-var lastTime;
+var lastTime = -1;
 
-//the last time skipped to
-var lastTimeSkippedTo = -1;
+//the actual time (not video time) that the last skip happened
+var lastUnixTimeSkipped = -1;
 
 //the last time in the video a sponsor was skipped
 //used for the go back button
@@ -98,6 +98,10 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
 });
 
 function videoIDChange(id) {
+  //reset last sponsor times
+  lastTime = -1;
+  lastUnixTimeSkipped = -1;
+
   //reset sponsor data found check
   sponsorDataFound = false;
   sponsorsLookup(id);
@@ -164,16 +168,22 @@ function sponsorsLookup(id) {
 function sponsorCheck(sponsorTimes) { // Video skipping
   //see if any sponsor start time was just passed
   for (let i = 0; i < sponsorTimes.length; i++) {
-    //the sponsor time is in between these times, skip it
-    //if the time difference is more than 1 second, than the there was probably a skip in time, 
-    //  and it's not due to playback
-    //also check if the last time skipped to is not too close to now, to make sure not to get too many
+    //this means part of the video was just skipped
+    if (Math.abs(v.currentTime - lastTime) > 1 && lastTime != -1) {
+      //make lastTime as if the video was playing normally
+      lastTime = v.currentTime - 0.0001;
+    }
+
+    let currentTime = Date.now();
+
+    //If the sponsor time is in between these times, skip it
+    //Checks if the last time skipped to is not too close to now, to make sure not to get too many
     //  sponsor times in a row (from one troll)
-    if (Math.abs(v.currentTime - lastTime) < 1 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime &&
-        (lastTimeSkippedTo == -1 || Math.abs(v.currentTime - lastTimeSkippedTo) > 1)) {
+    //the last term makes 0 second start times possible
+    if ((Math.abs(v.currentTime - sponsorTimes[i][0]) < 0.3 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime
+          && (lastUnixTimeSkipped == -1 || currentTime - lastUnixTimeSkipped > 500)) || (lastTime == -1 && sponsorTimes[i][0] == 0)) {
       //skip it
       v.currentTime = sponsorTimes[i][1];
-      lastTimeSkippedTo = sponsorTimes[i][1];
 
       lastSponsorTimeSkipped = sponsorTimes[i][0];
       
@@ -181,7 +191,7 @@ function sponsorCheck(sponsorTimes) { // Video skipping
       lastSponsorTimeSkippedUUID = currentUUID; 
 
       //send out the message saying that a sponsor message was skipped
-      openSkipNotice();
+      openSkipNotice(currentUUID);
 
       setTimeout(() => closeSkipNotice(currentUUID), 7000);
 
@@ -191,7 +201,11 @@ function sponsorCheck(sponsorTimes) { // Video skipping
       }
     }
   }
-  lastTime = v.currentTime;
+
+  //don't keep track until they are loaded in
+  if (sponsorTimes.length > 0) {
+    lastTime = v.currentTime;
+  }
 }
 
 function goBackToPreviousTime(UUID) {
@@ -307,10 +321,33 @@ function addSubmitButton() {
 }
 
 //Opens the notice that tells the user that a sponsor was just skipped
-function openSkipNotice(){
+function openSkipNotice(UUID){
   if (dontShowNotice) {
     //don't show, return
     return;
+  }
+
+  //check if page is loaded yet (for 0 second sponsors, the page might not be loaded yet)
+  //it looks for the view count div and sees if it is full yet
+  //querySelectorAll is being used like findElementById for multiple objects, because for
+  //some reason YouTube has put more than one object with one ID.
+  let viewCountNode = document.querySelectorAll("#count");
+  //check to see if the length is over zero, otherwise it's a different YouTube theme probably
+  if (viewCountNode.length > 0) {
+    //check if any of these have text
+    let viewCountVisible = false;
+    for (let i = 0; i < viewCountNode.length; i++) {
+      if (viewCountNode[i].innerText != null) {
+        viewCountVisible = true;
+        break;
+      }
+    }
+    if (!viewCountVisible) {
+      //this is the new YouTube layout and it is still loading
+      //wait a bit for opening the notice
+      setTimeout(() => openSkipNotice(UUID), 200);
+      return;
+    }
   }
 
   let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
@@ -322,45 +359,43 @@ function openSkipNotice(){
     previousNotice.classList.add("secondSkipNotice")
   }
 
-  let UUID = lastSponsorTimeSkippedUUID;
-
   let noticeElement = document.createElement("div");
   //what sponsor time this is about
-  noticeElement.id = "sponsorSkipNotice" + lastSponsorTimeSkippedUUID;
+  noticeElement.id = "sponsorSkipNotice" + UUID;
   noticeElement.classList.add("sponsorSkipObject");
   noticeElement.classList.add("sponsorSkipNotice");
-  noticeElement.style.zIndex = 1 + amountOfPreviousNotices;
+  noticeElement.style.zIndex = 5 + amountOfPreviousNotices;
 
   let logoElement = document.createElement("img");
-  logoElement.id = "sponsorSkipLogo" + lastSponsorTimeSkippedUUID;
+  logoElement.id = "sponsorSkipLogo" + UUID;
   logoElement.className = "sponsorSkipLogo";
   logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
 
   let noticeMessage = document.createElement("div");
-  noticeMessage.id = "sponsorSkipMessage" + lastSponsorTimeSkippedUUID;
+  noticeMessage.id = "sponsorSkipMessage" + UUID;
   noticeMessage.classList.add("sponsorSkipMessage");
   noticeMessage.classList.add("sponsorSkipObject");
   noticeMessage.innerText = "Hey, you just skipped a sponsor!";
   
   let noticeInfo = document.createElement("p");
-  noticeInfo.id = "sponsorSkipInfo" + lastSponsorTimeSkippedUUID;
+  noticeInfo.id = "sponsorSkipInfo" + UUID;
   noticeInfo.classList.add("sponsorSkipInfo");
   noticeInfo.classList.add("sponsorSkipObject");
   noticeInfo.innerText = "This message will disapear in 7 seconds";
   
   //thumbs up and down buttons
   let voteButtonsContainer = document.createElement("div");
-  voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + lastSponsorTimeSkippedUUID;
+  voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
   voteButtonsContainer.setAttribute("align", "center");
 
   let upvoteButton = document.createElement("img");
-  upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + lastSponsorTimeSkippedUUID;
+  upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
   upvoteButton.className = "sponsorSkipObject voteButton";
   upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
   upvoteButton.addEventListener("click", () => vote(1, UUID));
 
   let downvoteButton = document.createElement("img");
-  downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + lastSponsorTimeSkippedUUID;
+  downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
   downvoteButton.className = "sponsorSkipObject voteButton";
   downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
   downvoteButton.addEventListener("click", () => vote(0, UUID));
