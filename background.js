@@ -198,6 +198,12 @@ function getUserID(callback) {
       userID = userIDStorage;
       callback(userID);
     } else {
+      //double check if a UUID hasn't been created since this was first called
+      if (userID != null) {
+        callback(userID);
+        return;
+      }
+
       //generate a userID
       userID = generateUUID();
       
