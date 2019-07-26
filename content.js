@@ -97,6 +97,25 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
     }
 });
 
+//check for hotkey pressed
+document.onkeydown = function(e){
+  e = e || window.event;
+  var key = e.which || e.keyCode;
+
+  let video = document.getElementById("movie_player");
+
+  //is the video in focus, otherwise they could be typing a comment
+  if (document.activeElement === video) {
+    if(key == 186){
+      //semicolon
+      startSponsorClicked();
+    } else if (key == 222) {
+      //single quote
+      submitSponsorTimes();
+    }
+  }
+}
+
 function videoIDChange(id) {
   //reset last sponsor times
   lastTime = -1;
@@ -250,11 +269,10 @@ function removePlayerControlsButton() {
 
 //adds or removes the player controls button to what it should be
 function updateVisibilityOfPlayerControlsButton() {
+  addPlayerControlsButton();
+  addSubmitButton();
   if (hideVideoPlayerControls) {
     removePlayerControlsButton();
-  } else {
-    addPlayerControlsButton();
-    addSubmitButton();
   }
 }
 
@@ -264,7 +282,8 @@ function startSponsorClicked() {
   //send back current time with message
   chrome.runtime.sendMessage({
     message: "addSponsorTime",
-    time: v.currentTime
+    time: v.currentTime,
+    videoID: getYouTubeVideoID(document.URL)
   });
 }
 
