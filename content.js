@@ -593,12 +593,12 @@ function sponsorMessageStarted() {
 }
 
 function submitSponsorTimes() {
-  console.log("Tessst")
+  if(!confirm("Are you sure you want to submit this?")) return;
+
   if (document.getElementById("submitButton").style.display == "none") {
     //don't submit, not ready
     return;
   }
-  console.log("Test")
 
   //add loading animation
   document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
