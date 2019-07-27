@@ -2,6 +2,10 @@ if(id = getYouTubeVideoID(document.URL)){ // Direct Links
   videoIDChange(id);
 }
 
+var hotkeys = {};
+hotkeys.submit = "Semicolon";
+var hasData = false; // If started sponsor
+
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 
@@ -98,22 +102,21 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
 });
 
 //check for hotkey pressed
-document.onkeydown = function(e){
-  e = e || window.event;
-  var key = e.which || e.keyCode;
-
-  let video = document.getElementById("movie_player");
-
-  //is the video in focus, otherwise they could be typing a comment
-  if (document.activeElement === video) {
-    if(key == 186){
-      //semicolon
-      startSponsorClicked();
-    } else if (key == 222) {
-      //single quote
-      submitSponsorTimes();
+document.onkeydown = function(e) {
+    e = e || window.event;
+    let video = document.getElementById("movie_player");
+    //is the video in focus, otherwise they could be typing a comment
+    if (document.activeElement === video) {
+        if (key.code == hotkeys.submit) {
+            if (hasData) { // First time
+                submitSponsorTimes();
+                hasData = false;
+            } else { // Submit!!!
+                startSponsorClicked();
+                hasData = true;
+            }
+        }
     }
-  }
 }
 
 function videoIDChange(id) {
