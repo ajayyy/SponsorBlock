@@ -676,5 +676,6 @@ function sendRequestToCustomServer(type, fullAddress, callback) {
 function getYouTubeVideoID(url) { // Returns with video id else returns false
   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
   var match = url.match(regExp);
-  return (match && match[7].length == 11) ? match[7] : false;
+  var id = new URL(url).searchParams.get("v");
+  return (match && match[7].length == 11) ? id : false;
 }
