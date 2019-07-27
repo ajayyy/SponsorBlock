@@ -1,4 +1,7 @@
+
 // References
+var SB = {};
+
 SB.sponsorStart = document.getElementById("sponsorStart");
 SB.clearTimes = document.getElementById("clearTimes");
 SB.submitTimes = document.getElementById("submitTimes");
@@ -13,6 +16,7 @@ SB.reportAnIssue = document.getElementById("reportAnIssue");
 SB.sponsorTimesContributionsContainer = document.getElementById("sponsorTimesContributionsContainer");
 SB.sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
 SB.sponsorTimesContributionsDisplayEndWord = document.getElementById("sponsorTimesContributionsDisplayEndWord");
+
 //setup click listeners
 SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
 SB.clearTimes.addEventListener("click", clearTimes);
