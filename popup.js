@@ -1,14 +1,29 @@
+// References
+SB.sponsorStart = document.getElementById("sponsorStart");
+SB.clearTimes = document.getElementById("clearTimes");
+SB.submitTimes = document.getElementById("submitTimes");
+SB.showNoticeAgain = document.getElementById("showNoticeAgain");
+SB.hideVideoPlayerControls = document.getElementById("hideVideoPlayerControls");
+SB.showVideoPlayerControls = document.getElementById("showVideoPlayerControls");
+SB.disableSponsorViewTracking = document.getElementById("disableSponsorViewTracking");
+SB.enableSponsorViewTracking = document.getElementById("enableSponsorViewTracking");
+SB.optionsButton = document.getElementById("optionsButton");
+SB.reportAnIssue = document.getElementById("reportAnIssue");
+// sponsorTimesContributions
+SB.sponsorTimesContributionsContainer = document.getElementById("sponsorTimesContributionsContainer");
+SB.sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
+SB.sponsorTimesContributionsDisplayEndWord = document.getElementById("sponsorTimesContributionsDisplayEndWord");
 //setup click listeners
-document.getElementById("sponsorStart").addEventListener("click", sendSponsorStartMessage);
-document.getElementById("clearTimes").addEventListener("click", clearTimes);
-document.getElementById("submitTimes").addEventListener("click", submitTimes);
-document.getElementById("showNoticeAgain").addEventListener("click", showNoticeAgain);
-document.getElementById("hideVideoPlayerControls").addEventListener("click", hideVideoPlayerControls);
-document.getElementById("showVideoPlayerControls").addEventListener("click", showVideoPlayerControls);
-document.getElementById("disableSponsorViewTracking").addEventListener("click", disableSponsorViewTracking);
-document.getElementById("enableSponsorViewTracking").addEventListener("click", enableSponsorViewTracking);
-document.getElementById("optionsButton").addEventListener("click", openOptions);
-document.getElementById("reportAnIssue").addEventListener("click", reportAnIssue);
+SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
+SB.clearTimes.addEventListener("click", clearTimes);
+SB.submitTimes.addEventListener("click", submitTimes);
+SB.showNoticeAgain.addEventListener("click", showNoticeAgain);
+SB.hideVideoPlayerControls.addEventListener("click", hideVideoPlayerControls);
+SB.showVideoPlayerControls.addEventListener("click", showVideoPlayerControls);
+SB.disableSponsorViewTracking.addEventListener("click", disableSponsorViewTracking);
+SB.enableSponsorViewTracking.addEventListener("click", enableSponsorViewTracking);
+SB.optionsButton.addEventListener("click", openOptions);
+SB.reportAnIssue.addEventListener("click", reportAnIssue);
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -27,7 +42,7 @@ var isYouTubeTab = false;
 chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
   let dontShowNoticeAgain = result.dontShowNoticeAgain;
   if (dontShowNoticeAgain != undefined && dontShowNoticeAgain) {
-    document.getElementById("showNoticeAgain").style.display = "unset";
+    SB.showNoticeAgain.style.display = "unset";
   }
 });
 
@@ -35,8 +50,8 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
   let hideVideoPlayerControls = result.hideVideoPlayerControls;
   if (hideVideoPlayerControls != undefined && hideVideoPlayerControls) {
-    document.getElementById("hideVideoPlayerControls").style.display = "none";
-    document.getElementById("showVideoPlayerControls").style.display = "unset";
+    SB.hideVideoPlayerControls.style.display = "none";
+    SB.showVideoPlayerControls.style.display = "unset";
   }
 });
 
@@ -44,25 +59,21 @@ chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
 chrome.storage.sync.get(["trackViewCount"], function(result) {
   let trackViewCount = result.trackViewCount;
   if (trackViewCount != undefined && !trackViewCount) {
-    document.getElementById("disableSponsorViewTracking").style.display = "none";
-    document.getElementById("enableSponsorViewTracking").style.display = "unset";
+    SB.disableSponsorViewTracking.style.display = "none";
+    SB.enableSponsorViewTracking.style.display = "unset";
   }
 });
 
 //get the amount of times this user has contributed and display it to thank them
 chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
   if (result.sponsorTimesContributed != undefined) {
-    let sponsorTimesContributionsContainer = document.getElementById("sponsorTimesContributionsContainer");
-    let sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
-    let sponsorTimesContributionsDisplayEndWord = document.getElementById("sponsorTimesContributionsDisplayEndWord");
-
     if (result.sponsorTimesContributed > 1) {
-      sponsorTimesContributionsDisplayEndWord.innerText = "sponsors."
+      SB.sponsorTimesContributionsDisplayEndWord.innerText = "sponsors."
     } else {
-      sponsorTimesContributionsDisplayEndWord.innerText = "sponsor."
+      SB.sponsorTimesContributionsDisplayEndWord.innerText = "sponsor."
     }
-    sponsorTimesContributionsDisplay.innerText = result.sponsorTimesContributed;
-    sponsorTimesContributionsContainer.style.display = "unset";
+    SB.sponsorTimesContributionsDisplay.innerText = result.sponsorTimesContributed;
+    SB.sponsorTimesContributionsContainer.style.display = "unset";
 
     //get the userID
     chrome.storage.sync.get(["userID"], function(result) {
@@ -73,19 +84,14 @@ chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
         sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
-
             if (viewCount != 0) {
-              let sponsorTimesViewsContainer = document.getElementById("sponsorTimesViewsContainer");
-              let sponsorTimesViewsDisplay = document.getElementById("sponsorTimesViewsDisplay");
-              let sponsorTimesViewsDisplayEndWord = document.getElementById("sponsorTimesViewsDisplayEndWord");
-      
               if (viewCount > 1) {
-                sponsorTimesViewsDisplayEndWord.innerText = "sponsor segments."
+                SB.sponsorTimesViewsDisplayEndWord.innerText = "sponsor segments."
               } else {
-                sponsorTimesViewsDisplayEndWord.innerText = "sponsor segment."
+                SB.sponsorTimesViewsDisplayEndWord.innerText = "sponsor segment."
               }
-              sponsorTimesViewsDisplay.innerText = viewCount;
-              sponsorTimesViewsContainer.style.display = "unset";
+              SB.sponsorTimesViewsDisplay.innerText = viewCount;
+              SB.sponsorTimesViewsContainer.style.display = "unset";
             }
           }
         });
@@ -117,7 +123,7 @@ function loadTabData(tabs) {
     if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
       if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
         startTimeChosen = true;
-        document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends Now";
+        SB.sponsorStart.innerHTML = "Sponsorship Ends Now";
       }
 
       sponsorTimes = sponsorTimesStorage;
@@ -372,7 +378,7 @@ function showNoticeAgain() {
     });
   });
 
-  document.getElementById("showNoticeAgain").style.display = "none";
+  SB.showNoticeAgain.style.display = "none";
 }
 
 function hideVideoPlayerControls() {
@@ -388,8 +394,8 @@ function hideVideoPlayerControls() {
     });
   });
 
-  document.getElementById("hideVideoPlayerControls").style.display = "none";
-  document.getElementById("showVideoPlayerControls").style.display = "unset";
+  SB.hideVideoPlayerControls.style.display = "none";
+  SB.showVideoPlayerControls.style.display = "unset";
 }
 
 function showVideoPlayerControls() {
@@ -405,8 +411,8 @@ function showVideoPlayerControls() {
     });
   });
 
-  document.getElementById("hideVideoPlayerControls").style.display = "unset";
-  document.getElementById("showVideoPlayerControls").style.display = "none";
+  SB.hideVideoPlayerControls.style.display = "unset";
+  SB.showVideoPlayerControls.style.display = "none";
 }
 
 function disableSponsorViewTracking() {
@@ -422,8 +428,8 @@ function disableSponsorViewTracking() {
     });
   });
 
-  document.getElementById("disableSponsorViewTracking").style.display = "none";
-  document.getElementById("enableSponsorViewTracking").style.display = "unset";
+  SB.disableSponsorViewTracking.style.display = "none";
+  SB.enableSponsorViewTracking.style.display = "unset";
 }
 
 function enableSponsorViewTracking() {
@@ -439,15 +445,15 @@ function enableSponsorViewTracking() {
     });
   });
 
-  document.getElementById("enableSponsorViewTracking").style.display = "none";
-  document.getElementById("disableSponsorViewTracking").style.display = "unset";
+  SB.enableSponsorViewTracking.style.display = "none";
+  SB.disableSponsorViewTracking.style.display = "unset";
 }
 
 function updateStartTimeChosen() {
   //update startTimeChosen variable
   if (!startTimeChosen) {
     startTimeChosen = true;
-  document.getElementById("sponsorStart").innerHTML = "Sponsorship Ends Now";
+  SB.sponsorStart.innerHTML = "Sponsorship Ends Now";
   } else {
     resetStartTimeChosen();
   }
@@ -456,7 +462,7 @@ function updateStartTimeChosen() {
 //set it to false
 function resetStartTimeChosen() {
   startTimeChosen = false;
-  document.getElementById("sponsorStart").innerHTML = "Sponsorship Starts Now";
+  SB.sponsorStart.innerHTML = "Sponsorship Starts Now";
 }
 
 //hides and shows the submit times button when needed
@@ -485,7 +491,7 @@ function displayNoVideo() {
 
 function reportAnIssue() {
   document.getElementById("issueReporterContainer").style.display = "unset";
-  document.getElementById("reportAnIssue").style.display = "none";
+  SB.reportAnIssue.style.display = "none";
 }
 
 function addVoteMessage(message, UUID) {
