@@ -85,7 +85,6 @@ function addSponsorTime(time, videoID) {
 
     //save this info
     let sponsorTimeKey = "sponsorTimes" + videoID;
-    console.log(sponsorTimes)
     chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
   });
 }
@@ -124,9 +123,6 @@ function submitTimes(videoID, callback) {
       for (let i = 0; i < sponsorTimes.length; i++) {
         getUserID(function(userIDStorage) {
           //submit the sponsorTime
-          console.log(sponsorTimes)
-          console.log("/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
-          + "&userID=" + userIDStorage)
           sendRequestToServer('GET', "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
           + "&userID=" + userIDStorage, function(xmlhttp, error) {
             if (xmlhttp.readyState == 4 && !error) {
