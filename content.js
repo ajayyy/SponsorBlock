@@ -121,6 +121,10 @@ function videoIDChange(id) {
   lastTime = -1;
   lastUnixTimeSkipped = -1;
 
+  //reset sponsor times
+  sponsorTimes = undefined;
+  UUIDs = undefined;
+
   //reset sponsor data found check
   sponsorDataFound = false;
   sponsorsLookup(id);
