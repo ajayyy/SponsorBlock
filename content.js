@@ -108,10 +108,10 @@ document.onkeydown = function(e) {
     //is the video in focus, otherwise they could be typing a comment
     if (document.activeElement === video) {
         if (e.code == hotkeys.submit) {
-            if (hasData) { // First time
+            if (hasData) { // Submit!!!
                 submitSponsorTimes();
                 hasData = false;
-            } else { // Submit!!!
+            } else { // First time
                 startSponsorClicked();
                 hasData = true;
             }
