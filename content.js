@@ -1,13 +1,15 @@
-if(id = getYouTubeVideoID(document.URL)){ // Direct Links
-  videoIDChange(id);
-}
-
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 
 //the actual sponsorTimes if loaded and UUIDs associated with them
-var sponsorTimes = undefined;
-var UUIDs = undefined;
+var sponsorTimes = null;
+var UUIDs = null;
+//what video id are these sponsors for
+var sponsorVideoID = null;
+
+if(id = getYouTubeVideoID(document.URL)){ // Direct Links
+  videoIDChange(id);
+}
 
 //the video
 var v;
@@ -53,6 +55,7 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 
 chrome.runtime.onMessage.addListener( // Detect URL Changes
   function(request, sender, sendResponse) {
+	  console.log(request.message)
     //message from background script
     if (request.message == "ytvideoid") { 
       videoIDChange(request.id);
@@ -117,13 +120,19 @@ document.onkeydown = function(e){
 }
 
 function videoIDChange(id) {
+  //not a url change
+  if (sponsorVideoID == id){
+    return;
+  }
+
   //reset last sponsor times
   lastTime = -1;
   lastUnixTimeSkipped = -1;
 
   //reset sponsor times
-  sponsorTimes = undefined;
-  UUIDs = undefined;
+  sponsorTimes = null;
+  UUIDs = null;
+  sponsorVideoID = id;
 
   //reset sponsor data found check
   sponsorDataFound = false;
@@ -136,9 +145,9 @@ function videoIDChange(id) {
   }, function(response) {
     if (response != undefined) {
       let sponsorTimes = response.sponsorTimes;
-      if (sponsorTimes != undefined && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
+      if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
         document.getElementById("submitButton").style.display = "unset";
-      } else if (sponsorTimes != undefined && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+      } else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
         toggleStartSponsorButton();
       }
     }
@@ -232,7 +241,7 @@ function sponsorCheck(sponsorTimes) { // Video skipping
 }
 
 function goBackToPreviousTime(UUID) {
-  if (sponsorTimes != undefined) {
+  if (sponsorTimes != null) {
     //add a tiny bit of time to make sure it is not skipped again
     v.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][0] + 0.001;
 
@@ -593,12 +602,10 @@ function sponsorMessageStarted() {
 }
 
 function submitSponsorTimes() {
-  console.log("Tessst")
   if (document.getElementById("submitButton").style.display == "none") {
     //don't submit, not ready
     return;
   }
-  console.log("Test")
 
   //add loading animation
   document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
