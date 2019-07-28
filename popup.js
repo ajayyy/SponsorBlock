@@ -16,6 +16,10 @@ SB.reportAnIssue = document.getElementById("reportAnIssue");
 SB.sponsorTimesContributionsContainer = document.getElementById("sponsorTimesContributionsContainer");
 SB.sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
 SB.sponsorTimesContributionsDisplayEndWord = document.getElementById("sponsorTimesContributionsDisplayEndWord");
+// sponsorTimesViewsDisplay
+SB.sponsorTimesViewsContainer = document.getElementById("sponsorTimesViewsDisplayContainer");
+SB.sponsorTimesViewsDisplay = document.getElementById("sponsorTimesViewsDisplayDisplay");
+SB.sponsorTimesViewsDisplayEndWord = document.getElementById("sponsorTimesViewsDisplayDisplayEndWord");
 
 //setup click listeners
 SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
