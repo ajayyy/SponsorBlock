@@ -146,9 +146,12 @@ function videoIDChange(id) {
     if (response != undefined) {
       let sponsorTimes = response.sponsorTimes;
       if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
-        document.getElementById("submitButton").style.display = "unset";
+        changeStartSponsorButton(true, true);
       } else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
-        toggleStartSponsorButton();
+        changeStartSponsorButton(false, true);
+      } else {
+        changeStartSponsorButton(true, true);
+        document.getElementById("submitButton").style.display = "none";
       }
     }
   });
