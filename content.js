@@ -307,6 +307,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   if (showStartSponsor) {
     showingStartSponsor = true;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+    document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Starts Now");
 
     if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible) {
       document.getElementById("submitButton").style.display = "unset";
@@ -317,6 +318,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   } else {
     showingStartSponsor = false;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
+    document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Ends Now");
 
     //disable submit button
     document.getElementById("submitButton").style.display = "none";
