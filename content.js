@@ -607,13 +607,30 @@ function sponsorMessageStarted() {
 }
 
 function submitSponsorTimes() {
-  if(!confirm("Are you sure you want to submit this?")) return;
-
   if (document.getElementById("submitButton").style.display == "none") {
     //don't submit, not ready
     return;
   }
 
+  let currentVideoID = getYouTubeVideoID(document.URL);
+
+  let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
+  chrome.storage.sync.get([sponsorTimeKey], function(result) {
+    let sponsorTimes = result[sponsorTimeKey];
+
+    if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+      let confirmMessage = "Are you sure you want to submit this?\n\n" + getSponsorTimesMessage(sponsorTimes);
+      if(!confirm(confirmMessage)) return;
+
+      sendSubmitMessage();
+    }
+  });
+
+}
+
+//send the message to the background js
+//called after all the checks have been made that it's okay to do so
+function sendSubmitMessage(){
   //add loading animation
   document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
   document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
@@ -647,6 +664,42 @@ function submitSponsorTimes() {
       }
     }
   });
+}
+
+//get the message that visually displays the video times
+function getSponsorTimesMessage(sponsorTimes) {
+  let sponsorTimesMessage = "";
+
+  for (let i = 0; i < sponsorTimes.length; i++) {
+    for (let s = 0; s < sponsorTimes[i].length; s++) {
+      let timeMessage = getFormattedTime(sponsorTimes[i][s]);
+      //if this is an end time
+      if (s == 1) {
+        timeMessage = " to " + timeMessage;
+      } else if (i > 0) {
+        //add commas if necessary
+        timeMessage = ", " + timeMessage;
+      }
+
+      sponsorTimesMessage += timeMessage;
+    }
+  }
+
+  return sponsorTimesMessage;
+}
+
+//converts time in seconds to minutes:seconds
+function getFormattedTime(seconds) {
+  let minutes = Math.floor(seconds / 60);
+  let secondsDisplay = Math.round(seconds - minutes * 60);
+  if (secondsDisplay < 10) {
+    //add a zero
+    secondsDisplay = "0" + secondsDisplay;
+  }
+
+  let formatted = minutes+ ":" + secondsDisplay;
+
+  return formatted;
 }
 
 function sendRequestToServer(type, address, callback) {
