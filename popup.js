@@ -388,8 +388,12 @@ function getSponsorTimesMessageDiv(sponsorTimes) {
     currentSponsorTimeContainer.innerText = currentSponsorTimeMessage;
     sponsorTimesContainer.appendChild(currentSponsorTimeContainer);
     sponsorTimesContainer.appendChild(deleteButton);
-    sponsorTimesContainer.appendChild(spacer);
-    sponsorTimesContainer.appendChild(editButton);
+
+    //only if it is a complete sponsor time
+    if (sponsorTimes[i].length > 1) {
+      sponsorTimesContainer.appendChild(spacer);
+      sponsorTimesContainer.appendChild(editButton);
+    }
   }
 
   return sponsorTimesContainer;
