@@ -20,6 +20,9 @@ SB.sponsorTimesContributionsDisplayEndWord = document.getElementById("sponsorTim
 SB.sponsorTimesViewsContainer = document.getElementById("sponsorTimesViewsDisplayContainer");
 SB.sponsorTimesViewsDisplay = document.getElementById("sponsorTimesViewsDisplayDisplay");
 SB.sponsorTimesViewsDisplayEndWord = document.getElementById("sponsorTimesViewsDisplayDisplayEndWord");
+// discordButtons
+SB.discordButtonContainer = document.getElementById("discordButtonContainer");
+SB.hideDiscordButton = document.getElementById("hideDiscordButton");
 
 //setup click listeners
 SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
@@ -32,6 +35,8 @@ SB.disableSponsorViewTracking.addEventListener("click", disableSponsorViewTracki
 SB.enableSponsorViewTracking.addEventListener("click", enableSponsorViewTracking);
 SB.optionsButton.addEventListener("click", openOptions);
 SB.reportAnIssue.addEventListener("click", reportAnIssue);
+SB.hideDiscordButton.addEventListener("click", hideDiscordButton);
+
 
 //if true, the button now selects the end time
 var startTimeChosen = false;
@@ -44,6 +49,26 @@ var currentVideoID = null;
 
 //is this a YouTube tab?
 var isYouTubeTab = false;
+
+//see if discord link can be shown
+chrome.storage.sync.get(["hideDiscordLink"], function(result) {
+  let hideDiscordLink = result.hideDiscordLink;
+  if (hideDiscordLink == undefined || !hideDiscordLink) {
+    chrome.storage.sync.get(["hideDiscordLaunches"], function(result) {
+      let hideDiscordLaunches = result.hideDiscordLaunches;
+      //only if less than 5 launches
+      if (hideDiscordLaunches == undefined || hideDiscordLaunches < 10) {
+        SB.discordButtonContainer.style.display = null;
+        
+        if (hideDiscordLaunches == undefined) {
+          hideDiscordButton = 1;
+        }
+
+        chrome.storage.sync.set({"hideDiscordLaunches": hideDiscordButton + 1});
+      }
+    });
+  }
+});
 
 //if the don't show notice again variable is true, an option to 
 //  disable should be available
@@ -541,6 +566,12 @@ function vote(type, UUID) {
       }
     }
   });
+}
+
+function hideDiscordButton() {
+  chrome.storage.sync.set({"hideDiscordLink": false});
+
+  SB.discordButtonContainer.style.display = "none";
 }
 
 //converts time in seconds to minutes:seconds

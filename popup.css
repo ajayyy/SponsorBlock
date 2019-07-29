@@ -25,6 +25,16 @@ body {
 	filter: brightness(80%);
 }
 
+#discordButtonContainer {
+	font-size: 12px;
+}
+
+.smallLink {
+	font-size: 10px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .greenButton {
 	background-color:#ec1c1c;
   -moz-border-radius:28px;
