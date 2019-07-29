@@ -427,6 +427,10 @@ function openInfoMenu() {
   popup.appendChild(popupFrame);
 
   let parentNode = document.getElementById("secondary");
+  if (parentNode == null) {
+    //old youtube theme
+    parentNode = document.getElementById("watch7-sidebar-contents");
+  }
 
   parentNode.prepend(popup);
 }
