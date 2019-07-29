@@ -620,6 +620,7 @@ function submitSponsorTimes() {
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
       let confirmMessage = "Are you sure you want to submit this?\n\n" + getSponsorTimesMessage(sponsorTimes);
+      confirmMessage += "\n\nTo see more information, open the popup by clicking the extensions icon in the top right corner."
       if(!confirm(confirmMessage)) return;
 
       sendSubmitMessage();
