@@ -479,6 +479,22 @@ function saveSponsorTimeEdit(index) {
 
 //deletes the sponsor time submitted at an index
 function deleteSponsorTime(index) {
+  //if it is not a complete sponsor time
+  if (sponsorTimes[index].length < 2) {
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        message: "changeStartSponsorButton",
+        showStartSponsor: true,
+        uploadButtonVisible: false
+      });
+    });
+
+    resetStartTimeChosen();
+  }
+
   sponsorTimes.splice(index, 1);
 
   //save this
