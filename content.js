@@ -146,9 +146,12 @@ function videoIDChange(id) {
     if (response != undefined) {
       let sponsorTimes = response.sponsorTimes;
       if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
-        document.getElementById("submitButton").style.display = "unset";
+        changeStartSponsorButton(true, true);
       } else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
-        toggleStartSponsorButton();
+        changeStartSponsorButton(false, true);
+      } else {
+        changeStartSponsorButton(true, true);
+        document.getElementById("submitButton").style.display = "none";
       }
     }
   });
@@ -304,6 +307,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   if (showStartSponsor) {
     showingStartSponsor = true;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+    document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Starts Now");
 
     if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible) {
       document.getElementById("submitButton").style.display = "unset";
@@ -314,6 +318,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   } else {
     showingStartSponsor = false;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
+    document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Ends Now");
 
     //disable submit button
     document.getElementById("submitButton").style.display = "none";
