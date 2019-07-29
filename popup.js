@@ -220,40 +220,47 @@ function sendSponsorStartMessage() {
     }, tabs => {
       chrome.tabs.sendMessage(
         tabs[0].id,
-        {from: 'popup', message: 'sponsorStart'}
+        {from: 'popup', message: 'sponsorStart'},
+        startSponsorCallback
       );
     });
 }
 
-chrome.runtime.onMessage.addListener(function (request, sender, callback) {
-  if (request.message == "time") {
-    let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
+function startSponsorCallback(response) {
+  let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
 
-    if (sponsorTimes[sponsorTimesIndex] == undefined) {
-      sponsorTimes[sponsorTimesIndex] = [];
-    }
-
-    sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = request.time;
-
-    let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
-
-    updateStartTimeChosen();
-
-    //display video times on screen
-    displaySponsorTimes();
-
-    //show submission section
-    document.getElementById("submissionSection").style.display = "unset";
-
-    showSubmitTimesIfNecessary();
+  if (sponsorTimes[sponsorTimesIndex] == undefined) {
+    sponsorTimes[sponsorTimesIndex] = [];
   }
-});
+
+  sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = response.time;
+
+  let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+  chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+
+  updateStartTimeChosen();
+
+  //display video times on screen
+  displaySponsorTimes();
+
+  //show submission section
+  document.getElementById("submissionSection").style.display = "unset";
+
+  showSubmitTimesIfNecessary();
+}
 
 //display the video times from the array
 function displaySponsorTimes() {
   //set it to the message
-  document.getElementById("sponsorMessageTimes").innerHTML = getSponsorTimesMessage(sponsorTimes);
+  let sponsorMessageTimes = document.getElementById("sponsorMessageTimes");
+
+  //remove all children
+  while (sponsorMessageTimes.firstChild) {
+    sponsorMessageTimes.removeChild(sponsorMessageTimes.firstChild);
+  }
+
+  //add sponsor times
+  sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
 }
 
 //display the video times from the array at the top, in a different section
@@ -334,6 +341,185 @@ function getSponsorTimesMessage(sponsorTimes) {
   }
 
   return sponsorTimesMessage;
+}
+
+//get the message that visually displays the video times
+//this version is a div that contains each with delete buttons
+function getSponsorTimesMessageDiv(sponsorTimes) {
+  // let sponsorTimesMessage = "";
+  let sponsorTimesContainer = document.createElement("div");
+  sponsorTimesContainer.id = "sponsorTimesContainer";
+
+  for (let i = 0; i < sponsorTimes.length; i++) {
+    let currentSponsorTimeContainer = document.createElement("div");
+    currentSponsorTimeContainer.id = "sponsorTimeContainer" + i;
+    let currentSponsorTimeMessage = "";
+
+    let deleteButton = document.createElement("span");
+    deleteButton.id = "sponsorTimeDeleteButton" + i;
+    deleteButton.innerText = "Delete";
+    deleteButton.className = "smallLink";
+    let index = i;
+    deleteButton.addEventListener("click", () => deleteSponsorTime(index));
+
+    let spacer = document.createElement("span");
+    spacer.innerText = " ";
+
+    let editButton = document.createElement("span");
+    editButton.id = "sponsorTimeEditButton" + i;
+    editButton.innerText = "Edit";
+    editButton.className = "smallLink";
+    editButton.addEventListener("click", () => editSponsorTime(index));
+
+    for (let s = 0; s < sponsorTimes[i].length; s++) {
+      let timeMessage = getFormattedTime(sponsorTimes[i][s]);
+      //if this is an end time
+      if (s == 1) {
+        timeMessage = " to " + timeMessage;
+      } else if (i > 0) {
+        //add commas if necessary
+        timeMessage = timeMessage;
+      }
+
+      currentSponsorTimeMessage += timeMessage;
+    }
+
+    currentSponsorTimeContainer.innerText = currentSponsorTimeMessage;
+    sponsorTimesContainer.appendChild(currentSponsorTimeContainer);
+    sponsorTimesContainer.appendChild(deleteButton);
+
+    //only if it is a complete sponsor time
+    if (sponsorTimes[i].length > 1) {
+      sponsorTimesContainer.appendChild(spacer);
+      sponsorTimesContainer.appendChild(editButton);
+    }
+  }
+
+  return sponsorTimesContainer;
+}
+
+function editSponsorTime(index) {
+  let sponsorTimeContainer = document.getElementById("sponsorTimeContainer" + index);
+
+  //get sponsor time minutes and seconds boxes
+  let startTimeMinutes = document.createElement("input");
+  startTimeMinutes.id = "startTimeMinutes" + index;
+  startTimeMinutes.type = "text";
+  startTimeMinutes.value = getTimeInMinutes(sponsorTimes[index][0]);
+  startTimeMinutes.style.width = "35";
+  
+  let startTimeSeconds = document.createElement("input");
+  startTimeSeconds.id = "startTimeSeconds" + index;
+  startTimeSeconds.type = "text";
+  startTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][0]);
+  startTimeSeconds.style.width = "42";
+
+  let endTimeMinutes = document.createElement("input");
+  endTimeMinutes.id = "endTimeMinutes" + index;
+  endTimeMinutes.type = "text";
+  endTimeMinutes.value = getTimeInMinutes(sponsorTimes[index][1]);
+  endTimeMinutes.style.width = "35";
+  
+  let endTimeSeconds = document.createElement("input");
+  endTimeSeconds.id = "endTimeSeconds" + index;
+  endTimeSeconds.type = "text";
+  endTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][1]);
+  endTimeSeconds.style.width = "42";
+
+  let colonText = document.createElement("span");
+  colonText.innerText = ":";
+
+  let toText = document.createElement("span");
+  toText.innerText = " to ";
+
+  //remove all children to replace
+  while (sponsorTimeContainer.firstChild) {
+    sponsorTimeContainer.removeChild(sponsorTimeContainer.firstChild);
+  }
+
+  sponsorTimeContainer.appendChild(startTimeMinutes);
+  sponsorTimeContainer.appendChild(colonText);
+  sponsorTimeContainer.appendChild(startTimeSeconds);
+  sponsorTimeContainer.appendChild(toText);
+  sponsorTimeContainer.appendChild(endTimeMinutes);
+  sponsorTimeContainer.appendChild(colonText);
+  sponsorTimeContainer.appendChild(endTimeSeconds);
+
+  //add save button and remove edit button
+  let saveButton = document.createElement("span");
+  saveButton.id = "sponsorTimeSaveButton" + index;
+  saveButton.innerText = "Save";
+  saveButton.className = "smallLink";
+  saveButton.addEventListener("click", () => saveSponsorTimeEdit(index));
+
+  let editButton = document.getElementById("sponsorTimeEditButton" + index);
+  let sponsorTimesContainer = document.getElementById("sponsorTimesContainer");
+
+  sponsorTimesContainer.removeChild(editButton);
+  sponsorTimesContainer.appendChild(saveButton);
+}
+
+function saveSponsorTimeEdit(index) {
+  let startTimeMinutes = document.getElementById("startTimeMinutes" + index);
+  let startTimeSeconds = document.getElementById("startTimeSeconds" + index);
+
+  let endTimeMinutes = document.getElementById("endTimeMinutes" + index);
+  let endTimeSeconds = document.getElementById("endTimeSeconds" + index);
+
+  sponsorTimes[index][0] = parseInt(startTimeMinutes.value) * 60 + parseFloat(startTimeSeconds.value);
+  sponsorTimes[index][1] = parseInt(endTimeMinutes.value) * 60 + parseFloat(endTimeSeconds.value);
+
+  //save this
+  let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+  chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+
+  displaySponsorTimes();
+}
+
+//deletes the sponsor time submitted at an index
+function deleteSponsorTime(index) {
+  //if it is not a complete sponsor time
+  if (sponsorTimes[index].length < 2) {
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        message: "changeStartSponsorButton",
+        showStartSponsor: true,
+        uploadButtonVisible: false
+      });
+    });
+
+    resetStartTimeChosen();
+  }
+
+  sponsorTimes.splice(index, 1);
+
+  //save this
+  let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+  chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+
+  //update display
+  displaySponsorTimes();
+
+  //if they are all removed
+  if (sponsorTimes.length == 0) {
+    //update chrome tab
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        message: "changeStartSponsorButton",
+        showStartSponsor: true,
+        uploadButtonVisible: false
+      });
+    });
+
+    //hide submission section
+    document.getElementById("submissionSection").style.display = "none";
+  }
 }
 
 function clearTimes() {
@@ -586,6 +772,24 @@ function getFormattedTime(seconds) {
   let formatted = minutes+ ":" + secondsDisplay;
 
   return formatted;
+}
+
+//converts time in seconds to minutes
+function getTimeInMinutes(seconds) {
+  let minutes = Math.floor(seconds / 60);
+
+  return minutes;
+}
+
+//converts time in seconds to seconds past the last minute
+function getTimeInFormattedSeconds(seconds) {
+  let secondsFormatted = (seconds % 60).toFixed(3);
+
+  if (secondsFormatted < 10) {
+    secondsFormatted = "0" + secondsFormatted;
+  }
+
+  return secondsFormatted;
 }
 
 function sendRequestToServer(type, address, callback) {

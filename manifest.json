@@ -1,7 +1,7 @@
 {
-  "name": "SponsorBlock - YouTube Sponsorship Blocker",
+  "name": "SponsorBlock for YouTube - Skip Sponsorships",
   "short_name": "SponsorBlock",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
   "content_scripts": [
     {
@@ -26,7 +26,9 @@
     "icons/PlayerUploadIconSponsorBlocker256px.png",
     "icons/PlayerUploadFailedIconSponsorBlocker256px.png",
     "icons/upvote.png",
-    "icons/downvote.png"
+    "icons/downvote.png",
+    "icons/PlayerInfoIconSponsorBlocker256px.png",
+    "popup.html"
   ],
   "permissions": [
     "tabs",

@@ -8,7 +8,7 @@ h1 {
 
 body {
   font-size: 14px;
-  width: 300px;
+  min-width: 300px;
   background-color: #ffd9d9;
 }
 
