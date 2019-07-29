@@ -253,7 +253,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 //display the video times from the array
 function displaySponsorTimes() {
   //set it to the message
-  document.getElementById("sponsorMessageTimes").innerHTML = getSponsorTimesMessage(sponsorTimes);
+  let sponsorMessageTimes = document.getElementById("sponsorMessageTimes");
+
+  //remove all children
+  while (sponsorMessageTimes.firstChild) {
+    sponsorMessageTimes.removeChild(sponsorMessageTimes.firstChild);
+  }
+
+  //add sponsor times
+  sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
 }
 
 //display the video times from the array at the top, in a different section
@@ -334,6 +342,74 @@ function getSponsorTimesMessage(sponsorTimes) {
   }
 
   return sponsorTimesMessage;
+}
+
+//get the message that visually displays the video times
+//this version is a div that contains each with delete buttons
+function getSponsorTimesMessageDiv(sponsorTimes) {
+  // let sponsorTimesMessage = "";
+  let sponsorTimesContainer = document.createElement("div");
+
+  for (let i = 0; i < sponsorTimes.length; i++) {
+    let currentSponsorTimeContainer = document.createElement("div");
+    let currentSponsorTimeMessage = "";
+
+    let deleteButton = document.createElement("div");
+    deleteButton.id = "sponsorTimeDeleteButton" + i;
+    deleteButton.innerText = "Delete";
+    deleteButton.className = "smallLink";
+    let index = i;
+    deleteButton.addEventListener("click", () => deleteSponsorTime(index));
+
+    for (let s = 0; s < sponsorTimes[i].length; s++) {
+      let timeMessage = getFormattedTime(sponsorTimes[i][s]);
+      //if this is an end time
+      if (s == 1) {
+        timeMessage = " to " + timeMessage;
+      } else if (i > 0) {
+        //add commas if necessary
+        timeMessage = timeMessage;
+      }
+
+      currentSponsorTimeMessage += timeMessage;
+    }
+
+    currentSponsorTimeContainer.innerText = currentSponsorTimeMessage;
+    sponsorTimesContainer.appendChild(currentSponsorTimeContainer);
+    sponsorTimesContainer.appendChild(deleteButton);
+  }
+
+  return sponsorTimesContainer;
+}
+
+//deletes the sponsor time submitted at an index
+function deleteSponsorTime(index) {
+  sponsorTimes.splice(index, 1);
+
+  //save this
+  let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+  chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+
+  //update display
+  displaySponsorTimes();
+
+  //if they are all removed
+  if (sponsorTimes.length == 0) {
+    //update chrome tab
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        message: "changeStartSponsorButton",
+        showStartSponsor: true,
+        uploadButtonVisible: false
+      });
+    });
+
+    //hide submission section
+    document.getElementById("submissionSection").style.display = "none";
+  }
 }
 
 function clearTimes() {
