@@ -220,35 +220,34 @@ function sendSponsorStartMessage() {
     }, tabs => {
       chrome.tabs.sendMessage(
         tabs[0].id,
-        {from: 'popup', message: 'sponsorStart'}
+        {from: 'popup', message: 'sponsorStart'},
+        startSponsorCallback
       );
     });
 }
 
-chrome.runtime.onMessage.addListener(function (request, sender, callback) {
-  if (request.message == "time") {
-    let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
+function startSponsorCallback(response) {
+  let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
 
-    if (sponsorTimes[sponsorTimesIndex] == undefined) {
-      sponsorTimes[sponsorTimesIndex] = [];
-    }
-
-    sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = request.time;
-
-    let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
-
-    updateStartTimeChosen();
-
-    //display video times on screen
-    displaySponsorTimes();
-
-    //show submission section
-    document.getElementById("submissionSection").style.display = "unset";
-
-    showSubmitTimesIfNecessary();
+  if (sponsorTimes[sponsorTimesIndex] == undefined) {
+    sponsorTimes[sponsorTimesIndex] = [];
   }
-});
+
+  sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = response.time;
+
+  let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+  chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+
+  updateStartTimeChosen();
+
+  //display video times on screen
+  displaySponsorTimes();
+
+  //show submission section
+  document.getElementById("submissionSection").style.display = "unset";
+
+  showSubmitTimesIfNecessary();
+}
 
 //display the video times from the array
 function displaySponsorTimes() {

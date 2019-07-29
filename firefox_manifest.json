@@ -26,7 +26,8 @@
     "icons/PlayerUploadIconSponsorBlocker256px.png",
     "icons/PlayerUploadFailedIconSponsorBlocker256px.png",
     "icons/upvote.png",
-    "icons/downvote.png"
+    "icons/downvote.png",
+    "icons/PlayerInfoIconSponsorBlocker256px.png"
   ],
   "permissions": [
     "tabs",

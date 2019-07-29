@@ -32,6 +32,10 @@ var showingStartSponsor = true;
 //should the video controls buttons be added
 var hideVideoPlayerControls = false;
 
+//becomes true when isInfoFound is called
+//this is used to close the popup on YouTube when the other popup opens
+var popupInitialised = false;
+
 //should view counts be tracked
 var trackViewCount = false;
 chrome.storage.sync.get(["trackViewCount"], function(result) {
@@ -55,7 +59,6 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 
 chrome.runtime.onMessage.addListener( // Detect URL Changes
   function(request, sender, sendResponse) {
-	  console.log(request.message)
     //message from background script
     if (request.message == "ytvideoid") { 
       videoIDChange(request.id);
@@ -63,7 +66,7 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
 
     //messages from popup script
     if (request.message == "sponsorStart") {
-      sponsorMessageStarted();
+      sponsorMessageStarted(sendResponse);
     }
 
     if (request.message == "isInfoFound") {
@@ -72,7 +75,14 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
         found: sponsorDataFound,
         sponsorTimes: sponsorTimes,
         UUIDs: UUIDs
-      })
+      });
+
+      if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+        //the popup should be closed now that another is opening
+        closeInfoMenu();
+      }
+
+      popupInitialised = true;
     }
 
     if (request.message == "getVideoID") {
@@ -286,6 +296,7 @@ function removePlayerControlsButton() {
 //adds or removes the player controls button to what it should be
 function updateVisibilityOfPlayerControlsButton() {
   addPlayerControlsButton();
+  addInfoButton();
   addSubmitButton();
   if (hideVideoPlayerControls) {
     removePlayerControlsButton();
@@ -293,6 +304,9 @@ function updateVisibilityOfPlayerControlsButton() {
 }
 
 function startSponsorClicked() {
+  //it can't update to this info yet
+  closeInfoMenu();
+
   toggleStartSponsorButton();
 
   //send back current time with message
@@ -329,6 +343,32 @@ function toggleStartSponsorButton() {
   changeStartSponsorButton(!showingStartSponsor, true);
 }
 
+//shows the info button on the video player
+function addInfoButton() {
+  if (document.getElementById("infoButton") != null) {
+    //it's already added
+    return;
+  }
+  
+  //make a submit button
+  let infoButton = document.createElement("button");
+  infoButton.id = "infoButton";
+  infoButton.className = "ytp-button playerButton";
+  infoButton.setAttribute("title", "Open SponsorBlock Popup");
+  infoButton.addEventListener("click", openInfoMenu);
+
+  let infoImage = document.createElement("img");
+  infoImage.id = "infoButtonImage";
+  infoImage.className = "playerButtonImage";
+  infoImage.src = chrome.extension.getURL("icons/PlayerInfoIconSponsorBlocker256px.png");
+
+  //add the image to the button
+  infoButton.appendChild(infoImage);
+
+  let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
+  referenceNode.prepend(infoButton);
+}
+
 //shows the submit button on the video player
 function addSubmitButton() {
   if (document.getElementById("submitButton") != null) {
@@ -355,6 +395,50 @@ function addSubmitButton() {
 
   let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
   referenceNode.prepend(submitButton);
+}
+
+function openInfoMenu() {
+  if (document.getElementById("sponsorBlockPopupContainer") != null) {
+    //it's already added
+    return;
+  }
+
+  popupInitialised = false;
+
+  //hide info button
+  document.getElementById("infoButton").style.display = "none";
+
+  let popup = document.createElement("div");
+  popup.id = "sponsorBlockPopupContainer";
+
+  let popupFrame = document.createElement("iframe");
+  popupFrame.id = "sponsorBlockPopupFrame"
+  popupFrame.src = chrome.extension.getURL("popup.html");
+  popupFrame.className = "popup";
+
+  //close button
+  let closeButton = document.createElement("div");
+  closeButton.innerText = "Close Popup";
+  closeButton.classList = "smallLink";
+  closeButton.setAttribute("align", "center");
+  closeButton.addEventListener("click", closeInfoMenu);
+
+  popup.appendChild(closeButton);
+  popup.appendChild(popupFrame);
+
+  let parentNode = document.getElementById("secondary");
+
+  parentNode.prepend(popup);
+}
+
+function closeInfoMenu() {
+  let popup = document.getElementById("sponsorBlockPopupContainer");
+  if (popup != null) {
+    popup.remove();
+
+    //show info button
+    document.getElementById("infoButton").style.display = "unset";
+  }
 }
 
 //Opens the notice that tells the user that a sponsor was just skipped
@@ -593,14 +677,13 @@ function dontShowNoticeAgain() {
   closeAllSkipNotices();
 }
 
-function sponsorMessageStarted() {
+function sponsorMessageStarted(callback) {
     let v = document.querySelector('video');
 
     //send back current time
-    chrome.runtime.sendMessage({
-      message: "time",
+    callback({
       time: v.currentTime
-    });
+    })
 
     //update button
     toggleStartSponsorButton();
@@ -611,6 +694,9 @@ function submitSponsorTimes() {
     //don't submit, not ready
     return;
   }
+
+  //it can't update to this info yet
+  closeInfoMenu();
 
   let currentVideoID = getYouTubeVideoID(document.URL);
 
