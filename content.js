@@ -817,6 +817,18 @@ function sendSubmitMessage(){
         //show that the upload failed
         document.getElementById("submitButton").style.animation = "unset";
         document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+
+        if(response.statusCode == 400) {
+          alert("Server said this request was invalid");
+        } else if(response.statusCode == 429) {
+          alert("You have submitted too many sponsor times for this one video, are you sure there are this many?");
+        } else if(response.statusCode == 409) {
+          alert("This has already been submitted before");
+        } else if(response.statusCode == 502) {
+          alert("It seems the server is down. Contact the dev to inform them. Error code " + response.statusCode);
+        } else {
+          alert("There was an error submitting your sponsor times, please try again later. Error code " + response.statusCode);
+        }
       }
     }
   });
