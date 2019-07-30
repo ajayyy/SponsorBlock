@@ -10,26 +10,35 @@ h1.popupElement {
 	margin-block-start: 0.67em;
     margin-block-end: 0.67em;
     margin-inline-start: 0px;
-    margin-inline-end: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
 }
 
 h2.popupElement {
 	margin-block-start: 0.83em;
     margin-block-end: 0.83em;
     margin-inline-start: 0px;
-    margin-inline-end: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
 }
 
 h3.popupElement {
 	margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
-    margin-inline-end: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+sub.popupElement {
+	font-size: smaller;
 }
 /* end reset */
 
 .popupElement {
   font-family: 'Source Sans Pro', sans-serif;
+
+  color: black;
 }
 
 h1.popupElement {
