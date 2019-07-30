@@ -3,6 +3,9 @@ var previousVideoID = null
 //the id of this user, randomly generated once per install
 var userID = null;
 
+//the last video id loaded, to make sure it is a video id change
+var sponsorVideoID = null;
+
 //when a new tab is highlighted
 chrome.tabs.onActivated.addListener(
   function(activeInfo) {
@@ -161,6 +164,12 @@ function videoIDChange(currentVideoID, tabId) {
     message: 'ytvideoid',
     id: currentVideoID
   });
+
+  //not a url change
+  if (sponsorVideoID == currentVideoID){
+    return;
+  }
+  sponsorVideoID = currentVideoID;
 
   //warn them if they had unsubmitted times
   if (previousVideoID != null) {

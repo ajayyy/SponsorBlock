@@ -59,8 +59,10 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
   }
 });
 
-chrome.runtime.onMessage.addListener( // Detect URL Changes
-  function(request, sender, sendResponse) {
+//get messages from the background script and the popup
+chrome.runtime.onMessage.addListener(messageListener);
+
+function messageListener(request, sender, sendResponse) {
     //message from background script
     if (request.message == "ytvideoid") { 
       videoIDChange(request.id);
@@ -118,7 +120,7 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
     if (request.message == "trackViewCount") {
       trackViewCount = request.value;
     }
-});
+}
 
 //check for hotkey pressed
 document.onkeydown = function(e){
@@ -474,31 +476,43 @@ function openInfoMenu() {
   //hide info button
   document.getElementById("infoButton").style.display = "none";
 
-  let popup = document.createElement("div");
-  popup.id = "sponsorBlockPopupContainer";
+  sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      var popup = document.createElement("div");
+      popup.id = "sponsorBlockPopupContainer";
+      popup.innerHTML = xmlhttp.responseText
 
-  let popupFrame = document.createElement("iframe");
-  popupFrame.id = "sponsorBlockPopupFrame"
-  popupFrame.src = chrome.extension.getURL("popup.html");
-  popupFrame.className = "popup";
+      //close button
+      let closeButton = document.createElement("div");
+      closeButton.innerText = "Close Popup";
+      closeButton.classList = "smallLink";
+      closeButton.setAttribute("align", "center");
+      closeButton.addEventListener("click", closeInfoMenu);
 
-  //close button
-  let closeButton = document.createElement("div");
-  closeButton.innerText = "Close Popup";
-  closeButton.classList = "smallLink";
-  closeButton.setAttribute("align", "center");
-  closeButton.addEventListener("click", closeInfoMenu);
+      //add the close button
+      popup.prepend(closeButton);
+    
+      let parentNode = document.getElementById("secondary");
+      if (parentNode == null) {
+        //old youtube theme
+        parentNode = document.getElementById("watch7-sidebar-contents");
+      }
 
-  popup.appendChild(closeButton);
-  popup.appendChild(popupFrame);
+      //make the logo source not 404
+      //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
+      let logo = popup.querySelector("#sponsorBlockPopupLogo");
+      logo.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
 
-  let parentNode = document.getElementById("secondary");
-  if (parentNode == null) {
-    //old youtube theme
-    parentNode = document.getElementById("watch7-sidebar-contents");
-  }
+      //remove the style sheet and font that are not necessary
+      popup.querySelector("#sponorBlockPopupFont").remove();
+      popup.querySelector("#sponorBlockStyleSheet").remove();
 
-  parentNode.prepend(popup);
+      parentNode.insertBefore(popup, parentNode.firstChild);
+
+      //run the popup init script
+      runThePopup();
+    }
+  });
 }
 
 function closeInfoMenu() {
