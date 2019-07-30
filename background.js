@@ -100,12 +100,14 @@ function submitVote(type, UUID, callback) {
       } else if (xmlhttp.readyState == 4 && xmlhttp.status == 405) {
         //duplicate vote
         callback({
-          successType: 0
+          successType: 0,
+          statusCode: xmlhttp.status
         });
       } else if (error) {
         //error while connect
         callback({
-          successType: -1
+          successType: -1,
+          statusCode: xmlhttp.status
         });
       }
     })

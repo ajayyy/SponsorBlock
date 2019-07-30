@@ -750,8 +750,12 @@ function vote(type, UUID) {
         //failure: duplicate vote
         addVoteMessage("You have already voted this way before.", UUID)
       } else if (response.successType == -1) {
-        //failure: duplicate vote
-        addVoteMessage("A connection error has occured.", UUID)
+        if (response.statusCode == 502) {
+          addVoteMessage("It seems the sever is down. Contact the dev immediately.", UUID)
+        } else {
+          //failure: unknown error
+          addVoteMessage("A connection error has occured. Error code: " + response.statusCode, UUID)
+        }
       }
     }
   });
