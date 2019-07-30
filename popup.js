@@ -943,10 +943,11 @@ function runThePopup() {
     xmlhttp.send();
   }
   
-  function getYouTubeVideoID(url) { // Return video id or false
-    let regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    let match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
+  function getYouTubeVideoID(url) { // Returns with video id else returns false
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    var id = new URL(url).searchParams.get("v");
+    return (match && match[7].length == 11) ? id : false;
   }
   
 //end of function
@@ -959,3 +960,4 @@ if (chrome.tabs != undefined) {
   //this means it is actually opened in the popup
   runThePopup();
 }
+
