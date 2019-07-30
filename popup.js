@@ -576,6 +576,9 @@ function submitTimes() {
         } else if(response.statusCode == 409) {
           document.getElementById("submitTimesInfoMessage").innerText = "This has already been submitted before";
           document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+        } else if(response.statusCode == 502) {
+          document.getElementById("submitTimesInfoMessage").innerText = "It seems the server is down. Contact the dev to inform them. Error code " + response.statusCode;
+          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
         } else {
           document.getElementById("submitTimesInfoMessage").innerText = "There was an error submitting your sponsor times, please try again later. Error code " + response.statusCode;
           document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
