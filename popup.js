@@ -353,12 +353,13 @@ function getSponsorTimesMessageDiv(sponsorTimes) {
   for (let i = 0; i < sponsorTimes.length; i++) {
     let currentSponsorTimeContainer = document.createElement("div");
     currentSponsorTimeContainer.id = "sponsorTimeContainer" + i;
+    currentSponsorTimeContainer.className = "sponsorTime";
     let currentSponsorTimeMessage = "";
 
     let deleteButton = document.createElement("span");
     deleteButton.id = "sponsorTimeDeleteButton" + i;
     deleteButton.innerText = "Delete";
-    deleteButton.className = "smallLink";
+    deleteButton.className = "mediumLink";
     let index = i;
     deleteButton.addEventListener("click", () => deleteSponsorTime(index));
 
@@ -368,7 +369,7 @@ function getSponsorTimesMessageDiv(sponsorTimes) {
     let editButton = document.createElement("span");
     editButton.id = "sponsorTimeEditButton" + i;
     editButton.innerText = "Edit";
-    editButton.className = "smallLink";
+    editButton.className = "mediumLink";
     editButton.addEventListener("click", () => editSponsorTime(index));
 
     for (let s = 0; s < sponsorTimes[i].length; s++) {
@@ -385,12 +386,13 @@ function getSponsorTimesMessageDiv(sponsorTimes) {
     }
 
     currentSponsorTimeContainer.innerText = currentSponsorTimeMessage;
+    currentSponsorTimeContainer.addEventListener("click", () => editSponsorTime(index));
+
     sponsorTimesContainer.appendChild(currentSponsorTimeContainer);
     sponsorTimesContainer.appendChild(deleteButton);
 
     //only if it is a complete sponsor time
     if (sponsorTimes[i].length > 1) {
-      sponsorTimesContainer.appendChild(spacer);
       sponsorTimesContainer.appendChild(editButton);
     }
   }
@@ -399,32 +401,41 @@ function getSponsorTimesMessageDiv(sponsorTimes) {
 }
 
 function editSponsorTime(index) {
+  if (document.getElementById("startTimeMinutes" + index) != null) {
+    //already open
+    return;
+  }
+
   let sponsorTimeContainer = document.getElementById("sponsorTimeContainer" + index);
 
   //get sponsor time minutes and seconds boxes
   let startTimeMinutes = document.createElement("input");
   startTimeMinutes.id = "startTimeMinutes" + index;
+  startTimeMinutes.className = "sponsorTime";
   startTimeMinutes.type = "text";
   startTimeMinutes.value = getTimeInMinutes(sponsorTimes[index][0]);
-  startTimeMinutes.style.width = "35";
+  startTimeMinutes.style.width = "45";
   
   let startTimeSeconds = document.createElement("input");
   startTimeSeconds.id = "startTimeSeconds" + index;
+  startTimeSeconds.className = "sponsorTime";
   startTimeSeconds.type = "text";
   startTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][0]);
-  startTimeSeconds.style.width = "42";
+  startTimeSeconds.style.width = "60";
 
   let endTimeMinutes = document.createElement("input");
   endTimeMinutes.id = "endTimeMinutes" + index;
+  endTimeMinutes.className = "sponsorTime";
   endTimeMinutes.type = "text";
   endTimeMinutes.value = getTimeInMinutes(sponsorTimes[index][1]);
-  endTimeMinutes.style.width = "35";
+  endTimeMinutes.style.width = "45";
   
   let endTimeSeconds = document.createElement("input");
   endTimeSeconds.id = "endTimeSeconds" + index;
+  endTimeSeconds.className = "sponsorTime";
   endTimeSeconds.type = "text";
   endTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][1]);
-  endTimeSeconds.style.width = "42";
+  endTimeSeconds.style.width = "60";
 
   let colonText = document.createElement("span");
   colonText.innerText = ":";
@@ -449,7 +460,7 @@ function editSponsorTime(index) {
   let saveButton = document.createElement("span");
   saveButton.id = "sponsorTimeSaveButton" + index;
   saveButton.innerText = "Save";
-  saveButton.className = "smallLink";
+  saveButton.className = "mediumLink";
   saveButton.addEventListener("click", () => saveSponsorTimeEdit(index));
 
   let editButton = document.getElementById("sponsorTimeEditButton" + index);

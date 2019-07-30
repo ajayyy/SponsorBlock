@@ -29,8 +29,20 @@ body {
 	font-size: 12px;
 }
 
+.sponsorTime {
+	font-size: 20px;
+}
+
 .smallLink {
 	font-size: 10px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.mediumLink {
+	font-size: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 	text-decoration: underline;
 	cursor: pointer;
 }
