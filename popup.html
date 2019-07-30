@@ -1,182 +1,184 @@
 <html>
   <head>
     <title>Set Page Color Popup</title>
-    <link rel="stylesheet" type="text/css" href="/libs/Source+Sans+Pro.css"/>
-    <link rel="stylesheet" type="text/css" href="popup.css"/>
+    <link id="sponorBlockPopupFont" rel="stylesheet" type="text/css" href="/libs/Source+Sans+Pro.css"/>
+    <link id="sponorBlockStyleSheet" rel="stylesheet" type="text/css" href="popup.css"/>
   </head>
 
-  <center>
-    <div id="app">
-        <img src="icons/LogoSponsorBlocker256px.png" height="64px"/>
+  <body class="popupBody">
+    <center>
+      <div id="app" class="popupBody">
+          <img src="icons/LogoSponsorBlocker256px.png" height="64px" id="sponsorBlockPopupLogo"/>
 
-        <h1>SponsorBlock</h1>
+          <h1 class="popupElement">SponsorBlock</h1>
 
-        <!-- Loading text -->
-        <p id="loadingIndicator">Loading...</p>
+          <!-- Loading text -->
+          <p id="loadingIndicator" class="popupElement">Loading...</p>
 
-        <!-- Hidden until loading complete -->
-        <div id="mainControls" class="main" style="display: none">
-          <!-- If the video was found in the database -->
-          <div id="videoFound">
-              
-          </div>
+          <!-- Hidden until loading complete -->
+          <div id="mainControls" class="main popupElement" style="display: none">
+            <!-- If the video was found in the database -->
+            <div id="videoFound">
+                
+            </div>
 
-          <div id="downloadedSponsorMessageTimes">
-
-          </div>
-
-          <br/>
-
-          <button id="reportAnIssue" class="dangerButton">Vote On A Sponsor Time</button>
-
-          <div id="issueReporterContainer" style="display: none">
-
-            <h3 style="margin-top: 0px">Vote On A Sponsor Time</h3>
-
-            <div id="issueReporterTimeButtons">
+            <div id="downloadedSponsorMessageTimes" class="popupElement">
 
             </div>
 
-          </div>
+            <br/>
 
-          <h2 class="recordingSubtitle">Record the times of a sponsorship</h2>
+            <button id="reportAnIssue" class="dangerButton popupElement">Vote On A Sponsor Time</button>
 
-          <p>
-            <span id=sponsorTimesContributionsContainer style="display: none">
-                So far, you've submitted
-                <span id="sponsorTimesContributionsDisplay">
-                  0
-                </span>
-                <span id="sponsorTimesContributionsDisplayEndWord">
-                  sponsors.
-                </span>
-            </span>
+            <div id="issueReporterContainer"  class="popupElement" style="display: none">
 
-            <span id=sponsorTimesViewsContainer style="display: none">
-                You have saved people from 
-                <span id="sponsorTimesViewsDisplay">
-                  0
-                </span>
-                <span id="sponsorTimesViewsDisplayEndWord">
-                  sponsor segments.
-                </span>
-            </span>
-          </p>
+              <h3 style="margin-top: 0px" class="popupElement">Vote On A Sponsor Time</h3>
 
-          <p> 
-            Click the button below when the sponsorship starts and ends to record and 
-            submit it to the database.
-          </p>
-  
-          <div>
-            <button id="sponsorStart" class="greenButton">Sponsorship Starts Now</button>
-          </div>
+              <div id="issueReporterTimeButtons" class="popupElement">
 
-          <sub>Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit.</sub>
-  
-          <div id="submissionSection" style="display: none">
-            <h3>Latest Sponsor Message Times Chosen</h3>
-            <b>
-              <div id="sponsorMessageTimes">
+              </div>
+
+            </div>
+
+            <h2 class="recordingSubtitle popupElement">Record the times of a sponsorship</h2>
+
+            <p class="popupElement">
+              <span id=sponsorTimesContributionsContainer  class="popupElement" style="display: none">
+                  So far, you've submitted
+                  <span id="sponsorTimesContributionsDisplay" class="popupElement">
+                    0
+                  </span>
+                  <span id="sponsorTimesContributionsDisplayEndWord" class="popupElement">
+                    sponsors.
+                  </span>
+              </span>
+
+              <span id=sponsorTimesViewsContainer  class="popupElement" style="display: none">
+                  You have saved people from 
+                  <span id="sponsorTimesViewsDisplay" class="popupElement">
+                    0
+                  </span>
+                  <span id="sponsorTimesViewsDisplayEndWord" class="popupElement">
+                    sponsor segments.
+                  </span>
+              </span>
+            </p>
+
+            <p class="popupElement"> 
+              Click the button below when the sponsorship starts and ends to record and 
+              submit it to the database.
+            </p>
+    
+            <div>
+              <button id="sponsorStart" class="greenButton popupElement">Sponsorship Starts Now</button>
+            </div>
+
+            <sub class="popupElement">Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit.</sub>
+    
+            <div id="submissionSection"  class="popupElement" style="display: none">
+              <h3 class="popupElement">Latest Sponsor Message Times Chosen</h3>
+              <b>
+                <div id="sponsorMessageTimes" class="popupElement">
+        
+                </div>
+              </b>
       
+              <button id="clearTimes" class="smallButton popupElement">Clear Times</button>
+      
+              <br/>
+              <br/>
+
+              <div id="submitTimesContainer" class="popupElement" style="display: none">
+                <button id="submitTimes" class="smallButton popupElement">Submit Times</button>
+
+                <div id="submitTimesInfoMessageContainer" class="popupElement" style="display: none">
+                  <h3 id="submitTimesInfoMessage" class="popupElement">
+
+                  </h3>
+                </div>
+
               </div>
-            </b>
-    
-            <button id="clearTimes" class="smallButton">Clear Times</button>
-    
-            <br/>
-            <br/>
-
-            <div id="submitTimesContainer" style="display: none">
-              <button id="submitTimes" class="smallButton">Submit Times</button>
-
-              <div id="submitTimesInfoMessageContainer" style="display: none">
-                <h3 id="submitTimesInfoMessage">
-
-                </h3>
-              </div>
-
+      
             </div>
-    
-          </div>
 
-          <div id="discordButtonContainer" style="display: none">
-            <br/>
-
-            <a href="https://discord.gg/QnmVMpU" target="_blank"><img src="https://www.logolynx.com/images/logolynx/1b/1bcc0f0aefe71b2c8ce66ffe8645d365.png" height="32px"/></a>
-
-            <br/>
-
-            Come join the official discord server to give suggestions and feedback!
-
-            <br/>
-
-            <span id="hideDiscordButton" class="smallLink">Hide this</span>
-          </div>
-
-          <div id="optionsButtonContainer">
-              <br/>
-              <br/>
-    
-              <button id="optionsButton" class="dangerButton">Options</button>
-          </div>
-
-          <div id="options" style="display: none">
+            <div id="discordButtonContainer" class="popupElement" style="display: none">
               <br/>
 
-              <h3>Options</h3>
-    
-              <button id="hideVideoPlayerControls" class="warningButton">Hide Buttons On YouTube Player</button>
-              <button id="showVideoPlayerControls" style="display: none" class="warningButton">Show Buttons On YouTube Player</button>
-              <br/>
-              <sub>
-                This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some 
-                people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, 
-                use the button that appears on the notice saying "Don't show this again". You can always enable these settings again 
-                later.
-              </sub>
+              <a href="https://discord.gg/QnmVMpU" class="popupElement" target="_blank"><img src="https://www.logolynx.com/images/logolynx/1b/1bcc0f0aefe71b2c8ce66ffe8645d365.png" height="32px"/></a>
 
               <br/>
-              <br/>
 
-              <button id="hideInfoButtonPlayerControls" class="warningButton">Hide Info Button On YouTube Player</button>
-              <button id="showInfoButtonPlayerControls" style="display: none" class="warningButton">Show Info Button On YouTube Player</button>
-              <br/>
-              <sub>
-                This is the button that opens up a popup in the YouTube page.
-              </sub>
+              Come join the official discord server to give suggestions and feedback!
 
               <br/>
-              <br/>
 
-              <button id="hideDeleteButtonPlayerControls" class="warningButton">Hide Delete Button On YouTube Player</button>
-              <button id="showDeleteButtonPlayerControls" style="display: none" class="warningButton">Show Delete Button On YouTube Player</button>
-              <br/>
-              <sub>
-                This is the button that allows you to clear all sponsors on the YouTube player.
-              </sub>
+              <span id="hideDiscordButton" class="smallLink popupElement">Hide this</span>
+            </div>
 
-              <br/>
-              <br/>
+            <div id="optionsButtonContainer" class="popupElement">
+                <br/>
+                <br/>
+      
+                <button id="optionsButton" class="dangerButton popupElement">Options</button>
+            </div>
 
-              <button id="disableSponsorViewTracking" class="warningButton">Disable Sponsor View Tracking</button>
-              <button id="enableSponsorViewTracking" style="display: none" class="warningButton">Enable Sponsor View Tracking</button>
-              <br/>
-              <sub>
-                This feature tracks which sponsors you have skipped to let users know how much their submission has helped others and
-                used as a metric along with upvotes to ensure that spam doesn't get into the database. The extension sends a message
-                to the server each time you skip a sponsor. Hopefully most people don't change this setting so that the view numbers
-                are accurate. :)
-              </sub>
-    
-              <br/>
-              <br/>
+            <div id="options" class="popupElement" style="display: none">
+                <br/>
 
-              <button id="showNoticeAgain" style="display: none" class="dangerButton">Show Notice Again</button>
+                <h3>Options</h3>
+      
+                <button id="hideVideoPlayerControls" class="warningButton popupElement">Hide Buttons On YouTube Player</button>
+                <button id="showVideoPlayerControls" style="display: none" class="warningButton popupElement">Show Buttons On YouTube Player</button>
+                <br/>
+                <sub>
+                  This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some 
+                  people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, 
+                  use the button that appears on the notice saying "Don't show this again". You can always enable these settings again 
+                  later.
+                </sub>
+
+                <br/>
+                <br/>
+
+                <button id="hideInfoButtonPlayerControls" class="warningButton popupElement">Hide Info Button On YouTube Player</button>
+                <button id="showInfoButtonPlayerControls" style="display: none" class="warningButton popupElement">Show Info Button On YouTube Player</button>
+                <br/>
+                <sub>
+                  This is the button that opens up a popup in the YouTube page.
+                </sub>
+
+                <br/>
+                <br/>
+
+                <button id="hideDeleteButtonPlayerControls" class="warningButton popupElement">Hide Delete Button On YouTube Player</button>
+                <button id="showDeleteButtonPlayerControls" style="display: none" class="warningButton popupElement">Show Delete Button On YouTube Player</button>
+                <br/>
+                <sub>
+                  This is the button that allows you to clear all sponsors on the YouTube player.
+                </sub>
+
+                <br/>
+                <br/>
+
+                <button id="disableSponsorViewTracking" class="warningButton popupElement">Disable Sponsor View Tracking</button>
+                <button id="enableSponsorViewTracking" style="display: none" class="warningButton popupElement">Enable Sponsor View Tracking</button>
+                <br/>
+                <sub>
+                  This feature tracks which sponsors you have skipped to let users know how much their submission has helped others and
+                  used as a metric along with upvotes to ensure that spam doesn't get into the database. The extension sends a message
+                  to the server each time you skip a sponsor. Hopefully most people don't change this setting so that the view numbers
+                  are accurate. :)
+                </sub>
+      
+                <br/>
+                <br/>
+
+                <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">Show Notice Again</button>
+            </div>
           </div>
         </div>
-      </div>
-  </center>
+    </center>
+  </body>
 
   <!-- Scripts that need to load after the html -->
   <script src="config.js"></script>

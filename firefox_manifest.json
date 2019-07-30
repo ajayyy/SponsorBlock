@@ -10,11 +10,13 @@
       ],
       "js": [
         "config.js",
-        "content.js"
+        "content.js",
+        "popup.js"
       ],
       "css": [
         "content.css",
-        "./libs/Source+Sans+Pro.css"
+        "./libs/Source+Sans+Pro.css",
+        "popup.css"
       ]
     }
   ],
