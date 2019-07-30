@@ -31,6 +31,8 @@ var showingStartSponsor = true;
 
 //should the video controls buttons be added
 var hideVideoPlayerControls = false;
+var hideInfoButtonPlayerControls = false;
+var hideDeleteButtonPlayerControls = false;
 
 //becomes true when isInfoFound is called
 //this is used to close the popup on YouTube when the other popup opens
@@ -103,6 +105,14 @@ chrome.runtime.onMessage.addListener( // Detect URL Changes
       hideVideoPlayerControls = request.value;
 
       updateVisibilityOfPlayerControlsButton();
+    } else if (request.message == "changeInfoButtonPlayerControlsVisibility") {
+      hideInfoButtonPlayerControls = request.value;
+
+      updateVisibilityOfPlayerControlsButton();
+    } else if (request.message == "changeDeleteButtonPlayerControlsVisibility") {
+      hideDeleteButtonPlayerControls = request.value;
+
+      updateVisibilityOfPlayerControlsButton();
     }
 
     if (request.message == "trackViewCount") {
@@ -165,7 +175,7 @@ function videoIDChange(id) {
     }
   });
 
-  //see if video control buttons should be added
+  //see if video controls buttons should be added
   chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
     if (result.hideVideoPlayerControls != undefined) {
       hideVideoPlayerControls = result.hideVideoPlayerControls;
@@ -173,6 +183,21 @@ function videoIDChange(id) {
 
     updateVisibilityOfPlayerControlsButton();
   });
+  chrome.storage.sync.get(["hideInfoButtonPlayerControls"], function(result) {
+    if (result.hideInfoButtonPlayerControls != undefined) {
+      hideInfoButtonPlayerControls = result.hideInfoButtonPlayerControls;
+    }
+
+    updateVisibilityOfPlayerControlsButton();
+  });
+  chrome.storage.sync.get(["hideDeleteButtonPlayerControls"], function(result) {
+    if (result.hideDeleteButtonPlayerControls != undefined) {
+      hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
+    }
+
+    updateVisibilityOfPlayerControlsButton();
+  });
+  
 }
 
 function sponsorsLookup(id) {
@@ -301,6 +326,12 @@ function updateVisibilityOfPlayerControlsButton() {
   if (hideVideoPlayerControls) {
     removePlayerControlsButton();
   }
+  if (hideInfoButtonPlayerControls) {
+    document.getElementById("infoButton").style.display = "none";
+  }
+  if (hideDeleteButtonPlayerControls) {
+    document.getElementById("deleteButton").style.display = "none";
+  }
 }
 
 function startSponsorClicked() {
@@ -319,7 +350,7 @@ function startSponsorClicked() {
 
 function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   //if it isn't visible, there is no data
-  if (uploadButtonVisible) {
+  if (uploadButtonVisible && !hideDeleteButtonPlayerControls) {
     document.getElementById("deleteButton").style.display = "unset";
   } else {
     document.getElementById("deleteButton").style.display = "none";
@@ -330,7 +361,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
     document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Starts Now");
 
-    if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible) {
+    if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
       document.getElementById("submitButton").style.display = "unset";
     } else if (!uploadButtonVisible) {
       //disable submit button

@@ -8,6 +8,10 @@ SB.submitTimes = document.getElementById("submitTimes");
 SB.showNoticeAgain = document.getElementById("showNoticeAgain");
 SB.hideVideoPlayerControls = document.getElementById("hideVideoPlayerControls");
 SB.showVideoPlayerControls = document.getElementById("showVideoPlayerControls");
+SB.hideInfoButtonPlayerControls = document.getElementById("hideInfoButtonPlayerControls");
+SB.showInfoButtonPlayerControls = document.getElementById("showInfoButtonPlayerControls");
+SB.hideDeleteButtonPlayerControls = document.getElementById("hideDeleteButtonPlayerControls");
+SB.showDeleteButtonPlayerControls = document.getElementById("showDeleteButtonPlayerControls");
 SB.disableSponsorViewTracking = document.getElementById("disableSponsorViewTracking");
 SB.enableSponsorViewTracking = document.getElementById("enableSponsorViewTracking");
 SB.optionsButton = document.getElementById("optionsButton");
@@ -31,6 +35,10 @@ SB.submitTimes.addEventListener("click", submitTimes);
 SB.showNoticeAgain.addEventListener("click", showNoticeAgain);
 SB.hideVideoPlayerControls.addEventListener("click", hideVideoPlayerControls);
 SB.showVideoPlayerControls.addEventListener("click", showVideoPlayerControls);
+SB.hideInfoButtonPlayerControls.addEventListener("click", hideInfoButtonPlayerControls);
+SB.showInfoButtonPlayerControls.addEventListener("click", showInfoButtonPlayerControls);
+SB.hideDeleteButtonPlayerControls.addEventListener("click", hideDeleteButtonPlayerControls);
+SB.showDeleteButtonPlayerControls.addEventListener("click", showDeleteButtonPlayerControls);
 SB.disableSponsorViewTracking.addEventListener("click", disableSponsorViewTracking);
 SB.enableSponsorViewTracking.addEventListener("click", enableSponsorViewTracking);
 SB.optionsButton.addEventListener("click", openOptions);
@@ -79,12 +87,26 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
   }
 });
 
-//show proper video player controls option
+//show proper video player controls options
 chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
   let hideVideoPlayerControls = result.hideVideoPlayerControls;
   if (hideVideoPlayerControls != undefined && hideVideoPlayerControls) {
     SB.hideVideoPlayerControls.style.display = "none";
     SB.showVideoPlayerControls.style.display = "unset";
+  }
+});
+chrome.storage.sync.get(["hideInfoButtonPlayerControls"], function(result) {
+  let hideInfoButtonPlayerControls = result.hideInfoButtonPlayerControls;
+  if (hideInfoButtonPlayerControls != undefined && hideInfoButtonPlayerControls) {
+    SB.hideInfoButtonPlayerControls.style.display = "none";
+    SB.showInfoButtonPlayerControls.style.display = "unset";
+  }
+});
+chrome.storage.sync.get(["hideDeleteButtonPlayerControls"], function(result) {
+  let hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
+  if (hideDeleteButtonPlayerControls != undefined && hideDeleteButtonPlayerControls) {
+    SB.hideDeleteButtonPlayerControls.style.display = "none";
+    SB.showDeleteButtonPlayerControls.style.display = "unset";
   }
 });
 
@@ -646,6 +668,74 @@ function showVideoPlayerControls() {
 
   SB.hideVideoPlayerControls.style.display = "unset";
   SB.showVideoPlayerControls.style.display = "none";
+}
+
+function hideInfoButtonPlayerControls() {
+  chrome.storage.sync.set({"hideInfoButtonPlayerControls": true});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "changeInfoButtonPlayerControlsVisibility",
+      value: true
+    });
+  });
+
+  SB.hideInfoButtonPlayerControls.style.display = "none";
+  SB.showInfoButtonPlayerControls.style.display = "unset";
+}
+
+function showInfoButtonPlayerControls() {
+  chrome.storage.sync.set({"hideInfoButtonPlayerControls": false});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "changeVideoPlayerCochangeInfoButtonPlayerControlsVisibilityntrolsVisibility",
+      value: false
+    });
+  });
+
+  SB.hideInfoButtonPlayerControls.style.display = "unset";
+  SB.showInfoButtonPlayerControls.style.display = "none";
+}
+
+function hideDeleteButtonPlayerControls() {
+  chrome.storage.sync.set({"hideDeleteButtonPlayerControls": true});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "changeDeleteButtonPlayerControlsVisibility",
+      value: true
+    });
+  });
+
+  SB.hideDeleteButtonPlayerControls.style.display = "none";
+  SB.showDeleteButtonPlayerControls.style.display = "unset";
+}
+
+function showDeleteButtonPlayerControls() {
+  chrome.storage.sync.set({"hideDeleteButtonPlayerControls": false});
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      message: "changeVideoPlayerCochangeDeleteButtonPlayerControlsVisibilityntrolsVisibility",
+      value: false
+    });
+  });
+
+  SB.hideDeleteButtonPlayerControls.style.display = "unset";
+  SB.showDeleteButtonPlayerControls.style.display = "none";
 }
 
 function disableSponsorViewTracking() {
