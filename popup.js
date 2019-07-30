@@ -27,6 +27,9 @@ SB.sponsorTimesViewsDisplayEndWord = document.getElementById("sponsorTimesViewsD
 // discordButtons
 SB.discordButtonContainer = document.getElementById("discordButtonContainer");
 SB.hideDiscordButton = document.getElementById("hideDiscordButton");
+// submitTimesInfoMessage
+SB.submitTimesInfoMessageContainer = document.getElementById("submitTimesInfoMessage");
+SB.submitTimesInfoMessage = document.getElementById("submitTimesInfoMessage");
 
 //setup click listeners
 SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
@@ -584,10 +587,25 @@ function clearTimes() {
   resetStartTimeChosen();
 }
 
+var EN_US = new Map();
+
+EN_US.set(400, 'Server said this request was invalid"')
+    .set(429, 'You have submitted too many sponsor times for this one video, are you sure there are this many?')
+    .set(409, 'This has already been submitted before')
+    .set(502, 'It seems the server is down. Contact the dev to inform them.')
+    .set('Unknown', 'here was an error submitting your sponsor times, please try again later.');
+
+function ErrorParser (Lang, statusCode) {
+  if(Lang.has(statusCode)) return Lang.get(statusCode);
+  Unknown = Lang.get('Unknown');
+  Unknown +=  Error code " + statusCode;
+  return Lang.get('Unknown');
+}
+
 function submitTimes() {
   //make info message say loading
-  document.getElementById("submitTimesInfoMessage").innerText = "Loading...";
-  document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+  SB.submitTimesInfoMessage.innerText = "Loading...";
+  SB.submitTimesInfoMessageContainer.style.display = "unset";
 
   if (sponsorTimes.length > 0) {
     chrome.runtime.sendMessage({
@@ -597,24 +615,11 @@ function submitTimes() {
       if (response != undefined) {
         if (response.statusCode == 200) {
           //hide loading message
-          document.getElementById("submitTimesInfoMessageContainer").style.display = "none";
-  
+          SB.submitTimesInfoMessageContainer.style.display = "none";
           clearTimes();
-        } else if(response.statusCode == 400) {
-          document.getElementById("submitTimesInfoMessage").innerText = "Server said this request was invalid";
-          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
-        } else if(response.statusCode == 429) {
-          document.getElementById("submitTimesInfoMessage").innerText = "You have submitted too many sponsor times for this one video, are you sure there are this many?";
-          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
-        } else if(response.statusCode == 409) {
-          document.getElementById("submitTimesInfoMessage").innerText = "This has already been submitted before";
-          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
-        } else if(response.statusCode == 502) {
-          document.getElementById("submitTimesInfoMessage").innerText = "It seems the server is down. Contact the dev to inform them. Error code " + response.statusCode;
-          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
         } else {
-          document.getElementById("submitTimesInfoMessage").innerText = "There was an error submitting your sponsor times, please try again later. Error code " + response.statusCode;
-          document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+          ErrorParser(EN_US, response.statusCode);
+          SB.submitTimesInfoMessageContainer.style.display = "unset";
         }
       }
     });
