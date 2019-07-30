@@ -160,8 +160,7 @@ function videoIDChange(id) {
       } else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
         changeStartSponsorButton(false, true);
       } else {
-        changeStartSponsorButton(true, true);
-        document.getElementById("submitButton").style.display = "none";
+        changeStartSponsorButton(true, false);
       }
     }
   });
@@ -297,6 +296,7 @@ function removePlayerControlsButton() {
 function updateVisibilityOfPlayerControlsButton() {
   addPlayerControlsButton();
   addInfoButton();
+  addDeleteButton();
   addSubmitButton();
   if (hideVideoPlayerControls) {
     removePlayerControlsButton();
@@ -318,6 +318,13 @@ function startSponsorClicked() {
 }
 
 function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
+  //if it isn't visible, there is no data
+  if (uploadButtonVisible) {
+    document.getElementById("deleteButton").style.display = "unset";
+  } else {
+    document.getElementById("deleteButton").style.display = "none";
+  }
+
   if (showStartSponsor) {
     showingStartSponsor = true;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
@@ -367,6 +374,34 @@ function addInfoButton() {
 
   let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
   referenceNode.prepend(infoButton);
+}
+
+//shows the delete button on the video player
+function addDeleteButton() {
+  if (document.getElementById("deleteButton") != null) {
+    //it's already added
+    return;
+  }
+  
+  //make a submit button
+  let deleteButton = document.createElement("button");
+  deleteButton.id = "deleteButton";
+  deleteButton.className = "ytp-button playerButton";
+  deleteButton.setAttribute("title", "Clear Sponsor Times");
+  deleteButton.addEventListener("click", clearSponsorTimes);
+  //hide it at the start
+  deleteButton.style.display = "none";
+
+  let deleteImage = document.createElement("img");
+  deleteImage.id = "deleteButtonImage";
+  deleteImage.className = "playerButtonImage";
+  deleteImage.src = chrome.extension.getURL("icons/PlayerDeleteIconSponsorBlocker256px.png");
+
+  //add the image to the button
+  deleteButton.appendChild(deleteImage);
+
+  let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
+  referenceNode.prepend(deleteButton);
 }
 
 //shows the submit button on the video player
@@ -443,6 +478,31 @@ function closeInfoMenu() {
     //show info button
     document.getElementById("infoButton").style.display = "unset";
   }
+}
+
+function clearSponsorTimes() {
+  //it can't update to this info yet
+  closeInfoMenu();
+
+  let currentVideoID = getYouTubeVideoID(document.URL);
+
+  let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
+  chrome.storage.sync.get([sponsorTimeKey], function(result) {
+    let sponsorTimes = result[sponsorTimeKey];
+
+    if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+      let confirmMessage = "Are you sure you want to clear this?\n\n" + getSponsorTimesMessage(sponsorTimes);
+      confirmMessage += "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
+      if(!confirm(confirmMessage)) return;
+
+      //clear the sponsor times
+      let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+      chrome.storage.sync.set({[sponsorTimeKey]: []});
+
+      //set buttons to be correct
+      changeStartSponsorButton(true, false);
+    }
+  });
 }
 
 //Opens the notice that tells the user that a sponsor was just skipped

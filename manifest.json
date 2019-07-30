@@ -28,6 +28,7 @@
     "icons/upvote.png",
     "icons/downvote.png",
     "icons/PlayerInfoIconSponsorBlocker256px.png",
+    "icons/PlayerDeleteIconSponsorBlocker256px.png",
     "popup.html"
   ],
   "permissions": [
