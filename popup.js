@@ -193,7 +193,7 @@ function loadTabData(tabs) {
       displaySponsorTimes();
 
       //show submission section
-      submissionSection.style.display = "unset";
+      SB.submissionSection.style.display = "unset";
 
       showSubmitTimesIfNecessary();
     }
