@@ -31,7 +31,9 @@
     "icons/downvote.png",
     "icons/PlayerInfoIconSponsorBlocker256px.png",
     "icons/PlayerDeleteIconSponsorBlocker256px.png",
-    "popup.html"
+    "popup.html",
+    "help/index.html",
+    "help/style.css"
   ],
   "permissions": [
     "tabs",
