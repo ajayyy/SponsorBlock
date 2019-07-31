@@ -451,6 +451,9 @@ function runThePopup() {
       //already open
       return;
     }
+
+    //hide submit button
+    document.getElementById("submitTimesContainer").style.display = "none";
   
     let sponsorTimeContainer = document.getElementById("sponsorTimeContainer" + index);
   
@@ -512,8 +515,7 @@ function runThePopup() {
     let editButton = document.getElementById("sponsorTimeEditButton" + index);
     let sponsorTimesContainer = document.getElementById("sponsorTimesContainer");
   
-    editButton.remove();
-    sponsorTimesContainer.appendChild(saveButton);
+    sponsorTimesContainer.replaceChild(saveButton, editButton);
   }
   
   function saveSponsorTimeEdit(index) {
@@ -531,6 +533,8 @@ function runThePopup() {
     chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
   
     displaySponsorTimes();
+
+    showSubmitTimesIfNecessary();
   }
   
   //deletes the sponsor time submitted at an index
