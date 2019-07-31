@@ -57,6 +57,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   }
 });
 
+//add help page on install
+chrome.runtime.onInstalled.addListener(function (object) {
+  chrome.storage.sync.get(["shownInstallPage"], function(result) {
+    let shownInstallPage = result.shownInstallPage;
+    if (shownInstallPage == undefined || !shownInstallPage) {
+      //open up the install page
+      chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
+
+      //save that this happened
+      chrome.storage.sync.set({shownInstallPage: true});
+    }
+  });
+});
 
 //gets the sponsor times from memory
 function getSponsorTimes(videoID, callback) {
