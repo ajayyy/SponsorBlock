@@ -2,8 +2,13 @@ if(id = getYouTubeVideoID(document.URL)){ // Direct Links
   videoIDChange(id);
 }
 
-var hotkeys = {};
-hotkeys.submit = "Semicolon";
+var Settings = {} // Needs to be Synced with global settings
+
+Settings.hotkeys = {}; // TEMP
+Settings.onekey = false; // TEMP
+Settings.hotkeys.submit = "Quote"; // TEMP
+Settings.hotkeys.start = "Semicolon"; // TEMP
+
 var hasData = false; // If started sponsor
 
 //was sponsor data found when doing SponsorsLookup
@@ -107,13 +112,21 @@ document.onkeydown = function(e) {
     let video = document.getElementById("movie_player");
     //is the video in focus, otherwise they could be typing a comment
     if (document.activeElement === video) {
-        if (e.code == hotkeys.submit) {
-            if (hasData) { // Submit!!!
+        if (e.code == Settings.hotkeys.submit) {
+            if(Settings.onekey) {
+              if (hasData) { // Submit!!!
                 submitSponsorTimes();
                 hasData = false;
-            } else { // First time
+              } else { // First time
                 startSponsorClicked();
                 hasData = true;
+              }
+            }else{
+              if(e.code == Settings.hotkeys.start){
+                startSponsorClicked();
+              } else if (e.code == Settings.hotkeys.submit) {
+                submitSponsorTimes();
+              }
             }
         }
     }
