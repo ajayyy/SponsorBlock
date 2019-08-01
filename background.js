@@ -147,6 +147,20 @@ function submitTimes(videoID, callback) {
               callback({
                 statusCode: xmlhttp.status
               });
+
+              if (xmlhttp.status == 200) {
+                //add these to the storage log
+                chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
+                  let currentContributionAmount = 0;
+                  if (result.sponsorTimesContributed != undefined) {
+                    //current contribution amount is known
+                    currentContributionAmount = result.sponsorTimesContributed;
+                  }
+
+                  //save the amount contributed
+                  chrome.storage.sync.set({"sponsorTimesContributed": currentContributionAmount + sponsorTimes.length});
+                });
+              }
             } else if (error) {
               callback({
                 statusCode: -1
@@ -155,18 +169,6 @@ function submitTimes(videoID, callback) {
           });
         });
       }
-
-      //add these to the storage log
-      chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
-        let currentContributionAmount = 0;
-        if (result.sponsorTimesContributed != undefined) {
-          //current contribution amount is known
-          currentContributionAmount = result.sponsorTimesContributed;
-        }
-
-        //save the amount contributed
-        chrome.storage.sync.set({"sponsorTimesContributed": currentContributionAmount + sponsorTimes.length});
-      });
     }
   });
 }
