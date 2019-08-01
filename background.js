@@ -3,6 +3,9 @@ var previousVideoID = null
 //the id of this user, randomly generated once per install
 var userID = null;
 
+//the last video id loaded, to make sure it is a video id change
+var sponsorVideoID = null;
+
 //when a new tab is highlighted
 chrome.tabs.onActivated.addListener(
   function(activeInfo) {
@@ -54,6 +57,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   }
 });
 
+//add help page on install
+chrome.runtime.onInstalled.addListener(function (object) {
+  chrome.storage.sync.get(["shownInstallPage"], function(result) {
+    let shownInstallPage = result.shownInstallPage;
+    if (shownInstallPage == undefined || !shownInstallPage) {
+      //open up the install page
+      chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
+
+      //save that this happened
+      chrome.storage.sync.set({shownInstallPage: true});
+    }
+  });
+});
 
 //gets the sponsor times from memory
 function getSponsorTimes(videoID, callback) {
@@ -161,6 +177,12 @@ function videoIDChange(currentVideoID, tabId) {
     message: 'ytvideoid',
     id: currentVideoID
   });
+
+  //not a url change
+  if (sponsorVideoID == currentVideoID){
+    return;
+  }
+  sponsorVideoID = currentVideoID;
 
   //warn them if they had unsubmitted times
   if (previousVideoID != null) {

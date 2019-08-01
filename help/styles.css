@@ -1,0 +1,176 @@
+:not(.hljs-keyword):not(.hljs-comment):not(.hljs-number):not(.hljs-string):not(pre):not(code) {
+  background-color: #333333;
+}
+
+.projectPreview {
+  position: relative;
+}
+
+.projectPreviewImage {
+  position: absolute;
+  left: -90;
+  width: 80;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.projectPreviewImageLarge {
+  position: absolute;
+  left: -210;
+  width: 200;
+  top: 50%;
+  transform: translateY(-20%);
+}
+
+.projectPreviewImageLargeRight {
+  position: absolute;
+  right: -210;
+  width: 200;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.createdBy {
+  font-size: 14px;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#title {
+  background-color: #636363;
+
+  text-align: center;
+  vertical-align: middle;
+
+  font-family: sans-serif;
+  font-size: 50;
+  color: #212121;
+
+  /* height: 100; */
+
+  padding: 20;
+  
+  text-decoration: none;
+
+  transition: font-size 1s;
+}
+
+#title:hover {
+  font-size: 60;
+
+  transition: font-size 1s;
+}
+
+.subtitle {
+  font-family: sans-serif;
+  font-size: 40;
+  color: #dad8d8;
+
+  padding-top: 10;
+
+  transition: font-size 0.4s;
+}
+
+.subtitle:hover {
+  font-size: 45;
+
+  transition: font-size 0.4s;
+}
+
+.profilepic {
+  background-color: #636363 !important;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.link {
+  padding: 20;
+
+  height: 80px;
+
+  transition: height 0.2s;
+}
+
+.link:hover {
+  height: 95px;
+
+  transition: height 0.2s;
+}
+
+#contact,.smalllink {
+  font-family: sans-serif;
+  font-size: 25;
+  color: #e8e8e8;
+
+  text-align: center;
+  
+  padding: 10;
+}
+
+#contact {
+  text-decoration: none;
+}
+
+p,li {
+  font-family: sans-serif;
+  font-size: 20;
+  color: #c4c4c4;
+
+  padding: 10;
+}
+
+p,li,code,a {
+	max-width: 60%;
+	text-align: left;
+	overflow-wrap: break-word;
+}
+
+@media screen and (orientation:portrait) {
+  p,li,code,a {
+	max-width: 100%;
+  }
+  
+  .projectPreviewImage {
+    position: unset;
+    width: 130;
+    display: block;
+    margin: auto;
+    transform: none;
+  }
+}
+
+.previewImage {
+	max-height: 200px;
+}
+
+img {
+	max-width: 100%;
+
+	text-align: center;
+}
+
+#recentPostTitle {
+  font-family: sans-serif;
+  font-size: 30;
+  color: #dad8d8;
+}
+
+#recentPostDate {
+  font-family: sans-serif;
+  font-size: 15;
+  color: #dad8d8;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: sans-serif;
+  color: #dad8d8;
+}
+
+svg {
+ text-decoration: none; 
+}
