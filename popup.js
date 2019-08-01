@@ -22,35 +22,42 @@ function runThePopup() {
       inPopup = false;
   }
   
-  // References
-  let SB = {};
-  
-  SB.sponsorStart = document.getElementById("sponsorStart");
-  SB.clearTimes = document.getElementById("clearTimes");
-  SB.submitTimes = document.getElementById("submitTimes");
-  SB.showNoticeAgain = document.getElementById("showNoticeAgain");
-  SB.hideVideoPlayerControls = document.getElementById("hideVideoPlayerControls");
-  SB.showVideoPlayerControls = document.getElementById("showVideoPlayerControls");
-  SB.hideInfoButtonPlayerControls = document.getElementById("hideInfoButtonPlayerControls");
-  SB.showInfoButtonPlayerControls = document.getElementById("showInfoButtonPlayerControls");
-  SB.hideDeleteButtonPlayerControls = document.getElementById("hideDeleteButtonPlayerControls");
-  SB.showDeleteButtonPlayerControls = document.getElementById("showDeleteButtonPlayerControls");
-  SB.disableSponsorViewTracking = document.getElementById("disableSponsorViewTracking");
-  SB.enableSponsorViewTracking = document.getElementById("enableSponsorViewTracking");
-  SB.optionsButton = document.getElementById("optionsButton");
-  SB.reportAnIssue = document.getElementById("reportAnIssue");
+  var SB = {};
+
+  ["sponsorStart",
+  "clearTimes",
+  "submitTimes",
+  "showNoticeAgain",
+  "hideVideoPlayerControls",
+  "showVideoPlayerControls",
+  "hideInfoButtonPlayerControls",
+  "showInfoButtonPlayerControls",
+  "hideDeleteButtonPlayerControls",
+  "showDeleteButtonPlayerControls",
+  "disableSponsorViewTracking",
+  "enableSponsorViewTracking",
+  "optionsButton",
+  "reportAnIssue",
   // sponsorTimesContributions
-  SB.sponsorTimesContributionsContainer = document.getElementById("sponsorTimesContributionsContainer");
-  SB.sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
-  SB.sponsorTimesContributionsDisplayEndWord = document.getElementById("sponsorTimesContributionsDisplayEndWord");
+  "sponsorTimesContributionsContainer",
+  "sponsorTimesContributionsDisplay",
+  "sponsorTimesContributionsDisplayEndWord",
   // sponsorTimesViewsDisplay
-  SB.sponsorTimesViewsContainer = document.getElementById("sponsorTimesViewsDisplayContainer");
-  SB.sponsorTimesViewsDisplay = document.getElementById("sponsorTimesViewsDisplayDisplay");
-  SB.sponsorTimesViewsDisplayEndWord = document.getElementById("sponsorTimesViewsDisplayDisplayEndWord");
+  "sponsorTimesViewsContainer",
+  "sponsorTimesViewsDisplay",
+  "sponsorTimesViewsDisplayEndWord",
   // discordButtons
-  SB.discordButtonContainer = document.getElementById("discordButtonContainer");
-  SB.hideDiscordButton = document.getElementById("hideDiscordButton");
-  
+  "discordButtonContainer",
+  "hideDiscordButton",
+  // More
+  "submissionSection",
+  "mainControls",
+  "loadingIndicator",
+  "videoFound",
+  "sponsorMessageTimes",
+  "downloadedSponsorMessageTimes",
+  ].forEach(id => SB[id] = document.getElementById(id));
+
   //setup click listeners
   SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
   SB.clearTimes.addEventListener("click", clearTimes);
@@ -210,7 +217,7 @@ function runThePopup() {
         displaySponsorTimes();
   
         //show submission section
-        document.getElementById("submissionSection").style.display = "unset";
+        SB.submissionSection.style.display = "unset";
   
         showSubmitTimesIfNecessary();
       }
@@ -238,15 +245,15 @@ function runThePopup() {
       isYouTubeTab = true;
   
       //remove loading text
-      document.getElementById("mainControls").style.display = "unset"
-      document.getElementById("loadingIndicator").innerHTML = "";
-  
+      SB.mainControls.style.display = "unset"
+      SB.loadingIndicator.innerHTML = "";
+
       if (request.found) {
-        document.getElementById("videoFound").innerHTML = "This video's sponsors are in the database!"
-  
+        SB.videoFound.innerHTML = "This video's sponsors are in the database!"
+
         displayDownloadedSponsorTimes(request);
       } else {
-        document.getElementById("videoFound").innerHTML = "No sponsors found"
+        SB.videoFound.innerHTML = "No sponsors found"
       }
     }
   }
@@ -290,31 +297,28 @@ function runThePopup() {
     displaySponsorTimes();
   
     //show submission section
-    document.getElementById("submissionSection").style.display = "unset";
+    SB.submissionSection.style.display = "unset";
   
     showSubmitTimesIfNecessary();
   }
   
   //display the video times from the array
   function displaySponsorTimes() {
-    //set it to the message
-    let sponsorMessageTimes = document.getElementById("sponsorMessageTimes");
-  
     //remove all children
-    while (sponsorMessageTimes.firstChild) {
-      sponsorMessageTimes.removeChild(sponsorMessageTimes.firstChild);
+    while (SB.sponsorMessageTimes.firstChild) {
+      SB.sponsorMessageTimes.removeChild(SB.sponsorMessageTimes.firstChild);
     }
-  
+
     //add sponsor times
-    sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
+    SB.sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
   }
   
   //display the video times from the array at the top, in a different section
   function displayDownloadedSponsorTimes(request) {
     if (request.sponsorTimes != undefined) {
       //set it to the message
-      document.getElementById("downloadedSponsorMessageTimes").innerHTML = getSponsorTimesMessage(request.sponsorTimes);
-  
+      SB.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
+
       //add them as buttons to the issue reporting container
       let container = document.getElementById("issueReporterTimeButtons");
       for (let i = 0; i < request.sponsorTimes.length; i++) {
@@ -964,4 +968,3 @@ if (chrome.tabs != undefined) {
   //this means it is actually opened in the popup
   runThePopup();
 }
-
