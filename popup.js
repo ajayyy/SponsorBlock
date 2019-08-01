@@ -51,7 +51,7 @@ function runThePopup() {
   "hideDiscordButton",
   // submitTimesInfoMessage
   "submitTimesInfoMessageContainer",
-  "submitTimesInfoMessage"
+  "submitTimesInfoMessage",
   // More
   "submissionSection",
   "mainControls",
