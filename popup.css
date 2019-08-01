@@ -1,45 +1,84 @@
-* {
-  font-family: 'Source Sans Pro', sans-serif;
+/* reset some properties to default (youtube messes with them */
+p.popupElement {
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
 }
 
-h1 {
+h1.popupElement {
+	margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+h2.popupElement {
+	margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+h3.popupElement {
+	margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+sub.popupElement {
+	font-size: smaller;
+}
+/* end reset */
+
+.popupElement {
+  font-family: 'Source Sans Pro', sans-serif;
+
+  color: black;
+}
+
+h1.popupElement {
 	margin-top: 0px;
 }
 
-body {
-  font-size: 14px;
-  min-width: 300px;
-  background-color: #ffd9d9;
+.popupBody {
+	font-size: 14px;
+	background-color: #ffd9d9;
+	padding: 5px;
 }
 
-.recordingSubtitle {
+.recordingSubtitle.popupElement {
 	margin-bottom: 10px;
 }
 
-.voteButton {
+.voteButton.popupElement {
 	height: 32px;
 	margin-right: 15px;
 	cursor: pointer;
 }
-.voteButton:hover {
+.voteButton:hover.popupElement {
 	filter: brightness(80%);
 }
 
-#discordButtonContainer {
+#discordButtonContainer.popupElement {
 	font-size: 12px;
 }
 
-.sponsorTime {
+.sponsorTime.popupElement {
 	font-size: 20px;
 }
 
-.smallLink {
+.smallLink.popupElement {
 	font-size: 10px;
 	text-decoration: underline;
 	cursor: pointer;
 }
 
-.mediumLink {
+.mediumLink.popupElement {
 	font-size: 15px;
 	padding-left: 15px;
 	padding-right: 15px;
@@ -47,8 +86,8 @@ body {
 	cursor: pointer;
 }
 
-.greenButton {
-	background-color:#ec1c1c;
+.greenButton.popupElement {
+  background-color:#ec1c1c;
   -moz-border-radius:28px;
   -webkit-border-radius:28px;
   border-radius:28px;
@@ -61,19 +100,19 @@ body {
   text-decoration:none;
   text-shadow:0px 0px 0px #662727;
 }
-.greenButton:hover {
+.greenButton:hover.popupElement {
   background-color:#bf2a2a;
 }
-.greenButton:focus {
+.greenButton:focus.popupElement {
 	outline: none;
 	background-color:#bf2a2a;
 }
-.greenButton:active {
+.greenButton:active.popupElement {
   position:relative;
   top:1px;
 }
 
-.dangerButton {
+.dangerButton.popupElement {
 	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
 	box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -90,19 +129,19 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #854629;
 }
-.dangerButton:hover {
+.dangerButton:hover.popupElement {
 	background-color:#bc3315;
 }
-.dangerButton:focus {
+.dangerButton:focus.popupElement {
 	outline: none;
 	background-color:#bc3315;
 }
-.dangerButton:active {
+.dangerButton:active.popupElement {
 	position:relative;
 	top:1px;
 }
 
-.warningButton {
+.warningButton.popupElement {
 	-moz-box-shadow:inset 0px 1px 0px 0px #cfbd6c;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #cfbd6c;
 	box-shadow:inset 0px 1px 0px 0px #cfbd6c;
@@ -119,19 +158,19 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #856829;
 }
-.warningButton:hover {
+.warningButton:hover.popupElement {
 	background-color:#bc8215;
 }
-.warningButton:focus {
+.warningButton:focus.popupElement {
 	outline: none;
 	background-color:#bc8215;
 }
-.warningButton:active {
+.warningButton:active.popupElement {
 	position:relative;
 	top:1px;
 }
 
-.smallButton {
+.smallButton.popupElement {
 	background-color:#f9902d;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
@@ -144,14 +183,14 @@ body {
 	padding:6px 10px;
 	text-decoration:none;
 }
-.smallButton:hover {
+.smallButton:hover.popupElement {
 	background-color:#fa9806;
 }
-.smallButton:focus {
+.smallButton:focus.popupElement {
 	outline: none;
 	background-color:#fa9806;
 }
-.smallButton:active {
+.smallButton:active.popupElement {
 	position:relative;
 	top:1px;
 }
