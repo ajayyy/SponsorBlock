@@ -850,8 +850,7 @@ function sendSubmitMessage(){
         submitButton.style.animation = "rotate 1s";
         //when the animation is over, hide the button
         submitButton.addEventListener("animationend", function() {
-          submitButton.style.animation = "unset";
-          submitButton.style.display = "none";
+          changeStartSponsorButton(true, false);
         });
 
         //clear the sponsor times

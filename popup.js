@@ -186,6 +186,7 @@ function runThePopup() {
                 } else {
                   SB.sponsorTimesViewsDisplayEndWord.innerText = "sponsor segment."
                 }
+
                 SB.sponsorTimesViewsDisplay.innerText = viewCount;
                 SB.sponsorTimesViewsContainer.style.display = "unset";
               }
