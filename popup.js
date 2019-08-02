@@ -22,35 +22,45 @@ function runThePopup() {
       inPopup = false;
   }
   
-  // References
-  let SB = {};
-  
-  SB.sponsorStart = document.getElementById("sponsorStart");
-  SB.clearTimes = document.getElementById("clearTimes");
-  SB.submitTimes = document.getElementById("submitTimes");
-  SB.showNoticeAgain = document.getElementById("showNoticeAgain");
-  SB.hideVideoPlayerControls = document.getElementById("hideVideoPlayerControls");
-  SB.showVideoPlayerControls = document.getElementById("showVideoPlayerControls");
-  SB.hideInfoButtonPlayerControls = document.getElementById("hideInfoButtonPlayerControls");
-  SB.showInfoButtonPlayerControls = document.getElementById("showInfoButtonPlayerControls");
-  SB.hideDeleteButtonPlayerControls = document.getElementById("hideDeleteButtonPlayerControls");
-  SB.showDeleteButtonPlayerControls = document.getElementById("showDeleteButtonPlayerControls");
-  SB.disableSponsorViewTracking = document.getElementById("disableSponsorViewTracking");
-  SB.enableSponsorViewTracking = document.getElementById("enableSponsorViewTracking");
-  SB.optionsButton = document.getElementById("optionsButton");
-  SB.reportAnIssue = document.getElementById("reportAnIssue");
+  var SB = {};
+
+  ["sponsorStart",
+  "clearTimes",
+  "submitTimes",
+  "showNoticeAgain",
+  "hideVideoPlayerControls",
+  "showVideoPlayerControls",
+  "hideInfoButtonPlayerControls",
+  "showInfoButtonPlayerControls",
+  "hideDeleteButtonPlayerControls",
+  "showDeleteButtonPlayerControls",
+  "disableSponsorViewTracking",
+  "enableSponsorViewTracking",
+  "optionsButton",
+  "reportAnIssue",
   // sponsorTimesContributions
-  SB.sponsorTimesContributionsContainer = document.getElementById("sponsorTimesContributionsContainer");
-  SB.sponsorTimesContributionsDisplay = document.getElementById("sponsorTimesContributionsDisplay");
-  SB.sponsorTimesContributionsDisplayEndWord = document.getElementById("sponsorTimesContributionsDisplayEndWord");
+  "sponsorTimesContributionsContainer",
+  "sponsorTimesContributionsDisplay",
+  "sponsorTimesContributionsDisplayEndWord",
   // sponsorTimesViewsDisplay
-  SB.sponsorTimesViewsContainer = document.getElementById("sponsorTimesViewsDisplayContainer");
-  SB.sponsorTimesViewsDisplay = document.getElementById("sponsorTimesViewsDisplayDisplay");
-  SB.sponsorTimesViewsDisplayEndWord = document.getElementById("sponsorTimesViewsDisplayDisplayEndWord");
+  "sponsorTimesViewsContainer",
+  "sponsorTimesViewsDisplay",
+  "sponsorTimesViewsDisplayEndWord",
   // discordButtons
-  SB.discordButtonContainer = document.getElementById("discordButtonContainer");
-  SB.hideDiscordButton = document.getElementById("hideDiscordButton");
-  
+  "discordButtonContainer",
+  "hideDiscordButton",
+  // submitTimesInfoMessage
+  "submitTimesInfoMessageContainer",
+  "submitTimesInfoMessage",
+  // More
+  "submissionSection",
+  "mainControls",
+  "loadingIndicator",
+  "videoFound",
+  "sponsorMessageTimes",
+  "downloadedSponsorMessageTimes",
+  ].forEach(id => SB[id] = document.getElementById(id));
+
   //setup click listeners
   SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
   SB.clearTimes.addEventListener("click", clearTimes);
@@ -68,7 +78,15 @@ function runThePopup() {
   SB.reportAnIssue.addEventListener("click", reportAnIssue);
   SB.hideDiscordButton.addEventListener("click", hideDiscordButton);
   
-  
+  //setup error message languages
+  var EN_US = new Map();
+
+  EN_US.set(400, 'Server said this request was invalid"')
+     .set(429, 'You have submitted too many sponsor times for this one video, are you sure there are this many?')
+     .set(409, 'This has already been submitted before')
+     .set(502, 'It seems the server is down. Contact the dev to inform them.')
+     .set('Unknown', 'There was an error submitting your sponsor times, please try again later.');
+
   //if true, the button now selects the end time
   let startTimeChosen = false;
   
@@ -168,6 +186,7 @@ function runThePopup() {
                 } else {
                   SB.sponsorTimesViewsDisplayEndWord.innerText = "sponsor segment."
                 }
+
                 SB.sponsorTimesViewsDisplay.innerText = viewCount;
                 SB.sponsorTimesViewsContainer.style.display = "unset";
               }
@@ -210,7 +229,7 @@ function runThePopup() {
         displaySponsorTimes();
   
         //show submission section
-        document.getElementById("submissionSection").style.display = "unset";
+        SB.submissionSection.style.display = "unset";
   
         showSubmitTimesIfNecessary();
       }
@@ -238,15 +257,15 @@ function runThePopup() {
       isYouTubeTab = true;
   
       //remove loading text
-      document.getElementById("mainControls").style.display = "unset"
-      document.getElementById("loadingIndicator").innerHTML = "";
-  
+      SB.mainControls.style.display = "unset"
+      SB.loadingIndicator.innerHTML = "";
+
       if (request.found) {
-        document.getElementById("videoFound").innerHTML = "This video's sponsors are in the database!"
-  
+        SB.videoFound.innerHTML = "This video's sponsors are in the database!"
+
         displayDownloadedSponsorTimes(request);
       } else {
-        document.getElementById("videoFound").innerHTML = "No sponsors found"
+        SB.videoFound.innerHTML = "No sponsors found"
       }
     }
   }
@@ -282,7 +301,21 @@ function runThePopup() {
     sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = response.time;
   
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+    let localStartTimeChosen = startTimeChosen;
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+      //send a message to the client script
+      if (localStartTimeChosen) {
+        chrome.tabs.query({
+          active: true,
+          currentWindow: true
+        }, tabs => {
+          chrome.tabs.sendMessage(
+            tabs[0].id,
+            {message: "sponsorDataChanged"}
+          );
+        });
+      }
+    });
   
     updateStartTimeChosen();
   
@@ -290,31 +323,28 @@ function runThePopup() {
     displaySponsorTimes();
   
     //show submission section
-    document.getElementById("submissionSection").style.display = "unset";
+    SB.submissionSection.style.display = "unset";
   
     showSubmitTimesIfNecessary();
   }
   
   //display the video times from the array
   function displaySponsorTimes() {
-    //set it to the message
-    let sponsorMessageTimes = document.getElementById("sponsorMessageTimes");
-  
     //remove all children
-    while (sponsorMessageTimes.firstChild) {
-      sponsorMessageTimes.removeChild(sponsorMessageTimes.firstChild);
+    while (SB.sponsorMessageTimes.firstChild) {
+      SB.sponsorMessageTimes.removeChild(SB.sponsorMessageTimes.firstChild);
     }
-  
+
     //add sponsor times
-    sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
+    SB.sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
   }
   
   //display the video times from the array at the top, in a different section
   function displayDownloadedSponsorTimes(request) {
     if (request.sponsorTimes != undefined) {
       //set it to the message
-      document.getElementById("downloadedSponsorMessageTimes").innerHTML = getSponsorTimesMessage(request.sponsorTimes);
-  
+      SB.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
+
       //add them as buttons to the issue reporting container
       let container = document.getElementById("issueReporterTimeButtons");
       for (let i = 0; i < request.sponsorTimes.length; i++) {
@@ -530,7 +560,17 @@ function runThePopup() {
   
     //save this
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, tabs => {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          {message: "sponsorDataChanged"}
+        );
+      });
+    });
   
     displaySponsorTimes();
 
@@ -559,7 +599,17 @@ function runThePopup() {
   
     //save this
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, tabs => {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          {message: "sponsorDataChanged"}
+        );
+      });
+    });
   
     //update display
     displaySponsorTimes();
@@ -602,7 +652,17 @@ function runThePopup() {
     sponsorTimes = [];
   
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, tabs => {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          {message: "sponsorDataChanged"}
+        );
+      });
+    });
   
     displaySponsorTimes();
   
@@ -612,10 +672,15 @@ function runThePopup() {
     resetStartTimeChosen();
   }
   
+  function getErrorMessage(lang, statusCode) {
+    if(lang.has(statusCode)) return lang.get(statusCode);
+    return lang.get('Unknown').concat(" Error code: ") + statusCode;
+  } 
+
   function submitTimes() {
     //make info message say loading
-    document.getElementById("submitTimesInfoMessage").innerText = "Loading...";
-    document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+    SB.submitTimesInfoMessage.innerText = "Loading...";
+    SB.submitTimesInfoMessageContainer.style.display = "unset";
   
     if (sponsorTimes.length > 0) {
       chrome.runtime.sendMessage({
@@ -625,24 +690,16 @@ function runThePopup() {
         if (response != undefined) {
           if (response.statusCode == 200) {
             //hide loading message
-            document.getElementById("submitTimesInfoMessageContainer").style.display = "none";
-    
+            SB.submitTimesInfoMessageContainer.style.display = "none";
+
             clearTimes();
-          } else if(response.statusCode == 400) {
-            document.getElementById("submitTimesInfoMessage").innerText = "Server said this request was invalid";
-            document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
-          } else if(response.statusCode == 429) {
-            document.getElementById("submitTimesInfoMessage").innerText = "You have submitted too many sponsor times for this one video, are you sure there are this many?";
-            document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
-          } else if(response.statusCode == 409) {
-            document.getElementById("submitTimesInfoMessage").innerText = "This has already been submitted before";
-            document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
-          } else if(response.statusCode == 502) {
-            document.getElementById("submitTimesInfoMessage").innerText = "It seems the server is down. Contact the dev to inform them. Error code " + response.statusCode;
-            document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
           } else {
-            document.getElementById("submitTimesInfoMessage").innerText = "There was an error submitting your sponsor times, please try again later. Error code " + response.statusCode;
+            let errorMessage = getErrorMessage(EN_US, response.statusCode);
+
+            document.getElementById("submitTimesInfoMessage").innerText = errorMessage;
             document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
+
+            SB.submitTimesInfoMessageContainer.style.display = "unset";
           }
         }
       });
@@ -964,4 +1021,3 @@ if (chrome.tabs != undefined) {
   //this means it is actually opened in the popup
   runThePopup();
 }
-
