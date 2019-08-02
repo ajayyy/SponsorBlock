@@ -171,6 +171,9 @@ function videoIDChange(id) {
   sponsorDataFound = false;
   sponsorsLookup(id);
 
+  //make sure everything is properly added
+  updateVisibilityOfPlayerControlsButton();
+
   //reset sponsor times submitting
   sponsorTimesSubmitting = [];
 
@@ -223,6 +226,9 @@ function videoIDChange(id) {
 
 function sponsorsLookup(id) {
   v = document.querySelector('video') // Youtube video player
+
+  //there is no video here
+  if (v == null) return;
   
   //check database for sponsor times
   sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
@@ -367,7 +373,8 @@ function addPlayerControlsButton() {
   //add the image to the button
   startSponsorButton.appendChild(startSponsorImage);
 
-  let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
+  let controls = document.getElementsByClassName("ytp-right-controls");
+  let referenceNode = controls[controls.length - 1];
   
   referenceNode.prepend(startSponsorButton);
 }
@@ -379,6 +386,9 @@ function removePlayerControlsButton() {
 
 //adds or removes the player controls button to what it should be
 function updateVisibilityOfPlayerControlsButton() {
+  //not on a proper video yet
+  if (!getYouTubeVideoID(document.URL)) return;
+
   addPlayerControlsButton();
   addInfoButton();
   addDeleteButton();
@@ -482,7 +492,9 @@ function addInfoButton() {
   //add the image to the button
   infoButton.appendChild(infoImage);
 
-  let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
+  let controls = document.getElementsByClassName("ytp-right-controls");
+  let referenceNode = controls[controls.length - 1];
+
   referenceNode.prepend(infoButton);
 }
 
@@ -510,7 +522,9 @@ function addDeleteButton() {
   //add the image to the button
   deleteButton.appendChild(deleteImage);
 
-  let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
+  let controls = document.getElementsByClassName("ytp-right-controls");
+  let referenceNode = controls[controls.length - 1];
+  
   referenceNode.prepend(deleteButton);
 }
 
@@ -538,7 +552,9 @@ function addSubmitButton() {
   //add the image to the button
   submitButton.appendChild(submitImage);
 
-  let referenceNode = document.getElementsByClassName("ytp-right-controls")[0];
+  let controls = document.getElementsByClassName("ytp-right-controls");
+  let referenceNode = controls[controls.length - 1];
+  
   referenceNode.prepend(submitButton);
 }
 
