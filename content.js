@@ -263,7 +263,7 @@ function sponsorCheck() {
     //see if any sponsor start time was just passed
     for (let i = 0; i < sponsorTimes.length; i++) {
       //if something was skipped
-      if (checkSponsorTime(sponsorTimes, i), true) {
+      if (checkSponsorTime(sponsorTimes, i, true)) {
         skipHappened = true;
         break;
       }
