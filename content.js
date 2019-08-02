@@ -722,6 +722,20 @@ function openSkipNotice(UUID){
   noticeElement.appendChild(buttonContainer);
 
   let referenceNode = document.getElementById("movie_player");
+  if (referenceNode == null) {
+    //for embeds
+    let player = document.getElementById("player");
+    referenceNode = player.firstChild;
+    let index = 1;
+
+    //find the child that is the video player (sometimes it is not the first)
+    while (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed")) {
+      referenceNode = player.children[index];
+
+      index++;
+    }
+  }
+
   referenceNode.prepend(noticeElement);
 }
 
@@ -1009,5 +1023,10 @@ function getYouTubeVideoID(url) { // Returns with video id else returns false
   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
   var match = url.match(regExp);
   var id = new URL(url).searchParams.get("v");
+  if (url.includes("/embed/")) {
+    //it is an embed, don't search for v
+    id = match[7];
+  }
+
   return (match && match[7].length == 11) ? id : false;
 }
