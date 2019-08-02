@@ -674,7 +674,7 @@ function openSkipNotice(UUID){
   noticeElement.id = "sponsorSkipNotice" + UUID;
   noticeElement.classList.add("sponsorSkipObject");
   noticeElement.classList.add("sponsorSkipNotice");
-  noticeElement.style.zIndex = 5 + amountOfPreviousNotices;
+  noticeElement.style.zIndex = 50 + amountOfPreviousNotices;
 
   let logoElement = document.createElement("img");
   logoElement.id = "sponsorSkipLogo" + UUID;
@@ -744,11 +744,7 @@ function openSkipNotice(UUID){
   noticeElement.appendChild(voteButtonsContainer);
   noticeElement.appendChild(buttonContainer);
 
-  let referenceNode = document.getElementById("info");
-  if (referenceNode == null) {
-    //old YouTube
-    referenceNode = document.getElementById("watch-header");
-  }
+  let referenceNode = document.getElementById("movie_player");
   referenceNode.prepend(noticeElement);
 }
 
