@@ -637,29 +637,6 @@ function openSkipNotice(UUID){
     return;
   }
 
-  //check if page is loaded yet (for 0 second sponsors, the page might not be loaded yet)
-  //it looks for the view count div and sees if it is full yet
-  //querySelectorAll is being used like findElementById for multiple objects, because for
-  //some reason YouTube has put more than one object with one ID.
-  let viewCountNode = document.querySelectorAll("#count");
-  //check to see if the length is over zero, otherwise it's a different YouTube theme probably
-  if (viewCountNode.length > 0) {
-    //check if any of these have text
-    let viewCountVisible = false;
-    for (let i = 0; i < viewCountNode.length; i++) {
-      if (viewCountNode[i].innerText != null) {
-        viewCountVisible = true;
-        break;
-      }
-    }
-    if (!viewCountVisible) {
-      //this is the new YouTube layout and it is still loading
-      //wait a bit for opening the notice
-      setTimeout(() => openSkipNotice(UUID), 200);
-      return;
-    }
-  }
-
   let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
 
   if (amountOfPreviousNotices > 0) {
