@@ -301,7 +301,21 @@ function runThePopup() {
     sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = response.time;
   
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+    let localStartTimeChosen = startTimeChosen;
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+      //send a message to the client script
+      if (localStartTimeChosen) {
+        chrome.tabs.query({
+          active: true,
+          currentWindow: true
+        }, tabs => {
+          chrome.tabs.sendMessage(
+            tabs[0].id,
+            {message: "sponsorDataChanged"}
+          );
+        });
+      }
+    });
   
     updateStartTimeChosen();
   
@@ -546,7 +560,17 @@ function runThePopup() {
   
     //save this
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, tabs => {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          {message: "sponsorDataChanged"}
+        );
+      });
+    });
   
     displaySponsorTimes();
 
@@ -575,7 +599,17 @@ function runThePopup() {
   
     //save this
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, tabs => {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          {message: "sponsorDataChanged"}
+        );
+      });
+    });
   
     //update display
     displaySponsorTimes();
@@ -618,7 +652,17 @@ function runThePopup() {
     sponsorTimes = [];
   
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+    chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, tabs => {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          {message: "sponsorDataChanged"}
+        );
+      });
+    });
   
     displaySponsorTimes();
   

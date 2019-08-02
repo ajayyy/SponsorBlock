@@ -34,6 +34,13 @@ var hideVideoPlayerControls = false;
 var hideInfoButtonPlayerControls = false;
 var hideDeleteButtonPlayerControls = false;
 
+//the downloaded sponsor times
+var sponsorTimes = [];
+var UUIDs = [];
+
+//the sponsor times being prepared to be submitted
+var sponsorTimesSubmitting = [];
+
 //becomes true when isInfoFound is called
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
@@ -71,6 +78,10 @@ function messageListener(request, sender, sendResponse) {
     //messages from popup script
     if (request.message == "sponsorStart") {
       sponsorMessageStarted(sendResponse);
+    }
+
+    if (request.message == "sponsorDataChanged") {
+      updateSponsorTimesSubmitting();
     }
 
     if (request.message == "isInfoFound") {
@@ -160,6 +171,9 @@ function videoIDChange(id) {
   sponsorDataFound = false;
   sponsorsLookup(id);
 
+  //reset sponsor times submitting
+  sponsorTimesSubmitting = [];
+
   //see if the onvideo control image needs to be changed
   chrome.runtime.sendMessage({
     message: "getSponsorTimes",
@@ -173,6 +187,11 @@ function videoIDChange(id) {
         changeStartSponsorButton(false, true);
       } else {
         changeStartSponsorButton(true, false);
+      }
+
+      //see if this data should be saved in the sponsorTimesSubmitting variable
+      if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+        sponsorTimesSubmitting = sponsorTimes;
       }
     }
   });
@@ -203,79 +222,118 @@ function videoIDChange(id) {
 }
 
 function sponsorsLookup(id) {
-    v = document.querySelector('video') // Youtube video player
-    
-    //check database for sponsor times
-    sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        sponsorDataFound = true;
+  v = document.querySelector('video') // Youtube video player
+  
+  //check database for sponsor times
+  sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      sponsorDataFound = true;
 
-        sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
-        UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
+      sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
+      UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
+    } else if (xmlhttp.readyState == 4) {
+      sponsorDataFound = false;
 
-        // If the sponsor data exists, add the event to run on the videos "ontimeupdate"
-        v.ontimeupdate = function () { 
-            sponsorCheck(sponsorTimes);
-        };
-      } else if (xmlhttp.readyState == 4) {
-        sponsorDataFound = false;
+      //check if this video was uploaded recently
+      //use the invidious api to get the time published
+      sendRequestToCustomServer('GET', "https://invidio.us/api/v1/videos/" + id, function(xmlhttp, error) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          let unixTimePublished = JSON.parse(xmlhttp.responseText).published;
 
-        //check if this video was uploaded recently
-        //use the invidious api to get the time published
-        sendRequestToCustomServer('GET', "https://invidio.us/api/v1/videos/" + id, function(xmlhttp, error) {
-          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            let unixTimePublished = JSON.parse(xmlhttp.responseText).published;
-
-            //if less than 3 days old
-            if ((Date.now() / 1000) - unixTimePublished < 259200) {
-              setTimeout(() => sponsorsLookup(id), 10000);
-            }
+          //if less than 3 days old
+          if ((Date.now() / 1000) - unixTimePublished < 259200) {
+            setTimeout(() => sponsorsLookup(id), 10000);
           }
-        });
-      }
-    });
+        }
+      });
+    }
+  });
+
+  //add the event to run on the videos "ontimeupdate"
+  v.ontimeupdate = function () { 
+    sponsorCheck();
+  };
 }
 
-function sponsorCheck(sponsorTimes) { // Video skipping
-  //see if any sponsor start time was just passed
-  for (let i = 0; i < sponsorTimes.length; i++) {
-    //this means part of the video was just skipped
-    if (Math.abs(v.currentTime - lastTime) > 1 && lastTime != -1) {
-      //make lastTime as if the video was playing normally
-      lastTime = v.currentTime - 0.0001;
+//video skipping
+function sponsorCheck() {
+  let skipHappened = false;
+
+  if (sponsorTimes != null) {
+    //see if any sponsor start time was just passed
+    for (let i = 0; i < sponsorTimes.length; i++) {
+      //if something was skipped
+      if (checkSponsorTime(sponsorTimes, i), true) {
+        skipHappened = true;
+        break;
+      }
     }
+  }
 
-    let currentTime = Date.now();
-
-    //If the sponsor time is in between these times, skip it
-    //Checks if the last time skipped to is not too close to now, to make sure not to get too many
-    //  sponsor times in a row (from one troll)
-    //the last term makes 0 second start times possible
-    if ((Math.abs(v.currentTime - sponsorTimes[i][0]) < 0.3 && sponsorTimes[i][0] >= lastTime && sponsorTimes[i][0] <= v.currentTime
-          && (lastUnixTimeSkipped == -1 || currentTime - lastUnixTimeSkipped > 500)) || (lastTime == -1 && sponsorTimes[i][0] == 0)) {
-      //skip it
-      v.currentTime = sponsorTimes[i][1];
-
-      lastSponsorTimeSkipped = sponsorTimes[i][0];
-      
-      let currentUUID =  UUIDs[i];
-      lastSponsorTimeSkippedUUID = currentUUID; 
-
-      //send out the message saying that a sponsor message was skipped
-      openSkipNotice(currentUUID);
-
-      setTimeout(() => closeSkipNotice(currentUUID), 7000);
-
-      //send telemetry that a this sponsor was skipped happened
-      if (trackViewCount) {
-        sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+  if (!skipHappened) {
+    //check for the "preview" sponsors (currently edited by this user)
+    for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+      //must be a finished sponsor and be valid
+      if (sponsorTimesSubmitting[i].length > 1 && sponsorTimesSubmitting[i][1] > sponsorTimesSubmitting[i][0]) {
+        checkSponsorTime(sponsorTimesSubmitting, i, false);
       }
     }
   }
 
   //don't keep track until they are loaded in
-  if (sponsorTimes.length > 0) {
+  if (sponsorTimes != null || sponsorTimesSubmitting.length > 0) {
     lastTime = v.currentTime;
+  }
+}
+
+function checkSponsorTime(sponsorTimes, index, openNotice) {
+  //this means part of the video was just skipped
+  if (Math.abs(v.currentTime - lastTime) > 1 && lastTime != -1) {
+    //make lastTime as if the video was playing normally
+    lastTime = v.currentTime - 0.0001;
+  }
+
+  if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0])) {
+    //skip it
+    skipToTime(v, index, sponsorTimes, openNotice);
+
+    //something was skipped
+    return true;
+  }
+
+  return false;
+}
+
+function checkIfTimeToSkip(currentVideoTime, startTime) {
+  let currentTime = Date.now();
+
+  //If the sponsor time is in between these times, skip it
+  //Checks if the last time skipped to is not too close to now, to make sure not to get too many
+  //  sponsor times in a row (from one troll)
+  //the last term makes 0 second start times possible
+  return (Math.abs(currentVideoTime - startTime) < 0.3 && startTime >= lastTime && startTime <= currentVideoTime && 
+      (lastUnixTimeSkipped == -1 || currentTime - lastUnixTimeSkipped > 500)) || (lastTime == -1 && startTime == 0);
+}
+
+//skip fromt he start time to the end time for a certain index sponsor time
+function skipToTime(v, index, sponsorTimes, openNotice) {
+  v.currentTime = sponsorTimes[index][1];
+
+  lastSponsorTimeSkipped = sponsorTimes[index][0];
+  
+  let currentUUID =  UUIDs[index];
+  lastSponsorTimeSkippedUUID = currentUUID; 
+
+  if (openNotice) {
+    //send out the message saying that a sponsor message was skipped
+    openSkipNotice(currentUUID);
+
+    setTimeout(() => closeSkipNotice(currentUUID), 7000);
+
+    //send telemetry that a this sponsor was skipped happened
+    if (trackViewCount) {
+      sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+    }
   }
 }
 
@@ -347,6 +405,25 @@ function startSponsorClicked() {
     message: "addSponsorTime",
     time: v.currentTime,
     videoID: getYouTubeVideoID(document.URL)
+  }, function(response) {
+    //see if the sponsorTimesSubmitting needs to be updated
+    updateSponsorTimesSubmitting();
+  });
+}
+
+function updateSponsorTimesSubmitting() {
+  chrome.runtime.sendMessage({
+    message: "getSponsorTimes",
+    videoID: getYouTubeVideoID(document.URL)
+  }, function(response) {
+    if (response != undefined) {
+      let sponsorTimes = response.sponsorTimes;
+
+      //see if this data should be saved in the sponsorTimesSubmitting variable
+      if (sponsorTimes != undefined) {
+        sponsorTimesSubmitting = sponsorTimes;
+      }
+    }
   });
 }
 
@@ -543,6 +620,9 @@ function clearSponsorTimes() {
       //clear the sponsor times
       let sponsorTimeKey = "sponsorTimes" + currentVideoID;
       chrome.storage.sync.set({[sponsorTimeKey]: []});
+
+      //clear sponsor times submitting
+      sponsorTimesSubmitting = [];
 
       //set buttons to be correct
       changeStartSponsorButton(true, false);
