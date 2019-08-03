@@ -9,8 +9,6 @@ Settings.onekey = false; // TEMP
 Settings.hotkeys.submit = "Quote"; // TEMP
 Settings.hotkeys.start = "Semicolon"; // TEMP
 
-var hasData = false; // If started sponsor
-
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 
@@ -114,7 +112,7 @@ document.onkeydown = function(e) {
     if (document.activeElement === video) {
         if (e.code == Settings.hotkeys.submit) {
             if(Settings.onekey) {
-              if (hasData) { // Submit!!!
+              if (document.getElementById("submitButton").style != "none") { // Submit!!!
                 submitSponsorTimes();
                 hasData = false;
               } else { // First time
