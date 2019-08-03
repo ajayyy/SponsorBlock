@@ -178,7 +178,7 @@ function videoIDChange(id) {
   sponsorsLookup(id);
 
   //make sure everything is properly added
-  updateVisibilityOfPlayerControlsButton();
+  updateVisibilityOfPlayerControlsButton(true);
 
   //reset sponsor times submitting
   sponsorTimesSubmitting = [];
@@ -225,7 +225,7 @@ function videoIDChange(id) {
       hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
     }
 
-    updateVisibilityOfPlayerControlsButton();
+    updateVisibilityOfPlayerControlsButton(false);
   });
   
 }
@@ -234,7 +234,10 @@ function sponsorsLookup(id) {
   v = document.querySelector('video') // Youtube video player
 
   //there is no video here
-  if (v == null) return;
+  if (v == null) {
+    setTimeout(() => sponsorsLookup(id), 100);
+    return;
+  }
   
   //check database for sponsor times
   sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
@@ -381,7 +384,13 @@ function addPlayerControlsButton() {
 
   let controls = document.getElementsByClassName("ytp-right-controls");
   let referenceNode = controls[controls.length - 1];
-  
+
+  if (referenceNode == undefined) {
+    //page not loaded yet
+    setTimeout(addPlayerControlsButton, 100);
+    return;
+  }
+
   referenceNode.prepend(startSponsorButton);
 }
 
@@ -501,6 +510,12 @@ function addInfoButton() {
   let controls = document.getElementsByClassName("ytp-right-controls");
   let referenceNode = controls[controls.length - 1];
 
+  if (referenceNode == undefined) {
+    //page not loaded yet
+    setTimeout(addInfoButton, 100);
+    return;
+  }
+
   referenceNode.prepend(infoButton);
 }
 
@@ -531,6 +546,12 @@ function addDeleteButton() {
   let controls = document.getElementsByClassName("ytp-right-controls");
   let referenceNode = controls[controls.length - 1];
   
+  if (referenceNode == undefined) {
+    //page not loaded yet
+    setTimeout(addDeleteButton, 100);
+    return;
+  }
+
   referenceNode.prepend(deleteButton);
 }
 
@@ -560,6 +581,12 @@ function addSubmitButton() {
 
   let controls = document.getElementsByClassName("ytp-right-controls");
   let referenceNode = controls[controls.length - 1];
+
+  if (referenceNode == undefined) {
+    //page not loaded yet
+    setTimeout(addSubmitButton, 100);
+    return;
+  }
   
   referenceNode.prepend(submitButton);
 }
@@ -881,7 +908,7 @@ function dontShowNoticeAgain() {
 }
 
 function sponsorMessageStarted(callback) {
-    let v = document.querySelector('video');
+    v = document.querySelector('video');
 
     //send back current time
     callback({
