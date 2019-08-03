@@ -114,10 +114,8 @@ document.onkeydown = function(e) {
             if(Settings.onekey) {
               if (document.getElementById("submitButton").style != "none") { // Submit!!!
                 submitSponsorTimes();
-                hasData = false;
               } else { // First time
                 startSponsorClicked();
-                hasData = true;
               }
             }else{
               if(e.code == Settings.hotkeys.start){
