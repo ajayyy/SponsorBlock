@@ -184,6 +184,9 @@ function videoIDChange(id) {
     return;
   }
 
+  //close popup
+  closeInfoMenu();
+
   //reset last sponsor times
   lastTime = -1;
   lastUnixTimeSkipped = -1;
