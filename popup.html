@@ -10,7 +10,7 @@
       <div id="app" class="popupBody">
           <img src="icons/LogoSponsorBlocker256px.png" height="64px" id="sponsorBlockPopupLogo"/>
 
-          <h1 class="popupElement">SponsorBlock</h1>
+          <h1 class="popupElement"><font color="red">Sponsor</font>Block<h1/>
 
           <!-- Loading text -->
           <p id="loadingIndicator" class="popupElement">Loading...</p>
@@ -137,52 +137,31 @@
                 <br/>
 
                 <h3>Options</h3>
-      
-                <button id="hideVideoPlayerControls" class="warningButton popupElement">Hide Buttons On YouTube Player</button>
-                <button id="showVideoPlayerControls" style="display: none" class="warningButton popupElement">Show Buttons On YouTube Player</button>
-                <br/>
-                <sub class="popupElement">
-                  This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some 
-                  people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, 
-                  use the button that appears on the notice saying "Don't show this again". You can always enable these settings again 
-                  later.
-                </sub>
-
-                <br/>
-                <br/>
-
-                <button id="hideInfoButtonPlayerControls" class="warningButton popupElement">Hide Info Button On YouTube Player</button>
-                <button id="showInfoButtonPlayerControls" style="display: none" class="warningButton popupElement">Show Info Button On YouTube Player</button>
-                <br/>
-                <sub class="popupElement">
-                  This is the button that opens up a popup in the YouTube page.
-                </sub>
-
-                <br/>
-                <br/>
-
-                <button id="hideDeleteButtonPlayerControls" class="warningButton popupElement">Hide Delete Button On YouTube Player</button>
-                <button id="showDeleteButtonPlayerControls" style="display: none" class="warningButton popupElement">Show Delete Button On YouTube Player</button>
-                <br/>
-                <sub class="popupElement">
-                  This is the button that allows you to clear all sponsors on the YouTube player.
-                </sub>
-
-                <br/>
-                <br/>
-
-                <button id="disableSponsorViewTracking" class="warningButton popupElement">Disable Sponsor View Tracking</button>
-                <button id="enableSponsorViewTracking" style="display: none" class="warningButton popupElement">Enable Sponsor View Tracking</button>
-                <br/>
-                <sub class="popupElement">
-                  This feature tracks which sponsors you have skipped to let users know how much their submission has helped others and
-                  used as a metric along with upvotes to ensure that spam doesn't get into the database. The extension sends a message
-                  to the server each time you skip a sponsor. Hopefully most people don't change this setting so that the view numbers
-                  are accurate. :)
-                </sub>
-      
-                <br/>
-                <br/>
+				
+				<label class="switch">
+					<input id="buttons" type="checkbox" checked>
+					<span class="slider round"></span>
+				</label><a>Player Buttons</a>
+				<br><br>
+				
+				<label class="switch">
+					<input id="analytics" type="checkbox" checked>
+					<span class="slider round"></span>
+				</label><a>View Analytics</a>
+				<br><br>
+				
+				<label class="switch">
+					<input id="onekey" type="checkbox" checked>
+					<span class="slider round"></span>
+				</label><a>One key</a>
+				
+				<h2>Hotkeys</h2>
+				
+				Submit Key: <input type="text" id="submitkey" name="submit" size="1" maxlength="1" value="'">
+				<br><br>
+				
+				Start Key: <input type="text" id="startkey" name="submit" size="1" maxlength="1" value=";">
+				<br/><br/>
 
                 <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">Show Notice Again</button>
             </div>
