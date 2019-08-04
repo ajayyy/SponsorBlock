@@ -965,9 +965,15 @@ function sendSubmitMessage(){
         //finish this animation
         submitButton.style.animation = "rotate 1s";
         //when the animation is over, hide the button
-        submitButton.addEventListener("animationend", function() {
+        let animationEndListener =  function() {
           changeStartSponsorButton(true, false);
-        });
+
+          submitButton.style.animation = "none";
+
+          submitButton.removeEventListener("animationend", animationEndListener);
+        };
+
+        submitButton.addEventListener("animationend", animationEndListener);
 
         //clear the sponsor times
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
