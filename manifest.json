@@ -12,7 +12,8 @@
       "js": [
         "config.js",
         "content.js",
-        "popup.js"
+        "popup.js",
+        "utils.js"
       ],
       "css": [
         "content.css",
