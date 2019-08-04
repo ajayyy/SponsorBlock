@@ -269,5 +269,27 @@ function getYouTubeVideoID(url) { // Return video id or false
   return (match && match[7].length == 11) ? match[7] : false;
 }
 
-//uuid generator function from https://gist.github.com/jed/982883
-function generateUUID(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,generateUUID)}
+function generateUUID() {
+    var length = 36;
+    var charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var i;
+    var result = "";
+    var isOpera = Object.prototype.toString.call(window.opera) == '[object Opera]';
+    if (window.crypto && window.crypto.getRandomValues) {
+        values = new Uint32Array(length);
+        window.crypto.getRandomValues(values);
+        for (i = 0; i < length; i++) {
+            result += charset[values[i] % charset.length];
+        }
+        return result;
+    } else if (isOpera) //Opera's Math.random is secure, see http://lists.w3.org/Archives/Public/public-webcrypto/2013Jan/0063.html
+    {
+        for (i = 0; i < length; i++) {
+            result += charset[Math.floor(Math.random() * charset.length)];
+        }
+        return result;
+    } else {
+        alert("Your browser can't generate a secure UUID so Math.random() was used");
+        return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+    }
+}
