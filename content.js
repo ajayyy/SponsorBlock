@@ -307,6 +307,14 @@ function getChannelID() {
     }
   }
 
+  if (channelContainers.length == 0) {
+    //old YouTube theme
+    channelContainers = document.getElementsByClassName("yt-user-info");
+    if (channelContainers.length != 0) {
+      channelURLContainer = channelContainers[0].firstElementChild;
+    }
+  }
+
   if (channelURLContainer == null) {
     //try later
     setTimeout(getChannelID, 100);
