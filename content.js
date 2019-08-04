@@ -17,6 +17,12 @@ if(id = getYouTubeVideoID(document.URL)){ // Direct Links
 //the video
 var v;
 
+//the channel this video is about
+var channelURL;
+
+//is this channel whitelised from getting sponsors skipped
+var channelWhitelisted = false;
+
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
 
@@ -107,6 +113,23 @@ function messageListener(request, sender, sendResponse) {
       sendResponse({
         videoID: getYouTubeVideoID(document.URL)
       })
+    }
+
+    if (request.message == "getChannelURL") {
+      sendResponse({
+        channelURL: channelURL
+      })
+    }
+
+    if (request.message == "isChannelWhitelisted") {
+      sendResponse({
+        value: channelWhitelisted
+      })
+    }
+
+    if (request.message == "whitelistChange") {
+      channelWhitelisted = request.value;
+      sponsorsLookup(getYouTubeVideoID(document.URL));
     }
 
     if (request.message == "showNoticeAgain") {
@@ -246,6 +269,9 @@ function sponsorsLookup(id) {
 
       sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
       UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
+
+      getChannelID();
+
     } else if (xmlhttp.readyState == 4) {
       sponsorDataFound = false;
 
@@ -268,6 +294,39 @@ function sponsorsLookup(id) {
   v.ontimeupdate = function () { 
     sponsorCheck();
   };
+}
+
+function getChannelID() {
+  //get channel id
+  let channelContainers = document.querySelectorAll("#owner-name");
+  let channelURLContainer = null;
+
+  for (let i = 0; i < channelContainers.length; i++) {
+    if (channelContainers[i].firstElementChild != null) {
+      channelURLContainer = channelContainers[i].firstElementChild;
+    }
+  }
+
+  if (channelURLContainer == null) {
+    //try later
+    setTimeout(getChannelID, 100);
+    return;
+  }
+
+  channelURL = channelURLContainer.getAttribute("href");
+
+  //see if this is a whitelisted channel
+  chrome.storage.sync.get(["whitelistedChannels"], function(result) {
+    let whitelistedChannels = result.whitelistedChannels;
+
+    if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
+      //reset sponsor times to nothing
+      sponsorTimes = [];
+      UUIDs = [];
+
+      channelWhitelisted = true;
+    }
+  });
 }
 
 //video skipping

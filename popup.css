@@ -86,6 +86,32 @@ h1.popupElement {
 	cursor: pointer;
 }
 
+.whitelistButton.popupElement {
+	background-color:#3acc3a;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border: none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:16px;
+	padding:8px 37px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #27663c;
+  }
+  .whitelistButton:hover.popupElement {
+	background-color:#218b26;
+  }
+  .whitelistButton:focus.popupElement {
+	  outline: none;
+	  background-color:#218b26;
+  }
+  .whitelistButton:active.popupElement {
+	position:relative;
+	top:1px;
+  }
+
 .greenButton.popupElement {
   background-color:#ec1c1c;
   -moz-border-radius:28px;
