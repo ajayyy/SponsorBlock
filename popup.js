@@ -1127,11 +1127,25 @@ function runThePopup() {
     xmlhttp.send();
   }
   
-  function getYouTubeVideoID(url) { // Returns with video id else returns false
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    var id = new URL(url).searchParams.get("v");
-    return (match && match[7].length == 11) ? id : false;
+  // Returns with video id else returns false
+  function getYouTubeVideoID(url) {
+    let urlObject = new URL(url)
+
+    if (urlObject.host != "www.youtube.com") {
+        return false
+    }
+
+    if (urlObject.pathname == "/watch/" || urlObject.pathname == "/watch") {
+        let id = urlObject.searchParams.get("v");
+        return id.length == 11 ? id : false
+    }
+
+    if (urlObject.pathname.startsWith("/embed/")) {
+        let id = urlObject.pathname.slice("/embed/".length)
+        return id.length == 11 ? id : false
+    }
+
+    return false
   }
   
 //end of function

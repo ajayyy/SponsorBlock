@@ -1144,16 +1144,25 @@ function sendRequestToCustomServer(type, fullAddress, callback) {
   xmlhttp.send();
 }
 
-function getYouTubeVideoID(url) { // Returns with video id else returns false
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  var id = new URL(url).searchParams.get("v");
-  if (url.includes("/embed/")) {
-    //it is an embed, don't search for v
-    id = match[7];
+// Returns with video id else returns false
+function getYouTubeVideoID(url) {
+  let urlObject = new URL(url)
+
+  if (urlObject.host != "www.youtube.com") {
+      return false
   }
 
-  return (match && match[7].length == 11) ? id : false;
+  if (urlObject.pathname == "/watch/" || urlObject.pathname == "/watch") {
+      let id = urlObject.searchParams.get("v");
+      return id.length == 11 ? id : false
+  }
+
+  if (urlObject.pathname.startsWith("/embed/")) {
+      let id = urlObject.pathname.slice("/embed/".length)
+      return id.length == 11 ? id : false
+  }
+
+  return false
 }
 
 //returns the start time of the video if there was one specified (ex. ?t=5s)
