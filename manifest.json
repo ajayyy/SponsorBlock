@@ -6,7 +6,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*.youtube.com/*"
+        "https://*.youtube.com/*",
+        "https://www.youtube-nocookie.com/embed/*"
       ],
       "all_frames": true,
       "js": [
