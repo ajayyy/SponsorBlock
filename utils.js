@@ -1,8 +1,9 @@
-function getYouTubeVideoID(url) { // Returns with video id else returns false
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  var id = url.includes("/embed/") ? match[7] : new URL(url).searchParams.get("v");
-  return (match && id.length === 11) ? id : false;
+function getYouTubeVideoID(url) {
+  let obj = new URL(url);
+  if(obj.host !== "www.youtube.com" || "www.youtube-nocookie.com") return false // Check if valid hostname
+  if (obj.pathname == "/watch") id = obj.searchParams.get("v"); // Get ID from searchParam
+  if (obj.pathname.startsWith("/embed/")) id = obj.pathname.slice("/embed/".length); // Get ID from end or URL
+  return id.length == 11 ? id : false;
 }
 
 //returns the start time of the video if there was one specified (ex. ?t=5s)
