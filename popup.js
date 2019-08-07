@@ -127,7 +127,7 @@ function runThePopup() {
           SB.whitelistChannel.style.display = "none";
           SB.unwhitelistChannel.style.display = "unset";
 
-          SB.downloadedSponsorMessageTimes.innerText = "Channel Whitelisted!";
+          SB.downloadedSponsorMessageTimes.innerText = MSG("CWL");
           SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
         }
       });
@@ -179,9 +179,9 @@ function runThePopup() {
   chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
     if (result.sponsorTimesContributed != undefined) {
       if (result.sponsorTimesContributed > 1) {
-        SB.sponsorTimesContributionsDisplayEndWord.innerText = "sponsors."
+        SB.sponsorTimesContributionsDisplayEndWord.innerText = MSG("SPs");
       } else {
-        SB.sponsorTimesContributionsDisplayEndWord.innerText = "sponsor."
+        SB.sponsorTimesContributionsDisplayEndWord.innerText = MSG("SP");
       }
       SB.sponsorTimesContributionsDisplay.innerText = result.sponsorTimesContributed;
       SB.sponsorTimesContributionsContainer.style.display = "unset";
@@ -197,9 +197,9 @@ function runThePopup() {
               let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
               if (viewCount != 0) {
                 if (viewCount > 1) {
-                  SB.sponsorTimesViewsDisplayEndWord.innerText = "sponsor segments."
+                  SB.sponsorTimesViewsDisplayEndWord.innerText = MSG("SPSEGs");
                 } else {
-                  SB.sponsorTimesViewsDisplayEndWord.innerText = "sponsor segment."
+                  SB.sponsorTimesViewsDisplayEndWord.innerText = MSG("SPSEG");
                 }
 
                 SB.sponsorTimesViewsDisplay.innerText = viewCount;
@@ -276,11 +276,11 @@ function runThePopup() {
       SB.loadingIndicator.innerHTML = "";
 
       if (request.found) {
-        SB.videoFound.innerHTML = "This video's sponsors are in the database!"
+        SB.videoFound.innerHTML = MSG("SP_FOUND");
 
         displayDownloadedSponsorTimes(request);
       } else {
-        SB.videoFound.innerHTML = "No sponsors found"
+        SB.videoFound.innerHTML = MSG("SP_NONE");
       }
     }
   }
@@ -358,7 +358,7 @@ function runThePopup() {
   function displayDownloadedSponsorTimes(request) {
     if (request.sponsorTimes != undefined) {
       //set it to the message
-      if (SB.downloadedSponsorMessageTimes.innerText != "Channel Whitelisted!") {
+      if (SB.downloadedSponsorMessageTimes.innerText != MSG("CWL")) {
         SB.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
       }
 
@@ -706,7 +706,7 @@ function runThePopup() {
 
             clearTimes();
           } else {
-            let errorMessage = getErrorMessage(EN_US, response.statusCode);
+            let errorMessage = getErrorMessage(response.statusCode);
 
             document.getElementById("submitTimesInfoMessage").innerText = errorMessage;
             document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
@@ -873,7 +873,7 @@ function runThePopup() {
     //update startTimeChosen letiable
     if (!startTimeChosen) {
       startTimeChosen = true;
-    SB.sponsorStart.innerHTML = "Sponsorship Ends Now";
+    SB.sponsorStart.innerHTML = MSG("SP_END");
     } else {
       resetStartTimeChosen();
     }
@@ -882,7 +882,7 @@ function runThePopup() {
   //set it to false
   function resetStartTimeChosen() {
     startTimeChosen = false;
-    SB.sponsorStart.innerHTML = "Sponsorship Starts Now";
+    SB.sponsorStart.innerHTML = "SP_START";
   }
   
   //hides and shows the submit times button when needed
@@ -905,8 +905,7 @@ function runThePopup() {
   
   //this is not a YouTube video page
   function displayNoVideo() {
-    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
-        "If you know this is a YouTube tab, close this popup and open it again.";
+    document.getElementById("loadingIndicator").innerHTML = MSG("NOTYT");
   }
   
   function reportAnIssue() {
@@ -943,7 +942,7 @@ function runThePopup() {
         //see if it was a success or failure
         if (response.successType == 1) {
           //success
-          addVoteMessage("Thanks for voting!", UUID)
+          addVoteMessage(MSG("VOTE"), UUID)
         } else if (response.successType == 0) {
           //failure: duplicate vote
           addVoteMessage("You have already voted this way before.", UUID)
