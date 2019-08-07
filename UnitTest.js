@@ -2,6 +2,10 @@
 // This should be automated via CI
 
 const Videos = [
+    { input: "https://www.youtube-nocookie.com/embed/wJuWuJBbc1s", result: "wJuWuJBbc1s" },
+    { input: "https://www.youtube-nocookie.com/embed/blah", result: false },
+    { input: "https://www.youtube-nocookie.com/embed/wJuWuJBbc1s#example", result: "wJuWuJBbc1s" },
+    { input: "https://www.youtube-nocookie.com/em0bed/wJuWuJBbc1s", result: false },
     { input: "https://www.youtube.com/watch?v=wJuWuJBbc1s#example", result: "wJuWuJBbc1s" },
     { input: "https://www.youtube.com/watch?v=wJuWuJBbc1sX", result: "wJuWuJBbc1s" },
     { input: "https://www.youtube.com/watch?v=wJuWuJBbc1s", result: "wJuWuJBbc1s" },
