@@ -10,6 +10,7 @@
       ],
       "all_frames": true,
       "js": [
+        "LANG.js",
         "config.js",
         "content.js",
         "popup.js"
@@ -48,6 +49,7 @@
   }, 
   "background": {
     "scripts":[
+      "LANG.js",
       "config.js",
       "background.js"
     ]
