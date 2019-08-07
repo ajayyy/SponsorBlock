@@ -1127,13 +1127,6 @@ function runThePopup() {
     xmlhttp.send();
   }
   
-  function getYouTubeVideoID(url) { // Returns with video id else returns false
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    var id = new URL(url).searchParams.get("v");
-    return (match && match[7].length == 11) ? id : false;
-  }
-  
 //end of function
 }
 
