@@ -11,11 +11,15 @@ function getYouTubeVideoID(url) {
     
     if (obj.pathname == "/watch" && obj.searchParams.has("v")) {
       id = obj.searchParams.get("v"); // Get ID from searchParam
+      return id.length == 11 ? id : false;
     } else if (obj.pathname.startsWith("/embed/")) {
-      id = obj.pathname.slice("/embed/".length); // Get ID from end or URL
+      try {
+        return obj.pathname.substr(7, 11);
+      } catch (e) {
+        console.error("[SB] Video ID not valid");
+        return false
+      }
     }
-
-    return id.length == 11 ? id : false; // If ID is not 11 in length return false
 }
 
 //returns the start time of the video if there was one specified (ex. ?t=5s)
