@@ -2,9 +2,9 @@ function getYouTubeVideoID(url) {
 
     try { // Attempt to parse url
         let obj = new URL(url);
-    } catch (e) {
-        return false
+    } catch (e) {      
         console.error("[SB] Unable to parser URL");
+        return false
     }
   
     if(!["www.youtube.com","www.youtube-nocookie.com"].includes(obj.host)) return false // Check if valid hostname
