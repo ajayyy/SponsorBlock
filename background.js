@@ -5,9 +5,9 @@ var userID = null;
 var sponsorVideoID = null;
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  chrome.runtime.sendMessage({
-    message: "update",
-  });
+	chrome.tabs.sendMessage(tabId, {
+		message: 'update',
+	});
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
