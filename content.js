@@ -80,8 +80,8 @@ chrome.runtime.onMessage.addListener(messageListener);
 
 function messageListener(request, sender, sendResponse) {
     //message from background script
-    if (request.message == "ytvideoid") { 
-      videoIDChange(request.id);
+    if (request.message == "TabUpdate") {
+	  if(id = getYouTubeVideoID(document.URL)) videoIDChange(id);
     }
 
     //messages from popup script
