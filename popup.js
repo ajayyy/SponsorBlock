@@ -226,7 +226,7 @@ function runThePopup() {
       currentWindow: true
   }, loadTabData);
   
-  function OnTabs(tabs) {
+  function onTabs(tabs) {
 	 chrome.storage.sync.get(['videoid'], function(result) {
 		 loadTabData(tabs, result.videoid);
 	 }); 
