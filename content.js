@@ -1,6 +1,6 @@
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
-
+var previousVideoID = null;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = null;
 var UUIDs = null;
@@ -77,10 +77,6 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
-
-window.addEventListener("hashchange", function(event){
-    if(id = getYouTubeVideoID(document.URL)) videoIDChange(id);
-});
   
 function messageListener(request, sender, sendResponse) {
     //messages from popup script
