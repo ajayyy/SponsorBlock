@@ -37,7 +37,6 @@
     "help/style.css"
   ],
   "permissions": [
-    "tabs",
     "storage",
     "notifications",
     "https://sponsor.ajay.app/*"
