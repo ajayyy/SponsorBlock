@@ -184,6 +184,30 @@ function videoIDChange(id) {
   if (sponsorVideoID == id) return;
   
   chrome.storage.sync.set({videoid: id});
+
+  //warn them if they had unsubmitted times
+  if (previousVideoID != null) {
+    //get the sponsor times from storage
+    let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
+    chrome.storage.sync.get([sponsorTimeKey], function(result) {
+      let sponsorTimes = result[sponsorTimeKey];
+
+      if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+        //warn them that they have unsubmitted sponsor times
+        chrome.notifications.create("stillThere" + Math.random(), {
+          type: "basic",
+          title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
+          message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
+          iconUrl: "./icons/LogoSponsorBlocker256px.png"
+        });
+      }
+
+      //set the previous video id to the currentID
+      previousVideoID = id;
+    });
+  } else {
+    previousVideoID = id;
+  }
   
   //close popup
   closeInfoMenu();
