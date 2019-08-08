@@ -221,16 +221,18 @@ function runThePopup() {
     }
   });
   
-  
   chrome.tabs.query({
       active: true,
       currentWindow: true
   }, loadTabData);
   
+  function OnTabs(tabs) {
+	 chrome.storage.sync.get(['videoid'], function(result) {
+		 loadTabData(tabs, result.videoid);
+	 }); 
+  }
   
-  function loadTabData(tabs) {
-    //set current videoID
-    currentVideoID = getYouTubeVideoID(tabs[0].url);
+  function loadTabData(tabs, currentVideoID) {
   
     if (!currentVideoID) {
       //this isn't a YouTube video then
