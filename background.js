@@ -10,24 +10,17 @@ var sponsorVideoID = null;
 chrome.tabs.onActivated.addListener(
   function(activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function(tab) {
-      let id = getYouTubeVideoID(tab.url);
-
-      //if this even is a YouTube tab
-      if (id) {
-        videoIDChange(id, activeInfo.tabId);
-      }
+        TabUpdate(activeInfo.tabId);
     })
   }
 );
 
 //when a tab changes URLs
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (changeInfo != undefined && changeInfo.url != undefined) {
-      let id = getYouTubeVideoID(changeInfo.url);
-
-      //if URL changed and is youtube video message contentScript the video id
-      if (changeInfo.url && id) { 
-        videoIDChange(id, tabId);
+    if (changeInfo != undefined) {
+      //if URL changed
+      if (tabId) { 
+        TabUpdate(tabId);
       }
     }
 });
@@ -176,42 +169,11 @@ function submitTimes(videoID, callback) {
   });
 }
 
-function videoIDChange(currentVideoID, tabId) {
+function TabUpdate(tabId) {
   //send a message to the content script
   chrome.tabs.sendMessage(tabId, {
-    message: 'ytvideoid',
-    id: currentVideoID
+    message: 'update'
   });
-
-  //not a url change
-  if (sponsorVideoID == currentVideoID){
-    return;
-  }
-  sponsorVideoID = currentVideoID;
-
-  //warn them if they had unsubmitted times
-  if (previousVideoID != null) {
-    //get the sponsor times from storage
-    let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
-    chrome.storage.sync.get([sponsorTimeKey], function(result) {
-      let sponsorTimes = result[sponsorTimeKey];
-
-      if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        //warn them that they have unsubmitted sponsor times
-        chrome.notifications.create("stillThere" + Math.random(), {
-          type: "basic",
-          title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
-          message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
-          iconUrl: "./icons/LogoSponsorBlocker256px.png"
-        });
-      }
-
-      //set the previous video id to the currentID
-      previousVideoID = currentVideoID;
-    });
-  } else {
-    previousVideoID = currentVideoID;
-  }
 }
 
 function getUserID(callback) {
@@ -261,12 +223,6 @@ function sendRequestToServer(type, address, callback) {
 
   //submit this request
   xmlhttp.send();
-}
-
-function getYouTubeVideoID(url) { // Return video id or false
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  return (match && match[7].length == 11) ? match[7] : false;
 }
 
 //uuid generator function from https://gist.github.com/jed/982883
