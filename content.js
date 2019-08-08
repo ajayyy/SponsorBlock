@@ -179,11 +179,12 @@ document.onkeydown = function(e){
 }
 
 function videoIDChange(id) {
-  //not a url change
-  if (sponsorVideoID == id){
-    return;
-  }
 
+  //not a url change
+  if (sponsorVideoID == id) return;
+  
+  chrome.storage.sync.set({videoid: id});
+  
   //close popup
   closeInfoMenu();
 
