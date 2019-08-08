@@ -5,7 +5,7 @@ var userID = null;
 chrome.tabs.onActivated.addListener(
   function(activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function(tab) {
-        TabUpdate(activeInfo.tabId);
+        tabUpdate(activeInfo.tabId);
     })
   }
 );
@@ -15,7 +15,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     if (changeInfo != undefined) {
       //if URL changed
       if (tabId) { 
-        TabUpdate(tabId);
+        tabUpdate(tabId);
       }
     }
 });
@@ -164,7 +164,7 @@ function submitTimes(videoID, callback) {
   });
 }
 
-function TabUpdate(tabId) {
+function tabUpdate(tabId) {
   //send a message to the content script
   chrome.tabs.sendMessage(tabId, {
     message: 'update'
