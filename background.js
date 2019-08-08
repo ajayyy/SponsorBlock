@@ -1,24 +1,8 @@
 //the id of this user, randomly generated once per install
 var userID = null;
 
-//when a new tab is highlighted
-chrome.tabs.onActivated.addListener(
-  function(activeInfo) {
-    chrome.tabs.get(activeInfo.tabId, function(tab) {
-        tabUpdate(activeInfo.tabId);
-    })
-  }
-);
-
-//when a tab changes URLs
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (changeInfo != undefined) {
-      //if URL changed
-      if (tabId) { 
-        tabUpdate(tabId);
-      }
-    }
-});
+//the last video id loaded, to make sure it is a video id change
+var sponsorVideoID = null;
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   if (request.message == "submitTimes") {
@@ -161,13 +145,6 @@ function submitTimes(videoID, callback) {
         });
       }
     }
-  });
-}
-
-function tabUpdate(tabId) {
-  //send a message to the content script
-  chrome.tabs.sendMessage(tabId, {
-    message: 'update'
   });
 }
 
