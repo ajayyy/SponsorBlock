@@ -4,6 +4,12 @@ var userID = null;
 //the last video id loaded, to make sure it is a video id change
 var sponsorVideoID = null;
 
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+  chrome.runtime.sendMessage({
+    message: "update",
+  });
+});
+
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   if (request.message == "submitTimes") {
     submitTimes(request.videoID, callback);
