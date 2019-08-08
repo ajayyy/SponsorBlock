@@ -84,6 +84,11 @@ window.addEventListener("hashchange", function(event){
   
 function messageListener(request, sender, sendResponse) {
     //messages from popup script
+  
+    if (request.message == "update") {
+      if(id = getYouTubeVideoID(document.URL)) videoIDChange(id);
+    }
+  
     if (request.message == "sponsorStart") {
       sponsorMessageStarted(sendResponse);
     }
