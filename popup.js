@@ -224,11 +224,11 @@ function runThePopup() {
   chrome.tabs.query({
       active: true,
       currentWindow: true
-  }, loadTabData);
+  }, onTabs);
   
   function onTabs(tabs) {
 	 chrome.storage.sync.get(['videoid'], function(result) {
-		 loadTabData(tabs, result.videoid);
+         	loadTabData(tabs, result.videoid);
 	 }); 
   }
   
