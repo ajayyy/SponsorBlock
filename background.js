@@ -1,11 +1,3 @@
-var previousVideoID = null
-
-//the id of this user, randomly generated once per install
-var userID = null;
-
-//the last video id loaded, to make sure it is a video id change
-var sponsorVideoID = null;
-
 //when a new tab is highlighted
 chrome.tabs.onActivated.addListener(
   function(activeInfo) {
@@ -62,14 +54,23 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
-  chrome.storage.sync.get(["shownInstallPage"], function(result) {
-    let shownInstallPage = result.shownInstallPage;
-    if (shownInstallPage == undefined || !shownInstallPage) {
+  chrome.storage.sync.get(["userID"], function(result) {
+    const userID = result.userID;
+    // If there is no userID, then it is the first install.
+    if (!userID){
       //open up the install page
       chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
 
-      //save that this happened
-      chrome.storage.sync.set({shownInstallPage: true});
+      //generate a userID
+      const newUserID = generateUUID();
+      //save this UUID
+      chrome.storage.sync.set({
+        "userID": newUserID,
+        "serverAddress": serverAddress,
+        //the last video id loaded, to make sure it is a video id change
+        "sponsorVideoID": null,
+        "previousVideoID": null
+      });
     }
   });
 });
@@ -109,9 +110,12 @@ function addSponsorTime(time, videoID, callback) {
 }
 
 function submitVote(type, UUID, callback) {
-  getUserID(function(userID) {
+  chrome.storage.sync.get(["serverAddress", "userID"], function(result) {
+    const serverAddress = result.serverAddress;
+    const userID = result.userID;
+
     //publish this vote
-    sendRequestToServer('GET', "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+    sendRequestToServer("GET", serverAddress + "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         callback({
           successType: 1
@@ -136,16 +140,17 @@ function submitVote(type, UUID, callback) {
 function submitTimes(videoID, callback) {
   //get the video times from storage
   let sponsorTimeKey = 'sponsorTimes' + videoID;
-  chrome.storage.sync.get([sponsorTimeKey], function(result) {
+  chrome.storage.sync.get([sponsorTimeKey, "serverAddress"], function(result) {
     let sponsorTimes = result[sponsorTimeKey];
+    const serverAddress = result.serverAddress;
+    const userID = result.userID;
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
       //submit these times
       for (let i = 0; i < sponsorTimes.length; i++) {
-        getUserID(function(userIDStorage) {
           //submit the sponsorTime
-          sendRequestToServer('GET', "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
-          + "&userID=" + userIDStorage, function(xmlhttp, error) {
+          sendRequestToServer("GET", serverAddress + "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+          + "&userID=" + userID, function(xmlhttp, error) {
             if (xmlhttp.readyState == 4 && !error) {
               callback({
                 statusCode: xmlhttp.status
@@ -169,7 +174,6 @@ function submitTimes(videoID, callback) {
                 statusCode: -1
               });
             }
-          });
         });
       }
     }
@@ -183,63 +187,45 @@ function videoIDChange(currentVideoID, tabId) {
     id: currentVideoID
   });
 
-  //not a url change
-  if (sponsorVideoID == currentVideoID){
-    return;
-  }
-  sponsorVideoID = currentVideoID;
+  chrome.storage.sync.get(["sponsorVideoID", "previousVideoID"], function(result) {
+    const sponsorVideoID = result.sponsorVideoID;
+    const previousVideoID = result.previousVideoID;
 
-  //warn them if they had unsubmitted times
-  if (previousVideoID != null) {
-    //get the sponsor times from storage
-    let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
-    chrome.storage.sync.get([sponsorTimeKey], function(result) {
-      let sponsorTimes = result[sponsorTimeKey];
+    //not a url change
+    if (sponsorVideoID == currentVideoID){
+      return;
+    }
 
-      if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        //warn them that they have unsubmitted sponsor times
-        chrome.notifications.create("stillThere" + Math.random(), {
-          type: "basic",
-          title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
-          message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
-          iconUrl: "./icons/LogoSponsorBlocker256px.png"
-        });
-      }
-
-      //set the previous video id to the currentID
-      previousVideoID = currentVideoID;
+    chrome.storage.sync.set({
+      "sponsorVideoID": currentVideoID
     });
-  } else {
-    previousVideoID = currentVideoID;
-  }
-}
 
-function getUserID(callback) {
-  if (userID != null) {
-    callback(userID);
-    return;
-  }
+    //warn them if they had unsubmitted times
+    if (previousVideoID != null) {
+      //get the sponsor times from storage
+      let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
+      chrome.storage.sync.get([sponsorTimeKey], function(result) {
+        let sponsorTimes = result[sponsorTimeKey];
 
-  //if it is not cached yet, grab it from storage
-  chrome.storage.sync.get(["userID"], function(result) {
-    let userIDStorage = result.userID;
-    if (userIDStorage != undefined) {
-      userID = userIDStorage;
-      callback(userID);
+        if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+          //warn them that they have unsubmitted sponsor times
+          chrome.notifications.create("stillThere" + Math.random(), {
+            type: "basic",
+            title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
+            message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
+            iconUrl: "./icons/LogoSponsorBlocker256px.png"
+          });
+        }
+
+        //set the previous video id to the currentID
+        chrome.storage.sync.set({
+          "previousVideoID": currentVideoID
+        });
+      });
     } else {
-      //double check if a UUID hasn't been created since this was first called
-      if (userID != null) {
-        callback(userID);
-        return;
-      }
-
-      //generate a userID
-      userID = generateUUID();
-      
-      //save this UUID
-      chrome.storage.sync.set({"userID": userID});
-
-      callback(userID);
+      chrome.storage.sync.set({
+        "previousVideoID": currentVideoID
+      });
     }
   });
 }
@@ -247,7 +233,7 @@ function getUserID(callback) {
 function sendRequestToServer(type, address, callback) {
   let xmlhttp = new XMLHttpRequest();
 
-  xmlhttp.open(type, serverAddress + address, true);
+  xmlhttp.open(type, address, true);
 
   if (callback != undefined) {
     xmlhttp.onreadystatechange = function () {
