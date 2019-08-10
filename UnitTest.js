@@ -28,8 +28,8 @@ const Videos = [
 
 
 function ALL() {
-    let pass = (GetVideoID()) ? true : false; // Run tests
-    (pass) ? console.log("ALL TEST PASSED :D"): console.error("TEST FAILED :D");
+    let pass = (GetVideoID()) // Run tests
+    (pass) ? console.log("ALL TEST PASSED :D") : console.error("TEST FAILED :D");
 }
 
 function GetVideoID() {
