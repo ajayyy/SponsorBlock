@@ -1,13 +1,15 @@
 function getYouTubeVideoID(url) {
 
-    try { // Attempt to parse url
+    //Attempt to parse url
+    try { 
         var obj = new URL(url);
     } catch (e) {      
         console.error("[SB] Unable to parser URL");
         return false
     }
   
-    if(!["www.youtube.com","www.youtube-nocookie.com"].includes(obj.host)) return false // Check if valid hostname
+    //Check if valid hostname
+    if(!["www.youtube.com","www.youtube-nocookie.com"].includes(obj.host)) return false; 
     
     if (obj.pathname == "/watch" && obj.searchParams.has("v")) {
       id = obj.searchParams.get("v"); // Get ID from searchParam
@@ -17,7 +19,7 @@ function getYouTubeVideoID(url) {
         return obj.pathname.substr(7, 11);
       } catch (e) {
         console.error("[SB] Video ID not valid");
-        return false
+        return false;
       }
     }
 }
