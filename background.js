@@ -265,11 +265,5 @@ function sendRequestToServer(type, address, callback) {
   xmlhttp.send();
 }
 
-function getYouTubeVideoID(url) { // Return video id or false
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  return (match && match[7].length == 11) ? match[7] : false;
-}
-
 //uuid generator function from https://gist.github.com/jed/982883
 function generateUUID(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,generateUUID)}

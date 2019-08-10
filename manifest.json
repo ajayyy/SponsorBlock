@@ -11,6 +11,7 @@
       "all_frames": true,
       "js": [
         "config.js",
+        "utils.js",
         "content.js",
         "popup.js"
       ],
@@ -46,6 +47,7 @@
   }, 
   "background": {
     "scripts":[
+      "utils.js",
       "config.js",
       "background.js"
     ],
