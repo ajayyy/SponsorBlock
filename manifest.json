@@ -48,7 +48,8 @@
     "scripts":[
       "config.js",
       "background.js"
-    ]
+    ],
+    "persistent": false
   },
   "icons": {
     "16": "icons/IconSponsorBlocker16px.png",
