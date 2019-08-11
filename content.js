@@ -194,12 +194,10 @@ function videoIDChange(id) {
 
       if (sponsorTimes != undefined && sponsorTimes.length > 0) {
         //warn them that they have unsubmitted sponsor times
-        chrome.notifications.create("stillThere" + Math.random(), {
-          type: "basic",
-          title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
-          message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
-          iconUrl: "./icons/LogoSponsorBlocker256px.png"
-        });
+          chrome.runtime.sendMessage({
+            message: "alertPrevious",
+            previousVideoID: previousVideoID
+          })
       }
 
       //set the previous video id to the currentID
