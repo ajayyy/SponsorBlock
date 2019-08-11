@@ -206,6 +206,7 @@ function videoIDChange(id) {
       previousVideoID = id;
     });
   } else {
+    //set the previous id now, don't wait for chrome.storage.get
     previousVideoID = id;
   }
   
