@@ -27,12 +27,12 @@ const Videos = [
 ];
 
 
-function ALL() {
+function runALL() {
     let pass = (GetVideoID()) // Run tests
     (pass) ? console.log("ALL TEST PASSED :D") : console.error("TEST FAILED :D");
 }
 
-function GetVideoID() {
+function getVideoID() {
     Videos.forEach(Video => {
         if (getYouTubeVideoID(Video.input) !== Video.result) {
             console.error("GetVideoID check failed at " + Video.input + " expected " + Video.result);
