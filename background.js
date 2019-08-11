@@ -29,7 +29,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
     //this allows the callback to be called later
     return true;
-  }
+  } else if (request.message == "alertPrevious") {
+	  chrome.notifications.create("stillThere" + Math.random(), {
+		  type: "basic",
+		  title: "Do you want to submit the sponsor times for video id " + request.previousVideoID + "?",
+		  message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
+		  iconUrl: "./icons/LogoSponsorBlocker256px.png"
+	  });
+  }	
 });
 
 //add help page on install
