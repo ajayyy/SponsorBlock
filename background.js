@@ -1,6 +1,3 @@
-//the id of this user, randomly generated once per install
-var userID = null;
-
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 	chrome.tabs.sendMessage(tabId, {
 		message: 'update',
