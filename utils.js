@@ -1,7 +1,8 @@
 function getYouTubeVideoID(url) {
     //Attempt to parse url
+    let urlObject = null;
     try { 
-        let urlObject = new URL(url);
+        urlObject = new URL(url);
     } catch (e) {      
         console.error("[SB] Unable to parse URL: " + url);
         return false
