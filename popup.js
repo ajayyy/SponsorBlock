@@ -207,7 +207,7 @@ function runThePopup() {
   }, onTabs);
   
   function onTabs(tabs) {
-	 chrome.storage.sync.get(['videoid'], function(result) {
+	 chrome.storage.sync.get(['videoID'], function(result) {
          	loadTabData(tabs, result.videoid);
 	 }); 
   }
