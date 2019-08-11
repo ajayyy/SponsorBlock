@@ -10,10 +10,6 @@ var sponsorVideoID = null;
 //the time this video is starting at when first played, if not zero
 var youtubeVideoStartTime = null;
 
-if(id = getYouTubeVideoID(document.URL)){ // Direct Links
-  videoIDChange(id);
-}
-
 //the video
 var v;
 
@@ -22,6 +18,10 @@ var channelURL;
 
 //is this channel whitelised from getting sponsors skipped
 var channelWhitelisted = false;
+
+if(id = getYouTubeVideoID(document.URL)){ // Direct Links
+  videoIDChange(id);
+}
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
