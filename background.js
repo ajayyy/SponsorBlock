@@ -1,9 +1,3 @@
-//the id of this user, randomly generated once per install
-var userID = null;
-
-//the last video id loaded, to make sure it is a video id change
-var sponsorVideoID = null;
-
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 	chrome.tabs.sendMessage(tabId, {
 		message: 'update',
@@ -40,14 +34,39 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
-  chrome.storage.sync.get(["shownInstallPage"], function(result) {
-    let shownInstallPage = result.shownInstallPage;
-    if (shownInstallPage == undefined || !shownInstallPage) {
-      //open up the install page
-      chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
+  // TODO (shownInstallPage): remove shownInstallPage logic after sufficient amount of time,
+  // so that people have time to upgrade and move to shownInstallPage-free code.
+  chrome.storage.sync.get(["userID", "shownInstallPage"], function(result) {
+    const userID = result.userID;
+    // TODO (shownInstallPage): delete row below
+    const shownInstallPage = result.shownInstallPage;
 
-      //save that this happened
-      chrome.storage.sync.set({shownInstallPage: true});
+    // If there is no userID, then it is the first install.
+    if (!userID){
+      // Show install page, if there is no user id
+      // and there is no shownInstallPage.
+      // TODO (shownInstallPage): remove this if statement, but leave contents
+      if (!shownInstallPage){
+        //open up the install page
+        chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
+      }
+
+      // TODO (shownInstallPage): delete if statement and contents
+      // If shownInstallPage is set, remove it.
+      if (!!shownInstallPage){
+        chrome.storage.sync.remove("shownInstallPage");
+      }
+
+      //generate a userID
+      const newUserID = generateUUID();
+      //save this UUID
+      chrome.storage.sync.set({
+        "userID": newUserID,
+        "serverAddress": serverAddress,
+        //the last video id loaded, to make sure it is a video id change
+        "sponsorVideoID": null,
+        "previousVideoID": null
+      });
     }
   });
 });
@@ -87,9 +106,12 @@ function addSponsorTime(time, videoID, callback) {
 }
 
 function submitVote(type, UUID, callback) {
-  getUserID(function(userID) {
+  chrome.storage.sync.get(["serverAddress", "userID"], function(result) {
+    const serverAddress = result.serverAddress;
+    const userID = result.userID;
+
     //publish this vote
-    sendRequestToServer('GET', "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+    sendRequestToServer("GET", serverAddress + "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         callback({
           successType: 1
@@ -114,16 +136,17 @@ function submitVote(type, UUID, callback) {
 function submitTimes(videoID, callback) {
   //get the video times from storage
   let sponsorTimeKey = 'sponsorTimes' + videoID;
-  chrome.storage.sync.get([sponsorTimeKey], function(result) {
+  chrome.storage.sync.get([sponsorTimeKey, "serverAddress"], function(result) {
     let sponsorTimes = result[sponsorTimeKey];
+    const serverAddress = result.serverAddress;
+    const userID = result.userID;
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
       //submit these times
       for (let i = 0; i < sponsorTimes.length; i++) {
-        getUserID(function(userIDStorage) {
           //submit the sponsorTime
-          sendRequestToServer('GET', "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
-          + "&userID=" + userIDStorage, function(xmlhttp, error) {
+          sendRequestToServer("GET", serverAddress + "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+          + "&userID=" + userID, function(xmlhttp, error) {
             if (xmlhttp.readyState == 4 && !error) {
               callback({
                 statusCode: xmlhttp.status
@@ -147,39 +170,8 @@ function submitTimes(videoID, callback) {
                 statusCode: -1
               });
             }
-          });
         });
       }
-    }
-  });
-}
-
-function getUserID(callback) {
-  if (userID != null) {
-    callback(userID);
-    return;
-  }
-
-  //if it is not cached yet, grab it from storage
-  chrome.storage.sync.get(["userID"], function(result) {
-    let userIDStorage = result.userID;
-    if (userIDStorage != undefined) {
-      userID = userIDStorage;
-      callback(userID);
-    } else {
-      //double check if a UUID hasn't been created since this was first called
-      if (userID != null) {
-        callback(userID);
-        return;
-      }
-
-      //generate a userID
-      userID = generateUUID();
-      
-      //save this UUID
-      chrome.storage.sync.set({"userID": userID});
-
-      callback(userID);
     }
   });
 }
@@ -187,7 +179,7 @@ function getUserID(callback) {
 function sendRequestToServer(type, address, callback) {
   let xmlhttp = new XMLHttpRequest();
 
-  xmlhttp.open(type, serverAddress + address, true);
+  xmlhttp.open(type, address, true);
 
   if (callback != undefined) {
     xmlhttp.onreadystatechange = function () {

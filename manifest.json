@@ -11,6 +11,7 @@
       "all_frames": true,
       "js": [
         "config.js",
+        "utils.js",
         "content.js",
         "popup.js"
       ],
@@ -32,9 +33,7 @@
     "icons/downvote.png",
     "icons/PlayerInfoIconSponsorBlocker256px.png",
     "icons/PlayerDeleteIconSponsorBlocker256px.png",
-    "popup.html",
-    "help/index.html",
-    "help/style.css"
+    "popup.html"
   ],
   "permissions": [
     "storage",
@@ -47,9 +46,11 @@
   }, 
   "background": {
     "scripts":[
+      "utils.js",
       "config.js",
       "background.js"
-    ]
+    ],
+    "persistent": false
   },
   "icons": {
     "16": "icons/IconSponsorBlocker16px.png",

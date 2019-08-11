@@ -123,26 +123,6 @@ function runThePopup() {
     }
   });
 
-  //see if whitelist button should be swapped
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, tabs => {
-    chrome.tabs.sendMessage(
-      tabs[0].id,
-      {message: 'isChannelWhitelisted'},
-      function(response) {
-        if (response.value) {
-          SB.whitelistChannel.style.display = "none";
-          SB.unwhitelistChannel.style.display = "unset";
-
-          SB.downloadedSponsorMessageTimes.innerText = "Channel Whitelisted!";
-          SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
-        }
-      });
-    }
-  );
-  
   //if the don't show notice again letiable is true, an option to 
   //  disable should be available
   chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
@@ -294,6 +274,26 @@ function runThePopup() {
         SB.videoFound.innerHTML = "No sponsors found"
       }
     }
+
+    //see if whitelist button should be swapped
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, tabs => {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        {message: 'isChannelWhitelisted'},
+        function(response) {
+          if (response.value) {
+            SB.whitelistChannel.style.display = "none";
+            SB.unwhitelistChannel.style.display = "unset";
+
+            SB.downloadedSponsorMessageTimes.innerText = "Channel Whitelisted!";
+            SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+          }
+        });
+      }
+    );
   }
   
   function setVideoID(request) {
@@ -1127,13 +1127,6 @@ function runThePopup() {
   
     //submit this request
     xmlhttp.send();
-  }
-  
-  function getYouTubeVideoID(url) { // Returns with video id else returns false
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    var id = new URL(url).searchParams.get("v");
-    return (match && match[7].length == 11) ? id : false;
   }
   
 //end of function
