@@ -123,26 +123,6 @@ function runThePopup() {
     }
   });
 
-  //see if whitelist button should be swapped
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, tabs => {
-    chrome.tabs.sendMessage(
-      tabs[0].id,
-      {message: 'isChannelWhitelisted'},
-      function(response) {
-        if (response.value) {
-          SB.whitelistChannel.style.display = "none";
-          SB.unwhitelistChannel.style.display = "unset";
-
-          SB.downloadedSponsorMessageTimes.innerText = "Channel Whitelisted!";
-          SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
-        }
-      });
-    }
-  );
-  
   //if the don't show notice again letiable is true, an option to 
   //  disable should be available
   chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
@@ -292,6 +272,26 @@ function runThePopup() {
         SB.videoFound.innerHTML = "No sponsors found"
       }
     }
+
+    //see if whitelist button should be swapped
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, tabs => {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        {message: 'isChannelWhitelisted'},
+        function(response) {
+          if (response.value) {
+            SB.whitelistChannel.style.display = "none";
+            SB.unwhitelistChannel.style.display = "unset";
+
+            SB.downloadedSponsorMessageTimes.innerText = "Channel Whitelisted!";
+            SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+          }
+        });
+      }
+    );
   }
   
   function setVideoID(request) {
