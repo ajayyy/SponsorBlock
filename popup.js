@@ -201,16 +201,20 @@ function runThePopup() {
     }
   });
   
-  
   chrome.tabs.query({
       active: true,
       currentWindow: true
-  }, loadTabData);
+  }, onTabs);
   
+  function onTabs(tabs) {
+	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
+		  if (result.videoID) {
+		  loadTabData(tabs, result.videoid);
+		  }
+	  });
+  }
   
-  function loadTabData(tabs) {
-    //set current videoID
-    currentVideoID = getYouTubeVideoID(tabs[0].url);
+  function loadTabData(tabs, currentVideoID) {
   
     if (!currentVideoID) {
       //this isn't a YouTube video then

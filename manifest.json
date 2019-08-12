@@ -36,7 +36,6 @@
     "popup.html"
   ],
   "permissions": [
-    "tabs",
     "storage",
     "notifications",
     "https://sponsor.ajay.app/*"
