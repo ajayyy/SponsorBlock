@@ -27,7 +27,7 @@
   "502": {
     "message": "It seems the server is down. Contact the dev to inform them."
   },
-  "ChannelWhitelisted": {
+  "channelWhitelisted": {
     "message": "Channel Whitelisted!"
   },
   "Sponsor": {
@@ -48,56 +48,56 @@
   "Hide": {
     "message": "Don't Show This Again"
   },
-  "HitGoBack": {
+  "hitGoBack": {
     "message": "Hit go back to get to where you came from."
   },
-  "GoBack": {
+  "goBack": {
     "message": "Go back"
   },
-  "ConfirmMSG": {
+  "confirmMSG": {
     "message": "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
   },
-  "ClearThis": {
+  "clearThis": {
     "message": "Are you sure you want to clear this?\n\n"
   },
   "Unknown": {
     "message": "There was an error submitting your sponsor times, please try again later."
   },
   
-  "SponsorFound": {
+  "sponsorFound": {
     "message": "This video's sponsors are in the database!"
   },
-  "Sponsor404": {
+  "sponsor404": {
     "message": "No sponsors found"
   },
-  "SponsorStart": {
+  "sponsorStart": {
     "message": "Sponsorship Starts Now"
   },
-  "SponsorEND": {
+  "sponsorEND": {
     "message": "Sponsorship Ends Now"
   },
   "noVIDEOID": {
     "message": "This probably isn't a YouTube tab, or you clicked too early. \n If you know this is a YouTube tab,\n close this popup and open it again."
   },
-  "VOTED": {
+  "Voted": {
     "message": "Thanks for voting!"
   },
-  "VOTE_FAIL": {
+  "voteFAIL": {
     "message": "You have already voted this way before."
   },
-  "ServerDown": {
+  "serverDown": {
     "message": "It seems the sever is down. Contact the dev immediately."
   },
   "connectionError": {
     "message": "A connection error has occured. Error code: "
   },
-  "Wanttosubmit": {
+  "wantToSubmit": {
     "message": "Do you want to submit the sponsor times for video id"
   },
   "leftTimes": {
     "message": "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted)."
   },
-  "popup": {
+  "Popup": {
     "message": "popup_en.html"
   }
 }
