@@ -200,13 +200,12 @@ function runThePopup() {
   function onTabs(tabs) {
 	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
 		  if (result != undefined && result.videoID) {
-        currentVideoID = result.videoID;
-
-		    loadTabData(tabs);
+			  currentVideoID = result.videoID;
+			  loadTabData(tabs);
 		  } else if (result == undefined && chrome.runtime.lastError) {
-        //this isn't a YouTube video then, or at least the content script is not loaded
-        displayNoVideo();
-      }
+			  //this isn't a YouTube video then, or at least the content script is not loaded
+			  displayNoVideo();
+		  }
 	  });
   }
   
@@ -224,7 +223,7 @@ function runThePopup() {
       if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
         if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
           startTimeChosen = true;
-          SB.sponsorStart.innerHTML = "Sponsorship Ends Now";
+          SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEND");
         }
   
         sponsorTimes = sponsorTimesStorage;
@@ -264,11 +263,11 @@ function runThePopup() {
       SB.loadingIndicator.innerHTML = "";
 
       if (request.found) {
-        SB.videoFound.innerHTML = chrome.i18n.getMessage("SponsorFound");
+        SB.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
 
         displayDownloadedSponsorTimes(request);
       } else {
-        SB.videoFound.innerHTML = chrome.i18n.getMessage("Sponsor404");
+        SB.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
       }
     }
 
@@ -366,7 +365,7 @@ function runThePopup() {
   function displayDownloadedSponsorTimes(request) {
     if (request.sponsorTimes != undefined) {
       //set it to the message
-      if (SB.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("ChannelWhitelisted")) {
+      if (SB.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
         SB.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
       }
 
@@ -628,8 +627,8 @@ function runThePopup() {
         tabs[0].id,
         {message: "getCurrentTime"},
         function (response) {
-          let minutes = document.getElementById(idStartName + "Minutes" + index);
-          let seconds = document.getElementById(idStartName + "Seconds" + index);
+          let minutes = document.getElementById(idStartName + chrome.i18n.getMessage("Mins") + index);
+          let seconds = document.getElementById(idStartName + chrome.i18n.getMessage("Secs") + index);
     
           minutes.value = getTimeInMinutes(response.currentTime);
           seconds.value = getTimeInFormattedSeconds(response.currentTime);
@@ -640,8 +639,8 @@ function runThePopup() {
   //id start name is whether it is the startTime or endTime
   //gives back the time in seconds
   function getSponsorTimeEditTimes(idStartName, index) {
-    let minutes = document.getElementById(idStartName + "Minutes" + index);
-    let seconds = document.getElementById(idStartName + "Seconds" + index);
+    let minutes = document.getElementById(idStartName + chrome.i18n.getMessage("Mins") + index);
+    let seconds = document.getElementById(idStartName + chrome.i18n.getMessage("Secs") + index);
 
     return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
   }
@@ -768,7 +767,7 @@ function runThePopup() {
   
   function submitTimes() {
     //make info message say loading
-    SB.submitTimesInfoMessage.innerText = "Loading...";
+    SB.submitTimesInfoMessage.innerText = chrome.i18n.getMessage("Loading");
     SB.submitTimesInfoMessageContainer.style.display = "unset";
   
     if (sponsorTimes.length > 0) {
@@ -950,7 +949,7 @@ function runThePopup() {
     //update startTimeChosen letiable
     if (!startTimeChosen) {
       startTimeChosen = true;
-    SB.sponsorStart.innerHTML = chrome.i18n.getMessage("SponsorEND");
+    SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEND");
     } else {
       resetStartTimeChosen();
     }
@@ -982,7 +981,7 @@ function runThePopup() {
   
   //this is not a YouTube video page
   function displayNoVideo() {
-    document.getElementById("loadingIndicator").innerHTML = chrome.i18n.getMessage("Sponsor404");
+    document.getElementById("loadingIndicator").innerHTML = chrome.i18n.getMessage("sponsor404");
   }
   
   function reportAnIssue() {
@@ -1019,13 +1018,13 @@ function runThePopup() {
         //see if it was a success or failure
         if (response.successType == 1) {
           //success
-          addVoteMessage(chrome.i18n.getMessage("VOTED"), UUID)
+          addVoteMessage(chrome.i18n.getMessage("Voted"), UUID)
         } else if (response.successType == 0) {
           //failure: duplicate vote
-          addVoteMessage(chrome.i18n.getMessage("VOTE_FAIL"), UUID)
+          addVoteMessage(chrome.i18n.getMessage("voteFAIL"), UUID)
         } else if (response.successType == -1) {
           if (response.statusCode == 502) {
-            addVoteMessage(chrome.i18n.getMessage("ServerDown"), UUID)
+            addVoteMessage(chrome.i18n.getMessage("serverDown"), UUID)
           } else {
             //failure: unknown error
             addVoteMessage(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID)
