@@ -42,8 +42,8 @@
     "https://sponsor.ajay.app/*"
   ],
   "browser_action": {
-    "default_title": "SponsorBlock",
-    "default_popup": "popup.html"
+    "default_title": "__MSG_Name__",
+    "default_popup": "__MSG_popup__"
   }, 
   "background": {
     "scripts":[
