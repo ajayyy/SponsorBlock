@@ -119,6 +119,10 @@ function messageListener(request, sender, sendResponse) {
       })
     }
 
+    if (request.message == "skipToTime") {
+      v.currentTime = request.time;
+    }
+
     if (request.message == "getChannelURL") {
       sendResponse({
         channelURL: channelURL

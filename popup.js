@@ -210,7 +210,7 @@ function runThePopup() {
 	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
 		  if (result != undefined && result.videoID) {
         currentVideoID = result.videoID;
-        
+
 		    loadTabData(tabs);
 		  } else if (result == undefined && chrome.runtime.lastError) {
         //this isn't a YouTube video then, or at least the content script is not loaded
@@ -473,8 +473,11 @@ function runThePopup() {
       let index = i;
       deleteButton.addEventListener("click", () => deleteSponsorTime(index));
   
-      let spacer = document.createElement("span");
-      spacer.innerText = " ";
+      let previewButton = document.createElement("span");
+      previewButton.id = "sponsorTimePreviewButton" + i;
+      previewButton.innerText = "Preview";
+      previewButton.className = "mediumLink popupElement";
+      previewButton.addEventListener("click", () => previewSponsorTime(index));
   
       let editButton = document.createElement("span");
       editButton.id = "sponsorTimeEditButton" + i;
@@ -502,6 +505,7 @@ function runThePopup() {
   
       //only if it is a complete sponsor time
       if (sponsorTimes[i].length > 1) {
+        sponsorTimesContainer.appendChild(previewButton);
         sponsorTimesContainer.appendChild(editButton);
 
         currentSponsorTimeContainer.addEventListener("click", () => editSponsorTime(index));
@@ -509,6 +513,28 @@ function runThePopup() {
     }
   
     return sponsorTimesContainer;
+  }
+
+  function previewSponsorTime(index) {
+    let skipTime = sponsorTimes[index][0];
+
+    if (document.getElementById("startTimeMinutes" + index) != null) {
+      //edit is currently open, use that time
+
+      skipTime = getSponsorTimeEditTimes("startTime", index);
+    }
+
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, tabs => {
+      chrome.tabs.sendMessage(
+        tabs[0].id, {
+          message: "skipToTime",
+          time: skipTime - 2
+        }
+      );
+    });
   }
   
   function editSponsorTime(index) {
@@ -582,16 +608,19 @@ function runThePopup() {
   
     sponsorTimesContainer.replaceChild(saveButton, editButton);
   }
+
+  //id start name is whether it is the startTime or endTime
+  //gives back the time in seconds
+  function getSponsorTimeEditTimes(idStartName, index) {
+    let minutes = document.getElementById(idStartName + "Minutes" + index);
+    let seconds = document.getElementById(idStartName + "Seconds" + index);
+
+    return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
+  }
   
   function saveSponsorTimeEdit(index) {
-    let startTimeMinutes = document.getElementById("startTimeMinutes" + index);
-    let startTimeSeconds = document.getElementById("startTimeSeconds" + index);
-  
-    let endTimeMinutes = document.getElementById("endTimeMinutes" + index);
-    let endTimeSeconds = document.getElementById("endTimeSeconds" + index);
-  
-    sponsorTimes[index][0] = parseInt(startTimeMinutes.value) * 60 + parseFloat(startTimeSeconds.value);
-    sponsorTimes[index][1] = parseInt(endTimeMinutes.value) * 60 + parseFloat(endTimeSeconds.value);
+    sponsorTimes[index][0] = getSponsorTimeEditTimes("startTime", index);
+    sponsorTimes[index][1] = getSponsorTimeEditTimes("endTime", index);
   
     //save this
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
