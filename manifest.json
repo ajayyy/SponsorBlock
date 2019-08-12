@@ -1,8 +1,9 @@
 {
-  "name": "SponsorBlock for YouTube - Skip Sponsorships",
-  "short_name": "SponsorBlock",
+  "name": "__MSG_fullName__",
+  "short_name": "__MSG_Name__",
   "version": "1.0.31",
-  "description": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
+  "default_locale": "en",
+  "description": "__MSG_Description__",
   "content_scripts": [
     {
       "matches": [
@@ -10,7 +11,6 @@
       ],
       "all_frames": true,
       "js": [
-        "LANG.js",
         "config.js",
         "utils.js",
         "content.js",
