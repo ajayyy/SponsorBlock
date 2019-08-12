@@ -40,9 +40,28 @@
   "Segments": {
     "message": "sponsor segments"
   },
+  "Dismiss": {
+    "message": "Dismiss"
+  },
+  "Hide": {
+    "message": "Don't Show This Again"
+  },
+  "HitGoBack": {
+    "message": "Hit go back to get to where you came from."
+  },
+  "GoBack": {
+    "message": "Go back"
+  },
+  "ConfirmMSG": {
+    "message": "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
+  },
+  "ClearThis": {
+    "message": "Are you sure you want to clear this?\n\n"
+  },
   "Unknown": {
     "message": "There was an error submitting your sponsor times, please try again later."
   },
+  
   "SponsorFound": {
     "message": "This video's sponsors are in the database!"
   },
