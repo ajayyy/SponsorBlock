@@ -522,6 +522,9 @@ function runThePopup() {
       //edit is currently open, use that time
 
       skipTime = getSponsorTimeEditTimes("startTime", index);
+
+      //save the edit
+      saveSponsorTimeEdit(index, false);
     }
 
     chrome.tabs.query({
@@ -618,7 +621,7 @@ function runThePopup() {
     return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
   }
   
-  function saveSponsorTimeEdit(index) {
+  function saveSponsorTimeEdit(index, closeEditMode = true) {
     sponsorTimes[index][0] = getSponsorTimeEditTimes("startTime", index);
     sponsorTimes[index][1] = getSponsorTimeEditTimes("endTime", index);
   
@@ -636,9 +639,11 @@ function runThePopup() {
       });
     });
   
-    displaySponsorTimes();
+    if (closeEditMode) {
+      displaySponsorTimes();
 
-    showSubmitTimesIfNecessary();
+      showSubmitTimesIfNecessary();
+    }
   }
   
   //deletes the sponsor time submitted at an index
