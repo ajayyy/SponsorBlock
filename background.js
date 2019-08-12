@@ -1,11 +1,3 @@
-var previousVideoID = null
-
-//the id of this user, randomly generated once per install
-var userID = null;
-
-//the last video id loaded, to make sure it is a video id change
-var sponsorVideoID = null;
-
 //when a new tab is highlighted
 chrome.tabs.onActivated.addListener(
   function(activeInfo) {
@@ -62,14 +54,38 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
-  chrome.storage.sync.get(["shownInstallPage"], function(result) {
-    let shownInstallPage = result.shownInstallPage;
-    if (shownInstallPage == undefined || !shownInstallPage) {
-      //open up the install page
-      chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
+  // TODO (shownInstallPage): remove shownInstallPage logic after sufficient amount of time,
+  // so that people have time to upgrade and move to shownInstallPage-free code.
+  chrome.storage.sync.get(["userID", "shownInstallPage"], function(result) {
+    const userID = result.userID;
+    // TODO (shownInstallPage): delete row below
+    const shownInstallPage = result.shownInstallPage;
 
-      //save that this happened
-      chrome.storage.sync.set({shownInstallPage: true});
+    // If there is no userID, then it is the first install.
+    if (!userID){
+      // Show install page, if there is no user id
+      // and there is no shownInstallPage.
+      // TODO (shownInstallPage): remove this if statement, but leave contents
+      if (!shownInstallPage){
+        //open up the install page
+        chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
+      }
+
+      // TODO (shownInstallPage): delete if statement and contents
+      // If shownInstallPage is set, remove it.
+      if (!!shownInstallPage){
+        chrome.storage.sync.remove("shownInstallPage");
+      }
+
+      //generate a userID
+      const newUserID = generateUUID();
+      //save this UUID
+      chrome.storage.sync.set({
+        "userID": newUserID,
+        //the last video id loaded, to make sure it is a video id change
+        "sponsorVideoID": null,
+        "previousVideoID": null
+      });
     }
   });
 });
@@ -109,9 +125,11 @@ function addSponsorTime(time, videoID, callback) {
 }
 
 function submitVote(type, UUID, callback) {
-  getUserID(function(userID) {
+  chrome.storage.sync.get(["userID"], function(result) {
+    let userID = result.userID;
+
     //publish this vote
-    sendRequestToServer('GET', "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+    sendRequestToServer("GET", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         callback({
           successType: 1
@@ -138,14 +156,14 @@ function submitTimes(videoID, callback) {
   let sponsorTimeKey = 'sponsorTimes' + videoID;
   chrome.storage.sync.get([sponsorTimeKey], function(result) {
     let sponsorTimes = result[sponsorTimeKey];
+    let userID = result.userID;
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
       //submit these times
       for (let i = 0; i < sponsorTimes.length; i++) {
-        getUserID(function(userIDStorage) {
           //submit the sponsorTime
-          sendRequestToServer('GET', "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
-          + "&userID=" + userIDStorage, function(xmlhttp, error) {
+          sendRequestToServer("GET", "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+          + "&userID=" + userID, function(xmlhttp, error) {
             if (xmlhttp.readyState == 4 && !error) {
               callback({
                 statusCode: xmlhttp.status
@@ -169,7 +187,6 @@ function submitTimes(videoID, callback) {
                 statusCode: -1
               });
             }
-          });
         });
       }
     }
@@ -183,63 +200,45 @@ function videoIDChange(currentVideoID, tabId) {
     id: currentVideoID
   });
 
-  //not a url change
-  if (sponsorVideoID == currentVideoID){
-    return;
-  }
-  sponsorVideoID = currentVideoID;
+  chrome.storage.sync.get(["sponsorVideoID", "previousVideoID"], function(result) {
+    const sponsorVideoID = result.sponsorVideoID;
+    const previousVideoID = result.previousVideoID;
 
-  //warn them if they had unsubmitted times
-  if (previousVideoID != null) {
-    //get the sponsor times from storage
-    let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
-    chrome.storage.sync.get([sponsorTimeKey], function(result) {
-      let sponsorTimes = result[sponsorTimeKey];
+    //not a url change
+    if (sponsorVideoID == currentVideoID){
+      return;
+    }
 
-      if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        //warn them that they have unsubmitted sponsor times
-        chrome.notifications.create("stillThere" + Math.random(), {
-          type: "basic",
-          title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
-          message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
-          iconUrl: "./icons/LogoSponsorBlocker256px.png"
-        });
-      }
-
-      //set the previous video id to the currentID
-      previousVideoID = currentVideoID;
+    chrome.storage.sync.set({
+      "sponsorVideoID": currentVideoID
     });
-  } else {
-    previousVideoID = currentVideoID;
-  }
-}
 
-function getUserID(callback) {
-  if (userID != null) {
-    callback(userID);
-    return;
-  }
+    //warn them if they had unsubmitted times
+    if (previousVideoID != null) {
+      //get the sponsor times from storage
+      let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
+      chrome.storage.sync.get([sponsorTimeKey], function(result) {
+        let sponsorTimes = result[sponsorTimeKey];
 
-  //if it is not cached yet, grab it from storage
-  chrome.storage.sync.get(["userID"], function(result) {
-    let userIDStorage = result.userID;
-    if (userIDStorage != undefined) {
-      userID = userIDStorage;
-      callback(userID);
+        if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+          //warn them that they have unsubmitted sponsor times
+          chrome.notifications.create("stillThere" + Math.random(), {
+            type: "basic",
+            title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
+            message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
+            iconUrl: "./icons/LogoSponsorBlocker256px.png"
+          });
+        }
+
+        //set the previous video id to the currentID
+        chrome.storage.sync.set({
+          "previousVideoID": currentVideoID
+        });
+      });
     } else {
-      //double check if a UUID hasn't been created since this was first called
-      if (userID != null) {
-        callback(userID);
-        return;
-      }
-
-      //generate a userID
-      userID = generateUUID();
-      
-      //save this UUID
-      chrome.storage.sync.set({"userID": userID});
-
-      callback(userID);
+      chrome.storage.sync.set({
+        "previousVideoID": currentVideoID
+      });
     }
   });
 }
@@ -263,17 +262,10 @@ function sendRequestToServer(type, address, callback) {
   xmlhttp.send();
 }
 
-function getYouTubeVideoID(url) { // Return video id or false
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  return (match && match[7].length == 11) ? match[7] : false;
-}
-
 function generateUUID(length = 36) {
-    var charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var i;
-    var result = "";
-    var isOpera = Object.prototype.toString.call(window.opera) == '[object Opera]';
+    let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    let isOpera = Object.prototype.toString.call(window.opera) == '[object Opera]';
     if (window.crypto && window.crypto.getRandomValues) {
         values = new Uint32Array(length);
         window.crypto.getRandomValues(values);
@@ -282,8 +274,7 @@ function generateUUID(length = 36) {
         }
         return result;
     } else {
-		    if(!isOpera) alert("[SB] Your browser can't generate a secure userID");
-        for (i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
           result += charset[Math.floor(Math.random() * charset.length)];
         }
         return result;

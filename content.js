@@ -10,10 +10,6 @@ var sponsorVideoID = null;
 //the time this video is starting at when first played, if not zero
 var youtubeVideoStartTime = null;
 
-if(id = getYouTubeVideoID(document.URL)){ // Direct Links
-  videoIDChange(id);
-}
-
 //the video
 var v;
 
@@ -22,6 +18,10 @@ var channelURL;
 
 //is this channel whitelised from getting sponsors skipped
 var channelWhitelisted = false;
+
+if(id = getYouTubeVideoID(document.URL)){ // Direct Links
+  videoIDChange(id);
+}
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -1142,27 +1142,4 @@ function sendRequestToCustomServer(type, fullAddress, callback) {
 
   //submit this request
   xmlhttp.send();
-}
-
-function getYouTubeVideoID(url) { // Returns with video id else returns false
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  var id = new URL(url).searchParams.get("v");
-  if (url.includes("/embed/")) {
-    //it is an embed, don't search for v
-    id = match[7];
-  }
-
-  return (match && match[7].length == 11) ? id : false;
-}
-
-//returns the start time of the video if there was one specified (ex. ?t=5s)
-function getYouTubeVideoStartTime(url) {
-  let searchParams = new URL(url).searchParams;
-  var startTime = searchParams.get("t");
-  if (startTime == null) {
-    startTime = searchParams.get("time_continue");
-  }
-
-  return startTime;
 }
