@@ -1,0 +1,63 @@
+{
+  "Name": {
+    "message": "SponsorBlock",
+    "description": "Name of the extension."
+  },
+
+  "Description": {
+    "message": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
+    "description": "Description of the extension."
+  },
+
+  "400": {
+    "message": "Server said this request was invalid"
+  },
+  "429": {
+    "message": "You have submitted too many sponsor times for this one video, are you sure there are this many?"
+  },
+  "409": {
+    "message": "This has already been submitted before"
+  },
+  "502": {
+    "message": "It seems the server is down. Contact the dev to inform them."
+  },
+  "ChannelWhitelisted": {
+    "message": "Channel Whitelisted!"
+  },
+  "Sponsor": {
+    "message": "Sponsor"
+  },
+  "Sponsors": {
+    "message": "Sponsors"
+  },
+  "Segments": {
+    "message": "sponsor segments"
+  },
+  "Unknown": {
+    "message": "There was an error submitting your sponsor times, please try again later."
+  },
+  "SponsorFound": {
+    "message": "This video's sponsors are in the database!"
+  },
+  "Sponsor404": {
+    "message": "No sponsors found"
+  },
+  "SponsorStart": {
+    "message": "Sponsorship Starts Now"
+  },
+  "SponsorEND": {
+    "message": "Sponsorship Ends Now"
+  },
+  "noVIDEOID": {
+    "message": "this probably isn't a YouTube tab, or you clicked too early. \n If you know this is a YouTube tab,\n close this popup and open it again."
+  },
+  "VOTED": {
+    "message": "Thanks for voting!"
+  },
+  "VOTE_FAIL": {
+    "message": "You have already voted this way before."
+  },
+  "ServerDown": {
+    "message": "It seems the sever is down. Contact the dev immediately."
+  },
+}
