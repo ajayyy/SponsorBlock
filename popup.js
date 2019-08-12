@@ -207,9 +207,11 @@ function runThePopup() {
   }, onTabs);
   
   function onTabs(tabs) {
-	 chrome.storage.sync.get(['videoID'], function(result) {
-         	loadTabData(tabs, result.videoid);
-	 }); 
+	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
+		  if (result.videoID) {
+		  loadTabData(tabs, result.videoid);
+		  }
+	  });
   }
   
   function loadTabData(tabs, currentVideoID) {
