@@ -19,6 +19,10 @@ var channelURL;
 //is this channel whitelised from getting sponsors skipped
 var channelWhitelisted = false;
 
+// create preview bar
+let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
+var previewBar = new PreviewBar(progressBar);
+
 if(id = getYouTubeVideoID(document.URL)){ // Direct Links
   videoIDChange(id);
 }
@@ -309,6 +313,10 @@ function sponsorsLookup(id) {
 
       sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
       UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
+
+      //update the preview bar
+      //leave the type blank for now until categories are added
+      previewBar.set(sponsorTimes, [], v.duration);
 
       getChannelID();
 
