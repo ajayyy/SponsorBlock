@@ -43,7 +43,7 @@
   ],
   "browser_action": {
     "default_title": "__MSG_Name__",
-    "default_popup": "__MSG_popup__"
+    "default_popup": "__MSG_Popup__"
   }, 
   "background": {
     "scripts":[
