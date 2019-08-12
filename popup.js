@@ -492,7 +492,6 @@ function runThePopup() {
       }
   
       currentSponsorTimeContainer.innerText = currentSponsorTimeMessage;
-      currentSponsorTimeContainer.addEventListener("click", () => editSponsorTime(index));
   
       sponsorTimesContainer.appendChild(currentSponsorTimeContainer);
       sponsorTimesContainer.appendChild(deleteButton);
@@ -500,6 +499,8 @@ function runThePopup() {
       //only if it is a complete sponsor time
       if (sponsorTimes[i].length > 1) {
         sponsorTimesContainer.appendChild(editButton);
+        
+        currentSponsorTimeContainer.addEventListener("click", () => editSponsorTime(index));
       }
     }
   
