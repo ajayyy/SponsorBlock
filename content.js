@@ -182,8 +182,6 @@ function videoIDChange(id) {
 
   //not a url change
   if (sponsorVideoID == id) return;
-  
-  chrome.storage.sync.set({videoID: id});
 
   //warn them if they had unsubmitted times
   if (previousVideoID != null) {
