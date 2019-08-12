@@ -1048,6 +1048,9 @@ function sendSubmitMessage(){
         //clear the sponsor times
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
         chrome.storage.sync.set({[sponsorTimeKey]: []});
+
+        //request the sponsors from the server again
+        sponsorsLookup(currentVideoID);
       } else {
         //for a more detailed error message, they should check the popup
         //show that the upload failed
