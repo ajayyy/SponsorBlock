@@ -10,10 +10,6 @@ var sponsorVideoID = null;
 //the time this video is starting at when first played, if not zero
 var youtubeVideoStartTime = null;
 
-if(id = getYouTubeVideoID(document.URL)){ // Direct Links
-  videoIDChange(id);
-}
-
 //the video
 var v;
 
@@ -23,11 +19,19 @@ var channelURL;
 //is this channel whitelised from getting sponsors skipped
 var channelWhitelisted = false;
 
+if(id = getYouTubeVideoID(document.URL)){ // Direct Links
+  videoIDChange(id);
+}
+
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
 
 //the actual time (not video time) that the last skip happened
 var lastUnixTimeSkipped = -1;
+
+//the amount of times the sponsor lookup has retried
+//this only happens if there is an error
+var sponsorLookupRetries = 0;
 
 //the last time in the video a sponsor was skipped
 //used for the go back button
@@ -195,6 +199,7 @@ function videoIDChange(id) {
   sponsorTimes = null;
   UUIDs = null;
   sponsorVideoID = id;
+  sponsorLookupRetries = 0;
 
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime(document.URL);
@@ -275,7 +280,8 @@ function sponsorsLookup(id) {
 
       getChannelID();
 
-    } else if (xmlhttp.readyState == 4) {
+      sponsorLookupRetries = 0;
+    } else if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
       sponsorDataFound = false;
 
       //check if this video was uploaded recently
@@ -290,6 +296,13 @@ function sponsorsLookup(id) {
           }
         }
       });
+
+      sponsorLookupRetries = 0;
+    } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 15) {
+      //some error occurred, try again in a second
+      setTimeout(() => sponsorsLookup(id), 1000);
+
+      sponsorLookupRetries++;
     }
   });
 
@@ -1048,6 +1061,9 @@ function sendSubmitMessage(){
         //clear the sponsor times
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
         chrome.storage.sync.set({[sponsorTimeKey]: []});
+
+        //request the sponsors from the server again
+        sponsorsLookup(currentVideoID);
       } else {
         //for a more detailed error message, they should check the popup
         //show that the upload failed
@@ -1142,27 +1158,4 @@ function sendRequestToCustomServer(type, fullAddress, callback) {
 
   //submit this request
   xmlhttp.send();
-}
-
-function getYouTubeVideoID(url) { // Returns with video id else returns false
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  var id = new URL(url).searchParams.get("v");
-  if (url.includes("/embed/")) {
-    //it is an embed, don't search for v
-    id = match[7];
-  }
-
-  return (match && match[7].length == 11) ? id : false;
-}
-
-//returns the start time of the video if there was one specified (ex. ?t=5s)
-function getYouTubeVideoStartTime(url) {
-  let searchParams = new URL(url).searchParams;
-  var startTime = searchParams.get("t");
-  if (startTime == null) {
-    startTime = searchParams.get("time_continue");
-  }
-
-  return startTime;
 }
