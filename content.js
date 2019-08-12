@@ -29,6 +29,10 @@ var lastTime = -1;
 //the actual time (not video time) that the last skip happened
 var lastUnixTimeSkipped = -1;
 
+//the amount of times the sponsor lookup has retried
+//this only happens if there is an error
+var sponsorLookupRetries = 0;
+
 //the last time in the video a sponsor was skipped
 //used for the go back button
 var lastSponsorTimeSkipped = null;
@@ -195,6 +199,7 @@ function videoIDChange(id) {
   sponsorTimes = null;
   UUIDs = null;
   sponsorVideoID = id;
+  sponsorLookupRetries = 0;
 
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime(document.URL);
@@ -275,7 +280,8 @@ function sponsorsLookup(id) {
 
       getChannelID();
 
-    } else if (xmlhttp.readyState == 4) {
+      sponsorLookupRetries = 0;
+    } else if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
       sponsorDataFound = false;
 
       //check if this video was uploaded recently
@@ -290,6 +296,13 @@ function sponsorsLookup(id) {
           }
         }
       });
+
+      sponsorLookupRetries = 0;
+    } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 15) {
+      //some error occurred, try again in a second
+      setTimeout(() => sponsorsLookup(id), 1000);
+
+      sponsorLookupRetries++;
     }
   });
 
@@ -1048,6 +1061,9 @@ function sendSubmitMessage(){
         //clear the sponsor times
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
         chrome.storage.sync.set({[sponsorTimeKey]: []});
+
+        //request the sponsors from the server again
+        sponsorsLookup(currentVideoID);
       } else {
         //for a more detailed error message, they should check the popup
         //show that the upload failed

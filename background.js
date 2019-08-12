@@ -262,5 +262,21 @@ function sendRequestToServer(type, address, callback) {
   xmlhttp.send();
 }
 
-//uuid generator function from https://gist.github.com/jed/982883
-function generateUUID(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,generateUUID)}
+function generateUUID(length = 36) {
+    let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    let isOpera = Object.prototype.toString.call(window.opera) == '[object Opera]';
+    if (window.crypto && window.crypto.getRandomValues) {
+        values = new Uint32Array(length);
+        window.crypto.getRandomValues(values);
+        for (i = 0; i < length; i++) {
+            result += charset[values[i] % charset.length];
+        }
+        return result;
+    } else {
+        for (let i = 0; i < length; i++) {
+          result += charset[Math.floor(Math.random() * charset.length)];
+        }
+        return result;
+    }
+}
