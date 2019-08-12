@@ -66,5 +66,8 @@
   },
   "ServerDown": {
     "message": "It seems the sever is down. Contact the dev immediately."
+  },
+  "connectionError": {
+    "message": "A connection error has occured. Error code: "
   }
 }
