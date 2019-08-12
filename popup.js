@@ -159,9 +159,9 @@ function runThePopup() {
   chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
     if (result.sponsorTimesContributed != undefined) {
       if (result.sponsorTimesContributed > 1) {
-        SB.sponsorTimesContributionsDisplayEndWord.innerText = browser.i18n.getMessage("Sponsors");
+        SB.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
       } else {
-        SB.sponsorTimesContributionsDisplayEndWord.innerText = browser.i18n.getMessage("Sponsor");
+        SB.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
       }
       SB.sponsorTimesContributionsDisplay.innerText = result.sponsorTimesContributed;
       SB.sponsorTimesContributionsContainer.style.display = "unset";
@@ -177,9 +177,9 @@ function runThePopup() {
               let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
               if (viewCount != 0) {
                 if (viewCount > 1) {
-                  SB.sponsorTimesViewsDisplayEndWord.innerText = browser.i18n.getMessage("Segments");
+                  SB.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
                 } else {
-                  SB.sponsorTimesViewsDisplayEndWord.innerText = browser.i18n.getMessage("Segment");
+                  SB.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                 }
 
                 SB.sponsorTimesViewsDisplay.innerText = viewCount;
@@ -264,11 +264,11 @@ function runThePopup() {
       SB.loadingIndicator.innerHTML = "";
 
       if (request.found) {
-        SB.videoFound.innerHTML = browser.i18n.getMessage("SponsorFound");
+        SB.videoFound.innerHTML = chrome.i18n.getMessage("SponsorFound");
 
         displayDownloadedSponsorTimes(request);
       } else {
-        SB.videoFound.innerHTML = browser.i18n.getMessage("Sponsor404");
+        SB.videoFound.innerHTML = chrome.i18n.getMessage("Sponsor404");
       }
     }
 
@@ -366,7 +366,7 @@ function runThePopup() {
   function displayDownloadedSponsorTimes(request) {
     if (request.sponsorTimes != undefined) {
       //set it to the message
-      if (SB.downloadedSponsorMessageTimes.innerText != browser.i18n.getMessage("ChannelWhitelisted")) {
+      if (SB.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("ChannelWhitelisted")) {
         SB.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
       }
 
@@ -950,7 +950,7 @@ function runThePopup() {
     //update startTimeChosen letiable
     if (!startTimeChosen) {
       startTimeChosen = true;
-    SB.sponsorStart.innerHTML = browser.i18n.getMessage("SponsorEND");
+    SB.sponsorStart.innerHTML = chrome.i18n.getMessage("SponsorEND");
     } else {
       resetStartTimeChosen();
     }
@@ -982,7 +982,7 @@ function runThePopup() {
   
   //this is not a YouTube video page
   function displayNoVideo() {
-    document.getElementById("loadingIndicator").innerHTML = browser.i18n.getMessage("Sponsor404");
+    document.getElementById("loadingIndicator").innerHTML = chrome.i18n.getMessage("Sponsor404");
   }
   
   function reportAnIssue() {
@@ -1019,16 +1019,16 @@ function runThePopup() {
         //see if it was a success or failure
         if (response.successType == 1) {
           //success
-          addVoteMessage(browser.i18n.getMessage("VOTED"), UUID)
+          addVoteMessage(chrome.i18n.getMessage("VOTED"), UUID)
         } else if (response.successType == 0) {
           //failure: duplicate vote
-          addVoteMessage(browser.i18n.getMessage("VOTE_FAIL"), UUID)
+          addVoteMessage(chrome.i18n.getMessage("VOTE_FAIL"), UUID)
         } else if (response.successType == -1) {
           if (response.statusCode == 502) {
-            addVoteMessage(browser.i18n.getMessage("ServerDown"), UUID)
+            addVoteMessage(chrome.i18n.getMessage("ServerDown"), UUID)
           } else {
             //failure: unknown error
-            addVoteMessage(browser.i18n.getMessage("connectionError") + response.statusCode, UUID)
+            addVoteMessage(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID)
           }
         }
       }
