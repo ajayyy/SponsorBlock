@@ -551,6 +551,13 @@ function runThePopup() {
   
     let sponsorTimeContainer = document.getElementById("sponsorTimeContainer" + index);
   
+    //the button to set the current time
+    let startTimeNowButton = document.createElement("span");
+    startTimeNowButton.id = "startTimeNowButton" + index;
+    startTimeNowButton.innerText = "(Now)";
+    startTimeNowButton.className = "tinyLink popupElement";
+    startTimeNowButton.addEventListener("click", () => setEditTimeToCurrentTime("startTime", index));
+
     //get sponsor time minutes and seconds boxes
     let startTimeMinutes = document.createElement("input");
     startTimeMinutes.id = "startTimeMinutes" + index;
@@ -565,7 +572,7 @@ function runThePopup() {
     startTimeSeconds.type = "text";
     startTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][0]);
     startTimeSeconds.style.width = "60px";
-  
+
     let endTimeMinutes = document.createElement("input");
     endTimeMinutes.id = "endTimeMinutes" + index;
     endTimeMinutes.className = "sponsorTime popupElement";
@@ -579,6 +586,13 @@ function runThePopup() {
     endTimeSeconds.type = "text";
     endTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][1]);
     endTimeSeconds.style.width = "60px";
+
+    //the button to set the current time
+    let endTimeNowButton = document.createElement("span");
+    endTimeNowButton.id = "endTimeNowButton" + index;
+    endTimeNowButton.innerText = "(Now)";
+    endTimeNowButton.className = "tinyLink popupElement";
+    endTimeNowButton.addEventListener("click", () => setEditTimeToCurrentTime("endTime", index));
   
     let colonText = document.createElement("span");
     colonText.innerText = ":";
@@ -591,6 +605,7 @@ function runThePopup() {
       sponsorTimeContainer.removeChild(sponsorTimeContainer.firstChild);
     }
   
+    sponsorTimeContainer.appendChild(startTimeNowButton);
     sponsorTimeContainer.appendChild(startTimeMinutes);
     sponsorTimeContainer.appendChild(colonText);
     sponsorTimeContainer.appendChild(startTimeSeconds);
@@ -598,6 +613,7 @@ function runThePopup() {
     sponsorTimeContainer.appendChild(endTimeMinutes);
     sponsorTimeContainer.appendChild(colonText);
     sponsorTimeContainer.appendChild(endTimeSeconds);
+    sponsorTimeContainer.appendChild(endTimeNowButton);
   
     //add save button and remove edit button
     let saveButton = document.createElement("span");
@@ -610,6 +626,24 @@ function runThePopup() {
     let sponsorTimesContainer = document.getElementById("sponsorTimesContainer");
   
     sponsorTimesContainer.replaceChild(saveButton, editButton);
+  }
+
+  function setEditTimeToCurrentTime(idStartName, index) {
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, tabs => {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        {message: "getCurrentTime"},
+        function (response) {
+          let minutes = document.getElementById(idStartName + "Minutes" + index);
+          let seconds = document.getElementById(idStartName + "Seconds" + index);
+    
+          minutes.value = getTimeInMinutes(response.currentTime);
+          seconds.value = getTimeInFormattedSeconds(response.currentTime);
+        });
+    });
   }
 
   //id start name is whether it is the startTime or endTime

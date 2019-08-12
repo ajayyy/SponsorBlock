@@ -86,6 +86,12 @@ h1.popupElement {
 	cursor: pointer;
 }
 
+.tinyLink.popupElement {
+	font-size: 10px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .whitelistButton.popupElement {
 	background-color:#3acc3a;
 	-moz-border-radius:28px;
