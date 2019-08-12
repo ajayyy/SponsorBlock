@@ -486,7 +486,7 @@ function addPlayerControlsButton() {
   let startSponsorButton = document.createElement("button");
   startSponsorButton.id = "startSponsorButton";
   startSponsorButton.className = "ytp-button playerButton";
-  startSponsorButton.setAttribute("title", browser.i18n.getMessage("SponsorStart"));
+  startSponsorButton.setAttribute("title", chrome.i18n.getMessage("SponsorStart"));
   startSponsorButton.addEventListener("click", startSponsorClicked);
 
   let startSponsorImage = document.createElement("img");
@@ -578,7 +578,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   if (showStartSponsor) {
     showingStartSponsor = true;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
-    document.getElementById("startSponsorButton").setAttribute("title", browser.i18n.getMessage("SponsorStart"));
+    document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("SponsorStart"));
 
     if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
       document.getElementById("submitButton").style.display = "unset";
@@ -589,7 +589,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   } else {
     showingStartSponsor = false;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
-    document.getElementById("startSponsorButton").setAttribute("title", browser.i18n.getMessage("SponsorEND"));
+    document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("SponsorEND"));
 
     //disable submit button
     document.getElementById("submitButton").style.display = "none";
@@ -777,8 +777,8 @@ function clearSponsorTimes() {
     let sponsorTimes = result[sponsorTimeKey];
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-      let confirmMessage = browser.i18n.getMessage("ClearThis") + getSponsorTimesMessage(sponsorTimes);
-      confirmMessage += browser.i18n.getMessage("ConfirmMSG")
+      let confirmMessage = chrome.i18n.getMessage("ClearThis") + getSponsorTimesMessage(sponsorTimes);
+      confirmMessage += chrome.i18n.getMessage("ConfirmMSG")
       if(!confirm(confirmMessage)) return;
 
       //clear the sponsor times
@@ -859,17 +859,17 @@ function openSkipNotice(UUID){
   buttonContainer.setAttribute("align", "center");
 
   let goBackButton = document.createElement("button");
-  goBackButton.innerText = browser.i18n.getMessage("GoBack");
+  goBackButton.innerText = chrome.i18n.getMessage("GoBack");
   goBackButton.className = "sponsorSkipButton";
   goBackButton.addEventListener("click", () => goBackToPreviousTime(UUID));
 
   let hideButton = document.createElement("button");
-  hideButton.innerText = browser.i18n.getMessage("Dismiss");
+  hideButton.innerText = chrome.i18n.getMessage("Dismiss");
   hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", () => closeSkipNotice(UUID));
 
   let dontShowAgainButton = document.createElement("button");
-  dontShowAgainButton.innerText = browser.i18n.getMessage("Hide");
+  dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
   dontShowAgainButton.className = "sponsorSkipDontShowButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
@@ -924,12 +924,12 @@ function afterDownvote(UUID) {
   //add thanks for voting text
   let thanksForVotingText = document.createElement("p");
   thanksForVotingText.id = "sponsorTimesThanksForVotingText";
-  thanksForVotingText.innerText = browser.i18n.getMessage("VOTED");
+  thanksForVotingText.innerText = chrome.i18n.getMessage("VOTED");
 
   //add extra info for voting
   let thanksForVotingInfoText = document.createElement("p");
   thanksForVotingInfoText.id = "sponsorTimesThanksForVotingInfoText";
-  thanksForVotingInfoText.innerText = browser.i18n.getMessage("HitGoBack");
+  thanksForVotingInfoText.innerText = chrome.i18n.getMessage("HitGoBack");
 
   //add element to div
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
@@ -984,13 +984,13 @@ function vote(type, UUID) {
         }
       } else if (response.successType == 0) {
         //failure: duplicate vote
-        addLoadingInfo(browser.i18n.getMessage("VOTE_FAIL"), UUID)
+        addLoadingInfo(chrome.i18n.getMessage("VOTE_FAIL"), UUID)
       } else if (response.successType == -1) {
         if (response.statusCode == 502) {
-          addLoadingInfo(browser.i18n.getMessage("ServerDown"), UUID)
+          addLoadingInfo(chrome.i18n.getMessage("ServerDown"), UUID)
         } else {
           //failure: unknown error
-          addLoadingInfo((browser.i18n.getMessage("connectionError") + response.statusCode, UUID)
+          addLoadingInfo((chrome.i18n.getMessage("connectionError") + response.statusCode, UUID)
         }
         
       }
@@ -1103,9 +1103,9 @@ function sendSubmitMessage(){
         document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
         if([400,429,409,502].includes(response.statusCode)) {
-          alert(browser.i18n.getMessage(response.statusCode));
+          alert(chrome.i18n.getMessage(response.statusCode));
         } else {
-          alert(browser.i18n.getMessage("connectionError") + response.statusCode);
+          alert(chrome.i18n.getMessage("connectionError") + response.statusCode);
         }
       }
     }
