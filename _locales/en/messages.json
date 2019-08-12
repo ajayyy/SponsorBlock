@@ -45,6 +45,15 @@
   "Dismiss": {
     "message": "Dismiss"
   },
+  "Loading": {
+    "message": "Loading..."
+  },
+  "Mins": {
+    "message": "Minutes"
+  },
+  "Secs": {
+    "message": "Seconds"
+  },
   "Hide": {
     "message": "Don't Show This Again"
   },
