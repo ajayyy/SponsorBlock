@@ -141,7 +141,7 @@ function submitVote(type, UUID, callback) {
 function submitTimes(videoID, callback) {
   //get the video times from storage
   let sponsorTimeKey = 'sponsorTimes' + videoID;
-  chrome.storage.sync.get([sponsorTimeKey], function(result) {
+  chrome.storage.sync.get([sponsorTimeKey, "userID"], function(result) {
     let sponsorTimes = result[sponsorTimeKey];
     let userID = result.userID;
 

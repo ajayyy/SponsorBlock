@@ -80,8 +80,14 @@ h1.popupElement {
 
 .mediumLink.popupElement {
 	font-size: 15px;
-	padding-left: 15px;
-	padding-right: 15px;
+	margin-left: 25px;
+	margin-right: 25px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.tinyLink.popupElement {
+	font-size: 10px;
 	text-decoration: underline;
 	cursor: pointer;
 }

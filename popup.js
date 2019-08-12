@@ -208,14 +208,18 @@ function runThePopup() {
   
   function onTabs(tabs) {
 	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
-		  if (result.videoID) {
-		  loadTabData(tabs, result.videoid);
-		  }
+		  if (result != undefined && result.videoID) {
+        currentVideoID = result.videoID;
+
+		    loadTabData(tabs);
+		  } else if (result == undefined && chrome.runtime.lastError) {
+        //this isn't a YouTube video then, or at least the content script is not loaded
+        displayNoVideo();
+      }
 	  });
   }
   
-  function loadTabData(tabs, currentVideoID) {
-  
+  function loadTabData(tabs) {
     if (!currentVideoID) {
       //this isn't a YouTube video then
       displayNoVideo();
@@ -469,8 +473,11 @@ function runThePopup() {
       let index = i;
       deleteButton.addEventListener("click", () => deleteSponsorTime(index));
   
-      let spacer = document.createElement("span");
-      spacer.innerText = " ";
+      let previewButton = document.createElement("span");
+      previewButton.id = "sponsorTimePreviewButton" + i;
+      previewButton.innerText = "Preview";
+      previewButton.className = "mediumLink popupElement";
+      previewButton.addEventListener("click", () => previewSponsorTime(index));
   
       let editButton = document.createElement("span");
       editButton.id = "sponsorTimeEditButton" + i;
@@ -492,18 +499,45 @@ function runThePopup() {
       }
   
       currentSponsorTimeContainer.innerText = currentSponsorTimeMessage;
-      currentSponsorTimeContainer.addEventListener("click", () => editSponsorTime(index));
   
       sponsorTimesContainer.appendChild(currentSponsorTimeContainer);
       sponsorTimesContainer.appendChild(deleteButton);
   
       //only if it is a complete sponsor time
       if (sponsorTimes[i].length > 1) {
+        sponsorTimesContainer.appendChild(previewButton);
         sponsorTimesContainer.appendChild(editButton);
+
+        currentSponsorTimeContainer.addEventListener("click", () => editSponsorTime(index));
       }
     }
   
     return sponsorTimesContainer;
+  }
+
+  function previewSponsorTime(index) {
+    let skipTime = sponsorTimes[index][0];
+
+    if (document.getElementById("startTimeMinutes" + index) != null) {
+      //edit is currently open, use that time
+
+      skipTime = getSponsorTimeEditTimes("startTime", index);
+
+      //save the edit
+      saveSponsorTimeEdit(index, false);
+    }
+
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, tabs => {
+      chrome.tabs.sendMessage(
+        tabs[0].id, {
+          message: "skipToTime",
+          time: skipTime - 2
+        }
+      );
+    });
   }
   
   function editSponsorTime(index) {
@@ -517,6 +551,13 @@ function runThePopup() {
   
     let sponsorTimeContainer = document.getElementById("sponsorTimeContainer" + index);
   
+    //the button to set the current time
+    let startTimeNowButton = document.createElement("span");
+    startTimeNowButton.id = "startTimeNowButton" + index;
+    startTimeNowButton.innerText = "(Now)";
+    startTimeNowButton.className = "tinyLink popupElement";
+    startTimeNowButton.addEventListener("click", () => setEditTimeToCurrentTime("startTime", index));
+
     //get sponsor time minutes and seconds boxes
     let startTimeMinutes = document.createElement("input");
     startTimeMinutes.id = "startTimeMinutes" + index;
@@ -531,7 +572,7 @@ function runThePopup() {
     startTimeSeconds.type = "text";
     startTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][0]);
     startTimeSeconds.style.width = "60px";
-  
+
     let endTimeMinutes = document.createElement("input");
     endTimeMinutes.id = "endTimeMinutes" + index;
     endTimeMinutes.className = "sponsorTime popupElement";
@@ -545,6 +586,13 @@ function runThePopup() {
     endTimeSeconds.type = "text";
     endTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][1]);
     endTimeSeconds.style.width = "60px";
+
+    //the button to set the current time
+    let endTimeNowButton = document.createElement("span");
+    endTimeNowButton.id = "endTimeNowButton" + index;
+    endTimeNowButton.innerText = "(Now)";
+    endTimeNowButton.className = "tinyLink popupElement";
+    endTimeNowButton.addEventListener("click", () => setEditTimeToCurrentTime("endTime", index));
   
     let colonText = document.createElement("span");
     colonText.innerText = ":";
@@ -557,6 +605,7 @@ function runThePopup() {
       sponsorTimeContainer.removeChild(sponsorTimeContainer.firstChild);
     }
   
+    sponsorTimeContainer.appendChild(startTimeNowButton);
     sponsorTimeContainer.appendChild(startTimeMinutes);
     sponsorTimeContainer.appendChild(colonText);
     sponsorTimeContainer.appendChild(startTimeSeconds);
@@ -564,6 +613,7 @@ function runThePopup() {
     sponsorTimeContainer.appendChild(endTimeMinutes);
     sponsorTimeContainer.appendChild(colonText);
     sponsorTimeContainer.appendChild(endTimeSeconds);
+    sponsorTimeContainer.appendChild(endTimeNowButton);
   
     //add save button and remove edit button
     let saveButton = document.createElement("span");
@@ -577,16 +627,37 @@ function runThePopup() {
   
     sponsorTimesContainer.replaceChild(saveButton, editButton);
   }
+
+  function setEditTimeToCurrentTime(idStartName, index) {
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, tabs => {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        {message: "getCurrentTime"},
+        function (response) {
+          let minutes = document.getElementById(idStartName + "Minutes" + index);
+          let seconds = document.getElementById(idStartName + "Seconds" + index);
+    
+          minutes.value = getTimeInMinutes(response.currentTime);
+          seconds.value = getTimeInFormattedSeconds(response.currentTime);
+        });
+    });
+  }
+
+  //id start name is whether it is the startTime or endTime
+  //gives back the time in seconds
+  function getSponsorTimeEditTimes(idStartName, index) {
+    let minutes = document.getElementById(idStartName + "Minutes" + index);
+    let seconds = document.getElementById(idStartName + "Seconds" + index);
+
+    return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
+  }
   
-  function saveSponsorTimeEdit(index) {
-    let startTimeMinutes = document.getElementById("startTimeMinutes" + index);
-    let startTimeSeconds = document.getElementById("startTimeSeconds" + index);
-  
-    let endTimeMinutes = document.getElementById("endTimeMinutes" + index);
-    let endTimeSeconds = document.getElementById("endTimeSeconds" + index);
-  
-    sponsorTimes[index][0] = parseInt(startTimeMinutes.value) * 60 + parseFloat(startTimeSeconds.value);
-    sponsorTimes[index][1] = parseInt(endTimeMinutes.value) * 60 + parseFloat(endTimeSeconds.value);
+  function saveSponsorTimeEdit(index, closeEditMode = true) {
+    sponsorTimes[index][0] = getSponsorTimeEditTimes("startTime", index);
+    sponsorTimes[index][1] = getSponsorTimeEditTimes("endTime", index);
   
     //save this
     let sponsorTimeKey = "sponsorTimes" + currentVideoID;
@@ -602,9 +673,11 @@ function runThePopup() {
       });
     });
   
-    displaySponsorTimes();
+    if (closeEditMode) {
+      displaySponsorTimes();
 
-    showSubmitTimesIfNecessary();
+      showSubmitTimesIfNecessary();
+    }
   }
   
   //deletes the sponsor time submitted at an index
