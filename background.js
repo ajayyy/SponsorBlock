@@ -32,8 +32,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   } else if (request.message == "alertPrevious") {
 	  chrome.notifications.create("stillThere" + Math.random(), {
 		  type: "basic",
-		  title: "Do you want to submit the sponsor times for video id " + request.previousVideoID + "?",
-		  message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
+		  title: chrome.i18n.getMessage("Wanttosubmit") + request.previousVideoID + "?",
+		  message: chrome.i18n.getMessage("leftTimes"),
 		  iconUrl: "./icons/LogoSponsorBlocker256px.png"
 	  });
   }	
