@@ -1,27 +1,7 @@
-//when a new tab is highlighted
-chrome.tabs.onActivated.addListener(
-  function(activeInfo) {
-    chrome.tabs.get(activeInfo.tabId, function(tab) {
-      let id = getYouTubeVideoID(tab.url);
-
-      //if this even is a YouTube tab
-      if (id) {
-        videoIDChange(id, activeInfo.tabId);
-      }
-    })
-  }
-);
-
-//when a tab changes URLs
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (changeInfo != undefined && changeInfo.url != undefined) {
-      let id = getYouTubeVideoID(changeInfo.url);
-
-      //if URL changed and is youtube video message contentScript the video id
-      if (changeInfo.url && id) { 
-        videoIDChange(id, tabId);
-      }
-    }
+	chrome.tabs.sendMessage(tabId, {
+		message: 'update',
+	});
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
@@ -49,7 +29,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
     //this allows the callback to be called later
     return true;
-  }
+  } else if (request.message == "alertPrevious") {
+	  chrome.notifications.create("stillThere" + Math.random(), {
+		  type: "basic",
+		  title: "Do you want to submit the sponsor times for video id " + request.previousVideoID + "?",
+		  message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
+		  iconUrl: "./icons/LogoSponsorBlocker256px.png"
+	  });
+  }	
 });
 
 //add help page on install
@@ -154,7 +141,7 @@ function submitVote(type, UUID, callback) {
 function submitTimes(videoID, callback) {
   //get the video times from storage
   let sponsorTimeKey = 'sponsorTimes' + videoID;
-  chrome.storage.sync.get([sponsorTimeKey], function(result) {
+  chrome.storage.sync.get([sponsorTimeKey, "userID"], function(result) {
     let sponsorTimes = result[sponsorTimeKey];
     let userID = result.userID;
 
@@ -189,56 +176,6 @@ function submitTimes(videoID, callback) {
             }
         });
       }
-    }
-  });
-}
-
-function videoIDChange(currentVideoID, tabId) {
-  //send a message to the content script
-  chrome.tabs.sendMessage(tabId, {
-    message: 'ytvideoid',
-    id: currentVideoID
-  });
-
-  chrome.storage.sync.get(["sponsorVideoID", "previousVideoID"], function(result) {
-    const sponsorVideoID = result.sponsorVideoID;
-    const previousVideoID = result.previousVideoID;
-
-    //not a url change
-    if (sponsorVideoID == currentVideoID){
-      return;
-    }
-
-    chrome.storage.sync.set({
-      "sponsorVideoID": currentVideoID
-    });
-
-    //warn them if they had unsubmitted times
-    if (previousVideoID != null) {
-      //get the sponsor times from storage
-      let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
-      chrome.storage.sync.get([sponsorTimeKey], function(result) {
-        let sponsorTimes = result[sponsorTimeKey];
-
-        if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-          //warn them that they have unsubmitted sponsor times
-          chrome.notifications.create("stillThere" + Math.random(), {
-            type: "basic",
-            title: "Do you want to submit the sponsor times for watch?v=" + previousVideoID + "?",
-            message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
-            iconUrl: "./icons/LogoSponsorBlocker256px.png"
-          });
-        }
-
-        //set the previous video id to the currentID
-        chrome.storage.sync.set({
-          "previousVideoID": currentVideoID
-        });
-      });
-    } else {
-      chrome.storage.sync.set({
-        "previousVideoID": currentVideoID
-      });
     }
   });
 }

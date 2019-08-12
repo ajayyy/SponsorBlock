@@ -1,6 +1,6 @@
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
-
+var previousVideoID = null;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = null;
 var UUIDs = null;
@@ -81,14 +81,14 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
-
+  
 function messageListener(request, sender, sendResponse) {
-    //message from background script
-    if (request.message == "ytvideoid") { 
-      videoIDChange(request.id);
-    }
-
     //messages from popup script
+  
+    if (request.message == "update") {
+      if(id = getYouTubeVideoID(document.URL)) videoIDChange(id);
+    }
+  
     if (request.message == "sponsorStart") {
       sponsorMessageStarted(sendResponse);
     }
@@ -117,6 +117,16 @@ function messageListener(request, sender, sendResponse) {
       sendResponse({
         videoID: getYouTubeVideoID(document.URL)
       })
+    }
+
+    if (request.message == "skipToTime") {
+      v.currentTime = request.time;
+    }
+
+    if (request.message == "getCurrentTime") {
+      sendResponse({
+        currentTime: v.currentTime
+      });
     }
 
     if (request.message == "getChannelURL") {
@@ -183,11 +193,33 @@ document.onkeydown = function(e){
 }
 
 function videoIDChange(id) {
-  //not a url change
-  if (sponsorVideoID == id){
-    return;
-  }
 
+  //not a url change
+  if (sponsorVideoID == id) return;
+
+  //warn them if they had unsubmitted times
+  if (previousVideoID != null) {
+    //get the sponsor times from storage
+    let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
+    chrome.storage.sync.get([sponsorTimeKey], function(result) {
+      let sponsorTimes = result[sponsorTimeKey];
+
+      if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+        //warn them that they have unsubmitted sponsor times
+          chrome.runtime.sendMessage({
+            message: "alertPrevious",
+            previousVideoID: previousVideoID
+          })
+      }
+
+      //set the previous video id to the currentID
+      previousVideoID = id;
+    });
+  } else {
+    //set the previous id now, don't wait for chrome.storage.get
+    previousVideoID = id;
+  }
+  
   //close popup
   closeInfoMenu();
 
