@@ -208,22 +208,24 @@ function runThePopup() {
   
   function onTabs(tabs) {
 	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
-		  if (result.videoID) {
-		  loadTabData(tabs, result.videoid);
-		  }
+		  if (result != undefined && result.videoID) {
+		    loadTabData(tabs, result.videoID);
+		  } else if (result == undefined && chrome.runtime.lastError) {
+        //this isn't a YouTube video then, or at least the content script is not loaded
+        displayNoVideo();
+      }
 	  });
   }
   
-  function loadTabData(tabs, currentVideoID) {
-  
-    if (!currentVideoID) {
+  function loadTabData(tabs, videoID) {
+    if (!videoID) {
       //this isn't a YouTube video then
       displayNoVideo();
       return;
     }
   
     //load video times for this video 
-    let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+    let sponsorTimeKey = "sponsorTimes" + videoID;
     chrome.storage.sync.get([sponsorTimeKey], function(result) {
       let sponsorTimesStorage = result[sponsorTimeKey];
       if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
@@ -499,7 +501,7 @@ function runThePopup() {
       //only if it is a complete sponsor time
       if (sponsorTimes[i].length > 1) {
         sponsorTimesContainer.appendChild(editButton);
-        
+
         currentSponsorTimeContainer.addEventListener("click", () => editSponsorTime(index));
       }
     }
