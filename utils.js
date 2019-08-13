@@ -10,7 +10,7 @@ function getTrailerID() { // Requires DOM level access
 function getYouTubeVideoID(url) {
     if(url === undefined) {
         if(id = getTrailerID()) return id;
-        url = document.location.href;
+        url = document.URL;
     }
     //Attempt to parse url
     if(typeof url === 'string') {
