@@ -91,15 +91,6 @@ function runThePopup() {
   SB.optionsButton.addEventListener("click", openOptions);
   SB.reportAnIssue.addEventListener("click", reportAnIssue);
   SB.hideDiscordButton.addEventListener("click", hideDiscordButton);
-  
-  //setup error message languages
-  var EN_US = new Map();
-
-  EN_US.set(400, 'Server said this request was invalid"')
-     .set(429, 'You have submitted too many sponsor times for this one video, are you sure there are this many?')
-     .set(409, 'This has already been submitted before')
-     .set(502, 'It seems the server is down. Contact the dev to inform them.')
-     .set('Unknown', 'There was an error submitting your sponsor times, please try again later.');
 
   //if true, the button now selects the end time
   let startTimeChosen = false;
@@ -178,9 +169,9 @@ function runThePopup() {
   chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
     if (result.sponsorTimesContributed != undefined) {
       if (result.sponsorTimesContributed > 1) {
-        SB.sponsorTimesContributionsDisplayEndWord.innerText = "sponsors."
+        SB.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
       } else {
-        SB.sponsorTimesContributionsDisplayEndWord.innerText = "sponsor."
+        SB.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
       }
       SB.sponsorTimesContributionsDisplay.innerText = result.sponsorTimesContributed;
       SB.sponsorTimesContributionsContainer.style.display = "unset";
@@ -196,9 +187,9 @@ function runThePopup() {
               let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
               if (viewCount != 0) {
                 if (viewCount > 1) {
-                  SB.sponsorTimesViewsDisplayEndWord.innerText = "sponsor segments."
+                  SB.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
                 } else {
-                  SB.sponsorTimesViewsDisplayEndWord.innerText = "sponsor segment."
+                  SB.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                 }
 
                 SB.sponsorTimesViewsDisplay.innerText = viewCount;
@@ -219,13 +210,12 @@ function runThePopup() {
   function onTabs(tabs) {
 	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
 		  if (result != undefined && result.videoID) {
-        currentVideoID = result.videoID;
-
-		    loadTabData(tabs);
+			  currentVideoID = result.videoID;
+			  loadTabData(tabs);
 		  } else if (result == undefined && chrome.runtime.lastError) {
-        //this isn't a YouTube video then, or at least the content script is not loaded
-        displayNoVideo();
-      }
+			  //this isn't a YouTube video then, or at least the content script is not loaded
+			  displayNoVideo();
+		  }
 	  });
   }
   
@@ -243,7 +233,7 @@ function runThePopup() {
       if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
         if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
           startTimeChosen = true;
-          SB.sponsorStart.innerHTML = "Sponsorship Ends Now";
+          SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEND");
         }
   
         sponsorTimes = sponsorTimesStorage;
@@ -283,11 +273,11 @@ function runThePopup() {
       SB.loadingIndicator.innerHTML = "";
 
       if (request.found) {
-        SB.videoFound.innerHTML = "This video's sponsors are in the database!"
+        SB.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
 
         displayDownloadedSponsorTimes(request);
       } else {
-        SB.videoFound.innerHTML = "No sponsors found"
+        SB.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
       }
     }
 
@@ -385,7 +375,7 @@ function runThePopup() {
   function displayDownloadedSponsorTimes(request) {
     if (request.sponsorTimes != undefined) {
       //set it to the message
-      if (SB.downloadedSponsorMessageTimes.innerText != "Channel Whitelisted!") {
+      if (SB.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
         SB.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
       }
 
@@ -654,8 +644,8 @@ function runThePopup() {
         tabs[0].id,
         {message: "getCurrentTime"},
         function (response) {
-          let minutes = document.getElementById(idStartName + "Minutes" + index);
-          let seconds = document.getElementById(idStartName + "Seconds" + index);
+          let minutes = document.getElementById(idStartName + chrome.i18n.getMessage("Mins") + index);
+          let seconds = document.getElementById(idStartName + chrome.i18n.getMessage("Secs") + index);
     
           minutes.value = getTimeInMinutes(response.currentTime);
           seconds.value = getTimeInFormattedSeconds(response.currentTime);
@@ -666,8 +656,8 @@ function runThePopup() {
   //id start name is whether it is the startTime or endTime
   //gives back the time in seconds
   function getSponsorTimeEditTimes(idStartName, index) {
-    let minutes = document.getElementById(idStartName + "Minutes" + index);
-    let seconds = document.getElementById(idStartName + "Seconds" + index);
+    let minutes = document.getElementById(idStartName + chrome.i18n.getMessage("Mins") + index);
+    let seconds = document.getElementById(idStartName + chrome.i18n.getMessage("Secs") + index);
 
     return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
   }
@@ -792,14 +782,9 @@ function runThePopup() {
     resetStartTimeChosen();
   }
   
-  function getErrorMessage(lang, statusCode) {
-    if(lang.has(statusCode)) return lang.get(statusCode);
-    return lang.get('Unknown').concat(" Error code: ") + statusCode;
-  } 
-
   function submitTimes() {
     //make info message say loading
-    SB.submitTimesInfoMessage.innerText = "Loading...";
+    SB.submitTimesInfoMessage.innerText = chrome.i18n.getMessage("Loading");
     SB.submitTimesInfoMessageContainer.style.display = "unset";
   
     if (sponsorTimes.length > 0) {
@@ -814,7 +799,7 @@ function runThePopup() {
 
             clearTimes();
           } else {
-            let errorMessage = getErrorMessage(EN_US, response.statusCode);
+            let errorMessage = getErrorMessage(response.statusCode);
 
             document.getElementById("submitTimesInfoMessage").innerText = errorMessage;
             document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
@@ -981,7 +966,7 @@ function runThePopup() {
     //update startTimeChosen letiable
     if (!startTimeChosen) {
       startTimeChosen = true;
-    SB.sponsorStart.innerHTML = "Sponsorship Ends Now";
+    SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEND");
     } else {
       resetStartTimeChosen();
     }
@@ -990,7 +975,7 @@ function runThePopup() {
   //set it to false
   function resetStartTimeChosen() {
     startTimeChosen = false;
-    SB.sponsorStart.innerHTML = "Sponsorship Starts Now";
+    SB.sponsorStart.innerHTML = "SP_START";
   }
   
   //hides and shows the submit times button when needed
@@ -1066,8 +1051,7 @@ function runThePopup() {
   
   //this is not a YouTube video page
   function displayNoVideo() {
-    document.getElementById("loadingIndicator").innerHTML = "This probably isn't a YouTube tab, or you clicked too early. " +
-        "If you know this is a YouTube tab, close this popup and open it again.";
+    document.getElementById("loadingIndicator").innerHTML = chrome.i18n.getMessage("sponsor404");
   }
   
   function reportAnIssue() {
@@ -1104,16 +1088,16 @@ function runThePopup() {
         //see if it was a success or failure
         if (response.successType == 1) {
           //success
-          addVoteMessage("Thanks for voting!", UUID)
+          addVoteMessage(chrome.i18n.getMessage("Voted"), UUID)
         } else if (response.successType == 0) {
           //failure: duplicate vote
-          addVoteMessage("You have already voted this way before.", UUID)
+          addVoteMessage(chrome.i18n.getMessage("voteFAIL"), UUID)
         } else if (response.successType == -1) {
           if (response.statusCode == 502) {
-            addVoteMessage("It seems the sever is down. Contact the dev immediately.", UUID)
+            addVoteMessage(chrome.i18n.getMessage("serverDown"), UUID)
           } else {
             //failure: unknown error
-            addVoteMessage("A connection error has occured. Error code: " + response.statusCode, UUID)
+            addVoteMessage(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID)
           }
         }
       }
