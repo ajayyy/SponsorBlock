@@ -329,7 +329,6 @@ function sponsorsLookup(id) {
 
       //update the preview bar
       //leave the type blank for now until categories are added
-      console.log(v.duration)
       if (isNaN(v.duration)) {
         //wait until it is loaded
         v.addEventListener('durationchange', updatePreviewBar);
