@@ -2,7 +2,7 @@ function getYouTubeVideoID(url) {
     // If no url provided guess its in a contentscript
     if (url === undefined) {
         // Diffrent way works on channel trailer and watch?v=
-        let shere_url = document.getElementById("share-url");
+        let shere_url = document.getElementsByClassName("ytp-share-panel-link")[1];
         if (shere_url) {
             let id = shere_url.split(".be/")[1];
             if(id.length == 11) return id;
