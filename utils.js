@@ -1,3 +1,12 @@
+function getTrailerID() { // Requires DOM level access
+    let p = document.location.pathname;
+    if(!document.location.origin === "https://www.youtube.com") return false
+    if(!p.startsWith("/user/")  && !p.startsWith("/channel/"))  return false
+    if(document.getElementsByClassName("ytp-share-panel-link")[1] === undefined) return false
+    let id = document.getElementsByClassName("ytp-share-panel-link")[1].innerText.split(".be/")[1];
+    return id.length == 11 ? id : false;
+}
+
 function getYouTubeVideoID(url) {
     //Attempt to parse url
     let urlObject = null;
