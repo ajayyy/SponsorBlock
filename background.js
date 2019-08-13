@@ -56,7 +56,8 @@ chrome.runtime.onInstalled.addListener(function (object) {
       // TODO (shownInstallPage): remove this if statement, but leave contents
       if (!shownInstallPage){
         //open up the install page
-        chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
+	      
+        chrome.tabs.create({url: chrome.extension.getURL("/help/"+chrome.i18n.getMessage("helpPage"))});
       }
 
       // TODO (shownInstallPage): delete if statement and contents
