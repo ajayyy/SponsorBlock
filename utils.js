@@ -9,9 +9,7 @@ function getTrailerID() { // Requires DOM level access
 
 function getYouTubeVideoID(url) {
     if(url === undefined) {
-        if(id = getTrailerID()) {
-            return id.length == 11 ? id : false;
-        }
+        if(id = getTrailerID()) return id;
         url = document.location.href;
     }
     //Attempt to parse url
