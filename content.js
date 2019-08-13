@@ -26,7 +26,7 @@ var channelWhitelisted = false;
 let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
 var previewBar = new PreviewBar(progressBar);
 
-if(id = getYouTubeVideoID(document.URL)){ // Direct Links
+if(id = getYouTubeVideoID()){ // Direct Links
   videoIDChange(id);
 }
 
@@ -93,7 +93,7 @@ function messageListener(request, sender, sendResponse) {
     //messages from popup script
   
     if (request.message == "update") {
-      if(id = getYouTubeVideoID(document.URL)) videoIDChange(id);
+      if(id = getYouTubeVideoID()) videoIDChange(id);
     }
   
     if (request.message == "sponsorStart") {
@@ -123,7 +123,7 @@ function messageListener(request, sender, sendResponse) {
 
     if (request.message == "getVideoID") {
       sendResponse({
-        videoID: getYouTubeVideoID(document.URL)
+        videoID: getYouTubeVideoID()
       })
     }
 
@@ -151,7 +151,7 @@ function messageListener(request, sender, sendResponse) {
 
     if (request.message == "whitelistChange") {
       channelWhitelisted = request.value;
-      sponsorsLookup(getYouTubeVideoID(document.URL));
+      sponsorsLookup(getYouTubeVideoID());
     }
 
     if (request.message == "showNoticeAgain") {
@@ -529,7 +529,7 @@ function removePlayerControlsButton() {
 //adds or removes the player controls button to what it should be
 function updateVisibilityOfPlayerControlsButton() {
   //not on a proper video yet
-  if (!getYouTubeVideoID(document.URL)) return;
+  if (!getYouTubeVideoID()) return;
 
   addPlayerControlsButton();
   addInfoButton();
@@ -556,7 +556,7 @@ function startSponsorClicked() {
   chrome.runtime.sendMessage({
     message: "addSponsorTime",
     time: v.currentTime,
-    videoID: getYouTubeVideoID(document.URL)
+    videoID: getYouTubeVideoID()
   }, function(response) {
     //see if the sponsorTimesSubmitting needs to be updated
     updateSponsorTimesSubmitting();
@@ -566,7 +566,7 @@ function startSponsorClicked() {
 function updateSponsorTimesSubmitting() {
   chrome.runtime.sendMessage({
     message: "getSponsorTimes",
-    videoID: getYouTubeVideoID(document.URL)
+    videoID: getYouTubeVideoID()
   }, function(response) {
     if (response != undefined) {
       let sponsorTimes = response.sponsorTimes;
@@ -782,7 +782,7 @@ function clearSponsorTimes() {
   //it can't update to this info yet
   closeInfoMenu();
 
-  let currentVideoID = getYouTubeVideoID(document.URL);
+  let currentVideoID = getYouTubeVideoID();
 
   let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
   chrome.storage.sync.get([sponsorTimeKey], function(result) {
@@ -1075,7 +1075,7 @@ function submitSponsorTimes() {
   //it can't update to this info yet
   closeInfoMenu();
 
-  let currentVideoID = getYouTubeVideoID(document.URL);
+  let currentVideoID = getYouTubeVideoID();
 
   let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
   chrome.storage.sync.get([sponsorTimeKey], function(result) {
@@ -1099,7 +1099,7 @@ function sendSubmitMessage(){
   document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
   document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
 
-  let currentVideoID = getYouTubeVideoID(document.URL);
+  let currentVideoID = getYouTubeVideoID();
 
   chrome.runtime.sendMessage({
     message: "submitTimes",
