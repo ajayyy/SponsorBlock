@@ -13,25 +13,22 @@ function getYouTubeVideoID(url) {
         url = document.URL;
     }
     //Attempt to parse url
-    if(typeof url === 'string') {
-        try {
-            url = new URL(url);
-        } catch (e) {      
-            console.error("[SB] Unable to parse URL: " + url);
-            return false
-        }
+    try {
+        urlObject = new URL(url);
+    } catch (e) {      
+        console.error("[SB] Unable to parse URL: " + url);
+        return false
     }
-  
     //Check if valid hostname
-    if(!["www.youtube.com","www.youtube-nocookie.com"].includes(url.host)) return false; 
+    if(!["www.youtube.com","www.youtube-nocookie.com"].includes(urlObject.host)) return false; 
     
     //Get ID from searchParam
-    if ((url.pathname == "/watch" || url.pathname == "/watch/") && url.searchParams.has("v")) {
-      id = url.searchParams.get("v"); 
+    if ((urlObject.pathname == "/watch" || urlObject.pathname == "/watch/") && urlObject.searchParams.has("v")) {
+      id = urlObject.searchParams.get("v"); 
       return id.length == 11 ? id : false;
-    } else if (url.pathname.startsWith("/embed/")) {
+    } else if (urlObject.pathname.startsWith("/embed/")) {
       try {
-        return url.pathname.substr(7, 11);
+        return urlObject.pathname.substr(7, 11);
       } catch (e) {
         console.error("[SB] Video ID not valid for " + url);
         return false;
