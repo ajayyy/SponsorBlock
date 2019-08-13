@@ -1,7 +1,7 @@
 {
   "name": "__MSG_fullName__",
   "short_name": "__MSG_Name__",
-  "version": "1.0.33",
+  "version": "1.0.35",
   "default_locale": "en",
   "description": "__MSG_Description__",
   "content_scripts": [
@@ -12,6 +12,7 @@
       "all_frames": true,
       "js": [
         "config.js",
+        "utils/previewBar.js",
         "utils.js",
         "content.js",
         "popup.js"

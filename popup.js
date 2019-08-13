@@ -54,6 +54,14 @@ function runThePopup() {
   // submitTimesInfoMessage
   "submitTimesInfoMessageContainer",
   "submitTimesInfoMessage",
+  // Username
+  "setUsernameContainer",
+  "setUsernameButton",
+  "setUsernameStatusContainer",
+  "setUsernameStatus",
+  "setUsername",
+  "usernameInput",
+  "submitUsername",
   // More
   "submissionSection",
   "mainControls",
@@ -78,6 +86,8 @@ function runThePopup() {
   SB.showDeleteButtonPlayerControls.addEventListener("click", showDeleteButtonPlayerControls);
   SB.disableSponsorViewTracking.addEventListener("click", disableSponsorViewTracking);
   SB.enableSponsorViewTracking.addEventListener("click", enableSponsorViewTracking);
+  SB.setUsernameButton.addEventListener("click", setUsernameButton);
+  SB.submitUsername.addEventListener("click", submitUsername);
   SB.optionsButton.addEventListener("click", openOptions);
   SB.reportAnIssue.addEventListener("click", reportAnIssue);
   SB.hideDiscordButton.addEventListener("click", hideDiscordButton);
@@ -374,7 +384,14 @@ function runThePopup() {
       for (let i = 0; i < request.sponsorTimes.length; i++) {
         let sponsorTimeButton = document.createElement("button");
         sponsorTimeButton.className = "warningButton popupElement";
-        sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i][0]) + " to " + getFormattedTime(request.sponsorTimes[i][1]);
+
+        let extraInfo = "";
+        if (request.hiddenSponsorTimes.includes(i)) {
+          //this one is hidden
+          extraInfo = " (hidden)";
+        }
+
+        sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i][0]) + " to " + getFormattedTime(request.sponsorTimes[i][1]) + extraInfo;
         
         let votingButtons = document.createElement("div");
   
@@ -973,10 +990,63 @@ function runThePopup() {
     }
   }
   
-  //make the options div visisble
+  //make the options div visible
   function openOptions() {
     document.getElementById("optionsButtonContainer").style.display = "none";
     document.getElementById("options").style.display = "unset";
+  }
+
+  //make the options username setting option visible
+  function setUsernameButton() {
+    //get the userID
+    chrome.storage.sync.get(["userID"], function(result) {
+      //get username from the server
+      sendRequestToServer("GET", "/api/getUsername?userID=" + result.userID, function (xmlhttp, error) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          SB.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
+
+          SB.submitUsername.style.display = "unset";
+          SB.usernameInput.style.display = "unset";
+
+          SB.setUsernameContainer.style.display = "none";
+          SB.setUsername.style.display = "unset";
+        } else {
+          SB.setUsername.style.display = "unset";
+          SB.submitUsername.style.display = "none";
+          SB.usernameInput.style.display = "none";
+
+          SB.setUsernameStatus.innerText = "Couldn't connect to server. Error code: " + xmlhttp.status;
+        }
+      });
+    });
+  }
+
+  //submit the new username
+  function submitUsername() {
+    //add loading indicator
+    SB.setUsernameStatusContainer.style.display = "unset";
+    SB.setUsernameStatus.innerText = "Loading...";
+
+    //get the userID
+    chrome.storage.sync.get(["userID"], function(result) {
+      sendRequestToServer("POST", "/api/setUsername?userID=" + result.userID + "&username=" + SB.usernameInput.value, function (xmlhttp, error) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          //submitted
+          SB.submitUsername.style.display = "none";
+          SB.usernameInput.style.display = "none";
+
+          SB.setUsernameStatus.innerText = "Success!";
+        } else if (xmlhttp.readyState == 4 && xmlhttp.status == 400) {
+          SB.setUsernameStatus.innerText = "Bad Request";
+        } else {
+          SB.setUsernameStatus.innerText = getErrorMessage(EN_US, xmlhttp.status);
+        }
+      });
+    });
+
+
+    SB.setUsernameContainer.style.display = "none";
+    SB.setUsername.style.display = "unset";
   }
   
   //this is not a YouTube video page

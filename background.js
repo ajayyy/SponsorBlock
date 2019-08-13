@@ -5,38 +5,39 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
-  if (request.message == "submitTimes") {
-    submitTimes(request.videoID, callback);
-
-    //this allows the callback to be called later by the submitTimes function
-    return true;
-  } else if (request.message == "addSponsorTime") {
-    addSponsorTime(request.time, request.videoID, callback);
-
-    //this allows the callback to be called later
-    return true;
-  } else if (request.message == "getSponsorTimes") {
-    getSponsorTimes(request.videoID, function(sponsorTimes) {
-      callback({
-        sponsorTimes: sponsorTimes
-      })
-    });
-
-    //this allows the callback to be called later
-    return true;
-  } else if (request.message == "submitVote") {
-    submitVote(request.type, request.UUID, callback);
-
-    //this allows the callback to be called later
-    return true;
-  } else if (request.message == "alertPrevious") {
-	  chrome.notifications.create("stillThere" + Math.random(), {
-		  type: "basic",
-		  title: chrome.i18n.getMessage("wantToSubmit") + request.previousVideoID + "?",
-		  message: chrome.i18n.getMessage("leftTimes"),
-		  iconUrl: "./icons/LogoSponsorBlocker256px.png"
-	  });
-  }	
+	switch(request.message) {
+		case "submitTimes":
+			submitTimes(request.videoID, callback);
+			
+			//this allows the callback to be called later by the submitTimes function
+			return true; 
+		case "addSponsorTime":
+			addSponsorTime(request.time, request.videoID, callback);
+			
+			//this allows the callback to be called later
+			return true; 
+		case "getSponsorTimes":
+			getSponsorTimes(request.videoID, function(sponsorTimes) {
+				callback({
+					sponsorTimes: sponsorTimes
+				})
+			});
+			
+			//this allows the callback to be called later
+			return true;
+		case "submitVote":
+			submitVote(request.type, request.UUID, callback);
+			
+			//this allows the callback to be called later
+			return true;
+		case "alertPrevious":
+			chrome.notifications.create("stillThere" + Math.random(), {
+				type: "basic",
+				title: "Do you want to submit the sponsor times for video id " + request.previousVideoID + "?",
+				message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
+				iconUrl: "./icons/LogoSponsorBlocker256px.png"
+			});
+	}
 });
 
 //add help page on install
