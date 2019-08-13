@@ -233,7 +233,7 @@ function runThePopup() {
       if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
         if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
           startTimeChosen = true;
-          SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEND");
+          SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
         }
   
         sponsorTimes = sponsorTimesStorage;
@@ -966,7 +966,7 @@ function runThePopup() {
     //update startTimeChosen letiable
     if (!startTimeChosen) {
       startTimeChosen = true;
-    SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEND");
+    SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
     } else {
       resetStartTimeChosen();
     }
@@ -1051,7 +1051,7 @@ function runThePopup() {
   
   //this is not a YouTube video page
   function displayNoVideo() {
-    document.getElementById("loadingIndicator").innerHTML = chrome.i18n.getMessage("sponsor404");
+    document.getElementById("loadingIndicator").innerHTML = chrome.i18n.getMessage("noVideoID");
   }
   
   function reportAnIssue() {
@@ -1091,7 +1091,7 @@ function runThePopup() {
           addVoteMessage(chrome.i18n.getMessage("Voted"), UUID)
         } else if (response.successType == 0) {
           //failure: duplicate vote
-          addVoteMessage(chrome.i18n.getMessage("voteFAIL"), UUID)
+          addVoteMessage(chrome.i18n.getMessage("voteFail"), UUID)
         } else if (response.successType == -1) {
           if (response.statusCode == 502) {
             addVoteMessage(chrome.i18n.getMessage("serverDown"), UUID)

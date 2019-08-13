@@ -82,16 +82,16 @@
   "sponsorStart": {
     "message": "Sponsorship Starts Now"
   },
-  "sponsorEND": {
+  "sponsorEnd": {
     "message": "Sponsorship Ends Now"
   },
-  "noVIDEOID": {
+  "noVideoID": {
     "message": "This probably isn't a YouTube tab, or you clicked too early. \n If you know this is a YouTube tab,\n close this popup and open it again."
   },
   "Voted": {
     "message": "Thanks for voting!"
   },
-  "voteFAIL": {
+  "voteFail": {
     "message": "You have already voted this way before."
   },
   "serverDown": {
@@ -105,8 +105,5 @@
   },
   "leftTimes": {
     "message": "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted)."
-  },
-  "Popup": {
-    "message": "popup_en.html"
   }
 }

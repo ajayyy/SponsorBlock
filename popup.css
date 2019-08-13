@@ -51,6 +51,10 @@ h1.popupElement {
 	padding: 5px;
 }
 
+.discreteLink.popupElement {
+	color: black;
+}
+
 .recordingSubtitle.popupElement {
 	margin-bottom: 10px;
 }

@@ -1,7 +1,7 @@
 {
   "name": "__MSG_fullName__",
   "short_name": "__MSG_Name__",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "default_locale": "en",
   "description": "__MSG_Description__",
   "content_scripts": [
@@ -44,7 +44,7 @@
   ],
   "browser_action": {
     "default_title": "__MSG_Name__",
-    "default_popup": "__MSG_Popup__"
+    "default_popup": "popup.html"
   }, 
   "background": {
     "scripts":[
