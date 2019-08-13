@@ -7,6 +7,9 @@ var UUIDs = null;
 //what video id are these sponsors for
 var sponsorVideoID = null;
 
+//these are sponsors that have been downvoted
+var hiddenSponsorTimes = [];
+
 //the time this video is starting at when first played, if not zero
 var youtubeVideoStartTime = null;
 
@@ -106,6 +109,7 @@ function messageListener(request, sender, sendResponse) {
       sendResponse({
         found: sponsorDataFound,
         sponsorTimes: sponsorTimes,
+        hiddenSponsorTimes: hiddenSponsorTimes,
         UUIDs: UUIDs
       });
 
@@ -431,7 +435,7 @@ function checkSponsorTime(sponsorTimes, index, openNotice) {
     lastTime = v.currentTime - 0.0001;
   }
 
-  if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0])) {
+  if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0]) && !hiddenSponsorTimes.includes(index)) {
     //skip it
     skipToTime(v, index, sponsorTimes, openNotice);
 
@@ -945,20 +949,22 @@ function afterDownvote(UUID) {
 
   //remove this sponsor from the sponsors looked up
   //find which one it is
-  let removeIndex = -1;
   for (let i = 0; i < sponsorTimes.length; i++) {
     if (UUIDs[i] == UUID) {
-      //this one is the one to remove
-      removeIndex = i;
+      //this one is the one to hide
+      
+      //add this as a hidden sponsorTime
+      hiddenSponsorTimes.push(i);
+
+      let sponsorTimesLeft = sponsorTimes.slice();
+      for (let j = 0; j < hiddenSponsorTimes.length; j++) {
+        //remove this sponsor time
+        sponsorTimesLeft.splice(hiddenSponsorTimes[j], 1);
+      }
+
+      //update the preview
+      previewBar.set(sponsorTimesLeft, [], v.duration);
     }
-  }
-
-  if (removeIndex != -1) {
-    //remove this sponsor time
-    sponsorTimes.splice(removeIndex, 1);
-
-    //update the preview
-    previewBar.set(sponsorTimes, [], v.duration);
   }
 }
 

@@ -384,7 +384,14 @@ function runThePopup() {
       for (let i = 0; i < request.sponsorTimes.length; i++) {
         let sponsorTimeButton = document.createElement("button");
         sponsorTimeButton.className = "warningButton popupElement";
-        sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i][0]) + " to " + getFormattedTime(request.sponsorTimes[i][1]);
+
+        let extraInfo = "";
+        if (request.hiddenSponsorTimes.includes(i)) {
+          //this one is hidden
+          extraInfo = " (hidden)";
+        }
+
+        sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i][0]) + " to " + getFormattedTime(request.sponsorTimes[i][1]) + extraInfo;
         
         let votingButtons = document.createElement("div");
   
