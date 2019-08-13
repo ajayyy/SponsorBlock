@@ -40,7 +40,6 @@ function urlBasedParser(url) {
       }
     }
 }
-}
 
 //returns the start time of the video if there was one specified (ex. ?t=5s)
 function getYouTubeVideoStartTime(url) {
