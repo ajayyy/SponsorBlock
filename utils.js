@@ -7,7 +7,7 @@ function getYouTubeVideoID(url) {
             let id = shere_url.split(".be/")[1];
             if(id.length == 11) return id;
         }
-        url = document.location; // Already parsed :D
+        url = document.location.href;
     }
     urlBasedParser(url);
 }
