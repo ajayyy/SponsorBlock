@@ -1013,8 +1013,27 @@ function runThePopup() {
 
   //make the options username setting option visible
   function setUsernameButton() {
-    SB.setUsernameContainer.style.display = "none";
-    SB.setUsername.style.display = "unset";
+    //get the userID
+    chrome.storage.sync.get(["userID"], function(result) {
+      //get username from the server
+      sendRequestToServer("GET", "/api/getUsername?userID=" + result.userID, function (xmlhttp, error) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          SB.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
+
+          SB.submitUsername.style.display = "unset";
+          SB.usernameInput.style.display = "unset";
+
+          SB.setUsernameContainer.style.display = "none";
+          SB.setUsername.style.display = "unset";
+        } else {
+          SB.setUsername.style.display = "unset";
+          SB.submitUsername.style.display = "none";
+          SB.usernameInput.style.display = "none";
+
+          SB.setUsernameStatus.innerText = "Couldn't connect to server. Error code: " + xmlhttp.status;
+        }
+      });
+    });
   }
 
   //submit the new username
