@@ -354,7 +354,7 @@ function sponsorsLookup(id) {
       });
 
       sponsorLookupRetries = 0;
-    } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 15) {
+    } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90) {
       //some error occurred, try again in a second
       setTimeout(() => sponsorsLookup(id), 1000);
 
