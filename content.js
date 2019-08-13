@@ -7,6 +7,9 @@ var UUIDs = null;
 //what video id are these sponsors for
 var sponsorVideoID = null;
 
+//these are sponsors that have been downvoted
+var hiddenSponsorTimes = [];
+
 //the time this video is starting at when first played, if not zero
 var youtubeVideoStartTime = null;
 
@@ -18,6 +21,10 @@ var channelURL;
 
 //is this channel whitelised from getting sponsors skipped
 var channelWhitelisted = false;
+
+// create preview bar
+let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
+var previewBar = new PreviewBar(progressBar);
 
 if(id = getYouTubeVideoID(document.URL)){ // Direct Links
   videoIDChange(id);
@@ -102,6 +109,7 @@ function messageListener(request, sender, sendResponse) {
       sendResponse({
         found: sponsorDataFound,
         sponsorTimes: sponsorTimes,
+        hiddenSponsorTimes: hiddenSponsorTimes,
         UUIDs: UUIDs
       });
 
@@ -310,6 +318,10 @@ function sponsorsLookup(id) {
       sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
       UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
 
+      //update the preview bar
+      //leave the type blank for now until categories are added
+      previewBar.set(sponsorTimes, [], v.duration);
+
       getChannelID();
 
       sponsorLookupRetries = 0;
@@ -423,7 +435,7 @@ function checkSponsorTime(sponsorTimes, index, openNotice) {
     lastTime = v.currentTime - 0.0001;
   }
 
-  if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0])) {
+  if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0]) && !hiddenSponsorTimes.includes(index)) {
     //skip it
     skipToTime(v, index, sponsorTimes, openNotice);
 
@@ -934,6 +946,26 @@ function afterDownvote(UUID) {
   //add element to div
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingInfoText);
+
+  //remove this sponsor from the sponsors looked up
+  //find which one it is
+  for (let i = 0; i < sponsorTimes.length; i++) {
+    if (UUIDs[i] == UUID) {
+      //this one is the one to hide
+      
+      //add this as a hidden sponsorTime
+      hiddenSponsorTimes.push(i);
+
+      let sponsorTimesLeft = sponsorTimes.slice();
+      for (let j = 0; j < hiddenSponsorTimes.length; j++) {
+        //remove this sponsor time
+        sponsorTimesLeft.splice(hiddenSponsorTimes[j], 1);
+      }
+
+      //update the preview
+      previewBar.set(sponsorTimesLeft, [], v.duration);
+    }
+  }
 }
 
 function addLoadingInfo(message, UUID) {
