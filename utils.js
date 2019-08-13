@@ -1,18 +1,19 @@
+function getTrailerID() { // Requires DOM level access
+    let p = document.location.pathname;
+    if(!document.location.origin === "https://www.youtube.com") return false
+    if(!p.startsWith("/user/")  && !p.startsWith("/channel/"))  return false
+    if(document.getElementsByClassName("ytp-title-link")[1] === undefined) return false
+    let id = document.getElementsByClassName("ytp-title-link")[1].href.split("?v=")[1];
+    return id.length == 11 ? id : false;
+}
+
 function getYouTubeVideoID(url) {
-    // If no url provided guess its in a contentscript
-    if (url === undefined) {
-        // Diffrent way works on channel trailer and watch?v=
-        let shere_url = document.getElementsByClassName("ytp-share-panel-link")[1];
-        if (shere_url) {
-            let id = shere_url.split(".be/")[1];
-            if(id.length == 11) return id;
+    if(url === undefined) {
+        if(id = getTrailerID()) {
+            return id.length == 11 ? id : false;
         }
         url = document.location.href;
     }
-    urlBasedParser(url);
-}
-
-function urlBasedParser(url) {
     //Attempt to parse url
     if(typeof url === 'string') {
         try {
