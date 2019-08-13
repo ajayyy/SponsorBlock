@@ -16,6 +16,8 @@ var youtubeVideoStartTime = null;
 //the video
 var v;
 
+var listenerAdded;
+
 //the channel this video is about
 var channelURL;
 
@@ -241,6 +243,9 @@ function videoIDChange(id) {
   sponsorVideoID = id;
   sponsorLookupRetries = 0;
 
+  //empty the preview bar
+  previewBar.set([], [], 0);
+
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime(document.URL);
 
@@ -320,7 +325,14 @@ function sponsorsLookup(id) {
 
       //update the preview bar
       //leave the type blank for now until categories are added
-      previewBar.set(sponsorTimes, [], v.duration);
+      console.log(v.duration)
+      if (isNaN(v.duration)) {
+        //wait until it is loaded
+        v.addEventListener('durationchange', updatePreviewBar);
+      } else {
+        //set it now
+        updatePreviewBar();
+      }
 
       getChannelID();
 
@@ -342,7 +354,7 @@ function sponsorsLookup(id) {
       });
 
       sponsorLookupRetries = 0;
-    } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 15) {
+    } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90) {
       //some error occurred, try again in a second
       setTimeout(() => sponsorsLookup(id), 1000);
 
@@ -354,6 +366,13 @@ function sponsorsLookup(id) {
   v.ontimeupdate = function () { 
     sponsorCheck();
   };
+}
+
+function updatePreviewBar() {
+  previewBar.set(sponsorTimes, [], v.duration);
+
+  //the listener is only needed once
+  v.removeEventListener('durationchange', updatePreviewBar);
 }
 
 function getChannelID() {
