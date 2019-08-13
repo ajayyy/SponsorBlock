@@ -13,6 +13,7 @@ function getYouTubeVideoID(url) {
         url = document.URL;
     }
     //Attempt to parse url
+    let urlObject;
     try {
         urlObject = new URL(url);
     } catch (e) {      
