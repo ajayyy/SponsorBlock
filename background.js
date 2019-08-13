@@ -56,7 +56,7 @@ chrome.runtime.onInstalled.addListener(function (object) {
       if (!shownInstallPage){
         //open up the install page
 	      
-        chrome.tabs.create({url: chrome.extension.getURL("/help/"+chrome.i18n.getMessage("helpPage")});
+        chrome.tabs.create({url: chrome.extension.getURL("/help/"+chrome.i18n.getMessage("helpPage"))});
       }
 
       // TODO (shownInstallPage): delete if statement and contents

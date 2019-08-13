@@ -990,9 +990,8 @@ function vote(type, UUID) {
           addLoadingInfo(chrome.i18n.getMessage("serverDown"), UUID)
         } else {
           //failure: unknown error
-          addLoadingInfo((chrome.i18n.getMessage("connectionError") + response.statusCode, UUID)
+          addLoadingInfo(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID);
         }
-        
       }
     }
   });
