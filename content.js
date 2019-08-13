@@ -16,6 +16,8 @@ var youtubeVideoStartTime = null;
 //the video
 var v;
 
+var listenerAdded;
+
 //the channel this video is about
 var channelURL;
 
@@ -23,10 +25,9 @@ var channelURL;
 var channelWhitelisted = false;
 
 // create preview bar
-let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
-var previewBar = new PreviewBar(progressBar);
+var previewBar;
 
-if(id = getYouTubeVideoID()){ // Direct Links
+if (id = getYouTubeVideoID()) { // Direct Links
   videoIDChange(id);
 }
 
@@ -201,9 +202,14 @@ document.onkeydown = function(e){
 }
 
 function videoIDChange(id) {
-
   //not a url change
   if (sponsorVideoID == id) return;
+
+  if (previewBar == null) {
+    //create it
+    let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
+    previewBar = new PreviewBar(progressBar);
+  }
 
   //warn them if they had unsubmitted times
   if (previousVideoID != null) {
@@ -240,6 +246,9 @@ function videoIDChange(id) {
   UUIDs = null;
   sponsorVideoID = id;
   sponsorLookupRetries = 0;
+
+  //empty the preview bar
+  previewBar.set([], [], 0);
 
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime(document.URL);
@@ -320,7 +329,13 @@ function sponsorsLookup(id) {
 
       //update the preview bar
       //leave the type blank for now until categories are added
-      previewBar.set(sponsorTimes, [], v.duration);
+      if (isNaN(v.duration)) {
+        //wait until it is loaded
+        v.addEventListener('durationchange', updatePreviewBar);
+      } else {
+        //set it now
+        updatePreviewBar();
+      }
 
       getChannelID();
 
@@ -342,7 +357,7 @@ function sponsorsLookup(id) {
       });
 
       sponsorLookupRetries = 0;
-    } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 15) {
+    } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90) {
       //some error occurred, try again in a second
       setTimeout(() => sponsorsLookup(id), 1000);
 
@@ -354,6 +369,13 @@ function sponsorsLookup(id) {
   v.ontimeupdate = function () { 
     sponsorCheck();
   };
+}
+
+function updatePreviewBar() {
+  previewBar.set(sponsorTimes, [], v.duration);
+
+  //the listener is only needed once
+  v.removeEventListener('durationchange', updatePreviewBar);
 }
 
 function getChannelID() {
@@ -498,7 +520,7 @@ function addPlayerControlsButton() {
   let startSponsorButton = document.createElement("button");
   startSponsorButton.id = "startSponsorButton";
   startSponsorButton.className = "ytp-button playerButton";
-  startSponsorButton.setAttribute("title", "Sponsor Starts Now");
+  startSponsorButton.setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
   startSponsorButton.addEventListener("click", startSponsorClicked);
 
   let startSponsorImage = document.createElement("img");
@@ -590,7 +612,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   if (showStartSponsor) {
     showingStartSponsor = true;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
-    document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Starts Now");
+    document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
     if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
       document.getElementById("submitButton").style.display = "unset";
@@ -601,7 +623,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   } else {
     showingStartSponsor = false;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
-    document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Ends Now");
+    document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
 
     //disable submit button
     document.getElementById("submitButton").style.display = "none";
@@ -789,8 +811,8 @@ function clearSponsorTimes() {
     let sponsorTimes = result[sponsorTimeKey];
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-      let confirmMessage = "Are you sure you want to clear this?\n\n" + getSponsorTimesMessage(sponsorTimes);
-      confirmMessage += "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
+      let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes);
+      confirmMessage += chrome.i18n.getMessage("confirmMSG")
       if(!confirm(confirmMessage)) return;
 
       //clear the sponsor times
@@ -871,17 +893,17 @@ function openSkipNotice(UUID){
   buttonContainer.setAttribute("align", "center");
 
   let goBackButton = document.createElement("button");
-  goBackButton.innerText = "Go back";
+  goBackButton.innerText = chrome.i18n.getMessage("goBack");
   goBackButton.className = "sponsorSkipButton";
   goBackButton.addEventListener("click", () => goBackToPreviousTime(UUID));
 
   let hideButton = document.createElement("button");
-  hideButton.innerText = "Dismiss";
+  hideButton.innerText = chrome.i18n.getMessage("Dismiss");
   hideButton.className = "sponsorSkipButton";
   hideButton.addEventListener("click", () => closeSkipNotice(UUID));
 
   let dontShowAgainButton = document.createElement("button");
-  dontShowAgainButton.innerText = "Don't Show This Again";
+  dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
   dontShowAgainButton.className = "sponsorSkipDontShowButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
@@ -936,12 +958,12 @@ function afterDownvote(UUID) {
   //add thanks for voting text
   let thanksForVotingText = document.createElement("p");
   thanksForVotingText.id = "sponsorTimesThanksForVotingText";
-  thanksForVotingText.innerText = "Thanks for voting!"
+  thanksForVotingText.innerText = chrome.i18n.getMessage("Voted");
 
   //add extra info for voting
   let thanksForVotingInfoText = document.createElement("p");
   thanksForVotingInfoText.id = "sponsorTimesThanksForVotingInfoText";
-  thanksForVotingInfoText.innerText = "Hit go back to get to where you came from."
+  thanksForVotingInfoText.innerText = chrome.i18n.getMessage("hitGoBack");
 
   //add element to div
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
@@ -1016,15 +1038,14 @@ function vote(type, UUID) {
         }
       } else if (response.successType == 0) {
         //failure: duplicate vote
-        addLoadingInfo("It seems you've already voted before", UUID)
+        addLoadingInfo(chrome.i18n.getMessage("voteFAIL"), UUID)
       } else if (response.successType == -1) {
         if (response.statusCode == 502) {
-          addLoadingInfo("It seems the sever is down. Contact the dev immediately.", UUID)
+          addLoadingInfo(chrome.i18n.getMessage("serverDown"), UUID)
         } else {
           //failure: unknown error
-          addLoadingInfo("A connection error has occured. Error code: " + response.statusCode, UUID)
+          addLoadingInfo(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID);
         }
-        
       }
     }
   });
@@ -1134,16 +1155,10 @@ function sendSubmitMessage(){
         document.getElementById("submitButton").style.animation = "unset";
         document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-        if(response.statusCode == 400) {
-          alert("Server said this request was invalid");
-        } else if(response.statusCode == 429) {
-          alert("You have submitted too many sponsor times for this one video, are you sure there are this many?");
-        } else if(response.statusCode == 409) {
-          alert("This has already been submitted before");
-        } else if(response.statusCode == 502) {
-          alert("It seems the server is down. Contact the dev to inform them. Error code " + response.statusCode);
+        if([400,429,409,502].includes(response.statusCode)) {
+          alert(chrome.i18n.getMessage(response.statusCode));
         } else {
-          alert("There was an error submitting your sponsor times, please try again later. Error code " + response.statusCode);
+          alert(chrome.i18n.getMessage("connectionError") + response.statusCode);
         }
       }
     }

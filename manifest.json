@@ -1,8 +1,9 @@
 {
-  "name": "SponsorBlock for YouTube - Skip Sponsorships",
-  "short_name": "SponsorBlock",
-  "version": "1.0.34",
-  "description": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
+  "name": "__MSG_fullName__",
+  "short_name": "__MSG_Name__",
+  "version": "1.0.36",
+  "default_locale": "en",
+  "description": "__MSG_Description__",
   "content_scripts": [
     {
       "matches": [
@@ -42,7 +43,7 @@
     "https://sponsor.ajay.app/*"
   ],
   "browser_action": {
-    "default_title": "SponsorBlock",
+    "default_title": "__MSG_Name__",
     "default_popup": "popup.html"
   }, 
   "background": {
