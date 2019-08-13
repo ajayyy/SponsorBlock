@@ -942,6 +942,24 @@ function afterDownvote(UUID) {
   //add element to div
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
   document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingInfoText);
+
+  //remove this sponsor from the sponsors looked up
+  //find which one it is
+  let removeIndex = -1;
+  for (let i = 0; i < sponsorTimes.length; i++) {
+    if (UUIDs[i] == UUID) {
+      //this one is the one to remove
+      removeIndex = i;
+    }
+  }
+
+  if (removeIndex != -1) {
+    //remove this sponsor time
+    sponsorTimes.splice(removeIndex, 1);
+
+    //update the preview
+    previewBar.set(sponsorTimes, [], v.duration);
+  }
 }
 
 function addLoadingInfo(message, UUID) {
