@@ -901,7 +901,7 @@ function openSkipNotice(UUID){
   noticeMessage.id = "sponsorSkipMessage" + UUID;
   noticeMessage.classList.add("sponsorSkipMessage");
   noticeMessage.classList.add("sponsorSkipObject");
-  noticeMessage.innerText = "SponsorBlock - Sponsor Skipped";
+  noticeMessage.innerText = "Sponsor Skipped";
 
   //create the first column
   logoColumn.appendChild(logoElement);
@@ -909,13 +909,19 @@ function openSkipNotice(UUID){
 
   //add the x button
   let closeButtonContainer = document.createElement("td");
-  closeButtonContainer.className = "sponsorSkipNoticeRightSection"
+  closeButtonContainer.className = "sponsorSkipNoticeRightSection";
+  closeButtonContainer.style.top = "11px";
 
-  let hideButton = document.createElement("button");
-  hideButton.innerText = "X";
-  hideButton.className = "sponsorSkipNoticeButton sponsorSkipNoticeCloseButton";
+  let timeLeft = document.createElement("span");
+  timeLeft.innerText = "closing in 7s";
+  timeLeft.className = "sponsorSkipObject sponsorSkipNoticeTimeLeft";
+
+  let hideButton = document.createElement("img");
+  hideButton.src = chrome.extension.getURL("icons/close.png");
+  hideButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeCloseButton sponsorSkipNoticeRightButton";
   hideButton.addEventListener("click", () => closeSkipNotice(UUID));
 
+  closeButtonContainer.appendChild(timeLeft);
   closeButtonContainer.appendChild(hideButton);
 
   //add all objects to first row
@@ -954,7 +960,7 @@ function openSkipNotice(UUID){
 
   let unskipButton = document.createElement("button");
   unskipButton.innerText = chrome.i18n.getMessage("goBack");
-  unskipButton.className = "sponsorSkipNoticeButton";
+  unskipButton.className = "sponsorSkipObject sponsorSkipNoticeButton";
   unskipButton.addEventListener("click", () => goBackToPreviousTime(UUID));
 
   unskipContainer.appendChild(unskipButton);
@@ -962,10 +968,11 @@ function openSkipNotice(UUID){
   //add don't show again button
   let dontshowContainer = document.createElement("td");
   dontshowContainer.className = "sponsorSkipNoticeRightSection";
+  dontshowContainer.style.bottom = "14px";
 
   let dontShowAgainButton = document.createElement("button");
   dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
-  dontShowAgainButton.className = "sponsorSkipNoticeButton sponsorSkipNoticeCloseButton";
+  dontShowAgainButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
   dontshowContainer.appendChild(dontShowAgainButton);

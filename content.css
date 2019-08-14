@@ -41,8 +41,8 @@
 }
 
 .sponsorSkipObject {
-	font-family: 'Source Sans Pro', sans-serif;
-	
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+		
 	margin-left: 2px;
 	margin-right: 2px;
 }
@@ -59,23 +59,33 @@
 }
 
 .sponsorBlockSpacer {
-	border-color: #999999;
-	background-color: #999999;
+	background-color: rgb(100, 100, 100);
+	border-color: rgb(100, 100, 100);
 }
 
 .sponsorSkipNotice {
-    min-width: 300px;
-    background-color: rgba(0, 0, 0, 0.8);
+    min-width: 270px;
+    background-color: rgba(28, 28, 28, 0.9);
     position: absolute;
 	right: 0;
 	bottom: 100px;
 	right: 10px;
 
-	border-radius: 10px;
+	border-radius: 5px;
 
 	animation: fadeIn 0.5s;
 
-	border-spacing: 7px 7px;
+	border-spacing: 10px 10px;
+}
+
+.sponsorSkipNoticeTimeLeft {
+	color: #eeeeee;
+
+	border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 12px;
+
+	border: 1px solid #eeeeee;
 }
 
 /* if two are very close to eachother */
@@ -88,7 +98,7 @@
 .sponsorSkipNoticeUnskipSection {
 	float: left;
 
-	border-left: 1px solid #eeeeee;
+	border-left: 1px solid rgb(150, 150, 150);
 }
 
 .sponsorSkipNoticeRightSection {
@@ -98,15 +108,19 @@
 	float: right;
 }
 
-.sponsorSkipNoticeCloseButton {
-	margin-left: 0px;
-	margin-right: 0px;
+.sponsorSkipNoticeRightButton {
+    margin-left: 7px !important;
 	padding: 0px;
+}
+
+.sponsorSkipNoticeCloseButton {
+	height: 10px;
+    width: 10px;
 }
 
 .sponsorSkipNoticeButton {
 	background: none;
-	color: #ffffff;
+	color: rgb(235, 235, 235);
 	border: none;
 	display: inline-block;
 
@@ -119,7 +133,7 @@
 .sponsorSkipMessage {
 	font-size: 14px;
 	font-weight: bold;
-	color: #ffffff;
+	color: rgb(235, 235, 235);
 	
 	display: inline-block;
 }
@@ -159,7 +173,6 @@
 	height: 18px;
 	cursor: pointer;
 	
-	margin-left: 10px;
 	margin-right: 10px;
 }
 .voteButton:hover {
