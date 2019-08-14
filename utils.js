@@ -2,17 +2,17 @@ function getTrailerID() { // Requires DOM level access
     let p = document.location.pathname;
     if(!document.location.origin === "https://www.youtube.com") return false
     if(!p.startsWith("/user/")  && !p.startsWith("/channel/"))  return false
-    if(document.getElementsByClassName("ytp-title-link")[1] === undefined) return false
-    let id = document.getElementsByClassName("ytp-title-link")[1].href.split("?v=")[1];
+    if(document.getElementsByClassName("ytp-title-link")[0] === undefined) return false
+    let id = document.getElementsByClassName("ytp-title-link")[0].href.split("?v=")[1];
     return id.length == 11 ? id : false;
 }
 
 function getYouTubeVideoID(url) {
-    let id = false;
+	let id = false;
     if(url === undefined) {
-	    id = getTrailerID();
-	    if(id === true) return id;
-	    url = document.URL;
+		id = getTrailerID();
+        if(id !== false) return id;
+        url = document.URL;
     }
     //Attempt to parse url
     let urlObject = null;
