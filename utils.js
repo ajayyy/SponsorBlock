@@ -3,7 +3,7 @@ function getYouTubeVideoID_ALT() { // Requires DOM level access
     let p = document.location.pathname;
     if(!document.location.origin === "https://www.youtube.com") return false
 	if(!document.getElementById("movie_player")) return false
-    if(p.startsWith("/user/") || !p.startsWith("/channel/") || p.startsWith("/embed/")) {
+    if(p.startsWith("/user/") || p.startsWith("/channel/") || p.startsWith("/embed/")) {
 		if(!document.getElementsByClassName("ytp-title-link")) return false;
 		let index = (document.getElementsByClassName("ytp-title-link")[0].hasAttribute("href")) ? 0 : 1;
 		id = document.getElementsByClassName("ytp-title-link")[index].href.split("?v=")[1];
