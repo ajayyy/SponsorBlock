@@ -8,18 +8,21 @@ function getTrailerID() { // Requires DOM level access
 }
 
 function getYouTubeVideoID(url) {
+	let id = false;
     if(url === undefined) {
+		id = getTrailerID();
         if(id = getTrailerID()) return id;
         url = document.URL;
     }
     //Attempt to parse url
     let urlObject = null;
-    try {
+    try { 
         urlObject = new URL(url);
     } catch (e) {      
         console.error("[SB] Unable to parse URL: " + url);
         return false
     }
+  
     //Check if valid hostname
     if(!["www.youtube.com","www.youtube-nocookie.com"].includes(urlObject.host)) return false; 
     
