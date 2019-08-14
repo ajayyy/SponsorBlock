@@ -268,7 +268,7 @@ function videoIDChange(id) {
   resetValues();
 
   //see if there is a video start time
-  youtubeVideoStartTime = getYouTubeVideoStartTime(document.URL);
+  youtubeVideoStartTime = getYouTubeVideoStartTime();
 
   sponsorsLookup(id);
 
