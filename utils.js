@@ -8,11 +8,11 @@ function getTrailerID() { // Requires DOM level access
 }
 
 function getYouTubeVideoID(url) {
-	let id = false;
+    let id = false;
     if(url === undefined) {
-		id = getTrailerID();
-        if(id = getTrailerID()) return id;
-        url = document.URL;
+	    id = getTrailerID();
+	    if(id === true) return id;
+	    url = document.URL;
     }
     //Attempt to parse url
     let urlObject = null;
@@ -39,6 +39,7 @@ function getYouTubeVideoID(url) {
       }
     }
 }
+
 
 //returns the start time of the video if there was one specified (ex. ?t=5s)
 function getYouTubeVideoStartTime(url) {
