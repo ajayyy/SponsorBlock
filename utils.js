@@ -2,7 +2,8 @@ function getTrailerID() { // Requires DOM level access
     let p = document.location.pathname;
     if(!document.location.origin === "https://www.youtube.com") return false
     if(!p.startsWith("/user/")  && !p.startsWith("/channel/"))  return false
-	let index = (document.getElementsByClassName("ytp-title-link")[0].hasAttribute("href")) ? 0 : 1;
+    if(!document.getElementsByClassName("ytp-title-link")) return false;
+    let index = (document.getElementsByClassName("ytp-title-link")[0].hasAttribute("href")) ? 0 : 1;
     let id = document.getElementsByClassName("ytp-title-link")[index].href.split("?v=")[1];
     return id.length == 11 ? id : false;
 }
