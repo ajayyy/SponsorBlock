@@ -870,27 +870,67 @@ function openSkipNotice(UUID){
   noticeElement.classList.add("sponsorSkipNotice");
   noticeElement.style.zIndex = 50 + amountOfPreviousNotices;
 
+  // let logoElement = document.createElement("img");
+  // logoElement.id = "sponsorSkipLogo" + UUID;
+  // logoElement.className = "sponsorSkipLogo";
+  // logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+
+  // let noticeMessage = document.createElement("div");
+  // noticeMessage.id = "sponsorSkipMessage" + UUID;
+  // noticeMessage.classList.add("sponsorSkipMessage");
+  // noticeMessage.classList.add("sponsorSkipObject");
+  // noticeMessage.innerText = "Hey, you just skipped a sponsor!";
+  
+  // let noticeInfo = document.createElement("p");
+  // noticeInfo.id = "sponsorSkipInfo" + UUID;
+  // noticeInfo.classList.add("sponsorSkipInfo");
+  // noticeInfo.classList.add("sponsorSkipObject");
+  // noticeInfo.innerText = "This message will disapear in 7 seconds";
+
+  //the row that will contain the info
+  let firstRow = document.createElement("tr");
+
+  let logoColumn = document.createElement("td");
+
   let logoElement = document.createElement("img");
   logoElement.id = "sponsorSkipLogo" + UUID;
-  logoElement.className = "sponsorSkipLogo";
-  logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+  logoElement.className = "sponsorSkipLogo sponsorSkipObject";
+  logoElement.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
 
-  let noticeMessage = document.createElement("div");
+  let noticeMessage = document.createElement("span");
   noticeMessage.id = "sponsorSkipMessage" + UUID;
   noticeMessage.classList.add("sponsorSkipMessage");
   noticeMessage.classList.add("sponsorSkipObject");
-  noticeMessage.innerText = "Hey, you just skipped a sponsor!";
-  
-  let noticeInfo = document.createElement("p");
-  noticeInfo.id = "sponsorSkipInfo" + UUID;
-  noticeInfo.classList.add("sponsorSkipInfo");
-  noticeInfo.classList.add("sponsorSkipObject");
-  noticeInfo.innerText = "This message will disapear in 7 seconds";
+  noticeMessage.innerText = "SponsorBlock - Sponsor Skipped";
+
+  //create the first column
+  logoColumn.appendChild(logoElement);
+  logoColumn.appendChild(noticeMessage);
+
+  //add the x button
+  let closeButtonContainer = document.createElement("td");
+  closeButtonContainer.className = "sponsorSkipNoticeRightSection"
+
+  let hideButton = document.createElement("button");
+  hideButton.innerText = "X";
+  hideButton.className = "sponsorSkipNoticeButton sponsorSkipNoticeCloseButton";
+  hideButton.addEventListener("click", () => closeSkipNotice(UUID));
+
+  closeButtonContainer.appendChild(hideButton);
+
+  //add all objects to first row
+  firstRow.appendChild(logoColumn);
+  firstRow.appendChild(closeButtonContainer);
+
+  let spacer = document.createElement("hr");
+  spacer.className = "sponsorBlockSpacer";
+
+  //the row that will contain the buttons
+  let secondRow = document.createElement("tr");
   
   //thumbs up and down buttons
-  let voteButtonsContainer = document.createElement("div");
+  let voteButtonsContainer = document.createElement("td");
   voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
-  voteButtonsContainer.setAttribute("align", "center");
 
   let upvoteButton = document.createElement("img");
   upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
@@ -908,35 +948,64 @@ function openSkipNotice(UUID){
   voteButtonsContainer.appendChild(upvoteButton);
   voteButtonsContainer.appendChild(downvoteButton);
 
-  let buttonContainer = document.createElement("div");
-  buttonContainer.setAttribute("align", "center");
+  //add unskip button
+  let unskipContainer = document.createElement("td");
+  unskipContainer.className = "sponsorSkipNoticeUnskipSection";
 
-  let goBackButton = document.createElement("button");
-  goBackButton.innerText = chrome.i18n.getMessage("goBack");
-  goBackButton.className = "sponsorSkipButton";
-  goBackButton.addEventListener("click", () => goBackToPreviousTime(UUID));
+  let unskipButton = document.createElement("button");
+  unskipButton.innerText = chrome.i18n.getMessage("goBack");
+  unskipButton.className = "sponsorSkipNoticeButton";
+  unskipButton.addEventListener("click", () => goBackToPreviousTime(UUID));
 
-  let hideButton = document.createElement("button");
-  hideButton.innerText = chrome.i18n.getMessage("Dismiss");
-  hideButton.className = "sponsorSkipButton";
-  hideButton.addEventListener("click", () => closeSkipNotice(UUID));
+  unskipContainer.appendChild(unskipButton);
+
+  //add don't show again button
+  let dontshowContainer = document.createElement("td");
+  dontshowContainer.className = "sponsorSkipNoticeRightSection";
 
   let dontShowAgainButton = document.createElement("button");
   dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
-  dontShowAgainButton.className = "sponsorSkipDontShowButton";
+  dontShowAgainButton.className = "sponsorSkipNoticeButton sponsorSkipNoticeCloseButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
-  buttonContainer.appendChild(goBackButton);
-  buttonContainer.appendChild(hideButton);
-  buttonContainer.appendChild(document.createElement("br"));
-  buttonContainer.appendChild(document.createElement("br"));
-  buttonContainer.appendChild(dontShowAgainButton);
+  dontshowContainer.appendChild(dontShowAgainButton);
 
-  noticeElement.appendChild(logoElement);
-  noticeElement.appendChild(noticeMessage);
-  noticeElement.appendChild(noticeInfo);
-  noticeElement.appendChild(voteButtonsContainer);
-  noticeElement.appendChild(buttonContainer);
+  //add to row
+  secondRow.appendChild(voteButtonsContainer);
+  secondRow.appendChild(unskipContainer);
+  secondRow.appendChild(dontshowContainer);
+
+  // let buttonContainer = document.createElement("div");
+  // buttonContainer.setAttribute("align", "center");
+
+  // let goBackButton = document.createElement("button");
+  // goBackButton.innerText = chrome.i18n.getMessage("goBack");
+  // goBackButton.className = "sponsorSkipButton";
+  // goBackButton.addEventListener("click", () => goBackToPreviousTime(UUID));
+
+  // let hideButton = document.createElement("button");
+  // hideButton.innerText = chrome.i18n.getMessage("Dismiss");
+  // hideButton.className = "sponsorSkipButton";
+  // hideButton.addEventListener("click", () => closeSkipNotice(UUID));
+
+  // let dontShowAgainButton = document.createElement("button");
+  // dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
+  // dontShowAgainButton.className = "sponsorSkipDontShowButton";
+  // dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
+
+  // buttonContainer.appendChild(goBackButton);
+  // buttonContainer.appendChild(hideButton);
+  // buttonContainer.appendChild(document.createElement("br"));
+  // buttonContainer.appendChild(document.createElement("br"));
+  // buttonContainer.appendChild(dontShowAgainButton);
+
+  // noticeElement.appendChild(logoElement);
+  // noticeElement.appendChild(noticeMessage);
+  // noticeElement.appendChild(noticeInfo);
+
+  noticeElement.appendChild(firstRow);
+  noticeElement.appendChild(spacer);
+  noticeElement.appendChild(secondRow);
 
   let referenceNode = document.getElementById("movie_player");
   if (referenceNode == null) {

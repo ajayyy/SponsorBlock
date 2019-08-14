@@ -41,16 +41,16 @@
 }
 
 .sponsorSkipObject {
-    font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
+	
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 .sponsorSkipLogo {
-	height: 64px;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	margin-left: 10px;
+	height: 18px;
+
+	float: left;
 }
 
 @keyframes fadeIn {
@@ -58,17 +58,24 @@
 	  to { opacity: 1; }
 }
 
+.sponsorBlockSpacer {
+	border-color: #999999;
+	background-color: #999999;
+}
+
 .sponsorSkipNotice {
-    min-height: 165px;
-    min-width: 400px;
-    background-color: rgba(255, 217, 217, 0.8);
+    min-width: 300px;
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
-	border: 3px solid rgba(0, 0, 0, 0.8);
 	right: 0;
-	bottom: 90px;
-	zoom: 85%;
+	bottom: 100px;
+	right: 10px;
+
+	border-radius: 10px;
 
 	animation: fadeIn 0.5s;
+
+	border-spacing: 7px 7px;
 }
 
 /* if two are very close to eachother */
@@ -78,13 +85,43 @@
   	transition: bottom 0.2s;
 }
 
+.sponsorSkipNoticeUnskipSection {
+	float: left;
+
+	border-left: 1px solid #eeeeee;
+}
+
+.sponsorSkipNoticeRightSection {
+    right: 0;
+	position: absolute;
+
+	float: right;
+}
+
+.sponsorSkipNoticeCloseButton {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px;
+}
+
+.sponsorSkipNoticeButton {
+	background: none;
+	color: #ffffff;
+	border: none;
+	display: inline-block;
+
+	cursor: pointer;
+
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
 .sponsorSkipMessage {
-    font-size: 18px;
-    color: #000000;
-    text-align: center;
-    margin-top: 10px;
+	font-size: 14px;
 	font-weight: bold;
-	margin-top: 4px;
+	color: #ffffff;
+	
+	display: inline-block;
 }
 
 .sponsorSkipInfo {
@@ -119,9 +156,11 @@
 }
 
 .voteButton {
-	height: 32px;
-	margin-right: 15px;
+	height: 18px;
 	cursor: pointer;
+	
+	margin-left: 10px;
+	margin-right: 10px;
 }
 .voteButton:hover {
 	filter: brightness(80%);
