@@ -42,6 +42,12 @@
   "Segments": {
     "message": "sponsor segments"
   },
+  "noticeTitle": {
+    "message": "Sponsor Skipped"
+  },
+  "noticeClosingMessage": {
+    "message": "closes in 7s"
+  },
   "Dismiss": {
     "message": "Dismiss"
   },

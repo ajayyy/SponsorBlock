@@ -888,7 +888,7 @@ function openSkipNotice(UUID){
   noticeMessage.id = "sponsorSkipMessage" + UUID;
   noticeMessage.classList.add("sponsorSkipMessage");
   noticeMessage.classList.add("sponsorSkipObject");
-  noticeMessage.innerText = "Sponsor Skipped";
+  noticeMessage.innerText = chrome.i18n.getMessage("noticeTitle");
 
   //create the first column
   logoColumn.appendChild(logoElement);
@@ -900,7 +900,7 @@ function openSkipNotice(UUID){
   closeButtonContainer.style.top = "11px";
 
   let timeLeft = document.createElement("span");
-  timeLeft.innerText = "closes in 7s";
+  timeLeft.innerText = chrome.i18n.getMessage("noticeClosingMessage");
   timeLeft.className = "sponsorSkipObject sponsorSkipNoticeTimeLeft";
 
   let hideButton = document.createElement("img");
