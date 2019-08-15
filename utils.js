@@ -1,9 +1,9 @@
 function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM level access)
     let id;
-	let index = 0;
+    let index = 0;
     let p = document.location.pathname;
     if(!document.location.origin === "https://www.youtube.com") return false
-	let title = document.getElementsByClassName("ytp-title-link");
+    let title = document.getElementsByClassName("ytp-title-link");
     if(p.startsWith("/user/") || p.startsWith("/channel/") || p.startsWith("/embed/")) {
 		if(title.length > 1) {
 			index = (title[0].hasAttribute("href")) ? 0 : 1;
@@ -46,7 +46,7 @@ function getYouTubeVideoID(url = document.URL) {
 
 
 //returns the start time of the video if there was one specified (ex. ?t=5s)
-function getYouTubeVideoStartTime(url) {
+function getYouTubeVideoStartTime(url = document.URL) {
   let searchParams = new URL(url).searchParams;
   let startTime = searchParams.get("t");
   if (startTime == null) {
