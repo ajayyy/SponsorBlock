@@ -98,15 +98,23 @@ chrome.runtime.onMessage.addListener(messageListener);
   
 function messageListener(request, sender, sendResponse) {
     //messages from popup script
-  
+    let id;
     if (request.message == "update") {
       if(id = getYouTubeVideoID()){
         videoIDChange(id);
       } else {
-        resetValues();
+        	if (document.readyState === "complete" || document.readyState === "loaded") {
+            return videoIDChange(getYouTubeVideoID_ALT());
+          }else{
+            window.addEventListener('DOMContentLoaded', (event) => {
+              if(id = getYouTubeVideoID_ALT()) {videoIDChange(id)} else {resetValues();}
+            });
+          }
       }
     }
-  
+
+    
+	}
     if (request.message == "sponsorStart") {
       sponsorMessageStarted(sendResponse);
     }
@@ -190,7 +198,6 @@ function messageListener(request, sender, sendResponse) {
     if (request.message == "trackViewCount") {
       trackViewCount = request.value;
     }
-}
 
 //check for hotkey pressed
 document.onkeydown = function(e){
@@ -230,6 +237,7 @@ function resetValues() {
 }
 
 function videoIDChange(id) {
+  if(id === false) return;
   //not a url change
   if (sponsorVideoID == id) return;
 
