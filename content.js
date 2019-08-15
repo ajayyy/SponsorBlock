@@ -513,13 +513,15 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 
     setTimeout(() => closeSkipNotice(currentUUID), 7000);
 
-    //send telemetry that a this sponsor was skipped happened
+    //auto-upvote this sponsor
     if (trackViewCount) {
-      sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
-
-      //upvote this
       vote(1, currentUUID, true);
     }
+  }
+
+  //send telemetry that a this sponsor was skipped happened
+  if (trackViewCount) {
+    sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
   }
 }
 
@@ -927,13 +929,22 @@ function openSkipNotice(UUID){
   let voteButtonsContainer = document.createElement("td");
   voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
 
+  let reportText = document.createElement("span");
+  reportText.id = "sponsorTimesReportText" + UUID;
+  reportText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
+  reportText.innerText = chrome.i18n.getMessage("reportButtonTitle");
+  reportText.style.marginRight = "5px";
+  reportText.setAttribute("title", chrome.i18n.getMessage("reportButtonInfo"));
+
   let downvoteButton = document.createElement("img");
   downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
   downvoteButton.className = "sponsorSkipObject voteButton";
   downvoteButton.src = chrome.extension.getURL("icons/report.png");
   downvoteButton.addEventListener("click", () => vote(0, UUID));
+  downvoteButton.setAttribute("title", chrome.i18n.getMessage("reportButtonInfo"));
 
-  //add thumbs up and down buttons to the container
+  //add downvote and report text to container
+  voteButtonsContainer.appendChild(reportText);
   voteButtonsContainer.appendChild(downvoteButton);
 
   //add unskip button
