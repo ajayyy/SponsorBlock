@@ -1,15 +1,19 @@
-function getYouTubeVideoID_ALT() { // Requires DOM level access
+function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM level access)
     let id;
+	let index = 0;
     let p = document.location.pathname;
     if(!document.location.origin === "https://www.youtube.com") return false
-	if(!document.getElementById("movie_player")) return false
+	let title = document.getElementsByClassName("ytp-title-link");
     if(p.startsWith("/user/") || p.startsWith("/channel/") || p.startsWith("/embed/")) {
-		if(!document.getElementsByClassName("ytp-title-link")) return false;
-		let index = (document.getElementsByClassName("ytp-title-link")[0].hasAttribute("href")) ? 0 : 1;
-		id = document.getElementsByClassName("ytp-title-link")[index].href.split("?v=")[1];
+		if(title.length > 1) {
+			index = (title[0].hasAttribute("href")) ? 0 : 1;
+		}
+		if(!title[index] || !title[index].hasAttribute("href")) return false
+		id = title[index].href.split("?v=")[1];
     }
     return (id && id.length == 11) ? id : false;
 }
+
 
 function getYouTubeVideoID(url) {
     let id = false;
