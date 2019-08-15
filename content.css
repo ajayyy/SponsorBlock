@@ -61,13 +61,15 @@
 .sponsorBlockSpacer {
 	background-color: rgb(100, 100, 100);
 	border-color: rgb(100, 100, 100);
+
+	margin-left: 5px;
 }
 
 .sponsorSkipNotice {
-    min-width: 270px;
+    min-width: 280px;
     background-color: rgba(28, 28, 28, 0.9);
     position: absolute;
-	right: 0;
+	right: 5px;
 	bottom: 100px;
 	right: 10px;
 
@@ -75,7 +77,9 @@
 
 	animation: fadeIn 0.5s;
 
-	border-spacing: 10px 10px;
+	border-spacing: 5px 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .sponsorSkipNoticeTimeLeft {
@@ -90,7 +94,7 @@
 
 /* if two are very close to eachother */
 .secondSkipNotice {
-	bottom: 280px;
+	bottom: 250px;
 
   	transition: bottom 0.2s;
 }
@@ -106,6 +110,8 @@
 	position: absolute;
 
 	float: right;
+
+	margin-right: 5px;
 }
 
 .sponsorSkipNoticeRightButton {
@@ -126,7 +132,6 @@
 
 	cursor: pointer;
 
-	margin-left: 10px;
 	margin-right: 10px;
 }
 
@@ -162,18 +167,19 @@
 	margin-top: 0px;
 }
 
+.sponsorTimesVoteButtonMessage {
+	float: left;
+}
+
 .sponsorTimesInfoMessage {
-	font-size: 15px;
-	font-weight: bold;
-    color: #000000;
+	font-size: 13.3333px;
+    color: rgb(235, 235, 235);
 	text-align: center;
 }
 
 .voteButton {
 	height: 18px;
 	cursor: pointer;
-	
-	margin-right: 10px;
 }
 .voteButton:hover {
 	filter: brightness(80%);
