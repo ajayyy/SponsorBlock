@@ -517,6 +517,9 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     if (trackViewCount) {
       sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
     }
+
+    //vote on this
+    vote(1, currentUUID, true);
   }
 }
 
@@ -1064,10 +1067,13 @@ function resetVoteButtonInfo(UUID) {
   document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID).style.removeProperty("display");
 }
 
-function vote(type, UUID) {
-  //add loading info
-  addVoteButtonInfo("Loading...", UUID)
-  resetNoticeInfoMessage(UUID);
+//if inTheBackground is true, then no UI methods will be called
+function vote(type, UUID, inTheBackground = false) {
+  if (!inTheBackground) {
+    //add loading info
+    addVoteButtonInfo("Loading...", UUID)
+    resetNoticeInfoMessage(UUID);
+  }
 
   chrome.runtime.sendMessage({
     message: "submitVote",
@@ -1076,23 +1082,25 @@ function vote(type, UUID) {
   }, function(response) {
     if (response != undefined) {
       //see if it was a success or failure
-      if (response.successType == 1) {
-        //success
-        if (type == 0) {
-          afterDownvote(UUID);
-        }
-      } else if (response.successType == 0) {
-        //failure: duplicate vote
-        addNoticeInfoMessage(chrome.i18n.getMessage("voteFAIL"), UUID)
-        resetVoteButtonInfo(UUID);
-      } else if (response.successType == -1) {
-        if (response.statusCode == 502) {
-          addNoticeInfoMessage(chrome.i18n.getMessage("serverDown"), UUID)
+      if (!inTheBackground) {
+        if (response.successType == 1) {
+          //success
+          if (type == 0) {
+            afterDownvote(UUID);
+          }
+        } else if (response.successType == 0) {
+          //failure: duplicate vote
+          addNoticeInfoMessage(chrome.i18n.getMessage("voteFAIL"), UUID)
           resetVoteButtonInfo(UUID);
-        } else {
-          //failure: unknown error
-          addNoticeInfoMessage(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID);
-          resetVoteButtonInfo(UUID);
+        } else if (response.successType == -1) {
+          if (response.statusCode == 502) {
+            addNoticeInfoMessage(chrome.i18n.getMessage("serverDown"), UUID)
+            resetVoteButtonInfo(UUID);
+          } else {
+            //failure: unknown error
+            addNoticeInfoMessage(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID);
+            resetVoteButtonInfo(UUID);
+          }
         }
       }
     }
