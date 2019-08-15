@@ -18,6 +18,12 @@ var v;
 
 var listenerAdded;
 
+//the video id of the last preview bar update
+var lastPreviewBarUpdate;
+
+//whether the duration listener listening for the duration changes of the video has been setup yet
+var durationListenerSetUp = false;
+
 //the channel this video is about
 var channelURL;
 
@@ -25,10 +31,9 @@ var channelURL;
 var channelWhitelisted = false;
 
 // create preview bar
-let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
-var previewBar = new PreviewBar(progressBar);
+var previewBar;
 
-if(id = getYouTubeVideoID(document.URL)){ // Direct Links
+if (id = getYouTubeVideoID(document.URL)) { // Direct Links
   videoIDChange(id);
 }
 
@@ -95,7 +100,11 @@ function messageListener(request, sender, sendResponse) {
     //messages from popup script
   
     if (request.message == "update") {
-      if(id = getYouTubeVideoID(document.URL)) videoIDChange(id);
+      if(id = getYouTubeVideoID(document.URL)){
+        videoIDChange(id);
+      } else {
+        resetValues();
+      }
     }
   
     if (request.message == "sponsorStart") {
@@ -202,10 +211,33 @@ document.onkeydown = function(e){
   }
 }
 
-function videoIDChange(id) {
+function resetValues() {
+  //reset last sponsor times
+  lastTime = -1;
+  lastUnixTimeSkipped = -1;
 
+  //reset sponsor times
+  sponsorTimes = null;
+  UUIDs = null;
+  sponsorVideoID = id;
+  sponsorLookupRetries = 0;
+
+  //empty the preview bar
+  previewBar.set([], [], 0);
+
+  //reset sponsor data found check
+  sponsorDataFound = false;
+}
+
+function videoIDChange(id) {
   //not a url change
   if (sponsorVideoID == id) return;
+
+  if (previewBar == null) {
+    //create it
+    let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
+    previewBar = new PreviewBar(progressBar);
+  }
 
   //warn them if they had unsubmitted times
   if (previousVideoID != null) {
@@ -233,24 +265,11 @@ function videoIDChange(id) {
   //close popup
   closeInfoMenu();
 
-  //reset last sponsor times
-  lastTime = -1;
-  lastUnixTimeSkipped = -1;
-
-  //reset sponsor times
-  sponsorTimes = null;
-  UUIDs = null;
-  sponsorVideoID = id;
-  sponsorLookupRetries = 0;
-
-  //empty the preview bar
-  previewBar.set([], [], 0);
+  resetValues();
 
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime(document.URL);
 
-  //reset sponsor data found check
-  sponsorDataFound = false;
   sponsorsLookup(id);
 
   //make sure everything is properly added
@@ -308,11 +327,17 @@ function videoIDChange(id) {
 
 function sponsorsLookup(id) {
   v = document.querySelector('video') // Youtube video player
-
   //there is no video here
   if (v == null) {
     setTimeout(() => sponsorsLookup(id), 100);
     return;
+  }
+
+  if (!durationListenerSetUp) {
+    durationListenerSetUp = true;
+
+    //wait until it is loaded
+    v.addEventListener('durationchange', updatePreviewBar);
   }
   
   //check database for sponsor times
@@ -325,12 +350,9 @@ function sponsorsLookup(id) {
 
       //update the preview bar
       //leave the type blank for now until categories are added
-      console.log(v.duration)
-      if (isNaN(v.duration)) {
-        //wait until it is loaded
-        v.addEventListener('durationchange', updatePreviewBar);
-      } else {
+      if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(v.duration))) {
         //set it now
+        //otherwise the listener can handle it
         updatePreviewBar();
       }
 
@@ -371,8 +393,8 @@ function sponsorsLookup(id) {
 function updatePreviewBar() {
   previewBar.set(sponsorTimes, [], v.duration);
 
-  //the listener is only needed once
-  v.removeEventListener('durationchange', updatePreviewBar);
+  //update last video id
+  lastPreviewBarUpdate = getYouTubeVideoID(document.URL);
 }
 
 function getChannelID() {
@@ -494,6 +516,9 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     //send telemetry that a this sponsor was skipped happened
     if (trackViewCount) {
       sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+
+      //upvote this
+      vote(1, currentUUID, true);
     }
   }
 }
@@ -517,7 +542,7 @@ function addPlayerControlsButton() {
   let startSponsorButton = document.createElement("button");
   startSponsorButton.id = "startSponsorButton";
   startSponsorButton.className = "ytp-button playerButton";
-  startSponsorButton.setAttribute("title", "Sponsor Starts Now");
+  startSponsorButton.setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
   startSponsorButton.addEventListener("click", startSponsorClicked);
 
   let startSponsorImage = document.createElement("img");
@@ -609,7 +634,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   if (showStartSponsor) {
     showingStartSponsor = true;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
-    document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Starts Now");
+    document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
     if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
       document.getElementById("submitButton").style.display = "unset";
@@ -620,7 +645,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   } else {
     showingStartSponsor = false;
     document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
-    document.getElementById("startSponsorButton").setAttribute("title", "Sponsor Ends Now");
+    document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
 
     //disable submit button
     document.getElementById("submitButton").style.display = "none";
@@ -808,8 +833,8 @@ function clearSponsorTimes() {
     let sponsorTimes = result[sponsorTimeKey];
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-      let confirmMessage = "Are you sure you want to clear this?\n\n" + getSponsorTimesMessage(sponsorTimes);
-      confirmMessage += "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
+      let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes);
+      confirmMessage += chrome.i18n.getMessage("confirmMSG")
       if(!confirm(confirmMessage)) return;
 
       //clear the sponsor times
@@ -848,73 +873,99 @@ function openSkipNotice(UUID){
   noticeElement.classList.add("sponsorSkipNotice");
   noticeElement.style.zIndex = 50 + amountOfPreviousNotices;
 
+  //the row that will contain the info
+  let firstRow = document.createElement("tr");
+  firstRow.id = "sponsorSkipNoticeFirstRow" + UUID;
+
+  let logoColumn = document.createElement("td");
+
   let logoElement = document.createElement("img");
   logoElement.id = "sponsorSkipLogo" + UUID;
-  logoElement.className = "sponsorSkipLogo";
-  logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+  logoElement.className = "sponsorSkipLogo sponsorSkipObject";
+  logoElement.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
 
-  let noticeMessage = document.createElement("div");
+  let noticeMessage = document.createElement("span");
   noticeMessage.id = "sponsorSkipMessage" + UUID;
   noticeMessage.classList.add("sponsorSkipMessage");
   noticeMessage.classList.add("sponsorSkipObject");
-  noticeMessage.innerText = "Hey, you just skipped a sponsor!";
-  
-  let noticeInfo = document.createElement("p");
-  noticeInfo.id = "sponsorSkipInfo" + UUID;
-  noticeInfo.classList.add("sponsorSkipInfo");
-  noticeInfo.classList.add("sponsorSkipObject");
-  noticeInfo.innerText = "This message will disapear in 7 seconds";
+  noticeMessage.innerText = chrome.i18n.getMessage("noticeTitle");
+
+  //create the first column
+  logoColumn.appendChild(logoElement);
+  logoColumn.appendChild(noticeMessage);
+
+  //add the x button
+  let closeButtonContainer = document.createElement("td");
+  closeButtonContainer.className = "sponsorSkipNoticeRightSection";
+  closeButtonContainer.style.top = "11px";
+
+  let timeLeft = document.createElement("span");
+  timeLeft.innerText = chrome.i18n.getMessage("noticeClosingMessage");
+  timeLeft.className = "sponsorSkipObject sponsorSkipNoticeTimeLeft";
+
+  let hideButton = document.createElement("img");
+  hideButton.src = chrome.extension.getURL("icons/close.png");
+  hideButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeCloseButton sponsorSkipNoticeRightButton";
+  hideButton.addEventListener("click", () => closeSkipNotice(UUID));
+
+  closeButtonContainer.appendChild(timeLeft);
+  closeButtonContainer.appendChild(hideButton);
+
+  //add all objects to first row
+  firstRow.appendChild(logoColumn);
+  firstRow.appendChild(closeButtonContainer);
+
+  let spacer = document.createElement("hr");
+  spacer.id = "sponsorSkipNoticeSpacer" + UUID;
+  spacer.className = "sponsorBlockSpacer";
+
+  //the row that will contain the buttons
+  let secondRow = document.createElement("tr");
+  secondRow.id = "sponsorSkipNoticeSecondRow" + UUID;
   
   //thumbs up and down buttons
-  let voteButtonsContainer = document.createElement("div");
+  let voteButtonsContainer = document.createElement("td");
   voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
-  voteButtonsContainer.setAttribute("align", "center");
-
-  let upvoteButton = document.createElement("img");
-  upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
-  upvoteButton.className = "sponsorSkipObject voteButton";
-  upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
-  upvoteButton.addEventListener("click", () => vote(1, UUID));
 
   let downvoteButton = document.createElement("img");
   downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
   downvoteButton.className = "sponsorSkipObject voteButton";
-  downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
+  downvoteButton.src = chrome.extension.getURL("icons/report.png");
   downvoteButton.addEventListener("click", () => vote(0, UUID));
 
   //add thumbs up and down buttons to the container
-  voteButtonsContainer.appendChild(upvoteButton);
   voteButtonsContainer.appendChild(downvoteButton);
 
-  let buttonContainer = document.createElement("div");
-  buttonContainer.setAttribute("align", "center");
+  //add unskip button
+  let unskipContainer = document.createElement("td");
+  unskipContainer.className = "sponsorSkipNoticeUnskipSection";
 
-  let goBackButton = document.createElement("button");
-  goBackButton.innerText = "Go back";
-  goBackButton.className = "sponsorSkipButton";
-  goBackButton.addEventListener("click", () => goBackToPreviousTime(UUID));
+  let unskipButton = document.createElement("button");
+  unskipButton.innerText = chrome.i18n.getMessage("goBack");
+  unskipButton.className = "sponsorSkipObject sponsorSkipNoticeButton";
+  unskipButton.addEventListener("click", () => goBackToPreviousTime(UUID));
 
-  let hideButton = document.createElement("button");
-  hideButton.innerText = "Dismiss";
-  hideButton.className = "sponsorSkipButton";
-  hideButton.addEventListener("click", () => closeSkipNotice(UUID));
+  unskipContainer.appendChild(unskipButton);
+
+  //add don't show again button
+  let dontshowContainer = document.createElement("td");
+  dontshowContainer.className = "sponsorSkipNoticeRightSection";
 
   let dontShowAgainButton = document.createElement("button");
-  dontShowAgainButton.innerText = "Don't Show This Again";
-  dontShowAgainButton.className = "sponsorSkipDontShowButton";
+  dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
+  dontShowAgainButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
-  buttonContainer.appendChild(goBackButton);
-  buttonContainer.appendChild(hideButton);
-  buttonContainer.appendChild(document.createElement("br"));
-  buttonContainer.appendChild(document.createElement("br"));
-  buttonContainer.appendChild(dontShowAgainButton);
+  dontshowContainer.appendChild(dontShowAgainButton);
 
-  noticeElement.appendChild(logoElement);
-  noticeElement.appendChild(noticeMessage);
-  noticeElement.appendChild(noticeInfo);
-  noticeElement.appendChild(voteButtonsContainer);
-  noticeElement.appendChild(buttonContainer);
+  //add to row
+  secondRow.appendChild(voteButtonsContainer);
+  secondRow.appendChild(unskipContainer);
+  secondRow.appendChild(dontshowContainer);
+
+  noticeElement.appendChild(firstRow);
+  noticeElement.appendChild(spacer);
+  noticeElement.appendChild(secondRow);
 
   let referenceNode = document.getElementById("movie_player");
   if (referenceNode == null) {
@@ -935,36 +986,8 @@ function openSkipNotice(UUID){
 }
 
 function afterDownvote(UUID) {
-  //change text to say thanks for voting
-  //remove buttons
-  let upvoteButton = document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID);
-  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
-  if (upvoteButton != null) {
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(upvoteButton);
-  }
-  if (downvoteButton != null) {
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(downvoteButton);
-  }
-
-  let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
-  if (previousInfoMessage != null) {
-    //remove it
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(previousInfoMessage);
-  }
-
-  //add thanks for voting text
-  let thanksForVotingText = document.createElement("p");
-  thanksForVotingText.id = "sponsorTimesThanksForVotingText";
-  thanksForVotingText.innerText = "Thanks for voting!"
-
-  //add extra info for voting
-  let thanksForVotingInfoText = document.createElement("p");
-  thanksForVotingInfoText.id = "sponsorTimesThanksForVotingInfoText";
-  thanksForVotingInfoText.innerText = "Hit go back to get to where you came from."
-
-  //add element to div
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingInfoText);
+  addVoteButtonInfo(chrome.i18n.getMessage("Voted"), UUID);
+  addNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"), UUID);
 
   //remove this sponsor from the sponsors looked up
   //find which one it is
@@ -983,41 +1006,74 @@ function afterDownvote(UUID) {
 
       //update the preview
       previewBar.set(sponsorTimesLeft, [], v.duration);
+
+      break;
     }
   }
 }
 
-function addLoadingInfo(message, UUID) {
-  //change text to say thanks for message
-  //remove buttons
-  let upvoteButton = document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID);
-  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
-  if (upvoteButton != null) {
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(upvoteButton);
-  }
-  if (downvoteButton != null) {
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(downvoteButton);
-  }
-
+function addNoticeInfoMessage(message, UUID) {
   let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
   if (previousInfoMessage != null) {
     //remove it
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(previousInfoMessage);
+    document.getElementById("sponsorSkipNotice" + UUID).removeChild(previousInfoMessage);
   }
 
-  //add thanks for voting text
+  //add info
   let thanksForVotingText = document.createElement("p");
   thanksForVotingText.id = "sponsorTimesInfoMessage" + UUID;
   thanksForVotingText.className = "sponsorTimesInfoMessage";
   thanksForVotingText.innerText = message;
 
   //add element to div
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
+  document.getElementById("sponsorSkipNotice" + UUID).insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + UUID));
 }
 
-function vote(type, UUID) {
-  //add loading info
-  addLoadingInfo("Loading...", UUID)
+function resetNoticeInfoMessage(UUID) {
+  let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
+  if (previousInfoMessage != null) {
+    //remove it
+    document.getElementById("sponsorSkipNotice" + UUID).removeChild(previousInfoMessage);
+  }
+}
+
+function addVoteButtonInfo(message, UUID) {
+  resetVoteButtonInfo(UUID);
+
+  //hide vote button
+  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
+  if (downvoteButton != null) {
+    document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID).style.display = "none";
+  }
+
+  //add info
+  let thanksForVotingText = document.createElement("td");
+  thanksForVotingText.id = "sponsorTimesVoteButtonInfoMessage" + UUID;
+  thanksForVotingText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
+  thanksForVotingText.innerText = message;
+
+  //add element to div
+  document.getElementById("sponsorSkipNoticeSecondRow" + UUID).prepend(thanksForVotingText);
+}
+
+function resetVoteButtonInfo(UUID) {
+  let previousInfoMessage = document.getElementById("sponsorTimesVoteButtonInfoMessage" + UUID);
+  if (previousInfoMessage != null) {
+    //remove it
+    document.getElementById("sponsorSkipNoticeSecondRow" + UUID).removeChild(previousInfoMessage);
+  }
+
+  //show button again
+  document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID).style.removeProperty("display");
+}
+
+//if inTheBackground is true, then no UI methods will be called
+function vote(type, UUID, inTheBackground = false) {
+  if (!inTheBackground) {
+    //add loading info
+    addVoteButtonInfo("Loading...", UUID)
+    resetNoticeInfoMessage(UUID);
+  }
 
   chrome.runtime.sendMessage({
     message: "submitVote",
@@ -1026,24 +1082,26 @@ function vote(type, UUID) {
   }, function(response) {
     if (response != undefined) {
       //see if it was a success or failure
-      if (response.successType == 1) {
-        //success
-        if (type == 0) {
-          afterDownvote(UUID);
-        } else if (type == 1) {
-          closeSkipNotice(UUID);
+      if (!inTheBackground) {
+        if (response.successType == 1) {
+          //success
+          if (type == 0) {
+            afterDownvote(UUID);
+          }
+        } else if (response.successType == 0) {
+          //failure: duplicate vote
+          addNoticeInfoMessage(chrome.i18n.getMessage("voteFAIL"), UUID)
+          resetVoteButtonInfo(UUID);
+        } else if (response.successType == -1) {
+          if (response.statusCode == 502) {
+            addNoticeInfoMessage(chrome.i18n.getMessage("serverDown"), UUID)
+            resetVoteButtonInfo(UUID);
+          } else {
+            //failure: unknown error
+            addNoticeInfoMessage(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID);
+            resetVoteButtonInfo(UUID);
+          }
         }
-      } else if (response.successType == 0) {
-        //failure: duplicate vote
-        addLoadingInfo("It seems you've already voted before", UUID)
-      } else if (response.successType == -1) {
-        if (response.statusCode == 502) {
-          addLoadingInfo("It seems the sever is down. Contact the dev immediately.", UUID)
-        } else {
-          //failure: unknown error
-          addLoadingInfo("A connection error has occured. Error code: " + response.statusCode, UUID)
-        }
-        
       }
     }
   });
@@ -1153,16 +1211,10 @@ function sendSubmitMessage(){
         document.getElementById("submitButton").style.animation = "unset";
         document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-        if(response.statusCode == 400) {
-          alert("Server said this request was invalid");
-        } else if(response.statusCode == 429) {
-          alert("You have submitted too many sponsor times for this one video, are you sure there are this many?");
-        } else if(response.statusCode == 409) {
-          alert("This has already been submitted before");
-        } else if(response.statusCode == 502) {
-          alert("It seems the server is down. Contact the dev to inform them. Error code " + response.statusCode);
+        if([400,429,409,502].includes(response.statusCode)) {
+          alert(chrome.i18n.getMessage(response.statusCode));
         } else {
-          alert("There was an error submitting your sponsor times, please try again later. Error code " + response.statusCode);
+          alert(chrome.i18n.getMessage("connectionError") + response.statusCode);
         }
       }
     }
