@@ -15,13 +15,8 @@ function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM
 }
 
 
-function getYouTubeVideoID(url) {
+function getYouTubeVideoID(url = document.URL) {
     let id = false;
-    let failsafe = false;
-    if(url === undefined) {
-	    failsafe = true;
-	    url = document.URL;
-    }
     //Attempt to parse url
     let urlObject = null;
     try { 
@@ -46,7 +41,6 @@ function getYouTubeVideoID(url) {
         return false;
       }
     }
-	if(failsafe) return getYouTubeVideoID_ALT();
 	return false;
 }
 
