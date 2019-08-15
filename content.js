@@ -103,18 +103,16 @@ function messageListener(request, sender, sendResponse) {
       if(id = getYouTubeVideoID()){
         videoIDChange(id);
       } else {
-        	if (document.readyState === "complete" || document.readyState === "loaded") {
-            return videoIDChange(getYouTubeVideoID_ALT());
-          }else{
-            window.addEventListener('DOMContentLoaded', (event) => {
-              if(id = getYouTubeVideoID_ALT()) {videoIDChange(id)} else {resetValues();}
-            });
-          }
+	      if (document.readyState === "complete" || document.readyState === "loaded") {
+		      videoIDChange(getYouTubeVideoID_ALT());
+	      } else {
+		      window.addEventListener('DOMContentLoaded', (event) => {
+			      if(id = getYouTubeVideoID_ALT()) {videoIDChange(id)} else {resetValues();}
+		      });
+	      }
       }
     }
-
-    
-	}
+}
     if (request.message == "sponsorStart") {
       sponsorMessageStarted(sendResponse);
     }
