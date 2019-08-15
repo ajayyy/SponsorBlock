@@ -94,20 +94,23 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
 
-function initVideo() {
+function initVideo(skipURLParser = false) {
 	let id;
-	id = getYouTubeVideoID();
-	if(id !=== false){
-		videoIDChange(id);
-    } else {
-		document.getElementById("movie_player").onloadstart = function() {
-			if(id = getYouTubeVideoID_ALT()) {
-				videoIDChange(id)
-			} else {
-				resetValues();
-			}	
-		};
-    }
+	if(skipURLParser == false) id = getYouTubeVideoID();
+	if(id !== false) return videoIDChange(id);
+	v = document.querySelector('video')
+	if (v == null) {
+		setTimeout(() => initVideo(true), 100);
+		return;
+	}
+	v.addEventListener('durationchange', () => {
+		id = getYouTubeVideoID_ALT();
+		if(id !== false) {
+			return videoIDChange(id);
+		} else {
+			resetValues(id);
+		}
+	});
 }
 
 function messageListener(request, sender, sendResponse) {
@@ -218,7 +221,7 @@ document.onkeydown = function(e){
   }
 }
 
-function resetValues() {
+function resetValues(id) {
   //reset last sponsor times
   lastTime = -1;
   lastUnixTimeSkipped = -1;
@@ -273,7 +276,7 @@ function videoIDChange(id) {
   //close popup
   closeInfoMenu();
 
-  resetValues();
+  resetValues(id);
 
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime();
@@ -336,6 +339,7 @@ function videoIDChange(id) {
 function sponsorsLookup(id) {
   v = document.querySelector('video') // Youtube video player
   //there is no video here
+  
   if (v == null) {
     setTimeout(() => sponsorsLookup(id), 100);
     return;
@@ -448,6 +452,7 @@ function getChannelID() {
 
 //video skipping
 function sponsorCheck() {
+	
   let skipHappened = false;
 
   if (sponsorTimes != null) {
