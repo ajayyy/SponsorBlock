@@ -33,9 +33,7 @@ var channelWhitelisted = false;
 // create preview bar
 var previewBar;
 
-if (id = getYouTubeVideoID()) { // Direct Links
-  videoIDChange(id);
-}
+initVideo(); // Direct Links
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -95,22 +93,27 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
-  
+
+function initVideo() {
+	let id;
+	id = getYouTubeVideoID();
+	if(id !=== false){
+		videoIDChange(id);
+    } else {
+		document.getElementById("movie_player").onloadstart = function() {
+			if(id = getYouTubeVideoID_ALT()) {
+				videoIDChange(id)
+			} else {
+				resetValues();
+			}	
+		};
+    }
+}
+
 function messageListener(request, sender, sendResponse) {
     //messages from popup script
-    let id;
     if (request.message == "update") {
-      if(id = getYouTubeVideoID()){
-        videoIDChange(id);
-      } else {
-	      if (document.readyState === "complete" || document.readyState === "loaded") {
-		      videoIDChange(getYouTubeVideoID_ALT());
-	      } else {
-		      window.addEventListener('DOMContentLoaded', (event) => {
-			      if(id = getYouTubeVideoID_ALT()) {videoIDChange(id)} else {resetValues();}
-		      });
-	      }
-      }
+		initVideo();
     }
     if (request.message == "sponsorStart") {
       sponsorMessageStarted(sendResponse);
