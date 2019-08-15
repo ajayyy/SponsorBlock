@@ -513,13 +513,15 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 
     setTimeout(() => closeSkipNotice(currentUUID), 7000);
 
-    //send telemetry that a this sponsor was skipped happened
+    //auto-upvote this sponsor
     if (trackViewCount) {
-      sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
-
-      //upvote this
       vote(1, currentUUID, true);
     }
+  }
+
+  //send telemetry that a this sponsor was skipped happened
+  if (trackViewCount) {
+    sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
   }
 }
 
