@@ -195,7 +195,7 @@ function messageListener(request, sender, sendResponse) {
     if (request.message == "trackViewCount") {
       trackViewCount = request.value;
     }
-
+}
 //check for hotkey pressed
 document.onkeydown = function(e){
   e = e || window.event;
