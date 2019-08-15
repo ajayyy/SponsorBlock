@@ -112,7 +112,6 @@ function messageListener(request, sender, sendResponse) {
 	      }
       }
     }
-}
     if (request.message == "sponsorStart") {
       sponsorMessageStarted(sendResponse);
     }
