@@ -516,6 +516,9 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     //send telemetry that a this sponsor was skipped happened
     if (trackViewCount) {
       sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+
+      //upvote this
+      vote(1, currentUUID, true);
     }
   }
 }
@@ -870,73 +873,99 @@ function openSkipNotice(UUID){
   noticeElement.classList.add("sponsorSkipNotice");
   noticeElement.style.zIndex = 50 + amountOfPreviousNotices;
 
+  //the row that will contain the info
+  let firstRow = document.createElement("tr");
+  firstRow.id = "sponsorSkipNoticeFirstRow" + UUID;
+
+  let logoColumn = document.createElement("td");
+
   let logoElement = document.createElement("img");
   logoElement.id = "sponsorSkipLogo" + UUID;
-  logoElement.className = "sponsorSkipLogo";
-  logoElement.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+  logoElement.className = "sponsorSkipLogo sponsorSkipObject";
+  logoElement.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
 
-  let noticeMessage = document.createElement("div");
+  let noticeMessage = document.createElement("span");
   noticeMessage.id = "sponsorSkipMessage" + UUID;
   noticeMessage.classList.add("sponsorSkipMessage");
   noticeMessage.classList.add("sponsorSkipObject");
-  noticeMessage.innerText = "Hey, you just skipped a sponsor!";
-  
-  let noticeInfo = document.createElement("p");
-  noticeInfo.id = "sponsorSkipInfo" + UUID;
-  noticeInfo.classList.add("sponsorSkipInfo");
-  noticeInfo.classList.add("sponsorSkipObject");
-  noticeInfo.innerText = "This message will disapear in 7 seconds";
+  noticeMessage.innerText = chrome.i18n.getMessage("noticeTitle");
+
+  //create the first column
+  logoColumn.appendChild(logoElement);
+  logoColumn.appendChild(noticeMessage);
+
+  //add the x button
+  let closeButtonContainer = document.createElement("td");
+  closeButtonContainer.className = "sponsorSkipNoticeRightSection";
+  closeButtonContainer.style.top = "11px";
+
+  let timeLeft = document.createElement("span");
+  timeLeft.innerText = chrome.i18n.getMessage("noticeClosingMessage");
+  timeLeft.className = "sponsorSkipObject sponsorSkipNoticeTimeLeft";
+
+  let hideButton = document.createElement("img");
+  hideButton.src = chrome.extension.getURL("icons/close.png");
+  hideButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeCloseButton sponsorSkipNoticeRightButton";
+  hideButton.addEventListener("click", () => closeSkipNotice(UUID));
+
+  closeButtonContainer.appendChild(timeLeft);
+  closeButtonContainer.appendChild(hideButton);
+
+  //add all objects to first row
+  firstRow.appendChild(logoColumn);
+  firstRow.appendChild(closeButtonContainer);
+
+  let spacer = document.createElement("hr");
+  spacer.id = "sponsorSkipNoticeSpacer" + UUID;
+  spacer.className = "sponsorBlockSpacer";
+
+  //the row that will contain the buttons
+  let secondRow = document.createElement("tr");
+  secondRow.id = "sponsorSkipNoticeSecondRow" + UUID;
   
   //thumbs up and down buttons
-  let voteButtonsContainer = document.createElement("div");
+  let voteButtonsContainer = document.createElement("td");
   voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
-  voteButtonsContainer.setAttribute("align", "center");
-
-  let upvoteButton = document.createElement("img");
-  upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
-  upvoteButton.className = "sponsorSkipObject voteButton";
-  upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
-  upvoteButton.addEventListener("click", () => vote(1, UUID));
 
   let downvoteButton = document.createElement("img");
   downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
   downvoteButton.className = "sponsorSkipObject voteButton";
-  downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
+  downvoteButton.src = chrome.extension.getURL("icons/report.png");
   downvoteButton.addEventListener("click", () => vote(0, UUID));
 
   //add thumbs up and down buttons to the container
-  voteButtonsContainer.appendChild(upvoteButton);
   voteButtonsContainer.appendChild(downvoteButton);
 
-  let buttonContainer = document.createElement("div");
-  buttonContainer.setAttribute("align", "center");
+  //add unskip button
+  let unskipContainer = document.createElement("td");
+  unskipContainer.className = "sponsorSkipNoticeUnskipSection";
 
-  let goBackButton = document.createElement("button");
-  goBackButton.innerText = chrome.i18n.getMessage("goBack");
-  goBackButton.className = "sponsorSkipButton";
-  goBackButton.addEventListener("click", () => goBackToPreviousTime(UUID));
+  let unskipButton = document.createElement("button");
+  unskipButton.innerText = chrome.i18n.getMessage("goBack");
+  unskipButton.className = "sponsorSkipObject sponsorSkipNoticeButton";
+  unskipButton.addEventListener("click", () => goBackToPreviousTime(UUID));
 
-  let hideButton = document.createElement("button");
-  hideButton.innerText = chrome.i18n.getMessage("Dismiss");
-  hideButton.className = "sponsorSkipButton";
-  hideButton.addEventListener("click", () => closeSkipNotice(UUID));
+  unskipContainer.appendChild(unskipButton);
+
+  //add don't show again button
+  let dontshowContainer = document.createElement("td");
+  dontshowContainer.className = "sponsorSkipNoticeRightSection";
 
   let dontShowAgainButton = document.createElement("button");
   dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
-  dontShowAgainButton.className = "sponsorSkipDontShowButton";
+  dontShowAgainButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton";
   dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
-  buttonContainer.appendChild(goBackButton);
-  buttonContainer.appendChild(hideButton);
-  buttonContainer.appendChild(document.createElement("br"));
-  buttonContainer.appendChild(document.createElement("br"));
-  buttonContainer.appendChild(dontShowAgainButton);
+  dontshowContainer.appendChild(dontShowAgainButton);
 
-  noticeElement.appendChild(logoElement);
-  noticeElement.appendChild(noticeMessage);
-  noticeElement.appendChild(noticeInfo);
-  noticeElement.appendChild(voteButtonsContainer);
-  noticeElement.appendChild(buttonContainer);
+  //add to row
+  secondRow.appendChild(voteButtonsContainer);
+  secondRow.appendChild(unskipContainer);
+  secondRow.appendChild(dontshowContainer);
+
+  noticeElement.appendChild(firstRow);
+  noticeElement.appendChild(spacer);
+  noticeElement.appendChild(secondRow);
 
   let referenceNode = document.getElementById("movie_player");
   if (referenceNode == null) {
@@ -957,36 +986,8 @@ function openSkipNotice(UUID){
 }
 
 function afterDownvote(UUID) {
-  //change text to say thanks for voting
-  //remove buttons
-  let upvoteButton = document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID);
-  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
-  if (upvoteButton != null) {
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(upvoteButton);
-  }
-  if (downvoteButton != null) {
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(downvoteButton);
-  }
-
-  let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
-  if (previousInfoMessage != null) {
-    //remove it
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(previousInfoMessage);
-  }
-
-  //add thanks for voting text
-  let thanksForVotingText = document.createElement("p");
-  thanksForVotingText.id = "sponsorTimesThanksForVotingText";
-  thanksForVotingText.innerText = chrome.i18n.getMessage("Voted");
-
-  //add extra info for voting
-  let thanksForVotingInfoText = document.createElement("p");
-  thanksForVotingInfoText.id = "sponsorTimesThanksForVotingInfoText";
-  thanksForVotingInfoText.innerText = chrome.i18n.getMessage("hitGoBack");
-
-  //add element to div
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingInfoText);
+  addVoteButtonInfo(chrome.i18n.getMessage("Voted"), UUID);
+  addNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"), UUID);
 
   //remove this sponsor from the sponsors looked up
   //find which one it is
@@ -1005,41 +1006,74 @@ function afterDownvote(UUID) {
 
       //update the preview
       previewBar.set(sponsorTimesLeft, [], v.duration);
+
+      break;
     }
   }
 }
 
-function addLoadingInfo(message, UUID) {
-  //change text to say thanks for message
-  //remove buttons
-  let upvoteButton = document.getElementById("sponsorTimesUpvoteButtonsContainer" + UUID);
-  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
-  if (upvoteButton != null) {
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(upvoteButton);
-  }
-  if (downvoteButton != null) {
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(downvoteButton);
-  }
-
+function addNoticeInfoMessage(message, UUID) {
   let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
   if (previousInfoMessage != null) {
     //remove it
-    document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).removeChild(previousInfoMessage);
+    document.getElementById("sponsorSkipNotice" + UUID).removeChild(previousInfoMessage);
   }
 
-  //add thanks for voting text
+  //add info
   let thanksForVotingText = document.createElement("p");
   thanksForVotingText.id = "sponsorTimesInfoMessage" + UUID;
   thanksForVotingText.className = "sponsorTimesInfoMessage";
   thanksForVotingText.innerText = message;
 
   //add element to div
-  document.getElementById("sponsorTimesVoteButtonsContainer" + UUID).appendChild(thanksForVotingText);
+  document.getElementById("sponsorSkipNotice" + UUID).insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + UUID));
 }
 
-function vote(type, UUID) {
-  //add loading info
-  addLoadingInfo("Loading...", UUID)
+function resetNoticeInfoMessage(UUID) {
+  let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
+  if (previousInfoMessage != null) {
+    //remove it
+    document.getElementById("sponsorSkipNotice" + UUID).removeChild(previousInfoMessage);
+  }
+}
+
+function addVoteButtonInfo(message, UUID) {
+  resetVoteButtonInfo(UUID);
+
+  //hide vote button
+  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
+  if (downvoteButton != null) {
+    document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID).style.display = "none";
+  }
+
+  //add info
+  let thanksForVotingText = document.createElement("td");
+  thanksForVotingText.id = "sponsorTimesVoteButtonInfoMessage" + UUID;
+  thanksForVotingText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
+  thanksForVotingText.innerText = message;
+
+  //add element to div
+  document.getElementById("sponsorSkipNoticeSecondRow" + UUID).prepend(thanksForVotingText);
+}
+
+function resetVoteButtonInfo(UUID) {
+  let previousInfoMessage = document.getElementById("sponsorTimesVoteButtonInfoMessage" + UUID);
+  if (previousInfoMessage != null) {
+    //remove it
+    document.getElementById("sponsorSkipNoticeSecondRow" + UUID).removeChild(previousInfoMessage);
+  }
+
+  //show button again
+  document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID).style.removeProperty("display");
+}
+
+//if inTheBackground is true, then no UI methods will be called
+function vote(type, UUID, inTheBackground = false) {
+  if (!inTheBackground) {
+    //add loading info
+    addVoteButtonInfo("Loading...", UUID)
+    resetNoticeInfoMessage(UUID);
+  }
 
   chrome.runtime.sendMessage({
     message: "submitVote",
@@ -1048,22 +1082,25 @@ function vote(type, UUID) {
   }, function(response) {
     if (response != undefined) {
       //see if it was a success or failure
-      if (response.successType == 1) {
-        //success
-        if (type == 0) {
-          afterDownvote(UUID);
-        } else if (type == 1) {
-          closeSkipNotice(UUID);
-        }
-      } else if (response.successType == 0) {
-        //failure: duplicate vote
-        addLoadingInfo(chrome.i18n.getMessage("voteFAIL"), UUID)
-      } else if (response.successType == -1) {
-        if (response.statusCode == 502) {
-          addLoadingInfo(chrome.i18n.getMessage("serverDown"), UUID)
-        } else {
-          //failure: unknown error
-          addLoadingInfo(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID);
+      if (!inTheBackground) {
+        if (response.successType == 1) {
+          //success
+          if (type == 0) {
+            afterDownvote(UUID);
+          }
+        } else if (response.successType == 0) {
+          //failure: duplicate vote
+          addNoticeInfoMessage(chrome.i18n.getMessage("voteFAIL"), UUID)
+          resetVoteButtonInfo(UUID);
+        } else if (response.successType == -1) {
+          if (response.statusCode == 502) {
+            addNoticeInfoMessage(chrome.i18n.getMessage("serverDown"), UUID)
+            resetVoteButtonInfo(UUID);
+          } else {
+            //failure: unknown error
+            addNoticeInfoMessage(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID);
+            resetVoteButtonInfo(UUID);
+          }
         }
       }
     }

@@ -1,7 +1,7 @@
 {
   "name": "__MSG_fullName__",
   "short_name": "__MSG_Name__",
-  "version": "1.0.36",
+  "version": "1.0.37",
   "default_locale": "en",
   "description": "__MSG_Description__",
   "content_scripts": [
@@ -33,6 +33,8 @@
     "icons/PlayerUploadFailedIconSponsorBlocker256px.png",
     "icons/upvote.png",
     "icons/downvote.png",
+    "icons/report.png",
+    "icons/close.png",
     "icons/PlayerInfoIconSponsorBlocker256px.png",
     "icons/PlayerDeleteIconSponsorBlocker256px.png",
     "popup.html"

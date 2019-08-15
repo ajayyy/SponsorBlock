@@ -1051,7 +1051,7 @@ function runThePopup() {
   
   //this is not a YouTube video page
   function displayNoVideo() {
-    document.getElementById("loadingIndicator").innerHTML = chrome.i18n.getMessage("noVideoID");
+    document.getElementById("loadingIndicator").innerText = chrome.i18n.getMessage("noVideoID");
   }
   
   function reportAnIssue() {

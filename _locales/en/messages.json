@@ -42,6 +42,12 @@
   "Segments": {
     "message": "sponsor segments"
   },
+  "noticeTitle": {
+    "message": "Sponsor Skipped"
+  },
+  "noticeClosingMessage": {
+    "message": "closes in 7s"
+  },
   "Dismiss": {
     "message": "Dismiss"
   },
@@ -55,13 +61,13 @@
     "message": "Seconds"
   },
   "Hide": {
-    "message": "Don't Show This Again"
+    "message": "Never Show"
   },
   "hitGoBack": {
-    "message": "Hit go back to get to where you came from."
+    "message": "Hit unskip to get to where you came from."
   },
   "goBack": {
-    "message": "Go back"
+    "message": "Unskip"
   },
   "confirmMSG": {
     "message": "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
@@ -89,7 +95,7 @@
     "message": "This probably isn't a YouTube tab, or you clicked too early. \n If you know this is a YouTube tab,\n close this popup and open it again."
   },
   "Voted": {
-    "message": "Thanks for voting!"
+    "message": "Voted!"
   },
   "voteFail": {
     "message": "You have already voted this way before."
