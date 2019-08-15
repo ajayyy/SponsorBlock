@@ -48,6 +48,12 @@
   "noticeClosingMessage": {
     "message": "closes in 7s"
   },
+  "reportButtonTitle": {
+    "message": "Report"
+  },
+  "reportButtonInfo": {
+    "message": "Report this sponsor submission as incorrect."
+  },
   "Dismiss": {
     "message": "Dismiss"
   },
