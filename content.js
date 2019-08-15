@@ -40,9 +40,6 @@ if (id = getYouTubeVideoID(document.URL)) { // Direct Links
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
 
-//the actual time (not video time) that the last skip happened
-var lastUnixTimeSkipped = -1;
-
 //the amount of times the sponsor lookup has retried
 //this only happens if there is an error
 var sponsorLookupRetries = 0;
@@ -60,10 +57,6 @@ var showingStartSponsor = true;
 var hideVideoPlayerControls = false;
 var hideInfoButtonPlayerControls = false;
 var hideDeleteButtonPlayerControls = false;
-
-//the downloaded sponsor times
-var sponsorTimes = [];
-var UUIDs = [];
 
 //the sponsor times being prepared to be submitted
 var sponsorTimesSubmitting = [];
@@ -214,7 +207,6 @@ document.onkeydown = function(e){
 function resetValues() {
   //reset last sponsor times
   lastTime = -1;
-  lastUnixTimeSkipped = -1;
 
   //reset sponsor times
   sponsorTimes = null;
@@ -488,14 +480,12 @@ function checkSponsorTime(sponsorTimes, index, openNotice) {
 }
 
 function checkIfTimeToSkip(currentVideoTime, startTime) {
-  let currentTime = Date.now();
-
   //If the sponsor time is in between these times, skip it
   //Checks if the last time skipped to is not too close to now, to make sure not to get too many
   //  sponsor times in a row (from one troll)
   //the last term makes 0 second start times possible only if the video is not setup to start at a different time from zero
-  return (Math.abs(currentVideoTime - startTime) < 0.3 && startTime >= lastTime && startTime <= currentVideoTime && 
-      (lastUnixTimeSkipped == -1 || currentTime - lastUnixTimeSkipped > 500)) || (lastTime == -1 && startTime == 0 && youtubeVideoStartTime == null)
+  return (Math.abs(currentVideoTime - startTime) < 3 && startTime >= lastTime && startTime <= currentVideoTime) || 
+        (lastTime == -1 && startTime == 0 && youtubeVideoStartTime == null)
 }
 
 //skip fromt he start time to the end time for a certain index sponsor time
