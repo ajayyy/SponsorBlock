@@ -233,8 +233,7 @@ function videoIDChange(id) {
   
   //not a url change
   if (videoID == id) return;
-  
-
+  videoID = id; // Set global ID
 
   if (previewBar == null) {
     //create it
