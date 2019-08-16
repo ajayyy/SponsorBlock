@@ -3,8 +3,9 @@ async function Wait(condition, timeout = 5000, check = 100) {
   return await new Promise(resolve => {
     setTimeout(() => {resolve()}, timeout);
     const interval = setInterval(() => {
-      if (condition()) {
-        resolve();
+      let result = condition();
+      if (result !== false) {
+        resolve(result);
         clearInterval(interval);
       };
     }, check);
