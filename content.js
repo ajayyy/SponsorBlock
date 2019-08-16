@@ -94,18 +94,17 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
 
-function initVideo(skipURLParser = false) {
+function initVideo() {
 	let id;
-	if(skipURLParser == false) id = getYouTubeVideoID();
+	id = getYouTubeVideoID();
 	if(id !== false) return videoIDChange(id);
-	Wait(getYouTubeVideoID_ALT, (result) => {
+	Wait(getYouTubeVideoID_ALT).then((id) => {
 		if(id !== false) {
 			return videoIDChange(id);
 		} else {
 		resetValues(id);
-		}
+		}		
 	});
-
 }
 
 function messageListener(request, sender, sendResponse) {
