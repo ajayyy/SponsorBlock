@@ -99,8 +99,8 @@ function initVideo() {
 	wait(getYouTubeVideoID_ALT).then((result) => {
 		if(result !== false) {
 			videoIDChange(result);
-		} else if (videoID) {
-			resetValues(videoID);
+		} else if (videoID) { // If remove old data
+			resetValues();
 		}
 	});
 }
@@ -165,7 +165,7 @@ function messageListener(request, sender, sendResponse) {
 
     if (request.message == "whitelistChange") {
       channelWhitelisted = request.value;
-      sponsorsLookup(videoID);
+      sponsorsLookup();
     }
 
     if (request.message == "showNoticeAgain") {
@@ -210,7 +210,7 @@ document.onkeydown = function(e){
   }
 }
 
-function resetValues(id) {
+function resetValues() {
   //reset last sponsor times
   lastTime = -1;
   lastUnixTimeSkipped = -1;
@@ -218,7 +218,6 @@ function resetValues(id) {
   //reset sponsor times
   sponsorTimes = null;
   UUIDs = null;
-  videoID = id;
   sponsorLookupRetries = 0;
 
   //empty the preview bar
@@ -230,11 +229,10 @@ function resetValues(id) {
 
 function videoIDChange(id) {
   if(id === false) return false;
-  
   //not a url change
   if (videoID == id) return;
+  resetValues();
   videoID = id; // Set global ID
-
   if (previewBar == null) {
     //create it
     let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
@@ -267,12 +265,12 @@ function videoIDChange(id) {
   //close popup
   closeInfoMenu();
 
-  resetValues(videoID);
+  resetValues();
 
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime();
 
-  sponsorsLookup(videoID);
+  sponsorsLookup();
 
   //make sure everything is properly added
   updateVisibilityOfPlayerControlsButton(true);
@@ -327,20 +325,22 @@ function videoIDChange(id) {
   
 }
 
-function sponsorsLookup(videoID) {
-  v = document.querySelector('video') // Youtube video player
-  //there is no video here
-  
-  if (v == null) {
-    setTimeout(() => sponsorsLookup(videoID), 100);
-    return;
-  }
+function getVideo() {
+	v = document.querySelector('video')
+	if(v === null) return false;
+	return v;
+}
+
+
+function sponsorsLookup() {
+	wait(getVideo).then((v) => { // Wait for Youtube video player
+		if(v === false) return // Timeout
 
   if (!durationListenerSetUp) {
     durationListenerSetUp = true;
 
     //wait until it is loaded
-    v.addEventListener('durationchange', updatePreviewBar);
+    updatePreviewBar();
   }
   
   //check database for sponsor times
@@ -373,7 +373,7 @@ function sponsorsLookup(videoID) {
 
           //if less than 3 days old
           if ((Date.now() / 1000) - unixTimePublished < 259200) {
-            setTimeout(() => sponsorsLookup(videoID), 10000);
+            setTimeout(() => sponsorsLookup(), 10000);
           }
         }
       });
@@ -381,7 +381,7 @@ function sponsorsLookup(videoID) {
       sponsorLookupRetries = 0;
     } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90) {
       //some error occurred, try again in a second
-      setTimeout(() => sponsorsLookup(videoID), 1000);
+      setTimeout(() => sponsorsLookup(), 1000);
 
       sponsorLookupRetries++;
     }
@@ -391,6 +391,7 @@ function sponsorsLookup(videoID) {
   v.ontimeupdate = function () { 
     sponsorCheck();
   };
+  });
 }
 
 function updatePreviewBar() {
