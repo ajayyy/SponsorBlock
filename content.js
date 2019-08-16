@@ -94,14 +94,13 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 chrome.runtime.onMessage.addListener(messageListener);
 
 function initVideo() {
+	resetValues();
 	let id = getYouTubeVideoID();
 	if(id !== false) return videoIDChange(id);
 	wait(getYouTubeVideoID_ALT).then((result) => {
 		if(result !== false) {
 			videoIDChange(result);
-		} else if (videoID) { // If remove old data
-			resetValues();
-		}
+		};
 	});
 }
 
@@ -211,6 +210,7 @@ document.onkeydown = function(e){
 }
 
 function resetValues() {
+  videoID = false;
   //reset last sponsor times
   lastTime = -1;
   lastUnixTimeSkipped = -1;
@@ -221,8 +221,8 @@ function resetValues() {
   sponsorLookupRetries = 0;
 
   //empty the preview bar
-  previewBar.set([], [], 0);
-
+  if(previewBar) previewBar.set([], [], 0);
+  
   //reset sponsor data found check
   sponsorDataFound = false;
 }
@@ -231,7 +231,7 @@ function videoIDChange(id) {
   if(id === false) return false;
   //not a url change
   if (videoID == id) return;
-  resetValues();
+  
   videoID = id; // Set global ID
   if (previewBar == null) {
     //create it
