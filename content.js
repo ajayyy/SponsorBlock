@@ -4,8 +4,9 @@ var previousVideoID = null;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = null;
 var UUIDs = null;
-//what video id are these sponsors for
-var sponsorVideoID = null;
+
+// The current video ID
+var videoID = false;
 
 //these are sponsors that have been downvoted
 var hiddenSponsorTimes = [];
@@ -32,8 +33,6 @@ var channelWhitelisted = false;
 
 // create preview bar
 var previewBar;
-
-initVideo(); // Direct Links
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -97,11 +96,11 @@ chrome.runtime.onMessage.addListener(messageListener);
 function initVideo() {
 	let id = getYouTubeVideoID();
 	if(id !== false) return videoIDChange(id);
-	Wait(getYouTubeVideoID_ALT).then((result) => {
+	wait(getYouTubeVideoID_ALT).then((result) => {
 		if(result !== false) {
 			videoIDChange(result);
-		} else {
-			resetValues();
+		} else if (videoID) {
+			resetValues(videoID);
 		}
 	});
 }
@@ -211,7 +210,7 @@ document.onkeydown = function(e){
   }
 }
 
-function resetValues() {
+function resetValues(id) {
   //reset last sponsor times
   lastTime = -1;
   lastUnixTimeSkipped = -1;
@@ -219,7 +218,7 @@ function resetValues() {
   //reset sponsor times
   sponsorTimes = null;
   UUIDs = null;
-  sponsorVideoID = (videoID === undefined) ? false : videoID;
+  videoID = id;
   sponsorLookupRetries = 0;
 
   //empty the preview bar
@@ -231,9 +230,11 @@ function resetValues() {
 
 function videoIDChange(id) {
   if(id === false) return false;
-  videoID = id; // Global
+  
   //not a url change
-  if (sponsorVideoID == videoID) return;
+  if (videoID == id) return;
+  
+
 
   if (previewBar == null) {
     //create it
@@ -267,7 +268,7 @@ function videoIDChange(id) {
   //close popup
   closeInfoMenu();
 
-  resetValues();
+  resetValues(videoID);
 
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime();
