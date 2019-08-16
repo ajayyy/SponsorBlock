@@ -98,19 +98,14 @@ function initVideo(skipURLParser = false) {
 	let id;
 	if(skipURLParser == false) id = getYouTubeVideoID();
 	if(id !== false) return videoIDChange(id);
-	v = document.querySelector('video')
-	if (v == null) {
-		setTimeout(() => initVideo(true), 100);
-		return;
-	}
-	v.addEventListener('durationchange', () => {
-		id = getYouTubeVideoID_ALT();
+	Wait(getYouTubeVideoID_ALT, (result) => {
 		if(id !== false) {
 			return videoIDChange(id);
 		} else {
-			resetValues(id);
+		resetValues(id);
 		}
 	});
+
 }
 
 function messageListener(request, sender, sendResponse) {
