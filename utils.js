@@ -1,3 +1,16 @@
+// Function that can be used to wait for a condition before returning
+async function Wait(condition, timeout = 5000, check = 100) { 
+  return await new Promise(resolve => {
+    setTimeout(() => {resolve()}, timeout);
+    const interval = setInterval(() => {
+      if (condition()) {
+        resolve();
+        clearInterval(interval);
+      };
+    }, check);
+  });
+}
+
 function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM level access)
     let id;
     let index = 0;
