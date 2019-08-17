@@ -559,8 +559,8 @@ function addPlayerControlsButton() {
 
 function setPlayerControls(hide) {
   let value = (hide) ? "hidden" : "visible";
-  document.getElementById("startSponsorButton").style.display = value;
-  document.getElementById("submitButton").style.display = value;
+  document.getElementById("startSponsorButton").style.visibility = value;
+  document.getElementById("submitButton").style.visibility = value;
 }
 
 function setInfoButton(hide) {
