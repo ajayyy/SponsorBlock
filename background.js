@@ -1,7 +1,9 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-	chrome.tabs.sendMessage(tabId, {
-		message: 'update',
-	});
+	if(changeinfo.status == "complete") {
+		chrome.tabs.sendMessage(tabId, {
+			message: 'update',
+		});
+	}
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
