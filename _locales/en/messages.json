@@ -30,6 +30,15 @@
   "channelWhitelisted": {
     "message": "Channel Whitelisted!"
   },
+  "clearTimes": {
+    "message": "Clear Sponsor Times"
+  },
+  "openPopup": {
+    "message": "Open SponsorBlock Popup"
+  },
+  "SubmitTimes": {
+    "message": "Submit Sponsor Times"
+  },
   "Sponsor": {
     "message": "Sponsor"
   },
