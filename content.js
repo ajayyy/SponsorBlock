@@ -323,7 +323,7 @@ function SyncSettings() {
     });
 }
 
-isVideo = () => (document.getElementById("movie_player") && videoID);
+isVideo = () => (videoID && document.getElementById("movie_player"));
 
 function sponsorsLookup() {
 	wait(isVideo).then((result) => { // Wait for Youtube video player
