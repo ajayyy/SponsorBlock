@@ -15,7 +15,7 @@ var hiddenSponsorTimes = [];
 var youtubeVideoStartTime = null;
 
 //the video
-var v;
+var video;
 
 var listenerAdded;
 
@@ -142,12 +142,12 @@ function messageListener(request, sender, sendResponse) {
     }
 
     if (request.message == "skipToTime") {
-      v.currentTime = request.time;
+      video.currentTime = request.time;
     }
 
     if (request.message == "getCurrentTime") {
       sendResponse({
-        currentTime: v.currentTime
+        currentTime: video.currentTime
       });
     }
 
@@ -196,8 +196,6 @@ document.onkeydown = function(e){
   e = e || window.event;
   var key = e.which || e.keyCode;
 
-  let video = document.getElementById("movie_player");
-
   //is the video in focus, otherwise they could be typing a comment
   if (document.activeElement === video) {
     if(key == 186){
@@ -231,7 +229,7 @@ function resetValues() {
 }
 
 function videoIDChange(id) {
-  if(!id) return false; // Return as ID not valid
+  if(!id || id === videoID) return false; // Return if is repeat or not valid
   videoID = id; // Set global ID
   
   if (previewBar == null) {
@@ -276,63 +274,60 @@ function videoIDChange(id) {
   
   //reset sponsor times submitting
   sponsorTimesSubmitting = [];
-
   //see if the onvideo control image needs to be changed
-  chrome.runtime.sendMessage({
+chrome.runtime.sendMessage({
     message: "getSponsorTimes",
     videoID: videoID
-  }, function(response) {
-    if (response != undefined) {
-      let sponsorTimes = response.sponsorTimes;
-      if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
-        changeStartSponsorButton(true, true);
-      } else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
-        changeStartSponsorButton(false, true);
-      } else {
-        changeStartSponsorButton(true, false);
-      }
+}, function(response) {
+    wait(isControlsReady).then(result => {
+        if (response != undefined) {
+            let sponsorTimes = response.sponsorTimes;
+            if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
+                changeStartSponsorButton(true, true);
+            } else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+                changeStartSponsorButton(false, true);
+            } else {
+                changeStartSponsorButton(true, false);
+            }
 
-      //see if this data should be saved in the sponsorTimesSubmitting variable
-      if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        sponsorTimesSubmitting = sponsorTimes;
-      }
-    }
-  });
-
-  //see if video controls buttons should be added
-  chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
-    if (result.hideVideoPlayerControls != undefined) {
-      hideVideoPlayerControls = result.hideVideoPlayerControls;
-    }
-    setPlayerControls(hideVideoPlayerControls);
-  });
-  chrome.storage.sync.get(["hideInfoButtonPlayerControls"], function(result) {
-    if (result.hideInfoButtonPlayerControls != undefined) {
-      hideInfoButtonPlayerControls = result.hideInfoButtonPlayerControls;
-    }
-    setInfoButton(hideInfoButtonPlayerControls);
-  });
-  chrome.storage.sync.get(["hideDeleteButtonPlayerControls"], function(result) {
-    if (result.hideDeleteButtonPlayerControls != undefined) {
-      hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
-    }
-
-    setDeleteButton(hideDeleteButtonPlayerControls);
-  });
-  
+            //see if this data should be saved in the sponsorTimesSubmitting variable
+            if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+                sponsorTimesSubmitting = sponsorTimes;
+            }
+        }
+    });
+});
+SyncSettings(); // See if video control buttons should be added
 }
 
-function videoWait() {
-	v = document.querySelector('video')
-	if(v === null) return false;
-	if(!videoID) return false;
-	return v;
+function SyncSettings() {
+    wait(isControlsReady).then(result => {
+        chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
+            if (result.hideVideoPlayerControls != undefined) {
+                hideVideoPlayerControls = result.hideVideoPlayerControls;
+            }
+            setPlayerControls(hideVideoPlayerControls);
+        });
+        chrome.storage.sync.get(["hideInfoButtonPlayerControls"], function(result) {
+            if (result.hideInfoButtonPlayerControls != undefined) {
+                hideInfoButtonPlayerControls = result.hideInfoButtonPlayerControls;
+            }
+            setInfoButton(hideInfoButtonPlayerControls);
+        });
+        chrome.storage.sync.get(["hideDeleteButtonPlayerControls"], function(result) {
+            if (result.hideDeleteButtonPlayerControls != undefined) {
+                hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
+            }
+            setDeleteButton(hideDeleteButtonPlayerControls);
+        });
+    });
 }
 
+isVideo = () => (document.getElementById("movie_player") && videoID);
 
 function sponsorsLookup() {
-	wait(videoWait).then((v) => { // Wait for Youtube video player
-		if(v === false) return // Timeout
+	wait(isVideo).then((result) => { // Wait for Youtube video player
+	video = result; // Set global video
 
   if (!durationListenerSetUp) {
     durationListenerSetUp = true;
@@ -351,7 +346,7 @@ function sponsorsLookup() {
 
       //update the preview bar
       //leave the type blank for now until categories are added
-      if (lastPreviewBarUpdate == videoID || (lastPreviewBarUpdate == null && !isNaN(v.duration))) {
+      if (lastPreviewBarUpdate == videoID || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
         //set it now
         //otherwise the listener can handle it
         updatePreviewBar();
@@ -386,14 +381,14 @@ function sponsorsLookup() {
   });
 
   //add the event to run on the videos "ontimeupdate"
-  v.ontimeupdate = function () { 
+  video.ontimeupdate = function () { 
     sponsorCheck();
   };
   });
 }
 
 function updatePreviewBar() {
-  previewBar.set(sponsorTimes, [], v.duration);
+  previewBar.set(sponsorTimes, [], video.duration);
 
   //update last video id
   lastPreviewBarUpdate = videoID;
@@ -468,18 +463,18 @@ function sponsorCheck() {
 
   //don't keep track until they are loaded in
   if (sponsorTimes != null || sponsorTimesSubmitting.length > 0) {
-    lastTime = v.currentTime;
+    lastTime = video.currentTime;
   }
 }
 
 function checkSponsorTime(sponsorTimes, index, openNotice) {
   //this means part of the video was just skipped
-  if (Math.abs(v.currentTime - lastTime) > 1 && lastTime != -1) {
+  if (Math.abs(video.currentTime - lastTime) > 1 && lastTime != -1) {
     //make lastTime as if the video was playing normally
-    lastTime = v.currentTime - 0.0001;
+    lastTime = video.currentTime - 0.0001;
   }
 
-  if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0]) && !hiddenSponsorTimes.includes(index)) {
+  if (checkIfTimeToSkip(video.currentTime, sponsorTimes[index][0]) && !hiddenSponsorTimes.includes(index)) {
     //skip it
     skipToTime(v, index, sponsorTimes, openNotice);
 
@@ -503,7 +498,7 @@ function checkIfTimeToSkip(currentVideoTime, startTime) {
 
 //skip fromt he start time to the end time for a certain index sponsor time
 function skipToTime(v, index, sponsorTimes, openNotice) {
-  v.currentTime = sponsorTimes[index][1];
+  video.currentTime = sponsorTimes[index][1];
 
   lastSponsorTimeSkipped = sponsorTimes[index][0];
   
@@ -526,7 +521,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 function goBackToPreviousTime(UUID) {
   if (sponsorTimes != null) {
     //add a tiny bit of time to make sure it is not skipped again
-    v.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][0] + 0.001;
+    video.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][0] + 0.001;
 
     closeSkipNotice(UUID);
   }
@@ -573,16 +568,17 @@ function setDeleteButton(hide) {
   document.getElementById("deleteButton").style.visibility = value;
 }
 
+isControlsReady = () => (document.getElementsByClassName("ytp-right-controls") && videoID);
+
 //adds the player controls buttons
 function addButtons() {
-  // Not on a proper video yet
-  if (!videoID) return;
-  
-  // Add button if does not already exist in html
-  addPlayerControlsButton();
-  addInfoButton();
-  addDeleteButton();
-  addSubmitButton();
+  wait(isControlsReady).then(result => {
+	  // Add button if does not already exist in html
+	  addPlayerControlsButton();
+	  addInfoButton();
+	  addDeleteButton();
+	  addSubmitButton();	  
+  });
 }
 
 function startSponsorClicked() {
@@ -594,7 +590,7 @@ function startSponsorClicked() {
   //send back current time with message
   chrome.runtime.sendMessage({
     message: "addSponsorTime",
-    time: v.currentTime,
+    time: video.currentTime,
     videoID: videoID
   }, function(response) {
     //see if the sponsorTimesSubmitting needs to be updated
@@ -972,7 +968,7 @@ function afterDownvote(UUID) {
       }
 
       //update the preview
-      previewBar.set(sponsorTimesLeft, [], v.duration);
+      previewBar.set(sponsorTimesLeft, [], video.duration);
     }
   }
 }
@@ -1063,11 +1059,10 @@ function dontShowNoticeAgain() {
 }
 
 function sponsorMessageStarted(callback) {
-    v = document.querySelector('video');
 
     //send back current time
     callback({
-      time: v.currentTime
+      time: video.currentTime
     })
 
     //update button
