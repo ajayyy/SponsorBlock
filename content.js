@@ -553,14 +553,12 @@ getControls = () => {
 	  return (controls) ? controls[controls.length - 1] : false;	  
 };
 
-
-
 createButton = (baseid, title, callback, imageName) => {
-  if (document.getElementById(baseid+"Button") != null) return;
+  if (document.getElementById(baseid) != null) return;
   let newButton = document.createElement("button");
   newButton.id = baseid;
   newButton.className = "ytp-button playerButton";
-  newButton.setAttribute("title", chrome.i18n.getMessage(baseid));
+  newButton.setAttribute("title", chrome.i18n.getMessage(title));
   newButton.addEventListener("click", callback);
   let newButtonImage = document.createElement("img");
   newButtonImage.id = baseid+"Image";
