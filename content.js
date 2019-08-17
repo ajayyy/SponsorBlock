@@ -94,13 +94,14 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 chrome.runtime.onMessage.addListener(messageListener);
 
 function initVideo() {
+	// Reset values
 	resetValues();
+	// Try URL parser
 	let id = getYouTubeVideoID();
-	if(id !== false) return videoIDChange(id);
+	if(id) return videoIDChange(id);
+	// Try Content based parser
 	wait(getYouTubeVideoID_ALT).then((result) => {
-		if(result !== false) {
-			videoIDChange(result);
-		};
+		videoIDChange(result);
 	});
 }
 
@@ -177,13 +178,13 @@ function messageListener(request, sender, sendResponse) {
 
     if (request.message == "changeVideoPlayerControlsVisibility") {
       hideVideoPlayerControls = request.value;
-      updateVisibilityOfPlayerControlsButton();
+      setPlayerControls(hideVideoPlayerControls);
     } else if (request.message == "changeInfoButtonPlayerControlsVisibility") {
       hideInfoButtonPlayerControls = request.value;
-      updateVisibilityOfPlayerControlsButton();
+      setInfoButton(hideInfoButtonPlayerControls);
     } else if (request.message == "changeDeleteButtonPlayerControlsVisibility") {
       hideDeleteButtonPlayerControls = request.value;
-      updateVisibilityOfPlayerControlsButton();
+      setDeleteButton(hideDeleteButtonPlayerControls);
     }
 
     if (request.message == "trackViewCount") {
@@ -210,7 +211,9 @@ document.onkeydown = function(e){
 }
 
 function resetValues() {
+  // Reset videoID
   videoID = false;
+  
   //reset last sponsor times
   lastTime = -1;
   lastUnixTimeSkipped = -1;
@@ -221,18 +224,16 @@ function resetValues() {
   sponsorLookupRetries = 0;
 
   //empty the preview bar
-  if(previewBar) previewBar.set([], [], 0);
+  previewBar = null;
   
   //reset sponsor data found check
   sponsorDataFound = false;
 }
 
 function videoIDChange(id) {
-  if(id === false) return false;
-  //not a url change
-  if (videoID == id) return;
-  
+  if(!id) return false; // Return as ID not valid
   videoID = id; // Set global ID
+  
   if (previewBar == null) {
     //create it
     let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
@@ -261,11 +262,6 @@ function videoIDChange(id) {
     //set the previous id now, don't wait for chrome.storage.get
     previousVideoID = videoID;
   }
-  
-  //close popup
-  closeInfoMenu();
-
-  resetValues();
 
   //see if there is a video start time
   youtubeVideoStartTime = getYouTubeVideoStartTime();
@@ -273,8 +269,11 @@ function videoIDChange(id) {
   sponsorsLookup();
 
   //make sure everything is properly added
-  updateVisibilityOfPlayerControlsButton(true);
+  addButtons();
 
+  //close popup
+  closeInfoMenu();
+  
   //reset sponsor times submitting
   sponsorTimesSubmitting = [];
 
@@ -305,35 +304,34 @@ function videoIDChange(id) {
     if (result.hideVideoPlayerControls != undefined) {
       hideVideoPlayerControls = result.hideVideoPlayerControls;
     }
-
-    updateVisibilityOfPlayerControlsButton();
+    setPlayerControls(hideVideoPlayerControls);
   });
   chrome.storage.sync.get(["hideInfoButtonPlayerControls"], function(result) {
     if (result.hideInfoButtonPlayerControls != undefined) {
       hideInfoButtonPlayerControls = result.hideInfoButtonPlayerControls;
     }
-
-    updateVisibilityOfPlayerControlsButton();
+    setInfoButton(hideInfoButtonPlayerControls);
   });
   chrome.storage.sync.get(["hideDeleteButtonPlayerControls"], function(result) {
     if (result.hideDeleteButtonPlayerControls != undefined) {
       hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
     }
 
-    updateVisibilityOfPlayerControlsButton(false);
+    setDeleteButton(hideDeleteButtonPlayerControls);
   });
   
 }
 
-function getVideo() {
+function videoWait() {
 	v = document.querySelector('video')
 	if(v === null) return false;
+	if(!videoID) return false;
 	return v;
 }
 
 
 function sponsorsLookup() {
-	wait(getVideo).then((v) => { // Wait for Youtube video player
+	wait(videoWait).then((v) => { // Wait for Youtube video player
 		if(v === false) return // Timeout
 
   if (!durationListenerSetUp) {
@@ -559,29 +557,31 @@ function addPlayerControlsButton() {
   referenceNode.prepend(startSponsorButton);
 }
 
-function removePlayerControlsButton() {
-  document.getElementById("startSponsorButton").style.display = "none";
-  document.getElementById("submitButton").style.display = "none";
+function setPlayerControls(hide) {
+  let value = (hide) ? "none" : "unset";
+  document.getElementById("startSponsorButton").style.display = value;
+  document.getElementById("submitButton").style.display = value;
 }
 
-//adds or removes the player controls button to what it should be
-function updateVisibilityOfPlayerControlsButton() {
-  //not on a proper video yet
-  if (!videoID) return;
+function setInfoButton(hide) {
+  let value = (hide) ? "none" : "unset";
+  document.getElementById("infoButton").style.display = value;
+}
 
+function setDeleteButton(display) {
+  let value = (display) ? "none" : "unset";
+  document.getElementById("deleteButton").style.display = value;
+}
+
+//adds the player controls buttons
+function addButtons() {
+  // Not on a proper video yet
+  if (!videoID) return;
+  // Add button if does not already exist in html
   addPlayerControlsButton();
   addInfoButton();
   addDeleteButton();
   addSubmitButton();
-  if (hideVideoPlayerControls) {
-    removePlayerControlsButton();
-  }
-  if (hideInfoButtonPlayerControls) {
-    document.getElementById("infoButton").style.display = "none";
-  }
-  if (hideDeleteButtonPlayerControls) {
-    document.getElementById("deleteButton").style.display = "none";
-  }
 }
 
 function startSponsorClicked() {
@@ -794,9 +794,7 @@ function clearSponsorTimes() {
   //it can't update to this info yet
   closeInfoMenu();
 
-  let currentVideoID = videoID;
-
-  let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
+  let sponsorTimeKey = 'sponsorTimes' + videoID;
   chrome.storage.sync.get([sponsorTimeKey], function(result) {
     let sponsorTimes = result[sponsorTimeKey];
 
@@ -806,7 +804,7 @@ function clearSponsorTimes() {
       if(!confirm(confirmMessage)) return;
 
       //clear the sponsor times
-      let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+      let sponsorTimeKey = "sponsorTimes" + videoID;
       chrome.storage.sync.set({[sponsorTimeKey]: []});
 
       //clear sponsor times submitting
@@ -820,10 +818,7 @@ function clearSponsorTimes() {
 
 //Opens the notice that tells the user that a sponsor was just skipped
 function openSkipNotice(UUID){
-  if (dontShowNotice) {
-    //don't show, return
-    return;
-  }
+  if (dontShowNotice) return;// don't show, return
 
   let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
 
@@ -1078,17 +1073,12 @@ function sponsorMessageStarted(callback) {
 }
 
 function submitSponsorTimes() {
-  if (document.getElementById("submitButton").style.display == "none") {
-    //don't submit, not ready
-    return;
-  }
+  if (document.getElementById("submitButton").style.display == "none") return;
 
   //it can't update to this info yet
   closeInfoMenu();
 
-  let currentVideoID = videoID;
-
-  let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
+  let sponsorTimeKey = 'sponsorTimes' + videoID;
   chrome.storage.sync.get([sponsorTimeKey], function(result) {
     let sponsorTimes = result[sponsorTimeKey];
 
@@ -1110,11 +1100,9 @@ function sendSubmitMessage(){
   document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
   document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
 
-  let currentVideoID = videoID;
-
   chrome.runtime.sendMessage({
     message: "submitTimes",
-    videoID: currentVideoID
+    videoID: videoID
   }, function(response) {
     if (response != undefined) {
       if (response.statusCode == 200) {
@@ -1134,11 +1122,11 @@ function sendSubmitMessage(){
         submitButton.addEventListener("animationend", animationEndListener);
 
         //clear the sponsor times
-        let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+        let sponsorTimeKey = "sponsorTimes" + videoID;
         chrome.storage.sync.set({[sponsorTimeKey]: []});
 
         //request the sponsors from the server again
-        sponsorsLookup(currentVideoID);
+        sponsorsLookup(videoID);
       } else {
         //for a more detailed error message, they should check the popup
         //show that the upload failed
