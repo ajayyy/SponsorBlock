@@ -621,9 +621,9 @@ function updateSponsorTimesSubmitting() {
 function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
   //if it isn't visible, there is no data
   if (uploadButtonVisible && !hideDeleteButtonPlayerControls) {
-    document.getElementById("deleteButton").style.display = "unset";
+	  setDeleteButton(hideDeleteButtonPlayerControls);
   } else {
-    document.getElementById("deleteButton").style.display = "none";
+	  setDeleteButton(hideDeleteButtonPlayerControls);
   }
 
   if (showStartSponsor) {
@@ -632,10 +632,10 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
     if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
-      document.getElementById("submitButton").style.display = "unset";
+      document.getElementById("submitButton").style.visibility = "visible";
     } else if (!uploadButtonVisible) {
       //disable submit button
-      document.getElementById("submitButton").style.display = "none";
+      document.getElementById("submitButton").style.visibility = "hidden";
     }
   } else {
     showingStartSponsor = false;
@@ -643,7 +643,8 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
 
     //disable submit button
-    document.getElementById("submitButton").style.display = "none";
+	setPlayerControls
+    document.getElementById("submitButton").style.visibility = "hidden";
   }
 }
 
@@ -688,7 +689,7 @@ function addDeleteButton() {
   deleteButton.setAttribute("title", "Clear Sponsor Times");
   deleteButton.addEventListener("click", clearSponsorTimes);
   //hide it at the start
-  deleteButton.style.display = "none";
+  deleteButton.style.visibility = "hidden";
 
   let deleteImage = document.createElement("img");
   deleteImage.id = "deleteButtonImage";
@@ -715,7 +716,7 @@ function addSubmitButton() {
   submitButton.setAttribute("title", "Submit Sponsor Times");
   submitButton.addEventListener("click", submitSponsorTimes);
   //hide it at the start
-  submitButton.style.display = "none";
+  submitButton.style.visibility = "hidden";
 
   let submitImage = document.createElement("img");
   submitImage.id = "submitButtonImage";
@@ -740,7 +741,7 @@ function openInfoMenu() {
   popupInitialised = false;
 
   //hide info button
-  document.getElementById("infoButton").style.display = "none";
+  document.getElementById("infoButton").style.visibility = "hidden";
 
   sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -787,7 +788,7 @@ function closeInfoMenu() {
     popup.remove();
 
     //show info button
-    document.getElementById("infoButton").style.display = "unset";
+    document.getElementById("infoButton").style.visibility = "visible";
   }
 }
 
