@@ -558,19 +558,19 @@ function addPlayerControlsButton() {
 }
 
 function setPlayerControls(hide) {
-  let value = (hide) ? "hidden" : "unset";
+  let value = (hide) ? "hidden" : "visible";
   document.getElementById("startSponsorButton").style.display = value;
   document.getElementById("submitButton").style.display = value;
 }
 
 function setInfoButton(hide) {
-  let value = (hide) ? "hidden" : "unset";
-  document.getElementById("infoButton").style.display = value;
+  let value = (hide) ? "hidden" : "visible";
+  document.getElementById("infoButton").style.visibility = value;
 }
 
-function setDeleteButton(display) {
-  let value = (display) ? "hidden" : "unset";
-  document.getElementById("deleteButton").style.display = value;
+function setDeleteButton(hide) {
+  let value = (hide) ? "hidden" : "visible";
+  document.getElementById("deleteButton").style.visibility = value;
 }
 
 //adds the player controls buttons
