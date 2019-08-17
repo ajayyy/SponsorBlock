@@ -90,9 +90,6 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], (result) => {
   }
 });
 
-//get messages from the background script and the popup
-chrome.runtime.onMessage.addListener(messageListener);
-
 initVideo = () => {
 	// Reset values
 	resetValues();
@@ -191,6 +188,10 @@ messageListener = (request, sender, sendResponse) => {
       trackViewCount = request.value;
     }
 }
+
+//get messages from the background script and the popup
+chrome.runtime.onMessage.addListener(messageListener);
+
 //check for hotkey pressed
 document.onkeydown = (e) => {
   e = e || window.event;
