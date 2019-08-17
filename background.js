@@ -1,5 +1,5 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-	if(changeinfo.status == "complete") {
+	if(changeInfo.status == "complete") {
 		chrome.tabs.sendMessage(tabId, {
 			message: 'update',
 		});
