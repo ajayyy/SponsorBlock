@@ -558,18 +558,18 @@ function addPlayerControlsButton() {
 }
 
 function setPlayerControls(hide) {
-  let value = (hide) ? "none" : "unset";
+  let value = (hide) ? "hidden" : "unset";
   document.getElementById("startSponsorButton").style.display = value;
   document.getElementById("submitButton").style.display = value;
 }
 
 function setInfoButton(hide) {
-  let value = (hide) ? "none" : "unset";
+  let value = (hide) ? "hidden" : "unset";
   document.getElementById("infoButton").style.display = value;
 }
 
 function setDeleteButton(display) {
-  let value = (display) ? "none" : "unset";
+  let value = (display) ? "hidden" : "unset";
   document.getElementById("deleteButton").style.display = value;
 }
 
@@ -577,6 +577,7 @@ function setDeleteButton(display) {
 function addButtons() {
   // Not on a proper video yet
   if (!videoID) return;
+  
   // Add button if does not already exist in html
   addPlayerControlsButton();
   addInfoButton();
