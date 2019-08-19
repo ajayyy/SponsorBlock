@@ -13,6 +13,7 @@
       "js": [
         "config.js",
         "utils/previewBar.js",
+        "utils/skipNotice.js",
         "utils.js",
         "content.js",
         "popup.js"

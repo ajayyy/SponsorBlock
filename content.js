@@ -499,13 +499,13 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 
   if (openNotice) {
     //send out the message saying that a sponsor message was skipped
-    openSkipNotice(currentUUID);
+    if (!dontShowNotice) {
+      new SkipNotice(this, currentUUID);
 
-    setTimeout(() => closeSkipNotice(currentUUID), 7000);
-
-    //auto-upvote this sponsor
-    if (trackViewCount) {
-      vote(1, currentUUID, true);
+      //auto-upvote this sponsor
+      if (trackViewCount) {
+        vote(1, currentUUID, null);
+      }
     }
   }
 
@@ -515,12 +515,12 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
   }
 }
 
-function goBackToPreviousTime(UUID) {
+function goBackToPreviousTime(sponsorTime) {
   if (sponsorTimes != null) {
     //add a tiny bit of time to make sure it is not skipped again
-    v.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][0] + 0.001;
+    v.currentTime = sponsorTimes[UUIDs.indexOf(sponsorTime.UUID)][0] + 0.001;
 
-    closeSkipNotice(UUID);
+    sponsorTime.closeSkipNotice();
   }
 }
 
@@ -842,238 +842,12 @@ function clearSponsorTimes() {
   });
 }
 
-//Opens the notice that tells the user that a sponsor was just skipped
-function openSkipNotice(UUID){
-  if (dontShowNotice) {
-    //don't show, return
-    return;
-  }
-
-  let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
-
-  if (amountOfPreviousNotices > 0) {
-    //already exists
-
-    let previousNotice = document.getElementsByClassName("sponsorSkipNotice")[0];
-    previousNotice.classList.add("secondSkipNotice")
-  }
-
-  let noticeElement = document.createElement("div");
-  //what sponsor time this is about
-  noticeElement.id = "sponsorSkipNotice" + UUID;
-  noticeElement.classList.add("sponsorSkipObject");
-  noticeElement.classList.add("sponsorSkipNotice");
-  noticeElement.style.zIndex = 50 + amountOfPreviousNotices;
-
-  //the row that will contain the info
-  let firstRow = document.createElement("tr");
-  firstRow.id = "sponsorSkipNoticeFirstRow" + UUID;
-
-  let logoColumn = document.createElement("td");
-
-  let logoElement = document.createElement("img");
-  logoElement.id = "sponsorSkipLogo" + UUID;
-  logoElement.className = "sponsorSkipLogo sponsorSkipObject";
-  logoElement.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
-
-  let noticeMessage = document.createElement("span");
-  noticeMessage.id = "sponsorSkipMessage" + UUID;
-  noticeMessage.classList.add("sponsorSkipMessage");
-  noticeMessage.classList.add("sponsorSkipObject");
-  noticeMessage.innerText = chrome.i18n.getMessage("noticeTitle");
-
-  //create the first column
-  logoColumn.appendChild(logoElement);
-  logoColumn.appendChild(noticeMessage);
-
-  //add the x button
-  let closeButtonContainer = document.createElement("td");
-  closeButtonContainer.className = "sponsorSkipNoticeRightSection";
-  closeButtonContainer.style.top = "11px";
-
-  let timeLeft = document.createElement("span");
-  timeLeft.innerText = chrome.i18n.getMessage("noticeClosingMessage");
-  timeLeft.className = "sponsorSkipObject sponsorSkipNoticeTimeLeft";
-
-  let hideButton = document.createElement("img");
-  hideButton.src = chrome.extension.getURL("icons/close.png");
-  hideButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeCloseButton sponsorSkipNoticeRightButton";
-  hideButton.addEventListener("click", () => closeSkipNotice(UUID));
-
-  closeButtonContainer.appendChild(timeLeft);
-  closeButtonContainer.appendChild(hideButton);
-
-  //add all objects to first row
-  firstRow.appendChild(logoColumn);
-  firstRow.appendChild(closeButtonContainer);
-
-  let spacer = document.createElement("hr");
-  spacer.id = "sponsorSkipNoticeSpacer" + UUID;
-  spacer.className = "sponsorBlockSpacer";
-
-  //the row that will contain the buttons
-  let secondRow = document.createElement("tr");
-  secondRow.id = "sponsorSkipNoticeSecondRow" + UUID;
-  
-  //thumbs up and down buttons
-  let voteButtonsContainer = document.createElement("td");
-  voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
-
-  let reportText = document.createElement("span");
-  reportText.id = "sponsorTimesReportText" + UUID;
-  reportText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
-  reportText.innerText = chrome.i18n.getMessage("reportButtonTitle");
-  reportText.style.marginRight = "5px";
-  reportText.setAttribute("title", chrome.i18n.getMessage("reportButtonInfo"));
-
-  let downvoteButton = document.createElement("img");
-  downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
-  downvoteButton.className = "sponsorSkipObject voteButton";
-  downvoteButton.src = chrome.extension.getURL("icons/report.png");
-  downvoteButton.addEventListener("click", () => vote(0, UUID));
-  downvoteButton.setAttribute("title", chrome.i18n.getMessage("reportButtonInfo"));
-
-  //add downvote and report text to container
-  voteButtonsContainer.appendChild(reportText);
-  voteButtonsContainer.appendChild(downvoteButton);
-
-  //add unskip button
-  let unskipContainer = document.createElement("td");
-  unskipContainer.className = "sponsorSkipNoticeUnskipSection";
-
-  let unskipButton = document.createElement("button");
-  unskipButton.innerText = chrome.i18n.getMessage("goBack");
-  unskipButton.className = "sponsorSkipObject sponsorSkipNoticeButton";
-  unskipButton.addEventListener("click", () => goBackToPreviousTime(UUID));
-
-  unskipContainer.appendChild(unskipButton);
-
-  //add don't show again button
-  let dontshowContainer = document.createElement("td");
-  dontshowContainer.className = "sponsorSkipNoticeRightSection";
-
-  let dontShowAgainButton = document.createElement("button");
-  dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
-  dontShowAgainButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton";
-  dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
-
-  dontshowContainer.appendChild(dontShowAgainButton);
-
-  //add to row
-  secondRow.appendChild(voteButtonsContainer);
-  secondRow.appendChild(unskipContainer);
-  secondRow.appendChild(dontshowContainer);
-
-  noticeElement.appendChild(firstRow);
-  noticeElement.appendChild(spacer);
-  noticeElement.appendChild(secondRow);
-
-  let referenceNode = document.getElementById("movie_player");
-  if (referenceNode == null) {
-    //for embeds
-    let player = document.getElementById("player");
-    referenceNode = player.firstChild;
-    let index = 1;
-
-    //find the child that is the video player (sometimes it is not the first)
-    while (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed")) {
-      referenceNode = player.children[index];
-
-      index++;
-    }
-  }
-
-  referenceNode.prepend(noticeElement);
-}
-
-function afterDownvote(UUID) {
-  addVoteButtonInfo(chrome.i18n.getMessage("Voted"), UUID);
-  addNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"), UUID);
-
-  //remove this sponsor from the sponsors looked up
-  //find which one it is
-  for (let i = 0; i < sponsorTimes.length; i++) {
-    if (UUIDs[i] == UUID) {
-      //this one is the one to hide
-      
-      //add this as a hidden sponsorTime
-      hiddenSponsorTimes.push(i);
-
-      let sponsorTimesLeft = sponsorTimes.slice();
-      for (let j = 0; j < hiddenSponsorTimes.length; j++) {
-        //remove this sponsor time
-        sponsorTimesLeft.splice(hiddenSponsorTimes[j], 1);
-      }
-
-      //update the preview
-      previewBar.set(sponsorTimesLeft, [], v.duration);
-
-      break;
-    }
-  }
-}
-
-function addNoticeInfoMessage(message, UUID) {
-  let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
-  if (previousInfoMessage != null) {
-    //remove it
-    document.getElementById("sponsorSkipNotice" + UUID).removeChild(previousInfoMessage);
-  }
-
-  //add info
-  let thanksForVotingText = document.createElement("p");
-  thanksForVotingText.id = "sponsorTimesInfoMessage" + UUID;
-  thanksForVotingText.className = "sponsorTimesInfoMessage";
-  thanksForVotingText.innerText = message;
-
-  //add element to div
-  document.getElementById("sponsorSkipNotice" + UUID).insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + UUID));
-}
-
-function resetNoticeInfoMessage(UUID) {
-  let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + UUID);
-  if (previousInfoMessage != null) {
-    //remove it
-    document.getElementById("sponsorSkipNotice" + UUID).removeChild(previousInfoMessage);
-  }
-}
-
-function addVoteButtonInfo(message, UUID) {
-  resetVoteButtonInfo(UUID);
-
-  //hide vote button
-  let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID);
-  if (downvoteButton != null) {
-    document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID).style.display = "none";
-  }
-
-  //add info
-  let thanksForVotingText = document.createElement("td");
-  thanksForVotingText.id = "sponsorTimesVoteButtonInfoMessage" + UUID;
-  thanksForVotingText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
-  thanksForVotingText.innerText = message;
-
-  //add element to div
-  document.getElementById("sponsorSkipNoticeSecondRow" + UUID).prepend(thanksForVotingText);
-}
-
-function resetVoteButtonInfo(UUID) {
-  let previousInfoMessage = document.getElementById("sponsorTimesVoteButtonInfoMessage" + UUID);
-  if (previousInfoMessage != null) {
-    //remove it
-    document.getElementById("sponsorSkipNoticeSecondRow" + UUID).removeChild(previousInfoMessage);
-  }
-
-  //show button again
-  document.getElementById("sponsorTimesDownvoteButtonsContainer" + UUID).style.removeProperty("display");
-}
-
-//if inTheBackground is true, then no UI methods will be called
-function vote(type, UUID, inTheBackground = false) {
-  if (!inTheBackground) {
+//if skipNotice is null, it will not affect the UI
+function vote(type, UUID, skipNotice) {
+  if (skipNotice != null) {
     //add loading info
-    addVoteButtonInfo("Loading...", UUID)
-    resetNoticeInfoMessage(UUID);
+    skipNotice.addVoteButtonInfo.bind(skipNotice)("Loading...")
+    skipNotice.resetNoticeInfoMessage.bind(skipNotice)();
   }
 
   chrome.runtime.sendMessage({
@@ -1083,37 +857,29 @@ function vote(type, UUID, inTheBackground = false) {
   }, function(response) {
     if (response != undefined) {
       //see if it was a success or failure
-      if (!inTheBackground) {
+      if (skipNotice != null) {
         if (response.successType == 1) {
           //success
           if (type == 0) {
-            afterDownvote(UUID);
+            skipNotice.afterDownvote.bind(skipNotice)();
           }
         } else if (response.successType == 0) {
           //failure: duplicate vote
-          addNoticeInfoMessage(chrome.i18n.getMessage("voteFAIL"), UUID)
-          resetVoteButtonInfo(UUID);
+          skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
+          skipNotice.resetVoteButtonInfo.bind(skipNotice)();
         } else if (response.successType == -1) {
           if (response.statusCode == 502) {
-            addNoticeInfoMessage(chrome.i18n.getMessage("serverDown"), UUID)
-            resetVoteButtonInfo(UUID);
+            skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("serverDown"))
+            skipNotice.resetVoteButtonInfo.bind(skipNotice)();
           } else {
             //failure: unknown error
-            addNoticeInfoMessage(chrome.i18n.getMessage("connectionError") + response.statusCode, UUID);
-            resetVoteButtonInfo(UUID);
+            skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("connectionError") + response.statusCode);
+            skipNotice.resetVoteButtonInfo.bind(skipNotice)();
           }
         }
       }
     }
   });
-}
-
-//Closes the notice that tells the user that a sponsor was just skipped for this UUID
-function closeSkipNotice(UUID){
-  let notice = document.getElementById("sponsorSkipNotice" + UUID);
-  if (notice != null) {
-    notice.remove();
-  }
 }
 
 //Closes all notices that tell the user that a sponsor was just skipped
