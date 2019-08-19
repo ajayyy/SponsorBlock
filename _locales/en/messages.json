@@ -72,6 +72,9 @@
   "goBack": {
     "message": "Unskip"
   },
+  "paused": {
+    "message": "Paused"
+  },
   "confirmMSG": {
     "message": "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
   },

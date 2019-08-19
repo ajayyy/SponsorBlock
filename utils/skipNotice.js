@@ -7,7 +7,9 @@ class SkipNotice {
         this.UUID = UUID;
 
         //the countdown until this notice closes
-        this.countdownTime = 7;
+        this.countdownTime = 4;
+        //the id for the setInterval running the countdown
+        this.countdownInterval = -1;
 
         //add notice
         let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
@@ -25,6 +27,10 @@ class SkipNotice {
         noticeElement.classList.add("sponsorSkipObject");
         noticeElement.classList.add("sponsorSkipNotice");
         noticeElement.style.zIndex = 50 + amountOfPreviousNotices;
+
+        //add mouse enter and leave listeners
+        noticeElement.addEventListener("mouseenter", this.pauseCountdown.bind(this));
+        noticeElement.addEventListener("mouseleave", this.startCountdown.bind(this));
 
         //the row that will contain the info
         let firstRow = document.createElement("tr");
@@ -151,8 +157,7 @@ class SkipNotice {
 
         referenceNode.prepend(noticeElement);
 
-        //add closing listener
-        this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
+        this.startCountdown();
     }
 
     //called every second to lower the countdown before hiding the notice
@@ -169,6 +174,32 @@ class SkipNotice {
             return;
         }
 
+        this.updateTimerDisplay();
+    }
+
+    pauseCountdown() {
+        //remove setInterval
+        clearInterval(this.countdownInterval);
+        this.countdownInterval = -1;
+
+        //reset countdown
+        this.countdownTime = 4;
+        
+        //inform the user
+        let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.UUID);
+        timeLeft.innerText = chrome.i18n.getMessage("paused");
+    }
+
+    startCountdown() {
+        //if it has already started, don't start it again
+        if (this.countdownInterval != -1) return;
+
+        this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
+
+        this.updateTimerDisplay();
+    }
+
+    updateTimerDisplay() {
         //update the timer display
         let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.UUID);
         timeLeft.innerText = this.countdownTime + "s";
