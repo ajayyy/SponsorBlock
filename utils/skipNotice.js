@@ -18,6 +18,9 @@ class SkipNotice {
         //add notice
         let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
 
+        //this is the suffix added at the end of every id
+        this.idSuffix = this.UUID + amountOfPreviousNotices;
+
         if (amountOfPreviousNotices > 0) {
             //already exists
 
@@ -27,7 +30,7 @@ class SkipNotice {
 
         let noticeElement = document.createElement("div");
         //what sponsor time this is about
-        noticeElement.id = "sponsorSkipNotice" + this.UUID;
+        noticeElement.id = "sponsorSkipNotice" + this.idSuffix;
         noticeElement.classList.add("sponsorSkipObject");
         noticeElement.classList.add("sponsorSkipNotice");
         noticeElement.style.zIndex = 50 + amountOfPreviousNotices;
@@ -38,17 +41,17 @@ class SkipNotice {
 
         //the row that will contain the info
         let firstRow = document.createElement("tr");
-        firstRow.id = "sponsorSkipNoticeFirstRow" + this.UUID;
+        firstRow.id = "sponsorSkipNoticeFirstRow" + this.idSuffix;
 
         let logoColumn = document.createElement("td");
 
         let logoElement = document.createElement("img");
-        logoElement.id = "sponsorSkipLogo" + this.UUID;
+        logoElement.id = "sponsorSkipLogo" + this.idSuffix;
         logoElement.className = "sponsorSkipLogo sponsorSkipObject";
         logoElement.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
 
         let noticeMessage = document.createElement("span");
-        noticeMessage.id = "sponsorSkipMessage" + this.UUID;
+        noticeMessage.id = "sponsorSkipMessage" + this.idSuffix;
         noticeMessage.classList.add("sponsorSkipMessage");
         noticeMessage.classList.add("sponsorSkipObject");
         noticeMessage.innerText = chrome.i18n.getMessage("noticeTitle");
@@ -63,7 +66,7 @@ class SkipNotice {
         closeButtonContainer.style.top = "11px";
 
         let timeLeft = document.createElement("span");
-        timeLeft.id = "sponsorSkipNoticeTimeLeft" + this.UUID;
+        timeLeft.id = "sponsorSkipNoticeTimeLeft" + this.idSuffix;
         timeLeft.innerText = this.countdownTime + "s";
         timeLeft.className = "sponsorSkipObject sponsorSkipNoticeTimeLeft";
 
@@ -80,27 +83,27 @@ class SkipNotice {
         firstRow.appendChild(closeButtonContainer);
 
         let spacer = document.createElement("hr");
-        spacer.id = "sponsorSkipNoticeSpacer" + this.UUID;
+        spacer.id = "sponsorSkipNoticeSpacer" + this.idSuffix;
         spacer.className = "sponsorBlockSpacer";
 
         //the row that will contain the buttons
         let secondRow = document.createElement("tr");
-        secondRow.id = "sponsorSkipNoticeSecondRow" + this.UUID;
+        secondRow.id = "sponsorSkipNoticeSecondRow" + this.idSuffix;
         
         //thumbs up and down buttons
         let voteButtonsContainer = document.createElement("td");
-        voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + this.UUID;
+        voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + this.idSuffix;
         voteButtonsContainer.className = "sponsorTimesVoteButtonsContainer"
 
         let reportText = document.createElement("span");
-        reportText.id = "sponsorTimesReportText" + this.UUID;
+        reportText.id = "sponsorTimesReportText" + this.idSuffix;
         reportText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
         reportText.innerText = chrome.i18n.getMessage("reportButtonTitle");
         reportText.style.marginRight = "5px";
         reportText.setAttribute("title", chrome.i18n.getMessage("reportButtonInfo"));
 
         let downvoteButton = document.createElement("img");
-        downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + this.UUID;
+        downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + this.idSuffix;
         downvoteButton.className = "sponsorSkipObject voteButton";
         downvoteButton.src = chrome.extension.getURL("icons/report.png");
         downvoteButton.addEventListener("click", () => vote(0, this.UUID, this));
@@ -115,7 +118,7 @@ class SkipNotice {
         unskipContainer.className = "sponsorSkipNoticeUnskipSection";
 
         let unskipButton = document.createElement("button");
-        unskipButton.id = "sponsorSkipUnskipButton" + this.UUID;
+        unskipButton.id = "sponsorSkipUnskipButton" + this.idSuffix;
         unskipButton.innerText = chrome.i18n.getMessage("unskip");
         unskipButton.className = "sponsorSkipObject sponsorSkipNoticeButton";
         unskipButton.addEventListener("click", this.unskipCallback);
@@ -181,7 +184,7 @@ class SkipNotice {
 
         if (this.countdownTime == 3) {
             //start fade out animation
-            let notice = document.getElementById("sponsorSkipNotice" + this.UUID);
+            let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
             notice.style.removeProperty("animation");
             notice.classList.add("sponsorSkipNoticeFadeOut");
         }
@@ -198,11 +201,11 @@ class SkipNotice {
         this.countdownTime = this.maxCountdownTime();
         
         //inform the user
-        let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.UUID);
+        let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.idSuffix);
         timeLeft.innerText = chrome.i18n.getMessage("paused");
 
         //remove the fade out class if it exists
-        let notice = document.getElementById("sponsorSkipNotice" + this.UUID);
+        let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
         notice.classList.remove("sponsorSkipNoticeFadeOut");
         notice.style.animation = "none";
     }
@@ -218,7 +221,7 @@ class SkipNotice {
 
     updateTimerDisplay() {
         //update the timer display
-        let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.UUID);
+        let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.idSuffix);
         timeLeft.innerText = this.countdownTime + "s";
     }
 
@@ -226,7 +229,7 @@ class SkipNotice {
         unskipSponsorTime(this.UUID);
 
         //change unskip button to a reskip button
-        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.UUID);
+        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.idSuffix);
         unskipButton.innerText = chrome.i18n.getMessage("reskip");
         unskipButton.removeEventListener("click", this.unskipCallback);
 
@@ -250,7 +253,7 @@ class SkipNotice {
         reskipSponsorTime(this.UUID);
 
         //change unskip button to a reskip button
-        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.UUID);
+        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.idSuffix);
         unskipButton.innerText = chrome.i18n.getMessage("unskip");
         unskipButton.removeEventListener("click", this.unskipCallback);
 
@@ -292,27 +295,27 @@ class SkipNotice {
     }
     
     addNoticeInfoMessage(message) {
-        let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.UUID);
+        let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix);
         if (previousInfoMessage != null) {
             //remove it
-            document.getElementById("sponsorSkipNotice" + this.UUID).removeChild(previousInfoMessage);
+            document.getElementById("sponsorSkipNotice" + this.idSuffix).removeChild(previousInfoMessage);
         }
         
         //add info
         let thanksForVotingText = document.createElement("p");
-        thanksForVotingText.id = "sponsorTimesInfoMessage" + this.UUID;
+        thanksForVotingText.id = "sponsorTimesInfoMessage" + this.idSuffix;
         thanksForVotingText.className = "sponsorTimesInfoMessage";
         thanksForVotingText.innerText = message;
         
         //add element to div
-        document.getElementById("sponsorSkipNotice" + this.UUID).insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + this.UUID));
+        document.getElementById("sponsorSkipNotice" + this.idSuffix).insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
     }
     
     resetNoticeInfoMessage() {
-        let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.UUID);
+        let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix);
         if (previousInfoMessage != null) {
             //remove it
-            document.getElementById("sponsorSkipNotice" + this.UUID).removeChild(previousInfoMessage);
+            document.getElementById("sponsorSkipNotice" + this.idSuffix).removeChild(previousInfoMessage);
         }
     }
     
@@ -320,39 +323,39 @@ class SkipNotice {
         this.resetVoteButtonInfo();
         
         //hide report button and text for it
-        let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.UUID);
+        let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.idSuffix);
         if (downvoteButton != null) {
             downvoteButton.style.display = "none";
         }
-        let downvoteButtonText = document.getElementById("sponsorTimesReportText" + this.UUID);
+        let downvoteButtonText = document.getElementById("sponsorTimesReportText" + this.idSuffix);
         if (downvoteButtonText != null) {
             downvoteButtonText.style.display = "none";
         }
         
         //add info
         let thanksForVotingText = document.createElement("td");
-        thanksForVotingText.id = "sponsorTimesVoteButtonInfoMessage" + this.UUID;
+        thanksForVotingText.id = "sponsorTimesVoteButtonInfoMessage" + this.idSuffix;
         thanksForVotingText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
         thanksForVotingText.innerText = message;
         
         //add element to div
-        document.getElementById("sponsorSkipNoticeSecondRow" + this.UUID).prepend(thanksForVotingText);
+        document.getElementById("sponsorSkipNoticeSecondRow" + this.idSuffix).prepend(thanksForVotingText);
     }
     
     resetVoteButtonInfo() {
-        let previousInfoMessage = document.getElementById("sponsorTimesVoteButtonInfoMessage" + this.UUID);
+        let previousInfoMessage = document.getElementById("sponsorTimesVoteButtonInfoMessage" + this.idSuffix);
         if (previousInfoMessage != null) {
             //remove it
-            document.getElementById("sponsorSkipNoticeSecondRow" + this.UUID).removeChild(previousInfoMessage);
+            document.getElementById("sponsorSkipNoticeSecondRow" + this.idSuffix).removeChild(previousInfoMessage);
         }
         
         //show button again
-        document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.UUID).style.removeProperty("display");
+        document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.idSuffix).style.removeProperty("display");
     }
     
     //close this notice
     close() {
-        let notice = document.getElementById("sponsorSkipNotice" + this.UUID);
+        let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
         if (notice != null) {
             notice.remove();
         }
