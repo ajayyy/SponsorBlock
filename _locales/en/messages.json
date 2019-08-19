@@ -1,124 +1,124 @@
 {
-  "Name": {
-    "message": "SponsorBlock",
-    "description": "Name of the extension."
-  },
-  "fullName": {
-    "message": "SponsorBlock for YouTube - Skip Sponsorships",
-    "description": "Name of the extension."
-  },
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "fullName": {
+        "message": "SponsorBlock for YouTube - Skip Sponsorships",
+        "description": "Name of the extension."
+    },
 
-  "Description": {
-    "message": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
-    "description": "Description of the extension."
-  },
-  "helpPage": {
-    "message": "index_en.html"
-  },
-  "400": {
-    "message": "Server said this request was invalid"
-  },
-  "429": {
-    "message": "You have submitted too many sponsor times for this one video, are you sure there are this many?"
-  },
-  "409": {
-    "message": "This has already been submitted before"
-  },
-  "502": {
-    "message": "It seems the server is down. Contact the dev to inform them."
-  },
-  "channelWhitelisted": {
-    "message": "Channel Whitelisted!"
-  },
-  "Sponsor": {
-    "message": "Sponsor"
-  },
-  "Sponsors": {
-    "message": "Sponsors"
-  },
+    "Description": {
+        "message": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
+        "description": "Description of the extension."
+    },
+    "helpPage": {
+        "message": "index_en.html"
+    },
+    "400": {
+        "message": "Server said this request was invalid"
+    },
+    "429": {
+        "message": "You have submitted too many sponsor times for this one video, are you sure there are this many?"
+    },
+    "409": {
+        "message": "This has already been submitted before"
+    },
+    "502": {
+        "message": "It seems the server is down. Contact the dev to inform them."
+    },
+    "channelWhitelisted": {
+        "message": "Channel Whitelisted!"
+    },
+    "Sponsor": {
+        "message": "Sponsor"
+    },
+    "Sponsors": {
+        "message": "Sponsors"
+    },
    "Segment": {
-    "message": "sponsor segment"
-  },
-  "Segments": {
-    "message": "sponsor segments"
-  },
-  "noticeTitle": {
-    "message": "Sponsor Skipped"
-  },
-  "reportButtonTitle": {
-    "message": "Report"
-  },
-  "reportButtonInfo": {
-    "message": "Report this sponsor submission as incorrect."
-  },
-  "Dismiss": {
-    "message": "Dismiss"
-  },
-  "Loading": {
-    "message": "Loading..."
-  },
-  "Mins": {
-    "message": "Minutes"
-  },
-  "Secs": {
-    "message": "Seconds"
-  },
-  "Hide": {
-    "message": "Never Show"
-  },
-  "hitGoBack": {
-    "message": "Hit unskip to get to where you came from."
-  },
-  "unskip": {
-    "message": "Unskip"
-  },
-  "reskip": {
-    "message": "Reskip"
-  },
-  "paused": {
-    "message": "Paused"
-  },
-  "confirmMSG": {
-    "message": "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
-  },
-  "clearThis": {
-    "message": "Are you sure you want to clear this?\n\n"
-  },
-  "Unknown": {
-    "message": "There was an error submitting your sponsor times, please try again later."
-  },
+        "message": "sponsor segment"
+    },
+    "Segments": {
+        "message": "sponsor segments"
+    },
+    "noticeTitle": {
+        "message": "Sponsor Skipped"
+    },
+    "reportButtonTitle": {
+        "message": "Report"
+    },
+    "reportButtonInfo": {
+        "message": "Report this sponsor submission as incorrect."
+    },
+    "Dismiss": {
+        "message": "Dismiss"
+    },
+    "Loading": {
+        "message": "Loading..."
+    },
+    "Mins": {
+        "message": "Minutes"
+    },
+    "Secs": {
+        "message": "Seconds"
+    },
+    "Hide": {
+        "message": "Never Show"
+    },
+    "hitGoBack": {
+        "message": "Hit unskip to get to where you came from."
+    },
+    "unskip": {
+        "message": "Unskip"
+    },
+    "reskip": {
+        "message": "Reskip"
+    },
+    "paused": {
+        "message": "Paused"
+    },
+    "confirmMSG": {
+        "message": "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
+    },
+    "clearThis": {
+        "message": "Are you sure you want to clear this?\n\n"
+    },
+    "Unknown": {
+        "message": "There was an error submitting your sponsor times, please try again later."
+    },
   
-  "sponsorFound": {
-    "message": "This video's sponsors are in the database!"
-  },
-  "sponsor404": {
-    "message": "No sponsors found"
-  },
-  "sponsorStart": {
-    "message": "Sponsorship Starts Now"
-  },
-  "sponsorEnd": {
-    "message": "Sponsorship Ends Now"
-  },
-  "noVideoID": {
-    "message": "This probably isn't a YouTube tab, or you clicked too early. \n If you know this is a YouTube tab,\n close this popup and open it again."
-  },
-  "Voted": {
-    "message": "Voted!"
-  },
-  "voteFail": {
-    "message": "You have already voted this way before."
-  },
-  "serverDown": {
-    "message": "It seems the sever is down. Contact the dev immediately."
-  },
-  "connectionError": {
-    "message": "A connection error has occured. Error code: "
-  },
-  "wantToSubmit": {
-    "message": "Do you want to submit the sponsor times for video id"
-  },
-  "leftTimes": {
-    "message": "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted)."
-  }
+    "sponsorFound": {
+        "message": "This video's sponsors are in the database!"
+    },
+    "sponsor404": {
+        "message": "No sponsors found"
+    },
+    "sponsorStart": {
+        "message": "Sponsorship Starts Now"
+    },
+    "sponsorEnd": {
+        "message": "Sponsorship Ends Now"
+    },
+    "noVideoID": {
+        "message": "This probably isn't a YouTube tab, or you clicked too early. \n If you know this is a YouTube tab,\n close this popup and open it again."
+    },
+    "Voted": {
+        "message": "Voted!"
+    },
+    "voteFail": {
+        "message": "You have already voted this way before."
+    },
+    "serverDown": {
+        "message": "It seems the sever is down. Contact the dev immediately."
+    },
+    "connectionError": {
+        "message": "A connection error has occured. Error code: "
+    },
+    "wantToSubmit": {
+        "message": "Do you want to submit the sponsor times for video id"
+    },
+    "leftTimes": {
+        "message": "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted)."
+    }
 }
