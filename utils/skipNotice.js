@@ -6,10 +6,14 @@ class SkipNotice {
         this.parent = parent;
         this.UUID = UUID;
 
+        this.maxCountdownTime = () => 4;
         //the countdown until this notice closes
-        this.countdownTime = 4;
+        this.countdownTime = this.maxCountdownTime();
         //the id for the setInterval running the countdown
         this.countdownInterval = -1;
+
+        //the unskip button's callback
+        this.unskipCallback = this.unskip.bind(this);
 
         //add notice
         let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
@@ -111,9 +115,10 @@ class SkipNotice {
         unskipContainer.className = "sponsorSkipNoticeUnskipSection";
 
         let unskipButton = document.createElement("button");
-        unskipButton.innerText = chrome.i18n.getMessage("goBack");
+        unskipButton.id = "sponsorSkipUnskipButton" + this.UUID;
+        unskipButton.innerText = chrome.i18n.getMessage("unskip");
         unskipButton.className = "sponsorSkipObject sponsorSkipNoticeButton";
-        unskipButton.addEventListener("click", () => goBackToPreviousTime(this));
+        unskipButton.addEventListener("click", this.unskipCallback);
 
         unskipButton.style.marginLeft = "4px";
 
@@ -190,7 +195,7 @@ class SkipNotice {
         this.countdownInterval = -1;
 
         //reset countdown
-        this.countdownTime = 4;
+        this.countdownTime = this.maxCountdownTime();
         
         //inform the user
         let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.UUID);
@@ -215,6 +220,48 @@ class SkipNotice {
         //update the timer display
         let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.UUID);
         timeLeft.innerText = this.countdownTime + "s";
+    }
+
+    unskip() {
+        unskipSponsorTime(this.UUID);
+
+        //change unskip button to a reskip button
+        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.UUID);
+        unskipButton.innerText = chrome.i18n.getMessage("reskip");
+        unskipButton.removeEventListener("click", this.unskipCallback);
+
+        //setup new callback
+        this.unskipCallback = this.reskip.bind(this);
+        unskipButton.addEventListener("click", this.unskipCallback);
+
+        //change max duration to however much of the sponsor is left
+        this.maxCountdownTime = function() {
+            let sponsorTime = sponsorTimes[UUIDs.indexOf(this.UUID)];
+            let duration = Math.round(sponsorTime[1] - v.currentTime);
+
+            return Math.max(duration, 4);
+        };
+
+        this.countdownTime = this.maxCountdownTime();
+        this.updateTimerDisplay();
+    }
+
+    reskip() {
+        reskipSponsorTime(this.UUID);
+
+        //change unskip button to a reskip button
+        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.UUID);
+        unskipButton.innerText = chrome.i18n.getMessage("unskip");
+        unskipButton.removeEventListener("click", this.unskipCallback);
+
+        //setup new callback
+        this.unskipCallback = this.unskip.bind(this);
+        unskipButton.addEventListener("click", this.unskipCallback);
+
+        //reset duration
+        this.maxCountdownTime = () => 4;
+        this.countdownTime = this.maxCountdownTime();
+        this.updateTimerDisplay();
     }
 
     afterDownvote() {

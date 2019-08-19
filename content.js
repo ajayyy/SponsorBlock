@@ -515,12 +515,17 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
   }
 }
 
-function goBackToPreviousTime(sponsorTime) {
+function unskipSponsorTime(UUID) {
   if (sponsorTimes != null) {
     //add a tiny bit of time to make sure it is not skipped again
-    v.currentTime = sponsorTimes[UUIDs.indexOf(sponsorTime.UUID)][0] + 0.001;
+    v.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][0] + 0.001;
+  }
+}
 
-    sponsorTime.closeSkipNotice();
+function reskipSponsorTime(UUID) {
+  if (sponsorTimes != null) {
+    //add a tiny bit of time to make sure it is not skipped again
+    v.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][1];
   }
 }
 

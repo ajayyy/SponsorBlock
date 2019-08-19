@@ -69,8 +69,11 @@
   "hitGoBack": {
     "message": "Hit unskip to get to where you came from."
   },
-  "goBack": {
+  "unskip": {
     "message": "Unskip"
+  },
+  "reskip": {
+    "message": "Reskip"
   },
   "paused": {
     "message": "Paused"
