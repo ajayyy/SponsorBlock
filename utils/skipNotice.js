@@ -178,7 +178,7 @@ class SkipNotice {
             //start fade out animation
             let notice = document.getElementById("sponsorSkipNotice" + this.UUID);
             notice.style.removeProperty("animation");
-            notice.classList.add("sponsorBlockFadeOutAnimiation");
+            notice.classList.add("sponsorSkipNoticeFadeOut");
         }
 
         this.updateTimerDisplay();
@@ -198,7 +198,7 @@ class SkipNotice {
 
         //remove the fade out class if it exists
         let notice = document.getElementById("sponsorSkipNotice" + this.UUID);
-        notice.classList.remove("sponsorBlockFadeOutAnimiation");
+        notice.classList.remove("sponsorSkipNoticeFadeOut");
         notice.style.animation = "none";
     }
 

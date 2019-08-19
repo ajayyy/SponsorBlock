@@ -87,8 +87,8 @@
 	padding-right: 5px;
 }
 
-.sponsorBlockFadeOutAnimiation {
-	animation: fadeOut 3s;
+.sponsorSkipNoticeFadeOut {
+	animation: fadeOut 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 .sponsorSkipNoticeTimeLeft {
