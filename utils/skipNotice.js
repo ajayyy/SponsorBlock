@@ -206,11 +206,11 @@ class SkipNotice {
         //hide report button and text for it
         let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.UUID);
         if (downvoteButton != null) {
-            document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.UUID).style.display = "none";
+            downvoteButton.style.display = "none";
         }
         let downvoteButtonText = document.getElementById("sponsorTimesReportText" + this.UUID);
         if (downvoteButtonText != null) {
-            document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.UUID).style.display = "none";
+            downvoteButtonText.style.display = "none";
         }
         
         //add info
