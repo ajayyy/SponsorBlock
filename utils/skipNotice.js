@@ -5,7 +5,10 @@ class SkipNotice {
 	constructor(parent, UUID) {
         this.parent = parent;
         this.UUID = UUID;
-        
+
+        //the countdown until this notice closes
+        this.countdownTime = 7;
+
         //add notice
         let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
 
@@ -50,7 +53,8 @@ class SkipNotice {
         closeButtonContainer.style.top = "11px";
 
         let timeLeft = document.createElement("span");
-        timeLeft.innerText = chrome.i18n.getMessage("noticeClosingMessage");
+        timeLeft.id = "sponsorSkipNoticeTimeLeft" + this.UUID;
+        timeLeft.innerText = this.countdownTime + "s";
         timeLeft.className = "sponsorSkipObject sponsorSkipNoticeTimeLeft";
 
         let hideButton = document.createElement("img");
@@ -148,7 +152,26 @@ class SkipNotice {
         referenceNode.prepend(noticeElement);
 
         //add closing listener
-        setTimeout(this.close.bind(this), 7000);
+        this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
+    }
+
+    //called every second to lower the countdown before hiding the notice
+    countdown() {
+        this.countdownTime--;
+
+        if (this.countdownTime <= 0) {
+            //remove this from setInterval
+            clearInterval(this.countdownInterval);
+
+            //time to close this notice
+            this.close();
+
+            return;
+        }
+
+        //update the timer display
+        let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.UUID);
+        timeLeft.innerText = this.countdownTime + "s";
     }
 
     afterDownvote() {
