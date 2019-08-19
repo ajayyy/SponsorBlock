@@ -76,6 +76,7 @@ class SkipNotice {
         //thumbs up and down buttons
         let voteButtonsContainer = document.createElement("td");
         voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + this.UUID;
+        voteButtonsContainer.className = "sponsorTimesVoteButtonsContainer"
 
         let reportText = document.createElement("span");
         reportText.id = "sponsorTimesReportText" + this.UUID;
@@ -103,6 +104,8 @@ class SkipNotice {
         unskipButton.innerText = chrome.i18n.getMessage("goBack");
         unskipButton.className = "sponsorSkipObject sponsorSkipNoticeButton";
         unskipButton.addEventListener("click", () => goBackToPreviousTime(this));
+
+        unskipButton.style.marginLeft = "4px";
 
         unskipContainer.appendChild(unskipButton);
 
