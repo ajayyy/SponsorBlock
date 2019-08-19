@@ -58,6 +58,11 @@
 	  to { opacity: 1; }
 }
 
+@keyframes fadeOut {
+	from { opacity: 1; }
+	  to { opacity: 0; }
+}
+
 .sponsorBlockSpacer {
 	background-color: rgb(100, 100, 100);
 	border-color: rgb(100, 100, 100);
@@ -80,6 +85,10 @@
 	border-spacing: 5px 10px;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.sponsorBlockFadeOutAnimiation {
+	animation: fadeOut 3s;
 }
 
 .sponsorSkipNoticeTimeLeft {

@@ -174,6 +174,13 @@ class SkipNotice {
             return;
         }
 
+        if (this.countdownTime == 3) {
+            //start fade out animation
+            let notice = document.getElementById("sponsorSkipNotice" + this.UUID);
+            notice.style.removeProperty("animation");
+            notice.classList.add("sponsorBlockFadeOutAnimiation");
+        }
+
         this.updateTimerDisplay();
     }
 
@@ -188,6 +195,11 @@ class SkipNotice {
         //inform the user
         let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.UUID);
         timeLeft.innerText = chrome.i18n.getMessage("paused");
+
+        //remove the fade out class if it exists
+        let notice = document.getElementById("sponsorSkipNotice" + this.UUID);
+        notice.classList.remove("sponsorBlockFadeOutAnimiation");
+        notice.style.animation = "none";
     }
 
     startCountdown() {
