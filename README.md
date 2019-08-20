@@ -8,11 +8,9 @@
 <h1 align="center">SponsorBlock</h1>
 
 <p align="center">
-  <b>Chrome/Chromium</b>: <a href="https://chrome.google.com/webstore/detail/mnjggcdmjocbbbhaepdhchncahnbgone">https://chrome.google.com/webstore/detail/mnjggcdmjocbbbhaepdhchncahnbgone</a>
-</p>
-
-<p align="center">
-  <b>Firefox</b>: <a href="https://addons.mozilla.org/addon/sponsorblock/?src=external-github">https://addons.mozilla.org/addon/sponsorblock/</a>
+  <b>Download: </b>
+  <a href="https://chrome.google.com/webstore/detail/mnjggcdmjocbbbhaepdhchncahnbgone">Chrome/Chromium</a> |
+  <a href="https://addons.mozilla.org/addon/sponsorblock/?src=external-github">Firefox</a>
 </p>
 
 
