@@ -799,7 +799,13 @@ function runThePopup() {
 
                         clearTimes();
                     } else {
-                        let errorMessage = getErrorMessage(response.statusCode);
+                        let errorMessage = "";
+                        
+                        if([400,429,409,502].includes(response.statusCode)) {
+                            errorMessage = chrome.i18n.getMessage(response.statusCode);
+                        } else {
+                            errorMessage = chrome.i18n.getMessage("connectionError") + response.statusCode;
+                        }
 
                         document.getElementById("submitTimesInfoMessage").innerText = errorMessage;
                         document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
@@ -1010,11 +1016,14 @@ function runThePopup() {
 
                     SB.setUsernameContainer.style.display = "none";
                     SB.setUsername.style.display = "unset";
-                } else {
+                    
+                    SB.setUsernameStatusContainer.style.display = "none";
+                } else if (xmlhttp.readyState == 4) {
                     SB.setUsername.style.display = "unset";
                     SB.submitUsername.style.display = "none";
                     SB.usernameInput.style.display = "none";
 
+                    SB.setUsernameStatusContainer.style.display = "unset";
                     SB.setUsernameStatus.innerText = "Couldn't connect to server. Error code: " + xmlhttp.status;
                 }
             });
@@ -1035,11 +1044,17 @@ function runThePopup() {
                     SB.submitUsername.style.display = "none";
                     SB.usernameInput.style.display = "none";
 
-                    SB.setUsernameStatus.innerText = "Success!";
-                } else if (xmlhttp.readyState == 4 && xmlhttp.status == 400) {
-                    SB.setUsernameStatus.innerText = "Bad Request";
-                } else {
-                    SB.setUsernameStatus.innerText = getErrorMessage(EN_US, xmlhttp.status);
+                    SB.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
+                } else if (xmlhttp.readyState == 4) {
+                    let errorMessage = "";
+                        
+                    if([400, 429, 409, 502].includes(xmlhttp.status)) {
+                        errorMessage = chrome.i18n.getMessage(xmlhttp.status);
+                    } else {
+                        errorMessage = chrome.i18n.getMessage("connectionError") + xmlhttp.status;
+                    }
+
+                    SB.setUsernameStatus.innerText = errorMessage;
                 }
             });
         });
@@ -1088,7 +1103,7 @@ function runThePopup() {
                 //see if it was a success or failure
                 if (response.successType == 1) {
                     //success
-                    addVoteMessage(chrome.i18n.getMessage("Voted"), UUID)
+                    addVoteMessage(chrome.i18n.getMessage("voted"), UUID)
                 } else if (response.successType == 0) {
                     //failure: duplicate vote
                     addVoteMessage(chrome.i18n.getMessage("voteFail"), UUID)
