@@ -545,19 +545,18 @@ function createButton(baseID, title, callback, imageName) {
 }
 
 function getControls() {
-	  let controls = document.getElementsByClassName("ytp-right-controls");
-	  return (controls === undefined) ? false : controls[controls.length - 1];
+    let controls = document.getElementsByClassName("ytp-right-controls");
+    return (!controls || controls.length === 0) ? false : controls[controls.length - 1]
 };
 
 //adds the player controls buttons
 function addButtons() {
   wait(getControls).then(result => {
-	  controls = result; // Global
-	  
-	  // Add button if does not already exist in html
-	  createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
+      controls = result; // Global	  
+      // Add button if does not already exist in html
+      createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
       createButton("infoButton", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
-	  createButton("deleteButton", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
+      createButton("deleteButton", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
       createButton("submitButton", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
   });
 }
