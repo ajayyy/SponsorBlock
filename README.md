@@ -9,7 +9,7 @@ SponsorBlock is an extension that will skip over sponsored segments of YouTube v
 
 Chrome: https://chrome.google.com/webstore/detail/mnjggcdmjocbbbhaepdhchncahnbgone
 
-Firefox: https://addons.mozilla.org/addon/sponsorblock/
+Firefox: [https://addons.mozilla.org/addon/sponsorblock/](https://addons.mozilla.org/addon/sponsorblock/?src=external-github)
 
 # Server
 
