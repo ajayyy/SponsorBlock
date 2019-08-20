@@ -33,10 +33,6 @@ var channelWhitelisted = false;
 // create preview bar
 var previewBar;
 
-if (id = getYouTubeVideoID(document.URL)) { // Direct Links
-    videoIDChange(id);
-}
-
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
 
@@ -127,7 +123,7 @@ function messageListener(request, sender, sendResponse) {
 
         if (request.message == "getVideoID") {
             sendResponse({
-                videoID: getYouTubeVideoID(document.URL)
+                videoID: sponsorVideoID
             })
         }
 
@@ -155,7 +151,7 @@ function messageListener(request, sender, sendResponse) {
 
         if (request.message == "whitelistChange") {
             channelWhitelisted = request.value;
-            sponsorsLookup(getYouTubeVideoID(document.URL));
+            sponsorsLookup(sponsorVideoID);
         }
 
         if (request.message == "showNoticeAgain") {
@@ -258,9 +254,11 @@ function videoIDChange(id) {
     closeInfoMenu();
 
     resetValues();
-
+	
+	addButtons();
+	
     //see if there is a video start time
-    youtubeVideoStartTime = getYouTubeVideoStartTime(document.URL);
+    youtubeVideoStartTime = sponsorVideoID;
 
     sponsorsLookup(id);
 
@@ -386,7 +384,7 @@ function updatePreviewBar() {
     previewBar.set(sponsorTimes, [], v.duration);
 
     //update last video id
-    lastPreviewBarUpdate = getYouTubeVideoID(document.URL);
+    lastPreviewBarUpdate = sponsorVideoID;
 }
 
 function getChannelID() {
@@ -529,53 +527,47 @@ function reskipSponsorTime(UUID) {
     }
 }
 
-//Adds a sponsorship starts button to the player controls
-function addPlayerControlsButton() {
-    if (document.getElementById("startSponsorButton") != null) {
-        //it's already added
-        return;
-    }
-
-    let startSponsorButton = document.createElement("button");
-    startSponsorButton.id = "startSponsorButton";
-    startSponsorButton.className = "ytp-button playerButton";
-    startSponsorButton.setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
-    startSponsorButton.addEventListener("click", startSponsorClicked);
-
-    let startSponsorImage = document.createElement("img");
-    startSponsorImage.id = "startSponsorImage";
-    startSponsorImage.className = "playerButtonImage";
-    startSponsorImage.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
-
-    //add the image to the button
-    startSponsorButton.appendChild(startSponsorImage);
-
-    let controls = document.getElementsByClassName("ytp-right-controls");
-    let referenceNode = controls[controls.length - 1];
-
-    if (referenceNode == undefined) {
-        //page not loaded yet
-        setTimeout(addPlayerControlsButton, 100);
-        return;
-    }
-
-    referenceNode.prepend(startSponsorButton);
-}
-
 function removePlayerControlsButton() {
-    document.getElementById("startSponsorButton").style.display = "none";
+	if (!sponsorVideoID) return;
+    document.getElementById("changeStartSponsor").style.display = "none";
     document.getElementById("submitButton").style.display = "none";
 }
 
+function createButton(baseid, title, callback, imageName) {
+  if (document.getElementById(baseid) != null) return;
+  let newButton = document.createElement("button");
+  newButton.id = baseid;
+  newButton.className = "ytp-button playerButton";
+  newButton.setAttribute("title", chrome.i18n.getMessage(baseid));
+  newButton.addEventListener("click", callback);
+  let newButtonImage = document.createElement("img");
+  newButtonImage.id = baseid+"Image";
+  newButtonImage.className = "playerButtonImage";
+  newButtonImage.src = chrome.extension.getURL("icons/"+imageName);
+  controls.prepend(newButton);
+}
+
+function getControls() {
+	  let controls = document.getElementsByClassName("ytp-right-controls");
+	  return (controls) ? controls[controls.length - 1] : false;	  
+};
+
+//adds the player controls buttons
+function addButtons() {
+  wait(getControls).then(result => {
+	  controls = result; // Global
+	  // Add button if does not already exist in html
+	  createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
+      createButton("infoButton", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
+	  createButton("deleteButton", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
+      createButton("submitButton", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
+  });
+}
 //adds or removes the player controls button to what it should be
 function updateVisibilityOfPlayerControlsButton() {
     //not on a proper video yet
-    if (!getYouTubeVideoID(document.URL)) return;
-
-    addPlayerControlsButton();
-    addInfoButton();
-    addDeleteButton();
-    addSubmitButton();
+    if (!sponsorVideoID) return;
+	
     if (hideVideoPlayerControls) {
         removePlayerControlsButton();
     }
@@ -597,7 +589,7 @@ function startSponsorClicked() {
     chrome.runtime.sendMessage({
         message: "addSponsorTime",
         time: v.currentTime,
-        videoID: getYouTubeVideoID(document.URL)
+        videoID: sponsorVideoID
     }, function(response) {
         //see if the sponsorTimesSubmitting needs to be updated
         updateSponsorTimesSubmitting();
@@ -607,7 +599,7 @@ function startSponsorClicked() {
 function updateSponsorTimesSubmitting() {
     chrome.runtime.sendMessage({
         message: "getSponsorTimes",
-        videoID: getYouTubeVideoID(document.URL)
+        videoID: sponsorVideoID
     }, function(response) {
         if (response != undefined) {
             let sponsorTimes = response.sponsorTimes;
@@ -622,6 +614,7 @@ function updateSponsorTimesSubmitting() {
 
 function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     //if it isn't visible, there is no data
+	if(!sponsorVideoID) return false;
     if (uploadButtonVisible && !hideDeleteButtonPlayerControls) {
         document.getElementById("deleteButton").style.display = "unset";
     } else {
@@ -631,7 +624,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     if (showStartSponsor) {
         showingStartSponsor = true;
         document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
-        document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
+        document.getElementById("changeStartSponsor").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
         if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
             document.getElementById("submitButton").style.display = "unset";
@@ -642,7 +635,7 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     } else {
         showingStartSponsor = false;
         document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
-        document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
+        document.getElementById("changeStartSponsor").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
 
         //disable submit button
         document.getElementById("submitButton").style.display = "none";
@@ -651,112 +644,6 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
 
 function toggleStartSponsorButton() {
     changeStartSponsorButton(!showingStartSponsor, true);
-}
-
-//shows the info button on the video player
-function addInfoButton() {
-    if (document.getElementById("infoButton") != null) {
-        //it's already added
-        return;
-    }
-  
-    //make a submit button
-    let infoButton = document.createElement("button");
-    infoButton.id = "infoButton";
-    infoButton.className = "ytp-button playerButton";
-    infoButton.setAttribute("title", "Open SponsorBlock Popup");
-    infoButton.addEventListener("click", openInfoMenu);
-
-    let infoImage = document.createElement("img");
-    infoImage.id = "infoButtonImage";
-    infoImage.className = "playerButtonImage";
-    infoImage.src = chrome.extension.getURL("icons/PlayerInfoIconSponsorBlocker256px.png");
-
-    //add the image to the button
-    infoButton.appendChild(infoImage);
-
-    let controls = document.getElementsByClassName("ytp-right-controls");
-    let referenceNode = controls[controls.length - 1];
-
-    if (referenceNode == undefined) {
-        //page not loaded yet
-        setTimeout(addInfoButton, 100);
-        return;
-    }
-
-    referenceNode.prepend(infoButton);
-}
-
-//shows the delete button on the video player
-function addDeleteButton() {
-    if (document.getElementById("deleteButton") != null) {
-        //it's already added
-        return;
-    }
-  
-    //make a submit button
-    let deleteButton = document.createElement("button");
-    deleteButton.id = "deleteButton";
-    deleteButton.className = "ytp-button playerButton";
-    deleteButton.setAttribute("title", "Clear Sponsor Times");
-    deleteButton.addEventListener("click", clearSponsorTimes);
-    //hide it at the start
-    deleteButton.style.display = "none";
-
-    let deleteImage = document.createElement("img");
-    deleteImage.id = "deleteButtonImage";
-    deleteImage.className = "playerButtonImage";
-    deleteImage.src = chrome.extension.getURL("icons/PlayerDeleteIconSponsorBlocker256px.png");
-
-    //add the image to the button
-    deleteButton.appendChild(deleteImage);
-
-    let controls = document.getElementsByClassName("ytp-right-controls");
-    let referenceNode = controls[controls.length - 1];
-  
-    if (referenceNode == undefined) {
-        //page not loaded yet
-        setTimeout(addDeleteButton, 100);
-        return;
-    }
-
-    referenceNode.prepend(deleteButton);
-}
-
-//shows the submit button on the video player
-function addSubmitButton() {
-    if (document.getElementById("submitButton") != null) {
-        //it's already added
-        return;
-    }
-  
-    //make a submit button
-    let submitButton = document.createElement("button");
-    submitButton.id = "submitButton";
-    submitButton.className = "ytp-button playerButton";
-    submitButton.setAttribute("title", "Submit Sponsor Times");
-    submitButton.addEventListener("click", submitSponsorTimes);
-    //hide it at the start
-    submitButton.style.display = "none";
-
-    let submitImage = document.createElement("img");
-    submitImage.id = "submitButtonImage";
-    submitImage.className = "playerButtonImage";
-    submitImage.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
-
-    //add the image to the button
-    submitButton.appendChild(submitImage);
-
-    let controls = document.getElementsByClassName("ytp-right-controls");
-    let referenceNode = controls[controls.length - 1];
-
-    if (referenceNode == undefined) {
-        //page not loaded yet
-        setTimeout(addSubmitButton, 100);
-        return;
-    }
-  
-    referenceNode.prepend(submitButton);
 }
 
 function openInfoMenu() {
@@ -823,7 +710,7 @@ function clearSponsorTimes() {
     //it can't update to this info yet
     closeInfoMenu();
 
-    let currentVideoID = getYouTubeVideoID(document.URL);
+    let currentVideoID = sponsorVideoID;
 
     let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
     chrome.storage.sync.get([sponsorTimeKey], function(result) {
@@ -924,7 +811,7 @@ function submitSponsorTimes() {
     //it can't update to this info yet
     closeInfoMenu();
 
-    let currentVideoID = getYouTubeVideoID(document.URL);
+    let currentVideoID = sponsorVideoID;
 
     let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
     chrome.storage.sync.get([sponsorTimeKey], function(result) {
@@ -948,7 +835,7 @@ function sendSubmitMessage(){
     document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
     document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
 
-    let currentVideoID = getYouTubeVideoID(document.URL);
+    let currentVideoID = sponsorVideoID;
 
     chrome.runtime.sendMessage({
         message: "submitTimes",
