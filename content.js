@@ -92,7 +92,7 @@ function messageListener(request, sender, sendResponse) {
         //messages from popup script
   
         if (request.message == "update") {
-			videoIDChange(getYouTubeVideoID(document.URL));
+	    videoIDChange(getYouTubeVideoID(document.URL));
         }
   
         if (request.message == "sponsorStart") {
@@ -209,7 +209,7 @@ function resetValues() {
     sponsorLookupRetries = 0;
 
     //empty the preview bar
-    previewBar.set([], [], 0);
+    previewBar = null;
 
     //reset sponsor data found check
     sponsorDataFound = false;
