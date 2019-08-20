@@ -359,6 +359,9 @@ class SkipNotice {
         if (notice != null) {
             notice.remove();
         }
+
+        //remove setInterval
+        if (this.countdownInterval != -1) clearInterval(this.countdownInterval);
     }
 
 }
