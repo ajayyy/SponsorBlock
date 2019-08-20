@@ -82,12 +82,11 @@
         "message": "\n\nPour modifier ou enlever des soumissions, clique sur le bouton d'info."
     },
     "clearThis": {
-        "message": "Est-vous certaines vous voulez enlevez tes soumissions?\n\n"
+        "message": "Êtes-vous certaines vous voulez enlever vos soumissions?\n\n"
     },
     "Unknown": {
         "message": "Erreur, essayer encore plus tard."
     },
-  
     "sponsorFound": {
         "message": "Cette vidéo est dans le database!"
     },
