@@ -13,7 +13,7 @@
         "description": "Descrição da extensão."
     },
     "helpPage": {
-        "message": "index_ptbr.html"
+        "message": "index_en.html"
     },
     "400": {
         "message": "O servidor disse que esse pedido foi inválido"
