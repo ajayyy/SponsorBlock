@@ -33,6 +33,9 @@ var channelWhitelisted = false;
 // create preview bar
 var previewBar;
 
+// Direct Links
+videoIDChange(getYouTubeVideoID(document.URL));
+
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
 
@@ -89,11 +92,7 @@ function messageListener(request, sender, sendResponse) {
         //messages from popup script
   
         if (request.message == "update") {
-            if(id = getYouTubeVideoID(document.URL)){
-                videoIDChange(id);
-            } else {
-                resetValues();
-            }
+			videoIDChange(getYouTubeVideoID(document.URL));
         }
   
         if (request.message == "sponsorStart") {
@@ -207,7 +206,6 @@ function resetValues() {
     //reset sponsor times
     sponsorTimes = null;
     UUIDs = null;
-    sponsorVideoID = id;
     sponsorLookupRetries = 0;
 
     //empty the preview bar
@@ -218,9 +216,8 @@ function resetValues() {
 }
 
 function videoIDChange(id) {
-    //not a url change
-    if (sponsorVideoID == id) return;
-
+    // ID has not changed or ID is false
+    if (sponsorVideoID === id || id === false) return;
     if (previewBar == null) {
         //create it
         let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
@@ -528,20 +525,20 @@ function reskipSponsorTime(UUID) {
 }
 
 function removePlayerControlsButton() {
-	if (!sponsorVideoID) return;
+    if (!sponsorVideoID) return;
     document.getElementById("changeStartSponsor").style.display = "none";
     document.getElementById("submitButton").style.display = "none";
 }
 
-function createButton(baseid, title, callback, imageName) {
-  if (document.getElementById(baseid) != null) return;
+function createButton(baseID, title, callback, imageName) {
+  if (document.getElementById(baseID) != null) return;
   let newButton = document.createElement("button");
-  newButton.id = baseid;
+  newButton.id = baseID;
   newButton.className = "ytp-button playerButton";
-  newButton.setAttribute("title", chrome.i18n.getMessage(baseid));
+  newButton.setAttribute("title", chrome.i18n.getMessage(baseID));
   newButton.addEventListener("click", callback);
   let newButtonImage = document.createElement("img");
-  newButtonImage.id = baseid+"Image";
+  newButtonImage.id = baseID+"Image";
   newButtonImage.className = "playerButtonImage";
   newButtonImage.src = chrome.extension.getURL("icons/"+imageName);
   controls.prepend(newButton);
@@ -549,13 +546,14 @@ function createButton(baseid, title, callback, imageName) {
 
 function getControls() {
 	  let controls = document.getElementsByClassName("ytp-right-controls");
-	  return (controls) ? controls[controls.length - 1] : false;	  
+	  return (controls === undefined) ? false : controls[controls.length - 1];
 };
 
 //adds the player controls buttons
 function addButtons() {
   wait(getControls).then(result => {
 	  controls = result; // Global
+	  
 	  // Add button if does not already exist in html
 	  createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
       createButton("infoButton", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
