@@ -31,10 +31,6 @@ Hopefully this project can be combined with projects like [this](https://github.
 
 You can read the API docs [here](https://github.com/ajayyy/SponsorBlockServer#api-docs).
 
-# Previous extension
-
-This project is partially based off of [this experimental extension](https://github.com/OfficialNoob/YTSponsorSkip), which has the basic video skipping functionality.
-
 # Build Yourself
 
 You can load this project as an unpacked extension. Make sure to rename the `config.js.example` file to `config.js` before installing.
