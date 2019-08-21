@@ -92,7 +92,7 @@ function messageListener(request, sender, sendResponse) {
         //messages from popup script
   
         if (request.message == "update") {
-	    videoIDChange(getYouTubeVideoID(document.URL));
+			videoIDChange(getYouTubeVideoID(document.URL));
         }
   
         if (request.message == "sponsorStart") {
@@ -218,11 +218,12 @@ function resetValues() {
 function videoIDChange(id) {
     // ID has not changed return
     if (sponsorVideoID === id) return
+	// Global ID
+	sponsorVideoID = id; 
 	resetValues();
 	
 	// ID is not valid
 	if (id === false) return;
-	
     if (previewBar == null) {
         //create it
         let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
@@ -269,26 +270,28 @@ function videoIDChange(id) {
     sponsorTimesSubmitting = [];
 
     //see if the onvideo control image needs to be changed
-    chrome.runtime.sendMessage({
-        message: "getSponsorTimes",
-        videoID: id
-    }, function(response) {
-        if (response != undefined) {
-            let sponsorTimes = response.sponsorTimes;
-            if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
-                changeStartSponsorButton(true, true);
-            } else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
+	wait(getControls).then(result => {
+		chrome.runtime.sendMessage({
+			message: "getSponsorTimes",
+			videoID: id
+		}, function(response) {
+			if (response != undefined) {
+				let sponsorTimes = response.sponsorTimes;
+				if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
+					changeStartSponsorButton(true, true);
+				} else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
                 changeStartSponsorButton(false, true);
-            } else {
-                changeStartSponsorButton(true, false);
-            }
+				} else {
+					changeStartSponsorButton(true, false);
+				}
+				//see if this data should be saved in the sponsorTimesSubmitting variable
+				if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+					sponsorTimesSubmitting = sponsorTimes;
+				}
+			}
+		});
+	});
 
-            //see if this data should be saved in the sponsorTimesSubmitting variable
-            if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-                sponsorTimesSubmitting = sponsorTimes;
-            }
-        }
-    });
 
     //see if video controls buttons should be added
     chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
@@ -535,15 +538,20 @@ function removePlayerControlsButton() {
 
 function createButton(baseid, title, callback, imageName) {
   if (document.getElementById(baseid) != null) return;
+  // Button HTML
   let newButton = document.createElement("button");
-  newButton.id = baseid;
+  newButton.id = baseid+"Button";
   newButton.className = "ytp-button playerButton";
   newButton.setAttribute("title", chrome.i18n.getMessage(baseid));
   newButton.addEventListener("click", callback);
+  // Image HTML
   let newButtonImage = document.createElement("img");
   newButtonImage.id = baseid+"Image";
   newButtonImage.className = "playerButtonImage";
   newButtonImage.src = chrome.extension.getURL("icons/"+imageName);
+  // Append image to button
+  newButton.appendChild(newButtonImage);
+  // Add the button to player
   controls.prepend(newButton);
 }
 
@@ -559,9 +567,9 @@ function addButtons() {
 	  
 	  // Add button if does not already exist in html
 	  createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
-      createButton("infoButton", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
-	  createButton("deleteButton", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
-      createButton("submitButton", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
+      createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
+	  createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
+      createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
   });
 }
 //adds or removes the player controls button to what it should be
@@ -613,19 +621,19 @@ function updateSponsorTimesSubmitting() {
     });
 }
 
+isSubmitLoaded = () => (document.getElementById("startSponsorImage") !== undefined);
+
 function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
-    //if it isn't visible, there is no data
 	if(!sponsorVideoID) return false;
-    if (uploadButtonVisible && !hideDeleteButtonPlayerControls) {
-        document.getElementById("deleteButton").style.display = "unset";
-    } else {
-        document.getElementById("deleteButton").style.display = "none";
-    }
+	wait(isSubmitLoaded).then(result => {
+    //if it isn't visible, there is no data
+	let shouldHide = (uploadButtonVisible && !hideDeleteButtonPlayerControls) ? "unset":"none"
+	document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {
         showingStartSponsor = true;
         document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
-        document.getElementById("changeStartSponsor").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
+        document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
         if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
             document.getElementById("submitButton").style.display = "unset";
@@ -636,11 +644,12 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     } else {
         showingStartSponsor = false;
         document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
-        document.getElementById("changeStartSponsor").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
+        document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
 
         //disable submit button
         document.getElementById("submitButton").style.display = "none";
     }
+	});
 }
 
 function toggleStartSponsorButton() {
