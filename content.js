@@ -282,6 +282,8 @@ function videoIDChange(id) {
             //see if this data should be saved in the sponsorTimesSubmitting variable
             if (sponsorTimes != undefined && sponsorTimes.length > 0) {
                 sponsorTimesSubmitting = sponsorTimes;
+
+                updatePreviewBar();
             }
         }
     });
@@ -377,7 +379,18 @@ function sponsorsLookup(id) {
 }
 
 function updatePreviewBar() {
-    previewBar.set(sponsorTimes, [], v.duration);
+    let allSponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+
+    //create an array of the sponsor types
+    let types = [];
+    for (let i = 0; i < sponsorTimes.length; i++) {
+        types.push("sponsor");
+    }
+    for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+        types.push("previewSponsor");
+    }
+
+    previewBar.set(allSponsorTimes, types, v.duration);
 
     //update last video id
     lastPreviewBarUpdate = getYouTubeVideoID(document.URL);
@@ -609,6 +622,8 @@ function updateSponsorTimesSubmitting() {
             //see if this data should be saved in the sponsorTimesSubmitting variable
             if (sponsorTimes != undefined) {
                 sponsorTimesSubmitting = sponsorTimes;
+
+                updatePreviewBar();
             }
         }
     });
@@ -834,6 +849,8 @@ function clearSponsorTimes() {
 
             //clear sponsor times submitting
             sponsorTimesSubmitting = [];
+
+            updatePreviewBar();
 
             //set buttons to be correct
             changeStartSponsorButton(true, false);
