@@ -5,7 +5,7 @@ function getYouTubeVideoID(url) {
         urlObject = new URL(url);
     } catch (e) {      
         console.error("[SB] Unable to parse URL: " + url);
-        return false
+        return false;
     }
   
     //Check if valid hostname

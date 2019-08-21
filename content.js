@@ -931,8 +931,8 @@ function submitSponsorTimes() {
         let sponsorTimes = result[sponsorTimeKey];
 
         if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-            let confirmMessage = "Are you sure you want to submit this?\n\n" + getSponsorTimesMessage(sponsorTimes);
-            confirmMessage += "\n\nTo edit or delete values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
+            let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
+            confirmMessage += "\n\n" + chrome.i18n.getMessage("confirmMSG");
             if(!confirm(confirmMessage)) return;
 
             sendSubmitMessage();

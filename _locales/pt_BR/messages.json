@@ -31,10 +31,10 @@
         "message": "Canal adicionado a lista branca!"
     },
     "Sponsor": {
-        "message": "Patrocinador"
+        "message": "patrocinador"
     },
     "Sponsors": {
-        "message": "Patrocinadores"
+        "message": "patrocinadores"
     },
    "Segment": {
         "message": "segmento de patrocinador"

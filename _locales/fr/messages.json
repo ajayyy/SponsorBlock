@@ -31,10 +31,10 @@
         "message": "Cette channel est sur la liste blanche!"
     },
     "Sponsor": {
-        "message": "Endossement"
+        "message": "endossement"
     },
     "Sponsors": {
-        "message": "Endossements"
+        "message": "endossements"
     },
     "Segment": {
         "message": "section d'endossement"
@@ -122,5 +122,8 @@
     },
     "leftTimes": {
         "message": "Vous avez laissé les endossements qui n'étaient pas soumis. Retournez à la page pour les soumettre (Ils ne sont pas enlevés)."
+    },
+    "submitCheck": {
+        "message": "Êtes-vous certaines vous voulez soumettre?"
     }
 }
