@@ -12,7 +12,25 @@ async function wait(condition, timeout = 5000, check = 100) {
   });
 }
 
-function getYouTubeVideoID(url) {
+function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM level access)
+    let id;
+    let index = 0;
+    let p = document.location.pathname;
+    if(!document.location.origin === "https://www.youtube.com") return false
+    let title = document.getElementsByClassName("ytp-title-link");
+    if(p.startsWith("/user/") || p.startsWith("/channel/") || p.startsWith("/embed/")) {
+		if(title.length > 1) {
+			index = (title[0].hasAttribute("href")) ? 0 : 1;
+		}
+		if(!title[index] || !title[index].hasAttribute("href")) return false
+		id = title[index].href.split("?v=")[1];
+    }
+    return (id && id.length == 11) ? id : false;
+}
+
+
+function getYouTubeVideoID(url = document.URL) {
+    let id = false;
     //Attempt to parse url
     let urlObject = null;
     try { 
@@ -37,7 +55,9 @@ function getYouTubeVideoID(url) {
         return false;
       }
     }
+	return false;
 }
+
 
 //returns the start time of the video if there was one specified (ex. ?t=5s)
 function getYouTubeVideoStartTime(url) {
