@@ -537,7 +537,7 @@ function removePlayerControlsButton() {
 }
 
 function createButton(baseid, title, callback, imageName) {
-  if (document.getElementById(baseid) != null) return;
+  if (document.getElementById(baseid+"Button") != null) return;
   // Button HTML
   let newButton = document.createElement("button");
   newButton.id = baseid+"Button";
