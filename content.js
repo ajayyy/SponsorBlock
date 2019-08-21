@@ -379,11 +379,14 @@ function sponsorsLookup(id) {
 }
 
 function updatePreviewBar() {
-    let allSponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+    let localSponsorTimes = sponsorTimes;
+    if (localSponsorTimes == null) localSponsorTimes = [];
+
+    let allSponsorTimes = localSponsorTimes.concat(sponsorTimesSubmitting);
 
     //create an array of the sponsor types
     let types = [];
-    for (let i = 0; i < sponsorTimes.length; i++) {
+    for (let i = 0; i < localSponsorTimes.length; i++) {
         types.push("sponsor");
     }
     for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
