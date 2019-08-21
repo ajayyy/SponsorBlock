@@ -622,7 +622,7 @@ function updateSponsorTimesSubmitting() {
     });
 }
 
-isSubmitLoaded = () => (document.getElementById("startSponsorImage") !== undefined);
+isSubmitLoaded = () => (document.getElementById("startSponsorImage") !== null);
 
 function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
 	if(!sponsorVideoID) return false;
