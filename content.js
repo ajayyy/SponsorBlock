@@ -219,11 +219,12 @@ function videoIDChange(id) {
     // ID has not changed return
     if (sponsorVideoID === id) return
 	// Global ID
-	sponsorVideoID = id; 
+	sponsorVideoID = id;
 	resetValues();
 	
 	// ID is not valid
 	if (id === false) return;
+
     if (previewBar == null) {
         //create it
         let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
@@ -256,7 +257,7 @@ function videoIDChange(id) {
     //close popup
     closeInfoMenu();
 	
-	addButtons();
+    addButtons();
 	
     //see if there is a video start time
     youtubeVideoStartTime = sponsorVideoID;
@@ -531,22 +532,23 @@ function reskipSponsorTime(UUID) {
 }
 
 function removePlayerControlsButton() {
-	if (!sponsorVideoID) return;
+    if (!sponsorVideoID) return;
+
     document.getElementById("changeStartSponsor").style.display = "none";
     document.getElementById("submitButton").style.display = "none";
 }
 
-function createButton(baseid, title, callback, imageName) {
-  if (document.getElementById(baseid+"Button") != null) return;
+function createButton(baseID, title, callback, imageName) {
+  if (document.getElementById(baseID+"Button") != null) return;
   // Button HTML
   let newButton = document.createElement("button");
-  newButton.id = baseid+"Button";
+  newButton.id = baseID+"Button";
   newButton.className = "ytp-button playerButton";
-  newButton.setAttribute("title", chrome.i18n.getMessage(baseid));
+  newButton.setAttribute("title", chrome.i18n.getMessage(baseID));
   newButton.addEventListener("click", callback);
   // Image HTML
   let newButtonImage = document.createElement("img");
-  newButtonImage.id = baseid+"Image";
+  newButtonImage.id = baseID+"Image";
   newButtonImage.className = "playerButtonImage";
   newButtonImage.src = chrome.extension.getURL("icons/"+imageName);
   // Append image to button
@@ -564,12 +566,11 @@ function getControls() {
 function addButtons() {
   wait(getControls).then(result => {
 	  controls = result; // Global
-	  
 	  // Add button if does not already exist in html
 	  createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
-      createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
+	  createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
 	  createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
-      createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
+	  createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
   });
 }
 //adds or removes the player controls button to what it should be
