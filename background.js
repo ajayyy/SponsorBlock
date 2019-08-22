@@ -56,7 +56,6 @@ chrome.runtime.onInstalled.addListener(function (object) {
             // TODO (shownInstallPage): remove this if statement, but leave contents
             if (!shownInstallPage){
                 //open up the install page
-                
                 chrome.tabs.create({url: chrome.extension.getURL("/help/"+chrome.i18n.getMessage("helpPage"))});
             }
 
@@ -67,13 +66,10 @@ chrome.runtime.onInstalled.addListener(function (object) {
             }
 
             //generate a userID
-            const newUserID = generateUUID();
+            const newUserID = generateUserID();
             //save this UUID
             chrome.storage.sync.set({
-                "userID": newUserID,
-                //the last video id loaded, to make sure it is a video id change
-                "sponsorVideoID": null,
-                "previousVideoID": null
+                "userID": newUserID
             });
         }
     });
@@ -116,6 +112,14 @@ function addSponsorTime(time, videoID, callback) {
 function submitVote(type, UUID, callback) {
     chrome.storage.sync.get(["userID"], function(result) {
         let userID = result.userID;
+
+        if (userID == undefined || userID === "undefined") {
+            //generate one
+            userID = generateUserID();
+            chrome.storage.sync.set({
+                "userID": userID
+            });
+        }
 
         //publish this vote
         sendRequestToServer("GET", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
@@ -201,10 +205,9 @@ function sendRequestToServer(type, address, callback) {
     xmlhttp.send();
 }
 
-function generateUUID(length = 36) {
+function generateUserID(length = 36) {
         let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         let result = "";
-        let isOpera = Object.prototype.toString.call(window.opera) == '[object Opera]';
         if (window.crypto && window.crypto.getRandomValues) {
                 values = new Uint32Array(length);
                 window.crypto.getRandomValues(values);
