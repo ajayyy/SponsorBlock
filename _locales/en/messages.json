@@ -134,4 +134,7 @@
     "SubmitTimes": {
         "message": "Submit Sponsor Times"
     },
+    "submitCheck": {
+        "message": "Are you sure you want to submit this?"
+    }
 }
