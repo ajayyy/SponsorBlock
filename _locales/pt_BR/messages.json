@@ -1,0 +1,127 @@
+{
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Nome da extensão."
+    },
+    "fullName": {
+        "message": "SponsorBlock para YouTube - Pule patrocínios",
+        "description": "Nome da extensão."
+    },
+
+    "Description": {
+        "message": "Pule patrocinadores em vídeos do YouTube. Reporte patrocinadores em videos que você assiste para salvar o tempo dos outros.",
+        "description": "Descrição da extensão."
+    },
+    "helpPage": {
+        "message": "index_en.html"
+    },
+    "400": {
+        "message": "O servidor disse que esse pedido foi inválido"
+    },
+    "429": {
+        "message": "Você enviou muitos segmentos para esse vídeo, tem certeza que tem tantos assim?"
+    },
+    "409": {
+        "message": "Isso já foi enviado antes"
+    },
+    "502": {
+        "message": "Parece que o servidor caiu. Contate o desenvolvedor para informá-los."
+    },
+    "channelWhitelisted": {
+        "message": "Canal adicionado a lista branca!"
+    },
+    "Sponsor": {
+        "message": "patrocinador"
+    },
+    "Sponsors": {
+        "message": "patrocinadores"
+    },
+   "Segment": {
+        "message": "segmento de patrocinador"
+    },
+    "Segments": {
+        "message": "segmento de patrocinadores"
+    },
+    "noticeTitle": {
+        "message": "Patrocinador pulado"
+    },
+    "reportButtonTitle": {
+        "message": "Reportar"
+    },
+    "reportButtonInfo": {
+        "message": "Reportar essa subimissão como inválida."
+    },
+    "Dismiss": {
+        "message": "Ignorar"
+    },
+    "Loading": {
+        "message": "Carregando..."
+    },
+    "Mins": {
+        "message": "Minutos"
+    },
+    "Secs": {
+        "message": "Segundos"
+    },
+    "Hide": {
+        "message": "Nunca mostrar"
+    },
+    "hitGoBack": {
+        "message": "Aperta reverter pulo para voltar onde estava"
+    },
+    "unskip": {
+        "message": "Reverter pulo"
+    },
+    "reskip": {
+        "message": "Pular novamente"
+    },
+    "paused": {
+        "message": "Pausado"
+    },
+    "confirmMSG": {
+        "message": "\n\nPara editar ou remover linhas individuais, clique com o botão direito ou abra o popup da extensão pelo icone no canto superior direito."
+    },
+    "clearThis": {
+        "message": "Tem certeza que quer limpar isso?\n\n"
+    },
+    "Unknown": {
+        "message": "Teve um erro ao enviar seus segmentos, tente novamente depois"
+    },
+  
+    "sponsorFound": {
+        "message": "Os patrocinadores desse vídeo estão no banco de dados!"
+    },
+    "sponsor404": {
+        "message": "Nenhum patrocinador encontrado"
+    },
+    "sponsorStart": {
+        "message": "Patrocínio começa agora"
+    },
+    "sponsorEnd": {
+        "message": "Patrocínio termina agora"
+    },
+    "noVideoID": {
+        "message": "Isso provavelmente não é uma tab do YouTube, ou você clicou muito cedo. \n Se sabe que é uma tab do YouTube,\n fecha esse popup e abre de novo."
+    },
+    "success": {
+        "message": "Sucesso!"
+    },
+    "voted": {
+        "message": "Votado!"
+    },
+    "voteFail": {
+        "message": "Você já votou antes."
+    },
+    "serverDown": {
+        "message": "Parece que o servidor caiu. Contate o desenvolvedor o quanto antes."
+    },
+    "connectionError": {
+        "message": "Um erro de conexão aconteceu: Código: "
+    },
+    "wantToSubmit": {
+        "message": "Quer enviar os segmentos para o vídeo de ID"
+    },
+    "leftTimes": {
+        "message": "Parece que você esqueceu de enviar alguns segmentos. Volta pra página para enviar eles (não foram deletados)."
+    }
+}
