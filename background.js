@@ -1,6 +1,6 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 	chrome.tabs.sendMessage(tabId, {
-    message: 'update',
+        message: 'update',
 	});
 });
 
@@ -33,8 +33,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     case "alertPrevious":
 			chrome.notifications.create("stillThere" + Math.random(), {
         type: "basic",
-        title: "Do you want to submit the sponsor times for video id " + request.previousVideoID + "?",
-        message: "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted).",
+        title: chrome.i18n.getMessage("wantToSubmit") + request.previousVideoID + "?",
+        message: chrome.i18n.getMessage("leftTimes"),
         iconUrl: "./icons/LogoSponsorBlocker256px.png"
 			});
 	}
