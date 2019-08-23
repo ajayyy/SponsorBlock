@@ -1278,7 +1278,7 @@ function runThePopup() {
 
 if (chrome.tabs != undefined) {
     //add the width restriction (because Firefox)
-    document.getElementById("sponorBlockStyleSheet").sheet.insertRule('.popupBody { width: 300 }', 0);
+    document.getElementById("sponorBlockStyleSheet").sheet.insertRule('.popupBody { width: 325 }', 0);
 
     //this means it is actually opened in the popup
     runThePopup();
