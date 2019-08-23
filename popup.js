@@ -981,7 +981,7 @@ function runThePopup() {
     //set it to false
     function resetStartTimeChosen() {
         startTimeChosen = false;
-        SB.sponsorStart.innerHTML = "SP_START";
+        SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorStart");
     }
   
     //hides and shows the submit times button when needed
