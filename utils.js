@@ -37,7 +37,7 @@ function getYouTubeVideoID(url = document.URL) {
         urlObject = new URL(url);
     } catch (e) {      
         console.error("[SB] Unable to parse URL: " + url);
-        return false
+        return false;
     }
   
     //Check if valid hostname
@@ -58,7 +58,6 @@ function getYouTubeVideoID(url = document.URL) {
 	return false;
 }
 
-
 //returns the start time of the video if there was one specified (ex. ?t=5s)
 function getYouTubeVideoStartTime(url) {
   let searchParams = new URL(url).searchParams;
@@ -66,6 +65,5 @@ function getYouTubeVideoStartTime(url) {
   if (startTime == null) {
     startTime = searchParams.get("time_continue");
   }
-
   return startTime;
 }

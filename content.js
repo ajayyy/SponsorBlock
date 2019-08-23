@@ -10,9 +10,6 @@ var sponsorVideoID = null;
 //these are sponsors that have been downvoted
 var hiddenSponsorTimes = [];
 
-//the time this video is starting at when first played, if not zero
-var youtubeVideoStartTime = null;
-
 //the video
 var v;
 
@@ -259,9 +256,6 @@ function videoIDChange(id) {
 
     resetValues();
 
-    //see if there is a video start time
-    youtubeVideoStartTime = getYouTubeVideoStartTime(document.URL);
-
     sponsorsLookup(id);
 
     //make sure everything is properly added
@@ -288,6 +282,8 @@ function videoIDChange(id) {
             //see if this data should be saved in the sponsorTimesSubmitting variable
             if (sponsorTimes != undefined && sponsorTimes.length > 0) {
                 sponsorTimesSubmitting = sponsorTimes;
+
+                updatePreviewBar();
             }
         }
     });
@@ -383,7 +379,21 @@ function sponsorsLookup(id) {
 }
 
 function updatePreviewBar() {
-    previewBar.set(sponsorTimes, [], v.duration);
+    let localSponsorTimes = sponsorTimes;
+    if (localSponsorTimes == null) localSponsorTimes = [];
+
+    let allSponsorTimes = localSponsorTimes.concat(sponsorTimesSubmitting);
+
+    //create an array of the sponsor types
+    let types = [];
+    for (let i = 0; i < localSponsorTimes.length; i++) {
+        types.push("sponsor");
+    }
+    for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+        types.push("previewSponsor");
+    }
+
+    previewBar.set(allSponsorTimes, types, v.duration);
 
     //update last video id
     lastPreviewBarUpdate = getYouTubeVideoID(document.URL);
@@ -468,7 +478,7 @@ function checkSponsorTime(sponsorTimes, index, openNotice) {
         lastTime = v.currentTime - 0.0001;
     }
 
-    if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0]) && !hiddenSponsorTimes.includes(index)) {
+    if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0], sponsorTimes[index][1]) && !hiddenSponsorTimes.includes(index)) {
         //skip it
         skipToTime(v, index, sponsorTimes, openNotice);
 
@@ -479,13 +489,13 @@ function checkSponsorTime(sponsorTimes, index, openNotice) {
     return false;
 }
 
-function checkIfTimeToSkip(currentVideoTime, startTime) {
+function checkIfTimeToSkip(currentVideoTime, startTime, endTime) {
     //If the sponsor time is in between these times, skip it
     //Checks if the last time skipped to is not too close to now, to make sure not to get too many
     //  sponsor times in a row (from one troll)
     //the last term makes 0 second start times possible only if the video is not setup to start at a different time from zero
     return (Math.abs(currentVideoTime - startTime) < 3 && startTime >= lastTime && startTime <= currentVideoTime) || 
-                (lastTime == -1 && startTime == 0 && youtubeVideoStartTime == null)
+                (lastTime == -1 && startTime == 0 && currentVideoTime < endTime)
 }
 
 //skip fromt he start time to the end time for a certain index sponsor time
@@ -538,12 +548,14 @@ function addPlayerControlsButton() {
 
     let startSponsorButton = document.createElement("button");
     startSponsorButton.id = "startSponsorButton";
+    startSponsorButton.draggable = false;
     startSponsorButton.className = "ytp-button playerButton";
     startSponsorButton.setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
     startSponsorButton.addEventListener("click", startSponsorClicked);
 
     let startSponsorImage = document.createElement("img");
     startSponsorImage.id = "startSponsorImage";
+    startSponsorImage.draggable = false;
     startSponsorImage.className = "playerButtonImage";
     startSponsorImage.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
 
@@ -615,6 +627,8 @@ function updateSponsorTimesSubmitting() {
             //see if this data should be saved in the sponsorTimesSubmitting variable
             if (sponsorTimes != undefined) {
                 sponsorTimesSubmitting = sponsorTimes;
+
+                updatePreviewBar();
             }
         }
     });
@@ -663,12 +677,14 @@ function addInfoButton() {
     //make a submit button
     let infoButton = document.createElement("button");
     infoButton.id = "infoButton";
+    infoButton.draggable = false;
     infoButton.className = "ytp-button playerButton";
     infoButton.setAttribute("title", "Open SponsorBlock Popup");
     infoButton.addEventListener("click", openInfoMenu);
 
     let infoImage = document.createElement("img");
     infoImage.id = "infoButtonImage";
+    infoImage.draggable = false;
     infoImage.className = "playerButtonImage";
     infoImage.src = chrome.extension.getURL("icons/PlayerInfoIconSponsorBlocker256px.png");
 
@@ -697,6 +713,7 @@ function addDeleteButton() {
     //make a submit button
     let deleteButton = document.createElement("button");
     deleteButton.id = "deleteButton";
+    deleteButton.draggable = false;
     deleteButton.className = "ytp-button playerButton";
     deleteButton.setAttribute("title", "Clear Sponsor Times");
     deleteButton.addEventListener("click", clearSponsorTimes);
@@ -705,6 +722,7 @@ function addDeleteButton() {
 
     let deleteImage = document.createElement("img");
     deleteImage.id = "deleteButtonImage";
+    deleteImage.draggable = false;
     deleteImage.className = "playerButtonImage";
     deleteImage.src = chrome.extension.getURL("icons/PlayerDeleteIconSponsorBlocker256px.png");
 
@@ -733,6 +751,7 @@ function addSubmitButton() {
     //make a submit button
     let submitButton = document.createElement("button");
     submitButton.id = "submitButton";
+    submitButton.draggable = false;
     submitButton.className = "ytp-button playerButton";
     submitButton.setAttribute("title", "Submit Sponsor Times");
     submitButton.addEventListener("click", submitSponsorTimes);
@@ -741,6 +760,7 @@ function addSubmitButton() {
 
     let submitImage = document.createElement("img");
     submitImage.id = "submitButtonImage";
+    submitImage.draggable = false;
     submitImage.className = "playerButtonImage";
     submitImage.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
 
@@ -841,6 +861,8 @@ function clearSponsorTimes() {
             //clear sponsor times submitting
             sponsorTimesSubmitting = [];
 
+            updatePreviewBar();
+
             //set buttons to be correct
             changeStartSponsorButton(true, false);
         }
@@ -931,8 +953,8 @@ function submitSponsorTimes() {
         let sponsorTimes = result[sponsorTimeKey];
 
         if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-            let confirmMessage = "Are you sure you want to submit this?\n\n" + getSponsorTimesMessage(sponsorTimes);
-            confirmMessage += "\n\nTo edit or delete values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
+            let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
+            confirmMessage += "\n\n" + chrome.i18n.getMessage("confirmMSG");
             if(!confirm(confirmMessage)) return;
 
             sendSubmitMessage();
