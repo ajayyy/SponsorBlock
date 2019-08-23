@@ -953,6 +953,13 @@ function submitSponsorTimes() {
         let sponsorTimes = result[sponsorTimeKey];
 
         if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+            //check if a sponsor exceeds the duration of the video
+            for (let i = 0; i < sponsorTimes.length; i++) {
+                if (sponsorTimes[i][1] > v.duration) {
+                    sponsorTimes[i][1] = v.duration;
+                }
+            }
+
             let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
             confirmMessage += "\n\n" + chrome.i18n.getMessage("confirmMSG");
             if(!confirm(confirmMessage)) return;
