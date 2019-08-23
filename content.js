@@ -128,6 +128,12 @@ function messageListener(request, sender, sendResponse) {
             })
         }
 
+        if (request.message == "getVideoDuration") {
+            sendResponse({
+                duration: v.duration
+            });
+        }
+
         if (request.message == "skipToTime") {
             v.currentTime = request.time;
         }
@@ -964,6 +970,8 @@ function submitSponsorTimes() {
                     sponsorTimes[i][1] = v.duration;
                 }
             }
+            //update sponsorTimes
+            chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
 
             let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
             confirmMessage += "\n\n" + chrome.i18n.getMessage("confirmMSG");
