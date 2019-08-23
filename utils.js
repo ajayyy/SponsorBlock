@@ -57,13 +57,3 @@ function getYouTubeVideoID(url = document.URL) {
     }
 	return false;
 }
-
-//returns the start time of the video if there was one specified (ex. ?t=5s)
-function getYouTubeVideoStartTime(url) {
-  let searchParams = new URL(url).searchParams;
-  let startTime = searchParams.get("t");
-  if (startTime == null) {
-    startTime = searchParams.get("time_continue");
-  }
-  return startTime;
-}
