@@ -329,6 +329,9 @@ function sponsorsLookup(id) {
     }
   
     //check database for sponsor times
+
+    //made true once a setTimeout has been created to try again after a server error
+    let recheckStarted = false;
     sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             sponsorDataFound = true;
@@ -364,7 +367,9 @@ function sponsorsLookup(id) {
             });
 
             sponsorLookupRetries = 0;
-        } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90) {
+        } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90 && !recheckStarted) {
+            recheckStarted = true;
+
             //some error occurred, try again in a second
             setTimeout(() => sponsorsLookup(id), 1000);
 
