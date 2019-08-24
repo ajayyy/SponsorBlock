@@ -666,12 +666,15 @@ function isSubmitButtonLoaded() {
     return document.getElementById("submitButton") !== null;
 }
 
-function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
-	if(!sponsorVideoID) return false;
-	wait(isSubmitButtonLoaded).then(result => {
+async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
+    if(!sponsorVideoID) return false;
+    
+    //make sure submit button is loaded
+    await wait(isSubmitButtonLoaded);
+    
     //if it isn't visible, there is no data
-	let shouldHide = (uploadButtonVisible && !hideDeleteButtonPlayerControls) ? "unset":"none"
-	document.getElementById("deleteButton").style.display = shouldHide;
+    let shouldHide = (uploadButtonVisible && !hideDeleteButtonPlayerControls) ? "unset" : "none"
+    document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {
         showingStartSponsor = true;
@@ -692,7 +695,6 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
         //disable submit button
         document.getElementById("submitButton").style.display = "none";
     }
-	});
 }
 
 function toggleStartSponsorButton() {
@@ -896,7 +898,7 @@ function submitSponsorTimes() {
 //called after all the checks have been made that it's okay to do so
 function sendSubmitMessage(){
     //add loading animation
-    document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
+    document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
     document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
 
     let currentVideoID = sponsorVideoID;
@@ -931,7 +933,7 @@ function sendSubmitMessage(){
             } else {
                 //show that the upload failed
                 document.getElementById("submitButton").style.animation = "unset";
-                document.getElementById("submitButtonImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+                document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
                 if([400,429,409,502].includes(response.statusCode)) {
                     alert(chrome.i18n.getMessage(response.statusCode));
