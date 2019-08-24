@@ -7,29 +7,29 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	switch(request.message) {
     case "submitTimes":
-			submitTimes(request.videoID, callback);
-        
-			//this allows the callback to be called later by the submitTimes function
-			return true; 
+        submitTimes(request.videoID, callback);
+    
+        //this allows the callback to be called later by the submitTimes function
+        return true; 
     case "addSponsorTime":
-			addSponsorTime(request.time, request.videoID, callback);
-        
-			//this allows the callback to be called later
-			return true; 
+        addSponsorTime(request.time, request.videoID, callback);
+    
+        //this allows the callback to be called later
+        return true; 
     case "getSponsorTimes":
-			getSponsorTimes(request.videoID, function(sponsorTimes) {
-        callback({
-					sponsorTimes: sponsorTimes
-        })
-			});
-        
-			//this allows the callback to be called later
-			return true;
+        getSponsorTimes(request.videoID, function(sponsorTimes) {
+            callback({
+                        sponsorTimes: sponsorTimes
+            })
+        });
+    
+        //this allows the callback to be called later
+        return true;
     case "submitVote":
-			submitVote(request.type, request.UUID, callback);
-        
-			//this allows the callback to be called later
-			return true;
+        submitVote(request.type, request.UUID, callback);
+    
+        //this allows the callback to be called later
+        return true;
     case "alertPrevious":
 			chrome.notifications.create("stillThere" + Math.random(), {
         type: "basic",
