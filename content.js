@@ -553,12 +553,12 @@ function removePlayerControlsButton() {
 
 function createButton(baseID, title, callback, imageName, isDraggable=false) {
 
-    if (document.getElementById(baseID+"Button") != null) return;
+    if (document.getElementById(baseID + "Button") != null) return;
 
     // Button HTML
     let newButton = document.createElement("button");
     newButton.draggable = isDraggable;
-    newButton.id = baseID+"Button";
+    newButton.id = baseID + "Button";
     newButton.className = "ytp-button playerButton";
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
     newButton.addEventListener("click", callback);
@@ -566,9 +566,9 @@ function createButton(baseID, title, callback, imageName, isDraggable=false) {
     // Image HTML
     let newButtonImage = document.createElement("img");
     newButton.draggable = isDraggable;
-    newButtonImage.id = baseID+"Image";
+    newButtonImage.id = baseID + "Image";
     newButtonImage.className = "playerButtonImage";
-    newButtonImage.src = chrome.extension.getURL("icons/"+imageName);
+    newButtonImage.src = chrome.extension.getURL("icons/" + imageName);
 
     // Append image to button
     newButton.appendChild(newButtonImage);
