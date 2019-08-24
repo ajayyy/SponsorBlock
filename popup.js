@@ -981,7 +981,7 @@ function runThePopup() {
     //set it to false
     function resetStartTimeChosen() {
         startTimeChosen = false;
-        SB.sponsorStart.innerHTML = "SP_START";
+        SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorStart");
     }
   
     //hides and shows the submit times button when needed
@@ -1278,7 +1278,7 @@ function runThePopup() {
 
 if (chrome.tabs != undefined) {
     //add the width restriction (because Firefox)
-    document.getElementById("sponorBlockStyleSheet").sheet.insertRule('.popupBody { width: 300 }', 0);
+    document.getElementById("sponorBlockStyleSheet").sheet.insertRule('.popupBody { width: 325 }', 0);
 
     //this means it is actually opened in the popup
     runThePopup();

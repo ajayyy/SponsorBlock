@@ -128,6 +128,12 @@ function messageListener(request, sender, sendResponse) {
             })
         }
 
+        if (request.message == "getVideoDuration") {
+            sendResponse({
+                duration: v.duration
+            });
+        }
+
         if (request.message == "skipToTime") {
             v.currentTime = request.time;
         }
@@ -329,6 +335,9 @@ function sponsorsLookup(id) {
     }
   
     //check database for sponsor times
+
+    //made true once a setTimeout has been created to try again after a server error
+    let recheckStarted = false;
     sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             sponsorDataFound = true;
@@ -364,7 +373,9 @@ function sponsorsLookup(id) {
             });
 
             sponsorLookupRetries = 0;
-        } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90) {
+        } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90 && !recheckStarted) {
+            recheckStarted = true;
+
             //some error occurred, try again in a second
             setTimeout(() => sponsorsLookup(id), 1000);
 
@@ -953,6 +964,15 @@ function submitSponsorTimes() {
         let sponsorTimes = result[sponsorTimeKey];
 
         if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+            //check if a sponsor exceeds the duration of the video
+            for (let i = 0; i < sponsorTimes.length; i++) {
+                if (sponsorTimes[i][1] > v.duration) {
+                    sponsorTimes[i][1] = v.duration;
+                }
+            }
+            //update sponsorTimes
+            chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
+
             let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
             confirmMessage += "\n\n" + chrome.i18n.getMessage("confirmMSG");
             if(!confirm(confirmMessage)) return;
