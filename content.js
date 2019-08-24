@@ -30,6 +30,9 @@ var channelWhitelisted = false;
 // create preview bar
 var previewBar = null;
 
+//the player controls on the YouTube player
+var controls = null;
+
 // Direct Links
 videoIDChange(getYouTubeVideoID(document.URL));
 
@@ -552,7 +555,6 @@ function removePlayerControlsButton() {
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false) {
-
     if (document.getElementById(baseID + "Button") != null) return;
 
     // Button HTML
@@ -582,10 +584,12 @@ function getControls() {
     return (!controls || controls.length === 0) ? false : controls[controls.length - 1]
 };
 
-//adds the player controls buttons
-function addButtons() {
+//adds all the player controls buttons
+function createButtons() {
     wait(getControls).then(result => {
-        controls = result; // Global
+        //set global controls variable
+        controls = result;
+
         // Add button if does not already exist in html
         createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
         createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
@@ -598,7 +602,7 @@ function updateVisibilityOfPlayerControlsButton() {
     //not on a proper video yet
     if (!sponsorVideoID) return;
 
-    addButtons();
+    createButtons();
 	
     if (hideVideoPlayerControls) {
         removePlayerControlsButton();
