@@ -278,15 +278,16 @@ function videoIDChange(id) {
 				if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
 					changeStartSponsorButton(true, true);
 				} else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
-                changeStartSponsorButton(false, true);
+                    changeStartSponsorButton(false, true);
 				} else {
 					changeStartSponsorButton(true, false);
-				}
+                }
+                
 				//see if this data should be saved in the sponsorTimesSubmitting variable
 				if (sponsorTimes != undefined && sponsorTimes.length > 0) {
 					sponsorTimesSubmitting = sponsorTimes;
           
-          pdatePreviewBar();
+                    updatePreviewBar();
 				}
 			}
 		});
