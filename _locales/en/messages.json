@@ -121,7 +121,6 @@
     "wantToSubmit": {
         "message": "Do you want to submit the sponsor times for video id"
     },
-    
     "leftTimes": {
         "message": "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted)."
     },
