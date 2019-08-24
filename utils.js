@@ -12,6 +12,17 @@ async function wait(condition, timeout = 5000, check = 100) {
   });
 }
 
+// Contains both getYouTubeVideoID functions
+async function getYouTubeVideoIDAsync() {
+    let id = false;
+    id = getYouTubeVideoID();
+    if(id) return id;
+    await wait(getYouTubeVideoID_ALT).then((result) => {
+        id = result;
+    });
+    return id;
+}
+
 function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM level access)
     let id;
     let index = 0;
