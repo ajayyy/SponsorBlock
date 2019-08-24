@@ -4,12 +4,12 @@
         "description": "Name of the extension."
     },
     "fullName": {
-        "message": "SponsorBlock pour YouTube - Enlève les endossements",
+        "message": "SponsorBlock pour YouTube - Enlève les messages commerciaux et publicités intégrées",
         "description": "Name of the extension."
     },
 
     "Description": {
-        "message": "Enlève les endossements dans les vidéos YouTube. Soummettre les endossements dans les vidéos que vous regardez pour aidez les autres.",
+        "message": "Passe automatiquement les messages commerciaux intégrés dans les vidéos YouTube. Soumettez les segments commerciaux dans les vidéos que vous regardez pour aidez les autres.",
         "description": "Description of the extension."
     },
     "helpPage": {
@@ -19,40 +19,40 @@
         "message": "Soumission invalide"
     },
     "429": {
-        "message": "Vous avez soummetez trop de endossements, il y a vraiment cette montant?"
+        "message": "Vous cherchez à envoyer beaucoup de segments, il y en a vraiment autant ?"
     },
     "409": {
-        "message": "Déjas soummis"
+        "message": "Déja soumis"
     },
     "502": {
-        "message": "Le serveur ne fonctionne pas. Message le développeur."
+        "message": "Le serveur ne fonctionne pas. Contactez le développeur."
     },
     "channelWhitelisted": {
-        "message": "Cette channel est sur la liste blanche!"
+        "message": "Cette chaine est sur la liste blanche !"
     },
     "Sponsor": {
-        "message": "endossement"
+        "message": "message commercial"
     },
     "Sponsors": {
-        "message": "endossements"
+        "message": "messages commerciaux"
     },
     "Segment": {
-        "message": "section d'endossement"
+        "message": "segment de message commercial"
     },
     "Segments": {
-        "message": "section d'endossements"
+        "message": "segments de message commercial"
     },
     "noticeTitle": {
-        "message": "Endossement Passer"
+        "message": "Message passé"
     },
     "reportButtonTitle": {
         "message": "Incorrect"
     },
     "reportButtonInfo": {
-        "message": "Informe que cette endossement est incorrect ou n'existe pas."
+        "message": "Signaler que ce segment est incorrect ou n'existe pas."
     },
     "Dismiss": {
-        "message": "Ferme"
+        "message": "Fermer"
     },
     "Loading": {
         "message": "Chargement en cours..."
@@ -61,69 +61,69 @@
         "message": "Minutes"
     },
     "Secs": {
-        "message": "Seconds"
+        "message": "Secondes"
     },
     "Hide": {
-        "message": "Ne Montre Jaimais"
+        "message": "Ne plus montrer"
     },
     "hitGoBack": {
-        "message": "Clique retourne pour si vous avez manqué parti."
+        "message": "Cliquez sur revenir en arrière pour revenir avant le saut du segment"
     },
     "unskip": {
-        "message": "Retourne"
+        "message": "Revenir en arrière"
     },
     "reskip": {
-        "message": "Resaute"
+        "message": "Sauter"
     },
     "paused": {
-        "message": "Pause"
+        "message": "En pause"
     },
     "confirmMSG": {
-        "message": "\n\nPour modifier ou enlever des soumissions, clique sur le bouton d'info."
+        "message": "\n\nPour modifier ou enlever des soumissions, cliquez sur le bouton d'info."
     },
     "clearThis": {
-        "message": "Êtes-vous certaines vous voulez enlever vos soumissions?\n\n"
+        "message": "Êtes-vous certain(e) que vous voulez enlever vos soumissions ?\n\n"
     },
     "Unknown": {
-        "message": "Erreur, essayer encore plus tard."
+        "message": "Erreur, essayer plus tard."
     },
     "sponsorFound": {
-        "message": "Cette vidéo est dans le database!"
+        "message": "Les messages commerciaux sont déjà dans notre base de donnée pour cette vidéo !"
     },
     "sponsor404": {
-        "message": "Rien d'endossements trouvé"
+        "message": "Pas de messages trouvés"
     },
     "sponsorStart": {
-        "message": "Endossement Commence Maintenant"
+        "message": "Début du message"
     },
     "sponsorEnd": {
-        "message": "Endossement Arête Maintenant"
+        "message": "Fin du message"
     },
     "noVideoID": {
-        "message": "Ceci n'est pas une tab de YouTube, ou vous avez cliqué trop tôt. \n Si vous savez que ceci est une tab YouTube, ferme ce menu et essayé encore."
+        "message": "Ceci n'est pas un onglet YouTube, ou vous avez cliqué trop tôt. \n Si vous êtes sur(e) que c'est un onglet YouTube, fermez ce menu et réessayer."
     },
     "success": {
-        "message": "Succès!"
+        "message": "Succès !"
     },
     "voted": {
-        "message": "Voté!"
+        "message": "A voté !"
     },
     "voteFail": {
-        "message": "Vous avez déjà voté la même façon."
+        "message": "Vous avez déjà voté pour ce choix auparavant."
     },
     "serverDown": {
-        "message": "Le serveur ne fonctionne pas. Message le développeur."
+        "message": "Le serveur ne fonctionne pas. Contactez le développeur."
     },
     "connectionError": {
-        "message": "Erreur. Code: "
+        "message": "Erreur de connexion, Code : "
     },
     "wantToSubmit": {
-        "message": "Voulez-vous soumettre les endossements sur le vidéo"
+        "message": "Voulez-vous soumettre les messages pour cette vidéo"
     },
     "leftTimes": {
-        "message": "Vous avez laissé les endossements qui n'étaient pas soumis. Retournez à la page pour les soumettre (Ils ne sont pas enlevés)."
+        "message": "Vous avez laissé des messages non soumis. Retournez sur la vidéo pour les soumettre (ils ont été conservés)."
     },
     "submitCheck": {
-        "message": "Êtes-vous certaines vous voulez soumettre?"
+        "message": "Soumettre ce(s) message(s) ?"
     }
 }
