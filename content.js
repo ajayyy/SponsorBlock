@@ -90,99 +90,86 @@ chrome.runtime.onMessage.addListener(messageListener);
   
 function messageListener(request, sender, sendResponse) {
         //messages from popup script
-  
-        if (request.message == "update") {
-			videoIDChange(getYouTubeVideoID(document.URL));
-        }
-  
-        if (request.message == "sponsorStart") {
-            sponsorMessageStarted(sendResponse);
-        }
-
-        if (request.message == "sponsorDataChanged") {
-            updateSponsorTimesSubmitting();
-        }
-
-        if (request.message == "isInfoFound") {
-            //send the sponsor times along with if it's found
+        switch(request.message){
+          case "update":
+              videoIDChange(getYouTubeVideoID(document.URL));
+              return
+          case "sponsorStart":
+              sponsorMessageStarted(sendResponse);
+              return
+          case "sponsorDataChanged":
+              updateSponsorTimesSubmitting();
+              return
+              //send the sponsor times along with if it's found
+          case "isInfoFound":
             sendResponse({
-                found: sponsorDataFound,
-                sponsorTimes: sponsorTimes,
-                hiddenSponsorTimes: hiddenSponsorTimes,
-                UUIDs: UUIDs
+              found: sponsorDataFound,
+              sponsorTimes: sponsorTimes,
+              hiddenSponsorTimes: hiddenSponsorTimes,
+              UUIDs: UUIDs
             });
-
             if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
-                //the popup should be closed now that another is opening
-                closeInfoMenu();
+              //the popup should be closed now that another is opening
+              closeInfoMenu();
             }
-
             popupInitialised = true;
-        }
-
-        if (request.message == "getVideoID") {
+            return
+          case "getVideoID":
             sendResponse({
                 videoID: sponsorVideoID
             })
-        }
-
-        if (request.message == "getVideoDuration") {
+	    return
+          case "getVideoDuration":
             sendResponse({
-                duration: v.duration
+              duration: v.duration
             });
-        }
-
-        if (request.message == "skipToTime") {
-            v.currentTime = request.time;
-        }
-
-        if (request.message == "getCurrentTime") {
+	    return
+          case "skipToTime":
+              v.currentTime = request.time;
+              return
+          case "getCurrentTime":
             sendResponse({
                 currentTime: v.currentTime
             });
-        }
-
-        if (request.message == "getChannelURL") {
+            return
+          case "getChannelURL":
             sendResponse({
-                channelURL: channelURL
+              channelURL: channelURL
             })
-        }
-
-        if (request.message == "isChannelWhitelisted") {
+            return
+          case "isChannelWhitelisted":
             sendResponse({
                 value: channelWhitelisted
             })
-        }
-
-        if (request.message == "whitelistChange") {
+            return
+          case "whitelistChange":
             channelWhitelisted = request.value;
             sponsorsLookup(sponsorVideoID);
-        }
-
-        if (request.message == "showNoticeAgain") {
-            dontShowNotice = false;
-        }
-
-        if (request.message == "changeStartSponsorButton") {
-            changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
-        }
-
-        if (request.message == "changeVideoPlayerControlsVisibility") {
+            return
+          case "dontShowNotice":
+              dontShowNotice = false;
+              return
+          case "changeStartSponsorButton":
+              changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
+              return
+          case "showNoticeAgain":
+              dontShowNotice = false;
+              return
+          case "changeVideoPlayerControlsVisibility":
             hideVideoPlayerControls = request.value;
-
             updateVisibilityOfPlayerControlsButton();
-        } else if (request.message == "changeInfoButtonPlayerControlsVisibility") {
+            return
+          case "changeInfoButtonPlayerControlsVisibility":
             hideInfoButtonPlayerControls = request.value;
-
             updateVisibilityOfPlayerControlsButton();
-        } else if (request.message == "changeDeleteButtonPlayerControlsVisibility") {
+            return
+          case "changeDeleteButtonPlayerControlsVisibility":
             hideDeleteButtonPlayerControls = request.value;
-
             updateVisibilityOfPlayerControlsButton();
-        }
-
-        if (request.message == "trackViewCount") {
+            return
+          case "trackViewCount":
             trackViewCount = request.value;
+            return
         }
 }
 
