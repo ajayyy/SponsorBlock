@@ -254,8 +254,6 @@ function videoIDChange(id) {
         previousVideoID = id;
     }
   
-    addButtons();
-  
     //close popup
     closeInfoMenu();
 	
@@ -596,6 +594,8 @@ function addButtons() {
 function updateVisibilityOfPlayerControlsButton() {
     //not on a proper video yet
     if (!sponsorVideoID) return;
+
+    addButtons();
 	
     if (hideVideoPlayerControls) {
         removePlayerControlsButton();
