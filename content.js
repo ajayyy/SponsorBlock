@@ -28,7 +28,7 @@ var channelURL;
 var channelWhitelisted = false;
 
 // create preview bar
-var previewBar;
+var previewBar = null;
 
 // Direct Links
 videoIDChange(getYouTubeVideoID(document.URL));
@@ -206,7 +206,9 @@ function resetValues() {
     sponsorLookupRetries = 0;
 
     //empty the preview bar
-    previewBar.set([], [], 0);
+    if (previewBar !== null) {
+        previewBar.set([], [], 0);
+    }
 
     //reset sponsor data found check
     sponsorDataFound = false;
@@ -214,10 +216,15 @@ function resetValues() {
 
 function videoIDChange(id) {
     //if the id has not changed return
-    if (sponsorVideoID === id) return
+    if (sponsorVideoID === id) return;
 
     //set the global videoID
     sponsorVideoID = id;
+
+	resetValues();
+	
+	//id is not valid
+    if (!id) return;
 
     //setup the preview bar
     if (previewBar == null) {
@@ -225,11 +232,6 @@ function videoIDChange(id) {
         let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
         previewBar = new PreviewBar(progressBar);
     }
-
-	resetValues();
-	
-	//id is not valid
-	if (id === false) return;
 
     //warn them if they had unsubmitted times
     if (previousVideoID != null) {
