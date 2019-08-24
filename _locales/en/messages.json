@@ -139,7 +139,7 @@
     "whitelistChannel": {
          "message": "Whitelist Channel"
     },
-    "RemoveFromWhitelist": {
+    "removeFromWhitelist": {
          "message": "Remove Channel From Whitelist"
     },
     "whitelistDescription": {
