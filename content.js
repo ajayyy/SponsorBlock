@@ -34,7 +34,7 @@ var previewBar = null;
 var controls = null;
 
 // Direct Links
-videoIDChange(getYouTubeVideoID(document.URL));
+videoIDChange(getYouTubeVideoID());
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -92,7 +92,7 @@ function messageListener(request, sender, sendResponse) {
         //messages from popup script
   
         if (request.message == "update") {
-			videoIDChange(getYouTubeVideoID(document.URL));
+	    videoIDChange(getYouTubeVideoID());
         }
   
         if (request.message == "sponsorStart") {
