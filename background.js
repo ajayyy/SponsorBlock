@@ -147,11 +147,29 @@ function submitVote(type, UUID, callback) {
 function submitTimes(videoID, callback) {
     //get the video times from storage
     let sponsorTimeKey = 'sponsorTimes' + videoID;
-    chrome.storage.sync.get([sponsorTimeKey, "userID"], function(result) {
+    chrome.storage.sync.get([sponsorTimeKey, "userID"], async function(result) {
         let sponsorTimes = result[sponsorTimeKey];
         let userID = result.userID;
 
         if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+            let durationResult = await new Promise((resolve, reject) => {
+                chrome.tabs.query({
+                    active: true,
+                    currentWindow: true
+                }, function(tabs) {
+                    chrome.tabs.sendMessage(tabs[0].id, {
+                        message: "getVideoDuration"
+                    }, (response) => resolve(response));
+                });
+            });
+
+            //check if a sponsor exceeds the duration of the video
+            for (let i = 0; i < sponsorTimes.length; i++) {
+                if (sponsorTimes[i][1] > durationResult.duration) {
+                    sponsorTimes[i][1] = durationResult.duration;
+                }
+            }
+
             //submit these times
             for (let i = 0; i < sponsorTimes.length; i++) {
                     //submit the sponsorTime

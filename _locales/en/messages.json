@@ -124,6 +124,15 @@
     "leftTimes": {
         "message": "You seem to have left some sponsor times unsubmitted. Go back to that page to submit them (they are not deleted)."
     },
+    "clearTimes": {
+        "message": "Clear Sponsor Times"
+    },
+    "openPopup": {
+        "message": "Open SponsorBlock Popup"
+    },
+    "SubmitTimes": {
+        "message": "Submit Sponsor Times"
+    },
     "submitCheck": {
         "message": "Are you sure you want to submit this?"
     }
