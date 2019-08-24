@@ -666,12 +666,15 @@ function isSubmitButtonLoaded() {
     return document.getElementById("submitButton") !== null;
 }
 
-function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
-	if(!sponsorVideoID) return false;
-	wait(isSubmitButtonLoaded).then(result => {
+async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
+    if(!sponsorVideoID) return false;
+    
+    //make sure submit button is loaded
+    await wait(isSubmitButtonLoaded);
+    
     //if it isn't visible, there is no data
-	let shouldHide = (uploadButtonVisible && !hideDeleteButtonPlayerControls) ? "unset":"none"
-	document.getElementById("deleteButton").style.display = shouldHide;
+    let shouldHide = (uploadButtonVisible && !hideDeleteButtonPlayerControls) ? "unset" : "none"
+    document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {
         showingStartSponsor = true;
@@ -692,7 +695,6 @@ function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
         //disable submit button
         document.getElementById("submitButton").style.display = "none";
     }
-	});
 }
 
 function toggleStartSponsorButton() {
