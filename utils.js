@@ -37,4 +37,5 @@ function getYouTubeVideoID(url) {
         return false;
       }
     }
+	return false;
 }
