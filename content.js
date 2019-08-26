@@ -414,7 +414,7 @@ function updatePreviewBar() {
         types.push("previewSponsor");
     }
 
-    previewBar.set(allSponsorTimes, types, v.duration);
+    wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, v.duration));
 
     //update last video id
     lastPreviewBarUpdate = sponsorVideoID;
