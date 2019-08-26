@@ -238,8 +238,10 @@ function videoIDChange(id) {
     //setup the preview bar
     if (previewBar == null) {
         //create it
-        let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
-        previewBar = new PreviewBar(progressBar);
+        wait(getControls).then(result => {
+            let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
+            previewBar = new PreviewBar(progressBar);
+        });
     }
 
     //warn them if they had unsubmitted times
@@ -271,7 +273,7 @@ function videoIDChange(id) {
     sponsorsLookup(id);
 
     //make sure everything is properly added
-    updateVisibilityOfPlayerControlsButton(true);
+    updateVisibilityOfPlayerControlsButton();
 
     //reset sponsor times submitting
     sponsorTimesSubmitting = [];
