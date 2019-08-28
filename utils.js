@@ -21,11 +21,12 @@ async function wait(condition, timeout = 5000, check = 100) {
 // Contains both getYouTubeVideoID functions
 async function getYouTubeVideoIDAsync() {
     let id = false;
+
     id = getYouTubeVideoID();
     if(id) return id;
-    await wait(getYouTubeVideoID_ALT).then((result) => {
-        id = result;
-    });
+
+    let id = await wait(getYouTubeVideoID_ALT);
+
     return id;
 }
 
@@ -33,15 +34,21 @@ function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM
     let id;
     let index = 0;
     let p = document.location.pathname;
+
     if(!document.location.origin === "https://www.youtube.com") return false
+
     let title = document.getElementsByClassName("ytp-title-link");
+
     if(p.startsWith("/user/") || p.startsWith("/channel/") || p.startsWith("/embed/")) {
 		if(title.length > 1) {
 			index = (title[0].hasAttribute("href")) ? 0 : 1;
-		}
-		if(!title[index] || !title[index].hasAttribute("href")) return false
+        }
+        
+        if(!title[index] || !title[index].hasAttribute("href")) return false;
+        
 		id = title[index].href.split("?v=")[1];
     }
+
     return (id && id.length == 11) ? id : false;
 }
 
