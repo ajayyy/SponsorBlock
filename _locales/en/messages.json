@@ -157,11 +157,11 @@
     "savedPeopleFrom": {
          "message": "You have saved people from "
     },
-    "here": {
-         "message": "here"
-    },
     "viewLeaderboard": {
          "message": "View the leaderboard"
+    },
+    "here": {
+        "message": "here"
     },
     "recordTimesDescription": {
          "message": "Click the button below when the sponsorship starts and ends to record and\nsubmit it to the database."
@@ -199,7 +199,7 @@
     "hideButtons": {
         "message": "Show Buttons On YouTube Player"
     },
-    "HSButton": {
+    "hideButtonsDescription": {
         "message": "This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some\n people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, \n use the button that appears on the notice saying \"Don't show this again\". You can always enable these settings again later."
     },
     "showInfoButton": {
