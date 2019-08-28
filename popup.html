@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>SponsorBlock Popup</title>
+    <title>__MSG_openPopup__</title>
     <link id="sponorBlockPopupFont" rel="stylesheet" type="text/css" href="/libs/Source+Sans+Pro.css"/>
     <link id="sponorBlockStyleSheet" rel="stylesheet" type="text/css" href="popup.css"/>
   </head>
@@ -10,10 +10,10 @@
       <div id="app" class="popupBody">
           <img src="icons/LogoSponsorBlocker256px.png" height="64px" id="sponsorBlockPopupLogo"/>
 
-          <h1 class="popupElement">SponsorBlock</h1>
+          <h1 class="popupElement">__MSG_Name__</h1>
 
           <!-- Loading text -->
-          <p id="loadingIndicator" class="popupElement">Loading...</p>
+          <p id="loadingIndicator" class="popupElement">__MSG_Loading__</p>
 
           <!-- Hidden until loading complete -->
           <div id="mainControls" class="main popupElement" style="display: none">
@@ -29,21 +29,21 @@
             <br/>
 
             <div>
-              <button id="whitelistChannel" class="whitelistButton popupElement">Whitelist Channel</button>
-              <button id="unwhitelistChannel" class="whitelistButton popupElement" style="display: none">Remove Channel From Whitelist</button>
+              <button id="whitelistChannel" class="whitelistButton popupElement">__MSG_whitelistChannel__</button>
+              <button id="unwhitelistChannel" class="whitelistButton popupElement" style="display: none">__MSG_removeFromWhitelist__</button>
             </div>
             <sub class="popupElement">
-              Whitelist the channels who do sponsorships ethically to encourage good behavior, or maybe if they are just entertaining and funny. Or don't, that's your call.
+              __MSG_whitelistDescription__
             </sub>
 
             <br/>
             <br/>
 
-            <button id="reportAnIssue" class="dangerButton popupElement">Vote On A Sponsor Time</button>
+            <button id="reportAnIssue" class="dangerButton popupElement">__MSG_voteOnTime__</button>
 
             <div id="issueReporterContainer"  class="popupElement" style="display: none">
 
-              <h3 style="margin-top: 0px" class="popupElement">Vote On A Sponsor Time</h3>
+              <h3 style="margin-top: 0px" class="popupElement">__MSG_voteOnTime__</h3>
 
               <div id="issueReporterTimeButtons" class="popupElement">
 
@@ -51,47 +51,47 @@
 
             </div>
 
-            <h2 class="recordingSubtitle popupElement">Record the times of a sponsorship</h2>
+            <h2 class="recordingSubtitle popupElement">__MSG_recordTimes__</h2>
 
             <p class="popupElement">
               <span id=sponsorTimesContributionsContainer  class="popupElement" style="display: none">
-                  So far, you've submitted
+                  __MSG_soFarUHSubmited__
                   <span id="sponsorTimesContributionsDisplay" class="popupElement">
                     0
                   </span>
                   <span id="sponsorTimesContributionsDisplayEndWord" class="popupElement">
-                    sponsors.
+                    __MSG_Sponsors__.
                   </span>
               </span>
 
               <span id=sponsorTimesViewsContainer  class="popupElement" style="display: none">
-                  You have saved people from 
+                  __MSG_savedPeopleFrom__
                   <span id="sponsorTimesViewsDisplay" class="popupElement">
                     0
                   </span>
                   <span id="sponsorTimesViewsDisplayEndWord" class="popupElement">
-                    sponsor segments.
+                     __MSG_Segments__.
+                     __MSG_savedPeopleFrom__
                   </span>
               </span>
 
               <div class="popupElement">
-                View the leaderboard <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">here</a>.
+                __MSG_viewLeaderboard__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">__MSG_here__</a>.
               </div>
             </p>
 
             <p class="popupElement"> 
-              Click the button below when the sponsorship starts and ends to record and 
-              submit it to the database.
+              __MSG_recordTimesDescription__
             </p>
     
             <div>
-              <button id="sponsorStart" class="greenButton popupElement">Sponsorship Starts Now</button>
+              <button id="sponsorStart" class="greenButton popupElement">__MSG_sponsorStart__</button>
             </div>
 
-            <sub class="popupElement">Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit.</sub>
+            <sub class="popupElement">__MSG_popupHint__</sub>
     
             <div id="submissionSection"  class="popupElement" style="display: none">
-              <h3 class="popupElement">Latest Sponsor Message Times Chosen</h3>
+              <h3 class="popupElement">__MSG_lastTimes__</h3>
               <b>
                 <div id="sponsorMessageTimes" class="popupElement">
         
@@ -100,13 +100,13 @@
 
               <br/>
       
-              <button id="clearTimes" class="smallButton popupElement">Clear Times</button>
+              <button id="clearTimes" class="smallButton popupElement">__MSG_clearTimesButton__</button>
       
               <br/>
               <br/>
 
               <div id="submitTimesContainer" class="popupElement" style="display: none">
-                <button id="submitTimes" class="smallButton popupElement">Submit Times</button>
+                <button id="submitTimes" class="smallButton popupElement">__MSG_submitTimesButton__</button>
 
                 <div id="submitTimesInfoMessageContainer" class="popupElement" style="display: none">
                   <h3 id="submitTimesInfoMessage" class="popupElement">
@@ -122,17 +122,17 @@
               <br/>
               <br/>
     
-              <button id="setUsernameButton" class="warningButton popupElement">Set Username</button>
+              <button id="setUsernameButton" class="warningButton popupElement">__MSG_setUsername__</button>
               <br/>
               <sub class="popupElement">
-                This is used on the public stats page to show off how much you've contributed. See it <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">here</a>.
+                __MSG_publicStats__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">__MSG_here__</a>.
               </sub>
             </div>
 
             <div id="setUsername" class="popupElement" style="display: none">
                 <br/>
 
-                <h3>Set Username</h3>
+                <h3>__MSG_setUsername__</h3>
 
                 <div id="setUsernameStatusContainer" style="display: none">
                     <h2 id="setUsernameStatus"></h2>
@@ -154,72 +154,66 @@
 
               <br/>
 
-                Come join the official discord server to give suggestions and feedback!
+                __MSG_discordAdvert__
 
               <br/>
 
-              <span id="hideDiscordButton" class="smallLink popupElement">Hide this</span>
+              <span id="hideDiscordButton" class="smallLink popupElement">__MSG_hideThis__</span>
             </div>
 
             <div id="optionsButtonContainer" class="popupElement">
                 <br/>
                 <br/>
       
-                <button id="optionsButton" class="dangerButton popupElement">Options</button>
+                <button id="optionsButton" class="dangerButton popupElement">__MSG_Options__</button>
             </div>
 
             <div id="options" class="popupElement" style="display: none">
                 <br/>
 
-                <h3>Options</h3>
+                <h3>__MSG_Options__</h3>
       
-                <button id="hideVideoPlayerControls" class="warningButton popupElement">Hide Buttons On YouTube Player</button>
-                <button id="showVideoPlayerControls" style="display: none" class="warningButton popupElement">Show Buttons On YouTube Player</button>
+                <button id="hideVideoPlayerControls" class="warningButton popupElement">__MSG_hideButtons__</button>
+                <button id="showVideoPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showButtons__</button>
                 <br/>
                 <sub class="popupElement">
-                  This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some 
-                  people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, 
-                  use the button that appears on the notice saying "Don't show this again". You can always enable these settings again 
-                  later.
+                  __MSG_hideButtonsDescription__
                 </sub>
 
                 <br/>
                 <br/>
 
-                <button id="hideInfoButtonPlayerControls" class="warningButton popupElement">Hide Info Button On YouTube Player</button>
-                <button id="showInfoButtonPlayerControls" style="display: none" class="warningButton popupElement">Show Info Button On YouTube Player</button>
+                <button id="hideInfoButtonPlayerControls" class="warningButton popupElement">__MSG_hideInfoButton__</button>
+                <button id="showInfoButtonPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showInfoButton__</button>
                 <br/>
                 <sub class="popupElement">
-                  This is the button that opens up a popup in the YouTube page.
+                  __MSG_whatInfoButton__
                 </sub>
 
                 <br/>
                 <br/>
 
-                <button id="hideDeleteButtonPlayerControls" class="warningButton popupElement">Hide Delete Button On YouTube Player</button>
-                <button id="showDeleteButtonPlayerControls" style="display: none" class="warningButton popupElement">Show Delete Button On YouTube Player</button>
+                <button id="hideDeleteButtonPlayerControls" class="warningButton popupElement">__MSG_hideDeleteButton__</button>
+                <button id="showDeleteButtonPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showDeleteButton__</button>
                 <br/>
                 <sub class="popupElement">
-                  This is the button that allows you to clear all sponsors on the YouTube player.
+                  __MSG_whatDeleteButton__
                 </sub>
 
                 <br/>
                 <br/>
 
-                <button id="disableSponsorViewTracking" class="warningButton popupElement">Disable Sponsor View Tracking</button>
-                <button id="enableSponsorViewTracking" style="display: none" class="warningButton popupElement">Enable Sponsor View Tracking</button>
+                <button id="disableSponsorViewTracking" class="warningButton popupElement">__MSG_disableViewTracking__</button>
+                <button id="enableSponsorViewTracking" style="display: none" class="warningButton popupElement">__MSG_enableViewTracking__</button>
                 <br/>
                 <sub class="popupElement">
-                  This feature tracks which sponsors you have skipped to let users know how much their submission has helped others and
-                  used as a metric along with upvotes to ensure that spam doesn't get into the database. The extension sends a message
-                  to the server each time you skip a sponsor. Hopefully most people don't change this setting so that the view numbers
-                  are accurate. :)
+                  __MSG_whatViewTracking__
                 </sub>
       
                 <br/>
                 <br/>
 
-                <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">Show Notice Again</button>
+                <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">__MSG_showNotice__</button>
             </div>
           </div>
         </div>

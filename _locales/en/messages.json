@@ -31,10 +31,10 @@
         "message": "Channel Whitelisted!"
     },
     "Sponsor": {
-        "message": "Sponsor"
+        "message": "sponsor"
     },
     "Sponsors": {
-        "message": "Sponsors"
+        "message": "sponsors"
     },
    "Segment": {
         "message": "sponsor segment"
@@ -135,6 +135,102 @@
     },
     "submitCheck": {
         "message": "Are you sure you want to submit this?"
+    },
+    "whitelistChannel": {
+         "message": "Whitelist Channel"
+    },
+    "removeFromWhitelist": {
+         "message": "Remove Channel From Whitelist"
+    },
+    "whitelistDescription": {
+         "message": "Whitelist the channels who do sponsorships ethically to encourage good behavior, or maybe if they are just entertaining and funny. Or don't, that's your call."
+    },
+    "voteOnTime": {
+         "message": "Vote On A Sponsor Time"
+    },
+    "recordTimes": {
+         "message": "Record the times of a sponsorship"
+    },
+    "soFarUHSubmited": {
+         "message": "So far, you've submitted"
+    },
+    "savedPeopleFrom": {
+         "message": "You have saved people from "
+    },
+    "viewLeaderboard": {
+         "message": "View the leaderboard"
+    },
+    "here": {
+        "message": "here"
+    },
+    "recordTimesDescription": {
+         "message": "Click the button below when the sponsorship starts and ends to record and\nsubmit it to the database."
+    },
+    "popupHint": {
+         "message": "Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit."
+    },
+    "lastTimes": {
+         "message": "Latest Sponsor Message Times Chosen"
+    },
+    "clearTimesButton": {
+        "message": "Clear Times"
+    },
+    "submitTimesButton": {
+        "message": "Submit Times"
+    },
+    "publicStats": {
+        "message": "This is used on the public stats page to show off how much you've contributed. See it"
+    },
+    "setUsername": {
+        "message": "Set Username"
+    },
+    "discordAdvert": {
+        "message": "Come join the official discord server to give suggestions and feedback!"
+    },
+    "hideThis": {
+        "message": "Hide this"
+    },
+    "Options": {
+        "message": "Options"
+    },
+    "showButtons": {
+        "message": "Hide Buttons On YouTube Player"
+    },
+    "hideButtons": {
+        "message": "Show Buttons On YouTube Player"
+    },
+    "hideButtonsDescription": {
+        "message": "This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some\n people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, \n use the button that appears on the notice saying \"Don't show this again\". You can always enable these settings again later."
+    },
+    "showInfoButton": {
+        "message": "Show Info Button On YouTube Player"
+    },
+    "hideInfoButton": {
+        "message": "Hide Info Button On YouTube Player"
+    },
+    "whatInfoButton": {
+        "message": "This is the button that opens up a popup in the YouTube page."
+    },
+    "hideDeleteButton": {
+        "message": "Hide Delete Button On YouTube Player"
+    },
+    "showDeleteButton": {
+        "message": "Show Delete Button On YouTube Player"
+    },
+    "whatDeleteButton": {
+        "message": "This is the button that allows you to clear all sponsors on the YouTube player."
+    },
+    "disableViewTracking": {
+        "message": "Disable Sponsor View Tracking"
+    },
+    "enableViewTracking": {
+        "message": "Enable Sponsor View Tracking"
+    },
+    "whatViewTracking": {
+        "message": "This feature tracks which sponsors you have skipped to let users know how much their submission has helped others and\nused as a metric along with upvotes to ensure that spam doesn't get into the database. The extension sends a message\nto the server each time you skip a sponsor. Hopefully most people don't change this setting so that the view numbers are accurate. :)"
+    },
+    "showNotice": {
+        "message": "Show Notice Again"
     },
     "longDescription": {
         "message": "SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that let's anyone submit the start and end time's of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment.",
