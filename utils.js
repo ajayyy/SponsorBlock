@@ -26,7 +26,7 @@ async function getYouTubeVideoID() {
     if(id) return id;
 
     //try the extracting it from the video html element
-    let id = await wait(getYouTubeVideoIDFromHTML);
+    id = await wait(getYouTubeVideoIDFromHTML);
 
     return id;
 }
