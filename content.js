@@ -34,7 +34,7 @@ var previewBar = null;
 var controls = null;
 
 function initVideo() {
-getYouTubeVideoIDAsync().then(result => videoIDChange(result));
+    getYouTubeVideoIDAsync().then(result => videoIDChange(result));
 }
 
 // Direct Links
