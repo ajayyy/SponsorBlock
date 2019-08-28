@@ -91,85 +91,103 @@ chrome.runtime.onMessage.addListener(messageListener);
 function messageListener(request, sender, sendResponse) {
         //messages from popup script
         switch(request.message){
-          case "update":
-              videoIDChange(getYouTubeVideoID(document.URL));
-              return
-          case "sponsorStart":
-              sponsorMessageStarted(sendResponse);
-              return
-          case "sponsorDataChanged":
-              updateSponsorTimesSubmitting();
-              return
-              //send the sponsor times along with if it's found
-          case "isInfoFound":
-            sendResponse({
-              found: sponsorDataFound,
-              sponsorTimes: sponsorTimes,
-              hiddenSponsorTimes: hiddenSponsorTimes,
-              UUIDs: UUIDs
-            });
-            if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
-              //the popup should be closed now that another is opening
-              closeInfoMenu();
-            }
-            popupInitialised = true;
-            return
-          case "getVideoID":
-            sendResponse({
-                videoID: sponsorVideoID
-            })
-	    return
-          case "getVideoDuration":
-            sendResponse({
-              duration: v.duration
-            });
-	    return
-          case "skipToTime":
-              v.currentTime = request.time;
-              return
-          case "getCurrentTime":
-            sendResponse({
-                currentTime: v.currentTime
-            });
-            return
-          case "getChannelURL":
-            sendResponse({
-              channelURL: channelURL
-            })
-            return
-          case "isChannelWhitelisted":
-            sendResponse({
-                value: channelWhitelisted
-            })
-            return
-          case "whitelistChange":
-            channelWhitelisted = request.value;
-            sponsorsLookup(sponsorVideoID);
-            return
-          case "dontShowNotice":
-              dontShowNotice = false;
-              return
-          case "changeStartSponsorButton":
-              changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
-              return
-          case "showNoticeAgain":
-              dontShowNotice = false;
-              return
-          case "changeVideoPlayerControlsVisibility":
-            hideVideoPlayerControls = request.value;
-            updateVisibilityOfPlayerControlsButton();
-            return
-          case "changeInfoButtonPlayerControlsVisibility":
-            hideInfoButtonPlayerControls = request.value;
-            updateVisibilityOfPlayerControlsButton();
-            return
-          case "changeDeleteButtonPlayerControlsVisibility":
-            hideDeleteButtonPlayerControls = request.value;
-            updateVisibilityOfPlayerControlsButton();
-            return
-          case "trackViewCount":
-            trackViewCount = request.value;
-            return
+            case "update":
+                videoIDChange(getYouTubeVideoID(document.URL));
+
+                break;
+            case "sponsorStart":
+                sponsorMessageStarted(sendResponse);
+
+                break;
+            case "sponsorDataChanged":
+                updateSponsorTimesSubmitting();
+
+                break;
+            case "isInfoFound":
+                //send the sponsor times along with if it's found
+                sendResponse({
+                    found: sponsorDataFound,
+                    sponsorTimes: sponsorTimes,
+                    hiddenSponsorTimes: hiddenSponsorTimes,
+                    UUIDs: UUIDs
+                });
+
+                if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+                    //the popup should be closed now that another is opening
+                    closeInfoMenu();
+                }
+
+                popupInitialised = true;
+                break;
+            case "getVideoID":
+                sendResponse({
+                    videoID: sponsorVideoID
+                });
+
+                break;
+            case "getVideoDuration":
+                sendResponse({
+                duration: v.duration
+                });
+
+                break;
+            case "skipToTime":
+                v.currentTime = request.time;
+                return
+            case "getCurrentTime":
+                sendResponse({
+                    currentTime: v.currentTime
+                });
+
+                break;
+            case "getChannelURL":
+                sendResponse({
+                channelURL: channelURL
+                });
+
+                break;
+            case "isChannelWhitelisted":
+                sendResponse({
+                    value: channelWhitelisted
+                });
+
+                break;
+            case "whitelistChange":
+                channelWhitelisted = request.value;
+                sponsorsLookup(sponsorVideoID);
+
+                break;
+            case "dontShowNotice":
+                dontShowNotice = false;
+
+                break;
+            case "changeStartSponsorButton":
+                changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
+
+                break;
+            case "showNoticeAgain":
+                dontShowNotice = false;
+                
+                break;
+            case "changeVideoPlayerControlsVisibility":
+                hideVideoPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
+
+                break;
+            case "changeInfoButtonPlayerControlsVisibility":
+                hideInfoButtonPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
+
+                break;
+            case "changeDeleteButtonPlayerControlsVisibility":
+                hideDeleteButtonPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
+
+                break;
+            case "trackViewCount":
+                trackViewCount = request.value;
+
+                break;
         }
 }
 
