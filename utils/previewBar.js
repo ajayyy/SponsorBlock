@@ -27,15 +27,17 @@ class PreviewBar {
 		this.parent = parent;
 		this.bars = []
 
-		this.updatePosition();
+		this.addToPage();
 	}
 
-	updatePosition() {
-		//below the seek bar
-		// this.parent.insertAdjacentElement("afterEnd", this.container);
-		
-		//on the seek bar
-		this.parent.insertAdjacentElement("afterBegin", this.container);
+	addToPage(parent = this.parent, onTheSeekBar = true) {
+		if (onTheSeekBar) {
+			//on the seek bar
+			parent.insertAdjacentElement("afterBegin", this.container);
+		} else {
+			//below the seek bar
+			parent.insertAdjacentElement("afterEnd", this.container);
+		}
 	}
 
 	updateColor(segment, color, opacity) {

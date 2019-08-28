@@ -13,13 +13,15 @@ var hiddenSponsorTimes = [];
 //the video
 var v;
 
+/**
+ * @type {Array} all the videos on the page that have been setup
+ */
+var videos = [];
+
 var listenerAdded;
 
 //the video id of the last preview bar update
 var lastPreviewBarUpdate;
-
-//whether the duration listener listening for the duration changes of the video has been setup yet
-var durationListenerSetUp = false;
 
 //the channel this video is about
 var channelURL;
@@ -31,7 +33,7 @@ var channelWhitelisted = false;
 var previewBar = null;
 
 //the player controls on the YouTube player
-var controls = null;
+var controlsElement = null;
 
 // Direct Links
 videoIDChange();
@@ -89,101 +91,101 @@ chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
 chrome.runtime.onMessage.addListener(messageListener);
   
 function messageListener(request, sender, sendResponse) {
-        //messages from popup script
-  
-        if (request.message == "update") {
-            videoIDChange();
-        }
-  
-        if (request.message == "sponsorStart") {
-            sponsorMessageStarted(sendResponse);
-        }
+    //messages from popup script
 
-        if (request.message == "sponsorDataChanged") {
-            updateSponsorTimesSubmitting();
-        }
+    if (request.message == "update") {
+        videoIDChange();
+    }
 
-        if (request.message == "isInfoFound") {
-            //send the sponsor times along with if it's found
-            sendResponse({
-                found: sponsorDataFound,
-                sponsorTimes: sponsorTimes,
-                hiddenSponsorTimes: hiddenSponsorTimes,
-                UUIDs: UUIDs
-            });
+    if (request.message == "sponsorStart") {
+        sponsorMessageStarted(sendResponse);
+    }
 
-            if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
-                //the popup should be closed now that another is opening
-                closeInfoMenu();
-            }
+    if (request.message == "sponsorDataChanged") {
+        updateSponsorTimesSubmitting();
+    }
 
-            popupInitialised = true;
+    if (request.message == "isInfoFound") {
+        //send the sponsor times along with if it's found
+        sendResponse({
+            found: sponsorDataFound,
+            sponsorTimes: sponsorTimes,
+            hiddenSponsorTimes: hiddenSponsorTimes,
+            UUIDs: UUIDs
+        });
+
+        if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+            //the popup should be closed now that another is opening
+            closeInfoMenu();
         }
 
-        if (request.message == "getVideoID") {
-            sendResponse({
-                videoID: sponsorVideoID
-            })
-        }
+        popupInitialised = true;
+    }
 
-        if (request.message == "getVideoDuration") {
-            sendResponse({
-                duration: v.duration
-            });
-        }
+    if (request.message == "getVideoID") {
+        sendResponse({
+            videoID: sponsorVideoID
+        })
+    }
 
-        if (request.message == "skipToTime") {
-            v.currentTime = request.time;
-        }
+    if (request.message == "getVideoDuration") {
+        sendResponse({
+            duration: v.duration
+        });
+    }
 
-        if (request.message == "getCurrentTime") {
-            sendResponse({
-                currentTime: v.currentTime
-            });
-        }
+    if (request.message == "skipToTime") {
+        v.currentTime = request.time;
+    }
 
-        if (request.message == "getChannelURL") {
-            sendResponse({
-                channelURL: channelURL
-            })
-        }
+    if (request.message == "getCurrentTime") {
+        sendResponse({
+            currentTime: v.currentTime
+        });
+    }
 
-        if (request.message == "isChannelWhitelisted") {
-            sendResponse({
-                value: channelWhitelisted
-            })
-        }
+    if (request.message == "getChannelURL") {
+        sendResponse({
+            channelURL: channelURL
+        })
+    }
 
-        if (request.message == "whitelistChange") {
-            channelWhitelisted = request.value;
-            sponsorsLookup(sponsorVideoID);
-        }
+    if (request.message == "isChannelWhitelisted") {
+        sendResponse({
+            value: channelWhitelisted
+        })
+    }
 
-        if (request.message == "showNoticeAgain") {
-            dontShowNotice = false;
-        }
+    if (request.message == "whitelistChange") {
+        channelWhitelisted = request.value;
+        sponsorsLookup(sponsorVideoID);
+    }
 
-        if (request.message == "changeStartSponsorButton") {
-            changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
-        }
+    if (request.message == "showNoticeAgain") {
+        dontShowNotice = false;
+    }
 
-        if (request.message == "changeVideoPlayerControlsVisibility") {
-            hideVideoPlayerControls = request.value;
+    if (request.message == "changeStartSponsorButton") {
+        changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
+    }
 
-            updateVisibilityOfPlayerControlsButton();
-        } else if (request.message == "changeInfoButtonPlayerControlsVisibility") {
-            hideInfoButtonPlayerControls = request.value;
+    if (request.message == "changeVideoPlayerControlsVisibility") {
+        hideVideoPlayerControls = request.value;
 
-            updateVisibilityOfPlayerControlsButton();
-        } else if (request.message == "changeDeleteButtonPlayerControlsVisibility") {
-            hideDeleteButtonPlayerControls = request.value;
+        updateVisibilityOfPlayerControlsButton();
+    } else if (request.message == "changeInfoButtonPlayerControlsVisibility") {
+        hideInfoButtonPlayerControls = request.value;
 
-            updateVisibilityOfPlayerControlsButton();
-        }
+        updateVisibilityOfPlayerControlsButton();
+    } else if (request.message == "changeDeleteButtonPlayerControlsVisibility") {
+        hideDeleteButtonPlayerControls = request.value;
 
-        if (request.message == "trackViewCount") {
-            trackViewCount = request.value;
-        }
+        updateVisibilityOfPlayerControlsButton();
+    }
+
+    if (request.message == "trackViewCount") {
+        trackViewCount = request.value;
+    }
 }
 
 //check for hotkey pressed
@@ -237,15 +239,6 @@ async function videoIDChange() {
 	//id is not valid
     if (!id) return;
 
-    //setup the preview bar
-    if (previewBar == null) {
-        //create it
-        wait(getControls).then(result => {
-            let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
-            previewBar = new PreviewBar(progressBar);
-        });
-    }
-
     //warn them if they had unsubmitted times
     if (previousVideoID != null) {
         //get the sponsor times from storage
@@ -271,6 +264,8 @@ async function videoIDChange() {
   
     //close popup
     closeInfoMenu();
+
+    updateVideoListeners();
 	
     sponsorsLookup(id);
 
@@ -281,7 +276,7 @@ async function videoIDChange() {
     sponsorTimesSubmitting = [];
 
     //see if the onvideo control image needs to be changed
-	wait(getControls).then(result => {
+	wait(getAllControls).then(result => {
 		chrome.runtime.sendMessage({
 			message: "getSponsorTimes",
 			videoID: id
@@ -331,21 +326,80 @@ async function videoIDChange() {
   
 }
 
-function sponsorsLookup(id) {
-    v = document.querySelector('video') // Youtube video player
-    //there is no video here
-    if (v == null) {
-        setTimeout(() => sponsorsLookup(id), 100);
-        return;
+/**
+ * @returns {HTMLCollection} All videos on the page
+ */
+function getAllVideos() {
+    let videos = document.querySelectorAll("video");
+    return (!videos || videos.length === 0) ? false : videos;
+}
+
+//see if any listeners need to be added
+async function updateVideoListeners() {
+    //get videos on the page
+    let videosOnPage = await wait(getAllVideos);
+    let videoFound = false;
+
+    //find a video that hasn't been added yet
+    for (let i = 0; i < videosOnPage.length; i++) {
+        if (!videos.includes(videosOnPage[i])) {
+            v = videosOnPage[i];
+
+            videos.push(v);
+            videoFound = true;
+            break;
+        }
     }
 
-    if (!durationListenerSetUp) {
-        durationListenerSetUp = true;
-
+    if (videoFound) {
+        //add listeners
         //wait until it is loaded
         v.addEventListener('durationchange', updatePreviewBar);
+        
+        //add the event to run on the videos "ontimeupdate"
+        v.ontimeupdate = function () { 
+            sponsorCheck();
+        };
+    } else {
+        //find what video to set v to
+        for (let i = 0; i < videosOnPage.length; i++) {
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            console.log(sponsorVideoID)
+            console.log(getYouTubeVideoIDFromVideoElement(videosOnPage[i]))
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            if (sponsorVideoID === getYouTubeVideoIDFromVideoElement(videosOnPage[i])) {
+                //use this video
+                v = videosOnPage[i];
+                console.log(v)
+
+                break;
+            }
+        }
     }
-  
+
+    updatePreviewBarHTMLPosition();
+}
+
+function updatePreviewBarHTMLPosition() {
+    console.log("sdakjs")
+    wait(getAllControls).then((result) => {
+        //add preview bar to this
+        //setup the preview bar
+        console.log("SKJSADHKASDJ")
+        let progressBar = v.parentElement.parentElement.querySelector(".ytp-progress-bar-container") ||  v.parentElement.parentElement.querySelector("no-model cue-range-markers");
+        if (previewBar == null) {
+            //create it
+            wait(getAllControls).then(result => {
+                console.log("yes" + progressBar)
+                previewBar = new PreviewBar(progressBar);
+            });
+        } else {
+            previewBar.addToPage(progressBar);
+        }
+    });
+}
+
+function sponsorsLookup(id) {
     //check database for sponsor times
 
     //made true once a setTimeout has been created to try again after a server error
@@ -394,11 +448,6 @@ function sponsorsLookup(id) {
             sponsorLookupRetries++;
         }
     });
-
-    //add the event to run on the videos "ontimeupdate"
-    v.ontimeupdate = function () { 
-        sponsorCheck();
-    };
 }
 
 function updatePreviewBar() {
@@ -565,13 +614,19 @@ function reskipSponsorTime(UUID) {
 function removePlayerControlsButton() {
     if (!sponsorVideoID) return;
 
-    document.getElementById("startSponsorButton").style.display = "none";
-    document.getElementById("submitButton").style.display = "none";
+    //hide the buttons
+    let startButtons = document.querySelectorAll("#startSponsorButton");
+    for (let i = 0; i < startButtons.length; i++) {
+        startButtons[i].style.display = "none";
+    }
+
+    let submitButtons = document.querySelectorAll("#submitButton");
+    for (let i = 0; i < submitButtons.length; i++) {
+        submitButtons[i].style.display = "none";
+    }
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false) {
-    if (document.getElementById(baseID + "Button") != null) return;
-
     // Button HTML
     let newButton = document.createElement("button");
     newButton.draggable = isDraggable;
@@ -591,19 +646,46 @@ function createButton(baseID, title, callback, imageName, isDraggable=false) {
     newButton.appendChild(newButtonImage);
 
     // Add the button to player
-    controls.prepend(newButton);
+    controlsElement.prepend(newButton);
 }
 
-function getControls() {
+function getAllControls() {
     let controls = document.getElementsByClassName("ytp-right-controls");
-    return (!controls || controls.length === 0) ? false : controls[controls.length - 1]
+    return (!controls || controls.length === 0) ? false : controls;
+}
+
+//gets the controls that don't contain a certain element
+function getControlsNotContaining(querySelectorSearch) {
+    let controls = document.getElementsByClassName("ytp-right-controls");
+
+    let controlsElement = controls[controls.length - 1];
+    for (let i = 0; i < controls.length; i++) {
+        if (controls[i].querySelector(querySelectorSearch) == null) {
+            controlsElement = controls[i];
+            break;
+        }
+    }
+
+    return (!controls || controls.length === 0) ? false : controlsElement;
 };
 
 //adds all the player controls buttons
 function createButtons() {
-    wait(getControls).then(result => {
-        //set global controls variable
-        controls = result;
+    //get the controls that don't have a button on it yet
+    wait(getAllControls).then(result => {
+        //see if there is one that hasn't had buttons added to it yet
+        let foundSomething = false;
+        for (let i = 0; i < result.length; i++) {
+            if (result[i].querySelector("#submitButton") == null){
+                //use this one
+                foundSomething = true;
+
+                //set global controls variable
+                controlsElement = result[i];
+            }
+        }
+
+        if (!foundSomething) return;
 
         // Add button if does not already exist in html
         createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
@@ -623,10 +705,18 @@ function updateVisibilityOfPlayerControlsButton() {
         removePlayerControlsButton();
     }
     if (hideInfoButtonPlayerControls) {
-        document.getElementById("infoButton").style.display = "none";
+        let buttons = document.querySelectorAll("#infoButton");
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].style.display = "none";
+        }
     }
     if (hideDeleteButtonPlayerControls) {
-        document.getElementById("deleteButton").style.display = "none";
+        let buttons = document.querySelectorAll("#deleteButton");
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].style.display = "none";
+        }
     }
 }
 
