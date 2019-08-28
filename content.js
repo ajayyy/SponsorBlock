@@ -189,16 +189,16 @@ function messageListener(request, sender, sendResponse) {
 //check for hotkey pressed
 document.onkeydown = function(e){
     e = e || window.event;
-    var key = e.which || e.keyCode;
+    var key = e.key;
 
     let video = document.getElementById("movie_player");
 
     //is the video in focus, otherwise they could be typing a comment
     if (document.activeElement === video) {
-        if(key == 186){
+        if(key == ';'){
             //semicolon
             startSponsorClicked();
-        } else if (key == 222) {
+        } else if (key == "'") {
             //single quote
             submitSponsorTimes();
         }
