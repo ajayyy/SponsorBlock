@@ -49,9 +49,8 @@ function getYouTubeVideoID(url) {
 
 function localizeHtmlPage() {
     //Localize by replacing __MSG_***__ meta tags
-    var objects = document.getElementsByTagName('html');
-    for (var j = 0; j < objects.length; j++)
-    {
+    var objects = document.getElementsByClassName("popupBody")[0].children;
+    for (var j = 0; j < objects.length; j++) {
         var obj = objects[j];
 
         var valStrH = obj.innerHTML.toString();

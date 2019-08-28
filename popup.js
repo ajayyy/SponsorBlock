@@ -1,7 +1,7 @@
-localizeHtmlPage();
 
 //make this a function to allow this to run on the content page
 function runThePopup() {
+    localizeHtmlPage();
 
     //is it in the popup or content script
     var inPopup = true;
