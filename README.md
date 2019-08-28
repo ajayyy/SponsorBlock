@@ -14,6 +14,7 @@
   <a href="https://sponsor.ajay.app/stats">Stats</a>
 </p>
 
+[![](https://img.shields.io/amo/users/sponsorblock?label=Firefox%20Users)](https://addons.mozilla.org/addon/sponsorblock/?src=external-github) [![](https://img.shields.io/chrome-web-store/users/mnjggcdmjocbbbhaepdhchncahnbgone?label=Chome%20Users)](https://chrome.google.com/webstore/detail/mnjggcdmjocbbbhaepdhchncahnbgone)
 
 SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment.
 
