@@ -22,15 +22,17 @@ async function wait(condition, timeout = 5000, check = 100) {
 async function getYouTubeVideoIDAsync() {
     let id = false;
 
-    id = getYouTubeVideoID();
+    id = getYouTubeVideoIDFromURL();
     if(id) return id;
 
-    let id = await wait(getYouTubeVideoID_ALT);
+    //try the extracting it from the video html element
+    let id = await wait(getYouTubeVideoIDFromHTML);
 
     return id;
 }
 
-function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM level access)
+// Content based VideoID parser (Requires DOM level access)
+function getYouTubeVideoIDFromHTML() { 
     let id;
     let index = 0;
     let p = document.location.pathname;
@@ -53,15 +55,18 @@ function getYouTubeVideoID_ALT() { // Content based VideoID parser (Requires DOM
 }
 
 
-function getYouTubeVideoID(url = document.URL) {
+function getYouTubeVideoIDFromURL(url) {
+    if (url === undefined) url = document.URL;
+
     let id = false;
+
     //Attempt to parse url
     let urlObject = null;
     try { 
-            urlObject = new URL(url);
+        urlObject = new URL(url);
     } catch (e) {      
-            console.error("[SB] Unable to parse URL: " + url);
-            return false;
+        console.error("[SB] Unable to parse URL: " + url);
+        return false;
     }
 
     //Check if valid hostname
@@ -80,9 +85,11 @@ function getYouTubeVideoID(url = document.URL) {
         }
     }
   
-	  return false;
+    return false;
 }
 
+//Only works for popup
+//from https://stackoverflow.com/a/25612056/1985387
 function localizeHtmlPage() {
     //Localize by replacing __MSG_***__ meta tags
     var objects = document.getElementsByClassName("popupBody")[0].children;
@@ -90,13 +97,11 @@ function localizeHtmlPage() {
         var obj = objects[j];
 
         var valStrH = obj.innerHTML.toString();
-        var valNewH = valStrH.replace(/__MSG_(\w+)__/g, function(match, v1)
-        {
+        var valNewH = valStrH.replace(/__MSG_(\w+)__/g, function(match, v1) {
             return v1 ? chrome.i18n.getMessage(v1) : "";
         });
 
-        if(valNewH != valStrH)
-        {
+        if(valNewH != valStrH) {
             obj.innerHTML = valNewH;
         }
     }
