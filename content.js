@@ -33,12 +33,8 @@ var previewBar = null;
 //the player controls on the YouTube player
 var controls = null;
 
-function initVideo() {
-    getYouTubeVideoIDAsync().then(result => videoIDChange(result));
-}
-
 // Direct Links
-initVideo();
+videoIDChange();
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -96,7 +92,7 @@ function messageListener(request, sender, sendResponse) {
         //messages from popup script
   
         if (request.message == "update") {
-	    initVideo();
+            videoIDChange();
         }
   
         if (request.message == "sponsorStart") {
@@ -227,7 +223,9 @@ function resetValues() {
     sponsorDataFound = false;
 }
 
-function videoIDChange(id) {
+async function videoIDChange() {
+    let id = await getYouTubeVideoID();
+
     //if the id has not changed return
     if (sponsorVideoID === id) return;
 

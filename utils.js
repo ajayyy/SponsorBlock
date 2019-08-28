@@ -19,7 +19,7 @@ async function wait(condition, timeout = 5000, check = 100) {
 }
 
 // Contains both getYouTubeVideoID functions
-async function getYouTubeVideoIDAsync() {
+async function getYouTubeVideoID() {
     let id = false;
 
     id = getYouTubeVideoIDFromURL();
