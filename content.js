@@ -90,99 +90,104 @@ chrome.runtime.onMessage.addListener(messageListener);
   
 function messageListener(request, sender, sendResponse) {
         //messages from popup script
-  
-        if (request.message == "update") {
-			videoIDChange(getYouTubeVideoID(document.URL));
-        }
-  
-        if (request.message == "sponsorStart") {
-            sponsorMessageStarted(sendResponse);
-        }
+        switch(request.message){
+            case "update":
+                videoIDChange(getYouTubeVideoID(document.URL));
 
-        if (request.message == "sponsorDataChanged") {
-            updateSponsorTimesSubmitting();
-        }
+                break;
+            case "sponsorStart":
+                sponsorMessageStarted(sendResponse);
 
-        if (request.message == "isInfoFound") {
-            //send the sponsor times along with if it's found
-            sendResponse({
-                found: sponsorDataFound,
-                sponsorTimes: sponsorTimes,
-                hiddenSponsorTimes: hiddenSponsorTimes,
-                UUIDs: UUIDs
-            });
+                break;
+            case "sponsorDataChanged":
+                updateSponsorTimesSubmitting();
 
-            if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
-                //the popup should be closed now that another is opening
-                closeInfoMenu();
-            }
+                break;
+            case "isInfoFound":
+                //send the sponsor times along with if it's found
+                sendResponse({
+                    found: sponsorDataFound,
+                    sponsorTimes: sponsorTimes,
+                    hiddenSponsorTimes: hiddenSponsorTimes,
+                    UUIDs: UUIDs
+                });
 
-            popupInitialised = true;
-        }
+                if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+                    //the popup should be closed now that another is opening
+                    closeInfoMenu();
+                }
 
-        if (request.message == "getVideoID") {
-            sendResponse({
-                videoID: sponsorVideoID
-            })
-        }
+                popupInitialised = true;
+                break;
+            case "getVideoID":
+                sendResponse({
+                    videoID: sponsorVideoID
+                });
 
-        if (request.message == "getVideoDuration") {
-            sendResponse({
+                break;
+            case "getVideoDuration":
+                sendResponse({
                 duration: v.duration
-            });
-        }
+                });
 
-        if (request.message == "skipToTime") {
-            v.currentTime = request.time;
-        }
+                break;
+            case "skipToTime":
+                v.currentTime = request.time;
+                return
+            case "getCurrentTime":
+                sendResponse({
+                    currentTime: v.currentTime
+                });
 
-        if (request.message == "getCurrentTime") {
-            sendResponse({
-                currentTime: v.currentTime
-            });
-        }
-
-        if (request.message == "getChannelURL") {
-            sendResponse({
+                break;
+            case "getChannelURL":
+                sendResponse({
                 channelURL: channelURL
-            })
-        }
+                });
 
-        if (request.message == "isChannelWhitelisted") {
-            sendResponse({
-                value: channelWhitelisted
-            })
-        }
+                break;
+            case "isChannelWhitelisted":
+                sendResponse({
+                    value: channelWhitelisted
+                });
 
-        if (request.message == "whitelistChange") {
-            channelWhitelisted = request.value;
-            sponsorsLookup(sponsorVideoID);
-        }
+                break;
+            case "whitelistChange":
+                channelWhitelisted = request.value;
+                sponsorsLookup(sponsorVideoID);
 
-        if (request.message == "showNoticeAgain") {
-            dontShowNotice = false;
-        }
+                break;
+            case "dontShowNotice":
+                dontShowNotice = false;
 
-        if (request.message == "changeStartSponsorButton") {
-            changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
-        }
+                break;
+            case "changeStartSponsorButton":
+                changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
 
-        if (request.message == "changeVideoPlayerControlsVisibility") {
-            hideVideoPlayerControls = request.value;
+                break;
+            case "showNoticeAgain":
+                dontShowNotice = false;
+                
+                break;
+            case "changeVideoPlayerControlsVisibility":
+                hideVideoPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
 
-            updateVisibilityOfPlayerControlsButton();
-        } else if (request.message == "changeInfoButtonPlayerControlsVisibility") {
-            hideInfoButtonPlayerControls = request.value;
+                break;
+            case "changeInfoButtonPlayerControlsVisibility":
+                hideInfoButtonPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
 
-            updateVisibilityOfPlayerControlsButton();
-        } else if (request.message == "changeDeleteButtonPlayerControlsVisibility") {
-            hideDeleteButtonPlayerControls = request.value;
+                break;
+            case "changeDeleteButtonPlayerControlsVisibility":
+                hideDeleteButtonPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
 
-            updateVisibilityOfPlayerControlsButton();
-        }
+                break;
+            case "trackViewCount":
+                trackViewCount = request.value;
 
-        if (request.message == "trackViewCount") {
-            trackViewCount = request.value;
+                break;
         }
 }
 
