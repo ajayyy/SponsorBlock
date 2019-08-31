@@ -376,7 +376,7 @@ function sponsorsLookup(id) {
 
             //check if this video was uploaded recently
             //use the invidious api to get the time published
-            sendRequestToCustomServer('GET', "https://invidio.us/api/v1/videos/" + id, function(xmlhttp, error) {
+            sendRequestToCustomServer('GET', "https://invidio.us/api/v1/videos/" + id + '?fields=published', function(xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     let unixTimePublished = JSON.parse(xmlhttp.responseText).published;
 
