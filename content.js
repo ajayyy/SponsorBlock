@@ -500,6 +500,23 @@ function whitelistCheck() {
             UUIDs = [];
 
             channelWhitelisted = true;
+
+            //make sure the whitelistedChannels array isn't broken and full of null entries
+            //TODO: remove this at some point in the future as the bug that caused this should be patched
+            if (whitelistedChannels.some((el) => el === null)) {
+                //remove the entries that are null
+                let cleanWhitelistedChannelsArray = [];
+                for (let i = 0; i < whitelistedChannels.length; i++) {
+                    let channelURL = whitelistedChannels[i];
+                    if (channelURL !== null) {
+                        //add it
+                        cleanWhitelistedChannelsArray.push(channelURL);
+                    }
+                }
+
+                //save this value
+                chrome.storage.sync.set({"whitelistedChannels": cleanWhitelistedChannelsArray});
+            }
         }
     });
 }
