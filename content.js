@@ -658,29 +658,30 @@ function getControls() {
 };
 
 //adds all the player controls buttons
-function createButtons() {
-    wait(getControls).then(result => {
-        //set global controls variable
-        controls = result;
+async function createButtons() {
+    let result = await wait(getControls).catch();
 
-        // Add button if does not already exist in html
-        createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
-        createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
-        createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
-        createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
-    });
+    //set global controls variable
+    controls = result;
+
+    // Add button if does not already exist in html
+    createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
+    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
+    createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
+    createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
 }
 //adds or removes the player controls button to what it should be
-function updateVisibilityOfPlayerControlsButton() {
+async function updateVisibilityOfPlayerControlsButton() {
     //not on a proper video yet
     if (!sponsorVideoID) return;
 
-    createButtons();
+    await createButtons();
 	
     if (hideVideoPlayerControls) {
         removePlayerControlsButton();
     }
-    if (hideInfoButtonPlayerControls) {
+    //don't show the info button on embeds
+    if (hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
         document.getElementById("infoButton").style.display = "none";
     }
     if (hideDeleteButtonPlayerControls) {
@@ -818,8 +819,10 @@ function closeInfoMenu() {
     if (popup != null) {
         popup.remove();
 
-        //show info button
-        document.getElementById("infoButton").style.display = "unset";
+        //show info button if it's not an embed
+        if (!document.URL.includes("/embed/")) {
+            document.getElementById("infoButton").style.display = "unset";
+        }
     }
 }
 
