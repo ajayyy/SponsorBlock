@@ -24,6 +24,9 @@ var durationListenerSetUp = false;
 //the channel this video is about
 var channelURL;
 
+//the title of the last video loaded. Used to make sure the channel URL has been updated yet.
+var title;
+
 //is this channel whitelised from getting sponsors skipped
 var channelWhitelisted = false;
 
@@ -230,7 +233,10 @@ function videoIDChange(id) {
     //set the global videoID
     sponsorVideoID = id;
 
-	resetValues();
+    resetValues();
+    
+    let channelIDPromise = wait(getChannelID);
+    channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true)
 	
 	//id is not valid
     if (!id) return;
@@ -270,7 +276,7 @@ function videoIDChange(id) {
     //close popup
     closeInfoMenu();
 	
-    sponsorsLookup(id);
+    sponsorsLookup(id, channelIDPromise);
 
     //make sure everything is properly added
     updateVisibilityOfPlayerControlsButton();
@@ -329,7 +335,7 @@ function videoIDChange(id) {
   
 }
 
-function sponsorsLookup(id) {
+function sponsorsLookup(id, channelIDPromise) {
     v = document.querySelector('video') // Youtube video player
     //there is no video here
     if (v == null) {
@@ -343,9 +349,8 @@ function sponsorsLookup(id) {
         //wait until it is loaded
         v.addEventListener('durationchange', updatePreviewBar);
     }
-  
-    //check database for sponsor times
 
+    //check database for sponsor times
     //made true once a setTimeout has been created to try again after a server error
     let recheckStarted = false;
     sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
@@ -363,7 +368,17 @@ function sponsorsLookup(id) {
                 updatePreviewBar();
             }
 
-            getChannelID();
+            if (channelIDPromise != null) {
+                if (channelIDPromise.isFulfilled) {
+                    whitelistCheck();
+                } else if (channelIDPromise.isRejected) {
+                    //try again
+                    wait(getChannelID).then(whitelistCheck).catch();
+                } else {
+                    //add it as a then statement
+                    channelIDPromise.then(whitelistCheck);
+                }
+            }
 
             sponsorLookupRetries = 0;
         } else if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
@@ -422,12 +437,13 @@ function updatePreviewBar() {
 
 function getChannelID() {
     //get channel id
-    let channelContainers = document.querySelectorAll("#owner-name");
+    let channelContainers = document.querySelectorAll(".ytd-channel-name#text");
     let channelURLContainer = null;
 
     for (let i = 0; i < channelContainers.length; i++) {
-        if (channelContainers[i].firstElementChild != null) {
-            channelURLContainer = channelContainers[i].firstElementChild;
+        let child = channelContainers[i].firstElementChild;
+        if (child != null && child.getAttribute("href") != "") {
+            channelURLContainer = child;
         }
     }
 
@@ -441,12 +457,34 @@ function getChannelID() {
 
     if (channelURLContainer == null) {
         //try later
-        setTimeout(getChannelID, 100);
-        return;
+        return false;
     }
+
+    //first get the title to make sure a title change has occurred (otherwise the next video might still be loading)
+    let titleInfoContainer = document.getElementById("info-contents");
+    let currentTitle = "";
+    if (titleInfoContainer != null) {
+        currentTitle = titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild.innerText;
+    } else {
+        //old YouTube theme
+        currentTitle = document.getElementById("eow-title").innerText;
+    }
+
+    if (title == currentTitle) {
+        //video hasn't changed yet, wait
+        //try later
+        return false;
+    }
+    title = currentTitle;
 
     channelURL = channelURLContainer.getAttribute("href");
 
+    //reset variables
+    channelWhitelisted = false;
+}
+
+//checks if this channel is whitelisted, should be done only after the channelID has been loaded
+function whitelistCheck() {
     //see if this is a whitelisted channel
     chrome.storage.sync.get(["whitelistedChannels"], function(result) {
         let whitelistedChannels = result.whitelistedChannels;
