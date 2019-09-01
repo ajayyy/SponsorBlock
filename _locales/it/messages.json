@@ -1,0 +1,247 @@
+{
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "fullName": {
+        "message": "SponsorBlock per YouTube - Salta gli sponsor",
+        "description": "Name of the extension."
+    },
+
+    "Description": {
+        "message": "Salta i contenuti sponsorizzati nei video di YouTube. Segnala gli annunci incorporati nei video che guardi per far risparmiare tempo agli altri.",
+        "description": "Description of the extension."
+    },
+    "helpPage": {
+        "message": "index_en.html"
+    },
+    "400": {
+        "message": "Richiesta non valida"
+    },
+    "429": {
+        "message": "Stai inviando troppi spezzoni per questo video, sei sicuro che ce ne siano così tanti?"
+    },
+    "409": {
+        "message": "Questo spezzone è già stato inviato"
+    },
+    "502": {
+        "message": "Sembra che il server non funzioni. Contatta lo sviluppatore."
+    },
+    "channelWhitelisted": {
+        "message": "Canale aggiunto alla whitelist!"
+    },
+    "Sponsor": {
+        "message": "sponsorizzazione"
+    },
+    "Sponsors": {
+        "message": "sponsorizzazioni"
+    },
+   "Segment": {
+        "message": "spezzone sponsorizzato"
+    },
+    "Segments": {
+        "message": "spezzoni sponsorizzati"
+    },
+    "noticeTitle": {
+        "message": "Sponsorizzazione Saltata"
+    },
+    "reportButtonTitle": {
+        "message": "Segnala"
+    },
+    "reportButtonInfo": {
+        "message": "Segnala questo spezzone come non corretto."
+    },
+    "Dismiss": {
+        "message": "Chiudi"
+    },
+    "Loading": {
+        "message": "Caricamento..."
+    },
+    "Mins": {
+        "message": "Minuti"
+    },
+    "Secs": {
+        "message": "Secondi"
+    },
+    "Hide": {
+        "message": "Non mostrare più"
+    },
+    "hitGoBack": {
+        "message": "Premi non saltare per tornare da dove sei venuto."
+    },
+    "unskip": {
+        "message": "Non saltare"
+    },
+    "reskip": {
+        "message": "Salta ancora"
+    },
+    "paused": {
+        "message": "In pausa"
+    },
+    "confirmMSG": {
+        "message": "\n\nPer modificare o eliminare valori specifici, premi il pulsante delle informazioni o apri il popup cliccando l'icona dell'estensione nell'angolo in alto a destra."
+    },
+    "clearThis": {
+        "message": "Sei sicuro di volerlo cancellare?\n\n"
+    },
+    "Unknown": {
+        "message": "Si è verificato un errore durante l'invio dello spezzone sponsorizzato, per favore riprova più tardi."
+    },
+  
+    "sponsorFound": {
+        "message": "I contenuti sponsorizzati di questo video sono nel database!"
+    },
+    "sponsor404": {
+        "message": "Nessuna sponsorizzazione trovata"
+    },
+    "sponsorStart": {
+        "message": "La sponsorizzazione inizia adesso"
+    },
+    "sponsorEnd": {
+        "message": "La sponsorizzazione finisce adesso"
+    },
+    "noVideoID": {
+        "message": "Probabilmente questa non è una scheda di YouTube, oppure hai cliccato troppo presto. \nSe sei sicuro di essere in una scheda di YouTube,\n riapri questo popup."
+    },
+    "success": {
+        "message": "Successo!"
+    },
+    "voted": {
+        "message": "Votato!"
+    },
+    "voteFail": {
+        "message": "Hai già votato."
+    },
+    "serverDown": {
+        "message": "Sembra che il server non funzioni. Contatta subito lo sviluppatore."
+    },
+    "connectionError": {
+        "message": "Si è verificato un errore durante la connessione. Codice errore: "
+    },
+    "wantToSubmit": {
+        "message": "Vuoi inviare gli spezzoni sponsorizzati per il video con id"
+    },
+    "leftTimes": {
+        "message": "Sembra che tu non abbia inviato alcuni spezzoni sponsorizzati. Ritorna alla pagina precedente per inviarli (non sono stati eliminati)."
+    },
+    "clearTimes": {
+        "message": "Cancella gli Spezzoni Sponsorizzati"
+    },
+    "openPopup": {
+        "message": "Apri il Popup di SponsorBlock"
+    },
+    "SubmitTimes": {
+        "message": "Invia gli Spezzoni Sponsorizzati"
+    },
+    "submitCheck": {
+        "message": "Sei sicuro di volerlo inviare?"
+    },
+    "whitelistChannel": {
+         "message": "Aggiungi Canale alla Whitelist"
+    },
+    "removeFromWhitelist": {
+         "message": "Rimuovi Canale dalla Whitelist"
+    },
+    "whitelistDescription": {
+         "message": "Aggiungi alla whitelist i canali che sponsorizzano eticamente per incoraggiare ad un comportamento corretto, oppure se sono semplicemente intrattenenti e divertenti. Oppure non farlo, decidi tu."
+    },
+    "voteOnTime": {
+         "message": "Vota uno Spezzone Sponsorizzato"
+    },
+    "recordTimes": {
+         "message": "Registra uno Spezzone Sponsorizzato"
+    },
+    "soFarUHSubmited": {
+         "message": "Fino ad ora hai inviato"
+    },
+    "savedPeopleFrom": {
+         "message": "Hai salvato le persone da "
+    },
+    "viewLeaderboard": {
+         "message": "Guarda la classifica"
+    },
+    "here": {
+        "message": "qui"
+    },
+    "recordTimesDescription": {
+         "message": "Premi il pulsante qui sotto quando inizia e finisce la sponsorizzazione per registrarla e\ninviarla al database."
+    },
+    "popupHint": {
+         "message": "Suggerimento: Premi il tasto punto e virgola mentre il video è attivo per segnalare l'inizio/fine di una sponsorizzazione e virgolette per inviare."
+    },
+    "lastTimes": {
+         "message": "Ultimi minutaggi sponsorizzati scelti"
+    },
+    "clearTimesButton": {
+        "message": "Cancella Minutaggi"
+    },
+    "submitTimesButton": {
+        "message": "Invia Minutaggi"
+    },
+    "publicStats": {
+        "message": "Viene utilizzato nelle pagine delle statistiche pubbliche che mostrano quanto hai contribuito. Vedi"
+    },
+    "setUsername": {
+        "message": "Imposta Username"
+    },
+    "discordAdvert": {
+        "message": "Entra nel server Discord ufficiale per darci suggerimenti e feedback!"
+    },
+    "hideThis": {
+        "message": "Nascondi"
+    },
+    "Options": {
+        "message": "Opzioni"
+    },
+    "showButtons": {
+        "message": "Nascondi i Pulsanti nel Lettore di YouTube"
+    },
+    "hideButtons": {
+        "message": "Mostra i Pulsanti nel Lettore di YouTube"
+    },
+    "hideButtonsDescription": {
+		"message": "Nasconde i pulsanti che appaiono nel lettore di YouTube per inviare spezzoni sponsorizzati. Capisco che può essere fastidioso per alcune\n persone. Invece di utilizzare quei pulsanti, è possibile utilizzare questo popup per inviare gli spezzoni sponsorizzati. Per nascondere l'avviso che appare, \nusa il bottone \"Non mostrare più\" nell'avviso. Potrai sempre abilitare nuovamente queste impostazioni in futuro."
+    },
+    "showInfoButton": {
+        "message": "Mostra il Pulsante Informazioni nel Lettore di YouTube"
+    },
+    "hideInfoButton": {
+        "message": "Nascondi il Pulsante Informazioni nel Lettore di YouTube"
+    },
+    "whatInfoButton": {
+        "message": "Questo è il pulsante che apre un popup nella pagina YouTube."
+    },
+    "hideDeleteButton": {
+        "message": "Nascondi il Pulsante Elimina nel Lettore di YouTube"
+    },
+    "showDeleteButton": {
+        "message": "Mostra il Pulsante Elimina nel Lettore di YouTube"
+    },
+    "whatDeleteButton": {
+        "message": "Questo è il pulsante che ti permette di cancellare tutti gli spezzoni sponsorizzati nel lettore di YouTube."
+    },
+    "disableViewTracking": {
+        "message": "Disattiva il Monitoraggio delle Sponsorizzazioni"
+    },
+    "enableViewTracking": {
+        "message": "Disattiva il Monitoraggio delle Sponsorizzazioni"
+    },
+    "whatViewTracking": {
+        "message": "Questa funzione tiene traccia di quali sponsorizzazioni hai saltato per far sapere agli utenti quanto è stato d'aiuto agli altri il loro contributo e\nviene utilizzato come metrica assieme ai voti positivi per filtrare lo spam dal database. L'estensione invia un messaggio\nal server ogni volta che salti una sponsorizzazione. Si spera che la maggior parte delle persone non modifichi questa impostazione così i numeri sono accurati. :)"
+    },
+    "showNotice": {
+        "message": "Mostra di Nuovo l'Avviso"
+    },
+    "longDescription": {
+        "message": "SponsorBlock è un'estensione che salta gli spezzoni con contenuti sponsorizzati nei video di YouTube. SponsorBlock è un'estensione crowdsourced per i browser che permette a chiunque di inviare i minutaggi degli spezzoni sponsorizzati nei video di YouTube. Quando una persona avrà inviato questa informazione, tutti gli utenti che utilizzano questa estensione potranno saltare lo spezzone sponsorizzato.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "Sito Web",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Codice Sorgente",
+        "description": "Used on Firefox Store Page"
+    }
+}
