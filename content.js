@@ -240,11 +240,11 @@ function videoIDChange(id) {
 
     resetValues();
     
-    let channelIDPromise = wait(getChannelID);
-    channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true)
-	
 	//id is not valid
     if (!id) return;
+
+    let channelIDPromise = wait(getChannelID);
+    channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
     if (previewBar == null) {
