@@ -240,11 +240,11 @@ function videoIDChange(id) {
 
     resetValues();
     
-    let channelIDPromise = wait(getChannelID);
-    channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true)
-	
 	//id is not valid
     if (!id) return;
+
+    let channelIDPromise = wait(getChannelID);
+    channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
     if (previewBar == null) {
@@ -791,11 +791,18 @@ function openInfoMenu() {
             //add the close button
             popup.prepend(closeButton);
     
-            let parentNode = document.getElementById("secondary");
+            let parentNodes = document.querySelectorAll("#secondary");
+            let parentNode = null;
+            for (let i = 0; i < parentNodes.length; i++) {
+                if (parentNodes[i].firstElementChild !== null) {
+                    parentNode = parentNodes[i];
+                }
+            }
             if (parentNode == null) {
                 //old youtube theme
                 parentNode = document.getElementById("watch7-sidebar-contents");
             }
+                
 
             //make the logo source not 404
             //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
