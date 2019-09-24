@@ -243,5 +243,9 @@
     "sourceCode": {
         "message": "Source Code",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "The notice has been upgraded! If you still don't like it, hit the never show button.",
+        "description": "The message displayed after the notice was upgraded."
     }
 }
