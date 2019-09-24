@@ -879,8 +879,8 @@ function vote(type, UUID, skipNotice) {
         if (response != undefined) {
             //see if it was a success or failure
             if (skipNotice != null) {
-                if (response.successType == 1) {
-                    //success
+                if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
+                    //success (treat rate limits as a success)
                     if (type == 0) {
                         skipNotice.afterDownvote.bind(skipNotice)();
                     }
