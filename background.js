@@ -1,7 +1,7 @@
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+chrome.tabs.onUpdated.addListener(function(tabId) {
 	chrome.tabs.sendMessage(tabId, {
         message: 'update',
-	});
+	}, () => void chrome.runtime.lastError ); // Suppress error on Firefox
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
