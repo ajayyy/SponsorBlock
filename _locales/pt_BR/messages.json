@@ -123,5 +123,125 @@
     },
     "leftTimes": {
         "message": "Parece que você se esqueceu de enviar alguns segmentos. Volta pra página para os enviar (não foram deletados)."
+    },
+    "clearTimes": {
+        "message": "Apagar intervalos dos patrocínios"
+    },
+    "openPopup": {
+        "message": "Abrir o Popup SponsorBlock"
+    },
+    "SubmitTimes": {
+        "message": "Submeter intervalos dos patrocínios"
+    },
+    "submitCheck": {
+        "message": "Tem a certeza que pretende submeter?"
+    },
+    "whitelistChannel": {
+         "message": "Meter canal na Whitelist"
+    },
+    "removeFromWhitelist": {
+         "message": "Remover canal da Whitelist"
+    },
+    "whitelistDescription": {
+         "message": "Colocar na Whitelist canais com patrocínios éticos que encoragem boas atitude, ou simplesmente canais com patrocínios engraçados. Ou não, é consigo."
+    },
+    "voteOnTime": {
+         "message": "Vote num intervalo de patrocínio"
+    },
+    "recordTimes": {
+         "message": "Registe um intervalo de patrocínio"
+    },
+    "soFarUHSubmited": {
+         "message": "Até agora submeteu"
+    },
+    "savedPeopleFrom": {
+         "message": "Poupaste a outros de "
+    },
+    "viewLeaderboard": {
+         "message": "Ver a leaderboard"
+    },
+    "here": {
+        "message": "aqui"
+    },
+    "recordTimesDescription": {
+         "message": "Carregue neste botão abaixo quando o patrocínio começar e quando\n acabar para registar e submetê-lo à base de dados"
+    },
+    "popupHint": {
+         "message": "Dica: Carregue na tecla ; enquanto num vídeo para registar o começo/fim de um patrocínio e \" para submeter"
+    },
+    "lastTimes": {
+         "message": "Intervalos de Patrocínios Escolhidos mais Recentemente"
+    },
+    "clearTimesButton": {
+        "message": "Limpar Intervalos"
+    },
+    "submitTimesButton": {
+        "message": "Submeter Intervalos"
+    },
+    "publicStats": {
+        "message": "Isto é usado na página pública de estatísticas que mostra o quanto já contríbuíu. Veje-a"
+    },
+    "setUsername": {
+        "message": "Criar nomde de utilizador"
+    },
+    "discordAdvert": {
+        "message": "Junte-se ao discord oficial para sugerir dicas e sugestões!"
+    },
+    "hideThis": {
+        "message": "Esconder isto"
+    },
+    "Options": {
+        "message": "Opções"
+    },
+    "showButtons": {
+        "message": "Esconder botões no player do Youtube"
+    },
+    "hideButtons": {
+        "message": "Mostrar botões no player do Youtube"
+    },
+    "hideButtonsDescription": {
+        "message": "Isto esconde os botões que aparecem no player do Youtube para submeter patrocínios. Entendemos que possa ser\n incómodo a algumas pessoas. Em vez de usar esses botões pode usar os do popup. Para esconder a mensagem que aparece, \n ususe o botão na mesma que diz \"Don't show this again\". Pode sempre reactivar estas definições novamente."
+    },
+    "showInfoButton": {
+        "message": "Mostrar botão de Informações no player do Youtube"
+    },
+    "hideInfoButton": {
+        "message": "Esconder botão de Informações no player do Youtube"
+    },
+    "whatInfoButton": {
+        "message": "Este é o botão que abre o popup na pagina do Youtube."
+    },
+    "hideDeleteButton": {
+        "message": "Esconder botão de Apagar no player do Youtube"
+    },
+    "showDeleteButton": {
+        "message": "Mostrar botão de Apagar no player do Youtube"
+    },
+    "whatDeleteButton": {
+        "message": "Este é o botão que lhe permite saltar todos os patrocínios do player do Youtube."
+    },
+    "disableViewTracking": {
+        "message": "Desactivar registo de visualização de patrocínios"
+    },
+    "enableViewTracking": {
+        "message": "Activar registo de visualização de patrocínios"
+    },
+    "whatViewTracking": {
+        "message": "Esta funcionalidade regista que patrocínios tem saltado para que outros utilizadores saibam o quanto as suas submições têm ajudado outros\n e é usado como métrica de votos para evitar spam na base de dados. A extenção \n envia uma notificação ao servidor sempre que salta um patrocínio. Quanto menos pessoas desactivarem esta funcionalidade mais precisas serão as estimativas :)"
+    },
+    "showNotice": {
+        "message": "Mostrar notificação outra vez"
+    },
+    "longDescription": {
+        "message": "SponsorBlock é uma extensão que salta segmentos patrocinados em vídeos do YouTube. SponsorBlock é uma extenção crowdfunded que permite a qualquer um submeter o início e o fim de segmentos patrocinados. Assim que uma pessoa submete essa informação todos com a extenção poderam saltar automaticamete o patrocínio.",
+        "description": "Descrição completa da extençao nas lojas dos browsers."
+    },
+    "website": {
+        "message": "Site",
+        "description": "Usado na pagina da loja do Firefox"
+    },
+    "sourceCode": {
+        "message": "Código fonte",
+        "description": "Usado na pagina da loja do Firefox"
     }
 }
