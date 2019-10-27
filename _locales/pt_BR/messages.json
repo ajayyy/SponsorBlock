@@ -28,7 +28,7 @@
         "message": "Parece que o servidor caiu. Contate o desenvolvedor para informá-los."
     },
     "channelWhitelisted": {
-        "message": "Canal adicionado a lista branca!"
+        "message": "Canal adicionado à lista branca!"
     },
     "Sponsor": {
         "message": "patrocinador"
@@ -40,7 +40,7 @@
         "message": "segmento de patrocinador"
     },
     "Segments": {
-        "message": "segmento de patrocinadores"
+        "message": "segmentos de patrocinadores"
     },
     "noticeTitle": {
         "message": "Patrocinador pulado"
@@ -85,7 +85,7 @@
         "message": "Tem certeza que quer limpar isso?\n\n"
     },
     "Unknown": {
-        "message": "Teve um erro ao enviar seus segmentos, tente novamente depois"
+        "message": "Teve um erro ao enviar seus segmentos, tente novamente depois."
     },
   
     "sponsorFound": {
@@ -101,7 +101,7 @@
         "message": "Patrocínio termina agora"
     },
     "noVideoID": {
-        "message": "Isso provavelmente não é uma tab do YouTube, ou você clicou muito cedo. \n Se sabe que é uma tab do YouTube,\n fecha esse popup e abre de novo."
+        "message": "Isso provavelmente não é uma tab do YouTube, ou você clicou muito cedo. \n Se sabe que é uma tab do YouTube,\n feche esse popup e abra de novo."
     },
     "success": {
         "message": "Sucesso!"
@@ -122,6 +122,6 @@
         "message": "Quer enviar os segmentos para o vídeo de ID"
     },
     "leftTimes": {
-        "message": "Parece que você esqueceu de enviar alguns segmentos. Volta pra página para enviar eles (não foram deletados)."
+        "message": "Parece que você se esqueceu de enviar alguns segmentos. Volta pra página para os enviar (não foram deletados)."
     }
 }
