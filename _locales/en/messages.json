@@ -166,7 +166,7 @@
          "message": "Click the button below when the sponsorship starts and ends to record and\nsubmit it to the database."
     },
     "popupHint": {
-         "message": "Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit."
+         "message": "Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit. (This can be changed in the options)"
     },
     "lastTimes": {
          "message": "Latest Sponsor Message Times Chosen"
