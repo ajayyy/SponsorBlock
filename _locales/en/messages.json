@@ -87,7 +87,6 @@
     "Unknown": {
         "message": "There was an error submitting your sponsor times, please try again later."
     },
-  
     "sponsorFound": {
         "message": "This video's sponsors are in the database!"
     },
