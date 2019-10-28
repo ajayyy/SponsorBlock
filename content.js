@@ -204,18 +204,32 @@ function messageListener(request, sender, sendResponse) {
 }
 
 //check for hotkey pressed
-document.onkeydown = function(e){
+document.onkeydown = async function(e){
     e = e || window.event;
     var key = e.key;
 
     let video = document.getElementById("movie_player");
 
+    let startSponsorKey = await new Promise((resolve, reject) => {
+        chrome.storage.sync.get(["startSponsorKeybind"], (result) => resolve(result));
+    });
+    let submitKey = await new Promise((resolve, reject) => {
+        chrome.storage.sync.get(["submitKeybind"], (result) => resolve(result));
+    });
+
+    if (startSponsorKey.startSponsorKeybind === undefined) {
+        startSponsorKey.startSponsorKeybind = ";"
+    }
+    if (submitKey.submitKeybind === undefined) {
+        submitKey.submitKeybind = "'"
+    }
+
     //is the video in focus, otherwise they could be typing a comment
     if (document.activeElement === video) {
-        if(key == ';'){
+        if(key == startSponsorKey.startSponsorKeybind){
             //semicolon
             startSponsorClicked();
-        } else if (key == "'") {
+        } else if (key == submitKey.submitKeybind) {
             //single quote
             submitSponsorTimes();
         }

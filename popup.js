@@ -70,6 +70,10 @@ function runThePopup() {
     "videoFound",
     "sponsorMessageTimes",
     "downloadedSponsorMessageTimes",
+    // Keybinds
+    "setStartSponsorKeybind",
+    "setSubmitKeybind",
+    "keybindDescription"
     ].forEach(id => SB[id] = document.getElementById(id));
 
     //setup click listeners
@@ -79,6 +83,8 @@ function runThePopup() {
     SB.clearTimes.addEventListener("click", clearTimes);
     SB.submitTimes.addEventListener("click", submitTimes);
     SB.showNoticeAgain.addEventListener("click", showNoticeAgain);
+    SB.setStartSponsorKeybind.addEventListener("click", () => setKeybind(true));
+    SB.setSubmitKeybind.addEventListener("click", () => setKeybind(false));
     SB.hideVideoPlayerControls.addEventListener("click", hideVideoPlayerControls);
     SB.showVideoPlayerControls.addEventListener("click", showVideoPlayerControls);
     SB.hideInfoButtonPlayerControls.addEventListener("click", hideInfoButtonPlayerControls);
@@ -104,6 +110,9 @@ function runThePopup() {
   
     //is this a YouTube tab?
     let isYouTubeTab = false;
+
+    // Is the start sponsor keybind currently being set
+    let setStartSponsorKeybind = false;
   
     //see if discord link can be shown
     chrome.storage.sync.get(["hideDiscordLink"], function(result) {
@@ -1236,7 +1245,35 @@ function runThePopup() {
             );
         });
     }
-  
+
+    function setKeybind(startSponsorKeybind) {
+        document.getElementById("keybindButtons").style.display = "none";
+
+        document.getElementById("keybindDescription").style.display = "initial";
+        document.getElementById("keybindDescription").innerText = chrome.i18n.getMessage("keybindDescription");
+
+        setStartSponsorKeybind = startSponsorKeybind;
+
+        document.addEventListener("keydown", onKeybindSet)
+    }
+
+    function onKeybindSet(e) {
+        e = e || window.event;
+        var key = e.key;
+
+        if (setStartSponsorKeybind) {
+            chrome.storage.sync.set({"startSponsorKeybind": key});
+        } else {
+            chrome.storage.sync.set({"submitKeybind": key});
+        }
+
+        document.removeEventListener("keydown", onKeybindSet);
+
+        document.getElementById("keybindDescription").innerText = chrome.i18n.getMessage("keybindDescriptionComplete") + " " + key;
+
+        document.getElementById("keybindButtons").style.display = "unset";
+    }
+
     //converts time in seconds to minutes
     function getTimeInMinutes(seconds) {
         let minutes = Math.floor(seconds / 60);

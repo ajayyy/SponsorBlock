@@ -246,5 +246,17 @@
     "noticeUpdate": {
         "message": "The notice has been upgraded! If you still don't like it, hit the never show button.",
         "description": "The message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Set key for start sponsor keybind"
+    },
+    "setSubmitKeybind": {
+        "message": "Set key for submission keybind"
+    },
+    "keybindDescription": {
+        "message": "Select a key by typing it"
+    },
+    "keybindDescriptionComplete": {
+        "message": "The keybind has been set to: "
     }
 }
