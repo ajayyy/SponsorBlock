@@ -244,8 +244,12 @@
         "description": "Used on Firefox Store Page"
     },
     "noticeUpdate": {
-        "message": "The notice has been upgraded! If you still don't like it, hit the never show button.",
-        "description": "The message displayed after the notice was upgraded."
+        "message": "The notice has been upgraded!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "If you still don't like it, hit the never show button.",
+        "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setStartSponsorShortcut": {
         "message": "Set key for start sponsor keybind"

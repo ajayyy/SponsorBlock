@@ -618,10 +618,11 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 
             if (dontShowNoticeOld) {
                 //show why this notice is showing
-                skipNotice.addNoticeInfoMessage(chrome.i18n.getMessage("noticeUpdate"));
+                skipNotice.addNoticeInfoMessage(chrome.i18n.getMessage("noticeUpdate"), chrome.i18n.getMessage("noticeUpdate2"));
 
-                //disable this setting
-                chrome.storage.sync.set({"dontShowNoticeAgain": false});
+                //remove this setting
+                chrome.storage.sync.remove(["dontShowNoticeAgain"]);
+                dontShowNoticeOld = false;
             }
 
             //auto-upvote this sponsor

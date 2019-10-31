@@ -136,9 +136,9 @@ function runThePopup() {
 
     //if the don't show notice again letiable is true, an option to 
     //  disable should be available
-    chrome.storage.sync.get(["dontShowNoticeAgain"], function(result) {
-        let dontShowNoticeAgain = result.dontShowNoticeAgain;
-        if (dontShowNoticeAgain != undefined && dontShowNoticeAgain) {
+    chrome.storage.sync.get(["dontShowNotice"], function(result) {
+        let dontShowNotice = result.dontShowNotice;
+        if (dontShowNotice != undefined && dontShowNotice) {
             SB.showNoticeAgain.style.display = "unset";
         }
     });
@@ -828,7 +828,7 @@ function runThePopup() {
     }
   
     function showNoticeAgain() {
-        chrome.storage.sync.set({"dontShowNoticeAgain": false});
+        chrome.storage.sync.set({"dontShowNotice": false});
   
         chrome.tabs.query({
             active: true,
