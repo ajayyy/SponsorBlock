@@ -1,8 +1,0 @@
-{
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "sponsorBlocker@ajay.app",
-      "strict_min_version": "57.0"
-    }
-  }
-}
