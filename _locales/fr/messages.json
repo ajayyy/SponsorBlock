@@ -19,7 +19,7 @@
         "message": "Soumission invalide"
     },
     "429": {
-        "message": "Vous cherchez à envoyer beaucoup de segments, il y en a vraiment autant ?"
+        "message": "Vous cherchez à envoyer beaucoup de segments, y en a-t-il vraiment autant ?"
     },
     "409": {
         "message": "Déja soumis"
@@ -28,7 +28,7 @@
         "message": "Le serveur ne fonctionne pas. Contactez le développeur."
     },
     "channelWhitelisted": {
-        "message": "Cette chaine est sur la liste blanche !"
+        "message": "Cette chaîne est sur la liste blanche !"
     },
     "Sponsor": {
         "message": "message commercial"
@@ -100,7 +100,7 @@
         "message": "Fin du message"
     },
     "noVideoID": {
-        "message": "Ceci n'est pas un onglet YouTube, ou vous avez cliqué trop tôt. \n Si vous êtes sur(e) que c'est un onglet YouTube, fermez ce menu et réessayer."
+        "message": "Ceci n'est pas un onglet YouTube, ou vous avez cliqué trop tôt. \n Si vous êtes sûr(e) que c'est un onglet YouTube, fermez ce menu et réessayez."
     },
     "success": {
         "message": "Succès !"
