@@ -166,7 +166,7 @@
          "message": "Click the button below when the sponsorship starts and ends to record and\nsubmit it to the database."
     },
     "popupHint": {
-         "message": "Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit."
+         "message": "Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit. (This can be changed in the options)"
     },
     "lastTimes": {
          "message": "Latest Sponsor Message Times Chosen"
@@ -242,5 +242,25 @@
     "sourceCode": {
         "message": "Source Code",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "The notice has been upgraded!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "If you still don't like it, hit the never show button.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Set key for start sponsor keybind"
+    },
+    "setSubmitKeybind": {
+        "message": "Set key for submission keybind"
+    },
+    "keybindDescription": {
+        "message": "Select a key by typing it"
+    },
+    "keybindDescriptionComplete": {
+        "message": "The keybind has been set to: "
     }
 }

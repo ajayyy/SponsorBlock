@@ -42,28 +42,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
-    // TODO (shownInstallPage): remove shownInstallPage logic after sufficient amount of time,
-    // so that people have time to upgrade and move to shownInstallPage-free code.
     chrome.storage.sync.get(["userID", "shownInstallPage"], function(result) {
         const userID = result.userID;
-        // TODO (shownInstallPage): delete row below
-        const shownInstallPage = result.shownInstallPage;
 
         // If there is no userID, then it is the first install.
         if (!userID){
-            // Show install page, if there is no user id
-            // and there is no shownInstallPage.
-            // TODO (shownInstallPage): remove this if statement, but leave contents
-            if (!shownInstallPage){
-                //open up the install page
-                chrome.tabs.create({url: chrome.extension.getURL("/help/"+chrome.i18n.getMessage("helpPage"))});
-            }
-
-            // TODO (shownInstallPage): delete if statement and contents
-            // If shownInstallPage is set, remove it.
-            if (!!shownInstallPage){
-                chrome.storage.sync.remove("shownInstallPage");
-            }
+            //open up the install page
+            chrome.tabs.create({url: chrome.extension.getURL("/help/"+chrome.i18n.getMessage("helpPage"))});
 
             //generate a userID
             const newUserID = generateUserID();

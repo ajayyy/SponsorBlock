@@ -294,11 +294,17 @@ class SkipNotice {
         }
     }
     
-    addNoticeInfoMessage(message) {
+    addNoticeInfoMessage(message, message2) {
         let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix);
         if (previousInfoMessage != null) {
             //remove it
             document.getElementById("sponsorSkipNotice" + this.idSuffix).removeChild(previousInfoMessage);
+        }
+
+        let previousInfoMessage2 = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix + "2");
+        if (previousInfoMessage2 != null) {
+            //remove it
+            document.getElementById("sponsorSkipNotice" + this.idSuffix).removeChild(previousInfoMessage2);
         }
         
         //add info
@@ -306,9 +312,19 @@ class SkipNotice {
         thanksForVotingText.id = "sponsorTimesInfoMessage" + this.idSuffix;
         thanksForVotingText.className = "sponsorTimesInfoMessage";
         thanksForVotingText.innerText = message;
-        
+
         //add element to div
         document.getElementById("sponsorSkipNotice" + this.idSuffix).insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
+    
+        if (message2 !== undefined) {
+            let thanksForVotingText2 = document.createElement("p");
+            thanksForVotingText2.id = "sponsorTimesInfoMessage" + this.idSuffix + "2";
+            thanksForVotingText2.className = "sponsorTimesInfoMessage";
+            thanksForVotingText2.innerText = message2;
+
+            //add element to div
+            document.getElementById("sponsorSkipNotice" + this.idSuffix).insertBefore(thanksForVotingText2, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
+        }
     }
     
     resetNoticeInfoMessage() {
@@ -337,7 +353,7 @@ class SkipNotice {
         thanksForVotingText.id = "sponsorTimesVoteButtonInfoMessage" + this.idSuffix;
         thanksForVotingText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
         thanksForVotingText.innerText = message;
-        
+
         //add element to div
         document.getElementById("sponsorSkipNoticeSecondRow" + this.idSuffix).prepend(thanksForVotingText);
     }
@@ -348,13 +364,16 @@ class SkipNotice {
             //remove it
             document.getElementById("sponsorSkipNoticeSecondRow" + this.idSuffix).removeChild(previousInfoMessage);
         }
-        
+
         //show button again
         document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.idSuffix).style.removeProperty("display");
     }
     
     //close this notice
     close() {
+        //reset message
+        this.resetNoticeInfoMessage();
+
         let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
         if (notice != null) {
             notice.remove();

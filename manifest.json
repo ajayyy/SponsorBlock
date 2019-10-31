@@ -1,7 +1,7 @@
 {
   "name": "__MSG_fullName__",
   "short_name": "__MSG_Name__",
-  "version": "1.1.9",
+  "version": "1.1.9.1",
   "default_locale": "en",
   "description": "__MSG_Description__",
   "content_scripts": [
@@ -64,12 +64,6 @@
     "64": "icons/LogoSponsorBlocker64px.png",
     "128": "icons/LogoSponsorBlocker128px.png",
     "256": "icons/LogoSponsorBlocker256px.png"
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "sponsorBlocker@ajay.app",
-      "strict_min_version": "57.0"
-    }
   },
   "manifest_version": 2
 }
