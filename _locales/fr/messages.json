@@ -123,7 +123,144 @@
     "leftTimes": {
         "message": "Vous avez laissé des segments commerciaux non soumis. Retournez sur la vidéo pour les soumettre (ils ont été conservés)."
     },
+    "clearTimes": {
+        "message": "Supprimer les segments commerciaux"
+    },
+    "openPopup": {
+        "message": "Ouvrir l'encart SponsorBlock"
+    },
+    "SubmitTimes": {
+        "message": "Soumettre les segments commerciaux"
+    },
     "submitCheck": {
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
+    },
+    "whitelistChannel": {
+        "message": "Ajouter la chaîne à la liste blanche"
+    },
+    "removeFromWhitelist": {
+        "message": "Supprimer la chaîne de la liste blanche"
+    },
+    "whitelistDescription": {
+        "message": "Ajouter à la liste blanche les chaînes qui publient des messages commerciaux de façon éthique pour encourager les bons comportements, ou qui publient des messages commerciaux divertissants ou drôles. Ou pas, c'est votre choix."
+    },
+    "voteOnTime": {
+        "message": "Voter sur un segment commercial"
+    },
+    "recordTimes": {
+        "message": "Enregistrer un segment commercial"
+    },
+    "soFarUHSubmited": {
+        "message": "Vous avez soumis jusqu'à présent"
+    },
+    "savedPeopleFrom": {
+        "message": "Vous avez fait gagner aux autres "
+    },
+    "viewLeaderboard": {
+        "message": "Consulter le classement"
+    },
+    "here": {
+        "message": "ici"
+    },
+    "recordTimesDescription": {
+        "message": "Cliquez sur le bouton ci-dessous quand le segment commercial commence puis \nse termine pour l'enregistrer et le soumettre à la base de données."
+    },
+    "popupHint": {
+        "message": "Astuce : utilisez la touche point-virgule lorsque la vidéo est sélectionnée pour enregistrer le début et la fin d'un segment commercial; utilisez la touche guillemet pour le soumettre. (Les touches peuvent être modifiées dans les options)"
+    },
+    "lastTimes": {
+        "message": "Derniers temps choisis pour le segment commercial"
+    },
+    "clearTimesButton": {
+        "message": "Supprimer les temps"
+    },
+    "submitTimesButton": {
+        "message": "Soumettre les temps"
+    },
+    "publicStats": {
+        "message": "Affiché sur le classement public pour montrer vos contributions. Voir sur"
+    },
+    "setUsername": {
+        "message": "Choisir pseudo"
+    },
+    "discordAdvert": {
+        "message": "Rejoignez le serveur Discord officiel pour toutes suggestions ou remarques!"
+    },
+    "hideThis": {
+        "message": "Cacher"
+    },
+    "Options": {
+        "message": "Options"
+    },
+    "showButtons": {
+        "message": "Cacher les boutons sur le lecteur YouTube"
+    },
+    "hideButtons": {
+        "message": "Montrer les boutons sur le lecteur YouTube"
+    },
+    "hideButtonsDescription": {
+        "message": "Cela permet de cacher du lecteur YouTube les boutons utilisés pour soumettre des segments commerciaux. Je peux \ncomprendre que certaines personnes les trouvent perturbants. Au lieu d'utiliser ces boutons, cette fenêtre peut être utilisée \npour soumettre des segments commerciaux. Pour cacher la notification, utilisez le bouton \"Ne plus montrer\" sur la notification. Vous pouvez toujours réactiver ces paramètres plus tard."
+    },
+    "showInfoButton": {
+        "message": "Montrer le bouton Info sur le lecteur YouTube"
+    },
+    "hideInfoButton": {
+        "message": "Cacher le bouton Info sur le lecteur YouTube"
+    },
+    "whatInfoButton": {
+        "message": "Il s'agit du bouton qui ouvre l'encart sur la page YouTube."
+    },
+    "hideDeleteButton": {
+        "message": "Cacher le bouton Supprimer sur le lecteur YouTube"
+    },
+    "showDeleteButton": {
+        "message": "Montrer le bouton Supprimer sur le lecteur YouTube"
+    },
+    "whatDeleteButton": {
+        "message": "Il s'agit du bouton qui permet de supprimer tous les segments commerciaux depuis le lecteur YouTube."
+    },
+    "disableViewTracking": {
+        "message": "Désactiver le suivi des vues de segments commerciaux"
+    },
+    "enableViewTracking": {
+        "message": "Activer le suivi des vues de segments commerciaux"
+    },
+    "whatViewTracking": {
+        "message": "Cette fonctionnalité suit quels segments commerciaux vous avez sautés afin de calculer le bénéfice des soumissions des \nautres utilisateurs. Elle est également utilisée comme métrique, avec les haut-votes, afin de s'assurer que les spams \nsont ignorés. L'extension envoie un message au serveur à chauqe fois qu'un segment commercial est sauté. Avec un peu de chance, peu de personnes désactiveront cette fonctionnalité afin d'obtenir des nombres de vues exacts. :)"
+    },
+    "showNotice": {
+        "message": "Afficher la notification"
+    },
+    "longDescription": {
+        "message": "SponsorBlock est une extension qui permet de passer les messages commerciaux des vidéos YouTube. SponsorBlock est une extension pour navigateur basée sur le crowdsourcing permettant à n'importe qui de soumettre le début et la fin des segments commerciaux sur les vidéos YouTube. Dès qu'une personne a soumis ces informations, les autres utilisateurs de l'extension en bénéficieront et verront les messages commerciaux automatiquement sautés.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "Site web",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Code source",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "La notification a été mise à jour !",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\"",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Changer le raccourci pour enregistrer un segment"
+    },
+    "setSubmitKeybind": {
+        "message": "Changer le raccourci pour soumettre les segments"
+    },
+    "keybindDescription": {
+        "message": "Appuyez sur une touche"
+    },
+    "keybindDescriptionComplete": {
+        "message": "Le raccourci choisi est : "
     }
 }
