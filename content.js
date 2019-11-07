@@ -83,7 +83,7 @@ chrome.storage.sync.get(["trackViewCount"], function(result) {
 //option renamed when new notice was made
 var dontShowNotice = false;
 chrome.storage.sync.get(["dontShowNotice"], function(result) {
-    let dontShowNoticeAgain = result.dontShowNoticeAgain;
+    let dontShowNoticeAgain = result.dontShowNotice;
     if (dontShowNoticeAgain != undefined) {
         dontShowNotice = dontShowNoticeAgain;
     }
