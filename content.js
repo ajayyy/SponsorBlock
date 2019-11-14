@@ -420,7 +420,8 @@ function sponsorsLookup(id, channelIDPromise) {
 
                     //if less than 3 days old
                     if ((Date.now() / 1000) - unixTimePublished < 259200) {
-                        setTimeout(() => sponsorsLookup(id), 10000);
+                        //TODO lower when server becomes better
+                        setTimeout(() => sponsorsLookup(id), 180000);
                     }
                 }
             });
