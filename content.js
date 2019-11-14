@@ -420,7 +420,8 @@ function sponsorsLookup(id, channelIDPromise) {
 
                     //if less than 3 days old
                     if ((Date.now() / 1000) - unixTimePublished < 259200) {
-                        setTimeout(() => sponsorsLookup(id), 10000);
+                        //TODO lower when server becomes better
+                        setTimeout(() => sponsorsLookup(id), 180000);
                     }
                 }
             });
@@ -429,8 +430,9 @@ function sponsorsLookup(id, channelIDPromise) {
         } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90 && !recheckStarted) {
             recheckStarted = true;
 
+            //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id), 1000);
+            setTimeout(() => sponsorsLookup(id), 10000);
 
             sponsorLookupRetries++;
         }
