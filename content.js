@@ -1041,8 +1041,11 @@ function sendSubmitMessage(){
                 document.getElementById("submitButton").style.animation = "unset";
                 document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-                if([400,429,409,502].includes(response.statusCode)) {
-                    alert(chrome.i18n.getMessage(response.statusCode));
+                if([400, 429, 409, 502, 0].includes(response.statusCode)) {
+                    //treat them the same
+                    if (response.statusCode == 503) response.statusCode = 502;
+
+                    alert(chrome.i18n.getMessage(response.statusCode + ""));
                 } else {
                     alert(chrome.i18n.getMessage("connectionError") + response.statusCode);
                 }

@@ -811,8 +811,11 @@ function runThePopup() {
                     } else {
                         let errorMessage = "";
                         
-                        if([400,429,409,502].includes(response.statusCode)) {
-                            errorMessage = chrome.i18n.getMessage(response.statusCode);
+                        if([400, 429, 409, 502, 0].includes(response.statusCode)) {
+                            //treat them the same
+                            if (response.statusCode == 503) response.statusCode = 502;
+        
+                            errorMessage = chrome.i18n.getMessage(response.statusCode + "");
                         } else {
                             errorMessage = chrome.i18n.getMessage("connectionError") + response.statusCode;
                         }
@@ -1109,8 +1112,10 @@ function runThePopup() {
             type: type,
             UUID: UUID
         }, function(response) {
+            console.log(response)
             if (response != undefined) {
                 //see if it was a success or failure
+                console.log(response)
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
                     addVoteMessage(chrome.i18n.getMessage("voted"), UUID)

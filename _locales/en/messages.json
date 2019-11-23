@@ -262,5 +262,8 @@
     },
     "keybindDescriptionComplete": {
         "message": "The keybind has been set to: "
+    },
+    "0": {
+        "message": "Connection Timeout. Check your internet connection. If your internet is working, the server is probably overloaded or down."
     }
 }
