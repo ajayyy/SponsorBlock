@@ -378,6 +378,18 @@ function sponsorsLookup(id, channelIDPromise) {
         v.addEventListener('durationchange', updatePreviewBar);
     }
 
+    if (channelIDPromise != null) {
+        if (channelIDPromise.isFulfilled) {
+            whitelistCheck();
+        } else if (channelIDPromise.isRejected) {
+            //try again
+            wait(getChannelID).then(whitelistCheck).catch();
+        } else {
+            //add it as a then statement
+            channelIDPromise.then(whitelistCheck);
+        }
+    }
+
     //check database for sponsor times
     //made true once a setTimeout has been created to try again after a server error
     let recheckStarted = false;
@@ -394,18 +406,6 @@ function sponsorsLookup(id, channelIDPromise) {
                 //set it now
                 //otherwise the listener can handle it
                 updatePreviewBar();
-            }
-
-            if (channelIDPromise != null) {
-                if (channelIDPromise.isFulfilled) {
-                    whitelistCheck();
-                } else if (channelIDPromise.isRejected) {
-                    //try again
-                    wait(getChannelID).then(whitelistCheck).catch();
-                } else {
-                    //add it as a then statement
-                    channelIDPromise.then(whitelistCheck);
-                }
             }
 
             sponsorLookupRetries = 0;
