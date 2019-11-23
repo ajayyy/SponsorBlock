@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  **Unofficial Ports**:
+  <b>Unofficial Ports:</b>
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#mpv-media-player">MPV</a>
 </p>
 
