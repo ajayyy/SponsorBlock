@@ -42,22 +42,24 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
-    chrome.storage.sync.get(["userID", "shownInstallPage"], function(result) {
-        const userID = result.userID;
+    setTimeout(function() {
+        chrome.storage.sync.get(["userID"], function(result) {
+            const userID = result.userID;
 
-        // If there is no userID, then it is the first install.
-        if (!userID){
-            //open up the install page
-            chrome.tabs.create({url: chrome.extension.getURL("/help/"+chrome.i18n.getMessage("helpPage"))});
+            // If there is no userID, then it is the first install.
+            if (!userID){
+                //open up the install page
+                chrome.tabs.create({url: chrome.extension.getURL("/help/index_en.html")});
 
-            //generate a userID
-            const newUserID = generateUserID();
-            //save this UUID
-            chrome.storage.sync.set({
-                "userID": newUserID
-            });
-        }
-    });
+                //generate a userID
+                const newUserID = generateUserID();
+                //save this UUID
+                chrome.storage.sync.set({
+                    "userID": newUserID
+                });
+            }
+        });
+    }, 1500);
 });
 
 //gets the sponsor times from memory
@@ -157,6 +159,9 @@ function submitTimes(videoID, callback) {
 
             //submit these times
             for (let i = 0; i < sponsorTimes.length; i++) {
+                    //to prevent it from happeneing twice
+                    let increasedContributionAmount = false;
+
                     //submit the sponsorTime
                     sendRequestToServer("GET", "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
                     + "&userID=" + userID, function(xmlhttp, error) {
@@ -175,7 +180,11 @@ function submitTimes(videoID, callback) {
                                     }
 
                                     //save the amount contributed
-                                    chrome.storage.sync.set({"sponsorTimesContributed": currentContributionAmount + sponsorTimes.length});
+                                    if (!increasedContributionAmount) {
+                                        increasedContributionAmount = true;
+                                        
+                                        chrome.storage.sync.set({"sponsorTimesContributed": currentContributionAmount + sponsorTimes.length});
+                                    }
                                 });
                             }
                         } else if (error) {
