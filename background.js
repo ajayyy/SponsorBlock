@@ -42,22 +42,24 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
-    chrome.storage.sync.get(["userID", "shownInstallPage"], function(result) {
-        const userID = result.userID;
+    setTimeout(function() {
+        chrome.storage.sync.get(["userID"], function(result) {
+            const userID = result.userID;
 
-        // If there is no userID, then it is the first install.
-        if (!userID){
-            //open up the install page
-            chrome.tabs.create({url: chrome.extension.getURL("/help/"+chrome.i18n.getMessage("helpPage"))});
+            // If there is no userID, then it is the first install.
+            if (!userID){
+                //open up the install page
+                chrome.tabs.create({url: chrome.extension.getURL("/help/index_en.html")});
 
-            //generate a userID
-            const newUserID = generateUserID();
-            //save this UUID
-            chrome.storage.sync.set({
-                "userID": newUserID
-            });
-        }
-    });
+                //generate a userID
+                const newUserID = generateUserID();
+                //save this UUID
+                chrome.storage.sync.set({
+                    "userID": newUserID
+                });
+            }
+        });
+    }, 1500);
 });
 
 //gets the sponsor times from memory
