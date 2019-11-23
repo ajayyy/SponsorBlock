@@ -193,10 +193,10 @@
         "message": "Options"
     },
     "showButtons": {
-        "message": "Hide Buttons On YouTube Player"
+        "message": "Show Buttons On YouTube Player"
     },
     "hideButtons": {
-        "message": "Show Buttons On YouTube Player"
+        "message": "Hide Buttons On YouTube Player"
     },
     "hideButtonsDescription": {
         "message": "This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some\n people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, \n use the button that appears on the notice saying \"Don't show this again\". You can always enable these settings again later."

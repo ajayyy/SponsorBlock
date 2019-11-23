@@ -193,10 +193,10 @@
         "message": "Options"
     },
     "showButtons": {
-        "message": "Cacher les boutons sur le lecteur YouTube"
+        "message": "Montrer les boutons sur le lecteur YouTube"
     },
     "hideButtons": {
-        "message": "Montrer les boutons sur le lecteur YouTube"
+        "message": "Cacher les boutons sur le lecteur YouTube"
     },
     "hideButtonsDescription": {
         "message": "Cela permet de cacher du lecteur YouTube les boutons utilisés pour soumettre des segments commerciaux. Je peux \ncomprendre que certaines personnes les trouvent perturbants. Au lieu d'utiliser ces boutons, cette fenêtre peut être utilisée \npour soumettre des segments commerciaux. Pour cacher la notification, utilisez le bouton \"Ne plus montrer\" sur la notification. Vous pouvez toujours réactiver ces paramètres plus tard."
