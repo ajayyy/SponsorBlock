@@ -992,6 +992,8 @@ function sendSubmitMessage(){
 
     let currentVideoID = sponsorVideoID;
 
+    let currentSponsorTimes = submitSponsorTimes;
+
     chrome.runtime.sendMessage({
         message: "submitTimes",
         videoID: currentVideoID
@@ -1015,10 +1017,11 @@ function sendSubmitMessage(){
 
                 //clear the sponsor times
                 let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-                chrome.storage.sync.set({[sponsorTimeKey]: []});
+                chrome.storage.sync.set({[sponsorTimeKey]: []}, () => void updatePreviewBar());
 
-                //request the sponsors from the server again
-                sponsorsLookup(currentVideoID);
+                //add submissions to current sponsors list
+                sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+                sponsorTimesSubmitting = [];
             } else {
                 //show that the upload failed
                 document.getElementById("submitButton").style.animation = "unset";
