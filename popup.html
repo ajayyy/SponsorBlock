@@ -14,7 +14,7 @@
           </h1>
 
           <!-- Loading text -->
-          <p id="loadingIndicator" class="popupElement">__MSG_Loading__</p>
+          <p id="loadingIndicator" class="popupElement">__MSG_noVideoID__</p>
           
           <!-- Hidden until loading complete -->
           <div id="mainControls" class="main popupElement" style="display: none">
@@ -89,13 +89,6 @@
 
             <br/>
 
-            <div>
-              <button id="disableSkipping" class="greenButton popupElement">__MSG_disableSkipping__</button>
-              <button id="enableSkipping" class="whitelistButton popupElement" style="display: none">__MSG_enableSkipping__</button>
-            </div>
-
-            <br/>
-
             <button id="reportAnIssue" class="dangerButton popupElement">__MSG_voteOnTime__</button>
 
             <div id="issueReporterContainer"  class="popupElement" style="display: none">
@@ -108,126 +101,135 @@
 
             </div>
 
-            <h2 class="recordingSubtitle popupElement">__MSG_yourWork__</h2>
+            <br/>
+            <br/>
 
-            <p class="popupElement">
-              <span id=sponsorTimesContributionsContainer  class="popupElement" style="display: none">
-                  __MSG_soFarUHSubmited__
-                  <span id="sponsorTimesContributionsDisplay" class="popupElement">
-                    0
-                  </span>
-                  <span id="sponsorTimesContributionsDisplayEndWord" class="popupElement">
-                    __MSG_Sponsors__.
-                  </span>
-              </span>
+          </div>
 
-              <span id=sponsorTimesViewsContainer  class="popupElement" style="display: none">
-                  __MSG_savedPeopleFrom__
-                  <span id="sponsorTimesViewsDisplay" class="popupElement">
-                    0
-                  </span>
-                  <span id="sponsorTimesViewsDisplayEndWord" class="popupElement">
-                     __MSG_Segments__.
-                     __MSG_savedPeopleFrom__
-                  </span>
-              </span>
+          <div>
+            <button id="disableSkipping" class="greenButton popupElement">__MSG_disableSkipping__</button>
+            <button id="enableSkipping" class="whitelistButton popupElement" style="display: none">__MSG_enableSkipping__</button>
+          </div>
 
-              <div class="popupElement">
-                __MSG_viewLeaderboard__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">__MSG_here__</a>.
+          <h2 class="recordingSubtitle popupElement">__MSG_yourWork__</h2>
+
+          <p class="popupElement">
+            <span id=sponsorTimesContributionsContainer  class="popupElement" style="display: none">
+                __MSG_soFarUHSubmited__
+                <span id="sponsorTimesContributionsDisplay" class="popupElement">
+                  0
+                </span>
+                <span id="sponsorTimesContributionsDisplayEndWord" class="popupElement">
+                  __MSG_Sponsors__.
+                </span>
+            </span>
+
+            <span id=sponsorTimesViewsContainer  class="popupElement" style="display: none">
+                __MSG_savedPeopleFrom__
+                <span id="sponsorTimesViewsDisplay" class="popupElement">
+                  0
+                </span>
+                <span id="sponsorTimesViewsDisplayEndWord" class="popupElement">
+                    __MSG_Segments__.
+                    __MSG_savedPeopleFrom__
+                </span>
+            </span>
+
+            <div class="popupElement">
+              __MSG_viewLeaderboard__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">__MSG_here__</a>.
+            </div>
+          </p>
+
+          <div id="setUsernameContainer" class="popupElement">
+  
+            <button id="setUsernameButton" class="warningButton popupElement">__MSG_setUsername__</button>
+            <br/>
+            <sub class="popupElement">
+              __MSG_publicStats__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">__MSG_here__</a>.
+            </sub>
+          </div>
+
+          <div id="setUsername" class="popupElement" style="display: none">
+              <h3>__MSG_setUsername__</h3>
+
+              <div id="setUsernameStatusContainer" style="display: none">
+                  <h2 id="setUsernameStatus"></h2>
               </div>
-            </p>
 
-            <div id="setUsernameContainer" class="popupElement">
+              <input id="usernameInput" hint="Username"></input>
+
+              <br/>
+              <br/>
+
+              <button id="submitUsername" class="warningButton popupElement">__MSG_setUsername__</button>
+          </div>
+
+          <div id="optionsButtonContainer" class="popupElement">
+              <br/>
+              <br/>
     
-              <button id="setUsernameButton" class="warningButton popupElement">__MSG_setUsername__</button>
+              <button id="optionsButton" class="dangerButton popupElement">__MSG_Options__</button>
+          </div>
+
+          <div id="options" class="popupElement" style="display: none">
+              <br/>
+
+              <h3>__MSG_Options__</h3>
+
+              <span id="keybindButtons">
+                <button id="setStartSponsorKeybind" class="warningButton popupElement">__MSG_setStartSponsorShortcut__</button>
+                <br/>
+                <br/>
+                <button id="setSubmitKeybind" class="warningButton popupElement">__MSG_setSubmitKeybind__</button>
+                <br/>
+              </span>
+              
+              <h2 id="keybindDescription" style="display: none" class="popupElement">__MSG_keybindDescription__</h2>
+
+              <br/>
+              <br/>
+    
+              <button id="hideVideoPlayerControls" class="warningButton popupElement">__MSG_hideButtons__</button>
+              <button id="showVideoPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showButtons__</button>
               <br/>
               <sub class="popupElement">
-                __MSG_publicStats__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">__MSG_here__</a>.
+                __MSG_hideButtonsDescription__
               </sub>
-            </div>
 
-            <div id="setUsername" class="popupElement" style="display: none">
-                <h3>__MSG_setUsername__</h3>
+              <br/>
+              <br/>
 
-                <div id="setUsernameStatusContainer" style="display: none">
-                    <h2 id="setUsernameStatus"></h2>
-                </div>
+              <button id="hideInfoButtonPlayerControls" class="warningButton popupElement">__MSG_hideInfoButton__</button>
+              <button id="showInfoButtonPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showInfoButton__</button>
+              <br/>
+              <sub class="popupElement">
+                __MSG_whatInfoButton__
+              </sub>
 
-                <input id="usernameInput" hint="Username"></input>
+              <br/>
+              <br/>
 
-                <br/>
-                <br/>
+              <button id="hideDeleteButtonPlayerControls" class="warningButton popupElement">__MSG_hideDeleteButton__</button>
+              <button id="showDeleteButtonPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showDeleteButton__</button>
+              <br/>
+              <sub class="popupElement">
+                __MSG_whatDeleteButton__
+              </sub>
 
-                <button id="submitUsername" class="warningButton popupElement">__MSG_setUsername__</button>
-            </div>
+              <br/>
+              <br/>
 
-            <div id="optionsButtonContainer" class="popupElement">
-                <br/>
-                <br/>
-      
-                <button id="optionsButton" class="dangerButton popupElement">__MSG_Options__</button>
-            </div>
+              <button id="disableSponsorViewTracking" class="warningButton popupElement">__MSG_disableViewTracking__</button>
+              <button id="enableSponsorViewTracking" style="display: none" class="warningButton popupElement">__MSG_enableViewTracking__</button>
+              <br/>
+              <sub class="popupElement">
+                __MSG_whatViewTracking__
+              </sub>
+    
+              <br/>
+              <br/>
 
-            <div id="options" class="popupElement" style="display: none">
-                <br/>
-
-                <h3>__MSG_Options__</h3>
-
-                <span id="keybindButtons">
-                  <button id="setStartSponsorKeybind" class="warningButton popupElement">__MSG_setStartSponsorShortcut__</button>
-                  <br/>
-                  <br/>
-                  <button id="setSubmitKeybind" class="warningButton popupElement">__MSG_setSubmitKeybind__</button>
-                  <br/>
-                </span>
-                
-                <h2 id="keybindDescription" style="display: none" class="popupElement">__MSG_keybindDescription__</h2>
-
-                <br/>
-                <br/>
-      
-                <button id="hideVideoPlayerControls" class="warningButton popupElement">__MSG_hideButtons__</button>
-                <button id="showVideoPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showButtons__</button>
-                <br/>
-                <sub class="popupElement">
-                  __MSG_hideButtonsDescription__
-                </sub>
-
-                <br/>
-                <br/>
-
-                <button id="hideInfoButtonPlayerControls" class="warningButton popupElement">__MSG_hideInfoButton__</button>
-                <button id="showInfoButtonPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showInfoButton__</button>
-                <br/>
-                <sub class="popupElement">
-                  __MSG_whatInfoButton__
-                </sub>
-
-                <br/>
-                <br/>
-
-                <button id="hideDeleteButtonPlayerControls" class="warningButton popupElement">__MSG_hideDeleteButton__</button>
-                <button id="showDeleteButtonPlayerControls" style="display: none" class="warningButton popupElement">__MSG_showDeleteButton__</button>
-                <br/>
-                <sub class="popupElement">
-                  __MSG_whatDeleteButton__
-                </sub>
-
-                <br/>
-                <br/>
-
-                <button id="disableSponsorViewTracking" class="warningButton popupElement">__MSG_disableViewTracking__</button>
-                <button id="enableSponsorViewTracking" style="display: none" class="warningButton popupElement">__MSG_enableViewTracking__</button>
-                <br/>
-                <sub class="popupElement">
-                  __MSG_whatViewTracking__
-                </sub>
-      
-                <br/>
-                <br/>
-
-                <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">__MSG_showNotice__</button>
-            </div>
+              <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">__MSG_showNotice__</button>
           </div>
         </div>
     </center>
