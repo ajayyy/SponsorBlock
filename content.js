@@ -67,6 +67,15 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
+//should skips happen at all
+var disableSkipping = false;
+chrome.storage.sync.get(["disableSkipping"], function(result) {
+    let disableSkippingStorage = result.disableSkipping;
+    if (disableSkippingStorage != undefined) {
+        disableSkipping = disableSkippingStorage;
+    }
+});
+
 //should view counts be tracked
 var trackViewCount = false;
 chrome.storage.sync.get(["trackViewCount"], function(result) {
@@ -439,9 +448,11 @@ function sponsorsLookup(id, channelIDPromise) {
     });
 
     //add the event to run on the videos "ontimeupdate"
-    v.ontimeupdate = function () { 
-        sponsorCheck();
-    };
+    if (!disableSkipping) {
+        v.ontimeupdate = function () { 
+            sponsorCheck();
+        };
+    }
 }
 
 function updatePreviewBar() {
@@ -531,6 +542,12 @@ function whitelistCheck() {
 
 //video skipping
 function sponsorCheck() {
+    if (disableSkipping) {
+        // Make sure this isn't called again
+        v.ontimeupdate = null;
+        return;
+    }
+
     let skipHappened = false;
 
     if (sponsorTimes != null) {

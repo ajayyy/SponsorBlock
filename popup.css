@@ -35,6 +35,10 @@ sub.popupElement {
 }
 /* end reset */
 
+#sponsorBlockPopupLogo {
+	vertical-align: text-bottom;
+}
+
 .popupElement {
     font-family: 'Source Sans Pro', sans-serif;
 
@@ -43,12 +47,13 @@ sub.popupElement {
 
 h1.popupElement {
 	margin-top: 0px;
+	margin-bottom: 10px;
 }
 
 .popupBody {
 	font-size: 14px;
 	background-color: #ffd9d9;
-	padding: 5px;
+	padding: 0px 5px;
 }
 
 .discreteLink.popupElement {
