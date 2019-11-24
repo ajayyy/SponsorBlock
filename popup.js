@@ -126,15 +126,15 @@ function runThePopup() {
         if (hideDiscordLink == undefined || !hideDiscordLink) {
             chrome.storage.sync.get(["hideDiscordLaunches"], function(result) {
                 let hideDiscordLaunches = result.hideDiscordLaunches;
-                //only if less than 5 launches
+                //only if less than 10 launches
                 if (hideDiscordLaunches == undefined || hideDiscordLaunches < 10) {
                     SB.discordButtonContainer.style.display = null;
           
                     if (hideDiscordLaunches == undefined) {
-                        hideDiscordButton = 1;
+                        hideDiscordLaunches = 1;
                     }
   
-                    chrome.storage.sync.set({"hideDiscordLaunches": hideDiscordButton + 1});
+                    chrome.storage.sync.set({"hideDiscordLaunches": hideDiscordLaunches + 1});
                 }
             });
         }
@@ -1150,7 +1150,7 @@ function runThePopup() {
     }
   
     function hideDiscordButton() {
-        chrome.storage.sync.set({"hideDiscordLink": false});
+        chrome.storage.sync.set({"hideDiscordLink": true});
   
         SB.discordButtonContainer.style.display = "none";
     }

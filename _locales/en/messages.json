@@ -268,5 +268,9 @@
     },
     "enableSkipping": {
         "message": "Enable SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Your Work",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
     }
 }
