@@ -26,8 +26,12 @@ function runThePopup() {
     var SB = {};
 
     ["sponsorStart",
+    // Top toggles
     "whitelistChannel",
     "unwhitelistChannel",
+    "disableSkipping",
+    "enableSkipping",
+    // More controls
     "clearTimes",
     "submitTimes",
     "showNoticeAgain",
@@ -80,6 +84,8 @@ function runThePopup() {
     SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
     SB.whitelistChannel.addEventListener("click", whitelistChannel);
     SB.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
+    SB.disableSkipping.addEventListener("click", () => toggleSkipping(true));
+    SB.enableSkipping.addEventListener("click", () => toggleSkipping(false));
     SB.clearTimes.addEventListener("click", clearTimes);
     SB.submitTimes.addEventListener("click", submitTimes);
     SB.showNoticeAgain.addEventListener("click", showNoticeAgain);
@@ -120,21 +126,30 @@ function runThePopup() {
         if (hideDiscordLink == undefined || !hideDiscordLink) {
             chrome.storage.sync.get(["hideDiscordLaunches"], function(result) {
                 let hideDiscordLaunches = result.hideDiscordLaunches;
-                //only if less than 5 launches
+                //only if less than 10 launches
                 if (hideDiscordLaunches == undefined || hideDiscordLaunches < 10) {
                     SB.discordButtonContainer.style.display = null;
           
                     if (hideDiscordLaunches == undefined) {
-                        hideDiscordButton = 1;
+                        hideDiscordLaunches = 1;
                     }
   
-                    chrome.storage.sync.set({"hideDiscordLaunches": hideDiscordButton + 1});
+                    chrome.storage.sync.set({"hideDiscordLaunches": hideDiscordLaunches + 1});
                 }
             });
         }
     });
 
-    //if the don't show notice again letiable is true, an option to 
+    //show proper disable skipping button
+    chrome.storage.sync.get(["disableSkipping"], function(result) {
+        let disableSkipping = result.disableSkipping;
+        if (disableSkipping != undefined && disableSkipping) {
+            SB.disableSkipping.style.display = "none";
+            SB.enableSkipping.style.display = "unset";
+        }
+    });
+
+    //if the don't show notice again variable is true, an option to 
     //  disable should be available
     chrome.storage.sync.get(["dontShowNotice"], function(result) {
         let dontShowNotice = result.dontShowNotice;
@@ -280,7 +295,7 @@ function runThePopup() {
   
             //remove loading text
             SB.mainControls.style.display = "unset"
-            SB.loadingIndicator.innerHTML = "";
+            SB.loadingIndicator.style.display = "none";
 
             if (request.found) {
                 SB.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
@@ -1135,7 +1150,7 @@ function runThePopup() {
     }
   
     function hideDiscordButton() {
-        chrome.storage.sync.set({"hideDiscordLink": false});
+        chrome.storage.sync.set({"hideDiscordLink": true});
   
         SB.discordButtonContainer.style.display = "none";
     }
@@ -1249,6 +1264,24 @@ function runThePopup() {
                 }
             );
         });
+    }
+
+    /**
+     * Should skipping be disabled (visuals stay)
+     */
+    function toggleSkipping(disabled) {
+        chrome.storage.sync.set({"disableSkipping": disabled});
+
+        let hiddenButton = SB.disableSkipping;
+        let shownButton = SB.enableSkipping;
+
+        if (!disabled) {
+            hiddenButton = SB.enableSkipping;
+            shownButton = SB.disableSkipping;
+        }
+
+        shownButton.style.display = "unset";
+        hiddenButton.style.display = "none";
     }
 
     function setKeybind(startSponsorKeybind) {

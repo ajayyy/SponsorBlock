@@ -67,6 +67,15 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
+//should skips happen at all
+var disableSkipping = false;
+chrome.storage.sync.get(["disableSkipping"], function(result) {
+    let disableSkippingStorage = result.disableSkipping;
+    if (disableSkippingStorage != undefined) {
+        disableSkipping = disableSkippingStorage;
+    }
+});
+
 //should view counts be tracked
 var trackViewCount = false;
 chrome.storage.sync.get(["trackViewCount"], function(result) {
@@ -378,6 +387,18 @@ function sponsorsLookup(id, channelIDPromise) {
         v.addEventListener('durationchange', updatePreviewBar);
     }
 
+    if (channelIDPromise != null) {
+        if (channelIDPromise.isFulfilled) {
+            whitelistCheck();
+        } else if (channelIDPromise.isRejected) {
+            //try again
+            wait(getChannelID).then(whitelistCheck).catch();
+        } else {
+            //add it as a then statement
+            channelIDPromise.then(whitelistCheck);
+        }
+    }
+
     //check database for sponsor times
     //made true once a setTimeout has been created to try again after a server error
     let recheckStarted = false;
@@ -394,18 +415,6 @@ function sponsorsLookup(id, channelIDPromise) {
                 //set it now
                 //otherwise the listener can handle it
                 updatePreviewBar();
-            }
-
-            if (channelIDPromise != null) {
-                if (channelIDPromise.isFulfilled) {
-                    whitelistCheck();
-                } else if (channelIDPromise.isRejected) {
-                    //try again
-                    wait(getChannelID).then(whitelistCheck).catch();
-                } else {
-                    //add it as a then statement
-                    channelIDPromise.then(whitelistCheck);
-                }
             }
 
             sponsorLookupRetries = 0;
@@ -439,9 +448,11 @@ function sponsorsLookup(id, channelIDPromise) {
     });
 
     //add the event to run on the videos "ontimeupdate"
-    v.ontimeupdate = function () { 
-        sponsorCheck();
-    };
+    if (!disableSkipping) {
+        v.ontimeupdate = function () { 
+            sponsorCheck();
+        };
+    }
 }
 
 function updatePreviewBar() {
@@ -525,29 +536,18 @@ function whitelistCheck() {
             UUIDs = [];
 
             channelWhitelisted = true;
-
-            //make sure the whitelistedChannels array isn't broken and full of null entries
-            //TODO: remove this at some point in the future as the bug that caused this should be patched
-            if (whitelistedChannels.some((el) => el === null)) {
-                //remove the entries that are null
-                let cleanWhitelistedChannelsArray = [];
-                for (let i = 0; i < whitelistedChannels.length; i++) {
-                    let channelURL = whitelistedChannels[i];
-                    if (channelURL !== null) {
-                        //add it
-                        cleanWhitelistedChannelsArray.push(channelURL);
-                    }
-                }
-
-                //save this value
-                chrome.storage.sync.set({"whitelistedChannels": cleanWhitelistedChannelsArray});
-            }
         }
     });
 }
 
 //video skipping
 function sponsorCheck() {
+    if (disableSkipping) {
+        // Make sure this isn't called again
+        v.ontimeupdate = null;
+        return;
+    }
+
     let skipHappened = false;
 
     if (sponsorTimes != null) {
@@ -1009,6 +1009,8 @@ function sendSubmitMessage(){
 
     let currentVideoID = sponsorVideoID;
 
+    let currentSponsorTimes = submitSponsorTimes;
+
     chrome.runtime.sendMessage({
         message: "submitTimes",
         videoID: currentVideoID
@@ -1032,10 +1034,11 @@ function sendSubmitMessage(){
 
                 //clear the sponsor times
                 let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-                chrome.storage.sync.set({[sponsorTimeKey]: []});
+                chrome.storage.sync.set({[sponsorTimeKey]: []}, () => void updatePreviewBar());
 
-                //request the sponsors from the server again
-                sponsorsLookup(currentVideoID);
+                //add submissions to current sponsors list
+                sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+                sponsorTimesSubmitting = [];
             } else {
                 //show that the upload failed
                 document.getElementById("submitButton").style.animation = "unset";

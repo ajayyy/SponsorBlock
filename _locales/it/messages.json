@@ -194,10 +194,10 @@
         "message": "Opzioni"
     },
     "showButtons": {
-        "message": "Nascondi i Pulsanti nel Lettore di YouTube"
+        "message": "Mostra i Pulsanti nel Lettore di YouTube"
     },
     "hideButtons": {
-        "message": "Mostra i Pulsanti nel Lettore di YouTube"
+        "message": "Nascondi i Pulsanti nel Lettore di YouTube"
     },
     "hideButtonsDescription": {
 		"message": "Nasconde i pulsanti che appaiono nel lettore di YouTube per inviare spezzoni sponsorizzati. Capisco che può essere fastidioso per alcune\n persone. Invece di utilizzare quei pulsanti, è possibile utilizzare questo popup per inviare gli spezzoni sponsorizzati. Per nascondere l'avviso che appare, \nusa il bottone \"Non mostrare più\" nell'avviso. Potrai sempre abilitare nuovamente queste impostazioni in futuro."

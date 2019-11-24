@@ -8,35 +8,92 @@
   <body class="popupBody">
     <center>
       <div id="app" class="popupBody">
-          <img src="icons/LogoSponsorBlocker256px.png" height="64px" id="sponsorBlockPopupLogo"/>
-
-          <h1 class="popupElement">__MSG_Name__</h1>
+          <h1 class="popupElement">
+            <img src="icons/IconSponsorBlocker256px.png" height="32px" id="sponsorBlockPopupLogo"/>
+            __MSG_Name__
+          </h1>
 
           <!-- Loading text -->
           <p id="loadingIndicator" class="popupElement">__MSG_Loading__</p>
-
+          
           <!-- Hidden until loading complete -->
           <div id="mainControls" class="main popupElement" style="display: none">
             <!-- If the video was found in the database -->
             <div id="videoFound">
-                
+                  
             </div>
 
             <div id="downloadedSponsorMessageTimes" class="popupElement">
+  
+            </div>
+
+            <p class="popupElement"> 
+              __MSG_recordTimesDescription__
+            </p>
+  
+            <div>
+              <button id="sponsorStart" class="greenButton popupElement">__MSG_sponsorStart__</button>
+            </div>
+  
+            <sub class="popupElement">__MSG_popupHint__</sub>
+
+            <div id="submissionSection"  class="popupElement" style="display: none">
+              <h3 class="popupElement">__MSG_lastTimes__</h3>
+              <b>
+                <div id="sponsorMessageTimes" class="popupElement">
+        
+                </div>
+              </b>
+
+              <br/>
+      
+              <button id="clearTimes" class="smallButton popupElement">__MSG_clearTimesButton__</button>
+      
+              <div id="submitTimesContainer" class="popupElement" style="display: none">
+
+                <br/>
+                <br/>
+
+                <button id="submitTimes" class="smallButton popupElement">__MSG_submitTimesButton__</button>
+
+                <div id="submitTimesInfoMessageContainer" class="popupElement" style="display: none">
+                  <h3 id="submitTimesInfoMessage" class="popupElement">
+
+                  </h3>
+                </div>
+
+              </div>
 
             </div>
-            
-            <br/>
+
+            <div id="discordButtonContainer" class="popupElement" style="display: none">
+              <br/>
+
+              <a href="https://discord.gg/QnmVMpU" class="popupElement" target="_blank"><img src="https://www.logolynx.com/images/logolynx/1b/1bcc0f0aefe71b2c8ce66ffe8645d365.png" height="32px"/></a>
+
+              <br/>
+
+                __MSG_discordAdvert__
+
+              <br/>
+
+              <span id="hideDiscordButton" class="smallLink popupElement">__MSG_hideThis__</span>
+            </div>
 
             <div>
+              <br/>
+
               <button id="whitelistChannel" class="whitelistButton popupElement">__MSG_whitelistChannel__</button>
               <button id="unwhitelistChannel" class="whitelistButton popupElement" style="display: none">__MSG_removeFromWhitelist__</button>
             </div>
-            <sub class="popupElement">
-              __MSG_whitelistDescription__
-            </sub>
 
             <br/>
+
+            <div>
+              <button id="disableSkipping" class="greenButton popupElement">__MSG_disableSkipping__</button>
+              <button id="enableSkipping" class="whitelistButton popupElement" style="display: none">__MSG_enableSkipping__</button>
+            </div>
+
             <br/>
 
             <button id="reportAnIssue" class="dangerButton popupElement">__MSG_voteOnTime__</button>
@@ -51,7 +108,7 @@
 
             </div>
 
-            <h2 class="recordingSubtitle popupElement">__MSG_recordTimes__</h2>
+            <h2 class="recordingSubtitle popupElement">__MSG_yourWork__</h2>
 
             <p class="popupElement">
               <span id=sponsorTimesContributionsContainer  class="popupElement" style="display: none">
@@ -80,47 +137,7 @@
               </div>
             </p>
 
-            <p class="popupElement"> 
-              __MSG_recordTimesDescription__
-            </p>
-    
-            <div>
-              <button id="sponsorStart" class="greenButton popupElement">__MSG_sponsorStart__</button>
-            </div>
-
-            <sub class="popupElement">__MSG_popupHint__</sub>
-    
-            <div id="submissionSection"  class="popupElement" style="display: none">
-              <h3 class="popupElement">__MSG_lastTimes__</h3>
-              <b>
-                <div id="sponsorMessageTimes" class="popupElement">
-        
-                </div>
-              </b>
-
-              <br/>
-      
-              <button id="clearTimes" class="smallButton popupElement">__MSG_clearTimesButton__</button>
-      
-              <br/>
-              <br/>
-
-              <div id="submitTimesContainer" class="popupElement" style="display: none">
-                <button id="submitTimes" class="smallButton popupElement">__MSG_submitTimesButton__</button>
-
-                <div id="submitTimesInfoMessageContainer" class="popupElement" style="display: none">
-                  <h3 id="submitTimesInfoMessage" class="popupElement">
-
-                  </h3>
-                </div>
-
-              </div>
-      
-            </div>
-
             <div id="setUsernameContainer" class="popupElement">
-              <br/>
-              <br/>
     
               <button id="setUsernameButton" class="warningButton popupElement">__MSG_setUsername__</button>
               <br/>
@@ -130,35 +147,18 @@
             </div>
 
             <div id="setUsername" class="popupElement" style="display: none">
-                <br/>
-
                 <h3>__MSG_setUsername__</h3>
 
                 <div id="setUsernameStatusContainer" style="display: none">
                     <h2 id="setUsernameStatus"></h2>
                 </div>
 
-
                 <input id="usernameInput" hint="Username"></input>
 
                 <br/>
                 <br/>
 
-                <button id="submitUsername" class="warningButton popupElement">Submit Username</button>
-            </div>
-
-            <div id="discordButtonContainer" class="popupElement" style="display: none">
-              <br/>
-
-              <a href="https://discord.gg/QnmVMpU" class="popupElement" target="_blank"><img src="https://www.logolynx.com/images/logolynx/1b/1bcc0f0aefe71b2c8ce66ffe8645d365.png" height="32px"/></a>
-
-              <br/>
-
-                __MSG_discordAdvert__
-
-              <br/>
-
-              <span id="hideDiscordButton" class="smallLink popupElement">__MSG_hideThis__</span>
+                <button id="submitUsername" class="warningButton popupElement">__MSG_setUsername__</button>
             </div>
 
             <div id="optionsButtonContainer" class="popupElement">

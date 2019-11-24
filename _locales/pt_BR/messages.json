@@ -194,10 +194,10 @@
         "message": "Opções"
     },
     "showButtons": {
-        "message": "Esconder botões no player do Youtube"
+        "message": "Mostrar botões no player do Youtube"
     },
     "hideButtons": {
-        "message": "Mostrar botões no player do Youtube"
+        "message": "Esconder botões no player do Youtube"
     },
     "hideButtonsDescription": {
         "message": "Isto esconde os botões que aparecem no player do Youtube para submeter patrocínios. Entendemos que possa ser\n incómodo a algumas pessoas. Em vez de usar esses botões pode usar os do popup. Para esconder a mensagem que aparece, \n ususe o botão na mesma que diz \"Don't show this again\". Pode sempre reactivar estas definições novamente."
