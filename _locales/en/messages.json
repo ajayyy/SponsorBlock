@@ -100,7 +100,7 @@
         "message": "Sponsorship Ends Now"
     },
     "noVideoID": {
-        "message": "This probably isn't a YouTube tab, or you clicked too early. \n If you know this is a YouTube tab,\n close this popup and open it again.\n\nYou must refresh your YouTube tab after installing or updating (even auto-update) the extension."
+        "message": "No YouTube video found at this tab. If you know this is a YouTube tab, close this popup and open it again. If that does not work, try reloading the tab."
     },
     "success": {
         "message": "Success!"
