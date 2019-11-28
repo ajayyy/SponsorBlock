@@ -1048,7 +1048,7 @@ function sendSubmitMessage(){
                     //treat them the same
                     if (response.statusCode == 503) response.statusCode = 502;
 
-                    alert(chrome.i18n.getMessage(response.statusCode + ""));
+                    alert(chrome.i18n.getMessage(response.statusCode + "") + " " + chrome.i18n.getMessage("errorCode") + response.statusCode);
                 } else {
                     alert(chrome.i18n.getMessage("connectionError") + response.statusCode);
                 }

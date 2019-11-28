@@ -24,9 +24,6 @@
     "409": {
         "message": "Isso já foi enviado antes"
     },
-    "502": {
-        "message": "Parece que o servidor caiu. Contacte o desenvolvedor para o informar."
-    },
     "channelWhitelisted": {
         "message": "Canal adicionado à whitelist!"
     },
