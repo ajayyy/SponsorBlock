@@ -24,9 +24,6 @@
     "409": {
         "message": "Questo spezzone è già stato inviato"
     },
-    "502": {
-        "message": "Sembra che il server non funzioni. Contatta lo sviluppatore."
-    },
     "channelWhitelisted": {
         "message": "Canale aggiunto alla whitelist!"
     },

@@ -24,9 +24,6 @@
     "409": {
         "message": "This has already been submitted before"
     },
-    "502": {
-        "message": "It seems the server is down. Contact the dev to inform them."
-    },
     "channelWhitelisted": {
         "message": "Channel Whitelisted!"
     },
@@ -272,5 +269,26 @@
     "yourWork": {
         "message": "Your Work",
         "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "The server seems to be overloaded. Try again in a few seconds."
+    },
+    "errorCode": {
+        "message": "Error Code: "
+    },
+    "noticeTitleNotSkipped": {
+        "message": "Skip Sponsor?"
+    },
+    "skip": {
+        "message": "Skip"
+    },
+    "disableAutoSkip": {
+        "message": "Disable Auto Skip"
+    },
+    "enableAutoSkip": {
+        "message": "Enable Auto Skip"
+    },
+    "autoSkipDescription": {
+        "message": "Auto skip will skip sponsors for you. If disabled, a notice will appear asking if you'd like to skip."
     }
 }

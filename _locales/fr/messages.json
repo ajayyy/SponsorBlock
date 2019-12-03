@@ -24,9 +24,6 @@
     "409": {
         "message": "Déja soumis"
     },
-    "502": {
-        "message": "Le serveur ne fonctionne pas. Contactez le développeur."
-    },
     "channelWhitelisted": {
         "message": "Cette chaîne est sur la liste blanche !"
     },

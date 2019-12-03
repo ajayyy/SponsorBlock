@@ -76,6 +76,15 @@ chrome.storage.sync.get(["disableSkipping"], function(result) {
     }
 });
 
+//should skips be manual
+var disableAutoSkip = false;
+chrome.storage.sync.get(["disableAutoSkip"], function(result) {
+    let disableAutoSkipStorage = result.disableAutoSkip;
+    if (disableAutoSkipStorage != undefined) {
+        disableAutoSkip = disableAutoSkipStorage;
+    }
+});
+
 //should view counts be tracked
 var trackViewCount = false;
 chrome.storage.sync.get(["trackViewCount"], function(result) {
@@ -606,7 +615,9 @@ function checkIfTimeToSkip(currentVideoTime, startTime, endTime) {
 
 //skip fromt he start time to the end time for a certain index sponsor time
 function skipToTime(v, index, sponsorTimes, openNotice) {
-    v.currentTime = sponsorTimes[index][1];
+    if (!disableAutoSkip) {
+        v.currentTime = sponsorTimes[index][1];
+    }
 
     lastSponsorTimeSkipped = sponsorTimes[index][0];
   
@@ -616,7 +627,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!dontShowNotice) {
-            let skipNotice = new SkipNotice(this, currentUUID);
+            let skipNotice = new SkipNotice(this, currentUUID, disableAutoSkip);
 
             if (dontShowNoticeOld) {
                 //show why this notice is showing
@@ -1048,7 +1059,7 @@ function sendSubmitMessage(){
                     //treat them the same
                     if (response.statusCode == 503) response.statusCode = 502;
 
-                    alert(chrome.i18n.getMessage(response.statusCode + ""));
+                    alert(chrome.i18n.getMessage(response.statusCode + "") + " " + chrome.i18n.getMessage("errorCode") + response.statusCode);
                 } else {
                     alert(chrome.i18n.getMessage("connectionError") + response.statusCode);
                 }
