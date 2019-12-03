@@ -275,5 +275,20 @@
     },
     "errorCode": {
         "message": "Error Code: "
+    },
+    "noticeTitleNotSkipped": {
+        "message": "Skip Sponsor?"
+    },
+    "skip": {
+        "message": "Skip"
+    },
+    "disableAutoSkip": {
+        "message": "Disable Auto Skip"
+    },
+    "enableAutoSkip": {
+        "message": "Enable Auto Skip"
+    },
+    "autoSkipDescription": {
+        "message": "Auto skip will skip sponsors for you. If disabled, a notice will appear asking if you'd like to skip."
     }
 }

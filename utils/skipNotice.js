@@ -1,10 +1,25 @@
 'use strict';
 
-//The notice that tells the user that a sponsor was just skipped
+/**
+ * The notice that tells the user that a sponsor was just skipped
+ */
 class SkipNotice {
-	constructor(parent, UUID) {
+    /**
+     * @param {HTMLElement} parent
+     * @param {String} UUID 
+     * @param {String} noticeTitle 
+     * @param {boolean} manualSkip 
+     */
+	constructor(parent, UUID, manualSkip = false) {
         this.parent = parent;
         this.UUID = UUID;
+        this.manualSkip = manualSkip;
+
+        let noticeTitle = chrome.i18n.getMessage("noticeTitle");
+
+        if (manualSkip) {
+            noticeTitle = chrome.i18n.getMessage("noticeTitleNotSkipped");
+        }
 
         this.maxCountdownTime = () => 4;
         //the countdown until this notice closes
@@ -54,7 +69,7 @@ class SkipNotice {
         noticeMessage.id = "sponsorSkipMessage" + this.idSuffix;
         noticeMessage.classList.add("sponsorSkipMessage");
         noticeMessage.classList.add("sponsorSkipObject");
-        noticeMessage.innerText = chrome.i18n.getMessage("noticeTitle");
+        noticeMessage.innerText = noticeTitle;
 
         //create the first column
         logoColumn.appendChild(logoElement);
@@ -136,7 +151,10 @@ class SkipNotice {
         dontShowAgainButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton";
         dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
 
-        dontshowContainer.appendChild(dontShowAgainButton);
+        // Don't let them hide it if manually skipping
+        if (!this.manualSkip) {
+            dontshowContainer.appendChild(dontShowAgainButton);
+        }
 
         //add to row
         secondRow.appendChild(voteButtonsContainer);
@@ -164,6 +182,10 @@ class SkipNotice {
         }
 
         referenceNode.prepend(noticeElement);
+
+        if (manualSkip) {
+            this.unskippedMode(chrome.i18n.getMessage("skip"));
+        }
 
         this.startCountdown();
     }
@@ -228,10 +250,13 @@ class SkipNotice {
     unskip() {
         unskipSponsorTime(this.UUID);
 
+        this.unskippedMode(chrome.i18n.getMessage("reskip"));
+    }
+
+    /** Sets up notice to be not skipped yet */
+    unskippedMode(buttonText) {
         //change unskip button to a reskip button
-        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.idSuffix);
-        unskipButton.innerText = chrome.i18n.getMessage("reskip");
-        unskipButton.removeEventListener("click", this.unskipCallback);
+        let unskipButton = this.changeUnskipButton(buttonText);
 
         //setup new callback
         this.unskipCallback = this.reskip.bind(this);
@@ -252,10 +277,8 @@ class SkipNotice {
     reskip() {
         reskipSponsorTime(this.UUID);
 
-        //change unskip button to a reskip button
-        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.idSuffix);
-        unskipButton.innerText = chrome.i18n.getMessage("unskip");
-        unskipButton.removeEventListener("click", this.unskipCallback);
+        //change reskip button to a unskip button
+        let unskipButton = this.changeUnskipButton(chrome.i18n.getMessage("unskip"));
 
         //setup new callback
         this.unskipCallback = this.unskip.bind(this);
@@ -265,6 +288,25 @@ class SkipNotice {
         this.maxCountdownTime = () => 4;
         this.countdownTime = this.maxCountdownTime();
         this.updateTimerDisplay();
+
+        // See if the title should be changed
+        if (this.manualSkip) {
+            this.changeNoticeTitle(chrome.i18n.getMessage("noticeTitle"));
+        }
+    }
+
+    /**
+     * Changes the text on the reskip button
+     * 
+     * @param {string} text 
+     * @returns {HTMLElement} unskipButton
+     */
+    changeUnskipButton(text) {
+        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.idSuffix);
+        unskipButton.innerText = text;
+        unskipButton.removeEventListener("click", this.unskipCallback);
+
+        return unskipButton;
     }
 
     afterDownvote() {
@@ -292,6 +334,12 @@ class SkipNotice {
                 break;
             }
         }
+    }
+
+    changeNoticeTitle(title) {
+        let noticeElement = document.getElementById("sponsorSkipMessage" + this.idSuffix);
+
+        noticeElement.innerText = title;
     }
     
     addNoticeInfoMessage(message, message2) {

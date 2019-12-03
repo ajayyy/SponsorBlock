@@ -34,7 +34,10 @@ function runThePopup() {
     // More controls
     "clearTimes",
     "submitTimes",
+    // options
     "showNoticeAgain",
+    "disableAutoSkip",
+    "enableAutoSkip",
     "hideVideoPlayerControls",
     "showVideoPlayerControls",
     "hideInfoButtonPlayerControls",
@@ -89,6 +92,8 @@ function runThePopup() {
     SB.clearTimes.addEventListener("click", clearTimes);
     SB.submitTimes.addEventListener("click", submitTimes);
     SB.showNoticeAgain.addEventListener("click", showNoticeAgain);
+    SB.disableAutoSkip.addEventListener("click", () => setAutoSkip(true));
+    SB.enableAutoSkip.addEventListener("click", () => setAutoSkip(false));
     SB.setStartSponsorKeybind.addEventListener("click", () => setKeybind(true));
     SB.setSubmitKeybind.addEventListener("click", () => setKeybind(false));
     SB.hideVideoPlayerControls.addEventListener("click", hideVideoPlayerControls);
@@ -155,6 +160,15 @@ function runThePopup() {
         let dontShowNotice = result.dontShowNotice;
         if (dontShowNotice != undefined && dontShowNotice) {
             SB.showNoticeAgain.style.display = "unset";
+        }
+    });
+
+    //show proper auto skip option
+    chrome.storage.sync.get(["disableAutoSkip"], function(result) {
+        let disableAutoSkip = result.disableAutoSkip;
+        if (disableAutoSkip != undefined && disableAutoSkip) {
+            SB.disableAutoSkip.style.display = "none";
+            SB.enableAutoSkip.style.display = "unset";
         }
     });
   
@@ -858,6 +872,21 @@ function runThePopup() {
         });
   
         SB.showNoticeAgain.style.display = "none";
+    }
+
+    function setAutoSkip(value) {
+        chrome.storage.sync.set({"disableAutoSkip": value});
+
+        if (value) {
+            // If it isn't shown, they can't manually skip
+            showNoticeAgain();
+
+            SB.disableAutoSkip.style.display = "none";
+            SB.enableAutoSkip.style.display = "unset";
+        } else {
+            SB.enableAutoSkip.style.display = "none";
+            SB.disableAutoSkip.style.display = "unset";
+        }
     }
   
     function hideVideoPlayerControls() {
