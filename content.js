@@ -475,6 +475,10 @@ function sponsorsLookup(id, channelIDPromise) {
             sponsorLookupRetries++;
         }
 
+        // If the initial channel whitelist check finishes before
+        // the fetching of the sponsor times, then the sponsor times will be 
+        // added again after the whitelist check clears them. Checking it here makes sure
+        // the whitelist will be applied (downside is `whitelistCheck()` gets called multiple times).
         if (channelWhitelisted) {
             whitelistCheck();
         }
