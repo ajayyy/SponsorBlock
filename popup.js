@@ -56,6 +56,14 @@ function runThePopup() {
     "sponsorTimesViewsContainer",
     "sponsorTimesViewsDisplay",
     "sponsorTimesViewsDisplayEndWord",
+    // sponsorTimesSkipsDone
+    "sponsorTimesSkipsDoneContainer",
+    "sponsorTimesSkipsDoneDisplay",
+    "sponsorTimesSkipsDoneEndWord",
+    // sponsorTimeSaved
+    "sponsorTimeSavedContainer",
+    "sponsorTimeSavedDisplay",
+    "sponsorTimeSavedEndWord",
     // discordButtons
     "discordButtonContainer",
     "hideDiscordButton",
@@ -238,6 +246,34 @@ function runThePopup() {
                     });
                 }
             });
+        }
+    });
+
+    //get the amount of times this user has skipped a sponsor
+    chrome.storage.sync.get(["skipCount"], function(result) {
+        if (result.skipCount != undefined) {
+            if (result.skipCount != 1) {
+                SB.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+            } else {
+                SB.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsor");
+            }
+
+            SB.sponsorTimesSkipsDoneDisplay.innerText = result.skipCount;
+            SB.sponsorTimesSkipsDoneContainer.style.display = "unset";
+        }
+    });
+
+    //get the amount of time this user has saved.
+    chrome.storage.sync.get(["minutesSaved"], function(result) {
+        if (result.minutesSaved != undefined) {
+            if (result.minutesSaved != 1) {
+                SB.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+            } else {
+                SB.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
+            }
+
+            SB.sponsorTimeSavedDisplay.innerText = result.minutesSaved.toFixed(2);
+            SB.sponsorTimeSavedContainer.style.display = "unset";
         }
     });
   
