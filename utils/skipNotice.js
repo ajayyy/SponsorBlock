@@ -166,7 +166,7 @@ class SkipNotice {
         noticeElement.appendChild(secondRow);
 
         //get reference node
-        let referenceNode = document.getElementById("movie_player");
+        let referenceNode = document.getElementById("movie_player") || document.querySelector("#player-container .video-js");
         if (referenceNode == null) {
             //for embeds
             let player = document.getElementById("player");

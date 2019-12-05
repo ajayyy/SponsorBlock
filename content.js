@@ -59,9 +59,9 @@ var lastSponsorTimeSkippedUUID = null;
 var showingStartSponsor = true;
 
 //should the video controls buttons be added
-var hideVideoPlayerControls = false;
-var hideInfoButtonPlayerControls = false;
-var hideDeleteButtonPlayerControls = false;
+var hideVideoPlayerControls = onInvidious ? true : false;
+var hideInfoButtonPlayerControls = onInvidious ? true : false;
+var hideDeleteButtonPlayerControls = onInvidious ? true : false;
 
 //the sponsor times being prepared to be submitted
 var sponsorTimesSubmitting = [];
@@ -294,8 +294,22 @@ function videoIDChange(id) {
     if (previewBar == null) {
         //create it
         wait(getControls).then(result => {
-            let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
-            previewBar = new PreviewBar(progressBar);
+            const progressElementSelectors = [
+                // For YouTube
+                "ytp-progress-bar-container",
+                "no-model cue-range-markers",
+                // For Invidious/VideoJS
+                "vjs-progress-holder"
+            ];
+
+            for (const selector of progressElementSelectors) {
+                const el = document.getElementsByClassName(selector);
+
+                if (el && el.length && el[0]) {
+                    previewBar = new PreviewBar(el[0]);
+                    break;
+                }
+            }
         });
     }
 
@@ -460,6 +474,10 @@ function sponsorsLookup(id, channelIDPromise) {
 
             sponsorLookupRetries++;
         }
+
+        if (channelWhitelisted) {
+            whitelistCheck();
+        }
     });
 
     //add the event to run on the videos "ontimeupdate"
@@ -509,6 +527,13 @@ function getChannelID() {
         if (channelContainers.length != 0) {
             channelURLContainer = channelContainers[0].firstElementChild;
         }
+        else if (onInvidious) {
+            // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
+            channelContainers = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
+            if (channelContainers.length != 0) {
+                channelURLContainer = channelContainers;
+            }
+        }
     }
 
     if (channelURLContainer == null) {
@@ -521,7 +546,12 @@ function getChannelID() {
     let currentTitle = "";
     if (titleInfoContainer != null) {
         currentTitle = titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild.innerText;
-    } else {
+    }
+    else if (onInvidious) {
+        // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
+        currentTitle = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a > div > span").textContent;
+    }
+    else {
         //old YouTube theme
         currentTitle = document.getElementById("eow-title").innerText;
     }
@@ -721,7 +751,15 @@ function createButton(baseID, title, callback, imageName, isDraggable=false) {
 
 function getControls() {
     let controls = document.getElementsByClassName("ytp-right-controls");
-    return (!controls || controls.length === 0) ? false : controls[controls.length - 1]
+
+    if (!controls || controls.length === 0) {
+        // The invidious video element's controls element
+        controls = document.getElementsByClassName("vjs-control-bar");
+        return (!controls || controls.length === 0) ? false : controls[controls.length - 1];
+    }
+    else {
+        return controls[controls.length - 1];
+    }
 };
 
 //adds all the player controls buttons

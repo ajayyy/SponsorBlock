@@ -1,3 +1,6 @@
+var onInvidious = false;
+var supportedInvidiousInstances = ["invidio.us", "invidiou.sh"];
+
 // Function that can be used to wait for a condition before returning
 async function wait(condition, timeout = 5000, check = 100) { 
     return await new Promise((resolve, reject) => {
@@ -29,7 +32,12 @@ function getYouTubeVideoID(url) {
     }
 
     //Check if valid hostname
-    if(!["www.youtube.com","www.youtube-nocookie.com"].includes(urlObject.host)) return false; 
+    if(!["www.youtube.com", "www.youtube-nocookie.com", ...supportedInvidiousInstances].includes(urlObject.host)) {
+        return false;
+    }
+    else if (supportedInvidiousInstances.includes(urlObject.host)) {
+        onInvidious = true;
+    }
 
     //Get ID from searchParam
     if ((urlObject.pathname == "/watch" || urlObject.pathname == "/watch/") && urlObject.searchParams.has("v")) {

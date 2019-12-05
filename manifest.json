@@ -8,7 +8,9 @@
     {
       "matches": [
         "https://*.youtube.com/*",
-        "https://www.youtube-nocookie.com/embed/*"
+        "https://www.youtube-nocookie.com/embed/*",
+        "https://*.invidio.us/*"
+        "https://*.invidiou.sh/*"
       ],
       "all_frames": true,
       "js": [
