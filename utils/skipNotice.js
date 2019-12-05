@@ -292,6 +292,8 @@ class SkipNotice {
         // See if the title should be changed
         if (this.manualSkip) {
             this.changeNoticeTitle(chrome.i18n.getMessage("noticeTitle"));
+
+            vote(1, this.UUID, this);
         }
     }
 

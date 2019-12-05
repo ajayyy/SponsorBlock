@@ -214,10 +214,10 @@
         "message": "This is the button that allows you to clear all sponsors on the YouTube player."
     },
     "disableViewTracking": {
-        "message": "Disable Sponsor View Tracking"
+        "message": "Disable Sponsor Skip Count Tracking"
     },
     "enableViewTracking": {
-        "message": "Enable Sponsor View Tracking"
+        "message": "Enable Sponsor Skip Count Tracking"
     },
     "whatViewTracking": {
         "message": "This feature tracks which sponsors you have skipped to let users know how much their submission has helped others and\nused as a metric along with upvotes to ensure that spam doesn't get into the database. The extension sends a message\nto the server each time you skip a sponsor. Hopefully most people don't change this setting so that the view numbers are accurate. :)"
@@ -290,5 +290,29 @@
     },
     "autoSkipDescription": {
         "message": "Auto skip will skip sponsors for you. If disabled, a notice will appear asking if you'd like to skip."
+    },
+    "youHaveSkipped": {
+        "message": "You have skipped "
+    },
+    "youHaveSaved": {
+        "message": "You have saved yourself "
+    },
+    "minLower": {
+        "message": "minute"
+    },
+    "minsLower": {
+        "message": "minutes"
+    },
+    "hourLower": {
+        "message": "hour"
+    },
+    "hoursLower": {
+        "message": "hours"
+    },
+    "youHaveSavedTime": {
+        "message": "You have saved people"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " of their lives."
     }
 }
