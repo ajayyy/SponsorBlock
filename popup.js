@@ -56,6 +56,10 @@ function runThePopup() {
     "sponsorTimesViewsContainer",
     "sponsorTimesViewsDisplay",
     "sponsorTimesViewsDisplayEndWord",
+    // sponsorTimesOthersTimeSaved
+    "sponsorTimesOthersTimeSavedContainer",
+    "sponsorTimesOthersTimeSavedDisplay",
+    "sponsorTimesOthersTimeSavedEndWord",
     // sponsorTimesSkipsDone
     "sponsorTimesSkipsDoneContainer",
     "sponsorTimesSkipsDoneDisplay",
@@ -244,6 +248,23 @@ function runThePopup() {
                             }
                         }
                     });
+
+                    //get this time in minutes
+                    sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(xmlhttp) {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            let minutesSaved = JSON.parse(xmlhttp.responseText).timeSaved;
+                            if (minutesSaved != 0) {
+                                if (minutesSaved != 1) {
+                                    SB.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+                                } else {
+                                    SB.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
+                                }
+
+                                SB.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
+                                SB.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
+                            }
+                        }
+                    });
                 }
             });
         }
@@ -272,7 +293,7 @@ function runThePopup() {
                 SB.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
             }
 
-            SB.sponsorTimeSavedDisplay.innerText = result.minutesSaved.toFixed(2);
+            SB.sponsorTimeSavedDisplay.innerText = getFormattedHours(result.minutesSaved);
             SB.sponsorTimeSavedContainer.style.display = "unset";
         }
     });
@@ -1412,6 +1433,18 @@ function runThePopup() {
   
         //submit this request
         xmlhttp.send();
+    }
+
+    /**
+     * Converts time in hours to 5h 25.1
+     * If less than 1 hour, just returns minutes
+     * 
+     * @param {float} seconds 
+     * @returns {string}
+     */
+    function getFormattedHours(minues) {
+        let hours = Math.floor(minues / 60);
+        return (hours > 0 ? hours + "h " : "") + (minues % 60).toFixed(1);
     }
   
 //end of function

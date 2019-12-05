@@ -308,5 +308,11 @@
     },
     "hoursLower": {
         "message": "hours"
+    },
+    "youHaveSavedTime": {
+        "message": "You have saved people"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " of their lives."
     }
 }
