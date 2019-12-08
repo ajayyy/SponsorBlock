@@ -1047,8 +1047,8 @@ function submitSponsorTimes() {
             //update sponsorTimes
             chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
 
-            let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
-            confirmMessage += "\n\n" + chrome.i18n.getMessage("confirmMSG");
+            let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
+                                    + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
             if(!confirm(confirmMessage)) return;
 
             sendSubmitMessage();
