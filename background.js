@@ -33,7 +33,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     case "alertPrevious":
 			chrome.notifications.create("stillThere" + Math.random(), {
         type: "basic",
-        title: chrome.i18n.getMessage("wantToSubmit") + request.previousVideoID + "?",
+        title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
         message: chrome.i18n.getMessage("leftTimes"),
         iconUrl: "./icons/LogoSponsorBlocker256px.png"
 			});
