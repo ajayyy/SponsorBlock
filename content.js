@@ -980,14 +980,8 @@ function vote(type, UUID, skipNotice) {
                     skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 } else if (response.successType == -1) {
-                    if (response.statusCode == 502) {
-                        skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("serverDown"))
-                        skipNotice.resetVoteButtonInfo.bind(skipNotice)();
-                    } else {
-                        //failure: unknown error
-                        skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("connectionError") + response.statusCode);
-                        skipNotice.resetVoteButtonInfo.bind(skipNotice)();
-                    }
+                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(getErrorMessage(response.statusCode))
+                    skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }
         }
@@ -1101,14 +1095,7 @@ function sendSubmitMessage(){
                 document.getElementById("submitButton").style.animation = "unset";
                 document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-                if([400, 429, 409, 502, 0].includes(response.statusCode)) {
-                    //treat them the same
-                    if (response.statusCode == 503) response.statusCode = 502;
-
-                    alert(chrome.i18n.getMessage(response.statusCode + "") + " " + chrome.i18n.getMessage("errorCode") + response.statusCode);
-                } else {
-                    alert(chrome.i18n.getMessage("connectionError") + response.statusCode);
-                }
+                alert(getErrorMessage(response.statusCode));
             }
         }
     });

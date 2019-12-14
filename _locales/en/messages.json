@@ -317,5 +317,8 @@
     },
     "guildlinesSummary": {
         "message": "- Make sure your segment only contains paid promotion segment, nothing else.\n- Make sure skipping this segment will not skip valuable content\n- If the whole video is a sponsor, please do not report it. A full video reporting system will come out soon.\n- Please do not report disclaimers that could show bias (if a review video is sponsored, don't skip when they mention that)."
+    },
+    "statusReminder": {
+        "message": "Check status.sponsor.ajay.app for server status."
     }
 }
