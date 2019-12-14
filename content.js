@@ -498,25 +498,20 @@ function updatePreviewBar() {
 
 function getChannelID() {
     //get channel id
-    let channelContainers = document.querySelectorAll(".ytd-channel-name#text");
-    let channelURLContainer = null;
+    let channelNameContainer = document.getElementById("channel-name");
+    let channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
 
-    for (let i = 0; i < channelContainers.length; i++) {
-        let child = channelContainers[i].firstElementChild;
-        if (child != null && child.getAttribute("href") != "") {
-            channelURLContainer = child;
-        }
-    }
 
-    if (channelContainers.length == 0) {
+
+    if (channelURLContainer === null) {
         //old YouTube theme
-        channelContainers = document.getElementsByClassName("yt-user-info");
+        let channelContainers = document.getElementsByClassName("yt-user-info");
         if (channelContainers.length != 0) {
             channelURLContainer = channelContainers[0].firstElementChild;
         }
     }
 
-    if (channelURLContainer == null) {
+    if (channelURLContainer === null) {
         //try later
         return false;
     }
@@ -550,11 +545,9 @@ function whitelistCheck() {
     chrome.storage.sync.get(["whitelistedChannels"], function(result) {
         let whitelistedChannels = result.whitelistedChannels;
 
-        if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
-            //reset sponsor times to nothing
-            sponsorTimes = [];
-            UUIDs = [];
+        console.log(channelURL)
 
+        if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
             channelWhitelisted = true;
         }
     });
@@ -565,6 +558,8 @@ function sponsorCheck() {
     if (disableSkipping) {
         // Make sure this isn't called again
         v.ontimeupdate = null;
+        return;
+    } else if (channelWhitelisted) {
         return;
     }
 
