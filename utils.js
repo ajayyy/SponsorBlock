@@ -66,6 +66,24 @@ function localizeHtmlPage() {
     }
 }
 
+function generateUserID(length = 36) {
+    let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    if (window.crypto && window.crypto.getRandomValues) {
+            values = new Uint32Array(length);
+            window.crypto.getRandomValues(values);
+            for (i = 0; i < length; i++) {
+                    result += charset[values[i] % charset.length];
+            }
+            return result;
+    } else {
+            for (let i = 0; i < length; i++) {
+                result += charset[Math.floor(Math.random() * charset.length)];
+            }
+            return result;
+    }
+}
+
 /**
  * Gets the error message in a nice string
  * 

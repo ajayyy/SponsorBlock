@@ -1041,6 +1041,9 @@ function submitSponsorTimes() {
             //update sponsorTimes
             chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
 
+            //update sponsorTimesSubmitting
+            sponsorTimesSubmitting = sponsorTimes;
+
             let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
                                     + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
             if(!confirm(confirmMessage)) return;
@@ -1059,8 +1062,6 @@ function sendSubmitMessage(){
     document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
 
     let currentVideoID = sponsorVideoID;
-
-    let currentSponsorTimes = submitSponsorTimes;
 
     chrome.runtime.sendMessage({
         message: "submitTimes",
@@ -1085,11 +1086,19 @@ function sendSubmitMessage(){
 
                 //clear the sponsor times
                 let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-                chrome.storage.sync.set({[sponsorTimeKey]: []}, () => void updatePreviewBar());
+                chrome.storage.sync.set({[sponsorTimeKey]: []});
 
                 //add submissions to current sponsors list
                 sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+                for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+                    // Add some random IDs
+                    UUIDs.push(generateUserID());
+                }
+
+                // Empty the submitting times
                 sponsorTimesSubmitting = [];
+
+                updatePreviewBar();
             } else {
                 //show that the upload failed
                 document.getElementById("submitButton").style.animation = "unset";
