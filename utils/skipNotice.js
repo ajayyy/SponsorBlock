@@ -324,15 +324,7 @@ class SkipNotice {
                 //add this as a hidden sponsorTime
                 hiddenSponsorTimes.push(i);
             
-                let sponsorTimesLeft = sponsorTimes.slice();
-                for (let j = 0; j < hiddenSponsorTimes.length; j++) {
-                    //remove this sponsor time
-                    sponsorTimesLeft.splice(hiddenSponsorTimes[j], 1);
-                }
-            
-                //update the preview
-                previewBar.set(sponsorTimesLeft, [], v.duration);
-            
+                updatePreviewBar();
                 break;
             }
         }

@@ -479,7 +479,12 @@ function updatePreviewBar() {
     //create an array of the sponsor types
     let types = [];
     for (let i = 0; i < localSponsorTimes.length; i++) {
-        types.push("sponsor");
+        if (!hiddenSponsorTimes.includes(i)) {
+            types.push("sponsor");
+        } else {
+            // Don't show this sponsor
+            types.push(null);
+        }
     }
     for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
         types.push("previewSponsor");
