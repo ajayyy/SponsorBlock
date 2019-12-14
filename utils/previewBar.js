@@ -59,6 +59,8 @@ class PreviewBar {
 		duration = Math.floor(duration * 100) / 100;
 		let width;
 		for (let i = 0; i < timestamps.length; i++) {
+			if (types[i] == null) continue;
+
 			width = (timestamps[i][1] - timestamps[i][0]) / duration * 100;
 			width = Math.floor(width * 100) / 100;
 

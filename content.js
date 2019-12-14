@@ -479,7 +479,12 @@ function updatePreviewBar() {
     //create an array of the sponsor types
     let types = [];
     for (let i = 0; i < localSponsorTimes.length; i++) {
-        types.push("sponsor");
+        if (!hiddenSponsorTimes.includes(i)) {
+            types.push("sponsor");
+        } else {
+            // Don't show this sponsor
+            types.push(null);
+        }
     }
     for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
         types.push("previewSponsor");
@@ -493,25 +498,20 @@ function updatePreviewBar() {
 
 function getChannelID() {
     //get channel id
-    let channelContainers = document.querySelectorAll(".ytd-channel-name#text");
-    let channelURLContainer = null;
+    let channelNameContainer = document.getElementById("channel-name");
+    let channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
 
-    for (let i = 0; i < channelContainers.length; i++) {
-        let child = channelContainers[i].firstElementChild;
-        if (child != null && child.getAttribute("href") != "") {
-            channelURLContainer = child;
-        }
-    }
 
-    if (channelContainers.length == 0) {
+
+    if (channelURLContainer === null) {
         //old YouTube theme
-        channelContainers = document.getElementsByClassName("yt-user-info");
+        let channelContainers = document.getElementsByClassName("yt-user-info");
         if (channelContainers.length != 0) {
             channelURLContainer = channelContainers[0].firstElementChild;
         }
     }
 
-    if (channelURLContainer == null) {
+    if (channelURLContainer === null) {
         //try later
         return false;
     }
@@ -545,11 +545,9 @@ function whitelistCheck() {
     chrome.storage.sync.get(["whitelistedChannels"], function(result) {
         let whitelistedChannels = result.whitelistedChannels;
 
-        if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
-            //reset sponsor times to nothing
-            sponsorTimes = [];
-            UUIDs = [];
+        console.log(channelURL)
 
+        if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
             channelWhitelisted = true;
         }
     });
@@ -560,6 +558,8 @@ function sponsorCheck() {
     if (disableSkipping) {
         // Make sure this isn't called again
         v.ontimeupdate = null;
+        return;
+    } else if (channelWhitelisted) {
         return;
     }
 
@@ -980,14 +980,8 @@ function vote(type, UUID, skipNotice) {
                     skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 } else if (response.successType == -1) {
-                    if (response.statusCode == 502) {
-                        skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("serverDown"))
-                        skipNotice.resetVoteButtonInfo.bind(skipNotice)();
-                    } else {
-                        //failure: unknown error
-                        skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("connectionError") + response.statusCode);
-                        skipNotice.resetVoteButtonInfo.bind(skipNotice)();
-                    }
+                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(getErrorMessage(response.statusCode))
+                    skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }
         }
@@ -1047,8 +1041,11 @@ function submitSponsorTimes() {
             //update sponsorTimes
             chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes});
 
-            let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
-            confirmMessage += "\n\n" + chrome.i18n.getMessage("confirmMSG");
+            //update sponsorTimesSubmitting
+            sponsorTimesSubmitting = sponsorTimes;
+
+            let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
+                                    + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
             if(!confirm(confirmMessage)) return;
 
             sendSubmitMessage();
@@ -1065,8 +1062,6 @@ function sendSubmitMessage(){
     document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
 
     let currentVideoID = sponsorVideoID;
-
-    let currentSponsorTimes = submitSponsorTimes;
 
     chrome.runtime.sendMessage({
         message: "submitTimes",
@@ -1091,24 +1086,25 @@ function sendSubmitMessage(){
 
                 //clear the sponsor times
                 let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-                chrome.storage.sync.set({[sponsorTimeKey]: []}, () => void updatePreviewBar());
+                chrome.storage.sync.set({[sponsorTimeKey]: []});
 
                 //add submissions to current sponsors list
                 sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+                for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+                    // Add some random IDs
+                    UUIDs.push(generateUserID());
+                }
+
+                // Empty the submitting times
                 sponsorTimesSubmitting = [];
+
+                updatePreviewBar();
             } else {
                 //show that the upload failed
                 document.getElementById("submitButton").style.animation = "unset";
                 document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-                if([400, 429, 409, 502, 0].includes(response.statusCode)) {
-                    //treat them the same
-                    if (response.statusCode == 503) response.statusCode = 502;
-
-                    alert(chrome.i18n.getMessage(response.statusCode + "") + " " + chrome.i18n.getMessage("errorCode") + response.statusCode);
-                } else {
-                    alert(chrome.i18n.getMessage("connectionError") + response.statusCode);
-                }
+                alert(getErrorMessage(response.statusCode));
             }
         }
     });

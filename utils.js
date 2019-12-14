@@ -66,3 +66,42 @@ function localizeHtmlPage() {
     }
 }
 
+function generateUserID(length = 36) {
+    let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    if (window.crypto && window.crypto.getRandomValues) {
+            values = new Uint32Array(length);
+            window.crypto.getRandomValues(values);
+            for (i = 0; i < length; i++) {
+                    result += charset[values[i] % charset.length];
+            }
+            return result;
+    } else {
+            for (let i = 0; i < length; i++) {
+                result += charset[Math.floor(Math.random() * charset.length)];
+            }
+            return result;
+    }
+}
+
+/**
+ * Gets the error message in a nice string
+ * 
+ * @param {int} statusCode 
+ * @returns {string} errorMessage
+ */
+function getErrorMessage(statusCode) {
+    let errorMessage = "";
+                        
+    if([400, 429, 409, 502, 0].includes(statusCode)) {
+        //treat them the same
+        if (statusCode == 503) statusCode = 502;
+
+        errorMessage = chrome.i18n.getMessage(statusCode + "") + " " + chrome.i18n.getMessage("errorCode") + statusCode
+                        + "\n\n" + chrome.i18n.getMessage("statusReminder");
+    } else {
+        errorMessage = chrome.i18n.getMessage("connectionError") + statusCode;
+    }
+
+    return errorMessage;
+}

@@ -76,7 +76,7 @@
         "message": "Paused"
     },
     "confirmMSG": {
-        "message": "\n\nTo edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
+        "message": "To edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
     },
     "clearThis": {
         "message": "Are you sure you want to clear this?\n\n"
@@ -314,5 +314,11 @@
     },
     "youHaveSavedTimeEnd": {
         "message": " of their lives."
+    },
+    "guildlinesSummary": {
+        "message": "- Make sure your segment only contains paid promotion segment, nothing else.\n- Make sure skipping this segment will not skip valuable content\n- If the whole video is a sponsor, please do not report it. A full video reporting system will come out soon.\n- Please do not report disclaimers that could show bias (if a review video is sponsored, don't skip when they mention that)."
+    },
+    "statusReminder": {
+        "message": "Check status.sponsor.ajay.app for server status."
     }
 }
