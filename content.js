@@ -756,6 +756,9 @@ function getControls() {
 
 //adds all the player controls buttons
 async function createButtons() {
+    // Don't add controls on Invidious yet
+    if (onInvidious) return;
+
     let result = await wait(getControls).catch();
 
     //set global controls variable
