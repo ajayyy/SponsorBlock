@@ -518,17 +518,17 @@ function getChannelID() {
 
     if (channelNameContainer !== null) {
         channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
+    } else if (onInvidious) {
+        // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
+        channelContainers = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
+        if (channelContainers.length != 0) {
+            channelURLContainer = channelContainers;
+        }
     } else {
         //old YouTube theme
         let channelContainers = document.getElementsByClassName("yt-user-info");
         if (channelContainers.length != 0) {
             channelURLContainer = channelContainers[0].firstElementChild;
-        } else if (onInvidious) {
-            // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
-            channelContainers = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
-            if (channelContainers.length != 0) {
-                channelURLContainer = channelContainers;
-            }
         }
     }
 
