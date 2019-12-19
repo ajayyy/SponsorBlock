@@ -514,14 +514,11 @@ function getChannelID() {
     //get channel id
     let channelNameContainer = document.getElementById("channel-name");
 
-    if (channelNameContainer === null) {
-        //try later
-        return false;
-    }
+    let channelURLContainer = null;
 
-    let channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
-
-    if (channelURLContainer === null) {
+    if (channelNameContainer !== null) {
+        channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
+    } else {
         //old YouTube theme
         let channelContainers = document.getElementsByClassName("yt-user-info");
         if (channelContainers.length != 0) {
