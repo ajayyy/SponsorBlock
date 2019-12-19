@@ -59,9 +59,10 @@ var lastSponsorTimeSkippedUUID = null;
 var showingStartSponsor = true;
 
 //should the video controls buttons be added
-var hideVideoPlayerControls = onInvidious ? true : false;
-var hideInfoButtonPlayerControls = onInvidious ? true : false;
-var hideDeleteButtonPlayerControls = onInvidious ? true : false;
+//TODO: If invidious gets video controls, change the code where this is set from chrome.sync as well.
+var hideVideoPlayerControls = onInvidious;
+var hideInfoButtonPlayerControls = onInvidious;
+var hideDeleteButtonPlayerControls = onInvidious;
 
 //the sponsor times being prepared to be submitted
 var sponsorTimesSubmitting = [];
@@ -374,28 +375,29 @@ function videoIDChange(id) {
 	});
 
     //see if video controls buttons should be added
-    chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
-        if (result.hideVideoPlayerControls != undefined) {
-            hideVideoPlayerControls = result.hideVideoPlayerControls;
-        }
-
-        updateVisibilityOfPlayerControlsButton();
-    });
-    chrome.storage.sync.get(["hideInfoButtonPlayerControls"], function(result) {
-        if (result.hideInfoButtonPlayerControls != undefined) {
-            hideInfoButtonPlayerControls = result.hideInfoButtonPlayerControls;
-        }
-
-        updateVisibilityOfPlayerControlsButton();
-    });
-    chrome.storage.sync.get(["hideDeleteButtonPlayerControls"], function(result) {
-        if (result.hideDeleteButtonPlayerControls != undefined) {
-            hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
-        }
-
-        updateVisibilityOfPlayerControlsButton(false);
-    });
-  
+    if (!onInvidious) {
+        chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
+            if (result.hideVideoPlayerControls != undefined) {
+                hideVideoPlayerControls = result.hideVideoPlayerControls;
+            }
+    
+            updateVisibilityOfPlayerControlsButton();
+        });
+        chrome.storage.sync.get(["hideInfoButtonPlayerControls"], function(result) {
+            if (result.hideInfoButtonPlayerControls != undefined) {
+                hideInfoButtonPlayerControls = result.hideInfoButtonPlayerControls;
+            }
+    
+            updateVisibilityOfPlayerControlsButton();
+        });
+        chrome.storage.sync.get(["hideDeleteButtonPlayerControls"], function(result) {
+            if (result.hideDeleteButtonPlayerControls != undefined) {
+                hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
+            }
+    
+            updateVisibilityOfPlayerControlsButton(false);
+        });
+    }
 }
 
 function sponsorsLookup(id, channelIDPromise) {
@@ -842,7 +844,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
         document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
-        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideDeleteButtonPlayerControls) {
+        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideVideoPlayerControls) {
             document.getElementById("submitButton").style.display = "unset";
         } else if (!uploadButtonVisible) {
             //disable submit button
