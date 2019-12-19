@@ -390,7 +390,7 @@ function runThePopup() {
                         SB.whitelistChannel.style.display = "none";
                         SB.unwhitelistChannel.style.display = "unset";
 
-                        SB.downloadedSponsorMessageTimes.innerText = "Channel Whitelisted!";
+                        SB.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
                         SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
                     }
                 });
@@ -1255,7 +1255,7 @@ function runThePopup() {
                         SB.whitelistChannel.style.display = "none";
                         SB.unwhitelistChannel.style.display = "unset";
 
-                        SB.downloadedSponsorMessageTimes.innerText = "Channel Whitelisted!";
+                        SB.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
                         SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
 
                         //save this
