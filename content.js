@@ -757,9 +757,6 @@ function getControls() {
 
 //adds all the player controls buttons
 async function createButtons() {
-    // Don't add controls on Invidious yet
-    if (onInvidious) return;
-
     let result = await wait(getControls).catch();
 
     //set global controls variable
@@ -845,7 +842,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
         document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
-        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
+        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideDeleteButtonPlayerControls) {
             document.getElementById("submitButton").style.display = "unset";
         } else if (!uploadButtonVisible) {
             //disable submit button
