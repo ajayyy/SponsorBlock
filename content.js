@@ -474,14 +474,6 @@ function sponsorsLookup(id, channelIDPromise) {
 
             sponsorLookupRetries++;
         }
-
-        // If the initial channel whitelist check finishes before
-        // the fetching of the sponsor times, then the sponsor times will be 
-        // added again after the whitelist check clears them. Checking it here makes sure
-        // the whitelist will be applied (downside is `whitelistCheck()` gets called multiple times).
-        if (channelWhitelisted) {
-            whitelistCheck();
-        }
     });
 
     //add the event to run on the videos "ontimeupdate"
@@ -530,8 +522,7 @@ function getChannelID() {
         channelContainers = document.getElementsByClassName("yt-user-info");
         if (channelContainers.length != 0) {
             channelURLContainer = channelContainers[0].firstElementChild;
-        }
-        else if (onInvidious) {
+        } else if (onInvidious) {
             // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
             channelContainers = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
             if (channelContainers.length != 0) {
@@ -550,12 +541,10 @@ function getChannelID() {
     let currentTitle = "";
     if (titleInfoContainer != null) {
         currentTitle = titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild.innerText;
-    }
-    else if (onInvidious) {
+    } else if (onInvidious) {
         // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
         currentTitle = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a > div > span").textContent;
-    }
-    else {
+    } else {
         //old YouTube theme
         currentTitle = document.getElementById("eow-title").innerText;
     }
@@ -760,8 +749,7 @@ function getControls() {
         // The invidious video element's controls element
         controls = document.getElementsByClassName("vjs-control-bar");
         return (!controls || controls.length === 0) ? false : controls[controls.length - 1];
-    }
-    else {
+    } else {
         return controls[controls.length - 1];
     }
 };
