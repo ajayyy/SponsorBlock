@@ -1,0 +1,3 @@
+files:
+  - source: /_locales/en/*
+    translation: /_locales/%two_letters_code%/%original_file_name%
