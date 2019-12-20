@@ -1,0 +1,12 @@
+{
+    "confirmMSG": {
+        "message": "Pour modifier ou supprimer des soumissions, cliquez sur le bouton d'info ou ouvrez la fenêtre de l'extension en cliquant sur son icône dans le coin en haut à droite."
+    },
+    "whatViewTracking": {
+        "message": "Cette fonctionnalité suit quels segments commerciaux vous avez sautés afin de calculer le bénéfice des soumissions des \nautres utilisateurs. Elle est également utilisée comme métrique, avec les haut-votes, afin de s'assurer que les spams \nsont ignorés. L'extension envoie un message au serveur à chaque fois qu'un segment commercial est sauté. Avec un peu de chance, peu de personnes désactiveront cette fonctionnalité afin d'obtenir des nombres de vues exacts. :)"
+    },
+    "noticeUpdate2": {
+        "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    }
+}
