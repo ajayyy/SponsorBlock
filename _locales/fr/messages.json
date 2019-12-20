@@ -7,7 +7,6 @@
         "message": "SponsorBlock pour YouTube - Supprime les messages commerciaux et publicités intégrées",
         "description": "Name of the extension."
     },
-
     "Description": {
         "message": "Passe automatiquement les messages commerciaux intégrés dans les vidéos YouTube. Soumettez les segments commerciaux dans les vidéos que vous regardez pour aidez les autres.",
         "description": "Description of the extension."
@@ -76,7 +75,7 @@
         "message": "En pause"
     },
     "confirmMSG": {
-        "message": "\n\nPour modifier ou supprimer des soumissions, cliquez sur le bouton d'info ou ouvrez la fenêtre de l'extension en cliquant sur son icône dans le coin en haut à droite."
+        "message": "Pour modifier ou supprimer des soumissions, cliquez sur le bouton d'info ou ouvrez la fenêtre de l'extension en cliquant sur son icône dans le coin en haut à droite."
     },
     "clearThis": {
         "message": "Êtes-vous certain(e) de vouloir supprimer vos soumissions ?\n\n"
@@ -137,9 +136,6 @@
     },
     "removeFromWhitelist": {
         "message": "Supprimer la chaîne de la liste blanche"
-    },
-    "whitelistDescription": {
-        "message": "Ajouter à la liste blanche les chaînes qui publient des messages commerciaux de façon éthique pour encourager les bons comportements, ou qui publient des messages commerciaux divertissants ou drôles. Ou pas, c'est votre choix."
     },
     "voteOnTime": {
         "message": "Voter sur un segment commercial"
@@ -259,5 +255,69 @@
     },
     "keybindDescriptionComplete": {
         "message": "Le raccourci choisi est : "
+    },
+    "0": {
+        "message": "Connection Timeout. Check your internet connection. If your internet is working, the server is probably overloaded or down."
+    },
+    "disableSkipping": {
+        "message": "Disable SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Enable SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Your Work",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "The server seems to be overloaded. Try again in a few seconds."
+    },
+    "errorCode": {
+        "message": "Error Code: "
+    },
+    "noticeTitleNotSkipped": {
+        "message": "Skip Sponsor?"
+    },
+    "skip": {
+        "message": "Skip"
+    },
+    "disableAutoSkip": {
+        "message": "Disable Auto Skip"
+    },
+    "enableAutoSkip": {
+        "message": "Enable Auto Skip"
+    },
+    "autoSkipDescription": {
+        "message": "Auto skip will skip sponsors for you. If disabled, a notice will appear asking if you'd like to skip."
+    },
+    "youHaveSkipped": {
+        "message": "You have skipped "
+    },
+    "youHaveSaved": {
+        "message": "You have saved yourself "
+    },
+    "minLower": {
+        "message": "minute"
+    },
+    "minsLower": {
+        "message": "minutes"
+    },
+    "hourLower": {
+        "message": "hour"
+    },
+    "hoursLower": {
+        "message": "hours"
+    },
+    "youHaveSavedTime": {
+        "message": "You have saved people"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " of their lives."
+    },
+    "guildlinesSummary": {
+        "message": "- Make sure your segment only contains paid promotion segment, nothing else.\n- Make sure skipping this segment will not skip valuable content\n- If the whole video is a sponsor, please do not report it. A full video reporting system will come out soon.\n- Please do not report disclaimers that could show bias (if a review video is sponsored, don't skip when they mention that)."
+    },
+    "statusReminder": {
+        "message": "Check status.sponsor.ajay.app for server status."
     }
 }
