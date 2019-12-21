@@ -1,9 +1,9 @@
 files:
   - source: /_locales/en/*
     translation: /_locales/%two_letters_code%/%original_file_name%
-  "languages_mapping":
-      "two_letters_code":
-        "pr-BR" : "pt_BR",
-        "pr-PT": "pt_PT",
-        "zh-CN" : "zh_CH",
-        "zh-TW": "zh_TW"
+   "languages_mapping":
+       "two_letters_code":
+          "pr-BR": "pt_BR"
+          "pr-PT": "pt_PT"
+          "zh-CN": "zh_CH"
+          "zh-TW": "zh_TW"
