@@ -292,10 +292,10 @@
         "message": "Auto-Überspringen überspringt gesponsorte Inhalte für dich. Wenn deaktiviert, fragt die Benachrichtigung, ob übersprungen werden soll."
     },
     "youHaveSkipped": {
-        "message": "Du hast übersprangst "
+        "message": "Du übersprangst "
     },
     "youHaveSaved": {
-        "message": "Du hast erspartest dir "
+        "message": "Du erspartest dir "
     },
     "minLower": {
         "message": "Minute"
