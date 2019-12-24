@@ -82,10 +82,10 @@
         "message": "Bist du sicher, dass du Folgendes löschen möchtest?\n\n"
     },
     "Unknown": {
-        "message": "Deine Segmente konnte nicht gesendet werden, bitte versuche es später erneut."
+        "message": "Deine Segmente konnten nicht gesendet werden, bitte versuche es später erneut."
     },
     "sponsorFound": {
-        "message": "Die gesponsorten Inhalte dieses Videos befindet sich bereits in der Datenbank!"
+        "message": "Die gesponsorten Inhalte dieses Videos befinden sich bereits in der Datenbank!"
     },
     "sponsor404": {
         "message": "Keine Sponsoren gefunden"
@@ -214,10 +214,10 @@
         "message": "Dieser Knopf entfernt sämtlich Segmente in der Youtube-Zeitleiste."
     },
     "disableViewTracking": {
-        "message": "Deaktiviere mitzählen übersprungener Sponsoren"
+        "message": "Deaktiviere das Mitzählen übersprungener Sponsoren"
     },
     "enableViewTracking": {
-        "message": "Aktiviere mitzählen übersprungener Sponsoren"
+        "message": "Aktiviere das Mitzählen übersprungener Sponsoren"
     },
     "whatViewTracking": {
         "message": "Diese Funktion hält fest, welche Sponsoren von dir übersprungen wurden und hilft anderen zu erfahren, was ihre Einsendungen bewirkt haben.\n Außerdem dienen die Werte zusammen mit positiven Rückmeldungen als Anti-Spam-Schutz. \n Wenn ein gesponsorter Inhalt übersprungen wird, sendet die Erweiterung eine Nachricht an den Server. \n Hoffentlich wird diese Funktion auch weiterhin genutzt, damit der Algorithmus funktioniert. :)"
@@ -292,10 +292,10 @@
         "message": "Auto-Überspringen überspringt gesponsorte Inhalte für dich. Wenn deaktiviert, fragt die Benachrichtigung, ob übersprungen werden soll."
     },
     "youHaveSkipped": {
-        "message": "Du hast übersprungen "
+        "message": "Du übersprangst "
     },
     "youHaveSaved": {
-        "message": "Du hast dir erspart "
+        "message": "Du erspartest dir "
     },
     "minLower": {
         "message": "Minute"
