@@ -5,12 +5,14 @@
   "main": "background.js",
   "dependencies": {},
   "devDependencies": {
+    "prettier": "^1.19.1",
     "web-ext": "^4.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "web-ext run",
-    "build": "web-ext build --overwrite-dest -i \"*(package-lock.json|README.md|package.json|config.js.example|firefox_manifest-extra.json|manifest.json.original|ignored/*|crowdin.yml)\""
+    "build": "web-ext build --overwrite-dest -i \"*(package-lock.json|README.md|package.json|config.js.example|firefox_manifest-extra.json|manifest.json.original|ignored/*|crowdin.yml)\"",
+    "format": "prettier --write \"**/*.{js,json,md,css,html}\""
   },
   "repository": {
     "type": "git",

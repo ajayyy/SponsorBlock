@@ -60,6 +60,10 @@ Run `npm run dev` to run the extension using a clean browser profile with hot re
 
 Run `npm run build` to generate a packed extension.
 
+## Code Formatting
+
+Before submitting a pull request, run `yarn run format` to auto-format your code.
+
 # Credit
 
 The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) is used to grab the time the video was published.
