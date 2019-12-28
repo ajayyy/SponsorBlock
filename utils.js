@@ -1,3 +1,11 @@
+function getPrivacy() {
+    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText;
+}
+
+function isPublic() {
+    return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "");
+}
+
 // Function that can be used to wait for a condition before returning
 async function wait(condition, timeout = 5000, check = 100) { 
     return await new Promise((resolve, reject) => {
