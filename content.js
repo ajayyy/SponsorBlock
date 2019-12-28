@@ -303,16 +303,18 @@ async function videoIDChange(id) {
 	//id is not valid
     if (!id) return;
 	
-	await wait(privacy_Wait);
-	if (!isPublic()) {
-		let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
-		if(!shouldContinue) return;
-	}
+    await wait(privacy_Wait);
+    if (!isPublic()) {
+        let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
+        if(!shouldContinue) return;
+    }
 	
-    let channelIDPromise = wait(_ => (privacy_Wait() && getChannelID()));
+    let channelIDPromise = wait(getChannelID());
     channelIDPromise.then(() => {
-		channelIDPromise.isFulfilled = true
-	}).catch(() => channelIDPromise.isRejected  = true);
+        channelIDPromise.isFulfilled = true
+    }).catch(() => {
+        channelIDPromise.isRejected  = true
+    });
 
     //setup the preview bar
     if (previewBar == null) {
