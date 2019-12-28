@@ -740,8 +740,8 @@ function runThePopup() {
                 tabs[0].id,
                 {message: "getCurrentTime"},
                 function (response) {
-                    let minutes = document.getElementById(idStartName + chrome.i18n.getMessage("Mins") + index);
-                    let seconds = document.getElementById(idStartName + chrome.i18n.getMessage("Secs") + index);
+                    let minutes = document.getElementById(idStartName + "Minutes" + index);
+                    let seconds = document.getElementById(idStartName + "Seconds" + index);
     
                     minutes.value = getTimeInMinutes(response.currentTime);
                     seconds.value = getTimeInFormattedSeconds(response.currentTime);
@@ -752,8 +752,8 @@ function runThePopup() {
     //id start name is whether it is the startTime or endTime
     //gives back the time in seconds
     function getSponsorTimeEditTimes(idStartName, index) {
-        let minutes = document.getElementById(idStartName + chrome.i18n.getMessage("Mins") + index);
-        let seconds = document.getElementById(idStartName + chrome.i18n.getMessage("Secs") + index);
+        let minutes = document.getElementById(idStartName + "Minutes" + index);
+        let seconds = document.getElementById(idStartName + "Seconds" + index);
 
         return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
     }
