@@ -41,10 +41,12 @@ var controls = null;
 
 // Privacy utils
 function getPrivacy() {
+    if(document.location.pathname.startsWith("/embed/")) return "Public";
     return document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText;
 }
 
 function isPublic() {
+    if(document.location.pathname.startsWith("/embed/")) return true;
     return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "");
 }
 
