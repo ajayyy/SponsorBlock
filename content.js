@@ -309,7 +309,7 @@ async function videoIDChange(id) {
         if(!shouldContinue) return;
     }
 	
-    let channelIDPromise = wait(getChannelID());
+    let channelIDPromise = wait(getChannelID);
     channelIDPromise.then(() => {
         channelIDPromise.isFulfilled = true
     }).catch(() => {
