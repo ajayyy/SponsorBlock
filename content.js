@@ -39,6 +39,15 @@ var previewBar = null;
 //the player controls on the YouTube player
 var controls = null;
 
+// Privacy utils
+function getPrivacy() {
+    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText;
+}
+
+function isPublic() {
+    return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "");
+}
+
 // Direct Links
 videoIDChange(getYouTubeVideoID(document.URL));
 
