@@ -40,13 +40,18 @@ var previewBar = null;
 var controls = null;
 
 // Privacy utils
+function privacy_Wait() {
+	if(document.location.pathname.startsWith("/embed/")) return true;
+	return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2);
+}
+
 function getPrivacy() {
-    if(document.location.pathname.startsWith("/embed/")) return "Public";
+	if(document.location.pathname.startsWith("/embed/")) return "Public";
     return document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText;
 }
 
 function isPublic() {
-    if(document.location.pathname.startsWith("/embed/")) return true;
+	if(document.location.pathname.startsWith("/embed/")) return true;
     return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "");
 }
 
@@ -286,13 +291,10 @@ function resetValues() {
     sponsorDataFound = false;
 }
 
-function videoIDChange(id) {
+
+async function videoIDChange(id) {
     //if the id has not changed return
     if (sponsorVideoID === id) return;
-    if (!isPublic()) {
-         let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
-	 if(!shouldContinue) return
-    }
     //set the global videoID
     sponsorVideoID = id;
 
@@ -300,9 +302,17 @@ function videoIDChange(id) {
     
 	//id is not valid
     if (!id) return;
-
-    let channelIDPromise = wait(getChannelID);
-    channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
+	
+	await wait(privacy_Wait);
+	if (!isPublic()) {
+		let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
+		if(!shouldContinue) return;
+	}
+	
+    let channelIDPromise = wait(_ => (privacy_Wait() && getChannelID()));
+    channelIDPromise.then(() => {
+		channelIDPromise.isFulfilled = true
+	}).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
     if (previewBar == null) {
@@ -405,7 +415,7 @@ function sponsorsLookup(id, channelIDPromise) {
         setTimeout(() => sponsorsLookup(id), 100);
         return;
     }
-
+	
     if (!durationListenerSetUp) {
         durationListenerSetUp = true;
 
@@ -424,7 +434,7 @@ function sponsorsLookup(id, channelIDPromise) {
             channelIDPromise.then(whitelistCheck);
         }
     }
-
+	
     //check database for sponsor times
     //made true once a setTimeout has been created to try again after a server error
     let recheckStarted = false;
