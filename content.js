@@ -41,17 +41,17 @@ var controls = null;
 
 // Privacy utils
 function privacy_Wait() {
-	if(document.location.pathname.startsWith("/embed/")) return true;
-	return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2);
+    if(document.location.pathname.startsWith("/embed/")) return true;
+    return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2);
 }
 
 function getPrivacy() {
-	if(document.location.pathname.startsWith("/embed/")) return "Public";
+    if(document.location.pathname.startsWith("/embed/")) return "Public";
     return document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText;
 }
 
 function isPublic() {
-	if(document.location.pathname.startsWith("/embed/")) return true;
+    if(document.location.pathname.startsWith("/embed/")) return true;
     return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "");
 }
 
