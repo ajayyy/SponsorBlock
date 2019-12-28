@@ -62,7 +62,7 @@ Run `npm run build` to generate a packed extension.
 
 ## Code Formatting
 
-Before submitting a pull request, run `yarn run format` to auto-format your code.
+Before submitting a pull request, run `npm run format` to auto-format your code.
 
 # Credit
 
