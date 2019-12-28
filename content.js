@@ -278,7 +278,10 @@ function resetValues() {
 function videoIDChange(id) {
     //if the id has not changed return
     if (sponsorVideoID === id) return;
-
+    if (!isPublic()) {
+         let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
+	 if(!shouldContinue) return
+    }
     //set the global videoID
     sponsorVideoID = id;
 
