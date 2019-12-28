@@ -322,6 +322,6 @@
         "message": "Check status.sponsor.ajay.app for server status."
     },
     "confirmPrivacy": {
-        "message": "Check status.sponsor.ajay.app for server status."
+        "message": "The video has been detected as not public. click cancel if you do not want the watch id being shared."
     }
 }
