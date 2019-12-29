@@ -3,4 +3,3 @@ ignored
 .idea/
 node_modules
 web-ext-artifacts
-yarn-error.log

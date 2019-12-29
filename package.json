@@ -5,6 +5,12 @@
   "main": "background.js",
   "dependencies": {},
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "prettier": "^1.19.1",
     "web-ext": "^4.0.0"
   },
@@ -12,7 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "web-ext run",
     "build": "web-ext build --overwrite-dest -i \"*(package-lock.json|README.md|package.json|config.js.example|firefox_manifest-extra.json|manifest.json.original|ignored/*|crowdin.yml)\"",
-    "format": "prettier --write \"**/*.{js,json,md,css,html}\""
+    "format": "prettier --write \"**/*.{json,md,css,html}\" && eslint --fix --ignore-pattern \"!.eslintrc.js\" \"**/*.js\""
   },
   "repository": {
     "type": "git",
