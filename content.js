@@ -508,12 +508,11 @@ function updatePreviewBar() {
 
 function getChannelID() {
     //get channel id
-    let channelNameContainer = document.getElementById("channel-name");
-
     let channelURLContainer = null;
 
-    if (channelNameContainer !== null) {
-        channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
+    channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
+    if (channelURLContainer !== null) {
+        channelURLContainer = channelURLContainer.firstElementChild;
     } else {
         //old YouTube theme
         let channelContainers = document.getElementsByClassName("yt-user-info");
@@ -662,9 +661,9 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
         }
     }
 
-    //send telemetry that a this sponsor was skipped happened
+    //send telemetry that a this sponsor was skipped
     if (trackViewCount && !sponsorSkipped[index]) {
-        sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+        sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
         if (!disableAutoSkip) {
             // Count this as a skip
@@ -951,11 +950,13 @@ function vote(type, UUID, skipNotice) {
 
     let sponsorIndex = UUIDs.indexOf(UUID);
 
-    // See if the local time saved count and skip count should be reverted
+    // See if the local time saved count and skip count should be saved
     if (type == 0 && sponsorSkipped[sponsorIndex] || type == 1 && !sponsorSkipped[sponsorIndex]) {
         let factor = 1;
         if (type == 0) {
             factor = -1;
+
+            sponsorSkipped[sponsorIndex] = false;
         }
 
         // Count this as a skip
@@ -969,8 +970,6 @@ function vote(type, UUID, skipNotice) {
 
             chrome.storage.sync.set({"skipCount": result.skipCount + factor * 1 });
         });
-
-        sponsorSkipped[sponsorIndex] = !sponsorSkipped[sponsorIndex];
     }
  
     chrome.runtime.sendMessage({
