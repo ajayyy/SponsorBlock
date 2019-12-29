@@ -503,8 +503,14 @@ function getChannelID() {
     let channelURLContainer = null;
 
     if (channelNameContainer !== null) {
-        channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
-    } else {
+        try {
+            channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
+        } catch (e) {
+            channelURLContainer = null
+        }
+    }
+    
+    if (channelURLContainer == null) {
         //old YouTube theme
         let channelContainers = document.getElementsByClassName("yt-user-info");
         if (channelContainers.length != 0) {
