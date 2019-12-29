@@ -39,22 +39,6 @@ var previewBar = null;
 //the player controls on the YouTube player
 var controls = null;
 
-// Privacy utils
-function privacy_Wait() {
-    if(document.location.pathname.startsWith("/embed/")) return true;
-    return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2);
-}
-
-function getPrivacy() {
-    if(document.location.pathname.startsWith("/embed/")) return "Public";
-    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText;
-}
-
-function isPublic() {
-    if(document.location.pathname.startsWith("/embed/")) return true;
-    return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "");
-}
-
 // Direct Links
 videoIDChange(getYouTubeVideoID(document.URL));
 
@@ -303,7 +287,7 @@ async function videoIDChange(id) {
 	//id is not valid
     if (!id) return;
 	
-    await wait(privacy_Wait);
+    await wait(isPrivacyInfoAvailable);
     if (!isPublic()) {
         let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
         if(!shouldContinue) return;
@@ -1157,6 +1141,27 @@ function getSponsorTimesMessage(sponsorTimes) {
     }
 
     return sponsorTimesMessage;
+}
+
+// Privacy utils
+function isPrivacyInfoAvailable() {
+    if(document.location.pathname.startsWith("/embed/")) return true;
+    return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2);
+}
+
+function getPrivacy() {
+    if(document.location.pathname.startsWith("/embed/")) return "Public";
+    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText;
+}
+
+/**
+ * Is this a public YouTube video
+ * 
+ * @returns {Boolean}
+ */
+function isPublic() {
+    return document.location.pathname.startsWith("/embed/") || 
+        (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "");
 }
 
 //converts time in seconds to minutes:seconds
