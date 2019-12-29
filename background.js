@@ -109,7 +109,7 @@ function submitVote(type, UUID, callback) {
         }
 
         //publish this vote
-        sendRequestToServer("GET", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+        sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 callback({
                     successType: 1

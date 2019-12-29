@@ -652,9 +652,9 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
         }
     }
 
-    //send telemetry that a this sponsor was skipped happened
+    //send telemetry that a this sponsor was skipped
     if (trackViewCount && !sponsorSkipped[index]) {
-        sendRequestToServer("GET", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+        sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
         if (!disableAutoSkip) {
             // Count this as a skip
