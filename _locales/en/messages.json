@@ -320,5 +320,17 @@
     },
     "statusReminder": {
         "message": "Check status.sponsor.ajay.app for server status."
+    },
+    "changeUserID": {
+        "message": "Import/Export Your UserID"
+    },
+    "whatChangeUserID": {
+        "message": "This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you."
+    },
+    "setUserID": {
+        "message": "Set UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Warning: Changing the UserID is permanent. Are you sure you would like to do this? Make sure to backup your old one just in case."
     }
 }
