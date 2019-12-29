@@ -498,19 +498,12 @@ function updatePreviewBar() {
 
 function getChannelID() {
     //get channel id
-    let channelNameContainer = document.getElementById("channel-name");
-
     let channelURLContainer = null;
 
-    if (channelNameContainer !== null) {
-        try {
-            channelURLContainer = channelNameContainer.querySelector("#container").querySelector("#text-container").querySelector("#text").firstElementChild;
-        } catch (e) {
-            channelURLContainer = null
-        }
-    }
-    
-    if (channelURLContainer == null) {
+    channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
+    if (channelURLContainer !== null) {
+        channelURLContainer = channelURLContainer.firstElementChild;
+    } else {
         //old YouTube theme
         let channelContainers = document.getElementsByClassName("yt-user-info");
         if (channelContainers.length != 0) {
