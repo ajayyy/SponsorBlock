@@ -19,16 +19,16 @@ async function wait(condition, timeout = 5000, check = 100) {
 }
 
 function getYouTubeVideoID(url) {
-	
+    // For YouTube TV support
     if(document.URL.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 	
     //Attempt to parse url
     let urlObject = null;
     try { 
-            urlObject = new URL(url);
+        urlObject = new URL(url);
     } catch (e) {      
-            console.error("[SB] Unable to parse URL: " + url);
-            return false;
+        console.error("[SB] Unable to parse URL: " + url);
+        return false;
     }
 
     //Check if valid hostname
