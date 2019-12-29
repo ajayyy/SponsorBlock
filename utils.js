@@ -35,9 +35,8 @@ function getYouTubeVideoID(url) {
     if(!["www.youtube.com","www.youtube-nocookie.com"].includes(urlObject.host)) return false; 
 
     //Get ID from searchParam
-    if(!urlObject.searchParams.has("v")) return false
-    if (["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
-        id = urlObject.searchParams.get("v"); 
+    if (urlObject.searchParams.has("v") && ["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
+        id = urlObject.searchParams.get("v");
         return id.length == 11 ? id : false;
     } else if (urlObject.pathname.startsWith("/embed/")) {
         try {
