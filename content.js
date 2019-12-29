@@ -631,6 +631,25 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     let currentUUID =  UUIDs[index];
     lastSponsorTimeSkippedUUID = currentUUID; 
 
+    //send telemetry that a this sponsor was skipped
+    if (trackViewCount && !sponsorSkipped[index]) {
+        sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+
+        if (!disableAutoSkip) {
+            // Count this as a skip
+            chrome.storage.sync.get(["minutesSaved"], function(result) {
+                if (result.minutesSaved === undefined) result.minutesSaved = 0;
+
+                chrome.storage.sync.set({"minutesSaved": result.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60 });
+            });
+            chrome.storage.sync.get(["skipCount"], function(result) {
+                if (result.skipCount === undefined) result.skipCount = 0;
+
+                chrome.storage.sync.set({"skipCount": result.skipCount + 1 });
+            });
+        }
+    }
+
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!dontShowNotice) {
@@ -649,27 +668,6 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
             if (trackViewCount && !disableAutoSkip) {
                 vote(1, currentUUID, null);
             }
-        }
-    }
-
-    //send telemetry that a this sponsor was skipped
-    if (trackViewCount && !sponsorSkipped[index]) {
-        sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
-
-        if (!disableAutoSkip) {
-            // Count this as a skip
-            chrome.storage.sync.get(["minutesSaved"], function(result) {
-                if (result.minutesSaved === undefined) result.minutesSaved = 0;
-
-                chrome.storage.sync.set({"minutesSaved": result.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60 });
-            });
-            chrome.storage.sync.get(["skipCount"], function(result) {
-                if (result.skipCount === undefined) result.skipCount = 0;
-
-                chrome.storage.sync.set({"skipCount": result.skipCount + 1 });
-            });
-
-            sponsorSkipped[index] = true;
         }
     }
 }
@@ -941,7 +939,7 @@ function vote(type, UUID, skipNotice) {
 
     let sponsorIndex = UUIDs.indexOf(UUID);
 
-    // See if the local time saved count and skip count should be reverted
+    // See if the local time saved count and skip count should be saved
     if (type == 0 && sponsorSkipped[sponsorIndex] || type == 1 && !sponsorSkipped[sponsorIndex]) {
         let factor = 1;
         if (type == 0) {
