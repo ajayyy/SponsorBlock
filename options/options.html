@@ -20,6 +20,7 @@
 		<h1>__MSG_Options__</h1>
 	
 		<div id="options" class="hidden">
+			
 	
 			<div option-type="toggle" toggle-type="reverse" sync-option="disableAutoSkip">
 				<label class="switch-container" label-name="__MSG_autoSkip__">
@@ -33,6 +34,27 @@
 				<br/>
 	
 				<div class="small-description">__MSG_autoSkipDescription__</div>
+			</div>
+
+			<br/>
+			<br/>
+	
+			<div option-type="keybind-change" sync-option="startSponsorKeybind">
+				<div class="option-button trigger-button">
+					__MSG_setStartSponsorShortcut__
+				</div>
+	
+				<div class="option-hidden-section hidden">
+					<br/>
+	
+					<div class="medium-description keybind-status">
+						__MSG_keybindDescription__
+					</div>
+
+					<span class="medium-description bold keybind-status-key">
+						
+					</span>
+				</div>
 			</div>
 	
 			<br/>
@@ -107,7 +129,7 @@
 			<br/>
 	
 			<div option-type="text-change" sync-option="userID">
-				<div class="option-button text-change-trigger">
+				<div class="option-button trigger-button">
 					__MSG_changeUserID__
 				</div>
 	
@@ -115,7 +137,7 @@
 	
 				<div class="small-description">__MSG_whatChangeUserID__</div>
 	
-				<div class="option-hidden-hidden hidden">
+				<div class="option-hidden-section hidden">
 					<br/>
 	
 					<input class="option-text-box" type="text">

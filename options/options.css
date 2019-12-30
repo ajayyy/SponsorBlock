@@ -7,13 +7,26 @@ body {
     text-align: center;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .hidden {
     display: none;
+}
+
+.keybind-status {
+    display: inline;
 }
 
 .small-description {
     color: white;
     font-size: 13;
+}
+
+.medium-description {
+    color: white;
+    font-size: 15;
 }
 
 .option-text-box {
@@ -161,6 +174,8 @@ body {
     text-align: center;
     padding-top: 0px;
     padding-bottom: 0px;
+
+    display: inline-block;
 }
 
 #title {

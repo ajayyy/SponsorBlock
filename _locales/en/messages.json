@@ -341,5 +341,8 @@
     },
     "showSkipNotice": {
         "message": "Show Notice After A Sponsor Is Skipped"
+    },
+    "keybindCurrentlySet": {
+        "message": ". It is currently set to:"
     }
 }

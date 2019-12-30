@@ -37,8 +37,13 @@ async function init() {
                 checksLeft++;
                 break;
             case "text-change":
-                let button = optionsElements[i].querySelector(".text-change-trigger");
+                let button = optionsElements[i].querySelector(".trigger-button");
                 button.addEventListener("click", () => activateTextChange(optionsElements[i]));
+
+                break;
+            case "keybind-change":
+                let keybindButton = optionsElements[i].querySelector(".trigger-button");
+                keybindButton.addEventListener("click", () => activateKeybindChange(optionsElements[i]));
 
                 break;
         }
@@ -51,12 +56,67 @@ async function init() {
 }
 
 /**
+ * Will trigger the container to ask the user for a keybind.
+ * 
+ * @param {HTMLElement} element 
+ */
+function activateKeybindChange(element) {
+    let button = element.querySelector(".trigger-button");
+    if (button.classList.contains("disabled")) return;
+
+    button.classList.add("disabled");
+
+    let option = element.getAttribute("sync-option");
+
+    chrome.storage.sync.get([option], function(result) {
+        let currentlySet = result[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
+        
+        let status = element.querySelector(".option-hidden-section > .keybind-status");
+        status.innerText = chrome.i18n.getMessage("keybindDescription") + currentlySet;
+
+        if (result[option] !== null) {
+            let statusKey = element.querySelector(".option-hidden-section > .keybind-status-key");
+            statusKey.innerText = result[option];
+        }
+    
+        element.querySelector(".option-hidden-section").classList.remove("hidden");
+        
+        document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
+    });
+}
+
+/**
+ * Called when a key is pressed in an activiated keybind change option.
+ * 
+ * @param {HTMLElement} element 
+ * @param {KeyboardEvent} e
+ */
+function keybindKeyPressed(element, e) {
+    e = e || window.event;
+    var key = e.key;
+
+    let option = element.getAttribute("sync-option");
+
+    chrome.storage.sync.set({[option]: key});
+
+    let status = element.querySelector(".option-hidden-section > .keybind-status");
+    status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
+
+    let statusKey = element.querySelector(".option-hidden-section > .keybind-status-key");
+    statusKey.innerText = key;
+
+    let button = element.querySelector(".trigger-button");
+
+    button.classList.remove("disabled");
+}
+
+/**
  * Will trigger the textbox to appear to be able to change an option's text.
  * 
  * @param {HTMLElement} element 
  */
 function activateTextChange(element) {
-    let button = element.querySelector(".text-change-trigger");
+    let button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
     button.classList.add("disabled");
@@ -70,7 +130,7 @@ function activateTextChange(element) {
         let setButton = element.querySelector(".text-change-set");
         setButton.addEventListener("click", () => setOptionValue(option, textBox.value));
 
-        element.querySelector(".option-hidden-hidden").classList.remove("hidden");
+        element.querySelector(".option-hidden-section").classList.remove("hidden");
     });
 }
 
