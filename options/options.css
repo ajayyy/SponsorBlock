@@ -1,0 +1,261 @@
+/* Options page CSS */
+body {
+    font-family: Sans-Serif;
+}
+
+#options {
+    max-width: 60%;
+    text-align: left;
+}
+
+.switch-container:after {
+	content: attr(label-name);
+    position: absolute;
+    padding: 4px;
+    width: max-content;
+
+    font-size: 14px;
+    color: white;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #707070;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #fc0303;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* Boilerplate CSS from https://ajay.app */
+
+body {
+    background-color: #333333;
+}
+
+.projectPreview {
+    position: relative;
+}
+
+.projectPreviewImage {
+    position: absolute;
+    left: -90;
+    width: 80;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.projectPreviewImageLarge {
+    position: absolute;
+    left: -210;
+    width: 200;
+    top: 50%;
+    transform: translateY(-20%);
+}
+
+.projectPreviewImageLargeRight {
+    position: absolute;
+    right: -210;
+    width: 200;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.createdBy {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#title {
+    background-color: #636363;
+  
+    text-align: center;
+    vertical-align: middle;
+  
+    font-family: sans-serif;
+    font-size: 50;
+    color: #212121;
+  
+    /* height: 100; */
+  
+    padding: 20;
+  
+    text-decoration: none;
+  
+    transition: font-size 1s;
+}
+
+#title:hover {
+    font-size: 60;
+  
+    transition: font-size 1s;
+}
+
+.subtitle {
+    font-family: sans-serif;
+    font-size: 40;
+    color: #dad8d8;
+  
+    padding-top: 10;
+  
+    transition: font-size 0.4s;
+}
+
+.subtitle:hover {
+    font-size: 45;
+  
+    transition: font-size 0.4s;
+}
+
+.profilepic {
+    background-color: #636363 !important;
+    vertical-align: middle;
+}
+
+.profilepiccircle {
+    vertical-align: middle;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+a {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.link {
+    padding: 20;
+  
+    height: 80px;
+  
+    transition: height 0.2s;
+}
+
+.link:hover {
+    height: 95px;
+  
+    transition: height 0.2s;
+}
+
+#contact,.smalllink {
+    font-family: sans-serif;
+    font-size: 25;
+    color: #e8e8e8;
+  
+    text-align: center;
+  
+    padding: 10;
+}
+
+#contact {
+    text-decoration: none;
+}
+
+p,li {
+    font-family: sans-serif;
+    font-size: 20;
+    color: #c4c4c4;
+  
+    padding: 10;
+}
+
+p,li,code,a {
+    max-width: 60%;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+@media screen and (orientation:portrait) {
+    p,li,code,a {
+        max-width: 100%;
+    }
+  
+    .projectPreviewImage {
+        position: unset;
+        width: 130;
+        display: block;
+        margin: auto;
+        transform: none;
+    }
+}
+
+.previewImage {
+    max-height: 200px;
+}
+
+img {
+    max-width: 100%;
+  
+    text-align: center;
+}
+
+#recentPostTitle {
+    font-family: sans-serif;
+    font-size: 30;
+    color: #dad8d8;
+}
+
+#recentPostDate {
+    font-family: sans-serif;
+    font-size: 15;
+    color: #dad8d8;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: sans-serif;
+    color: #dad8d8;
+}
+
+svg {
+    text-decoration: none; 
+}

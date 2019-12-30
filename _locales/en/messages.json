@@ -332,5 +332,8 @@
     },
     "userIDChangeWarning": {
         "message": "Warning: Changing the UserID is permanent. Are you sure you would like to do this? Make sure to backup your old one just in case."
+    },
+    "createdBy": {
+        "message": "Created By"
     }
 }

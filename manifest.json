@@ -65,5 +65,6 @@
     "128": "icons/LogoSponsorBlocker128px.png",
     "256": "icons/LogoSponsorBlocker256px.png"
   },
+  "options_page": "options/options.html",
   "manifest_version": 2
 }
