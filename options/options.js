@@ -51,8 +51,5 @@ async function init() {
  * @param {HTMLElement} element 
  */
 function optionToggled(option, value) {
-    console.log(option)
-    console.log(value)
-
     chrome.storage.sync.set({[option]: value});
 }
