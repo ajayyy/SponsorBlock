@@ -56,20 +56,31 @@ function getYouTubeVideoID(url) {
 
 function localizeHtmlPage() {
     //Localize by replacing __MSG_***__ meta tags
-    var objects = document.getElementsByClassName("popupBody")[0].children;
+    var objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
     for (var j = 0; j < objects.length; j++) {
         var obj = objects[j];
+        
+        let localizedMessage = getLocalizedMessage(obj.innerHTML.toString());
+        if (localizedMessage) obj.innerHTML = localizedMessage;
 
-        var valStrH = obj.innerHTML.toString();
-        var valNewH = valStrH.replace(/__MSG_(\w+)__/g, function(match, v1)
-        {
-            return v1 ? chrome.i18n.getMessage(v1) : "";
-        });
-
-        if(valNewH != valStrH)
-        {
-            obj.innerHTML = valNewH;
+        // Try on each attribute
+        let attributes = obj.getAttributeNames();
+        for (const attribute of attributes) {
+            localizedMessage = getLocalizedMessage(obj.getAttribute(attribute).toString());
+            if (localizedMessage) obj.setAttribute(attribute) = localizedMessage;
         }
+    }
+}
+
+function getLocalizedMessage(text) {
+    var valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
+        return v1 ? chrome.i18n.getMessage(v1) : "";
+    });
+
+    if(valNewH != text) {
+        return valNewH;
+    } else {
+        return false;
     }
 }
 

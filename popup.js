@@ -31,22 +31,12 @@ function runThePopup() {
     "unwhitelistChannel",
     "disableSkipping",
     "enableSkipping",
+    // Options
+    "showNoticeAgain",
+    "optionsButton",
     // More controls
     "clearTimes",
     "submitTimes",
-    // options
-    "showNoticeAgain",
-    "disableAutoSkip",
-    "enableAutoSkip",
-    "hideVideoPlayerControls",
-    "showVideoPlayerControls",
-    "hideInfoButtonPlayerControls",
-    "showInfoButtonPlayerControls",
-    "hideDeleteButtonPlayerControls",
-    "showDeleteButtonPlayerControls",
-    "disableSponsorViewTracking",
-    "enableSponsorViewTracking",
-    "optionsButton",
     "reportAnIssue",
     // sponsorTimesContributions
     "sponsorTimesContributionsContainer",
@@ -82,11 +72,6 @@ function runThePopup() {
     "setUsername",
     "usernameInput",
     "submitUsername",
-    // UserID
-    "changeUserID",
-    "changeUserIDButton",
-    "userIDInput",
-    "setUserID",
     // More
     "submissionSection",
     "mainControls",
@@ -94,10 +79,6 @@ function runThePopup() {
     "videoFound",
     "sponsorMessageTimes",
     "downloadedSponsorMessageTimes",
-    // Keybinds
-    "setStartSponsorKeybind",
-    "setSubmitKeybind",
-    "keybindDescription"
     ].forEach(id => SB[id] = document.getElementById(id));
 
     //setup click listeners
@@ -109,22 +90,8 @@ function runThePopup() {
     SB.clearTimes.addEventListener("click", clearTimes);
     SB.submitTimes.addEventListener("click", submitTimes);
     SB.showNoticeAgain.addEventListener("click", showNoticeAgain);
-    SB.disableAutoSkip.addEventListener("click", () => setAutoSkip(true));
-    SB.enableAutoSkip.addEventListener("click", () => setAutoSkip(false));
-    SB.setStartSponsorKeybind.addEventListener("click", () => setKeybind(true));
-    SB.setSubmitKeybind.addEventListener("click", () => setKeybind(false));
-    SB.hideVideoPlayerControls.addEventListener("click", hideVideoPlayerControls);
-    SB.showVideoPlayerControls.addEventListener("click", showVideoPlayerControls);
-    SB.hideInfoButtonPlayerControls.addEventListener("click", hideInfoButtonPlayerControls);
-    SB.showInfoButtonPlayerControls.addEventListener("click", showInfoButtonPlayerControls);
-    SB.hideDeleteButtonPlayerControls.addEventListener("click", hideDeleteButtonPlayerControls);
-    SB.showDeleteButtonPlayerControls.addEventListener("click", showDeleteButtonPlayerControls);
-    SB.disableSponsorViewTracking.addEventListener("click", disableSponsorViewTracking);
-    SB.enableSponsorViewTracking.addEventListener("click", enableSponsorViewTracking);
     SB.setUsernameButton.addEventListener("click", setUsernameButton);
     SB.submitUsername.addEventListener("click", submitUsername);
-    SB.changeUserIDButton.addEventListener("click", changeUserIDButton);
-    SB.setUserID.addEventListener("click", setUserID);
     SB.optionsButton.addEventListener("click", openOptions);
     SB.reportAnIssue.addEventListener("click", reportAnIssue);
     SB.hideDiscordButton.addEventListener("click", hideDiscordButton);
@@ -137,12 +104,6 @@ function runThePopup() {
   
     //current video ID of this tab
     let currentVideoID = null;
-  
-    //is this a YouTube tab?
-    let isYouTubeTab = false;
-
-    // Is the start sponsor keybind currently being set
-    let setStartSponsorKeybind = false;
   
     //see if discord link can be shown
     chrome.storage.sync.get(["hideDiscordLink"], function(result) {
@@ -182,47 +143,6 @@ function runThePopup() {
         }
     });
 
-    //show proper auto skip option
-    chrome.storage.sync.get(["disableAutoSkip"], function(result) {
-        let disableAutoSkip = result.disableAutoSkip;
-        if (disableAutoSkip != undefined && disableAutoSkip) {
-            SB.disableAutoSkip.style.display = "none";
-            SB.enableAutoSkip.style.display = "unset";
-        }
-    });
-  
-    //show proper video player controls options
-    chrome.storage.sync.get(["hideVideoPlayerControls"], function(result) {
-        let hideVideoPlayerControls = result.hideVideoPlayerControls;
-        if (hideVideoPlayerControls != undefined && hideVideoPlayerControls) {
-            SB.hideVideoPlayerControls.style.display = "none";
-            SB.showVideoPlayerControls.style.display = "unset";
-        }
-    });
-    chrome.storage.sync.get(["hideInfoButtonPlayerControls"], function(result) {
-        let hideInfoButtonPlayerControls = result.hideInfoButtonPlayerControls;
-        if (hideInfoButtonPlayerControls != undefined && hideInfoButtonPlayerControls) {
-            SB.hideInfoButtonPlayerControls.style.display = "none";
-            SB.showInfoButtonPlayerControls.style.display = "unset";
-        }
-    });
-    chrome.storage.sync.get(["hideDeleteButtonPlayerControls"], function(result) {
-        let hideDeleteButtonPlayerControls = result.hideDeleteButtonPlayerControls;
-        if (hideDeleteButtonPlayerControls != undefined && hideDeleteButtonPlayerControls) {
-            SB.hideDeleteButtonPlayerControls.style.display = "none";
-            SB.showDeleteButtonPlayerControls.style.display = "unset";
-        }
-    });
-  
-    //show proper tracking option
-    chrome.storage.sync.get(["trackViewCount"], function(result) {
-        let trackViewCount = result.trackViewCount;
-        if (trackViewCount != undefined && !trackViewCount) {
-            SB.disableSponsorViewTracking.style.display = "none";
-            SB.enableSponsorViewTracking.style.display = "unset";
-        }
-    });
-  
     //get the amount of times this user has contributed and display it to thank them
     chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
         if (result.sponsorTimesContributed != undefined) {
@@ -403,13 +323,6 @@ function runThePopup() {
                 });
             }
         );
-    }
-  
-    function setVideoID(request) {
-        //if request is undefined, then the page currently being browsed is not YouTube
-        if (request != undefined) {
-            videoID = request.videoID;
-        }
     }
   
     function sendSponsorStartMessage() {
@@ -927,157 +840,6 @@ function runThePopup() {
         SB.showNoticeAgain.style.display = "none";
     }
 
-    function setAutoSkip(value) {
-        chrome.storage.sync.set({"disableAutoSkip": value});
-
-        if (value) {
-            // If it isn't shown, they can't manually skip
-            showNoticeAgain();
-
-            SB.disableAutoSkip.style.display = "none";
-            SB.enableAutoSkip.style.display = "unset";
-        } else {
-            SB.enableAutoSkip.style.display = "none";
-            SB.disableAutoSkip.style.display = "unset";
-        }
-    }
-  
-    function hideVideoPlayerControls() {
-        chrome.storage.sync.set({"hideVideoPlayerControls": true});
-  
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "changeVideoPlayerControlsVisibility",
-                value: true
-            });
-        });
-  
-        SB.hideVideoPlayerControls.style.display = "none";
-        SB.showVideoPlayerControls.style.display = "unset";
-    }
-  
-    function showVideoPlayerControls() {
-        chrome.storage.sync.set({"hideVideoPlayerControls": false});
-  
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "changeVideoPlayerControlsVisibility",
-                value: false
-            });
-        });
-  
-        SB.hideVideoPlayerControls.style.display = "unset";
-        SB.showVideoPlayerControls.style.display = "none";
-    }
-  
-    function hideInfoButtonPlayerControls() {
-        chrome.storage.sync.set({"hideInfoButtonPlayerControls": true});
-  
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "changeInfoButtonPlayerControlsVisibility",
-                value: true
-            });
-        });
-  
-        SB.hideInfoButtonPlayerControls.style.display = "none";
-        SB.showInfoButtonPlayerControls.style.display = "unset";
-    }
-  
-    function showInfoButtonPlayerControls() {
-        chrome.storage.sync.set({"hideInfoButtonPlayerControls": false});
-  
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "changeVideoPlayerCochangeInfoButtonPlayerControlsVisibilityntrolsVisibility",
-                value: false
-            });
-        });
-  
-        SB.hideInfoButtonPlayerControls.style.display = "unset";
-        SB.showInfoButtonPlayerControls.style.display = "none";
-    }
-  
-    function hideDeleteButtonPlayerControls() {
-        chrome.storage.sync.set({"hideDeleteButtonPlayerControls": true});
-  
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "changeDeleteButtonPlayerControlsVisibility",
-                value: true
-            });
-        });
-  
-        SB.hideDeleteButtonPlayerControls.style.display = "none";
-        SB.showDeleteButtonPlayerControls.style.display = "unset";
-    }
-  
-    function showDeleteButtonPlayerControls() {
-        chrome.storage.sync.set({"hideDeleteButtonPlayerControls": false});
-  
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "changeVideoPlayerCochangeDeleteButtonPlayerControlsVisibilityntrolsVisibility",
-                value: false
-            });
-        });
-  
-        SB.hideDeleteButtonPlayerControls.style.display = "unset";
-        SB.showDeleteButtonPlayerControls.style.display = "none";
-    }
-  
-    function disableSponsorViewTracking() {
-        chrome.storage.sync.set({"trackViewCount": false});
-  
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "trackViewCount",
-                value: false
-            });
-        });
-  
-        SB.disableSponsorViewTracking.style.display = "none";
-        SB.enableSponsorViewTracking.style.display = "unset";
-    }
-  
-    function enableSponsorViewTracking() {
-        chrome.storage.sync.set({"trackViewCount": true});
-  
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "trackViewCount",
-                value: true
-            });
-        });
-  
-        SB.enableSponsorViewTracking.style.display = "none";
-        SB.disableSponsorViewTracking.style.display = "unset";
-    }
-  
     function updateStartTimeChosen() {
         //update startTimeChosen letiable
         if (!startTimeChosen) {
@@ -1108,8 +870,7 @@ function runThePopup() {
   
     //make the options div visible
     function openOptions() {
-        document.getElementById("optionsButtonContainer").style.display = "none";
-        document.getElementById("options").style.display = "unset";
+        chrome.runtime.openOptionsPage();
     }
 
     //make the options username setting option visible
@@ -1166,22 +927,6 @@ function runThePopup() {
         SB.setUsername.style.display = "unset";
     }
 
-    function changeUserIDButton() {
-        //get the user  ID
-        chrome.storage.sync.get(["userID"], function(result) {
-                SB.userIDInput.value = result.userID;
-                SB.setUserID.style.display = "unset";
-                SB.userIDInput.style.display = "unset";
-                SB.changeUserID.style.display = "unset";
-        });
-    }
-
-    function setUserID() {
-        if (!confirm(chrome.i18n.getMessage("userIDChangeWarning"))) return;
-
-        chrome.storage.sync.set({"userID": SB.userIDInput.value});
-    }
-  
     //this is not a YouTube video page
     function displayNoVideo() {
         document.getElementById("loadingIndicator").innerText = chrome.i18n.getMessage("noVideoID");
@@ -1367,34 +1112,6 @@ function runThePopup() {
 
         shownButton.style.display = "unset";
         hiddenButton.style.display = "none";
-    }
-
-    function setKeybind(startSponsorKeybind) {
-        document.getElementById("keybindButtons").style.display = "none";
-
-        document.getElementById("keybindDescription").style.display = "initial";
-        document.getElementById("keybindDescription").innerText = chrome.i18n.getMessage("keybindDescription");
-
-        setStartSponsorKeybind = startSponsorKeybind;
-
-        document.addEventListener("keydown", onKeybindSet)
-    }
-
-    function onKeybindSet(e) {
-        e = e || window.event;
-        var key = e.key;
-
-        if (setStartSponsorKeybind) {
-            chrome.storage.sync.set({"startSponsorKeybind": key});
-        } else {
-            chrome.storage.sync.set({"submitKeybind": key});
-        }
-
-        document.removeEventListener("keydown", onKeybindSet);
-
-        document.getElementById("keybindDescription").innerText = chrome.i18n.getMessage("keybindDescriptionComplete") + " " + key;
-
-        document.getElementById("keybindButtons").style.display = "unset";
     }
 
     //converts time in seconds to minutes

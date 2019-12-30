@@ -332,5 +332,17 @@
     },
     "userIDChangeWarning": {
         "message": "Warning: Changing the UserID is permanent. Are you sure you would like to do this? Make sure to backup your old one just in case."
+    },
+    "createdBy": {
+        "message": "Created By"
+    },
+    "autoSkip": {
+        "message": "Auto Skip"
+    },
+    "showSkipNotice": {
+        "message": "Show Notice After A Sponsor Is Skipped"
+    },
+    "keybindCurrentlySet": {
+        "message": ". It is currently set to:"
     }
 }
