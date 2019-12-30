@@ -22,13 +22,16 @@ async function wait(condition, timeout = 5000, check = 100) {
 }
 
 function getYouTubeVideoID(url) {
+    // For YouTube TV support
+    if(document.URL.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
+	
     //Attempt to parse url
     let urlObject = null;
     try { 
-            urlObject = new URL(url);
+        urlObject = new URL(url);
     } catch (e) {      
-            console.error("[SB] Unable to parse URL: " + url);
-            return false;
+        console.error("[SB] Unable to parse URL: " + url);
+        return false;
     }
 
     //Check if valid hostname
@@ -39,8 +42,8 @@ function getYouTubeVideoID(url) {
     }
 
     //Get ID from searchParam
-    if ((urlObject.pathname == "/watch" || urlObject.pathname == "/watch/") && urlObject.searchParams.has("v")) {
-        id = urlObject.searchParams.get("v"); 
+    if (urlObject.searchParams.has("v") && ["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
+        id = urlObject.searchParams.get("v");
         return id.length == 11 ? id : false;
     } else if (urlObject.pathname.startsWith("/embed/")) {
         try {
@@ -49,8 +52,7 @@ function getYouTubeVideoID(url) {
             console.error("[SB] Video ID not valid for " + url);
             return false;
         }
-    }
-  
+    } 
 	return false;
 }
 
