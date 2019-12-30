@@ -46,7 +46,7 @@ async function init() {
 
     await wait(() => checksLeft == 0, 1000, 50);
 
-    optionsContainer.style.display = "inherit";
+    optionsContainer.classList.remove("hidden");
     optionsContainer.classList.add("animated");
 }
 

@@ -3,6 +3,10 @@ body {
     font-family: Sans-Serif;
 }
 
+.center {
+    text-align: center;
+}
+
 .hidden {
     display: none;
 }
@@ -42,6 +46,7 @@ body {
 #options {
     max-width: 60%;
     text-align: left;
+    display: inline-block;
 }
 
 .switch-container:after {
