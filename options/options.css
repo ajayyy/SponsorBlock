@@ -3,6 +3,11 @@ body {
     font-family: Sans-Serif;
 }
 
+.smallDescription {
+    color: white;
+    font-size: 13;
+}
+
 #options {
     max-width: 60%;
     text-align: left;
@@ -39,6 +44,9 @@ body {
     right: 0;
     bottom: 0;
     background-color: #707070;
+}
+
+.animated * {
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -51,6 +59,9 @@ body {
     left: 4px;
     bottom: 4px;
     background-color: white;
+}
+
+.animated .slider:before {
     -webkit-transition: .4s;
     transition: .4s;
 }
