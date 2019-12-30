@@ -54,7 +54,7 @@ There are also other build scripts available. Install `npm`, then run `npm insta
 
 ## Developing with a clean profile
 
-Run `npm run dev` to run the extension using a clean Firefox profile with hot reloading.
+Run `npm run dev` to run the extension using a clean browser profile with hot reloading [(by default Firefox)](https://hacks.mozilla.org/2019/10/developing-cross-browser-extensions-with-web-ext-3-2-0/). This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
 
 ## Packing
 
