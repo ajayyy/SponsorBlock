@@ -1160,7 +1160,7 @@ function getPrivacy() {
  */
 function isPublic() {
     return document.location.pathname.startsWith("/embed/") || 
-        (["", "Learning playlist"].includes(document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText));
+        (!["Private", "Unlisted"].includes(document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText));
 }
 
 //converts time in seconds to minutes:seconds
