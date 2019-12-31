@@ -1,3 +1,37 @@
+SB = {};
+
+function configProxy() {
+    chrome.storage.onChanged.addListener((changes, namespace) => {
+        for (key in changes) {
+            localconfig[key] = changes[key].newValue;
+        }
+    });
+    var handler = {
+        set: function(obj, prop, value) {
+            chrome.storage.sync.set({
+                [prop]: value
+            })
+        },
+        get: function(obj, prop) {
+            return localconfig[prop]
+        }
+    };
+    return new Proxy({}, handler);
+}
+
+fetchConfig = _ => new Promise(function(resolve, reject) {
+    chrome.storage.sync.get(null, function(items) {
+        localconfig = items;  // Data is ready
+        resolve();
+    });
+});
+
+async function config() {
+    localconfig = {};
+    await fetchConfig();
+    SB.config = configProxy();
+}
+
 // Function that can be used to wait for a condition before returning
 async function wait(condition, timeout = 5000, check = 100) { 
     return await new Promise((resolve, reject) => {
