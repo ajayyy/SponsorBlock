@@ -70,15 +70,6 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
-//should view counts be tracked
-var SB.config.trackViewCount = false;
-let SB.config.trackViewCountStorage = SB.config.SB.config.trackViewCount;
-if (SB.config.trackViewCountStorage != undefined) {
-    SB.config.trackViewCount = SB.config.trackViewCountStorage;
-} else {
-    SB.config.trackViewCount = true;
-}
-
 //if the notice should not be shown
 //happens when the user click's the "Don't show notice again" button
 //option renamed when new notice was made
