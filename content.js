@@ -71,18 +71,8 @@ var sponsorTimesSubmitting = [];
 var popupInitialised = false;
 
 //should skips happen at all
-var disableSkipping = false;
-let disableSkippingStorage = SB.config.disableSkipping;
-if (disableSkippingStorage != undefined) {
-    disableSkipping = disableSkippingStorage;
-}
-
-//should skips be manual
-var disableAutoSkip = false;
-let disableAutoSkipStorage = SB.config.disableAutoSkip;
-if (disableAutoSkipStorage != undefined) {
-    disableAutoSkip = disableAutoSkipStorage;
-}
+var disableSkipping = (SB.config.disableSkipping !== undefined);
+var disableAutoSkip = (SB.config.disableSkipping !== undefined);
 
 //should view counts be tracked
 var trackViewCount = false;
@@ -97,16 +87,17 @@ if (trackViewCountStorage != undefined) {
 //happens when the user click's the "Don't show notice again" button
 //option renamed when new notice was made
 var dontShowNotice = false;
-let dontShowNoticeAgain = SB.config.dontShowNotice;
-if (dontShowNoticeAgain != undefined) {
-    dontShowNotice = dontShowNoticeAgain;
+
+dontShowNoticeAgain2 = SB.config.dontShowNoticeAgain;
+
+if (dontShowNoticeAgain2 != undefined) {
+    dontShowNotice = dontShowNoticeAgain2;
 }
 	
 //load the legacy option to hide the notice
 var dontShowNoticeOld = false;
-let dontShowNoticeAgain = SB.config.dontShowNoticeAgain;
-if (dontShowNoticeAgain != undefined) {
-    dontShowNoticeOld = dontShowNoticeAgain;
+if (dontShowNoticeAgain2 != undefined) {
+    dontShowNoticeOld = dontShowNoticeAgain2;
 }
 
 //get messages from the background script and the popup
