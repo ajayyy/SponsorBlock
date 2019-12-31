@@ -52,6 +52,7 @@
   }, 
   "background": {
     "scripts":[
+      "SB.js",
       "utils.js",
       "config.js",
       "background.js"
