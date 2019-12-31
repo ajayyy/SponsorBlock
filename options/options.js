@@ -2,7 +2,8 @@ window.addEventListener('DOMContentLoaded', init);
 
 var invidiousInstancesRegex = [];
 for (const url of supportedInvidiousInstances) {
-    invidiousInstancesRegex.push("*://*." + url + "/*");
+    invidiousInstancesRegex.push("https://*." + url + "/*");
+    invidiousInstancesRegex.push("http://*." + url + "/*");
 }
 
 async function init() {
@@ -19,6 +20,7 @@ async function init() {
         switch (optionsElements[i].getAttribute("option-type")) {
             case "toggle": 
                 let option = optionsElements[i].getAttribute("sync-option");
+
                 chrome.storage.sync.get([option], function(result) {
                     let optionResult = result[option];
                     let checkbox = optionsElements[i].querySelector("input");
@@ -141,7 +143,9 @@ function invidiousOnClick(checkbox, option) {
                         firefoxCSS.push({file});
                     }
 
-                    let registration = await browser.contentScripts.register({
+                    chrome.runtime.sendMessage({
+                        message: "registerContentScript",
+                        id: "invidious",
                         allFrames: true,
                         js: firefoxJS,
                         css: firefoxCSS,
@@ -178,7 +182,10 @@ function invidiousOnClick(checkbox, option) {
         });
     } else {
         if (isFirefox()) {
-            // Nothing for now
+            chrome.runtime.sendMessage({
+                message: "unregisterContentScript",
+                id: "invidious"
+            });
         } else {
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
         }

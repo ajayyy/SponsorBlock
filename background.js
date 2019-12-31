@@ -1,3 +1,6 @@
+// Used only on Firefox, which does not support non persistent background pages.
+var contentScriptRegistrations = {};
+
 chrome.tabs.onUpdated.addListener(function(tabId) {
 	chrome.tabs.sendMessage(tabId, {
         message: 'update',
@@ -6,38 +9,53 @@ chrome.tabs.onUpdated.addListener(function(tabId) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	switch(request.message) {
-    case "submitTimes":
-        submitTimes(request.videoID, callback);
-    
-        //this allows the callback to be called later by the submitTimes function
-        return true; 
-    case "addSponsorTime":
-        addSponsorTime(request.time, request.videoID, callback);
-    
-        //this allows the callback to be called later
-        return true; 
-    case "getSponsorTimes":
-        getSponsorTimes(request.videoID, function(sponsorTimes) {
-            callback({
-                        sponsorTimes: sponsorTimes
-            })
-        });
-    
-        //this allows the callback to be called later
-        return true;
-    case "submitVote":
-        submitVote(request.type, request.UUID, callback);
-    
-        //this allows the callback to be called later
-        return true;
-    case "alertPrevious":
-			chrome.notifications.create("stillThere" + Math.random(), {
-        type: "basic",
-        title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
-        message: chrome.i18n.getMessage("leftTimes"),
-        iconUrl: "./icons/LogoSponsorBlocker256px.png"
-			});
-	}
+        case "submitTimes":
+            submitTimes(request.videoID, callback);
+        
+            //this allows the callback to be called later by the submitTimes function
+            return true; 
+        case "addSponsorTime":
+            addSponsorTime(request.time, request.videoID, callback);
+        
+            //this allows the callback to be called later
+            return true; 
+        case "getSponsorTimes":
+            getSponsorTimes(request.videoID, function(sponsorTimes) {
+                callback({
+                    sponsorTimes: sponsorTimes
+                })
+            });
+        
+            //this allows the callback to be called later
+            return true;
+        case "submitVote":
+            submitVote(request.type, request.UUID, callback);
+        
+            //this allows the callback to be called later
+            return true;
+        case "alertPrevious":
+            chrome.notifications.create("stillThere" + Math.random(), {
+                type: "basic",
+                title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
+                message: chrome.i18n.getMessage("leftTimes"),
+                iconUrl: "./icons/LogoSponsorBlocker256px.png"
+            });
+            return false;
+        case "registerContentScript": 
+            browser.contentScripts.register({
+                allFrames: request.allFrames,
+                js: request.js,
+                css: request.css,
+                matches: request.matches
+            }).then(() => void (contentScriptRegistrations[request.id] = registration));
+            
+            return false;
+        case "unregisterContentScript": 
+            contentScriptRegistrations[request.id].unregister();
+            delete contentScriptRegistrations[request.id];
+            
+            return false;
+}
 });
 
 //add help page on install
