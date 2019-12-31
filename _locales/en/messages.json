@@ -349,6 +349,6 @@
         "message": "Support Invidious"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) is a third party YouTube client. To enable support, you must accept the extra permissions."
+        "message": "Invidious (invidio.us) is a third party YouTube client. To enable support, you must accept the extra permissions. This does NOT work in incongnito on chrome and other chromium variants."
     }
 }
