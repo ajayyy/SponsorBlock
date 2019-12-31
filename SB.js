@@ -38,7 +38,8 @@ SB.defaults = {
 	"minutesSaved": 0,
 	"skipCount": 0,
 	"disableSkipping": false,
-	"disableAutoSkip": false
+	"disableAutoSkip": false,
+	"trackViewCount": false
 }
 
 // Reset config
