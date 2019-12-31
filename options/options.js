@@ -16,20 +16,75 @@ async function init() {
                 let option = optionsElements[i].getAttribute("sync-option");
                 chrome.storage.sync.get([option], function(result) {
                     let optionResult = result[option];
-                    if (optionResult != undefined) {
-                        let checkbox = optionsElements[i].querySelector("input");
-                        checkbox.checked = optionResult;
+                    let checkbox = optionsElements[i].querySelector("input");
+                    let reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
 
-                        let reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
+                    if (optionResult != undefined) {
+                        checkbox.checked = optionResult;
 
                         if (reverse) {
                             optionsElements[i].querySelector("input").checked = !optionResult;
                         }
-
-                        checkbox.addEventListener("click", () =>{
-                            setOptionValue(option, reverse ? !checkbox.checked : checkbox.checked)
-                        });
                     }
+
+                    checkbox.addEventListener("click", () =>{
+                        setOptionValue(option, reverse ? !checkbox.checked : checkbox.checked);
+                        // See if anything extra must be run
+                        switch (option) {
+                            case "supportInvidious":
+                                if (checkbox.checked) {
+                                    // Request permission
+                                    chrome.permissions.request({
+                                        origins: ["https://*.invidio.us/*"],
+                                        permissions: ["declarativeContent"]
+                                    }, function (granted) {
+                                        if (granted) {
+                                            chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
+                                                // Add page rule
+                                                let rule = {
+                                                    id: "invidious",
+                                                    conditions: [
+                                                        new chrome.declarativeContent.PageStateMatcher({
+                                                            pageUrl: { urlMatches: "https://*.invidio.us/*" }
+                                                        })
+                                                    ],
+                                                    actions: [new chrome.declarativeContent.RequestContentScript({
+                                                            allFrames: true,
+                                                            js: [
+                                                                "config.js",
+                                                                "utils/previewBar.js",
+                                                                "utils/skipNotice.js",
+                                                                "utils.js",
+                                                                "content.js",
+                                                                "popup.js"
+                                                            ],
+                                                            css: [
+                                                                "content.css",
+                                                                "./libs/Source+Sans+Pro.css",
+                                                                "popup.css"
+                                                            ]
+                                                    })]
+                                                };
+
+                                                chrome.declarativeContent.onPageChanged.addRules([rule], console.log);
+                                            });
+                                        } else {
+                                            setOptionValue(option, false);
+                                            checkbox.checked = false;
+
+                                            chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+                                        }
+                                    });
+                                } else {
+                                    chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+                                    chrome.permissions.remove({
+                                        origins: ["https://*.invidio.us/*"]
+                                    });
+                                }
+
+                                break;
+                        }
+                    });
 
                     checksLeft--;
                 });

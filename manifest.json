@@ -8,9 +8,7 @@
     {
       "matches": [
         "https://*.youtube.com/*",
-        "https://www.youtube-nocookie.com/embed/*",
-        "https://*.invidio.us/*",
-        "https://*.invidiou.sh/*"
+        "https://www.youtube-nocookie.com/embed/*"
       ],
       "all_frames": true,
       "js": [
@@ -46,7 +44,12 @@
   "permissions": [
     "storage",
     "notifications",
-    "https://sponsor.ajay.app/*"
+    "https://sponsor.ajay.app/*",
+    "https://*.invidio.us/*"
+  ],
+  "optional_permissions": [
+      "declarativeContent",
+      "https://*/*"
   ],
   "browser_action": {
     "default_title": "__MSG_Name__",

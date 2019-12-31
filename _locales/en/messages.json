@@ -344,5 +344,11 @@
     },
     "keybindCurrentlySet": {
         "message": ". It is currently set to:"
+    },
+    "supportInvidious": {
+        "message": "Support Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) is a third party YouTube client. To enable support, you must accept the extra permissions."
     }
 }
