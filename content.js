@@ -212,13 +212,6 @@ document.onkeydown = async function(e){
 
     let submitKey = SB.config.submitKeybind;
 
-    if (startSponsorKey.startSponsorKeybind === undefined) {
-        startSponsorKey.startSponsorKeybind = ";"
-    }
-    if (submitKey.submitKeybind === undefined) {
-        submitKey.submitKeybind = "'"
-    }
-
     //is the video in focus, otherwise they could be typing a comment
     if (document.activeElement === video) {
         if(key == startSponsorKey.startSponsorKeybind){
@@ -621,11 +614,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 
         if (!SB.config.disableAutoSkip) {
             // Count this as a skip
-            if (SB.config.minutesSaved === undefined) SB.config.minutesSaved = 0;
-
             SB.config.minutesSaved = SB.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
-            if (SB.config.skipCount === undefined) SB.config.skipCount = 0;
-
             SB.config.skipCount = SB.config.skipCount + 1;
             sponsorSkipped[index] = true;
         }
@@ -907,11 +896,9 @@ function vote(type, UUID, skipNotice) {
         }
 
             // Count this as a skip
-            if (SB.config.minutesSaved === undefined) SB.config.minutesSaved = 0;
-
             SB.config.minutesSaved = SB.config.minutesSaved + factor * (sponsorTimes[sponsorIndex][1] - sponsorTimes[sponsorIndex][0]) / 60;
 		
-            if (SB.config.skipCount === undefined) SB.config.skipCount = 0;
+            SB.config.skipCount = 0;
 
             SB.config.skipCount = SB.config.skipCount + factor * 1;
     }
