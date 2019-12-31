@@ -3,7 +3,7 @@ SB = {};
 function configProxy() {
     chrome.storage.onChanged.addListener((changes, namespace) => {
         for (key in changes) {
-            localconfig[key] = changes[key].newValue;
+            SB.localconfig[key] = changes[key].newValue;
         }
     });
     var handler = {
