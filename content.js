@@ -70,17 +70,13 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
-//should skips happen at all
-var disableSkipping = (SB.config.disableSkipping !== undefined);
-var disableAutoSkip = (SB.config.disableSkipping !== undefined);
-
 //should view counts be tracked
-var trackViewCount = false;
-let trackViewCountStorage = SB.config.trackViewCount;
-if (trackViewCountStorage != undefined) {
-    trackViewCount = trackViewCountStorage;
+var SB.config.trackViewCount = false;
+let SB.config.trackViewCountStorage = SB.config.SB.config.trackViewCount;
+if (SB.config.trackViewCountStorage != undefined) {
+    SB.config.trackViewCount = SB.config.trackViewCountStorage;
 } else {
-    trackViewCount = true;
+    SB.config.trackViewCount = true;
 }
 
 //if the notice should not be shown
@@ -200,8 +196,7 @@ function messageListener(request, sender, sendResponse) {
 
                 break;
             case "trackViewCount":
-                trackViewCount = request.value;
-
+                SB.config.trackViewCount = request.value;
                 break;
         }
 }
@@ -434,7 +429,7 @@ function sponsorsLookup(id, channelIDPromise) {
     });
 
     //add the event to run on the videos "ontimeupdate"
-    if (!disableSkipping) {
+    if (!SB.config.disableSkipping) {
         v.ontimeupdate = function () { 
             sponsorCheck();
         };
@@ -524,7 +519,7 @@ function whitelistCheck() {
 
 //video skipping
 function sponsorCheck() {
-    if (disableSkipping) {
+    if (SB.config.disableSkipping) {
         // Make sure this isn't called again
         v.ontimeupdate = null;
         return;
@@ -590,7 +585,7 @@ function checkIfTimeToSkip(currentVideoTime, startTime, endTime) {
 
 //skip fromt he start time to the end time for a certain index sponsor time
 function skipToTime(v, index, sponsorTimes, openNotice) {
-    if (!disableAutoSkip) {
+    if (!SB.config.disableAutoSkip) {
         v.currentTime = sponsorTimes[index][1];
     }
 
@@ -602,7 +597,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!dontShowNotice) {
-            let skipNotice = new SkipNotice(this, currentUUID, disableAutoSkip);
+            let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip);
 
             if (dontShowNoticeOld) {
                 //show why this notice is showing
@@ -614,17 +609,17 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
             }
 
             //auto-upvote this sponsor
-            if (trackViewCount && !disableAutoSkip) {
+            if (SB.config.trackViewCount && !SB.config.disableAutoSkip) {
                 vote(1, currentUUID, null);
             }
         }
     }
 
     //send telemetry that a this sponsor was skipped
-    if (trackViewCount && !sponsorSkipped[index]) {
+    if (SB.config.trackViewCount && !sponsorSkipped[index]) {
         sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
-        if (!disableAutoSkip) {
+        if (!SB.config.disableAutoSkip) {
             // Count this as a skip
             if (SB.config.minutesSaved === undefined) SB.config.minutesSaved = 0;
 
