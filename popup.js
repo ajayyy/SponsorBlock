@@ -1,7 +1,6 @@
 //make this a function to allow this to run on the content page
 async function runThePopup() {
     localizeHtmlPage();
-	await config();
     //is it in the popup or content script
     var inPopup = true;
     if (chrome.tabs == undefined) {
