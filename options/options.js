@@ -27,65 +27,21 @@ async function init() {
                         }
                     }
 
+                    // See if anything extra should be run first time
+                    switch (option) {
+                        case "supportInvidious":
+                            invidiousInit(checkbox, option);
+                            break;
+                    }
+
+                    // Add click listener
                     checkbox.addEventListener("click", () =>{
                         setOptionValue(option, reverse ? !checkbox.checked : checkbox.checked);
 
                         // See if anything extra must be run
                         switch (option) {
                             case "supportInvidious":
-                                if (checkbox.checked) {
-                                    // Request permission
-                                    chrome.permissions.request({
-                                        origins: ["https://*.invidio.us/*", "https://*.invidiou.sh/*"],
-                                        permissions: ["declarativeContent"]
-                                    }, function (granted) {
-                                        if (granted) {
-                                            chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
-                                                // Add page rule
-                                                let rule = {
-                                                    id: "invidious",
-                                                    conditions: [
-                                                        new chrome.declarativeContent.PageStateMatcher({
-                                                            pageUrl: { urlMatches: "https://*.invidio.us/*" }
-                                                        }),
-                                                        new chrome.declarativeContent.PageStateMatcher({
-                                                            pageUrl: { urlMatches: "https://*.invidiou.sh/*" }
-                                                        })
-                                                    ],
-                                                    actions: [new chrome.declarativeContent.RequestContentScript({
-                                                            allFrames: true,
-                                                            js: [
-                                                                "config.js",
-                                                                "utils/previewBar.js",
-                                                                "utils/skipNotice.js",
-                                                                "utils.js",
-                                                                "content.js",
-                                                                "popup.js"
-                                                            ],
-                                                            css: [
-                                                                "content.css",
-                                                                "./libs/Source+Sans+Pro.css",
-                                                                "popup.css"
-                                                            ]
-                                                    })]
-                                                };
-                                                
-                                                chrome.declarativeContent.onPageChanged.addRules([rule]);
-                                            });
-                                        } else {
-                                            setOptionValue(option, false);
-                                            checkbox.checked = false;
-
-                                            chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
-                                        }
-                                    });
-                                } else {
-                                    chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
-                                    chrome.permissions.remove({
-                                        origins: ["https://*.invidio.us/*"]
-                                    });
-                                }
-
+                                invidiousOnClick(checkbox, option);
                                 break;
                         }
                     });
@@ -112,6 +68,86 @@ async function init() {
 
     optionsContainer.classList.remove("hidden");
     optionsContainer.classList.add("animated");
+}
+
+/**
+ * Run when the invidious button is being initialized
+ * 
+ * @param {HTMLElement} checkbox 
+ * @param {string} option 
+ */
+function invidiousInit(checkbox, option) {
+    chrome.permissions.contains({
+        origins: ["https://*.invidio.us/*", "https://*.invidiou.sh/*"],
+        permissions: ["declarativeContent"]
+    }, function (result) {
+        if (result != checkbox.checked) {
+            setOptionValue(option, result);
+
+            checkbox.checked = result;
+        }
+    });
+}
+
+/**
+ * Run whenever the invidious checkbox is clicked
+ * 
+ * @param {HTMLElement} checkbox 
+ * @param {string} option 
+ */
+function invidiousOnClick(checkbox, option) {
+    if (checkbox.checked) {
+        // Request permission
+        chrome.permissions.request({
+            origins: ["https://*.invidio.us/*", "https://*.invidiou.sh/*"],
+            permissions: ["declarativeContent"]
+        }, function (granted) {
+            if (granted) {
+                chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
+                    // Add page rule
+                    let rule = {
+                        id: "invidious",
+                        conditions: [
+                            new chrome.declarativeContent.PageStateMatcher({
+                                pageUrl: { urlMatches: "https://*.invidio.us/*" }
+                            }),
+                            new chrome.declarativeContent.PageStateMatcher({
+                                pageUrl: { urlMatches: "https://*.invidiou.sh/*" }
+                            })
+                        ],
+                        actions: [new chrome.declarativeContent.RequestContentScript({
+                                allFrames: true,
+                                js: [
+                                    "config.js",
+                                    "utils/previewBar.js",
+                                    "utils/skipNotice.js",
+                                    "utils.js",
+                                    "content.js",
+                                    "popup.js"
+                                ],
+                                css: [
+                                    "content.css",
+                                    "./libs/Source+Sans+Pro.css",
+                                    "popup.css"
+                                ]
+                        })]
+                    };
+                    
+                    chrome.declarativeContent.onPageChanged.addRules([rule]);
+                });
+            } else {
+                setOptionValue(option, false);
+                checkbox.checked = false;
+
+                chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+            }
+        });
+    } else {
+        chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+        chrome.permissions.remove({
+            origins: ["https://*.invidio.us/*"]
+        });
+    }
 }
 
 /**
