@@ -288,7 +288,7 @@ async function videoIDChange(id) {
     if (!id) return;
 	
     await wait(isPrivacyInfoAvailable);
-    if (!isPublic()) {
+    if (isUnlisted()) {
         let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
         if(!shouldContinue) return;
     }
@@ -1154,13 +1154,13 @@ function getPrivacy() {
 }
 
 /**
- * Is this a public YouTube video
+ * Is this a unlisted YouTube video
  * 
  * @returns {Boolean}
  */
-function isPublic() {
+function isUnlisted() {
     return document.location.pathname.startsWith("/embed/") || 
-        (!["Private", "Unlisted"].includes(document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText));
+        (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "Unlisted");
 }
 
 //converts time in seconds to minutes:seconds
