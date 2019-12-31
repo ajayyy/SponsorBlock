@@ -1,5 +1,5 @@
 var onInvidious = false;
-var supportedInvidiousInstances = ["invidio.us", "invidiou.sh"];
+var supportedInvidiousInstances = ["invidio.us", "invidiou.sh", "invidious.snopyta.org"];
 
 // Function that can be used to wait for a condition before returning
 async function wait(condition, timeout = 5000, check = 100) { 
@@ -124,4 +124,11 @@ function getErrorMessage(statusCode) {
     }
 
     return errorMessage;
+}
+
+/**
+ * Is this Firefox (web-extensions)
+ */
+function isFirefox() {
+    return typeof(browser) !== "undefined";
 }

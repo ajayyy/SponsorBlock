@@ -1,5 +1,10 @@
 window.addEventListener('DOMContentLoaded', init);
 
+var invidiousInstancesRegex = [];
+for (const url of supportedInvidiousInstances) {
+    invidiousInstancesRegex.push("*://*." + url + "/*");
+}
+
 async function init() {
     localizeHtmlPage();
 
@@ -65,7 +70,7 @@ async function init() {
     }
 
     // Don't wait on chrome
-    if (typeof(browser) == "undefined") {
+    if (isFirefox()) {
         await wait(() => checksLeft == 0, 1000, 50);
     }
 
@@ -80,9 +85,12 @@ async function init() {
  * @param {string} option 
  */
 function invidiousInit(checkbox, option) {
+    let permissions = ["declarativeContent"];
+    if (isFirefox()) permissions = [];
+
     chrome.permissions.contains({
-        origins: ["https://*.invidio.us/*", "https://*.invidiou.sh/*"],
-        permissions: ["declarativeContent"]
+        origins: invidiousInstancesRegex,
+        permissions: permissions
     }, function (result) {
         if (result != checkbox.checked) {
             setOptionValue(option, result);
@@ -101,43 +109,66 @@ function invidiousInit(checkbox, option) {
 function invidiousOnClick(checkbox, option) {
     if (checkbox.checked) {
         // Request permission
+        let permissions = ["declarativeContent"];
+        if (isFirefox()) permissions = [];
+
         chrome.permissions.request({
-            origins: ["https://*.invidio.us/*", "https://*.invidiou.sh/*"],
-            permissions: ["declarativeContent"]
-        }, function (granted) {
+            origins: invidiousInstancesRegex,
+            permissions: permissions
+        }, async function (granted) {
             if (granted) {
-                chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
-                    // Add page rule
-                    let rule = {
-                        id: "invidious",
-                        conditions: [
-                            new chrome.declarativeContent.PageStateMatcher({
-                                pageUrl: { urlMatches: "https://*.invidio.us/*" }
-                            }),
-                            new chrome.declarativeContent.PageStateMatcher({
-                                pageUrl: { urlMatches: "https://*.invidiou.sh/*" }
-                            })
-                        ],
-                        actions: [new chrome.declarativeContent.RequestContentScript({
-                                allFrames: true,
-                                js: [
-                                    "config.js",
-                                    "utils/previewBar.js",
-                                    "utils/skipNotice.js",
-                                    "utils.js",
-                                    "content.js",
-                                    "popup.js"
-                                ],
-                                css: [
-                                    "content.css",
-                                    "./libs/Source+Sans+Pro.css",
-                                    "popup.css"
-                                ]
-                        })]
-                    };
-                    
-                    chrome.declarativeContent.onPageChanged.addRules([rule]);
-                });
+                let js = [
+                    "config.js",
+                    "utils/previewBar.js",
+                    "utils/skipNotice.js",
+                    "utils.js",
+                    "content.js",
+                    "popup.js"
+                ];
+                let css = [
+                    "content.css",
+                    "./libs/Source+Sans+Pro.css",
+                    "popup.css"
+                ];
+
+                if (isFirefox()) {
+                    let firefoxJS = [];
+                    for (const file of js) {
+                        firefoxJS.push({file});
+                    }
+                    let firefoxCSS = [];
+                    for (const file of css) {
+                        firefoxCSS.push({file});
+                    }
+
+                    let registration = await browser.contentScripts.register({
+                        allFrames: true,
+                        js: firefoxJS,
+                        css: firefoxCSS,
+                        matches: invidiousInstancesRegex
+                    });
+                } else {
+                    chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
+                        let conditions = [];
+                        for (const regex of invidiousInstancesRegex) {
+                            conditions.push(new chrome.declarativeContent.PageStateMatcher({
+                                pageUrl: { urlMatches: regex }
+                            }));
+                        }
+                        // Add page rule
+                        let rule = {
+                            id: "invidious",
+                            conditions,
+                            actions: [new chrome.declarativeContent.RequestContentScript({
+                                    allFrames: true,
+                                    js,
+                                    css
+                            })]
+                        };
+                        
+                        chrome.declarativeContent.onPageChanged.addRules([rule]);
+                    });
+                }
             } else {
                 setOptionValue(option, false);
                 checkbox.checked = false;
@@ -146,9 +177,14 @@ function invidiousOnClick(checkbox, option) {
             }
         });
     } else {
-        chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+        if (isFirefox()) {
+            // Nothing for now
+        } else {
+            chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+        }
+
         chrome.permissions.remove({
-            origins: ["https://*.invidio.us/*"]
+            origins: invidiousInstancesRegex
         });
     }
 }

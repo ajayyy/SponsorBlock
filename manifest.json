@@ -47,7 +47,7 @@
     "https://sponsor.ajay.app/*"    
   ],
   "optional_permissions": [
-      "https://*/*",
+      "*://*/*",
       "declarativeContent"
   ],
   "browser_action": {
