@@ -44,12 +44,11 @@
   "permissions": [
     "storage",
     "notifications",
-    "https://sponsor.ajay.app/*",
-    "https://*.invidio.us/*"
+    "https://sponsor.ajay.app/*"    
   ],
   "optional_permissions": [
-      "declarativeContent",
-      "https://*/*"
+      "https://*/*",
+      "declarativeContent"
   ],
   "browser_action": {
     "default_title": "__MSG_Name__",
