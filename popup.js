@@ -1,8 +1,41 @@
+SB = {};
+
+function configProxy() {
+    chrome.storage.onChanged.addListener((changes, namespace) => {
+        for (key in changes) {
+            localconfig[key] = changes[key].newValue;
+        }
+    });
+    var handler = {
+        set: function(obj, prop, value) {
+            chrome.storage.sync.set({
+                [prop]: value
+            })
+        },
+        get: function(obj, prop) {
+            return localconfig[prop]
+        }
+    };
+    return new Proxy({}, handler);
+}
+
+fetchConfig = _ => new Promise(function(resolve, reject) {
+	chrome.storage.sync.get(null, function(items) {
+        localconfig = items;  // Data is ready
+		resolve();
+	});
+});
+
+async function config() {
+	localconfig = {};
+	await fetchConfig();
+	SB.config = configProxy();
+}
 
 //make this a function to allow this to run on the content page
-function runThePopup() {
+async function runThePopup() {
     localizeHtmlPage();
-
+	await config();
     //is it in the popup or content script
     var inPopup = true;
     if (chrome.tabs == undefined) {
@@ -22,8 +55,6 @@ function runThePopup() {
   
             inPopup = false;
     }
-  
-    var SB = {};
 
     ["sponsorStart",
     // Top toggles
@@ -95,7 +126,7 @@ function runThePopup() {
     SB.optionsButton.addEventListener("click", openOptions);
     SB.reportAnIssue.addEventListener("click", reportAnIssue);
     SB.hideDiscordButton.addEventListener("click", hideDiscordButton);
-
+	
     //if true, the button now selects the end time
     let startTimeChosen = false;
   
@@ -106,11 +137,9 @@ function runThePopup() {
     let currentVideoID = null;
   
     //see if discord link can be shown
-    chrome.storage.sync.get(["hideDiscordLink"], function(result) {
-        let hideDiscordLink = result.hideDiscordLink;
+        let hideDiscordLink = SB.config.hideDiscordLink;
         if (hideDiscordLink == undefined || !hideDiscordLink) {
-            chrome.storage.sync.get(["hideDiscordLaunches"], function(result) {
-                let hideDiscordLaunches = result.hideDiscordLaunches;
+                let hideDiscordLaunches = SB.config.hideDiscordLaunches;
                 //only if less than 10 launches
                 if (hideDiscordLaunches == undefined || hideDiscordLaunches < 10) {
                     SB.discordButtonContainer.style.display = null;
@@ -118,45 +147,36 @@ function runThePopup() {
                     if (hideDiscordLaunches == undefined) {
                         hideDiscordLaunches = 1;
                     }
-  
-                    chrome.storage.sync.set({"hideDiscordLaunches": hideDiscordLaunches + 1});
+					SB.config.hideDiscordLaunches = hideDiscordLaunches + 1;
                 }
-            });
         }
-    });
 
     //show proper disable skipping button
-    chrome.storage.sync.get(["disableSkipping"], function(result) {
-        let disableSkipping = result.disableSkipping;
+        let disableSkipping = SB.config.disableSkipping;
         if (disableSkipping != undefined && disableSkipping) {
             SB.disableSkipping.style.display = "none";
             SB.enableSkipping.style.display = "unset";
         }
-    });
 
     //if the don't show notice again variable is true, an option to 
     //  disable should be available
-    chrome.storage.sync.get(["dontShowNotice"], function(result) {
-        let dontShowNotice = result.dontShowNotice;
+        let dontShowNotice = SB.config.dontShowNotice;
         if (dontShowNotice != undefined && dontShowNotice) {
             SB.showNoticeAgain.style.display = "unset";
         }
-    });
 
     //get the amount of times this user has contributed and display it to thank them
-    chrome.storage.sync.get(["sponsorTimesContributed"], function(result) {
-        if (result.sponsorTimesContributed != undefined) {
-            if (result.sponsorTimesContributed > 1) {
+        if (SB.config.sponsorTimesContributed != undefined) {
+            if (SB.config.sponsorTimesContributed > 1) {
                 SB.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
             } else {
                 SB.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
             }
-            SB.sponsorTimesContributionsDisplay.innerText = result.sponsorTimesContributed;
+            SB.sponsorTimesContributionsDisplay.innerText = SB.config.sponsorTimesContributed;
             SB.sponsorTimesContributionsContainer.style.display = "unset";
   
             //get the userID
-            chrome.storage.sync.get(["userID"], function(result) {
-                let userID = result.userID;
+                let userID = SB.config.userID;
                 if (userID != undefined) {
                     //there are probably some views on these submissions then
                     //get the amount of views from the sponsors submitted
@@ -193,43 +213,37 @@ function runThePopup() {
                         }
                     });
                 }
-            });
         }
-    });
 
     //get the amount of times this user has skipped a sponsor
-    chrome.storage.sync.get(["skipCount"], function(result) {
-        if (result.skipCount != undefined) {
-            if (result.skipCount != 1) {
+        if (SB.config.skipCount != undefined) {
+            if (SB.config.skipCount != 1) {
                 SB.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsors");
             } else {
                 SB.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsor");
             }
 
-            SB.sponsorTimesSkipsDoneDisplay.innerText = result.skipCount;
+            SB.sponsorTimesSkipsDoneDisplay.innerText = SB.config.skipCount;
             SB.sponsorTimesSkipsDoneContainer.style.display = "unset";
         }
-    });
 
     //get the amount of time this user has saved.
-    chrome.storage.sync.get(["minutesSaved"], function(result) {
-        if (result.minutesSaved != undefined) {
-            if (result.minutesSaved != 1) {
+        if (SB.config.minutesSaved != undefined) {
+            if (SB.config.minutesSaved != 1) {
                 SB.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
             } else {
                 SB.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
             }
 
-            SB.sponsorTimeSavedDisplay.innerText = getFormattedHours(result.minutesSaved);
+            SB.sponsorTimeSavedDisplay.innerText = getFormattedHours(SB.config.minutesSaved);
             SB.sponsorTimeSavedContainer.style.display = "unset";
         }
-    });
   
     chrome.tabs.query({
             active: true,
             currentWindow: true
     }, onTabs);
-  
+	
     function onTabs(tabs) {
 	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
         if (result != undefined && result.videoID) {
@@ -251,8 +265,7 @@ function runThePopup() {
   
         //load video times for this video 
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        chrome.storage.sync.get([sponsorTimeKey], function(result) {
-            let sponsorTimesStorage = result[sponsorTimeKey];
+            let sponsorTimesStorage = SB.config.sponsorTimeKey[sponsorTimeKey];
             if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
                 if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
                     startTimeChosen = true;
@@ -268,7 +281,6 @@ function runThePopup() {
   
                 showSubmitTimesIfNecessary();
             }
-        });
   
         //check if this video's sponsors are known
         chrome.tabs.sendMessage(
@@ -350,7 +362,7 @@ function runThePopup() {
   
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
         let localStartTimeChosen = startTimeChosen;
-        chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+        SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
             //send a message to the client script
             if (localStartTimeChosen) {
                 chrome.tabs.query({
@@ -363,7 +375,6 @@ function runThePopup() {
                     );
                 });
             }
-        });
   
         updateStartTimeChosen();
   
@@ -684,7 +695,7 @@ function runThePopup() {
   
         //save this
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+        SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
@@ -694,7 +705,6 @@ function runThePopup() {
                     {message: "sponsorDataChanged"}
                 );
             });
-        });
   
         if (closeEditMode) {
             displaySponsorTimes();
@@ -725,7 +735,7 @@ function runThePopup() {
   
         //save this
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+        SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
@@ -735,7 +745,6 @@ function runThePopup() {
                     {message: "sponsorDataChanged"}
                 );
             });
-        });
   
         //update display
         displaySponsorTimes();
@@ -778,7 +787,7 @@ function runThePopup() {
         sponsorTimes = [];
   
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        chrome.storage.sync.set({[sponsorTimeKey]: sponsorTimes}, function() {
+		SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
@@ -788,7 +797,6 @@ function runThePopup() {
                     {message: "sponsorDataChanged"}
                 );
             });
-        });
   
         displaySponsorTimes();
   
@@ -826,7 +834,7 @@ function runThePopup() {
     }
   
     function showNoticeAgain() {
-        chrome.storage.sync.set({"dontShowNotice": false});
+        SB.config.dontShowNotice = false;
   
         chrome.tabs.query({
             active: true,
@@ -875,10 +883,8 @@ function runThePopup() {
 
     //make the options username setting option visible
     function setUsernameButton() {
-        //get the userID
-        chrome.storage.sync.get(["userID"], function(result) {
             //get username from the server
-            sendRequestToServer("GET", "/api/getUsername?userID=" + result.userID, function (xmlhttp, error) {
+            sendRequestToServer("GET", "/api/getUsername?userID=" + SB.config.userID, function (xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     SB.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
 
@@ -898,7 +904,6 @@ function runThePopup() {
                     SB.setUsernameStatus.innerText = getErrorMessage(xmlhttp.status);
                 }
             });
-        });
     }
 
     //submit the new username
@@ -908,8 +913,7 @@ function runThePopup() {
         SB.setUsernameStatus.innerText = "Loading...";
 
         //get the userID
-        chrome.storage.sync.get(["userID"], function(result) {
-            sendRequestToServer("POST", "/api/setUsername?userID=" + result.userID + "&username=" + SB.usernameInput.value, function (xmlhttp, error) {
+            sendRequestToServer("POST", "/api/setUsername?userID=" + SB.config.userID + "&username=" + SB.usernameInput.value, function (xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     //submitted
                     SB.submitUsername.style.display = "none";
@@ -920,7 +924,6 @@ function runThePopup() {
                     SB.setUsernameStatus.innerText = getErrorMessageI(xmlhttp.status);
                 }
             });
-        });
 
 
         SB.setUsernameContainer.style.display = "none";
@@ -980,8 +983,7 @@ function runThePopup() {
     }
   
     function hideDiscordButton() {
-        chrome.storage.sync.set({"hideDiscordLink": true});
-  
+        SB.config.hideDiscordLink = true;
         SB.discordButtonContainer.style.display = "none";
     }
   
@@ -1010,8 +1012,7 @@ function runThePopup() {
                 {message: 'getChannelURL'},
                 function(response) {
                     //get whitelisted channels
-                    chrome.storage.sync.get(["whitelistedChannels"], function(result) {
-                        let whitelistedChannels = result.whitelistedChannels;
+                        let whitelistedChannels = SB.config.whitelistedChannels;
                         if (whitelistedChannels == undefined) {
                             whitelistedChannels = [];
                         }
@@ -1027,7 +1028,7 @@ function runThePopup() {
                         SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
 
                         //save this
-                        chrome.storage.sync.set({whitelistedChannels: whitelistedChannels});
+                        SB.config.whitelistedChannels = whitelistedChannels;
 
                         //send a message to the client
                         chrome.tabs.query({
@@ -1041,7 +1042,6 @@ function runThePopup() {
                                 });
                             }
                         );
-                    });
                 }
             );
         });
@@ -1058,8 +1058,7 @@ function runThePopup() {
                 {message: 'getChannelURL'},
                 function(response) {
                     //get whitelisted channels
-                    chrome.storage.sync.get(["whitelistedChannels"], function(result) {
-                        let whitelistedChannels = result.whitelistedChannels;
+                        let whitelistedChannels = SB.config.whitelistedChannels;
                         if (whitelistedChannels == undefined) {
                             whitelistedChannels = [];
                         }
@@ -1076,7 +1075,7 @@ function runThePopup() {
                         SB.downloadedSponsorMessageTimes.style.fontWeight = "unset";
 
                         //save this
-                        chrome.storage.sync.set({whitelistedChannels: whitelistedChannels});
+                        SB.config.whitelistedChannels = whitelistedChannels;
 
                         //send a message to the client
                         chrome.tabs.query({
@@ -1090,7 +1089,6 @@ function runThePopup() {
                                 });
                             }
                         );
-                    });
                 }
             );
         });
@@ -1100,7 +1098,7 @@ function runThePopup() {
      * Should skipping be disabled (visuals stay)
      */
     function toggleSkipping(disabled) {
-        chrome.storage.sync.set({"disableSkipping": disabled});
+		SB.config.disableSkipping = disabled;
 
         let hiddenButton = SB.disableSkipping;
         let shownButton = SB.enableSkipping;
@@ -1169,7 +1167,6 @@ function runThePopup() {
 if (chrome.tabs != undefined) {
     //add the width restriction (because Firefox)
     document.getElementById("sponorBlockStyleSheet").sheet.insertRule('.popupBody { width: 325 }', 0);
-
     //this means it is actually opened in the popup
     runThePopup();
 }
