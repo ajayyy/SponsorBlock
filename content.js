@@ -521,10 +521,7 @@ function getChannelID() {
         channelURLContainer = channelURLContainer.firstElementChild;
     } else if (onInvidious) {
         // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
-        channelContainers = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
-        if (channelContainers.length != 0) {
-            channelURLContainer = channelContainers;
-        }
+        channelURLContainer = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
     } else {
         //old YouTube theme
         let channelContainers = document.getElementsByClassName("yt-user-info");
