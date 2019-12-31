@@ -36,7 +36,7 @@ async function init() {
                                 if (checkbox.checked) {
                                     // Request permission
                                     chrome.permissions.request({
-                                        origins: ["https://*.invidio.us/*"],
+                                        origins: ["https://*.invidio.us/*", "https://*.invidiou.sh/*"],
                                         permissions: ["declarativeContent"]
                                     }, function (granted) {
                                         if (granted) {
@@ -47,6 +47,9 @@ async function init() {
                                                     conditions: [
                                                         new chrome.declarativeContent.PageStateMatcher({
                                                             pageUrl: { urlMatches: "https://*.invidio.us/*" }
+                                                        }),
+                                                        new chrome.declarativeContent.PageStateMatcher({
+                                                            pageUrl: { urlMatches: "https://*.invidiou.sh/*" }
                                                         })
                                                     ],
                                                     actions: [new chrome.declarativeContent.RequestContentScript({
