@@ -1,0 +1,38 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+
+  build:
+    name: Create artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      # Initialization
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - name: Copy configuration
+        run: cp config.js.example config.js
+
+      # Create Chrome artifacts
+      - name: Create Chrome artifacts
+        run: npm run build
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Chrome Extension
+          path: web-ext-artifacts
+
+      # Create Firefox artifacts
+      - name: Move manifest
+        run: mv manifest.json manifest.json.original
+      - name: Combine manifest for Firefox
+        run: jq -s '.[0] * .[1]' manifest.json.original firefox_manifest-extra.json > manifest.json
+      - name: Create Firefox artifacts
+        run: npm run build
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Firefox Extension
+          path: web-ext-artifacts
+
