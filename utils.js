@@ -13,7 +13,7 @@ function configProxy() {
             })
         },
         get: function(obj, prop) {
-            return localconfig[prop]
+            return SB.localconfig[prop]
         }
     };
     return new Proxy({}, handler);
@@ -21,13 +21,13 @@ function configProxy() {
 
 fetchConfig = _ => new Promise(function(resolve, reject) {
     chrome.storage.sync.get(null, function(items) {
-        localconfig = items;  // Data is ready
+        SB.localconfig = items;  // Data is ready
         resolve();
     });
 });
 
 async function config() {
-    localconfig = {};
+    SB.localconfig = {};
     await fetchConfig();
     SB.config = configProxy();
 }
