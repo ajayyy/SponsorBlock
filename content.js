@@ -1159,7 +1159,7 @@ function getPrivacy() {
  * @returns {Boolean}
  */
 function isUnlisted() {
-    return document.location.pathname.startsWith("/embed/") || 
+    return !document.location.pathname.startsWith("/embed/") && 
         (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "Unlisted");
 }
 
