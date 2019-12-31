@@ -27,10 +27,31 @@ fetchConfig = _ => new Promise(function(resolve, reject) {
 });
 
 async function config() {
-    SB.localconfig = {};
     await fetchConfig();
+	addDefaults();
     SB.config = configProxy();
 }
+
+SB.defaults = {
+	"startSponsorKeybind": ";",
+	"submitKeybind": "'",
+	"minutesSaved": 0,
+	"skipCount": 0
+}
+
+// Reset config
+function resetConfig() {
+	SB.config = SB.defaults;
+};
+
+// Add defaults
+function addDefaults() {
+	Object.keys(SB.defaults).forEach(key => {
+		if(!SB.localconfig.hasOwnProperty(key)) {
+			SB.localconfig = SB.defaults[key];
+		}
+	});
+};
 
 // Sync config
 config();
