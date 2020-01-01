@@ -813,7 +813,7 @@ function clearSponsorTimes() {
 
         //clear the sponsor times
         let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        SB.config.sponsorTimeKey = [];
+        delete SB.config.sponsorTimeKey[sponsorTimeKey]
 
         //clear sponsor times submitting
         sponsorTimesSubmitting = [];
@@ -971,7 +971,7 @@ function sendSubmitMessage(){
 
                 //clear the sponsor times
                 let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-                SB.config.sponsorTimeKey[sponsorTimeKey] = [];
+                delete SB.config.sponsorTimeKey[sponsorTimeKey];
 
                 //add submissions to current sponsors list
                 sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
