@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
     setTimeout(function() {
-        const userID = result.userID;
+        const userID = SB.config.userID;
 
         // If there is no userID, then it is the first install.
         if (!userID){
@@ -92,8 +92,7 @@ function addSponsorTime(time, videoID, callback) {
 }
 
 function submitVote(type, UUID, callback) {
-    chrome.storage.sync.get(["userID"], function(result) {
-        let userID = result.userID;
+        let userID = SB.config.userID;
 
         if (userID == undefined || userID === "undefined") {
             //generate one
@@ -121,7 +120,6 @@ function submitVote(type, UUID, callback) {
                 });
             }
         })
-    })
 }
 
 async function submitTimes(videoID, callback) {
