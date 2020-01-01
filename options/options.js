@@ -270,24 +270,35 @@ function activateTextChange(element) {
         case "invidiousInstances":
 
             let setButton = element.querySelector(".text-change-set");
-            setButton.addEventListener("click", function(e) {
+            setButton.addEventListener("click", async function(e) {
                 if (textBox.value.includes("/") || textBox.value.includes("http") || textBox.value.includes(":")) {
                     alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
                 } else {
                     // Add this
-                    chrome.storage.sync.get([option], function(result) {
-                        if (!result[option]) result[option] = [];
-
-                        result[option].push(textBox.value);
-
-                        setOptionValue(option, result[option]);
-
-                        textBox.value = "";
-
-                        // Hide this section again
-                        element.querySelector(".option-hidden-section").classList.add("hidden");
-                        button.classList.remove("disabled");
+                    //TODO Make the call to invidiousOnClick support passing the straight extra values, plus make the get not needed
+                    //OR merge the config PR and use that
+                    let result = await new Promise((resolve, reject) => {
+                        chrome.storage.sync.get([option], resolve);
                     });
+
+                    if (!result[option]) result[option] = [];
+
+                    result[option].push(textBox.value);
+
+                    await new Promise((resolve, reject) => {
+                        setOptionValue(option, result[option], resolve);
+                    });
+
+                    let checkbox = document.querySelector("#support-invidious input");
+                    checkbox.checked = true;
+
+                    invidiousOnClick(checkbox, "supportInvidious");
+
+                    textBox.value = "";
+
+                    // Hide this section again
+                    element.querySelector(".option-hidden-section").classList.add("hidden");
+                    button.classList.remove("disabled");
                 }
             });
 
@@ -319,6 +330,6 @@ function activateTextChange(element) {
  * @param {string} option 
  * @param {*} value 
  */
-function setOptionValue(option, value) {
-    chrome.storage.sync.set({[option]: value});
+function setOptionValue(option, value, callback) {
+    chrome.storage.sync.set({[option]: value}, callback);
 }
