@@ -65,10 +65,6 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
-if (SB.config.dontShowNotice) {
-	SB.config.dontShowNoticeOld = true;
-}
-
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
@@ -77,7 +73,6 @@ function messageListener(request, sender, sendResponse) {
         switch(request.message){
             case "update":
                 videoIDChange(getYouTubeVideoID(document.URL));
-
                 break;
             case "sponsorStart":
                 sponsorMessageStarted(sendResponse);
@@ -549,11 +544,10 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
         if (!SB.config.dontShowNotice) {
             let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip);
 
-            if (dontShowNoticeOld) {
+            if (!SB.config.dontShowNoticeOld) {
                 //show why this notice is showing
                 skipNotice.addNoticeInfoMessage(chrome.i18n.getMessage("noticeUpdate"), chrome.i18n.getMessage("noticeUpdate2"));
-
-                SB.config.dontShowNotice = false;
+                SB.config.dontShowNoticeOld = true;
             }
 
             //auto-upvote this sponsor
