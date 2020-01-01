@@ -265,11 +265,49 @@ function activateTextChange(element) {
     let textBox = element.querySelector(".option-text-box");
     let option = element.getAttribute("sync-option");
 
+    // See if anything extra must be done
+    switch (option) {
+        case "invidiousInstances":
+
+            let setButton = element.querySelector(".text-change-set");
+            setButton.addEventListener("click", function(e) {
+                if (textBox.value.includes("/") || textBox.value.includes("http") || textBox.value.includes(":")) {
+                    alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
+                } else {
+                    // Add this
+                    chrome.storage.sync.get([option], function(result) {
+                        if (!result[option]) result[option] = [];
+
+                        result[option].push(textBox.value);
+
+                        setOptionValue(option, result[option]);
+
+                        textBox.value = "";
+
+                        // Hide this section again
+                        element.querySelector(".option-hidden-section").classList.add("hidden");
+                        button.classList.remove("disabled");
+                    });
+                }
+            });
+
+            let resetButton = element.querySelector(".invidious-instance-reset");
+            resetButton.addEventListener("click", function(e) {
+                if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
+                    setOptionValue(option, []);
+                }
+            });
+    
+            element.querySelector(".option-hidden-section").classList.remove("hidden");
+
+            return;
+    }
+
     chrome.storage.sync.get([option], function(result) {
         textBox.value = result[option];
 
         let setButton = element.querySelector(".text-change-set");
-        setButton.addEventListener("click", () => setOptionValue(option, textBox.value));
+        setButton.addEventListener("click", (e) => setOptionValue(option, textBox.value));
 
         element.querySelector(".option-hidden-section").classList.remove("hidden");
     });

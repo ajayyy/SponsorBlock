@@ -7,6 +7,10 @@ body {
     text-align: center;
 }
 
+.inline {
+    display: inline-block;
+}
+
 .bold {
     font-weight: bold;
 }

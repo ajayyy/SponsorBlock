@@ -353,5 +353,23 @@
     },
     "optionsInfo": {
         "message": "Enable Invidious support, disable autoskip, hide buttons and more."
+    },
+    "addInvidiousInstance": {
+        "message": "Add Invidious Instance"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Add a custom instance of Invidious. This must be formatted with JUST the domain. Example: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Add"
+    },
+    "addInvidiousInstanceError": {
+        "message": "This is an invalid domain. This should JUST include the domain part. Example: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Reset Invidious Instance List"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "You are about to reset the Invidious instance list?"
     }
 }
