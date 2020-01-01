@@ -28,7 +28,7 @@ fetchConfig = _ => new Promise(function(resolve, reject) {
 
 async function config() {
     await fetchConfig();
-	addDefaults();
+    addDefaults();
     SB.config = configProxy();
 }
 
