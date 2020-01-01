@@ -70,11 +70,6 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
-//if the notice should not be shown
-//happens when the user click's the "Don't show notice again" button
-//option renamed when new notice was made
-dontShowNoticeAgain = SB.config.dontShowNoticeAgain;
-
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
@@ -148,15 +143,16 @@ function messageListener(request, sender, sendResponse) {
 
                 break;
             case "dontShowNotice":
-                dontShowNotice = false;
+				SB.config.dontShowNotice = true;
 
                 break;
             case "changeStartSponsorButton":
                 changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
 
                 break;
+			
             case "showNoticeAgain":
-                dontShowNotice = false;
+                SB.config.dontShowNotice = true;
                 
                 break;
             case "changeVideoPlayerControlsVisibility":
@@ -568,16 +564,14 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
-        if (!dontShowNotice) {
+        if (!SB.config.dontShowNotice) {
             let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip);
 
             if (dontShowNoticeOld) {
                 //show why this notice is showing
                 skipNotice.addNoticeInfoMessage(chrome.i18n.getMessage("noticeUpdate"), chrome.i18n.getMessage("noticeUpdate2"));
 
-                //remove this setting
-				delete SB.config["dontShowNoticeAgain"];
-                dontShowNoticeOld = false;
+                SB.config.dontShowNotice = false;
             }
 
             //auto-upvote this sponsor
@@ -918,9 +912,6 @@ function closeAllSkipNotices(){
 
 function dontShowNoticeAgain() {
     SB.config.dontShowNotice = true;
-
-    dontShowNotice = true;
-
     closeAllSkipNotices();
 }
 
