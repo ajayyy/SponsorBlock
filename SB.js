@@ -39,7 +39,8 @@ SB.defaults = {
 	"skipCount": 0,
 	"disableSkipping": false,
 	"disableAutoSkip": false,
-	"trackViewCount": false
+	"trackViewCount": false,
+	"dontShowNoticeAgain": false
 }
 
 // Reset config
