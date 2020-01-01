@@ -73,19 +73,7 @@ var popupInitialised = false;
 //if the notice should not be shown
 //happens when the user click's the "Don't show notice again" button
 //option renamed when new notice was made
-var dontShowNotice = false;
-
-dontShowNoticeAgain2 = SB.config.dontShowNoticeAgain;
-
-if (dontShowNoticeAgain2 != undefined) {
-    dontShowNotice = dontShowNoticeAgain2;
-}
-	
-//load the legacy option to hide the notice
-var dontShowNoticeOld = false;
-if (dontShowNoticeAgain2 != undefined) {
-    dontShowNoticeOld = dontShowNoticeAgain2;
-}
+dontShowNoticeAgain = SB.config.dontShowNoticeAgain;
 
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
