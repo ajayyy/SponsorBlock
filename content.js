@@ -65,6 +65,10 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
+if (SB.config.dontShowNotice) {
+	SB.config.dontShowNoticeOld = true;
+}
+
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
