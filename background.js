@@ -124,7 +124,7 @@ function submitVote(type, UUID, callback) {
     })
 }
 
-function submitTimes(videoID, callback) {
+async function submitTimes(videoID, callback) {
     //get the video times from storage
     let sponsorTimeKey = 'sponsorTimes' + videoID;
     let sponsorTimes = SB.config.sponsorTimeKey[sponsorTimeKey];
