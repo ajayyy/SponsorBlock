@@ -37,6 +37,7 @@ SB.defaults = {
 	"submitKeybind": "'",
 	"minutesSaved": 0,
 	"skipCount": 0,
+	"sponsorTimesContributed": 0,
 	"disableSkipping": false,
 	"disableAutoSkip": false,
 	"trackViewCount": false,
