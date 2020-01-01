@@ -58,11 +58,6 @@ var lastSponsorTimeSkippedUUID = null;
 //if showing the start sponsor button or the end sponsor button on the player
 var showingStartSponsor = true;
 
-//should the video controls buttons be added
-var hideVideoPlayerControls = false;
-var hideInfoButtonPlayerControls = false;
-var hideDeleteButtonPlayerControls = false;
-
 //the sponsor times being prepared to be submitted
 var sponsorTimesSubmitting = [];
 
@@ -153,20 +148,20 @@ function messageListener(request, sender, sendResponse) {
 			
             case "showNoticeAgain":
                 SB.config.dontShowNotice = true;
-                
                 break;
+			
             case "changeVideoPlayerControlsVisibility":
-                hideVideoPlayerControls = request.value;
+                SB.config.hideVideoPlayerControls = request.value;
                 updateVisibilityOfPlayerControlsButton();
 
                 break;
             case "changeInfoButtonPlayerControlsVisibility":
-                hideInfoButtonPlayerControls = request.value;
+                SB.config.hideInfoButtonPlayerControls = request.value;
                 updateVisibilityOfPlayerControlsButton();
 
                 break;
             case "changeDeleteButtonPlayerControlsVisibility":
-                hideDeleteButtonPlayerControls = request.value;
+                SB.config.hideDeleteButtonPlayerControls = request.value;
                 updateVisibilityOfPlayerControlsButton();
 
                 break;
@@ -297,25 +292,8 @@ function videoIDChange(id) {
 			}
 		});
 	});
-
-        //see if video controls buttons should be added
-        if (SB.config.hideVideoPlayerControls != undefined) {
-            hideVideoPlayerControls = SB.config.hideVideoPlayerControls;
-        }
-
-        updateVisibilityOfPlayerControlsButton();
-		
-        if (SB.config.hideInfoButtonPlayerControls != undefined) {
-            hideInfoButtonPlayerControls = SB.config.hideInfoButtonPlayerControls;
-        }
-
-        updateVisibilityOfPlayerControlsButton();
-		
-        if (SB.config.hideDeleteButtonPlayerControls != undefined) {
-            hideDeleteButtonPlayerControls = SB.config.hideDeleteButtonPlayerControls;
-        }
-
-        updateVisibilityOfPlayerControlsButton(false);
+	updateVisibilityOfPlayerControlsButton();
+    updateVisibilityOfPlayerControlsButton(false);
 }
 
 function sponsorsLookup(id, channelIDPromise) {
@@ -665,14 +643,14 @@ async function updateVisibilityOfPlayerControlsButton() {
 
     await createButtons();
 	
-    if (hideVideoPlayerControls) {
+    if (SB.config.hideDeleteButtonPlayerControls) {
         removePlayerControlsButton();
     }
     //don't show the info button on embeds
-    if (hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
+    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
         document.getElementById("infoButton").style.display = "none";
     }
-    if (hideDeleteButtonPlayerControls) {
+    if (SB.config.hideDeleteButtonPlayerControls) {
         document.getElementById("deleteButton").style.display = "none";
     }
 }
@@ -724,7 +702,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     await wait(isSubmitButtonLoaded);
     
     //if it isn't visible, there is no data
-    let shouldHide = (uploadButtonVisible && !hideDeleteButtonPlayerControls) ? "unset" : "none"
+    let shouldHide = (uploadButtonVisible && !SB.config.hideDeleteButtonPlayerControls) ? "unset" : "none"
     document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {
@@ -732,7 +710,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
         document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
-        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !hideInfoButtonPlayerControls) {
+        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !SB.config.hideInfoButtonPlayerControls) {
             document.getElementById("submitButton").style.display = "unset";
         } else if (!uploadButtonVisible) {
             //disable submit button
