@@ -28,12 +28,12 @@ fetchConfig = _ => new Promise(function(resolve, reject) {
 
 async function config() {
     await fetchConfig();
-    addDefaults();
+	addDefaults();
     SB.config = configProxy();
 }
 
 SB.defaults = {
-	"sponsorTimeKey": [],
+	"sponsorTimes": new Map(),
 	"startSponsorKeybind": ";",
 	"submitKeybind": "'",
 	"minutesSaved": 0,
