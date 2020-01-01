@@ -238,8 +238,7 @@ function videoIDChange(id) {
     //warn them if they had unsubmitted times
     if (previousVideoID != null) {
         //get the sponsor times from storage
-        let sponsorTimeKey = 'sponsorTimes' + previousVideoID;
-            let sponsorTimes = SB.config.sponsorTimeKey[sponsorTimeKey];
+            let sponsorTimes = SB.config.sponsorTimes.get(previousVideoID);
             if (sponsorTimes != undefined && sponsorTimes.length > 0) {
                 //warn them that they have unsubmitted sponsor times
                     chrome.runtime.sendMessage({
@@ -803,8 +802,7 @@ function clearSponsorTimes() {
 
     let currentVideoID = sponsorVideoID;
 
-    let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
-    let sponsorTimes = SB.config.sponsorTimeKey[sponsorTimeKey];
+    let sponsorTimes = SB.config.sponsorTimes.get(currentVideoID);
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
         let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes);
@@ -812,8 +810,7 @@ function clearSponsorTimes() {
         if(!confirm(confirmMessage)) return;
 
         //clear the sponsor times
-        let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        delete SB.config.sponsorTimeKey[sponsorTimeKey]
+        SB.config.sponsorTimes.delete(currentVideoID);
 
         //clear sponsor times submitting
         sponsorTimesSubmitting = [];
@@ -914,8 +911,7 @@ function submitSponsorTimes() {
 
     let currentVideoID = sponsorVideoID;
 
-    let sponsorTimeKey = 'sponsorTimes' + currentVideoID;
-        let sponsorTimes =  SB.config.sponsorTimeKey[sponsorTimeKey];
+        let sponsorTimes =  SB.config.sponsorTimes.get(currentVideoID);
 
         if (sponsorTimes != undefined && sponsorTimes.length > 0) {
             //check if a sponsor exceeds the duration of the video
@@ -925,7 +921,7 @@ function submitSponsorTimes() {
                 }
             }
             //update sponsorTimes
-			SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
+			SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
 
             //update sponsorTimesSubmitting
             sponsorTimesSubmitting = sponsorTimes;
@@ -970,8 +966,7 @@ function sendSubmitMessage(){
                 submitButton.addEventListener("animationend", animationEndListener);
 
                 //clear the sponsor times
-                let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-                delete SB.config.sponsorTimeKey[sponsorTimeKey];
+                SB.config.sponsorTimes.delete(currentVideoID);
 
                 //add submissions to current sponsors list
                 sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
