@@ -40,7 +40,11 @@ SB.defaults = {
 	"disableSkipping": false,
 	"disableAutoSkip": false,
 	"trackViewCount": false,
-	"dontShowNoticeAgain": false
+	"dontShowNotice": false,
+	"hideVideoPlayerControls": false,
+	"hideInfoButtonPlayerControls": false,
+	"hideDeleteButtonPlayerControls": false,
+	"dontShowNoticeOld": false
 }
 
 // Reset config
