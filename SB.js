@@ -51,7 +51,7 @@ function resetConfig() {
 function addDefaults() {
 	Object.keys(SB.defaults).forEach(key => {
 		if(!SB.localconfig.hasOwnProperty(key)) {
-			SB.localconfig = SB.defaults[key];
+			SB.localconfig[key] = SB.defaults[key];
 		}
 	});
 };
