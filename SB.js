@@ -33,6 +33,7 @@ async function config() {
 }
 
 SB.defaults = {
+	"sponsorTimeKey": [];
 	"startSponsorKeybind": ";",
 	"submitKeybind": "'",
 	"minutesSaved": 0,
