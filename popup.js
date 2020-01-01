@@ -229,8 +229,7 @@ async function runThePopup() {
         }
   
         //load video times for this video 
-        let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-            let sponsorTimesStorage = SB.config.sponsorTimeKey[sponsorTimeKey];
+            let sponsorTimesStorage = SB.config.sponsorTimes.get(currentVideoID);
             if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
                 if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
                     startTimeChosen = true;
@@ -324,10 +323,9 @@ async function runThePopup() {
         }
   
         sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = response.time;
-  
-        let sponsorTimeKey = "sponsorTimes" + currentVideoID;
+
         let localStartTimeChosen = startTimeChosen;
-        SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
+        SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
             //send a message to the client script
             if (localStartTimeChosen) {
                 chrome.tabs.query({
@@ -659,8 +657,7 @@ async function runThePopup() {
         sponsorTimes[index][1] = getSponsorTimeEditTimes("endTime", index);
   
         //save this
-        let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
+		SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
@@ -699,8 +696,7 @@ async function runThePopup() {
         sponsorTimes.splice(index, 1);
   
         //save this
-        let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-        SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
+		SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
@@ -750,9 +746,8 @@ async function runThePopup() {
   
         //reset sponsorTimes
         sponsorTimes = [];
-  
-        let sponsorTimeKey = "sponsorTimes" + currentVideoID;
-		SB.config.sponsorTimeKey[sponsorTimeKey] = sponsorTimes;
+
+		SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
