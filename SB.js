@@ -26,9 +26,19 @@ fetchConfig = () => new Promise((resolve, reject) => {
     });
 });
 
+function migrate() { // Convert sponsorTimes format
+    for (key in SB.localconfig) {
+        if (key.startsWith("sponsortime")) {
+            SB.config.sponsorTimes.set(key.substr(12), SB.config[key]);
+            delete SB.config[key];
+        }
+    }
+}
+
 async function config() {
     await fetchConfig();
     addDefaults();
+    migrate();
     SB.config = configProxy();
 }
 
