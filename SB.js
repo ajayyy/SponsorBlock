@@ -19,7 +19,7 @@ function configProxy() {
     return new Proxy({}, handler);
 }
 
-fetchConfig = _ => new Promise(function(resolve, reject) {
+fetchConfig = () => new Promise((resolve, reject) => {
     chrome.storage.sync.get(null, function(items) {
         SB.localconfig = items;  // Data is ready
         resolve();
