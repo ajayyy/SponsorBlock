@@ -28,7 +28,7 @@ fetchConfig = () => new Promise((resolve, reject) => {
 
 async function config() {
     await fetchConfig();
-	addDefaults();
+    addDefaults();
     SB.config = configProxy();
 }
 
@@ -45,8 +45,7 @@ SB.defaults = {
 	"dontShowNotice": false,
 	"hideVideoPlayerControls": false,
 	"hideInfoButtonPlayerControls": false,
-	"hideDeleteButtonPlayerControls": false,
-	"dontShowNoticeOld": false
+	"hideDeleteButtonPlayerControls": false
 }
 
 // Reset config
