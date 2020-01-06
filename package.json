@@ -18,7 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "web-ext run",
     "build": "web-ext build --overwrite-dest -i \"*(package-lock.json|README.md|package.json|config.js.example|firefox_manifest-extra.json|manifest.json.original|ignored/*|crowdin.yml)\"",
-    "format": "prettier --write \"**/*.{json,md,css,html}\" && eslint --fix --ignore-pattern \"!.eslintrc.js\" \"**/*.js\""
+    "format": "prettier --write \"**/*.{json,md,css}\" && eslint --fix --ignore-pattern \"!.eslintrc.js\" \"**/*.js\""
   },
   "repository": {
     "type": "git",
