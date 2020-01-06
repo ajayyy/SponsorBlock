@@ -29,7 +29,7 @@ fetchConfig = () => new Promise((resolve, reject) => {
 function migrate() { // Convert sponsorTimes format
     for (key in SB.localconfig) {
         if (key.startsWith("sponsorTimes")) {
-            SB.config.sponsorTimes.set(key.substr(12), SB.config[key]);
+            SB.config.sponsorTimes.set(key.substr(11), SB.config[key]);
             delete SB.config[key];
         }
     }
