@@ -55,7 +55,7 @@ SB.defaults = {
 	"dontShowNotice": false,
 	"hideVideoPlayerControls": false,
 	"hideInfoButtonPlayerControls": false,
-	"hideDeleteButtonPlayerControls": false
+	"hideDeleteButtonPlayerControls": false,
 	"hideDiscordLaunches": 0,
 	"hideDiscordLink": false
 }
