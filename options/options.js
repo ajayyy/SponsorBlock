@@ -27,7 +27,7 @@ async function init() {
                         }
 
                         checkbox.addEventListener("click", () =>{
-                            setOptionValue(option, reverse ? !checkbox.checked : checkbox.checked)
+							SB.config[option] = reverse ? !checkbox.checked : checkbox.checked;
                         });
                     }
 
@@ -123,23 +123,11 @@ function activateTextChange(element) {
 
     let textBox = element.querySelector(".option-text-box");
     let option = element.getAttribute("sync-option");
+	
+	textBox.value = SB.config[option];
 
-    chrome.storage.sync.get([option], function(result) {
-        textBox.value = result[option];
+    let setButton = element.querySelector(".text-change-set");
+setButton.addEventListener("click", () => {SB.config[option] = textBox.value});
 
-        let setButton = element.querySelector(".text-change-set");
-        setButton.addEventListener("click", () => setOptionValue(option, textBox.value));
-
-        element.querySelector(".option-hidden-section").classList.remove("hidden");
-    });
-}
-
-/**
- * Called when an option has been changed.
- * 
- * @param {string} option 
- * @param {*} value 
- */
-function setOptionValue(option, value) {
-    chrome.storage.sync.set({[option]: value});
+    element.querySelector(".option-hidden-section").classList.remove("hidden");
 }
