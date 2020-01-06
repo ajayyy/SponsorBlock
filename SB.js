@@ -56,6 +56,8 @@ SB.defaults = {
 	"hideVideoPlayerControls": false,
 	"hideInfoButtonPlayerControls": false,
 	"hideDeleteButtonPlayerControls": false
+	"hideDiscordLaunches": 0,
+	"hideDiscordLink": false
 }
 
 // Reset config
