@@ -19,6 +19,7 @@ module.exports = {
         quotes: ["error", "double"],
         semi: ["error", "always"],
         "object-curly-spacing": ["error", "never"],
-        "space-before-function-paren": ["error", "never"]
+        "space-before-function-paren": ["error", "never"],
+        "no-unused-vars": ["off"]
     }
 };
