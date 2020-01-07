@@ -20,6 +20,11 @@ module.exports = {
         semi: ["error", "always"],
         "object-curly-spacing": ["error", "never"],
         "space-before-function-paren": ["error", "never"],
-        "no-unused-vars": ["off"]
+        "no-unused-vars": ["off"],
+        "no-undef": ["off"],
+        "no-void": ["off"],
+        "standard/no-callback-literal": ["off"],
+        "no-return-assign": ["off"],
+        "no-case-declarations": ["off"]
     }
 };
