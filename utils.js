@@ -55,13 +55,6 @@ function localizeHtmlPage() {
         
         let localizedMessage = getLocalizedMessage(obj.innerHTML.toString());
         if (localizedMessage) obj.innerHTML = localizedMessage;
-
-        // Try on each attribute
-        let attributes = obj.getAttributeNames();
-        for (const attribute of attributes) {
-            localizedMessage = getLocalizedMessage(obj.getAttribute(attribute).toString());
-            if (localizedMessage) obj.setAttribute(attribute) = localizedMessage;
-        }
     }
 }
 
