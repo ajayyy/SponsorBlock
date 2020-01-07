@@ -25,6 +25,7 @@ module.exports = {
         "no-void": ["off"],
         "standard/no-callback-literal": ["off"],
         "no-return-assign": ["off"],
-        "no-case-declarations": ["off"]
+        "no-case-declarations": ["off"],
+        "prefer-const": ["off"]
     }
 };
