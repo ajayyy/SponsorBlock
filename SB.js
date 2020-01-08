@@ -51,7 +51,7 @@ SB.defaults = {
 	"sponsorTimesContributed": 0,
 	"disableSkipping": false,
 	"disableAutoSkip": false,
-	"trackViewCount": false,
+	"trackViewCount": true,
 	"dontShowNotice": false,
 	"hideVideoPlayerControls": false,
 	"hideInfoButtonPlayerControls": false,
