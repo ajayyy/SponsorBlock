@@ -45,7 +45,7 @@ class ListenerMap extends Map {
     }
 
     get(key) {
-        return super.get(key);
+        return strParser(super.get(key));
     }
 
     has(key) {
@@ -54,7 +54,7 @@ class ListenerMap extends Map {
 }
 
 function mapHandler(name, object) {
-    SB.config[name] = storeEncode(object);
+    SB.config[name] = storeEncode(object.value);
 }
 
 function configProxy() {
