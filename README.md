@@ -50,6 +50,16 @@ You can read the API docs [here](https://github.com/ajayyy/SponsorBlockServer#ap
 
 You can load this project as an unpacked extension. Make sure to rename the `config.js.example` file to `config.js` before installing.
 
+There are also other build scripts available. Install `npm`, then run `npm install` in the repository.
+
+## Developing with a clean profile
+
+Run `npm run dev` to run the extension using a clean browser profile with hot reloading [(by default Firefox)](https://hacks.mozilla.org/2019/10/developing-cross-browser-extensions-with-web-ext-3-2-0/). This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
+
+## Packing
+
+Run `npm run build` to generate a packed extension.
+
 # Credit
 
 The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) is used to grab the time the video was published.
