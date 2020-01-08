@@ -1,58 +1,11 @@
 SB = {};
 
-class ListenerMap extends Map {
-    constructor(name) {
-        super();
-
-        this.name = name;
-    }
-
-    set(key, value) {
-        super.set(key, value);
-
-        this.updateListener(this.name, this);
-    }
-
-    delete(key) {
-        this.updateListener(this.name, this);
-
-        return super.set(key);
-    }
-
-    clear() {
-        return super.clear();
-    }
-
-    forEach(callbackfn) {
-        return super.forEach(callbackfn);
-    }
-
-    get(key) {
-        return super.get(key);
-    }
-
-    has(key) {
-        return super.has(key);
-    }
-}
-
-function mapHandler(name, object) {
-    SB.config[name] = SB.config[name];
-    // chrome.storage.sync.set({
-    //     [name]: object
-    // });
-
-    // console.log(name)
-    // console.log(object)
-}
-
 function configProxy() {
     chrome.storage.onChanged.addListener((changes, namespace) => {
         for (key in changes) {
-            SB.localconfig[key] = changes[key].newValue;
+	    Reflect.set(SB.localconfig, key, changes[key].newValue);
         }
     });
-
     var handler = {
         set: function(obj, prop, value) {
             chrome.storage.sync.set({
@@ -60,8 +13,9 @@ function configProxy() {
             });
         },
         get: function(obj, prop) {
-            return SB.localconfig[prop];
+	    return Reflect.get(SB.localconfig, prop);
         }
+		
     };
 
     return new Proxy({}, handler);
@@ -86,9 +40,6 @@ function migrate() { // Convert sponsorTimes format
 async function config() {
     await fetchConfig();
     addDefaults();
-    // Setup sponsorTime listener
-    SB.localconfig.sponsorTimes.updateListener = mapHandler;
-
     SB.config = configProxy();
     migrate();
     
@@ -96,7 +47,7 @@ async function config() {
 }
 
 SB.defaults = {
-	"sponsorTimes": new ListenerMap("sponsorTimes"),
+	"sponsorTimes": new Map(),
 	"startSponsorKeybind": ";",
 	"submitKeybind": "'",
 	"minutesSaved": 0,
