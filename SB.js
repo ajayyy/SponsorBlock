@@ -17,6 +17,46 @@ function strParser(data) {
     }
 }
 
+class ListenerMap extends Map {
+    constructor(name) {
+        super();
+
+        this.name = name;
+    }
+
+    set(key, value) {
+        super.set(key, value);
+
+        this.updateListener(this.name, this);
+    }
+
+    delete(key) {
+        this.updateListener(this.name, this);
+
+        return super.set(key);
+    }
+
+    clear() {
+        return super.clear();
+    }
+
+    forEach(callbackfn) {
+        return super.forEach(callbackfn);
+    }
+
+    get(key) {
+        return super.get(key);
+    }
+
+    has(key) {
+        return super.has(key);
+    }
+}
+
+function mapHandler(name, object) {
+    SB.config[name] = storeEncode(object);
+}
+
 function configProxy() {
     chrome.storage.onChanged.addListener((changes, namespace) => {
         for (key in changes) {
@@ -57,12 +97,14 @@ function migrate() { // Convert sponsorTimes format
 async function config() {
     await fetchConfig();
     addDefaults();
+	// Setup sponsorTime listener
+    SB.localconfig.sponsorTimes.updateListener = mapHandler;
     SB.config = configProxy();
     migrate();
 }
 
 SB.defaults = {
-	"sponsorTimes": new Map(),
+	"sponsorTimes": new ListenerMap("sponsorTimes"),
 	"startSponsorKeybind": ";",
 	"submitKeybind": "'",
 	"minutesSaved": 0,
