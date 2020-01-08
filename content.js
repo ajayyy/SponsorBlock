@@ -238,17 +238,17 @@ function videoIDChange(id) {
     //warn them if they had unsubmitted times
     if (previousVideoID != null) {
         //get the sponsor times from storage
-            let sponsorTimes = SB.config.sponsorTimes.get(previousVideoID);
-            if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-                //warn them that they have unsubmitted sponsor times
-                    chrome.runtime.sendMessage({
-                        message: "alertPrevious",
-                        previousVideoID: previousVideoID
-                    })
-            }
+        let sponsorTimes = SB.config.sponsorTimes.get(previousVideoID);
+        if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+            //warn them that they have unsubmitted sponsor times
+                chrome.runtime.sendMessage({
+                    message: "alertPrevious",
+                    previousVideoID: previousVideoID
+                })
+        }
 
-            //set the previous video id to the currentID
-            previousVideoID = id;
+        //set the previous video id to the currentID
+        previousVideoID = id;
     } else {
         //set the previous id now, don't wait for chrome.storage.get
         previousVideoID = id;
@@ -904,27 +904,27 @@ function submitSponsorTimes() {
 
     let currentVideoID = sponsorVideoID;
 
-        let sponsorTimes =  SB.config.sponsorTimes.get(currentVideoID);
+    let sponsorTimes =  SB.config.sponsorTimes.get(currentVideoID);
 
-        if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-            //check if a sponsor exceeds the duration of the video
-            for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i][1] > v.duration) {
-                    sponsorTimes[i][1] = v.duration;
-                }
+    if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+        //check if a sponsor exceeds the duration of the video
+        for (let i = 0; i < sponsorTimes.length; i++) {
+            if (sponsorTimes[i][1] > v.duration) {
+                sponsorTimes[i][1] = v.duration;
             }
-            //update sponsorTimes
-			SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-
-            //update sponsorTimesSubmitting
-            sponsorTimesSubmitting = sponsorTimes;
-
-            let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
-                                    + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
-            if(!confirm(confirmMessage)) return;
-
-            sendSubmitMessage();
         }
+        //update sponsorTimes
+        SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+
+        //update sponsorTimesSubmitting
+        sponsorTimesSubmitting = sponsorTimes;
+
+        let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
+                                + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
+        if(!confirm(confirmMessage)) return;
+
+        sendSubmitMessage();
+    }
 
 }
 
