@@ -1,19 +1,36 @@
 SB = {};
 
+Map.prototype.toJSON = function() {
+    return Array.from(this.entries());
+};
+
+function storeEncode(data) {
+	if(!(data instanceof Map)) return data;
+	return JSON.stringify(data);
+}
+
+function strParser(data) {
+	try {
+        return new Map(JSON.parse(data));
+    } catch(e) {
+        return data
+    }
+}
+
 function configProxy() {
     chrome.storage.onChanged.addListener((changes, namespace) => {
         for (key in changes) {
-	    Reflect.set(SB.localconfig, key, changes[key].newValue);
+	    	Reflect.set(SB.localconfig, key, changes[key].newValue);
         }
     });
     var handler = {
         set: function(obj, prop, value) {
             chrome.storage.sync.set({
-                [prop]: value
+                [prop]: storeEncode(value)
             });
         },
         get: function(obj, prop) {
-	    return Reflect.get(SB.localconfig, prop);
+			return strParser(Reflect.get(SB.localconfig, prop));
         }
 		
     };
@@ -42,8 +59,6 @@ async function config() {
     addDefaults();
     SB.config = configProxy();
     migrate();
-    
-    
 }
 
 SB.defaults = {
