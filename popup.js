@@ -4,21 +4,21 @@ async function runThePopup() {
     //is it in the popup or content script
     var inPopup = true;
     if (chrome.tabs == undefined) {
-            //this is on the content script, use direct communication
-            chrome.tabs = {};
-            chrome.tabs.sendMessage = function(id, request, callback) {
-                    messageListener(request, null, callback);
-            }
-  
-            //add a dummy query method
-            chrome.tabs.query = function(config, callback) {
-                    callback([{
-                            url: document.URL,
-                            id: -1
-                    }]);
-            }
-  
-            inPopup = false;
+        //this is on the content script, use direct communication
+        chrome.tabs = {};
+        chrome.tabs.sendMessage = function(id, request, callback) {
+            messageListener(request, null, callback);
+        }
+
+        //add a dummy query method
+        chrome.tabs.query = function(config, callback) {
+            callback([{
+                    url: document.URL,
+                    id: -1
+            }]);
+        }
+
+        inPopup = false;
     }
 
     await wait(() => SB.config !== undefined);
