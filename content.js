@@ -211,7 +211,7 @@ function resetValues() {
     sponsorDataFound = false;
 }
 
-function videoIDChange(id) {
+async function videoIDChange(id) {
     //if the id has not changed return
     if (sponsorVideoID === id) return;
 
@@ -220,8 +220,14 @@ function videoIDChange(id) {
 
     resetValues();
     
-	//id is not valid
+    //id is not valid
     if (!id) return;
+
+    await wait(isPrivacyInfoAvailable);
+    if (isUnlisted()) {
+        let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
+        if(!shouldContinue) return;
+    }
 
     let channelIDPromise = wait(getChannelID);
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
@@ -1003,6 +1009,27 @@ function getSponsorTimesMessage(sponsorTimes) {
     }
 
     return sponsorTimesMessage;
+}
+
+// Privacy utils
+function isPrivacyInfoAvailable() {
+    if(document.location.pathname.startsWith("/embed/")) return true;
+    return (document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2);
+}
+
+function getPrivacy() {
+    if(document.location.pathname.startsWith("/embed/")) return "Public";
+    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText;
+}
+
+/**
+ * Is this a unlisted YouTube video
+ * 
+ * @returns {Boolean}
+ */
+function isUnlisted() {
+    return !document.location.pathname.startsWith("/embed/") && 
+        (document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2].innerText === "Unlisted");
 }
 
 //converts time in seconds to minutes:seconds
