@@ -344,5 +344,9 @@
     },
     "keybindCurrentlySet": {
         "message": ". It is currently set to:"
+    },
+    "confirmPrivacy": {
+        "message": "The video has been detected as not public. Click cancel if you do not want to check for sponsors."
     }
+
 }
