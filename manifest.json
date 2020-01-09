@@ -6,6 +6,7 @@
   "description": "__MSG_Description__",
   "content_scripts": [
     {
+      "run_at": "document_start",
       "matches": [
         "https://*.youtube.com/*",
         "https://www.youtube-nocookie.com/embed/*"
@@ -13,6 +14,7 @@
       "all_frames": true,
       "js": [
         "config.js",
+		"SB.js",
         "utils/previewBar.js",
         "utils/skipNotice.js",
         "utils.js",
@@ -52,6 +54,7 @@
   }, 
   "background": {
     "scripts":[
+      "SB.js",
       "utils.js",
       "config.js",
       "background.js"
