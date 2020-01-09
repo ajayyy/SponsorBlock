@@ -9,7 +9,7 @@ Map.prototype.toJSON = function() {
 class MapIO {
     constructor(id) {
 		this.id = id;
-		this.map = SB.localconfig[this.id];
+		this.map = SB.localConfig[this.id];
     }
 
     set(key, value) {
@@ -83,20 +83,20 @@ function decodeStoredItem(data) {
 function configProxy() {
     chrome.storage.onChanged.addListener((changes, namespace) => {
         for (key in changes) {
-            SB.localconfig[key] = decodeStoredItem(changes[key].newValue);
+            SB.localConfig[key] = decodeStoredItem(changes[key].newValue);
         }
     });
 	
     var handler = {
         set: function(obj, prop, value) {
-            SB.localconfig[prop] = value;
+            SB.localConfig[prop] = value;
 
             chrome.storage.sync.set({
                 [prop]: encodeStoredItem(value)
             });
         },
         get: function(obj, prop) {
-            let data = SB.localconfig[prop];
+            let data = SB.localConfig[prop];
             if(data instanceof Map) data = new MapIO(prop);
 
 			return obj[prop] || data;
@@ -110,14 +110,14 @@ function configProxy() {
 function fetchConfig() { 
     return new Promise((resolve, reject) => {
         chrome.storage.sync.get(null, function(items) {
-            SB.localconfig = items;  // Data is ready
+            SB.localConfig = items;  // Data is ready
             resolve();
         });
     });
 }
 
 function migrateOldFormats() { // Convert sponsorTimes format
-    for (key in SB.localconfig) {
+    for (key in SB.localConfig) {
         if (key.startsWith("sponsorTimes") && key !== "sponsorTimes" && key !== "sponsorTimesContributed") {
             SB.config.sponsorTimes.set(key.substr(12), SB.config[key]);
             delete SB.config[key];
@@ -158,15 +158,15 @@ function resetConfig() {
 
 function convertJSON() {
 	Object.keys(SB.defaults).forEach(key => {
-		SB.localconfig[key] = decodeStoredItem(SB.localconfig[key], key);
+		SB.localConfig[key] = decodeStoredItem(SB.localConfig[key], key);
 	});
 }
 
 // Add defaults
 function addDefaults() {
 	Object.keys(SB.defaults).forEach(key => {
-		if(!SB.localconfig.hasOwnProperty(key)) {
-			SB.localconfig[key] = SB.defaults[key];
+		if(!SB.localConfig.hasOwnProperty(key)) {
+			SB.localConfig[key] = SB.defaults[key];
 		}
 	});
 };
