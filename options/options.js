@@ -9,54 +9,47 @@ for (const url of supportedInvidiousInstances) {
 async function init() {
     localizeHtmlPage();
 
+    await wait(() => SB.config !== undefined);
+
     // Set all of the toggle options to the correct option
     let optionsContainer = document.getElementById("options");
     let optionsElements = optionsContainer.children;
-
-    // How many checks are left to be done
-    let checksLeft = 0;
 
     for (let i = 0; i < optionsElements.length; i++) {
         switch (optionsElements[i].getAttribute("option-type")) {
             case "toggle": 
                 let option = optionsElements[i].getAttribute("sync-option");
+                let optionResult = SB.config[option];
 
-                chrome.storage.sync.get([option], function(result) {
-                    let optionResult = result[option];
-                    let checkbox = optionsElements[i].querySelector("input");
-                    let reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
+                let checkbox = optionsElements[i].querySelector("input");
+                let reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
 
-                    if (optionResult != undefined) {
-                        checkbox.checked = optionResult;
+                if (optionResult != undefined) {
+                    checkbox.checked = optionResult;
 
-                        if (reverse) {
-                            optionsElements[i].querySelector("input").checked = !optionResult;
-                        }
+                    if (reverse) {
+                        optionsElements[i].querySelector("input").checked = !optionResult;
                     }
+                }
 
-                    // See if anything extra should be run first time
+                // See if anything extra should be run first time
+                switch (option) {
+                    case "supportInvidious":
+                        invidiousInit(checkbox, option);
+                        break;
+                }
+
+                // Add click listener
+                checkbox.addEventListener("click", () => {
+                    setOptionValue(option, reverse ? !checkbox.checked : checkbox.checked);
+
+                    // See if anything extra must be run
                     switch (option) {
                         case "supportInvidious":
-                            invidiousInit(checkbox, option);
+                            invidiousOnClick(checkbox, option);
                             break;
                     }
-
-                    // Add click listener
-                    checkbox.addEventListener("click", () =>{
-                        setOptionValue(option, reverse ? !checkbox.checked : checkbox.checked);
-
-                        // See if anything extra must be run
-                        switch (option) {
-                            case "supportInvidious":
-                                invidiousOnClick(checkbox, option);
-                                break;
-                        }
-                    });
-
-                    checksLeft--;
                 });
-
-                checksLeft++;
                 break;
             case "text-change":
                 let button = optionsElements[i].querySelector(".trigger-button");
@@ -69,11 +62,6 @@ async function init() {
 
                 break;
         }
-    }
-
-    // Don't wait on chrome
-    if (isFirefox()) {
-        await wait(() => checksLeft == 0, 1000, 50);
     }
 
     optionsContainer.classList.remove("hidden");
@@ -209,21 +197,19 @@ function activateKeybindChange(element) {
 
     let option = element.getAttribute("sync-option");
 
-    chrome.storage.sync.get([option], function(result) {
-        let currentlySet = result[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
-        
-        let status = element.querySelector(".option-hidden-section > .keybind-status");
-        status.innerText = chrome.i18n.getMessage("keybindDescription") + currentlySet;
-
-        if (result[option] !== null) {
-            let statusKey = element.querySelector(".option-hidden-section > .keybind-status-key");
-            statusKey.innerText = result[option];
-        }
+    let currentlySet = SB.config[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
     
-        element.querySelector(".option-hidden-section").classList.remove("hidden");
-        
-        document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
-    });
+    let status = element.querySelector(".option-hidden-section > .keybind-status");
+    status.innerText = chrome.i18n.getMessage("keybindDescription") + currentlySet;
+
+    if (SB.config[option] !== null) {
+        let statusKey = element.querySelector(".option-hidden-section > .keybind-status-key");
+        statusKey.innerText = SB.config[option];
+    }
+
+    element.querySelector(".option-hidden-section").classList.remove("hidden");
+    
+    document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
 }
 
 /**
@@ -238,7 +224,7 @@ function keybindKeyPressed(element, e) {
 
     let option = element.getAttribute("sync-option");
 
-    chrome.storage.sync.set({[option]: key});
+    SB.config[option] = key;
 
     let status = element.querySelector(".option-hidden-section > .keybind-status");
     status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
@@ -264,7 +250,10 @@ function activateTextChange(element) {
 
     let textBox = element.querySelector(".option-text-box");
     let option = element.getAttribute("sync-option");
+	
+	textBox.value = SB.config[option];
 
+<<<<<<< HEAD
     // See if anything extra must be done
     switch (option) {
         case "invidiousInstances":
@@ -333,3 +322,10 @@ function activateTextChange(element) {
 function setOptionValue(option, value, callback) {
     chrome.storage.sync.set({[option]: value}, callback);
 }
+=======
+    let setButton = element.querySelector(".text-change-set");
+    setButton.addEventListener("click", () => {SB.config[option] = textBox.value});
+
+    element.querySelector(".option-hidden-section").classList.remove("hidden");
+}
+>>>>>>> c53bc202941f8dbf2f5481a891ca28a69825304b
