@@ -26,10 +26,6 @@ class MapIO {
 		return this.map.has(key);
     }
 	
-	toJSON() {
-		return Array.from(this.map.entries());
-    }
-	 
 	deleteProperty(key) {
 		if (this.map.has(key)) {
 			this.map.delete(key);
