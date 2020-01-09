@@ -89,6 +89,8 @@ function configProxy() {
 	
     var handler = {
         set: function(obj, prop, value) {
+            SB.localconfig[prop] = value;
+
             chrome.storage.sync.set({
                 [prop]: encodeStoredItem(value)
             });
