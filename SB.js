@@ -9,60 +9,77 @@ function storeEncode(data) {
 	return JSON.stringify(data);
 }
 
-function strParser(data) {
+function mapDecode(data, key) {
+	if(typeof data !== "string") return data;
 	try {
-        return new Map(JSON.parse(data));
+		let str = JSON.parse(data);
+		if(!Array.isArray(str)) return data;
+		return new Map(str);
     } catch(e) {
         return data
     }
 }
 
-class ListenerMap extends Map {
-    constructor(name) {
-        super();
+function mapProxy(data, key) {
+	if(!(data instanceof Map)) return data;
+	return new mapIO(key);
+}
 
-        this.name = name;
+class mapIO extends Map {
+    constructor(id) {
+		super();
+		this.id = id;
+		this.map = SB.localconfig[this.id];
     }
 
     set(key, value) {
-        super.set(key, value);
-
-        this.updateListener(this.name, this);
+		SB.localconfig[this.id].set(key, value);
+		chrome.storage.sync.set({
+            [this.id]: storeEncode(this.map)
+        });
+		return this.map
     }
-
-    delete(key) {
-        this.updateListener(this.name, this);
-
-        return super.set(key);
+	
+	get(key) {
+		return this.map.get(key)
     }
-
-    clear() {
-        return super.clear();
+	
+	has(key) {
+		return this.map.has(key)
     }
-
-    forEach(callbackfn) {
-        return super.forEach(callbackfn);
+	
+	toJSON() {
+		return Array.from(this.map.entries())
     }
-
-    get(key) {
-        return strParser(super.get(key));
+	 
+	deleteProperty(key) {
+		if (this.map.has(key)) {
+			this.map.delete(key);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	size() {
+		return this.map.size
     }
-
-    has(key) {
-        return super.has(key);
+	
+	delete(key) {
+		this.map.delete(key);
+		chrome.storage.sync.set({
+			[this.id]: storeEncode(this.map)
+        });
     }
-}
-
-function mapHandler(name, object) {
-    SB.config[name] = storeEncode(object.value);
 }
 
 function configProxy() {
     chrome.storage.onChanged.addListener((changes, namespace) => {
         for (key in changes) {
-	    	Reflect.set(SB.localconfig, key, changes[key].newValue);
+	    	Reflect.set(SB.localconfig, key, mapDecode(changes[key].newValue, key));
         }
     });
+	
     var handler = {
         set: function(obj, prop, value) {
             chrome.storage.sync.set({
@@ -70,7 +87,7 @@ function configProxy() {
             });
         },
         get: function(obj, prop) {
-			return strParser(Reflect.get(SB.localconfig, prop));
+			return mapProxy(Reflect.get(SB.localconfig, prop), prop);
         }
 		
     };
@@ -96,15 +113,14 @@ function migrate() { // Convert sponsorTimes format
 
 async function config() {
     await fetchConfig();
-    addDefaults();
-	// Setup sponsorTime listener
-    SB.localconfig.sponsorTimes.updateListener = mapHandler;
-    SB.config = configProxy();
+	addDefaults();
+	convertJson();
+	SB.config = configProxy();
     migrate();
 }
 
 SB.defaults = {
-	"sponsorTimes": new ListenerMap("sponsorTimes"),
+	"sponsorTimes": new Map(),
 	"startSponsorKeybind": ";",
 	"submitKeybind": "'",
 	"minutesSaved": 0,
@@ -126,6 +142,11 @@ function resetConfig() {
 	SB.config = SB.defaults;
 };
 
+function convertJson() {
+	Object.keys(SB.defaults).forEach(key => {
+		SB.localconfig[key] = mapDecode(SB.localconfig[key], key);
+	});
+}
 // Add defaults
 function addDefaults() {
 	Object.keys(SB.defaults).forEach(key => {
