@@ -800,15 +800,6 @@ async function runThePopup() {
     function showNoticeAgain() {
         SB.config.dontShowNotice = false;
   
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                message: "showNoticeAgain"
-            });
-        });
-  
         SB.showNoticeAgain.style.display = "none";
     }
 

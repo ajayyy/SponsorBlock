@@ -142,38 +142,32 @@ function messageListener(request, sender, sendResponse) {
                 sponsorsLookup(sponsorVideoID);
 
                 break;
-            case "dontShowNotice":
-				SB.config.dontShowNotice = true;
-
-                break;
             case "changeStartSponsorButton":
                 changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
 
                 break;
-			
-            case "showNoticeAgain":
-                SB.config.dontShowNotice = true;
-                break;
-			
-            case "changeVideoPlayerControlsVisibility":
-                SB.config.hideVideoPlayerControls = request.value;
-                updateVisibilityOfPlayerControlsButton();
+        }
+}
 
-                break;
-            case "changeInfoButtonPlayerControlsVisibility":
-                SB.config.hideInfoButtonPlayerControls = request.value;
-                updateVisibilityOfPlayerControlsButton();
-
-                break;
-            case "changeDeleteButtonPlayerControlsVisibility":
-                SB.config.hideDeleteButtonPlayerControls = request.value;
-                updateVisibilityOfPlayerControlsButton();
-
-                break;
-            case "trackViewCount":
-                SB.config.trackViewCount = request.value;
+/**
+ * Called when the config is updated
+ * 
+ * @param {String} changes 
+ */
+function configUpdateListener(changes) {
+    for (const key in changes) {
+        switch(key) {
+            case "hideVideoPlayerControls":
+            case "hideInfoButtonPlayerControls":
+            case "hideDeleteButtonPlayerControls":
+                updateVisibilityOfPlayerControlsButton()
                 break;
         }
+    }
+}
+
+if (!SB.configListeners.includes(configUpdateListener)) {
+    SB.configListeners.push(configUpdateListener);
 }
 
 //check for hotkey pressed
@@ -480,13 +474,11 @@ function getChannelID() {
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
 function whitelistCheck() {
     //see if this is a whitelisted channel
-        let whitelistedChannels = SB.config.whitelistedChannels;
+    let whitelistedChannels = SB.config.whitelistedChannels;
 
-        console.log(channelURL)
-
-        if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
-            channelWhitelisted = true;
-        }
+    if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
+        channelWhitelisted = true;
+    }
 }
 
 //video skipping
@@ -604,13 +596,6 @@ function reskipSponsorTime(UUID) {
     }
 }
 
-function removePlayerControlsButton() {
-    if (!sponsorVideoID) return;
-
-    document.getElementById("startSponsorButton").style.display = "none";
-    document.getElementById("submitButton").style.display = "none";
-}
-
 function createButton(baseID, title, callback, imageName, isDraggable=false) {
     if (document.getElementById(baseID + "Button") != null) return;
 
@@ -668,13 +653,20 @@ async function updateVisibilityOfPlayerControlsButton() {
 
     await createButtons();
 	
-    if (SB.config.hideDeleteButtonPlayerControls) {
-        removePlayerControlsButton();
+    if (SB.config.hideVideoPlayerControls) {
+        document.getElementById("startSponsorButton").style.display = "none";
+        document.getElementById("submitButton").style.display = "none";
+    } else {
+        document.getElementById("startSponsorButton").style.removeProperty("display");
     }
+
     //don't show the info button on embeds
     if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
         document.getElementById("infoButton").style.display = "none";
+    } else {
+        document.getElementById("infoButton").style.removeProperty("display");
     }
+    
     if (SB.config.hideDeleteButtonPlayerControls) {
         document.getElementById("deleteButton").style.display = "none";
     }
