@@ -14,7 +14,7 @@
       "all_frames": true,
       "js": [
         "config.js",
-		"SB.js",
+		    "SB.js",
         "utils/previewBar.js",
         "utils/skipNotice.js",
         "utils.js",
@@ -48,15 +48,19 @@
     "notifications",
     "https://sponsor.ajay.app/*"
   ],
+  "optional_permissions": [
+      "*://*/*",
+      "declarativeContent"
+  ],
   "browser_action": {
     "default_title": "__MSG_Name__",
     "default_popup": "popup.html"
   }, 
   "background": {
     "scripts":[
+      "config.js",
       "SB.js",
       "utils.js",
-      "config.js",
       "background.js"
     ],
     "persistent": false
@@ -68,6 +72,9 @@
     "128": "icons/LogoSponsorBlocker128px.png",
     "256": "icons/LogoSponsorBlocker256px.png"
   },
-  "options_page": "options/options.html",
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
   "manifest_version": 2
 }

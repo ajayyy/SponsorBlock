@@ -21,7 +21,59 @@
 		<h1>__MSG_Options__</h1>
 	
 		<div id="options" class="hidden">
-			
+
+			<div id="support-invidious" option-type="toggle" sync-option="supportInvidious">
+				<label class="switch-container" label-name="__MSG_supportInvidious__">
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</label>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_supportInvidiousDescription__</div>
+			</div>
+
+			<br/>
+			<br/>
+	
+			<div option-type="text-change" sync-option="invidiousInstances">
+				<div class="option-button trigger-button">
+					__MSG_addInvidiousInstance__
+				</div>
+	
+				<br/>
+	
+				<div class="small-description">__MSG_addInvidiousInstanceDescription__</div>
+	
+				<div class="option-hidden-section hidden">
+					<br/>
+	
+					<input class="option-text-box" type="text">
+	
+					<br/>
+					<br/>
+	
+					<div class="option-button text-change-set inline">
+						__MSG_add__
+					</div>
+
+					<div class="option-button invidious-instance-reset inline">
+						__MSG_resetInvidiousInstance__
+					</div>
+					
+					<br/>
+					<br/>
+
+					<span class="small-description">__MSG_currentInstances__</span>
+					<span class="small-description" option-type="display" sync-option="invidiousInstances"></span>
+				</div>
+			</div>
+
+			<br/>
+			<br/>
 	
 			<div option-type="toggle" toggle-type="reverse" sync-option="disableAutoSkip">
 				<label class="switch-container" label-name="__MSG_autoSkip__">

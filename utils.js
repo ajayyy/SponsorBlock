@@ -1,3 +1,6 @@
+var isBackgroundScript = false;
+var onInvidious = false;
+
 // Function that can be used to wait for a condition before returning
 async function wait(condition, timeout = 5000, check = 100) { 
     return await new Promise((resolve, reject) => {
@@ -20,7 +23,7 @@ async function wait(condition, timeout = 5000, check = 100) {
 
 function getYouTubeVideoID(url) {
     // For YouTube TV support
-    if(document.URL.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
+    if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 	
     //Attempt to parse url
     let urlObject = null;
@@ -32,7 +35,16 @@ function getYouTubeVideoID(url) {
     }
 
     //Check if valid hostname
-    if(!["www.youtube.com","www.youtube-nocookie.com"].includes(urlObject.host)) return false; 
+    if (SB.config && SB.config.invidiousInstances.includes(urlObject.host)) {
+        onInvidious = true;
+    } else if (!["www.youtube.com", "www.youtube-nocookie.com"].includes(urlObject.host)) {
+        if (!SB.config) {
+            // Call this later, in case this is an Invidious tab
+            wait(() => SB.config !== undefined).then(() => videoIDChange(getYouTubeVideoID(url)));
+        }
+
+        return false
+    }
 
     //Get ID from searchParam
     if (urlObject.searchParams.has("v") && ["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
@@ -47,6 +59,132 @@ function getYouTubeVideoID(url) {
         }
     } 
 	return false;
+}
+
+/**
+ * Asks for the optional permissions required for all extra sites.
+ * It also starts the content script registrations.
+ * 
+ * For now, it is just SB.config.invidiousInstances.
+ * 
+ * @param {CallableFunction} callback
+ */
+function setupExtraSitePermissions(callback) {
+    // Request permission
+    let permissions = ["declarativeContent"];
+    if (isFirefox()) permissions = [];
+
+    chrome.permissions.request({
+        origins: getInvidiousInstancesRegex(),
+        permissions: permissions
+    }, async function (granted) {
+        if (granted) {
+            setupExtraSiteContentScripts();
+        } else {
+            removeExtraSiteRegistration();
+        }
+
+        callback(granted);
+    });
+}
+
+/**
+ * Registers the content scripts for the extra sites.
+ * Will use a different method depending on the browser.
+ * This is called by setupExtraSitePermissions().
+ * 
+ * For now, it is just SB.config.invidiousInstances.
+ */
+function setupExtraSiteContentScripts() {
+    let js = [
+        "config.js",
+        "SB.js",
+        "utils/previewBar.js",
+        "utils/skipNotice.js",
+        "utils.js",
+        "content.js",
+        "popup.js"
+    ];
+    let css = [
+        "content.css",
+        "./libs/Source+Sans+Pro.css",
+        "popup.css"
+    ];
+
+    if (isFirefox()) {
+        let firefoxJS = [];
+        for (const file of js) {
+            firefoxJS.push({file});
+        }
+        let firefoxCSS = [];
+        for (const file of css) {
+            firefoxCSS.push({file});
+        }
+
+        let registration = {
+            message: "registerContentScript",
+            id: "invidious",
+            allFrames: true,
+            js: firefoxJS,
+            css: firefoxCSS,
+            matches: getInvidiousInstancesRegex()
+        };
+
+        if (isBackgroundScript) {
+            registerFirefoxContentScript(registration);
+        } else {
+            chrome.runtime.sendMessage(registration);
+        }
+    } else {
+        chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
+            let conditions = [];
+            for (const regex of getInvidiousInstancesRegex()) {
+                conditions.push(new chrome.declarativeContent.PageStateMatcher({
+                    pageUrl: { urlMatches: regex }
+                }));
+            }
+
+            // Add page rule
+            let rule = {
+                id: "invidious",
+                conditions,
+                actions: [new chrome.declarativeContent.RequestContentScript({
+                    allFrames: true,
+                    js,
+                    css
+                })]
+            };
+            
+            chrome.declarativeContent.onPageChanged.addRules([rule]);
+        });
+    }
+}
+
+/**
+ * Removes the permission and content script registration.
+ */
+function removeExtraSiteRegistration() {
+    if (isFirefox()) {
+        let id = "invidious";
+
+        if (isBackgroundScript) {
+            if (contentScriptRegistrations[id]) {
+                contentScriptRegistrations[id].unregister();
+                delete contentScriptRegistrations[id];
+            }
+        } else {
+            chrome.runtime.sendMessage({
+                message: "unregisterContentScript",
+                id: id
+            });
+        }
+    } else {
+        chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+    }
+
+    chrome.permissions.remove({
+        origins: getInvidiousInstancesRegex()
+    });
 }
 
 function localizeHtmlPage() {
@@ -70,6 +208,19 @@ function getLocalizedMessage(text) {
     } else {
         return false;
     }
+}
+
+/**
+ * @returns {String[]} Invidious Instances in regex form
+ */
+function getInvidiousInstancesRegex() {
+    var invidiousInstancesRegex = [];
+    for (const url of SB.config.invidiousInstances) {
+        invidiousInstancesRegex.push("https://*." + url + "/*");
+        invidiousInstancesRegex.push("http://*." + url + "/*");
+    }
+
+    return invidiousInstancesRegex;
 }
 
 function generateUserID(length = 36) {
@@ -110,4 +261,11 @@ function getErrorMessage(statusCode) {
     }
 
     return errorMessage;
+}
+
+/**
+ * Is this Firefox (web-extensions)
+ */
+function isFirefox() {
+    return typeof(browser) !== "undefined";
 }
