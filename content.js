@@ -75,78 +75,78 @@ var popupInitialised = false;
 chrome.runtime.onMessage.addListener(messageListener);
   
 function messageListener(request, sender, sendResponse) {
-        //messages from popup script
-        switch(request.message){
-            case "update":
-                videoIDChange(getYouTubeVideoID(document.URL));
-                break;
-            case "sponsorStart":
-                sponsorMessageStarted(sendResponse);
+    //messages from popup script
+    switch(request.message){
+        case "update":
+            videoIDChange(getYouTubeVideoID(document.URL));
+            break;
+        case "sponsorStart":
+            sponsorMessageStarted(sendResponse);
 
-                break;
-            case "sponsorDataChanged":
-                updateSponsorTimesSubmitting();
+            break;
+        case "sponsorDataChanged":
+            updateSponsorTimesSubmitting();
 
-                break;
-            case "isInfoFound":
-                //send the sponsor times along with if it's found
-                sendResponse({
-                    found: sponsorDataFound,
-                    sponsorTimes: sponsorTimes,
-                    hiddenSponsorTimes: hiddenSponsorTimes,
-                    UUIDs: UUIDs
-                });
+            break;
+        case "isInfoFound":
+            //send the sponsor times along with if it's found
+            sendResponse({
+                found: sponsorDataFound,
+                sponsorTimes: sponsorTimes,
+                hiddenSponsorTimes: hiddenSponsorTimes,
+                UUIDs: UUIDs
+            });
 
-                if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
-                    //the popup should be closed now that another is opening
-                    closeInfoMenu();
-                }
+            if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+                //the popup should be closed now that another is opening
+                closeInfoMenu();
+            }
 
-                popupInitialised = true;
-                break;
-            case "getVideoID":
-                sendResponse({
-                    videoID: sponsorVideoID
-                });
+            popupInitialised = true;
+            break;
+        case "getVideoID":
+            sendResponse({
+                videoID: sponsorVideoID
+            });
 
-                break;
-            case "getVideoDuration":
-                sendResponse({
-                duration: v.duration
-                });
+            break;
+        case "getVideoDuration":
+            sendResponse({
+            duration: v.duration
+            });
 
-                break;
-            case "skipToTime":
-                v.currentTime = request.time;
-                return
-            case "getCurrentTime":
-                sendResponse({
-                    currentTime: v.currentTime
-                });
+            break;
+        case "skipToTime":
+            v.currentTime = request.time;
+            return
+        case "getCurrentTime":
+            sendResponse({
+                currentTime: v.currentTime
+            });
 
-                break;
-            case "getChannelURL":
-                sendResponse({
-                channelURL: channelURL
-                });
+            break;
+        case "getChannelURL":
+            sendResponse({
+            channelURL: channelURL
+            });
 
-                break;
-            case "isChannelWhitelisted":
-                sendResponse({
-                    value: channelWhitelisted
-                });
+            break;
+        case "isChannelWhitelisted":
+            sendResponse({
+                value: channelWhitelisted
+            });
 
-                break;
-            case "whitelistChange":
-                channelWhitelisted = request.value;
-                sponsorsLookup(sponsorVideoID);
+            break;
+        case "whitelistChange":
+            channelWhitelisted = request.value;
+            sponsorsLookup(sponsorVideoID);
 
-                break;
-            case "changeStartSponsorButton":
-                changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
+            break;
+        case "changeStartSponsorButton":
+            changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
 
-                break;
-        }
+            break;
+    }
 }
 
 /**
@@ -154,7 +154,7 @@ function messageListener(request, sender, sendResponse) {
  * 
  * @param {String} changes 
  */
-function configUpdateListener(changes) {
+function contentConfigUpdateListener(changes) {
     for (const key in changes) {
         switch(key) {
             case "hideVideoPlayerControls":
@@ -166,8 +166,8 @@ function configUpdateListener(changes) {
     }
 }
 
-if (!SB.configListeners.includes(configUpdateListener)) {
-    SB.configListeners.push(configUpdateListener);
+if (!SB.configListeners.includes(contentConfigUpdateListener)) {
+    SB.configListeners.push(contentConfigUpdateListener);
 }
 
 //check for hotkey pressed

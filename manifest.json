@@ -14,7 +14,7 @@
       "all_frames": true,
       "js": [
         "config.js",
-		"SB.js",
+		    "SB.js",
         "utils/previewBar.js",
         "utils/skipNotice.js",
         "utils.js",
@@ -58,9 +58,9 @@
   }, 
   "background": {
     "scripts":[
+      "config.js",
       "SB.js",
       "utils.js",
-      "config.js",
       "background.js"
     ],
     "persistent": false
@@ -76,11 +76,5 @@
     "page": "options/options.html",
     "open_in_tab": true
   },
-  "manifest_version": 2,
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "sponsorBlocker@ajay.app",
-      "strict_min_version": "57.0"
-    }
-  }
+  "manifest_version": 2
 }

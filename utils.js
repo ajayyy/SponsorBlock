@@ -1,5 +1,4 @@
 var onInvidious = false;
-var supportedInvidiousInstances = ["invidio.us", "invidiou.sh", "invidious.snopyta.org"];
 
 // Function that can be used to wait for a condition before returning
 async function wait(condition, timeout = 5000, check = 100) { 
@@ -23,7 +22,7 @@ async function wait(condition, timeout = 5000, check = 100) {
 
 function getYouTubeVideoID(url) {
     // For YouTube TV support
-    if(document.URL.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
+    if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 	
     //Attempt to parse url
     let urlObject = null;
@@ -35,9 +34,14 @@ function getYouTubeVideoID(url) {
     }
 
     //Check if valid hostname
-    if (supportedInvidiousInstances.includes(urlObject.host)) {
+    if (SB.config && SB.config.invidiousInstances.includes(urlObject.host)) {
         onInvidious = true;
     } else if (!["www.youtube.com", "www.youtube-nocookie.com"].includes(urlObject.host)) {
+        if (!SB.config) {
+            // Call this later, in case this is an Invidious tab
+            wait(() => SB.config !== undefined).then(() => videoIDChange(getYouTubeVideoID(url)));
+        }
+
         return false
     }
 

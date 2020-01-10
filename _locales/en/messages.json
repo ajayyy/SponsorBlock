@@ -370,10 +370,7 @@
         "message": "Reset Invidious Instance List"
     },
     "resetInvidiousInstanceAlert": {
-        "message": "You are about to reset the Invidious instance list?"
-    },
-    "noInstancesAdded": {
-        "message": "No extra instances added yet"
+        "message": "You are about to reset the Invidious instance list"
     },
     "currentInstances": {
         "message": "Current Instances:"

@@ -159,7 +159,8 @@ SB.defaults = {
 	"hideInfoButtonPlayerControls": false,
 	"hideDeleteButtonPlayerControls": false,
 	"hideDiscordLaunches": 0,
-	"hideDiscordLink": false
+    "hideDiscordLink": false,
+    "invidiousInstances": ["invidio.us", "invidiou.sh", "invidious.snopyta.org"]
 }
 
 // Reset config

@@ -1,13 +1,11 @@
 window.addEventListener('DOMContentLoaded', init);
 
-var invidiousInstancesRegex = [];
-for (const url of supportedInvidiousInstances) {
-    invidiousInstancesRegex.push("https://*." + url + "/*");
-    invidiousInstancesRegex.push("http://*." + url + "/*");
-}
-
 async function init() {
     localizeHtmlPage();
+
+    if (!SB.configListeners.includes(optionsConfigUpdateListener)) {
+        SB.configListeners.push(optionsConfigUpdateListener);
+    }
 
     await wait(() => SB.config !== undefined);
 
@@ -55,6 +53,13 @@ async function init() {
                 let button = optionsElements[i].querySelector(".trigger-button");
                 button.addEventListener("click", () => activateTextChange(optionsElements[i]));
 
+                let textChangeOption = optionsElements[i].getAttribute("sync-option");
+                // See if anything extra must be done
+                switch (textChangeOption) {
+                    case "invidiousInstances":
+                        invidiousInstanceAddInit(optionsElements[i], textChangeOption);
+                }
+
                 break;
             case "keybind-change":
                 let keybindButton = optionsElements[i].querySelector(".trigger-button");
@@ -62,27 +67,93 @@ async function init() {
 
                 break;
             case "display":
-                let displayOption = optionsElements[i].getAttribute("sync-option")
-                let displayText = SB.config[displayOption];
-                optionsElements[i].innerText = displayText;
-
-                // See if anything extra must be run
-                switch (displayOption) {
-                    case "invidiousInstances":
-                        if (!displayText || displayText.length == 0) {
-                            optionsElements[i].innerText = chrome.i18n.getMessage("noInstancesAdded");
-                        } else {
-                            optionsElements[i].innerText = displayText.join(', ');
-                        }
-                        break;
-                }
-
-                break;
+                updateDisplayElement(optionsElements[i])
         }
     }
 
     optionsContainer.classList.remove("hidden");
     optionsContainer.classList.add("animated");
+}
+
+/**
+ * Called when the config is updated
+ * 
+ * @param {String} element 
+ */
+function optionsConfigUpdateListener(changes) {
+    let optionsContainer = document.getElementById("options");
+    let optionsElements = optionsContainer.querySelectorAll("*");
+
+    for (let i = 0; i < optionsElements.length; i++) {
+        switch (optionsElements[i].getAttribute("option-type")) {
+            case "display":
+                updateDisplayElement(optionsElements[i])
+        }
+    }
+}
+
+/**
+ * Will set display elements to the proper text
+ * 
+ * @param {HTMLElement} element 
+ */
+function updateDisplayElement(element) {
+    let displayOption = element.getAttribute("sync-option")
+    let displayText = SB.config[displayOption];
+    element.innerText = displayText;
+
+    // See if anything extra must be run
+    switch (displayOption) {
+        case "invidiousInstances":
+            element.innerText = displayText.join(', ');
+            break;
+    }
+}
+
+/**
+ * Initializes the option to add Invidious instances
+ * 
+ * @param {HTMLElement} element 
+ * @param {String} option 
+ */
+function invidiousInstanceAddInit(element, option) {
+    let textBox = element.querySelector(".option-text-box");
+    let button = element.querySelector(".trigger-button");
+
+    let setButton = element.querySelector(".text-change-set");
+    setButton.addEventListener("click", async function(e) {
+        if (textBox.value == "" || textBox.value.includes("/") || textBox.value.includes("http") || textBox.value.includes(":")) {
+            alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
+        } else {
+            // Add this
+            //TODO Make the call to invidiousOnClick support passing the straight extra values, plus make the get not needed
+            //OR merge the config PR and use that
+            let instanceList = SB.config[option];
+            if (!instanceList) instanceList = [];
+
+            instanceList.push(textBox.value);
+
+            SB.config[option] = instanceList;
+
+            let checkbox = document.querySelector("#support-invidious input");
+            checkbox.checked = true;
+
+            invidiousOnClick(checkbox, "supportInvidious");
+
+            textBox.value = "";
+
+            // Hide this section again
+            element.querySelector(".option-hidden-section").classList.add("hidden");
+            button.classList.remove("disabled");
+        }
+    });
+
+    let resetButton = element.querySelector(".invidious-instance-reset");
+    resetButton.addEventListener("click", function(e) {
+        if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
+            SB.config[option] = SB.defaults[option];
+        }
+    });
 }
 
 /**
@@ -96,7 +167,7 @@ function invidiousInit(checkbox, option) {
     if (isFirefox()) permissions = [];
 
     chrome.permissions.contains({
-        origins: invidiousInstancesRegex,
+        origins: getInvidiousInstancesRegex(),
         permissions: permissions
     }, function (result) {
         if (result != checkbox.checked) {
@@ -120,12 +191,13 @@ function invidiousOnClick(checkbox, option) {
         if (isFirefox()) permissions = [];
 
         chrome.permissions.request({
-            origins: invidiousInstancesRegex,
+            origins: getInvidiousInstancesRegex(),
             permissions: permissions
         }, async function (granted) {
             if (granted) {
                 let js = [
                     "config.js",
+                    "SB.js",
                     "utils/previewBar.js",
                     "utils/skipNotice.js",
                     "utils.js",
@@ -154,12 +226,12 @@ function invidiousOnClick(checkbox, option) {
                         allFrames: true,
                         js: firefoxJS,
                         css: firefoxCSS,
-                        matches: invidiousInstancesRegex
+                        matches: getInvidiousInstancesRegex()
                     });
                 } else {
                     chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
                         let conditions = [];
-                        for (const regex of invidiousInstancesRegex) {
+                        for (const regex of getInvidiousInstancesRegex()) {
                             conditions.push(new chrome.declarativeContent.PageStateMatcher({
                                 pageUrl: { urlMatches: regex }
                             }));
@@ -196,7 +268,7 @@ function invidiousOnClick(checkbox, option) {
         }
 
         chrome.permissions.remove({
-            origins: invidiousInstancesRegex
+            origins: getInvidiousInstancesRegex()
         });
     }
 }
@@ -271,40 +343,7 @@ function activateTextChange(element) {
     // See if anything extra must be done
     switch (option) {
         case "invidiousInstances":
-            let setButton = element.querySelector(".text-change-set");
-            setButton.addEventListener("click", async function(e) {
-                if (textBox.value.includes("/") || textBox.value.includes("http") || textBox.value.includes(":")) {
-                    alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
-                } else {
-                    // Add this
-                    //TODO Make the call to invidiousOnClick support passing the straight extra values, plus make the get not needed
-                    //OR merge the config PR and use that
-                    if (!SB.config[option]) SB.config[option] = [];
-
-                    SB.config[option].push(textBox.value);
-
-                    let checkbox = document.querySelector("#support-invidious input");
-                    checkbox.checked = true;
-
-                    invidiousOnClick(checkbox, "supportInvidious");
-
-                    textBox.value = "";
-
-                    // Hide this section again
-                    element.querySelector(".option-hidden-section").classList.add("hidden");
-                    button.classList.remove("disabled");
-                }
-            });
-
-            let resetButton = element.querySelector(".invidious-instance-reset");
-            resetButton.addEventListener("click", function(e) {
-                if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
-                    SB.config[option] = [];
-                }
-            });
-    
             element.querySelector(".option-hidden-section").classList.remove("hidden");
-
             return;
     }
 	
@@ -320,4 +359,14 @@ function activateTextChange(element) {
     });
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
+}
+
+function getInvidiousInstancesRegex() {
+    var invidiousInstancesRegex = [];
+    for (const url of SB.config.invidiousInstances) {
+        invidiousInstancesRegex.push("https://*." + url + "/*");
+        invidiousInstancesRegex.push("http://*." + url + "/*");
+    }
+
+    return invidiousInstancesRegex;
 }
