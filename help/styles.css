@@ -1,4 +1,8 @@
-:not(.hljs-keyword):not(.hljs-comment):not(.hljs-number):not(.hljs-string):not(pre):not(code) {
+.bigText {
+  font-size: 50px;
+}
+
+body {
   background-color: #333333;
 }
 
@@ -122,7 +126,7 @@ a {
   text-decoration: none;
 }
 
-p,li {
+p,li,a {
   font-family: sans-serif;
   font-size: 20;
   color: #c4c4c4;
