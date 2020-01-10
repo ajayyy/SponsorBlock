@@ -83,6 +83,12 @@
   vertical-align: middle;
 }
 
+.profilepiccircle {
+  vertical-align: middle;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 a {
   text-decoration: underline;
   color: inherit;
