@@ -35,10 +35,10 @@ chrome.runtime.onMessage.addListener(async function (request, sender, callback) 
         return true;
     case "alertPrevious":
 			chrome.notifications.create("stillThere" + Math.random(), {
-        type: "basic",
-        title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
-        message: chrome.i18n.getMessage("leftTimes"),
-        iconUrl: "./icons/LogoSponsorBlocker256px.png"
+                type: "basic",
+                title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
+                message: chrome.i18n.getMessage("leftTimes"),
+                iconUrl: "./icons/LogoSponsorBlocker256px.png"
 			});
 	}
 });
