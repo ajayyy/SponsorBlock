@@ -13,7 +13,7 @@ async function init() {
 
     // Set all of the toggle options to the correct option
     let optionsContainer = document.getElementById("options");
-    let optionsElements = optionsContainer.children;
+    let optionsElements = optionsContainer.querySelectorAll("*");
 
     for (let i = 0; i < optionsElements.length; i++) {
         switch (optionsElements[i].getAttribute("option-type")) {
@@ -59,6 +59,23 @@ async function init() {
             case "keybind-change":
                 let keybindButton = optionsElements[i].querySelector(".trigger-button");
                 keybindButton.addEventListener("click", () => activateKeybindChange(optionsElements[i]));
+
+                break;
+            case "display":
+                let displayOption = optionsElements[i].getAttribute("sync-option")
+                let displayText = SB.config[displayOption];
+                optionsElements[i].innerText = displayText;
+
+                // See if anything extra must be run
+                switch (displayOption) {
+                    case "invidiousInstances":
+                        if (!displayText || displayText.length == 0) {
+                            optionsElements[i].innerText = chrome.i18n.getMessage("noInstancesAdded");
+                        } else {
+                            optionsElements[i].innerText = displayText.join(', ');
+                        }
+                        break;
+                }
 
                 break;
         }
@@ -265,8 +282,6 @@ function activateTextChange(element) {
                     if (!SB.config[option]) SB.config[option] = [];
 
                     SB.config[option].push(textBox.value);
-
-                    SB.config[option] = SB.config[option];
 
                     let checkbox = document.querySelector("#support-invidious input");
                     checkbox.checked = true;
