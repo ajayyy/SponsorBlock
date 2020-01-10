@@ -185,75 +185,10 @@ function invidiousInit(checkbox, option) {
  */
 function invidiousOnClick(checkbox, option) {
     if (checkbox.checked) {
-        // Request permission
-        let permissions = ["declarativeContent"];
-        if (isFirefox()) permissions = [];
-
-        chrome.permissions.request({
-            origins: getInvidiousInstancesRegex(),
-            permissions: permissions
-        }, async function (granted) {
-            if (granted) {
-                let js = [
-                    "config.js",
-                    "SB.js",
-                    "utils/previewBar.js",
-                    "utils/skipNotice.js",
-                    "utils.js",
-                    "content.js",
-                    "popup.js"
-                ];
-                let css = [
-                    "content.css",
-                    "./libs/Source+Sans+Pro.css",
-                    "popup.css"
-                ];
-
-                if (isFirefox()) {
-                    let firefoxJS = [];
-                    for (const file of js) {
-                        firefoxJS.push({file});
-                    }
-                    let firefoxCSS = [];
-                    for (const file of css) {
-                        firefoxCSS.push({file});
-                    }
-
-                    chrome.runtime.sendMessage({
-                        message: "registerContentScript",
-                        id: "invidious",
-                        allFrames: true,
-                        js: firefoxJS,
-                        css: firefoxCSS,
-                        matches: getInvidiousInstancesRegex()
-                    });
-                } else {
-                    chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
-                        let conditions = [];
-                        for (const regex of getInvidiousInstancesRegex()) {
-                            conditions.push(new chrome.declarativeContent.PageStateMatcher({
-                                pageUrl: { urlMatches: regex }
-                            }));
-                        }
-                        // Add page rule
-                        let rule = {
-                            id: "invidious",
-                            conditions,
-                            actions: [new chrome.declarativeContent.RequestContentScript({
-                                allFrames: true,
-                                js,
-                                css
-                            })]
-                        };
-                        
-                        chrome.declarativeContent.onPageChanged.addRules([rule]);
-                    });
-                }
-            } else {
+        setupExtraSitePermissions(function (granted) {
+            if (!granted) {
                 SB.config[option] = false;
                 checkbox.checked = false;
-
-                chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
             }
         });
     } else {
@@ -358,14 +293,4 @@ function activateTextChange(element) {
     });
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
-}
-
-function getInvidiousInstancesRegex() {
-    var invidiousInstancesRegex = [];
-    for (const url of SB.config.invidiousInstances) {
-        invidiousInstancesRegex.push("https://*." + url + "/*");
-        invidiousInstancesRegex.push("http://*." + url + "/*");
-    }
-
-    return invidiousInstancesRegex;
 }

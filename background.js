@@ -1,5 +1,14 @@
+isBackgroundScript = true;
+
 // Used only on Firefox, which does not support non persistent background pages.
 var contentScriptRegistrations = {};
+
+// Register content script if needed
+if (isFirefox()) {
+    wait(() => SB.config !== undefined).then(function() {
+        if (SB.config.supportInvidious) setupExtraSiteContentScripts();
+    });
+} 
 
 chrome.tabs.onUpdated.addListener(function(tabId) {
 	chrome.tabs.sendMessage(tabId, {
@@ -44,16 +53,7 @@ chrome.runtime.onMessage.addListener(async function (request, sender, callback) 
                 iconUrl: "./icons/LogoSponsorBlocker256px.png"
             });
         case "registerContentScript": 
-            let oldRegistration = contentScriptRegistrations[request.id];
-            if (oldRegistration) oldRegistration.unregister();
-
-            browser.contentScripts.register({
-                allFrames: request.allFrames,
-                js: request.js,
-                css: request.css,
-                matches: request.matches
-            }).then(() => void (contentScriptRegistrations[request.id] = registration));
-            
+            registerFirefoxContentScript(request);
             return false;
         case "unregisterContentScript": 
             contentScriptRegistrations[request.id].unregister();
@@ -80,6 +80,24 @@ chrome.runtime.onInstalled.addListener(function (object) {
         }
     }, 1500);
 });
+
+/**
+ * Only works on Firefox.
+ * Firefox requires that it be applied after every extension restart.
+ * 
+ * @param {JSON} options 
+ */
+function registerFirefoxContentScript(options) {
+    let oldRegistration = contentScriptRegistrations[options.id];
+    if (oldRegistration) oldRegistration.unregister();
+
+    browser.contentScripts.register({
+        allFrames: options.allFrames,
+        js: options.js,
+        css: options.css,
+        matches: options.matches
+    }).then(() => void (contentScriptRegistrations[options.id] = registration));
+}
 
 //gets the sponsor times from memory
 function getSponsorTimes(videoID, callback) {

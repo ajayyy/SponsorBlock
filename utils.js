@@ -1,3 +1,4 @@
+var isBackgroundScript = false;
 var onInvidious = false;
 
 // Function that can be used to wait for a condition before returning
@@ -60,6 +61,119 @@ function getYouTubeVideoID(url) {
 	return false;
 }
 
+/**
+ * Asks for the optional permissions required for all extra sites.
+ * It also starts the content script registrations.
+ * 
+ * For now, it is just SB.config.invidiousInstances.
+ * 
+ * @param {CallableFunction} callback
+ */
+function setupExtraSitePermissions(callback) {
+    // Request permission
+    let permissions = ["declarativeContent"];
+    if (isFirefox()) permissions = [];
+
+    chrome.permissions.request({
+        origins: getInvidiousInstancesRegex(),
+        permissions: permissions
+    }, async function (granted) {
+        if (granted) {
+            setupExtraSiteContentScripts();
+        } else {
+            if (isFirefox()) {
+                if (isBackgroundScript) {
+                    if (contentScriptRegistrations[request.id]) {
+                        contentScriptRegistrations[request.id].unregister();
+                        delete contentScriptRegistrations[request.id];
+                    }
+                } else {
+                    chrome.runtime.sendMessage({
+                        message: "unregisterContentScript",
+                        id: "invidious"
+                    });
+                }
+            } else {
+                chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+            }
+        }
+
+        callback(granted);
+    });
+}
+
+/**
+ * Registers the content scripts for the extra sites.
+ * Will use a different method depending on the browser.
+ * This is called by setupExtraSitePermissions().
+ * 
+ * For now, it is just SB.config.invidiousInstances.
+ */
+function setupExtraSiteContentScripts() {
+    let js = [
+        "config.js",
+        "SB.js",
+        "utils/previewBar.js",
+        "utils/skipNotice.js",
+        "utils.js",
+        "content.js",
+        "popup.js"
+    ];
+    let css = [
+        "content.css",
+        "./libs/Source+Sans+Pro.css",
+        "popup.css"
+    ];
+
+    if (isFirefox()) {
+        let firefoxJS = [];
+        for (const file of js) {
+            firefoxJS.push({file});
+        }
+        let firefoxCSS = [];
+        for (const file of css) {
+            firefoxCSS.push({file});
+        }
+
+        let registration = {
+            message: "registerContentScript",
+            id: "invidious",
+            allFrames: true,
+            js: firefoxJS,
+            css: firefoxCSS,
+            matches: getInvidiousInstancesRegex()
+        };
+
+        if (isBackgroundScript) {
+            registerFirefoxContentScript(registration);
+        } else {
+            chrome.runtime.sendMessage(registration);
+        }
+    } else {
+        chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
+            let conditions = [];
+            for (const regex of getInvidiousInstancesRegex()) {
+                conditions.push(new chrome.declarativeContent.PageStateMatcher({
+                    pageUrl: { urlMatches: regex }
+                }));
+            }
+            
+            // Add page rule
+            let rule = {
+                id: "invidious",
+                conditions,
+                actions: [new chrome.declarativeContent.RequestContentScript({
+                    allFrames: true,
+                    js,
+                    css
+                })]
+            };
+            
+            chrome.declarativeContent.onPageChanged.addRules([rule]);
+        });
+    }
+}
+
 function localizeHtmlPage() {
     //Localize by replacing __MSG_***__ meta tags
     var objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
@@ -81,6 +195,19 @@ function getLocalizedMessage(text) {
     } else {
         return false;
     }
+}
+
+/**
+ * @returns {String[]} Invidious Instances in regex form
+ */
+function getInvidiousInstancesRegex() {
+    var invidiousInstancesRegex = [];
+    for (const url of SB.config.invidiousInstances) {
+        invidiousInstancesRegex.push("https://*." + url + "/*");
+        invidiousInstancesRegex.push("http://*." + url + "/*");
+    }
+
+    return invidiousInstancesRegex;
 }
 
 function generateUserID(length = 36) {
