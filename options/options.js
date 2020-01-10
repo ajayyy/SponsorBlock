@@ -192,18 +192,7 @@ function invidiousOnClick(checkbox, option) {
             }
         });
     } else {
-        if (isFirefox()) {
-            chrome.runtime.sendMessage({
-                message: "unregisterContentScript",
-                id: "invidious"
-            });
-        } else {
-            chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
-        }
-
-        chrome.permissions.remove({
-            origins: getInvidiousInstancesRegex()
-        });
+        removeExtraSiteRegistration();
     }
 }
 

@@ -81,21 +81,7 @@ function setupExtraSitePermissions(callback) {
         if (granted) {
             setupExtraSiteContentScripts();
         } else {
-            if (isFirefox()) {
-                if (isBackgroundScript) {
-                    if (contentScriptRegistrations[request.id]) {
-                        contentScriptRegistrations[request.id].unregister();
-                        delete contentScriptRegistrations[request.id];
-                    }
-                } else {
-                    chrome.runtime.sendMessage({
-                        message: "unregisterContentScript",
-                        id: "invidious"
-                    });
-                }
-            } else {
-                chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
-            }
+            removeExtraSiteRegistration();
         }
 
         callback(granted);
@@ -157,7 +143,7 @@ function setupExtraSiteContentScripts() {
                     pageUrl: { urlMatches: regex }
                 }));
             }
-            
+
             // Add page rule
             let rule = {
                 id: "invidious",
@@ -172,6 +158,33 @@ function setupExtraSiteContentScripts() {
             chrome.declarativeContent.onPageChanged.addRules([rule]);
         });
     }
+}
+
+/**
+ * Removes the permission and content script registration.
+ */
+function removeExtraSiteRegistration() {
+    if (isFirefox()) {
+        let id = "invidious";
+
+        if (isBackgroundScript) {
+            if (contentScriptRegistrations[id]) {
+                contentScriptRegistrations[id].unregister();
+                delete contentScriptRegistrations[id];
+            }
+        } else {
+            chrome.runtime.sendMessage({
+                message: "unregisterContentScript",
+                id: id
+            });
+        }
+    } else {
+        chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
+    }
+
+    chrome.permissions.remove({
+        origins: getInvidiousInstancesRegex()
+    });
 }
 
 function localizeHtmlPage() {

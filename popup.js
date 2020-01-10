@@ -231,7 +231,6 @@ async function runThePopup() {
         }
   
         //load video times for this video 
-        console.log( SB.config.sponsorTimes.set)
         setTimeout(()=> console.log( SB.config.sponsorTimes.set), 200        )
         let sponsorTimesStorage = SB.config.sponsorTimes.get(currentVideoID);
         if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
