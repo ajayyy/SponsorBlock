@@ -58,12 +58,6 @@ var lastSponsorTimeSkippedUUID = null;
 //if showing the start sponsor button or the end sponsor button on the player
 var showingStartSponsor = true;
 
-//should the video controls buttons be added
-//TODO: If invidious gets video controls, change the code where this is set from chrome.sync as well.
-var hideVideoPlayerControls = onInvidious;
-var hideInfoButtonPlayerControls = onInvidious;
-var hideDeleteButtonPlayerControls = onInvidious;
-
 //the sponsor times being prepared to be submitted
 var sponsorTimesSubmitting = [];
 
@@ -653,7 +647,7 @@ async function updateVisibilityOfPlayerControlsButton() {
 
     await createButtons();
 	
-    if (SB.config.hideVideoPlayerControls) {
+    if (SB.config.hideVideoPlayerControls || onInvidious) {
         document.getElementById("startSponsorButton").style.display = "none";
         document.getElementById("submitButton").style.display = "none";
     } else {
@@ -661,13 +655,13 @@ async function updateVisibilityOfPlayerControlsButton() {
     }
 
     //don't show the info button on embeds
-    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
+    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
         document.getElementById("infoButton").style.display = "none";
     } else {
         document.getElementById("infoButton").style.removeProperty("display");
     }
     
-    if (SB.config.hideDeleteButtonPlayerControls) {
+    if (SB.config.hideDeleteButtonPlayerControls || onInvidious) {
         document.getElementById("deleteButton").style.display = "none";
     }
 }

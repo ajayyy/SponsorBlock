@@ -126,8 +126,6 @@ function invidiousInstanceAddInit(element, option) {
             alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
         } else {
             // Add this
-            //TODO Make the call to invidiousOnClick support passing the straight extra values, plus make the get not needed
-            //OR merge the config PR and use that
             let instanceList = SB.config[option];
             if (!instanceList) instanceList = [];
 
@@ -151,7 +149,8 @@ function invidiousInstanceAddInit(element, option) {
     let resetButton = element.querySelector(".invidious-instance-reset");
     resetButton.addEventListener("click", function(e) {
         if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
-            SB.config[option] = SB.defaults[option];
+            // Set to a clone of the default
+            SB.config[option] = SB.defaults[option].slice(0);
         }
     });
 }
@@ -241,9 +240,9 @@ function invidiousOnClick(checkbox, option) {
                             id: "invidious",
                             conditions,
                             actions: [new chrome.declarativeContent.RequestContentScript({
-                                    allFrames: true,
-                                    js,
-                                    css
+                                allFrames: true,
+                                js,
+                                css
                             })]
                         };
                         
