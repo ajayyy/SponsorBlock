@@ -118,7 +118,13 @@ function activateTextChange(element) {
 	textBox.value = SB.config[option];
 
     let setButton = element.querySelector(".text-change-set");
-    setButton.addEventListener("click", () => {SB.config[option] = textBox.value});
+    setButton.addEventListener("click", () => {
+        let confirmMessage = element.getAttribute("confirm-message");
+
+        if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
+            SB.config[option] = textBox.value;
+        }
+    });
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
 }
