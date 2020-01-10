@@ -1,4 +1,11 @@
-SB = {};
+SB = {
+    /**
+     * Callback function when an option is updated
+     * 
+     * @type {CallableFunction}
+     */
+    configListeners = []
+};
 
 // Function setup
 
@@ -82,8 +89,12 @@ function decodeStoredItem(data) {
 
 function configProxy() {
     chrome.storage.onChanged.addListener((changes, namespace) => {
-        for (key in changes) {
+        for (const key in changes) {
             SB.localConfig[key] = decodeStoredItem(changes[key].newValue);
+        }
+
+        for (const callback of SB.configListeners) {
+            callback(changes);
         }
     });
 	
