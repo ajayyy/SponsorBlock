@@ -4,7 +4,7 @@ SB = {
      * 
      * @type {CallableFunction}
      */
-    configListeners = []
+    configListeners: []
 };
 
 // Function setup
