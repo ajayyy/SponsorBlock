@@ -250,14 +250,10 @@ function activateTextChange(element) {
 
     let textBox = element.querySelector(".option-text-box");
     let option = element.getAttribute("sync-option");
-	
-	textBox.value = SB.config[option];
 
-<<<<<<< HEAD
     // See if anything extra must be done
     switch (option) {
         case "invidiousInstances":
-
             let setButton = element.querySelector(".text-change-set");
             setButton.addEventListener("click", async function(e) {
                 if (textBox.value.includes("/") || textBox.value.includes("http") || textBox.value.includes(":")) {
@@ -302,30 +298,11 @@ function activateTextChange(element) {
 
             return;
     }
-
-    chrome.storage.sync.get([option], function(result) {
-        textBox.value = result[option];
-
-        let setButton = element.querySelector(".text-change-set");
-        setButton.addEventListener("click", (e) => setOptionValue(option, textBox.value));
-
-        element.querySelector(".option-hidden-section").classList.remove("hidden");
-    });
-}
-
-/**
- * Called when an option has been changed.
- * 
- * @param {string} option 
- * @param {*} value 
- */
-function setOptionValue(option, value, callback) {
-    chrome.storage.sync.set({[option]: value}, callback);
-}
-=======
+	
+    textBox.value = SB.config[option];
+    
     let setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", () => {SB.config[option] = textBox.value});
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
 }
->>>>>>> c53bc202941f8dbf2f5481a891ca28a69825304b
