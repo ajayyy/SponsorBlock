@@ -16,9 +16,7 @@ chrome.tabs.onUpdated.addListener(function(tabId) {
 	}, () => void chrome.runtime.lastError ); // Suppress error on Firefox
 });
 
-chrome.runtime.onMessage.addListener(async function (request, sender, callback) {
-    await wait(() => SB.config !== undefined);
-
+chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	switch(request.message) {
         case "submitTimes":
             submitTimes(request.videoID, callback);
@@ -65,6 +63,8 @@ chrome.runtime.onMessage.addListener(async function (request, sender, callback) 
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
+    // This let's the config sync to run fully before checking.
+    // This is required on Firefox
     setTimeout(function() {
         const userID = SB.config.userID;
 
@@ -76,7 +76,11 @@ chrome.runtime.onInstalled.addListener(function (object) {
             //generate a userID
             const newUserID = generateUserID();
             //save this UUID
-			SB.config.userID = newUserID;
+            SB.config.userID = newUserID;
+            
+            //TODO: Remove when invidious support is old
+            // Don't show this to new users
+            SB.config.invidiousUpdateInfoShowCount = 6;
         }
     }, 1500);
 });
@@ -132,34 +136,35 @@ function addSponsorTime(time, videoID, callback) {
 }
 
 function submitVote(type, UUID, callback) {
-        let userID = SB.config.userID;
+    let userID = SB.config.userID;
 
-        if (userID == undefined || userID === "undefined") {
-            //generate one
-            userID = generateUserID();
-			SB.config.userID = userID;
+    if (userID == undefined || userID === "undefined") {
+        //generate one
+        userID = generateUserID();
+        SB.config.userID = userID;
+    }
+
+    //publish this vote
+    sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            callback({
+                successType: 1
+            });
+        } else if (xmlhttp.readyState == 4 && xmlhttp.status == 405) {
+            //duplicate vote
+            callback({
+                successType: 0,
+                statusCode: xmlhttp.status
+            });
+        } else if (error) {
+            //error while connect
+            callback({
+                successType: -1,
+                statusCode: xmlhttp.status
+            });
         }
 
-        //publish this vote
-        sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                callback({
-                    successType: 1
-                });
-            } else if (xmlhttp.readyState == 4 && xmlhttp.status == 405) {
-                //duplicate vote
-                callback({
-                    successType: 0,
-                    statusCode: xmlhttp.status
-                });
-            } else if (error) {
-                //error while connect
-                callback({
-                    successType: -1,
-                    statusCode: xmlhttp.status
-                });
-            }
-        })
+    });
 }
 
 async function submitTimes(videoID, callback) {

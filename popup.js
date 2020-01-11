@@ -231,7 +231,6 @@ async function runThePopup() {
         }
   
         //load video times for this video 
-        setTimeout(()=> console.log( SB.config.sponsorTimes.set), 200        )
         let sponsorTimesStorage = SB.config.sponsorTimes.get(currentVideoID);
         if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
             if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
@@ -919,10 +918,8 @@ async function runThePopup() {
             type: type,
             UUID: UUID
         }, function(response) {
-            console.log(response)
             if (response != undefined) {
                 //see if it was a success or failure
-                console.log(response)
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
                     addVoteMessage(chrome.i18n.getMessage("voted"), UUID)
