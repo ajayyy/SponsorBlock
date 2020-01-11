@@ -78,8 +78,8 @@ function decodeStoredItem(data) {
     try {
         let str = JSON.parse(data);
         
-	if(!Array.isArray(str)) return data;
-	return new Map(str);
+        if(!Array.isArray(str)) return data;
+        return new Map(str);
     } catch(e) {
 
         // If all else fails, return the data
@@ -115,7 +115,7 @@ function configProxy() {
         },
 	
         deleteProperty(obj, prop) {
-	    chrome.storage.sync.remove(key);
+	        chrome.storage.sync.remove(key);
         }
 		
     };
