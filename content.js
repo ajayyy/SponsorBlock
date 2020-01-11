@@ -721,7 +721,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     await wait(isSubmitButtonLoaded);
     
     //if it isn't visible, there is no data
-    let shouldHide = (uploadButtonVisible && !SB.config.hideDeleteButtonPlayerControls) ? "unset" : "none"
+    let shouldHide = (uploadButtonVisible && !(SB.config.hideDeleteButtonPlayerControls || onInvidious)) ? "unset" : "none"
     document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {

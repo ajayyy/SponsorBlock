@@ -131,7 +131,7 @@ function migrateOldFormats() { // Convert sponsorTimes format
     for (key in SB.localConfig) {
         if (key.startsWith("sponsorTimes") && key !== "sponsorTimes" && key !== "sponsorTimesContributed") {
             SB.config.sponsorTimes.set(key.substr(12), SB.config[key]);
-            delete SB.config[key];
+            chrome.storage.sync.remove(key);
         }
     }
 }
@@ -178,11 +178,11 @@ function convertJSON() {
 
 // Add defaults
 function addDefaults() {
-	Object.keys(SB.defaults).forEach(key => {
-		if(!SB.localConfig.hasOwnProperty(key)) {
+    for (const key in SB.defaults) {
+        if(!SB.localConfig.hasOwnProperty(key)) {
 			SB.localConfig[key] = SB.defaults[key];
 		}
-	});
+    }
 };
 
 // Sync config
