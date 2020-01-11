@@ -1,4 +1,11 @@
-SB = {};
+SB = {
+    /**
+     * Callback function when an option is updated
+     * 
+     * @type {CallableFunction}
+     */
+    configListeners: []
+};
 
 // Function setup
 
@@ -82,8 +89,12 @@ function decodeStoredItem(data) {
 
 function configProxy() {
     chrome.storage.onChanged.addListener((changes, namespace) => {
-        for (key in changes) {
+        for (const key in changes) {
             SB.localConfig[key] = decodeStoredItem(changes[key].newValue);
+        }
+
+        for (const callback of SB.configListeners) {
+            callback(changes);
         }
     });
 	
@@ -120,7 +131,7 @@ function migrateOldFormats() { // Convert sponsorTimes format
     for (key in SB.localConfig) {
         if (key.startsWith("sponsorTimes") && key !== "sponsorTimes" && key !== "sponsorTimesContributed") {
             SB.config.sponsorTimes.set(key.substr(12), SB.config[key]);
-            delete SB.config[key];
+            chrome.storage.sync.remove(key);
         }
     }
 }
@@ -148,7 +159,10 @@ SB.defaults = {
 	"hideInfoButtonPlayerControls": false,
 	"hideDeleteButtonPlayerControls": false,
 	"hideDiscordLaunches": 0,
-	"hideDiscordLink": false
+    "hideDiscordLink": false,
+    "invidiousInstances": ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
+    "invidiousUpdateInfoShowCount": 0,
+    "autoUpvote": true
 }
 
 // Reset config
@@ -164,11 +178,11 @@ function convertJSON() {
 
 // Add defaults
 function addDefaults() {
-	Object.keys(SB.defaults).forEach(key => {
-		if(!SB.localConfig.hasOwnProperty(key)) {
+    for (const key in SB.defaults) {
+        if(!SB.localConfig.hasOwnProperty(key)) {
 			SB.localConfig[key] = SB.defaults[key];
 		}
-	});
+    }
 };
 
 // Sync config
