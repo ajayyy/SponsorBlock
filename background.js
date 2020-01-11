@@ -63,6 +63,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
+    // This let's the config sync to run fully before checking.
+    // This is required on Firefox
     setTimeout(function() {
         const userID = SB.config.userID;
 
