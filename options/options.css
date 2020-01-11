@@ -7,12 +7,16 @@ body {
     text-align: center;
 }
 
+.inline {
+    display: inline-block;
+}
+
 .bold {
     font-weight: bold;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .keybind-status {
@@ -42,7 +46,7 @@ body {
     border-radius: 5px;
     font-size: 14px;
 
-    width: fit-content;
+    width: max-content;
 }
 
 .option-button:hover {

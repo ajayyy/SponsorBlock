@@ -1,50 +1,70 @@
+isBackgroundScript = true;
+
+// Used only on Firefox, which does not support non persistent background pages.
+var contentScriptRegistrations = {};
+
+// Register content script if needed
+if (isFirefox()) {
+    wait(() => SB.config !== undefined).then(function() {
+        if (SB.config.supportInvidious) setupExtraSiteContentScripts();
+    });
+} 
+
 chrome.tabs.onUpdated.addListener(function(tabId) {
 	chrome.tabs.sendMessage(tabId, {
         message: 'update',
 	}, () => void chrome.runtime.lastError ); // Suppress error on Firefox
 });
 
-chrome.runtime.onMessage.addListener(async function (request, sender, callback) {
-    await wait(() => SB.config !== undefined);
-
+chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	switch(request.message) {
-    case "submitTimes":
-        submitTimes(request.videoID, callback);
-    
-        //this allows the callback to be called later by the submitTimes function
-        return true; 
-    case "addSponsorTime":
-        addSponsorTime(request.time, request.videoID, callback);
-    
-        //this allows the callback to be called later
-        return true;
-	
-    case "getSponsorTimes":
-        getSponsorTimes(request.videoID, function(sponsorTimes) {
-            callback({
-                sponsorTimes: sponsorTimes
-            })
-        });
-    
-        //this allows the callback to be called later
-        return true;
-    case "submitVote":
-        submitVote(request.type, request.UUID, callback);
-    
-        //this allows the callback to be called later
-        return true;
-    case "alertPrevious":
-			chrome.notifications.create("stillThere" + Math.random(), {
-        type: "basic",
-        title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
-        message: chrome.i18n.getMessage("leftTimes"),
-        iconUrl: "./icons/LogoSponsorBlocker256px.png"
-			});
+        case "submitTimes":
+            submitTimes(request.videoID, callback);
+        
+            //this allows the callback to be called later by the submitTimes function
+            return true; 
+        case "addSponsorTime":
+            addSponsorTime(request.time, request.videoID, callback);
+        
+            //this allows the callback to be called later
+            return true;
+        
+        case "getSponsorTimes":
+            getSponsorTimes(request.videoID, function(sponsorTimes) {
+                callback({
+                    sponsorTimes: sponsorTimes
+                })
+            });
+        
+            //this allows the callback to be called later
+            return true;
+        case "submitVote":
+            submitVote(request.type, request.UUID, callback);
+        
+            //this allows the callback to be called later
+            return true;
+        case "alertPrevious":
+            chrome.notifications.create("stillThere" + Math.random(), {
+                type: "basic",
+                title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
+                message: chrome.i18n.getMessage("leftTimes"),
+                iconUrl: "./icons/LogoSponsorBlocker256px.png"
+            });
+        case "registerContentScript": 
+            registerFirefoxContentScript(request);
+            return false;
+        case "unregisterContentScript": 
+            contentScriptRegistrations[request.id].unregister();
+            delete contentScriptRegistrations[request.id];
+            
+            return false;
 	}
 });
 
 //add help page on install
 chrome.runtime.onInstalled.addListener(function (object) {
+    // This let's the config sync to run fully before checking.
+    // This is required on Firefox
     setTimeout(function() {
         const userID = SB.config.userID;
 
@@ -56,10 +76,32 @@ chrome.runtime.onInstalled.addListener(function (object) {
             //generate a userID
             const newUserID = generateUserID();
             //save this UUID
-			SB.config.userID = newUserID;
+            SB.config.userID = newUserID;
+            
+            //TODO: Remove when invidious support is old
+            // Don't show this to new users
+            SB.config.invidiousUpdateInfoShowCount = 6;
         }
     }, 1500);
 });
+
+/**
+ * Only works on Firefox.
+ * Firefox requires that it be applied after every extension restart.
+ * 
+ * @param {JSON} options 
+ */
+function registerFirefoxContentScript(options) {
+    let oldRegistration = contentScriptRegistrations[options.id];
+    if (oldRegistration) oldRegistration.unregister();
+
+    browser.contentScripts.register({
+        allFrames: options.allFrames,
+        js: options.js,
+        css: options.css,
+        matches: options.matches
+    }).then(() => void (contentScriptRegistrations[options.id] = registration));
+}
 
 //gets the sponsor times from memory
 function getSponsorTimes(videoID, callback) {
@@ -94,34 +136,35 @@ function addSponsorTime(time, videoID, callback) {
 }
 
 function submitVote(type, UUID, callback) {
-        let userID = SB.config.userID;
+    let userID = SB.config.userID;
 
-        if (userID == undefined || userID === "undefined") {
-            //generate one
-            userID = generateUserID();
-			SB.config.userID = userID;
+    if (userID == undefined || userID === "undefined") {
+        //generate one
+        userID = generateUserID();
+        SB.config.userID = userID;
+    }
+
+    //publish this vote
+    sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            callback({
+                successType: 1
+            });
+        } else if (xmlhttp.readyState == 4 && xmlhttp.status == 405) {
+            //duplicate vote
+            callback({
+                successType: 0,
+                statusCode: xmlhttp.status
+            });
+        } else if (error) {
+            //error while connect
+            callback({
+                successType: -1,
+                statusCode: xmlhttp.status
+            });
         }
 
-        //publish this vote
-        sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                callback({
-                    successType: 1
-                });
-            } else if (xmlhttp.readyState == 4 && xmlhttp.status == 405) {
-                //duplicate vote
-                callback({
-                    successType: 0,
-                    statusCode: xmlhttp.status
-                });
-            } else if (error) {
-                //error while connect
-                callback({
-                    successType: -1,
-                    statusCode: xmlhttp.status
-                });
-            }
-        })
+    });
 }
 
 async function submitTimes(videoID, callback) {
