@@ -161,6 +161,7 @@ SB.defaults = {
 	"hideDiscordLaunches": 0,
     "hideDiscordLink": false,
     "invidiousInstances": ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
+    "invidiousUpdateInfoShowCount": 0,
     "autoUpvote": true
 }
 

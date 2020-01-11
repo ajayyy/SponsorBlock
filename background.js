@@ -74,7 +74,11 @@ chrome.runtime.onInstalled.addListener(function (object) {
             //generate a userID
             const newUserID = generateUserID();
             //save this UUID
-			SB.config.userID = newUserID;
+            SB.config.userID = newUserID;
+            
+            //TODO: Remove when invidious support is old
+            // Don't show this to new users
+            SB.config.invidiousUpdateInfoShowCount = 6;
         }
     }, 1500);
 });
