@@ -556,8 +556,9 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!SB.config.dontShowNotice) {
             let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip);
+
             //auto-upvote this sponsor
-            if (SB.config.trackViewCount && !SB.config.disableAutoSkip) {
+            if (SB.config.trackViewCount && !SB.config.disableAutoSkip && SB.config.autoUpvote) {
                 vote(1, currentUUID, null);
             }
         }
