@@ -205,15 +205,37 @@ function resetValues() {
     sponsorDataFound = false;
 }
 
-function videoIDChange(id) {
+function getTitleLink() {
+    let titles = document.getElementsByClassName("ytp-title-link yt-uix-sessionlink");
+    return (titles.length === 2);
+};
+
+async function getTrailerID() {
+    if(document.URL.startsWith("https://www.youtube.com/channel/")) {
+        await wait(getTitleLink);
+        let test = document.getElementsByClassName("ytp-title-link yt-uix-sessionlink")[0];
+        let index = (test.hasAttribute("href") && test.href !== "") ? 0 : 1;
+        let url = document.getElementsByClassName("ytp-title-link yt-uix-sessionlink")[index].href;
+        return getYouTubeVideoID(url);
+    }
+    return false;
+}
+
+async function videoIDChange(id) {
     //if the id has not changed return
     if (sponsorVideoID === id) return;
+
+    //if id not valid check for trailer
+    if (!id) {
+        id = await getTrailerID();
+    };
 
     //set the global videoID
     sponsorVideoID = id;
 
     resetValues();
-    
+
+
 	//id is not valid
     if (!id) return;
 
