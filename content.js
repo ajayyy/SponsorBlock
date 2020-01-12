@@ -42,6 +42,20 @@ var controls = null;
 // Direct Links
 videoIDChange(getYouTubeVideoID(document.URL));
 
+// Video changes
+onTitleChange(() => videoIDChange(getYouTubeVideoID(document.URL)));
+
+async function onTitleChange(callback) {
+    await wait(() => {
+        return (document.querySelector('head > title') !== null);
+    })
+    var title = document.querySelector('head > title');
+    var observer = new window.WebKitMutationObserver(function(mutations) {
+        callback();
+    });
+    observer.observe(title, { subtree: true, characterData: true, childList: true });
+}
+
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
 
@@ -67,101 +81,107 @@ var popupInitialised = false;
 
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
-  
+ 
 function messageListener(request, sender, sendResponse) {
-    //messages from popup script
-    switch(request.message){
-        case "update":
-            videoIDChange(getYouTubeVideoID(document.URL));
-            break;
-        case "sponsorStart":
-            sponsorMessageStarted(sendResponse);
+        //messages from popup script
+        switch(request.message){
+            case "update":
+                //videoIDChange(getYouTubeVideoID(document.URL));
+                break;
+            case "sponsorStart":
+                sponsorMessageStarted(sendResponse);
 
-            break;
-        case "sponsorDataChanged":
-            updateSponsorTimesSubmitting();
+                break;
+            case "sponsorDataChanged":
+                updateSponsorTimesSubmitting();
 
-            break;
-        case "isInfoFound":
-            //send the sponsor times along with if it's found
-            sendResponse({
-                found: sponsorDataFound,
-                sponsorTimes: sponsorTimes,
-                hiddenSponsorTimes: hiddenSponsorTimes,
-                UUIDs: UUIDs
-            });
+                break;
+            case "isInfoFound":
+                //send the sponsor times along with if it's found
+                sendResponse({
+                    found: sponsorDataFound,
+                    sponsorTimes: sponsorTimes,
+                    hiddenSponsorTimes: hiddenSponsorTimes,
+                    UUIDs: UUIDs
+                });
 
-            if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
-                //the popup should be closed now that another is opening
-                closeInfoMenu();
-            }
+                if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+                    //the popup should be closed now that another is opening
+                    closeInfoMenu();
+                }
 
-            popupInitialised = true;
-            break;
-        case "getVideoID":
-            sendResponse({
-                videoID: sponsorVideoID
-            });
+                popupInitialised = true;
+                break;
+            case "getVideoID":
+                sendResponse({
+                    videoID: sponsorVideoID
+                });
 
-            break;
-        case "getVideoDuration":
-            sendResponse({
-            duration: v.duration
-            });
+                break;
+            case "getVideoDuration":
+                sendResponse({
+                duration: v.duration
+                });
 
-            break;
-        case "skipToTime":
-            v.currentTime = request.time;
-            return
-        case "getCurrentTime":
-            sendResponse({
-                currentTime: v.currentTime
-            });
+                break;
+            case "skipToTime":
+                v.currentTime = request.time;
+                return
+            case "getCurrentTime":
+                sendResponse({
+                    currentTime: v.currentTime
+                });
 
-            break;
-        case "getChannelURL":
-            sendResponse({
-            channelURL: channelURL
-            });
+                break;
+            case "getChannelURL":
+                sendResponse({
+                channelURL: channelURL
+                });
 
-            break;
-        case "isChannelWhitelisted":
-            sendResponse({
-                value: channelWhitelisted
-            });
+                break;
+            case "isChannelWhitelisted":
+                sendResponse({
+                    value: channelWhitelisted
+                });
 
-            break;
-        case "whitelistChange":
-            channelWhitelisted = request.value;
-            sponsorsLookup(sponsorVideoID);
+                break;
+            case "whitelistChange":
+                channelWhitelisted = request.value;
+                sponsorsLookup(sponsorVideoID);
 
-            break;
-        case "changeStartSponsorButton":
-            changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
+                break;
+            case "dontShowNotice":
+				SB.config.dontShowNotice = true;
 
-            break;
-    }
-}
+                break;
+            case "changeStartSponsorButton":
+                changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
 
-/**
- * Called when the config is updated
- * 
- * @param {String} changes 
- */
-function contentConfigUpdateListener(changes) {
-    for (const key in changes) {
-        switch(key) {
-            case "hideVideoPlayerControls":
-            case "hideInfoButtonPlayerControls":
-            case "hideDeleteButtonPlayerControls":
-                updateVisibilityOfPlayerControlsButton()
+                break;
+			
+            case "showNoticeAgain":
+                SB.config.dontShowNotice = true;
+                break;
+			
+            case "changeVideoPlayerControlsVisibility":
+                SB.config.hideVideoPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
+
+                break;
+            case "changeInfoButtonPlayerControlsVisibility":
+                SB.config.hideInfoButtonPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
+
+                break;
+            case "changeDeleteButtonPlayerControlsVisibility":
+                SB.config.hideDeleteButtonPlayerControls = request.value;
+                updateVisibilityOfPlayerControlsButton();
+
+                break;
+            case "trackViewCount":
+                SB.config.trackViewCount = request.value;
                 break;
         }
-    }
-}
-
-if (!SB.configListeners.includes(contentConfigUpdateListener)) {
-    SB.configListeners.push(contentConfigUpdateListener);
 }
 
 //check for hotkey pressed
@@ -222,22 +242,24 @@ async function getTrailerID() {
 }
 
 async function videoIDChange(id) {
-    //if the id has not changed return
-    if (sponsorVideoID === id) return;
-
+    
     //if id not valid check for trailer
     if (!id) {
         id = await getTrailerID();
     };
-
+    
+    //if the id has not changed return
+    if (sponsorVideoID === id) return;
+    
     //set the global videoID
     sponsorVideoID = id;
 
     resetValues();
-
-
-	//id is not valid
-    if (!id) return;
+    
+    //id is not valid
+    if (!id) {
+        return;
+    };
 
     let channelIDPromise = wait(getChannelID);
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
@@ -246,22 +268,8 @@ async function videoIDChange(id) {
     if (previewBar == null) {
         //create it
         wait(getControls).then(result => {
-            const progressElementSelectors = [
-                // For YouTube
-                "ytp-progress-bar-container",
-                "no-model cue-range-markers",
-                // For Invidious/VideoJS
-                "vjs-progress-holder"
-            ];
-
-            for (const selector of progressElementSelectors) {
-                const el = document.getElementsByClassName(selector);
-
-                if (el && el.length && el[0]) {
-                    previewBar = new PreviewBar(el[0]);
-                    break;
-                }
-            }
+            let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
+            previewBar = new PreviewBar(progressBar);
         });
     }
 
@@ -320,10 +328,8 @@ async function videoIDChange(id) {
 			}
 		});
 	});
-    //see if video controls buttons should be added
-    if (!onInvidious) {
-        updateVisibilityOfPlayerControlsButton();
-    }
+	updateVisibilityOfPlayerControlsButton();
+    updateVisibilityOfPlayerControlsButton(false);
 }
 
 function sponsorsLookup(id, channelIDPromise) {
@@ -445,9 +451,6 @@ function getChannelID() {
     channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
     if (channelURLContainer !== null) {
         channelURLContainer = channelURLContainer.firstElementChild;
-    } else if (onInvidious) {
-        // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
-        channelURLContainer = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
     } else {
         //old YouTube theme
         let channelContainers = document.getElementsByClassName("yt-user-info");
@@ -466,9 +469,6 @@ function getChannelID() {
     let currentTitle = "";
     if (titleInfoContainer != null) {
         currentTitle = titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild.innerText;
-    } else if (onInvidious) {
-        // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
-        currentTitle = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a > div > span").textContent;
     } else {
         //old YouTube theme
         currentTitle = document.getElementById("eow-title").innerText;
@@ -490,11 +490,13 @@ function getChannelID() {
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
 function whitelistCheck() {
     //see if this is a whitelisted channel
-    let whitelistedChannels = SB.config.whitelistedChannels;
+        let whitelistedChannels = SB.config.whitelistedChannels;
 
-    if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
-        channelWhitelisted = true;
-    }
+        console.log(channelURL)
+
+        if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
+            channelWhitelisted = true;
+        }
 }
 
 //video skipping
@@ -578,16 +580,8 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!SB.config.dontShowNotice) {
             let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip);
-
-            //TODO: Remove this when Invidious support is old
-            if (SB.config.invidiousUpdateInfoShowCount < 5) {
-                skipNotice.addNoticeInfoMessage(chrome.i18n.getMessage("invidiousInfo1"), chrome.i18n.getMessage("invidiousInfo2"));
-
-                SB.config.invidiousUpdateInfoShowCount += 1;
-            }
-
             //auto-upvote this sponsor
-            if (SB.config.trackViewCount && !SB.config.disableAutoSkip && SB.config.autoUpvote) {
+            if (SB.config.trackViewCount && !SB.config.disableAutoSkip) {
                 vote(1, currentUUID, null);
             }
         }
@@ -620,6 +614,13 @@ function reskipSponsorTime(UUID) {
     }
 }
 
+function removePlayerControlsButton() {
+    if (!sponsorVideoID) return;
+
+    document.getElementById("startSponsorButton").style.display = "none";
+    document.getElementById("submitButton").style.display = "none";
+}
+
 function createButton(baseID, title, callback, imageName, isDraggable=false) {
     if (document.getElementById(baseID + "Button") != null) return;
 
@@ -647,14 +648,7 @@ function createButton(baseID, title, callback, imageName, isDraggable=false) {
 
 function getControls() {
     let controls = document.getElementsByClassName("ytp-right-controls");
-
-    if (!controls || controls.length === 0) {
-        // The invidious video element's controls element
-        controls = document.getElementsByClassName("vjs-control-bar");
-        return (!controls || controls.length === 0) ? false : controls[controls.length - 1];
-    } else {
-        return controls[controls.length - 1];
-    }
+    return (!controls || controls.length === 0) ? false : controls[controls.length - 1]
 };
 
 //adds all the player controls buttons
@@ -677,21 +671,14 @@ async function updateVisibilityOfPlayerControlsButton() {
 
     await createButtons();
 	
-    if (SB.config.hideVideoPlayerControls || onInvidious) {
-        document.getElementById("startSponsorButton").style.display = "none";
-        document.getElementById("submitButton").style.display = "none";
-    } else {
-        document.getElementById("startSponsorButton").style.removeProperty("display");
+    if (SB.config.hideDeleteButtonPlayerControls) {
+        removePlayerControlsButton();
     }
-
     //don't show the info button on embeds
-    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
+    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
         document.getElementById("infoButton").style.display = "none";
-    } else {
-        document.getElementById("infoButton").style.removeProperty("display");
     }
-    
-    if (SB.config.hideDeleteButtonPlayerControls || onInvidious) {
+    if (SB.config.hideDeleteButtonPlayerControls) {
         document.getElementById("deleteButton").style.display = "none";
     }
 }
@@ -743,7 +730,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     await wait(isSubmitButtonLoaded);
     
     //if it isn't visible, there is no data
-    let shouldHide = (uploadButtonVisible && !(SB.config.hideDeleteButtonPlayerControls || onInvidious)) ? "unset" : "none"
+    let shouldHide = (uploadButtonVisible && !SB.config.hideDeleteButtonPlayerControls) ? "unset" : "none"
     document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {
@@ -849,8 +836,8 @@ function clearSponsorTimes() {
     let sponsorTimes = SB.config.sponsorTimes.get(currentVideoID);
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes)
-                                + "\n" + chrome.i18n.getMessage("confirmMSG")
+        let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes);
+        confirmMessage += chrome.i18n.getMessage("confirmMSG")
         if(!confirm(confirmMessage)) return;
 
         //clear the sponsor times
