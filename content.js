@@ -39,22 +39,8 @@ var previewBar = null;
 //the player controls on the YouTube player
 var controls = null;
 
-// Direct Links
-videoIDChange(getYouTubeVideoID(document.URL));
-
 // Video changes
-onTitleChange(() => videoIDChange(getYouTubeVideoID(document.URL)));
-
-async function onTitleChange(callback) {
-    await wait(() => {
-        return (document.querySelector('head > title') !== null);
-    })
-    var title = document.querySelector('head > title');
-    var observer = new window.WebKitMutationObserver(function(mutations) {
-        callback();
-    });
-    observer.observe(title, { subtree: true, characterData: true, childList: true });
-}
+window.addEventListener("yt-navigate-finish", () => videoIDChange(getYouTubeVideoID(document.URL)));
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -85,9 +71,6 @@ chrome.runtime.onMessage.addListener(messageListener);
 function messageListener(request, sender, sendResponse) {
         //messages from popup script
         switch(request.message){
-            case "update":
-                //videoIDChange(getYouTubeVideoID(document.URL));
-                break;
             case "sponsorStart":
                 sponsorMessageStarted(sendResponse);
 
@@ -227,22 +210,25 @@ function resetValues() {
 
 function getTitleLink() {
     let titles = document.getElementsByClassName("ytp-title-link yt-uix-sessionlink");
-    return (titles.length === 2);
+    for (var i = 0; i < titles.length; i++) {
+        var item = titles[i];
+        if(item.hasAttribute("href") && item.hasAttribute("href") !== "") {
+            return item
+        }
+    }
+    return false
 };
 
 async function getTrailerID() {
-    if(document.URL.startsWith("https://www.youtube.com/channel/")) {
+    if(document.URL.startsWith("https://www.youtube.com/channel/") || document.URL.startsWith("https://www.youtube.com/user/")) {
         await wait(getTitleLink);
-        let test = document.getElementsByClassName("ytp-title-link yt-uix-sessionlink")[0];
-        let index = (test.hasAttribute("href") && test.href !== "") ? 0 : 1;
-        let url = document.getElementsByClassName("ytp-title-link yt-uix-sessionlink")[index].href;
+        let url = getTitleLink().href;
         return getYouTubeVideoID(url);
     }
     return false;
 }
 
 async function videoIDChange(id) {
-    
     //if id not valid check for trailer
     if (!id) {
         id = await getTrailerID();
