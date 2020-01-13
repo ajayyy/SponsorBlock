@@ -228,24 +228,27 @@ async function getTrailerID() {
     return false;
 }
 
-async function videoIDChange(id) {
+async function videoIDChange(id) { 
     //if id not valid check for trailer
     if (!id) {
         id = await getTrailerID();
-    };
+        isTrailer = (id) ? true : false;
+    } else {
+        isTrailer = false;
+    }
     
-    //if the id has not changed return
+    //id not valid change
     if (sponsorVideoID === id) return;
-    
+
     //set the global videoID
     sponsorVideoID = id;
 
     resetValues();
     
-    //id is not valid
-    if (!id) {
-        return;
-    };
+    //id is not valid	
+    if (!id) {	
+        return;	
+    };	
 
     let channelIDPromise = wait(getChannelID);
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
@@ -255,6 +258,7 @@ async function videoIDChange(id) {
         //create it
         wait(getControls).then(result => {
             let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
+            if(isTrailer) progressBar = document.getElementsByClassName("ytp-progress-bar-container")[1];
             previewBar = new PreviewBar(progressBar);
         });
     }
@@ -433,8 +437,7 @@ function updatePreviewBar() {
 function getChannelID() {
     //get channel id
     let channelURLContainer = null;
-
-    channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
+    channelURLContainer = document.getElementsByClassName("style-scope ytd-channel-name complex-string")[0];
     if (channelURLContainer !== null) {
         channelURLContainer = channelURLContainer.firstElementChild;
     } else {
@@ -451,15 +454,8 @@ function getChannelID() {
     }
 
     //first get the title to make sure a title change has occurred (otherwise the next video might still be loading)
-    let titleInfoContainer = document.getElementById("info-contents");
     let currentTitle = "";
-    if (titleInfoContainer != null) {
-        currentTitle = titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild.innerText;
-    } else {
-        //old YouTube theme
-        currentTitle = document.getElementById("eow-title").innerText;
-    }
-
+    currentTitle = document.title;
     if (title == currentTitle) {
         //video hasn't changed yet, wait
         //try later
