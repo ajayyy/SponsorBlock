@@ -831,7 +831,11 @@ async function runThePopup() {
   
     //make the options div visible
     function openOptions() {
-        chrome.runtime.openOptionsPage();
+        if(inPopup) {
+            chrome.runtime.openOptionsPage();
+        } else {
+            chrome.runtime.sendMessage({"message": "openConfig"});
+        }
     }
 
     //make the options username setting option visible
