@@ -201,7 +201,7 @@ function resetValues() {
 
     //empty the preview bar
     if (previewBar !== null) {
-        previewBar.set([], [], 0);
+        previewBar = null;
     }
 
     //reset sponsor data found check
@@ -245,7 +245,7 @@ async function videoIDChange(id) {
 
     resetValues();
     
-    //id is not valid	
+    //id is not valid
     if (!id) {	
         return;	
     };	
@@ -256,7 +256,7 @@ async function videoIDChange(id) {
     //setup the preview bar
     if (previewBar == null) {
         //create it
-        wait(getControls).then(result => {
+        wait(onBar).then(result => {
             let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
             if(isTrailer) progressBar = document.getElementsByClassName("ytp-progress-bar-container")[1];
             previewBar = new PreviewBar(progressBar);
@@ -630,8 +630,15 @@ function createButton(baseID, title, callback, imageName, isDraggable=false) {
 }
 
 function getControls() {
+    let index = (isTrailer) ? 1 : 0;
     let controls = document.getElementsByClassName("ytp-right-controls");
-    return (!controls || controls.length === 0) ? false : controls[controls.length - 1]
+    return (!controls || controls.length < index) ? false : controls[index]
+};
+
+function onBar() {
+    let min = (isTrailer) ? 2 : 1;
+    let count = document.getElementsByClassName("ytp-progress-bar-container").length;
+    return (count >= min);
 };
 
 //adds all the player controls buttons
@@ -651,6 +658,8 @@ async function createButtons() {
 async function updateVisibilityOfPlayerControlsButton() {
     //not on a proper video yet
     if (!sponsorVideoID) return;
+    
+    if(getYouTubeVideoID(url))
 
     await createButtons();
 	
