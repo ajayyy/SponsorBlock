@@ -437,7 +437,8 @@ function updatePreviewBar() {
 function getChannelID() {
     //get channel id
     let channelURLContainer = null;
-    channelURLContainer = document.getElementsByClassName("style-scope ytd-channel-name complex-string")[0];
+    if(!isTrailer) channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
+    if(isTrailer) channelURLContainer = document.getElementsByClassName("style-scope ytd-channel-name complex-string")[0];
     if (channelURLContainer !== null) {
         channelURLContainer = channelURLContainer.firstElementChild;
     } else {
