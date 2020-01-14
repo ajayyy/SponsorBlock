@@ -1,11 +1,9 @@
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
-var previousVideoID = null;
+var previousVideoIDs = new Map();
 //the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = null;
 var UUIDs = null;
-//what video id are these sponsors for
-var sponsorVideoID = null;
 
 //these are sponsors that have been downvoted
 var hiddenSponsorTimes = [];
@@ -33,14 +31,8 @@ var title;
 //is this channel whitelised from getting sponsors skipped
 var channelWhitelisted = false;
 
-// create preview bar
-var previewBar = null;
-
-//the player controls on the YouTube player
-var controls = null;
-
 // Video changes
-window.addEventListener("yt-navigate-finish", () => videoIDChange(getYouTubeVideoID(document.URL)));
+window.addEventListener("yt-navigate-finish", () => videoEvent());
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -190,7 +182,7 @@ document.onkeydown = async function(e){
     }
 }
 
-function resetValues() {
+function resetValues(index) {
     //reset last sponsor times
     lastTime = -1;
 
@@ -200,9 +192,7 @@ function resetValues() {
     sponsorLookupRetries = 0;
 
     //empty the preview bar
-    if (previewBar !== null) {
-        previewBar = null;
-    }
+    previewBars.set(index, null);
 
     //reset sponsor data found check
     sponsorDataFound = false;
@@ -219,7 +209,9 @@ function getTitleLink() {
     return false
 };
 
-async function getTrailerID() {
+async function getID() {
+    var id = await getYouTubeVideoID(document.URL);
+    if(id) return id;
     if(document.URL.startsWith("https://www.youtube.com/channel/") || document.URL.startsWith("https://www.youtube.com/user/")) {
         await wait(getTitleLink);
         let url = getTitleLink().href;
@@ -228,41 +220,40 @@ async function getTrailerID() {
     return false;
 }
 
-async function videoIDChange(id) { 
-    //if id not valid check for trailer
-    if (!id) {
-        id = await getTrailerID();
-        isTrailer = (id) ? true : false;
-    } else {
-        isTrailer = false;
-    }
-    
-    //id not valid change
-    if (sponsorVideoID === id) return;
+var previewBars = new Map();
 
+async function videoEvent() {
+    wait(onBar).then(result => {
+        let Elements = document.getElementsByClassName("ytp-progress-bar-container") || document.getElementsByClassName("no-model cue-range-markers");
+        Array.from(Elements).forEach(async (item, index) => {
+            previewBars.set(index, new PreviewBar(item));
+            var id = await getID();
+            videoIDChange(index, id);
+        });
+    });
+}
+
+async function videoIDChange(index, id) {
+    //id not valid change
+    if (previousVideoIDs.has(id)) return;
+    
+    await createButtons(index);
+    
     //set the global videoID
     sponsorVideoID = id;
-
-    resetValues();
     
     //id is not valid
-    if (!id) {	
-        return;	
-    };	
-
+    if (!id) return;
+    
+    resetValues(index);
+    
     let channelIDPromise = wait(getChannelID);
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
-    if (previewBar == null) {
-        //create it
-        wait(onBar).then(result => {
-            let progressBar = document.getElementsByClassName("ytp-progress-bar-container")[0] || document.getElementsByClassName("no-model cue-range-markers")[0];
-            if(isTrailer) progressBar = document.getElementsByClassName("ytp-progress-bar-container")[1];
-            previewBar = new PreviewBar(progressBar);
-        });
-    }
-
+    var previewBar = previewBars.get(index);
+    var previousVideoID = previousVideoIDs.get(index);
+    
     //warn them if they had unsubmitted times
     if (previousVideoID != null) {
         //get the sponsor times from storage
@@ -276,10 +267,10 @@ async function videoIDChange(id) {
         }
 
         //set the previous video id to the currentID
-        previousVideoID = id;
+        previousVideoIDs.set(index, id);
     } else {
         //set the previous id now, don't wait for chrome.storage.get
-        previousVideoID = id;
+        previousVideoIDs.set(index, id);
     }
   
     //close popup
@@ -294,7 +285,7 @@ async function videoIDChange(id) {
     sponsorTimesSubmitting = [];
 
     //see if the onvideo control image needs to be changed
-	wait(getControls).then(result => {
+	wait(() => getControls(index)).then(result => {
 		chrome.runtime.sendMessage({
 			message: "getSponsorTimes",
 			videoID: id
@@ -408,7 +399,8 @@ function sponsorsLookup(id, channelIDPromise) {
     }
 }
 
-function updatePreviewBar() {
+function updatePreviewBar(index) {
+    var previewBar = previewBars.get(index);
     let localSponsorTimes = sponsorTimes;
     if (localSponsorTimes == null) localSponsorTimes = [];
 
@@ -437,8 +429,7 @@ function updatePreviewBar() {
 function getChannelID() {
     //get channel id
     let channelURLContainer = null;
-    if(!isTrailer) channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
-    if(isTrailer) channelURLContainer = document.getElementsByClassName("style-scope ytd-channel-name complex-string")[0];
+    channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
     if (channelURLContainer !== null) {
         channelURLContainer = channelURLContainer.firstElementChild;
     } else {
@@ -629,21 +620,19 @@ function createButton(baseID, title, callback, imageName, isDraggable=false) {
     controls.prepend(newButton);
 }
 
-function getControls() {
-    let index = (isTrailer) ? 1 : 0;
+function getControls(index) {
     let controls = document.getElementsByClassName("ytp-right-controls");
     return (!controls || controls.length < index) ? false : controls[index]
 };
 
 function onBar() {
-    let min = (isTrailer) ? 2 : 1;
     let count = document.getElementsByClassName("ytp-progress-bar-container").length;
-    return (count >= min);
+    return (count > 0);
 };
 
 //adds all the player controls buttons
-async function createButtons() {
-    let result = await wait(getControls).catch();
+async function createButtons(index) {
+    let result = await wait(() => getControls(index)).catch();
 
     //set global controls variable
     controls = result;
@@ -654,14 +643,9 @@ async function createButtons() {
     createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
     createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
 }
+
 //adds or removes the player controls button to what it should be
 async function updateVisibilityOfPlayerControlsButton() {
-    //not on a proper video yet
-    if (!sponsorVideoID) return;
-    
-    if(getYouTubeVideoID(url))
-
-    await createButtons();
 	
     if (SB.config.hideDeleteButtonPlayerControls) {
         removePlayerControlsButton();
