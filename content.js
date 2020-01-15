@@ -17,7 +17,7 @@ var v;
 var listenerAdded;
 
 //the video id of the last preview bar update
-var lastPreviewBarUpdate;
+var lastPreviewBarUpdate = new Map();
 
 //whether the duration listener listening for the duration changes of the video has been setup yet
 var durationListenerSetUp = false;
@@ -276,7 +276,7 @@ async function videoIDChange(index, id) {
     //close popup
     closeInfoMenu();
 	
-    sponsorsLookup(id, channelIDPromise);
+    sponsorsLookup(id, channelIDPromise, index);
 
     //make sure everything is properly added
     updateVisibilityOfPlayerControlsButton();
@@ -313,11 +313,11 @@ async function videoIDChange(index, id) {
     updateVisibilityOfPlayerControlsButton(false);
 }
 
-function sponsorsLookup(id, channelIDPromise) {
+function sponsorsLookup(id, channelIDPromise, index) {
     v = document.querySelector('video') // Youtube video player
     //there is no video here
     if (v == null) {
-        setTimeout(() => sponsorsLookup(id), 100);
+        setTimeout(() => sponsorsLookup(id, null, index), 100);
         return;
     }
 
@@ -355,7 +355,7 @@ function sponsorsLookup(id, channelIDPromise) {
 
             //update the preview bar
             //leave the type blank for now until categories are added
-            if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(v.duration))) {
+            if (lastPreviewBarUpdate.get(index) == id || (lastPreviewBarUpdate.get(index) == null && !isNaN(v.duration))) {
                 //set it now
                 //otherwise the listener can handle it
                 updatePreviewBar();
@@ -374,7 +374,7 @@ function sponsorsLookup(id, channelIDPromise) {
                     //if less than 3 days old
                     if ((Date.now() / 1000) - unixTimePublished < 259200) {
                         //TODO lower when server becomes better
-                        setTimeout(() => sponsorsLookup(id), 180000);
+                        setTimeout(() => sponsorsLookup(id, null, index), 180000);
                     }
                 }
             });
@@ -385,7 +385,7 @@ function sponsorsLookup(id, channelIDPromise) {
 
             //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id), 10000);
+            setTimeout(() => sponsorsLookup(id, null, index), 10000);
 
             sponsorLookupRetries++;
         }
@@ -420,10 +420,10 @@ function updatePreviewBar(index) {
         types.push("previewSponsor");
     }
 
-    wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, v.duration));
+    wait(() => previewBars.get(index) !== null).then((result) => previewBars.set(allSponsorTimes, types, v.duration));
 
     //update last video id
-    lastPreviewBarUpdate = sponsorVideoID;
+    lastPreviewBarUpdate.set(index, sponsorVideoID);
 }
 
 function getChannelID() {
@@ -588,11 +588,9 @@ function reskipSponsorTime(UUID) {
     }
 }
 
-function removePlayerControlsButton() {
-    if (!sponsorVideoID) return;
-
-    document.getElementById("startSponsorButton").style.display = "none";
-    document.getElementById("submitButton").style.display = "none";
+function removePlayerControlsButton(control) {
+    control.getElementById("startSponsorButton").style.display = "none";
+    control.getElementById("submitButton").style.display = "none";
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false) {
@@ -646,17 +644,20 @@ async function createButtons(index) {
 
 //adds or removes the player controls button to what it should be
 async function updateVisibilityOfPlayerControlsButton() {
-	
-    if (SB.config.hideDeleteButtonPlayerControls) {
-        removePlayerControlsButton();
-    }
-    //don't show the info button on embeds
-    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
-        document.getElementById("infoButton").style.display = "none";
-    }
-    if (SB.config.hideDeleteButtonPlayerControls) {
-        document.getElementById("deleteButton").style.display = "none";
-    }
+    var controls = Array.from(document.getElementsByClassName("ytp-right-controls"));
+    controls.forEach(control => {
+        if (SB.config.hideDeleteButtonPlayerControls) {
+            removePlayerControlsButton(control);
+        }
+        //don't show the info button on embeds
+        if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
+            control.getElementById("infoButton").style.display = "none";
+        }
+        if (SB.config.hideDeleteButtonPlayerControls) {
+            control.getElementById("deleteButton").style.display = "none";
+        }
+    })
+
 }
 
 function startSponsorClicked() {
