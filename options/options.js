@@ -234,6 +234,15 @@ function keybindKeyPressed(element, e) {
     e = e || window.event;
     var key = e.key;
 
+    let button = element.querySelector(".trigger-button");
+
+    // cancel setting a keybind
+    if (key === "Escape") {
+        element.querySelector(".option-hidden-section").classList.add("hidden");
+        button.classList.remove("disabled");
+        return;
+    }
+
     let option = element.getAttribute("sync-option");
 
     SB.config[option] = key;
@@ -243,8 +252,6 @@ function keybindKeyPressed(element, e) {
 
     let statusKey = element.querySelector(".option-hidden-section > .keybind-status-key");
     statusKey.innerText = key;
-
-    let button = element.querySelector(".trigger-button");
 
     button.classList.remove("disabled");
 }
