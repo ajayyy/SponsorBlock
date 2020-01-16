@@ -21,9 +21,9 @@ class MapIO {
 
     set(key, value) {
         this.map.set(key, value);
-
-        SB.config.handler.set(undefined, this.id, encodeStoredItem(this.map));
-
+        chrome.storage.sync.set({
+            [this.id]: encodeStoredItem(this.map)
+        });
         return this.map;
     }
 	
@@ -38,6 +38,9 @@ class MapIO {
     deleteProperty(key) {
         if (this.map.has(key)) {
 	    this.map.delete(key);
+        chrome.storage.sync.set({
+            [this.id]: encodeStoredItem(this.map)
+        });
 	    return true;
 	} else {
 	    return false;
@@ -50,8 +53,6 @@ class MapIO {
 	
     delete(key) {
         this.map.delete(key);
-
-        SB.config.handler.set(undefined, this.id, encodeStoredItem(this.map));
     }
 }
 
