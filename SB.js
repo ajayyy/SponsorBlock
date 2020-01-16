@@ -9,16 +9,21 @@ SB = {
 
 // Function setup
 
+// Allows a map to be conveted into json form
+// Currently used for local storage
 Map.prototype.toJSON = function() {
     return Array.from(this.entries());
 };
 
+// Proxy Map changes to Map in SB.localConfig
+// Saves the changes to chrome.storage in json form
 class MapIO {
     constructor(id) {
+	// The name of the item in the array
         this.id = id;
+	// A local copy of the map (SB.config.mapname.map)
         this.map = SB.localConfig[this.id];
     }
-
     set(key, value) {
 	// Proxy to map
         this.map.set(key, value);
@@ -65,6 +70,7 @@ class MapIO {
  * @param {*} data 
  */
 function encodeStoredItem(data) {
+    // if data is Map convert to json for storing
     if(!(data instanceof Map)) return data;
     return JSON.stringify(data);
 }
@@ -120,7 +126,7 @@ function configProxy() {
         deleteProperty(obj, prop) {
 	    chrome.storage.sync.remove(prop);
         }
-		
+
     };
 
     return new Proxy({handler}, handler);
