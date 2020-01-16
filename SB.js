@@ -65,7 +65,10 @@ class MapIO {
     }
 
     clear(key) {
-        return this.map.clear();
+        this.map.clear();
+	chrome.storage.sync.set({
+            [this.id]: encodeStoredItem(this.map)
+        });
     }
 }
 
