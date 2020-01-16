@@ -37,23 +37,6 @@ class MapIO {
         return this.map.has(key);
     }
 	
-    deleteProperty(key) {
-	if(key === undefined) {
-            return chrome.storage.sync.remove(this.id);
-	}
-        if (this.map.has(key)) {
-	    // Proxy to map
-	    this.map.delete(key);
-	    // Store updated map locally
-            chrome.storage.sync.set({
-                [this.id]: encodeStoredItem(this.map)
-            });
-	    return true;
-	} else {
-	    return false;
-	}
-    }
-	
     size() {
         return this.map.size;
     }
@@ -67,7 +50,7 @@ class MapIO {
         });
     }
 
-    clear(key) {
+    clear() {
         this.map.clear();
 	chrome.storage.sync.set({
             [this.id]: encodeStoredItem(this.map)
@@ -82,8 +65,8 @@ class MapIO {
  * @param {*} data 
  */
 function encodeStoredItem(data) {
-	if(!(data instanceof Map)) return data;
-	return JSON.stringify(data);
+    if(!(data instanceof Map)) return data;
+    return JSON.stringify(data);
 }
 
 /**
@@ -135,7 +118,7 @@ function configProxy() {
         },
 	
         deleteProperty(obj, prop) {
-	        chrome.storage.sync.remove(prop);
+	    chrome.storage.sync.remove(prop);
         }
 		
     };
