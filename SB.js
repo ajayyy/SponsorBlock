@@ -15,32 +15,36 @@ Map.prototype.toJSON = function() {
 
 class MapIO {
     constructor(id) {
-		this.id = id;
-		this.map = SB.localConfig[this.id];
+        this.id = id;
+        this.map = SB.localConfig[this.id];
     }
 
     set(key, value) {
+	// Proxy to map
         this.map.set(key, value);
+        // Store updated map locally
         chrome.storage.sync.set({
             [this.id]: encodeStoredItem(this.map)
         });
         return this.map;
     }
-	
+
     get(key) {
-	    return this.map.get(key);
-	}
+        return this.map.get(key);
+    }
 	
     has(key) {
-	    return this.map.has(key);
+        return this.map.has(key);
     }
 	
     deleteProperty(key) {
         if (this.map.has(key)) {
+	    // Proxy to map
 	    this.map.delete(key);
-        chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this.map)
-        });
+	    // Store updated map locally
+            chrome.storage.sync.set({
+                [this.id]: encodeStoredItem(this.map)
+            });
 	    return true;
 	} else {
 	    return false;
@@ -52,7 +56,12 @@ class MapIO {
     }
 	
     delete(key) {
+	// Proxy to map
         this.map.delete(key);
+	// Store updated map locally
+	chrome.storage.sync.set({
+            [this.id]: encodeStoredItem(this.map)
+        });
     }
 }
 
