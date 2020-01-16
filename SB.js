@@ -63,6 +63,10 @@ class MapIO {
             [this.id]: encodeStoredItem(this.map)
         });
     }
+
+    clear(key) {
+        return this.map.clear();
+    }
 }
 
 /**
