@@ -18,6 +18,9 @@ chrome.tabs.onUpdated.addListener(function(tabId) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	switch(request.message) {
+        case "openConfig":
+            chrome.runtime.openOptionsPage();
+            return
         case "submitTimes":
             submitTimes(request.videoID, callback);
         
