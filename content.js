@@ -695,7 +695,7 @@ function updateSponsorTimesSubmitting() {
 
 //is the submit button on the player loaded yet
 function isSubmitButtonLoaded(index) {
-    return document.getElementById("submitButton")[index] !== null;
+    return document.getElementById("submitButton"+index) !== null;
 }
 
 async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible, index = 0) {
