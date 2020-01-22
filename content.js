@@ -293,11 +293,11 @@ async function videoIDChange(index, id) {
 			if (response != undefined) {
 				let sponsorTimes = response.sponsorTimes;
 				if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
-					changeStartSponsorButton(true, true);
+					changeStartSponsorButton(true, true, index);
 				} else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
-                    changeStartSponsorButton(false, true);
+                    changeStartSponsorButton(false, true, index);
 				} else {
-					changeStartSponsorButton(true, false);
+					changeStartSponsorButton(true, false, index);
                 }
                 
 				//see if this data should be saved in the sponsorTimesSubmitting variable
@@ -588,13 +588,14 @@ function reskipSponsorTime(UUID) {
     }
 }
 
-function removePlayerControlsButton(control) {
-    control.getElementById("startSponsorButton").style.display = "none";
-    control.getElementById("submitButton").style.display = "none";
+function removePlayerControlsButton(control, index) {
+    control.getElementById("startSponsorButton"+index).style.display = "none";
+    control.getElementById("submitButton"+index).style.display = "none";
 }
 
-function createButton(baseID, title, callback, imageName, isDraggable=false) {
-    if (document.getElementById(baseID + "Button") != null) return;
+function createButton(index, baseID, title, callback, imageName, isDraggable=false) {
+    let controls = getControls(index);
+    if (document.getElementById(baseID + index + "Button") != null) return;
 
     // Button HTML
     let newButton = document.createElement("button");
@@ -630,31 +631,28 @@ function onBar() {
 
 //adds all the player controls buttons
 async function createButtons(index) {
-    let result = await wait(() => getControls(index)).catch();
-
-    //set global controls variable
-    controls = result;
+    await wait(() => getControls(index)).catch();
 
     // Add button if does not already exist in html
-    createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
-    createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
-    createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
+    createButton(index, "startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
+    createButton(index, "info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
+    createButton(index, "delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
+    createButton(index, "submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
 }
 
 //adds or removes the player controls button to what it should be
 async function updateVisibilityOfPlayerControlsButton() {
     var controls = Array.from(document.getElementsByClassName("ytp-right-controls"));
-    controls.forEach(control => {
+    controls.forEach((control, index) => {
         if (SB.config.hideDeleteButtonPlayerControls) {
-            removePlayerControlsButton(control);
+            removePlayerControlsButton(control, index);
         }
         //don't show the info button on embeds
         if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
-            control.getElementById("infoButton").style.display = "none";
+            control.getElementById("infoButton"+index).style.display = "none";
         }
         if (SB.config.hideDeleteButtonPlayerControls) {
-            control.getElementById("deleteButton").style.display = "none";
+            control.getElementById("deleteButton"+index).style.display = "none";
         }
     })
 
@@ -696,43 +694,43 @@ function updateSponsorTimesSubmitting() {
 }
 
 //is the submit button on the player loaded yet
-function isSubmitButtonLoaded() {
-    return document.getElementById("submitButton") !== null;
+function isSubmitButtonLoaded(index) {
+    return document.getElementById("submitButton")[index] !== null;
 }
 
-async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
+async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible, index = 0) {
     if(!sponsorVideoID) return false;
     
     //make sure submit button is loaded
-    await wait(isSubmitButtonLoaded);
+    await wait(() => isSubmitButtonLoaded(index));
     
     //if it isn't visible, there is no data
     let shouldHide = (uploadButtonVisible && !SB.config.hideDeleteButtonPlayerControls) ? "unset" : "none"
-    document.getElementById("deleteButton").style.display = shouldHide;
+    document.getElementById("deleteButton"+index).style.display = shouldHide;
 
     if (showStartSponsor) {
         showingStartSponsor = true;
-        document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
-        document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
+        document.getElementById("startSponsorImage"+index).src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+        document.getElementById("startSponsorButton"+index).setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
-        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !SB.config.hideInfoButtonPlayerControls) {
-            document.getElementById("submitButton").style.display = "unset";
+        if (document.getElementById("startSponsorImage"+index).style.display != "none" && uploadButtonVisible && !SB.config.hideInfoButtonPlayerControls) {
+            document.getElementById("submitButton"+index).style.display = "unset";
         } else if (!uploadButtonVisible) {
             //disable submit button
-            document.getElementById("submitButton").style.display = "none";
+            document.getElementById("submitButton"+index).style.display = "none";
         }
     } else {
         showingStartSponsor = false;
-        document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
-        document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
+        document.getElementById("startSponsorImage"+index).src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
+        document.getElementById("startSponsorButton"+index).setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
 
         //disable submit button
-        document.getElementById("submitButton").style.display = "none";
+        document.getElementById("submitButton"+index).style.display = "none";
     }
 }
 
-function toggleStartSponsorButton() {
-    changeStartSponsorButton(!showingStartSponsor, true);
+function toggleStartSponsorButton(index = 0) {
+    changeStartSponsorButton(!showingStartSponsor, true, index);
 }
 
 function openInfoMenu() {
@@ -798,7 +796,7 @@ function closeInfoMenu() {
         popup.remove();
 
         //show info button if it's not an embed
-        if (!document.URL.includes("/embed/")) {
+        if (!document.URL.includes("watch?v=")) {
             document.getElementById("infoButton").style.display = "unset";
         }
     }
@@ -938,7 +936,7 @@ function submitSponsorTimes() {
                                 + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
         if(!confirm(confirmMessage)) return;
 
-        sendSubmitMessage();
+        sendSubmitMessage(index);
     }
 
 }
