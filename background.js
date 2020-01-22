@@ -103,7 +103,7 @@ function registerFirefoxContentScript(options) {
         js: options.js,
         css: options.css,
         matches: options.matches
-    }).then(() => void (contentScriptRegistrations[options.id] = registration));
+    }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
 }
 
 //gets the sponsor times from memory
