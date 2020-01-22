@@ -600,7 +600,7 @@ function createButton(index, baseID, title, callback, imageName, isDraggable=fal
     // Button HTML
     let newButton = document.createElement("button");
     newButton.draggable = isDraggable;
-    newButton.id = baseID + "Button";
+    newButton.id = baseID + "Button" + index;
     newButton.className = "ytp-button playerButton";
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
     newButton.addEventListener("click", callback);
@@ -608,7 +608,7 @@ function createButton(index, baseID, title, callback, imageName, isDraggable=fal
     // Image HTML
     let newButtonImage = document.createElement("img");
     newButton.draggable = isDraggable;
-    newButtonImage.id = baseID + "Image";
+    newButtonImage.id = baseID + "Image" + index;
     newButtonImage.className = "playerButtonImage";
     newButtonImage.src = chrome.extension.getURL("icons/" + imageName);
 
