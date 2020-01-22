@@ -827,8 +827,8 @@ function clearSponsorTimes() {
     let sponsorTimes = SB.config.sponsorTimes.get(currentVideoID);
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes);
-        confirmMessage += chrome.i18n.getMessage("confirmMSG")
+        let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes)
+                                + "\n" + chrome.i18n.getMessage("confirmMSG")
         if(!confirm(confirmMessage)) return;
 
         //clear the sponsor times

@@ -4,6 +4,16 @@
 
 body {
   background-color: #333333;
+  font-family: sans-serif;
+}
+
+.center {
+  text-align: center;
+}
+
+.container {
+  max-width: 60%;
+  margin: auto;
 }
 
 .projectPreview {
@@ -12,24 +22,24 @@ body {
 
 .projectPreviewImage {
   position: absolute;
-  left: -90;
-  width: 80;
+  left: -90px;
+  width: 80px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .projectPreviewImageLarge {
   position: absolute;
-  left: -210;
-  width: 200;
+  left: -210px;
+  width: 200px;
   top: 50%;
   transform: translateY(-20%);
 }
 
 .projectPreviewImageLargeRight {
   position: absolute;
-  right: -210;
-  width: 200;
+  right: -210px;
+  width: 200px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -47,37 +57,27 @@ body {
   text-align: center;
   vertical-align: middle;
 
-  font-family: sans-serif;
-  font-size: 50;
+  font-size: 50px;
   color: #212121;
 
-  /* height: 100; */
-
-  padding: 20;
+  padding: 20px;
   
   text-decoration: none;
 
   transition: font-size 1s;
 }
 
-#title:hover {
-  font-size: 60;
-
-  transition: font-size 1s;
-}
-
 .subtitle {
-  font-family: sans-serif;
-  font-size: 40;
+  font-size: 40px;
   color: #dad8d8;
 
-  padding-top: 10;
+  padding-top: 10px;
 
   transition: font-size 0.4s;
 }
 
 .subtitle:hover {
-  font-size: 45;
+  font-size: 45px;
 
   transition: font-size 0.4s;
 }
@@ -99,7 +99,7 @@ a {
 }
 
 .link {
-  padding: 20;
+  padding: 20px;
 
   height: 80px;
 
@@ -113,13 +113,12 @@ a {
 }
 
 #contact,.smalllink {
-  font-family: sans-serif;
-  font-size: 25;
+  font-size: 25px;
   color: #e8e8e8;
 
   text-align: center;
   
-  padding: 10;
+  padding: 10px;
 }
 
 #contact {
@@ -127,15 +126,11 @@ a {
 }
 
 p,li,a {
-  font-family: sans-serif;
-  font-size: 20;
+  font-size: 20px;
   color: #c4c4c4;
-
-  padding: 10;
 }
 
 p,li,code,a {
-	max-width: 60%;
 	text-align: left;
 	overflow-wrap: break-word;
 }
@@ -147,7 +142,7 @@ p,li,code,a {
   
   .projectPreviewImage {
     position: unset;
-    width: 130;
+    width: 130px;
     display: block;
     margin: auto;
     transform: none;
@@ -165,20 +160,18 @@ img {
 }
 
 #recentPostTitle {
-  font-family: sans-serif;
-  font-size: 30;
+  font-size: 30px;
   color: #dad8d8;
 }
 
 #recentPostDate {
-  font-family: sans-serif;
-  font-size: 15;
+  font-size: 15px;
   color: #dad8d8;
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: sans-serif;
   color: #dad8d8;
+  text-align: center;
 }
 
 svg {

@@ -18,6 +18,9 @@ chrome.tabs.onUpdated.addListener(function(tabId) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	switch(request.message) {
+        case "openConfig":
+            chrome.runtime.openOptionsPage();
+            return
         case "submitTimes":
             submitTimes(request.videoID, callback);
         
@@ -100,7 +103,7 @@ function registerFirefoxContentScript(options) {
         js: options.js,
         css: options.css,
         matches: options.matches
-    }).then(() => void (contentScriptRegistrations[options.id] = registration));
+    }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
 }
 
 //gets the sponsor times from memory

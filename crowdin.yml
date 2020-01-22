@@ -3,6 +3,7 @@ files:
     translation: /_locales/%two_letters_code%/%original_file_name%
     languages_mapping:
         two_letters_code:
+           pl-PL: "pl_PL"
            pr-BR: "pt_BR"
            pr-PT: "pt_PT"
            zh-CN: "zh_CH"

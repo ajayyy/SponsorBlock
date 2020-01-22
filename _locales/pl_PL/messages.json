@@ -1,0 +1,390 @@
+{
+  "Name": {
+      "message": "SponsorBlock",
+      "description": "Nazwa rozszerzenia."
+  },
+  "fullName": {
+      "message": "SponsorBlock na YouTube - Omiń reklamy sponsorów",
+      "description": "Nazwa rozszerzenia."
+  },
+
+  "Description": {
+      "message": "Przewijaj reklamy sponsorów w filmach na YouTube. Zgłaszaj reklamy w nagraniach żeby nie marnować czasu innych.",
+      "description": "Opis rozszerzenia."
+  },
+  "helpPage": {
+      "message": "index_en.html"
+  },
+  "400": {
+      "message": "Serwer odpowiedział, że to zapytanie jest niepoprawne"
+  },
+  "429": {
+      "message": "Zgłosiłeś bardzo dużo segmentów reklamowych dla tego jednego nagrania, jesteś pewien, że jest ich tak dużo?"
+  },
+  "409": {
+      "message": "Treść została już wcześniej zgłoszona"
+  },
+  "channelWhitelisted": {
+      "message": "Kanał dodany do wyjątków!"
+  },
+  "Sponsor": {
+      "message": "sponsor"
+  },
+  "Sponsors": {
+      "message": "sponsorzy"
+  },
+ "Segment": {
+      "message": "segmet sponsorowany"
+  },
+  "Segments": {
+      "message": "segmenty sponsorowane"
+  },
+  "noticeTitle": {
+      "message": "Segment przewinięty"
+  },
+  "reportButtonTitle": {
+      "message": "Zgłoś"
+  },
+  "reportButtonInfo": {
+      "message": "Zgłoś ten segment reklamowy jako nieprawidłowy."
+  },
+  "Dismiss": {
+      "message": "Odrzuć"
+  },
+  "Loading": {
+      "message": "Ładowanie..."
+  },
+  "Mins": {
+      "message": "Minuty"
+  },
+  "Secs": {
+      "message": "Sekundy"
+  },
+  "Hide": {
+      "message": "Nigdy nie pokazuj"
+  },
+  "hitGoBack": {
+      "message": "Kliknij cofnij aby przenieść się do miejsca przed przewinięciem."
+  },
+  "unskip": {
+      "message": "Cofnij"
+  },
+  "reskip": {
+      "message": "Przewiń"
+  },
+  "paused": {
+      "message": "Zatrzymany"
+  },
+  "confirmMSG": {
+      "message": "Żeby zmienić lub usunąć wartości, kliknij na guzik informacji lub otwórz okienko rozszerzenia klikając w ikonę rozszerzenia znajdującą się w prawym górnym rogu."
+  },
+  "clearThis": {
+      "message": "Jesteś pewien, że chcesz to usunąć?\n\n"
+  },
+  "Unknown": {
+      "message": "Wystąpił błąd podczas przesyłania twojego zgłoszenia, proszę spróbować ponownie później."
+  },
+  "sponsorFound": {
+      "message": "Segmenty reklamowe dla tego nagrania są już w bazie!"
+  },
+  "sponsor404": {
+      "message": "Nie znaleziono segmentów reklamowych"
+  },
+  "sponsorStart": {
+      "message": "Reklama zaczyna się teraz"
+  },
+  "sponsorEnd": {
+      "message": "Reklama kończy się teraz"
+  },
+  "noVideoID": {
+      "message": "Nie znaleziono nagrania wideo w tej karcie. Jeśli wiesz, że to karta YouTube'a, zamknij to okienko i otwórz je ponownie. Jeśli to nie zadziała spróbuj przeładować stronę."
+  },
+  "success": {
+      "message": "Sukces!"
+  },
+  "voted": {
+      "message": "Zagłosowano!"
+  },
+  "voteFail": {
+      "message": "Już na to głosowałeś."
+  },
+  "serverDown": {
+      "message": "Wygląda na to, że serwer nie działa. Skontaktuj się z dewloperem."
+  },
+  "connectionError": {
+      "message": "Błąd z połączeniem. Kod błędu: "
+  },
+  "wantToSubmit": {
+      "message": "Chcesz zgłosić segment sponsorowany dla nagrania z id"
+  },
+  "leftTimes": {
+      "message": "Wygląda na to, że masz nie wysłane segmenty reklamowe. Cofnij się do tej strony i zgłoś je (nie zostały usunięte)."
+  },
+  "clearTimes": {
+      "message": "Wyczyść segmenty reklamowe"
+  },
+  "openPopup": {
+      "message": "Otwórz okienko SponsorBlock"
+  },
+  "SubmitTimes": {
+      "message": "Zgłoś segmenty reklamowe"
+  },
+  "submitCheck": {
+      "message": "Jesteś pewien, że chcesz to zgłosić?"
+  },
+  "whitelistChannel": {
+       "message": "Dodaj kanał do wyjątków"
+  },
+  "removeFromWhitelist": {
+       "message": "Usuń kanał z listy wyjątków"
+  },
+  "voteOnTime": {
+       "message": "Głosuj na segment reklamowy"
+  },
+  "recordTimes": {
+       "message": "Nagraj czasy segmentów reklamowych"
+  },
+  "soFarUHSubmited": {
+       "message": "Jak na razie zgłosiłeś:"
+  },
+  "savedPeopleFrom": {
+       "message": "Ocaliłeś ludzi przed "
+  },
+  "viewLeaderboard": {
+       "message": "Zobacz ranking użytkowników"
+  },
+  "here": {
+      "message": "tutaj"
+  },
+  "recordTimesDescription": {
+       "message": "Kliknij guzik poniżej kiedy segment reklamowy się zaczyna i kończy żeby go oznaczyć i wysłać do bazy danych."
+  },
+  "popupHint": {
+       "message": "Podpowiedź: Klikając średnik kiedy zaznaczone jest zgłaszanie wideo możesz oznaczyć początek reklamy, znakiem cytatu oznaczysz jej koniec. (Klawisze można zmienić w opcjach)"
+  },
+  "lastTimes": {
+       "message": "Ostanie wybrane czasy reklam"
+  },
+  "clearTimesButton": {
+      "message": "Usuń czasy"
+  },
+  "submitTimesButton": {
+      "message": "Zgłoś czasy"
+  },
+  "publicStats": {
+      "message": "Ten dane są używane na naszej stronie żeby pokazać twój wkład. Zobacz to"
+  },
+  "setUsername": {
+      "message": "Ustaw nazwę użytkownika"
+  },
+  "discordAdvert": {
+      "message": "Dołącz do oficjalnego serwera na discordzie i podziel się wrażeniami i sugestiami!"
+  },
+  "hideThis": {
+      "message": "Ukryj to"
+  },
+  "Options": {
+      "message": "Opcje"
+  },
+  "showButtons": {
+      "message": "Pokaż guziki w odtwarzaczu YouTube"
+  },
+  "hideButtons": {
+      "message": "Ukryj guziki w odtwarzaczu YouTube"
+  },
+  "hideButtonsDescription": {
+      "message": "Ta opcja ukrywa guziki zgłaszania reklamy w odtwarzaczu. Wiem, że mogą one irytować niektórych. Zamiast zgłaszania bezpośrednio w odtwarzaczu możesz to zrobić w tym okienku. Zawsze możesz zmienić te opcje później."
+  },
+  "showInfoButton": {
+      "message": "Pokaż guzik informacyjny w odtwarzaczu YouTube"
+  },
+  "hideInfoButton": {
+      "message": "Ukryj guzik informacyjny w odtwarzaczu YouTube"
+  },
+  "whatInfoButton": {
+      "message": "Jest to guzik otwierający popup na stronie YouTube."
+  },
+  "hideDeleteButton": {
+      "message": "Ukryj guzik usuwania w odtwarzaczu YouTube"
+  },
+  "showDeleteButton": {
+      "message": "Pokaż guzik usuwania w odtwarzaczu YouTube"
+  },
+  "whatDeleteButton": {
+      "message": "Ten guzik pozwala ci wyczyścić wszystkie segmenty reklamowe w odtwarzaczu YouTube."
+  },
+  "disableViewTracking": {
+      "message": "Wyłącz licznik przewinięć"
+  },
+  "enableViewTracking": {
+      "message": "Włącz licznik przewinięć"
+  },
+  "whatViewTracking": {
+      "message": "Ta opcja śledzi które segmenty pominąłeś i informuje zgłaszających ile czasu Ci zaoszczędzili, też wraz systemem głosowania pomaga wykrywać spam w zgłoszeniach. Rozszerzenie wysyła zapytanie do serwera za każdym razem kiedy przewinąłeś segment reklamowy. Miejmy nadzieję, że większość ludzi tego nie wyłączy i licznik wyświetleń będzie rzetelny. :)"
+  },
+  "showNotice": {
+      "message": "Pokaż informacje ponownie"
+  },
+  "longDescription": {
+      "message": "SponsorBlock jest rozszerzeniem które przewinie segmenty sponsorów w filmach na YouTube. SponsorBlock jest opartym na crowdsourcing rozszerzeniem które pozwala każdemu zgłaszać początek i koniec segmentu reklamowego w filmach na YouTube. Kiedy ktoś zgłosi taki fragment zostanie on pominięty przez innych użytkowników rozszerzenia.",
+      "description": "Pełny opis rozszerzenia na stronie w sklepie."
+  },
+  "website": {
+      "message": "Strona",
+      "description": "Używane w sklepie Firefoxa"
+  },
+  "sourceCode": {
+      "message": "Kod źródłowy",
+      "description": "Używane w sklepie Firefoxa"
+  },
+  "noticeUpdate": {
+      "message": "Informacje zostały zaktualizowane!",
+      "description": "Pierwsza linia po aktualizacji informacji."
+  },
+  "noticeUpdate2": {
+      "message": "Jeśli nadal jej nie lubisz wybierz opcje nie pokazuj więcej.",
+      "description": "Druga linia po aktualizacji informacji."
+  },
+  "setStartSponsorShortcut": {
+      "message": "Ustaw klawisz do oznaczania początku reklamy"
+  },
+  "setSubmitKeybind": {
+      "message": "Ustaw klawisz do wysyłania czasów"
+  },
+  "keybindDescription": {
+      "message": "Wybierz klawisz klikając go na klawiaturze"
+  },
+  "keybindDescriptionComplete": {
+      "message": "Ustawiony klawisz to: "
+  },
+  "0": {
+      "message": "Połączenie przerwane z powodu braku odpowiedzi. Sprawdź swoje połączenie z internetem. Jeśli wszystko z nim w porządku oznacza to, że serwer jest prawdopodobnie przeciążony lub nie działa."
+  },
+  "disableSkipping": {
+      "message": "Wyłącz SponsorBlock"
+  },
+  "enableSkipping": {
+      "message": "Włącz SponsorBlock"
+  },
+  "yourWork": {
+      "message": "Twój wkład",
+      "description": "Nagłowek sekcji ze statystykami użytkownika."
+  },
+  "502": {
+      "message": "Serwer jest prawdopodobnie przeciążony, spróbuj ponownie za kilka sekund."
+  },
+  "errorCode": {
+      "message": "Kod błędu: "
+  },
+  "noticeTitleNotSkipped": {
+      "message": "Przewinąć reklamę?"
+  },
+  "skip": {
+      "message": "Przewiń"
+  },
+  "disableAutoSkip": {
+      "message": "Wyłącz auto przewijanie"
+  },
+  "enableAutoSkip": {
+      "message": "Włącz auto przewijanie"
+  },
+  "autoSkipDescription": {
+      "message": "Auto przewijanie przewinie segment za ciebie, wyłączone wyświetli komunikat z pytaniem czy chcesz przewinąć reklamę."
+  },
+  "youHaveSkipped": {
+      "message": "Przewinąłeś "
+  },
+  "youHaveSaved": {
+      "message": "Oszczędziłeś sobie "
+  },
+  "minLower": {
+      "message": "minuta"
+  },
+  "minsLower": {
+      "message": "minuty"
+  },
+  "hourLower": {
+      "message": "godzina"
+  },
+  "hoursLower": {
+      "message": "godziny"
+  },
+  "youHaveSavedTime": {
+      "message": "Oszczędziłeś ludziom"
+  },
+  "youHaveSavedTimeEnd": {
+      "message": " czasu."
+  },
+  "guildlinesSummary": {
+      "message": "- Upewnij się, że zgłaszany fragment zawiera tylko reklamę i nic więcej.\n- Upewnij się, że nie zostanie przewinięta wartościowa treść\n- Jeśli całe nagranie to reklama, proszę nie zgłaszaj go. Blokowanie całych nagrań pojawi się wkrótce.\n- Nie ukrywaj treści które są istotne dla użytkownika (nie ukrywaj informacji, że recenzja produktu została opłacona przez producenta)"
+  },
+  "statusReminder": {
+      "message": "Wejdź na status.sponsor.ajay.app żeby sprawdzić czy serwer działa."
+  },
+  "changeUserID": {
+      "message": "Zaimportuj/Wyeksportuj swój UserID"
+  },
+  "whatChangeUserID": {
+      "message": "Ta informacja jest poufna i działa jak hasło, użytkownik który ma do niej dostęp może zgłaszać treści jako ty."
+  },
+  "setUserID": {
+      "message": "Ustaw UserID"
+  },
+  "userIDChangeWarning": {
+      "message": "Ostrzeżenie: Zmiana UserID jest nieodwracalna. Jesteś pewien, że chcesz to zrobić? Skopiuj obecny UserID na wszelki wypadek."
+  },
+  "createdBy": {
+      "message": "Stworzony przez"
+  },
+  "autoSkip": {
+      "message": "Auto przewijanie"
+  },
+  "showSkipNotice": {
+      "message": "Pokaż informację po przewiniętym fragmencie"
+  },
+  "keybindCurrentlySet": {
+      "message": ". Jest obecnie ustawione jako:"
+  },
+  "supportInvidious": {
+      "message": "Wesprzyj Invidious"
+  },
+  "supportInvidiousDescription": {
+      "message": "Invidious (invidio.us) to nieoficjalny klient YouTube. Aby go wesprzeć musisz przyznać dodatkowe uprawnienia rozszerzeniowi. Ta opcja nie działa w incognito i innych wersjach Chromium."
+  },
+  "optionsInfo": {
+      "message": "Wesprzyj Invidious, wyłącz auto przewijanie, ukryj guziki i więcej."
+  },
+  "addInvidiousInstance": {
+      "message": "Dodaj instancje Invidious"
+  },
+  "addInvidiousInstanceDescription": {
+      "message": "Dodaj niestandardową instancje Invidious. W formie domeny. Na przykład: invidious.ajay.app"
+  },
+  "add": {
+      "message": "Dodaj"
+  },
+  "addInvidiousInstanceError": {
+      "message": "Ta domena jest nieprawidłowa. Wartość powinna zawierać TYLKO domenę. Na przykład: invidious.ajay.app"
+  },
+  "resetInvidiousInstance": {
+      "message": "Zresetuj listę instancji Invidious"
+  },
+  "resetInvidiousInstanceAlert": {
+      "message": "Zresetujesz listę instancji Invidious"
+  },
+  "currentInstances": {
+      "message": "Obecne instancje:"
+  },
+  "enableAutoUpvote": {
+      "message": "Auto potwierdzanie"
+  },
+  "whatAutoUpvote": {
+      "message": "To ustawienie sprawia, że wszystkie przewinięte przez ciebie a nie zgłoszone jako błąd segmenty reklamowe zostaną potwierdzone jako prawidłowe. Ta opcja nie działa jeśli okienko z informacją o przewinięciu jest ukryte."
+  },
+  "invidiousInfo1": {
+      "message": "Invidious (nieoficjalny klient YouTube) została dodana do wspieranych!"
+  },
+  "invidiousInfo2": {
+      "message": "Musisz odblokować to w opcjach aby móc to zrobić."
+  }
+}
