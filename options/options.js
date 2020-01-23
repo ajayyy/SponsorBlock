@@ -68,6 +68,20 @@ async function init() {
                 break;
             case "display":
                 updateDisplayElement(optionsElements[i])
+
+                break;
+            case "number-change":
+                let numberChangeOption = optionsElements[i].getAttribute("sync-option");
+                let configValue = SB.config[numberChangeOption];
+                let numberInput = optionsElements[i].querySelector("input");
+
+                if (configValue != undefined) {
+                    numberInput.value = configValue;
+                }
+
+                numberInput.addEventListener("input", () => {
+                    SB.config[numberChangeOption] = numberInput.value;
+                });
         }
     }
 

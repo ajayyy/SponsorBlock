@@ -386,5 +386,11 @@
     },
     "invidiousInfo2": {
         "message": "You MUST enable it in the options for it to work."
-    }
+    },
+    "minDuration": {
+        "message": "Minimum duration (seconds)"
+    },
+    "minDurationDescription": {
+        "message": "Sponsor segments shorter than the set value will be ignored."
+     }
 }

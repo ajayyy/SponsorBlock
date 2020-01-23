@@ -521,6 +521,10 @@ function checkSponsorTime(sponsorTimes, index, openNotice) {
         lastTime = v.currentTime - 0.0001;
     }
 
+    if (sponsorTimes[index][1] - sponsorTimes[index][0] < SB.config.minDuration) {
+       return false;
+    }
+
     if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0], sponsorTimes[index][1]) && !hiddenSponsorTimes.includes(index)) {
         //skip it
         skipToTime(v, index, sponsorTimes, openNotice);
