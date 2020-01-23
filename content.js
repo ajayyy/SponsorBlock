@@ -1,6 +1,6 @@
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
-var previousVideoIDs = new Map();
+var videoIDs = new Map();
 //the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = null;
 var UUIDs = null;
@@ -11,8 +11,8 @@ var hiddenSponsorTimes = [];
 /** @type {Array[boolean]} Has the sponsor been skipped */
 var sponsorSkipped = [];
 
-//the video
-var v;
+//the videos
+var videos = new Map();
 
 var listenerAdded;
 
@@ -32,7 +32,8 @@ var title;
 var channelWhitelisted = false;
 
 // Video changes
-window.addEventListener("yt-navigate-finish", () => videoEvent());
+window.addEventListener("yt-player-updated", () => videoEvent());
+
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -89,13 +90,13 @@ function messageListener(request, sender, sendResponse) {
                 break;
             case "getVideoID":
                 sendResponse({
-                    videoID: sponsorVideoID
+                    videoID: videoIDs.get(0)
                 });
 
                 break;
             case "getVideoDuration":
                 sendResponse({
-                duration: v.duration
+                    duration: v.duration
                 });
 
                 break;
@@ -122,7 +123,7 @@ function messageListener(request, sender, sendResponse) {
                 break;
             case "whitelistChange":
                 channelWhitelisted = request.value;
-                sponsorsLookup(sponsorVideoID);
+                sponsorsLookup(videoIDs.get(0));
 
                 break;
             case "dontShowNotice":
@@ -177,7 +178,7 @@ document.onkeydown = async function(e){
             startSponsorClicked();
         } else if (key == submitKey.submitKeybind) {
             //single quote
-            submitSponsorTimes();
+            submitSponsorTimes(index);
         }
     }
 }
@@ -223,36 +224,32 @@ async function getID() {
 var previewBars = new Map();
 
 async function videoEvent() {
-    wait(onBar).then(result => {
-        let Elements = document.getElementsByClassName("ytp-progress-bar-container") || document.getElementsByClassName("no-model cue-range-markers");
-        Array.from(Elements).forEach(async (item, index) => {
-            previewBars.set(index, new PreviewBar(item));
-            var id = await getID();
-            videoIDChange(index, id);
-        });
+    let Elements = document.getElementsByClassName("ytp-progress-bar-container") || document.getElementsByClassName("no-model cue-range-markers");
+    Array.from(Elements).forEach(async (item, index) => {
+        let id = await getID();
+        videoIDChange(index, id, item);
     });
 }
 
-async function videoIDChange(index, id) {
+async function videoIDChange(index, id, item) {
     //id not valid change
-    if (previousVideoIDs.has(id)) return;
+    if (videoIDs.has(id)) return;
     
     await createButtons(index);
-    
-    //set the global videoID
-    sponsorVideoID = id;
     
     //id is not valid
     if (!id) return;
     
     resetValues(index);
     
+    previewBars.set(index, new PreviewBar(item));
+    
     let channelIDPromise = wait(getChannelID);
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
     var previewBar = previewBars.get(index);
-    var previousVideoID = previousVideoIDs.get(index);
+    var previousVideoID = videoIDs.get(index);
     
     //warn them if they had unsubmitted times
     if (previousVideoID != null) {
@@ -267,10 +264,10 @@ async function videoIDChange(index, id) {
         }
 
         //set the previous video id to the currentID
-        previousVideoIDs.set(index, id);
+        videoIDs.set(index, id);
     } else {
         //set the previous id now, don't wait for chrome.storage.get
-        previousVideoIDs.set(index, id);
+        videoIDs.set(index, id);
     }
   
     //close popup
@@ -304,19 +301,18 @@ async function videoIDChange(index, id) {
 				if (sponsorTimes != undefined && sponsorTimes.length > 0) {
 					sponsorTimesSubmitting = sponsorTimes;
           
-                    updatePreviewBar();
+                    updatePreviewBar(index);
 				}
 			}
 		});
 	});
 	updateVisibilityOfPlayerControlsButton();
-    updateVisibilityOfPlayerControlsButton(false);
 }
 
 function sponsorsLookup(id, channelIDPromise, index) {
-    v = document.querySelector('video') // Youtube video player
+    let v = document.getElementsByTagName("video")[index]; // Youtube video player
     //there is no video here
-    if (v == null) {
+    if (!v[index]) {
         setTimeout(() => sponsorsLookup(id, null, index), 100);
         return;
     }
@@ -325,7 +321,7 @@ function sponsorsLookup(id, channelIDPromise, index) {
         durationListenerSetUp = true;
 
         //wait until it is loaded
-        v.addEventListener('durationchange', updatePreviewBar);
+        v.addEventListener('durationchange', _ => updatePreviewBar(index));
     }
 
     if (channelIDPromise != null) {
@@ -358,7 +354,7 @@ function sponsorsLookup(id, channelIDPromise, index) {
             if (lastPreviewBarUpdate.get(index) == id || (lastPreviewBarUpdate.get(index) == null && !isNaN(v.duration))) {
                 //set it now
                 //otherwise the listener can handle it
-                updatePreviewBar();
+                updatePreviewBar(index);
             }
 
             sponsorLookupRetries = 0;
@@ -419,11 +415,16 @@ function updatePreviewBar(index) {
     for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
         types.push("previewSponsor");
     }
-
-    wait(() => previewBars.get(index) !== null).then((result) => previewBars.set(allSponsorTimes, types, v.duration));
+    
+    wait(_ => {
+        previewBars.has(index).then((result) => {
+            let previewBar = previewBars.get(index);
+            previewBar.set(allSponsorTimes, types, v.duration);
+        });
+    });
 
     //update last video id
-    lastPreviewBarUpdate.set(index, sponsorVideoID);
+    lastPreviewBarUpdate.set(index, videoIDs.get(index));
 }
 
 function getChannelID() {
@@ -588,14 +589,14 @@ function reskipSponsorTime(UUID) {
     }
 }
 
-function removePlayerControlsButton(control, index) {
+function removePlayerControlsButton(control, index = 0) {
     control.getElementById("startSponsorButton"+index).style.display = "none";
     control.getElementById("submitButton"+index).style.display = "none";
 }
 
 function createButton(index, baseID, title, callback, imageName, isDraggable=false) {
     let controls = getControls(index);
-    if (document.getElementById(baseID + index + "Button") != null) return;
+    if (document.getElementById(baseID + "Button" + index) != null) return;
 
     // Button HTML
     let newButton = document.createElement("button");
@@ -634,31 +635,30 @@ async function createButtons(index) {
     await wait(() => getControls(index)).catch();
 
     // Add button if does not already exist in html
-    createButton(index, "startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
-    createButton(index, "info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
-    createButton(index, "delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
-    createButton(index, "submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
+    createButton(index, "startSponsor", "sponsorStart", _ => startSponsorClicked(index), "PlayerStartIconSponsorBlocker256px.png");
+    createButton(index, "info", "openPopup", _=> openInfoMenu(index), "PlayerInfoIconSponsorBlocker256px.png")
+    createButton(index, "delete", "clearTimes", _ => clearSponsorTimes(index), "PlayerDeleteIconSponsorBlocker256px.png");
+    createButton(index, "submit", "SubmitTimes", _ => submitSponsorTimes(index), "PlayerUploadIconSponsorBlocker256px.png");
 }
 
 //adds or removes the player controls button to what it should be
 async function updateVisibilityOfPlayerControlsButton() {
-    var controls = Array.from(document.getElementsByClassName("ytp-right-controls"));
-    controls.forEach((control, index) => {
-        if (SB.config.hideDeleteButtonPlayerControls) {
-            removePlayerControlsButton(control, index);
+    let controlsTotal = document.getElementsByClassName("ytp-right-controls").length;
+    for(let index = 0; index < controlsTotal; index++) {
+	    if (SB.config.hideDeleteButtonPlayerControls) {
+            removePlayerControlsButton(controls, index);
         }
         //don't show the info button on embeds
-        if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/")) {
-            control.getElementById("infoButton"+index).style.display = "none";
+        if (SB.config.hideInfoButtonPlayerControls || document.location.pathname !== "/watch") {
+            document.getElementById("infoButton"+index).style.display = "none";
         }
         if (SB.config.hideDeleteButtonPlayerControls) {
-            control.getElementById("deleteButton"+index).style.display = "none";
+            document.getElementById("deleteButton"+index).style.display = "none";
         }
-    })
-
+    }
 }
 
-function startSponsorClicked() {
+function startSponsorClicked(index) {
     //it can't update to this info yet
     closeInfoMenu();
 
@@ -667,18 +667,18 @@ function startSponsorClicked() {
     //send back current time with message
     chrome.runtime.sendMessage({
         message: "addSponsorTime",
-        time: v.currentTime,
-        videoID: sponsorVideoID
+        time: getControls(index).currentTime,
+        videoID: videoIDs.get(index)
     }, function(response) {
         //see if the sponsorTimesSubmitting needs to be updated
-        updateSponsorTimesSubmitting();
+        updateSponsorTimesSubmitting(index);
     });
 }
 
-function updateSponsorTimesSubmitting() {
+function updateSponsorTimesSubmitting(index = 0) {
     chrome.runtime.sendMessage({
         message: "getSponsorTimes",
-        videoID: sponsorVideoID
+        videoID:  videoIDs.get(index)
     }, function(response) {
         if (response != undefined) {
             let sponsorTimes = response.sponsorTimes;
@@ -687,7 +687,7 @@ function updateSponsorTimesSubmitting() {
             if (sponsorTimes != undefined) {
                 sponsorTimesSubmitting = sponsorTimes;
 
-                updatePreviewBar();
+                updatePreviewBar(index);
             }
         }
     });
@@ -699,7 +699,7 @@ function isSubmitButtonLoaded(index) {
 }
 
 async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible, index = 0) {
-    if(!sponsorVideoID) return false;
+    if(videoIDs.has(index)) return false;
     
     //make sure submit button is loaded
     await wait(() => isSubmitButtonLoaded(index));
@@ -742,7 +742,7 @@ function openInfoMenu() {
     popupInitialised = false;
 
     //hide info button
-    document.getElementById("infoButton").style.display = "none";
+    document.getElementById("infoButton0").style.display = "none";
 
     sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -796,17 +796,17 @@ function closeInfoMenu() {
         popup.remove();
 
         //show info button if it's not an embed
-        if (!document.URL.includes("watch?v=")) {
-            document.getElementById("infoButton").style.display = "unset";
+        if (document.URL.includes("watch?v=")) {
+            document.getElementById("infoButton0").style.display = "unset";
         }
     }
 }
 
-function clearSponsorTimes() {
+function clearSponsorTimes(index) {
     //it can't update to this info yet
     closeInfoMenu();
 
-    let currentVideoID = sponsorVideoID;
+    let currentVideoID = videoIDs.get(index);
 
     let sponsorTimes = SB.config.sponsorTimes.get(currentVideoID);
 
@@ -821,7 +821,7 @@ function clearSponsorTimes() {
         //clear sponsor times submitting
         sponsorTimesSubmitting = [];
 
-        updatePreviewBar();
+        updatePreviewBar(index);
 
         //set buttons to be correct
         changeStartSponsorButton(true, false);
@@ -895,7 +895,7 @@ function dontShowNoticeAgain() {
 }
 
 function sponsorMessageStarted(callback) {
-    v = document.querySelector('video');
+    let v = document.getElementsByTagName("video")[0];
 
     //send back current time
     callback({
@@ -906,8 +906,8 @@ function sponsorMessageStarted(callback) {
     toggleStartSponsorButton();
 }
 
-function submitSponsorTimes() {
-    if (document.getElementById("submitButton").style.display == "none") {
+function submitSponsorTimes(index = 0) {
+    if (document.getElementById("submitButton"+index).style.display == "none") {
         //don't submit, not ready
         return;
     }
@@ -915,7 +915,7 @@ function submitSponsorTimes() {
     //it can't update to this info yet
     closeInfoMenu();
 
-    let currentVideoID = sponsorVideoID;
+    let currentVideoID = videoIDs.get(index);
 
     let sponsorTimes =  SB.config.sponsorTimes.get(currentVideoID);
 
@@ -943,12 +943,12 @@ function submitSponsorTimes() {
 
 //send the message to the background js
 //called after all the checks have been made that it's okay to do so
-function sendSubmitMessage(){
+function sendSubmitMessage(index = 0){
     //add loading animation
-    document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
-    document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
+    document.getElementById("submitImage"+index).src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
+    document.getElementById("submitButton"+index).style.animation = "rotate 1s 0s infinite";
 
-    let currentVideoID = sponsorVideoID;
+    let currentVideoID = videoIDs.get(index);
 
     chrome.runtime.sendMessage({
         message: "submitTimes",
@@ -957,7 +957,7 @@ function sendSubmitMessage(){
         if (response != undefined) {
             if (response.statusCode == 200) {
                 //hide loading message
-                let submitButton = document.getElementById("submitButton");
+                let submitButton = document.getElementById("submitButton"+index);
                 //finish this animation
                 submitButton.style.animation = "rotate 1s";
                 //when the animation is over, hide the button
@@ -984,11 +984,11 @@ function sendSubmitMessage(){
                 // Empty the submitting times
                 sponsorTimesSubmitting = [];
 
-                updatePreviewBar();
+                updatePreviewBar(index);
             } else {
                 //show that the upload failed
-                document.getElementById("submitButton").style.animation = "unset";
-                document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+                document.getElementById("submitButton"+index).style.animation = "unset";
+                document.getElementById("submitImage"+index).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
                 alert(getErrorMessage(response.statusCode));
             }
