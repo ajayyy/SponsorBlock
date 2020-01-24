@@ -75,13 +75,16 @@ async function init() {
                 let configValue = SB.config[numberChangeOption];
                 let numberInput = optionsElements[i].querySelector("input");
 
-                if (configValue != undefined) {
+                if (isNaN(configValue) || configValue < 0) {
+                    numberInput.value = 0;
+                } else {
                     numberInput.value = configValue;
                 }
 
                 numberInput.addEventListener("input", () => {
                     SB.config[numberChangeOption] = numberInput.value;
                 });
+                break;
         }
     }
 
