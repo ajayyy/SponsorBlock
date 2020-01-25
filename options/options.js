@@ -76,7 +76,7 @@ async function init() {
                 let numberInput = optionsElements[i].querySelector("input");
 
                 if (isNaN(configValue) || configValue < 0) {
-                    numberInput.value = 0;
+                    numberInput.value = SB.defaults[numberChangeOption];
                 } else {
                     numberInput.value = configValue;
                 }
