@@ -1,12 +1,17 @@
-isBackgroundScript = true;
+import Utils from "./utils";
+import SB from "./SB";
+
+import * as Types from "./types";
+
+Utils.isBackgroundScript = true;
 
 // Used only on Firefox, which does not support non persistent background pages.
 var contentScriptRegistrations = {};
 
 // Register content script if needed
-if (isFirefox()) {
-    wait(() => SB.config !== undefined).then(function() {
-        if (SB.config.supportInvidious) setupExtraSiteContentScripts();
+if (Utils.isFirefox()) {
+    Utils.wait(() => SB.config !== undefined).then(function() {
+        if (SB.config.supportInvidious) Utils.setupExtraSiteContentScripts();
     });
 } 
 
@@ -77,7 +82,7 @@ chrome.runtime.onInstalled.addListener(function (object) {
             chrome.tabs.create({url: chrome.extension.getURL("/help/index_en.html")});
 
             //generate a userID
-            const newUserID = generateUserID();
+            const newUserID = Utils.generateUserID();
             //save this UUID
             SB.config.userID = newUserID;
             
@@ -143,7 +148,7 @@ function submitVote(type, UUID, callback) {
 
     if (userID == undefined || userID === "undefined") {
         //generate one
-        userID = generateUserID();
+        userID = Utils.generateUserID();
         SB.config.userID = userID;
     }
 
@@ -176,7 +181,7 @@ async function submitTimes(videoID, callback) {
     let userID = SB.config.userID;
 		
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        let durationResult = await new Promise((resolve, reject) => {
+        let durationResult = <Types.videoDurationResponse> await new Promise((resolve, reject) => {
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
@@ -196,31 +201,29 @@ async function submitTimes(videoID, callback) {
 
         //submit these times
         for (let i = 0; i < sponsorTimes.length; i++) {
-                //to prevent it from happeneing twice
-                let increasedContributionAmount = false;
+            //to prevent it from happeneing twice
+            let increasedContributionAmount = false;
 
-                //submit the sponsorTime
-                sendRequestToServer("GET", "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
-                + "&userID=" + userID, function(xmlhttp, error) {
-					if (xmlhttp.readyState == 4 && !error) {
-                        callback({
-                            statusCode: xmlhttp.status
-                        });
+            //submit the sponsorTime
+            sendRequestToServer("GET", "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+                    + "&userID=" + userID, function(xmlhttp, error) {
+                if (xmlhttp.readyState == 4 && !error) {
+                    callback({
+                        statusCode: xmlhttp.status
+                    });
 
                     if (xmlhttp.status == 200) {
-                        //add these to the storage log
-                                currentContributionAmount = SB.config.sponsorTimesContributed;
-                                //save the amount contributed
-                                if (!increasedContributionAmount) {
-                                    increasedContributionAmount = true;
-                                    SB.config.sponsorTimesContributed = currentContributionAmount + sponsorTimes.length;
-                                }
+                        //save the amount contributed
+                        if (!increasedContributionAmount) {
+                            increasedContributionAmount = true;
+                            SB.config.sponsorTimesContributed = SB.config.sponsorTimesContribute + sponsorTimes.length;
                         }
                     } else if (error) {
                         callback({
                             statusCode: -1
                         });
                     }
+                }  
             });
         }
     }

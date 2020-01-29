@@ -75,7 +75,7 @@ class PreviewBar {
 			bar.style.left = (timestamps[i][0] / duration * 100) + "%";
 			bar.style.position = "absolute"
 
-			this.container.insertAdjacentElement("beforeEnd", bar);
+			this.container.insertAdjacentElement("beforeend", bar);
 		}
 	}
 
