@@ -167,6 +167,7 @@ SB.defaults = {
     "sponsorTimesContributed": 0,
     "disableSkipping": false,
     "disableAutoSkip": false,
+    "skipSmallSponsors": true,
     "trackViewCount": true,
     "dontShowNotice": false,
     "hideVideoPlayerControls": false,

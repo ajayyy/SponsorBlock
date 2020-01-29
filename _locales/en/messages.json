@@ -7,7 +7,6 @@
         "message": "SponsorBlock for YouTube - Skip Sponsorships",
         "description": "Name of the extension."
     },
-
     "Description": {
         "message": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
         "description": "Description of the extension."
@@ -33,7 +32,7 @@
     "Sponsors": {
         "message": "sponsors"
     },
-   "Segment": {
+    "Segment": {
         "message": "sponsor segment"
     },
     "Segments": {
@@ -133,37 +132,37 @@
         "message": "Are you sure you want to submit this?"
     },
     "whitelistChannel": {
-         "message": "Whitelist Channel"
+        "message": "Whitelist Channel"
     },
     "removeFromWhitelist": {
-         "message": "Remove Channel From Whitelist"
+        "message": "Remove Channel From Whitelist"
     },
     "voteOnTime": {
-         "message": "Vote On A Sponsor Time"
+        "message": "Vote On A Sponsor Time"
     },
     "recordTimes": {
-         "message": "Record the times of a sponsorship"
+        "message": "Record the times of a sponsorship"
     },
     "soFarUHSubmited": {
-         "message": "So far, you've submitted"
+        "message": "So far, you've submitted"
     },
     "savedPeopleFrom": {
-         "message": "You have saved people from "
+        "message": "You have saved people from "
     },
     "viewLeaderboard": {
-         "message": "View the leaderboard"
+        "message": "View the leaderboard"
     },
     "here": {
         "message": "here"
     },
     "recordTimesDescription": {
-         "message": "Click the button below when the sponsorship starts and ends to record and\nsubmit it to the database."
+        "message": "Click the button below when the sponsorship starts and ends to record and\nsubmit it to the database."
     },
     "popupHint": {
-         "message": "Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit. (This can be changed in the options)"
+        "message": "Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit. (This can be changed in the options)"
     },
     "lastTimes": {
-         "message": "Latest Sponsor Message Times Chosen"
+        "message": "Latest Sponsor Message Times Chosen"
     },
     "clearTimesButton": {
         "message": "Clear Times"
@@ -386,5 +385,8 @@
     },
     "invidiousInfo2": {
         "message": "You MUST enable it in the options for it to work."
+    },
+    "skipSmallSponsors": {
+        "message": "Skip Small Sponsors (less than 3 seconds)"
     }
 }

@@ -541,9 +541,14 @@ function checkIfTimeToSkip(currentVideoTime, startTime, endTime) {
                 (lastTime == -1 && startTime == 0 && currentVideoTime < endTime)
 }
 
+
+
 //skip fromt he start time to the end time for a certain index sponsor time
 function skipToTime(v, index, sponsorTimes, openNotice) {
-    if (!SB.config.disableAutoSkip) {
+    const doNotSkipAsSmall = SB.config.skipSmallSponsors && (sponsorTimes[index][1] - sponsorTimes[index][0] <= 3) // three seconds or mre
+    const autoSkip = !SB.config.disableAutoSkip && !doNotSkipAsSmall
+
+    if (autoSkip) {
         v.currentTime = sponsorTimes[index][1];
     }
 
@@ -555,7 +560,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!SB.config.dontShowNotice) {
-            let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip);
+            let skipNotice = new SkipNotice(this, currentUUID, !autoSkip);
 
             //TODO: Remove this when Invidious support is old
             if (SB.config.invidiousUpdateInfoShowCount < 5) {
@@ -565,7 +570,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
             }
 
             //auto-upvote this sponsor
-            if (SB.config.trackViewCount && !SB.config.disableAutoSkip && SB.config.autoUpvote) {
+            if (SB.config.trackViewCount && autoSkip && SB.config.autoUpvote) {
                 vote(1, currentUUID, null);
             }
         }
