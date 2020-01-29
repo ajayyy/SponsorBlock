@@ -21,11 +21,13 @@ let barTypes = {
 };
 
 class PreviewBar {
+	container: HTMLUListElement;
+	parent: any;
+
 	constructor(parent) {
 		this.container = document.createElement('ul');
 		this.container.id = 'previewbar';
 		this.parent = parent;
-		this.bars = []
 
 		this.updatePosition();
 	}
@@ -39,7 +41,7 @@ class PreviewBar {
 	}
 
 	updateColor(segment, color, opacity) {
-		let bars = document.querySelectorAll('[data-vs-segment-type=' + segment + ']');
+		let bars = <NodeListOf<HTMLElement>> document.querySelectorAll('[data-vs-segment-type=' + segment + ']');
 		for (let bar of bars) {
 			bar.style.backgroundColor = color;
 			bar.style.opacity = opacity;
@@ -73,8 +75,7 @@ class PreviewBar {
 			bar.style.left = (timestamps[i][0] / duration * 100) + "%";
 			bar.style.position = "absolute"
 
-			this.container.insertAdjacentElement('beforeEnd', bar);
-			this.bars[i] = bar;
+			this.container.insertAdjacentElement("beforeEnd", bar);
 		}
 	}
 
@@ -90,3 +91,5 @@ class PreviewBar {
 		this.container = undefined;
 	}
 }
+
+export default PreviewBar;

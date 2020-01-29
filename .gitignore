@@ -4,3 +4,5 @@ ignored
 node_modules
 web-ext-artifacts
 .vscode/
+dist/
+tmp/

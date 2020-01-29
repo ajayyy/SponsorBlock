@@ -4,13 +4,16 @@
  * The notice that tells the user that a sponsor was just skipped
  */
 class SkipNotice {
-    /**
-     * @param {HTMLElement} parent
-     * @param {String} UUID 
-     * @param {String} noticeTitle 
-     * @param {boolean} manualSkip 
-     */
-	constructor(parent, UUID, manualSkip = false) {
+    parent: HTMLElement;
+    UUID: string;
+    manualSkip: boolean;
+    maxCountdownTime: () => number;
+    countdownTime: any;
+    countdownInterval: number;
+    unskipCallback: any;
+    idSuffix: any;
+
+	constructor(parent: HTMLElement, UUID: string, manualSkip: boolean = false) {
         this.parent = parent;
         this.UUID = UUID;
         this.manualSkip = manualSkip;
@@ -48,7 +51,7 @@ class SkipNotice {
         noticeElement.id = "sponsorSkipNotice" + this.idSuffix;
         noticeElement.classList.add("sponsorSkipObject");
         noticeElement.classList.add("sponsorSkipNotice");
-        noticeElement.style.zIndex = 50 + amountOfPreviousNotices;
+        noticeElement.style.zIndex = String(50 + amountOfPreviousNotices);
 
         //add mouse enter and leave listeners
         noticeElement.addEventListener("mouseenter", this.pauseCountdown.bind(this));
@@ -170,12 +173,12 @@ class SkipNotice {
         if (referenceNode == null) {
             //for embeds
             let player = document.getElementById("player");
-            referenceNode = player.firstChild;
+            referenceNode = <HTMLElement> player.firstChild;
             let index = 1;
 
             //find the child that is the video player (sometimes it is not the first)
             while (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed")) {
-                referenceNode = player.children[index];
+                referenceNode = <HTMLElement> player.children[index];
 
                 index++;
             }
@@ -336,7 +339,7 @@ class SkipNotice {
         noticeElement.innerText = title;
     }
     
-    addNoticeInfoMessage(message, message2) {
+    addNoticeInfoMessage(message: string, message2: string = "") {
         let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix);
         if (previousInfoMessage != null) {
             //remove it
@@ -426,3 +429,5 @@ class SkipNotice {
     }
 
 }
+
+export default SkipNotice;

@@ -1,82 +1,118 @@
-SB = {
+
+interface SBObject {
+    configListeners: Array<Function>;
+    defaults: any;
+    localConfig: any;
+    config: any;
+}
+
+// Allows a SBMap to be conveted into json form
+// Currently used for local storage
+class SBMap<T, U> extends Map {
+    toJSON() {
+        return Array.from(this.entries());
+    }
+}
+
+
+// TODO: Rename to something more meaningful
+var SB: SBObject = {
     /**
      * Callback function when an option is updated
-     * 
-     * @type {CallableFunction}
      */
-    configListeners: []
+    configListeners: [],
+    defaults: {
+        "sponsorTimes": new SBMap(),
+        "startSponsorKeybind": ";",
+        "submitKeybind": "'",
+        "minutesSaved": 0,
+        "skipCount": 0,
+        "sponsorTimesContributed": 0,
+        "disableSkipping": false,
+        "disableAutoSkip": false,
+        "trackViewCount": true,
+        "dontShowNotice": false,
+        "hideVideoPlayerControls": false,
+        "hideInfoButtonPlayerControls": false,
+        "hideDeleteButtonPlayerControls": false,
+        "hideDiscordLaunches": 0,
+        "hideDiscordLink": false,
+        "invidiousInstances": ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
+        "invidiousUpdateInfoShowCount": 0,
+        "autoUpvote": true
+    },
+    localConfig: {},
+    config: {}
 };
 
 // Function setup
 
-// Allows a map to be conveted into json form
-// Currently used for local storage
-Map.prototype.toJSON = function() {
-    return Array.from(this.entries());
-};
-
 // Proxy Map changes to Map in SB.localConfig
 // Saves the changes to chrome.storage in json form
 class MapIO {
+    id: string;
+    SBMap: SBMap<String, any>;
+
     constructor(id) {
-	// The name of the item in the array
+	    // The name of the item in the array
         this.id = id;
-	// A local copy of the map (SB.config.mapname.map)
-        this.map = SB.localConfig[this.id];
+	    // A local copy of the SBMap (SB.config.SBMapname.SBMap)
+        this.SBMap = SB.localConfig[this.id];
     }
+
     set(key, value) {
-	// Proxy to map
-        this.map.set(key, value);
-        // Store updated map locally
+	    // Proxy to SBMap
+        this.SBMap.set(key, value);
+        // Store updated SBMap locally
         chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this.map)
+            [this.id]: encodeStoredItem(this.SBMap)
         });
-        return this.map;
+        return this.SBMap;
     }
 
     get(key) {
-        return this.map.get(key);
+        return this.SBMap.get(key);
     }
 	
     has(key) {
-        return this.map.has(key);
+        return this.SBMap.has(key);
     }
 	
     size() {
-        return this.map.size;
+        return this.SBMap.size;
     }
 	
     delete(key) {
-	// Proxy to map
-        this.map.delete(key);
-	// Store updated map locally
-	chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this.map)
+	    // Proxy to SBMap
+        this.SBMap.delete(key);
+	    // Store updated SBMap locally
+	    chrome.storage.sync.set({
+            [this.id]: encodeStoredItem(this.SBMap)
         });
     }
 
     clear() {
-        this.map.clear();
-	chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this.map)
+        this.SBMap.clear();
+	    chrome.storage.sync.set({
+            [this.id]: encodeStoredItem(this.SBMap)
         });
     }
 }
 
 /**
- * A Map cannot be stored in the chrome storage. 
+ * A SBMap cannot be stored in the chrome storage. 
  * This data will be encoded into an array instead as specified by the toJSON function.
  * 
  * @param {*} data 
  */
 function encodeStoredItem(data) {
-    // if data is Map convert to json for storing
-    if(!(data instanceof Map)) return data;
+    // if data is SBMap convert to json for storing
+    if(!(data instanceof SBMap)) return data;
     return JSON.stringify(data);
 }
 
 /**
- * A Map cannot be stored in the chrome storage. 
+ * A SBMap cannot be stored in the chrome storage. 
  * This data will be decoded from the array it is stored in
  * 
  * @param {*} data 
@@ -88,7 +124,7 @@ function decodeStoredItem(data) {
         let str = JSON.parse(data);
         
         if(!Array.isArray(str)) return data;
-        return new Map(str);
+        return new SBMap(str);
     } catch(e) {
 
         // If all else fails, return the data
@@ -96,7 +132,7 @@ function decodeStoredItem(data) {
     }
 }
 
-function configProxy() {
+function configProxy(): void {
     chrome.storage.onChanged.addListener((changes, namespace) => {
         for (const key in changes) {
             SB.localConfig[key] = decodeStoredItem(changes[key].newValue);
@@ -107,24 +143,28 @@ function configProxy() {
         }
     });
 	
-    var handler = {
+    var handler: ProxyHandler<any> = {
         set(obj, prop, value) {
             SB.localConfig[prop] = value;
 
             chrome.storage.sync.set({
                 [prop]: encodeStoredItem(value)
             });
+
+            return true;
         },
 
-        get(obj, prop) {
+        get(obj, prop): any {
             let data = SB.localConfig[prop];
-            if(data instanceof Map) data = new MapIO(prop);
+            if(data instanceof SBMap) data = new MapIO(prop);
 
             return obj[prop] || data;
         },
 	
         deleteProperty(obj, prop) {
-	    chrome.storage.sync.remove(prop);
+            chrome.storage.sync.remove(<string> prop);
+            
+            return true;
         }
 
     };
@@ -158,27 +198,6 @@ async function setupConfig() {
     migrateOldFormats();
 }
 
-SB.defaults = {
-    "sponsorTimes": new Map(),
-    "startSponsorKeybind": ";",
-    "submitKeybind": "'",
-    "minutesSaved": 0,
-    "skipCount": 0,
-    "sponsorTimesContributed": 0,
-    "disableSkipping": false,
-    "disableAutoSkip": false,
-    "trackViewCount": true,
-    "dontShowNotice": false,
-    "hideVideoPlayerControls": false,
-    "hideInfoButtonPlayerControls": false,
-    "hideDeleteButtonPlayerControls": false,
-    "hideDiscordLaunches": 0,
-    "hideDiscordLink": false,
-    "invidiousInstances": ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
-    "invidiousUpdateInfoShowCount": 0,
-    "autoUpvote": true
-}
-
 // Reset config
 function resetConfig() {
     SB.config = SB.defaults;
@@ -201,3 +220,5 @@ function addDefaults() {
 
 // Sync config
 setupConfig();
+
+export default SB;

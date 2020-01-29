@@ -1,3 +1,9 @@
+import Utils from "./utils";
+import SB from "./SB";
+
+import PreviewBar from "./js-components/previewBar";
+import SkipNotice from "./js-components/previewBar";
+
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 var previousVideoID = null;
@@ -40,7 +46,7 @@ var previewBar = null;
 var controls = null;
 
 // Direct Links
-videoIDChange(getYouTubeVideoID(document.URL));
+videoIDChange(Utils.getYouTubeVideoID(document.URL));
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -72,7 +78,7 @@ function messageListener(request, sender, sendResponse) {
     //messages from popup script
     switch(request.message){
         case "update":
-            videoIDChange(getYouTubeVideoID(document.URL));
+            videoIDChange(Utils.getYouTubeVideoID(document.URL));
             break;
         case "sponsorStart":
             sponsorMessageStarted(sendResponse);
@@ -166,7 +172,6 @@ if (!SB.configListeners.includes(contentConfigUpdateListener)) {
 
 //check for hotkey pressed
 document.onkeydown = async function(e){
-    e = e || window.event;
     var key = e.key;
 
     let video = document.getElementById("movie_player");
@@ -217,13 +222,13 @@ function videoIDChange(id) {
 	//id is not valid
     if (!id) return;
 
-    let channelIDPromise = wait(getChannelID);
+    let channelIDPromise = Utils.wait(getChannelID);
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
     if (previewBar == null) {
         //create it
-        wait(getControls).then(result => {
+        Utils.wait(getControls).then(result => {
             const progressElementSelectors = [
                 // For YouTube
                 "ytp-progress-bar-container",
@@ -274,7 +279,7 @@ function videoIDChange(id) {
     sponsorTimesSubmitting = [];
 
     //see if the onvideo control image needs to be changed
-	wait(getControls).then(result => {
+	Utils.wait(getControls).then(result => {
 		chrome.runtime.sendMessage({
 			message: "getSponsorTimes",
 			videoID: id
@@ -299,12 +304,12 @@ function videoIDChange(id) {
 		});
 	});
     //see if video controls buttons should be added
-    if (!onInvidious) {
+    if (!Utils.onInvidious) {
         updateVisibilityOfPlayerControlsButton();
     }
 }
 
-function sponsorsLookup(id, channelIDPromise) {
+function sponsorsLookup(id: string, channelIDPromise = null) {
     v = document.querySelector('video') // Youtube video player
     //there is no video here
     if (v == null) {
@@ -324,7 +329,7 @@ function sponsorsLookup(id, channelIDPromise) {
             whitelistCheck();
         } else if (channelIDPromise.isRejected) {
             //try again
-            wait(getChannelID).then(whitelistCheck).catch();
+            Utils.wait(getChannelID).then(whitelistCheck).catch();
         } else {
             //add it as a then statement
             channelIDPromise.then(whitelistCheck);
@@ -410,7 +415,7 @@ function updatePreviewBar() {
         types.push("previewSponsor");
     }
 
-    wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, v.duration));
+    Utils.wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, v.duration));
 
     //update last video id
     lastPreviewBarUpdate = sponsorVideoID;
@@ -423,7 +428,7 @@ function getChannelID() {
     channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
     if (channelURLContainer !== null) {
         channelURLContainer = channelURLContainer.firstElementChild;
-    } else if (onInvidious) {
+    } else if (Utils.onInvidious) {
         // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
         channelURLContainer = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
     } else {
@@ -443,8 +448,8 @@ function getChannelID() {
     let titleInfoContainer = document.getElementById("info-contents");
     let currentTitle = "";
     if (titleInfoContainer != null) {
-        currentTitle = titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild.innerText;
-    } else if (onInvidious) {
+        currentTitle = (<HTMLElement> titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild).innerText;
+    } else if (Utils.onInvidious) {
         // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
         currentTitle = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a > div > span").textContent;
     } else {
@@ -637,7 +642,7 @@ function getControls() {
 
 //adds all the player controls buttons
 async function createButtons() {
-    let result = await wait(getControls).catch();
+    let result = await Utils.wait(getControls).catch();
 
     //set global controls variable
     controls = result;
@@ -655,7 +660,7 @@ async function updateVisibilityOfPlayerControlsButton() {
 
     await createButtons();
 	
-    if (SB.config.hideVideoPlayerControls || onInvidious) {
+    if (SB.config.hideVideoPlayerControls || Utils.onInvidious) {
         document.getElementById("startSponsorButton").style.display = "none";
         document.getElementById("submitButton").style.display = "none";
     } else {
@@ -663,13 +668,13 @@ async function updateVisibilityOfPlayerControlsButton() {
     }
 
     //don't show the info button on embeds
-    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
+    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || Utils.onInvidious) {
         document.getElementById("infoButton").style.display = "none";
     } else {
         document.getElementById("infoButton").style.removeProperty("display");
     }
     
-    if (SB.config.hideDeleteButtonPlayerControls || onInvidious) {
+    if (SB.config.hideDeleteButtonPlayerControls || Utils.onInvidious) {
         document.getElementById("deleteButton").style.display = "none";
     }
 }
@@ -718,15 +723,15 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     if(!sponsorVideoID) return false;
     
     //make sure submit button is loaded
-    await wait(isSubmitButtonLoaded);
+    await Utils.wait(isSubmitButtonLoaded);
     
     //if it isn't visible, there is no data
-    let shouldHide = (uploadButtonVisible && !(SB.config.hideDeleteButtonPlayerControls || onInvidious)) ? "unset" : "none"
+    let shouldHide = (uploadButtonVisible && !(SB.config.hideDeleteButtonPlayerControls || Utils.onInvidious)) ? "unset" : "none"
     document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {
         showingStartSponsor = true;
-        document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+        (<HTMLImageElement> document.getElementById("startSponsorImage")).src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
         if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !SB.config.hideInfoButtonPlayerControls) {
@@ -737,7 +742,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
         }
     } else {
         showingStartSponsor = false;
-        document.getElementById("startSponsorImage").src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
+        (<HTMLImageElement> document.getElementById("startSponsorImage")).src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
 
         //disable submit button
@@ -769,7 +774,7 @@ function openInfoMenu() {
             //close button
             let closeButton = document.createElement("div");
             closeButton.innerText = "Close Popup";
-            closeButton.classList = "smallLink";
+            closeButton.classList.add("smallLink");
             closeButton.setAttribute("align", "center");
             closeButton.addEventListener("click", closeInfoMenu);
 
@@ -791,7 +796,7 @@ function openInfoMenu() {
 
             //make the logo source not 404
             //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
-            let logo = popup.querySelector("#sponsorBlockPopupLogo");
+            let logo = <HTMLImageElement> popup.querySelector("#sponsorBlockPopupLogo");
             logo.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
 
             //remove the style sheet and font that are not necessary
@@ -889,7 +894,7 @@ function vote(type, UUID, skipNotice) {
                     skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 } else if (response.successType == -1) {
-                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(getErrorMessage(response.statusCode))
+                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(Utils.getErrorMessage(response.statusCode))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }
@@ -961,7 +966,7 @@ function submitSponsorTimes() {
 //called after all the checks have been made that it's okay to do so
 function sendSubmitMessage(){
     //add loading animation
-    document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
+    (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
     document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
 
     let currentVideoID = sponsorVideoID;
@@ -994,7 +999,7 @@ function sendSubmitMessage(){
                 sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
                 for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
                     // Add some random IDs
-                    UUIDs.push(generateUserID());
+                    UUIDs.push(Utils.generateUserID());
                 }
 
                 // Empty the submitting times
@@ -1004,9 +1009,9 @@ function sendSubmitMessage(){
             } else {
                 //show that the upload failed
                 document.getElementById("submitButton").style.animation = "unset";
-                document.getElementById("submitImage").src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+                (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-                alert(getErrorMessage(response.statusCode));
+                alert(Utils.getErrorMessage(response.statusCode));
             }
         }
     });
@@ -1037,23 +1042,25 @@ function getSponsorTimesMessage(sponsorTimes) {
 //converts time in seconds to minutes:seconds
 function getFormattedTime(seconds) {
     let minutes = Math.floor(seconds / 60);
-    let secondsDisplay = Math.round(seconds - minutes * 60);
-    if (secondsDisplay < 10) {
+    let secondsNum: number = Math.round(seconds - minutes * 60);
+    let secondsDisplay: string = String(secondsNum);
+    
+    if (secondsNum < 10) {
         //add a zero
-        secondsDisplay = "0" + secondsDisplay;
+        secondsDisplay = "0" + secondsNum;
     }
 
-    let formatted = minutes+ ":" + secondsDisplay;
+    let formatted = minutes + ":" + secondsDisplay;
 
     return formatted;
 }
 
-function sendRequestToServer(type, address, callback) {
+function sendRequestToServer(type: string, address: string, callback = null) {
     let xmlhttp = new XMLHttpRequest();
 
     xmlhttp.open(type, serverAddress + address, true);
 
-    if (callback != undefined) {
+    if (callback !== null) {
         xmlhttp.onreadystatechange = function () {
             callback(xmlhttp, false);
         };

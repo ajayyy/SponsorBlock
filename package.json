@@ -5,12 +5,27 @@
   "main": "background.js",
   "dependencies": {},
   "devDependencies": {
-    "web-ext": "^4.0.0"
+    "web-ext": "^4.0.0",
+    "@types/chrome": "0.0.91",
+    "@types/firefox-webext-browser": "70.0.1",
+    "@types/jest": "^24.0.23",
+    "@types/jquery": "^3.3.31",
+    "copy-webpack-plugin": "^5.0.5",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "rimraf": "^3.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "~3.7.3",
+    "webpack": "~4.41.2",
+    "webpack-cli": "~3.3.10",
+    "webpack-merge": "~4.2.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
-    "build": "web-ext build --overwrite-dest -i \"*(package-lock.json|README.md|package.json|config.js.example|firefox_manifest-extra.json|manifest.json.original|ignored|crowdin.yml)\""
+    "dev": "cd dist && web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
+    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js",
+    "clean": "rimraf dist",
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
