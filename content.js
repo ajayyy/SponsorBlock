@@ -541,8 +541,6 @@ function checkIfTimeToSkip(currentVideoTime, startTime, endTime) {
                 (lastTime == -1 && startTime == 0 && currentVideoTime < endTime)
 }
 
-
-
 //skip fromt he start time to the end time for a certain index sponsor time
 function skipToTime(v, index, sponsorTimes, openNotice) {
     const doNotSkipAsSmall = SB.config.skipSmallSponsors && (sponsorTimes[index][1] - sponsorTimes[index][0] <= 3) // three seconds or mre
