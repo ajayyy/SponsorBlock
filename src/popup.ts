@@ -1,5 +1,7 @@
-import Utils from "./utils";
 import SB from "./SB";
+
+import Utils from "./utils";
+var utils = new Utils();
 
 interface MessageListener {
     (request: any, sender: any, callback: (response: any) => void): void;
@@ -38,9 +40,9 @@ class MessageHandler {
 async function runThePopup(messageListener?: MessageListener) {
     var messageHandler = new MessageHandler();
 
-    Utils.localizeHtmlPage();
+    utils.localizeHtmlPage();
 
-    await Utils.wait(() => SB.config !== undefined);
+    await utils.wait(() => SB.config !== undefined);
 
     var OptionsElements: any = {};
 
@@ -168,7 +170,7 @@ async function runThePopup(messageListener?: MessageListener) {
         if (userID != undefined) {
             //there are probably some views on these submissions then
             //get the amount of views from the sponsors submitted
-            Utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
+            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
                     if (viewCount != 0) {
@@ -185,7 +187,7 @@ async function runThePopup(messageListener?: MessageListener) {
             });
 
             //get this time in minutes
-            Utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(xmlhttp) {
+            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(xmlhttp) {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     let minutesSaved = JSON.parse(xmlhttp.responseText).timeSaved;
                     if (minutesSaved != 0) {
@@ -802,7 +804,7 @@ async function runThePopup(messageListener?: MessageListener) {
 
                         clearTimes();
                     } else {
-                        document.getElementById("submitTimesInfoMessage").innerText = Utils.getErrorMessage(response.statusCode);
+                        document.getElementById("submitTimesInfoMessage").innerText = utils.getErrorMessage(response.statusCode);
                         document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
 
                         OptionsElements.submitTimesInfoMessageContainer.style.display = "unset";
@@ -854,7 +856,7 @@ async function runThePopup(messageListener?: MessageListener) {
     //make the options username setting option visible
     function setUsernameButton() {
         //get username from the server
-        Utils.sendRequestToServer("GET", "/api/getUsername?userID=" + SB.config.userID, function (xmlhttp, error) {
+        utils.sendRequestToServer("GET", "/api/getUsername?userID=" + SB.config.userID, function (xmlhttp, error) {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 OptionsElements.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
 
@@ -871,7 +873,7 @@ async function runThePopup(messageListener?: MessageListener) {
                 OptionsElements.usernameInput.style.display = "none";
 
                 OptionsElements.setUsernameStatusContainer.style.display = "unset";
-                OptionsElements.setUsernameStatus.innerText = Utils.getErrorMessage(xmlhttp.status);
+                OptionsElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
             }
         });
     }
@@ -883,7 +885,7 @@ async function runThePopup(messageListener?: MessageListener) {
         OptionsElements.setUsernameStatus.innerText = "Loading...";
 
         //get the userID
-        Utils.sendRequestToServer("POST", "/api/setUsername?userID=" + SB.config.userID + "&username=" + OptionsElements.usernameInput.value, function (xmlhttp, error) {
+        utils.sendRequestToServer("POST", "/api/setUsername?userID=" + SB.config.userID + "&username=" + OptionsElements.usernameInput.value, function (xmlhttp, error) {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 //submitted
                 OptionsElements.submitUsername.style.display = "none";
@@ -891,7 +893,7 @@ async function runThePopup(messageListener?: MessageListener) {
 
                 OptionsElements.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
             } else if (xmlhttp.readyState == 4) {
-                OptionsElements.setUsernameStatus.innerText = Utils.getErrorMessage(xmlhttp.status);
+                OptionsElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
             }
         });
 
@@ -944,7 +946,7 @@ async function runThePopup(messageListener?: MessageListener) {
                     //failure: duplicate vote
                     addVoteMessage(chrome.i18n.getMessage("voteFail"), UUID)
                 } else if (response.successType == -1) {
-                    addVoteMessage(Utils.getErrorMessage(response.statusCode), UUID)
+                    addVoteMessage(utils.getErrorMessage(response.statusCode), UUID)
                 }
             }
         });

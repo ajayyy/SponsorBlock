@@ -1,17 +1,19 @@
-import Utils from "./utils";
+import * as Types from "./types";
 import SB from "./SB";
 
-import * as Types from "./types";
-
-Utils.isBackgroundScript = true;
+import Utils from "./utils";
+var utils = new Utils({
+    registerFirefoxContentScript,
+    unregisterFirefoxContentScript
+});
 
 // Used only on Firefox, which does not support non persistent background pages.
 var contentScriptRegistrations = {};
 
 // Register content script if needed
-if (Utils.isFirefox()) {
-    Utils.wait(() => SB.config !== undefined).then(function() {
-        if (SB.config.supportInvidious) Utils.setupExtraSiteContentScripts();
+if (utils.isFirefox()) {
+    utils.wait(() => SB.config !== undefined).then(function() {
+        if (SB.config.supportInvidious) utils.setupExtraSiteContentScripts();
     });
 } 
 
@@ -62,9 +64,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             registerFirefoxContentScript(request);
             return false;
         case "unregisterContentScript": 
-            contentScriptRegistrations[request.id].unregister();
-            delete contentScriptRegistrations[request.id];
-            
+            unregisterFirefoxContentScript(request.id)
             return false;
 	}
 });
@@ -82,7 +82,7 @@ chrome.runtime.onInstalled.addListener(function (object) {
             chrome.tabs.create({url: chrome.extension.getURL("/help/index_en.html")});
 
             //generate a userID
-            const newUserID = Utils.generateUserID();
+            const newUserID = utils.generateUserID();
             //save this UUID
             SB.config.userID = newUserID;
             
@@ -109,6 +109,16 @@ function registerFirefoxContentScript(options) {
         css: options.css,
         matches: options.matches
     }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
+}
+
+/**
+ * Only works on Firefox.
+ * Firefox requires that this is handled by the background script
+ * 
+ */
+function unregisterFirefoxContentScript(id: string) {
+    contentScriptRegistrations[id].unregister();
+    delete contentScriptRegistrations[id];
 }
 
 //gets the sponsor times from memory
@@ -148,12 +158,12 @@ function submitVote(type, UUID, callback) {
 
     if (userID == undefined || userID === "undefined") {
         //generate one
-        userID = Utils.generateUserID();
+        userID = utils.generateUserID();
         SB.config.userID = userID;
     }
 
     //publish this vote
-    Utils.sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+    utils.sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             callback({
                 successType: 1
@@ -205,7 +215,7 @@ async function submitTimes(videoID, callback) {
             let increasedContributionAmount = false;
 
             //submit the sponsorTime
-            Utils.sendRequestToServer("GET", "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+            utils.sendRequestToServer("GET", "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
                     + "&userID=" + userID, function(xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && !error) {
                     callback({

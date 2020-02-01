@@ -1,7 +1,9 @@
-import Utils from "./utils";
 import SB from "./SB";
 
-import runThePopup from "./popup.js";
+import Utils from "./utils";
+var utils = new Utils();
+
+import runThePopup from "./popup";
 
 import PreviewBar from "./js-components/previewBar";
 import SkipNotice from "./js-components/skipNotice";
@@ -24,7 +26,7 @@ var sponsorSkipped = [];
 //the video
 var v;
 
-var listenerAdded;
+var onInvidious;
 
 //the video id of the last preview bar update
 var lastPreviewBarUpdate;
@@ -48,7 +50,7 @@ var previewBar = null;
 var controls = null;
 
 // Direct Links
-videoIDChange(Utils.getYouTubeVideoID(document.URL));
+videoIDChange(getYouTubeVideoID(document.URL));
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
@@ -93,7 +95,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
     //messages from popup script
     switch(request.message){
         case "update":
-            videoIDChange(Utils.getYouTubeVideoID(document.URL));
+            videoIDChange(getYouTubeVideoID(document.URL));
             break;
         case "sponsorStart":
             sponsorMessageStarted(sendResponse);
@@ -239,13 +241,13 @@ function videoIDChange(id) {
 
     // TODO: Use a better method here than using type any
     // This is done to be able to do channelIDPromise.isFulfilled and channelIDPromise.isRejected
-    let channelIDPromise: any = Utils.wait(getChannelID);
+    let channelIDPromise: any = utils.wait(getChannelID);
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
     if (previewBar == null) {
         //create it
-        Utils.wait(getControls).then(result => {
+        utils.wait(getControls).then(result => {
             const progressElementSelectors = [
                 // For YouTube
                 "ytp-progress-bar-container",
@@ -296,7 +298,7 @@ function videoIDChange(id) {
     sponsorTimesSubmitting = [];
 
     //see if the onvideo control image needs to be changed
-	Utils.wait(getControls).then(result => {
+	utils.wait(getControls).then(result => {
 		chrome.runtime.sendMessage({
 			message: "getSponsorTimes",
 			videoID: id
@@ -321,7 +323,7 @@ function videoIDChange(id) {
 		});
 	});
     //see if video controls buttons should be added
-    if (!Utils.onInvidious) {
+    if (!onInvidious) {
         updateVisibilityOfPlayerControlsButton();
     }
 }
@@ -346,7 +348,7 @@ function sponsorsLookup(id: string, channelIDPromise = null) {
             whitelistCheck();
         } else if (channelIDPromise.isRejected) {
             //try again
-            Utils.wait(getChannelID).then(whitelistCheck).catch();
+            utils.wait(getChannelID).then(whitelistCheck).catch();
         } else {
             //add it as a then statement
             channelIDPromise.then(whitelistCheck);
@@ -356,7 +358,7 @@ function sponsorsLookup(id: string, channelIDPromise = null) {
     //check database for sponsor times
     //made true once a setTimeout has been created to try again after a server error
     let recheckStarted = false;
-    Utils.sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
+    utils.sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             sponsorDataFound = true;
 
@@ -412,30 +414,44 @@ function sponsorsLookup(id: string, channelIDPromise = null) {
     }
 }
 
-function updatePreviewBar() {
-    let localSponsorTimes = sponsorTimes;
-    if (localSponsorTimes == null) localSponsorTimes = [];
+function getYouTubeVideoID(url: string) {
+    // For YouTube TV support
+    if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
+    
+    //Attempt to parse url
+    let urlObject = null;
+    try { 
+        urlObject = new URL(url);
+    } catch (e) {      
+        console.error("[SB] Unable to parse URL: " + url);
+        return false;
+    }
 
-    let allSponsorTimes = localSponsorTimes.concat(sponsorTimesSubmitting);
-
-    //create an array of the sponsor types
-    let types = [];
-    for (let i = 0; i < localSponsorTimes.length; i++) {
-        if (!hiddenSponsorTimes.includes(i)) {
-            types.push("sponsor");
-        } else {
-            // Don't show this sponsor
-            types.push(null);
+    //Check if valid hostname
+    if (SB.config && SB.config.invidiousInstances.includes(urlObject.host)) {
+        onInvidious = true;
+    } else if (!["www.youtube.com", "www.youtube-nocookie.com"].includes(urlObject.host)) {
+        if (!SB.config) {
+            // Call this later, in case this is an Invidious tab
+            this.wait(() => SB.config !== undefined).then(() => this.videoIDChange(this.getYouTubeVideoID(url)));
         }
-    }
-    for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-        types.push("previewSponsor");
+
+        return false
     }
 
-    Utils.wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, v.duration));
-
-    //update last video id
-    lastPreviewBarUpdate = sponsorVideoID;
+    //Get ID from searchParam
+    if (urlObject.searchParams.has("v") && ["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
+        let id = urlObject.searchParams.get("v");
+        return id.length == 11 ? id : false;
+    } else if (urlObject.pathname.startsWith("/embed/")) {
+        try {
+            return urlObject.pathname.substr(7, 11);
+        } catch (e) {
+            console.error("[SB] Video ID not valid for " + url);
+            return false;
+        }
+    } 
+    return false;
 }
 
 function getChannelID() {
@@ -445,7 +461,7 @@ function getChannelID() {
     channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
     if (channelURLContainer !== null) {
         channelURLContainer = channelURLContainer.firstElementChild;
-    } else if (Utils.onInvidious) {
+    } else if (onInvidious) {
         // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
         channelURLContainer = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
     } else {
@@ -466,7 +482,7 @@ function getChannelID() {
     let currentTitle = "";
     if (titleInfoContainer != null) {
         currentTitle = (<HTMLElement> titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild).innerText;
-    } else if (Utils.onInvidious) {
+    } else if (onInvidious) {
         // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
         currentTitle = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a > div > span").textContent;
     } else {
@@ -485,6 +501,32 @@ function getChannelID() {
 
     //reset variables
     channelWhitelisted = false;
+}
+
+function updatePreviewBar() {
+    let localSponsorTimes = sponsorTimes;
+    if (localSponsorTimes == null) localSponsorTimes = [];
+
+    let allSponsorTimes = localSponsorTimes.concat(sponsorTimesSubmitting);
+
+    //create an array of the sponsor types
+    let types = [];
+    for (let i = 0; i < localSponsorTimes.length; i++) {
+        if (!hiddenSponsorTimes.includes(i)) {
+            types.push("sponsor");
+        } else {
+            // Don't show this sponsor
+            types.push(null);
+        }
+    }
+    for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+        types.push("previewSponsor");
+    }
+
+    utils.wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, v.duration));
+
+    //update last video id
+    lastPreviewBarUpdate = sponsorVideoID;
 }
 
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
@@ -595,7 +637,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 
     //send telemetry that a this sponsor was skipped
     if (SB.config.trackViewCount && !sponsorSkipped[index]) {
-        Utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+        utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
         if (!SB.config.disableAutoSkip) {
             // Count this as a skip
@@ -659,7 +701,7 @@ function getControls() {
 
 //adds all the player controls buttons
 async function createButtons() {
-    let result = await Utils.wait(getControls).catch();
+    let result = await utils.wait(getControls).catch();
 
     //set global controls variable
     controls = result;
@@ -677,7 +719,7 @@ async function updateVisibilityOfPlayerControlsButton() {
 
     await createButtons();
 	
-    if (SB.config.hideVideoPlayerControls || Utils.onInvidious) {
+    if (SB.config.hideVideoPlayerControls || onInvidious) {
         document.getElementById("startSponsorButton").style.display = "none";
         document.getElementById("submitButton").style.display = "none";
     } else {
@@ -685,13 +727,13 @@ async function updateVisibilityOfPlayerControlsButton() {
     }
 
     //don't show the info button on embeds
-    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || Utils.onInvidious) {
+    if (SB.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
         document.getElementById("infoButton").style.display = "none";
     } else {
         document.getElementById("infoButton").style.removeProperty("display");
     }
     
-    if (SB.config.hideDeleteButtonPlayerControls || Utils.onInvidious) {
+    if (SB.config.hideDeleteButtonPlayerControls || onInvidious) {
         document.getElementById("deleteButton").style.display = "none";
     }
 }
@@ -740,10 +782,10 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     if(!sponsorVideoID) return false;
     
     //make sure submit button is loaded
-    await Utils.wait(isSubmitButtonLoaded);
+    await utils.wait(isSubmitButtonLoaded);
     
     //if it isn't visible, there is no data
-    let shouldHide = (uploadButtonVisible && !(SB.config.hideDeleteButtonPlayerControls || Utils.onInvidious)) ? "unset" : "none"
+    let shouldHide = (uploadButtonVisible && !(SB.config.hideDeleteButtonPlayerControls || onInvidious)) ? "unset" : "none"
     document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {
@@ -911,7 +953,7 @@ function vote(type, UUID, skipNotice) {
                     skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 } else if (response.successType == -1) {
-                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(Utils.getErrorMessage(response.statusCode))
+                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }
@@ -1016,7 +1058,7 @@ function sendSubmitMessage(){
                 sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
                 for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
                     // Add some random IDs
-                    UUIDs.push(Utils.generateUserID());
+                    UUIDs.push(utils.generateUserID());
                 }
 
                 // Empty the submitting times
@@ -1028,7 +1070,7 @@ function sendSubmitMessage(){
                 document.getElementById("submitButton").style.animation = "unset";
                 (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-                alert(Utils.getErrorMessage(response.statusCode));
+                alert(utils.getErrorMessage(response.statusCode));
             }
         }
     });

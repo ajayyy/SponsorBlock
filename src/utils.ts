@@ -3,11 +3,15 @@ import SB from "./SB";
 
 class Utils {
     
-    static isBackgroundScript = false;
-    static onInvidious = false;
+    // Contains functions needed from the background script
+    backgroundScriptContainer: any = null;
+
+    constructor(backgroundScriptContainer?: any) {
+        this.backgroundScriptContainer = backgroundScriptContainer;
+    }
 
     // Function that can be used to wait for a condition before returning
-    static async wait(condition, timeout = 5000, check = 100) { 
+    async wait(condition, timeout = 5000, check = 100) { 
         return await new Promise((resolve, reject) => {
             setTimeout(() => reject("TIMEOUT"), timeout);
 
@@ -26,46 +30,6 @@ class Utils {
         });
     }
 
-    static getYouTubeVideoID(url: string) {
-        // For YouTube TV support
-        if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
-        
-        //Attempt to parse url
-        let urlObject = null;
-        try { 
-            urlObject = new URL(url);
-        } catch (e) {      
-            console.error("[SB] Unable to parse URL: " + url);
-            return false;
-        }
-
-        //Check if valid hostname
-        if (SB.config && SB.config.invidiousInstances.includes(urlObject.host)) {
-            onInvidious = true;
-        } else if (!["www.youtube.com", "www.youtube-nocookie.com"].includes(urlObject.host)) {
-            if (!SB.config) {
-                // Call this later, in case this is an Invidious tab
-                this.wait(() => SB.config !== undefined).then(() => this.videoIDChange(this.getYouTubeVideoID(url)));
-            }
-
-            return false
-        }
-
-        //Get ID from searchParam
-        if (urlObject.searchParams.has("v") && ["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
-            let id = urlObject.searchParams.get("v");
-            return id.length == 11 ? id : false;
-        } else if (urlObject.pathname.startsWith("/embed/")) {
-            try {
-                return urlObject.pathname.substr(7, 11);
-            } catch (e) {
-                console.error("[SB] Video ID not valid for " + url);
-                return false;
-            }
-        } 
-        return false;
-    }
-
     /**
      * Asks for the optional permissions required for all extra sites.
      * It also starts the content script registrations.
@@ -74,7 +38,7 @@ class Utils {
      * 
      * @param {CallableFunction} callback
      */
-    static setupExtraSitePermissions(callback) {
+    setupExtraSitePermissions(callback) {
         // Request permission
         let permissions = ["declarativeContent"];
         if (this.isFirefox()) permissions = [];
@@ -100,7 +64,7 @@ class Utils {
      * 
      * For now, it is just SB.config.invidiousInstances.
      */
-    static setupExtraSiteContentScripts() {
+    setupExtraSiteContentScripts() {
         let js = [
             "config.js",
             "SB.js",
@@ -135,8 +99,8 @@ class Utils {
                 matches: this.getInvidiousInstancesRegex()
             };
 
-            if (this.isBackgroundScript) {
-                registerFirefoxContentScript(registration);
+            if (this.backgroundScriptContainer) {
+                this.backgroundScriptContainer.registerFirefoxContentScript(registration);
             } else {
                 chrome.runtime.sendMessage(registration);
             }
@@ -169,15 +133,12 @@ class Utils {
     /**
      * Removes the permission and content script registration.
      */
-    static removeExtraSiteRegistration() {
+    removeExtraSiteRegistration() {
         if (this.isFirefox()) {
             let id = "invidious";
 
-            if (this.isBackgroundScript) {
-                if (contentScriptRegistrations[id]) {
-                    contentScriptRegistrations[id].unregister();
-                    delete contentScriptRegistrations[id];
-                }
+            if (this.backgroundScriptContainer) {
+                this.backgroundScriptContainer.unregisterFirefoxContentScript(id);
             } else {
                 chrome.runtime.sendMessage({
                     message: "unregisterContentScript",
@@ -193,7 +154,7 @@ class Utils {
         });
     }
 
-    static localizeHtmlPage() {
+    localizeHtmlPage() {
         //Localize by replacing __MSG_***__ meta tags
         var objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
         for (var j = 0; j < objects.length; j++) {
@@ -204,7 +165,7 @@ class Utils {
         }
     }
 
-    static getLocalizedMessage(text) {
+    getLocalizedMessage(text) {
         var valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
             return v1 ? chrome.i18n.getMessage(v1) : "";
         });
@@ -219,7 +180,7 @@ class Utils {
     /**
      * @returns {String[]} Invidious Instances in regex form
      */
-    static getInvidiousInstancesRegex() {
+    getInvidiousInstancesRegex() {
         var invidiousInstancesRegex = [];
         for (const url of SB.config.invidiousInstances) {
             invidiousInstancesRegex.push("https://*." + url + "/*");
@@ -229,7 +190,7 @@ class Utils {
         return invidiousInstancesRegex;
     }
 
-    static generateUserID(length = 36) {
+    generateUserID(length = 36) {
         let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         let result = "";
         if (window.crypto && window.crypto.getRandomValues) {
@@ -253,7 +214,7 @@ class Utils {
      * @param {int} statusCode 
      * @returns {string} errorMessage
      */
-    static getErrorMessage(statusCode) {
+    getErrorMessage(statusCode) {
         let errorMessage = "";
                             
         if([400, 429, 409, 502, 0].includes(statusCode)) {
@@ -276,7 +237,7 @@ class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */
-    static sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
+    sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
         let xmlhttp = new XMLHttpRequest();
   
         xmlhttp.open(type, CompileConfig.serverAddress + address, true);
@@ -298,7 +259,7 @@ class Utils {
     /**
      * Is this Firefox (web-extensions)
      */
-    static isFirefox() {
+    isFirefox() {
         return typeof(browser) !== "undefined";
     }
 }

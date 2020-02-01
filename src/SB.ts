@@ -1,4 +1,3 @@
-
 interface SBObject {
     configListeners: Array<Function>;
     defaults: any;
