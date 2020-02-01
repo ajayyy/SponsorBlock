@@ -9,6 +9,17 @@ interface SBObject {
 // Allows a SBMap to be conveted into json form
 // Currently used for local storage
 class SBMap<T, U> extends Map {
+    constructor(entries?: [T, U][]) {
+        super();
+
+        // Import all entries if they were given
+        if (entries !== undefined) {
+            for (const item of entries) {
+                this.set(entries[0], entries[1])
+            }
+        }
+    }
+
     toJSON() {
         return Array.from(this.entries());
     }
@@ -205,7 +216,7 @@ function resetConfig() {
 
 function convertJSON() {
     Object.keys(SB.defaults).forEach(key => {
-        SB.localConfig[key] = decodeStoredItem(SB.localConfig[key], key);
+        SB.localConfig[key] = decodeStoredItem(SB.localConfig[key]);
     });
 }
 
