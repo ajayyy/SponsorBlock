@@ -9,7 +9,7 @@ class SkipNotice {
     manualSkip: boolean;
     maxCountdownTime: () => number;
     countdownTime: any;
-    countdownInterval: number;
+    countdownInterval: NodeJS.Timeout;
     unskipCallback: any;
     idSuffix: any;
 
@@ -28,7 +28,7 @@ class SkipNotice {
         //the countdown until this notice closes
         this.countdownTime = this.maxCountdownTime();
         //the id for the setInterval running the countdown
-        this.countdownInterval = -1;
+        this.countdownInterval = null;
 
         //the unskip button's callback
         this.unskipCallback = this.unskip.bind(this);
@@ -220,7 +220,7 @@ class SkipNotice {
     pauseCountdown() {
         //remove setInterval
         clearInterval(this.countdownInterval);
-        this.countdownInterval = -1;
+        this.countdownInterval = null;
 
         //reset countdown
         this.countdownTime = this.maxCountdownTime();
@@ -237,7 +237,7 @@ class SkipNotice {
 
     startCountdown() {
         //if it has already started, don't start it again
-        if (this.countdownInterval != -1) return;
+        if (this.countdownInterval !== null) return;
 
         this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
 
@@ -425,7 +425,7 @@ class SkipNotice {
         }
 
         //remove setInterval
-        if (this.countdownInterval != -1) clearInterval(this.countdownInterval);
+        if (this.countdownInterval !== null) clearInterval(this.countdownInterval);
     }
 
 }
