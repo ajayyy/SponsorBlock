@@ -4,9 +4,9 @@
         "target": "es6",
         "noImplicitAny": false,
         "sourceMap": false,
-        "rootDir": "src",
         "outDir": "dist/js",
         "noEmitOnError": true,
-        "typeRoots": [ "node_modules/@types" ]
+        "typeRoots": [ "node_modules/@types" ],
+        "resolveJsonModule": true
     }
 }
