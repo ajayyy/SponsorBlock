@@ -4,7 +4,7 @@ import SB from "./SB";
 import runThePopup from "./popup.js";
 
 import PreviewBar from "./js-components/previewBar";
-import SkipNotice from "./js-components/previewBar";
+import SkipNotice from "./js-components/skipNotice";
 
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
