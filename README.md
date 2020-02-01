@@ -50,7 +50,7 @@ You can read the API docs [here](https://github.com/ajayyy/SponsorBlockServer#ap
 
 # Build Yourself
 
-You can load this project as an unpacked extension. Make sure to rename the `config.js.example` file to `config.js` before installing.
+You can load this project as an unpacked extension. Make sure to rename the `config.json.example` file to `config.json` before installing.
 
 There are also other build scripts available. Install `npm`, then run `npm install` in the repository.
 
