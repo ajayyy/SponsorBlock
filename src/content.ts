@@ -224,7 +224,9 @@ function videoIDChange(id) {
 	//id is not valid
     if (!id) return;
 
-    let channelIDPromise = Utils.wait(getChannelID);
+    // TODO: Use a better method here than using type any
+    // This is done to be able to do channelIDPromise.isFulfilled and channelIDPromise.isRejected
+    let channelIDPromise: any = Utils.wait(getChannelID);
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
@@ -341,7 +343,7 @@ function sponsorsLookup(id: string, channelIDPromise = null) {
     //check database for sponsor times
     //made true once a setTimeout has been created to try again after a server error
     let recheckStarted = false;
-    sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
+    Utils.sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             sponsorDataFound = true;
 
