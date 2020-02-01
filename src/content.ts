@@ -73,6 +73,19 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
+// Contains all of the functions and variables needed by the skip notice
+var skipNoticeContentContainer = {
+    vote,
+    dontShowNoticeAgain,
+    unskipSponsorTime,
+    sponsorTimes,
+    UUIDs,
+    v,
+    reskipSponsorTime,
+    hiddenSponsorTimes,
+    updatePreviewBar
+};
+
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
@@ -564,7 +577,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!SB.config.dontShowNotice) {
-            let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip);
+            let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip, skipNoticeContentContainer);
 
             //TODO: Remove this when Invidious support is old
             if (SB.config.invidiousUpdateInfoShowCount < 5) {

@@ -7,16 +7,20 @@ class SkipNotice {
     parent: HTMLElement;
     UUID: string;
     manualSkip: boolean;
+    // Contains functions and variables from the content script needed by the skip notice
+    contentContainer: any;
+    
     maxCountdownTime: () => number;
     countdownTime: any;
     countdownInterval: NodeJS.Timeout;
     unskipCallback: any;
     idSuffix: any;
 
-	constructor(parent: HTMLElement, UUID: string, manualSkip: boolean = false) {
+	constructor(parent: HTMLElement, UUID: string, manualSkip: boolean = false, contentContainer) {
         this.parent = parent;
         this.UUID = UUID;
         this.manualSkip = manualSkip;
+        this.contentContainer = contentContainer;
 
         let noticeTitle = chrome.i18n.getMessage("noticeTitle");
 
@@ -124,7 +128,7 @@ class SkipNotice {
         downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + this.idSuffix;
         downvoteButton.className = "sponsorSkipObject voteButton";
         downvoteButton.src = chrome.extension.getURL("icons/report.png");
-        downvoteButton.addEventListener("click", () => vote(0, this.UUID, this));
+        downvoteButton.addEventListener("click", () => this.contentContainer.vote(0, this.UUID, this));
         downvoteButton.setAttribute("title", chrome.i18n.getMessage("reportButtonInfo"));
 
         //add downvote and report text to container
@@ -152,7 +156,7 @@ class SkipNotice {
         let dontShowAgainButton = document.createElement("button");
         dontShowAgainButton.innerText = chrome.i18n.getMessage("Hide");
         dontShowAgainButton.className = "sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton";
-        dontShowAgainButton.addEventListener("click", dontShowNoticeAgain);
+        dontShowAgainButton.addEventListener("click", this.contentContainer.dontShowNoticeAgain);
 
         // Don't let them hide it if manually skipping
         if (!this.manualSkip) {
@@ -251,7 +255,7 @@ class SkipNotice {
     }
 
     unskip() {
-        unskipSponsorTime(this.UUID);
+        this.contentContainer.unskipSponsorTime(this.UUID);
 
         this.unskippedMode(chrome.i18n.getMessage("reskip"));
     }
@@ -267,8 +271,8 @@ class SkipNotice {
 
         //change max duration to however much of the sponsor is left
         this.maxCountdownTime = function() {
-            let sponsorTime = sponsorTimes[UUIDs.indexOf(this.UUID)];
-            let duration = Math.round(sponsorTime[1] - v.currentTime);
+            let sponsorTime = this.contentContainer.sponsorTimes[this.contentContainer.UUIDs.indexOf(this.UUID)];
+            let duration = Math.round(sponsorTime[1] - this.contentContainer.v.currentTime);
 
             return Math.max(duration, 4);
         };
@@ -278,7 +282,7 @@ class SkipNotice {
     }
 
     reskip() {
-        reskipSponsorTime(this.UUID);
+        this.contentContainer.reskipSponsorTime(this.UUID);
 
         //change reskip button to a unskip button
         let unskipButton = this.changeUnskipButton(chrome.i18n.getMessage("unskip"));
@@ -296,7 +300,7 @@ class SkipNotice {
         if (this.manualSkip) {
             this.changeNoticeTitle(chrome.i18n.getMessage("noticeTitle"));
 
-            vote(1, this.UUID, this);
+            this.contentContainer.vote(1, this.UUID, this);
         }
     }
 
@@ -320,14 +324,14 @@ class SkipNotice {
         
         //remove this sponsor from the sponsors looked up
         //find which one it is
-        for (let i = 0; i < sponsorTimes.length; i++) {
-            if (UUIDs[i] == this.UUID) {
+        for (let i = 0; i < this.contentContainer.sponsorTimes.length; i++) {
+            if (this.contentContainer.UUIDs[i] == this.UUID) {
                 //this one is the one to hide
                 
                 //add this as a hidden sponsorTime
-                hiddenSponsorTimes.push(i);
+                this.contentContainer.hiddenSponsorTimes.push(i);
             
-                updatePreviewBar();
+                this.contentContainer.updatePreviewBar();
                 break;
             }
         }
