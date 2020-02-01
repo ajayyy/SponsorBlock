@@ -153,7 +153,7 @@ function submitVote(type, UUID, callback) {
     }
 
     //publish this vote
-    sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+    Utils.sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             callback({
                 successType: 1
@@ -205,7 +205,7 @@ async function submitTimes(videoID, callback) {
             let increasedContributionAmount = false;
 
             //submit the sponsorTime
-            sendRequestToServer("GET", "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
+            Utils.sendRequestToServer("GET", "/api/postVideoSponsorTimes?videoID=" + videoID + "&startTime=" + sponsorTimes[i][0] + "&endTime=" + sponsorTimes[i][1]
                     + "&userID=" + userID, function(xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && !error) {
                     callback({
@@ -227,23 +227,4 @@ async function submitTimes(videoID, callback) {
             });
         }
     }
-}
-
-function sendRequestToServer(type, address, callback) {
-    let xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.open(type, serverAddress + address, true);
-
-    if (callback != undefined) {
-        xmlhttp.onreadystatechange = function () {
-            callback(xmlhttp, false);
-        };
-  
-        xmlhttp.onerror = function(ev) {
-            callback(xmlhttp, true);
-        };
-    }
-
-    //submit this request
-    xmlhttp.send();
 }

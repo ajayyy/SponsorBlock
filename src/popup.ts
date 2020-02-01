@@ -1,4 +1,3 @@
-import * as CompileConfig from "../config.json";
 import Utils from "./utils";
 import SB from "./SB";
 
@@ -170,43 +169,43 @@ async function runThePopup() {
         OptionsElements.sponsorTimesContributionsContainer.style.display = "unset";
 
         //get the userID
-            let userID = SB.config.userID;
-            if (userID != undefined) {
-                //there are probably some views on these submissions then
-                //get the amount of views from the sponsors submitted
-                sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
-                        if (viewCount != 0) {
-                            if (viewCount > 1) {
-                                OptionsElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
-                            } else {
-                                OptionsElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-                            }
-
-                            OptionsElements.sponsorTimesViewsDisplay.innerText = viewCount;
-                            OptionsElements.sponsorTimesViewsContainer.style.display = "unset";
+        let userID = SB.config.userID;
+        if (userID != undefined) {
+            //there are probably some views on these submissions then
+            //get the amount of views from the sponsors submitted
+            Utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
+                    if (viewCount != 0) {
+                        if (viewCount > 1) {
+                            OptionsElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
+                        } else {
+                            OptionsElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                         }
+
+                        OptionsElements.sponsorTimesViewsDisplay.innerText = viewCount;
+                        OptionsElements.sponsorTimesViewsContainer.style.display = "unset";
                     }
-                });
+                }
+            });
 
-                //get this time in minutes
-                sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(xmlhttp) {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        let minutesSaved = JSON.parse(xmlhttp.responseText).timeSaved;
-                        if (minutesSaved != 0) {
-                            if (minutesSaved != 1) {
-                                OptionsElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-                            } else {
-                                OptionsElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-                            }
-
-                            OptionsElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                            OptionsElements.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
+            //get this time in minutes
+            Utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(xmlhttp) {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    let minutesSaved = JSON.parse(xmlhttp.responseText).timeSaved;
+                    if (minutesSaved != 0) {
+                        if (minutesSaved != 1) {
+                            OptionsElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+                        } else {
+                            OptionsElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
                         }
+
+                        OptionsElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
+                        OptionsElements.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
                     }
-                });
-            }
+                }
+            });
+        }
     }
 
     //get the amount of times this user has skipped a sponsor
@@ -859,27 +858,27 @@ async function runThePopup() {
 
     //make the options username setting option visible
     function setUsernameButton() {
-            //get username from the server
-            sendRequestToServer("GET", "/api/getUsername?userID=" + SB.config.userID, function (xmlhttp, error) {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    OptionsElements.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
+        //get username from the server
+        Utils.sendRequestToServer("GET", "/api/getUsername?userID=" + SB.config.userID, function (xmlhttp, error) {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                OptionsElements.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
 
-                    OptionsElements.submitUsername.style.display = "unset";
-                    OptionsElements.usernameInput.style.display = "unset";
+                OptionsElements.submitUsername.style.display = "unset";
+                OptionsElements.usernameInput.style.display = "unset";
 
-                    OptionsElements.setUsernameContainer.style.display = "none";
-                    OptionsElements.setUsername.style.display = "unset";
-                    OptionsElements
-                    OptionsElements.setUsernameStatusContainer.style.display = "none";
-                } else if (xmlhttp.readyState == 4) {
-                    OptionsElements.setUsername.style.display = "unset";
-                    OptionsElements.submitUsername.style.display = "none";
-                    OptionsElements.usernameInput.style.display = "none";
+                OptionsElements.setUsernameContainer.style.display = "none";
+                OptionsElements.setUsername.style.display = "unset";
+                OptionsElements
+                OptionsElements.setUsernameStatusContainer.style.display = "none";
+            } else if (xmlhttp.readyState == 4) {
+                OptionsElements.setUsername.style.display = "unset";
+                OptionsElements.submitUsername.style.display = "none";
+                OptionsElements.usernameInput.style.display = "none";
 
-                    OptionsElements.setUsernameStatusContainer.style.display = "unset";
-                    OptionsElements.setUsernameStatus.innerText = Utils.getErrorMessage(xmlhttp.status);
-                }
-            });
+                OptionsElements.setUsernameStatusContainer.style.display = "unset";
+                OptionsElements.setUsernameStatus.innerText = Utils.getErrorMessage(xmlhttp.status);
+            }
+        });
     }
 
     //submit the new username
@@ -889,17 +888,17 @@ async function runThePopup() {
         OptionsElements.setUsernameStatus.innerText = "Loading...";
 
         //get the userID
-            sendRequestToServer("POST", "/api/setUsername?userID=" + SB.config.userID + "&username=" + OptionsElements.usernameInput.value, function (xmlhttp, error) {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    //submitted
-                    OptionsElements.submitUsername.style.display = "none";
-                    OptionsElements.usernameInput.style.display = "none";
+        Utils.sendRequestToServer("POST", "/api/setUsername?userID=" + SB.config.userID + "&username=" + OptionsElements.usernameInput.value, function (xmlhttp, error) {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                //submitted
+                OptionsElements.submitUsername.style.display = "none";
+                OptionsElements.usernameInput.style.display = "none";
 
-                    OptionsElements.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
-                } else if (xmlhttp.readyState == 4) {
-                    OptionsElements.setUsernameStatus.innerText = Utils.getErrorMessage(xmlhttp.status);
-                }
-            });
+                OptionsElements.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
+            } else if (xmlhttp.readyState == 4) {
+                OptionsElements.setUsernameStatus.innerText = Utils.getErrorMessage(xmlhttp.status);
+            }
+        });
 
 
         OptionsElements.setUsernameContainer.style.display = "none";
@@ -1106,25 +1105,6 @@ async function runThePopup() {
         return secondsFormatted;
     }
   
-    function sendRequestToServer(type, address, callback) {
-        let xmlhttp = new XMLHttpRequest();
-  
-        xmlhttp.open(type, CompileConfig.serverAddress + address, true);
-  
-        if (callback != undefined) {
-            xmlhttp.onreadystatechange = function () {
-                callback(xmlhttp, false);
-            };
-    
-            xmlhttp.onerror = function(ev) {
-                callback(xmlhttp, true);
-            };
-        }
-  
-        //submit this request
-        xmlhttp.send();
-    }
-
     /**
      * Converts time in hours to 5h 25.1
      * If less than 1 hour, just returns minutes
