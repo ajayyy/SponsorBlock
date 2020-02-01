@@ -1,6 +1,8 @@
 import Utils from "./utils";
 import SB from "./SB";
 
+import runThePopup from "./popup.js";
+
 import PreviewBar from "./js-components/previewBar";
 import SkipNotice from "./js-components/previewBar";
 
@@ -74,7 +76,7 @@ var popupInitialised = false;
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
-function messageListener(request, sender, sendResponse) {
+function messageListener(request: any, sender: any, sendResponse: (response: any) => void): void {
     //messages from popup script
     switch(request.message){
         case "update":
@@ -578,7 +580,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 
     //send telemetry that a this sponsor was skipped
     if (SB.config.trackViewCount && !sponsorSkipped[index]) {
-        sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+        Utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
         if (!SB.config.disableAutoSkip) {
             // Count this as a skip
@@ -806,7 +808,7 @@ function openInfoMenu() {
             parentNode.insertBefore(popup, parentNode.firstChild);
 
             //run the popup init script
-            runThePopup();
+            runThePopup(messageListener);
         }
     });
 }
@@ -1053,25 +1055,6 @@ function getFormattedTime(seconds) {
     let formatted = minutes + ":" + secondsDisplay;
 
     return formatted;
-}
-
-function sendRequestToServer(type: string, address: string, callback = null) {
-    let xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.open(type, serverAddress + address, true);
-
-    if (callback !== null) {
-        xmlhttp.onreadystatechange = function () {
-            callback(xmlhttp, false);
-        };
-  
-        xmlhttp.onerror = function(ev) {
-            callback(xmlhttp, true);
-        };
-    }
-
-    //submit this request
-    xmlhttp.send();
 }
 
 function sendRequestToCustomServer(type, fullAddress, callback) {

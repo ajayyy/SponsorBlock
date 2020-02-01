@@ -269,7 +269,14 @@ class Utils {
         return errorMessage;
     }
 
-    static sendRequestToServer(type, address, callback) {
+    /**
+     * Sends a request to the SponsorBlock server with address added as a query
+     * 
+     * @param type The request type. "GET", "POST", etc.
+     * @param address The address to add to the SponsorBlock server address
+     * @param callback 
+     */
+    static sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
         let xmlhttp = new XMLHttpRequest();
   
         xmlhttp.open(type, CompileConfig.serverAddress + address, true);

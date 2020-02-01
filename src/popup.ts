@@ -1,23 +1,27 @@
 import Utils from "./utils";
 import SB from "./SB";
 
-class MessageHandler {
-    onContentScript: boolean;
+interface MessageListener {
+    (request: any, sender: any, callback: (response: any) => void): void;
+} 
 
-    constructor (onContentScript: boolean = false) {
-        this.onContentScript = onContentScript;
+class MessageHandler {
+    messageListener: MessageListener;
+
+    constructor (messageListener?: MessageListener) {
+        this.messageListener = messageListener;
     }
 
     sendMessage(id: number, request, callback?) {
-        if (this.onContentScript) {
-            messageListener(request, null, callback);
+        if (this.messageListener) {
+            this.messageListener(request, null, callback);
         } else {
-            chrome.tabs.sendMessage(id, request. callback);
+            chrome.tabs.sendMessage(id, request, callback);
         }
     }
 
     query(config, callback) {
-        if (this.onContentScript) {
+        if (this.messageListener) {
             // Send back dummy info
             callback([{
                 url: document.URL,
@@ -30,20 +34,11 @@ class MessageHandler {
     }
 }
 
-var messageHandler = new MessageHandler();
-
 //make this a function to allow this to run on the content page
-async function runThePopup() {
+async function runThePopup(messageListener?: MessageListener) {
+    var messageHandler = new MessageHandler();
+
     Utils.localizeHtmlPage();
-
-    //is it in the popup or content script
-    var inPopup = true;
-    if (chrome.tabs == undefined) {
-        //this is on the content script, use direct communication
-        messageHandler = new MessageHandler(true);
-
-        inPopup = false;
-    }
 
     await Utils.wait(() => SB.config !== undefined);
 
@@ -1128,3 +1123,5 @@ if (chrome.tabs != undefined) {
     //this means it is actually opened in the popup
     runThePopup();
 }
+
+export default runThePopup;
