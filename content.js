@@ -987,11 +987,9 @@ function sendSubmitMessage(){
 
                 submitButton.addEventListener("animationend", animationEndListener);
 
-                //clear the sponsor times
-                SB.config.sponsorTimes.delete(currentVideoID);
-
                 //add submissions to current sponsors list
-                sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+                SB.config.sponsorTimes.set(currentVideoID, sponsorTimesSubmitting);
+                
                 for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
                     // Add some random IDs
                     UUIDs.push(generateUserID());
