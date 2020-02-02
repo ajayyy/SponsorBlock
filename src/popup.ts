@@ -323,17 +323,17 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     function sendSponsorStartMessage() {
-            //the content script will get the message if a YouTube page is open
-            messageHandler.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
-                messageHandler.sendMessage(
-                    tabs[0].id,
-                    {from: 'popup', message: 'sponsorStart'},
-                    startSponsorCallback
-                );
-            });
+        //the content script will get the message if a YouTube page is open
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                {from: 'popup', message: 'sponsorStart'},
+                startSponsorCallback
+            );
+        });
     }
   
     function startSponsorCallback(response) {
@@ -347,18 +347,19 @@ async function runThePopup(messageListener?: MessageListener) {
 
         let localStartTimeChosen = startTimeChosen;
         SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-            //send a message to the client script
-            if (localStartTimeChosen) {
-                messageHandler.query({
-                    active: true,
-                    currentWindow: true
-                }, tabs => {
-                    messageHandler.sendMessage(
-                        tabs[0].id,
-                        {message: "sponsorDataChanged"}
-                    );
-                });
-            }
+        
+        //send a message to the client script
+        if (localStartTimeChosen) {
+            messageHandler.query({
+                active: true,
+                currentWindow: true
+            }, tabs => {
+                messageHandler.sendMessage(
+                    tabs[0].id,
+                    {message: "sponsorDataChanged"}
+                );
+            });
+        }
   
         updateStartTimeChosen();
   
@@ -999,7 +1000,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
 
                         //save this
-                        PageElements.config.whitelistedChannels = whitelistedChannels;
+                        SB.config.whitelistedChannels = whitelistedChannels;
 
                         //send a message to the client
                         messageHandler.query({
@@ -1046,7 +1047,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         PageElements.downloadedSponsorMessageTimes.style.fontWeight = "unset";
 
                         //save this
-                        PageElements.config.whitelistedChannels = whitelistedChannels;
+                        SB.config.whitelistedChannels = whitelistedChannels;
 
                         //send a message to the client
                         messageHandler.query({
@@ -1069,7 +1070,7 @@ async function runThePopup(messageListener?: MessageListener) {
      * Should skipping be disabled (visuals stay)
      */
     function toggleSkipping(disabled) {
-		PageElements.config.disableSkipping = disabled;
+		SB.config.disableSkipping = disabled;
 
         let hiddenButton = PageElements.disableSkipping;
         let shownButton = PageElements.enableSkipping;
