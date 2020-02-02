@@ -61,50 +61,50 @@ var SB: SBObject = {
 // Saves the changes to chrome.storage in json form
 class MapIO {
     id: string;
-    SBMap: SBMap<String, any>;
+    map: SBMap<String, any>;
 
     constructor(id) {
 	    // The name of the item in the array
         this.id = id;
 	    // A local copy of the SBMap (SB.config.SBMapname.SBMap)
-        this.SBMap = SB.localConfig[this.id];
+        this.map = SB.localConfig[this.id];
     }
 
     set(key, value) {
 	    // Proxy to SBMap
-        this.SBMap.set(key, value);
+        this.map.set(key, value);
         // Store updated SBMap locally
         chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this.SBMap)
+            [this.id]: encodeStoredItem(this.map)
         });
-        return this.SBMap;
+        return this.map;
     }
 
     get(key) {
-        return this.SBMap.get(key);
+        return this.map.get(key);
     }
 	
     has(key) {
-        return this.SBMap.has(key);
+        return this.map.has(key);
     }
 	
     size() {
-        return this.SBMap.size;
+        return this.map.size;
     }
 	
     delete(key) {
 	    // Proxy to SBMap
-        this.SBMap.delete(key);
+        this.map.delete(key);
 	    // Store updated SBMap locally
 	    chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this.SBMap)
+            [this.id]: encodeStoredItem(this.map)
         });
     }
 
     clear() {
-        this.SBMap.clear();
+        this.map.clear();
 	    chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this.SBMap)
+            [this.id]: encodeStoredItem(this.map)
         });
     }
 }
