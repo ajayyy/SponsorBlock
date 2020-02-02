@@ -51,8 +51,8 @@ var SB: SBObject = {
         "invidiousUpdateInfoShowCount": 0,
         "autoUpvote": true
     },
-    localConfig: {},
-    config: {}
+    localConfig: null,
+    config: null
 };
 
 // Function setup
@@ -113,7 +113,7 @@ class MapIO {
  * A SBMap cannot be stored in the chrome storage. 
  * This data will be encoded into an array instead as specified by the toJSON function.
  * 
- * @param {*} data 
+ * @param data 
  */
 function encodeStoredItem(data) {
     // if data is SBMap convert to json for storing
@@ -223,7 +223,7 @@ function convertJSON() {
 function addDefaults() {
     for (const key in SB.defaults) {
         if(!SB.localConfig.hasOwnProperty(key)) {
-	    SB.localConfig[key] = SB.defaults[key];
+	        SB.localConfig[key] = SB.defaults[key];
         }
     }
 };

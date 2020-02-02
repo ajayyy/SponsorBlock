@@ -42,9 +42,9 @@ async function runThePopup(messageListener?: MessageListener) {
 
     utils.localizeHtmlPage();
 
-    await utils.wait(() => SB.config !== undefined);
+    await utils.wait(() => SB.config !== null);
 
-    var OptionsElements: any = {};
+    var PageElements: any = {};
 
     ["sponsorStart",
     // Top toggles
@@ -100,22 +100,22 @@ async function runThePopup(messageListener?: MessageListener) {
     "videoFound",
     "sponsorMessageTimes",
     "downloadedSponsorMessageTimes",
-    ].forEach(id => OptionsElements[id] = document.getElementById(id));
+    ].forEach(id => PageElements[id] = document.getElementById(id));
 
     //setup click listeners
-    OptionsElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
-    OptionsElements.whitelistChannel.addEventListener("click", whitelistChannel);
-    OptionsElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
-    OptionsElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
-    OptionsElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
-    OptionsElements.clearTimes.addEventListener("click", clearTimes);
-    OptionsElements.submitTimes.addEventListener("click", submitTimes);
-    OptionsElements.showNoticeAgain.addEventListener("click", showNoticeAgain);
-    OptionsElements.setUsernameButton.addEventListener("click", setUsernameButton);
-    OptionsElements.submitUsername.addEventListener("click", submitUsername);
-    OptionsElements.optionsButton.addEventListener("click", openOptions);
-    OptionsElements.reportAnIssue.addEventListener("click", reportAnIssue);
-    OptionsElements.hideDiscordButton.addEventListener("click", hideDiscordButton);
+    PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
+    PageElements.whitelistChannel.addEventListener("click", whitelistChannel);
+    PageElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
+    PageElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
+    PageElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
+    PageElements.clearTimes.addEventListener("click", clearTimes);
+    PageElements.submitTimes.addEventListener("click", submitTimes);
+    PageElements.showNoticeAgain.addEventListener("click", showNoticeAgain);
+    PageElements.setUsernameButton.addEventListener("click", setUsernameButton);
+    PageElements.submitUsername.addEventListener("click", submitUsername);
+    PageElements.optionsButton.addEventListener("click", openOptions);
+    PageElements.reportAnIssue.addEventListener("click", reportAnIssue);
+    PageElements.hideDiscordButton.addEventListener("click", hideDiscordButton);
 	
     //if true, the button now selects the end time
     let startTimeChosen = false;
@@ -132,7 +132,7 @@ async function runThePopup(messageListener?: MessageListener) {
             let hideDiscordLaunches = SB.config.hideDiscordLaunches;
             //only if less than 10 launches
             if (hideDiscordLaunches == undefined || hideDiscordLaunches < 10) {
-                OptionsElements.discordButtonContainer.style.display = null;
+                PageElements.discordButtonContainer.style.display = null;
         
                 if (hideDiscordLaunches == undefined) {
                     hideDiscordLaunches = 1;
@@ -144,26 +144,26 @@ async function runThePopup(messageListener?: MessageListener) {
     //show proper disable skipping button
     let disableSkipping = SB.config.disableSkipping;
     if (disableSkipping != undefined && disableSkipping) {
-        OptionsElements.disableSkipping.style.display = "none";
-        OptionsElements.enableSkipping.style.display = "unset";
+        PageElements.disableSkipping.style.display = "none";
+        PageElements.enableSkipping.style.display = "unset";
     }
 
     //if the don't show notice again variable is true, an option to 
     //  disable should be available
     let dontShowNotice = SB.config.dontShowNotice;
     if (dontShowNotice != undefined && dontShowNotice) {
-        OptionsElements.showNoticeAgain.style.display = "unset";
+        PageElements.showNoticeAgain.style.display = "unset";
     }
 
     //get the amount of times this user has contributed and display it to thank them
     if (SB.config.sponsorTimesContributed != undefined) {
         if (SB.config.sponsorTimesContributed > 1) {
-            OptionsElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
         } else {
-            OptionsElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
+            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
         }
-        OptionsElements.sponsorTimesContributionsDisplay.innerText = SB.config.sponsorTimesContributed;
-        OptionsElements.sponsorTimesContributionsContainer.style.display = "unset";
+        PageElements.sponsorTimesContributionsDisplay.innerText = SB.config.sponsorTimesContributed;
+        PageElements.sponsorTimesContributionsContainer.style.display = "unset";
 
         //get the userID
         let userID = SB.config.userID;
@@ -175,13 +175,13 @@ async function runThePopup(messageListener?: MessageListener) {
                     let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
                     if (viewCount != 0) {
                         if (viewCount > 1) {
-                            OptionsElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
+                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
                         } else {
-                            OptionsElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
+                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                         }
 
-                        OptionsElements.sponsorTimesViewsDisplay.innerText = viewCount;
-                        OptionsElements.sponsorTimesViewsContainer.style.display = "unset";
+                        PageElements.sponsorTimesViewsDisplay.innerText = viewCount;
+                        PageElements.sponsorTimesViewsContainer.style.display = "unset";
                     }
                 }
             });
@@ -192,13 +192,13 @@ async function runThePopup(messageListener?: MessageListener) {
                     let minutesSaved = JSON.parse(xmlhttp.responseText).timeSaved;
                     if (minutesSaved != 0) {
                         if (minutesSaved != 1) {
-                            OptionsElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
                         } else {
-                            OptionsElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
+                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
                         }
 
-                        OptionsElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                        OptionsElements.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
+                        PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
+                        PageElements.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
                     }
                 }
             });
@@ -208,25 +208,25 @@ async function runThePopup(messageListener?: MessageListener) {
     //get the amount of times this user has skipped a sponsor
     if (SB.config.skipCount != undefined) {
         if (SB.config.skipCount != 1) {
-            OptionsElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsors");
         } else {
-            OptionsElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsor");
+            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsor");
         }
 
-        OptionsElements.sponsorTimesSkipsDoneDisplay.innerText = SB.config.skipCount;
-        OptionsElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
+        PageElements.sponsorTimesSkipsDoneDisplay.innerText = SB.config.skipCount;
+        PageElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
     }
 
     //get the amount of time this user has saved.
     if (SB.config.minutesSaved != undefined) {
         if (SB.config.minutesSaved != 1) {
-            OptionsElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+            PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
         } else {
-            OptionsElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
+            PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
         }
 
-        OptionsElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(SB.config.minutesSaved);
-        OptionsElements.sponsorTimeSavedContainer.style.display = "unset";
+        PageElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(SB.config.minutesSaved);
+        PageElements.sponsorTimeSavedContainer.style.display = "unset";
     }
   
     messageHandler.query({
@@ -258,7 +258,7 @@ async function runThePopup(messageListener?: MessageListener) {
         if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
             if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
                 startTimeChosen = true;
-                OptionsElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
+                PageElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
             }
 
             sponsorTimes = sponsorTimesStorage;
@@ -266,7 +266,7 @@ async function runThePopup(messageListener?: MessageListener) {
             displaySponsorTimes();
 
             //show submission section
-            OptionsElements.submissionSection.style.display = "unset";
+            PageElements.submissionSection.style.display = "unset";
 
             showSubmitTimesIfNecessary();
         }
@@ -289,15 +289,15 @@ async function runThePopup(messageListener?: MessageListener) {
         //if request is undefined, then the page currently being browsed is not YouTube
         if (request != undefined) {
             //remove loading text
-            OptionsElements.mainControls.style.display = "unset"
-            OptionsElements.loadingIndicator.style.display = "none";
+            PageElements.mainControls.style.display = "unset"
+            PageElements.loadingIndicator.style.display = "none";
 
             if (request.found) {
-                OptionsElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
+                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
 
                 displayDownloadedSponsorTimes(request);
             } else {
-                OptionsElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
+                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
             }
         }
 
@@ -311,11 +311,11 @@ async function runThePopup(messageListener?: MessageListener) {
                 {message: 'isChannelWhitelisted'},
                 function(response) {
                     if (response.value) {
-                        OptionsElements.whitelistChannel.style.display = "none";
-                        OptionsElements.unwhitelistChannel.style.display = "unset";
+                        PageElements.whitelistChannel.style.display = "none";
+                        PageElements.unwhitelistChannel.style.display = "unset";
 
-                        OptionsElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                        OptionsElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+                        PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
+                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
                     }
                 });
             }
@@ -366,7 +366,7 @@ async function runThePopup(messageListener?: MessageListener) {
         displaySponsorTimes();
   
         //show submission section
-        OptionsElements.submissionSection.style.display = "unset";
+        PageElements.submissionSection.style.display = "unset";
   
         showSubmitTimesIfNecessary();
     }
@@ -374,20 +374,20 @@ async function runThePopup(messageListener?: MessageListener) {
     //display the video times from the array
     function displaySponsorTimes() {
         //remove all children
-        while (OptionsElements.sponsorMessageTimes.firstChild) {
-            OptionsElements.sponsorMessageTimes.removeChild(OptionsElements.sponsorMessageTimes.firstChild);
+        while (PageElements.sponsorMessageTimes.firstChild) {
+            PageElements.sponsorMessageTimes.removeChild(PageElements.sponsorMessageTimes.firstChild);
         }
 
         //add sponsor times
-        OptionsElements.sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
+        PageElements.sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
     }
   
     //display the video times from the array at the top, in a different section
     function displayDownloadedSponsorTimes(request) {
         if (request.sponsorTimes != undefined) {
             //set it to the message
-            if (OptionsElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
-                OptionsElements.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
+            if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
+                PageElements.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
             }
 
             //add them as buttons to the issue reporting container
@@ -789,8 +789,8 @@ async function runThePopup(messageListener?: MessageListener) {
   
     function submitTimes() {
         //make info message say loading
-        OptionsElements.submitTimesInfoMessage.innerText = chrome.i18n.getMessage("Loading");
-        OptionsElements.submitTimesInfoMessageContainer.style.display = "unset";
+        PageElements.submitTimesInfoMessage.innerText = chrome.i18n.getMessage("Loading");
+        PageElements.submitTimesInfoMessageContainer.style.display = "unset";
   
         if (sponsorTimes.length > 0) {
             chrome.runtime.sendMessage({
@@ -800,14 +800,14 @@ async function runThePopup(messageListener?: MessageListener) {
                 if (response != undefined) {
                     if (response.statusCode == 200) {
                         //hide loading message
-                        OptionsElements.submitTimesInfoMessageContainer.style.display = "none";
+                        PageElements.submitTimesInfoMessageContainer.style.display = "none";
 
                         clearTimes();
                     } else {
                         document.getElementById("submitTimesInfoMessage").innerText = utils.getErrorMessage(response.statusCode);
                         document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
 
-                        OptionsElements.submitTimesInfoMessageContainer.style.display = "unset";
+                        PageElements.submitTimesInfoMessageContainer.style.display = "unset";
                     }
                 }
             });
@@ -817,14 +817,14 @@ async function runThePopup(messageListener?: MessageListener) {
     function showNoticeAgain() {
         SB.config.dontShowNotice = false;
   
-        OptionsElements.showNoticeAgain.style.display = "none";
+        PageElements.showNoticeAgain.style.display = "none";
     }
 
     function updateStartTimeChosen() {
         //update startTimeChosen letiable
         if (!startTimeChosen) {
             startTimeChosen = true;
-            OptionsElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
+            PageElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
         } else {
             resetStartTimeChosen();
         }
@@ -833,7 +833,7 @@ async function runThePopup(messageListener?: MessageListener) {
     //set it to false
     function resetStartTimeChosen() {
         startTimeChosen = false;
-        OptionsElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorStart");
+        PageElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorStart");
     }
   
     //hides and shows the submit times button when needed
@@ -858,22 +858,22 @@ async function runThePopup(messageListener?: MessageListener) {
         //get username from the server
         utils.sendRequestToServer("GET", "/api/getUsername?userID=" + SB.config.userID, function (xmlhttp, error) {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                OptionsElements.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
+                PageElements.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
 
-                OptionsElements.submitUsername.style.display = "unset";
-                OptionsElements.usernameInput.style.display = "unset";
+                PageElements.submitUsername.style.display = "unset";
+                PageElements.usernameInput.style.display = "unset";
 
-                OptionsElements.setUsernameContainer.style.display = "none";
-                OptionsElements.setUsername.style.display = "unset";
-                OptionsElements
-                OptionsElements.setUsernameStatusContainer.style.display = "none";
+                PageElements.setUsernameContainer.style.display = "none";
+                PageElements.setUsername.style.display = "unset";
+                PageElements
+                PageElements.setUsernameStatusContainer.style.display = "none";
             } else if (xmlhttp.readyState == 4) {
-                OptionsElements.setUsername.style.display = "unset";
-                OptionsElements.submitUsername.style.display = "none";
-                OptionsElements.usernameInput.style.display = "none";
+                PageElements.setUsername.style.display = "unset";
+                PageElements.submitUsername.style.display = "none";
+                PageElements.usernameInput.style.display = "none";
 
-                OptionsElements.setUsernameStatusContainer.style.display = "unset";
-                OptionsElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
+                PageElements.setUsernameStatusContainer.style.display = "unset";
+                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
             }
         });
     }
@@ -881,25 +881,25 @@ async function runThePopup(messageListener?: MessageListener) {
     //submit the new username
     function submitUsername() {
         //add loading indicator
-        OptionsElements.setUsernameStatusContainer.style.display = "unset";
-        OptionsElements.setUsernameStatus.innerText = "Loading...";
+        PageElements.setUsernameStatusContainer.style.display = "unset";
+        PageElements.setUsernameStatus.innerText = "Loading...";
 
         //get the userID
-        utils.sendRequestToServer("POST", "/api/setUsername?userID=" + SB.config.userID + "&username=" + OptionsElements.usernameInput.value, function (xmlhttp, error) {
+        utils.sendRequestToServer("POST", "/api/setUsername?userID=" + SB.config.userID + "&username=" + PageElements.usernameInput.value, function (xmlhttp, error) {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 //submitted
-                OptionsElements.submitUsername.style.display = "none";
-                OptionsElements.usernameInput.style.display = "none";
+                PageElements.submitUsername.style.display = "none";
+                PageElements.usernameInput.style.display = "none";
 
-                OptionsElements.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
+                PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
             } else if (xmlhttp.readyState == 4) {
-                OptionsElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
+                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
             }
         });
 
 
-        OptionsElements.setUsernameContainer.style.display = "none";
-        OptionsElements.setUsername.style.display = "unset";
+        PageElements.setUsernameContainer.style.display = "none";
+        PageElements.setUsername.style.display = "unset";
     }
 
     //this is not a YouTube video page
@@ -909,7 +909,7 @@ async function runThePopup(messageListener?: MessageListener) {
   
     function reportAnIssue() {
         document.getElementById("issueReporterContainer").style.display = "unset";
-        OptionsElements.reportAnIssue.style.display = "none";
+        PageElements.reportAnIssue.style.display = "none";
     }
   
     function addVoteMessage(message, UUID) {
@@ -954,7 +954,7 @@ async function runThePopup(messageListener?: MessageListener) {
   
     function hideDiscordButton() {
         SB.config.hideDiscordLink = true;
-        OptionsElements.discordButtonContainer.style.display = "none";
+        PageElements.discordButtonContainer.style.display = "none";
     }
   
     //converts time in seconds to minutes:seconds
@@ -992,14 +992,14 @@ async function runThePopup(messageListener?: MessageListener) {
                         whitelistedChannels.push(response.channelURL);
 
                         //change button
-                        OptionsElements.whitelistChannel.style.display = "none";
-                        OptionsElements.unwhitelistChannel.style.display = "unset";
+                        PageElements.whitelistChannel.style.display = "none";
+                        PageElements.unwhitelistChannel.style.display = "unset";
 
-                        OptionsElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                        OptionsElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+                        PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
+                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
 
                         //save this
-                        OptionsElements.config.whitelistedChannels = whitelistedChannels;
+                        PageElements.config.whitelistedChannels = whitelistedChannels;
 
                         //send a message to the client
                         messageHandler.query({
@@ -1039,14 +1039,14 @@ async function runThePopup(messageListener?: MessageListener) {
                         whitelistedChannels.splice(index, 1);
 
                         //change button
-                        OptionsElements.whitelistChannel.style.display = "unset";
-                        OptionsElements.unwhitelistChannel.style.display = "none";
+                        PageElements.whitelistChannel.style.display = "unset";
+                        PageElements.unwhitelistChannel.style.display = "none";
 
-                        OptionsElements.downloadedSponsorMessageTimes.innerText = "";
-                        OptionsElements.downloadedSponsorMessageTimes.style.fontWeight = "unset";
+                        PageElements.downloadedSponsorMessageTimes.innerText = "";
+                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "unset";
 
                         //save this
-                        OptionsElements.config.whitelistedChannels = whitelistedChannels;
+                        PageElements.config.whitelistedChannels = whitelistedChannels;
 
                         //send a message to the client
                         messageHandler.query({
@@ -1069,14 +1069,14 @@ async function runThePopup(messageListener?: MessageListener) {
      * Should skipping be disabled (visuals stay)
      */
     function toggleSkipping(disabled) {
-		OptionsElements.config.disableSkipping = disabled;
+		PageElements.config.disableSkipping = disabled;
 
-        let hiddenButton = OptionsElements.disableSkipping;
-        let shownButton = OptionsElements.enableSkipping;
+        let hiddenButton = PageElements.disableSkipping;
+        let shownButton = PageElements.enableSkipping;
 
         if (!disabled) {
-            hiddenButton = OptionsElements.enableSkipping;
-            shownButton = OptionsElements.disableSkipping;
+            hiddenButton = PageElements.enableSkipping;
+            shownButton = PageElements.disableSkipping;
         }
 
         shownButton.style.display = "unset";

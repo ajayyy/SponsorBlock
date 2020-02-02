@@ -7,7 +7,7 @@ async function init() {
         SB.configListeners.push(optionsConfigUpdateListener);
     }
 
-    await wait(() => SB.config !== undefined);
+    await wait(() => SB.config !== null);
 
     // Set all of the toggle options to the correct option
     let optionsContainer = document.getElementById("options");

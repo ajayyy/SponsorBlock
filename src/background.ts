@@ -12,7 +12,7 @@ var contentScriptRegistrations = {};
 
 // Register content script if needed
 if (utils.isFirefox()) {
-    utils.wait(() => SB.config !== undefined).then(function() {
+    utils.wait(() => SB.config !== null).then(function() {
         if (SB.config.supportInvidious) utils.setupExtraSiteContentScripts();
     });
 } 

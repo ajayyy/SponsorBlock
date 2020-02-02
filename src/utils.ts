@@ -66,13 +66,7 @@ class Utils {
      */
     setupExtraSiteContentScripts() {
         let js = [
-            "config.js",
-            "SB.js",
-            "utils/previewBar.js",
-            "utils/skipNotice.js",
-            "utils.js",
-            "content.js",
-            "popup.js"
+            "content.js"
         ];
         let css = [
             "content.css",

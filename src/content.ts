@@ -427,13 +427,13 @@ function getYouTubeVideoID(url: string) {
         return false;
     }
 
-    //Check if valid hostname
+    // Check if valid hostname
     if (SB.config && SB.config.invidiousInstances.includes(urlObject.host)) {
         onInvidious = true;
     } else if (!["www.youtube.com", "www.youtube-nocookie.com"].includes(urlObject.host)) {
         if (!SB.config) {
             // Call this later, in case this is an Invidious tab
-            this.wait(() => SB.config !== undefined).then(() => this.videoIDChange(this.getYouTubeVideoID(url)));
+            this.wait(() => SB.config !== null).then(() => this.videoIDChange(this.getYouTubeVideoID(url)));
         }
 
         return false
