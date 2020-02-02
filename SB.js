@@ -153,7 +153,7 @@ function migrateOldFormats() { // Convert sponsorTimes format
 async function setupConfig() {
     await fetchConfig();
     addDefaults();
-    convertJSON();
+    decodeConfig();
     SB.config = configProxy();
     migrateOldFormats();
 }
@@ -184,8 +184,8 @@ function resetConfig() {
     SB.config = SB.defaults;
 };
 
-function convertJSON() {
-    Object.keys(SB.defaults).forEach(key => {
+function decodeConfig() {
+    Object.keys(SB.localConfig).forEach(key => {
         SB.localConfig[key] = decodeStoredItem(SB.localConfig[key], key);
     });
 }
