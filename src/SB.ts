@@ -1,6 +1,27 @@
+interface SBConfig {
+    sponsorTimes: SBMap<string, any>,
+    startSponsorKeybind: string,
+    submitKeybind: string,
+    minutesSaved: number,
+    skipCount: number,
+    sponsorTimesContributed: number,
+    disableSkipping: boolean,
+    disableAutoSkip: boolean,
+    trackViewCount: boolean,
+    dontShowNotice: boolean,
+    hideVideoPlayerControls: boolean,
+    hideInfoButtonPlayerControls: boolean,
+    hideDeleteButtonPlayerControls: boolean,
+    hideDiscordLaunches: number,
+    hideDiscordLink: boolean,
+    invidiousInstances: string[],
+    invidiousUpdateInfoShowCount: number,
+    autoUpvote: boolean
+}
+
 interface SBObject {
     configListeners: Array<Function>;
-    defaults: any;
+    defaults: SBConfig;
     localConfig: any;
     config: any;
 }
@@ -32,24 +53,24 @@ var SB: SBObject = {
      */
     configListeners: [],
     defaults: {
-        "sponsorTimes": new SBMap(),
-        "startSponsorKeybind": ";",
-        "submitKeybind": "'",
-        "minutesSaved": 0,
-        "skipCount": 0,
-        "sponsorTimesContributed": 0,
-        "disableSkipping": false,
-        "disableAutoSkip": false,
-        "trackViewCount": true,
-        "dontShowNotice": false,
-        "hideVideoPlayerControls": false,
-        "hideInfoButtonPlayerControls": false,
-        "hideDeleteButtonPlayerControls": false,
-        "hideDiscordLaunches": 0,
-        "hideDiscordLink": false,
-        "invidiousInstances": ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
-        "invidiousUpdateInfoShowCount": 0,
-        "autoUpvote": true
+        sponsorTimes: new SBMap(),
+        startSponsorKeybind: ";",
+        submitKeybind: "'",
+        minutesSaved: 0,
+        skipCount: 0,
+        sponsorTimesContributed: 0,
+        disableSkipping: false,
+        disableAutoSkip: false,
+        trackViewCount: true,
+        dontShowNotice: false,
+        hideVideoPlayerControls: false,
+        hideInfoButtonPlayerControls: false,
+        hideDeleteButtonPlayerControls: false,
+        hideDiscordLaunches: 0,
+        hideDiscordLink: false,
+        invidiousInstances: ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
+        invidiousUpdateInfoShowCount: 0,
+        autoUpvote: true
     },
     localConfig: null,
     config: null
@@ -179,7 +200,7 @@ function configProxy(): any {
 
     };
 
-    return new Proxy({}, handler);
+    return new Proxy({handler}, handler);
 }
 
 function fetchConfig() { 
