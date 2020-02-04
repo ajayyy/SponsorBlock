@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - name: Copy configuration
-        run: cp config.js.example config.js
+        run: cp config.json.example config.json
 
       # Create Chrome artifacts
       - name: Create Chrome artifacts
@@ -22,17 +22,15 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Chrome Extension
-          path: web-ext-artifacts
+          path: dist
 
       # Create Firefox artifacts
       - name: Move manifest
-        run: mv manifest.json manifest.json.original
+        run: mv ./dist/manifest.json ./dist/manifest.json.original
       - name: Combine manifest for Firefox
-        run: jq -s '.[0] * .[1]' manifest.json.original firefox_manifest-extra.json > manifest.json
-      - name: Create Firefox artifacts
-        run: npm run build
+        run: jq -s '.[0] * .[1]' ./dist/manifest.json.original ./dist/firefox_manifest-extra.json > manifest.json
       - uses: actions/upload-artifact@v1
         with:
           name: Firefox Extension
-          path: web-ext-artifacts
+          path: dist
 

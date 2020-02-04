@@ -1,13 +1,18 @@
+import SB from "./SB";
+
+import Utils from "./utils";
+var utils = new Utils();
+
 window.addEventListener('DOMContentLoaded', init);
 
 async function init() {
-    localizeHtmlPage();
+    utils.localizeHtmlPage();
 
     if (!SB.configListeners.includes(optionsConfigUpdateListener)) {
         SB.configListeners.push(optionsConfigUpdateListener);
     }
 
-    await wait(() => SB.config !== undefined);
+    await utils.wait(() => SB.config !== null);
 
     // Set all of the toggle options to the correct option
     let optionsContainer = document.getElementById("options");
@@ -51,23 +56,23 @@ async function init() {
                 break;
             case "text-change":
                 let button = optionsElements[i].querySelector(".trigger-button");
-                button.addEventListener("click", () => activateTextChange(optionsElements[i]));
+                button.addEventListener("click", () => activateTextChange(<HTMLElement> optionsElements[i]));
 
                 let textChangeOption = optionsElements[i].getAttribute("sync-option");
                 // See if anything extra must be done
                 switch (textChangeOption) {
                     case "invidiousInstances":
-                        invidiousInstanceAddInit(optionsElements[i], textChangeOption);
+                        invidiousInstanceAddInit(<HTMLElement> optionsElements[i], textChangeOption);
                 }
 
                 break;
             case "keybind-change":
                 let keybindButton = optionsElements[i].querySelector(".trigger-button");
-                keybindButton.addEventListener("click", () => activateKeybindChange(optionsElements[i]));
+                keybindButton.addEventListener("click", () => activateKeybindChange(<HTMLElement> optionsElements[i]));
 
                 break;
             case "display":
-                updateDisplayElement(optionsElements[i])
+                updateDisplayElement(<HTMLElement> optionsElements[i])
         }
     }
 
@@ -87,7 +92,7 @@ function optionsConfigUpdateListener(changes) {
     for (let i = 0; i < optionsElements.length; i++) {
         switch (optionsElements[i].getAttribute("option-type")) {
             case "display":
-                updateDisplayElement(optionsElements[i])
+                updateDisplayElement(<HTMLElement> optionsElements[i])
         }
     }
 }
@@ -95,9 +100,9 @@ function optionsConfigUpdateListener(changes) {
 /**
  * Will set display elements to the proper text
  * 
- * @param {HTMLElement} element 
+ * @param element 
  */
-function updateDisplayElement(element) {
+function updateDisplayElement(element: HTMLElement) {
     let displayOption = element.getAttribute("sync-option")
     let displayText = SB.config[displayOption];
     element.innerText = displayText;
@@ -113,11 +118,11 @@ function updateDisplayElement(element) {
 /**
  * Initializes the option to add Invidious instances
  * 
- * @param {HTMLElement} element 
- * @param {String} option 
+ * @param element 
+ * @param option 
  */
-function invidiousInstanceAddInit(element, option) {
-    let textBox = element.querySelector(".option-text-box");
+function invidiousInstanceAddInit(element: HTMLElement, option: string) {
+    let textBox = <HTMLInputElement> element.querySelector(".option-text-box");
     let button = element.querySelector(".trigger-button");
 
     let setButton = element.querySelector(".text-change-set");
@@ -133,7 +138,7 @@ function invidiousInstanceAddInit(element, option) {
 
             SB.config[option] = instanceList;
 
-            let checkbox = document.querySelector("#support-invidious input");
+            let checkbox = <HTMLInputElement> document.querySelector("#support-invidious input");
             checkbox.checked = true;
 
             invidiousOnClick(checkbox, "supportInvidious");
@@ -158,15 +163,15 @@ function invidiousInstanceAddInit(element, option) {
 /**
  * Run when the invidious button is being initialized
  * 
- * @param {HTMLElement} checkbox 
- * @param {string} option 
+ * @param checkbox 
+ * @param option 
  */
-function invidiousInit(checkbox, option) {
+function invidiousInit(checkbox: HTMLInputElement, option: string) {
     let permissions = ["declarativeContent"];
-    if (isFirefox()) permissions = [];
+    if (utils.isFirefox()) permissions = [];
 
     chrome.permissions.contains({
-        origins: getInvidiousInstancesRegex(),
+        origins: utils.getInvidiousInstancesRegex(),
         permissions: permissions
     }, function (result) {
         if (result != checkbox.checked) {
@@ -180,28 +185,28 @@ function invidiousInit(checkbox, option) {
 /**
  * Run whenever the invidious checkbox is clicked
  * 
- * @param {HTMLElement} checkbox 
- * @param {string} option 
+ * @param checkbox 
+ * @param option 
  */
-function invidiousOnClick(checkbox, option) {
+function invidiousOnClick(checkbox: HTMLInputElement, option: string) {
     if (checkbox.checked) {
-        setupExtraSitePermissions(function (granted) {
+        utils.setupExtraSitePermissions(function (granted) {
             if (!granted) {
                 SB.config[option] = false;
                 checkbox.checked = false;
             }
         });
     } else {
-        removeExtraSiteRegistration();
+        utils.removeExtraSiteRegistration();
     }
 }
 
 /**
  * Will trigger the container to ask the user for a keybind.
  * 
- * @param {HTMLElement} element 
+ * @param element 
  */
-function activateKeybindChange(element) {
+function activateKeybindChange(element: HTMLElement) {
     let button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
@@ -211,11 +216,11 @@ function activateKeybindChange(element) {
 
     let currentlySet = SB.config[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
     
-    let status = element.querySelector(".option-hidden-section > .keybind-status");
+    let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
     status.innerText = chrome.i18n.getMessage("keybindDescription") + currentlySet;
 
     if (SB.config[option] !== null) {
-        let statusKey = element.querySelector(".option-hidden-section > .keybind-status-key");
+        let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
         statusKey.innerText = SB.config[option];
     }
 
@@ -227,11 +232,10 @@ function activateKeybindChange(element) {
 /**
  * Called when a key is pressed in an activiated keybind change option.
  * 
- * @param {HTMLElement} element 
- * @param {KeyboardEvent} e
+ * @param element 
+ * @param e
  */
-function keybindKeyPressed(element, e) {
-    e = e || window.event;
+function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
     var key = e.key;
 
     let button = element.querySelector(".trigger-button");
@@ -247,10 +251,10 @@ function keybindKeyPressed(element, e) {
 
     SB.config[option] = key;
 
-    let status = element.querySelector(".option-hidden-section > .keybind-status");
+    let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
     status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
 
-    let statusKey = element.querySelector(".option-hidden-section > .keybind-status-key");
+    let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
     statusKey.innerText = key;
 
     button.classList.remove("disabled");
@@ -259,15 +263,15 @@ function keybindKeyPressed(element, e) {
 /**
  * Will trigger the textbox to appear to be able to change an option's text.
  * 
- * @param {HTMLElement} element 
+ * @param element 
  */
-function activateTextChange(element) {
+function activateTextChange(element: HTMLElement) {
     let button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
     button.classList.add("disabled");
 
-    let textBox = element.querySelector(".option-text-box");
+    let textBox = <HTMLInputElement> element.querySelector(".option-text-box");
     let option = element.getAttribute("sync-option");
 
     // See if anything extra must be done

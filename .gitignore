@@ -1,6 +1,8 @@
-config.js
+config.json
 ignored
 .idea/
 node_modules
 web-ext-artifacts
 .vscode/
+dist/
+tmp/
