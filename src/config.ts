@@ -138,9 +138,9 @@ function encodeStoredItem(data) {
  * @param {*} data 
  */
 function decodeStoredItem(id: string, data) {
-    if(!Config.localConfig[id]) return data;
+    if(!Config.defaults[id]) return data;
 
-    if(Config.localConfig[id] instanceof SBMap) {
+    if(Config.defaults[id] instanceof SBMap) {
         try {
             if(!Array.isArray(data)) return data;
             return new SBMap(id, data);
