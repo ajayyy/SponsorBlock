@@ -1,5 +1,5 @@
 import * as CompileConfig from "../config.json";
-import SB from "./SB";
+import Config from "./config";
 
 class Utils {
     
@@ -144,7 +144,8 @@ class Utils {
                     id: id
                 });
             }
-        } else {
+        } else if (chrome.declarativeContent) {
+            // Only if we have permission
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
         }
 
@@ -181,7 +182,7 @@ class Utils {
      */
     getInvidiousInstancesRegex() {
         var invidiousInstancesRegex = [];
-        for (const url of SB.config.invidiousInstances) {
+        for (const url of Config.config.invidiousInstances) {
             invidiousInstancesRegex.push("https://*." + url + "/*");
             invidiousInstancesRegex.push("http://*." + url + "/*");
         }

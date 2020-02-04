@@ -1,5 +1,5 @@
 import * as Types from "./types";
-import SB from "./SB";
+import Config from "./config";
 
 import Utils from "./utils";
 var utils = new Utils({
@@ -12,8 +12,8 @@ var contentScriptRegistrations = {};
 
 // Register content script if needed
 if (utils.isFirefox()) {
-    utils.wait(() => SB.config !== null).then(function() {
-        if (SB.config.supportInvidious) utils.setupExtraSiteContentScripts();
+    utils.wait(() => Config.config !== null).then(function() {
+        if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
     });
 } 
 
@@ -74,7 +74,7 @@ chrome.runtime.onInstalled.addListener(function (object) {
     // This let's the config sync to run fully before checking.
     // This is required on Firefox
     setTimeout(function() {
-        const userID = SB.config.userID;
+        const userID = Config.config.userID;
 
         // If there is no userID, then it is the first install.
         if (!userID){
@@ -84,11 +84,11 @@ chrome.runtime.onInstalled.addListener(function (object) {
             //generate a userID
             const newUserID = utils.generateUserID();
             //save this UUID
-            SB.config.userID = newUserID;
+            Config.config.userID = newUserID;
             
             //TODO: Remove when invidious support is old
             // Don't show this to new users
-            SB.config.invidiousUpdateInfoShowCount = 6;
+            Config.config.invidiousUpdateInfoShowCount = 6;
         }
     }, 1500);
 });
@@ -124,7 +124,7 @@ function unregisterFirefoxContentScript(id: string) {
 //gets the sponsor times from memory
 function getSponsorTimes(videoID, callback) {
     let sponsorTimes = [];
-    let sponsorTimesStorage = SB.config.sponsorTimes.get(videoID);
+    let sponsorTimesStorage = Config.config.sponsorTimes.get(videoID);
 
     if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
         sponsorTimes = sponsorTimesStorage;
@@ -148,18 +148,18 @@ function addSponsorTime(time, videoID, callback) {
         }
 
         //save this info
-		SB.config.sponsorTimes.set(videoID, sponsorTimes);
+		Config.config.sponsorTimes.set(videoID, sponsorTimes);
 		callback();
     });
 }
 
 function submitVote(type, UUID, callback) {
-    let userID = SB.config.userID;
+    let userID = Config.config.userID;
 
     if (userID == undefined || userID === "undefined") {
         //generate one
         userID = utils.generateUserID();
-        SB.config.userID = userID;
+        Config.config.userID = userID;
     }
 
     //publish this vote
@@ -187,8 +187,8 @@ function submitVote(type, UUID, callback) {
 
 async function submitTimes(videoID, callback) {
     //get the video times from storage
-    let sponsorTimes = SB.config.sponsorTimes.get(videoID);
-    let userID = SB.config.userID;
+    let sponsorTimes = Config.config.sponsorTimes.get(videoID);
+    let userID = Config.config.userID;
 		
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
         let durationResult = <Types.videoDurationResponse> await new Promise((resolve, reject) => {
@@ -226,7 +226,7 @@ async function submitTimes(videoID, callback) {
                         //save the amount contributed
                         if (!increasedContributionAmount) {
                             increasedContributionAmount = true;
-                            SB.config.sponsorTimesContributed = SB.config.sponsorTimesContribute + sponsorTimes.length;
+                            Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimes.length;
                         }
                     } else if (error) {
                         callback({
