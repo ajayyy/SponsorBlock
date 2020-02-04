@@ -144,7 +144,8 @@ class Utils {
                     id: id
                 });
             }
-        } else {
+        } else if (chrome.declarativeContent) {
+            // Only if we have permission
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
         }
 
