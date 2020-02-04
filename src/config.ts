@@ -128,7 +128,7 @@ var Config: SBObject = {
 function encodeStoredItem(data) {
     // if data is SBMap convert to json for storing
     if(!(data instanceof SBMap)) return data;
-    return JSON.stringify(data);
+    return Array.from(data.entries());
 }
 
 /**
@@ -138,18 +138,19 @@ function encodeStoredItem(data) {
  * @param {*} data 
  */
 function decodeStoredItem(id: string, data) {
-    if(typeof data !== "string") return data;
-    
-    try {
-        let str = JSON.parse(data);
-        
-        if(!Array.isArray(str)) return data;
-        return new SBMap(id, str);
-    } catch(e) {
+    if(!Config.localConfig[id]) return data;
 
-        // If all else fails, return the data
-        return data;
+    if(Config.localConfig[id] instanceof SBMap) {
+        try {
+            if(!Array.isArray(data)) return data;
+            return new SBMap(id, data);
+        } catch(e) {
+            console.error("Failed to parse SBMap: "+ id);
+        }
     }
+    
+    // If all else fails, return the data
+    return data;
 }
 
 function configProxy(): any {
