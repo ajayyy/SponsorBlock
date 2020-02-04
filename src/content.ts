@@ -328,11 +328,12 @@ function videoIDChange(id) {
     }
 }
 
-function sponsorsLookup(id: string, channelIDPromise = null) {
+function sponsorsLookup(id: string, channelIDPromise?) {
+
     v = document.querySelector('video') // Youtube video player
     //there is no video here
     if (v == null) {
-        setTimeout(() => sponsorsLookup(id), 100);
+        setTimeout(() => sponsorsLookup(id, channelIDPromise), 100);
         return;
     }
 
@@ -343,7 +344,7 @@ function sponsorsLookup(id: string, channelIDPromise = null) {
         v.addEventListener('durationchange', updatePreviewBar);
     }
 
-    if (channelIDPromise != null) {
+    if (channelIDPromise !== undefined) {
         if (channelIDPromise.isFulfilled) {
             whitelistCheck();
         } else if (channelIDPromise.isRejected) {
@@ -389,7 +390,7 @@ function sponsorsLookup(id: string, channelIDPromise = null) {
                     //if less than 3 days old
                     if ((Date.now() / 1000) - unixTimePublished < 259200) {
                         //TODO lower when server becomes better
-                        setTimeout(() => sponsorsLookup(id), 180000);
+                        setTimeout(() => sponsorsLookup(id, channelIDPromise), 180000);
                     }
                 }
             });
@@ -400,7 +401,7 @@ function sponsorsLookup(id: string, channelIDPromise = null) {
 
             //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id), 10000);
+            setTimeout(() => sponsorsLookup(id, channelIDPromise), 10000);
 
             sponsorLookupRetries++;
         }
