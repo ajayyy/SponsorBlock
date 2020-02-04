@@ -188,7 +188,7 @@ if (!SB.configListeners.includes(contentConfigUpdateListener)) {
 }
 
 //check for hotkey pressed
-document.onkeydown = async function(e){
+document.onkeydown = function(e: KeyboardEvent){
     var key = e.key;
 
     let video = document.getElementById("movie_player");
@@ -199,10 +199,10 @@ document.onkeydown = async function(e){
 
     //is the video in focus, otherwise they could be typing a comment
     if (document.activeElement === video) {
-        if(key == startSponsorKey.startSponsorKeybind){
+        if(key == startSponsorKey){
             //semicolon
             startSponsorClicked();
-        } else if (key == submitKey.submitKeybind) {
+        } else if (key == submitKey) {
             //single quote
             submitSponsorTimes();
         }
