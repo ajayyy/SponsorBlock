@@ -42,6 +42,7 @@ class BuildManifest {
         let result = JSON.stringify(manifest);
         if (this.options.pretty) result = JSON.stringify(manifest, null, 2);
 
+        fs.mkdirSync(distManifestFile);
         fs.writeFileSync(distManifestFile, result);
     }
 }
