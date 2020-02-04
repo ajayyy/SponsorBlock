@@ -952,6 +952,14 @@ function submitSponsorTimes() {
         //update sponsorTimesSubmitting
         sponsorTimesSubmitting = sponsorTimes;
 
+        for (let i = 0; i < sponsorTimes.length; i++) {
+            if (sponsorTimes[i][1] - sponsorTimes[i][0] < SB.config.minDuration) {
+                let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
+                if(!confirm(confirmShort)) return;
+                break;
+            }
+        }
+
         let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
                                 + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
         if(!confirm(confirmMessage)) return;
