@@ -42,8 +42,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "getSponsorTimes":
             getSponsorTimes(request.videoID, function(sponsorTimes) {
                 callback({
-                    sponsorTimes: sponsorTimes
-                })
+                    sponsorTimes
+                });
             });
         
             //this allows the callback to be called later

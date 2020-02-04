@@ -76,7 +76,7 @@ var sponsorTimesSubmitting = [];
 var popupInitialised = false;
 
 // Contains all of the functions and variables needed by the skip notice
-var skipNoticeContentContainer = {
+var skipNoticeContentContainer = () => ({
     vote,
     dontShowNoticeAgain,
     unskipSponsorTime,
@@ -86,7 +86,7 @@ var skipNoticeContentContainer = {
     reskipSponsorTime,
     hiddenSponsorTimes,
     updatePreviewBar
-};
+});
 
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
@@ -573,12 +573,12 @@ function sponsorCheck() {
     }
 
     //don't keep track until they are loaded in
-    if (sponsorTimes != null || sponsorTimesSubmitting.length > 0) {
+    if (sponsorTimes !== null || sponsorTimesSubmitting.length > 0) {
         lastTime = v.currentTime;
     }
 }
 
-function checkSponsorTime(sponsorTimes, index, openNotice) {
+function checkSponsorTime(sponsorTimes, index, openNotice): boolean {
     //this means part of the video was just skipped
     if (Math.abs(v.currentTime - lastTime) > 1 && lastTime != -1) {
         //make lastTime as if the video was playing normally
