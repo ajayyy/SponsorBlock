@@ -125,7 +125,7 @@ function unregisterFirefoxContentScript(id: string) {
 function getSponsorTimes(videoID, callback) {
     let sponsorTimes = [];
     let sponsorTimesStorage = SB.config.sponsorTimes.get(videoID);
-	
+
     if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
         sponsorTimes = sponsorTimesStorage;
     }

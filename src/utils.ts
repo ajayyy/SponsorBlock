@@ -42,15 +42,17 @@ class Utils {
         // Request permission
         let permissions = ["declarativeContent"];
         if (this.isFirefox()) permissions = [];
+        
+        let self = this;
 
         chrome.permissions.request({
             origins: this.getInvidiousInstancesRegex(),
             permissions: permissions
         }, async function (granted) {
             if (granted) {
-                this.setupExtraSiteContentScripts();
+                self.setupExtraSiteContentScripts();
             } else {
-                this.removeExtraSiteRegistration();
+                self.removeExtraSiteRegistration();
             }
 
             callback(granted);
@@ -66,13 +68,16 @@ class Utils {
      */
     setupExtraSiteContentScripts() {
         let js = [
-            "content.js"
+            "./js/vendor.js",
+            "./js/content.js"
         ];
         let css = [
             "content.css",
             "./libs/Source+Sans+Pro.css",
             "popup.css"
         ];
+
+        let self = this;
 
         if (this.isFirefox()) {
             let firefoxJS = [];
@@ -101,7 +106,7 @@ class Utils {
         } else {
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
                 let conditions = [];
-                for (const regex of this.getInvidiousInstancesRegex()) {
+                for (const regex of self.getInvidiousInstancesRegex()) {
                     conditions.push(new chrome.declarativeContent.PageStateMatcher({
                         pageUrl: { urlMatches: regex }
                     }));
