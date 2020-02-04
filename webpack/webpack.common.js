@@ -1,9 +1,10 @@
 const webpack = require("webpack");
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const BuildManifest = require('./webpack.manifest');
 const srcDir = '../src/';
 
-module.exports = {
+module.exports = env => ({
     entry: {
         popup: path.join(__dirname, srcDir + 'popup.ts'),
         background: path.join(__dirname, srcDir + 'background.ts'),
@@ -34,11 +35,14 @@ module.exports = {
     },
     plugins: [
         // exclude locale files in moment
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new CopyPlugin([
-            { from: '.', to: '../' }
+            { from: '.', to: '../', ignore: ['manifest.json'] }
           ],
           {context: 'public' }
         ),
+        new BuildManifest({
+            browser: env.browser,
+            pretty: env.mode === "production"
+        })
     ]
-};
+});
