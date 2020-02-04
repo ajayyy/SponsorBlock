@@ -1,4 +1,4 @@
-import SB from "./SB";
+import Config from "./config";
 
 import Utils from "./utils";
 var utils = new Utils();
@@ -8,11 +8,11 @@ window.addEventListener('DOMContentLoaded', init);
 async function init() {
     utils.localizeHtmlPage();
 
-    if (!SB.configListeners.includes(optionsConfigUpdateListener)) {
-        SB.configListeners.push(optionsConfigUpdateListener);
+    if (!Config.configListeners.includes(optionsConfigUpdateListener)) {
+        Config.configListeners.push(optionsConfigUpdateListener);
     }
 
-    await utils.wait(() => SB.config !== null);
+    await utils.wait(() => Config.config !== null);
 
     // Set all of the toggle options to the correct option
     let optionsContainer = document.getElementById("options");
@@ -22,7 +22,7 @@ async function init() {
         switch (optionsElements[i].getAttribute("option-type")) {
             case "toggle": 
                 let option = optionsElements[i].getAttribute("sync-option");
-                let optionResult = SB.config[option];
+                let optionResult = Config.config[option];
 
                 let checkbox = optionsElements[i].querySelector("input");
                 let reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
@@ -44,7 +44,7 @@ async function init() {
 
                 // Add click listener
                 checkbox.addEventListener("click", () => {
-                    SB.config[option] = reverse ? !checkbox.checked : checkbox.checked;
+                    Config.config[option] = reverse ? !checkbox.checked : checkbox.checked;
 
                     // See if anything extra must be run
                     switch (option) {
@@ -104,7 +104,7 @@ function optionsConfigUpdateListener(changes) {
  */
 function updateDisplayElement(element: HTMLElement) {
     let displayOption = element.getAttribute("sync-option")
-    let displayText = SB.config[displayOption];
+    let displayText = Config.config[displayOption];
     element.innerText = displayText;
 
     // See if anything extra must be run
@@ -131,12 +131,12 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
             alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
         } else {
             // Add this
-            let instanceList = SB.config[option];
+            let instanceList = Config.config[option];
             if (!instanceList) instanceList = [];
 
             instanceList.push(textBox.value);
 
-            SB.config[option] = instanceList;
+            Config.config[option] = instanceList;
 
             let checkbox = <HTMLInputElement> document.querySelector("#support-invidious input");
             checkbox.checked = true;
@@ -155,7 +155,7 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
     resetButton.addEventListener("click", function(e) {
         if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
             // Set to a clone of the default
-            SB.config[option] = SB.defaults[option].slice(0);
+            Config.config[option] = Config.defaults[option].slice(0);
         }
     });
 }
@@ -175,7 +175,7 @@ function invidiousInit(checkbox: HTMLInputElement, option: string) {
         permissions: permissions
     }, function (result) {
         if (result != checkbox.checked) {
-            SB.config[option] = result;
+            Config.config[option] = result;
 
             checkbox.checked = result;
         }
@@ -192,7 +192,7 @@ function invidiousOnClick(checkbox: HTMLInputElement, option: string) {
     if (checkbox.checked) {
         utils.setupExtraSitePermissions(function (granted) {
             if (!granted) {
-                SB.config[option] = false;
+                Config.config[option] = false;
                 checkbox.checked = false;
             }
         });
@@ -214,14 +214,14 @@ function activateKeybindChange(element: HTMLElement) {
 
     let option = element.getAttribute("sync-option");
 
-    let currentlySet = SB.config[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
+    let currentlySet = Config.config[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
     
     let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
     status.innerText = chrome.i18n.getMessage("keybindDescription") + currentlySet;
 
-    if (SB.config[option] !== null) {
+    if (Config.config[option] !== null) {
         let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
-        statusKey.innerText = SB.config[option];
+        statusKey.innerText = Config.config[option];
     }
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
@@ -249,7 +249,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
 
     let option = element.getAttribute("sync-option");
 
-    SB.config[option] = key;
+    Config.config[option] = key;
 
     let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
     status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
@@ -281,14 +281,14 @@ function activateTextChange(element: HTMLElement) {
             return;
     }
 	
-    textBox.value = SB.config[option];
+    textBox.value = Config.config[option];
     
     let setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", () => {
         let confirmMessage = element.getAttribute("confirm-message");
 
         if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
-            SB.config[option] = textBox.value;
+            Config.config[option] = textBox.value;
         }
     });
 
