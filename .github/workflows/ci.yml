@@ -22,7 +22,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Chrome Extension
-          path: web-ext-artifacts
+          path: dist
 
       # Create Firefox artifacts
       - name: Move manifest
@@ -34,5 +34,5 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Firefox Extension
-          path: web-ext-artifacts
+          path: dist
 
