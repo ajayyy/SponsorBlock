@@ -621,13 +621,6 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
         if (!SB.config.dontShowNotice) {
             let skipNotice = new SkipNotice(this, currentUUID, SB.config.disableAutoSkip, skipNoticeContentContainer);
 
-            //TODO: Remove this when Invidious support is old
-            if (SB.config.invidiousUpdateInfoShowCount < 5) {
-                skipNotice.addNoticeInfoMessage(chrome.i18n.getMessage("invidiousInfo1"), chrome.i18n.getMessage("invidiousInfo2"));
-
-                SB.config.invidiousUpdateInfoShowCount += 1;
-            }
-
             //auto-upvote this sponsor
             if (SB.config.trackViewCount && !SB.config.disableAutoSkip && SB.config.autoUpvote) {
                 vote(1, currentUUID, null);
