@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://sponsor.ajay.app"><img src="icons/LogoSponsorBlocker256px.png" alt="Logo"></img></a>
+  <a href="https://sponsor.ajay.app"><img src="public/icons/LogoSponsorBlocker256px.png" alt="Logo"></img></a>
   
   <br/>
   <sub>Logo by <a href="https://github.com/munadikieh">@munadikieh</a></sub>
@@ -60,7 +60,11 @@ Run `npm run dev` to run the extension using a clean browser profile with hot re
 
 ## Packing
 
-Run `npm run build` to generate a packed extension.
+Run `npm run build` to generate a packed Chrome extension.
+
+Use `npm run build:firefox` to generate a Firefox extension.
+
+The result is in `dist`.
 
 # Credit
 
