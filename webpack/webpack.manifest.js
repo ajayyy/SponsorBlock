@@ -30,7 +30,8 @@ class BuildManifest {
     }
 
     apply(compiler) {
-        const distManifestFile = path.resolve(__dirname, "../dist/manifest.json");
+        const distFolder = path.resolve(__dirname, "../dist/");
+        const distManifestFile = path.resolve(distFolder, "manifest.json");
 
         // Add missing manifest elements
         if (this.options.browser.toLowerCase() === "firefox") {
@@ -42,7 +43,7 @@ class BuildManifest {
         let result = JSON.stringify(manifest);
         if (this.options.pretty) result = JSON.stringify(manifest, null, 2);
 
-        fs.mkdirSync(distManifestFile, {recursive: true});
+        fs.mkdirSync(distFolder, {recursive: true});
         fs.writeFileSync(distManifestFile, result);
     }
 }
