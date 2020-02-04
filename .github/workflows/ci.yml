@@ -18,17 +18,15 @@ jobs:
 
       # Create Chrome artifacts
       - name: Create Chrome artifacts
-        run: npm run build
+        run: npm run build:chrome
       - uses: actions/upload-artifact@v1
         with:
           name: Chrome Extension
           path: dist
 
       # Create Firefox artifacts
-      - name: Move manifest
-        run: mv ./dist/manifest.json ./dist/manifest.json.original
-      - name: Combine manifest for Firefox
-        run: jq -s '.[0] * .[1]' ./dist/manifest.json.original ./dist/firefox_manifest-extra.json > manifest.json
+      - name: Create Firefox artifacts
+        run: npm run build:firefox
       - uses: actions/upload-artifact@v1
         with:
           name: Firefox Extension
