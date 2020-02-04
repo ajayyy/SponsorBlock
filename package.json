@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "background.js",
-  "dependencies": {},
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  },
   "devDependencies": {
     "web-ext": "^4.0.0",
     "@types/chrome": "0.0.91",
@@ -21,8 +23,12 @@
     "webpack-merge": "~4.2.2"
   },
   "scripts": {
-    "dev": "cd dist && web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
-    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "web-run": "npm run web-run:chrome",
+    "web-run:firefox": "cd dist && web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
+    "web-run:chrome": "cd dist && web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm -t chromium",
+    "build:watch": "webpack --config webpack/webpack.dev.js --watch",
+    "dev": "concurrently \"npm run web-run\" \"npm run build:watch\"",
+    "dev:firefox": "concurrently \"npm run web-run:firefox\" \"npm run build:watch\"",
     "build": "webpack --config webpack/webpack.prod.js",
     "clean": "rimraf dist",
     "test": "npx jest"
