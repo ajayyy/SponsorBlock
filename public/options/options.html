@@ -1,10 +1,13 @@
+<!DOCTYPE html>
+
 <head>
   <title>Options - SponsorBlock</title>
+  <meta charset="utf-8">
 
   <link href="options.css" rel="stylesheet"/>
 
-  <script src="../utils.js"></script>
-  <script src="options.js"></script>
+  <script src="../js/vendor.js"></script>
+  <script src="../js/options.js"></script>
 </head>
 
 <body class="sponsorBlockPageBody">
@@ -20,12 +23,64 @@
 		<h1>__MSG_Options__</h1>
 	
 		<div id="options" class="hidden">
-			
+
+			<div id="support-invidious" option-type="toggle" sync-option="supportInvidious">
+				<label class="switch-container" label-name="__MSG_supportInvidious__">
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</label>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_supportInvidiousDescription__</div>
+			</div>
+
+			<br/>
+			<br/>
+	
+			<div option-type="text-change" sync-option="invidiousInstances">
+				<div class="option-button trigger-button">
+					__MSG_addInvidiousInstance__
+				</div>
+	
+				<br/>
+	
+				<div class="small-description">__MSG_addInvidiousInstanceDescription__</div>
+	
+				<div class="option-hidden-section hidden">
+					<br/>
+	
+					<input class="option-text-box" type="text">
+	
+					<br/>
+					<br/>
+	
+					<div class="option-button text-change-set inline">
+						__MSG_add__
+					</div>
+
+					<div class="option-button invidious-instance-reset inline">
+						__MSG_resetInvidiousInstance__
+					</div>
+					
+					<br/>
+					<br/>
+
+					<span class="small-description">__MSG_currentInstances__</span>
+					<span class="small-description" option-type="display" sync-option="invidiousInstances"></span>
+				</div>
+			</div>
+
+			<br/>
+			<br/>
 	
 			<div option-type="toggle" toggle-type="reverse" sync-option="disableAutoSkip">
 				<label class="switch-container" label-name="__MSG_autoSkip__">
 					<label class="switch">
-						<input type="checkbox">
+						<input type="checkbox" checked>
 						<span class="slider round"></span>
 					</label>
 				</label>
@@ -84,7 +139,7 @@
 			<div option-type="toggle" toggle-type="reverse" sync-option="hideVideoPlayerControls">
 				<label class="switch-container" label-name="__MSG_showButtons__">
 					<label class="switch">
-						<input type="checkbox">
+						<input type="checkbox" checked>
 						<span class="slider round"></span>
 					</label>
 				</label>
@@ -101,7 +156,7 @@
 			<div option-type="toggle" toggle-type="reverse" sync-option="hideInfoButtonPlayerControls">
 				<label class="switch-container" label-name="__MSG_showInfoButton__">
 					<label class="switch">
-						<input type="checkbox">
+						<input type="checkbox" checked>
 						<span class="slider round"></span>
 					</label>
 				</label>
@@ -118,7 +173,7 @@
 			<div option-type="toggle" toggle-type="reverse" sync-option="hideDeleteButtonPlayerControls">
 				<label class="switch-container" label-name="__MSG_showDeleteButton__">
 					<label class="switch">
-						<input type="checkbox">
+						<input type="checkbox" checked>
 						<span class="slider round"></span>
 					</label>
 				</label>
@@ -127,6 +182,23 @@
 				<br/>
 	
 				<div class="small-description">__MSG_whatDeleteButton__</div>
+			</div>
+
+			<br/>
+			<br/>
+	
+			<div option-type="toggle" sync-option="autoUpvote">
+				<label class="switch-container" label-name="__MSG_enableAutoUpvote__">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+				</label>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_whatAutoUpvote__</div>
 			</div>
 	
 			<br/>
@@ -149,7 +221,7 @@
 			<br/>
 			<br/>
 	
-			<div option-type="text-change" sync-option="userID">
+			<div option-type="text-change" sync-option="userID" confirm-message="userIDChangeWarning">
 				<div class="option-button trigger-button">
 					__MSG_changeUserID__
 				</div>
@@ -178,7 +250,7 @@
 			<div option-type="toggle" toggle-type="reverse" sync-option="dontShowNotice">
 				<label class="switch-container" label-name="__MSG_showSkipNotice__">
 					<label class="switch">
-						<input type="checkbox">
+						<input type="checkbox" checked>
 						<span class="slider round"></span>
 					</label>
 				</label>

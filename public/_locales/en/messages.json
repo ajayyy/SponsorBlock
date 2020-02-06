@@ -344,5 +344,47 @@
     },
     "keybindCurrentlySet": {
         "message": ". It is currently set to:"
+    },
+    "supportInvidious": {
+        "message": "Support Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) is a third party YouTube client. To enable support, you must accept the extra permissions. This does NOT work in incongnito on Chrome and other Chromium variants."
+    },
+    "optionsInfo": {
+        "message": "Enable Invidious support, disable autoskip, hide buttons and more."
+    },
+    "addInvidiousInstance": {
+        "message": "Add Invidious Instance"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Add a custom instance of Invidious. This must be formatted with JUST the domain. Example: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Add"
+    },
+    "addInvidiousInstanceError": {
+        "message": "This is an invalid domain. This should JUST include the domain part. Example: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Reset Invidious Instance List"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "You are about to reset the Invidious instance list"
+    },
+    "currentInstances": {
+        "message": "Current Instances:"
+    },
+    "enableAutoUpvote": {
+        "message": "Auto Upvote"
+    },
+    "whatAutoUpvote": {
+        "message": "With this enabled, the extension will upvote all submissions you view if you do not report them. If the notice is disabled, this will not occur."
+    },
+    "invidiousInfo1": {
+        "message": "Invidious (the 3rd party YouTube site) support has been added!"
+    },
+    "invidiousInfo2": {
+        "message": "You MUST enable it in the options for it to work."
     }
 }

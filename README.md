@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://sponsor.ajay.app"><img src="icons/LogoSponsorBlocker256px.png" alt="Logo"></img></a>
+  <a href="https://sponsor.ajay.app"><img src="public/icons/LogoSponsorBlocker256px.png" alt="Logo"></img></a>
   
   <br/>
   <sub>Logo by <a href="https://github.com/munadikieh">@munadikieh</a></sub>
@@ -32,13 +32,15 @@
 
 SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment.
 
+Also support Invidio.us.
+
 # Server
 
 The backend server code is available here: https://github.com/ajayyy/SponsorBlockServer
 
 It is a simple Sqlite database that will hold all the timing data.
 
-To make sure that this project doesn't die, I have made the database publicly downloadable at https://sponsor.ajay.app/database.db. So, you can download a backup or get archive.org to take a backup for you if you want.
+To make sure that this project doesn't die, I have made the database publicly downloadable at https://api.sponsor.ajay.app/database.db. So, you can download a backup or get archive.org to take a backup for you if you want.
 
 Hopefully this project can be combined with projects like [this](https://github.com/Sponsoff/sponsorship_remover) and use this data to create a neural network to predict when sponsored segments happen. That project is sadly abandoned now, so I have decided to attempt to revive this idea.
 
@@ -48,17 +50,21 @@ You can read the API docs [here](https://github.com/ajayyy/SponsorBlockServer#ap
 
 # Build Yourself
 
-You can load this project as an unpacked extension. Make sure to rename the `config.js.example` file to `config.js` before installing.
+You can load this project as an unpacked extension. Make sure to rename the `config.json.example` file to `config.json` before installing.
 
 There are also other build scripts available. Install `npm`, then run `npm install` in the repository.
 
 ## Developing with a clean profile
 
-Run `npm run dev` to run the extension using a clean browser profile with hot reloading [(by default Firefox)](https://hacks.mozilla.org/2019/10/developing-cross-browser-extensions-with-web-ext-3-2-0/). This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
+Run `npm run dev` to run the extension using a clean browser profile with hot reloading. Use `npm run dev:firefox` for Firefox. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
 
 ## Packing
 
-Run `npm run build` to generate a packed extension.
+Run `npm run build` to generate a packed Chrome extension.
+
+Use `npm run build:firefox` to generate a Firefox extension.
+
+The result is in `dist`.
 
 ## Code Formatting
 
