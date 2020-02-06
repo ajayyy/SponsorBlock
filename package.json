@@ -7,27 +7,24 @@
     "concurrently": "^5.1.0"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "prettier": "^1.19.1",
     "@types/chrome": "0.0.91",
     "@types/firefox-webext-browser": "70.0.1",
     "@types/jest": "^24.0.23",
     "@types/jquery": "^3.3.31",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
     "copy-webpack-plugin": "^5.0.5",
+    "eslint": "^6.8.0",
     "jest": "^24.9.0",
-    "ts-jest": "^24.2.0",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
+    "ts-jest": "^24.2.0",
     "ts-loader": "^6.2.1",
     "typescript": "~3.7.3",
+    "web-ext": "^4.0.0",
     "webpack": "~4.41.2",
     "webpack-cli": "~3.3.10",
-    "webpack-merge": "~4.2.2",
-    "web-ext": "^4.0.0"
+    "webpack-merge": "~4.2.2"
   },
   "scripts": {
     "web-run": "npm run web-run:chrome",
@@ -43,7 +40,8 @@
     "dev:firefox": "npm run build:firefox && concurrently \"npm run web-run:firefox\" \"npm run build:watch:firefox\"",
     "clean": "rimraf dist",
     "test": "npx jest",
-    "format": "prettier --write \"**/*.{json,md,css,html}\" && eslint --fix --ignore-pattern \"!.eslintrc.js\" \"**/*.js\""
+    "format": "prettier --write \"**/*.{json,md,css,html}\" && eslint --fix \"**/*.ts\"",
+    "lint": "prettier --check \"**/*.{json,md,css,html}\"; eslint \"**/*.ts\""
   },
   "repository": {
     "type": "git",

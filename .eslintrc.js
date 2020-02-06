@@ -1,11 +1,18 @@
 module.exports = {
+    parser: "@typescript-eslint/parser",
+    plugins: [
+        "@typescript-eslint",
+    ],
     env: {
         browser: true,
         es6: true,
         webextensions: true
     },
+    ignorePatterns: ["dist"],
     extends: [
-        "standard"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
     ],
     globals: {
         Atomics: "readonly",
@@ -27,6 +34,9 @@ module.exports = {
         "no-return-assign": ["off"],
         "no-case-declarations": ["off"],
         "prefer-const": ["off"],
-        "spaced-comment": ["off"]
+        "spaced-comment": ["off"],
+        "@typescript-eslint/explicit-function-return-type": ["off"],
+        "@typescript-eslint/no-use-before-define": ["off"],
+        "@typescript-eslint/no-explicit-any": ["off"],
     }
 };
