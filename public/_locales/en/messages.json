@@ -213,6 +213,15 @@
     "whatDeleteButton": {
         "message": "This is the button that allows you to clear all sponsors on the YouTube player."
     },
+    "customServerAddress": {
+        "message": "SponsorBlock Server Address"
+    },
+    "customServerAddressDescription": {
+        "message": "The address SponsorBlock uses to make calls to the server.\nIt must be formatted https://domain with no trailing forward slash (/).\nUnless you have your own server instance this should not be changed."
+    },
+    "saveCustomServerAddress": {
+        "message": "Save"
+    },
     "disableViewTracking": {
         "message": "Disable Sponsor Skip Count Tracking"
     },

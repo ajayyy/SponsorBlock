@@ -76,6 +76,11 @@ body {
     color: white;
 }
 
+.string-container {
+    font-size: 14px;
+    color: white;
+}
+
 .switch {
     position: relative;
     display: inline-block;

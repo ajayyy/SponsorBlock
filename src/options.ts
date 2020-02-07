@@ -1,4 +1,5 @@
 import Config from "./config";
+import * as CompileConfig from "../config.json";
 
 import Utils from "./utils";
 var utils = new Utils();
@@ -66,6 +67,23 @@ async function init() {
                 }
 
                 break;
+            case "string-change":
+                let stringChangeOption = optionsElements[i].getAttribute("sync-option");
+                let stringInput = <HTMLInputElement> optionsElements[i].querySelector(".string-container").querySelector(".option-text-box");
+                let saveButton = <HTMLElement> optionsElements[i].querySelector(".option-button");
+
+                stringInput.value = Config.config[stringChangeOption];
+                // Devs can use config.json to set server address
+                if (stringChangeOption === "customServerAddress") {
+                    stringInput.value = (Config.config.customServerAddress) ? Config.config.customServerAddress : CompileConfig.serverAddress;
+                }
+                
+
+                saveButton.addEventListener("click", () => {
+                   setStringConfigOption(stringInput.value, stringChangeOption);
+                });
+    
+                break;
             case "keybind-change":
                 let keybindButton = optionsElements[i].querySelector(".trigger-button");
                 keybindButton.addEventListener("click", () => activateKeybindChange(<HTMLElement> optionsElements[i]));
@@ -78,6 +96,18 @@ async function init() {
 
     optionsContainer.classList.remove("hidden");
     optionsContainer.classList.add("animated");
+}
+
+/**
+ * Set the value in the string input the the defined config option
+ * 
+ * @param element
+ * @param option
+ */
+function setStringConfigOption(value: string, option: string) {
+    console.log(value);
+    console.log(option);
+    Config.config[option] = value;
 }
 
 /**

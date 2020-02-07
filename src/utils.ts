@@ -240,7 +240,9 @@ class Utils {
     sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
         let xmlhttp = new XMLHttpRequest();
   
-        xmlhttp.open(type, CompileConfig.serverAddress + address, true);
+        let serverAddress = (Config.config.customServerAddress) ? Config.config.customServerAddress : CompileConfig.serverAddress;
+
+        xmlhttp.open(type, serverAddress + address, true);
   
         if (callback != undefined) {
             xmlhttp.onreadystatechange = function () {
