@@ -105,8 +105,6 @@ async function init() {
  * @param option
  */
 function setStringConfigOption(value: string, option: string) {
-    console.log(value);
-    console.log(option);
     Config.config[option] = value;
 }
 
