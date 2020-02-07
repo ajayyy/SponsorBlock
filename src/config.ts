@@ -19,7 +19,7 @@ interface SBConfig {
     invidiousInstances: string[],
     invidiousUpdateInfoShowCount: number,
     autoUpvote: boolean,
-    supportInvidious: false
+    supportInvidious: boolean
 }
 
 interface SBObject {
