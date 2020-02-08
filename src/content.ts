@@ -13,7 +13,7 @@ var sponsorDataFound = false;
 var previousVideoID = null;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = null;
-var UUIDs = null;
+var UUIDs = [];
 //what video id are these sponsors for
 var sponsorVideoID = null;
 
@@ -215,7 +215,7 @@ function resetValues() {
 
     //reset sponsor times
     sponsorTimes = null;
-    UUIDs = null;
+    UUIDs = [];
     sponsorLookupRetries = 0;
 
     //empty the preview bar
@@ -613,7 +613,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     }
 
     lastSponsorTimeSkipped = sponsorTimes[index][0];
-  
+
     let currentUUID =  UUIDs[index];
     lastSponsorTimeSkippedUUID = currentUUID; 
 
@@ -627,17 +627,17 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
                 vote(1, currentUUID, null);
             }
         }
-    }
 
-    //send telemetry that a this sponsor was skipped
-    if (Config.config.trackViewCount && !sponsorSkipped[index]) {
-        utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+        //send telemetry that a this sponsor was skipped
+        if (Config.config.trackViewCount && !sponsorSkipped[index]) {
+            utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
-        if (!Config.config.disableAutoSkip) {
-            // Count this as a skip
-            Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
-            Config.config.skipCount = Config.config.skipCount + 1;
-            sponsorSkipped[index] = true;
+            if (!Config.config.disableAutoSkip) {
+                // Count this as a skip
+                Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
+                Config.config.skipCount = Config.config.skipCount + 1;
+                sponsorSkipped[index] = true;
+            }
         }
     }
 }
