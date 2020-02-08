@@ -636,6 +636,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
                 // Count this as a skip
                 Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
                 Config.config.skipCount = Config.config.skipCount + 1;
+                
                 sponsorSkipped[index] = true;
             }
         }
@@ -921,12 +922,10 @@ function vote(type, UUID, skipNotice) {
             sponsorSkipped[sponsorIndex] = false;
         }
 
-            // Count this as a skip
-            Config.config.minutesSaved = Config.config.minutesSaved + factor * (sponsorTimes[sponsorIndex][1] - sponsorTimes[sponsorIndex][0]) / 60;
-		
-            Config.config.skipCount = 0;
-
-            Config.config.skipCount = Config.config.skipCount + factor * 1;
+        // Count this as a skip
+        Config.config.minutesSaved = Config.config.minutesSaved + factor * (sponsorTimes[sponsorIndex][1] - sponsorTimes[sponsorIndex][0]) / 60;
+    
+        Config.config.skipCount = Config.config.skipCount + factor;
     }
  
     chrome.runtime.sendMessage({
