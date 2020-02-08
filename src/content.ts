@@ -8,6 +8,9 @@ import runThePopup from "./popup";
 import PreviewBar from "./js-components/previewBar";
 import SkipNotice from "./js-components/skipNotice";
 
+// Hack to get the CSS loaded on permission-based sites (Invidious)
+utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
+
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 var previousVideoID = null;
@@ -636,7 +639,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
                 // Count this as a skip
                 Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
                 Config.config.skipCount = Config.config.skipCount + 1;
-                
+
                 sponsorSkipped[index] = true;
             }
         }
@@ -1089,6 +1092,27 @@ function getSponsorTimesMessage(sponsorTimes) {
     }
 
     return sponsorTimesMessage;
+}
+
+/**
+ * Adds the CSS to the page if needed. Required on optional sites with Chrome.
+ */
+function addCSS() {
+    if (!utils.isFirefox() && Config.config.invidiousInstances.includes(new URL(document.URL).host)) {
+        window.addEventListener("DOMContentLoaded", () => {
+            let head = document.getElementsByTagName("head")[0];
+
+            for (const file of utils.css) {
+                let fileref = document.createElement("link");
+
+                fileref.rel = "stylesheet";
+                fileref.type = "text/css";
+                fileref.href = chrome.extension.getURL(file);
+
+                head.appendChild(fileref);
+            }
+        });
+    }
 }
 
 //converts time in seconds to minutes:seconds

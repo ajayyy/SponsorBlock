@@ -36,7 +36,8 @@
         "icons/close.png",
         "icons/PlayerInfoIconSponsorBlocker256px.png",
         "icons/PlayerDeleteIconSponsorBlocker256px.png",
-        "popup.html"
+        "popup.html",
+        "content.css"
     ],
     "permissions": [
         "storage",
