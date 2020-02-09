@@ -419,5 +419,14 @@
     },
     "areYouSureReset": {
         "message": "Are you sure you would like to reset this?"
+    },
+    "confirmPrivacy": {
+        "message": "The video has been detected as unlisted. Click cancel if you do not want to check for sponsors."
+    },
+    "unlistedCheck": {
+        "message": "Ignore Unlisted Videos"
+    },
+    "whatUnlistedCheck": {
+        "message": "This setting will significantly slow down SponsorBlock. Sponsor lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
     }
 }

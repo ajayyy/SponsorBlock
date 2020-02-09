@@ -230,7 +230,7 @@ function resetValues() {
     sponsorDataFound = false;
 }
 
-function videoIDChange(id) {
+async function videoIDChange(id) {
     //if the id has not changed return
     if (sponsorVideoID === id) return;
 
@@ -241,6 +241,19 @@ function videoIDChange(id) {
     
 	//id is not valid
     if (!id) return;
+
+    // Wait for options to be ready
+    await utils.wait(() => Config.config !== null, 5000, 1);
+
+    // If enabled, it will check if this video is private or unlisted and double check with the user if the sponsors should be looked up
+    if (Config.config.checkForUnlistedVideos) {
+        await utils.wait(isPrivacyInfoAvailable);
+
+        if (isUnlisted()) {
+            let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
+            if(!shouldContinue) return;
+        }
+    }
 
     // TODO: Use a better method here than using type any
     // This is done to be able to do channelIDPromise.isFulfilled and channelIDPromise.isRejected
@@ -1119,6 +1132,32 @@ function getSponsorTimesMessage(sponsorTimes) {
     }
 
     return sponsorTimesMessage;
+}
+
+// Privacy utils
+function isPrivacyInfoAvailable(): boolean {
+    if(document.location.pathname.startsWith("/embed/")) return true;
+    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2;
+}
+
+/**
+ * What privacy level is this YouTube video?
+ */
+function getPrivacy(): string {
+    if(document.location.pathname.startsWith("/embed/")) return "Public";
+
+    let privacyElement = <HTMLElement> document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2];
+    return privacyElement.innerText;
+}
+
+/**
+ * Is this an unlisted YouTube video.
+ * Assumes that the the privacy info is available.
+ */
+function isUnlisted(): boolean {
+    let privacyElement = <HTMLElement> document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2];
+
+    return privacyElement.innerText.toLocaleLowerCase() === "unlisted";
 }
 
 /**
