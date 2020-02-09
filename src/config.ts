@@ -19,7 +19,8 @@ interface SBConfig {
     invidiousInstances: string[],
     invidiousUpdateInfoShowCount: number,
     autoUpvote: boolean,
-    supportInvidious: boolean
+    supportInvidious: boolean,
+    minDuration: number
 }
 
 interface SBObject {
@@ -111,7 +112,8 @@ var Config: SBObject = {
         invidiousInstances: ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
         invidiousUpdateInfoShowCount: 0,
         autoUpvote: true,
-        supportInvidious: false
+        supportInvidious: false,
+        minDuration: 0
     },
     localConfig: null,
     config: null

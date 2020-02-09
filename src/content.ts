@@ -369,6 +369,22 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
             UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
 
+            // Remove all submissions smaller than the minimum duration
+            if (Config.config.minDuration !== 0) {
+                let smallSponsors = [];
+                let smallUUIDs = [];
+
+                for (let i = 0; i < sponsorTimes.length; i++) {
+                    if (sponsorTimes[i][1] - sponsorTimes[i][0] >= Config.config.minDuration) {
+                        smallSponsors.push(sponsorTimes[i]);
+                        smallUUIDs.push(UUIDs[i]);
+                    }
+                }
+
+                sponsorTimes = smallSponsors;
+                UUIDs = smallUUIDs;
+            }
+
             // Reset skip save
             sponsorSkipped = [];
 
@@ -1007,6 +1023,17 @@ function submitSponsorTimes() {
 
         //update sponsorTimesSubmitting
         sponsorTimesSubmitting = sponsorTimes;
+
+        // Check to see if any of the submissions are below the minimum duration set
+        if (Config.config.minDuration > 0) {
+            for (let i = 0; i < sponsorTimes.length; i++) {
+                if (sponsorTimes[i][1] - sponsorTimes[i][0] < Config.config.minDuration) {
+                    let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
+                    
+                    if(!confirm(confirmShort)) return;
+                }
+            }
+        }
 
         let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
                                 + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
