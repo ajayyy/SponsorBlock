@@ -20,7 +20,8 @@ interface SBConfig {
     invidiousUpdateInfoShowCount: number,
     autoUpvote: boolean,
     supportInvidious: false,
-    customServerAddress: string
+    customServerAddress: string,
+    minDuration: number
 }
 
 interface SBObject {
@@ -113,7 +114,8 @@ var Config: SBObject = {
         invidiousUpdateInfoShowCount: 0,
         autoUpvote: true,
         supportInvidious: false,
-        customServerAddress: null 
+        customServerAddress: null,
+        minDuration: 0
     },
     localConfig: null,
     config: null
