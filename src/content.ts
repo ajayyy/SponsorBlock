@@ -379,8 +379,20 @@ function sponsorsLookup(id: string, channelIDPromise?) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             sponsorDataFound = true;
 
-            sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
-            UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
+            let recievedSponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
+            let recievedUUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
+
+            // Check if any old submissions should be kept
+            for (let i = 0; i < UUIDs.length; i++) {
+                if (UUIDs[i] === null)  {
+                    // This is a user submission, keep it
+                    recievedSponsorTimes.push(sponsorTimes[i]);
+                    recievedUUIDs.push(UUIDs[i]);
+                }
+            }
+
+            sponsorTimes = recievedSponsorTimes;
+            UUIDs = recievedUUIDs;
 
             // Remove all submissions smaller than the minimum duration
             if (Config.config.minDuration !== 0) {
@@ -1091,10 +1103,12 @@ function sendSubmitMessage(){
                 Config.config.sponsorTimes.delete(currentVideoID);
 
                 //add submissions to current sponsors list
+                if (sponsorTimes === null) sponsorTimes = [];
+                
                 sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
                 for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-                    // Add some random IDs
-                    UUIDs.push(utils.generateUserID());
+                    // Add placeholder IDs
+                    UUIDs.push(null);
                 }
 
                 // Empty the submitting times
