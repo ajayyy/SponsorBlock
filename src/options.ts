@@ -357,10 +357,10 @@ function activatePrivateTextChange(element: HTMLElement) {
  * @param input Input server address
  */
 function validateServerAddress(input: string): string {
-    // Trim the last slash if needed
-    if (input.endsWith("/")) {
-        input = input.substring(0, input.length - 1);
-    }
+    input = input.trim();
+
+    // Trim the trailing slashes
+    input = input.replace(/\/+$/, "");
 
     // If it isn't HTTP protocol
     if ((!input.startsWith("https://") && !input.startsWith("http://"))) {
