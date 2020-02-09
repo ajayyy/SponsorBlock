@@ -51,6 +51,16 @@ async function init() {
                         case "supportInvidious":
                             invidiousOnClick(checkbox, option);
                             break;
+                        case "disableAutoSkip":
+                            if (!checkbox.checked) {
+                                // Enable the notice
+                                Config.config["dontShowNotice"] = false;
+                                
+                                let showNoticeSwitch = <HTMLInputElement> document.querySelector("[sync-option='dontShowNotice'] > label > label > input");
+                                showNoticeSwitch.checked = true;
+                            }
+
+                            break;
                     }
                 });
                 break;
