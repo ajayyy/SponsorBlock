@@ -48,7 +48,7 @@ class SBMap<T, U> extends Map {
         // Import all entries if they were given
         if (entries !== undefined) {
             for (const item of entries) {
-                this.set(item[0], item[1])
+                super.set(item[0], item[1])
             }
         }
     }
