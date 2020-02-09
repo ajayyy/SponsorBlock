@@ -16,12 +16,13 @@ interface SBConfig {
     hideVideoPlayerControls: boolean,
     hideInfoButtonPlayerControls: boolean,
     hideDeleteButtonPlayerControls: boolean,
+    hideUploadButtonPlayerControls: boolean,
     hideDiscordLaunches: number,
     hideDiscordLink: boolean,
     invidiousInstances: string[],
     invidiousUpdateInfoShowCount: number,
     autoUpvote: boolean,
-    supportInvidious: false,
+    supportInvidious: boolean,
     serverAddress: string,
     minDuration: number
 }
@@ -110,6 +111,7 @@ var Config: SBObject = {
         hideVideoPlayerControls: false,
         hideInfoButtonPlayerControls: false,
         hideDeleteButtonPlayerControls: false,
+        hideUploadButtonPlayerControls: false,
         hideDiscordLaunches: 0,
         hideDiscordLink: false,
         invidiousInstances: ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
@@ -229,7 +231,7 @@ function resetConfig() {
 };
 
 function convertJSON() {
-    Object.keys(Config.defaults).forEach(key => {
+    Object.keys(Config.localConfig).forEach(key => {
         Config.localConfig[key] = decodeStoredItem(key, Config.localConfig[key]);
     });
 }
