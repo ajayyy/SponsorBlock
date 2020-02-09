@@ -366,11 +366,20 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
             UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
 
-            for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i][1] - sponsorTimes[i][0] < Config.config.minDuration) {
-                    sponsorTimes.splice(i, 1);
-                    UUIDs.splice(i, 1);
+            // Remove all submissions smaller than the minimum duration
+            if (Config.config.minDuration !== 0) {
+                let smallSponsors = [];
+                let smallUUIDs = [];
+
+                for (let i = 0; i < sponsorTimes.length; i++) {
+                    if (sponsorTimes[i][1] - sponsorTimes[i][0] >= Config.config.minDuration) {
+                        smallSponsors.push(sponsorTimes[i]);
+                        smallUUIDs.push(UUIDs[i]);
+                    }
                 }
+
+                sponsorTimes = smallSponsors;
+                UUIDs = smallUUIDs;
             }
 
             // Reset skip save
