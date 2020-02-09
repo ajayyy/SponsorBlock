@@ -4,8 +4,7 @@
     "version": "1.2.8",
     "default_locale": "en",
     "description": "__MSG_Description__",
-    "content_scripts": [
-        {
+    "content_scripts": [{
         "run_at": "document_start",
         "matches": [
             "https://*.youtube.com/*",
@@ -21,8 +20,7 @@
             "./libs/Source+Sans+Pro.css",
             "popup.css"
         ]
-        }
-    ],
+    }],
     "web_accessible_resources": [
         "icons/LogoSponsorBlocker256px.png",
         "icons/IconSponsorBlocker256px.png",
