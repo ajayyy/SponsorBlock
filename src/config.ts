@@ -225,7 +225,7 @@ function resetConfig() {
 };
 
 function convertJSON() {
-    Object.keys(Config.defaults).forEach(key => {
+    Object.keys(Config.localConfig).forEach(key => {
         Config.localConfig[key] = decodeStoredItem(key, Config.localConfig[key]);
     });
 }
