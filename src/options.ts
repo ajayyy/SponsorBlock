@@ -56,20 +56,20 @@ async function init() {
                 break;
             case "text-change":
                 let textChangeOption = optionsElements[i].getAttribute("sync-option");
-                let textInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
+                let textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
                 
-                let setButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
+                let textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
 
-                textInput.value = Config.config[textChangeOption];
+                textChangeInput.value = Config.config[textChangeOption];
 
-                setButton.addEventListener("click", () => {
+                textChangeSetButton.addEventListener("click", () => {
                     // See if anything extra must be done
                     switch (textChangeOption) {
                         case "serverAddress":
-                            let result = validateServerAddress(textInput.value);
+                            let result = validateServerAddress(textChangeInput.value);
 
                             if (result !== null) {
-                                textInput.value = result;
+                                textChangeInput.value = result;
                             } else {
                                 return;
                             }
@@ -77,9 +77,19 @@ async function init() {
                             break;
                     }
 
-                    Config.config[textChangeOption] = textInput.value;
+                    Config.config[textChangeOption] = textChangeInput.value;
                 });
-    
+
+                // Reset to the default if needed
+                let textChangeResetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-reset");
+                textChangeResetButton.addEventListener("click", () => {
+                    if (!confirm(chrome.i18n.getMessage("areYouSureReset"))) return;
+
+                    Config.config[textChangeOption] = Config.defaults[textChangeOption];
+
+                    textChangeInput.value = Config.config[textChangeOption];
+                });
+
                 break;
             case "private-text-change":
                 let button = optionsElements[i].querySelector(".trigger-button");
