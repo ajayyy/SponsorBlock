@@ -1,4 +1,3 @@
-import * as CompileConfig from "../config.json";
 import Config from "./config";
 
 class Utils {
@@ -240,9 +239,7 @@ class Utils {
     sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
         let xmlhttp = new XMLHttpRequest();
   
-        let serverAddress = (Config.config.customServerAddress) ? Config.config.customServerAddress : CompileConfig.serverAddress;
-
-        xmlhttp.open(type, serverAddress + address, true);
+        xmlhttp.open(type, Config.config.serverAddress + address, true);
   
         if (callback != undefined) {
             xmlhttp.onreadystatechange = function () {

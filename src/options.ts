@@ -1,5 +1,4 @@
 import Config from "./config";
-import * as CompileConfig from "../config.json";
 
 import Utils from "./utils";
 var utils = new Utils();
@@ -73,11 +72,6 @@ async function init() {
                 let saveButton = <HTMLElement> optionsElements[i].querySelector(".option-button");
 
                 stringInput.value = Config.config[stringChangeOption];
-                // Devs can use config.json to set server address
-                if (stringChangeOption === "customServerAddress") {
-                    stringInput.value = (Config.config.customServerAddress) ? Config.config.customServerAddress : CompileConfig.serverAddress;
-                }
-                
 
                 saveButton.addEventListener("click", () => {
                    setStringConfigOption(stringInput.value, stringChangeOption);
