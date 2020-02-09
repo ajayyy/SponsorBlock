@@ -248,7 +248,7 @@
 			<br/>
 			<br/>
 	
-			<div option-type="text-change" sync-option="userID" confirm-message="userIDChangeWarning">
+			<div option-type="private-text-change" sync-option="userID" confirm-message="userIDChangeWarning">
 				<div class="option-button trigger-button">
 					__MSG_changeUserID__
 				</div>
@@ -274,13 +274,15 @@
 			<br/>
 			<br/>
 
-			<div option-type="string-change" sync-option="serverAddress">
-				<label class="string-container">
+			<div option-type="text-change" sync-option="serverAddress">
+				<label class="text-label-container">
 					<div>__MSG_customServerAddress__</div>
-				  <input class="option-text-box" type="text">
+
+					<input class="option-text-box" type="text">
 				</label>
-				<div class="option-button custom-server-address-button inline">
-						__MSG_saveCustomServerAddress__
+
+				<div class="option-button text-change-set inline">
+					__MSG_saveCustomServerAddress__
 				</div>
 	
 				<br/>
