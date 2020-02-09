@@ -148,6 +148,15 @@ function decodeStoredItem(id: string, data) {
             console.error("Failed to parse SBMap: "+ id);
         }
     }
+
+    // This is the old format for SBMap (a JSON string)
+    if (typeof data === "string") {
+        let str = JSON.parse(data);	   
+
+        if(Array.isArray(data)) {
+            return new SBMap(id, str)
+        }
+    }
     
     // If all else fails, return the data
     return data;
