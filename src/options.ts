@@ -63,6 +63,20 @@ async function init() {
                 textInput.value = Config.config[textChangeOption];
 
                 setButton.addEventListener("click", () => {
+                    // See if anything extra must be done
+                    switch (textChangeOption) {
+                        case "serverAddress":
+                            let result = validateServerAddress(textInput.value);
+
+                            if (result !== null) {
+                                textInput.value = result;
+                            } else {
+                                return;
+                            }
+
+                            break;
+                    }
+
                     Config.config[textChangeOption] = textInput.value;
                 });
     
@@ -324,4 +338,28 @@ function activatePrivateTextChange(element: HTMLElement) {
     });
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
+}
+
+/**
+ * Validates the value used for the database server address.
+ * Returns null and alerts the user if there is an issue.
+ * 
+ * @param input Input server address
+ */
+function validateServerAddress(input: string): string {
+    // Trim the last slash if needed
+    if (input.endsWith("/")) {
+        input = input.substring(0, input.length - 1);
+    }
+
+    // Isn't HTTP protocol or has extra slashes
+    if ((!input.startsWith("https://") && !input.startsWith("http://")) 
+        || input.replace("://", "").includes("/")) {
+
+        alert(chrome.i18n.getMessage("customAddressError"));
+
+        return null;
+    }
+
+    return input;
 }
