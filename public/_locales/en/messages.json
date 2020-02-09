@@ -386,5 +386,47 @@
     },
     "invidiousInfo2": {
         "message": "You MUST enable it in the options for it to work."
+    },
+    "minDuration": {
+        "message": "Minimum duration (seconds):"
+    },
+    "minDurationDescription": {
+        "message": "Sponsor segments shorter than the set value will not be skipeed or show in the player."
+     },
+    "shortCheck": {
+        "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
+    },
+    "showUploadButton": {
+        "message": "Show Upload Button"
+    },
+    "whatUploadButton": {
+        "message": "This button appears on the YouTube player after you have selected a timestamp and are ready to submit."
+    },
+    "customServerAddress": {
+        "message": "SponsorBlock Server Address"
+    },
+    "customServerAddressDescription": {
+        "message": "The address SponsorBlock uses to make calls to the server.\nUnless you have your own server instance, this should not be changed."
+    },
+    "save": {
+        "message": "Save"
+    },
+    "reset": {
+        "message": "Reset"
+    },
+    "customAddressError": {
+        "message": "This address is not in the right form. Make sure you have http:// or https:// at the begining and no trailing slashes."
+    },
+    "areYouSureReset": {
+        "message": "Are you sure you would like to reset this?"
+    },
+    "confirmPrivacy": {
+        "message": "The video has been detected as unlisted. Click cancel if you do not want to check for sponsors."
+    },
+    "unlistedCheck": {
+        "message": "Ignore Unlisted Videos"
+    },
+    "whatUnlistedCheck": {
+        "message": "This setting will significantly slow down SponsorBlock. Sponsor lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
     }
 }

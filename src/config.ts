@@ -1,3 +1,5 @@
+import * as CompileConfig from "../config.json";
+
 interface SBConfig {
     userID: string,
     sponsorTimes: SBMap<string, any>,
@@ -14,12 +16,16 @@ interface SBConfig {
     hideVideoPlayerControls: boolean,
     hideInfoButtonPlayerControls: boolean,
     hideDeleteButtonPlayerControls: boolean,
+    hideUploadButtonPlayerControls: boolean,
     hideDiscordLaunches: number,
     hideDiscordLink: boolean,
     invidiousInstances: string[],
     invidiousUpdateInfoShowCount: number,
     autoUpvote: boolean,
-    supportInvidious: false
+    supportInvidious: boolean,
+    serverAddress: string,
+    minDuration: number,
+    checkForUnlistedVideos: boolean
 }
 
 interface SBObject {
@@ -42,7 +48,7 @@ class SBMap<T, U> extends Map {
         // Import all entries if they were given
         if (entries !== undefined) {
             for (const item of entries) {
-                this.set(item[0], item[1])
+                super.set(item[0], item[1])
             }
         }
     }
@@ -105,12 +111,16 @@ var Config: SBObject = {
         hideVideoPlayerControls: false,
         hideInfoButtonPlayerControls: false,
         hideDeleteButtonPlayerControls: false,
+        hideUploadButtonPlayerControls: false,
         hideDiscordLaunches: 0,
         hideDiscordLink: false,
         invidiousInstances: ["invidio.us", "invidiou.sh", "invidious.snopyta.org"],
         invidiousUpdateInfoShowCount: 0,
         autoUpvote: true,
-        supportInvidious: false
+        supportInvidious: false,
+        serverAddress: CompileConfig.serverAddress,
+        minDuration: 0,
+        checkForUnlistedVideos: false
     },
     localConfig: null,
     config: null
@@ -236,7 +246,7 @@ function resetConfig() {
 };
 
 function convertJSON() {
-    Object.keys(Config.defaults).forEach(key => {
+    Object.keys(Config.localConfig).forEach(key => {
         Config.localConfig[key] = decodeStoredItem(key, Config.localConfig[key]);
     });
 }

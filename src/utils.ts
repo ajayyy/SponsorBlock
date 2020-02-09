@@ -1,10 +1,20 @@
-import * as CompileConfig from "../config.json";
 import Config from "./config";
 
 class Utils {
     
     // Contains functions needed from the background script
     backgroundScriptContainer: any = null;
+
+    // Used to add content scripts and CSS required
+    js = [
+        "./js/vendor.js",
+        "./js/content.js"
+    ];
+    css = [
+        "content.css",
+        "./libs/Source+Sans+Pro.css",
+        "popup.css"
+    ];
 
     constructor(backgroundScriptContainer?: any) {
         this.backgroundScriptContainer = backgroundScriptContainer;
@@ -67,25 +77,15 @@ class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts() {
-        let js = [
-            "./js/vendor.js",
-            "./js/content.js"
-        ];
-        let css = [
-            "content.css",
-            "./libs/Source+Sans+Pro.css",
-            "popup.css"
-        ];
-
         let self = this;
 
         if (this.isFirefox()) {
             let firefoxJS = [];
-            for (const file of js) {
+            for (const file of this.js) {
                 firefoxJS.push({file});
             }
             let firefoxCSS = [];
-            for (const file of css) {
+            for (const file of this.css) {
                 firefoxCSS.push({file});
             }
 
@@ -119,8 +119,8 @@ class Utils {
                     // This API is experimental and not visible by the TypeScript compiler
                     actions: [new (<any> chrome.declarativeContent).RequestContentScript({
                         allFrames: true,
-                        js,
-                        css
+                        js: self.js,
+                        css: self.css
                     })]
                 };
                 
@@ -240,7 +240,7 @@ class Utils {
     sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
         let xmlhttp = new XMLHttpRequest();
   
-        xmlhttp.open(type, CompileConfig.serverAddress + address, true);
+        xmlhttp.open(type, Config.config.serverAddress + address, true);
   
         if (callback != undefined) {
             xmlhttp.onreadystatechange = function () {

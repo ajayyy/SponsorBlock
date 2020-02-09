@@ -8,12 +8,15 @@ import runThePopup from "./popup";
 import PreviewBar from "./js-components/previewBar";
 import SkipNotice from "./js-components/skipNotice";
 
+// Hack to get the CSS loaded on permission-based sites (Invidious)
+utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
+
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
 var previousVideoID = null;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 var sponsorTimes = null;
-var UUIDs = null;
+var UUIDs = [];
 //what video id are these sponsors for
 var sponsorVideoID = null;
 
@@ -215,7 +218,7 @@ function resetValues() {
 
     //reset sponsor times
     sponsorTimes = null;
-    UUIDs = null;
+    UUIDs = [];
     sponsorLookupRetries = 0;
 
     //empty the preview bar
@@ -227,7 +230,7 @@ function resetValues() {
     sponsorDataFound = false;
 }
 
-function videoIDChange(id) {
+async function videoIDChange(id) {
     //if the id has not changed return
     if (sponsorVideoID === id) return;
 
@@ -238,6 +241,19 @@ function videoIDChange(id) {
     
 	//id is not valid
     if (!id) return;
+
+    // Wait for options to be ready
+    await utils.wait(() => Config.config !== null, 5000, 1);
+
+    // If enabled, it will check if this video is private or unlisted and double check with the user if the sponsors should be looked up
+    if (Config.config.checkForUnlistedVideos) {
+        await utils.wait(isPrivacyInfoAvailable);
+
+        if (isUnlisted()) {
+            let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
+            if(!shouldContinue) return;
+        }
+    }
 
     // TODO: Use a better method here than using type any
     // This is done to be able to do channelIDPromise.isFulfilled and channelIDPromise.isRejected
@@ -363,8 +379,36 @@ function sponsorsLookup(id: string, channelIDPromise?) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             sponsorDataFound = true;
 
-            sponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
-            UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
+            let recievedSponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
+            let recievedUUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
+
+            // Check if any old submissions should be kept
+            for (let i = 0; i < UUIDs.length; i++) {
+                if (UUIDs[i] === null)  {
+                    // This is a user submission, keep it
+                    recievedSponsorTimes.push(sponsorTimes[i]);
+                    recievedUUIDs.push(UUIDs[i]);
+                }
+            }
+
+            sponsorTimes = recievedSponsorTimes;
+            UUIDs = recievedUUIDs;
+
+            // Remove all submissions smaller than the minimum duration
+            if (Config.config.minDuration !== 0) {
+                let smallSponsors = [];
+                let smallUUIDs = [];
+
+                for (let i = 0; i < sponsorTimes.length; i++) {
+                    if (sponsorTimes[i][1] - sponsorTimes[i][0] >= Config.config.minDuration) {
+                        smallSponsors.push(sponsorTimes[i]);
+                        smallUUIDs.push(UUIDs[i]);
+                    }
+                }
+
+                sponsorTimes = smallSponsors;
+                UUIDs = smallUUIDs;
+            }
 
             // Reset skip save
             sponsorSkipped = [];
@@ -613,7 +657,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     }
 
     lastSponsorTimeSkipped = sponsorTimes[index][0];
-  
+
     let currentUUID =  UUIDs[index];
     lastSponsorTimeSkippedUUID = currentUUID; 
 
@@ -627,17 +671,18 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
                 vote(1, currentUUID, null);
             }
         }
-    }
 
-    //send telemetry that a this sponsor was skipped
-    if (Config.config.trackViewCount && !sponsorSkipped[index]) {
-        utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
+        //send telemetry that a this sponsor was skipped
+        if (Config.config.trackViewCount && !sponsorSkipped[index]) {
+            utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
-        if (!Config.config.disableAutoSkip) {
-            // Count this as a skip
-            Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
-            Config.config.skipCount = Config.config.skipCount + 1;
-            sponsorSkipped[index] = true;
+            if (!Config.config.disableAutoSkip) {
+                // Count this as a skip
+                Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
+                Config.config.skipCount = Config.config.skipCount + 1;
+
+                sponsorSkipped[index] = true;
+            }
         }
     }
 }
@@ -787,7 +832,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
         (<HTMLImageElement> document.getElementById("startSponsorImage")).src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
-        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !Config.config.hideInfoButtonPlayerControls) {
+        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !Config.config.hideUploadButtonPlayerControls) {
             document.getElementById("submitButton").style.display = "unset";
         } else if (!uploadButtonVisible) {
             //disable submit button
@@ -921,12 +966,10 @@ function vote(type, UUID, skipNotice) {
             sponsorSkipped[sponsorIndex] = false;
         }
 
-            // Count this as a skip
-            Config.config.minutesSaved = Config.config.minutesSaved + factor * (sponsorTimes[sponsorIndex][1] - sponsorTimes[sponsorIndex][0]) / 60;
-		
-            Config.config.skipCount = 0;
-
-            Config.config.skipCount = Config.config.skipCount + factor * 1;
+        // Count this as a skip
+        Config.config.minutesSaved = Config.config.minutesSaved + factor * (sponsorTimes[sponsorIndex][1] - sponsorTimes[sponsorIndex][0]) / 60;
+    
+        Config.config.skipCount = Config.config.skipCount + factor;
     }
  
     chrome.runtime.sendMessage({
@@ -1006,6 +1049,17 @@ function submitSponsorTimes() {
         //update sponsorTimesSubmitting
         sponsorTimesSubmitting = sponsorTimes;
 
+        // Check to see if any of the submissions are below the minimum duration set
+        if (Config.config.minDuration > 0) {
+            for (let i = 0; i < sponsorTimes.length; i++) {
+                if (sponsorTimes[i][1] - sponsorTimes[i][0] < Config.config.minDuration) {
+                    let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
+                    
+                    if(!confirm(confirmShort)) return;
+                }
+            }
+        }
+
         let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
                                 + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
         if(!confirm(confirmMessage)) return;
@@ -1049,10 +1103,12 @@ function sendSubmitMessage(){
                 Config.config.sponsorTimes.delete(currentVideoID);
 
                 //add submissions to current sponsors list
+                if (sponsorTimes === null) sponsorTimes = [];
+                
                 sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
                 for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-                    // Add some random IDs
-                    UUIDs.push(utils.generateUserID());
+                    // Add placeholder IDs
+                    UUIDs.push(null);
                 }
 
                 // Empty the submitting times
@@ -1090,6 +1146,53 @@ function getSponsorTimesMessage(sponsorTimes) {
     }
 
     return sponsorTimesMessage;
+}
+
+// Privacy utils
+function isPrivacyInfoAvailable(): boolean {
+    if(document.location.pathname.startsWith("/embed/")) return true;
+    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2;
+}
+
+/**
+ * What privacy level is this YouTube video?
+ */
+function getPrivacy(): string {
+    if(document.location.pathname.startsWith("/embed/")) return "Public";
+
+    let privacyElement = <HTMLElement> document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2];
+    return privacyElement.innerText;
+}
+
+/**
+ * Is this an unlisted YouTube video.
+ * Assumes that the the privacy info is available.
+ */
+function isUnlisted(): boolean {
+    let privacyElement = <HTMLElement> document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2];
+
+    return privacyElement.innerText.toLocaleLowerCase() === "unlisted";
+}
+
+/**
+ * Adds the CSS to the page if needed. Required on optional sites with Chrome.
+ */
+function addCSS() {
+    if (!utils.isFirefox() && Config.config.invidiousInstances.includes(new URL(document.URL).host)) {
+        window.addEventListener("DOMContentLoaded", () => {
+            let head = document.getElementsByTagName("head")[0];
+
+            for (const file of utils.css) {
+                let fileref = document.createElement("link");
+
+                fileref.rel = "stylesheet";
+                fileref.type = "text/css";
+                fileref.href = chrome.extension.getURL(file);
+
+                head.appendChild(fileref);
+            }
+        });
+    }
 }
 
 //converts time in seconds to minutes:seconds

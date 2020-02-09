@@ -51,18 +51,65 @@ async function init() {
                         case "supportInvidious":
                             invidiousOnClick(checkbox, option);
                             break;
+                        case "disableAutoSkip":
+                            if (!checkbox.checked) {
+                                // Enable the notice
+                                Config.config["dontShowNotice"] = false;
+                                
+                                let showNoticeSwitch = <HTMLInputElement> document.querySelector("[sync-option='dontShowNotice'] > label > label > input");
+                                showNoticeSwitch.checked = true;
+                            }
+
+                            break;
                     }
                 });
                 break;
             case "text-change":
-                let button = optionsElements[i].querySelector(".trigger-button");
-                button.addEventListener("click", () => activateTextChange(<HTMLElement> optionsElements[i]));
-
                 let textChangeOption = optionsElements[i].getAttribute("sync-option");
+                let textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
+                
+                let textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
+
+                textChangeInput.value = Config.config[textChangeOption];
+
+                textChangeSetButton.addEventListener("click", () => {
+                    // See if anything extra must be done
+                    switch (textChangeOption) {
+                        case "serverAddress":
+                            let result = validateServerAddress(textChangeInput.value);
+
+                            if (result !== null) {
+                                textChangeInput.value = result;
+                            } else {
+                                return;
+                            }
+
+                            break;
+                    }
+
+                    Config.config[textChangeOption] = textChangeInput.value;
+                });
+
+                // Reset to the default if needed
+                let textChangeResetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-reset");
+                textChangeResetButton.addEventListener("click", () => {
+                    if (!confirm(chrome.i18n.getMessage("areYouSureReset"))) return;
+
+                    Config.config[textChangeOption] = Config.defaults[textChangeOption];
+
+                    textChangeInput.value = Config.config[textChangeOption];
+                });
+
+                break;
+            case "private-text-change":
+                let button = optionsElements[i].querySelector(".trigger-button");
+                button.addEventListener("click", () => activatePrivateTextChange(<HTMLElement> optionsElements[i]));
+
+                let privateTextChangeOption = optionsElements[i].getAttribute("sync-option");
                 // See if anything extra must be done
-                switch (textChangeOption) {
+                switch (privateTextChangeOption) {
                     case "invidiousInstances":
-                        invidiousInstanceAddInit(<HTMLElement> optionsElements[i], textChangeOption);
+                        invidiousInstanceAddInit(<HTMLElement> optionsElements[i], privateTextChangeOption);
                 }
 
                 break;
@@ -73,6 +120,24 @@ async function init() {
                 break;
             case "display":
                 updateDisplayElement(<HTMLElement> optionsElements[i])
+
+                break;
+            case "number-change":
+                let numberChangeOption = optionsElements[i].getAttribute("sync-option");
+                let configValue = Config.config[numberChangeOption];
+                let numberInput = optionsElements[i].querySelector("input");
+
+                if (isNaN(configValue) || configValue < 0) {
+                    numberInput.value = Config.defaults[numberChangeOption];
+                } else {
+                    numberInput.value = configValue;
+                }
+
+                numberInput.addEventListener("input", () => {
+                    Config.config[numberChangeOption] = numberInput.value;
+                });
+
+                break;
         }
     }
 
@@ -265,7 +330,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
  * 
  * @param element 
  */
-function activateTextChange(element: HTMLElement) {
+function activatePrivateTextChange(element: HTMLElement) {
     let button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
@@ -293,4 +358,27 @@ function activateTextChange(element: HTMLElement) {
     });
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
+}
+
+/**
+ * Validates the value used for the database server address.
+ * Returns null and alerts the user if there is an issue.
+ * 
+ * @param input Input server address
+ */
+function validateServerAddress(input: string): string {
+    input = input.trim();
+
+    // Trim the trailing slashes
+    input = input.replace(/\/+$/, "");
+
+    // If it isn't HTTP protocol
+    if ((!input.startsWith("https://") && !input.startsWith("http://"))) {
+
+        alert(chrome.i18n.getMessage("customAddressError"));
+
+        return null;
+    }
+
+    return input;
 }

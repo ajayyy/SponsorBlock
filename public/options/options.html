@@ -41,7 +41,7 @@
 			<br/>
 			<br/>
 	
-			<div option-type="text-change" sync-option="invidiousInstances">
+			<div option-type="private-text-change" sync-option="invidiousInstances">
 				<div class="option-button trigger-button">
 					__MSG_addInvidiousInstance__
 				</div>
@@ -76,7 +76,7 @@
 
 			<br/>
 			<br/>
-	
+
 			<div option-type="toggle" toggle-type="reverse" sync-option="disableAutoSkip">
 				<label class="switch-container" label-name="__MSG_autoSkip__">
 					<label class="switch">
@@ -93,6 +93,7 @@
 
 			<br/>
 			<br/>
+	
 	
 			<div option-type="keybind-change" sync-option="startSponsorKeybind">
 				<div class="option-button trigger-button">
@@ -131,6 +132,32 @@
 						
 					</span>
 				</div>
+			</div>
+
+			<br/>
+			<br/>
+	
+			<div option-type="number-change" sync-option="minDuration">
+				<label class="number-container" label-name="__MSG_minDuration__">
+					<input type="number" step="0.1" min="0">
+				</label>
+
+				<br/>
+				<br/>
+
+				<div class="small-description">__MSG_minDurationDescription__</div>
+			</div>
+
+			<br/>
+			<br/>
+	
+			<div option-type="toggle" toggle-type="reverse" sync-option="dontShowNotice">
+				<label class="switch-container" label-name="__MSG_showSkipNotice__">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+				</label>
 			</div>
 	
 			<br/>
@@ -187,6 +214,23 @@
 			<br/>
 			<br/>
 	
+			<div option-type="toggle" toggle-type="reverse" sync-option="hideUploadButtonPlayerControls">
+				<label class="switch-container" label-name="__MSG_showUploadButton__">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+				</label>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_whatUploadButton__</div>
+			</div>
+
+			<br/>
+			<br/>
+	
 			<div option-type="toggle" sync-option="autoUpvote">
 				<label class="switch-container" label-name="__MSG_enableAutoUpvote__">
 					<label class="switch">
@@ -217,11 +261,28 @@
 	
 				<div class="small-description">__MSG_whatViewTracking__</div>
 			</div>
+
+			<br/>
+			<br/>
+	
+			<div option-type="toggle" sync-option="checkForUnlistedVideos">
+				<label class="switch-container" label-name="__MSG_unlistedCheck__">
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</label>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_whatUnlistedCheck__</div>
+			</div>
 	
 			<br/>
 			<br/>
 	
-			<div option-type="text-change" sync-option="userID" confirm-message="userIDChangeWarning">
+			<div option-type="private-text-change" sync-option="userID" confirm-message="userIDChangeWarning">
 				<div class="option-button trigger-button">
 					__MSG_changeUserID__
 				</div>
@@ -243,19 +304,31 @@
 					</div>
 				</div>
 			</div>
-	
+
 			<br/>
 			<br/>
-	
-			<div option-type="toggle" toggle-type="reverse" sync-option="dontShowNotice">
-				<label class="switch-container" label-name="__MSG_showSkipNotice__">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
+
+			<div option-type="text-change" sync-option="serverAddress">
+				<label class="text-label-container">
+					<div>__MSG_customServerAddress__</div>
+
+					<input class="option-text-box" type="text">
 				</label>
+
+				<div class="option-button text-change-set inline">
+					__MSG_save__
+				</div>
+
+				<div class="option-button text-change-reset inline">
+					__MSG_reset__
+				</div>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_customServerAddressDescription__</div>
 			</div>
-			
+	
 		</div>
 	</div>
 
