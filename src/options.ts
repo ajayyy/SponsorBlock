@@ -362,9 +362,8 @@ function validateServerAddress(input: string): string {
         input = input.substring(0, input.length - 1);
     }
 
-    // Isn't HTTP protocol or has extra slashes
-    if ((!input.startsWith("https://") && !input.startsWith("http://")) 
-        || input.replace("://", "").includes("/")) {
+    // If it isn't HTTP protocol
+    if ((!input.startsWith("https://") && !input.startsWith("http://"))) {
 
         alert(chrome.i18n.getMessage("customAddressError"));
 

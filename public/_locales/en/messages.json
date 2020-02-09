@@ -415,7 +415,7 @@
         "message": "Reset"
     },
     "customAddressError": {
-        "message": "This address is not in the right form. Make sure you have http:// or https:// at the begining and no slashes or sub-folders at the end."
+        "message": "This address is not in the right form. Make sure you have http:// or https:// at the begining and no trailing slashes."
     },
     "areYouSureReset": {
         "message": "Are you sure you would like to reset this?"
