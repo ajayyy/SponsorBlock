@@ -93,24 +93,6 @@
 
 			<br/>
 			<br/>
-
-			<div option-type="string-change" sync-option="serverAddress">
-				<label class="string-container">
-					<div>__MSG_customServerAddress__</div>
-				  <input class="option-text-box" type="text">
-				</label>
-				<div class="option-button custom-server-address-button inline">
-						__MSG_saveCustomServerAddress__
-				</div>
-	
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_customServerAddressDescription__</div>
-			</div>
-
-			<br/>
-			<br/>
 	
 	
 			<div option-type="keybind-change" sync-option="startSponsorKeybind">
@@ -164,6 +146,18 @@
 				<br/>
 
 				<div class="small-description">__MSG_minDurationDescription__</div>
+			</div>
+
+			<br/>
+			<br/>
+	
+			<div option-type="toggle" toggle-type="reverse" sync-option="dontShowNotice">
+				<label class="switch-container" label-name="__MSG_showSkipNotice__">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+				</label>
 			</div>
 	
 			<br/>
@@ -276,19 +270,25 @@
 					</div>
 				</div>
 			</div>
-	
+
 			<br/>
 			<br/>
-	
-			<div option-type="toggle" toggle-type="reverse" sync-option="dontShowNotice">
-				<label class="switch-container" label-name="__MSG_showSkipNotice__">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
+
+			<div option-type="string-change" sync-option="serverAddress">
+				<label class="string-container">
+					<div>__MSG_customServerAddress__</div>
+				  <input class="option-text-box" type="text">
 				</label>
+				<div class="option-button custom-server-address-button inline">
+						__MSG_saveCustomServerAddress__
+				</div>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_customServerAddressDescription__</div>
 			</div>
-			
+	
 		</div>
 	</div>
 
