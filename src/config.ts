@@ -1,3 +1,5 @@
+import * as CompileConfig from "../config.json";
+
 interface SBConfig {
     userID: string,
     sponsorTimes: SBMap<string, any>,
@@ -21,6 +23,7 @@ interface SBConfig {
     invidiousUpdateInfoShowCount: number,
     autoUpvote: boolean,
     supportInvidious: boolean,
+    serverAddress: string,
     minDuration: number
 }
 
@@ -115,6 +118,7 @@ var Config: SBObject = {
         invidiousUpdateInfoShowCount: 0,
         autoUpvote: true,
         supportInvidious: false,
+        serverAddress: CompileConfig.serverAddress,
         minDuration: 0
     },
     localConfig: null,

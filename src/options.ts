@@ -55,14 +55,51 @@ async function init() {
                 });
                 break;
             case "text-change":
-                let button = optionsElements[i].querySelector(".trigger-button");
-                button.addEventListener("click", () => activateTextChange(<HTMLElement> optionsElements[i]));
-
                 let textChangeOption = optionsElements[i].getAttribute("sync-option");
+                let textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
+                
+                let textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
+
+                textChangeInput.value = Config.config[textChangeOption];
+
+                textChangeSetButton.addEventListener("click", () => {
+                    // See if anything extra must be done
+                    switch (textChangeOption) {
+                        case "serverAddress":
+                            let result = validateServerAddress(textChangeInput.value);
+
+                            if (result !== null) {
+                                textChangeInput.value = result;
+                            } else {
+                                return;
+                            }
+
+                            break;
+                    }
+
+                    Config.config[textChangeOption] = textChangeInput.value;
+                });
+
+                // Reset to the default if needed
+                let textChangeResetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-reset");
+                textChangeResetButton.addEventListener("click", () => {
+                    if (!confirm(chrome.i18n.getMessage("areYouSureReset"))) return;
+
+                    Config.config[textChangeOption] = Config.defaults[textChangeOption];
+
+                    textChangeInput.value = Config.config[textChangeOption];
+                });
+
+                break;
+            case "private-text-change":
+                let button = optionsElements[i].querySelector(".trigger-button");
+                button.addEventListener("click", () => activatePrivateTextChange(<HTMLElement> optionsElements[i]));
+
+                let privateTextChangeOption = optionsElements[i].getAttribute("sync-option");
                 // See if anything extra must be done
-                switch (textChangeOption) {
+                switch (privateTextChangeOption) {
                     case "invidiousInstances":
-                        invidiousInstanceAddInit(<HTMLElement> optionsElements[i], textChangeOption);
+                        invidiousInstanceAddInit(<HTMLElement> optionsElements[i], privateTextChangeOption);
                 }
 
                 break;
@@ -283,7 +320,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
  * 
  * @param element 
  */
-function activateTextChange(element: HTMLElement) {
+function activatePrivateTextChange(element: HTMLElement) {
     let button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
@@ -311,4 +348,28 @@ function activateTextChange(element: HTMLElement) {
     });
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
+}
+
+/**
+ * Validates the value used for the database server address.
+ * Returns null and alerts the user if there is an issue.
+ * 
+ * @param input Input server address
+ */
+function validateServerAddress(input: string): string {
+    // Trim the last slash if needed
+    if (input.endsWith("/")) {
+        input = input.substring(0, input.length - 1);
+    }
+
+    // Isn't HTTP protocol or has extra slashes
+    if ((!input.startsWith("https://") && !input.startsWith("http://")) 
+        || input.replace("://", "").includes("/")) {
+
+        alert(chrome.i18n.getMessage("customAddressError"));
+
+        return null;
+    }
+
+    return input;
 }
