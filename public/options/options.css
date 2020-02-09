@@ -310,3 +310,12 @@ h1,h2,h3,h4,h5,h6 {
 svg {
     text-decoration: none; 
 }
+
+.number-container:before {
+    content: attr(label-name);
+    padding-right: 4px;
+    width: max-content;
+
+    font-size: 14px;
+    color: white;
+}
