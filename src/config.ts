@@ -84,7 +84,6 @@ class SBMap<T, U> extends Map {
     }
 }
 
-
 var Config: SBObject = {
     /**
      * Callback function when an option is updated
@@ -138,11 +137,11 @@ function encodeStoredItem(data) {
  * @param {*} data 
  */
 function decodeStoredItem(id: string, data) {
-    if(!Config.defaults[id]) return data;
+    if (!Config.defaults[id]) return data;
 
-    if(Config.defaults[id] instanceof SBMap) {
+    if (Config.defaults[id] instanceof SBMap) {
         try {
-            if(!Array.isArray(data)) return data;
+            if (!Array.isArray(data)) return data;
             return new SBMap(id, data);
         } catch(e) {
             console.error("Failed to parse SBMap: "+ id);
@@ -151,10 +150,14 @@ function decodeStoredItem(id: string, data) {
 
     // This is the old format for SBMap (a JSON string)
     if (typeof data === "string") {
-        let str = JSON.parse(data);	   
+        try {	
+            let str = JSON.parse(data);	   
 
-        if(Array.isArray(data)) {
-            return new SBMap(id, str)
+            if (Array.isArray(data)) {
+                return new SBMap(id, str);
+            }
+        } catch(e) {
+            // Continue normally (out of this if statement)
         }
     }
     
