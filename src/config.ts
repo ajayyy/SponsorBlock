@@ -254,3 +254,6 @@ function addDefaults() {
 setupConfig();
 
 export default Config;
+
+// Make the config public for debugging purposes
+(<any> window).SB = Config;
