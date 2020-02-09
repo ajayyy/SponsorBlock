@@ -51,6 +51,16 @@ async function init() {
                         case "supportInvidious":
                             invidiousOnClick(checkbox, option);
                             break;
+                        case "disableAutoSkip":
+                            if (!checkbox.checked) {
+                                // Enable the notice
+                                Config.config["dontShowNotice"] = false;
+                                
+                                let showNoticeSwitch = <HTMLInputElement> document.querySelector("[sync-option='dontShowNotice'] > label > label > input");
+                                showNoticeSwitch.checked = true;
+                            }
+
+                            break;
                     }
                 });
                 break;
@@ -357,14 +367,13 @@ function activatePrivateTextChange(element: HTMLElement) {
  * @param input Input server address
  */
 function validateServerAddress(input: string): string {
-    // Trim the last slash if needed
-    if (input.endsWith("/")) {
-        input = input.substring(0, input.length - 1);
-    }
+    input = input.trim();
 
-    // Isn't HTTP protocol or has extra slashes
-    if ((!input.startsWith("https://") && !input.startsWith("http://")) 
-        || input.replace("://", "").includes("/")) {
+    // Trim the trailing slashes
+    input = input.replace(/\/+$/, "");
+
+    // If it isn't HTTP protocol
+    if ((!input.startsWith("https://") && !input.startsWith("http://"))) {
 
         alert(chrome.i18n.getMessage("customAddressError"));
 
