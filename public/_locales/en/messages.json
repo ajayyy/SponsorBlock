@@ -395,5 +395,11 @@
      },
     "shortCheck": {
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
+    },
+    "showUploadButton": {
+        "message": "Show Upload Button"
+    },
+    "whatUploadButton": {
+        "message": "This button appears on the YouTube player after you have selected a timestamp and are ready to submit."
     }
 }
