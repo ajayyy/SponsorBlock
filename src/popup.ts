@@ -1,27 +1,50 @@
-//make this a function to allow this to run on the content page
-async function runThePopup() {
-    localizeHtmlPage();
-    //is it in the popup or content script
-    var inPopup = true;
-    if (chrome.tabs == undefined) {
-        //this is on the content script, use direct communication
-        chrome.tabs = {};
-        chrome.tabs.sendMessage = function(id, request, callback) {
-            messageListener(request, null, callback);
-        }
+import Config from "./config";
 
-        //add a dummy query method
-        chrome.tabs.query = function(config, callback) {
-            callback([{
-                    url: document.URL,
-                    id: -1
-            }]);
-        }
+import Utils from "./utils";
+var utils = new Utils();
 
-        inPopup = false;
+interface MessageListener {
+    (request: any, sender: any, callback: (response: any) => void): void;
+} 
+
+class MessageHandler {
+    messageListener: MessageListener;
+
+    constructor (messageListener?: MessageListener) {
+        this.messageListener = messageListener;
     }
 
-    await wait(() => SB.config !== undefined);
+    sendMessage(id: number, request, callback?) {
+        if (this.messageListener) {
+            this.messageListener(request, null, callback);
+        } else {
+            chrome.tabs.sendMessage(id, request, callback);
+        }
+    }
+
+    query(config, callback) {
+        if (this.messageListener) {
+            // Send back dummy info
+            callback([{
+                url: document.URL,
+                id: -1
+            }]);
+        } else {
+            chrome.tabs.query(config, callback);
+        }
+        
+    }
+}
+
+//make this a function to allow this to run on the content page
+async function runThePopup(messageListener?: MessageListener) {
+    var messageHandler = new MessageHandler();
+
+    utils.localizeHtmlPage();
+
+    await utils.wait(() => Config.config !== null);
+
+    var PageElements: any = {};
 
     ["sponsorStart",
     // Top toggles
@@ -77,22 +100,22 @@ async function runThePopup() {
     "videoFound",
     "sponsorMessageTimes",
     "downloadedSponsorMessageTimes",
-    ].forEach(id => SB[id] = document.getElementById(id));
+    ].forEach(id => PageElements[id] = document.getElementById(id));
 
     //setup click listeners
-    SB.sponsorStart.addEventListener("click", sendSponsorStartMessage);
-    SB.whitelistChannel.addEventListener("click", whitelistChannel);
-    SB.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
-    SB.disableSkipping.addEventListener("click", () => toggleSkipping(true));
-    SB.enableSkipping.addEventListener("click", () => toggleSkipping(false));
-    SB.clearTimes.addEventListener("click", clearTimes);
-    SB.submitTimes.addEventListener("click", submitTimes);
-    SB.showNoticeAgain.addEventListener("click", showNoticeAgain);
-    SB.setUsernameButton.addEventListener("click", setUsernameButton);
-    SB.submitUsername.addEventListener("click", submitUsername);
-    SB.optionsButton.addEventListener("click", openOptions);
-    SB.reportAnIssue.addEventListener("click", reportAnIssue);
-    SB.hideDiscordButton.addEventListener("click", hideDiscordButton);
+    PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
+    PageElements.whitelistChannel.addEventListener("click", whitelistChannel);
+    PageElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
+    PageElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
+    PageElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
+    PageElements.clearTimes.addEventListener("click", clearTimes);
+    PageElements.submitTimes.addEventListener("click", submitTimes);
+    PageElements.showNoticeAgain.addEventListener("click", showNoticeAgain);
+    PageElements.setUsernameButton.addEventListener("click", setUsernameButton);
+    PageElements.submitUsername.addEventListener("click", submitUsername);
+    PageElements.optionsButton.addEventListener("click", openOptions);
+    PageElements.reportAnIssue.addEventListener("click", reportAnIssue);
+    PageElements.hideDiscordButton.addEventListener("click", hideDiscordButton);
 	
     //if true, the button now selects the end time
     let startTimeChosen = false;
@@ -104,115 +127,115 @@ async function runThePopup() {
     let currentVideoID = null;
   
     //see if discord link can be shown
-    let hideDiscordLink = SB.config.hideDiscordLink;
+    let hideDiscordLink = Config.config.hideDiscordLink;
     if (hideDiscordLink == undefined || !hideDiscordLink) {
-            let hideDiscordLaunches = SB.config.hideDiscordLaunches;
+            let hideDiscordLaunches = Config.config.hideDiscordLaunches;
             //only if less than 10 launches
             if (hideDiscordLaunches == undefined || hideDiscordLaunches < 10) {
-                SB.discordButtonContainer.style.display = null;
+                PageElements.discordButtonContainer.style.display = null;
         
                 if (hideDiscordLaunches == undefined) {
                     hideDiscordLaunches = 1;
                 }
-                SB.config.hideDiscordLaunches = hideDiscordLaunches + 1;
+                Config.config.hideDiscordLaunches = hideDiscordLaunches + 1;
             }
     }
 
     //show proper disable skipping button
-    let disableSkipping = SB.config.disableSkipping;
+    let disableSkipping = Config.config.disableSkipping;
     if (disableSkipping != undefined && disableSkipping) {
-        SB.disableSkipping.style.display = "none";
-        SB.enableSkipping.style.display = "unset";
+        PageElements.disableSkipping.style.display = "none";
+        PageElements.enableSkipping.style.display = "unset";
     }
 
     //if the don't show notice again variable is true, an option to 
     //  disable should be available
-    let dontShowNotice = SB.config.dontShowNotice;
+    let dontShowNotice = Config.config.dontShowNotice;
     if (dontShowNotice != undefined && dontShowNotice) {
-        SB.showNoticeAgain.style.display = "unset";
+        PageElements.showNoticeAgain.style.display = "unset";
     }
 
     //get the amount of times this user has contributed and display it to thank them
-    if (SB.config.sponsorTimesContributed != undefined) {
-        if (SB.config.sponsorTimesContributed > 1) {
-            SB.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+    if (Config.config.sponsorTimesContributed != undefined) {
+        if (Config.config.sponsorTimesContributed > 1) {
+            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
         } else {
-            SB.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
+            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
         }
-        SB.sponsorTimesContributionsDisplay.innerText = SB.config.sponsorTimesContributed;
-        SB.sponsorTimesContributionsContainer.style.display = "unset";
+        PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed;
+        PageElements.sponsorTimesContributionsContainer.style.display = "unset";
 
         //get the userID
-            let userID = SB.config.userID;
-            if (userID != undefined) {
-                //there are probably some views on these submissions then
-                //get the amount of views from the sponsors submitted
-                sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
-                        if (viewCount != 0) {
-                            if (viewCount > 1) {
-                                SB.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
-                            } else {
-                                SB.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-                            }
-
-                            SB.sponsorTimesViewsDisplay.innerText = viewCount;
-                            SB.sponsorTimesViewsContainer.style.display = "unset";
+        let userID = Config.config.userID;
+        if (userID != undefined) {
+            //there are probably some views on these submissions then
+            //get the amount of views from the sponsors submitted
+            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
+                    if (viewCount != 0) {
+                        if (viewCount > 1) {
+                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
+                        } else {
+                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                         }
+
+                        PageElements.sponsorTimesViewsDisplay.innerText = viewCount;
+                        PageElements.sponsorTimesViewsContainer.style.display = "unset";
                     }
-                });
+                }
+            });
 
-                //get this time in minutes
-                sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(xmlhttp) {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        let minutesSaved = JSON.parse(xmlhttp.responseText).timeSaved;
-                        if (minutesSaved != 0) {
-                            if (minutesSaved != 1) {
-                                SB.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-                            } else {
-                                SB.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-                            }
-
-                            SB.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                            SB.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
+            //get this time in minutes
+            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(xmlhttp) {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    let minutesSaved = JSON.parse(xmlhttp.responseText).timeSaved;
+                    if (minutesSaved != 0) {
+                        if (minutesSaved != 1) {
+                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+                        } else {
+                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
                         }
+
+                        PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
+                        PageElements.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
                     }
-                });
-            }
+                }
+            });
+        }
     }
 
     //get the amount of times this user has skipped a sponsor
-    if (SB.config.skipCount != undefined) {
-        if (SB.config.skipCount != 1) {
-            SB.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+    if (Config.config.skipCount != undefined) {
+        if (Config.config.skipCount != 1) {
+            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsors");
         } else {
-            SB.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsor");
+            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsor");
         }
 
-        SB.sponsorTimesSkipsDoneDisplay.innerText = SB.config.skipCount;
-        SB.sponsorTimesSkipsDoneContainer.style.display = "unset";
+        PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount;
+        PageElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
     }
 
     //get the amount of time this user has saved.
-    if (SB.config.minutesSaved != undefined) {
-        if (SB.config.minutesSaved != 1) {
-            SB.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+    if (Config.config.minutesSaved != undefined) {
+        if (Config.config.minutesSaved != 1) {
+            PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
         } else {
-            SB.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
+            PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
         }
 
-        SB.sponsorTimeSavedDisplay.innerText = getFormattedHours(SB.config.minutesSaved);
-        SB.sponsorTimeSavedContainer.style.display = "unset";
+        PageElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(Config.config.minutesSaved);
+        PageElements.sponsorTimeSavedContainer.style.display = "unset";
     }
   
-    chrome.tabs.query({
+    messageHandler.query({
             active: true,
             currentWindow: true
     }, onTabs);
 	
     function onTabs(tabs) {
-	  chrome.tabs.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
+	  messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
         if (result != undefined && result.videoID) {
 			  currentVideoID = result.videoID;
 			  loadTabData(tabs);
@@ -231,11 +254,11 @@ async function runThePopup() {
         }
   
         //load video times for this video 
-        let sponsorTimesStorage = SB.config.sponsorTimes.get(currentVideoID);
+        let sponsorTimesStorage = Config.config.sponsorTimes.get(currentVideoID);
         if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
             if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
                 startTimeChosen = true;
-                SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
+                PageElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
             }
 
             sponsorTimes = sponsorTimesStorage;
@@ -243,13 +266,13 @@ async function runThePopup() {
             displaySponsorTimes();
 
             //show submission section
-            SB.submissionSection.style.display = "unset";
+            PageElements.submissionSection.style.display = "unset";
 
             showSubmitTimesIfNecessary();
         }
   
         //check if this video's sponsors are known
-        chrome.tabs.sendMessage(
+        messageHandler.sendMessage(
             tabs[0].id,
             {message: 'isInfoFound'},
             infoFound
@@ -265,38 +288,34 @@ async function runThePopup() {
   
         //if request is undefined, then the page currently being browsed is not YouTube
         if (request != undefined) {
-            //this must be a YouTube video
-            //set letiable
-            isYouTubeTab = true;
-  
             //remove loading text
-            SB.mainControls.style.display = "unset"
-            SB.loadingIndicator.style.display = "none";
+            PageElements.mainControls.style.display = "unset"
+            PageElements.loadingIndicator.style.display = "none";
 
             if (request.found) {
-                SB.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
+                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
 
                 displayDownloadedSponsorTimes(request);
             } else {
-                SB.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
+                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
             }
         }
 
         //see if whitelist button should be swapped
-        chrome.tabs.query({
+        messageHandler.query({
             active: true,
             currentWindow: true
         }, tabs => {
-            chrome.tabs.sendMessage(
+            messageHandler.sendMessage(
                 tabs[0].id,
                 {message: 'isChannelWhitelisted'},
                 function(response) {
                     if (response.value) {
-                        SB.whitelistChannel.style.display = "none";
-                        SB.unwhitelistChannel.style.display = "unset";
+                        PageElements.whitelistChannel.style.display = "none";
+                        PageElements.unwhitelistChannel.style.display = "unset";
 
-                        SB.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                        SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+                        PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
+                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
                     }
                 });
             }
@@ -304,17 +323,17 @@ async function runThePopup() {
     }
   
     function sendSponsorStartMessage() {
-            //the content script will get the message if a YouTube page is open
-            chrome.tabs.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
-                chrome.tabs.sendMessage(
-                    tabs[0].id,
-                    {from: 'popup', message: 'sponsorStart'},
-                    startSponsorCallback
-                );
-            });
+        //the content script will get the message if a YouTube page is open
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                {from: 'popup', message: 'sponsorStart'},
+                startSponsorCallback
+            );
+        });
     }
   
     function startSponsorCallback(response) {
@@ -327,19 +346,20 @@ async function runThePopup() {
         sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = response.time;
 
         let localStartTimeChosen = startTimeChosen;
-        SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-            //send a message to the client script
-            if (localStartTimeChosen) {
-                chrome.tabs.query({
-                    active: true,
-                    currentWindow: true
-                }, tabs => {
-                    chrome.tabs.sendMessage(
-                        tabs[0].id,
-                        {message: "sponsorDataChanged"}
-                    );
-                });
-            }
+        Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+        
+        //send a message to the client script
+        if (localStartTimeChosen) {
+            messageHandler.query({
+                active: true,
+                currentWindow: true
+            }, tabs => {
+                messageHandler.sendMessage(
+                    tabs[0].id,
+                    {message: "sponsorDataChanged"}
+                );
+            });
+        }
   
         updateStartTimeChosen();
   
@@ -347,7 +367,7 @@ async function runThePopup() {
         displaySponsorTimes();
   
         //show submission section
-        SB.submissionSection.style.display = "unset";
+        PageElements.submissionSection.style.display = "unset";
   
         showSubmitTimesIfNecessary();
     }
@@ -355,20 +375,20 @@ async function runThePopup() {
     //display the video times from the array
     function displaySponsorTimes() {
         //remove all children
-        while (SB.sponsorMessageTimes.firstChild) {
-            SB.sponsorMessageTimes.removeChild(SB.sponsorMessageTimes.firstChild);
+        while (PageElements.sponsorMessageTimes.firstChild) {
+            PageElements.sponsorMessageTimes.removeChild(PageElements.sponsorMessageTimes.firstChild);
         }
 
         //add sponsor times
-        SB.sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
+        PageElements.sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
     }
   
     //display the video times from the array at the top, in a different section
     function displayDownloadedSponsorTimes(request) {
         if (request.sponsorTimes != undefined) {
             //set it to the message
-            if (SB.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
-                SB.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
+            if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
+                PageElements.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
             }
 
             //add them as buttons to the issue reporting container
@@ -526,11 +546,11 @@ async function runThePopup() {
             saveSponsorTimeEdit(index, false);
         }
 
-        chrome.tabs.query({
+        messageHandler.query({
             active: true,
             currentWindow: true
         }, tabs => {
-            chrome.tabs.sendMessage(
+            messageHandler.sendMessage(
                 tabs[0].id, {
                     message: "skipToTime",
                     time: skipTime - 2
@@ -562,7 +582,7 @@ async function runThePopup() {
         startTimeMinutes.id = "startTimeMinutes" + index;
         startTimeMinutes.className = "sponsorTime popupElement";
         startTimeMinutes.type = "text";
-        startTimeMinutes.value = getTimeInMinutes(sponsorTimes[index][0]);
+        startTimeMinutes.value = String(getTimeInMinutes(sponsorTimes[index][0]));
         startTimeMinutes.style.width = "45px";
     
         let startTimeSeconds = document.createElement("input");
@@ -576,7 +596,7 @@ async function runThePopup() {
         endTimeMinutes.id = "endTimeMinutes" + index;
         endTimeMinutes.className = "sponsorTime popupElement";
         endTimeMinutes.type = "text";
-        endTimeMinutes.value = getTimeInMinutes(sponsorTimes[index][1]);
+        endTimeMinutes.value = String(getTimeInMinutes(sponsorTimes[index][1]));
         endTimeMinutes.style.width = "45px";
     
         let endTimeSeconds = document.createElement("input");
@@ -628,18 +648,18 @@ async function runThePopup() {
     }
 
     function setEditTimeToCurrentTime(idStartName, index) {
-        chrome.tabs.query({
+        messageHandler.query({
             active: true,
             currentWindow: true
         }, tabs => {
-            chrome.tabs.sendMessage(
+            messageHandler.sendMessage(
                 tabs[0].id,
                 {message: "getCurrentTime"},
                 function (response) {
-                    let minutes = document.getElementById(idStartName + "Minutes" + index);
-                    let seconds = document.getElementById(idStartName + "Seconds" + index);
+                    let minutes =  <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
+                    let seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
     
-                    minutes.value = getTimeInMinutes(response.currentTime);
+                    minutes.value = String(getTimeInMinutes(response.currentTime));
                     seconds.value = getTimeInFormattedSeconds(response.currentTime);
                 });
         });
@@ -648,10 +668,10 @@ async function runThePopup() {
     //id start name is whether it is the startTime or endTime
     //gives back the time in seconds
     function getSponsorTimeEditTimes(idStartName, index) {
-        let minutes = document.getElementById(idStartName + "Minutes" + index);
-        let seconds = document.getElementById(idStartName + "Seconds" + index);
+        let minutes = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
+        let seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
 
-        return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
+        return parseInt(minutes.value) * 60 + seconds.value;
     }
   
     function saveSponsorTimeEdit(index, closeEditMode = true) {
@@ -659,12 +679,12 @@ async function runThePopup() {
         sponsorTimes[index][1] = getSponsorTimeEditTimes("endTime", index);
   
         //save this
-		SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-            chrome.tabs.query({
+		Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+            messageHandler.query({
                 active: true,
                 currentWindow: true
             }, tabs => {
-                chrome.tabs.sendMessage(
+                messageHandler.sendMessage(
                     tabs[0].id,
                     {message: "sponsorDataChanged"}
                 );
@@ -681,11 +701,11 @@ async function runThePopup() {
     function deleteSponsorTime(index) {
         //if it is not a complete sponsor time
         if (sponsorTimes[index].length < 2) {
-            chrome.tabs.query({
+            messageHandler.query({
                 active: true,
                 currentWindow: true
             }, function(tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {
+                messageHandler.sendMessage(tabs[0].id, {
                     message: "changeStartSponsorButton",
                     showStartSponsor: true,
                     uploadButtonVisible: false
@@ -698,12 +718,12 @@ async function runThePopup() {
         sponsorTimes.splice(index, 1);
   
         //save this
-		SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-            chrome.tabs.query({
+		Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+            messageHandler.query({
                 active: true,
                 currentWindow: true
             }, tabs => {
-                chrome.tabs.sendMessage(
+                messageHandler.sendMessage(
                     tabs[0].id,
                     {message: "sponsorDataChanged"}
                 );
@@ -715,11 +735,11 @@ async function runThePopup() {
         //if they are all removed
         if (sponsorTimes.length == 0) {
             //update chrome tab
-            chrome.tabs.query({
+            messageHandler.query({
                 active: true,
                 currentWindow: true
             }, function(tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {
+                messageHandler.sendMessage(tabs[0].id, {
                     message: "changeStartSponsorButton",
                     showStartSponsor: true,
                     uploadButtonVisible: false
@@ -734,11 +754,11 @@ async function runThePopup() {
     function clearTimes() {
         //send new sponsor time state to tab
         if (sponsorTimes.length > 0) {
-            chrome.tabs.query({
+            messageHandler.query({
                 active: true,
                 currentWindow: true
             }, function(tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {
+                messageHandler.sendMessage(tabs[0].id, {
                     message: "changeStartSponsorButton",
                     showStartSponsor: true,
                     uploadButtonVisible: false
@@ -749,12 +769,12 @@ async function runThePopup() {
         //reset sponsorTimes
         sponsorTimes = [];
 
-		SB.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-            chrome.tabs.query({
+		Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+            messageHandler.query({
                 active: true,
                 currentWindow: true
             }, tabs => {
-                chrome.tabs.sendMessage(
+                messageHandler.sendMessage(
                     tabs[0].id,
                     {message: "sponsorDataChanged"}
                 );
@@ -770,8 +790,8 @@ async function runThePopup() {
   
     function submitTimes() {
         //make info message say loading
-        SB.submitTimesInfoMessage.innerText = chrome.i18n.getMessage("Loading");
-        SB.submitTimesInfoMessageContainer.style.display = "unset";
+        PageElements.submitTimesInfoMessage.innerText = chrome.i18n.getMessage("Loading");
+        PageElements.submitTimesInfoMessageContainer.style.display = "unset";
   
         if (sponsorTimes.length > 0) {
             chrome.runtime.sendMessage({
@@ -781,14 +801,14 @@ async function runThePopup() {
                 if (response != undefined) {
                     if (response.statusCode == 200) {
                         //hide loading message
-                        SB.submitTimesInfoMessageContainer.style.display = "none";
+                        PageElements.submitTimesInfoMessageContainer.style.display = "none";
 
                         clearTimes();
                     } else {
-                        document.getElementById("submitTimesInfoMessage").innerText = getErrorMessage(response.statusCode);
+                        document.getElementById("submitTimesInfoMessage").innerText = utils.getErrorMessage(response.statusCode);
                         document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
 
-                        SB.submitTimesInfoMessageContainer.style.display = "unset";
+                        PageElements.submitTimesInfoMessageContainer.style.display = "unset";
                     }
                 }
             });
@@ -796,16 +816,16 @@ async function runThePopup() {
     }
   
     function showNoticeAgain() {
-        SB.config.dontShowNotice = false;
+        Config.config.dontShowNotice = false;
   
-        SB.showNoticeAgain.style.display = "none";
+        PageElements.showNoticeAgain.style.display = "none";
     }
 
     function updateStartTimeChosen() {
         //update startTimeChosen letiable
         if (!startTimeChosen) {
             startTimeChosen = true;
-        SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
+            PageElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
         } else {
             resetStartTimeChosen();
         }
@@ -814,7 +834,7 @@ async function runThePopup() {
     //set it to false
     function resetStartTimeChosen() {
         startTimeChosen = false;
-        SB.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorStart");
+        PageElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorStart");
     }
   
     //hides and shows the submit times button when needed
@@ -836,51 +856,51 @@ async function runThePopup() {
 
     //make the options username setting option visible
     function setUsernameButton() {
-            //get username from the server
-            sendRequestToServer("GET", "/api/getUsername?userID=" + SB.config.userID, function (xmlhttp, error) {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    SB.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
+        //get username from the server
+        utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, function (xmlhttp, error) {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                PageElements.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
 
-                    SB.submitUsername.style.display = "unset";
-                    SB.usernameInput.style.display = "unset";
+                PageElements.submitUsername.style.display = "unset";
+                PageElements.usernameInput.style.display = "unset";
 
-                    SB.setUsernameContainer.style.display = "none";
-                    SB.setUsername.style.display = "unset";
-                    
-                    SB.setUsernameStatusContainer.style.display = "none";
-                } else if (xmlhttp.readyState == 4) {
-                    SB.setUsername.style.display = "unset";
-                    SB.submitUsername.style.display = "none";
-                    SB.usernameInput.style.display = "none";
+                PageElements.setUsernameContainer.style.display = "none";
+                PageElements.setUsername.style.display = "unset";
+                PageElements
+                PageElements.setUsernameStatusContainer.style.display = "none";
+            } else if (xmlhttp.readyState == 4) {
+                PageElements.setUsername.style.display = "unset";
+                PageElements.submitUsername.style.display = "none";
+                PageElements.usernameInput.style.display = "none";
 
-                    SB.setUsernameStatusContainer.style.display = "unset";
-                    SB.setUsernameStatus.innerText = getErrorMessage(xmlhttp.status);
-                }
-            });
+                PageElements.setUsernameStatusContainer.style.display = "unset";
+                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
+            }
+        });
     }
 
     //submit the new username
     function submitUsername() {
         //add loading indicator
-        SB.setUsernameStatusContainer.style.display = "unset";
-        SB.setUsernameStatus.innerText = "Loading...";
+        PageElements.setUsernameStatusContainer.style.display = "unset";
+        PageElements.setUsernameStatus.innerText = "Loading...";
 
         //get the userID
-            sendRequestToServer("POST", "/api/setUsername?userID=" + SB.config.userID + "&username=" + SB.usernameInput.value, function (xmlhttp, error) {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    //submitted
-                    SB.submitUsername.style.display = "none";
-                    SB.usernameInput.style.display = "none";
+        utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (xmlhttp, error) {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                //submitted
+                PageElements.submitUsername.style.display = "none";
+                PageElements.usernameInput.style.display = "none";
 
-                    SB.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
-                } else if (xmlhttp.readyState == 4) {
-                    SB.setUsernameStatus.innerText = getErrorMessageI(xmlhttp.status);
-                }
-            });
+                PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
+            } else if (xmlhttp.readyState == 4) {
+                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
+            }
+        });
 
 
-        SB.setUsernameContainer.style.display = "none";
-        SB.setUsername.style.display = "unset";
+        PageElements.setUsernameContainer.style.display = "none";
+        PageElements.setUsername.style.display = "unset";
     }
 
     //this is not a YouTube video page
@@ -890,7 +910,7 @@ async function runThePopup() {
   
     function reportAnIssue() {
         document.getElementById("issueReporterContainer").style.display = "unset";
-        SB.reportAnIssue.style.display = "none";
+        PageElements.reportAnIssue.style.display = "none";
     }
   
     function addVoteMessage(message, UUID) {
@@ -927,22 +947,23 @@ async function runThePopup() {
                     //failure: duplicate vote
                     addVoteMessage(chrome.i18n.getMessage("voteFail"), UUID)
                 } else if (response.successType == -1) {
-                    addVoteMessage(getErrorMessage(response.statusCode), UUID)
+                    addVoteMessage(utils.getErrorMessage(response.statusCode), UUID)
                 }
             }
         });
     }
   
     function hideDiscordButton() {
-        SB.config.hideDiscordLink = true;
-        SB.discordButtonContainer.style.display = "none";
+        Config.config.hideDiscordLink = true;
+        PageElements.discordButtonContainer.style.display = "none";
     }
   
     //converts time in seconds to minutes:seconds
     function getFormattedTime(seconds) {
         let minutes = Math.floor(seconds / 60);
-        let secondsDisplay = Math.round(seconds - minutes * 60);
-        if (secondsDisplay < 10) {
+        let secondsDisplayNumber = Math.round(seconds - minutes * 60);
+        let secondsDisplay = String(secondsDisplayNumber);
+        if (secondsDisplayNumber < 10) {
             //add a zero
             secondsDisplay = "0" + secondsDisplay;
         }
@@ -954,16 +975,16 @@ async function runThePopup() {
 
     function whitelistChannel() {
         //get the channel url
-        chrome.tabs.query({
+        messageHandler.query({
             active: true,
             currentWindow: true
         }, tabs => {
-            chrome.tabs.sendMessage(
+            messageHandler.sendMessage(
                 tabs[0].id,
                 {message: 'getChannelURL'},
                 function(response) {
                     //get whitelisted channels
-                        let whitelistedChannels = SB.config.whitelistedChannels;
+                        let whitelistedChannels = Config.config.whitelistedChannels;
                         if (whitelistedChannels == undefined) {
                             whitelistedChannels = [];
                         }
@@ -972,21 +993,21 @@ async function runThePopup() {
                         whitelistedChannels.push(response.channelURL);
 
                         //change button
-                        SB.whitelistChannel.style.display = "none";
-                        SB.unwhitelistChannel.style.display = "unset";
+                        PageElements.whitelistChannel.style.display = "none";
+                        PageElements.unwhitelistChannel.style.display = "unset";
 
-                        SB.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                        SB.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+                        PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
+                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
 
                         //save this
-                        SB.config.whitelistedChannels = whitelistedChannels;
+                        Config.config.whitelistedChannels = whitelistedChannels;
 
                         //send a message to the client
-                        chrome.tabs.query({
+                        messageHandler.query({
                             active: true,
                             currentWindow: true
                         }, tabs => {
-                            chrome.tabs.sendMessage(
+                            messageHandler.sendMessage(
                                 tabs[0].id, {
                                     message: 'whitelistChange',
                                     value: true
@@ -1000,16 +1021,16 @@ async function runThePopup() {
 
     function unwhitelistChannel() {
         //get the channel url
-        chrome.tabs.query({
+        messageHandler.query({
             active: true,
             currentWindow: true
         }, tabs => {
-            chrome.tabs.sendMessage(
+            messageHandler.sendMessage(
                 tabs[0].id,
                 {message: 'getChannelURL'},
                 function(response) {
                     //get whitelisted channels
-                        let whitelistedChannels = SB.config.whitelistedChannels;
+                        let whitelistedChannels = Config.config.whitelistedChannels;
                         if (whitelistedChannels == undefined) {
                             whitelistedChannels = [];
                         }
@@ -1019,21 +1040,21 @@ async function runThePopup() {
                         whitelistedChannels.splice(index, 1);
 
                         //change button
-                        SB.whitelistChannel.style.display = "unset";
-                        SB.unwhitelistChannel.style.display = "none";
+                        PageElements.whitelistChannel.style.display = "unset";
+                        PageElements.unwhitelistChannel.style.display = "none";
 
-                        SB.downloadedSponsorMessageTimes.innerText = "";
-                        SB.downloadedSponsorMessageTimes.style.fontWeight = "unset";
+                        PageElements.downloadedSponsorMessageTimes.innerText = "";
+                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "unset";
 
                         //save this
-                        SB.config.whitelistedChannels = whitelistedChannels;
+                        Config.config.whitelistedChannels = whitelistedChannels;
 
                         //send a message to the client
-                        chrome.tabs.query({
+                        messageHandler.query({
                             active: true,
                             currentWindow: true
                         }, tabs => {
-                            chrome.tabs.sendMessage(
+                            messageHandler.sendMessage(
                                 tabs[0].id, {
                                     message: 'whitelistChange',
                                     value: false
@@ -1049,14 +1070,14 @@ async function runThePopup() {
      * Should skipping be disabled (visuals stay)
      */
     function toggleSkipping(disabled) {
-		SB.config.disableSkipping = disabled;
+		Config.config.disableSkipping = disabled;
 
-        let hiddenButton = SB.disableSkipping;
-        let shownButton = SB.enableSkipping;
+        let hiddenButton = PageElements.disableSkipping;
+        let shownButton = PageElements.enableSkipping;
 
         if (!disabled) {
-            hiddenButton = SB.enableSkipping;
-            shownButton = SB.disableSkipping;
+            hiddenButton = PageElements.enableSkipping;
+            shownButton = PageElements.disableSkipping;
         }
 
         shownButton.style.display = "unset";
@@ -1072,34 +1093,16 @@ async function runThePopup() {
   
     //converts time in seconds to seconds past the last minute
     function getTimeInFormattedSeconds(seconds) {
-        let secondsFormatted = (seconds % 60).toFixed(3);
+        let minutes = seconds % 60;
+        let secondsFormatted = minutes.toFixed(3);
   
-        if (secondsFormatted < 10) {
+        if (minutes < 10) {
             secondsFormatted = "0" + secondsFormatted;
         }
   
         return secondsFormatted;
     }
   
-    function sendRequestToServer(type, address, callback) {
-        let xmlhttp = new XMLHttpRequest();
-  
-        xmlhttp.open(type, serverAddress + address, true);
-  
-        if (callback != undefined) {
-            xmlhttp.onreadystatechange = function () {
-                callback(xmlhttp, false);
-            };
-    
-            xmlhttp.onerror = function(ev) {
-                callback(xmlhttp, true);
-            };
-        }
-  
-        //submit this request
-        xmlhttp.send();
-    }
-
     /**
      * Converts time in hours to 5h 25.1
      * If less than 1 hour, just returns minutes
@@ -1117,7 +1120,11 @@ async function runThePopup() {
 
 if (chrome.tabs != undefined) {
     //add the width restriction (because Firefox)
-    document.getElementById("sponorBlockStyleSheet").sheet.insertRule('.popupBody { width: 325 }', 0);
+    let link = <HTMLLinkElement> document.getElementById("sponsorBlockStyleSheet");
+    (<CSSStyleSheet> link.sheet).insertRule('.popupBody { width: 325 }', 0);
+
     //this means it is actually opened in the popup
     runThePopup();
 }
+
+export default runThePopup;
