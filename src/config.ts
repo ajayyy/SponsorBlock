@@ -24,7 +24,8 @@ interface SBConfig {
     autoUpvote: boolean,
     supportInvidious: boolean,
     serverAddress: string,
-    minDuration: number
+    minDuration: number,
+    checkForUnlistedVideos: boolean
 }
 
 interface SBObject {
@@ -119,7 +120,8 @@ var Config: SBObject = {
         autoUpvote: true,
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
-        minDuration: 0
+        minDuration: 0,
+        checkForUnlistedVideos: false
     },
     localConfig: null,
     config: null
