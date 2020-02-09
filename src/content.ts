@@ -367,7 +367,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             UUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
 
             for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i][1] - sponsorTimes[i][0] < SB.config.minDuration) {
+                if (sponsorTimes[i][1] - sponsorTimes[i][0] < Config.config.minDuration) {
                     sponsorTimes.splice(i, 1);
                     UUIDs.splice(i, 1);
                 }
@@ -1014,7 +1014,7 @@ function submitSponsorTimes() {
         sponsorTimesSubmitting = sponsorTimes;
 
         for (let i = 0; i < sponsorTimes.length; i++) {
-            if (sponsorTimes[i][1] - sponsorTimes[i][0] < SB.config.minDuration) {
+            if (sponsorTimes[i][1] - sponsorTimes[i][0] < Config.config.minDuration) {
                 let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
                 if(!confirm(confirmShort)) return;
                 break;

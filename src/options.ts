@@ -77,19 +77,19 @@ async function init() {
                 break;
             case "number-change":
                 let numberChangeOption = optionsElements[i].getAttribute("sync-option");
-                let configValue = SB.config[numberChangeOption];
+                let configValue = Config.config[numberChangeOption];
                 let numberInput = optionsElements[i].querySelector("input");
 
                 if (isNaN(configValue) || configValue < 0) {
-                    numberInput.value = SB.defaults[numberChangeOption];
+                    numberInput.value = Config.defaults[numberChangeOption];
                 } else {
                     numberInput.value = configValue;
                 }
 
                 numberInput.addEventListener("input", () => {
-                    SB.config[numberChangeOption] = numberInput.value;
+                    Config.config[numberChangeOption] = numberInput.value;
                 });
-                
+
                 break;
         }
     }
