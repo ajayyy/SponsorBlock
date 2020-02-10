@@ -38,7 +38,7 @@ class MessageHandler {
 
 //make this a function to allow this to run on the content page
 async function runThePopup(messageListener?: MessageListener) {
-    var messageHandler = new MessageHandler();
+    var messageHandler = new MessageHandler(messageListener);
 
     utils.localizeHtmlPage();
 
