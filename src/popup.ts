@@ -656,9 +656,9 @@ async function runThePopup(messageListener?: MessageListener) {
                 tabs[0].id,
                 {message: "getCurrentTime"},
                 function (response) {
-                    let minutes =  <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
+                    let minutes = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
                     let seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
-    
+
                     minutes.value = String(getTimeInMinutes(response.currentTime));
                     seconds.value = getTimeInFormattedSeconds(response.currentTime);
                 });
@@ -667,11 +667,11 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //id start name is whether it is the startTime or endTime
     //gives back the time in seconds
-    function getSponsorTimeEditTimes(idStartName, index) {
+    function getSponsorTimeEditTimes(idStartName, index): number {
         let minutes = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
         let seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
 
-        return parseInt(minutes.value) * 60 + seconds.value;
+        return parseInt(minutes.value) * 60 + parseInt(seconds.value);
     }
   
     function saveSponsorTimeEdit(index, closeEditMode = true) {
@@ -679,16 +679,17 @@ async function runThePopup(messageListener?: MessageListener) {
         sponsorTimes[index][1] = getSponsorTimeEditTimes("endTime", index);
   
         //save this
-		Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-            messageHandler.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
-                messageHandler.sendMessage(
-                    tabs[0].id,
-                    {message: "sponsorDataChanged"}
-                );
-            });
+        Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+        
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                {message: "sponsorDataChanged"}
+            );
+        });
   
         if (closeEditMode) {
             displaySponsorTimes();
@@ -968,7 +969,7 @@ async function runThePopup(messageListener?: MessageListener) {
             secondsDisplay = "0" + secondsDisplay;
         }
   
-        let formatted = minutes+ ":" + secondsDisplay;
+        let formatted = minutes + ":" + secondsDisplay;
   
         return formatted;
     }
