@@ -27,7 +27,7 @@ var hiddenSponsorTimes = [];
 var sponsorSkipped = [];
 
 //the video
-var v;
+var video: HTMLVideoElement;
 
 var onInvidious;
 
@@ -85,7 +85,7 @@ var skipNoticeContentContainer = () => ({
     unskipSponsorTime,
     sponsorTimes,
     UUIDs,
-    v,
+    v: video,
     reskipSponsorTime,
     hiddenSponsorTimes,
     updatePreviewBar
@@ -132,16 +132,22 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             break;
         case "getVideoDuration":
             sendResponse({
-                duration: v.duration
+                duration: video.duration
             });
 
             break;
         case "skipToTime":
-            v.currentTime = request.time;
+            video.currentTime = request.time;
+
+            // Unpause the video if needed
+            if (video.paused){
+                video.play();
+            }
+
             return
         case "getCurrentTime":
             sendResponse({
-                currentTime: v.currentTime
+                currentTime: video.currentTime
             });
 
             break;
@@ -346,9 +352,9 @@ async function videoIDChange(id) {
 
 function sponsorsLookup(id: string, channelIDPromise?) {
 
-    v = document.querySelector('video') // Youtube video player
+    video = document.querySelector('video') // Youtube video player
     //there is no video here
-    if (v == null) {
+    if (video == null) {
         setTimeout(() => sponsorsLookup(id, channelIDPromise), 100);
         return;
     }
@@ -357,7 +363,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
         durationListenerSetUp = true;
 
         //wait until it is loaded
-        v.addEventListener('durationchange', updatePreviewBar);
+        video.addEventListener('durationchange', updatePreviewBar);
     }
 
     if (channelIDPromise !== undefined) {
@@ -415,7 +421,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
 
             //update the preview bar
             //leave the type blank for now until categories are added
-            if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(v.duration))) {
+            if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
                 //set it now
                 //otherwise the listener can handle it
                 updatePreviewBar();
@@ -453,7 +459,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
 
     //add the event to run on the videos "ontimeupdate"
     if (!Config.config.disableSkipping) {
-        v.ontimeupdate = function () { 
+        video.ontimeupdate = function () { 
             sponsorCheck();
         };
     }
@@ -568,7 +574,7 @@ function updatePreviewBar() {
         types.push("previewSponsor");
     }
 
-    utils.wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, v.duration));
+    utils.wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, video.duration));
 
     //update last video id
     lastPreviewBarUpdate = sponsorVideoID;
@@ -588,7 +594,7 @@ function whitelistCheck() {
 function sponsorCheck() {
     if (Config.config.disableSkipping) {
         // Make sure this isn't called again
-        v.ontimeupdate = null;
+        video.ontimeupdate = null;
         return;
     } else if (channelWhitelisted) {
         return;
@@ -619,20 +625,20 @@ function sponsorCheck() {
 
     //don't keep track until they are loaded in
     if (sponsorTimes !== null || sponsorTimesSubmitting.length > 0) {
-        lastTime = v.currentTime;
+        lastTime = video.currentTime;
     }
 }
 
 function checkSponsorTime(sponsorTimes, index, openNotice): boolean {
     //this means part of the video was just skipped
-    if (Math.abs(v.currentTime - lastTime) > 1 && lastTime != -1) {
+    if (Math.abs(video.currentTime - lastTime) > 1 && lastTime != -1) {
         //make lastTime as if the video was playing normally
-        lastTime = v.currentTime - 0.0001;
+        lastTime = video.currentTime - 0.0001;
     }
 
-    if (checkIfTimeToSkip(v.currentTime, sponsorTimes[index][0], sponsorTimes[index][1]) && !hiddenSponsorTimes.includes(index)) {
+    if (checkIfTimeToSkip(video.currentTime, sponsorTimes[index][0], sponsorTimes[index][1]) && !hiddenSponsorTimes.includes(index)) {
         //skip it
-        skipToTime(v, index, sponsorTimes, openNotice);
+        skipToTime(video, index, sponsorTimes, openNotice);
 
         //something was skipped
         return true;
@@ -690,14 +696,14 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 function unskipSponsorTime(UUID) {
     if (sponsorTimes != null) {
         //add a tiny bit of time to make sure it is not skipped again
-        v.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][0] + 0.001;
+        video.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][0] + 0.001;
     }
 }
 
 function reskipSponsorTime(UUID) {
     if (sponsorTimes != null) {
         //add a tiny bit of time to make sure it is not skipped again
-        v.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][1];
+        video.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][1];
     }
 }
 
@@ -786,7 +792,7 @@ function startSponsorClicked() {
     //send back current time with message
     chrome.runtime.sendMessage({
         message: "addSponsorTime",
-        time: v.currentTime,
+        time: video.currentTime,
         videoID: sponsorVideoID
     }, function(response) {
         //see if the sponsorTimesSubmitting needs to be updated
@@ -1012,11 +1018,11 @@ function dontShowNoticeAgain() {
 }
 
 function sponsorMessageStarted(callback) {
-    v = document.querySelector('video');
+    video = document.querySelector('video');
 
     //send back current time
     callback({
-        time: v.currentTime
+        time: video.currentTime
     })
 
     //update button
@@ -1039,8 +1045,8 @@ function submitSponsorTimes() {
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
         //check if a sponsor exceeds the duration of the video
         for (let i = 0; i < sponsorTimes.length; i++) {
-            if (sponsorTimes[i][1] > v.duration) {
-                sponsorTimes[i][1] = v.duration;
+            if (sponsorTimes[i][1] > video.duration) {
+                sponsorTimes[i][1] = video.duration;
             }
         }
         //update sponsorTimes
