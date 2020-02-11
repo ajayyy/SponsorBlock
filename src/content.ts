@@ -446,7 +446,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             //use the invidious api to get the time published
             sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + id, function(xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    let decodedData = decodeURIComponent(xmlhttp.responseText).match(/(?<=player_response=)[^&]*/)[0];
+                    let decodedData = decodeURIComponent(xmlhttp.responseText).match(/player_response=([^&]*)/)[1];
 
                     if (decodedData === undefined) {
                         console.error("[SB] Failed at getting video upload date info from YouTube.");
