@@ -444,12 +444,19 @@ function sponsorsLookup(id: string, channelIDPromise?) {
 
             //check if this video was uploaded recently
             //use the invidious api to get the time published
-            sendRequestToCustomServer('GET', "https://invidio.us/api/v1/videos/" + id + '?fields=published', function(xmlhttp, error) {
+            sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + id, function(xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    let unixTimePublished = JSON.parse(xmlhttp.responseText).published;
+                    let decodedData = decodeURIComponent(xmlhttp.responseText).match(/(?<=player_response=)[^&]*/)[0];
+
+                    if (decodedData === undefined) {
+                        console.error("[SB] Failed at getting video upload date info from YouTube.");
+                        return;
+                    }
+
+                    let dateUploaded = JSON.parse(decodedData).microformat.playerMicroformatRenderer.uploadDate;
 
                     //if less than 3 days old
-                    if ((Date.now() / 1000) - unixTimePublished < 259200) {
+                    if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
                         //TODO lower when server becomes better
                         setTimeout(() => sponsorsLookup(id, channelIDPromise), 180000);
                     }

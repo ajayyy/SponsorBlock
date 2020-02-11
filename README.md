@@ -68,7 +68,7 @@ The result is in `dist`.
 
 # Credit
 
-The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) is used to grab the time the video was published.
+The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) used to be used.
 
 Original code from [YTSponsorSkip](https://github.com/OfficialNoob/YTSponsorSkip), but not much of the code is left.
 
