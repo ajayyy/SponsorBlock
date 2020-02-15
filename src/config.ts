@@ -84,10 +84,6 @@ class SBMap<T, U> extends Map {
 
         return result;
     }
-
-    toJSON() {
-        return Array.from(this.entries());
-    }
 }
 
 var Config: SBObject = {
@@ -130,7 +126,7 @@ var Config: SBObject = {
 
 /**
  * A SBMap cannot be stored in the chrome storage. 
- * This data will be encoded into an array instead as specified by the toJSON function.
+ * This data will be encoded into an array instead
  * 
  * @param data 
  */
@@ -151,26 +147,24 @@ function decodeStoredItem(id: string, data) {
 
     if (Config.defaults[id] instanceof SBMap) {
         try {
-            if (!Array.isArray(data)) return data;
-            return new SBMap(id, data);
-        } catch(e) {
-            console.error("Failed to parse SBMap: "+ id);
-        }
-    }
+            let jsonData: any = data;
 
-    // This is the old format for SBMap (a JSON string)
-    if (typeof data === "string") {
-        try {	
-            let str = JSON.parse(data);	   
-
-            if (Array.isArray(data)) {
-                return new SBMap(id, str);
+            // Check if data is stored in the old format for SBMap (a JSON string)
+            if (typeof data === "string") {
+                try {	
+                    jsonData = JSON.parse(data);	   
+                } catch(e) {
+                    // Continue normally (out of this if statement)
+                }
             }
+
+            if (!Array.isArray(jsonData)) return data;
+            return new SBMap(id, jsonData);
         } catch(e) {
-            // Continue normally (out of this if statement)
+            console.error("Failed to parse SBMap: " + id);
         }
     }
-    
+
     // If all else fails, return the data
     return data;
 }
