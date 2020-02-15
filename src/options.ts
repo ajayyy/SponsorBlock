@@ -1,4 +1,6 @@
 import Config from "./config";
+// Make the config public for debugging purposes
+(<any> window).SB = Config;
 
 import Utils from "./utils";
 var utils = new Utils();
