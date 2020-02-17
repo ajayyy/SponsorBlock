@@ -30,6 +30,7 @@ var sponsorSkipped = [];
 var video: HTMLVideoElement;
 
 var onInvidious;
+var onMobileYouTube;
 
 //the video id of the last preview bar update
 var lastPreviewBarUpdate;
@@ -47,7 +48,7 @@ var title;
 var channelWhitelisted = false;
 
 // create preview bar
-var previewBar = null;
+var previewBar: PreviewBar = null;
 
 // When not null, a sponsor is currently being previewed and auto skip should be enabled.
 // This is set to a timeout function when that happens that will reset it after 3 seconds.
@@ -255,7 +256,7 @@ async function videoIDChange(id) {
     sponsorVideoID = id;
 
     resetValues();
-    
+
 	//id is not valid
     if (!id) return;
 
@@ -278,26 +279,19 @@ async function videoIDChange(id) {
     channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
 
     //setup the preview bar
-    if (previewBar == null) {
-        //create it
-        utils.wait(getControls).then(result => {
-            const progressElementSelectors = [
-                // For YouTube
-                "ytp-progress-bar-container",
-                "no-model cue-range-markers",
-                // For Invidious/VideoJS
-                "vjs-progress-holder"
-            ];
+    if (previewBar === null) {
+        if (onMobileYouTube) {
+            // Mobile YouTube workaround
+            const observer = new MutationObserver(handleMobileControlsMutations);
 
-            for (const selector of progressElementSelectors) {
-                const el = document.getElementsByClassName(selector);
-
-                if (el && el.length && el[0]) {
-                    previewBar = new PreviewBar(el[0]);
-                    break;
-                }
-            }
-        });
+            observer.observe(document.getElementById("player-control-container"), { 
+                attributes: true, 
+                childList: true, 
+                subtree: true 
+            });
+        } else {
+            utils.wait(getControls).then(createPreviewBar);
+        }
     }
 
     //warn them if they had unsubmitted times
@@ -358,6 +352,56 @@ async function videoIDChange(id) {
     //see if video controls buttons should be added
     if (!onInvidious) {
         updateVisibilityOfPlayerControlsButton();
+    }
+}
+
+function handleMobileControlsMutations(): void {
+    let mobileYouTubeSelector = ".progress-bar-background";
+
+    if (previewBar !== null) {
+        if (document.body.contains(previewBar.container)) {
+            updatePreviewBarPositionMobile(document.getElementsByClassName(mobileYouTubeSelector)[0]);
+
+            return;
+        } else {
+            // The container does not exist anymore, remove that old preview bar
+            previewBar.remove();
+            previewBar = null;
+        }
+    }
+
+    // Create the preview bar if needed (the function hasn't returned yet)
+    createPreviewBar();
+}
+
+/**
+ * Creates a preview bar on the video
+ */
+function createPreviewBar(): void {
+    if (previewBar !== null) return;
+
+    const progressElementSelectors = [
+        // For mobile YouTube
+        ".progress-bar-background",
+        // For YouTube
+        ".ytp-progress-bar-container",
+        ".no-model.cue-range-markers",
+        // For Invidious/VideoJS
+        ".vjs-progress-holder"
+    ];
+
+    for (const selector of progressElementSelectors) {
+        const el = document.querySelectorAll(selector);
+
+        if (el && el.length && el[0]) {
+            console.log(selector)
+
+            previewBar = new PreviewBar(el[0], onMobileYouTube);
+            
+            updatePreviewBar();
+
+            break;
+        }
     }
 }
 
@@ -499,6 +543,8 @@ function getYouTubeVideoID(url: string) {
     // Check if valid hostname
     if (Config.config && Config.config.invidiousInstances.includes(urlObject.host)) {
         onInvidious = true;
+    } else if (urlObject.host === "m.youtube.com") {
+        onMobileYouTube = true;
     } else if (!["m.youtube.com", "www.youtube.com", "www.youtube-nocookie.com"].includes(urlObject.host)) {
         if (!Config.config) {
             // Call this later, in case this is an Invidious tab
@@ -570,6 +616,15 @@ function getChannelID() {
 
     //reset variables
     channelWhitelisted = false;
+}
+
+/**
+ * This function is required on mobile YouTube and will keep getting called whenever the preview bar disapears
+ */
+async function updatePreviewBarPositionMobile(parent: Element) {
+    if (document.getElementById("previewbar") === null) {
+        previewBar.updatePosition(parent);
+    }
 }
 
 function updatePreviewBar() {
@@ -750,16 +805,25 @@ function createButton(baseID, title, callback, imageName, isDraggable=false) {
     controls.prepend(newButton);
 }
 
-function getControls() {
-    let controls = document.getElementsByClassName("ytp-right-controls");
+function getControls(): HTMLElement | boolean {
+    let controlsSelectors = [
+        // YouTube
+        ".ytp-right-controls",
+        // Mobile YouTube
+        "#player-control-overlay",
+        // Invidious/videojs video element's controls element
+        ".vjs-control-bar"
+    ]
 
-    if (!controls || controls.length === 0) {
-        // The invidious video element's controls element
-        controls = document.getElementsByClassName("vjs-control-bar");
-        return (!controls || controls.length === 0) ? false : controls[controls.length - 1];
-    } else {
-        return controls[controls.length - 1];
+    for (const controlsSelector of controlsSelectors) {
+        let controls = document.querySelectorAll(controlsSelector);
+
+        if (controls && controls.length > 0) {
+            return <HTMLElement> controls[controls.length - 1];
+        }
     }
+
+    return false;
 };
 
 //adds all the player controls buttons
@@ -782,7 +846,7 @@ async function updateVisibilityOfPlayerControlsButton() {
 
     await createButtons();
 	
-    if (Config.config.hideVideoPlayerControls || onInvidious) {
+    if (Config.config.hideVideoPlayerControls || onInvidious || onMobileYouTube) {
         document.getElementById("startSponsorButton").style.display = "none";
         document.getElementById("submitButton").style.display = "none";
     } else {
@@ -790,13 +854,13 @@ async function updateVisibilityOfPlayerControlsButton() {
     }
 
     //don't show the info button on embeds
-    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
+    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious || onMobileYouTube) {
         document.getElementById("infoButton").style.display = "none";
     } else {
         document.getElementById("infoButton").style.removeProperty("display");
     }
     
-    if (Config.config.hideDeleteButtonPlayerControls || onInvidious) {
+    if (Config.config.hideDeleteButtonPlayerControls || onInvidious || onMobileYouTube) {
         document.getElementById("deleteButton").style.display = "none";
     }
 }
@@ -848,7 +912,7 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     await utils.wait(isSubmitButtonLoaded);
     
     //if it isn't visible, there is no data
-    let shouldHide = (uploadButtonVisible && !(Config.config.hideDeleteButtonPlayerControls || onInvidious)) ? "unset" : "none"
+    let shouldHide = (uploadButtonVisible && !(Config.config.hideDeleteButtonPlayerControls || onInvidious || onMobileYouTube)) ? "unset" : "none"
     document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {

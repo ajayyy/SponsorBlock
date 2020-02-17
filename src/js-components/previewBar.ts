@@ -23,18 +23,28 @@ let barTypes = {
 class PreviewBar {
 	container: HTMLUListElement;
 	parent: any;
+	onMobileYouTube: boolean;
 
-	constructor(parent) {
+	constructor(parent, onMobileYouTube) {
 		this.container = document.createElement('ul');
 		this.container.id = 'previewbar';
 		this.parent = parent;
 
-		this.updatePosition();
+		this.onMobileYouTube = onMobileYouTube;
+
+		this.updatePosition(parent);
 	}
 
-	updatePosition() {
+	updatePosition(parent) {
 		//below the seek bar
 		// this.parent.insertAdjacentElement("afterEnd", this.container);
+
+		this.parent = parent;
+
+		if (this.onMobileYouTube) {
+			parent.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+			parent.style.opacity = "1";
+		}
 		
 		//on the seek bar
 		this.parent.insertAdjacentElement("afterBegin", this.container);
@@ -70,7 +80,7 @@ class PreviewBar {
 			bar.setAttribute('data-vs-segment-type', types[i]);
 
 			bar.style.backgroundColor = barTypes[types[i]].color;
-			bar.style.opacity = barTypes[types[i]].opacity;
+			if (!this.onMobileYouTube) bar.style.opacity = barTypes[types[i]].opacity;
 			bar.style.width = width + '%';
 			bar.style.left = (timestamps[i][0] / duration * 100) + "%";
 			bar.style.position = "absolute"
