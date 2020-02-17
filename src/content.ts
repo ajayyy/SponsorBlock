@@ -499,7 +499,7 @@ function getYouTubeVideoID(url: string) {
     // Check if valid hostname
     if (Config.config && Config.config.invidiousInstances.includes(urlObject.host)) {
         onInvidious = true;
-    } else if (!["www.youtube.com", "www.youtube-nocookie.com"].includes(urlObject.host)) {
+    } else if (!["m.youtube.com", "www.youtube.com", "www.youtube-nocookie.com"].includes(urlObject.host)) {
         if (!Config.config) {
             // Call this later, in case this is an Invidious tab
             utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoID(url)));
