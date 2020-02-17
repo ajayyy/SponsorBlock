@@ -671,7 +671,7 @@ async function runThePopup(messageListener?: MessageListener) {
         let minutes = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
         let seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
 
-        return parseInt(minutes.value) * 60 + parseInt(seconds.value);
+        return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
     }
   
     function saveSponsorTimeEdit(index, closeEditMode = true) {
