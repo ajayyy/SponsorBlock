@@ -21,7 +21,7 @@ jobs:
         run: npm run build:chrome
       - uses: actions/upload-artifact@v1
         with:
-          name: Chrome Extension
+          name: ChromeExtension
           path: dist
 
       # Create Firefox artifacts
@@ -29,6 +29,6 @@ jobs:
         run: npm run build:firefox
       - uses: actions/upload-artifact@v1
         with:
-          name: Firefox Extension
+          name: FirefoxExtension
           path: dist
 
