@@ -95,7 +95,8 @@ var skipNoticeContentContainer = () => ({
     v: video,
     reskipSponsorTime,
     hiddenSponsorTimes,
-    updatePreviewBar
+    updatePreviewBar,
+    onMobileYouTube
 });
 
 //get messages from the background script and the popup
