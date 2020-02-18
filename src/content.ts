@@ -540,6 +540,14 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                     break;
                 }
             }
+            if (!zeroSecondSponsor) {
+                for (const time of sponsorTimesSubmitting) {
+                    if (time[0] <= 0) {
+                        zeroSecondSponsor = true;
+                        break;
+                    }
+                }
+            }
 
             if (zeroSecondSponsor) {
                 startSponsorSchedule(0);
