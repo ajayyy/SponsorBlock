@@ -435,17 +435,19 @@ function cancelSponsorSchedule(): void {
 function startSponsorSchedule(currentTime?: number): void {
     cancelSponsorSchedule();
 
-    if (Config.config.disableSkipping || sponsorTimes === null) return;
+    if (sponsorTimes === null || Config.config.disableSkipping || channelWhitelisted){
+        return;
+    }
 
     if (currentTime === undefined) currentTime = video.currentTime;
 
     let skipInfo = getNextSkipIndex(currentTime);
 
-    let skipStartTime = skipInfo.array[skipInfo.index][0];
-    let timeUntilSponsor = skipStartTime - currentTime;
+    let skipTime = skipInfo.array[skipInfo.index];
+    let timeUntilSponsor = skipTime[0] - currentTime;
 
     currentSkipSchedule = setTimeout(() => {
-        if (video.currentTime >= skipStartTime) {
+        if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
 
             startSponsorSchedule();
