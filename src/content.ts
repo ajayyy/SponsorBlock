@@ -37,6 +37,8 @@ var lastPreviewBarUpdate;
 
 //whether the duration listener listening for the duration changes of the video has been setup yet
 var durationListenerSetUp = false;
+// Timestamp of the last duration change
+var lastDurationChange = 0;
 
 //the channel this video is about
 var channelURL;
@@ -403,8 +405,17 @@ function createPreviewBar(): void {
     }
 }
 
-function sponsorsLookup(id: string, channelIDPromise?) {
+/**
+ * Triggered every time the video duration changes.
+ * This happens when the resolution changes or at random time to clear memory.
+ */
+function durationChangeListener() {
+    lastDurationChange = Date.now();
 
+    updatePreviewBar();
+}
+
+function sponsorsLookup(id: string, channelIDPromise?) {
     video = document.querySelector('video') // Youtube video player
     //there is no video here
     if (video == null) {
@@ -416,7 +427,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
         durationListenerSetUp = true;
 
         //wait until it is loaded
-        video.addEventListener('durationchange', updatePreviewBar);
+        video.addEventListener('durationchange', durationChangeListener);
     }
 
     if (channelIDPromise !== undefined) {
@@ -670,6 +681,9 @@ function sponsorCheck() {
     } else if (channelWhitelisted) {
         return;
     }
+
+    // Don't skip right after duration change (the time resets to zero) 400ms
+    if (Date.now() - lastDurationChange < 400000 && lastTime > 1) return;
 
     let skipHappened = false;
 
