@@ -394,8 +394,6 @@ function createPreviewBar(): void {
         const el = document.querySelectorAll(selector);
 
         if (el && el.length && el[0]) {
-            console.log(selector)
-
             previewBar = new PreviewBar(el[0], onMobileYouTube);
             
             updatePreviewBar();
