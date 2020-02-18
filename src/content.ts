@@ -435,7 +435,7 @@ function cancelSponsorSchedule(): void {
 function startSponsorSchedule(currentTime?: number): void {
     cancelSponsorSchedule();
 
-    if (Config.config.disableSkipping) return;
+    if (Config.config.disableSkipping || sponsorTimes === null) return;
 
     if (currentTime === undefined) currentTime = video.currentTime;
 
@@ -737,13 +737,24 @@ function getNextSkipIndex(currentTime: number): {array: number[][], index: numbe
 
     let minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
 
-    // TOOD: support preview sponsors
+    let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting);
+    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, currentTime, false);
 
-    return {
-        array: sponsorTimes,
-        index: minSponsorTimeIndex,
-        openNotice: true
-    };
+    let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
+
+    if (minPreviewSponsorTimeIndex == -1 || sponsorStartTimes[minSponsorTimeIndex] < previewSponsorStartTimes[minPreviewSponsorTimeIndex]) {
+        return {
+            array: sponsorTimes,
+            index: minSponsorTimeIndex,
+            openNotice: true
+        };
+    } else {
+        return {
+            array: sponsorTimesSubmitting,
+            index: minPreviewSponsorTimeIndex,
+            openNotice: false
+        };
+    }
 }
 
 /**
