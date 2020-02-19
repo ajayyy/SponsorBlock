@@ -44,6 +44,8 @@ class PreviewBar {
 		if (this.onMobileYouTube) {
 			parent.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
 			parent.style.opacity = "1";
+			
+			this.container.style.transform = "none";
 		}
 		
 		//on the seek bar
