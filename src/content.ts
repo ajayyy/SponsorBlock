@@ -440,13 +440,15 @@ function cancelSponsorSchedule(): void {
 function startSponsorSchedule(currentTime?: number): void {
     cancelSponsorSchedule();
 
-    if (sponsorTimes === null || Config.config.disableSkipping || channelWhitelisted){
+    if (Config.config.disableSkipping || channelWhitelisted){
         return;
     }
 
     if (currentTime === undefined) currentTime = video.currentTime;
 
     let skipInfo = getNextSkipIndex(currentTime);
+
+    if (skipInfo.index === -1) return;
 
     let skipTime = skipInfo.array[skipInfo.index];
     let timeUntilSponsor = skipTime[0] - currentTime;
@@ -489,6 +491,8 @@ function sponsorsLookup(id: string, channelIDPromise?) {
         video.addEventListener('ratechange', () => startSponsorSchedule());
         video.addEventListener('seeking', cancelSponsorSchedule);
         video.addEventListener('pause', cancelSponsorSchedule);
+
+        startSponsorSchedule();
     }
 
     if (channelIDPromise !== undefined) {
@@ -763,7 +767,8 @@ function getNextSkipIndex(currentTime: number): {array: number[][], index: numbe
 
     let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
 
-    if (minPreviewSponsorTimeIndex == -1 || sponsorStartTimes[minSponsorTimeIndex] < previewSponsorStartTimes[minPreviewSponsorTimeIndex]) {
+    if ((minPreviewSponsorTimeIndex === -1 && minSponsorTimeIndex !== -1) || 
+            sponsorStartTimes[minSponsorTimeIndex] < previewSponsorStartTimes[minPreviewSponsorTimeIndex]) {
         return {
             array: sponsorTimes,
             index: minSponsorTimeIndex,
@@ -787,6 +792,8 @@ function getNextSkipIndex(currentTime: number): {array: number[][], index: numbe
  * @param hideHiddenSponsors
  */
 function getStartTimes(sponsorTimes: number[][], minimum?: number, hideHiddenSponsors: boolean = false): number[] {
+    if (sponsorTimes === null) return [];
+
     let startTimes: number[] = [];
 
     for (let i = 0; i < sponsorTimes.length; i++) {
