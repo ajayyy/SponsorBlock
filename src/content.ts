@@ -454,11 +454,9 @@ function startSponsorSchedule(currentTime?: number): void {
     let skippingFunction = () => {
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
-
-            startSponsorSchedule();
-        } else {
-            startSponsorSchedule();
         }
+
+        startSponsorSchedule();
     };
 
     if (timeUntilSponsor <= 0) {
