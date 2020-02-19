@@ -70,6 +70,12 @@ utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYo
 //this only happens if there is an error
 var sponsorLookupRetries = 0;
 
+//the last time in the video a sponsor was skipped
+//used for the go back button
+var lastSponsorTimeSkipped = null;
+//used for ratings
+var lastSponsorTimeSkippedUUID = null;
+
 //if showing the start sponsor button or the end sponsor button on the player
 var showingStartSponsor = true;
 
@@ -229,9 +235,6 @@ document.onkeydown = function(e: KeyboardEvent){
 }
 
 function resetValues() {
-    //reset last sponsor times
-    lastTime = -1;
-
     //reset sponsor times
     sponsorTimes = null;
     UUIDs = [];
@@ -425,6 +428,8 @@ function durationChangeListener() {
 function cancelSponsorSchedule(): void {
     if (currentSkipSchedule !== null) {
         clearTimeout(currentSkipSchedule);
+
+        currentSkipSchedule = null;
     }
 }
 
@@ -446,7 +451,7 @@ function startSponsorSchedule(currentTime?: number): void {
     let skipTime = skipInfo.array[skipInfo.index];
     let timeUntilSponsor = skipTime[0] - currentTime;
 
-    currentSkipSchedule = setTimeout(() => {
+    let skippingFunction = () => {
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
 
@@ -454,7 +459,13 @@ function startSponsorSchedule(currentTime?: number): void {
         } else {
             startSponsorSchedule();
         }
-    }, timeUntilSponsor * 1000 * (1 / video.playbackRate));
+    };
+
+    if (timeUntilSponsor <= 0) {
+        skippingFunction();
+    } else {
+        currentSkipSchedule = setTimeout(skippingFunction, timeUntilSponsor * 1000 * (1 / video.playbackRate));
+    }
 }
 
 function sponsorsLookup(id: string, channelIDPromise?) {
