@@ -953,6 +953,9 @@ function updateSponsorTimesSubmitting() {
                 sponsorTimesSubmitting = sponsorTimes;
 
                 updatePreviewBar();
+
+                // Restart skipping schedule
+                startSponsorSchedule();
             }
         }
     });
