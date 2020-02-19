@@ -357,7 +357,8 @@ async function videoIDChange(id) {
 				}
 			}
 		});
-	});
+    });
+    
     //see if video controls buttons should be added
     if (!onInvidious) {
         updateVisibilityOfPlayerControlsButton();
@@ -366,7 +367,19 @@ async function videoIDChange(id) {
 
 function handleMobileControlsMutations(): void {
     let mobileYouTubeSelector = ".progress-bar-background";
-
+    
+    updateVisibilityOfPlayerControlsButton().then((createdButtons) => {
+        if (createdButtons) {
+            if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].length >= 2) {
+                changeStartSponsorButton(true, true);
+            } else if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].length < 2) {
+                changeStartSponsorButton(false, true);
+            } else {
+                changeStartSponsorButton(true, false);
+            }
+        }
+    });
+    
     if (previewBar !== null) {
         if (document.body.contains(previewBar.container)) {
             updatePreviewBarPositionMobile(document.getElementsByClassName(mobileYouTubeSelector)[0]);
@@ -696,7 +709,7 @@ function getChannelID() {
 /**
  * This function is required on mobile YouTube and will keep getting called whenever the preview bar disapears
  */
-async function updatePreviewBarPositionMobile(parent: Element) {
+function updatePreviewBarPositionMobile(parent: Element) {
     if (document.getElementById("previewbar") === null) {
         previewBar.updatePosition(parent);
     }
@@ -838,14 +851,20 @@ function reskipSponsorTime(UUID) {
     }
 }
 
-function createButton(baseID, title, callback, imageName, isDraggable=false) {
-    if (document.getElementById(baseID + "Button") != null) return;
+function createButton(baseID, title, callback, imageName, isDraggable=false): boolean {
+    if (document.getElementById(baseID + "Button") != null) return false;
 
     // Button HTML
     let newButton = document.createElement("button");
     newButton.draggable = isDraggable;
     newButton.id = baseID + "Button";
-    newButton.className = "ytp-button playerButton";
+    newButton.classList.add("playerButton");
+    if (!onMobileYouTube) {
+        newButton.classList.add("ytp-button");
+    } else {
+        newButton.classList.add("icon-button");
+        newButton.style.padding = "0";
+    }
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
     newButton.addEventListener("click", callback);
 
@@ -861,6 +880,8 @@ function createButton(baseID, title, callback, imageName, isDraggable=false) {
 
     // Add the button to player
     controls.prepend(newButton);
+
+    return true;
 }
 
 function getControls(): HTMLElement | boolean {
@@ -868,7 +889,7 @@ function getControls(): HTMLElement | boolean {
         // YouTube
         ".ytp-right-controls",
         // Mobile YouTube
-        "#player-control-overlay",
+        ".player-controls-top",
         // Invidious/videojs video element's controls element
         ".vjs-control-bar"
     ]
@@ -885,26 +906,31 @@ function getControls(): HTMLElement | boolean {
 };
 
 //adds all the player controls buttons
-async function createButtons() {
+async function createButtons(): Promise<boolean> {
     let result = await utils.wait(getControls).catch();
 
     //set global controls variable
     controls = result;
 
-    // Add button if does not already exist in html
-    createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png");	  
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png")
-    createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png");
-    createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
-}
-//adds or removes the player controls button to what it should be
-async function updateVisibilityOfPlayerControlsButton() {
-    //not on a proper video yet
-    if (!sponsorVideoID) return;
+    let createdButton = false;
 
-    await createButtons();
-	
-    if (Config.config.hideVideoPlayerControls || onInvidious || onMobileYouTube) {
+    // Add button if does not already exist in html
+    createdButton = createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png") || createdButton;	  
+    createdButton = createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png") || createdButton;
+    createdButton = createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png") || createdButton;
+    createdButton = createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png") || createdButton;
+
+    return createdButton;
+}
+
+//adds or removes the player controls button to what it should be
+async function updateVisibilityOfPlayerControlsButton(): Promise<boolean> {
+    //not on a proper video yet
+    if (!sponsorVideoID) return false;
+
+    let createdButtons = await createButtons();
+
+    if (Config.config.hideVideoPlayerControls || onInvidious) {
         document.getElementById("startSponsorButton").style.display = "none";
         document.getElementById("submitButton").style.display = "none";
     } else {
@@ -912,15 +938,17 @@ async function updateVisibilityOfPlayerControlsButton() {
     }
 
     //don't show the info button on embeds
-    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious || onMobileYouTube) {
+    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
         document.getElementById("infoButton").style.display = "none";
     } else {
         document.getElementById("infoButton").style.removeProperty("display");
     }
     
-    if (Config.config.hideDeleteButtonPlayerControls || onInvidious || onMobileYouTube) {
+    if (Config.config.hideDeleteButtonPlayerControls || onInvidious) {
         document.getElementById("deleteButton").style.display = "none";
     }
+
+    return createdButtons;
 }
 
 function startSponsorClicked() {
@@ -961,19 +989,11 @@ function updateSponsorTimesSubmitting() {
     });
 }
 
-//is the submit button on the player loaded yet
-function isSubmitButtonLoaded() {
-    return document.getElementById("submitButton") !== null;
-}
-
 async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
     if(!sponsorVideoID) return false;
     
-    //make sure submit button is loaded
-    await utils.wait(isSubmitButtonLoaded);
-    
     //if it isn't visible, there is no data
-    let shouldHide = (uploadButtonVisible && !(Config.config.hideDeleteButtonPlayerControls || onInvidious || onMobileYouTube)) ? "unset" : "none"
+    let shouldHide = (uploadButtonVisible && !(Config.config.hideDeleteButtonPlayerControls || onInvidious)) ? "unset" : "none"
     document.getElementById("deleteButton").style.display = shouldHide;
 
     if (showStartSponsor) {
