@@ -719,17 +719,8 @@ async function runThePopup(messageListener?: MessageListener) {
         sponsorTimes.splice(index, 1);
   
         //save this
-		Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-            messageHandler.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
-                messageHandler.sendMessage(
-                    tabs[0].id,
-                    {message: "sponsorDataChanged"}
-                );
-            });
-  
+        Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+        
         //update display
         displaySponsorTimes();
   
@@ -750,6 +741,16 @@ async function runThePopup(messageListener?: MessageListener) {
             //hide submission section
             document.getElementById("submissionSection").style.display = "none";
         }
+
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                {message: "sponsorDataChanged"}
+            );
+        });
     }
   
     function clearTimes() {
