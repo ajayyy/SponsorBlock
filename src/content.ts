@@ -66,18 +66,9 @@ var controls = null;
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
 
-//the last time looked at (used to see if this time is in the interval)
-var lastTime = -1;
-
 //the amount of times the sponsor lookup has retried
 //this only happens if there is an error
 var sponsorLookupRetries = 0;
-
-//the last time in the video a sponsor was skipped
-//used for the go back button
-var lastSponsorTimeSkipped = null;
-//used for ratings
-var lastSponsorTimeSkippedUUID = null;
 
 //if showing the start sponsor button or the end sponsor button on the player
 var showingStartSponsor = true;
