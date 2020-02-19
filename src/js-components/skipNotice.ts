@@ -57,7 +57,8 @@ class SkipNotice {
         noticeElement.classList.add("sponsorSkipNotice");
         noticeElement.style.zIndex = String(50 + amountOfPreviousNotices);
         if (contentContainer().onMobileYouTube) {
-            noticeElement.style.bottom = "3em";
+            noticeElement.style.bottom = "4em";
+            noticeElement.style.zoom = "0.8";
         }
 
         //add mouse enter and leave listeners
