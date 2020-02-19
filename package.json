@@ -24,7 +24,7 @@
   },
   "scripts": {
     "web-run": "npm run web-run:chrome",
-    "web-run:firefox": "cd dist && web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
+    "web-run:firefox": "cd dist && web-ext run --start-url https://addons.mozilla.org/firefox/addon/ublock-origin/",
     "web-run:chrome": "cd dist && web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm -t chromium",
     "build": "npm run build:chrome",
     "build:chrome": "webpack --env.browser=chrome --config webpack/webpack.prod.js",
