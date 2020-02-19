@@ -866,7 +866,12 @@ function createButton(baseID, title, callback, imageName, isDraggable=false): bo
         newButton.style.padding = "0";
     }
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
-    newButton.addEventListener("click", callback);
+    newButton.addEventListener("click", (event: Event) => {
+        callback();
+
+        // Prevents the contols from closing when clicked
+        if (onMobileYouTube) event.stopPropagation();
+    });
 
     // Image HTML
     let newButtonImage = document.createElement("img");
