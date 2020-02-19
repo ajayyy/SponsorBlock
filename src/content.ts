@@ -64,7 +64,7 @@ var previewResetter: NodeJS.Timeout = null;
 var controls = null;
 
 // Direct Links after the config is loaded
-utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
+utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
 
 //the last time looked at (used to see if this time is in the interval)
 var lastTime = -1;
