@@ -564,6 +564,8 @@ function sponsorsLookup(id: string, channelIDPromise?) {
 
             if (zeroSecondSponsor) {
                 startSponsorSchedule(0);
+            } else {
+                startSponsorSchedule();
             }
 
             // Reset skip save
