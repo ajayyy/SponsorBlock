@@ -43,8 +43,6 @@ var lastPreviewBarUpdate;
 
 //whether the duration listener listening for the duration changes of the video has been setup yet
 var durationListenerSetUp = false;
-// Timestamp of the last duration change
-var lastDurationChange = 0;
 
 //the channel this video is about
 var channelURL;
@@ -430,8 +428,6 @@ function createPreviewBar(): void {
  * This happens when the resolution changes or at random time to clear memory.
  */
 function durationChangeListener() {
-    lastDurationChange = Date.now();
-
     updatePreviewBar();
 }
 
@@ -802,7 +798,7 @@ function getStartTimes(sponsorTimes: number[][], minimum?: number, hideHiddenSpo
     return startTimes;
 }
 
-//skip from fhe start time to the end time for a certain index sponsor time
+//skip from the start time to the end time for a certain index sponsor time
 function skipToTime(v, index, sponsorTimes, openNotice) {
     if (!Config.config.disableAutoSkip || previewResetter !== null) {
         v.currentTime = sponsorTimes[index][1];
