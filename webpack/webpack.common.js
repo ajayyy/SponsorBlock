@@ -42,7 +42,8 @@ module.exports = env => ({
         ),
         new BuildManifest({
             browser: env.browser,
-            pretty: env.mode === "production"
+            pretty: env.mode === "production",
+            stream: env.stream
         })
     ]
 });
