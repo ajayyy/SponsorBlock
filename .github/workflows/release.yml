@@ -11,7 +11,7 @@ jobs:
     steps:
       # Build Artifacts
       - name: Build Artifacts
-      - uses: ./.github/workflows/ci
+        uses: ./.github/workflows/ci
 
       # Upload each release asset
       - name: Upload to release
