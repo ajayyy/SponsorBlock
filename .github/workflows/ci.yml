@@ -23,6 +23,7 @@ jobs:
         with:
           name: ChromeExtension
           path: dist
+      - run: mkdir ./builds
       - uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r ./builds/ChromeExtension.zip ./dist
