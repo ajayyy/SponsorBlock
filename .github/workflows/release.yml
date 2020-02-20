@@ -1,0 +1,29 @@
+name: Upload Release Build
+
+on: release
+
+jobs:
+
+  build:
+    name: Upload Release
+    runs-on: ubuntu-latest
+
+    steps:
+      # Build Artifacts
+      - name: Build Artifacts
+      - uses: ./.github/workflows/ci
+
+      # Upload each release asset
+      - name: Upload to release
+        uses: JasonEtco/upload-to-release@master
+        with:
+          args: ./builds/ChromeExtension.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload to release
+        uses: JasonEtco/upload-to-release@master
+        with:
+          args: ./builds/FirefoxExtension.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
