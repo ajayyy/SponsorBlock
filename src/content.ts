@@ -43,8 +43,6 @@ var lastPreviewBarUpdate;
 
 //whether the duration listener listening for the duration changes of the video has been setup yet
 var durationListenerSetUp = false;
-// Timestamp of the last duration change
-var lastDurationChange = 0;
 
 //the channel this video is about
 var channelURL;
@@ -66,10 +64,7 @@ var previewResetter: NodeJS.Timeout = null;
 var controls = null;
 
 // Direct Links after the config is loaded
-utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
-
-//the last time looked at (used to see if this time is in the interval)
-var lastTime = -1;
+utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
 
 //the amount of times the sponsor lookup has retried
 //this only happens if there is an error
@@ -240,9 +235,6 @@ document.onkeydown = function(e: KeyboardEvent){
 }
 
 function resetValues() {
-    //reset last sponsor times
-    lastTime = -1;
-
     //reset sponsor times
     sponsorTimes = null;
     UUIDs = [];
@@ -430,14 +422,14 @@ function createPreviewBar(): void {
  * This happens when the resolution changes or at random time to clear memory.
  */
 function durationChangeListener() {
-    lastDurationChange = Date.now();
-
     updatePreviewBar();
 }
 
 function cancelSponsorSchedule(): void {
     if (currentSkipSchedule !== null) {
         clearTimeout(currentSkipSchedule);
+
+        currentSkipSchedule = null;
     }
 }
 
@@ -448,7 +440,7 @@ function cancelSponsorSchedule(): void {
 function startSponsorSchedule(currentTime?: number): void {
     cancelSponsorSchedule();
 
-    if (sponsorTimes === null || Config.config.disableSkipping || channelWhitelisted){
+    if (Config.config.disableSkipping || channelWhitelisted){
         return;
     }
 
@@ -456,18 +448,24 @@ function startSponsorSchedule(currentTime?: number): void {
 
     let skipInfo = getNextSkipIndex(currentTime);
 
+    if (skipInfo.index === -1) return;
+
     let skipTime = skipInfo.array[skipInfo.index];
     let timeUntilSponsor = skipTime[0] - currentTime;
 
-    currentSkipSchedule = setTimeout(() => {
+    let skippingFunction = () => {
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
-
-            startSponsorSchedule();
-        } else {
-            startSponsorSchedule();
         }
-    }, timeUntilSponsor * 1000 * (1 / video.playbackRate));
+
+        startSponsorSchedule();
+    };
+
+    if (timeUntilSponsor <= 0) {
+        skippingFunction();
+    } else {
+        currentSkipSchedule = setTimeout(skippingFunction, timeUntilSponsor * 1000 * (1 / video.playbackRate));
+    }
 }
 
 function sponsorsLookup(id: string, channelIDPromise?) {
@@ -493,6 +491,8 @@ function sponsorsLookup(id: string, channelIDPromise?) {
         video.addEventListener('ratechange', () => startSponsorSchedule());
         video.addEventListener('seeking', cancelSponsorSchedule);
         video.addEventListener('pause', cancelSponsorSchedule);
+
+        startSponsorSchedule();
     }
 
     if (channelIDPromise !== undefined) {
@@ -767,7 +767,8 @@ function getNextSkipIndex(currentTime: number): {array: number[][], index: numbe
 
     let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
 
-    if (minPreviewSponsorTimeIndex == -1 || sponsorStartTimes[minSponsorTimeIndex] < previewSponsorStartTimes[minPreviewSponsorTimeIndex]) {
+    if ((minPreviewSponsorTimeIndex === -1 && minSponsorTimeIndex !== -1) || 
+            sponsorStartTimes[minSponsorTimeIndex] < previewSponsorStartTimes[minPreviewSponsorTimeIndex]) {
         return {
             array: sponsorTimes,
             index: minSponsorTimeIndex,
@@ -791,6 +792,8 @@ function getNextSkipIndex(currentTime: number): {array: number[][], index: numbe
  * @param hideHiddenSponsors
  */
 function getStartTimes(sponsorTimes: number[][], minimum?: number, hideHiddenSponsors: boolean = false): number[] {
+    if (sponsorTimes === null) return [];
+
     let startTimes: number[] = [];
 
     for (let i = 0; i < sponsorTimes.length; i++) {
@@ -802,7 +805,7 @@ function getStartTimes(sponsorTimes: number[][], minimum?: number, hideHiddenSpo
     return startTimes;
 }
 
-//skip from fhe start time to the end time for a certain index sponsor time
+//skip from the start time to the end time for a certain index sponsor time
 function skipToTime(v, index, sponsorTimes, openNotice) {
     if (!Config.config.disableAutoSkip || previewResetter !== null) {
         v.currentTime = sponsorTimes[index][1];
