@@ -58,7 +58,7 @@ class SkipNotice {
         noticeElement.style.zIndex = String(50 + amountOfPreviousNotices);
         if (contentContainer().onMobileYouTube) {
             noticeElement.style.bottom = "4em";
-            noticeElement.style.zoom = "0.8";
+            noticeElement.style.transform = "scale(0.8) translate(10%, 10%)";
         }
 
         //add mouse enter and leave listeners
