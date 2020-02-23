@@ -157,7 +157,7 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //get the amount of times this user has contributed and display it to thank them
     if (Config.config.sponsorTimesContributed != undefined) {
-        if (Config.config.sponsorTimesContributed != 1) {
+        if (Config.config.sponsorTimesContributed !== 1) {
             PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
         } else {
             PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
