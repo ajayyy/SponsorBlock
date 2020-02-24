@@ -423,9 +423,6 @@
     "whatUnlistedCheck": {
         "message": "This setting will significantly slow down SponsorBlock. Sponsor lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
     },
-    "betaName": {
-        "message": "BETA - SponsorBlock"
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com is now supported"
     }
