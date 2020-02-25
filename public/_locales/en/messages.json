@@ -385,7 +385,7 @@
         "message": "Minimum duration (seconds):"
     },
     "minDurationDescription": {
-        "message": "Sponsor segments shorter than the set value will not be skipeed or show in the player."
+        "message": "Sponsor segments shorter than the set value will not be skipped or show in the player."
      },
     "shortCheck": {
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
