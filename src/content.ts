@@ -6,7 +6,7 @@ var utils = new Utils();
 import runThePopup from "./popup";
 
 import PreviewBar from "./js-components/previewBar";
-import SkipNotice from "./js-components/skipNotice";
+import SkipNotice from "./render/SkipNotice";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -819,15 +819,7 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!Config.config.dontShowNotice) {
-            
-            let skipNotice = new SkipNotice(this, currentUUID, Config.config.disableAutoSkip, skipNoticeContentContainer);
-
-            //TODO: Remove this when Mobile support is old	
-            if (Config.config.mobileUpdateShowCount < 1) {	
-                skipNotice.addNoticeInfoMessage(chrome.i18n.getMessage("mobileUpdateInfo"));	
-
-                Config.config.mobileUpdateShowCount += 1;	
-            }
+            let skipNotice = new SkipNotice(currentUUID, Config.config.disableAutoSkip, skipNoticeContentContainer);
 
             //auto-upvote this sponsor
             if (Config.config.trackViewCount && !Config.config.disableAutoSkip && Config.config.autoUpvote) {

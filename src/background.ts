@@ -85,10 +85,6 @@ chrome.runtime.onInstalled.addListener(function (object) {
             const newUserID = utils.generateUserID();
             //save this UUID
             Config.config.userID = newUserID;
-            
-            //TODO: Remove when mobile support is old
-            // Don't show this to new users
-            // Config.config.mobileUpdateShowCount = 1;
         }
     }, 1500);
 });

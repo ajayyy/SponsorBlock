@@ -7,6 +7,7 @@
         "outDir": "dist/js",
         "noEmitOnError": true,
         "typeRoots": [ "node_modules/@types" ],
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "jsx": "react"
     }
 }
