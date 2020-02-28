@@ -44,6 +44,9 @@ var lastPreviewBarUpdate;
 //whether the duration listener listening for the duration changes of the video has been setup yet
 var durationListenerSetUp = false;
 
+// Has a zero second sponsor been skipped yet
+var skippedZeroSecond = false;
+
 //the channel this video is about
 var channelURL;
 
@@ -247,6 +250,8 @@ function resetValues() {
 
     //reset sponsor data found check
     sponsorDataFound = false;
+
+    skippedZeroSecond = false;
 }
 
 async function videoIDChange(id) {
@@ -455,6 +460,8 @@ function startSponsorSchedule(currentTime?: number): void {
 
     let skippingFunction = () => {
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
+            if (currentTime == 0) skippedZeroSecond = true;
+
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
         }
 
@@ -562,7 +569,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 }
             }
 
-            if (zeroSecondSponsor) {
+            if (zeroSecondSponsor && !skippedZeroSecond) {
                 startSponsorSchedule(0);
             } else {
                 startSponsorSchedule();

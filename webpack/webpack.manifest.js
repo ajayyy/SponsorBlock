@@ -9,6 +9,7 @@ const manifest = require("../manifest/manifest.json");
 const firefoxManifestExtra = require("../manifest/firefox-manifest-extra.json");
 const chromeManifestExtra = require("../manifest/chrome-manifest-extra.json");
 const betaManifestExtra = require("../manifest/beta-manifest-extra.json");
+const firefoxBetaManifestExtra = require("../manifest/firefox-beta-manifest-extra.json");
 
 // schema for options object
 const schema = {
@@ -46,6 +47,10 @@ class BuildManifest {
 
         if (this.options.stream === "beta") {
             mergeObjects(manifest, betaManifestExtra);
+
+            if (this.options.browser.toLowerCase() === "firefox") {
+                mergeObjects(manifest, firefoxBetaManifestExtra);
+            }
         }
 
         let result = JSON.stringify(manifest);
