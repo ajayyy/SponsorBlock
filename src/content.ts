@@ -493,8 +493,10 @@ function sponsorsLookup(id: string, channelIDPromise?) {
     if (!seekListenerSetUp && !Config.config.disableSkipping) {
         seekListenerSetUp = true;
 
-        video.addEventListener('seeked', () => startSponsorSchedule());
         video.addEventListener('play', () => startSponsorSchedule());
+        video.addEventListener('seeked', () => {
+            if (!video.paused) startSponsorSchedule()
+        });
         video.addEventListener('ratechange', () => startSponsorSchedule());
         video.addEventListener('seeking', cancelSponsorSchedule);
         video.addEventListener('pause', cancelSponsorSchedule);
