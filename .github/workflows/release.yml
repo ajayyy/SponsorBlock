@@ -10,6 +10,7 @@ jobs:
 
     steps:
       # Build Artifacts
+      - uses: actions/checkout@v1
       - name: Build Artifacts
         uses: ./.github/workflows/ci
 
