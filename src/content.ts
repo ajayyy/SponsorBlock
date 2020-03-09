@@ -848,16 +848,14 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
         }
 
         //send telemetry that a this sponsor was skipped
-        if (Config.config.trackViewCount && !sponsorSkipped[index]) {
+        if (Config.config.trackViewCount && !sponsorSkipped[index] && !Config.config.disableAutoSkip) {
             utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
-            if (!Config.config.disableAutoSkip) {
-                // Count this as a skip
-                Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
-                Config.config.skipCount = Config.config.skipCount + 1;
+            // Count this as a skip
+            Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
+            Config.config.skipCount = Config.config.skipCount + 1;
 
-                sponsorSkipped[index] = true;
-            }
+            sponsorSkipped[index] = true;
         }
     }
 }
