@@ -62,15 +62,15 @@ jobs:
 
       # Upload each release asset
       - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
+        uses: Shopify/upload-to-release@master
         with:
-          args: ./builds/ChromeExtension.zip
+          args: builds/ChromeExtension.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
+        uses: Shopify/upload-to-release@master
         with:
-          args: ./builds/FirefoxExtension.zip
+          args: builds/FirefoxExtension.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
