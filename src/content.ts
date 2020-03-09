@@ -463,7 +463,7 @@ function startSponsorSchedule(currentTime?: number): void {
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
         }
 
-        startSponsorSchedule(skipTime[1]);
+        startSponsorSchedule(skipTime[0] + 0.001);
     };
 
     if (timeUntilSponsor <= 0) {
