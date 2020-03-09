@@ -44,8 +44,8 @@ var lastPreviewBarUpdate;
 //whether the duration listener listening for the duration changes of the video has been setup yet
 var durationListenerSetUp = false;
 
-// Has a zero second sponsor been skipped yet
-var skippedZeroSecond = false;
+// Is the video currently being switched
+var switchingVideos = false;
 
 //the channel this video is about
 var channelURL;
@@ -250,8 +250,6 @@ function resetValues() {
 
     //reset sponsor data found check
     sponsorDataFound = false;
-
-    skippedZeroSecond = false;
 }
 
 async function videoIDChange(id) {
@@ -265,6 +263,8 @@ async function videoIDChange(id) {
 
 	//id is not valid
     if (!id) return;
+
+    switchingVideos = true;
 
     // Wait for options to be ready
     await utils.wait(() => Config.config !== null, 5000, 1);
@@ -460,8 +460,6 @@ function startSponsorSchedule(currentTime?: number): void {
 
     let skippingFunction = () => {
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
-            if (currentTime == 0) skippedZeroSecond = true;
-
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
         }
 
@@ -493,9 +491,12 @@ function sponsorsLookup(id: string, channelIDPromise?) {
     if (!seekListenerSetUp && !Config.config.disableSkipping) {
         seekListenerSetUp = true;
 
-        video.addEventListener('play', () => startSponsorSchedule());
+        video.addEventListener('play', () => {
+            switchingVideos = false;
+            startSponsorSchedule();
+        });
         video.addEventListener('seeked', () => {
-            if (!video.paused) startSponsorSchedule()
+            if (!video.paused) startSponsorSchedule();
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
         video.addEventListener('seeking', cancelSponsorSchedule);
@@ -571,10 +572,12 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 }
             }
 
-            if (zeroSecondSponsor && !skippedZeroSecond) {
-                startSponsorSchedule(0);
-            } else {
-                startSponsorSchedule();
+            if (!video.paused && !switchingVideos) {
+                if (zeroSecondSponsor) {
+                    startSponsorSchedule(0);
+                } else {
+                    startSponsorSchedule();
+                }
             }
 
             // Reset skip save
