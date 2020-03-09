@@ -463,7 +463,12 @@ function startSponsorSchedule(currentTime?: number): void {
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
         }
 
-        startSponsorSchedule(skipTime[0] + 0.001);
+        if (Config.config.disableAutoSkip) {
+            startSponsorSchedule(skipTime[0] + 0.001);
+        } else {
+            startSponsorSchedule(skipTime[1]);
+        }
+
     };
 
     if (timeUntilSponsor <= 0) {
