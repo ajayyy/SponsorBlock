@@ -12,7 +12,7 @@ jobs:
       # Build Artifacts
       - uses: actions/checkout@v1
       - name: Build Artifacts
-        uses: ./.github/workflows/ci.yml
+        uses: ./.github/workflows/ci/
 
       # Upload each release asset
       - name: Upload to release
