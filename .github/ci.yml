@@ -1,0 +1,13 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+
+  build:
+    name: Create artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: ./.github/workflows/ci/
+
