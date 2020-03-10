@@ -1,4 +1,5 @@
 import * as React from "react";
+import Config from "../config"
 
 export interface SkipNoticeProps { 
     UUID: string;
@@ -289,7 +290,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         if (this.manualSkip) {
             this.changeNoticeTitle(chrome.i18n.getMessage("noticeTitle"));
 
-            this.contentContainer().vote(1, this.UUID, this);
+            if(Config.config.disableAutoSkip) this.contentContainer().vote(1, this.UUID);
         }
     }
 
