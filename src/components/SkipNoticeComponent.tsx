@@ -7,19 +7,26 @@ export interface SkipNoticeProps {
     contentContainer: () => any;
 }
 
-class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
+export interface SkipNoticeState {
+    noticeTitle: string,
+
+    countdownTime: number,
+    countdownText: string,
+
+    unskipText: string,
+    unskipCallback: () => void
+}
+
+class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeState> {
     UUID: string;
     manualSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: () => any;
 
-    noticeTitle: string;
     amountOfPreviousNotices: number;
     
     maxCountdownTime: () => number;
-    countdownTime: any;
     countdownInterval: NodeJS.Timeout;
-    unskipCallback: any;
     idSuffix: any;
 
     constructor(props: SkipNoticeComponent) {
@@ -29,20 +36,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
         this.manualSkip = props.manualSkip;
         this.contentContainer = props.contentContainer;
     
-        this.noticeTitle = chrome.i18n.getMessage("noticeTitle");
+        let noticeTitle = chrome.i18n.getMessage("noticeTitle");
     
         if (this.manualSkip) {
-            this.noticeTitle = chrome.i18n.getMessage("noticeTitleNotSkipped");
+            noticeTitle = chrome.i18n.getMessage("noticeTitleNotSkipped");
         }
     
         this.maxCountdownTime = () => 4;
-        //the countdown until this notice closes
-        this.countdownTime = this.maxCountdownTime();
         //the id for the setInterval running the countdown
         this.countdownInterval = null;
-    
-        //the unskip button's callback
-        this.unskipCallback = this.unskip.bind(this);
     
         //add notice
         this.amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
@@ -56,6 +58,22 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
             let previousNotice = document.getElementsByClassName("sponsorSkipNotice")[0];
             previousNotice.classList.add("secondSkipNotice")
         }
+
+        // Setup state
+        this.state = {
+            noticeTitle,
+
+            //the countdown until this notice closes
+            countdownTime: this.maxCountdownTime(),
+            countdownText: null,
+
+            unskipText: chrome.i18n.getMessage("unskip"),
+            unskipCallback: this.unskip.bind(this)
+        }
+    }
+
+    componentDidMount() {
+        this.startCountdown();
     }
 
     render() {
@@ -68,10 +86,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
         }
 
         return (
-            <div id={"sponsorSkipNotice" + this.idSuffix} 
+            <table id={"sponsorSkipNotice" + this.idSuffix} 
                 className="sponsorSkipObject sponsorSkipNotice" style={noticeStyle}
                 onMouseEnter={this.pauseCountdown.bind(this)}
-                onMouseLeave={this.startCountdown.bind(this)}>
+                onMouseLeave={this.startCountdown.bind(this)}> <tbody>
 
                 {/* First row */}
                 <tr id={"sponsorSkipNoticeFirstRow" + this.idSuffix}>
@@ -86,7 +104,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
                         <span id={"sponsorSkipMessage" + this.idSuffix}
                             className="sponsorSkipMessage sponsorSkipObject">
                             
-                            {this.noticeTitle}
+                            {this.state.noticeTitle}
                         </span>
                     </td>
 
@@ -98,7 +116,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
                         <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
                             className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
 
-                            {this.countdownTime + "s"}
+                            {this.state.countdownText || (this.state.countdownTime + "s")}
                         </span>
 
                         {/* Close button */}
@@ -110,9 +128,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
                 </tr> 
 
                 {/* Spacer */}
-                <hr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
+                <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
                     className="sponsorBlockSpacer">
-                </hr>
+                </tr>
 
                 {/* Last Row */}
                 <tr id={"sponsorSkipNoticeSecondRow" + this.idSuffix}>
@@ -146,9 +164,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
                         <button id={"sponsorSkipUnskipButton" + this.idSuffix}
                             className="sponsorSkipObject sponsorSkipNoticeButton"
                             style={{marginLeft: "4px"}}
-                            onClick={this.unskipCallback}>
+                            onClick={this.state.unskipCallback}>
 
-                            {chrome.i18n.getMessage("unskip")}
+                            {this.state.unskipText}
                         </button>
                     </td>
 
@@ -163,15 +181,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
                         </td>
                     }
                 </tr>
-            </div>
+            </tbody> </table>
         );
     }
 
     //called every second to lower the countdown before hiding the notice
     countdown() {
-        this.countdownTime--;
+        let countdownTime = this.state.countdownTime - 1;
 
-        if (this.countdownTime <= 0) {
+        if (countdownTime <= 0) {
             //remove this from setInterval
             clearInterval(this.countdownInterval);
 
@@ -181,14 +199,16 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
             return;
         }
 
-        if (this.countdownTime == 3) {
+        if (countdownTime == 3) {
             //start fade out animation
             let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
             notice.style.removeProperty("animation");
             notice.classList.add("sponsorSkipNoticeFadeOut");
         }
 
-        this.updateTimerDisplay();
+        this.setState({
+            countdownTime
+        })
     }
 
     pauseCountdown() {
@@ -196,13 +216,12 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
         clearInterval(this.countdownInterval);
         this.countdownInterval = null;
 
-        //reset countdown
-        this.countdownTime = this.maxCountdownTime();
+        //reset countdown and inform the user
+        this.setState({
+            countdownTime: this.maxCountdownTime(),
+            countdownText: chrome.i18n.getMessage("paused")
+        });
         
-        //inform the user
-        let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.idSuffix);
-        timeLeft.innerText = chrome.i18n.getMessage("paused");
-
         //remove the fade out class if it exists
         let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
         notice.classList.remove("sponsorSkipNoticeFadeOut");
@@ -213,15 +232,12 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
         //if it has already started, don't start it again
         if (this.countdownInterval !== null) return;
 
+        this.setState({
+            countdownTime: this.maxCountdownTime(),
+            countdownText: null
+        });
+
         this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
-
-        this.updateTimerDisplay();
-    }
-
-    updateTimerDisplay() {
-        //update the timer display
-        let timeLeft = document.getElementById("sponsorSkipNoticeTimeLeft" + this.idSuffix);
-        timeLeft.innerText = this.countdownTime + "s";
     }
 
     unskip() {
@@ -232,12 +248,11 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
 
     /** Sets up notice to be not skipped yet */
     unskippedMode(buttonText) {
-        //change unskip button to a reskip button
-        let unskipButton = this.changeUnskipButton(buttonText);
-
         //setup new callback
-        this.unskipCallback = this.reskip.bind(this);
-        unskipButton.addEventListener("click", this.unskipCallback);
+        this.setState({
+            unskipText: buttonText,
+            unskipCallback: this.reskip.bind(this)
+        });
 
         //change max duration to however much of the sponsor is left
         this.maxCountdownTime = function() {
@@ -247,24 +262,28 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
             return Math.max(duration, 4);
         };
 
-        this.countdownTime = this.maxCountdownTime();
-        this.updateTimerDisplay();
+        //reset countdown
+        this.setState({
+            countdownTime: this.maxCountdownTime()
+        });
     }
 
     reskip() {
         this.contentContainer().reskipSponsorTime(this.UUID);
 
-        //change reskip button to a unskip button
-        let unskipButton = this.changeUnskipButton(chrome.i18n.getMessage("unskip"));
-
         //setup new callback
-        this.unskipCallback = this.unskip.bind(this);
-        unskipButton.addEventListener("click", this.unskipCallback);
+        this.setState({
+            unskipText: chrome.i18n.getMessage("unskip"),
+            unskipCallback: this.unskip.bind(this)
+        });
 
         //reset duration
         this.maxCountdownTime = () => 4;
-        this.countdownTime = this.maxCountdownTime();
-        this.updateTimerDisplay();
+
+        //reset countdown
+        this.setState({
+            countdownTime: this.maxCountdownTime()
+        });
 
         // See if the title should be changed
         if (this.manualSkip) {
@@ -272,20 +291,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
 
             this.contentContainer().vote(1, this.UUID, this);
         }
-    }
-
-    /**
-     * Changes the text on the reskip button
-     * 
-     * @param {string} text 
-     * @returns {HTMLElement} unskipButton
-     */
-    changeUnskipButton(text) {
-        let unskipButton = document.getElementById("sponsorSkipUnskipButton" + this.idSuffix);
-        unskipButton.innerText = text;
-        unskipButton.removeEventListener("click", this.unskipCallback);
-
-        return unskipButton;
     }
 
     afterDownvote() {
@@ -333,7 +338,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
         thanksForVotingText.innerText = message;
 
         //add element to div
-        document.getElementById("sponsorSkipNotice" + this.idSuffix).insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
+        document.querySelector("#sponsorSkipNotice" + this.idSuffix + " > tbody").insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
     
         if (message2 !== undefined) {
             let thanksForVotingText2 = document.createElement("p");
@@ -342,7 +347,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, {}> {
             thanksForVotingText2.innerText = message2;
 
             //add element to div
-            document.getElementById("sponsorSkipNotice" + this.idSuffix).insertBefore(thanksForVotingText2, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
+            document.querySelector("#sponsorSkipNotice" + this.idSuffix + " > tbody").insertBefore(thanksForVotingText2, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
         }
     }
     
