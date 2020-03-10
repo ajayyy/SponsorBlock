@@ -20,16 +20,10 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdownInterval: NodeJS.Timeout;
     idSuffix: any;
 
-    timed: boolean
-
     amountOfPreviousNotices: number;
 
     constructor(props: NoticeProps) {
         super(props);
-
-        // Set default to timed
-        this.timed = props.timed;
-        if (this.timed === undefined) this.timed = true;
 
         if (props.maxCountdownTime === undefined) props.maxCountdownTime = () => 4;
     
@@ -91,7 +85,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                         style={{top: "11px"}}>
                         
                         {/* Time left */}
-                        {this.timed ? ( 
+                        {this.props.timed ? ( 
                             <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
                                 className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
 
@@ -116,7 +110,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
     //called every second to lower the countdown before hiding the notice
     countdown() {
-        if (!this.timed) return;
+        if (!this.props.timed) return;
 
         let countdownTime = this.state.countdownTime - 1;
 
@@ -143,7 +137,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     }
 
     pauseCountdown() {
-        if (!this.timed) return;
+        if (!this.props.timed) return;
 
         //remove setInterval
         clearInterval(this.countdownInterval);
@@ -162,7 +156,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     }
 
     startCountdown() {
-        if (!this.timed) return;
+        if (!this.props.timed) return;
 
         //if it has already started, don't start it again
         if (this.countdownInterval !== null) return;
@@ -176,7 +170,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     }
 
     resetCountdown() {
-        if (!this.timed) return;
+        if (!this.props.timed) return;
 
         this.setState({
             countdownTime: this.props.maxCountdownTime(),
