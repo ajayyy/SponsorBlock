@@ -44,7 +44,7 @@ To make sure that this project doesn't die, I have made the database publicly do
 
 The dataset and API are now being used [ports](https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports) as well as a [neural network](https://github.com/andrewzlee/NeuralBlock).
 
-A [previous project attempted to]((https://github.com/Sponsoff/sponsorship_remover) create a neural network to predict when sponsored segments happen. That project is sadly abandoned now, so I have decided to attempt to revive this idea starting from a crowd-sourced system instead.
+A [previous project](https://github.com/Sponsoff/sponsorship_remover) attempted to create a neural network to predict when sponsored segments happen. That project is sadly abandoned now, so I have decided to attempt to revive this idea starting from a crowd-sourced system instead.
 
 # API
 
