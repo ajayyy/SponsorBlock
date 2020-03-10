@@ -7,6 +7,7 @@ import runThePopup from "./popup";
 
 import PreviewBar from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
+import SkipNoticeComponent from "./components/SkipNoticeComponent";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -1129,11 +1130,11 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-function vote(type, UUID, skipNotice) {
+function vote(type, UUID, skipNotice: SkipNoticeComponent) {
     if (skipNotice != null) {
         //add loading info
         skipNotice.addVoteButtonInfo.bind(skipNotice)("Loading...")
-        skipNotice.resetNoticeInfoMessage.bind(skipNotice)();
+        skipNotice.setNoticeInfoMessage.bind(skipNotice)();
     }
 
     let sponsorIndex = UUIDs.indexOf(UUID);
@@ -1168,10 +1169,10 @@ function vote(type, UUID, skipNotice) {
                     }
                 } else if (response.successType == 0) {
                     //failure: duplicate vote
-                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
+                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 } else if (response.successType == -1) {
-                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode))
+                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }

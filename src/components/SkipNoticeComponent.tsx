@@ -2,6 +2,7 @@ import * as React from "react";
 import Config from "../config"
 
 import NoticeComponent from "./NoticeComponent";
+import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 
 export interface SkipNoticeProps { 
     UUID: string;
@@ -12,6 +13,8 @@ export interface SkipNoticeProps {
 
 export interface SkipNoticeState {
     noticeTitle: string,
+
+    messages: string[],
 
     countdownTime: number,
     maxCountdownTime: () => number;
@@ -63,6 +66,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         // Setup state
         this.state = {
             noticeTitle,
+            messages: [],
 
             //the countdown until this notice closes
             maxCountdownTime: () => 4,
@@ -90,12 +94,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
                 ref={this.noticeRef}>
-              
-                {/* Spacer */}
-                <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
-                    className="sponsorBlockSpacer">
-                </tr>
 
+                {/* Text Boxes */}
+                {this.getMessageBoxes()}
+              
                 {/* Last Row */}
                 <tr id={"sponsorSkipNoticeSecondRow" + this.idSuffix}>
 
@@ -148,6 +150,29 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
             </NoticeComponent>
         );
+    }
+
+    getMessageBoxes(): JSX.Element[] | JSX.Element {
+        if (this.state.messages.length === 0) {
+            // Add a spacer if there is no text
+            return (
+                <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
+                    className="sponsorBlockSpacer">
+                </tr>
+            );
+        }
+
+        let elements: JSX.Element[] = [];
+
+        for (let i = 0; i < this.state.messages.length; i++) {
+            elements.push(
+                <NoticeTextSelectionComponent idSuffix={this.idSuffix}
+                    text={this.state.messages[i]}>
+                </NoticeTextSelectionComponent>
+            )
+        }
+
+        return elements;
     }
 
     unskip() {
@@ -206,7 +231,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     afterDownvote() {
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
-        this.addNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"));
+        this.setNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"));
         
         //remove this sponsor from the sponsors looked up
         //find which one it is
@@ -223,37 +248,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    addNoticeInfoMessage(message: string, message2: string = "") {
-        let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix);
-        if (previousInfoMessage != null) {
-            //remove it
-            document.getElementById("sponsorSkipNotice" + this.idSuffix).removeChild(previousInfoMessage);
-        }
-
-        let previousInfoMessage2 = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix + "2");
-        if (previousInfoMessage2 != null) {
-            //remove it
-            document.getElementById("sponsorSkipNotice" + this.idSuffix).removeChild(previousInfoMessage2);
-        }
-        
-        //add info
-        let thanksForVotingText = document.createElement("p");
-        thanksForVotingText.id = "sponsorTimesInfoMessage" + this.idSuffix;
-        thanksForVotingText.className = "sponsorTimesInfoMessage";
-        thanksForVotingText.innerText = message;
-
-        //add element to div
-        document.querySelector("#sponsorSkipNotice" + this.idSuffix + " > tbody").insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
-    
-        if (message2 !== undefined) {
-            let thanksForVotingText2 = document.createElement("p");
-            thanksForVotingText2.id = "sponsorTimesInfoMessage" + this.idSuffix + "2";
-            thanksForVotingText2.className = "sponsorTimesInfoMessage";
-            thanksForVotingText2.innerText = message2;
-
-            //add element to div
-            document.querySelector("#sponsorSkipNotice" + this.idSuffix + " > tbody").insertBefore(thanksForVotingText2, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
-        }
+    setNoticeInfoMessage(...messages: string[]) {
+        this.setState({
+            messages
+        })
     }
     
     addVoteButtonInfo(message) {

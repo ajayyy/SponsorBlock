@@ -48,10 +48,6 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         this.startCountdown();
     }
 
-    // forwardRef(props, ref) {
-
-    // }
-
     render() {
         let noticeStyle: React.CSSProperties = {
             zIndex: 50 + this.amountOfPreviousNotices
