@@ -1,7 +1,7 @@
 import * as React from "react";
 import Config from "../config"
 
-import TimedNoticeComponent from "./TimedNoticeComponent";
+import NoticeComponent from "./NoticeComponent";
 
 export interface SkipNoticeProps { 
     UUID: string;
@@ -31,7 +31,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     
     idSuffix: any;
 
-    noticeRef: React.MutableRefObject<TimedNoticeComponent>;
+    noticeRef: React.MutableRefObject<NoticeComponent>;
 
     constructor(props: SkipNoticeProps) {
         super(props);
@@ -84,7 +84,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
 
         return (
-            <TimedNoticeComponent noticeTitle={this.state.noticeTitle}
+            <NoticeComponent noticeTitle={this.state.noticeTitle}
                 amountOfPreviousNotices={this.amountOfPreviousNotices}
                 idSuffix={this.idSuffix}
                 maxCountdownTime={this.state.maxCountdownTime}
@@ -145,7 +145,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     }
                 </tr>
 
-            </TimedNoticeComponent>
+            </NoticeComponent>
         );
     }
 

@@ -1,28 +1,35 @@
 import * as React from "react";
 
-export interface TimedNoticeProps {
+export interface NoticeProps {
     noticeTitle: string,
 
     maxCountdownTime?: () => number,
     amountOfPreviousNotices?: number,
+    timed?: boolean,
     idSuffix: string
 }
 
-export interface TimedNoticeState {
+export interface NoticeState {
     noticeTitle: string,
 
     countdownTime: number,
     countdownText: string,
 }
 
-class TimedNoticeComponent extends React.Component<TimedNoticeProps, TimedNoticeState> {
+class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdownInterval: NodeJS.Timeout;
     idSuffix: any;
 
+    timed: boolean
+
     amountOfPreviousNotices: number;
 
-    constructor(props: TimedNoticeProps) {
+    constructor(props: NoticeProps) {
         super(props);
+
+        // Set default to timed
+        this.timed = props.timed;
+        if (this.timed === undefined) this.timed = true;
 
         if (props.maxCountdownTime === undefined) props.maxCountdownTime = () => 4;
     
@@ -84,11 +91,14 @@ class TimedNoticeComponent extends React.Component<TimedNoticeProps, TimedNotice
                         style={{top: "11px"}}>
                         
                         {/* Time left */}
-                        <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
-                            className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
+                        {this.timed ? ( 
+                            <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
+                                className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
 
-                            {this.state.countdownText || (this.state.countdownTime + "s")}
-                        </span>
+                                {this.state.countdownText || (this.state.countdownTime + "s")}
+                            </span>
+                        ) : ""}
+                       
 
                         {/* Close button */}
                         <img src={chrome.extension.getURL("icons/close.png")}
@@ -106,6 +116,8 @@ class TimedNoticeComponent extends React.Component<TimedNoticeProps, TimedNotice
 
     //called every second to lower the countdown before hiding the notice
     countdown() {
+        if (!this.timed) return;
+
         let countdownTime = this.state.countdownTime - 1;
 
         if (countdownTime <= 0) {
@@ -131,6 +143,8 @@ class TimedNoticeComponent extends React.Component<TimedNoticeProps, TimedNotice
     }
 
     pauseCountdown() {
+        if (!this.timed) return;
+
         //remove setInterval
         clearInterval(this.countdownInterval);
         this.countdownInterval = null;
@@ -148,6 +162,8 @@ class TimedNoticeComponent extends React.Component<TimedNoticeProps, TimedNotice
     }
 
     startCountdown() {
+        if (!this.timed) return;
+
         //if it has already started, don't start it again
         if (this.countdownInterval !== null) return;
 
@@ -160,6 +176,8 @@ class TimedNoticeComponent extends React.Component<TimedNoticeProps, TimedNotice
     }
 
     resetCountdown() {
+        if (!this.timed) return;
+
         this.setState({
             countdownTime: this.props.maxCountdownTime(),
             countdownText: null
@@ -220,4 +238,4 @@ class TimedNoticeComponent extends React.Component<TimedNoticeProps, TimedNotice
     }
 }
 
-export default TimedNoticeComponent;
+export default NoticeComponent;
