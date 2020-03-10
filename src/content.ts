@@ -449,7 +449,7 @@ function startSponsorSchedule(currentTime?: number): void {
         return;
     }
 
-    if (currentTime === undefined) currentTime = video.currentTime;
+    if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
     let skipInfo = getNextSkipIndex(currentTime);
 
@@ -459,11 +459,19 @@ function startSponsorSchedule(currentTime?: number): void {
     let timeUntilSponsor = skipTime[0] - currentTime;
 
     let skippingFunction = () => {
+        let forcedSkipTime: number = null;
+
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
+
+            if (Config.config.disableAutoSkip) {
+                forcedSkipTime = skipTime[0] + 0.001;
+            } else {
+                forcedSkipTime = skipTime[1];
+            }
         }
 
-        startSponsorSchedule(skipTime[0] + 0.001);
+        startSponsorSchedule(forcedSkipTime);
     };
 
     if (timeUntilSponsor <= 0) {
@@ -495,6 +503,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             switchingVideos = false;
             startSponsorSchedule();
         });
+        video.addEventListener('playing', () => startSponsorSchedule());
         video.addEventListener('seeked', () => {
             if (!video.paused) startSponsorSchedule();
         });

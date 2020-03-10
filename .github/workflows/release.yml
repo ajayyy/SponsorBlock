@@ -1,6 +1,8 @@
 name: Upload Release Build
 
-on: release
+on: 
+  release:
+    types: [published]
 
 jobs:
 
