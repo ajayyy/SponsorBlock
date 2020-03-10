@@ -271,6 +271,8 @@ function invidiousOnClick(checkbox: HTMLInputElement, option: string) {
             if (!granted) {
                 Config.config[option] = false;
                 checkbox.checked = false;
+            } else {
+                checkbox.checked = true;
             }
         });
     } else {
