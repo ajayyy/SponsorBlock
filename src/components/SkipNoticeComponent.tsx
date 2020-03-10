@@ -290,7 +290,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         if (this.manualSkip) {
             this.changeNoticeTitle(chrome.i18n.getMessage("noticeTitle"));
 
-            if(Config.config.disableAutoSkip) this.contentContainer().vote(1, this.UUID);
+            if(Config.config.autoUpvote) this.contentContainer().vote(1, this.UUID);
         }
     }
 
