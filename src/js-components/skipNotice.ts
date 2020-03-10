@@ -1,5 +1,7 @@
 'use strict';
 
+import Config from "../config";
+
 /**
  * The notice that tells the user that a sponsor was just skipped
  */
@@ -305,7 +307,7 @@ class SkipNotice {
         if (this.manualSkip) {
             this.changeNoticeTitle(chrome.i18n.getMessage("noticeTitle"));
 
-            this.contentContainer().vote(1, this.UUID, this);
+            if (Config.config.autoUpvote) this.contentContainer().vote(1, this.UUID);
         }
     }
 
