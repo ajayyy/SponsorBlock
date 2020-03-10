@@ -84,12 +84,7 @@ class SBMap<T, U> extends Map {
 
         return result;
     }
-
-    toJSON() {
-        return Array.from(this.entries());
-    }
 }
-
 
 var Config: SBObject = {
     /**
@@ -131,14 +126,14 @@ var Config: SBObject = {
 
 /**
  * A SBMap cannot be stored in the chrome storage. 
- * This data will be encoded into an array instead as specified by the toJSON function.
+ * This data will be encoded into an array instead
  * 
  * @param data 
  */
 function encodeStoredItem(data) {
     // if data is SBMap convert to json for storing
     if(!(data instanceof SBMap)) return data;
-    return JSON.stringify(data);
+    return Array.from(data.entries());
 }
 
 /**
@@ -148,18 +143,30 @@ function encodeStoredItem(data) {
  * @param {*} data 
  */
 function decodeStoredItem(id: string, data) {
-    if(typeof data !== "string") return data;
-    
-    try {
-        let str = JSON.parse(data);
-        
-        if(!Array.isArray(str)) return data;
-        return new SBMap(id, str);
-    } catch(e) {
+    if (!Config.defaults[id]) return data;
 
-        // If all else fails, return the data
-        return data;
+    if (Config.defaults[id] instanceof SBMap) {
+        try {
+            let jsonData: any = data;
+
+            // Check if data is stored in the old format for SBMap (a JSON string)
+            if (typeof data === "string") {
+                try {	
+                    jsonData = JSON.parse(data);	   
+                } catch(e) {
+                    // Continue normally (out of this if statement)
+                }
+            }
+
+            if (!Array.isArray(jsonData)) return data;
+            return new SBMap(id, jsonData);
+        } catch(e) {
+            console.error("Failed to parse SBMap: " + id);
+        }
     }
+
+    // If all else fails, return the data
+    return data;
 }
 
 function configProxy(): any {
