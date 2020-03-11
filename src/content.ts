@@ -452,6 +452,7 @@ function cancelSponsorSchedule(): void {
  */
 function startSponsorSchedule(currentTime?: number): void {
     cancelSponsorSchedule();
+    if (video.paused) return;
 
     if (Config.config.disableSkipping || channelWhitelisted){
         return;
