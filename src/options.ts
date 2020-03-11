@@ -1,4 +1,6 @@
 import Config from "./config";
+// Make the config public for debugging purposes
+(<any> window).SB = Config;
 
 import Utils from "./utils";
 var utils = new Utils();
@@ -72,7 +74,7 @@ async function init() {
 
                 textChangeInput.value = Config.config[textChangeOption];
 
-                textChangeSetButton.addEventListener("click", () => {
+                textChangeSetButton.addEventListener("click", async () => {
                     // See if anything extra must be done
                     switch (textChangeOption) {
                         case "serverAddress":
@@ -82,6 +84,18 @@ async function init() {
                                 textChangeInput.value = result;
                             } else {
                                 return;
+                            }
+
+                            // Permission needed on Firefox
+                            if (utils.isFirefox()) {
+                                let permissionSuccess = await new Promise((resolve, reject) => {
+                                    chrome.permissions.request({
+                                        origins: [textChangeInput.value + "/"],
+                                        permissions: []
+                                    }, resolve);
+                                });
+
+                                if (!permissionSuccess) return;
                             }
 
                             break;
@@ -259,6 +273,8 @@ function invidiousOnClick(checkbox: HTMLInputElement, option: string) {
             if (!granted) {
                 Config.config[option] = false;
                 checkbox.checked = false;
+            } else {
+                checkbox.checked = true;
             }
         });
     } else {
@@ -345,15 +361,50 @@ function activatePrivateTextChange(element: HTMLElement) {
             element.querySelector(".option-hidden-section").classList.remove("hidden");
             return;
     }
-	
-    textBox.value = Config.config[option];
+    
+    let result = Config.config[option];
+
+    // See if anything extra must be done
+    switch (option) {
+        case "*":
+            result = JSON.stringify(Config.localConfig);
+            break;
+    }
+
+    textBox.value = result;
     
     let setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", () => {
         let confirmMessage = element.getAttribute("confirm-message");
 
         if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
-            Config.config[option] = textBox.value;
+            
+            // See if anything extra must be done
+            switch (option) {
+                case "*":
+                    try {
+                        let newConfig = JSON.parse(textBox.value);
+                        for (const key in newConfig) {
+                            Config.config[key] = newConfig[key];
+                        }
+
+                        init();
+
+                        if (newConfig.supportInvidious) {
+                            let checkbox = <HTMLInputElement> document.querySelector("#support-invidious > label > label > input");
+                            
+                            checkbox.checked = true;
+                            invidiousOnClick(checkbox, "supportInvidious");
+                        }
+                        
+                    } catch (e) {
+                        alert(chrome.i18n.getMessage("incorrectlyFormattedOptions"));
+                    }
+
+                    break;
+                default:
+                    Config.config[option] = textBox.value;
+            }
         }
     });
 

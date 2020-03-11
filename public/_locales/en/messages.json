@@ -160,7 +160,7 @@
          "message": "Click the button below when the sponsorship starts and ends to record and\nsubmit it to the database."
     },
     "popupHint": {
-         "message": "Hint: Press the semicolon key while focused on a video report the start/end of a sponsor and quote to submit. (This can be changed in the options)"
+         "message": "Hint: Press the semicolon key while focused on a video to report the start/end of a sponsor and quote to submit. (This can be changed in the options)"
     },
     "lastTimes": {
          "message": "Latest Sponsor Message Times Chosen"
@@ -226,7 +226,7 @@
         "message": "Show Notice Again"
     },
     "longDescription": {
-        "message": "SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that let's anyone submit the start and end time's of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment.",
+        "message": "SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -385,7 +385,7 @@
         "message": "Minimum duration (seconds):"
     },
     "minDurationDescription": {
-        "message": "Sponsor segments shorter than the set value will not be skipeed or show in the player."
+        "message": "Sponsor segments shorter than the set value will not be skipped or show in the player."
      },
     "shortCheck": {
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
@@ -425,6 +425,21 @@
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com is now supported"
+    },
+    "exportOptions": {
+        "message": "Import/Export All Options"
+    },
+    "whatExportOptions": {
+        "message": "This is your entire configuration in JSON. This includes your userID, so be sure to share this wisely."
+    },
+    "setOptions": {
+        "message": "Set Options"
+    },
+    "exportOptionsWarning": {
+        "message": "Warning: Changing the options is permanent and can break your install. Are you sure you would like to do this? Make sure to backup your old one just in case."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "This JSON is not formatted correctly. Your options have not been changed."
     },
     "confirmNoticeTitle" : {
         "message": "Submit Segment"

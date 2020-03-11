@@ -1,6 +1,8 @@
 name: Upload Release Build
 
-on: release
+on: 
+  release:
+    types: [published]
 
 jobs:
 
@@ -9,21 +11,68 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Build Artifacts
-      - name: Build Artifacts
-        uses: ./.github/workflows/ci
+      # Initialization
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - name: Copy configuration
+        run: cp config.json.example config.json
+
+      # Create Chrome artifacts
+      - name: Create Chrome artifacts
+        run: npm run build:chrome
+      - uses: actions/upload-artifact@v1
+        with:
+          name: ChromeExtension
+          path: dist
+      - run: mkdir ./builds
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./builds/ChromeExtension.zip ./dist
+
+      # Create Firefox artifacts
+      - name: Create Firefox artifacts
+        run: npm run build:firefox
+      - uses: actions/upload-artifact@v1
+        with:
+          name: FirefoxExtension
+          path: dist
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./builds/FirefoxExtension.zip ./dist
+
+      # Create Beta artifacts (Builds with the name changed to beta)
+      - name: Create Chrome Beta artifacts
+        run: npm run build:chrome -- --env.stream=beta
+      - uses: actions/upload-artifact@v1
+        with:
+          name: ChromeExtensionBeta
+          path: dist
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./builds/ChromeExtensionBeta.zip ./dist
+
+      - name: Create Firefox Beta artifacts
+        run: npm run build:firefox -- --env.stream=beta
+      - uses: actions/upload-artifact@v1
+        with:
+          name: FirefoxExtensionBeta
+          path: dist
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./builds/FirefoxExtensionBeta.zip ./dist
 
       # Upload each release asset
       - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
+        uses: Shopify/upload-to-release@master
         with:
-          args: ./builds/ChromeExtension.zip
+          args: builds/ChromeExtension.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
+        uses: Shopify/upload-to-release@master
         with:
-          args: ./builds/FirefoxExtension.zip
+          args: builds/FirefoxExtension.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 

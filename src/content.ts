@@ -48,6 +48,14 @@ var lastPreviewBarUpdate;
 //whether the duration listener listening for the duration changes of the video has been setup yet
 var durationListenerSetUp = false;
 
+// Is the video currently being switched
+var switchingVideos = null;
+
+// Used by the play and playing listeners to make sure two aren't
+// called at the same time
+var lastCheckTime = 0;
+var lastCheckVideoTime = -1;
+
 //the channel this video is about
 var channelURL;
 
@@ -246,6 +254,9 @@ document.onkeydown = function(e: KeyboardEvent){
 }
 
 function resetValues() {
+    lastCheckTime = 0;
+    lastCheckVideoTime = -1;
+
     //reset sponsor times
     sponsorTimes = null;
     UUIDs = [];
@@ -258,6 +269,8 @@ function resetValues() {
 
     //reset sponsor data found check
     sponsorDataFound = false;
+
+    switchingVideos = true;
 }
 
 async function videoIDChange(id) {
@@ -455,7 +468,7 @@ function startSponsorSchedule(currentTime?: number): void {
         return;
     }
 
-    if (currentTime === undefined) currentTime = video.currentTime;
+    if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
     let skipInfo = getNextSkipIndex(currentTime);
 
@@ -465,11 +478,19 @@ function startSponsorSchedule(currentTime?: number): void {
     let timeUntilSponsor = skipTime[0] - currentTime;
 
     let skippingFunction = () => {
+        let forcedSkipTime: number = null;
+
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
+
+            if (Config.config.disableAutoSkip) {
+                forcedSkipTime = skipTime[0] + 0.001;
+            } else {
+                forcedSkipTime = skipTime[1];
+            }
         }
 
-        startSponsorSchedule();
+        startSponsorSchedule(forcedSkipTime);
     };
 
     if (timeUntilSponsor <= 0) {
@@ -497,8 +518,29 @@ function sponsorsLookup(id: string, channelIDPromise?) {
     if (!seekListenerSetUp && !Config.config.disableSkipping) {
         seekListenerSetUp = true;
 
-        video.addEventListener('seeked', () => startSponsorSchedule());
-        video.addEventListener('play', () => startSponsorSchedule());
+        video.addEventListener('play', () => {
+            switchingVideos = false;
+
+             // Make sure it doesn't get double called with the playing event
+             if (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000) {
+                lastCheckTime = Date.now();
+                lastCheckVideoTime = video.currentTime;
+
+                startSponsorSchedule();
+            }
+        });
+        video.addEventListener('playing', () => {
+            // Make sure it doesn't get double called with the play event
+            if (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000) {
+                lastCheckTime = Date.now();
+                lastCheckVideoTime = video.currentTime;
+
+                startSponsorSchedule();
+            }
+        });
+        video.addEventListener('seeked', () => {
+            if (!video.paused) startSponsorSchedule();
+        });
         video.addEventListener('ratechange', () => startSponsorSchedule());
         video.addEventListener('seeking', cancelSponsorSchedule);
         video.addEventListener('pause', cancelSponsorSchedule);
@@ -573,10 +615,12 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 }
             }
 
-            if (zeroSecondSponsor) {
-                startSponsorSchedule(0);
-            } else {
-                startSponsorSchedule();
+            if (!video.paused && !switchingVideos) {
+                if (zeroSecondSponsor) {
+                    startSponsorSchedule(0);
+                } else {
+                    startSponsorSchedule();
+                }
             }
 
             // Reset skip save
@@ -839,16 +883,14 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
         }
 
         //send telemetry that a this sponsor was skipped
-        if (Config.config.trackViewCount && !sponsorSkipped[index]) {
+        if (Config.config.trackViewCount && !sponsorSkipped[index] && !Config.config.disableAutoSkip) {
             utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
-            if (!Config.config.disableAutoSkip) {
-                // Count this as a skip
-                Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
-                Config.config.skipCount = Config.config.skipCount + 1;
+            // Count this as a skip
+            Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
+            Config.config.skipCount = Config.config.skipCount + 1;
 
-                sponsorSkipped[index] = true;
-            }
+            sponsorSkipped[index] = true;
         }
     }
 }
