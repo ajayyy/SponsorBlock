@@ -17,7 +17,8 @@ interface ContentContainer {
         onMobileYouTube: boolean,
         sponsorSubmissionNotice: SubmissionNotice,
         resetSponsorSubmissionNotice: () => void,
-        changeStartSponsorButton: (showStartSponsor: any, uploadButtonVisible: any) => Promise<boolean>
+        changeStartSponsorButton: (showStartSponsor: any, uploadButtonVisible: any) => Promise<boolean>,
+        previewTime: (time: number) => void
     }
 }
 

@@ -51,7 +51,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 </span>
 
                 <span id={"sponsorTimePreviewButton" + this.props.index + this.props.idSuffix}
-                    className="sponsorTimeEditButton">
+                    className="sponsorTimeEditButton"
+                    onClick={this.previewTime.bind(this)}>
                     {chrome.i18n.getMessage("preview")}
                 </span>
 
@@ -61,6 +62,24 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 </span>
             </div>
         );
+    }
+
+    previewTime(): void {
+        let sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
+        let index = this.props.index;
+
+        let skipTime = sponsorTimes[index][0];
+
+        // if (document.getElementById("startTimeMinutes" + index) != null) {
+        //     //edit is currently open, use that time
+
+        //     skipTime = getSponsorTimeEditTimes("startTime", index);
+
+        //     //save the edit
+        //     saveSponsorTimeEdit(index, false);
+        // }
+
+        this.props.contentContainer().previewTime(skipTime - 2);
     }
 
     deleteTime(): void {
