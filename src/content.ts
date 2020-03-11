@@ -1,7 +1,9 @@
 import Config from "./config";
 
+import { ContentContainer } from "./types";
 import Utils from "./utils";
 var utils = new Utils();
+
 
 import runThePopup from "./popup";
 
@@ -91,20 +93,22 @@ var popupInitialised = false;
 var submissionNotice: SubmissionNotice = null;
 
 // Contains all of the functions and variables needed by the skip notice
-var skipNoticeContentContainer = () => ({
+var skipNoticeContentContainer: ContentContainer = () => ({
     vote,
     dontShowNoticeAgain,
     unskipSponsorTime,
     sponsorTimes,
     sponsorTimesSubmitting,
+    hiddenSponsorTimes,
     UUIDs,
     v: video,
+    sponsorVideoID,
     reskipSponsorTime,
-    hiddenSponsorTimes,
     updatePreviewBar,
     onMobileYouTube,
     sponsorSubmissionNotice: submissionNotice,
-    resetSponsorSubmissionNotice
+    resetSponsorSubmissionNotice,
+    changeStartSponsorButton
 });
 
 //get messages from the background script and the popup
@@ -1136,8 +1140,8 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-function vote(type, UUID, skipNotice: SkipNoticeComponent) {
-    if (skipNotice != null) {
+function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
+    if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
         skipNotice.addVoteButtonInfo.bind(skipNotice)("Loading...")
         skipNotice.setNoticeInfoMessage.bind(skipNotice)();

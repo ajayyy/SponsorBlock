@@ -187,7 +187,7 @@ async function submitTimes(videoID, callback) {
     let userID = Config.config.userID;
 		
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        let durationResult = <Types.videoDurationResponse> await new Promise((resolve, reject) => {
+        let durationResult = <Types.VideoDurationResponse> await new Promise((resolve, reject) => {
             chrome.tabs.query({
                 active: true,
                 currentWindow: true

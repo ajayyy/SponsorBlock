@@ -314,3 +314,20 @@
 	position:relative;
 	top:1px;
 }
+
+/* Submission Notice */
+
+.sponsorTimeDisplay {
+	font-size: 15px;
+}
+
+.sponsorTimeEditButton {
+	text-decoration: underline;
+
+	margin-left: 20px;
+	margin-right: 20px;
+
+	font-size: 13px;
+	
+	cursor: pointer;
+}

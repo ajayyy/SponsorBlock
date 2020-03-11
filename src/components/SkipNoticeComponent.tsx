@@ -1,5 +1,6 @@
 import * as React from "react";
 import Config from "../config"
+import { ContentContainer } from "../types";
 
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
@@ -8,7 +9,7 @@ export interface SkipNoticeProps {
     UUID: string;
     manualSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
-    contentContainer: () => any;
+    contentContainer: ContentContainer;
 }
 
 export interface SkipNoticeState {
@@ -28,7 +29,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     UUID: string;
     manualSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
-    contentContainer: () => any;
+    contentContainer: ContentContainer;
 
     amountOfPreviousNotices: number;
     

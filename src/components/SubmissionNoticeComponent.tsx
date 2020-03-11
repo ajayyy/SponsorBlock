@@ -1,32 +1,33 @@
 import * as React from "react";
 import Config from "../config"
+import { ContentContainer } from "../types";
 
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import SponsorTimeEditComponent from "./SponsorTimeEditComponent";
 
-export interface SkipNoticeProps { 
+export interface SubmissionNoticeProps { 
     // Contains functions and variables from the content script needed by the skip notice
-    contentContainer: () => any;
+    contentContainer: ContentContainer;
 
     callback: () => any;
 }
 
-export interface SkipNoticeState {
+export interface SubmissionNoticeeState {
     noticeTitle: string,
     messages: string[],
     idSuffix: string;
 }
 
-class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeState> {
+class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, SubmissionNoticeeState> {
     // Contains functions and variables from the content script needed by the skip notice
-    contentContainer: () => any;
+    contentContainer: ContentContainer;
 
     callback: () => any;
 
     noticeRef: React.MutableRefObject<NoticeComponent>;
 
-    constructor(props: SkipNoticeProps) {
+    constructor(props: SubmissionNoticeProps) {
         super(props);
         this.noticeRef = React.createRef();
 
@@ -101,7 +102,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 <SponsorTimeEditComponent key={i}
                     idSuffix={this.state.idSuffix}
                     index={i}
-                    contentContainer={this.props.contentContainer}>
+                    contentContainer={this.props.contentContainer}
+                    submissionNotice={this}>
                 </SponsorTimeEditComponent>
             )
         }
@@ -118,7 +120,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     text={this.state.messages[i]}
                     key={i}>
                 </NoticeTextSelectionComponent>
-            )
+            );
         }
 
         return elements;
@@ -135,7 +137,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         this.cancel();
     }
-
 }
 
-export default SkipNoticeComponent;
+export default SubmissionNoticeComponent;
