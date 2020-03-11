@@ -256,14 +256,18 @@ class Utils {
         xmlhttp.send();
     }
 
-    getFormattedTime(seconds) {
+    getFormattedTime(seconds: number, precise?: boolean) {
         let minutes = Math.floor(seconds / 60);
-        let secondsNum: number = Math.round(seconds - minutes * 60);
-        let secondsDisplay: string = String(secondsNum);
+        let secondsNum: number = seconds - minutes * 60;
+        if (!precise) {
+            secondsNum = Math.floor(secondsNum);
+        }
+
+        let secondsDisplay: string = String(secondsNum.toFixed(3));
         
         if (secondsNum < 10) {
             //add a zero
-            secondsDisplay = "0" + secondsNum;
+            secondsDisplay = "0" + secondsDisplay;
         }
 
         let formatted = minutes + ":" + secondsDisplay;

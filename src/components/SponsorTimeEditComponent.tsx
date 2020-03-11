@@ -40,8 +40,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             <div style={style}>
                 <div id={"sponsorTimesContainer" + this.props.index + this.props.idSuffix}
                     className="sponsorTimeDisplay">
-                        {utils.getFormattedTime(this.props.contentContainer().sponsorTimesSubmitting[this.props.index][0])
-                            + " to " + utils.getFormattedTime(this.props.contentContainer().sponsorTimesSubmitting[this.props.index][1])}
+                        {utils.getFormattedTime(this.props.contentContainer().sponsorTimesSubmitting[this.props.index][0], true)
+                            + " to " + utils.getFormattedTime(this.props.contentContainer().sponsorTimesSubmitting[this.props.index][1], true)}
                 </div>
 
                 <span id={"sponsorTimeDeleteButton" + this.props.index + this.props.idSuffix}
