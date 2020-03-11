@@ -259,7 +259,7 @@ function resetValues() {
     //reset sponsor data found check
     sponsorDataFound = false;
 
-    if (switchingVideos !== null || true) switchingVideos = true;
+    switchingVideos = true;
 }
 
 async function videoIDChange(id) {
