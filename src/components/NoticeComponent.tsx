@@ -6,11 +6,15 @@ export interface NoticeProps {
     maxCountdownTime?: () => number,
     amountOfPreviousNotices?: number,
     timed?: boolean,
-    idSuffix: string
+    idSuffix?: string,
+
+    fadeIn?: boolean
 }
 
 export interface NoticeState {
     noticeTitle: string,
+
+    maxCountdownTime?: () => number,
 
     countdownTime: number,
     countdownText: string,
@@ -25,21 +29,23 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     constructor(props: NoticeProps) {
         super(props);
 
-        if (props.maxCountdownTime === undefined) props.maxCountdownTime = () => 4;
+        let maxCountdownTime = props.maxCountdownTime || (() => 4);
     
         //the id for the setInterval running the countdown
         this.countdownInterval = null;
 
         this.amountOfPreviousNotices = props.amountOfPreviousNotices || 0;
 
-        this.idSuffix = props.idSuffix;
+        this.idSuffix = props.idSuffix || "";
 
         // Setup state
         this.state = {
             noticeTitle: props.noticeTitle,
 
+            maxCountdownTime,
+
             //the countdown until this notice closes
-            countdownTime: props.maxCountdownTime(),
+            countdownTime: maxCountdownTime(),
             countdownText: null,
         }
     }
@@ -55,7 +61,8 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         return (
             <table id={"sponsorSkipNotice" + this.idSuffix} 
-                className="sponsorSkipObject sponsorSkipNotice" style={noticeStyle}
+                className={"sponsorSkipObject sponsorSkipNotice" + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")}
+                style={noticeStyle}
                 onMouseEnter={this.pauseCountdown.bind(this)}
                 onMouseLeave={this.startCountdown.bind(this)}> <tbody>
 
@@ -141,7 +148,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         //reset countdown and inform the user
         this.setState({
-            countdownTime: this.props.maxCountdownTime(),
+            countdownTime: this.state.maxCountdownTime(),
             countdownText: chrome.i18n.getMessage("paused")
         });
         
@@ -158,7 +165,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         if (this.countdownInterval !== null) return;
 
         this.setState({
-            countdownTime: this.props.maxCountdownTime(),
+            countdownTime: this.state.maxCountdownTime(),
             countdownText: null
         });
 
@@ -169,7 +176,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         if (!this.props.timed) return;
 
         this.setState({
-            countdownTime: this.props.maxCountdownTime(),
+            countdownTime: this.state.maxCountdownTime(),
             countdownText: null
         });
     }

@@ -425,5 +425,23 @@
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com is now supported"
+    },
+    "confirmNoticeTitle" : {
+        "message": "Submit Segment"
+    },
+    "submit": {
+        "message": "Submit"
+    },
+    "cancel": {
+        "message": "Cancel"
+    },
+    "delete": {
+        "message": "Delete"
+    },
+    "preview": {
+        "message": "Preview"
+    },
+    "edit": {
+        "message": "Edit"
     }
 }

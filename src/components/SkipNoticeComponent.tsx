@@ -91,6 +91,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 amountOfPreviousNotices={this.amountOfPreviousNotices}
                 idSuffix={this.idSuffix}
+                fadeIn={true}
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
                 ref={this.noticeRef}>
@@ -167,7 +168,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         for (let i = 0; i < this.state.messages.length; i++) {
             elements.push(
                 <NoticeTextSelectionComponent idSuffix={this.idSuffix}
-                    text={this.state.messages[i]}>
+                    text={this.state.messages[i]}
+                    key={i}>
                 </NoticeTextSelectionComponent>
             )
         }

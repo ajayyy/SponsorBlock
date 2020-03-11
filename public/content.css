@@ -80,11 +80,13 @@
 
 	border-radius: 5px;
 
-	animation: fadeIn 0.5s;
-
 	border-spacing: 5px 10px;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.sponsorSkipNoticeFadeIn {
+	animation: fadeIn 0.5s;
 }
 
 .sponsorSkipNoticeFadeOut {

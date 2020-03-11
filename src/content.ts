@@ -8,6 +8,7 @@ import runThePopup from "./popup";
 import PreviewBar from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
+import SubmissionNotice from "./render/SubmissionNotice";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -87,18 +88,23 @@ var sponsorTimesSubmitting = [];
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
+var submissionNotice: SubmissionNotice = null;
+
 // Contains all of the functions and variables needed by the skip notice
 var skipNoticeContentContainer = () => ({
     vote,
     dontShowNoticeAgain,
     unskipSponsorTime,
     sponsorTimes,
+    sponsorTimesSubmitting,
     UUIDs,
     v: video,
     reskipSponsorTime,
     hiddenSponsorTimes,
     updatePreviewBar,
-    onMobileYouTube
+    onMobileYouTube,
+    sponsorSubmissionNotice: submissionNotice,
+    resetSponsorSubmissionNotice
 });
 
 //get messages from the background script and the popup
@@ -1205,11 +1211,20 @@ function sponsorMessageStarted(callback) {
     toggleStartSponsorButton();
 }
 
+/**
+ * Helper method for the submission notice to clear itself when it closes
+ */
+function resetSponsorSubmissionNotice() {
+    submissionNotice = null;
+}
+
 function submitSponsorTimes() {
     if (document.getElementById("submitButton").style.display == "none") {
         //don't submit, not ready
         return;
     }
+
+    if (submissionNotice !== null) return;
 
     //it can't update to this info yet
     closeInfoMenu();
@@ -1242,11 +1257,7 @@ function submitSponsorTimes() {
             }
         }
 
-        let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
-                                + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
-        if(!confirm(confirmMessage)) return;
-
-        sendSubmitMessage();
+        submissionNotice = new SubmissionNotice(skipNoticeContentContainer, sendSubmitMessage);
     }
 
 }
@@ -1314,7 +1325,7 @@ function getSponsorTimesMessage(sponsorTimes) {
 
     for (let i = 0; i < sponsorTimes.length; i++) {
         for (let s = 0; s < sponsorTimes[i].length; s++) {
-            let timeMessage = getFormattedTime(sponsorTimes[i][s]);
+            let timeMessage = utils.getFormattedTime(sponsorTimes[i][s]);
             //if this is an end time
             if (s == 1) {
                 timeMessage = " to " + timeMessage;
@@ -1375,22 +1386,6 @@ function addCSS() {
             }
         });
     }
-}
-
-//converts time in seconds to minutes:seconds
-function getFormattedTime(seconds) {
-    let minutes = Math.floor(seconds / 60);
-    let secondsNum: number = Math.round(seconds - minutes * 60);
-    let secondsDisplay: string = String(secondsNum);
-    
-    if (secondsNum < 10) {
-        //add a zero
-        secondsDisplay = "0" + secondsNum;
-    }
-
-    let formatted = minutes + ":" + secondsDisplay;
-
-    return formatted;
 }
 
 function sendRequestToCustomServer(type, fullAddress, callback) {

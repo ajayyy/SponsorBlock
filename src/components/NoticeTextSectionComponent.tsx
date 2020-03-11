@@ -10,10 +10,6 @@ export interface NoticeTextSelectionState {
 }
 
 class NoticeTextSelectionComponent extends React.Component<NoticeTextSelectionProps, NoticeTextSelectionState> {
-    countdownInterval: NodeJS.Timeout;
-    idSuffix: any;
-
-    amountOfPreviousNotices: number;
 
     constructor(props: NoticeTextSelectionProps) {
         super(props);

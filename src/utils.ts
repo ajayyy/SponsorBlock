@@ -256,6 +256,21 @@ class Utils {
         xmlhttp.send();
     }
 
+    getFormattedTime(seconds) {
+        let minutes = Math.floor(seconds / 60);
+        let secondsNum: number = Math.round(seconds - minutes * 60);
+        let secondsDisplay: string = String(secondsNum);
+        
+        if (secondsNum < 10) {
+            //add a zero
+            secondsDisplay = "0" + secondsNum;
+        }
+
+        let formatted = minutes + ":" + secondsDisplay;
+
+        return formatted;
+    }
+
     /**
      * Is this Firefox (web-extensions)
      */
