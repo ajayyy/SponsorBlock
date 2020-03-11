@@ -45,7 +45,12 @@ var lastPreviewBarUpdate;
 var durationListenerSetUp = false;
 
 // Is the video currently being switched
-var switchingVideos = false;
+var switchingVideos = null;
+
+// Used by the play and playing listeners to make sure two aren't
+// called at the same time
+var lastCheckTime = 0;
+var lastCheckVideoTime = -1;
 
 //the channel this video is about
 var channelURL;
@@ -238,6 +243,9 @@ document.onkeydown = function(e: KeyboardEvent){
 }
 
 function resetValues() {
+    lastCheckTime = 0;
+    lastCheckVideoTime = -1;
+
     //reset sponsor times
     sponsorTimes = null;
     UUIDs = [];
@@ -250,6 +258,8 @@ function resetValues() {
 
     //reset sponsor data found check
     sponsorDataFound = false;
+
+    if (switchingVideos !== null || true) switchingVideos = true;
 }
 
 async function videoIDChange(id) {
@@ -263,8 +273,6 @@ async function videoIDChange(id) {
 
 	//id is not valid
     if (!id) return;
-
-    switchingVideos = true;
 
     // Wait for options to be ready
     await utils.wait(() => Config.config !== null, 5000, 1);
@@ -501,9 +509,24 @@ function sponsorsLookup(id: string, channelIDPromise?) {
 
         video.addEventListener('play', () => {
             switchingVideos = false;
-            startSponsorSchedule();
+
+             // Make sure it doesn't get double called with the playing event
+             if (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000) {
+                lastCheckTime = Date.now();
+                lastCheckVideoTime = video.currentTime;
+
+                startSponsorSchedule();
+            }
         });
-        video.addEventListener('playing', () => startSponsorSchedule());
+        video.addEventListener('playing', () => {
+            // Make sure it doesn't get double called with the play event
+            if (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000) {
+                lastCheckTime = Date.now();
+                lastCheckVideoTime = video.currentTime;
+
+                startSponsorSchedule();
+            }
+        });
         video.addEventListener('seeked', () => {
             if (!video.paused) startSponsorSchedule();
         });
