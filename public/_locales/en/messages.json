@@ -440,5 +440,17 @@
     },
     "incorrectlyFormattedOptions": {
         "message": "This JSON is not formatted correctly. Your options have not been changed."
+    },
+    "copyDebugInformation": {
+        "message": "Copy Debug Information To Clipboard"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Failed to write to clipboard"
+    },
+    "copyDebugInformationOptions": {
+        "message": "Copies information to the clipboard to be provided to a developer when raising a bug / when a developer requests it. Sensitive information such as your user ID, whitelisted channels, and custom server address have been removed. However it does contain information such as your useragent, browser, operating system, and extension version number. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "The debug information has been copied to the clip board. Feel free to remove any information you would rather not share. Save this in a text file or paste into the bug report."
     }
 }

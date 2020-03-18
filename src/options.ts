@@ -1,4 +1,6 @@
 import Config from "./config";
+import * as CompileConfig from "../config.json";
+
 // Make the config public for debugging purposes
 (<any> window).SB = Config;
 
@@ -124,6 +126,16 @@ async function init() {
                 switch (privateTextChangeOption) {
                     case "invidiousInstances":
                         invidiousInstanceAddInit(<HTMLElement> optionsElements[i], privateTextChangeOption);
+                }
+
+                break;
+            case "button-press":
+                let actionButton = optionsElements[i].querySelector(".trigger-button");
+
+                switch(optionsElements[i].getAttribute("sync-option")) {
+                    case "copyDebugInformation":
+                        actionButton.addEventListener("click", copyDebugOutputToClipboard);
+                        break;
                 }
 
                 break;
@@ -432,4 +444,33 @@ function validateServerAddress(input: string): string {
     }
 
     return input;
+}
+
+function copyDebugOutputToClipboard() {
+    // Build output debug information object
+    let output = {
+        debug: {
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            extensionVersion: chrome.runtime.getManifest().version
+        },
+        config: JSON.parse(JSON.stringify(Config.localConfig)) // Deep clone config object
+    };
+    
+    // Sanitise sensitive user config values
+    delete output.config.userID;
+    output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress) 
+        ? "Default server address" : "Custom server address";
+    output.config.invidiousInstances = output.config.invidiousInstances.length;
+    output.config.whitelistedChannels = output.config.whitelistedChannels.length;
+
+    // Copy object to clipboard
+    navigator.clipboard.writeText(JSON.stringify(output, null, 4))
+      .then(() => {
+        alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
+      })
+      .catch(err => {
+        alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
+      });;
 }
