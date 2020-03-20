@@ -307,7 +307,7 @@ function activateKeybindChange(element: HTMLElement) {
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
     
-    document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
+    document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true}); 
 }
 
 /**
@@ -318,46 +318,49 @@ function activateKeybindChange(element: HTMLElement) {
  */
 function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
     var key = e.key;
+    if (["Shift", "Control", "Meta", "Alt"].indexOf(key) !== -1) {
+        document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
+    } else {
+        let button = element.querySelector(".trigger-button");
+        let option = element.getAttribute("sync-option");
 
-    let button = element.querySelector(".trigger-button");
-    let option = element.getAttribute("sync-option");
+        // Don't allow keys which are already listened for by youtube 
+        let restrictedKeys = "1234567890,.jklftcbmJKLFTCBM/<> -";
+        if (restrictedKeys.indexOf(key) !== -1 ) {
+            element.querySelector(".option-hidden-section").classList.add("hidden");
+            button.classList.remove("disabled");
+            alert("The key " + key + " is already used by youtube. Please select another key.");
+            return;
+        }
 
-    // Don't allow keys which are already listened for by youtube 
-    let restrictedKeys = Array.from("1234567890,.jklfcbm/<> -").concat(["Shift"]);
-    if (restrictedKeys.indexOf(key) !== -1 ) {
-        element.querySelector(".option-hidden-section").classList.add("hidden");
+        // Make sure keybind isn't used by the other listener
+        // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
+        let otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
+        if (key === otherKeybind) {
+            element.querySelector(".option-hidden-section").classList.add("hidden");
+            button.classList.remove("disabled");
+            alert("The key " + key + " is bound to another action. Please select another key.");
+            return;
+        }
+
+        // cancel setting a keybind
+        if (key === "Escape") {
+            element.querySelector(".option-hidden-section").classList.add("hidden");
+            button.classList.remove("disabled");
+            return;
+        }
+        
+
+        Config.config[option] = key;
+
+        let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
+        status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
+
+        let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
+        statusKey.innerText = key;
+
         button.classList.remove("disabled");
-        alert("The key '" + key + "' is already used by youtube. Please select another key.");
-        return;
     }
-
-    // Make sure keybind isn't used by the other listener
-    // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
-    let otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
-    if (key === otherKeybind) {
-        element.querySelector(".option-hidden-section").classList.add("hidden");
-        button.classList.remove("disabled");
-        alert("The key '" + key + "' is bound to another action. Please select another key.");
-        return;
-    }
-
-    // cancel setting a keybind
-    if (key === "Escape") {
-        element.querySelector(".option-hidden-section").classList.add("hidden");
-        button.classList.remove("disabled");
-        return;
-    }
-    
-
-    Config.config[option] = key;
-
-    let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
-    status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
-
-    let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
-    statusKey.innerText = key;
-
-    button.classList.remove("disabled");
 }
 
 /**
