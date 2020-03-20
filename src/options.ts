@@ -320,6 +320,26 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
     var key = e.key;
 
     let button = element.querySelector(".trigger-button");
+    let option = element.getAttribute("sync-option");
+
+    // Don't allow keys which are already listened for by youtube 
+    let restrictedKeys = Array.from("1234567890,.jklfcbm/<> -").concat(["Shift"]);
+    if (restrictedKeys.indexOf(key) !== -1 ) {
+        element.querySelector(".option-hidden-section").classList.add("hidden");
+        button.classList.remove("disabled");
+        alert("The key '" + key + "' is already used by youtube. Please select another key.");
+        return;
+    }
+
+    // Make sure keybind isn't used by the other listener
+    // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
+    let otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
+    if (key === otherKeybind) {
+        element.querySelector(".option-hidden-section").classList.add("hidden");
+        button.classList.remove("disabled");
+        alert("The key '" + key + "' is bound to another action. Please select another key.");
+        return;
+    }
 
     // cancel setting a keybind
     if (key === "Escape") {
@@ -327,8 +347,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         button.classList.remove("disabled");
         return;
     }
-
-    let option = element.getAttribute("sync-option");
+    
 
     Config.config[option] = key;
 
