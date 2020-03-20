@@ -318,14 +318,14 @@ function activateKeybindChange(element: HTMLElement) {
  */
 function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
     var key = e.key;
-    if (["Shift", "Control", "Meta", "Alt"].indexOf(key) !== -1) {
+    if (["Shift", "Control", "Meta", "Alt", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Tab"].indexOf(key) !== -1) {
         document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
     } else {
         let button = element.querySelector(".trigger-button");
         let option = element.getAttribute("sync-option");
 
         // Don't allow keys which are already listened for by youtube 
-        let restrictedKeys = "1234567890,.jklftcibmJKLFTCIBMN/<> -";
+        let restrictedKeys = "1234567890,.jklftcibmJKLFTCIBMNP/<> -+";
         if (restrictedKeys.indexOf(key) !== -1 ) {
             element.querySelector(".option-hidden-section").classList.add("hidden");
             button.classList.remove("disabled");
