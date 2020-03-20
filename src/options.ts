@@ -325,7 +325,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         let option = element.getAttribute("sync-option");
 
         // Don't allow keys which are already listened for by youtube 
-        let restrictedKeys = "1234567890,.jklftcbmJKLFTCBM/<> -";
+        let restrictedKeys = "1234567890,.jklftcibmJKLFTCIBMN/<> -";
         if (restrictedKeys.indexOf(key) !== -1 ) {
             element.querySelector(".option-hidden-section").classList.add("hidden");
             button.classList.remove("disabled");
