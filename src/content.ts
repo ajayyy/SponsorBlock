@@ -588,25 +588,25 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 UUIDs = smallUUIDs;
             }
 
-            // See if there are any zero second sponsors
-            let zeroSecondSponsor = false;
-            for (const time of sponsorTimes) {
-                if (time[0] <= 0) {
-                    zeroSecondSponsor = true;
-                    break;
-                }
-            }
-            if (!zeroSecondSponsor) {
-                for (const time of sponsorTimesSubmitting) {
-                    if (time[0] <= 0) {
-                        zeroSecondSponsor = true;
+            if (!video.paused && !switchingVideos) {
+                // See if there are any starting sponsors
+                let startingSponsor: number = -1;
+                for (const time of sponsorTimes) {
+                    if (time[0] <= video.currentTime && time[0] > startingSponsor) {
+                        startingSponsor = time[0];
                         break;
                     }
                 }
-            }
+                if (!startingSponsor) {
+                    for (const time of sponsorTimesSubmitting) {
+                        if (time[0] <= video.currentTime && time[0] > startingSponsor) {
+                            startingSponsor = time[0];
+                            break;
+                        }
+                    }
+                }
 
-            if (!video.paused && !switchingVideos) {
-                if (zeroSecondSponsor) {
+                if (startingSponsor !== -1) {
                     startSponsorSchedule(0);
                 } else {
                     startSponsorSchedule();
