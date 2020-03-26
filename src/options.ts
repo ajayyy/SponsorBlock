@@ -1,4 +1,6 @@
 import Config from "./config";
+import * as CompileConfig from "../config.json";
+
 // Make the config public for debugging purposes
 (<any> window).SB = Config;
 
@@ -124,6 +126,16 @@ async function init() {
                 switch (privateTextChangeOption) {
                     case "invidiousInstances":
                         invidiousInstanceAddInit(<HTMLElement> optionsElements[i], privateTextChangeOption);
+                }
+
+                break;
+            case "button-press":
+                let actionButton = optionsElements[i].querySelector(".trigger-button");
+
+                switch(optionsElements[i].getAttribute("sync-option")) {
+                    case "copyDebugInformation":
+                        actionButton.addEventListener("click", copyDebugOutputToClipboard);
+                        break;
                 }
 
                 break;
@@ -406,7 +418,12 @@ function activatePrivateTextChange(element: HTMLElement) {
     // See if anything extra must be done
     switch (option) {
         case "*":
-            result = JSON.stringify(Config.localConfig);
+            let jsonData = JSON.parse(JSON.stringify(Config.localConfig));
+
+            // Fix sponsorTimes data as it is destroyed from the JSON stringify
+            jsonData.sponsorTimes = Config.encodeStoredItem(Config.localConfig.sponsorTimes);
+
+            result = JSON.stringify(jsonData);
             break;
     }
 
@@ -426,7 +443,9 @@ function activatePrivateTextChange(element: HTMLElement) {
                         for (const key in newConfig) {
                             Config.config[key] = newConfig[key];
                         }
+                        Config.convertJSON();
 
+                        // Reload options on page
                         init();
 
                         if (newConfig.supportInvidious) {
@@ -471,4 +490,36 @@ function validateServerAddress(input: string): string {
     }
 
     return input;
+}
+
+function copyDebugOutputToClipboard() {
+    // Build output debug information object
+    let output = {
+        debug: {
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            extensionVersion: chrome.runtime.getManifest().version
+        },
+        config: JSON.parse(JSON.stringify(Config.localConfig)) // Deep clone config object
+    };
+
+    // Fix sponsorTimes data as it is destroyed from the JSON stringify
+    output.config.sponsorTimes = Config.encodeStoredItem(Config.localConfig.sponsorTimes);
+    
+    // Sanitise sensitive user config values
+    delete output.config.userID;
+    output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress) 
+        ? "Default server address" : "Custom server address";
+    output.config.invidiousInstances = output.config.invidiousInstances.length;
+    output.config.whitelistedChannels = output.config.whitelistedChannels.length;
+
+    // Copy object to clipboard
+    navigator.clipboard.writeText(JSON.stringify(output, null, 4))
+      .then(() => {
+        alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
+      })
+      .catch(err => {
+        alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
+      });;
 }

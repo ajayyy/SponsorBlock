@@ -33,6 +33,10 @@ interface SBObject {
     defaults: SBConfig;
     localConfig: SBConfig;
     config: SBConfig;
+
+    // Functions
+    encodeStoredItem<T>(data: T): T | Array<any>;
+    convertJSON(): void;
 }
 
 // Allows a SBMap to be conveted into json form
@@ -119,7 +123,11 @@ var Config: SBObject = {
         mobileUpdateShowCount: 0
     },
     localConfig: null,
-    config: null
+    config: null,
+    
+    // Functions
+    encodeStoredItem,
+    convertJSON
 };
 
 // Function setup
@@ -130,7 +138,7 @@ var Config: SBObject = {
  * 
  * @param data 
  */
-function encodeStoredItem(data) {
+function encodeStoredItem<T>(data: T): T | Array<any>  {
     // if data is SBMap convert to json for storing
     if(!(data instanceof SBMap)) return data;
     return Array.from(data.entries());
@@ -142,7 +150,7 @@ function encodeStoredItem(data) {
  * 
  * @param {*} data 
  */
-function decodeStoredItem(id: string, data) {
+function decodeStoredItem<T>(id: string, data: T): T | SBMap<string, any> {
     if (!Config.defaults[id]) return data;
 
     if (Config.defaults[id] instanceof SBMap) {
@@ -239,7 +247,7 @@ function resetConfig() {
     Config.config = Config.defaults;
 };
 
-function convertJSON() {
+function convertJSON(): void {
     Object.keys(Config.localConfig).forEach(key => {
         Config.localConfig[key] = decodeStoredItem(key, Config.localConfig[key]);
     });
