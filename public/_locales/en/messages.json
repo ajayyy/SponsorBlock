@@ -452,5 +452,14 @@
     },
     "copyDebugInformationComplete": {
         "message": "The debug information has been copied to the clip board. Feel free to remove any information you would rather not share. Save this in a text file or paste into the bug report."
+    },
+    "theKey": {
+        "message": "The key"
+    },
+    "keyAlreadyUsedByYouTube": {
+        "message": "is already used by youtube. Please select another key."
+    },
+    "keyAlreadyUsed": {
+        "message": "is bound to another action. Please select another key."
     }
 }

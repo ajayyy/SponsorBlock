@@ -344,9 +344,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         if (restrictedKeys.indexOf(key) !== -1 ) {
             closeKeybindOption(element, button);
 
-            // TODO: This should be localised
-            alert("The key " + key + " is already used by youtube. Please select another key.");
-
+            alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsedByYouTube"));
             return;
         }
 
@@ -356,9 +354,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         if (key === otherKeybind) {
             closeKeybindOption(element, button);
 
-            // TODO: This should be localised
-            alert("The key " + key + " is bound to another action. Please select another key.");
-
+            alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsed"));
             return;
         }
 
