@@ -319,7 +319,7 @@ function activateKeybindChange(element: HTMLElement) {
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
     
-    document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
+    document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true}); 
 }
 
 /**
@@ -331,25 +331,60 @@ function activateKeybindChange(element: HTMLElement) {
 function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
     var key = e.key;
 
-    let button = element.querySelector(".trigger-button");
+    if (["Shift", "Control", "Meta", "Alt", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Tab"].indexOf(key) !== -1) {
 
-    // cancel setting a keybind
-    if (key === "Escape") {
-        element.querySelector(".option-hidden-section").classList.add("hidden");
+        // Wait for more
+        document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
+    } else {
+        let button: HTMLElement = element.querySelector(".trigger-button");
+        let option = element.getAttribute("sync-option");
+
+        // Don't allow keys which are already listened for by youtube 
+        let restrictedKeys = "1234567890,.jklftcibmJKLFTCIBMNP/<> -+";
+        if (restrictedKeys.indexOf(key) !== -1 ) {
+            closeKeybindOption(element, button);
+
+            alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsedByYouTube"));
+            return;
+        }
+
+        // Make sure keybind isn't used by the other listener
+        // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
+        let otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
+        if (key === otherKeybind) {
+            closeKeybindOption(element, button);
+
+            alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsed"));
+            return;
+        }
+
+        // cancel setting a keybind
+        if (key === "Escape") {
+            closeKeybindOption(element, button);
+
+            return;
+        }
+        
+        Config.config[option] = key;
+
+        let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
+        status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
+
+        let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
+        statusKey.innerText = key;
+
         button.classList.remove("disabled");
-        return;
     }
+}
 
-    let option = element.getAttribute("sync-option");
-
-    Config.config[option] = key;
-
-    let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
-    status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
-
-    let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
-    statusKey.innerText = key;
-
+/**
+ * Closes the menu for editing the keybind
+ * 
+ * @param element 
+ * @param button 
+ */
+function closeKeybindOption(element: HTMLElement, button: HTMLElement) {
+    element.querySelector(".option-hidden-section").classList.add("hidden");
     button.classList.remove("disabled");
 }
 
