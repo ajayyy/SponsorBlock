@@ -379,7 +379,12 @@ function activatePrivateTextChange(element: HTMLElement) {
     // See if anything extra must be done
     switch (option) {
         case "*":
-            result = JSON.stringify(Config.localConfig);
+            let jsonData = JSON.parse(JSON.stringify(Config.localConfig));
+
+            // Fix sponsorTimes data as it is destroyed from the JSON stringify
+            jsonData.sponsorTimes = Config.encodeStoredItem(Config.localConfig.sponsorTimes);
+
+            result = JSON.stringify(jsonData);
             break;
     }
 
@@ -399,7 +404,9 @@ function activatePrivateTextChange(element: HTMLElement) {
                         for (const key in newConfig) {
                             Config.config[key] = newConfig[key];
                         }
+                        Config.convertJSON();
 
+                        // Reload options on page
                         init();
 
                         if (newConfig.supportInvidious) {
@@ -457,6 +464,9 @@ function copyDebugOutputToClipboard() {
         },
         config: JSON.parse(JSON.stringify(Config.localConfig)) // Deep clone config object
     };
+
+    // Fix sponsorTimes data as it is destroyed from the JSON stringify
+    output.config.sponsorTimes = Config.encodeStoredItem(Config.localConfig.sponsorTimes);
     
     // Sanitise sensitive user config values
     delete output.config.userID;
