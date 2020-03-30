@@ -533,11 +533,10 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 startSponsorSchedule();
             }
         });
-        video.addEventListener('seeked', () => {
+        video.addEventListener('seeking', () => {
             if (!video.paused) startSponsorSchedule();
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
-        video.addEventListener('seeking', cancelSponsorSchedule);
         video.addEventListener('pause', cancelSponsorSchedule);
 
         startSponsorSchedule();
