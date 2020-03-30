@@ -67,10 +67,12 @@ jobs:
         uses: Shopify/upload-to-release@master
         with:
           args: builds/ChromeExtension.zip
+          name: ChromeExtension.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload to release
         uses: Shopify/upload-to-release@master
         with:
           args: builds/FirefoxExtension.zip
+          name: FirefoxExtension.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
