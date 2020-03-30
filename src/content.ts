@@ -21,7 +21,7 @@ var UUIDs = [];
 var sponsorVideoID = null;
 
 // Skips are scheduled to ensure precision.
-// Skips are rescheduled every seeked event.
+// Skips are rescheduled every seeking event.
 // Skips are canceled every seeking event
 var currentSkipSchedule: NodeJS.Timeout = null;
 var seekListenerSetUp = false
@@ -34,6 +34,9 @@ var sponsorSkipped = [];
 
 //the video
 var video: HTMLVideoElement;
+
+/** The last time this video was seeking to */
+var lastVideoTime: number = null;
 
 var onInvidious;
 var onMobileYouTube;
@@ -534,10 +537,26 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             }
         });
         video.addEventListener('seeking', () => {
-            if (!video.paused) startSponsorSchedule();
+            // Reset lastCheckVideoTime
+            lastCheckVideoTime = -1
+            lastCheckTime = 0;
+
+            lastVideoTime = video.currentTime;
+
+            if (!video.paused){
+                startSponsorSchedule();
+            }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
-        video.addEventListener('pause', cancelSponsorSchedule);
+        video.addEventListener('pause', () => {
+            // Reset lastCheckVideoTime
+            lastCheckVideoTime = -1;
+            lastCheckTime = 0;
+
+            lastVideoTime = video.currentTime;
+
+            cancelSponsorSchedule();
+        });
 
         startSponsorSchedule();
     }
