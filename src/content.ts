@@ -890,13 +890,6 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
             
             let skipNotice = new SkipNotice(this, currentUUID, Config.config.disableAutoSkip, skipNoticeContentContainer);
 
-            //TODO: Remove this when Mobile support is old	
-            if (Config.config.mobileUpdateShowCount < 1) {	
-                skipNotice.addNoticeInfoMessage(chrome.i18n.getMessage("mobileUpdateInfo"));	
-
-                Config.config.mobileUpdateShowCount += 1;	
-            }
-
             //auto-upvote this sponsor
             if (Config.config.trackViewCount && !Config.config.disableAutoSkip && Config.config.autoUpvote) {
                 vote(1, currentUUID, null);
