@@ -259,7 +259,12 @@ function resetValues() {
     //reset sponsor data found check
     sponsorDataFound = false;
 
-    switchingVideos = true;
+    if (switchingVideos === null) {
+        // When first loading a video, it is not switching videos
+        switchingVideos = false;
+    } else {
+        switchingVideos = true;
+    }
 }
 
 async function videoIDChange(id) {
@@ -588,18 +593,18 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 UUIDs = smallUUIDs;
             }
 
-            if (!video.paused && !switchingVideos) {
+            if (!switchingVideos) {
                 // See if there are any starting sponsors
                 let startingSponsor: number = -1;
                 for (const time of sponsorTimes) {
-                    if (time[0] <= video.currentTime && time[0] > startingSponsor) {
+                    if (time[0] <= video.currentTime && time[0] > startingSponsor && time[1] > video.currentTime) {
                         startingSponsor = time[0];
                         break;
                     }
                 }
                 if (!startingSponsor) {
                     for (const time of sponsorTimesSubmitting) {
-                        if (time[0] <= video.currentTime && time[0] > startingSponsor) {
+                        if (time[0] <= video.currentTime && time[0] > startingSponsor && time[1] > video.currentTime) {
                             startingSponsor = time[0];
                             break;
                         }
@@ -607,7 +612,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 }
 
                 if (startingSponsor !== -1) {
-                    startSponsorSchedule(0);
+                    startSponsorSchedule(startingSponsor);
                 } else {
                     startSponsorSchedule();
                 }
