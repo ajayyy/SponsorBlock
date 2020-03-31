@@ -479,12 +479,24 @@ function startSponsorSchedule(currentTime?: number): void {
         let forcedSkipTime: number = null;
 
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
-            skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
+            // Double check that the videoID is correct
+            // TODO: Remove this bug catching if statement when the bug is found
+            let currentVideoID = getYouTubeVideoID(document.URL);
+            if (currentVideoID == sponsorVideoID) {
+                skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
 
-            if (Config.config.disableAutoSkip) {
-                forcedSkipTime = skipTime[0] + 0.001;
+                if (Config.config.disableAutoSkip) {
+                    forcedSkipTime = skipTime[0] + 0.001;
+                } else {
+                    forcedSkipTime = skipTime[1];
+                }
             } else {
-                forcedSkipTime = skipTime[1];
+                // Something has really gone wrong
+                console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
+                console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
+
+                // Video ID change occured
+                videoIDChange(currentVideoID);
             }
         }
 
