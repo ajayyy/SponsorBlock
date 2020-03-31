@@ -1,4 +1,6 @@
 import Config from "./config";
+import * as CompileConfig from "../config.json";
+
 // Make the config public for debugging purposes
 (<any> window).SB = Config;
 
@@ -124,6 +126,16 @@ async function init() {
                 switch (privateTextChangeOption) {
                     case "invidiousInstances":
                         invidiousInstanceAddInit(<HTMLElement> optionsElements[i], privateTextChangeOption);
+                }
+
+                break;
+            case "button-press":
+                let actionButton = optionsElements[i].querySelector(".trigger-button");
+
+                switch(optionsElements[i].getAttribute("sync-option")) {
+                    case "copyDebugInformation":
+                        actionButton.addEventListener("click", copyDebugOutputToClipboard);
+                        break;
                 }
 
                 break;
@@ -307,7 +319,7 @@ function activateKeybindChange(element: HTMLElement) {
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
     
-    document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
+    document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true}); 
 }
 
 /**
@@ -319,25 +331,60 @@ function activateKeybindChange(element: HTMLElement) {
 function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
     var key = e.key;
 
-    let button = element.querySelector(".trigger-button");
+    if (["Shift", "Control", "Meta", "Alt", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Tab"].indexOf(key) !== -1) {
 
-    // cancel setting a keybind
-    if (key === "Escape") {
-        element.querySelector(".option-hidden-section").classList.add("hidden");
+        // Wait for more
+        document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
+    } else {
+        let button: HTMLElement = element.querySelector(".trigger-button");
+        let option = element.getAttribute("sync-option");
+
+        // Don't allow keys which are already listened for by youtube 
+        let restrictedKeys = "1234567890,.jklftcibmJKLFTCIBMNP/<> -+";
+        if (restrictedKeys.indexOf(key) !== -1 ) {
+            closeKeybindOption(element, button);
+
+            alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsedByYouTube"));
+            return;
+        }
+
+        // Make sure keybind isn't used by the other listener
+        // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
+        let otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
+        if (key === otherKeybind) {
+            closeKeybindOption(element, button);
+
+            alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsed"));
+            return;
+        }
+
+        // cancel setting a keybind
+        if (key === "Escape") {
+            closeKeybindOption(element, button);
+
+            return;
+        }
+        
+        Config.config[option] = key;
+
+        let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
+        status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
+
+        let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
+        statusKey.innerText = key;
+
         button.classList.remove("disabled");
-        return;
     }
+}
 
-    let option = element.getAttribute("sync-option");
-
-    Config.config[option] = key;
-
-    let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
-    status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
-
-    let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
-    statusKey.innerText = key;
-
+/**
+ * Closes the menu for editing the keybind
+ * 
+ * @param element 
+ * @param button 
+ */
+function closeKeybindOption(element: HTMLElement, button: HTMLElement) {
+    element.querySelector(".option-hidden-section").classList.add("hidden");
     button.classList.remove("disabled");
 }
 
@@ -367,7 +414,12 @@ function activatePrivateTextChange(element: HTMLElement) {
     // See if anything extra must be done
     switch (option) {
         case "*":
-            result = JSON.stringify(Config.localConfig);
+            let jsonData = JSON.parse(JSON.stringify(Config.localConfig));
+
+            // Fix sponsorTimes data as it is destroyed from the JSON stringify
+            jsonData.sponsorTimes = Config.encodeStoredItem(Config.localConfig.sponsorTimes);
+
+            result = JSON.stringify(jsonData);
             break;
     }
 
@@ -387,7 +439,9 @@ function activatePrivateTextChange(element: HTMLElement) {
                         for (const key in newConfig) {
                             Config.config[key] = newConfig[key];
                         }
+                        Config.convertJSON();
 
+                        // Reload options on page
                         init();
 
                         if (newConfig.supportInvidious) {
@@ -432,4 +486,36 @@ function validateServerAddress(input: string): string {
     }
 
     return input;
+}
+
+function copyDebugOutputToClipboard() {
+    // Build output debug information object
+    let output = {
+        debug: {
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            extensionVersion: chrome.runtime.getManifest().version
+        },
+        config: JSON.parse(JSON.stringify(Config.localConfig)) // Deep clone config object
+    };
+
+    // Fix sponsorTimes data as it is destroyed from the JSON stringify
+    output.config.sponsorTimes = Config.encodeStoredItem(Config.localConfig.sponsorTimes);
+    
+    // Sanitise sensitive user config values
+    delete output.config.userID;
+    output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress) 
+        ? "Default server address" : "Custom server address";
+    output.config.invidiousInstances = output.config.invidiousInstances.length;
+    output.config.whitelistedChannels = output.config.whitelistedChannels.length;
+
+    // Copy object to clipboard
+    navigator.clipboard.writeText(JSON.stringify(output, null, 4))
+      .then(() => {
+        alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
+      })
+      .catch(err => {
+        alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
+      });;
 }

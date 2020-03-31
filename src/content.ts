@@ -25,7 +25,7 @@ var UUIDs = [];
 var sponsorVideoID = null;
 
 // Skips are scheduled to ensure precision.
-// Skips are rescheduled every seeked event.
+// Skips are rescheduled every seeking event.
 // Skips are canceled every seeking event
 var currentSkipSchedule: NodeJS.Timeout = null;
 var seekListenerSetUp = false
@@ -38,6 +38,9 @@ var sponsorSkipped = [];
 
 //the video
 var video: HTMLVideoElement;
+
+/** The last time this video was seeking to */
+var lastVideoTime: number = null;
 
 var onInvidious;
 var onMobileYouTube;
@@ -271,7 +274,12 @@ function resetValues() {
     //reset sponsor data found check
     sponsorDataFound = false;
 
-    switchingVideos = true;
+    if (switchingVideos === null) {
+        // When first loading a video, it is not switching videos
+        switchingVideos = false;
+    } else {
+        switchingVideos = true;
+    }
 }
 
 async function videoIDChange(id) {
@@ -483,12 +491,24 @@ function startSponsorSchedule(currentTime?: number): void {
         let forcedSkipTime: number = null;
 
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
-            skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
+            // Double check that the videoID is correct
+            // TODO: Remove this bug catching if statement when the bug is found
+            let currentVideoID = getYouTubeVideoID(document.URL);
+            if (currentVideoID == sponsorVideoID) {
+                skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
 
-            if (Config.config.disableAutoSkip) {
-                forcedSkipTime = skipTime[0] + 0.001;
+                if (Config.config.disableAutoSkip) {
+                    forcedSkipTime = skipTime[0] + 0.001;
+                } else {
+                    forcedSkipTime = skipTime[1];
+                }
             } else {
-                forcedSkipTime = skipTime[1];
+                // Something has really gone wrong
+                console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
+                console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
+
+                // Video ID change occured
+                videoIDChange(currentVideoID);
             }
         }
 
@@ -540,12 +560,27 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 startSponsorSchedule();
             }
         });
-        video.addEventListener('seeked', () => {
-            if (!video.paused) startSponsorSchedule();
+        video.addEventListener('seeking', () => {
+            // Reset lastCheckVideoTime
+            lastCheckVideoTime = -1
+            lastCheckTime = 0;
+
+            lastVideoTime = video.currentTime;
+
+            if (!video.paused){
+                startSponsorSchedule();
+            }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
-        video.addEventListener('seeking', cancelSponsorSchedule);
-        video.addEventListener('pause', cancelSponsorSchedule);
+        video.addEventListener('pause', () => {
+            // Reset lastCheckVideoTime
+            lastCheckVideoTime = -1;
+            lastCheckTime = 0;
+
+            lastVideoTime = video.currentTime;
+
+            cancelSponsorSchedule();
+        });
 
         startSponsorSchedule();
     }
@@ -600,26 +635,26 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 UUIDs = smallUUIDs;
             }
 
-            // See if there are any zero second sponsors
-            let zeroSecondSponsor = false;
-            for (const time of sponsorTimes) {
-                if (time[0] <= 0) {
-                    zeroSecondSponsor = true;
-                    break;
-                }
-            }
-            if (!zeroSecondSponsor) {
-                for (const time of sponsorTimesSubmitting) {
-                    if (time[0] <= 0) {
-                        zeroSecondSponsor = true;
+            if (!switchingVideos) {
+                // See if there are any starting sponsors
+                let startingSponsor: number = -1;
+                for (const time of sponsorTimes) {
+                    if (time[0] <= video.currentTime && time[0] > startingSponsor && time[1] > video.currentTime) {
+                        startingSponsor = time[0];
                         break;
                     }
                 }
-            }
+                if (!startingSponsor) {
+                    for (const time of sponsorTimesSubmitting) {
+                        if (time[0] <= video.currentTime && time[0] > startingSponsor && time[1] > video.currentTime) {
+                            startingSponsor = time[0];
+                            break;
+                        }
+                    }
+                }
 
-            if (!video.paused && !switchingVideos) {
-                if (zeroSecondSponsor) {
-                    startSponsorSchedule(0);
+                if (startingSponsor !== -1) {
+                    startSponsorSchedule(startingSponsor);
                 } else {
                     startSponsorSchedule();
                 }
