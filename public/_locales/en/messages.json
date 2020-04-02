@@ -483,5 +483,8 @@
     "to": {
         "message": "to",
         "description": "Used between sponsor times. Example: 1:20 to 1:30"
+    },
+    "bracketNow": {
+        "message": "(Now)"
     }
 }

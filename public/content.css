@@ -351,3 +351,10 @@ input::-webkit-inner-spin-button {
 .sponsorTimeEditSeconds {
 	width: 60px;
 }
+
+.sponsorNowButton {
+	font-size: 11px;
+
+	cursor: pointer;
+	text-decoration: underline;
+}

@@ -19,7 +19,7 @@ export interface SponsorTimeEditProps {
 
 export interface SponsorTimeEditState {
     editing: boolean;
-    sponsorTimeEdits: Array<Array<number>>;
+    sponsorTimeEdits: number[][];
 }
 
 class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, SponsorTimeEditState> {
@@ -61,6 +61,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             timeDisplay = (
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     className="sponsorTimeDisplay">
+
+                        <span id={"nowButton0" + this.idSuffix}
+                            className="sponsorNowButton"
+                            onClick={(() => this.setTimeToNow.bind(this)(0)).bind(this)}>
+                                {chrome.i18n.getMessage("bracketNow")}
+                        </span>
+
                         <input id={"submittingTimeMinutes0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditMinutes"
                             type="number"
@@ -112,12 +119,19 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                 this.setState({sponsorTimeEdits});
                             }}>
                         </input>
+
+                        <span id={"nowButton1" + this.idSuffix}
+                            className="sponsorNowButton"
+                            onClick={(() => this.setTimeToNow.bind(this)(1)).bind(this)}>
+                                {chrome.i18n.getMessage("bracketNow")}
+                        </span>
                 </div>
             );
         } else {
             timeDisplay = (
                 <div id={"sponsorTimesContainer" + this.idSuffix}
-                    className="sponsorTimeDisplay">
+                    className="sponsorTimeDisplay"
+                    onClick={this.toggleEditTime.bind(this)}>
                         {utils.getFormattedTime(sponsorTime[0], true) +
                             ((sponsorTime.length >= 1) ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(sponsorTime[1], true) : "")}
                 </div>
@@ -154,6 +168,17 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         );
     }
 
+    setTimeToNow(index: number) {
+        let sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+
+        sponsorTime[index] = 
+            this.props.contentContainer().v.currentTime;
+
+        this.setState({
+            sponsorTimeEdits: this.getFormattedSponsorTimesEdits(sponsorTime)
+        }, this.saveEditTimes);
+    }
+
     toggleEditTime(): void {
         if (this.state.editing) {
             
@@ -167,17 +192,22 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
             this.setState({
                 editing: true,
-                sponsorTimeEdits: [[utils.getFormattedMinutes(sponsorTime[0]), utils.getFormattedSeconds(sponsorTime[0])], 
-                                [utils.getFormattedMinutes(sponsorTime[1]), utils.getFormattedSeconds(sponsorTime[1])]]
+                sponsorTimeEdits: this.getFormattedSponsorTimesEdits(sponsorTime)
             });
         }
+    }
+
+    /** Returns an array in the sponsorTimeEdits form (minutes and seconds) from a normal seconds sponsor time */
+    getFormattedSponsorTimesEdits(sponsorTime: number[]): number[][] {
+        return [[utils.getFormattedMinutes(sponsorTime[0]), utils.getFormattedSeconds(sponsorTime[0])], 
+            [utils.getFormattedMinutes(sponsorTime[1]), utils.getFormattedSeconds(sponsorTime[1])]]
     }
 
     saveEditTimes() {
         // Save sponsorTimes
         this.props.contentContainer().sponsorTimesSubmitting[this.props.index] = 
-        [utils.getRawSeconds(this.state.sponsorTimeEdits[0][0], this.state.sponsorTimeEdits[0][1]),
-        utils.getRawSeconds(this.state.sponsorTimeEdits[1][0], this.state.sponsorTimeEdits[1][1])];
+            [utils.getRawSeconds(this.state.sponsorTimeEdits[0][0], this.state.sponsorTimeEdits[0][1]),
+            utils.getRawSeconds(this.state.sponsorTimeEdits[1][0], this.state.sponsorTimeEdits[1][1])];
 
         Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, this.props.contentContainer().sponsorTimesSubmitting);
 
