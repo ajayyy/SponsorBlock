@@ -1,6 +1,7 @@
 import * as React from "react";
 
-import Config from "../config"
+import Config from "../config";
+import * as CompileConfig from "../../config.json";
 
 import Utils from "../utils";
 import { ContentContainer } from "../types";
@@ -143,6 +144,17 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 
                 {timeDisplay}
 
+                {/* Category */}
+
+                <select id={"sponsorTimeCategories" + this.idSuffix}
+                    className="sponsorTimeCategories">
+                    {this.getCategoryOptions()}
+                </select>
+
+                <br/>
+
+                {/* Editing Tools */}
+
                 <span id={"sponsorTimeDeleteButton" + this.idSuffix}
                     className="sponsorTimeEditButton"
                     onClick={this.deleteTime.bind(this)}>
@@ -166,6 +178,20 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 ): ""}
             </div>
         );
+    }
+
+    getCategoryOptions() {
+        let elements = [];
+
+        for (const category of CompileConfig.categoryList) {
+            elements.push(
+                <option value={category}>
+                    {chrome.i18n.getMessage("category_" + category)}
+                </option>
+            );
+        }
+
+        return elements;
     }
 
     setTimeToNow(index: number) {

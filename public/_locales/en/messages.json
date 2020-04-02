@@ -484,7 +484,19 @@
         "message": "to",
         "description": "Used between sponsor times. Example: 1:20 to 1:30"
     },
-    "bracketNow": {
-        "message": "(Now)"
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_intro": {
+        "message": "Intro"
+    },
+    "category_outro": {
+        "message": "Outro"
+    },
+    "category_interaction": {
+        "message": "Interaction (Redundant Like, Subscribe, Follow, etc.)"
+    },
+    "category_merchandise": {
+        "message": "Merchandise and self-promotion"
     }
 }

@@ -358,3 +358,14 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 	text-decoration: underline;
 }
+
+.sponsorTimeCategories {
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	background-color: rgba(28, 28, 28, 0.9);
+    border-color: rgb(130,0,0,0.9);
+    color: white;
+    border-width: 3px;
+    padding: 3px;
+}
