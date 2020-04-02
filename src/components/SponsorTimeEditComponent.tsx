@@ -20,7 +20,7 @@ export interface SponsorTimeEditProps {
 
 export interface SponsorTimeEditState {
     editing: boolean;
-    sponsorTimeEdits: number[][];
+    sponsorTimeEdits: string[][];
 }
 
 class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, SponsorTimeEditState> {
@@ -75,7 +75,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             value={this.state.sponsorTimeEdits[0][0]}
                             onChange={(e) => {
                                 let sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[0][0] = parseFloat(e.target.value);
+                                sponsorTimeEdits[0][0] = e.target.value;
 
                                 this.setState({sponsorTimeEdits});
                             }}>
@@ -87,7 +87,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             value={this.state.sponsorTimeEdits[0][1]}
                             onChange={(e) => {
                                 let sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[0][1] = parseFloat(e.target.value);
+                                sponsorTimeEdits[0][1] = e.target.value;
 
                                 this.setState({sponsorTimeEdits});
                             }}>
@@ -103,7 +103,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             value={this.state.sponsorTimeEdits[1][0]}
                             onChange={(e) => {
                                 let sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[1][0] = parseFloat(e.target.value);
+                                sponsorTimeEdits[1][0] = e.target.value;
 
                                 this.setState({sponsorTimeEdits});
                             }}>
@@ -115,7 +115,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             value={this.state.sponsorTimeEdits[1][1]}
                             onChange={(e) => {
                                 let sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[1][1] = parseFloat(e.target.value);
+                                sponsorTimeEdits[1][1] = e.target.value;
 
                                 this.setState({sponsorTimeEdits});
                             }}>
@@ -224,16 +224,16 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     /** Returns an array in the sponsorTimeEdits form (minutes and seconds) from a normal seconds sponsor time */
-    getFormattedSponsorTimesEdits(sponsorTime: number[]): number[][] {
-        return [[utils.getFormattedMinutes(sponsorTime[0]), utils.getFormattedSeconds(sponsorTime[0])], 
-            [utils.getFormattedMinutes(sponsorTime[1]), utils.getFormattedSeconds(sponsorTime[1])]]
+    getFormattedSponsorTimesEdits(sponsorTime: number[]): string[][] {
+        return [[String(utils.getFormattedMinutes(sponsorTime[0])), String(utils.getFormattedSeconds(sponsorTime[0]))], 
+            [String(utils.getFormattedMinutes(sponsorTime[1])), String(utils.getFormattedSeconds(sponsorTime[1]))]];
     }
 
     saveEditTimes() {
         // Save sponsorTimes
         this.props.contentContainer().sponsorTimesSubmitting[this.props.index] = 
-            [utils.getRawSeconds(this.state.sponsorTimeEdits[0][0], this.state.sponsorTimeEdits[0][1]),
-            utils.getRawSeconds(this.state.sponsorTimeEdits[1][0], this.state.sponsorTimeEdits[1][1])];
+            [utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[0][0]), parseFloat(this.state.sponsorTimeEdits[0][1])),
+            utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[1][0]), parseFloat(this.state.sponsorTimeEdits[1][1]))];
 
         Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, this.props.contentContainer().sponsorTimesSubmitting);
 
