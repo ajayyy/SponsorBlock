@@ -161,14 +161,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 editing: false
             });
 
-            // Save sponsorTimes
-            this.props.contentContainer().sponsorTimesSubmitting[this.props.index] = 
-                [utils.getRawSeconds(this.state.sponsorTimeEdits[0][0], this.state.sponsorTimeEdits[0][1]),
-                utils.getRawSeconds(this.state.sponsorTimeEdits[1][0], this.state.sponsorTimeEdits[1][1])];
-
-            Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, this.props.contentContainer().sponsorTimesSubmitting);
-
-            this.props.contentContainer().updatePreviewBar();
+            this.saveEditTimes();            
         } else {
             let sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
 
@@ -180,20 +173,27 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
     }
 
+    saveEditTimes() {
+        // Save sponsorTimes
+        this.props.contentContainer().sponsorTimesSubmitting[this.props.index] = 
+        [utils.getRawSeconds(this.state.sponsorTimeEdits[0][0], this.state.sponsorTimeEdits[0][1]),
+        utils.getRawSeconds(this.state.sponsorTimeEdits[1][0], this.state.sponsorTimeEdits[1][1])];
+
+        Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, this.props.contentContainer().sponsorTimesSubmitting);
+
+        this.props.contentContainer().updatePreviewBar();
+    }
+
     previewTime(): void {
         let sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
         let index = this.props.index;
 
         let skipTime = sponsorTimes[index][0];
 
-        // if (document.getElementById("startTimeMinutes" + index) != null) {
-        //     //edit is currently open, use that time
-
-        //     skipTime = getSponsorTimeEditTimes("startTime", index);
-
-        //     //save the edit
-        //     saveSponsorTimeEdit(index, false);
-        // }
+        if (this.state.editing) {
+            // Save edits before previewing
+            this.saveEditTimes();
+        }
 
         this.props.contentContainer().previewTime(skipTime - 2);
     }
