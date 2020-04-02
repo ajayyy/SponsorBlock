@@ -54,7 +54,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 idSuffix={this.state.idSuffix}
-                ref={this.noticeRef}>
+                ref={this.noticeRef}
+                closeListener={this.cancel.bind(this)}>
 
                 {/* Text Boxes */}
                 {this.getMessageBoxes()}
@@ -127,7 +128,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     cancel() {
-        this.noticeRef.current.close();
+        this.noticeRef.current.close(true);
 
         this.contentContainer().resetSponsorSubmissionNotice();
     }
