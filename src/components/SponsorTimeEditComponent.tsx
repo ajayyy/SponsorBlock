@@ -166,6 +166,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 [utils.getRawSeconds(this.state.sponsorTimeEdits[0][0], this.state.sponsorTimeEdits[0][1]),
                 utils.getRawSeconds(this.state.sponsorTimeEdits[1][0], this.state.sponsorTimeEdits[1][1])];
 
+            Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, this.props.contentContainer().sponsorTimesSubmitting);
+
             this.props.contentContainer().updatePreviewBar();
         } else {
             let sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
