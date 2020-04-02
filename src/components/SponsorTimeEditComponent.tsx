@@ -38,12 +38,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     componentDidMount() {
-        // // Prevent inputs from triggering key events
-        // document.addEventListener("keydown", (event) => {
-        //     if (document.activeElement.classList.contains("sponsorTimeEdit")) {
-        //         event.stopPropagation();
-        //     }
-        // });
+        // Prevent inputs from triggering key events
+        document.getElementById("sponsorTimesContainer" + this.idSuffix).addEventListener('keydown', function (event) {
+            event.stopPropagation();
+        });
     }
 
     render() {
@@ -54,15 +52,6 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (this.props.index != 0) {
             style.marginTop = "15px";
         }
-
-        // // Prevent inputs from triggering key events
-        // document.addEventListener("keydown", (event) => {
-        //     if (document.activeElement.classList.contains("sponsorTimeEdit")) {
-        //         event.stopImmediatePropagation();
-        //         event.stopPropagation();
-        //         event.preventDefault();
-        //     }
-        // });
 
         // Create time display
         let timeDisplay: JSX.Element;
@@ -76,12 +65,6 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             className="sponsorTimeEdit sponsorTimeEditMinutes"
                             type="number"
                             value={this.state.sponsorTimeEdits[0][0]}
-                            onKeyDownCapture={(event) => event.stopPropagation()}
-                            onKeyDown={(event) => {
-                                event.stopPropagation();
-                            }}
-                            onKeyPress={(event) => event.stopPropagation()}
-                            onKeyPressCapture={(event) => event.stopPropagation()}
                             onChange={(e) => {
                                 let sponsorTimeEdits = this.state.sponsorTimeEdits;
                                 sponsorTimeEdits[0][0] = parseFloat(e.target.value);
