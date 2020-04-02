@@ -26,6 +26,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     callback: () => any;
 
     noticeRef: React.MutableRefObject<NoticeComponent>;
+    timeEditRefs: React.RefObject<SponsorTimeEditComponent>[];
 
     constructor(props: SubmissionNoticeProps) {
         super(props);
@@ -95,18 +96,24 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
 
     getSponsorTimeMessages(): JSX.Element[] | JSX.Element {
         let elements: JSX.Element[] = [];
+        this.timeEditRefs = [];
 
         let sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
 
         for (let i = 0; i < sponsorTimes.length; i++) {
+            let timeRef = React.createRef<SponsorTimeEditComponent>();
+
             elements.push(
                 <SponsorTimeEditComponent key={i}
                     idSuffix={this.state.idSuffix}
                     index={i}
                     contentContainer={this.props.contentContainer}
-                    submissionNotice={this}>
+                    submissionNotice={this}
+                    ref={timeRef}>
                 </SponsorTimeEditComponent>
-            )
+            );
+
+            this.timeEditRefs.push(timeRef);
         }
 
         return elements;
@@ -134,6 +141,11 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     submit() {
+        // save all items
+        for (const ref of this.timeEditRefs) {
+            ref.current.saveEditTimes();
+        }
+
         this.props.callback();
 
         this.cancel();
