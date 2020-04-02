@@ -133,7 +133,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
                         {utils.getFormattedTime(sponsorTime[0], true) +
-                            ((sponsorTime.length >= 1) ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(sponsorTime[1], true) : "")}
+                            ((!isNaN(sponsorTime[1])) ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(sponsorTime[1], true) : "")}
                 </div>
             );
         }
@@ -149,7 +149,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     {chrome.i18n.getMessage("delete")}
                 </span>
 
-                {(sponsorTime.length >= 1) ? (
+                {(!isNaN(sponsorTime[1])) ? (
                     <span id={"sponsorTimePreviewButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.previewTime.bind(this)}>
@@ -157,7 +157,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(sponsorTime.length >= 1) ? (
+                {(!isNaN(sponsorTime[1])) ? (
                     <span id={"sponsorTimeEditButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.toggleEditTime.bind(this)}>

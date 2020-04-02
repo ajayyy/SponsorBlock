@@ -9,7 +9,11 @@ class SubmissionNotice {
 
     callback: () => any;
 
+    noticeRef: React.MutableRefObject<SubmissionNoticeComponent>;
+
     constructor(contentContainer: () => any, callback: () => any) {
+        this.noticeRef = React.createRef();
+
         this.contentContainer = contentContainer;
         this.callback = callback;
 
@@ -38,9 +42,14 @@ class SubmissionNotice {
         ReactDOM.render(
             <SubmissionNoticeComponent
                 contentContainer={contentContainer}
-                callback={callback} />,
+                callback={callback} 
+                ref={this.noticeRef} />,
             noticeElement
         );
+    }
+
+    update() {
+        this.noticeRef.current.forceUpdate();
     }
 }
 

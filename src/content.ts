@@ -1105,6 +1105,10 @@ function updateSponsorTimesSubmitting() {
 
                 // Restart skipping schedule
                 startSponsorSchedule();
+
+                if (submissionNotice !== null) {
+                    submissionNotice.update();
+                }
             }
         }
     });
