@@ -211,6 +211,10 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
 
             break;
+        case "submitTimes":
+            submitSponsorTimes();
+
+            break;
     }
 }
 
@@ -1327,11 +1331,6 @@ function resetSponsorSubmissionNotice() {
 }
 
 function submitSponsorTimes() {
-    if (document.getElementById("submitButton").style.display == "none") {
-        //don't submit, not ready
-        return;
-    }
-
     if (submissionNotice !== null) return;
 
     //it can't update to this info yet
