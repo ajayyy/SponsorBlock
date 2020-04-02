@@ -331,3 +331,23 @@
 	
 	cursor: pointer;
 }
+
+.sponsorTimeEdit > input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sponsorTimeEdit {
+	font-size: 14px;
+
+	-moz-appearance: textfield;
+}
+
+.sponsorTimeEditMinutes {
+	width: 30px;
+}
+
+.sponsorTimeEditSeconds {
+	width: 60px;
+}

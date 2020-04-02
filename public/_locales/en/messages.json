@@ -479,5 +479,9 @@
     },
     "keyAlreadyUsed": {
         "message": "is bound to another action. Please select another key."
+    },
+    "to": {
+        "message": "to",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
     }
 }

@@ -18,13 +18,32 @@ export interface SponsorTimeEditProps {
 }
 
 export interface SponsorTimeEditState {
-
+    editing: boolean;
+    sponsorTimeEdits: Array<Array<number>>;
 }
 
 class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, SponsorTimeEditState> {
 
+    idSuffix: string;
+
     constructor(props: SponsorTimeEditProps) {
         super(props);
+
+        this.idSuffix = this.idSuffix;
+
+        this.state = {
+            editing: false,
+            sponsorTimeEdits: [[null, null], [null, null]]
+        };
+    }
+
+    componentDidMount() {
+        // // Prevent inputs from triggering key events
+        // document.addEventListener("keydown", (event) => {
+        //     if (document.activeElement.classList.contains("sponsorTimeEdit")) {
+        //         event.stopPropagation();
+        //     }
+        // });
     }
 
     render() {
@@ -36,32 +55,144 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             style.marginTop = "15px";
         }
 
+        // // Prevent inputs from triggering key events
+        // document.addEventListener("keydown", (event) => {
+        //     if (document.activeElement.classList.contains("sponsorTimeEdit")) {
+        //         event.stopImmediatePropagation();
+        //         event.stopPropagation();
+        //         event.preventDefault();
+        //     }
+        // });
+
+        // Create time display
+        let timeDisplay: JSX.Element;
+        let sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+        if (this.state.editing) {
+            
+            timeDisplay = (
+                <div id={"sponsorTimesContainer" + this.idSuffix}
+                    className="sponsorTimeDisplay">
+                        <input id={"submittingTimeMinutes0" + this.idSuffix}
+                            className="sponsorTimeEdit sponsorTimeEditMinutes"
+                            type="number"
+                            value={this.state.sponsorTimeEdits[0][0]}
+                            onKeyDownCapture={(event) => event.stopPropagation()}
+                            onKeyDown={(event) => {
+                                event.stopPropagation();
+                            }}
+                            onKeyPress={(event) => event.stopPropagation()}
+                            onKeyPressCapture={(event) => event.stopPropagation()}
+                            onChange={(e) => {
+                                let sponsorTimeEdits = this.state.sponsorTimeEdits;
+                                sponsorTimeEdits[0][0] = parseFloat(e.target.value);
+
+                                this.setState({sponsorTimeEdits});
+                            }}>
+                        </input>
+
+                        <input id={"submittingTimeSeconds0" + this.idSuffix}
+                            className="sponsorTimeEdit sponsorTimeEditSeconds"
+                            type="number"
+                            value={this.state.sponsorTimeEdits[0][1]}
+                            onChange={(e) => {
+                                let sponsorTimeEdits = this.state.sponsorTimeEdits;
+                                sponsorTimeEdits[0][1] = parseFloat(e.target.value);
+
+                                this.setState({sponsorTimeEdits});
+                            }}>
+                        </input>
+
+                        <span>
+                            {" " + chrome.i18n.getMessage("to") + " "}
+                        </span>
+
+                        <input id={"submittingTimeMinutes1" + this.idSuffix}
+                            className="sponsorTimeEdit sponsorTimeEditMinutes"
+                            type="text"
+                            value={this.state.sponsorTimeEdits[1][0]}
+                            onChange={(e) => {
+                                let sponsorTimeEdits = this.state.sponsorTimeEdits;
+                                sponsorTimeEdits[1][0] = parseFloat(e.target.value);
+
+                                this.setState({sponsorTimeEdits});
+                            }}>
+                        </input>
+
+                        <input id={"submittingTimeSeconds1" + this.idSuffix}
+                            className="sponsorTimeEdit sponsorTimeEditSeconds"
+                            type="text"
+                            value={this.state.sponsorTimeEdits[1][1]}
+                            onChange={(e) => {
+                                let sponsorTimeEdits = this.state.sponsorTimeEdits;
+                                sponsorTimeEdits[1][1] = parseFloat(e.target.value);
+
+                                this.setState({sponsorTimeEdits});
+                            }}>
+                        </input>
+                </div>
+            );
+        } else {
+            timeDisplay = (
+                <div id={"sponsorTimesContainer" + this.idSuffix}
+                    className="sponsorTimeDisplay">
+                        {utils.getFormattedTime(sponsorTime[0], true) +
+                            ((sponsorTime.length >= 1) ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(sponsorTime[1], true) : "")}
+                </div>
+            );
+        }
+
         return (
             <div style={style}>
-                <div id={"sponsorTimesContainer" + this.props.index + this.props.idSuffix}
-                    className="sponsorTimeDisplay">
-                        {utils.getFormattedTime(this.props.contentContainer().sponsorTimesSubmitting[this.props.index][0], true)
-                            + " to " + utils.getFormattedTime(this.props.contentContainer().sponsorTimesSubmitting[this.props.index][1], true)}
-                </div>
+                
+                {timeDisplay}
 
-                <span id={"sponsorTimeDeleteButton" + this.props.index + this.props.idSuffix}
+                <span id={"sponsorTimeDeleteButton" + this.idSuffix}
                     className="sponsorTimeEditButton"
                     onClick={this.deleteTime.bind(this)}>
                     {chrome.i18n.getMessage("delete")}
                 </span>
 
-                <span id={"sponsorTimePreviewButton" + this.props.index + this.props.idSuffix}
-                    className="sponsorTimeEditButton"
-                    onClick={this.previewTime.bind(this)}>
-                    {chrome.i18n.getMessage("preview")}
-                </span>
+                {(sponsorTime.length >= 1) ? (
+                    <span id={"sponsorTimePreviewButton" + this.idSuffix}
+                        className="sponsorTimeEditButton"
+                        onClick={this.previewTime.bind(this)}>
+                        {chrome.i18n.getMessage("preview")}
+                    </span>
+                ): ""}
 
-                <span id={"sponsorTimeEditButton" + this.props.index + this.props.idSuffix}
-                    className="sponsorTimeEditButton">
-                    {chrome.i18n.getMessage("edit")}
-                </span>
+                {(sponsorTime.length >= 1) ? (
+                    <span id={"sponsorTimeEditButton" + this.idSuffix}
+                        className="sponsorTimeEditButton"
+                        onClick={this.toggleEditTime.bind(this)}>
+                        {this.state.editing ? chrome.i18n.getMessage("save") : chrome.i18n.getMessage("edit")}
+                    </span>
+                ): ""}
             </div>
         );
+    }
+
+    toggleEditTime(): void {
+        if (this.state.editing) {
+            
+            this.setState({
+                editing: false
+            });
+
+            // Save sponsorTimes
+            this.props.contentContainer().sponsorTimesSubmitting[this.props.index] = 
+                [utils.getRawSeconds(this.state.sponsorTimeEdits[0][0], this.state.sponsorTimeEdits[0][1]),
+                utils.getRawSeconds(this.state.sponsorTimeEdits[1][0], this.state.sponsorTimeEdits[1][1])];
+
+            this.props.contentContainer().updatePreviewBar();
+        } else {
+            let sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+
+            this.setState({
+                editing: true,
+                sponsorTimeEdits: [[utils.getFormattedMinutes(sponsorTime[0]), utils.getFormattedSeconds(sponsorTime[0])], 
+                                [utils.getFormattedMinutes(sponsorTime[1]), utils.getFormattedSeconds(sponsorTime[1])]]
+            });
+        }
     }
 
     previewTime(): void {

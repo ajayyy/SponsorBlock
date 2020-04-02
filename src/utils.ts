@@ -256,6 +256,14 @@ class Utils {
         xmlhttp.send();
     }
 
+    getFormattedMinutes(seconds: number) {
+        return Math.floor(seconds / 60);
+    }
+
+    getFormattedSeconds(seconds: number) {
+        return seconds % 60;
+    }
+
     getFormattedTime(seconds: number, precise?: boolean) {
         let minutes = Math.floor(seconds / 60);
         let secondsNum: number = seconds - minutes * 60;
@@ -273,6 +281,10 @@ class Utils {
         let formatted = minutes + ":" + secondsDisplay;
 
         return formatted;
+    }
+
+    getRawSeconds(minutes: number, seconds: number): number {
+        return minutes * 60 + seconds;
     }
 
     /**
