@@ -185,7 +185,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         for (const category of CompileConfig.categoryList) {
             elements.push(
-                <option value={category}>
+                <option value={category}
+                        key={category}>
                     {chrome.i18n.getMessage("category_" + category)}
                 </option>
             );
