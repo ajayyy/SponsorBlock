@@ -26,9 +26,11 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
     render() {
         return (
             <table id="categoryChooserTable"
-                className="categoryChooserTable"> <tbody>
-                {this.getCategorySkipOptions()}
-            </tbody> </table>
+                className="categoryChooserTable"> 
+                <tbody>
+                    {this.getCategorySkipOptions()}
+                </tbody> 
+            </table>
         );
     }
 
@@ -38,7 +40,8 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
         for (const category of CompileConfig.categoryList) {
             elements.push(
                 <CategorySkipOptionsComponent category={category}
-                    defaultColor={"00d400"}>
+                    defaultColor={"00d400"}
+                    key={category}>
                 </CategorySkipOptionsComponent>
             );
         }
