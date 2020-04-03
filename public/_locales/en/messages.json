@@ -498,5 +498,14 @@
     },
     "category_merchandise": {
         "message": "Merchandise and self-promotion"
+    },
+    "disable": {
+        "message": "Disable"
+    },
+    "manualSkip": {
+        "message": "Manual Skip"
+    },
+    "autoSkip": {
+        "message": "Auto Skip"
     }
 }
