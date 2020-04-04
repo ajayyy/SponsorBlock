@@ -26,13 +26,20 @@ interface VideoDurationResponse {
     duration: number;
 }
 
+enum CategorySkipOption {
+    ShowOverlay,
+    ManualSkip,
+    AutoSkip
+}
+
 interface CategorySelection {
     name: string;
-    autoSkip: boolean;
+    option: CategorySkipOption
 }
 
 export {
     VideoDurationResponse,
     ContentContainer,
+    CategorySkipOption,
     CategorySelection
 };

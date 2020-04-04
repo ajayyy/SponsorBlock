@@ -510,5 +510,8 @@
     },
     "manualSkip": {
         "message": "Manual Skip"
+    },
+    "showOverlay": {
+        "message": "Show Overlay On Player"
     }
 }
