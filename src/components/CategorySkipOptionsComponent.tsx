@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import Config from "../config"
+import { CategorySkipOption } from "../types";
 
 export interface CategorySkipOptionsProps { 
     category: string;
@@ -27,7 +28,17 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         // Set the default opton properly
         for (const categorySelection of Config.config.categorySelections) {
             if (categorySelection.name === this.props.category) {
-                defaultOption = categorySelection.autoSkip ? "autoSkip" : "manualSkip";
+                switch (categorySelection.option) {
+                    case CategorySkipOption.ShowOverlay:
+                        defaultOption = "showOverlay";
+                        break;
+                    case CategorySkipOption.ManualSkip:
+                        defaultOption = "manualSkip";
+                        break;
+                    case CategorySkipOption.AutoSkip:
+                        defaultOption = "autoSkip";
+                        break;
+                }
             }
         }
 
@@ -54,22 +65,34 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     }
 
     skipOptionSelected(event: React.ChangeEvent<HTMLSelectElement>): void {
+        let option: CategorySkipOption;
+
+        this.removeCurrentCategorySelection();
+
         switch (event.target.value) {
             case "disable": 
-                this.removeCurrentCategorySelection();
+                return;
+            case "showOverlay":
+                option = CategorySkipOption.ShowOverlay;
 
                 break;
-            default:
-                this.removeCurrentCategorySelection();
+            case "manualSkip":
+                option = CategorySkipOption.ManualSkip;
 
-                Config.config.categorySelections.push({
-                    name: this.props.category,
-                    autoSkip: event.target.value === "autoSkip"
-                });
+                break;
+            case "autoSkip":
+                option = CategorySkipOption.AutoSkip;
 
-                // Forces the Proxy to send this to the chrome storage API
-                Config.config.categorySelections = Config.config.categorySelections;
+                break;
         }
+
+        Config.config.categorySelections.push({
+            name: this.props.category,
+            option: option
+        });
+
+        // Forces the Proxy to send this to the chrome storage API
+        Config.config.categorySelections = Config.config.categorySelections;
     }
 
     /** Removes this category from the config list of category selections */
@@ -89,8 +112,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
     getCategorySkipOptions(): JSX.Element[] {
         let elements: JSX.Element[] = [];
-
-        let optionNames = ["disable", "manualSkip", "autoSkip"];
+""
+        let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
 
         for (const optionName of optionNames) {
             elements.push(

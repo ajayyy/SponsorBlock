@@ -505,7 +505,7 @@
     "manualSkip": {
         "message": "Manual Skip"
     },
-    "autoSkip": {
-        "message": "Auto Skip"
+    "showOverlay": {
+        "message": "Show Overlay On Player"
     }
 }
