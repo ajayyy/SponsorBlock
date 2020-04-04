@@ -25,6 +25,7 @@ interface SBConfig {
     supportInvidious: boolean,
     serverAddress: string,
     minDuration: number,
+    audioNotificationOnSkip,
     checkForUnlistedVideos: boolean,
     mobileUpdateShowCount: number,
 
@@ -123,6 +124,7 @@ var Config: SBObject = {
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
         minDuration: 0,
+        audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         mobileUpdateShowCount: 0,
         categorySelections: [{

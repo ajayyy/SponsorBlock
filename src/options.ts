@@ -66,6 +66,10 @@ async function init() {
                             }
 
                             break;
+                        case "audioNotificationOnSkip":
+                            let audioNotificationOnSkip = <HTMLInputElement> document.querySelector("[sync-option='audioNotificationOnSkip'] > label > label > input");
+                            audioNotificationOnSkip.checked = Config.config[option];
+                            break;
                     }
                 });
                 break;
