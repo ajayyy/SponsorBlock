@@ -510,8 +510,5 @@
     },
     "manualSkip": {
         "message": "Manual Skip"
-    },
-    "autoSkip": {
-        "message": "Auto Skip"
     }
 }
