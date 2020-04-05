@@ -499,6 +499,9 @@
     "category_merchandise": {
         "message": "Merchandise and self-promotion"
     },
+    "category_offtopic": {
+        "message": "Offtopic tangent (Subjective)"
+    },
     "disable": {
         "message": "Disable"
     },
