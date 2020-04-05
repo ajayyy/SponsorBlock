@@ -227,12 +227,12 @@ async function submitTimes(videoID: string, callback) {
                             increasedContributionAmount = true;
                             Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimes.length;
                         }
-                    } else if (error) {
-                        callback({
-                            statusCode: -1
-                        });
                     }
-                }  
+                } else if (error) {
+                    callback({
+                        statusCode: -1
+                    });
+                }
             });
         }
     }
