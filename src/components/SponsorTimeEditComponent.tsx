@@ -4,7 +4,7 @@ import Config from "../config";
 import * as CompileConfig from "../../config.json";
 
 import Utils from "../utils";
-import { ContentContainer } from "../types";
+import { ContentContainer, SponsorTime } from "../types";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 var utils = new Utils();
 
@@ -225,16 +225,17 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     /** Returns an array in the sponsorTimeEdits form (minutes and seconds) from a normal seconds sponsor time */
-    getFormattedSponsorTimesEdits(sponsorTime: number[]): string[][] {
-        return [[String(utils.getFormattedMinutes(sponsorTime[0])), String(utils.getFormattedSeconds(sponsorTime[0]))], 
-            [String(utils.getFormattedMinutes(sponsorTime[1])), String(utils.getFormattedSeconds(sponsorTime[1]))]];
+    getFormattedSponsorTimesEdits(sponsorTime: SponsorTime): string[][] {
+        return [[String(utils.getFormattedMinutes(sponsorTime.segment[0])), String(utils.getFormattedSeconds(sponsorTime.segment[0]))], 
+            [String(utils.getFormattedMinutes(sponsorTime.segment[1])), String(utils.getFormattedSeconds(sponsorTime.segment[1]))]];
     }
 
     saveEditTimes() {
+        //TODO: Properly save categories and times
         // Save sponsorTimes
-        this.props.contentContainer().sponsorTimesSubmitting[this.props.index] = 
-            [utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[0][0]), parseFloat(this.state.sponsorTimeEdits[0][1])),
-            utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[1][0]), parseFloat(this.state.sponsorTimeEdits[1][1]))];
+        // this.props.contentContainer().sponsorTimesSubmitting[this.props.index] = 
+        //     [utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[0][0]), parseFloat(this.state.sponsorTimeEdits[0][1])),
+        //     utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[1][0]), parseFloat(this.state.sponsorTimeEdits[1][1]))];
 
         Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, this.props.contentContainer().sponsorTimesSubmitting);
 
@@ -260,7 +261,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         let index = this.props.index;
 
         //if it is not a complete sponsor time
-        if (sponsorTimes[index].length < 2) {
+        if (sponsorTimes[index].segment.length < 2) {
             //update video player
             this.props.contentContainer().changeStartSponsorButton(true, false);
         }

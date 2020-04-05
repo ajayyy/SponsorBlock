@@ -14,7 +14,7 @@ let barTypes = {
 		color: "#00d400",
 		opacity: "0.5"
 	},
-	"previewSponsor": {
+	"preview-sponsor": {
 		color: "#0000d4",
 		opacity: "0.5"
 	}

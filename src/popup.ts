@@ -1,6 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
+import { SponsorTime } from "./types";
 var utils = new Utils();
 
 interface MessageListener {
@@ -272,7 +273,7 @@ async function runThePopup(messageListener?: MessageListener) {
         );
     }
   
-    function infoFound(request) {
+    function infoFound(request: {found: boolean, sponsorTimes: SponsorTime[], hiddenSponsorTimes: number[]}) {
         if(chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
@@ -363,7 +364,7 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     //display the video times from the array at the top, in a different section
-    function displayDownloadedSponsorTimes(request) {
+    function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[], hiddenSponsorTimes: number[]}) {
         if (request.sponsorTimes != undefined) {
             //set it to the message
             if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
@@ -382,11 +383,11 @@ async function runThePopup(messageListener?: MessageListener) {
                     extraInfo = " (hidden)";
                 }
 
-                sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i][0]) + " to " + getFormattedTime(request.sponsorTimes[i][1]) + extraInfo;
+                sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " to " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
         
                 let votingButtons = document.createElement("div");
   
-                let UUID = request.UUIDs[i];
+                let UUID = request.sponsorTimes[i].UUID;
   
                 //thumbs up and down buttons
                 let voteButtonsContainer = document.createElement("div");
@@ -430,12 +431,12 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     //get the message that visually displays the video times
-    function getSponsorTimesMessage(sponsorTimes) {
+    function getSponsorTimesMessage(sponsorTimes: SponsorTime[]) {
         let sponsorTimesMessage = "";
   
         for (let i = 0; i < sponsorTimes.length; i++) {
-            for (let s = 0; s < sponsorTimes[i].length; s++) {
-                let timeMessage = getFormattedTime(sponsorTimes[i][s]);
+            for (let s = 0; s < sponsorTimes[i].segment.length; s++) {
+                let timeMessage = getFormattedTime(sponsorTimes[i].segment[s]);
                 //if this is an end time
                 if (s == 1) {
                     timeMessage = " to " + timeMessage;

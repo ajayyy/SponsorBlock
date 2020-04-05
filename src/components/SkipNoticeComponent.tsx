@@ -7,7 +7,7 @@ import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 
 export interface SkipNoticeProps { 
     UUID: string;
-    manualSkip: boolean;
+    autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 }
@@ -27,7 +27,7 @@ export interface SkipNoticeState {
 
 class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeState> {
     UUID: string;
-    manualSkip: boolean;
+    autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
@@ -42,12 +42,12 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.noticeRef = React.createRef();
 
         this.UUID = props.UUID;
-        this.manualSkip = props.manualSkip;
+        this.autoSkip = props.autoSkip;
         this.contentContainer = props.contentContainer;
     
         let noticeTitle = chrome.i18n.getMessage("noticeTitle");
     
-        if (this.manualSkip) {
+        if (!this.autoSkip) {
             noticeTitle = chrome.i18n.getMessage("noticeTitleNotSkipped");
         }
     
@@ -139,7 +139,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     </td>
 
                     {/* Never show button if manualSkip is disabled */}
-                    {this.manualSkip ? "" : 
+                    {!this.autoSkip ? "" : 
                         <td className="sponsorSkipNoticeRightSection">
                             <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
                                 onClick={this.contentContainer().dontShowNoticeAgain}>
@@ -223,7 +223,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
 
         // See if the title should be changed
-        if (this.manualSkip) {
+        if (!this.autoSkip) {
             this.setState({
                 noticeTitle: chrome.i18n.getMessage("noticeTitle")
             });
@@ -239,7 +239,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         //remove this sponsor from the sponsors looked up
         //find which one it is
         for (let i = 0; i < this.contentContainer().sponsorTimes.length; i++) {
-            if (this.contentContainer().UUIDs[i] == this.UUID) {
+            if (this.contentContainer().sponsorTimes[i].UUID == this.UUID) {
                 //this one is the one to hide
                 
                 //add this as a hidden sponsorTime

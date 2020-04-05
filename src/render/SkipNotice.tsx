@@ -5,13 +5,13 @@ import SkipNoticeComponent from "../components/SkipNoticeComponent";
 
 class SkipNotice {
     UUID: string;
-    manualSkip: boolean;
+    autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: () => any;
 
-    constructor(UUID: string, manualSkip: boolean = false, contentContainer) {
+    constructor(UUID: string, autoSkip: boolean = false, contentContainer) {
         this.UUID = UUID;
-        this.manualSkip = manualSkip;
+        this.autoSkip = autoSkip;
         this.contentContainer = contentContainer;
 
         //get reference node
@@ -41,7 +41,7 @@ class SkipNotice {
         referenceNode.prepend(noticeElement);
 
         ReactDOM.render(
-            <SkipNoticeComponent UUID={UUID} manualSkip={manualSkip} contentContainer={contentContainer} />,
+            <SkipNoticeComponent UUID={UUID} autoSkip={autoSkip} contentContainer={contentContainer} />,
             noticeElement
         );
     }

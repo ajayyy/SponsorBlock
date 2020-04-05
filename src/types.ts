@@ -6,10 +6,9 @@ interface ContentContainer {
         vote: (type: any, UUID: any, skipNotice?: SkipNoticeComponent) => void,
         dontShowNoticeAgain: () => void,
         unskipSponsorTime: (UUID: any) => void,
-        sponsorTimes: number[][],
-        sponsorTimesSubmitting: number[][],
-        hiddenSponsorTimes: any[],
-        UUIDs: any[],
+        sponsorTimes: SponsorTime[],
+        sponsorTimesSubmitting: SponsorTime[],
+        hiddenSponsorTimes: number[],
         v: HTMLVideoElement,
         sponsorVideoID,
         reskipSponsorTime: (UUID: any) => void,
@@ -37,9 +36,17 @@ interface CategorySelection {
     option: CategorySkipOption
 }
 
+interface SponsorTime {
+    segment: number[];
+    UUID: string;
+
+    category: string;
+}
+
 export {
     VideoDurationResponse,
     ContentContainer,
+    CategorySelection,
     CategorySkipOption,
-    CategorySelection
+    SponsorTime
 };

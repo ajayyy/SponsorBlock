@@ -1,4 +1,5 @@
 import Config from "./config";
+import { CategorySelection, SponsorTime } from "./types";
 
 class Utils {
     
@@ -152,6 +153,28 @@ class Utils {
         chrome.permissions.remove({
             origins: this.getInvidiousInstancesRegex()
         });
+    }
+
+    getSponsorIndexFromUUID(sponsorTimes: SponsorTime[], UUID: string): number {
+        for (let i = 0; i < sponsorTimes.length; i++) {
+            if (sponsorTimes[i].UUID === UUID) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    getSponsorTimeFromUUID(sponsorTimes: SponsorTime[], UUID: string): SponsorTime {
+        return sponsorTimes[this.getSponsorIndexFromUUID(sponsorTimes, UUID)];
+    }
+
+    getCategorySelection(category: string): CategorySelection {
+        for (const selection of Config.config.categorySelections) {
+            if (selection.name === category) {
+                return selection;
+            }
+        }
     }
 
     localizeHtmlPage() {
