@@ -32,6 +32,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     contentContainer: ContentContainer;
 
     amountOfPreviousNotices: number;
+    audio: HTMLAudioElement;
     
     idSuffix: any;
 
@@ -44,6 +45,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.UUID = props.UUID;
         this.autoSkip = props.autoSkip;
         this.contentContainer = props.contentContainer;
+        this.audio = null;
     
         let noticeTitle = chrome.i18n.getMessage("noticeTitle");
     
@@ -79,6 +81,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
+    componentDidMount() {
+        if (Config.config.audioNotificationOnSkip && this.audio) {
+            this.audio.volume = this.contentContainer().v.volume * 0.1;
+            this.audio.play();
+        }
+    }
+
     render() {
         let noticeStyle: React.CSSProperties = {
             zIndex: 50 + this.amountOfPreviousNotices
@@ -96,6 +105,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
                 ref={this.noticeRef}>
+                    
+                {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
+                    <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>
+                </audio>}
 
                 {/* Text Boxes */}
                 {this.getMessageBoxes()}

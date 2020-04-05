@@ -291,6 +291,12 @@
     "autoSkipDescription": {
         "message": "Auto skip will skip sponsors for you. If disabled, a notice will appear asking if you'd like to skip."
     },
+    "audioNotification": {
+        "message": "Audio Notification On Skip"
+    },
+    "audioNotificationDescription": {
+        "message": "Audio notification on skip will play a sound whenever a sponsor is skipped. If disabled (or auto skip is disabled), no sound will be played."
+    },
     "youHaveSkipped": {
         "message": "You have skipped "
     },
