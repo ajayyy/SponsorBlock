@@ -67,50 +67,52 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                 className={"sponsorSkipObject sponsorSkipNotice" + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")}
                 style={noticeStyle}
                 onMouseEnter={this.pauseCountdown.bind(this)}
-                onMouseLeave={this.startCountdown.bind(this)}> <tbody>
+                onMouseLeave={this.startCountdown.bind(this)}> 
+                <tbody>
 
-                {/* First row */}
-                <tr id={"sponsorSkipNoticeFirstRow" + this.idSuffix}>
-                    {/* Left column */}
-                    <td>
-                        {/* Logo */}
-                        <img id={"sponsorSkipLogo" + this.idSuffix} 
-                            className="sponsorSkipLogo sponsorSkipObject"
-                            src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
-                        </img>
+                    {/* First row */}
+                    <tr id={"sponsorSkipNoticeFirstRow" + this.idSuffix}>
+                        {/* Left column */}
+                        <td>
+                            {/* Logo */}
+                            <img id={"sponsorSkipLogo" + this.idSuffix} 
+                                className="sponsorSkipLogo sponsorSkipObject"
+                                src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
+                            </img>
 
-                        <span id={"sponsorSkipMessage" + this.idSuffix}
-                            className="sponsorSkipMessage sponsorSkipObject">
-                            
-                            {this.state.noticeTitle}
-                        </span>
-                    </td>
-
-                    {/* Right column */}
-                    <td className="sponsorSkipNoticeRightSection"
-                        style={{top: "11px"}}>
-                        
-                        {/* Time left */}
-                        {this.props.timed ? ( 
-                            <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
-                                className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
-
-                                {this.state.countdownText || (this.state.countdownTime + "s")}
+                            <span id={"sponsorSkipMessage" + this.idSuffix}
+                                className="sponsorSkipMessage sponsorSkipObject">
+                                
+                                {this.state.noticeTitle}
                             </span>
-                        ) : ""}
-                       
+                        </td>
 
-                        {/* Close button */}
-                        <img src={chrome.extension.getURL("icons/close.png")}
-                            className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeCloseButton sponsorSkipNoticeRightButton"
-                            onClick={() => this.close()}>
-                        </img>
-                    </td>
-                </tr> 
+                        {/* Right column */}
+                        <td className="sponsorSkipNoticeRightSection"
+                            style={{top: "11px"}}>
+                            
+                            {/* Time left */}
+                            {this.props.timed ? ( 
+                                <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
+                                    className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
 
-                {this.props.children}
+                                    {this.state.countdownText || (this.state.countdownTime + "s")}
+                                </span>
+                            ) : ""}
+                        
 
-            </tbody> </table>
+                            {/* Close button */}
+                            <img src={chrome.extension.getURL("icons/close.png")}
+                                className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeCloseButton sponsorSkipNoticeRightButton"
+                                onClick={() => this.close()}>
+                            </img>
+                        </td>
+                    </tr> 
+
+                    {this.props.children}
+
+                </tbody> 
+            </table>
         );
     }
 
