@@ -474,6 +474,9 @@ function startSponsorSchedule(currentTime?: number): void {
     let skipTime = currentSkip.segment;
     let timeUntilSponsor = skipTime[0] - currentTime;
 
+    // Don't skip if this category should not be skipped
+    if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ShowOverlay) return;
+
     let skippingFunction = () => {
         let forcedSkipTime: number = null;
 
