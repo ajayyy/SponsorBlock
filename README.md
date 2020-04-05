@@ -34,11 +34,15 @@ SponsorBlock is an extension that will skip over sponsored segments of YouTube v
 
 Also support Invidio.us.
 
+# Important Links
+
+See the [Wiki](https://github.com/ajayyy/SponsorBlock/wiki) for important links.
+
 # Server
 
 The backend server code is available here: https://github.com/ajayyy/SponsorBlockServer
 
-It is a simple Sqlite database that will hold all the timing data.
+It is a simple SQLite database that will hold all the timing data.
 
 To make sure that this project doesn't die, I have made the database publicly downloadable at https://sponsor.ajay.app/database.db. You can download a backup or get archive.org to take a backup for you if you want.
 
@@ -66,7 +70,7 @@ Run `npm run dev` to run the extension using a clean browser profile with hot re
 
 # Credit
 
-The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) previously was used.
+The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used.
 
 Originally forked from [YTSponsorSkip](https://github.com/OfficialNoob/YTSponsorSkip), but zero code remains.
 
