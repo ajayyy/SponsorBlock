@@ -956,7 +956,6 @@ function previewTime(time: number) {
 
 //skip from the start time to the end time for a certain index sponsor time
 function skipToTime(v: HTMLVideoElement, index: number, sponsorTimes: SponsorTime[], openNotice: boolean) {
-
     let autoSkip: boolean = utils.getCategorySelection(sponsorTimes[index].category).option === CategorySkipOption.AutoSkip;
 
     if (autoSkip || previewResetter !== null) {
@@ -970,7 +969,7 @@ function skipToTime(v: HTMLVideoElement, index: number, sponsorTimes: SponsorTim
 
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
-        if (!Config.config.dontShowNotice) {
+        if (!Config.config.dontShowNotice || !autoSkip) {
             let skipNotice = new SkipNotice(currentUUID, autoSkip, skipNoticeContentContainer);
 
             //auto-upvote this sponsor
@@ -995,14 +994,14 @@ function skipToTime(v: HTMLVideoElement, index: number, sponsorTimes: SponsorTim
 function unskipSponsorTime(UUID) {
     if (sponsorTimes != null) {
         //add a tiny bit of time to make sure it is not skipped again
-        video.currentTime = utils.getSponsorTimeFromUUID(sponsorTimes, UUID)[0] + 0.001;
+        video.currentTime = utils.getSponsorTimeFromUUID(sponsorTimes, UUID).segment[0] + 0.001;
     }
 }
 
 function reskipSponsorTime(UUID) {
     if (sponsorTimes != null) {
         //add a tiny bit of time to make sure it is not skipped again
-        video.currentTime = utils.getSponsorTimeFromUUID(sponsorTimes, UUID)[1];
+        video.currentTime = utils.getSponsorTimeFromUUID(sponsorTimes, UUID).segment[1];
     }
 }
 

@@ -32,7 +32,10 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     constructor(props: NoticeProps) {
         super(props);
 
-        let maxCountdownTime = props.maxCountdownTime || (() => 4);
+        let maxCountdownTime = () => {
+            if (this.props.maxCountdownTime) return this.props.maxCountdownTime();
+            else return 4;
+        };
     
         //the id for the setInterval running the countdown
         this.countdownInterval = null;

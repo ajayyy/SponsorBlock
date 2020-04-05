@@ -2,8 +2,12 @@ import * as React from "react";
 import Config from "../config"
 import { ContentContainer } from "../types";
 
+import Utils from "../utils";
+var utils = new Utils();
+
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
+
 
 export interface SkipNoticeProps { 
     UUID: string;
@@ -79,6 +83,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             unskipText: chrome.i18n.getMessage("unskip"),
             unskipCallback: this.unskip.bind(this)
         }
+
+        if (!this.autoSkip) {
+            Object.assign(this.state, this.getUnskippedModeInfo(chrome.i18n.getMessage("skip")));
+        }
     }
 
     componentDidMount() {
@@ -151,7 +159,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         </button>
                     </td>
 
-                    {/* Never show button if manualSkip is disabled */}
+                    {/* Never show button if autoSkip is enabled */}
                     {!this.autoSkip ? "" : 
                         <td className="sponsorSkipNoticeRightSection">
                             <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
@@ -198,29 +206,31 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     /** Sets up notice to be not skipped yet */
-    unskippedMode(buttonText) {
-        //setup new callback
-        this.setState({
-            unskipText: buttonText,
-            unskipCallback: this.reskip.bind(this)
+    unskippedMode(buttonText: string) {
+        //setup new callback and reset countdown
+        this.setState(this.getUnskippedModeInfo(buttonText), () => {
+            this.noticeRef.current.resetCountdown();
         });
+    }
 
+    getUnskippedModeInfo(buttonText: string) {
         let maxCountdownTime = function() {
-            let sponsorTime = this.contentContainer().sponsorTimes[this.contentContainer().UUIDs.indexOf(this.UUID)];
-            let duration = Math.round(sponsorTime[1] - this.contentContainer().v.currentTime);
+            let sponsorTime = utils.getSponsorTimeFromUUID(this.contentContainer().sponsorTimes, this.UUID);
+            let duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
 
             return Math.max(duration, 4);
         }.bind(this);
 
-        //reset countdown
-        this.setState({
+        return {
+            unskipText: buttonText,
+
+            unskipCallback: this.reskip.bind(this),
+
             //change max duration to however much of the sponsor is left
             maxCountdownTime: maxCountdownTime,
 
             countdownTime: maxCountdownTime()
-        }, () => {
-            this.noticeRef.current.resetCountdown();
-        });
+        }
     }
 
     reskip() {
