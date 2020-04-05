@@ -218,8 +218,11 @@ async function submitTimes(videoID: string, callback) {
                     + "&userID=" + userID, function(xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && !error) {
                     callback({
-                        statusCode: xmlhttp.status
+                        statusCode: xmlhttp.status,
+                        responseText: xmlhttp.responseText
                     });
+
+                    
 
                     if (xmlhttp.status == 200) {
                         //save the amount contributed

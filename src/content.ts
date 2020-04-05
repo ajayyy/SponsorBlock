@@ -1467,7 +1467,7 @@ function sendSubmitMessage(){
                 document.getElementById("submitButton").style.animation = "unset";
                 (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-                alert(utils.getErrorMessage(response.statusCode));
+                alert(utils.getErrorMessage(response.statusCode) + "\n\n" + response.responseText);
             }
         }
     });
