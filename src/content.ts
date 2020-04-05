@@ -1308,6 +1308,9 @@ function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
 
     let sponsorIndex = utils.getSponsorIndexFromUUID(sponsorTimes, UUID);
 
+    // Don't vote for preview sponsors
+    if (sponsorIndex == -1 || sponsorTimes[sponsorIndex].UUID === null) return;
+
     // See if the local time saved count and skip count should be saved
     if (type == 0 && sponsorSkipped[sponsorIndex] || type == 1 && !sponsorSkipped[sponsorIndex]) {
         let factor = 1;

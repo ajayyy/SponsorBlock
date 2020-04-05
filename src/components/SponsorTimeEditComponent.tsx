@@ -248,7 +248,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value;
 
-        Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
+        Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, utils.getSegmentsFromSponsorTimes(sponsorTimesSubmitting));
 
         this.props.contentContainer().updatePreviewBar();
     }
