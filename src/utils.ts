@@ -155,6 +155,20 @@ class Utils {
         });
     }
 
+    /**
+     * Gets just the timestamps from a sponsorTimes array
+     * 
+     * @param sponsorTimes 
+     */
+    getSegmentsFromSponsorTimes(sponsorTimes: SponsorTime[]): number[][] {
+        let segments: number[][] = [];
+        for (const sponsorTime of sponsorTimes) {
+            segments.push(sponsorTime.segment);
+        }
+
+        return segments;
+    }
+
     getSponsorIndexFromUUID(sponsorTimes: SponsorTime[], UUID: string): number {
         for (let i = 0; i < sponsorTimes.length; i++) {
             if (sponsorTimes[i].UUID === UUID) {

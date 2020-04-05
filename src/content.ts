@@ -824,13 +824,7 @@ function updatePreviewBar() {
         types.push("preview-" + sponsorTimesSubmitting[i].category);
     }
 
-    // Convert sponsorTimes into segments
-    let allSegments: number[][] = [];
-    for (const sponsorTime of allSponsorTimes) {
-        allSegments.push(sponsorTime.segment);
-    }
-
-    utils.wait(() => previewBar !== null).then((result) => previewBar.set(allSegments, types, video.duration));
+    utils.wait(() => previewBar !== null).then((result) => previewBar.set(utils.getSegmentsFromSponsorTimes(allSponsorTimes), types, video.duration));
 
     //update last video id
     lastPreviewBarUpdate = sponsorVideoID;
@@ -1287,7 +1281,7 @@ function clearSponsorTimes() {
     let sponsorTimes = Config.config.sponsorTimes.get(currentVideoID);
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes)
+        let confirmMessage = chrome.i18n.getMessage("clearThis") + getSegmentsMessage(sponsorTimes)
                                 + "\n" + chrome.i18n.getMessage("confirmMSG")
         if(!confirm(confirmMessage)) return;
 
@@ -1395,26 +1389,23 @@ function submitSponsorTimes() {
 
     let currentVideoID = sponsorVideoID;
 
-    let sponsorTimes =  Config.config.sponsorTimes.get(currentVideoID);
-
-    if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+    if (sponsorTimesSubmitting !== undefined && sponsorTimesSubmitting.length > 0) {
         //check if a sponsor exceeds the duration of the video
-        for (let i = 0; i < sponsorTimes.length; i++) {
-            if (sponsorTimes[i][1] > video.duration) {
-                sponsorTimes[i][1] = video.duration;
+        for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+            if (sponsorTimesSubmitting[i].segment[1] > video.duration) {
+                sponsorTimesSubmitting[i].segment[1] = video.duration;
             }
         }
-        //update sponsorTimes
-        Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
 
-        //update sponsorTimesSubmitting
-        sponsorTimesSubmitting = sponsorTimes;
+        //update sponsorTimes
+        Config.config.sponsorTimes.set(currentVideoID, utils.getSegmentsFromSponsorTimes(sponsorTimesSubmitting));
 
         // Check to see if any of the submissions are below the minimum duration set
         if (Config.config.minDuration > 0) {
-            for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i][1] - sponsorTimes[i][0] < Config.config.minDuration) {
-                    let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
+            for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+                if (sponsorTimesSubmitting[i].segment[1] - sponsorTimesSubmitting[i].segment[0] < Config.config.minDuration) {
+                    let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + 
+                        getSegmentsMessage(utils.getSegmentsFromSponsorTimes(sponsorTimesSubmitting));
                     
                     if(!confirm(confirmShort)) return;
                 }
@@ -1480,12 +1471,12 @@ function sendSubmitMessage(){
 }
 
 //get the message that visually displays the video times
-function getSponsorTimesMessage(sponsorTimes) {
+function getSegmentsMessage(segments: number[][]): string {
     let sponsorTimesMessage = "";
 
-    for (let i = 0; i < sponsorTimes.length; i++) {
-        for (let s = 0; s < sponsorTimes[i].length; s++) {
-            let timeMessage = utils.getFormattedTime(sponsorTimes[i][s]);
+    for (let i = 0; i < segments.length; i++) {
+        for (let s = 0; s < segments[i].length; s++) {
+            let timeMessage = utils.getFormattedTime(segments[i][s]);
             //if this is an end time
             if (s == 1) {
                 timeMessage = " to " + timeMessage;

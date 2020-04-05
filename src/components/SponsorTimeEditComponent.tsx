@@ -27,8 +27,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     idSuffix: string;
 
+    categoryOptionRef: React.RefObject<HTMLSelectElement>;
+
     constructor(props: SponsorTimeEditProps) {
         super(props);
+
+        this.categoryOptionRef = React.createRef();
 
         this.idSuffix = this.idSuffix;
 
@@ -57,8 +61,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         // Create time display
         let timeDisplay: JSX.Element;
         let sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+        let segment = sponsorTime.segment;
         if (this.state.editing) {
-            
             timeDisplay = (
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     className="sponsorTimeDisplay">
@@ -133,8 +137,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
-                        {utils.getFormattedTime(sponsorTime[0], true) +
-                            ((!isNaN(sponsorTime[1])) ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(sponsorTime[1], true) : "")}
+                        {utils.getFormattedTime(segment[0], true) +
+                            ((!isNaN(segment[1])) ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
                 </div>
             );
         }
@@ -147,7 +151,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 {/* Category */}
 
                 <select id={"sponsorTimeCategories" + this.idSuffix}
-                    className="sponsorTimeCategories">
+                    className="sponsorTimeCategories"
+                    defaultValue={sponsorTime.category}
+                    ref={this.categoryOptionRef}
+                    onChange={this.saveEditTimes.bind(this)}>
                     {this.getCategoryOptions()}
                 </select>
 
@@ -161,7 +168,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     {chrome.i18n.getMessage("delete")}
                 </span>
 
-                {(!isNaN(sponsorTime[1])) ? (
+                {(!isNaN(segment[1])) ? (
                     <span id={"sponsorTimePreviewButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.previewTime.bind(this)}>
@@ -169,7 +176,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(sponsorTime[1])) ? (
+                {(!isNaN(segment[1])) ? (
                     <span id={"sponsorTimeEditButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.toggleEditTime.bind(this)}>
@@ -198,7 +205,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     setTimeToNow(index: number) {
         let sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
 
-        sponsorTime[index] = 
+        sponsorTime.segment[index] = 
             this.props.contentContainer().v.currentTime;
 
         this.setState({
@@ -231,13 +238,17 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     saveEditTimes() {
-        //TODO: Properly save categories and times
-        // Save sponsorTimes
-        // this.props.contentContainer().sponsorTimesSubmitting[this.props.index] = 
-        //     [utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[0][0]), parseFloat(this.state.sponsorTimeEdits[0][1])),
-        //     utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[1][0]), parseFloat(this.state.sponsorTimeEdits[1][1]))];
+        let sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
 
-        Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, this.props.contentContainer().sponsorTimesSubmitting);
+        if (this.state.editing) {
+            sponsorTimesSubmitting[this.props.index].segment = 
+                [utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[0][0]), parseFloat(this.state.sponsorTimeEdits[0][1])),
+                utils.getRawSeconds(parseFloat(this.state.sponsorTimeEdits[1][0]), parseFloat(this.state.sponsorTimeEdits[1][1]))];
+        }
+
+        sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value;
+
+        Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 
         this.props.contentContainer().updatePreviewBar();
     }
