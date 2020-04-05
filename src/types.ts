@@ -43,10 +43,13 @@ interface SponsorTime {
     category: string;
 }
 
+type VideoID = string;
+
 export {
     VideoDurationResponse,
     ContentContainer,
     CategorySelection,
     CategorySkipOption,
-    SponsorTime
+    SponsorTime,
+    VideoID
 };
