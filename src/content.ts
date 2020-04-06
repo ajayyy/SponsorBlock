@@ -456,7 +456,7 @@ function cancelSponsorSchedule(): void {
  * 
  * @param currentTime Optional if you don't want to use the actual current time
  */
-function startSponsorSchedule(currentTime?: number): void {
+function startSponsorSchedule(includeIntersectingSegments: boolean = false, currentTime?: number): void {
     cancelSponsorSchedule();
     if (video.paused) return;
 
@@ -466,12 +466,12 @@ function startSponsorSchedule(currentTime?: number): void {
 
     if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
-    let skipInfo = getNextSkipIndex(currentTime);
+    let skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments);
 
     if (skipInfo.index === -1) return;
 
     let currentSkip = skipInfo.array[skipInfo.index];
-    let skipTime = currentSkip.segment;
+    let skipTime: number[] = [currentSkip.segment[0], skipInfo.array[skipInfo.endIndex].segment[1]];
     let timeUntilSponsor = skipTime[0] - currentTime;
 
     // Don't skip if this category should not be skipped
@@ -479,6 +479,7 @@ function startSponsorSchedule(currentTime?: number): void {
 
     let skippingFunction = () => {
         let forcedSkipTime: number = null;
+        let forcedIncludeIntersectingSegments = false;
 
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             // Double check that the videoID is correct
@@ -488,10 +489,11 @@ function startSponsorSchedule(currentTime?: number): void {
                 skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
 
                 // TODO: Know the autoSkip settings for ALL items being skipped
-                if (utils.getCategorySelection(currentSkip.category)) {
+                if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ManualSkip) {
                     forcedSkipTime = skipTime[0] + 0.001;
                 } else {
                     forcedSkipTime = skipTime[1];
+                    forcedIncludeIntersectingSegments = true;
                 }
             } else {
                 // Something has really gone wrong
@@ -503,7 +505,7 @@ function startSponsorSchedule(currentTime?: number): void {
             }
         }
 
-        startSponsorSchedule(forcedSkipTime);
+        startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime);
     };
 
     if (timeUntilSponsor <= 0) {
@@ -652,7 +654,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 }
 
                 if (startingSponsor !== -1) {
-                    startSponsorSchedule(startingSponsor);
+                    startSponsorSchedule(false, startingSponsor);
                 } else {
                     startSponsorSchedule();
                 }
@@ -847,15 +849,17 @@ function whitelistCheck() {
 /**
  * Returns info about the next upcoming sponsor skip
  */
-function getNextSkipIndex(currentTime: number): {array: SponsorTime[], index: number, endIndex: number, openNotice: boolean} {
-    let sponsorStartTimes = getStartTimes(sponsorTimes);
-    let sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, currentTime, true);
+function getNextSkipIndex(currentTime: number, includeIntersectingSegments: boolean): 
+        {array: SponsorTime[], index: number, endIndex: number, openNotice: boolean} {
+
+    let sponsorStartTimes = getStartTimes(sponsorTimes, includeIntersectingSegments);
+    let sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, includeIntersectingSegments, currentTime, true);
 
     let minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
     let endTimeIndex = getLatestEndTimeIndex(sponsorTimes, minSponsorTimeIndex);
 
-    let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting);
-    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, currentTime, false);
+    let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments);
+    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, false);
 
     let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
     let previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minPreviewSponsorTimeIndex);
@@ -905,7 +909,7 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
 
         if (currentSegment[0] <= latestEndTime && currentSegment[1] > latestEndTime 
             && (!hideHiddenSponsors || !hiddenSponsorTimes.includes(i))
-            && utils.getCategorySelection(sponsorTimes[index].category).option === CategorySkipOption.AutoSkip) {
+            && utils.getCategorySelection(sponsorTimes[i].category).option === CategorySkipOption.AutoSkip) {
                 // Overlapping segment
                 latestEndTimeIndex = i;
         }
@@ -926,14 +930,18 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
  * @param sponsorTimes 
  * @param minimum
  * @param hideHiddenSponsors
+ * @param includeIntersectingSegments If true, it will include segments that start before 
+ *  the current time, but end after
  */
-function getStartTimes(sponsorTimes: SponsorTime[], minimum?: number, hideHiddenSponsors: boolean = false): number[] {
+function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, minimum?: number, 
+        hideHiddenSponsors: boolean = false): number[] {
     if (sponsorTimes === null) return [];
 
     let startTimes: number[] = [];
 
     for (let i = 0; i < sponsorTimes.length; i++) {
-        if ((minimum === undefined || sponsorTimes[i].segment[0] >= minimum) && (!hideHiddenSponsors || !hiddenSponsorTimes.includes(i))) {
+        if ((minimum === undefined || (sponsorTimes[i].segment[0] >= minimum || (includeIntersectingSegments && sponsorTimes[i].segment[1] > minimum))) 
+                && (!hideHiddenSponsors || !hiddenSponsorTimes.includes(i))) {
             startTimes.push(sponsorTimes[i].segment[0]);
         } 
     }
@@ -1003,14 +1011,28 @@ function unskipSponsorTime(UUID) {
     if (sponsorTimes != null) {
         //add a tiny bit of time to make sure it is not skipped again
         video.currentTime = utils.getSponsorTimeFromUUID(sponsorTimes, UUID).segment[0] + 0.001;
+
+        checkIfInsideSegment();
     }
 }
 
 function reskipSponsorTime(UUID) {
     if (sponsorTimes != null) {
-        //add a tiny bit of time to make sure it is not skipped again
         video.currentTime = utils.getSponsorTimeFromUUID(sponsorTimes, UUID).segment[1];
+
+        // See if any skips need to be done if this is inside of another segment
+        startSponsorSchedule(true, utils.getSponsorTimeFromUUID(sponsorTimes, UUID).segment[1]);
     }
+}
+
+/**
+ * Checks if currently inside a segment and will trigger 
+ * a skip schedule if true.
+ * 
+ * This is used for when a manual skip is finished or a reskip is complete
+ */
+function checkIfInsideSegment() {
+    // for
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false): boolean {
