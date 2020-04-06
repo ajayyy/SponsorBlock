@@ -233,11 +233,14 @@ function fetchConfig() {
     });
 }
 
-function migrateOldFormats() { // Convert sponsorTimes format
-    for (const key in Config.localConfig) {
-        if (key.startsWith("sponsorTimes") && key !== "sponsorTimes" && key !== "sponsorTimesContributed") {
-            Config.config.sponsorTimes.set(key.substr(12), Config.config[key]);
-            delete Config.config[key];
+function migrateOldFormats() {
+    if (Config.config["disableAutoSkip"]) {
+        for (const selection of Config.config.categorySelections) {
+            if (selection.name === "sponsor") {
+                selection.option = CategorySkipOption.ManualSkip;
+
+                chrome.storage.sync.remove("disableAutoSkip");
+            }
         }
     }
 }

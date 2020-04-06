@@ -34,7 +34,7 @@ var seekListenerSetUp = false
 var hiddenSponsorTimes: number[] = [];
 
 /** @type {Array[boolean]} Has the sponsor been skipped */
-var sponsorSkipped = [];
+var sponsorSkipped: boolean[] = [];
 
 //the video
 var video: HTMLVideoElement;
