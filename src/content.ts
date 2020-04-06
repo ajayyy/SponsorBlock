@@ -485,7 +485,7 @@ function startSponsorSchedule(currentTime?: number): void {
             // TODO: Remove this bug catching if statement when the bug is found
             let currentVideoID = getYouTubeVideoID(document.URL);
             if (currentVideoID == sponsorVideoID) {
-                skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
+                skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
 
                 // TODO: Know the autoSkip settings for ALL items being skipped
                 if (utils.getCategorySelection(currentSkip.category)) {
@@ -909,6 +909,11 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
                 // Overlapping segment
                 latestEndTimeIndex = i;
         }
+    }
+
+    // Keep going if required
+    if (latestEndTimeIndex !== index) {
+        latestEndTimeIndex = getLatestEndTimeIndex(sponsorTimes, latestEndTimeIndex, hideHiddenSponsors);
     }
 
     return latestEndTimeIndex;
