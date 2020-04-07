@@ -810,6 +810,8 @@ function updatePreviewBarPositionMobile(parent: Element) {
 }
 
 function updatePreviewBar() {
+    if (previewBar === null || video === null) return;
+
     let localSponsorTimes = sponsorTimes;
     if (localSponsorTimes == null) localSponsorTimes = [];
 
@@ -829,8 +831,7 @@ function updatePreviewBar() {
         types.push("preview-" + sponsorTimesSubmitting[i].category);
     }
 
-    utils.wait(() => previewBar !== null && video !== null)
-        .then((result) => previewBar.set(utils.getSegmentsFromSponsorTimes(allSponsorTimes), types, video.duration));
+    previewBar.set(utils.getSegmentsFromSponsorTimes(allSponsorTimes), types, video.duration)
 
     //update last video id
     lastPreviewBarUpdate = sponsorVideoID;
