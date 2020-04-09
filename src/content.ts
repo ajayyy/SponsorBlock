@@ -624,7 +624,6 @@ function sponsorsLookup(id: string, channelIDPromise?) {
                 }
 
                 sponsorTimes = recievedSegments;
-                console.log(sponsorTimes)
     
                 // Remove all submissions smaller than the minimum duration
                 if (Config.config.minDuration !== 0) {
