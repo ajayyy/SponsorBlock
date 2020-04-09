@@ -11,7 +11,9 @@ export interface NoticeProps {
     fadeIn?: boolean,
 
     // Callback for when this is closed
-    closeListener?: () => void
+    closeListener?: () => void,
+
+    zIndex?: number
 }
 
 export interface NoticeState {
@@ -62,7 +64,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
     render() {
         let noticeStyle: React.CSSProperties = {
-            zIndex: 50 + this.amountOfPreviousNotices
+            zIndex: this.props.zIndex || (50 + this.amountOfPreviousNotices)
         }
 
         return (

@@ -46,17 +46,12 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     render() {
-        let noticeStyle: React.CSSProperties = {};
-        if (this.contentContainer().onMobileYouTube) {
-            noticeStyle.bottom = "4em";
-            noticeStyle.transform = "scale(0.8) translate(10%, 10%)";
-        }
-
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 idSuffix={this.state.idSuffix}
                 ref={this.noticeRef}
-                closeListener={this.cancel.bind(this)}>
+                closeListener={this.cancel.bind(this)}
+                zIndex={50000}>
 
                 {/* Text Boxes */}
                 {this.getMessageBoxes()}
