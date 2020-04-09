@@ -605,12 +605,13 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             categories
         }).then(async (response: Response) => {
             if (response.status === 200) {
-                sponsorDataFound = true;
-
                 let recievedSegments: SponsorTime[] = await response.json();
                 if (!recievedSegments.length) {
                     console.error("[SponsorBlock] Server returned malformed response: " + JSON.stringify(recievedSegments));
+                    return;
                 }
+
+                sponsorDataFound = true;
     
                 // Check if any old submissions should be kept
                 if (sponsorTimes !== null) {
