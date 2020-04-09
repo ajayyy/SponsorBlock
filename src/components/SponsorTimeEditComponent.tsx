@@ -190,7 +190,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     getCategoryOptions() {
         let elements = [];
 
-        for (const category of CompileConfig.categoryList) {
+        //TODO: Remove this when testing server is not needed
+        let categoryList = Config.config.testingServer ? CompileConfig.categoryList : ["sponsor"];
+        for (const category of categoryList) {
             elements.push(
                 <option value={category}
                         key={category}>
