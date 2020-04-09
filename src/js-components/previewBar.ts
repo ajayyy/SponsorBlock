@@ -8,15 +8,55 @@
 let barTypes = {
 	"undefined": {
 		color: "#00d400",
-		opacity: "0.5"
+		opacity: "0.7"
 	},
 	"sponsor": {
 		color: "#00d400",
-		opacity: "0.5"
+		opacity: "0.7"
 	},
 	"preview-sponsor": {
-		color: "#0000d4",
-		opacity: "0.5"
+		color: "#007800",
+		opacity: "0.7"
+	},
+	"intro": {
+		color: "#00ffff",
+		opacity: "0.7"
+	},
+	"preview-intro": {
+		color: "#008080",
+		opacity: "0.7"
+	},
+	"outro": {
+		color: "#0202ed",
+		opacity: "0.7"
+	},
+	"preview-outro": {
+		color: "#000070",
+		opacity: "0.7"
+	},
+	"interaction": {
+		color: "#cc00ff",
+		opacity: "0.7"
+	},
+	"preview-interaction": {
+		color: "#6c0087",
+		opacity: "0.7"
+	},
+	"merchandise": {
+		color: "#ffff00",
+		opacity: "0.7"
+	},
+	"preview-merchandise": {
+		color: "#bfbf35",
+		opacity: "0.7"
+	},
+	"offtopic": {
+		color: "#ff9900",
+		opacity: "0.7"
+	},
+	"preview-offtopic": {
+		color: "#a6634a",
+		opacity: "0.7"
 	}
 };
 
