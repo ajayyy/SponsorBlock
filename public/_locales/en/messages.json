@@ -502,8 +502,8 @@
     "category_interaction": {
         "message": "Interaction (Redundant Like, Subscribe, Follow, etc.)"
     },
-    "category_merchandise": {
-        "message": "Merchandise and self-promotion"
+    "category_selfpromo": {
+        "message": "Self-Promotion and Merchandise"
     },
     "category_offtopic": {
         "message": "Offtopic tangent (Subjective)"

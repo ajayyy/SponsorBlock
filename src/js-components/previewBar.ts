@@ -42,11 +42,11 @@ let barTypes = {
 		color: "#6c0087",
 		opacity: "0.7"
 	},
-	"merchandise": {
+	"selfpromo": {
 		color: "#ffff00",
 		opacity: "0.7"
 	},
-	"preview-merchandise": {
+	"preview-selfpromo": {
 		color: "#bfbf35",
 		opacity: "0.7"
 	},
