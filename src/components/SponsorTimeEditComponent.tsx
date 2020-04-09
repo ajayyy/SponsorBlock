@@ -34,7 +34,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         this.categoryOptionRef = React.createRef();
 
-        this.idSuffix = this.idSuffix;
+        this.idSuffix = this.props.idSuffix;
 
         this.state = {
             editing: false,

@@ -100,7 +100,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
 
             elements.push(
                 <SponsorTimeEditComponent key={i}
-                    idSuffix={this.state.idSuffix}
+                    idSuffix={this.state.idSuffix + i}
                     index={i}
                     contentContainer={this.props.contentContainer}
                     submissionNotice={this}
@@ -119,7 +119,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
 
         for (let i = 0; i < this.state.messages.length; i++) {
             elements.push(
-                <NoticeTextSelectionComponent idSuffix={this.state.idSuffix}
+                <NoticeTextSelectionComponent idSuffix={this.state.idSuffix + i}
                     text={this.state.messages[i]}
                     key={i}>
                 </NoticeTextSelectionComponent>
