@@ -1550,7 +1550,7 @@ function submitSponsorTimes() {
 
 //send the message to the background js
 //called after all the checks have been made that it's okay to do so
-function sendSubmitMessage(){
+async function sendSubmitMessage(){
     //add loading animation
     (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
     document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
@@ -1577,48 +1577,93 @@ function sendSubmitMessage(){
         }
     }
 
-    chrome.runtime.sendMessage({
-        message: "submitTimes",
-        videoID: sponsorVideoID
-    }, function(response) {
-        if (response != undefined) {
-            if (response.statusCode == 200) {
-                //hide loading message
-                let submitButton = document.getElementById("submitButton");
-                //finish this animation
-                submitButton.style.animation = "rotate 1s";
-                //when the animation is over, hide the button
-                let animationEndListener =  function() {
-                    changeStartSponsorButton(true, false);
+    if (Config.config.testingServer) {
+        let response = await utils.requestToServer("POST", "/api/skipSegments", {
+            videoID: sponsorVideoID,
+            userID: Config.config.userID,
+            segments: sponsorTimesSubmitting
+        });
 
-                    submitButton.style.animation = "none";
+        if (response.status === 200) {
+            //hide loading message
+            let submitButton = document.getElementById("submitButton");
+            submitButton.style.animation = "rotate 1s";
+            //finish this animation
+            //when the animation is over, hide the button
+            let animationEndListener =  function() {
+                changeStartSponsorButton(true, false);
 
-                    submitButton.removeEventListener("animationend", animationEndListener);
-                };
+                submitButton.style.animation = "none";
 
-                submitButton.addEventListener("animationend", animationEndListener);
+                submitButton.removeEventListener("animationend", animationEndListener);
+            };
 
-                //clear the sponsor times
-                Config.config.sponsorTimes.delete(sponsorVideoID);
+            submitButton.addEventListener("animationend", animationEndListener);
 
-                //add submissions to current sponsors list
-                if (sponsorTimes === null) sponsorTimes = [];
-                
-                sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+            //clear the sponsor times
+            Config.config.sponsorTimes.delete(sponsorVideoID);
 
-                // Empty the submitting times
-                sponsorTimesSubmitting = [];
+            //add submissions to current sponsors list
+            if (sponsorTimes === null) sponsorTimes = [];
+            
+            sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
 
-                updatePreviewBar();
-            } else {
-                //show that the upload failed
-                document.getElementById("submitButton").style.animation = "unset";
-                (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+            // Empty the submitting times
+            sponsorTimesSubmitting = [];
 
-                alert(utils.getErrorMessage(response.statusCode) + "\n\n" + response.responseText);
-            }
+            updatePreviewBar();
+        } else {
+            //show that the upload failed
+            document.getElementById("submitButton").style.animation = "unset";
+            (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+
+            alert(utils.getErrorMessage(response.status) + "\n\n" + (await response.text()));
         }
-    });
+
+    } else {
+        chrome.runtime.sendMessage({
+            message: "submitTimes",
+            videoID: sponsorVideoID
+        }, function(response) {
+            if (response != undefined) {
+                if (response.statusCode == 200) {
+                    //hide loading message
+                    let submitButton = document.getElementById("submitButton");
+                    submitButton.style.animation = "rotate 1s";
+                    //finish this animation
+                    //when the animation is over, hide the button
+                    let animationEndListener =  function() {
+                        changeStartSponsorButton(true, false);
+    
+                        submitButton.style.animation = "none";
+    
+                        submitButton.removeEventListener("animationend", animationEndListener);
+                    };
+    
+                    submitButton.addEventListener("animationend", animationEndListener);
+    
+                    //clear the sponsor times
+                    Config.config.sponsorTimes.delete(sponsorVideoID);
+    
+                    //add submissions to current sponsors list
+                    if (sponsorTimes === null) sponsorTimes = [];
+                    
+                    sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+    
+                    // Empty the submitting times
+                    sponsorTimesSubmitting = [];
+    
+                    updatePreviewBar();
+                } else {
+                    //show that the upload failed
+                    document.getElementById("submitButton").style.animation = "unset";
+                    (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+    
+                    alert(utils.getErrorMessage(response.statusCode) + "\n\n" + response.responseText);
+                }
+            }
+        });
+    }
 }
 
 //get the message that visually displays the video times
