@@ -525,5 +525,8 @@
     },
     "testingServerWarning": {
         "message": "All submissions and votes WILL NOT COUNT towards the main server while connecting to the test server. Make sure to disable this when you want to make real submissions."
+    },
+    "bracketNow": {
+        "message": "(Now)"
     }
 }
