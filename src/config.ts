@@ -27,6 +27,7 @@ interface SBConfig {
     audioNotificationOnSkip,
     checkForUnlistedVideos: boolean,
     mobileUpdateShowCount: number,
+    testingServer: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[]
@@ -125,6 +126,8 @@ var Config: SBObject = {
         audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         mobileUpdateShowCount: 0,
+        testingServer: false,
+
         categorySelections: [{
             name: "sponsor",
             option: CategorySkipOption.AutoSkip

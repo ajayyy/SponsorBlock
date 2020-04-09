@@ -516,5 +516,14 @@
     },
     "showOverlay": {
         "message": "Show Overlay On Player"
+    },
+    "enableTestingServer": {
+        "message": "Enable Beta Testing Server"
+    },
+    "whatEnableTestingServer": {
+        "message": "Your submissions and votes WILL NOT COUNT towards the main server. Only use this for testing."
+    },
+    "testingServerWarning": {
+        "message": "All submissions and votes WILL NOT COUNT towards the main server while connecting to the test server. Make sure to disable this when you want to make real submissions."
     }
 }
