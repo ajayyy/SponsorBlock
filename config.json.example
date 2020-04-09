@@ -1,5 +1,6 @@
 {
     "serverAddress": "https://sponsor.ajay.app",
+    "testingServerAddress": "https://sponsor.ajay.app/test",
     "serverAddressComment": "This specifies the default SponsorBlock server to conect to",
     "categoryList": ["sponsor", "intro", "outro", "interaction", "merchandise", "offtopic"]
 }

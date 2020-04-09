@@ -1,6 +1,8 @@
 import Config from "./config";
 import { CategorySelection, SponsorTime } from "./types";
 
+import * as CompileConfig from "../config.json";
+
 class Utils {
     
     // Contains functions needed from the background script
@@ -273,11 +275,46 @@ class Utils {
      * @param type The request type. "GET", "POST", etc.
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
+     */    
+    async requestToServer(type: string, address: string, data = {}) {
+        let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+
+        // If GET, convert JSON to parameters
+        if (type.toLowerCase() === "get") {
+            for (const key in data) {
+                let seperator = address.includes("?") ? "&" : "?";
+                let value = (typeof(data[key]) === "string") ? data[key]: JSON.stringify(data[key]);
+                address += seperator + key + "=" + value;
+            }
+
+            data = null;
+        }
+
+        const response = await fetch(serverAddress + address, {
+            method: type,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            body: data ? JSON.stringify(data) : null
+        });
+
+        return response;
+    }
+
+    /**
+     * Sends a request to the SponsorBlock server with address added as a query
+     * 
+     * @param type The request type. "GET", "POST", etc.
+     * @param address The address to add to the SponsorBlock server address
+     * @param callback 
      */
     sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
         let xmlhttp = new XMLHttpRequest();
-  
-        xmlhttp.open(type, Config.config.serverAddress + address, true);
+
+        let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+        
+        xmlhttp.open(type, serverAddress + address, true);
   
         if (callback != undefined) {
             xmlhttp.onreadystatechange = function () {
