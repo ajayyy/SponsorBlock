@@ -276,7 +276,7 @@ class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */    
-    async requestToServer(type: string, address: string, data = {}) {
+    async asyncRequestToServer(type: string, address: string, data = {}) {
         let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
         // If GET, convert JSON to parameters

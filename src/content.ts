@@ -600,7 +600,7 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             categories.push(categorySelection.name);
         }
 
-        utils.requestToServer('GET', "/api/skipSegments", {
+        utils.asyncRequestToServer('GET', "/api/skipSegments", {
             videoID: id,
             categories
         }).then(async (response: Response) => {
@@ -1578,7 +1578,7 @@ async function sendSubmitMessage(){
     }
 
     if (Config.config.testingServer) {
-        let response = await utils.requestToServer("POST", "/api/skipSegments", {
+        let response = await utils.asyncRequestToServer("POST", "/api/skipSegments", {
             videoID: sponsorVideoID,
             userID: Config.config.userID,
             segments: sponsorTimesSubmitting
