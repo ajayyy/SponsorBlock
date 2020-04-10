@@ -80,11 +80,13 @@
 
 	border-radius: 5px;
 
-	animation: fadeIn 0.5s;
-
 	border-spacing: 5px 10px;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.sponsorSkipNoticeFadeIn {
+	animation: fadeIn 0.5s;
 }
 
 .sponsorSkipNoticeFadeOut {
@@ -311,4 +313,59 @@
 .sponsorSkipDontShowButton:active {
 	position:relative;
 	top:1px;
+}
+
+/* Submission Notice */
+
+.sponsorTimeDisplay {
+	font-size: 15px;
+}
+
+.sponsorTimeEditButton {
+	text-decoration: underline;
+
+	margin-left: 20px;
+	margin-right: 20px;
+
+	font-size: 13px;
+	
+	cursor: pointer;
+}
+
+.sponsorTimeEdit > input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sponsorTimeEdit {
+	font-size: 14px;
+
+	-moz-appearance: textfield;
+}
+
+.sponsorTimeEditMinutes {
+	width: 30px;
+}
+
+.sponsorTimeEditSeconds {
+	width: 60px;
+}
+
+.sponsorNowButton {
+	font-size: 11px;
+
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.sponsorTimeCategories {
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	background-color: rgba(28, 28, 28, 0.9);
+    border-color: rgb(130,0,0,0.9);
+    color: white;
+    border-width: 3px;
+    padding: 3px;
 }

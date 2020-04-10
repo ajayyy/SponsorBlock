@@ -1,6 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
+import { SponsorTime } from "./types";
 var utils = new Utils();
 
 interface MessageListener {
@@ -56,7 +57,6 @@ async function runThePopup(messageListener?: MessageListener) {
     "showNoticeAgain",
     "optionsButton",
     // More controls
-    "clearTimes",
     "submitTimes",
     "reportAnIssue",
     // sponsorTimesContributions
@@ -82,9 +82,6 @@ async function runThePopup(messageListener?: MessageListener) {
     // discordButtons
     "discordButtonContainer",
     "hideDiscordButton",
-    // submitTimesInfoMessage
-    "submitTimesInfoMessageContainer",
-    "submitTimesInfoMessage",
     // Username
     "setUsernameContainer",
     "setUsernameButton",
@@ -108,7 +105,6 @@ async function runThePopup(messageListener?: MessageListener) {
     PageElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
     PageElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
     PageElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
-    PageElements.clearTimes.addEventListener("click", clearTimes);
     PageElements.submitTimes.addEventListener("click", submitTimes);
     PageElements.showNoticeAgain.addEventListener("click", showNoticeAgain);
     PageElements.setUsernameButton.addEventListener("click", setUsernameButton);
@@ -263,8 +259,6 @@ async function runThePopup(messageListener?: MessageListener) {
 
             sponsorTimes = sponsorTimesStorage;
 
-            displaySponsorTimes();
-
             //show submission section
             PageElements.submissionSection.style.display = "unset";
 
@@ -279,7 +273,7 @@ async function runThePopup(messageListener?: MessageListener) {
         );
     }
   
-    function infoFound(request) {
+    function infoFound(request: {found: boolean, sponsorTimes: SponsorTime[], hiddenSponsorTimes: number[]}) {
         if(chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
@@ -363,28 +357,14 @@ async function runThePopup(messageListener?: MessageListener) {
   
         updateStartTimeChosen();
   
-        //display video times on screen
-        displaySponsorTimes();
-  
         //show submission section
         PageElements.submissionSection.style.display = "unset";
   
         showSubmitTimesIfNecessary();
     }
   
-    //display the video times from the array
-    function displaySponsorTimes() {
-        //remove all children
-        while (PageElements.sponsorMessageTimes.firstChild) {
-            PageElements.sponsorMessageTimes.removeChild(PageElements.sponsorMessageTimes.firstChild);
-        }
-
-        //add sponsor times
-        PageElements.sponsorMessageTimes.appendChild(getSponsorTimesMessageDiv(sponsorTimes));
-    }
-  
     //display the video times from the array at the top, in a different section
-    function displayDownloadedSponsorTimes(request) {
+    function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[], hiddenSponsorTimes: number[]}) {
         if (request.sponsorTimes != undefined) {
             //set it to the message
             if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
@@ -403,11 +383,11 @@ async function runThePopup(messageListener?: MessageListener) {
                     extraInfo = " (hidden)";
                 }
 
-                sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i][0]) + " to " + getFormattedTime(request.sponsorTimes[i][1]) + extraInfo;
+                sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " to " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
         
                 let votingButtons = document.createElement("div");
   
-                let UUID = request.UUIDs[i];
+                let UUID = request.sponsorTimes[i].UUID;
   
                 //thumbs up and down buttons
                 let voteButtonsContainer = document.createElement("div");
@@ -451,12 +431,12 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     //get the message that visually displays the video times
-    function getSponsorTimesMessage(sponsorTimes) {
+    function getSponsorTimesMessage(sponsorTimes: SponsorTime[]) {
         let sponsorTimesMessage = "";
   
         for (let i = 0; i < sponsorTimes.length; i++) {
-            for (let s = 0; s < sponsorTimes[i].length; s++) {
-                let timeMessage = getFormattedTime(sponsorTimes[i][s]);
+            for (let s = 0; s < sponsorTimes[i].segment.length; s++) {
+                let timeMessage = getFormattedTime(sponsorTimes[i].segment[s]);
                 //if this is an end time
                 if (s == 1) {
                     timeMessage = " to " + timeMessage;
@@ -692,8 +672,6 @@ async function runThePopup(messageListener?: MessageListener) {
         });
   
         if (closeEditMode) {
-            displaySponsorTimes();
-
             showSubmitTimesIfNecessary();
         }
     }
@@ -721,9 +699,6 @@ async function runThePopup(messageListener?: MessageListener) {
         //save this
         Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
         
-        //update display
-        displaySponsorTimes();
-  
         //if they are all removed
         if (sponsorTimes.length == 0) {
             //update chrome tab
@@ -753,66 +728,16 @@ async function runThePopup(messageListener?: MessageListener) {
         });
     }
   
-    function clearTimes() {
-        //send new sponsor time state to tab
+    function submitTimes() {
         if (sponsorTimes.length > 0) {
-            messageHandler.query({
-                active: true,
-                currentWindow: true
-            }, function(tabs) {
-                messageHandler.sendMessage(tabs[0].id, {
-                    message: "changeStartSponsorButton",
-                    showStartSponsor: true,
-                    uploadButtonVisible: false
-                });
-            });
-        }
-  
-        //reset sponsorTimes
-        sponsorTimes = [];
-
-		Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
             messageHandler.query({
                 active: true,
                 currentWindow: true
             }, tabs => {
                 messageHandler.sendMessage(
                     tabs[0].id,
-                    {message: "sponsorDataChanged"}
+                    {message: 'submitTimes'},
                 );
-            });
-  
-        displaySponsorTimes();
-  
-        //hide submission section
-        document.getElementById("submissionSection").style.display = "none";
-  
-        resetStartTimeChosen();
-    }
-  
-    function submitTimes() {
-        //make info message say loading
-        PageElements.submitTimesInfoMessage.innerText = chrome.i18n.getMessage("Loading");
-        PageElements.submitTimesInfoMessageContainer.style.display = "unset";
-  
-        if (sponsorTimes.length > 0) {
-            chrome.runtime.sendMessage({
-                message: "submitTimes",
-                videoID: currentVideoID
-            }, function(response) {
-                if (response != undefined) {
-                    if (response.statusCode == 200) {
-                        //hide loading message
-                        PageElements.submitTimesInfoMessageContainer.style.display = "none";
-
-                        clearTimes();
-                    } else {
-                        document.getElementById("submitTimesInfoMessage").innerText = utils.getErrorMessage(response.statusCode);
-                        document.getElementById("submitTimesInfoMessageContainer").style.display = "unset";
-
-                        PageElements.submitTimesInfoMessageContainer.style.display = "unset";
-                    }
-                }
             });
         }
     }

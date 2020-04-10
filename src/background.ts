@@ -184,13 +184,13 @@ function submitVote(type, UUID, callback) {
     });
 }
 
-async function submitTimes(videoID, callback) {
+async function submitTimes(videoID: string, callback) {
     //get the video times from storage
     let sponsorTimes = Config.config.sponsorTimes.get(videoID);
     let userID = Config.config.userID;
 		
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        let durationResult = <Types.videoDurationResponse> await new Promise((resolve, reject) => {
+        let durationResult = <Types.VideoDurationResponse> await new Promise((resolve, reject) => {
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
@@ -218,8 +218,11 @@ async function submitTimes(videoID, callback) {
                     + "&userID=" + userID, function(xmlhttp, error) {
                 if (xmlhttp.readyState == 4 && !error) {
                     callback({
-                        statusCode: xmlhttp.status
+                        statusCode: xmlhttp.status,
+                        responseText: xmlhttp.responseText
                     });
+
+                    
 
                     if (xmlhttp.status == 200) {
                         //save the amount contributed
@@ -227,12 +230,12 @@ async function submitTimes(videoID, callback) {
                             increasedContributionAmount = true;
                             Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimes.length;
                         }
-                    } else if (error) {
-                        callback({
-                            statusCode: -1
-                        });
                     }
-                }  
+                } else if (error) {
+                    callback({
+                        statusCode: -1
+                    });
+                }
             });
         }
     }

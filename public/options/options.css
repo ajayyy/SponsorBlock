@@ -324,3 +324,26 @@ svg {
     font-size: 14px;
     color: white;
 }
+
+/* React styles */
+
+.categoryTableElement {
+    font-size: 16px;
+
+    color: white;
+}
+
+.categoryTableElement > * {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.categoryOptionsSelector {
+    background-color: #c00000;
+    color: white;
+    
+    border: none;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+}

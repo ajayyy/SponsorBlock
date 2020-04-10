@@ -1,4 +1,5 @@
 import * as CompileConfig from "../config.json";
+import { CategorySelection, CategorySkipOption } from "./types";
 
 interface SBConfig {
     userID: string,
@@ -10,7 +11,6 @@ interface SBConfig {
     skipCount: number,
     sponsorTimesContributed: number,
     disableSkipping: boolean,
-    disableAutoSkip: boolean,
     trackViewCount: boolean,
     dontShowNotice: boolean,
     hideVideoPlayerControls: boolean,
@@ -24,8 +24,13 @@ interface SBConfig {
     supportInvidious: boolean,
     serverAddress: string,
     minDuration: number,
+    audioNotificationOnSkip,
     checkForUnlistedVideos: boolean,
-    mobileUpdateShowCount: number
+    mobileUpdateShowCount: number,
+    testingServer: boolean,
+
+    // What categories should be skipped
+    categorySelections: CategorySelection[]
 }
 
 interface SBObject {
@@ -105,7 +110,6 @@ var Config: SBObject = {
         skipCount: 0,
         sponsorTimesContributed: 0,
         disableSkipping: false,
-        disableAutoSkip: false,
         trackViewCount: true,
         dontShowNotice: false,
         hideVideoPlayerControls: false,
@@ -119,8 +123,15 @@ var Config: SBObject = {
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
         minDuration: 0,
+        audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
-        mobileUpdateShowCount: 0
+        mobileUpdateShowCount: 0,
+        testingServer: false,
+
+        categorySelections: [{
+            name: "sponsor",
+            option: CategorySkipOption.AutoSkip
+        }]
     },
     localConfig: null,
     config: null,
@@ -225,11 +236,14 @@ function fetchConfig() {
     });
 }
 
-function migrateOldFormats() { // Convert sponsorTimes format
-    for (const key in Config.localConfig) {
-        if (key.startsWith("sponsorTimes") && key !== "sponsorTimes" && key !== "sponsorTimesContributed") {
-            Config.config.sponsorTimes.set(key.substr(12), Config.config[key]);
-            delete Config.config[key];
+function migrateOldFormats() {
+    if (Config.config["disableAutoSkip"]) {
+        for (const selection of Config.config.categorySelections) {
+            if (selection.name === "sponsor") {
+                selection.option = CategorySkipOption.ManualSkip;
+
+                chrome.storage.sync.remove("disableAutoSkip");
+            }
         }
     }
 }

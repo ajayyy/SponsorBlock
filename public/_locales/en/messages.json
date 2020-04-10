@@ -291,6 +291,12 @@
     "autoSkipDescription": {
         "message": "Auto skip will skip sponsors for you. If disabled, a notice will appear asking if you'd like to skip."
     },
+    "audioNotification": {
+        "message": "Audio Notification On Skip"
+    },
+    "audioNotificationDescription": {
+        "message": "Audio notification on skip will play a sound whenever a sponsor is skipped. If disabled (or auto skip is disabled), no sound will be played."
+    },
     "youHaveSkipped": {
         "message": "You have skipped "
     },
@@ -441,6 +447,24 @@
     "incorrectlyFormattedOptions": {
         "message": "This JSON is not formatted correctly. Your options have not been changed."
     },
+    "confirmNoticeTitle" : {
+        "message": "Submit Segment"
+    },
+    "submit": {
+        "message": "Submit"
+    },
+    "cancel": {
+        "message": "Cancel"
+    },
+    "delete": {
+        "message": "Delete"
+    },
+    "preview": {
+        "message": "Preview"
+    },
+    "edit": {
+        "message": "Edit"
+    },
     "copyDebugInformation": {
         "message": "Copy Debug Information To Clipboard"
     },
@@ -461,5 +485,48 @@
     },
     "keyAlreadyUsed": {
         "message": "is bound to another action. Please select another key."
+    },
+    "to": {
+        "message": "to",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_intro": {
+        "message": "Intro"
+    },
+    "category_outro": {
+        "message": "Outro"
+    },
+    "category_interaction": {
+        "message": "Interaction (Redundant Like, Subscribe, Follow, etc.)"
+    },
+    "category_selfpromo": {
+        "message": "Self-Promotion and Merchandise"
+    },
+    "category_offtopic": {
+        "message": "Offtopic tangent (Subjective)"
+    },
+    "disable": {
+        "message": "Disable"
+    },
+    "manualSkip": {
+        "message": "Manual Skip"
+    },
+    "showOverlay": {
+        "message": "Show Overlay On Player"
+    },
+    "enableTestingServer": {
+        "message": "Enable Beta Testing Server"
+    },
+    "whatEnableTestingServer": {
+        "message": "Your submissions and votes WILL NOT COUNT towards the main server. Only use this for testing."
+    },
+    "testingServerWarning": {
+        "message": "All submissions and votes WILL NOT COUNT towards the main server while connecting to the test server. Make sure to disable this when you want to make real submissions."
+    },
+    "bracketNow": {
+        "message": "(Now)"
     }
 }

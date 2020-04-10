@@ -1,24 +1,28 @@
 import Config from "./config";
 
+import { SponsorTime, CategorySkipOption, CategorySelection, VideoID } from "./types";
+
+import { ContentContainer } from "./types";
 import Utils from "./utils";
 var utils = new Utils();
 
 import runThePopup from "./popup";
 
 import PreviewBar from "./js-components/previewBar";
-import SkipNotice from "./js-components/skipNotice";
+import SkipNotice from "./render/SkipNotice";
+import SkipNoticeComponent from "./components/SkipNoticeComponent";
+import SubmissionNotice from "./render/SubmissionNotice";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
 
 //was sponsor data found when doing SponsorsLookup
 var sponsorDataFound = false;
-var previousVideoID = null;
+var previousVideoID: VideoID = null;
 //the actual sponsorTimes if loaded and UUIDs associated with them
-var sponsorTimes: number[][] = null;
-var UUIDs = [];
+var sponsorTimes: SponsorTime[] = null;
 //what video id are these sponsors for
-var sponsorVideoID = null;
+var sponsorVideoID: VideoID = null;
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -27,10 +31,10 @@ var currentSkipSchedule: NodeJS.Timeout = null;
 var seekListenerSetUp = false
 
 //these are sponsors that have been downvoted
-var hiddenSponsorTimes = [];
+var hiddenSponsorTimes: number[] = [];
 
 /** @type {Array[boolean]} Has the sponsor been skipped */
-var sponsorSkipped = [];
+var sponsorSkipped: boolean[] = [];
 
 //the video
 var video: HTMLVideoElement;
@@ -83,32 +87,39 @@ var sponsorLookupRetries = 0;
 
 //the last time in the video a sponsor was skipped
 //used for the go back button
-var lastSponsorTimeSkipped = null;
+var lastSponsorTimeSkipped: number = null;
 //used for ratings
-var lastSponsorTimeSkippedUUID = null;
+var lastSponsorTimeSkippedUUID: string = null;
 
 //if showing the start sponsor button or the end sponsor button on the player
 var showingStartSponsor = true;
 
 //the sponsor times being prepared to be submitted
-var sponsorTimesSubmitting = [];
+var sponsorTimesSubmitting: SponsorTime[] = [];
 
 //becomes true when isInfoFound is called
 //this is used to close the popup on YouTube when the other popup opens
 var popupInitialised = false;
 
+var submissionNotice: SubmissionNotice = null;
+
 // Contains all of the functions and variables needed by the skip notice
-var skipNoticeContentContainer = () => ({
+var skipNoticeContentContainer: ContentContainer = () => ({
     vote,
     dontShowNoticeAgain,
     unskipSponsorTime,
     sponsorTimes,
-    UUIDs,
-    v: video,
-    reskipSponsorTime,
+    sponsorTimesSubmitting,
     hiddenSponsorTimes,
+    v: video,
+    sponsorVideoID,
+    reskipSponsorTime,
     updatePreviewBar,
-    onMobileYouTube
+    onMobileYouTube,
+    sponsorSubmissionNotice: submissionNotice,
+    resetSponsorSubmissionNotice,
+    changeStartSponsorButton,
+    previewTime
 });
 
 //get messages from the background script and the popup
@@ -133,8 +144,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             sendResponse({
                 found: sponsorDataFound,
                 sponsorTimes: sponsorTimes,
-                hiddenSponsorTimes: hiddenSponsorTimes,
-                UUIDs: UUIDs
+                hiddenSponsorTimes: hiddenSponsorTimes
             });
 
             if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
@@ -199,6 +209,10 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
 
             break;
+        case "submitTimes":
+            submitSponsorTimes();
+
+            break;
     }
 }
 
@@ -251,7 +265,6 @@ function resetValues() {
 
     //reset sponsor times
     sponsorTimes = null;
-    UUIDs = [];
     sponsorLookupRetries = 0;
 
     //empty the preview bar
@@ -341,37 +354,22 @@ async function videoIDChange(id) {
     sponsorsLookup(id, channelIDPromise);
 
     //make sure everything is properly added
-    updateVisibilityOfPlayerControlsButton();
+    updateVisibilityOfPlayerControlsButton().then(() => {
+        //see if the onvideo control image needs to be changed
+        let segments = Config.config.sponsorTimes.get(sponsorVideoID);
+        if (segments != null && segments.length > 0 && segments[segments.length - 1].length >= 2) {
+            changeStartSponsorButton(true, true);
+        } else if (segments != null && segments.length > 0 && segments[segments.length - 1].length < 2) {
+            changeStartSponsorButton(false, true);
+        } else {
+            changeStartSponsorButton(true, false);
+        }
+    });
 
     //reset sponsor times submitting
     sponsorTimesSubmitting = [];
+    updateSponsorTimesSubmitting();
 
-    //see if the onvideo control image needs to be changed
-	utils.wait(getControls).then(result => {
-		chrome.runtime.sendMessage({
-			message: "getSponsorTimes",
-			videoID: id
-		}, function(response) {
-			if (response != undefined) {
-				let sponsorTimes = response.sponsorTimes;
-				if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length >= 2) {
-					changeStartSponsorButton(true, true);
-				} else if (sponsorTimes != null && sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
-                    changeStartSponsorButton(false, true);
-				} else {
-					changeStartSponsorButton(true, false);
-                }
-                
-				//see if this data should be saved in the sponsorTimesSubmitting variable
-				if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-					sponsorTimesSubmitting = sponsorTimes;
-          
-                    updatePreviewBar();
-				}
-			}
-		});
-    });
-    
     //see if video controls buttons should be added
     if (!onInvidious) {
         updateVisibilityOfPlayerControlsButton();
@@ -383,9 +381,9 @@ function handleMobileControlsMutations(): void {
     
     updateVisibilityOfPlayerControlsButton().then((createdButtons) => {
         if (createdButtons) {
-            if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].length >= 2) {
+            if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length >= 2) {
                 changeStartSponsorButton(true, true);
-            } else if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].length < 2) {
+            } else if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length < 2) {
                 changeStartSponsorButton(false, true);
             } else {
                 changeStartSponsorButton(true, false);
@@ -458,7 +456,7 @@ function cancelSponsorSchedule(): void {
  * 
  * @param currentTime Optional if you don't want to use the actual current time
  */
-function startSponsorSchedule(currentTime?: number): void {
+function startSponsorSchedule(includeIntersectingSegments: boolean = false, currentTime?: number): void {
     cancelSponsorSchedule();
     if (video.paused) return;
 
@@ -468,27 +466,34 @@ function startSponsorSchedule(currentTime?: number): void {
 
     if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
-    let skipInfo = getNextSkipIndex(currentTime);
+    let skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments);
 
     if (skipInfo.index === -1) return;
 
-    let skipTime = skipInfo.array[skipInfo.index];
+    let currentSkip = skipInfo.array[skipInfo.index];
+    let skipTime: number[] = [currentSkip.segment[0], skipInfo.array[skipInfo.endIndex].segment[1]];
     let timeUntilSponsor = skipTime[0] - currentTime;
+
+    // Don't skip if this category should not be skipped
+    if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ShowOverlay) return;
 
     let skippingFunction = () => {
         let forcedSkipTime: number = null;
+        let forcedIncludeIntersectingSegments = false;
 
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             // Double check that the videoID is correct
             // TODO: Remove this bug catching if statement when the bug is found
             let currentVideoID = getYouTubeVideoID(document.URL);
             if (currentVideoID == sponsorVideoID) {
-                skipToTime(video, skipInfo.index, skipInfo.array, skipInfo.openNotice);
+                skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
 
-                if (Config.config.disableAutoSkip) {
+                // TODO: Know the autoSkip settings for ALL items being skipped
+                if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ManualSkip) {
                     forcedSkipTime = skipTime[0] + 0.001;
                 } else {
                     forcedSkipTime = skipTime[1];
+                    forcedIncludeIntersectingSegments = true;
                 }
             } else {
                 // Something has really gone wrong
@@ -500,7 +505,7 @@ function startSponsorSchedule(currentTime?: number): void {
             }
         }
 
-        startSponsorSchedule(forcedSkipTime);
+        startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime);
     };
 
     if (timeUntilSponsor <= 0) {
@@ -588,113 +593,239 @@ function sponsorsLookup(id: string, channelIDPromise?) {
     //check database for sponsor times
     //made true once a setTimeout has been created to try again after a server error
     let recheckStarted = false;
-    utils.sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            sponsorDataFound = true;
+    if (Config.config.testingServer) {
+        // Create categories list
+        let categories: string[] = [];
+        for (const categorySelection of Config.config.categorySelections) {
+            categories.push(categorySelection.name);
+        }
 
-            let recievedSponsorTimes = JSON.parse(xmlhttp.responseText).sponsorTimes;
-            let recievedUUIDs = JSON.parse(xmlhttp.responseText).UUIDs;
-
-            // Check if any old submissions should be kept
-            for (let i = 0; i < UUIDs.length; i++) {
-                if (UUIDs[i] === null)  {
-                    // This is a user submission, keep it
-                    recievedSponsorTimes.push(sponsorTimes[i]);
-                    recievedUUIDs.push(UUIDs[i]);
-                }
-            }
-
-            sponsorTimes = recievedSponsorTimes;
-            UUIDs = recievedUUIDs;
-
-            // Remove all submissions smaller than the minimum duration
-            if (Config.config.minDuration !== 0) {
-                let smallSponsors = [];
-                let smallUUIDs = [];
-
-                for (let i = 0; i < sponsorTimes.length; i++) {
-                    if (sponsorTimes[i][1] - sponsorTimes[i][0] >= Config.config.minDuration) {
-                        smallSponsors.push(sponsorTimes[i]);
-                        smallUUIDs.push(UUIDs[i]);
-                    }
+        utils.asyncRequestToServer('GET', "/api/skipSegments", {
+            videoID: id,
+            categories
+        }).then(async (response: Response) => {
+            if (response.status === 200) {
+                let recievedSegments: SponsorTime[] = await response.json();
+                if (!recievedSegments.length) {
+                    console.error("[SponsorBlock] Server returned malformed response: " + JSON.stringify(recievedSegments));
+                    return;
                 }
 
-                sponsorTimes = smallSponsors;
-                UUIDs = smallUUIDs;
-            }
-
-            if (!switchingVideos) {
-                // See if there are any starting sponsors
-                let startingSponsor: number = -1;
-                for (const time of sponsorTimes) {
-                    if (time[0] <= video.currentTime && time[0] > startingSponsor && time[1] > video.currentTime) {
-                        startingSponsor = time[0];
-                        break;
-                    }
-                }
-                if (!startingSponsor) {
-                    for (const time of sponsorTimesSubmitting) {
-                        if (time[0] <= video.currentTime && time[0] > startingSponsor && time[1] > video.currentTime) {
-                            startingSponsor = time[0];
-                            break;
+                sponsorDataFound = true;
+    
+                // Check if any old submissions should be kept
+                if (sponsorTimes !== null) {
+                    for (let i = 0; i < sponsorTimes.length; i++) {
+                        if (sponsorTimes[i].UUID === null)  {
+                            // This is a user submission, keep it
+                            recievedSegments.push(sponsorTimes[i]);
                         }
                     }
                 }
 
-                if (startingSponsor !== -1) {
-                    startSponsorSchedule(startingSponsor);
-                } else {
-                    startSponsorSchedule();
-                }
-            }
-
-            // Reset skip save
-            sponsorSkipped = [];
-
-            //update the preview bar
-            //leave the type blank for now until categories are added
-            if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
-                //set it now
-                //otherwise the listener can handle it
-                updatePreviewBar();
-            }
-
-            sponsorLookupRetries = 0;
-        } else if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
-            sponsorDataFound = false;
-
-            //check if this video was uploaded recently
-            //use the invidious api to get the time published
-            sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + id, function(xmlhttp, error) {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    let decodedData = decodeURIComponent(xmlhttp.responseText).match(/player_response=([^&]*)/)[1];
-
-                    if (decodedData === undefined) {
-                        console.error("[SB] Failed at getting video upload date info from YouTube.");
-                        return;
+                sponsorTimes = recievedSegments;
+    
+                // Remove all submissions smaller than the minimum duration
+                if (Config.config.minDuration !== 0) {
+                    let smallSegments: SponsorTime[] = [];
+    
+                    for (let i = 0; i < sponsorTimes.length; i++) {
+                        if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] >= Config.config.minDuration) {
+                            smallSegments.push(sponsorTimes[i]);
+                        }
                     }
-
-                    let dateUploaded = JSON.parse(decodedData).microformat.playerMicroformatRenderer.uploadDate;
-
-                    //if less than 3 days old
-                    if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
-                        //TODO lower when server becomes better
-                        setTimeout(() => sponsorsLookup(id, channelIDPromise), 180000);
+    
+                    sponsorTimes = smallSegments;
+                }
+    
+                if (!switchingVideos) {
+                    // See if there are any starting sponsors
+                    let startingSponsor: number = -1;
+                    for (const time of sponsorTimes) {
+                        if (time[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                            startingSponsor = time.segment[0];
+                            break;
+                        }
+                    }
+                    if (!startingSponsor) {
+                        for (const time of sponsorTimesSubmitting) {
+                            if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                                startingSponsor = time.segment[0];
+                                break;
+                            }
+                        }
+                    }
+    
+                    if (startingSponsor !== -1) {
+                        startSponsorSchedule(false, startingSponsor);
+                    } else {
+                        startSponsorSchedule();
                     }
                 }
-            });
+    
+                // Reset skip save
+                sponsorSkipped = [];
+    
+                //update the preview bar
+                //leave the type blank for now until categories are added
+                if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
+                    //set it now
+                    //otherwise the listener can handle it
+                    updatePreviewBar();
+                }
+    
+                sponsorLookupRetries = 0;
+            } else if (response.status === 404) {
+                sponsorDataFound = false;
 
-            sponsorLookupRetries = 0;
-        } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90 && !recheckStarted) {
-            recheckStarted = true;
+                //check if this video was uploaded recently
+                //use the invidious api to get the time published
+                sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + id, function(xmlhttp, error) {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        let decodedData = decodeURIComponent(xmlhttp.responseText).match(/player_response=([^&]*)/)[1];
 
-            //TODO lower when server becomes better (back to 1 second)
-            //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id, channelIDPromise), 10000);
+                        if (decodedData === undefined) {
+                            console.error("[SB] Failed at getting video upload date info from YouTube.");
+                            return;
+                        }
 
-            sponsorLookupRetries++;
-        }
-    });
+                        let dateUploaded = JSON.parse(decodedData).microformat.playerMicroformatRenderer.uploadDate;
+
+                        //if less than 3 days old
+                        if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
+                            //TODO lower when server becomes better
+                            setTimeout(() => sponsorsLookup(id, channelIDPromise), 180000);
+                        }
+                    }
+                });
+
+                sponsorLookupRetries = 0;
+            } else if (sponsorLookupRetries < 90 && !recheckStarted) {
+                recheckStarted = true;
+
+                //TODO lower when server becomes better (back to 1 second)
+                //some error occurred, try again in a second
+                setTimeout(() => sponsorsLookup(id, channelIDPromise), 10000);
+
+                sponsorLookupRetries++;
+            }
+        });
+    } else {
+        utils.sendRequestToServer('GET', "/api/getVideoSponsorTimes?videoID=" + id, function(xmlhttp) {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                sponsorDataFound = true;
+    
+                let recievedSegments: number[][] = JSON.parse(xmlhttp.responseText).sponsorTimes;
+                let recievedUUIDs: string[] = JSON.parse(xmlhttp.responseText).UUIDs;
+    
+                // Check if any old submissions should be kept
+                if (sponsorTimes !== null) {
+                    for (let i = 0; i < sponsorTimes.length; i++) {
+                        if (sponsorTimes[i].UUID === null)  {
+                            // This is a user submission, keep it
+                            recievedSegments.push(sponsorTimes[i].segment);
+                        }
+                    }
+                }
+    
+                // Create formatted array
+                sponsorTimes = [];
+                for (let i = 0; i < recievedSegments.length; i++) {
+                    sponsorTimes.push({
+                        segment: recievedSegments[i],
+                        UUID: recievedUUIDs[i],
+                        // Force sponsor category for now
+                        //TODO: Remove this
+                        category: "sponsor"
+                    });
+                }
+    
+                // Remove all submissions smaller than the minimum duration
+                if (Config.config.minDuration !== 0) {
+                    let smallSegments: SponsorTime[] = [];
+    
+                    for (let i = 0; i < sponsorTimes.length; i++) {
+                        if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] >= Config.config.minDuration) {
+                            smallSegments.push(sponsorTimes[i]);
+                        }
+                    }
+    
+                    sponsorTimes = smallSegments;
+                }
+    
+                if (!switchingVideos) {
+                    // See if there are any starting sponsors
+                    let startingSponsor: number = -1;
+                    for (const time of sponsorTimes) {
+                        if (time[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                            startingSponsor = time.segment[0];
+                            break;
+                        }
+                    }
+                    if (!startingSponsor) {
+                        for (const time of sponsorTimesSubmitting) {
+                            if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                                startingSponsor = time.segment[0];
+                                break;
+                            }
+                        }
+                    }
+    
+                    if (startingSponsor !== -1) {
+                        startSponsorSchedule(false, startingSponsor);
+                    } else {
+                        startSponsorSchedule();
+                    }
+                }
+    
+                // Reset skip save
+                sponsorSkipped = [];
+    
+                //update the preview bar
+                //leave the type blank for now until categories are added
+                if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
+                    //set it now
+                    //otherwise the listener can handle it
+                    updatePreviewBar();
+                }
+    
+                sponsorLookupRetries = 0;
+            } else if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+                sponsorDataFound = false;
+    
+                //check if this video was uploaded recently
+                //use the invidious api to get the time published
+                sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + id, function(xmlhttp, error) {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        let decodedData = decodeURIComponent(xmlhttp.responseText).match(/player_response=([^&]*)/)[1];
+    
+                        if (decodedData === undefined) {
+                            console.error("[SB] Failed at getting video upload date info from YouTube.");
+                            return;
+                        }
+    
+                        let dateUploaded = JSON.parse(decodedData).microformat.playerMicroformatRenderer.uploadDate;
+    
+                        //if less than 3 days old
+                        if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
+                            //TODO lower when server becomes better
+                            setTimeout(() => sponsorsLookup(id, channelIDPromise), 180000);
+                        }
+                    }
+                });
+    
+                sponsorLookupRetries = 0;
+            } else if (xmlhttp.readyState == 4 && sponsorLookupRetries < 90 && !recheckStarted) {
+                recheckStarted = true;
+    
+                //TODO lower when server becomes better (back to 1 second)
+                //some error occurred, try again in a second
+                setTimeout(() => sponsorsLookup(id, channelIDPromise), 10000);
+    
+                sponsorLookupRetries++;
+            }
+        });
+    }
 }
 
 function getYouTubeVideoID(url: string) {
@@ -798,6 +929,8 @@ function updatePreviewBarPositionMobile(parent: Element) {
 }
 
 function updatePreviewBar() {
+    if (previewBar === null || video === null) return;
+
     let localSponsorTimes = sponsorTimes;
     if (localSponsorTimes == null) localSponsorTimes = [];
 
@@ -807,17 +940,17 @@ function updatePreviewBar() {
     let types = [];
     for (let i = 0; i < localSponsorTimes.length; i++) {
         if (!hiddenSponsorTimes.includes(i)) {
-            types.push("sponsor");
+            types.push(localSponsorTimes[i].category);
         } else {
             // Don't show this sponsor
             types.push(null);
         }
     }
     for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-        types.push("previewSponsor");
+        types.push("preview-" + sponsorTimesSubmitting[i].category);
     }
 
-    utils.wait(() => previewBar !== null).then((result) => previewBar.set(allSponsorTimes, types, video.duration));
+    previewBar.set(utils.getSegmentsFromSponsorTimes(allSponsorTimes), types, video.duration)
 
     //update last video id
     lastPreviewBarUpdate = sponsorVideoID;
@@ -836,31 +969,78 @@ function whitelistCheck() {
 /**
  * Returns info about the next upcoming sponsor skip
  */
-function getNextSkipIndex(currentTime: number): {array: number[][], index: number, openNotice: boolean} {
-    let sponsorStartTimes = getStartTimes(sponsorTimes);
-    let sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, currentTime, true);
+function getNextSkipIndex(currentTime: number, includeIntersectingSegments: boolean): 
+        {array: SponsorTime[], index: number, endIndex: number, openNotice: boolean} {
+
+    let sponsorStartTimes = getStartTimes(sponsorTimes, includeIntersectingSegments);
+    let sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, includeIntersectingSegments, currentTime, true);
 
     let minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
+    let endTimeIndex = getLatestEndTimeIndex(sponsorTimes, minSponsorTimeIndex);
 
-    let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting);
-    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, currentTime, false);
+    let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments);
+    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, false);
 
     let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
+    let previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minPreviewSponsorTimeIndex);
 
     if ((minPreviewSponsorTimeIndex === -1 && minSponsorTimeIndex !== -1) || 
             sponsorStartTimes[minSponsorTimeIndex] < previewSponsorStartTimes[minPreviewSponsorTimeIndex]) {
         return {
             array: sponsorTimes,
             index: minSponsorTimeIndex,
+            endIndex: endTimeIndex,
             openNotice: true
         };
     } else {
         return {
             array: sponsorTimesSubmitting,
             index: minPreviewSponsorTimeIndex,
+            endIndex: previewEndTimeIndex,
             openNotice: false
         };
     }
+}
+
+/**
+ * This returns index if the skip option is not AutoSkip
+ * 
+ * Finds the last endTime that occurs in a segment that the given
+ * segment skips into that is part of an AutoSkip category.
+ * 
+ * Used to find where a segment should truely skip to if there are intersecting submissions due to 
+ * them having different categories.
+ * 
+ * @param sponsorTimes 
+ * @param index Index of the given sponsor
+ * @param hideHiddenSponsors 
+ */
+function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideHiddenSponsors: boolean = true): number {
+    // Only combine segments for AutoSkip
+    if (index == -1 ||
+        utils.getCategorySelection(sponsorTimes[index].category).option !== CategorySkipOption.AutoSkip) return index;
+
+    // Default to the normal endTime
+    let latestEndTimeIndex = index;
+
+    for (let i = 0; i < sponsorTimes.length; i++) {
+        let currentSegment = sponsorTimes[i].segment;
+        let latestEndTime = sponsorTimes[latestEndTimeIndex].segment[1];
+
+        if (currentSegment[0] <= latestEndTime && currentSegment[1] > latestEndTime 
+            && (!hideHiddenSponsors || !hiddenSponsorTimes.includes(i))
+            && utils.getCategorySelection(sponsorTimes[i].category).option === CategorySkipOption.AutoSkip) {
+                // Overlapping segment
+                latestEndTimeIndex = i;
+        }
+    }
+
+    // Keep going if required
+    if (latestEndTimeIndex !== index) {
+        latestEndTimeIndex = getLatestEndTimeIndex(sponsorTimes, latestEndTimeIndex, hideHiddenSponsors);
+    }
+
+    return latestEndTimeIndex;
 }
 
 /**
@@ -870,50 +1050,76 @@ function getNextSkipIndex(currentTime: number): {array: number[][], index: numbe
  * @param sponsorTimes 
  * @param minimum
  * @param hideHiddenSponsors
+ * @param includeIntersectingSegments If true, it will include segments that start before 
+ *  the current time, but end after
  */
-function getStartTimes(sponsorTimes: number[][], minimum?: number, hideHiddenSponsors: boolean = false): number[] {
+function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, minimum?: number, 
+        hideHiddenSponsors: boolean = false): number[] {
     if (sponsorTimes === null) return [];
 
     let startTimes: number[] = [];
 
     for (let i = 0; i < sponsorTimes.length; i++) {
-        if ((minimum === undefined || sponsorTimes[i][0] >= minimum) && (!hideHiddenSponsors || !hiddenSponsorTimes.includes(i))) {
-            startTimes.push(sponsorTimes[i][0]);
+        if ((minimum === undefined || (sponsorTimes[i].segment[0] >= minimum || (includeIntersectingSegments && sponsorTimes[i].segment[1] > minimum))) 
+                && (!hideHiddenSponsors || !hiddenSponsorTimes.includes(i))) {
+            startTimes.push(sponsorTimes[i].segment[0]);
         } 
     }
 
     return startTimes;
 }
 
-//skip from the start time to the end time for a certain index sponsor time
-function skipToTime(v, index, sponsorTimes, openNotice) {
-    if (!Config.config.disableAutoSkip || previewResetter !== null) {
-        v.currentTime = sponsorTimes[index][1];
+/**
+ * Skip to exact time in a video and autoskips
+ * 
+ * @param time 
+ */
+function previewTime(time: number) {
+    video.currentTime = time;
+
+    // Unpause the video if needed
+    if (video.paused){
+        video.play();
     }
 
-    lastSponsorTimeSkipped = sponsorTimes[index][0];
+    // Start preview resetter
+    if (previewResetter !== null){
+        clearTimeout(previewResetter);
+    }
 
-    let currentUUID =  UUIDs[index];
+    previewResetter = setTimeout(() => previewResetter = null, 4000);
+}
+
+//skip from the start time to the end time for a certain index sponsor time
+function skipToTime(v: HTMLVideoElement, index: number, sponsorTimes: SponsorTime[], openNotice: boolean) {
+    let autoSkip: boolean = utils.getCategorySelection(sponsorTimes[index].category).option === CategorySkipOption.AutoSkip;
+
+    if (autoSkip || previewResetter !== null) {
+        v.currentTime = sponsorTimes[index].segment[1];
+    }
+
+    lastSponsorTimeSkipped = sponsorTimes[index].segment[0];
+
+    let currentUUID: string =  sponsorTimes[index].UUID;
     lastSponsorTimeSkippedUUID = currentUUID; 
 
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
-        if (!Config.config.dontShowNotice) {
-            
-            let skipNotice = new SkipNotice(this, currentUUID, Config.config.disableAutoSkip, skipNoticeContentContainer);
+        if (!Config.config.dontShowNotice || !autoSkip) {
+            let skipNotice = new SkipNotice(currentUUID, autoSkip, skipNoticeContentContainer);
 
             //auto-upvote this sponsor
-            if (Config.config.trackViewCount && !Config.config.disableAutoSkip && Config.config.autoUpvote) {
+            if (Config.config.trackViewCount && autoSkip && Config.config.autoUpvote) {
                 vote(1, currentUUID, null);
             }
         }
 
         //send telemetry that a this sponsor was skipped
-        if (Config.config.trackViewCount && !sponsorSkipped[index] && !Config.config.disableAutoSkip) {
+        if (Config.config.trackViewCount && !sponsorSkipped[index] && autoSkip) {
             utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + currentUUID);
 
             // Count this as a skip
-            Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index][1] - sponsorTimes[index][0]) / 60;
+            Config.config.minutesSaved = Config.config.minutesSaved + (sponsorTimes[index].segment[1] - sponsorTimes[index].segment[0]) / 60;
             Config.config.skipCount = Config.config.skipCount + 1;
 
             sponsorSkipped[index] = true;
@@ -924,15 +1130,29 @@ function skipToTime(v, index, sponsorTimes, openNotice) {
 function unskipSponsorTime(UUID) {
     if (sponsorTimes != null) {
         //add a tiny bit of time to make sure it is not skipped again
-        video.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][0] + 0.001;
+        video.currentTime = utils.getSponsorTimeFromUUID(sponsorTimes, UUID).segment[0] + 0.001;
+
+        checkIfInsideSegment();
     }
 }
 
 function reskipSponsorTime(UUID) {
     if (sponsorTimes != null) {
-        //add a tiny bit of time to make sure it is not skipped again
-        video.currentTime = sponsorTimes[UUIDs.indexOf(UUID)][1];
+        video.currentTime = utils.getSponsorTimeFromUUID(sponsorTimes, UUID).segment[1];
+
+        // See if any skips need to be done if this is inside of another segment
+        startSponsorSchedule(true, utils.getSponsorTimeFromUUID(sponsorTimes, UUID).segment[1]);
     }
+}
+
+/**
+ * Checks if currently inside a segment and will trigger 
+ * a skip schedule if true.
+ * 
+ * This is used for when a manual skip is finished or a reskip is complete
+ */
+function checkIfInsideSegment() {
+    // for
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false): boolean {
@@ -1046,36 +1266,57 @@ function startSponsorClicked() {
 
     toggleStartSponsorButton();
 
-    //send back current time with message
-    chrome.runtime.sendMessage({
-        message: "addSponsorTime",
-        time: video.currentTime,
-        videoID: sponsorVideoID
-    }, function(response) {
-        //see if the sponsorTimesSubmitting needs to be updated
-        updateSponsorTimesSubmitting();
-    });
+    //add to sponsorTimes
+    if (sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length < 2) {
+        //it is an end time
+        sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[1] = video.currentTime;
+    } else {
+        //it is a start time
+        sponsorTimesSubmitting.push({
+            segment: [video.currentTime],
+            UUID: null,
+            // Default to sponsor
+            category: "sponsor"
+        });
+    }
+
+    // Create raw segment list
+    let segments: number[][] = [];
+    for (const sponsorTime of sponsorTimesSubmitting) {
+        segments.push(sponsorTime.segment);
+    }
+
+    //save this info
+    Config.config.sponsorTimes.set(sponsorVideoID, segments);
+
+    updateSponsorTimesSubmitting(false)
 }
 
-function updateSponsorTimesSubmitting() {
-    chrome.runtime.sendMessage({
-        message: "getSponsorTimes",
-        videoID: sponsorVideoID
-    }, function(response) {
-        if (response != undefined) {
-            let sponsorTimes = response.sponsorTimes;
+function updateSponsorTimesSubmitting(getFromConfig: boolean = true) {
+    let segments = Config.config.sponsorTimes.get(sponsorVideoID);
 
-            //see if this data should be saved in the sponsorTimesSubmitting variable
-            if (sponsorTimes != undefined) {
-                sponsorTimesSubmitting = sponsorTimes;
+    //see if this data should be saved in the sponsorTimesSubmitting variable
+    if (getFromConfig && segments != undefined) {
+        sponsorTimesSubmitting = [];
 
-                updatePreviewBar();
-
-                // Restart skipping schedule
-                startSponsorSchedule();
-            }
+        for (const segment of segments) {
+            sponsorTimesSubmitting.push({
+                segment: segment,
+                UUID: null,
+                // Default to sponsor
+                category: "sponsor"
+            });
         }
-    });
+    }
+
+    updatePreviewBar();
+
+    // Restart skipping schedule
+    if (video !== null) startSponsorSchedule();
+
+    if (submissionNotice !== null) {
+        submissionNotice.update();
+    }
 }
 
 async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
@@ -1190,7 +1431,7 @@ function clearSponsorTimes() {
     let sponsorTimes = Config.config.sponsorTimes.get(currentVideoID);
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        let confirmMessage = chrome.i18n.getMessage("clearThis") + getSponsorTimesMessage(sponsorTimes)
+        let confirmMessage = chrome.i18n.getMessage("clearThis") + getSegmentsMessage(sponsorTimes)
                                 + "\n" + chrome.i18n.getMessage("confirmMSG")
         if(!confirm(confirmMessage)) return;
 
@@ -1208,14 +1449,17 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-function vote(type, UUID, skipNotice) {
-    if (skipNotice != null) {
+function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
+    if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
         skipNotice.addVoteButtonInfo.bind(skipNotice)("Loading...")
-        skipNotice.resetNoticeInfoMessage.bind(skipNotice)();
+        skipNotice.setNoticeInfoMessage.bind(skipNotice)();
     }
 
-    let sponsorIndex = UUIDs.indexOf(UUID);
+    let sponsorIndex = utils.getSponsorIndexFromUUID(sponsorTimes, UUID);
+
+    // Don't vote for preview sponsors
+    if (sponsorIndex == -1 || sponsorTimes[sponsorIndex].UUID === null) return;
 
     // See if the local time saved count and skip count should be saved
     if (type == 0 && sponsorSkipped[sponsorIndex] || type == 1 && !sponsorSkipped[sponsorIndex]) {
@@ -1227,7 +1471,7 @@ function vote(type, UUID, skipNotice) {
         }
 
         // Count this as a skip
-        Config.config.minutesSaved = Config.config.minutesSaved + factor * (sponsorTimes[sponsorIndex][1] - sponsorTimes[sponsorIndex][0]) / 60;
+        Config.config.minutesSaved = Config.config.minutesSaved + factor * (sponsorTimes[sponsorIndex].segment[1] - sponsorTimes[sponsorIndex].segment[0]) / 60;
     
         Config.config.skipCount = Config.config.skipCount + factor;
     }
@@ -1247,10 +1491,10 @@ function vote(type, UUID, skipNotice) {
                     }
                 } else if (response.successType == 0) {
                     //failure: duplicate vote
-                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
+                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 } else if (response.successType == -1) {
-                    skipNotice.addNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode))
+                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }
@@ -1283,116 +1527,152 @@ function sponsorMessageStarted(callback) {
     toggleStartSponsorButton();
 }
 
+/**
+ * Helper method for the submission notice to clear itself when it closes
+ */
+function resetSponsorSubmissionNotice() {
+    submissionNotice = null;
+}
+
 function submitSponsorTimes() {
-    if (document.getElementById("submitButton").style.display == "none") {
-        //don't submit, not ready
-        return;
-    }
+    if (submissionNotice !== null) return;
 
     //it can't update to this info yet
     closeInfoMenu();
 
     let currentVideoID = sponsorVideoID;
 
-    let sponsorTimes =  Config.config.sponsorTimes.get(currentVideoID);
-
-    if (sponsorTimes != undefined && sponsorTimes.length > 0) {
-        //check if a sponsor exceeds the duration of the video
-        for (let i = 0; i < sponsorTimes.length; i++) {
-            if (sponsorTimes[i][1] > video.duration) {
-                sponsorTimes[i][1] = video.duration;
-            }
-        }
-        //update sponsorTimes
-        Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
-
-        //update sponsorTimesSubmitting
-        sponsorTimesSubmitting = sponsorTimes;
-
-        // Check to see if any of the submissions are below the minimum duration set
-        if (Config.config.minDuration > 0) {
-            for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i][1] - sponsorTimes[i][0] < Config.config.minDuration) {
-                    let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes);
-                    
-                    if(!confirm(confirmShort)) return;
-                }
-            }
-        }
-
-        let confirmMessage = chrome.i18n.getMessage("submitCheck") + "\n\n" + getSponsorTimesMessage(sponsorTimes)
-                                + "\n\n" + chrome.i18n.getMessage("confirmMSG")  + "\n\n" + chrome.i18n.getMessage("guildlinesSummary");
-        if(!confirm(confirmMessage)) return;
-
-        sendSubmitMessage();
+    if (sponsorTimesSubmitting !== undefined && sponsorTimesSubmitting.length > 0) {
+        submissionNotice = new SubmissionNotice(skipNoticeContentContainer, sendSubmitMessage);
     }
 
 }
 
 //send the message to the background js
 //called after all the checks have been made that it's okay to do so
-function sendSubmitMessage(){
+async function sendSubmitMessage(){
     //add loading animation
     (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
     document.getElementById("submitButton").style.animation = "rotate 1s 0s infinite";
 
-    let currentVideoID = sponsorVideoID;
+    //check if a sponsor exceeds the duration of the video
+    for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+        if (sponsorTimesSubmitting[i].segment[1] > video.duration) {
+            sponsorTimesSubmitting[i].segment[1] = video.duration;
+        }
+    }
 
-    chrome.runtime.sendMessage({
-        message: "submitTimes",
-        videoID: currentVideoID
-    }, function(response) {
-        if (response != undefined) {
-            if (response.statusCode == 200) {
-                //hide loading message
-                let submitButton = document.getElementById("submitButton");
-                //finish this animation
-                submitButton.style.animation = "rotate 1s";
-                //when the animation is over, hide the button
-                let animationEndListener =  function() {
-                    changeStartSponsorButton(true, false);
+    //update sponsorTimes
+    Config.config.sponsorTimes.set(sponsorVideoID, utils.getSegmentsFromSponsorTimes(sponsorTimesSubmitting));
 
-                    submitButton.style.animation = "none";
-
-                    submitButton.removeEventListener("animationend", animationEndListener);
-                };
-
-                submitButton.addEventListener("animationend", animationEndListener);
-
-                //clear the sponsor times
-                Config.config.sponsorTimes.delete(currentVideoID);
-
-                //add submissions to current sponsors list
-                if (sponsorTimes === null) sponsorTimes = [];
+    // Check to see if any of the submissions are below the minimum duration set
+    if (Config.config.minDuration > 0) {
+        for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
+            if (sponsorTimesSubmitting[i].segment[1] - sponsorTimesSubmitting[i].segment[0] < Config.config.minDuration) {
+                let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + 
+                    getSegmentsMessage(utils.getSegmentsFromSponsorTimes(sponsorTimesSubmitting));
                 
-                sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
-                for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-                    // Add placeholder IDs
-                    UUIDs.push(null);
-                }
-
-                // Empty the submitting times
-                sponsorTimesSubmitting = [];
-
-                updatePreviewBar();
-            } else {
-                //show that the upload failed
-                document.getElementById("submitButton").style.animation = "unset";
-                (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
-
-                alert(utils.getErrorMessage(response.statusCode));
+                if(!confirm(confirmShort)) return;
             }
         }
-    });
+    }
+
+    if (Config.config.testingServer) {
+        let response = await utils.asyncRequestToServer("POST", "/api/skipSegments", {
+            videoID: sponsorVideoID,
+            userID: Config.config.userID,
+            segments: sponsorTimesSubmitting
+        });
+
+        if (response.status === 200) {
+            //hide loading message
+            let submitButton = document.getElementById("submitButton");
+            submitButton.style.animation = "rotate 1s";
+            //finish this animation
+            //when the animation is over, hide the button
+            let animationEndListener =  function() {
+                changeStartSponsorButton(true, false);
+
+                submitButton.style.animation = "none";
+
+                submitButton.removeEventListener("animationend", animationEndListener);
+            };
+
+            submitButton.addEventListener("animationend", animationEndListener);
+
+            //clear the sponsor times
+            Config.config.sponsorTimes.delete(sponsorVideoID);
+
+            //add submissions to current sponsors list
+            if (sponsorTimes === null) sponsorTimes = [];
+            
+            sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+
+            // Empty the submitting times
+            sponsorTimesSubmitting = [];
+
+            updatePreviewBar();
+        } else {
+            //show that the upload failed
+            document.getElementById("submitButton").style.animation = "unset";
+            (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+
+            alert(utils.getErrorMessage(response.status) + "\n\n" + (await response.text()));
+        }
+
+    } else {
+        chrome.runtime.sendMessage({
+            message: "submitTimes",
+            videoID: sponsorVideoID
+        }, function(response) {
+            if (response != undefined) {
+                if (response.statusCode == 200) {
+                    //hide loading message
+                    let submitButton = document.getElementById("submitButton");
+                    submitButton.style.animation = "rotate 1s";
+                    //finish this animation
+                    //when the animation is over, hide the button
+                    let animationEndListener =  function() {
+                        changeStartSponsorButton(true, false);
+    
+                        submitButton.style.animation = "none";
+    
+                        submitButton.removeEventListener("animationend", animationEndListener);
+                    };
+    
+                    submitButton.addEventListener("animationend", animationEndListener);
+    
+                    //clear the sponsor times
+                    Config.config.sponsorTimes.delete(sponsorVideoID);
+    
+                    //add submissions to current sponsors list
+                    if (sponsorTimes === null) sponsorTimes = [];
+                    
+                    sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
+    
+                    // Empty the submitting times
+                    sponsorTimesSubmitting = [];
+    
+                    updatePreviewBar();
+                } else {
+                    //show that the upload failed
+                    document.getElementById("submitButton").style.animation = "unset";
+                    (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
+    
+                    alert(utils.getErrorMessage(response.statusCode) + "\n\n" + response.responseText);
+                }
+            }
+        });
+    }
 }
 
 //get the message that visually displays the video times
-function getSponsorTimesMessage(sponsorTimes) {
+function getSegmentsMessage(segments: number[][]): string {
     let sponsorTimesMessage = "";
 
-    for (let i = 0; i < sponsorTimes.length; i++) {
-        for (let s = 0; s < sponsorTimes[i].length; s++) {
-            let timeMessage = getFormattedTime(sponsorTimes[i][s]);
+    for (let i = 0; i < segments.length; i++) {
+        for (let s = 0; s < segments[i].length; s++) {
+            let timeMessage = utils.getFormattedTime(segments[i][s]);
             //if this is an end time
             if (s == 1) {
                 timeMessage = " to " + timeMessage;
@@ -1453,22 +1733,6 @@ function addCSS() {
             }
         });
     }
-}
-
-//converts time in seconds to minutes:seconds
-function getFormattedTime(seconds) {
-    let minutes = Math.floor(seconds / 60);
-    let secondsNum: number = Math.round(seconds - minutes * 60);
-    let secondsDisplay: string = String(secondsNum);
-    
-    if (secondsNum < 10) {
-        //add a zero
-        secondsDisplay = "0" + secondsNum;
-    }
-
-    let formatted = minutes + ":" + secondsDisplay;
-
-    return formatted;
 }
 
 function sendRequestToCustomServer(type, fullAddress, callback) {

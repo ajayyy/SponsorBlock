@@ -24,6 +24,13 @@
 	
 		<div id="options" class="hidden">
 
+			<div id="category-type" option-type="react-CategoryChooserComponent">
+
+			</div>
+
+			<br/>
+			<br/>
+
 			<div id="support-invidious" option-type="toggle" sync-option="supportInvidious">
 				<label class="switch-container" label-name="__MSG_supportInvidious__">
 					<label class="switch">
@@ -76,24 +83,6 @@
 
 			<br/>
 			<br/>
-
-			<div option-type="toggle" toggle-type="reverse" sync-option="disableAutoSkip">
-				<label class="switch-container" label-name="__MSG_autoSkip__">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-				</label>
-	
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_autoSkipDescription__</div>
-			</div>
-
-			<br/>
-			<br/>
-	
 	
 			<div option-type="keybind-change" sync-option="startSponsorKeybind">
 				<div class="option-button trigger-button">
@@ -230,6 +219,23 @@
 
 			<br/>
 			<br/>
+
+			<div option-type="toggle" sync-option="audioNotificationOnSkip">
+				<label class="switch-container" label-name="__MSG_audioNotification__">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+				</label>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_audioNotificationDescription__</div>
+			</div>
+
+			<br/>
+			<br/>
 	
 			<div option-type="toggle" sync-option="autoUpvote">
 				<label class="switch-container" label-name="__MSG_enableAutoUpvote__">
@@ -346,7 +352,23 @@
 
 			<br/>
 			<br/>
+	
+			<div option-type="toggle" sync-option="testingServer" confirm-message="testingServerWarning">
+				<label class="switch-container" label-name="__MSG_enableTestingServer__">
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</label>
+	
+				<br/>
+				<br/>
+	
+				<div class="small-description">__MSG_whatEnableTestingServer__</div>
+			</div>
 
+			<br/>
+			<br/>
 
 			<div option-type="text-change" sync-option="serverAddress">
 				<label class="text-label-container">

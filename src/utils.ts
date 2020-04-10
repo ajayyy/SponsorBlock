@@ -1,4 +1,7 @@
 import Config from "./config";
+import { CategorySelection, SponsorTime } from "./types";
+
+import * as CompileConfig from "../config.json";
 
 class Utils {
     
@@ -154,6 +157,42 @@ class Utils {
         });
     }
 
+    /**
+     * Gets just the timestamps from a sponsorTimes array
+     * 
+     * @param sponsorTimes 
+     */
+    getSegmentsFromSponsorTimes(sponsorTimes: SponsorTime[]): number[][] {
+        let segments: number[][] = [];
+        for (const sponsorTime of sponsorTimes) {
+            segments.push(sponsorTime.segment);
+        }
+
+        return segments;
+    }
+
+    getSponsorIndexFromUUID(sponsorTimes: SponsorTime[], UUID: string): number {
+        for (let i = 0; i < sponsorTimes.length; i++) {
+            if (sponsorTimes[i].UUID === UUID) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    getSponsorTimeFromUUID(sponsorTimes: SponsorTime[], UUID: string): SponsorTime {
+        return sponsorTimes[this.getSponsorIndexFromUUID(sponsorTimes, UUID)];
+    }
+
+    getCategorySelection(category: string): CategorySelection {
+        for (const selection of Config.config.categorySelections) {
+            if (selection.name === category) {
+                return selection;
+            }
+        }
+    }
+
     localizeHtmlPage() {
         //Localize by replacing __MSG_***__ meta tags
         var objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
@@ -236,11 +275,46 @@ class Utils {
      * @param type The request type. "GET", "POST", etc.
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
+     */    
+    async asyncRequestToServer(type: string, address: string, data = {}) {
+        let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+
+        // If GET, convert JSON to parameters
+        if (type.toLowerCase() === "get") {
+            for (const key in data) {
+                let seperator = address.includes("?") ? "&" : "?";
+                let value = (typeof(data[key]) === "string") ? data[key]: JSON.stringify(data[key]);
+                address += seperator + key + "=" + value;
+            }
+
+            data = null;
+        }
+
+        const response = await fetch(serverAddress + address, {
+            method: type,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            body: data ? JSON.stringify(data) : null
+        });
+
+        return response;
+    }
+
+    /**
+     * Sends a request to the SponsorBlock server with address added as a query
+     * 
+     * @param type The request type. "GET", "POST", etc.
+     * @param address The address to add to the SponsorBlock server address
+     * @param callback 
      */
     sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
         let xmlhttp = new XMLHttpRequest();
-  
-        xmlhttp.open(type, Config.config.serverAddress + address, true);
+
+        let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+        
+        xmlhttp.open(type, serverAddress + address, true);
   
         if (callback != undefined) {
             xmlhttp.onreadystatechange = function () {
@@ -254,6 +328,37 @@ class Utils {
   
         //submit this request
         xmlhttp.send();
+    }
+
+    getFormattedMinutes(seconds: number) {
+        return Math.floor(seconds / 60);
+    }
+
+    getFormattedSeconds(seconds: number) {
+        return seconds % 60;
+    }
+
+    getFormattedTime(seconds: number, precise?: boolean) {
+        let minutes = Math.floor(seconds / 60);
+        let secondsNum: number = seconds - minutes * 60;
+        if (!precise) {
+            secondsNum = Math.floor(secondsNum);
+        }
+
+        let secondsDisplay: string = String(secondsNum.toFixed(3));
+        
+        if (secondsNum < 10) {
+            //add a zero
+            secondsDisplay = "0" + secondsDisplay;
+        }
+
+        let formatted = minutes + ":" + secondsDisplay;
+
+        return formatted;
+    }
+
+    getRawSeconds(minutes: number, seconds: number): number {
+        return minutes * 60 + seconds;
     }
 
     /**

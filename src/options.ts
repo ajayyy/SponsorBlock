@@ -5,6 +5,7 @@ import * as CompileConfig from "../config.json";
 (<any> window).SB = Config;
 
 import Utils from "./utils";
+import CategoryChooser from "./render/CategoryChooser";
 var utils = new Utils();
 
 window.addEventListener('DOMContentLoaded', init);
@@ -31,6 +32,8 @@ async function init() {
                 let checkbox = optionsElements[i].querySelector("input");
                 let reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
 
+                let confirmMessage = optionsElements[i].getAttribute("confirm-message");
+
                 if (optionResult != undefined) {
                     checkbox.checked = optionResult;
 
@@ -48,6 +51,12 @@ async function init() {
 
                 // Add click listener
                 checkbox.addEventListener("click", () => {
+                    // Confirm if required
+                    if (checkbox.checked && confirmMessage && !confirm(chrome.i18n.getMessage(confirmMessage))){
+                        checkbox.checked = false;
+                        return;
+                    }
+
                     Config.config[option] = reverse ? !checkbox.checked : checkbox.checked;
 
                     // See if anything extra must be run
@@ -164,6 +173,9 @@ async function init() {
                 });
 
                 break;
+            case "react-CategoryChooserComponent":
+                new CategoryChooser(optionsElements[i]);
+            break;
         }
     }
 
