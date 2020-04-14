@@ -30,6 +30,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     noticeRef: React.MutableRefObject<NoticeComponent>;
     timeEditRefs: React.RefObject<SponsorTimeEditComponent>[];
 
+    videoObserver: MutationObserver;
+
     constructor(props: SubmissionNoticeProps) {
         super(props);
         this.noticeRef = React.createRef();
@@ -44,6 +46,24 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
             noticeTitle,
             messages: [],
             idSuffix: "SubmissionNotice"
+        }
+    }
+
+    componentDidMount() {
+        // Catch and rerender when the video size changes
+        //TODO: Use ResizeObserver when it is supported in TypeScript
+        this.videoObserver = new MutationObserver(() => {
+            this.forceUpdate();
+        });
+
+        this.videoObserver.observe(this.contentContainer().v, {
+            attributes: true
+        });
+    }
+
+    componentWillUnmount() {
+        if (this.videoObserver) {
+            this.videoObserver.disconnect();
         }
     }
 

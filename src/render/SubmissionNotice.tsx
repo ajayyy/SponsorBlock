@@ -56,6 +56,8 @@ class SubmissionNotice {
     }
 
     close() {
+        ReactDOM.unmountComponentAtNode(this.noticeElement);
+
         this.noticeElement.remove();
     }
 }

@@ -52,6 +52,8 @@ class SkipNotice {
     }
 
     close() {
+        ReactDOM.unmountComponentAtNode(this.noticeElement);
+
         this.noticeElement.remove();
     }
 }
