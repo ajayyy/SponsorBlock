@@ -60,7 +60,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
 
                 {/* Sponsor Time List */}
                 <tr id={"sponsorSkipNoticeMiddleRow" + this.state.idSuffix}
-                    className="sponsorTimeMessagesRow">
+                    className="sponsorTimeMessagesRow"
+                    style={{maxHeight: (this.contentContainer().v.offsetHeight - 200) + "px"}}>
                     <td style={{width: "100%"}}>
                         {this.getSponsorTimeMessages()}
                     </td>
