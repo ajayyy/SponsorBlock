@@ -11,6 +11,8 @@ class SubmissionNotice {
 
     noticeRef: React.MutableRefObject<SubmissionNoticeComponent>;
 
+    noticeElement: HTMLDivElement;
+
     constructor(contentContainer: () => any, callback: () => any) {
         this.noticeRef = React.createRef();
 
@@ -34,22 +36,27 @@ class SubmissionNotice {
             }
         }
     
-        let noticeElement = document.createElement("div");
-        noticeElement.id = "submissionNoticeContainer";
+        this.noticeElement = document.createElement("div");
+        this.noticeElement.id = "submissionNoticeContainer";
 
-        referenceNode.prepend(noticeElement);
+        referenceNode.prepend(this.noticeElement);
 
         ReactDOM.render(
             <SubmissionNoticeComponent
                 contentContainer={contentContainer}
                 callback={callback} 
-                ref={this.noticeRef} />,
-            noticeElement
+                ref={this.noticeRef}
+                closeListener={() => this.close()} />,
+            this.noticeElement
         );
     }
 
     update() {
         this.noticeRef.current.forceUpdate();
+    }
+
+    close() {
+        this.noticeElement.remove();
     }
 }
 

@@ -11,6 +11,8 @@ export interface SubmissionNoticeProps {
     contentContainer: ContentContainer;
 
     callback: () => any;
+
+    closeListener: () => void
 }
 
 export interface SubmissionNoticeeState {
@@ -134,6 +136,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.noticeRef.current.close(true);
 
         this.contentContainer().resetSponsorSubmissionNotice();
+
+        this.props.closeListener();
     }
 
     submit() {
