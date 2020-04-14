@@ -338,6 +338,13 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.sponsorTimeMessagesRow {
+	max-height: 300px;
+	display: flex;
+
+	overflow: auto;
+}
+
 .sponsorTimeEdit {
 	font-size: 14px;
 
