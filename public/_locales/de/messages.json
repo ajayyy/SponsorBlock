@@ -1,19 +1,7 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
-    "fullName": {
-        "message": "SponsorBlock for YouTube - Skip Sponsorships",
-        "description": "Name of the extension."
-    },
-
     "Description": {
         "message": "Überspringe die gesponserten Inhalte in YouTube-Videos. Melde gesponsorte Inhalte in den von dir angesehenen Videos und erspare anderen die Zeit.",
         "description": "Description of the extension."
-    },
-    "helpPage": {
-        "message": "index_en.html"
     },
     "400": {
         "message": "Ungültige Anforderung"
@@ -33,7 +21,7 @@
     "Sponsors": {
         "message": "Sponsoren"
     },
-   "Segment": {
+    "Segment": {
         "message": "gesponsorter Inhalt"
     },
     "Segments": {
@@ -133,37 +121,37 @@
         "message": "Bist du sicher, dass die Auswahl abgeschickt werden soll?"
     },
     "whitelistChannel": {
-         "message": "Kanal auf Whitelist setzen "
+        "message": "Kanal auf Whitelist setzen "
     },
     "removeFromWhitelist": {
-         "message": "Kanal von Whitelist entfernen"
+        "message": "Kanal von Whitelist entfernen"
     },
     "voteOnTime": {
-         "message": "Stimme für Zeiten ab"
+        "message": "Stimme für Zeiten ab"
     },
     "recordTimes": {
-         "message": "Lege das Zeitfenster eines gesponsorten Inhalts fest"
+        "message": "Lege das Zeitfenster eines gesponsorten Inhalts fest"
     },
     "soFarUHSubmited": {
-         "message": "Gemeldet wurden von dir bisher"
+        "message": "Gemeldet wurden von dir bisher"
     },
     "savedPeopleFrom": {
-         "message": "Du hast andere Benutzer bewahrt vor"
+        "message": "Du hast andere Benutzer bewahrt vor"
     },
     "viewLeaderboard": {
-         "message": "Siehe Rangliste"
+        "message": "Siehe Rangliste"
     },
     "here": {
         "message": "hier"
     },
     "recordTimesDescription": {
-         "message": "Klicke den Knopf unten, wenn der gesponsorte Inhalt beginnt und endet, um aufzunehmen und\n einzusenden"
+        "message": "Klicke den Knopf unten, wenn der gesponsorte Inhalt beginnt und endet, um aufzunehmen und\n einzusenden"
     },
     "popupHint": {
-         "message": "Hinweis: In den Optionen lässt sich eine Taste für das Festlegen von Anfang/Ende des gesponsorten Inhalts, sowie für das Einsenden festlegen"
+        "message": "Hinweis: In den Optionen lässt sich eine Taste für das Festlegen von Anfang/Ende des gesponsorten Inhalts, sowie für das Einsenden festlegen"
     },
     "lastTimes": {
-         "message": "Letzte ausgewählte Zeitabschnitte"
+        "message": "Letzte ausgewählte Zeitabschnitte"
     },
     "clearTimesButton": {
         "message": "Zeiten löschen"
