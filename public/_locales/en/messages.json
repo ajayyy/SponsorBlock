@@ -531,5 +531,8 @@
     },
     "moreCategories": {
         "message": "More Categories"
+    },
+    "bracketEnd": {
+        "message": "(End)"
     }
 }
