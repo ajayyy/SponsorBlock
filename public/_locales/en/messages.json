@@ -515,7 +515,7 @@
         "message": "Manual Skip"
     },
     "showOverlay": {
-        "message": "Show Overlay On Player"
+        "message": "Show In Seek Bar"
     },
     "enableTestingServer": {
         "message": "Enable Beta Testing Server"
