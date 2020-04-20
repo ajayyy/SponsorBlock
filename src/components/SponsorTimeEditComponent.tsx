@@ -47,6 +47,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         document.getElementById("sponsorTimesContainer" + this.idSuffix).addEventListener('keydown', function (event) {
             event.stopPropagation();
         });
+
+        // Add as a config listener
+        Config.configListeners.push(this.configUpdate.bind(this));
     }
 
     render() {
@@ -318,6 +321,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             //update display
             this.props.submissionNotice.forceUpdate();
         }
+    }
+
+    configUpdate() {
+        this.forceUpdate();
     }
 }
 
