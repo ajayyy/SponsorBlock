@@ -56,6 +56,10 @@ h1.popupElement {
 	padding: 0px 5px;
 }
 
+.outerPopupBody {
+	overflow-y: scroll;
+}
+
 .discreteLink.popupElement {
 	color: black;
 }
