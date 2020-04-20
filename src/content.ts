@@ -1490,6 +1490,9 @@ async function sendSubmitMessage(){
         
         sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
 
+        // Increase contribution count
+        Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimesSubmitting.length;
+
         // Empty the submitting times
         sponsorTimesSubmitting = [];
 
