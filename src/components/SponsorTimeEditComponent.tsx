@@ -281,7 +281,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         let sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
         let index = this.props.index;
 
-        let skipTime = sponsorTimes[index][0];
+        let skipTime = sponsorTimes[index].segment[0];
 
         if (this.state.editing) {
             // Save edits before previewing
