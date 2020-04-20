@@ -9,6 +9,8 @@ class SkipNotice {
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: () => any;
 
+    noticeElement: HTMLDivElement;
+
     constructor(UUID: string, autoSkip: boolean = false, contentContainer) {
         this.UUID = UUID;
         this.autoSkip = autoSkip;
@@ -35,15 +37,24 @@ class SkipNotice {
         //this is the suffix added at the end of every id
         let idSuffix = this.UUID + amountOfPreviousNotices;
 
-        let noticeElement = document.createElement("div");
-        noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
+        this.noticeElement = document.createElement("div");
+        this.noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
 
-        referenceNode.prepend(noticeElement);
+        referenceNode.prepend(this.noticeElement);
 
         ReactDOM.render(
-            <SkipNoticeComponent UUID={UUID} autoSkip={autoSkip} contentContainer={contentContainer} />,
-            noticeElement
+            <SkipNoticeComponent UUID={UUID} 
+                autoSkip={autoSkip} 
+                contentContainer={contentContainer}
+                closeListener={() => this.close()} />,
+            this.noticeElement
         );
+    }
+
+    close() {
+        ReactDOM.unmountComponentAtNode(this.noticeElement);
+
+        this.noticeElement.remove();
     }
 }
 

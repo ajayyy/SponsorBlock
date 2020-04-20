@@ -154,7 +154,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     className="sponsorTimeCategories"
                     defaultValue={sponsorTime.category}
                     ref={this.categoryOptionRef}
-                    onChange={this.saveEditTimes.bind(this)}>
+                    onChange={this.categorySelectionChange.bind(this)}>
                     {this.getCategoryOptions()}
                 </select>
 
@@ -190,18 +190,40 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     getCategoryOptions() {
         let elements = [];
 
-        //TODO: Remove this when testing server is not needed
-        let categoryList = Config.config.testingServer ? CompileConfig.categoryList : ["sponsor"];
-        for (const category of categoryList) {
+        for (const category of Config.config.categorySelections) {
             elements.push(
-                <option value={category}
-                        key={category}>
-                    {chrome.i18n.getMessage("category_" + category)}
+                <option value={category.name}
+                        key={category.name}>
+                    {chrome.i18n.getMessage("category_" + category.name)}
+                </option>
+            );
+        }
+
+        if (elements.length < CompileConfig.categoryList.length) {
+            // Add show more button
+            elements.push(
+                <option value={"moreCategories"}
+                        key={"moreCategories"}>
+                    {chrome.i18n.getMessage("moreCategories")}
                 </option>
             );
         }
 
         return elements;
+    }
+
+    categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        // See if show more categories was pressed
+        if (event.target.value === "moreCategories") {
+            // Open options page
+            chrome.runtime.sendMessage({"message": "openConfig"});
+
+            // Reset option to previous
+            event.target.value = this.props.contentContainer().sponsorTimesSubmitting[this.props.index].category;
+            return;
+        }
+
+        this.saveEditTimes();
     }
 
     setTimeToNow(index: number) {
@@ -259,7 +281,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         let sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
         let index = this.props.index;
 
-        let skipTime = sponsorTimes[index][0];
+        let skipTime = sponsorTimes[index].segment[0];
 
         if (this.state.editing) {
             // Save edits before previewing

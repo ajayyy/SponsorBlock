@@ -14,6 +14,8 @@ export interface SkipNoticeProps {
     autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
+
+    closeListener: () => void
 }
 
 export interface SkipNoticeState {
@@ -112,7 +114,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 fadeIn={true}
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
-                ref={this.noticeRef}>
+                ref={this.noticeRef}
+                closeListener={this.props.closeListener}>
                     
                 {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
                     <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>

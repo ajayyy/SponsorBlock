@@ -11,6 +11,8 @@ export interface SubmissionNoticeProps {
     contentContainer: ContentContainer;
 
     callback: () => any;
+
+    closeListener: () => void
 }
 
 export interface SubmissionNoticeeState {
@@ -27,6 +29,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
 
     noticeRef: React.MutableRefObject<NoticeComponent>;
     timeEditRefs: React.RefObject<SponsorTimeEditComponent>[];
+
+    videoObserver: MutationObserver;
 
     constructor(props: SubmissionNoticeProps) {
         super(props);
@@ -45,6 +49,24 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         }
     }
 
+    componentDidMount() {
+        // Catch and rerender when the video size changes
+        //TODO: Use ResizeObserver when it is supported in TypeScript
+        this.videoObserver = new MutationObserver(() => {
+            this.forceUpdate();
+        });
+
+        this.videoObserver.observe(this.contentContainer().v, {
+            attributes: true
+        });
+    }
+
+    componentWillUnmount() {
+        if (this.videoObserver) {
+            this.videoObserver.disconnect();
+        }
+    }
+
     render() {
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
@@ -57,8 +79,10 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                 {this.getMessageBoxes()}
 
                 {/* Sponsor Time List */}
-                <tr id={"sponsorSkipNoticeMiddleRow" + this.state.idSuffix}>
-                    <td>
+                <tr id={"sponsorSkipNoticeMiddleRow" + this.state.idSuffix}
+                    className="sponsorTimeMessagesRow"
+                    style={{maxHeight: (this.contentContainer().v.offsetHeight - 200) + "px"}}>
+                    <td style={{width: "100%"}}>
                         {this.getSponsorTimeMessages()}
                     </td>
                 </tr>
@@ -133,6 +157,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.noticeRef.current.close(true);
 
         this.contentContainer().resetSponsorSubmissionNotice();
+
+        this.props.closeListener();
     }
 
     submit() {

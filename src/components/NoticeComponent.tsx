@@ -11,7 +11,7 @@ export interface NoticeProps {
     fadeIn?: boolean,
 
     // Callback for when this is closed
-    closeListener?: () => void,
+    closeListener: () => void,
 
     zIndex?: number
 }
@@ -195,16 +195,10 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
      * @param silent If true, the close listener will not be called
      */
     close(silent?: boolean) {
-        //TODO: Change to a listener in the renderer (not component)
-        let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
-        if (notice != null) {
-            notice.remove();
-        }
-
         //remove setInterval
         if (this.countdownInterval !== null) clearInterval(this.countdownInterval);
 
-        if (this.props.closeListener && !silent) this.props.closeListener();
+        if (!silent) this.props.closeListener();
     }
 
     changeNoticeTitle(title) {
