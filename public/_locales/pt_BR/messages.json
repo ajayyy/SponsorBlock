@@ -1,19 +1,11 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Nome da extensão."
-    },
     "fullName": {
         "message": "SponsorBlock para YouTube - Pule patrocínios",
-        "description": "Nome da extensão."
+        "description": "Name of the extension."
     },
-
     "Description": {
         "message": "Pule patrocinadores em vídeos do YouTube. Reporte patrocinadores em videos que você assiste para salvar o tempo dos outros.",
-        "description": "Descrição da extensão."
-    },
-    "helpPage": {
-        "message": "index_en.html"
+        "description": "Description of the extension."
     },
     "400": {
         "message": "O servidor disse que esse pedido foi inválido"
@@ -33,7 +25,7 @@
     "Sponsors": {
         "message": "patrocinadores"
     },
-   "Segment": {
+    "Segment": {
         "message": "segmento de patrocinador"
     },
     "Segments": {
@@ -84,7 +76,6 @@
     "Unknown": {
         "message": "Teve um erro ao enviar seus segmentos, tente novamente depois."
     },
-  
     "sponsorFound": {
         "message": "Os patrocinadores desse vídeo estão no banco de dados!"
     },
@@ -134,40 +125,37 @@
         "message": "Tem a certeza que pretende submeter?"
     },
     "whitelistChannel": {
-         "message": "Meter canal na Whitelist"
+        "message": "Meter canal na Whitelist"
     },
     "removeFromWhitelist": {
-         "message": "Remover canal da Whitelist"
-    },
-    "whitelistDescription": {
-         "message": "Colocar na Whitelist canais com patrocínios éticos que encoragem boas atitude, ou simplesmente canais com patrocínios engraçados. Ou não, é consigo."
+        "message": "Remover canal da Whitelist"
     },
     "voteOnTime": {
-         "message": "Vote num intervalo de patrocínio"
+        "message": "Vote num intervalo de patrocínio"
     },
     "recordTimes": {
-         "message": "Registe um intervalo de patrocínio"
+        "message": "Registe um intervalo de patrocínio"
     },
     "soFarUHSubmited": {
-         "message": "Até agora submeteu"
+        "message": "Até agora submeteu"
     },
     "savedPeopleFrom": {
-         "message": "Poupaste a outros de "
+        "message": "Poupaste a outros de "
     },
     "viewLeaderboard": {
-         "message": "Ver a leaderboard"
+        "message": "Ver a leaderboard"
     },
     "here": {
         "message": "aqui"
     },
     "recordTimesDescription": {
-         "message": "Carregue neste botão abaixo quando o patrocínio começar e quando\n acabar para registar e submetê-lo à base de dados"
+        "message": "Carregue neste botão abaixo quando o patrocínio começar e quando\n acabar para registar e submetê-lo à base de dados"
     },
     "popupHint": {
-         "message": "Dica: Carregue na tecla ; enquanto num vídeo para registar o começo/fim de um patrocínio e \" para submeter"
+        "message": "Dica: Carregue na tecla ; enquanto num vídeo para registar o começo/fim de um patrocínio e \" para submeter"
     },
     "lastTimes": {
-         "message": "Intervalos de Patrocínios Escolhidos mais Recentemente"
+        "message": "Intervalos de Patrocínios Escolhidos mais Recentemente"
     },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
@@ -231,14 +219,14 @@
     },
     "longDescription": {
         "message": "SponsorBlock é uma extensão que salta segmentos patrocinados em vídeos do YouTube. SponsorBlock é uma extenção crowdfunded que permite a qualquer um submeter o início e o fim de segmentos patrocinados. Assim que uma pessoa submete essa informação todos com a extenção poderam saltar automaticamete o patrocínio.",
-        "description": "Descrição completa da extençao nas lojas dos browsers."
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Site",
-        "description": "Usado na pagina da loja do Firefox"
+        "description": "Used on Firefox Store Page"
     },
     "sourceCode": {
         "message": "Código fonte",
-        "description": "Usado na pagina da loja do Firefox"
+        "description": "Used on Firefox Store Page"
     }
 }

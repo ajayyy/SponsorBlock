@@ -1,19 +1,11 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock per YouTube - Salta gli sponsor",
         "description": "Name of the extension."
     },
-
     "Description": {
         "message": "Salta i contenuti sponsorizzati nei video di YouTube. Segnala gli annunci incorporati nei video che guardi per far risparmiare tempo agli altri.",
         "description": "Description of the extension."
-    },
-    "helpPage": {
-        "message": "index_en.html"
     },
     "400": {
         "message": "Richiesta non valida"
@@ -33,7 +25,7 @@
     "Sponsors": {
         "message": "sponsorizzazioni"
     },
-   "Segment": {
+    "Segment": {
         "message": "spezzone sponsorizzato"
     },
     "Segments": {
@@ -84,7 +76,6 @@
     "Unknown": {
         "message": "Si è verificato un errore durante l'invio dello spezzone sponsorizzato, per favore riprova più tardi."
     },
-  
     "sponsorFound": {
         "message": "I contenuti sponsorizzati di questo video sono nel database!"
     },
@@ -134,40 +125,37 @@
         "message": "Sei sicuro di volerlo inviare?"
     },
     "whitelistChannel": {
-         "message": "Aggiungi Canale alla Whitelist"
+        "message": "Aggiungi Canale alla Whitelist"
     },
     "removeFromWhitelist": {
-         "message": "Rimuovi Canale dalla Whitelist"
-    },
-    "whitelistDescription": {
-         "message": "Aggiungi alla whitelist i canali che sponsorizzano eticamente per incoraggiare ad un comportamento corretto, oppure se sono semplicemente intrattenenti e divertenti. Oppure non farlo, decidi tu."
+        "message": "Rimuovi Canale dalla Whitelist"
     },
     "voteOnTime": {
-         "message": "Vota uno Spezzone Sponsorizzato"
+        "message": "Vota uno Spezzone Sponsorizzato"
     },
     "recordTimes": {
-         "message": "Registra uno Spezzone Sponsorizzato"
+        "message": "Registra uno Spezzone Sponsorizzato"
     },
     "soFarUHSubmited": {
-         "message": "Fino ad ora hai inviato"
+        "message": "Fino ad ora hai inviato"
     },
     "savedPeopleFrom": {
-         "message": "Hai salvato le persone da "
+        "message": "Hai salvato le persone da "
     },
     "viewLeaderboard": {
-         "message": "Guarda la classifica"
+        "message": "Guarda la classifica"
     },
     "here": {
         "message": "qui"
     },
     "recordTimesDescription": {
-         "message": "Premi il pulsante qui sotto quando inizia e finisce la sponsorizzazione per registrarla e\ninviarla al database."
+        "message": "Premi il pulsante qui sotto quando inizia e finisce la sponsorizzazione per registrarla e\ninviarla al database."
     },
     "popupHint": {
-         "message": "Suggerimento: Premi il tasto punto e virgola mentre il video è attivo per segnalare l'inizio/fine di una sponsorizzazione e virgolette per inviare."
+        "message": "Suggerimento: Premi il tasto punto e virgola mentre il video è attivo per segnalare l'inizio/fine di una sponsorizzazione e virgolette per inviare."
     },
     "lastTimes": {
-         "message": "Ultimi minutaggi sponsorizzati scelti"
+        "message": "Ultimi minutaggi sponsorizzati scelti"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -197,7 +185,7 @@
         "message": "Nascondi i Pulsanti nel Lettore di YouTube"
     },
     "hideButtonsDescription": {
-		"message": "Nasconde i pulsanti che appaiono nel lettore di YouTube per inviare spezzoni sponsorizzati. Capisco che può essere fastidioso per alcune\n persone. Invece di utilizzare quei pulsanti, è possibile utilizzare questo popup per inviare gli spezzoni sponsorizzati. Per nascondere l'avviso che appare, \nusa il bottone \"Non mostrare più\" nell'avviso. Potrai sempre abilitare nuovamente queste impostazioni in futuro."
+        "message": "Nasconde i pulsanti che appaiono nel lettore di YouTube per inviare spezzoni sponsorizzati. Capisco che può essere fastidioso per alcune\n persone. Invece di utilizzare quei pulsanti, è possibile utilizzare questo popup per inviare gli spezzoni sponsorizzati. Per nascondere l'avviso che appare, \nusa il bottone \"Non mostrare più\" nell'avviso. Potrai sempre abilitare nuovamente queste impostazioni in futuro."
     },
     "showInfoButton": {
         "message": "Mostra il Pulsante Informazioni nel Lettore di YouTube"

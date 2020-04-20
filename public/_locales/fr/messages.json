@@ -1,19 +1,11 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock pour YouTube - Supprime les messages commerciaux et publicités intégrées",
         "description": "Name of the extension."
     },
-
     "Description": {
         "message": "Passe automatiquement les messages commerciaux intégrés dans les vidéos YouTube. Soumettez les segments commerciaux dans les vidéos que vous regardez pour aidez les autres.",
         "description": "Description of the extension."
-    },
-    "helpPage": {
-        "message": "index_en.html"
     },
     "400": {
         "message": "Soumission invalide"
@@ -25,7 +17,7 @@
         "message": "Déja soumis"
     },
     "channelWhitelisted": {
-        "message": "Cette chaîne est sur la liste blanche !"
+        "message": "Chaîne mise sur liste blanche !"
     },
     "Sponsor": {
         "message": "message commercial"
@@ -43,16 +35,16 @@
         "message": "Message commercial passé"
     },
     "reportButtonTitle": {
-        "message": "Incorrect"
+        "message": "Signaler"
     },
     "reportButtonInfo": {
-        "message": "Signaler que ce segment commercial est incorrect ou n'existe pas."
+        "message": "Signaler que ce segment commercial est incorrect."
     },
     "Dismiss": {
         "message": "Fermer"
     },
     "Loading": {
-        "message": "Chargement en cours..."
+        "message": "Chargement..."
     },
     "Mins": {
         "message": "Minutes"
@@ -85,10 +77,10 @@
         "message": "Une erreur s'est produite lors de la soumission, veuillez ré-essayer plus tard."
     },
     "sponsorFound": {
-        "message": "Les messages commerciaux sont déjà dans notre base de donnée pour cette vidéo !"
+        "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de donnée !"
     },
     "sponsor404": {
-        "message": "Pas de messages commerciaux trouvés"
+        "message": "Pas de sponsors trouvés"
     },
     "sponsorStart": {
         "message": "Début du message commercial"
@@ -138,9 +130,6 @@
     "removeFromWhitelist": {
         "message": "Supprimer la chaîne de la liste blanche"
     },
-    "whitelistDescription": {
-        "message": "Ajouter à la liste blanche les chaînes qui publient des messages commerciaux de façon éthique pour encourager les bons comportements, ou qui publient des messages commerciaux divertissants ou drôles. Ou pas, c'est votre choix."
-    },
     "voteOnTime": {
         "message": "Voter sur un segment commercial"
     },
@@ -187,7 +176,7 @@
         "message": "Cacher"
     },
     "Options": {
-        "message": "Options"
+        "message": "Paramètres"
     },
     "showButtons": {
         "message": "Montrer les boutons sur le lecteur YouTube"
@@ -259,5 +248,147 @@
     },
     "keybindDescriptionComplete": {
         "message": "Le raccourci choisi est : "
+    },
+    "0": {
+        "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
+    },
+    "disableSkipping": {
+        "message": "Désactiver SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Activer SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Votre travail",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "Le serveur semble être surchargé. Réessayez dans quelques secondes."
+    },
+    "errorCode": {
+        "message": "Code d'erreur : "
+    },
+    "noticeTitleNotSkipped": {
+        "message": "Passer le sponsor ?"
+    },
+    "skip": {
+        "message": "Passer"
+    },
+    "disableAutoSkip": {
+        "message": "Désactiver le passage automatique"
+    },
+    "enableAutoSkip": {
+        "message": "Activer le passage automatique"
+    },
+    "autoSkipDescription": {
+        "message": "Le passage automatique passera automatiquement les sponsors pour vous. Si désactivé, un avis apparaîtra vous demandant si vous souhaitez passer."
+    },
+    "audioNotification": {
+        "message": "Notification audio lors du passage"
+    },
+    "audioNotificationDescription": {
+        "message": "La notification audio lors du passage jouera un son à chaque fois qu'un sponsor est ignoré. Si désactivé (ou si le passage automatique est désactivé), aucun son ne sera joué."
+    },
+    "youHaveSkipped": {
+        "message": "Vous avez passé "
+    },
+    "youHaveSaved": {
+        "message": "Vous avez économisé "
+    },
+    "minLower": {
+        "message": "minute"
+    },
+    "minsLower": {
+        "message": "minutes"
+    },
+    "hourLower": {
+        "message": "heure"
+    },
+    "hoursLower": {
+        "message": "heures"
+    },
+    "youHaveSavedTime": {
+        "message": "Vous avez économisé"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " aux autres."
+    },
+    "guildlinesSummary": {
+        "message": "- Assurez-vous que votre segment ne contient que des segments de promotion payante, rien d'autre.\n- Assurez-vous que passer ce segment ne sautera pas de contenu important\n- Si la vidéo entière est un sponsor, s'il vous plaît, ne le signalez pas. Un système complet de reportage vidéo sortira bientôt.\n- Veuillez ne pas signaler les avertissements qui pourraient montrer des biais (si une vidéo de revue est sponsorisée, ne sautez pas quand ils le mentionnent)."
+    },
+    "statusReminder": {
+        "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
+    },
+    "changeUserID": {
+        "message": "Importer/Exporter votre ID d'utilisateur"
+    },
+    "whatChangeUserID": {
+        "message": "Gardez ça privé. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtiens, il peut vous usurper."
+    },
+    "setUserID": {
+        "message": "Définir l'ID utilisateur"
+    },
+    "userIDChangeWarning": {
+        "message": "AVERTISSEMENT : La modification de l'ID d'utilisateur est permanente. Êtes-vous sûr de vouloir faire ça ? Assurez-vous de sauvegarder votre ancien au cas où."
+    },
+    "createdBy": {
+        "message": "Créé par"
+    },
+    "autoSkip": {
+        "message": "Passage automatique"
+    },
+    "showSkipNotice": {
+        "message": "Afficher l'avis après le passage d'un sponsor"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Il est actuellement réglé sur :"
+    },
+    "supportInvidious": {
+        "message": "Soutenir Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) est un client YouTube tiers. Pour l'activer, vous devez accepter les autorisations supplémentaires. Cela ne fonctionne PAS en mode incongnito sur Chrome et d'autres variantes de Chromium."
+    },
+    "optionsInfo": {
+        "message": "Activer Invidious, désactiver le passage automatique, masquer les boutons et plus encore."
+    },
+    "addInvidiousInstance": {
+        "message": "Ajouter une instance Invidious"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Ajouter une instance Invidious personnalisée. Doit être formaté avec SEULEMENT le domaine. Exemple: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Ajouter"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Ce domaine n'est pas valide. Il devrait JUSTE inclure le domaine. Exemple: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Réinitialiser la liste d'instances Invidious"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Vous êtes sur le point de réinitialiser la liste des instances Invidious"
+    },
+    "currentInstances": {
+        "message": "Instances actuelles:"
+    },
+    "enableAutoUpvote": {
+        "message": "Vote automatique"
+    },
+    "whatAutoUpvote": {
+        "message": "Si cette option est activée, l'extension votera en faveur de tous les segments que vous visualiserez si vous ne les signalez pas. Si l'avis est désactivé, cela ne se produira pas."
+    },
+    "minDuration": {
+        "message": "Durée minimale (en secondes):"
+    },
+    "minDurationDescription": {
+        "message": "Les segments sponsorisés plus courts que la valeur définie ne seront pas passé ni affichés dans le lecteur."
+    },
+    "shortCheck": {
+        "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
+    },
+    "reset": {
+        "message": "Réinitialiser"
     }
 }
