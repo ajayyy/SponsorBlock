@@ -39,10 +39,8 @@ sub.popupElement {
 	vertical-align: text-bottom;
 }
 
-.popupElement {
-    font-family: 'Source Sans Pro', sans-serif;
-
-    color: black;
+.logoText {
+	color: white;
 }
 
 h1.popupElement {
@@ -52,16 +50,21 @@ h1.popupElement {
 
 .popupBody {
 	font-size: 14px;
-	background-color: #ffd9d9;
+	background-color: #333;
 	padding: 0px 5px;
+
+	font-family: 'Source Sans Pro', sans-serif;
+
+	color: #dddddd;
 }
 
 .outerPopupBody {
+	background-color: #222626;
 	overflow-y: scroll;
 }
 
 .discreteLink.popupElement {
-	color: black;
+	color: #dddddd;
 }
 
 .recordingSubtitle.popupElement {
@@ -106,7 +109,7 @@ h1.popupElement {
 }
 
 .whitelistButton.popupElement {
-	background-color:#3acc3a;
+	background-color:#27a52d;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
 	border-radius:28px;
@@ -118,13 +121,15 @@ h1.popupElement {
 	padding:8px 37px;
 	text-decoration:none;
 	text-shadow:0px 0px 0px #27663c;
-    }
+
+	transition: 0.01s background-color;
+}
 .whitelistButton:hover.popupElement {
-    background-color:#218b26;
+    background-color:#3acc3a;
 }
 .whitelistButton:focus.popupElement {
     outline: none;
-    background-color:#218b26;
+    background-color:#3acc3a;
 }
 .whitelistButton:active.popupElement {
     position:relative;
@@ -132,25 +137,27 @@ h1.popupElement {
 }
 
 .greenButton.popupElement {
-    background-color:#ec1c1c;
+    background-color:#cc1717;
     -moz-border-radius:28px;
     -webkit-border-radius:28px;
     border-radius:28px;
-    border:1px solid #d31919;
+    border: none;
     display:inline-block;
     cursor:pointer;
     color:#ffffff;
     font-size:16px;
     padding:8px 37px;
     text-decoration:none;
-    text-shadow:0px 0px 0px #662727;
+	text-shadow:0px 0px 0px #662727;
+	
+	transition: 0.01s background-color;
 }
 .greenButton:hover.popupElement {
-    background-color:#bf2a2a;
+    background-color:#ec1c1c;
 }
 .greenButton:focus.popupElement {
 	outline: none;
-	background-color:#bf2a2a;
+	background-color:#ec1c1c;
 }
 .greenButton:active.popupElement {
     position:relative;
@@ -158,14 +165,11 @@ h1.popupElement {
 }
 
 .dangerButton.popupElement {
-	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
-	box-shadow:inset 0px 1px 0px 0px #cf866c;
-	background-color:#d0451b;
+	background-color:#bc3315;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
-	border:1px solid #942911;
+	border: none;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -175,11 +179,11 @@ h1.popupElement {
 	text-shadow:0px 1px 0px #854629;
 }
 .dangerButton:hover.popupElement {
-	background-color:#bc3315;
+	background-color:#d0451b;
 }
 .dangerButton:focus.popupElement {
 	outline: none;
-	background-color:#bc3315;
+	background-color:#d0451b;
 }
 .dangerButton:active.popupElement {
 	position:relative;
@@ -187,14 +191,11 @@ h1.popupElement {
 }
 
 .warningButton.popupElement {
-	-moz-box-shadow:inset 0px 1px 0px 0px #cfbd6c;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #cfbd6c;
-	box-shadow:inset 0px 1px 0px 0px #cfbd6c;
-	background-color:#d0821b;
+	background-color:#bc8215;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
-	border:1px solid #948b11;
+	border: none;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -204,11 +205,11 @@ h1.popupElement {
 	text-shadow:0px 1px 0px #856829;
 }
 .warningButton:hover.popupElement {
-	background-color:#bc8215;
+	background-color:#d0821b;
 }
 .warningButton:focus.popupElement {
 	outline: none;
-	background-color:#bc8215;
+	background-color:#d0821b;
 }
 .warningButton:active.popupElement {
 	position:relative;
