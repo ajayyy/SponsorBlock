@@ -464,6 +464,8 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
         return;
     }
 
+    if (incorrectVideoIDCheck()) return;
+
     if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
     let skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments);
@@ -481,27 +483,17 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
 
+        if (incorrectVideoIDCheck()) return;
+
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
-            // Double check that the videoID is correct
-            // TODO: Remove this bug catching if statement when the bug is found
-            let currentVideoID = getYouTubeVideoID(document.URL);
-            if (currentVideoID == sponsorVideoID) {
-                skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
+            skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
 
-                // TODO: Know the autoSkip settings for ALL items being skipped
-                if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ManualSkip) {
-                    forcedSkipTime = skipTime[0] + 0.001;
-                } else {
-                    forcedSkipTime = skipTime[1];
-                    forcedIncludeIntersectingSegments = true;
-                }
+            // TODO: Know the autoSkip settings for ALL items being skipped
+            if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ManualSkip) {
+                forcedSkipTime = skipTime[0] + 0.001;
             } else {
-                // Something has really gone wrong
-                console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
-                console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
-
-                // Video ID change occured
-                videoIDChange(currentVideoID);
+                forcedSkipTime = skipTime[1];
+                forcedIncludeIntersectingSegments = true;
             }
         }
 
@@ -512,6 +504,27 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
         skippingFunction();
     } else {
         currentSkipSchedule = setTimeout(skippingFunction, timeUntilSponsor * 1000 * (1 / video.playbackRate));
+    }
+}
+
+/**
+ * This makes sure the videoID is still correct
+ * 
+ * TODO: Remove this bug catching if statement when the bug is found
+ */
+function incorrectVideoIDCheck(): boolean {
+    let currentVideoID = getYouTubeVideoID(document.URL);
+    if (currentVideoID == sponsorVideoID) {
+        // Something has really gone wrong
+        console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
+        console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
+
+        // Video ID change occured
+        videoIDChange(currentVideoID);
+
+        return false;
+    } else {
+        return true;
     }
 }
 
