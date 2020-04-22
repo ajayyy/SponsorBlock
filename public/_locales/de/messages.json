@@ -12,7 +12,7 @@
         "description": "Description of the extension."
     },
     "helpPage": {
-        "message": "index_de.html"
+        "message": "index_en.html"
     },
     "400": {
         "message": "Ungültige Anforderung"
