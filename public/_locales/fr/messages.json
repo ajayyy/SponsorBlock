@@ -1,4 +1,8 @@
 {
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
     "fullName": {
         "message": "SponsorBlock pour YouTube - Supprime les messages commerciaux et publicités intégrées",
         "description": "Name of the extension."
@@ -6,6 +10,9 @@
     "Description": {
         "message": "Passe automatiquement les messages commerciaux intégrés dans les vidéos YouTube. Soumettez les segments commerciaux dans les vidéos que vous regardez pour aidez les autres.",
         "description": "Description of the extension."
+    },
+    "helpPage": {
+        "message": "index_en.html"
     },
     "400": {
         "message": "Soumission invalide"
@@ -388,7 +395,38 @@
     "shortCheck": {
         "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
     },
+    "showUploadButton": {
+        "message": "Afficher le bouton de téléchargement"
+    },
+    "save": {
+        "message": "Sauvegarder"
+    },
     "reset": {
         "message": "Réinitialiser"
+    },
+    "submit": {
+        "message": "Soumettre"
+    },
+    "cancel": {
+        "message": "Annuler"
+    },
+    "delete": {
+        "message": "Supprimer"
+    },
+    "edit": {
+        "message": "Éditer"
+    },
+    "theKey": {
+        "message": "La clé"
+    },
+    "keyAlreadyUsedByYouTube": {
+        "message": "est déjà utilisé par youtube. Veuillez sélectionner une autre clé."
+    },
+    "keyAlreadyUsed": {
+        "message": "est lié à une autre action. Veuillez sélectionner une autre clé."
+    },
+    "to": {
+        "message": "à",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
     }
 }

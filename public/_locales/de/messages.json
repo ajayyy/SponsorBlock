@@ -1,7 +1,18 @@
 {
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "fullName": {
+        "message": "SponsorBlock für YouTube - Überspringe Sponsor Anzeigen",
+        "description": "Name of the extension."
+    },
     "Description": {
         "message": "Überspringe die gesponserten Inhalte in YouTube-Videos. Melde gesponsorte Inhalte in den von dir angesehenen Videos und erspare anderen die Zeit.",
         "description": "Description of the extension."
+    },
+    "helpPage": {
+        "message": "index_en.html"
     },
     "400": {
         "message": "Ungültige Anforderung"
@@ -279,6 +290,12 @@
     "autoSkipDescription": {
         "message": "Auto-Überspringen überspringt gesponsorte Inhalte für dich. Wenn deaktiviert, fragt die Benachrichtigung, ob übersprungen werden soll."
     },
+    "audioNotification": {
+        "message": "Audio-Benachrichtigung beim Überspringen"
+    },
+    "audioNotificationDescription": {
+        "message": "Audio-Benachrichtigung beim Überspringen wird einen Ton abspielen, wenn ein Sponsor übersprungen wird. Wenn deaktiviert (oder wenn Automatisches-Überspringen deaktiviert ist), wird kein Ton abgespielt."
+    },
     "youHaveSkipped": {
         "message": "Du übersprangst "
     },
@@ -302,5 +319,59 @@
     },
     "youHaveSavedTimeEnd": {
         "message": " ihrer Zeit."
+    },
+    "guildlinesSummary": {
+        "message": "- Stellen Sie sicher, dass Ihr Segment nur kostenpflichtige Werbeaktionen enthält, nichts anderes.\n- Stellen Sie sicher, dass das Überspringen dieses Segments wertvolle Inhalte nicht abschneiden wird\n- Wenn das ganze Video ein Sponsor ist, bitte nicht melden. Ein vollständiges Video-Reporting-System wird bald herauskommen.\n- Bitte melde keine Haftungsausschlüsse, die Voreingenommenheit zeigen könnten (falls ein Bewertungsvideo gesponsert wird, überspringen Sie nicht, wenn sie dies erwähnen)."
+    },
+    "statusReminder": {
+        "message": "Überprüfen Sie status.sponsor.ajay.app für den Serverstatus."
+    },
+    "changeUserID": {
+        "message": "Benutzer ID importieren/exportieren"
+    },
+    "whatChangeUserID": {
+        "message": "Dies sollte privat gehalten werden. Dies ist wie ein Passwort und sollte nicht mit jemandem geteilt werden."
+    },
+    "setUserID": {
+        "message": "Benutzer ID festlegen"
+    },
+    "userIDChangeWarning": {
+        "message": "Warnung: Das Ändern der Benutzer ID ist permanent. Sind Sie sicher, dass Sie dies tun möchten? Stellen Sie sicher, dass Sie von Ihren alten Benutzer ID eine Sicherheitskopie machen, nur für den Fall."
+    },
+    "createdBy": {
+        "message": "Erstellt von"
+    },
+    "autoSkip": {
+        "message": "Automatisch überspringen"
+    },
+    "showSkipNotice": {
+        "message": "Zeige Hinweis nach dem Übersprung eines Sponsors"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Es ist derzeit gesetzt auf:"
+    },
+    "supportInvidious": {
+        "message": "Unterstütze Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Unterstützung zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Incongnito-modus auf Chrome und anderen Chromium-Varianten."
+    },
+    "optionsInfo": {
+        "message": "Invidious Support aktivieren, Autoskip deaktivieren, Tasten ausblenden und vieles mehr."
+    },
+    "addInvidiousInstance": {
+        "message": "Invidious-Instanzen hinzufügen"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Fügen Sie eine benutzerdefinierte Instanz von Invidious hinzu. Dies muss mit NUR der Domain formatiert werden. Beispiel: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Hinzufügen"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Dies ist eine ungültige Domain. Dies sollte NUR den Domain-Teil beinhalten. Beispiel: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Invidious Instanzliste zurücksetzen"
     }
 }
