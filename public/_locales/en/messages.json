@@ -7,13 +7,9 @@
         "message": "SponsorBlock for YouTube - Skip Sponsorships",
         "description": "Name of the extension."
     },
-
     "Description": {
         "message": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
         "description": "Description of the extension."
-    },
-    "helpPage": {
-        "message": "index_en.html"
     },
     "400": {
         "message": "Server said this request was invalid"
