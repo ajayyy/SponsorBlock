@@ -287,6 +287,9 @@ async function videoIDChange(id) {
     //if the id has not changed return
     if (sponsorVideoID === id) return;
 
+    // Reset hidden times (only do this when the ID has changed)
+    hiddenSponsorTimes = [];
+
     //set the global videoID
     sponsorVideoID = id;
 
