@@ -1,7 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime } from "./types";
+import { SponsorTime, SponsorHideType } from "./types";
 var utils = new Utils();
 
 interface MessageListener {
@@ -273,7 +273,7 @@ async function runThePopup(messageListener?: MessageListener) {
         );
     }
   
-    function infoFound(request: {found: boolean, sponsorTimes: SponsorTime[], hiddenSponsorTimes: number[]}) {
+    function infoFound(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
         if(chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
@@ -364,7 +364,7 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     //display the video times from the array at the top, in a different section
-    function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[], hiddenSponsorTimes: number[]}) {
+    function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
         if (request.sponsorTimes != undefined) {
             //set it to the message
             if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
@@ -378,9 +378,12 @@ async function runThePopup(messageListener?: MessageListener) {
                 sponsorTimeButton.className = "warningButton popupElement";
 
                 let extraInfo = "";
-                if (request.hiddenSponsorTimes.includes(i)) {
-                    //this one is hidden
-                    extraInfo = " (hidden)";
+                if (request.sponsorTimes[i].hidden === SponsorHideType.Downvoted) {
+                    //this one is downvoted
+                    extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
+                } else if (request.sponsorTimes[i].hidden === SponsorHideType.MinimumDuration) {
+                    //this one is too short
+                    extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
                 sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " to " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
@@ -443,6 +446,14 @@ async function runThePopup(messageListener?: MessageListener) {
                 } else if (i > 0) {
                     //add commas if necessary
                     timeMessage = ", " + timeMessage;
+                }
+
+                if (sponsorTimes[i].hidden === SponsorHideType.Downvoted) {
+                    //this one is downvoted
+                    timeMessage += " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
+                } else if (sponsorTimes[i].hidden === SponsorHideType.MinimumDuration) {
+                    //this one is too short
+                    timeMessage += " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
   
                 sponsorTimesMessage += timeMessage;

@@ -534,5 +534,11 @@
     },
     "bracketEnd": {
         "message": "(End)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "hidden: downvote"
+    },
+    "hiddenDueToDuration": {
+        "message": "hidden: too short"
     }
 }
