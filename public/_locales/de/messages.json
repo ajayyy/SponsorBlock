@@ -11,9 +11,6 @@
         "message": "Überspringe die gesponserten Inhalte in YouTube-Videos. Melde gesponsorte Inhalte in den von dir angesehenen Videos und erspare anderen die Zeit.",
         "description": "Description of the extension."
     },
-    "helpPage": {
-        "message": "index_en.html"
-    },
     "400": {
         "message": "Ungültige Anforderung"
     },
@@ -373,5 +370,162 @@
     },
     "resetInvidiousInstance": {
         "message": "Invidious Instanzliste zurücksetzen"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Du bist dabei, die Liste der \"Invidious\" Instanzen zurückzusetzen"
+    },
+    "currentInstances": {
+        "message": "Aktuelle Instanzen:"
+    },
+    "enableAutoUpvote": {
+        "message": "Automatisches Liken"
+    },
+    "whatAutoUpvote": {
+        "message": "Wenn dies aktiviert ist, wird die Erweiterung alle Beiträge hochladen, die Sie ansehen, wenn Sie sie nicht melden. Wenn die Benachrichtigung deaktiviert ist, wird dies nicht geschehen."
+    },
+    "minDuration": {
+        "message": "Minimale Dauer (Sekunden):"
+    },
+    "minDurationDescription": {
+        "message": "Sponsor Segmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
+    },
+    "shortCheck": {
+        "message": "Die folgende Einreichung ist kürzer als Ihre Mindestdauer. Dies könnte bedeuten, dass dies bereits eingereicht wurde und aufgrund dieser Option einfach ignoriert wird. Sind Sie sicher, dass Sie einreichen möchten?"
+    },
+    "showUploadButton": {
+        "message": "Upload-Button anzeigen"
+    },
+    "whatUploadButton": {
+        "message": "Diese Schaltfläche erscheint auf dem YouTube-Player, nachdem Sie einen Zeitstempel ausgewählt haben und bereit sind zu senden."
+    },
+    "customServerAddress": {
+        "message": "SponsorBlock Server-Adresse"
+    },
+    "customServerAddressDescription": {
+        "message": "Die Ardesse die SponsorBlock verwendet um Anfragen an den Server zu senden. Solange sie keine eigene Serverinstanz haben sollte das nicht geändert werden."
+    },
+    "save": {
+        "message": "Speichern"
+    },
+    "reset": {
+        "message": "Zurücksetzen"
+    },
+    "customAddressError": {
+        "message": "Diese Adresse ist nicht in der richtigen Form. Stellen Sie sicher, dass Sie http:// oder https:// am Anfang haben und keine abschließenden Schrägstriche haben."
+    },
+    "areYouSureReset": {
+        "message": "Sind sie sicher dass sie das zurücksetzen wollen?"
+    },
+    "confirmPrivacy": {
+        "message": "Das Video wurde als ungelistet erkannt. Klicken Sie auf Abbrechen, wenn Sie nicht nach Sponsoren suchen möchten."
+    },
+    "unlistedCheck": {
+        "message": "Nicht gelistete Videos ignorieren"
+    },
+    "whatUnlistedCheck": {
+        "message": "Diese Einstellung verlangsamt den Sponsor-Block erheblich. Sponsor-Suchvorgänge erfordern das Senden der Video-ID an den Server. Wenn Sie sich Sorgen darüber machen, dass nicht gelistete Video-IDs über das Internet gesendet werden, aktivieren Sie diese Option."
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com wird jetzt unterstützt"
+    },
+    "exportOptions": {
+        "message": "Import/Export aller Optionen"
+    },
+    "whatExportOptions": {
+        "message": "Dies ist Ihre gesamte Konfiguration in JSON. Dies schließt Ihre Benutzer-ID ein, also sollten Sie diese klug teilen."
+    },
+    "setOptions": {
+        "message": "Optionen einstellen"
+    },
+    "exportOptionsWarning": {
+        "message": "Warnung: Das Ändern der Benutzer ID ist permanent. Sind Sie sicher, dass Sie dies tun möchten? Stellen Sie sicher, dass Sie von Ihren alten Benutzer ID eine Sicherheitskopie machen, nur für den Fall."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Dieses JSON ist nicht korrekt formatiert. Ihre Einstellungen wurden nicht geändert."
+    },
+    "confirmNoticeTitle": {
+        "message": "Segment absenden"
+    },
+    "submit": {
+        "message": "Senden"
+    },
+    "cancel": {
+        "message": "Abbrechen"
+    },
+    "delete": {
+        "message": "Löschen"
+    },
+    "preview": {
+        "message": "Vorschau"
+    },
+    "edit": {
+        "message": "Bearbeiten"
+    },
+    "copyDebugInformation": {
+        "message": "Debug-Informationen in Zwischenablage kopieren"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Fehler beim Schreiben in die Zwischenablage"
+    },
+    "copyDebugInformationOptions": {
+        "message": "Kopiert Informationen in die Zwischenablage einem Entwickler zur Verfügung gestellt werden, wenn ein Bug / wenn ein Entwickler es anfordert. Sensitive Informationen wie Ihre Benutzer-ID, Kanäle auf der Whitelist-Liste und benutzerdefinierte Server-Adresse wurden entfernt. Es enthält jedoch Informationen wie den Useragent, den Browser, das Betriebssystem und die Versionsnummer der Erweiterung. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "Die Debug-Informationen wurden in das Clip-Board kopiert. Sie können alle Informationen entfernen, die Sie nicht teilen möchten. Speichern Sie diese in einer Textdatei oder fügen Sie sie in den Fehlerbericht ein."
+    },
+    "theKey": {
+        "message": "Die Taste"
+    },
+    "keyAlreadyUsedByYouTube": {
+        "message": "wird bereits von Youtube verwendet. Bitte wählen Sie eine andere Taste."
+    },
+    "keyAlreadyUsed": {
+        "message": "an eine andere Aktion gebunden. Bitte wählen Sie eine andere Taste."
+    },
+    "to": {
+        "message": "bis",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_intro": {
+        "message": "Intro"
+    },
+    "category_outro": {
+        "message": "Outro"
+    },
+    "category_interaction": {
+        "message": "Interaktion (Überflüssiges Liked, Abonniert, Folgt, usw.)"
+    },
+    "category_selfpromo": {
+        "message": "Eigenwerbung und Merchandise"
+    },
+    "category_offtopic": {
+        "message": "Vom Thema Abweichende Tangente (Subjektiv)"
+    },
+    "disable": {
+        "message": "Deaktivieren"
+    },
+    "manualSkip": {
+        "message": "Manueller Überspringen"
+    },
+    "showOverlay": {
+        "message": "Vor-/Rücklaufleiste anzeigen"
+    },
+    "enableTestingServer": {
+        "message": "Beta Testing Server aktivieren"
+    },
+    "whatEnableTestingServer": {
+        "message": "Deine Einreichungen und Stimmen werden NICHT für den Hauptserver geltend. Benutze dies nur für Tests."
+    },
+    "testingServerWarning": {
+        "message": "Alle Einreichungen und Stimmen werden NICHT ZÄHLEN gegenüber dem Hauptserver während der Verbindung zum Test-Server. Stellen Sie sicher, dass sie dies deaktivieren, wenn Sie echte Einreichungen machen möchten."
+    },
+    "bracketNow": {
+        "message": "(jetzt)"
+    },
+    "moreCategories": {
+        "message": "Weitere Kategorien"
     }
 }
