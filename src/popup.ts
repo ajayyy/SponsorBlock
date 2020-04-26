@@ -919,39 +919,44 @@ async function runThePopup(messageListener?: MessageListener) {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'getChannelURL'},
+                {message: 'getChannelID'},
                 function(response) {
+                    if (!response.channelID) {
+                        alert(chrome.i18n.getMessage("channelDataNotFound"));
+                        return;
+                    }
+
                     //get whitelisted channels
-                        let whitelistedChannels = Config.config.whitelistedChannels;
-                        if (whitelistedChannels == undefined) {
-                            whitelistedChannels = [];
+                    let whitelistedChannels = Config.config.whitelistedChannels;
+                    if (whitelistedChannels == undefined) {
+                        whitelistedChannels = [];
+                    }
+
+                    //add on this channel
+                    whitelistedChannels.push(response.channelID);
+
+                    //change button
+                    PageElements.whitelistChannel.style.display = "none";
+                    PageElements.unwhitelistChannel.style.display = "unset";
+
+                    PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
+                    PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+
+                    //save this
+                    Config.config.whitelistedChannels = whitelistedChannels;
+
+                    //send a message to the client
+                    messageHandler.query({
+                        active: true,
+                        currentWindow: true
+                    }, tabs => {
+                        messageHandler.sendMessage(
+                            tabs[0].id, {
+                                message: 'whitelistChange',
+                                value: true
+                            });
                         }
-
-                        //add on this channel
-                        whitelistedChannels.push(response.channelURL);
-
-                        //change button
-                        PageElements.whitelistChannel.style.display = "none";
-                        PageElements.unwhitelistChannel.style.display = "unset";
-
-                        PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
-
-                        //save this
-                        Config.config.whitelistedChannels = whitelistedChannels;
-
-                        //send a message to the client
-                        messageHandler.query({
-                            active: true,
-                            currentWindow: true
-                        }, tabs => {
-                            messageHandler.sendMessage(
-                                tabs[0].id, {
-                                    message: 'whitelistChange',
-                                    value: true
-                                });
-                            }
-                        );
+                    );
                 }
             );
         });

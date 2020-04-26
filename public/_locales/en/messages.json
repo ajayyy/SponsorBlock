@@ -540,5 +540,8 @@
     },
     "hiddenDueToDuration": {
         "message": "hidden: too short"
+    },
+    "channelDataNotFound": {
+        "message": "Channel ID not loaded yet"
     }
 }
