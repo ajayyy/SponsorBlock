@@ -11,9 +11,6 @@
         "message": "Passe automatiquement les messages commerciaux intégrés dans les vidéos YouTube. Soumettez les segments commerciaux dans les vidéos que vous regardez pour aidez les autres.",
         "description": "Description of the extension."
     },
-    "helpPage": {
-        "message": "index_en.html"
-    },
     "400": {
         "message": "Soumission invalide"
     },
@@ -63,7 +60,7 @@
         "message": "Ne plus montrer"
     },
     "hitGoBack": {
-        "message": "Cliquez sur revenir en arrière pour revenir avant le saut du segment commercial"
+        "message": "Cliquez sur revenir en arrière pour revenir avant le saut du segment commercial."
     },
     "unskip": {
         "message": "Revenir en arrière"
@@ -75,7 +72,7 @@
         "message": "En pause"
     },
     "confirmMSG": {
-        "message": "\n\nPour modifier ou supprimer des soumissions, cliquez sur le bouton d'info ou ouvrez la fenêtre de l'extension en cliquant sur son icône dans le coin en haut à droite."
+        "message": "Pour modifier ou supprimer des soumissions, cliquez sur le bouton d'info ou ouvrez la fenêtre de l'extension en cliquant sur son icône dans le coin en haut à droite."
     },
     "clearThis": {
         "message": "Êtes-vous certain(e) de vouloir supprimer vos soumissions ?\n\n"
@@ -241,7 +238,7 @@
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\"",
+        "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setStartSponsorShortcut": {
@@ -333,10 +330,10 @@
         "message": "Gardez ça privé. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtiens, il peut vous usurper."
     },
     "setUserID": {
-        "message": "Définir l'ID utilisateur"
+        "message": "Définir \"UserID\""
     },
     "userIDChangeWarning": {
-        "message": "AVERTISSEMENT : La modification de l'ID d'utilisateur est permanente. Êtes-vous sûr de vouloir faire ça ? Assurez-vous de sauvegarder votre ancien au cas où."
+        "message": "Avertissement : La modification de \"UserID\" est permanente. Êtes-vous sûr de vouloir faire ça ? Assurez-vous de sauvegarder votre ancien au cas où."
     },
     "createdBy": {
         "message": "Créé par"
@@ -398,11 +395,26 @@
     "showUploadButton": {
         "message": "Afficher le bouton de téléchargement"
     },
+    "customServerAddress": {
+        "message": "Adresse du serveur SponsorBlock"
+    },
+    "customServerAddressDescription": {
+        "message": "L'adresse que SponsorBlock utilise pour passer des appels vers le serveur.\nSauf si vous avez votre propre instance de serveur, cela ne devrait pas être changé."
+    },
     "save": {
         "message": "Sauvegarder"
     },
     "reset": {
         "message": "Réinitialiser"
+    },
+    "unlistedCheck": {
+        "message": "Ignorer les vidéos non listées"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com est maintenant pris en charge"
+    },
+    "exportOptions": {
+        "message": "Importer/Exporter toutes les options"
     },
     "submit": {
         "message": "Soumettre"
@@ -428,5 +440,14 @@
     "to": {
         "message": "à",
         "description": "Used between sponsor times. Example: 1:20 to 1:30"
+    },
+    "enableTestingServer": {
+        "message": "Activer le serveur de test bêta"
+    },
+    "bracketNow": {
+        "message": "(Maintenant)"
+    },
+    "moreCategories": {
+        "message": "Autres catégories"
     }
 }

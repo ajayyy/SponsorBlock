@@ -1,1 +1,404 @@
-{}
+{
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "fullName": {
+        "message": "SponsorBlock for YouTube - 跳过赞助商广告",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "跳过 YouTube 视频的赞助商广告。报告您观看的视频的赞助商广告以节省他人的时间。",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "服务器说此请求无效"
+    },
+    "429": {
+        "message": "您为这个视频提交了太长的赞助商广告时间，您确定有这么多吗？"
+    },
+    "409": {
+        "message": "它之前已经被提交过了"
+    },
+    "channelWhitelisted": {
+        "message": "频道已加入白名单！"
+    },
+    "Sponsor": {
+        "message": "赞助商广告"
+    },
+    "Sponsors": {
+        "message": "赞助商广告"
+    },
+    "Segment": {
+        "message": "赞助商广告片段"
+    },
+    "Segments": {
+        "message": "赞助商广告片段"
+    },
+    "noticeTitle": {
+        "message": "已跳过赞助商广告"
+    },
+    "reportButtonTitle": {
+        "message": "报告"
+    },
+    "reportButtonInfo": {
+        "message": "报告这个被提交的赞助商广告不正确。"
+    },
+    "Dismiss": {
+        "message": "忽略"
+    },
+    "Loading": {
+        "message": "加载中..."
+    },
+    "Mins": {
+        "message": "分钟"
+    },
+    "Secs": {
+        "message": "秒"
+    },
+    "Hide": {
+        "message": "不再显示"
+    },
+    "hitGoBack": {
+        "message": "点击取消跳过以回到您原来的样子。"
+    },
+    "unskip": {
+        "message": "取消跳过"
+    },
+    "reskip": {
+        "message": "继续跳过"
+    },
+    "paused": {
+        "message": "已暂停"
+    },
+    "clearThis": {
+        "message": "您确定要清空它吗？\n\n"
+    },
+    "Unknown": {
+        "message": "提交您的赞助商广告时间时出错。请稍后再试。"
+    },
+    "sponsorFound": {
+        "message": "此视频的赞助商广告在数据库中！"
+    },
+    "sponsor404": {
+        "message": "未找到赞助商广告"
+    },
+    "sponsorStart": {
+        "message": "赞助商广告现在开始"
+    },
+    "sponsorEnd": {
+        "message": "赞助商广告现在结束"
+    },
+    "noVideoID": {
+        "message": "在此标签页未找到 Youtube 视频。如果您确定这是一个 Youtube 页面，请关闭此弹窗并重新打开。如果那没用，请尝试重新加载页面。"
+    },
+    "success": {
+        "message": "成功 ！"
+    },
+    "voted": {
+        "message": "已投票！"
+    },
+    "voteFail": {
+        "message": "您之前已经这样投过了。"
+    },
+    "serverDown": {
+        "message": "服务器似乎已宕机。请立即联系开发人员。"
+    },
+    "connectionError": {
+        "message": "连接错误。错误代码： "
+    },
+    "wantToSubmit": {
+        "message": "您想要为此视频提交赞助商广告时间吗"
+    },
+    "clearTimes": {
+        "message": "清除赞助商广告时间"
+    },
+    "openPopup": {
+        "message": "打开 SponsorBlock 弹窗"
+    },
+    "SubmitTimes": {
+        "message": "提交赞助商广告时间"
+    },
+    "submitCheck": {
+        "message": "您确定要提交它吗？"
+    },
+    "whitelistChannel": {
+        "message": "白名单频道"
+    },
+    "removeFromWhitelist": {
+        "message": "将频道移出白名单"
+    },
+    "voteOnTime": {
+        "message": "为赞助商广告时间投票"
+    },
+    "recordTimes": {
+        "message": "记录赞助商广告次数"
+    },
+    "soFarUHSubmited": {
+        "message": "您目前已提交"
+    },
+    "savedPeopleFrom": {
+        "message": "您已为人们节省了 "
+    },
+    "viewLeaderboard": {
+        "message": "查看排行榜"
+    },
+    "here": {
+        "message": "这里"
+    },
+    "clearTimesButton": {
+        "message": "清除时间"
+    },
+    "submitTimesButton": {
+        "message": "提交时间"
+    },
+    "setUsername": {
+        "message": "设定用户名"
+    },
+    "hideThis": {
+        "message": "隐藏它"
+    },
+    "Options": {
+        "message": "选项"
+    },
+    "showButtons": {
+        "message": "在 Youtube 播放器上显示按钮"
+    },
+    "hideButtons": {
+        "message": "在 Youtube 播放器上隐藏按钮"
+    },
+    "showInfoButton": {
+        "message": "在 Youtube 播放器上显示信息按钮"
+    },
+    "hideInfoButton": {
+        "message": "在 Youtube 播放器上隐藏信息按钮"
+    },
+    "hideDeleteButton": {
+        "message": "在 Youtube 播放器上隐藏删除按钮"
+    },
+    "showDeleteButton": {
+        "message": "在 Youtube 播放器上显示删除按钮"
+    },
+    "disableViewTracking": {
+        "message": "禁用赞助商广告跳过统计跟踪"
+    },
+    "enableViewTracking": {
+        "message": "启用赞助商广告跳过统计跟踪"
+    },
+    "showNotice": {
+        "message": "重新显示公告"
+    },
+    "website": {
+        "message": "网站",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "源代码",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "公告已更新！",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "如果您依然不喜欢它，请按下不再显示按钮。",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "设定赞助商广告开始的绑定按键"
+    },
+    "setSubmitKeybind": {
+        "message": "设定提交的绑定按键"
+    },
+    "keybindDescription": {
+        "message": "点击您想选择的按键"
+    },
+    "keybindDescriptionComplete": {
+        "message": "绑定按键已被设定为： "
+    },
+    "0": {
+        "message": "连接超时。请检查您的网络连接。如果您的网络运行正常，则可能是服务器过载或宕机。"
+    },
+    "disableSkipping": {
+        "message": "禁用 SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "启用 SponsorBlock"
+    },
+    "yourWork": {
+        "message": "您的成果",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "服务器似乎已过载。请稍后再试。"
+    },
+    "errorCode": {
+        "message": "错误代码： "
+    },
+    "noticeTitleNotSkipped": {
+        "message": "跳过赞助商广告？"
+    },
+    "skip": {
+        "message": "跳过"
+    },
+    "disableAutoSkip": {
+        "message": "禁用自动跳过"
+    },
+    "enableAutoSkip": {
+        "message": "启用自动跳过"
+    },
+    "audioNotification": {
+        "message": "跳过时音频通知"
+    },
+    "youHaveSkipped": {
+        "message": "您已跳过 "
+    },
+    "youHaveSaved": {
+        "message": "您为自己节省了 "
+    },
+    "minLower": {
+        "message": "分钟"
+    },
+    "minsLower": {
+        "message": "分钟"
+    },
+    "hourLower": {
+        "message": "小时"
+    },
+    "hoursLower": {
+        "message": "小时"
+    },
+    "youHaveSavedTime": {
+        "message": "您为人们节省了"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " 的生命。"
+    },
+    "statusReminder": {
+        "message": "在 status.sponsor.ajay.app 检查服务器状态。"
+    },
+    "changeUserID": {
+        "message": "导入/导出您的用户 ID"
+    },
+    "setUserID": {
+        "message": "设定用户 ID"
+    },
+    "createdBy": {
+        "message": "创建者"
+    },
+    "autoSkip": {
+        "message": "自动跳过"
+    },
+    "keybindCurrentlySet": {
+        "message": "。目前被设定为："
+    },
+    "add": {
+        "message": "添加"
+    },
+    "currentInstances": {
+        "message": "当前实例："
+    },
+    "enableAutoUpvote": {
+        "message": "自动点赞"
+    },
+    "minDuration": {
+        "message": "最小持续时间(秒)："
+    },
+    "showUploadButton": {
+        "message": "显示上传按钮"
+    },
+    "customServerAddress": {
+        "message": "SponsorBlock 服务器地址"
+    },
+    "save": {
+        "message": "保存"
+    },
+    "reset": {
+        "message": "重置"
+    },
+    "areYouSureReset": {
+        "message": "您确定要重置它吗？"
+    },
+    "unlistedCheck": {
+        "message": "忽略未列出的视频"
+    },
+    "mobileUpdateInfo": {
+        "message": "现已支持 m.youtube.com"
+    },
+    "exportOptions": {
+        "message": "导入/导出所有选项"
+    },
+    "setOptions": {
+        "message": "设定选项"
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "此 JSON 格式不正确。您的选项尚未更改。"
+    },
+    "confirmNoticeTitle": {
+        "message": "提交片段"
+    },
+    "submit": {
+        "message": "提交"
+    },
+    "cancel": {
+        "message": "取消"
+    },
+    "delete": {
+        "message": "删除"
+    },
+    "preview": {
+        "message": "预览"
+    },
+    "edit": {
+        "message": "编辑"
+    },
+    "copyDebugInformation": {
+        "message": "复制调试信息到剪贴板"
+    },
+    "copyDebugInformationFailed": {
+        "message": "复制到剪贴板失败"
+    },
+    "theKey": {
+        "message": "按键"
+    },
+    "keyAlreadyUsedByYouTube": {
+        "message": "已被 Youtube 使用。请选择其他按键。"
+    },
+    "keyAlreadyUsed": {
+        "message": "已绑定其他操作。请选择其他按键。"
+    },
+    "to": {
+        "message": "到",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "赞助商广告"
+    },
+    "category_intro": {
+        "message": "开头"
+    },
+    "category_outro": {
+        "message": "结尾"
+    },
+    "category_interaction": {
+        "message": "互动（重复多次提醒您点击喜欢，订阅，关注等）"
+    },
+    "disable": {
+        "message": "禁用"
+    },
+    "manualSkip": {
+        "message": "手动跳过"
+    },
+    "showOverlay": {
+        "message": "在搜索栏中显示"
+    },
+    "enableTestingServer": {
+        "message": "启用 Beta 测试服务器"
+    },
+    "bracketNow": {
+        "message": "(现在)"
+    },
+    "moreCategories": {
+        "message": "更多类别"
+    }
+}

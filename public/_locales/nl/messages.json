@@ -1,1 +1,47 @@
-{}
+{
+    "paused": {
+        "message": "Gepauzeerd"
+    },
+    "clearThis": {
+        "message": "Weet je zeker dat je dit formulier wilt wissen?\n\n"
+    },
+    "sponsor404": {
+        "message": "Geen sponsors gevonden"
+    },
+    "sponsorStart": {
+        "message": "Sponsorschap"
+    },
+    "sponsorEnd": {
+        "message": "Sponshopschap eindigt nu"
+    },
+    "noVideoID": {
+        "message": "Er is geen YouTube-video gevonden op dit tabblad. Als je weet dat dit een YouTube-tabblad is, sluit je deze pop-up en open het opnieuw. Als dat niet werkt, probeer het tabblad opnieuw te laden."
+    },
+    "success": {
+        "message": "Succesvol!"
+    },
+    "voted": {
+        "message": "Gestemd!"
+    },
+    "voteFail": {
+        "message": "U hebt al eerder op deze manier gestemd."
+    },
+    "serverDown": {
+        "message": "Het lijkt erop dat de server niet draait. Contacteer de ontwikkelaar onmiddellijk."
+    },
+    "connectionError": {
+        "message": "Er is een verbindingsfout opgetreden. Foutcode: "
+    },
+    "wantToSubmit": {
+        "message": "Wilt u de sponsor tijden indienen voor video id"
+    },
+    "leftTimes": {
+        "message": "Het lijkt erop dat sommige sponsortijden niet ingezonden zijn. Ga terug naar die pagina om ze in te dienen (deze zijn niet verwijderd)."
+    },
+    "clearTimes": {
+        "message": "Sponsortijden wissen"
+    },
+    "here": {
+        "message": "hier"
+    }
+}
