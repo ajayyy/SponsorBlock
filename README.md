@@ -34,7 +34,7 @@ SponsorBlock is an extension that will skip over sponsored segments of YouTube v
 
 Also support Invidio.us.
 
-**Translate:** https://crowdin.com/project/sponsorblock
+**Translate:** [![Crowdin](https://badges.crowdin.net/sponsorblock/localized.svg)](https://crowdin.com/project/sponsorblock)
 
 # Important Links
 
