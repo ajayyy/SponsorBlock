@@ -1,10 +1,13 @@
 import * as CompileConfig from "../config.json";
 import { CategorySelection, CategorySkipOption } from "./types";
 
+import Utils from "./utils";
+const utils = new Utils();
+
 interface SBConfig {
     userID: string,
     sponsorTimes: SBMap<string, any>,
-    whitelistedChannels: Array<any>,
+    whitelistedChannels: string[],
     startSponsorKeybind: string,
     submitKeybind: string,
     minutesSaved: number,
@@ -236,7 +239,7 @@ function fetchConfig() {
     });
 }
 
-function migrateOldFormats() {
+async function migrateOldFormats() {
     if (Config.config["disableAutoSkip"]) {
         for (const selection of Config.config.categorySelections) {
             if (selection.name === "sponsor") {
@@ -245,6 +248,36 @@ function migrateOldFormats() {
                 chrome.storage.sync.remove("disableAutoSkip");
             }
         }
+    }
+
+    // Channel URLS
+    if (Config.config.whitelistedChannels.length > 0 && 
+            (Config.config.whitelistedChannels[0].includes("/") || Config.config.whitelistedChannels[0] == null)) {
+        let newChannelList: string[] = [];
+        for (const item of Config.config.whitelistedChannels) {
+            if (item != null) {
+                if (item.includes("/channel/")) {
+                    newChannelList.push(item.split("/")[2]);
+                } else if (item.includes("/user/") &&  utils.isContentScript()) {
+                    // Replace channel URL with channelID
+                    let response = await utils.asyncRequestToCustomServer("GET", "https://sponsor.ajay.app/invidious/api/v1/channels/" + item.split("/")[2] + "?fields=authorId");
+                
+                    if (response.ok) {
+                        newChannelList.push((await response.json()).authorId);
+                    } else {
+                        // Add it at the beginning so it gets converted later
+                        newChannelList.unshift(item);
+                    }
+                } else if (item.includes("/user/")) {
+                    // Add it at the beginning so it gets converted later (The API can only be called in the content script due to CORS issues)
+                    newChannelList.unshift(item);
+                } else {
+                    newChannelList.push(item);
+                }
+            }
+        }
+
+        Config.config.whitelistedChannels = newChannelList;
     }
 }
 
