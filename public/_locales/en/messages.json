@@ -211,7 +211,7 @@
         "message": "Show Delete Button On YouTube Player"
     },
     "whatDeleteButton": {
-        "message": "This is the button that allows you to clear all sponsors on the YouTube player."
+        "message": "This is the button on the YouTube player that allows you to clear your current skip segment submissions"
     },
     "disableViewTracking": {
         "message": "Disable Sponsor Skip Count Tracking"
