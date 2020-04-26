@@ -193,7 +193,7 @@
         "message": "Hide Buttons On YouTube Player"
     },
     "hideButtonsDescription": {
-        "message": "This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some\n people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, \n use the button that appears on the notice saying \"Don't show this again\". You can always enable these settings again later."
+        "message": "This hides the buttons that appear on the YouTube player to submit skip segments."
     },
     "showInfoButton": {
         "message": "Show Info Button On YouTube Player"
@@ -211,7 +211,7 @@
         "message": "Show Delete Button On YouTube Player"
     },
     "whatDeleteButton": {
-        "message": "This is the button on the YouTube player that allows you to clear your current skip segment submissions"
+        "message": "This is the button on the YouTube player that will clear all your un-submitted segments for the current video."
     },
     "disableViewTracking": {
         "message": "Disable Sponsor Skip Count Tracking"
