@@ -463,7 +463,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
     cancelSponsorSchedule();
     if (video.paused) return;
 
-    if (Config.config.disableSkipping || channelWhitelisted){
+    if (Config.config.disableSkipping || channelWhitelisted || (channelID === null && Config.config.forceChannelCheck)){
         return;
     }
 
@@ -637,30 +637,7 @@ function sponsorsLookup(id: string) {
                 }
             }
 
-            if (!switchingVideos) {
-                // See if there are any starting sponsors
-                let startingSponsor: number = -1;
-                for (const time of sponsorTimes) {
-                    if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
-                        startingSponsor = time.segment[0];
-                        break;
-                    }
-                }
-                if (startingSponsor === -1) {
-                    for (const time of sponsorTimesSubmitting) {
-                        if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
-                            startingSponsor = time.segment[0];
-                            break;
-                        }
-                    }
-                }
-
-                if (startingSponsor !== -1) {
-                    startSponsorSchedule(false, startingSponsor);
-                } else {
-                    startSponsorSchedule();
-                }
-            }
+            startSkipScheduleCheckingForStartSponsors();
 
             // Reset skip save
             sponsorSkipped = [];
@@ -699,6 +676,38 @@ function sponsorsLookup(id: string) {
             sponsorLookupRetries++;
         }
     });
+}
+
+/**
+ * Only should be used when it is okay to skip a sponsor when in the middle of it 
+ * 
+ * Ex. When segments are first loaded
+ */
+function startSkipScheduleCheckingForStartSponsors() {
+    if (!switchingVideos) {
+        // See if there are any starting sponsors
+        let startingSponsor: number = -1;
+        for (const time of sponsorTimes) {
+            if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                startingSponsor = time.segment[0];
+                break;
+            }
+        }
+        if (startingSponsor === -1) {
+            for (const time of sponsorTimesSubmitting) {
+                if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                    startingSponsor = time.segment[0];
+                    break;
+                }
+            }
+        }
+
+        if (startingSponsor !== -1) {
+            startSponsorSchedule(false, startingSponsor);
+        } else {
+            startSponsorSchedule();
+        }
+    }
 }
 
 /**
@@ -807,6 +816,9 @@ function whitelistCheck() {
     if (whitelistedChannels != undefined && whitelistedChannels.includes(channelID)) {
         channelWhitelisted = true;
     }
+
+    // check if the start of segments were missed
+    if (sponsorTimes && sponsorTimes.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
 /**

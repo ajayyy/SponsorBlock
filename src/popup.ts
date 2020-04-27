@@ -51,6 +51,7 @@ async function runThePopup(messageListener?: MessageListener) {
     // Top toggles
     "whitelistChannel",
     "unwhitelistChannel",
+    "whitelistForceCheck",
     "disableSkipping",
     "enableSkipping",
     // Options
@@ -102,6 +103,7 @@ async function runThePopup(messageListener?: MessageListener) {
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
     PageElements.whitelistChannel.addEventListener("click", whitelistChannel);
+    PageElements.whitelistForceCheck.addEventListener("click", openOptions);
     PageElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
     PageElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
     PageElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
@@ -939,6 +941,7 @@ async function runThePopup(messageListener?: MessageListener) {
                     //change button
                     PageElements.whitelistChannel.style.display = "none";
                     PageElements.unwhitelistChannel.style.display = "unset";
+                    if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.style.display = "unset";
 
                     PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
                     PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
@@ -971,7 +974,7 @@ async function runThePopup(messageListener?: MessageListener) {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'getChannelURL'},
+                {message: 'getChannelID'},
                 function(response) {
                     //get whitelisted channels
                         let whitelistedChannels = Config.config.whitelistedChannels;
@@ -980,7 +983,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         }
 
                         //remove this channel
-                        let index = whitelistedChannels.indexOf(response.channelURL);
+                        let index = whitelistedChannels.indexOf(response.channelID);
                         whitelistedChannels.splice(index, 1);
 
                         //change button

@@ -549,5 +549,14 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "If this keeps occuring, it could be caused by your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Force Channel Check Before Skipping Sponsors"
+    },
+    "whatForceChannelCheck": {
+        "message": "By default, it will skip sponsors right away before it even knows what the channel is. By default, some zero second sponsors might be skipped on whitelisted channels. Enabling this option will prevent this but making all skipping have a slight delay as getting the channelID can take some time. This delay might be unnoticeable if you have fast internet."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Consider Enabling Force Channel Check Before Skipping Sponsors"
     }
 }
