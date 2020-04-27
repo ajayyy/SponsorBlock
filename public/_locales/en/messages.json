@@ -189,7 +189,7 @@
         "message": "Hide Buttons On YouTube Player"
     },
     "hideButtonsDescription": {
-        "message": "This hides the buttons that appear on the YouTube player to submit sponsors. I can see this being annoying for some\n people. Instead of using the button there, this popup can be used to submit sponsors. To hide the notice that appears, \n use the button that appears on the notice saying \"Don't show this again\". You can always enable these settings again later."
+        "message": "This hides the buttons that appear on the YouTube player to submit skip segments."
     },
     "showInfoButton": {
         "message": "Show Info Button On YouTube Player"
@@ -207,7 +207,7 @@
         "message": "Show Delete Button On YouTube Player"
     },
     "whatDeleteButton": {
-        "message": "This is the button that allows you to clear all sponsors on the YouTube player."
+        "message": "This is the button on the YouTube player that will clear all your un-submitted segments for the current video."
     },
     "disableViewTracking": {
         "message": "Disable Sponsor Skip Count Tracking"
@@ -420,10 +420,10 @@
         "message": "The video has been detected as unlisted. Click cancel if you do not want to check for sponsors."
     },
     "unlistedCheck": {
-        "message": "Ignore Unlisted Videos"
+        "message": "Ignore Unlisted/Private Videos"
     },
     "whatUnlistedCheck": {
-        "message": "This setting will significantly slow down SponsorBlock. Sponsor lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
+        "message": "This setting will slightly slow down SponsorBlock. Sponsor lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com is now supported"
@@ -527,5 +527,32 @@
     },
     "moreCategories": {
         "message": "More Categories"
+    },
+    "bracketEnd": {
+        "message": "(End)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "hidden: downvote"
+    },
+    "hiddenDueToDuration": {
+        "message": "hidden: too short"
+    },
+    "channelDataNotFound": {
+        "message": "Channel ID not loaded yet."
+    },
+    "adblockerIssue": {
+        "message": "It seems that something is blocking SponsorBlock's ability to get video data. This is probably your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "If this keeps occuring, it could be caused by your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Force Channel Check Before Skipping Sponsors"
+    },
+    "whatForceChannelCheck": {
+        "message": "By default, it will skip sponsors right away before it even knows what the channel is. By default, some zero second sponsors might be skipped on whitelisted channels. Enabling this option will prevent this but making all skipping have a slight delay as getting the channelID can take some time. This delay might be unnoticeable if you have fast internet."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Consider Enabling Force Channel Check Before Skipping Sponsors"
     }
 }

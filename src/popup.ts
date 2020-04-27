@@ -1,7 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime } from "./types";
+import { SponsorTime, SponsorHideType } from "./types";
 var utils = new Utils();
 
 interface MessageListener {
@@ -51,6 +51,7 @@ async function runThePopup(messageListener?: MessageListener) {
     // Top toggles
     "whitelistChannel",
     "unwhitelistChannel",
+    "whitelistForceCheck",
     "disableSkipping",
     "enableSkipping",
     // Options
@@ -102,6 +103,7 @@ async function runThePopup(messageListener?: MessageListener) {
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
     PageElements.whitelistChannel.addEventListener("click", whitelistChannel);
+    PageElements.whitelistForceCheck.addEventListener("click", openOptions);
     PageElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
     PageElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
     PageElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
@@ -273,7 +275,7 @@ async function runThePopup(messageListener?: MessageListener) {
         );
     }
   
-    function infoFound(request: {found: boolean, sponsorTimes: SponsorTime[], hiddenSponsorTimes: number[]}) {
+    function infoFound(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
         if(chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
@@ -364,7 +366,7 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     //display the video times from the array at the top, in a different section
-    function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[], hiddenSponsorTimes: number[]}) {
+    function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
         if (request.sponsorTimes != undefined) {
             //set it to the message
             if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
@@ -378,9 +380,12 @@ async function runThePopup(messageListener?: MessageListener) {
                 sponsorTimeButton.className = "warningButton popupElement";
 
                 let extraInfo = "";
-                if (request.hiddenSponsorTimes.includes(i)) {
-                    //this one is hidden
-                    extraInfo = " (hidden)";
+                if (request.sponsorTimes[i].hidden === SponsorHideType.Downvoted) {
+                    //this one is downvoted
+                    extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
+                } else if (request.sponsorTimes[i].hidden === SponsorHideType.MinimumDuration) {
+                    //this one is too short
+                    extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
                 sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " to " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
@@ -443,6 +448,14 @@ async function runThePopup(messageListener?: MessageListener) {
                 } else if (i > 0) {
                     //add commas if necessary
                     timeMessage = ", " + timeMessage;
+                }
+
+                if (sponsorTimes[i].hidden === SponsorHideType.Downvoted) {
+                    //this one is downvoted
+                    timeMessage += " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
+                } else if (sponsorTimes[i].hidden === SponsorHideType.MinimumDuration) {
+                    //this one is too short
+                    timeMessage += " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
   
                 sponsorTimesMessage += timeMessage;
@@ -908,39 +921,46 @@ async function runThePopup(messageListener?: MessageListener) {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'getChannelURL'},
+                {message: 'getChannelID'},
                 function(response) {
+                    if (!response.channelID) {
+                        alert(chrome.i18n.getMessage("channelDataNotFound") + "\n\n" + 
+                            chrome.i18n.getMessage("itCouldBeAdblockerIssue"));
+                        return;
+                    }
+
                     //get whitelisted channels
-                        let whitelistedChannels = Config.config.whitelistedChannels;
-                        if (whitelistedChannels == undefined) {
-                            whitelistedChannels = [];
+                    let whitelistedChannels = Config.config.whitelistedChannels;
+                    if (whitelistedChannels == undefined) {
+                        whitelistedChannels = [];
+                    }
+
+                    //add on this channel
+                    whitelistedChannels.push(response.channelID);
+
+                    //change button
+                    PageElements.whitelistChannel.style.display = "none";
+                    PageElements.unwhitelistChannel.style.display = "unset";
+                    if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.style.display = "unset";
+
+                    PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
+                    PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+
+                    //save this
+                    Config.config.whitelistedChannels = whitelistedChannels;
+
+                    //send a message to the client
+                    messageHandler.query({
+                        active: true,
+                        currentWindow: true
+                    }, tabs => {
+                        messageHandler.sendMessage(
+                            tabs[0].id, {
+                                message: 'whitelistChange',
+                                value: true
+                            });
                         }
-
-                        //add on this channel
-                        whitelistedChannels.push(response.channelURL);
-
-                        //change button
-                        PageElements.whitelistChannel.style.display = "none";
-                        PageElements.unwhitelistChannel.style.display = "unset";
-
-                        PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
-
-                        //save this
-                        Config.config.whitelistedChannels = whitelistedChannels;
-
-                        //send a message to the client
-                        messageHandler.query({
-                            active: true,
-                            currentWindow: true
-                        }, tabs => {
-                            messageHandler.sendMessage(
-                                tabs[0].id, {
-                                    message: 'whitelistChange',
-                                    value: true
-                                });
-                            }
-                        );
+                    );
                 }
             );
         });
@@ -954,7 +974,7 @@ async function runThePopup(messageListener?: MessageListener) {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'getChannelURL'},
+                {message: 'getChannelID'},
                 function(response) {
                     //get whitelisted channels
                         let whitelistedChannels = Config.config.whitelistedChannels;
@@ -963,7 +983,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         }
 
                         //remove this channel
-                        let index = whitelistedChannels.indexOf(response.channelURL);
+                        let index = whitelistedChannels.indexOf(response.channelID);
                         whitelistedChannels.splice(index, 1);
 
                         //change button

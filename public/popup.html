@@ -5,10 +5,10 @@
     <link id="sponsorBlockStyleSheet" rel="stylesheet" type="text/css" href="popup.css"/>
   </head>
 
-  <body class="popupBody">
+  <body class="outerPopupBody">
     <center>
       <div id="app" class="popupBody sponsorBlockPageBody">
-          <h1 class="popupElement">
+          <h1 class="popupElement logoText">
             <img src="icons/IconSponsorBlocker256px.png" height="32px" id="sponsorBlockPopupLogo"/>
             __MSG_Name__
           </h1>
@@ -71,6 +71,10 @@
 
               <button id="whitelistChannel" class="whitelistButton popupElement">__MSG_whitelistChannel__</button>
               <button id="unwhitelistChannel" class="whitelistButton popupElement" style="display: none">__MSG_removeFromWhitelist__</button>
+
+              <div id="whitelistForceCheck" style="text-decoration: underline; cursor: pointer;display: none">
+                __MSG_forceChannelCheckPopup__
+              </div>
             </div>
 
             <br/>

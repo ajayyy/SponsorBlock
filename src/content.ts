@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, CategorySkipOption, CategorySelection, VideoID } from "./types";
+import { SponsorTime, CategorySkipOption, CategorySelection, VideoID, SponsorHideType } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -24,14 +24,16 @@ var sponsorTimes: SponsorTime[] = null;
 //what video id are these sponsors for
 var sponsorVideoID: VideoID = null;
 
+// JSON video info 
+var videoInfo: any = null;
+//the channel this video is about
+var channelID;
+
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
 // Skips are canceled every seeking event
 var currentSkipSchedule: NodeJS.Timeout = null;
 var seekListenerSetUp = false
-
-//these are sponsors that have been downvoted
-var hiddenSponsorTimes: number[] = [];
 
 /** @type {Array[boolean]} Has the sponsor been skipped */
 var sponsorSkipped: boolean[] = [];
@@ -58,12 +60,6 @@ var switchingVideos = null;
 // called at the same time
 var lastCheckTime = 0;
 var lastCheckVideoTime = -1;
-
-//the channel this video is about
-var channelURL;
-
-//the title of the last video loaded. Used to make sure the channel URL has been updated yet.
-var title;
 
 //is this channel whitelised from getting sponsors skipped
 var channelWhitelisted = false;
@@ -110,7 +106,6 @@ var skipNoticeContentContainer: ContentContainer = () => ({
     unskipSponsorTime,
     sponsorTimes,
     sponsorTimesSubmitting,
-    hiddenSponsorTimes,
     v: video,
     sponsorVideoID,
     reskipSponsorTime,
@@ -143,8 +138,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             //send the sponsor times along with if it's found
             sendResponse({
                 found: sponsorDataFound,
-                sponsorTimes: sponsorTimes,
-                hiddenSponsorTimes: hiddenSponsorTimes
+                sponsorTimes: sponsorTimes
             });
 
             if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
@@ -188,9 +182,9 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             });
 
             break;
-        case "getChannelURL":
+        case "getChannelID":
             sendResponse({
-            channelURL: channelURL
+                channelID: channelID
             });
 
             break;
@@ -267,6 +261,10 @@ function resetValues() {
     sponsorTimes = null;
     sponsorLookupRetries = 0;
 
+    videoInfo = null;
+    channelWhitelisted = false;
+    channelID = null;
+
     //empty the preview bar
     if (previewBar !== null) {
         previewBar.set([], [], 0);
@@ -298,9 +296,16 @@ async function videoIDChange(id) {
     // Wait for options to be ready
     await utils.wait(() => Config.config !== null, 5000, 1);
 
+    // Get new video info
+    getVideoInfo();
+
     // If enabled, it will check if this video is private or unlisted and double check with the user if the sponsors should be looked up
     if (Config.config.checkForUnlistedVideos) {
-        await utils.wait(isPrivacyInfoAvailable);
+        try {
+            await utils.wait(() => !!videoInfo, 5000, 1);
+        } catch (err) {
+            alert(chrome.i18n.getMessage("adblockerIssue"));
+        }
 
         if (isUnlisted()) {
             let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
@@ -308,10 +313,8 @@ async function videoIDChange(id) {
         }
     }
 
-    // TODO: Use a better method here than using type any
-    // This is done to be able to do channelIDPromise.isFulfilled and channelIDPromise.isRejected
-    let channelIDPromise: any = utils.wait(getChannelID);
-    channelIDPromise.then(() => channelIDPromise.isFulfilled = true).catch(() => channelIDPromise.isRejected  = true);
+    // Update whitelist data when the video data is loaded
+    utils.wait(() => !!videoInfo, 5000, 10).then(whitelistCheck);
 
     //setup the preview bar
     if (previewBar === null) {
@@ -351,7 +354,7 @@ async function videoIDChange(id) {
     //close popup
     closeInfoMenu();
 	
-    sponsorsLookup(id, channelIDPromise);
+    sponsorsLookup(id);
 
     //make sure everything is properly added
     updateVisibilityOfPlayerControlsButton().then(() => {
@@ -460,9 +463,11 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
     cancelSponsorSchedule();
     if (video.paused) return;
 
-    if (Config.config.disableSkipping || channelWhitelisted){
+    if (Config.config.disableSkipping || channelWhitelisted || (channelID === null && Config.config.forceChannelCheck)){
         return;
     }
+
+    if (incorrectVideoIDCheck()) return;
 
     if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
@@ -481,27 +486,17 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
 
+        if (incorrectVideoIDCheck()) return;
+
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
-            // Double check that the videoID is correct
-            // TODO: Remove this bug catching if statement when the bug is found
-            let currentVideoID = getYouTubeVideoID(document.URL);
-            if (currentVideoID == sponsorVideoID) {
-                skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
+            skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
 
-                // TODO: Know the autoSkip settings for ALL items being skipped
-                if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ManualSkip) {
-                    forcedSkipTime = skipTime[0] + 0.001;
-                } else {
-                    forcedSkipTime = skipTime[1];
-                    forcedIncludeIntersectingSegments = true;
-                }
+            // TODO: Know the autoSkip settings for ALL items being skipped
+            if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ManualSkip) {
+                forcedSkipTime = skipTime[0] + 0.001;
             } else {
-                // Something has really gone wrong
-                console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
-                console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
-
-                // Video ID change occured
-                videoIDChange(currentVideoID);
+                forcedSkipTime = skipTime[1];
+                forcedIncludeIntersectingSegments = true;
             }
         }
 
@@ -515,11 +510,32 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
     }
 }
 
-function sponsorsLookup(id: string, channelIDPromise?) {
+/**
+ * This makes sure the videoID is still correct
+ * 
+ * TODO: Remove this bug catching if statement when the bug is found
+ */
+function incorrectVideoIDCheck(): boolean {
+    let currentVideoID = getYouTubeVideoID(document.URL);
+    if (currentVideoID !== sponsorVideoID) {
+        // Something has really gone wrong
+        console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
+        console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
+
+        // Video ID change occured
+        videoIDChange(currentVideoID);
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function sponsorsLookup(id: string) {
     video = document.querySelector('video') // Youtube video player
     //there is no video here
     if (video == null) {
-        setTimeout(() => sponsorsLookup(id, channelIDPromise), 100);
+        setTimeout(() => sponsorsLookup(id), 100);
         return;
     }
 
@@ -578,18 +594,6 @@ function sponsorsLookup(id: string, channelIDPromise?) {
         startSponsorSchedule();
     }
 
-    if (channelIDPromise !== undefined) {
-        if (channelIDPromise.isFulfilled) {
-            whitelistCheck();
-        } else if (channelIDPromise.isRejected) {
-            //try again
-            utils.wait(getChannelID).then(whitelistCheck).catch();
-        } else {
-            //add it as a then statement
-            channelIDPromise.then(whitelistCheck);
-        }
-    }
-
     //check database for sponsor times
     //made true once a setTimeout has been created to try again after a server error
     let recheckStarted = false;
@@ -624,43 +628,16 @@ function sponsorsLookup(id: string, channelIDPromise?) {
 
             sponsorTimes = recievedSegments;
 
-            // Remove all submissions smaller than the minimum duration
+            // Hide all submissions smaller than the minimum duration
             if (Config.config.minDuration !== 0) {
-                let smallSegments: SponsorTime[] = [];
-
                 for (let i = 0; i < sponsorTimes.length; i++) {
-                    if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] >= Config.config.minDuration) {
-                        smallSegments.push(sponsorTimes[i]);
+                    if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] < Config.config.minDuration) {
+                        sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
                     }
                 }
-
-                sponsorTimes = smallSegments;
             }
 
-            if (!switchingVideos) {
-                // See if there are any starting sponsors
-                let startingSponsor: number = -1;
-                for (const time of sponsorTimes) {
-                    if (time[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
-                        startingSponsor = time.segment[0];
-                        break;
-                    }
-                }
-                if (!startingSponsor) {
-                    for (const time of sponsorTimesSubmitting) {
-                        if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
-                            startingSponsor = time.segment[0];
-                            break;
-                        }
-                    }
-                }
-
-                if (startingSponsor !== -1) {
-                    startSponsorSchedule(false, startingSponsor);
-                } else {
-                    startSponsorSchedule();
-                }
-            }
+            startSkipScheduleCheckingForStartSponsors();
 
             // Reset skip save
             sponsorSkipped = [];
@@ -678,23 +655,13 @@ function sponsorsLookup(id: string, channelIDPromise?) {
             sponsorDataFound = false;
 
             //check if this video was uploaded recently
-            //use the invidious api to get the time published
-            sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + id, function(xmlhttp, error) {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    let decodedData = decodeURIComponent(xmlhttp.responseText).match(/player_response=([^&]*)/)[1];
+            utils.wait(() => !!videoInfo).then(() => {
+                let dateUploaded = videoInfo.microformat.playerMicroformatRenderer.uploadDate;
 
-                    if (decodedData === undefined) {
-                        console.error("[SB] Failed at getting video upload date info from YouTube.");
-                        return;
-                    }
-
-                    let dateUploaded = JSON.parse(decodedData).microformat.playerMicroformatRenderer.uploadDate;
-
-                    //if less than 3 days old
-                    if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
-                        //TODO lower when server becomes better
-                        setTimeout(() => sponsorsLookup(id, channelIDPromise), 180000);
-                    }
+                //if less than 3 days old
+                if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
+                    //TODO lower when server becomes better
+                    setTimeout(() => sponsorsLookup(id), 180000);
                 }
             });
 
@@ -704,9 +671,58 @@ function sponsorsLookup(id: string, channelIDPromise?) {
 
             //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id, channelIDPromise), 10000);
+            setTimeout(() => sponsorsLookup(id), 10000);
 
             sponsorLookupRetries++;
+        }
+    });
+}
+
+/**
+ * Only should be used when it is okay to skip a sponsor when in the middle of it 
+ * 
+ * Ex. When segments are first loaded
+ */
+function startSkipScheduleCheckingForStartSponsors() {
+    if (!switchingVideos) {
+        // See if there are any starting sponsors
+        let startingSponsor: number = -1;
+        for (const time of sponsorTimes) {
+            if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                startingSponsor = time.segment[0];
+                break;
+            }
+        }
+        if (startingSponsor === -1) {
+            for (const time of sponsorTimesSubmitting) {
+                if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                    startingSponsor = time.segment[0];
+                    break;
+                }
+            }
+        }
+
+        if (startingSponsor !== -1) {
+            startSponsorSchedule(false, startingSponsor);
+        } else {
+            startSponsorSchedule();
+        }
+    }
+}
+
+/**
+ * Get the video info for the current tab from YouTube
+ */
+function getVideoInfo() {
+    sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID, function(xmlhttp, error) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            let decodedData = decodeURIComponent(xmlhttp.responseText).match(/player_response=([^&]*)/)[1];
+            if (!decodedData) {
+                console.error("[SB] Failed at getting video info from YouTube.");
+                return;
+            }
+
+            videoInfo = JSON.parse(decodedData);
         }
     });
 }
@@ -753,55 +769,6 @@ function getYouTubeVideoID(url: string) {
     return false;
 }
 
-function getChannelID() {
-    //get channel id
-    let channelURLContainer = null;
-
-    channelURLContainer = document.querySelector("#channel-name > #container > #text-container > #text");
-    if (channelURLContainer !== null) {
-        channelURLContainer = channelURLContainer.firstElementChild;
-    } else if (onInvidious) {
-        // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
-        channelURLContainer = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a");
-    } else {
-        //old YouTube theme
-        let channelContainers = document.getElementsByClassName("yt-user-info");
-        if (channelContainers.length != 0) {
-            channelURLContainer = channelContainers[0].firstElementChild;
-        }
-    }
-
-    if (channelURLContainer === null) {
-        //try later
-        return false;
-    }
-
-    //first get the title to make sure a title change has occurred (otherwise the next video might still be loading)
-    let titleInfoContainer = document.getElementById("info-contents");
-    let currentTitle = "";
-    if (titleInfoContainer != null) {
-        currentTitle = (<HTMLElement> titleInfoContainer.firstElementChild.firstElementChild.querySelector(".title").firstElementChild).innerText;
-    } else if (onInvidious) {
-        // Unfortunately, the Invidious HTML doesn't have much in the way of element identifiers...
-        currentTitle = document.querySelector("body > div > div.pure-u-1.pure-u-md-20-24 div.pure-u-1.pure-u-lg-3-5 > div > a > div > span").textContent;
-    } else {
-        //old YouTube theme
-        currentTitle = document.getElementById("eow-title").innerText;
-    }
-
-    if (title == currentTitle) {
-        //video hasn't changed yet, wait
-        //try later
-        return false;
-    }
-    title = currentTitle;
-
-    channelURL = channelURLContainer.getAttribute("href");
-
-    //reset variables
-    channelWhitelisted = false;
-}
-
 /**
  * This function is required on mobile YouTube and will keep getting called whenever the preview bar disapears
  */
@@ -822,7 +789,7 @@ function updatePreviewBar() {
     //create an array of the sponsor types
     let types = [];
     for (let i = 0; i < localSponsorTimes.length; i++) {
-        if (!hiddenSponsorTimes.includes(i)) {
+        if (localSponsorTimes[i].hidden === SponsorHideType.Visible) {
             types.push(localSponsorTimes[i].category);
         } else {
             // Don't show this sponsor
@@ -841,12 +808,17 @@ function updatePreviewBar() {
 
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
 function whitelistCheck() {
+    channelID = videoInfo.videoDetails.channelId;
+
     //see if this is a whitelisted channel
     let whitelistedChannels = Config.config.whitelistedChannels;
 
-    if (whitelistedChannels != undefined && whitelistedChannels.includes(channelURL)) {
+    if (whitelistedChannels != undefined && whitelistedChannels.includes(channelID)) {
         channelWhitelisted = true;
     }
+
+    // check if the start of segments were missed
+    if (sponsorTimes && sponsorTimes.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
 /**
@@ -856,13 +828,13 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
         {array: SponsorTime[], index: number, endIndex: number, openNotice: boolean} {
 
     let sponsorStartTimes = getStartTimes(sponsorTimes, includeIntersectingSegments);
-    let sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, includeIntersectingSegments, currentTime, true);
+    let sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, includeIntersectingSegments, currentTime, true, true);
 
     let minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
     let endTimeIndex = getLatestEndTimeIndex(sponsorTimes, minSponsorTimeIndex);
 
     let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments);
-    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, false);
+    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, true, false);
 
     let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
     let previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minPreviewSponsorTimeIndex);
@@ -911,7 +883,7 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
         let latestEndTime = sponsorTimes[latestEndTimeIndex].segment[1];
 
         if (currentSegment[0] <= latestEndTime && currentSegment[1] > latestEndTime 
-            && (!hideHiddenSponsors || !hiddenSponsorTimes.includes(i))
+            && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)
             && utils.getCategorySelection(sponsorTimes[i].category).option === CategorySkipOption.AutoSkip) {
                 // Overlapping segment
                 latestEndTimeIndex = i;
@@ -937,14 +909,16 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
  *  the current time, but end after
  */
 function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, minimum?: number, 
-        hideHiddenSponsors: boolean = false): number[] {
+        onlySkippableSponsors: boolean = false, hideHiddenSponsors: boolean = false): number[] {
     if (sponsorTimes === null) return [];
 
     let startTimes: number[] = [];
 
     for (let i = 0; i < sponsorTimes.length; i++) {
         if ((minimum === undefined || (sponsorTimes[i].segment[0] >= minimum || (includeIntersectingSegments && sponsorTimes[i].segment[1] > minimum))) 
-                && (!hideHiddenSponsors || !hiddenSponsorTimes.includes(i))) {
+                && (!onlySkippableSponsors || utils.getCategorySelection(sponsorTimes[i].category).option !== CategorySkipOption.ShowOverlay)
+                && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)) {
+
             startTimes.push(sponsorTimes[i].segment[0]);
         } 
     }
@@ -1490,6 +1464,9 @@ async function sendSubmitMessage(){
         
         sponsorTimes = sponsorTimes.concat(sponsorTimesSubmitting);
 
+        // Increase contribution count
+        Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimesSubmitting.length;
+
         // Empty the submitting times
         sponsorTimesSubmitting = [];
 
@@ -1525,30 +1502,12 @@ function getSegmentsMessage(segments: number[][]): string {
     return sponsorTimesMessage;
 }
 
-// Privacy utils
-function isPrivacyInfoAvailable(): boolean {
-    if(document.location.pathname.startsWith("/embed/")) return true;
-    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2;
-}
-
-/**
- * What privacy level is this YouTube video?
- */
-function getPrivacy(): string {
-    if(document.location.pathname.startsWith("/embed/")) return "Public";
-
-    let privacyElement = <HTMLElement> document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2];
-    return privacyElement.innerText;
-}
-
 /**
  * Is this an unlisted YouTube video.
  * Assumes that the the privacy info is available.
  */
 function isUnlisted(): boolean {
-    let privacyElement = <HTMLElement> document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2];
-
-    return privacyElement.innerText.toLocaleLowerCase() === "unlisted";
+    return videoInfo.microformat.playerMicroformatRenderer.isUnlisted || videoInfo.videoDetails.isPrivate;
 }
 
 /**

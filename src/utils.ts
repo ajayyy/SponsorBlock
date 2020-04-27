@@ -270,27 +270,26 @@ class Utils {
     }
 
     /**
-     * Sends a request to the SponsorBlock server with address added as a query
+     * Sends a request to a custom server
      * 
      * @param type The request type. "GET", "POST", etc.
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */    
-    async asyncRequestToServer(type: string, address: string, data = {}) {
-        let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+    async asyncRequestToCustomServer(type: string, url: string, data = {}) {
 
         // If GET, convert JSON to parameters
         if (type.toLowerCase() === "get") {
             for (const key in data) {
-                let seperator = address.includes("?") ? "&" : "?";
+                let seperator = url.includes("?") ? "&" : "?";
                 let value = (typeof(data[key]) === "string") ? data[key]: JSON.stringify(data[key]);
-                address += seperator + key + "=" + value;
+                url += seperator + key + "=" + value;
             }
 
             data = null;
         }
 
-        const response = await fetch(serverAddress + address, {
+        const response = await fetch(url, {
             method: type,
             headers: {
                 'Content-Type': 'application/json'
@@ -300,6 +299,19 @@ class Utils {
         });
 
         return response;
+    }
+
+    /**
+     * Sends a request to the SponsorBlock server with address added as a query
+     * 
+     * @param type The request type. "GET", "POST", etc.
+     * @param address The address to add to the SponsorBlock server address
+     * @param callback 
+     */    
+    async asyncRequestToServer(type: string, address: string, data = {}) {
+        let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+
+        return await (this.asyncRequestToCustomServer(type, serverAddress + address, data));
     }
 
     /**
@@ -361,10 +373,14 @@ class Utils {
         return minutes * 60 + seconds;
     }
 
+    isContentScript(): boolean {
+        return window.location.protocol === "http:" || window.location.protocol === "https:";
+    }
+
     /**
      * Is this Firefox (web-extensions)
      */
-    isFirefox() {
+    isFirefox(): boolean {
         return typeof(browser) !== "undefined";
     }
 }
