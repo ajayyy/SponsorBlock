@@ -641,12 +641,12 @@ function sponsorsLookup(id: string) {
                 // See if there are any starting sponsors
                 let startingSponsor: number = -1;
                 for (const time of sponsorTimes) {
-                    if (time[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                    if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
                         startingSponsor = time.segment[0];
                         break;
                     }
                 }
-                if (!startingSponsor) {
+                if (startingSponsor === -1) {
                     for (const time of sponsorTimesSubmitting) {
                         if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
                             startingSponsor = time.segment[0];
