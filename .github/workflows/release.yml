@@ -62,6 +62,23 @@ jobs:
         with:
           args: zip -qq -r ./builds/FirefoxExtensionBeta.zip ./dist
 
+      # Create Firefox Signed Beta version
+      - name: Create Firefox Signed Beta artifacts
+        run: npm run web-sign
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+      - name: Install rename
+          run: sudo apt-get install rename
+      - name: Install signed file
+          run: cd ./web-ext-artifacts
+          run: rename 's/.*/FirefoxSignedInstaller.xpi/' *
+          run: cd ..
+      - uses: actions/upload-artifact@v1
+          with:
+            name: FirefoxExtensionSigned.xpi
+            path: ./web-ext-artifacts/FirefoxSignedInstaller.xpi
+
       # Upload each release asset
       - name: Upload to release
         uses: Shopify/upload-to-release@master
@@ -73,8 +90,22 @@ jobs:
       - name: Upload to release
         uses: Shopify/upload-to-release@master
         with:
+          args: builds/ChromeExtensionBeta.zip
+          name: ChromeExtensionBeta.zip
+          path: ./builds/ChromeExtensionBeta.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload to release
+        uses: Shopify/upload-to-release@master
+        with:
           args: builds/FirefoxExtension.zip
           name: FirefoxExtension.zip
           path: ./builds/FirefoxExtension.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload to release
+        uses: Shopify/upload-to-release@master
+        with:
+          args: web-ext-artifacts/FirefoxSignedInstaller.xpi
+          name: FirefoxSignedInstaller.xpi
+          path: ./web-ext-artifacts/FirefoxSignedInstaller.xpi
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
