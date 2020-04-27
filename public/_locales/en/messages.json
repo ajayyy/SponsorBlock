@@ -545,9 +545,9 @@
         "message": "Channel ID not loaded yet."
     },
     "adblockerIssue": {
-        "message": "It seems that something is blocking SponsorBlock's ability to get video data. This is probably uBlock. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-uBlock-Origin-Blocking-YouTube-Requests"
+        "message": "It seems that something is blocking SponsorBlock's ability to get video data. This is probably your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "itCouldBeAdblockerIssue": {
-        "message": "If this keeps occuring, it could be caused by uBlock. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-uBlock-Origin-Blocking-YouTube-Requests"
+        "message": "If this keeps occuring, it could be caused by your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     }
 }

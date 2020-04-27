@@ -302,7 +302,7 @@ async function videoIDChange(id) {
     // If enabled, it will check if this video is private or unlisted and double check with the user if the sponsors should be looked up
     if (Config.config.checkForUnlistedVideos) {
         try {
-            await utils.wait(() => !!videoInfo, 5000, 10);
+            await utils.wait(() => !!videoInfo, 5000, 1);
         } catch (err) {
             alert(chrome.i18n.getMessage("adblockerIssue"));
         }
