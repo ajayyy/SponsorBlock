@@ -28,7 +28,7 @@ jobs:
       - run: mkdir ./builds
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./builds/ChromeExtension.zip ./dist
+          args: zip -qq -r ./builds/ChromeExtension.zip ./dist/*
 
       # Create Firefox artifacts
       - name: Create Firefox artifacts
@@ -39,7 +39,7 @@ jobs:
           path: dist
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./builds/FirefoxExtension.zip ./dist
+          args: zip -qq -r ./builds/FirefoxExtension.zip ./dist/*
 
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
@@ -50,7 +50,7 @@ jobs:
           path: dist
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./builds/ChromeExtensionBeta.zip ./dist
+          args: zip -qq -r ./builds/ChromeExtensionBeta.zip ./dist/*
 
       - name: Create Firefox Beta artifacts
         run: npm run build:firefox -- --env.stream=beta
@@ -60,7 +60,7 @@ jobs:
           path: dist
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./builds/FirefoxExtensionBeta.zip ./dist
+          args: zip -qq -r ./builds/FirefoxExtensionBeta.zip ./dist/*
 
       # Create Firefox Signed Beta version
       - name: Create Firefox Signed Beta artifacts
