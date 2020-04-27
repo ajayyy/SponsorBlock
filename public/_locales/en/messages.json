@@ -424,10 +424,10 @@
         "message": "The video has been detected as unlisted. Click cancel if you do not want to check for sponsors."
     },
     "unlistedCheck": {
-        "message": "Ignore Unlisted Videos"
+        "message": "Ignore Unlisted/Private Videos"
     },
     "whatUnlistedCheck": {
-        "message": "This setting will significantly slow down SponsorBlock. Sponsor lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
+        "message": "This setting will slightly slow down SponsorBlock. Sponsor lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com is now supported"
@@ -542,6 +542,12 @@
         "message": "hidden: too short"
     },
     "channelDataNotFound": {
-        "message": "Channel ID not loaded yet"
+        "message": "Channel ID not loaded yet."
+    },
+    "adblockerIssue": {
+        "message": "It seems that something is blocking SponsorBlock's ability to get video data. This is probably uBlock. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-uBlock-Origin-Blocking-YouTube-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "If this keeps occuring, it could be caused by uBlock. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-uBlock-Origin-Blocking-YouTube-Requests"
     }
 }

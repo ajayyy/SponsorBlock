@@ -301,7 +301,11 @@ async function videoIDChange(id) {
 
     // If enabled, it will check if this video is private or unlisted and double check with the user if the sponsors should be looked up
     if (Config.config.checkForUnlistedVideos) {
-        await utils.wait(isPrivacyInfoAvailable);
+        try {
+            await utils.wait(() => !!videoInfo, 5000, 10);
+        } catch (err) {
+            alert(chrome.i18n.getMessage("adblockerIssue"));
+        }
 
         if (isUnlisted()) {
             let shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
@@ -310,7 +314,7 @@ async function videoIDChange(id) {
     }
 
     // Update whitelist data when the video data is loaded
-    utils.wait(() => !!videoInfo).then(whitelistCheck);
+    utils.wait(() => !!videoInfo, 5000, 10).then(whitelistCheck);
 
     //setup the preview bar
     if (previewBar === null) {
@@ -1486,30 +1490,12 @@ function getSegmentsMessage(segments: number[][]): string {
     return sponsorTimesMessage;
 }
 
-// Privacy utils
-function isPrivacyInfoAvailable(): boolean {
-    if(document.location.pathname.startsWith("/embed/")) return true;
-    return document.getElementsByClassName("style-scope ytd-badge-supported-renderer").length >= 2;
-}
-
-/**
- * What privacy level is this YouTube video?
- */
-function getPrivacy(): string {
-    if(document.location.pathname.startsWith("/embed/")) return "Public";
-
-    let privacyElement = <HTMLElement> document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2];
-    return privacyElement.innerText;
-}
-
 /**
  * Is this an unlisted YouTube video.
  * Assumes that the the privacy info is available.
  */
 function isUnlisted(): boolean {
-    let privacyElement = <HTMLElement> document.getElementsByClassName("style-scope ytd-badge-supported-renderer")[2];
-
-    return privacyElement.innerText.toLocaleLowerCase() === "unlisted";
+    return videoInfo.microformat.playerMicroformatRenderer.isUnlisted || videoInfo.videoDetails.isPrivate;
 }
 
 /**

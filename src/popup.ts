@@ -922,7 +922,8 @@ async function runThePopup(messageListener?: MessageListener) {
                 {message: 'getChannelID'},
                 function(response) {
                     if (!response.channelID) {
-                        alert(chrome.i18n.getMessage("channelDataNotFound"));
+                        alert(chrome.i18n.getMessage("channelDataNotFound") + "\n\n" + 
+                            chrome.i18n.getMessage("itCouldBeAdblockerIssue"));
                         return;
                     }
 
