@@ -527,5 +527,32 @@
     },
     "moreCategories": {
         "message": "更多类别"
+    },
+    "bracketEnd": {
+        "message": "（结束）"
+    },
+    "hiddenDueToDownvote": {
+        "message": "隐藏：差评"
+    },
+    "hiddenDueToDuration": {
+        "message": "隐藏：过短"
+    },
+    "channelDataNotFound": {
+        "message": "频道 ID 尚未加载。"
+    },
+    "adblockerIssue": {
+        "message": "似乎某些东西正在阻止 SponsorBlock 获取视频数据的功能。它很可能是您的广告拦截器。请查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "如果这种情况不断发生，它可能是由您的广告拦截器引起的。请查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "跳过赞助商广告前强制进行频道检查"
+    },
+    "whatForceChannelCheck": {
+        "message": "默认情况下，即使还未检测出当前是什么频道，也会立即跳过赞助商广告。默认情况下，即使在白名单中的频道，一些在开头的赞助商广告也可能被跳过。启用此选项将防止这种情况，但所有的跳过将会产生轻微的延迟，因为获取频道 ID 需要一点时间。如果您的网速很快，那延迟可能非常短。"
+    },
+    "forceChannelCheckPopup": {
+        "message": "请考虑启用跳过赞助商广告前强制进行频道检查"
     }
 }
