@@ -188,9 +188,6 @@
     "hideButtons": {
         "message": "Knöpfe in YouTube-Leiste verstecken"
     },
-    "hideButtonsDescription": {
-        "message": "Die Einstellung versteckt den Einsende-Knopf in der Youtube-Leiste. Ich kann verstehen, weshalb manchen diese Funktion\n an dieser Stelle stört. Stattdessen kann dafür dieses Pop-up genutzt werden. Um die transparente Benachrichtigung zu verstecken, klicke auf den \"Verstecken\"-Knopf \n der Benachrichtigung. Diese Einstellungen können wieder rückgängig gemacht werden."
-    },
     "showInfoButton": {
         "message": "Zeige Info-Knopf in Youtube-Leiste"
     },
@@ -205,9 +202,6 @@
     },
     "showDeleteButton": {
         "message": "Zeige Löschen-Knopf in Youtube Leiste"
-    },
-    "whatDeleteButton": {
-        "message": "Dieser Knopf entfernt sämtlich Segmente in der Youtube-Zeitleiste."
     },
     "disableViewTracking": {
         "message": "Deaktiviere das Mitzählen übersprungener Sponsoren"
@@ -418,12 +412,6 @@
     },
     "confirmPrivacy": {
         "message": "Das Video wurde als ungelistet erkannt. Klicken Sie auf Abbrechen, wenn Sie nicht nach Sponsoren suchen möchten."
-    },
-    "unlistedCheck": {
-        "message": "Nicht gelistete Videos ignorieren"
-    },
-    "whatUnlistedCheck": {
-        "message": "Diese Einstellung verlangsamt den Sponsor-Block erheblich. Sponsor-Suchvorgänge erfordern das Senden der Video-ID an den Server. Wenn Sie sich Sorgen darüber machen, dass nicht gelistete Video-IDs über das Internet gesendet werden, aktivieren Sie diese Option."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com wird jetzt unterstützt"
