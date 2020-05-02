@@ -181,9 +181,6 @@
     "hideButtons": {
         "message": "Ukryj guziki w odtwarzaczu YouTube"
     },
-    "hideButtonsDescription": {
-        "message": "Ta opcja ukrywa guziki zgłaszania reklamy w odtwarzaczu. Wiem, że mogą one irytować niektórych. Zamiast zgłaszania bezpośrednio w odtwarzaczu możesz to zrobić w tym okienku. Zawsze możesz zmienić te opcje później."
-    },
     "showInfoButton": {
         "message": "Pokaż guzik informacyjny w odtwarzaczu YouTube"
     },
@@ -198,9 +195,6 @@
     },
     "showDeleteButton": {
         "message": "Pokaż guzik usuwania w odtwarzaczu YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Ten guzik pozwala ci wyczyścić wszystkie segmenty reklamowe w odtwarzaczu YouTube."
     },
     "disableViewTracking": {
         "message": "Wyłącz licznik przewinięć"
