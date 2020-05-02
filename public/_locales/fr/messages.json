@@ -188,9 +188,6 @@
     "hideButtons": {
         "message": "Cacher les boutons sur le lecteur YouTube"
     },
-    "hideButtonsDescription": {
-        "message": "Cela permet de cacher du lecteur YouTube les boutons utilisés pour soumettre des segments commerciaux. Je peux \ncomprendre que certaines personnes les trouvent perturbants. Au lieu d'utiliser ces boutons, cette fenêtre peut être utilisée \npour soumettre des segments commerciaux. Pour cacher la notification, utilisez le bouton \"Ne plus montrer\" sur la notification. Vous pouvez toujours réactiver ces paramètres plus tard."
-    },
     "showInfoButton": {
         "message": "Montrer le bouton Info sur le lecteur YouTube"
     },
@@ -205,9 +202,6 @@
     },
     "showDeleteButton": {
         "message": "Montrer le bouton Supprimer sur le lecteur YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Il s'agit du bouton qui permet de supprimer tous les segments commerciaux depuis le lecteur YouTube."
     },
     "disableViewTracking": {
         "message": "Désactiver le suivi des vues de segments commerciaux"
@@ -406,9 +400,6 @@
     },
     "reset": {
         "message": "Réinitialiser"
-    },
-    "unlistedCheck": {
-        "message": "Ignorer les vidéos non listées"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com est maintenant pris en charge"
