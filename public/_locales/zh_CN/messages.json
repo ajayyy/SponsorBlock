@@ -189,7 +189,7 @@
         "message": "在 Youtube 播放器上隐藏按钮"
     },
     "hideButtonsDescription": {
-        "message": "这将隐藏在 YouTube 播放器上提交赞助商广告的按钮。我了解这个东西打扰到了某些人。除了使用那个按钮，这个弹窗也可以用来提交赞助商广告。 要隐藏出现的通知，请使用通知中显示的写着 ”不再显示“ 的按钮。您可以在以后再次启用这些设置。"
+        "message": "它将隐藏在 Youtube 播放器上提交跳过片段的按钮。"
     },
     "showInfoButton": {
         "message": "在 Youtube 播放器上显示信息按钮"
@@ -207,7 +207,7 @@
         "message": "在 Youtube 播放器上显示删除按钮"
     },
     "whatDeleteButton": {
-        "message": "此按钮用于在 Youtube 播放器中清除所有赞助商广告。"
+        "message": "此按钮显示在 Youtube 播放器上，它将清除当前视频您所有未提交的片段。"
     },
     "disableViewTracking": {
         "message": "禁用赞助商广告跳过统计跟踪"
@@ -420,10 +420,10 @@
         "message": "未检测到视频的记录。如果您不想检查赞助商广告，请点击取消。"
     },
     "unlistedCheck": {
-        "message": "忽略未找到记录的视频"
+        "message": "忽略未找到记录或私密的视频"
     },
     "whatUnlistedCheck": {
-        "message": "此设置将显著的减慢 SponsorBlock 。赞助商广告查找器需要向服务器发送未找到记录的视频 ID 。如果您对通过互联网发送视频 ID 有疑虑，请启用此选项。"
+        "message": "此设置将略微减慢 SponsorBlock 。赞助商广告查找器需要发送视频 ID 到服务器。如果您对未被记录的视频 ID 被通过互联网发送感到担忧，请启用此选项。"
     },
     "mobileUpdateInfo": {
         "message": "现已支持 m.youtube.com"
