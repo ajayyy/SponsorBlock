@@ -508,5 +508,20 @@
     },
     "bracketNow": {
         "message": "(Nu)"
+    },
+    "moreCategories": {
+        "message": "Fler Kategorier"
+    },
+    "bracketEnd": {
+        "message": "(Slut)"
+    },
+    "channelDataNotFound": {
+        "message": "Kanal-ID är inte inladdat än."
+    },
+    "adblockerIssue": {
+        "message": "Det verkar som om något blockerar SponsorBlocks från att hämta videodata. Det beror förmodligen på din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     }
 }
