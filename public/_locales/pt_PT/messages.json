@@ -184,9 +184,6 @@
     "hideButtons": {
         "message": "Esconder botões no player do Youtube"
     },
-    "hideButtonsDescription": {
-        "message": "Isto esconde os botões que aparecem no player do Youtube para submeter patrocínios. Entendemos que possa ser\n incómodo a algumas pessoas. Em vez de usar esses botões pode usar os do popup. Para esconder a mensagem que aparece, \n ususe o botão na mesma que diz \"Don't show this again\". Pode sempre reactivar estas definições novamente."
-    },
     "showInfoButton": {
         "message": "Mostrar botão de Informações no player do Youtube"
     },
@@ -201,9 +198,6 @@
     },
     "showDeleteButton": {
         "message": "Mostrar botão de Apagar no player do Youtube"
-    },
-    "whatDeleteButton": {
-        "message": "Este é o botão que lhe permite saltar todos os patrocínios do player do Youtube."
     },
     "disableViewTracking": {
         "message": "Desactivar registo de visualização de patrocínios"
