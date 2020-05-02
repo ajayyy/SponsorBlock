@@ -178,9 +178,6 @@
     "hideButtons": {
         "message": "Dölj Knappar På YouTube-spelaren"
     },
-    "hideButtonsDescription": {
-        "message": "Detta döljer knapparna på YouTube-spelaren som du kan rapportera sponsormeddelanden med. Jag förstår att det kan se störande ut för en del. Istället för att ha knappen där kan den här popup-rutan användas för att rapportera sponsormeddelanden. För att dölja notisen som dyker upp, tryck på knappen som syns på notisen som säger \"Visa inte det här igen\". Du kan alltid slå på dessa inställningar igen senare."
-    },
     "showInfoButton": {
         "message": "Visa Infoknapp På YouTube-spelaren"
     },
@@ -197,7 +194,7 @@
         "message": "Visa \"Ta Bort\"-knappen På YouTube-spelaren"
     },
     "whatDeleteButton": {
-        "message": "Denna knappen tar bort alla sponsormeddelanden på YouTube-spelaren."
+        "message": "Detta är knappen på YouTube-spelaren som kommer att rensa alla segment du inte har laddat upp för den aktuella videon."
     },
     "disableViewTracking": {
         "message": "Avaktivera Räkning Av Undvikta Sponsormeddelanden"
@@ -410,10 +407,7 @@
         "message": "Videon ser ut att vara olistad. Tryck på avbryt om du inte vill kolla efter sponsorer."
     },
     "unlistedCheck": {
-        "message": "Ignorera Olistade Videor"
-    },
-    "whatUnlistedCheck": {
-        "message": "Denna inställning kommer göra SponsorBlock märkbart långsammare. Uppslag av sponsormeddelanden kräver att video-ID skickas till servern. Om du är bekymrad över att olistade video-IDn skickas över internet, aktivera denna inställning."
+        "message": "Ignorera Olistade/Privata Videor"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com stöds nu"
@@ -508,5 +502,20 @@
     },
     "bracketNow": {
         "message": "(Nu)"
+    },
+    "moreCategories": {
+        "message": "Fler Kategorier"
+    },
+    "bracketEnd": {
+        "message": "(Slut)"
+    },
+    "channelDataNotFound": {
+        "message": "Kanal-ID är inte inladdat än."
+    },
+    "adblockerIssue": {
+        "message": "Det verkar som om något blockerar SponsorBlocks från att hämta videodata. Det beror förmodligen på din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     }
 }
