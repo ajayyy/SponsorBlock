@@ -11,10 +11,27 @@
 	z-index: 40;
 }
 
+.sbHidden {
+	display: none !important;
+}
+
+
 .previewbar {
 	display: inline-block;
 	height: 100%;
 }
+
+/* Preview Bar page hacks */
+
+.sbTooltipTwoTitleThumbnailOffset {
+	bottom: -5px !important;
+}
+
+.sbTooltipOneTitleThumbnailOffset {
+	bottom: 10px !important;
+}
+
+/*  */
 
 .popup {
     z-index: 10;
