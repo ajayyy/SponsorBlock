@@ -478,6 +478,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
     let currentSkip = skipInfo.array[skipInfo.index];
     let skipTime: number[] = [currentSkip.segment[0], skipInfo.array[skipInfo.endIndex].segment[1]];
     let timeUntilSponsor = skipTime[0] - currentTime;
+    let videoID = sponsorVideoID;
 
     // Don't skip if this category should not be skipped
     if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ShowOverlay) return;
@@ -486,7 +487,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
 
-        if (incorrectVideoIDCheck()) return;
+        if (incorrectVideoIDCheck(videoID)) return;
 
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
@@ -515,9 +516,9 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
  * 
  * TODO: Remove this bug catching if statement when the bug is found
  */
-function incorrectVideoIDCheck(): boolean {
+function incorrectVideoIDCheck(videoID?: string): boolean {
     let currentVideoID = getYouTubeVideoID(document.URL);
-    if (currentVideoID !== sponsorVideoID) {
+    if (currentVideoID !== (videoID || sponsorVideoID)) {
         // Something has really gone wrong
         console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
         console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
