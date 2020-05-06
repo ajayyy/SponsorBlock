@@ -93,13 +93,6 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                     <td className="sponsorSkipNoticeRightSection"
                         style={{position: "relative"}}>
 
-                        {/* Cancel Button */}
-                        <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
-                            onClick={this.cancel.bind(this)}>
-
-                            {chrome.i18n.getMessage("cancel")}
-                        </button>
-
                         {/* Submit Button */}
                         <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
                             onClick={this.submit.bind(this)}>
