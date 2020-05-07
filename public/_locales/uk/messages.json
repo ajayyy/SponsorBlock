@@ -164,6 +164,9 @@
     "setUsername": {
         "message": "Встановити ім'я користувача"
     },
+    "discordAdvert": {
+        "message": "Приєднуйтесь до офіційного сервера Discord, щоб залишити пропозиції і зворотний зв'язок!"
+    },
     "hideThis": {
         "message": "Приховати це"
     },
@@ -175,5 +178,275 @@
     },
     "hideButtons": {
         "message": "Приховати кнопки в плеєрі YouTube"
+    },
+    "hideButtonsDescription": {
+        "message": "Це налаштування приховує кнопки для надсилання спонсорських вставок, які з'являються в плеєрі YouTube."
+    },
+    "showInfoButton": {
+        "message": "Показувати кнопку інформації в плеєрі YouTube"
+    },
+    "hideInfoButton": {
+        "message": "Приховати кнопку інформації в плеєрі YouTube"
+    },
+    "whatInfoButton": {
+        "message": "Ця кнопка відкриває спливаюче вікно на сторінці YouTube."
+    },
+    "hideDeleteButton": {
+        "message": "Приховати кнопку видалення в плеєрі YouTube"
+    },
+    "showDeleteButton": {
+        "message": "Показувати кнопку видалення в плеєрі YouTube"
+    },
+    "whatDeleteButton": {
+        "message": "Ця кнопка дозволяє очистити всі спонсорські вставки в плеєрі YouTube."
+    },
+    "disableViewTracking": {
+        "message": "Вимкнути відстеження кількості пропусків спонсорських вставок"
+    },
+    "enableViewTracking": {
+        "message": "Увімкнути відстеження кількості пропусків спонсорських вставок"
+    },
+    "whatViewTracking": {
+        "message": "Ця можливість відстежує, які спонсорські вставки Ви пропустили, щоб допомогти користувачам дізнатися, наскільки їхвнесок допоміг іншим, і використовується як метрика, щоб переконатися, що спам не потрапляє у базу даних. Розширення відправляє повідомлення на сервер кожен раз, коли Ви пропускаєте спонсорську вставку. Сподіваємося, велика частина користувачів не поміняє це налаштування, так що у нас буде точна статистика переглядів :)"
+    },
+    "showNotice": {
+        "message": "Показувати сповіщення знову"
+    },
+    "longDescription": {
+        "message": "SponsorBlock - це розширення, яке пропускає спонсорські вставки в відео на YouTube. SponsorBlock - це краудсорсінгове розширення, яке дозволяє кожному надіслати час початку і кінця спонсорських сегментів в відео на YouTube. Після того, як хто-небудь надсилає цю інформацію, всі інші користувачі розширення будуть автоматично пропускати спонсорські сегменти.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "Сайт",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Вихідний код",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "Повідомлення було оновлено!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Якщо воно Вам все одно не подобається, натисніть «не показувати\".",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Призначити гарячу клавішу для початку спонсорської вставки"
+    },
+    "setSubmitKeybind": {
+        "message": "Призначити гарячу клавішу для надсилання"
+    },
+    "keybindDescription": {
+        "message": "Натисніть, щоб вибрати її"
+    },
+    "keybindDescriptionComplete": {
+        "message": "Кнопка призначена на: "
+    },
+    "0": {
+        "message": "Таймаут підключення. Перевірте ваше з'єднання з інтернетом. Якщо ваш інтернет працює, сервер, швидше за все, перевантажений або лежить."
+    },
+    "disableSkipping": {
+        "message": "Відключити SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Увімкнути SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Ваша робота",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "Схоже, він перевантажений. Спробуйте ще раз через кілька секунд."
+    },
+    "errorCode": {
+        "message": "Код помилки: "
+    },
+    "noticeTitleNotSkipped": {
+        "message": "Пропустити спонсорську вставку?"
+    },
+    "skip": {
+        "message": "Пропустити"
+    },
+    "disableAutoSkip": {
+        "message": "Вимкнути автоматичний пропуск"
+    },
+    "enableAutoSkip": {
+        "message": "Увімкнути автоматичний пропуск"
+    },
+    "autoSkipDescription": {
+        "message": "Автоматичний пропуск буде пропускати спонсорські вставки за Вас. Якщо вимкнено, буде показуватися повідомлення з пропозицією пропустити."
+    },
+    "youHaveSkipped": {
+        "message": "Ви пропустили "
+    },
+    "youHaveSaved": {
+        "message": "Ви заощадили "
+    },
+    "minLower": {
+        "message": "хвилину"
+    },
+    "minsLower": {
+        "message": "хвилин"
+    },
+    "hourLower": {
+        "message": "година"
+    },
+    "hoursLower": {
+        "message": "годин"
+    },
+    "youHaveSavedTime": {
+        "message": "Ви заощадили людям"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " їх життя."
+    },
+    "guildlinesSummary": {
+        "message": "- Переконайтеся, що Ваш сегмент містить тільки платну інтеграцію, і більше нічого.\n- Переконайтеся, що пропуск цього сегмента не пропустить жодного цінного контенту\n- Якщо все відео цілком спонсорське, будь ласка, не повідомляйте про нього. Система для повідомлення про цілі відео скоро вийде.\n- Будь ласка, не повідомляйте про відмови від відповідальності, які можуть показати упередженість (якщо відео з оглядом проплачено, не пропускайте, коли вони це згадують)."
+    },
+    "statusReminder": {
+        "message": "Дивіться стан сервера на status.sponsor.ajay.app."
+    },
+    "changeUserID": {
+        "message": "Імпортувати/Експортувати Ваш ідентифікатор користувача"
+    },
+    "whatChangeUserID": {
+        "message": "Це потрібно тримати в секреті. Це як пароль, не варто ним ні з ким ділитися. Якщо він у кого-то є, він зможе видати себе за Вас."
+    },
+    "setUserID": {
+        "message": "Встановити ідентифікатор користувача"
+    },
+    "userIDChangeWarning": {
+        "message": "Увага: зміна ідентифікатора користувача є незворотнім. Ви дійсно хочете це зробити? Зробіть резервну копію вашого старого про всяк випадок."
+    },
+    "createdBy": {
+        "message": "Створено"
+    },
+    "autoSkip": {
+        "message": "Автоматичний пропуск"
+    },
+    "showSkipNotice": {
+        "message": "Показувати сповіщення після пропуску спонсорської вставки"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Він зараз призначений на:"
+    },
+    "supportInvidious": {
+        "message": "Підтримка Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) - це неофіційний клієнт YouTube. Щоб увімкнути підтримку, Вам знадобиться прийняти додаткові дозволи. Це НЕ працює в приватному режимі в Chrome і інших варіантах Chromium."
+    },
+    "optionsInfo": {
+        "message": "Увімкнути підтримку Invidious, вимкнути автоматичний пропуск, приховати кнопки і не тільки."
+    },
+    "addInvidiousInstance": {
+        "message": "Додати інстанси Invidious"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Додати свій інстанси Invidious. Формат: ТІЛЬКИ домен. Наприклад: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Додати"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Це неправильний домен. Введіть ТІЛЬКИ домен. Наприклад: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Скинути список інстанси Invidious"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Ви збираєтеся скинути список інстанси Invidious"
+    },
+    "currentInstances": {
+        "message": "Поточні інстанси:"
+    },
+    "enableAutoUpvote": {
+        "message": "Автоматично голосувати \"за\""
+    },
+    "whatAutoUpvote": {
+        "message": "Якщо це увімкнено, розширення буде голосувати \"за\" всі пропозиції інших користувачів, якщо Ви на них не поскаржитеся. Якщо повідомлення вимкнуто, це не буде відбуватися."
+    },
+    "minDuration": {
+        "message": "Мінімальна тривалість (секунд):"
+    },
+    "minDurationDescription": {
+        "message": "Спонсорські сегменти коротше цього значення не будуть пропускатися і не будуть показані в плеєрі."
+    },
+    "shortCheck": {
+        "message": "Наступний діапазон часу коротше, ніж Ваше налаштування мінімальної тривалості. Це може означати, що він вже був надісланий, і просто ігнорується через це налаштування. Ви дійсно хочете надіслати?"
+    },
+    "showUploadButton": {
+        "message": "Показувати кнопку надсилання"
+    },
+    "whatUploadButton": {
+        "message": "Ця кнопка з'являється в плеєрі YouTube після того, як Ви вибрали позначку часу і готові до надсилання."
+    },
+    "customServerAddress": {
+        "message": "Адреса сервера SponsorBlock"
+    },
+    "customServerAddressDescription": {
+        "message": "Адреса, за якою SponsorBlock звертається до сервера.\nМіняйте тільки якщо Ви підняли свій сервер."
+    },
+    "save": {
+        "message": "Зберегти"
+    },
+    "reset": {
+        "message": "Скинути"
+    },
+    "customAddressError": {
+        "message": "Ця адреса неправильного формату. Переконайтеся, що він починається з http: // або https: //, і що на кінці немає слеша."
+    },
+    "areYouSureReset": {
+        "message": "Ви дійсно хочете це скинути?"
+    },
+    "confirmPrivacy": {
+        "message": "Було виявлено, що це відео непублічна. Натисніть \"скасування\", якщо не хочете перевіряти його на спонсорів."
+    },
+    "unlistedCheck": {
+        "message": "Ігнорувати непублічні відео"
+    },
+    "whatUnlistedCheck": {
+        "message": "Це налаштування значно сповільнить SponsorBlock. Пошук спонсорів вимагає надсилання ідентифікатора відео на сервер. Якщо Вас турбує відправка ідентифікаторів непублічних відео по інтернету, увімкніть це налаштування."
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com тепер підтримується"
+    },
+    "confirmNoticeTitle": {
+        "message": "Надіслати сегмент"
+    },
+    "submit": {
+        "message": "Надіслати"
+    },
+    "cancel": {
+        "message": "Скасувати"
+    },
+    "delete": {
+        "message": "Видалити"
+    },
+    "preview": {
+        "message": "Попередній перегляд"
+    },
+    "edit": {
+        "message": "Редагувати"
+    },
+    "category_sponsor": {
+        "message": "Спонсор"
+    },
+    "disable": {
+        "message": "Вимкнути"
+    },
+    "manualSkip": {
+        "message": "Пропуск вручну"
+    },
+    "bracketNow": {
+        "message": "(Зараз)"
+    },
+    "moreCategories": {
+        "message": "Більше категорій"
+    },
+    "bracketEnd": {
+        "message": "(Кінець)"
     }
 }
