@@ -58,6 +58,8 @@ You can read the API docs [here](https://github.com/ajayyy/SponsorBlockServer#ap
 
 # Building
 
+Rename `config.json.example` to `config.json` and adjust configuration as desired.
+
 There are also other build scripts available. Install `npm`, then run `npm install` in the repository to install dependencies. 
 
 Run `npm run build` to generate a Chrome extension.
