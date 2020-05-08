@@ -1,1 +1,8 @@
-{}
+{
+    "Sponsor": {
+        "message": "sponzor"
+    },
+    "Sponsors": {
+        "message": "sponzoři"
+    }
+}
