@@ -427,6 +427,12 @@
     "copyDebugInformation": {
         "message": "Onarım Bilgisini Panoya Kopyala"
     },
+    "copyDebugInformationFailed": {
+        "message": "Panoya kopyalanamadı"
+    },
+    "copyDebugInformationComplete": {
+        "message": "Bu çözüm bilgisi panoya kopyalandı. Paylaşmak istemediğiniz herhangi bir bilgiyi silmekte özgürsünüz. Bir yazı dosyası olarak kaydedin veya hata raporuna kopyalayın."
+    },
     "theKey": {
         "message": "Anahtar"
     },
