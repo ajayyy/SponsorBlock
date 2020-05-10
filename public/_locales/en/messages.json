@@ -497,13 +497,19 @@
         "message": "Intro Animation"
     },
     "category_outro": {
-        "message": "Outro"
+        "message": "Endcards/Credits"
     },
     "category_interaction": {
         "message": "Interaction Reminder (Subscribe)"
     },
     "category_selfpromo": {
         "message": "Self-Promotion and Merchandise"
+    },
+    "category_music_offtopic": {
+        "message": "Music: Non-Music Section"
+    },
+    "category_livestream_messages": {
+        "message": "Livestream: Donation/Message Readings"
     },
     "disable": {
         "message": "Disable"
