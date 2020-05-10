@@ -160,6 +160,18 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
             ref.current.saveEditTimes();
         }
 
+        // Check if any non music categories are being used on a music video
+        if (this.contentContainer().videoInfo.microformat.playerMicroformatRenderer.category === "Music") {
+            let sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
+            for (const sponsorTime of sponsorTimesSubmitting) {
+                if (!sponsorTime.category.startsWith("music_")) {
+                    if (!confirm(chrome.i18n.getMessage("nonMusicCategoryOnMusic"))) return;
+
+                    break;
+                }
+            }
+        }
+
         this.props.callback();
 
         this.cancel();

@@ -114,7 +114,8 @@ var skipNoticeContentContainer: ContentContainer = () => ({
     sponsorSubmissionNotice: submissionNotice,
     resetSponsorSubmissionNotice,
     changeStartSponsorButton,
-    previewTime
+    previewTime,
+    videoInfo
 });
 
 //get messages from the background script and the popup

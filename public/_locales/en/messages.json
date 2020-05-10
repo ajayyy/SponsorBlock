@@ -567,5 +567,8 @@
     },
     "incorrectCategory": {
         "message": "Wrong Category"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "This video is categorized as music. Are you sure you would like to submit segments with non-music categories? Unless this video is not actually music, you should not be submitting this segment. Please read the guidelines if you are confused."
     }
 }

@@ -16,7 +16,8 @@ interface ContentContainer {
         sponsorSubmissionNotice: SubmissionNotice,
         resetSponsorSubmissionNotice: () => void,
         changeStartSponsorButton: (showStartSponsor: any, uploadButtonVisible: any) => Promise<boolean>,
-        previewTime: (time: number) => void
+        previewTime: (time: number) => void,
+        videoInfo: any
     }
 }
 

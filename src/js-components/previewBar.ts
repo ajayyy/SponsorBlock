@@ -50,11 +50,11 @@ let barTypes = {
 		color: "#bfbf35",
 		opacity: "0.7"
 	},
-	"offtopic": {
+	"music_offtopic": {
 		color: "#ff9900",
 		opacity: "0.7"
 	},
-	"preview-offtopic": {
+	"preview-music_offtopic": {
 		color: "#a6634a",
 		opacity: "0.7"
 	}
