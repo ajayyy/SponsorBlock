@@ -215,8 +215,15 @@
     "enableViewTracking": {
         "message": "Sponsor Atlama Takip Sayacını Devreye Sok"
     },
+    "whatViewTracking": {
+        "message": "Bu özellik, önerinizin diğerlerine ne kadar işe yaradığını bildirmek için atladığınız sponsorları kaydeder ve istenmeyen önerilerin veritabanına girmesini engellemek adına bir ölçü olarak kullanılır. Her sponsor atladığınızda eklenti sunucuya bir mesaj yollar. Umarım bu ayarı birçok kişi değiştirmez ve böylece görüntülenme sayıları doğru kalır. :)"
+    },
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
+    },
+    "longDescription": {
+        "message": "SponsorBlock, YouTube'da sponsorlu bölümleri atlamanıza yardımcı olan bir eklentidir. SponsorBlock, herkesin YouTube videolarında bulunan sponsorlu bölümlerin başını ve sonunu göndermesine izin veren kitlekaynaklı bir tarayıcı eklentisidir. Bu bilgiyi biri yolladığında, bu sponsorlu bölüm herkeste atlanır.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Website",
@@ -319,6 +326,9 @@
     "changeUserID": {
         "message": "Kullanıcı kimliğini Dışarı/İçeri Aktar"
     },
+    "whatChangeUserID": {
+        "message": "Bu gizli tutulmalıdır. Bu bir şifreye benzer ve diğerleriyle paylaşılmaması gerekir. Birinin eline geçerse, sizi taklit edebilir."
+    },
     "setUserID": {
         "message": "Kullanıcı kimliği Belirle"
     },
@@ -370,20 +380,38 @@
     "enableAutoUpvote": {
         "message": "Otomatik Oy Ver"
     },
+    "whatAutoUpvote": {
+        "message": "Eğer bu ayar açıksa, eklenti eğer rapor etmediyseniz gördüğünüz tüm önerileri oylayacaktır. Eğer bildirim kapalıysa, bu gerçekleşmeyecektir."
+    },
     "minDuration": {
         "message": "Minimum süre (saniye):"
+    },
+    "minDurationDescription": {
+        "message": "Belirlenen değerden kısa olan sponsor bölümleri atlanmayacak veya oynatıcıda gözükmeyecektir."
+    },
+    "shortCheck": {
+        "message": "Sıradaki öneri belirlediğiniz minimum süre ayarından daha kısa. Bu zaten yollandığı ve bu ayardan dolayı yok sayıldığı anlamına gelebilir. Göndermek istediğinizden emin misiniz?"
     },
     "showUploadButton": {
         "message": "Karşıya Yükleme Butonunu Göster"
     },
+    "whatUploadButton": {
+        "message": "Bu buton, YouTube oynatıcısında bir zaman seçtiğiniz ve göndermeye hazır olduğunuzda gözükür."
+    },
     "customServerAddress": {
         "message": "SponsorBlock Sunucu Adresi"
+    },
+    "customServerAddressDescription": {
+        "message": "SponsorBlock'un sunucu ile iletişimi sağlamak için kullandığı adres.\nKendi sunucu kopyanız olmadığı sürece bu değiştirilmemelidir."
     },
     "save": {
         "message": "Kaydet"
     },
     "reset": {
         "message": "Sıfırla"
+    },
+    "customAddressError": {
+        "message": "Bu adres doğru formatta değil. Başında http:// veya https:// olduğundan ve sonda / işareti olmadığından emin olun."
     },
     "areYouSureReset": {
         "message": "Bunu sıfırlamak istediğinize emin misiniz?"
@@ -393,6 +421,9 @@
     },
     "unlistedCheck": {
         "message": "Listedışı/Özel Videoları Görmezden Gel"
+    },
+    "whatUnlistedCheck": {
+        "message": "Bu ayar SponsorBlock eklentisini az miktarda yavaşlatacaktır. Sponsor kontrolleri, sunucuya video kimlik numarası göndermeyi gerektirir. Eğer listedışı videoların, video kimlik numaralarının internet üzerinden gönderilmesini istemiyorsanız bu seçeneği aktive edin."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com şu an desteklenmektedir"
@@ -405,6 +436,12 @@
     },
     "setOptions": {
         "message": "Seçenekleri Ayarla"
+    },
+    "exportOptionsWarning": {
+        "message": "Uyarı: Ayarları değiştirmek kalıcıdır ve yüklemenizi bozabilir. Bunu yapmak istediğinizden emin misiniz? Eskisini yenilediğinizden emin olun."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Bu JSON doğru formatlanmamış. Ayarlarınız değiştirilmedi."
     },
     "confirmNoticeTitle": {
         "message": "Bölüm Gönder"
@@ -430,6 +467,9 @@
     "copyDebugInformationFailed": {
         "message": "Panoya kopyalanamadı"
     },
+    "copyDebugInformationOptions": {
+        "message": "Panoya, geliştiricinin hata gideriminde veya ulaşmak istediğinde geliştiriciye sağlamak üzerine bilgileri kaydeder. Kullanıcı kimliği, beyaz listenizdeki kanallar ve düzenlenmiş sunucu adresleri gibi hassas bilgiler silinmiştir. Ancak tarayıcı bilgileri, işletim sisteminiz ve eklenti numaranız gibi bilgileri içerebilir. "
+    },
     "copyDebugInformationComplete": {
         "message": "Bu çözüm bilgisi panoya kopyalandı. Paylaşmak istemediğiniz herhangi bir bilgiyi silmekte özgürsünüz. Bir yazı dosyası olarak kaydedin veya hata raporuna kopyalayın."
     },
@@ -441,6 +481,10 @@
     },
     "keyAlreadyUsed": {
         "message": "başka bir eyleme bağlı. Lütfen başka bir anahtar seçin."
+    },
+    "to": {
+        "message": "'e",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponsor"
@@ -472,6 +516,12 @@
     "enableTestingServer": {
         "message": "Beta Deneme Sunucusunu Devreye Sok"
     },
+    "whatEnableTestingServer": {
+        "message": "Önerileriniz ve oylarınız ana sunucuya GÖNDERİLMEYECEKTİR. Bunu sadece deneme amacıyla kullanın."
+    },
+    "testingServerWarning": {
+        "message": "Tüm öneriler ve oylar, test sunucusuna bağlandığınız sürece ana sunucuya iletilmeyecektir. Gerçek öneriler yapmak istediğinizde bu ayarı kapatmayı unutmayın."
+    },
     "bracketNow": {
         "message": "(Şimdi)"
     },
@@ -498,5 +548,11 @@
     },
     "forceChannelCheck": {
         "message": "Sponsorları Atlamadan Önce Kanal Kontrolünü Zorla"
+    },
+    "whatForceChannelCheck": {
+        "message": "Varsayılan olarak, eklenti kanalın ne olduğunu bilmeden önce sponsorları atlayacaktır. Varsayılan olarak, beyaz listede olan kanallarda sıfır saniyelik sponsor bölümleri atlanacaktır. Bu ayarı aktifleştirmek bunu engelleyecektir ancak kanal kimlik bilgisini almak biraz vakit alacağından atlamalarda gecikmeler yaratabilir. Eğer hızlı bir internetiniz varsa bu gecikmeler farkedilmeyebilir."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Sponsorları Atlamadan Önce Kanal Kontrolünü Zorlamayı Gözden Geçir"
     }
 }
