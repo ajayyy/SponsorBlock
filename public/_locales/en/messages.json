@@ -494,19 +494,16 @@
         "message": "Sponsor"
     },
     "category_intro": {
-        "message": "Intro"
+        "message": "Intro Animation"
     },
     "category_outro": {
         "message": "Outro"
     },
     "category_interaction": {
-        "message": "Interaction (Redundant Like, Subscribe, Follow, etc.)"
+        "message": "Interaction Reminder (Subscribe)"
     },
     "category_selfpromo": {
         "message": "Self-Promotion and Merchandise"
-    },
-    "category_offtopic": {
-        "message": "Offtopic tangent (Subjective)"
     },
     "disable": {
         "message": "Disable"
