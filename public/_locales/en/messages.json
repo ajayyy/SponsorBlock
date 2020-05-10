@@ -558,5 +558,11 @@
     },
     "forceChannelCheckPopup": {
         "message": "Consider Enabling Force Channel Check Before Skipping Sponsors"
+    },
+    "downvoteDescription": {
+        "message": "Incorrect"
+    },
+    "incorrectCategory": {
+        "message": "Wrong Category"
     }
 }

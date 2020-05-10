@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as CompileConfig from "../../config.json";
 import Config from "../config"
 import { ContentContainer, SponsorHideType } from "../types";
 
@@ -19,16 +20,19 @@ export interface SkipNoticeProps {
 }
 
 export interface SkipNoticeState {
-    noticeTitle: string,
+    noticeTitle: string;
 
-    messages: string[],
+    messages: string[];
 
-    countdownTime: number,
+    countdownTime: number;
     maxCountdownTime: () => number;
-    countdownText: string,
+    countdownText: string;
 
-    unskipText: string,
-    unskipCallback: () => void
+    unskipText: string;
+    unskipCallback: () => void;
+
+    downvoting: boolean;
+    choosingCategory: boolean;
 }
 
 class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeState> {
@@ -43,10 +47,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     idSuffix: any;
 
     noticeRef: React.MutableRefObject<NoticeComponent>;
+    categoryOptionRef: React.RefObject<HTMLSelectElement>;
+
+    // Used to update on config change
+    configListener: () => void;
 
     constructor(props: SkipNoticeProps) {
         super(props);
         this.noticeRef = React.createRef();
+        this.categoryOptionRef = React.createRef();
 
         this.UUID = props.UUID;
         this.autoSkip = props.autoSkip;
@@ -83,7 +92,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             countdownText: null,
 
             unskipText: chrome.i18n.getMessage("unskip"),
-            unskipCallback: this.unskip.bind(this)
+            unskipCallback: this.unskip.bind(this),
+
+            downvoting: false,
+            choosingCategory: false
         }
 
         if (!this.autoSkip) {
@@ -115,7 +127,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
                 ref={this.noticeRef}
-                closeListener={this.props.closeListener}>
+                closeListener={() => this.closeListener()}>
                     
                 {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
                     <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>
@@ -124,7 +136,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 {/* Text Boxes */}
                 {this.getMessageBoxes()}
               
-                {/* Last Row */}
+                {/* Bottom Row */}
                 <tr id={"sponsorSkipNoticeSecondRow" + this.idSuffix}>
 
                     {/* Vote Button Container */}
@@ -145,7 +157,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             className="sponsorSkipObject voteButton"
                             src={chrome.extension.getURL("icons/report.png")}
                             title={chrome.i18n.getMessage("reportButtonInfo")}
-                            onClick={() => this.contentContainer().vote(0, this.UUID, this)}>
+                            onClick={() => this.adjustDownvotingState(true)}>
                         
                         </img>
 
@@ -174,6 +186,52 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     }
                 </tr>
 
+                {/* Downvote Options Row */}
+                {this.state.downvoting &&
+                    <tr id={"sponsorSkipNoticeDownvoteOptionsRow" + this.idSuffix}>
+
+                        {/* Normal downvote */}
+                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                onClick={() => this.contentContainer().vote(0, this.UUID, undefined, this)}>
+                            {chrome.i18n.getMessage("downvoteDescription")}
+                        </button>
+
+                        {/* Category vote */}
+                        {Config.config.testingServer &&
+                            <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                    onClick={() => this.openCategoryChooser()}>
+
+                                {chrome.i18n.getMessage("incorrectCategory")}
+                            </button>
+                        }
+
+                    </tr>
+                }
+
+                {/* Category Chooser Row */}
+                {this.state.choosingCategory &&
+                    <tr id={"sponsorSkipNoticeCategoryChooserRow" + this.idSuffix}>
+
+                        {/* Category Selector */}
+                        <select id={"sponsorTimeCategories" + this.idSuffix}
+                                className="sponsorTimeCategories"
+                                defaultValue={utils.getSponsorTimeFromUUID(this.props.contentContainer().sponsorTimes, this.props.UUID).category}
+                                ref={this.categoryOptionRef}
+                                onChange={this.categorySelectionChange.bind(this)}>
+
+                            {this.getCategoryOptions()}
+                        </select>
+
+                        {/* Submit Button */}
+                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                onClick={() => this.contentContainer().vote(undefined, this.UUID, this.categoryOptionRef.current.value, this)}>
+
+                            {chrome.i18n.getMessage("submit")}
+                        </button>
+
+                    </tr>
+                }
+
             </NoticeComponent>
         );
     }
@@ -200,6 +258,70 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
 
         return elements;
+    }
+
+    adjustDownvotingState(value: boolean) {
+        if (!value) this.clearConfigListener();
+
+        this.setState({
+            downvoting: value,
+            choosingCategory: false
+        });
+    }
+
+    clearConfigListener() {
+        if (this.configListener) {
+            Config.configListeners.splice(Config.configListeners.indexOf(this.configListener), 1);
+            this.configListener = null;
+        }
+    }
+
+    openCategoryChooser() {
+        // Add as a config listener
+        this.configListener = () => this.forceUpdate();
+        Config.configListeners.push(this.configListener);
+
+        this.setState({
+            choosingCategory: true,
+            downvoting: false
+        });
+    }
+
+    getCategoryOptions() {
+        let elements = [];
+
+        for (const category of Config.config.categorySelections) {
+            elements.push(
+                <option value={category.name}
+                        key={category.name}>
+                    {chrome.i18n.getMessage("category_" + category.name)}
+                </option>
+            );
+        }
+
+        if (elements.length < CompileConfig.categoryList.length) {
+            // Add show more button
+            elements.push(
+                <option value={"moreCategories"}
+                        key={"moreCategories"}>
+                    {chrome.i18n.getMessage("moreCategories")}
+                </option>
+            );
+        }
+
+        return elements;
+    }
+
+    categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        // See if show more categories was pressed
+        if (event.target.value === "moreCategories") {
+            // Open options page
+            chrome.runtime.sendMessage({"message": "openConfig"});
+
+            // Reset option to original
+            event.target.value = utils.getSponsorTimeFromUUID(this.props.contentContainer().sponsorTimes, this.props.UUID).category;
+            return;
+        }
     }
 
     unskip() {
@@ -258,22 +380,22 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    afterDownvote() {
+    afterDownvote(type: number, category: string) {
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
         this.setNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"));
+
+        this.adjustDownvotingState(false);
         
-        //remove this sponsor from the sponsors looked up
-        //find which one it is
-        for (let i = 0; i < this.contentContainer().sponsorTimes.length; i++) {
-            if (this.contentContainer().sponsorTimes[i].UUID == this.UUID) {
-                //this one is the one to hide
-                
-                //add this as a hidden sponsorTime
-                this.contentContainer().sponsorTimes[i].hidden = SponsorHideType.Downvoted;
-            
-                this.contentContainer().updatePreviewBar();
-                break;
+        // Change the sponsor locally
+        let sponsorTime = utils.getSponsorTimeFromUUID(this.contentContainer().sponsorTimes, this.UUID);
+        if (sponsorTime) {
+            if (type === 0) {
+                sponsorTime.hidden = SponsorHideType.Downvoted;
+            } else if (category) {
+                sponsorTime.category = category;
             }
+
+            this.contentContainer().updatePreviewBar();
         }
     }
 
@@ -315,6 +437,12 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         //show button again
         document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.idSuffix).style.removeProperty("display");
+    }
+
+    closeListener() {
+        this.clearConfigListener();
+
+        this.props.closeListener();
     }
 }
 

@@ -968,7 +968,7 @@ function skipToTime(v: HTMLVideoElement, index: number, sponsorTimes: SponsorTim
 
             //auto-upvote this sponsor
             if (Config.config.trackViewCount && autoSkip && Config.config.autoUpvote) {
-                vote(1, currentUUID, null);
+                vote(1, currentUUID);
             }
         }
 
@@ -1307,7 +1307,7 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
+function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNoticeComponent) {
     if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
         skipNotice.addVoteButtonInfo.bind(skipNotice)("Loading...")
@@ -1320,7 +1320,7 @@ function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
     if (sponsorIndex == -1 || sponsorTimes[sponsorIndex].UUID === null) return;
 
     // See if the local time saved count and skip count should be saved
-    if (type == 0 && sponsorSkipped[sponsorIndex] || type == 1 && !sponsorSkipped[sponsorIndex]) {
+    if (type === 0 && sponsorSkipped[sponsorIndex] || type === 1 && !sponsorSkipped[sponsorIndex]) {
         let factor = 1;
         if (type == 0) {
             factor = -1;
@@ -1337,15 +1337,16 @@ function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
     chrome.runtime.sendMessage({
         message: "submitVote",
         type: type,
-        UUID: UUID
+        UUID: UUID,
+        category: category
     }, function(response) {
         if (response != undefined) {
             //see if it was a success or failure
             if (skipNotice != null) {
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
-                    if (type == 0) {
-                        skipNotice.afterDownvote.bind(skipNotice)();
+                    if (type === 0 || category) {
+                        skipNotice.afterDownvote.bind(skipNotice)(type, category);
                     }
                 } else if (response.successType == 0) {
                     //failure: duplicate vote
