@@ -29,6 +29,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     categoryOptionRef: React.RefObject<HTMLSelectElement>;
 
+    configUpdateListener: () => void;
+
     constructor(props: SponsorTimeEditProps) {
         super(props);
 
@@ -49,7 +51,16 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         });
 
         // Add as a config listener
-        Config.configListeners.push(this.configUpdate.bind(this));
+        if (!this.configUpdateListener) {
+            this.configUpdateListener = () => this.configUpdate();
+            Config.configListeners.push(this.configUpdate.bind(this));
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.configUpdateListener) {
+            Config.configListeners.splice(Config.configListeners.indexOf(this.configUpdate.bind(this)));
+        }
     }
 
     render() {
