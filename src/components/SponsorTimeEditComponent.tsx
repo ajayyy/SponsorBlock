@@ -72,6 +72,15 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             style.marginTop = "15px";
         }
 
+        // This method is required to get !important
+        // https://stackoverflow.com/a/45669262/1985387
+        let oldYouTubeDarkStyles = (node) => {
+            if (node) {
+                node.style.setProperty("color", "black", "important");
+                node.style.setProperty("text-shadow", "none", "important");
+            }
+        };
+
         // Create time display
         let timeDisplay: JSX.Element;
         let sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
@@ -89,6 +98,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                         <input id={"submittingTimeMinutes0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditMinutes"
+                            ref={oldYouTubeDarkStyles}
                             type="number"
                             value={this.state.sponsorTimeEdits[0][0]}
                             onChange={(e) => {
@@ -101,6 +111,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                         <input id={"submittingTimeSeconds0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditSeconds"
+                            ref={oldYouTubeDarkStyles}
                             type="number"
                             value={this.state.sponsorTimeEdits[0][1]}
                             onChange={(e) => {
@@ -117,6 +128,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                         <input id={"submittingTimeMinutes1" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditMinutes"
+                            ref={oldYouTubeDarkStyles}
                             type="text"
                             value={this.state.sponsorTimeEdits[1][0]}
                             onChange={(e) => {
@@ -129,6 +141,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                         <input id={"submittingTimeSeconds1" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditSeconds"
+                            ref={oldYouTubeDarkStyles}
                             type="text"
                             value={this.state.sponsorTimeEdits[1][1]}
                             onChange={(e) => {
