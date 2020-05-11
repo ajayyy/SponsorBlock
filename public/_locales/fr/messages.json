@@ -350,9 +350,6 @@
     "supportInvidious": {
         "message": "Soutenir Invidious"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) est un client YouTube tiers. Pour l'activer, vous devez accepter les autorisations supplémentaires. Cela ne fonctionne PAS en mode incongnito sur Chrome et d'autres variantes de Chromium."
-    },
     "optionsInfo": {
         "message": "Activer Invidious, désactiver le passage automatique, masquer les boutons et plus encore."
     },

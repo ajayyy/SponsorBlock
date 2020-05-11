@@ -350,9 +350,6 @@
     "supportInvidious": {
         "message": "Unterstütze Invidious"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Unterstützung zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Incongnito-modus auf Chrome und anderen Chromium-Varianten."
-    },
     "optionsInfo": {
         "message": "Invidious Support aktivieren, Autoskip deaktivieren, Tasten ausblenden und vieles mehr."
     },
@@ -489,20 +486,8 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
-    "category_intro": {
-        "message": "Intro"
-    },
-    "category_outro": {
-        "message": "Outro"
-    },
-    "category_interaction": {
-        "message": "Interaktion (Überflüssiges Liked, Abonniert, Folgt, usw.)"
-    },
     "category_selfpromo": {
         "message": "Eigenwerbung und Merchandise"
-    },
-    "category_offtopic": {
-        "message": "Vom Thema Abweichende Tangente (Subjektiv)"
     },
     "disable": {
         "message": "Deaktivieren"

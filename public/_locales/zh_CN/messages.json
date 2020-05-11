@@ -350,9 +350,6 @@
     "supportInvidious": {
         "message": "支持 Invidious"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) 是一个第三方 Youtube 客户端。要启用支持，您必须允许额外的权限。在 Chrome 及其他 Chromium 变种的匿名模式中无法工作。"
-    },
     "optionsInfo": {
         "message": "启用 Invidious 支持，禁用自动跳过，隐藏按钮等等。"
     },
@@ -489,20 +486,8 @@
     "category_sponsor": {
         "message": "赞助商广告"
     },
-    "category_intro": {
-        "message": "开头"
-    },
-    "category_outro": {
-        "message": "结尾"
-    },
-    "category_interaction": {
-        "message": "互动（重复多次提醒您点击喜欢，订阅，关注等）"
-    },
     "category_selfpromo": {
         "message": "自我推销和商品"
-    },
-    "category_offtopic": {
-        "message": "离题（主观的）"
     },
     "disable": {
         "message": "禁用"

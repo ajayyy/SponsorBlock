@@ -331,9 +331,6 @@
     "supportInvidious": {
         "message": "Поддержка Invidious"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) — это неофициальный клиент YouTube. Чтобы включить поддержку, Вам понадобится принять дополнительные разрешения. Это НЕ работает в приватном режиме в Chrome и других вариантах Chromium."
-    },
     "optionsInfo": {
         "message": "Включить поддержку Invidious, выключить автоматический пропуск, скрыть кнопки и не только."
     },

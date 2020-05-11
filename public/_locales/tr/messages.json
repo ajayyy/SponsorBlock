@@ -490,19 +490,22 @@
         "message": "Sponsor"
     },
     "category_intro": {
-        "message": "Başlangıç"
+        "message": "Giriş Animasyonu"
     },
     "category_outro": {
-        "message": "Bitiş"
+        "message": "Bitiş Ekranı/Jenerik"
     },
     "category_interaction": {
-        "message": "Etkileşim (Beğeni, abone olma, takip etme gibi gereksiz)"
+        "message": "Etkileşim Hatırlatıcısı (Abonelik)"
     },
     "category_selfpromo": {
         "message": "Kendi Reklamını Yapma ve Ürün"
     },
-    "category_offtopic": {
-        "message": "Konudışı (Öznel)"
+    "category_music_offtopic": {
+        "message": "Müzik: Müzik Olmayan Bölüm"
+    },
+    "category_livestream_messages": {
+        "message": "Canlı Yayın: Bağış/Mesaj Okuma"
     },
     "disable": {
         "message": "Devredışı"
@@ -554,5 +557,14 @@
     },
     "forceChannelCheckPopup": {
         "message": "Sponsorları Atlamadan Önce Kanal Kontrolünü Zorlamayı Gözden Geçir"
+    },
+    "downvoteDescription": {
+        "message": "Hatalı"
+    },
+    "incorrectCategory": {
+        "message": "Yanlış Kategori"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Bu videonun kategorisi müzik olarak belirlenmiş. Müzik içermeyen bölümleri göndermek istediğinize emin misiniz? Eğer bu bir müzik videosu değilse, bu bölümleri göndermemelisiniz. Eğer ayırt edemiyorsanız, lütfen rehberi okuyunuz."
     }
 }
