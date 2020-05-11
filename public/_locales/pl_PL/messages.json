@@ -337,9 +337,6 @@
     "supportInvidious": {
         "message": "Wesprzyj Invidious"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) to nieoficjalny klient YouTube. Aby go wesprzeć musisz przyznać dodatkowe uprawnienia rozszerzeniowi. Ta opcja nie działa w incognito i innych wersjach Chromium."
-    },
     "optionsInfo": {
         "message": "Wesprzyj Invidious, wyłącz auto przewijanie, ukryj guziki i więcej."
     },
