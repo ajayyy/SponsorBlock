@@ -254,7 +254,7 @@ async function migrateOldFormats() {
 
     // Channel URLS
     if (Config.config.whitelistedChannels.length > 0 && 
-            (Config.config.whitelistedChannels[0].includes("/") || Config.config.whitelistedChannels[0] == null)) {
+            (Config.config.whitelistedChannels[0] == null || Config.config.whitelistedChannels[0].includes("/"))) {
         let newChannelList: string[] = [];
         for (const item of Config.config.whitelistedChannels) {
             if (item != null) {
