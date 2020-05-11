@@ -463,7 +463,6 @@ function cancelSponsorSchedule(): void {
  */
 function startSponsorSchedule(includeIntersectingSegments: boolean = false, currentTime?: number): void {
     cancelSponsorSchedule();
-    console.log("scheduling: " + (currentTime || video.currentTime))
 
     if (video.paused) return;
 
