@@ -281,6 +281,16 @@ async function migrateOldFormats() {
 
         Config.config.whitelistedChannels = newChannelList;
     }
+
+    // Check if off-topic category needs to be removed
+    for (let i = 0; i < Config.config.categorySelections.length; i++) {
+        if (Config.config.categorySelections[i].name === "offtopic") {
+            Config.config.categorySelections.splice(i);
+            // Call set listener
+            Config.config.categorySelections = Config.config.categorySelections;
+            break;
+        }
+    }
 }
 
 async function setupConfig() {
