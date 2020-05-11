@@ -59,7 +59,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     componentWillUnmount() {
         if (this.configUpdateListener) {
-            Config.configListeners.splice(Config.configListeners.indexOf(this.configUpdate.bind(this)));
+            Config.configListeners.splice(Config.configListeners.indexOf(this.configUpdate.bind(this)), 1);
         }
     }
 
