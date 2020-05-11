@@ -115,7 +115,8 @@ var skipNoticeContentContainer: ContentContainer = () => ({
     resetSponsorSubmissionNotice,
     changeStartSponsorButton,
     previewTime,
-    videoInfo
+    videoInfo,
+    getRoughCurrentTime
 });
 
 //get messages from the background script and the popup
@@ -179,7 +180,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             return
         case "getCurrentTime":
             sendResponse({
-                currentTime: video.currentTime
+                currentTime: getRoughCurrentTime()
             });
 
             break;
@@ -462,6 +463,8 @@ function cancelSponsorSchedule(): void {
  */
 function startSponsorSchedule(includeIntersectingSegments: boolean = false, currentTime?: number): void {
     cancelSponsorSchedule();
+    console.log("scheduling: " + (currentTime || video.currentTime))
+
     if (video.paused) return;
 
     if (Config.config.disableSkipping || channelWhitelisted || (channelID === null && Config.config.forceChannelCheck)){
@@ -1119,6 +1122,36 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<boolean> {
     return createdButtons;
 }
 
+/**
+ * Used for submitting. This will use the HTML displayed number when required as the video's
+ * current time is out of date while scrubbing or at the end of the video. This is not needed
+ * for sponsor skipping as the video is not playing during these times.
+ */
+function getRoughCurrentTime(): number {
+    let htmlCurrentTimeString = document.querySelector(".ytp-time-current").textContent;
+    let htmlDurationString = document.querySelector(".ytp-time-duration").textContent;
+
+    // Used to check if endscreen content is visible
+    let endScreenContent = document.querySelector(".ytp-endscreen-content");
+    // Used to check autoplay display
+    let autoPlayDisplay: HTMLDivElement = document.querySelector(".ytp-upnext");
+
+    if (htmlCurrentTimeString == htmlDurationString 
+            || endScreenContent.childElementCount > 0 || autoPlayDisplay.style.display !== "none") {
+        // At the end of the video
+        return video.duration;
+    }
+
+    let htmlCurrentTimeSections = htmlCurrentTimeString.split(":")[0];
+    let htmlCurrentTime: number = parseInt(htmlCurrentTimeSections[0]) * 60 + parseInt(htmlCurrentTimeSections[1]);
+
+    if (Math.abs(video.currentTime - htmlCurrentTime) > 3) {
+        return htmlCurrentTime;
+    } else {
+        return video.currentTime;
+    }
+}
+
 function startSponsorClicked() {
     //it can't update to this info yet
     closeInfoMenu();
@@ -1128,11 +1161,11 @@ function startSponsorClicked() {
     //add to sponsorTimes
     if (sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length < 2) {
         //it is an end time
-        sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[1] = video.currentTime;
+        sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[1] = getRoughCurrentTime();
     } else {
         //it is a start time
         sponsorTimesSubmitting.push({
-            segment: [video.currentTime],
+            segment: [getRoughCurrentTime()],
             UUID: null,
             // Default to sponsor
             category: "sponsor"
