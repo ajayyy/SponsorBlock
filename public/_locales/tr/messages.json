@@ -350,9 +350,6 @@
     "supportInvidious": {
         "message": "Invidious'a Destek Ver"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) üçüncü parti YouTube istemcisidir. Desteği etkinleştirmek için fazladan izinlere onay vermelisiniz. Bu Chrome ve Chromium bazlı tarayıcılarda gizli pencere modunda ÇALIŞMAZ."
-    },
     "optionsInfo": {
         "message": "Invidious desteğini, otomatik atlamayı, butonları saklamayı ve daha fazlasını etkinleştir."
     },
@@ -489,20 +486,8 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
-    "category_intro": {
-        "message": "Başlangıç"
-    },
-    "category_outro": {
-        "message": "Bitiş"
-    },
-    "category_interaction": {
-        "message": "Etkileşim (Beğeni, abone olma, takip etme gibi gereksiz)"
-    },
     "category_selfpromo": {
         "message": "Kendi Reklamını Yapma ve Ürün"
-    },
-    "category_offtopic": {
-        "message": "Konudışı (Öznel)"
     },
     "disable": {
         "message": "Devredışı"
