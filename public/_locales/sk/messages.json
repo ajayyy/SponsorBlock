@@ -1,1 +1,151 @@
-{}
+{
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "Sponsor": {
+        "message": "sponzor"
+    },
+    "Sponsors": {
+        "message": "sponzori"
+    },
+    "noticeTitle": {
+        "message": "Sponzor bol Preskočený"
+    },
+    "reportButtonTitle": {
+        "message": "Nahlásiť"
+    },
+    "Loading": {
+        "message": "Načitávanie..."
+    },
+    "Mins": {
+        "message": "Minúty"
+    },
+    "Secs": {
+        "message": "Sekundy"
+    },
+    "Hide": {
+        "message": "Nikdy nezobrazovať"
+    },
+    "paused": {
+        "message": "Pozastavené"
+    },
+    "here": {
+        "message": "tu"
+    },
+    "hideThis": {
+        "message": "Skryť Toto"
+    },
+    "Options": {
+        "message": "Nastavenia"
+    },
+    "website": {
+        "message": "Webstránka",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Zdrojový Kód",
+        "description": "Used on Firefox Store Page"
+    },
+    "yourWork": {
+        "message": "Vaša Práca",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "errorCode": {
+        "message": "Kód chyby: "
+    },
+    "noticeTitleNotSkipped": {
+        "message": "Preskočiť Sponzor?"
+    },
+    "skip": {
+        "message": "Preskočiť"
+    },
+    "disableAutoSkip": {
+        "message": "Zakázať Automatické Preskočenie"
+    },
+    "enableAutoSkip": {
+        "message": "Povoliť Automatické Preskočenie"
+    },
+    "minLower": {
+        "message": "minúta"
+    },
+    "minsLower": {
+        "message": "minúty"
+    },
+    "hourLower": {
+        "message": "hodina"
+    },
+    "hoursLower": {
+        "message": "hodiny"
+    },
+    "setUserID": {
+        "message": "Nastaviť Používateľove ID"
+    },
+    "createdBy": {
+        "message": "Vytvoril"
+    },
+    "autoSkip": {
+        "message": "Automatické Preskočenie"
+    },
+    "add": {
+        "message": "Pridať"
+    },
+    "showUploadButton": {
+        "message": "Ukázať Nahrávacie Tlačidlo"
+    },
+    "save": {
+        "message": "Uložiť"
+    },
+    "reset": {
+        "message": "Vynulovať"
+    },
+    "setOptions": {
+        "message": "Nastaviť Nastavenia"
+    },
+    "submit": {
+        "message": "Poslať"
+    },
+    "cancel": {
+        "message": "Zrušiť"
+    },
+    "delete": {
+        "message": "Odstrániť"
+    },
+    "preview": {
+        "message": "Ukážka"
+    },
+    "edit": {
+        "message": "Upraviť"
+    },
+    "theKey": {
+        "message": "Kľúč"
+    },
+    "to": {
+        "message": "pre",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponzor"
+    },
+    "category_intro": {
+        "message": "Úvod"
+    },
+    "disable": {
+        "message": "Zakázať"
+    },
+    "manualSkip": {
+        "message": "Manuálne Preskočenie"
+    },
+    "bracketNow": {
+        "message": "(Teraz)"
+    },
+    "moreCategories": {
+        "message": "Viac Kategórií"
+    },
+    "bracketEnd": {
+        "message": "(Koniec)"
+    },
+    "channelDataNotFound": {
+        "message": "ID kanála nie je zatiaľ načítané."
+    }
+}

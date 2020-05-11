@@ -1,1 +1,29 @@
-{}
+{
+    "Loading": {
+        "message": "Betöltés..."
+    },
+    "Hide": {
+        "message": "Sose mutassa"
+    },
+    "paused": {
+        "message": "Szüneteltetve"
+    },
+    "save": {
+        "message": "Mentés"
+    },
+    "reset": {
+        "message": "Visszaállítás"
+    },
+    "cancel": {
+        "message": "Mégse"
+    },
+    "delete": {
+        "message": "Törlés"
+    },
+    "preview": {
+        "message": "Előnézet"
+    },
+    "edit": {
+        "message": "Szerkesztés"
+    }
+}
