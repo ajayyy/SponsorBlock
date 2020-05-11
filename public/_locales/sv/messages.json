@@ -340,9 +340,6 @@
     "supportInvidious": {
         "message": "Stöd Invidious"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) är en tredjeparts YouTubeklient. För att aktivera stöd måste du acceptera de utökade rättigheterna. Detta kommer INTE att funka i incognito i Chrome och andra Cromium-varianter."
-    },
     "optionsInfo": {
         "message": "Aktivera Invidious stöd, avaktivera hoppa över automatiskt, dölj knappar och mer."
     },
@@ -479,14 +476,8 @@
     "category_sponsor": {
         "message": "Sponsormeddelande"
     },
-    "category_interaction": {
-        "message": "Interaktion (Redundant Gilla, Prenumerera, Följ, etc.)"
-    },
     "category_selfpromo": {
         "message": "Självreklam och egna produkter"
-    },
-    "category_offtopic": {
-        "message": "Orelevant tangent (Subjektivt)"
     },
     "disable": {
         "message": "Avaktivera"
