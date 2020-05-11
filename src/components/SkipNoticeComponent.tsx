@@ -189,21 +189,23 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 {/* Downvote Options Row */}
                 {this.state.downvoting &&
                     <tr id={"sponsorSkipNoticeDownvoteOptionsRow" + this.idSuffix}>
+                        <td id={"sponsorTimesDownvoteOptionsContainer" + this.idSuffix}>
 
-                        {/* Normal downvote */}
-                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                onClick={() => this.contentContainer().vote(0, this.UUID, undefined, this)}>
-                            {chrome.i18n.getMessage("downvoteDescription")}
-                        </button>
-
-                        {/* Category vote */}
-                        {Config.config.testingServer &&
+                            {/* Normal downvote */}
                             <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                    onClick={() => this.openCategoryChooser()}>
-
-                                {chrome.i18n.getMessage("incorrectCategory")}
+                                    onClick={() => this.contentContainer().vote(0, this.UUID, undefined, this)}>
+                                {chrome.i18n.getMessage("downvoteDescription")}
                             </button>
-                        }
+
+                            {/* Category vote */}
+                            {Config.config.testingServer &&
+                                <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                        onClick={() => this.openCategoryChooser()}>
+
+                                    {chrome.i18n.getMessage("incorrectCategory")}
+                                </button>
+                            }
+                        </td>
 
                     </tr>
                 }
@@ -211,24 +213,24 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 {/* Category Chooser Row */}
                 {this.state.choosingCategory &&
                     <tr id={"sponsorSkipNoticeCategoryChooserRow" + this.idSuffix}>
+                        <td>
+                            {/* Category Selector */}
+                            <select id={"sponsorTimeCategories" + this.idSuffix}
+                                    className="sponsorTimeCategories"
+                                    defaultValue={utils.getSponsorTimeFromUUID(this.props.contentContainer().sponsorTimes, this.props.UUID).category}
+                                    ref={this.categoryOptionRef}
+                                    onChange={this.categorySelectionChange.bind(this)}>
 
-                        {/* Category Selector */}
-                        <select id={"sponsorTimeCategories" + this.idSuffix}
-                                className="sponsorTimeCategories"
-                                defaultValue={utils.getSponsorTimeFromUUID(this.props.contentContainer().sponsorTimes, this.props.UUID).category}
-                                ref={this.categoryOptionRef}
-                                onChange={this.categorySelectionChange.bind(this)}>
+                                {this.getCategoryOptions()}
+                            </select>
 
-                            {this.getCategoryOptions()}
-                        </select>
+                            {/* Submit Button */}
+                            <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                    onClick={() => this.contentContainer().vote(undefined, this.UUID, this.categoryOptionRef.current.value, this)}>
 
-                        {/* Submit Button */}
-                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                onClick={() => this.contentContainer().vote(undefined, this.UUID, this.categoryOptionRef.current.value, this)}>
-
-                            {chrome.i18n.getMessage("submit")}
-                        </button>
-
+                                {chrome.i18n.getMessage("submit")}
+                            </button>
+                        </td>
                     </tr>
                 }
 
