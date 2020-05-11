@@ -47,7 +47,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             //this allows the callback to be called later
             return true;
         case "submitVote":
-            submitVote(request.type, request.UUID, callback);
+            submitVote(request.type, request.UUID, request.category, callback);
         
             //this allows the callback to be called later
             return true;
@@ -147,7 +147,7 @@ function addSponsorTime(time, videoID, callback) {
     });
 }
 
-function submitVote(type, UUID, callback) {
+function submitVote(type, UUID, category, callback) {
     let userID = Config.config.userID;
 
     if (userID == undefined || userID === "undefined") {
@@ -156,8 +156,10 @@ function submitVote(type, UUID, callback) {
         Config.config.userID = userID;
     }
 
+    let typeSection = (type !== undefined) ? "&type=" + type : "&category=" + category;
+
     //publish this vote
-    utils.sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + "&type=" + type, function(xmlhttp, error) {
+    utils.sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection, function(xmlhttp, error) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             callback({
                 successType: 1

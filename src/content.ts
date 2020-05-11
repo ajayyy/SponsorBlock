@@ -114,7 +114,9 @@ var skipNoticeContentContainer: ContentContainer = () => ({
     sponsorSubmissionNotice: submissionNotice,
     resetSponsorSubmissionNotice,
     changeStartSponsorButton,
-    previewTime
+    previewTime,
+    videoInfo,
+    getRoughCurrentTime
 });
 
 //get messages from the background script and the popup
@@ -178,7 +180,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             return
         case "getCurrentTime":
             sendResponse({
-                currentTime: video.currentTime
+                currentTime: getRoughCurrentTime()
             });
 
             break;
@@ -461,6 +463,7 @@ function cancelSponsorSchedule(): void {
  */
 function startSponsorSchedule(includeIntersectingSegments: boolean = false, currentTime?: number): void {
     cancelSponsorSchedule();
+
     if (video.paused) return;
 
     if (Config.config.disableSkipping || channelWhitelisted || (channelID === null && Config.config.forceChannelCheck)){
@@ -478,6 +481,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
     let currentSkip = skipInfo.array[skipInfo.index];
     let skipTime: number[] = [currentSkip.segment[0], skipInfo.array[skipInfo.endIndex].segment[1]];
     let timeUntilSponsor = skipTime[0] - currentTime;
+    let videoID = sponsorVideoID;
 
     // Don't skip if this category should not be skipped
     if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ShowOverlay) return;
@@ -486,7 +490,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
 
-        if (incorrectVideoIDCheck()) return;
+        if (incorrectVideoIDCheck(videoID)) return;
 
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipInfo.endIndex, skipInfo.array, skipInfo.openNotice);
@@ -515,9 +519,9 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
  * 
  * TODO: Remove this bug catching if statement when the bug is found
  */
-function incorrectVideoIDCheck(): boolean {
+function incorrectVideoIDCheck(videoID?: string): boolean {
     let currentVideoID = getYouTubeVideoID(document.URL);
-    if (currentVideoID !== sponsorVideoID) {
+    if (currentVideoID !== (videoID || sponsorVideoID)) {
         // Something has really gone wrong
         console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
         console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
@@ -967,7 +971,7 @@ function skipToTime(v: HTMLVideoElement, index: number, sponsorTimes: SponsorTim
 
             //auto-upvote this sponsor
             if (Config.config.trackViewCount && autoSkip && Config.config.autoUpvote) {
-                vote(1, currentUUID, null);
+                vote(1, currentUUID);
             }
         }
 
@@ -1117,6 +1121,36 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<boolean> {
     return createdButtons;
 }
 
+/**
+ * Used for submitting. This will use the HTML displayed number when required as the video's
+ * current time is out of date while scrubbing or at the end of the video. This is not needed
+ * for sponsor skipping as the video is not playing during these times.
+ */
+function getRoughCurrentTime(): number {
+    let htmlCurrentTimeString = document.querySelector(".ytp-time-current").textContent;
+    let htmlDurationString = document.querySelector(".ytp-time-duration").textContent;
+
+    // Used to check if endscreen content is visible
+    let endScreenContent = document.querySelector(".ytp-endscreen-content");
+    // Used to check autoplay display
+    let autoPlayDisplay: HTMLDivElement = document.querySelector(".ytp-upnext");
+
+    if (htmlCurrentTimeString == htmlDurationString 
+            || endScreenContent.childElementCount > 0 || autoPlayDisplay.style.display !== "none") {
+        // At the end of the video
+        return video.duration;
+    }
+
+    let htmlCurrentTimeSections = htmlCurrentTimeString.split(":")[0];
+    let htmlCurrentTime: number = parseInt(htmlCurrentTimeSections[0]) * 60 + parseInt(htmlCurrentTimeSections[1]);
+
+    if (Math.abs(video.currentTime - htmlCurrentTime) > 3) {
+        return htmlCurrentTime;
+    } else {
+        return video.currentTime;
+    }
+}
+
 function startSponsorClicked() {
     //it can't update to this info yet
     closeInfoMenu();
@@ -1126,11 +1160,11 @@ function startSponsorClicked() {
     //add to sponsorTimes
     if (sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length < 2) {
         //it is an end time
-        sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[1] = video.currentTime;
+        sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[1] = getRoughCurrentTime();
     } else {
         //it is a start time
         sponsorTimesSubmitting.push({
-            segment: [video.currentTime],
+            segment: [getRoughCurrentTime()],
             UUID: null,
             // Default to sponsor
             category: "sponsor"
@@ -1306,7 +1340,7 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
+function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNoticeComponent) {
     if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
         skipNotice.addVoteButtonInfo.bind(skipNotice)("Loading...")
@@ -1319,7 +1353,7 @@ function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
     if (sponsorIndex == -1 || sponsorTimes[sponsorIndex].UUID === null) return;
 
     // See if the local time saved count and skip count should be saved
-    if (type == 0 && sponsorSkipped[sponsorIndex] || type == 1 && !sponsorSkipped[sponsorIndex]) {
+    if (type === 0 && sponsorSkipped[sponsorIndex] || type === 1 && !sponsorSkipped[sponsorIndex]) {
         let factor = 1;
         if (type == 0) {
             factor = -1;
@@ -1336,15 +1370,16 @@ function vote(type, UUID, skipNotice?: SkipNoticeComponent) {
     chrome.runtime.sendMessage({
         message: "submitVote",
         type: type,
-        UUID: UUID
+        UUID: UUID,
+        category: category
     }, function(response) {
         if (response != undefined) {
             //see if it was a success or failure
             if (skipNotice != null) {
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
-                    if (type == 0) {
-                        skipNotice.afterDownvote.bind(skipNotice)();
+                    if (type === 0 || category) {
+                        skipNotice.afterDownvote.bind(skipNotice)(type, category);
                     }
                 } else if (response.successType == 0) {
                     //failure: duplicate vote

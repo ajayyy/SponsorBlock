@@ -1,7 +1,7 @@
 {
     "name": "__MSG_fullName__",
     "short_name": "__MSG_Name__",
-    "version": "1.2.27",
+    "version": "1.2.28",
     "default_locale": "en",
     "description": "__MSG_Description__",
     "content_scripts": [{

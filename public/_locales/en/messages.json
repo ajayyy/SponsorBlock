@@ -351,7 +351,7 @@
         "message": "Support Invidious"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) is a third party YouTube client. To enable support, you must accept the extra permissions. This does NOT work in incongnito on Chrome and other Chromium variants."
+        "message": "Invidious (invidio.us) is a third party YouTube client. To enable support, you must accept the extra permissions. This does NOT work in incognito on Chrome and other Chromium variants."
     },
     "optionsInfo": {
         "message": "Enable Invidious support, disable autoskip, hide buttons and more."
@@ -490,19 +490,22 @@
         "message": "Sponsor"
     },
     "category_intro": {
-        "message": "Intro"
+        "message": "Intro Animation"
     },
     "category_outro": {
-        "message": "Outro"
+        "message": "Endcards/Credits"
     },
     "category_interaction": {
-        "message": "Interaction (Redundant Like, Subscribe, Follow, etc.)"
+        "message": "Interaction Reminder (Subscribe)"
     },
     "category_selfpromo": {
         "message": "Self-Promotion and Merchandise"
     },
-    "category_offtopic": {
-        "message": "Offtopic tangent (Subjective)"
+    "category_music_offtopic": {
+        "message": "Music: Non-Music Section"
+    },
+    "category_livestream_messages": {
+        "message": "Livestream: Donation/Message Readings"
     },
     "disable": {
         "message": "Disable"
@@ -554,5 +557,14 @@
     },
     "forceChannelCheckPopup": {
         "message": "Consider Enabling Force Channel Check Before Skipping Sponsors"
+    },
+    "downvoteDescription": {
+        "message": "Incorrect"
+    },
+    "incorrectCategory": {
+        "message": "Wrong Category"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "This video is categorized as music. Are you sure you would like to submit segments with non-music categories? Unless this video is not actually music, you should not be submitting this segment. Please read the guidelines if you are confused."
     }
 }

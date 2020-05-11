@@ -3,7 +3,7 @@ import SkipNoticeComponent from "./components/SkipNoticeComponent";
 
 interface ContentContainer {
     (): {
-        vote: (type: any, UUID: any, skipNotice?: SkipNoticeComponent) => void,
+        vote: (type: any, UUID: any, category?: string, skipNotice?: SkipNoticeComponent) => void,
         dontShowNoticeAgain: () => void,
         unskipSponsorTime: (UUID: any) => void,
         sponsorTimes: SponsorTime[],
@@ -16,7 +16,9 @@ interface ContentContainer {
         sponsorSubmissionNotice: SubmissionNotice,
         resetSponsorSubmissionNotice: () => void,
         changeStartSponsorButton: (showStartSponsor: any, uploadButtonVisible: any) => Promise<boolean>,
-        previewTime: (time: number) => void
+        previewTime: (time: number) => void,
+        videoInfo: any,
+        getRoughCurrentTime: () => number
     }
 }
 

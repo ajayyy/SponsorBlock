@@ -50,11 +50,11 @@ let barTypes = {
 		color: "#bfbf35",
 		opacity: "0.7"
 	},
-	"offtopic": {
+	"music_offtopic": {
 		color: "#ff9900",
 		opacity: "0.7"
 	},
-	"preview-offtopic": {
+	"preview-music_offtopic": {
 		color: "#a6634a",
 		opacity: "0.7"
 	}
@@ -65,6 +65,9 @@ class PreviewBar {
 	parent: any;
 	onMobileYouTube: boolean;
 
+	timestamps: number[][];
+	types: string;
+
 	constructor(parent, onMobileYouTube) {
 		this.container = document.createElement('ul');
 		this.container.id = 'previewbar';
@@ -73,6 +76,82 @@ class PreviewBar {
 		this.onMobileYouTube = onMobileYouTube;
 
 		this.updatePosition(parent);
+
+		this.setupHoverText();
+	}
+
+	setupHoverText() {
+		let seekBar = document.querySelector(".ytp-progress-bar-container");
+
+		// Create label placeholder
+		let tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper");
+		let titleTooltip = document.querySelector(".ytp-tooltip-title");
+		let categoryTooltip = document.createElement("div");
+		categoryTooltip.className = "sbHidden ytp-tooltip-title";
+		categoryTooltip.id = "sponsor-block-category-tooltip"
+
+		tooltipTextWrapper.insertBefore(categoryTooltip, titleTooltip.nextSibling);
+
+		let mouseOnSeekBar = false;
+
+		seekBar.addEventListener("mouseenter", (event) => {
+			mouseOnSeekBar = true;
+		});
+
+		seekBar.addEventListener("mouseleave", (event) => {
+			mouseOnSeekBar = false;
+			categoryTooltip.classList.add("sbHidden");
+		});
+
+		const observer = new MutationObserver(() => {
+			if (!mouseOnSeekBar) return;
+
+			let tooltips = document.querySelectorAll(".ytp-tooltip-text");
+			for (const tooltip of tooltips) {
+				let splitData = tooltip.textContent.split(":");
+				if (splitData.length === 2 && !isNaN(parseInt(splitData[0])) && !isNaN(parseInt(splitData[1]))) {
+					// Add label
+					let timeInSeconds = parseInt(splitData[0]) * 60 + parseInt(splitData[1]);
+
+					// Find category at that location
+					let category = null;
+					for (let i = 0; i < this.timestamps.length; i++) {
+						if (this.timestamps[i][0] < timeInSeconds && this.timestamps[i][1] > timeInSeconds){
+							category = this.types[i];
+						} 
+					}
+
+					if (category === null && !categoryTooltip.classList.contains("sbHidden")) {
+						categoryTooltip.classList.add("sbHidden");
+						tooltipTextWrapper.classList.remove("sbTooltipTwoTitleThumbnailOffset");
+						tooltipTextWrapper.classList.remove("sbTooltipOneTitleThumbnailOffset");
+					} else if (category !== null) {
+						categoryTooltip.classList.remove("sbHidden");
+						categoryTooltip.textContent = chrome.i18n.getMessage("category_" + category) 
+							|| (chrome.i18n.getMessage("preview") + " " + chrome.i18n.getMessage("category_" + category.split("preview-")[1]));
+
+						// There is a title now
+						tooltip.classList.remove("ytp-tooltip-text-no-title");
+
+						// Add the correct offset for the number of titles there are
+						if (titleTooltip.textContent !== "") {
+							if (!tooltipTextWrapper.classList.contains("sbTooltipTwoTitleThumbnailOffset")) {
+								tooltipTextWrapper.classList.add("sbTooltipTwoTitleThumbnailOffset");
+							}
+						} else if (!tooltipTextWrapper.classList.contains("sbTooltipOneTitleThumbnailOffset")) {
+							tooltipTextWrapper.classList.add("sbTooltipOneTitleThumbnailOffset");
+						}
+					}
+
+					break;
+				}
+			}
+		});
+
+		observer.observe(tooltipTextWrapper, {
+			childList: true,
+			subtree: true
+		});
 	}
 
 	updatePosition(parent) {
@@ -108,6 +187,9 @@ class PreviewBar {
 		if (!timestamps || !types) {
 			return;
 		}
+
+		this.timestamps = timestamps;
+		this.types = types;
 
 		// to avoid rounding error resulting in width more than 100% 
 		duration = Math.floor(duration * 100) / 100;
