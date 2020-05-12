@@ -1136,8 +1136,6 @@ function getRealCurrentTime(): number {
     let playButtonSVGData = document.querySelector(".ytp-play-button")?.querySelector(".ytp-svg-fill")?.getAttribute("d");
     let replaceSVGData = "M 18,11 V 7 l -5,5 5,5 v -4 c 3.3,0 6,2.7 6,6 0,3.3 -2.7,6 -6,6 -3.3,0 -6,-2.7 -6,-6 h -2 c 0,4.4 3.6,8 8,8 4.4,0 8,-3.6 8,-8 0,-4.4 -3.6,-8 -8,-8 z";
 
-    console.log(playButtonSVGData)
-
     if (playButtonSVGData === replaceSVGData) {
         // At the end of the video
         return video.duration;
