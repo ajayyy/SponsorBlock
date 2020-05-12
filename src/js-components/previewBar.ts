@@ -115,7 +115,7 @@ class PreviewBar {
 
 					// Find category at that location
 					let category = null;
-					for (let i = 0; i < this.timestamps.length; i++) {
+					for (let i = 0; i < this.timestamps?.length; i++) {
 						if (this.timestamps[i][0] < timeInSeconds && this.timestamps[i][1] > timeInSeconds){
 							category = this.types[i];
 						} 
