@@ -116,7 +116,7 @@ var skipNoticeContentContainer: ContentContainer = () => ({
     changeStartSponsorButton,
     previewTime,
     videoInfo,
-    getRoughCurrentTime
+    getRealCurrentTime: getRealCurrentTime
 });
 
 //get messages from the background script and the popup
@@ -180,7 +180,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             return
         case "getCurrentTime":
             sendResponse({
-                currentTime: getRoughCurrentTime()
+                currentTime: getRealCurrentTime()
             });
 
             break;
@@ -1131,29 +1131,16 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<boolean> {
  * current time is out of date while scrubbing or at the end of the video. This is not needed
  * for sponsor skipping as the video is not playing during these times.
  */
-function getRoughCurrentTime(): number {
-    let htmlCurrentTimeString = document.querySelector(".ytp-time-current").textContent;
-    let htmlDurationString = document.querySelector(".ytp-time-duration").textContent;
-
-    if (htmlCurrentTimeString == htmlDurationString) {
-        // At the end of the video
-        return video.duration;
-    }
-
+function getRealCurrentTime(): number {
     // Used to check if replay button
-    let playButtonSVGData = document.querySelector("ytp-play-button")?.querySelector("ytp-svg-fill")?.getAttribute("d");
+    let playButtonSVGData = document.querySelector(".ytp-play-button")?.querySelector(".ytp-svg-fill")?.getAttribute("d");
     let replaceSVGData = "M 18,11 V 7 l -5,5 5,5 v -4 c 3.3,0 6,2.7 6,6 0,3.3 -2.7,6 -6,6 -3.3,0 -6,-2.7 -6,-6 h -2 c 0,4.4 3.6,8 8,8 4.4,0 8,-3.6 8,-8 0,-4.4 -3.6,-8 -8,-8 z";
+
+    console.log(playButtonSVGData)
 
     if (playButtonSVGData === replaceSVGData) {
         // At the end of the video
         return video.duration;
-    }
-
-    let htmlCurrentTimeSections = htmlCurrentTimeString.split(":")[0];
-    let htmlCurrentTime: number = parseInt(htmlCurrentTimeSections[0]) * 60 + parseInt(htmlCurrentTimeSections[1]);
-
-    if (Math.abs(video.currentTime - htmlCurrentTime) > 3) {
-        return htmlCurrentTime;
     } else {
         return video.currentTime;
     }
@@ -1168,11 +1155,11 @@ function startSponsorClicked() {
     //add to sponsorTimes
     if (sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length < 2) {
         //it is an end time
-        sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[1] = getRoughCurrentTime();
+        sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[1] = getRealCurrentTime();
     } else {
         //it is a start time
         sponsorTimesSubmitting.push({
-            segment: [getRoughCurrentTime()],
+            segment: [getRealCurrentTime()],
             UUID: null,
             // Default to sponsor
             category: "sponsor"

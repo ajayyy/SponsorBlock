@@ -18,7 +18,7 @@ interface ContentContainer {
         changeStartSponsorButton: (showStartSponsor: any, uploadButtonVisible: any) => Promise<boolean>,
         previewTime: (time: number) => void,
         videoInfo: any,
-        getRoughCurrentTime: () => number
+        getRealCurrentTime: () => number
     }
 }
 
