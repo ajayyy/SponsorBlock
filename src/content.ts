@@ -660,7 +660,7 @@ function sponsorsLookup(id: string) {
 
             //check if this video was uploaded recently
             utils.wait(() => !!videoInfo).then(() => {
-                let dateUploaded = videoInfo.microformat.playerMicroformatRenderer.uploadDate;
+                let dateUploaded = videoInfo?.microformat?.playerMicroformatRenderer?.uploadDate;
 
                 //if less than 3 days old
                 if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
@@ -812,7 +812,12 @@ function updatePreviewBar() {
 
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
 function whitelistCheck() {
-    channelID = videoInfo.videoDetails.channelId;
+    channelID = videoInfo?.videoDetails?.channelId;
+    if (!channelID) {
+        channelID = null;
+
+        return;
+    }
 
     //see if this is a whitelisted channel
     let whitelistedChannels = Config.config.whitelistedChannels;
@@ -1545,7 +1550,7 @@ function getSegmentsMessage(segments: number[][]): string {
  * Assumes that the the privacy info is available.
  */
 function isUnlisted(): boolean {
-    return videoInfo.microformat.playerMicroformatRenderer.isUnlisted || videoInfo.videoDetails.isPrivate;
+    return videoInfo?.microformat?.playerMicroformatRenderer?.isUnlisted || videoInfo?.videoDetails?.isPrivate;
 }
 
 /**

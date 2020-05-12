@@ -161,7 +161,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         }
 
         // Check if any non music categories are being used on a music video
-        if (this.contentContainer().videoInfo.microformat.playerMicroformatRenderer.category === "Music") {
+        if (this.contentContainer().videoInfo?.microformat?.playerMicroformatRenderer?.category === "Music") {
             let sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
             for (const sponsorTime of sponsorTimesSubmitting) {
                 if (!sponsorTime.category.startsWith("music_")) {
