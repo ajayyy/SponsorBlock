@@ -260,7 +260,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     setTimeToNow(index: number) {
-        this.setTimeTo(index, this.props.contentContainer().getRoughCurrentTime());
+        this.setTimeTo(index, this.props.contentContainer().getRealCurrentTime());
     }
 
     setTimeToEnd() {

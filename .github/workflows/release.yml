@@ -26,9 +26,12 @@ jobs:
           name: ChromeExtension
           path: dist
       - run: mkdir ./builds
+      - name: Zip Artifacts
+        run: cd ./dist
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./builds/ChromeExtension.zip ./dist/*
+          args: zip -r ../builds/ChromeExtension.zip *
+      - run: cd ../
 
       # Create Firefox artifacts
       - name: Create Firefox artifacts
@@ -37,9 +40,12 @@ jobs:
         with:
           name: FirefoxExtension
           path: dist
+      - name: Zip Artifacts
+        run: cd ./dist
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./builds/FirefoxExtension.zip ./dist/*
+          args: zip -r ../builds/FirefoxExtension.zip *
+      - run: cd ../
 
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
@@ -48,9 +54,12 @@ jobs:
         with:
           name: ChromeExtensionBeta
           path: dist
+      - name: Zip Artifacts
+        run: cd ./dist
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./builds/ChromeExtensionBeta.zip ./dist/*
+          args: zip -r ../builds/ChromeExtensionBeta.zip *
+      - run: cd ../
 
       - name: Create Firefox Beta artifacts
         run: npm run build:firefox -- --env.stream=beta
@@ -58,9 +67,12 @@ jobs:
         with:
           name: FirefoxExtensionBeta
           path: dist
+      - name: Zip Artifacts
+        run: cd ./dist
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./builds/FirefoxExtensionBeta.zip ./dist/*
+          args: zip -r ../builds/FirefoxExtensionBeta.zip *
+      - run: cd ../
 
       # Create Firefox Signed Beta version
       - name: Create Firefox Signed Beta artifacts
