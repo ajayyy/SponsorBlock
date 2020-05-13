@@ -350,6 +350,9 @@
     "supportInvidious": {
         "message": "支持 Invidious"
     },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) 是一个第三方 Youtube 客户端。要启用支持，您必须允许额外的权限。在 Chrome 及其他 Chromium 变种的匿名模式中无法工作。"
+    },
     "optionsInfo": {
         "message": "启用 Invidious 支持，禁用自动跳过，隐藏按钮等等。"
     },
@@ -486,8 +489,20 @@
     "category_sponsor": {
         "message": "赞助商广告"
     },
+    "category_intro": {
+        "message": "介绍动画"
+    },
+    "category_interaction": {
+        "message": "互动提醒（订阅）"
+    },
     "category_selfpromo": {
         "message": "自我推销和商品"
+    },
+    "category_music_offtopic": {
+        "message": "音乐：非音乐部分"
+    },
+    "category_livestream_messages": {
+        "message": "直播：捐赠/消息阅读"
     },
     "disable": {
         "message": "禁用"
@@ -539,5 +554,14 @@
     },
     "forceChannelCheckPopup": {
         "message": "请考虑启用跳过赞助商广告前强制进行频道检查"
+    },
+    "downvoteDescription": {
+        "message": "不正确"
+    },
+    "incorrectCategory": {
+        "message": "错误的类别"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "此视频被归类为音乐。您确定要提交带有非音乐类别的片段吗？除非此视频实际上不是音乐，否则您不应提交此片段。如果您感到困惑，请阅读指南。"
     }
 }
