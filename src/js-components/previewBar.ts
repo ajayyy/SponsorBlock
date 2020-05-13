@@ -103,8 +103,13 @@ class PreviewBar {
 			categoryTooltip.classList.add("sbHidden");
 		});
 
-		const observer = new MutationObserver(() => {
+		const observer = new MutationObserver((mutations, observer) => {
 			if (!mouseOnSeekBar) return;
+
+			// See if mutation observed is only this ID (if so, ignore)
+			if (mutations.length == 1 && (mutations[0].target as HTMLElement).id === "sponsor-block-category-tooltip") {
+				return;
+			}
 
 			let tooltips = document.querySelectorAll(".ytp-tooltip-text");
 			for (const tooltip of tooltips) {
