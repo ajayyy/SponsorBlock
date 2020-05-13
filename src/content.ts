@@ -469,7 +469,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
     cancelSponsorSchedule();
 
     // Don't skip if advert playing and reset last checked time
-    if (document.getElementsByClassName('ad-showing').length > 0) {
+    if (isAdPlaying) {
         // Reset lastCheckVideoTime
         lastCheckVideoTime = -1;
         lastCheckTime = 0;
