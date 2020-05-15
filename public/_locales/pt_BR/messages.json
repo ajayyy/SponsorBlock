@@ -1,4 +1,8 @@
 {
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
     "fullName": {
         "message": "SponsorBlock para YouTube - Pule patrocínios",
         "description": "Name of the extension."
@@ -228,5 +232,56 @@
     "sourceCode": {
         "message": "Código fonte",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "A notificação foi atualizada!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Se você ainda não gostar dessa, aperte o botão não mostrar novamente.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Defina a tecla para que marca o início do patrocínio"
+    },
+    "setSubmitKeybind": {
+        "message": "Defina a tecla para enviar o segmento de patrocínio"
+    },
+    "keybindDescription": {
+        "message": "Selecione uma tecla apertando-a"
+    },
+    "keybindDescriptionComplete": {
+        "message": "A tecla foi definida para: "
+    },
+    "0": {
+        "message": "Tempo limite de conexão excedida. Cheque a sua conexão de internet. Se a sua internet estiver funcionando, o servidor está sobrecarregado ou fora do ar."
+    },
+    "disableSkipping": {
+        "message": "Desativar SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Ativar SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Suas submissões",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "O servidor parece estar sobrecarregado. Tente novamente em alguns segundos."
+    },
+    "errorCode": {
+        "message": "Código de erro: "
+    },
+    "noticeTitleNotSkipped": {
+        "message": "Pular patrocinador?"
+    },
+    "skip": {
+        "message": "Pular"
+    },
+    "disableAutoSkip": {
+        "message": "Desativar Salto Automático"
+    },
+    "enableAutoSkip": {
+        "message": "Ativar Salto Automático"
     }
 }
