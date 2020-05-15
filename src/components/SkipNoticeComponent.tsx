@@ -198,13 +198,11 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             </button>
 
                             {/* Category vote */}
-                            {Config.config.testingServer &&
-                                <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                        onClick={() => this.openCategoryChooser()}>
+                            <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                    onClick={() => this.openCategoryChooser()}>
 
-                                    {chrome.i18n.getMessage("incorrectCategory")}
-                                </button>
-                            }
+                                {chrome.i18n.getMessage("incorrectCategory")}
+                            </button>
                         </td>
 
                     </tr>
