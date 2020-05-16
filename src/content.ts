@@ -99,6 +99,9 @@ var popupInitialised = false;
 
 var submissionNotice: SubmissionNotice = null;
 
+// If there is an advert playing (or about to be played), this is true
+var isAdPlaying = false;
+
 // Contains all of the functions and variables needed by the skip notice
 var skipNoticeContentContainer: ContentContainer = () => ({
     vote,
@@ -446,6 +449,7 @@ function createPreviewBar(): void {
  * This happens when the resolution changes or at random time to clear memory.
  */
 function durationChangeListener() {
+    updateAdFlag();
     updatePreviewBar();
 }
 
@@ -463,6 +467,16 @@ function cancelSponsorSchedule(): void {
  */
 function startSponsorSchedule(includeIntersectingSegments: boolean = false, currentTime?: number): void {
     cancelSponsorSchedule();
+
+    // Don't skip if advert playing and reset last checked time
+    if (isAdPlaying) {
+        // Reset lastCheckVideoTime
+        lastCheckVideoTime = -1;
+        lastCheckTime = 0;
+
+        lastVideoTime = video.currentTime;
+        return;
+    }
 
     if (video.paused) return;
 
@@ -561,6 +575,8 @@ function sponsorsLookup(id: string) {
 
                 startSponsorSchedule();
             }
+
+            updateAdFlag();
         });
         video.addEventListener('playing', () => {
             // Make sure it doesn't get double called with the play event
@@ -781,6 +797,11 @@ function updatePreviewBarPositionMobile(parent: Element) {
 }
 
 function updatePreviewBar() {
+    if(isAdPlaying) {
+        previewBar.set([], [], 0);
+        return;
+    }
+
     if (previewBar === null || video === null) return;
 
     let localSponsorTimes = sponsorTimes;
@@ -1574,4 +1595,17 @@ function sendRequestToCustomServer(type, fullAddress, callback) {
 
     //submit this request
     xmlhttp.send();
+}
+
+/**
+ * Update the isAdPlaying flag and hide preview bar/controls if ad is playing
+ */
+function updateAdFlag() {
+    let wasAdPlaying = isAdPlaying;
+    isAdPlaying = (document.getElementsByClassName('ad-showing').length > 0);
+
+    if(wasAdPlaying != isAdPlaying) {
+        updatePreviewBar();
+        updateVisibilityOfPlayerControlsButton();
+    }
 }
