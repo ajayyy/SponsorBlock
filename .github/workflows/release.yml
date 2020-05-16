@@ -18,9 +18,6 @@ jobs:
       - name: Copy configuration
         run: cp config.json.example config.json
       
-      - name: Install Zip
-        run: sudo apt-get install zip
-
       # Create Chrome artifacts
       - name: Create Chrome artifacts
         run: npm run build:chrome
@@ -30,9 +27,7 @@ jobs:
           path: dist
       - run: mkdir ./builds
       - name: Zip Artifacts
-        run: cd ./dist
-      - run: zip -r ../builds/ChromeExtension.zip *
-      - run: cd ../
+        run: cd ./dist ; zip -r ../builds/ChromeExtension.zip *
 
       # Create Firefox artifacts
       - name: Create Firefox artifacts
@@ -42,11 +37,7 @@ jobs:
           name: FirefoxExtension
           path: dist
       - name: Zip Artifacts
-        run: cd ./dist
-      - uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -r ../builds/FirefoxExtension.zip *
-      - run: cd ../
+        run: cd ./dist ; zip -r ../builds/FirefoxExtension.zip *
 
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
@@ -56,9 +47,7 @@ jobs:
           name: ChromeExtensionBeta
           path: dist
       - name: Zip Artifacts
-        run: cd ./dist
-      - run: zip -r ../builds/ChromeExtensionBeta.zip *
-      - run: cd ../
+        run: cd ./dist ; zip -r ../builds/ChromeExtensionBeta.zip *
 
       - name: Create Firefox Beta artifacts
         run: npm run build:firefox -- --env.stream=beta
@@ -67,9 +56,7 @@ jobs:
           name: FirefoxExtensionBeta
           path: dist
       - name: Zip Artifacts
-        run: cd ./dist
-      - run: zip -r ../builds/FirefoxExtensionBeta.zip *
-      - run: cd ../
+        run: cd ./dist ; zip -r ../builds/FirefoxExtensionBeta.zip *
 
       # Create Firefox Signed Beta version
       - name: Create Firefox Signed Beta artifacts
@@ -80,9 +67,7 @@ jobs:
       - name: Install rename
         run: sudo apt-get install rename
       - name: Install signed file
-        run: cd ./web-ext-artifacts
-      - run: rename 's/.*/FirefoxSignedInstaller.xpi/' *
-      - run: cd ..
+        run: cd ./web-ext-artifacts ; rename 's/.*/FirefoxSignedInstaller.xpi/' *
       - uses: actions/upload-artifact@v1
         with:
           name: FirefoxExtensionSigned.xpi
