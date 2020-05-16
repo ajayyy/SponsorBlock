@@ -41,9 +41,6 @@ var sponsorSkipped: boolean[] = [];
 //the video
 var video: HTMLVideoElement;
 
-/** The last time this video was seeking to */
-var lastVideoTime: number = null;
-
 var onInvidious;
 var onMobileYouTube;
 
@@ -284,6 +281,9 @@ function resetValues() {
     } else {
         switchingVideos = true;
     }
+
+    // Reset advert playing flag
+    isAdPlaying = false;
 }
 
 async function videoIDChange(id) {
@@ -474,7 +474,6 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
         lastCheckVideoTime = -1;
         lastCheckTime = 0;
 
-        lastVideoTime = video.currentTime;
         return;
     }
 
@@ -568,6 +567,9 @@ function sponsorsLookup(id: string) {
         video.addEventListener('play', () => {
             switchingVideos = false;
 
+            // Check if an ad is playing
+            updateAdFlag();
+
              // Make sure it doesn't get double called with the playing event
              if (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000) {
                 lastCheckTime = Date.now();
@@ -576,7 +578,6 @@ function sponsorsLookup(id: string) {
                 startSponsorSchedule();
             }
 
-            updateAdFlag();
         });
         video.addEventListener('playing', () => {
             // Make sure it doesn't get double called with the play event
@@ -592,8 +593,6 @@ function sponsorsLookup(id: string) {
             lastCheckVideoTime = -1
             lastCheckTime = 0;
 
-            lastVideoTime = video.currentTime;
-
             if (!video.paused){
                 startSponsorSchedule();
             }
@@ -603,8 +602,6 @@ function sponsorsLookup(id: string) {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
             lastCheckTime = 0;
-
-            lastVideoTime = video.currentTime;
 
             cancelSponsorSchedule();
         });
@@ -1602,7 +1599,7 @@ function sendRequestToCustomServer(type, fullAddress, callback) {
  */
 function updateAdFlag() {
     let wasAdPlaying = isAdPlaying;
-    isAdPlaying = (document.getElementsByClassName('ad-showing').length > 0);
+    isAdPlaying = document.getElementsByClassName('ad-showing').length > 0;
 
     if(wasAdPlaying != isAdPlaying) {
         updatePreviewBar();
