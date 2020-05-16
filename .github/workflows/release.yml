@@ -17,6 +17,9 @@ jobs:
       - run: npm install
       - name: Copy configuration
         run: cp config.json.example config.json
+      
+      - name: Install Zip
+        run: sudo apt-get install zip
 
       # Create Chrome artifacts
       - name: Create Chrome artifacts
@@ -28,9 +31,7 @@ jobs:
       - run: mkdir ./builds
       - name: Zip Artifacts
         run: cd ./dist
-      - uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -r ../builds/ChromeExtension.zip *
+      - run: zip -r ../builds/ChromeExtension.zip *
       - run: cd ../
 
       # Create Firefox artifacts
@@ -56,9 +57,7 @@ jobs:
           path: dist
       - name: Zip Artifacts
         run: cd ./dist
-      - uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -r ../builds/ChromeExtensionBeta.zip *
+      - run: zip -r ../builds/ChromeExtensionBeta.zip *
       - run: cd ../
 
       - name: Create Firefox Beta artifacts
@@ -69,9 +68,7 @@ jobs:
           path: dist
       - name: Zip Artifacts
         run: cd ./dist
-      - uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -r ../builds/FirefoxExtensionBeta.zip *
+      - run: zip -r ../builds/FirefoxExtensionBeta.zip *
       - run: cd ../
 
       # Create Firefox Signed Beta version
