@@ -28,9 +28,6 @@
     "Segments": {
         "message": "segmenty sponsorowane"
     },
-    "noticeTitle": {
-        "message": "Segment przewinięty"
-    },
     "reportButtonTitle": {
         "message": "Zgłoś"
     },
@@ -264,9 +261,6 @@
     },
     "errorCode": {
         "message": "Kod błędu: "
-    },
-    "noticeTitleNotSkipped": {
-        "message": "Przewinąć reklamę?"
     },
     "skip": {
         "message": "Przewiń"
