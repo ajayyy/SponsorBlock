@@ -559,7 +559,7 @@
         "message": "Consider Enabling Force Channel Check Before Skipping Sponsors"
     },
     "downvoteDescription": {
-        "message": "Incorrect"
+        "message": "Incorrect/Wrong Timing"
     },
     "incorrectCategory": {
         "message": "Wrong Category"
