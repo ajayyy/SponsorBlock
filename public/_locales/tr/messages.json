@@ -35,9 +35,6 @@
     "Segments": {
         "message": "sponsor bölümleri"
     },
-    "noticeTitle": {
-        "message": "Sponsor Geçildi"
-    },
     "reportButtonTitle": {
         "message": "Raporla"
     },
@@ -70,6 +67,9 @@
     },
     "paused": {
         "message": "Duraklatıldı"
+    },
+    "manualPaused": {
+        "message": "Zamanlayıcı Durduruldu"
     },
     "confirmMSG": {
         "message": "Değerleri tek başına düzenlemek ve silmek için, bilgi butonuna basın veya sağ yukarıdaki eklenti simgesine tıklayarak eklenti menüsünü açın."
@@ -272,11 +272,11 @@
     "errorCode": {
         "message": "Hata Kodu: "
     },
-    "noticeTitleNotSkipped": {
-        "message": "Sponsoru Atla?"
-    },
     "skip": {
         "message": "Atla"
+    },
+    "skipped": {
+        "message": "Atlandı"
     },
     "disableAutoSkip": {
         "message": "Otomatik Atlamayı Devredışı Bırak"
@@ -559,7 +559,7 @@
         "message": "Sponsorları Atlamadan Önce Kanal Kontrolünü Zorlamayı Gözden Geçir"
     },
     "downvoteDescription": {
-        "message": "Hatalı"
+        "message": "Hatalı/Yanlış Zaman"
     },
     "incorrectCategory": {
         "message": "Yanlış Kategori"
