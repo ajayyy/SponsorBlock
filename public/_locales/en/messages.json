@@ -35,9 +35,6 @@
     "Segments": {
         "message": "sponsor segments"
     },
-    "noticeTitle": {
-        "message": "Sponsor Skipped"
-    },
     "reportButtonTitle": {
         "message": "Report"
     },
@@ -272,11 +269,11 @@
     "errorCode": {
         "message": "Error Code: "
     },
-    "noticeTitleNotSkipped": {
-        "message": "Skip Sponsor?"
-    },
     "skip": {
         "message": "Skip"
+    },
+    "skipped": {
+        "message": "Skipped"
     },
     "disableAutoSkip": {
         "message": "Disable Auto Skip"
