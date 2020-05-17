@@ -31,9 +31,6 @@
     "Segments": {
         "message": "спонсорские вставки"
     },
-    "noticeTitle": {
-        "message": "Спонсор пропущен"
-    },
     "reportButtonTitle": {
         "message": "Ошибка"
     },
@@ -258,9 +255,6 @@
     },
     "errorCode": {
         "message": "Код ошибки: "
-    },
-    "noticeTitleNotSkipped": {
-        "message": "Пропустить спонсорскую вставку?"
     },
     "skip": {
         "message": "Пропустить"
