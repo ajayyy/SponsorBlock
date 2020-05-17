@@ -62,10 +62,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.contentContainer = props.contentContainer;
         this.audio = null;
     
-        let noticeTitle = chrome.i18n.getMessage("noticeTitle");
+        let noticeTitle = chrome.i18n.getMessage("category_" + this.getSponsorTime().category) + " " + chrome.i18n.getMessage("skipped");
     
         if (!this.autoSkip) {
-            noticeTitle = chrome.i18n.getMessage("noticeTitleNotSkipped");
+            noticeTitle = chrome.i18n.getMessage("skip") + " " + chrome.i18n.getMessage("category_" + this.getSponsorTime().category) + "?";
         }
     
         //add notice
@@ -101,6 +101,11 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         if (!this.autoSkip) {
             Object.assign(this.state, this.getUnskippedModeInfo(chrome.i18n.getMessage("skip")));
         }
+    }
+
+    // Helper method
+    getSponsorTime() {
+        return utils.getSponsorTimeFromUUID(this.contentContainer().sponsorTimes, this.UUID);
     }
 
     componentDidMount() {
@@ -215,7 +220,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             {/* Category Selector */}
                             <select id={"sponsorTimeCategories" + this.idSuffix}
                                     className="sponsorTimeCategories"
-                                    defaultValue={utils.getSponsorTimeFromUUID(this.props.contentContainer().sponsorTimes, this.props.UUID).category}
+                                    defaultValue={this.getSponsorTime().category}
                                     ref={this.categoryOptionRef}
                                     onChange={this.categorySelectionChange.bind(this)}>
 
@@ -319,7 +324,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             chrome.runtime.sendMessage({"message": "openConfig"});
 
             // Reset option to original
-            event.target.value = utils.getSponsorTimeFromUUID(this.props.contentContainer().sponsorTimes, this.props.UUID).category;
+            event.target.value = this.getSponsorTime().category;
             return;
         }
     }
@@ -340,7 +345,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     getUnskippedModeInfo(buttonText: string) {
         let maxCountdownTime = function() {
-            let sponsorTime = utils.getSponsorTimeFromUUID(this.contentContainer().sponsorTimes, this.UUID);
+            let sponsorTime = this.getSponsorTime();
             let duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
 
             return Math.max(duration, 4);
@@ -387,7 +392,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.adjustDownvotingState(false);
         
         // Change the sponsor locally
-        let sponsorTime = utils.getSponsorTimeFromUUID(this.contentContainer().sponsorTimes, this.UUID);
+        let sponsorTime = this.getSponsorTime();
         if (sponsorTime) {
             if (type === 0) {
                 sponsorTime.hidden = SponsorHideType.Downvoted;

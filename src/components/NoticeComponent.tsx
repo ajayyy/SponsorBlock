@@ -23,6 +23,7 @@ export interface NoticeState {
 
     countdownTime: number,
     countdownText: string,
+    countdownManuallyPaused: boolean,
 }
 
 class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
@@ -55,6 +56,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             //the countdown until this notice closes
             countdownTime: maxCountdownTime(),
             countdownText: null,
+            countdownManuallyPaused: false
         }
     }
 
@@ -71,8 +73,8 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             <table id={"sponsorSkipNotice" + this.idSuffix} 
                 className={"sponsorSkipObject sponsorSkipNotice" + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")}
                 style={noticeStyle}
-                onMouseEnter={this.pauseCountdown.bind(this)}
-                onMouseLeave={this.startCountdown.bind(this)}> 
+                onMouseEnter={() => this.timerMouseEnter()}
+                onMouseLeave={() => this.timerMouseLeave()}> 
                 <tbody>
 
                     {/* First row */}
@@ -99,6 +101,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                             {/* Time left */}
                             {this.props.timed ? ( 
                                 <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
+                                    onClick={() => this.toggleManualPause()}
                                     className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
 
                                     {this.state.countdownText || (this.state.countdownTime + "s")}
@@ -119,6 +122,30 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                 </tbody> 
             </table>
         );
+    }
+
+    timerMouseEnter() {
+        if (this.state.countdownManuallyPaused) return;
+
+        this.pauseCountdown();
+    }
+
+    timerMouseLeave() {
+        if (this.state.countdownManuallyPaused) return;
+
+        this.startCountdown();
+    }
+
+    toggleManualPause() {
+        this.setState({
+            countdownManuallyPaused: !this.state.countdownManuallyPaused
+        }, () => {
+            if (this.state.countdownManuallyPaused) {
+                this.pauseCountdown();
+            } else {
+                this.startCountdown();
+            }
+        });
     }
 
     //called every second to lower the countdown before hiding the notice
@@ -159,7 +186,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         //reset countdown and inform the user
         this.setState({
             countdownTime: this.state.maxCountdownTime(),
-            countdownText: chrome.i18n.getMessage("paused")
+            countdownText: this.state.countdownManuallyPaused ? chrome.i18n.getMessage("manualPaused") : chrome.i18n.getMessage("paused")
         });
         
         //remove the fade out class if it exists

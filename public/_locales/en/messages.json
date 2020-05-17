@@ -35,9 +35,6 @@
     "Segments": {
         "message": "sponsor segments"
     },
-    "noticeTitle": {
-        "message": "Sponsor Skipped"
-    },
     "reportButtonTitle": {
         "message": "Report"
     },
@@ -70,6 +67,9 @@
     },
     "paused": {
         "message": "Paused"
+    },
+    "manualPaused": {
+        "message": "Timer Stopped"
     },
     "confirmMSG": {
         "message": "To edit or delete individual values, click the info button or open the extension popup by clicking the extension icon in the top right corner."
@@ -272,11 +272,11 @@
     "errorCode": {
         "message": "Error Code: "
     },
-    "noticeTitleNotSkipped": {
-        "message": "Skip Sponsor?"
-    },
     "skip": {
         "message": "Skip"
+    },
+    "skipped": {
+        "message": "Skipped"
     },
     "disableAutoSkip": {
         "message": "Disable Auto Skip"
@@ -559,7 +559,7 @@
         "message": "Consider Enabling Force Channel Check Before Skipping Sponsors"
     },
     "downvoteDescription": {
-        "message": "Incorrect"
+        "message": "Incorrect/Wrong Timing"
     },
     "incorrectCategory": {
         "message": "Wrong Category"
