@@ -35,9 +35,6 @@
     "Segments": {
         "message": "segments commerciaux"
     },
-    "noticeTitle": {
-        "message": "Message commercial passé"
-    },
     "reportButtonTitle": {
         "message": "Signaler"
     },
@@ -271,9 +268,6 @@
     },
     "errorCode": {
         "message": "Code d'erreur : "
-    },
-    "noticeTitleNotSkipped": {
-        "message": "Passer le sponsor ?"
     },
     "skip": {
         "message": "Passer"
