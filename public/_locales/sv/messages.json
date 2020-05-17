@@ -28,9 +28,6 @@
     "Segments": {
         "message": "sponsorsegment"
     },
-    "noticeTitle": {
-        "message": "Sponsormeddelande undvikt"
-    },
     "reportButtonTitle": {
         "message": "Rapportera"
     },
@@ -261,9 +258,6 @@
     },
     "errorCode": {
         "message": "Felkod: "
-    },
-    "noticeTitleNotSkipped": {
-        "message": "Hoppa över sponsormeddelande?"
     },
     "skip": {
         "message": "Hoppa över"
