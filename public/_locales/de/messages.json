@@ -272,6 +272,9 @@
     "skip": {
         "message": "Überspringen"
     },
+    "skipped": {
+        "message": "Übersprungen"
+    },
     "disableAutoSkip": {
         "message": "Auto-Überspringen deaktivieren"
     },
