@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config"
-import { ContentContainer, SponsorHideType } from "../types";
+import { ContentContainer, SponsorHideType, SponsorTime } from "../types";
 
 import Utils from "../utils";
 var utils = new Utils();
@@ -9,9 +9,17 @@ var utils = new Utils();
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 
+enum SkipNoticeAction {
+    None,
+    Upvote,
+    Downvote,
+    CategoryVote,
+    Unskip
+}
 
-export interface SkipNoticeProps { 
-    UUID: string;
+export interface SkipNoticeProps {
+    segments: SponsorTime[];
+
     autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
@@ -29,14 +37,16 @@ export interface SkipNoticeState {
     countdownText: string;
 
     unskipText: string;
-    unskipCallback: () => void;
+    unskipCallback: (index: number) => void;
 
     downvoting: boolean;
     choosingCategory: boolean;
+
+    actionState: SkipNoticeAction;
 }
 
 class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeState> {
-    UUID: string;
+    segments: SponsorTime[];
     autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
@@ -57,22 +67,30 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.noticeRef = React.createRef();
         this.categoryOptionRef = React.createRef();
 
-        this.UUID = props.UUID;
+        this.segments = props.segments;
         this.autoSkip = props.autoSkip;
         this.contentContainer = props.contentContainer;
         this.audio = null;
-    
-        let noticeTitle = chrome.i18n.getMessage("category_" + this.getSponsorTime().category) + " " + chrome.i18n.getMessage("skipped");
-    
+
+        let categoryName = chrome.i18n.getMessage(this.segments.length > 1 ? "multipleSegments" : "category_" + this.segments[0].category);
+        let noticeTitle = categoryName + " " + chrome.i18n.getMessage("skipped");
         if (!this.autoSkip) {
-            noticeTitle = chrome.i18n.getMessage("skip") + " " + chrome.i18n.getMessage("category_" + this.getSponsorTime().category) + "?";
+            noticeTitle = chrome.i18n.getMessage("skip") + " " + categoryName + "?";
         }
     
         //add notice
         this.amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
+
+        // Sort segments
+        if (this.segments.length > 1) {
+            this.segments.sort((a, b) => a.segment[0] - b.segment[0]);
+        }
     
         //this is the suffix added at the end of every id
-        this.idSuffix = this.UUID + this.amountOfPreviousNotices;
+        for (const segment of this.segments) {
+            this.idSuffix += segment.UUID;
+        }
+        this.idSuffix += this.amountOfPreviousNotices;
 
         if (this.amountOfPreviousNotices > 0) {
             //another notice exists
@@ -92,20 +110,18 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             countdownText: null,
 
             unskipText: chrome.i18n.getMessage("unskip"),
-            unskipCallback: this.unskip.bind(this),
+            unskipCallback: (index) => this.unskip(index),
 
             downvoting: false,
-            choosingCategory: false
+            choosingCategory: false,
+
+            actionState: SkipNoticeAction.None
         }
 
         if (!this.autoSkip) {
-            Object.assign(this.state, this.getUnskippedModeInfo(chrome.i18n.getMessage("skip")));
+            // Assume manual skip is only skipping 1 submission
+            Object.assign(this.state, this.getUnskippedModeInfo(0, chrome.i18n.getMessage("skip")));
         }
-    }
-
-    // Helper method
-    getSponsorTime() {
-        return utils.getSponsorTimeFromUUID(this.contentContainer().sponsorTimes, this.UUID);
     }
 
     componentDidMount() {
@@ -173,7 +189,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         <button id={"sponsorSkipUnskipButton" + this.idSuffix}
                             className="sponsorSkipObject sponsorSkipNoticeButton"
                             style={{marginLeft: "4px"}}
-                            onClick={this.state.unskipCallback}>
+                            onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
 
                             {this.state.unskipText}
                         </button>
@@ -198,7 +214,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
                             {/* Normal downvote */}
                             <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                    onClick={() => this.contentContainer().vote(0, this.UUID, undefined, this)}>
+                                    onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
                                 {chrome.i18n.getMessage("downvoteDescription")}
                             </button>
 
@@ -220,7 +236,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             {/* Category Selector */}
                             <select id={"sponsorTimeCategories" + this.idSuffix}
                                     className="sponsorTimeCategories"
-                                    defaultValue={this.getSponsorTime().category}
+                                    defaultValue={this.segments[0].category} //Just default to the first segment, as we don't know which they'll choose
                                     ref={this.categoryOptionRef}
                                     onChange={this.categorySelectionChange.bind(this)}>
 
@@ -228,17 +244,55 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             </select>
 
                             {/* Submit Button */}
-                            <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                    onClick={() => this.contentContainer().vote(undefined, this.UUID, this.categoryOptionRef.current.value, this)}>
+                            {this.segments.length === 1 &&
+                                <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                        onClick={() => this.prepAction(SkipNoticeAction.CategoryVote)}>
 
-                                {chrome.i18n.getMessage("submit")}
-                            </button>
+                                    {chrome.i18n.getMessage("submit")}
+                                </button>
+                            }
+                            
+                        </td>
+                    </tr>
+                }
+
+                {/* Segment Chooser Row */}
+                {this.state.actionState !== SkipNoticeAction.None &&
+                    <tr id={"sponsorSkipNoticeSubmissionOptionsRow" + this.idSuffix}>
+                        <td id={"sponsorTimesSubmissionOptionsContainer" + this.idSuffix}>
+                            {this.getSubmissionChooser()}
                         </td>
                     </tr>
                 }
 
             </NoticeComponent>
         );
+    }
+
+    getSubmissionChooser(): JSX.Element[] {
+        let elements: JSX.Element[] = [];
+
+        for (let i = 0; i < this.segments.length; i++) {
+            elements.push(
+                <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                        onClick={() => this.performAction(i)}
+                        key={"submission" + i + this.segments[i].category + this.idSuffix}>
+                    {(i + 1) + ". " + chrome.i18n.getMessage("category_" + this.segments[i].category)}
+                </button>
+            );
+        }
+
+        return elements;
+    }
+
+    prepAction(action: SkipNoticeAction) {
+        if (this.segments.length === 1) {
+            this.performAction(0, action);
+        } else {
+            this.setState({
+                actionState: action
+            });
+        }
     }
 
     getMessageBoxes(): JSX.Element[] | JSX.Element {
@@ -265,6 +319,31 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         return elements;
     }
 
+    /**
+     * Performs the action from the current state
+     * 
+     * @param index 
+     */
+    performAction(index: number, action?: SkipNoticeAction) {
+        switch (action ?? this.state.actionState) {
+            case SkipNoticeAction.None:
+                break;
+            case SkipNoticeAction.Downvote:
+                this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
+                break;
+            case SkipNoticeAction.CategoryVote:
+                this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value, this)
+                break;
+            case SkipNoticeAction.Unskip:
+                this.state.unskipCallback(index);
+                break;
+        }
+
+        this.setState({
+            actionState: SkipNoticeAction.None
+        });
+    }
+
     adjustDownvotingState(value: boolean) {
         if (!value) this.clearConfigListener();
 
@@ -289,6 +368,11 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.setState({
             choosingCategory: true,
             downvoting: false
+        }, () => {
+            if (this.segments.length > 1) {
+                // Use the action selectors as a submit button
+                this.prepAction(SkipNoticeAction.CategoryVote);
+            }
         });
     }
 
@@ -324,37 +408,38 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             chrome.runtime.sendMessage({"message": "openConfig"});
 
             // Reset option to original
-            event.target.value = this.getSponsorTime().category;
+            event.target.value = this.segments[0].category;
             return;
         }
     }
 
-    unskip() {
-        this.contentContainer().unskipSponsorTime(this.UUID);
+    unskip(index: number) {
+        this.contentContainer().unskipSponsorTime(this.segments[index]);
 
-        this.unskippedMode(chrome.i18n.getMessage("reskip"));
+        this.unskippedMode(index, chrome.i18n.getMessage("reskip"));
     }
 
     /** Sets up notice to be not skipped yet */
-    unskippedMode(buttonText: string) {
+    unskippedMode(index: number, buttonText: string) {
         //setup new callback and reset countdown
-        this.setState(this.getUnskippedModeInfo(buttonText), () => {
+        this.setState(this.getUnskippedModeInfo(index, buttonText), () => {
             this.noticeRef.current.resetCountdown();
         });
     }
 
-    getUnskippedModeInfo(buttonText: string) {
+    getUnskippedModeInfo(index: number, buttonText: string) {
+        let self = this;
         let maxCountdownTime = function() {
-            let sponsorTime = this.getSponsorTime();
-            let duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
+            let sponsorTime = self.segments[index];
+            let duration = Math.round((sponsorTime.segment[1] - self.contentContainer().v.currentTime) * (1 / self.contentContainer().v.playbackRate));
 
             return Math.max(duration, 4);
-        }.bind(this);
+        };
 
         return {
             unskipText: buttonText,
 
-            unskipCallback: this.reskip.bind(this),
+            unskipCallback: (index) => this.reskip(index),
 
             //change max duration to however much of the sponsor is left
             maxCountdownTime: maxCountdownTime,
@@ -363,8 +448,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    reskip() {
-        this.contentContainer().reskipSponsorTime(this.UUID);
+    reskip(index: number) {
+        this.contentContainer().reskipSponsorTime(this.segments[index]);
 
         //reset countdown
         this.setState({
@@ -380,24 +465,21 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             this.setState({
                 noticeTitle: chrome.i18n.getMessage("noticeTitle")
             });
-
-            if(Config.config.autoUpvote) this.contentContainer().vote(1, this.UUID);
         }
     }
 
-    afterDownvote(type: number, category: string) {
+    afterDownvote(segment: SponsorTime, type: number, category: string) {
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
         this.setNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"));
 
         this.adjustDownvotingState(false);
         
         // Change the sponsor locally
-        let sponsorTime = this.getSponsorTime();
-        if (sponsorTime) {
+        if (segment) {
             if (type === 0) {
-                sponsorTime.hidden = SponsorHideType.Downvoted;
+                segment.hidden = SponsorHideType.Downvoted;
             } else if (category) {
-                sponsorTime.category = category;
+                segment.category = category;
             }
 
             this.contentContainer().updatePreviewBar();
@@ -407,7 +489,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     setNoticeInfoMessage(...messages: string[]) {
         this.setState({
             messages
-        })
+        });
     }
     
     addVoteButtonInfo(message) {
