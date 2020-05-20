@@ -1,4 +1,32 @@
 {
+    "fullName": {
+        "message": "SponsorBlock voor YouTube - Sla sponsorberichten over",
+        "description": "Name of the extension."
+    },
+    "Sponsor": {
+        "message": "sponsor"
+    },
+    "Sponsors": {
+        "message": "sponsoren"
+    },
+    "reportButtonTitle": {
+        "message": "Melden"
+    },
+    "Dismiss": {
+        "message": "Negeren"
+    },
+    "Loading": {
+        "message": "Bezig met laden..."
+    },
+    "Mins": {
+        "message": "Minuten"
+    },
+    "Secs": {
+        "message": "Seconden"
+    },
+    "Hide": {
+        "message": "Nooit weergeven"
+    },
     "paused": {
         "message": "Gepauzeerd"
     },
@@ -41,7 +69,40 @@
     "clearTimes": {
         "message": "Sponsortijden wissen"
     },
+    "viewLeaderboard": {
+        "message": "Bekijk de ranglijst"
+    },
     "here": {
         "message": "hier"
+    },
+    "clearTimesButton": {
+        "message": "Wis tijden"
+    },
+    "submitTimesButton": {
+        "message": "Dien tijden in"
+    },
+    "setUsername": {
+        "message": "Gebruikersnaam instellen"
+    },
+    "Options": {
+        "message": "Opties"
+    },
+    "showButtons": {
+        "message": "Toon knoppen op YouTube Player"
+    },
+    "hideButtons": {
+        "message": "Verberg knoppen op YouTube Player"
+    },
+    "showInfoButton": {
+        "message": "Toon info-knop op YouTube-speler"
+    },
+    "hideInfoButton": {
+        "message": "Verberg info-knop op YouTube Player"
+    },
+    "disableSkipping": {
+        "message": "SponsorBlock uitschakelen"
+    },
+    "enableSkipping": {
+        "message": "SponsorBlock inschakelen"
     }
 }
