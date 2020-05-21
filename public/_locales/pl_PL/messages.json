@@ -31,9 +31,6 @@
     "reportButtonTitle": {
         "message": "Zgłoś"
     },
-    "reportButtonInfo": {
-        "message": "Zgłoś ten segment reklamowy jako nieprawidłowy."
-    },
     "Dismiss": {
         "message": "Odrzuć"
     },
@@ -93,9 +90,6 @@
     },
     "voteFail": {
         "message": "Już na to głosowałeś."
-    },
-    "serverDown": {
-        "message": "Wygląda na to, że serwer nie działa. Skontaktuj się z dewloperem."
     },
     "connectionError": {
         "message": "Błąd z połączeniem. Kod błędu: "
@@ -354,11 +348,5 @@
     },
     "currentInstances": {
         "message": "Obecne instancje:"
-    },
-    "enableAutoUpvote": {
-        "message": "Auto potwierdzanie"
-    },
-    "whatAutoUpvote": {
-        "message": "To ustawienie sprawia, że wszystkie przewinięte przez ciebie a nie zgłoszone jako błąd segmenty reklamowe zostaną potwierdzone jako prawidłowe. Ta opcja nie działa jeśli okienko z informacją o przewinięciu jest ukryte."
     }
 }
