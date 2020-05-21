@@ -38,9 +38,6 @@
     "reportButtonTitle": {
         "message": "Melden"
     },
-    "reportButtonInfo": {
-        "message": "Melde dieses Segment als unzulässig."
-    },
     "Dismiss": {
         "message": "Abbrechen"
     },
@@ -103,9 +100,6 @@
     },
     "voteFail": {
         "message": "Du hast bereits so abgestimmt."
-    },
-    "serverDown": {
-        "message": "Der Server ist scheinbar offline. Bitte unverzüglich dem Entwickler melden."
     },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
@@ -376,12 +370,6 @@
     },
     "currentInstances": {
         "message": "Aktuelle Instanzen:"
-    },
-    "enableAutoUpvote": {
-        "message": "Automatisches Liken"
-    },
-    "whatAutoUpvote": {
-        "message": "Wenn dies aktiviert ist, wird die Erweiterung alle Beiträge hochladen, die Sie ansehen, wenn Sie sie nicht melden. Wenn die Benachrichtigung deaktiviert ist, wird dies nicht geschehen."
     },
     "minDuration": {
         "message": "Minimale Dauer (Sekunden):"
