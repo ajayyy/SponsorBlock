@@ -24,7 +24,6 @@ interface SBConfig {
     hideDiscordLaunches: number,
     hideDiscordLink: boolean,
     invidiousInstances: string[],
-    autoUpvote: boolean,
     supportInvidious: boolean,
     serverAddress: string,
     minDuration: number,
@@ -124,7 +123,6 @@ var Config: SBObject = {
         hideDiscordLaunches: 0,
         hideDiscordLink: false,
         invidiousInstances: ["invidio.us", "invidious.snopyta.org"],
-        autoUpvote: true,
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
         minDuration: 0,
@@ -250,6 +248,11 @@ async function migrateOldFormats() {
                 chrome.storage.sync.remove("disableAutoSkip");
             }
         }
+    }
+
+    // Auto vote removal
+    if (Config.config["autoUpvote"]) {
+        chrome.storage.sync.remove("autoUpvote");
     }
 
     // Channel URLS

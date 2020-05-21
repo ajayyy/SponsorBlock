@@ -380,12 +380,6 @@
     "currentInstances": {
         "message": "Current Instances:"
     },
-    "enableAutoUpvote": {
-        "message": "Auto Upvote"
-    },
-    "whatAutoUpvote": {
-        "message": "With this enabled, the extension will upvote all submissions you view if you do not report them. If the notice is disabled, this will not occur."
-    },
     "minDuration": {
         "message": "Minimum duration (seconds):"
     },
