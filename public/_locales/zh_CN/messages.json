@@ -38,9 +38,6 @@
     "reportButtonTitle": {
         "message": "报告"
     },
-    "reportButtonInfo": {
-        "message": "报告这个被提交的赞助商广告不正确。"
-    },
     "Dismiss": {
         "message": "忽略"
     },
@@ -103,9 +100,6 @@
     },
     "voteFail": {
         "message": "您之前已经这样投过了。"
-    },
-    "serverDown": {
-        "message": "服务器似乎已宕机。请立即联系开发者。"
     },
     "connectionError": {
         "message": "连接错误。错误代码： "
@@ -376,12 +370,6 @@
     },
     "currentInstances": {
         "message": "当前实例："
-    },
-    "enableAutoUpvote": {
-        "message": "自动点赞"
-    },
-    "whatAutoUpvote": {
-        "message": "启用此选项后，扩展将会为所有您观看过的提交点赞，如果您没有报告它们的话。如果通知被禁用，那就不会出现。"
     },
     "minDuration": {
         "message": "最小持续时间(秒)："
