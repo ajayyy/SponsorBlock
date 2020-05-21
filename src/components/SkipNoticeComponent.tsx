@@ -41,6 +41,7 @@ export interface SkipNoticeState {
 
     downvoting: boolean;
     choosingCategory: boolean;
+    thanksForVotingText: boolean; //null until the voting buttons should be hidden
 
     actionState: SkipNoticeAction;
 }
@@ -114,6 +115,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
             downvoting: false,
             choosingCategory: false,
+            thanksForVotingText: null,
 
             actionState: SkipNoticeAction.None
         }
@@ -161,29 +163,39 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 <tr id={"sponsorSkipNoticeSecondRow" + this.idSuffix}>
 
                     {/* Vote Button Container */}
-                    <td id={"sponsorTimesVoteButtonsContainer" + this.idSuffix}
-                        className="sponsorTimesVoteButtonsContainer">
+                    {!this.state.thanksForVotingText ?
+                        <td id={"sponsorTimesVoteButtonsContainer" + this.idSuffix}
+                            className="sponsorTimesVoteButtonsContainer">
 
-                        {/* Upvote Button */}
-                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                            className="sponsorSkipObject voteButton"
-                            style={{marginRight: "10px"}}
-                            src={chrome.extension.getURL("icons/thumbs_up.svg")}
-                            title={chrome.i18n.getMessage("upvoteButtonInfo")}
-                            onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
-                        
-                        </img>
+                            {/* Upvote Button */}
+                            <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
+                                className="sponsorSkipObject voteButton"
+                                style={{marginRight: "10px"}}
+                                src={chrome.extension.getURL("icons/thumbs_up.svg")}
+                                title={chrome.i18n.getMessage("upvoteButtonInfo")}
+                                onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
+                            
+                            </img>
 
-                        {/* Report Button */}
-                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                            className="sponsorSkipObject voteButton"
-                            src={chrome.extension.getURL("icons/thumbs_down.svg")}
-                            title={chrome.i18n.getMessage("reportButtonInfo")}
-                            onClick={() => this.adjustDownvotingState(true)}>
-                        
-                        </img>
+                            {/* Report Button */}
+                            <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
+                                className="sponsorSkipObject voteButton"
+                                src={chrome.extension.getURL("icons/thumbs_down.svg")}
+                                title={chrome.i18n.getMessage("reportButtonInfo")}
+                                onClick={() => this.adjustDownvotingState(true)}>
+                            
+                            </img>
 
-                    </td>
+                        </td>
+
+                        :
+
+                        <td id={"sponsorTimesVoteButtonInfoMessage" + this.idSuffix}
+                                className="sponsorTimesInfoMessage sponsorTimesVoteButtonMessage"
+                                style={{marginRight: "10px"}}>
+                            {this.state.thanksForVotingText}
+                        </td>
+                    }
 
                     {/* Unskip Button */}
                     <td className="sponsorSkipNoticeUnskipSection">
@@ -499,37 +511,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
     
     addVoteButtonInfo(message) {
-        this.resetVoteButtonInfo();
-        
-        //hide report button and text for it
-        let downvoteButton = document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.idSuffix);
-        if (downvoteButton != null) {
-            downvoteButton.style.display = "none";
-        }
-        let downvoteButtonText = document.getElementById("sponsorTimesReportText" + this.idSuffix);
-        if (downvoteButtonText != null) {
-            downvoteButtonText.style.display = "none";
-        }
-        
-        //add info
-        let thanksForVotingText = document.createElement("td");
-        thanksForVotingText.id = "sponsorTimesVoteButtonInfoMessage" + this.idSuffix;
-        thanksForVotingText.className = "sponsorTimesInfoMessage sponsorTimesVoteButtonMessage";
-        thanksForVotingText.innerText = message;
-
-        //add element to div
-        document.getElementById("sponsorSkipNoticeSecondRow" + this.idSuffix).prepend(thanksForVotingText);
+        this.setState({
+            thanksForVotingText: message
+        });
     }
 
     resetVoteButtonInfo() {
-        let previousInfoMessage = document.getElementById("sponsorTimesVoteButtonInfoMessage" + this.idSuffix);
-        if (previousInfoMessage != null) {
-            //remove it
-            document.getElementById("sponsorSkipNoticeSecondRow" + this.idSuffix).removeChild(previousInfoMessage);
-        }
-
-        //show button again
-        document.getElementById("sponsorTimesDownvoteButtonsContainer" + this.idSuffix).style.removeProperty("display");
+        this.setState({
+            thanksForVotingText: null
+        });
     }
 
     closeListener() {
