@@ -35,11 +35,14 @@
     "Segments": {
         "message": "sponsor bölümleri"
     },
+    "upvoteButtonInfo": {
+        "message": "Bu öneriye oy ver"
+    },
     "reportButtonTitle": {
         "message": "Raporla"
     },
     "reportButtonInfo": {
-        "message": "Bu sponsor bölümünü hatalı olarak rapor et."
+        "message": "Bu öneriyi hatalı olarak bildir."
     },
     "Dismiss": {
         "message": "Yoksay"
@@ -377,12 +380,6 @@
     "currentInstances": {
         "message": "Mevcut Oluşumlar:"
     },
-    "enableAutoUpvote": {
-        "message": "Otomatik Oy Ver"
-    },
-    "whatAutoUpvote": {
-        "message": "Eğer bu ayar açıksa, eklenti eğer rapor etmediyseniz gördüğünüz tüm önerileri oylayacaktır. Eğer bildirim kapalıysa, bu gerçekleşmeyecektir."
-    },
     "minDuration": {
         "message": "Minimum süre (saniye):"
     },
@@ -566,5 +563,8 @@
     },
     "nonMusicCategoryOnMusic": {
         "message": "Bu videonun kategorisi müzik olarak belirlenmiş. Müzik içermeyen bölümleri göndermek istediğinize emin misiniz? Eğer bu bir müzik videosu değilse, bu bölümleri göndermemelisiniz. Eğer ayırt edemiyorsanız, lütfen rehberi okuyunuz."
+    },
+    "multipleSegments": {
+        "message": "Birden Çok Bölüm"
     }
 }
