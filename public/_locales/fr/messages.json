@@ -38,9 +38,6 @@
     "reportButtonTitle": {
         "message": "Signaler"
     },
-    "reportButtonInfo": {
-        "message": "Signaler que ce segment commercial est incorrect."
-    },
     "Dismiss": {
         "message": "Fermer"
     },
@@ -100,9 +97,6 @@
     },
     "voteFail": {
         "message": "Vous avez déjà voté pour ce choix."
-    },
-    "serverDown": {
-        "message": "Le serveur ne fonctionne pas. Contactez le développeur."
     },
     "connectionError": {
         "message": "Erreur de connexion. Code d'erreur : "
@@ -367,12 +361,6 @@
     },
     "currentInstances": {
         "message": "Instances actuelles:"
-    },
-    "enableAutoUpvote": {
-        "message": "Vote automatique"
-    },
-    "whatAutoUpvote": {
-        "message": "Si cette option est activée, l'extension votera en faveur de tous les segments que vous visualiserez si vous ne les signalez pas. Si l'avis est désactivé, cela ne se produira pas."
     },
     "minDuration": {
         "message": "Durée minimale (en secondes):"
