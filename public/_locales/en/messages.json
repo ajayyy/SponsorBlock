@@ -35,11 +35,14 @@
     "Segments": {
         "message": "sponsor segments"
     },
+    "upvoteButtonInfo": {
+        "message": "Upvote this submission"
+    },
     "reportButtonTitle": {
         "message": "Report"
     },
     "reportButtonInfo": {
-        "message": "Report this sponsor submission as incorrect."
+        "message": "Report this submission as incorrect."
     },
     "Dismiss": {
         "message": "Dismiss"
@@ -105,7 +108,7 @@
         "message": "You have already voted this way before."
     },
     "serverDown": {
-        "message": "It seems the sever is down. Contact the dev immediately."
+        "message": "It seems the server is down. Contact the dev immediately."
     },
     "connectionError": {
         "message": "A connection error has occured. Error code: "
@@ -377,12 +380,6 @@
     "currentInstances": {
         "message": "Current Instances:"
     },
-    "enableAutoUpvote": {
-        "message": "Auto Upvote"
-    },
-    "whatAutoUpvote": {
-        "message": "With this enabled, the extension will upvote all submissions you view if you do not report them. If the notice is disabled, this will not occur."
-    },
     "minDuration": {
         "message": "Minimum duration (seconds):"
     },
@@ -566,5 +563,8 @@
     },
     "nonMusicCategoryOnMusic": {
         "message": "This video is categorized as music. Are you sure you would like to submit segments with non-music categories? Unless this video is not actually music, you should not be submitting this segment. Please read the guidelines if you are confused."
+    },
+    "multipleSegments": {
+        "message": "Multiple Segments"
     }
 }

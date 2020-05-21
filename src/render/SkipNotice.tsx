@@ -2,17 +2,18 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import SkipNoticeComponent from "../components/SkipNoticeComponent";
+import { SponsorTime } from "../types";
 
 class SkipNotice {
-    UUID: string;
+    segments: SponsorTime[];
     autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: () => any;
 
     noticeElement: HTMLDivElement;
 
-    constructor(UUID: string, autoSkip: boolean = false, contentContainer) {
-        this.UUID = UUID;
+    constructor(segments: SponsorTime[], autoSkip: boolean = false, contentContainer) {
+        this.segments = segments;
         this.autoSkip = autoSkip;
         this.contentContainer = contentContainer;
 
@@ -35,7 +36,11 @@ class SkipNotice {
     
         let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
         //this is the suffix added at the end of every id
-        let idSuffix = this.UUID + amountOfPreviousNotices;
+        let idSuffix = "";
+        for (const segment of this.segments) {
+            idSuffix += segment.UUID;
+        }
+        idSuffix += amountOfPreviousNotices;
 
         this.noticeElement = document.createElement("div");
         this.noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
@@ -43,7 +48,7 @@ class SkipNotice {
         referenceNode.prepend(this.noticeElement);
 
         ReactDOM.render(
-            <SkipNoticeComponent UUID={UUID} 
+            <SkipNoticeComponent segments={segments} 
                 autoSkip={autoSkip} 
                 contentContainer={contentContainer}
                 closeListener={() => this.close()} />,
