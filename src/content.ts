@@ -1376,9 +1376,7 @@ function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNo
             if (skipNotice != null) {
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
-                    if (type === 0 || category) {
-                        skipNotice.afterDownvote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
-                    }
+                    skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
                 } else if (response.successType == 0) {
                     //failure: duplicate vote
                     skipNotice.setNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))

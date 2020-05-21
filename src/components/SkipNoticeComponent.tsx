@@ -164,19 +164,19 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     <td id={"sponsorTimesVoteButtonsContainer" + this.idSuffix}
                         className="sponsorTimesVoteButtonsContainer">
 
-                        {/* Report Text */}
-                        <span id={"sponsorTimesReportText" + this.idSuffix}
-                            className="sponsorTimesInfoMessage sponsorTimesVoteButtonMessage"
-                            title={chrome.i18n.getMessage("reportButtonInfo")}
-                            style={{marginRight: "5px"}}>
-
-                            {chrome.i18n.getMessage("reportButtonTitle")}
-                        </span>
+                        {/* Upvote Button */}
+                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
+                            className="sponsorSkipObject voteButton"
+                            src={chrome.extension.getURL("icons/thumbs_up.svg")}
+                            title={chrome.i18n.getMessage("upvoteButtonInfo")}
+                            onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
+                        
+                        </img>
 
                         {/* Report Button */}
                         <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
                             className="sponsorSkipObject voteButton"
-                            src={chrome.extension.getURL("icons/report.png")}
+                            src={chrome.extension.getURL("icons/thumbs_down.svg")}
                             title={chrome.i18n.getMessage("reportButtonInfo")}
                             onClick={() => this.adjustDownvotingState(true)}>
                         
@@ -328,6 +328,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         switch (action ?? this.state.actionState) {
             case SkipNoticeAction.None:
                 break;
+            case SkipNoticeAction.Upvote:
+                this.contentContainer().vote(1, this.segments[index].UUID, undefined, this);
+                break;
             case SkipNoticeAction.Downvote:
                 this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
                 break;
@@ -468,11 +471,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    afterDownvote(segment: SponsorTime, type: number, category: string) {
+    afterVote(segment: SponsorTime, type: number, category: string) {
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
-        this.setNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"));
 
-        this.adjustDownvotingState(false);
+        if (type === 0) {
+            this.setNoticeInfoMessage(chrome.i18n.getMessage("hitGoBack"));
+            this.adjustDownvotingState(false);
+        }
         
         // Change the sponsor locally
         if (segment) {

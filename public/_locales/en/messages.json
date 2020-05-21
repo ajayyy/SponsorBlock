@@ -35,11 +35,14 @@
     "Segments": {
         "message": "sponsor segments"
     },
+    "upvoteButtonInfo": {
+        "message": "Upvote this submission"
+    },
     "reportButtonTitle": {
         "message": "Report"
     },
     "reportButtonInfo": {
-        "message": "Report this sponsor submission as incorrect."
+        "message": "Report this submission as incorrect."
     },
     "Dismiss": {
         "message": "Dismiss"
