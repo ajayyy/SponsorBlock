@@ -35,8 +35,14 @@
     "Segments": {
         "message": "赞助商广告片段"
     },
+    "upvoteButtonInfo": {
+        "message": "为这个提交点赞"
+    },
     "reportButtonTitle": {
         "message": "报告"
+    },
+    "reportButtonInfo": {
+        "message": "报告此提交不正确。"
     },
     "Dismiss": {
         "message": "忽略"
@@ -100,6 +106,9 @@
     },
     "voteFail": {
         "message": "您之前已经这样投过了。"
+    },
+    "serverDown": {
+        "message": "服务器似乎已宕机。请立即联系开发者。"
     },
     "connectionError": {
         "message": "连接错误。错误代码： "
@@ -554,5 +563,8 @@
     },
     "nonMusicCategoryOnMusic": {
         "message": "此视频被归类为音乐。您确定要提交带有非音乐类别的片段吗？除非此视频实际上不是音乐，否则您不应提交此片段。如果您感到困惑，请阅读指南。"
+    },
+    "multipleSegments": {
+        "message": "多个片段"
     }
 }
