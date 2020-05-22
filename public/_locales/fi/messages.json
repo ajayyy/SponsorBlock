@@ -1,1 +1,387 @@
-{}
+{
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "fullName": {
+        "message": "SponsorBlock YouTubelle - Ohita sponsoroinnit",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Ohita sponsorointi YouTube-videoissa. Ilmoita katsomiesi videoinen sponsoreista säästääksesi muiden aikaa.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Palvelin sanoi tämän pyynnön olevan virheellinen"
+    },
+    "429": {
+        "message": "Olet lähettänyt liian monta sponsorointiaikaa tälle yhdelle videolle. Oletko varma, että niitä on useita?"
+    },
+    "409": {
+        "message": "Tämä on jo lähetetty aiemmin"
+    },
+    "channelWhitelisted": {
+        "message": "Kanava lisätty valkoiselle listalle!"
+    },
+    "Sponsor": {
+        "message": "sponsori"
+    },
+    "Sponsors": {
+        "message": "sponsorit"
+    },
+    "Segment": {
+        "message": "sponsoroitu kohta"
+    },
+    "Segments": {
+        "message": "sponsoroidut kohdat"
+    },
+    "upvoteButtonInfo": {
+        "message": "Äänestä tätä lähetystä"
+    },
+    "reportButtonTitle": {
+        "message": "Ilmoita"
+    },
+    "reportButtonInfo": {
+        "message": "Ilmoita tämän lähetyksen olevan virheellinen."
+    },
+    "Dismiss": {
+        "message": "Hylkää"
+    },
+    "Loading": {
+        "message": "Ladataan..."
+    },
+    "Mins": {
+        "message": "Minuuttia"
+    },
+    "Secs": {
+        "message": "Sekuntia"
+    },
+    "Hide": {
+        "message": "Älä näytä koskaan"
+    },
+    "hitGoBack": {
+        "message": "Paina 'älä ohita' mennäksesi takaisin kohtaan jossa olit."
+    },
+    "unskip": {
+        "message": "Älä ohita"
+    },
+    "reskip": {
+        "message": "Ohita uudelleen"
+    },
+    "paused": {
+        "message": "Pysäytetty"
+    },
+    "manualPaused": {
+        "message": "Ajastin pysäytetty"
+    },
+    "clearThis": {
+        "message": "Haluatko varmasti poistaa tämän?\n\n"
+    },
+    "Unknown": {
+        "message": "Sponsorointiaikoja lähetettäessä tapahtui virhe, yritä myöhemmin uudelleen."
+    },
+    "sponsorFound": {
+        "message": "Tämän videon sponsorit löytyvät tietokannasta!"
+    },
+    "sponsor404": {
+        "message": "Sponsoreita ei löytynyt"
+    },
+    "sponsorStart": {
+        "message": "Sponsorointi alkaa nyt"
+    },
+    "sponsorEnd": {
+        "message": "Sponsorointi päättyy nyt"
+    },
+    "noVideoID": {
+        "message": "Välilehdeltä ei löytynyt YouTube-videota. Jos olet varma, että tämä on YouTube-välilehti, sulje tämä ponnahdusikkuna ja avaa se uudelleen. Jos sekään ei toimi, yritä ladata välilehti uudelleen."
+    },
+    "success": {
+        "message": "Onnistui!"
+    },
+    "voted": {
+        "message": "Äänestetty!"
+    },
+    "voteFail": {
+        "message": "Olet jo äänestänyt näin aiemmin."
+    },
+    "serverDown": {
+        "message": "Palvelin näyttää olevan alhaalla. Ota heti yhteyttä kehittäjään."
+    },
+    "connectionError": {
+        "message": "Yhteysvirhe on tapahtunut. Virhekoodi: "
+    },
+    "clearTimes": {
+        "message": "Tyhjennä sponsorointiajat"
+    },
+    "openPopup": {
+        "message": "Avaa SponsorBlock-ponnahdusikkuna"
+    },
+    "SubmitTimes": {
+        "message": "Lähetä sponsorointiajat"
+    },
+    "submitCheck": {
+        "message": "Haluatko varmasti lähettää tämän?"
+    },
+    "whitelistChannel": {
+        "message": "Lisää kanava valkoiselle listalle"
+    },
+    "removeFromWhitelist": {
+        "message": "Poista kanava valkoiselta listalta"
+    },
+    "voteOnTime": {
+        "message": "Äänestä sponsorointiaikaa"
+    },
+    "recordTimes": {
+        "message": "Tallenna sponsoroinnin ajat"
+    },
+    "soFarUHSubmited": {
+        "message": "Tähän mennessä, olet lähettänyt"
+    },
+    "savedPeopleFrom": {
+        "message": "Olet säästänyt ihmisiltä "
+    },
+    "viewLeaderboard": {
+        "message": "Näytä tulostaulukko"
+    },
+    "here": {
+        "message": "tässä"
+    },
+    "clearTimesButton": {
+        "message": "Tyhjennä ajat"
+    },
+    "submitTimesButton": {
+        "message": "Lähetä ajat"
+    },
+    "setUsername": {
+        "message": "Aseta käyttäjänimi"
+    },
+    "hideThis": {
+        "message": "Piilota tämä"
+    },
+    "Options": {
+        "message": "Asetukset"
+    },
+    "showButtons": {
+        "message": "Näytä painikkeet YouTuben soittimessa"
+    },
+    "hideButtons": {
+        "message": "Piilota painikkeet YouTuben soittimessa"
+    },
+    "hideButtonsDescription": {
+        "message": "Tämä piilottaa YouTuben soittimessa näkyvät, ohitettavien aikojen lähettämiseen käytetyt painikkeet."
+    },
+    "showInfoButton": {
+        "message": "Näytä info-painike YouTuben soittimessa"
+    },
+    "hideInfoButton": {
+        "message": "Piilota info-painike YouTuben soittimessa"
+    },
+    "whatInfoButton": {
+        "message": "Tämä on painike, joka avaa ponnahdusikkunan YouTube-sivulla."
+    },
+    "hideDeleteButton": {
+        "message": "Piilota poista-painike YouTuben soittimessa"
+    },
+    "showDeleteButton": {
+        "message": "Näytä poista-painike YouTuben soittimessa"
+    },
+    "whatDeleteButton": {
+        "message": "Tämä on YouTuben soittimen painike, joka poistaa kaikki kyseisen videon sponsorointikohdat, joita et ole vielä lähettänyt."
+    },
+    "website": {
+        "message": "Sivusto",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Lähdekoodi",
+        "description": "Used on Firefox Store Page"
+    },
+    "keybindDescription": {
+        "message": "Valitse näppäin painamalla sitä"
+    },
+    "disableSkipping": {
+        "message": "Poista Sponsorblock käytöstä"
+    },
+    "enableSkipping": {
+        "message": "Ota SponsorBlock käyttöön"
+    },
+    "yourWork": {
+        "message": "Sinun työsi",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "errorCode": {
+        "message": "Virhekoodi: "
+    },
+    "skip": {
+        "message": "Ohita"
+    },
+    "skipped": {
+        "message": "Ohitettu"
+    },
+    "disableAutoSkip": {
+        "message": "Poista automaattinen ohitus käytöstä"
+    },
+    "enableAutoSkip": {
+        "message": "Ota automaattinen ohitus käyttöön"
+    },
+    "youHaveSkipped": {
+        "message": "Olet ohittanut "
+    },
+    "youHaveSaved": {
+        "message": "Olet säästänyt itseltäsi "
+    },
+    "minLower": {
+        "message": "minuutti"
+    },
+    "minsLower": {
+        "message": "minuuttia"
+    },
+    "hourLower": {
+        "message": "tunti"
+    },
+    "hoursLower": {
+        "message": "tuntia"
+    },
+    "youHaveSavedTime": {
+        "message": "Olet säästänyt ihmisiltä"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " heidän elämästään."
+    },
+    "changeUserID": {
+        "message": "Tuo/vie sinun UserID:si"
+    },
+    "setUserID": {
+        "message": "Aseta UserID"
+    },
+    "supportInvidious": {
+        "message": "Tue Invidious:ta"
+    },
+    "addInvidiousInstance": {
+        "message": "Lisää Invidious-instanssi"
+    },
+    "add": {
+        "message": "Lisää"
+    },
+    "resetInvidiousInstance": {
+        "message": "Nollaa Invidious-instanssien lista"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Olet nollaamassa Invidious-instanssien listan"
+    },
+    "currentInstances": {
+        "message": "Nykyiset instanssit:"
+    },
+    "minDuration": {
+        "message": "Vähimmäiskesto (sekuntia):"
+    },
+    "showUploadButton": {
+        "message": "Näytä lähetä-painike"
+    },
+    "save": {
+        "message": "Tallenna"
+    },
+    "reset": {
+        "message": "Nollaa"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com-osoitetta tuetaan nyt"
+    },
+    "exportOptions": {
+        "message": "Vie/tuo kaikki asetukset"
+    },
+    "setOptions": {
+        "message": "Käytä asetuksia"
+    },
+    "confirmNoticeTitle": {
+        "message": "Lähetä kohta"
+    },
+    "submit": {
+        "message": "Jatka"
+    },
+    "cancel": {
+        "message": "Peruuta"
+    },
+    "delete": {
+        "message": "Poista"
+    },
+    "preview": {
+        "message": "Esikatsele"
+    },
+    "edit": {
+        "message": "Muokkaa"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Kirjoittaminen leikepöydälle epäonnistui"
+    },
+    "theKey": {
+        "message": "Näppäin"
+    },
+    "keyAlreadyUsedByYouTube": {
+        "message": "on jo YouTuben käytössä. Valitse toinen näppäin."
+    },
+    "keyAlreadyUsed": {
+        "message": "on jo liitetty toiseen toimintoon. Valitse toinen näppäin."
+    },
+    "to": {
+        "message": "-",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponsori"
+    },
+    "category_intro": {
+        "message": "Intro-animaatio"
+    },
+    "category_outro": {
+        "message": "Loppukortit/-tekstit"
+    },
+    "category_interaction": {
+        "message": "Vuorovaikutusmuistutus (tilaaminen)"
+    },
+    "category_selfpromo": {
+        "message": "Itsepromootio ja fanituotteet"
+    },
+    "category_music_offtopic": {
+        "message": "Musiikki: muussa kuin Musiikki-osiossa"
+    },
+    "category_livestream_messages": {
+        "message": "Livestream: lahjoituksen/viestin lukeminen"
+    },
+    "disable": {
+        "message": "Poista käytöstä"
+    },
+    "manualSkip": {
+        "message": "Manuaalinen ohitus"
+    },
+    "enableTestingServer": {
+        "message": "Ota betatestauspalvelin käyttöön"
+    },
+    "bracketNow": {
+        "message": "(Nyt)"
+    },
+    "moreCategories": {
+        "message": "Lisää kategorioita"
+    },
+    "bracketEnd": {
+        "message": "(Päättyy)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "piilotettu: miinusääniä"
+    },
+    "hiddenDueToDuration": {
+        "message": "piilotettu: liian lyhyt"
+    },
+    "channelDataNotFound": {
+        "message": "Kanavatunnusta ei ole vielä ladattu."
+    },
+    "downvoteDescription": {
+        "message": "Virheellinen/väärä aika"
+    },
+    "incorrectCategory": {
+        "message": "Väärä kategoria"
+    },
+    "multipleSegments": {
+        "message": "Useita kohtia"
+    }
+}
