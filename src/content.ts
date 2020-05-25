@@ -975,30 +975,30 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
         if (!Config.config.dontShowNotice || !autoSkip) {
             let skipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer);
         }
+    }
 
-        //send telemetry that a this sponsor was skipped
-        if (Config.config.trackViewCount && autoSkip) {
-            let alreadySkipped = false;
-            let isPreviewSegment = false;
+    //send telemetry that a this sponsor was skipped
+    if (Config.config.trackViewCount && autoSkip) {
+        let alreadySkipped = false;
+        let isPreviewSegment = false;
 
-            for (const segment of skippingSegments) {
-                let index = sponsorTimes.indexOf(segment);
-                if (index !== -1 && !sponsorSkipped[index]) {
-                    utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
+        for (const segment of skippingSegments) {
+            let index = sponsorTimes.indexOf(segment);
+            if (index !== -1 && !sponsorSkipped[index]) {
+                utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
 
-                    sponsorSkipped[index] = true;
-                } else if (sponsorSkipped[index]) {
-                    alreadySkipped = true;
-                }
-
-                if (index !== -1) isPreviewSegment = true;
+                sponsorSkipped[index] = true;
+            } else if (sponsorSkipped[index]) {
+                alreadySkipped = true;
             }
-            
-            // Count this as a skip
-            if (!alreadySkipped && !isPreviewSegment) {
-                Config.config.minutesSaved = Config.config.minutesSaved + (skipTime[1] - skipTime[0]) / 60;
-                Config.config.skipCount = Config.config.skipCount + 1;
-            }
+
+            if (index === -1) isPreviewSegment = true;
+        }
+        
+        // Count this as a skip
+        if (!alreadySkipped && !isPreviewSegment) {
+            Config.config.minutesSaved = Config.config.minutesSaved + (skipTime[1] - skipTime[0]) / 60;
+            Config.config.skipCount = Config.config.skipCount + 1;
         }
     }
 }
