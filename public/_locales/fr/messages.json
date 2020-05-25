@@ -98,6 +98,9 @@
     "voteFail": {
         "message": "Vous avez déjà voté pour ce choix."
     },
+    "serverDown": {
+        "message": "Le serveur ne fonctionne pas. Contactez le développeur."
+    },
     "connectionError": {
         "message": "Erreur de connexion. Code d'erreur : "
     },
@@ -266,6 +269,9 @@
     "skip": {
         "message": "Passer"
     },
+    "skipped": {
+        "message": "Passé"
+    },
     "disableAutoSkip": {
         "message": "Désactiver le passage automatique"
     },
@@ -338,6 +344,9 @@
     "supportInvidious": {
         "message": "Soutenir Invidious"
     },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) est un client tiers pour Youtube. Vous devez accepter des permissions supplémentaires pour activer son support. Cette fonctionnalité ne fonctionne pas en mode incognito sur Chrome et les autres variantes de Chromium."
+    },
     "optionsInfo": {
         "message": "Activer Invidious, désactiver le passage automatique, masquer les boutons et plus encore."
     },
@@ -386,6 +395,9 @@
     "reset": {
         "message": "Réinitialiser"
     },
+    "areYouSureReset": {
+        "message": "Voulez-vous vraiment remettre à zéro ?"
+    },
     "unlistedCheck": {
         "message": "Ignorer les vidéos non listées"
     },
@@ -428,5 +440,8 @@
     },
     "moreCategories": {
         "message": "Autres catégories"
+    },
+    "multipleSegments": {
+        "message": "Plusieurs segments"
     }
 }
