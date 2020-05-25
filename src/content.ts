@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, CategorySkipOption, CategorySelection, VideoID, SponsorHideType } from "./types";
+import { SponsorTime, CategorySkipOption, CategorySelection, VideoID, SponsorHideType, FetchResponse } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -615,9 +615,9 @@ function sponsorsLookup(id: string) {
     utils.asyncRequestToServer('GET', "/api/skipSegments", {
         videoID: id,
         categories
-    }).then(async (response: Response) => {
-        if (response.status === 200) {
-            let recievedSegments: SponsorTime[] = await response.json();
+    }).then(async (response: FetchResponse) => {
+        if (response.ok) {
+            let recievedSegments: SponsorTime[] = JSON.parse(response.responseText);
             if (!recievedSegments.length) {
                 console.error("[SponsorBlock] Server returned malformed response: " + JSON.stringify(recievedSegments));
                 return;
@@ -984,7 +984,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
             for (const segment of skippingSegments) {
                 let index = sponsorTimes.indexOf(segment);
                 if (index !== -1 && !sponsorSkipped[index]) {
-                    utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
+                    utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
 
                     sponsorSkipped[index] = true;
                 } else if (sponsorSkipped[index]) {
@@ -1507,7 +1507,7 @@ async function sendSubmitMessage(){
         document.getElementById("submitButton").style.animation = "unset";
         (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-        alert(utils.getErrorMessage(response.status) + "\n\n" + (await response.text()));
+        alert(utils.getErrorMessage(response.status) + "\n\n" + (response.responseText));
     }
 }
 

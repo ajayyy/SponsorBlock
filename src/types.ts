@@ -22,6 +22,12 @@ interface ContentContainer {
     }
 }
 
+interface FetchResponse {
+    responseText: string,
+    status: number,
+    ok: boolean
+}
+
 interface VideoDurationResponse {
     duration: number;
 }
@@ -55,6 +61,7 @@ interface SponsorTime {
 type VideoID = string;
 
 export {
+    FetchResponse,
     VideoDurationResponse,
     ContentContainer,
     CategorySelection,

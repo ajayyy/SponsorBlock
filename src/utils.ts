@@ -1,5 +1,5 @@
 import Config from "./config";
-import { CategorySelection, SponsorTime } from "./types";
+import { CategorySelection, SponsorTime, FetchResponse } from "./types";
 
 import * as CompileConfig from "../config.json";
 
@@ -276,29 +276,18 @@ class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */    
-    async asyncRequestToCustomServer(type: string, url: string, data = {}) {
-
-        // If GET, convert JSON to parameters
-        if (type.toLowerCase() === "get") {
-            for (const key in data) {
-                let seperator = url.includes("?") ? "&" : "?";
-                let value = (typeof(data[key]) === "string") ? data[key]: JSON.stringify(data[key]);
-                url += seperator + key + "=" + value;
-            }
-
-            data = null;
-        }
-
-        const response = await fetch(url, {
-            method: type,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            redirect: 'follow',
-            body: data ? JSON.stringify(data) : null
-        });
-
-        return response;
+    async asyncRequestToCustomServer(type: string, url: string, data = {}): Promise<FetchResponse> {
+        return new Promise((resolve) => {
+            // Ask the background script to do the work
+            chrome.runtime.sendMessage({
+                message: "sendRequest",
+                type,
+                url,
+                data
+            }, (response) => {
+                resolve(response);
+            });
+        })
     }
 
     /**
@@ -308,7 +297,7 @@ class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */    
-    async asyncRequestToServer(type: string, address: string, data = {}) {
+    async asyncRequestToServer(type: string, address: string, data = {}): Promise<FetchResponse> {
         let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
         return await (this.asyncRequestToCustomServer(type, serverAddress + address, data));
@@ -321,25 +310,17 @@ class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */
-    sendRequestToServer(type: string, address: string, callback?: (xmlhttp: XMLHttpRequest, err: boolean) => any) {
-        let xmlhttp = new XMLHttpRequest();
-
+    sendRequestToServer(type: string, address: string, callback?: (response: FetchResponse) => void) {
         let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
-        
-        xmlhttp.open(type, serverAddress + address, true);
-  
-        if (callback != undefined) {
-            xmlhttp.onreadystatechange = function () {
-                callback(xmlhttp, false);
-            };
-    
-            xmlhttp.onerror = function(ev) {
-                callback(xmlhttp, true);
-            };
-        }
-  
-        //submit this request
-        xmlhttp.send();
+
+        // Ask the background script to do the work
+        chrome.runtime.sendMessage({
+            message: "sendRequest",
+            type,
+            url: serverAddress + address
+        }, (response) => {
+            callback(response);
+        });
     }
 
     getFormattedMinutes(seconds: number) {

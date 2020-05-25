@@ -268,7 +268,7 @@ async function migrateOldFormats() {
                     let response = await utils.asyncRequestToCustomServer("GET", "https://sponsor.ajay.app/invidious/api/v1/channels/" + item.split("/")[2] + "?fields=authorId");
                 
                     if (response.ok) {
-                        newChannelList.push((await response.json()).authorId);
+                        newChannelList.push((JSON.parse(response.responseText)).authorId);
                     } else {
                         // Add it at the beginning so it gets converted later
                         newChannelList.unshift(item);
