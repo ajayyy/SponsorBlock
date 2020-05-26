@@ -38,6 +38,9 @@
     "reportButtonTitle": {
         "message": "Signaler"
     },
+    "reportButtonInfo": {
+        "message": "Signaler que ce segment commercial est incorrect."
+    },
     "Dismiss": {
         "message": "Fermer"
     },
@@ -383,6 +386,9 @@
     "showUploadButton": {
         "message": "Afficher le bouton de téléchargement"
     },
+    "whatUploadButton": {
+        "message": "Ce bouton apparaît sur le lecteur YouTube dès qu'un segment est prêt à être envoyé."
+    },
     "customServerAddress": {
         "message": "Adresse du serveur SponsorBlock"
     },
@@ -395,17 +401,32 @@
     "reset": {
         "message": "Réinitialiser"
     },
+    "customAddressError": {
+        "message": "Le format de l'adresse est incorrect. Assurez-vous qu'elle commence bien par http:// ou https:// et ne termine pas par un slash."
+    },
     "areYouSureReset": {
         "message": "Voulez-vous vraiment remettre à zéro ?"
     },
+    "confirmPrivacy": {
+        "message": "Cette vidéo est non-listée. Appuyez sur annuler si vous ne voulez pas vérifier la présence de message commerciaux."
+    },
     "unlistedCheck": {
         "message": "Ignorer les vidéos non listées"
+    },
+    "whatUnlistedCheck": {
+        "message": "Cette fonctionnalité ralentie légèrement SponsorBlock. La recherche des message commerciaux nécessite l'envoie de l'ID de la vidéo au serveur. Si vous êtes préoccupé par l'envoi de l'ID des vidéos non listées sur Internet, activez cette option."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com est maintenant pris en charge"
     },
     "exportOptions": {
         "message": "Importer/Exporter toutes les options"
+    },
+    "whatExportOptions": {
+        "message": "C'est votre configuration complète au format JSON. Elle inclut votre identifiant utilisateur, gardez-la pour vous."
+    },
+    "confirmNoticeTitle": {
+        "message": "Soumettre le segment"
     },
     "submit": {
         "message": "Soumettre"
@@ -416,8 +437,17 @@
     "delete": {
         "message": "Supprimer"
     },
+    "preview": {
+        "message": "Aperçu"
+    },
     "edit": {
         "message": "Éditer"
+    },
+    "copyDebugInformation": {
+        "message": "Copier les informations de débogage dans le presse-papiers"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Impossible de copier dans le presse-papiers"
     },
     "theKey": {
         "message": "La clé"
@@ -432,6 +462,27 @@
         "message": "à",
         "description": "Used between sponsor times. Example: 1:20 to 1:30"
     },
+    "category_sponsor": {
+        "message": "Message commercial"
+    },
+    "category_intro": {
+        "message": "Générique d'introduction"
+    },
+    "category_outro": {
+        "message": "Générique de fin"
+    },
+    "category_selfpromo": {
+        "message": "Auto-promotion et produits dérivés"
+    },
+    "category_music_offtopic": {
+        "message": "Musique : Segment non-musicale"
+    },
+    "category_livestream_messages": {
+        "message": "Stream : lecture de dons et messages"
+    },
+    "showOverlay": {
+        "message": "Afficher dans la barre de progression"
+    },
     "enableTestingServer": {
         "message": "Activer le serveur de test bêta"
     },
@@ -440,6 +491,12 @@
     },
     "moreCategories": {
         "message": "Autres catégories"
+    },
+    "downvoteDescription": {
+        "message": "Segment de mauvaise qualité"
+    },
+    "incorrectCategory": {
+        "message": "Mauvaise catégorie"
     },
     "multipleSegments": {
         "message": "Plusieurs segments"
