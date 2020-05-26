@@ -67,10 +67,6 @@ var channelWhitelisted = false;
 // create preview bar
 var previewBar: PreviewBar = null;
 
-// When not null, a sponsor is currently being previewed and auto skip should be enabled.
-// This is set to a timeout function when that happens that will reset it after 3 seconds.
-var previewResetter: NodeJS.Timeout = null;
-
 //the player controls on the YouTube player
 var controls = null;
 
@@ -164,14 +160,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
                 video.play();
             }
 
-            // Start preview resetter
-            if (previewResetter !== null){
-                clearTimeout(previewResetter);
-            } 
-
-            previewResetter = setTimeout(() => previewResetter = null, 4000);
-
-            return
+            return;
         case "getCurrentTime":
             sendResponse({
                 currentTime: getRealCurrentTime()
@@ -848,7 +837,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
     let endTimeIndex = getLatestEndTimeIndex(sponsorTimes, minSponsorTimeIndex);
 
     let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments);
-    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, true, false);
+    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, false, false);
 
     let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
     let previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minPreviewSponsorTimeIndex);
@@ -952,13 +941,6 @@ function previewTime(time: number) {
     if (video.paused){
         video.play();
     }
-
-    // Start preview resetter
-    if (previewResetter !== null){
-        clearTimeout(previewResetter);
-    }
-
-    previewResetter = setTimeout(() => previewResetter = null, 4000);
 }
 
 //skip from the start time to the end time for a certain index sponsor time
@@ -966,7 +948,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     // There will only be one submission if it is manual skip
     let autoSkip: boolean = utils.getCategorySelection(skippingSegments[0].category).option === CategorySkipOption.AutoSkip;
 
-    if (autoSkip || previewResetter !== null) {
+    if (autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) {
         v.currentTime = skipTime[1];
     }
 
