@@ -883,9 +883,6 @@ async function runThePopup(messageListener?: MessageListener) {
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
                     addVoteMessage(chrome.i18n.getMessage("voted"), UUID)
-                } else if (response.successType == 0) {
-                    //failure: duplicate vote
-                    addVoteMessage(chrome.i18n.getMessage("voteFail"), UUID)
                 } else if (response.successType == -1) {
                     addVoteMessage(utils.getErrorMessage(response.statusCode), UUID)
                 }
