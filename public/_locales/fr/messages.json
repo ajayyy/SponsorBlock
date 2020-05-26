@@ -35,6 +35,9 @@
     "Segments": {
         "message": "segments commerciaux"
     },
+    "upvoteButtonInfo": {
+        "message": "Voter pour cette entrée"
+    },
     "reportButtonTitle": {
         "message": "Signaler"
     },
@@ -67,6 +70,9 @@
     },
     "paused": {
         "message": "En pause"
+    },
+    "manualPaused": {
+        "message": "Timer arrêté"
     },
     "confirmMSG": {
         "message": "Pour modifier ou supprimer des soumissions, cliquez sur le bouton d'info ou ouvrez la fenêtre de l'extension en cliquant sur son icône dans le coin en haut à droite."
@@ -393,7 +399,7 @@
         "message": "Adresse du serveur SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "L'adresse que SponsorBlock utilise pour passer des appels vers le serveur.\nSauf si vous avez votre propre instance de serveur, cela ne devrait pas être changé."
+        "message": "L'adresse que SponsorBlock utilise pour faire des appels au serveur.\nSauf si vous avez votre propre instance de serveur, cela ne devrait pas être changé."
     },
     "save": {
         "message": "Sauvegarder"
@@ -425,6 +431,15 @@
     "whatExportOptions": {
         "message": "C'est votre configuration complète au format JSON. Elle inclut votre identifiant utilisateur, gardez-la pour vous."
     },
+    "setOptions": {
+        "message": "Définir les options"
+    },
+    "exportOptionsWarning": {
+        "message": "Attention : La modification des options est permanente et peut casser votre installation. Êtes-vous sûr de vouloir faire ça ? Sauvegardez les anciennes au cas où."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Ce JSON n'est pas formaté correctement. Vos options n'ont pas été modifiées."
+    },
     "confirmNoticeTitle": {
         "message": "Soumettre le segment"
     },
@@ -449,6 +464,12 @@
     "copyDebugInformationFailed": {
         "message": "Impossible de copier dans le presse-papiers"
     },
+    "copyDebugInformationOptions": {
+        "message": "Copie les informations dans le presse-papiers pour les fournir à un développeur lors d'un rapport de bug ou lorsqu'un développeur le demande. Des informations sensibles telles que l'ID d'utilisateur, les chaînes white-listée ou l'adresse du serveur personnalisé ont été supprimées. Cependant, ça contient des informations telles que votre user-agent, votre navigateur, votre système d'exploitation et votre numéro de version d'extension."
+    },
+    "copyDebugInformationComplete": {
+        "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous préférez ne pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
+    },
     "theKey": {
         "message": "La clé"
     },
@@ -471,6 +492,9 @@
     "category_outro": {
         "message": "Générique de fin"
     },
+    "category_interaction": {
+        "message": "Rappel d'interaction (abonnement)"
+    },
     "category_selfpromo": {
         "message": "Auto-promotion et produits dérivés"
     },
@@ -480,11 +504,23 @@
     "category_livestream_messages": {
         "message": "Stream : lecture de dons et messages"
     },
+    "disable": {
+        "message": "Désactiver"
+    },
+    "manualSkip": {
+        "message": "Passer manuellement"
+    },
     "showOverlay": {
         "message": "Afficher dans la barre de progression"
     },
     "enableTestingServer": {
         "message": "Activer le serveur de test bêta"
+    },
+    "whatEnableTestingServer": {
+        "message": "Vos soumissions et votes NE COMPTERONT PAS sur le serveur principal. Utilisez ceci uniquement pour faire des tests."
+    },
+    "testingServerWarning": {
+        "message": "AUCUNE SOUMISSION OU VOTE DE COMPTERA sur le serveur principal tant que vous serez connecté au serveur de test. Désactivez ceci quand vous voudrez réellement soumettre ou voter."
     },
     "bracketNow": {
         "message": "(Maintenant)"
@@ -492,11 +528,41 @@
     "moreCategories": {
         "message": "Autres catégories"
     },
+    "bracketEnd": {
+        "message": "(Fin)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "masqué : vote négatif"
+    },
+    "hiddenDueToDuration": {
+        "message": "masqué : trop court"
+    },
+    "channelDataNotFound": {
+        "message": "L'ID de la chaîne n'a pas encore été chargé."
+    },
+    "adblockerIssue": {
+        "message": "Il semble que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. C'est probablement votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Si ça continue de se reproduire, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Forcer la vérification de la chaîne avant de passer les sponsors"
+    },
+    "whatForceChannelCheck": {
+        "message": "Par défaut, les sponsors seront passés immédiatement avant même que la chaîne soit connue. Par défaut, des sponsors de zéro seconde peuvent être passés sur des chaînes white-listées. Activer cette option empêchera cela mais fera que les messages sponsorisés seront passés avec un petit délai car la récupération du channelID peut prendre du temps. Ce délai peut être imperceptible si vous avez une connexion rapide."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Envisagez d'activer la vérification forcée de la chaîne avant de passer les sponsors"
+    },
     "downvoteDescription": {
         "message": "Segment de mauvaise qualité"
     },
     "incorrectCategory": {
         "message": "Mauvaise catégorie"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Cette vidéo est classée dans les musiques. Êtes-vous sûr de vouloir soumettre des segments non-musicaux ? Vous ne devriez pas soumettre ce segment sauf si la vidéo n'est en fait pas de la musique. Veuillez lire les guidelines en cas de confusion."
     },
     "multipleSegments": {
         "message": "Plusieurs segments"
