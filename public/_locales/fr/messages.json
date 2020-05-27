@@ -465,10 +465,10 @@
         "message": "Impossible de copier dans le presse-papiers"
     },
     "copyDebugInformationOptions": {
-        "message": "Copie les informations dans le presse-papiers pour les fournir à un développeur lors d'un rapport de bug ou lorsqu'un développeur le demande. Des informations sensibles telles que l'ID d'utilisateur, les chaînes white-listée ou l'adresse du serveur personnalisé ont été supprimées. Cependant, ça contient des informations telles que votre user-agent, votre navigateur, votre système d'exploitation et votre numéro de version d'extension."
+        "message": "Copie les informations dans le presse-papiers pour les fournir aux développeurs lors d'un rapport de bug ou lorsqu'un développeur le demande. Les informations sensibles telles que l'ID d'utilisateur, les chaînes sur liste blanche ou l'adresse du serveur personnalisé ont été supprimées. Cependant, ça contient des informations telles que votre user-agent, votre navigateur, votre système d'exploitation et le numéro de version d'extension. "
     },
     "copyDebugInformationComplete": {
-        "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous préférez ne pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
+        "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous ne préférez pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
     },
     "theKey": {
         "message": "La clé"
@@ -544,16 +544,16 @@
         "message": "Il semble que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. C'est probablement votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "itCouldBeAdblockerIssue": {
-        "message": "Si ça continue de se reproduire, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+        "message": "Si ça se reproduit, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
-        "message": "Forcer la vérification de la chaîne avant de passer les sponsors"
+        "message": "Forcer la vérification de la chaîne avant de passer les message commerciaux"
     },
     "whatForceChannelCheck": {
-        "message": "Par défaut, les sponsors seront passés immédiatement avant même que la chaîne soit connue. Par défaut, des sponsors de zéro seconde peuvent être passés sur des chaînes white-listées. Activer cette option empêchera cela mais fera que les messages sponsorisés seront passés avec un petit délai car la récupération du channelID peut prendre du temps. Ce délai peut être imperceptible si vous avez une connexion rapide."
+        "message": "Par défaut, les sponsors seront passés immédiatement, avant même que la chaîne soit connue. Des sponsors au début de la vidéo peuvent être passés sur des chaînes sur liste blanche. Activer cette option empêchera cela mais fera que les messages sponsorisés seront passés avec un petit délai, car la récupération du channelID peut prendre du temps. Ce délai peut être imperceptible si vous avez une connexion rapide."
     },
     "forceChannelCheckPopup": {
-        "message": "Envisagez d'activer la vérification forcée de la chaîne avant de passer les sponsors"
+        "message": "Envisagez d'activer la vérification forcée de la chaîne avant de passer les messages commerciaux"
     },
     "downvoteDescription": {
         "message": "Segment de mauvaise qualité"
@@ -562,7 +562,7 @@
         "message": "Mauvaise catégorie"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Cette vidéo est classée dans les musiques. Êtes-vous sûr de vouloir soumettre des segments non-musicaux ? Vous ne devriez pas soumettre ce segment sauf si la vidéo n'est en fait pas de la musique. Veuillez lire les guidelines en cas de confusion."
+        "message": "Cette vidéo est classée dans les musiques. Êtes-vous sûr de vouloir soumettre des segments non-musicaux ? Vous devriez soumettre ce segment uniquement si la vidéo est de la musique. Veuillez lire les recommandations en cas de confusion."
     },
     "multipleSegments": {
         "message": "Plusieurs segments"
