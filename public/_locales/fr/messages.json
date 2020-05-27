@@ -87,7 +87,7 @@
         "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de donnée !"
     },
     "sponsor404": {
-        "message": "Pas de sponsors trouvés"
+        "message": "Pas de messages commerciaux trouvés"
     },
     "sponsorStart": {
         "message": "Début du message commercial"
@@ -147,7 +147,7 @@
         "message": "Vous avez soumis jusqu'à présent"
     },
     "savedPeopleFrom": {
-        "message": "Vous avez fait gagner aux autres "
+        "message": "Vous avez permis aux autres de passer "
     },
     "viewLeaderboard": {
         "message": "Consulter le classement"
