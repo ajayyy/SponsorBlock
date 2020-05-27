@@ -8,14 +8,14 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Omitir esponsores en videos de YouTube. Infórmanos de esponsores en videos que ves para ahorrar el tiempo de otros.",
+        "message": "Omitir sponsors en videos de YouTube. Infórmanos de sponsors en videos que ves para ahorrar el tiempo de otros.",
         "description": "Description of the extension."
     },
     "400": {
         "message": "Servidor dijo que esta solicitud no es valida"
     },
     "429": {
-        "message": "Has enviado demasiados tiempos de esponsor en este video, ¿estas seguro de que hay tantos?"
+        "message": "Has enviado demasiados tiempos de sponsor en este video, ¿estas seguro de que hay tantos?"
     },
     "409": {
         "message": "Esto ya ha sido enviado antes"
@@ -24,16 +24,16 @@
         "message": "Canal Permitido!"
     },
     "Sponsor": {
-        "message": "esponsor"
+        "message": "sponsor"
     },
     "Sponsors": {
-        "message": "esponsores"
+        "message": "sponsors"
     },
     "Segment": {
-        "message": "segmento de esponsor"
+        "message": "segmento de sponsor"
     },
     "Segments": {
-        "message": "segmento de esponsores"
+        "message": "segmentos de sponsor"
     },
     "upvoteButtonInfo": {
         "message": "Votar a favor de esta sumisión"
@@ -81,19 +81,19 @@
         "message": "¿Estas seguro de que quieres eliminar esto?\n\n"
     },
     "Unknown": {
-        "message": "Se ha producido un error enviando tus tiempos de esponsor, por favor inténtalo de nuevo más tarde."
+        "message": "Se ha producido un error enviando tus tiempos de sponsor, por favor inténtalo de nuevo más tarde."
     },
     "sponsorFound": {
-        "message": "¡Los esponsores de este video están en la base de datos!"
+        "message": "¡Los sponsors de este video están en la base de datos!"
     },
     "sponsor404": {
-        "message": "No se encontró ningún esponsor"
+        "message": "No se encontró ningún sponsor"
     },
     "sponsorStart": {
-        "message": "Esponsor Empieza Ahora"
+        "message": "Sponsor Empieza Ahora"
     },
     "sponsorEnd": {
-        "message": "Esponsor Acaba Ahora"
+        "message": "Sponsor Acaba Ahora"
     },
     "noVideoID": {
         "message": "Ningún video de YouTube se encontró en esta pestaña. Si sabes que esto es una pestaña de YouTube, cierra esta ventana y ábrela otra vez. Si eso no funciona, intenta recargar la pestaña."
@@ -111,19 +111,19 @@
         "message": "Ha ocurrido un error de conexión. Código de error: "
     },
     "wantToSubmit": {
-        "message": "¿Quieres enviar los tiempos de esponsor para el vídeo id"
+        "message": "¿Quieres enviar los tiempos de sponsor para el vídeo id"
     },
     "leftTimes": {
-        "message": "Parece que has dejado algunos tiempos de esponsor sin enviar. Vuelve a esa página para enviarlos (no se eliminaron)."
+        "message": "Parece que has dejado algunos tiempos de sponsor sin enviar. Vuelve a esa página para enviarlos (no se eliminaron)."
     },
     "clearTimes": {
-        "message": "Eliminar Tiempos de Esponsor"
+        "message": "Eliminar Tiempos de Sponsor"
     },
     "openPopup": {
         "message": "Abrir Ventana de SponsorBlock"
     },
     "SubmitTimes": {
-        "message": "Enviar Tiempos de Esponsor"
+        "message": "Enviar Tiempos de Sponsor"
     },
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
@@ -135,10 +135,10 @@
         "message": "Parar De Permitir Canal"
     },
     "voteOnTime": {
-        "message": "Votar en un tiempo de esponsor"
+        "message": "Votar en un tiempo de sponsor"
     },
     "recordTimes": {
-        "message": "Registrar los tiempos de un esponsor"
+        "message": "Registrar los tiempos de un sponsor"
     },
     "soFarUHSubmited": {
         "message": "Hasta ahora, has enviado"
@@ -153,13 +153,13 @@
         "message": "aquí"
     },
     "recordTimesDescription": {
-        "message": "Haga clic en el botón de abajo cuando el esponsor comienza y termina para registrarlo y\nenviarlo a la base de datos."
+        "message": "Haga clic en el botón de abajo cuando el sponsor comienza y termina para registrarlo y\nenviarlo a la base de datos."
     },
     "popupHint": {
-        "message": "Consejo: Presiona la tecla de punto y coma mientras enfocado en un video para registrar el comienzo/fin de un esponsor y presiona comillas para enviar. (Esto se puede cambiar en las opciones)"
+        "message": "Consejo: Presiona la tecla de punto y coma mientras enfocado en un video para registrar el comienzo/fin de un sponsor y presiona comillas para enviar. (Esto se puede cambiar en las opciones)"
     },
     "lastTimes": {
-        "message": "Últimos mensajes de esponsor elegidos"
+        "message": "Últimos mensajes de sponsor elegidos"
     },
     "clearTimesButton": {
         "message": "Eliminar Tiempos"
@@ -210,19 +210,19 @@
         "message": "Este es el botón en el reproductor de YouTube que eliminará todos tus segmentos no enviados para el vídeo actual."
     },
     "disableViewTracking": {
-        "message": "Desactivar seguimiento de numero de esponsores omitidos"
+        "message": "Desactivar seguimiento de numero de sponsorsomitidos"
     },
     "enableViewTracking": {
-        "message": "Activar seguimiento de numero de esponsores omitidos"
+        "message": "Activar seguimiento de numero de sponsors omitidos"
     },
     "whatViewTracking": {
-        "message": "Esta opción registra los esponsores que te has saltado para que los otros usuarios sepan cuánto su sumisión ha ayudado a otros y\nes usado como métrica junto con votos positivos para asegurar que el spam no ingrese a la base de datos. La extensión envía un mensaje\nal servidor cada vez que se salta un patrocinador. Esperemos que la mayoría de la gente no cambie esta opción para que los números de vista sean exactos. :)"
+        "message": "Esta opción registra los sponsors que te has saltado para que los otros usuarios sepan cuánto su sumisión ha ayudado a otros y\nes usado como métrica junto con votos positivos para asegurar que el spam no ingrese a la base de datos. La extensión envía un mensaje\nal servidor cada vez que se salta un patrocinador. Esperemos que la mayoría de la gente no cambie esta opción para que los números de vista sean exactos. :)"
     },
     "showNotice": {
         "message": "Mostrar aviso de nuevo"
     },
     "longDescription": {
-        "message": "SponsorBlock es una extensión que se omitira segmentos de esponsor de vídeos de YouTube. SponsorBlock es una extensión de navegador que permite a cualquiera enviar los tiempos de comienzo y fin de segmentos de esponsor de vídeos de YouTube. Una vez que una persona envíe esta información, todos los demás con esta extensión pueden omitir directamente el segmento de esponsor.",
+        "message": "SponsorBlock es una extensión que se omitira segmentos de sponsor de vídeos de YouTube. SponsorBlock es una extensión de navegador que permite a cualquiera enviar los tiempos de comienzo y fin de segmentos de sponsor de vídeos de YouTube. Una vez que una persona envíe esta información, todos los demás con esta extensión pueden omitir directamente el segmento de sponsor.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -242,7 +242,7 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setStartSponsorShortcut": {
-        "message": "Establecer botón de inicio de esponsor"
+        "message": "Establecer botón de inicio de sponsor"
     },
     "setSubmitKeybind": {
         "message": "Establecer botón de envio"
@@ -285,13 +285,13 @@
         "message": "Activar la omisión automática"
     },
     "autoSkipDescription": {
-        "message": "La omisión automática omitirá esponsores por ti. Si esta desactivada, aparecerá un aviso preguntando si quieres omitir."
+        "message": "La omisión automática omitirá sponsors por ti. Si esta desactivada, aparecerá un aviso preguntando si quieres omitir."
     },
     "audioNotification": {
         "message": "Notificación de audio al omitir"
     },
     "audioNotificationDescription": {
-        "message": "Notificación de audio al omitir reproducirá un sonido cada vez que se omite un esponsor. Si está desactivada (o se desactiva la omision automática), no se reproducirá ningún sonido."
+        "message": "Notificación de audio al omitir reproducirá un sonido cada vez que se omite un sponsor. Si está desactivada (o se desactiva la omisión automática), no se reproducirá ningún sonido."
     },
     "youHaveSkipped": {
         "message": "Has omitido "
@@ -318,9 +318,54 @@
         "message": " de sus vidas."
     },
     "guildlinesSummary": {
-        "message": "- Asegúrate de que tu segmento sólo contiene un segmento de promoción de pago, nada más.\n- Asegúrate de que omitir este segmento no omitirá ningún contenido valioso\n- Si todo el vídeo es un esponsor, por favor, no lo envíen. Pronto saldrá un sistema completo de reportes de vídeo.\n- Por favor, no informe de los avisos que podrían mostrar parcialidad (si un vídeo de revista está patrocinado, no se salte cuando mencionen eso)."
+        "message": "- Asegúrate de que tu segmento sólo contiene un segmento de promoción de pago, nada más.\n- Asegúrate de que omitir este segmento no omitirá ningún contenido valioso\n- Si todo el vídeo es un sponsor, por favor, no lo envíen. Pronto saldrá un sistema completo de reportes de vídeo.\n- Por favor, no informe de los avisos que podrían mostrar parcialidad (si un vídeo de revista está patrocinado, no se salte cuando mencionen eso)."
     },
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
+    },
+    "changeUserID": {
+        "message": "Importar/Exportar tu UserID"
+    },
+    "whatChangeUserID": {
+        "message": "Esto debería mantenerse privado. Es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, pueden imitarte."
+    },
+    "setUserID": {
+        "message": "Definir UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Advertencia: Cambiar el UserID es permanente. ¿Estás seguro de que desea hacer esto? Asegúrese de hacer una copia de seguridad de su UserID anterior por si acaso."
+    },
+    "createdBy": {
+        "message": "Creado Por"
+    },
+    "autoSkip": {
+        "message": "Omisión Automática"
+    },
+    "showSkipNotice": {
+        "message": "Mostrar aviso después de que se omita un sponsor"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Actualmente está establecido a:"
+    },
+    "supportInvidious": {
+        "message": "Soportar Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) es un cliente alternativo para YouTube. Para habilitar soporte, tienes que aceptar los permisos adicionales. Esto NO funciona en modo incógnito en Chrome y otros variantes de Chromium."
+    },
+    "optionsInfo": {
+        "message": "Activar soporte de Invidious, deshabilitar omisión automática, ocultar botones y más."
+    },
+    "addInvidiousInstance": {
+        "message": "Añadir nodo de Invidious"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Añadir un nodo de Invidious personalizado. Esto debe estar formateado con SOLO el dominio. Ejemplo: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Añadir"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Esto es un dominio inválido. Esto debería incluir SOLO el dominio. Ejemplo: invidious.ajay.app"
     }
 }
