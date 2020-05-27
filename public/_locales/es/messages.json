@@ -367,5 +367,134 @@
     },
     "addInvidiousInstanceError": {
         "message": "Esto es un dominio inválido. Esto debería incluir SOLO el dominio. Ejemplo: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Restablecer Lista de Nodos de Invidious"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Estás a punto de restablecer la lista de nodos de invidious"
+    },
+    "currentInstances": {
+        "message": "Nodos actuales:"
+    },
+    "minDuration": {
+        "message": "Duración mínima (en segundos):"
+    },
+    "minDurationDescription": {
+        "message": "Los segmentos de sponsor más cortos que el valor establecido no serán omitidos ni mostrados en el reproductor."
+    },
+    "shortCheck": {
+        "message": "La siguiente sumisión es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
+    },
+    "showUploadButton": {
+        "message": "Mostrar botón de subida"
+    },
+    "whatUploadButton": {
+        "message": "Este botón aparece en el reproductor de YouTube después de que has seleccionado una marca de tiempo y estas listo para enviar."
+    },
+    "customServerAddress": {
+        "message": "Dirección del servidor SponsorBlock"
+    },
+    "customServerAddressDescription": {
+        "message": "La dirección que SponsorBlock utiliza para hacer llamadas al servidor.\nA menos que tengas tu propia instancia del servidor, no debería cambiarse."
+    },
+    "save": {
+        "message": "Guardar"
+    },
+    "reset": {
+        "message": "Restablecer"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com ahora es compatible"
+    },
+    "exportOptions": {
+        "message": "Importar/Exportar todas las opciones"
+    },
+    "setOptions": {
+        "message": "Configurar opciones"
+    },
+    "confirmNoticeTitle": {
+        "message": "Enviar segmento"
+    },
+    "submit": {
+        "message": "Enviar"
+    },
+    "cancel": {
+        "message": "Cancelar"
+    },
+    "delete": {
+        "message": "Eliminar"
+    },
+    "preview": {
+        "message": "Vista Previa"
+    },
+    "edit": {
+        "message": "Editar"
+    },
+    "copyDebugInformation": {
+        "message": "Copiar información de depuración al portapapeles"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Error al escribir al portapapeles"
+    },
+    "theKey": {
+        "message": "El botón"
+    },
+    "keyAlreadyUsedByYouTube": {
+        "message": "ya está en uso por youtube. Por favor, seleccione otro botón."
+    },
+    "keyAlreadyUsed": {
+        "message": "está enlazado a otra acción. Por favor, seleccione otro botón."
+    },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_intro": {
+        "message": "Animación de introducción"
+    },
+    "category_outro": {
+        "message": "Tarjetas/Créditos"
+    },
+    "category_interaction": {
+        "message": "Recordatorio de interacción (subscribir)"
+    },
+    "category_selfpromo": {
+        "message": "Auto-promoción y mercancía"
+    },
+    "category_music_offtopic": {
+        "message": "Música: Sección sin musica"
+    },
+    "category_livestream_messages": {
+        "message": "Directo: Lecturas de donaciones y mensajes"
+    },
+    "disable": {
+        "message": "Desactivar"
+    },
+    "manualSkip": {
+        "message": "Omisión manual"
+    },
+    "enableTestingServer": {
+        "message": "Habilitar Servidor de Pruebas Beta"
+    },
+    "bracketNow": {
+        "message": "(Ahora)"
+    },
+    "moreCategories": {
+        "message": "Más categorías"
+    },
+    "bracketEnd": {
+        "message": "(Final)"
+    },
+    "channelDataNotFound": {
+        "message": "ID de canal no cargado todavía."
+    },
+    "downvoteDescription": {
+        "message": "Tiempo incorrecto"
+    },
+    "incorrectCategory": {
+        "message": "Categoría errónea"
+    },
+    "multipleSegments": {
+        "message": "Varios segmentos"
     }
 }
