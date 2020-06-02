@@ -332,6 +332,9 @@
     "supportInvidious": {
         "message": "Wesprzyj Invidious"
     },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) to nieoficjalny klient YouTube'a. Aby włączyć dla niego wsparcie musisz przyznać dodatkowe uprawnienia. W Chrome'ie i innych przeglądarkach bazujących na Chromium, ta opcja nie działa w trybie incognito."
+    },
     "optionsInfo": {
         "message": "Wesprzyj Invidious, wyłącz auto przewijanie, ukryj guziki i więcej."
     },
@@ -355,5 +358,17 @@
     },
     "currentInstances": {
         "message": "Obecne instancje:"
+    },
+    "minDuration": {
+        "message": "Minimalny czas trwania (sekundy):"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com jest teraz wspierany"
+    },
+    "exportOptions": {
+        "message": "Importuj/Eksportuj wszystkie ustawienia"
+    },
+    "copyDebugInformationComplete": {
+        "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
     }
 }
