@@ -35,14 +35,14 @@
     "Segments": {
         "message": "赞助商广告片段"
     },
-    "noticeTitle": {
-        "message": "已跳过赞助商广告"
+    "upvoteButtonInfo": {
+        "message": "为这个提交点赞"
     },
     "reportButtonTitle": {
         "message": "报告"
     },
     "reportButtonInfo": {
-        "message": "报告这个被提交的赞助商广告不正确。"
+        "message": "报告此提交不正确。"
     },
     "Dismiss": {
         "message": "忽略"
@@ -70,6 +70,9 @@
     },
     "paused": {
         "message": "已暂停"
+    },
+    "manualPaused": {
+        "message": "计时器已停止"
     },
     "confirmMSG": {
         "message": "要编辑或删除个别值，请点击信息按钮或通过点击右上角的扩展图标打开扩展弹窗。"
@@ -272,10 +275,10 @@
     "errorCode": {
         "message": "错误代码： "
     },
-    "noticeTitleNotSkipped": {
-        "message": "跳过赞助商广告？"
-    },
     "skip": {
+        "message": "跳过"
+    },
+    "skipped": {
         "message": "跳过"
     },
     "disableAutoSkip": {
@@ -376,12 +379,6 @@
     },
     "currentInstances": {
         "message": "当前实例："
-    },
-    "enableAutoUpvote": {
-        "message": "自动点赞"
-    },
-    "whatAutoUpvote": {
-        "message": "启用此选项后，扩展将会为所有您观看过的提交点赞，如果您没有报告它们的话。如果通知被禁用，那就不会出现。"
     },
     "minDuration": {
         "message": "最小持续时间(秒)："
@@ -490,7 +487,10 @@
         "message": "赞助商广告"
     },
     "category_intro": {
-        "message": "介绍动画"
+        "message": "开头动画"
+    },
+    "category_outro": {
+        "message": "结束画面/结尾职员表"
     },
     "category_interaction": {
         "message": "互动提醒（订阅）"
@@ -556,12 +556,15 @@
         "message": "请考虑启用跳过赞助商广告前强制进行频道检查"
     },
     "downvoteDescription": {
-        "message": "不正确"
+        "message": "不正确/错误的时间"
     },
     "incorrectCategory": {
         "message": "错误的类别"
     },
     "nonMusicCategoryOnMusic": {
         "message": "此视频被归类为音乐。您确定要提交带有非音乐类别的片段吗？除非此视频实际上不是音乐，否则您不应提交此片段。如果您感到困惑，请阅读指南。"
+    },
+    "multipleSegments": {
+        "message": "多个片段"
     }
 }

@@ -35,14 +35,14 @@
     "Segments": {
         "message": "sponsor bölümleri"
     },
-    "noticeTitle": {
-        "message": "Sponsor Geçildi"
+    "upvoteButtonInfo": {
+        "message": "Bu öneriye oy ver"
     },
     "reportButtonTitle": {
         "message": "Raporla"
     },
     "reportButtonInfo": {
-        "message": "Bu sponsor bölümünü hatalı olarak rapor et."
+        "message": "Bu öneriyi hatalı olarak bildir."
     },
     "Dismiss": {
         "message": "Yoksay"
@@ -70,6 +70,9 @@
     },
     "paused": {
         "message": "Duraklatıldı"
+    },
+    "manualPaused": {
+        "message": "Zamanlayıcı Durduruldu"
     },
     "confirmMSG": {
         "message": "Değerleri tek başına düzenlemek ve silmek için, bilgi butonuna basın veya sağ yukarıdaki eklenti simgesine tıklayarak eklenti menüsünü açın."
@@ -272,11 +275,11 @@
     "errorCode": {
         "message": "Hata Kodu: "
     },
-    "noticeTitleNotSkipped": {
-        "message": "Sponsoru Atla?"
-    },
     "skip": {
         "message": "Atla"
+    },
+    "skipped": {
+        "message": "Atlandı"
     },
     "disableAutoSkip": {
         "message": "Otomatik Atlamayı Devredışı Bırak"
@@ -376,12 +379,6 @@
     },
     "currentInstances": {
         "message": "Mevcut Oluşumlar:"
-    },
-    "enableAutoUpvote": {
-        "message": "Otomatik Oy Ver"
-    },
-    "whatAutoUpvote": {
-        "message": "Eğer bu ayar açıksa, eklenti eğer rapor etmediyseniz gördüğünüz tüm önerileri oylayacaktır. Eğer bildirim kapalıysa, bu gerçekleşmeyecektir."
     },
     "minDuration": {
         "message": "Minimum süre (saniye):"
@@ -559,12 +556,15 @@
         "message": "Sponsorları Atlamadan Önce Kanal Kontrolünü Zorlamayı Gözden Geçir"
     },
     "downvoteDescription": {
-        "message": "Hatalı"
+        "message": "Hatalı/Yanlış Zaman"
     },
     "incorrectCategory": {
         "message": "Yanlış Kategori"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Bu videonun kategorisi müzik olarak belirlenmiş. Müzik içermeyen bölümleri göndermek istediğinize emin misiniz? Eğer bu bir müzik videosu değilse, bu bölümleri göndermemelisiniz. Eğer ayırt edemiyorsanız, lütfen rehberi okuyunuz."
+    },
+    "multipleSegments": {
+        "message": "Birden Çok Bölüm"
     }
 }

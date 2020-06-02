@@ -1,1 +1,500 @@
-{}
+{
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "fullName": {
+        "message": "SponsorBlock para YouTube - Omitir Sponsors",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Omitir sponsors en videos de YouTube. Infórmanos de sponsors en videos que ves para ahorrar el tiempo de otros.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Servidor dijo que esta solicitud no es valida"
+    },
+    "429": {
+        "message": "Has enviado demasiados tiempos de sponsor en este video, ¿estas seguro de que hay tantos?"
+    },
+    "409": {
+        "message": "Esto ya ha sido enviado antes"
+    },
+    "channelWhitelisted": {
+        "message": "Canal Permitido!"
+    },
+    "Sponsor": {
+        "message": "sponsor"
+    },
+    "Sponsors": {
+        "message": "sponsors"
+    },
+    "Segment": {
+        "message": "segmento de sponsor"
+    },
+    "Segments": {
+        "message": "segmentos de sponsor"
+    },
+    "upvoteButtonInfo": {
+        "message": "Votar a favor de esta sumisión"
+    },
+    "reportButtonTitle": {
+        "message": "Denunciar"
+    },
+    "reportButtonInfo": {
+        "message": "Denunciar esta sumisión como incorrecta."
+    },
+    "Dismiss": {
+        "message": "Descartar"
+    },
+    "Loading": {
+        "message": "Cargando..."
+    },
+    "Mins": {
+        "message": "Minutos"
+    },
+    "Secs": {
+        "message": "Segundos"
+    },
+    "Hide": {
+        "message": "Nunca Mostrar"
+    },
+    "hitGoBack": {
+        "message": "Haz clic en no omitir para volver a donde estabas."
+    },
+    "unskip": {
+        "message": "No omitir"
+    },
+    "reskip": {
+        "message": "Volver a saltar"
+    },
+    "paused": {
+        "message": "Pausado"
+    },
+    "manualPaused": {
+        "message": "Temporizador Detenido"
+    },
+    "confirmMSG": {
+        "message": "Para editar o eliminar valores individuales, haz clic en el botón de información o abre la ventana de extensión haciendo clic en el icono de extensión en la esquina superior derecha."
+    },
+    "clearThis": {
+        "message": "¿Estas seguro de que quieres eliminar esto?\n\n"
+    },
+    "Unknown": {
+        "message": "Se ha producido un error enviando tus tiempos de sponsor, por favor inténtalo de nuevo más tarde."
+    },
+    "sponsorFound": {
+        "message": "¡Los sponsors de este video están en la base de datos!"
+    },
+    "sponsor404": {
+        "message": "No se encontró ningún sponsor"
+    },
+    "sponsorStart": {
+        "message": "Sponsor Empieza Ahora"
+    },
+    "sponsorEnd": {
+        "message": "Sponsor Acaba Ahora"
+    },
+    "noVideoID": {
+        "message": "Ningún video de YouTube se encontró en esta pestaña. Si sabes que esto es una pestaña de YouTube, cierra esta ventana y ábrela otra vez. Si eso no funciona, intenta recargar la pestaña."
+    },
+    "success": {
+        "message": "¡Completado!"
+    },
+    "voted": {
+        "message": "¡Votado!"
+    },
+    "serverDown": {
+        "message": "Parece que el servidor está desconectado. Póngase en contacto con el desarrollador inmediatamente."
+    },
+    "connectionError": {
+        "message": "Ha ocurrido un error de conexión. Código de error: "
+    },
+    "wantToSubmit": {
+        "message": "¿Quieres enviar los tiempos de sponsor para el vídeo id"
+    },
+    "leftTimes": {
+        "message": "Parece que has dejado algunos tiempos de sponsor sin enviar. Vuelve a esa página para enviarlos (no se eliminaron)."
+    },
+    "clearTimes": {
+        "message": "Eliminar Tiempos de Sponsor"
+    },
+    "openPopup": {
+        "message": "Abrir Ventana de SponsorBlock"
+    },
+    "SubmitTimes": {
+        "message": "Enviar Tiempos de Sponsor"
+    },
+    "submitCheck": {
+        "message": "¿Estás seguro de que quieres enviar esto?"
+    },
+    "whitelistChannel": {
+        "message": "Permitir Canal"
+    },
+    "removeFromWhitelist": {
+        "message": "Parar De Permitir Canal"
+    },
+    "voteOnTime": {
+        "message": "Votar en un tiempo de sponsor"
+    },
+    "recordTimes": {
+        "message": "Registrar los tiempos de un sponsor"
+    },
+    "soFarUHSubmited": {
+        "message": "Hasta ahora, has enviado"
+    },
+    "savedPeopleFrom": {
+        "message": "Has salvado personas de "
+    },
+    "viewLeaderboard": {
+        "message": "Ver la tabla de clasificación"
+    },
+    "here": {
+        "message": "aquí"
+    },
+    "recordTimesDescription": {
+        "message": "Haga clic en el botón de abajo cuando el sponsor comienza y termina para registrarlo y\nenviarlo a la base de datos."
+    },
+    "popupHint": {
+        "message": "Consejo: Presiona la tecla de punto y coma mientras enfocado en un video para registrar el comienzo/fin de un sponsor y presiona comillas para enviar. (Esto se puede cambiar en las opciones)"
+    },
+    "lastTimes": {
+        "message": "Últimos mensajes de sponsor elegidos"
+    },
+    "clearTimesButton": {
+        "message": "Eliminar Tiempos"
+    },
+    "submitTimesButton": {
+        "message": "Enviar Tiempos"
+    },
+    "publicStats": {
+        "message": "Esto se utiliza en la página de estadísticas públicas para mostrar cuánto has contribuido. Véala"
+    },
+    "setUsername": {
+        "message": "Escoger Nombre De Usuario"
+    },
+    "discordAdvert": {
+        "message": "¡Únete al servidor oficial de discord para darnos sugerencias y comentarios!"
+    },
+    "hideThis": {
+        "message": "No mostrar esto"
+    },
+    "Options": {
+        "message": "Opciones"
+    },
+    "showButtons": {
+        "message": "Mostrar botones en el reproductor de YouTube"
+    },
+    "hideButtons": {
+        "message": "Ocultar botones en el reproductor de YouTube"
+    },
+    "hideButtonsDescription": {
+        "message": "Esto oculta los botones que aparecen en el reproductor de YouTube que se usan para enviar segmentos saltados."
+    },
+    "showInfoButton": {
+        "message": "Mostrar botón de información en el reproductor de YouTube"
+    },
+    "hideInfoButton": {
+        "message": "Ocultar botón de información en el reproductor de YouTube"
+    },
+    "whatInfoButton": {
+        "message": "Este es el botón que abre una ventana en la página de YouTube."
+    },
+    "hideDeleteButton": {
+        "message": "Ocultar botón de eliminar en el reproductor de YouTube"
+    },
+    "showDeleteButton": {
+        "message": "Mostrar botón de eliminar en el reproductor de YouTube"
+    },
+    "whatDeleteButton": {
+        "message": "Este es el botón en el reproductor de YouTube que eliminará todos tus segmentos no enviados para el vídeo actual."
+    },
+    "disableViewTracking": {
+        "message": "Desactivar seguimiento de numero de sponsorsomitidos"
+    },
+    "enableViewTracking": {
+        "message": "Activar seguimiento de numero de sponsors omitidos"
+    },
+    "whatViewTracking": {
+        "message": "Esta opción registra los sponsors que te has saltado para que los otros usuarios sepan cuánto su sumisión ha ayudado a otros y\nes usado como métrica junto con votos positivos para asegurar que el spam no ingrese a la base de datos. La extensión envía un mensaje\nal servidor cada vez que se salta un patrocinador. Esperemos que la mayoría de la gente no cambie esta opción para que los números de vista sean exactos. :)"
+    },
+    "showNotice": {
+        "message": "Mostrar aviso de nuevo"
+    },
+    "longDescription": {
+        "message": "SponsorBlock es una extensión que se omitira segmentos de sponsor de vídeos de YouTube. SponsorBlock es una extensión de navegador que permite a cualquiera enviar los tiempos de comienzo y fin de segmentos de sponsor de vídeos de YouTube. Una vez que una persona envíe esta información, todos los demás con esta extensión pueden omitir directamente el segmento de sponsor.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "Sitio Web",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Código Fuente",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "¡El aviso ha sido actualizado!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Si aún no te gusta, pulsa el botón de nunca mostrar.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Establecer botón de inicio de sponsor"
+    },
+    "setSubmitKeybind": {
+        "message": "Establecer botón de envio"
+    },
+    "keybindDescription": {
+        "message": "Seleccione un botón escribiéndolo"
+    },
+    "keybindDescriptionComplete": {
+        "message": "El botón se ha establecido a: "
+    },
+    "0": {
+        "message": "Tiempo de espera agotado. Compruebe su conexión a Internet. Si su internet está funcionando, el servidor probablemente esta sobrecargado o desconectado."
+    },
+    "disableSkipping": {
+        "message": "Desactivar SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Activar SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Tu trabajo",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "El servidor parece estar sobrecargado. Inténtalo de nuevo en unos segundos."
+    },
+    "errorCode": {
+        "message": "Código de error: "
+    },
+    "skip": {
+        "message": "Omitir"
+    },
+    "skipped": {
+        "message": "Omitido"
+    },
+    "disableAutoSkip": {
+        "message": "Desactivar la omisión automática"
+    },
+    "enableAutoSkip": {
+        "message": "Activar la omisión automática"
+    },
+    "autoSkipDescription": {
+        "message": "La omisión automática omitirá sponsors por ti. Si esta desactivada, aparecerá un aviso preguntando si quieres omitir."
+    },
+    "audioNotification": {
+        "message": "Notificación de audio al omitir"
+    },
+    "audioNotificationDescription": {
+        "message": "Notificación de audio al omitir reproducirá un sonido cada vez que se omite un sponsor. Si está desactivada (o se desactiva la omisión automática), no se reproducirá ningún sonido."
+    },
+    "youHaveSkipped": {
+        "message": "Has omitido "
+    },
+    "youHaveSaved": {
+        "message": "Te has ahorrado "
+    },
+    "minLower": {
+        "message": "minuto"
+    },
+    "minsLower": {
+        "message": "minutos"
+    },
+    "hourLower": {
+        "message": "hora"
+    },
+    "hoursLower": {
+        "message": "horas"
+    },
+    "youHaveSavedTime": {
+        "message": "Has ahorrado a otras personas"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " de sus vidas."
+    },
+    "guildlinesSummary": {
+        "message": "- Asegúrate de que tu segmento sólo contiene un segmento de promoción de pago, nada más.\n- Asegúrate de que omitir este segmento no omitirá ningún contenido valioso\n- Si todo el vídeo es un sponsor, por favor, no lo envíen. Pronto saldrá un sistema completo de reportes de vídeo.\n- Por favor, no informe de los avisos que podrían mostrar parcialidad (si un vídeo de revista está patrocinado, no se salte cuando mencionen eso)."
+    },
+    "statusReminder": {
+        "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
+    },
+    "changeUserID": {
+        "message": "Importar/Exportar tu UserID"
+    },
+    "whatChangeUserID": {
+        "message": "Esto debería mantenerse privado. Es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, pueden imitarte."
+    },
+    "setUserID": {
+        "message": "Definir UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Advertencia: Cambiar el UserID es permanente. ¿Estás seguro de que desea hacer esto? Asegúrese de hacer una copia de seguridad de su UserID anterior por si acaso."
+    },
+    "createdBy": {
+        "message": "Creado Por"
+    },
+    "autoSkip": {
+        "message": "Omisión Automática"
+    },
+    "showSkipNotice": {
+        "message": "Mostrar aviso después de que se omita un sponsor"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Actualmente está establecido a:"
+    },
+    "supportInvidious": {
+        "message": "Soportar Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) es un cliente alternativo para YouTube. Para habilitar soporte, tienes que aceptar los permisos adicionales. Esto NO funciona en modo incógnito en Chrome y otros variantes de Chromium."
+    },
+    "optionsInfo": {
+        "message": "Activar soporte de Invidious, deshabilitar omisión automática, ocultar botones y más."
+    },
+    "addInvidiousInstance": {
+        "message": "Añadir nodo de Invidious"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Añadir un nodo de Invidious personalizado. Esto debe estar formateado con SOLO el dominio. Ejemplo: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Añadir"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Esto es un dominio inválido. Esto debería incluir SOLO el dominio. Ejemplo: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Restablecer Lista de Nodos de Invidious"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Estás a punto de restablecer la lista de nodos de invidious"
+    },
+    "currentInstances": {
+        "message": "Nodos actuales:"
+    },
+    "minDuration": {
+        "message": "Duración mínima (en segundos):"
+    },
+    "minDurationDescription": {
+        "message": "Los segmentos de sponsor más cortos que el valor establecido no serán omitidos ni mostrados en el reproductor."
+    },
+    "shortCheck": {
+        "message": "La siguiente sumisión es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
+    },
+    "showUploadButton": {
+        "message": "Mostrar botón de subida"
+    },
+    "whatUploadButton": {
+        "message": "Este botón aparece en el reproductor de YouTube después de que has seleccionado una marca de tiempo y estas listo para enviar."
+    },
+    "customServerAddress": {
+        "message": "Dirección del servidor SponsorBlock"
+    },
+    "customServerAddressDescription": {
+        "message": "La dirección que SponsorBlock utiliza para hacer llamadas al servidor.\nA menos que tengas tu propia instancia del servidor, no debería cambiarse."
+    },
+    "save": {
+        "message": "Guardar"
+    },
+    "reset": {
+        "message": "Restablecer"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com ahora es compatible"
+    },
+    "exportOptions": {
+        "message": "Importar/Exportar todas las opciones"
+    },
+    "setOptions": {
+        "message": "Configurar opciones"
+    },
+    "confirmNoticeTitle": {
+        "message": "Enviar segmento"
+    },
+    "submit": {
+        "message": "Enviar"
+    },
+    "cancel": {
+        "message": "Cancelar"
+    },
+    "delete": {
+        "message": "Eliminar"
+    },
+    "preview": {
+        "message": "Vista Previa"
+    },
+    "edit": {
+        "message": "Editar"
+    },
+    "copyDebugInformation": {
+        "message": "Copiar información de depuración al portapapeles"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Error al escribir al portapapeles"
+    },
+    "theKey": {
+        "message": "El botón"
+    },
+    "keyAlreadyUsedByYouTube": {
+        "message": "ya está en uso por youtube. Por favor, seleccione otro botón."
+    },
+    "keyAlreadyUsed": {
+        "message": "está enlazado a otra acción. Por favor, seleccione otro botón."
+    },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_intro": {
+        "message": "Animación de introducción"
+    },
+    "category_outro": {
+        "message": "Tarjetas/Créditos"
+    },
+    "category_interaction": {
+        "message": "Recordatorio de interacción (subscribir)"
+    },
+    "category_selfpromo": {
+        "message": "Auto-promoción y mercancía"
+    },
+    "category_music_offtopic": {
+        "message": "Música: Sección sin musica"
+    },
+    "category_livestream_messages": {
+        "message": "Directo: Lecturas de donaciones y mensajes"
+    },
+    "disable": {
+        "message": "Desactivar"
+    },
+    "manualSkip": {
+        "message": "Omisión manual"
+    },
+    "enableTestingServer": {
+        "message": "Habilitar Servidor de Pruebas Beta"
+    },
+    "bracketNow": {
+        "message": "(Ahora)"
+    },
+    "moreCategories": {
+        "message": "Más categorías"
+    },
+    "bracketEnd": {
+        "message": "(Final)"
+    },
+    "channelDataNotFound": {
+        "message": "ID de canal no cargado todavía."
+    },
+    "downvoteDescription": {
+        "message": "Tiempo incorrecto"
+    },
+    "incorrectCategory": {
+        "message": "Categoría errónea"
+    },
+    "multipleSegments": {
+        "message": "Varios segmentos"
+    }
+}

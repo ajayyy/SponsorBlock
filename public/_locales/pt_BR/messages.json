@@ -35,14 +35,8 @@
     "Segments": {
         "message": "segmentos de patrocinadores"
     },
-    "noticeTitle": {
-        "message": "Patrocinador pulado"
-    },
     "reportButtonTitle": {
         "message": "Reportar"
-    },
-    "reportButtonInfo": {
-        "message": "Reportar essa subimissão como inválida."
     },
     "Dismiss": {
         "message": "Ignorar"
@@ -103,9 +97,6 @@
     },
     "voteFail": {
         "message": "Você já votou antes."
-    },
-    "serverDown": {
-        "message": "Parece que o servidor caiu. Contate o desenvolvedor o quanto antes."
     },
     "connectionError": {
         "message": "Um erro de conexão aconteceu: Código: "
@@ -272,9 +263,6 @@
     "errorCode": {
         "message": "Código de erro: "
     },
-    "noticeTitleNotSkipped": {
-        "message": "Pular patrocinador?"
-    },
     "skip": {
         "message": "Pular"
     },
@@ -376,12 +364,6 @@
     },
     "currentInstances": {
         "message": "Instâncias Atuais:"
-    },
-    "enableAutoUpvote": {
-        "message": "Upvote automático"
-    },
-    "whatAutoUpvote": {
-        "message": "Com isto habilitado, a extensão dará upvote em todas as submissões que você ver se você não reportar. Não funcionará se o aviso estiver desativado."
     },
     "minDuration": {
         "message": "Duração mínima (segundos):"
@@ -557,9 +539,6 @@
     },
     "forceChannelCheckPopup": {
         "message": "Considere habilitar a verificação de canal forçada antes de pular os patrocinadores"
-    },
-    "downvoteDescription": {
-        "message": "Incorreto"
     },
     "incorrectCategory": {
         "message": "Categoria errada"

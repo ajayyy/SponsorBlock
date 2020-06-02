@@ -35,14 +35,8 @@
     "Segments": {
         "message": "gesponsorte Inhalte"
     },
-    "noticeTitle": {
-        "message": "Sponsor übersprungen"
-    },
     "reportButtonTitle": {
         "message": "Melden"
-    },
-    "reportButtonInfo": {
-        "message": "Melde dieses Segment als unzulässig."
     },
     "Dismiss": {
         "message": "Abbrechen"
@@ -70,6 +64,9 @@
     },
     "paused": {
         "message": "Pausiert"
+    },
+    "manualPaused": {
+        "message": "Timer angehalten"
     },
     "confirmMSG": {
         "message": "\n\nUm einzelne Werte zu löschen oder zu ändern, klicke auf den Info-Button, oder öffne die Erweiterungs-Übersicht, indem du das Erweiterungssymbol in der rechten oberen Ecke anklickst."
@@ -103,9 +100,6 @@
     },
     "voteFail": {
         "message": "Du hast bereits so abgestimmt."
-    },
-    "serverDown": {
-        "message": "Der Server ist scheinbar offline. Bitte unverzüglich dem Entwickler melden."
     },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
@@ -272,11 +266,11 @@
     "errorCode": {
         "message": "Fehlermeldung: "
     },
-    "noticeTitleNotSkipped": {
-        "message": "Sponsor überspringen?"
-    },
     "skip": {
         "message": "Überspringen"
+    },
+    "skipped": {
+        "message": "Übersprungen"
     },
     "disableAutoSkip": {
         "message": "Auto-Überspringen deaktivieren"
@@ -350,6 +344,9 @@
     "supportInvidious": {
         "message": "Unterstütze Invidious"
     },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Incongnito-modus auf Chrome und anderen Chromium-Varianten."
+    },
     "optionsInfo": {
         "message": "Invidious Support aktivieren, Autoskip deaktivieren, Tasten ausblenden und vieles mehr."
     },
@@ -373,12 +370,6 @@
     },
     "currentInstances": {
         "message": "Aktuelle Instanzen:"
-    },
-    "enableAutoUpvote": {
-        "message": "Automatisches Liken"
-    },
-    "whatAutoUpvote": {
-        "message": "Wenn dies aktiviert ist, wird die Erweiterung alle Beiträge hochladen, die Sie ansehen, wenn Sie sie nicht melden. Wenn die Benachrichtigung deaktiviert ist, wird dies nicht geschehen."
     },
     "minDuration": {
         "message": "Minimale Dauer (Sekunden):"
@@ -486,8 +477,23 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "category_intro": {
+        "message": "Intro Animation"
+    },
+    "category_outro": {
+        "message": "Endkarten/Credits"
+    },
+    "category_interaction": {
+        "message": "Interaktions-Erinnerung (Abonnieren)"
+    },
     "category_selfpromo": {
         "message": "Eigenwerbung und Merchandise"
+    },
+    "category_music_offtopic": {
+        "message": "Musik: Nicht-Musik-Abschnitt"
+    },
+    "category_livestream_messages": {
+        "message": "Livestream: Spenden/Nachrichten vorlesen"
     },
     "disable": {
         "message": "Deaktivieren"
@@ -512,5 +518,41 @@
     },
     "moreCategories": {
         "message": "Weitere Kategorien"
+    },
+    "bracketEnd": {
+        "message": "(Ende)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "versteckt: downvote"
+    },
+    "hiddenDueToDuration": {
+        "message": "verborgen: zu kurz"
+    },
+    "channelDataNotFound": {
+        "message": "Kanal-ID wurde noch nicht geladen."
+    },
+    "adblockerIssue": {
+        "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Möglicherweise ist das dein Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Falls dies weiterhin geschieht, könnte dies durch Ihren Werbeblocker verursacht werden. Bitte überprüfen Sie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Kanalprüfung erzwingen vor dem Überspringen von Sponsoren"
+    },
+    "whatForceChannelCheck": {
+        "message": "Standardmäßig überspringt er Sponsoren sofort, bevor er überhaupt weiß, was der Kanal ist. Standardmäßig werden auf den Kanälen auf der Whitelist-Liste einige null Sekunden Sponsoren übersprungen. Das Aktivieren dieser Option verhindert dies, aber das Überspringen hat eine leichte Verzögerung, da die Kanal-ID einige Zeit in Anspruch nehmen kann. Diese Verzögerung kann bei schnellen Internetverbindungen unauffällig sein."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Bedenken Sie die Aktivierung der Force-Channel-Prüfung vor dem Überspringen von Sponsoren"
+    },
+    "downvoteDescription": {
+        "message": "Nicht korrektes/Falsches Timing"
+    },
+    "incorrectCategory": {
+        "message": "Falsche Kategorie"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Dieses Video ist als Musik kategorisiert. Sind Sie sicher, dass Sie Segmente mit Nicht-Musikkategorien einreichen möchten? Wenn dieses Video nicht wirklich Musik ist, sollten Sie dieses Segment nicht einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
     }
 }

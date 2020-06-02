@@ -35,8 +35,8 @@
     "Segments": {
         "message": "segments commerciaux"
     },
-    "noticeTitle": {
-        "message": "Message commercial passé"
+    "upvoteButtonInfo": {
+        "message": "Voter pour cette entrée"
     },
     "reportButtonTitle": {
         "message": "Signaler"
@@ -71,6 +71,9 @@
     "paused": {
         "message": "En pause"
     },
+    "manualPaused": {
+        "message": "Timer arrêté"
+    },
     "confirmMSG": {
         "message": "Pour modifier ou supprimer des soumissions, cliquez sur le bouton d'info ou ouvrez la fenêtre de l'extension en cliquant sur son icône dans le coin en haut à droite."
     },
@@ -84,7 +87,7 @@
         "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de donnée !"
     },
     "sponsor404": {
-        "message": "Pas de sponsors trouvés"
+        "message": "Pas de messages commerciaux trouvés"
     },
     "sponsorStart": {
         "message": "Début du message commercial"
@@ -144,7 +147,7 @@
         "message": "Vous avez soumis jusqu'à présent"
     },
     "savedPeopleFrom": {
-        "message": "Vous avez fait gagner aux autres "
+        "message": "Vous avez permis aux autres de passer "
     },
     "viewLeaderboard": {
         "message": "Consulter le classement"
@@ -216,7 +219,7 @@
         "message": "Activer le suivi des vues de segments commerciaux"
     },
     "whatViewTracking": {
-        "message": "Cette fonctionnalité suit quels segments commerciaux vous avez sautés afin de calculer le bénéfice des soumissions des \nautres utilisateurs. Elle est également utilisée comme métrique, avec les haut-votes, afin de s'assurer que les spams \nsont ignorés. L'extension envoie un message au serveur à chauqe fois qu'un segment commercial est sauté. Avec un peu de chance, peu de personnes désactiveront cette fonctionnalité afin d'obtenir des nombres de vues exacts. :)"
+        "message": "Cette fonctionnalité suit quels segments commerciaux vous avez sautés afin de calculer le bénéfice des soumissions des \nautres utilisateurs. Elle est également utilisée comme métrique, avec les haut-votes, afin de s'assurer que les spams \nsont ignorés. L'extension envoie un message au serveur à chauque fois qu'un segment commercial est sauté. Avec un peu de chance, peu de personnes désactiveront cette fonctionnalité afin d'obtenir des nombres de vues exacts. :)"
     },
     "showNotice": {
         "message": "Afficher la notification"
@@ -272,11 +275,11 @@
     "errorCode": {
         "message": "Code d'erreur : "
     },
-    "noticeTitleNotSkipped": {
-        "message": "Passer le sponsor ?"
-    },
     "skip": {
         "message": "Passer"
+    },
+    "skipped": {
+        "message": "Passé"
     },
     "disableAutoSkip": {
         "message": "Désactiver le passage automatique"
@@ -324,7 +327,7 @@
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
     },
     "changeUserID": {
-        "message": "Importer/Exporter votre ID d'utilisateur"
+        "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
     "whatChangeUserID": {
         "message": "Gardez ça privé. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtiens, il peut vous usurper."
@@ -350,6 +353,9 @@
     "supportInvidious": {
         "message": "Soutenir Invidious"
     },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) est un client tiers pour YouTube. Vous devez accepter des permissions supplémentaires pour activer son support. Cette fonctionnalité ne fonctionne pas en mode incognito sur Chrome et les autres variantes de Chromium."
+    },
     "optionsInfo": {
         "message": "Activer Invidious, désactiver le passage automatique, masquer les boutons et plus encore."
     },
@@ -374,12 +380,6 @@
     "currentInstances": {
         "message": "Instances actuelles:"
     },
-    "enableAutoUpvote": {
-        "message": "Vote automatique"
-    },
-    "whatAutoUpvote": {
-        "message": "Si cette option est activée, l'extension votera en faveur de tous les segments que vous visualiserez si vous ne les signalez pas. Si l'avis est désactivé, cela ne se produira pas."
-    },
     "minDuration": {
         "message": "Durée minimale (en secondes):"
     },
@@ -392,11 +392,14 @@
     "showUploadButton": {
         "message": "Afficher le bouton de téléchargement"
     },
+    "whatUploadButton": {
+        "message": "Ce bouton apparaît sur le lecteur YouTube dès qu'un segment est prêt à être envoyé."
+    },
     "customServerAddress": {
         "message": "Adresse du serveur SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "L'adresse que SponsorBlock utilise pour passer des appels vers le serveur.\nSauf si vous avez votre propre instance de serveur, cela ne devrait pas être changé."
+        "message": "L'adresse que SponsorBlock utilise pour faire des appels au serveur.\nSauf si vous avez votre propre instance de serveur, cela ne devrait pas être changé."
     },
     "save": {
         "message": "Sauvegarder"
@@ -404,14 +407,41 @@
     "reset": {
         "message": "Réinitialiser"
     },
+    "customAddressError": {
+        "message": "Le format de l'adresse est incorrect. Assurez-vous qu'elle commence bien par http:// ou https:// et ne termine pas par un slash."
+    },
+    "areYouSureReset": {
+        "message": "Voulez-vous vraiment remettre à zéro ?"
+    },
+    "confirmPrivacy": {
+        "message": "Cette vidéo est non-listée. Appuyez sur annuler si vous ne voulez pas vérifier la présence de message commerciaux."
+    },
     "unlistedCheck": {
         "message": "Ignorer les vidéos non listées"
+    },
+    "whatUnlistedCheck": {
+        "message": "Cette fonctionnalité ralentie légèrement SponsorBlock. La recherche des message commerciaux nécessite l'envoie de l'ID de la vidéo au serveur. Si vous êtes préoccupé par l'envoi de l'ID des vidéos non listées sur Internet, activez cette option."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com est maintenant pris en charge"
     },
     "exportOptions": {
         "message": "Importer/Exporter toutes les options"
+    },
+    "whatExportOptions": {
+        "message": "C'est votre configuration complète au format JSON. Elle inclut votre identifiant utilisateur, gardez-la pour vous."
+    },
+    "setOptions": {
+        "message": "Définir les options"
+    },
+    "exportOptionsWarning": {
+        "message": "Attention : La modification des options est permanente et peut casser votre installation. Êtes-vous sûr de vouloir faire ça ? Sauvegardez les anciennes au cas où."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Ce JSON n'est pas formaté correctement. Vos options n'ont pas été modifiées."
+    },
+    "confirmNoticeTitle": {
+        "message": "Soumettre le segment"
     },
     "submit": {
         "message": "Soumettre"
@@ -422,14 +452,29 @@
     "delete": {
         "message": "Supprimer"
     },
+    "preview": {
+        "message": "Aperçu"
+    },
     "edit": {
         "message": "Éditer"
+    },
+    "copyDebugInformation": {
+        "message": "Copier les informations de débogage dans le presse-papiers"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Impossible de copier dans le presse-papiers"
+    },
+    "copyDebugInformationOptions": {
+        "message": "Copie les informations dans le presse-papiers pour les fournir aux développeurs lors d'un rapport de bug ou lorsqu'un développeur le demande. Les informations sensibles telles que l'ID d'utilisateur, les chaînes sur liste blanche ou l'adresse du serveur personnalisé ont été supprimées. Cependant, ça contient des informations telles que votre user-agent, votre navigateur, votre système d'exploitation et le numéro de version d'extension. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous ne préférez pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
     },
     "theKey": {
         "message": "La clé"
     },
     "keyAlreadyUsedByYouTube": {
-        "message": "est déjà utilisé par youtube. Veuillez sélectionner une autre clé."
+        "message": "est déjà utilisé par YouTube. Veuillez sélectionner une autre clé."
     },
     "keyAlreadyUsed": {
         "message": "est lié à une autre action. Veuillez sélectionner une autre clé."
@@ -438,13 +483,88 @@
         "message": "à",
         "description": "Used between sponsor times. Example: 1:20 to 1:30"
     },
+    "category_sponsor": {
+        "message": "Message commercial"
+    },
+    "category_intro": {
+        "message": "Générique d'introduction"
+    },
+    "category_outro": {
+        "message": "Générique de fin"
+    },
+    "category_interaction": {
+        "message": "Rappel d'interaction (abonnement)"
+    },
+    "category_selfpromo": {
+        "message": "Auto-promotion et produits dérivés"
+    },
+    "category_music_offtopic": {
+        "message": "Musique : Segment non-musicale"
+    },
+    "category_livestream_messages": {
+        "message": "Stream : lecture de dons et messages"
+    },
+    "disable": {
+        "message": "Désactiver"
+    },
+    "manualSkip": {
+        "message": "Passer manuellement"
+    },
+    "showOverlay": {
+        "message": "Afficher dans la barre de progression"
+    },
     "enableTestingServer": {
         "message": "Activer le serveur de test bêta"
+    },
+    "whatEnableTestingServer": {
+        "message": "Vos soumissions et votes NE COMPTERONT PAS sur le serveur principal. Utilisez ceci uniquement pour faire des tests."
+    },
+    "testingServerWarning": {
+        "message": "AUCUNE SOUMISSION OU VOTE DE COMPTERA sur le serveur principal tant que vous serez connecté au serveur de test. Désactivez ceci quand vous voudrez réellement soumettre ou voter."
     },
     "bracketNow": {
         "message": "(Maintenant)"
     },
     "moreCategories": {
         "message": "Autres catégories"
+    },
+    "bracketEnd": {
+        "message": "(Fin)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "masqué : vote négatif"
+    },
+    "hiddenDueToDuration": {
+        "message": "masqué : trop court"
+    },
+    "channelDataNotFound": {
+        "message": "L'ID de la chaîne n'a pas encore été chargé."
+    },
+    "adblockerIssue": {
+        "message": "Il semble que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. C'est probablement votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Si ça se reproduit, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Forcer la vérification de la chaîne avant de passer les message commerciaux"
+    },
+    "whatForceChannelCheck": {
+        "message": "Par défaut, les sponsors seront passés immédiatement, avant même que la chaîne soit connue. Des sponsors au début de la vidéo peuvent être passés sur des chaînes sur liste blanche. Activer cette option empêchera cela mais fera que les messages sponsorisés seront passés avec un petit délai, car la récupération du channelID peut prendre du temps. Ce délai peut être imperceptible si vous avez une connexion rapide."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Envisagez d'activer la vérification forcée de la chaîne avant de passer les messages commerciaux"
+    },
+    "downvoteDescription": {
+        "message": "Segment de mauvaise qualité"
+    },
+    "incorrectCategory": {
+        "message": "Mauvaise catégorie"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Cette vidéo est classée dans les musiques. Êtes-vous sûr de vouloir soumettre des segments non-musicaux ? Vous devriez soumettre ce segment uniquement si la vidéo est de la musique. Veuillez lire les recommandations en cas de confusion."
+    },
+    "multipleSegments": {
+        "message": "Plusieurs segments"
     }
 }

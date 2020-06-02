@@ -31,14 +31,8 @@
     "Segments": {
         "message": "spezzoni sponsorizzati"
     },
-    "noticeTitle": {
-        "message": "Sponsorizzazione Saltata"
-    },
     "reportButtonTitle": {
         "message": "Segnala"
-    },
-    "reportButtonInfo": {
-        "message": "Segnala questo spezzone come non corretto."
     },
     "Dismiss": {
         "message": "Chiudi"
@@ -99,9 +93,6 @@
     },
     "voteFail": {
         "message": "Hai già votato."
-    },
-    "serverDown": {
-        "message": "Sembra che il server non funzioni. Contatta subito lo sviluppatore."
     },
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "

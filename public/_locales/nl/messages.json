@@ -1,4 +1,40 @@
 {
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "fullName": {
+        "message": "SponsorBlock voor YouTube - Sla sponsorberichten over",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Sla sponsoring over op YouTube video's. Rapporteer sponsors van video's die je bekijkt om tijd van anderen te besparen.",
+        "description": "Description of the extension."
+    },
+    "Sponsor": {
+        "message": "sponsor"
+    },
+    "Sponsors": {
+        "message": "sponsoren"
+    },
+    "reportButtonTitle": {
+        "message": "Melden"
+    },
+    "Dismiss": {
+        "message": "Negeren"
+    },
+    "Loading": {
+        "message": "Bezig met laden..."
+    },
+    "Mins": {
+        "message": "Minuten"
+    },
+    "Secs": {
+        "message": "Seconden"
+    },
+    "Hide": {
+        "message": "Nooit weergeven"
+    },
     "paused": {
         "message": "Gepauzeerd"
     },
@@ -26,9 +62,6 @@
     "voteFail": {
         "message": "U hebt al eerder op deze manier gestemd."
     },
-    "serverDown": {
-        "message": "Het lijkt erop dat de server niet draait. Contacteer de ontwikkelaar onmiddellijk."
-    },
     "connectionError": {
         "message": "Er is een verbindingsfout opgetreden. Foutcode: "
     },
@@ -41,7 +74,120 @@
     "clearTimes": {
         "message": "Sponsortijden wissen"
     },
+    "viewLeaderboard": {
+        "message": "Bekijk de ranglijst"
+    },
     "here": {
         "message": "hier"
+    },
+    "clearTimesButton": {
+        "message": "Wis tijden"
+    },
+    "submitTimesButton": {
+        "message": "Dien tijden in"
+    },
+    "setUsername": {
+        "message": "Gebruikersnaam instellen"
+    },
+    "Options": {
+        "message": "Opties"
+    },
+    "showButtons": {
+        "message": "Toon knoppen op YouTube Player"
+    },
+    "hideButtons": {
+        "message": "Verberg knoppen op YouTube Player"
+    },
+    "showInfoButton": {
+        "message": "Toon info-knop op YouTube-speler"
+    },
+    "hideInfoButton": {
+        "message": "Verberg info-knop op YouTube Player"
+    },
+    "website": {
+        "message": "Website",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Broncode",
+        "description": "Used on Firefox Store Page"
+    },
+    "disableSkipping": {
+        "message": "SponsorBlock uitschakelen"
+    },
+    "enableSkipping": {
+        "message": "SponsorBlock inschakelen"
+    },
+    "502": {
+        "message": "De server lijkt overbelast te zijn. Probeer het over een paar seconden opnieuw."
+    },
+    "errorCode": {
+        "message": "Foutcode: "
+    },
+    "skip": {
+        "message": "Overslaan"
+    },
+    "skipped": {
+        "message": "Overgeslagen"
+    },
+    "disableAutoSkip": {
+        "message": "Automatisch overslaan uitschakelen"
+    },
+    "enableAutoSkip": {
+        "message": "Automatisch overslaan inschakelen"
+    },
+    "autoSkipDescription": {
+        "message": "Automatisch Overslaan zal sponsors voor u overslaan. Indien uitgeschakeld, zal een bericht vragen of u wilt overslaan."
+    },
+    "audioNotification": {
+        "message": "Audiomelding bij Overslaan"
+    },
+    "audioNotificationDescription": {
+        "message": "Audiomelding bij overslaan zal een geluid afspelen wanneer een sponsor wordt overgeslagen. Indien uitgeschakeld (of automatisch overslaan is uitgeschakeld) wordt er geen geluid afgespeeld."
+    },
+    "minLower": {
+        "message": "minuut"
+    },
+    "minsLower": {
+        "message": "minuten"
+    },
+    "hourLower": {
+        "message": "uur"
+    },
+    "hoursLower": {
+        "message": "uren"
+    },
+    "guildlinesSummary": {
+        "message": "- Zorg ervoor dat uw segment alleen betaalde promoties bevat, niets anders.\n- Zorg ervoor dat het overslaan van dit segment geen waardevolle inhoud overslaat\n- Als de hele video een sponsorsegment is, rapporteer dit alstublieft niet. Binnenkort komt er een systeem om volledige video's te rapporteren.\n- Rapporteer alstublieft geen disclaimers die partijdig kunnen zijn (als een recensievideo gesponsord is, sla deze niet over wanneer ze dit vermelden)."
+    },
+    "whatChangeUserID": {
+        "message": "Dit moet privé blijven. Beschouw dit als wachtwoord en mag met niemand worden gedeeld. Als iemand dit heeft, kunnen ze je imiteren."
+    },
+    "autoSkip": {
+        "message": "Automatisch overslaan"
+    },
+    "showSkipNotice": {
+        "message": "Toon melding na een sponsor is overgeslagen"
+    },
+    "minDuration": {
+        "message": "Minimale duur (seconden):"
+    },
+    "showUploadButton": {
+        "message": "Toon Upload Knop"
+    },
+    "customServerAddress": {
+        "message": "SponsorBlock Serveradres"
+    },
+    "save": {
+        "message": "Bewaren"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com wordt nu ondersteund"
+    },
+    "submit": {
+        "message": "Bevestigen"
+    },
+    "cancel": {
+        "message": "Annuleren"
     }
 }

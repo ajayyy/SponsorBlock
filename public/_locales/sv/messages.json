@@ -28,14 +28,8 @@
     "Segments": {
         "message": "sponsorsegment"
     },
-    "noticeTitle": {
-        "message": "Sponsormeddelande undvikt"
-    },
     "reportButtonTitle": {
         "message": "Rapportera"
-    },
-    "reportButtonInfo": {
-        "message": "Rapportera det här sponsorsegmentet som inkorrekt."
     },
     "Dismiss": {
         "message": "Avfärda"
@@ -96,9 +90,6 @@
     },
     "voteFail": {
         "message": "Du har redan röstat."
-    },
-    "serverDown": {
-        "message": "Det ser ut som att servern är nere. Kontakta utvecklaren med en gång."
     },
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
@@ -262,9 +253,6 @@
     "errorCode": {
         "message": "Felkod: "
     },
-    "noticeTitleNotSkipped": {
-        "message": "Hoppa över sponsormeddelande?"
-    },
     "skip": {
         "message": "Hoppa över"
     },
@@ -363,12 +351,6 @@
     },
     "currentInstances": {
         "message": "Nuvarande Instanser:"
-    },
-    "enableAutoUpvote": {
-        "message": "Rösta Upp Automatiskt"
-    },
-    "whatAutoUpvote": {
-        "message": "Med detta aktiverat kommer tillägget att rösta upp alla rapporterade sponsormeddelanden om du inte rapporterar dem som felaktiga. Om notisen är avaktiverad så kommer det inte att ske."
     },
     "minDuration": {
         "message": "Minsta varaktighet (sekunder):"
