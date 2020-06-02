@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, CategorySkipOption, CategorySelection, VideoID, SponsorHideType } from "./types";
+import { SponsorTime, CategorySkipOption, CategorySelection, VideoID, SponsorHideType, FetchResponse } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -63,10 +63,6 @@ var channelWhitelisted = false;
 
 // create preview bar
 var previewBar: PreviewBar = null;
-
-// When not null, a sponsor is currently being previewed and auto skip should be enabled.
-// This is set to a timeout function when that happens that will reset it after 3 seconds.
-var previewResetter: NodeJS.Timeout = null;
 
 //the player controls on the YouTube player
 var controls = null;
@@ -164,14 +160,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
                 video.play();
             }
 
-            // Start preview resetter
-            if (previewResetter !== null){
-                clearTimeout(previewResetter);
-            } 
-
-            previewResetter = setTimeout(() => previewResetter = null, 4000);
-
-            return
+            return;
         case "getCurrentTime":
             sendResponse({
                 currentTime: getRealCurrentTime()
@@ -628,9 +617,9 @@ function sponsorsLookup(id: string) {
     utils.asyncRequestToServer('GET', "/api/skipSegments", {
         videoID: id,
         categories
-    }).then(async (response: Response) => {
-        if (response.status === 200) {
-            let recievedSegments: SponsorTime[] = await response.json();
+    }).then(async (response: FetchResponse) => {
+        if (response.ok) {
+            let recievedSegments: SponsorTime[] = JSON.parse(response.responseText);
             if (!recievedSegments.length) {
                 console.error("[SponsorBlock] Server returned malformed response: " + JSON.stringify(recievedSegments));
                 return;
@@ -866,7 +855,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
     let endTimeIndex = getLatestEndTimeIndex(sponsorTimes, minSponsorTimeIndex);
 
     let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments);
-    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, true, false);
+    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, false, false);
 
     let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
     let previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minPreviewSponsorTimeIndex);
@@ -970,13 +959,6 @@ function previewTime(time: number) {
     if (video.paused){
         video.play();
     }
-
-    // Start preview resetter
-    if (previewResetter !== null){
-        clearTimeout(previewResetter);
-    }
-
-    previewResetter = setTimeout(() => previewResetter = null, 4000);
 }
 
 //skip from the start time to the end time for a certain index sponsor time
@@ -984,7 +966,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     // There will only be one submission if it is manual skip
     let autoSkip: boolean = utils.getCategorySelection(skippingSegments[0].category).option === CategorySkipOption.AutoSkip;
 
-    if (autoSkip || previewResetter !== null) {
+    if (autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) {
         v.currentTime = skipTime[1];
     }
 
@@ -993,30 +975,30 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
         if (!Config.config.dontShowNotice || !autoSkip) {
             let skipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer);
         }
+    }
 
-        //send telemetry that a this sponsor was skipped
-        if (Config.config.trackViewCount && autoSkip) {
-            let alreadySkipped = false;
-            let isPreviewSegment = false;
+    //send telemetry that a this sponsor was skipped
+    if (Config.config.trackViewCount && autoSkip) {
+        let alreadySkipped = false;
+        let isPreviewSegment = false;
 
-            for (const segment of skippingSegments) {
-                let index = sponsorTimes.indexOf(segment);
-                if (index !== -1 && !sponsorSkipped[index]) {
-                    utils.sendRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
+        for (const segment of skippingSegments) {
+            let index = sponsorTimes.indexOf(segment);
+            if (index !== -1 && !sponsorSkipped[index]) {
+                utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
 
-                    sponsorSkipped[index] = true;
-                } else if (sponsorSkipped[index]) {
-                    alreadySkipped = true;
-                }
-
-                if (index !== -1) isPreviewSegment = true;
+                sponsorSkipped[index] = true;
+            } else if (sponsorSkipped[index]) {
+                alreadySkipped = true;
             }
-            
-            // Count this as a skip
-            if (!alreadySkipped && !isPreviewSegment) {
-                Config.config.minutesSaved = Config.config.minutesSaved + (skipTime[1] - skipTime[0]) / 60;
-                Config.config.skipCount = Config.config.skipCount + 1;
-            }
+
+            if (index === -1) isPreviewSegment = true;
+        }
+        
+        // Count this as a skip
+        if (!alreadySkipped && !isPreviewSegment) {
+            Config.config.minutesSaved = Config.config.minutesSaved + (skipTime[1] - skipTime[0]) / 60;
+            Config.config.skipCount = Config.config.skipCount + 1;
         }
     }
 }
@@ -1395,10 +1377,6 @@ function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNo
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
                     skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
-                } else if (response.successType == 0) {
-                    //failure: duplicate vote
-                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(chrome.i18n.getMessage("voteFail"))
-                    skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 } else if (response.successType == -1) {
                     skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
@@ -1525,7 +1503,7 @@ async function sendSubmitMessage(){
         document.getElementById("submitButton").style.animation = "unset";
         (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-        alert(utils.getErrorMessage(response.status) + "\n\n" + (await response.text()));
+        alert(utils.getErrorMessage(response.status) + "\n\n" + (response.responseText));
     }
 }
 

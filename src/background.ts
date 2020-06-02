@@ -1,4 +1,4 @@
-import * as Types from "./types";
+import * as CompileConfig from "../config.json";
 
 import Config from "./config";
 // Make the config public for debugging purposes
@@ -30,7 +30,17 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	switch(request.message) {
         case "openConfig":
             chrome.runtime.openOptionsPage();
-            return
+            return;
+        case "sendRequest":
+            sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
+                callback({
+                    responseText: await response.text(),
+                    status: response.status,
+                    ok: response.ok
+                });
+            });
+        
+            return true;
         case "addSponsorTime":
             addSponsorTime(request.time, request.videoID, callback);
         
@@ -47,7 +57,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             //this allows the callback to be called later
             return true;
         case "submitVote":
-            submitVote(request.type, request.UUID, request.category, callback);
+            submitVote(request.type, request.UUID, request.category).then(callback);
         
             //this allows the callback to be called later
             return true;
@@ -147,7 +157,7 @@ function addSponsorTime(time, videoID, callback) {
     });
 }
 
-function submitVote(type, UUID, category, callback) {
+async function submitVote(type: number, UUID: string, category: string) {
     let userID = Config.config.userID;
 
     if (userID == undefined || userID === "undefined") {
@@ -159,24 +169,60 @@ function submitVote(type, UUID, category, callback) {
     let typeSection = (type !== undefined) ? "&type=" + type : "&category=" + category;
 
     //publish this vote
-    utils.sendRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection, function(xmlhttp, error) {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            callback({
-                successType: 1
-            });
-        } else if (xmlhttp.readyState == 4 && xmlhttp.status == 405) {
-            //duplicate vote
-            callback({
-                successType: 0,
-                statusCode: xmlhttp.status
-            });
-        } else if (error) {
-            //error while connect
-            callback({
-                successType: -1,
-                statusCode: xmlhttp.status
-            });
+    let response = await asyncRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection);
+
+    if (response.ok) {
+        return {
+            successType: 1
+        };
+    } else if (response.status == 405) {
+        //duplicate vote
+        return {
+            successType: 0,
+            statusCode: response.status
+        };
+    } else {
+        //error while connect
+        return {
+            successType: -1,
+            statusCode: response.status
+        };
+    }
+}
+
+async function asyncRequestToServer(type: string, address: string, data = {}) {
+    let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+
+    return await (sendRequestToCustomServer(type, serverAddress + address, data));
+}
+
+/**
+ * Sends a request to the specified url
+ * 
+ * @param type The request type "GET", "POST", etc.
+ * @param address The address to add to the SponsorBlock server address
+ * @param callback 
+ */
+async function sendRequestToCustomServer(type: string, url: string, data = {}) {
+    // If GET, convert JSON to parameters
+    if (type.toLowerCase() === "get") {
+        for (const key in data) {
+            let seperator = url.includes("?") ? "&" : "?";
+            let value = (typeof(data[key]) === "string") ? data[key]: JSON.stringify(data[key]);
+            url += seperator + key + "=" + value;
         }
 
+        data = null;
+    }
+
+    const response = await fetch(url, {
+        method: type,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        body: data ? JSON.stringify(data) : null
     });
+
+    return response;
 }

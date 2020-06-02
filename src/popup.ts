@@ -168,9 +168,9 @@ async function runThePopup(messageListener?: MessageListener) {
         if (userID != undefined) {
             //there are probably some views on these submissions then
             //get the amount of views from the sponsors submitted
-            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(xmlhttp) {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    let viewCount = JSON.parse(xmlhttp.responseText).viewCount;
+            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(response) {
+                if (response.status == 200) {
+                    let viewCount = JSON.parse(response.responseText).viewCount;
                     if (viewCount != 0) {
                         if (viewCount > 1) {
                             PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
@@ -185,9 +185,9 @@ async function runThePopup(messageListener?: MessageListener) {
             });
 
             //get this time in minutes
-            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(xmlhttp) {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    let minutesSaved = JSON.parse(xmlhttp.responseText).timeSaved;
+            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(response) {
+                if (response.status == 200) {
+                    let minutesSaved = JSON.parse(response.responseText).timeSaved;
                     if (minutesSaved != 0) {
                         if (minutesSaved != 1) {
                             PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
@@ -797,9 +797,9 @@ async function runThePopup(messageListener?: MessageListener) {
     //make the options username setting option visible
     function setUsernameButton() {
         //get username from the server
-        utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, function (xmlhttp, error) {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                PageElements.usernameInput.value = JSON.parse(xmlhttp.responseText).userName;
+        utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, function (response) {
+            if (response.status == 200) {
+                PageElements.usernameInput.value = JSON.parse(response.responseText).userName;
 
                 PageElements.submitUsername.style.display = "unset";
                 PageElements.usernameInput.style.display = "unset";
@@ -808,13 +808,13 @@ async function runThePopup(messageListener?: MessageListener) {
                 PageElements.setUsername.style.display = "unset";
                 PageElements
                 PageElements.setUsernameStatusContainer.style.display = "none";
-            } else if (xmlhttp.readyState == 4) {
+            } else {
                 PageElements.setUsername.style.display = "unset";
                 PageElements.submitUsername.style.display = "none";
                 PageElements.usernameInput.style.display = "none";
 
                 PageElements.setUsernameStatusContainer.style.display = "unset";
-                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
+                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(response.status);
             }
         });
     }
@@ -826,15 +826,15 @@ async function runThePopup(messageListener?: MessageListener) {
         PageElements.setUsernameStatus.innerText = "Loading...";
 
         //get the userID
-        utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (xmlhttp, error) {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (response) {
+            if (response.status == 200) {
                 //submitted
                 PageElements.submitUsername.style.display = "none";
                 PageElements.usernameInput.style.display = "none";
 
                 PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
-            } else if (xmlhttp.readyState == 4) {
-                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(xmlhttp.status);
+            } else  {
+                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(response.status);
             }
         });
 
@@ -883,9 +883,6 @@ async function runThePopup(messageListener?: MessageListener) {
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
                     addVoteMessage(chrome.i18n.getMessage("voted"), UUID)
-                } else if (response.successType == 0) {
-                    //failure: duplicate vote
-                    addVoteMessage(chrome.i18n.getMessage("voteFail"), UUID)
                 } else if (response.successType == -1) {
                     addVoteMessage(utils.getErrorMessage(response.statusCode), UUID)
                 }

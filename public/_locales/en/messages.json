@@ -104,9 +104,6 @@
     "voted": {
         "message": "Voted!"
     },
-    "voteFail": {
-        "message": "You have already voted this way before."
-    },
     "serverDown": {
         "message": "It seems the server is down. Contact the dev immediately."
     },
@@ -496,7 +493,7 @@
         "message": "Interaction Reminder (Subscribe)"
     },
     "category_selfpromo": {
-        "message": "Self-Promotion and Merchandise"
+        "message": "Unpaid/Self Promotion"
     },
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
