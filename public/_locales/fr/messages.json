@@ -219,7 +219,7 @@
         "message": "Activer le suivi des vues de segments commerciaux"
     },
     "whatViewTracking": {
-        "message": "Cette fonctionnalité suit quels segments commerciaux vous avez sautés afin de calculer le bénéfice des soumissions des \nautres utilisateurs. Elle est également utilisée comme métrique, avec les haut-votes, afin de s'assurer que les spams \nsont ignorés. L'extension envoie un message au serveur à chauqe fois qu'un segment commercial est sauté. Avec un peu de chance, peu de personnes désactiveront cette fonctionnalité afin d'obtenir des nombres de vues exacts. :)"
+        "message": "Cette fonctionnalité suit quels segments commerciaux vous avez sautés afin de calculer le bénéfice des soumissions des \nautres utilisateurs. Elle est également utilisée comme métrique, avec les haut-votes, afin de s'assurer que les spams \nsont ignorés. L'extension envoie un message au serveur à chauque fois qu'un segment commercial est sauté. Avec un peu de chance, peu de personnes désactiveront cette fonctionnalité afin d'obtenir des nombres de vues exacts. :)"
     },
     "showNotice": {
         "message": "Afficher la notification"
@@ -327,7 +327,7 @@
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
     },
     "changeUserID": {
-        "message": "Importer/Exporter votre ID d'utilisateur"
+        "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
     "whatChangeUserID": {
         "message": "Gardez ça privé. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtiens, il peut vous usurper."
@@ -354,7 +354,7 @@
         "message": "Soutenir Invidious"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) est un client tiers pour Youtube. Vous devez accepter des permissions supplémentaires pour activer son support. Cette fonctionnalité ne fonctionne pas en mode incognito sur Chrome et les autres variantes de Chromium."
+        "message": "Invidious (invidio.us) est un client tiers pour YouTube. Vous devez accepter des permissions supplémentaires pour activer son support. Cette fonctionnalité ne fonctionne pas en mode incognito sur Chrome et les autres variantes de Chromium."
     },
     "optionsInfo": {
         "message": "Activer Invidious, désactiver le passage automatique, masquer les boutons et plus encore."
@@ -474,7 +474,7 @@
         "message": "La clé"
     },
     "keyAlreadyUsedByYouTube": {
-        "message": "est déjà utilisé par youtube. Veuillez sélectionner une autre clé."
+        "message": "est déjà utilisé par YouTube. Veuillez sélectionner une autre clé."
     },
     "keyAlreadyUsed": {
         "message": "est lié à une autre action. Veuillez sélectionner une autre clé."
