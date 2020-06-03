@@ -101,9 +101,6 @@
     "voted": {
         "message": "Äänestetty!"
     },
-    "voteFail": {
-        "message": "Olet jo äänestänyt näin aiemmin."
-    },
     "serverDown": {
         "message": "Palvelin näyttää olevan alhaalla. Ota heti yhteyttä kehittäjään."
     },
@@ -338,9 +335,6 @@
     },
     "category_interaction": {
         "message": "Vuorovaikutusmuistutus (tilaaminen)"
-    },
-    "category_selfpromo": {
-        "message": "Itsepromootio ja fanituotteet"
     },
     "category_music_offtopic": {
         "message": "Musiikki: muussa kuin Musiikki-osiossa"
