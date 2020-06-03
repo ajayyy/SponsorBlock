@@ -492,6 +492,9 @@
     "category_interaction": {
         "message": "互动提醒（订阅）"
     },
+    "category_selfpromo": {
+        "message": "未收钱的/自我推销"
+    },
     "category_music_offtopic": {
         "message": "音乐：非音乐部分"
     },
