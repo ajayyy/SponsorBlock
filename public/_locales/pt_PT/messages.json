@@ -91,9 +91,6 @@
     "voted": {
         "message": "Votado!"
     },
-    "voteFail": {
-        "message": "Já votou antes."
-    },
     "connectionError": {
         "message": "Deu-se um erro de conecção: Código: "
     },
