@@ -73,7 +73,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.contentContainer = props.contentContainer;
         this.audio = null;
 
-        let categoryName = chrome.i18n.getMessage(this.segments.length > 1 ? "multipleSegments" : "category_" + this.segments[0].category);
+        let categoryName = chrome.i18n.getMessage(this.segments.length > 1 ? "multipleSegments" 
+            : "category_" + this.segments[0].category + "_short") || chrome.i18n.getMessage("category_" + this.segments[0].category);
         let noticeTitle = categoryName + " " + chrome.i18n.getMessage("skipped");
         if (!this.autoSkip) {
             noticeTitle = chrome.i18n.getMessage("skip") + " " + categoryName + "?";

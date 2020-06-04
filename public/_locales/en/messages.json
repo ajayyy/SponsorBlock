@@ -486,11 +486,17 @@
     "category_intro": {
         "message": "Intro Animation"
     },
+    "category_intro_short": {
+        "message": "Intro"
+    },
     "category_outro": {
         "message": "Endcards/Credits"
     },
     "category_interaction": {
         "message": "Interaction Reminder (Subscribe)"
+    },
+    "category_interaction_short": {
+        "message": "Interaction Reminder"
     },
     "category_selfpromo": {
         "message": "Unpaid/Self Promotion"
@@ -498,8 +504,14 @@
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
     },
+    "category_music_offtopic_short": {
+        "message": "Non-Music"
+    },
     "category_livestream_messages": {
         "message": "Livestream: Donation/Message Readings"
+    },
+    "category_livestream_messages_short": {
+        "message": "Message Reading"
     },
     "disable": {
         "message": "Disable"
