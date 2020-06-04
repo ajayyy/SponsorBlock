@@ -45,6 +45,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         defaultOption = "autoSkip";
                         break;
                 }
+                
+                break;
             }
         }
 
