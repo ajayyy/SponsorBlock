@@ -510,6 +510,23 @@
     "showOverlay": {
         "message": "Show In Seek Bar"
     },
+    "colorFormatIncorrect": {
+        "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
+    },
+    "previewColor": {
+        "message": "Preview Color",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Seek Bar Color"
+    },
+    "category": {
+        "message": "Category"
+    },
+    "skipOption": {
+        "message": "Skip Option",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
     "enableTestingServer": {
         "message": "Enable Beta Testing Server"
     },

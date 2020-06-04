@@ -1,5 +1,5 @@
 import * as CompileConfig from "../config.json";
-import { CategorySelection, CategorySkipOption } from "./types";
+import { CategorySelection, CategorySkipOption, PreviewBarOption } from "./types";
 
 import Utils from "./utils";
 const utils = new Utils();
@@ -33,7 +33,23 @@ interface SBConfig {
     testingServer: boolean,
 
     // What categories should be skipped
-    categorySelections: CategorySelection[]
+    categorySelections: CategorySelection[],
+
+    // Preview bar
+    barTypes: {
+        "sponsor": PreviewBarOption,
+        "preview-sponsor": PreviewBarOption,
+        "intro": PreviewBarOption,
+        "preview-intro": PreviewBarOption,
+        "outro": PreviewBarOption,
+        "preview-outro": PreviewBarOption,
+        "interaction": PreviewBarOption,
+        "preview-interaction": PreviewBarOption,
+        "selfpromo": PreviewBarOption,
+        "preview-selfpromo": PreviewBarOption,
+        "music_offtopic": PreviewBarOption,
+        "preview-music_offtopic": PreviewBarOption
+    }
 }
 
 interface SBObject {
@@ -134,7 +150,59 @@ var Config: SBObject = {
         categorySelections: [{
             name: "sponsor",
             option: CategorySkipOption.AutoSkip
-        }]
+        }],
+
+        // Preview bar
+        barTypes: {
+            "sponsor": {
+                color: "#00d400",
+                opacity: "0.7"
+            },
+            "preview-sponsor": {
+                color: "#007800",
+                opacity: "0.7"
+            },
+            "intro": {
+                color: "#00ffff",
+                opacity: "0.7"
+            },
+            "preview-intro": {
+                color: "#008080",
+                opacity: "0.7"
+            },
+            "outro": {
+                color: "#0202ed",
+                opacity: "0.7"
+            },
+            "preview-outro": {
+                color: "#000070",
+                opacity: "0.7"
+            },
+            "interaction": {
+                color: "#cc00ff",
+                opacity: "0.7"
+            },
+            "preview-interaction": {
+                color: "#6c0087",
+                opacity: "0.7"
+            },
+            "selfpromo": {
+                color: "#ffff00",
+                opacity: "0.7"
+            },
+            "preview-selfpromo": {
+                color: "#bfbf35",
+                opacity: "0.7"
+            },
+            "music_offtopic": {
+                color: "#ff9900",
+                opacity: "0.7"
+            },
+            "preview-music_offtopic": {
+                color: "#a6634a",
+                opacity: "0.7"
+            }
+        }
     },
     localConfig: null,
     config: null,
