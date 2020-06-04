@@ -45,54 +45,65 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         defaultOption = "autoSkip";
                         break;
                 }
-                
+
                 break;
             }
         }
 
         return (
-            <tr id={this.props.category + "OptionsRow"}
-                className="categoryTableElement">
-                <td id={this.props.category + "OptionName"}
-                    className="categoryTableLabel">
-                        {chrome.i18n.getMessage("category_" + this.props.category)}
-                </td>
+            <>
+                <tr id={this.props.category + "OptionsRow"}
+                    className="categoryTableElement">
+                    <td id={this.props.category + "OptionName"}
+                        className="categoryTableLabel">
+                            {chrome.i18n.getMessage("category_" + this.props.category)}
+                    </td>
 
-                <td id={this.props.category + "SkipOption"}>
-                    <select
-                        className="categoryOptionsSelector"
-                        defaultValue={defaultOption}
-                        onChange={this.skipOptionSelected.bind(this)}>
-                            {this.getCategorySkipOptions()}
-                    </select>
-                </td>
-                
-                <td id={this.props.category + "ColorOption"}>
-                    <input
-                        className="categoryColorTextBox option-text-box"
-                        type="text"
-                        onChange={(event) => this.setColorState(event, false)}
-                        value={this.state.color} />
-                </td>
+                    <td id={this.props.category + "SkipOption"}>
+                        <select
+                            className="categoryOptionsSelector"
+                            defaultValue={defaultOption}
+                            onChange={this.skipOptionSelected.bind(this)}>
+                                {this.getCategorySkipOptions()}
+                        </select>
+                    </td>
+                    
+                    <td id={this.props.category + "ColorOption"}>
+                        <input
+                            className="categoryColorTextBox option-text-box"
+                            type="text"
+                            onChange={(event) => this.setColorState(event, false)}
+                            value={this.state.color} />
+                    </td>
 
-                <td id={this.props.category + "PreviewColorOption"}>
-                    <input
-                        className="categoryColorTextBox option-text-box"
-                        type="text"
-                        onChange={(event) => this.setColorState(event, true)}
-                        value={this.state.previewColor} />
-                </td>
+                    <td id={this.props.category + "PreviewColorOption"}>
+                        <input
+                            className="categoryColorTextBox option-text-box"
+                            type="text"
+                            onChange={(event) => this.setColorState(event, true)}
+                            value={this.state.previewColor} />
+                    </td>
 
-                <td id={this.props.category + "SaveButton"}>
-                    <div 
-                        className="option-button trigger-button"
-                        onClick={() => this.save()}>
-                        {chrome.i18n.getMessage("save")}
-                    </div>
-                </td>
+                    <td id={this.props.category + "SaveButton"}>
+                        <div 
+                            className="option-button trigger-button"
+                            onClick={() => this.save()}>
+                            {chrome.i18n.getMessage("save")}
+                        </div>
+                    </td>
 
-                
-            </tr>
+                    
+                </tr>
+
+                <tr id={this.props.category + "DescriptionRow"}
+                    className="small-description">
+                        <td
+                            colSpan={5}>
+                            {chrome.i18n.getMessage("category_" + this.props.category + "_description")}
+                        </td>
+                </tr>
+
+            </>
         );
     }
 

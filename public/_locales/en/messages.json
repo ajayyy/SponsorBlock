@@ -483,8 +483,14 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "category_sponsor_description": {
+        "message": "Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shoutouts to causes or other creators/websites/products they like."
+    },
     "category_intro": {
         "message": "Intro Animation"
+    },
+    "category_intro_description": {
+        "message": "Intro animations that are recurring in the series or provide no direct value. This should not be used on music videos."
     },
     "category_intro_short": {
         "message": "Intro"
@@ -492,8 +498,14 @@
     "category_outro": {
         "message": "Endcards/Credits"
     },
+    "category_outro_description": {
+        "message": "Credits or when the YouTube endcards appear. Not for spoken conclusions. This should not include useful content. This should not be used on music videos."
+    },
     "category_interaction": {
         "message": "Interaction Reminder (Subscribe)"
+    },
+    "category_interaction_description": {
+        "message": "When there is a short reminder to like, subscribe or follow them in the middle of content. If it is long or about something specific, it should be under self promotion instead."
     },
     "category_interaction_short": {
         "message": "Interaction Reminder"
@@ -501,8 +513,14 @@
     "category_selfpromo": {
         "message": "Unpaid/Self Promotion"
     },
+    "category_selfpromo_description": {
+        "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
+    },
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
+    },
+    "category_music_offtopic_description": {
+        "message": "Only for use in music videos. This includes introductions or outros in music videos."
     },
     "category_music_offtopic_short": {
         "message": "Non-Music"
