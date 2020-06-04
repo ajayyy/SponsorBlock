@@ -59,6 +59,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 <td id={this.props.category + "SkipOption"}>
                     <select
                         className="categoryOptionsSelector"
+                        defaultValue={defaultOption}
                         onChange={this.skipOptionSelected.bind(this)}>
                             {this.getCategorySkipOptions()}
                     </select>
