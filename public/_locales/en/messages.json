@@ -610,5 +610,8 @@
     },
     "multipleSegments": {
         "message": "Multiple Segments"
+    },
+    "categoryGuidelines": {
+        "message": "Category Guidelines"
     }
 }
