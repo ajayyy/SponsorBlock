@@ -98,7 +98,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 <tr id={this.props.category + "DescriptionRow"}
                     className="small-description">
                         <td
-                            colSpan={5}>
+                            colSpan={2}>
                             {chrome.i18n.getMessage("category_" + this.props.category + "_description")}
                         </td>
                 </tr>

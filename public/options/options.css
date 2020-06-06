@@ -347,3 +347,7 @@ svg {
     padding: 5px;
     border-radius: 5px;
 }
+
+.categoryColorTextBox {
+    width: 60px;
+}
