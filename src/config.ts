@@ -14,6 +14,7 @@ interface SBConfig {
     minutesSaved: number,
     skipCount: number,
     sponsorTimesContributed: number,
+    submissionCountSinceCategories: number, // New count used to show the "Read The Guidelines!!" message
     disableSkipping: boolean,
     trackViewCount: boolean,
     dontShowNotice: boolean,
@@ -129,6 +130,7 @@ var Config: SBObject = {
         minutesSaved: 0,
         skipCount: 0,
         sponsorTimesContributed: 0,
+        submissionCountSinceCategories: 0,
         disableSkipping: false,
         trackViewCount: true,
         dontShowNotice: false,

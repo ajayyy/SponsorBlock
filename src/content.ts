@@ -1476,6 +1476,10 @@ async function sendSubmitMessage(){
         // Increase contribution count
         Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimesSubmitting.length;
 
+        // New count just used to see if a warning "Read The Guidelines!!" message needs to be shown
+        // One per time submitting
+        Config.config.submissionCountSinceCategories = Config.config.submissionCountSinceCategories + 1;
+
         // Empty the submitting times
         sponsorTimesSubmitting = [];
 

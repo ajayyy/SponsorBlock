@@ -611,7 +611,11 @@
     "multipleSegments": {
         "message": "Multiple Segments"
     },
-    "categoryGuidelines": {
-        "message": "Category Guidelines"
+    "guidelines": {
+        "message": "Guidelines"
+    },
+    "readTheGuidelines": {
+        "message": "Read The Guidelines!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     }
 }
