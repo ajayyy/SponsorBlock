@@ -13,6 +13,13 @@ window.addEventListener('DOMContentLoaded', init);
 async function init() {
     utils.localizeHtmlPage();
 
+    // Remove header if needed
+    if (window.location.hash === "#embed") {
+        for (const element of document.getElementsByClassName("titleBar")) {
+            element.classList.add("hidden");
+        }
+    }
+
     if (!Config.configListeners.includes(optionsConfigUpdateListener)) {
         Config.configListeners.push(optionsConfigUpdateListener);
     }

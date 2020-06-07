@@ -358,6 +358,10 @@ class Utils {
         return window.location.protocol === "http:" || window.location.protocol === "https:";
     }
 
+    isHex(num: string): boolean {
+        return Boolean(num.match(/^[0-9a-f]+$/i));
+    }
+
     /**
      * Is this Firefox (web-extensions)
      */

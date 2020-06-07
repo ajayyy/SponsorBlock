@@ -973,7 +973,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!Config.config.dontShowNotice || !autoSkip) {
-            let skipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer);
+            new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer);
         }
     }
 
@@ -1493,6 +1493,10 @@ async function sendSubmitMessage(){
 
         // Increase contribution count
         Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimesSubmitting.length;
+
+        // New count just used to see if a warning "Read The Guidelines!!" message needs to be shown
+        // One per time submitting
+        Config.config.submissionCountSinceCategories = Config.config.submissionCountSinceCategories + 1;
 
         // Empty the submitting times
         sponsorTimesSubmitting = [];

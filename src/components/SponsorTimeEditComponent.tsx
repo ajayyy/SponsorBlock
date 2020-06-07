@@ -182,14 +182,23 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 {timeDisplay}
 
                 {/* Category */}
+                <div style={{position: "relative"}}>
+                    <select id={"sponsorTimeCategories" + this.idSuffix}
+                        className="sponsorTimeCategories"
+                        defaultValue={sponsorTime.category}
+                        ref={this.categoryOptionRef}
+                        onChange={this.categorySelectionChange.bind(this)}>
+                        {this.getCategoryOptions()}
+                    </select>
 
-                <select id={"sponsorTimeCategories" + this.idSuffix}
-                    className="sponsorTimeCategories"
-                    defaultValue={sponsorTime.category}
-                    ref={this.categoryOptionRef}
-                    onChange={this.categorySelectionChange.bind(this)}>
-                    {this.getCategoryOptions()}
-                </select>
+                    <img id={"sponsorTimeCategoriesHelpButton" + this.idSuffix}
+                        className="helpButton"
+                        src={chrome.extension.getURL("icons/help.svg")}
+                        title={chrome.i18n.getMessage("categoryGuidelines")}
+                        onClick={() => chrome.runtime.sendMessage({"message": "openConfig"})}>
+                    
+                    </img>
+                </div>
 
                 <br/>
 

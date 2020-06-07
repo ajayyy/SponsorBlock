@@ -395,3 +395,21 @@ input::-webkit-inner-spin-button {
     border-width: 3px;
     padding: 3px;
 }
+
+.helpButton {
+
+}
+
+.helpButton {
+	height: 25px;
+	cursor: pointer;
+	padding: 5px;
+	
+	margin: auto;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+}
+.helpButton:hover {
+	filter: brightness(80%);
+}

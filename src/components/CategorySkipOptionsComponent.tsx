@@ -2,14 +2,19 @@ import * as React from "react";
 
 import Config from "../config"
 import { CategorySkipOption } from "../types";
+import Utils from "../utils";
+
+const utils = new Utils();
 
 export interface CategorySkipOptionsProps { 
     category: string;
-    defaultColor: string;
+    defaultColor?: string;
+    defaultPreviewColor?: string;
 }
 
 export interface CategorySkipOptionsState {
     color: string;
+    previewColor: string;
 }
 
 class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsProps, CategorySkipOptionsState> {
@@ -19,7 +24,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
         // Setup state
         this.state = {
-            color: props.defaultColor
+            color: props.defaultColor || Config.config.barTypes[this.props.category].color,
+            previewColor: props.defaultPreviewColor || Config.config.barTypes["preview-" + this.props.category].color,
         }
     }
 
@@ -39,28 +45,65 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         defaultOption = "autoSkip";
                         break;
                 }
+
+                break;
             }
         }
 
         return (
-            <tr id={this.props.category + "OptionsRow"}
-                className="categoryTableElement">
-                <td id={this.props.category + "OptionName"}
-                    className="categoryTableLabel">
-                        {chrome.i18n.getMessage("category_" + this.props.category)}
-                </td>
+            <>
+                <tr id={this.props.category + "OptionsRow"}
+                    className="categoryTableElement">
+                    <td id={this.props.category + "OptionName"}
+                        className="categoryTableLabel">
+                            {chrome.i18n.getMessage("category_" + this.props.category)}
+                    </td>
 
-                <td id={this.props.category + "SkipOption"}>
-                    <select
-                        className="categoryOptionsSelector"
-                        defaultValue={defaultOption}
-                        onChange={this.skipOptionSelected.bind(this)}>
-                            {this.getCategorySkipOptions()}
-                    </select>
-                </td>
+                    <td id={this.props.category + "SkipOption"}>
+                        <select
+                            className="categoryOptionsSelector"
+                            defaultValue={defaultOption}
+                            onChange={this.skipOptionSelected.bind(this)}>
+                                {this.getCategorySkipOptions()}
+                        </select>
+                    </td>
+                    
+                    <td id={this.props.category + "ColorOption"}>
+                        <input
+                            className="categoryColorTextBox option-text-box"
+                            type="text"
+                            onChange={(event) => this.setColorState(event, false)}
+                            value={this.state.color} />
+                    </td>
 
-                {/* TODO: Add colour chooser */}
-            </tr>
+                    <td id={this.props.category + "PreviewColorOption"}>
+                        <input
+                            className="categoryColorTextBox option-text-box"
+                            type="text"
+                            onChange={(event) => this.setColorState(event, true)}
+                            value={this.state.previewColor} />
+                    </td>
+
+                    <td id={this.props.category + "SaveButton"}>
+                        <div 
+                            className="option-button trigger-button"
+                            onClick={() => this.save()}>
+                            {chrome.i18n.getMessage("save")}
+                        </div>
+                    </td>
+
+                    
+                </tr>
+
+                <tr id={this.props.category + "DescriptionRow"}
+                    className="small-description">
+                        <td
+                            colSpan={2}>
+                            {chrome.i18n.getMessage("category_" + this.props.category + "_description")}
+                        </td>
+                </tr>
+
+            </>
         );
     }
 
@@ -112,7 +155,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
     getCategorySkipOptions(): JSX.Element[] {
         let elements: JSX.Element[] = [];
-""
+
         let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
 
         for (const optionName of optionNames) {
@@ -124,6 +167,36 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         }
 
         return elements;
+    }
+
+    setColorState(event: React.ChangeEvent<HTMLInputElement>, preview: boolean) {
+        if (preview) {
+            this.setState({
+                previewColor: event.target.value
+            });
+        } else {
+            this.setState({
+                color: event.target.value
+            });
+        }
+    }
+
+    // Save text box data
+    save() {
+        // Validate colors
+        let checkVar = [this.state.color, this.state.previewColor]
+        for (const color of checkVar) {
+            if (color[0] !== "#" || (color.length !== 7 && color.length !== 4) || !utils.isHex(color.slice(1))) {
+                alert(chrome.i18n.getMessage("colorFormatIncorrect") + " " + color.slice(1) + " " + utils.isHex(color.slice(1)) + " " + utils.isHex("abcd123"));
+                return;
+            }
+        }
+
+        // Save colors
+        Config.config.barTypes[this.props.category].color = this.state.color;
+        Config.config.barTypes["preview-" + this.props.category].color = this.state.previewColor;
+        // Make listener get called
+        Config.config.barTypes = Config.config.barTypes;
     }
 }
 

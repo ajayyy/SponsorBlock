@@ -86,12 +86,19 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                         {this.getSponsorTimeMessages()}
                     </td>
                 </tr>
-              
+
                 {/* Last Row */}
                 <tr id={"sponsorSkipNoticeSecondRow" + this.state.idSuffix}>
 
                     <td className="sponsorSkipNoticeRightSection"
                         style={{position: "relative"}}>
+
+                        {/* Guidelines button */}
+                        <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
+                            onClick={() => window.open("https://github.com/ajayyy/SponsorBlock/wiki/Guidelines")}>
+
+                            {chrome.i18n.getMessage(Config.config.submissionCountSinceCategories > 3 ? "guidelines" : "readTheGuidelines")}
+                        </button>
 
                         {/* Submit Button */}
                         <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"

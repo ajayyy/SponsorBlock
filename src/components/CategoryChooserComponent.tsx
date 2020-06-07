@@ -28,6 +28,26 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
             <table id="categoryChooserTable"
                 className="categoryChooserTable"> 
                 <tbody>
+                    {/* Headers */}
+                    <tr id={"CategoryOptionsRow"}
+                            className="categoryTableElement categoryTableHeader">
+                        <td id={"CategoryOptionName"}>
+                            {chrome.i18n.getMessage("category")}
+                        </td>
+
+                        <td id={"CategorySkipOption"}>
+                            {chrome.i18n.getMessage("skipOption")}
+                        </td>
+
+                        <td id={"CategoryColorOption"}>
+                            {chrome.i18n.getMessage("seekBarColor")}
+                        </td>
+
+                        <td id={"CategoryPreviewColorOption"}>
+                            {chrome.i18n.getMessage("previewColor")}
+                        </td>
+                    </tr>
+
                     {this.getCategorySkipOptions()}
                 </tbody> 
             </table>
@@ -40,7 +60,6 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
         for (const category of CompileConfig.categoryList) {
             elements.push(
                 <CategorySkipOptionsComponent category={category}
-                    defaultColor={"00d400"}
                     key={category}>
                 </CategorySkipOptionsComponent>
             );

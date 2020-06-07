@@ -58,6 +58,11 @@ interface SponsorTime {
     hidden?: SponsorHideType;
 }
 
+interface PreviewBarOption {
+    color: string,
+    opacity: string
+}
+
 type VideoID = string;
 
 export {
@@ -68,5 +73,6 @@ export {
     CategorySkipOption,
     SponsorTime,
     VideoID,
-    SponsorHideType
+    SponsorHideType,
+    PreviewBarOption
 };
