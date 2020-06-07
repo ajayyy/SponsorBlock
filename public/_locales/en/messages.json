@@ -623,5 +623,11 @@
     },
     "categoryUpdate2": {
         "message": "Open the options to skip intros, outros, merch, etc."
+    },
+    "unsubmittedWarning": {
+        "message": "Unsubmitted Segments Notification"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Send a notification when you leave a video with segments that are not uploaded"
     }
 }
