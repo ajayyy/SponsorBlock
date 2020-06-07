@@ -617,5 +617,11 @@
     "readTheGuidelines": {
         "message": "Read The Guidelines!!",
         "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Categories are here!"
+    },
+    "categoryUpdate2": {
+        "message": "Open the options to skip intros, outros, merch, etc."
     }
 }

@@ -31,6 +31,7 @@ export interface SkipNoticeState {
     noticeTitle: string;
 
     messages: string[];
+    messageOnClick: (event: React.MouseEvent) => any;
 
     countdownTime: number;
     maxCountdownTime: () => number;
@@ -105,6 +106,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.state = {
             noticeTitle,
             messages: [],
+            messageOnClick: null,
 
             //the countdown until this notice closes
             maxCountdownTime: () => 4,
@@ -131,6 +133,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         if (Config.config.audioNotificationOnSkip && this.audio) {
             this.audio.volume = this.contentContainer().v.volume * 0.1;
             this.audio.play();
+        }
+
+        if (Config.config.categoryUpdateShowCount < 3 && Config.config.categorySelections.length <= 1) {
+            this.setNoticeInfoMessageWithOnClick(() => chrome.runtime.sendMessage({"message": "openConfig"})
+                , chrome.i18n.getMessage("categoryUpdate1"), chrome.i18n.getMessage("categoryUpdate2"));
+
+            Config.config.categoryUpdateShowCount = Config.config.categoryUpdateShowCount + 1
         }
     }
 
@@ -325,6 +334,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             elements.push(
                 <NoticeTextSelectionComponent idSuffix={this.idSuffix}
                     text={this.state.messages[i]}
+                    onClick={this.state.messageOnClick}
                     key={i}>
                 </NoticeTextSelectionComponent>
             )
@@ -503,6 +513,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
             this.contentContainer().updatePreviewBar();
         }
+    }
+
+    setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => any, ...messages: string[]) {
+        this.setState({
+            messages,
+            messageOnClick: (event) => onClick(event)
+        });
     }
 
     setNoticeInfoMessage(...messages: string[]) {
