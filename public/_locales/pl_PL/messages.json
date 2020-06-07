@@ -95,9 +95,6 @@
     "voted": {
         "message": "Zagłosowano!"
     },
-    "voteFail": {
-        "message": "Już na to głosowałeś."
-    },
     "connectionError": {
         "message": "Błąd z połączeniem. Kod błędu: "
     },

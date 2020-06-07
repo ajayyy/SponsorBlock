@@ -59,9 +59,6 @@
     "voted": {
         "message": "Gestemd!"
     },
-    "voteFail": {
-        "message": "U hebt al eerder op deze manier gestemd."
-    },
     "connectionError": {
         "message": "Er is een verbindingsfout opgetreden. Foutcode: "
     },

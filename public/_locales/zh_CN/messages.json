@@ -104,9 +104,6 @@
     "voted": {
         "message": "已投票！"
     },
-    "voteFail": {
-        "message": "您之前已经这样投过了。"
-    },
     "serverDown": {
         "message": "服务器似乎已宕机。请立即联系开发者。"
     },
@@ -496,7 +493,7 @@
         "message": "互动提醒（订阅）"
     },
     "category_selfpromo": {
-        "message": "自我推销和商品"
+        "message": "未收钱的/自我推销"
     },
     "category_music_offtopic": {
         "message": "音乐：非音乐部分"

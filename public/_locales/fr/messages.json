@@ -104,9 +104,6 @@
     "voted": {
         "message": "A voté !"
     },
-    "voteFail": {
-        "message": "Vous avez déjà voté pour ce choix."
-    },
     "serverDown": {
         "message": "Le serveur ne fonctionne pas. Contactez le développeur."
     },
@@ -494,9 +491,6 @@
     },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
-    },
-    "category_selfpromo": {
-        "message": "Auto-promotion et produits dérivés"
     },
     "category_music_offtopic": {
         "message": "Musique : Segment non-musicale"

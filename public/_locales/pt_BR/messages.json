@@ -95,9 +95,6 @@
     "voted": {
         "message": "Votado!"
     },
-    "voteFail": {
-        "message": "Você já votou antes."
-    },
     "connectionError": {
         "message": "Um erro de conexão aconteceu: Código: "
     },
@@ -479,9 +476,6 @@
     },
     "category_interaction": {
         "message": "Lembrete de interação (inscrever-se)"
-    },
-    "category_selfpromo": {
-        "message": "Auto-Promoção e Mercadorias"
     },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"

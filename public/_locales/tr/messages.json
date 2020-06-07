@@ -104,9 +104,6 @@
     "voted": {
         "message": "Oylandı!"
     },
-    "voteFail": {
-        "message": "Bu şekilde zaten oy kullanmıştın."
-    },
     "serverDown": {
         "message": "Sunucu çökmüş gibi duruyor. Derhal geliştiriciyle iletişime geçin."
     },
@@ -496,7 +493,7 @@
         "message": "Etkileşim Hatırlatıcısı (Abonelik)"
     },
     "category_selfpromo": {
-        "message": "Kendi Reklamını Yapma ve Ürün"
+        "message": "Karşılıksız/Kendi Reklamı"
     },
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"

@@ -88,9 +88,6 @@
     "voted": {
         "message": "Röstat!"
     },
-    "voteFail": {
-        "message": "Du har redan röstat."
-    },
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
     },
@@ -457,9 +454,6 @@
     },
     "category_sponsor": {
         "message": "Sponsormeddelande"
-    },
-    "category_selfpromo": {
-        "message": "Självreklam och egna produkter"
     },
     "disable": {
         "message": "Avaktivera"

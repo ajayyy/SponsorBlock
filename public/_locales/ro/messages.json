@@ -1,1 +1,567 @@
-{}
+{
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
+    "fullName": {
+        "message": "SponsorBlock pentru YouTube - Sari peste sponsorizări",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Sari peste sponsorizările din videoclipurile de pe YouTube. Adaugă sponsorizări din videoclipurile pe care le urmăriți pentru a salva timpul altora.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Serverul a spus că această cerere este invalidă"
+    },
+    "429": {
+        "message": "Ai trimis prea multe timpuri ale sponsorizărilor pentru acest videoclip, sunteți sigur că sunt atât de multe?"
+    },
+    "409": {
+        "message": "Acest lucru a fost deja trimis înainte"
+    },
+    "channelWhitelisted": {
+        "message": "Canalul a fost adăugat la excepții!"
+    },
+    "Sponsor": {
+        "message": "sponsor"
+    },
+    "Sponsors": {
+        "message": "sponsori"
+    },
+    "Segment": {
+        "message": "segment sponsorizat"
+    },
+    "Segments": {
+        "message": "segmente sponsorizate"
+    },
+    "upvoteButtonInfo": {
+        "message": "Votează această înregistrare"
+    },
+    "reportButtonTitle": {
+        "message": "Raportează"
+    },
+    "reportButtonInfo": {
+        "message": "Raportează această înregistrare ca fiind incorectă."
+    },
+    "Dismiss": {
+        "message": "Renunță"
+    },
+    "Loading": {
+        "message": "Se încarcă..."
+    },
+    "Mins": {
+        "message": "Minute"
+    },
+    "Secs": {
+        "message": "Secunde"
+    },
+    "Hide": {
+        "message": "Nu mai afișa niciodată"
+    },
+    "hitGoBack": {
+        "message": "Apasă unskip pentru a reveni."
+    },
+    "unskip": {
+        "message": "Unskip"
+    },
+    "reskip": {
+        "message": "Sari peste"
+    },
+    "paused": {
+        "message": "Pauză"
+    },
+    "manualPaused": {
+        "message": "Cronometru oprit"
+    },
+    "confirmMSG": {
+        "message": "Pentru a edita sau a șterge valori individuale, apasă butonul de informații sau deschide popup-ul extensiei apăsând iconița extensiei din colțul dreapta sus."
+    },
+    "clearThis": {
+        "message": "Ești sigur că vrei să ștergi asta?\n\n"
+    },
+    "Unknown": {
+        "message": "A apărut o eroare în trimiterea timpilor sponsorizărilor, încearcă din nou mai târziu."
+    },
+    "sponsorFound": {
+        "message": "Sponsorii acestui videoclip se află în baza de date!"
+    },
+    "sponsor404": {
+        "message": "Nu s-a gasit niciun sponsor"
+    },
+    "sponsorStart": {
+        "message": "Sponsorizarea Începe Acum"
+    },
+    "sponsorEnd": {
+        "message": "Sponsorizarea Se Termină Acum"
+    },
+    "noVideoID": {
+        "message": "Nu există niciun videoclip YouTube în aceast tab. Dacă știți că acesta este un tab YouTube, închideți acest popup și deschideți-l din nou. Daca nici asta nu merge, încercați să reîncărcați pagina."
+    },
+    "success": {
+        "message": "Succes!"
+    },
+    "voted": {
+        "message": "Votat!"
+    },
+    "serverDown": {
+        "message": "Se pare că serverul este oprit. Contactează imediat dezvoltatorul."
+    },
+    "connectionError": {
+        "message": "A apărut o eroare de conexiune. Cod de eroare: "
+    },
+    "wantToSubmit": {
+        "message": "Doriți să trimiteți timpii sponsorizărilor pentru acest video id"
+    },
+    "leftTimes": {
+        "message": "Se pare că ați lăsat unii timpi ai sponsorilor netrimiși. Mergeți înapoi la pagina respectivă pentru a îi trimite (timpii nu au fost șterși)."
+    },
+    "clearTimes": {
+        "message": "Șterge Timpii Sponsorizărilor"
+    },
+    "openPopup": {
+        "message": "Deschide Popup-ul SponsorBlock"
+    },
+    "SubmitTimes": {
+        "message": "Trimte Timpii Sponsorizărilor"
+    },
+    "submitCheck": {
+        "message": "Sunteți sigur că doriți să trimiteți asta?"
+    },
+    "whitelistChannel": {
+        "message": "Adaugă Canalul La Excepții"
+    },
+    "removeFromWhitelist": {
+        "message": "Șterge Canalul De La Excepții"
+    },
+    "voteOnTime": {
+        "message": "Votează Timpii Sponsorizărilor"
+    },
+    "recordTimes": {
+        "message": "Înregistrează timpul unei sponsorizări"
+    },
+    "soFarUHSubmited": {
+        "message": "Până acum, ai trimis"
+    },
+    "savedPeopleFrom": {
+        "message": "Ai salvat alte persoane de la "
+    },
+    "viewLeaderboard": {
+        "message": "Vezi clasamentul"
+    },
+    "here": {
+        "message": "aici"
+    },
+    "recordTimesDescription": {
+        "message": "Apasă pe butonul de mai jos când începe o sponsorizare și când se termină pentru a înregistra-o și pentru a o trimite la baza de date."
+    },
+    "popupHint": {
+        "message": "Indiciu: Apasă pe tasta punct și virgulă în timp ce ești centrat pe videoclip pentru a raporta începutul/finalul unei sponsorizări și apasă pe ghilimele pentru a o trimite. (Acest lucru poate fi schimbat din opțiuni)"
+    },
+    "lastTimes": {
+        "message": "Ultimii Timpi Ai Mesajului Sponsorizat Aleși"
+    },
+    "clearTimesButton": {
+        "message": "Șterge Timpii"
+    },
+    "submitTimesButton": {
+        "message": "Trimite Timpii"
+    },
+    "publicStats": {
+        "message": "Acest lucru este folosit pe pagina publică de statistici pentru a arăta cât de mult ai contribuit. Vezi pagina"
+    },
+    "setUsername": {
+        "message": "Setează Numele De Utilizator"
+    },
+    "discordAdvert": {
+        "message": "Vino și alătură-te serverului oficial de discord pentru a oferi sugestii și feedback!"
+    },
+    "hideThis": {
+        "message": "Ascunde asta"
+    },
+    "Options": {
+        "message": "Opţiuni"
+    },
+    "showButtons": {
+        "message": "Arată Butoanele Pe Playerul De YouTube"
+    },
+    "hideButtons": {
+        "message": "Ascunde Butoanele Pe Playerul De YouTube"
+    },
+    "hideButtonsDescription": {
+        "message": "Asta ascunde butoanele ce apar pe playerul de YouTube pentru a trimite segmente."
+    },
+    "showInfoButton": {
+        "message": "Arată Butoanele De Informații Pe Playerul De YouTube"
+    },
+    "hideInfoButton": {
+        "message": "Ascunde Butoanele De Informații Pe Playerul De YouTube"
+    },
+    "whatInfoButton": {
+        "message": "Acesta este butonul care deschide popup-ul pe pagina de YouTube."
+    },
+    "hideDeleteButton": {
+        "message": "Ascunde Butonul De Ștergere Pe Playerul De YouTube"
+    },
+    "showDeleteButton": {
+        "message": "Arată Butonul De Ștergere Pe Playerul De YouTube"
+    },
+    "whatDeleteButton": {
+        "message": "Acest buton de pe playerul de YouTube va șterge toate segmentele netrimise pentru videoclipul curent."
+    },
+    "disableViewTracking": {
+        "message": "Dezactivează Urmărirea Săriturilor"
+    },
+    "enableViewTracking": {
+        "message": "Activează Urmărirea Săriturilor"
+    },
+    "whatViewTracking": {
+        "message": "Acest lucru urmărește peste ce sponsori ai sărit pentru a informa utilizatorii cât de mult înregistrările lor i-au ajutat pe alții și\neste folosit ca un contor împreună cu upvoturile pentru a ne asigura că spamul nu pătrunde în baza de date. Extensia trimite un mesaj\nserverului de fiecare dată când sari peste un sponsor. Sperăm că majoritatea oamenilor nu vor schimba această setare astfel că numerele să fie exacte. :)"
+    },
+    "showNotice": {
+        "message": "Arată Notificarea Din Nou"
+    },
+    "longDescription": {
+        "message": "SponsorBlock este o extensie care va sări peste segmentele sponsorizate din videoclipurile de pe YouTube. SponsorBlock este o extensie crowdsourced care lasă pe oricine să trimită începutul și finalul segmentelor sponsorizate din videoclipurile de pe YouTube. Odată ce o persoană trimite aceste informații, toată lumea cu această extensie va sări peste acel segment sponsorizat.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "Website",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Cod Sursă",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "Notificarea a fost actualizată!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Dacă nu îți place, apasă butonul nu mai arăta niciodată.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Setează tasta pentru pornirea sponsorizării"
+    },
+    "setSubmitKeybind": {
+        "message": "Setează tasta pentru trimiterea sponsorizării"
+    },
+    "keybindDescription": {
+        "message": "Selectează o tastă apasând-o"
+    },
+    "keybindDescriptionComplete": {
+        "message": "Tasta a fost setată la: "
+    },
+    "0": {
+        "message": "Eroare de Conexiune. Verifică-ți conexiunea la internet. Daca internetul functionează, serverul este probabil supraîncărcat sau a căzut."
+    },
+    "disableSkipping": {
+        "message": "Dezactivează SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Activează SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Munca Ta",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "Serverul pare să fie supraîncărcat. Încercați din nou în câteva secunde."
+    },
+    "errorCode": {
+        "message": "Codul Erorii: "
+    },
+    "skip": {
+        "message": "Sari"
+    },
+    "skipped": {
+        "message": "Sărit"
+    },
+    "disableAutoSkip": {
+        "message": "Dezactivează Autoskip"
+    },
+    "enableAutoSkip": {
+        "message": "Activează Autoskip"
+    },
+    "autoSkipDescription": {
+        "message": "Autoskip va sări automat peste segmentele sponsorizate pentru tine. Dacă este dezactivată, o notificare va apărea care vă va întreba dacă doriți să săriți peste."
+    },
+    "audioNotification": {
+        "message": "Notificare Audio Când Sari"
+    },
+    "audioNotificationDescription": {
+        "message": "Notificarea audio va reda un sunet atunci când sari peste un segement sponsorizat. Daca este dezactivat (sau autoskip este dezactivat), niciun sunet nu va fi redat."
+    },
+    "youHaveSkipped": {
+        "message": "Ai sărit peste "
+    },
+    "youHaveSaved": {
+        "message": "V-ați salvat "
+    },
+    "minLower": {
+        "message": "minut"
+    },
+    "minsLower": {
+        "message": "minute"
+    },
+    "hourLower": {
+        "message": "oră"
+    },
+    "hoursLower": {
+        "message": "ore"
+    },
+    "youHaveSavedTime": {
+        "message": "Ai salvat alte persoane"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " din viața lor."
+    },
+    "guildlinesSummary": {
+        "message": "- Asigurați-vă că segmentul conține doar promoții plătite, nimic altceva.\n- Asigurați-vă că dacă săriți peste acest segment nu săriți și peste conținut valoros\n- Dacă tot videoclipul este o sponsorizare, vă rugăm să nu îl trimiteți. Un sistem de trimitere a întregului videoclip este în lucru.\n- Vă rugăm să nu trimiteți mențiunile că videoclipul este sponsorizat care ar putea arăta favoritismul (spre exemplu dacă un videoclip de tip review este sponsorizat, nu trimiteți mențiunea că acel videoclip este sponsorizat)."
+    },
+    "statusReminder": {
+        "message": "Verificați status.sponsor.ajay.app pentru starea serverului."
+    },
+    "changeUserID": {
+        "message": "Importă/Exportă Id-ul Tău De Utilizator"
+    },
+    "whatChangeUserID": {
+        "message": "Acest lucru trebuie să fie păstrat. Este ca și o parolă și nu ar trebui împartășită cu nimeni. Daca cineva are acest lucru, se poate da drept tu."
+    },
+    "setUserID": {
+        "message": "Setează Id-ul Utilizatorului"
+    },
+    "userIDChangeWarning": {
+        "message": "Atenție: Schimbarea Id-ului Utilizatorului este permanentă. Sunteți sigur că doriți să faceți asta? Asigurați-vă că ați făcut o copie de rezervă."
+    },
+    "createdBy": {
+        "message": "Creat De"
+    },
+    "autoSkip": {
+        "message": "Sari Peste Automat"
+    },
+    "showSkipNotice": {
+        "message": "Arată O Notificare După Ce Am Sărit Peste O Sponsorizare"
+    },
+    "keybindCurrentlySet": {
+        "message": ". În prezent este setat:"
+    },
+    "supportInvidious": {
+        "message": "Sprijină Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) este un client YouTube terț. Pentru a susține, trebuie să acceptați permisiunile suprimentare. Această funcție NU funcționează în incognito pe Chrome sau în alte variante Chromium."
+    },
+    "optionsInfo": {
+        "message": "Activează suportul Invidious, dezactivează autoskip-ul, ascunde butoanele și altele."
+    },
+    "addInvidiousInstance": {
+        "message": "Adaugă O Instanță Invidious"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Adaugă o instanță personalizată Invidious. Aceasta trebuie să fie formatată DOAR cu domeniul. Exemplu: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Adaugă"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Acesta este un domeniu invalid. Acesta trebuie să includă DOAR partea de domeniu. Exemplu: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Resetează Lista De Instanțe Invidious"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Sunteți pe cale să resetați lista de instanțe Invidious"
+    },
+    "currentInstances": {
+        "message": "Instanțele curente:"
+    },
+    "minDuration": {
+        "message": "Durată minimă (secunde):"
+    },
+    "minDurationDescription": {
+        "message": "Segmentele de sponsor mai scurte decât valoarea setată nu vor fi omise sau afișate în player."
+    },
+    "shortCheck": {
+        "message": "Următoarea înregistrare este mai mică decât opțiunea voastră de durată minimă. Acest lucru ar putea însemna că a fost deja trimisă și a fost ignorat datorită acestei opțiuni. Sunteți sigur că doriți să trimiteți?"
+    },
+    "showUploadButton": {
+        "message": "Arată Butonul De Încărcare"
+    },
+    "whatUploadButton": {
+        "message": "Acest buton apare pe playerul YouTube după ce ați selectat un marcaj de timp și sunteți gata să îl trimiteți."
+    },
+    "customServerAddress": {
+        "message": "Adresa Serverului SponsorBlock"
+    },
+    "customServerAddressDescription": {
+        "message": "Adresa SponsorBlock este folosită pentru a se efectua apeluri către server.\nDacă nu ai propriul tău server, acesta nu ar trebui modificat."
+    },
+    "save": {
+        "message": "Salvează"
+    },
+    "reset": {
+        "message": "Resetează"
+    },
+    "customAddressError": {
+        "message": "Adresa nu este în forma corectă. Asigurați-vă că http:// sau https:// se află la început."
+    },
+    "areYouSureReset": {
+        "message": "Sunteți sigur că doriți să resetați asta?"
+    },
+    "confirmPrivacy": {
+        "message": "Acest videoclip a fost detectat ca nelistat. Apasă anulați dacă nu doriți să verificați sponsorii."
+    },
+    "unlistedCheck": {
+        "message": "Ignoră Videoclipurile Nelistate/Private"
+    },
+    "whatUnlistedCheck": {
+        "message": "Această setare va încetini puțin SponsorBlock. Căutările segmentelor sponsorizate necesită trimiterea ID-ului videoclipului către server. Dacă sunteți îngrijorat de trimiterea ID-ul videoclipurilor nelistate, activați această opțiune."
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com este acum suportat"
+    },
+    "exportOptions": {
+        "message": "Importă/Exportă Toate Opțiunile"
+    },
+    "whatExportOptions": {
+        "message": "Aceasta este întreaga configurație în format JSON. Asta include si ID-ul tău de utilizator, așa că fi sigur să împărtășești asta cu înțelepciune."
+    },
+    "setOptions": {
+        "message": "Setează Opțiuni"
+    },
+    "exportOptionsWarning": {
+        "message": "Atenție: Schimbarea acestei opțiuni este permanentă și poate strica instalarea. Sunteți sigur că doriți să faceți asta? Asigurati-vă că ați făcut o copie de rezervă."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Acest JSON nu este formatat corect. Opțiunile dumneavoastră nu au fost modificate."
+    },
+    "confirmNoticeTitle": {
+        "message": "Trimite Segment"
+    },
+    "submit": {
+        "message": "Trimite"
+    },
+    "cancel": {
+        "message": "Anulează"
+    },
+    "delete": {
+        "message": "Șterge"
+    },
+    "preview": {
+        "message": "Previzualizare"
+    },
+    "edit": {
+        "message": "Editare"
+    },
+    "copyDebugInformation": {
+        "message": "Copiază Informațiile de Depanare În Clipboard"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Eroare la scrierea în clipboard"
+    },
+    "copyDebugInformationOptions": {
+        "message": "Copiază informația în clipboard pentru a fi furnizată dezvoltatorului când se găsește o eroare / când un dezvoltator o cere. Informațiile sensibile precum ID-ul de utilizator, canale exceptate, și adresa serverului personalizat au fost șterse. Însă conține informații precum useragent-ul, browser-ul, sistemul de operare, și numărul versiunii extensiei. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "Informația de depanare a fost copiată în clipboard. Puteți elimina orice informație pe care nu doriți să o partajați. Salvați într-un fișier sau lipiți-o în raportul de erori."
+    },
+    "theKey": {
+        "message": "Tasta"
+    },
+    "keyAlreadyUsedByYouTube": {
+        "message": "este deja utilizat de YouTube. Vă rugăm selectați o altă tastă."
+    },
+    "keyAlreadyUsed": {
+        "message": "este deja setată la o altă acțiune. Vă rugăm să selectați o altă tastă."
+    },
+    "to": {
+        "message": "până la",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_intro": {
+        "message": "Animație de Început"
+    },
+    "category_outro": {
+        "message": "Ecran De Final/Credite"
+    },
+    "category_interaction": {
+        "message": "Reamintire de Interactiune (Abonare)"
+    },
+    "category_selfpromo": {
+        "message": "Promovare neplătită/autopromovare"
+    },
+    "category_music_offtopic": {
+        "message": "Muzică: Secţiune Non-Muzicală"
+    },
+    "category_livestream_messages": {
+        "message": "Transmisiune În Direct: Donație/Citirea Mesajelor"
+    },
+    "disable": {
+        "message": "Dezactivare"
+    },
+    "manualSkip": {
+        "message": "Sari Peste Manual"
+    },
+    "showOverlay": {
+        "message": "Arată În Bara de Derulare"
+    },
+    "enableTestingServer": {
+        "message": "Activează Serverul de Teste"
+    },
+    "whatEnableTestingServer": {
+        "message": "Înregistrările și voturile dumneavoastră NU VOR FI CONTORIZATE pe serverul principal. Utilizați asta doar pentru teste."
+    },
+    "testingServerWarning": {
+        "message": "Toate înregistrările și voturile dumneavoastră NU VOR FI CONTORIZATE pe serverul principal în timp ce vă conectați la serverul de teste. Asigurați-vă că dezactivați asta când vreți să trimiteți înregistrări reale."
+    },
+    "bracketNow": {
+        "message": "(Acum)"
+    },
+    "moreCategories": {
+        "message": "Mai multe categorii"
+    },
+    "bracketEnd": {
+        "message": "(Sfârșit)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "ascuns: downvote"
+    },
+    "hiddenDueToDuration": {
+        "message": "ascuns: prea scurt"
+    },
+    "channelDataNotFound": {
+        "message": "ID-ul Canalului nu a fost încărcat încă."
+    },
+    "adblockerIssue": {
+        "message": "Se pare că ceva blocheaza abilitatea extensiei SponsorBlock pentru a obține datele videoclipului. Cel mai probabil este adblocker-ul dumneavoastră. Vă rugăm să verificați https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Dacă acest lucru continuă să se întample, ar putea fi cauzat de adblocker-ul dumneavoastră. Vă rugăm să verificați \nhttps://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Forțează Verificarea Canalului Înainte De A Sări Peste Sponsorizări"
+    },
+    "whatForceChannelCheck": {
+        "message": "În mod implicit, va sări peste sponsorizări chiar și înainte de a ști ce canal este. În mod implicit, s-ar putea să se sară și peste unele sponsorizări ce încep la secunda zero din canalele excluse. Activând această opțiune va preveni asta, dar va face ca toate săriturile să aibă o ușoară întârziere, deoarece obținerea Id-ului canalului poate dura ceva timp. Această întărziere poate fi neobservată daca aveți internet rapid."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Consideră Activarea Forțării Verificarii Canalului Înainte De A Sări Peste Sponsorizări"
+    },
+    "downvoteDescription": {
+        "message": "Timpi Incorecți/Greșiți"
+    },
+    "incorrectCategory": {
+        "message": "Categorie Greșită"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Categoria acestui videoclip este muzică. Sunteți sigur că doriți să trimiteți segmente non-muzicale? Dacă acest videoclip nu este de fapt muzică, nu ar trebui să trimiteți acest segment. Vă rugăm să citiți recomandările dacă sunteți confuz."
+    },
+    "multipleSegments": {
+        "message": "Segmente Multiple"
+    }
+}

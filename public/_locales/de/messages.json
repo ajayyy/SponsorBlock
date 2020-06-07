@@ -98,9 +98,6 @@
     "voted": {
         "message": "Abgestimmt!"
     },
-    "voteFail": {
-        "message": "Du hast bereits so abgestimmt."
-    },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
     },
@@ -485,9 +482,6 @@
     },
     "category_interaction": {
         "message": "Interaktions-Erinnerung (Abonnieren)"
-    },
-    "category_selfpromo": {
-        "message": "Eigenwerbung und Merchandise"
     },
     "category_music_offtopic": {
         "message": "Musik: Nicht-Musik-Abschnitt"
