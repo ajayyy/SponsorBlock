@@ -483,23 +483,53 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "category_sponsor_description": {
+        "message": "Promovare plătită, refferali plătiți și reclame directe. Nu pentru autopromovări sau promovări gratis ale cauzelor/creatorilor/website-urilor/produselor."
+    },
     "category_intro": {
         "message": "Animație de Început"
+    },
+    "category_intro_description": {
+        "message": "Animațiile de introducere care se repetă în serie sau care nu oferă nici o valoare directă. Această opțiune nu ar trebui folosită în videoclipurile muzicale."
+    },
+    "category_intro_short": {
+        "message": "Intro"
     },
     "category_outro": {
         "message": "Ecran De Final/Credite"
     },
+    "category_outro_description": {
+        "message": "Credite sau când ecranul de final YouTube apare. Nu pentru concluzii vorbite. Nu ar trebui să includă conținut util. Nu ar trebui folosit în videoclipuri muzicale."
+    },
     "category_interaction": {
         "message": "Reamintire de Interactiune (Abonare)"
+    },
+    "category_interaction_description": {
+        "message": "Când există o scurtă remintire pentru like, abonare sau urmărire în mijlocul conținutului. Daca este mai lung sau despre ceva specific, folosiți autopromovarea."
+    },
+    "category_interaction_short": {
+        "message": "Reamintire de Interacțiune"
     },
     "category_selfpromo": {
         "message": "Promovare neplătită/autopromovare"
     },
+    "category_selfpromo_description": {
+        "message": "Similar cu \"sponsorizare\" doar că este neplătit sau autopromovare. Aceasta include secțiuni despre merchandise, donații, sau informații despre cei cu care au colaborat."
+    },
     "category_music_offtopic": {
         "message": "Muzică: Secţiune Non-Muzicală"
     },
+    "category_music_offtopic_description": {
+        "message": "Doar pentru videoclipuri muzicale. Include introducțiile sau outro-urile în videoclipurile muzicale."
+    },
+    "category_music_offtopic_short": {
+        "message": "Non-Muzical"
+    },
     "category_livestream_messages": {
         "message": "Transmisiune În Direct: Donație/Citirea Mesajelor"
+    },
+    "category_livestream_messages_short": {
+        "message": "Citire Mesaj"
     },
     "disable": {
         "message": "Dezactivare"
@@ -509,6 +539,23 @@
     },
     "showOverlay": {
         "message": "Arată În Bara de Derulare"
+    },
+    "colorFormatIncorrect": {
+        "message": "Culoarea ta este formatată incorect. Ar trebui să fie un cod hexadecimal de 3 sau 6 cifre cu un hash la început."
+    },
+    "previewColor": {
+        "message": "Previzualizare Culoare",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Culoarea Barei de Derulare"
+    },
+    "category": {
+        "message": "Categorie"
+    },
+    "skipOption": {
+        "message": "Opțiunea Săriturii",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Activează Serverul de Teste"
@@ -563,5 +610,24 @@
     },
     "multipleSegments": {
         "message": "Segmente Multiple"
+    },
+    "guidelines": {
+        "message": "Instrucțiuni"
+    },
+    "readTheGuidelines": {
+        "message": "Citește Instrucțiunile!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Categoriile sunt aici!"
+    },
+    "categoryUpdate2": {
+        "message": "Deschide opțiunile pentru a sări peste intro-uri, outro-uri, merch, etc."
+    },
+    "unsubmittedWarning": {
+        "message": "Notificare Segmente Netrimise"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Trimite o notificare atunci când părăsești un video cu segmente care nu au fost încărcate"
     }
 }

@@ -474,20 +474,50 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "category_sponsor_description": {
+        "message": "Bezahlte Promotion, bezahlte Empfehlungen und direkte Werbung. Nicht für Selbstpromotion oder kostenlose Shoutouts an Ursachen/Webseiten/Produkte, die sie mögen."
+    },
     "category_intro": {
         "message": "Intro Animation"
+    },
+    "category_intro_description": {
+        "message": "Intro Animationen, die in der Serie wiederholt werden oder keinen direkten Wert haben. Dies sollte nicht für Musikvideos verwendet werden."
+    },
+    "category_intro_short": {
+        "message": "Intro"
     },
     "category_outro": {
         "message": "Endkarten/Credits"
     },
+    "category_outro_description": {
+        "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für gesprochene Fazits. Dies sollte keine nützlichen Inhalte beinhalten. Dies sollte nicht für Musikvideos verwendet werden."
+    },
     "category_interaction": {
         "message": "Interaktions-Erinnerung (Abonnieren)"
+    },
+    "category_interaction_description": {
+        "message": "Wenn es eine kurze Erinnerung gibt, zu abonnieren oder zu folgen in der Mitte des Videos. Wenn es lange ist oder etwas Konkretes ist, sollte es stattdessen unter Selbstpromotion stehen."
+    },
+    "category_interaction_short": {
+        "message": "Interaktions-Erinnerung"
+    },
+    "category_selfpromo_description": {
+        "message": "Ähnlich wie bei \"Sponsor\" mit Ausnahme von unbezahlten oder Selbstpromotion. Dies beinhaltet Abschnitte über Waren, Spenden oder Informationen darüber, mit wem sie zusammengearbeitet haben."
     },
     "category_music_offtopic": {
         "message": "Musik: Nicht-Musik-Abschnitt"
     },
+    "category_music_offtopic_description": {
+        "message": "Nur für den Einsatz in Musikvideos. Dies beinhaltet Einführungen oder Outros in Musikvideos."
+    },
+    "category_music_offtopic_short": {
+        "message": "Nicht-Musik"
+    },
     "category_livestream_messages": {
         "message": "Livestream: Spenden/Nachrichten vorlesen"
+    },
+    "category_livestream_messages_short": {
+        "message": "Nachrichten lesen"
     },
     "disable": {
         "message": "Deaktivieren"
@@ -497,6 +527,23 @@
     },
     "showOverlay": {
         "message": "Vor-/Rücklaufleiste anzeigen"
+    },
+    "colorFormatIncorrect": {
+        "message": "Ihre Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einem Zahlenzeichen am Anfang sein."
+    },
+    "previewColor": {
+        "message": "Vorschau Farbe",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Suchleisten-Farbe"
+    },
+    "category": {
+        "message": "Kategorie"
+    },
+    "skipOption": {
+        "message": "Option zum Überspringen",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Beta Testing Server aktivieren"
@@ -548,5 +595,24 @@
     },
     "nonMusicCategoryOnMusic": {
         "message": "Dieses Video ist als Musik kategorisiert. Sind Sie sicher, dass Sie Segmente mit Nicht-Musikkategorien einreichen möchten? Wenn dieses Video nicht wirklich Musik ist, sollten Sie dieses Segment nicht einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
+    },
+    "guidelines": {
+        "message": "Richtlinien"
+    },
+    "readTheGuidelines": {
+        "message": "Lesen Sie die Richtlinien!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategorien sind hier!"
+    },
+    "categoryUpdate2": {
+        "message": "Öffnen Sie die Optionen um Intros, Outros, Merch usw. zu überspringen."
+    },
+    "unsubmittedWarning": {
+        "message": "Nicht eingereichte Segment-Benachrichtigung"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Senden Sie eine Benachrichtigung, wenn Sie ein Video mit nicht hochgeladenen Segmenten verlassen"
     }
 }
