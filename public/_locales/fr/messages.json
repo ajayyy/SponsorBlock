@@ -489,6 +489,9 @@
     "category_outro": {
         "message": "Générique de fin"
     },
+    "category_outro_description": {
+        "message": "Générique de fin ou quand les fiches de fin de vidéo apparaissent. Ne pas utiliser pour les conclusions orales. Ne doit pas inclure de contenu utile. Ne pas utiliser sur les vidéos de musique."
+    },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
     },
