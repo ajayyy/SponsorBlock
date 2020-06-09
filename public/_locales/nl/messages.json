@@ -11,14 +11,38 @@
         "message": "Sla sponsoring over op YouTube video's. Rapporteer sponsors van video's die je bekijkt om tijd van anderen te besparen.",
         "description": "Description of the extension."
     },
+    "400": {
+        "message": "Server zegt dat het verzoek ongeldig is"
+    },
+    "429": {
+        "message": "Je hebt te veel sponsortijden voor deze video doorgegeven, weet je zeker dat het er zo veel zijn?"
+    },
+    "409": {
+        "message": "Dit is al een keer ingediend"
+    },
+    "channelWhitelisted": {
+        "message": "Kanaal gewhitelist!"
+    },
     "Sponsor": {
         "message": "sponsor"
     },
     "Sponsors": {
         "message": "sponsoren"
     },
+    "Segment": {
+        "message": "Sponsor segment"
+    },
+    "Segments": {
+        "message": "Sponsor segmenten"
+    },
+    "upvoteButtonInfo": {
+        "message": "Stem op deze indiening"
+    },
     "reportButtonTitle": {
         "message": "Melden"
+    },
+    "reportButtonInfo": {
+        "message": "Rapporteer deze indiening als onjuist."
     },
     "Dismiss": {
         "message": "Negeren"
@@ -35,8 +59,20 @@
     "Hide": {
         "message": "Nooit weergeven"
     },
+    "hitGoBack": {
+        "message": "Druk op unskip om naar waar je vandaan komt te gaan."
+    },
+    "unskip": {
+        "message": "Unskip"
+    },
+    "reskip": {
+        "message": "Reskip"
+    },
     "paused": {
         "message": "Gepauzeerd"
+    },
+    "manualPaused": {
+        "message": "Timer gestopt"
     },
     "clearThis": {
         "message": "Weet je zeker dat je dit formulier wilt wissen?\n\n"
