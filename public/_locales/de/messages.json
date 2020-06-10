@@ -523,7 +523,7 @@
         "message": "Deaktivieren"
     },
     "manualSkip": {
-        "message": "Manueller Überspringen"
+        "message": "Manuelles Überspringen"
     },
     "showOverlay": {
         "message": "Vor-/Rücklaufleiste anzeigen"
@@ -546,7 +546,7 @@
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
-        "message": "Beta Testing Server aktivieren"
+        "message": "Beta-Testing Server aktivieren"
     },
     "whatEnableTestingServer": {
         "message": "Deine Einreichungen und Stimmen werden NICHT für den Hauptserver geltend. Benutze dies nur für Tests."
@@ -573,7 +573,7 @@
         "message": "Kanal-ID wurde noch nicht geladen."
     },
     "adblockerIssue": {
-        "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Möglicherweise ist das dein Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+        "message": "Irgendetwas hält SponsorBlock davon ab, die Videodaten abzurufen. Möglicherweise ist es dein Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Falls dies weiterhin geschieht, könnte dies durch Ihren Werbeblocker verursacht werden. Bitte überprüfen Sie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
