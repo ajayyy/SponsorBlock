@@ -146,6 +146,9 @@
     "viewLeaderboard": {
         "message": "Se leaderboarden"
     },
+    "here": {
+        "message": "här"
+    },
     "recordTimesDescription": {
         "message": "Klicka på knappen nedan när sponsormeddelandet börjar och slutar för att spela in och rapportera till databasen."
     },
@@ -477,6 +480,21 @@
     "category_sponsor": {
         "message": "Sponsormeddelande"
     },
+    "category_intro": {
+        "message": "Intro-animation"
+    },
+    "category_intro_description": {
+        "message": "Intro-animationer som är återkommande i serien eller inte ger direkt värde. Detta bör inte användas på musikvideor."
+    },
+    "category_intro_short": {
+        "message": "Intro"
+    },
+    "category_music_offtopic_description": {
+        "message": "Endast för användning i musikvideor. Detta inkluderar intros och outros i musikvideor."
+    },
+    "category_music_offtopic_short": {
+        "message": "Icke-musik"
+    },
     "disable": {
         "message": "Avaktivera"
     },
@@ -485,6 +503,9 @@
     },
     "showOverlay": {
         "message": "Visa Lager Ovanpå Spelare"
+    },
+    "category": {
+        "message": "Kategori"
     },
     "enableTestingServer": {
         "message": "Aktivera Server För Betatestning"
@@ -504,6 +525,9 @@
     "bracketEnd": {
         "message": "(Slut)"
     },
+    "hiddenDueToDuration": {
+        "message": "dold: för kort"
+    },
     "channelDataNotFound": {
         "message": "Kanal-ID är inte inladdat än."
     },
@@ -512,5 +536,24 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "downvoteDescription": {
+        "message": "Fel timing"
+    },
+    "incorrectCategory": {
+        "message": "Fel kategori"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Den här videon är kategoriserad som musik. Är du säker på att du vill skicka in segment med icke-musikkategorier? Om denna video faktiskt är musik, bör du inte skicka in detta segment. Vänligen läs riktlinjerna om du är förvirrad."
+    },
+    "multipleSegments": {
+        "message": "Flera segment"
+    },
+    "guidelines": {
+        "message": "Riktlinjer"
+    },
+    "readTheGuidelines": {
+        "message": "Läs riktlinjerna!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     }
 }
