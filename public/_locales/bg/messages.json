@@ -124,5 +124,29 @@
     },
     "voteOnTime": {
         "message": "Гласуване за спонсорства"
+    },
+    "savedPeopleFrom": {
+        "message": "Вие сте помогнали на хора да пропуснат "
+    },
+    "viewLeaderboard": {
+        "message": "Вижте leaderboard-а"
+    },
+    "here": {
+        "message": "тук"
+    },
+    "discordAdvert": {
+        "message": "Елате в официалния Discord сървър за да давате предложения!"
+    },
+    "hideThis": {
+        "message": "Скрий това"
+    },
+    "Options": {
+        "message": "Настройки"
+    },
+    "showButtons": {
+        "message": "Показване на бутоните в YouTube Player-а"
+    },
+    "hideButtons": {
+        "message": "Скриване на бутоните в YouTube Player-а"
     }
 }
