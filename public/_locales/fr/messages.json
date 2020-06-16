@@ -84,7 +84,7 @@
         "message": "Une erreur s'est produite lors de la soumission, veuillez ré-essayer plus tard."
     },
     "sponsorFound": {
-        "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de donnée !"
+        "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de données !"
     },
     "sponsor404": {
         "message": "Pas de messages commerciaux trouvés"
