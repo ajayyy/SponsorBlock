@@ -33,10 +33,16 @@
         "message": "gesponsorter Inhalt"
     },
     "Segments": {
-        "message": "gesponsorte Inhalte"
+        "message": "gesponserten Inhalten"
+    },
+    "upvoteButtonInfo": {
+        "message": "Diesen Beitrag aufwerten"
     },
     "reportButtonTitle": {
         "message": "Melden"
+    },
+    "reportButtonInfo": {
+        "message": "Beitrag als unzulässig melden."
     },
     "Dismiss": {
         "message": "Abbrechen"
@@ -97,6 +103,9 @@
     },
     "voted": {
         "message": "Abgestimmt!"
+    },
+    "serverDown": {
+        "message": "Der Server ist scheinbar offline. Bitte unverzüglich dem Entwickler melden."
     },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
@@ -501,6 +510,9 @@
     "category_interaction_short": {
         "message": "Interaktions-Erinnerung"
     },
+    "category_selfpromo": {
+        "message": "Unbezahlt/Eigenwerbung"
+    },
     "category_selfpromo_description": {
         "message": "Ähnlich wie bei \"Sponsor\" mit Ausnahme von unbezahlten oder Selbstpromotion. Dies beinhaltet Abschnitte über Waren, Spenden oder Informationen darüber, mit wem sie zusammengearbeitet haben."
     },
@@ -595,6 +607,9 @@
     },
     "nonMusicCategoryOnMusic": {
         "message": "Dieses Video ist als Musik kategorisiert. Sind Sie sicher, dass Sie Segmente mit Nicht-Musikkategorien einreichen möchten? Wenn dieses Video nicht wirklich Musik ist, sollten Sie dieses Segment nicht einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
+    },
+    "multipleSegments": {
+        "message": "Mehrere Segmente"
     },
     "guidelines": {
         "message": "Richtlinien"
