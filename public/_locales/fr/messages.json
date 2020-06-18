@@ -81,7 +81,7 @@
         "message": "Êtes-vous certain(e) de vouloir supprimer vos soumissions ?\n\n"
     },
     "Unknown": {
-        "message": "Une erreur s'est produite lors de la soumission, veuillez ré-essayer plus tard."
+        "message": "Une erreur s'est produite lors de la soumission, veuillez réessayer plus tard."
     },
     "sponsorFound": {
         "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de données !"
