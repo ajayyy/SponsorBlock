@@ -168,10 +168,10 @@
         "message": "Soumettre les temps"
     },
     "publicStats": {
-        "message": "Affiché sur le classement public pour montrer vos contributions. Voir sur"
+        "message": "Votre pseudo est inscrit dans le classement public pour afficher vos contributions. Le consulter"
     },
     "setUsername": {
-        "message": "Choisir pseudo"
+        "message": "Choisir un pseudonyme"
     },
     "discordAdvert": {
         "message": "Rejoignez le serveur Discord officiel pour toutes suggestions ou remarques!"
@@ -297,7 +297,7 @@
         "message": "Vous avez passé "
     },
     "youHaveSaved": {
-        "message": "Vous avez économisé "
+        "message": "Vous vous êtes économisé "
     },
     "minLower": {
         "message": "minute"
@@ -342,7 +342,7 @@
         "message": "Passage automatique"
     },
     "showSkipNotice": {
-        "message": "Afficher l'avis après le passage d'un sponsor"
+        "message": "Notifier après qu'un sponsor ait été sauté"
     },
     "keybindCurrentlySet": {
         "message": ". Il est actuellement réglé sur :"
