@@ -1,7 +1,7 @@
 {
     "name": "__MSG_fullName__",
     "short_name": "SponsorBlock",
-    "version": "2.0.2.1",
+    "version": "2.0.2.2",
     "default_locale": "en",
     "description": "__MSG_Description__",
     "content_scripts": [{
@@ -50,7 +50,7 @@
         "*://*/*"
     ],
     "browser_action": {
-        "default_title": "__MSG_Name__",
+        "default_title": "SponsorBlock",
         "default_popup": "popup.html"
     }, 
     "background": {
