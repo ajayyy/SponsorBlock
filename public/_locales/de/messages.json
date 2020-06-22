@@ -11,7 +11,7 @@
         "message": "Ungültige Anforderung"
     },
     "429": {
-        "message": "Du hast zu viele Segmente in diesem Video eingereicht. Bist du dir sicher?"
+        "message": "Du hast zu viele Segmente in diesem Video eingereicht. Sind es wirklich so viele?"
     },
     "409": {
         "message": "Dieser Inhalt wurde bereits eingereicht."
