@@ -524,6 +524,9 @@
     "category_livestream_messages": {
         "message": "Stream : lecture de dons et messages"
     },
+    "category_livestream_messages_short": {
+        "message": "Lecture de messages"
+    },
     "disable": {
         "message": "Désactiver"
     },
