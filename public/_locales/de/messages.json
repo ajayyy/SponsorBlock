@@ -8,7 +8,7 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "Ungültige Anforderung"
+        "message": "Der Server meldet, dass diese Anfrage ungültig war"
     },
     "429": {
         "message": "Du hast zu viele Segmente in diesem Video eingereicht. Sind es wirklich so viele?"
@@ -119,7 +119,7 @@
         "message": "Öffne SponsorBlock-Popup"
     },
     "SubmitTimes": {
-        "message": "Sende Auswahl"
+        "message": "Diese Zeiten einreichen"
     },
     "submitCheck": {
         "message": "Bist du sicher, dass die Auswahl abgeschickt werden soll?"
