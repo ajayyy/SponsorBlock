@@ -259,6 +259,9 @@
     "skip": {
         "message": "Pular"
     },
+    "skipped": {
+        "message": "Pulado"
+    },
     "disableAutoSkip": {
         "message": "Desativar Salto Automático"
     },
@@ -467,11 +470,17 @@
     "category_intro": {
         "message": "Animação de Introdução"
     },
+    "category_intro_short": {
+        "message": "Introdução"
+    },
     "category_outro": {
         "message": "Finalização/Créditos"
     },
     "category_interaction": {
         "message": "Lembrete de interação (inscrever-se)"
+    },
+    "category_interaction_short": {
+        "message": "Lembrete de interação"
     },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
@@ -535,5 +544,8 @@
     },
     "nonMusicCategoryOnMusic": {
         "message": "Este vídeo é classificado como música. Você tem certeza que deseja enviar segmentos com categorias que não são músicas? A menos que esse vídeo não seja de fato música, você não deve enviar esse segmento. Por favor leia as orientações se estiver em dúvidas."
+    },
+    "categoryUpdate1": {
+        "message": "As categorias estão aqui!"
     }
 }
