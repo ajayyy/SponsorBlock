@@ -278,7 +278,7 @@
         "message": "Auto-Überspringen deaktivieren"
     },
     "enableAutoSkip": {
-        "message": "Auto-Überspringen aktivieren"
+        "message": "Automatisches Überspringen aktivieren"
     },
     "autoSkipDescription": {
         "message": "Auto-Überspringen überspringt gesponsorte Inhalte für dich. Wenn deaktiviert, fragt die Benachrichtigung, ob übersprungen werden soll."
@@ -531,7 +531,7 @@
         "message": "Deaktivieren"
     },
     "manualSkip": {
-        "message": "Manueller Überspringen"
+        "message": "Manuelles Überspringen"
     },
     "showOverlay": {
         "message": "Vor-/Rücklaufleiste anzeigen"
