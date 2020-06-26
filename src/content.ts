@@ -801,7 +801,8 @@ function updatePreviewBar() {
     if (localSponsorTimes == null) localSponsorTimes = [];
 
     let allSponsorTimes = localSponsorTimes.concat(sponsorTimesSubmitting);
-
+	hideSponsorTime(allSponsorTimes);
+	
     //create an array of the sponsor types
     let types = [];
     for (let i = 0; i < localSponsorTimes.length; i++) {
@@ -1592,4 +1593,35 @@ function updateAdFlag() {
         updatePreviewBar();
         updateVisibilityOfPlayerControlsButton();
     }
+}
+
+function formatTime(seconds) {
+  if(isNaN(seconds)) return
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.round(seconds % 60);
+  return [
+    h,
+    m > 9 ? m : (h ? '0' + m : m || '0'),
+    s > 9 ? s : '0' + s
+  ].filter(Boolean).join(':');
+}
+
+function hideSponsorTime(barTimes) {
+	if(!Config.config.timeWithSkips) return
+	
+	let skipDuration = 0;
+	
+	// Prevent dupicate UUID
+	let seen = [];
+	
+	for (let i = 0; i < barTimes.length; i++) {
+		let time = barTimes[i];
+		if(seen.includes(time.UUID)) break;
+		seen.push(time.UUID);
+		skipDuration += time.segment[1] - time.segment[0];
+	}
+	
+	let times = document.getElementsByClassName("ytp-time-display notranslate")[0].getElementsByTagName("span");
+	times[2].innerText = formatTime(video.duration - skipDuration);
 }
