@@ -11,6 +11,7 @@
   <b>Download:</b>
   <a href="https://chrome.google.com/webstore/detail/mnjggcdmjocbbbhaepdhchncahnbgone">Chrome/Chromium</a> |
   <a href="https://addons.mozilla.org/addon/sponsorblock/?src=external-github">Firefox</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Android">Android</a> |
   <a href="https://sponsor.ajay.app">Website</a> |
   <a href="https://sponsor.ajay.app/stats">Stats</a>
 </p>
@@ -19,7 +20,6 @@
   <b>Unofficial Ports:</b>
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#mpv-media-player">MPV</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#kodi">Kodi</a> |
-  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#android">Android (NewPipe and Vanced)</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#ios">iOS</a>
 </p>
 
