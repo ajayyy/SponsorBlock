@@ -1622,6 +1622,25 @@ function hideSponsorTime(barTimes) {
 		skipDuration += time.segment[1] - time.segment[0];
 	}
 	
-	let times = document.getElementsByClassName("ytp-time-display notranslate")[0].getElementsByTagName("span");
-	times[2].innerText = formatTime(video.duration - skipDuration);
+	let display = document.getElementsByClassName("ytp-time-display notranslate")[0];
+	if (display === undefined) return
+	
+	if(Config.config.hideRealTime) {
+		return display.getElementsByTagName("span")[2].innerText = formatTime(video.duration - skipDuration);
+	}
+	
+	const durationID = "durationAfterSkips";
+	let duration;
+	
+	
+	duration = document.getElementById(durationID);
+
+	// Create span if needed
+	if(duration === null) {
+		duration = document.createElement('span');
+		duration.id = durationID;
+		display.appendChild(duration);
+	}
+	
+	duration.innerText = " ("+formatTime(video.duration - skipDuration)+")";
 }
