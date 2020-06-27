@@ -17,7 +17,11 @@
 
 <p align="center">
   <b>Unofficial Ports:</b>
-  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#mpv-media-player">MPV</a>
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#mpv-media-player">MPV</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#kodi">Kodi</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#android-newpipe">NewPipe (Android)</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#ios">iOS</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#downloaded-youtube-videos">Downloaded YouTube Videos</a>
 </p>
 
 <p align="center">
