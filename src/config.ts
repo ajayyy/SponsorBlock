@@ -5,6 +5,7 @@ import Utils from "./utils";
 const utils = new Utils();
 
 interface SBConfig {
+    hideRealTime: boolean,
     timeWithSkips: boolean,
     userID: string,
     sponsorTimes: SBMap<string, any>,
@@ -124,7 +125,8 @@ var Config: SBObject = {
      */
     configListeners: [],
     defaults: {
-	timeWithSkips: false,
+	hideRealTime: false,
+	timeWithSkips: true,
         userID: null,
         sponsorTimes: new SBMap("sponsorTimes"),
         whitelistedChannels: [],
