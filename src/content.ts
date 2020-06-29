@@ -1622,6 +1622,8 @@ function hideSponsorTime(barTimes) {
 		skipDuration += time.segment[1] - time.segment[0];
 	}
 	
+	if(skipDuration === 0) return
+	
 	let display = document.getElementsByClassName("ytp-time-display notranslate")[0];
 	if (display === undefined) return
 	
