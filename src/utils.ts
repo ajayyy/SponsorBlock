@@ -338,7 +338,7 @@ class Utils {
             secondsNum = Math.floor(secondsNum);
         }
 
-        let secondsDisplay: string = String(secondsNum.toFixed(3));
+        let secondsDisplay: string = String(precise ? secondsNum.toFixed(3) : secondsNum);
         
         if (secondsNum < 10) {
             //add a zero
