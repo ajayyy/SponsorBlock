@@ -460,15 +460,14 @@ function activatePrivateTextChange(element: HTMLElement) {
                         }
                         Config.convertJSON();
 
-                        // Reload options on page
-                        init();
-
                         if (newConfig.supportInvidious) {
                             let checkbox = <HTMLInputElement> document.querySelector("#support-invidious > label > label > input");
                             
                             checkbox.checked = true;
                             invidiousOnClick(checkbox, "supportInvidious");
                         }
+
+                        window.location.reload();
                         
                     } catch (e) {
                         alert(chrome.i18n.getMessage("incorrectlyFormattedOptions"));
