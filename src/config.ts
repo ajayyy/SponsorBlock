@@ -33,8 +33,6 @@ interface SBConfig {
     checkForUnlistedVideos: boolean,
     testingServer: boolean,
 
-    categoryUpdateShowCount: number,
-
     // What categories should be skipped
     categorySelections: CategorySelection[],
 
@@ -150,8 +148,6 @@ var Config: SBObject = {
         audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         testingServer: false,
-
-        categoryUpdateShowCount: 0,
 
         categorySelections: [{
             name: "sponsor",
@@ -328,10 +324,13 @@ async function migrateOldFormats() {
     if (Config.config["autoUpvote"]) {
         chrome.storage.sync.remove("autoUpvote");
     }
-
     // mobileUpdateShowCount removal
     if (Config.config["mobileUpdateShowCount"] !== undefined) {
         chrome.storage.sync.remove("mobileUpdateShowCount");
+    }
+    // categoryUpdateShowCount removal
+    if (Config.config["categoryUpdateShowCount"] !== undefined) {
+        chrome.storage.sync.remove("categoryUpdateShowCount");
     }
 
     // Channel URLS
