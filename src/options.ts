@@ -237,7 +237,7 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
 
     let setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", async function(e) {
-        if (textBox.value == "" || textBox.value.includes("/") || textBox.value.includes("http") || textBox.value.includes(":")) {
+        if (textBox.value == "" || textBox.value.includes("/") || textBox.value.includes("http")) {
             alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
         } else {
             // Add this
