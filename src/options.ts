@@ -298,19 +298,23 @@ function invidiousInit(checkbox: HTMLInputElement, option: string) {
  * @param checkbox 
  * @param option 
  */
-function invidiousOnClick(checkbox: HTMLInputElement, option: string) {
-    if (checkbox.checked) {
-        utils.setupExtraSitePermissions(function (granted) {
-            if (!granted) {
-                Config.config[option] = false;
-                checkbox.checked = false;
-            } else {
-                checkbox.checked = true;
-            }
-        });
-    } else {
-        utils.removeExtraSiteRegistration();
-    }
+async function invidiousOnClick(checkbox: HTMLInputElement, option: string) {
+    return new Promise((resolve) => {
+        if (checkbox.checked) {
+            utils.setupExtraSitePermissions(function (granted) {
+                if (!granted) {
+                    Config.config[option] = false;
+                    checkbox.checked = false;
+                } else {
+                    checkbox.checked = true;
+                }
+
+                resolve();
+            });
+        } else {
+            utils.removeExtraSiteRegistration();
+        }
+    });
 }
 
 /**
@@ -445,7 +449,7 @@ function activatePrivateTextChange(element: HTMLElement) {
     textBox.value = result;
     
     let setButton = element.querySelector(".text-change-set");
-    setButton.addEventListener("click", () => {
+    setButton.addEventListener("click", async () => {
         let confirmMessage = element.getAttribute("confirm-message");
 
         if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
@@ -464,7 +468,7 @@ function activatePrivateTextChange(element: HTMLElement) {
                             let checkbox = <HTMLInputElement> document.querySelector("#support-invidious > label > label > input");
                             
                             checkbox.checked = true;
-                            invidiousOnClick(checkbox, "supportInvidious");
+                            await invidiousOnClick(checkbox, "supportInvidious");
                         }
 
                         window.location.reload();
