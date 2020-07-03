@@ -41,21 +41,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             });
         
             return true;
-        case "addSponsorTime":
-            addSponsorTime(request.time, request.videoID, callback);
-        
-            //this allows the callback to be called later
-            return true;
-        
-        case "getSponsorTimes":
-            getSponsorTimes(request.videoID, function(sponsorTimes) {
-                callback({
-                    sponsorTimes
-                });
-            });
-        
-            //this allows the callback to be called later
-            return true;
         case "submitVote":
             submitVote(request.type, request.UUID, request.category).then(callback);
         
@@ -125,38 +110,6 @@ function registerFirefoxContentScript(options) {
 function unregisterFirefoxContentScript(id: string) {
     contentScriptRegistrations[id].unregister();
     delete contentScriptRegistrations[id];
-}
-
-//gets the sponsor times from memory
-function getSponsorTimes(videoID, callback) {
-    let sponsorTimes = [];
-    let sponsorTimesStorage = Config.config.sponsorTimes.get(videoID);
-
-    if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
-        sponsorTimes = sponsorTimesStorage;
-    }
-	
-    callback(sponsorTimes);
-}
-
-function addSponsorTime(time, videoID, callback) {
-    getSponsorTimes(videoID, function(sponsorTimes) {
-        //add to sponsorTimes
-        if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length < 2) {
-            //it is an end time
-            sponsorTimes[sponsorTimes.length - 1][1] = time;
-        } else {
-            //it is a start time
-            let sponsorTimesIndex = sponsorTimes.length;
-            sponsorTimes[sponsorTimesIndex] = [];
-
-            sponsorTimes[sponsorTimesIndex][0] = time;
-        }
-
-        //save this info
-		Config.config.sponsorTimes.set(videoID, sponsorTimes);
-		callback();
-    });
 }
 
 async function submitVote(type: number, UUID: string, category: string) {

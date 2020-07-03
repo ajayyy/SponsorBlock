@@ -439,8 +439,8 @@ function activatePrivateTextChange(element: HTMLElement) {
         case "*":
             let jsonData = JSON.parse(JSON.stringify(Config.localConfig));
 
-            // Fix sponsorTimes data as it is destroyed from the JSON stringify
-            jsonData.sponsorTimes = Config.encodeStoredItem(Config.localConfig.sponsorTimes);
+            // Fix segmentTimes data as it is destroyed from the JSON stringify
+            jsonData.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
 
             result = JSON.stringify(jsonData);
             break;
@@ -522,8 +522,8 @@ function copyDebugOutputToClipboard() {
         config: JSON.parse(JSON.stringify(Config.localConfig)) // Deep clone config object
     };
 
-    // Fix sponsorTimes data as it is destroyed from the JSON stringify
-    output.config.sponsorTimes = Config.encodeStoredItem(Config.localConfig.sponsorTimes);
+    // Fix segmentTimes data as it is destroyed from the JSON stringify
+    output.config.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
     
     // Sanitise sensitive user config values
     delete output.config.userID;
