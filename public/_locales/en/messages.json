@@ -218,7 +218,7 @@
         "message": "Show Notice Again"
     },
     "longDescription": {
-        "message": "SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment.",
+        "message": "SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment. \n\n You can also skip intros, outros, reminders to subscribe and other categories.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
