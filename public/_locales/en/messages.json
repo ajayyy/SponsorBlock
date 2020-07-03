@@ -466,9 +466,6 @@
     "theKey": {
         "message": "The key"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "is already used by youtube. Please select another key."
-    },
     "keyAlreadyUsed": {
         "message": "is bound to another action. Please select another key."
     },

@@ -362,15 +362,6 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         let button: HTMLElement = element.querySelector(".trigger-button");
         let option = element.getAttribute("sync-option");
 
-        // Don't allow keys which are already listened for by youtube 
-        let restrictedKeys = "1234567890,.jklftcibmJKLFTCIBMNP/<> -+";
-        if (restrictedKeys.indexOf(key) !== -1 ) {
-            closeKeybindOption(element, button);
-
-            alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsedByYouTube"));
-            return;
-        }
-
         // Make sure keybind isn't used by the other listener
         // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
         let otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
