@@ -512,6 +512,12 @@
     "category_selfpromo_description": {
         "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
     },
+    "category_intermission": {
+        "message": "Intermission"
+    },
+    "category_intermission_description": {
+        "message": "An interval without actual content. Could be a pause, static frame, or repeating animation in the video. Should not be used for pauses or transitions with actual content"
+    },
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
     },
