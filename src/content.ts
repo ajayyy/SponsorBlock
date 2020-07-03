@@ -801,7 +801,6 @@ function updatePreviewBar() {
     if (localSponsorTimes == null) localSponsorTimes = [];
 
     let allSponsorTimes = localSponsorTimes.concat(sponsorTimesSubmitting);
-	showTimeWithoutSkips(allSponsorTimes);
 	
     //create an array of the sponsor types
     let types = [];
@@ -818,6 +817,10 @@ function updatePreviewBar() {
     }
 
     previewBar.set(utils.getSegmentsFromSponsorTimes(allSponsorTimes), types, video.duration)
+
+    if (Config.config.showTimeWithSkips) {
+        showTimeWithoutSkips(allSponsorTimes);
+    }
 
     //update last video id
     lastPreviewBarUpdate = sponsorVideoID;
@@ -1608,8 +1611,6 @@ function formatTime(seconds) {
 }
 
 function showTimeWithoutSkips(allSponsorTimes): void {
-	if(!Config.config.timeWithSkips) return;
-	
 	let skipDuration = 0;
 	
 	// Calculate skipDuration based from the segments in the preview bar
@@ -1627,21 +1628,17 @@ function showTimeWithoutSkips(allSponsorTimes): void {
 	
     let formatedTime = utils.getFormattedTime(video.duration - skipDuration);
 	
-	const durationID = "durationAfterSkips";	
-	let duration = document.getElementById(durationID);
+	const durationID = "sponsorBlockDurationAfterSkips";	
+    let duration = document.getElementById(durationID);
 
 	// Create span if needed
 	if(duration === null) {
 		duration = document.createElement('span');
-		duration.id = durationID;
+        duration.id = durationID;
+        duration.classList.add("ytp-time-duration");
+
 		display.appendChild(duration);
 	}
 		
-	if(Config.config.hideRealTime) {
-		// Empty if not enabled
-		duration.innerText = "";
-		display.getElementsByTagName("span")[2].innerText = formatedTime;
-	} else {
-		duration.innerText = (skipDuration === 0) ? "" : " ("+formatedTime+")";
-	}
+    duration.innerText = (skipDuration <= 0 || isNaN(skipDuration)) ? "" : " ("+formatedTime+")";
 }

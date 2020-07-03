@@ -5,8 +5,6 @@ import Utils from "./utils";
 const utils = new Utils();
 
 interface SBConfig {
-    hideRealTime: boolean,
-    timeWithSkips: boolean,
     userID: string,
     sponsorTimes: SBMap<string, any>,
     whitelistedChannels: string[],
@@ -17,6 +15,7 @@ interface SBConfig {
     skipCount: number,
     sponsorTimesContributed: number,
     submissionCountSinceCategories: number, // New count used to show the "Read The Guidelines!!" message
+    showTimeWithSkips: boolean,
     unsubmittedWarning: boolean,
     disableSkipping: boolean,
     trackViewCount: boolean,
@@ -125,8 +124,6 @@ var Config: SBObject = {
      */
     configListeners: [],
     defaults: {
-	hideRealTime: false,
-	timeWithSkips: true,
         userID: null,
         sponsorTimes: new SBMap("sponsorTimes"),
         whitelistedChannels: [],
@@ -137,6 +134,7 @@ var Config: SBObject = {
         skipCount: 0,
         sponsorTimesContributed: 0,
         submissionCountSinceCategories: 0,
+	    showTimeWithSkips: true,
         unsubmittedWarning: true,
         disableSkipping: false,
         trackViewCount: true,
