@@ -49,8 +49,6 @@ interface SBConfig {
         "preview-interaction": PreviewBarOption,
         "selfpromo": PreviewBarOption,
         "preview-selfpromo": PreviewBarOption,
-        "intermission": PreviewBarOption,
-        "preview-intermission": PreviewBarOption
         "music_offtopic": PreviewBarOption,
         "preview-music_offtopic": PreviewBarOption,
     }
@@ -201,14 +199,6 @@ var Config: SBObject = {
             },
             "preview-selfpromo": {
                 color: "#bfbf35",
-                opacity: "0.7"
-            },
-            "intermission": {
-                color: "#45a8ff",
-                opacity: "0.7"
-            },
-            "preview-intermission": {
-                color: "#0066bf",
                 opacity: "0.7"
             },
             "music_offtopic": {

@@ -480,13 +480,13 @@
         "message": "Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shoutouts to causes/creators/websites/products they like."
     },
     "category_intro": {
-        "message": "Intro Animation"
+        "message": "Intermission/Intro Animation"
     },
     "category_intro_description": {
-        "message": "Intro animations that are recurring in the series or provide no direct value. This should not be used on music videos."
+        "message": "An interval without actual content. Could be a pause, static frame, repeating animation. This should not be used for transitions containing information or be used on music videos."
     },
     "category_intro_short": {
-        "message": "Intro"
+        "message": "Intermission"
     },
     "category_outro": {
         "message": "Endcards/Credits"
@@ -508,12 +508,6 @@
     },
     "category_selfpromo_description": {
         "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
-    },
-    "category_intermission": {
-        "message": "Intermission"
-    },
-    "category_intermission_description": {
-        "message": "An interval without actual content. Could be a pause, static frame, or repeating animation in the video. Should not be used for pauses or transitions with actual content."
     },
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
