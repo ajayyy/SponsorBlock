@@ -217,10 +217,6 @@
     "showNotice": {
         "message": "Mostrar aviso de nuevo"
     },
-    "longDescription": {
-        "message": "SponsorBlock es una extensión que se omitira segmentos de sponsor de vídeos de YouTube. SponsorBlock es una extensión de navegador que permite a cualquiera enviar los tiempos de comienzo y fin de segmentos de sponsor de vídeos de YouTube. Una vez que una persona envíe esta información, todos los demás con esta extensión pueden omitir directamente el segmento de sponsor.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Sitio Web",
         "description": "Used on Firefox Store Page"
@@ -436,17 +432,11 @@
     "theKey": {
         "message": "El botón"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "ya está en uso por youtube. Por favor, seleccione otro botón."
-    },
     "keyAlreadyUsed": {
         "message": "está enlazado a otra acción. Por favor, seleccione otro botón."
     },
     "category_sponsor": {
         "message": "Sponsor"
-    },
-    "category_intro": {
-        "message": "Animación de introducción"
     },
     "category_outro": {
         "message": "Tarjetas/Créditos"
