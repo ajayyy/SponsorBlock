@@ -1,8 +1,4 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock für YouTube - Überspringe Sponsor Anzeigen",
         "description": "Name of the extension."
@@ -12,10 +8,10 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "Ungültige Anforderung"
+        "message": "Der Server meldet, dass diese Anfrage ungültig war"
     },
     "429": {
-        "message": "Du hast zu viele Segmente in diesem Video eingereicht. Bist du dir sicher?"
+        "message": "Du hast zu viele Segmente in diesem Video eingereicht. Sind es wirklich so viele?"
     },
     "409": {
         "message": "Dieser Inhalt wurde bereits eingereicht."
@@ -123,7 +119,7 @@
         "message": "Öffne SponsorBlock-Popup"
     },
     "SubmitTimes": {
-        "message": "Sende Auswahl"
+        "message": "Diese Zeiten einreichen"
     },
     "submitCheck": {
         "message": "Bist du sicher, dass die Auswahl abgeschickt werden soll?"
@@ -282,7 +278,7 @@
         "message": "Auto-Überspringen deaktivieren"
     },
     "enableAutoSkip": {
-        "message": "Auto-Überspringen aktivieren"
+        "message": "Automatisches Überspringen aktivieren"
     },
     "autoSkipDescription": {
         "message": "Auto-Überspringen überspringt gesponsorte Inhalte für dich. Wenn deaktiviert, fragt die Benachrichtigung, ob übersprungen werden soll."
@@ -558,7 +554,7 @@
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
-        "message": "Beta-Testing Server aktivieren"
+        "message": "Beta Testing Server aktivieren"
     },
     "whatEnableTestingServer": {
         "message": "Deine Einreichungen und Stimmen werden NICHT für den Hauptserver geltend. Benutze dies nur für Tests."
@@ -585,7 +581,7 @@
         "message": "Kanal-ID wurde noch nicht geladen."
     },
     "adblockerIssue": {
-        "message": "Irgendetwas hält SponsorBlock davon ab, die Videodaten abzurufen. Möglicherweise ist es dein Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+        "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Möglicherweise ist das dein Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Falls dies weiterhin geschieht, könnte dies durch Ihren Werbeblocker verursacht werden. Bitte überprüfen Sie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

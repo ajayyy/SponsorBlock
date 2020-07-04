@@ -1,8 +1,4 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "Youtube için SponsorBlock - Sponsorlukları Atla",
         "description": "Name of the extension."
@@ -486,6 +482,9 @@
     "category_intro": {
         "message": "Giriş Animasyonu"
     },
+    "category_intro_short": {
+        "message": "Giriş"
+    },
     "category_outro": {
         "message": "Bitiş Ekranı/Jenerik"
     },
@@ -509,6 +508,20 @@
     },
     "showOverlay": {
         "message": "Arama Çubuğunda Göster"
+    },
+    "previewColor": {
+        "message": "Önizleme Rengi",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Oynatma Çubuğu Rengi"
+    },
+    "category": {
+        "message": "Kategori"
+    },
+    "skipOption": {
+        "message": "Atlama Seçeneği",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Beta Deneme Sunucusunu Devreye Sok"
@@ -563,5 +576,15 @@
     },
     "multipleSegments": {
         "message": "Birden Çok Bölüm"
+    },
+    "guidelines": {
+        "message": "Kılavuz"
+    },
+    "readTheGuidelines": {
+        "message": "Kılavuzu Oku!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategoriler burada!"
     }
 }

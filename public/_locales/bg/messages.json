@@ -1,8 +1,4 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock за YouTube - пропускай спонсорства",
         "description": "Name of the extension."

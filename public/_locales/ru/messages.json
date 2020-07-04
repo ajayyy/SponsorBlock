@@ -1,8 +1,4 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock для YouTube - Пропускайте спонсорские вставки",
         "description": "Name of the extension."
@@ -65,6 +61,9 @@
     "paused": {
         "message": "Пауза"
     },
+    "manualPaused": {
+        "message": "Таймер остановлен"
+    },
     "confirmMSG": {
         "message": "\n\nЧтобы изменить или удалить отдельные значения, нажмите кнопку «Информация» или откройте всплывающее окно расширения, щелкнув значок расширения в правом верхнем углу."
     },
@@ -106,6 +105,9 @@
     },
     "clearTimes": {
         "message": "Удалить отмеченные сегменты"
+    },
+    "openPopup": {
+        "message": "Открыть всплывающее окно SponsorBlock"
     },
     "SubmitTimes": {
         "message": "Отправить отмеченные сегменты"
@@ -412,6 +414,24 @@
     },
     "whatExportOptions": {
         "message": "Это вся конфигурация в формате JSON. Этот файл содержит Ваш идентификатор пользователя, поэтому не забудьте общаться с этим разумно."
+    },
+    "submit": {
+        "message": "Отправить"
+    },
+    "cancel": {
+        "message": "Отменить"
+    },
+    "delete": {
+        "message": "Удалить"
+    },
+    "preview": {
+        "message": "Превью"
+    },
+    "edit": {
+        "message": "Редактировать"
+    },
+    "copyDebugInformation": {
+        "message": "Скопировать отладочную информацию в буфер обмена"
     },
     "bracketNow": {
         "message": "(Сейчас)"

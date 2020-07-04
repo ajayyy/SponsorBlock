@@ -1,14 +1,10 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock för YouTube - Hoppa över sponsring",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Hoppa över sponsormeddelanden på YouTube-videor. Rapportera sponsring på videor du ser på för att spara tid för andra.",
+        "message": "Hoppa över sponsormeddelanden på YouTube-videor. Rapportera sponsring på videor du ser på för att spara tid åt andra.",
         "description": "Description of the extension."
     },
     "400": {
@@ -18,7 +14,7 @@
         "message": "Du har rapporterat för många sponsormeddelanden för den här videon, är du säker att det finns så många?"
     },
     "409": {
-        "message": "Den här har redan blivit rapporterad."
+        "message": "Den här har redan blivit rapporterad"
     },
     "channelWhitelisted": {
         "message": "Kanal vitlistad!"
@@ -54,7 +50,7 @@
         "message": "Sekunder"
     },
     "Hide": {
-        "message": "\"Visa aldrig\"-knappen. "
+        "message": "Visa Aldrig"
     },
     "hitGoBack": {
         "message": "Tryck på Tillbaka för att ångra åtgärden."
@@ -63,7 +59,7 @@
         "message": "Tillbaka"
     },
     "reskip": {
-        "message": "Frammåt"
+        "message": "Framåt"
     },
     "paused": {
         "message": "Pausad"

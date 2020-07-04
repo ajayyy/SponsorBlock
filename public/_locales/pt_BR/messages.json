@@ -1,8 +1,4 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock para YouTube - Pule patrocínios",
         "description": "Name of the extension."
@@ -38,6 +34,9 @@
     "reportButtonTitle": {
         "message": "Reportar"
     },
+    "reportButtonInfo": {
+        "message": "Reportar esse segmento como inválido."
+    },
     "Dismiss": {
         "message": "Ignorar"
     },
@@ -54,7 +53,7 @@
         "message": "Nunca mostrar"
     },
     "hitGoBack": {
-        "message": "Aperta reverter pulo para voltar onde estava"
+        "message": "Aperta \"reverter pulo\" para voltar onde estava."
     },
     "unskip": {
         "message": "Reverter pulo"
@@ -94,6 +93,9 @@
     },
     "voted": {
         "message": "Votado!"
+    },
+    "serverDown": {
+        "message": "Parece que o servidor caiu. Contate o desenvolvedor o quanto antes."
     },
     "connectionError": {
         "message": "Ocorreu um erro de conexão. Código de erro: "
@@ -262,6 +264,9 @@
     },
     "skip": {
         "message": "Pular"
+    },
+    "skipped": {
+        "message": "Pulado"
     },
     "disableAutoSkip": {
         "message": "Desativar Salto Automático"
@@ -471,17 +476,26 @@
     "category_intro": {
         "message": "Animação de Introdução"
     },
+    "category_intro_short": {
+        "message": "Introdução"
+    },
     "category_outro": {
         "message": "Finalização/Créditos"
     },
     "category_interaction": {
         "message": "Lembrete de interação (inscrever-se)"
     },
+    "category_interaction_short": {
+        "message": "Lembrete de interação"
+    },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
     },
     "category_livestream_messages": {
         "message": "Livestream: Leituras de Doação/Mensagem"
+    },
+    "category_livestream_messages_short": {
+        "message": "Leitura de mensagens"
     },
     "disable": {
         "message": "Desativar"
@@ -491,6 +505,20 @@
     },
     "showOverlay": {
         "message": "Mostrar barra de progresso"
+    },
+    "previewColor": {
+        "message": "Cor de pré-visualização",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Cor da barra"
+    },
+    "category": {
+        "message": "Categoria"
+    },
+    "skipOption": {
+        "message": "Opção de pulo",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Habilitar Servidor em teste Beta"
@@ -534,10 +562,25 @@
     "forceChannelCheckPopup": {
         "message": "Considere habilitar a verificação de canal forçada antes de pular os patrocinadores"
     },
+    "downvoteDescription": {
+        "message": "Incorreto/tempo errado"
+    },
     "incorrectCategory": {
         "message": "Categoria errada"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Este vídeo é classificado como música. Você tem certeza que deseja enviar segmentos com categorias que não são músicas? A menos que esse vídeo não seja de fato música, você não deve enviar esse segmento. Por favor leia as orientações se estiver em dúvidas."
+    },
+    "multipleSegments": {
+        "message": "Multiplos segmentos"
+    },
+    "categoryUpdate1": {
+        "message": "As categorias estão aqui!"
+    },
+    "unsubmittedWarning": {
+        "message": "Notificação de segmentos não enviados"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Enviar uma notificação quando você sair de um vídeo com segmentos que não foram enviados"
     }
 }

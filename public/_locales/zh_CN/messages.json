@@ -1,8 +1,4 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock for YouTube - 跳过赞助商广告",
         "description": "Name of the extension."
@@ -486,11 +482,17 @@
     "category_intro": {
         "message": "开头动画"
     },
+    "category_intro_short": {
+        "message": "开头"
+    },
     "category_outro": {
         "message": "结束画面/结尾职员表"
     },
     "category_interaction": {
         "message": "互动提醒（订阅）"
+    },
+    "category_interaction_short": {
+        "message": "互动提醒"
     },
     "category_selfpromo": {
         "message": "未收钱的/自我推销"
@@ -498,8 +500,14 @@
     "category_music_offtopic": {
         "message": "音乐：非音乐部分"
     },
+    "category_music_offtopic_short": {
+        "message": "无音乐"
+    },
     "category_livestream_messages": {
         "message": "直播：捐赠/消息阅读"
+    },
+    "category_livestream_messages_short": {
+        "message": "阅读消息"
     },
     "disable": {
         "message": "禁用"
@@ -509,6 +517,20 @@
     },
     "showOverlay": {
         "message": "在搜索栏中显示"
+    },
+    "previewColor": {
+        "message": "预览颜色",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "拖动条颜色"
+    },
+    "category": {
+        "message": "类别"
+    },
+    "skipOption": {
+        "message": "跳过选项",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "启用 Beta 测试服务器"
@@ -563,5 +585,18 @@
     },
     "multipleSegments": {
         "message": "多个片段"
+    },
+    "guidelines": {
+        "message": "指南"
+    },
+    "readTheGuidelines": {
+        "message": "阅读指南！！",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "类别在这里！"
+    },
+    "categoryUpdate2": {
+        "message": "打开选项，跳过开头，结尾，商业等。"
     }
 }
