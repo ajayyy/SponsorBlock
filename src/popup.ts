@@ -119,7 +119,7 @@ async function runThePopup(messageListener?: MessageListener) {
     let startTimeChosen = false;
   
     //the start and end time pairs (2d)
-    let sponsorTimes = [];
+    let sponsorTimes: SponsorTime[] = [];
   
     //current video ID of this tab
     let currentVideoID = null;
@@ -252,9 +252,9 @@ async function runThePopup(messageListener?: MessageListener) {
         }
   
         //load video times for this video 
-        let sponsorTimesStorage = Config.config.sponsorTimes.get(currentVideoID);
+        let sponsorTimesStorage = Config.config.segmentTimes.get(currentVideoID);
         if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
-            if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].length < 2) {
+            if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].segment.length < 2) {
                 startTimeChosen = true;
                 PageElements.sponsorStart.innerHTML = chrome.i18n.getMessage("sponsorEnd");
             }
@@ -336,13 +336,17 @@ async function runThePopup(messageListener?: MessageListener) {
         let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
   
         if (sponsorTimes[sponsorTimesIndex] == undefined) {
-            sponsorTimes[sponsorTimesIndex] = [];
+            sponsorTimes[sponsorTimesIndex] = {
+                segment: [],
+                category: "sponsor",
+                UUID: null
+            };
         }
   
-        sponsorTimes[sponsorTimesIndex][startTimeChosen ? 1 : 0] = response.time;
+        sponsorTimes[sponsorTimesIndex].segment[startTimeChosen ? 1 : 0] = response.time;
 
         let localStartTimeChosen = startTimeChosen;
-        Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+        Config.config.segmentTimes.set(currentVideoID, sponsorTimes);
         
         //send a message to the client script
         if (localStartTimeChosen) {
@@ -528,7 +532,7 @@ async function runThePopup(messageListener?: MessageListener) {
     }
 
     function previewSponsorTime(index) {
-        let skipTime = sponsorTimes[index][0];
+        let skipTime = sponsorTimes[index].segment[0];
 
         if (document.getElementById("startTimeMinutes" + index) != null) {
             //edit is currently open, use that time
@@ -575,28 +579,28 @@ async function runThePopup(messageListener?: MessageListener) {
         startTimeMinutes.id = "startTimeMinutes" + index;
         startTimeMinutes.className = "sponsorTime popupElement";
         startTimeMinutes.type = "text";
-        startTimeMinutes.value = String(getTimeInMinutes(sponsorTimes[index][0]));
+        startTimeMinutes.value = String(getTimeInMinutes(sponsorTimes[index].segment[0]));
         startTimeMinutes.style.width = "45px";
     
         let startTimeSeconds = document.createElement("input");
         startTimeSeconds.id = "startTimeSeconds" + index;
         startTimeSeconds.className = "sponsorTime popupElement";
         startTimeSeconds.type = "text";
-        startTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][0]);
+        startTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index].segment[0]);
         startTimeSeconds.style.width = "60px";
 
         let endTimeMinutes = document.createElement("input");
         endTimeMinutes.id = "endTimeMinutes" + index;
         endTimeMinutes.className = "sponsorTime popupElement";
         endTimeMinutes.type = "text";
-        endTimeMinutes.value = String(getTimeInMinutes(sponsorTimes[index][1]));
+        endTimeMinutes.value = String(getTimeInMinutes(sponsorTimes[index].segment[1]));
         endTimeMinutes.style.width = "45px";
     
         let endTimeSeconds = document.createElement("input");
         endTimeSeconds.id = "endTimeSeconds" + index;
         endTimeSeconds.className = "sponsorTime popupElement";
         endTimeSeconds.type = "text";
-        endTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index][1]);
+        endTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index].segment[1]);
         endTimeSeconds.style.width = "60px";
 
         //the button to set the current time
@@ -668,11 +672,11 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     function saveSponsorTimeEdit(index, closeEditMode = true) {
-        sponsorTimes[index][0] = getSponsorTimeEditTimes("startTime", index);
-        sponsorTimes[index][1] = getSponsorTimeEditTimes("endTime", index);
+        sponsorTimes[index].segment[0] = getSponsorTimeEditTimes("startTime", index);
+        sponsorTimes[index].segment[1] = getSponsorTimeEditTimes("endTime", index);
   
         //save this
-        Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+        Config.config.segmentTimes.set(currentVideoID, sponsorTimes);
         
         messageHandler.query({
             active: true,
@@ -692,7 +696,7 @@ async function runThePopup(messageListener?: MessageListener) {
     //deletes the sponsor time submitted at an index
     function deleteSponsorTime(index) {
         //if it is not a complete sponsor time
-        if (sponsorTimes[index].length < 2) {
+        if (sponsorTimes[index].segment.length < 2) {
             messageHandler.query({
                 active: true,
                 currentWindow: true
@@ -710,7 +714,7 @@ async function runThePopup(messageListener?: MessageListener) {
         sponsorTimes.splice(index, 1);
   
         //save this
-        Config.config.sponsorTimes.set(currentVideoID, sponsorTimes);
+        Config.config.segmentTimes.set(currentVideoID, sponsorTimes);
         
         //if they are all removed
         if (sponsorTimes.length == 0) {
@@ -780,7 +784,7 @@ async function runThePopup(messageListener?: MessageListener) {
     //hides and shows the submit times button when needed
     function showSubmitTimesIfNecessary() {
         //check if an end time has been specified for the latest sponsor time
-        if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].length > 1) {
+        if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].segment.length > 1) {
             //show submit times button
             document.getElementById("submitTimesContainer").style.display = "unset";
         } else {

@@ -6,6 +6,8 @@
 'use strict';
 
 import Config from "../config";
+import Utils from "../utils";
+let utils = new Utils();
 
 class PreviewBar {
 	container: HTMLUListElement;
@@ -79,8 +81,8 @@ class PreviewBar {
 						tooltipTextWrapper.classList.remove("sbTooltipOneTitleThumbnailOffset");
 					} else if (category !== null) {
 						categoryTooltip.classList.remove("sbHidden");
-						categoryTooltip.textContent = chrome.i18n.getMessage("category_" + category) 
-							|| (chrome.i18n.getMessage("preview") + " " + chrome.i18n.getMessage("category_" + category.split("preview-")[1]));
+						categoryTooltip.textContent = utils.shortCategoryName(category)
+							|| (chrome.i18n.getMessage("preview") + " " + utils.shortCategoryName(category.split("preview-")[1]));
 
 						// There is a title now
 						tooltip.classList.remove("ytp-tooltip-text-no-title");

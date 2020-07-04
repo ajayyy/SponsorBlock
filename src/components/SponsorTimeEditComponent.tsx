@@ -322,7 +322,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value;
 
-        Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, utils.getSegmentsFromSponsorTimes(sponsorTimesSubmitting));
+        Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 
         this.props.contentContainer().updatePreviewBar();
     }
@@ -354,7 +354,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         sponsorTimes.splice(index, 1);
   
         //save this
-        Config.config.sponsorTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimes);
+        Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimes);
 
         this.props.contentContainer().updatePreviewBar();
         

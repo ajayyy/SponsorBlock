@@ -218,7 +218,7 @@
         "message": "Show Notice Again"
     },
     "longDescription": {
-        "message": "SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment.",
+        "message": "SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment. \n\n You can also skip intros, outros, reminders to subscribe and other categories.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -472,9 +472,6 @@
     "theKey": {
         "message": "The key"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "is already used by youtube. Please select another key."
-    },
     "keyAlreadyUsed": {
         "message": "is bound to another action. Please select another key."
     },
@@ -489,13 +486,13 @@
         "message": "Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shoutouts to causes/creators/websites/products they like."
     },
     "category_intro": {
-        "message": "Intro Animation"
+        "message": "Intermission/Intro Animation"
     },
     "category_intro_description": {
-        "message": "Intro animations that are recurring in the series or provide no direct value. This should not be used on music videos."
+        "message": "An interval without actual content. Could be a pause, static frame, repeating animation. This should not be used for transitions containing information or be used on music videos."
     },
     "category_intro_short": {
-        "message": "Intro"
+        "message": "Intermission"
     },
     "category_outro": {
         "message": "Endcards/Credits"

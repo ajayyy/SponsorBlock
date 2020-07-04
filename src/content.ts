@@ -323,13 +323,13 @@ async function videoIDChange(id) {
     //warn them if they had unsubmitted times
     if (previousVideoID != null) {
         //get the sponsor times from storage
-        let sponsorTimes = Config.config.sponsorTimes.get(previousVideoID);
+        let sponsorTimes = Config.config.segmentTimes.get(previousVideoID);
         if (sponsorTimes != undefined && sponsorTimes.length > 0) {
             //warn them that they have unsubmitted sponsor times
-                chrome.runtime.sendMessage({
-                    message: "alertPrevious",
-                    previousVideoID: previousVideoID
-                })
+            chrome.runtime.sendMessage({
+                message: "alertPrevious",
+                previousVideoID: previousVideoID
+            });
         }
 
         //set the previous video id to the currentID
@@ -347,10 +347,10 @@ async function videoIDChange(id) {
     //make sure everything is properly added
     updateVisibilityOfPlayerControlsButton().then(() => {
         //see if the onvideo control image needs to be changed
-        let segments = Config.config.sponsorTimes.get(sponsorVideoID);
-        if (segments != null && segments.length > 0 && segments[segments.length - 1].length >= 2) {
+        let segments = Config.config.segmentTimes.get(sponsorVideoID);
+        if (segments != null && segments.length > 0 && segments[segments.length - 1].segment.length >= 2) {
             changeStartSponsorButton(true, true);
-        } else if (segments != null && segments.length > 0 && segments[segments.length - 1].length < 2) {
+        } else if (segments != null && segments.length > 0 && segments[segments.length - 1].segment.length < 2) {
             changeStartSponsorButton(false, true);
         } else {
             changeStartSponsorButton(true, false);
@@ -1173,31 +1173,24 @@ function startSponsorClicked() {
         });
     }
 
-    // Create raw segment list
-    let segments: number[][] = [];
-    for (const sponsorTime of sponsorTimesSubmitting) {
-        segments.push(sponsorTime.segment);
-    }
-
     //save this info
-    Config.config.sponsorTimes.set(sponsorVideoID, segments);
+    Config.config.segmentTimes.set(sponsorVideoID, sponsorTimesSubmitting);
 
     updateSponsorTimesSubmitting(false)
 }
 
 function updateSponsorTimesSubmitting(getFromConfig: boolean = true) {
-    let segments = Config.config.sponsorTimes.get(sponsorVideoID);
+    let segmentTimes = Config.config.segmentTimes.get(sponsorVideoID);
 
     //see if this data should be saved in the sponsorTimesSubmitting variable
-    if (getFromConfig && segments != undefined) {
+    if (getFromConfig && segmentTimes != undefined) {
         sponsorTimesSubmitting = [];
 
-        for (const segment of segments) {
+        for (const segmentTime of segmentTimes) {
             sponsorTimesSubmitting.push({
-                segment: segment,
+                segment: segmentTime.segment,
                 UUID: null,
-                // Default to sponsor
-                category: "sponsor"
+                category: segmentTime.category
             });
         }
     }
@@ -1321,7 +1314,7 @@ function clearSponsorTimes() {
 
     let currentVideoID = sponsorVideoID;
 
-    let sponsorTimes = Config.config.sponsorTimes.get(currentVideoID);
+    let sponsorTimes = Config.config.segmentTimes.get(currentVideoID);
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
         let confirmMessage = chrome.i18n.getMessage("clearThis") + getSegmentsMessage(sponsorTimes)
@@ -1329,7 +1322,7 @@ function clearSponsorTimes() {
         if(!confirm(confirmMessage)) return;
 
         //clear the sponsor times
-        Config.config.sponsorTimes.delete(currentVideoID);
+        Config.config.segmentTimes.delete(currentVideoID);
 
         //clear sponsor times submitting
         sponsorTimesSubmitting = [];
@@ -1451,14 +1444,14 @@ async function sendSubmitMessage(){
     }
 
     //update sponsorTimes
-    Config.config.sponsorTimes.set(sponsorVideoID, utils.getSegmentsFromSponsorTimes(sponsorTimesSubmitting));
+    Config.config.segmentTimes.set(sponsorVideoID, sponsorTimesSubmitting);
 
     // Check to see if any of the submissions are below the minimum duration set
     if (Config.config.minDuration > 0) {
         for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
             if (sponsorTimesSubmitting[i].segment[1] - sponsorTimesSubmitting[i].segment[0] < Config.config.minDuration) {
                 let confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + 
-                    getSegmentsMessage(utils.getSegmentsFromSponsorTimes(sponsorTimesSubmitting));
+                    getSegmentsMessage(sponsorTimesSubmitting);
                 
                 if(!confirm(confirmShort)) return;
             }
@@ -1488,7 +1481,7 @@ async function sendSubmitMessage(){
         submitButton.addEventListener("animationend", animationEndListener);
 
         //clear the sponsor times
-        Config.config.sponsorTimes.delete(sponsorVideoID);
+        Config.config.segmentTimes.delete(sponsorVideoID);
 
         //add submissions to current sponsors list
         if (sponsorTimes === null) sponsorTimes = [];
@@ -1516,12 +1509,12 @@ async function sendSubmitMessage(){
 }
 
 //get the message that visually displays the video times
-function getSegmentsMessage(segments: number[][]): string {
+function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
     let sponsorTimesMessage = "";
 
-    for (let i = 0; i < segments.length; i++) {
-        for (let s = 0; s < segments[i].length; s++) {
-            let timeMessage = utils.getFormattedTime(segments[i][s]);
+    for (let i = 0; i < sponsorTimes.length; i++) {
+        for (let s = 0; s < sponsorTimes[i].segment.length; s++) {
+            let timeMessage = utils.getFormattedTime(sponsorTimes[i].segment[s]);
             //if this is an end time
             if (s == 1) {
                 timeMessage = " to " + timeMessage;

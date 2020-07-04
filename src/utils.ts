@@ -350,6 +350,10 @@ class Utils {
         return formatted;
     }
 
+    shortCategoryName(categoryName: string): string {
+        return chrome.i18n.getMessage("category_" + categoryName + "_short") || chrome.i18n.getMessage("category_" + categoryName);
+    }
+
     getRawSeconds(minutes: number, seconds: number): number {
         return minutes * 60 + seconds;
     }
