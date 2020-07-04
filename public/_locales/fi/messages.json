@@ -310,9 +310,6 @@
     "theKey": {
         "message": "Näppäin"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "on jo YouTuben käytössä. Valitse toinen näppäin."
-    },
     "keyAlreadyUsed": {
         "message": "on jo liitetty toiseen toimintoon. Valitse toinen näppäin."
     },
@@ -322,9 +319,6 @@
     },
     "category_sponsor": {
         "message": "Sponsori"
-    },
-    "category_intro": {
-        "message": "Intro-animaatio"
     },
     "category_outro": {
         "message": "Loppukortit/-tekstit"
