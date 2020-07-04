@@ -217,10 +217,6 @@
     "showNotice": {
         "message": "Arată Notificarea Din Nou"
     },
-    "longDescription": {
-        "message": "SponsorBlock este o extensie care va sări peste segmentele sponsorizate din videoclipurile de pe YouTube. SponsorBlock este o extensie crowdsourced care lasă pe oricine să trimită începutul și finalul segmentelor sponsorizate din videoclipurile de pe YouTube. Odată ce o persoană trimite aceste informații, toată lumea cu această extensie va sări peste acel segment sponsorizat.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Website",
         "description": "Used on Firefox Store Page"
@@ -466,9 +462,6 @@
     "theKey": {
         "message": "Tasta"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "este deja utilizat de YouTube. Vă rugăm selectați o altă tastă."
-    },
     "keyAlreadyUsed": {
         "message": "este deja setată la o altă acțiune. Vă rugăm să selectați o altă tastă."
     },
@@ -481,15 +474,6 @@
     },
     "category_sponsor_description": {
         "message": "Promovare plătită, refferali plătiți și reclame directe. Nu pentru autopromovări sau promovări gratis ale cauzelor/creatorilor/website-urilor/produselor."
-    },
-    "category_intro": {
-        "message": "Animație de Început"
-    },
-    "category_intro_description": {
-        "message": "Animațiile de introducere care se repetă în serie sau care nu oferă nici o valoare directă. Această opțiune nu ar trebui folosită în videoclipurile muzicale."
-    },
-    "category_intro_short": {
-        "message": "Intro"
     },
     "category_outro": {
         "message": "Ecran De Final/Credite"
