@@ -205,10 +205,6 @@
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
     },
-    "longDescription": {
-        "message": "SponsorBlock è un'estensione che salta gli spezzoni con contenuti sponsorizzati nei video di YouTube. SponsorBlock è un'estensione crowdsourced per i browser che permette a chiunque di inviare i minutaggi degli spezzoni sponsorizzati nei video di YouTube. Quando una persona avrà inviato questa informazione, tutti gli utenti che utilizzano questa estensione potranno saltare lo spezzone sponsorizzato.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Sito Web",
         "description": "Used on Firefox Store Page"
