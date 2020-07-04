@@ -205,10 +205,6 @@
     "showNotice": {
         "message": "Pokaż informacje ponownie"
     },
-    "longDescription": {
-        "message": "SponsorBlock jest rozszerzeniem które przewinie segmenty sponsorów w filmach na YouTube. SponsorBlock jest opartym na crowdsourcing rozszerzeniem które pozwala każdemu zgłaszać początek i koniec segmentu reklamowego w filmach na YouTube. Kiedy ktoś zgłosi taki fragment zostanie on pominięty przez innych użytkowników rozszerzenia.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Strona",
         "description": "Used on Firefox Store Page"
