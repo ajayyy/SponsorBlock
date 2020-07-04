@@ -208,10 +208,6 @@
     "showNotice": {
         "message": "Показывать уведомление снова"
     },
-    "longDescription": {
-        "message": "SponsorBlock — это расширение, которое пропускает спонсорские вставки в видео на YouTube. SponsorBlock — это краудсорсинговое расширение, которое позволяет каждому отправить время начала и конца спонсорских сегментов в видео на YouTube. После того, как кто-нибудь отправляет эту информацию, все остальные пользователи расширения будут автоматически пропускать спонсорские сегменты.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Сайт",
         "description": "Used on Firefox Store Page"
