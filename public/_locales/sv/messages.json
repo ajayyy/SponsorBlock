@@ -1,4 +1,8 @@
 {
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
     "fullName": {
         "message": "SponsorBlock för YouTube - Hoppa över sponsring",
         "description": "Name of the extension."
@@ -19,6 +23,9 @@
     "channelWhitelisted": {
         "message": "Kanal vitlistad!"
     },
+    "Sponsor": {
+        "message": "sponsor"
+    },
     "Sponsors": {
         "message": "sponsorer"
     },
@@ -30,6 +37,9 @@
     },
     "reportButtonTitle": {
         "message": "Rapportera"
+    },
+    "reportButtonInfo": {
+        "message": "Rapportera det här segmentet som inkorrekt."
     },
     "Dismiss": {
         "message": "Avfärda"
@@ -57,6 +67,9 @@
     },
     "paused": {
         "message": "Pausad"
+    },
+    "manualPaused": {
+        "message": "Timern stoppad"
     },
     "confirmMSG": {
         "message": "Klicka på infoknappen eller öppna popup-rutan genom att klicka på tilläggets ikon i hörnet uppe till höger för att redigera eller ta bort inviduella värden."
@@ -87,6 +100,9 @@
     },
     "voted": {
         "message": "Röstat!"
+    },
+    "serverDown": {
+        "message": "Det verkar som att servern är nere. Kontakta utvecklaren omedelbart."
     },
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
@@ -129,6 +145,9 @@
     },
     "viewLeaderboard": {
         "message": "Se leaderboarden"
+    },
+    "here": {
+        "message": "här"
     },
     "recordTimesDescription": {
         "message": "Klicka på knappen nedan när sponsormeddelandet börjar och slutar för att spela in och rapportera till databasen."
@@ -253,6 +272,9 @@
     "skip": {
         "message": "Hoppa över"
     },
+    "skipped": {
+        "message": "Skippat"
+    },
     "disableAutoSkip": {
         "message": "Avaktivera Hoppa Över Automatiskt"
     },
@@ -324,6 +346,9 @@
     },
     "supportInvidious": {
         "message": "Stöd Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) är en tredjeparts YouTube-klient. För att aktivera stöd måste du acceptera de extra behörigheterna. Detta kommer INTE att fungera i incognito i Chrome och andra Cromium-varianter."
     },
     "optionsInfo": {
         "message": "Aktivera Invidious stöd, avaktivera hoppa över automatiskt, dölj knappar och mer."
@@ -455,6 +480,21 @@
     "category_sponsor": {
         "message": "Sponsormeddelande"
     },
+    "category_intro": {
+        "message": "Intro-animation"
+    },
+    "category_intro_description": {
+        "message": "Intro-animationer som är återkommande i serien eller inte ger direkt värde. Detta bör inte användas på musikvideor."
+    },
+    "category_intro_short": {
+        "message": "Intro"
+    },
+    "category_music_offtopic_description": {
+        "message": "Endast för användning i musikvideor. Detta inkluderar intros och outros i musikvideor."
+    },
+    "category_music_offtopic_short": {
+        "message": "Icke-musik"
+    },
     "disable": {
         "message": "Avaktivera"
     },
@@ -463,6 +503,9 @@
     },
     "showOverlay": {
         "message": "Visa Lager Ovanpå Spelare"
+    },
+    "category": {
+        "message": "Kategori"
     },
     "enableTestingServer": {
         "message": "Aktivera Server För Betatestning"
@@ -482,6 +525,9 @@
     "bracketEnd": {
         "message": "(Slut)"
     },
+    "hiddenDueToDuration": {
+        "message": "dold: för kort"
+    },
     "channelDataNotFound": {
         "message": "Kanal-ID är inte inladdat än."
     },
@@ -490,5 +536,24 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "downvoteDescription": {
+        "message": "Fel timing"
+    },
+    "incorrectCategory": {
+        "message": "Fel kategori"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Den här videon är kategoriserad som musik. Är du säker på att du vill skicka in segment med icke-musikkategorier? Om denna video faktiskt är musik, bör du inte skicka in detta segment. Vänligen läs riktlinjerna om du är förvirrad."
+    },
+    "multipleSegments": {
+        "message": "Flera segment"
+    },
+    "guidelines": {
+        "message": "Riktlinjer"
+    },
+    "readTheGuidelines": {
+        "message": "Läs riktlinjerna!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     }
 }

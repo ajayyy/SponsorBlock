@@ -801,7 +801,7 @@ function updatePreviewBar() {
     if (localSponsorTimes == null) localSponsorTimes = [];
 
     let allSponsorTimes = localSponsorTimes.concat(sponsorTimesSubmitting);
-
+	
     //create an array of the sponsor types
     let types = [];
     for (let i = 0; i < localSponsorTimes.length; i++) {
@@ -817,6 +817,10 @@ function updatePreviewBar() {
     }
 
     previewBar.set(utils.getSegmentsFromSponsorTimes(allSponsorTimes), types, video.duration)
+
+    if (Config.config.showTimeWithSkips) {
+        showTimeWithoutSkips(allSponsorTimes);
+    }
 
     //update last video id
     lastPreviewBarUpdate = sponsorVideoID;
@@ -1585,4 +1589,37 @@ function updateAdFlag() {
         updatePreviewBar();
         updateVisibilityOfPlayerControlsButton();
     }
+}
+
+function showTimeWithoutSkips(allSponsorTimes): void {
+	let skipDuration = 0;
+	
+	// Calculate skipDuration based from the segments in the preview bar
+	for (let i = 0; i < allSponsorTimes.length; i++) {
+        // If an end time exists
+        if (allSponsorTimes[i].segment[1]) {
+            skipDuration += allSponsorTimes[i].segment[1] - allSponsorTimes[i].segment[0];
+        }
+		
+	}
+	
+	// YouTube player time display
+	let display = document.getElementsByClassName("ytp-time-display notranslate")[0];
+	if (display === undefined) return
+	
+    let formatedTime = utils.getFormattedTime(video.duration - skipDuration);
+	
+	const durationID = "sponsorBlockDurationAfterSkips";	
+    let duration = document.getElementById(durationID);
+
+	// Create span if needed
+	if(duration === null) {
+		duration = document.createElement('span');
+        duration.id = durationID;
+        duration.classList.add("ytp-time-duration");
+
+		display.appendChild(duration);
+	}
+		
+    duration.innerText = (skipDuration <= 0 || isNaN(skipDuration)) ? "" : " ("+formatedTime+")";
 }

@@ -289,6 +289,12 @@
     "audioNotificationDescription": {
         "message": "Audio notification on skip will play a sound whenever a sponsor is skipped. If disabled (or auto skip is disabled), no sound will be played."
     },
+    "showTimeWithSkips": {
+        "message": "Show Time With Skips Removed"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "This time appears in brackets next to the current time on below the seekbar. This shows the total video duration minus any segments. This includes segments marked as only \"Show In Seekbar\"."
+    },
     "youHaveSkipped": {
         "message": "You have skipped "
     },

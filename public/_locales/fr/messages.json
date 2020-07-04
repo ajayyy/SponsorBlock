@@ -81,10 +81,10 @@
         "message": "Êtes-vous certain(e) de vouloir supprimer vos soumissions ?\n\n"
     },
     "Unknown": {
-        "message": "Une erreur s'est produite lors de la soumission, veuillez ré-essayer plus tard."
+        "message": "Une erreur s'est produite lors de la soumission, veuillez réessayer plus tard."
     },
     "sponsorFound": {
-        "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de donnée !"
+        "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de données !"
     },
     "sponsor404": {
         "message": "Pas de messages commerciaux trouvés"
@@ -168,10 +168,10 @@
         "message": "Soumettre les temps"
     },
     "publicStats": {
-        "message": "Affiché sur le classement public pour montrer vos contributions. Voir sur"
+        "message": "Votre pseudo est inscrit dans le classement public pour afficher vos contributions. Le consulter"
     },
     "setUsername": {
-        "message": "Choisir pseudo"
+        "message": "Choisir un pseudonyme"
     },
     "discordAdvert": {
         "message": "Rejoignez le serveur Discord officiel pour toutes suggestions ou remarques!"
@@ -297,7 +297,7 @@
         "message": "Vous avez passé "
     },
     "youHaveSaved": {
-        "message": "Vous avez économisé "
+        "message": "Vous vous êtes économisé "
     },
     "minLower": {
         "message": "minute"
@@ -342,13 +342,13 @@
         "message": "Passage automatique"
     },
     "showSkipNotice": {
-        "message": "Afficher l'avis après le passage d'un sponsor"
+        "message": "Notifier après qu'un sponsor ait été sauté"
     },
     "keybindCurrentlySet": {
         "message": ". Il est actuellement réglé sur :"
     },
     "supportInvidious": {
-        "message": "Soutenir Invidious"
+        "message": "Supporter Invidious"
     },
     "supportInvidiousDescription": {
         "message": "Invidious (invidio.us) est un client tiers pour YouTube. Vous devez accepter des permissions supplémentaires pour activer son support. Cette fonctionnalité ne fonctionne pas en mode incognito sur Chrome et les autres variantes de Chromium."
@@ -483,17 +483,47 @@
     "category_sponsor": {
         "message": "Message commercial"
     },
+    "category_sponsor_description": {
+        "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
+    },
     "category_intro": {
         "message": "Générique d'introduction"
+    },
+    "category_intro_description": {
+        "message": "Introductions animées qui sont récurrentes ou qui n'ont pas de valeur ajoutée directe dans la série. Ne doit pas être utilisé pour les vidéos musicales."
+    },
+    "category_intro_short": {
+        "message": "Introduction"
     },
     "category_outro": {
         "message": "Générique de fin"
     },
+    "category_outro_description": {
+        "message": "Générique de fin ou quand les fiches de fin de vidéo apparaissent. Ne pas utiliser pour les conclusions orales. Ne doit pas inclure de contenu utile. Ne pas utiliser sur les vidéos de musique."
+    },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
     },
+    "category_interaction_description": {
+        "message": "Lorsqu'il y a un bref rappel pour liker, s'abonner ou les follow parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
+    },
+    "category_interaction_short": {
+        "message": "Rappel d'interaction"
+    },
+    "category_selfpromo": {
+        "message": "Non rémunéré/autopromotion"
+    },
+    "category_selfpromo_description": {
+        "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
+    },
     "category_music_offtopic": {
         "message": "Musique : Segment non-musicale"
+    },
+    "category_music_offtopic_description": {
+        "message": "A utiliser uniquement dans les vidéos musicales. Cela inclut les introductions ou les fins dans les vidéos."
+    },
+    "category_music_offtopic_short": {
+        "message": "Hors musique"
     },
     "category_livestream_messages": {
         "message": "Stream : lecture de dons et messages"
@@ -506,6 +536,23 @@
     },
     "showOverlay": {
         "message": "Afficher dans la barre de progression"
+    },
+    "colorFormatIncorrect": {
+        "message": "Votre couleur est mal formatée. Il devrait s'agir d'un code hexadécimal à 3 ou 6 chiffres avec un signe numérique au début."
+    },
+    "previewColor": {
+        "message": "Couleur en mode aperçu",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Couleur dans la barre de progression"
+    },
+    "category": {
+        "message": "Catégorie"
+    },
+    "skipOption": {
+        "message": "Option de saut",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Activer le serveur de test bêta"
@@ -560,5 +607,24 @@
     },
     "multipleSegments": {
         "message": "Plusieurs segments"
+    },
+    "guidelines": {
+        "message": "Instructions"
+    },
+    "readTheGuidelines": {
+        "message": "Lisez les instructions !!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Les catégories sont là !"
+    },
+    "categoryUpdate2": {
+        "message": "Ouvrir les options pour sauter les intros, outros, marchandises, etc."
+    },
+    "unsubmittedWarning": {
+        "message": "Notification de segments non soumis"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Envoyer une notification lorsque vous quittez une vidéo avec des segments qui ne sont pas téléversés"
     }
 }

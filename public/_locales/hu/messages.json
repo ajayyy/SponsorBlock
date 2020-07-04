@@ -1,4 +1,8 @@
 {
+    "Name": {
+        "message": "SponsorBlock",
+        "description": "Name of the extension."
+    },
     "Loading": {
         "message": "Betöltés..."
     },

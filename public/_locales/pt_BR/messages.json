@@ -72,7 +72,7 @@
         "message": "Tem certeza que quer limpar isso?\n\n"
     },
     "Unknown": {
-        "message": "Teve um erro ao enviar seus segmentos, tente novamente depois."
+        "message": "Houve um erro ao enviar seus segmentos, tente novamente mais tarde."
     },
     "sponsorFound": {
         "message": "Os patrocinadores desse vídeo estão no banco de dados!"
@@ -87,7 +87,7 @@
         "message": "Patrocínio termina agora"
     },
     "noVideoID": {
-        "message": "Isso provavelmente não é uma tab do YouTube, ou você clicou muito cedo. \n Se sabe que é uma tab do YouTube,\n feche esse popup e abra de novo."
+        "message": "Nenhum vídeo do YouTube foi encontrado nesta aba. Se você sabe que esta é uma aba do YouTube, feche este pop-up e abra-o novamente. Se isso não funcionar, tente recarregar a aba."
     },
     "success": {
         "message": "Sucesso!"
@@ -96,13 +96,13 @@
         "message": "Votado!"
     },
     "connectionError": {
-        "message": "Um erro de conexão aconteceu: Código: "
+        "message": "Ocorreu um erro de conexão. Código de erro: "
     },
     "wantToSubmit": {
         "message": "Quer enviar os segmentos para o vídeo de ID"
     },
     "leftTimes": {
-        "message": "Parece que você se esqueceu de enviar alguns segmentos. Volta pra página para os enviar (não foram deletados)."
+        "message": "Parece que você se esqueceu de enviar alguns segmentos. Volte para aquela página para enviá-los (eles não foram deletados)."
     },
     "clearTimes": {
         "message": "Apagar intervalos dos patrocínios"
@@ -111,25 +111,25 @@
         "message": "Abrir o Popup SponsorBlock"
     },
     "SubmitTimes": {
-        "message": "Submeter intervalos dos patrocínios"
+        "message": "Enviar intervalos de patrocínios"
     },
     "submitCheck": {
-        "message": "Tem a certeza que pretende submeter?"
+        "message": "Você tem certeza que deseja enviar isto?"
     },
     "whitelistChannel": {
-        "message": "Meter canal na Whitelist"
+        "message": "Colocar canal na lista branca"
     },
     "removeFromWhitelist": {
-        "message": "Remover canal da Whitelist"
+        "message": "Remover canal da lista branca"
     },
     "voteOnTime": {
         "message": "Vote num intervalo de patrocínio"
     },
     "recordTimes": {
-        "message": "Registe um intervalo de patrocínio"
+        "message": "Grave os intervalos de um patrocínio"
     },
     "soFarUHSubmited": {
-        "message": "Até agora submeteu"
+        "message": "Até agora, você já enviou"
     },
     "savedPeopleFrom": {
         "message": "Poupaste a outros de "
@@ -141,10 +141,10 @@
         "message": "aqui"
     },
     "recordTimesDescription": {
-        "message": "Clique no botão abaixo quando o patrocínio começar e quando terminar para registrar e submetê-lo à base de dados."
+        "message": "Clique no botão abaixo quando o patrocínio começa e termina para gravá-lo na base de dados."
     },
     "popupHint": {
-        "message": "Dica: Aperte a tecla ; enquanto reproduzir o vídeo para registar o começo/fim de um patrocínio e \" para enviar. (Essa configuração pode ser mudada em opções.)"
+        "message": "Dica: Aperte a tecla ponto e vírgula (;) com a janela focada em um vídeo para reportar o começo/fim de um patrocínio e aspas (\") para enviar. (Esta configuração pode ser mudada nas opções.)"
     },
     "lastTimes": {
         "message": "Últimos Intervalos de Patrocínios Seleciados"
@@ -159,10 +159,10 @@
         "message": "Isso é usado na página pública de estatísticas que mostra o quanto você já contríbuíu. Veja-a"
     },
     "setUsername": {
-        "message": "Criar nomde de utilizador"
+        "message": "Definir nome de usuário"
     },
     "discordAdvert": {
-        "message": "Junte-se ao discord oficial para sugerir dicas e sugestões!"
+        "message": "Junte-se ao servidor do discord oficial para dar dicas e sugestões!"
     },
     "hideThis": {
         "message": "Esconder isto"
