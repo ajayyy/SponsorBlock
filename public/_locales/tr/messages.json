@@ -217,10 +217,6 @@
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
     },
-    "longDescription": {
-        "message": "SponsorBlock, YouTube'da sponsorlu bölümleri atlamanıza yardımcı olan bir eklentidir. SponsorBlock, herkesin YouTube videolarında bulunan sponsorlu bölümlerin başını ve sonunu göndermesine izin veren kitlekaynaklı bir tarayıcı eklentisidir. Bu bilgiyi biri yolladığında, bu sponsorlu bölüm herkeste atlanır.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Website",
         "description": "Used on Firefox Store Page"
@@ -466,9 +462,6 @@
     "theKey": {
         "message": "Anahtar"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "YouTube tarafından zaten kullanımda. Lütfen başka bir anahtar seçin."
-    },
     "keyAlreadyUsed": {
         "message": "başka bir eyleme bağlı. Lütfen başka bir anahtar seçin."
     },
@@ -478,12 +471,6 @@
     },
     "category_sponsor": {
         "message": "Sponsor"
-    },
-    "category_intro": {
-        "message": "Giriş Animasyonu"
-    },
-    "category_intro_short": {
-        "message": "Giriş"
     },
     "category_outro": {
         "message": "Bitiş Ekranı/Jenerik"
