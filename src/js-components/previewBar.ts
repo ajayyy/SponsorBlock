@@ -30,6 +30,8 @@ class PreviewBar {
 	}
 
 	setupHoverText() {
+		if (this.onMobileYouTube) return;
+
 		let seekBar = document.querySelector(".ytp-progress-bar-container");
 
 		// Create label placeholder
