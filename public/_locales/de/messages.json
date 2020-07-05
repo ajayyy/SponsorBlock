@@ -489,7 +489,7 @@
         "message": "Unterbrechung/Vorspann"
     },
     "category_intro_description": {
-        "message": "Ein Intervall ohne relevanten Inhalt. Beispiele dafür wären ein statisches Bild, sich wiederholende Animationen. Dies sollte nicht für Übergänge benutzt werden, die Informationen erhalten oder für Musikvideos."
+        "message": "Ein Intervall ohne relevanten Inhalt. Beispiele dafür wären eine Pause, ein statisches Bild oder sich wiederholende Animationen. Dies sollte nicht für Übergänge benutzt werden, die Informationen erhalten oder für Musikvideos."
     },
     "category_intro_short": {
         "message": "Unterbrechung"
