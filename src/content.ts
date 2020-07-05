@@ -1011,23 +1011,11 @@ function unskipSponsorTime(segment: SponsorTime) {
     if (sponsorTimes != null) {
         //add a tiny bit of time to make sure it is not skipped again
         video.currentTime = segment.segment[0] + 0.001;
-
-        checkIfInsideSegment();
     }
 }
 
 function reskipSponsorTime(segment: SponsorTime) {
     video.currentTime = segment.segment[1];
-}
-
-/**
- * Checks if currently inside a segment and will trigger 
- * a skip schedule if true.
- * 
- * This is used for when a manual skip is finished or a reskip is complete
- */
-function checkIfInsideSegment() {
-    // for
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false): boolean {
