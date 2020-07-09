@@ -12,6 +12,7 @@
   <a href="https://chrome.google.com/webstore/detail/mnjggcdmjocbbbhaepdhchncahnbgone">Chrome/Chromium</a> |
   <a href="https://addons.mozilla.org/addon/sponsorblock/?src=external-github">Firefox</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Android">Android</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Edge">Edge</a> |
   <a href="https://sponsor.ajay.app">Website</a> |
   <a href="https://sponsor.ajay.app/stats">Stats</a>
 </p>
