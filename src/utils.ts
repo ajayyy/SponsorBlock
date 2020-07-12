@@ -331,9 +331,10 @@ class Utils {
         return seconds % 60;
     }
 
-    getFormattedTime(seconds: number, precise?: boolean) {
-        let minutes = Math.floor(seconds / 60);
-        let secondsNum: number = seconds - minutes * 60;
+    getFormattedTime(seconds: number, precise?: boolean): string {
+        let hours = Math.floor(seconds / 60 / 60);
+        let minutes = Math.floor(seconds / 60) % 60;
+        let secondsNum = seconds % 60;
         if (!precise) {
             secondsNum = Math.floor(secondsNum);
         }
@@ -345,7 +346,7 @@ class Utils {
             secondsDisplay = "0" + secondsDisplay;
         }
 
-        let formatted = minutes + ":" + secondsDisplay;
+        let formatted = (hours ? hours + ":" : "") + minutes + ":" + secondsDisplay;
 
         return formatted;
     }
