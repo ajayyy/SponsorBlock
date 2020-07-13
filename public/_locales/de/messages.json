@@ -571,6 +571,12 @@
     "moreCategories": {
         "message": "Weitere Kategorien"
     },
+    "chooseACategory": {
+        "message": "Wähle eine Kategorie"
+    },
+    "youMustSelectACategory": {
+        "message": "Sie müssen eine Kategorie für alle Segmente auswählen, die Sie abschicken!"
+    },
     "bracketEnd": {
         "message": "(Ende)"
     },
