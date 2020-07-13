@@ -217,6 +217,10 @@
     "showNotice": {
         "message": "Arată Notificarea Din Nou"
     },
+    "longDescription": {
+        "message": "SponsorBlock este o extensie care va sări peste segmentele sponsorizate din videoclipurile de pe YouTube. SponsorBlock este o extensie crowdsourced care lasă pe oricine să trimită începutul și finalul segmentelor sponsorizate din videoclipurile de pe YouTube. Odată ce o persoană trimite aceste informații, toată lumea cu această extensie va sări peste acel segment sponsorizat. \n\n Poți de asemenea să sari peste intro-uri, outro-uri, amintiri de abonare și alte categorii.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Website",
         "description": "Used on Firefox Store Page"
@@ -284,6 +288,12 @@
     },
     "audioNotificationDescription": {
         "message": "Notificarea audio va reda un sunet atunci când sari peste un segement sponsorizat. Daca este dezactivat (sau autoskip este dezactivat), niciun sunet nu va fi redat."
+    },
+    "showTimeWithSkips": {
+        "message": "Arată timpul cu săriturile eliminate"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Acest timp apare în paranteze lângă ora curentă sub bara de progres. Aceasta arată durata totală a videoclipului minus orice segment. Aceasta include segmente marcate doar ca \"Afișare în Seekbar\"."
     },
     "youHaveSkipped": {
         "message": "Ai sărit peste "
@@ -475,6 +485,15 @@
     "category_sponsor_description": {
         "message": "Promovare plătită, refferali plătiți și reclame directe. Nu pentru autopromovări sau promovări gratis ale cauzelor/creatorilor/website-urilor/produselor."
     },
+    "category_intro": {
+        "message": "Pauză/Animație Intro"
+    },
+    "category_intro_description": {
+        "message": "Un interval fără conținut real. Poate fi o pauză, un cadru static, o animație care se repetă. Acestea nu ar trebui utilizate pentru tranziții care conțin informații sau nu ar trebui utilizate pe videoclipuri muzicale."
+    },
+    "category_intro_short": {
+        "message": "Pauză"
+    },
     "category_outro": {
         "message": "Ecran De Final/Credite"
     },
@@ -551,6 +570,12 @@
     },
     "moreCategories": {
         "message": "Mai multe categorii"
+    },
+    "chooseACategory": {
+        "message": "Alege o categorie"
+    },
+    "youMustSelectACategory": {
+        "message": "Trebuie să selectaţi o categorie pentru toate segmentele pe care le trimiteţi!"
     },
     "bracketEnd": {
         "message": "(Sfârșit)"
