@@ -475,6 +475,15 @@
     "category_sponsor_description": {
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
     },
+    "category_intro": {
+        "message": "Entracte/Animation d'intro"
+    },
+    "category_intro_description": {
+        "message": "Un intervalle sans contenu réel. Peut être une pause, une image statique, une animation répétitive. Ceci ne doit pas être utilisé pour les transitions contenant des informations ou être utilisé sur les vidéos musicales."
+    },
+    "category_intro_short": {
+        "message": "Entracte"
+    },
     "category_outro": {
         "message": "Générique de fin"
     },
@@ -551,6 +560,12 @@
     },
     "moreCategories": {
         "message": "Autres catégories"
+    },
+    "chooseACategory": {
+        "message": "Choisissez une catégorie"
+    },
+    "youMustSelectACategory": {
+        "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
     },
     "bracketEnd": {
         "message": "(Fin)"
