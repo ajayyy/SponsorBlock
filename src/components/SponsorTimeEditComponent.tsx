@@ -230,7 +230,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     getCategoryOptions() {
-        let elements = [];
+        let elements = [(
+            <option value={"chooseACategory"}
+                    key={"chooseACategory"}>
+                {chrome.i18n.getMessage("chooseACategory")}
+            </option>
+        )];
 
         for (const category of Config.config.categorySelections) {
             elements.push(

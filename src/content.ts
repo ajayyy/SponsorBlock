@@ -1150,8 +1150,7 @@ function startSponsorClicked() {
         sponsorTimesSubmitting.push({
             segment: [getRealCurrentTime()],
             UUID: null,
-            // Default to sponsor
-            category: "sponsor"
+            category: Config.config.defaultCategory
         });
     }
 
