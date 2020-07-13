@@ -211,10 +211,6 @@
     "showNotice": {
         "message": "Mostrar notificação outra vez"
     },
-    "longDescription": {
-        "message": "SponsorBlock é uma extensão que salta segmentos patrocinados em vídeos do YouTube. SponsorBlock é uma extenção crowdfunded que permite a qualquer um submeter o início e o fim de segmentos patrocinados. Assim que uma pessoa submete essa informação todos com a extenção poderam saltar automaticamete o patrocínio.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Site",
         "description": "Used on Firefox Store Page"
@@ -460,9 +456,6 @@
     "theKey": {
         "message": "A tecla"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "já está sendo usado pelo youtube. Por favor, selecione outra tecla."
-    },
     "keyAlreadyUsed": {
         "message": "está vinculado a outra ação. Por favor, selecione outra tecla."
     },
@@ -472,12 +465,6 @@
     },
     "category_sponsor": {
         "message": "Patrocinador"
-    },
-    "category_intro": {
-        "message": "Animação de Introdução"
-    },
-    "category_intro_short": {
-        "message": "Introdução"
     },
     "category_outro": {
         "message": "Finalização/Créditos"

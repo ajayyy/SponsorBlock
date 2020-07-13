@@ -217,10 +217,6 @@
     "showNotice": {
         "message": "Afficher la notification"
     },
-    "longDescription": {
-        "message": "SponsorBlock est une extension qui permet de passer les messages commerciaux des vidéos YouTube. SponsorBlock est une extension pour navigateur basée sur le crowdsourcing permettant à n'importe qui de soumettre le début et la fin des segments commerciaux sur les vidéos YouTube. Dès qu'une personne a soumis ces informations, les autres utilisateurs de l'extension en bénéficieront et verront les messages commerciaux automatiquement sautés.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Site web",
         "description": "Used on Firefox Store Page"
@@ -466,9 +462,6 @@
     "theKey": {
         "message": "La clé"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "est déjà utilisé par YouTube. Veuillez sélectionner une autre clé."
-    },
     "keyAlreadyUsed": {
         "message": "est lié à une autre action. Veuillez sélectionner une autre clé."
     },
@@ -481,15 +474,6 @@
     },
     "category_sponsor_description": {
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
-    },
-    "category_intro": {
-        "message": "Générique d'introduction"
-    },
-    "category_intro_description": {
-        "message": "Introductions animées qui sont récurrentes ou qui n'ont pas de valeur ajoutée directe dans la série. Ne doit pas être utilisé pour les vidéos musicales."
-    },
-    "category_intro_short": {
-        "message": "Introduction"
     },
     "category_outro": {
         "message": "Générique de fin"

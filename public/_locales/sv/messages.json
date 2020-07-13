@@ -214,10 +214,6 @@
     "showNotice": {
         "message": "Visa Notisen Igen"
     },
-    "longDescription": {
-        "message": "SponsorBlock är ett webbläsartillägg som hoppar över sponsormeddelanden på YouTube-videor. SponsorBlock är ett crowdsourcat webbläsartillägg som låter vem som hellst att rapportera start och sluttider för sponsorsegment på YouTube-videor. När informationen väl har rapporterats kommer alla andra med detta tillägg att hoppa över sponsorsegmentet.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Hemsida",
         "description": "Used on Firefox Store Page"
@@ -463,9 +459,6 @@
     "theKey": {
         "message": "Nyckeln"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "används redan av YouTube. Välj en annan nyckel."
-    },
     "keyAlreadyUsed": {
         "message": "är kopplad till en annan funktion. Välj en annan knapp."
     },
@@ -475,15 +468,6 @@
     },
     "category_sponsor": {
         "message": "Sponsormeddelande"
-    },
-    "category_intro": {
-        "message": "Intro-animation"
-    },
-    "category_intro_description": {
-        "message": "Intro-animationer som är återkommande i serien eller inte ger direkt värde. Detta bör inte användas på musikvideor."
-    },
-    "category_intro_short": {
-        "message": "Intro"
     },
     "category_music_offtopic_description": {
         "message": "Endast för användning i musikvideor. Detta inkluderar intros och outros i musikvideor."

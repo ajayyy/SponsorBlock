@@ -217,10 +217,6 @@
     "showNotice": {
         "message": "重新显示通知"
     },
-    "longDescription": {
-        "message": "SponsorBlock 是一个用于跳过 YouTube 视频的赞助商广告片段的扩展。SponsorBlock 是一个众包的浏览器扩展，可以让任何人提交 Youtube 视频的赞助商广告片段的开始和结束时间。一旦有人提交了信息，其他所有使用此扩展的人都能直接跳过赞助商广告片段。",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "网站",
         "description": "Used on Firefox Store Page"
@@ -466,9 +462,6 @@
     "theKey": {
         "message": "按键"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "已被 Youtube 使用。请选择其他按键。"
-    },
     "keyAlreadyUsed": {
         "message": "已绑定其他操作。请选择其他按键。"
     },
@@ -478,12 +471,6 @@
     },
     "category_sponsor": {
         "message": "赞助商广告"
-    },
-    "category_intro": {
-        "message": "开头动画"
-    },
-    "category_intro_short": {
-        "message": "开头"
     },
     "category_outro": {
         "message": "结束画面/结尾职员表"

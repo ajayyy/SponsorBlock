@@ -218,7 +218,7 @@
         "message": "Benachrichtigung wieder zeigen"
     },
     "longDescription": {
-        "message": "SponsorBlock ist eine Erweiterung, die gesponsorte Segmente in YouTube-Videos überspringt. SponsorBlock ist ein Benutzernetzwerk, bei dem jeder Anfang und Ende eines Werbeblocks einreichen kann. Sobald die Information von einem Nutzer eingereicht wurde, überspringen die Erweiterungen der anderen dieses Segment automatisch.",
+        "message": "SponsorBlock ist eine Erweiterung, die gesponserte Segmente von YouTube Videos überspringt. SponsorBlock ist eine durch Crowdsourcing betriebene Browsererweiterung, die es jedem erlaubt, die Beginn- und Endzeitpunkte von gesponserten Segmenten in YouTube Videos einzureichen. Nachdem diese Information eingereicht wurde, wird das Segment für alle anderen Nutzer mit dieser Erweiterung direkt übersprungen.\n\nDu kannst auch den Vorspann, Nachspann, Erinnerungen zu abonnieren und andere Kategorien überspringen.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -288,6 +288,12 @@
     },
     "audioNotificationDescription": {
         "message": "Audio-Benachrichtigung beim Überspringen wird einen Ton abspielen, wenn ein Sponsor übersprungen wird. Wenn deaktiviert (oder wenn Automatisches-Überspringen deaktiviert ist), wird kein Ton abgespielt."
+    },
+    "showTimeWithSkips": {
+        "message": "Zeit mit entfernten Überspringungen anzeigen"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Diese Zeit wird in Klammern neben der aktuellen Zeit in der Suchleiste angezeigt. Diese Zeit die gesamte Dauer des Videos ohne jeglicher Segmente. Dies inkludiert auch Segmente, die als \"In Suchleiste anzeigen\" markiert sind."
     },
     "youHaveSkipped": {
         "message": "Du übersprangst "
@@ -466,9 +472,6 @@
     "theKey": {
         "message": "Die Taste"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "wird bereits von Youtube verwendet. Bitte wählen Sie eine andere Taste."
-    },
     "keyAlreadyUsed": {
         "message": "an eine andere Aktion gebunden. Bitte wählen Sie eine andere Taste."
     },
@@ -483,13 +486,13 @@
         "message": "Bezahlte Promotion, bezahlte Empfehlungen und direkte Werbung. Nicht für Selbstpromotion oder kostenlose Shoutouts an Ursachen/Webseiten/Produkte, die sie mögen."
     },
     "category_intro": {
-        "message": "Intro Animation"
+        "message": "Unterbrechung/Vorspann"
     },
     "category_intro_description": {
-        "message": "Intro Animationen, die in der Serie wiederholt werden oder keinen direkten Wert haben. Dies sollte nicht für Musikvideos verwendet werden."
+        "message": "Ein Intervall ohne relevanten Inhalt. Beispiele dafür wären eine Pause, ein statisches Bild oder sich wiederholende Animationen. Dies sollte nicht für Übergänge benutzt werden, die Informationen erhalten oder für Musikvideos."
     },
     "category_intro_short": {
-        "message": "Intro"
+        "message": "Unterbrechung"
     },
     "category_outro": {
         "message": "Endkarten/Credits"
