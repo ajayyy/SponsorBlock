@@ -338,7 +338,7 @@ async function runThePopup(messageListener?: MessageListener) {
         if (sponsorTimes[sponsorTimesIndex] == undefined) {
             sponsorTimes[sponsorTimesIndex] = {
                 segment: [],
-                category: "sponsor",
+                category: Config.config.defaultCategory,
                 UUID: null
             };
         }

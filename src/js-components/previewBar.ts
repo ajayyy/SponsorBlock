@@ -13,16 +13,18 @@ class PreviewBar {
 	container: HTMLUListElement;
 	parent: any;
 	onMobileYouTube: boolean;
+	onInvidious: boolean;
 
 	timestamps: number[][];
 	types: string;
 
-	constructor(parent, onMobileYouTube) {
+	constructor(parent, onMobileYouTube, onInvidious) {
 		this.container = document.createElement('ul');
 		this.container.id = 'previewbar';
 		this.parent = parent;
 
 		this.onMobileYouTube = onMobileYouTube;
+		this.onInvidious = onInvidious;
 
 		this.updatePosition(parent);
 
@@ -30,6 +32,8 @@ class PreviewBar {
 	}
 
 	setupHoverText() {
+		if (this.onMobileYouTube || this.onInvidious) return;
+
 		let seekBar = document.querySelector(".ytp-progress-bar-container");
 
 		// Create label placeholder

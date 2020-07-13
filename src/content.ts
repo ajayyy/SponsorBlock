@@ -418,7 +418,7 @@ function createPreviewBar(): void {
         const el = document.querySelectorAll(selector);
 
         if (el && el.length && el[0]) {
-            previewBar = new PreviewBar(el[0], onMobileYouTube);
+            previewBar = new PreviewBar(el[0], onMobileYouTube, onInvidious);
             
             updatePreviewBar();
 
@@ -1011,23 +1011,11 @@ function unskipSponsorTime(segment: SponsorTime) {
     if (sponsorTimes != null) {
         //add a tiny bit of time to make sure it is not skipped again
         video.currentTime = segment.segment[0] + 0.001;
-
-        checkIfInsideSegment();
     }
 }
 
 function reskipSponsorTime(segment: SponsorTime) {
     video.currentTime = segment.segment[1];
-}
-
-/**
- * Checks if currently inside a segment and will trigger 
- * a skip schedule if true.
- * 
- * This is used for when a manual skip is finished or a reskip is complete
- */
-function checkIfInsideSegment() {
-    // for
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false): boolean {
@@ -1038,18 +1026,10 @@ function createButton(baseID, title, callback, imageName, isDraggable=false): bo
     newButton.draggable = isDraggable;
     newButton.id = baseID + "Button";
     newButton.classList.add("playerButton");
-    if (!onMobileYouTube) {
-        newButton.classList.add("ytp-button");
-    } else {
-        newButton.classList.add("icon-button");
-        newButton.style.padding = "0";
-    }
+    newButton.classList.add("ytp-button");
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
     newButton.addEventListener("click", (event: Event) => {
         callback();
-
-        // Prevents the contols from closing when clicked
-        if (onMobileYouTube) event.stopPropagation();
     });
 
     // Image HTML
@@ -1091,6 +1071,8 @@ function getControls(): HTMLElement | boolean {
 
 //adds all the player controls buttons
 async function createButtons(): Promise<boolean> {
+    if (onMobileYouTube) return;
+
     let result = await utils.wait(getControls).catch();
 
     //set global controls variable
@@ -1168,8 +1150,7 @@ function startSponsorClicked() {
         sponsorTimesSubmitting.push({
             segment: [getRealCurrentTime()],
             UUID: null,
-            // Default to sponsor
-            category: "sponsor"
+            category: Config.config.defaultCategory
         });
     }
 
@@ -1217,9 +1198,9 @@ async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
         (<HTMLImageElement> document.getElementById("startSponsorImage")).src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
 
-        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !Config.config.hideUploadButtonPlayerControls) {
+        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !Config.config.hideUploadButtonPlayerControls && !onInvidious) {
             document.getElementById("submitButton").style.display = "unset";
-        } else if (!uploadButtonVisible) {
+        } else if (!uploadButtonVisible || onInvidious) {
             //disable submit button
             document.getElementById("submitButton").style.display = "none";
         }
@@ -1592,6 +1573,8 @@ function updateAdFlag() {
 }
 
 function showTimeWithoutSkips(allSponsorTimes): void {
+    if (onMobileYouTube || onInvidious) return;
+
 	let skipDuration = 0;
 	
 	// Calculate skipDuration based from the segments in the preview bar
@@ -1605,7 +1588,7 @@ function showTimeWithoutSkips(allSponsorTimes): void {
 	
 	// YouTube player time display
 	let display = document.getElementsByClassName("ytp-time-display notranslate")[0];
-	if (display === undefined) return
+	if (!display) return;
 	
     let formatedTime = utils.getFormattedTime(video.duration - skipDuration);
 	

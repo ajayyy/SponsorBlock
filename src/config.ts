@@ -8,6 +8,7 @@ interface SBConfig {
     userID: string,
     // sponsorTimes: SBMap<string, SponsorTime[]>,
     segmentTimes: SBMap<string, SponsorTime[]>,
+    defaultCategory: string,
     whitelistedChannels: string[],
     forceChannelCheck: boolean,
     startSponsorKeybind: string,
@@ -40,6 +41,7 @@ interface SBConfig {
 
     // Preview bar
     barTypes: {
+        "preview-chooseACategory": PreviewBarOption,
         "sponsor": PreviewBarOption,
         "preview-sponsor": PreviewBarOption,
         "intro": PreviewBarOption,
@@ -109,7 +111,15 @@ class SBMap<T, U> extends Map {
     delete(key) {
         const result = super.delete(key);
 
-	    this.update();
+        // Make sure there are no empty elements
+        for (const entry of this.entries()) {
+            if (entry[1].length === 0) {
+                super.delete(entry[0]);
+            }
+        }
+
+        this.update();
+
         return result;
     }
 
@@ -129,6 +139,7 @@ var Config: SBObject = {
     defaults: {
         userID: null,
         segmentTimes: new SBMap("segmentTimes"),
+        defaultCategory: "chooseACategory",
         whitelistedChannels: [],
         forceChannelCheck: false,
         startSponsorKeybind: ";",
@@ -163,6 +174,10 @@ var Config: SBObject = {
 
         // Preview bar
         barTypes: {
+            "preview-chooseACategory": {
+                color: "#ffffff",
+                opacity: "0.7"
+            },
             "sponsor": {
                 color: "#00d400",
                 opacity: "0.7"
