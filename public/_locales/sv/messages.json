@@ -502,6 +502,12 @@
     "moreCategories": {
         "message": "Fler Kategorier"
     },
+    "chooseACategory": {
+        "message": "Välj en kategori"
+    },
+    "youMustSelectACategory": {
+        "message": "Du måste välja en kategori för alla segment du skickar in!"
+    },
     "bracketEnd": {
         "message": "(Slut)"
     },
