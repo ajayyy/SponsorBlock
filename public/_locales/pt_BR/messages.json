@@ -31,6 +31,9 @@
     "Segments": {
         "message": "segmentos de patrocinadores"
     },
+    "upvoteButtonInfo": {
+        "message": "Votar nesse segmento positivamente"
+    },
     "reportButtonTitle": {
         "message": "Reportar"
     },
@@ -213,6 +216,10 @@
     },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
+    },
+    "longDescription": {
+        "message": "SponsorBlock é uma extensão que pula patrocínios em vídeos no YouTube. SponsorBlock é uma extensão de navegador que deixa qualquer pessoa enviar o começo e fim de segmentos patrocinados em vídeos no YouTube. Quando uma pessoa envia essa informação, todo mundo com a extensão vai pular essa mesma parte patrocinada. \n\n Você também pode pular introduções, finais do vídeo, lembretes para inscrever e outras categorias.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Site",
