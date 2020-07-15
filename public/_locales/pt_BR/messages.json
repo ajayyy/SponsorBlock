@@ -64,6 +64,9 @@
     "paused": {
         "message": "Pausado"
     },
+    "manualPaused": {
+        "message": "Tempo parado"
+    },
     "confirmMSG": {
         "message": "\n\nPara editar ou remover linhas individuais, clique com o botão direito ou abra o popup da extensão pelo icone no canto superior direito."
     },
@@ -278,6 +281,9 @@
     },
     "audioNotificationDescription": {
         "message": "A notificação de áudio ao pular irá tocar um som sempre que um patrocínio for ignorado. Se desativado (ou o pulo automático estiver desativado), nenhum som será reproduzido."
+    },
+    "showTimeWithSkips": {
+        "message": "Mostrar tempo com pulos removidos"
     },
     "youHaveSkipped": {
         "message": "Você pulou "
