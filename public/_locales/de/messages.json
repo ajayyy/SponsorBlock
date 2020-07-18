@@ -128,7 +128,7 @@
         "message": "Kanal auf Whitelist setzen "
     },
     "removeFromWhitelist": {
-        "message": "Kanal von Whitelist entfernen"
+        "message": "Kanal von der Whitelist entfernen"
     },
     "voteOnTime": {
         "message": "Stimme für Zeiten ab"
