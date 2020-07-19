@@ -3,10 +3,6 @@
         "message": "SponsorBlock na YouTube - Omiń reklamy sponsorów",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Przewijaj reklamy sponsorów w filmach na YouTube. Zgłaszaj sponsorzy w filmach żeby oszczędzać czas innych.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Serwer odpowiedział, że to zapytanie jest niepoprawne"
     },
