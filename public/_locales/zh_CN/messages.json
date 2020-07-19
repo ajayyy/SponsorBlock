@@ -3,10 +3,6 @@
         "message": "SponsorBlock for YouTube - 跳过赞助商广告",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "跳过 YouTube 视频的赞助商广告。报告您观看的视频的赞助商广告以节省他人的时间。",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "服务器说此请求无效"
     },
