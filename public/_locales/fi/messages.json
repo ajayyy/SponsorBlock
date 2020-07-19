@@ -3,10 +3,6 @@
         "message": "SponsorBlock YouTubelle - Ohita sponsoroinnit",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Ohita sponsorointi YouTube-videoissa. Ilmoita katsomiesi videoinen sponsoreista säästääksesi muiden aikaa.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Palvelin sanoi tämän pyynnön olevan virheellinen"
     },
