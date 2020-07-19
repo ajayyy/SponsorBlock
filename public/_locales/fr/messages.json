@@ -217,6 +217,10 @@
     "showNotice": {
         "message": "Afficher la notification"
     },
+    "longDescription": {
+        "message": "SponsorBlock est une extension qui permet de sauter les segments sponsorisés des vidéos de YouTube. SponsorBlock est une extension de navigateur participative qui permet à quiconque de soumettre les heures de début et de fin des segments sponsorisés des vidéos de YouTube. Une fois qu'une personne a soumis ces informations, toutes les autres personnes possédant cette extension sauteront automatiquement les segments sponsorisés. \n\n Vous pouvez également sauter les intros, les outros, les rappels d'abonnement et d'autres catégories.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Site web",
         "description": "Used on Firefox Store Page"
@@ -284,6 +288,12 @@
     },
     "audioNotificationDescription": {
         "message": "La notification audio lors du passage jouera un son à chaque fois qu'un sponsor est ignoré. Si désactivé (ou si le passage automatique est désactivé), aucun son ne sera joué."
+    },
+    "showTimeWithSkips": {
+        "message": "Afficher le temps avec les passages supprimés"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tout les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
     },
     "youHaveSkipped": {
         "message": "Vous avez passé "
@@ -475,6 +485,15 @@
     "category_sponsor_description": {
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
     },
+    "category_intro": {
+        "message": "Entracte/Animation d'intro"
+    },
+    "category_intro_description": {
+        "message": "Un intervalle sans contenu réel. Peut être une pause, une image statique, une animation répétitive. Ceci ne doit pas être utilisé pour les transitions contenant des informations ou être utilisé sur les vidéos musicales."
+    },
+    "category_intro_short": {
+        "message": "Entracte"
+    },
     "category_outro": {
         "message": "Générique de fin"
     },
@@ -551,6 +570,12 @@
     },
     "moreCategories": {
         "message": "Autres catégories"
+    },
+    "chooseACategory": {
+        "message": "Choisissez une catégorie"
+    },
+    "youMustSelectACategory": {
+        "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
     },
     "bracketEnd": {
         "message": "(Fin)"

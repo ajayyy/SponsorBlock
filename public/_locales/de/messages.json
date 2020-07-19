@@ -128,7 +128,7 @@
         "message": "Kanal auf Whitelist setzen "
     },
     "removeFromWhitelist": {
-        "message": "Kanal von Whitelist entfernen"
+        "message": "Kanal von der Whitelist entfernen"
     },
     "voteOnTime": {
         "message": "Stimme für Zeiten ab"
@@ -570,6 +570,12 @@
     },
     "moreCategories": {
         "message": "Weitere Kategorien"
+    },
+    "chooseACategory": {
+        "message": "Wähle eine Kategorie"
+    },
+    "youMustSelectACategory": {
+        "message": "Sie müssen eine Kategorie für alle Segmente auswählen, die Sie abschicken!"
     },
     "bracketEnd": {
         "message": "(Ende)"
