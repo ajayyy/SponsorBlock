@@ -3,10 +3,6 @@
         "message": "SponsorBlock para YouTube - Omitir Sponsors",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Omitir sponsors en videos de YouTube. Infórmanos de sponsors en videos que ves para ahorrar el tiempo de otros.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Servidor dijo que esta solicitud no es valida"
     },
