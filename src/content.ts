@@ -618,7 +618,7 @@ function sponsorsLookup(id: string) {
         videoID: id,
         categories
     }).then(async (response: FetchResponse) => {
-        if (response.ok) {
+        if (response?.ok) {
             let recievedSegments: SponsorTime[] = JSON.parse(response.responseText);
             if (!recievedSegments.length) {
                 console.error("[SponsorBlock] Server returned malformed response: " + JSON.stringify(recievedSegments));
@@ -662,7 +662,7 @@ function sponsorsLookup(id: string) {
             }
 
             sponsorLookupRetries = 0;
-        } else if (response.status === 404) {
+        } else if (response?.status === 404) {
             sponsorDataFound = false;
 
             //check if this video was uploaded recently
