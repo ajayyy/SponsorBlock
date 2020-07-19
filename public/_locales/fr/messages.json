@@ -3,10 +3,6 @@
         "message": "SponsorBlock pour YouTube - Supprime les messages commerciaux et publicités intégrées",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Passe automatiquement les messages commerciaux intégrés dans les vidéos YouTube. Soumettez les segments commerciaux dans les vidéos que vous regardez pour aidez les autres.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Soumission invalide"
     },
@@ -216,10 +212,6 @@
     },
     "showNotice": {
         "message": "Afficher la notification"
-    },
-    "longDescription": {
-        "message": "SponsorBlock est une extension qui permet de sauter les segments sponsorisés des vidéos de YouTube. SponsorBlock est une extension de navigateur participative qui permet à quiconque de soumettre les heures de début et de fin des segments sponsorisés des vidéos de YouTube. Une fois qu'une personne a soumis ces informations, toutes les autres personnes possédant cette extension sauteront automatiquement les segments sponsorisés. \n\n Vous pouvez également sauter les intros, les outros, les rappels d'abonnement et d'autres catégories.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Site web",
