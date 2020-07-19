@@ -3,10 +3,6 @@
         "message": "SponsorBlock pentru YouTube - Sari peste sponsorizări",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Sari peste sponsorizările din videoclipurile de pe YouTube. Adaugă sponsorizări din videoclipurile pe care le urmăriți pentru a salva timpul altora.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Serverul a spus că această cerere este invalidă"
     },
@@ -216,10 +212,6 @@
     },
     "showNotice": {
         "message": "Arată Notificarea Din Nou"
-    },
-    "longDescription": {
-        "message": "SponsorBlock este o extensie care va sări peste segmentele sponsorizate din videoclipurile de pe YouTube. SponsorBlock este o extensie crowdsourced care lasă pe oricine să trimită începutul și finalul segmentelor sponsorizate din videoclipurile de pe YouTube. Odată ce o persoană trimite aceste informații, toată lumea cu această extensie va sări peste acel segment sponsorizat. \n\n Poți de asemenea să sari peste intro-uri, outro-uri, amintiri de abonare și alte categorii.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Website",
