@@ -493,7 +493,8 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
     }
 
     // Don't skip if this category should not be skipped
-    if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ShowOverlay) return;
+    if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ShowOverlay 
+        && skipInfo.array !== sponsorTimesSubmitting) return;
 
     let skippingFunction = () => {
         let forcedSkipTime: number = null;
@@ -504,8 +505,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime(video, skipTime, skippingSegments, skipInfo.openNotice);
 
-            // TODO: Know the autoSkip settings for ALL items being skipped
-            if (utils.getCategorySelection(currentSkip.category).option === CategorySkipOption.ManualSkip) {
+            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip) {
                 forcedSkipTime = skipTime[0] + 0.001;
             } else {
                 forcedSkipTime = skipTime[1];
@@ -897,13 +897,13 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
  */
 function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideHiddenSponsors: boolean = true): number {
     // Only combine segments for AutoSkip
-    if (index == -1 ||
-        utils.getCategorySelection(sponsorTimes[index].category).option !== CategorySkipOption.AutoSkip) return index;
+    if (index == -1 || 
+        utils.getCategorySelection(sponsorTimes[index].category)?.option !== CategorySkipOption.AutoSkip) return index;
 
     // Default to the normal endTime
     let latestEndTimeIndex = index;
 
-    for (let i = 0; i < sponsorTimes.length; i++) {
+    for (let i = 0; i < sponsorTimes?.length; i++) {
         let currentSegment = sponsorTimes[i].segment;
         let latestEndTime = sponsorTimes[latestEndTimeIndex].segment[1];
 
@@ -939,7 +939,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
 
     let startTimes: number[] = [];
 
-    for (let i = 0; i < sponsorTimes.length; i++) {
+    for (let i = 0; i < sponsorTimes?.length; i++) {
         if ((minimum === undefined || (sponsorTimes[i].segment[0] >= minimum || (includeIntersectingSegments && sponsorTimes[i].segment[1] > minimum))) 
                 && (!onlySkippableSponsors || utils.getCategorySelection(sponsorTimes[i].category).option !== CategorySkipOption.ShowOverlay)
                 && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)) {
@@ -968,7 +968,7 @@ function previewTime(time: number) {
 //skip from the start time to the end time for a certain index sponsor time
 function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: SponsorTime[], openNotice: boolean) {
     // There will only be one submission if it is manual skip
-    let autoSkip: boolean = utils.getCategorySelection(skippingSegments[0].category).option === CategorySkipOption.AutoSkip;
+    let autoSkip: boolean = utils.getCategorySelection(skippingSegments[0].category)?.option === CategorySkipOption.AutoSkip;
 
     if (autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) {
         v.currentTime = skipTime[1];
