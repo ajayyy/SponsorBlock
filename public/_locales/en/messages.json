@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Skip over sponsorship on YouTube videos. Report sponsors on videos you watch to save the time of others.",
+        "message": "Skip sponsorships, subscription begging and more on YouTube videos. Report sponsors on videos you watch to save others' time.",
         "description": "Description of the extension."
     },
     "400": {
@@ -218,7 +218,7 @@
         "message": "Show Notice Again"
     },
     "longDescription": {
-        "message": "SponsorBlock is an extension that will skip over sponsored segments of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment. \n\n You can also skip intros, outros, reminders to subscribe and other categories.",
+        "message": "SponsorBlock lets you skip over sponsors, intros, outros subscription reminders, and other annoying parts of YouTube videos. SponsorBlock is a crowdsourced browser extension that let's anyone submit the start and end time's of sponsored segments and other segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment. You can also skip over non music sections of music videos.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
