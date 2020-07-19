@@ -3,10 +3,6 @@
         "message": "SponsorBlock för YouTube - Hoppa över sponsring",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Hoppa över sponsormeddelanden på YouTube-videor. Rapportera sponsring på videor du ser på för att spara tid åt andra.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Felaktigt anrop enligt servern"
     },
