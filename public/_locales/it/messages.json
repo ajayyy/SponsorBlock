@@ -3,10 +3,6 @@
         "message": "SponsorBlock per YouTube - Salta gli sponsor",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Salta i contenuti sponsorizzati nei video di YouTube. Segnala gli annunci incorporati nei video che guardi per far risparmiare tempo agli altri.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Richiesta non valida"
     },
