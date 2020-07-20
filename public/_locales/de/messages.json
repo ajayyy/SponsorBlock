@@ -3,6 +3,10 @@
         "message": "SponsorBlock für YouTube - Überspringe Sponsor Anzeigen",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Überspringe Sponsoren, betteln um Abonnenten und mehr in YouTube Videos. Melde Sponsoren in Videos, die du guckst, um anderen Zeit zu sparen.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Der Server meldet, dass diese Anfrage ungültig war"
     },
