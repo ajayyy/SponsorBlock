@@ -347,6 +347,9 @@
     "minDuration": {
         "message": "Minimalny czas trwania (sekundy):"
     },
+    "save": {
+        "message": "Zapisz"
+    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com jest teraz wspierany"
     },
@@ -355,5 +358,17 @@
     },
     "copyDebugInformationComplete": {
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
+    },
+    "category": {
+        "message": "Kategoria"
+    },
+    "bracketNow": {
+        "message": "(Teraz)"
+    },
+    "chooseACategory": {
+        "message": "Wybierz kategorię"
+    },
+    "bracketEnd": {
+        "message": "(Koniec)"
     }
 }
