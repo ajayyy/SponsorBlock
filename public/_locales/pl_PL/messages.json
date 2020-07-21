@@ -19,7 +19,7 @@
         "message": "sponsor"
     },
     "Sponsors": {
-        "message": "sponsorzy"
+        "message": "sponsorów"
     },
     "Segment": {
         "message": "segment sponsorowany"
@@ -29,6 +29,9 @@
     },
     "reportButtonTitle": {
         "message": "Zgłoś"
+    },
+    "reportButtonInfo": {
+        "message": "Zgłoś ten segment jako nieprawidłowy."
     },
     "Dismiss": {
         "message": "Odrzuć"
@@ -55,7 +58,7 @@
         "message": "Przewiń"
     },
     "paused": {
-        "message": "Zatrzymany"
+        "message": "Wstrzymano"
     },
     "confirmMSG": {
         "message": "Żeby zmienić lub usunąć wartości, kliknij na guzik informacji lub otwórz okienko rozszerzenia klikając w ikonę rozszerzenia znajdującą się w prawym górnym rogu."
@@ -64,7 +67,7 @@
         "message": "Jesteś pewien, że chcesz to usunąć?\n\n"
     },
     "Unknown": {
-        "message": "Wystąpił błąd podczas przesyłania twojego zgłoszenia, proszę spróbować ponownie później."
+        "message": "Wystąpił błąd podczas przesyłania twojego segmentu. Proszę spróbować ponownie później."
     },
     "sponsorFound": {
         "message": "Segmenty sponsora dla tego nagrania są już w bazie!"
@@ -79,13 +82,16 @@
         "message": "Sponsor kończy się teraz"
     },
     "noVideoID": {
-        "message": "Nie znaleziono nagrania wideo w tej karcie. Jeśli wiesz, że to karta YouTube'a, zamknij to okienko i otwórz je ponownie. Jeśli to nie zadziała spróbuj przeładować stronę."
+        "message": "Nie znaleziono filmu na tej karcie. Jeśli wiesz, że to karta YouTube'a, zamknij to okienko i otwórz je ponownie. Jeśli to nie zadziała, spróbuj odświeżyć stronę."
     },
     "success": {
         "message": "Sukces!"
     },
     "voted": {
         "message": "Zagłosowano!"
+    },
+    "serverDown": {
+        "message": "Wygląda na to, że serwer nie działa. Skontaktuj się niezwłocznie z deweloperem."
     },
     "connectionError": {
         "message": "Błąd z połączeniem. Kod błędu: "
@@ -106,7 +112,7 @@
         "message": "Zgłoś segmenty sponsora"
     },
     "submitCheck": {
-        "message": "Jesteś pewien, że chcesz to zgłosić?"
+        "message": "Czy na pewno chcesz to zamieścić?"
     },
     "whitelistChannel": {
         "message": "Dodaj kanał do wyjątków"
@@ -121,7 +127,7 @@
         "message": "Nagraj czasy segmentów sponsorowanych"
     },
     "soFarUHSubmited": {
-        "message": "Jak na razie zgłosiłeś:"
+        "message": "Do tej pory zgłosiłeś"
     },
     "savedPeopleFrom": {
         "message": "Ocaliłeś ludzi przed "
@@ -163,7 +169,7 @@
         "message": "Opcje"
     },
     "showButtons": {
-        "message": "Pokaż guziki w odtwarzaczu YouTube"
+        "message": "Pokaż przyciski na odtwarzaczu YouTube"
     },
     "hideButtons": {
         "message": "Ukryj guziki w odtwarzaczu YouTube"
@@ -172,7 +178,7 @@
         "message": "Ta opcja ukrywa guziki zgłaszania reklamy w odtwarzaczu. Wiem, że mogą one irytować niektórych. Zamiast zgłaszania bezpośrednio w odtwarzaczu możesz to zrobić w tym okienku. Zawsze możesz zmienić te opcje później."
     },
     "showInfoButton": {
-        "message": "Pokaż guzik informacyjny w odtwarzaczu YouTube"
+        "message": "Pokaż przycisk informacyjny na odtwarzaczu YouTube"
     },
     "hideInfoButton": {
         "message": "Ukryj guzik informacyjny w odtwarzaczu YouTube"
@@ -184,7 +190,7 @@
         "message": "Ukryj guzik usuwania w odtwarzaczu YouTube"
     },
     "showDeleteButton": {
-        "message": "Pokaż guzik usuwania w odtwarzaczu YouTube"
+        "message": "Pokaż przycisk usuwania na odtwarzaczu YouTube"
     },
     "whatDeleteButton": {
         "message": "Ten guzik pozwala ci wyczyścić wszystkie segmenty reklamowe w odtwarzaczu YouTube."
@@ -260,6 +266,9 @@
     "autoSkipDescription": {
         "message": "Auto przewijanie przewinie segment za ciebie, wyłączone wyświetli komunikat z pytaniem czy chcesz przewinąć reklamę."
     },
+    "audioNotification": {
+        "message": "Powiadomienie dźwiękowe o przewinięciu"
+    },
     "youHaveSkipped": {
         "message": "Przewinąłeś "
     },
@@ -288,19 +297,19 @@
         "message": "- Upewnij się, że zgłaszany fragment zawiera tylko reklamę i nic więcej.\n- Upewnij się, że nie zostanie przewinięta wartościowa treść\n- Jeśli całe nagranie to reklama, proszę nie zgłaszaj go. Blokowanie całych nagrań pojawi się wkrótce.\n- Nie ukrywaj treści które są istotne dla użytkownika (nie ukrywaj informacji, że recenzja produktu została opłacona przez producenta)"
     },
     "statusReminder": {
-        "message": "Wejdź na status.sponsor.ajay.app żeby sprawdzić czy serwer działa."
+        "message": "Sprawdź status serwera na status.sponsor.ajay.app"
     },
     "changeUserID": {
-        "message": "Zaimportuj/Wyeksportuj swój UserID"
+        "message": "Importuj/Eksportuj swój identyfikator użytkownika"
     },
     "whatChangeUserID": {
-        "message": "Ta informacja jest poufna i działa jak hasło, użytkownik który ma do niej dostęp może zgłaszać treści jako ty."
+        "message": "Ta informacja jest poufna i działa jak hasło. Użytkownik, który ma do niej dostęp, może zgłaszać treści jako ty."
     },
     "setUserID": {
-        "message": "Ustaw UserID"
+        "message": "Ustaw identyfikator użytkownika"
     },
     "userIDChangeWarning": {
-        "message": "Ostrzeżenie: Zmiana UserID jest nieodwracalna. Jesteś pewien, że chcesz to zrobić? Skopiuj obecny UserID na wszelki wypadek."
+        "message": "Uwaga: Zmiana identyfikatora użytkownika jest nieodwracalna. Czy na pewno chcesz to zrobić? Na wszelki wypadek skopiuj swój poprzedni."
     },
     "createdBy": {
         "message": "Stworzony przez"
@@ -315,7 +324,7 @@
         "message": ". Jest obecnie ustawione jako:"
     },
     "supportInvidious": {
-        "message": "Wesprzyj Invidious"
+        "message": "Wsparcie dla Invidious"
     },
     "supportInvidiousDescription": {
         "message": "Invidious (invidio.us) to nieoficjalny klient YouTube'a. Aby włączyć dla niego wsparcie musisz przyznać dodatkowe uprawnienia. W Chrome'ie i innych przeglądarkach bazujących na Chromium, ta opcja nie działa w trybie incognito."
@@ -347,8 +356,17 @@
     "minDuration": {
         "message": "Minimalny czas trwania (sekundy):"
     },
+    "showUploadButton": {
+        "message": "Pokaż przycisk wysyłania"
+    },
+    "customServerAddress": {
+        "message": "Adres serwera SponsorBlock"
+    },
     "save": {
         "message": "Zapisz"
+    },
+    "reset": {
+        "message": "Reset"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com jest teraz wspierany"
@@ -356,11 +374,49 @@
     "exportOptions": {
         "message": "Importuj/Eksportuj wszystkie ustawienia"
     },
+    "whatExportOptions": {
+        "message": "Oto cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój identyfikator użytkownika, więc uważaj, komu ją udostępniasz."
+    },
+    "setOptions": {
+        "message": "Zapisz ustawienia"
+    },
+    "submit": {
+        "message": "Wyślij"
+    },
+    "cancel": {
+        "message": "Anuluj"
+    },
+    "delete": {
+        "message": "Usuń"
+    },
+    "preview": {
+        "message": "Podgląd"
+    },
+    "edit": {
+        "message": "Edytuj"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Nie udało się skopiować do schowka"
+    },
     "copyDebugInformationComplete": {
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
     },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "previewColor": {
+        "message": "Kolor podglądu",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Kolor na pasku postępu"
+    },
     "category": {
         "message": "Kategoria"
+    },
+    "skipOption": {
+        "message": "Tryb pomijania",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "bracketNow": {
         "message": "(Teraz)"
@@ -368,7 +424,26 @@
     "chooseACategory": {
         "message": "Wybierz kategorię"
     },
+    "youMustSelectACategory": {
+        "message": "Musisz wybrać kategorię dla wszystkich segmentów, które zamieszczasz!"
+    },
     "bracketEnd": {
         "message": "(Koniec)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "ukryty: zminusowany"
+    },
+    "hiddenDueToDuration": {
+        "message": "ukryty: zbyt krótki"
+    },
+    "incorrectCategory": {
+        "message": "Nieprawidłowa kategoria"
+    },
+    "guidelines": {
+        "message": "Wytyczne"
+    },
+    "readTheGuidelines": {
+        "message": "Przeczytaj wytyczne!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     }
 }
