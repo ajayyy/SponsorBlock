@@ -527,6 +527,12 @@
     "moreCategories": {
         "message": "Mais categorias"
     },
+    "chooseACategory": {
+        "message": "Selecione uma Categoria"
+    },
+    "youMustSelectACategory": {
+        "message": "Você deve selecionar uma categoria para todos os segmentos que você está enviando!"
+    },
     "bracketEnd": {
         "message": "(Fim)"
     },
@@ -565,6 +571,13 @@
     },
     "multipleSegments": {
         "message": "Multiplos segmentos"
+    },
+    "guidelines": {
+        "message": "Diretrizes"
+    },
+    "readTheGuidelines": {
+        "message": "Leia as Diretrizes!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     },
     "categoryUpdate1": {
         "message": "As categorias estão aqui!"
