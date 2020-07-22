@@ -3,6 +3,10 @@
         "message": "SponsorBlock pour YouTube - Supprime les messages commerciaux et publicités intégrées",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Passez les segments commerciaux, les quémandages d’abonnement et plus encore sur les vidéos Youtube.\nSignaler le contenu sponsorisé sur les vidéos que vous regardez pour faire gagner du temps aux autres.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Soumission invalide"
     },
