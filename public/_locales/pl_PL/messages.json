@@ -3,6 +3,10 @@
         "message": "SponsorBlock na YouTube - Omiń reklamy sponsorów",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Pomijaj sponsorów, prośby o subskrypcje i inne fragmenty filmów na YouTube. Zgłaszaj segmenty sponsorów na filmach, które oglądasz, by oszczędzić czas innym.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Serwer odpowiedział, że to zapytanie jest niepoprawne"
     },
@@ -25,7 +29,7 @@
         "message": "segment sponsorowany"
     },
     "Segments": {
-        "message": "segmenty sponsorowane"
+        "message": "segmentami sponsorowanymi"
     },
     "reportButtonTitle": {
         "message": "Zgłoś"
@@ -172,7 +176,7 @@
         "message": "Pokaż przyciski na odtwarzaczu YouTube"
     },
     "hideButtons": {
-        "message": "Ukryj guziki w odtwarzaczu YouTube"
+        "message": "Ukryj przyciski na odtwarzaczu YouTube"
     },
     "hideButtonsDescription": {
         "message": "Ta opcja ukrywa guziki zgłaszania reklamy w odtwarzaczu. Wiem, że mogą one irytować niektórych. Zamiast zgłaszania bezpośrednio w odtwarzaczu możesz to zrobić w tym okienku. Zawsze możesz zmienić te opcje później."
@@ -181,13 +185,13 @@
         "message": "Pokaż przycisk informacyjny na odtwarzaczu YouTube"
     },
     "hideInfoButton": {
-        "message": "Ukryj guzik informacyjny w odtwarzaczu YouTube"
+        "message": "Ukryj przycisk informacyjny na odtwarzaczu YouTube"
     },
     "whatInfoButton": {
         "message": "Jest to guzik otwierający popup na stronie YouTube."
     },
     "hideDeleteButton": {
-        "message": "Ukryj guzik usuwania w odtwarzaczu YouTube"
+        "message": "Ukryj przycisk usuwania na odtwarzaczu YouTube"
     },
     "showDeleteButton": {
         "message": "Pokaż przycisk usuwania na odtwarzaczu YouTube"
@@ -404,12 +408,24 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "disable": {
+        "message": "Wyłączone"
+    },
+    "manualSkip": {
+        "message": "Ręczne pomijanie"
+    },
+    "showOverlay": {
+        "message": "Pokaż na pasku"
+    },
+    "colorFormatIncorrect": {
+        "message": "Nieprawidłowy format koloru. Powinien to być zapis szesnastkowy (heksadecymalny) składający się z 3 lub 6 znaków poprzedzonych kratką (#)."
+    },
     "previewColor": {
         "message": "Kolor podglądu",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
-        "message": "Kolor na pasku postępu"
+        "message": "Kolor paska postępu"
     },
     "category": {
         "message": "Kategoria"
@@ -436,8 +452,11 @@
     "hiddenDueToDuration": {
         "message": "ukryty: zbyt krótki"
     },
+    "downvoteDescription": {
+        "message": "Niepoprawny przedział czasowy"
+    },
     "incorrectCategory": {
-        "message": "Nieprawidłowa kategoria"
+        "message": "Zła kategoria"
     },
     "guidelines": {
         "message": "Wytyczne"
