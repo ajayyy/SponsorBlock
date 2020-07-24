@@ -464,5 +464,11 @@
     "readTheGuidelines": {
         "message": "Przeczytaj wytyczne!!",
         "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "unsubmittedWarning": {
+        "message": "Powiadomienie o nieprzesłanych segmentach"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Wyślij powiadomienie po opuszczeniu filmu z segmentami, które nie zostały przesłane"
     }
 }
