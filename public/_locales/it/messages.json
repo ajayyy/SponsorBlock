@@ -3,6 +3,10 @@
         "message": "SponsorBlock per YouTube - Salta gli sponsor",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Salta sponsorizzazioni, implorazioni di iscrizione ai canali e molto altro sui video di YouTube. Segnala gli sponsor sui video che guardi per salvare il tempo ad altri.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Richiesta non valida"
     },
@@ -27,8 +31,14 @@
     "Segments": {
         "message": "spezzoni sponsorizzati"
     },
+    "upvoteButtonInfo": {
+        "message": "Vota questa segnalazione"
+    },
     "reportButtonTitle": {
         "message": "Segnala"
+    },
+    "reportButtonInfo": {
+        "message": "Segnala questa segnalazione come incorretta."
     },
     "Dismiss": {
         "message": "Chiudi"
@@ -56,6 +66,9 @@
     },
     "paused": {
         "message": "In pausa"
+    },
+    "manualPaused": {
+        "message": "Timer Fermato"
     },
     "confirmMSG": {
         "message": "\n\nPer modificare o eliminare valori specifici, premi il pulsante delle informazioni o apri il popup cliccando l'icona dell'estensione nell'angolo in alto a destra."
@@ -86,6 +99,9 @@
     },
     "voted": {
         "message": "Votato!"
+    },
+    "serverDown": {
+        "message": "Sembra che il server non funzioni. Contatta subito lo sviluppatore."
     },
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
@@ -201,6 +217,10 @@
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
     },
+    "longDescription": {
+        "message": "SponsorBlock è un'estensione che salta gli spezzoni con contenuti sponsorizzati nei video di YouTube. SponsorBlock è un'estensione crowdsourced per i browser che permette a chiunque di inviare i minutaggi degli spezzoni sponsorizzati nei video di YouTube. Quando un utente invia una segnalazione, tutti gli altri utenti che utilizzano questa estensione potranno saltare lo spezzone sponsorizzato.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Sito Web",
         "description": "Used on Firefox Store Page"
@@ -208,5 +228,56 @@
     "sourceCode": {
         "message": "Codice Sorgente",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "L'avviso è stato aggiornato!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Imposta la chiave per l'associazione di tasti per l'inizio dello spezzone dello sponsor"
+    },
+    "setSubmitKeybind": {
+        "message": "Imposta la chiave per l'associazione di tasti per le segnalazioni"
+    },
+    "keybindDescription": {
+        "message": "Seleziona una chiave digitandola"
+    },
+    "keybindDescriptionComplete": {
+        "message": "L'associazione di tasti è stata impostata a: "
+    },
+    "0": {
+        "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
+    },
+    "disableSkipping": {
+        "message": "Disabilita SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Abilita SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Il Tuo Lavoro",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "Il server sembra essere sovraccaricato. Riprova tra pochi secondi."
+    },
+    "errorCode": {
+        "message": "Codice Errore: "
+    },
+    "skip": {
+        "message": "Salta"
+    },
+    "skipped": {
+        "message": "Saltato"
+    },
+    "disableAutoSkip": {
+        "message": "Disabilita Salto Automatico"
+    },
+    "enableAutoSkip": {
+        "message": "Abilita Salto Automatico"
     }
 }
