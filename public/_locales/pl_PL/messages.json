@@ -31,6 +31,9 @@
     "Segments": {
         "message": "segmentami sponsorowanymi"
     },
+    "upvoteButtonInfo": {
+        "message": "Oceń tę zgłoszenie poztywnie"
+    },
     "reportButtonTitle": {
         "message": "Zgłoś"
     },
@@ -63,6 +66,9 @@
     },
     "paused": {
         "message": "Wstrzymano"
+    },
+    "manualPaused": {
+        "message": "Timer zatrzymany"
     },
     "confirmMSG": {
         "message": "Żeby zmienić lub usunąć wartości, kliknij na guzik informacji lub otwórz okienko rozszerzenia klikając w ikonę rozszerzenia znajdującą się w prawym górnym rogu."
@@ -261,6 +267,9 @@
     "skip": {
         "message": "Przewiń"
     },
+    "skipped": {
+        "message": "Pominięto"
+    },
     "disableAutoSkip": {
         "message": "Wyłącz auto przewijanie"
     },
@@ -272,6 +281,9 @@
     },
     "audioNotification": {
         "message": "Powiadomienie dźwiękowe o przewinięciu"
+    },
+    "showTimeWithSkips": {
+        "message": "Pokaż czas po usunięciu segmentów"
     },
     "youHaveSkipped": {
         "message": "Przewinąłeś "
@@ -372,6 +384,12 @@
     "reset": {
         "message": "Reset"
     },
+    "areYouSureReset": {
+        "message": "Czy na pewno chcesz to zresetować?"
+    },
+    "unlistedCheck": {
+        "message": "Ignoruj nielistowane/prywatne filmy"
+    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com jest teraz wspierany"
     },
@@ -383,6 +401,9 @@
     },
     "setOptions": {
         "message": "Zapisz ustawienia"
+    },
+    "confirmNoticeTitle": {
+        "message": "Zgłoś segment"
     },
     "submit": {
         "message": "Wyślij"
@@ -399,11 +420,21 @@
     "edit": {
         "message": "Edytuj"
     },
+    "copyDebugInformation": {
+        "message": "Skopiuj informacje debugowania do schowka"
+    },
     "copyDebugInformationFailed": {
         "message": "Nie udało się skopiować do schowka"
     },
     "copyDebugInformationComplete": {
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
+    },
+    "theKey": {
+        "message": "Klucz"
+    },
+    "to": {
+        "message": "do",
+        "description": "Used between sponsor times. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponsor"
@@ -461,11 +492,17 @@
     "itCouldBeAdblockerIssue": {
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "forceChannelCheck": {
+        "message": "Wymuś sprawdzenie kanału przed pominięciem sponsorów"
+    },
     "downvoteDescription": {
         "message": "Nieprawidłowy przedział czasowy"
     },
     "incorrectCategory": {
         "message": "Zła kategoria"
+    },
+    "multipleSegments": {
+        "message": "Wiele segmentów"
     },
     "guidelines": {
         "message": "Wytyczne"
@@ -473,6 +510,12 @@
     "readTheGuidelines": {
         "message": "Przeczytaj wytyczne!!",
         "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategorie są tutaj!"
+    },
+    "categoryUpdate2": {
+        "message": "Otwórz opcje, aby pominąć intra, outra, merch, itp."
     },
     "unsubmittedWarning": {
         "message": "Powiadomienie o nieprzesłanych segmentach"
