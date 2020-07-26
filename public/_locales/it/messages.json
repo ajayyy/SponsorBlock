@@ -279,5 +279,14 @@
     },
     "enableAutoSkip": {
         "message": "Abilita Salto Automatico"
+    },
+    "audioNotification": {
+        "message": "Notifiche Audio per Salta"
+    },
+    "audioNotificationDescription": {
+        "message": "La notifica audio su salto riprodurrà un suono ogni volta che uno sponsor viene saltato. Se disabilitato (o se il salto automatico è disabilitato), nessun suono verrà riprodotto."
+    },
+    "showTimeWithSkips": {
+        "message": "Mostra Tempo Con Salti Rimossi"
     }
 }
