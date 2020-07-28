@@ -32,7 +32,7 @@
         "message": "segmentami sponsorowanymi"
     },
     "upvoteButtonInfo": {
-        "message": "Oceń tę zgłoszenie poztywnie"
+        "message": "Oceń to zgłoszenie pozytywnie"
     },
     "reportButtonTitle": {
         "message": "Zgłoś"
@@ -346,7 +346,7 @@
         "message": "Invidious (invidio.us) to nieoficjalny klient YouTube'a. Aby włączyć dla niego wsparcie musisz przyznać dodatkowe uprawnienia. W Chrome'ie i innych przeglądarkach bazujących na Chromium, ta opcja nie działa w trybie incognito."
     },
     "optionsInfo": {
-        "message": "Wesprzyj Invidious, wyłącz auto przewijanie, ukryj guziki i więcej."
+        "message": "Włącz wsparcie dla Invidious, wyłącz auto przewijanie, ukryj przyciski i więcej."
     },
     "addInvidiousInstance": {
         "message": "Dodaj instancje Invidious"
@@ -374,6 +374,9 @@
     },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
+    },
+    "whatUploadButton": {
+        "message": "Ten przycisk pojawia się na odtwarzaczu YouTube po wybraniu przedziału czasowego, gdy segment jest gotowy do wysłania."
     },
     "customServerAddress": {
         "message": "Adres serwera SponsorBlock"
