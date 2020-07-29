@@ -498,7 +498,7 @@
         "message": "Endcards/Credits"
     },
     "category_outro_description": {
-        "message": "Credits or when the YouTube endcards appear. Not for spoken conclusions. This should not include useful content. This should not be used on music videos."
+        "message": "Credits or when the YouTube endcards appear. Not for conclusions with information. This should not be used on music videos."
     },
     "category_interaction": {
         "message": "Interaction Reminder (Subscribe)"
