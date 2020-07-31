@@ -499,7 +499,7 @@
         "message": "Wymuś sprawdzenie kanału przed pominięciem sponsorów"
     },
     "whatForceChannelCheck": {
-        "message": "Domyślnie, rozszerzenie pominie sponsorów od razu, jeszcze zanim dowie się, jaki to kanał. Pewne segmenty nie trwające nawet sekundy domyślnie mogą zostać pominięte na kanałach dodanych do wyjątków. Włączenie tej opcji temu zapobiegnie, ale wszystkie pominięcia będą nieco opóźnione, gdyż uzyskanie ID kanału może chwilę potrwać. Opóźnienie to może być nieodczuwalne, jeśli masz szybki internet."
+        "message": "Domyślnie, rozszerzenie pominie sponsorów od razu, jeszcze zanim dowie się jaki to kanał. Pewne segmenty nie trwające nawet sekundy domyślnie mogą zostać pominięte na kanałach dodanych do wyjątków. Włączenie tej opcji temu zapobiegnie, ale wszystkie pominięcia będą nieco opóźnione, gdyż uzyskanie ID kanału może chwilę potrwać. Opóźnienie to może być nieodczuwalne, jeśli masz szybki internet."
     },
     "downvoteDescription": {
         "message": "Nieprawidłowy przedział czasowy"
