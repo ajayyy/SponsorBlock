@@ -194,7 +194,7 @@
         "message": "Ukryj przycisk informacyjny na odtwarzaczu YouTube"
     },
     "whatInfoButton": {
-        "message": "Jest to guzik otwierający popup na stronie YouTube."
+        "message": "Jest to przycisk otwierający okienko pop-up na stronie YouTube."
     },
     "hideDeleteButton": {
         "message": "Ukryj przycisk usuwania na odtwarzaczu YouTube"
@@ -203,7 +203,7 @@
         "message": "Pokaż przycisk usuwania na odtwarzaczu YouTube"
     },
     "whatDeleteButton": {
-        "message": "Ten guzik pozwala ci wyczyścić wszystkie segmenty reklamowe w odtwarzaczu YouTube."
+        "message": "Ten przycisk na odtwarzaczu YouTube wyczyści wszystkie twoje niewysłane segmenty dla bieżącego filmu."
     },
     "disableViewTracking": {
         "message": "Wyłącz licznik przewinięć"
