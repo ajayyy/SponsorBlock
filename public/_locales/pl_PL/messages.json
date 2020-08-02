@@ -185,7 +185,7 @@
         "message": "Ukryj przyciski na odtwarzaczu YouTube"
     },
     "hideButtonsDescription": {
-        "message": "Ta opcja ukrywa guziki zgłaszania reklamy w odtwarzaczu. Wiem, że mogą one irytować niektórych. Zamiast zgłaszania bezpośrednio w odtwarzaczu możesz to zrobić w tym okienku. Zawsze możesz zmienić te opcje później."
+        "message": "Ta opcja ukrywa przyciski do zgłaszania segmentów pojawiające się na odtwarzaczu YouTube."
     },
     "showInfoButton": {
         "message": "Pokaż przycisk informacyjny na odtwarzaczu YouTube"
@@ -281,6 +281,9 @@
     },
     "audioNotification": {
         "message": "Powiadomienie dźwiękowe o przewinięciu"
+    },
+    "audioNotificationDescription": {
+        "message": "Powiadomienie dźwiękowe po pominięciu będzie odtwarzane za każdym razem, gdy sponsor zostanie pominięty. Jeśli wyłączone (lub automatyczne pomijanie jest wyłączone), dźwięk nie zostanie odtworzony."
     },
     "showTimeWithSkips": {
         "message": "Pokaż czas po usunięciu segmentów"
@@ -381,11 +384,17 @@
     "customServerAddress": {
         "message": "Adres serwera SponsorBlock"
     },
+    "customServerAddressDescription": {
+        "message": "Adres SponsorBlock używa do wykonywania połączeń do serwera.\nDo póki nie posiadasz własnego serwera, to nie powinno być zmieniane."
+    },
     "save": {
         "message": "Zapisz"
     },
     "reset": {
         "message": "Reset"
+    },
+    "customAddressError": {
+        "message": "Ten adres nie jest w prawidłowej formie. Upewnij się, że http:// lub https:// znajduje się na początku i nie ma końcowych ukośników."
     },
     "areYouSureReset": {
         "message": "Czy na pewno chcesz to zresetować?"
@@ -404,6 +413,9 @@
     },
     "setOptions": {
         "message": "Zapisz ustawienia"
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Ten JSON nie został poprawnie sformatowany. Twoje opcje nie zostały zmienione."
     },
     "confirmNoticeTitle": {
         "message": "Zgłoś segment"
@@ -442,6 +454,27 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "category_intro": {
+        "message": "Animacja wstępu/wprowadzenia"
+    },
+    "category_intro_short": {
+        "message": "Wprowadzenie"
+    },
+    "category_selfpromo": {
+        "message": "Nieopłacona/Własna promocja"
+    },
+    "category_music_offtopic": {
+        "message": "Muzyka: Sekcja niemuzyczna"
+    },
+    "category_music_offtopic_short": {
+        "message": "Niemuzyczny"
+    },
+    "category_livestream_messages": {
+        "message": "Transmisja live: Dotacja/Czytanie wiadomości"
+    },
+    "category_livestream_messages_short": {
+        "message": "Czytanie wiadomości"
+    },
     "disable": {
         "message": "Wyłączone"
     },
@@ -468,6 +501,9 @@
         "message": "Tryb pomijania",
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
+    "enableTestingServer": {
+        "message": "Aktywuj serwer beta-testów"
+    },
     "bracketNow": {
         "message": "(Teraz)"
     },
@@ -488,6 +524,9 @@
     },
     "hiddenDueToDuration": {
         "message": "ukryty: zbyt krótki"
+    },
+    "channelDataNotFound": {
+        "message": "ID kanału nie zostało póki co załadowane."
     },
     "adblockerIssue": {
         "message": "Wygląda na to, że coś blokuje możliwość pobierania danych o filmach przez SponsorBlock. To prawdopodobnie Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
