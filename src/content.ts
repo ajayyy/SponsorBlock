@@ -843,7 +843,7 @@ function whitelistCheck() {
     }
 
     // check if the start of segments were missed
-    if (sponsorTimes && sponsorTimes.length > 0) startSkipScheduleCheckingForStartSponsors();
+    if (Config.config.forceChannelCheck && sponsorTimes && sponsorTimes.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
 /**
