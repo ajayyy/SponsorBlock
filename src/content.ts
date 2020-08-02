@@ -1604,5 +1604,5 @@ function showTimeWithoutSkips(allSponsorTimes): void {
 		display.appendChild(duration);
 	}
 		
-    duration.innerText = (skipDuration <= 0 || isNaN(skipDuration)) ? "" : " ("+formatedTime+")";
+    duration.innerText = (skipDuration <= 0 || isNaN(skipDuration) || formatedTime.includes("NaN")) ? "" : " ("+formatedTime+")";
 }
