@@ -32,7 +32,7 @@
         "message": "segmentami sponsorowanymi"
     },
     "upvoteButtonInfo": {
-        "message": "Oceń to zgłoszenie pozytywnie"
+        "message": "Oceń pozytywnie to zgłoszenie"
     },
     "reportButtonTitle": {
         "message": "Zgłoś"
@@ -149,7 +149,7 @@
         "message": "tutaj"
     },
     "recordTimesDescription": {
-        "message": "Kliknij guzik poniżej kiedy segment reklamowy się zaczyna i kończy żeby go oznaczyć i wysłać do bazy danych."
+        "message": "Kliknij przycisk poniżej, gdy segment sponsorowany zaczyna się i kończy, by oznaczyć go i przesłać do bazy danych."
     },
     "popupHint": {
         "message": "Podpowiedź: Klikając średnik kiedy zaznaczone jest zgłaszanie wideo możesz oznaczyć początek reklamy, znakiem cytatu oznaczysz jej koniec. (Klawisze można zmienić w opcjach)"
