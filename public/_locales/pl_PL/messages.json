@@ -185,7 +185,7 @@
         "message": "Ukryj przyciski na odtwarzaczu YouTube"
     },
     "hideButtonsDescription": {
-        "message": "Ta opcja ukrywa przyciski do zgłaszania segmentów pojawiające się na odtwarzaczu YouTube."
+        "message": "Ta opcja ukrywa przyciski do zamieszczania segmentów pojawiające się na odtwarzaczu YouTube."
     },
     "showInfoButton": {
         "message": "Pokaż przycisk informacyjny na odtwarzaczu YouTube"
@@ -375,6 +375,9 @@
     "minDuration": {
         "message": "Minimalny czas trwania (sekundy):"
     },
+    "minDurationDescription": {
+        "message": "Segmenty sponsorowane krótsze niż ustawiona wartość nie będą pomijane ani pokazywane w odtwarzaczu."
+    },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
     },
@@ -458,16 +461,25 @@
         "message": "Animacja wstępu/wprowadzenia"
     },
     "category_intro_short": {
-        "message": "Wprowadzenie"
+        "message": "Przerwa"
+    },
+    "category_outro": {
+        "message": "Ekran końcowy/Napisy"
+    },
+    "category_interaction": {
+        "message": "Przypomnienie o interakcji (Subskrybuj)"
+    },
+    "category_interaction_short": {
+        "message": "Przypomnienie o interakcji"
     },
     "category_selfpromo": {
-        "message": "Nieopłacona/Własna promocja"
+        "message": "Nieodpłatne/Autopromocja"
     },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
     },
     "category_music_offtopic_short": {
-        "message": "Niemuzyczny"
+        "message": "Bez muzyki"
     },
     "category_livestream_messages": {
         "message": "Transmisja live: Dotacja/Czytanie wiadomości"
