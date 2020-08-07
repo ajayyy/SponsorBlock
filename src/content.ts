@@ -718,7 +718,7 @@ function startSkipScheduleCheckingForStartSponsors() {
         }
 
         if (startingSponsor !== -1) {
-            startSponsorSchedule(false, startingSponsor);
+            startSponsorSchedule(undefined, startingSponsor);
         } else {
             startSponsorSchedule();
         }
