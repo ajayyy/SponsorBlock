@@ -1,10 +1,4 @@
 {
-    "Sponsor": {
-        "message": "sponzor"
-    },
-    "Sponsors": {
-        "message": "sponzori"
-    },
     "reportButtonTitle": {
         "message": "Nahlásiť"
     },
@@ -112,7 +106,7 @@
     },
     "to": {
         "message": "pre",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponzor"
