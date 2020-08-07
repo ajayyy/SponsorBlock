@@ -3,10 +3,6 @@
         "message": "Youtube için SponsorBlock - Sponsorlukları Atla",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "YouTube videolarındaki sponsorlukları atla. İzlediğin videolardaki sponsorları diğerlerine zaman kazandırmak için raporla.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Sunucu isteğin geçersiz olduğunu iletti"
     },

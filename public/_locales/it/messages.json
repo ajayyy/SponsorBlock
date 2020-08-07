@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Salta i contenuti sponsorizzati nei video di YouTube. Segnala gli annunci incorporati nei video che guardi per far risparmiare tempo agli altri.",
+        "message": "Salta sponsorizzazioni, implorazioni di iscrizione ai canali e molto altro sui video di YouTube. Segnala gli sponsor sui video che guardi per salvare il tempo ad altri.",
         "description": "Description of the extension."
     },
     "400": {
@@ -31,8 +31,14 @@
     "Segments": {
         "message": "spezzoni sponsorizzati"
     },
+    "upvoteButtonInfo": {
+        "message": "Vota questa segnalazione"
+    },
     "reportButtonTitle": {
         "message": "Segnala"
+    },
+    "reportButtonInfo": {
+        "message": "Segnala questa segnalazione come incorretta."
     },
     "Dismiss": {
         "message": "Chiudi"
@@ -60,6 +66,9 @@
     },
     "paused": {
         "message": "In pausa"
+    },
+    "manualPaused": {
+        "message": "Timer Fermato"
     },
     "confirmMSG": {
         "message": "\n\nPer modificare o eliminare valori specifici, premi il pulsante delle informazioni o apri il popup cliccando l'icona dell'estensione nell'angolo in alto a destra."
@@ -90,6 +99,9 @@
     },
     "voted": {
         "message": "Votato!"
+    },
+    "serverDown": {
+        "message": "Sembra che il server non funzioni. Contatta subito lo sviluppatore."
     },
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
@@ -205,6 +217,10 @@
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
     },
+    "longDescription": {
+        "message": "SponsorBlock è un'estensione che salta gli spezzoni con contenuti sponsorizzati nei video di YouTube. SponsorBlock è un'estensione crowdsourced per i browser che permette a chiunque di inviare i minutaggi degli spezzoni sponsorizzati nei video di YouTube. Quando un utente invia una segnalazione, tutti gli altri utenti che utilizzano questa estensione potranno saltare lo spezzone sponsorizzato.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Sito Web",
         "description": "Used on Firefox Store Page"
@@ -212,5 +228,209 @@
     "sourceCode": {
         "message": "Codice Sorgente",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "L'avviso è stato aggiornato!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Imposta la chiave per l'associazione di tasti per l'inizio dello spezzone dello sponsor"
+    },
+    "setSubmitKeybind": {
+        "message": "Imposta la chiave per l'associazione di tasti per le segnalazioni"
+    },
+    "keybindDescription": {
+        "message": "Seleziona una chiave digitandola"
+    },
+    "keybindDescriptionComplete": {
+        "message": "L'associazione di tasti è stata impostata a: "
+    },
+    "0": {
+        "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
+    },
+    "disableSkipping": {
+        "message": "Disabilita SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Abilita SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Il Tuo Lavoro",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "Il server sembra essere sovraccaricato. Riprova tra pochi secondi."
+    },
+    "errorCode": {
+        "message": "Codice Errore: "
+    },
+    "skip": {
+        "message": "Salta"
+    },
+    "skipped": {
+        "message": "Saltato"
+    },
+    "disableAutoSkip": {
+        "message": "Disabilita Salto Automatico"
+    },
+    "enableAutoSkip": {
+        "message": "Abilita Salto Automatico"
+    },
+    "audioNotification": {
+        "message": "Notifiche Audio per Salta"
+    },
+    "audioNotificationDescription": {
+        "message": "La notifica audio su salto riprodurrà un suono ogni volta che uno sponsor viene saltato. Se disabilitato (o se il salto automatico è disabilitato), nessun suono verrà riprodotto."
+    },
+    "showTimeWithSkips": {
+        "message": "Mostra Tempo Con Salti Rimossi"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Questo tempo appare tra parentesi accanto al tempo attuale sotto alla barra di progresso. Questo mostra la durata totale del video meno gli spezzoni. Include spezzoni marcati come \"Mostra solo nella barra di progresso\"."
+    },
+    "youHaveSkipped": {
+        "message": "Hai saltato "
+    },
+    "youHaveSaved": {
+        "message": "Ti sei salvato "
+    },
+    "minLower": {
+        "message": "minuto"
+    },
+    "minsLower": {
+        "message": "minuti"
+    },
+    "hourLower": {
+        "message": "ora"
+    },
+    "hoursLower": {
+        "message": "ore"
+    },
+    "youHaveSavedTime": {
+        "message": "Hai salvato alle persone"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " delle loro vite."
+    },
+    "statusReminder": {
+        "message": "Controlla status.sponsor.ajay.app per lo stato del server."
+    },
+    "changeUserID": {
+        "message": "Importa/Esporta Il Tuo ID Utente"
+    },
+    "whatChangeUserID": {
+        "message": "Questo dovrebbe essere tenuto privato. Questo è come una password e non dovrebbe essere condiviso con nessuno. Se qualcuno ha questo, ti può impersonare."
+    },
+    "setUserID": {
+        "message": "Imposta ID utente"
+    },
+    "userIDChangeWarning": {
+        "message": "Attenzione: cambiare l'ID utente è permanente. Sei sicuro di volerlo fare? Assicurati di eseguire il backup del tuo vecchio nel caso."
+    },
+    "createdBy": {
+        "message": "Creato da"
+    },
+    "autoSkip": {
+        "message": "Salta Automaticamente"
+    },
+    "showSkipNotice": {
+        "message": "Mostra Avviso Dopo Aver Saltato Uno Sponsor"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Attualmente è impostato su:"
+    },
+    "supportInvidious": {
+        "message": "Supporta Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) è un client YouTube di terze parti. Per abilitare il supporto, è necessario accettare i permessi aggiuntivi. Questo NON funziona in incognito su Chrome e altre varianti di Chromium."
+    },
+    "optionsInfo": {
+        "message": "Abilita supporto invidioso, disabilita salto automatico, nascondi i pulsanti e altro ancora."
+    },
+    "addInvidiousInstance": {
+        "message": "Aggiungi istanza di Invidious"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Aggiungi un'istanza personalizzata di Invidious. Questo deve essere formattato SOLO con il dominio. Esempio: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Aggiungi"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Questo è un dominio non valido. Questo dovrebbe includere SOLO la parte del dominio. Esempio: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Reimposta la lista di istanze Invidious"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Stai per reimpostare la lista di istanze di Invidious"
+    },
+    "currentInstances": {
+        "message": "Istanze Attuali:"
+    },
+    "minDuration": {
+        "message": "Durata minima (secondi):"
+    },
+    "minDurationDescription": {
+        "message": "I segmenti di sponsor più corti del valore impostato non verranno saltati o mostrati."
+    },
+    "whatUploadButton": {
+        "message": "Questo pulsante appare sul riproduttore di YouTube dopo che hai selezionato un marcatore temporale e sei pronto ad inviarlo."
+    },
+    "customServerAddress": {
+        "message": "Indirizzo Server SponsorBlock"
+    },
+    "customServerAddressDescription": {
+        "message": "L'indirizzo che SponsorBlock usa per effettuare richieste al server. Questo non dovrebbe essere modificato a meno che tu non abbia un tuo server."
+    },
+    "save": {
+        "message": "Salva"
+    },
+    "reset": {
+        "message": "Reimposta"
+    },
+    "customAddressError": {
+        "message": "Questo indirizzo non è nel formatto corretto. Assicurati di avere http:// o https:// all'inizio e nessuno slash alla fine."
+    },
+    "areYouSureReset": {
+        "message": "Sei sicuro di voler eseguire il reset?"
+    },
+    "confirmPrivacy": {
+        "message": "Il video è stato rilevato come privato. Fare clic su Annulla se non si desidera controllare la presenza di sponsor."
+    },
+    "unlistedCheck": {
+        "message": "Ignora Video Non Pubblicati/Privati"
+    },
+    "whatUnlistedCheck": {
+        "message": "Questa impostazione rallenterà leggermente SponsorBlock. Le ricerche degli sponsor richiedono l'invio dell'ID video al server. Se sei preoccupato per gli ID video non elencati inviati via internet, abilita questa opzione."
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com è ora supportato"
+    },
+    "exportOptions": {
+        "message": "Importa/Esporta Tutte Le Opzioni"
+    },
+    "whatExportOptions": {
+        "message": "Questa è la tua intera configurazione in formaro JSON. Questo include il tuo ID utente, quindi presta attenzione se vuoi condividerlo."
+    },
+    "chooseACategory": {
+        "message": "Scegli una Categoria"
+    },
+    "youMustSelectACategory": {
+        "message": "Devi selezionare una categoria per tutti i segmenti che stai inviando!"
+    },
+    "bracketEnd": {
+        "message": "(Fine)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "nascosto: downvote"
+    },
+    "hiddenDueToDuration": {
+        "message": "nascosto: troppo corto"
     }
 }

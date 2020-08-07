@@ -3,10 +3,6 @@
         "message": "SponsorBlock для YouTube - Пропускайте спонсорські вставки",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Пропускайте спонсорські вставки в відео на YouTube. Повідомляйте про спонсорські вставки в відео, які Ви дивіться, щоб заощадити час інших користувачів.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Сервер відхилив цей запит"
     },

@@ -3,10 +3,6 @@
         "message": "SponsorBlock para YouTube - Pule patrocínios",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Pule patrocinadores em vídeos do YouTube. Reporte patrocinadores em videos que você assiste para salvar o tempo dos outros.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "O servidor disse que esse pedido foi inválido"
     },
@@ -216,10 +212,6 @@
     },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
-    },
-    "longDescription": {
-        "message": "SponsorBlock é uma extensão que pula patrocínios em vídeos no YouTube. SponsorBlock é uma extensão de navegador que deixa qualquer pessoa enviar o começo e fim de segmentos patrocinados em vídeos no YouTube. Quando uma pessoa envia essa informação, todo mundo com a extensão vai pular essa mesma parte patrocinada. \n\n Você também pode pular introduções, finais do vídeo, lembretes para inscrever e outras categorias.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Site",
@@ -535,6 +527,12 @@
     "moreCategories": {
         "message": "Mais categorias"
     },
+    "chooseACategory": {
+        "message": "Selecione uma Categoria"
+    },
+    "youMustSelectACategory": {
+        "message": "Você deve selecionar uma categoria para todos os segmentos que você está enviando!"
+    },
     "bracketEnd": {
         "message": "(Fim)"
     },
@@ -573,6 +571,13 @@
     },
     "multipleSegments": {
         "message": "Multiplos segmentos"
+    },
+    "guidelines": {
+        "message": "Diretrizes"
+    },
+    "readTheGuidelines": {
+        "message": "Leia as Diretrizes!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     },
     "categoryUpdate1": {
         "message": "As categorias estão aqui!"

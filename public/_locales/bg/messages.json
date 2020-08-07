@@ -3,10 +3,6 @@
         "message": "SponsorBlock за YouTube - пропускай спонсорства",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Пропускай спонсорствата в YouTube клипове. Докладвай за спонсорства в клиповете които гледате, за да спестите време на други хора.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "Сървърът каза, че тази заявка е невалидна"
     },
