@@ -15,18 +15,6 @@
     "channelWhitelisted": {
         "message": "Kanaal gewhitelist!"
     },
-    "Sponsor": {
-        "message": "sponsor"
-    },
-    "Sponsors": {
-        "message": "sponsoren"
-    },
-    "Segment": {
-        "message": "Sponsor segment"
-    },
-    "Segments": {
-        "message": "Sponsor segmenten"
-    },
     "upvoteButtonInfo": {
         "message": "Stem op deze indiening"
     },
@@ -69,15 +57,6 @@
     "clearThis": {
         "message": "Weet je zeker dat je dit formulier wilt wissen?\n\n"
     },
-    "sponsor404": {
-        "message": "Geen sponsors gevonden"
-    },
-    "sponsorStart": {
-        "message": "Sponsorschap"
-    },
-    "sponsorEnd": {
-        "message": "Sponshopschap eindigt nu"
-    },
     "noVideoID": {
         "message": "Er is geen YouTube-video gevonden op dit tabblad. Als je weet dat dit een YouTube-tabblad is, sluit je deze pop-up en open het opnieuw. Als dat niet werkt, probeer het tabblad opnieuw te laden."
     },
@@ -89,15 +68,6 @@
     },
     "connectionError": {
         "message": "Er is een verbindingsfout opgetreden. Foutcode: "
-    },
-    "wantToSubmit": {
-        "message": "Wilt u de sponsor tijden indienen voor video id"
-    },
-    "leftTimes": {
-        "message": "Het lijkt erop dat sommige sponsortijden niet ingezonden zijn. Ga terug naar die pagina om ze in te dienen (deze zijn niet verwijderd)."
-    },
-    "clearTimes": {
-        "message": "Sponsortijden wissen"
     },
     "viewLeaderboard": {
         "message": "Bekijk de ranglijst"
@@ -161,14 +131,8 @@
     "enableAutoSkip": {
         "message": "Automatisch overslaan inschakelen"
     },
-    "autoSkipDescription": {
-        "message": "Automatisch Overslaan zal sponsors voor u overslaan. Indien uitgeschakeld, zal een bericht vragen of u wilt overslaan."
-    },
     "audioNotification": {
         "message": "Audiomelding bij Overslaan"
-    },
-    "audioNotificationDescription": {
-        "message": "Audiomelding bij overslaan zal een geluid afspelen wanneer een sponsor wordt overgeslagen. Indien uitgeschakeld (of automatisch overslaan is uitgeschakeld) wordt er geen geluid afgespeeld."
     },
     "minLower": {
         "message": "minuut"
@@ -182,17 +146,11 @@
     "hoursLower": {
         "message": "uren"
     },
-    "guildlinesSummary": {
-        "message": "- Zorg ervoor dat uw segment alleen betaalde promoties bevat, niets anders.\n- Zorg ervoor dat het overslaan van dit segment geen waardevolle inhoud overslaat\n- Als de hele video een sponsorsegment is, rapporteer dit alstublieft niet. Binnenkort komt er een systeem om volledige video's te rapporteren.\n- Rapporteer alstublieft geen disclaimers die partijdig kunnen zijn (als een recensievideo gesponsord is, sla deze niet over wanneer ze dit vermelden)."
-    },
     "whatChangeUserID": {
         "message": "Dit moet privé blijven. Beschouw dit als wachtwoord en mag met niemand worden gedeeld. Als iemand dit heeft, kunnen ze je imiteren."
     },
     "autoSkip": {
         "message": "Automatisch overslaan"
-    },
-    "showSkipNotice": {
-        "message": "Toon melding na een sponsor is overgeslagen"
     },
     "minDuration": {
         "message": "Minimale duur (seconden):"
