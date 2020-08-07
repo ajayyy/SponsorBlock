@@ -589,11 +589,11 @@ function sponsorsLookup(id: string) {
             }
         });
         video.addEventListener('seeking', () => {
-            // Reset lastCheckVideoTime
-            lastCheckTime = Date.now();
-            lastCheckVideoTime = video.currentTime;
-
             if (!video.paused){
+                // Reset lastCheckVideoTime
+                lastCheckTime = Date.now();
+                lastCheckVideoTime = video.currentTime; 
+
                 startSponsorSchedule();
             }
         });
