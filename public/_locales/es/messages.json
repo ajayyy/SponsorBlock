@@ -15,18 +15,6 @@
     "channelWhitelisted": {
         "message": "Canal Permitido!"
     },
-    "Sponsor": {
-        "message": "sponsor"
-    },
-    "Sponsors": {
-        "message": "sponsors"
-    },
-    "Segment": {
-        "message": "segmento de sponsor"
-    },
-    "Segments": {
-        "message": "segmentos de sponsor"
-    },
     "upvoteButtonInfo": {
         "message": "Votar a favor de esta sumisión"
     },
@@ -75,18 +63,6 @@
     "Unknown": {
         "message": "Se ha producido un error enviando tus tiempos de sponsor, por favor inténtalo de nuevo más tarde."
     },
-    "sponsorFound": {
-        "message": "¡Los sponsors de este video están en la base de datos!"
-    },
-    "sponsor404": {
-        "message": "No se encontró ningún sponsor"
-    },
-    "sponsorStart": {
-        "message": "Sponsor Empieza Ahora"
-    },
-    "sponsorEnd": {
-        "message": "Sponsor Acaba Ahora"
-    },
     "noVideoID": {
         "message": "Ningún video de YouTube se encontró en esta pestaña. Si sabes que esto es una pestaña de YouTube, cierra esta ventana y ábrela otra vez. Si eso no funciona, intenta recargar la pestaña."
     },
@@ -102,20 +78,8 @@
     "connectionError": {
         "message": "Ha ocurrido un error de conexión. Código de error: "
     },
-    "wantToSubmit": {
-        "message": "¿Quieres enviar los tiempos de sponsor para el vídeo id"
-    },
-    "leftTimes": {
-        "message": "Parece que has dejado algunos tiempos de sponsor sin enviar. Vuelve a esa página para enviarlos (no se eliminaron)."
-    },
-    "clearTimes": {
-        "message": "Eliminar Tiempos de Sponsor"
-    },
     "openPopup": {
         "message": "Abrir Ventana de SponsorBlock"
-    },
-    "SubmitTimes": {
-        "message": "Enviar Tiempos de Sponsor"
     },
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
@@ -125,12 +89,6 @@
     },
     "removeFromWhitelist": {
         "message": "Parar De Permitir Canal"
-    },
-    "voteOnTime": {
-        "message": "Votar en un tiempo de sponsor"
-    },
-    "recordTimes": {
-        "message": "Registrar los tiempos de un sponsor"
     },
     "soFarUHSubmited": {
         "message": "Hasta ahora, has enviado"
@@ -143,15 +101,6 @@
     },
     "here": {
         "message": "aquí"
-    },
-    "recordTimesDescription": {
-        "message": "Haga clic en el botón de abajo cuando el sponsor comienza y termina para registrarlo y\nenviarlo a la base de datos."
-    },
-    "popupHint": {
-        "message": "Consejo: Presiona la tecla de punto y coma mientras enfocado en un video para registrar el comienzo/fin de un sponsor y presiona comillas para enviar. (Esto se puede cambiar en las opciones)"
-    },
-    "lastTimes": {
-        "message": "Últimos mensajes de sponsor elegidos"
     },
     "clearTimesButton": {
         "message": "Eliminar Tiempos"
@@ -201,15 +150,6 @@
     "whatDeleteButton": {
         "message": "Este es el botón en el reproductor de YouTube que eliminará todos tus segmentos no enviados para el vídeo actual."
     },
-    "disableViewTracking": {
-        "message": "Desactivar seguimiento de numero de sponsorsomitidos"
-    },
-    "enableViewTracking": {
-        "message": "Activar seguimiento de numero de sponsors omitidos"
-    },
-    "whatViewTracking": {
-        "message": "Esta opción registra los sponsors que te has saltado para que los otros usuarios sepan cuánto su sumisión ha ayudado a otros y\nes usado como métrica junto con votos positivos para asegurar que el spam no ingrese a la base de datos. La extensión envía un mensaje\nal servidor cada vez que se salta un patrocinador. Esperemos que la mayoría de la gente no cambie esta opción para que los números de vista sean exactos. :)"
-    },
     "showNotice": {
         "message": "Mostrar aviso de nuevo"
     },
@@ -228,9 +168,6 @@
     "noticeUpdate2": {
         "message": "Si aún no te gusta, pulsa el botón de nunca mostrar.",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "Establecer botón de inicio de sponsor"
     },
     "setSubmitKeybind": {
         "message": "Establecer botón de envio"
@@ -272,14 +209,8 @@
     "enableAutoSkip": {
         "message": "Activar la omisión automática"
     },
-    "autoSkipDescription": {
-        "message": "La omisión automática omitirá sponsors por ti. Si esta desactivada, aparecerá un aviso preguntando si quieres omitir."
-    },
     "audioNotification": {
         "message": "Notificación de audio al omitir"
-    },
-    "audioNotificationDescription": {
-        "message": "Notificación de audio al omitir reproducirá un sonido cada vez que se omite un sponsor. Si está desactivada (o se desactiva la omisión automática), no se reproducirá ningún sonido."
     },
     "youHaveSkipped": {
         "message": "Has omitido "
@@ -305,9 +236,6 @@
     "youHaveSavedTimeEnd": {
         "message": " de sus vidas."
     },
-    "guildlinesSummary": {
-        "message": "- Asegúrate de que tu segmento sólo contiene un segmento de promoción de pago, nada más.\n- Asegúrate de que omitir este segmento no omitirá ningún contenido valioso\n- Si todo el vídeo es un sponsor, por favor, no lo envíen. Pronto saldrá un sistema completo de reportes de vídeo.\n- Por favor, no informe de los avisos que podrían mostrar parcialidad (si un vídeo de revista está patrocinado, no se salte cuando mencionen eso)."
-    },
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
     },
@@ -328,9 +256,6 @@
     },
     "autoSkip": {
         "message": "Omisión Automática"
-    },
-    "showSkipNotice": {
-        "message": "Mostrar aviso después de que se omita un sponsor"
     },
     "keybindCurrentlySet": {
         "message": ". Actualmente está establecido a:"
@@ -367,9 +292,6 @@
     },
     "minDuration": {
         "message": "Duración mínima (en segundos):"
-    },
-    "minDurationDescription": {
-        "message": "Los segmentos de sponsor más cortos que el valor establecido no serán omitidos ni mostrados en el reproductor."
     },
     "shortCheck": {
         "message": "La siguiente sumisión es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
