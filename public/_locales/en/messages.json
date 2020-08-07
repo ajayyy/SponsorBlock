@@ -92,7 +92,7 @@
         "message": "Segment Ends Now"
     },
     "noVideoID": {
-        "message": "No YouTube video found at this tab. If you know this is a YouTube tab, close this popup and open it again. If that does not work, try reloading the tab."
+        "message": "No YouTube video found.\nIf this is incorrect, refresh the tab."
     },
     "success": {
         "message": "Success!"
@@ -125,10 +125,10 @@
         "message": "Are you sure you want to submit this?"
     },
     "whitelistChannel": {
-         "message": "Whitelist Channel"
+         "message": "Add to whitelist"
     },
     "removeFromWhitelist": {
-         "message": "Remove Channel From Whitelist"
+         "message": "Remove from whitelist"
     },
     "voteOnTime": {
          "message": "Vote On A Segment"
@@ -244,13 +244,13 @@
         "message": "Connection Timeout. Check your internet connection. If your internet is working, the server is probably overloaded or down."
     },
     "disableSkipping": {
-        "message": "Disable SponsorBlock"
+        "message": "Extension is enabled."
     },
     "enableSkipping": {
-        "message": "Enable SponsorBlock"
+        "message": "Extension is disabled."
     },
     "yourWork": {
-        "message": "Your Work",
+        "message": "Your stats",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {

@@ -1,38 +1,155 @@
-/* reset some properties to default (youtube messes with them */
-p.popupElement {
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
+:root {
+  --sb-main-bg-color: #222626;
+	--sb-main-fg-color: white;
+	--sb-gray-fg-color: #444848;
+	--sb-on-white-bg: black;
+	--sb-green-bg: #077B27;
 }
 
-h1.popupElement {
-	margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+#sponsorblockPopup {
+	background-color: var(--sb-main-bg-color);
+	color: var(--sb-main-fg-color);
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 14px;
+	overflow-y: scroll;
+	display: flex;
+	flex-flow: column nowrap;
+  align-items: center;
+  margin: 0;
+  min-width: 320px;
 }
 
-h2.popupElement {
-	margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	font-weight: bold;
+div.logoText {
+	display: flex;
+	align-items: center;
 }
 
-h3.popupElement {
-	margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	font-weight: bold;
+div.logoText > p {
+	font-size: 32px;
+	margin: 0;
 }
 
-sub.popupElement {
-	font-size: smaller;
+/* disable extension */
+#disableExtension {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
 }
+
+/* switch button */
+
+.toggleSwitchContainer {
+  display: flex;
+  cursor: pointer;
+}
+.switchBg {
+  display: block;
+  height: 37px;
+  width: 78px;
+  border-radius: 18.5px;
+}
+
+.switchBg.shadow {
+  background: none;
+  box-shadow: 0.75px 0.75px 10px 0px rgba(50, 50, 50, 0.5);
+  opacity: 1;
+}
+
+.switchBg.white {
+  position: absolute;
+  background: white;
+  opacity: 1;
+}
+
+.switchBg.green {
+  position: absolute;
+  background: #00a205;
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.switchDot {
+  width: 25px;
+  height: 25px;
+  margin: 6px;
+  background: white;
+  position: absolute;
+  border-radius: 12.5px;
+  transition: transform .2s ease-out;
+  box-shadow: .75px .75px 3.8px 0px rgba(50, 50, 50, 0.45);
+}
+
+#toggleSwitch:checked ~ .switchDot {
+  transform: translateX(40px);
+}
+#toggleSwitch:checked ~ .switchBg.green {
+  opacity: 1 !important;
+}
+#toggleSwitch:checked ~ .switchBg.white {
+  opacity: 0 !important;
+  transition: opacity .2s step-end;
+}
+
+.sidebyside {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 88%;
+  margin: 0 6% 0 6%;
+}
+
+.sidebyside > div {
+  width: 50%;
+  justify-content: center;
+}
+
+/* additional buttons */
+
+#additionalButtons {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+#additionalButtons > button {
+	background: none;
+  border: none;
+  color: white;
+  width: fit-content;
+  padding: 0;
+}
+
+#additionalButtons, #additionalButtons > button {
+	font-size: 16px;
+}
+
+label > svg > path {
+	fill: var(--sb-main-fg-color);
+}
+
+label > p, #disableExtension > p {
+  margin: 0;
+}
+
+.grayedOut > label > svg > path {
+	fill: var(--sb-gray-fg-color);
+}
+.grayedOut > label {
+	color: var(--sb-gray-fg-color);
+}
+
+label > svg.rotated {
+	transform: rotate(45deg);
+}
+
+label > svg, button > img {
+  margin: 0 8px 0 0;
+}
+
+#mainControls > label, #additionalButtons > button {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 /* end reset */
 
 #sponsorBlockPopupLogo {
@@ -41,202 +158,4 @@ sub.popupElement {
 
 .logoText {
 	color: white;
-}
-
-h1.popupElement {
-	margin-top: 0px;
-	margin-bottom: 10px;
-}
-
-.popupBody {
-	font-size: 14px;
-	background-color: #333;
-	padding: 0px 5px;
-
-	font-family: 'Source Sans Pro', sans-serif;
-
-	color: #dddddd;
-}
-
-.outerPopupBody {
-	background-color: #222626;
-	overflow-y: scroll;
-}
-
-.discreteLink.popupElement {
-	color: #dddddd;
-}
-
-.recordingSubtitle.popupElement {
-	margin-bottom: 10px;
-}
-
-.voteButton.popupElement {
-	height: 32px;
-	margin-right: 15px;
-	cursor: pointer;
-}
-.voteButton:hover.popupElement {
-	filter: brightness(80%);
-}
-
-#discordButtonContainer.popupElement {
-	font-size: 12px;
-}
-
-.sponsorTime.popupElement {
-	font-size: 20px;
-}
-
-.smallLink.popupElement {
-	font-size: 10px;
-	text-decoration: underline;
-	cursor: pointer;
-}
-
-.mediumLink.popupElement {
-	font-size: 15px;
-	margin-left: 25px;
-	margin-right: 25px;
-	text-decoration: underline;
-	cursor: pointer;
-}
-
-.tinyLink.popupElement {
-	font-size: 10px;
-	text-decoration: underline;
-	cursor: pointer;
-}
-
-.whitelistButton.popupElement {
-	background-color:#27a52d;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border: none;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:16px;
-	padding:8px 37px;
-	text-decoration:none;
-	text-shadow:0px 0px 0px #27663c;
-
-	transition: 0.01s background-color;
-}
-.whitelistButton:hover.popupElement {
-    background-color:#3acc3a;
-}
-.whitelistButton:focus.popupElement {
-    outline: none;
-    background-color:#3acc3a;
-}
-.whitelistButton:active.popupElement {
-    position:relative;
-    top:1px;
-}
-
-.greenButton.popupElement {
-    background-color:#cc1717;
-    -moz-border-radius:28px;
-    -webkit-border-radius:28px;
-    border-radius:28px;
-    border: none;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-size:16px;
-    padding:8px 37px;
-    text-decoration:none;
-	text-shadow:0px 0px 0px #662727;
-	
-	transition: 0.01s background-color;
-}
-.greenButton:hover.popupElement {
-    background-color:#ec1c1c;
-}
-.greenButton:focus.popupElement {
-	outline: none;
-	background-color:#ec1c1c;
-}
-.greenButton:active.popupElement {
-    position:relative;
-    top:1px;
-}
-
-.dangerButton.popupElement {
-	background-color:#bc3315;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-	border: none;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:13px;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #854629;
-}
-.dangerButton:hover.popupElement {
-	background-color:#d0451b;
-}
-.dangerButton:focus.popupElement {
-	outline: none;
-	background-color:#d0451b;
-}
-.dangerButton:active.popupElement {
-	position:relative;
-	top:1px;
-}
-
-.warningButton.popupElement {
-	background-color:#bc8215;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-	border: none;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:13px;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #856829;
-}
-.warningButton:hover.popupElement {
-	background-color:#d0821b;
-}
-.warningButton:focus.popupElement {
-	outline: none;
-	background-color:#d0821b;
-}
-.warningButton:active.popupElement {
-	position:relative;
-	top:1px;
-}
-
-.smallButton.popupElement {
-	background-color:#f9902d;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-	border:1px solid #f9a72d;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:14px;
-	padding:6px 10px;
-	text-decoration:none;
-}
-.smallButton:hover.popupElement {
-	background-color:#fa9806;
-}
-.smallButton:focus.popupElement {
-	outline: none;
-	background-color:#fa9806;
-}
-.smallButton:active.popupElement {
-	position:relative;
-	top:1px;
 }

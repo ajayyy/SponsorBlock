@@ -1,202 +1,121 @@
 <html>
-  <head>
-    <title>__MSG_openPopup__</title>
-    <link id="sponsorBlockPopupFont" rel="stylesheet" type="text/css" href="/libs/Source+Sans+Pro.css"/>
-    <link id="sponsorBlockStyleSheet" rel="stylesheet" type="text/css" href="popup.css"/>
-  </head>
 
-  <body class="outerPopupBody">
-    <center>
-      <div id="app" class="popupBody sponsorBlockPageBody">
-          <h1 class="popupElement logoText">
-            <img src="icons/IconSponsorBlocker256px.png" height="32px" id="sponsorBlockPopupLogo"/>
-            SponsorBlock
-          </h1>
+<head>
+  <title>__MSG_openPopup__</title>
+  <link id="sponsorBlockPopupFont" rel="stylesheet" type="text/css" href="/libs/Source+Sans+Pro.css">
+  <link id="sponsorBlockStyleSheet" rel="stylesheet" type="text/css" href="popup.css">
+</head>
 
-          <!-- Loading text -->
-          <p id="loadingIndicator" class="popupElement">__MSG_noVideoID__</p>
-          
-          <!-- Hidden until loading complete -->
-          <div id="mainControls" class="main popupElement" style="display: none">
-            <!-- If the video was found in the database -->
-            <div id="videoFound">
-                  
-            </div>
+<body id="sponsorblockPopup" class="sponsorBlockPageBody">
+  <div class="logoText">
+    <img src="icons/IconSponsorBlocker256px.png" height="40px" id="sponsorBlockPopupLogo">
+    <p>SponsorBlock</p>
+  </div>
+  <!-- Loading text -->
+  <p id="loadingIndicator" class="">__MSG_noVideoID__</p>
+  <!-- If the video was found in the database -->
+  <p id="videoFound"></p>
+  <p id="downloadedSponsorMessageTimes" class=""></p>
+  <div class="sidebyside">
+    <div id="disableExtension">
+      <!--github: mbledkowski/toggle-switch-->
+      <label for="toggleSwitch" class="toggleSwitchContainer">
+        <input type="checkbox" style="display:none;" id="toggleSwitch" checked>
+        <span class="switchBg shadow"></span>
+        <span class="switchBg white"></span>
+        <span class="switchBg green"></span>
+        <span class="switchDot"></span>
+      </label>
+      <p id="disableSkipping">__MSG_disableSkipping__</p>
+      <p id="enableSkipping" style="display: none">__MSG_enableSkipping__</p>
+    </div>
+    <div id="additionalButtons">
+      <!-- grayedOut until loading complete -->
+      <div id="mainControls" class="grayedOut">
+        <input type="checkbox" style="display:none;" id="whitelistToggle">
+        <label for="whitelistToggle" class="whitelistToggleText">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
+          </svg>
+          <p id="whitelistChannel">__MSG_whitelistChannel__</p>
+          <p id="unwhitelistChannel" style="display: none">__MSG_removeFromWhitelist__</p>
+        </label>
+      </div>
+      <button id="optionsButton">
+        <img src="/icons/settings.svg" alt="Settings icon" width="18" height="18">
+        __MSG_Options__
+      </button>
+    </div>
+  </div>
+  <h2 class="recordingSubtitle popupElement">__MSG_yourWork__</h2>
 
-            <div id="downloadedSponsorMessageTimes" class="popupElement">
-  
-            </div>
-
-            <p class="popupElement"> 
-              __MSG_recordTimesDescription__
-            </p>
-  
-            <div>
-              <button id="sponsorStart" class="greenButton popupElement">__MSG_sponsorStart__</button>
-            </div>
-  
-            <sub class="popupElement">__MSG_popupHint__</sub>
-
-            <div id="submissionSection"  class="popupElement" style="display: none">
-              <b>Sponsor Editing has been moved and will appear after you click submit</b>
-
-              <br/>
-      
-              <div id="submitTimesContainer" class="popupElement" style="display: none">
-
-                <button id="submitTimes" class="smallButton popupElement">__MSG_submitTimesButton__</button>
-
-              </div>
-
-            </div>
-
-            <div id="discordButtonContainer" class="popupElement" style="display: none">
-              <br/>
-
-              <a href="https://discord.gg/QnmVMpU" class="popupElement" target="_blank"><img src="https://www.logolynx.com/images/logolynx/1b/1bcc0f0aefe71b2c8ce66ffe8645d365.png" height="32px"/></a>
-
-              <br/>
-
-                __MSG_discordAdvert__
-
-              <br/>
-
-              <span id="hideDiscordButton" class="smallLink popupElement">__MSG_hideThis__</span>
-            </div>
-
-            <div>
-              <br/>
-
-              <button id="whitelistChannel" class="whitelistButton popupElement">__MSG_whitelistChannel__</button>
-              <button id="unwhitelistChannel" class="whitelistButton popupElement" style="display: none">__MSG_removeFromWhitelist__</button>
-
-              <div id="whitelistForceCheck" style="text-decoration: underline; cursor: pointer;display: none">
-                __MSG_forceChannelCheckPopup__
-              </div>
-            </div>
-
-            <br/>
-
-            <button id="reportAnIssue" class="dangerButton popupElement">__MSG_voteOnTime__</button>
-
-            <div id="issueReporterContainer"  class="popupElement" style="display: none">
-
-              <h3 style="margin-top: 0px" class="popupElement">__MSG_voteOnTime__</h3>
-
-              <div id="issueReporterTimeButtons" class="popupElement">
-
-              </div>
-
-            </div>
-
-            <br/>
-            <br/>
-
-          </div>
-
-          <div>
-            <button id="disableSkipping" class="greenButton popupElement">__MSG_disableSkipping__</button>
-            <button id="enableSkipping" class="whitelistButton popupElement" style="display: none">__MSG_enableSkipping__</button>
-          </div>
-
-          <h2 class="recordingSubtitle popupElement">__MSG_yourWork__</h2>
-
-          <p class="popupElement">
-            <span id="sponsorTimesContributionsContainer"  class="popupElement" style="display: none">
-                __MSG_soFarUHSubmited__
-                <span id="sponsorTimesContributionsDisplay" class="popupElement">
-                  0
-                </span>
-                <span id="sponsorTimesContributionsDisplayEndWord" class="popupElement">__MSG_Sponsors__</span>.
-            </span>
-
-            <span id="sponsorTimesViewsContainer"  class="popupElement" style="display: none">
-                __MSG_savedPeopleFrom__
-                <span id="sponsorTimesViewsDisplay" class="popupElement">
-                  0
-                </span>
-                <span id="sponsorTimesViewsDisplayEndWord" class="popupElement">__MSG_Segments__</span>.
-            </span>
-
-            <span id="sponsorTimesOthersTimeSavedContainer"  class="popupElement" style="display: none">
-              __MSG_youHaveSavedTime__
-              <span id="sponsorTimesOthersTimeSavedDisplay" class="popupElement">
-                0
-              </span>
-              <span id="sponsorTimesOthersTimeSavedEndWord" class="popupElement">__MSG_minsLower__</span>
-
-              <span class="popupElement">__MSG_youHaveSavedTimeEnd__</span>
-            </span>
-
-            <div id="sponsorTimesSkipsDoneContainer"  class="popupElement" style="display: none">
-              __MSG_youHaveSkipped__
-              <span id="sponsorTimesSkipsDoneDisplay" class="popupElement">
-                0
-              </span>
-              <span id="sponsorTimesSkipsDoneEndWord" class="popupElement">__MSG_Segments__</span>
-            </div>
-
-            <div id="sponsorTimeSavedContainer"  class="popupElement" style="display: none">
-              __MSG_youHaveSaved__
-              <span id="sponsorTimeSavedDisplay" class="popupElement">
-                0
-              </span>
-              <span id="sponsorTimeSavedEndWord" class="popupElement">__MSG_minsLower__</span>.
-
-              </br/>
-              </br/>
-            </div>
-
-            <div class="popupElement">
-              __MSG_viewLeaderboard__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">__MSG_here__</a>.
-            </div>
-          </p>
-
-          <div id="setUsernameContainer" class="popupElement">
-  
-            <button id="setUsernameButton" class="warningButton popupElement">__MSG_setUsername__</button>
-            <br/>
-            <sub class="popupElement">
-              __MSG_publicStats__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats" target="_blank">__MSG_here__</a>.
-            </sub>
-          </div>
-
-          <div id="setUsername" class="popupElement" style="display: none">
-              <h3>__MSG_setUsername__</h3>
-
-              <div id="setUsernameStatusContainer" style="display: none">
-                  <h2 id="setUsernameStatus"></h2>
-              </div>
-
-              <input id="usernameInput" hint="Username"></input>
-
-              <br/>
-              <br/>
-
-              <button id="submitUsername" class="warningButton popupElement">__MSG_setUsername__</button>
-          </div>
-
-          <div id="optionsButtonContainer" class="popupElement">
-              <br/>
-              <br/>
-    
-              <button id="optionsButton" class="dangerButton popupElement">__MSG_Options__</button>
-
-              <br/>
-              
-              <sub class="popupElement">
-                __MSG_optionsInfo__
-              </sub>
-
-              <br/>
-          </div>
-
-          <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">__MSG_showNotice__</button>
-        </div>
-    </center>
-  </body>
-
+  <p class="popupElement">
+    <span id="sponsorTimesContributionsContainer" class="popupElement" style="display: none">
+      __MSG_soFarUHSubmited__
+      <span id="sponsorTimesContributionsDisplay" class="popupElement">
+        0
+      </span>
+      <span id="sponsorTimesContributionsDisplayEndWord" class="popupElement">__MSG_Sponsors__</span>.
+    </span>
+    <span id="sponsorTimesViewsContainer" class="popupElement" style="display: none">
+      __MSG_savedPeopleFrom__
+      <span id="sponsorTimesViewsDisplay" class="popupElement">
+        0
+      </span>
+      <span id="sponsorTimesViewsDisplayEndWord" class="popupElement">__MSG_Segments__</span>.
+    </span>
+    <span id="sponsorTimesOthersTimeSavedContainer" class="popupElement" style="display: none">
+      __MSG_youHaveSavedTime__
+      <span id="sponsorTimesOthersTimeSavedDisplay" class="popupElement">
+        0
+      </span>
+      <span id="sponsorTimesOthersTimeSavedEndWord" class="popupElement">__MSG_minsLower__</span>
+      <span class="popupElement">__MSG_youHaveSavedTimeEnd__</span>
+    </span>
+  <div id="sponsorTimesSkipsDoneContainer" class="popupElement" style="display: none">
+    __MSG_youHaveSkipped__
+    <span id="sponsorTimesSkipsDoneDisplay" class="popupElement">
+      0
+    </span>
+    <span id="sponsorTimesSkipsDoneEndWord" class="popupElement">__MSG_Segments__</span>
+  </div>
+  <div id="sponsorTimeSavedContainer" class="popupElement" style="display: none">
+    __MSG_youHaveSaved__
+    <span id="sponsorTimeSavedDisplay" class="popupElement">
+      0
+    </span>
+    <span id="sponsorTimeSavedEndWord" class="popupElement">__MSG_minsLower__</span>.
+  </div>
+  <div class="popupElement">
+    __MSG_viewLeaderboard__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats"
+      target="_blank">__MSG_here__</a>.
+  </div>
+  </p>
+  <div id="setUsernameContainer" class="popupElement">
+    <button id="setUsernameButton" class="warningButton popupElement">__MSG_setUsername__</button>
+    <sub class="popupElement">
+      __MSG_publicStats__ <a class="popupElement discreteLink" href="https://sponsor.ajay.app/stats"
+        target="_blank">__MSG_here__</a>.
+    </sub>
+  </div>
+  <div id="setUsername" class="popupElement" style="display: none">
+    <h3>__MSG_setUsername__</h3>
+    <div id="setUsernameStatusContainer" style="display: none">
+      <h2 id="setUsernameStatus"></h2>
+    </div>
+    <input id="usernameInput" hint="Username"></input>
+    <button id="submitUsername" class="warningButton popupElement">__MSG_setUsername__</button>
+  </div>
+  <div id="optionsButtonContainer" class="popupElement">
+    <button id="optionsButton" class="dangerButton popupElement">__MSG_Options__</button>
+    <sub class="popupElement">
+      __MSG_optionsInfo__
+    </sub>
+  </div>
+  <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">__MSG_showNotice__</button>
   <!-- Scripts that need to load after the html -->
-  <script src="./js/vendor.js"></script>
-  <script src="./js/popup.js"></script>
+  <script src="./js/vendor.js" async></script>
+  <script src="./js/popup.js" async></script>
+</body>
+
 </html>
