@@ -19,18 +19,6 @@
     "channelWhitelisted": {
         "message": "Kanał dodany do wyjątków!"
     },
-    "Sponsor": {
-        "message": "sponsor"
-    },
-    "Sponsors": {
-        "message": "sponsorów"
-    },
-    "Segment": {
-        "message": "segment sponsorowany"
-    },
-    "Segments": {
-        "message": "segmentami sponsorowanymi"
-    },
     "upvoteButtonInfo": {
         "message": "Oceń pozytywnie to zgłoszenie"
     },
@@ -79,17 +67,8 @@
     "Unknown": {
         "message": "Wystąpił błąd podczas przesyłania twojego segmentu. Proszę spróbować ponownie później."
     },
-    "sponsorFound": {
-        "message": "Segmenty sponsora dla tego nagrania są już w bazie!"
-    },
     "sponsor404": {
-        "message": "Nie znaleziono segmentów sponsora"
-    },
-    "sponsorStart": {
-        "message": "Sponsor zaczyna się teraz"
-    },
-    "sponsorEnd": {
-        "message": "Sponsor kończy się teraz"
+        "message": "Nie znaleziono segmentów"
     },
     "noVideoID": {
         "message": "Nie znaleziono filmu na tej karcie. Jeśli wiesz, że to karta YouTube'a, zamknij to okienko i otwórz je ponownie. Jeśli to nie zadziała, spróbuj odświeżyć stronę."
@@ -106,20 +85,8 @@
     "connectionError": {
         "message": "Błąd z połączeniem. Kod błędu: "
     },
-    "wantToSubmit": {
-        "message": "Chcesz zgłosić segment sponsorowany dla filmu z id"
-    },
-    "leftTimes": {
-        "message": "Wygląda na to, że masz nie wysłane segmenty sponsora. Cofnij się do tej strony żeby je zgłosić (nie zostały usunięte)."
-    },
-    "clearTimes": {
-        "message": "Usuń segmenty reklamowe"
-    },
     "openPopup": {
         "message": "Otwórz okienko SponsorBlock"
-    },
-    "SubmitTimes": {
-        "message": "Zgłoś segmenty sponsora"
     },
     "submitCheck": {
         "message": "Czy na pewno chcesz to zamieścić?"
@@ -129,12 +96,6 @@
     },
     "removeFromWhitelist": {
         "message": "Usuń kanał z listy wyjątków"
-    },
-    "voteOnTime": {
-        "message": "Głosuj na segment sponsora"
-    },
-    "recordTimes": {
-        "message": "Nagraj czasy segmentów sponsorowanych"
     },
     "soFarUHSubmited": {
         "message": "Do tej pory zgłosiłeś"
@@ -147,15 +108,6 @@
     },
     "here": {
         "message": "tutaj"
-    },
-    "recordTimesDescription": {
-        "message": "Kliknij przycisk poniżej, gdy segment sponsorowany zaczyna się i kończy, by oznaczyć go i przesłać do bazy danych."
-    },
-    "popupHint": {
-        "message": "Podpowiedź: Klikając średnik kiedy zaznaczone jest zgłaszanie wideo możesz oznaczyć początek reklamy, znakiem cytatu oznaczysz jej koniec. (Klawisze można zmienić w opcjach)"
-    },
-    "lastTimes": {
-        "message": "Ostanie wybrane czasy reklam"
     },
     "clearTimesButton": {
         "message": "Usuń czasy"
@@ -205,15 +157,6 @@
     "whatDeleteButton": {
         "message": "Ten przycisk na odtwarzaczu YouTube wyczyści wszystkie twoje niewysłane segmenty dla bieżącego filmu."
     },
-    "disableViewTracking": {
-        "message": "Wyłącz licznik przewinięć"
-    },
-    "enableViewTracking": {
-        "message": "Włącz licznik przewinięć"
-    },
-    "whatViewTracking": {
-        "message": "Ta opcja monitoruje pominięte przez Ciebie segmenty i informuje zgłaszających, ile czasu Ci zaoszczędzili. Wraz z systemem głosowania pomaga też wykrywać spam w zgłoszeniach. Rozszerzenie wysyła zapytanie do serwera za każdym razem, kiedy pomijasz segment reklamowy. Miejmy nadzieję, że większość użytkowników tego nie wyłączy i licznik wyświetleń będzie rzetelny. :)"
-    },
     "showNotice": {
         "message": "Pokaż informacje ponownie"
     },
@@ -232,9 +175,6 @@
     "noticeUpdate2": {
         "message": "Jeśli nadal jej nie lubisz wybierz opcje nie pokazuj więcej.",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "Ustaw klawisz do oznaczania początku reklamy"
     },
     "setSubmitKeybind": {
         "message": "Ustaw klawisz do wysyłania czasów"
@@ -276,14 +216,8 @@
     "enableAutoSkip": {
         "message": "Włącz auto przewijanie"
     },
-    "autoSkipDescription": {
-        "message": "Auto przewijanie przewinie segment za ciebie, wyłączone wyświetli komunikat z pytaniem czy chcesz przewinąć reklamę."
-    },
     "audioNotification": {
         "message": "Powiadomienie dźwiękowe o przewinięciu"
-    },
-    "audioNotificationDescription": {
-        "message": "Powiadomienie dźwiękowe po pominięciu będzie odtwarzane za każdym razem, gdy sponsor zostanie pominięty. Jeśli wyłączone (lub automatyczne pomijanie jest wyłączone), dźwięk nie zostanie odtworzony."
     },
     "showTimeWithSkips": {
         "message": "Pokaż czas po usunięciu segmentów"
@@ -312,9 +246,6 @@
     "youHaveSavedTimeEnd": {
         "message": " czasu."
     },
-    "guildlinesSummary": {
-        "message": "- Upewnij się, że zgłaszany fragment zawiera tylko reklamę i nic więcej.\n- Upewnij się, że nie zostanie przewinięta wartościowa treść\n- Jeśli całe nagranie to reklama, proszę nie zgłaszaj go. Blokowanie całych nagrań pojawi się wkrótce.\n- Nie ukrywaj treści które są istotne dla użytkownika (nie ukrywaj informacji, że recenzja produktu została opłacona przez producenta)"
-    },
     "statusReminder": {
         "message": "Sprawdź status serwera na status.sponsor.ajay.app"
     },
@@ -335,9 +266,6 @@
     },
     "autoSkip": {
         "message": "Auto przewijanie"
-    },
-    "showSkipNotice": {
-        "message": "Pokaż informację po przewiniętym fragmencie"
     },
     "keybindCurrentlySet": {
         "message": ". Jest obecnie ustawione jako:"
@@ -374,9 +302,6 @@
     },
     "minDuration": {
         "message": "Minimalny czas trwania (sekundy):"
-    },
-    "minDurationDescription": {
-        "message": "Segmenty sponsorowane krótsze niż ustawiona wartość nie będą pomijane ani pokazywane w odtwarzaczu."
     },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
@@ -450,9 +375,12 @@
     "theKey": {
         "message": "Klucz"
     },
+    "keyAlreadyUsed": {
+        "message": "jest przypisane do innej akcji. Wybierz proszę inny klawisz."
+    },
     "to": {
         "message": "do",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponsor"
@@ -545,12 +473,6 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
-    "forceChannelCheck": {
-        "message": "Wymuś sprawdzenie kanału przed pominięciem sponsorów"
-    },
-    "whatForceChannelCheck": {
-        "message": "Domyślnie, rozszerzenie pominie sponsorów od razu, jeszcze zanim dowie się jaki to kanał. Pewne segmenty nie trwające nawet sekundy domyślnie mogą zostać pominięte na kanałach dodanych do wyjątków. Włączenie tej opcji temu zapobiegnie, ale wszystkie pominięcia będą nieco opóźnione, gdyż uzyskanie ID kanału może chwilę potrwać. Opóźnienie to może być nieodczuwalne, jeśli masz szybki internet."
     },
     "downvoteDescription": {
         "message": "Nieprawidłowy przedział czasowy"
