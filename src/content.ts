@@ -448,7 +448,7 @@ function cancelSponsorSchedule(): void {
  * 
  * @param currentTime Optional if you don't want to use the actual current time
  */
-function startSponsorSchedule(includeIntersectingSegments: boolean = false, currentTime?: number): void {
+function startSponsorSchedule(includeIntersectingSegments = false, currentTime?: number, includeNonIntersectingSegments = true): void {
     cancelSponsorSchedule();
 
     // Don't skip if advert playing and reset last checked time
@@ -470,7 +470,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
 
     if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
-    let skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments);
+    let skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
 
     if (skipInfo.index === -1) return;
 
@@ -499,6 +499,7 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
     let skippingFunction = () => {
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
+        let forcedIncludeNonIntersectingSegments = true;
 
         if (incorrectVideoCheck(videoID, currentSkip)) return;
 
@@ -510,10 +511,11 @@ function startSponsorSchedule(includeIntersectingSegments: boolean = false, curr
             } else {
                 forcedSkipTime = skipTime[1];
                 forcedIncludeIntersectingSegments = true;
+                forcedIncludeNonIntersectingSegments = false;
             }
         }
 
-        startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime);
+        startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
     };
 
     if (timeUntilSponsor <= 0) {
@@ -566,8 +568,9 @@ function sponsorsLookup(id: string) {
             // Check if an ad is playing
             updateAdFlag();
 
-             // Make sure it doesn't get double called with the playing event
-             if (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000) {
+            // Make sure it doesn't get double called with the playing event
+            if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3 
+                    || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
 
@@ -577,7 +580,8 @@ function sponsorsLookup(id: string) {
         });
         video.addEventListener('playing', () => {
             // Make sure it doesn't get double called with the play event
-            if (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000) {
+            if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3 
+                    || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
 
@@ -585,11 +589,11 @@ function sponsorsLookup(id: string) {
             }
         });
         video.addEventListener('seeking', () => {
-            // Reset lastCheckVideoTime
-            lastCheckVideoTime = -1
-            lastCheckTime = 0;
-
             if (!video.paused){
+                // Reset lastCheckVideoTime
+                lastCheckTime = Date.now();
+                lastCheckVideoTime = video.currentTime; 
+
                 startSponsorSchedule();
             }
         });
@@ -714,7 +718,7 @@ function startSkipScheduleCheckingForStartSponsors() {
         }
 
         if (startingSponsor !== -1) {
-            startSponsorSchedule(false, startingSponsor);
+            startSponsorSchedule(undefined, startingSponsor);
         } else {
             startSponsorSchedule();
         }
@@ -843,23 +847,23 @@ function whitelistCheck() {
     }
 
     // check if the start of segments were missed
-    if (sponsorTimes && sponsorTimes.length > 0) startSkipScheduleCheckingForStartSponsors();
+    if (Config.config.forceChannelCheck && sponsorTimes && sponsorTimes.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
 /**
  * Returns info about the next upcoming sponsor skip
  */
-function getNextSkipIndex(currentTime: number, includeIntersectingSegments: boolean): 
+function getNextSkipIndex(currentTime: number, includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean): 
         {array: SponsorTime[], index: number, endIndex: number, openNotice: boolean} {
 
-    let sponsorStartTimes = getStartTimes(sponsorTimes, includeIntersectingSegments);
-    let sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, includeIntersectingSegments, currentTime, true, true);
+    let sponsorStartTimes = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments);
+    let sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true, true);
 
     let minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
     let endTimeIndex = getLatestEndTimeIndex(sponsorTimes, minSponsorTimeIndex);
 
-    let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments);
-    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, currentTime, false, false);
+    let previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments);
+    let previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false, false);
 
     let minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
     let previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minPreviewSponsorTimeIndex);
@@ -933,14 +937,16 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
  * @param includeIntersectingSegments If true, it will include segments that start before 
  *  the current time, but end after
  */
-function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, minimum?: number, 
-        onlySkippableSponsors: boolean = false, hideHiddenSponsors: boolean = false): number[] {
+function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean,
+    minimum?: number, onlySkippableSponsors: boolean = false, hideHiddenSponsors: boolean = false): number[] {
     if (sponsorTimes === null) return [];
 
     let startTimes: number[] = [];
 
     for (let i = 0; i < sponsorTimes?.length; i++) {
-        if ((minimum === undefined || (sponsorTimes[i].segment[0] >= minimum || (includeIntersectingSegments && sponsorTimes[i].segment[1] > minimum))) 
+        if ((minimum === undefined
+                || ((includeNonIntersectingSegments && sponsorTimes[i].segment[0] >= minimum) 
+                    || (includeIntersectingSegments && sponsorTimes[i].segment[0] < minimum && sponsorTimes[i].segment[1] > minimum))) 
                 && (!onlySkippableSponsors || utils.getCategorySelection(sponsorTimes[i].category).option !== CategorySkipOption.ShowOverlay)
                 && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)) {
 
@@ -970,7 +976,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     // There will only be one submission if it is manual skip
     let autoSkip: boolean = utils.getCategorySelection(skippingSegments[0].category)?.option === CategorySkipOption.AutoSkip;
 
-    if (autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) {
+    if ((autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) && v.currentTime !== skipTime[1]) {
         v.currentTime = skipTime[1];
     }
 
@@ -1604,5 +1610,5 @@ function showTimeWithoutSkips(allSponsorTimes): void {
 		display.appendChild(duration);
 	}
 		
-    duration.innerText = (skipDuration <= 0 || isNaN(skipDuration)) ? "" : " ("+formatedTime+")";
+    duration.innerText = (skipDuration <= 0 || isNaN(skipDuration) || formatedTime.includes("NaN")) ? "" : " ("+formatedTime+")";
 }
