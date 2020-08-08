@@ -19,12 +19,6 @@
     "channelWhitelisted": {
         "message": "Channel Whitelisted!"
     },
-    "Sponsor": {
-        "message": "segment"
-    },
-    "Sponsors": {
-        "message": "segments"
-    },
    "Segment": {
         "message": "segment"
     },
