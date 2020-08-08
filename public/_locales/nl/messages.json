@@ -19,12 +19,6 @@
     "channelWhitelisted": {
         "message": "Kanaal gewhitelist!"
     },
-    "Sponsor": {
-        "message": "segment"
-    },
-    "Sponsors": {
-        "message": "segmenten"
-    },
     "Segment": {
         "message": "segment"
     },
@@ -56,7 +50,7 @@
         "message": "Nooit weergeven"
     },
     "hitGoBack": {
-        "message": "Druk op unskip om naar waar je vandaan komt te gaan."
+        "message": "Druk op unskip om terug te gaan naar waar je vandaan komt."
     },
     "unskip": {
         "message": "Unskip"
@@ -74,7 +68,7 @@
         "message": "Om individuele waarden te bewerken of te verwijderen, klik je op de info-knop of open je de extensie-popup door op het extensie-icoon in de rechterbovenhoek te klikken."
     },
     "clearThis": {
-        "message": "Weet je zeker dat je dit formulier wilt wissen?\n\n"
+        "message": "Weet je zeker dat je dit wilt wissen?\n\n"
     },
     "Unknown": {
         "message": "Er is een fout opgetreden bij het indienen van je sponsortijden. Probeer het later opnieuw."
@@ -92,7 +86,7 @@
         "message": "Segment Eindigt Nu"
     },
     "noVideoID": {
-        "message": "Er is geen YouTube-video gevonden op dit tabblad. Als je weet dat dit een YouTube-tabblad is, sluit je deze pop-up en open het opnieuw. Als dat niet werkt, probeer het tabblad opnieuw te laden."
+        "message": "Er is geen YouTube-video gevonden op dit tabblad. Als je weet dat dit een YouTube-tabblad is, sluit dan deze pop-up en open hem opnieuw. Als dat niet werkt, probeer dan het tabblad opnieuw te laden."
     },
     "success": {
         "message": "Succesvol!"
@@ -287,7 +281,7 @@
         "message": "uren"
     },
     "whatChangeUserID": {
-        "message": "Dit moet privé blijven. Beschouw dit als wachtwoord en mag met niemand worden gedeeld. Als iemand dit heeft, kunnen ze je imiteren."
+        "message": "Dit moet privé blijven. Dit is zoals een wachtwoord en mag met niemand worden gedeeld. Als iemand dit heeft, kunnen ze je imiteren."
     },
     "setUserID": {
         "message": "Stel Gebruiker-Id in"
