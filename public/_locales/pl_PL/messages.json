@@ -537,6 +537,9 @@
     "incorrectCategory": {
         "message": "Zła kategoria"
     },
+    "nonMusicCategoryOnMusic": {
+        "message": "Ten film jest skategoryzowany jako muzyka. Czy na pewno chcesz na nim zamieścić segmenty z kategoriami nieprzeznaczonymi do muzyki? Nie powinieneś ich dodawać, chyba że to faktycznie nie jest muzyka. Przeczytaj proszę wytyczne, jeśli masz wątpliwości."
+    },
     "multipleSegments": {
         "message": "Wiele segmentów"
     },
