@@ -526,7 +526,7 @@
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
-        "message": "Wymuś sprawdzenie kanału przed pomijaniem"
+        "message": "Wymuś sprawdzenie kanału przed pominięciem"
     },
     "whatForceChannelCheck": {
         "message": "Domyślnie, rozszerzenie pominie segmenty od razu, jeszcze zanim dowie się jaki to kanał. Domyślnie, pewne segmenty na początku filmu mogą zostać pominięte na kanałach dodanych do wyjątków. Włączenie tej opcji temu zapobiegnie, ale wszystkie pominięcia będą nieco opóźnione, gdyż uzyskanie ID kanału może chwilę potrwać. Opóźnienie to może być nieodczuwalne, jeśli masz szybki internet."
