@@ -190,6 +190,10 @@
     "showNotice": {
         "message": "Pokaż informacje ponownie"
     },
+    "longDescription": {
+        "message": "SponsorBlock pozwala pomijać sponsorów, intra, outra, przypomnienia o subskrypcjach i inne irytujące fragmenty filmów na YouTube. SponsorBlock jest opartym na crowdsourcingu rozszerzeniem do przeglądarki, które pozwala każdemu zgłosić początek i koniec segmentów sponsorowanych oraz innych segmentów w filmach na YouTube. Kiedy ktoś już zamieści te informacje, wszyscy pozostali z tym rozszerzeniem będą pomijać segment sponsorowany. Możesz również pomijać fragmenty teledysków bez muzyki.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Strona",
         "description": "Used on Firefox Store Page"
@@ -530,6 +534,9 @@
     },
     "whatForceChannelCheck": {
         "message": "Domyślnie, rozszerzenie pominie segmenty od razu, jeszcze zanim dowie się jaki to kanał. Domyślnie, pewne segmenty na początku filmu mogą zostać pominięte na kanałach dodanych do wyjątków. Włączenie tej opcji temu zapobiegnie, ale wszystkie pominięcia będą nieco opóźnione, gdyż uzyskanie ID kanału może chwilę potrwać. Opóźnienie to może być nieodczuwalne, jeśli masz szybki internet."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Rozważ włączenie \"Wymuś sprawdzenie kanału przed pominięciem\""
     },
     "downvoteDescription": {
         "message": "Nieprawidłowy przedział czasowy"
