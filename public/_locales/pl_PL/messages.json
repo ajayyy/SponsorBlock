@@ -184,6 +184,9 @@
     "whatDeleteButton": {
         "message": "Ten przycisk na odtwarzaczu YouTube wyczyści wszystkie twoje niewysłane segmenty dla bieżącego filmu."
     },
+    "enableViewTracking": {
+        "message": "Włącz monitorowanie liczby pominięć"
+    },
     "whatViewTracking": {
         "message": "Ta opcja monitoruje pomijane przez Ciebie segmenty, by dać znać użytkownikom, jak bardzo ich wkład pomógł innym, oraz w połączeniu z systemem głosowania zapobiegać dostawaniu się spamu do bazy danych. Rozszerzenie wysyła wiadomość do serwera za każdym razem, kiedy pomijasz segment. Miejmy nadzieję, że większość ludzi tego nie wyłączy i liczniki wyświetleń będą wiarygodne. :)"
     },
@@ -256,6 +259,9 @@
     "showTimeWithSkips": {
         "message": "Pokaż czas po usunięciu segmentów"
     },
+    "showTimeWithSkipsDescription": {
+        "message": "Czas ten pojawia się w nawiasie obok czasu bieżącego, pod paskiem postępu. Pokazuje on długość całego filmu po odjęciu wszystkich segmentów. Wliczają się w to segmenty ustawione jako \"pokaż na pasku\"."
+    },
     "youHaveSkipped": {
         "message": "Przewinąłeś "
     },
@@ -300,6 +306,9 @@
     },
     "autoSkip": {
         "message": "Auto przewijanie"
+    },
+    "showSkipNotice": {
+        "message": "Pokaż informację po pominięciu segmentu"
     },
     "keybindCurrentlySet": {
         "message": ". Jest obecnie ustawione jako:"
@@ -363,6 +372,9 @@
     },
     "areYouSureReset": {
         "message": "Czy na pewno chcesz to zresetować?"
+    },
+    "confirmPrivacy": {
+        "message": "Ten film został wykryty jako niepubliczny. Kliknij Anuluj, jeśli nie chcesz sprawdzać, czy są dla niego segmenty."
     },
     "unlistedCheck": {
         "message": "Ignoruj nielistowane/prywatne filmy"
@@ -453,7 +465,7 @@
         "message": "Nieopłacona/Własna promocja"
     },
     "category_selfpromo_description": {
-        "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, dotacjach czy informacje o tym, z kim współpracowali."
+        "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
     },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
@@ -498,6 +510,12 @@
     },
     "enableTestingServer": {
         "message": "Aktywuj serwer beta-testów"
+    },
+    "whatEnableTestingServer": {
+        "message": "Twoje segmenty i głosy NIE BĘDĄ uwzględniane na głównym serwerze. Używaj tego tylko do testowania."
+    },
+    "testingServerWarning": {
+        "message": "Żadne segmenty ani głosy NIE BĘDĄ uwzględniane na głównym serwerze podczas połączenia z serwerem testowym. Pamiętaj, żeby to wyłączyć, gdy zechcesz dodać realny wkład."
     },
     "bracketNow": {
         "message": "(Teraz)"
