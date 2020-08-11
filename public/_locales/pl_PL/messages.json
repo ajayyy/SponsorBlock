@@ -377,7 +377,7 @@
         "message": "Ten film został wykryty jako niepubliczny. Kliknij Anuluj, jeśli nie chcesz sprawdzać, czy są dla niego segmenty."
     },
     "unlistedCheck": {
-        "message": "Ignoruj nielistowane/prywatne filmy"
+        "message": "Ignoruj niepubliczne/prywatne filmy"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com jest teraz wspierany"
