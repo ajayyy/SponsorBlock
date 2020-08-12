@@ -386,7 +386,7 @@
         "message": "Importuj/Eksportuj wszystkie ustawienia"
     },
     "whatExportOptions": {
-        "message": "Oto cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój identyfikator użytkownika, więc uważaj, komu ją udostępniasz."
+        "message": "Jest to cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój identyfikator użytkownika, więc uważaj, komu ją udostępniasz."
     },
     "setOptions": {
         "message": "Zapisz ustawienia"
@@ -557,7 +557,7 @@
         "message": "Rozważ włączenie \"Wymuś sprawdzenie kanału przed pominięciem\""
     },
     "downvoteDescription": {
-        "message": "Nieprawidłowy przedział czasowy"
+        "message": "Niepoprawne/Zły czas"
     },
     "incorrectCategory": {
         "message": "Zła kategoria"
