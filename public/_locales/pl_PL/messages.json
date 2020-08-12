@@ -213,6 +213,9 @@
         "message": "Jeśli nadal jej nie lubisz wybierz opcje nie pokazuj więcej.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setStartSponsorShortcut": {
+        "message": "Ustaw klawisz do oznaczania początku segmentu"
+    },
     "setSubmitKeybind": {
         "message": "Ustaw klawisz do wysyłania czasów"
     },
