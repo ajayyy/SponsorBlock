@@ -74,7 +74,8 @@ The result is in `dist`. This can be loaded as an unpacked extension
 
 ## Developing with a clean profile
 
-Run `npm run dev` to run the extension using a clean browser profile with hot reloading. Use `npm run dev:firefox` for Firefox. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
+Run `npm run dev` to run the extension using a clean browser profile with hot reloading. Use `npm run dev:firefox` for Firefox. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).  
+Known chromium bug: Extension is not loaded properly on first start. Visit `chrome://extensions/` and reload the extension.
 
 # Credit
 
