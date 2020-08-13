@@ -352,6 +352,9 @@
     "minDurationDescription": {
         "message": "Segmenty krótsze niż ustawiona wartość nie będą pomijane ani pokazywane w odtwarzaczu."
     },
+    "shortCheck": {
+        "message": "Ten segment jest krótszy od ustawionego przez Ciebie minimalnego czasu trwania. Może to oznaczać, że ktoś już to zamieścił, ale nie widzisz tego przez to ustawienie. Czy na pewno chcesz to zamieścić?"
+    },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
     },
