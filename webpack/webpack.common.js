@@ -35,18 +35,11 @@ module.exports = env => ({
     },
     plugins: [
         // exclude locale files in moment
-        new CopyPlugin({
-          patterns: [
-            {
-              from: '.',
-              to: '../',
-              globOptions: {
-                ignore: ['manifest.json'],
-              },
-              context: './public',
-            }
-          ]
-        }),
+        new CopyPlugin([
+            { from: '.', to: '../', ignore: ['manifest.json'] }
+          ],
+          {context: 'public' }
+        ),
         new BuildManifest({
             browser: env.browser,
             pretty: env.mode === "production",
