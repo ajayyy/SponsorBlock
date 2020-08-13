@@ -17,12 +17,9 @@
   "devDependencies": {
     "@types/chrome": "0.0.91",
     "@types/firefox-webext-browser": "70.0.1",
-    "@types/jest": "^24.0.23",
     "@types/jquery": "^3.3.31",
     "copy-webpack-plugin": "^6.0.3",
-    "jest": "^26.4.0",
     "rimraf": "^3.0.0",
-    "ts-jest": "^26.2.0",
     "ts-loader": "^6.2.1",
     "typescript": "~3.7.3",
     "web-ext": "^5.0.0",
@@ -47,7 +44,7 @@
     "dev": "npm run build:dev && concurrently \"npm run web-run\" \"npm run build:watch\"",
     "dev:firefox": "npm run build:dev:firefox && concurrently \"npm run web-run:firefox\" \"npm run build:watch:firefox\"",
     "clean": "rimraf dist",
-    "test": "npx jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
