@@ -19,6 +19,9 @@
     "channelWhitelisted": {
         "message": "Kanał dodany do wyjątków!"
     },
+    "Segment": {
+        "message": "segment"
+    },
     "upvoteButtonInfo": {
         "message": "Oceń pozytywnie to zgłoszenie"
     },
@@ -384,6 +387,9 @@
     },
     "unlistedCheck": {
         "message": "Ignoruj niepubliczne/prywatne filmy"
+    },
+    "whatUnlistedCheck": {
+        "message": "Ta opcja spowolni nieco SponsorBlock. Wyszukiwanie istniejących segmentów wymaga wysłania ID filmu do serwera. Jeśli niepokoi Cię fakt wysyłania przez internet ID niepublicznych filmów, włącz tę opcję."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com jest teraz wspierany"
