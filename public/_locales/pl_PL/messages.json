@@ -430,6 +430,9 @@
     "copyDebugInformationFailed": {
         "message": "Nie udało się skopiować do schowka"
     },
+    "copyDebugInformationOptions": {
+        "message": "Kopiuje do schowka informacje do dostarczenia deweloperowi podczas zgłaszania błędu / gdy deweloper ich sobie zażyczy. Poufne informacje, takie jak ID użytkownika, kanały dodane do wyjątków i adres niestandardowego serwera zostały usunięte. Wciąż zawiera to jednak informacje takie jak twój user agent, przeglądarka, system operacyjny i wersja rozszerzenia. "
+    },
     "copyDebugInformationComplete": {
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
     },
