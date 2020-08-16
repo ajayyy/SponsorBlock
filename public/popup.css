@@ -1,39 +1,65 @@
 :root {
   --sb-main-bg-color: #222626;
-	--sb-main-fg-color: white;
-	--sb-gray-fg-color: #444848;
-	--sb-on-white-bg: black;
-	--sb-green-bg: #077B27;
+  --sb-main-fg-color: white;
+  --sb-gray-fg-color: #444848;
+  --sb-on-white-bg: black;
+  --sb-green-bg: #077B27;
 }
 
 #sponsorblockPopup {
-	background-color: var(--sb-main-bg-color);
-	color: var(--sb-main-fg-color);
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 14px;
-	overflow-y: scroll;
-	display: flex;
-	flex-flow: column nowrap;
+  background-color: var(--sb-main-bg-color);
+  color: var(--sb-main-fg-color);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 13px;
+  overflow-y: scroll;
+  display: flex;
+  flex-flow: column nowrap;
   align-items: center;
+  width: calc(100% - 6px);
+  height: calc(100% - 36px);
+  overflow-y: unset;
+  padding: 18px 3px;
+  text-align: center;
+}
+
+#videoInfo>p, #videoInfo>div>p {
   margin: 0;
-  min-width: 320px;
 }
 
 div.logoText {
-	display: flex;
-	align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  color: var(--sb-main-fg-color);
 }
 
-div.logoText > p {
-	font-size: 32px;
-	margin: 0;
+div.logoText>p, .recordingSubtitle {
+  font-size: 32px;
+  margin: -4px 0 -2px;
+  font-weight: bold;
+}
+
+.largeButton{
+  background: white;
+  /*font-weight: bold;*/
+  padding: 6px 24px;
+  font-size: 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: black;
+  height: 24px;
+  width: 152px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* disable extension */
+
 #disableExtension {
-	display: flex;
-	flex-flow: column nowrap;
-	align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 /* switch button */
@@ -42,6 +68,7 @@ div.logoText > p {
   display: flex;
   cursor: pointer;
 }
+
 .switchBg {
   display: block;
   height: 37px;
@@ -79,13 +106,15 @@ div.logoText > p {
   box-shadow: .75px .75px 3.8px 0px rgba(50, 50, 50, 0.45);
 }
 
-#toggleSwitch:checked ~ .switchDot {
+#toggleSwitch:checked~.switchDot {
   transform: translateX(40px);
 }
-#toggleSwitch:checked ~ .switchBg.green {
+
+#toggleSwitch:checked~.switchBg.green {
   opacity: 1 !important;
 }
-#toggleSwitch:checked ~ .switchBg.white {
+
+#toggleSwitch:checked~.switchBg.white {
   opacity: 0 !important;
   transition: opacity .2s step-end;
 }
@@ -97,9 +126,13 @@ div.logoText > p {
   margin: 0 6% 0 6%;
 }
 
-.sidebyside > div {
+.sidebyside>div {
   width: 50%;
   justify-content: center;
+}
+
+#videoInfo {
+  margin-bottom: 6px !important;
 }
 
 /* additional buttons */
@@ -110,52 +143,79 @@ div.logoText > p {
   align-items: center;
 }
 
-#additionalButtons > button {
-	background: none;
+#additionalButtons>button, button#setUsernameButton, #submitUsername {
+  background: none;
   border: none;
   color: white;
   width: fit-content;
   padding: 0;
 }
 
-#additionalButtons, #additionalButtons > button {
-	font-size: 16px;
+#additionalButtons, #additionalButtons>button {
+  font-size: 15px;
 }
 
-label > svg > path {
-	fill: var(--sb-main-fg-color);
+#usernameValue, #usernameInput, #sponsorTimesContributionsDisplay{
+  font-size: 19px;
 }
 
-label > p, #disableExtension > p {
+label>svg>path {
+  fill: var(--sb-main-fg-color);
+}
+
+label>p, #disableExtension>p, #usernameValue, #usernameElement > p,#sponsorTimesContributionsContainer > p {
   margin: 0;
 }
 
-.grayedOut > label > svg > path {
-	fill: var(--sb-gray-fg-color);
-}
-.grayedOut > label {
-	color: var(--sb-gray-fg-color);
+#usernameElement > p, #sponsorTimesContributionsContainer {
+  text-align: start;
 }
 
-label > svg.rotated {
-	transform: rotate(45deg);
+.grayedOut>label>svg>path {
+  fill: var(--sb-gray-fg-color);
 }
 
-label > svg, button > img {
-  margin: 0 8px 0 0;
+.grayedOut>label {
+  color: var(--sb-gray-fg-color);
 }
 
-#mainControls > label, #additionalButtons > button {
+label>svg.rotated {
+  transform: rotate(45deg);
+}
+
+label>svg, button#optionsButton>img, .logoText>img, #usernameValue {
+  margin-right: 8px;
+}
+
+#mainControls>label, #additionalButtons>button, div#setUsernameContainer {
   display: flex;
   flex-flow: row nowrap;
+}
+
+#usernameElement {
+  width: 137px;
+}
+
+#usernameValue{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#usernameInput {
+  background: none;
+  border: none;
+  color: var(--sb-main-fg-color);
+}
+
+/* footer */
+
+#sbFooter > a {
+  color: var(--sb-main-fg-color);
+  text-decoration: none;
 }
 
 /* end reset */
 
 #sponsorBlockPopupLogo {
-	vertical-align: text-bottom;
-}
-
-.logoText {
-	color: white;
+  vertical-align: text-bottom;
 }

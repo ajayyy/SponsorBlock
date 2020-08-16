@@ -65,7 +65,7 @@ async function runThePopup(messageListener?: MessageListener) {
     // sponsorTimesContributions
     "sponsorTimesContributionsContainer",
     "sponsorTimesContributionsDisplay",
-    "sponsorTimesContributionsDisplayEndWord",
+    //"sponsorTimesContributionsDisplayEndWord",
     // sponsorTimesViewsDisplay
     "sponsorTimesViewsContainer",
     "sponsorTimesViewsDisplay",
@@ -79,7 +79,7 @@ async function runThePopup(messageListener?: MessageListener) {
     "sponsorTimesSkipsDoneDisplay",
     "sponsorTimesSkipsDoneEndWord",
     // sponsorTimeSaved
-    "sponsorTimeSavedContainer",
+    //"sponsorTimeSavedContainer",
     "sponsorTimeSavedDisplay",
     "sponsorTimeSavedEndWord",
     // discordButtons
@@ -92,6 +92,7 @@ async function runThePopup(messageListener?: MessageListener) {
     "setUsernameStatus",
     "setUsername",
     "usernameInput",
+    "usernameValue",
     "submitUsername",
     // More
     "submissionSection",
@@ -170,12 +171,18 @@ async function runThePopup(messageListener?: MessageListener) {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
+    utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, (res) => {
+        if (res.status === 200) {
+            PageElements.usernameValue.innerText = JSON.parse(res.responseText).userName
+        }
+    })
+
     //get the amount of times this user has contributed and display it to thank them
     if (Config.config.sponsorTimesContributed != undefined) {
         if (Config.config.sponsorTimesContributed !== 1) {
-            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+            //PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
         } else {
-            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
+            //PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
         }
         PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed;
         PageElements.sponsorTimesContributionsContainer.style.display = "unset";
@@ -241,7 +248,7 @@ async function runThePopup(messageListener?: MessageListener) {
         }
 
         PageElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(Config.config.minutesSaved);
-        PageElements.sponsorTimeSavedContainer.style.display = "unset";
+        //PageElements.sponsorTimeSavedContainer.style.display = "unset";
     }
 
     messageHandler.query({
@@ -855,7 +862,7 @@ async function runThePopup(messageListener?: MessageListener) {
                 PageElements.usernameInput.style.display = "none";
 
                 PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("success");
-            } else  {
+            } else {
                 PageElements.setUsernameStatus.innerText = utils.getErrorMessage(response.status);
             }
         });

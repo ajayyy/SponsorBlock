@@ -134,13 +134,13 @@
          "message": "Vote On A Segment"
     },
     "soFarUHSubmited": {
-         "message": "So far, you've submitted"
+         "message": "Submissions:"
     },
     "savedPeopleFrom": {
-         "message": "You have saved people from "
+         "message": "You've saved people from "
     },
     "viewLeaderboard": {
-         "message": "View the leaderboard"
+         "message": "Leaderboard"
     },
     "here": {
         "message": "here"
@@ -159,6 +159,9 @@
     },
     "publicStats": {
         "message": "This is used on the public stats page to show off how much you've contributed. See it"
+    },
+    "Username": {
+        "message": "Username:"
     },
     "setUsername": {
         "message": "Set Username"
@@ -284,7 +287,7 @@
         "message": "This time appears in brackets next to the current time on below the seekbar. This shows the total video duration minus any segments. This includes segments marked as only \"Show In Seekbar\"."
     },
     "youHaveSkipped": {
-        "message": "You have skipped "
+        "message": "You've skipped "
     },
     "youHaveSaved": {
         "message": "You have saved yourself "
@@ -302,10 +305,10 @@
         "message": "hours"
     },
     "youHaveSavedTime": {
-        "message": "You have saved people"
+        "message": "You've saved people"
     },
     "youHaveSavedTimeEnd": {
-        "message": " of their lives."
+        "message": " of their lives"
     },
     "statusReminder": {
         "message": "Check status.sponsor.ajay.app for server status."
