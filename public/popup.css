@@ -20,6 +20,10 @@
   text-align: center;
 }
 
+#downloadedSponsorMessageTimes{
+  font-weight: bold;
+}
+
 #videoInfo>p, #videoInfo>div>p {
   margin: 0;
 }
@@ -45,8 +49,8 @@ div.logoText>p, .recordingSubtitle {
   border-radius: 25px;
   text-decoration: none;
   color: black;
-  min-height: 24px;
-  height: 24px;
+  min-height: 26px;
+  height: 26px;
   width: 152px;
   display: block;
   overflow: hidden;
