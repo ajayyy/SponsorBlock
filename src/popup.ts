@@ -57,7 +57,7 @@ async function runThePopup(messageListener?: MessageListener) {
     "enableSkipping",
     "toggleSwitch",
     // Options
-    "showNoticeAgain",
+    //"showNoticeAgain",
     "optionsButton",
     // More controls
     //"submitTimes",
@@ -71,7 +71,7 @@ async function runThePopup(messageListener?: MessageListener) {
     "sponsorTimesViewsDisplay",
     "sponsorTimesViewsDisplayEndWord",
     // sponsorTimesOthersTimeSaved
-    "sponsorTimesOthersTimeSavedContainer",
+    //"sponsorTimesOthersTimeSavedContainer",
     "sponsorTimesOthersTimeSavedDisplay",
     "sponsorTimesOthersTimeSavedEndWord",
     // sponsorTimesSkipsDone
@@ -125,7 +125,7 @@ async function runThePopup(messageListener?: MessageListener) {
     //PageElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
     //PageElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
     //PageElements.submitTimes.addEventListener("click", submitTimes);
-    PageElements.showNoticeAgain.addEventListener("click", showNoticeAgain);
+    //PageElements.showNoticeAgain.addEventListener("click", showNoticeAgain);
     PageElements.setUsernameButton.addEventListener("click", setUsernameButton);
     PageElements.submitUsername.addEventListener("click", submitUsername);
     PageElements.optionsButton.addEventListener("click", openOptions);
@@ -167,9 +167,9 @@ async function runThePopup(messageListener?: MessageListener) {
     //if the don't show notice again variable is true, an option to
     //  disable should be available
     let dontShowNotice = Config.config.dontShowNotice;
-    if (dontShowNotice != undefined && dontShowNotice) {
+    /*if (dontShowNotice != undefined && dontShowNotice) {
         PageElements.showNoticeAgain.style.display = "unset";
-    }
+    }*/
 
     utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, (res) => {
         if (res.status === 200) {
@@ -179,13 +179,13 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //get the amount of times this user has contributed and display it to thank them
     if (Config.config.sponsorTimesContributed != undefined) {
-        if (Config.config.sponsorTimesContributed !== 1) {
-            //PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+        /*if (Config.config.sponsorTimesContributed !== 1) {
+            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
         } else {
-            //PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
-        }
+            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
+        }*/
         PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed;
-        PageElements.sponsorTimesContributionsContainer.style.display = "unset";
+        PageElements.sponsorTimesContributionsContainer.style.display = "flex";
 
         //get the userID
         let userID = Config.config.userID;
@@ -220,7 +220,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         }
 
                         PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                        PageElements.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
+                        //PageElements.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
                     }
                 }
             });
@@ -784,11 +784,11 @@ async function runThePopup(messageListener?: MessageListener) {
         }
     }
   
-    function showNoticeAgain() {
+    /*function showNoticeAgain() {
         Config.config.dontShowNotice = false;
   
         PageElements.showNoticeAgain.style.display = "none";
-    }
+    }*/
 
     function updateStartTimeChosen() {
         //update startTimeChosen letiable
@@ -834,7 +834,7 @@ async function runThePopup(messageListener?: MessageListener) {
                 PageElements.usernameInput.style.display = "unset";
 
                 PageElements.setUsernameContainer.style.display = "none";
-                PageElements.setUsername.style.display = "unset";
+                PageElements.setUsername.style.display = "flex";
                 PageElements
                 PageElements.setUsernameStatusContainer.style.display = "none";
             } else {
@@ -1097,7 +1097,7 @@ async function runThePopup(messageListener?: MessageListener) {
 if (chrome.tabs != undefined) {
     //add the width restriction (because Firefox)
     let link = <HTMLLinkElement> document.getElementById("sponsorBlockStyleSheet");
-    (<CSSStyleSheet> link.sheet).insertRule('.popupBody { width: 325 }', 0);
+    //(<CSSStyleSheet> link.sheet).insertRule('.popupBody { width: 325 }', 0);
 
     //this means it is actually opened in the popup
     runThePopup();

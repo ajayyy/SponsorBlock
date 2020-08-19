@@ -11,14 +11,12 @@
   color: var(--sb-main-fg-color);
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 13px;
-  overflow-y: scroll;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   width: calc(100% - 6px);
-  height: calc(100% - 36px);
-  overflow-y: unset;
-  padding: 18px 3px;
+  height: calc(100% - 22px);
+  padding: 22px 3px 0;
   text-align: center;
 }
 
@@ -47,6 +45,7 @@ div.logoText>p, .recordingSubtitle {
   border-radius: 25px;
   text-decoration: none;
   color: black;
+  min-height: 24px;
   height: 24px;
   width: 152px;
   display: block;
@@ -131,10 +130,21 @@ div.logoText>p, .recordingSubtitle {
   justify-content: center;
 }
 
-#videoInfo {
+#mainControls, #sponsorTimesSkipsDoneContainer, .toggleSwitchContainer {
+  margin-bottom: 2px !important;
+}
+
+.recordingSubtitle {
+  margin-bottom: 4px !important;
+}
+
+.logoText {
   margin-bottom: 6px !important;
 }
 
+#videoInfo, .sidebyside, #sponsorTimesSkipsDoneContainer, .largeButton {
+  margin-bottom: 12px !important;
+}
 /* additional buttons */
 
 #additionalButtons {
@@ -163,13 +173,14 @@ label>svg>path {
   fill: var(--sb-main-fg-color);
 }
 
-label>p, #disableExtension>p, #usernameValue, #usernameElement > p,#sponsorTimesContributionsContainer > p {
+label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponsorTimesContributionsContainer > div > p, #usernameElement > div > #setUsername > #setUsernameStatusContainer > p {
   margin: 0;
 }
 
-#usernameElement > p, #sponsorTimesContributionsContainer {
+#usernameElement > div > p, #sponsorTimesContributionsContainer {
   text-align: start;
 }
+
 
 .grayedOut>label>svg>path {
   fill: var(--sb-gray-fg-color);
@@ -192,8 +203,19 @@ label>svg, button#optionsButton>img, .logoText>img, #usernameValue {
   flex-flow: row nowrap;
 }
 
-#usernameElement {
-  width: 137px;
+#mainControls>label, #additionalButtons>button, div#setUsernameContainer>button {
+  cursor: pointer;
+}
+
+#usernameElement > div, #sponsorTimesContributionsContainer > div {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+}
+
+.sidebyside > #usernameElement, .sidebyside > #sponsorTimesContributionsContainer {
+  display: flex;
+  align-items: center;
 }
 
 #usernameValue{
@@ -201,21 +223,25 @@ label>svg, button#optionsButton>img, .logoText>img, #usernameValue {
   text-overflow: ellipsis;
 }
 
+#setUsername {
+  display:flex;
+}
+
 #usernameInput {
   background: none;
+  padding: 0;
   border: none;
   color: var(--sb-main-fg-color);
+  width: calc(100% - 24px);
 }
 
 /* footer */
 
+#sbFooter {
+  margin-bottom: 28px;
+}
+
 #sbFooter > a {
   color: var(--sb-main-fg-color);
   text-decoration: none;
-}
-
-/* end reset */
-
-#sponsorBlockPopupLogo {
-  vertical-align: text-bottom;
 }

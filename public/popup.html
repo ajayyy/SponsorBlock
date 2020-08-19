@@ -24,7 +24,7 @@
     <div class="sidebyside">
       <div id="disableExtension">
         <!--github: mbledkowski/toggle-switch-->
-        <label for="toggleSwitch" class="toggleSwitchContainer bottomSpace">
+        <label for="toggleSwitch" class="toggleSwitchContainer">
           <input type="checkbox" style="display:none;" id="toggleSwitch" checked>
           <span class="switchBg shadow"></span>
           <span class="switchBg white"></span>
@@ -55,6 +55,7 @@
     <h1 class="recordingSubtitle">__MSG_yourWork__</h1>
     <div class="sidebyside">
       <div id="usernameElement">
+        <div>
         <p>__MSG_Username__</p>
         <div id="setUsernameContainer">
           <p id="usernameValue"></p>
@@ -71,12 +72,15 @@
             <img src="/icons/check.svg" alt="__MSG_setUsername__" width="16" height="16">
           </button>
         </div>
+        </div>
       </div>
       <div id="sponsorTimesContributionsContainer" style="display: none">
+        <div>
         <p>__MSG_soFarUHSubmited__</p>
         <span id="sponsorTimesContributionsDisplay">
           0
         </span>
+        </div>
       </div>
     </div>
 
@@ -104,7 +108,6 @@
     </div>
     <a class="discreteLink largeButton" href="https://sponsor.ajay.app/stats"
       target="_blank">__MSG_viewLeaderboard__</a>
-    <button id="showNoticeAgain" style="display: none">__MSG_showNotice__</button>
     <footer id="sbFooter">
       <a href="https://sponsor.ajay.app" target="_blank" rel="noopener">Website</a> |
       <a href="https://github.com/ajayyy/SponsorBlock" target="_blank" rel="noopener">GitHub</a> |
