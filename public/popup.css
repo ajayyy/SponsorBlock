@@ -10,7 +10,7 @@
   background-color: var(--sb-main-bg-color);
   color: var(--sb-main-fg-color);
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
