@@ -1264,12 +1264,17 @@ function openInfoMenu() {
                 //old youtube theme
                 parentNode = document.getElementById("watch7-sidebar-contents");
             }
-                
 
             //make the logo source not 404
             //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
             let logo = <HTMLImageElement> popup.querySelector("#sponsorBlockPopupLogo");
+            let settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
+            let edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
+            let check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
             logo.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+            settings.src = chrome.extension.getURL("icons/settings.svg");
+            edit.src = chrome.extension.getURL("icons/pencil.svg");
+            check.src = chrome.extension.getURL("icons/check.svg");
 
             //remove the style sheet and font that are not necessary
             popup.querySelector("#sponsorBlockPopupFont").remove();
