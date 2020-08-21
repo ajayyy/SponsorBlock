@@ -139,6 +139,9 @@
     "recordTimesDescription": {
         "message": "Kliknij przycisk poniżej, gdy segment zaczyna się i kończy, by oznaczyć go i przesłać do bazy danych."
     },
+    "popupHint": {
+        "message": "Podpowiedź: Wciśnij średnik, koncentrując się na filmie, aby oznaczyć początek/koniec segmentu, i cudzysłów, by go wysłać. (Klawisze można zmienić w opcjach)"
+    },
     "clearTimesButton": {
         "message": "Usuń czasy"
     },
@@ -254,13 +257,16 @@
         "message": "Pominięto"
     },
     "disableAutoSkip": {
-        "message": "Wyłącz auto przewijanie"
+        "message": "Wyłącz autopomijanie"
     },
     "enableAutoSkip": {
-        "message": "Włącz auto przewijanie"
+        "message": "Włącz autopomijanie"
     },
     "audioNotification": {
-        "message": "Powiadomienie dźwiękowe o przewinięciu"
+        "message": "Powiadomienie dźwiękowe przy pominięciu"
+    },
+    "audioNotificationDescription": {
+        "message": "Powiadomienie dźwiękowe przy pominięciu będzie odtwarzane za każdym razem, gdy pomijany jest segment. Jeśli wyłączone (lub automatyczne pomijanie jest wyłączone), dźwięk nie zostanie odtworzony."
     },
     "showTimeWithSkips": {
         "message": "Pokaż czas po usunięciu segmentów"
@@ -311,7 +317,7 @@
         "message": "Stworzony przez"
     },
     "autoSkip": {
-        "message": "Auto przewijanie"
+        "message": "Autopomijanie"
     },
     "showSkipNotice": {
         "message": "Pokaż informację po pominięciu segmentu"
@@ -326,7 +332,7 @@
         "message": "Invidious (invidio.us) to nieoficjalny klient YouTube'a. Aby włączyć dla niego wsparcie musisz przyznać dodatkowe uprawnienia. W Chrome'ie i innych przeglądarkach bazujących na Chromium, ta opcja nie działa w trybie incognito."
     },
     "optionsInfo": {
-        "message": "Włącz wsparcie dla Invidious, wyłącz auto przewijanie, ukryj przyciski i więcej."
+        "message": "Włącz wsparcie dla Invidious, wyłącz autopomijanie, ukryj przyciski i więcej."
     },
     "addInvidiousInstance": {
         "message": "Dodaj instancje Invidious"
@@ -597,7 +603,7 @@
         "message": "Otwórz opcje, aby pominąć intra, outra, merch, itp."
     },
     "unsubmittedWarning": {
-        "message": "Powiadomienie o nieprzesłanych segmentach"
+        "message": "Powiadomienie o niewysłanych segmentach"
     },
     "unsubmittedWarningDescription": {
         "message": "Wyślij powiadomienie po opuszczeniu filmu z segmentami, które nie zostały przesłane"
