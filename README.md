@@ -80,7 +80,7 @@ Run `npm run dev` to run the extension using a clean browser profile with hot re
 
 The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used.
 
-Originally forked from [YTSponsorSkip](https://github.com/OfficialNoob/YTSponsorSkip), but zero code remains.
+Originally forked from [YTSponsorSkip](https://github.com/NDevTK/YTSponsorSkip), but zero code remains.
 
 Some icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> and are licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
 
