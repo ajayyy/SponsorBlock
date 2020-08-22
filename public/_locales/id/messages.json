@@ -289,6 +289,15 @@
     "hoursLower": {
         "message": "jam"
     },
+    "youHaveSavedTime": {
+        "message": "Kamu sudah menghemat waktu orang lain"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " dari hidup mereka."
+    },
+    "statusReminder": {
+        "message": "Cek status.sponsor.ajay.app untuk status server."
+    },
     "changeUserID": {
         "message": "Impor/Ekspor UserID"
     },
