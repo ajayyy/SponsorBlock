@@ -22,6 +22,9 @@
     "Segment": {
         "message": "segment"
     },
+    "Segments": {
+        "message": "segmenty"
+    },
     "upvoteButtonInfo": {
         "message": "Oceń pozytywnie to zgłoszenie"
     },
@@ -311,7 +314,7 @@
         "message": "Ustaw identyfikator użytkownika"
     },
     "userIDChangeWarning": {
-        "message": "Uwaga: Zmiana identyfikatora użytkownika jest nieodwracalna. Czy na pewno chcesz to zrobić? Na wszelki wypadek skopiuj swój poprzedni."
+        "message": "Uwaga: Zmiana identyfikatora użytkownika jest trwała. Czy na pewno chcesz to zrobić? Na wszelki wypadek skopiuj swój poprzedni."
     },
     "createdBy": {
         "message": "Stworzony przez"
@@ -408,6 +411,9 @@
     },
     "setOptions": {
         "message": "Zapisz ustawienia"
+    },
+    "exportOptionsWarning": {
+        "message": "Uwaga: Zmiana ustawień jest trwała i może popsuć twoją instalację. Czy na pewno chcesz to zrobić? Na wszelki wypadek utwórz kopię poprzednich."
     },
     "incorrectlyFormattedOptions": {
         "message": "Ten JSON nie został poprawnie sformatowany. Twoje opcje nie zostały zmienione."
