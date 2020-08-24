@@ -1,6 +1,6 @@
 {
     "fullName": {
-        "message": "SponsorBlock untuk YouTube - Lewati Sponsorships",
+        "message": "SponsorBlock untuk YouTube - Lewati Sponsor",
         "description": "Name of the extension."
     },
     "Description": {
@@ -203,7 +203,7 @@
         "message": "Tampilkan Pemberitahuan Lagi"
     },
     "longDescription": {
-        "message": "SponsorBlock membuat anda melewati sponsor, intro, outro, pengingat subscribe dan segmen mengganggu lainnya di video YouTube. SponsorBlock adalah ekstensi browser crowdsourced yang membolehkan siapa saja mengirim waktu awal dan akhir dari segmen sponsor dan segmen video YouTube lainnya. Setelah seseorang mengirim informasi ini, orang lain yang memakai ekstensi ini akan melewati segmen sponsor di video yang sama. Anda juga dapat melewati bagian non-musik di musik video.",
+        "message": "SponsorBlock membuat anda melewati sponsor, intro, outro, pengingat berlangganan dan segmen mengganggu lainnya di video YouTube. SponsorBlock adalah ekstensi browser crowdsourced yang membolehkan siapa saja mengirim waktu awal dan akhir dari segmen sponsor dan segmen video YouTube lainnya. Setelah seseorang mengirim informasi ini, orang lain yang memakai ekstensi ini akan melewati segmen sponsor di video yang sama. Anda juga dapat melewati bagian non-musik di musik video.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -371,7 +371,7 @@
         "message": "Tampilkan Tombol Unggah"
     },
     "whatUploadButton": {
-        "message": "Tombol ini muncul pada pemutar YouTube saat anda memilih timestamp dan siap untuk dikirimkan."
+        "message": "Tombol ini muncul di pemutar video YouTube setelah kamu memilih stempel waktu dan siap untuk dikirimkan."
     },
     "customServerAddress": {
         "message": "Alamat Server SponsorBlock"
