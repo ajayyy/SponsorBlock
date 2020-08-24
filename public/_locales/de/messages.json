@@ -89,7 +89,7 @@
         "message": "Keine YouTube-Videos in diesem Tab gefunden. Wenn dies ein Youtube-Tab ist, schließe dieses Pop-up und öffne es erneut. Wenn das nicht hilft, versuche den Tab neu zu laden."
     },
     "success": {
-        "message": "Erfolg!"
+        "message": "Geschafft!"
     },
     "voted": {
         "message": "Abgestimmt!"
