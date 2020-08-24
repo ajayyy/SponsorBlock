@@ -19,6 +19,12 @@
     "channelWhitelisted": {
         "message": "Chaîne mise sur liste blanche !"
     },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segments"
+    },
     "upvoteButtonInfo": {
         "message": "Voter pour cette entrée"
     },
@@ -67,6 +73,18 @@
     "Unknown": {
         "message": "Une erreur s'est produite lors de la soumission, veuillez réessayer plus tard."
     },
+    "sponsorFound": {
+        "message": "Cette vidéo a des segments dans la base de données!"
+    },
+    "sponsor404": {
+        "message": "Aucun segment trouvé"
+    },
+    "sponsorStart": {
+        "message": "Début du segement"
+    },
+    "sponsorEnd": {
+        "message": "Fin du segment"
+    },
     "noVideoID": {
         "message": "Ceci n'est pas un onglet YouTube, ou vous avez cliqué trop tôt. \n Si vous êtes sûr(e) que c'est un onglet YouTube, fermez cette fenêtre et réessayez."
     },
@@ -82,6 +100,9 @@
     "connectionError": {
         "message": "Erreur de connexion. Code d'erreur : "
     },
+    "leftTimes": {
+        "message": "Vous semblez avoir laissé certains segments non soumis. Retournez à cette page pour les soumettre (ils ne sont pas supprimés)."
+    },
     "openPopup": {
         "message": "Ouvrir l'encart SponsorBlock"
     },
@@ -93,6 +114,9 @@
     },
     "removeFromWhitelist": {
         "message": "Supprimer la chaîne de la liste blanche"
+    },
+    "voteOnTime": {
+        "message": "Voter pour un segment"
     },
     "soFarUHSubmited": {
         "message": "Vous avez soumis jusqu'à présent"
@@ -267,6 +291,9 @@
     "autoSkip": {
         "message": "Passage automatique"
     },
+    "showSkipNotice": {
+        "message": "Notifier après qu'un segment ait été sauté"
+    },
     "keybindCurrentlySet": {
         "message": ". Il est actuellement réglé sur :"
     },
@@ -409,6 +436,9 @@
     "category_outro": {
         "message": "Générique de fin"
     },
+    "category_outro_description": {
+        "message": "Crédits ou quand les cartes de terminaison YouTube apparaissent. Pas pour les conclusions avec des informations. Cela ne doit pas être utilisé sur les vidéos de musique."
+    },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
     },
@@ -503,6 +533,9 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "Si ça se reproduit, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Forcer la vérification du canal avant de passer"
     },
     "downvoteDescription": {
         "message": "Segment de mauvaise qualité"
