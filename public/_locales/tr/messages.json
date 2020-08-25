@@ -15,18 +15,6 @@
     "channelWhitelisted": {
         "message": "Kanal beyazlistede!"
     },
-    "Sponsor": {
-        "message": "sponsor"
-    },
-    "Sponsors": {
-        "message": "sponsorlar"
-    },
-    "Segment": {
-        "message": "sponsor bölümü"
-    },
-    "Segments": {
-        "message": "sponsor bölümleri"
-    },
     "upvoteButtonInfo": {
         "message": "Bu öneriye oy ver"
     },
@@ -75,18 +63,6 @@
     "Unknown": {
         "message": "Sponsor sürelerini yollarken bir sorun oluştur, lütfen tekrar deneyin."
     },
-    "sponsorFound": {
-        "message": "Bu videonun sponsorları veritabanında mevcut!"
-    },
-    "sponsor404": {
-        "message": "Sponsor bulunamadı"
-    },
-    "sponsorStart": {
-        "message": "Sponsorluk Şimdi Başlıyor"
-    },
-    "sponsorEnd": {
-        "message": "Sponsorluk Şimdi Bitiyor"
-    },
     "noVideoID": {
         "message": "Bu sekmede YouTube videosu bulunamadı. Bu sekmenin bir YouTube sekmesi olduğundan eminseniz, bu pencereyi kapatıp, tekrar açın. Eğer o da işe yaramazsa, sekmeyi yenilemeyi deneyin."
     },
@@ -102,20 +78,8 @@
     "connectionError": {
         "message": "Bağlantı hatası oluştu. Hata kodu: "
     },
-    "wantToSubmit": {
-        "message": "Bu video için sponsor sürelerini göndermek istiyor musunuz"
-    },
-    "leftTimes": {
-        "message": "Bazı sponsor sürelerini göndermediğinizi görüyoruz. Göndermek için sayfaya geri dönebilirsiniz (hala mevcutlar)."
-    },
-    "clearTimes": {
-        "message": "Sponsor Sürelerini Temizle"
-    },
     "openPopup": {
         "message": "SponsorBlock Penceresini Aç"
-    },
-    "SubmitTimes": {
-        "message": "Sponsor Sürelerini Gönder"
     },
     "submitCheck": {
         "message": "Bunu göndermek istediğinize emin misiniz?"
@@ -125,12 +89,6 @@
     },
     "removeFromWhitelist": {
         "message": "Kanalı Beyazlisteden Kaldır"
-    },
-    "voteOnTime": {
-        "message": "Sponsor Süresi için Oy Kullan"
-    },
-    "recordTimes": {
-        "message": "Sponsor Süresini Kaydet"
     },
     "soFarUHSubmited": {
         "message": "Şu an kadar yolladığınız"
@@ -143,15 +101,6 @@
     },
     "here": {
         "message": "burada"
-    },
-    "recordTimesDescription": {
-        "message": "Kaydetmek ve veritabanına yollamak için sponsorluk başladığında ve bittiğinde aşağıdaki butona tıklayın."
-    },
-    "popupHint": {
-        "message": "İpuçu: Sponsorluk süresinin başını ve sonunu raporlamak için video üzerindeyken noktalı virgül tuşuna, yollamak için tırnak tuşuna basınız. (Bu ayarlardan değiştirilebilir.)"
-    },
-    "lastTimes": {
-        "message": "Son Sponsor Mesajı Süresi Seçildi"
     },
     "clearTimesButton": {
         "message": "Süreleri Temizle"
@@ -201,15 +150,6 @@
     "whatDeleteButton": {
         "message": "Bu, YouTube oynatıcısındaki mevcut video için gönderilmemiş bölümleri temizleyen butondur."
     },
-    "disableViewTracking": {
-        "message": "Sponsor Atlama Takip Sayacını Devredışı Bırak"
-    },
-    "enableViewTracking": {
-        "message": "Sponsor Atlama Takip Sayacını Devreye Sok"
-    },
-    "whatViewTracking": {
-        "message": "Bu özellik, önerinizin diğerlerine ne kadar işe yaradığını bildirmek için atladığınız sponsorları kaydeder ve istenmeyen önerilerin veritabanına girmesini engellemek adına bir ölçü olarak kullanılır. Her sponsor atladığınızda eklenti sunucuya bir mesaj yollar. Umarım bu ayarı birçok kişi değiştirmez ve böylece görüntülenme sayıları doğru kalır. :)"
-    },
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
     },
@@ -228,9 +168,6 @@
     "noticeUpdate2": {
         "message": "Eğer hala beğenmediyseniz, asla gösterme butonuna basın.",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "Sponsor bölümünün başlangıcı için bir tuş belirleyin"
     },
     "setSubmitKeybind": {
         "message": "Gönderim için bir tuş belirleyin"
@@ -272,14 +209,8 @@
     "enableAutoSkip": {
         "message": "Otomatik Atlamayı Devreye Sok"
     },
-    "autoSkipDescription": {
-        "message": "Otomatik atlama sponsorları sizin için atlayacak. Kapalı olduğunda, atlamak istediğinizi soran bir uyarı ekranı belirecek."
-    },
     "audioNotification": {
         "message": "Atlamada Sesli Bildirim"
-    },
-    "audioNotificationDescription": {
-        "message": "Atlamada sesli bildirim, bir sponsor bölümü atlandığında bir ses çalar. Eğer devredışı bırakıldıysa (veya otomatik atlama devredışı bırakıldıysa), herhangi bir ses çalmayacak."
     },
     "youHaveSkipped": {
         "message": "Bunu atladınız "
@@ -305,9 +236,6 @@
     "youHaveSavedTimeEnd": {
         "message": " kadar vaktini kurtardınız."
     },
-    "guildlinesSummary": {
-        "message": "- Bölümünüzün sadece ücretli tanıtım bölümü olduğundan emin olun.\n- Bu bölümü atlamanın önemli içerik bölümlerini de atlamayacağından emin olun. \n- Eğer tüm bölüm sponsor ise, lütfen raporlamayın. Tüm video rapor sistemimiz yakında gelecek.\n- Eğer videoda taraflılık içeren bir uyarı var raporlamayın (Eğer bir inceleme videosu sponsorluysa, bundan bahsettikleri kısmı atlatmayın)."
-    },
     "statusReminder": {
         "message": "Sunucu durumu için status.sponsor.ajay.app kontrol edin."
     },
@@ -328,9 +256,6 @@
     },
     "autoSkip": {
         "message": "Otomatik Atla"
-    },
-    "showSkipNotice": {
-        "message": "Sponsor Atladıktan Sonra Uyarı Göster"
     },
     "keybindCurrentlySet": {
         "message": ". Şu an buna ayarlı:"
@@ -368,9 +293,6 @@
     "minDuration": {
         "message": "Minimum süre (saniye):"
     },
-    "minDurationDescription": {
-        "message": "Belirlenen değerden kısa olan sponsor bölümleri atlanmayacak veya oynatıcıda gözükmeyecektir."
-    },
     "shortCheck": {
         "message": "Sıradaki öneri belirlediğiniz minimum süre ayarından daha kısa. Bu zaten yollandığı ve bu ayardan dolayı yok sayıldığı anlamına gelebilir. Göndermek istediğinizden emin misiniz?"
     },
@@ -398,14 +320,8 @@
     "areYouSureReset": {
         "message": "Bunu sıfırlamak istediğinize emin misiniz?"
     },
-    "confirmPrivacy": {
-        "message": "Bu videonun listede olmadığı belirlendi. Bu videoyu sponsorlar için kontrol etmek istemiyorsanız iptale basınız."
-    },
     "unlistedCheck": {
         "message": "Listedışı/Özel Videoları Görmezden Gel"
-    },
-    "whatUnlistedCheck": {
-        "message": "Bu ayar SponsorBlock eklentisini az miktarda yavaşlatacaktır. Sponsor kontrolleri, sunucuya video kimlik numarası göndermeyi gerektirir. Eğer listedışı videoların, video kimlik numaralarının internet üzerinden gönderilmesini istemiyorsanız bu seçeneği aktive edin."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com şu an desteklenmektedir"
@@ -463,7 +379,7 @@
     },
     "to": {
         "message": "'e",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponsor"
@@ -538,15 +454,6 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "Bunu sürekli yaşıyorsanız, reklam engelleyiciniz tarafından gerçekleşiyor olabilir. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests adresini kontrol edin."
-    },
-    "forceChannelCheck": {
-        "message": "Sponsorları Atlamadan Önce Kanal Kontrolünü Zorla"
-    },
-    "whatForceChannelCheck": {
-        "message": "Varsayılan olarak, eklenti kanalın ne olduğunu bilmeden önce sponsorları atlayacaktır. Varsayılan olarak, beyaz listede olan kanallarda sıfır saniyelik sponsor bölümleri atlanacaktır. Bu ayarı aktifleştirmek bunu engelleyecektir ancak kanal kimlik bilgisini almak biraz vakit alacağından atlamalarda gecikmeler yaratabilir. Eğer hızlı bir internetiniz varsa bu gecikmeler farkedilmeyebilir."
-    },
-    "forceChannelCheckPopup": {
-        "message": "Sponsorları Atlamadan Önce Kanal Kontrolünü Zorlamayı Gözden Geçir"
     },
     "downvoteDescription": {
         "message": "Hatalı/Yanlış Zaman"

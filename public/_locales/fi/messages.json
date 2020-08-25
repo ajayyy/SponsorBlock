@@ -15,18 +15,6 @@
     "channelWhitelisted": {
         "message": "Kanava lisätty valkoiselle listalle!"
     },
-    "Sponsor": {
-        "message": "sponsori"
-    },
-    "Sponsors": {
-        "message": "sponsorit"
-    },
-    "Segment": {
-        "message": "sponsoroitu kohta"
-    },
-    "Segments": {
-        "message": "sponsoroidut kohdat"
-    },
     "upvoteButtonInfo": {
         "message": "Äänestä tätä lähetystä"
     },
@@ -72,18 +60,6 @@
     "Unknown": {
         "message": "Sponsorointiaikoja lähetettäessä tapahtui virhe, yritä myöhemmin uudelleen."
     },
-    "sponsorFound": {
-        "message": "Tämän videon sponsorit löytyvät tietokannasta!"
-    },
-    "sponsor404": {
-        "message": "Sponsoreita ei löytynyt"
-    },
-    "sponsorStart": {
-        "message": "Sponsorointi alkaa nyt"
-    },
-    "sponsorEnd": {
-        "message": "Sponsorointi päättyy nyt"
-    },
     "noVideoID": {
         "message": "Välilehdeltä ei löytynyt YouTube-videota. Jos olet varma, että tämä on YouTube-välilehti, sulje tämä ponnahdusikkuna ja avaa se uudelleen. Jos sekään ei toimi, yritä ladata välilehti uudelleen."
     },
@@ -99,14 +75,8 @@
     "connectionError": {
         "message": "Yhteysvirhe on tapahtunut. Virhekoodi: "
     },
-    "clearTimes": {
-        "message": "Tyhjennä sponsorointiajat"
-    },
     "openPopup": {
         "message": "Avaa SponsorBlock-ponnahdusikkuna"
-    },
-    "SubmitTimes": {
-        "message": "Lähetä sponsorointiajat"
     },
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
@@ -116,12 +86,6 @@
     },
     "removeFromWhitelist": {
         "message": "Poista kanava valkoiselta listalta"
-    },
-    "voteOnTime": {
-        "message": "Äänestä sponsorointiaikaa"
-    },
-    "recordTimes": {
-        "message": "Tallenna sponsoroinnin ajat"
     },
     "soFarUHSubmited": {
         "message": "Tähän mennessä, olet lähettänyt"
@@ -311,7 +275,7 @@
     },
     "to": {
         "message": "-",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponsori"

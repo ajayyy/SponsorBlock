@@ -1,8 +1,13 @@
 {
-    "Sponsor": {
-        "message": "sponzor"
+    "fullName": {
+        "message": "SponsorBlock pro YouTube - Přeskoč Sponzorství",
+        "description": "Name of the extension."
     },
-    "Sponsors": {
-        "message": "sponzoři"
+    "Description": {
+        "message": "Přeskoč sponzorství, žadonění o odběr a další v YouTube videích. Nahlaš sponzorované segmenty na videích co sleduješ a ušetři ostatním čas.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Server hlásí, že tento požadavek je neplatný"
     }
 }
