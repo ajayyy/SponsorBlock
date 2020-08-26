@@ -467,11 +467,17 @@
     "category_intro": {
         "message": "Przerwa/Animowane intro"
     },
+    "category_intro_description": {
+        "message": "Fragment bez faktycznej treści. Może to być pauza, statyczna klatka, powtarzająca się animacja. Nie powinno to być używane do przejść zawierających informacje."
+    },
     "category_intro_short": {
         "message": "Przerwa"
     },
     "category_outro": {
         "message": "Ekran końcowy/Napisy"
+    },
+    "category_outro_description": {
+        "message": "Napisy końcowe lub gdy pojawia się ekran końcowy. Nie do konkluzji zawierających informacje."
     },
     "category_interaction": {
         "message": "Przypomnienie o interakcji (Subskrybuj)"
@@ -582,6 +588,9 @@
     },
     "incorrectCategory": {
         "message": "Zła kategoria"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Ten film jest skategoryzowany jako muzyka. Czy jesteś pewien, że to jest sponsor? Jeśli jest to rzeczywiście \"segment niemuzyczny\", otwórz opcje rozszerzenia i włącz tę kategorię. Następnie możesz przesłać ten segment jako \"Niemuzyczny\" zamiast sponsora. Proszę przeczytać wytyczne, jeśli jesteś zdezorientowany."
     },
     "multipleSegments": {
         "message": "Wiele segmentów"
