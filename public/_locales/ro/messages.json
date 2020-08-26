@@ -396,9 +396,6 @@
     "category_intro": {
         "message": "Pauză/Animație Intro"
     },
-    "category_intro_description": {
-        "message": "Un interval fără conținut real. Poate fi o pauză, un cadru static, o animație care se repetă. Acestea nu ar trebui utilizate pentru tranziții care conțin informații sau nu ar trebui utilizate pe videoclipuri muzicale."
-    },
     "category_intro_short": {
         "message": "Pauză"
     },
@@ -505,9 +502,6 @@
     },
     "incorrectCategory": {
         "message": "Categorie Greșită"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Categoria acestui videoclip este muzică. Sunteți sigur că doriți să trimiteți segmente non-muzicale? Dacă acest videoclip nu este de fapt muzică, nu ar trebui să trimiteți acest segment. Vă rugăm să citiți recomandările dacă sunteți confuz."
     },
     "multipleSegments": {
         "message": "Segmente Multiple"
