@@ -467,17 +467,11 @@
     "category_intro": {
         "message": "Unterbrechung/Intro Animation"
     },
-    "category_intro_description": {
-        "message": "Ein Intervall ohne relevanten Inhalt. Beispiele dafür wären eine Pause, ein statisches Bild oder sich wiederholende Animationen. Dies sollte nicht für Übergänge benutzt werden, die Informationen erhalten oder für Musikvideos."
-    },
     "category_intro_short": {
         "message": "Unterbrechung"
     },
     "category_outro": {
         "message": "Endkarten/Credits"
-    },
-    "category_outro_description": {
-        "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für Schlussfolgerungen mit Informationen. Dies sollte nicht für Musikvideos verwendet werden."
     },
     "category_interaction": {
         "message": "Interaktions-Erinnerung (Abonnieren)"
@@ -588,9 +582,6 @@
     },
     "incorrectCategory": {
         "message": "Falsche Kategorie"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Dieses Video ist als Musik kategorisiert. Sind Sie sicher, dass Sie Segmente mit Nicht-Musikkategorien einreichen möchten? Wenn dieses Video nicht wirklich Musik ist, sollten Sie dieses Segment nicht einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
     },
     "multipleSegments": {
         "message": "Mehrere Segmente"
