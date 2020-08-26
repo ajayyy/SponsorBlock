@@ -1,1 +1,70 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock cho Youtube - Bỏ qua quảng cáo của nhà tài trợ",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Bỏ qua quảng cáo của nhà tài trợ, đoạn nài nỉ đòi đăng ký và nhiều thứ tương tự trong các video trên Youtube. Báo cáo đoạn quảng cáo nhà tài trợ trong những video bạn xem để giúp người khác tiết kiệm thời gian.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Máy chủ báo yêu cầu này không hợp lệ"
+    },
+    "429": {
+        "message": "Bạn đã đăng quá nhiều đoạn quảng cáo tài trợ cho video này, bạn có chắc có nhiều đến thế không?"
+    },
+    "409": {
+        "message": "Đoạn này đã được đăng rồi"
+    },
+    "channelWhitelisted": {
+        "message": "Kênh đã được bỏ chặn!"
+    },
+    "Segment": {
+        "message": "đoạn"
+    },
+    "Segments": {
+        "message": "những đoạn"
+    },
+    "upvoteButtonInfo": {
+        "message": "Bình chọn đoạn này"
+    },
+    "reportButtonTitle": {
+        "message": "Báo cáo"
+    },
+    "reportButtonInfo": {
+        "message": "Báo cáo đoạn này đăng sai."
+    },
+    "Dismiss": {
+        "message": "Đóng"
+    },
+    "Loading": {
+        "message": "Đang tải..."
+    },
+    "Mins": {
+        "message": "Phút"
+    },
+    "Secs": {
+        "message": "Giây"
+    },
+    "Hide": {
+        "message": "Không hiển thị nữa"
+    },
+    "hitGoBack": {
+        "message": "Ấn hủy bỏ qua để quay lại đoạn ban nãy."
+    },
+    "unskip": {
+        "message": "Hủy bỏ qua"
+    },
+    "reskip": {
+        "message": "Bỏ qua lại"
+    },
+    "paused": {
+        "message": "Đã dừng"
+    },
+    "manualPaused": {
+        "message": "Đã dừng bộ tính giờ"
+    },
+    "sponsor404": {
+        "message": "Không tìm thấy đoạn nào"
+    }
+}
