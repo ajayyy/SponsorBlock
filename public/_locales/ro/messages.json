@@ -396,11 +396,17 @@
     "category_intro": {
         "message": "Pauză/Animație Intro"
     },
+    "category_intro_description": {
+        "message": "Un interval fără conținut. Poate fi o pauză, un cadru static, o animație care se repeta. Nu ar trebui sa fie folosit pentru tranziții care conțin informații."
+    },
     "category_intro_short": {
         "message": "Pauză"
     },
     "category_outro": {
         "message": "Ecran De Final/Credite"
+    },
+    "category_outro_description": {
+        "message": "Credite sau atunci când apare ecranul de final YouTube. Nu pentru concluzii cu informații."
     },
     "category_interaction": {
         "message": "Reamintire de Interactiune (Abonare)"
@@ -502,6 +508,9 @@
     },
     "incorrectCategory": {
         "message": "Categorie Greșită"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Acest videoclip este categorisit ca muzică. Ești sigur ca există un sponsor? Dacă acesta este defapt un segment non-muzical, deschideți opțiunile extensiei și activați această categorie. Apoi, puteți trimite acest segment ca non-muzical în loc de sponsol. Vă rugăm să citiți ghidul dacă sunteți confuz."
     },
     "multipleSegments": {
         "message": "Segmente Multiple"
