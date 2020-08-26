@@ -445,6 +445,9 @@
     "theKey": {
         "message": "La chiave"
     },
+    "keyAlreadyUsed": {
+        "message": "è abbinata ad un'altra azione. Si prega di selezionare un'altra chiave."
+    },
     "to": {
         "message": "a",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -458,11 +461,17 @@
     "category_intro": {
         "message": "Animazione Interruzione/Introduzione"
     },
+    "category_intro_description": {
+        "message": "Un intervallo senza contenuto effettivo. Potrebbe essere una pausa, una schermata statica, un'animazione ripetuta. Non dovrebbe essere usato per transizioni contenenti informazioni."
+    },
     "category_intro_short": {
         "message": "Interruzione"
     },
     "category_outro": {
-        "message": "Conclusioni/Crediti"
+        "message": "Conclusioni/Titoli di Coda"
+    },
+    "category_outro_description": {
+        "message": "I titoli di coda o quando vengono mostrate annotazioni a fine video su YouTube. Non per conclusioni provviste di informazioni."
     },
     "category_interaction": {
         "message": "Promemoria di Interazione (Sottoscrizione)"
@@ -546,6 +555,9 @@
     },
     "channelDataNotFound": {
         "message": "ID canale non ancora caricato."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Considera l'Attivazione dell'opzione \"Forza la Verifica del Canale Prima del Salto\""
     },
     "downvoteDescription": {
         "message": "Tempo Non Corretto/Errato"
