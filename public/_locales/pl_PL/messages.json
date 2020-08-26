@@ -467,17 +467,11 @@
     "category_intro": {
         "message": "Przerwa/Animowane intro"
     },
-    "category_intro_description": {
-        "message": "Fragment bez faktycznej treści. Może to być pauza, statyczna klatka, powtarzająca się animacja. Nie powinno to być używane do przejść zawierających informacje ani w teledyskach."
-    },
     "category_intro_short": {
         "message": "Przerwa"
     },
     "category_outro": {
         "message": "Ekran końcowy/Napisy"
-    },
-    "category_outro_description": {
-        "message": "Napisy końcowe lub gdy pojawia się ekran końcowy. Nie do konkluzji zawierających informacje. Nie powinno to być używane w teledyskach."
     },
     "category_interaction": {
         "message": "Przypomnienie o interakcji (Subskrybuj)"
@@ -588,9 +582,6 @@
     },
     "incorrectCategory": {
         "message": "Zła kategoria"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Ten film jest skategoryzowany jako muzyka. Czy na pewno chcesz na nim zamieścić segmenty z kategoriami nieprzeznaczonymi do muzyki? Nie powinieneś ich dodawać, chyba że to faktycznie nie jest muzyka. Przeczytaj proszę wytyczne, jeśli masz wątpliwości."
     },
     "multipleSegments": {
         "message": "Wiele segmentów"
