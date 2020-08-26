@@ -427,17 +427,11 @@
     "category_intro": {
         "message": "Entracte/Animation d'intro"
     },
-    "category_intro_description": {
-        "message": "Un intervalle sans contenu réel. Peut être une pause, une image statique, une animation répétitive. Ceci ne doit pas être utilisé pour les transitions contenant des informations ou être utilisé sur les vidéos musicales."
-    },
     "category_intro_short": {
         "message": "Entracte"
     },
     "category_outro": {
         "message": "Générique de fin"
-    },
-    "category_outro_description": {
-        "message": "Crédits ou quand les cartes de terminaison YouTube apparaissent. Pas pour les conclusions avec des informations. Cela ne doit pas être utilisé sur les vidéos de musique."
     },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
@@ -542,9 +536,6 @@
     },
     "incorrectCategory": {
         "message": "Mauvaise catégorie"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Cette vidéo est classée dans les musiques. Êtes-vous sûr de vouloir soumettre des segments non-musicaux ? Vous devriez soumettre ce segment uniquement si la vidéo est de la musique. Veuillez lire les recommandations en cas de confusion."
     },
     "multipleSegments": {
         "message": "Plusieurs segments"
