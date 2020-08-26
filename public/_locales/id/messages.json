@@ -371,7 +371,7 @@
         "message": "Tampilkan Tombol Unggah"
     },
     "whatUploadButton": {
-        "message": "Tombol ini muncul di pemutar video YouTube setelah kamu memilih stempel waktu dan siap untuk dikirimkan."
+        "message": "Tombol ini muncul di pemutar video YouTube setelah anda memilih stempel waktu dan siap untuk dikirimkan."
     },
     "customServerAddress": {
         "message": "Alamat Server SponsorBlock"
@@ -467,17 +467,11 @@
     "category_intro": {
         "message": "Jeda/Animasi Intro"
     },
-    "category_intro_description": {
-        "message": "Bagian yang bukan konten sebenarnya. Dapat berupa jeda, gambar statik, dan animasi berulang di channel. Ini tidak boleh digunakan untuk transisi yang berisi informasi atau digunakan di video musik."
-    },
     "category_intro_short": {
         "message": "Jeda"
     },
     "category_outro": {
         "message": "Kartu Akhir/Kredit"
-    },
-    "category_outro_description": {
-        "message": "Kredit atau saat kartu akhir YouTube muncul. Tidak untuk kesimpulan dengan informasi. Tidak boleh dipakai pada video musik."
     },
     "category_interaction": {
         "message": "Pengingat Interaksi (Berlangganan)"
@@ -588,9 +582,6 @@
     },
     "incorrectCategory": {
         "message": "Salah Kategori"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Video ini dikategorikan sebagai musik. Apakah anda yakin ingin mengirim segmen yang kategorinya non-musik? Kecuali jika video ini bukan musik, anda seharusnya tidak mengirim segmen ini. Harap baca pedoman jika anda kebingungan."
     },
     "multipleSegments": {
         "message": "Banyak Segmen"
