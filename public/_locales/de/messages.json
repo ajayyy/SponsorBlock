@@ -107,7 +107,7 @@
         "message": "Scheinbar hast du einige Segmente noch nicht gesendet. Kehre zur Seite zurück um sie zu senden (sie sind noch gespeichert)."
     },
     "clearTimes": {
-        "message": "Segmente löschen"
+        "message": "Alle Segmente löschen"
     },
     "openPopup": {
         "message": "Öffne SponsorBlock-Popup"
@@ -191,7 +191,7 @@
         "message": "Zeige Löschen-Knopf in Youtube-Leiste"
     },
     "whatDeleteButton": {
-        "message": "Dierser Button im YouTube-Player löscht alle nicht übermittelten Segmente für das aktuelle Video."
+        "message": "Dieser Button im YouTube-Player löscht alle nicht übermittelten Segmente für das aktuelle Video."
     },
     "enableViewTracking": {
         "message": "Aktiviere mitzählen übersprungener Segmente"
@@ -467,11 +467,17 @@
     "category_intro": {
         "message": "Unterbrechung/Intro Animation"
     },
+    "category_intro_description": {
+        "message": "Ein Intervall ohne tatsächlichen Inhalt. Kann eine Pause, ein Standbild oder eine sich wiederholende Animation sein. Dies sollte nicht für Übergänge verwendet werden, die Informationen enthalten."
+    },
     "category_intro_short": {
         "message": "Unterbrechung"
     },
     "category_outro": {
         "message": "Endkarten/Credits"
+    },
+    "category_outro_description": {
+        "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für Schlussfolgerungen mit Informationen."
     },
     "category_interaction": {
         "message": "Interaktions-Erinnerung (Abonnieren)"
