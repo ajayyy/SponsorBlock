@@ -467,11 +467,17 @@
     "category_intro": {
         "message": "Jeda/Animasi Intro"
     },
+    "category_intro_description": {
+        "message": "Bagian yang bukan konten sebenarnya. Dapat berupa jeda, gambar statik, atau animasi berulang. Ini tidak boleh digunakan untuk transisi yang berisi informasi."
+    },
     "category_intro_short": {
         "message": "Jeda"
     },
     "category_outro": {
         "message": "Kartu Akhir/Kredit"
+    },
+    "category_outro_description": {
+        "message": "Kredit atau saat kartu akhir YouTube muncul. Tidak untuk kesimpulan dengan informasi."
     },
     "category_interaction": {
         "message": "Pengingat Interaksi (Berlangganan)"
@@ -582,6 +588,9 @@
     },
     "incorrectCategory": {
         "message": "Salah Kategori"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Video ini dikategorikan sebagai musik. Apakah kamu yakin ini ada bagian sponsornya? Jika ini ternyata adalah \"Segmen non-musik\", buka pengaturan ekstensi dan aktifkan kategorinya. Lalu, kamu bisa mengirim segmen ini sebagai \"Non-musik\" bukannya sponsor. Harap baca panduan jika kamu bingung."
     },
     "multipleSegments": {
         "message": "Banyak Segmen"
