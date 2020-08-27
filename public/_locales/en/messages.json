@@ -79,6 +79,9 @@
     "sponsor404": {
         "message": "No segments found"
     },
+    "sponsorEditingMoved": {
+        "message": "Sponsor Editing has been moved and will appear after you click submit"
+    },
     "sponsorStart": {
         "message": "Segment Starts Now"
     },
