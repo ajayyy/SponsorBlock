@@ -20,10 +20,10 @@
         "message": "Kênh đã được bỏ chặn!"
     },
     "Segment": {
-        "message": "đoạn"
+        "message": "đoạn quảng cáo"
     },
     "Segments": {
-        "message": "những đoạn"
+        "message": "đoạn quảng cáo"
     },
     "upvoteButtonInfo": {
         "message": "Bình chọn đoạn này"
@@ -64,7 +64,97 @@
     "manualPaused": {
         "message": "Đã dừng bộ tính giờ"
     },
+    "confirmMSG": {
+        "message": "Để sửa hoặc xóa từng số riêng, hãy nhấn vào nút thông tin hoặc mở bảng popup tiện ích mở rộng bằng cách nhấn vào biểu tượng tiện ích mở rộng ở góc phía trên bên phải."
+    },
+    "clearThis": {
+        "message": "Bạn có chắc chắn muốn xóa không?\n\n"
+    },
+    "Unknown": {
+        "message": "Có lỗi xảy ra khi đăng đoạn quảng cáo tài trợ, xin vui lòng thử lại sau."
+    },
+    "sponsorFound": {
+        "message": "Video này có đoạn quảng cáo trong kho dữ liệu rồi!"
+    },
     "sponsor404": {
         "message": "Không tìm thấy đoạn nào"
+    },
+    "sponsorStart": {
+        "message": "Đoạn quảng cáo bắt đầu vào lúc này"
+    },
+    "sponsorEnd": {
+        "message": "Đoạn quảng cáo kết thúc vào lúc này"
+    },
+    "noVideoID": {
+        "message": "Không tìm thấy video Youtube trong tab này. Nếu bạn chắc chắn đây là tab Youtube, hãy đóng bảng popup này rồi mở lại. Nếu vẫn không được, hãy thử tải lại tab."
+    },
+    "success": {
+        "message": "Thành công!"
+    },
+    "voted": {
+        "message": "Đã bầu chọn!"
+    },
+    "serverDown": {
+        "message": "Có vẻ máy chủ đang không hoạt động. Hãy liên hệ nhà phát triển ngay lập tức."
+    },
+    "connectionError": {
+        "message": "Đã xảy ra lỗi kết nối. Mã của lỗi: "
+    },
+    "wantToSubmit": {
+        "message": "Bạn có muốn đăng đoạn quảng cáo cho video có mã id"
+    },
+    "leftTimes": {
+        "message": "Có vẻ bạn còn vài đoạn quảng cáo chưa đăng. Hãy quay lại trang đó để đăng (đoạn quảng cáo đó chưa bị xóa)."
+    },
+    "clearTimes": {
+        "message": "Xóa đoạn quảng cáo"
+    },
+    "openPopup": {
+        "message": "Mở bảng popup của SponsorBlock"
+    },
+    "SubmitTimes": {
+        "message": "Đăng đoạn quảng cáo"
+    },
+    "submitCheck": {
+        "message": "Bạn có chắc là muốn đăng không?"
+    },
+    "whitelistChannel": {
+        "message": "Không chặn kênh này"
+    },
+    "removeFromWhitelist": {
+        "message": "Bỏ kênh này khỏi danh sách không chặn"
+    },
+    "voteOnTime": {
+        "message": "Bầu chọn một đoạn quảng cáo"
+    },
+    "soFarUHSubmited": {
+        "message": "Cho tới giờ, bạn đã đăng"
+    },
+    "savedPeopleFrom": {
+        "message": "Bạn đã giúp mọi người bỏ qua "
+    },
+    "viewLeaderboard": {
+        "message": "Xem bảng xếp hạng"
+    },
+    "here": {
+        "message": "ở đây"
+    },
+    "recordTimesDescription": {
+        "message": "Nhấn nút phía dưới khi đoạn quảng cáo bắt đầu và kết thúc để ghi lại và đăng lên kho dữ liệu."
+    },
+    "popupHint": {
+        "message": "Gợi ý: Nhấn phím dấu chấm phẩy khi đang xem video để báo cáo lúc quảng cáo bắt đầu/kết thúc, và nhấn phím ngoặc kép để đăng. (Có thể thay đổi phím trong phần tùy chọn)"
+    },
+    "clearTimesButton": {
+        "message": "Xóa thời gian"
+    },
+    "submitTimesButton": {
+        "message": "Đăng thời gian"
+    },
+    "setUsername": {
+        "message": "Đặt tên người dùng"
+    },
+    "Options": {
+        "message": "Tùy chọn"
     }
 }
