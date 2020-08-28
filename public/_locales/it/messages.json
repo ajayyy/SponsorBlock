@@ -112,6 +112,9 @@
     "openPopup": {
         "message": "Apri il Popup di SponsorBlock"
     },
+    "closePopup": {
+        "message": "Chiudi il popup"
+    },
     "SubmitTimes": {
         "message": "Invia Segmenti"
     },
@@ -442,6 +445,12 @@
     "copyDebugInformationFailed": {
         "message": "Impossibile scrivere negli Appunti"
     },
+    "copyDebugInformationOptions": {
+        "message": "Copia le informazioni negli appunti da fornire a uno sviluppatore quando si registra un bug / quando uno sviluppatore lo richiede. Le informazioni sensibili come l'ID utente, i canali e l'indirizzo del server personalizzato sono stati rimossi. Tuttavia contiene informazioni come il tuo useragent, browser, sistema operativo e numero di versione di estensione. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "Le informazioni di debug sono state copiate nel clip board. Sentiti libero di rimuovere tutte le informazioni che preferisci non condividere. Salva in un file di testo o incollale nella segnalazione di bug."
+    },
     "theKey": {
         "message": "La chiave"
     },
@@ -532,6 +541,12 @@
     "enableTestingServer": {
         "message": "Attiva Server di Beta Testing"
     },
+    "whatEnableTestingServer": {
+        "message": "I tuoi invii e voti NON CONTERANNO nel il server principale. Usa questa opzione solo per test."
+    },
+    "testingServerWarning": {
+        "message": "Tutti i contributi e i voti NON VERRANNO CONTATI verso il server principale durante la connessione al server di prova. Assicurarsi di disabilitare questa opzione quando si desidera fare reali contributi."
+    },
     "bracketNow": {
         "message": "(Ora)"
     },
@@ -556,6 +571,18 @@
     "channelDataNotFound": {
         "message": "ID canale non ancora caricato."
     },
+    "adblockerIssue": {
+        "message": "Sembra che qualcosa stia bloccando la capacità di SponsorBlock di ottenere dati video. Questo probabilmente è il tuo ad blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Se questo continua a verificarsi, potrebbe essere causato dal tuo ad-blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Forza controllo canale prima di andare avanti"
+    },
+    "whatForceChannelCheck": {
+        "message": "Per impostazione predefinita, si salteranno subito i segmenti prima che si sappia anche che canale è. Per impostazione predefinita, alcuni segmenti all'inizio del video potrebbero essere saltati sui canali sulla whitelist. Abilitare questa opzione impedirà questo, ma fare saltare tutti hanno un leggero ritardo in quanto ottenere il channelID può richiedere un certo tempo. Questo ritardo potrebbe essere invisibile se si dispone di internet veloce."
+    },
     "forceChannelCheckPopup": {
         "message": "Considera l'Attivazione dell'opzione \"Forza la Verifica del Canale Prima del Salto\""
     },
@@ -564,6 +591,9 @@
     },
     "incorrectCategory": {
         "message": "Categoria Errata"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Questo video è classificato come musica. Sei sicuro che questo video contenga uno sponsor? Se questo è in realtà un \"Segmento Non-Musica\", apri le opzioni di questa estensione e abilita questa categoria. Quindi, è possibile inviare questo segmento come \"Non-Music\" invece di sponsor. Si prega di leggere la guida se si è confusi."
     },
     "multipleSegments": {
         "message": "Segmenti Multipli"
