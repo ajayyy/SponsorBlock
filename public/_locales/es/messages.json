@@ -112,6 +112,9 @@
     "openPopup": {
         "message": "Abrir Ventana de SponsorBlock"
     },
+    "closePopup": {
+        "message": "Cerrar la ventana"
+    },
     "SubmitTimes": {
         "message": "Enviar Segmentos"
     },
