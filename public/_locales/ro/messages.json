@@ -81,6 +81,9 @@
     "openPopup": {
         "message": "Deschide Popup-ul SponsorBlock"
     },
+    "closePopup": {
+        "message": "Închide pop-up"
+    },
     "submitCheck": {
         "message": "Sunteți sigur că doriți să trimiteți asta?"
     },
