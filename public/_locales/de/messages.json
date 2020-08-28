@@ -112,6 +112,9 @@
     "openPopup": {
         "message": "Öffne SponsorBlock-Popup"
     },
+    "closePopup": {
+        "message": "Popup schließen"
+    },
     "SubmitTimes": {
         "message": "Segment absenden"
     },
@@ -495,7 +498,7 @@
         "message": "Ähnlich wie bei \"Sponsor\" mit Ausnahme von unbezahlten oder Selbstpromotion. Dies beinhaltet Abschnitte über Waren, Spenden oder Informationen darüber, mit wem sie zusammengearbeitet haben."
     },
     "category_music_offtopic": {
-        "message": "Musik: Nicht-Musik-Abschnitt"
+        "message": "Musik: Nicht-Musik-Segment"
     },
     "category_music_offtopic_description": {
         "message": "Nur für den Einsatz in Musikvideos. Dies beinhaltet Einführungen oder Outros in Musikvideos."
@@ -588,6 +591,9 @@
     },
     "incorrectCategory": {
         "message": "Falsche Kategorie"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Dieses Video ist als Musik kategorisiert. Bist du sicher, dass es einen Sponsor hast? Wenn dies tatsächlich ein \"Nicht-Musik-Abschnitt\" ist, öffne die Optionen der Extension und aktiviere diese Kategorie. Danach können Sie dieses Segment als \"Nicht-Musik\" anstelle von \"Sponsor\" einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
     },
     "multipleSegments": {
         "message": "Mehrere Segmente"
