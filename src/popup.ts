@@ -392,7 +392,7 @@ async function runThePopup(messageListener?: MessageListener) {
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
-                sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " to " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
+                sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
         
                 let votingButtons = document.createElement("div");
   
@@ -448,7 +448,7 @@ async function runThePopup(messageListener?: MessageListener) {
                 let timeMessage = getFormattedTime(sponsorTimes[i].segment[s]);
                 //if this is an end time
                 if (s == 1) {
-                    timeMessage = " to " + timeMessage;
+                    timeMessage = " " + chrome.i18n.getMessage("to") + " " + timeMessage;
                 } else if (i > 0) {
                     //add commas if necessary
                     timeMessage = ", " + timeMessage;
@@ -505,7 +505,7 @@ async function runThePopup(messageListener?: MessageListener) {
                 let timeMessage = getFormattedTime(sponsorTimes[i][s]);
                 //if this is an end time
                 if (s == 1) {
-                    timeMessage = " to " + timeMessage;
+                    timeMessage = " " + chrome.i18n.getMessage("to") + " " + timeMessage;
                 } else if (i > 0) {
                     //add commas if necessary
                     timeMessage = timeMessage;
@@ -614,7 +614,7 @@ async function runThePopup(messageListener?: MessageListener) {
         colonText.innerText = ":";
   
         let toText = document.createElement("span");
-        toText.innerText = " to ";
+        toText.innerText = " " + chrome.i18n.getMessage("to") + " ";
   
         //remove all children to replace
         while (sponsorTimeContainer.firstChild) {
