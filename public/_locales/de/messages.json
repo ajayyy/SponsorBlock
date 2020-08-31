@@ -119,7 +119,7 @@
         "message": "Segment absenden"
     },
     "submitCheck": {
-        "message": "Bist du sicher, dass die Auswahl abgeschickt werden soll?"
+        "message": "Bist du sicher, dass du das abschicken willst?"
     },
     "whitelistChannel": {
         "message": "Kanal auf Whitelist setzen"
@@ -587,7 +587,7 @@
         "message": "Bedenken Sie die Aktivierung von \"Kanalprüfung erzwingen vor dem Überspringen von Segmenten\""
     },
     "downvoteDescription": {
-        "message": "Nicht korrektes/Falsches Timing"
+        "message": "Nicht korrekt/Falsches Timing"
     },
     "incorrectCategory": {
         "message": "Falsche Kategorie"
