@@ -324,7 +324,7 @@ async function videoIDChange(id) {
     if (previousVideoID != null) {
         //get the sponsor times from storage
         let sponsorTimes = Config.config.segmentTimes.get(previousVideoID);
-        if (sponsorTimes != undefined && sponsorTimes.length > 0) {
+        if (sponsorTimes != undefined && sponsorTimes.length > 0 && new URL(document.URL).host !== "music.youtube.com") {
             //warn them that they have unsubmitted sponsor times
             chrome.runtime.sendMessage({
                 message: "alertPrevious",
