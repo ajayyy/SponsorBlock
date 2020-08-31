@@ -2,5 +2,150 @@
     "fullName": {
         "message": "SponsorBlock for YouTube - 跳過贊助廣告",
         "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "在YouTube影片跳過贊助廣告、訂閱提醒……和更多。 在您觀賞的影片上標記贊助廣告來節省大家的時間。",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "伺服器說這個請求無效"
+    },
+    "429": {
+        "message": "您為這部影片提交了過多的贊助廣告片段，您確定有這麼多嗎？"
+    },
+    "409": {
+        "message": "這已經被提交過了"
+    },
+    "channelWhitelisted": {
+        "message": "頻道被加入了白名單！"
+    },
+    "Segment": {
+        "message": "片段"
+    },
+    "Segments": {
+        "message": "片段"
+    },
+    "upvoteButtonInfo": {
+        "message": "為這個提交按讚"
+    },
+    "reportButtonTitle": {
+        "message": "檢舉"
+    },
+    "reportButtonInfo": {
+        "message": "將這個提交檢舉為不正確"
+    },
+    "Loading": {
+        "message": "載入中…"
+    },
+    "Mins": {
+        "message": "分"
+    },
+    "Secs": {
+        "message": "秒"
+    },
+    "Hide": {
+        "message": "永不顯示"
+    },
+    "hitGoBack": {
+        "message": "點擊取消跳過來回到您原本的位置"
+    },
+    "unskip": {
+        "message": "取消跳過"
+    },
+    "reskip": {
+        "message": "繼續跳過"
+    },
+    "paused": {
+        "message": "已暫停"
+    },
+    "manualPaused": {
+        "message": "計時器已停止"
+    },
+    "confirmMSG": {
+        "message": "要編輯或刪除個別數值，點擊資訊按鈕或右上角擴充功能的彈出介面"
+    },
+    "clearThis": {
+        "message": "您確定要清空這個嗎？\n\n"
+    },
+    "Unknown": {
+        "message": "提交您的贊助廣告片段時出錯，請稍後再試一次"
+    },
+    "sponsorFound": {
+        "message": "這個影片有現存的片段在資料庫！"
+    },
+    "sponsor404": {
+        "message": "沒有發現片段"
+    },
+    "sponsorStart": {
+        "message": "片段現在開始"
+    },
+    "sponsorEnd": {
+        "message": "片段現在結束"
+    },
+    "noVideoID": {
+        "message": "未在這個分頁找到任何YouTube影片。 如果您知道這是個YouTube分頁的話，關閉這個彈出視窗並重新開啟它。如果還是不管用，嘗試重新載入分頁"
+    },
+    "success": {
+        "message": "成功！"
+    },
+    "voted": {
+        "message": "已投票！"
+    },
+    "serverDown": {
+        "message": "看起來伺服器已離線。立即聯繫開發者"
+    },
+    "connectionError": {
+        "message": "已發生連線錯誤。錯誤碼： "
+    },
+    "wantToSubmit": {
+        "message": "您想為這個影片ID提交嗎"
+    },
+    "leftTimes": {
+        "message": "您好像沒有提及一些片段。返回至該頁面來提交（它們尚未被刪除）"
+    },
+    "clearTimes": {
+        "message": "清除片段"
+    },
+    "openPopup": {
+        "message": "打開 SponsorBlock 彈出視窗"
+    },
+    "closePopup": {
+        "message": "關閉彈出視窗"
+    },
+    "SubmitTimes": {
+        "message": "提交分段"
+    },
+    "submitCheck": {
+        "message": "您確定要提交這個嗎？"
+    },
+    "whitelistChannel": {
+        "message": "將頻道列入白名單"
+    },
+    "removeFromWhitelist": {
+        "message": "將頻道從白名單移除"
+    },
+    "voteOnTime": {
+        "message": "為分段投票"
+    },
+    "soFarUHSubmited": {
+        "message": "您目前已提交"
+    },
+    "savedPeopleFrom": {
+        "message": "您已為大家節省 "
+    },
+    "viewLeaderboard": {
+        "message": "查看排行榜"
+    },
+    "here": {
+        "message": "這裡"
+    },
+    "recordTimesDescription": {
+        "message": "點擊下方的按鈕來錄製分段的始與末"
+    },
+    "popupHint": {
+        "message": "小提醒：在聚焦於影片時按下分號鍵來記錄分段的始與末然後按下冒號鍵來提交（您可以透過選項來更改這項設定）"
+    },
+    "clearTimesButton": {
+        "message": "清除時間"
     }
 }
