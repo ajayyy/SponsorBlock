@@ -333,6 +333,7 @@ async function runThePopup(messageListener?: MessageListener) {
                     if (response.value) {
                         PageElements.whitelistChannel.style.display = "none";
                         PageElements.unwhitelistChannel.style.display = "unset";
+                        PageElements.whitelistToggle.checked = true;
                         document.querySelectorAll('label > svg')[0].classList.add("rotated");
 
                         PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
@@ -969,7 +970,7 @@ async function runThePopup(messageListener?: MessageListener) {
                     PageElements.unwhitelistChannel.style.display = "unset";
                     document.querySelectorAll('label > svg')[0].classList.add("rotated");
 
-                    //if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.style.display = "unset";
+                    //TODO if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.style.display = "unset";
 
                     PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
                     PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";

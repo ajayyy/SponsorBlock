@@ -173,6 +173,13 @@ div.logoText>p, .recordingSubtitle {
   font-size: 19px;
 }
 
+#mainControls > label > svg {
+  min-width: 16px;
+  min-height: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 label>svg>path {
   fill: var(--sb-main-fg-color);
 }
@@ -225,6 +232,7 @@ label>svg, button#optionsButton>img, .logoText>img, #usernameValue {
 #usernameValue{
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 130px;
 }
 
 #setUsername {
