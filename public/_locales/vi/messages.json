@@ -59,7 +59,7 @@
         "message": "Bỏ qua lại"
     },
     "paused": {
-        "message": "Đã dừng"
+        "message": "Tạm dừng"
     },
     "manualPaused": {
         "message": "Đã dừng bộ tính giờ"
@@ -450,5 +450,62 @@
     },
     "keyAlreadyUsed": {
         "message": "đang được đặt thực hiện hành động khác. Xin hãy chọn phím khác."
+    },
+    "to": {
+        "message": "đến",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Nhà tài trợ"
+    },
+    "category_intro": {
+        "message": "Tạm dừng/Giới thiệu"
+    },
+    "category_intro_short": {
+        "message": "Tạm ngừng"
+    },
+    "category_outro": {
+        "message": "Màn hình kết thúc/Danh đề"
+    },
+    "category_selfpromo": {
+        "message": "Quảng cáo không trả công/Tự quảng cáo"
+    },
+    "category_music_offtopic": {
+        "message": "Nhạc: Phần không nhạc"
+    },
+    "category_music_offtopic_short": {
+        "message": "Không có nhạc"
+    },
+    "disable": {
+        "message": "Tắt"
+    },
+    "manualSkip": {
+        "message": "Bỏ qua thủ công"
+    },
+    "previewColor": {
+        "message": "Xem thử màu",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "category": {
+        "message": "Thể loại"
+    },
+    "bracketNow": {
+        "message": "(Bây giờ)"
+    },
+    "bracketEnd": {
+        "message": "(Kết thúc)"
+    },
+    "incorrectCategory": {
+        "message": "Sai thể loại"
+    },
+    "multipleSegments": {
+        "message": "Nhiều đoạn"
+    },
+    "guidelines": {
+        "message": "Hướng dẫn"
+    },
+    "readTheGuidelines": {
+        "message": "Hãy đọc hướng dẫn!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     }
 }
