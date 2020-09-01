@@ -467,6 +467,9 @@
     "category_outro": {
         "message": "Màn hình kết thúc/Danh đề"
     },
+    "category_interaction": {
+        "message": "Nhắc tương tác (Đăng ký)"
+    },
     "category_selfpromo": {
         "message": "Quảng cáo không trả công/Tự quảng cáo"
     },
