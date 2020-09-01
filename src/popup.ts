@@ -179,11 +179,11 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //get the amount of times this user has contributed and display it to thank them
     if (Config.config.sponsorTimesContributed != undefined) {
-        /*if (Config.config.sponsorTimesContributed !== 1) {
-            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+        if (Config.config.sponsorTimesContributed !== 1) {
+            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
         } else {
-            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Sponsor");
-        }*/
+            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
+        }
         PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed;
         PageElements.sponsorTimesContributionsContainer.style.display = "flex";
 
@@ -230,9 +230,9 @@ async function runThePopup(messageListener?: MessageListener) {
     //get the amount of times this user has skipped a sponsor
     if (Config.config.skipCount != undefined) {
         if (Config.config.skipCount != 1) {
-            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsors");
+            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segments");
         } else {
-            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Sponsor");
+            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segment");
         }
 
         PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount;
