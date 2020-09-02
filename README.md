@@ -74,13 +74,14 @@ The result is in `dist`. This can be loaded as an unpacked extension
 
 ## Developing with a clean profile
 
-Run `npm run dev` to run the extension using a clean browser profile with hot reloading. Use `npm run dev:firefox` for Firefox. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
+Run `npm run dev` to run the extension using a clean browser profile with hot reloading. Use `npm run dev:firefox` for Firefox. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).  
+Known chromium bug: Extension is not loaded properly on first start. Visit `chrome://extensions/` and reload the extension.
 
 # Credit
 
 The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used.
 
-Originally forked from [YTSponsorSkip](https://github.com/OfficialNoob/YTSponsorSkip), but zero code remains.
+Originally forked from [YTSponsorSkip](https://github.com/NDevTK/YTSponsorSkip), but zero code remains.
 
 Icons made by:
 * <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> and are licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>

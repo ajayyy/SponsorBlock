@@ -15,18 +15,6 @@
     "channelWhitelisted": {
         "message": "频道已加入白名单！"
     },
-    "Sponsor": {
-        "message": "赞助商广告"
-    },
-    "Sponsors": {
-        "message": "赞助商广告"
-    },
-    "Segment": {
-        "message": "赞助商广告片段"
-    },
-    "Segments": {
-        "message": "赞助商广告片段"
-    },
     "upvoteButtonInfo": {
         "message": "为这个提交点赞"
     },
@@ -75,18 +63,6 @@
     "Unknown": {
         "message": "提交您的赞助商广告时间时出错。请稍后再试。"
     },
-    "sponsorFound": {
-        "message": "此视频的赞助商广告在数据库中！"
-    },
-    "sponsor404": {
-        "message": "未找到赞助商广告"
-    },
-    "sponsorStart": {
-        "message": "赞助商广告现在开始"
-    },
-    "sponsorEnd": {
-        "message": "赞助商广告现在结束"
-    },
     "noVideoID": {
         "message": "在此标签页未找到 Youtube 视频。如果您确定这是一个 Youtube 页面，请关闭此弹窗并重新打开。如果那没用，请尝试重新加载页面。"
     },
@@ -102,20 +78,8 @@
     "connectionError": {
         "message": "连接错误。错误代码： "
     },
-    "wantToSubmit": {
-        "message": "您想要为此视频提交赞助商广告时间吗"
-    },
-    "leftTimes": {
-        "message": "您似乎还有一些赞助商广告时间未提交。请回到那个页面提交它们（它们未被删除）。"
-    },
-    "clearTimes": {
-        "message": "清除赞助商广告时间"
-    },
     "openPopup": {
         "message": "打开 SponsorBlock 弹窗"
-    },
-    "SubmitTimes": {
-        "message": "提交赞助商广告时间"
     },
     "submitCheck": {
         "message": "您确定要提交它吗？"
@@ -125,12 +89,6 @@
     },
     "removeFromWhitelist": {
         "message": "将频道移出白名单"
-    },
-    "voteOnTime": {
-        "message": "为赞助商广告时间投票"
-    },
-    "recordTimes": {
-        "message": "记录赞助商广告次数"
     },
     "soFarUHSubmited": {
         "message": "您目前已提交"
@@ -143,15 +101,6 @@
     },
     "here": {
         "message": "这里"
-    },
-    "recordTimesDescription": {
-        "message": "当赞助商广告开始和结束时，请点击下面的按钮记录并将其提交到数据库。"
-    },
-    "popupHint": {
-        "message": "提示：在观看视频时，按下分号键（；）以报告赞助商广告的开始/结束时间，按下引号键（’）提交。（可以在选项中更改）"
-    },
-    "lastTimes": {
-        "message": "选择的最新的赞助商广告信息时间"
     },
     "clearTimesButton": {
         "message": "清除时间"
@@ -201,15 +150,6 @@
     "whatDeleteButton": {
         "message": "此按钮用于在 Youtube 播放器中清除所有赞助商广告。"
     },
-    "disableViewTracking": {
-        "message": "禁用赞助商广告跳过统计跟踪"
-    },
-    "enableViewTracking": {
-        "message": "启用赞助商广告跳过统计跟踪"
-    },
-    "whatViewTracking": {
-        "message": "此功能追踪您跳过了哪些赞助商广告，以让用户知道他们提交的信息帮助了多少人，并与点赞一同作为依据，来确保垃圾信息不会进入数据库。在您每次跳过赞助商广告时，扩展都会向服务器发送一条消息。希望大部分人不要改变此设置，以使观看数字准确。:)"
-    },
     "showNotice": {
         "message": "重新显示通知"
     },
@@ -228,9 +168,6 @@
     "noticeUpdate2": {
         "message": "如果您依然不喜欢它，请按下不再显示按钮。",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "设定赞助商广告开始的绑定按键"
     },
     "setSubmitKeybind": {
         "message": "设定提交的绑定按键"
@@ -272,14 +209,8 @@
     "enableAutoSkip": {
         "message": "启用自动跳过"
     },
-    "autoSkipDescription": {
-        "message": "自动跳过将会为您跳过赞助商广告。如果被禁用，将会显示一个通知询问您是否要跳过。"
-    },
     "audioNotification": {
         "message": "跳过时音频通知"
-    },
-    "audioNotificationDescription": {
-        "message": "跳过时音频通知会在跳过赞助商广告时播放声音。如果被禁用（或自动跳过被禁用），则不会播放声音。"
     },
     "youHaveSkipped": {
         "message": "您已跳过 "
@@ -305,9 +236,6 @@
     "youHaveSavedTimeEnd": {
         "message": " 的生命。"
     },
-    "guildlinesSummary": {
-        "message": "- 请确保您的片段只包含付费推广片段，没有其他的东西。\n- 请确保跳过此片段不会跳过重要的内容\n- 如果整个视频本身就是赞助商广告，请不要报告它。完整视频报告系统将在不久后推出。\n- 请不要报告可能产生偏见的免责声明（如果评测视频有赞助商，请不要在他们提到这一点时跳过）。"
-    },
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 检查服务器状态。"
     },
@@ -328,9 +256,6 @@
     },
     "autoSkip": {
         "message": "自动跳过"
-    },
-    "showSkipNotice": {
-        "message": "跳过赞助商广告后显示通知"
     },
     "keybindCurrentlySet": {
         "message": "。目前被设定为："
@@ -368,9 +293,6 @@
     "minDuration": {
         "message": "最小持续时间(秒)："
     },
-    "minDurationDescription": {
-        "message": "短于设定值的赞助商广告片段将不会被跳过或显示在播放器中。"
-    },
     "shortCheck": {
         "message": "以下的提交短于您的最小持续时间选项。这代表它们可能已经被提交，只是由于该选项被忽略了。您确定要提交吗？"
     },
@@ -398,14 +320,8 @@
     "areYouSureReset": {
         "message": "您确定要重置它吗？"
     },
-    "confirmPrivacy": {
-        "message": "未检测到视频的记录。如果您不想检查赞助商广告，请点击取消。"
-    },
     "unlistedCheck": {
         "message": "忽略未找到记录的视频"
-    },
-    "whatUnlistedCheck": {
-        "message": "此设置将显著的减慢 SponsorBlock 。赞助商广告查找器需要向服务器发送未找到记录的视频 ID 。如果您对通过互联网发送视频 ID 有疑虑，请启用此选项。"
     },
     "mobileUpdateInfo": {
         "message": "现已支持 m.youtube.com"
@@ -463,7 +379,7 @@
     },
     "to": {
         "message": "到",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "赞助商广告"
@@ -547,15 +463,6 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "如果这种情况不断发生，它可能是由您的广告拦截器引起的。请查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
-    "forceChannelCheck": {
-        "message": "跳过赞助商广告前强制进行频道检查"
-    },
-    "whatForceChannelCheck": {
-        "message": "默认情况下，即使还未检测出当前是什么频道，也会立即跳过赞助商广告。默认情况下，即使在白名单中的频道，一些在开头的赞助商广告也可能被跳过。启用此选项将防止这种情况，但所有的跳过将会产生轻微的延迟，因为获取频道 ID 需要一点时间。如果您的网速很快，那延迟可能非常短。"
-    },
-    "forceChannelCheckPopup": {
-        "message": "请考虑启用跳过赞助商广告前强制进行频道检查"
     },
     "downvoteDescription": {
         "message": "不正确/错误的时间"

@@ -1243,7 +1243,7 @@ function openInfoMenu() {
 
             //close button
             let closeButton = document.createElement("div");
-            closeButton.innerText = "Close Popup";
+            closeButton.innerText = chrome.i18n.getMessage("closePopup");
             closeButton.classList.add("smallLink");
             closeButton.setAttribute("align", "center");
             closeButton.addEventListener("click", closeInfoMenu);

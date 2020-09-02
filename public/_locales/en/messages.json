@@ -112,6 +112,9 @@
     "openPopup": {
         "message": "Open SponsorBlock Popup"
     },
+    "closePopup": {
+        "message": "Close Popup"
+    },
     "SubmitTimes": {
         "message": "Submit Segments"
     },
@@ -471,7 +474,7 @@
         "message": "Intermission/Intro Animation"
     },
     "category_intro_description": {
-        "message": "An interval without actual content. Could be a pause, static frame, repeating animation. This should not be used for transitions containing information or be used on music videos."
+        "message": "An interval without actual content. Could be a pause, static frame, repeating animation. This should not be used for transitions containing information."
     },
     "category_intro_short": {
         "message": "Intermission"
@@ -480,7 +483,7 @@
         "message": "Endcards/Credits"
     },
     "category_outro_description": {
-        "message": "Credits or when the YouTube endcards appear. Not for conclusions with information. This should not be used on music videos."
+        "message": "Credits or when the YouTube endcards appear. Not for conclusions with information."
     },
     "category_interaction": {
         "message": "Interaction Reminder (Subscribe)"
@@ -593,7 +596,7 @@
         "message": "Wrong Category"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "This video is categorized as music. Are you sure you would like to submit segments with non-music categories? Unless this video is not actually music, you should not be submitting this segment. Please read the guidelines if you are confused."
+        "message": "This video is categorized as music. Are you sure you this has a sponsor? If this is actually a \"Non-Music segment\", open up the extension options and enable this category. Then, you can submit this segment as \"Non-Music\" instead of sponsor. Please read the guidelines if you are confused."
     },
     "multipleSegments": {
         "message": "Multiple Segments"

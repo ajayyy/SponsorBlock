@@ -19,18 +19,6 @@
     "channelWhitelisted": {
         "message": "Canale aggiunto alla whitelist!"
     },
-    "Sponsor": {
-        "message": "sponsorizzazione"
-    },
-    "Sponsors": {
-        "message": "sponsorizzazioni"
-    },
-    "Segment": {
-        "message": "spezzone sponsorizzato"
-    },
-    "Segments": {
-        "message": "spezzoni sponsorizzati"
-    },
     "upvoteButtonInfo": {
         "message": "Vota questa segnalazione"
     },
@@ -79,18 +67,6 @@
     "Unknown": {
         "message": "Si è verificato un errore durante l'invio dello spezzone sponsorizzato, per favore riprova più tardi."
     },
-    "sponsorFound": {
-        "message": "I contenuti sponsorizzati di questo video sono nel database!"
-    },
-    "sponsor404": {
-        "message": "Nessuna sponsorizzazione trovata"
-    },
-    "sponsorStart": {
-        "message": "La sponsorizzazione inizia adesso"
-    },
-    "sponsorEnd": {
-        "message": "La sponsorizzazione finisce adesso"
-    },
     "noVideoID": {
         "message": "Probabilmente questa non è una scheda di YouTube, oppure hai cliccato troppo presto. \nSe sei sicuro di essere in una scheda di YouTube,\n riapri questo popup."
     },
@@ -106,20 +82,8 @@
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
     },
-    "wantToSubmit": {
-        "message": "Vuoi inviare gli spezzoni sponsorizzati per il video con id"
-    },
-    "leftTimes": {
-        "message": "Sembra che tu non abbia inviato alcuni spezzoni sponsorizzati. Ritorna alla pagina precedente per inviarli (non sono stati eliminati)."
-    },
-    "clearTimes": {
-        "message": "Cancella gli Spezzoni Sponsorizzati"
-    },
     "openPopup": {
         "message": "Apri il Popup di SponsorBlock"
-    },
-    "SubmitTimes": {
-        "message": "Invia gli Spezzoni Sponsorizzati"
     },
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
@@ -129,12 +93,6 @@
     },
     "removeFromWhitelist": {
         "message": "Rimuovi Canale dalla Whitelist"
-    },
-    "voteOnTime": {
-        "message": "Vota uno Spezzone Sponsorizzato"
-    },
-    "recordTimes": {
-        "message": "Registra uno Spezzone Sponsorizzato"
     },
     "soFarUHSubmited": {
         "message": "Fino ad ora hai inviato"
@@ -147,15 +105,6 @@
     },
     "here": {
         "message": "qui"
-    },
-    "recordTimesDescription": {
-        "message": "Premi il pulsante qui sotto quando inizia e finisce la sponsorizzazione per registrarla e\ninviarla al database."
-    },
-    "popupHint": {
-        "message": "Suggerimento: Premi il tasto punto e virgola mentre il video è attivo per segnalare l'inizio/fine di una sponsorizzazione e virgolette per inviare."
-    },
-    "lastTimes": {
-        "message": "Ultimi minutaggi sponsorizzati scelti"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -205,21 +154,8 @@
     "whatDeleteButton": {
         "message": "Questo è il pulsante che ti permette di cancellare tutti gli spezzoni sponsorizzati nel lettore di YouTube."
     },
-    "disableViewTracking": {
-        "message": "Disattiva il Monitoraggio delle Sponsorizzazioni"
-    },
-    "enableViewTracking": {
-        "message": "Disattiva il Monitoraggio delle Sponsorizzazioni"
-    },
-    "whatViewTracking": {
-        "message": "Questa funzione tiene traccia di quali sponsorizzazioni hai saltato per far sapere agli utenti quanto è stato d'aiuto agli altri il loro contributo e\nviene utilizzato come metrica assieme ai voti positivi per filtrare lo spam dal database. L'estensione invia un messaggio\nal server ogni volta che salti una sponsorizzazione. Si spera che la maggior parte delle persone non modifichi questa impostazione così i numeri sono accurati. :)"
-    },
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
-    },
-    "longDescription": {
-        "message": "SponsorBlock è un'estensione che salta gli spezzoni con contenuti sponsorizzati nei video di YouTube. SponsorBlock è un'estensione crowdsourced per i browser che permette a chiunque di inviare i minutaggi degli spezzoni sponsorizzati nei video di YouTube. Quando un utente invia una segnalazione, tutti gli altri utenti che utilizzano questa estensione potranno saltare lo spezzone sponsorizzato.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Sito Web",
@@ -236,9 +172,6 @@
     "noticeUpdate2": {
         "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "Imposta la chiave per l'associazione di tasti per l'inizio dello spezzone dello sponsor"
     },
     "setSubmitKeybind": {
         "message": "Imposta la chiave per l'associazione di tasti per le segnalazioni"
@@ -282,9 +215,6 @@
     },
     "audioNotification": {
         "message": "Notifiche Audio per Salta"
-    },
-    "audioNotificationDescription": {
-        "message": "La notifica audio su salto riprodurrà un suono ogni volta che uno sponsor viene saltato. Se disabilitato (o se il salto automatico è disabilitato), nessun suono verrà riprodotto."
     },
     "showTimeWithSkips": {
         "message": "Mostra Tempo Con Salti Rimossi"
@@ -337,9 +267,6 @@
     "autoSkip": {
         "message": "Salta Automaticamente"
     },
-    "showSkipNotice": {
-        "message": "Mostra Avviso Dopo Aver Saltato Uno Sponsor"
-    },
     "keybindCurrentlySet": {
         "message": ". Attualmente è impostato su:"
     },
@@ -376,9 +303,6 @@
     "minDuration": {
         "message": "Durata minima (secondi):"
     },
-    "minDurationDescription": {
-        "message": "I segmenti di sponsor più corti del valore impostato non verranno saltati o mostrati."
-    },
     "whatUploadButton": {
         "message": "Questo pulsante appare sul riproduttore di YouTube dopo che hai selezionato un marcatore temporale e sei pronto ad inviarlo."
     },
@@ -400,14 +324,8 @@
     "areYouSureReset": {
         "message": "Sei sicuro di voler eseguire il reset?"
     },
-    "confirmPrivacy": {
-        "message": "Il video è stato rilevato come privato. Fare clic su Annulla se non si desidera controllare la presenza di sponsor."
-    },
     "unlistedCheck": {
         "message": "Ignora Video Non Pubblicati/Privati"
-    },
-    "whatUnlistedCheck": {
-        "message": "Questa impostazione rallenterà leggermente SponsorBlock. Le ricerche degli sponsor richiedono l'invio dell'ID video al server. Se sei preoccupato per gli ID video non elencati inviati via internet, abilita questa opzione."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com è ora supportato"

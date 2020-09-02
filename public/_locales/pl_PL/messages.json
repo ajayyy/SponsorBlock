@@ -19,20 +19,14 @@
     "channelWhitelisted": {
         "message": "Kanał dodany do wyjątków!"
     },
-    "Sponsor": {
-        "message": "sponsor"
-    },
-    "Sponsors": {
-        "message": "sponsorów"
-    },
     "Segment": {
-        "message": "segment sponsorowany"
+        "message": "segment"
     },
     "Segments": {
-        "message": "segmentami sponsorowanymi"
+        "message": "segmenty"
     },
     "upvoteButtonInfo": {
-        "message": "Oceń pozytywnie to zgłoszenie"
+        "message": "Oceń pozytywnie ten segment"
     },
     "reportButtonTitle": {
         "message": "Zgłoś"
@@ -80,16 +74,16 @@
         "message": "Wystąpił błąd podczas przesyłania twojego segmentu. Proszę spróbować ponownie później."
     },
     "sponsorFound": {
-        "message": "Segmenty sponsora dla tego nagrania są już w bazie!"
+        "message": "Ten film ma segmenty w bazie danych!"
     },
     "sponsor404": {
-        "message": "Nie znaleziono segmentów sponsora"
+        "message": "Nie znaleziono segmentów"
     },
     "sponsorStart": {
-        "message": "Sponsor zaczyna się teraz"
+        "message": "Segment zaczyna się teraz"
     },
     "sponsorEnd": {
-        "message": "Sponsor kończy się teraz"
+        "message": "Segment kończy się teraz"
     },
     "noVideoID": {
         "message": "Nie znaleziono filmu na tej karcie. Jeśli wiesz, że to karta YouTube'a, zamknij to okienko i otwórz je ponownie. Jeśli to nie zadziała, spróbuj odświeżyć stronę."
@@ -107,19 +101,19 @@
         "message": "Błąd z połączeniem. Kod błędu: "
     },
     "wantToSubmit": {
-        "message": "Chcesz zgłosić segment sponsorowany dla filmu z id"
+        "message": "Czy chcesz zamieścić dla filmu o ID"
     },
     "leftTimes": {
-        "message": "Wygląda na to, że masz nie wysłane segmenty sponsora. Cofnij się do tej strony żeby je zgłosić (nie zostały usunięte)."
+        "message": "Wygląda na to, że zostawiłeś pewne niewysłane segmenty. Cofnij się do tamtej strony, by je zamieścić (nie zostały usunięte)."
     },
     "clearTimes": {
-        "message": "Usuń segmenty reklamowe"
+        "message": "Wyczyść segmenty"
     },
     "openPopup": {
         "message": "Otwórz okienko SponsorBlock"
     },
     "SubmitTimes": {
-        "message": "Zgłoś segmenty sponsora"
+        "message": "Prześlij segmenty"
     },
     "submitCheck": {
         "message": "Czy na pewno chcesz to zamieścić?"
@@ -131,10 +125,7 @@
         "message": "Usuń kanał z listy wyjątków"
     },
     "voteOnTime": {
-        "message": "Głosuj na segment sponsora"
-    },
-    "recordTimes": {
-        "message": "Nagraj czasy segmentów sponsorowanych"
+        "message": "Oceń segment"
     },
     "soFarUHSubmited": {
         "message": "Do tej pory zgłosiłeś"
@@ -149,13 +140,10 @@
         "message": "tutaj"
     },
     "recordTimesDescription": {
-        "message": "Kliknij przycisk poniżej, gdy segment sponsorowany zaczyna się i kończy, by oznaczyć go i przesłać do bazy danych."
+        "message": "Kliknij przycisk poniżej, gdy segment zaczyna się i kończy, by oznaczyć go i przesłać do bazy danych."
     },
     "popupHint": {
-        "message": "Podpowiedź: Klikając średnik kiedy zaznaczone jest zgłaszanie wideo możesz oznaczyć początek reklamy, znakiem cytatu oznaczysz jej koniec. (Klawisze można zmienić w opcjach)"
-    },
-    "lastTimes": {
-        "message": "Ostanie wybrane czasy reklam"
+        "message": "Podpowiedź: Wciśnij średnik, koncentrując się na filmie, aby oznaczyć początek/koniec segmentu, i cudzysłów, by go wysłać. (Klawisze można zmienić w opcjach)"
     },
     "clearTimesButton": {
         "message": "Usuń czasy"
@@ -205,17 +193,18 @@
     "whatDeleteButton": {
         "message": "Ten przycisk na odtwarzaczu YouTube wyczyści wszystkie twoje niewysłane segmenty dla bieżącego filmu."
     },
-    "disableViewTracking": {
-        "message": "Wyłącz licznik przewinięć"
-    },
     "enableViewTracking": {
-        "message": "Włącz licznik przewinięć"
+        "message": "Włącz monitorowanie liczby pominięć"
     },
     "whatViewTracking": {
-        "message": "Ta opcja monitoruje pominięte przez Ciebie segmenty i informuje zgłaszających, ile czasu Ci zaoszczędzili. Wraz z systemem głosowania pomaga też wykrywać spam w zgłoszeniach. Rozszerzenie wysyła zapytanie do serwera za każdym razem, kiedy pomijasz segment reklamowy. Miejmy nadzieję, że większość użytkowników tego nie wyłączy i licznik wyświetleń będzie rzetelny. :)"
+        "message": "Ta opcja monitoruje pomijane przez Ciebie segmenty, by dać znać użytkownikom, jak bardzo ich wkład pomógł innym, oraz w połączeniu z systemem głosowania zapobiegać dostawaniu się spamu do bazy danych. Rozszerzenie wysyła wiadomość do serwera za każdym razem, kiedy pomijasz segment. Miejmy nadzieję, że większość ludzi tego nie wyłączy i liczniki wyświetleń będą wiarygodne. :)"
     },
     "showNotice": {
         "message": "Pokaż informacje ponownie"
+    },
+    "longDescription": {
+        "message": "SponsorBlock pozwala pomijać sponsorów, intra, outra, przypomnienia o subskrypcjach i inne irytujące fragmenty filmów na YouTube. SponsorBlock jest opartym na crowdsourcingu rozszerzeniem do przeglądarki, które pozwala każdemu zgłosić początek i koniec segmentów sponsorowanych oraz innych segmentów w filmach na YouTube. Kiedy ktoś już zamieści te informacje, wszyscy pozostali z tym rozszerzeniem będą pomijać segment sponsorowany. Możesz również pomijać fragmenty teledysków bez muzyki.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Strona",
@@ -234,7 +223,7 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setStartSponsorShortcut": {
-        "message": "Ustaw klawisz do oznaczania początku reklamy"
+        "message": "Ustaw klawisz do oznaczania początku segmentu"
     },
     "setSubmitKeybind": {
         "message": "Ustaw klawisz do wysyłania czasów"
@@ -271,22 +260,22 @@
         "message": "Pominięto"
     },
     "disableAutoSkip": {
-        "message": "Wyłącz auto przewijanie"
+        "message": "Wyłącz autopomijanie"
     },
     "enableAutoSkip": {
-        "message": "Włącz auto przewijanie"
-    },
-    "autoSkipDescription": {
-        "message": "Auto przewijanie przewinie segment za ciebie, wyłączone wyświetli komunikat z pytaniem czy chcesz przewinąć reklamę."
+        "message": "Włącz autopomijanie"
     },
     "audioNotification": {
-        "message": "Powiadomienie dźwiękowe o przewinięciu"
+        "message": "Powiadomienie dźwiękowe przy pominięciu"
     },
     "audioNotificationDescription": {
-        "message": "Powiadomienie dźwiękowe po pominięciu będzie odtwarzane za każdym razem, gdy sponsor zostanie pominięty. Jeśli wyłączone (lub automatyczne pomijanie jest wyłączone), dźwięk nie zostanie odtworzony."
+        "message": "Powiadomienie dźwiękowe przy pominięciu będzie odtwarzane za każdym razem, gdy pomijany jest segment. Jeśli wyłączone (lub automatyczne pomijanie jest wyłączone), dźwięk nie zostanie odtworzony."
     },
     "showTimeWithSkips": {
         "message": "Pokaż czas po usunięciu segmentów"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Czas ten pojawia się w nawiasie obok czasu bieżącego, pod paskiem postępu. Pokazuje on długość całego filmu po odjęciu wszystkich segmentów. Wliczają się w to segmenty ustawione jako \"pokaż na pasku\"."
     },
     "youHaveSkipped": {
         "message": "Przewinąłeś "
@@ -312,9 +301,6 @@
     "youHaveSavedTimeEnd": {
         "message": " czasu."
     },
-    "guildlinesSummary": {
-        "message": "- Upewnij się, że zgłaszany fragment zawiera tylko reklamę i nic więcej.\n- Upewnij się, że nie zostanie przewinięta wartościowa treść\n- Jeśli całe nagranie to reklama, proszę nie zgłaszaj go. Blokowanie całych nagrań pojawi się wkrótce.\n- Nie ukrywaj treści które są istotne dla użytkownika (nie ukrywaj informacji, że recenzja produktu została opłacona przez producenta)"
-    },
     "statusReminder": {
         "message": "Sprawdź status serwera na status.sponsor.ajay.app"
     },
@@ -328,16 +314,16 @@
         "message": "Ustaw identyfikator użytkownika"
     },
     "userIDChangeWarning": {
-        "message": "Uwaga: Zmiana identyfikatora użytkownika jest nieodwracalna. Czy na pewno chcesz to zrobić? Na wszelki wypadek skopiuj swój poprzedni."
+        "message": "Uwaga: Zmiana identyfikatora użytkownika jest trwała. Czy na pewno chcesz to zrobić? Na wszelki wypadek skopiuj swój poprzedni."
     },
     "createdBy": {
         "message": "Stworzony przez"
     },
     "autoSkip": {
-        "message": "Auto przewijanie"
+        "message": "Autopomijanie"
     },
     "showSkipNotice": {
-        "message": "Pokaż informację po przewiniętym fragmencie"
+        "message": "Pokaż informację po pominięciu segmentu"
     },
     "keybindCurrentlySet": {
         "message": ". Jest obecnie ustawione jako:"
@@ -349,7 +335,7 @@
         "message": "Invidious (invidio.us) to nieoficjalny klient YouTube'a. Aby włączyć dla niego wsparcie musisz przyznać dodatkowe uprawnienia. W Chrome'ie i innych przeglądarkach bazujących na Chromium, ta opcja nie działa w trybie incognito."
     },
     "optionsInfo": {
-        "message": "Włącz wsparcie dla Invidious, wyłącz auto przewijanie, ukryj przyciski i więcej."
+        "message": "Włącz wsparcie dla Invidious, wyłącz autopomijanie, ukryj przyciski i więcej."
     },
     "addInvidiousInstance": {
         "message": "Dodaj instancje Invidious"
@@ -376,7 +362,10 @@
         "message": "Minimalny czas trwania (sekundy):"
     },
     "minDurationDescription": {
-        "message": "Segmenty sponsorowane krótsze niż ustawiona wartość nie będą pomijane ani pokazywane w odtwarzaczu."
+        "message": "Segmenty krótsze niż ustawiona wartość nie będą pomijane ani pokazywane w odtwarzaczu."
+    },
+    "shortCheck": {
+        "message": "Ten segment jest krótszy od ustawionego przez Ciebie minimalnego czasu trwania. Może to oznaczać, że ktoś już to zamieścił, ale nie widzisz tego przez to ustawienie. Czy na pewno chcesz to zamieścić?"
     },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
@@ -402,8 +391,14 @@
     "areYouSureReset": {
         "message": "Czy na pewno chcesz to zresetować?"
     },
+    "confirmPrivacy": {
+        "message": "Ten film został wykryty jako niepubliczny. Kliknij Anuluj, jeśli nie chcesz sprawdzać, czy są dla niego segmenty."
+    },
     "unlistedCheck": {
-        "message": "Ignoruj nielistowane/prywatne filmy"
+        "message": "Ignoruj niepubliczne/prywatne filmy"
+    },
+    "whatUnlistedCheck": {
+        "message": "Ta opcja spowolni nieco SponsorBlock. Wyszukiwanie istniejących segmentów wymaga wysłania ID filmu do serwera. Jeśli niepokoi Cię fakt wysyłania przez internet ID niepublicznych filmów, włącz tę opcję."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com jest teraz wspierany"
@@ -412,10 +407,13 @@
         "message": "Importuj/Eksportuj wszystkie ustawienia"
     },
     "whatExportOptions": {
-        "message": "Oto cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój identyfikator użytkownika, więc uważaj, komu ją udostępniasz."
+        "message": "Jest to cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój identyfikator użytkownika, więc uważaj, komu ją udostępniasz."
     },
     "setOptions": {
         "message": "Zapisz ustawienia"
+    },
+    "exportOptionsWarning": {
+        "message": "Uwaga: Zmiana ustawień jest trwała i może popsuć twoją instalację. Czy na pewno chcesz to zrobić? Na wszelki wypadek utwórz kopię poprzednich."
     },
     "incorrectlyFormattedOptions": {
         "message": "Ten JSON nie został poprawnie sformatowany. Twoje opcje nie zostały zmienione."
@@ -444,21 +442,33 @@
     "copyDebugInformationFailed": {
         "message": "Nie udało się skopiować do schowka"
     },
+    "copyDebugInformationOptions": {
+        "message": "Kopiuje do schowka informacje do dostarczenia deweloperowi podczas zgłaszania błędu / gdy deweloper ich sobie zażyczy. Poufne informacje, takie jak ID użytkownika, kanały dodane do wyjątków i adres niestandardowego serwera zostały usunięte. Wciąż zawiera to jednak informacje takie jak twój user agent, przeglądarka, system operacyjny i wersja rozszerzenia. "
+    },
     "copyDebugInformationComplete": {
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
     },
     "theKey": {
         "message": "Klucz"
     },
+    "keyAlreadyUsed": {
+        "message": "jest przypisane do innej akcji. Wybierz proszę inny klawisz."
+    },
     "to": {
         "message": "do",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "category_sponsor_description": {
+        "message": "Płatna promocja, płatne rekomendacje oraz bezpośrednie reklamy. Nie do autopromocji ani darmowych wyrazów uznania dla kwestii/twórców/stron/produktów, które im się podobają."
+    },
     "category_intro": {
         "message": "Przerwa/Animowane intro"
+    },
+    "category_intro_description": {
+        "message": "Fragment bez faktycznej treści. Może to być pauza, statyczna klatka, powtarzająca się animacja. Nie powinno to być używane do przejść zawierających informacje ani w teledyskach."
     },
     "category_intro_short": {
         "message": "Przerwa"
@@ -466,8 +476,14 @@
     "category_outro": {
         "message": "Ekran końcowy/Napisy"
     },
+    "category_outro_description": {
+        "message": "Napisy końcowe lub gdy pojawia się ekran końcowy. Nie do konkluzji zawierających informacje. Nie powinno to być używane w teledyskach."
+    },
     "category_interaction": {
         "message": "Przypomnienie o interakcji (Subskrybuj)"
+    },
+    "category_interaction_description": {
+        "message": "Gdy ma miejsce krótkie przypomnienie, by lajkować, subskrybować lub śledzić ich w trakcie kontentu. Jeśli trwa to długo lub dotyczy czegoś konkretnego, powinno być zamiast tego jako promocja własna."
     },
     "category_interaction_short": {
         "message": "Przypomnienie o interakcji"
@@ -475,8 +491,14 @@
     "category_selfpromo": {
         "message": "Nieopłacona/Własna promocja"
     },
+    "category_selfpromo_description": {
+        "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
+    },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
+    },
+    "category_music_offtopic_description": {
+        "message": "Do użytku tylko w filmach muzycznych. Wliczają się w to wprowadzenia i outro w teledyskach."
     },
     "category_music_offtopic_short": {
         "message": "Bez muzyki"
@@ -516,6 +538,12 @@
     "enableTestingServer": {
         "message": "Aktywuj serwer beta-testów"
     },
+    "whatEnableTestingServer": {
+        "message": "Twoje segmenty i głosy NIE BĘDĄ uwzględniane na głównym serwerze. Używaj tego tylko do testowania."
+    },
+    "testingServerWarning": {
+        "message": "Żadne segmenty ani głosy NIE BĘDĄ uwzględniane na głównym serwerze podczas połączenia z serwerem testowym. Pamiętaj, żeby to wyłączyć, gdy zechcesz dodać realny wkład."
+    },
     "bracketNow": {
         "message": "(Teraz)"
     },
@@ -547,16 +575,22 @@
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
-        "message": "Wymuś sprawdzenie kanału przed pominięciem sponsorów"
+        "message": "Wymuś sprawdzenie kanału przed pominięciem"
     },
     "whatForceChannelCheck": {
-        "message": "Domyślnie, rozszerzenie pominie sponsorów od razu, jeszcze zanim dowie się jaki to kanał. Pewne segmenty nie trwające nawet sekundy domyślnie mogą zostać pominięte na kanałach dodanych do wyjątków. Włączenie tej opcji temu zapobiegnie, ale wszystkie pominięcia będą nieco opóźnione, gdyż uzyskanie ID kanału może chwilę potrwać. Opóźnienie to może być nieodczuwalne, jeśli masz szybki internet."
+        "message": "Domyślnie, rozszerzenie pominie segmenty od razu, jeszcze zanim dowie się jaki to kanał. Domyślnie, pewne segmenty na początku filmu mogą zostać pominięte na kanałach dodanych do wyjątków. Włączenie tej opcji temu zapobiegnie, ale wszystkie pominięcia będą nieco opóźnione, gdyż uzyskanie ID kanału może chwilę potrwać. Opóźnienie to może być nieodczuwalne, jeśli masz szybki internet."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Rozważ włączenie \"Wymuś sprawdzenie kanału przed pominięciem\""
     },
     "downvoteDescription": {
-        "message": "Nieprawidłowy przedział czasowy"
+        "message": "Niepoprawne/Zły czas"
     },
     "incorrectCategory": {
         "message": "Zła kategoria"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Ten film jest skategoryzowany jako muzyka. Czy na pewno chcesz na nim zamieścić segmenty z kategoriami nieprzeznaczonymi do muzyki? Nie powinieneś ich dodawać, chyba że to faktycznie nie jest muzyka. Przeczytaj proszę wytyczne, jeśli masz wątpliwości."
     },
     "multipleSegments": {
         "message": "Wiele segmentów"
@@ -575,7 +609,7 @@
         "message": "Otwórz opcje, aby pominąć intra, outra, merch, itp."
     },
     "unsubmittedWarning": {
-        "message": "Powiadomienie o nieprzesłanych segmentach"
+        "message": "Powiadomienie o niewysłanych segmentach"
     },
     "unsubmittedWarningDescription": {
         "message": "Wyślij powiadomienie po opuszczeniu filmu z segmentami, które nie zostały przesłane"
