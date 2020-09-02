@@ -19,17 +19,10 @@
     "@types/firefox-webext-browser": "70.0.1",
     "@types/jest": "^24.0.23",
     "@types/jquery": "^3.3.31",
-<<<<<<< HEAD
-    "copy-webpack-plugin": "^5.0.5",
-    "jest": "^26.2.2",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^26.1.4",
-=======
     "copy-webpack-plugin": "^6.0.3",
     "jest": "^26.4.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^26.2.0",
->>>>>>> 3ec3a011281f946b749335aafaf5aad8d64d7422
     "ts-loader": "^6.2.1",
     "typescript": "~3.7.3",
     "web-ext": "^5.0.0",
