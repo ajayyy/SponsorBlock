@@ -35,6 +35,7 @@ interface SBConfig {
     audioNotificationOnSkip,
     checkForUnlistedVideos: boolean,
     testingServer: boolean,
+    hashPrefix: boolean
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -166,6 +167,7 @@ var Config: SBObject = {
         audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         testingServer: false,
+        hashPrefix: false,
 
         categorySelections: [{
             name: "sponsor",

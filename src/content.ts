@@ -618,12 +618,36 @@ function sponsorsLookup(id: string) {
         categories.push(categorySelection.name);
     }
 
-    utils.asyncRequestToServer('GET', "/api/skipSegments", {
-        videoID: id,
-        categories
-    }).then(async (response: FetchResponse) => {
+    // Check for hashPrefix setting
+    let getRequest;
+    if (Config.config.hashPrefix) {
+        getRequest = utils.asyncRequestToServer('GET', "/api/skipSegments/"+utils.getHash(id, 1).substr(0,4), {
+            categories
+        });
+    } else {
+        getRequest = utils.asyncRequestToServer('GET', "/api/skipSegments", {
+            videoID: id,
+            categories
+        });
+    }
+    getRequest.then(async (response: FetchResponse) => {
         if (response?.ok) {
-            let recievedSegments: SponsorTime[] = JSON.parse(response.responseText);
+            let getResult = JSON.parse(response.responseText);
+            if (Config.config.hashPrefix) {
+                getResult = getResult.filter((video) => {
+                    return video.videoID = id;
+                });
+                if (getResult.length === 1) {
+                    getResult = getResult[0].segments;
+                    if (getResult.length === 0) { // return if no regments found
+                        return;
+                    }
+                } else { // return if no video found
+                    return;
+                }
+            }
+
+            let recievedSegments: SponsorTime[] = getResult;
             if (!recievedSegments.length) {
                 console.error("[SponsorBlock] Server returned malformed response: " + JSON.stringify(recievedSegments));
                 return;
