@@ -639,7 +639,7 @@ function sponsorsLookup(id: string) {
                 });
                 if (getResult.length === 1) {
                     getResult = getResult[0].segments;
-                    if (getResult.length === 0) { // return if no regments found
+                    if (getResult.length === 0) { // return if no segments found
                         return;
                     }
                 } else { // return if no video found
