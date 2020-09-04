@@ -637,7 +637,7 @@ function sponsorsLookup(id: string) {
                 getResult = getResult.filter((video) => {
                     return video.videoID = id;
                 });
-                if (getResult.length === 1) {
+                if (getResult.length > 0) {
                     getResult = getResult[0].segments;
                     if (getResult.length === 0) { // return if no segments found
                         return;
