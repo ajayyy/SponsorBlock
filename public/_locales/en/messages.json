@@ -208,6 +208,12 @@
     "whatQueryByHashPrefix": {
         "message": "Instead of requesting segments from the server using the videoID, the first 4 characters of the hash of the videoID are sent. This server will send back data for all videos with similar hashes."
     },
+    "enableRefetchWhenNotFound": {
+        "message": "Refetch Segments On New Videos"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "If the video is new, and there are no segments found, it will keep refetching every few minutes while you watch."
+    },
     "showNotice": {
         "message": "Show Notice Again"
     },

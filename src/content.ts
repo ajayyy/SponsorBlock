@@ -632,20 +632,23 @@ function sponsorsLookup(id: string) {
     }
     getRequest.then(async (response: FetchResponse) => {
         if (response?.ok) {
-            let getResult = JSON.parse(response.responseText);
+            let result = JSON.parse(response.responseText);
             if (Config.config.hashPrefix) {
-                getResult = getResult.filter((video) => video.videoID === id);
-                if (getResult.length > 0) {
-                    getResult = getResult[0].segments;
-                    if (getResult.length === 0) { // return if no segments found
+                result = result.filter((video) => video.videoID === id);
+                if (result.length > 0) {
+                    result = result[0].segments;
+                    if (result.length === 0) { // return if no segments found
+                        retryFetch(id);
                         return;
                     }
                 } else { // return if no video found
+                    console.log("refetching")
+                    retryFetch(id);
                     return;
                 }
             }
 
-            let recievedSegments: SponsorTime[] = getResult;
+            let recievedSegments: SponsorTime[] = result;
             if (!recievedSegments.length) {
                 console.error("[SponsorBlock] Server returned malformed response: " + JSON.stringify(recievedSegments));
                 return;
@@ -689,30 +692,36 @@ function sponsorsLookup(id: string) {
 
             sponsorLookupRetries = 0;
         } else if (response?.status === 404) {
-            sponsorDataFound = false;
-
-            //check if this video was uploaded recently
-            utils.wait(() => !!videoInfo).then(() => {
-                let dateUploaded = videoInfo?.microformat?.playerMicroformatRenderer?.uploadDate;
-
-                //if less than 3 days old
-                if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
-                    //TODO lower when server becomes better
-                    setTimeout(() => sponsorsLookup(id), 180000);
-                }
-            });
-
-            sponsorLookupRetries = 0;
+            retryFetch(id);
         } else if (sponsorLookupRetries < 90 && !recheckStarted) {
             recheckStarted = true;
 
             //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id), 10000);
+            setTimeout(() => sponsorsLookup(id), 10000 + Math.random() * 30000);
 
             sponsorLookupRetries++;
         }
     });
+}
+
+function retryFetch(id: string): void {
+    if (!Config.config.refetchWhenNotFound) return;
+
+    sponsorDataFound = false;
+
+    //check if this video was uploaded recently
+    utils.wait(() => !!videoInfo).then(() => {
+        let dateUploaded = videoInfo?.microformat?.playerMicroformatRenderer?.uploadDate;
+
+        //if less than 3 days old
+        if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
+            //TODO lower when server becomes better
+            setTimeout(() => sponsorsLookup(id), 120000);
+        }
+    });
+
+    sponsorLookupRetries = 0;
 }
 
 /**
