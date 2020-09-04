@@ -634,9 +634,7 @@ function sponsorsLookup(id: string) {
         if (response?.ok) {
             let getResult = JSON.parse(response.responseText);
             if (Config.config.hashPrefix) {
-                getResult = getResult.filter((video) => {
-                    return video.videoID = id;
-                });
+                getResult = getResult.filter((video) => video.videoID === id);
                 if (getResult.length > 0) {
                     getResult = getResult[0].segments;
                     if (getResult.length === 0) { // return if no segments found
