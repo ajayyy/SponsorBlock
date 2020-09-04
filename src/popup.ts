@@ -827,7 +827,7 @@ async function runThePopup(messageListener?: MessageListener) {
     function submitUsername() {
         //add loading indicator
         PageElements.setUsernameStatusContainer.style.display = "unset";
-        PageElements.setUsernameStatus.innerText = "Loading...";
+        PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("Loading");
 
         //get the userID
         utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (response) {
@@ -874,7 +874,7 @@ async function runThePopup(messageListener?: MessageListener) {
   
     function vote(type, UUID) {
         //add loading info
-        addVoteMessage("Loading...", UUID)
+        addVoteMessage(chrome.i18n.getMessage("Loading"), UUID)
   
         //send the vote message to the tab
         chrome.runtime.sendMessage({
