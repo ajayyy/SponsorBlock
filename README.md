@@ -77,6 +77,18 @@ The result is in `dist`. This can be loaded as an unpacked extension
 Run `npm run dev` to run the extension using a clean browser profile with hot reloading. Use `npm run dev:firefox` for Firefox. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).  
 Known chromium bug: Extension is not loaded properly on first start. Visit `chrome://extensions/` and reload the extension.
 
+
+### Attribution Generation
+
+If you contribute and add a dependency, update the attribution file using the following steps:
+
+Make sure the attribution generator is installed: `npm i -g oss-attribution-generator`
+
+```bash
+generate-attribution
+mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
+```
+
 # Credit
 
 The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used.
