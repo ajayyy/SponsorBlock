@@ -159,7 +159,7 @@ var Config: SBObject = {
         hideUploadButtonPlayerControls: false,
         hideDiscordLaunches: 0,
         hideDiscordLink: false,
-        invidiousInstances: ["invidio.us", "invidious.snopyta.org"],
+        invidiousInstances: ["invidious.snopyta.org"],
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
         minDuration: 0,
