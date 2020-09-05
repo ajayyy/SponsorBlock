@@ -1325,7 +1325,7 @@ function clearSponsorTimes() {
 function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNoticeComponent) {
     if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
-        skipNotice.addVoteButtonInfo.bind(skipNotice)("Loading...")
+        skipNotice.addVoteButtonInfo.bind(skipNotice)(chrome.i18n.getMessage("Loading"))
         skipNotice.setNoticeInfoMessage.bind(skipNotice)();
     }
 
