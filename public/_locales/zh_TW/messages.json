@@ -168,5 +168,131 @@
     },
     "Options": {
         "message": "選項"
+    },
+    "showButtons": {
+        "message": "在 YouTube 播放器上顯示按鈕"
+    },
+    "hideButtons": {
+        "message": "在 YouTube 播放器上隱藏按鈕"
+    },
+    "hideButtonsDescription": {
+        "message": "這會隱藏 YouTube 播放器上提交片段的按鈕"
+    },
+    "showInfoButton": {
+        "message": "在 YouTube 播放器上顯示資訊按鈕"
+    },
+    "hideInfoButton": {
+        "message": "在 YouTube 播放器上隱藏資訊按鈕"
+    },
+    "whatInfoButton": {
+        "message": "這個按鈕可用來在 YouTube 頁面打開彈出視窗"
+    },
+    "hideDeleteButton": {
+        "message": "在 YouTube 播放器上隱藏刪除按鈕"
+    },
+    "showDeleteButton": {
+        "message": "在 YouTube 播放器上顯示刪除按鈕"
+    },
+    "whatDeleteButton": {
+        "message": "這個按鈕可用來在 YouTube 播放器清除所有未提交的片段"
+    },
+    "enableViewTracking": {
+        "message": "啟用跳過次數追蹤"
+    },
+    "whatViewTracking": {
+        "message": "這個功能會追蹤您跳過的片段來讓其他使用者知道您的提交幫助了其他人多少，並同時用作計算錯誤提交的方式。這個擴充功能會在您每一次跳過片段時向伺服器回報。希望大家盡量不要改變這個設定來確保資料的正確性。 ：）"
+    },
+    "showNotice": {
+        "message": "再次顯示通知"
+    },
+    "longDescription": {
+        "message": "SponsorBlock 讓您可以跳過贊助工商，開場動畫，結束動畫，訂閱提醒等煩人的 YouTube 影片片段。SponsorBlock 是個大眾外包的網頁瀏覽器擴充功能，能讓任何人提交贊助片段的始與末。當一個人提交這個片段後，所有使用這個擴充功能的人都可以跳過該片段。您也可以跳過在音樂中的非音樂片段",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "網址",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "原始碼",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "通知已升級！",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "如果您還是不喜歡它，請按下永不顯示按鈕",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "設定開始片段快捷鍵"
+    },
+    "setSubmitKeybind": {
+        "message": "設定提交快捷鍵"
+    },
+    "keybindDescription": {
+        "message": "按下您想選擇的按鍵"
+    },
+    "keybindDescriptionComplete": {
+        "message": "快捷鍵已設定為： "
+    },
+    "0": {
+        "message": "連線超時。請檢查您的網路連線。若您的網路運作正常，則可能是伺服器超載或離線"
+    },
+    "disableSkipping": {
+        "message": "停用 SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "啟用 SponsorBlock"
+    },
+    "yourWork": {
+        "message": "您的成果",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "伺服器可能超載。請稍後嘗試"
+    },
+    "errorCode": {
+        "message": "錯誤代碼： "
+    },
+    "skip": {
+        "message": "略過"
+    },
+    "skipped": {
+        "message": "已跳過"
+    },
+    "disableAutoSkip": {
+        "message": "停用自動跳過"
+    },
+    "enableAutoSkip": {
+        "message": "啟用自動跳過"
+    },
+    "audioNotification": {
+        "message": "跳過時發出聲響"
+    },
+    "audioNotificationDescription": {
+        "message": "跳過時發出聲響會在跳過片段時播放聲音。當停用後（或自動跳過被停用）將不會發出聲響"
+    },
+    "showTimeWithSkips": {
+        "message": "顯示已移除跳過後的總時間"
+    },
+    "minLower": {
+        "message": "分鐘"
+    },
+    "minsLower": {
+        "message": "分鐘"
+    },
+    "hourLower": {
+        "message": "小時"
+    },
+    "hoursLower": {
+        "message": "小時"
+    },
+    "youHaveSavedTime": {
+        "message": "您已為大家節省"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " 的生命。"
     }
 }
