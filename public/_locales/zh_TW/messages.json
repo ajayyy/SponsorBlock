@@ -34,6 +34,9 @@
     "reportButtonInfo": {
         "message": "將這個提交檢舉為不正確"
     },
+    "Dismiss": {
+        "message": "忽略"
+    },
     "Loading": {
         "message": "載入中…"
     },
@@ -147,5 +150,23 @@
     },
     "clearTimesButton": {
         "message": "清除時間"
+    },
+    "submitTimesButton": {
+        "message": "提交時間"
+    },
+    "publicStats": {
+        "message": "這會被公開的統計頁面來展示您的貢獻。查看它"
+    },
+    "setUsername": {
+        "message": "設定使用者名稱"
+    },
+    "discordAdvert": {
+        "message": "快加入官方 Discord 伺服器來給予建議和反應！"
+    },
+    "hideThis": {
+        "message": "隱藏這"
+    },
+    "Options": {
+        "message": "選項"
     }
 }
