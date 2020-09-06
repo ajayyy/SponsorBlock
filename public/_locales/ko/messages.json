@@ -61,11 +61,18 @@
         "message": "소스 코드",
         "description": "Used on Firefox Store Page"
     },
+    "0": {
+        "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
+    },
     "disableSkipping": {
         "message": "SponsorBlock 비활성화"
     },
     "enableSkipping": {
         "message": "SponsorBlock 활성화"
+    },
+    "yourWork": {
+        "message": "지금까지 한 일",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "errorCode": {
         "message": "오류 코드: "
