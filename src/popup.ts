@@ -47,7 +47,7 @@ async function runThePopup(messageListener?: MessageListener) {
 
     var PageElements: any = {};
 
-    [//"sponsorStart",
+    ["sponsorStart",
     // Top toggles
     "whitelistChannel",
     "unwhitelistChannel",
@@ -60,7 +60,7 @@ async function runThePopup(messageListener?: MessageListener) {
     //"showNoticeAgain",
     "optionsButton",
     // More controls
-    //"submitTimes",
+    "submitTimes",
     //"reportAnIssue",
     // sponsorTimesContributions
     "sponsorTimesContributionsContainer",
@@ -101,6 +101,7 @@ async function runThePopup(messageListener?: MessageListener) {
     "videoFound",
     "sponsorMessageTimes",
     "downloadedSponsorMessageTimes",
+    "whitelistButton",
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     //setup click listeners
@@ -179,11 +180,11 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //get the amount of times this user has contributed and display it to thank them
     if (Config.config.sponsorTimesContributed != undefined) {
-        if (Config.config.sponsorTimesContributed !== 1) {
+        /*if (Config.config.sponsorTimesContributed !== 1) {
             PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
         } else {
             PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-        }
+        }*/
         PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed;
         PageElements.sponsorTimesContributionsContainer.style.display = "flex";
 
@@ -309,7 +310,8 @@ async function runThePopup(messageListener?: MessageListener) {
         //if request is undefined, then the page currently being browsed is not YouTube
         if (request != undefined) {
             //remove loading text
-            PageElements.mainControls.classList.remove("grayedOut");
+            PageElements.mainControls.style.display = "unset";
+            PageElements.whitelistButton.classList.remove("grayedOut");
             PageElements.loadingIndicator.style.display = "none";
 
             if (request.found) {

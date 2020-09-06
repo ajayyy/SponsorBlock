@@ -134,7 +134,7 @@ div.logoText>p, .recordingSubtitle {
   justify-content: center;
 }
 
-#mainControls, #sponsorTimesSkipsDoneContainer, .toggleSwitchContainer {
+#whitelistButton, #sponsorTimesSkipsDoneContainer, .toggleSwitchContainer {
   margin-bottom: 2px !important;
 }
 
@@ -173,7 +173,7 @@ div.logoText>p, .recordingSubtitle {
   font-size: 19px;
 }
 
-#mainControls > label > svg {
+#whitelistButton > label > svg {
   min-width: 16px;
   min-height: 16px;
   margin-top: auto;
@@ -209,12 +209,12 @@ label>svg, button#optionsButton>img, .logoText>img, #usernameValue {
   margin-right: 8px;
 }
 
-#mainControls>label, #additionalButtons>button, div#setUsernameContainer {
+#whitelistButton>label, #additionalButtons>button, div#setUsernameContainer {
   display: flex;
   flex-flow: row nowrap;
 }
 
-#mainControls>label, #additionalButtons>button, div#setUsernameContainer>button {
+#whitelistButton>label, #additionalButtons>button, div#setUsernameContainer>button {
   cursor: pointer;
 }
 

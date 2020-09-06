@@ -20,6 +20,23 @@
         <p id="videoFound"></p>
       </div>
       <p id="downloadedSponsorMessageTimes"></p>
+
+      <div id="mainControls" style="display: none">
+        <p class="popupElement"> 
+          __MSG_recordTimesDescription__
+        </p>
+        <div>
+          <button id="sponsorStart" class="greenButton popupElement">__MSG_sponsorStart__</button>
+        </div>
+        <sub class="popupElement">__MSG_popupHint__</sub>
+        <div id="submissionSection"  class="popupElement" style="display: none">
+          <b>Sponsor Editing has been moved and will appear after you click submit</b>
+          <div id="submitTimesContainer" class="popupElement" style="display: none">
+            <button id="submitTimes" class="smallButton popupElement">__MSG_submitTimesButton__</button>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="sidebyside">
       <div id="disableExtension">
@@ -36,7 +53,7 @@
       </div>
       <div id="additionalButtons">
         <!-- grayedOut until loading complete -->
-        <div id="mainControls" class="grayedOut bottomSpace" title="__MSG_forceChannelCheckPopup__">
+        <div id="whitelistButton" class="grayedOut bottomSpace" title="__MSG_forceChannelCheckPopup__">
           <input type="checkbox" style="display:none;" id="whitelistToggle">
           <label for="whitelistToggle" class="whitelistToggleText">
             <svg viewBox="0 0 24 24" width="16" height="16">
