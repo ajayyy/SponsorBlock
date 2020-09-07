@@ -112,6 +112,9 @@
     "openPopup": {
         "message": "SponsorBlock Popup openen"
     },
+    "closePopup": {
+        "message": "Popup sluiten"
+    },
     "SubmitTimes": {
         "message": "Segmenten indienen"
     },
