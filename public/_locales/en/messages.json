@@ -143,7 +143,7 @@
         "message": "here"
     },
     "recordTimesDescription": {
-         "message": "Click the button below when the segment starts and ends to record and submit it to the database."
+         "message": "Submit"
     },
     "popupHint": {
          "message": "Hint: Press the semicolon key while focused on a video to report the start/end of a segment and quote to submit. (This can be changed in the options)"

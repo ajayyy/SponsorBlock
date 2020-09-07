@@ -350,4 +350,7 @@ svg {
 
 .categoryColorTextBox {
     width: 60px;
+
+    background: none;
+    border: none;
 }

@@ -105,7 +105,7 @@ async function runThePopup(messageListener?: MessageListener) {
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     //setup click listeners
-    //PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
+    PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
     PageElements.whitelistToggle.addEventListener("change", function() {
         if (this.checked) {
             whitelistChannel();
@@ -114,8 +114,8 @@ async function runThePopup(messageListener?: MessageListener) {
         }
     });
     //PageElements.whitelistChannel.addEventListener("click", whitelistChannel);
-    //PageElements.whitelistForceCheck.addEventListener("click", openOptions);
-    //ageElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
+    PageElements.whitelistForceCheck.addEventListener("click", openOptions);
+    //PageElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
     PageElements.toggleSwitch.addEventListener("change", function() {
         if (this.checked) {
             toggleSkipping(false);
@@ -125,7 +125,7 @@ async function runThePopup(messageListener?: MessageListener) {
     });
     //PageElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
     //PageElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
-    //PageElements.submitTimes.addEventListener("click", submitTimes);
+    PageElements.submitTimes.addEventListener("click", submitTimes);
     //PageElements.showNoticeAgain.addEventListener("click", showNoticeAgain);
     PageElements.setUsernameButton.addEventListener("click", setUsernameButton);
     PageElements.submitUsername.addEventListener("click", submitUsername);
@@ -855,7 +855,7 @@ async function runThePopup(messageListener?: MessageListener) {
     function submitUsername() {
         //add loading indicator
         PageElements.setUsernameStatusContainer.style.display = "unset";
-        PageElements.setUsernameStatus.innerText = "Loading...";
+        PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("Loading");
 
         //get the userID
         utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (response) {
@@ -902,7 +902,7 @@ async function runThePopup(messageListener?: MessageListener) {
   
     function vote(type, UUID) {
         //add loading info
-        addVoteMessage("Loading...", UUID)
+        addVoteMessage(chrome.i18n.getMessage("Loading"), UUID)
   
         //send the vote message to the tab
         chrome.runtime.sendMessage({
