@@ -50,13 +50,13 @@
         "message": "Nooit weergeven"
     },
     "hitGoBack": {
-        "message": "Druk op unskip om terug te gaan naar waar je vandaan komt."
+        "message": "Druk op \"niet overslaan\" om terug te gaan naar waar u vandaan komt."
     },
     "unskip": {
-        "message": "Unskip"
+        "message": "Niet overslaan"
     },
     "reskip": {
-        "message": "Reskip"
+        "message": "Opnieuw overslaan"
     },
     "paused": {
         "message": "Gepauzeerd"
@@ -283,11 +283,14 @@
     "hoursLower": {
         "message": "uren"
     },
+    "changeUserID": {
+        "message": "Uw gebruikers-ID Importeren/exporteren"
+    },
     "whatChangeUserID": {
         "message": "Dit moet privé blijven. Dit is zoals een wachtwoord en mag met niemand worden gedeeld. Als iemand dit heeft, kunnen ze je imiteren."
     },
     "setUserID": {
-        "message": "Stel Gebruiker-Id in"
+        "message": "Gebruikers-ID instellen"
     },
     "createdBy": {
         "message": "Aangemaakt door"
@@ -302,7 +305,16 @@
         "message": ". Het is momenteel ingesteld op:"
     },
     "supportInvidious": {
-        "message": "Ondersteuning Invidious"
+        "message": "Ondersteuning voor Invidious"
+    },
+    "optionsInfo": {
+        "message": "Ondersteuning voor Invidious inschakelen, automatisch overslaan uitschakelen, knoppen verbergen en meer."
+    },
+    "addInvidiousInstance": {
+        "message": "Invidious-instantie toevoegen"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Een aangepaste instantie van Invidious toevoegen. Dit moet geformatteerd worden met ALLEEN het domein. Voorbeeld: invidious.ajay.app"
     },
     "add": {
         "message": "Toevoegen"
@@ -326,10 +338,10 @@
         "message": "SponsorBlock Serveradres"
     },
     "save": {
-        "message": "Bewaren"
+        "message": "Opslaan"
     },
     "reset": {
-        "message": "Reset"
+        "message": "Herstellen"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com wordt nu ondersteund"
@@ -344,7 +356,7 @@
         "message": "Segment indienen"
     },
     "submit": {
-        "message": "Bevestigen"
+        "message": "Indienen"
     },
     "cancel": {
         "message": "Annuleren"
@@ -378,16 +390,16 @@
         "message": "Sponsor"
     },
     "category_intro": {
-        "message": "Intermissie/Intro-animatie"
+        "message": "Intermissie/intro-animatie"
     },
     "category_intro_short": {
         "message": "Intermissie"
     },
     "category_outro": {
-        "message": "Eindkaarten/Credits"
+        "message": "Eindkaarten/credits"
     },
     "category_interaction": {
-        "message": "Interactieherinnering (Abonneren)"
+        "message": "Interactieherinnering (abonneren)"
     },
     "category_interaction_short": {
         "message": "Interactieherinnering"
@@ -396,7 +408,7 @@
         "message": "Onbetaalde promotie of zelfpromotie"
     },
     "category_music_offtopic": {
-        "message": "Muziek: Sectie zonder muziek"
+        "message": "Muziek: sectie zonder muziek"
     },
     "category_music_offtopic_description": {
         "message": "Alleen voor gebruik in muziekvideo's. Dit omvat introducties of outros in muziekvideo's."
@@ -414,10 +426,10 @@
         "message": "Uitschakelen"
     },
     "manualSkip": {
-        "message": "Handmatig Overslaan"
+        "message": "Handmatig overslaan"
     },
     "showOverlay": {
-        "message": "Toon in tijdbalk"
+        "message": "Weergeven in tijdbalk"
     },
     "colorFormatIncorrect": {
         "message": "Je kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
@@ -473,7 +485,7 @@
         "message": "Als dit blijft optreden, kan dit worden veroorzaakt door uw advertentieblokkeerder. Bekijk https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "downvoteDescription": {
-        "message": "Verkeerde Timing"
+        "message": "Verkeerde timing"
     },
     "incorrectCategory": {
         "message": "Verkeerde categorie"
@@ -485,17 +497,17 @@
         "message": "Richtlijnen"
     },
     "readTheGuidelines": {
-        "message": "Lees de Richtlijnen!!",
+        "message": "Lees de richtlijnen!!",
         "description": "Show the first time they submit or if they are \"high risk\""
     },
     "categoryUpdate1": {
         "message": "Categorieën zijn er!"
     },
     "categoryUpdate2": {
-        "message": "Open de opties om intro, outros, merch, etc. over te slaan."
+        "message": "Open de opties om intro's, outro's, koopwaar,... over te slaan."
     },
     "unsubmittedWarning": {
-        "message": "Notificatie voor niet-ingestuurde segmenten"
+        "message": "Melding voor niet-ingediende segmenten"
     },
     "unsubmittedWarningDescription": {
         "message": "Stuur een notificatie wanneer je een video verlaat met segmenten die niet zijn geüpload"
