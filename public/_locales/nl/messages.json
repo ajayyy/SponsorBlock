@@ -179,25 +179,25 @@
         "message": "Dit verbergt de knoppen die verschijnen op de YouTube-speler om segmenten over te slaan."
     },
     "showInfoButton": {
-        "message": "Toon info-knop op YouTube-speler"
+        "message": "Info-knop op YouTube-speler weergeven"
     },
     "hideInfoButton": {
-        "message": "Verberg info-knop op YouTube Player"
+        "message": "Info-knop op YouTube-speler verbergen"
     },
     "whatInfoButton": {
         "message": "Dit is de knop die een pop-up opent op de YouTube-pagina."
     },
     "hideDeleteButton": {
-        "message": "Verberg verwijder-knop op YouTube-speler"
+        "message": "Verwijderen-knop op YouTube-speler verbergen"
     },
     "showDeleteButton": {
-        "message": "Toon verwijder-knop op YouTube-speler"
+        "message": "Verwijderen-knop op YouTube-speler weergeven"
     },
     "whatDeleteButton": {
         "message": "Dit is de knop op de YouTube-speler die al je niet ingezonden segmenten van de huidige video zal wissen."
     },
     "enableViewTracking": {
-        "message": "Bijhouden van het aantal skips inschakelen"
+        "message": "Bijhouden van het aantal keren overslaan inschakelen"
     },
     "whatViewTracking": {
         "message": "Deze functie houdt bij welke segmenten u hebt overgeslagen om gebruikers te laten weten hoezeer hun indiening anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer je een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
@@ -247,7 +247,7 @@
         "message": "SponsorBlock inschakelen"
     },
     "yourWork": {
-        "message": "Jouw werk",
+        "message": "Uw werk",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
@@ -269,7 +269,13 @@
         "message": "Automatisch overslaan inschakelen"
     },
     "audioNotification": {
-        "message": "Audiomelding bij Overslaan"
+        "message": "Geluidsmelding bij overslaan"
+    },
+    "youHaveSkipped": {
+        "message": "U hebt overgeslagen: "
+    },
+    "youHaveSaved": {
+        "message": "U hebt uzelf bespaard: "
     },
     "minLower": {
         "message": "minuut"
@@ -282,6 +288,12 @@
     },
     "hoursLower": {
         "message": "uren"
+    },
+    "youHaveSavedTime": {
+        "message": "U hebt andere mensen bespaard:"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " van hun leven."
     },
     "changeUserID": {
         "message": "Uw gebruikers-ID Importeren/exporteren"
@@ -510,6 +522,6 @@
         "message": "Melding voor niet-ingediende segmenten"
     },
     "unsubmittedWarningDescription": {
-        "message": "Stuur een notificatie wanneer je een video verlaat met segmenten die niet zijn geüpload"
+        "message": "Een melding sturen wanneer u een video verlaat met segmenten die niet zijn geüpload"
     }
 }
