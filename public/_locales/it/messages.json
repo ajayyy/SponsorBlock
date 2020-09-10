@@ -19,14 +19,20 @@
     "channelWhitelisted": {
         "message": "Canale aggiunto alla whitelist!"
     },
+    "Segment": {
+        "message": "segmento"
+    },
+    "Segments": {
+        "message": "segmenti"
+    },
     "upvoteButtonInfo": {
-        "message": "Vota questa segnalazione"
+        "message": "Vota questo contributo"
     },
     "reportButtonTitle": {
         "message": "Segnala"
     },
     "reportButtonInfo": {
-        "message": "Segnala questa segnalazione come incorretta."
+        "message": "Segnala questo contributo come non corretto."
     },
     "Dismiss": {
         "message": "Chiudi"
@@ -67,6 +73,18 @@
     "Unknown": {
         "message": "Si è verificato un errore durante l'invio dello spezzone sponsorizzato, per favore riprova più tardi."
     },
+    "sponsorFound": {
+        "message": "Questo video ha dei segmenti nel database!"
+    },
+    "sponsor404": {
+        "message": "Nessun segmento trovato"
+    },
+    "sponsorStart": {
+        "message": "Il Segmento Inizia Ora"
+    },
+    "sponsorEnd": {
+        "message": "Il Segmento Termina Ora"
+    },
     "noVideoID": {
         "message": "Probabilmente questa non è una scheda di YouTube, oppure hai cliccato troppo presto. \nSe sei sicuro di essere in una scheda di YouTube,\n riapri questo popup."
     },
@@ -82,8 +100,23 @@
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
     },
+    "wantToSubmit": {
+        "message": "Desideri inviare per l'id video"
+    },
+    "leftTimes": {
+        "message": "Sembra che tu abbia non abbia inviato alcuni segmenti. Torna a quella pagina per inviarli (non sono stati eliminati)."
+    },
+    "clearTimes": {
+        "message": "Pulisci Segmenti"
+    },
     "openPopup": {
         "message": "Apri il Popup di SponsorBlock"
+    },
+    "closePopup": {
+        "message": "Chiudi il popup"
+    },
+    "SubmitTimes": {
+        "message": "Invia Segmenti"
     },
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
@@ -93,6 +126,9 @@
     },
     "removeFromWhitelist": {
         "message": "Rimuovi Canale dalla Whitelist"
+    },
+    "voteOnTime": {
+        "message": "Vota un Segmento"
     },
     "soFarUHSubmited": {
         "message": "Fino ad ora hai inviato"
@@ -105,6 +141,12 @@
     },
     "here": {
         "message": "qui"
+    },
+    "recordTimesDescription": {
+        "message": "Premi il pulsante in basso quando il segmento inizia e finisce per registrarlo ed inviarlo al database."
+    },
+    "popupHint": {
+        "message": "Suggerimento: Premi il pulsante 'punto e virgola' mentre sei concentrato su un video, per segnalare l'inizio e la fine di un segmento e la relativa citazione da inviare. (Questo può essere modificato nelle opzioni)"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -154,8 +196,18 @@
     "whatDeleteButton": {
         "message": "Questo è il pulsante che ti permette di cancellare tutti gli spezzoni sponsorizzati nel lettore di YouTube."
     },
+    "enableViewTracking": {
+        "message": "Attiva Monitoraggio Salti"
+    },
+    "whatViewTracking": {
+        "message": "Questa funzionalità tiene traccia dei segmenti che hai saltato, per far sapere agli utenti quanto il loro contributo abbia aiutato gli altri e sia stato utilizzato come metrica insieme ai voti positivi, per garantire che lo spam non entri nel database. L'estensione invierà un messaggio al server ogni volta che salterai un segmento. Si spera che la maggior parte delle persone non modifichino questa impostazione, in modo da non intaccare l'accuratezza dei numeri di visualizzazione. :)"
+    },
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
+    },
+    "longDescription": {
+        "message": "SponsorBlock ti consente di saltare sponsorizzazioni, introduzioni, conclusioni, promemoria di iscrizione e altre componenti fastidiose dei video su YouTube. SponsorBlock è un'estensione per browser in crowdsourcing, che consente a chiunque di inviare l'ora di inizio e di fine dei segmenti sponsorizzati e altri segmenti video su YouTube. Quando una persona invia queste informazioni, chiunque altro in possesso di questa estensione sarà in grado di saltare direttamente il segmento sponsorizzato. È possibile saltare anche le sezioni non musicali dei video musicali.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Sito Web",
@@ -173,8 +225,11 @@
         "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setStartSponsorShortcut": {
+        "message": "Imposta chiave di associazione per l'inizio del segmento"
+    },
     "setSubmitKeybind": {
-        "message": "Imposta la chiave per l'associazione di tasti per le segnalazioni"
+        "message": "Imposta chiave di associazione tasti per i tuoi contributi"
     },
     "keybindDescription": {
         "message": "Seleziona una chiave digitandola"
@@ -215,6 +270,9 @@
     },
     "audioNotification": {
         "message": "Notifiche Audio per Salta"
+    },
+    "audioNotificationDescription": {
+        "message": "La notifica audio riprodurrà un suono ogni volta che un segmento verrà saltato. Se questa opzione (o quella del salto automatico) è disattivata, non verrà riprodotto alcun suono."
     },
     "showTimeWithSkips": {
         "message": "Mostra Tempo Con Salti Rimossi"
@@ -267,6 +325,9 @@
     "autoSkip": {
         "message": "Salta Automaticamente"
     },
+    "showSkipNotice": {
+        "message": "Mostra Avviso Dopo Aver Saltato un Segmento"
+    },
     "keybindCurrentlySet": {
         "message": ". Attualmente è impostato su:"
     },
@@ -303,6 +364,15 @@
     "minDuration": {
         "message": "Durata minima (secondi):"
     },
+    "minDurationDescription": {
+        "message": "I segmenti più brevi del valore impostato non verranno saltati o visualizzati nel lettore."
+    },
+    "shortCheck": {
+        "message": "Il seguente contributo è più breve della tua opzione di durata minima. Ciò potrebbe significare che questo è già stato inviato e viene semplicemente ignorato a causa di questa opzione. Sei sicuro di voler inviare?"
+    },
+    "showUploadButton": {
+        "message": "Mostra Pulsante di Caricamento"
+    },
     "whatUploadButton": {
         "message": "Questo pulsante appare sul riproduttore di YouTube dopo che hai selezionato un marcatore temporale e sei pronto ad inviarlo."
     },
@@ -324,8 +394,14 @@
     "areYouSureReset": {
         "message": "Sei sicuro di voler eseguire il reset?"
     },
+    "confirmPrivacy": {
+        "message": "Il video è stato rilevato come non in elenco. Clicca su Annulla se non desideri verificare la presenza di segmenti da saltare."
+    },
     "unlistedCheck": {
         "message": "Ignora Video Non Pubblicati/Privati"
+    },
+    "whatUnlistedCheck": {
+        "message": "Questa impostazione rallenterà leggermente SponsorBlock. Le ricerche di segmenti da saltare richiedono l'invio dell'ID video al server. Se sei preoccupato per gli ID video non in elenco inviati su Internet, attiva questa opzione."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com è ora supportato"
@@ -335,6 +411,147 @@
     },
     "whatExportOptions": {
         "message": "Questa è la tua intera configurazione in formaro JSON. Questo include il tuo ID utente, quindi presta attenzione se vuoi condividerlo."
+    },
+    "setOptions": {
+        "message": "Imposta Opzioni"
+    },
+    "exportOptionsWarning": {
+        "message": "Attezione: La modifica delle opzioni è permanente e può interrompere l'installazione. Sei sicuro di voler proseguire? Assicurati di aver eseguito un backup per ogni evenienza."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Questo JSON non è stato correttamente formattato. Le tue opzioni non sono state modificate."
+    },
+    "confirmNoticeTitle": {
+        "message": "Invia Segmento"
+    },
+    "submit": {
+        "message": "Invia"
+    },
+    "cancel": {
+        "message": "Annulla"
+    },
+    "delete": {
+        "message": "Elimina"
+    },
+    "preview": {
+        "message": "Anteprima"
+    },
+    "edit": {
+        "message": "Modifica"
+    },
+    "copyDebugInformation": {
+        "message": "Copia Informazioni di Debug Negli Appunti"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Impossibile scrivere negli Appunti"
+    },
+    "copyDebugInformationOptions": {
+        "message": "Copia le informazioni negli appunti da fornire a uno sviluppatore quando si registra un bug / quando uno sviluppatore lo richiede. Le informazioni sensibili come l'ID utente, i canali e l'indirizzo del server personalizzato sono stati rimossi. Tuttavia contiene informazioni come il tuo useragent, browser, sistema operativo e numero di versione di estensione. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "Le informazioni di debug sono state copiate nel clip board. Sentiti libero di rimuovere tutte le informazioni che preferisci non condividere. Salva in un file di testo o incollale nella segnalazione di bug."
+    },
+    "theKey": {
+        "message": "La chiave"
+    },
+    "keyAlreadyUsed": {
+        "message": "è abbinata ad un'altra azione. Si prega di selezionare un'altra chiave."
+    },
+    "to": {
+        "message": "a",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponsorizzazione"
+    },
+    "category_sponsor_description": {
+        "message": "Promozione a pagamento, referral a pagamento e pubblicità diretta. Non per auto-promozione o ringraziamenti gratuiti a cause/creatori/siti web/ prodotti di loro gradimento."
+    },
+    "category_intro": {
+        "message": "Animazione Interruzione/Introduzione"
+    },
+    "category_intro_description": {
+        "message": "Un intervallo senza contenuto effettivo. Potrebbe essere una pausa, una schermata statica, un'animazione ripetuta. Non dovrebbe essere usato per transizioni contenenti informazioni."
+    },
+    "category_intro_short": {
+        "message": "Interruzione"
+    },
+    "category_outro": {
+        "message": "Conclusioni/Titoli di Coda"
+    },
+    "category_outro_description": {
+        "message": "I titoli di coda o quando vengono mostrate annotazioni a fine video su YouTube. Non per conclusioni provviste di informazioni."
+    },
+    "category_interaction": {
+        "message": "Promemoria di Interazione (Sottoscrizione)"
+    },
+    "category_interaction_description": {
+        "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per aggiunta di mi piace, iscrizione o seguito. Se dovesse risultare esteso o riguardare qualcosa di specifico, potrebbe essere un'autopromozione."
+    },
+    "category_interaction_short": {
+        "message": "Promemoria di Interazione"
+    },
+    "category_selfpromo": {
+        "message": "Promozione non pagata/Autopromozione"
+    },
+    "category_selfpromo_description": {
+        "message": "Simile alle \"sponsorizzazioni\" tranne che per promozioni non pagate o autopromozioni. Ciò include sezioni riguardanti vendita di merce, donazioni o informazioni in merito a collaboratori."
+    },
+    "category_music_offtopic": {
+        "message": "Musica: Sezione Non-Musicale"
+    },
+    "category_music_offtopic_description": {
+        "message": "Solo per utilizzo su video musicali. Ciò include introduzioni o conclusioni in video musicali."
+    },
+    "category_music_offtopic_short": {
+        "message": "Non-Musicale"
+    },
+    "category_livestream_messages": {
+        "message": "Livestream: Donazione/Letture dei Messaggi"
+    },
+    "category_livestream_messages_short": {
+        "message": "Lettura Messaggi"
+    },
+    "disable": {
+        "message": "Disattiva"
+    },
+    "manualSkip": {
+        "message": "Salto Manuale"
+    },
+    "showOverlay": {
+        "message": "Mostra nella Barra di Ricerca"
+    },
+    "colorFormatIncorrect": {
+        "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
+    },
+    "previewColor": {
+        "message": "Anteprima Colore",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Colore Barra di Ricerca"
+    },
+    "category": {
+        "message": "Categoria"
+    },
+    "skipOption": {
+        "message": "Salta Opzione",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "enableTestingServer": {
+        "message": "Attiva Server di Beta Testing"
+    },
+    "whatEnableTestingServer": {
+        "message": "I tuoi invii e voti NON CONTERANNO nel il server principale. Usa questa opzione solo per test."
+    },
+    "testingServerWarning": {
+        "message": "Tutti i contributi e i voti NON VERRANNO CONTATI verso il server principale durante la connessione al server di prova. Assicurarsi di disabilitare questa opzione quando si desidera fare reali contributi."
+    },
+    "bracketNow": {
+        "message": "(Ora)"
+    },
+    "moreCategories": {
+        "message": "Più Categorie"
     },
     "chooseACategory": {
         "message": "Scegli una Categoria"
@@ -350,5 +567,54 @@
     },
     "hiddenDueToDuration": {
         "message": "nascosto: troppo corto"
+    },
+    "channelDataNotFound": {
+        "message": "ID canale non ancora caricato."
+    },
+    "adblockerIssue": {
+        "message": "Sembra che qualcosa stia bloccando la capacità di SponsorBlock di ottenere dati video. Questo probabilmente è il tuo ad blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Se questo continua a verificarsi, potrebbe essere causato dal tuo ad-blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Forza controllo canale prima di andare avanti"
+    },
+    "whatForceChannelCheck": {
+        "message": "Per impostazione predefinita, si salteranno subito i segmenti prima che si sappia anche che canale è. Per impostazione predefinita, alcuni segmenti all'inizio del video potrebbero essere saltati sui canali sulla whitelist. Abilitare questa opzione impedirà questo, ma fare saltare tutti hanno un leggero ritardo in quanto ottenere il channelID può richiedere un certo tempo. Questo ritardo potrebbe essere invisibile se si dispone di internet veloce."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Considera l'Attivazione dell'opzione \"Forza la Verifica del Canale Prima del Salto\""
+    },
+    "downvoteDescription": {
+        "message": "Tempo Non Corretto/Errato"
+    },
+    "incorrectCategory": {
+        "message": "Categoria Errata"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Questo video è classificato come musica. Sei sicuro che questo video contenga uno sponsor? Se questo è in realtà un \"Segmento Non-Musica\", apri le opzioni di questa estensione e abilita questa categoria. Quindi, è possibile inviare questo segmento come \"Non-Music\" invece di sponsor. Si prega di leggere la guida se si è confusi."
+    },
+    "multipleSegments": {
+        "message": "Segmenti Multipli"
+    },
+    "guidelines": {
+        "message": "Linee guida"
+    },
+    "readTheGuidelines": {
+        "message": "Leggi Le Linee Guide!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Le categorie sono qui!"
+    },
+    "categoryUpdate2": {
+        "message": "Apri queste opzioni per saltare le introduzioni, conclusioni, vendita di prodotti ecc."
+    },
+    "unsubmittedWarning": {
+        "message": "Notifica Segmenti Non Inviati"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Invia una notifica quando lasci un video con segmenti non caricati"
     }
 }

@@ -49,6 +49,10 @@
     "Options": {
         "message": "설정"
     },
+    "longDescription": {
+        "message": "SponsorBlock을 사용하면 영상에서 스폰서 광고, 인트로 영상, 아웃트로 영상, 구독 광고와 그 외 쓸데없는 부분을 즉시 건너뛸 수 있습니다. SponsorBlock은 모든 사람들이 참여하는 브라우저 확장 기능으로 확장 기능 사용자는 스폰서 광고 또는 다른 광고의 시작 시간과 끝 시간을 확인하여 서버로 전송할 수 있습니다. 이러한 정보가 전송되면 그 영상을 보는 다른 사용자들은 광고 구간이 나오기 전에 자동으로 건너뛸 수 있습니다. SponsorBlock을 사용하면 뮤직 비디오에서 음악이나 노래가 아닌 구간도 건너뛸 수 있습니다.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "웹사이트",
         "description": "Used on Firefox Store Page"
@@ -57,8 +61,18 @@
         "message": "소스 코드",
         "description": "Used on Firefox Store Page"
     },
+    "0": {
+        "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
+    },
     "disableSkipping": {
         "message": "SponsorBlock 비활성화"
+    },
+    "enableSkipping": {
+        "message": "SponsorBlock 활성화"
+    },
+    "yourWork": {
+        "message": "지금까지 한 일",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "errorCode": {
         "message": "오류 코드: "
@@ -96,6 +110,9 @@
     "customAddressError": {
         "message": "올바르지 않은 주소입니다. 주소는 반드시 http:// 또는 https://로 시작해야 하며, 마지막 문자가 슬래시로 끝날 수 없습니다."
     },
+    "mobileUpdateInfo": {
+        "message": "이제 m.youtube.com 링크를 지원합니다"
+    },
     "exportOptions": {
         "message": "모든 설정 가져오기/내보내기"
     },
@@ -117,6 +134,24 @@
     "copyDebugInformationComplete": {
         "message": "디버그 정보가 복사되었습니다. 공유하고 싶지 않은 내용이 있는 경우 자유롭게 수정하신 후, 텍스트 파일로 저장하시거나 버그 신고 페이지에 붙여넣으시면 됩니다."
     },
+    "category_sponsor": {
+        "message": "스폰서 광고"
+    },
+    "category_intro": {
+        "message": "무음 구간 / 인트로 영상"
+    },
+    "category_intro_description": {
+        "message": "아무 내용도 없는 구간입니다. 일시정지된 영상, 정지된 프레임이거나 반복되는 애니메이션일 가능성이 있습니다. 특정 정보를 알려주는 화면 전환 구간은 여기에 해당되지 않습니다."
+    },
+    "category_outro_description": {
+        "message": "엔딩 크레딧이나 최종 화면이 나타나는 구간입니다. 단순히 결론을 말하는 부분은 여기에 포함되지 않습니다."
+    },
+    "category_music_offtopic": {
+        "message": "음악이 아닌 구간"
+    },
+    "category_music_offtopic_description": {
+        "message": "뮤직 비디오에서만 해당됩니다. 여기에는 시작 부분 (인트로) 영상이나 끝 부분 (아웃트로) 영상이 포함됩니다."
+    },
     "colorFormatIncorrect": {
         "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
     },
@@ -136,5 +171,12 @@
     },
     "chooseACategory": {
         "message": "구간 범주 선택"
+    },
+    "guidelines": {
+        "message": "가이드라인"
+    },
+    "readTheGuidelines": {
+        "message": "가이드라인을 제발 읽어주세요!!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     }
 }

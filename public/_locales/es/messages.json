@@ -1,10 +1,10 @@
 {
     "fullName": {
-        "message": "SponsorBlock para YouTube - Omitir Sponsors",
+        "message": "SponsorBlock para YouTube - Saltar los patrocinios",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Salte todos los patrocinios, súplicas por suscripción y más en los videos de YouTube. Reporta secciones de patrocinio en los videos que veas para ahorrarle tiempo a los demás.",
+        "message": "Salte todos los patrocinios, súplicas por suscripción y más en los vídeos de YouTube. Reporta secciones de patrocinio en los vídeos que veas para ahorrarle tiempo a los demás.",
         "description": "Description of the extension."
     },
     "400": {
@@ -111,6 +111,9 @@
     },
     "openPopup": {
         "message": "Abrir Ventana de SponsorBlock"
+    },
+    "closePopup": {
+        "message": "Cerrar la ventana"
     },
     "SubmitTimes": {
         "message": "Enviar Segmentos"
@@ -388,14 +391,35 @@
     "customAddressError": {
         "message": "La dirección no tiene el formato adecuado. Asegúrese de que tenga http:// o https:// al principio y que no haya barras al final."
     },
+    "areYouSureReset": {
+        "message": "¿Estás seguro de que te gustaría reiniciar esto?"
+    },
+    "confirmPrivacy": {
+        "message": "El vídeo ha sido detectado como no listado. Haz clic en cancelar si no quieres comprobar si hay segmentos salteados."
+    },
+    "unlistedCheck": {
+        "message": "Ignorar los vídeos no listados/privados"
+    },
+    "whatUnlistedCheck": {
+        "message": "Esta configuración ralentizará ligeramente a SponsorBlock. Las búsquedas de segmentos de salto requieren el envío de la identificación del vídeo al servidor. Si le preocupa que se envíen por Internet identificadores de vídeo no listados, habilite esta opción."
+    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com ahora es compatible"
     },
     "exportOptions": {
         "message": "Importar/Exportar todas las opciones"
     },
+    "whatExportOptions": {
+        "message": "Esta es toda su configuración en JSON. Esto incluye tu ID de usuario, así que asegúrate de compartir esto sabiamente."
+    },
     "setOptions": {
         "message": "Configurar opciones"
+    },
+    "exportOptionsWarning": {
+        "message": "Advertencia: cambiar las opciones es permanente y puede romper la instalación. ¿Estás seguro de que te gustaría hacer esto? Asegúrate de hacer una copia de seguridad de la antigua por si acaso."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Este JSON no está correctamente formateado. Sus opciones no han sido cambiadas."
     },
     "confirmNoticeTitle": {
         "message": "Enviar segmento"
@@ -421,26 +445,72 @@
     "copyDebugInformationFailed": {
         "message": "Error al escribir al portapapeles"
     },
+    "copyDebugInformationOptions": {
+        "message": "Copia la información al portapapeles para ser proporcionada a un desarrollador cuando levanta un error / cuando un desarrollador lo solicita. Información sensible como su ID de usuario, canales de la lista blanca y la dirección del servidor personalizado han sido eliminados. Sin embargo, contiene información como su agente de usuario, navegador, sistema operativo y número de versión de la extensión. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "La información de depuración ha sido copiada al portapapeles. Siéntase libre de eliminar cualquier información que prefiera no compartir. Guarde esto en un archivo de texto o péguelo en el informe de errores."
+    },
     "theKey": {
         "message": "El botón"
     },
     "keyAlreadyUsed": {
         "message": "está enlazado a otra acción. Por favor, seleccione otro botón."
     },
+    "to": {
+        "message": "a",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
     "category_sponsor": {
         "message": "Sponsor"
+    },
+    "category_sponsor_description": {
+        "message": "Promoción pagada, referencias pagadas y anuncios directos. No para autopromoción o anuncios gratuitos a causas/creadores/sitios web/productos que les gusten."
+    },
+    "category_intro": {
+        "message": "Intermisión/Introducción de animación"
+    },
+    "category_intro_description": {
+        "message": "Un intervalo sin contenido real. Podría ser una pausa, un cuadro estático, una animación repetida. Esto no debe ser usado para transiciones que contengan información."
+    },
+    "category_intro_short": {
+        "message": "Intermisión"
     },
     "category_outro": {
         "message": "Tarjetas/Créditos"
     },
+    "category_outro_description": {
+        "message": "Créditos o cuando aparecen las tarjetas finales de YouTube. No para conclusiones con información."
+    },
     "category_interaction": {
         "message": "Recordatorio de interacción (subscribir)"
+    },
+    "category_interaction_description": {
+        "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
+    },
+    "category_interaction_short": {
+        "message": "Recordatorio de interacción"
+    },
+    "category_selfpromo": {
+        "message": "No remunerado/Autopromoción"
+    },
+    "category_selfpromo_description": {
+        "message": "Similar a \"patrocinador\", excepto que no es remunerado o se autopromociona. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
     },
     "category_music_offtopic": {
         "message": "Música: Sección sin musica"
     },
+    "category_music_offtopic_description": {
+        "message": "Sólo para su uso en vídeos musicales. Esto incluye las introducciones o las salidas en los vídeos musicales."
+    },
+    "category_music_offtopic_short": {
+        "message": "No musical"
+    },
     "category_livestream_messages": {
         "message": "Directo: Lecturas de donaciones y mensajes"
+    },
+    "category_livestream_messages_short": {
+        "message": "Lectura del mensaje"
     },
     "disable": {
         "message": "Desactivar"
@@ -448,8 +518,34 @@
     "manualSkip": {
         "message": "Omisión manual"
     },
+    "showOverlay": {
+        "message": "Mostrar en la barra de búsqueda"
+    },
+    "colorFormatIncorrect": {
+        "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
+    },
+    "previewColor": {
+        "message": "Vista previa del color",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Busca el color de la barra"
+    },
+    "category": {
+        "message": "Categoría"
+    },
+    "skipOption": {
+        "message": "Opción de Saltar",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
     "enableTestingServer": {
         "message": "Habilitar Servidor de Pruebas Beta"
+    },
+    "whatEnableTestingServer": {
+        "message": "Sus envíos y votos NO CONTABILIZARÁN hacia el servidor principal. Sólo use esto para probar."
+    },
+    "testingServerWarning": {
+        "message": "Todos los envíos y votos NO CONTABILIZARÁN hacia el servidor principal mientras se conecten al servidor de prueba. Asegúrate de desactivar esto cuando quieras hacer presentaciones reales."
     },
     "bracketNow": {
         "message": "(Ahora)"
@@ -457,11 +553,38 @@
     "moreCategories": {
         "message": "Más categorías"
     },
+    "chooseACategory": {
+        "message": "Elija una categoría"
+    },
+    "youMustSelectACategory": {
+        "message": "¡Debes seleccionar una categoría para todos los segmentos que estés presentando!"
+    },
     "bracketEnd": {
         "message": "(Final)"
     },
+    "hiddenDueToDownvote": {
+        "message": "oculto: voto negativo"
+    },
+    "hiddenDueToDuration": {
+        "message": "oculto: demasiado corto"
+    },
     "channelDataNotFound": {
         "message": "ID de canal no cargado todavía."
+    },
+    "adblockerIssue": {
+        "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de vídeo. Este es probablemente su bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Si esto sigue ocurriendo, podría ser causado por tu bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Solicitudes"
+    },
+    "forceChannelCheck": {
+        "message": "Comprobación forzada del canal antes de saltarse"
+    },
+    "whatForceChannelCheck": {
+        "message": "Por defecto, se saltará los segmentos inmediatamente antes de saber cuál es el canal. Por defecto, algunos segmentos al principio del vídeo pueden ser salteados en los canales de la lista blanca. Al activar esta opción se evitará esto, pero haciendo que todos los saltos tengan un ligero retraso ya que obtener el ID del canal puede llevar algún tiempo. Este retraso podría ser imperceptible si tienes una Internet rápida."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Considere la posibilidad de activar \"Comprobación del canal de fuerza antes de saltar\""
     },
     "downvoteDescription": {
         "message": "Tiempo incorrecto/equivocado"
@@ -469,7 +592,29 @@
     "incorrectCategory": {
         "message": "Categoría Incorrecta"
     },
+    "nonMusicCategoryOnMusic": {
+        "message": "Este video está clasificado como música. ¿Estás seguro de que esto tiene un patrocinador? Si esto es realmente un \"Segmento sin música\", abre las opciones de extensión y habilita esta categoría. Entonces, puedes enviar este segmento como \"No-Música\" en lugar de patrocinador. Por favor, lee las directrices si estás confundido."
+    },
     "multipleSegments": {
         "message": "Múltiples segmentos"
+    },
+    "guidelines": {
+        "message": "Instrucciones"
+    },
+    "readTheGuidelines": {
+        "message": "¡¡¡Lee las instrucciones!!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "¡Las categorías están aquí!"
+    },
+    "categoryUpdate2": {
+        "message": "Abre las opciones de saltarse intros, otros, mercantil, etc."
+    },
+    "unsubmittedWarning": {
+        "message": "Notificación de segmentos no enviados"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Envía una notificación cuando dejas un vídeo con segmentos que no se suben"
     }
 }

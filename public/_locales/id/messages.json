@@ -112,6 +112,9 @@
     "openPopup": {
         "message": "Buka Popup SponsorBlock"
     },
+    "closePopup": {
+        "message": "Tutup Popup"
+    },
     "SubmitTimes": {
         "message": "Kirim Segmen"
     },
@@ -371,7 +374,7 @@
         "message": "Tampilkan Tombol Unggah"
     },
     "whatUploadButton": {
-        "message": "Tombol ini muncul di pemutar video YouTube setelah kamu memilih stempel waktu dan siap untuk dikirimkan."
+        "message": "Tombol ini muncul di pemutar video YouTube setelah anda memilih stempel waktu dan siap untuk dikirimkan."
     },
     "customServerAddress": {
         "message": "Alamat Server SponsorBlock"
@@ -468,7 +471,7 @@
         "message": "Jeda/Animasi Intro"
     },
     "category_intro_description": {
-        "message": "Bagian yang bukan konten sebenarnya. Dapat berupa jeda, gambar statik, dan animasi berulang di channel. Ini tidak boleh digunakan untuk transisi yang berisi informasi atau digunakan di video musik."
+        "message": "Bagian yang bukan konten sebenarnya. Dapat berupa jeda, gambar statik, atau animasi berulang. Ini tidak boleh digunakan untuk transisi yang berisi informasi."
     },
     "category_intro_short": {
         "message": "Jeda"
@@ -477,7 +480,7 @@
         "message": "Kartu Akhir/Kredit"
     },
     "category_outro_description": {
-        "message": "Kredit atau saat kartu akhir YouTube muncul. Tidak untuk kesimpulan dengan informasi. Tidak boleh dipakai pada video musik."
+        "message": "Kredit atau saat kartu akhir YouTube muncul. Tidak untuk kesimpulan dengan informasi."
     },
     "category_interaction": {
         "message": "Pengingat Interaksi (Berlangganan)"
@@ -590,7 +593,7 @@
         "message": "Salah Kategori"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Video ini dikategorikan sebagai musik. Apakah anda yakin ingin mengirim segmen yang kategorinya non-musik? Kecuali jika video ini bukan musik, anda seharusnya tidak mengirim segmen ini. Harap baca pedoman jika anda kebingungan."
+        "message": "Video ini dikategorikan sebagai musik. Apakah anda yakin ini berisi sponsor? Jika ini ternyata adalah \"Segmen non-musik\", buka pengaturan ekstensi dan aktifkan kategorinya. Lalu, anda bisa mengirim segmen ini sebagai \"Non-musik\" bukannya sponsor. Harap membaca panduan jika anda kebingungan."
     },
     "multipleSegments": {
         "message": "Banyak Segmen"
