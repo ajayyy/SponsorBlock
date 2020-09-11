@@ -3,6 +3,10 @@
         "message": "SponsorBlock YouTubelle - Ohita sponsoroinnit",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Ohita sponsoroitu mainonta, tilausten kerjääminen ja muuta YouTube-videoissa. Ilmoita katsomasi videoiden sponsorit säästääksesi muilta aikaa.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Palvelin sanoi tämän pyynnön olevan virheellinen"
     },
@@ -14,6 +18,12 @@
     },
     "channelWhitelisted": {
         "message": "Kanava lisätty valkoiselle listalle!"
+    },
+    "Segment": {
+        "message": "segmentti"
+    },
+    "Segments": {
+        "message": "segmentit"
     },
     "upvoteButtonInfo": {
         "message": "Äänestä tätä lähetystä"
@@ -60,6 +70,15 @@
     "Unknown": {
         "message": "Sponsorointiaikoja lähetettäessä tapahtui virhe, yritä myöhemmin uudelleen."
     },
+    "sponsor404": {
+        "message": "Segmenttejä ei löytynyt"
+    },
+    "sponsorStart": {
+        "message": "Segmentti Alkaa Nyt"
+    },
+    "sponsorEnd": {
+        "message": "Segmentti Päättyy Nyt"
+    },
     "noVideoID": {
         "message": "Välilehdeltä ei löytynyt YouTube-videota. Jos olet varma, että tämä on YouTube-välilehti, sulje tämä ponnahdusikkuna ja avaa se uudelleen. Jos sekään ei toimi, yritä ladata välilehti uudelleen."
     },
@@ -75,8 +94,23 @@
     "connectionError": {
         "message": "Yhteysvirhe on tapahtunut. Virhekoodi: "
     },
+    "wantToSubmit": {
+        "message": "Haluatko lähettää segmentit videotunnukselle"
+    },
+    "leftTimes": {
+        "message": "Näyttää siltä, että joitakin segmenttejä ei ole vielä lähetetty. Siirry takaisin sivulle lähettääksesi ne (niitä ei poisteta)."
+    },
+    "clearTimes": {
+        "message": "Tyhjennä Segmentit"
+    },
     "openPopup": {
         "message": "Avaa SponsorBlock-ponnahdusikkuna"
+    },
+    "closePopup": {
+        "message": "Sulje Ponnahdus-ikkuna"
+    },
+    "SubmitTimes": {
+        "message": "Lähetä Segmentit"
     },
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
@@ -86,6 +120,9 @@
     },
     "removeFromWhitelist": {
         "message": "Poista kanava valkoiselta listalta"
+    },
+    "voteOnTime": {
+        "message": "Äänestä Segmenttiä"
     },
     "soFarUHSubmited": {
         "message": "Tähän mennessä, olet lähettänyt"
@@ -99,14 +136,26 @@
     "here": {
         "message": "tässä"
     },
+    "recordTimesDescription": {
+        "message": "Napsauta alla olevaa painiketta, kun segmentti alkaa ja päättyy tallentaaksesi ja lähettääksesi sen tietokantaan."
+    },
+    "popupHint": {
+        "message": "Vihje: Paina puolipisteen näppäintä kun video on kohdennettu ilmoittaaksesi segmentin alku/loppu ja viesti lähetettäväksi. (Tämän voi muuttaa asetuksissa)"
+    },
     "clearTimesButton": {
         "message": "Tyhjennä ajat"
     },
     "submitTimesButton": {
         "message": "Lähetä ajat"
     },
+    "publicStats": {
+        "message": "Tätä käytetään julkisella tilastosivulla näyttääksesi kuinka paljon olet osallistunut. Näytä"
+    },
     "setUsername": {
         "message": "Aseta käyttäjänimi"
+    },
+    "discordAdvert": {
+        "message": "Liity mukaan viralliseen discord-palvelimeen, jotta voit antaa ehdotuksia ja palautetta!"
     },
     "hideThis": {
         "message": "Piilota tämä"
@@ -141,6 +190,12 @@
     "whatDeleteButton": {
         "message": "Tämä on YouTuben soittimen painike, joka poistaa kaikki kyseisen videon sponsorointikohdat, joita et ole vielä lähettänyt."
     },
+    "enableViewTracking": {
+        "message": "Ota Ohitusten Lukumäärän Seuranta Käyttöön"
+    },
+    "showNotice": {
+        "message": "Näytä Huomautus Uudelleen"
+    },
     "website": {
         "message": "Sivusto",
         "description": "Used on Firefox Store Page"
@@ -148,6 +203,10 @@
     "sourceCode": {
         "message": "Lähdekoodi",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "Ilmoitus on päivitetty!",
+        "description": "The first line of the message displayed after the notice was upgraded."
     },
     "keybindDescription": {
         "message": "Valitse näppäin painamalla sitä"
