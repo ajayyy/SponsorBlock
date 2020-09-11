@@ -1,6 +1,6 @@
 {
     "fullName": {
-        "message": "SponsorBlock na YouTube - Przewiń fragmenty sponsorowane",
+        "message": "SponsorBlock na YouTube - Pomiń fragmenty sponsorowane",
         "description": "Name of the extension."
     },
     "Description": {
@@ -113,7 +113,7 @@
         "message": "Otwórz okienko SponsorBlock"
     },
     "closePopup": {
-        "message": "Zamknij okienko"
+        "message": "Zamknij okno"
     },
     "SubmitTimes": {
         "message": "Prześlij segmenty"
