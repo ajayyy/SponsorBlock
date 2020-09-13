@@ -436,6 +436,9 @@
     "preview": {
         "message": "Предпросмотр"
     },
+    "inspect": {
+        "message": "Исследовать"
+    },
     "edit": {
         "message": "Редактировать"
     },
