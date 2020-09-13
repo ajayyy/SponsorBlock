@@ -7,6 +7,12 @@
         "message": "YouTube 영상의 스폰서 광고, '구독과 좋아요' 광고 같이 쓸데없는 광고를 모두 건너뛰세요. 영상의 스폰서 광고 구간을 신고하여 다른 사람들의 시간을 절약할 수 있게 해주세요.",
         "description": "Description of the extension."
     },
+    "429": {
+        "message": "이 영상에 너무 많은 스폰서 광고 시간을 제출했습니다, 정말로 확신하십니까?"
+    },
+    "409": {
+        "message": "이전에 이미 제출되었습니다"
+    },
     "channelWhitelisted": {
         "message": "채널이 화이트리스트에 추가되었습니다!"
     },
@@ -16,8 +22,14 @@
     "Segments": {
         "message": "구간"
     },
+    "upvoteButtonInfo": {
+        "message": "이 제출을 추천하기"
+    },
     "reportButtonTitle": {
         "message": "신고"
+    },
+    "reportButtonInfo": {
+        "message": "잘못된 제출로 신고하기."
     },
     "Loading": {
         "message": "로딩 중..."
@@ -115,11 +127,38 @@
     "Options": {
         "message": "설정"
     },
+    "showButtons": {
+        "message": "YouTube 플레이어에서 버튼 표시하기"
+    },
+    "hideButtons": {
+        "message": "YouTube 플레이어에서 버튼 숨기기"
+    },
     "hideButtonsDescription": {
         "message": "스킵할 구간을 제출하기 위해 YouTube 플레이어에 나타나는 버튼을 숨깁니다"
     },
+    "showInfoButton": {
+        "message": "YouTube 플레이어에서 정보 버튼 표시하기"
+    },
+    "hideInfoButton": {
+        "message": "YouTube 플레이어에서 정보 버튼 숨기기"
+    },
+    "whatInfoButton": {
+        "message": "YouTube 페이지에 팝업으로 표시되는 버튼입니다"
+    },
+    "hideDeleteButton": {
+        "message": "YouTube 플레이어에서 삭제 버튼 숨기기"
+    },
+    "showDeleteButton": {
+        "message": "YouTube 플레이어에서 삭제 버튼 표시하기"
+    },
     "whatDeleteButton": {
         "message": "현재 영상에 제출되지 않은 구간을 YouTube 플레이어 내에서 지우는 버튼입니다"
+    },
+    "enableViewTracking": {
+        "message": "스킵 개수 추적 활성화"
+    },
+    "showNotice": {
+        "message": "알림 다시 보여주기"
     },
     "longDescription": {
         "message": "SponsorBlock을 사용하면 영상에서 스폰서 광고, 인트로 영상, 아웃트로 영상, 구독 광고와 그 외 쓸데없는 부분을 즉시 건너뛸 수 있습니다. SponsorBlock은 모든 사람들이 참여하는 브라우저 확장 기능으로 확장 기능 사용자는 스폰서 광고 또는 다른 광고의 시작 시간과 끝 시간을 확인하여 서버로 전송할 수 있습니다. 이러한 정보가 전송되면 그 영상을 보는 다른 사용자들은 광고 구간이 나오기 전에 자동으로 건너뛸 수 있습니다. SponsorBlock을 사용하면 뮤직 비디오에서 음악이나 노래가 아닌 구간도 건너뛸 수 있습니다.",
@@ -132,6 +171,10 @@
     "sourceCode": {
         "message": "소스 코드",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate2": {
+        "message": "계속 이것이 싫다면, 보지 않기 버튼을 누르세요.",
+        "description": "The second line of the message displayed after the notice was upgraded."
     },
     "0": {
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
@@ -158,6 +201,12 @@
     "disableAutoSkip": {
         "message": "자동 스킵 비활성화"
     },
+    "enableAutoSkip": {
+        "message": "자동 스킵 활성화"
+    },
+    "audioNotification": {
+        "message": "스킵시 소리 알림"
+    },
     "audioNotificationDescription": {
         "message": "구간을 건너뛸 때마다 소리를 재생합니다. 비활성화시(혹은 자동 스킵이 꺼져있을 경우) 아무 소리도 재생되지 않습니다."
     },
@@ -173,8 +222,14 @@
     "hoursLower": {
         "message": "시간"
     },
+    "statusReminder": {
+        "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
+    },
     "changeUserID": {
         "message": "사용자 ID 가져오기/내보내기"
+    },
+    "whatChangeUserID": {
+        "message": "이 정보는 다른 사람에게 공개하지 마세요. 이것은 비밀번호처럼 절대로 알려주면 안되는 정보입니다. 다른 사람이 이 정보를 습득했을 경우 사용자를 사칭할 수도 있습니다."
     },
     "setUserID": {
         "message": "사용자ID 설정"
@@ -309,7 +364,7 @@
         "message": "휴식 시간"
     },
     "category_outro": {
-        "message": "최종 화면/크레딧"
+        "message": "최종 화면 / 크레딧"
     },
     "category_outro_description": {
         "message": "엔딩 크레딧이나 최종 화면이 나타나는 구간입니다. 단순히 결론을 말하는 부분은 여기에 포함되지 않습니다."
@@ -333,7 +388,7 @@
         "message": "뮤직 비디오에서만 해당됩니다. 여기에는 시작 부분 (인트로) 영상이나 끝 부분 (아웃트로) 영상이 포함됩니다."
     },
     "category_music_offtopic_short": {
-        "message": "음악이 아닌 것"
+        "message": "음악이 아닌 구간"
     },
     "category_livestream_messages": {
         "message": "라이브스트림: 후원/메시지 읽기"
@@ -361,7 +416,7 @@
         "message": "탐색 바 색상"
     },
     "category": {
-        "message": "범주"
+        "message": "카테고리"
     },
     "skipOption": {
         "message": "건너뛰기 설정",
@@ -383,10 +438,10 @@
         "message": "많은 카테고리"
     },
     "chooseACategory": {
-        "message": "구간 범주 선택"
+        "message": "카테고리 선택"
     },
     "youMustSelectACategory": {
-        "message": "제출해야하는 모든 구간의 카테고리를 설정해야합니다!"
+        "message": "제출 해야하는 모든 구간의 카테고리를 설정해야합니다!"
     },
     "bracketEnd": {
         "message": "(끝)"
@@ -410,7 +465,7 @@
         "message": "잘못된 카테고리입니다"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "이 영상은 음악 영상으로 분류됩니다. 정말로 스폰서가 있는 것이 확실한가요? 만약 음악 이외의 구간인 경우, 확장 옵션을 열어 이 카테고리를 활성화 하세요. 그리고, 이 구간을 스폰서 대신 음악이 아닌 것으로 제출하세요. 헷갈릴 경우 가이드라인을 읽으세요."
+        "message": "이 영상은 음악 영상으로 분류됩니다. 정말로 스폰서가 있는 것이 확실한가요? 만약 음악 이외의 구간인 경우, 확장 옵션을 열어 이 카테고리를 활성화 하세요. 그리고, 이 구간을 스폰서 대신 음악이 아닌 구간으로 제출하세요. 헷갈릴 경우 가이드라인을 읽으세요."
     },
     "multipleSegments": {
         "message": "여러 구간"
