@@ -365,7 +365,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             this.saveEditTimes();
         }
 
-        this.props.contentContainer().previewTime(skipTime + 0.000001);
+        this.props.contentContainer().previewTime(skipTime + 0.000001, false);
     }
 
     deleteTime(): void {
