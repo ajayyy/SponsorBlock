@@ -1,0 +1,620 @@
+{
+    "fullName": {
+        "message": "SponsorBlock untuk YouTube - Lewati Sponsor",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Lewati sponsor, meminta subscriber dan lain-lain di video YouTube. Laporkan sponsor di video yang anda tonton untuk menghemat waktu orang lain.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Server menyatakan permintaan tidak valid"
+    },
+    "429": {
+        "message": "Anda terlalu banyak mengirim waktu sponsor pada video ini, apakah anda yakin ada sebanyak ini?"
+    },
+    "409": {
+        "message": "Ini sudah dikirim sebelumnya"
+    },
+    "channelWhitelisted": {
+        "message": "Channel Didaftar-putihkan!"
+    },
+    "Segment": {
+        "message": "segmen"
+    },
+    "Segments": {
+        "message": "segmen"
+    },
+    "upvoteButtonInfo": {
+        "message": "Upvote submisi ini"
+    },
+    "reportButtonTitle": {
+        "message": "Laporkan"
+    },
+    "reportButtonInfo": {
+        "message": "Laporkan submisi ini sebagai kesalahan."
+    },
+    "Dismiss": {
+        "message": "Hilangkan"
+    },
+    "Loading": {
+        "message": "Memuat..."
+    },
+    "Mins": {
+        "message": "Menit"
+    },
+    "Secs": {
+        "message": "Detik"
+    },
+    "Hide": {
+        "message": "Jangan tampilkan"
+    },
+    "hitGoBack": {
+        "message": "Klik jangan lewati untuk kembali ke asal."
+    },
+    "unskip": {
+        "message": "Jangan Lewati"
+    },
+    "reskip": {
+        "message": "Lewati Ulang"
+    },
+    "paused": {
+        "message": "Dijeda"
+    },
+    "manualPaused": {
+        "message": "Timer Berhenti"
+    },
+    "confirmMSG": {
+        "message": "Untuk mengedit atau menghapus nilai masing-masing, klik tombol info atau buka popup ekstensi dengan mengklik ikon ekstensi di ujung kanan atas."
+    },
+    "clearThis": {
+        "message": "Apa anda yakin ingin menghapus ini?\n\n"
+    },
+    "Unknown": {
+        "message": "Terjadi kesalahan mengirim waktu sponsor, mohon coba lagi nanti."
+    },
+    "sponsorFound": {
+        "message": "Video ini memiliki segmen di basis data!"
+    },
+    "sponsor404": {
+        "message": "Tidak ada segmen ditemukan"
+    },
+    "sponsorStart": {
+        "message": "Segmen Mulai Sekarang"
+    },
+    "sponsorEnd": {
+        "message": "Segmen Berakhir Sekarang"
+    },
+    "noVideoID": {
+        "message": "Tidak ada video YouTube yang ditemukan di tab ini. Jika ini merupakan tab YouTube, tutup popup ini dan buka lagi. Jika masih tidak berfungsi, coba muat ulang tab."
+    },
+    "success": {
+        "message": "Sukses!"
+    },
+    "voted": {
+        "message": "Divote!"
+    },
+    "serverDown": {
+        "message": "Sepertinya server sedang down. Kontak pengembang segera."
+    },
+    "connectionError": {
+        "message": "Kesalahan koneksi terjadi. Kode kesalahan: "
+    },
+    "wantToSubmit": {
+        "message": "Apakah anda ingin mengirim untuk id video"
+    },
+    "leftTimes": {
+        "message": "Sepertinya anda lupa mengirimkan beberapa segmen. Kembali ke halaman tadi dan kirimkan itu (itu tidak terhapus)."
+    },
+    "clearTimes": {
+        "message": "Hapus Segmen"
+    },
+    "openPopup": {
+        "message": "Buka Popup SponsorBlock"
+    },
+    "closePopup": {
+        "message": "Tutup Popup"
+    },
+    "SubmitTimes": {
+        "message": "Kirim Segmen"
+    },
+    "submitCheck": {
+        "message": "Apakah anda yakin ingin mengirim ini?"
+    },
+    "whitelistChannel": {
+        "message": "Daftar-putihkan Channel"
+    },
+    "removeFromWhitelist": {
+        "message": "Hapus Channel Dari Daftar Putih"
+    },
+    "voteOnTime": {
+        "message": "Beri Segmen Vote"
+    },
+    "soFarUHSubmited": {
+        "message": "Sejauh ini, anda sudah mengirim"
+    },
+    "savedPeopleFrom": {
+        "message": "Anda sudah menghemat waktu orang dari "
+    },
+    "viewLeaderboard": {
+        "message": "Lihat papan peringkat"
+    },
+    "here": {
+        "message": "disini"
+    },
+    "recordTimesDescription": {
+        "message": "Klik tombol dibawah saat segmen mulai dan berakhir untuk direkam lalu dikirim ke basis data."
+    },
+    "popupHint": {
+        "message": "Petunjuk: Tekan tombol titik koma saat terfokus pada video untuk melaporkan awal/akhir dari segmen untuk dikirim. (Bisa diganti di pengaturan)"
+    },
+    "clearTimesButton": {
+        "message": "Hapus Waktu"
+    },
+    "submitTimesButton": {
+        "message": "Kirim Waktu"
+    },
+    "publicStats": {
+        "message": "Ini digunakan di halaman statistik publik untuk menampilkan berapa banyak anda berkontribusi. Lihat disini"
+    },
+    "setUsername": {
+        "message": "Atur Nama Pengguna"
+    },
+    "discordAdvert": {
+        "message": "Gabung dengan server resmi discord untuk memberikan kritik dan saran!"
+    },
+    "hideThis": {
+        "message": "Sembunyikan ini"
+    },
+    "Options": {
+        "message": "Opsi"
+    },
+    "showButtons": {
+        "message": "Tampilkan Tombol Di Pemutar Video YouTube"
+    },
+    "hideButtons": {
+        "message": "Sembunyikan Tombol Di Pemutar Video YouTube"
+    },
+    "hideButtonsDescription": {
+        "message": "Ini akan menyembunyikan tombol yang muncul di pemutar YouTube untuk mengirimkan segmen yang dilewati."
+    },
+    "showInfoButton": {
+        "message": "Tampilkan Tombol Info Di Pemutar Video YouTube"
+    },
+    "hideInfoButton": {
+        "message": "Sembunyikan Tombol Info Di Pemutar Video YouTube"
+    },
+    "whatInfoButton": {
+        "message": "Ini adalah tombol yang membuka popup di halaman YouTube."
+    },
+    "hideDeleteButton": {
+        "message": "Sembunyikan Tombol Hapus Di Pemutar Video YouTube"
+    },
+    "showDeleteButton": {
+        "message": "Tampilkan Tombol Hapus Di Pemutar Video YouTube"
+    },
+    "whatDeleteButton": {
+        "message": "Ini adalah tombol di pemutar YouTube yang akan menghapus semua segmen yang belum dikirim pada video."
+    },
+    "enableViewTracking": {
+        "message": "Aktifkan Pelacakan Jumlah Lewati"
+    },
+    "whatViewTracking": {
+        "message": "Fitur ini melacak segmen mana yang sudah anda lewati untuk memberitahu pengguna berapa banyak submisi mereka telah membantu orang lain dan digunakan sebagai metrik bersamaan dengan upvote untuk memastikan tidak ada spam dalam basis data. Ekstensi mengirim pesan ke server tiap kali anda melewati segmen. Harapannya kebanyakan orang tidak akan mengubah opsi ini agar jumlah tayangan akurat. :)"
+    },
+    "showNotice": {
+        "message": "Tampilkan Pemberitahuan Lagi"
+    },
+    "longDescription": {
+        "message": "SponsorBlock membuat anda melewati sponsor, intro, outro, pengingat berlangganan dan segmen mengganggu lainnya di video YouTube. SponsorBlock adalah ekstensi browser crowdsourced yang membolehkan siapa saja mengirim waktu awal dan akhir dari segmen sponsor dan segmen video YouTube lainnya. Setelah seseorang mengirim informasi ini, orang lain yang memakai ekstensi ini akan melewati segmen sponsor di video yang sama. Anda juga dapat melewati bagian non-musik di musik video.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "Situs",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Kode Sumber",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "Pemberitahuan sudah ditingkatkan!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Jika anda masih tidak suka, klik tombol jangan tampilkan.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Atur tombol untuk mulai segmen"
+    },
+    "setSubmitKeybind": {
+        "message": "Atur tombol untuk kirim submisi"
+    },
+    "keybindDescription": {
+        "message": "Pilih tombol dengan mengetikkannya"
+    },
+    "keybindDescriptionComplete": {
+        "message": "Tombol diatur menjadi: "
+    },
+    "0": {
+        "message": "Koneksi Timeout. Cek koneksi internet anda. Jika internet anda berfungsi, server mungkin kewalahan atau down."
+    },
+    "disableSkipping": {
+        "message": "Nonaktifkan SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "Aktifkan SponsorBlock"
+    },
+    "yourWork": {
+        "message": "Hasil Kerja Anda",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "Tampaknya server sedang kewalahan. Coba lagi beberapa detik."
+    },
+    "errorCode": {
+        "message": "Kode Kesalahan: "
+    },
+    "skip": {
+        "message": "Lewati"
+    },
+    "skipped": {
+        "message": "Dilewati"
+    },
+    "disableAutoSkip": {
+        "message": "Nonaktifkan Lewati Otomatis"
+    },
+    "enableAutoSkip": {
+        "message": "Aktifkan Lewati Otomatis"
+    },
+    "audioNotification": {
+        "message": "Notifikasi Audio Saat Dilewati"
+    },
+    "audioNotificationDescription": {
+        "message": "Notifikasi audio akan berbunyi saat melewati sebuah segmen. Jika nonaktif (atau lewati otomatis nonaktif), tidak ada suara yang akan diputar."
+    },
+    "showTimeWithSkips": {
+        "message": "Tampilkan Waktu Dikurangi Yang Dilewati"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Waktu ini muncul di dalam kurung disamping waktu asli di bilah waktu. Ini menunjukkan durasi total video yang tidak termasuk segmen apapun. Ini termasuk segmen yang ditandai hanya \"Tampilkan Di Bilah Waktu\"."
+    },
+    "youHaveSkipped": {
+        "message": "Anda sudah melewati "
+    },
+    "youHaveSaved": {
+        "message": "Anda sudah menghemat waktu "
+    },
+    "minLower": {
+        "message": "menit"
+    },
+    "minsLower": {
+        "message": "menit"
+    },
+    "hourLower": {
+        "message": "jam"
+    },
+    "hoursLower": {
+        "message": "jam"
+    },
+    "youHaveSavedTime": {
+        "message": "Anda sudah menghemat waktu orang lain"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " dari hidup mereka."
+    },
+    "statusReminder": {
+        "message": "Cek status.sponsor.ajay.app untuk status server."
+    },
+    "changeUserID": {
+        "message": "Impor/Ekspor UserID"
+    },
+    "whatChangeUserID": {
+        "message": "Ini sebaiknya dirahasiakan. Ini terlihat seperti password dan sebaiknya tidak dibagikan ke orang lain. Jika seseorang mempunyai ini, dia dapat berpura-pura menjadi anda."
+    },
+    "setUserID": {
+        "message": "Atur UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Peringatan: Pengubahan UserID bersifat permanen. Apakah anda yakin ingin melakukan ini? Pastikan kamu sudah mencadangkan yang lama untuk berjaga."
+    },
+    "createdBy": {
+        "message": "Dibuat Oleh"
+    },
+    "autoSkip": {
+        "message": "Lewati Otomatis"
+    },
+    "showSkipNotice": {
+        "message": "Tampilkan pemberitahuan setelah melewati segmen"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Saat ini diatur pada:"
+    },
+    "supportInvidious": {
+        "message": "Dukungan Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) adalah layanan klien YouTube pihak ketiga. Untuk mengaktifkan dukungan, anda harus menerima izin tambahan. Ini TIDAK dapat bekerja di mode penyamaran Chrome dan peramban berbasis Chromium lainnya."
+    },
+    "optionsInfo": {
+        "message": "Aktifkan dukungan Invidious, nonaktifkan lewati otomatis, tombol sembunyi dan lainnya."
+    },
+    "addInvidiousInstance": {
+        "message": "Tambah Instansi Invidious"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Tambahkan instansi khusus Invidious. Ini harus diformat dengan HANYA domainnya. Contoh: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Tambah"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Domain ini tidak valid. Ini harus HANYA mengandung bagian domainnya. Contoh: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Reset Daftar Instansi Invidious"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Anda akan mereset daftar instansi invidious"
+    },
+    "currentInstances": {
+        "message": "Instansi sekarang:"
+    },
+    "minDuration": {
+        "message": "Durasi minimal (detik):"
+    },
+    "minDurationDescription": {
+        "message": "Segmen yang lebih kecil dari nilai yang diatur tidak akan dilewati atau tampil di pemutar."
+    },
+    "shortCheck": {
+        "message": "Submisi ini lebih pendek dari opsi durasi minimalmu. Ini dapat berarti ini sudah dikirim, dan hanya akan diabaikan karena opsi ini. Apakah anda yakin ingin mengirim?"
+    },
+    "showUploadButton": {
+        "message": "Tampilkan Tombol Unggah"
+    },
+    "whatUploadButton": {
+        "message": "Tombol ini muncul di pemutar video YouTube setelah anda memilih stempel waktu dan siap untuk dikirimkan."
+    },
+    "customServerAddress": {
+        "message": "Alamat Server SponsorBlock"
+    },
+    "customServerAddressDescription": {
+        "message": "Alamat yang SponsorBlock gunakan untuk memanggil server.\nKecuali jika anda mempunyai instansi server sendiri, ini tidak perlu diubah."
+    },
+    "save": {
+        "message": "Simpan"
+    },
+    "reset": {
+        "message": "Atur ulang"
+    },
+    "customAddressError": {
+        "message": "Alamat ini tidak berada di bentuk yang benar. Pastikan kamu menggunakan http:// atau https:// di awal dan tidak ada garis mengikuti."
+    },
+    "areYouSureReset": {
+        "message": "Apakah anda yakin ingin mengatur ulang ini?"
+    },
+    "confirmPrivacy": {
+        "message": "Video ini dideteksi sebagai tidak terdaftar. Klik batal jika kamu tidak ingin mengecek untuk melewati segmen."
+    },
+    "unlistedCheck": {
+        "message": "Abaikan Video Tidak Terdaftar/Privat"
+    },
+    "whatUnlistedCheck": {
+        "message": "Pengaturan ini akan sedikit melambatkan SponsorBlock. Pencarian lewati segmen membutuhkan pengiriman ID video ke server. Jika anda khawatir tentang ID unlisted video terkirim ke internet, hidupkan opsi ini."
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com sekarang didukung"
+    },
+    "exportOptions": {
+        "message": "Impor/Ekspor Semua Pengaturan"
+    },
+    "whatExportOptions": {
+        "message": "Ini adalah seluruh konfigurasi anda di JSON. Ini mencakup userID anda, maka pastikan anda membagikan ini dengan bijak."
+    },
+    "setOptions": {
+        "message": "Atur Opsi"
+    },
+    "exportOptionsWarning": {
+        "message": "Peringatan: Mengubah opsi bersifat permanen dan bisa merusak pemasangan anda. Apakah anda yakin ingin melakukan ini? Pastikan untuk mencadangkan yang lama untuk berjaga."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "JSON ini tidak diformat dengan benar. Pengaturan anda tidak berubah."
+    },
+    "confirmNoticeTitle": {
+        "message": "Kirim Segmen"
+    },
+    "submit": {
+        "message": "Kirim"
+    },
+    "cancel": {
+        "message": "Batal"
+    },
+    "delete": {
+        "message": "Hapus"
+    },
+    "preview": {
+        "message": "Pratinjau"
+    },
+    "edit": {
+        "message": "Ubah"
+    },
+    "copyDebugInformation": {
+        "message": "Salin Informasi Debug Ke Papan Klip"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Gagal menyalin ke papan klip"
+    },
+    "copyDebugInformationOptions": {
+        "message": "Salin informasi ke papan klip untuk menyediakan pengembang saat mengangkat bug / saat pengembang memintanya. Informasi sensitif seperti user ID, channel yang didaftar-putihkan, dan alamat server kustom akan dihapus. Namun itu mengandung informasi seperti useragent anda, browser, sistem operasi, dan nomor versi ekstensi. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "Informasi debug telah disalin ke papan klip. Jangan ragu untuk menghapus informasi yang tidak ingin anda bagikan. Simpan ini di file teks atau salin ke laporan bug."
+    },
+    "theKey": {
+        "message": "Tombolnya"
+    },
+    "keyAlreadyUsed": {
+        "message": "terikat pada tindakan lain. Mohon memilih tombol lain."
+    },
+    "to": {
+        "message": "sampai",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_sponsor_description": {
+        "message": "Promosi dibayar, tautan dibayar dan iklan langsung. Tidak untuk promosi diri sendiri atau dukungan gratis untuk gerakan/kreator/situs/produk yang mereka suka."
+    },
+    "category_intro": {
+        "message": "Jeda/Animasi Intro"
+    },
+    "category_intro_description": {
+        "message": "Bagian yang bukan konten sebenarnya. Dapat berupa jeda, gambar statik, atau animasi berulang. Ini tidak boleh digunakan untuk transisi yang berisi informasi."
+    },
+    "category_intro_short": {
+        "message": "Jeda"
+    },
+    "category_outro": {
+        "message": "Kartu Akhir/Kredit"
+    },
+    "category_outro_description": {
+        "message": "Kredit atau saat kartu akhir YouTube muncul. Tidak untuk kesimpulan dengan informasi."
+    },
+    "category_interaction": {
+        "message": "Pengingat Interaksi (Berlangganan)"
+    },
+    "category_interaction_description": {
+        "message": "Saat ada pengingat singkat untuk meminta suka, berlangganan atau mengikuti mereka di tengah konten. Jika panjang atau tentang sesuatu yang spesifik, sebaiknya pakai kategori promosi diri sendiri."
+    },
+    "category_interaction_short": {
+        "message": "Pengingat Interaksi"
+    },
+    "category_selfpromo": {
+        "message": "Promosi Diri Sendiri/Tidak Dibayar"
+    },
+    "category_selfpromo_description": {
+        "message": "Mirip dengan \"sponsor\" kecuali ini tidak dibayar atau promosi diri sendiri. Ini termasuk merchandise, donasi, atau informasi tentang siapa yang berkolaborasi dengan mereka."
+    },
+    "category_music_offtopic": {
+        "message": "Musik: Bagian Non-Musik"
+    },
+    "category_music_offtopic_description": {
+        "message": "Hanya gunakan di video musik. Ini termasuk intro dan outro di video musik."
+    },
+    "category_music_offtopic_short": {
+        "message": "Non-Musik"
+    },
+    "category_livestream_messages": {
+        "message": "Livestream: Baca Pesan/Donasi"
+    },
+    "category_livestream_messages_short": {
+        "message": "Membaca Pesan Chat"
+    },
+    "disable": {
+        "message": "Nonaktif"
+    },
+    "manualSkip": {
+        "message": "Lewati Manual"
+    },
+    "showOverlay": {
+        "message": "Tampilkan Di Bilah Waktu"
+    },
+    "colorFormatIncorrect": {
+        "message": "Warna anda tidak diformat dengan benar. Harusnya terdiri dari 3 atau 6 digit kode heksa dengan tagar di awal."
+    },
+    "previewColor": {
+        "message": "Warna Pratinjau",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Warna Bilah Waktu"
+    },
+    "category": {
+        "message": "Kategori"
+    },
+    "skipOption": {
+        "message": "Opsi Lewati",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "enableTestingServer": {
+        "message": "Aktifkan Server Beta Testing"
+    },
+    "whatEnableTestingServer": {
+        "message": "Submisi dan vote anda TIDAK TERHITUNG pada server utama. Hanya gunakan ini untuk percobaan."
+    },
+    "testingServerWarning": {
+        "message": "Semua submisi dan vote TIDAK TERHITUNG pada server utama saat terkoneksi ke server percobaan."
+    },
+    "bracketNow": {
+        "message": "(Sekarang)"
+    },
+    "moreCategories": {
+        "message": "Kategori Lain"
+    },
+    "chooseACategory": {
+        "message": "Pilih Kategori"
+    },
+    "youMustSelectACategory": {
+        "message": "Anda harus memilih kategori untuk semua segmen yang anda kirimkan!"
+    },
+    "bracketEnd": {
+        "message": "(Selesai)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "disembunyikan: voting rendah"
+    },
+    "hiddenDueToDuration": {
+        "message": "disembunyikan: terlalu pendek"
+    },
+    "channelDataNotFound": {
+        "message": "ID Channel belum dimuat."
+    },
+    "adblockerIssue": {
+        "message": "Sepertinya ada sesuatu yang memblokir kemampuan SponsorBlock untuk mendapatkan data video. Kemungkinan karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Jika ini terus terjadi, kemungkinan terjadi karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Paksa Cek Channel Sebelum Melewati"
+    },
+    "whatForceChannelCheck": {
+        "message": "Secara standar, ini akan melewati segmen segera bahkan sebelum tahu apa channelnya. Secara standar, beberapa segmen pada awal video mungkin terlewati pada channel yang didaftar-putihkan. Mengaktifkan opsi ini akan mencegah ini namun membuat semua pelewatan mempunyai sedikit delay karena mendapatkan channelID membutuhkan waktu. Delay ini mungkin menjadi tidak terasa jika anda mempunyai internet yang cepat."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Pertimbangkan Mengaktifkan \"Paksa Pengecekan Channel Sebelum Pelewatan\""
+    },
+    "downvoteDescription": {
+        "message": "Salah, Waktu Tidak Tepat"
+    },
+    "incorrectCategory": {
+        "message": "Salah Kategori"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Video ini dikategorikan sebagai musik. Apakah anda yakin ini berisi sponsor? Jika ini ternyata adalah \"Segmen non-musik\", buka pengaturan ekstensi dan aktifkan kategorinya. Lalu, anda bisa mengirim segmen ini sebagai \"Non-musik\" bukannya sponsor. Harap membaca panduan jika anda kebingungan."
+    },
+    "multipleSegments": {
+        "message": "Banyak Segmen"
+    },
+    "guidelines": {
+        "message": "Pedoman"
+    },
+    "readTheGuidelines": {
+        "message": "Baca Pedomannya!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategori disini!"
+    },
+    "categoryUpdate2": {
+        "message": "Buka opsi untuk melewati intro, outro, merch, dll."
+    },
+    "unsubmittedWarning": {
+        "message": "Notifikasi Segmen Yang Belum Dikirim"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Tampilkan notifikasi saat kamu meninggalkan video dengan segmen yang belum diunggah"
+    }
+}

@@ -1,1 +1,211 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock za YouTube - preskoči sponzore",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Preskoči sponzore, zamolbe za pretplatu i drugo na YouTube videima. Prijavi sponzore na videima koje gledaš kako bi uštedio drugima vrijeme.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Server je rekao da je zahtjev neispravan"
+    },
+    "429": {
+        "message": "Unio si previše vremena sponzora za ovaj video, jesi li siguran da ih ima toliko?"
+    },
+    "409": {
+        "message": "Ovo je već unešeno prije"
+    },
+    "channelWhitelisted": {
+        "message": "Kanal je dodan na popis dopuštenih!"
+    },
+    "Segment": {
+        "message": "odsječak"
+    },
+    "Segments": {
+        "message": "odsječci"
+    },
+    "upvoteButtonInfo": {
+        "message": "Glasaj za ovaj unos"
+    },
+    "reportButtonTitle": {
+        "message": "Prijavi"
+    },
+    "reportButtonInfo": {
+        "message": "Prijavi unos kao nesipravan."
+    },
+    "Dismiss": {
+        "message": "Odbaci"
+    },
+    "Loading": {
+        "message": "Učitavanje..."
+    },
+    "Mins": {
+        "message": "Minute"
+    },
+    "Secs": {
+        "message": "Sekunde"
+    },
+    "Hide": {
+        "message": "Nikad ne prikazuj"
+    },
+    "hitGoBack": {
+        "message": "Klikni unskip kako bi se vratio otkuda si došao."
+    },
+    "unskip": {
+        "message": "Unskip"
+    },
+    "reskip": {
+        "message": "Reskip"
+    },
+    "paused": {
+        "message": "Pauzirano"
+    },
+    "manualPaused": {
+        "message": "Timer zaustavljen"
+    },
+    "confirmMSG": {
+        "message": "Kako bi uredio ili obrisao pojedinačne vrijednosti, klikni na gumb info ili otvori okvir dodatka klikom na ikonu dodatka u gornjem desnom kutu."
+    },
+    "clearThis": {
+        "message": "Jesi li siguran da želiš očistiti ovo?\n\n"
+    },
+    "Unknown": {
+        "message": "Dogodila se pogreška pri unošenju tvojih vremena sponzora, molim te probaj ponovno kasnije."
+    },
+    "sponsorFound": {
+        "message": "Ovaj video ima isječke u bazi podataka!"
+    },
+    "sponsor404": {
+        "message": "Nije pronađen isječak"
+    },
+    "sponsorStart": {
+        "message": "Isječak započinje sada"
+    },
+    "sponsorEnd": {
+        "message": "Isječak završava sada"
+    },
+    "noVideoID": {
+        "message": "YouTube video nije pronađen na ovoj kartici. Ako si siguran da je ovo YouTube kartica, zatvori ovaj okvir i ponovno ga otvori. Ako to ne radi, probaj ponovno učitati karticu."
+    },
+    "success": {
+        "message": "Uspjeh!"
+    },
+    "voted": {
+        "message": "Glas podnešen!"
+    },
+    "serverDown": {
+        "message": "Čini se da server ne radi. Kontaktiraj razvojne programere odmah."
+    },
+    "connectionError": {
+        "message": "Dogodija se greška u povezivanju. Kod pogreške: "
+    },
+    "wantToSubmit": {
+        "message": "Želiš li unijeti za video id"
+    },
+    "leftTimes": {
+        "message": "Izgleda da si ostavio neke isječke nepodnešene. Vrati se na tu stranicu i podnesi ih (nisu izbrisani)."
+    },
+    "clearTimes": {
+        "message": "Očisti isječke"
+    },
+    "openPopup": {
+        "message": "Otvori okvir SponsorBlock"
+    },
+    "SubmitTimes": {
+        "message": "Podnesi isječke"
+    },
+    "submitCheck": {
+        "message": "Jesi li siguran da želiš unijeti ovo?"
+    },
+    "whitelistChannel": {
+        "message": "Dodaj kanal na popis dopuštenih"
+    },
+    "removeFromWhitelist": {
+        "message": "Makni kanal s popisa dopuštenih"
+    },
+    "voteOnTime": {
+        "message": "Glasaj za isječak"
+    },
+    "soFarUHSubmited": {
+        "message": "Do sada si podnio"
+    },
+    "savedPeopleFrom": {
+        "message": "Sačuvao si ljude od "
+    },
+    "viewLeaderboard": {
+        "message": "Pregledaj tablicu bodova"
+    },
+    "here": {
+        "message": "ovdje"
+    },
+    "recordTimesDescription": {
+        "message": "Klikni gumb ispod kada isječak započinje i završava kako bi ga zabilježio i unio u bazu podataka."
+    },
+    "popupHint": {
+        "message": "Savjet: Pritisni tipku točka-zarez dok si fokusiran na video kako bi zabilježio početak i kraj isječka te podnio isječak. (Ovo se može promijeniti u postavkama)"
+    },
+    "clearTimesButton": {
+        "message": "Očisti vremena"
+    },
+    "submitTimesButton": {
+        "message": "Unesi vremena"
+    },
+    "whatChangeUserID": {
+        "message": "Ovo bi trebalo ostati privatno. slično je lozinki i ne bi se smjelo dijeliti ni s kime. Ako netko ovo ima, mogu se lažno predstavljati kao ti."
+    },
+    "setUserID": {
+        "message": "Postavi UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Oprez: Promjena UserID-a je trajna. Jesi li siguran da želiš ovo napraviti? Napravi kopiju starog UserID-a za svaki slučaj."
+    },
+    "createdBy": {
+        "message": "Izradio"
+    },
+    "autoSkip": {
+        "message": "Automatsko preskakanje"
+    },
+    "showSkipNotice": {
+        "message": "Pokaži obavijest nakon preskakanja isječka"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Trenutno je postavljeno na:"
+    },
+    "supportInvidious": {
+        "message": "Podrži Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) je YouTube client treće strane. Kako bi omogućio podršku, moraš prihvatiti dodatna dopuštenja. Ovo NE radi u privatnoj kartici na Chrome-u ili drugim carijantama Chromiuma."
+    },
+    "optionsInfo": {
+        "message": "Omogući podržavanje Invidiousa, onemogući automatsko preskakanje, sakrij gumbe i drugo."
+    },
+    "addInvidiousInstance": {
+        "message": "Dodaj instancu Invidiousa"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Dodaj prilagođenu instancu Invidiousa. Ona mora biti formatirana sa samom domenom. Primjer: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Dodaj"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Ova domena je neispravna. Trebaš unijeti SAMO domenu. Primjer: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Resetiraj popis instanci Invidiousa"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Upravo ćeš resetirati popis instanci Invidiousa"
+    },
+    "currentInstances": {
+        "message": "Trenutne instance:"
+    },
+    "minDuration": {
+        "message": "Minimalno trajanje (u sekundama):"
+    },
+    "minDurationDescription": {
+        "message": "Isječci kraći od postavljene vrijednosti neće biti preskočeni ili prikazani u playeru."
+    }
+}

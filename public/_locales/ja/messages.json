@@ -1,1 +1,151 @@
-{}
+{
+    "fullName": {
+        "message": "SponserBlock for YouTube - 動画のスポンサーセクションを自動でスキップする",
+        "description": "Name of the extension."
+    },
+    "reportButtonTitle": {
+        "message": "報告"
+    },
+    "Dismiss": {
+        "message": "無視"
+    },
+    "Loading": {
+        "message": "読み込み中..."
+    },
+    "Mins": {
+        "message": "分"
+    },
+    "Secs": {
+        "message": "秒"
+    },
+    "success": {
+        "message": "成功しました!"
+    },
+    "voted": {
+        "message": "投票しました!"
+    },
+    "closePopup": {
+        "message": "ポップアップを閉じる"
+    },
+    "viewLeaderboard": {
+        "message": "リーダーボードを表示"
+    },
+    "here": {
+        "message": "こちら"
+    },
+    "Options": {
+        "message": "オプション"
+    },
+    "showButtons": {
+        "message": "YouTube プレイヤーにボタンを表示"
+    },
+    "hideButtons": {
+        "message": "YouTube プレイヤーにボタンを表示しない"
+    },
+    "website": {
+        "message": "ウェブサイト",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "ソースコード",
+        "description": "Used on Firefox Store Page"
+    },
+    "errorCode": {
+        "message": "エラーコード: "
+    },
+    "skip": {
+        "message": "スキップ"
+    },
+    "skipped": {
+        "message": "スキップしました"
+    },
+    "disableAutoSkip": {
+        "message": "自動スキップを無効にする"
+    },
+    "enableAutoSkip": {
+        "message": "自動スキップを有効にする"
+    },
+    "youHaveSkipped": {
+        "message": "スキップしました "
+    },
+    "minLower": {
+        "message": "分"
+    },
+    "minsLower": {
+        "message": "分"
+    },
+    "hourLower": {
+        "message": "時間"
+    },
+    "hoursLower": {
+        "message": "時間"
+    },
+    "autoSkip": {
+        "message": "自動スキップ"
+    },
+    "customServerAddress": {
+        "message": "SponsorBlock サーバーアドレス"
+    },
+    "save": {
+        "message": "保存"
+    },
+    "reset": {
+        "message": "リセット"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com は現在サポートされています"
+    },
+    "submit": {
+        "message": "送信"
+    },
+    "cancel": {
+        "message": "キャンセル"
+    },
+    "delete": {
+        "message": "削除"
+    },
+    "preview": {
+        "message": "プレビュー"
+    },
+    "edit": {
+        "message": "編集"
+    },
+    "category_sponsor": {
+        "message": "スポンサー"
+    },
+    "disable": {
+        "message": "無効"
+    },
+    "previewColor": {
+        "message": "プレビューカラー",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "シークバーのカラー"
+    },
+    "category": {
+        "message": "カテゴリ"
+    },
+    "enableTestingServer": {
+        "message": "ベータテストサーバーを有効にする"
+    },
+    "chooseACategory": {
+        "message": "カテゴリーを選択"
+    },
+    "channelDataNotFound": {
+        "message": "まだチャンネル ID が読み込まれてません。"
+    },
+    "incorrectCategory": {
+        "message": "カテゴリが違います"
+    },
+    "guidelines": {
+        "message": "ガイドライン"
+    },
+    "readTheGuidelines": {
+        "message": "ガイドラインを読んでください!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "カテゴリはこちらです!"
+    }
+}

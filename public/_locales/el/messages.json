@@ -1,1 +1,179 @@
-{}
+{
+    "Segment": {
+        "message": "τμήμα"
+    },
+    "Segments": {
+        "message": "τμήματα"
+    },
+    "upvoteButtonInfo": {
+        "message": "Κάντε upvote αυτήν την υποβολή"
+    },
+    "reportButtonTitle": {
+        "message": "Αναφορά"
+    },
+    "reportButtonInfo": {
+        "message": "Αναφέρετε αυτή την υποβολή σαν λανθασμένη."
+    },
+    "Dismiss": {
+        "message": "Παράβλεψη"
+    },
+    "Loading": {
+        "message": "Φόρτωση..."
+    },
+    "Mins": {
+        "message": "Λεπτά"
+    },
+    "Secs": {
+        "message": "Δευτερόλεπτα"
+    },
+    "Hide": {
+        "message": "Να μην εμφανίζεται ποτέ"
+    },
+    "paused": {
+        "message": "Σε παύση"
+    },
+    "manualPaused": {
+        "message": "Λήξη χρονομέτρου"
+    },
+    "clearThis": {
+        "message": "Θέλετε σίγουρα να εκκαθαρίσετε τη φόρμα;\n\n"
+    },
+    "success": {
+        "message": "Επιτυχία!"
+    },
+    "voted": {
+        "message": "Ψηφίστηκε!"
+    },
+    "clearTimes": {
+        "message": "Καθαρισμός τμημάτων"
+    },
+    "here": {
+        "message": "εδώ"
+    },
+    "Options": {
+        "message": "Επιλογές"
+    },
+    "website": {
+        "message": "Ιστοσελίδα",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Πηγαίος Κώδικας",
+        "description": "Used on Firefox Store Page"
+    },
+    "errorCode": {
+        "message": "Κωδικός σφάλματος: "
+    },
+    "skip": {
+        "message": "Παράκαμψη"
+    },
+    "skipped": {
+        "message": "Παραλείφθηκε"
+    },
+    "minLower": {
+        "message": "λεπτό"
+    },
+    "minsLower": {
+        "message": "λεπτά"
+    },
+    "hourLower": {
+        "message": "ώρα"
+    },
+    "hoursLower": {
+        "message": "ώρες"
+    },
+    "createdBy": {
+        "message": "Δημιουργήθηκε από"
+    },
+    "add": {
+        "message": "Προσθήκη"
+    },
+    "save": {
+        "message": "Αποθήκευση"
+    },
+    "reset": {
+        "message": "Επαναφορά"
+    },
+    "confirmNoticeTitle": {
+        "message": "Υποβολή Κατηγορίας"
+    },
+    "submit": {
+        "message": "Υποβολή"
+    },
+    "cancel": {
+        "message": "Ακύρωση"
+    },
+    "delete": {
+        "message": "Διαγραφή"
+    },
+    "preview": {
+        "message": "Προεπισκόπηση"
+    },
+    "edit": {
+        "message": "Επεξεργασία"
+    },
+    "to": {
+        "message": "έως",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Χορηγός"
+    },
+    "category_intro_short": {
+        "message": "Διάλειμμα"
+    },
+    "disable": {
+        "message": "Απενεργοποίηση"
+    },
+    "previewColor": {
+        "message": "Προεπισκόπηση χρώματος",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "category": {
+        "message": "Κατηγορία"
+    },
+    "skipOption": {
+        "message": "Παράλειψη Επιλογής",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "enableTestingServer": {
+        "message": "Ενεργοποίηση διακομιστή δοκιμαστικών λειτουργιών"
+    },
+    "whatEnableTestingServer": {
+        "message": "Οι υποβολές και οι ψήφοι ΔΕΝ ΘΑ ΜΕΤΡΗΣΟΥΝ προς τον κεντρικό διακομιστή. Χρησιμοποίησέ το μόνο για δοκιμή."
+    },
+    "bracketNow": {
+        "message": "(τώρα)"
+    },
+    "moreCategories": {
+        "message": "Περισσότερες κατηγορίες"
+    },
+    "chooseACategory": {
+        "message": "Επιλέξτε μια κατηγορία"
+    },
+    "incorrectCategory": {
+        "message": "Λάθος κατηγορία"
+    },
+    "multipleSegments": {
+        "message": "Πολλαπλά Τμήματα"
+    },
+    "guidelines": {
+        "message": "Οδηγίες"
+    },
+    "readTheGuidelines": {
+        "message": "Διάβασε τις οδηγίες!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Οι κατηγορίες είναι εδώ!"
+    },
+    "categoryUpdate2": {
+        "message": "Άνοιξε τις επιλογές για την παράλειψη τίτλων αρχής-τέλους, πωλήσεων κ. α."
+    },
+    "unsubmittedWarning": {
+        "message": "Ειδοποίηση μη κατοχυρωμένων τμημάτων"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Στείλε μια ειδοποίηση όταν αφήνεις βίντεο με τμήματα που δεν έχουν ανέβει"
+    }
+}

@@ -1,15 +1,7 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock para YouTube - Pule patrocínios",
         "description": "Name of the extension."
-    },
-    "Description": {
-        "message": "Pule patrocinadores em vídeos do YouTube. Reporte patrocinadores em videos que você assiste para salvar o tempo dos outros.",
-        "description": "Description of the extension."
     },
     "400": {
         "message": "O servidor disse que esse pedido foi inválido"
@@ -23,20 +15,14 @@
     "channelWhitelisted": {
         "message": "Canal adicionado à lista branca!"
     },
-    "Sponsor": {
-        "message": "patrocinador"
-    },
-    "Sponsors": {
-        "message": "patrocinadores"
-    },
-    "Segment": {
-        "message": "segmento de patrocinador"
-    },
-    "Segments": {
-        "message": "segmentos de patrocinadores"
+    "upvoteButtonInfo": {
+        "message": "Votar nesse segmento positivamente"
     },
     "reportButtonTitle": {
         "message": "Reportar"
+    },
+    "reportButtonInfo": {
+        "message": "Reportar esse segmento como inválido."
     },
     "Dismiss": {
         "message": "Ignorar"
@@ -54,7 +40,7 @@
         "message": "Nunca mostrar"
     },
     "hitGoBack": {
-        "message": "Aperta reverter pulo para voltar onde estava"
+        "message": "Aperta \"reverter pulo\" para voltar onde estava."
     },
     "unskip": {
         "message": "Reverter pulo"
@@ -65,6 +51,9 @@
     "paused": {
         "message": "Pausado"
     },
+    "manualPaused": {
+        "message": "Tempo parado"
+    },
     "confirmMSG": {
         "message": "\n\nPara editar ou remover linhas individuais, clique com o botão direito ou abra o popup da extensão pelo icone no canto superior direito."
     },
@@ -73,18 +62,6 @@
     },
     "Unknown": {
         "message": "Houve um erro ao enviar seus segmentos, tente novamente mais tarde."
-    },
-    "sponsorFound": {
-        "message": "Os patrocinadores desse vídeo estão no banco de dados!"
-    },
-    "sponsor404": {
-        "message": "Nenhum patrocinador encontrado"
-    },
-    "sponsorStart": {
-        "message": "Patrocínio começa agora"
-    },
-    "sponsorEnd": {
-        "message": "Patrocínio termina agora"
     },
     "noVideoID": {
         "message": "Nenhum vídeo do YouTube foi encontrado nesta aba. Se você sabe que esta é uma aba do YouTube, feche este pop-up e abra-o novamente. Se isso não funcionar, tente recarregar a aba."
@@ -95,23 +72,14 @@
     "voted": {
         "message": "Votado!"
     },
+    "serverDown": {
+        "message": "Parece que o servidor caiu. Contate o desenvolvedor o quanto antes."
+    },
     "connectionError": {
         "message": "Ocorreu um erro de conexão. Código de erro: "
     },
-    "wantToSubmit": {
-        "message": "Quer enviar os segmentos para o vídeo de ID"
-    },
-    "leftTimes": {
-        "message": "Parece que você se esqueceu de enviar alguns segmentos. Volte para aquela página para enviá-los (eles não foram deletados)."
-    },
-    "clearTimes": {
-        "message": "Apagar intervalos dos patrocínios"
-    },
     "openPopup": {
         "message": "Abrir o Popup SponsorBlock"
-    },
-    "SubmitTimes": {
-        "message": "Enviar intervalos de patrocínios"
     },
     "submitCheck": {
         "message": "Você tem certeza que deseja enviar isto?"
@@ -121,12 +89,6 @@
     },
     "removeFromWhitelist": {
         "message": "Remover canal da lista branca"
-    },
-    "voteOnTime": {
-        "message": "Vote num intervalo de patrocínio"
-    },
-    "recordTimes": {
-        "message": "Grave os intervalos de um patrocínio"
     },
     "soFarUHSubmited": {
         "message": "Até agora, você já enviou"
@@ -139,15 +101,6 @@
     },
     "here": {
         "message": "aqui"
-    },
-    "recordTimesDescription": {
-        "message": "Clique no botão abaixo quando o patrocínio começa e termina para gravá-lo na base de dados."
-    },
-    "popupHint": {
-        "message": "Dica: Aperte a tecla ponto e vírgula (;) com a janela focada em um vídeo para reportar o começo/fim de um patrocínio e aspas (\") para enviar. (Esta configuração pode ser mudada nas opções.)"
-    },
-    "lastTimes": {
-        "message": "Últimos Intervalos de Patrocínios Seleciados"
     },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
@@ -197,21 +150,8 @@
     "whatDeleteButton": {
         "message": "Este é o botão que lhe permite saltar todos os patrocínios do player do Youtube."
     },
-    "disableViewTracking": {
-        "message": "Desactivar registo de visualização de patrocínios"
-    },
-    "enableViewTracking": {
-        "message": "Activar registo de visualização de patrocínios"
-    },
-    "whatViewTracking": {
-        "message": "Esta funcionalidade regista que patrocínios tem saltado para que outros utilizadores saibam o quanto as suas submições têm ajudado outros\n e é usado como métrica de votos para evitar spam na base de dados. A extenção \n envia uma notificação ao servidor sempre que salta um patrocínio. Quanto menos pessoas desactivarem esta funcionalidade mais precisas serão as estimativas :)"
-    },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
-    },
-    "longDescription": {
-        "message": "SponsorBlock é uma extensão que salta segmentos patrocinados em vídeos do YouTube. SponsorBlock é uma extenção crowdfunded que permite a qualquer um submeter o início e o fim de segmentos patrocinados. Assim que uma pessoa submete essa informação todos com a extenção poderam saltar automaticamete o patrocínio.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Site",
@@ -228,9 +168,6 @@
     "noticeUpdate2": {
         "message": "Se você ainda não gostar dessa, aperte o botão não mostrar novamente.",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "Defina a tecla para que marca o início do patrocínio"
     },
     "setSubmitKeybind": {
         "message": "Defina a tecla para enviar o segmento de patrocínio"
@@ -263,20 +200,20 @@
     "skip": {
         "message": "Pular"
     },
+    "skipped": {
+        "message": "Pulado"
+    },
     "disableAutoSkip": {
         "message": "Desativar Salto Automático"
     },
     "enableAutoSkip": {
         "message": "Ativar Salto Automático"
     },
-    "autoSkipDescription": {
-        "message": "Pular automaticamente irá pular patrocínios por você. Se desabilitado, um aviso irá aparecer perguntando se deseja pular o anúncio."
-    },
     "audioNotification": {
         "message": "Notificação de áudio ao pular"
     },
-    "audioNotificationDescription": {
-        "message": "A notificação de áudio ao pular irá tocar um som sempre que um patrocínio for ignorado. Se desativado (ou o pulo automático estiver desativado), nenhum som será reproduzido."
+    "showTimeWithSkips": {
+        "message": "Mostrar tempo com pulos removidos"
     },
     "youHaveSkipped": {
         "message": "Você pulou "
@@ -302,9 +239,6 @@
     "youHaveSavedTimeEnd": {
         "message": " de suas vidas."
     },
-    "guildlinesSummary": {
-        "message": "- Certifique-se de que seu segmento contém apenas patrocínio, nada mais.\n- Certifique-se de que pular esse segmento não vai pular conteúdo importante.\n- Se todo o vídeo for patrocinado, por favor não o denuncie. Um sistema completo de relatório de vídeo virá em breve.\n- Por favor, não denuncie avisos de parcialidade do vídeo (se um vídeo de avaliação for patrocinado, não pule quando eles mencionarem que é patrocinado)."
-    },
     "statusReminder": {
         "message": "Verifique status.sponsor.ajay.app para o status do servidor."
     },
@@ -325,9 +259,6 @@
     },
     "autoSkip": {
         "message": "Pular automaticamente"
-    },
-    "showSkipNotice": {
-        "message": "Mostrar aviso após um patrocínio ser ignorado"
     },
     "keybindCurrentlySet": {
         "message": ". Atualmente, está definido para:"
@@ -365,9 +296,6 @@
     "minDuration": {
         "message": "Duração mínima (segundos):"
     },
-    "minDurationDescription": {
-        "message": "Segmentos de patrocinadores menores do que o valor definido não serão pulados ou mostrados no reprodutor."
-    },
     "shortCheck": {
         "message": "A seguinte submissão é mais curta do que sua opção de duração mínima. Isto significa que já foi enviada e que está sendo ignorada devido a esta opção. Tem certeza que deseja enviar mesmo assim?"
     },
@@ -395,14 +323,8 @@
     "areYouSureReset": {
         "message": "Tem certeza que deseja redefinir?"
     },
-    "confirmPrivacy": {
-        "message": "O este vídeo está marcado como não listado. Clique em cancelar se você não deseja verificar se há patrocínios."
-    },
     "unlistedCheck": {
         "message": "Ignorar vídeos não listados/privados"
-    },
-    "whatUnlistedCheck": {
-        "message": "Esta configuração irá diminuir um pouco o desempenho do SponsorBlock. As pesquisas do patrocinador exigem que se envie o ID do vídeo para o servidor. Se você estiver preocupado com o envio de IDs de vídeo não listados pela internet, habilite essa opção."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com agora é suportado"
@@ -455,21 +377,15 @@
     "theKey": {
         "message": "A tecla"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "já está sendo usado pelo youtube. Por favor, selecione outra tecla."
-    },
     "keyAlreadyUsed": {
         "message": "está vinculado a outra ação. Por favor, selecione outra tecla."
     },
     "to": {
         "message": "até",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Patrocinador"
-    },
-    "category_intro": {
-        "message": "Animação de Introdução"
     },
     "category_outro": {
         "message": "Finalização/Créditos"
@@ -477,11 +393,17 @@
     "category_interaction": {
         "message": "Lembrete de interação (inscrever-se)"
     },
+    "category_interaction_short": {
+        "message": "Lembrete de interação"
+    },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
     },
     "category_livestream_messages": {
         "message": "Livestream: Leituras de Doação/Mensagem"
+    },
+    "category_livestream_messages_short": {
+        "message": "Leitura de mensagens"
     },
     "disable": {
         "message": "Desativar"
@@ -491,6 +413,20 @@
     },
     "showOverlay": {
         "message": "Mostrar barra de progresso"
+    },
+    "previewColor": {
+        "message": "Cor de pré-visualização",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Cor da barra"
+    },
+    "category": {
+        "message": "Categoria"
+    },
+    "skipOption": {
+        "message": "Opção de pulo",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Habilitar Servidor em teste Beta"
@@ -506,6 +442,12 @@
     },
     "moreCategories": {
         "message": "Mais categorias"
+    },
+    "chooseACategory": {
+        "message": "Selecione uma Categoria"
+    },
+    "youMustSelectACategory": {
+        "message": "Você deve selecionar uma categoria para todos os segmentos que você está enviando!"
     },
     "bracketEnd": {
         "message": "(Fim)"
@@ -525,19 +467,29 @@
     "itCouldBeAdblockerIssue": {
         "message": "Se isso continuar acontecendo, pode ser causado pelo seu bloqueador de anúncios. Por favor, verifique https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock-Requests"
     },
-    "forceChannelCheck": {
-        "message": "Forçar verificação do canal antes de pular os patrocínios"
-    },
-    "whatForceChannelCheck": {
-        "message": "Por padrão, isso pulará os patrocínios imediatamente mesmo antes de saber qual é o canal. Por padrão, alguns patrocinadores de zero segundo podem ser ignorados nos canais da lista branca. Habilitar esta opção evitará isso, mas irá fazer com que todos os saltos tenham um ligeiro atraso, já que obter o channelID pode levar algum tempo. Este atraso pode não ser perceptível se você tiver internet rápida."
-    },
-    "forceChannelCheckPopup": {
-        "message": "Considere habilitar a verificação de canal forçada antes de pular os patrocinadores"
+    "downvoteDescription": {
+        "message": "Incorreto/tempo errado"
     },
     "incorrectCategory": {
         "message": "Categoria errada"
     },
-    "nonMusicCategoryOnMusic": {
-        "message": "Este vídeo é classificado como música. Você tem certeza que deseja enviar segmentos com categorias que não são músicas? A menos que esse vídeo não seja de fato música, você não deve enviar esse segmento. Por favor leia as orientações se estiver em dúvidas."
+    "multipleSegments": {
+        "message": "Multiplos segmentos"
+    },
+    "guidelines": {
+        "message": "Diretrizes"
+    },
+    "readTheGuidelines": {
+        "message": "Leia as Diretrizes!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "As categorias estão aqui!"
+    },
+    "unsubmittedWarning": {
+        "message": "Notificação de segmentos não enviados"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Enviar uma notificação quando você sair de um vídeo com segmentos que não foram enviados"
     }
 }

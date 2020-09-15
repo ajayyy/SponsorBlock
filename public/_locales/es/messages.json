@@ -1,14 +1,10 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
-        "message": "SponsorBlock para YouTube - Omitir Sponsors",
+        "message": "SponsorBlock para YouTube - Saltar los patrocinios",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Omitir sponsors en videos de YouTube. Infórmanos de sponsors en videos que ves para ahorrar el tiempo de otros.",
+        "message": "Salte todos los patrocinios, súplicas por suscripción y más en los vídeos de YouTube. Reporta secciones de patrocinio en los vídeos que veas para ahorrarle tiempo a los demás.",
         "description": "Description of the extension."
     },
     "400": {
@@ -23,17 +19,11 @@
     "channelWhitelisted": {
         "message": "Canal Permitido!"
     },
-    "Sponsor": {
-        "message": "sponsor"
-    },
-    "Sponsors": {
-        "message": "sponsors"
-    },
     "Segment": {
-        "message": "segmento de sponsor"
+        "message": "segmento"
     },
     "Segments": {
-        "message": "segmentos de sponsor"
+        "message": "segmentos"
     },
     "upvoteButtonInfo": {
         "message": "Votar a favor de esta sumisión"
@@ -84,16 +74,16 @@
         "message": "Se ha producido un error enviando tus tiempos de sponsor, por favor inténtalo de nuevo más tarde."
     },
     "sponsorFound": {
-        "message": "¡Los sponsors de este video están en la base de datos!"
+        "message": "¡Este video tiene segmentos en la base de datos!"
     },
     "sponsor404": {
-        "message": "No se encontró ningún sponsor"
+        "message": "No se han encontrado segmentos"
     },
     "sponsorStart": {
-        "message": "Sponsor Empieza Ahora"
+        "message": "El segmento comienza ahora"
     },
     "sponsorEnd": {
-        "message": "Sponsor Acaba Ahora"
+        "message": "El segmento termina ahora"
     },
     "noVideoID": {
         "message": "Ningún video de YouTube se encontró en esta pestaña. Si sabes que esto es una pestaña de YouTube, cierra esta ventana y ábrela otra vez. Si eso no funciona, intenta recargar la pestaña."
@@ -111,19 +101,22 @@
         "message": "Ha ocurrido un error de conexión. Código de error: "
     },
     "wantToSubmit": {
-        "message": "¿Quieres enviar los tiempos de sponsor para el vídeo id"
+        "message": "¿Quiere enviar segmento para el video con ID"
     },
     "leftTimes": {
-        "message": "Parece que has dejado algunos tiempos de sponsor sin enviar. Vuelve a esa página para enviarlos (no se eliminaron)."
+        "message": "Parece que has dejado algunos segmentos sin enviar. Vuelva a esa página para enviarlos (no se han borrado)."
     },
     "clearTimes": {
-        "message": "Eliminar Tiempos de Sponsor"
+        "message": "Borrar Segmentos"
     },
     "openPopup": {
         "message": "Abrir Ventana de SponsorBlock"
     },
+    "closePopup": {
+        "message": "Cerrar la ventana"
+    },
     "SubmitTimes": {
-        "message": "Enviar Tiempos de Sponsor"
+        "message": "Enviar Segmentos"
     },
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
@@ -135,10 +128,7 @@
         "message": "Parar De Permitir Canal"
     },
     "voteOnTime": {
-        "message": "Votar en un tiempo de sponsor"
-    },
-    "recordTimes": {
-        "message": "Registrar los tiempos de un sponsor"
+        "message": "Vote En Un Segmento"
     },
     "soFarUHSubmited": {
         "message": "Hasta ahora, has enviado"
@@ -153,13 +143,10 @@
         "message": "aquí"
     },
     "recordTimesDescription": {
-        "message": "Haga clic en el botón de abajo cuando el sponsor comienza y termina para registrarlo y\nenviarlo a la base de datos."
+        "message": "Haga clic en el botón de abajo cuando el segmento comience y termine para grabarlo y enviarlo a la base de datos."
     },
     "popupHint": {
-        "message": "Consejo: Presiona la tecla de punto y coma mientras enfocado en un video para registrar el comienzo/fin de un sponsor y presiona comillas para enviar. (Esto se puede cambiar en las opciones)"
-    },
-    "lastTimes": {
-        "message": "Últimos mensajes de sponsor elegidos"
+        "message": "Pista: Presione la tecla de punto y coma mientras está enfocado en un video para indicar el comienzo/final de un segmento y citación para enviarlo. (Esto puede cambiarse en opciones)"
     },
     "clearTimesButton": {
         "message": "Eliminar Tiempos"
@@ -209,20 +196,17 @@
     "whatDeleteButton": {
         "message": "Este es el botón en el reproductor de YouTube que eliminará todos tus segmentos no enviados para el vídeo actual."
     },
-    "disableViewTracking": {
-        "message": "Desactivar seguimiento de numero de sponsorsomitidos"
-    },
     "enableViewTracking": {
-        "message": "Activar seguimiento de numero de sponsors omitidos"
+        "message": "Habilitar el conteo de omisiones"
     },
     "whatViewTracking": {
-        "message": "Esta opción registra los sponsors que te has saltado para que los otros usuarios sepan cuánto su sumisión ha ayudado a otros y\nes usado como métrica junto con votos positivos para asegurar que el spam no ingrese a la base de datos. La extensión envía un mensaje\nal servidor cada vez que se salta un patrocinador. Esperemos que la mayoría de la gente no cambie esta opción para que los números de vista sean exactos. :)"
+        "message": "Esta función rastrea los segmentos que se han saltado para que los usuarios sepan en qué medida sus aportes ayudaron a los demás y se utilizan como una métrica junto con los votos favorables para garantizar que no aparezca spam en la base de datos. La extensión envía un mensaje al servidor cada vez que se salta un segmento. Esperemos que la mayoría de la gente no cambie esta configuración para que los números de vista sean exactos. :)"
     },
     "showNotice": {
         "message": "Mostrar aviso de nuevo"
     },
     "longDescription": {
-        "message": "SponsorBlock es una extensión que se omitira segmentos de sponsor de vídeos de YouTube. SponsorBlock es una extensión de navegador que permite a cualquiera enviar los tiempos de comienzo y fin de segmentos de sponsor de vídeos de YouTube. Una vez que una persona envíe esta información, todos los demás con esta extensión pueden omitir directamente el segmento de sponsor.",
+        "message": "SponsorBlock te permite saltarte los patrocinadores, intros, outros, recordatorios de suscripción y otras partes molestas de los videos de YouTube. SponsorBlock es una extensión de navegador de código abierto que permite a cualquiera enviar el tiempo de inicio y fin de los segmentos de patrocinadores y otros segmentos de los videos de YouTube. Una vez que una persona envía esta información, todos los que tengan esta extensión podrán saltearse ese segmento. También es posible saltar las secciones no musicales de los videos musicales.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -242,7 +226,7 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setStartSponsorShortcut": {
-        "message": "Establecer botón de inicio de sponsor"
+        "message": "Establecer tecla para iniciar segmento"
     },
     "setSubmitKeybind": {
         "message": "Establecer botón de envio"
@@ -284,14 +268,17 @@
     "enableAutoSkip": {
         "message": "Activar la omisión automática"
     },
-    "autoSkipDescription": {
-        "message": "La omisión automática omitirá sponsors por ti. Si esta desactivada, aparecerá un aviso preguntando si quieres omitir."
-    },
     "audioNotification": {
         "message": "Notificación de audio al omitir"
     },
     "audioNotificationDescription": {
-        "message": "Notificación de audio al omitir reproducirá un sonido cada vez que se omite un sponsor. Si está desactivada (o se desactiva la omisión automática), no se reproducirá ningún sonido."
+        "message": "Si se salta un segmento, se oirá un sonido de notificación de audio. Si se desactiva (o si se desactiva la función de omisión automática), no se reproducirá ningún sonido."
+    },
+    "showTimeWithSkips": {
+        "message": "Mostrar la duración del video con las secciones omitidas"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Esta duración aparece entre paréntesis junto al tiempo actual del video, debajo de la barra de navegación. Esta muestra la duración total del vídeo menos cualquier segmento eliminado. Esto incluye los segmentos marcados como solo \"Mostrar en la barra de navegación\"."
     },
     "youHaveSkipped": {
         "message": "Has omitido "
@@ -317,9 +304,6 @@
     "youHaveSavedTimeEnd": {
         "message": " de sus vidas."
     },
-    "guildlinesSummary": {
-        "message": "- Asegúrate de que tu segmento sólo contiene un segmento de promoción de pago, nada más.\n- Asegúrate de que omitir este segmento no omitirá ningún contenido valioso\n- Si todo el vídeo es un sponsor, por favor, no lo envíen. Pronto saldrá un sistema completo de reportes de vídeo.\n- Por favor, no informe de los avisos que podrían mostrar parcialidad (si un vídeo de revista está patrocinado, no se salte cuando mencionen eso)."
-    },
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
     },
@@ -330,58 +314,58 @@
         "message": "Esto debería mantenerse privado. Es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, pueden imitarte."
     },
     "setUserID": {
-        "message": "Definir UserID"
+        "message": "Establecer la ID de usuario"
     },
     "userIDChangeWarning": {
-        "message": "Advertencia: Cambiar el UserID es permanente. ¿Estás seguro de que desea hacer esto? Asegúrese de hacer una copia de seguridad de su UserID anterior por si acaso."
+        "message": "Advertencia: El cambio de la ID de usuario es irreversible. ¿Está seguro de que le desea hacerlo? Asegúrese de hacer una copia de respaldo de la anterior por si acaso."
     },
     "createdBy": {
         "message": "Creado Por"
     },
     "autoSkip": {
-        "message": "Omisión Automática"
+        "message": "Omitir automáticamente"
     },
     "showSkipNotice": {
-        "message": "Mostrar aviso después de que se omita un sponsor"
+        "message": "Mostrar aviso después de que se omita un segmento"
     },
     "keybindCurrentlySet": {
-        "message": ". Actualmente está establecido a:"
+        "message": ". Actualmente está configurado para:"
     },
     "supportInvidious": {
-        "message": "Soportar Invidious"
+        "message": "Apoya a Invidious"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) es un cliente alternativo para YouTube. Para habilitar soporte, tienes que aceptar los permisos adicionales. Esto NO funciona en modo incógnito en Chrome y otros variantes de Chromium."
+        "message": "Invidious (invidio.us) es un cliente de YouTube independiente. Para habilitar su soporte, debes aceptar los permisos extra. Esto NO funcionará en modo incógnito de Chrome y otras variantes del Chromium."
     },
     "optionsInfo": {
-        "message": "Activar soporte de Invidious, deshabilitar omisión automática, ocultar botones y más."
+        "message": "Activar el soporte para Invidious, desactivar la omisión automática, oculta botones y más."
     },
     "addInvidiousInstance": {
-        "message": "Añadir nodo de Invidious"
+        "message": "Agregar una Instancia de Invidious"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Añadir un nodo de Invidious personalizado. Esto debe estar formateado con SOLO el dominio. Ejemplo: invidious.ajay.app"
+        "message": "Añade una instancia personalizada de Invidious. Este debe formatearse SÓLO con el dominio. Ejemplo: invidious.ajay.app"
     },
     "add": {
-        "message": "Añadir"
+        "message": "Agregar"
     },
     "addInvidiousInstanceError": {
-        "message": "Esto es un dominio inválido. Esto debería incluir SOLO el dominio. Ejemplo: invidious.ajay.app"
+        "message": "Este es un dominio inválido. SÓLO debería incluir la parte del dominio. Ejemplo: invidious.ajay.app"
     },
     "resetInvidiousInstance": {
-        "message": "Restablecer Lista de Nodos de Invidious"
+        "message": "Restablecer la lista de instancias de Invidious"
     },
     "resetInvidiousInstanceAlert": {
-        "message": "Estás a punto de restablecer la lista de nodos de invidious"
+        "message": "Está a punto de reiniciar la lista de instancias del Invidious"
     },
     "currentInstances": {
-        "message": "Nodos actuales:"
+        "message": "Instancias actuales:"
     },
     "minDuration": {
-        "message": "Duración mínima (en segundos):"
+        "message": "Duración mínima (segundos):"
     },
     "minDurationDescription": {
-        "message": "Los segmentos de sponsor más cortos que el valor establecido no serán omitidos ni mostrados en el reproductor."
+        "message": "Los segmentos más cortos que el valor configurado no se omitirán ni se mostrarán en el reproductor."
     },
     "shortCheck": {
         "message": "La siguiente sumisión es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
@@ -404,14 +388,38 @@
     "reset": {
         "message": "Restablecer"
     },
+    "customAddressError": {
+        "message": "La dirección no tiene el formato adecuado. Asegúrese de que tenga http:// o https:// al principio y que no haya barras al final."
+    },
+    "areYouSureReset": {
+        "message": "¿Estás seguro de que te gustaría reiniciar esto?"
+    },
+    "confirmPrivacy": {
+        "message": "El vídeo ha sido detectado como no listado. Haz clic en cancelar si no quieres comprobar si hay segmentos salteados."
+    },
+    "unlistedCheck": {
+        "message": "Ignorar los vídeos no listados/privados"
+    },
+    "whatUnlistedCheck": {
+        "message": "Esta configuración ralentizará ligeramente a SponsorBlock. Las búsquedas de segmentos de salto requieren el envío de la identificación del vídeo al servidor. Si le preocupa que se envíen por Internet identificadores de vídeo no listados, habilite esta opción."
+    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com ahora es compatible"
     },
     "exportOptions": {
         "message": "Importar/Exportar todas las opciones"
     },
+    "whatExportOptions": {
+        "message": "Esta es toda su configuración en JSON. Esto incluye tu ID de usuario, así que asegúrate de compartir esto sabiamente."
+    },
     "setOptions": {
         "message": "Configurar opciones"
+    },
+    "exportOptionsWarning": {
+        "message": "Advertencia: cambiar las opciones es permanente y puede romper la instalación. ¿Estás seguro de que te gustaría hacer esto? Asegúrate de hacer una copia de seguridad de la antigua por si acaso."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Este JSON no está correctamente formateado. Sus opciones no han sido cambiadas."
     },
     "confirmNoticeTitle": {
         "message": "Enviar segmento"
@@ -437,32 +445,72 @@
     "copyDebugInformationFailed": {
         "message": "Error al escribir al portapapeles"
     },
+    "copyDebugInformationOptions": {
+        "message": "Copia la información al portapapeles para ser proporcionada a un desarrollador cuando levanta un error / cuando un desarrollador lo solicita. Información sensible como su ID de usuario, canales de la lista blanca y la dirección del servidor personalizado han sido eliminados. Sin embargo, contiene información como su agente de usuario, navegador, sistema operativo y número de versión de la extensión. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "La información de depuración ha sido copiada al portapapeles. Siéntase libre de eliminar cualquier información que prefiera no compartir. Guarde esto en un archivo de texto o péguelo en el informe de errores."
+    },
     "theKey": {
         "message": "El botón"
-    },
-    "keyAlreadyUsedByYouTube": {
-        "message": "ya está en uso por youtube. Por favor, seleccione otro botón."
     },
     "keyAlreadyUsed": {
         "message": "está enlazado a otra acción. Por favor, seleccione otro botón."
     },
+    "to": {
+        "message": "a",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "category_sponsor_description": {
+        "message": "Promoción pagada, referencias pagadas y anuncios directos. No para autopromoción o anuncios gratuitos a causas/creadores/sitios web/productos que les gusten."
+    },
     "category_intro": {
-        "message": "Animación de introducción"
+        "message": "Intermisión/Introducción de animación"
+    },
+    "category_intro_description": {
+        "message": "Un intervalo sin contenido real. Podría ser una pausa, un cuadro estático, una animación repetida. Esto no debe ser usado para transiciones que contengan información."
+    },
+    "category_intro_short": {
+        "message": "Intermisión"
     },
     "category_outro": {
         "message": "Tarjetas/Créditos"
     },
+    "category_outro_description": {
+        "message": "Créditos o cuando aparecen las tarjetas finales de YouTube. No para conclusiones con información."
+    },
     "category_interaction": {
         "message": "Recordatorio de interacción (subscribir)"
+    },
+    "category_interaction_description": {
+        "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
+    },
+    "category_interaction_short": {
+        "message": "Recordatorio de interacción"
+    },
+    "category_selfpromo": {
+        "message": "No remunerado/Autopromoción"
+    },
+    "category_selfpromo_description": {
+        "message": "Similar a \"patrocinador\", excepto que no es remunerado o se autopromociona. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
     },
     "category_music_offtopic": {
         "message": "Música: Sección sin musica"
     },
+    "category_music_offtopic_description": {
+        "message": "Sólo para su uso en vídeos musicales. Esto incluye las introducciones o las salidas en los vídeos musicales."
+    },
+    "category_music_offtopic_short": {
+        "message": "No musical"
+    },
     "category_livestream_messages": {
         "message": "Directo: Lecturas de donaciones y mensajes"
+    },
+    "category_livestream_messages_short": {
+        "message": "Lectura del mensaje"
     },
     "disable": {
         "message": "Desactivar"
@@ -470,8 +518,34 @@
     "manualSkip": {
         "message": "Omisión manual"
     },
+    "showOverlay": {
+        "message": "Mostrar en la barra de búsqueda"
+    },
+    "colorFormatIncorrect": {
+        "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
+    },
+    "previewColor": {
+        "message": "Vista previa del color",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Busca el color de la barra"
+    },
+    "category": {
+        "message": "Categoría"
+    },
+    "skipOption": {
+        "message": "Opción de Saltar",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
     "enableTestingServer": {
         "message": "Habilitar Servidor de Pruebas Beta"
+    },
+    "whatEnableTestingServer": {
+        "message": "Sus envíos y votos NO CONTABILIZARÁN hacia el servidor principal. Sólo use esto para probar."
+    },
+    "testingServerWarning": {
+        "message": "Todos los envíos y votos NO CONTABILIZARÁN hacia el servidor principal mientras se conecten al servidor de prueba. Asegúrate de desactivar esto cuando quieras hacer presentaciones reales."
     },
     "bracketNow": {
         "message": "(Ahora)"
@@ -479,19 +553,68 @@
     "moreCategories": {
         "message": "Más categorías"
     },
+    "chooseACategory": {
+        "message": "Elija una categoría"
+    },
+    "youMustSelectACategory": {
+        "message": "¡Debes seleccionar una categoría para todos los segmentos que estés presentando!"
+    },
     "bracketEnd": {
         "message": "(Final)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "oculto: voto negativo"
+    },
+    "hiddenDueToDuration": {
+        "message": "oculto: demasiado corto"
     },
     "channelDataNotFound": {
         "message": "ID de canal no cargado todavía."
     },
+    "adblockerIssue": {
+        "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de vídeo. Este es probablemente su bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Si esto sigue ocurriendo, podría ser causado por tu bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Solicitudes"
+    },
+    "forceChannelCheck": {
+        "message": "Comprobación forzada del canal antes de saltarse"
+    },
+    "whatForceChannelCheck": {
+        "message": "Por defecto, se saltará los segmentos inmediatamente antes de saber cuál es el canal. Por defecto, algunos segmentos al principio del vídeo pueden ser salteados en los canales de la lista blanca. Al activar esta opción se evitará esto, pero haciendo que todos los saltos tengan un ligero retraso ya que obtener el ID del canal puede llevar algún tiempo. Este retraso podría ser imperceptible si tienes una Internet rápida."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Considere la posibilidad de activar \"Comprobación del canal de fuerza antes de saltar\""
+    },
     "downvoteDescription": {
-        "message": "Tiempo incorrecto"
+        "message": "Tiempo incorrecto/equivocado"
     },
     "incorrectCategory": {
-        "message": "Categoría errónea"
+        "message": "Categoría Incorrecta"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Este video está clasificado como música. ¿Estás seguro de que esto tiene un patrocinador? Si esto es realmente un \"Segmento sin música\", abre las opciones de extensión y habilita esta categoría. Entonces, puedes enviar este segmento como \"No-Música\" en lugar de patrocinador. Por favor, lee las directrices si estás confundido."
     },
     "multipleSegments": {
-        "message": "Varios segmentos"
+        "message": "Múltiples segmentos"
+    },
+    "guidelines": {
+        "message": "Instrucciones"
+    },
+    "readTheGuidelines": {
+        "message": "¡¡¡Lee las instrucciones!!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "¡Las categorías están aquí!"
+    },
+    "categoryUpdate2": {
+        "message": "Abre las opciones de saltarse intros, otros, mercantil, etc."
+    },
+    "unsubmittedWarning": {
+        "message": "Notificación de segmentos no enviados"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Envía una notificación cuando dejas un vídeo con segmentos que no se suben"
     }
 }

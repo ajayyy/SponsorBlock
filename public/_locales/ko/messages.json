@@ -1,1 +1,182 @@
-{}
+{
+    "fullName": {
+        "message": "YouTube용 SponsorBlock - 스폰서 광고 차단",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "YouTube 영상의 스폰서 광고, '구독과 좋아요' 광고 같이 쓸데없는 광고를 모두 건너뛰세요. 영상의 스폰서 광고 구간을 신고하여 다른 사람들의 시간을 절약할 수 있게 해주세요.",
+        "description": "Description of the extension."
+    },
+    "channelWhitelisted": {
+        "message": "채널이 화이트리스트에 추가되었습니다!"
+    },
+    "Segment": {
+        "message": "구간"
+    },
+    "Segments": {
+        "message": "구간"
+    },
+    "sponsorFound": {
+        "message": "이 영상의 광고 구간을 서버 데이터베이스에서 찾았습니다!"
+    },
+    "sponsor404": {
+        "message": "광고 구간을 찾지 못했습니다"
+    },
+    "sponsorStart": {
+        "message": "광고 구간 시작"
+    },
+    "sponsorEnd": {
+        "message": "광고 구간 끝"
+    },
+    "noVideoID": {
+        "message": "현재 페이지에서 YouTube 영상을 찾지 못하였습니다. 이 페이지에 YouTube 영상이 있는 경우, 이 팝업을 닫고 다시 열어주세요. 그래도 이 팝업이 바뀌지 않는 경우, 페이지를 새로고침하세요."
+    },
+    "connectionError": {
+        "message": "서버 오류가 발생하였습니다. 오류 코드: "
+    },
+    "whitelistChannel": {
+        "message": "채널을 화이트리스트에 추가하기"
+    },
+    "removeFromWhitelist": {
+        "message": "채널을 화이트리스트에서 삭제하기"
+    },
+    "setUsername": {
+        "message": "사용자 이름 설정"
+    },
+    "discordAdvert": {
+        "message": "공식 디스코드 서버에 들어와서 기능 제안을 해주시거나 피드백을 남겨주세요!"
+    },
+    "Options": {
+        "message": "설정"
+    },
+    "longDescription": {
+        "message": "SponsorBlock을 사용하면 영상에서 스폰서 광고, 인트로 영상, 아웃트로 영상, 구독 광고와 그 외 쓸데없는 부분을 즉시 건너뛸 수 있습니다. SponsorBlock은 모든 사람들이 참여하는 브라우저 확장 기능으로 확장 기능 사용자는 스폰서 광고 또는 다른 광고의 시작 시간과 끝 시간을 확인하여 서버로 전송할 수 있습니다. 이러한 정보가 전송되면 그 영상을 보는 다른 사용자들은 광고 구간이 나오기 전에 자동으로 건너뛸 수 있습니다. SponsorBlock을 사용하면 뮤직 비디오에서 음악이나 노래가 아닌 구간도 건너뛸 수 있습니다.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "웹사이트",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "소스 코드",
+        "description": "Used on Firefox Store Page"
+    },
+    "0": {
+        "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
+    },
+    "disableSkipping": {
+        "message": "SponsorBlock 비활성화"
+    },
+    "enableSkipping": {
+        "message": "SponsorBlock 활성화"
+    },
+    "yourWork": {
+        "message": "지금까지 한 일",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "errorCode": {
+        "message": "오류 코드: "
+    },
+    "minLower": {
+        "message": "분"
+    },
+    "minsLower": {
+        "message": "분"
+    },
+    "hourLower": {
+        "message": "시간"
+    },
+    "hoursLower": {
+        "message": "시간"
+    },
+    "changeUserID": {
+        "message": "사용자 ID 가져오기/내보내기"
+    },
+    "createdBy": {
+        "message": "개발자: "
+    },
+    "autoSkip": {
+        "message": "자동으로 건너뛰기"
+    },
+    "supportInvidious": {
+        "message": "Invidious 지원 활성화"
+    },
+    "customServerAddressDescription": {
+        "message": "SponsorBlock이 데이터를 주고받기 위해 사용하는 서버 주소입니다. 따로 구축한 서버가 없을 경우, 이 주소를 변경하지 않는 것이 좋습니다."
+    },
+    "save": {
+        "message": "저장"
+    },
+    "customAddressError": {
+        "message": "올바르지 않은 주소입니다. 주소는 반드시 http:// 또는 https://로 시작해야 하며, 마지막 문자가 슬래시로 끝날 수 없습니다."
+    },
+    "mobileUpdateInfo": {
+        "message": "이제 m.youtube.com 링크를 지원합니다"
+    },
+    "exportOptions": {
+        "message": "모든 설정 가져오기/내보내기"
+    },
+    "preview": {
+        "message": "미리보기"
+    },
+    "edit": {
+        "message": "수정"
+    },
+    "copyDebugInformation": {
+        "message": "디버그 정보 복사하기"
+    },
+    "copyDebugInformationFailed": {
+        "message": "클립보드로 복사하는 데 실패했습니다"
+    },
+    "copyDebugInformationOptions": {
+        "message": "버그를 신고할 때나 개발자가 요청했을 때 필요한 디버그 정보를 복사합니다. 사용자 ID, 화이트리스트 채널 목록와 커스텀 서버 주소 같이 민감한 정보는 절대 포함되지 않습니다. 디버그 정보에는 사용자 에이전트, 브라우저 정보, 사용 중인 운영 체제와 확장 프로그램의 버전 정보가 포함됩니다. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "디버그 정보가 복사되었습니다. 공유하고 싶지 않은 내용이 있는 경우 자유롭게 수정하신 후, 텍스트 파일로 저장하시거나 버그 신고 페이지에 붙여넣으시면 됩니다."
+    },
+    "category_sponsor": {
+        "message": "스폰서 광고"
+    },
+    "category_intro": {
+        "message": "무음 구간 / 인트로 영상"
+    },
+    "category_intro_description": {
+        "message": "아무 내용도 없는 구간입니다. 일시정지된 영상, 정지된 프레임이거나 반복되는 애니메이션일 가능성이 있습니다. 특정 정보를 알려주는 화면 전환 구간은 여기에 해당되지 않습니다."
+    },
+    "category_outro_description": {
+        "message": "엔딩 크레딧이나 최종 화면이 나타나는 구간입니다. 단순히 결론을 말하는 부분은 여기에 포함되지 않습니다."
+    },
+    "category_music_offtopic": {
+        "message": "음악이 아닌 구간"
+    },
+    "category_music_offtopic_description": {
+        "message": "뮤직 비디오에서만 해당됩니다. 여기에는 시작 부분 (인트로) 영상이나 끝 부분 (아웃트로) 영상이 포함됩니다."
+    },
+    "colorFormatIncorrect": {
+        "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
+    },
+    "previewColor": {
+        "message": "미리보기 색상",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "탐색 바 색상"
+    },
+    "category": {
+        "message": "범주"
+    },
+    "skipOption": {
+        "message": "건너뛰기 설정",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "chooseACategory": {
+        "message": "구간 범주 선택"
+    },
+    "guidelines": {
+        "message": "가이드라인"
+    },
+    "readTheGuidelines": {
+        "message": "가이드라인을 제발 읽어주세요!!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    }
+}

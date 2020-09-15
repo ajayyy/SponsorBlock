@@ -1,15 +1,7 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock för YouTube - Hoppa över sponsring",
         "description": "Name of the extension."
-    },
-    "Description": {
-        "message": "Hoppa över sponsormeddelanden på YouTube-videor. Rapportera sponsring på videor du ser på för att spara tid för andra.",
-        "description": "Description of the extension."
     },
     "400": {
         "message": "Felaktigt anrop enligt servern"
@@ -18,22 +10,10 @@
         "message": "Du har rapporterat för många sponsormeddelanden för den här videon, är du säker att det finns så många?"
     },
     "409": {
-        "message": "Den här har redan blivit rapporterad."
+        "message": "Den här har redan blivit rapporterad"
     },
     "channelWhitelisted": {
         "message": "Kanal vitlistad!"
-    },
-    "Sponsor": {
-        "message": "sponsor"
-    },
-    "Sponsors": {
-        "message": "sponsorer"
-    },
-    "Segment": {
-        "message": "sponsorsegment"
-    },
-    "Segments": {
-        "message": "sponsorsegment"
     },
     "reportButtonTitle": {
         "message": "Rapportera"
@@ -54,7 +34,7 @@
         "message": "Sekunder"
     },
     "Hide": {
-        "message": "\"Visa aldrig\"-knappen. "
+        "message": "Visa Aldrig"
     },
     "hitGoBack": {
         "message": "Tryck på Tillbaka för att ångra åtgärden."
@@ -63,7 +43,7 @@
         "message": "Tillbaka"
     },
     "reskip": {
-        "message": "Frammåt"
+        "message": "Framåt"
     },
     "paused": {
         "message": "Pausad"
@@ -80,18 +60,6 @@
     "Unknown": {
         "message": "Ett fel uppstod vid rapportering av sponsorsegment, försök igen senare."
     },
-    "sponsorFound": {
-        "message": "Den här videons sponsormeddelande finns i databasen!"
-    },
-    "sponsor404": {
-        "message": "Inga sponsormeddelanden hittades"
-    },
-    "sponsorStart": {
-        "message": "Sponsormeddelandet Börjar Nu"
-    },
-    "sponsorEnd": {
-        "message": "Sponsormeddelandet Slutar Nu"
-    },
     "noVideoID": {
         "message": "Kunde inte hitta någon YouTube-video i denna tab. Om du är säker på att detta är en Youtube-flik, stäng den här rutan och öppna den igen. Ladda om fliken om inte det funkar."
     },
@@ -107,20 +75,8 @@
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
     },
-    "wantToSubmit": {
-        "message": "Vill du rapportera sponsortiderna för video id"
-    },
-    "leftTimes": {
-        "message": "Du har lämnat några sponsortider orapporterade. Gå tillbaka till den sidan för att rapportera dem (de är inte borttagna)."
-    },
-    "clearTimes": {
-        "message": "Rensa Sponsortider"
-    },
     "openPopup": {
         "message": "Öppna SponsorBlock Popup"
-    },
-    "SubmitTimes": {
-        "message": "Rapportera Sponsortider"
     },
     "submitCheck": {
         "message": "Är du säker på att du vill rapportera detta?"
@@ -130,12 +86,6 @@
     },
     "removeFromWhitelist": {
         "message": "Ta bort kanal från vitlistan"
-    },
-    "voteOnTime": {
-        "message": "Rösta på en sponsortid"
-    },
-    "recordTimes": {
-        "message": "Spela in sponsortider"
     },
     "soFarUHSubmited": {
         "message": "Hitills har du rapporterat"
@@ -148,15 +98,6 @@
     },
     "here": {
         "message": "här"
-    },
-    "recordTimesDescription": {
-        "message": "Klicka på knappen nedan när sponsormeddelandet börjar och slutar för att spela in och rapportera till databasen."
-    },
-    "popupHint": {
-        "message": "Tips: Tryck på semikolon när fokus är på en video för att markera början/slutet av ett sponsormeddelande och citattecken för att rapportera till databasen. (Kan ändras under inställningar)"
-    },
-    "lastTimes": {
-        "message": "Senaste Sponsortiderna Valda."
     },
     "clearTimesButton": {
         "message": "Rensa Tider"
@@ -206,21 +147,8 @@
     "whatDeleteButton": {
         "message": "Denna knappen tar bort alla sponsormeddelanden på YouTube-spelaren."
     },
-    "disableViewTracking": {
-        "message": "Avaktivera Räkning Av Undvikta Sponsormeddelanden"
-    },
-    "enableViewTracking": {
-        "message": "Aktivera Räkning Av Undvikta Sponsormeddelanden"
-    },
-    "whatViewTracking": {
-        "message": "Den här funktionen håller koll på vilka sponsormeddelanden du har hoppat över för att uppskatta hur mycket tid en användare har sparat andra och används tillsammans med röster för att se till att spam inte läggs i databasen. Detta tillägg skickar ett meddelande till servern varje gång du hoppar över ett sponsormeddelande. Förhoppningsvis ändrar inte folk den här inställningen så statistiken hålls tillförlitlig. :)"
-    },
     "showNotice": {
         "message": "Visa Notisen Igen"
-    },
-    "longDescription": {
-        "message": "SponsorBlock är ett webbläsartillägg som hoppar över sponsormeddelanden på YouTube-videor. SponsorBlock är ett crowdsourcat webbläsartillägg som låter vem som hellst att rapportera start och sluttider för sponsorsegment på YouTube-videor. När informationen väl har rapporterats kommer alla andra med detta tillägg att hoppa över sponsorsegmentet.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Hemsida",
@@ -237,9 +165,6 @@
     "noticeUpdate2": {
         "message": "Om du ändå inte gillar det, tryck på \"Visa aldrig\"-knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "Välj knapp att koppla till start av sponsormeddelande"
     },
     "setSubmitKeybind": {
         "message": "Välj knapp att koppla till rapportering av sponsormeddelande"
@@ -281,14 +206,8 @@
     "enableAutoSkip": {
         "message": "Aktivera Hoppa Över Automatiskt"
     },
-    "autoSkipDescription": {
-        "message": "Hoppa Över Automatiskt undviker att spela upp sponsormeddelanden för dig. Ifall det är avaktiverat dyker en notis upp som frågar om du vill hoppa över."
-    },
     "audioNotification": {
         "message": "Ljudeffekt vid hopp"
-    },
-    "audioNotificationDescription": {
-        "message": "Ljudeffekt vid hopp spelar upp en ljudeffekt när du hoppar över ett sponsormeddelande. Ifall det är avaktiverat (eller hoppa över automatiskt är avaktiverat), kommer inget ljud att spelas upp."
     },
     "youHaveSkipped": {
         "message": "Du har hoppat över "
@@ -314,9 +233,6 @@
     "youHaveSavedTimeEnd": {
         "message": " av deras liv."
     },
-    "guildlinesSummary": {
-        "message": "- Se till att ditt sponsorsegment bara innehåller betald marknadsföring, inget annat.\n- Se till att inget värdefullt innehåll missas genom att hoppa över ditt sponsorsegment\n- Rapportera inte en video ifall hela videon är ett sponsormeddelande. Ett rapporteringssystem för hela videor kommer snart.\n- Se till att inte hoppa över delar som uppmärksammar partiskhet (om en recensionsvideo är sponsrad, hoppa inte över delen av videon där det nämns)."
-    },
     "statusReminder": {
         "message": "Gå till status.sponsor.ajay.app för serverstatus."
     },
@@ -337,9 +253,6 @@
     },
     "autoSkip": {
         "message": "Hoppa Över Automatiskt"
-    },
-    "showSkipNotice": {
-        "message": "Visa Notis Efter Sponsormeddelande Har Hoppats Över"
     },
     "keybindCurrentlySet": {
         "message": ". Är just nu kopplat till:"
@@ -377,9 +290,6 @@
     "minDuration": {
         "message": "Minsta varaktighet (sekunder):"
     },
-    "minDurationDescription": {
-        "message": "Sponsorsegment som är kortare än det satta minstavärdet kommer inte att hoppas över eller visas i spelaren."
-    },
     "shortCheck": {
         "message": "Följande rapport är kortare än ditt minstavärde i inställningarna. Det skulle kunna betyda att det redan är rapporterat och bara ignorerat på grund av denna inställning. Är du säker på att du vill rapportera?"
     },
@@ -407,14 +317,8 @@
     "areYouSureReset": {
         "message": "Är du säker på att du vill rensa?"
     },
-    "confirmPrivacy": {
-        "message": "Videon ser ut att vara olistad. Tryck på avbryt om du inte vill kolla efter sponsorer."
-    },
     "unlistedCheck": {
         "message": "Ignorera Olistade Videor"
-    },
-    "whatUnlistedCheck": {
-        "message": "Denna inställning kommer göra SponsorBlock märkbart långsammare. Uppslag av sponsormeddelanden kräver att video-ID skickas till servern. Om du är bekymrad över att olistade video-IDn skickas över internet, aktivera denna inställning."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com stöds nu"
@@ -467,27 +371,15 @@
     "theKey": {
         "message": "Nyckeln"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "används redan av YouTube. Välj en annan nyckel."
-    },
     "keyAlreadyUsed": {
         "message": "är kopplad till en annan funktion. Välj en annan knapp."
     },
     "to": {
         "message": "till",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponsormeddelande"
-    },
-    "category_intro": {
-        "message": "Intro-animation"
-    },
-    "category_intro_description": {
-        "message": "Intro-animationer som är återkommande i serien eller inte ger direkt värde. Detta bör inte användas på musikvideor."
-    },
-    "category_intro_short": {
-        "message": "Intro"
     },
     "category_music_offtopic_description": {
         "message": "Endast för användning i musikvideor. Detta inkluderar intros och outros i musikvideor."
@@ -522,6 +414,12 @@
     "moreCategories": {
         "message": "Fler Kategorier"
     },
+    "chooseACategory": {
+        "message": "Välj en kategori"
+    },
+    "youMustSelectACategory": {
+        "message": "Du måste välja en kategori för alla segment du skickar in!"
+    },
     "bracketEnd": {
         "message": "(Slut)"
     },
@@ -542,9 +440,6 @@
     },
     "incorrectCategory": {
         "message": "Fel kategori"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Den här videon är kategoriserad som musik. Är du säker på att du vill skicka in segment med icke-musikkategorier? Om denna video faktiskt är musik, bör du inte skicka in detta segment. Vänligen läs riktlinjerna om du är förvirrad."
     },
     "multipleSegments": {
         "message": "Flera segment"

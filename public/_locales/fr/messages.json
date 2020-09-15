@@ -1,14 +1,10 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock pour YouTube - Supprime les messages commerciaux et publicités intégrées",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Passe automatiquement les messages commerciaux intégrés dans les vidéos YouTube. Soumettez les segments commerciaux dans les vidéos que vous regardez pour aidez les autres.",
+        "message": "Ignorez les sponsors, les rappels d'interaction et plus encore sur les vidéos YouTube. Signalez les sponsors sur les vidéos que vous regardez pour sauver le temps des autres.",
         "description": "Description of the extension."
     },
     "400": {
@@ -23,17 +19,11 @@
     "channelWhitelisted": {
         "message": "Chaîne mise sur liste blanche !"
     },
-    "Sponsor": {
-        "message": "message commercial"
-    },
-    "Sponsors": {
-        "message": "messages commerciaux"
-    },
     "Segment": {
-        "message": "segment commercial"
+        "message": "segment"
     },
     "Segments": {
-        "message": "segments commerciaux"
+        "message": "segments"
     },
     "upvoteButtonInfo": {
         "message": "Voter pour cette entrée"
@@ -84,16 +74,16 @@
         "message": "Une erreur s'est produite lors de la soumission, veuillez réessayer plus tard."
     },
     "sponsorFound": {
-        "message": "Les messages commerciaux pour cette vidéo sont déjà dans notre base de données !"
+        "message": "Cette vidéo a des segments dans la base de données!"
     },
     "sponsor404": {
-        "message": "Pas de messages commerciaux trouvés"
+        "message": "Aucun segment trouvé"
     },
     "sponsorStart": {
-        "message": "Début du message commercial"
+        "message": "Début du segement"
     },
     "sponsorEnd": {
-        "message": "Fin du message commercial"
+        "message": "Fin du segment"
     },
     "noVideoID": {
         "message": "Ceci n'est pas un onglet YouTube, ou vous avez cliqué trop tôt. \n Si vous êtes sûr(e) que c'est un onglet YouTube, fermez cette fenêtre et réessayez."
@@ -110,20 +100,11 @@
     "connectionError": {
         "message": "Erreur de connexion. Code d'erreur : "
     },
-    "wantToSubmit": {
-        "message": "Voulez-vous soumettre les segments commerciaux pour cette vidéo"
-    },
     "leftTimes": {
-        "message": "Vous avez laissé des segments commerciaux non soumis. Retournez sur la vidéo pour les soumettre (ils ont été conservés)."
-    },
-    "clearTimes": {
-        "message": "Supprimer les segments commerciaux"
+        "message": "Vous semblez avoir laissé certains segments non soumis. Retournez à cette page pour les soumettre (ils ne sont pas supprimés)."
     },
     "openPopup": {
         "message": "Ouvrir l'encart SponsorBlock"
-    },
-    "SubmitTimes": {
-        "message": "Soumettre les segments commerciaux"
     },
     "submitCheck": {
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
@@ -135,10 +116,7 @@
         "message": "Supprimer la chaîne de la liste blanche"
     },
     "voteOnTime": {
-        "message": "Voter sur un segment commercial"
-    },
-    "recordTimes": {
-        "message": "Enregistrer un segment commercial"
+        "message": "Voter pour un segment"
     },
     "soFarUHSubmited": {
         "message": "Vous avez soumis jusqu'à présent"
@@ -151,15 +129,6 @@
     },
     "here": {
         "message": "ici"
-    },
-    "recordTimesDescription": {
-        "message": "Cliquez sur le bouton ci-dessous quand le segment commercial commence puis \nse termine pour l'enregistrer et le soumettre à la base de données."
-    },
-    "popupHint": {
-        "message": "Astuce : utilisez la touche point-virgule lorsque la vidéo est sélectionnée pour enregistrer le début et la fin d'un segment commercial; utilisez la touche guillemet pour le soumettre. (Les touches peuvent être modifiées dans les options)"
-    },
-    "lastTimes": {
-        "message": "Derniers temps choisis pour le segment commercial"
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
@@ -209,21 +178,8 @@
     "whatDeleteButton": {
         "message": "Il s'agit du bouton qui permet de supprimer tous les segments commerciaux depuis le lecteur YouTube."
     },
-    "disableViewTracking": {
-        "message": "Désactiver le suivi des vues de segments commerciaux"
-    },
-    "enableViewTracking": {
-        "message": "Activer le suivi des vues de segments commerciaux"
-    },
-    "whatViewTracking": {
-        "message": "Cette fonctionnalité suit quels segments commerciaux vous avez sautés afin de calculer le bénéfice des soumissions des \nautres utilisateurs. Elle est également utilisée comme métrique, avec les haut-votes, afin de s'assurer que les spams \nsont ignorés. L'extension envoie un message au serveur à chauque fois qu'un segment commercial est sauté. Avec un peu de chance, peu de personnes désactiveront cette fonctionnalité afin d'obtenir des nombres de vues exacts. :)"
-    },
     "showNotice": {
         "message": "Afficher la notification"
-    },
-    "longDescription": {
-        "message": "SponsorBlock est une extension qui permet de passer les messages commerciaux des vidéos YouTube. SponsorBlock est une extension pour navigateur basée sur le crowdsourcing permettant à n'importe qui de soumettre le début et la fin des segments commerciaux sur les vidéos YouTube. Dès qu'une personne a soumis ces informations, les autres utilisateurs de l'extension en bénéficieront et verront les messages commerciaux automatiquement sautés.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Site web",
@@ -240,9 +196,6 @@
     "noticeUpdate2": {
         "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "Changer le raccourci pour enregistrer un segment"
     },
     "setSubmitKeybind": {
         "message": "Changer le raccourci pour soumettre les segments"
@@ -284,14 +237,14 @@
     "enableAutoSkip": {
         "message": "Activer le passage automatique"
     },
-    "autoSkipDescription": {
-        "message": "Le passage automatique passera automatiquement les sponsors pour vous. Si désactivé, un avis apparaîtra vous demandant si vous souhaitez passer."
-    },
     "audioNotification": {
         "message": "Notification audio lors du passage"
     },
-    "audioNotificationDescription": {
-        "message": "La notification audio lors du passage jouera un son à chaque fois qu'un sponsor est ignoré. Si désactivé (ou si le passage automatique est désactivé), aucun son ne sera joué."
+    "showTimeWithSkips": {
+        "message": "Afficher le temps avec les passages supprimés"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tout les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
     },
     "youHaveSkipped": {
         "message": "Vous avez passé "
@@ -317,9 +270,6 @@
     "youHaveSavedTimeEnd": {
         "message": " aux autres."
     },
-    "guildlinesSummary": {
-        "message": "- Assurez-vous que votre segment ne contient que des segments de promotion payante, rien d'autre.\n- Assurez-vous que passer ce segment ne sautera pas de contenu important\n- Si la vidéo entière est un sponsor, s'il vous plaît, ne le signalez pas. Un système complet de reportage vidéo sortira bientôt.\n- Veuillez ne pas signaler les avertissements qui pourraient montrer des biais (si une vidéo de revue est sponsorisée, ne sautez pas quand ils le mentionnent)."
-    },
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
     },
@@ -342,7 +292,7 @@
         "message": "Passage automatique"
     },
     "showSkipNotice": {
-        "message": "Notifier après qu'un sponsor ait été sauté"
+        "message": "Notifier après qu'un segment ait été sauté"
     },
     "keybindCurrentlySet": {
         "message": ". Il est actuellement réglé sur :"
@@ -380,9 +330,6 @@
     "minDuration": {
         "message": "Durée minimale (en secondes):"
     },
-    "minDurationDescription": {
-        "message": "Les segments sponsorisés plus courts que la valeur définie ne seront pas passé ni affichés dans le lecteur."
-    },
     "shortCheck": {
         "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
     },
@@ -410,14 +357,8 @@
     "areYouSureReset": {
         "message": "Voulez-vous vraiment remettre à zéro ?"
     },
-    "confirmPrivacy": {
-        "message": "Cette vidéo est non-listée. Appuyez sur annuler si vous ne voulez pas vérifier la présence de message commerciaux."
-    },
     "unlistedCheck": {
         "message": "Ignorer les vidéos non listées"
-    },
-    "whatUnlistedCheck": {
-        "message": "Cette fonctionnalité ralentie légèrement SponsorBlock. La recherche des message commerciaux nécessite l'envoie de l'ID de la vidéo au serveur. Si vous êtes préoccupé par l'envoi de l'ID des vidéos non listées sur Internet, activez cette option."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com est maintenant pris en charge"
@@ -470,15 +411,12 @@
     "theKey": {
         "message": "La clé"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "est déjà utilisé par YouTube. Veuillez sélectionner une autre clé."
-    },
     "keyAlreadyUsed": {
         "message": "est lié à une autre action. Veuillez sélectionner une autre clé."
     },
     "to": {
         "message": "à",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Message commercial"
@@ -487,19 +425,13 @@
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
     },
     "category_intro": {
-        "message": "Générique d'introduction"
-    },
-    "category_intro_description": {
-        "message": "Introductions animées qui sont récurrentes ou qui n'ont pas de valeur ajoutée directe dans la série. Ne doit pas être utilisé pour les vidéos musicales."
+        "message": "Entracte/Animation d'intro"
     },
     "category_intro_short": {
-        "message": "Introduction"
+        "message": "Entracte"
     },
     "category_outro": {
         "message": "Générique de fin"
-    },
-    "category_outro_description": {
-        "message": "Générique de fin ou quand les fiches de fin de vidéo apparaissent. Ne pas utiliser pour les conclusions orales. Ne doit pas inclure de contenu utile. Ne pas utiliser sur les vidéos de musique."
     },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
@@ -527,6 +459,9 @@
     },
     "category_livestream_messages": {
         "message": "Stream : lecture de dons et messages"
+    },
+    "category_livestream_messages_short": {
+        "message": "Lecture de messages"
     },
     "disable": {
         "message": "Désactiver"
@@ -569,6 +504,12 @@
     "moreCategories": {
         "message": "Autres catégories"
     },
+    "chooseACategory": {
+        "message": "Choisissez une catégorie"
+    },
+    "youMustSelectACategory": {
+        "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
+    },
     "bracketEnd": {
         "message": "(Fin)"
     },
@@ -588,22 +529,13 @@
         "message": "Si ça se reproduit, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
-        "message": "Forcer la vérification de la chaîne avant de passer les message commerciaux"
-    },
-    "whatForceChannelCheck": {
-        "message": "Par défaut, les sponsors seront passés immédiatement, avant même que la chaîne soit connue. Des sponsors au début de la vidéo peuvent être passés sur des chaînes sur liste blanche. Activer cette option empêchera cela mais fera que les messages sponsorisés seront passés avec un petit délai, car la récupération du channelID peut prendre du temps. Ce délai peut être imperceptible si vous avez une connexion rapide."
-    },
-    "forceChannelCheckPopup": {
-        "message": "Envisagez d'activer la vérification forcée de la chaîne avant de passer les messages commerciaux"
+        "message": "Forcer la vérification du canal avant de passer"
     },
     "downvoteDescription": {
         "message": "Segment de mauvaise qualité"
     },
     "incorrectCategory": {
         "message": "Mauvaise catégorie"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Cette vidéo est classée dans les musiques. Êtes-vous sûr de vouloir soumettre des segments non-musicaux ? Vous devriez soumettre ce segment uniquement si la vidéo est de la musique. Veuillez lire les recommandations en cas de confusion."
     },
     "multipleSegments": {
         "message": "Plusieurs segments"

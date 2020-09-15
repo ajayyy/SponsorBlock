@@ -1,14 +1,10 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock pentru YouTube - Sari peste sponsorizări",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Sari peste sponsorizările din videoclipurile de pe YouTube. Adaugă sponsorizări din videoclipurile pe care le urmăriți pentru a salva timpul altora.",
+        "message": "Treci peste sponsorizări, cereri de abonare și multe altele pe videoclipuri de pe YouTube. Raportează sponsorii pe videoclipurile pe care le urmărești pentru a economisi timp altora.",
         "description": "Description of the extension."
     },
     "400": {
@@ -23,17 +19,11 @@
     "channelWhitelisted": {
         "message": "Canalul a fost adăugat la excepții!"
     },
-    "Sponsor": {
-        "message": "sponsor"
-    },
-    "Sponsors": {
-        "message": "sponsori"
-    },
     "Segment": {
-        "message": "segment sponsorizat"
+        "message": "segment"
     },
     "Segments": {
-        "message": "segmente sponsorizate"
+        "message": "segmente"
     },
     "upvoteButtonInfo": {
         "message": "Votează această înregistrare"
@@ -84,16 +74,16 @@
         "message": "A apărut o eroare în trimiterea timpilor sponsorizărilor, încearcă din nou mai târziu."
     },
     "sponsorFound": {
-        "message": "Sponsorii acestui videoclip se află în baza de date!"
+        "message": "Acest videoclip are segmente în baza de date!"
     },
     "sponsor404": {
-        "message": "Nu s-a gasit niciun sponsor"
+        "message": "Nici un segment găsit"
     },
     "sponsorStart": {
-        "message": "Sponsorizarea Începe Acum"
+        "message": "Segmentul începe acum"
     },
     "sponsorEnd": {
-        "message": "Sponsorizarea Se Termină Acum"
+        "message": "Segmentul se termină acum"
     },
     "noVideoID": {
         "message": "Nu există niciun videoclip YouTube în aceast tab. Dacă știți că acesta este un tab YouTube, închideți acest popup și deschideți-l din nou. Daca nici asta nu merge, încercați să reîncărcați pagina."
@@ -111,19 +101,22 @@
         "message": "A apărut o eroare de conexiune. Cod de eroare: "
     },
     "wantToSubmit": {
-        "message": "Doriți să trimiteți timpii sponsorizărilor pentru acest video id"
+        "message": "Doriți să trimiteți pentru id video"
     },
     "leftTimes": {
-        "message": "Se pare că ați lăsat unii timpi ai sponsorilor netrimiși. Mergeți înapoi la pagina respectivă pentru a îi trimite (timpii nu au fost șterși)."
+        "message": "Se pare că aţi lăsat unele segmente netrimise. Du-te înapoi la acea pagină pentru a le trimite (nu sunt şterse)."
     },
     "clearTimes": {
-        "message": "Șterge Timpii Sponsorizărilor"
+        "message": "Curăță segmentele"
     },
     "openPopup": {
         "message": "Deschide Popup-ul SponsorBlock"
     },
+    "closePopup": {
+        "message": "Închide pop-up"
+    },
     "SubmitTimes": {
-        "message": "Trimte Timpii Sponsorizărilor"
+        "message": "Trimite segmente"
     },
     "submitCheck": {
         "message": "Sunteți sigur că doriți să trimiteți asta?"
@@ -135,10 +128,7 @@
         "message": "Șterge Canalul De La Excepții"
     },
     "voteOnTime": {
-        "message": "Votează Timpii Sponsorizărilor"
-    },
-    "recordTimes": {
-        "message": "Înregistrează timpul unei sponsorizări"
+        "message": "Votează pe un Segment"
     },
     "soFarUHSubmited": {
         "message": "Până acum, ai trimis"
@@ -153,13 +143,10 @@
         "message": "aici"
     },
     "recordTimesDescription": {
-        "message": "Apasă pe butonul de mai jos când începe o sponsorizare și când se termină pentru a înregistra-o și pentru a o trimite la baza de date."
+        "message": "Faceţi clic pe butonul de mai jos atunci când segmentul începe şi se termină pentru a înregistra şi trimite-l în baza de date."
     },
     "popupHint": {
         "message": "Indiciu: Apasă pe tasta punct și virgulă în timp ce ești centrat pe videoclip pentru a raporta începutul/finalul unei sponsorizări și apasă pe ghilimele pentru a o trimite. (Acest lucru poate fi schimbat din opțiuni)"
-    },
-    "lastTimes": {
-        "message": "Ultimii Timpi Ai Mesajului Sponsorizat Aleși"
     },
     "clearTimesButton": {
         "message": "Șterge Timpii"
@@ -209,21 +196,8 @@
     "whatDeleteButton": {
         "message": "Acest buton de pe playerul de YouTube va șterge toate segmentele netrimise pentru videoclipul curent."
     },
-    "disableViewTracking": {
-        "message": "Dezactivează Urmărirea Săriturilor"
-    },
-    "enableViewTracking": {
-        "message": "Activează Urmărirea Săriturilor"
-    },
-    "whatViewTracking": {
-        "message": "Acest lucru urmărește peste ce sponsori ai sărit pentru a informa utilizatorii cât de mult înregistrările lor i-au ajutat pe alții și\neste folosit ca un contor împreună cu upvoturile pentru a ne asigura că spamul nu pătrunde în baza de date. Extensia trimite un mesaj\nserverului de fiecare dată când sari peste un sponsor. Sperăm că majoritatea oamenilor nu vor schimba această setare astfel că numerele să fie exacte. :)"
-    },
     "showNotice": {
         "message": "Arată Notificarea Din Nou"
-    },
-    "longDescription": {
-        "message": "SponsorBlock este o extensie care va sări peste segmentele sponsorizate din videoclipurile de pe YouTube. SponsorBlock este o extensie crowdsourced care lasă pe oricine să trimită începutul și finalul segmentelor sponsorizate din videoclipurile de pe YouTube. Odată ce o persoană trimite aceste informații, toată lumea cu această extensie va sări peste acel segment sponsorizat.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Website",
@@ -240,9 +214,6 @@
     "noticeUpdate2": {
         "message": "Dacă nu îți place, apasă butonul nu mai arăta niciodată.",
         "description": "The second line of the message displayed after the notice was upgraded."
-    },
-    "setStartSponsorShortcut": {
-        "message": "Setează tasta pentru pornirea sponsorizării"
     },
     "setSubmitKeybind": {
         "message": "Setează tasta pentru trimiterea sponsorizării"
@@ -284,14 +255,14 @@
     "enableAutoSkip": {
         "message": "Activează Autoskip"
     },
-    "autoSkipDescription": {
-        "message": "Autoskip va sări automat peste segmentele sponsorizate pentru tine. Dacă este dezactivată, o notificare va apărea care vă va întreba dacă doriți să săriți peste."
-    },
     "audioNotification": {
         "message": "Notificare Audio Când Sari"
     },
-    "audioNotificationDescription": {
-        "message": "Notificarea audio va reda un sunet atunci când sari peste un segement sponsorizat. Daca este dezactivat (sau autoskip este dezactivat), niciun sunet nu va fi redat."
+    "showTimeWithSkips": {
+        "message": "Arată timpul cu săriturile eliminate"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Acest timp apare în paranteze lângă ora curentă sub bara de progres. Aceasta arată durata totală a videoclipului minus orice segment. Aceasta include segmente marcate doar ca \"Afișare în Seekbar\"."
     },
     "youHaveSkipped": {
         "message": "Ai sărit peste "
@@ -317,9 +288,6 @@
     "youHaveSavedTimeEnd": {
         "message": " din viața lor."
     },
-    "guildlinesSummary": {
-        "message": "- Asigurați-vă că segmentul conține doar promoții plătite, nimic altceva.\n- Asigurați-vă că dacă săriți peste acest segment nu săriți și peste conținut valoros\n- Dacă tot videoclipul este o sponsorizare, vă rugăm să nu îl trimiteți. Un sistem de trimitere a întregului videoclip este în lucru.\n- Vă rugăm să nu trimiteți mențiunile că videoclipul este sponsorizat care ar putea arăta favoritismul (spre exemplu dacă un videoclip de tip review este sponsorizat, nu trimiteți mențiunea că acel videoclip este sponsorizat)."
-    },
     "statusReminder": {
         "message": "Verificați status.sponsor.ajay.app pentru starea serverului."
     },
@@ -340,9 +308,6 @@
     },
     "autoSkip": {
         "message": "Sari Peste Automat"
-    },
-    "showSkipNotice": {
-        "message": "Arată O Notificare După Ce Am Sărit Peste O Sponsorizare"
     },
     "keybindCurrentlySet": {
         "message": ". În prezent este setat:"
@@ -380,9 +345,6 @@
     "minDuration": {
         "message": "Durată minimă (secunde):"
     },
-    "minDurationDescription": {
-        "message": "Segmentele de sponsor mai scurte decât valoarea setată nu vor fi omise sau afișate în player."
-    },
     "shortCheck": {
         "message": "Următoarea înregistrare este mai mică decât opțiunea voastră de durată minimă. Acest lucru ar putea însemna că a fost deja trimisă și a fost ignorat datorită acestei opțiuni. Sunteți sigur că doriți să trimiteți?"
     },
@@ -410,14 +372,8 @@
     "areYouSureReset": {
         "message": "Sunteți sigur că doriți să resetați asta?"
     },
-    "confirmPrivacy": {
-        "message": "Acest videoclip a fost detectat ca nelistat. Apasă anulați dacă nu doriți să verificați sponsorii."
-    },
     "unlistedCheck": {
         "message": "Ignoră Videoclipurile Nelistate/Private"
-    },
-    "whatUnlistedCheck": {
-        "message": "Această setare va încetini puțin SponsorBlock. Căutările segmentelor sponsorizate necesită trimiterea ID-ului videoclipului către server. Dacă sunteți îngrijorat de trimiterea ID-ul videoclipurilor nelistate, activați această opțiune."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com este acum suportat"
@@ -470,15 +426,12 @@
     "theKey": {
         "message": "Tasta"
     },
-    "keyAlreadyUsedByYouTube": {
-        "message": "este deja utilizat de YouTube. Vă rugăm selectați o altă tastă."
-    },
     "keyAlreadyUsed": {
         "message": "este deja setată la o altă acțiune. Vă rugăm să selectați o altă tastă."
     },
     "to": {
         "message": "până la",
-        "description": "Used between sponsor times. Example: 1:20 to 1:30"
+        "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "Sponsor"
@@ -487,19 +440,19 @@
         "message": "Promovare plătită, refferali plătiți și reclame directe. Nu pentru autopromovări sau promovări gratis ale cauzelor/creatorilor/website-urilor/produselor."
     },
     "category_intro": {
-        "message": "Animație de Început"
+        "message": "Pauză/Animație Intro"
     },
     "category_intro_description": {
-        "message": "Animațiile de introducere care se repetă în serie sau care nu oferă nici o valoare directă. Această opțiune nu ar trebui folosită în videoclipurile muzicale."
+        "message": "Un interval fără conținut. Poate fi o pauză, un cadru static, o animație care se repeta. Nu ar trebui sa fie folosit pentru tranziții care conțin informații."
     },
     "category_intro_short": {
-        "message": "Intro"
+        "message": "Pauză"
     },
     "category_outro": {
         "message": "Ecran De Final/Credite"
     },
     "category_outro_description": {
-        "message": "Credite sau când ecranul de final YouTube apare. Nu pentru concluzii vorbite. Nu ar trebui să includă conținut util. Nu ar trebui folosit în videoclipuri muzicale."
+        "message": "Credite sau atunci când apare ecranul de final YouTube. Nu pentru concluzii cu informații."
     },
     "category_interaction": {
         "message": "Reamintire de Interactiune (Abonare)"
@@ -572,6 +525,12 @@
     "moreCategories": {
         "message": "Mai multe categorii"
     },
+    "chooseACategory": {
+        "message": "Alege o categorie"
+    },
+    "youMustSelectACategory": {
+        "message": "Trebuie să selectaţi o categorie pentru toate segmentele pe care le trimiteţi!"
+    },
     "bracketEnd": {
         "message": "(Sfârșit)"
     },
@@ -590,15 +549,6 @@
     "itCouldBeAdblockerIssue": {
         "message": "Dacă acest lucru continuă să se întample, ar putea fi cauzat de adblocker-ul dumneavoastră. Vă rugăm să verificați \nhttps://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
-    "forceChannelCheck": {
-        "message": "Forțează Verificarea Canalului Înainte De A Sări Peste Sponsorizări"
-    },
-    "whatForceChannelCheck": {
-        "message": "În mod implicit, va sări peste sponsorizări chiar și înainte de a ști ce canal este. În mod implicit, s-ar putea să se sară și peste unele sponsorizări ce încep la secunda zero din canalele excluse. Activând această opțiune va preveni asta, dar va face ca toate săriturile să aibă o ușoară întârziere, deoarece obținerea Id-ului canalului poate dura ceva timp. Această întărziere poate fi neobservată daca aveți internet rapid."
-    },
-    "forceChannelCheckPopup": {
-        "message": "Consideră Activarea Forțării Verificarii Canalului Înainte De A Sări Peste Sponsorizări"
-    },
     "downvoteDescription": {
         "message": "Timpi Incorecți/Greșiți"
     },
@@ -606,7 +556,7 @@
         "message": "Categorie Greșită"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Categoria acestui videoclip este muzică. Sunteți sigur că doriți să trimiteți segmente non-muzicale? Dacă acest videoclip nu este de fapt muzică, nu ar trebui să trimiteți acest segment. Vă rugăm să citiți recomandările dacă sunteți confuz."
+        "message": "Acest videoclip este categorisit ca muzică. Ești sigur ca există un sponsor? Dacă acesta este defapt un segment non-muzical, deschideți opțiunile extensiei și activați această categorie. Apoi, puteți trimite acest segment ca non-muzical în loc de sponsol. Vă rugăm să citiți ghidul dacă sunteți confuz."
     },
     "multipleSegments": {
         "message": "Segmente Multiple"

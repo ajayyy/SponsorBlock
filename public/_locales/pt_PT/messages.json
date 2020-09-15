@@ -3,10 +3,6 @@
         "message": "SponsorBlock para o YouTube - Salte patrocínios",
         "description": "Name of the extension."
     },
-    "Description": {
-        "message": "Salte patrocinadores em vídeos do YouTube. Reporte patrocinadores em vídeos que assista para poupar tempo a outros.",
-        "description": "Description of the extension."
-    },
     "400": {
         "message": "O servidor disse que este pedido foi inválido"
     },
@@ -18,18 +14,6 @@
     },
     "channelWhitelisted": {
         "message": "Canal adicionado à whitelist!"
-    },
-    "Sponsor": {
-        "message": "patrocinador"
-    },
-    "Sponsors": {
-        "message": "patrocinadores"
-    },
-    "Segment": {
-        "message": "segmento de patrocínio"
-    },
-    "Segments": {
-        "message": "segmentos de patrocínio"
     },
     "reportButtonTitle": {
         "message": "Reportar"
@@ -70,18 +54,6 @@
     "Unknown": {
         "message": "Erro ao enviar os seus segmentos, tente novamente mais tarde."
     },
-    "sponsorFound": {
-        "message": "Os patrocinadores desse vídeo estão no banco de dados!"
-    },
-    "sponsor404": {
-        "message": "Nenhum patrocinador encontrado"
-    },
-    "sponsorStart": {
-        "message": "Patrocínio começa agora"
-    },
-    "sponsorEnd": {
-        "message": "Patrocínio termina agora"
-    },
     "noVideoID": {
         "message": "Isto provavelmente não é uma tab do YouTube, ou pode ter clicado muito cedo. \n Se sabe que é uma tab do YouTube,\n feche este popup e abra de novo."
     },
@@ -94,20 +66,8 @@
     "connectionError": {
         "message": "Deu-se um erro de conecção: Código: "
     },
-    "wantToSubmit": {
-        "message": "Quer enviar os segmentos para o vídeo de ID"
-    },
-    "leftTimes": {
-        "message": "Parece que se esqueceu de enviar alguns segmentos. Retorne à página para os enviar (não foram apagados)."
-    },
-    "clearTimes": {
-        "message": "Apagar intervalos dos patrocínios"
-    },
     "openPopup": {
         "message": "Abrir o Popup SponsorBlock"
-    },
-    "SubmitTimes": {
-        "message": "Submeter intervalos dos patrocínios"
     },
     "submitCheck": {
         "message": "Tem a certeza que pretende submeter?"
@@ -117,12 +77,6 @@
     },
     "removeFromWhitelist": {
         "message": "Remover canal da Whitelist"
-    },
-    "voteOnTime": {
-        "message": "Vote num intervalo de patrocínio"
-    },
-    "recordTimes": {
-        "message": "Registe um intervalo de patrocínio"
     },
     "soFarUHSubmited": {
         "message": "Até agora submeteu"
@@ -135,15 +89,6 @@
     },
     "here": {
         "message": "aqui"
-    },
-    "recordTimesDescription": {
-        "message": "Carregue neste botão abaixo quando o patrocínio começar e quando\n acabar para registar e submetê-lo à base de dados"
-    },
-    "popupHint": {
-        "message": "Dica: Carregue na tecla ; enquanto num vídeo para registar o começo/fim de um patrocínio e \" para submeter"
-    },
-    "lastTimes": {
-        "message": "Intervalos de Patrocínios Escolhidos mais Recentemente"
     },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
@@ -193,21 +138,8 @@
     "whatDeleteButton": {
         "message": "Este é o botão que lhe permite saltar todos os patrocínios do player do Youtube."
     },
-    "disableViewTracking": {
-        "message": "Desactivar registo de visualização de patrocínios"
-    },
-    "enableViewTracking": {
-        "message": "Activar registo de visualização de patrocínios"
-    },
-    "whatViewTracking": {
-        "message": "Esta funcionalidade regista que patrocínios tem saltado para que outros utilizadores saibam o quanto as suas submições têm ajudado outros\n e é usado como métrica de votos para evitar spam na base de dados. A extenção \n envia uma notificação ao servidor sempre que salta um patrocínio. Quanto menos pessoas desactivarem esta funcionalidade mais precisas serão as estimativas :)"
-    },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
-    },
-    "longDescription": {
-        "message": "SponsorBlock é uma extensão que salta segmentos patrocinados em vídeos do YouTube. SponsorBlock é uma extenção crowdfunded que permite a qualquer um submeter o início e o fim de segmentos patrocinados. Assim que uma pessoa submete essa informação todos com a extenção poderam saltar automaticamete o patrocínio.",
-        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Site",

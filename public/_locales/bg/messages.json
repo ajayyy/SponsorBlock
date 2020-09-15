@@ -1,14 +1,10 @@
 {
-    "Name": {
-        "message": "SponsorBlock",
-        "description": "Name of the extension."
-    },
     "fullName": {
         "message": "SponsorBlock за YouTube - пропускай спонсорства",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Пропускай спонсорствата в YouTube клипове. Докладвай за спонсорства в клиповете които гледате, за да спестите време на други хора.",
+        "message": "Прескачайте спонсорства, напомняния за абониране, и други неща в YouTube клипове. Докладвайте спонсорства на клиповете които гледате, за да спестите време на други потребители.",
         "description": "Description of the extension."
     },
     "400": {
@@ -23,17 +19,11 @@
     "channelWhitelisted": {
         "message": "Каналът е добавен към Whitelist!"
     },
-    "Sponsor": {
-        "message": "спонсор"
-    },
-    "Sponsors": {
-        "message": "спонсори"
-    },
     "Segment": {
-        "message": "част със спонсорство"
+        "message": "сегмент"
     },
     "Segments": {
-        "message": "части със спонсорство"
+        "message": "сегменти"
     },
     "reportButtonTitle": {
         "message": "Докладвай"
@@ -74,17 +64,11 @@
     "Unknown": {
         "message": "Възникна грешка при подаването на Вашите спонсорски времена, моля опитайте отново по-късно."
     },
-    "sponsorFound": {
-        "message": "Спонсорите на това видео са в базата данни!"
-    },
-    "sponsor404": {
-        "message": "Няма намерени спонсорства"
-    },
     "sponsorStart": {
-        "message": "Спонсорството Започва Сега"
+        "message": "Сегментът Започва Сега"
     },
     "sponsorEnd": {
-        "message": "Спонсорството Започва Сега"
+        "message": "Сегментът Свършва Сега"
     },
     "noVideoID": {
         "message": "Не е намерено YouTube видео в този раздел. Ако сте сигурни, че това е YouTube раздел, затворете този изскачащ прозорец и го отворете отново. Ако това не проработи, опитайте се да презаредите раздела."
@@ -95,23 +79,14 @@
     "voted": {
         "message": "Гласувано!"
     },
+    "serverDown": {
+        "message": "Изглежда, че сървърът не работи. Свържете се с програмиста незабавно."
+    },
     "connectionError": {
         "message": "Възникна грешка с връзката. Код на грешката: "
     },
-    "wantToSubmit": {
-        "message": "Искате ли да подадете спонсорствата за това видео ID"
-    },
-    "leftTimes": {
-        "message": "Изглежда, че не сте подали някои спонсорства. Върнете се в страницата и ги подайте (те не са изтрити)."
-    },
-    "clearTimes": {
-        "message": "Премахни Спонсорствата"
-    },
     "openPopup": {
         "message": "Отворете изскачащия прозорец на SponsorBlock"
-    },
-    "SubmitTimes": {
-        "message": "Подайте спонсорите"
     },
     "submitCheck": {
         "message": "Сигурни ли сте, че искате да подадете това?"
@@ -121,9 +96,6 @@
     },
     "removeFromWhitelist": {
         "message": "Премахване на канала от Whitelist"
-    },
-    "voteOnTime": {
-        "message": "Гласуване за спонсорства"
     },
     "savedPeopleFrom": {
         "message": "Вие сте помогнали на хора да пропуснат "
@@ -148,5 +120,63 @@
     },
     "hideButtons": {
         "message": "Скриване на бутоните в YouTube Player-а"
+    },
+    "to": {
+        "message": "до",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Спонсорство"
+    },
+    "category_interaction_description": {
+        "message": "Когато има кратко напомняне да харесате, да се абонирате или да последвате канала по средата на съдържанието. Ако е дълго или заради нещо специфично, трябва да е под \"само-реклама\"."
+    },
+    "category_selfpromo": {
+        "message": "Неплатена/Само-реклама"
+    },
+    "category_selfpromo_description": {
+        "message": "Подобно на \"спонсорство\", но е неплатено. Това включва merchandise, дарения или информация с кого каналът има сътрудничество."
+    },
+    "category_music_offtopic": {
+        "message": "Музика: Част без музика"
+    },
+    "category_music_offtopic_description": {
+        "message": "Само да се използва в музикални клипове. Това включва интрота и outro-та в музикални клипове."
+    },
+    "category_livestream_messages": {
+        "message": "Поточно предаване: Четене на съобщения/дарения"
+    },
+    "category_livestream_messages_short": {
+        "message": "Четене на съобщения"
+    },
+    "disable": {
+        "message": "Забрани"
+    },
+    "manualSkip": {
+        "message": "Ръчно Прескачане"
+    },
+    "showOverlay": {
+        "message": "Показване в seek лентата"
+    },
+    "colorFormatIncorrect": {
+        "message": "Вашият цвят не е форматиран правилно. Трябва да бъде 3- или 6-цифрен hex код с \"#\" в началото."
+    },
+    "category": {
+        "message": "Категория"
+    },
+    "downvoteDescription": {
+        "message": "Грешно/Неправилно Време"
+    },
+    "incorrectCategory": {
+        "message": "Грешна Категория"
+    },
+    "multipleSegments": {
+        "message": "Няколко Сегмента"
+    },
+    "guidelines": {
+        "message": "Правила"
+    },
+    "categoryUpdate1": {
+        "message": "Категориите са тук!"
     }
 }
