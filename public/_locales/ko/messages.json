@@ -7,6 +7,12 @@
         "message": "YouTube 영상의 스폰서 광고, '구독과 좋아요' 광고 같이 쓸데없는 광고를 모두 건너뛰세요. 영상의 스폰서 광고 구간을 신고하여 다른 사람들의 시간을 절약할 수 있게 해주세요.",
         "description": "Description of the extension."
     },
+    "429": {
+        "message": "이 영상에 너무 많은 스폰서 광고 시간을 제출했습니다, 정말로 확신하십니까?"
+    },
+    "409": {
+        "message": "이전에 이미 제출되었습니다"
+    },
     "channelWhitelisted": {
         "message": "채널이 화이트리스트에 추가되었습니다!"
     },
@@ -15,6 +21,39 @@
     },
     "Segments": {
         "message": "구간"
+    },
+    "upvoteButtonInfo": {
+        "message": "이 제출을 추천하기"
+    },
+    "reportButtonTitle": {
+        "message": "신고"
+    },
+    "reportButtonInfo": {
+        "message": "잘못된 제출로 신고하기."
+    },
+    "Loading": {
+        "message": "로딩 중..."
+    },
+    "Mins": {
+        "message": "분"
+    },
+    "Secs": {
+        "message": "초"
+    },
+    "Hide": {
+        "message": "보지 않기"
+    },
+    "paused": {
+        "message": "정지됨"
+    },
+    "manualPaused": {
+        "message": "타이머가 정지됨"
+    },
+    "clearThis": {
+        "message": "정말로 삭제하시겠습니까?\n\n"
+    },
+    "Unknown": {
+        "message": "스폰서 시간을 제출하는 동안 오류가 발생했습니다, 나중에 다시 시도하세요."
     },
     "sponsorFound": {
         "message": "이 영상의 광고 구간을 서버 데이터베이스에서 찾았습니다!"
@@ -31,14 +70,53 @@
     "noVideoID": {
         "message": "현재 페이지에서 YouTube 영상을 찾지 못하였습니다. 이 페이지에 YouTube 영상이 있는 경우, 이 팝업을 닫고 다시 열어주세요. 그래도 이 팝업이 바뀌지 않는 경우, 페이지를 새로고침하세요."
     },
+    "success": {
+        "message": "성공!"
+    },
+    "voted": {
+        "message": "투표 완료!"
+    },
+    "serverDown": {
+        "message": "서버가 다운된 것 같습니다. 즉시 개발 부에 연락하세요."
+    },
     "connectionError": {
         "message": "서버 오류가 발생하였습니다. 오류 코드: "
+    },
+    "leftTimes": {
+        "message": "몇몇 구간을 제출하지 않은 채 있는 것 같습니다. 해당 페이지로 다시 돌아가 제출하세요 (삭제되지 않았습니다)"
+    },
+    "clearTimes": {
+        "message": "구간 제거"
+    },
+    "openPopup": {
+        "message": "SponsorBlock 팝업 열기"
+    },
+    "closePopup": {
+        "message": "팝업 닫기"
+    },
+    "SubmitTimes": {
+        "message": "구간 제출"
+    },
+    "submitCheck": {
+        "message": "정말로 제출하시겠습니까?"
     },
     "whitelistChannel": {
         "message": "채널을 화이트리스트에 추가하기"
     },
     "removeFromWhitelist": {
         "message": "채널을 화이트리스트에서 삭제하기"
+    },
+    "voteOnTime": {
+        "message": "구간 투표"
+    },
+    "viewLeaderboard": {
+        "message": "리더보드 보기"
+    },
+    "recordTimesDescription": {
+        "message": "구간이 시작 및 종료될 때 아래의 버튼을 눌러 구간을 기록하고 데이터베이스에 제출하세요."
+    },
+    "submitTimesButton": {
+        "message": "시간 제출"
     },
     "setUsername": {
         "message": "사용자 이름 설정"
@@ -48,6 +126,39 @@
     },
     "Options": {
         "message": "설정"
+    },
+    "showButtons": {
+        "message": "YouTube 플레이어에서 버튼 표시하기"
+    },
+    "hideButtons": {
+        "message": "YouTube 플레이어에서 버튼 숨기기"
+    },
+    "hideButtonsDescription": {
+        "message": "스킵할 구간을 제출하기 위해 YouTube 플레이어에 나타나는 버튼을 숨깁니다"
+    },
+    "showInfoButton": {
+        "message": "YouTube 플레이어에서 정보 버튼 표시하기"
+    },
+    "hideInfoButton": {
+        "message": "YouTube 플레이어에서 정보 버튼 숨기기"
+    },
+    "whatInfoButton": {
+        "message": "YouTube 페이지에 팝업으로 표시되는 버튼입니다"
+    },
+    "hideDeleteButton": {
+        "message": "YouTube 플레이어에서 삭제 버튼 숨기기"
+    },
+    "showDeleteButton": {
+        "message": "YouTube 플레이어에서 삭제 버튼 표시하기"
+    },
+    "whatDeleteButton": {
+        "message": "현재 영상에 제출되지 않은 구간을 YouTube 플레이어 내에서 지우는 버튼입니다"
+    },
+    "enableViewTracking": {
+        "message": "스킵 개수 추적 활성화"
+    },
+    "showNotice": {
+        "message": "알림 다시 보여주기"
     },
     "longDescription": {
         "message": "SponsorBlock을 사용하면 영상에서 스폰서 광고, 인트로 영상, 아웃트로 영상, 구독 광고와 그 외 쓸데없는 부분을 즉시 건너뛸 수 있습니다. SponsorBlock은 모든 사람들이 참여하는 브라우저 확장 기능으로 확장 기능 사용자는 스폰서 광고 또는 다른 광고의 시작 시간과 끝 시간을 확인하여 서버로 전송할 수 있습니다. 이러한 정보가 전송되면 그 영상을 보는 다른 사용자들은 광고 구간이 나오기 전에 자동으로 건너뛸 수 있습니다. SponsorBlock을 사용하면 뮤직 비디오에서 음악이나 노래가 아닌 구간도 건너뛸 수 있습니다.",
@@ -60,6 +171,10 @@
     "sourceCode": {
         "message": "소스 코드",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate2": {
+        "message": "계속 이것이 싫다면, 보지 않기 버튼을 누르세요.",
+        "description": "The second line of the message displayed after the notice was upgraded."
     },
     "0": {
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
@@ -77,6 +192,24 @@
     "errorCode": {
         "message": "오류 코드: "
     },
+    "skip": {
+        "message": "스킵"
+    },
+    "skipped": {
+        "message": "스킵됨"
+    },
+    "disableAutoSkip": {
+        "message": "자동 스킵 비활성화"
+    },
+    "enableAutoSkip": {
+        "message": "자동 스킵 활성화"
+    },
+    "audioNotification": {
+        "message": "스킵시 소리 알림"
+    },
+    "audioNotificationDescription": {
+        "message": "구간을 건너뛸 때마다 소리를 재생합니다. 비활성화시(혹은 자동 스킵이 꺼져있을 경우) 아무 소리도 재생되지 않습니다."
+    },
     "minLower": {
         "message": "분"
     },
@@ -89,8 +222,20 @@
     "hoursLower": {
         "message": "시간"
     },
+    "statusReminder": {
+        "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
+    },
     "changeUserID": {
         "message": "사용자 ID 가져오기/내보내기"
+    },
+    "whatChangeUserID": {
+        "message": "이 정보는 다른 사람에게 공개하지 마세요. 이것은 비밀번호처럼 절대로 알려주면 안되는 정보입니다. 다른 사람이 이 정보를 습득했을 경우 사용자를 사칭할 수도 있습니다."
+    },
+    "setUserID": {
+        "message": "사용자ID 설정"
+    },
+    "userIDChangeWarning": {
+        "message": "경고: 사용자ID 변경은 영구적입니다. 정말로 하시겠습니까? 예전 사용자ID를 꼭 백업하세요."
     },
     "createdBy": {
         "message": "개발자: "
@@ -98,8 +243,35 @@
     "autoSkip": {
         "message": "자동으로 건너뛰기"
     },
+    "showSkipNotice": {
+        "message": "구간을 건너뛴 후 알림 표시"
+    },
     "supportInvidious": {
         "message": "Invidious 지원 활성화"
+    },
+    "add": {
+        "message": "추가"
+    },
+    "addInvidiousInstanceError": {
+        "message": "유효하지 않은 도메인입니다. 도메인 부분을 포함해야 합니다. 예: invious.ajay.app"
+    },
+    "minDuration": {
+        "message": "최소 기간 (초):"
+    },
+    "minDurationDescription": {
+        "message": "설정 값보다 작은 구간은 건너뛰거나 플레이어에서 표시하지 않습니다"
+    },
+    "shortCheck": {
+        "message": "다음 제출은 최소 기간 옵션보다 짧습니다. 이 말은 이미 제출되었으며, 이 옵션으로 인해 무시될 수 있습니다. 제출하시겠습니까?"
+    },
+    "showUploadButton": {
+        "message": "업로드 버튼 표시"
+    },
+    "whatUploadButton": {
+        "message": "이 버튼은 타임 스탬프를 설정 후 제출 준비가 되었을 때 YouTube 플레이어에 나타납니다."
+    },
+    "customServerAddress": {
+        "message": "SponsorBlock 서버 주소"
     },
     "customServerAddressDescription": {
         "message": "SponsorBlock이 데이터를 주고받기 위해 사용하는 서버 주소입니다. 따로 구축한 서버가 없을 경우, 이 주소를 변경하지 않는 것이 좋습니다."
@@ -107,8 +279,20 @@
     "save": {
         "message": "저장"
     },
+    "reset": {
+        "message": "초기화"
+    },
     "customAddressError": {
         "message": "올바르지 않은 주소입니다. 주소는 반드시 http:// 또는 https://로 시작해야 하며, 마지막 문자가 슬래시로 끝날 수 없습니다."
+    },
+    "areYouSureReset": {
+        "message": "정말로 초기화하시겠습니까?"
+    },
+    "confirmPrivacy": {
+        "message": "이 영상은 일부 공개 영상으로 감지되었습니다. 구간 스킵을 확인하지 않으려면 취소를 누르세요."
+    },
+    "unlistedCheck": {
+        "message": "일부 공개/비공개 영상 무시"
     },
     "mobileUpdateInfo": {
         "message": "이제 m.youtube.com 링크를 지원합니다"
@@ -116,8 +300,35 @@
     "exportOptions": {
         "message": "모든 설정 가져오기/내보내기"
     },
+    "whatExportOptions": {
+        "message": "JSON의 전체 구성입니다. 사용자ID가 포함되므로 주의하세요."
+    },
+    "setOptions": {
+        "message": "옵션 설정"
+    },
+    "exportOptionsWarning": {
+        "message": "경고: 옵션을 변경하면 영구적이며 설치에 오류가 날 수 있습니다. 정말로 하시겠습니까? 예전 옵션을 꼭 백업하세요."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "이 JSON의 형식이 잘못되었습니다. 옵션이 변경되지 않았습니다."
+    },
+    "confirmNoticeTitle": {
+        "message": "구간 제출"
+    },
+    "submit": {
+        "message": "제출"
+    },
+    "cancel": {
+        "message": "취소"
+    },
+    "delete": {
+        "message": "삭제"
+    },
     "preview": {
         "message": "미리보기"
+    },
+    "inspect": {
+        "message": "보기"
     },
     "edit": {
         "message": "수정"
@@ -134,6 +345,12 @@
     "copyDebugInformationComplete": {
         "message": "디버그 정보가 복사되었습니다. 공유하고 싶지 않은 내용이 있는 경우 자유롭게 수정하신 후, 텍스트 파일로 저장하시거나 버그 신고 페이지에 붙여넣으시면 됩니다."
     },
+    "theKey": {
+        "message": "키"
+    },
+    "keyAlreadyUsed": {
+        "message": "이 키는 다른 행동과 연동되었습니다. 다른 키를 선택하세요."
+    },
     "category_sponsor": {
         "message": "스폰서 광고"
     },
@@ -143,14 +360,50 @@
     "category_intro_description": {
         "message": "아무 내용도 없는 구간입니다. 일시정지된 영상, 정지된 프레임이거나 반복되는 애니메이션일 가능성이 있습니다. 특정 정보를 알려주는 화면 전환 구간은 여기에 해당되지 않습니다."
     },
+    "category_intro_short": {
+        "message": "휴식 시간"
+    },
+    "category_outro": {
+        "message": "최종 화면 / 크레딧"
+    },
     "category_outro_description": {
         "message": "엔딩 크레딧이나 최종 화면이 나타나는 구간입니다. 단순히 결론을 말하는 부분은 여기에 포함되지 않습니다."
+    },
+    "category_interaction": {
+        "message": "상호 작용 알림 (구독)"
+    },
+    "category_interaction_short": {
+        "message": "상호 작용 알림"
+    },
+    "category_selfpromo": {
+        "message": "자체 홍보 구간"
+    },
+    "category_selfpromo_description": {
+        "message": "'스폰서 광고'와 비슷하지만 협찬 없이 자기 채널을 홍보하는 구간입니다. 여기에는 채널 굿즈 광고, 기부 광고와 영상에 참여한 사람들을 홍보하는 광고가 해당됩니다."
     },
     "category_music_offtopic": {
         "message": "음악이 아닌 구간"
     },
     "category_music_offtopic_description": {
         "message": "뮤직 비디오에서만 해당됩니다. 여기에는 시작 부분 (인트로) 영상이나 끝 부분 (아웃트로) 영상이 포함됩니다."
+    },
+    "category_music_offtopic_short": {
+        "message": "음악이 아닌 구간"
+    },
+    "category_livestream_messages": {
+        "message": "라이브스트림: 후원/메시지 읽기"
+    },
+    "category_livestream_messages_short": {
+        "message": "메시지 읽기"
+    },
+    "disable": {
+        "message": "비활성화"
+    },
+    "manualSkip": {
+        "message": "수동 스킵"
+    },
+    "showOverlay": {
+        "message": "재생 시간 바 표시"
     },
     "colorFormatIncorrect": {
         "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
@@ -163,14 +416,59 @@
         "message": "탐색 바 색상"
     },
     "category": {
-        "message": "범주"
+        "message": "카테고리"
     },
     "skipOption": {
         "message": "건너뛰기 설정",
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
+    "enableTestingServer": {
+        "message": "베타 테스팅 서버 활성화"
+    },
+    "whatEnableTestingServer": {
+        "message": "제출과 투표는 메인 서버에 반영되지 않습니다. 테스트를 목적으로 사용하세요."
+    },
+    "testingServerWarning": {
+        "message": "제출과 투표는 테스트 서버와 연결하는 동안 메인 서버에 반영되지 않습니다. 실제 제출을 원할 때 이 기능을 비활성화 하세요."
+    },
+    "bracketNow": {
+        "message": "(지금)"
+    },
+    "moreCategories": {
+        "message": "많은 카테고리"
+    },
     "chooseACategory": {
-        "message": "구간 범주 선택"
+        "message": "카테고리 선택"
+    },
+    "youMustSelectACategory": {
+        "message": "제출 해야하는 모든 구간의 카테고리를 설정해야합니다!"
+    },
+    "bracketEnd": {
+        "message": "(끝)"
+    },
+    "channelDataNotFound": {
+        "message": "채널 ID가 로드되지 않았습니다."
+    },
+    "adblockerIssue": {
+        "message": "무언가가 SponsorBlock의 영상 데이터 수집을 막고 있는 것으로 보입니다. 이것은 광고 차단기로 인해 그럴 가능성이 있습니다. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests 사이트를 참조하세요"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "오류가 지속된다면, 광고 차단기로 인해 발생할 수 있습니다. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests 사이트를 참조하세요"
+    },
+    "forceChannelCheck": {
+        "message": "건너뛰기 전 채널 강제 체크"
+    },
+    "downvoteDescription": {
+        "message": "잘못된 타이밍입니다"
+    },
+    "incorrectCategory": {
+        "message": "잘못된 카테고리입니다"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "이 영상은 음악 영상으로 분류됩니다. 정말로 스폰서가 있는 것이 확실한가요? 만약 음악 이외의 구간인 경우, 확장 옵션을 열어 이 카테고리를 활성화 하세요. 그리고, 이 구간을 스폰서 대신 음악이 아닌 구간으로 제출하세요. 헷갈릴 경우 가이드라인을 읽으세요."
+    },
+    "multipleSegments": {
+        "message": "여러 구간"
     },
     "guidelines": {
         "message": "가이드라인"
@@ -178,5 +476,17 @@
     "readTheGuidelines": {
         "message": "가이드라인을 제발 읽어주세요!!!",
         "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "카테고리는 여기 있습니다!"
+    },
+    "categoryUpdate2": {
+        "message": "인트로, 아웃트로, 기타 등을 스킵하는 설정을 여세요"
+    },
+    "unsubmittedWarning": {
+        "message": "제출되지 않은 구간 알림"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "업로드되지 않은 구간이 있는 영상이 있을 때 알림을 보냅니다"
     }
 }

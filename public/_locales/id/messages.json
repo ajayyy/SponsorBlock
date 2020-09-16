@@ -8,7 +8,7 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "Server menyatakan permintaan tidak valid"
+        "message": "Server menyatakan permintaan ini tidak valid"
     },
     "429": {
         "message": "Anda terlalu banyak mengirim waktu sponsor pada video ini, apakah anda yakin ada sebanyak ini?"
@@ -50,7 +50,7 @@
         "message": "Jangan tampilkan"
     },
     "hitGoBack": {
-        "message": "Klik jangan lewati untuk kembali ke asal."
+        "message": "Tekan jangan lewati untuk kembali ke asal."
     },
     "unskip": {
         "message": "Jangan Lewati"
@@ -80,13 +80,13 @@
         "message": "Tidak ada segmen ditemukan"
     },
     "sponsorStart": {
-        "message": "Segmen Mulai Sekarang"
+        "message": "Segmen Dimulai Sekarang"
     },
     "sponsorEnd": {
         "message": "Segmen Berakhir Sekarang"
     },
     "noVideoID": {
-        "message": "Tidak ada video YouTube yang ditemukan di tab ini. Jika ini merupakan tab YouTube, tutup popup ini dan buka lagi. Jika masih tidak berfungsi, coba muat ulang tab."
+        "message": "Tidak ada video YouTube yang ditemukan di tab ini. Jika anda tahu ini merupakan tab YouTube, tutup popup ini dan buka lagi. Jika masih tidak berfungsi, coba muat ulang tab."
     },
     "success": {
         "message": "Sukses!"
@@ -143,7 +143,7 @@
         "message": "disini"
     },
     "recordTimesDescription": {
-        "message": "Klik tombol dibawah saat segmen mulai dan berakhir untuk direkam lalu dikirim ke basis data."
+        "message": "Klik tombol dibawah saat segmen dimulai dan berakhir untuk direkam lalu dikirim ke basis data."
     },
     "popupHint": {
         "message": "Petunjuk: Tekan tombol titik koma saat terfokus pada video untuk melaporkan awal/akhir dari segmen untuk dikirim. (Bisa diganti di pengaturan)"
@@ -222,7 +222,7 @@
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "Jika anda masih tidak suka, klik tombol jangan tampilkan.",
+        "message": "Jika anda masih tidak menyukainya, tekan tombol jangan tampilkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setStartSponsorShortcut": {
@@ -435,6 +435,9 @@
     },
     "preview": {
         "message": "Pratinjau"
+    },
+    "inspect": {
+        "message": "Inspeksi"
     },
     "edit": {
         "message": "Ubah"

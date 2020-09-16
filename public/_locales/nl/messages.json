@@ -436,6 +436,9 @@
     "preview": {
         "message": "Voorbeeld"
     },
+    "inspect": {
+        "message": "Inspecteren"
+    },
     "edit": {
         "message": "Bewerken"
     },

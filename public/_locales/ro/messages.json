@@ -408,6 +408,9 @@
     "preview": {
         "message": "Previzualizare"
     },
+    "inspect": {
+        "message": "Inspectează"
+    },
     "edit": {
         "message": "Editare"
     },
