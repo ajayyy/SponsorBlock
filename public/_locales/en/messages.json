@@ -202,6 +202,18 @@
     "whatViewTracking": {
         "message": "This feature tracks which segments you have skipped to let users know how much their submission has helped others and used as a metric along with upvotes to ensure that spam doesn't get into the database. The extension sends a message to the server each time you skip a segment. Hopefully most people don't change this setting so that the view numbers are accurate. :)"
     },
+    "enableQueryByHashPrefix": {
+        "message": "Query By Hash Prefix"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Instead of requesting segments from the server using the videoID, the first 4 characters of the hash of the videoID are sent. This server will send back data for all videos with similar hashes."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Refetch Segments On New Videos"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "If the video is new, and there are no segments found, it will keep refetching every few minutes while you watch."
+    },
     "showNotice": {
         "message": "Show Notice Again"
     },

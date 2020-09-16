@@ -1,5 +1,6 @@
 import Config from "./config";
 import { CategorySelection, SponsorTime, FetchResponse } from "./types";
+import { sha256 } from 'js-sha256';
 
 import * as CompileConfig from "../config.json";
 
@@ -378,6 +379,20 @@ class Utils {
     isFirefox(): boolean {
         return typeof(browser) !== "undefined";
     }
+
+    getHash(value: string, times=5000): string {
+        if (times <= 0) return "";
+
+        for (let i = 0; i < times; i++) {
+            let hash = sha256.create();
+            hash.update(value);
+            hash.hex();
+            value = hash.toString();
+        }
+
+        return value;
+    }
+
 }
 
 export default Utils;

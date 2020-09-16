@@ -6,7 +6,6 @@ const utils = new Utils();
 
 interface SBConfig {
     userID: string,
-    // sponsorTimes: SBMap<string, SponsorTime[]>,
     segmentTimes: SBMap<string, SponsorTime[]>,
     defaultCategory: string,
     whitelistedChannels: string[],
@@ -35,6 +34,8 @@ interface SBConfig {
     audioNotificationOnSkip,
     checkForUnlistedVideos: boolean,
     testingServer: boolean,
+    hashPrefix: boolean,
+    refetchWhenNotFound: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -166,6 +167,8 @@ var Config: SBObject = {
         audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         testingServer: false,
+        hashPrefix: false,
+        refetchWhenNotFound: true,
 
         categorySelections: [{
             name: "sponsor",
