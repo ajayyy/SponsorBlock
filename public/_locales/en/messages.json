@@ -401,7 +401,7 @@
         "message": "Reset"
     },
     "customAddressError": {
-        "message": "This address is not in the right form. Make sure you have http:// or https:// at the begining and no trailing slashes."
+        "message": "This address is not in the right form. Make sure you have http:// or https:// at the beginning and no trailing slashes."
     },
     "areYouSureReset": {
         "message": "Are you sure you would like to reset this?"
@@ -608,7 +608,7 @@
         "message": "Wrong Category"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "This video is categorized as music. Are you sure you this has a sponsor? If this is actually a \"Non-Music segment\", open up the extension options and enable this category. Then, you can submit this segment as \"Non-Music\" instead of sponsor. Please read the guidelines if you are confused."
+        "message": "This video is categorized as music. Are you sure this has a sponsor? If this is actually a \"Non-Music segment\", open up the extension options and enable this category. Then, you can submit this segment as \"Non-Music\" instead of sponsor. Please read the guidelines if you are confused."
     },
     "multipleSegments": {
         "message": "Multiple Segments"

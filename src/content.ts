@@ -992,11 +992,11 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
  * 
  * @param time 
  */
-function previewTime(time: number) {
+function previewTime(time: number, unpause = true) {
     video.currentTime = time;
 
     // Unpause the video if needed
-    if (video.paused){
+    if (unpause && video.paused){
         video.play();
     }
 }
