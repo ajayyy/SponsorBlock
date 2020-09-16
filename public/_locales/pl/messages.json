@@ -47,7 +47,7 @@
         "message": "Sekundy"
     },
     "Hide": {
-        "message": "Nigdy nie pokazuj"
+        "message": "Nie pokazuj więcej"
     },
     "hitGoBack": {
         "message": "Kliknij cofnij aby przenieść się do miejsca przed przewinięciem."
@@ -257,7 +257,7 @@
         "message": "Kod błędu: "
     },
     "skip": {
-        "message": "Przewiń"
+        "message": "Pomiń"
     },
     "skipped": {
         "message": "Pominięto"
