@@ -388,9 +388,6 @@
     "reset": {
         "message": "Thiết lập lại"
     },
-    "customAddressError": {
-        "message": "Địa chỉ này sai hình thức. Hãy đảm bảo rằng địa chỉ có http:// hoặc https:// ở đầu và không có dấu gạch chéo ở cuối."
-    },
     "areYouSureReset": {
         "message": "Bạn có chắc mình muốn thiết lập lại không?"
     },
