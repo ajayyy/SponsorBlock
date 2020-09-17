@@ -351,9 +351,6 @@
     "reset": {
         "message": "Réinitialiser"
     },
-    "customAddressError": {
-        "message": "Le format de l'adresse est incorrect. Assurez-vous qu'elle commence bien par http:// ou https:// et ne termine pas par un slash."
-    },
     "areYouSureReset": {
         "message": "Voulez-vous vraiment remettre à zéro ?"
     },
