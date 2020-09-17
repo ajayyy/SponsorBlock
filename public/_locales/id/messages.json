@@ -388,9 +388,6 @@
     "reset": {
         "message": "Atur ulang"
     },
-    "customAddressError": {
-        "message": "Alamat ini tidak berada di bentuk yang benar. Pastikan kamu menggunakan http:// atau https:// di awal dan tidak ada garis mengikuti."
-    },
     "areYouSureReset": {
         "message": "Apakah anda yakin ingin mengatur ulang ini?"
     },
@@ -594,9 +591,6 @@
     },
     "incorrectCategory": {
         "message": "Salah Kategori"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Video ini dikategorikan sebagai musik. Apakah anda yakin ini berisi sponsor? Jika ini ternyata adalah \"Segmen non-musik\", buka pengaturan ekstensi dan aktifkan kategorinya. Lalu, anda bisa mengirim segmen ini sebagai \"Non-musik\" bukannya sponsor. Harap membaca panduan jika anda kebingungan."
     },
     "multipleSegments": {
         "message": "Banyak Segmen"
