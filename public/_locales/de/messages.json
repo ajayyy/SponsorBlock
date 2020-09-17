@@ -202,6 +202,18 @@
     "whatViewTracking": {
         "message": "Dieses Feature zählt die Segmente, die du übersprungen hast, um die Benutzer wissen zu lassen, wie sehr ihre Einreichung anderen geholfen hat und als Metrik zusammen mit positiven Bewertungen verwendet wurde, um sicherzustellen, dass Spam nicht in die Datenbank gelangt. Die Erweiterung sendet jedes Mal, wenn du ein Segment überspringst, eine Nachricht an den Server. Hoffentlich ändern die meisten Leute diese Einstellung nicht, so dass die Zahlen korrekt sind. :)"
     },
+    "enableQueryByHashPrefix": {
+        "message": "Abfrage nach Hash-Präfix"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Anstatt Segmente über die VideoID vom Server anzufordern, werden die ersten 4 Zeichen des Hashs der videoID gesendet. Dieser Server sendet Daten für alle Videos mit ähnlichen Hashes zurück."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Segmente bei neuen Videos erneut abfragen"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Wenn das Video neu ist und es keine Segmente gibt, wird es während des Ansehens weiterhin alle paar Minuten Segmente neuladen."
+    },
     "showNotice": {
         "message": "Benachrichtigung wieder zeigen"
     },
@@ -389,7 +401,7 @@
         "message": "Zurücksetzen"
     },
     "customAddressError": {
-        "message": "Diese Adresse ist nicht in der richtigen Form. Stellen Sie sicher, dass Sie http:// oder https:// am Anfang haben und keine abschließenden Schrägstriche haben."
+        "message": "Diese Adresse ist nicht im richtigen Formular. Stelle sicher, dass du http:// oder https:// am Anfang und keine abschließenden Schrägstriche am Ende hast."
     },
     "areYouSureReset": {
         "message": "Sind sie sicher dass sie das zurücksetzen wollen?"
@@ -596,7 +608,7 @@
         "message": "Falsche Kategorie"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Dieses Video ist als Musik kategorisiert. Bist du sicher, dass es einen Sponsor hast? Wenn dies tatsächlich ein \"Nicht-Musik-Abschnitt\" ist, öffne die Optionen der Extension und aktiviere diese Kategorie. Danach können Sie dieses Segment als \"Nicht-Musik\" anstelle von \"Sponsor\" einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
+        "message": "Dieses Video ist als Musik kategorisiert. Bist du sicher, dass es einen Sponsor hast? Wenn dies tatsächlich ein \"Nicht-Musik-Abschnitt\" ist, öffne die Optionen der Erweiterung und aktiviere diese Kategorie. Danach kannst du dieses Segment als \"Nicht-Musik\" anstelle von \"Sponsor\" einreichen. Bitte lies die Richtlinien, wenn du verwirrt bist."
     },
     "multipleSegments": {
         "message": "Mehrere Segmente"
