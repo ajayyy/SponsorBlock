@@ -317,9 +317,6 @@
     "reset": {
         "message": "Redefinir"
     },
-    "customAddressError": {
-        "message": "Este endereço não está na forma correta. Certifique-se de que possui http:// ou https:// no início e sem barras no final."
-    },
     "areYouSureReset": {
         "message": "Tem certeza que deseja redefinir?"
     },
