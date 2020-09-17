@@ -388,9 +388,6 @@
     "reset": {
         "message": "Reset"
     },
-    "customAddressError": {
-        "message": "Ten adres nie jest w prawidłowej formie. Upewnij się, że http:// lub https:// znajduje się na początku i nie ma końcowych ukośników."
-    },
     "areYouSureReset": {
         "message": "Czy na pewno chcesz to zresetować?"
     },
@@ -594,9 +591,6 @@
     },
     "incorrectCategory": {
         "message": "Zła kategoria"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Ten film jest skategoryzowany jako muzyka. Czy jesteś pewien, że to jest sponsor? Jeśli jest to rzeczywiście \"segment niemuzyczny\", otwórz opcje rozszerzenia i włącz tę kategorię. Następnie możesz przesłać ten segment jako \"Niemuzyczny\" zamiast sponsora. Proszę przeczytać wytyczne, jeśli jesteś zdezorientowany."
     },
     "multipleSegments": {
         "message": "Wiele segmentów"
