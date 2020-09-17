@@ -131,7 +131,7 @@
         "message": "Stemmen op een segment"
     },
     "soFarUHSubmited": {
-        "message": "Tot nu toe heeft u ingediend:"
+        "message": "Tot nu toe hebt u ingediend:"
     },
     "savedPeopleFrom": {
         "message": "U heeft mensen geholpen met het vermijden van "
@@ -201,6 +201,18 @@
     },
     "whatViewTracking": {
         "message": "Deze functie houdt bij welke segmenten u hebt overgeslagen om gebruikers te laten weten hoezeer hun indiening anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer u een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Opvragen via hash-voorvoegsel"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "In plaats van segmenten op te vragen bij de server met behulp van de video-ID, worden de eerste 4 tekens van de hash van de video-ID verzonden. Deze server zal gegevens terugsturen voor alle video's met een vergelijkbare hash."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Segmenten voor nieuwe video's opnieuw ophalen"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Als de video nieuw is en er geen segmenten worden gevonden, zal om de zoveel minuten opnieuw worden gecontroleerd terwijl u kijkt."
     },
     "showNotice": {
         "message": "Melding opnieuw weergeven"
