@@ -342,9 +342,6 @@
     "reset": {
         "message": "Nollaa"
     },
-    "customAddressError": {
-        "message": "Tämä osoite ei ole oikeassa muodossa. Varmista, että sinulla on http:// tai http:// alussa eikä perässä kauttaviivoja."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com-osoitetta tuetaan nyt"
     },
@@ -485,9 +482,6 @@
     },
     "incorrectCategory": {
         "message": "Väärä kategoria"
-    },
-    "nonMusicCategoryOnMusic": {
-        "message": "Tämä video on luokiteltu musiikiksi. Oletko varma, että siinä on sponsori? Jos tämä on sen sijaan \"musiikiton segmentti\", avaa laajennuksen asetukset ja ota tämä kategoria käyttöön. Sitten voit lähettää tämän segmentin oikeassa kategoriassa. Lue ohjeistus, jos on lisää kysyttävää."
     },
     "multipleSegments": {
         "message": "Useita kohtia"
