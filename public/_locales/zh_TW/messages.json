@@ -202,6 +202,18 @@
     "whatViewTracking": {
         "message": "這個功能會追蹤您跳過的片段來讓其他使用者知道您的提交幫助了其他人多少，並同時用作計算錯誤提交的方式。這個擴充功能會在您每一次跳過片段時向伺服器回報。希望大家盡量不要改變這個設定來確保資料的正確性。 ：）"
     },
+    "enableQueryByHashPrefix": {
+        "message": "使用雜湊前綴查詢"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "與其使用影片 ID 來查詢片段，這會使用影片 ID 的雜湊前4碼來查詢。伺服器會送回所有有類似雜湊的影片片段資料"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "在新影片重新擷取片段"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "如果這部影片是新的，而且目前沒有找到片段的話，系統會每分鐘重新擷取一次"
+    },
     "showNotice": {
         "message": "再次顯示通知"
     },
@@ -276,6 +288,9 @@
     },
     "showTimeWithSkips": {
         "message": "顯示已移除跳過後的總時間"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "這個時間會出現在現在時間旁邊的括號內。這會顯示總影片長度減掉任和片段後的結果。這只會包含標為\"在長度條中顯示\"的片段"
     },
     "minLower": {
         "message": "分鐘"
