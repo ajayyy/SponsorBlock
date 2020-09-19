@@ -290,7 +290,10 @@
         "message": "顯示已移除跳過後的總時間"
     },
     "showTimeWithSkipsDescription": {
-        "message": "這個時間會出現在現在時間旁邊的括號內。這會顯示總影片長度減掉任和片段後的結果。這只會包含標為\"在長度條中顯示\"的片段"
+        "message": "這個時間會出現在現在時間旁邊的括號內。這會顯示總影片長度減掉任何片段後的結果。這只會包含標為\"在時間條中顯示\"的片段"
+    },
+    "youHaveSkipped": {
+        "message": "您已跳過 "
     },
     "minLower": {
         "message": "分鐘"
@@ -309,5 +312,144 @@
     },
     "youHaveSavedTimeEnd": {
         "message": " 的生命。"
+    },
+    "setUserID": {
+        "message": "設定使用者 ID"
+    },
+    "createdBy": {
+        "message": "創建者"
+    },
+    "autoSkip": {
+        "message": "自動跳過"
+    },
+    "supportInvidious": {
+        "message": "支持 Invidious"
+    },
+    "addInvidiousInstance": {
+        "message": "添加 Invidious 進程"
+    },
+    "add": {
+        "message": "新增"
+    },
+    "currentInstances": {
+        "message": "目前進程："
+    },
+    "showUploadButton": {
+        "message": "顯示上傳按鈕"
+    },
+    "save": {
+        "message": "儲存"
+    },
+    "reset": {
+        "message": "重置"
+    },
+    "setOptions": {
+        "message": "設定選項"
+    },
+    "confirmNoticeTitle": {
+        "message": "提交片段"
+    },
+    "submit": {
+        "message": "提交"
+    },
+    "cancel": {
+        "message": "取消"
+    },
+    "delete": {
+        "message": "刪除"
+    },
+    "preview": {
+        "message": "預覽"
+    },
+    "inspect": {
+        "message": "檢查"
+    },
+    "edit": {
+        "message": "編輯"
+    },
+    "theKey": {
+        "message": "按鍵"
+    },
+    "to": {
+        "message": "到",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "贊助廣告"
+    },
+    "category_intro_short": {
+        "message": "開場"
+    },
+    "category_outro": {
+        "message": "結束畫面/鳴謝"
+    },
+    "category_interaction_short": {
+        "message": "互動提醒"
+    },
+    "category_selfpromo": {
+        "message": "非付費/自我推廣"
+    },
+    "category_music_offtopic_short": {
+        "message": "非音樂"
+    },
+    "category_livestream_messages_short": {
+        "message": "閱讀訊息"
+    },
+    "disable": {
+        "message": "停用"
+    },
+    "manualSkip": {
+        "message": "手動跳過"
+    },
+    "showOverlay": {
+        "message": "在時間條顯示"
+    },
+    "previewColor": {
+        "message": "預覽顏色",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "時間條顏色"
+    },
+    "category": {
+        "message": "類別"
+    },
+    "skipOption": {
+        "message": "跳過選項",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "bracketNow": {
+        "message": "(現在)"
+    },
+    "moreCategories": {
+        "message": "更多類別"
+    },
+    "chooseACategory": {
+        "message": "選擇一個類別"
+    },
+    "bracketEnd": {
+        "message": "(結束)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "隱藏：負評"
+    },
+    "hiddenDueToDuration": {
+        "message": "隱藏：太短"
+    },
+    "incorrectCategory": {
+        "message": "錯誤的類別"
+    },
+    "multipleSegments": {
+        "message": "多片段"
+    },
+    "guidelines": {
+        "message": "方針"
+    },
+    "readTheGuidelines": {
+        "message": "閱讀方針！！",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "類別在這！"
     }
 }
