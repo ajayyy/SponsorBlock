@@ -18,10 +18,12 @@
 </p>
 
 <p align="center">
-  <b>Unofficial Ports:</b>
-  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#mpv-media-player">MPV</a> |
-  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#kodi">Kodi</a> |
-  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports#ios">iOS</a>
+  <b>3rd-Party Ports:</b>
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#mpv-media-player">MPV</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#kodi">Kodi</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#Safari-macos">Safari for MacOS</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#Chromecast">Chromecast</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#ios">iOS</a>
 </p>
 
 <p align="center">
