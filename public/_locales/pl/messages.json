@@ -592,6 +592,9 @@
     "incorrectCategory": {
         "message": "Zła kategoria"
     },
+    "nonMusicCategoryOnMusic": {
+        "message": "Ten film jest skategoryzowany jako muzyka. Czy masz pewność, że jest tu sponsor? Jeśli w rzeczywistości jest to \"segment niemuzyczny\", otwórz opcje rozszerzenia i włącz tę kategorię. Wtedy będziesz w stanie zamieścić ten segment jako \"niemuzyczny\" zamiast sponsora. Przeczytaj proszę wytyczne, jeśli jesteś zdezorientowany."
+    },
     "multipleSegments": {
         "message": "Wiele segmentów"
     },
