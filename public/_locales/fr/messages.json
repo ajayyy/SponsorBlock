@@ -103,8 +103,17 @@
     "leftTimes": {
         "message": "Vous semblez avoir laissé certains segments non soumis. Retournez à cette page pour les soumettre (ils ne sont pas supprimés)."
     },
+    "clearTimes": {
+        "message": "Effacer les segments"
+    },
     "openPopup": {
         "message": "Ouvrir l'encart SponsorBlock"
+    },
+    "closePopup": {
+        "message": "Fermer le Popup"
+    },
+    "SubmitTimes": {
+        "message": "Soumettre des segments"
     },
     "submitCheck": {
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
@@ -129,6 +138,12 @@
     },
     "here": {
         "message": "ici"
+    },
+    "recordTimesDescription": {
+        "message": "Cliquez sur le bouton ci-dessous quand le segment commence puis quand il finit pour l'enregistrer et le soumettre à la base de données."
+    },
+    "popupHint": {
+        "message": "Astuce : utilisez la touche point-virgule lorsque la vidéo est sélectionnée pour enregistrer le début et la fin d'un segment commercial; utilisez la touche guillemet pour le soumettre. (Les touches peuvent être modifiées dans les options)"
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
