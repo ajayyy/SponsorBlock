@@ -388,6 +388,9 @@
     "reset": {
         "message": "Reset"
     },
+    "customAddressError": {
+        "message": "Ten adres nie jest w prawidłowej formie. Upewnij się, że http:// lub https:// znajduje się na początku i nie ma końcowych ukośników."
+    },
     "areYouSureReset": {
         "message": "Czy na pewno chcesz to zresetować?"
     },
