@@ -1275,6 +1275,7 @@ function openInfoMenu() {
             settings.src = chrome.extension.getURL("icons/settings.svg");
             edit.src = chrome.extension.getURL("icons/pencil.svg");
             check.src = chrome.extension.getURL("icons/check.svg");
+            check.src = chrome.extension.getURL("icons/thumb.svg");
 
             //remove the style sheet and font that are not necessary
             popup.querySelector("#sponsorBlockPopupFont").remove();
