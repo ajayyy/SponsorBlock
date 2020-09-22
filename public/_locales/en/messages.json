@@ -146,7 +146,7 @@
          "message": "Submit"
     },
     "popupHint": {
-         "message": "Hint: Press the semicolon key while focused on a video to report the start/end of a segment and quote to submit. (This can be changed in the options)"
+         "message": "Hint: Press the semicolon key while focused on a video to report the start/end of a segment and quote to submit."
     },
     "clearTimesButton": {
         "message": "Clear Times"

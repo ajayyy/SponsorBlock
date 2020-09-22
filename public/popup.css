@@ -20,8 +20,29 @@
   text-align: center;
 }
 
-#downloadedSponsorMessageTimes{
+#issueReporterTimeButtons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#issueReporterTimeButtons > button {
   font-weight: bold;
+  color: var(--sb-main-fg-color);
+  background: none;
+  border: none;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 10px;
+}
+
+#issueReporterTimeButtons > div > img:nth-child(2) {
+  margin-left: 6px;
+  transform: scaleY(-1);
+}
+
+#issueReporterTimeButtons > div > h2 {
+  margin: 0;
 }
 
 #videoInfo>p, #videoInfo>div>p {
@@ -47,14 +68,32 @@ div.logoText>p, .sbHeader {
   padding: 6px 24px;
   font-size: 20px;
   border-radius: 25px;
+  border: none;
   text-decoration: none;
   color: black;
   min-height: 26px;
-  height: 26px;
-  width: 152px;
+  min-width: 152px;
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.mediumButton {
+  background: red;
+  /* font-weight: bold; */
+  padding: 6px 24px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: none;
+  text-decoration: none;
+  color: white;
+  min-height: 26px;
+  min-width: 152px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* disable extension */
@@ -146,8 +185,16 @@ div.logoText>p, .sbHeader {
   margin-bottom: 6px !important;
 }
 
-#videoInfo, .sidebyside, #sponsorTimesSkipsDoneContainer, .largeButton {
+#videoInfo, #mainControls, .sidebyside, #sponsorTimesSkipsDoneContainer, .largeButton, #submissionSection>b {
   margin-bottom: 12px !important;
+}
+#mainControls{
+flex-flow: column;
+align-items: center;
+}
+#submitTimesContainer{
+  flex-flow: column;
+  align-items: center;
 }
 /* additional buttons */
 

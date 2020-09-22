@@ -19,7 +19,10 @@
         <!-- If the video was found in the database -->
         <p id="videoFound"></p>
       </div>
-      <p id="downloadedSponsorMessageTimes"></p>
+      <div id="issueReporterContainer">
+        <div id="issueReporterTimeButtons"></div>
+      </div>
+    </div>
     <div class="sidebyside">
       <div id="disableExtension">
         <!--github: mbledkowski/toggle-switch-->
@@ -43,6 +46,9 @@
             </svg>
             <p id="whitelistChannel">__MSG_whitelistChannel__</p>
             <p id="unwhitelistChannel" style="display: none">__MSG_removeFromWhitelist__</p>
+            <div id="whitelistForceCheck" style="text-decoration: underline; cursor: pointer;display: none">
+              __MSG_forceChannelCheckPopup__
+            </div>
           </label>
         </div>
         <button id="optionsButton" title="__MSG_optionsInfo__">
@@ -52,69 +58,68 @@
       </div>
     </div>
     <div id="mainControls" style="display: none">
-      <p class="popupElement" class="sbHeader">
+      <p class="sbHeader">
         __MSG_recordTimesDescription__
       </p>
-      <sub class="popupElement">__MSG_popupHint__</sub>
+      <sub>__MSG_popupHint__</sub>
       <div>
-        <button id="sponsorStart" class="greenButton popupElement">__MSG_sponsorStart__</button>
+        <button id="sponsorStart" class="mediumButton">__MSG_sponsorStart__</button>
       </div>
-      <div id="submissionSection"  class="popupElement" style="display: none">
-        <b>Sponsor Editing has been moved and will appear after you click submit</b>
-        <div id="submitTimesContainer" class="popupElement" style="display: none">
-          <button id="submitTimes" class="smallButton popupElement">__MSG_submitTimesButton__</button>
+      <div id="submissionSection" style="display: none">
+        <b>Section editing will appear after you click submit</b>
+        <div id="submitTimesContainer" style="display: none">
+          <button id="submitTimes" class="largeButton">__MSG_submitTimesButton__</button>
         </div>
       </div>
-    </div>
     </div>
     <h1 class="recordingSubtitle sbHeader">__MSG_yourWork__</h1>
     <div class="sidebyside">
       <div id="usernameElement">
         <div>
-        <p>__MSG_Username__</p>
-        <div id="setUsernameContainer">
-          <p id="usernameValue"></p>
-          <button id="setUsernameButton" title="__MSG_setUsername__">
-            <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
-          </button>
-        </div>
-        <div id="setUsername" style="display: none">
-          <div id="setUsernameStatusContainer" style="display: none">
-            <p id="setUsernameStatus"></p>
+          <p>__MSG_Username__</p>
+          <div id="setUsernameContainer">
+            <p id="usernameValue"></p>
+            <button id="setUsernameButton" title="__MSG_setUsername__">
+              <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
+            </button>
           </div>
-          <input id="usernameInput" hint="Username"></input>
-          <button id="submitUsername">
-            <img src="/icons/check.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconCheck">
-          </button>
-        </div>
+          <div id="setUsername" style="display: none">
+            <div id="setUsernameStatusContainer" style="display: none">
+              <p id="setUsernameStatus"></p>
+            </div>
+            <input id="usernameInput" hint="Username"></input>
+            <button id="submitUsername">
+              <img src="/icons/check.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconCheck">
+            </button>
+          </div>
         </div>
       </div>
       <div id="sponsorTimesContributionsContainer" style="display: none">
         <div>
-        <p>__MSG_soFarUHSubmited__</p>
-        <span id="sponsorTimesContributionsDisplay">
-          0
-        </span>
+          <p>__MSG_soFarUHSubmited__</p>
+          <span id="sponsorTimesContributionsDisplay">
+            0
+          </span>
         </div>
       </div>
     </div>
 
-      <span id="sponsorTimesViewsContainer" style="display: none">
-        __MSG_savedPeopleFrom__
-        <b><span id="sponsorTimesViewsDisplay">
+    <span id="sponsorTimesViewsContainer" style="display: none">
+      __MSG_savedPeopleFrom__
+      <b><span id="sponsorTimesViewsDisplay">
           0
         </span></b>
-        <span id="sponsorTimesViewsDisplayEndWord">__MSG_Segments__</span>
-        <br>
-        (<b><span id="sponsorTimesOthersTimeSavedDisplay">0</span>
+      <span id="sponsorTimesViewsDisplayEndWord">__MSG_Segments__</span>
+      <br>
+      (<b><span id="sponsorTimesOthersTimeSavedDisplay">0</span>
         <span id="sponsorTimesOthersTimeSavedEndWord">__MSG_minsLower__</span></b>
-        <span>__MSG_youHaveSavedTimeEnd__</span>).
-      </span>
+      <span>__MSG_youHaveSavedTimeEnd__</span>).
+    </span>
     <div id="sponsorTimesSkipsDoneContainer" style="display: none">
       __MSG_youHaveSkipped__
       <b><span id="sponsorTimesSkipsDoneDisplay">
-        0
-      </span></b>
+          0
+        </span></b>
       <span id="sponsorTimesSkipsDoneEndWord">__MSG_Segments__</span>
       (<b><span id="sponsorTimeSavedDisplay">
           0

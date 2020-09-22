@@ -52,7 +52,7 @@ async function runThePopup(messageListener?: MessageListener) {
     "whitelistChannel",
     "unwhitelistChannel",
     "whitelistToggle",
-    //"whitelistForceCheck",
+    "whitelistForceCheck",
     "disableSkipping",
     "enableSkipping",
     "toggleSwitch",
@@ -100,7 +100,7 @@ async function runThePopup(messageListener?: MessageListener) {
     "loadingIndicator",
     "videoFound",
     "sponsorMessageTimes",
-    "downloadedSponsorMessageTimes",
+    //"downloadedSponsorMessageTimes",
     "whitelistButton",
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
@@ -287,7 +287,7 @@ async function runThePopup(messageListener?: MessageListener) {
             sponsorTimes = sponsorTimesStorage;
 
             //show submission section
-            PageElements.submissionSection.style.display = "unset";
+            PageElements.submissionSection.style.display = "flex";
 
             showSubmitTimesIfNecessary();
         }
@@ -310,7 +310,7 @@ async function runThePopup(messageListener?: MessageListener) {
         //if request is undefined, then the page currently being browsed is not YouTube
         if (request != undefined) {
             //remove loading text
-            PageElements.mainControls.style.display = "unset";
+            PageElements.mainControls.style.display = "flex";
             PageElements.whitelistButton.classList.remove("grayedOut");
             PageElements.loadingIndicator.style.display = "none";
 
@@ -338,8 +338,8 @@ async function runThePopup(messageListener?: MessageListener) {
                         PageElements.whitelistToggle.checked = true;
                         document.querySelectorAll('label > svg')[0].classList.add("rotated");
 
-                        PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+                        //PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
+                        //PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
                     }
                 });
             }
@@ -401,12 +401,12 @@ async function runThePopup(messageListener?: MessageListener) {
     function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
         if (request.sponsorTimes != undefined) {
             //set it to the message
-            if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
+            /*if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
                 PageElements.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
-            }
+            }*/
 
             //add them as buttons to the issue reporting container
-            //let container = document.getElementById("issueReporterTimeButtons");
+            let container = document.getElementById("issueReporterTimeButtons");
             for (let i = 0; i < request.sponsorTimes.length; i++) {
                 let sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "warningButton popupElement";
@@ -421,7 +421,7 @@ async function runThePopup(messageListener?: MessageListener) {
                 }
 
                 sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
-                
+
                 let votingButtons = document.createElement("div");
 
                 let UUID = request.sponsorTimes[i].UUID;
@@ -434,19 +434,19 @@ async function runThePopup(messageListener?: MessageListener) {
 
                 let upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
-                upvoteButton.className = "voteButton popupElement";
-                upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
+                upvoteButton.className = "voteButton";
+                upvoteButton.src = chrome.extension.getURL("icons/thumb.svg");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
 
                 let downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
-                downvoteButton.className = "voteButton popupElement";
-                downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
+                downvoteButton.className = "voteButton";
+                downvoteButton.src = chrome.extension.getURL("icons/thumb.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
                 //add thumbs up and down buttons to the container
-                voteButtonsContainer.appendChild(document.createElement("br"));
-                voteButtonsContainer.appendChild(document.createElement("br"));
+                //voteButtonsContainer.appendChild(document.createElement("br"));
+                //voteButtonsContainer.appendChild(document.createElement("br"));
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
 
@@ -455,8 +455,8 @@ async function runThePopup(messageListener?: MessageListener) {
                     voteButtonsContainer.style.display = "unset";
                 });
 
-                //container.appendChild(sponsorTimeButton);
-                //container.appendChild(voteButtonsContainer);
+                container.appendChild(sponsorTimeButton);
+                container.appendChild(voteButtonsContainer);
 
                 //if it is not the last iteration
                 if (i != request.sponsorTimes.length - 1) {
@@ -591,7 +591,7 @@ async function runThePopup(messageListener?: MessageListener) {
         }
 
         //hide submit button
-        //document.getElementById("submitTimesContainer").style.display = "none";
+        document.getElementById("submitTimesContainer").style.display = "none";
   
         let sponsorTimeContainer = document.getElementById("sponsorTimeContainer" + index);
   
@@ -814,10 +814,10 @@ async function runThePopup(messageListener?: MessageListener) {
         //check if an end time has been specified for the latest sponsor time
         if (sponsorTimes.length > 0 && sponsorTimes[sponsorTimes.length - 1].segment.length > 1) {
             //show submit times button
-            //document.getElementById("submitTimesContainer").style.display = "unset";
+            document.getElementById("submitTimesContainer").style.display = "flex";
         } else {
             //hide submit times button
-            //document.getElementById("submitTimesContainer").style.display = "none";
+            document.getElementById("submitTimesContainer").style.display = "none";
         }
     }
   
@@ -880,10 +880,10 @@ async function runThePopup(messageListener?: MessageListener) {
         document.getElementById("loadingIndicator").innerText = chrome.i18n.getMessage("noVideoID");
     }
   
-    function reportAnIssue() {
+    /*function reportAnIssue() {
         document.getElementById("issueReporterContainer").style.display = "unset";
         //PageElements.reportAnIssue.style.display = "none";
-    }
+    }*/
   
     function addVoteMessage(message, UUID) {
         let container = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
@@ -972,10 +972,10 @@ async function runThePopup(messageListener?: MessageListener) {
                     PageElements.unwhitelistChannel.style.display = "unset";
                     document.querySelectorAll('label > svg')[0].classList.add("rotated");
 
-                    //TODO if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.style.display = "unset";
+                    if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.style.display = "unset";
 
-                    PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                    PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
+                    //PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
+                    //PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
 
                     //save this
                     Config.config.whitelistedChannels = whitelistedChannels;
@@ -1022,8 +1022,8 @@ async function runThePopup(messageListener?: MessageListener) {
                         PageElements.unwhitelistChannel.style.display = "none";
                         document.querySelectorAll('label > svg')[0].classList.remove("rotated");
 
-                        PageElements.downloadedSponsorMessageTimes.innerText = "";
-                        PageElements.downloadedSponsorMessageTimes.style.fontWeight = "unset";
+                        //PageElements.downloadedSponsorMessageTimes.innerText = "";
+                        //PageElements.downloadedSponsorMessageTimes.style.fontWeight = "unset";
 
                         //save this
                         Config.config.whitelistedChannels = whitelistedChannels;
