@@ -287,7 +287,7 @@ async function runThePopup(messageListener?: MessageListener) {
             sponsorTimes = sponsorTimesStorage;
 
             //show submission section
-            PageElements.submissionSection.style.display = "flex";
+            PageElements.submissionSection.style.display = "unset";
 
             showSubmitTimesIfNecessary();
         }
