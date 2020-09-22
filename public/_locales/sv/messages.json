@@ -15,6 +15,15 @@
     "channelWhitelisted": {
         "message": "Kanal vitlistad!"
     },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segment"
+    },
+    "upvoteButtonInfo": {
+        "message": "Rösta på detta inlägg"
+    },
     "reportButtonTitle": {
         "message": "Rapportera"
     },
@@ -60,6 +69,15 @@
     "Unknown": {
         "message": "Ett fel uppstod vid rapportering av sponsorsegment, försök igen senare."
     },
+    "sponsor404": {
+        "message": "Hittade inga segment"
+    },
+    "sponsorStart": {
+        "message": "Segmentet startar nu"
+    },
+    "sponsorEnd": {
+        "message": "Segmentet slutar nu"
+    },
     "noVideoID": {
         "message": "Kunde inte hitta någon YouTube-video i denna tab. Om du är säker på att detta är en Youtube-flik, stäng den här rutan och öppna den igen. Ladda om fliken om inte det funkar."
     },
@@ -75,8 +93,20 @@
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
     },
+    "wantToSubmit": {
+        "message": "Vill skicka in med video-id"
+    },
+    "clearTimes": {
+        "message": "Rensa segmenten"
+    },
     "openPopup": {
         "message": "Öppna SponsorBlock Popup"
+    },
+    "closePopup": {
+        "message": "Stäng popup"
+    },
+    "SubmitTimes": {
+        "message": "Skicka in segment"
     },
     "submitCheck": {
         "message": "Är du säker på att du vill rapportera detta?"
@@ -86,6 +116,9 @@
     },
     "removeFromWhitelist": {
         "message": "Ta bort kanal från vitlistan"
+    },
+    "voteOnTime": {
+        "message": "Rösta på ett segment"
     },
     "soFarUHSubmited": {
         "message": "Hitills har du rapporterat"
@@ -146,6 +179,9 @@
     },
     "whatDeleteButton": {
         "message": "Denna knappen tar bort alla sponsormeddelanden på YouTube-spelaren."
+    },
+    "enableViewTracking": {
+        "message": "Aktivera spåra antalet hoppa över"
     },
     "showNotice": {
         "message": "Visa Notisen Igen"
@@ -208,6 +244,12 @@
     },
     "audioNotification": {
         "message": "Ljudeffekt vid hopp"
+    },
+    "showTimeWithSkips": {
+        "message": "Visa tiden med det överhoppade borttaget"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Denna tid visas inom parentes bredvid den aktuella tiden nedanför sökfältet. Detta visar den totala videons varaktighet minus alla segment. Detta inkluderar segment markerade som endast \"Visa i sökfältet\"."
     },
     "youHaveSkipped": {
         "message": "Du har hoppat över "
@@ -290,6 +332,9 @@
     "minDuration": {
         "message": "Minsta varaktighet (sekunder):"
     },
+    "minDurationDescription": {
+        "message": "Segment som är kortare än det angivna värdet kommer inte att hoppas över eller visas i spelaren."
+    },
     "shortCheck": {
         "message": "Följande rapport är kortare än ditt minstavärde i inställningarna. Det skulle kunna betyda att det redan är rapporterat och bara ignorerat på grund av denna inställning. Är du säker på att du vill rapportera?"
     },
@@ -350,6 +395,9 @@
     "preview": {
         "message": "Förhandsgranska"
     },
+    "inspect": {
+        "message": "Granska"
+    },
     "edit": {
         "message": "Redigera"
     },
@@ -378,6 +426,21 @@
     "category_sponsor": {
         "message": "Sponsormeddelande"
     },
+    "category_intro_short": {
+        "message": "Uppehåll"
+    },
+    "category_outro": {
+        "message": "Slutkort/Credits"
+    },
+    "category_interaction": {
+        "message": "Interaktionspåminnelse (Prenumerera)"
+    },
+    "category_selfpromo": {
+        "message": "Obetald/självbefodran"
+    },
+    "category_music_offtopic": {
+        "message": "Musik: Icke-musikavsnitt"
+    },
     "category_music_offtopic_description": {
         "message": "Endast för användning i musikvideor. Detta inkluderar intros och outros i musikvideor."
     },
@@ -391,10 +454,21 @@
         "message": "Hoppa Över Manuellt"
     },
     "showOverlay": {
-        "message": "Visa Lager Ovanpå Spelare"
+        "message": "Visa i sökraden"
+    },
+    "previewColor": {
+        "message": "Förhandsgranskningsfärg",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Sökfältsfärg"
     },
     "category": {
         "message": "Kategori"
+    },
+    "skipOption": {
+        "message": "Alternativ för hoppa över",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Aktivera Server För Betatestning"
@@ -419,6 +493,9 @@
     },
     "bracketEnd": {
         "message": "(Slut)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "dold: rösta ner"
     },
     "hiddenDueToDuration": {
         "message": "dold: för kort"
@@ -447,5 +524,8 @@
     "readTheGuidelines": {
         "message": "Läs riktlinjerna!!",
         "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategorier finns här!"
     }
 }
