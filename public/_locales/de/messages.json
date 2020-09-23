@@ -107,16 +107,19 @@
         "message": "Scheinbar hast du einige Segmente noch nicht gesendet. Kehre zur Seite zurück um sie zu senden (sie sind noch gespeichert)."
     },
     "clearTimes": {
-        "message": "Segmente löschen"
+        "message": "Alle Segmente löschen"
     },
     "openPopup": {
         "message": "Öffne SponsorBlock-Popup"
+    },
+    "closePopup": {
+        "message": "Popup schließen"
     },
     "SubmitTimes": {
         "message": "Segment absenden"
     },
     "submitCheck": {
-        "message": "Bist du sicher, dass die Auswahl abgeschickt werden soll?"
+        "message": "Bist du sicher, dass du das abschicken willst?"
     },
     "whitelistChannel": {
         "message": "Kanal auf Whitelist setzen"
@@ -140,10 +143,10 @@
         "message": "hier"
     },
     "recordTimesDescription": {
-        "message": "Klicken Sie auf die Schaltfläche unten, wenn das Segment startet und endet, um es in die Datenbank einzusenden."
+        "message": "Klicke auf die Schaltfläche unten, wenn das Segment startet und endet, um es in die Datenbank einzusenden."
     },
     "popupHint": {
-        "message": "Hinweis: Drücken Sie die Semikolon-Taste während Sie auf ein Video fokussiert sind, um das Start/Ende eines Segments zu melden und das einzureichende Zitat anzugeben. (Dies kann in den Optionen geändert werden)"
+        "message": "Hinweis: Drücke die Semikolon-Taste während du auf ein Video fokussiert bist, um das Start/Ende eines Segments zu melden und das einzureichende Zitat anzugeben. (Dies kann in den Optionen geändert werden)"
     },
     "clearTimesButton": {
         "message": "Zeiten löschen"
@@ -173,7 +176,7 @@
         "message": "Knöpfe in YouTube-Leiste verstecken"
     },
     "hideButtonsDescription": {
-        "message": "Die Einstellung versteckt den Einsende-Knopf in der Youtube-Leiste. Ich kann verstehen, weshalb manchen diese Funktion\n an dieser Stelle stört. Stattdessen kann dafür dieses Pop-up genutzt werden. Um die transparente Benachrichtigung zu verstecken, klicke auf den \"Verstecken\"-Knopf \n der Benachrichtigung. Diese Einstellungen können wieder rückgängig gemacht werden."
+        "message": "Versteckt die Schaltflächen im YouTube-Player, um Segmente einzusenden."
     },
     "showInfoButton": {
         "message": "Zeige Info-Knopf in Youtube-Leiste"
@@ -191,7 +194,7 @@
         "message": "Zeige Löschen-Knopf in Youtube-Leiste"
     },
     "whatDeleteButton": {
-        "message": "Dierser Button im YouTube-Player löscht alle nicht übermittelten Segmente für das aktuelle Video."
+        "message": "Dieser Button im YouTube-Player löscht alle nicht übermittelten Segmente für das aktuelle Video."
     },
     "enableViewTracking": {
         "message": "Aktiviere mitzählen übersprungener Segmente"
@@ -226,10 +229,10 @@
         "message": "Tastenkombination für das Starten eines Segments festlegen"
     },
     "setSubmitKeybind": {
-        "message": "Segment einsenden Taste festlegen"
+        "message": "Tastenkombination für das Einsenden festlegen"
     },
     "keybindDescription": {
-        "message": "Taste drücken, um festzulegen"
+        "message": "Zum festlegen eine Taste drucken"
     },
     "keybindDescriptionComplete": {
         "message": "Die Taste wurde festgelegt auf: "
@@ -238,10 +241,10 @@
         "message": "Verbindungsüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
     },
     "disableSkipping": {
-        "message": "SponsorBlock ausschalten"
+        "message": "SponsorBlock deaktivieren"
     },
     "enableSkipping": {
-        "message": "SponsorBlock einschalten"
+        "message": "SponsorBlock aktivieren"
     },
     "yourWork": {
         "message": "Deine Statistik",
@@ -260,7 +263,7 @@
         "message": "Übersprungen"
     },
     "disableAutoSkip": {
-        "message": "Auto-Überspringen deaktivieren"
+        "message": "Automatisches Überspringen deaktivieren"
     },
     "enableAutoSkip": {
         "message": "Automatisches Überspringen aktivieren"
@@ -323,7 +326,7 @@
         "message": "Automatisch überspringen"
     },
     "showSkipNotice": {
-        "message": "Zeige Pop-Up nach dem Übersprung eines Segments"
+        "message": "Zeige Pop-Up nach dem Überspringen eines Segments"
     },
     "keybindCurrentlySet": {
         "message": ". Es ist derzeit gesetzt auf:"
@@ -433,6 +436,9 @@
     "preview": {
         "message": "Vorschau"
     },
+    "inspect": {
+        "message": "Überprüfen"
+    },
     "edit": {
         "message": "Bearbeiten"
     },
@@ -468,7 +474,7 @@
         "message": "Unterbrechung/Intro Animation"
     },
     "category_intro_description": {
-        "message": "Ein Intervall ohne relevanten Inhalt. Beispiele dafür wären eine Pause, ein statisches Bild oder sich wiederholende Animationen. Dies sollte nicht für Übergänge benutzt werden, die Informationen erhalten oder für Musikvideos."
+        "message": "Ein Intervall ohne tatsächlichen Inhalt. Kann eine Pause, ein Standbild oder eine sich wiederholende Animation sein. Dies sollte nicht für Übergänge verwendet werden, die Informationen enthalten."
     },
     "category_intro_short": {
         "message": "Unterbrechung"
@@ -477,7 +483,7 @@
         "message": "Endkarten/Credits"
     },
     "category_outro_description": {
-        "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für Schlussfolgerungen mit Informationen. Dies sollte nicht für Musikvideos verwendet werden."
+        "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für Schlussfolgerungen mit Informationen."
     },
     "category_interaction": {
         "message": "Interaktions-Erinnerung (Abonnieren)"
@@ -495,7 +501,7 @@
         "message": "Ähnlich wie bei \"Sponsor\" mit Ausnahme von unbezahlten oder Selbstpromotion. Dies beinhaltet Abschnitte über Waren, Spenden oder Informationen darüber, mit wem sie zusammengearbeitet haben."
     },
     "category_music_offtopic": {
-        "message": "Musik: Nicht-Musik-Abschnitt"
+        "message": "Musik: Nicht-Musik-Segment"
     },
     "category_music_offtopic_description": {
         "message": "Nur für den Einsatz in Musikvideos. Dies beinhaltet Einführungen oder Outros in Musikvideos."
@@ -584,13 +590,13 @@
         "message": "Bedenken Sie die Aktivierung von \"Kanalprüfung erzwingen vor dem Überspringen von Segmenten\""
     },
     "downvoteDescription": {
-        "message": "Nicht korrektes/Falsches Timing"
+        "message": "Nicht korrekt/Falsches Timing"
     },
     "incorrectCategory": {
         "message": "Falsche Kategorie"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Dieses Video ist als Musik kategorisiert. Sind Sie sicher, dass Sie Segmente mit Nicht-Musikkategorien einreichen möchten? Wenn dieses Video nicht wirklich Musik ist, sollten Sie dieses Segment nicht einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
+        "message": "Dieses Video ist als Musik kategorisiert. Bist du sicher, dass es einen Sponsor hast? Wenn dies tatsächlich ein \"Nicht-Musik-Abschnitt\" ist, öffne die Optionen der Extension und aktiviere diese Kategorie. Danach können Sie dieses Segment als \"Nicht-Musik\" anstelle von \"Sponsor\" einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
     },
     "multipleSegments": {
         "message": "Mehrere Segmente"

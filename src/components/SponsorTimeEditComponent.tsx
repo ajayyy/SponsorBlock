@@ -219,6 +219,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 ): ""}
 
                 {(!isNaN(segment[1])) ? (
+                    <span id={"sponsorTimeInspectButton" + this.idSuffix}
+                        className="sponsorTimeEditButton"
+                        onClick={this.inspectTime.bind(this)}>
+                        {chrome.i18n.getMessage("inspect")}
+                    </span>
+                ): ""}
+
+                {(!isNaN(segment[1])) ? (
                     <span id={"sponsorTimeEditButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.toggleEditTime.bind(this)}>
@@ -344,6 +352,20 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
 
         this.props.contentContainer().previewTime(skipTime - 2);
+    }
+
+    inspectTime(): void {
+        let sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
+        let index = this.props.index;
+
+        let skipTime = sponsorTimes[index].segment[0];
+
+        if (this.state.editing) {
+            // Save edits before inspecting
+            this.saveEditTimes();
+        }
+
+        this.props.contentContainer().previewTime(skipTime + 0.000001, false);
     }
 
     deleteTime(): void {

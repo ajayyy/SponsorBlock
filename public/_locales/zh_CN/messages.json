@@ -470,9 +470,6 @@
     "incorrectCategory": {
         "message": "错误的类别"
     },
-    "nonMusicCategoryOnMusic": {
-        "message": "此视频被归类为音乐。您确定要提交带有非音乐类别的片段吗？除非此视频实际上不是音乐，否则您不应提交此片段。如果您感到困惑，请阅读指南。"
-    },
     "multipleSegments": {
         "message": "多个片段"
     },

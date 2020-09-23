@@ -9,5 +9,170 @@
     },
     "400": {
         "message": "Server hlásí, že tento požadavek je neplatný"
+    },
+    "429": {
+        "message": "Pro toto video jste přidali příliš mnoho příspěvků. Jste si jistí, že jich je tolik?"
+    },
+    "409": {
+        "message": "Tento příspěvek byl již přidán dříve"
+    },
+    "channelWhitelisted": {
+        "message": "Kanál přidán do výjimek!"
+    },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segmenty"
+    },
+    "upvoteButtonInfo": {
+        "message": "Hlasovat pro tento příspěvek"
+    },
+    "reportButtonTitle": {
+        "message": "Nahlásit"
+    },
+    "reportButtonInfo": {
+        "message": "Nahlásit tento příspěvek jako nesprávný."
+    },
+    "Dismiss": {
+        "message": "Zrušit"
+    },
+    "Loading": {
+        "message": "Načítání..."
+    },
+    "Mins": {
+        "message": "Minuty"
+    },
+    "Secs": {
+        "message": "Sekundy"
+    },
+    "Hide": {
+        "message": "Nikdy nezobrazovat"
+    },
+    "hitGoBack": {
+        "message": "Stiskněte \"Vrátit se\" aby jste se dostali do místa před přeskočením."
+    },
+    "unskip": {
+        "message": "Vrátit se"
+    },
+    "reskip": {
+        "message": "Znovu přeskočit"
+    },
+    "paused": {
+        "message": "Pozastaveno"
+    },
+    "manualPaused": {
+        "message": "Časovač zastaven"
+    },
+    "confirmMSG": {
+        "message": "Chcete-li upravit nebo odstranit jednotlivé hodnoty, klikněte na tlačítko informace, nebo otevřete vyskakovací okno rozšíření kliknutím na ikonu rozšíření v pravém horním rohu."
+    },
+    "clearThis": {
+        "message": "Jste si jistí, že to chcete vymazat?\n\n"
+    },
+    "Unknown": {
+        "message": "Při přidávání vašeho příspěvku došlo k chybě. Zkuste to prosím později."
+    },
+    "sponsorFound": {
+        "message": "Toto video má segmenty v databázi!"
+    },
+    "sponsor404": {
+        "message": "Nebyly nalezeny žádné segmenty"
+    },
+    "sponsorStart": {
+        "message": "Segment nyní začíná"
+    },
+    "sponsorEnd": {
+        "message": "Segment nyní končí"
+    },
+    "noVideoID": {
+        "message": "Na této záložce nebylo nalezeno žádné YouTube video. Pokud jste si jistí, že tato záložka je YouTube, zavřete toto vyskakovací okno a znovu jej otevřete. Pokud to nepomůže, zkuste záložku znovu načíst."
+    },
+    "success": {
+        "message": "Úspěch!"
+    },
+    "voted": {
+        "message": "Hlasováno!"
+    },
+    "serverDown": {
+        "message": "Zdá se, že server nefunguje. Obraťte se okamžitě na vývojáře."
+    },
+    "connectionError": {
+        "message": "Došlo k chybě připojení. Kód chyby: "
+    },
+    "wantToSubmit": {
+        "message": "Chcete odeslat segmenty pro video s id"
+    },
+    "leftTimes": {
+        "message": "Zdá se, že některé segmenty jste nechali neodeslané. Vraťte se na danou stránku a odešlete je (nebyly vymazány)."
+    },
+    "clearTimes": {
+        "message": "Vymazat segmenty"
+    },
+    "openPopup": {
+        "message": "Otevřít vyskakovací okno SponsorBlock"
+    },
+    "closePopup": {
+        "message": "Zavřít vyskakovací okno"
+    },
+    "SubmitTimes": {
+        "message": "Odeslat segmenty"
+    },
+    "submitCheck": {
+        "message": "Opravdu to chcete odeslat?"
+    },
+    "whitelistChannel": {
+        "message": "Přidat kanál do výjimek"
+    },
+    "removeFromWhitelist": {
+        "message": "Odebrat kanál z výjimek"
+    },
+    "voteOnTime": {
+        "message": "Hlasovat pro segment"
+    },
+    "soFarUHSubmited": {
+        "message": "Zatím jste přidali"
+    },
+    "savedPeopleFrom": {
+        "message": "Lidem jste ušetřili "
+    },
+    "viewLeaderboard": {
+        "message": "Zobrazit žebříček"
+    },
+    "here": {
+        "message": "zde"
+    },
+    "recordTimesDescription": {
+        "message": "Stiskněte tlačítko níže, když segment začne a skončí, k nahrání a uložení do databáze."
+    },
+    "popupHint": {
+        "message": "Tip: Pokud je video aktivní, stiskněte středník pro nahlášení začátku/konce segmentu, a apostrof pro odeslání. (Klávesy lze změnit v nastavení)"
+    },
+    "clearTimesButton": {
+        "message": "Vymazat časy"
+    },
+    "submitTimesButton": {
+        "message": "Odeslat časy"
+    },
+    "publicStats": {
+        "message": "Toto se používá ve veřejném žebříčku k ukázání jak moc jste přispěli. Podívejte se na něj"
+    },
+    "setUsername": {
+        "message": "Nastavit uživatelské jméno"
+    },
+    "discordAdvert": {
+        "message": "Připojte se k oficiálnímu Discord serveru k podání návrhů a zpětné vazby!"
+    },
+    "hideThis": {
+        "message": "Skrýt"
+    },
+    "Options": {
+        "message": "Nastavení"
+    },
+    "showButtons": {
+        "message": "Zobrazit tlačítka na YouTube přehrávači"
+    },
+    "hideButtons": {
+        "message": "Skrýt tlačítka na YouTube přehrávači"
     }
 }

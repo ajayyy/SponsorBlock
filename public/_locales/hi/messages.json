@@ -1,1 +1,28 @@
-{}
+{
+    "fullName": {
+        "message": "YouTube के लिए SponsorBlock - प्रायोजन छोड़ें",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "YouTube वीडियो पर प्रायोजन, सदस्यता भीख और अधिक छोड़ें। दूसरों के समय को बचाने के लिए आपके द्वारा देखे जाने वाले वीडियो पर प्रायोजकों की रिपोर्ट करें।",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "सर्वर ने कहा कि यह अनुरोध अमान्य था"
+    },
+    "429": {
+        "message": "आपने इस एक वीडियो के लिए बहुत सारे प्रायोजक बार प्रस्तुत किए हैं, क्या आप सुनिश्चित हैं कि यह कई हैं?"
+    },
+    "409": {
+        "message": "यह पहले भी प्रस्तुत किया जा चुका है"
+    },
+    "channelWhitelisted": {
+        "message": "चैनल श्वेतसूची में!"
+    },
+    "Segment": {
+        "message": "खंड"
+    },
+    "Segments": {
+        "message": "खंडों"
+    }
+}

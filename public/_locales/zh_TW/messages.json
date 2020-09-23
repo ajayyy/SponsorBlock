@@ -1,1 +1,298 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock for YouTube - 跳過贊助廣告",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "在YouTube影片跳過贊助廣告、訂閱提醒……和更多。 在您觀賞的影片上標記贊助廣告來節省大家的時間。",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "伺服器說這個請求無效"
+    },
+    "429": {
+        "message": "您為這部影片提交了過多的贊助廣告片段，您確定有這麼多嗎？"
+    },
+    "409": {
+        "message": "這已經被提交過了"
+    },
+    "channelWhitelisted": {
+        "message": "頻道被加入了白名單！"
+    },
+    "Segment": {
+        "message": "片段"
+    },
+    "Segments": {
+        "message": "片段"
+    },
+    "upvoteButtonInfo": {
+        "message": "為這個提交按讚"
+    },
+    "reportButtonTitle": {
+        "message": "檢舉"
+    },
+    "reportButtonInfo": {
+        "message": "將這個提交檢舉為不正確"
+    },
+    "Dismiss": {
+        "message": "忽略"
+    },
+    "Loading": {
+        "message": "載入中…"
+    },
+    "Mins": {
+        "message": "分"
+    },
+    "Secs": {
+        "message": "秒"
+    },
+    "Hide": {
+        "message": "永不顯示"
+    },
+    "hitGoBack": {
+        "message": "點擊取消跳過來回到您原本的位置"
+    },
+    "unskip": {
+        "message": "取消跳過"
+    },
+    "reskip": {
+        "message": "繼續跳過"
+    },
+    "paused": {
+        "message": "已暫停"
+    },
+    "manualPaused": {
+        "message": "計時器已停止"
+    },
+    "confirmMSG": {
+        "message": "要編輯或刪除個別數值，點擊資訊按鈕或右上角擴充功能的彈出介面"
+    },
+    "clearThis": {
+        "message": "您確定要清空這個嗎？\n\n"
+    },
+    "Unknown": {
+        "message": "提交您的贊助廣告片段時出錯，請稍後再試一次"
+    },
+    "sponsorFound": {
+        "message": "這個影片有現存的片段在資料庫！"
+    },
+    "sponsor404": {
+        "message": "沒有發現片段"
+    },
+    "sponsorStart": {
+        "message": "片段現在開始"
+    },
+    "sponsorEnd": {
+        "message": "片段現在結束"
+    },
+    "noVideoID": {
+        "message": "未在這個分頁找到任何YouTube影片。 如果您知道這是個YouTube分頁的話，關閉這個彈出視窗並重新開啟它。如果還是不管用，嘗試重新載入分頁"
+    },
+    "success": {
+        "message": "成功！"
+    },
+    "voted": {
+        "message": "已投票！"
+    },
+    "serverDown": {
+        "message": "看起來伺服器已離線。立即聯繫開發者"
+    },
+    "connectionError": {
+        "message": "已發生連線錯誤。錯誤碼： "
+    },
+    "wantToSubmit": {
+        "message": "您想為這個影片ID提交嗎"
+    },
+    "leftTimes": {
+        "message": "您好像沒有提及一些片段。返回至該頁面來提交（它們尚未被刪除）"
+    },
+    "clearTimes": {
+        "message": "清除片段"
+    },
+    "openPopup": {
+        "message": "打開 SponsorBlock 彈出視窗"
+    },
+    "closePopup": {
+        "message": "關閉彈出視窗"
+    },
+    "SubmitTimes": {
+        "message": "提交分段"
+    },
+    "submitCheck": {
+        "message": "您確定要提交這個嗎？"
+    },
+    "whitelistChannel": {
+        "message": "將頻道列入白名單"
+    },
+    "removeFromWhitelist": {
+        "message": "將頻道從白名單移除"
+    },
+    "voteOnTime": {
+        "message": "為分段投票"
+    },
+    "soFarUHSubmited": {
+        "message": "您目前已提交"
+    },
+    "savedPeopleFrom": {
+        "message": "您已為大家節省 "
+    },
+    "viewLeaderboard": {
+        "message": "查看排行榜"
+    },
+    "here": {
+        "message": "這裡"
+    },
+    "recordTimesDescription": {
+        "message": "點擊下方的按鈕來錄製分段的始與末"
+    },
+    "popupHint": {
+        "message": "小提醒：在聚焦於影片時按下分號鍵來記錄分段的始與末然後按下冒號鍵來提交（您可以透過選項來更改這項設定）"
+    },
+    "clearTimesButton": {
+        "message": "清除時間"
+    },
+    "submitTimesButton": {
+        "message": "提交時間"
+    },
+    "publicStats": {
+        "message": "這會被公開的統計頁面來展示您的貢獻。查看它"
+    },
+    "setUsername": {
+        "message": "設定使用者名稱"
+    },
+    "discordAdvert": {
+        "message": "快加入官方 Discord 伺服器來給予建議和反應！"
+    },
+    "hideThis": {
+        "message": "隱藏這"
+    },
+    "Options": {
+        "message": "選項"
+    },
+    "showButtons": {
+        "message": "在 YouTube 播放器上顯示按鈕"
+    },
+    "hideButtons": {
+        "message": "在 YouTube 播放器上隱藏按鈕"
+    },
+    "hideButtonsDescription": {
+        "message": "這會隱藏 YouTube 播放器上提交片段的按鈕"
+    },
+    "showInfoButton": {
+        "message": "在 YouTube 播放器上顯示資訊按鈕"
+    },
+    "hideInfoButton": {
+        "message": "在 YouTube 播放器上隱藏資訊按鈕"
+    },
+    "whatInfoButton": {
+        "message": "這個按鈕可用來在 YouTube 頁面打開彈出視窗"
+    },
+    "hideDeleteButton": {
+        "message": "在 YouTube 播放器上隱藏刪除按鈕"
+    },
+    "showDeleteButton": {
+        "message": "在 YouTube 播放器上顯示刪除按鈕"
+    },
+    "whatDeleteButton": {
+        "message": "這個按鈕可用來在 YouTube 播放器清除所有未提交的片段"
+    },
+    "enableViewTracking": {
+        "message": "啟用跳過次數追蹤"
+    },
+    "whatViewTracking": {
+        "message": "這個功能會追蹤您跳過的片段來讓其他使用者知道您的提交幫助了其他人多少，並同時用作計算錯誤提交的方式。這個擴充功能會在您每一次跳過片段時向伺服器回報。希望大家盡量不要改變這個設定來確保資料的正確性。 ：）"
+    },
+    "showNotice": {
+        "message": "再次顯示通知"
+    },
+    "longDescription": {
+        "message": "SponsorBlock 讓您可以跳過贊助工商，開場動畫，結束動畫，訂閱提醒等煩人的 YouTube 影片片段。SponsorBlock 是個大眾外包的網頁瀏覽器擴充功能，能讓任何人提交贊助片段的始與末。當一個人提交這個片段後，所有使用這個擴充功能的人都可以跳過該片段。您也可以跳過在音樂中的非音樂片段",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "網址",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "原始碼",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "通知已升級！",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "如果您還是不喜歡它，請按下永不顯示按鈕",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "設定開始片段快捷鍵"
+    },
+    "setSubmitKeybind": {
+        "message": "設定提交快捷鍵"
+    },
+    "keybindDescription": {
+        "message": "按下您想選擇的按鍵"
+    },
+    "keybindDescriptionComplete": {
+        "message": "快捷鍵已設定為： "
+    },
+    "0": {
+        "message": "連線超時。請檢查您的網路連線。若您的網路運作正常，則可能是伺服器超載或離線"
+    },
+    "disableSkipping": {
+        "message": "停用 SponsorBlock"
+    },
+    "enableSkipping": {
+        "message": "啟用 SponsorBlock"
+    },
+    "yourWork": {
+        "message": "您的成果",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "伺服器可能超載。請稍後嘗試"
+    },
+    "errorCode": {
+        "message": "錯誤代碼： "
+    },
+    "skip": {
+        "message": "略過"
+    },
+    "skipped": {
+        "message": "已跳過"
+    },
+    "disableAutoSkip": {
+        "message": "停用自動跳過"
+    },
+    "enableAutoSkip": {
+        "message": "啟用自動跳過"
+    },
+    "audioNotification": {
+        "message": "跳過時發出聲響"
+    },
+    "audioNotificationDescription": {
+        "message": "跳過時發出聲響會在跳過片段時播放聲音。當停用後（或自動跳過被停用）將不會發出聲響"
+    },
+    "showTimeWithSkips": {
+        "message": "顯示已移除跳過後的總時間"
+    },
+    "minLower": {
+        "message": "分鐘"
+    },
+    "minsLower": {
+        "message": "分鐘"
+    },
+    "hourLower": {
+        "message": "小時"
+    },
+    "hoursLower": {
+        "message": "小時"
+    },
+    "youHaveSavedTime": {
+        "message": "您已為大家節省"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " 的生命。"
+    }
+}

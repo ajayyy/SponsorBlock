@@ -461,9 +461,6 @@
     "incorrectCategory": {
         "message": "Yanlış Kategori"
     },
-    "nonMusicCategoryOnMusic": {
-        "message": "Bu videonun kategorisi müzik olarak belirlenmiş. Müzik içermeyen bölümleri göndermek istediğinize emin misiniz? Eğer bu bir müzik videosu değilse, bu bölümleri göndermemelisiniz. Eğer ayırt edemiyorsanız, lütfen rehberi okuyunuz."
-    },
     "multipleSegments": {
         "message": "Birden Çok Bölüm"
     },

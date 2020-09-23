@@ -3,6 +3,10 @@
         "message": "SponsorBlock pentru YouTube - Sari peste sponsorizări",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Treci peste sponsorizări, cereri de abonare și multe altele pe videoclipuri de pe YouTube. Raportează sponsorii pe videoclipurile pe care le urmărești pentru a economisi timp altora.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Serverul a spus că această cerere este invalidă"
     },
@@ -14,6 +18,12 @@
     },
     "channelWhitelisted": {
         "message": "Canalul a fost adăugat la excepții!"
+    },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segmente"
     },
     "upvoteButtonInfo": {
         "message": "Votează această înregistrare"
@@ -63,6 +73,18 @@
     "Unknown": {
         "message": "A apărut o eroare în trimiterea timpilor sponsorizărilor, încearcă din nou mai târziu."
     },
+    "sponsorFound": {
+        "message": "Acest videoclip are segmente în baza de date!"
+    },
+    "sponsor404": {
+        "message": "Nici un segment găsit"
+    },
+    "sponsorStart": {
+        "message": "Segmentul începe acum"
+    },
+    "sponsorEnd": {
+        "message": "Segmentul se termină acum"
+    },
     "noVideoID": {
         "message": "Nu există niciun videoclip YouTube în aceast tab. Dacă știți că acesta este un tab YouTube, închideți acest popup și deschideți-l din nou. Daca nici asta nu merge, încercați să reîncărcați pagina."
     },
@@ -78,8 +100,23 @@
     "connectionError": {
         "message": "A apărut o eroare de conexiune. Cod de eroare: "
     },
+    "wantToSubmit": {
+        "message": "Doriți să trimiteți pentru id video"
+    },
+    "leftTimes": {
+        "message": "Se pare că aţi lăsat unele segmente netrimise. Du-te înapoi la acea pagină pentru a le trimite (nu sunt şterse)."
+    },
+    "clearTimes": {
+        "message": "Curăță segmentele"
+    },
     "openPopup": {
         "message": "Deschide Popup-ul SponsorBlock"
+    },
+    "closePopup": {
+        "message": "Închide pop-up"
+    },
+    "SubmitTimes": {
+        "message": "Trimite segmente"
     },
     "submitCheck": {
         "message": "Sunteți sigur că doriți să trimiteți asta?"
@@ -89,6 +126,9 @@
     },
     "removeFromWhitelist": {
         "message": "Șterge Canalul De La Excepții"
+    },
+    "voteOnTime": {
+        "message": "Votează pe un Segment"
     },
     "soFarUHSubmited": {
         "message": "Până acum, ai trimis"
@@ -101,6 +141,12 @@
     },
     "here": {
         "message": "aici"
+    },
+    "recordTimesDescription": {
+        "message": "Faceţi clic pe butonul de mai jos atunci când segmentul începe şi se termină pentru a înregistra şi trimite-l în baza de date."
+    },
+    "popupHint": {
+        "message": "Indiciu: Apasă pe tasta punct și virgulă în timp ce ești centrat pe videoclip pentru a raporta începutul/finalul unei sponsorizări și apasă pe ghilimele pentru a o trimite. (Acest lucru poate fi schimbat din opțiuni)"
     },
     "clearTimesButton": {
         "message": "Șterge Timpii"
@@ -362,6 +408,9 @@
     "preview": {
         "message": "Previzualizare"
     },
+    "inspect": {
+        "message": "Inspectează"
+    },
     "edit": {
         "message": "Editare"
     },
@@ -397,13 +446,16 @@
         "message": "Pauză/Animație Intro"
     },
     "category_intro_description": {
-        "message": "Un interval fără conținut real. Poate fi o pauză, un cadru static, o animație care se repetă. Acestea nu ar trebui utilizate pentru tranziții care conțin informații sau nu ar trebui utilizate pe videoclipuri muzicale."
+        "message": "Un interval fără conținut. Poate fi o pauză, un cadru static, o animație care se repeta. Nu ar trebui sa fie folosit pentru tranziții care conțin informații."
     },
     "category_intro_short": {
         "message": "Pauză"
     },
     "category_outro": {
         "message": "Ecran De Final/Credite"
+    },
+    "category_outro_description": {
+        "message": "Credite sau atunci când apare ecranul de final YouTube. Nu pentru concluzii cu informații."
     },
     "category_interaction": {
         "message": "Reamintire de Interactiune (Abonare)"
@@ -507,7 +559,7 @@
         "message": "Categorie Greșită"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Categoria acestui videoclip este muzică. Sunteți sigur că doriți să trimiteți segmente non-muzicale? Dacă acest videoclip nu este de fapt muzică, nu ar trebui să trimiteți acest segment. Vă rugăm să citiți recomandările dacă sunteți confuz."
+        "message": "Acest videoclip este categorisit ca muzică. Ești sigur ca există un sponsor? Dacă acesta este defapt un segment non-muzical, deschideți opțiunile extensiei și activați această categorie. Apoi, puteți trimite acest segment ca non-muzical în loc de sponsol. Vă rugăm să citiți ghidul dacă sunteți confuz."
     },
     "multipleSegments": {
         "message": "Segmente Multiple"

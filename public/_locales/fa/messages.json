@@ -1,1 +1,87 @@
-{}
+{
+    "fullName": {
+        "message": "اسپانسربلاک برای یوتیوب - اسپانسر ها را رد کنید",
+        "description": "Name of the extension."
+    },
+    "400": {
+        "message": "سرور گفت که این درخواست نامعتبر است"
+    },
+    "409": {
+        "message": "این قبلاً ثبت شده است"
+    },
+    "channelWhitelisted": {
+        "message": "کانال در لیست سفید قرار گرفت!"
+    },
+    "Segment": {
+        "message": "بخش"
+    },
+    "Segments": {
+        "message": "بخش"
+    },
+    "upvoteButtonInfo": {
+        "message": "امتیاز دادن به این گزارش ثبت‌شده"
+    },
+    "reportButtonTitle": {
+        "message": "گزارش"
+    },
+    "Dismiss": {
+        "message": "رد کردن"
+    },
+    "Loading": {
+        "message": "درحال بارگذاری..."
+    },
+    "Mins": {
+        "message": "دقیقه"
+    },
+    "Secs": {
+        "message": "ثانیه"
+    },
+    "Hide": {
+        "message": "هرگز نمایش نده"
+    },
+    "hitGoBack": {
+        "message": "کلید عدم رد کردن را بزنید تا به جایی که بودید برگردید."
+    },
+    "unskip": {
+        "message": "عدم رد کردن"
+    },
+    "reskip": {
+        "message": "دوباره رد کردن"
+    },
+    "paused": {
+        "message": "وقفه شده"
+    },
+    "manualPaused": {
+        "message": "شمارنده متوقف شد"
+    },
+    "clearThis": {
+        "message": "مطمئن هستید که میخواهید این را حذف کنید؟\n\n"
+    },
+    "Unknown": {
+        "message": "اشکالی در ثبت کردن زمان های ارسالی شما پیش آمد. لطفا بعداً دوباره تلاش کنید."
+    },
+    "sponsorStart": {
+        "message": "بخش اینجا شروع می‌شود"
+    },
+    "sponsorEnd": {
+        "message": "بخش اینجا پایان می‌یابد"
+    },
+    "success": {
+        "message": "موفقیت!"
+    },
+    "voted": {
+        "message": "گزارش داده شد!"
+    },
+    "serverDown": {
+        "message": "به‌نظر می‌رسد که ارتباط سرور قطع شده است. با توسعه‌دهنده سریعاً تماس بگیرید."
+    },
+    "wantToSubmit": {
+        "message": "آی می‌خواهید که گزارش را ثبت کنید برای ویدیوی"
+    },
+    "closePopup": {
+        "message": "بستن پنجره"
+    },
+    "here": {
+        "message": "اینجا"
+    }
+}

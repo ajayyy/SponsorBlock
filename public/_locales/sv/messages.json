@@ -441,9 +441,6 @@
     "incorrectCategory": {
         "message": "Fel kategori"
     },
-    "nonMusicCategoryOnMusic": {
-        "message": "Den här videon är kategoriserad som musik. Är du säker på att du vill skicka in segment med icke-musikkategorier? Om denna video faktiskt är musik, bör du inte skicka in detta segment. Vänligen läs riktlinjerna om du är förvirrad."
-    },
     "multipleSegments": {
         "message": "Flera segment"
     },

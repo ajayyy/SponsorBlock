@@ -1,6 +1,6 @@
 {
     "fullName": {
-        "message": "SponsorBlock na YouTube - Omiń reklamy sponsorowane",
+        "message": "SponsorBlock na YouTube - Pomiń fragmenty sponsorowane",
         "description": "Name of the extension."
     },
     "Description": {
@@ -47,7 +47,7 @@
         "message": "Sekundy"
     },
     "Hide": {
-        "message": "Nigdy nie pokazuj"
+        "message": "Nie pokazuj więcej"
     },
     "hitGoBack": {
         "message": "Kliknij cofnij aby przenieść się do miejsca przed przewinięciem."
@@ -113,7 +113,7 @@
         "message": "Otwórz okienko SponsorBlock"
     },
     "closePopup": {
-        "message": "Zamknij okienko"
+        "message": "Zamknij okno"
     },
     "SubmitTimes": {
         "message": "Prześlij segmenty"
@@ -257,7 +257,7 @@
         "message": "Kod błędu: "
     },
     "skip": {
-        "message": "Przewiń"
+        "message": "Pomiń"
     },
     "skipped": {
         "message": "Pominięto"
@@ -435,6 +435,9 @@
     },
     "preview": {
         "message": "Podgląd"
+    },
+    "inspect": {
+        "message": "Sprawdź"
     },
     "edit": {
         "message": "Edytuj"

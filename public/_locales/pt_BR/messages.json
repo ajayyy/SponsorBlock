@@ -473,9 +473,6 @@
     "incorrectCategory": {
         "message": "Categoria errada"
     },
-    "nonMusicCategoryOnMusic": {
-        "message": "Este vídeo é classificado como música. Você tem certeza que deseja enviar segmentos com categorias que não são músicas? A menos que esse vídeo não seja de fato música, você não deve enviar esse segmento. Por favor leia as orientações se estiver em dúvidas."
-    },
     "multipleSegments": {
         "message": "Multiplos segmentos"
     },
