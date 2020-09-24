@@ -69,6 +69,9 @@
     "Unknown": {
         "message": "Ett fel uppstod vid rapportering av sponsorsegment, försök igen senare."
     },
+    "sponsorFound": {
+        "message": "Denna video har segment i databasen!"
+    },
     "sponsor404": {
         "message": "Hittade inga segment"
     },
@@ -95,6 +98,9 @@
     },
     "wantToSubmit": {
         "message": "Vill skicka in med video-id"
+    },
+    "leftTimes": {
+        "message": "Du verkar ha lämnat kvar några segment som inte skickats in. Gå tillbaka till den sidan för att skicka in dem (de är inte borttagna)."
     },
     "clearTimes": {
         "message": "Rensa segmenten"
@@ -447,6 +453,9 @@
     "category_music_offtopic_short": {
         "message": "Icke-musik"
     },
+    "category_livestream_messages_short": {
+        "message": "Läser meddelande"
+    },
     "disable": {
         "message": "Avaktivera"
     },
@@ -508,6 +517,9 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Tvinga kontroll av kanalen innan hoppa över"
     },
     "downvoteDescription": {
         "message": "Fel timing"
