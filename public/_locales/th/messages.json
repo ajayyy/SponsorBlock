@@ -1,1 +1,6 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock สำหรับ YouTube - ข้ามสปอนเซอร์",
+        "description": "Name of the extension."
+    }
+}
