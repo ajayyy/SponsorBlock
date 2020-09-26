@@ -380,7 +380,7 @@
         "message": "Adres serwera SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "Adres SponsorBlock używa do wykonywania połączeń do serwera.\nDo póki nie posiadasz własnego serwera, to nie powinno być zmieniane."
+        "message": "Adres, którego SponsorBlock używa do wykonywania połączeń z serwerem. O ile nie posiadasz własnego serwera, nie powinno to być zmieniane."
     },
     "save": {
         "message": "Zapisz"
@@ -618,6 +618,6 @@
         "message": "Powiadomienie o niewysłanych segmentach"
     },
     "unsubmittedWarningDescription": {
-        "message": "Wyślij powiadomienie po opuszczeniu filmu z segmentami, które nie zostały przesłane"
+        "message": "Wyślij powiadomienie po opuszczeniu filmu z segmentami, które nie zostały wysłane"
     }
 }
