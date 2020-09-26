@@ -62,7 +62,7 @@
         "message": "En pause"
     },
     "manualPaused": {
-        "message": "Timer arrêté"
+        "message": "Minuteur arrêté"
     },
     "confirmMSG": {
         "message": "Pour modifier ou supprimer des soumissions, cliquez sur le bouton d'info ou ouvrez la fenêtre de l'extension en cliquant sur son icône dans le coin en haut à droite."
@@ -437,7 +437,7 @@
         "message": "Rappel d'interaction (abonnement)"
     },
     "category_interaction_description": {
-        "message": "Lorsqu'il y a un bref rappel pour liker, s'abonner ou les follow parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
+        "message": "Lorsqu'il y a un bref rappel pour aimer, s'abonner ou les suivre parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
     },
     "category_interaction_short": {
         "message": "Rappel d'interaction"
@@ -449,7 +449,7 @@
         "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
     },
     "category_music_offtopic": {
-        "message": "Musique : Segment non-musicale"
+        "message": "Musique : Segment non-musical"
     },
     "category_music_offtopic_description": {
         "message": "A utiliser uniquement dans les vidéos musicales. Cela inclut les introductions ou les fins dans les vidéos."
@@ -496,7 +496,7 @@
         "message": "Vos soumissions et votes NE COMPTERONT PAS sur le serveur principal. Utilisez ceci uniquement pour faire des tests."
     },
     "testingServerWarning": {
-        "message": "AUCUNE SOUMISSION OU VOTE DE COMPTERA sur le serveur principal tant que vous serez connecté au serveur de test. Désactivez ceci quand vous voudrez réellement soumettre ou voter."
+        "message": "AUCUNE SOUMISSION OU VOTE NE COMPTERA sur le serveur principal tant que vous serez connecté au serveur de test. Désactivez ceci quand vous voudrez réellement soumettre ou voter."
     },
     "bracketNow": {
         "message": "(Maintenant)"
