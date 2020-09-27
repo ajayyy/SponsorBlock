@@ -23,7 +23,7 @@
         "message": "구간"
     },
     "Segments": {
-        "message": "구간"
+        "message": "개"
     },
     "upvoteButtonInfo": {
         "message": "이 제출을 추천하기"
@@ -131,16 +131,16 @@
         "message": "구간 투표"
     },
     "soFarUHSubmited": {
-        "message": "지금 제출되었습니다"
+        "message": "지금까지 제출한 구간:"
     },
     "savedPeopleFrom": {
         "message": "사람을 다음에서 구했습니다 "
     },
     "viewLeaderboard": {
-        "message": "리더보드 보기"
+        "message": "순위표를 확인해보세요:"
     },
     "here": {
-        "message": "여기"
+        "message": "링크"
     },
     "recordTimesDescription": {
         "message": "구간이 시작 및 종료될 때 아래의 버튼을 눌러 구간을 기록하고 데이터베이스에 제출하세요."
@@ -155,7 +155,7 @@
         "message": "시간 제출"
     },
     "publicStats": {
-        "message": "공개 스탯 페이지에서 당신이 얼마나 기여했는지 나타내기 위해 사용됩니다."
+        "message": "이것은 사용자가 구간 제출에 얼마나 기여했는지를 나타내기 위해 사용하는 정보로, 여기서 확인하실 수 있습니다:"
     },
     "setUsername": {
         "message": "사용자 이름 설정"
@@ -293,10 +293,10 @@
         "message": "이 시간은 탐색 막대 아래의 현재 시간 옆에 있는 괄호 안에 표시되며 부분을 제외한 총 동영상 길이를 보여줍니다. 여기에는 \"슬라이드바에 표시\"로만 표시된 부분도 포함됩니다."
     },
     "youHaveSkipped": {
-        "message": "스킵했습니다 "
+        "message": "지금까지 스킵한 구간: "
     },
     "youHaveSaved": {
-        "message": "자신"
+        "message": "지금까지 절약한 시간: "
     },
     "minLower": {
         "message": "분"
@@ -347,10 +347,10 @@
         "message": "Invidious 지원 활성화"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us)는 제3자 YouTube 클라이언트입니다. 지원을 활성화하려면 추가적인 권한을 허용해주셔야 합니다. 이건 Chrome과 다른 Chromium 기반 브라우저의 시크릿 모드에서 작동하지 않습니다."
+        "message": "Invidious (invidio.us)는 서드 파티 YouTube 클라이언트입니다. Invidious 지원을 활성화하시려면 추가적인 권한을 허용해주셔야 합니다. 이 기능은 Chrome 및 Chromium 기반 브라우저의 시크릿 모드에서는 작동하지 않습니다."
     },
     "optionsInfo": {
-        "message": "Invidious 지원을 활성화하고, 자동 건너뛰기를 비활성화하고, 버튼 숨기기 등을 해보세요."
+        "message": "Invidious 지원을 활성화하고, 자동 건너뛰기 기능을 끄거나, 사용하지 않는 버튼을 숨겨보세요."
     },
     "addInvidiousInstance": {
         "message": "Invidious 인스턴스 추가"
