@@ -288,8 +288,14 @@
     "youHaveSavedTimeEnd": {
         "message": " heidän elämästään."
     },
+    "statusReminder": {
+        "message": "Tarkista status.sponsor.ajay.app palvelimen tila."
+    },
     "changeUserID": {
         "message": "Tuo/vie sinun UserID:si"
+    },
+    "whatChangeUserID": {
+        "message": "Tämä tulisi pitää yksityisenä. Tämä on kuin salasana eikä sitä pitäisi jakaa kenellekään. Jos joku saa tämän, hän voi esiintyä sinuna."
     },
     "setUserID": {
         "message": "Aseta UserID"
@@ -299,6 +305,9 @@
     },
     "autoSkip": {
         "message": "Ohita Automaattisesti"
+    },
+    "showSkipNotice": {
+        "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
     },
     "keybindCurrentlySet": {
         "message": ". Tällä hetkellä se on asetettu:"
@@ -341,6 +350,12 @@
     },
     "reset": {
         "message": "Nollaa"
+    },
+    "areYouSureReset": {
+        "message": "Oletko varma, että haluat nollata tämän?"
+    },
+    "unlistedCheck": {
+        "message": "Ohita Listaamattomat/Yksityiset Videot"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com-osoitetta tuetaan nyt"
