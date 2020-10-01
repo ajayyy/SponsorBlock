@@ -619,5 +619,41 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Zeige eine Benachrichtigung an, wenn Sie ein Video mit nicht hochgeladenen Segmenten verlassen"
+    },
+    "skip_multiple_segments": {
+        "message": "Mehrere Segmente überspringen?"
+    },
+    "skip_category_sponsor": {
+        "message": "Sponsor überspringen?"
+    },
+    "skip_category_intro": {
+        "message": "Unterbrechung/Intro Animation überspringen?"
+    },
+    "skip_category_intro_short": {
+        "message": "Unterbrechung überspringen?"
+    },
+    "skip_category_outro": {
+        "message": "Endkarten/Credits überspringen?"
+    },
+    "skip_category_interaction": {
+        "message": "Interaktions-Erinnerung (Abonnieren) überspringen?"
+    },
+    "skip_category_interaction_short": {
+        "message": "Interaktions-Erinnerung überspringen?"
+    },
+    "skip_category_selfpromo": {
+        "message": "Unbezahlt/Eigenwerbung überspringen?"
+    },
+    "skip_category_music_offtopic": {
+        "message": "Musik: Nicht-Musik-Segment überspringen?"
+    },
+    "skip_category_music_offtopic_short": {
+        "message": "Nicht-Musik überspringen?"
+    },
+    "skip_category_livestream_messages": {
+        "message": "Livestream: Spenden/Nachrichten vorlesen überspringen?"
+    },
+    "skip_category_livestream_messages_short": {
+        "message": "Nachrichten lesen überspringen?"
     }
 }
