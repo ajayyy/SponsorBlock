@@ -366,6 +366,9 @@
     "reset": {
         "message": "Resetează"
     },
+    "customAddressError": {
+        "message": "Adresa nu este în forma corectă. Asigurați-vă că http:// sau https:// se află la început."
+    },
     "areYouSureReset": {
         "message": "Sunteți sigur că doriți să resetați asta?"
     },
@@ -554,6 +557,9 @@
     },
     "incorrectCategory": {
         "message": "Categorie Greșită"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Acest videoclip este categorisit ca muzică. Ești sigur ca există un sponsor? Dacă acesta este defapt un segment non-muzical, deschideți opțiunile extensiei și activați această categorie. Apoi, puteți trimite acest segment ca non-muzical în loc de sponsol. Vă rugăm să citiți ghidul dacă sunteți confuz."
     },
     "multipleSegments": {
         "message": "Segmente Multiple"
