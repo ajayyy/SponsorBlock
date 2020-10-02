@@ -131,7 +131,7 @@
         "message": "Stemmen op een segment"
     },
     "soFarUHSubmited": {
-        "message": "Tot nu toe hebt u ingediend:"
+        "message": "Tot nu toe heeft u ingediend:"
     },
     "savedPeopleFrom": {
         "message": "U heeft mensen geholpen met het vermijden van "
@@ -200,7 +200,7 @@
         "message": "Bijhouden van het aantal keren overslaan inschakelen"
     },
     "whatViewTracking": {
-        "message": "Deze functie houdt bij welke segmenten u hebt overgeslagen om gebruikers te laten weten hoeveel hun indiening anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer u een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
+        "message": "Deze functie houdt bij welke segmenten u hebt overgeslagen om gebruikers te laten weten hoezeer hun indiening anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer u een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
     },
     "enableQueryByHashPrefix": {
         "message": "Opvragen via hash-voorvoegsel"
@@ -540,7 +540,7 @@
         "message": "Uw kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
     },
     "previewColor": {
-        "message": "Kleur van voorbeeld",
+        "message": "Voorbeeld van kleur",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
