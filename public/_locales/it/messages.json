@@ -401,7 +401,7 @@
         "message": "Reimposta"
     },
     "customAddressError": {
-        "message": "Il formato di questo indirizzo è errato. Assicurati che http:// o https:// sia presente all'inizio del collegamento e che non sia presente alcuno slash finale."
+        "message": "Questo indirizzo non è nel formatto corretto. Assicurati di avere http:// o https:// all'inizio e nessuno slash alla fine."
     },
     "areYouSureReset": {
         "message": "Sei sicuro di voler eseguire il reset?"
@@ -608,7 +608,7 @@
         "message": "Categoria Errata"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Questo video è categorizzato come musicale. Sei sicuro che questo video contenga uno sponsor? Se questo è in realtà un \"Segmento Non Musicale\", apri le opzioni di questa estensione e attiva questa categoria. Dopodichè, potrai inviare questo segmento come \"Non-Musicale\" anzichè come sponsor. Fai riferimento alla guida utente se dovessi essere confuso."
+        "message": "Questo video è classificato come musica. Sei sicuro che questo video contenga uno sponsor? Se questo è in realtà un \"Segmento Non-Musica\", apri le opzioni di questa estensione e abilita questa categoria. Quindi, è possibile inviare questo segmento come \"Non-Music\" invece di sponsor. Si prega di leggere la guida se si è confusi."
     },
     "multipleSegments": {
         "message": "Segmenti Multipli"
