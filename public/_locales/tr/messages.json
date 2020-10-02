@@ -314,6 +314,9 @@
     "reset": {
         "message": "Sıfırla"
     },
+    "customAddressError": {
+        "message": "Bu adres doğru formatta değil. Başında http:// veya https:// olduğundan ve sonda / işareti olmadığından emin olun."
+    },
     "areYouSureReset": {
         "message": "Bunu sıfırlamak istediğinize emin misiniz?"
     },
