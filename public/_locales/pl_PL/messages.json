@@ -259,6 +259,9 @@
     "skip": {
         "message": "Przewiń"
     },
+    "skip_category": {
+        "message": "Przewiń {0}?"
+    },
     "skipped": {
         "message": "Pominięto"
     },
