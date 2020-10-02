@@ -362,6 +362,9 @@
     "reset": {
         "message": "Rensa"
     },
+    "customAddressError": {
+        "message": "Denna adressen är inte korrekt formaterad. Se till att du har http:// eller https:// i början och inga snedstreck i slutet."
+    },
     "areYouSureReset": {
         "message": "Är du säker på att du vill rensa?"
     },
