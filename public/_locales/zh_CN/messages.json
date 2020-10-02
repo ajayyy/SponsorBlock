@@ -314,6 +314,9 @@
     "reset": {
         "message": "重置"
     },
+    "customAddressError": {
+        "message": "此地址格式不正确。请确保开头有 http:// 或 https:// ，结尾没有斜杠 / 。"
+    },
     "areYouSureReset": {
         "message": "您确定要重置它吗？"
     },
