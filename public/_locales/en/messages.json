@@ -631,41 +631,5 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Send a notification when you leave a video with segments that are not uploaded"
-    },
-    "skip_multiple_segments": {
-        "message": "Skip Multiple Segments?"
-    },
-    "skip_category_sponsor": {
-        "message": "Skip Sponsor?"
-    },
-    "skip_category_intro": {
-        "message": "Skip Intermission/Intro Animation?"
-    },
-    "skip_category_intro_short": {
-        "message": "Skip Intermission?"
-    },
-    "skip_category_outro": {
-        "message": "Skip Endcards/Credits?"
-    },
-    "skip_category_interaction": {
-        "message": "Skip Interaction Reminder (Subscribe)?"
-    },
-    "skip_category_interaction_short": {
-        "message": "Skip Interaction Reminder?"
-    },
-    "skip_category_selfpromo": {
-        "message": "Skip Unpaid/Self Promotion?"
-    },
-    "skip_category_music_offtopic": {
-        "message": "Skip Music: Non-Music Section?"
-    },
-    "skip_category_music_offtopic_short": {
-        "message": "Skip Non-Music?"
-    },
-    "skip_category_livestream_messages": {
-        "message": "Skip Livestream: Donation/Message Readings?"
-    },
-    "skip_category_livestream_messages_short": {
-        "message": "Skip Message Reading?"
     }
 }
