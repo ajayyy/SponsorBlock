@@ -259,6 +259,9 @@
     "skip": {
         "message": "Overslaan"
     },
+    "skip_category": {
+        "message": "Overslaan {0}?"
+    },
     "skipped": {
         "message": "Overgeslagen"
     },
