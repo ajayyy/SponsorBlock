@@ -1,29 +1,29 @@
 {
     "fullName": {
-        "message": "SponsorBlock für YouTube - Überspringe Sponsoren",
+        "message": "SponsorBlock für YouTube - Überspringe gesponserte Videosegmente",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Überspringe Sponsoren, betteln um Abonnenten und mehr in YouTube Videos. Melde Sponsoren in Videos, die du guckst, um anderen Zeit zu sparen.",
+        "message": "Überspringe gesponserte Videosegmente, Betteln um Abonnenten und mehr in YouTube Videos. Melde gesponserte Videosegmente in Videos, die du guckst, um anderen Zeit zu sparen.",
         "description": "Description of the extension."
     },
     "400": {
-        "message": "Der Server meldet, dass diese Anfrage ungültig war"
+        "message": "Der Server meldet, dass diese Anfrage ungültig war."
     },
     "429": {
         "message": "Du hast zu viele Segmente für dieses Video eingereicht. Sind es wirklich so viele?"
     },
     "409": {
-        "message": "Dieser Inhalt wurde bereits eingereicht"
+        "message": "Dieser Inhalt wurde bereits eingereicht."
     },
     "channelWhitelisted": {
         "message": "Der Kanal wurde auf die Whitelist gesetzt!"
     },
     "Segment": {
-        "message": "segment"
+        "message": "Segment"
     },
     "Segments": {
-        "message": "segmente"
+        "message": "Segmente"
     },
     "upvoteButtonInfo": {
         "message": "Diese Einreichung positiv bewerten"
@@ -32,7 +32,7 @@
         "message": "Melden"
     },
     "reportButtonInfo": {
-        "message": "Beitrag als unzulässig melden."
+        "message": "Diese Einreichung als falsch melden"
     },
     "Dismiss": {
         "message": "Abbrechen"
@@ -50,13 +50,13 @@
         "message": "Verstecken"
     },
     "hitGoBack": {
-        "message": "Klicke Nicht Überspringen um die Aktion rückgängig zu machen."
+        "message": "Klicke auf \"Nicht überspringen\" um die Aktion rückgängig zu machen."
     },
     "unskip": {
-        "message": "Nicht Überspringen"
+        "message": "Nicht überspringen"
     },
     "reskip": {
-        "message": "Nochmal Überspringen"
+        "message": "Nochmal überspringen"
     },
     "paused": {
         "message": "Pausiert"
@@ -65,16 +65,16 @@
         "message": "Timer angehalten"
     },
     "confirmMSG": {
-        "message": "Um einzelne Werte zu löschen oder zu ändern, klicke auf den Info-Button, oder öffne die Erweiterungs-Übersicht, indem du das Erweiterungssymbol in der rechten oberen Ecke anklickst."
+        "message": "Um einzelne Werte zu löschen oder zu ändern, klicke auf den Info-Knopf, oder öffne die Erweiterungs-Übersicht, indem du das Erweiterungssymbol in der Ecke oben rechts anklickst."
     },
     "clearThis": {
         "message": "Bist du sicher, dass du Folgendes löschen möchtest?\n\n"
     },
     "Unknown": {
-        "message": "Deine Segmente konnten nicht gesendet werden, bitte versuche es später erneut."
+        "message": "Deine Einreichung konnte nicht übertragen werden, bitte versuche es später erneut."
     },
     "sponsorFound": {
-        "message": "Dieses Video hat Segmente in der Datenbank!"
+        "message": "In der Datenbank wurden überspringbare Segmente für dieses Video gefunden!"
     },
     "sponsor404": {
         "message": "Keine Segmente gefunden"
@@ -104,25 +104,25 @@
         "message": "Möchtest du für Video-ID einreichen"
     },
     "leftTimes": {
-        "message": "Scheinbar hast du einige Segmente noch nicht gesendet. Kehre zur Seite zurück um sie zu senden (sie sind noch gespeichert)."
+        "message": "Scheinbar hast du einige Segmente noch nicht übermittelt. Kehre zur Seite zurück um sie zu senden (sie sind noch gespeichert)."
     },
     "clearTimes": {
         "message": "Alle Segmente löschen"
     },
     "openPopup": {
-        "message": "Öffne SponsorBlock-Popup"
+        "message": "SponsorBlock-Pop-up öffnen"
     },
     "closePopup": {
-        "message": "Popup schließen"
+        "message": "Pop-up schließen"
     },
     "SubmitTimes": {
-        "message": "Segment absenden"
+        "message": "Segmente übermitteln"
     },
     "submitCheck": {
-        "message": "Bist du sicher, dass du das abschicken willst?"
+        "message": "Bist du sicher, dass du dies übermitteln willst?"
     },
     "whitelistChannel": {
-        "message": "Kanal auf Whitelist setzen"
+        "message": "Kanal zur Whitelist hinzufügen"
     },
     "removeFromWhitelist": {
         "message": "Kanal von der Whitelist entfernen"
@@ -131,37 +131,37 @@
         "message": "Über ein Segment abstimmen"
     },
     "soFarUHSubmited": {
-        "message": "Gemeldet wurden von dir bisher"
+        "message": "Von dir bisher gemeldet:"
     },
     "savedPeopleFrom": {
-        "message": "Du hast andere Benutzer bewahrt vor "
+        "message": "\nDamit hast du anderen Nutzer folgendes erspart:"
     },
     "viewLeaderboard": {
-        "message": "Siehe Rangliste"
+        "message": "Wirf einen Blick auf die Rangliste:"
     },
     "here": {
         "message": "hier"
     },
     "recordTimesDescription": {
-        "message": "Klicke auf die Schaltfläche unten, wenn das Segment startet und endet, um es in die Datenbank einzusenden."
+        "message": "Klicke beim Start und am Ende des Segments auf den Knopf unten, um es in die Datenbank zu übermitteln."
     },
     "popupHint": {
-        "message": "Hinweis: Drücke die Semikolon-Taste während du auf ein Video fokussiert bist, um das Start/Ende eines Segments zu melden und das einzureichende Zitat anzugeben. (Dies kann in den Optionen geändert werden)"
+        "message": "Hinweis: Du kannst auch alternativ eine Taste in den Optionen festlegen, welche du drücken kannst, während du das Video guckst, um die Start- und Endpunkte des Segments zu markieren."
     },
     "clearTimesButton": {
         "message": "Zeiten löschen"
     },
     "submitTimesButton": {
-        "message": "Zeiten einsenden"
+        "message": "Zeiten übermitteln"
     },
     "publicStats": {
-        "message": "Dies ist wichtig für die öffentliche Nutzerstatistik. Siehe"
+        "message": "So wirst du in der öffentlichen Rangliste angezeigt. Siehe"
     },
     "setUsername": {
         "message": "Alias festlegen"
     },
     "discordAdvert": {
-        "message": "Tritt dem offiziellen Discord Server bei und teile Anregungen und Feedback!"
+        "message": "Tritt dem offiziellen Discord-Server bei und teile Anregungen und Feedback!"
     },
     "hideThis": {
         "message": "Verstecken"
@@ -170,43 +170,55 @@
         "message": "Optionen"
     },
     "showButtons": {
-        "message": "Knöpfe in YouTube-Leiste zeigen"
+        "message": "Knöpfe im YouTube-Videoplayer anzeigen"
     },
     "hideButtons": {
-        "message": "Knöpfe in YouTube-Leiste verstecken"
+        "message": "Knöpfe im YouTube-Videoplayer deaktivieren"
     },
     "hideButtonsDescription": {
-        "message": "Versteckt die Schaltflächen im YouTube-Player, um Segmente einzusenden."
+        "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
     "showInfoButton": {
-        "message": "Zeige Info-Knopf in Youtube-Leiste"
+        "message": "Zeige Info-Knopf im Youtube-Videoplayer"
     },
     "hideInfoButton": {
-        "message": "Verstecke Info-Knopf in Youtube-Leiste"
+        "message": "Deaktiviere Info-Knopf im Youtube-Videoplayer"
     },
     "whatInfoButton": {
         "message": "Dieser Knopf öffnet ein Pop-up auf der Youtube-Seite."
     },
     "hideDeleteButton": {
-        "message": "Verstecke Löschen-Knopf in Youtube-Leiste"
+        "message": "Deaktiviere den Löschen-Knopf im Youtube-Videoplayer"
     },
     "showDeleteButton": {
-        "message": "Zeige Löschen-Knopf in Youtube-Leiste"
+        "message": "Zeige den Löschen-Knopf im Youtube-Videoplayer"
     },
     "whatDeleteButton": {
-        "message": "Dieser Button im YouTube-Player löscht alle nicht übermittelten Segmente für das aktuelle Video."
+        "message": "Dieser Knopf im YouTube-Videoplayer löscht alle nicht übermittelten Segmente für das aktuelle Video."
     },
     "enableViewTracking": {
-        "message": "Aktiviere mitzählen übersprungener Segmente"
+        "message": "Aktiviere das Mitzählen übersprungener Segmente"
     },
     "whatViewTracking": {
-        "message": "Dieses Feature zählt die Segmente, die du übersprungen hast, um die Benutzer wissen zu lassen, wie sehr ihre Einreichung anderen geholfen hat und als Metrik zusammen mit positiven Bewertungen verwendet wurde, um sicherzustellen, dass Spam nicht in die Datenbank gelangt. Die Erweiterung sendet jedes Mal, wenn du ein Segment überspringst, eine Nachricht an den Server. Hoffentlich ändern die meisten Leute diese Einstellung nicht, so dass die Zahlen korrekt sind. :)"
+        "message": "Diese Funktion verfolgt welche Segmente du übersprungen hast, um andere Benutzer wissen zu lassen, wie sehr ihre Einreichung anderen geholfen hat, sowie um als Metrik zusammen mit positiven Bewertungen sicherzustellen, dass kein Spam in die Datenbank gelangt. Die Erweiterung sendet jedes Mal, wenn du ein Segment überspringst, eine Nachricht an den Server. Hoffentlich ändern die meisten Leute diese Einstellung nicht, so dass die Zahlen korrekt sind. :)"
+    },
+    "enableQueryByHashPrefix": {
+       "message": "Abfrage nach Hash-Präfix"
+    },
+    "whatQueryByHashPrefix": {
+       "message": "Anstatt Segmente mit der Video-ID vom Server anzufordern, werden die ersten 4 Zeichen des Hashs der Video-ID gesendet. Der Server sendet Daten für alle Videos mit ähnlichen Hashes zurück."
+    },
+    "enableRefetchWhenNotFound": {
+       "message": "Segmente für neue Videos neu abrufen"
+    },
+    "whatRefetchWhenNotFound": {
+       "message": "Wenn das Video neu ist und keine Segmente gefunden wurden, wird während des Betrachtens alle paar Minuten erneut eine Anfrage gesendet."
     },
     "showNotice": {
         "message": "Benachrichtigung wieder zeigen"
     },
     "longDescription": {
-        "message": "SponsorBlock lässt dich über Sponsoren, Intros, Outros, Abonnement-Erinnerungen und andere nervige Teile von YouTube-Videos überspringen. SponsorBlock ist eine Crowdsourced Browser-Erweiterung, in der jeder die Start- und Endzeit gesponserter Segmente und anderer Segmente von YouTube-Videos einreicht. Sobald eine Person diese Informationen einreicht, überspringen alle anderen mit dieser Erweiterung das gesponserte Segment. Sie können auch nicht Musik Abschnitte von Musikvideos überspringen.",
+        "message": "SponsorBlock lässt dich gesponserte Videosegmente, Intros, Outros, Interaktions-Erinnerungen, Musikvideoteile ohne Musik und andere nervige Teile von YouTube-Videos überspringen. SponsorBlock ist eine crowdsourced Browser-Erweiterung, in der jeder die Start- und Endzeit gesponserter Videosegmente und anderer Segmente von YouTube-Videos einreicht. Sobald eine Person diese Informationen einreicht, überspringen alle anderen mit dieser Erweiterung das gesponserte Segment.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -222,23 +234,23 @@
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "Gefällt dir immer noch nicht? Dann klicke den Verstecken-Knopf.",
+        "message": "Gefällt dir immer noch nicht? Dann klicke auf den Verstecken-Knopf.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setStartSponsorShortcut": {
-        "message": "Tastenkombination für das Starten eines Segments festlegen"
+        "message": "Eine Taste zum Markieren des Startpunkts eines Segments festlegen"
     },
     "setSubmitKeybind": {
-        "message": "Tastenkombination für das Einsenden festlegen"
+        "message": "Eine Taste für das Übermitteln festlegen"
     },
     "keybindDescription": {
-        "message": "Zum festlegen eine Taste drucken"
+        "message": "Zum Festlegen eine Taste drücken"
     },
     "keybindDescriptionComplete": {
         "message": "Die Taste wurde festgelegt auf: "
     },
     "0": {
-        "message": "Verbindungsüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
+        "message": "Zeitüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
     },
     "disableSkipping": {
         "message": "SponsorBlock deaktivieren"
@@ -272,22 +284,22 @@
         "message": "Audio-Benachrichtigung beim Überspringen"
     },
     "audioNotificationDescription": {
-        "message": "Audio-Benachrichtigung. Es wird ein Ton abgespielt, wenn ein Segment übersprungen wird. Wenn deaktiviert (oder wenn Automatisches-Überspringen deaktiviert ist), wird kein Ton abgespielt."
+        "message": "Es wird ein Ton abgespielt, wenn ein Segment übersprungen wird. Wenn deaktiviert (oder wenn Automatisches-Überspringen deaktiviert ist), wird kein Ton abgespielt."
     },
     "showTimeWithSkips": {
-        "message": "Zeit ohne übersprungenen Inhalt anzeigen"
+        "message": "Videodauer nach Abzug der überspringbaren Videosegmente anzeigen"
     },
     "showTimeWithSkipsDescription": {
-        "message": "Diese Zeit wird in Klammern neben der aktuellen Zeit in der Suchleiste angezeigt. Diese Zeit die gesamte Dauer des Videos ohne jeglicher Segmente. Dies inkludiert auch Segmente, die als \"In Suchleiste anzeigen\" markiert sind."
+        "message": "Diese Zeit wird in Klammern neben der kompletten Videodauer im YouTube-Videoplayer angezeigt. Dies betrifft auch Segmente, die als \"In Suchleiste anzeigen\" markiert sind."
     },
     "youHaveSkipped": {
-        "message": "Du übersprangst "
+        "message": "Du übersprangst bisher "
     },
     "youHaveSaved": {
-        "message": "Du erspartest dir "
+        "message": " und erspartest dir damit "
     },
     "minLower": {
-        "message": "minute"
+        "message": "Minute"
     },
     "minsLower": {
         "message": "Minuten"
@@ -299,25 +311,25 @@
         "message": "Stunden"
     },
     "youHaveSavedTime": {
-        "message": "Du erspartest anderen"
-    },
+        "message": "\nAndere haben dank dir"
+
     "youHaveSavedTimeEnd": {
-        "message": " ihrer Zeit."
+        "message": " ihrer wertvollen Zeit gespart."
     },
     "statusReminder": {
-        "message": "Überprüfe status.sponsor.ajay.app für den Serverstatus."
+        "message": "Du kannst den Serverstatus auf https://status.sponsor.ajay.app überprüfen."
     },
     "changeUserID": {
-        "message": "Benutzer ID importieren/exportieren"
+        "message": "Interne Benutzer-ID importieren/exportieren"
     },
     "whatChangeUserID": {
-        "message": "Dies sollte privat gehalten werden. Dies ist wie ein Passwort und sollte nicht mit jemandem geteilt werden."
+        "message": "Halte diese ID geheim. Sie ist dazu in der Lage dich eindeutig zu identifizieren und sollte mit niemanden geteilt werden."
     },
     "setUserID": {
-        "message": "Benutzer ID festlegen"
+        "message": "Interne Benutzer-ID festlegen"
     },
     "userIDChangeWarning": {
-        "message": "Warnung: Das Ändern der Benutzer ID ist permanent. Sind Sie sicher, dass Sie dies tun möchten? Stellen Sie sicher, dass Sie von Ihren alten Benutzer ID eine Sicherheitskopie machen, nur für den Fall."
+        "message": "Warnung: Das Ändern der Benutzer-ID ist permanent. Bist du dir sicher, dass du das tun möchtest? Lege dir zur Sicherheit erst eine Sicherheitskopie deiner alten ID an."
     },
     "createdBy": {
         "message": "Erstellt von"
@@ -326,37 +338,37 @@
         "message": "Automatisch überspringen"
     },
     "showSkipNotice": {
-        "message": "Zeige Pop-Up nach dem Überspringen eines Segments"
+        "message": "Zeige Pop-up nach dem Überspringen eines Segments"
     },
     "keybindCurrentlySet": {
-        "message": ". Es ist derzeit gesetzt auf:"
+        "message": ". Aktuelle Einstellung:"
     },
     "supportInvidious": {
-        "message": "Unterstütze Invidious"
+        "message": "Invidious-Kompatibilität"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Incongnito-modus auf Chrome und anderen Chromium-Varianten."
+        "message": "Invidious (https://invidio.us) ist ein Drittanbieter-YouTube-Client. Um SponsorBlock mit Invidious verwenden zu können, musst du die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT in Chrome's Inkognitomodus oder anderen Chromium-Varianten."
     },
     "optionsInfo": {
-        "message": "Invidious Support aktivieren, Autoskip deaktivieren, Tasten ausblenden und vieles mehr."
+        "message": "Zu überspringende Videosegmente auswählen, automatisches Überspringen, Knöpfe ein- & ausblenden und noch viel mehr."
     },
     "addInvidiousInstance": {
         "message": "Invidious-Instanzen hinzufügen"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Fügen Sie eine benutzerdefinierte Instanz von Invidious hinzu. Dies muss mit NUR der Domain formatiert werden. Beispiel: invidious.ajay.app"
+        "message": "Füge eine benutzerdefinierte Instanz von Invidious hinzu. Dies darf nur den Domain-Teil beinhalten. Beispiel: \"invidious.ajay.app\""
     },
     "add": {
         "message": "Hinzufügen"
     },
     "addInvidiousInstanceError": {
-        "message": "Dies ist eine ungültige Domain. Dies soll NUR den Domain-Teil beinhalten. Beispiel: invidious.ajay.app"
+        "message": "Du hast eine ungültige Domain eingegeben. Es soll NUR den Domain-Teil beinhalten. Beispiel: invidious.ajay.app"
     },
     "resetInvidiousInstance": {
-        "message": "Invidious Instanzliste zurücksetzen"
+        "message": "Invidious-Instanzliste zurücksetzen"
     },
     "resetInvidiousInstanceAlert": {
-        "message": "Du bist dabei, die Liste der \"Invidious\" Instanzen zurückzusetzen"
+        "message": "Du bist dabei, die Liste der Invidious-Instanzen zurückzusetzen"
     },
     "currentInstances": {
         "message": "Aktuelle Instanzen:"
@@ -365,22 +377,22 @@
         "message": "Minimale Dauer (Sekunden):"
     },
     "minDurationDescription": {
-        "message": "Segmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
+        "message": "Videosegmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
     },
     "shortCheck": {
-        "message": "Die folgende Einreichung ist kürzer als Ihre Mindestdauer. Dies könnte bedeuten, dass dies bereits eingereicht wurde und aufgrund dieser Option einfach ignoriert wird. Sind Sie sicher, dass Sie einreichen möchten?"
+        "message": "Die folgende Einreichung ist kürzer als deine Mindestdauer. Das könnte bedeuten, dass dieses Videosegment bereits eingereicht wurde und aufgrund dieser Option einfach ignoriert wird. Bist du dir sicher, dass du es übermitteln möchtest?"
     },
     "showUploadButton": {
-        "message": "Upload-Button anzeigen"
+        "message": "Upload-Knopf anzeigen"
     },
     "whatUploadButton": {
-        "message": "Diese Schaltfläche erscheint auf dem YouTube-Player, nachdem Sie einen Zeitstempel ausgewählt haben und bereit sind zu senden."
+        "message": "Dieser Knopf erscheint im YouTube-Videoplayer, nachdem du ein Videosegment markiert hast und dazu bereit bist, es zu übermitteln."
     },
     "customServerAddress": {
-        "message": "SponsorBlock Server-Adresse"
+        "message": "SponsorBlock Serveradresse"
     },
     "customServerAddressDescription": {
-        "message": "Die Ardesse die SponsorBlock verwendet um Anfragen an den Server zu senden. Solange sie keine eigene Serverinstanz haben sollte das nicht geändert werden."
+        "message": "Die Adresse die SponsorBlock verwendet um Anfragen an den Server zu senden. Solange du keine eigene Serverinstanz hast, sollte das nicht geändert werden."
     },
     "save": {
         "message": "Speichern"
@@ -389,43 +401,43 @@
         "message": "Zurücksetzen"
     },
     "customAddressError": {
-        "message": "Diese Adresse ist nicht in der richtigen Form. Stellen Sie sicher, dass Sie http:// oder https:// am Anfang haben und keine abschließenden Schrägstriche haben."
+        "message": "Die Adresse sieht nicht richtig aus. Bitte vergewisser dich, dass entweder \"http://\" oder \"https://\" am Anfang steht und keinen abschließenden Schrägstrich am Ende."
     },
     "areYouSureReset": {
-        "message": "Sind sie sicher dass sie das zurücksetzen wollen?"
+        "message": "Bist du dir sicher, dass du das zurücksetzen möchtest?"
     },
     "confirmPrivacy": {
-        "message": "Das Video wurde als nicht aufgelistet erkannt. Klicken Sie auf Abbrechen, wenn Sie nicht nach Segmenten suchen möchten."
+        "message": "Das Video wurde als \"nicht gelistet\" erkannt. Klicke auf \"Abbrechen\", wenn du nicht nach Segmenten suchen möchtest."
     },
     "unlistedCheck": {
-        "message": "Nicht gelistete Videos ignorieren"
+        "message": "Nicht gelistete und private Videos ignorieren"
     },
     "whatUnlistedCheck": {
-        "message": "Diese Einstellung wird SponsorBlock leicht verlangsamen. Das Überspringen von Segment Suchanfragen erfordert das Senden der Video-ID an den Server. Wenn Sie sich Sorgen darüber machen, dass nicht gelistete Video-IDs über das Internet gesendet werden, aktivieren Sie diese Option."
+        "message": "Diese Einstellung wird SponsorBlock leicht verlangsamen. Das Abfragen von überspringbaren Videosegmenten erfordert das Senden der Video-ID an den Server. Wenn du dir Sorgen darüber machst, dass IDs von nicht gelisteten Videos über das Internet gesendet werden, aktiviere diese Option."
     },
     "mobileUpdateInfo": {
-        "message": "m.youtube.com wird jetzt unterstützt"
+        "message": "https://m.youtube.com wird jetzt unterstützt"
     },
     "exportOptions": {
-        "message": "Import/Export aller Optionen"
+        "message": "Import/Export aller Einstellungen"
     },
     "whatExportOptions": {
-        "message": "Dies ist Ihre gesamte Konfiguration in JSON. Dies schließt Ihre Benutzer-ID ein, also sollten Sie diese klug teilen."
+        "message": "Dies ist deine gesamte Konfiguration im JSON-Format. Sie beinhält unter anderem auch deine interne Benutzer-ID und sollte daher ebenfalls mit niemanden geteilt werden."
     },
     "setOptions": {
-        "message": "Optionen einstellen"
+        "message": "Konfiguration aus dem Eingabefeld übernehmen"
     },
     "exportOptionsWarning": {
-        "message": "Warnung: Das Ändern der Benutzer ID ist permanent. Sind Sie sicher, dass Sie dies tun möchten? Stellen Sie sicher, dass Sie von Ihren alten Benutzer ID eine Sicherheitskopie machen, nur für den Fall."
+        "message": "Warnung: Das Übernehmen der Konfiguration aus dem Eingabefeld überschreibt deine aktuellen Einstellungen. Bist du dir sicher, dass du das tun möchtest? Lege dir zur Sicherheit erst eine Sicherheitskopie deiner alten Konfiguration an."
     },
     "incorrectlyFormattedOptions": {
-        "message": "Dieses JSON ist nicht korrekt formatiert. Ihre Einstellungen wurden nicht geändert."
+        "message": "Dieses JSON ist nicht korrekt formatiert und kann daher nicht geladen werden. Es wurden keine Einstellungen geändert."
     },
     "confirmNoticeTitle": {
-        "message": "Segment absenden"
+        "message": "Videosegment übermitteln"
     },
     "submit": {
-        "message": "Senden"
+        "message": "Übermitteln"
     },
     "cancel": {
         "message": "Abbrechen"
@@ -446,50 +458,50 @@
         "message": "Debug-Informationen in Zwischenablage kopieren"
     },
     "copyDebugInformationFailed": {
-        "message": "Fehler beim Schreiben in die Zwischenablage"
+        "message": "Fehler beim Kopieren in die Zwischenablage"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopiert Informationen in die Zwischenablage einem Entwickler zur Verfügung gestellt werden, wenn ein Bug / wenn ein Entwickler es anfordert. Sensitive Informationen wie Ihre Benutzer-ID, Kanäle auf der Whitelist-Liste und benutzerdefinierte Server-Adresse wurden entfernt. Es enthält jedoch Informationen wie den Useragent, den Browser, das Betriebssystem und die Versionsnummer der Erweiterung. "
+        "message": "Kopiert Informationen in die Zwischenablage, welche einem Entwickler gegebenenfalls (z.B. um einen Fehler zu melden) zur Verfügung gestellt werden können. Personenbezogene Daten wie die Benutzer-ID, Kanäle auf der Whitelist und die benutzerdefinierte Serveradresse werden entfernt. Die Debug-Informationen enthalten jedoch unter anderem den Useragent, den Browser, das Betriebssystem und die Versionsnummer der Erweiterung. "
     },
     "copyDebugInformationComplete": {
-        "message": "Die Debug-Informationen wurden in das Clip-Board kopiert. Sie können alle Informationen entfernen, die Sie nicht teilen möchten. Speichern Sie diese in einer Textdatei oder fügen Sie sie in den Fehlerbericht ein."
+        "message": "Die Debug-Informationen wurden in die Zwischenablage kopiert. Du kannst alle Informationen entfernen, die du nicht teilen möchtest. Verwende einen Texteditor um die Informationen in einer Textdatei zu speichern (um diese ggf. einem Fehlerbericht hinzuzufügen)."
     },
     "theKey": {
         "message": "Die Taste"
     },
     "keyAlreadyUsed": {
-        "message": "an eine andere Aktion gebunden. Bitte wählen Sie eine andere Taste."
+        "message": "wird bereits für eine andere Aktion verwendet. Bitte wähle eine andere Taste."
     },
     "to": {
         "message": "bis",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
-        "message": "Sponsor"
+        "message": "Gesponserte Videosegmente"
     },
     "category_sponsor_description": {
-        "message": "Bezahlte Promotion, bezahlte Empfehlungen und direkte Werbung. Nicht für Selbstpromotion oder kostenlose Shoutouts an Webseiten/Produkte, die sie mögen."
+        "message": "Bezahlte Promotion, bezahlte Empfehlungen und direkte Werbung. Nicht für Selbstpromotion oder kostenlose Shoutouts an Anlässe/Personen/Webseiten/Produkte."
     },
     "category_intro": {
-        "message": "Unterbrechung/Intro Animation"
+        "message": "Unterbrechung/Intro-Animation"
     },
     "category_intro_description": {
-        "message": "Ein Intervall ohne tatsächlichen Inhalt. Kann eine Pause, ein Standbild oder eine sich wiederholende Animation sein. Dies sollte nicht für Übergänge verwendet werden, die Informationen enthalten."
+        "message": "Ein Videosegment ohne richtigen Inhalt. Kann eine Pause, ein Standbild oder eine sich wiederholende Animation sein. Dies sollte nicht für Übergänge verwendet werden, die Informationen enthalten."
     },
     "category_intro_short": {
         "message": "Unterbrechung"
     },
     "category_outro": {
-        "message": "Endkarten/Credits"
+        "message": "Endkarten/Quellen/Anerkennungen"
     },
     "category_outro_description": {
-        "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für Schlussfolgerungen mit Informationen."
+        "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für videobeendende Schlussfolgerungen mit Informationen."
     },
     "category_interaction": {
-        "message": "Interaktions-Erinnerung (Abonnieren)"
+        "message": "Interaktions-Erinnerungen (Abonnieren, etc.)"
     },
     "category_interaction_description": {
-        "message": "Wenn es eine kurze Erinnerung gibt, zu abonnieren oder zu folgen in der Mitte des Videos. Wenn es lange ist oder etwas Konkretes ist, sollte es stattdessen unter Selbstpromotion stehen."
+        "message": "Wenn es im Video eine kurze Erinnerung gibt, den Kanal zu abonnieren oder das Video mit \"Mag ich\" zu markieren."
     },
     "category_interaction_short": {
         "message": "Interaktions-Erinnerung"
@@ -498,22 +510,22 @@
         "message": "Unbezahlt/Eigenwerbung"
     },
     "category_selfpromo_description": {
-        "message": "Ähnlich wie bei \"Sponsor\" mit Ausnahme von unbezahlten oder Selbstpromotion. Dies beinhaltet Abschnitte über Waren, Spenden oder Informationen darüber, mit wem sie zusammengearbeitet haben."
+        "message": "Ähnlich wie bei \"gesponserte Videosegmente\", mit Ausnahme von unbezahlten oder Selbstpromotionen. Dies beinhaltet Merchandising (Fan-Artikel), Spenden oder Informationen darüber, mit wem für das Video zusammengearbeitet wurde."
     },
     "category_music_offtopic": {
-        "message": "Musik: Nicht-Musik-Segment"
+        "message": "Musikvideoteile ohne Musik"
     },
     "category_music_offtopic_description": {
-        "message": "Nur für den Einsatz in Musikvideos. Dies beinhaltet Einführungen oder Outros in Musikvideos."
+        "message": "Nur für den Einsatz in Musikvideos."
     },
     "category_music_offtopic_short": {
-        "message": "Nicht-Musik"
+        "message": "Musikvideoteile ohne Musik"
     },
     "category_livestream_messages": {
-        "message": "Livestream: Spenden/Nachrichten vorlesen"
+        "message": "In Livestreams Spenden/Nachrichten vorlesen"
     },
     "category_livestream_messages_short": {
-        "message": "Nachrichten lesen"
+        "message": "Wertschätzungen im Livestream"
     },
     "disable": {
         "message": "Deaktivieren"
@@ -522,33 +534,33 @@
         "message": "Manuelles Überspringen"
     },
     "showOverlay": {
-        "message": "In Zeitleiste anzeigen"
+        "message": "In der Video-Zeitleiste anzeigen"
     },
     "colorFormatIncorrect": {
-        "message": "Ihre Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einem Zahlenzeichen am Anfang sein."
+        "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
     },
     "previewColor": {
-        "message": "Vorschau Farbe",
+        "message": "Farbe für noch nicht übermittelte Videosegmente",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
-        "message": "Suchleisten-Farbe"
+        "message": "Farbe in der Video-Zeitleiste"
     },
     "category": {
         "message": "Kategorie"
     },
     "skipOption": {
-        "message": "Option zum Überspringen",
+        "message": "Verhalten",
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
-        "message": "Betatest Server aktivieren"
+        "message": "Betatest-Server aktivieren"
     },
     "whatEnableTestingServer": {
-        "message": "Deine Einreichungen und Stimmen werden NICHT für den Hauptserver geltend. Benutze dies nur für Tests."
+        "message": "Deine Einreichungen und Bewertungen/Meldungen werden NICHT an den Hauptserver übertragen. Benutze diese Option also nur für Tests."
     },
     "testingServerWarning": {
-        "message": "Alle Einreichungen und Stimmen werden NICHT ZÄHLEN gegenüber dem Hauptserver während der Verbindung zum Test-Server. Stellen Sie sicher, dass sie dies deaktivieren, wenn Sie echte Einreichungen machen möchten."
+        "message": "Alle Einreichungen und Bewertungen/Meldungen werden NICHT an den Hauptserver übertragen. Deaktiviere die Betatest-Server Option um Einreichungen an den Hauptserver zu senden."
     },
     "bracketNow": {
         "message": "(jetzt)"
@@ -560,43 +572,43 @@
         "message": "Wähle eine Kategorie"
     },
     "youMustSelectACategory": {
-        "message": "Sie müssen eine Kategorie für alle Segmente auswählen, die Sie abschicken!"
+        "message": "Du musst eine Kategorie für jedes zu übermittelnde Segment auswählen!"
     },
     "bracketEnd": {
         "message": "(Ende)"
     },
     "hiddenDueToDownvote": {
-        "message": "verborgen: negativ bewertet"
+        "message": "Ausgeblendet: negativ bewertet"
     },
     "hiddenDueToDuration": {
-        "message": "verborgen: zu kurz"
+        "message": "Ausgeblendet: zu kurz"
     },
     "channelDataNotFound": {
         "message": "Kanal-ID wurde noch nicht geladen."
     },
     "adblockerIssue": {
-        "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Möglicherweise ist das dein Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+        "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Eine mögliche Ursache sind Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "itCouldBeAdblockerIssue": {
-        "message": "Falls dies weiterhin geschieht, könnte dies durch Ihren Werbeblocker verursacht werden. Bitte überprüfen Sie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+        "message": "Falls dies weiterhin geschieht, könnte dies durch einen Werbeblocker verursacht werden. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
-        "message": "Kanalprüfung erzwingen vor dem Überspringen von Segmenten"
+        "message": "Erzwingen, dass vor dem Überspringen von Segmenten überprüft wird, ob der Kanal zur Whitelist hinzugefügt wurde"
     },
     "whatForceChannelCheck": {
-        "message": "Standardmäßig überspringt er Segmente sofort, bevor er überhaupt weiß, welcher Kanal das ist. Standardmäßig werden einige Segmente am Anfang des Videos auf den Kanälen auf der Whitelist übersprungen. Das Aktivieren dieser Option verhindert dies, aber das Überspringen hat eine leichte Verzögerung, da die Channel-ID einige Zeit in Anspruch nehmen kann. Diese Verzögerung kann bei schnellen Internetverbindungen unauffällig sein."
+        "message": "Standardmäßig werden Segmente schon übersprungen, bevor SponsorBlock die Kanal-ID einliest. Das kann dazu führen, dass Segmente am Anfang von Videos eines Kanals übersprungen werden, der zur Whitelist hinzugefügt wurde. Diese Option zwingt SponsorBlock dazu, auf die Kanal-ID zu warten - dies resultiert in einer kleinen Verzögerung, die aber mit einer schnellen Internetverbindung nicht spürbar sein sollte."
     },
     "forceChannelCheckPopup": {
-        "message": "Bedenken Sie die Aktivierung von \"Kanalprüfung erzwingen vor dem Überspringen von Segmenten\""
+        "message": "Eventuell solltest du die Option \"Erzwingen, dass vor dem Überspringen von Segmenten überprüft wird, ob der Kanal zur Whitelist hinzugefügt wurde\" aktivieren."
     },
     "downvoteDescription": {
-        "message": "Nicht korrekt/Falsches Timing"
+        "message": "Nicht korrekt oder falsches Timing"
     },
     "incorrectCategory": {
         "message": "Falsche Kategorie"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Dieses Video ist als Musik kategorisiert. Bist du sicher, dass es einen Sponsor hast? Wenn dies tatsächlich ein \"Nicht-Musik-Abschnitt\" ist, öffne die Optionen der Extension und aktiviere diese Kategorie. Danach können Sie dieses Segment als \"Nicht-Musik\" anstelle von \"Sponsor\" einreichen. Bitte lesen Sie die Richtlinien, wenn Sie verwirrt sind."
+        "message": "Dieses Video ist als Musikvideo kategorisiert. Bist du dir sicher, dass es ein gesponsertes Videosegment hat? Wenn dies tatsächlich ein Musikvideoteil ohne Musik ist, öffne die Optionen von SponsorBlock und aktiviere diese Kategorie. Danach kannst du dieses Segment als solches markieren. Bitte lese die Richtlinien, wenn du dir nicht sicher bist."
     },
     "multipleSegments": {
         "message": "Mehrere Segmente"
@@ -605,19 +617,19 @@
         "message": "Richtlinien"
     },
     "readTheGuidelines": {
-        "message": "Lesen Sie die Richtlinien!!",
+        "message": "Beachte die Richtlinien!",
         "description": "Show the first time they submit or if they are \"high risk\""
     },
     "categoryUpdate1": {
         "message": "Kategorien sind hier!"
     },
     "categoryUpdate2": {
-        "message": "Öffnen Sie die Optionen um Intros, Outros, Merch usw. zu überspringen."
+        "message": "Öffne die Optionen um das Verhalten bei Intros, Outros, Merchandising (Fanartikel) usw. einzustellen."
     },
     "unsubmittedWarning": {
-        "message": "Benachrichtigung für nicht eingereichte Segmente"
+        "message": "Benachrichtigung bei nicht übertragenden Segmentem"
     },
     "unsubmittedWarningDescription": {
-        "message": "Zeige eine Benachrichtigung an, wenn Sie ein Video mit nicht hochgeladenen Segmenten verlassen"
+        "message": "Zeigt eine Benachrichtigung an, wenn du ein Video mit nicht übertragenden Segmenten verlässt."
     }
 }
