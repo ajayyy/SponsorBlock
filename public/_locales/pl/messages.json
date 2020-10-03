@@ -56,7 +56,7 @@
         "message": "Cofnij"
     },
     "reskip": {
-        "message": "Pomiń"
+        "message": "Przewiń"
     },
     "paused": {
         "message": "Zatrzymany"
@@ -380,7 +380,7 @@
         "message": "Adres serwera SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "Adres, którego SponsorBlock używa do wykonywania połączeń z serwerem. O ile nie posiadasz własnego serwera, nie powinno to być zmieniane."
+        "message": "Adres SponsorBlock używa do wykonywania połączeń do serwera.\nDo póki nie posiadasz własnego serwera, to nie powinno być zmieniane."
     },
     "save": {
         "message": "Zapisz"
