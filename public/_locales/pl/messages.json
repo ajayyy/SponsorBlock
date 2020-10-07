@@ -380,7 +380,7 @@
         "message": "Adres serwera SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "Adres SponsorBlock używa do wykonywania połączeń do serwera.\nDo póki nie posiadasz własnego serwera, to nie powinno być zmieniane."
+        "message": "Adres, który jest używany przez SponsorBlock przy połączeniach do serwera.\nDopóki nie posiadasz własnego serwera, nie powinieneś tego zmieniać."
     },
     "save": {
         "message": "Zapisz"
