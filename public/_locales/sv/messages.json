@@ -3,6 +3,10 @@
         "message": "SponsorBlock för YouTube - Hoppa över sponsring",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Hoppa över sponsring, prenumerationstiggande och mer på YouTube-videor. Rapportera sponsorer på videor du tittar på för att spara andras tid.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Felaktigt anrop enligt servern"
     },
@@ -138,6 +142,12 @@
     "here": {
         "message": "här"
     },
+    "recordTimesDescription": {
+        "message": "Klicka på knappen nedan när segmentet startar och slutar för att spela in och skicka in det till databasen."
+    },
+    "popupHint": {
+        "message": "Tips: Tryck på tangenten semikolon medan du fokuserar på en video för att rapportera början/slutet av ett segment för att skicka in. (Detta kan ändras i alternativen)"
+    },
     "clearTimesButton": {
         "message": "Rensa Tider"
     },
@@ -189,8 +199,18 @@
     "enableViewTracking": {
         "message": "Aktivera spåra antalet hoppa över"
     },
+    "whatViewTracking": {
+        "message": "Den här funktionen spårar vilka segment du har hoppat över för att låta användarna veta hur mycket tid en användare har sparat andra och tillsammans med användarnas röster säkerställa att spam inte kommer in i databasen. Detta tillägg skickar ett meddelande till servern varje gång du hoppar över ett segment. Förhoppningsvis ändrar inte folk den här inställningen så statistiken hålls tillförlitlig. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Fråga efter hash-prefix"
+    },
     "showNotice": {
         "message": "Visa Notisen Igen"
+    },
+    "longDescription": {
+        "message": "SponsorBlock låter dig hoppa över sponsormeddelanden, introduktioner, eftertexter, prenumerationspåminnelser och andra irriterande delar av YouTube-videor. SponsorBlock är ett crowdsourced webbläsartillägg som låter vem som helst att skicka in start- och sluttid på sponsorsegment och andra segment av YouTube-videor. När en person skickar in denna information kommer alla andra som har detta tillägg installerat att hoppa över det sponsrade segmentet. Du kan även hoppa över icke-musikavsnitt i musikvideor.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Hemsida",
@@ -207,6 +227,9 @@
     "noticeUpdate2": {
         "message": "Om du ändå inte gillar det, tryck på \"Visa aldrig\"-knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Ange den tangent som ska fungera som starttangent för ett segment"
     },
     "setSubmitKeybind": {
         "message": "Välj knapp att koppla till rapportering av sponsormeddelande"
@@ -239,6 +262,9 @@
     "skip": {
         "message": "Hoppa över"
     },
+    "skip_category": {
+        "message": "Hoppa över {0}?"
+    },
     "skipped": {
         "message": "Skippat"
     },
@@ -250,6 +276,9 @@
     },
     "audioNotification": {
         "message": "Ljudeffekt vid hopp"
+    },
+    "audioNotificationDescription": {
+        "message": "Ljudavisering vid hoppa över kommer att spela upp ett ljud när ett segment hoppas över. Om inaktiverad (eller om hoppa över automatiskt är inaktiverat), kommer inget ljud att spelas upp."
     },
     "showTimeWithSkips": {
         "message": "Visa tiden med det överhoppade borttaget"
@@ -301,6 +330,9 @@
     },
     "autoSkip": {
         "message": "Hoppa Över Automatiskt"
+    },
+    "showSkipNotice": {
+        "message": "Visa ett meddelande efter att ett segment har hoppats över"
     },
     "keybindCurrentlySet": {
         "message": ". Är just nu kopplat till:"
@@ -368,8 +400,14 @@
     "areYouSureReset": {
         "message": "Är du säker på att du vill rensa?"
     },
+    "confirmPrivacy": {
+        "message": "Den här videon verkar vara olistad. Klicka på avbryt om du inte vill söka efter överhoppade segment."
+    },
     "unlistedCheck": {
         "message": "Ignorera Olistade Videor"
+    },
+    "whatUnlistedCheck": {
+        "message": "Den här inställningen kommer att slöa ner SponsorBlock. Segmentöverhoppssökningar kräver att video-ID skickas till servern. Om du är orolig över att olistade video-ID:s skickas över internet, aktivera då detta alternativ."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com stöds nu"
@@ -434,6 +472,9 @@
     },
     "category_sponsor": {
         "message": "Sponsormeddelande"
+    },
+    "category_intro": {
+        "message": "Paus/Introduktion"
     },
     "category_intro_short": {
         "message": "Uppehåll"
@@ -523,6 +564,9 @@
     },
     "forceChannelCheck": {
         "message": "Tvinga kontroll av kanalen innan hoppa över"
+    },
+    "forceChannelCheckPopup": {
+        "message": "Överväg att aktivera \"Tvinga kontroll av kanalen innan hoppa över\""
     },
     "downvoteDescription": {
         "message": "Fel timing"
