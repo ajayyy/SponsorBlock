@@ -1007,7 +1007,13 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     let autoSkip: boolean = utils.getCategorySelection(skippingSegments[0].category)?.option === CategorySkipOption.AutoSkip;
 
     if ((autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) && v.currentTime !== skipTime[1]) {
-        v.currentTime = skipTime[1];
+        // Fix for looped videos not working when skipping to the end #426
+        // for some reason you also can't skip to 1 second before the end
+        if (v.loop && v.duration > 1 && skipTime[1] >= v.duration - 1) {
+            v.currentTime = 0;
+        } else {
+            v.currentTime = skipTime[1];
+        }
     }
 
     if (openNotice) {
