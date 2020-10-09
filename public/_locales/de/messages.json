@@ -271,6 +271,9 @@
     "skip": {
         "message": "Überspringen"
     },
+    "skip_category": {
+        "message": "{0} überspringen?"
+    },
     "skipped": {
         "message": "Übersprungen"
     },
