@@ -259,6 +259,9 @@
     "skip": {
         "message": "Omitir"
     },
+    "skip_category": {
+        "message": "Omitir {0}?"
+    },
     "skipped": {
         "message": "Omitido"
     },

@@ -44,6 +44,9 @@
     "skip": {
         "message": "Preskočiť"
     },
+    "skip_category": {
+        "message": "Preskočiť {0}?"
+    },
     "disableAutoSkip": {
         "message": "Zakázať Automatické Preskočenie"
     },

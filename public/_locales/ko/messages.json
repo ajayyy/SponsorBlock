@@ -195,6 +195,9 @@
     "skip": {
         "message": "스킵"
     },
+    "skip_category": {
+        "message": "스킵 {0}?"
+    },
     "skipped": {
         "message": "스킵됨"
     },

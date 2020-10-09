@@ -259,6 +259,9 @@
     "skip": {
         "message": "Пропустити"
     },
+    "skip_category": {
+        "message": "Пропустити {0}?"
+    },
     "skipped": {
         "message": "Пропущено"
     },

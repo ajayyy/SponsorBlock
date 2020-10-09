@@ -246,6 +246,9 @@
     "skip": {
         "message": "Sari"
     },
+    "skip_category": {
+        "message": "Sari {0}?"
+    },
     "skipped": {
         "message": "Sărit"
     },

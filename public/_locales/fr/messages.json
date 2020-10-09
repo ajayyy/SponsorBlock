@@ -228,6 +228,9 @@
     "skip": {
         "message": "Passer"
     },
+    "skip_category": {
+        "message": "Passer {0}?"
+    },
     "skipped": {
         "message": "Passé"
     },

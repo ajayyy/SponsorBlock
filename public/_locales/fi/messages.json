@@ -252,6 +252,9 @@
     "skip": {
         "message": "Ohita"
     },
+    "skip_category": {
+        "message": "Ohita {0}?"
+    },
     "skipped": {
         "message": "Ohitettu"
     },

@@ -200,6 +200,9 @@
     "skip": {
         "message": "Pular"
     },
+    "skip_category": {
+        "message": "Pular {0}?"
+    },
     "skipped": {
         "message": "Pulado"
     },

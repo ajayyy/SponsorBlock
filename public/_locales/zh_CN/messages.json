@@ -200,6 +200,9 @@
     "skip": {
         "message": "跳过"
     },
+    "skip_category": {
+        "message": "跳过 {0}?"
+    },
     "skipped": {
         "message": "跳过"
     },
