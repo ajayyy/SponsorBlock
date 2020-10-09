@@ -364,7 +364,7 @@
         "message": "Nollaa"
     },
     "customAddressError": {
-        "message": "Tämä osoite ei ole oikeassa muodossa. Varmista, että sinulla on http:// tai http:// alussa eikä perässä kauttaviivoja."
+        "message": "Tämä osoite ei ole oikeassa muodossa. Varmista, että sinulla on http:// tai https:// alussa eikä perässä kauttaviivoja."
     },
     "areYouSureReset": {
         "message": "Oletko varma, että haluat nollata tämän?"
