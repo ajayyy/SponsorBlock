@@ -205,6 +205,9 @@
     "enableQueryByHashPrefix": {
         "message": "Consulta por prefijo Hash"
     },
+    "enableRefetchWhenNotFound": {
+        "message": "Actualizar segmentos en nuevos vídeos"
+    },
     "whatRefetchWhenNotFound": {
         "message": "Si el video es nuevo, y no hay segmentos encontrados, seguirá recuperándose cada pocos minutos mientras veas."
     },
@@ -264,6 +267,9 @@
     },
     "skip": {
         "message": "Omitir"
+    },
+    "skip_category": {
+        "message": "¿Saltarse {0}?"
     },
     "skipped": {
         "message": "Omitido"
