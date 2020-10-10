@@ -60,6 +60,9 @@
     "Unknown": {
         "message": "اشکالی در ثبت کردن زمان های ارسالی شما پیش آمد. لطفا بعداً دوباره تلاش کنید."
     },
+    "sponsor404": {
+        "message": "هیچ بخشی پیدا نشد"
+    },
     "sponsorStart": {
         "message": "بخش اینجا شروع می‌شود"
     },
@@ -75,13 +78,83 @@
     "serverDown": {
         "message": "به‌نظر می‌رسد که ارتباط سرور قطع شده است. با توسعه‌دهنده سریعاً تماس بگیرید."
     },
+    "connectionError": {
+        "message": "خطای شبکه رخ داده است. کد خطا: "
+    },
     "wantToSubmit": {
         "message": "آی می‌خواهید که گزارش را ثبت کنید برای ویدیوی"
+    },
+    "clearTimes": {
+        "message": "پاک‌نمودن بخش‌ها"
+    },
+    "openPopup": {
+        "message": "نمایش پنجره اسپانسر بلاک"
     },
     "closePopup": {
         "message": "بستن پنجره"
     },
+    "SubmitTimes": {
+        "message": "ثبت بخش‌ها"
+    },
+    "submitCheck": {
+        "message": "مطمئن هستید که میخواهید این را ثبت کنید؟"
+    },
+    "whitelistChannel": {
+        "message": "قرار دادن کانال در لیست سفید"
+    },
+    "removeFromWhitelist": {
+        "message": "حذف کانال از لیست سفید"
+    },
+    "voteOnTime": {
+        "message": "رأی دهی به یک بخش"
+    },
+    "soFarUHSubmited": {
+        "message": "شما تا اینجا، ثبت کرده اید"
+    },
+    "savedPeopleFrom": {
+        "message": "شما دیگران را نجات دادید از "
+    },
+    "viewLeaderboard": {
+        "message": "نمایش لیست امتیاز ها"
+    },
     "here": {
         "message": "اینجا"
+    },
+    "clearTimesButton": {
+        "message": "حذف دفعات"
+    },
+    "submitTimesButton": {
+        "message": "ثبت دفعات"
+    },
+    "setUsername": {
+        "message": "تنظیم نام کاربری"
+    },
+    "hideThis": {
+        "message": "مخفی‌سازی"
+    },
+    "Options": {
+        "message": "گزینه‌ها"
+    },
+    "showButtons": {
+        "message": "نمایش کلید ها در پخش‌کننده یوتیوب"
+    },
+    "hideButtons": {
+        "message": "مخفی‌سازی کلید ها در پخش‌کننده یوتیوب"
+    },
+    "longDescription": {
+        "message": "افزونه اسپانسر بلاک به شما امکان رد کردن بخش‌های تبلیغاتی (اسپانسر شده)، قسمت‌های شروع و پایان ویدیو، درخواست ساب‌اسکرایب و سایر قسمت‌های آزار دهنده یوتیوب را می‌دهد. اسپانسر بلاک یک افزونه مرورگر است که به هر کسی امکان ثبت زمان شروع و پایان بخش های اسپانسر شده و سایر بخش های ویدیو های یوتیوب را می‌دهد. پس از اینکه هر کاربر این اطلاعات را ثبت کرده و گزارش دهد، بقیه کاربرانی که از این افزونه استفاده می‌کنند مستقیماً بخش اسپانسر شده ویدیو را رد خواهند کرد. شما همچنین می‌توانید در ویدیو های نماهنگ (موزیک ویدیو)، قسمت‌های غیر موسیقی ویدیو را رد کنید.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "وب‌سایت",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "سورس کد",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate2": {
+        "message": "اگر همچنان این را نمی‌پسندید، گزینه هرگز نمایش نده را انتخاب کنید.",
+        "description": "The second line of the message displayed after the notice was upgraded."
     }
 }
