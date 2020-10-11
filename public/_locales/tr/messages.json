@@ -3,6 +3,10 @@
         "message": "Youtube için SponsorBlock - Sponsorlukları Atla",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Skip sponsorships, subscription begging and more on YouTube videos. Report sponsors on videos you watch to save others' time.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Sunucu isteğin geçersiz olduğunu iletti"
     },
@@ -14,6 +18,12 @@
     },
     "channelWhitelisted": {
         "message": "Kanal beyazlistede!"
+    },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segments"
     },
     "upvoteButtonInfo": {
         "message": "Bu öneriye oy ver"
@@ -63,6 +73,18 @@
     "Unknown": {
         "message": "Sponsor sürelerini yollarken bir sorun oluştur, lütfen tekrar deneyin."
     },
+    "sponsorFound": {
+        "message": "This video has segments in the database!"
+    },
+    "sponsor404": {
+        "message": "No segments found"
+    },
+    "sponsorStart": {
+        "message": "Segment Starts Now"
+    },
+    "sponsorEnd": {
+        "message": "Segment Ends Now"
+    },
     "noVideoID": {
         "message": "Bu sekmede YouTube videosu bulunamadı. Bu sekmenin bir YouTube sekmesi olduğundan eminseniz, bu pencereyi kapatıp, tekrar açın. Eğer o da işe yaramazsa, sekmeyi yenilemeyi deneyin."
     },
@@ -77,6 +99,9 @@
     },
     "connectionError": {
         "message": "Bağlantı hatası oluştu. Hata kodu: "
+    },
+    "wantToSubmit": {
+        "message": "Do you want to submit for video id"
     },
     "openPopup": {
         "message": "SponsorBlock Penceresini Aç"
