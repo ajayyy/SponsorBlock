@@ -1,18 +1,193 @@
 {
+    "fullName": {
+        "message": "SponorBlock YouTube-ra - Szponzorok kihagyása",
+        "description": "Name of the extension."
+    },
+    "Segment": {
+        "message": "szegmens"
+    },
+    "Segments": {
+        "message": "részletek"
+    },
+    "upvoteButtonInfo": {
+        "message": "Részlet felszavazása"
+    },
+    "reportButtonTitle": {
+        "message": "Bejelentés"
+    },
     "Loading": {
         "message": "Betöltés..."
     },
     "Hide": {
         "message": "Sose mutassa"
     },
+    "unskip": {
+        "message": "Kihagyás visszavonása"
+    },
+    "reskip": {
+        "message": "Újra-kihagyás"
+    },
     "paused": {
         "message": "Szüneteltetve"
+    },
+    "manualPaused": {
+        "message": "Időzítő megállítva"
+    },
+    "sponsorStart": {
+        "message": "Részlet kezdődik most"
+    },
+    "sponsorEnd": {
+        "message": "Részlet végződik most"
+    },
+    "success": {
+        "message": "Siker!"
+    },
+    "voted": {
+        "message": "Szavaztál!"
+    },
+    "closePopup": {
+        "message": "Doboz bezárása"
+    },
+    "voteOnTime": {
+        "message": "Szavazz egy részleten"
+    },
+    "here": {
+        "message": "itt"
+    },
+    "hideThis": {
+        "message": "Rejtsd el ezt"
+    },
+    "Options": {
+        "message": "Beállítások"
+    },
+    "showButtons": {
+        "message": "Gombok mutatása a YouTube lejátszón"
+    },
+    "hideButtons": {
+        "message": "Gombok elrejtése a YouTube lejátszón"
+    },
+    "hideButtonsDescription": {
+        "message": "Ez elrejti a kihagyásos részletek létrehozásához szükséges gombokat a YouTube lejátszón."
+    },
+    "showInfoButton": {
+        "message": "Info gomb mutatása a YouTube lejátszón"
+    },
+    "hideInfoButton": {
+        "message": "Info gomb elrejtése a YouTube lejátszón"
+    },
+    "whatInfoButton": {
+        "message": "Ez a gomb az, ami feldob egy dobozt a YouTube oldalon."
+    },
+    "hideDeleteButton": {
+        "message": "Törlés gomb elrejtése a YouTube lejátszón"
+    },
+    "showDeleteButton": {
+        "message": "Törlés gomb mutatása a YouTube lejátszón"
+    },
+    "website": {
+        "message": "Weboldal",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Forráskód",
+        "description": "Used on Firefox Store Page"
+    },
+    "disableSkipping": {
+        "message": "SponsorBlock kikapcsolása"
+    },
+    "enableSkipping": {
+        "message": "SponsorBlock bekapcsolása"
+    },
+    "yourWork": {
+        "message": "Te munkád",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "errorCode": {
+        "message": "Hibakód: "
+    },
+    "skip": {
+        "message": "Kihagy"
+    },
+    "skip_category": {
+        "message": "Kihagyod {0}-t?"
+    },
+    "skipped": {
+        "message": "Kihagyva"
+    },
+    "disableAutoSkip": {
+        "message": "Auto kihagyás kikapcsolása"
+    },
+    "enableAutoSkip": {
+        "message": "Auto kihagyás bekapcsolása"
+    },
+    "audioNotification": {
+        "message": "Hangjelzés kihagyáskor"
+    },
+    "audioNotificationDescription": {
+        "message": "Hangjelzés kihagyáskor egy hangot fog játszani amikor kihagyunk egy részletet. Ha ez ki van kapcsolva (vagy az auto kihagyás), nem lesz semmilyen hang lejátszva."
+    },
+    "youHaveSkipped": {
+        "message": "Te kihagytál "
+    },
+    "youHaveSaved": {
+        "message": "Te mentettél magadnak "
+    },
+    "minLower": {
+        "message": "perc"
+    },
+    "minsLower": {
+        "message": "perc"
+    },
+    "hourLower": {
+        "message": "óra"
+    },
+    "hoursLower": {
+        "message": "óra"
+    },
+    "youHaveSavedTime": {
+        "message": "Megmentettél embereknek"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " az életüknek."
+    },
+    "statusReminder": {
+        "message": "Nézd meg status.sponsor.ajay.app-t a szerver állapotához."
+    },
+    "changeUserID": {
+        "message": "UserID importálása / exportálása"
+    },
+    "setUserID": {
+        "message": "UserID beállítása"
+    },
+    "createdBy": {
+        "message": "Készítette"
+    },
+    "autoSkip": {
+        "message": "Auto kihagyás"
+    },
+    "showSkipNotice": {
+        "message": "Jelezzen ha egy részlet ki van hagyva"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Jelenleg állítva van:"
+    },
+    "add": {
+        "message": "Hozzáadás"
+    },
+    "customServerAddress": {
+        "message": "SponsorBlock szerver címe"
     },
     "save": {
         "message": "Mentés"
     },
     "reset": {
         "message": "Visszaállítás"
+    },
+    "exportOptions": {
+        "message": "Összes beállítás importálása / exportálása"
+    },
+    "submit": {
+        "message": "Elküld"
     },
     "cancel": {
         "message": "Mégse"
@@ -23,7 +198,87 @@
     "preview": {
         "message": "Előnézet"
     },
+    "inspect": {
+        "message": "Megvizsgál"
+    },
     "edit": {
         "message": "Szerkesztés"
+    },
+    "theKey": {
+        "message": "A kulcs"
+    },
+    "category_sponsor": {
+        "message": "Szponzor"
+    },
+    "category_interaction_short": {
+        "message": "Szünet"
+    },
+    "category_music_offtopic_short": {
+        "message": "Nem-Zene"
+    },
+    "category_livestream_messages": {
+        "message": "Élő adás: Adomány / üzenet olvasások"
+    },
+    "category_livestream_messages_short": {
+        "message": "Üzenet olvasás"
+    },
+    "disable": {
+        "message": "Kikapcsol"
+    },
+    "manualSkip": {
+        "message": "Manuális kihagyás"
+    },
+    "showOverlay": {
+        "message": "Keresősáv megjelenítése"
+    },
+    "previewColor": {
+        "message": "Előnézeti szín",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "category": {
+        "message": "Kategória"
+    },
+    "bracketNow": {
+        "message": "(Most)"
+    },
+    "moreCategories": {
+        "message": "További kategóriák"
+    },
+    "chooseACategory": {
+        "message": "Válassz egy kategóriát"
+    },
+    "bracketEnd": {
+        "message": "(Vége)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "elrejtve: leszavazva"
+    },
+    "hiddenDueToDuration": {
+        "message": "elrejtve: túl rövid"
+    },
+    "channelDataNotFound": {
+        "message": "Csatorna azonosító nem töltődött be."
+    },
+    "downvoteDescription": {
+        "message": "Helytelen/rossz időzítés"
+    },
+    "incorrectCategory": {
+        "message": "Hibás kategória"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Ez a videó zeneként van kategorizálva. Biztos vagy benne, hogy ennek van szponzorja? Ha ez valójában egy \"nem-zene részlet\", nyisd meg a bővítmény beállításait és kapcsold be ezt a kategóriát. Ezt követően elküldheted ezt a részletet \"Nem-Zene\"-ként szponzor helyett. Olvasd el az irányelveket, ha nem érted."
+    },
+    "multipleSegments": {
+        "message": "Több részlet"
+    },
+    "guidelines": {
+        "message": "Irányelvek"
+    },
+    "readTheGuidelines": {
+        "message": "Olvasd el az irányelveket!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Itt vannak a kategóriák!"
     }
 }
