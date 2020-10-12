@@ -269,7 +269,7 @@
         "message": "Skippat"
     },
     "disableAutoSkip": {
-        "message": "Avaktivera Hoppa Över Automatiskt"
+        "message": "Inaktivera hoppa över automatiskt"
     },
     "enableAutoSkip": {
         "message": "Aktivera Hoppa Över Automatiskt"
@@ -335,7 +335,7 @@
         "message": "Visa ett meddelande efter att ett segment har hoppats över"
     },
     "keybindCurrentlySet": {
-        "message": ". Är just nu kopplat till:"
+        "message": ". Nuvarande snabbtangent är:"
     },
     "supportInvidious": {
         "message": "Stöd Invidious"
@@ -449,7 +449,7 @@
         "message": "Redigera"
     },
     "copyDebugInformation": {
-        "message": "Kopiera Debuginformation Till Urklipp"
+        "message": "Kopiera felsökningsinformation till urklippet"
     },
     "copyDebugInformationFailed": {
         "message": "Misslyckades med att kopiera debuginformation till urklipp"
