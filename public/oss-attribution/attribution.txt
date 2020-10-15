@@ -1,5 +1,5 @@
 @babel/code-frame
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-code-frame>
+7.10.4 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -27,7 +27,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/core
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-core>
+7.11.1 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -55,7 +55,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/generator
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-generator>
+7.11.0 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -83,7 +83,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/helper-function-name
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-helper-function-name>
+7.10.4 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -111,7 +111,175 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/helper-get-function-arity
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-helper-get-function-arity>
+7.10.4 <https://github.com/babel/babel>
+MIT License
+
+Copyright (c) 2014-present Sebastian McKenzie and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+******************************
+
+@babel/helper-member-expression-to-functions
+7.11.0 <https://github.com/babel/babel>
+MIT License
+
+Copyright (c) 2014-present Sebastian McKenzie and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+******************************
+
+@babel/helper-module-imports
+7.10.4 <https://github.com/babel/babel>
+MIT License
+
+Copyright (c) 2014-present Sebastian McKenzie and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+******************************
+
+@babel/helper-module-transforms
+7.11.0 <https://github.com/babel/babel>
+MIT License
+
+Copyright (c) 2014-present Sebastian McKenzie and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+******************************
+
+@babel/helper-optimise-call-expression
+7.10.4 <https://github.com/babel/babel>
+MIT License
+
+Copyright (c) 2014-present Sebastian McKenzie and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+******************************
+
+@babel/helper-replace-supers
+7.10.4 <https://github.com/babel/babel>
+MIT License
+
+Copyright (c) 2014-present Sebastian McKenzie and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+******************************
+
+@babel/helper-simple-access
+7.10.4 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -139,7 +307,35 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/helper-split-export-declaration
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-helper-split-export-declaration>
+7.11.0 <https://github.com/babel/babel>
+MIT License
+
+Copyright (c) 2014-present Sebastian McKenzie and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+******************************
+
+@babel/helper-validator-identifier
+7.10.4 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -167,7 +363,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/helpers
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-helpers>
+7.10.4 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -195,7 +391,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/highlight
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-highlight>
+7.10.4 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -223,7 +419,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/parser
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-parser>
+7.11.3 <https://github.com/babel/babel>
 Copyright (C) 2012-2014 by various contributors (see AUTHORS)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -248,7 +444,7 @@ THE SOFTWARE.
 ******************************
 
 @babel/template
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-template>
+7.10.4 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -276,7 +472,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/traverse
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-traverse>
+7.11.0 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -304,7 +500,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 @babel/types
-7.8.3 <https://github.com/babel/babel/tree/master/packages/babel-types>
+7.11.0 <https://github.com/babel/babel>
 MIT License
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -1313,7 +1509,7 @@ POSSIBILITY OF SUCH DAMAGE.
 ******************************
 
 acorn
-6.4.0 <https://github.com/acornjs/acorn>
+6.4.1 <https://github.com/acornjs/acorn>
 Copyright (C) 2012-2018 by various contributors (see AUTHORS)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1450,10 +1646,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ******************************
 
 anymatch
-2.0.0 <https://github.com/micromatch/anymatch>
+3.1.1 <https://github.com/micromatch/anymatch>
 The ISC License
 
-Copyright (c) 2014 Elan Shanker
+Copyright (c) 2019 Elan Shanker, Paul Miller (https://paulmillr.com)
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -2432,10 +2628,10 @@ authors: Michael Mclaughlin <M8ch88l@gmail.com>
 ******************************
 
 binary-extensions
-1.13.1 <https://github.com/sindresorhus/binary-extensions>
+2.1.0 <https://github.com/sindresorhus/binary-extensions>
 MIT License
 
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2019 Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com), Paul Miller (https://paulmillr.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -2508,7 +2704,7 @@ SOFTWARE.
 ******************************
 
 braces
-2.3.2 <https://github.com/micromatch/braces>
+3.0.2 <https://github.com/micromatch/braces>
 The MIT License (MIT)
 
 Copyright (c) 2014-2018, Jon Schlinkert.
@@ -3358,9 +3554,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ******************************
 
 chokidar
-2.1.8 <https://github.com/paulmillr/chokidar>
-license: MIT
-authors: Paul Miller <https://paulmillr.com>
+3.4.2 <https://github.com/paulmillr/chokidar>
+The MIT License (MIT)
+
+Copyright (c) 2012-2019 Paul Miller (https://paulmillr.com), Elan Shanker
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
 
 ******************************
 
@@ -4266,7 +4482,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 ******************************
 
 elliptic
-6.5.2 <https://github.com/indutny/elliptic>
+6.5.3 <https://github.com/indutny/elliptic>
 license: MIT
 authors: Fedor Indutny <fedor@indutny.com>
 
@@ -4705,10 +4921,10 @@ USE OR PERFORMANCE OF THIS SOFTWARE.
 ******************************
 
 fill-range
-4.0.0 <https://github.com/jonschlinkert/fill-range>
+7.0.1 <https://github.com/jonschlinkert/fill-range>
 The MIT License (MIT)
 
-Copyright (c) 2014-2017, Jon Schlinkert
+Copyright (c) 2014-present, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5019,10 +5235,10 @@ https://creativecommons.org/licenses/by-sa/4.0/
 ******************************
 
 glob-parent
-3.1.0 <https://github.com/es128/glob-parent>
+5.1.1 <https://github.com/gulpjs/glob-parent>
 The ISC License
 
-Copyright (c) 2015 Elan Shanker
+Copyright (c) 2015, 2019 Elan Shanker
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -5492,28 +5708,16 @@ THE SOFTWARE.
 ******************************
 
 is-binary-path
-1.0.1 <https://github.com/sindresorhus/is-binary-path>
-The MIT License (MIT)
+2.1.0 <https://github.com/sindresorhus/is-binary-path>
+MIT License
 
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2019 Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com), Paul Miller (https://paulmillr.com)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ******************************
@@ -5721,10 +5925,10 @@ THE SOFTWARE.
 ******************************
 
 is-number
-3.0.0 <https://github.com/jonschlinkert/is-number>
+7.0.0 <https://github.com/jonschlinkert/is-number>
 The MIT License (MIT)
 
-Copyright (c) 2014-2016, Jon Schlinkert
+Copyright (c) 2014-present, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5936,7 +6140,7 @@ SOFTWARE.
 ******************************
 
 json5
-2.1.1 <https://github.com/json5/json5>
+2.1.3 <https://github.com/json5/json5>
 MIT License
 
 Copyright (c) 2012-2018 Aseem Kishore, and [others].
@@ -5965,7 +6169,7 @@ SOFTWARE.
 ******************************
 
 kind-of
-6.0.2 <https://github.com/jonschlinkert/kind-of>
+6.0.3 <https://github.com/jonschlinkert/kind-of>
 The MIT License (MIT)
 
 Copyright (c) 2014-2017, Jon Schlinkert.
@@ -6060,7 +6264,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ******************************
 
 lodash
-4.17.15 <https://github.com/lodash/lodash>
+4.17.19 <https://github.com/lodash/lodash>
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
 
 Based on Underscore.js, copyright Jeremy Ashkenas,
@@ -6370,7 +6574,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ******************************
 
 minimist
-1.2.0 <https://github.com/substack/minimist>
+1.2.5 <https://github.com/substack/minimist>
 This software is released under the MIT license:
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -6434,7 +6638,7 @@ THE SOFTWARE.
 ******************************
 
 mkdirp
-0.5.1 <https://github.com/substack/node-mkdirp>
+0.5.5 <https://github.com/substack/node-mkdirp>
 Copyright 2010 James Halliday (mail@substack.net)
 
 This project is free software released under the MIT/X11 license:
@@ -7182,6 +7386,33 @@ SOFTWARE.
 
 ******************************
 
+picomatch
+2.2.1 <https://github.com/micromatch/picomatch>
+The MIT License (MIT)
+
+Copyright (c) 2017-present, Jon Schlinkert.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+******************************
+
 pify
 4.0.1 <https://github.com/sindresorhus/pify>
 MIT License
@@ -7720,27 +7951,28 @@ IN THE SOFTWARE.
 ******************************
 
 readdirp
-2.2.1 <https://github.com/paulmillr/readdirp>
-This software is released under the MIT license:
+3.4.0 <https://github.com/paulmillr/readdirp>
+MIT License
 
-Copyright (c) 2012-2015 Thorsten Lorenz
+Copyright (c) 2012-2019 Thorsten Lorenz, Paul Miller (https://paulmillr.com)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 ******************************
@@ -8456,7 +8688,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ******************************
 
 serialize-javascript
-2.1.2 <https://github.com/yahoo/serialize-javascript>
+4.0.0 <https://github.com/yahoo/serialize-javascript>
 Copyright 2014 Yahoo! Inc.
 All rights reserved.
 
@@ -9455,7 +9687,7 @@ SUCH DAMAGE.
 ******************************
 
 terser-webpack-plugin
-1.4.3 <https://github.com/webpack-contrib/terser-webpack-plugin>
+1.4.5 <https://github.com/webpack-contrib/terser-webpack-plugin>
 Copyright JS Foundation and other contributors
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -9647,10 +9879,10 @@ THE SOFTWARE.
 ******************************
 
 to-regex-range
-2.1.1 <https://github.com/micromatch/to-regex-range>
+5.0.1 <https://github.com/micromatch/to-regex-range>
 The MIT License (MIT)
 
-Copyright (c) 2015-2017, Jon Schlinkert
+Copyright (c) 2015-present, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10342,7 +10574,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************
 
 watchpack
-1.6.0 <https://github.com/webpack/watchpack>
+1.7.4 <https://github.com/webpack/watchpack>
 Copyright JS Foundation and other contributors
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -10364,6 +10596,13 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+
+******************************
+
+watchpack-chokidar2
+2.0.0 <https://github.com/webpack/watchpack>
+license: MIT
+authors: Tobias Koppers @sokra
 
 ******************************
 
@@ -10589,7 +10828,7 @@ THE SOFTWARE.
 ******************************
 
 yargs-parser
-13.1.1 <https://github.com/yargs/yargs-parser>
+13.1.2 <https://github.com/yargs/yargs-parser>
 Copyright (c) 2016, Contributors
 
 Permission to use, copy, modify, and/or distribute this software
