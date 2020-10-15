@@ -59,6 +59,7 @@ async function runThePopup(messageListener?: MessageListener) {
     // Options
     //"showNoticeAgain",
     "optionsButton",
+    "helpButton",
     // More controls
     "submitTimes",
     //"reportAnIssue",
@@ -130,6 +131,7 @@ async function runThePopup(messageListener?: MessageListener) {
     PageElements.setUsernameButton.addEventListener("click", setUsernameButton);
     PageElements.submitUsername.addEventListener("click", submitUsername);
     PageElements.optionsButton.addEventListener("click", openOptions);
+    PageElements.helpButton.addEventListener("click", openHelp);
     //PageElements.reportAnIssue.addEventListener("click", reportAnIssue);
     //PageElements.hideDiscordButton.addEventListener("click", hideDiscordButton);
 
@@ -824,6 +826,10 @@ async function runThePopup(messageListener?: MessageListener) {
     //make the options div visible
     function openOptions() {
         chrome.runtime.sendMessage({"message": "openConfig"});
+    }
+
+    function openHelp() {
+        window.open(chrome.runtime.getURL('help/index_en.html'));
     }
 
     //make the options username setting option visible

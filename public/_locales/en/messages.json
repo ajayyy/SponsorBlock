@@ -634,5 +634,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Send a notification when you leave a video with segments that are not uploaded"
+    },
+    "help": {
+        "message": "Help"
     }
 }
