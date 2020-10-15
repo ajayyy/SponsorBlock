@@ -544,7 +544,7 @@ function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boole
     }
 }
 
-function sponsorsLookup(id: string) {
+async function sponsorsLookup(id: string) {
     video = document.querySelector('video') // Youtube video player
     //there is no video here
     if (video == null) {
@@ -569,7 +569,7 @@ function sponsorsLookup(id: string) {
             updateAdFlag();
 
             // Make sure it doesn't get double called with the playing event
-            if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3 
+            if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
                     || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
@@ -580,7 +580,7 @@ function sponsorsLookup(id: string) {
         });
         video.addEventListener('playing', () => {
             // Make sure it doesn't get double called with the play event
-            if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3 
+            if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
                     || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
@@ -592,7 +592,7 @@ function sponsorsLookup(id: string) {
             if (!video.paused){
                 // Reset lastCheckVideoTime
                 lastCheckTime = Date.now();
-                lastCheckVideoTime = video.currentTime; 
+                lastCheckVideoTime = video.currentTime;
 
                 startSponsorSchedule();
             }
@@ -621,7 +621,8 @@ function sponsorsLookup(id: string) {
     // Check for hashPrefix setting
     let getRequest;
     if (Config.config.hashPrefix) {
-        getRequest = utils.asyncRequestToServer('GET', "/api/skipSegments/" + utils.getHash(id, 1).substr(0,4), {
+        const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
+        getRequest = utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
             categories
         });
     } else {
