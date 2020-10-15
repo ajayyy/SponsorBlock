@@ -65,6 +65,10 @@ div.logoText>p, .sbHeader {
   font-weight: bold;
 }
 
+.sbHeader.sbWork {
+  font-size: 20px;
+}
+
 .largeButton{
   background: white;
   /*font-weight: bold;*/

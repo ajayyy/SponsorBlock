@@ -262,7 +262,7 @@
         "message": "Extension is disabled."
     },
     "yourWork": {
-        "message": "Your stats",
+        "message": "Your Work",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
