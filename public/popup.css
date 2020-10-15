@@ -86,21 +86,33 @@ div.logoText>p, .sbHeader {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.mediumButton {
-  background: red;
-  /* font-weight: bold; */
-  padding: 6px 24px;
-  font-size: 16px;
-  border-radius: 25px;
+.sponsorBlockPageBody .mediumButton {
+  background-color:#cc1717;
+  -moz-border-radius:28px;
+  -webkit-border-radius:28px;
+  border-radius:28px;
   border: none;
-  text-decoration: none;
-  color: white;
-  min-height: 26px;
-  min-width: 152px;
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-size:16px;
+  padding:8px 37px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #662727;
   font-family: 'Source Sans Pro', sans-serif;
+
+  transition: 0.01s background-color;
+}
+.sponsorBlockPageBody .mediumButton:hover {
+  background-color:#ec1c1c;
+}
+.sponsorBlockPageBody .mediumButton:focus {
+outline: none;
+background-color:#ec1c1c;
+}
+.sponsorBlockPageBody .mediumButton:active {
+  position:relative;
+  top:1px;
 }
 
 /* disable extension */
