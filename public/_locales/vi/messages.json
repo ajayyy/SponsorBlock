@@ -259,6 +259,9 @@
     "skip": {
         "message": "Bỏ qua"
     },
+    "skip_category": {
+        "message": "Bỏ qua {0}?"
+    },
     "skipped": {
         "message": "Đã bỏ qua"
     },

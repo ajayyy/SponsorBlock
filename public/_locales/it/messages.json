@@ -259,6 +259,9 @@
     "skip": {
         "message": "Salta"
     },
+    "skip_category": {
+        "message": "Salta {0}?"
+    },
     "skipped": {
         "message": "Saltato"
     },

@@ -67,6 +67,9 @@
     "skip": {
         "message": "Παράκαμψη"
     },
+    "skip_category": {
+        "message": "Παράκαμψη {0}?"
+    },
     "skipped": {
         "message": "Παραλείφθηκε"
     },

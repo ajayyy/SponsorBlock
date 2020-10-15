@@ -197,6 +197,9 @@
     "skip": {
         "message": "Hoppa över"
     },
+    "skip_category": {
+        "message": "Hoppa över {0}?"
+    },
     "skipped": {
         "message": "Skippat"
     },

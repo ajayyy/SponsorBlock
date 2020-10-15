@@ -259,6 +259,9 @@
     "skip": {
         "message": "Pomiń"
     },
+    "skip_category": {
+        "message": "Pomiń {0}?"
+    },
     "skipped": {
         "message": "Pominięto"
     },

@@ -259,6 +259,9 @@
     "skip": {
         "message": "Lewati"
     },
+    "skip_category": {
+        "message": "Lewati {0}?"
+    },
     "skipped": {
         "message": "Dilewati"
     },

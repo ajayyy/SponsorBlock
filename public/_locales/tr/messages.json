@@ -200,6 +200,9 @@
     "skip": {
         "message": "Atla"
     },
+    "skip_category": {
+        "message": "Atla {0}?"
+    },
     "skipped": {
         "message": "Atlandı"
     },

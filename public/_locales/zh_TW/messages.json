@@ -259,6 +259,9 @@
     "skip": {
         "message": "略過"
     },
+    "skip_category": {
+        "message": "略過 {0}?"
+    },
     "skipped": {
         "message": "已跳過"
     },
