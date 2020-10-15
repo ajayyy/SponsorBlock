@@ -256,10 +256,10 @@
         "message": "Connection Timeout. Check your internet connection. If your internet is working, the server is probably overloaded or down."
     },
     "disableSkipping": {
-        "message": "Extension is enabled."
+        "message": "Skipping is enabled"
     },
     "enableSkipping": {
-        "message": "Extension is disabled."
+        "message": "Skipping is disabled"
     },
     "yourWork": {
         "message": "Your Work",
