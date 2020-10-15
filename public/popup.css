@@ -6,6 +6,10 @@
   --sb-green-bg: #077B27;
 }
 
+.hidden {
+  display: none;
+}
+
 #sponsorblockPopup {
   color: var(--sb-main-fg-color);
   font-family: 'Source Sans Pro', sans-serif;
@@ -216,7 +220,7 @@ align-items: center;
 }
 
 #usernameValue, #usernameInput, #sponsorTimesContributionsDisplay{
-  font-size: 19px;
+  font-size: 16px;
 }
 
 #whitelistButton > label > svg {
@@ -288,7 +292,7 @@ label>svg, button#optionsButton>img, .logoText>img, #usernameValue {
 #usernameInput {
   background: none;
   padding: 0;
-  border: none;
+  border: white 1px solid;
   color: var(--sb-main-fg-color);
   width: calc(100% - 24px);
 }

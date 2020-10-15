@@ -311,7 +311,7 @@ async function runThePopup(messageListener?: MessageListener) {
         if (request != undefined) {
             //remove loading text
             PageElements.mainControls.style.display = "flex";
-            PageElements.whitelistButton.classList.remove("grayedOut");
+            PageElements.whitelistButton.classList.remove("hidden");
             PageElements.loadingIndicator.style.display = "none";
 
             if (request.found) {
