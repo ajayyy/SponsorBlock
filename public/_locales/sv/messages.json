@@ -586,5 +586,11 @@
     },
     "categoryUpdate1": {
         "message": "Kategorier finns här!"
+    },
+    "unsubmittedWarning": {
+        "message": "Avisering när segment inte har skickats in"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Visa en avisering när du lämnar en video med segment som inte har laddats upp"
     }
 }
