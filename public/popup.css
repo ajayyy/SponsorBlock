@@ -196,8 +196,8 @@ div.logoText>p, .sbHeader {
   margin-bottom: 12px !important;
 }
 #mainControls{
-flex-flow: column;
-align-items: center;
+  flex-flow: column;
+  align-items: center;
 }
 #submitTimesContainer{
   flex-flow: column;
@@ -216,7 +216,13 @@ align-items: center;
   border: none;
   color: white;
   width: fit-content;
-  padding: 0;
+  padding-left: 0;
+
+  cursor: pointer;
+}
+
+#submitUsername {
+  padding-left: 5pt;
 }
 
 #additionalButtons, #additionalButtons>button {
