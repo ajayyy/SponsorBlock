@@ -7,6 +7,9 @@
         "message": "YouTube 영상의 스폰서 광고, '구독과 좋아요' 광고 같이 쓸데없는 광고를 모두 건너뛰세요. 영상의 스폰서 광고 구간을 신고하여 다른 사람들의 시간을 절약할 수 있게 해주세요.",
         "description": "Description of the extension."
     },
+    "400": {
+        "message": "서버에서 유효하지 않은 요청이라고 응답했습니다"
+    },
     "429": {
         "message": "이 영상에 너무 많은 스폰서 광고 시간을 제출했습니다, 정말로 확신하십니까?"
     },
@@ -31,6 +34,9 @@
     "reportButtonInfo": {
         "message": "잘못된 제출로 신고하기."
     },
+    "Dismiss": {
+        "message": "무시"
+    },
     "Loading": {
         "message": "로딩 중..."
     },
@@ -43,11 +49,23 @@
     "Hide": {
         "message": "보지 않기"
     },
+    "hitGoBack": {
+        "message": "온 곳으로 돌아가려면 스킵하지 않기를 누르세요."
+    },
+    "unskip": {
+        "message": "건너뛰지 않기"
+    },
+    "reskip": {
+        "message": "다시 건너뛰기"
+    },
     "paused": {
         "message": "정지됨"
     },
     "manualPaused": {
         "message": "타이머가 정지됨"
+    },
+    "confirmMSG": {
+        "message": "독립 값을 수정하거나 삭제하려면 정보 버튼을 클릭하거나 우측 상단에 있는 확장 프로그램 아이콘을 눌러 확장 프로그램 팝업을 여세요."
     },
     "clearThis": {
         "message": "정말로 삭제하시겠습니까?\n\n"
@@ -82,6 +100,9 @@
     "connectionError": {
         "message": "서버 오류가 발생하였습니다. 오류 코드: "
     },
+    "wantToSubmit": {
+        "message": "영상 id를 제출하시겠습니까"
+    },
     "leftTimes": {
         "message": "몇몇 구간을 제출하지 않은 채 있는 것 같습니다. 해당 페이지로 다시 돌아가 제출하세요 (삭제되지 않았습니다)"
     },
@@ -109,20 +130,41 @@
     "voteOnTime": {
         "message": "구간 투표"
     },
+    "soFarUHSubmited": {
+        "message": "지금까지 제출한 구간:"
+    },
+    "savedPeopleFrom": {
+        "message": "사람을 다음에서 구했습니다 "
+    },
     "viewLeaderboard": {
         "message": "리더보드 보기"
+    },
+    "here": {
+        "message": "링크"
     },
     "recordTimesDescription": {
         "message": "구간이 시작 및 종료될 때 아래의 버튼을 눌러 구간을 기록하고 데이터베이스에 제출하세요."
     },
+    "popupHint": {
+        "message": "참고: 영상 내에서 쉼표 키를 눌러서 초점을 맞추어서 시작/끝을 제보하고 따옴표로 제출하세요. (설정에서 변경 가능)"
+    },
+    "clearTimesButton": {
+        "message": "시간 초기화"
+    },
     "submitTimesButton": {
         "message": "시간 제출"
+    },
+    "publicStats": {
+        "message": "이것은 사용자가 구간 제출에 얼마나 기여했는지를 나타내기 위해 사용하는 정보로, 여기서 확인하실 수 있습니다:"
     },
     "setUsername": {
         "message": "사용자 이름 설정"
     },
     "discordAdvert": {
         "message": "공식 디스코드 서버에 들어와서 기능 제안을 해주시거나 피드백을 남겨주세요!"
+    },
+    "hideThis": {
+        "message": "숨기기"
     },
     "Options": {
         "message": "설정"
@@ -157,6 +199,21 @@
     "enableViewTracking": {
         "message": "스킵 개수 추적 활성화"
     },
+    "whatViewTracking": {
+        "message": "이 기능은 건너 뛴 부분을 추적하여 사용자가 제출한 내용이 다른 사람에게 얼마나 도움이 되는지 알려주고 스팸이 데이터베이스에 들어가지 않도록 추천과 함께 분석에 사용합니다. 확장 프로그램은 부분을 건너뛸 때마다 서버에 메시지를 보냅니다. 조회수가 정확하도록 대부분의 사람들이 이 설정을 변경하지 않기를 바랍니다. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Hash Prefix가 쿼리를 제공함"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "영상 ID를 사용하여 서버에서 부분을 요청하는 대신 영상 ID 해시의 처음 4자리를 전송합니다. 이 서버는 유사한 해시를 가진 모든 비디오에 대한 데이터를 다시 보냅니다."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "새 영상에서 부분 재갱신"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "새로운 영상이고 부분을 찾을 수 없다면, 보고 있는 동안 몇 분 단위로 갱신됩니다."
+    },
     "showNotice": {
         "message": "알림 다시 보여주기"
     },
@@ -172,9 +229,25 @@
         "message": "소스 코드",
         "description": "Used on Firefox Store Page"
     },
+    "noticeUpdate": {
+        "message": "알림이 업그레이드 되었습니다!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
     "noticeUpdate2": {
         "message": "계속 이것이 싫다면, 보지 않기 버튼을 누르세요.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "시작 부분 키 할당 설정"
+    },
+    "setSubmitKeybind": {
+        "message": "제출 키 할당 설정"
+    },
+    "keybindDescription": {
+        "message": "입력해서 키를 선택하세요"
+    },
+    "keybindDescriptionComplete": {
+        "message": "키가 다음에 할당되었습니다: "
     },
     "0": {
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
@@ -188,6 +261,9 @@
     "yourWork": {
         "message": "지금까지 한 일",
         "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "서버가 과부화된 것 같습니다. 몇 초 후에 다시 시도해보세요."
     },
     "errorCode": {
         "message": "오류 코드: "
@@ -213,6 +289,18 @@
     "audioNotificationDescription": {
         "message": "구간을 건너뛸 때마다 소리를 재생합니다. 비활성화시(혹은 자동 스킵이 꺼져있을 경우) 아무 소리도 재생되지 않습니다."
     },
+    "showTimeWithSkips": {
+        "message": "스킵이 제거한 시간 보기"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "이 시간은 탐색 막대 아래의 현재 시간 옆에 있는 괄호 안에 표시되며 부분을 제외한 총 동영상 길이를 보여줍니다. 여기에는 \"슬라이드바에 표시\"로만 표시된 부분도 포함됩니다."
+    },
+    "youHaveSkipped": {
+        "message": "지금까지 스킵한 구간: "
+    },
+    "youHaveSaved": {
+        "message": "지금까지 절약한 시간: "
+    },
     "minLower": {
         "message": "분"
     },
@@ -224,6 +312,12 @@
     },
     "hoursLower": {
         "message": "시간"
+    },
+    "youHaveSavedTime": {
+        "message": "사람들"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": "의 시간을 아꼈습니다."
     },
     "statusReminder": {
         "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
@@ -249,14 +343,38 @@
     "showSkipNotice": {
         "message": "구간을 건너뛴 후 알림 표시"
     },
+    "keybindCurrentlySet": {
+        "message": ". 현재 다음으로 설정되어 있습니다:"
+    },
     "supportInvidious": {
         "message": "Invidious 지원 활성화"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us)는 서드 파티 YouTube 클라이언트입니다. Invidious 지원을 활성화하시려면 추가적인 권한을 허용해주셔야 합니다. 이 기능은 Chrome 및 Chromium 기반 브라우저의 시크릿 모드에서는 작동하지 않습니다."
+    },
+    "optionsInfo": {
+        "message": "Invidious 지원을 활성화하고, 자동 건너뛰기 기능을 끄거나, 사용하지 않는 버튼을 숨겨보세요."
+    },
+    "addInvidiousInstance": {
+        "message": "Invidious 인스턴스 추가"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Invidious의 커스텀 인스턴스를 추가합니다. 도메인 형식으로만 되어있어야 합니다. 예시: invidious.ajay.app"
     },
     "add": {
         "message": "추가"
     },
     "addInvidiousInstanceError": {
         "message": "유효하지 않은 도메인입니다. 도메인 부분을 포함해야 합니다. 예: invious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Invodious 인스턴스 목록"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Invidious 인스턴스 목록을 초기화하려고 합니다"
+    },
+    "currentInstances": {
+        "message": "현재 인스턴스:"
     },
     "minDuration": {
         "message": "최소 기간 (초):"
@@ -296,6 +414,9 @@
     },
     "unlistedCheck": {
         "message": "일부 공개/비공개 영상 무시"
+    },
+    "whatUnlistedCheck": {
+        "message": "이 설정은 SponsorBlock을 약간 느리게 만듭니다. 건너뛰기 부분 질의는 서버에 영상 ID를 전송해야 합니다. 목록에 없는 영상 ID가 인터넷으로 전송되는 것이 우려된다면 이 옵션을 활성화 해주세요."
     },
     "mobileUpdateInfo": {
         "message": "이제 m.youtube.com 링크를 지원합니다"
@@ -354,8 +475,15 @@
     "keyAlreadyUsed": {
         "message": "이 키는 다른 행동과 연동되었습니다. 다른 키를 선택하세요."
     },
+    "to": {
+        "message": "-",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
     "category_sponsor": {
         "message": "스폰서 광고"
+    },
+    "category_sponsor_description": {
+        "message": "유료 광고, 유료 협찬과 직접 광고입니다. 원인/크리에이터/웹사이트/제품에 자체 홍보나 대가 없는 홍보는 여기에 해당되지 않습니다."
     },
     "category_intro": {
         "message": "무음 구간 / 인트로 영상"
@@ -374,6 +502,9 @@
     },
     "category_interaction": {
         "message": "상호 작용 알림 (구독)"
+    },
+    "category_interaction_description": {
+        "message": "컨텐츠 중앙의 좋아요, 구독이나 팔로우에 대한 짧은 설명이 뜨는 경우입니다. 길거나 특정적인 거라면 자가 홍보에 해당됩니다."
     },
     "category_interaction_short": {
         "message": "상호 작용 알림"
@@ -449,6 +580,12 @@
     "bracketEnd": {
         "message": "(끝)"
     },
+    "hiddenDueToDownvote": {
+        "message": "숨겨짐: 비추천"
+    },
+    "hiddenDueToDuration": {
+        "message": "숨겨짐: 너무 짧음"
+    },
     "channelDataNotFound": {
         "message": "채널 ID가 로드되지 않았습니다."
     },
@@ -460,6 +597,12 @@
     },
     "forceChannelCheck": {
         "message": "건너뛰기 전 채널 강제 체크"
+    },
+    "whatForceChannelCheck": {
+        "message": "기본적으로 채널이 무엇인지 알기 전에 즉시 부분을 건너뜁니다. 기본적으로 동영상 시작 부분의 일부 부분은 허용 목록에있는 채널에서 건너뛸 수 있습니다. 이 옵션을 활성화하면 이를 방지할 수 있지만 채널 ID를 가져오는 데에 시간이 걸릴 수 있으므로 모든 건너뛰기가 약간 느려집니다. 고속 인터넷을 사용한다면 이러한 지연이 눈에 띄지 않을 수 있습니다."
+    },
+    "forceChannelCheckPopup": {
+        "message": "\"스킵하기 전에 채널 확인을 강제하기\"를 활성화하는 것을 고려해보세요"
     },
     "downvoteDescription": {
         "message": "잘못된 타이밍입니다"

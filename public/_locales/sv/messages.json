@@ -3,6 +3,10 @@
         "message": "SponsorBlock för YouTube - Hoppa över sponsring",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Hoppa över sponsring, prenumerationstiggande och mer på YouTube-videor. Rapportera sponsorer på videor du tittar på för att spara andras tid.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "Felaktigt anrop enligt servern"
     },
@@ -14,6 +18,15 @@
     },
     "channelWhitelisted": {
         "message": "Kanal vitlistad!"
+    },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segment"
+    },
+    "upvoteButtonInfo": {
+        "message": "Rösta på detta inlägg"
     },
     "reportButtonTitle": {
         "message": "Rapportera"
@@ -60,6 +73,18 @@
     "Unknown": {
         "message": "Ett fel uppstod vid rapportering av sponsorsegment, försök igen senare."
     },
+    "sponsorFound": {
+        "message": "Denna video har segment i databasen!"
+    },
+    "sponsor404": {
+        "message": "Hittade inga segment"
+    },
+    "sponsorStart": {
+        "message": "Segmentet startar nu"
+    },
+    "sponsorEnd": {
+        "message": "Segmentet slutar nu"
+    },
     "noVideoID": {
         "message": "Kunde inte hitta någon YouTube-video i denna tab. Om du är säker på att detta är en Youtube-flik, stäng den här rutan och öppna den igen. Ladda om fliken om inte det funkar."
     },
@@ -75,8 +100,23 @@
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
     },
+    "wantToSubmit": {
+        "message": "Vill skicka in med video-id"
+    },
+    "leftTimes": {
+        "message": "Du verkar ha lämnat kvar några segment som inte skickats in. Gå tillbaka till den sidan för att skicka in dem (de är inte borttagna)."
+    },
+    "clearTimes": {
+        "message": "Rensa segmenten"
+    },
     "openPopup": {
         "message": "Öppna SponsorBlock Popup"
+    },
+    "closePopup": {
+        "message": "Stäng popup"
+    },
+    "SubmitTimes": {
+        "message": "Skicka in segment"
     },
     "submitCheck": {
         "message": "Är du säker på att du vill rapportera detta?"
@@ -86,6 +126,9 @@
     },
     "removeFromWhitelist": {
         "message": "Ta bort kanal från vitlistan"
+    },
+    "voteOnTime": {
+        "message": "Rösta på ett segment"
     },
     "soFarUHSubmited": {
         "message": "Hitills har du rapporterat"
@@ -98,6 +141,12 @@
     },
     "here": {
         "message": "här"
+    },
+    "recordTimesDescription": {
+        "message": "Klicka på knappen nedan när segmentet startar och slutar för att spela in och skicka in det till databasen."
+    },
+    "popupHint": {
+        "message": "Tips: Tryck på tangenten semikolon medan du fokuserar på en video för att rapportera början/slutet av ett segment för att skicka in. (Detta kan ändras i alternativen)"
     },
     "clearTimesButton": {
         "message": "Rensa Tider"
@@ -147,8 +196,21 @@
     "whatDeleteButton": {
         "message": "Denna knappen tar bort alla sponsormeddelanden på YouTube-spelaren."
     },
+    "enableViewTracking": {
+        "message": "Aktivera spåra antalet hoppa över"
+    },
+    "whatViewTracking": {
+        "message": "Den här funktionen spårar vilka segment du har hoppat över för att låta användarna veta hur mycket tid en användare har sparat andra och tillsammans med användarnas röster säkerställa att spam inte kommer in i databasen. Detta tillägg skickar ett meddelande till servern varje gång du hoppar över ett segment. Förhoppningsvis ändrar inte folk den här inställningen så statistiken hålls tillförlitlig. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Fråga efter hash-prefix"
+    },
     "showNotice": {
         "message": "Visa Notisen Igen"
+    },
+    "longDescription": {
+        "message": "SponsorBlock låter dig hoppa över sponsormeddelanden, introduktioner, eftertexter, prenumerationspåminnelser och andra irriterande delar av YouTube-videor. SponsorBlock är ett crowdsourced webbläsartillägg som låter vem som helst att skicka in start- och sluttid på sponsorsegment och andra segment av YouTube-videor. När en person skickar in denna information kommer alla andra som har detta tillägg installerat att hoppa över det sponsrade segmentet. Du kan även hoppa över icke-musikavsnitt i musikvideor.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Hemsida",
@@ -165,6 +227,9 @@
     "noticeUpdate2": {
         "message": "Om du ändå inte gillar det, tryck på \"Visa aldrig\"-knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Ange den tangent som ska fungera som starttangent för ett segment"
     },
     "setSubmitKeybind": {
         "message": "Välj knapp att koppla till rapportering av sponsormeddelande"
@@ -204,13 +269,22 @@
         "message": "Skippat"
     },
     "disableAutoSkip": {
-        "message": "Avaktivera Hoppa Över Automatiskt"
+        "message": "Inaktivera hoppa över automatiskt"
     },
     "enableAutoSkip": {
         "message": "Aktivera Hoppa Över Automatiskt"
     },
     "audioNotification": {
         "message": "Ljudeffekt vid hopp"
+    },
+    "audioNotificationDescription": {
+        "message": "Ljudavisering vid hoppa över kommer att spela upp ett ljud när ett segment hoppas över. Om inaktiverad (eller om hoppa över automatiskt är inaktiverat), kommer inget ljud att spelas upp."
+    },
+    "showTimeWithSkips": {
+        "message": "Visa tiden med det överhoppade borttaget"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Denna tid visas inom parentes bredvid den aktuella tiden nedanför sökfältet. Detta visar den totala videons varaktighet minus alla segment. Detta inkluderar segment markerade som endast \"Visa i sökfältet\"."
     },
     "youHaveSkipped": {
         "message": "Du har hoppat över "
@@ -257,8 +331,11 @@
     "autoSkip": {
         "message": "Hoppa Över Automatiskt"
     },
+    "showSkipNotice": {
+        "message": "Visa ett meddelande efter att ett segment har hoppats över"
+    },
     "keybindCurrentlySet": {
-        "message": ". Är just nu kopplat till:"
+        "message": ". Nuvarande snabbtangent är:"
     },
     "supportInvidious": {
         "message": "Stöd Invidious"
@@ -293,6 +370,9 @@
     "minDuration": {
         "message": "Minsta varaktighet (sekunder):"
     },
+    "minDurationDescription": {
+        "message": "Segment som är kortare än det angivna värdet kommer inte att hoppas över eller visas i spelaren."
+    },
     "shortCheck": {
         "message": "Följande rapport är kortare än ditt minstavärde i inställningarna. Det skulle kunna betyda att det redan är rapporterat och bara ignorerat på grund av denna inställning. Är du säker på att du vill rapportera?"
     },
@@ -320,8 +400,14 @@
     "areYouSureReset": {
         "message": "Är du säker på att du vill rensa?"
     },
+    "confirmPrivacy": {
+        "message": "Den här videon verkar vara olistad. Klicka på avbryt om du inte vill söka efter överhoppade segment."
+    },
     "unlistedCheck": {
         "message": "Ignorera Olistade Videor"
+    },
+    "whatUnlistedCheck": {
+        "message": "Den här inställningen kommer att slöa ner SponsorBlock. Segmentöverhoppssökningar kräver att video-ID skickas till servern. Om du är orolig över att olistade video-ID:s skickas över internet, aktivera då detta alternativ."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com stöds nu"
@@ -356,11 +442,14 @@
     "preview": {
         "message": "Förhandsgranska"
     },
+    "inspect": {
+        "message": "Granska"
+    },
     "edit": {
         "message": "Redigera"
     },
     "copyDebugInformation": {
-        "message": "Kopiera Debuginformation Till Urklipp"
+        "message": "Kopiera felsökningsinformation till urklippet"
     },
     "copyDebugInformationFailed": {
         "message": "Misslyckades med att kopiera debuginformation till urklipp"
@@ -384,11 +473,32 @@
     "category_sponsor": {
         "message": "Sponsormeddelande"
     },
+    "category_intro": {
+        "message": "Paus/Introduktion"
+    },
+    "category_intro_short": {
+        "message": "Uppehåll"
+    },
+    "category_outro": {
+        "message": "Slutkort/Credits"
+    },
+    "category_interaction": {
+        "message": "Interaktionspåminnelse (Prenumerera)"
+    },
+    "category_selfpromo": {
+        "message": "Obetald/självbefodran"
+    },
+    "category_music_offtopic": {
+        "message": "Musik: Icke-musikavsnitt"
+    },
     "category_music_offtopic_description": {
         "message": "Endast för användning i musikvideor. Detta inkluderar intros och outros i musikvideor."
     },
     "category_music_offtopic_short": {
         "message": "Icke-musik"
+    },
+    "category_livestream_messages_short": {
+        "message": "Läser meddelande"
     },
     "disable": {
         "message": "Avaktivera"
@@ -399,8 +509,19 @@
     "showOverlay": {
         "message": "Visa Lager Ovanpå Spelare"
     },
+    "previewColor": {
+        "message": "Förhandsgranskningsfärg",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Sökfältsfärg"
+    },
     "category": {
         "message": "Kategori"
+    },
+    "skipOption": {
+        "message": "Alternativ för hoppa över",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Aktivera Server För Betatestning"
@@ -426,6 +547,9 @@
     "bracketEnd": {
         "message": "(Slut)"
     },
+    "hiddenDueToDownvote": {
+        "message": "dold: rösta ner"
+    },
     "hiddenDueToDuration": {
         "message": "dold: för kort"
     },
@@ -437,6 +561,12 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Tvinga kontroll av kanalen innan hoppa över"
+    },
+    "forceChannelCheckPopup": {
+        "message": "Överväg att aktivera \"Tvinga kontroll av kanalen innan hoppa över\""
     },
     "downvoteDescription": {
         "message": "Fel timing"
@@ -453,5 +583,14 @@
     "readTheGuidelines": {
         "message": "Läs riktlinjerna!!",
         "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategorier finns här!"
+    },
+    "unsubmittedWarning": {
+        "message": "Avisering när segment inte har skickats in"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Visa en avisering när du lämnar en video med segment som inte har laddats upp"
     }
 }

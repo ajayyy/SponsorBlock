@@ -202,6 +202,18 @@
     "whatViewTracking": {
         "message": "Fitur ini melacak segmen mana yang sudah anda lewati untuk memberitahu pengguna berapa banyak submisi mereka telah membantu orang lain dan digunakan sebagai metrik bersamaan dengan upvote untuk memastikan tidak ada spam dalam basis data. Ekstensi mengirim pesan ke server tiap kali anda melewati segmen. Harapannya kebanyakan orang tidak akan mengubah opsi ini agar jumlah tayangan akurat. :)"
     },
+    "enableQueryByHashPrefix": {
+        "message": "Query By Hash Prefix"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Daripada meminta segmen dari server menggunakan videoID, 4 huruf pertama dari hash dari videoID dikirim. Server akan mengirim kembali data untuk semua video dengan hash yang mirip."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Meretch Segmen Di Video Baru"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Jika ini merupakan video baru, dan tidak ada segmen yang ditemukan, itu akan terus merefetch setiap beberapa menit saat anda menonton."
+    },
     "showNotice": {
         "message": "Tampilkan Pemberitahuan Lagi"
     },

@@ -267,6 +267,9 @@
     "audioNotification": {
         "message": "Äänellinen Ilmoitus Ohitettaessa"
     },
+    "audioNotificationDescription": {
+        "message": "Ääni-ilmoitus ohituksessa toistaa äänen, kun segmentti ohitetaan. Jos pois päältä (tai automaattinen ohitus on pois käytöstä), ääntä ei soiteta."
+    },
     "youHaveSkipped": {
         "message": "Olet ohittanut "
     },
@@ -291,8 +294,14 @@
     "youHaveSavedTimeEnd": {
         "message": " heidän elämästään."
     },
+    "statusReminder": {
+        "message": "Tarkista status.sponsor.ajay.app palvelimen tila."
+    },
     "changeUserID": {
         "message": "Tuo/vie sinun UserID:si"
+    },
+    "whatChangeUserID": {
+        "message": "Tämä tulisi pitää yksityisenä. Tämä on kuin salasana eikä sitä pitäisi jakaa kenellekään. Jos joku saa tämän, hän voi esiintyä sinuna."
     },
     "setUserID": {
         "message": "Aseta UserID"
@@ -302,6 +311,9 @@
     },
     "autoSkip": {
         "message": "Ohita Automaattisesti"
+    },
+    "showSkipNotice": {
+        "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
     },
     "keybindCurrentlySet": {
         "message": ". Tällä hetkellä se on asetettu:"
@@ -333,11 +345,20 @@
     "minDuration": {
         "message": "Vähimmäiskesto (sekuntia):"
     },
+    "minDurationDescription": {
+        "message": "Segmentit, jotka ovat asetettua arvoa lyhyempiä, ei tulla ohittamaan tai näytetä soittimessa."
+    },
     "showUploadButton": {
         "message": "Näytä lähetä-painike"
     },
+    "whatUploadButton": {
+        "message": "Tämä painike ilmestyy YouTube-soittimeen, kun olet valinnut aikaleiman ja olet valmis lähettämään sen."
+    },
     "customServerAddress": {
         "message": "SponsorBlock Palvelimen Osoite"
+    },
+    "customServerAddressDescription": {
+        "message": "Osoite jota SponsorBlock käyttää lähettääkseen kutsuja palvelimelle.\nEllei sinulla ole omaa palvelin instanssia, tätä ei pitäisi muuttaa."
     },
     "save": {
         "message": "Tallenna"
@@ -346,7 +367,13 @@
         "message": "Nollaa"
     },
     "customAddressError": {
-        "message": "Tämä osoite ei ole oikeassa muodossa. Varmista, että sinulla on http:// tai http:// alussa eikä perässä kauttaviivoja."
+        "message": "Tämä osoite ei ole oikeassa muodossa. Varmista, että sinulla on http:// tai https:// alussa eikä perässä kauttaviivoja."
+    },
+    "areYouSureReset": {
+        "message": "Oletko varma, että haluat nollata tämän?"
+    },
+    "unlistedCheck": {
+        "message": "Ohita Listaamattomat/Yksityiset Videot"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com-osoitetta tuetaan nyt"
@@ -356,6 +383,9 @@
     },
     "setOptions": {
         "message": "Käytä asetuksia"
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Tämä JSON ei ole muotoiltu oikein. Asetuksiasi ei ole muutettu."
     },
     "confirmNoticeTitle": {
         "message": "Lähetä kohta"
@@ -381,6 +411,9 @@
     "copyDebugInformationFailed": {
         "message": "Kirjoittaminen leikepöydälle epäonnistui"
     },
+    "copyDebugInformationOptions": {
+        "message": "Kopioi tiedot leikepöydälle, joka annetaan kehittäjälle kun ilmoitetaan viasta / kun kehittäjä pyytää sitä. Arkaluonteiset tiedot, kuten käyttäjätunnus, sallitut kanavat ja mukautettu palvelimen osoite on poistettu. Se sisältää kuitenkin tietoja, kuten käyttäjän, selaimen, käyttöjärjestelmän ja laajennuksen versionumeron. "
+    },
     "theKey": {
         "message": "Näppäin"
     },
@@ -394,14 +427,32 @@
     "category_sponsor": {
         "message": "Sponsori"
     },
+    "category_intro": {
+        "message": "Väli/Intro Animaatio"
+    },
+    "category_intro_description": {
+        "message": "Aikaväli ilman varsinaista sisältöä. Voi olla tauko, staattinen kehys, toistuva animaatio. Tätä ei pitäisi käyttää siirtymisiin, jotka sisältävät tietoa."
+    },
     "category_outro": {
         "message": "Loppukortit/-tekstit"
     },
     "category_interaction": {
         "message": "Vuorovaikutusmuistutus (tilaaminen)"
     },
+    "category_interaction_description": {
+        "message": "Kun sisällön keskellä on lyhyt muistutus tykätä, tilata tai seurata. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi."
+    },
+    "category_selfpromo": {
+        "message": "Maksamaton/Itsensä Mainostus"
+    },
+    "category_selfpromo_description": {
+        "message": "Samankaltainen \"sponsorin\" kanssa paitsi maksamaton tai itsensän mainostus. Tämä sisältää osioita joissa kauppatavaraa, lahjoituksia tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
+    },
     "category_music_offtopic": {
         "message": "Musiikki: muussa kuin Musiikki-osiossa"
+    },
+    "category_music_offtopic_description": {
+        "message": "Tarkoitettu vain musiikkivideoihin. Tämä sisältää musiikkivideoiden introt ja outrot."
     },
     "category_music_offtopic_short": {
         "message": "Ei-Musiikki"

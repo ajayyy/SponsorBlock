@@ -202,6 +202,18 @@
     "whatViewTracking": {
         "message": "這個功能會追蹤您跳過的片段來讓其他使用者知道您的提交幫助了其他人多少，並同時用作計算錯誤提交的方式。這個擴充功能會在您每一次跳過片段時向伺服器回報。希望大家盡量不要改變這個設定來確保資料的正確性。 ：）"
     },
+    "enableQueryByHashPrefix": {
+        "message": "使用雜湊前綴查詢"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "與其使用影片 ID 來查詢片段，這會使用影片 ID 的雜湊前4碼來查詢。伺服器會送回所有有類似雜湊的影片片段資料"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "在新影片重新擷取片段"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "如果這部影片是新的，而且目前沒有找到片段的話，系統會每分鐘重新擷取一次"
+    },
     "showNotice": {
         "message": "再次顯示通知"
     },
@@ -280,6 +292,15 @@
     "showTimeWithSkips": {
         "message": "顯示已移除跳過後的總時間"
     },
+    "showTimeWithSkipsDescription": {
+        "message": "這個時間會出現在現在時間旁邊的括號內。這會顯示總影片長度減掉任何片段後的結果。這只會包含標為\"在時間條中顯示\"的片段"
+    },
+    "youHaveSkipped": {
+        "message": "您已跳過 "
+    },
+    "youHaveSaved": {
+        "message": "您為自己節省了 "
+    },
     "minLower": {
         "message": "分鐘"
     },
@@ -297,5 +318,321 @@
     },
     "youHaveSavedTimeEnd": {
         "message": " 的生命。"
+    },
+    "statusReminder": {
+        "message": "在 status.sponsor.ajay.app 檢查伺服器狀態"
+    },
+    "changeUserID": {
+        "message": "匯入/匯出您的使用者 ID"
+    },
+    "whatChangeUserID": {
+        "message": "這應該被保密。這就像一個密碼，不應該與他人分享。如果有人擁有它，他們就可以冒充您。"
+    },
+    "setUserID": {
+        "message": "設定使用者 ID"
+    },
+    "userIDChangeWarning": {
+        "message": "警告：更改用戶 ID 是永久性的。您確定要這麼做嗎？請務必備份您的舊用戶 ID 來以防萬一。"
+    },
+    "createdBy": {
+        "message": "創建者"
+    },
+    "autoSkip": {
+        "message": "自動跳過"
+    },
+    "showSkipNotice": {
+        "message": "在跳過片段後顯示通知"
+    },
+    "keybindCurrentlySet": {
+        "message": "。它目前被設定為："
+    },
+    "supportInvidious": {
+        "message": "支持 Invidious"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) 是第三方的 YouTube 客戶端。要啟用對其之支援，您必須接受額外的權限。這在 Chrome 中的無痕模式和其他 Chromium 分支無效"
+    },
+    "optionsInfo": {
+        "message": "啟用 Invidious 支援，停用自動跳過、隱藏按鈕等。"
+    },
+    "addInvidiousInstance": {
+        "message": "添加 Invidious 進程"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "添加一個 Invidious 自定進程。它必須只有域名。例如：invidious.ajay.app"
+    },
+    "add": {
+        "message": "新增"
+    },
+    "addInvidiousInstanceError": {
+        "message": "這是個無效的域名。它只應該包含域名部分。例如：invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "重製 Invidious 進程列表"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "您即將重製 Invidious 進程列表"
+    },
+    "currentInstances": {
+        "message": "目前進程："
+    },
+    "minDuration": {
+        "message": "最小時間 (秒)："
+    },
+    "minDurationDescription": {
+        "message": "小於設定值的片段不會被跳過或在播放器中顯示"
+    },
+    "shortCheck": {
+        "message": "以下的提交小於您的最小時間設定。這表是它們可能已經被提交，只是被該設定忽略了。您確定要提交嗎？"
+    },
+    "showUploadButton": {
+        "message": "顯示上傳按鈕"
+    },
+    "whatUploadButton": {
+        "message": "在您選擇了時間範圍並準備提交後，此按鈕會出現在 YouTube 播放器中。"
+    },
+    "customServerAddress": {
+        "message": "SponsorBlock 伺服器地址"
+    },
+    "customServerAddressDescription": {
+        "message": "SponsorBlock 用來與伺服器互動的地址。\n除非您有自己的伺服器進程，否則這項設定不應該被更動"
+    },
+    "save": {
+        "message": "儲存"
+    },
+    "reset": {
+        "message": "重置"
+    },
+    "customAddressError": {
+        "message": "這個地址不正確。確定您在開始處有 http:// 或 https:// 且沒有尾部反斜杠"
+    },
+    "areYouSureReset": {
+        "message": "您確定要重製這個嗎？"
+    },
+    "confirmPrivacy": {
+        "message": "此影片已被偵測為未列出。點擊取消以不檢查跳過片段"
+    },
+    "unlistedCheck": {
+        "message": "忽略私人/未列出的影片"
+    },
+    "whatUnlistedCheck": {
+        "message": "此設定會微微降低 SponsorBlock 的速度。跳過片段檢查會需要將影片 ID 送到伺服器。如果您對將未列出的影片被流出的話，啟用這個選項"
+    },
+    "mobileUpdateInfo": {
+        "message": "現已支援 m.youtube.com"
+    },
+    "exportOptions": {
+        "message": "匯入/匯出所有設定"
+    },
+    "whatExportOptions": {
+        "message": "這是您全部設定的 JSON 格式。它包含了您的用戶 ID ，所以您一定要謹慎的保管它。"
+    },
+    "setOptions": {
+        "message": "設定選項"
+    },
+    "exportOptionsWarning": {
+        "message": "警告：更改設定是永久性的。您確定要這麼做嗎？請務必備份您的舊設定來以防萬一。"
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "JSON 格式不對。您的選項未更改"
+    },
+    "confirmNoticeTitle": {
+        "message": "提交片段"
+    },
+    "submit": {
+        "message": "提交"
+    },
+    "cancel": {
+        "message": "取消"
+    },
+    "delete": {
+        "message": "刪除"
+    },
+    "preview": {
+        "message": "預覽"
+    },
+    "inspect": {
+        "message": "檢查"
+    },
+    "edit": {
+        "message": "編輯"
+    },
+    "copyDebugInformation": {
+        "message": "將除錯資訊複製到剪貼簿"
+    },
+    "copyDebugInformationFailed": {
+        "message": "無法寫入剪貼簿"
+    },
+    "copyDebugInformationOptions": {
+        "message": "複製資訊到剪貼板，在提交錯誤或開發者需要時提供給他。敏感資訊例如：您的使用者 ID，白名單頻道和自定伺服器地址等已被移除。但是，它仍然包含例如您的 useragent ，瀏覽器，作業系統和擴充版本等資訊。 "
+    },
+    "copyDebugInformationComplete": {
+        "message": "除錯資訊已複製到剪貼板中。您可以任意移除任何您不想分享的資訊。請將其另存為文字文件或貼到錯誤報告中。"
+    },
+    "theKey": {
+        "message": "按鍵"
+    },
+    "keyAlreadyUsed": {
+        "message": "已經綁定其它動作。請選擇其他按鍵"
+    },
+    "to": {
+        "message": "到",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "贊助廣告"
+    },
+    "category_sponsor_description": {
+        "message": "有收錢的工商廣告和直接廣告。不是為了自我推銷或為了其他創作的免費推銷"
+    },
+    "category_intro": {
+        "message": "中場休息/開頭動畫"
+    },
+    "category_intro_description": {
+        "message": "沒有實際內容的片段。可以是個靜止的幀，重複性動畫。這不應該是含有資訊的。"
+    },
+    "category_intro_short": {
+        "message": "開場"
+    },
+    "category_outro": {
+        "message": "結束畫面/鳴謝"
+    },
+    "category_outro_description": {
+        "message": "鳴謝或當 YouTube 結尾資訊卡出現時。不是含有資訊的總結"
+    },
+    "category_interaction": {
+        "message": "互動提醒 (訂閱)"
+    },
+    "category_interaction_description": {
+        "message": "當有短提醒來請觀眾按讚、訂閱或跟隨他們時。如果該片段很長或很針對某事，它應該歸類為自我推銷。"
+    },
+    "category_interaction_short": {
+        "message": "互動提醒"
+    },
+    "category_selfpromo": {
+        "message": "非付費/自我推廣"
+    },
+    "category_selfpromo_description": {
+        "message": "類似 “贊助商廣告” ，但是非付費或自我推廣。這包括有關商品、捐贈或與他人合作的信息。"
+    },
+    "category_music_offtopic": {
+        "message": "音樂：非音樂部分"
+    },
+    "category_music_offtopic_description": {
+        "message": "僅用於音樂影片。這包括音樂影片中的開頭或結尾"
+    },
+    "category_music_offtopic_short": {
+        "message": "非音樂"
+    },
+    "category_livestream_messages": {
+        "message": "直播：捐贈/訊息閱讀"
+    },
+    "category_livestream_messages_short": {
+        "message": "閱讀訊息"
+    },
+    "disable": {
+        "message": "停用"
+    },
+    "manualSkip": {
+        "message": "手動跳過"
+    },
+    "showOverlay": {
+        "message": "在時間條顯示"
+    },
+    "colorFormatIncorrect": {
+        "message": "您設定的顏色無效。它應該是三或六位數的 hex 碼，且以井字號開頭。"
+    },
+    "previewColor": {
+        "message": "預覽顏色",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "時間條顏色"
+    },
+    "category": {
+        "message": "類別"
+    },
+    "skipOption": {
+        "message": "跳過選項",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "enableTestingServer": {
+        "message": "啟用 Beta 測試伺服器"
+    },
+    "whatEnableTestingServer": {
+        "message": "寧的提交和投票不會記入主伺服器。僅會被用來測試"
+    },
+    "testingServerWarning": {
+        "message": "當連結到測試伺服器，所有的提交和投票都不會計入主伺服器。當您想要進行有效提交時，請停用此選項"
+    },
+    "bracketNow": {
+        "message": "(現在)"
+    },
+    "moreCategories": {
+        "message": "更多類別"
+    },
+    "chooseACategory": {
+        "message": "選擇一個類別"
+    },
+    "youMustSelectACategory": {
+        "message": "您必須為所有您要提交的片段選擇類別！"
+    },
+    "bracketEnd": {
+        "message": "(結束)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "隱藏：負評"
+    },
+    "hiddenDueToDuration": {
+        "message": "隱藏：太短"
+    },
+    "channelDataNotFound": {
+        "message": "頻道 ID 尚未載入"
+    },
+    "adblockerIssue": {
+        "message": "似乎某些東西正在阻止 SponsorBlock 獲取影片資料的功能。它很可能是您的廣告攔截器。請查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "如果這種情況不斷發生，它可能是由您的廣告攔截器引起的。請查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "在跳過之前強制頻道檢查"
+    },
+    "whatForceChannelCheck": {
+        "message": "預設會在它知道頻道名字之前就跳過片段。有時候會在影片一開始忽略白名單而直接跳過片段。啟用這個會預防它，但會造成延遲。如果您有高速網路的話，這個延遲將會不起眼。"
+    },
+    "forceChannelCheckPopup": {
+        "message": "考慮啟用\"在跳過之前強制頻道檢查\""
+    },
+    "downvoteDescription": {
+        "message": "不正確/錯誤的時間"
+    },
+    "incorrectCategory": {
+        "message": "錯誤的類別"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "這個影片被分類為音樂。您確定這有贊助內容嗎？如果這其實是\"非音樂片段\"的話，開啟擴充功能設定並啟用這個類別。接下來您即可提交這個片段為\"非音樂片段\"。如果您感到困惑，請閱讀方針"
+    },
+    "multipleSegments": {
+        "message": "多片段"
+    },
+    "guidelines": {
+        "message": "方針"
+    },
+    "readTheGuidelines": {
+        "message": "閱讀方針！！",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "類別在這！"
+    },
+    "categoryUpdate2": {
+        "message": "開啟選項以跳過開場、結尾、工商等。"
+    },
+    "unsubmittedWarning": {
+        "message": "未提交的片段提醒"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "在您離開含有未提交的片段的影片時寄送通知"
     }
 }

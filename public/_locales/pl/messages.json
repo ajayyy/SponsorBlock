@@ -56,7 +56,7 @@
         "message": "Cofnij"
     },
     "reskip": {
-        "message": "Przewiń"
+        "message": "Pomiń"
     },
     "paused": {
         "message": "Zatrzymany"
@@ -202,6 +202,12 @@
     "whatViewTracking": {
         "message": "Ta opcja monitoruje pomijane przez Ciebie segmenty, by dać znać użytkownikom, jak bardzo ich wkład pomógł innym, oraz w połączeniu z systemem głosowania zapobiegać dostawaniu się spamu do bazy danych. Rozszerzenie wysyła wiadomość do serwera za każdym razem, kiedy pomijasz segment. Miejmy nadzieję, że większość ludzi tego nie wyłączy i liczniki wyświetleń będą wiarygodne. :)"
     },
+    "enableRefetchWhenNotFound": {
+        "message": "Pobierz na nowo segmenty z nowych filmów"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Jeśli film jest nowy i nie znaleziono żadnych segmentów, dane będą pobierane na nowo, co kilka minut, w czasie kiedy oglądasz."
+    },
     "showNotice": {
         "message": "Pokaż informacje ponownie"
     },
@@ -260,7 +266,7 @@
         "message": "Pomiń"
     },
     "skip_category": {
-        "message": "Pomiń {0}?"
+        "message": "Pominąć {0}?"
     },
     "skipped": {
         "message": "Pominięto"
@@ -383,7 +389,7 @@
         "message": "Adres serwera SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "Adres SponsorBlock używa do wykonywania połączeń do serwera.\nDo póki nie posiadasz własnego serwera, to nie powinno być zmieniane."
+        "message": "Adres, który jest używany przez SponsorBlock podczas połączeń do serwera.\nDopóki nie posiadasz własnego serwera, nie powinieneś tego zmieniać."
     },
     "save": {
         "message": "Zapisz"

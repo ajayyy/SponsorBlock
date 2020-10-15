@@ -203,16 +203,16 @@
         "message": "Diese Funktion verfolgt welche Segmente du übersprungen hast, um andere Benutzer wissen zu lassen, wie sehr ihre Einreichung anderen geholfen hat, sowie um als Metrik zusammen mit positiven Bewertungen sicherzustellen, dass kein Spam in die Datenbank gelangt. Die Erweiterung sendet jedes Mal, wenn du ein Segment überspringst, eine Nachricht an den Server. Hoffentlich ändern die meisten Leute diese Einstellung nicht, so dass die Zahlen korrekt sind. :)"
     },
     "enableQueryByHashPrefix": {
-       "message": "Abfrage nach Hash-Präfix"
+        "message": "Abfrage nach Hash-Präfix"
     },
     "whatQueryByHashPrefix": {
-       "message": "Anstatt Segmente mit der Video-ID vom Server anzufordern, werden die ersten 4 Zeichen des Hashs der Video-ID gesendet. Der Server sendet Daten für alle Videos mit ähnlichen Hashes zurück."
+        "message": "Anstatt Segmente mit der Video-ID vom Server anzufordern, werden die ersten 4 Zeichen des Hashs der Video-ID gesendet. Der Server sendet Daten für alle Videos mit ähnlichen Hashes zurück."
     },
     "enableRefetchWhenNotFound": {
-       "message": "Segmente für neue Videos neu abrufen"
+        "message": "Segmente für neue Videos neu abrufen"
     },
     "whatRefetchWhenNotFound": {
-       "message": "Wenn das Video neu ist und keine Segmente gefunden wurden, wird während des Betrachtens alle paar Minuten erneut eine Anfrage gesendet."
+        "message": "Wenn das Video neu ist und keine Segmente gefunden wurden, wird während des Betrachtens alle paar Minuten erneut eine Anfrage gesendet."
     },
     "showNotice": {
         "message": "Benachrichtigung wieder zeigen"
