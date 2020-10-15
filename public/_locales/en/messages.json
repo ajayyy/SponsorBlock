@@ -145,6 +145,10 @@
     "recordTimesDescription": {
          "message": "Submit"
     },
+    "submissionEditHint": {
+        "message": "Section editing will appear after you click submit",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
     "popupHint": {
          "message": "Hint: Press the semicolon key while focused on a video to report the start/end of a segment and quote to submit."
     },
