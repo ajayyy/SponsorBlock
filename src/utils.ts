@@ -1,6 +1,5 @@
 import Config from "./config";
 import { CategorySelection, SponsorTime, FetchResponse } from "./types";
-import { sha256 } from 'js-sha256';
 
 import * as CompileConfig from "../config.json";
 
@@ -380,17 +379,19 @@ class Utils {
         return typeof(browser) !== "undefined";
     }
 
-    getHash(value: string, times=5000): string {
+    async getHash(value: string, times = 5000): Promise<string> {
         if (times <= 0) return "";
 
+        let hashBuffer = new TextEncoder().encode(value).buffer;
+
         for (let i = 0; i < times; i++) {
-            let hash = sha256.create();
-            hash.update(value);
-            hash.hex();
-            value = hash.toString();
+            hashBuffer = await crypto.subtle.digest('SHA-256', hashBuffer);
         }
 
-        return value;
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+        return hashHex;
     }
 
 }
