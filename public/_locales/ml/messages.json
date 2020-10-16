@@ -159,5 +159,26 @@
     },
     "setUsername": {
         "message": "ഉപയോക്തൃനാമം സജ്ജമാക്കുക"
+    },
+    "discordAdvert": {
+        "message": "നിർദ്ദേശങ്ങളും ഫീഡ്‌ബാക്കും നൽകാൻ disc ദ്യോഗിക ഡിസ്കോർഡ് സെർവറിൽ ചേരുക!"
+    },
+    "hideThis": {
+        "message": "ഇത് മറയ്ക്കുക"
+    },
+    "Options": {
+        "message": "ഓപ്ഷനുകൾ"
+    },
+    "showButtons": {
+        "message": "YouTube പ്ലെയറിൽ ബട്ടണുകൾ കാണിക്കുക"
+    },
+    "hideButtons": {
+        "message": "YouTube പ്ലെയറിൽ ബട്ടണുകൾ മറയ്‌ക്കുക"
+    },
+    "hideButtonsDescription": {
+        "message": "ഒഴിവാക്കൽ സെഗ്‌മെന്റുകൾ സമർപ്പിക്കുന്നതിന് ഇത് YouTube പ്ലെയറിൽ ദൃശ്യമാകുന്ന ബട്ടണുകൾ മറയ്ക്കുന്നു."
+    },
+    "showInfoButton": {
+        "message": "YouTube പ്ലെയറിൽ വിവര ബട്ടൺ കാണിക്കുക"
     }
 }
