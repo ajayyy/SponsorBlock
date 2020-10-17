@@ -180,5 +180,17 @@
     },
     "showInfoButton": {
         "message": "YouTube പ്ലെയറിൽ വിവര ബട്ടൺ കാണിക്കുക"
+    },
+    "hideInfoButton": {
+        "message": "YouTube പ്ലെയറിൽ വിവര ബട്ടൺ മറയ്‌ക്കുക"
+    },
+    "whatInfoButton": {
+        "message": "YouTube പേജിൽ ഒരു പോപ്പ്അപ്പ് തുറക്കുന്ന ബട്ടണാണിത്."
+    },
+    "hideDeleteButton": {
+        "message": "YouTube പ്ലെയറിൽ ഇല്ലാതാക്കുക ബട്ടൺ മറയ്‌ക്കുക"
+    },
+    "showDeleteButton": {
+        "message": "YouTube പ്ലെയറിൽ ഇല്ലാതാക്കുക ബട്ടൺ കാണിക്കുക"
     }
 }
