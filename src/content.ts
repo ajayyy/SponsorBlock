@@ -801,17 +801,14 @@ function getYouTubeVideoID(url: string) {
     }
 
     //Get ID from searchParam
-    if (urlObject.searchParams.has("v") && ["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
+    let m = null;
+    if (urlObject.searchParams.has("v") && urlObject.pathname.match(/^\/((youtube\.com\/)?watch\/?$|tv\/watch)/)) {
         let id = urlObject.searchParams.get("v");
         return id.length == 11 ? id : false;
-    } else if (urlObject.pathname.startsWith("/embed/")) {
-        try {
-            return urlObject.pathname.substr(7, 11);
-        } catch (e) {
-            console.error("[SB] Video ID not valid for " + url);
-            return false;
-        }
-    } 
+    }
+    else if (m = urlObject.pathname.match(/^\/(?:youtube.com\/)?(?:embed|youtu.be)\/([^/]{11})/)) {
+        return m[1];
+    }
     return false;
 }
 
