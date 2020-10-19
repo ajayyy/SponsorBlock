@@ -132,7 +132,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     componentDidMount() {
         if (Config.config.audioNotificationOnSkip && this.audio) {
             this.audio.volume = this.contentContainer().v.volume * 0.1;
-            this.audio.play();
+            if (this.autoSkip) this.audio.play();
         }
     }
 
