@@ -27,6 +27,9 @@
     "closePopup": {
         "message": "ポップアップを閉じる"
     },
+    "removeFromWhitelist": {
+        "message": "ホワイトリストからチャンネルを削除"
+    },
     "viewLeaderboard": {
         "message": "リーダーボードを表示"
     },
@@ -42,6 +45,12 @@
     "hideButtons": {
         "message": "YouTube プレイヤーにボタンを表示しない"
     },
+    "hideDeleteButton": {
+        "message": "YouTube プレイヤーから削除ボタンを隠す"
+    },
+    "showDeleteButton": {
+        "message": "YouTube プレイヤーから削除ボタンを表示する"
+    },
     "website": {
         "message": "ウェブサイト",
         "description": "Used on Firefox Store Page"
@@ -50,6 +59,12 @@
         "message": "ソースコード",
         "description": "Used on Firefox Store Page"
     },
+    "disableSkipping": {
+        "message": "SponsorBlock を無効にする"
+    },
+    "enableSkipping": {
+        "message": "SponsorBlock を有効にする"
+    },
     "errorCode": {
         "message": "エラーコード: "
     },
@@ -57,7 +72,7 @@
         "message": "スキップ"
     },
     "skip_category": {
-        "message": "スキップ {0}?"
+        "message": "{0} をスキップしますか?"
     },
     "skipped": {
         "message": "スキップしました"
@@ -67,6 +82,9 @@
     },
     "enableAutoSkip": {
         "message": "自動スキップを有効にする"
+    },
+    "audioNotification": {
+        "message": "オーディオ通知をスキップ"
     },
     "youHaveSkipped": {
         "message": "スキップしました "
@@ -83,8 +101,14 @@
     "hoursLower": {
         "message": "時間"
     },
+    "createdBy": {
+        "message": "作成者"
+    },
     "autoSkip": {
         "message": "自動スキップ"
+    },
+    "add": {
+        "message": "追加"
     },
     "customServerAddress": {
         "message": "SponsorBlock サーバーアドレス"
@@ -118,6 +142,9 @@
     },
     "disable": {
         "message": "無効"
+    },
+    "manualSkip": {
+        "message": "手動スキップ"
     },
     "previewColor": {
         "message": "プレビューカラー",
