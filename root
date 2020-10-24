@@ -1,0 +1,1 @@
+{"version":1,"ops":[{"type":1,"author":{"id":"969fe24ee4082d52977026a04efd671fd5270344"},"timestamp":1603074537,"metadata":{"github-id":"MDU6SXNzdWU3MjQyMTA0MzU=","github-url":"https://github.com/ajayyy/SponsorBlock/issues/517","origin":"github"},"title":"Preview bar draw order","message":"Shorter segments should be drawn last (at the top)","files":null}]}
