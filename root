@@ -1,0 +1,1 @@
+{"version":1,"ops":[{"type":1,"author":{"id":"969fe24ee4082d52977026a04efd671fd5270344"},"timestamp":1580686078,"metadata":{"github-id":"MDU6SXNzdWU1NTg3NzYwODE=","github-url":"https://github.com/ajayyy/SponsorBlock/issues/258","origin":"github"},"title":"MapIO should use the SB.localconfig map","message":"Otherwise it can get out of date.","files":null}]}
