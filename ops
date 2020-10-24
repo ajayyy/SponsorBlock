@@ -1,0 +1,1 @@
+{"version":1,"ops":[{"type":1,"author":{"id":"969fe24ee4082d52977026a04efd671fd5270344"},"timestamp":1565627739,"metadata":{"github-id":"MDU6SXNzdWU0Nzk3NDEzNjI=","github-url":"https://github.com/ajayyy/SponsorBlock/issues/102","origin":"github"},"title":"Cache prepared statements","message":"Right now they are created every time they are needed.","files":null}]}
