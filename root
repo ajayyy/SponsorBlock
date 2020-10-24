@@ -1,0 +1,1 @@
+{"version":1,"ops":[{"type":1,"author":{"id":"969fe24ee4082d52977026a04efd671fd5270344"},"timestamp":1577816626,"metadata":{"github-id":"MDU6SXNzdWU1NDQyNDUxOTI=","github-url":"https://github.com/ajayyy/SponsorBlock/issues/220","origin":"github"},"title":"Add Babel","message":"Now that `npm` is used, babel or another polyflling library can be added.","files":null}]}
