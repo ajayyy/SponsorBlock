@@ -1,1 +1,16 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock til YouTube - Fjern reklamer",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Fjern reklamer, subscriber tiggeri og mere i youtube videoer. Rapporter reklamer på de videoer du ser for at spare folks tid.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Serveren sagde at denne efterspørgsel var ugyldig"
+    },
+    "429": {
+        "message": "Du har indsendt for mange reklamesegmenter til den her video, er du helt sikker på at der er så mange?"
+    }
+}
