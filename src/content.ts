@@ -1273,9 +1273,19 @@ function openInfoMenu() {
 
     sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var popup = document.createElement("div");
+            let popup = document.createElement("div");
             popup.id = "sponsorBlockPopupContainer";
-            popup.innerHTML = xmlhttp.responseText
+
+            let htmlData = xmlhttp.responseText;
+            // Hack to replace head data (title, favicon)
+            htmlData = htmlData.replace(/<head>[\S\s]*<\/head>/gi, "");
+            // Hack to replace body tag with div
+            htmlData = htmlData.replace(/<body/gi, "<div");
+            htmlData = htmlData.replace(/<\/body/gi, "</div");
+
+            console.log(htmlData)
+
+            popup.innerHTML = htmlData;
 
             //close button
             let closeButton = document.createElement("div");
@@ -1312,10 +1322,6 @@ function openInfoMenu() {
             edit.src = chrome.extension.getURL("icons/pencil.svg");
             check.src = chrome.extension.getURL("icons/check.svg");
             check.src = chrome.extension.getURL("icons/thumb.svg");
-
-            //remove the style sheet and font that are not necessary
-            popup.querySelector("#sponsorBlockPopupFont").remove();
-            popup.querySelector("#sponsorBlockStyleSheet").remove();
 
             parentNode.insertBefore(popup, parentNode.firstChild);
 
