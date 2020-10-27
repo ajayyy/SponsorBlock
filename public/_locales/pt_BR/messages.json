@@ -101,7 +101,7 @@
         "message": "Ocorreu um erro de conexão. Código de erro: "
     },
     "wantToSubmit": {
-        "message": "Você deseja enviar a id do vídeo"
+        "message": "Você deseja enviar para vídeo com id"
     },
     "leftTimes": {
         "message": "Parece que você se esqueceu de enviar segmentos. Volte para aquela página para enviá-los (eles não foram apagados)."
@@ -540,7 +540,7 @@
         "message": "Mostrar barra de progresso"
     },
     "colorFormatIncorrect": {
-        "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com um sinal de número no início."
+        "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma tralha / hashtag no início."
     },
     "previewColor": {
         "message": "Cor de pré-visualização",
