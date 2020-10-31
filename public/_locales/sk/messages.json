@@ -1,6 +1,21 @@
 {
+    "channelWhitelisted": {
+        "message": "Kanál bol pridaný do whitelistu!"
+    },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segmenty"
+    },
     "reportButtonTitle": {
         "message": "Nahlásiť"
+    },
+    "reportButtonInfo": {
+        "message": "Nahlásiť tento segment ako nesprávny."
+    },
+    "Dismiss": {
+        "message": "Zrušiť"
     },
     "Loading": {
         "message": "Načitávanie..."
@@ -14,8 +29,44 @@
     "Hide": {
         "message": "Nikdy nezobrazovať"
     },
+    "unskip": {
+        "message": "Unskipnúť"
+    },
+    "reskip": {
+        "message": "Reskipnúť"
+    },
     "paused": {
         "message": "Pozastavené"
+    },
+    "manualPaused": {
+        "message": "Časovač zastavený"
+    },
+    "confirmMSG": {
+        "message": "Pre úpravu alebo zmazanie viacerých hodnôt, kliknite na info tlačítko alebo otvorte okno rozšírenia kliknutím na ikonku v pravom hornom rohu."
+    },
+    "clearThis": {
+        "message": "Naozaj toto chcete vymazať?"
+    },
+    "Unknown": {
+        "message": "Pri ukladaní vašich časov nastala chyba, skúste to prosím neskôr."
+    },
+    "sponsorFound": {
+        "message": "Toto video má segmenty v databáze!"
+    },
+    "sponsor404": {
+        "message": "Nenašli sa žiadne segmenty"
+    },
+    "sponsorStart": {
+        "message": "Teraz začína segment"
+    },
+    "sponsorEnd": {
+        "message": "Teraz končí segment"
+    },
+    "success": {
+        "message": "Hotovo!"
+    },
+    "closePopup": {
+        "message": "Zavrieť okno"
     },
     "here": {
         "message": "tu"
@@ -43,9 +94,6 @@
     },
     "skip": {
         "message": "Preskočiť"
-    },
-    "skip_category": {
-        "message": "Preskočiť {0}?"
     },
     "disableAutoSkip": {
         "message": "Zakázať Automatické Preskočenie"
