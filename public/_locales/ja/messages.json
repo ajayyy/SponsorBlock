@@ -152,8 +152,17 @@
     "category_sponsor": {
         "message": "スポンサー"
     },
+    "category_intro": {
+        "message": "インターミッション / イントロアニメーション"
+    },
     "category_intro_short": {
         "message": "インターミッション"
+    },
+    "category_outro": {
+        "message": "エンドカード/クレジット"
+    },
+    "category_selfpromo": {
+        "message": "無報酬 / セルフプロモーション"
     },
     "disable": {
         "message": "無効"
