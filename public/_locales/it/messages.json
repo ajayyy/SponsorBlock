@@ -203,16 +203,16 @@
         "message": "Questa funzionalità tiene traccia dei segmenti che hai saltato, per far sapere agli utenti quanto il loro contributo abbia aiutato gli altri e sia stato utilizzato come metrica insieme ai voti positivi, per garantire che lo spam non entri nel database. L'estensione invierà un messaggio al server ogni volta che salterai un segmento. Si spera che la maggior parte delle persone non modifichino questa impostazione, in modo da non intaccare l'accuratezza dei numeri di visualizzazione. :)"
     },
     "enableQueryByHashPrefix": {
-        "message": "Interrogazione Per Prefisso Hash"
+        "message": "Query Del Prefisso di Hash"
     },
     "whatQueryByHashPrefix": {
-        "message": "Invece di richiedere segmenti dal server utilizzando l'Id video, vengono inviati i primi 4 caratteri dell'hash dell'ID video. Questo server invierà i dati per tutti i video con hash simili."
+        "message": "Invece di richiedere i segmenti dal server usando il videoID, i primi 4 caratteri dell'hash del videoID sono inviati. Questo server reinvierà i dati per tutti i video con hash simili."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Ricarica I Segmenti Su Nuovi Video"
+        "message": "Riprendi Segmenti Sui Nuovi Video"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Se il video è nuovo, e non risultano esserci segmenti, questi continueranno ad essere ricaricati dopo pochi minuti mentre guardi il video."
+        "message": "Se il video è nuovo e non ci sono segmenti al suo interno, continuerà a recuperare ogni qualche minuto mentre lo guardi."
     },
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
