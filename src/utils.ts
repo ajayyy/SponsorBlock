@@ -323,14 +323,6 @@ class Utils {
         });
     }
 
-    getFormattedMinutes(seconds: number) {
-        return Math.floor(seconds / 60);
-    }
-
-    getFormattedSeconds(seconds: number) {
-        return seconds % 60;
-    }
-
     getFormattedTime(seconds: number, precise?: boolean): string {
         let hours = Math.floor(seconds / 60 / 60);
         let minutes = Math.floor(seconds / 60) % 60;
@@ -356,12 +348,22 @@ class Utils {
         return formatted;
     }
 
-    shortCategoryName(categoryName: string): string {
-        return chrome.i18n.getMessage("category_" + categoryName + "_short") || chrome.i18n.getMessage("category_" + categoryName);
+    getFormattedTimeToSeconds(formatted: string): number | null {
+        const fragments = /^(?:(?:(\d+):)?(\d+):)?(\d*(?:\.\d+)?)$/.exec(formatted);
+
+        if (fragments === null) {
+            return null;
+        }
+
+        const hours = fragments[1] ? parseInt(fragments[1]) : 0;
+        const minutes = fragments[2] ? parseInt(fragments[2] || '0') : 0;
+        const seconds = fragments[3] ? parseFloat(fragments[3]) : 0;
+
+        return hours * 3600 + minutes * 60 + seconds;
     }
 
-    getRawSeconds(minutes: number, seconds: number): number {
-        return minutes * 60 + seconds;
+    shortCategoryName(categoryName: string): string {
+        return chrome.i18n.getMessage("category_" + categoryName + "_short") || chrome.i18n.getMessage("category_" + categoryName);
     }
 
     isContentScript(): boolean {
