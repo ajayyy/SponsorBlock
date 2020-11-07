@@ -103,6 +103,9 @@
     "wantToSubmit": {
         "message": "Do you want to submit for video id"
     },
+    "clearTimes": {
+        "message": "Kısımları temizle"
+    },
     "openPopup": {
         "message": "SponsorBlock Penceresini Aç"
     },
@@ -175,6 +178,9 @@
     "whatDeleteButton": {
         "message": "Bu, YouTube oynatıcısındaki mevcut video için gönderilmemiş bölümleri temizleyen butondur."
     },
+    "whatRefetchWhenNotFound": {
+        "message": "Eğer video yeni ve kısımları bulunmuyorsa, sen videoyu izlerken her birkaç dakikada bir kısımları edinmeye çalışır."
+    },
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
     },
@@ -224,9 +230,6 @@
     },
     "skip": {
         "message": "Atla"
-    },
-    "skip_category": {
-        "message": "Atla {0}?"
     },
     "skipped": {
         "message": "Atlandı"
