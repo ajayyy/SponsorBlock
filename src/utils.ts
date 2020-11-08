@@ -349,7 +349,7 @@ class Utils {
     }
 
     getFormattedTimeToSeconds(formatted: string): number | null {
-        const fragments = /^(?:(?:(\d+):)?(\d+):)?(\d*(?:\.\d+)?)$/.exec(formatted);
+        const fragments = /^(?:(?:(\d+):)?(\d+):)?(\d*(?:[.,]\d+)?)$/.exec(formatted);
 
         if (fragments === null) {
             return null;
@@ -357,7 +357,7 @@ class Utils {
 
         const hours = fragments[1] ? parseInt(fragments[1]) : 0;
         const minutes = fragments[2] ? parseInt(fragments[2] || '0') : 0;
-        const seconds = fragments[3] ? parseFloat(fragments[3]) : 0;
+        const seconds = fragments[3] ? parseFloat(fragments[3].replace(',', '.')) : 0;
 
         return hours * 3600 + minutes * 60 + seconds;
     }
