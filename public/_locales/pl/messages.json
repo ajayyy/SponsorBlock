@@ -80,10 +80,10 @@
         "message": "Nie znaleziono segmentów"
     },
     "sponsorStart": {
-        "message": "Segment zaczyna się teraz"
+        "message": "Początek segmentu"
     },
     "sponsorEnd": {
-        "message": "Segment kończy się teraz"
+        "message": "Koniec segmentu"
     },
     "noVideoID": {
         "message": "Nie znaleziono filmu na tej karcie. Jeśli wiesz, że to karta YouTube'a, zamknij to okienko i otwórz je ponownie. Jeśli to nie zadziała, spróbuj odświeżyć stronę."
