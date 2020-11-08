@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Skip sponsorships, subscription begging and more on YouTube videos. Report sponsors on videos you watch to save others' time.",
+        "message": "Videolardaki sponsorlukları, abonelik isteklerini ve daha fazlasını atlayın. Başkalarının vaktini kurtarmak için izlediğiniz videolardaki sponsorları bildirin.",
         "description": "Description of the extension."
     },
     "400": {
@@ -80,10 +80,10 @@
         "message": "Kısımlar bulunamadı"
     },
     "sponsorStart": {
-        "message": "Segment Starts Now"
+        "message": "Kısım Şimdi Başlıyor"
     },
     "sponsorEnd": {
-        "message": "Segment Ends Now"
+        "message": "Kısım Şimdi Bitiyor"
     },
     "noVideoID": {
         "message": "Bu sekmede YouTube videosu bulunamadı. Bu sekmenin bir YouTube sekmesi olduğundan eminseniz, bu pencereyi kapatıp, tekrar açın. Eğer o da işe yaramazsa, sekmeyi yenilemeyi deneyin."
@@ -101,10 +101,10 @@
         "message": "Bağlantı hatası oluştu. Hata kodu: "
     },
     "wantToSubmit": {
-        "message": "Do you want to submit for video id"
+        "message": "Bu video kimliği için göndermek istiyor musun"
     },
     "leftTimes": {
-        "message": "Bazı kısımları göndermediğin gözüküyor. Göndermek için sayfaya geri dön (hala mevcutlar)."
+        "message": "Bazı kısımları göndermediniz. Göndermek için sayfaya geri dönün (hala mevcutlar)."
     },
     "clearTimes": {
         "message": "Kısımları temizle"
@@ -144,6 +144,9 @@
     },
     "recordTimesDescription": {
         "message": "Kısmın başladığı ve bittiği yeri kaydetmek ve veri tabanına göndermek için aşağıdaki butona tıklayın."
+    },
+    "popupHint": {
+        "message": "İpucu: Bir kısmın başlangıcını / sonunu seçmek ve göndermek için bir videoyu izlerken noktalı virgül tuşuna basın. (Bu, ayarlardan değiştirilebilir)"
     },
     "clearTimesButton": {
         "message": "Süreleri Temizle"
@@ -196,11 +199,27 @@
     "enableViewTracking": {
         "message": "Kısım Atlama Sayaç Takibine İzin Ver"
     },
+    "whatViewTracking": {
+        "message": "Bu özellik, hangi kısımları atladığınızı takip ederek kullanıcıların gönderilerinin diğerlerine ne kadar yardımcı olduğunu bilmelerini sağlar ve olumlu oyları bir ölçüm aracı olarak kullanarak gereksiz yollanan kısımların veri tabanına girmemesini sağlar. Eklenti, bir kısmı her atladığınızda sunucuya bir mesaj gönderir. Umarım çoğu insan bu ayarı değiştirmez böylece görüntüleme sayıları doğru olur. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Karma Ön eki ile Sorgula"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Video Kimliğini kullanarak sunucudan kısımları talep etmek yerine, Video Kimliğinin karmasının ilk 4 karakterini gönderir. Bu sunucu, benzer karmalara sahip tüm videolar için verileri geri gönderir."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Yeni Videolardaki Kısımları Sürekli Sorgula"
+    },
     "whatRefetchWhenNotFound": {
         "message": "Eğer video yeni ve kısımları bulunmuyorsa, sen videoyu izlerken her birkaç dakikada bir kısımları edinmeye çalışır."
     },
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
+    },
+    "longDescription": {
+        "message": "SponsorBlock, sponsorları, giriş ve bitiş kısımlarını, abonelik hatırlatıcılarını ve YouTube videolarının diğer can sıkıcı kısımlarını atlamanıza olanak tanır. SponsorBlock, herkesin sponsorlu kısımları ve YouTube videolarının diğer kısımlarının başlangıç ve bitiş zamanlarını göndermesine izin veren kitle kaynaklı bir tarayıcı uzantısıdır. Bir kişi bu bilgiyi gönderdikten sonra, bu uzantıya sahip diğer herkes sponsorlu kısımları hemen atlayacaktır. Müzik videolarının müzik dışı bölümlerini de atlayabilirsiniz.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Website",
@@ -217,6 +236,9 @@
     "noticeUpdate2": {
         "message": "Eğer hala beğenmediyseniz, asla gösterme butonuna basın.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Kısım kaydına başlamak için bir tuş belirleyin"
     },
     "setSubmitKeybind": {
         "message": "Gönderim için bir tuş belirleyin"
@@ -249,6 +271,9 @@
     "skip": {
         "message": "Atla"
     },
+    "skip_category": {
+        "message": "{0} atla?"
+    },
     "skipped": {
         "message": "Atlandı"
     },
@@ -260,6 +285,15 @@
     },
     "audioNotification": {
         "message": "Atlamada Sesli Bildirim"
+    },
+    "audioNotificationDescription": {
+        "message": "Atlama sırasında sesli bildirim, bir kısım atlandığında bir ses çıkarır. Devre dışı bırakılırsa (veya otomatik atlama devre dışı bırakılırsa), ses çalınmaz."
+    },
+    "showTimeWithSkips": {
+        "message": "Atlanan Kısımları Silinmiş Süreyi Göster"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Bu süre, video ilerleme çubuğunun altındaki geçerli zamanın yanında parantez içinde görüntülenir. Bu, videodaki kısımların silinmiş toplam video süresini gösterir. Bu, yalnızca \"Video İlerleme Çubuğunda Göster\" olarak işaretlenen kısımları içerir."
     },
     "youHaveSkipped": {
         "message": "Bunu atladınız "
@@ -306,6 +340,9 @@
     "autoSkip": {
         "message": "Otomatik Atla"
     },
+    "showSkipNotice": {
+        "message": "Bir Kısmı Atladıktan Sonra Uyarı Göster"
+    },
     "keybindCurrentlySet": {
         "message": ". Şu an buna ayarlı:"
     },
@@ -342,6 +379,9 @@
     "minDuration": {
         "message": "Minimum süre (saniye):"
     },
+    "minDurationDescription": {
+        "message": "Ayarlanan değerden daha kısa kısımlar atlanmayacak veya oynatıcıda gösterilmeyecektir."
+    },
     "shortCheck": {
         "message": "Sıradaki öneri belirlediğiniz minimum süre ayarından daha kısa. Bu zaten yollandığı ve bu ayardan dolayı yok sayıldığı anlamına gelebilir. Göndermek istediğinizden emin misiniz?"
     },
@@ -369,8 +409,14 @@
     "areYouSureReset": {
         "message": "Bunu sıfırlamak istediğinize emin misiniz?"
     },
+    "confirmPrivacy": {
+        "message": "Videonun liste dışı olduğu tespit edildi. Atlanan kısımları kontrol etmek istemiyorsanız iptal'i tıklayın."
+    },
     "unlistedCheck": {
         "message": "Listedışı/Özel Videoları Görmezden Gel"
+    },
+    "whatUnlistedCheck": {
+        "message": "Bu ayar, SponsorBlock'u biraz yavaşlatacaktır. atlama kısımlarının bulunması için, video kimliğinin sunucuya gönderilmesini gerektirir. Listelenmemiş video kimliklerinin İnternet üzerinden gönderilmesi konusunda endişeleriniz varsa, bu seçeneği etkinleştirin."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com şu an desteklenmektedir"
@@ -404,6 +450,9 @@
     },
     "preview": {
         "message": "Önizle"
+    },
+    "inspect": {
+        "message": "Kontrol et"
     },
     "edit": {
         "message": "Düzenle"
@@ -454,11 +503,23 @@
     "category_interaction": {
         "message": "Etkileşim Hatırlatıcısı (Abonelik)"
     },
+    "category_interaction_description": {
+        "message": "Videonun ortasında beğenmek, abone olmak veya takip etmek için kısa bir hatırlatma olan kısımdır. Eğer süresi uzunsa veya belirli bir şey hakkındaysa, kendi reklamını yapan kategorisi seçilmelidir."
+    },
+    "category_interaction_short": {
+        "message": "Etkileşim Hatırlatıcısı"
+    },
     "category_selfpromo": {
         "message": "Karşılıksız/Kendi Reklamı"
     },
+    "category_selfpromo_description": {
+        "message": "\"Sponsor\" seçeneğinden farkı para karşılığı olmaması veya kendi reklamını yapmasıdır. Buna kendi markalı ürünlerini satmak, bağış toplamak ve videoda işbirliği yaptığı kimselerden bahsetmek dahildir."
+    },
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"
+    },
+    "category_music_offtopic_description": {
+        "message": "Sadece müzik klipleri içindir. Buna kliplerin başlarında ve sonlarında şarkı bulunmayan kısımlar dahildir."
     },
     "category_music_offtopic_short": {
         "message": "Müzik Olmayan Bölüm"
@@ -477,6 +538,9 @@
     },
     "showOverlay": {
         "message": "Arama Çubuğunda Göster"
+    },
+    "colorFormatIncorrect": {
+        "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
     },
     "previewColor": {
         "message": "Önizleme Rengi",
@@ -510,6 +574,9 @@
     "chooseACategory": {
         "message": "Bir Kategori Seç"
     },
+    "youMustSelectACategory": {
+        "message": "Göndereceğin tüm kısımlar için bir kategori seçmelisin!"
+    },
     "bracketEnd": {
         "message": "(Son)"
     },
@@ -528,11 +595,23 @@
     "itCouldBeAdblockerIssue": {
         "message": "Bunu sürekli yaşıyorsanız, reklam engelleyiciniz tarafından gerçekleşiyor olabilir. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests adresini kontrol edin."
     },
+    "forceChannelCheck": {
+        "message": "Atlamadan Önce Kanal Kontrolüne Zorla"
+    },
+    "whatForceChannelCheck": {
+        "message": "Varsayılan olarak, kanalın ne olduğunu bile bilmeden hemen kısımları atlayacaktır. Videonun başlangıcındaki bazı kısımları beyaz listeye eklenmiş kanallarda atlayabilir. Bu seçeneğin etkinleştirilmesi bunu önleyecektir ancak tüm atlamaların yapılması, kanal kimliğinin alınması biraz zaman alabileceğinden küçük bir gecikmeye neden olur. Hızlı bir bağlantın varsa bu gecikme fark edilmeyebilir."
+    },
+    "forceChannelCheckPopup": {
+        "message": "\"Atlamadan Önce Kanal Kontrolünü Zorla\" Seçeneğini Etkinleştirmeyi Düşünebilirsiniz"
+    },
     "downvoteDescription": {
         "message": "Hatalı/Yanlış Zaman"
     },
     "incorrectCategory": {
         "message": "Yanlış Kategori"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Bu video müzik olarak sınıflandırılmıştır. Bunun bir sponsor olduğundan emin misin? Bu aslında bir \"Müzik Dışı bölüm\" ise, uzantı seçeneklerini açın ve bu kategoriyi etkinleştirin. Ardından, bu kısmı sponsor yerine \"Müzik Olmayan\" olarak gönderebilirsiniz. Kafanız karıştıysa lütfen yönergeleri okuyun."
     },
     "multipleSegments": {
         "message": "Birden Çok Bölüm"
@@ -546,6 +625,12 @@
     },
     "categoryUpdate1": {
         "message": "Kategoriler burada!"
+    },
+    "categoryUpdate2": {
+        "message": "Girişleri, bitişleri, ürünleri ve benzeri şeyleri atlamak için ayarları açın."
+    },
+    "unsubmittedWarning": {
+        "message": "Gönderilmemiş Kısımlar Uyarısı"
     },
     "unsubmittedWarningDescription": {
         "message": "Bir videodan kısımları göndermeden ayrılırsan bir bildirim gönderir"
