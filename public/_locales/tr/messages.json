@@ -20,10 +20,10 @@
         "message": "Kanal beyazlistede!"
     },
     "Segment": {
-        "message": "segment"
+        "message": "kısım"
     },
     "Segments": {
-        "message": "segments"
+        "message": "kısımlar"
     },
     "upvoteButtonInfo": {
         "message": "Bu öneriye oy ver"
@@ -77,7 +77,7 @@
         "message": "This video has segments in the database!"
     },
     "sponsor404": {
-        "message": "No segments found"
+        "message": "Kısımlar bulunamadı"
     },
     "sponsorStart": {
         "message": "Segment Starts Now"
@@ -103,11 +103,20 @@
     "wantToSubmit": {
         "message": "Do you want to submit for video id"
     },
+    "leftTimes": {
+        "message": "Bazı kısımları göndermediğin gözüküyor. Göndermek için sayfaya geri dön (hala mevcutlar)."
+    },
     "clearTimes": {
         "message": "Kısımları temizle"
     },
     "openPopup": {
         "message": "SponsorBlock Penceresini Aç"
+    },
+    "closePopup": {
+        "message": "Açılır Pencereyi kapat"
+    },
+    "SubmitTimes": {
+        "message": "Kısımları gönder"
     },
     "submitCheck": {
         "message": "Bunu göndermek istediğinize emin misiniz?"
@@ -117,6 +126,9 @@
     },
     "removeFromWhitelist": {
         "message": "Kanalı Beyazlisteden Kaldır"
+    },
+    "voteOnTime": {
+        "message": "Bir Kısmı Oyla"
     },
     "soFarUHSubmited": {
         "message": "Şu an kadar yolladığınız"
@@ -129,6 +141,9 @@
     },
     "here": {
         "message": "burada"
+    },
+    "recordTimesDescription": {
+        "message": "Kısmın başladığı ve bittiği yeri kaydetmek ve veri tabanına göndermek için aşağıdaki butona tıklayın."
     },
     "clearTimesButton": {
         "message": "Süreleri Temizle"
@@ -177,6 +192,9 @@
     },
     "whatDeleteButton": {
         "message": "Bu, YouTube oynatıcısındaki mevcut video için gönderilmemiş bölümleri temizleyen butondur."
+    },
+    "enableViewTracking": {
+        "message": "Kısım Atlama Sayaç Takibine İzin Ver"
     },
     "whatRefetchWhenNotFound": {
         "message": "Eğer video yeni ve kısımları bulunmuyorsa, sen videoyu izlerken her birkaç dakikada bir kısımları edinmeye çalışır."
@@ -415,8 +433,23 @@
     "category_sponsor": {
         "message": "Sponsor"
     },
+    "category_sponsor_description": {
+        "message": "Ücretli tanıtım, ücretli yönlendirmeler ve doğrudan reklamlar. Kendini pazarlayan veya beğendiği içerik üreticilerine/sitelere/ürünlere atıfta bulunanlar için değil."
+    },
+    "category_intro": {
+        "message": "Aralık/Giriş Animasyonu"
+    },
+    "category_intro_description": {
+        "message": "Gerçek içeriği olmayan bir aralık. Duraklama, sabit ekran, tekrar eden animasyon olabilir. Bu bilgi içeren geçişler için kullanılmamalıdır."
+    },
+    "category_intro_short": {
+        "message": "Aralık"
+    },
     "category_outro": {
         "message": "Bitiş Ekranı/Jenerik"
+    },
+    "category_outro_description": {
+        "message": "Videoda emeği geçenlerin veya video sonunda çıkan kartların gösterildiği kısımlar. Bilgilendirici sona sahip videolar için değil."
     },
     "category_interaction": {
         "message": "Etkileşim Hatırlatıcısı (Abonelik)"
@@ -427,8 +460,14 @@
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"
     },
+    "category_music_offtopic_short": {
+        "message": "Müzik Olmayan Bölüm"
+    },
     "category_livestream_messages": {
         "message": "Canlı Yayın: Bağış/Mesaj Okuma"
+    },
+    "category_livestream_messages_short": {
+        "message": "Canlı Yayın Mesajlarını Okumak"
     },
     "disable": {
         "message": "Devredışı"
@@ -468,6 +507,9 @@
     "moreCategories": {
         "message": "Daha Fazla Kategori"
     },
+    "chooseACategory": {
+        "message": "Bir Kategori Seç"
+    },
     "bracketEnd": {
         "message": "(Son)"
     },
@@ -504,5 +546,8 @@
     },
     "categoryUpdate1": {
         "message": "Kategoriler burada!"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Bir videodan kısımları göndermeden ayrılırsan bir bildirim gönderir"
     }
 }
