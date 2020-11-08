@@ -8,7 +8,7 @@ const utils = new Utils();
 
 import runThePopup from "./popup";
 
-import PreviewBar from "./js-components/previewBar";
+import PreviewBar, {PreviewBarSegment} from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
@@ -252,7 +252,7 @@ function resetValues() {
 
     //empty the preview bar
     if (previewBar !== null) {
-        previewBar.set([], [], 0);
+        previewBar.clear();
     }
 
     //reset sponsor data found check
@@ -368,8 +368,6 @@ async function videoIDChange(id) {
 }
 
 function handleMobileControlsMutations(): void {
-    const mobileYouTubeSelector = ".progress-bar-background";
-    
     updateVisibilityOfPlayerControlsButton().then((createdButtons) => {
         if (createdButtons) {
             if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length >= 2) {
@@ -381,10 +379,14 @@ function handleMobileControlsMutations(): void {
             }
         }
     });
-    
+
     if (previewBar !== null) {
         if (document.body.contains(previewBar.container)) {
-            updatePreviewBarPositionMobile(document.getElementsByClassName(mobileYouTubeSelector)[0]);
+            const progressBarBackground = document.querySelector<HTMLElement>(".progress-bar-background");
+
+            if (progressBarBackground !== null) {
+                updatePreviewBarPositionMobile(progressBarBackground);
+            }
 
             return;
         } else {
@@ -415,11 +417,11 @@ function createPreviewBar(): void {
     ];
 
     for (const selector of progressElementSelectors) {
-        const el = document.querySelectorAll(selector);
+        const el = document.querySelector<HTMLElement>(selector);
 
-        if (el && el.length && el[0]) {
-            previewBar = new PreviewBar(el[0], onMobileYouTube, onInvidious);
-            
+        if (el) {
+            previewBar = new PreviewBar(el, onMobileYouTube, onInvidious);
+
             updatePreviewBar();
 
             break;
@@ -819,46 +821,58 @@ function getYouTubeVideoID(url: string) {
 /**
  * This function is required on mobile YouTube and will keep getting called whenever the preview bar disapears
  */
-function updatePreviewBarPositionMobile(parent: Element) {
+function updatePreviewBarPositionMobile(parent: HTMLElement) {
     if (document.getElementById("previewbar") === null) {
         previewBar.updatePosition(parent);
     }
 }
 
 function updatePreviewBar() {
-    if(isAdPlaying) {
-        previewBar.set([], [], 0);
+    if (previewBar === null) return;
+
+    if (isAdPlaying) {
+        previewBar.clear();
         return;
     }
 
-    if (previewBar === null || video === null) return;
+    if (video === null) return;
 
-    let localSponsorTimes = sponsorTimes;
-    if (localSponsorTimes == null) localSponsorTimes = [];
+    const previewBarSegments: PreviewBarSegment[] = [];
 
-    const allSponsorTimes = localSponsorTimes.concat(sponsorTimesSubmitting);
-	
-    //create an array of the sponsor types
-    const types = [];
-    for (let i = 0; i < localSponsorTimes.length; i++) {
-        if (localSponsorTimes[i].hidden === SponsorHideType.Visible) {
-            types.push(localSponsorTimes[i].category);
-        } else {
-            // Don't show this sponsor
-            types.push(null);
-        }
-    }
-    for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-        types.push("preview-" + sponsorTimesSubmitting[i].category);
+    if (sponsorTimes) {
+        sponsorTimes.forEach((segment) => {
+            if (segment.hidden !== SponsorHideType.Visible) return;
+
+            previewBarSegments.push({
+                timestamps: segment.segment as [number, number],
+                category: segment.category,
+                preview: false,
+            });
+        });
     }
 
-    previewBar.set(utils.getSegmentsFromSponsorTimes(allSponsorTimes), types, video.duration)
+    sponsorTimesSubmitting.forEach((segment) => {
+        previewBarSegments.push({
+            timestamps: segment.segment as [number, number],
+            category: segment.category,
+            preview: true,
+        });
+    });
+
+    previewBar.set(previewBarSegments, video.duration)
 
     if (Config.config.showTimeWithSkips) {
-        showTimeWithoutSkips(allSponsorTimes);
+        const skippedSegments = previewBarSegments.filter((segment) => {
+            // Count the segment only if the category is autoskipped
+            return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip;
+        });
+
+        const skippedDuration = utils.getTimestampsDuration(skippedSegments.map(({timestamps}) => timestamps));
+
+        showTimeWithoutSkips(skippedDuration);
     }
 
-    //update last video id
+    // Update last video id
     lastPreviewBarUpdate = sponsorVideoID;
 }
 
@@ -1626,37 +1640,28 @@ function updateAdFlag() {
     }
 }
 
-function showTimeWithoutSkips(allSponsorTimes): void {
+function showTimeWithoutSkips(skippedDuration: number): void {
     if (onMobileYouTube || onInvidious) return;
 
-	let skipDuration = 0;
-	
-	// Calculate skipDuration based from the segments in the preview bar
-	for (let i = 0; i < allSponsorTimes.length; i++) {
-        // If an end time exists
-        if (allSponsorTimes[i].segment[1]) {
-            skipDuration += allSponsorTimes[i].segment[1] - allSponsorTimes[i].segment[0];
-        }
-		
-	}
-	
-	// YouTube player time display
-	const display = document.getElementsByClassName("ytp-time-display notranslate")[0];
-	if (!display) return;
-	
-    const formatedTime = utils.getFormattedTime(video.duration - skipDuration);
-	
-	const durationID = "sponsorBlockDurationAfterSkips";	
+    if (isNaN(skippedDuration) || skippedDuration < 0) {
+        skippedDuration = 0;
+    }
+
+    // YouTube player time display
+    const display = document.querySelector(".ytp-time-display.notranslate");
+    if (!display) return;
+
+    const durationID = "sponsorBlockDurationAfterSkips";
     let duration = document.getElementById(durationID);
 
-	// Create span if needed
-	if(duration === null) {
-		duration = document.createElement('span');
+    // Create span if needed
+    if (duration === null) {
+        duration = document.createElement('span');
         duration.id = durationID;
         duration.classList.add("ytp-time-duration");
 
-		display.appendChild(duration);
-	}
-		
-    duration.innerText = (skipDuration <= 0 || isNaN(skipDuration) || formatedTime.includes("NaN")) ? "" : " ("+formatedTime+")";
+        display.appendChild(duration);
+    }
+
+    duration.innerText = skippedDuration <= 0 ? "" : " (" + utils.getFormattedTime(video.duration - skippedDuration) + ")";
 }
