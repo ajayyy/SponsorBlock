@@ -561,6 +561,7 @@ async function sponsorsLookup(id: string) {
 
     if (!seekListenerSetUp && !Config.config.disableSkipping) {
         seekListenerSetUp = true;
+        switchingVideos = false;
 
         video.addEventListener('play', () => {
             switchingVideos = false;
