@@ -174,5 +174,53 @@
     },
     "hideButtons": {
         "message": "Skrýt tlačítka na YouTube přehrávači"
+    },
+    "hideButtonsDescription": {
+        "message": "Skryje tlačítka, která se zobrazí v YouTube přehrávači pro přeskočení segmentů."
+    },
+    "showInfoButton": {
+        "message": "Zobrazit informační tlačítko v YouTube přehrávači"
+    },
+    "hideInfoButton": {
+        "message": "Skrýt informační tlačítko v YouTube přehrávači"
+    },
+    "whatInfoButton": {
+        "message": "Toto je tlačítko, které otevře vyskakovací nabídku na YouTube stránce."
+    },
+    "hideDeleteButton": {
+        "message": "Skrýt tlačítko Odstranit v YouTube přehrávači"
+    },
+    "showDeleteButton": {
+        "message": "Zobrazit tlačítko Odstranit v YouTube přehrávači"
+    },
+    "whatDeleteButton": {
+        "message": "Toto je tlačítko v YouTube přehrávači, které odebere všechny vaše neodeslané segmenty v současném videu."
+    },
+    "enableViewTracking": {
+        "message": "Povolit počítadlo přeskočení"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Dotaz podle hash předpony"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Refetovat segmenty na nových videích"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Pokud je video nové a nejsou nalezeny žádné segmenty, bude rozšíření každých několik minut refetchovat data, zatímco sledujete video."
+    },
+    "showNotice": {
+        "message": "Znovu zobrazit upozornění"
+    },
+    "website": {
+        "message": "Web",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Zdrojový kód",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "Upozornění bylo aktualizováno!",
+        "description": "The first line of the message displayed after the notice was upgraded."
     }
 }
