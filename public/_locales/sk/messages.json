@@ -18,7 +18,7 @@
         "message": "Zrušiť"
     },
     "Loading": {
-        "message": "Načitávanie..."
+        "message": "Načítavanie..."
     },
     "Mins": {
         "message": "Minúty"
@@ -72,7 +72,7 @@
         "message": "tu"
     },
     "hideThis": {
-        "message": "Skryť Toto"
+        "message": "Skryť"
     },
     "Options": {
         "message": "Nastavenia"
@@ -204,7 +204,7 @@
         "message": "je pridelený pre inú akciu. Prosím zvoľte inú klávesu."
     },
     "to": {
-        "message": "pre",
+        "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
