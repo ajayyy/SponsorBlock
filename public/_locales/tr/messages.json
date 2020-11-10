@@ -74,7 +74,7 @@
         "message": "Sponsor sürelerini yollarken bir sorun oluştur, lütfen tekrar deneyin."
     },
     "sponsorFound": {
-        "message": "This video has segments in the database!"
+        "message": "Bu videonun veri tabanımızda kısımları mevcut!"
     },
     "sponsor404": {
         "message": "Kısımlar bulunamadı"
