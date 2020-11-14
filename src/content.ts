@@ -146,27 +146,6 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             });
 
             break;
-        case "getVideoDuration":
-            sendResponse({
-                duration: video.duration
-            });
-
-            break;
-        case "skipToTime":
-            video.currentTime = request.time;
-
-            // Unpause the video if needed
-            if (video.paused){
-                video.play();
-            }
-
-            return;
-        case "getCurrentTime":
-            sendResponse({
-                currentTime: getRealCurrentTime()
-            });
-
-            break;
         case "getChannelID":
             sendResponse({
                 channelID: channelID
