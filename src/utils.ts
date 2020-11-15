@@ -23,8 +23,8 @@ class Utils {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
-    // Function that can be used to wait for a condition before returning
-    async wait(condition: () => HTMLElement | boolean, timeout = 5000, check = 100): Promise<HTMLElement | boolean> { 
+    /** Function that can be used to wait for a condition before returning. */
+    async wait<T>(condition: () => T | false, timeout = 5000, check = 100): Promise<T> {
         return await new Promise((resolve, reject) => {
             setTimeout(() => reject("TIMEOUT"), timeout);
 

@@ -6,6 +6,7 @@ const utils = new Utils();
 
 interface SBConfig {
     userID: string,
+    /** Contains unsubmitted segments that the user has created. */
     segmentTimes: SBMap<string, SponsorTime[]>,
     defaultCategory: string,
     whitelistedChannels: string[],

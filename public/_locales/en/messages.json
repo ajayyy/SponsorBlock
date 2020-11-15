@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segment Ends Now"
     },
+    "sponsorCancel": {
+        "message": "Cancel Creating Segment"
+    },
     "noVideoID": {
         "message": "No YouTube video found.\nIf this is incorrect, refresh the tab."
     },
