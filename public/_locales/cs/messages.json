@@ -199,8 +199,14 @@
     "enableViewTracking": {
         "message": "Povolit počítadlo přeskočení"
     },
+    "whatViewTracking": {
+        "message": "Tato vlastnost sleduje, jaké segmenty jste přeskočili, abychom dali uživatelům vědět, jak moc jejich příspěvek pomohl ostatním a může být použita jako sledování společně s hlasy pro zajištění, že se spam nedostane do databáze. Toto rozšíření posílá zprávu serveru pokaždé když přeskočíte segment. Doufejme, že si moc lidí nezmění toto nastavení, aby byla zobrazená čísla přesná. :)"
+    },
     "enableQueryByHashPrefix": {
         "message": "Dotaz podle hash předpony"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Místo žádání o segmenty ze serveru pomocí videoID jsou poslány první 4 charaktery hashe ve videoID. Tento server odešle zpět data pro všechna videa s podobnými hashy."
     },
     "enableRefetchWhenNotFound": {
         "message": "Refetovat segmenty na nových videích"
@@ -222,5 +228,21 @@
     "noticeUpdate": {
         "message": "Upozornění bylo aktualizováno!",
         "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Pokud se vám to stále nelíbí, klikněte na tlačítko Nikdy nezobrazovat.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setStartSponsorShortcut": {
+        "message": "Nastavte klávesu pro spuštění segmentu"
+    },
+    "setSubmitKeybind": {
+        "message": "Nastavte klávesu pro odeslání"
+    },
+    "keybindDescription": {
+        "message": "Nastavte klávesu jejím zadáním"
+    },
+    "keybindDescriptionComplete": {
+        "message": "Klávesa byla nastavena na: "
     }
 }
