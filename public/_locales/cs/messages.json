@@ -217,6 +217,10 @@
     "showNotice": {
         "message": "Znovu zobrazit upozornění"
     },
+    "longDescription": {
+        "message": "SponsorBlock vám umožní přeskakovat sponzorské sekce, intra, outra, oznámení k odběru a další otravné části YouTube videí. SponsorBlock je crowdsourcované rozšíření prohlížeče, které dává komukoli možnost odeslat začátek a konec sponzorovaných segmentů a dalších segmentů YouTube videí. Jakmile jedna osoba odešle tuto informaci, všichni ostatní s tímto rozšířením automaticky přeskočí sponzorovaný segment. Můžete také přeskakovat nehudební sekce v hudebních videích.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Web",
         "description": "Used on Firefox Store Page"
@@ -459,6 +463,9 @@
     "copyDebugInformationFailed": {
         "message": "Nepodařilo se zapsat do schránky"
     },
+    "copyDebugInformationOptions": {
+        "message": "Zkopíruje informace do schránky pro poskytnutí vývojáři při nahlašování chyby / když o to vývojář zažádá. Citlivé informace jako vaše uživatelské ID, povolené kanály a vlastní adresa serveru byly odebrány. Obsahuje to nicméně informace jako váš useragent, prohlížeč, operační systém a verzi rozšíření. "
+    },
     "copyDebugInformationComplete": {
         "message": "Ladící informace byly zkopírovány do schránky. Můžete odstranit jakékoli informace, které raději nechcete sdílet. Uložte text do textového souboru nebo vložte do chybového hlášení."
     },
@@ -569,5 +576,63 @@
     },
     "youMustSelectACategory": {
         "message": "Musíte vybrat kategorii pro všechny odeslané segmenty!"
+    },
+    "bracketEnd": {
+        "message": "(Konec)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "skryté: protihlas"
+    },
+    "hiddenDueToDuration": {
+        "message": "skryté: moc krátké"
+    },
+    "channelDataNotFound": {
+        "message": "ID kanálu ještě nebylo načteno."
+    },
+    "adblockerIssue": {
+        "message": "Zdá se, že něco blokuje schopnost rozšíření SponsorBlock získat data o videu. Bude to nejspíš váš adblocker. Podívejte se prosím na https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "itCouldBeAdblockerIssue": {
+        "message": "Pokud k tomu stále dochází, může to být způsobeno vaším adblockerem. Podívejte se prosím https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Vynutit kontrolu kanálu před přeskočením"
+    },
+    "whatForceChannelCheck": {
+        "message": "Ve výchozím nastavení bude přeskakovat segmenty ještě před tím, než bude rozšíření vědět, jaký je to kanál. Ve výchozím nastavení mohou být některé segmenty na začátku videa přeskočeny na povolených kanálech. Povolením této možnosti tomu zabráníte, ale každé přeskočení bude mít mírné zpoždění, protože získávání ID kanálu může chvíli trvat. Toto zpoždění nemusí být patrné, pokud máte rychlý internet."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Zvažte povolení možnosti \"Vynutit kontrolu kanálu před přeskočením\""
+    },
+    "downvoteDescription": {
+        "message": "Nesprávné / špatné časování"
+    },
+    "incorrectCategory": {
+        "message": "Špatná kategorie"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Toto video je kategorizováno jako hudba. Jste si jisti, že je v něm sponzorská sekce? Pokud se opravdu jedná o \"Nehudební segment\", otevřete nastavení a povolte tuto kategorii. Poté budete moct odeslat segment jako \"Nehudební\" místo sponzorského. Pokud jste zmateni, přečtěte si prosím pokyny."
+    },
+    "multipleSegments": {
+        "message": "Více segmentů"
+    },
+    "guidelines": {
+        "message": "Pokyny"
+    },
+    "readTheGuidelines": {
+        "message": "Přečtěte si pokyny!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategorie jsou zde!"
+    },
+    "categoryUpdate2": {
+        "message": "Otevřít možnosti pro přeskočení intra, outra, merche apod."
+    },
+    "unsubmittedWarning": {
+        "message": "Neodeslané oznámení o segmentech"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "Odeslat upozornění, když opustíte video s nenahranými segmenty"
     }
 }
