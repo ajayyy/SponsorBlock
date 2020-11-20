@@ -205,6 +205,9 @@
     "enableQueryByHashPrefix": {
         "message": "Consulta por prefijo Hash"
     },
+    "whatQueryByHashPrefix": {
+        "message": "En el lugar de solicitar segmentos del servidor usando el videoID, se envían los primeros 4 caracteres del hash del videoID. Este servidor devolverá los datos de todos los vídeos con hashes similares."
+    },
     "enableRefetchWhenNotFound": {
         "message": "Actualizar segmentos en nuevos vídeos"
     },
