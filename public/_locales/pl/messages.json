@@ -80,10 +80,10 @@
         "message": "Nie znaleziono segmentów"
     },
     "sponsorStart": {
-        "message": "Segment zaczyna się teraz"
+        "message": "Początek segmentu"
     },
     "sponsorEnd": {
-        "message": "Segment kończy się teraz"
+        "message": "Koniec segmentu"
     },
     "noVideoID": {
         "message": "Nie znaleziono filmu na tej karcie. Jeśli wiesz, że to karta YouTube'a, zamknij to okienko i otwórz je ponownie. Jeśli to nie zadziała, spróbuj odświeżyć stronę."
@@ -201,6 +201,12 @@
     },
     "whatViewTracking": {
         "message": "Ta opcja monitoruje pomijane przez Ciebie segmenty, by dać znać użytkownikom, jak bardzo ich wkład pomógł innym, oraz w połączeniu z systemem głosowania zapobiegać dostawaniu się spamu do bazy danych. Rozszerzenie wysyła wiadomość do serwera za każdym razem, kiedy pomijasz segment. Miejmy nadzieję, że większość ludzi tego nie wyłączy i liczniki wyświetleń będą wiarygodne. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Zapytanie Według Hash Prefix"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Zamiast żądać segmentów z serwera używając videoID, pierwsze 4 znaki haszu videoID'u są wysyłane. Ten serwer zwróci wszystkie dane dla wszystkich filmików z podobnymi hashami."
     },
     "enableRefetchWhenNotFound": {
         "message": "Pobierz na nowo segmenty z nowych filmów"

@@ -209,7 +209,7 @@
         "message": "Daripada meminta segmen dari server menggunakan videoID, 4 huruf pertama dari hash dari videoID dikirim. Server akan mengirim kembali data untuk semua video dengan hash yang mirip."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Meretch Segmen Di Video Baru"
+        "message": "Fetch Ulang Segmen Di Video Baru"
     },
     "whatRefetchWhenNotFound": {
         "message": "Jika ini merupakan video baru, dan tidak ada segmen yang ditemukan, itu akan terus merefetch setiap beberapa menit saat anda menonton."

@@ -212,6 +212,9 @@
         "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setStartSponsorShortcut": {
+        "message": "Définir le raccourci pour commencer un segment"
+    },
     "setSubmitKeybind": {
         "message": "Changer le raccourci pour soumettre les segments"
     },
@@ -244,7 +247,7 @@
         "message": "Passer"
     },
     "skip_category": {
-        "message": "Passer {0}?"
+        "message": "Passer {0} ?"
     },
     "skipped": {
         "message": "Passé"
@@ -257,6 +260,9 @@
     },
     "audioNotification": {
         "message": "Notification audio lors du passage"
+    },
+    "audioNotificationDescription": {
+        "message": "Une notification audio sera jouée chaque fois qu'un segment est passé. Si désactivé (ou si le passage automatique est désactivé), aucun son ne sera joué."
     },
     "showTimeWithSkips": {
         "message": "Afficher le temps avec les passages supprimés"
@@ -411,6 +417,9 @@
     "preview": {
         "message": "Aperçu"
     },
+    "inspect": {
+        "message": "Inspecter"
+    },
     "edit": {
         "message": "Éditer"
     },
@@ -445,11 +454,17 @@
     "category_intro": {
         "message": "Entracte/Animation d'intro"
     },
+    "category_intro_description": {
+        "message": "Un intervalle sans réel contenu, comme une pause, une image statique ou une animation répétitive. Ne doit pas être utilisé pour les transitions avec des informations ou pour les vidéos musicales."
+    },
     "category_intro_short": {
         "message": "Entracte"
     },
     "category_outro": {
         "message": "Générique de fin"
+    },
+    "category_outro_description": {
+        "message": "Crédits ou quand les écrans de fin Youtube apparaissent. Pas pour les conclusions qui contiennent des informations."
     },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
@@ -549,11 +564,20 @@
     "forceChannelCheck": {
         "message": "Forcer la vérification du canal avant de passer"
     },
+    "whatForceChannelCheck": {
+        "message": "Par défaut, passer les segments avant même de savoir à quelle chaîne appartient la vidéo. Par défaut, certains segments au début des vidéos des chaînes qui sont sur la liste blanche peuvent être passés. Activer cette option empêchera ça mais passer les segments aura un délai car obtenir l'id des chaînes peut prendre du temps. Ce délai peut ne pas être remarqué si votre connexion est rapide."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Envisagez d'activer \"Forcez la vérification de la chaîne avant de passer\""
+    },
     "downvoteDescription": {
         "message": "Segment de mauvaise qualité"
     },
     "incorrectCategory": {
         "message": "Mauvaise catégorie"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Cette vidéo est catégorisée comme de la musique. Êtes-vous sûr qu'elle est sponsorisée ? S'il s'agit en fait d'un \"segment non-musical\", allez dans les options de l'extension et activez cette catégorie. Ensuite, vous pourrez soumettre ce segment en tant que \"segment non-musical\" au lieu de sponsor. Lisez les \"Guidelines\" en cas de confusion."
     },
     "multipleSegments": {
         "message": "Plusieurs segments"

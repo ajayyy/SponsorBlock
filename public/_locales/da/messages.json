@@ -1,1 +1,76 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock til YouTube - Fjern reklamer",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Fjern reklamer, subscriber tiggeri og mere i youtube videoer. Rapporter reklamer på de videoer du ser for at spare folks tid.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Serveren sagde at denne efterspørgsel var ugyldig"
+    },
+    "429": {
+        "message": "Du har indsendt for mange reklamesegmenter til den her video, er du helt sikker på at der er så mange?"
+    },
+    "409": {
+        "message": "Dette er allerede blevet indsendt"
+    },
+    "channelWhitelisted": {
+        "message": "Kanal whitelisted!"
+    },
+    "Segment": {
+        "message": "seg"
+    },
+    "Segments": {
+        "message": "segmenter"
+    },
+    "upvoteButtonInfo": {
+        "message": "Stem for dette forslag"
+    },
+    "reportButtonTitle": {
+        "message": "Anmeld"
+    },
+    "reportButtonInfo": {
+        "message": "Anmeld dette forslag som forkert."
+    },
+    "Dismiss": {
+        "message": "Afvis"
+    },
+    "Loading": {
+        "message": "Indlæser..."
+    },
+    "Mins": {
+        "message": "Minutter"
+    },
+    "Secs": {
+        "message": "Sekunder"
+    },
+    "Hide": {
+        "message": "Vis aldrig"
+    },
+    "hitGoBack": {
+        "message": "Tryk på unskip for at gå tilbage til hvor du kom fra."
+    },
+    "unskip": {
+        "message": "Annuller spring over"
+    },
+    "reskip": {
+        "message": "Spring over"
+    },
+    "paused": {
+        "message": "Sat på pause"
+    },
+    "manualPaused": {
+        "message": "Sat på pause"
+    },
+    "confirmMSG": {
+        "message": "For at redigere eller slette individuelle værdier, så skal du klikke på info knappen eller åbne udvidelses popupet ved at klikke på udvidelses ikonet i øverste højre hjørne."
+    },
+    "clearThis": {
+        "message": "Er du sikker på, at du vil fjerne dette?\n\n"
+    },
+    "Unknown": {
+        "message": "Der skete en fejl da du prøvede at indsende dine reklame tider, prøv lige igen."
+    }
+}
