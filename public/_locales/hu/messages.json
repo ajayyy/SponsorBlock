@@ -3,6 +3,22 @@
         "message": "SponorBlock YouTube-ra - Szponzorok kihagyása",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Szponzorok, feliratkozás-kérelmek és több átugrása a YouTube videókon. Jelölj meg szponzorokat videókon amiket nézel, hogy másoknak takaríts meg időt.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Szerver: Ez a kérés érvénytelen"
+    },
+    "429": {
+        "message": "Túl sok szponzor időt jelöltél meg ezen a videón. Biztos vagy benne, hogy van ennyi?"
+    },
+    "409": {
+        "message": "Ez már korábban be lett küldve"
+    },
+    "channelWhitelisted": {
+        "message": "A csatorna az engedélyezőlistára került!"
+    },
     "Segment": {
         "message": "szegmens"
     },
