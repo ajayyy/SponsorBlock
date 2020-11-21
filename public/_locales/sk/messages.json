@@ -1,4 +1,8 @@
 {
+    "fullName": {
+        "message": "SponsorBlock for YouTube - Skip Sponsorships",
+        "description": "Name of the extension."
+    },
     "channelWhitelisted": {
         "message": "Kanál bol pridaný do whitelistu!"
     },
