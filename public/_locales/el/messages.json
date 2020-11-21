@@ -1,4 +1,8 @@
 {
+    "fullName": {
+        "message": "SponsorBlock for YouTube - Skip Sponsorships",
+        "description": "Name of the extension."
+    },
     "Segment": {
         "message": "τμήμα"
     },
@@ -66,9 +70,6 @@
     },
     "skip": {
         "message": "Παράκαμψη"
-    },
-    "skip_category": {
-        "message": "Παράκαμψη {0}?"
     },
     "skipped": {
         "message": "Παραλείφθηκε"
