@@ -275,7 +275,7 @@
         "message": "Přeskočit {0}?"
     },
     "skipped": {
-        "message": "Přeskočeno"
+        "message": "- přeskočeno"
     },
     "disableAutoSkip": {
         "message": "Zakázat automatické přeskočení"
