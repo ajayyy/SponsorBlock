@@ -209,7 +209,7 @@
         "message": "En el lugar de solicitar segmentos del servidor usando el videoID, se envían los primeros 4 caracteres del hash del videoID. Este servidor devolverá los datos de todos los vídeos con hashes similares."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Actualizar segmentos en nuevos vídeos"
+        "message": "Actualizar Segmentos En Nuevos Vídeos"
     },
     "whatRefetchWhenNotFound": {
         "message": "Si el video es nuevo, y no hay segmentos encontrados, seguirá recuperándose cada pocos minutos mientras veas."
@@ -272,7 +272,7 @@
         "message": "Omitir"
     },
     "skip_category": {
-        "message": "¿Saltarse {0}?"
+        "message": "¿Saltar {0}?"
     },
     "skipped": {
         "message": "Omitido"
