@@ -212,7 +212,7 @@
         "message": "Récupérer les segments sur les nouvelles vidéos"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Si la vidéo est nouvelle et qu'aucun segment n'a été trouvé, elle continuera à être réactualisée toutes les quelques minutes pendant que vous la regardez."
+        "message": "Si la vidéo est nouvelle et qu'aucun segment n'a été trouvé, ils seront réactualisés toutes les quelques minutes pendant le visionnage."
     },
     "showNotice": {
         "message": "Afficher la notification"
@@ -489,7 +489,7 @@
         "message": "Entracte/Animation d'intro"
     },
     "category_intro_description": {
-        "message": "Un intervalle sans réel contenu, comme une pause, une image statique ou une animation répétitive. Ne doit pas être utilisé pour les transitions avec des informations ou pour les vidéos musicales."
+        "message": "Un intervalle sans réel contenu, comme une pause, une image statique ou une animation répétitive. Ne doit pas être utilisé pour les transitions avec des informations."
     },
     "category_intro_short": {
         "message": "Entracte"
@@ -498,7 +498,7 @@
         "message": "Générique de fin"
     },
     "category_outro_description": {
-        "message": "Crédits ou quand les écrans de fin Youtube apparaissent. Pas pour les conclusions qui contiennent des informations."
+        "message": "Crédits ou quand les annotations Youtube de fin apparaissent. Pas pour les conclusions qui contiennent des informations."
     },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
@@ -599,7 +599,7 @@
         "message": "Forcer la vérification du canal avant de passer"
     },
     "whatForceChannelCheck": {
-        "message": "Par défaut, passer les segments avant même de savoir à quelle chaîne appartient la vidéo. Par défaut, certains segments au début des vidéos des chaînes qui sont sur la liste blanche peuvent être passés. Activer cette option empêchera ça mais passer les segments aura un délai car obtenir l'id des chaînes peut prendre du temps. Ce délai peut ne pas être remarqué si votre connexion est rapide."
+        "message": "Par défaut, passer les segments avant même de savoir à quelle chaîne appartient la vidéo. Par défaut, les segments en début des vidéos des chaînes sur liste blanche peuvent être passés. Activer cette option empêchera cela mais passer les segments aura un délai, car obtenir l'id des chaînes peut prendre du temps. Ce délai sera imperceptible si votre connexion est rapide."
     },
     "forceChannelCheckPopup": {
         "message": "Envisagez d'activer \"Forcez la vérification de la chaîne avant de passer\""
@@ -611,7 +611,7 @@
         "message": "Mauvaise catégorie"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Cette vidéo est catégorisée comme de la musique. Êtes-vous sûr qu'elle est sponsorisée ? S'il s'agit en fait d'un \"segment non-musical\", allez dans les options de l'extension et activez cette catégorie. Ensuite, vous pourrez soumettre ce segment en tant que \"segment non-musical\" au lieu de sponsor. Lisez les \"Guidelines\" en cas de confusion."
+        "message": "Cette vidéo est catégorisée comme de la musique. Êtes-vous sûr qu'elle est sponsorisée ? S'il s'agit en fait d'un \"segment non-musical\", allez dans les options de l'extension et activez cette catégorie. Ensuite, vous pourrez soumettre ce segment en tant que \"segment non-musical\" au lieu de sponsor. Lisez les instructions en cas de confusion."
     },
     "multipleSegments": {
         "message": "Plusieurs segments"
