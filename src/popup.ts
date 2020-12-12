@@ -2,7 +2,7 @@ import Config from "./config";
 
 import Utils from "./utils";
 import { SponsorTime, SponsorHideType } from "./types";
-var utils = new Utils();
+const utils = new Utils();
 
 interface MessageListener {
     (request: any, sender: any, callback: (response: any) => void): void;
@@ -39,13 +39,13 @@ class MessageHandler {
 
 //make this a function to allow this to run on the content page
 async function runThePopup(messageListener?: MessageListener) {
-    var messageHandler = new MessageHandler(messageListener);
+    const messageHandler = new MessageHandler(messageListener);
 
     utils.localizeHtmlPage();
 
     await utils.wait(() => Config.config !== null);
 
-    var PageElements: any = {};
+    const PageElements: any = {};
 
     ["sponsorStart",
     // Top toggles
@@ -125,7 +125,7 @@ async function runThePopup(messageListener?: MessageListener) {
     let currentVideoID = null;
   
     //see if discord link can be shown
-    let hideDiscordLink = Config.config.hideDiscordLink;
+    const hideDiscordLink = Config.config.hideDiscordLink;
     if (hideDiscordLink == undefined || !hideDiscordLink) {
             let hideDiscordLaunches = Config.config.hideDiscordLaunches;
             //only if less than 10 launches
@@ -140,7 +140,7 @@ async function runThePopup(messageListener?: MessageListener) {
     }
 
     //show proper disable skipping button
-    let disableSkipping = Config.config.disableSkipping;
+    const disableSkipping = Config.config.disableSkipping;
     if (disableSkipping != undefined && disableSkipping) {
         PageElements.disableSkipping.style.display = "none";
         PageElements.enableSkipping.style.display = "unset";
@@ -148,7 +148,7 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //if the don't show notice again variable is true, an option to 
     //  disable should be available
-    let dontShowNotice = Config.config.dontShowNotice;
+    const dontShowNotice = Config.config.dontShowNotice;
     if (dontShowNotice != undefined && dontShowNotice) {
         PageElements.showNoticeAgain.style.display = "unset";
     }
@@ -164,13 +164,13 @@ async function runThePopup(messageListener?: MessageListener) {
         PageElements.sponsorTimesContributionsContainer.style.display = "unset";
 
         //get the userID
-        let userID = Config.config.userID;
+        const userID = Config.config.userID;
         if (userID != undefined) {
             //there are probably some views on these submissions then
             //get the amount of views from the sponsors submitted
             utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(response) {
                 if (response.status == 200) {
-                    let viewCount = JSON.parse(response.responseText).viewCount;
+                    const viewCount = JSON.parse(response.responseText).viewCount;
                     if (viewCount != 0) {
                         if (viewCount > 1) {
                             PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
@@ -187,7 +187,7 @@ async function runThePopup(messageListener?: MessageListener) {
             //get this time in minutes
             utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(response) {
                 if (response.status == 200) {
-                    let minutesSaved = JSON.parse(response.responseText).timeSaved;
+                    const minutesSaved = JSON.parse(response.responseText).timeSaved;
                     if (minutesSaved != 0) {
                         if (minutesSaved != 1) {
                             PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
@@ -252,7 +252,7 @@ async function runThePopup(messageListener?: MessageListener) {
         }
   
         //load video times for this video 
-        let sponsorTimesStorage = Config.config.segmentTimes.get(currentVideoID);
+        const sponsorTimesStorage = Config.config.segmentTimes.get(currentVideoID);
         if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
             if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].segment.length < 2) {
                 startTimeChosen = true;
@@ -333,7 +333,7 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     function startSponsorCallback(response) {
-        let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
+        const sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
   
         if (sponsorTimes[sponsorTimesIndex] == undefined) {
             sponsorTimes[sponsorTimesIndex] = {
@@ -345,7 +345,7 @@ async function runThePopup(messageListener?: MessageListener) {
   
         sponsorTimes[sponsorTimesIndex].segment[startTimeChosen ? 1 : 0] = response.time;
 
-        let localStartTimeChosen = startTimeChosen;
+        const localStartTimeChosen = startTimeChosen;
         Config.config.segmentTimes.set(currentVideoID, sponsorTimes);
         
         //send a message to the client script
@@ -378,9 +378,9 @@ async function runThePopup(messageListener?: MessageListener) {
             }
 
             //add them as buttons to the issue reporting container
-            let container = document.getElementById("issueReporterTimeButtons");
+            const container = document.getElementById("issueReporterTimeButtons");
             for (let i = 0; i < request.sponsorTimes.length; i++) {
-                let sponsorTimeButton = document.createElement("button");
+                const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "warningButton popupElement";
 
                 let extraInfo = "";
@@ -394,23 +394,23 @@ async function runThePopup(messageListener?: MessageListener) {
 
                 sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
         
-                let votingButtons = document.createElement("div");
+                const votingButtons = document.createElement("div");
   
-                let UUID = request.sponsorTimes[i].UUID;
+                const UUID = request.sponsorTimes[i].UUID;
   
                 //thumbs up and down buttons
-                let voteButtonsContainer = document.createElement("div");
+                const voteButtonsContainer = document.createElement("div");
                 voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
                 voteButtonsContainer.setAttribute("align", "center");
                 voteButtonsContainer.style.display = "none"
   
-                let upvoteButton = document.createElement("img");
+                const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
                 upvoteButton.className = "voteButton popupElement";
                 upvoteButton.src = chrome.extension.getURL("icons/upvote.png");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
   
-                let downvoteButton = document.createElement("img");
+                const downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton popupElement";
                 downvoteButton.src = chrome.extension.getURL("icons/downvote.png");
@@ -473,29 +473,29 @@ async function runThePopup(messageListener?: MessageListener) {
     //this version is a div that contains each with delete buttons
     function getSponsorTimesMessageDiv(sponsorTimes) {
         // let sponsorTimesMessage = "";
-        let sponsorTimesContainer = document.createElement("div");
+        const sponsorTimesContainer = document.createElement("div");
         sponsorTimesContainer.id = "sponsorTimesContainer";
   
         for (let i = 0; i < sponsorTimes.length; i++) {
-            let currentSponsorTimeContainer = document.createElement("div");
+            const currentSponsorTimeContainer = document.createElement("div");
             currentSponsorTimeContainer.id = "sponsorTimeContainer" + i;
             currentSponsorTimeContainer.className = "sponsorTime popupElement";
             let currentSponsorTimeMessage = "";
   
-            let deleteButton = document.createElement("span");
+            const deleteButton = document.createElement("span");
             deleteButton.id = "sponsorTimeDeleteButton" + i;
             deleteButton.innerText = "Delete";
             deleteButton.className = "mediumLink popupElement";
-            let index = i;
+            const index = i;
             deleteButton.addEventListener("click", () => deleteSponsorTime(index));
   
-            let previewButton = document.createElement("span");
+            const previewButton = document.createElement("span");
             previewButton.id = "sponsorTimePreviewButton" + i;
             previewButton.innerText = "Preview";
             previewButton.className = "mediumLink popupElement";
             previewButton.addEventListener("click", () => previewSponsorTime(index));
   
-            let editButton = document.createElement("span");
+            const editButton = document.createElement("span");
             editButton.id = "sponsorTimeEditButton" + i;
             editButton.innerText = "Edit";
             editButton.className = "mediumLink popupElement";
@@ -565,38 +565,38 @@ async function runThePopup(messageListener?: MessageListener) {
         //hide submit button
         document.getElementById("submitTimesContainer").style.display = "none";
   
-        let sponsorTimeContainer = document.getElementById("sponsorTimeContainer" + index);
+        const sponsorTimeContainer = document.getElementById("sponsorTimeContainer" + index);
   
         //the button to set the current time
-        let startTimeNowButton = document.createElement("span");
+        const startTimeNowButton = document.createElement("span");
         startTimeNowButton.id = "startTimeNowButton" + index;
         startTimeNowButton.innerText = "(Now)";
         startTimeNowButton.className = "tinyLink popupElement";
         startTimeNowButton.addEventListener("click", () => setEditTimeToCurrentTime("startTime", index));
 
         //get sponsor time minutes and seconds boxes
-        let startTimeMinutes = document.createElement("input");
+        const startTimeMinutes = document.createElement("input");
         startTimeMinutes.id = "startTimeMinutes" + index;
         startTimeMinutes.className = "sponsorTime popupElement";
         startTimeMinutes.type = "text";
         startTimeMinutes.value = String(getTimeInMinutes(sponsorTimes[index].segment[0]));
         startTimeMinutes.style.width = "45px";
     
-        let startTimeSeconds = document.createElement("input");
+        const startTimeSeconds = document.createElement("input");
         startTimeSeconds.id = "startTimeSeconds" + index;
         startTimeSeconds.className = "sponsorTime popupElement";
         startTimeSeconds.type = "text";
         startTimeSeconds.value = getTimeInFormattedSeconds(sponsorTimes[index].segment[0]);
         startTimeSeconds.style.width = "60px";
 
-        let endTimeMinutes = document.createElement("input");
+        const endTimeMinutes = document.createElement("input");
         endTimeMinutes.id = "endTimeMinutes" + index;
         endTimeMinutes.className = "sponsorTime popupElement";
         endTimeMinutes.type = "text";
         endTimeMinutes.value = String(getTimeInMinutes(sponsorTimes[index].segment[1]));
         endTimeMinutes.style.width = "45px";
     
-        let endTimeSeconds = document.createElement("input");
+        const endTimeSeconds = document.createElement("input");
         endTimeSeconds.id = "endTimeSeconds" + index;
         endTimeSeconds.className = "sponsorTime popupElement";
         endTimeSeconds.type = "text";
@@ -604,16 +604,16 @@ async function runThePopup(messageListener?: MessageListener) {
         endTimeSeconds.style.width = "60px";
 
         //the button to set the current time
-        let endTimeNowButton = document.createElement("span");
+        const endTimeNowButton = document.createElement("span");
         endTimeNowButton.id = "endTimeNowButton" + index;
         endTimeNowButton.innerText = "(Now)";
         endTimeNowButton.className = "tinyLink popupElement";
         endTimeNowButton.addEventListener("click", () => setEditTimeToCurrentTime("endTime", index));
   
-        let colonText = document.createElement("span");
+        const colonText = document.createElement("span");
         colonText.innerText = ":";
   
-        let toText = document.createElement("span");
+        const toText = document.createElement("span");
         toText.innerText = " " + chrome.i18n.getMessage("to") + " ";
   
         //remove all children to replace
@@ -632,14 +632,14 @@ async function runThePopup(messageListener?: MessageListener) {
         sponsorTimeContainer.appendChild(endTimeNowButton);
   
         //add save button and remove edit button
-        let saveButton = document.createElement("span");
+        const saveButton = document.createElement("span");
         saveButton.id = "sponsorTimeSaveButton" + index;
         saveButton.innerText = "Save";
         saveButton.className = "mediumLink popupElement";
         saveButton.addEventListener("click", () => saveSponsorTimeEdit(index));
   
-        let editButton = document.getElementById("sponsorTimeEditButton" + index);
-        let sponsorTimesContainer = document.getElementById("sponsorTimesContainer");
+        const editButton = document.getElementById("sponsorTimeEditButton" + index);
+        const sponsorTimesContainer = document.getElementById("sponsorTimesContainer");
   
         sponsorTimesContainer.replaceChild(saveButton, editButton);
     }
@@ -653,8 +653,8 @@ async function runThePopup(messageListener?: MessageListener) {
                 tabs[0].id,
                 {message: "getCurrentTime"},
                 function (response) {
-                    let minutes = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
-                    let seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
+                    const minutes = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
+                    const seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
 
                     minutes.value = String(getTimeInMinutes(response.currentTime));
                     seconds.value = getTimeInFormattedSeconds(response.currentTime);
@@ -665,8 +665,8 @@ async function runThePopup(messageListener?: MessageListener) {
     //id start name is whether it is the startTime or endTime
     //gives back the time in seconds
     function getSponsorTimeEditTimes(idStartName, index): number {
-        let minutes = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
-        let seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
+        const minutes = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Minutes" + index);
+        const seconds = <HTMLInputElement> <unknown> document.getElementById(idStartName + "Seconds" + index);
 
         return parseInt(minutes.value) * 60 + parseFloat(seconds.value);
     }
@@ -858,13 +858,13 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     function addVoteMessage(message, UUID) {
-        let container = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
+        const container = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
         //remove all children
         while (container.firstChild) {
             container.removeChild(container.firstChild);
         }
   
-        let thanksForVotingText = document.createElement("h2");
+        const thanksForVotingText = document.createElement("h2");
         thanksForVotingText.innerText = message;
         //there are already breaks there
         thanksForVotingText.style.marginBottom = "0px";
@@ -901,15 +901,15 @@ async function runThePopup(messageListener?: MessageListener) {
   
     //converts time in seconds to minutes:seconds
     function getFormattedTime(seconds) {
-        let minutes = Math.floor(seconds / 60);
-        let secondsDisplayNumber = Math.round(seconds - minutes * 60);
+        const minutes = Math.floor(seconds / 60);
+        const secondsDisplayNumber = Math.round(seconds - minutes * 60);
         let secondsDisplay = String(secondsDisplayNumber);
         if (secondsDisplayNumber < 10) {
             //add a zero
             secondsDisplay = "0" + secondsDisplay;
         }
   
-        let formatted = minutes + ":" + secondsDisplay;
+        const formatted = minutes + ":" + secondsDisplay;
   
         return formatted;
     }
@@ -984,7 +984,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         }
 
                         //remove this channel
-                        let index = whitelistedChannels.indexOf(response.channelID);
+                        const index = whitelistedChannels.indexOf(response.channelID);
                         whitelistedChannels.splice(index, 1);
 
                         //change button
@@ -1034,14 +1034,14 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //converts time in seconds to minutes
     function getTimeInMinutes(seconds) {
-        let minutes = Math.floor(seconds / 60);
+        const minutes = Math.floor(seconds / 60);
   
         return minutes;
     }
   
     //converts time in seconds to seconds past the last minute
     function getTimeInFormattedSeconds(seconds) {
-        let minutes = seconds % 60;
+        const minutes = seconds % 60;
         let secondsFormatted = minutes.toFixed(3);
   
         if (minutes < 10) {
@@ -1059,7 +1059,7 @@ async function runThePopup(messageListener?: MessageListener) {
      * @returns {string}
      */
     function getFormattedHours(minues) {
-        let hours = Math.floor(minues / 60);
+        const hours = Math.floor(minues / 60);
         return (hours > 0 ? hours + "h " : "") + (minues % 60).toFixed(1);
     }
   
@@ -1068,7 +1068,7 @@ async function runThePopup(messageListener?: MessageListener) {
 
 if (chrome.tabs != undefined) {
     //add the width restriction (because Firefox)
-    let link = <HTMLLinkElement> document.getElementById("sponsorBlockStyleSheet");
+    const link = <HTMLLinkElement> document.getElementById("sponsorBlockStyleSheet");
     (<CSSStyleSheet> link.sheet).insertRule('.popupBody { width: 325 }', 0);
 
     //this means it is actually opened in the popup

@@ -24,7 +24,7 @@ class SubmissionNotice {
                                 || document.getElementById("movie_player") || document.querySelector("#player-container .video-js");
         if (referenceNode == null) {
             //for embeds
-            let player = document.getElementById("player");
+            const player = document.getElementById("player");
             referenceNode = player.firstChild as HTMLElement;
             let index = 1;
 

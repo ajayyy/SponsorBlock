@@ -17,7 +17,7 @@ class NoticeTextSelectionComponent extends React.Component<NoticeTextSelectionPr
     }
 
     render() {
-        let style: React.CSSProperties = {};
+        const style: React.CSSProperties = {};
         if (this.props.onClick) {
             style.cursor = "pointer";
             style.textDecoration = "underline"

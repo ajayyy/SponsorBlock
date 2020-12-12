@@ -145,9 +145,9 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     }
 
     getCategorySkipOptions(): JSX.Element[] {
-        let elements: JSX.Element[] = [];
+        const elements: JSX.Element[] = [];
 
-        let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+        const optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
 
         for (const optionName of optionNames) {
             elements.push(

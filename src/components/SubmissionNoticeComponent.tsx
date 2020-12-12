@@ -39,7 +39,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.contentContainer = props.contentContainer;
         this.callback = props.callback;
     
-        let noticeTitle = chrome.i18n.getMessage("confirmNoticeTitle");
+        const noticeTitle = chrome.i18n.getMessage("confirmNoticeTitle");
 
         // Setup state
         this.state = {
@@ -114,13 +114,13 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     getSponsorTimeMessages(): JSX.Element[] | JSX.Element {
-        let elements: JSX.Element[] = [];
+        const elements: JSX.Element[] = [];
         this.timeEditRefs = [];
 
-        let sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
+        const sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
 
         for (let i = 0; i < sponsorTimes.length; i++) {
-            let timeRef = React.createRef<SponsorTimeEditComponent>();
+            const timeRef = React.createRef<SponsorTimeEditComponent>();
 
             elements.push(
                 <SponsorTimeEditComponent key={i}
@@ -139,7 +139,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     getMessageBoxes(): JSX.Element[] | JSX.Element {
-        let elements: JSX.Element[] = [];
+        const elements: JSX.Element[] = [];
 
         for (let i = 0; i < this.state.messages.length; i++) {
             elements.push(
@@ -167,7 +167,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
             ref.current.saveEditTimes();
         }
 
-        let sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
+        const sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
         for (const sponsorTime of sponsorTimesSubmitting) {
             if (sponsorTime.category === "chooseACategory") {
                 alert(chrome.i18n.getMessage("youMustSelectACategory"));

@@ -35,7 +35,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     constructor(props: NoticeProps) {
         super(props);
 
-        let maxCountdownTime = () => {
+        const maxCountdownTime = () => {
             if (this.props.maxCountdownTime) return this.props.maxCountdownTime();
             else return 4;
         };
@@ -65,7 +65,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     }
 
     render() {
-        let noticeStyle: React.CSSProperties = {
+        const noticeStyle: React.CSSProperties = {
             zIndex: this.props.zIndex || (50 + this.amountOfPreviousNotices)
         }
 
@@ -152,7 +152,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdown() {
         if (!this.props.timed) return;
 
-        let countdownTime = this.state.countdownTime - 1;
+        const countdownTime = this.state.countdownTime - 1;
 
         if (countdownTime <= 0) {
             //remove this from setInterval
@@ -166,7 +166,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         if (countdownTime == 3) {
             //start fade out animation
-            let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
+            const notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
             notice.style.removeProperty("animation");
             notice.classList.add("sponsorSkipNoticeFadeOut");
         }
@@ -190,7 +190,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         });
         
         //remove the fade out class if it exists
-        let notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
+        const notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
         notice.classList.remove("sponsorSkipNoticeFadeOut");
         notice.style.animation = "none";
     }
@@ -234,23 +234,23 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         });
     }
     
-    addNoticeInfoMessage(message: string, message2: string = "") {
+    addNoticeInfoMessage(message: string, message2 = "") {
         //TODO: Replace
 
-        let previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix);
+        const previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix);
         if (previousInfoMessage != null) {
             //remove it
             document.getElementById("sponsorSkipNotice" + this.idSuffix).removeChild(previousInfoMessage);
         }
 
-        let previousInfoMessage2 = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix + "2");
+        const previousInfoMessage2 = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix + "2");
         if (previousInfoMessage2 != null) {
             //remove it
             document.getElementById("sponsorSkipNotice" + this.idSuffix).removeChild(previousInfoMessage2);
         }
         
         //add info
-        let thanksForVotingText = document.createElement("p");
+        const thanksForVotingText = document.createElement("p");
         thanksForVotingText.id = "sponsorTimesInfoMessage" + this.idSuffix;
         thanksForVotingText.className = "sponsorTimesInfoMessage";
         thanksForVotingText.innerText = message;
@@ -259,7 +259,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         document.querySelector("#sponsorSkipNotice" + this.idSuffix + " > tbody").insertBefore(thanksForVotingText, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
     
         if (message2 !== undefined) {
-            let thanksForVotingText2 = document.createElement("p");
+            const thanksForVotingText2 = document.createElement("p");
             thanksForVotingText2.id = "sponsorTimesInfoMessage" + this.idSuffix + "2";
             thanksForVotingText2.className = "sponsorTimesInfoMessage";
             thanksForVotingText2.innerText = message2;

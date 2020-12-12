@@ -55,7 +55,7 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
     }
 
     getCategorySkipOptions(): JSX.Element[] {
-        let elements: JSX.Element[] = [];
+        const elements: JSX.Element[] = [];
 
         for (const category of CompileConfig.categoryList) {
             elements.push(

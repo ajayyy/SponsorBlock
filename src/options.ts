@@ -6,7 +6,7 @@ import * as CompileConfig from "../config.json";
 
 import Utils from "./utils";
 import CategoryChooser from "./render/CategoryChooser";
-var utils = new Utils();
+const utils = new Utils();
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -27,19 +27,19 @@ async function init() {
     await utils.wait(() => Config.config !== null);
 
     // Set all of the toggle options to the correct option
-    let optionsContainer = document.getElementById("options");
-    let optionsElements = optionsContainer.querySelectorAll("*");
+    const optionsContainer = document.getElementById("options");
+    const optionsElements = optionsContainer.querySelectorAll("*");
 
     for (let i = 0; i < optionsElements.length; i++) {
         switch (optionsElements[i].getAttribute("option-type")) {
             case "toggle": 
-                let option = optionsElements[i].getAttribute("sync-option");
-                let optionResult = Config.config[option];
+                const option = optionsElements[i].getAttribute("sync-option");
+                const optionResult = Config.config[option];
 
-                let checkbox = optionsElements[i].querySelector("input");
-                let reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
+                const checkbox = optionsElements[i].querySelector("input");
+                const reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
 
-                let confirmMessage = optionsElements[i].getAttribute("confirm-message");
+                const confirmMessage = optionsElements[i].getAttribute("confirm-message");
 
                 if (optionResult != undefined) {
                     checkbox.checked = optionResult;
@@ -76,7 +76,7 @@ async function init() {
                                 // Enable the notice
                                 Config.config["dontShowNotice"] = false;
                                 
-                                let showNoticeSwitch = <HTMLInputElement> document.querySelector("[sync-option='dontShowNotice'] > label > label > input");
+                                const showNoticeSwitch = <HTMLInputElement> document.querySelector("[sync-option='dontShowNotice'] > label > label > input");
                                 showNoticeSwitch.checked = true;
                             }
 
@@ -85,10 +85,10 @@ async function init() {
                 });
                 break;
             case "text-change":
-                let textChangeOption = optionsElements[i].getAttribute("sync-option");
-                let textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
+                const textChangeOption = optionsElements[i].getAttribute("sync-option");
+                const textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
                 
-                let textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
+                const textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
 
                 textChangeInput.value = Config.config[textChangeOption];
 
@@ -96,7 +96,7 @@ async function init() {
                     // See if anything extra must be done
                     switch (textChangeOption) {
                         case "serverAddress":
-                            let result = validateServerAddress(textChangeInput.value);
+                            const result = validateServerAddress(textChangeInput.value);
 
                             if (result !== null) {
                                 textChangeInput.value = result;
@@ -106,7 +106,7 @@ async function init() {
 
                             // Permission needed on Firefox
                             if (utils.isFirefox()) {
-                                let permissionSuccess = await new Promise((resolve, reject) => {
+                                const permissionSuccess = await new Promise((resolve, reject) => {
                                     chrome.permissions.request({
                                         origins: [textChangeInput.value + "/"],
                                         permissions: []
@@ -123,7 +123,7 @@ async function init() {
                 });
 
                 // Reset to the default if needed
-                let textChangeResetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-reset");
+                const textChangeResetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-reset");
                 textChangeResetButton.addEventListener("click", () => {
                     if (!confirm(chrome.i18n.getMessage("areYouSureReset"))) return;
 
@@ -134,10 +134,10 @@ async function init() {
 
                 break;
             case "private-text-change":
-                let button = optionsElements[i].querySelector(".trigger-button");
+                const button = optionsElements[i].querySelector(".trigger-button");
                 button.addEventListener("click", () => activatePrivateTextChange(<HTMLElement> optionsElements[i]));
 
-                let privateTextChangeOption = optionsElements[i].getAttribute("sync-option");
+                const privateTextChangeOption = optionsElements[i].getAttribute("sync-option");
                 // See if anything extra must be done
                 switch (privateTextChangeOption) {
                     case "invidiousInstances":
@@ -146,7 +146,7 @@ async function init() {
 
                 break;
             case "button-press":
-                let actionButton = optionsElements[i].querySelector(".trigger-button");
+                const actionButton = optionsElements[i].querySelector(".trigger-button");
 
                 switch(optionsElements[i].getAttribute("sync-option")) {
                     case "copyDebugInformation":
@@ -156,7 +156,7 @@ async function init() {
 
                 break;
             case "keybind-change":
-                let keybindButton = optionsElements[i].querySelector(".trigger-button");
+                const keybindButton = optionsElements[i].querySelector(".trigger-button");
                 keybindButton.addEventListener("click", () => activateKeybindChange(<HTMLElement> optionsElements[i]));
 
                 break;
@@ -165,9 +165,9 @@ async function init() {
 
                 break;
             case "number-change":
-                let numberChangeOption = optionsElements[i].getAttribute("sync-option");
-                let configValue = Config.config[numberChangeOption];
-                let numberInput = optionsElements[i].querySelector("input");
+                const numberChangeOption = optionsElements[i].getAttribute("sync-option");
+                const configValue = Config.config[numberChangeOption];
+                const numberInput = optionsElements[i].querySelector("input");
 
                 if (isNaN(configValue) || configValue < 0) {
                     numberInput.value = Config.defaults[numberChangeOption];
@@ -196,8 +196,8 @@ async function init() {
  * @param {String} element 
  */
 function optionsConfigUpdateListener(changes) {
-    let optionsContainer = document.getElementById("options");
-    let optionsElements = optionsContainer.querySelectorAll("*");
+    const optionsContainer = document.getElementById("options");
+    const optionsElements = optionsContainer.querySelectorAll("*");
 
     for (let i = 0; i < optionsElements.length; i++) {
         switch (optionsElements[i].getAttribute("option-type")) {
@@ -213,8 +213,8 @@ function optionsConfigUpdateListener(changes) {
  * @param element 
  */
 function updateDisplayElement(element: HTMLElement) {
-    let displayOption = element.getAttribute("sync-option")
-    let displayText = Config.config[displayOption];
+    const displayOption = element.getAttribute("sync-option")
+    const displayText = Config.config[displayOption];
     element.innerText = displayText;
 
     // See if anything extra must be run
@@ -232,10 +232,10 @@ function updateDisplayElement(element: HTMLElement) {
  * @param option 
  */
 function invidiousInstanceAddInit(element: HTMLElement, option: string) {
-    let textBox = <HTMLInputElement> element.querySelector(".option-text-box");
-    let button = element.querySelector(".trigger-button");
+    const textBox = <HTMLInputElement> element.querySelector(".option-text-box");
+    const button = element.querySelector(".trigger-button");
 
-    let setButton = element.querySelector(".text-change-set");
+    const setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", async function(e) {
         if (textBox.value == "" || textBox.value.includes("/") || textBox.value.includes("http")) {
             alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
@@ -248,7 +248,7 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
 
             Config.config[option] = instanceList;
 
-            let checkbox = <HTMLInputElement> document.querySelector("#support-invidious input");
+            const checkbox = <HTMLInputElement> document.querySelector("#support-invidious input");
             checkbox.checked = true;
 
             invidiousOnClick(checkbox, "supportInvidious");
@@ -261,7 +261,7 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
         }
     });
 
-    let resetButton = element.querySelector(".invidious-instance-reset");
+    const resetButton = element.querySelector(".invidious-instance-reset");
     resetButton.addEventListener("click", function(e) {
         if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
             // Set to a clone of the default
@@ -323,20 +323,20 @@ async function invidiousOnClick(checkbox: HTMLInputElement, option: string) {
  * @param element 
  */
 function activateKeybindChange(element: HTMLElement) {
-    let button = element.querySelector(".trigger-button");
+    const button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
     button.classList.add("disabled");
 
-    let option = element.getAttribute("sync-option");
+    const option = element.getAttribute("sync-option");
 
-    let currentlySet = Config.config[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
+    const currentlySet = Config.config[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
     
-    let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
+    const status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
     status.innerText = chrome.i18n.getMessage("keybindDescription") + currentlySet;
 
     if (Config.config[option] !== null) {
-        let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
+        const statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
         statusKey.innerText = Config.config[option];
     }
 
@@ -352,19 +352,19 @@ function activateKeybindChange(element: HTMLElement) {
  * @param e
  */
 function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
-    var key = e.key;
+    const key = e.key;
 
     if (["Shift", "Control", "Meta", "Alt", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Tab"].indexOf(key) !== -1) {
 
         // Wait for more
         document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
     } else {
-        let button: HTMLElement = element.querySelector(".trigger-button");
-        let option = element.getAttribute("sync-option");
+        const button: HTMLElement = element.querySelector(".trigger-button");
+        const option = element.getAttribute("sync-option");
 
         // Make sure keybind isn't used by the other listener
         // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
-        let otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
+        const otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
         if (key === otherKeybind) {
             closeKeybindOption(element, button);
 
@@ -381,10 +381,10 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         
         Config.config[option] = key;
 
-        let status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
+        const status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
         status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
 
-        let statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
+        const statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
         statusKey.innerText = key;
 
         button.classList.remove("disabled");
@@ -408,13 +408,13 @@ function closeKeybindOption(element: HTMLElement, button: HTMLElement) {
  * @param element 
  */
 function activatePrivateTextChange(element: HTMLElement) {
-    let button = element.querySelector(".trigger-button");
+    const button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
     button.classList.add("disabled");
 
-    let textBox = <HTMLInputElement> element.querySelector(".option-text-box");
-    let option = element.getAttribute("sync-option");
+    const textBox = <HTMLInputElement> element.querySelector(".option-text-box");
+    const option = element.getAttribute("sync-option");
 
     // See if anything extra must be done
     switch (option) {
@@ -428,7 +428,7 @@ function activatePrivateTextChange(element: HTMLElement) {
     // See if anything extra must be done
     switch (option) {
         case "*":
-            let jsonData = JSON.parse(JSON.stringify(Config.localConfig));
+            const jsonData = JSON.parse(JSON.stringify(Config.localConfig));
 
             // Fix segmentTimes data as it is destroyed from the JSON stringify
             jsonData.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
@@ -439,9 +439,9 @@ function activatePrivateTextChange(element: HTMLElement) {
 
     textBox.value = result;
     
-    let setButton = element.querySelector(".text-change-set");
+    const setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", async () => {
-        let confirmMessage = element.getAttribute("confirm-message");
+        const confirmMessage = element.getAttribute("confirm-message");
 
         if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
             
@@ -449,14 +449,14 @@ function activatePrivateTextChange(element: HTMLElement) {
             switch (option) {
                 case "*":
                     try {
-                        let newConfig = JSON.parse(textBox.value);
+                        const newConfig = JSON.parse(textBox.value);
                         for (const key in newConfig) {
                             Config.config[key] = newConfig[key];
                         }
                         Config.convertJSON();
 
                         if (newConfig.supportInvidious) {
-                            let checkbox = <HTMLInputElement> document.querySelector("#support-invidious > label > label > input");
+                            const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > label > label > input");
                             
                             checkbox.checked = true;
                             await invidiousOnClick(checkbox, "supportInvidious");
@@ -503,7 +503,7 @@ function validateServerAddress(input: string): string {
 
 function copyDebugOutputToClipboard() {
     // Build output debug information object
-    let output = {
+    const output = {
         debug: {
             userAgent: navigator.userAgent,
             platform: navigator.platform,
@@ -530,5 +530,5 @@ function copyDebugOutputToClipboard() {
       })
       .catch(err => {
         alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
-      });;
+      });
 }
