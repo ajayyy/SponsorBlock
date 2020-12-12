@@ -129,14 +129,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         if (Config.config.audioNotificationOnSkip && this.audio) {
             this.audio.volume = this.contentContainer().v.volume * 0.1;
             if (this.autoSkip) this.audio.play();
         }
     }
 
-    render() {
+    render(): React.ReactElement {
         const noticeStyle: React.CSSProperties = {
             zIndex: 50 + this.amountOfPreviousNotices
         }
@@ -301,7 +301,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         return elements;
     }
 
-    prepAction(action: SkipNoticeAction) {
+    prepAction(action: SkipNoticeAction): void {
         if (this.segments.length === 1) {
             this.performAction(0, action);
         } else {
@@ -341,7 +341,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
      * 
      * @param index 
      */
-    performAction(index: number, action?: SkipNoticeAction) {
+    performAction(index: number, action?: SkipNoticeAction): void {
         switch (action ?? this.state.actionState) {
             case SkipNoticeAction.None:
                 break;
@@ -364,7 +364,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
     }
 
-    adjustDownvotingState(value: boolean) {
+    adjustDownvotingState(value: boolean): void {
         if (!value) this.clearConfigListener();
 
         this.setState({
@@ -373,14 +373,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
     }
 
-    clearConfigListener() {
+    clearConfigListener(): void {
         if (this.configListener) {
             Config.configListeners.splice(Config.configListeners.indexOf(this.configListener), 1);
             this.configListener = null;
         }
     }
 
-    openCategoryChooser() {
+    openCategoryChooser(): void {
         // Add as a config listener
         this.configListener = () => this.forceUpdate();
         Config.configListeners.push(this.configListener);
@@ -396,7 +396,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
     }
 
-    getCategoryOptions() {
+    getCategoryOptions(): React.ReactElement[] {
         const elements = [];
 
         for (const category of Config.config.categorySelections) {
@@ -421,7 +421,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         return elements;
     }
 
-    categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         // See if show more categories was pressed
         if (event.target.value === "moreCategories") {
             // Open options page
@@ -433,14 +433,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    unskip(index: number) {
+    unskip(index: number): void {
         this.contentContainer().unskipSponsorTime(this.segments[index]);
 
         this.unskippedMode(index, chrome.i18n.getMessage("reskip"));
     }
 
     /** Sets up notice to be not skipped yet */
-    unskippedMode(index: number, buttonText: string) {
+    unskippedMode(index: number, buttonText: string): void {
         //setup new callback and reset countdown
         this.setState(this.getUnskippedModeInfo(index, buttonText), () => {
             this.noticeRef.current.resetCountdown();
@@ -468,7 +468,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    reskip(index: number) {
+    reskip(index: number): void {
         this.contentContainer().reskipSponsorTime(this.segments[index]);
 
         //reset countdown
@@ -488,7 +488,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    afterVote(segment: SponsorTime, type: number, category: string) {
+    afterVote(segment: SponsorTime, type: number, category: string): void {
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
 
         if (type === 0) {
@@ -508,32 +508,32 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => any, ...messages: string[]) {
+    setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => any, ...messages: string[]): void {
         this.setState({
             messages,
             messageOnClick: (event) => onClick(event)
         });
     }
 
-    setNoticeInfoMessage(...messages: string[]) {
+    setNoticeInfoMessage(...messages: string[]): void {
         this.setState({
             messages
         });
     }
     
-    addVoteButtonInfo(message) {
+    addVoteButtonInfo(message): void {
         this.setState({
             thanksForVotingText: message
         });
     }
 
-    resetVoteButtonInfo() {
+    resetVoteButtonInfo(): void {
         this.setState({
             thanksForVotingText: null
         });
     }
 
-    closeListener() {
+    closeListener(): void {
         this.clearConfigListener();
 
         this.props.closeListener();

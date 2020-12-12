@@ -149,7 +149,7 @@ const Config: SBObject = {
         skipCount: 0,
         sponsorTimesContributed: 0,
         submissionCountSinceCategories: 0,
-	    showTimeWithSkips: true,
+        showTimeWithSkips: true,
         unsubmittedWarning: true,
         disableSkipping: false,
         trackViewCount: true,
@@ -314,7 +314,7 @@ function configProxy(): any {
     return new Proxy({handler}, handler);
 }
 
-function fetchConfig() { 
+function fetchConfig(): Promise<void> { 
     return new Promise((resolve, reject) => {
         chrome.storage.sync.get(null, function(items) {
             Config.localConfig = <SBConfig> <unknown> items;  // Data is ready
@@ -453,11 +453,11 @@ function convertJSON(): void {
 // Add defaults
 function addDefaults() {
     for (const key in Config.defaults) {
-        if(!Config.localConfig.hasOwnProperty(key)) {
-	        Config.localConfig[key] = Config.defaults[key];
+        if(!Object.prototype.hasOwnProperty.call(Config.localConfig, key)) {
+            Config.localConfig[key] = Config.defaults[key];
         } else if (key === "barTypes") {
             for (const key2 in Config.defaults[key]) {
-                if(!Config.localConfig[key].hasOwnProperty(key2)) {
+                if(!Object.prototype.hasOwnProperty.call(Config.localConfig[key], key2)) {
                     Config.localConfig[key][key2] = Config.defaults[key][key2];
                 }
             }

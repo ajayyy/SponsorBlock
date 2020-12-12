@@ -32,7 +32,7 @@ async function init() {
 
     for (let i = 0; i < optionsElements.length; i++) {
         switch (optionsElements[i].getAttribute("option-type")) {
-            case "toggle": 
+            case "toggle": {
                 const option = optionsElements[i].getAttribute("sync-option");
                 const optionResult = Config.config[option];
 
@@ -84,7 +84,8 @@ async function init() {
                     }
                 });
                 break;
-            case "text-change":
+            }
+            case "text-change": {
                 const textChangeOption = optionsElements[i].getAttribute("sync-option");
                 const textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
                 
@@ -95,7 +96,7 @@ async function init() {
                 textChangeSetButton.addEventListener("click", async () => {
                     // See if anything extra must be done
                     switch (textChangeOption) {
-                        case "serverAddress":
+                        case "serverAddress": {
                             const result = validateServerAddress(textChangeInput.value);
 
                             if (result !== null) {
@@ -117,6 +118,7 @@ async function init() {
                             }
 
                             break;
+                        }
                     }
 
                     Config.config[textChangeOption] = textChangeInput.value;
@@ -133,7 +135,8 @@ async function init() {
                 });
 
                 break;
-            case "private-text-change":
+            }
+            case "private-text-change": {
                 const button = optionsElements[i].querySelector(".trigger-button");
                 button.addEventListener("click", () => activatePrivateTextChange(<HTMLElement> optionsElements[i]));
 
@@ -145,7 +148,8 @@ async function init() {
                 }
 
                 break;
-            case "button-press":
+            }
+            case "button-press": {
                 const actionButton = optionsElements[i].querySelector(".trigger-button");
 
                 switch(optionsElements[i].getAttribute("sync-option")) {
@@ -155,16 +159,18 @@ async function init() {
                 }
 
                 break;
-            case "keybind-change":
+            }
+            case "keybind-change": {
                 const keybindButton = optionsElements[i].querySelector(".trigger-button");
                 keybindButton.addEventListener("click", () => activateKeybindChange(<HTMLElement> optionsElements[i]));
 
                 break;
-            case "display":
+            }
+            case "display":{
                 updateDisplayElement(<HTMLElement> optionsElements[i])
-
                 break;
-            case "number-change":
+            }
+            case "number-change": {
                 const numberChangeOption = optionsElements[i].getAttribute("sync-option");
                 const configValue = Config.config[numberChangeOption];
                 const numberInput = optionsElements[i].querySelector("input");
@@ -180,6 +186,7 @@ async function init() {
                 });
 
                 break;
+            }
             case "react-CategoryChooserComponent":
                 new CategoryChooser(optionsElements[i]);
             break;
@@ -298,7 +305,7 @@ function invidiousInit(checkbox: HTMLInputElement, option: string) {
  * @param checkbox 
  * @param option 
  */
-async function invidiousOnClick(checkbox: HTMLInputElement, option: string) {
+async function invidiousOnClick(checkbox: HTMLInputElement, option: string): Promise<void> {
     return new Promise((resolve) => {
         if (checkbox.checked) {
             utils.setupExtraSitePermissions(function (granted) {
@@ -427,7 +434,7 @@ function activatePrivateTextChange(element: HTMLElement) {
 
     // See if anything extra must be done
     switch (option) {
-        case "*":
+        case "*": {
             const jsonData = JSON.parse(JSON.stringify(Config.localConfig));
 
             // Fix segmentTimes data as it is destroyed from the JSON stringify
@@ -435,6 +442,7 @@ function activatePrivateTextChange(element: HTMLElement) {
 
             result = JSON.stringify(jsonData);
             break;
+        }
     }
 
     textBox.value = result;
@@ -528,7 +536,7 @@ function copyDebugOutputToClipboard() {
       .then(() => {
         alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
       })
-      .catch(err => {
+      .catch((err) => {
         alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
       });
 }

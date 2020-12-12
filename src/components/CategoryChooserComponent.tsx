@@ -23,7 +23,7 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
         }
     }
 
-    render() {
+    render(): React.ReactElement {
         return (
             <table id="categoryChooserTable"
                 className="categoryChooserTable"> 

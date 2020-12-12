@@ -38,7 +38,7 @@ class MessageHandler {
 }
 
 //make this a function to allow this to run on the content page
-async function runThePopup(messageListener?: MessageListener) {
+async function runThePopup(messageListener?: MessageListener): Promise<void> {
     const messageHandler = new MessageHandler(messageListener);
 
     utils.localizeHtmlPage();
@@ -233,17 +233,17 @@ async function runThePopup(messageListener?: MessageListener) {
     }, onTabs);
 	
     function onTabs(tabs) {
-	  messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
-        if (result != undefined && result.videoID) {
-			  currentVideoID = result.videoID;
-			  loadTabData(tabs);
-        } else if (result == undefined && chrome.runtime.lastError) {
-			  //this isn't a YouTube video then, or at least the content script is not loaded
-			  displayNoVideo();
-        }
-	  });
+        messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
+            if (result != undefined && result.videoID) {
+                currentVideoID = result.videoID;
+                loadTabData(tabs);
+            } else if (result == undefined && chrome.runtime.lastError) {
+                // this isn't a YouTube video then, or at least the content script is not loaded
+                displayNoVideo();
+            }
+        });
     }
-  
+
     function loadTabData(tabs) {
         if (!currentVideoID) {
             //this isn't a YouTube video then

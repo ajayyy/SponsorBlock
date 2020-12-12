@@ -24,7 +24,7 @@ class Utils {
     }
 
     // Function that can be used to wait for a condition before returning
-    async wait(condition, timeout = 5000, check = 100) { 
+    async wait(condition: () => boolean, timeout = 5000, check = 100): Promise<boolean> { 
         return await new Promise((resolve, reject) => {
             setTimeout(() => reject("TIMEOUT"), timeout);
 
@@ -51,7 +51,7 @@ class Utils {
      * 
      * @param {CallableFunction} callback
      */
-    setupExtraSitePermissions(callback) {
+    setupExtraSitePermissions(callback: (granted: boolean) => void): void {
         // Request permission
         let permissions = ["declarativeContent"];
         if (this.isFirefox()) permissions = [];
@@ -79,7 +79,7 @@ class Utils {
      * 
      * For now, it is just SB.config.invidiousInstances.
      */
-    setupExtraSiteContentScripts() {
+    setupExtraSiteContentScripts(): void {
         const self = this;
 
         if (this.isFirefox()) {
@@ -135,7 +135,7 @@ class Utils {
     /**
      * Removes the permission and content script registration.
      */
-    removeExtraSiteRegistration() {
+    removeExtraSiteRegistration(): void {
         if (this.isFirefox()) {
             const id = "invidious";
 
@@ -193,7 +193,7 @@ class Utils {
         }
     }
 
-    localizeHtmlPage() {
+    localizeHtmlPage(): void {
         //Localize by replacing __MSG_***__ meta tags
         const objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
         for (let j = 0; j < objects.length; j++) {
@@ -204,7 +204,7 @@ class Utils {
         }
     }
 
-    getLocalizedMessage(text) {
+    getLocalizedMessage(text: string): string | false {
         const valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
             return v1 ? chrome.i18n.getMessage(v1) : "";
         });
@@ -219,8 +219,8 @@ class Utils {
     /**
      * @returns {String[]} Invidious Instances in regex form
      */
-    getInvidiousInstancesRegex() {
-        const invidiousInstancesRegex = [];
+    getInvidiousInstancesRegex(): string[] {
+        const invidiousInstancesRegex: string[] = [];
         for (const url of Config.config.invidiousInstances) {
             invidiousInstancesRegex.push("https://*." + url + "/*");
             invidiousInstancesRegex.push("http://*." + url + "/*");
@@ -229,7 +229,7 @@ class Utils {
         return invidiousInstancesRegex;
     }
 
-    generateUserID(length = 36) {
+    generateUserID(length = 36): string {
         const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         let result = "";
         if (window.crypto && window.crypto.getRandomValues) {
@@ -253,7 +253,7 @@ class Utils {
      * @param {int} statusCode 
      * @returns {string} errorMessage
      */
-    getErrorMessage(statusCode) {
+    getErrorMessage(statusCode: number): string {
         let errorMessage = "";
                             
         if([400, 429, 409, 502, 0].includes(statusCode)) {
@@ -310,7 +310,7 @@ class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */
-    sendRequestToServer(type: string, address: string, callback?: (response: FetchResponse) => void) {
+    sendRequestToServer(type: string, address: string, callback?: (response: FetchResponse) => void): void {
         const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
         // Ask the background script to do the work

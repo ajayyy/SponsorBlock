@@ -49,7 +49,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         }
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         // Catch and rerender when the video size changes
         //TODO: Use ResizeObserver when it is supported in TypeScript
         this.videoObserver = new MutationObserver(() => {
@@ -61,13 +61,13 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         });
     }
 
-    componentWillUnmount() {
+    componentWillUnmount(): void {
         if (this.videoObserver) {
             this.videoObserver.disconnect();
         }
     }
 
-    render() {
+    render(): React.ReactElement {
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 idSuffix={this.state.idSuffix}
@@ -153,7 +153,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         return elements;
     }
 
-    cancel() {
+    cancel(): void {
         this.noticeRef.current.close(true);
 
         this.contentContainer().resetSponsorSubmissionNotice();
@@ -161,7 +161,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.props.closeListener();
     }
 
-    submit() {
+    submit(): void {
         // save all items
         for (const ref of this.timeEditRefs) {
             ref.current.saveEditTimes();

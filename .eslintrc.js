@@ -18,7 +18,16 @@ module.exports = {
         sourceType: "module",
     },
     plugins: ["react", "@typescript-eslint"],
-    rules: {},
+    rules: {
+        // TODO: Remove warn rules when not needed anymore
+        "@typescript-eslint/no-this-alias": "warn",
+        "no-fallthrough": "warn",
+        "no-self-assign": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/no-empty-interface": "warn",
+        "@typescript-eslint/ban-types": "warn",
+    },
     settings: {
         react: {
             version: "detect",

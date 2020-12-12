@@ -60,11 +60,11 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         }
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         this.startCountdown();
     }
 
-    render() {
+    render(): React.ReactElement {
         const noticeStyle: React.CSSProperties = {
             zIndex: this.props.zIndex || (50 + this.amountOfPreviousNotices)
         }
@@ -124,19 +124,19 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         );
     }
 
-    timerMouseEnter() {
+    timerMouseEnter(): void {
         if (this.state.countdownManuallyPaused) return;
 
         this.pauseCountdown();
     }
 
-    timerMouseLeave() {
+    timerMouseLeave(): void {
         if (this.state.countdownManuallyPaused) return;
 
         this.startCountdown();
     }
 
-    toggleManualPause() {
+    toggleManualPause(): void {
         this.setState({
             countdownManuallyPaused: !this.state.countdownManuallyPaused
         }, () => {
@@ -149,7 +149,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     }
 
     //called every second to lower the countdown before hiding the notice
-    countdown() {
+    countdown(): void {
         if (!this.props.timed) return;
 
         const countdownTime = this.state.countdownTime - 1;
@@ -176,7 +176,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         })
     }
 
-    pauseCountdown() {
+    pauseCountdown(): void {
         if (!this.props.timed) return;
 
         //remove setInterval
@@ -195,7 +195,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         notice.style.animation = "none";
     }
 
-    startCountdown() {
+    startCountdown(): void {
         if (!this.props.timed) return;
 
         //if it has already started, don't start it again
@@ -209,7 +209,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
     }
 
-    resetCountdown() {
+    resetCountdown(): void {
         if (!this.props.timed) return;
 
         this.setState({
@@ -221,20 +221,20 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     /**
      * @param silent If true, the close listener will not be called
      */
-    close(silent?: boolean) {
+    close(silent?: boolean): void {
         //remove setInterval
         if (this.countdownInterval !== null) clearInterval(this.countdownInterval);
 
         if (!silent) this.props.closeListener();
     }
 
-    changeNoticeTitle(title) {
+    changeNoticeTitle(title: string): void {
         this.setState({
             noticeTitle: title
         });
     }
     
-    addNoticeInfoMessage(message: string, message2 = "") {
+    addNoticeInfoMessage(message: string, message2 = ""): void {
         //TODO: Replace
 
         const previousInfoMessage = document.getElementById("sponsorTimesInfoMessage" + this.idSuffix);

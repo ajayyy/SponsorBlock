@@ -51,7 +51,9 @@
     "dev": "npm run build:dev && concurrently \"npm run web-run\" \"npm run build:watch\"",
     "dev:firefox": "npm run build:dev:firefox && concurrently \"npm run web-run:firefox\" \"npm run build:watch:firefox\"",
     "clean": "rimraf dist",
-    "test": "npx jest"
+    "test": "npx jest",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "repository": {
     "type": "git",

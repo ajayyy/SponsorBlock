@@ -44,7 +44,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         };
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         // Prevent inputs from triggering key events
         document.getElementById("sponsorTimesContainer" + this.idSuffix).addEventListener('keydown', function (event) {
             event.stopPropagation();
@@ -57,13 +57,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
     }
 
-    componentWillUnmount() {
+    componentWillUnmount(): void {
         if (this.configUpdateListener) {
             Config.configListeners.splice(Config.configListeners.indexOf(this.configUpdate.bind(this)), 1);
         }
     }
 
-    render() {
+    render(): React.ReactElement {
         const style: React.CSSProperties = {
             textAlign: "center"
         };
@@ -215,7 +215,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         );
     }
 
-    getCategoryOptions() {
+    getCategoryOptions(): React.ReactElement[] {
         const elements = [(
             <option value={"chooseACategory"}
                     key={"chooseACategory"}>
@@ -245,7 +245,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         return elements;
     }
 
-    categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         // See if show more categories was pressed
         if (event.target.value === "moreCategories") {
             // Open options page
@@ -259,15 +259,15 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.saveEditTimes();
     }
 
-    setTimeToNow(index: number) {
+    setTimeToNow(index: number): void {
         this.setTimeTo(index, this.props.contentContainer().getRealCurrentTime());
     }
 
-    setTimeToEnd() {
+    setTimeToEnd(): void {
         this.setTimeTo(1, this.props.contentContainer().v.duration);
     }
 
-    setTimeTo(index: number, time: number) {
+    setTimeTo(index: number, time: number): void {
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
 
         sponsorTime.segment[index] = 
@@ -302,7 +302,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             utils.getFormattedTime(sponsorTime.segment[1], true)];
     }
 
-    saveEditTimes() {
+    saveEditTimes(): void {
         const sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
 
         if (this.state.editing) {
@@ -369,7 +369,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
     }
 
-    configUpdate() {
+    configUpdate(): void {
         this.forceUpdate();
     }
 }

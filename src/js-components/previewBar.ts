@@ -18,7 +18,7 @@ class PreviewBar {
 	timestamps: number[][];
 	types: string;
 
-	constructor(parent, onMobileYouTube, onInvidious) {
+	constructor(parent: any, onMobileYouTube: boolean, onInvidious: boolean) {
 		this.container = document.createElement('ul');
 		this.container.id = 'previewbar';
 		this.parent = parent;
@@ -31,7 +31,7 @@ class PreviewBar {
 		this.setupHoverText();
 	}
 
-	setupHoverText() {
+	setupHoverText(): void {
 		if (this.onMobileYouTube || this.onInvidious) return;
 
 		const seekBar = document.querySelector(".ytp-progress-bar-container");
@@ -112,7 +112,7 @@ class PreviewBar {
 		});
 	}
 
-	updatePosition(parent) {
+	updatePosition(parent: any): void {
 		//below the seek bar
 		// this.parent.insertAdjacentElement("afterEnd", this.container);
 
@@ -129,7 +129,7 @@ class PreviewBar {
 		this.parent.insertAdjacentElement("afterBegin", this.container);
 	}
 
-	updateColor(segment, color, opacity) {
+	updateColor(segment: string, color: string, opacity: string): void {
 		const bars = <NodeListOf<HTMLElement>> document.querySelectorAll('[data-vs-segment-type=' + segment + ']');
 		for (const bar of bars) {
 			bar.style.backgroundColor = color;
@@ -137,7 +137,7 @@ class PreviewBar {
 		}
 	}
 
-	set(timestamps, types, duration) {
+	set(timestamps: number[][], types: string, duration: number): void {
 		while (this.container.firstChild) {
 			this.container.removeChild(this.container.firstChild);
 		}
@@ -171,14 +171,14 @@ class PreviewBar {
 		}
 	}
 
-	createBar() {
+	createBar(): HTMLLIElement {
 		const bar = document.createElement('li');
 		bar.classList.add('previewbar');
 		bar.innerHTML = '&nbsp;';
 		return bar;
 	}
 
-	remove() {
+	remove(): void {
 		this.container.remove();
 		this.container = undefined;
 	}

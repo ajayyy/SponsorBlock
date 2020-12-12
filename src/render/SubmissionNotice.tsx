@@ -51,11 +51,11 @@ class SubmissionNotice {
         );
     }
 
-    update() {
+    update(): void {
         this.noticeRef.current.forceUpdate();
     }
 
-    close() {
+    close(): void {
         ReactDOM.unmountComponentAtNode(this.noticeElement);
 
         this.noticeElement.remove();
