@@ -830,7 +830,7 @@ async function runThePopup(messageListener?: MessageListener) {
     }
 
     function openHelp() {
-        window.open(chrome.runtime.getURL('help/index_en.html'));
+        chrome.runtime.sendMessage({"message": "openHelp"});
     }
 
     //make the options username setting option visible
