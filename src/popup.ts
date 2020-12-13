@@ -969,9 +969,6 @@ async function runThePopup(messageListener?: MessageListener) {
 
                     if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.style.display = "unset";
 
-                    //PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                    //PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
-
                     //save this
                     Config.config.whitelistedChannels = whitelistedChannels;
 
