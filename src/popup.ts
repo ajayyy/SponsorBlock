@@ -412,7 +412,7 @@ async function runThePopup(messageListener?: MessageListener) {
             let container = document.getElementById("issueReporterTimeButtons");
             for (let i = 0; i < request.sponsorTimes.length; i++) {
                 let sponsorTimeButton = document.createElement("button");
-                sponsorTimeButton.className = "warningButton popupElement";
+                sponsorTimeButton.className = "segmentTimeButton popupElement";
 
                 let extraInfo = "";
                 if (request.sponsorTimes[i].hidden === SponsorHideType.Downvoted) {
@@ -426,6 +426,7 @@ async function runThePopup(messageListener?: MessageListener) {
                 sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
 
                 let votingButtons = document.createElement("div");
+                votingButtons.classList.add("votingButtons");
 
                 let UUID = request.sponsorTimes[i].UUID;
 
@@ -438,34 +439,40 @@ async function runThePopup(messageListener?: MessageListener) {
                 let upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
                 upvoteButton.className = "voteButton";
-                upvoteButton.src = chrome.extension.getURL("icons/thumb.svg");
+                upvoteButton.src = chrome.extension.getURL("icons/thumbs_up.svg");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
 
                 let downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton";
-                downvoteButton.src = chrome.extension.getURL("icons/thumb.svg");
+                downvoteButton.src = chrome.extension.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
                 //add thumbs up and down buttons to the container
-                //voteButtonsContainer.appendChild(document.createElement("br"));
-                //voteButtonsContainer.appendChild(document.createElement("br"));
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
 
                 //add click listener to open up vote panel
                 sponsorTimeButton.addEventListener("click", function() {
-                    voteButtonsContainer.style.display = "unset";
+                    voteButtonsContainer.style.removeProperty("display");
                 });
 
-                container.appendChild(sponsorTimeButton);
-                container.appendChild(voteButtonsContainer);
+                // Will contain request status
+                let voteStatusContainer = document.createElement("div");
+                voteStatusContainer.id = "sponsorTimesVoteStatusContainer" + UUID;
+                voteStatusContainer.classList.add("sponsorTimesVoteStatusContainer");
+                voteStatusContainer.style.display = "none";
 
-                //if it is not the last iteration
-                if (i != request.sponsorTimes.length - 1) {
-                    //container.appendChild(document.createElement("br"));
-                    //container.appendChild(document.createElement("br"));
-                }
+                let thanksForVotingText = document.createElement("div");
+                thanksForVotingText.id = "sponsorTimesThanksForVotingText" + UUID;
+                thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
+                voteStatusContainer.appendChild(thanksForVotingText);
+
+                votingButtons.append(sponsorTimeButton);
+                votingButtons.append(voteButtonsContainer);
+                votingButtons.append(voteStatusContainer);
+
+                container.appendChild(votingButtons);
             }
         }
     }
@@ -883,18 +890,14 @@ async function runThePopup(messageListener?: MessageListener) {
     }*/
   
     function addVoteMessage(message, UUID) {
-        let container = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
-        //remove all children
-        while (container.firstChild) {
-            container.removeChild(container.firstChild);
-        }
-  
-        let thanksForVotingText = document.createElement("h2");
+        let voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
+        voteButtonsContainer.style.display = "none";
+
+        let voteStatusContainer = document.getElementById("sponsorTimesVoteStatusContainer" + UUID);
+        voteStatusContainer.style.removeProperty("display");
+        
+        let thanksForVotingText = document.getElementById("sponsorTimesThanksForVotingText" + UUID);
         thanksForVotingText.innerText = message;
-        //there are already breaks there
-        thanksForVotingText.style.marginBottom = "0px";
-  
-        container.appendChild(thanksForVotingText);
     }
   
     function vote(type, UUID) {
@@ -917,11 +920,6 @@ async function runThePopup(messageListener?: MessageListener) {
                 }
             }
         });
-    }
-  
-    function hideDiscordButton() {
-        Config.config.hideDiscordLink = true;
-        //PageElements.discordButtonContainer.style.display = "none";
     }
   
     //converts time in seconds to minutes:seconds
