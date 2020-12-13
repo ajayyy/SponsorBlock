@@ -56,6 +56,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
                     iconUrl: "./icons/LogoSponsorBlocker256px.png"
                 });
             }
+            break;
         case "registerContentScript": 
             registerFirefoxContentScript(request);
             return false;
