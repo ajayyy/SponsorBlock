@@ -31,7 +31,7 @@ export interface SkipNoticeState {
     noticeTitle: string;
 
     messages: string[];
-    messageOnClick: (event: React.MouseEvent) => any;
+    messageOnClick: (event: React.MouseEvent) => unknown;
 
     countdownTime: number;
     maxCountdownTime: () => number;
@@ -56,7 +56,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     amountOfPreviousNotices: number;
     audio: HTMLAudioElement;
     
-    idSuffix: any;
+    idSuffix: string;
 
     noticeRef: React.MutableRefObject<NoticeComponent>;
     categoryOptionRef: React.RefObject<HTMLSelectElement>;
