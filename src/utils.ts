@@ -24,7 +24,7 @@ class Utils {
     }
 
     // Function that can be used to wait for a condition before returning
-    async wait(condition: () => boolean, timeout = 5000, check = 100): Promise<boolean> { 
+    async wait(condition: () => HTMLElement | boolean, timeout = 5000, check = 100): Promise<HTMLElement | boolean> { 
         return await new Promise((resolve, reject) => {
             setTimeout(() => reject("TIMEOUT"), timeout);
 

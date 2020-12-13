@@ -16,7 +16,7 @@ class PreviewBar {
 	onInvidious: boolean;
 
 	timestamps: number[][];
-	types: string;
+	types: string[];
 
 	constructor(parent: any, onMobileYouTube: boolean, onInvidious: boolean) {
 		this.container = document.createElement('ul');
@@ -137,7 +137,7 @@ class PreviewBar {
 		}
 	}
 
-	set(timestamps: number[][], types: string, duration: number): void {
+	set(timestamps: number[][], types: string[], duration: number): void {
 		while (this.container.firstChild) {
 			this.container.removeChild(this.container.firstChild);
 		}
