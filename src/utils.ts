@@ -1,12 +1,12 @@
 import Config from "./config";
-import { CategorySelection, SponsorTime, FetchResponse } from "./types";
+import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration } from "./types";
 
 import * as CompileConfig from "../config.json";
 
 class Utils {
     
     // Contains functions needed from the background script
-    backgroundScriptContainer: any = null;
+    backgroundScriptContainer: BackgroundScriptContainer | null = null;
 
     // Used to add content scripts and CSS required
     js = [
@@ -19,7 +19,7 @@ class Utils {
         "popup.css"
     ];
 
-    constructor(backgroundScriptContainer?: any) {
+    constructor(backgroundScriptContainer?: BackgroundScriptContainer) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
@@ -92,7 +92,7 @@ class Utils {
                 firefoxCSS.push({file});
             }
 
-            const registration = {
+            const registration: Registration = {
                 message: "registerContentScript",
                 id: "invidious",
                 allFrames: true,

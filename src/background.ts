@@ -1,6 +1,7 @@
 import * as CompileConfig from "../config.json";
 
 import Config from "./config";
+import { Registration } from "./types";
 // Make the config public for debugging purposes
 (<any> window).SB = Config;
 
@@ -90,7 +91,7 @@ chrome.runtime.onInstalled.addListener(function (object) {
  * 
  * @param {JSON} options 
  */
-function registerFirefoxContentScript(options) {
+function registerFirefoxContentScript(options: Registration) {
     const oldRegistration = contentScriptRegistrations[options.id];
     if (oldRegistration) oldRegistration.unregister();
 
