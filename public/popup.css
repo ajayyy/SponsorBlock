@@ -343,11 +343,19 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
 
 /* footer */
 
-#sbFooter {
-  margin-bottom: 28px;
-}
-
 #sbFooter > a {
   color: var(--sb-main-fg-color);
   text-decoration: none;
+}
+
+#showNoticeAgain {
+  margin-top: 30px;
+
+  color: var(--sb-main-fg-color);
+  background: none;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: 5px;
+
+  border-radius: 5px;
 }
