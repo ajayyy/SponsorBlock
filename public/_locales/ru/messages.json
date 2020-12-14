@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Сегмент заканчивается здесь"
     },
-    "noVideoID": {
-        "message": "Видео YouTube не найдено на этой вкладке. Если вы уверены, что это вкладка YouTube, закройте это всплывающее окно и откройте его снова. Если это не поможет, перезагрузите вкладку."
-    },
     "success": {
         "message": "Успех!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Вы уверены, что хотите отправить эту информацию?"
     },
-    "whitelistChannel": {
-        "message": "Добавить канал в белый список"
-    },
-    "removeFromWhitelist": {
-        "message": "Удалить канал из белого списка"
-    },
     "voteOnTime": {
         "message": "Проголосовать за сегмент"
     },
-    "soFarUHSubmited": {
-        "message": "На данный момент Вы отправили"
-    },
-    "savedPeopleFrom": {
-        "message": "Вы помогли людям пропустить "
-    },
-    "viewLeaderboard": {
-        "message": "Посмотреть доску почёта"
-    },
     "here": {
         "message": "здесь"
-    },
-    "recordTimesDescription": {
-        "message": "Нажмите кнопку ниже, когда сегмент начинается и заканчивается, чтобы записать и отправить его в базу."
-    },
-    "popupHint": {
-        "message": "Подсказка: нажмите на кнопку \"Ж\" во время воспроизведения, чтобы сообщить о начале/конце сегмента, и \"Э\", чтобы отправить его. (Это можно изменить в настройках)"
     },
     "clearTimesButton": {
         "message": "Очистить время"
@@ -252,12 +228,6 @@
     "0": {
         "message": "Таймаут подключения. Проверьте ваше соединение с интернетом. Если ваш интернет работает, сервер, скорее всего, перегружен или лежит."
     },
-    "disableSkipping": {
-        "message": "Отключить SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Включить SponsorBlock"
-    },
     "yourWork": {
         "message": "Ваша работа",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +265,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Эта длительность отображается в скобках рядом с фактической под полосой прокрутки. Показывает длительность видео без сегментов. Включает сегменты, для которых выбрано \"Отображать в полосе прокрутки\"."
     },
-    "youHaveSkipped": {
-        "message": "Вы пропустили "
-    },
     "youHaveSaved": {
         "message": "Вы сэкономили "
     },
@@ -312,12 +279,6 @@
     },
     "hoursLower": {
         "message": "часов"
-    },
-    "youHaveSavedTime": {
-        "message": "Вы сэкономили людям"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " их жизней."
     },
     "statusReminder": {
         "message": "Смотрите состояние сервера на status.sponsor.ajay.app."
