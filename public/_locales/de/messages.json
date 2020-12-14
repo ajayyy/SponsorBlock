@@ -85,6 +85,9 @@
     "sponsorEnd": {
         "message": "Segment endet jetzt"
     },
+    "noVideoID": {
+        "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisieren Sie den Tab."
+    },
     "success": {
         "message": "Geschafft!"
     },
@@ -117,6 +120,12 @@
     },
     "submitCheck": {
         "message": "Bist du sicher, dass du dies übermitteln willst?"
+    },
+    "whitelistChannel": {
+        "message": "Zur Whitelist hinzufügen"
+    },
+    "removeFromWhitelist": {
+        "message": "Von der Whitelist entfernen"
     },
     "voteOnTime": {
         "message": "Über ein Segment abstimmen"
