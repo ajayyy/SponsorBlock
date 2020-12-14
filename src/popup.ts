@@ -403,32 +403,33 @@ async function runThePopup(messageListener?: MessageListener) {
     //display the video times from the array at the top, in a different section
     function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
         if (request.sponsorTimes != undefined) {
-            //set it to the message
-            /*if (PageElements.downloadedSponsorMessageTimes.innerText != chrome.i18n.getMessage("channelWhitelisted")) {
-                PageElements.downloadedSponsorMessageTimes.innerText = getSponsorTimesMessage(request.sponsorTimes);
-            }*/
+
+            // Sort list by start time
+            let segmentTimes = request.sponsorTimes
+                                .sort((a, b) => a.segment[1] - b.segment[1])
+                                .sort((a, b) => a.segment[0] - b.segment[0]);
 
             //add them as buttons to the issue reporting container
             let container = document.getElementById("issueReporterTimeButtons");
-            for (let i = 0; i < request.sponsorTimes.length; i++) {
+            for (let i = 0; i < segmentTimes.length; i++) {
                 let sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
 
                 let extraInfo = "";
-                if (request.sponsorTimes[i].hidden === SponsorHideType.Downvoted) {
+                if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
                     //this one is downvoted
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
-                } else if (request.sponsorTimes[i].hidden === SponsorHideType.MinimumDuration) {
+                } else if (segmentTimes[i].hidden === SponsorHideType.MinimumDuration) {
                     //this one is too short
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
-                sponsorTimeButton.innerText = getFormattedTime(request.sponsorTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(request.sponsorTimes[i].segment[1]) + extraInfo;
+                sponsorTimeButton.innerText = getFormattedTime(segmentTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segmentTimes[i].segment[1]) + extraInfo;
 
                 let votingButtons = document.createElement("div");
                 votingButtons.classList.add("votingButtons");
 
-                let UUID = request.sponsorTimes[i].UUID;
+                let UUID = segmentTimes[i].UUID;
 
                 //thumbs up and down buttons
                 let voteButtonsContainer = document.createElement("div");
