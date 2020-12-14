@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Kısım Şimdi Bitiyor"
     },
-    "noVideoID": {
-        "message": "Bu sekmede YouTube videosu bulunamadı. Bu sekmenin bir YouTube sekmesi olduğundan eminseniz, bu pencereyi kapatıp, tekrar açın. Eğer o da işe yaramazsa, sekmeyi yenilemeyi deneyin."
-    },
     "success": {
         "message": "Başarılı!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Bunu göndermek istediğinize emin misiniz?"
     },
-    "whitelistChannel": {
-        "message": "Kanalı Beyazlisteye Ekle"
-    },
-    "removeFromWhitelist": {
-        "message": "Kanalı Beyazlisteden Kaldır"
-    },
     "voteOnTime": {
         "message": "Bir Kısmı Oyla"
     },
-    "soFarUHSubmited": {
-        "message": "Şu an kadar yolladığınız"
-    },
-    "savedPeopleFrom": {
-        "message": "İnsanların şu kadar vaktini kurtardınız "
-    },
-    "viewLeaderboard": {
-        "message": "Liderlik tablosunu görüntüle"
-    },
     "here": {
         "message": "burada"
-    },
-    "recordTimesDescription": {
-        "message": "Kısmın başladığı ve bittiği yeri kaydetmek ve veri tabanına göndermek için aşağıdaki butona tıklayın."
-    },
-    "popupHint": {
-        "message": "İpucu: Bir kısmın başlangıcını / sonunu seçmek ve göndermek için bir videoyu izlerken noktalı virgül tuşuna basın. (Bu, ayarlardan değiştirilebilir)"
     },
     "clearTimesButton": {
         "message": "Süreleri Temizle"
@@ -252,12 +228,6 @@
     "0": {
         "message": "Bağlantı zaman aşımına uğradı. İnternet bağlantınızı kontrol ediniz. Eğer internetiniz çalışıyor ise, büyük ihtimalle sunucuya erişilemiyor veya sunucuya aşırı yüklenilmiş olabilir."
     },
-    "disableSkipping": {
-        "message": "SponsorBlock'u Devredışı Bırak"
-    },
-    "enableSkipping": {
-        "message": "SponsorBlock'u Devreye Sok"
-    },
     "yourWork": {
         "message": "Çalışmalarınız",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +265,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Bu süre, video ilerleme çubuğunun altındaki geçerli zamanın yanında parantez içinde görüntülenir. Bu, videodaki kısımların silinmiş toplam video süresini gösterir. Bu, yalnızca \"Video İlerleme Çubuğunda Göster\" olarak işaretlenen kısımları içerir."
     },
-    "youHaveSkipped": {
-        "message": "Bunu atladınız "
-    },
     "youHaveSaved": {
         "message": "Şu kadar süre kazandınız "
     },
@@ -312,12 +279,6 @@
     },
     "hoursLower": {
         "message": "saat"
-    },
-    "youHaveSavedTime": {
-        "message": "İnsanların"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " kadar vaktini kurtardınız."
     },
     "statusReminder": {
         "message": "Sunucu durumu için status.sponsor.ajay.app kontrol edin."
