@@ -85,6 +85,9 @@
     "sponsorEnd": {
         "message": "Il Segmento Termina Ora"
     },
+    "noVideoID": {
+        "message": "Nessun video YouTube trovato.\nSe questo non è corretto, ricarica la scheda."
+    },
     "success": {
         "message": "Successo!"
     },
@@ -118,11 +121,36 @@
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
     },
+    "whitelistChannel": {
+        "message": "Aggiungi alla whitelist"
+    },
+    "removeFromWhitelist": {
+        "message": "Rimuovi dalla whitelist"
+    },
     "voteOnTime": {
         "message": "Vota un Segmento"
     },
+    "Submissions": {
+        "message": "Iscrizioni"
+    },
+    "savedPeopleFrom": {
+        "message": "Hai salvato le persone da "
+    },
+    "viewLeaderboard": {
+        "message": "Classifica"
+    },
     "here": {
         "message": "qui"
+    },
+    "recordTimesDescription": {
+        "message": "Invia"
+    },
+    "submissionEditHint": {
+        "message": "La modifica della sezione comparirà dopo aver cliccato Iscriviti",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Suggerimento: Puoi configurare combinazioni di tasti per l'inserimento nelle opzioni"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -132,6 +160,9 @@
     },
     "publicStats": {
         "message": "Viene utilizzato nelle pagine delle statistiche pubbliche che mostrano quanto hai contribuito. Vedi"
+    },
+    "Username": {
+        "message": "Nome Utente"
     },
     "setUsername": {
         "message": "Imposta Username"
@@ -228,6 +259,12 @@
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
     },
+    "disableSkipping": {
+        "message": "Salta abilitato"
+    },
+    "enableSkipping": {
+        "message": "Salta disabilitato"
+    },
     "yourWork": {
         "message": "Il Tuo Lavoro",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +302,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Questo tempo appare tra parentesi accanto al tempo attuale sotto alla barra di progresso. Questo mostra la durata totale del video meno gli spezzoni. Include spezzoni marcati come \"Mostra solo nella barra di progresso\"."
     },
+    "youHaveSkipped": {
+        "message": "Hai saltato "
+    },
     "youHaveSaved": {
         "message": "Ti sei salvato "
     },
@@ -279,6 +319,12 @@
     },
     "hoursLower": {
         "message": "ore"
+    },
+    "youHaveSavedTime": {
+        "message": "Hai salvato le persone"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " delle loro vite"
     },
     "statusReminder": {
         "message": "Controlla status.sponsor.ajay.app per lo stato del server."
@@ -595,5 +641,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Invia una notifica quando lasci un video con segmenti non caricati"
+    },
+    "help": {
+        "message": "Aiuto"
     }
 }
