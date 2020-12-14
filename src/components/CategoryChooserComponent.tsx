@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import Config from "../config"
 import * as CompileConfig from "../../config.json";
 import CategorySkipOptionsComponent from "./CategorySkipOptionsComponent";
 

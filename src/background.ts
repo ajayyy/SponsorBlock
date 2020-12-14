@@ -2,8 +2,10 @@ import * as CompileConfig from "../config.json";
 
 import Config from "./config";
 import { Registration } from "./types";
+
 // Make the config public for debugging purposes
-(<any> window).SB = Config;
+
+window.SB = Config;
 
 import Utils from "./utils";
 const utils = new Utils({
@@ -70,7 +72,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 });
 
 //add help page on install
-chrome.runtime.onInstalled.addListener(function (object) {
+chrome.runtime.onInstalled.addListener(function () {
     // This let's the config sync to run fully before checking.
     // This is required on Firefox
     setTimeout(function() {

@@ -119,8 +119,7 @@ class Utils {
                 const rule = {
                     id: "invidious",
                     conditions,
-                    // This API is experimental and not visible by the TypeScript compiler
-                    actions: [new (<any> chrome.declarativeContent).RequestContentScript({
+                    actions: [new chrome.declarativeContent.RequestContentScript({
                         allFrames: true,
                         js: self.js,
                         css: self.css

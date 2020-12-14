@@ -58,7 +58,7 @@ interface SBConfig {
     }
 }
 
-interface SBObject {
+export interface SBObject {
     configListeners: Array<Function>;
     defaults: SBConfig;
     localConfig: SBConfig;
