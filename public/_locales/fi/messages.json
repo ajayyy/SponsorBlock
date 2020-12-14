@@ -252,9 +252,6 @@
     "skip": {
         "message": "Ohita"
     },
-    "skip_category": {
-        "message": "Ohita {0}?"
-    },
     "skipped": {
         "message": "Ohitettu"
     },
@@ -268,7 +265,7 @@
         "message": "Äänellinen Ilmoitus Ohitettaessa"
     },
     "audioNotificationDescription": {
-        "message": "Ääni-ilmoitus ohituksessa toistaa äänen, kun segmentti ohitetaan. Jos pois päältä (tai automaattinen ohitus on pois käytöstä), ääntä ei soiteta."
+        "message": "Ääni-ilmoitus ohittaessa toistaa äänen kun segmentti ohitetaan. Jos asetus on pois päältä (tai automaattinen ohitus on pois käytöstä), ääntä ei soiteta."
     },
     "youHaveSkipped": {
         "message": "Olet ohittanut "
@@ -295,7 +292,7 @@
         "message": " heidän elämästään."
     },
     "statusReminder": {
-        "message": "Tarkista status.sponsor.ajay.app palvelimen tila."
+        "message": "Tarkista palvelimen tila osoitteessa status.sponsor.ajay.app."
     },
     "changeUserID": {
         "message": "Tuo/vie sinun UserID:si"
@@ -346,7 +343,7 @@
         "message": "Vähimmäiskesto (sekuntia):"
     },
     "minDurationDescription": {
-        "message": "Segmentit, jotka ovat asetettua arvoa lyhyempiä, ei tulla ohittamaan tai näytetä soittimessa."
+        "message": "Segmenttejä jotka ovat asetettua arvoa lyhyempiä ei ohiteta tai näytetä soittimessa."
     },
     "showUploadButton": {
         "message": "Näytä lähetä-painike"
@@ -358,7 +355,7 @@
         "message": "SponsorBlock Palvelimen Osoite"
     },
     "customServerAddressDescription": {
-        "message": "Osoite jota SponsorBlock käyttää lähettääkseen kutsuja palvelimelle.\nEllei sinulla ole omaa palvelin instanssia, tätä ei pitäisi muuttaa."
+        "message": "Osoite jota SponsorBlock käyttää lähettääkseen kutsuja palvelimelle.\nEllei sinulla ole omaa palvelininstanssia, tätä ei pitäisi muuttaa."
     },
     "save": {
         "message": "Tallenna"
@@ -373,7 +370,7 @@
         "message": "Oletko varma, että haluat nollata tämän?"
     },
     "unlistedCheck": {
-        "message": "Ohita Listaamattomat/Yksityiset Videot"
+        "message": "Ohita listaamattomat/yksityiset videot"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com-osoitetta tuetaan nyt"
@@ -428,7 +425,7 @@
         "message": "Sponsori"
     },
     "category_intro": {
-        "message": "Väli/Intro Animaatio"
+        "message": "Väli- tai introanimaatio"
     },
     "category_intro_description": {
         "message": "Aikaväli ilman varsinaista sisältöä. Voi olla tauko, staattinen kehys, toistuva animaatio. Tätä ei pitäisi käyttää siirtymisiin, jotka sisältävät tietoa."

@@ -203,7 +203,7 @@
         "message": "Questa funzionalità tiene traccia dei segmenti che hai saltato, per far sapere agli utenti quanto il loro contributo abbia aiutato gli altri e sia stato utilizzato come metrica insieme ai voti positivi, per garantire che lo spam non entri nel database. L'estensione invierà un messaggio al server ogni volta che salterai un segmento. Si spera che la maggior parte delle persone non modifichino questa impostazione, in modo da non intaccare l'accuratezza dei numeri di visualizzazione. :)"
     },
     "enableQueryByHashPrefix": {
-        "message": "Query Del Prefisso di Hash"
+        "message": "Ricerca tramite prefisso hash"
     },
     "whatQueryByHashPrefix": {
         "message": "Invece di richiedere i segmenti dal server usando il videoID, i primi 4 caratteri dell'hash del videoID sono inviati. Questo server reinvierà i dati per tutti i video con hash simili."
