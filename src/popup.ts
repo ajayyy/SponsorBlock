@@ -445,36 +445,6 @@ async function runThePopup(messageListener?: MessageListener) {
         }
     }
 
-    //get the message that visually displays the video times
-    function getSponsorTimesMessage(sponsorTimes: SponsorTime[]) {
-        let sponsorTimesMessage = "";
-
-        for (let i = 0; i < sponsorTimes.length; i++) {
-            for (let s = 0; s < sponsorTimes[i].segment.length; s++) {
-                let timeMessage = getFormattedTime(sponsorTimes[i].segment[s]);
-                //if this is an end time
-                if (s == 1) {
-                    timeMessage = " " + chrome.i18n.getMessage("to") + " " + timeMessage;
-                } else if (i > 0) {
-                    //add commas if necessary
-                    timeMessage = ", " + timeMessage;
-                }
-
-                if (sponsorTimes[i].hidden === SponsorHideType.Downvoted) {
-                    //this one is downvoted
-                    timeMessage += " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
-                } else if (sponsorTimes[i].hidden === SponsorHideType.MinimumDuration) {
-                    //this one is too short
-                    timeMessage += " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
-                }
-
-                sponsorTimesMessage += timeMessage;
-            }
-        }
-
-        return sponsorTimesMessage;
-    }
-
     function submitTimes() {
         if (sponsorTimes.length > 0) {
             messageHandler.query({
