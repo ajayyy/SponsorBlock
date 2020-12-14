@@ -1275,7 +1275,7 @@ function openInfoMenu() {
 
     sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            let popup = document.createElement("div");
+            const popup = document.createElement("div");
             popup.id = "sponsorBlockPopupContainer";
 
             let htmlData = xmlhttp.responseText;
@@ -1313,10 +1313,10 @@ function openInfoMenu() {
 
             //make the logo source not 404
             //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
-            let logo = <HTMLImageElement> popup.querySelector("#sponsorBlockPopupLogo");
-            let settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
-            let edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
-            let check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
+            const logo = <HTMLImageElement> popup.querySelector("#sponsorBlockPopupLogo");
+            const settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
+            const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
+            const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
             logo.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
             settings.src = chrome.extension.getURL("icons/settings.svg");
             edit.src = chrome.extension.getURL("icons/pencil.svg");

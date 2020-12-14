@@ -241,7 +241,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
 
         //load video times for this video
-        let sponsorTimesStorage = Config.config.segmentTimes.get(currentVideoID);
+        const sponsorTimesStorage = Config.config.segmentTimes.get(currentVideoID);
         if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
             if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].segment.length < 2) {
                 startTimeChosen = true;
@@ -322,7 +322,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     function startSponsorCallback(response) {
-        let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
+        const sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
 
         if (sponsorTimes[sponsorTimesIndex] == undefined) {
             sponsorTimes[sponsorTimesIndex] = {
@@ -363,19 +363,19 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         if (request.sponsorTimes != undefined) {
 
             // Sort list by start time
-            let segmentTimes = request.sponsorTimes
+            const segmentTimes = request.sponsorTimes
                                 .sort((a, b) => a.segment[1] - b.segment[1])
                                 .sort((a, b) => a.segment[0] - b.segment[0]);
 
             //add them as buttons to the issue reporting container
-            let container = document.getElementById("issueReporterTimeButtons");
+            const container = document.getElementById("issueReporterTimeButtons");
             for (let i = 0; i < segmentTimes.length; i++) {
-                let UUID = segmentTimes[i].UUID;
+                const UUID = segmentTimes[i].UUID;
 
-                let sponsorTimeButton = document.createElement("button");
+                const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
 
-                let prefix = chrome.i18n.getMessage("category_" + segmentTimes[i].category) + ": ";
+                const prefix = chrome.i18n.getMessage("category_" + segmentTimes[i].category) + ": ";
 
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
@@ -388,13 +388,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 sponsorTimeButton.innerText = prefix + getFormattedTime(segmentTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segmentTimes[i].segment[1]) + extraInfo;
 
-                let categoryColorCircle = document.createElement("span");
+                const categoryColorCircle = document.createElement("span");
                 categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
                 categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category].color;
                 categoryColorCircle.classList.add("dot");
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
 
-                let votingButtons = document.createElement("div");
+                const votingButtons = document.createElement("div");
                 votingButtons.classList.add("votingButtons");
 
                 //thumbs up and down buttons
@@ -403,13 +403,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 voteButtonsContainer.setAttribute("align", "center");
                 voteButtonsContainer.style.display = "none"
 
-                let upvoteButton = document.createElement("img");
+                const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
                 upvoteButton.className = "voteButton";
                 upvoteButton.src = chrome.extension.getURL("icons/thumbs_up.svg");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
 
-                let downvoteButton = document.createElement("img");
+                const downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton";
                 downvoteButton.src = chrome.extension.getURL("icons/thumbs_down.svg");
@@ -425,12 +425,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 });
 
                 // Will contain request status
-                let voteStatusContainer = document.createElement("div");
+                const voteStatusContainer = document.createElement("div");
                 voteStatusContainer.id = "sponsorTimesVoteStatusContainer" + UUID;
                 voteStatusContainer.classList.add("sponsorTimesVoteStatusContainer");
                 voteStatusContainer.style.display = "none";
 
-                let thanksForVotingText = document.createElement("div");
+                const thanksForVotingText = document.createElement("div");
                 thanksForVotingText.id = "sponsorTimesThanksForVotingText" + UUID;
                 thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
                 voteStatusContainer.appendChild(thanksForVotingText);
@@ -553,13 +553,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
   
     function addVoteMessage(message, UUID) {
-        let voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
+        const voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
         voteButtonsContainer.style.display = "none";
 
-        let voteStatusContainer = document.getElementById("sponsorTimesVoteStatusContainer" + UUID);
+        const voteStatusContainer = document.getElementById("sponsorTimesVoteStatusContainer" + UUID);
         voteStatusContainer.style.removeProperty("display");
         
-        let thanksForVotingText = document.getElementById("sponsorTimesThanksForVotingText" + UUID);
+        const thanksForVotingText = document.getElementById("sponsorTimesThanksForVotingText" + UUID);
         thanksForVotingText.innerText = message;
     }
   
