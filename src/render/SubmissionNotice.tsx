@@ -2,18 +2,19 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import SubmissionNoticeComponent from "../components/SubmissionNoticeComponent";
+import { ContentContainer } from "../types";
 
 class SubmissionNotice {
     // Contains functions and variables from the content script needed by the skip notice
-    contentContainer: () => any;
+    contentContainer: () => unknown;
 
-    callback: () => any;
+    callback: () => unknown;
 
     noticeRef: React.MutableRefObject<SubmissionNoticeComponent>;
 
     noticeElement: HTMLDivElement;
 
-    constructor(contentContainer: () => any, callback: () => any) {
+    constructor(contentContainer: ContentContainer, callback: () => unknown) {
         this.noticeRef = React.createRef();
 
         this.contentContainer = contentContainer;
@@ -24,7 +25,7 @@ class SubmissionNotice {
                                 || document.getElementById("movie_player") || document.querySelector("#player-container .video-js");
         if (referenceNode == null) {
             //for embeds
-            let player = document.getElementById("player");
+            const player = document.getElementById("player");
             referenceNode = player.firstChild as HTMLElement;
             let index = 1;
 
@@ -51,11 +52,11 @@ class SubmissionNotice {
         );
     }
 
-    update() {
+    update(): void {
         this.noticeRef.current.forceUpdate();
     }
 
-    close() {
+    close(): void {
         ReactDOM.unmountComponentAtNode(this.noticeElement);
 
         this.noticeElement.remove();

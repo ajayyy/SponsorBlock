@@ -86,7 +86,7 @@
         "message": "Segment Ends Now"
     },
     "noVideoID": {
-        "message": "No YouTube video found at this tab. If you know this is a YouTube tab, close this popup and open it again. If that does not work, try reloading the tab."
+        "message": "No YouTube video found.\nIf this is incorrect, refresh the tab."
     },
     "success": {
         "message": "Success!"
@@ -122,31 +122,35 @@
         "message": "Are you sure you want to submit this?"
     },
     "whitelistChannel": {
-         "message": "Whitelist Channel"
+         "message": "Add to whitelist"
     },
     "removeFromWhitelist": {
-         "message": "Remove Channel From Whitelist"
+         "message": "Remove from whitelist"
     },
     "voteOnTime": {
          "message": "Vote On A Segment"
     },
-    "soFarUHSubmited": {
-         "message": "So far, you've submitted"
+    "Submissions": {
+         "message": "Submissions"
     },
     "savedPeopleFrom": {
-         "message": "You have saved people from "
+         "message": "You've saved people from "
     },
     "viewLeaderboard": {
-         "message": "View the leaderboard"
+         "message": "Leaderboard"
     },
     "here": {
         "message": "here"
     },
     "recordTimesDescription": {
-         "message": "Click the button below when the segment starts and ends to record and submit it to the database."
+         "message": "Submit"
+    },
+    "submissionEditHint": {
+        "message": "Section editing will appear after you click submit",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-         "message": "Hint: Press the semicolon key while focused on a video to report the start/end of a segment and quote to submit. (This can be changed in the options)"
+         "message": "Hint: You can setup keybinds for submitting in the options"
     },
     "clearTimesButton": {
         "message": "Clear Times"
@@ -156,6 +160,9 @@
     },
     "publicStats": {
         "message": "This is used on the public stats page to show off how much you've contributed. See it"
+    },
+    "Username": {
+        "message": "Username"
     },
     "setUsername": {
         "message": "Set Username"
@@ -253,10 +260,10 @@
         "message": "Connection Timeout. Check your internet connection. If your internet is working, the server is probably overloaded or down."
     },
     "disableSkipping": {
-        "message": "Disable SponsorBlock"
+        "message": "Skipping is enabled"
     },
     "enableSkipping": {
-        "message": "Enable SponsorBlock"
+        "message": "Skipping is disabled"
     },
     "yourWork": {
         "message": "Your Work",
@@ -296,7 +303,7 @@
         "message": "This time appears in brackets next to the current time on below the seekbar. This shows the total video duration minus any segments. This includes segments marked as only \"Show In Seekbar\"."
     },
     "youHaveSkipped": {
-        "message": "You have skipped "
+        "message": "You've skipped "
     },
     "youHaveSaved": {
         "message": "You have saved yourself "
@@ -314,10 +321,10 @@
         "message": "hours"
     },
     "youHaveSavedTime": {
-        "message": "You have saved people"
+        "message": "You've saved people"
     },
     "youHaveSavedTimeEnd": {
-        "message": " of their lives."
+        "message": " of their lives"
     },
     "statusReminder": {
         "message": "Check status.sponsor.ajay.app for server status."
@@ -634,5 +641,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Send a notification when you leave a video with segments that are not uploaded"
+    },
+    "help": {
+        "message": "Help"
     }
 }

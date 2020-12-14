@@ -3,6 +3,15 @@
         "message": "SponserBlock for YouTube - 動画のスポンサーセクションを自動でスキップする",
         "description": "Name of the extension."
     },
+    "channelWhitelisted": {
+        "message": "チャンネルをホワイトリストに登録しました!"
+    },
+    "Segment": {
+        "message": "セグメント"
+    },
+    "Segments": {
+        "message": "セグメント"
+    },
     "reportButtonTitle": {
         "message": "報告"
     },
@@ -18,6 +27,9 @@
     "Secs": {
         "message": "秒"
     },
+    "unskip": {
+        "message": "スキップしない"
+    },
     "success": {
         "message": "成功しました!"
     },
@@ -26,6 +38,9 @@
     },
     "closePopup": {
         "message": "ポップアップを閉じる"
+    },
+    "removeFromWhitelist": {
+        "message": "ホワイトリストからチャンネルを削除"
     },
     "viewLeaderboard": {
         "message": "リーダーボードを表示"
@@ -42,6 +57,12 @@
     "hideButtons": {
         "message": "YouTube プレイヤーにボタンを表示しない"
     },
+    "hideDeleteButton": {
+        "message": "YouTube プレイヤーから削除ボタンを隠す"
+    },
+    "showDeleteButton": {
+        "message": "YouTube プレイヤーから削除ボタンを表示する"
+    },
     "website": {
         "message": "ウェブサイト",
         "description": "Used on Firefox Store Page"
@@ -50,6 +71,12 @@
         "message": "ソースコード",
         "description": "Used on Firefox Store Page"
     },
+    "disableSkipping": {
+        "message": "SponsorBlock を無効にする"
+    },
+    "enableSkipping": {
+        "message": "SponsorBlock を有効にする"
+    },
     "errorCode": {
         "message": "エラーコード: "
     },
@@ -57,7 +84,7 @@
         "message": "スキップ"
     },
     "skip_category": {
-        "message": "スキップ {0}?"
+        "message": "{0} をスキップしますか?"
     },
     "skipped": {
         "message": "スキップしました"
@@ -67,6 +94,9 @@
     },
     "enableAutoSkip": {
         "message": "自動スキップを有効にする"
+    },
+    "audioNotification": {
+        "message": "オーディオ通知をスキップ"
     },
     "youHaveSkipped": {
         "message": "スキップしました "
@@ -83,8 +113,14 @@
     "hoursLower": {
         "message": "時間"
     },
+    "createdBy": {
+        "message": "作成者"
+    },
     "autoSkip": {
         "message": "自動スキップ"
+    },
+    "add": {
+        "message": "追加"
     },
     "customServerAddress": {
         "message": "SponsorBlock サーバーアドレス"
@@ -116,8 +152,26 @@
     "category_sponsor": {
         "message": "スポンサー"
     },
+    "category_intro": {
+        "message": "インターミッション / イントロアニメーション"
+    },
+    "category_intro_short": {
+        "message": "インターミッション"
+    },
+    "category_outro": {
+        "message": "エンドカード/クレジット"
+    },
+    "category_selfpromo": {
+        "message": "無報酬 / セルフプロモーション"
+    },
     "disable": {
         "message": "無効"
+    },
+    "manualSkip": {
+        "message": "手動スキップ"
+    },
+    "showOverlay": {
+        "message": "シークバーに表示"
     },
     "previewColor": {
         "message": "プレビューカラー",
@@ -128,6 +182,10 @@
     },
     "category": {
         "message": "カテゴリ"
+    },
+    "skipOption": {
+        "message": "スキップ オプション",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "ベータテストサーバーを有効にする"

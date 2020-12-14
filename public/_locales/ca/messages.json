@@ -1,1 +1,52 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock per YouTube - Omet els Sponsorships",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Omet els sponsorships, pregant per una subscripció i mes en videos de YouTube. Informa dels patrocinadors a els vídeos que mires per estalviar temps als altres.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "El server ha dit que aquesta sol·licitud es invalida"
+    },
+    "429": {
+        "message": "Heu enviat massa vegades patrocinadors per a aquest vídeo, esteu segur que n'hi ha tants?"
+    },
+    "409": {
+        "message": "Això ja s'ha enviat abans"
+    },
+    "channelWhitelisted": {
+        "message": "El canal és a la llista blanca!"
+    },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segments"
+    },
+    "upvoteButtonInfo": {
+        "message": "Voteu millor aquesta submissió"
+    },
+    "reportButtonTitle": {
+        "message": "Informa"
+    },
+    "reportButtonInfo": {
+        "message": "Notifiqueu que aquest enviament és incorrecte."
+    },
+    "Dismiss": {
+        "message": "Omet"
+    },
+    "Loading": {
+        "message": "Carregant..."
+    },
+    "Mins": {
+        "message": "Minuts"
+    },
+    "Secs": {
+        "message": "Segons"
+    },
+    "Hide": {
+        "message": "No mostris mai"
+    }
+}

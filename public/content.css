@@ -372,12 +372,8 @@ input::-webkit-inner-spin-button {
 	-moz-appearance: textfield;
 }
 
-.sponsorTimeEditMinutes {
-	width: 30px;
-}
-
-.sponsorTimeEditSeconds {
-	width: 60px;
+.sponsorTimeEditInput {
+	width: 90px;
 }
 
 .sponsorNowButton {

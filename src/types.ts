@@ -63,6 +63,21 @@ interface PreviewBarOption {
     opacity: string
 }
 
+
+interface Registration {
+    message: string,
+    id: string,
+    allFrames: boolean,
+    js: browser.extensionTypes.ExtensionFileOrCode[],
+    css: browser.extensionTypes.ExtensionFileOrCode[],
+    matches: string[]
+}
+
+interface BackgroundScriptContainer {
+    registerFirefoxContentScript: (opts: Registration) => void,
+    unregisterFirefoxContentScript: (id: string) => void
+}
+
 type VideoID = string;
 
 export {
@@ -74,5 +89,7 @@ export {
     SponsorTime,
     VideoID,
     SponsorHideType,
-    PreviewBarOption
+    PreviewBarOption,
+    Registration,
+    BackgroundScriptContainer
 };

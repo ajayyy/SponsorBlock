@@ -14,7 +14,7 @@ class SkipNotice {
 
     skipNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
 
-    constructor(segments: SponsorTime[], autoSkip: boolean = false, contentContainer: ContentContainer) {
+    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer) {
         this.segments = segments;
         this.autoSkip = autoSkip;
         this.contentContainer = contentContainer;
@@ -24,7 +24,7 @@ class SkipNotice {
                                 || document.getElementById("movie_player") || document.querySelector("#player-container .video-js");
         if (referenceNode == null) {
             //for embeds
-            let player = document.getElementById("player");
+            const player = document.getElementById("player");
             referenceNode = player.firstChild as HTMLElement;
             let index = 1;
 
@@ -40,7 +40,7 @@ class SkipNotice {
             referenceNode = document.querySelector("#main-panel.ytmusic-player-page");
         }
     
-        let amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
+        const amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
         //this is the suffix added at the end of every id
         let idSuffix = "";
         for (const segment of this.segments) {
@@ -63,7 +63,7 @@ class SkipNotice {
         );
     }
 
-    close() {
+    close(): void {
         ReactDOM.unmountComponentAtNode(this.noticeElement);
 
         this.noticeElement.remove();

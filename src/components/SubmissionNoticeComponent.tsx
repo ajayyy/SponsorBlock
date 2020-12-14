@@ -10,7 +10,7 @@ export interface SubmissionNoticeProps {
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
-    callback: () => any;
+    callback: () => unknown;
 
     closeListener: () => void
 }
@@ -25,7 +25,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
-    callback: () => any;
+    callback: () => unknown;
 
     noticeRef: React.MutableRefObject<NoticeComponent>;
     timeEditRefs: React.RefObject<SponsorTimeEditComponent>[];
@@ -39,7 +39,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.contentContainer = props.contentContainer;
         this.callback = props.callback;
     
-        let noticeTitle = chrome.i18n.getMessage("confirmNoticeTitle");
+        const noticeTitle = chrome.i18n.getMessage("confirmNoticeTitle");
 
         // Setup state
         this.state = {
@@ -49,7 +49,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         }
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         // Catch and rerender when the video size changes
         //TODO: Use ResizeObserver when it is supported in TypeScript
         this.videoObserver = new MutationObserver(() => {
@@ -61,13 +61,13 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         });
     }
 
-    componentWillUnmount() {
+    componentWillUnmount(): void {
         if (this.videoObserver) {
             this.videoObserver.disconnect();
         }
     }
 
-    render() {
+    render(): React.ReactElement {
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 idSuffix={this.state.idSuffix}
@@ -114,13 +114,13 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     getSponsorTimeMessages(): JSX.Element[] | JSX.Element {
-        let elements: JSX.Element[] = [];
+        const elements: JSX.Element[] = [];
         this.timeEditRefs = [];
 
-        let sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
+        const sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
 
         for (let i = 0; i < sponsorTimes.length; i++) {
-            let timeRef = React.createRef<SponsorTimeEditComponent>();
+            const timeRef = React.createRef<SponsorTimeEditComponent>();
 
             elements.push(
                 <SponsorTimeEditComponent key={i}
@@ -139,7 +139,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     getMessageBoxes(): JSX.Element[] | JSX.Element {
-        let elements: JSX.Element[] = [];
+        const elements: JSX.Element[] = [];
 
         for (let i = 0; i < this.state.messages.length; i++) {
             elements.push(
@@ -153,7 +153,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         return elements;
     }
 
-    cancel() {
+    cancel(): void {
         this.noticeRef.current.close(true);
 
         this.contentContainer().resetSponsorSubmissionNotice();
@@ -161,13 +161,13 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.props.closeListener();
     }
 
-    submit() {
+    submit(): void {
         // save all items
         for (const ref of this.timeEditRefs) {
             ref.current.saveEditTimes();
         }
 
-        let sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
+        const sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
         for (const sponsorTime of sponsorTimesSubmitting) {
             if (sponsorTime.category === "chooseACategory") {
                 alert(chrome.i18n.getMessage("youMustSelectACategory"));

@@ -1,7 +1,7 @@
 {
     "name": "__MSG_fullName__",
     "short_name": "SponsorBlock",
-    "version": "2.0.8",
+    "version": "2.0.9",
     "default_locale": "en",
     "description": "__MSG_Description__",
     "content_scripts": [{
@@ -28,6 +28,9 @@
         "icons/PlayerStopIconSponsorBlocker256px.png",
         "icons/PlayerUploadIconSponsorBlocker256px.png",
         "icons/PlayerUploadFailedIconSponsorBlocker256px.png",
+        "icons/settings.svg",
+        "icons/pencil.svg",
+        "icons/check.svg",
         "icons/upvote.png",
         "icons/downvote.png",
         "icons/thumbs_down.svg",

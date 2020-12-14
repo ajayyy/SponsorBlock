@@ -272,7 +272,7 @@
         "message": "스킵"
     },
     "skip_category": {
-        "message": "스킵 {0}?"
+        "message": "{0} 을(를) 건너뛰겠어요?"
     },
     "skipped": {
         "message": "스킵됨"
