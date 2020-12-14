@@ -1,6 +1,6 @@
 {
     "fullName": {
-        "message": "SponsorBlock pro YouTube - Přeskoč Sponzorství",
+        "message": "SponsorBlock pro YouTube - Přeskoč sponzorství",
         "description": "Name of the extension."
     },
     "Description": {
@@ -23,7 +23,7 @@
         "message": "segment"
     },
     "Segments": {
-        "message": "segmenty"
+        "message": "segmentů"
     },
     "upvoteButtonInfo": {
         "message": "Hlasovat pro tento příspěvek"
@@ -275,7 +275,7 @@
         "message": "Přeskočit {0}?"
     },
     "skipped": {
-        "message": "Přeskočeno"
+        "message": "- přeskočeno"
     },
     "disableAutoSkip": {
         "message": "Zakázat automatické přeskočení"
