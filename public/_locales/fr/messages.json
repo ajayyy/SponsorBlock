@@ -85,6 +85,9 @@
     "sponsorEnd": {
         "message": "Fin du segment"
     },
+    "noVideoID": {
+        "message": "Aucune vidéo Youtube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
+    },
     "success": {
         "message": "Succès !"
     },
@@ -118,6 +121,12 @@
     "submitCheck": {
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
     },
+    "whitelistChannel": {
+        "message": "Ajouter à la liste blanche"
+    },
+    "removeFromWhitelist": {
+        "message": "Retirer de la liste blanche"
+    },
     "voteOnTime": {
         "message": "Voter pour un segment"
     },
@@ -132,6 +141,9 @@
     },
     "publicStats": {
         "message": "Votre pseudo est inscrit dans le classement public pour afficher vos contributions. Le consulter"
+    },
+    "Username": {
+        "message": "Pseudonyme"
     },
     "setUsername": {
         "message": "Choisir un pseudonyme"
@@ -264,6 +276,9 @@
     },
     "showTimeWithSkipsDescription": {
         "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tout les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
+    },
+    "youHaveSkipped": {
+        "message": "Vous avez passé "
     },
     "youHaveSaved": {
         "message": "Vous vous êtes économisé "
