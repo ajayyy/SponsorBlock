@@ -85,6 +85,9 @@
     "sponsorEnd": {
         "message": "Segmentet slutar nu"
     },
+    "noVideoID": {
+        "message": "Hittade ingen YouTube-video.\nUppdatera fliken om detta är felaktigt."
+    },
     "success": {
         "message": "Lyckades!"
     },
@@ -118,11 +121,26 @@
     "submitCheck": {
         "message": "Är du säker på att du vill rapportera detta?"
     },
+    "whitelistChannel": {
+        "message": "Lägg till i vitlistan"
+    },
+    "removeFromWhitelist": {
+        "message": "Tag bort från vitlistan"
+    },
     "voteOnTime": {
         "message": "Rösta på ett segment"
     },
+    "savedPeopleFrom": {
+        "message": "Du har sparat andra från "
+    },
+    "viewLeaderboard": {
+        "message": "Topplista"
+    },
     "here": {
         "message": "här"
+    },
+    "recordTimesDescription": {
+        "message": "Skicka"
     },
     "clearTimesButton": {
         "message": "Rensa Tider"
@@ -132,6 +150,9 @@
     },
     "publicStats": {
         "message": "Detta kommer att användas på den publika statistiksidan för att visa hur mycket du har bidragit. Spana in den"
+    },
+    "Username": {
+        "message": "Användarnamn"
     },
     "setUsername": {
         "message": "Ange Användarnamn"
@@ -219,6 +240,12 @@
     "0": {
         "message": "Anslutningsfel. Se över din internetanslutning. Om du kan komma åt internet så är servern förmodligen överbelastad eller nere."
     },
+    "disableSkipping": {
+        "message": "Hoppa över är aktiverat"
+    },
+    "enableSkipping": {
+        "message": "Hoppa över är inaktiverat"
+    },
     "yourWork": {
         "message": "Ditt Bidrag",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -256,6 +283,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Denna tid visas inom parentes bredvid den aktuella tiden nedanför sökfältet. Detta visar den totala videons varaktighet minus alla segment. Detta inkluderar segment markerade som endast \"Visa i sökfältet\"."
     },
+    "youHaveSkipped": {
+        "message": "Du har hoppat över "
+    },
     "youHaveSaved": {
         "message": "Du har sparat "
     },
@@ -270,6 +300,12 @@
     },
     "hoursLower": {
         "message": "timmar"
+    },
+    "youHaveSavedTime": {
+        "message": "Du har sparat andra"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " av deras liv"
     },
     "statusReminder": {
         "message": "Gå till status.sponsor.ajay.app för serverstatus."
@@ -553,5 +589,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Visa en avisering när du lämnar en video med segment som inte har laddats upp"
+    },
+    "help": {
+        "message": "Hjälp"
     }
 }
