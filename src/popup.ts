@@ -584,7 +584,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             }
         });
     }
-  
+
     //converts time in seconds to minutes:seconds
     function getFormattedTime(seconds) {
         const minutes = Math.floor(seconds / 60);
@@ -715,25 +715,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         hiddenButton.style.display = "none";
     }
 
-    //converts time in seconds to minutes
-    function getTimeInMinutes(seconds) {
-        const minutes = Math.floor(seconds / 60);
-  
-        return minutes;
-    }
-  
-    //converts time in seconds to seconds past the last minute
-    function getTimeInFormattedSeconds(seconds) {
-        const minutes = seconds % 60;
-        let secondsFormatted = minutes.toFixed(3);
-  
-        if (minutes < 10) {
-            secondsFormatted = "0" + secondsFormatted;
-        }
-  
-        return secondsFormatted;
-    }
-  
     /**
      * Converts time in hours to 5h 25.1
      * If less than 1 hour, just returns minutes
