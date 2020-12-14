@@ -166,8 +166,12 @@ background-color:#ec1c1c;
   background: white;
   position: absolute;
   border-radius: 12.5px;
-  transition: transform .2s ease-out;
   box-shadow: .75px .75px 3.8px 0px rgba(50, 50, 50, 0.45);
+  transition: transform .2s ease-out;
+}
+
+.preload * {
+  transition: none !important;
 }
 
 #toggleSwitch:checked~.switchDot {

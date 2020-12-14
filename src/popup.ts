@@ -47,62 +47,52 @@ async function runThePopup(messageListener?: MessageListener) {
 
     var PageElements: any = {};
 
-    ["sponsorStart",
-    // Top toggles
-    "whitelistChannel",
-    "unwhitelistChannel",
-    "whitelistToggle",
-    "whitelistForceCheck",
-    "disableSkipping",
-    "enableSkipping",
-    "toggleSwitch",
-    // Options
-    //"showNoticeAgain",
-    "optionsButton",
-    "helpButton",
-    // More controls
-    "submitTimes",
-    //"reportAnIssue",
-    // sponsorTimesContributions
-    "sponsorTimesContributionsContainer",
-    "sponsorTimesContributionsDisplay",
-    //"sponsorTimesContributionsDisplayEndWord",
-    // sponsorTimesViewsDisplay
-    "sponsorTimesViewsContainer",
-    "sponsorTimesViewsDisplay",
-    "sponsorTimesViewsDisplayEndWord",
-    // sponsorTimesOthersTimeSaved
-    //"sponsorTimesOthersTimeSavedContainer",
-    "sponsorTimesOthersTimeSavedDisplay",
-    "sponsorTimesOthersTimeSavedEndWord",
-    // sponsorTimesSkipsDone
-    "sponsorTimesSkipsDoneContainer",
-    "sponsorTimesSkipsDoneDisplay",
-    "sponsorTimesSkipsDoneEndWord",
-    // sponsorTimeSaved
-    //"sponsorTimeSavedContainer",
-    "sponsorTimeSavedDisplay",
-    "sponsorTimeSavedEndWord",
-    // discordButtons
-    //"discordButtonContainer",
-    //"hideDiscordButton",
-    // Username
-    "setUsernameContainer",
-    "setUsernameButton",
-    "setUsernameStatusContainer",
-    "setUsernameStatus",
-    "setUsername",
-    "usernameInput",
-    "usernameValue",
-    "submitUsername",
-    // More
-    "submissionSection",
-    "mainControls",
-    "loadingIndicator",
-    "videoFound",
-    "sponsorMessageTimes",
-    //"downloadedSponsorMessageTimes",
-    "whitelistButton",
+    [
+        "sponsorblockPopup",
+        "sponsorStart",
+        // Top toggles
+        "whitelistChannel",
+        "unwhitelistChannel",
+        "whitelistToggle",
+        "whitelistForceCheck",
+        "disableSkipping",
+        "enableSkipping",
+        "toggleSwitch",
+        // Options
+        //"showNoticeAgain",
+        "optionsButton",
+        "helpButton",
+        // More controls
+        "submitTimes",
+        "sponsorTimesContributionsContainer",
+        "sponsorTimesContributionsDisplay",
+        "sponsorTimesViewsContainer",
+        "sponsorTimesViewsDisplay",
+        "sponsorTimesViewsDisplayEndWord",
+        "sponsorTimesOthersTimeSavedDisplay",
+        "sponsorTimesOthersTimeSavedEndWord",
+        "sponsorTimesSkipsDoneContainer",
+        "sponsorTimesSkipsDoneDisplay",
+        "sponsorTimesSkipsDoneEndWord",
+        "sponsorTimeSavedDisplay",
+        "sponsorTimeSavedEndWord",
+        // Username
+        "setUsernameContainer",
+        "setUsernameButton",
+        "setUsernameStatusContainer",
+        "setUsernameStatus",
+        "setUsername",
+        "usernameInput",
+        "usernameValue",
+        "submitUsername",
+        // More
+        "submissionSection",
+        "mainControls",
+        "loadingIndicator",
+        "videoFound",
+        "sponsorMessageTimes",
+        //"downloadedSponsorMessageTimes",
+        "whitelistButton",
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     //setup click listeners
@@ -114,18 +104,10 @@ async function runThePopup(messageListener?: MessageListener) {
             unwhitelistChannel();
         }
     });
-    //PageElements.whitelistChannel.addEventListener("click", whitelistChannel);
     PageElements.whitelistForceCheck.addEventListener("click", openOptions);
-    //PageElements.unwhitelistChannel.addEventListener("click", unwhitelistChannel);
     PageElements.toggleSwitch.addEventListener("change", function() {
-        if (this.checked) {
-            toggleSkipping(false);
-        } else {
-            toggleSkipping(true);
-        }
+        toggleSkipping(!this.checked);
     });
-    //PageElements.disableSkipping.addEventListener("click", () => toggleSkipping(true));
-    //PageElements.enableSkipping.addEventListener("click", () => toggleSkipping(false));
     PageElements.submitTimes.addEventListener("click", submitTimes);
     //PageElements.showNoticeAgain.addEventListener("click", showNoticeAgain);
     PageElements.setUsernameButton.addEventListener("click", setUsernameButton);
@@ -133,8 +115,6 @@ async function runThePopup(messageListener?: MessageListener) {
     PageElements.submitUsername.addEventListener("click", submitUsername);
     PageElements.optionsButton.addEventListener("click", openOptions);
     PageElements.helpButton.addEventListener("click", openHelp);
-    //PageElements.reportAnIssue.addEventListener("click", reportAnIssue);
-    //PageElements.hideDiscordButton.addEventListener("click", hideDiscordButton);
 
     //if true, the button now selects the end time
     let startTimeChosen = false;
@@ -183,11 +163,6 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //get the amount of times this user has contributed and display it to thank them
     if (Config.config.sponsorTimesContributed != undefined) {
-        /*if (Config.config.sponsorTimesContributed !== 1) {
-            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
-        } else {
-            PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-        }*/
         PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
         PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
 
@@ -254,6 +229,9 @@ async function runThePopup(messageListener?: MessageListener) {
         PageElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(Config.config.minutesSaved);
         //PageElements.sponsorTimeSavedContainer.style.display = "unset";
     }
+
+    // Must be delayed so it only happens once loaded
+    setTimeout(() => PageElements.sponsorblockPopup.classList.remove("preload"), 250);
 
     messageHandler.query({
             active: true,
@@ -896,11 +874,6 @@ async function runThePopup(messageListener?: MessageListener) {
     function displayNoVideo() {
         document.getElementById("loadingIndicator").innerText = chrome.i18n.getMessage("noVideoID");
     }
-  
-    /*function reportAnIssue() {
-        document.getElementById("issueReporterContainer").style.display = "unset";
-        //PageElements.reportAnIssue.style.display = "none";
-    }*/
   
     function addVoteMessage(message, UUID) {
         let voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
