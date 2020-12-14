@@ -12,7 +12,7 @@ const utils = new Utils();
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 
 export interface PreviewBarSegment {
-    timestamps: [number, number];
+    segment: [number, number];
     category: string;
     preview: boolean;
 }
@@ -102,8 +102,8 @@ class PreviewBar {
             let currentSegmentLength = Infinity;
 
             for (const seg of this.segments) {
-                if (seg.timestamps[0] <= timeInSeconds && seg.timestamps[1] > timeInSeconds) {
-                    const segmentLength = seg.timestamps[1] - seg.timestamps[0];
+                if (seg.segment[0] <= timeInSeconds && seg.segment[1] > timeInSeconds) {
+                    const segmentLength = seg.segment[1] - seg.segment[0];
 
                     if (segmentLength < currentSegmentLength) {
                         currentSegmentLength = segmentLength;
@@ -175,7 +175,7 @@ class PreviewBar {
         this.segments = segments;
         this.videoDuration = videoDuration;
 
-        this.segments.sort(({timestamps: a}, {timestamps: b}) => {
+        this.segments.sort(({segment: a}, {segment: b}) => {
             // Sort longer segments before short segments to make shorter segments render later
             return (b[1] - b[0]) - (a[1] - a[0]);
         }).forEach((segment) => {
@@ -185,7 +185,7 @@ class PreviewBar {
         });
     }
 
-    createBar({category, preview, timestamps}: PreviewBarSegment): HTMLLIElement {
+    createBar({category, preview, segment}: PreviewBarSegment): HTMLLIElement {
         const bar = document.createElement('li');
         bar.classList.add('previewbar');
         bar.innerHTML = '&nbsp;';
@@ -198,8 +198,8 @@ class PreviewBar {
         if (!this.onMobileYouTube) bar.style.opacity = Config.config.barTypes[barSegmentType].opacity;
 
         bar.style.position = "absolute";
-        bar.style.width = this.timeToPercentage(timestamps[1] - timestamps[0]);
-        bar.style.left = this.timeToPercentage(timestamps[0]);
+        bar.style.width = this.timeToPercentage(segment[1] - segment[0]);
+        bar.style.left = this.timeToPercentage(segment[0]);
 
         return bar;
     }
