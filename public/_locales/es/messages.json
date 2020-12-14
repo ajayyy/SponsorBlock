@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "El segmento termina ahora"
     },
-    "noVideoID": {
-        "message": "Ningún video de YouTube se encontró en esta pestaña. Si sabes que esto es una pestaña de YouTube, cierra esta ventana y ábrela otra vez. Si eso no funciona, intenta recargar la pestaña."
-    },
     "success": {
         "message": "¡Completado!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
     },
-    "whitelistChannel": {
-        "message": "Permitir Canal"
-    },
-    "removeFromWhitelist": {
-        "message": "Parar De Permitir Canal"
-    },
     "voteOnTime": {
         "message": "Vote En Un Segmento"
     },
-    "soFarUHSubmited": {
-        "message": "Hasta ahora, has enviado"
-    },
-    "savedPeopleFrom": {
-        "message": "Has salvado personas de "
-    },
-    "viewLeaderboard": {
-        "message": "Ver la tabla de clasificación"
-    },
     "here": {
         "message": "aquí"
-    },
-    "recordTimesDescription": {
-        "message": "Haga clic en el botón de abajo cuando el segmento comience y termine para grabarlo y enviarlo a la base de datos."
-    },
-    "popupHint": {
-        "message": "Pista: Presione la tecla de punto y coma mientras está enfocado en un video para indicar el comienzo/final de un segmento y citación para enviarlo. (Esto puede cambiarse en opciones)"
     },
     "clearTimesButton": {
         "message": "Eliminar Tiempos"
@@ -252,12 +228,6 @@
     "0": {
         "message": "Tiempo de espera agotado. Compruebe su conexión a Internet. Si su internet está funcionando, el servidor probablemente esta sobrecargado o desconectado."
     },
-    "disableSkipping": {
-        "message": "Desactivar SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Activar SponsorBlock"
-    },
     "yourWork": {
         "message": "Tu trabajo",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +265,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Esta duración aparece entre paréntesis junto al tiempo actual del video, debajo de la barra de navegación. Esta muestra la duración total del vídeo menos cualquier segmento eliminado. Esto incluye los segmentos marcados como solo \"Mostrar en la barra de navegación\"."
     },
-    "youHaveSkipped": {
-        "message": "Has omitido "
-    },
     "youHaveSaved": {
         "message": "Te has ahorrado "
     },
@@ -312,12 +279,6 @@
     },
     "hoursLower": {
         "message": "horas"
-    },
-    "youHaveSavedTime": {
-        "message": "Has ahorrado a otras personas"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " de sus vidas."
     },
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
