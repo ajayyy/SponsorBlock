@@ -7,7 +7,7 @@
 
 import Config from "../config";
 import Utils from "../utils";
-let utils = new Utils();
+const utils = new Utils();
 
 class PreviewBar {
 	container: HTMLUListElement;
@@ -16,9 +16,9 @@ class PreviewBar {
 	onInvidious: boolean;
 
 	timestamps: number[][];
-	types: string;
+	types: string[];
 
-	constructor(parent, onMobileYouTube, onInvidious) {
+	constructor(parent: any, onMobileYouTube: boolean, onInvidious: boolean) {
 		this.container = document.createElement('ul');
 		this.container.id = 'previewbar';
 		this.parent = parent;
@@ -31,15 +31,15 @@ class PreviewBar {
 		this.setupHoverText();
 	}
 
-	setupHoverText() {
+	setupHoverText(): void {
 		if (this.onMobileYouTube || this.onInvidious) return;
 
-		let seekBar = document.querySelector(".ytp-progress-bar-container");
+		const seekBar = document.querySelector(".ytp-progress-bar-container");
 
 		// Create label placeholder
-		let tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper");
-		let titleTooltip = document.querySelector(".ytp-tooltip-title");
-		let categoryTooltip = document.createElement("div");
+		const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper");
+		const titleTooltip = document.querySelector(".ytp-tooltip-title");
+		const categoryTooltip = document.createElement("div");
 		categoryTooltip.className = "sbHidden ytp-tooltip-title";
 		categoryTooltip.id = "sponsor-block-category-tooltip"
 
@@ -64,12 +64,12 @@ class PreviewBar {
 				return;
 			}
 
-			let tooltips = document.querySelectorAll(".ytp-tooltip-text");
+			const tooltips = document.querySelectorAll(".ytp-tooltip-text");
 			for (const tooltip of tooltips) {
-				let splitData = tooltip.textContent.split(":");
+				const splitData = tooltip.textContent.split(":");
 				if (splitData.length === 2 && !isNaN(parseInt(splitData[0])) && !isNaN(parseInt(splitData[1]))) {
 					// Add label
-					let timeInSeconds = parseInt(splitData[0]) * 60 + parseInt(splitData[1]);
+					const timeInSeconds = parseInt(splitData[0]) * 60 + parseInt(splitData[1]);
 
 					// Find category at that location
 					let category = null;
@@ -112,7 +112,7 @@ class PreviewBar {
 		});
 	}
 
-	updatePosition(parent) {
+	updatePosition(parent: any): void {
 		//below the seek bar
 		// this.parent.insertAdjacentElement("afterEnd", this.container);
 
@@ -129,15 +129,15 @@ class PreviewBar {
 		this.parent.insertAdjacentElement("afterBegin", this.container);
 	}
 
-	updateColor(segment, color, opacity) {
-		let bars = <NodeListOf<HTMLElement>> document.querySelectorAll('[data-vs-segment-type=' + segment + ']');
-		for (let bar of bars) {
+	updateColor(segment: string, color: string, opacity: string): void {
+		const bars = <NodeListOf<HTMLElement>> document.querySelectorAll('[data-vs-segment-type=' + segment + ']');
+		for (const bar of bars) {
 			bar.style.backgroundColor = color;
 			bar.style.opacity = opacity;
 		}
 	}
 
-	set(timestamps, types, duration) {
+	set(timestamps: number[][], types: string[], duration: number): void {
 		while (this.container.firstChild) {
 			this.container.removeChild(this.container.firstChild);
 		}
@@ -158,7 +158,7 @@ class PreviewBar {
 			width = (timestamps[i][1] - timestamps[i][0]) / duration * 100;
 			width = Math.floor(width * 100) / 100;
 
-			let bar = this.createBar();
+			const bar = this.createBar();
 			bar.setAttribute('data-vs-segment-type', types[i]);
 
 			bar.style.backgroundColor = Config.config.barTypes[types[i]].color;
@@ -171,14 +171,14 @@ class PreviewBar {
 		}
 	}
 
-	createBar() {
-		let bar = document.createElement('li');
+	createBar(): HTMLLIElement {
+		const bar = document.createElement('li');
 		bar.classList.add('previewbar');
 		bar.innerHTML = '&nbsp;';
 		return bar;
 	}
 
-	remove() {
+	remove(): void {
 		this.container.remove();
 		this.container = undefined;
 	}

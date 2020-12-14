@@ -2,7 +2,7 @@ import Config from "./config";
 
 import Utils from "./utils";
 import { SponsorTime, SponsorHideType } from "./types";
-var utils = new Utils();
+const utils = new Utils();
 
 interface MessageListener {
     (request: any, sender: any, callback: (response: any) => void): void;
@@ -38,14 +38,14 @@ class MessageHandler {
 }
 
 //make this a function to allow this to run on the content page
-async function runThePopup(messageListener?: MessageListener) {
-    var messageHandler = new MessageHandler(messageListener);
+async function runThePopup(messageListener?: MessageListener): Promise<void> {
+    const messageHandler = new MessageHandler(messageListener);
 
     utils.localizeHtmlPage();
 
     await utils.wait(() => Config.config !== null);
 
-    var PageElements: any = {};
+    const PageElements: any = {};
 
     [
         "sponsorblockPopup",
@@ -126,7 +126,7 @@ async function runThePopup(messageListener?: MessageListener) {
     let currentVideoID = null;
 
     //show proper disable skipping button
-    let disableSkipping = Config.config.disableSkipping;
+    const disableSkipping = Config.config.disableSkipping;
     if (disableSkipping != undefined && disableSkipping) {
         PageElements.disableSkipping.style.display = "none";
         PageElements.enableSkipping.style.display = "unset";
@@ -135,7 +135,7 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //if the don't show notice again variable is true, an option to
     //  disable should be available
-    let dontShowNotice = Config.config.dontShowNotice;
+    const dontShowNotice = Config.config.dontShowNotice;
     if (dontShowNotice != undefined && dontShowNotice) {
         PageElements.showNoticeAgain.style.display = "unset";
     }
@@ -152,13 +152,13 @@ async function runThePopup(messageListener?: MessageListener) {
         PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
 
         //get the userID
-        let userID = Config.config.userID;
+        const userID = Config.config.userID;
         if (userID != undefined) {
             //there are probably some views on these submissions then
             //get the amount of views from the sponsors submitted
             utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(response) {
                 if (response.status == 200) {
-                    let viewCount = JSON.parse(response.responseText).viewCount;
+                    const viewCount = JSON.parse(response.responseText).viewCount;
                     if (viewCount != 0) {
                         if (viewCount > 1) {
                             PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
@@ -175,7 +175,7 @@ async function runThePopup(messageListener?: MessageListener) {
             //get this time in minutes
             utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(response) {
                 if (response.status == 200) {
-                    let minutesSaved = JSON.parse(response.responseText).timeSaved;
+                    const minutesSaved = JSON.parse(response.responseText).timeSaved;
                     if (minutesSaved != 0) {
                         if (minutesSaved != 1) {
                             PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
@@ -222,15 +222,15 @@ async function runThePopup(messageListener?: MessageListener) {
     }, onTabs);
 
     function onTabs(tabs) {
-	  messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
-        if (result != undefined && result.videoID) {
-			  currentVideoID = result.videoID;
-			  loadTabData(tabs);
-        } else if (result == undefined && chrome.runtime.lastError) {
-			  //this isn't a YouTube video then, or at least the content script is not loaded
-			  displayNoVideo();
-        }
-	  });
+        messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
+            if (result != undefined && result.videoID) {
+                currentVideoID = result.videoID;
+                loadTabData(tabs);
+            } else if (result == undefined && chrome.runtime.lastError) {
+                // this isn't a YouTube video then, or at least the content script is not loaded
+                displayNoVideo();
+            }
+        });
     }
 
     function loadTabData(tabs) {
@@ -241,7 +241,7 @@ async function runThePopup(messageListener?: MessageListener) {
         }
 
         //load video times for this video
-        let sponsorTimesStorage = Config.config.segmentTimes.get(currentVideoID);
+        const sponsorTimesStorage = Config.config.segmentTimes.get(currentVideoID);
         if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
             if (sponsorTimesStorage[sponsorTimesStorage.length - 1] != undefined && sponsorTimesStorage[sponsorTimesStorage.length - 1].segment.length < 2) {
                 startTimeChosen = true;
@@ -322,7 +322,7 @@ async function runThePopup(messageListener?: MessageListener) {
     }
 
     function startSponsorCallback(response) {
-        let sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
+        const sponsorTimesIndex = sponsorTimes.length - (startTimeChosen ? 1 : 0);
 
         if (sponsorTimes[sponsorTimesIndex] == undefined) {
             sponsorTimes[sponsorTimesIndex] = {
@@ -334,7 +334,7 @@ async function runThePopup(messageListener?: MessageListener) {
 
         sponsorTimes[sponsorTimesIndex].segment[startTimeChosen ? 1 : 0] = response.time;
 
-        let localStartTimeChosen = startTimeChosen;
+        const localStartTimeChosen = startTimeChosen;
         Config.config.segmentTimes.set(currentVideoID, sponsorTimes);
 
         //send a message to the client script
@@ -363,19 +363,19 @@ async function runThePopup(messageListener?: MessageListener) {
         if (request.sponsorTimes != undefined) {
 
             // Sort list by start time
-            let segmentTimes = request.sponsorTimes
+            const segmentTimes = request.sponsorTimes
                                 .sort((a, b) => a.segment[1] - b.segment[1])
                                 .sort((a, b) => a.segment[0] - b.segment[0]);
 
             //add them as buttons to the issue reporting container
-            let container = document.getElementById("issueReporterTimeButtons");
+            const container = document.getElementById("issueReporterTimeButtons");
             for (let i = 0; i < segmentTimes.length; i++) {
-                let UUID = segmentTimes[i].UUID;
+                const UUID = segmentTimes[i].UUID;
 
-                let sponsorTimeButton = document.createElement("button");
+                const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
 
-                let prefix = chrome.i18n.getMessage("category_" + segmentTimes[i].category) + ": ";
+                const prefix = chrome.i18n.getMessage("category_" + segmentTimes[i].category) + ": ";
 
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
@@ -388,28 +388,28 @@ async function runThePopup(messageListener?: MessageListener) {
 
                 sponsorTimeButton.innerText = prefix + getFormattedTime(segmentTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segmentTimes[i].segment[1]) + extraInfo;
 
-                let categoryColorCircle = document.createElement("span");
+                const categoryColorCircle = document.createElement("span");
                 categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
                 categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category].color;
                 categoryColorCircle.classList.add("dot");
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
 
-                let votingButtons = document.createElement("div");
+                const votingButtons = document.createElement("div");
                 votingButtons.classList.add("votingButtons");
 
                 //thumbs up and down buttons
-                let voteButtonsContainer = document.createElement("div");
+                const voteButtonsContainer = document.createElement("div");
                 voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
                 voteButtonsContainer.setAttribute("align", "center");
                 voteButtonsContainer.style.display = "none"
 
-                let upvoteButton = document.createElement("img");
+                const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
                 upvoteButton.className = "voteButton";
                 upvoteButton.src = chrome.extension.getURL("icons/thumbs_up.svg");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
 
-                let downvoteButton = document.createElement("img");
+                const downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton";
                 downvoteButton.src = chrome.extension.getURL("icons/thumbs_down.svg");
@@ -425,12 +425,12 @@ async function runThePopup(messageListener?: MessageListener) {
                 });
 
                 // Will contain request status
-                let voteStatusContainer = document.createElement("div");
+                const voteStatusContainer = document.createElement("div");
                 voteStatusContainer.id = "sponsorTimesVoteStatusContainer" + UUID;
                 voteStatusContainer.classList.add("sponsorTimesVoteStatusContainer");
                 voteStatusContainer.style.display = "none";
 
-                let thanksForVotingText = document.createElement("div");
+                const thanksForVotingText = document.createElement("div");
                 thanksForVotingText.id = "sponsorTimesThanksForVotingText" + UUID;
                 thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
                 voteStatusContainer.appendChild(thanksForVotingText);
@@ -553,13 +553,13 @@ async function runThePopup(messageListener?: MessageListener) {
     }
   
     function addVoteMessage(message, UUID) {
-        let voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
+        const voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
         voteButtonsContainer.style.display = "none";
 
-        let voteStatusContainer = document.getElementById("sponsorTimesVoteStatusContainer" + UUID);
+        const voteStatusContainer = document.getElementById("sponsorTimesVoteStatusContainer" + UUID);
         voteStatusContainer.style.removeProperty("display");
         
-        let thanksForVotingText = document.getElementById("sponsorTimesThanksForVotingText" + UUID);
+        const thanksForVotingText = document.getElementById("sponsorTimesThanksForVotingText" + UUID);
         thanksForVotingText.innerText = message;
     }
   
@@ -587,15 +587,15 @@ async function runThePopup(messageListener?: MessageListener) {
   
     //converts time in seconds to minutes:seconds
     function getFormattedTime(seconds) {
-        let minutes = Math.floor(seconds / 60);
-        let secondsDisplayNumber = Math.round(seconds - minutes * 60);
+        const minutes = Math.floor(seconds / 60);
+        const secondsDisplayNumber = Math.round(seconds - minutes * 60);
         let secondsDisplay = String(secondsDisplayNumber);
         if (secondsDisplayNumber < 10) {
             //add a zero
             secondsDisplay = "0" + secondsDisplay;
         }
   
-        let formatted = minutes + ":" + secondsDisplay;
+        const formatted = minutes + ":" + secondsDisplay;
   
         return formatted;
     }
@@ -669,7 +669,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         }
 
                         //remove this channel
-                        let index = whitelistedChannels.indexOf(response.channelID);
+                        const index = whitelistedChannels.indexOf(response.channelID);
                         whitelistedChannels.splice(index, 1);
 
                         //change button
@@ -717,14 +717,14 @@ async function runThePopup(messageListener?: MessageListener) {
 
     //converts time in seconds to minutes
     function getTimeInMinutes(seconds) {
-        let minutes = Math.floor(seconds / 60);
+        const minutes = Math.floor(seconds / 60);
   
         return minutes;
     }
   
     //converts time in seconds to seconds past the last minute
     function getTimeInFormattedSeconds(seconds) {
-        let minutes = seconds % 60;
+        const minutes = seconds % 60;
         let secondsFormatted = minutes.toFixed(3);
   
         if (minutes < 10) {
@@ -742,7 +742,7 @@ async function runThePopup(messageListener?: MessageListener) {
      * @returns {string}
      */
     function getFormattedHours(minues) {
-        let hours = Math.floor(minues / 60);
+        const hours = Math.floor(minues / 60);
         return (hours > 0 ? hours + "h " : "") + (minues % 60).toFixed(1);
     }
   

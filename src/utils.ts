@@ -1,12 +1,12 @@
 import Config from "./config";
-import { CategorySelection, SponsorTime, FetchResponse } from "./types";
+import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration } from "./types";
 
 import * as CompileConfig from "../config.json";
 
 class Utils {
     
     // Contains functions needed from the background script
-    backgroundScriptContainer: any = null;
+    backgroundScriptContainer: BackgroundScriptContainer | null = null;
 
     // Used to add content scripts and CSS required
     js = [
@@ -19,24 +19,24 @@ class Utils {
         "popup.css"
     ];
 
-    constructor(backgroundScriptContainer?: any) {
+    constructor(backgroundScriptContainer?: BackgroundScriptContainer) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
     // Function that can be used to wait for a condition before returning
-    async wait(condition, timeout = 5000, check = 100) { 
+    async wait(condition: () => HTMLElement | boolean, timeout = 5000, check = 100): Promise<HTMLElement | boolean> { 
         return await new Promise((resolve, reject) => {
             setTimeout(() => reject("TIMEOUT"), timeout);
 
-            let intervalCheck = () => {
-                let result = condition();
+            const intervalCheck = () => {
+                const result = condition();
                 if (result !== false) {
                     resolve(result);
                     clearInterval(interval);
-                };
+                }
             };
 
-            let interval = setInterval(intervalCheck, check);
+            const interval = setInterval(intervalCheck, check);
             
             //run the check once first, this speeds it up a lot
             intervalCheck();
@@ -51,12 +51,12 @@ class Utils {
      * 
      * @param {CallableFunction} callback
      */
-    setupExtraSitePermissions(callback) {
+    setupExtraSitePermissions(callback: (granted: boolean) => void): void {
         // Request permission
         let permissions = ["declarativeContent"];
         if (this.isFirefox()) permissions = [];
         
-        let self = this;
+        const self = this;
 
         chrome.permissions.request({
             origins: this.getInvidiousInstancesRegex(),
@@ -79,20 +79,20 @@ class Utils {
      * 
      * For now, it is just SB.config.invidiousInstances.
      */
-    setupExtraSiteContentScripts() {
-        let self = this;
+    setupExtraSiteContentScripts(): void {
+        const self = this;
 
         if (this.isFirefox()) {
-            let firefoxJS = [];
+            const firefoxJS = [];
             for (const file of this.js) {
                 firefoxJS.push({file});
             }
-            let firefoxCSS = [];
+            const firefoxCSS = [];
             for (const file of this.css) {
                 firefoxCSS.push({file});
             }
 
-            let registration = {
+            const registration: Registration = {
                 message: "registerContentScript",
                 id: "invidious",
                 allFrames: true,
@@ -108,7 +108,7 @@ class Utils {
             }
         } else {
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
-                let conditions = [];
+                const conditions = [];
                 for (const regex of self.getInvidiousInstancesRegex()) {
                     conditions.push(new chrome.declarativeContent.PageStateMatcher({
                         pageUrl: { urlMatches: regex }
@@ -116,7 +116,7 @@ class Utils {
                 }
 
                 // Add page rule
-                let rule = {
+                const rule = {
                     id: "invidious",
                     conditions,
                     // This API is experimental and not visible by the TypeScript compiler
@@ -135,9 +135,9 @@ class Utils {
     /**
      * Removes the permission and content script registration.
      */
-    removeExtraSiteRegistration() {
+    removeExtraSiteRegistration(): void {
         if (this.isFirefox()) {
-            let id = "invidious";
+            const id = "invidious";
 
             if (this.backgroundScriptContainer) {
                 this.backgroundScriptContainer.unregisterFirefoxContentScript(id);
@@ -163,7 +163,7 @@ class Utils {
      * @param sponsorTimes 
      */
     getSegmentsFromSponsorTimes(sponsorTimes: SponsorTime[]): number[][] {
-        let segments: number[][] = [];
+        const segments: number[][] = [];
         for (const sponsorTime of sponsorTimes) {
             segments.push(sponsorTime.segment);
         }
@@ -193,19 +193,19 @@ class Utils {
         }
     }
 
-    localizeHtmlPage() {
+    localizeHtmlPage(): void {
         //Localize by replacing __MSG_***__ meta tags
-        var objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
-        for (var j = 0; j < objects.length; j++) {
-            var obj = objects[j];
+        const objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
+        for (let j = 0; j < objects.length; j++) {
+            const obj = objects[j];
             
-            let localizedMessage = this.getLocalizedMessage(obj.innerHTML.toString());
+            const localizedMessage = this.getLocalizedMessage(obj.innerHTML.toString());
             if (localizedMessage) obj.innerHTML = localizedMessage;
         }
     }
 
-    getLocalizedMessage(text) {
-        var valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
+    getLocalizedMessage(text: string): string | false {
+        const valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
             return v1 ? chrome.i18n.getMessage(v1) : "";
         });
 
@@ -219,8 +219,8 @@ class Utils {
     /**
      * @returns {String[]} Invidious Instances in regex form
      */
-    getInvidiousInstancesRegex() {
-        var invidiousInstancesRegex = [];
+    getInvidiousInstancesRegex(): string[] {
+        const invidiousInstancesRegex: string[] = [];
         for (const url of Config.config.invidiousInstances) {
             invidiousInstancesRegex.push("https://*." + url + "/*");
             invidiousInstancesRegex.push("http://*." + url + "/*");
@@ -229,11 +229,11 @@ class Utils {
         return invidiousInstancesRegex;
     }
 
-    generateUserID(length = 36) {
-        let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    generateUserID(length = 36): string {
+        const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         let result = "";
         if (window.crypto && window.crypto.getRandomValues) {
-                let values = new Uint32Array(length);
+                const values = new Uint32Array(length);
                 window.crypto.getRandomValues(values);
                 for (let i = 0; i < length; i++) {
                         result += charset[values[i] % charset.length];
@@ -253,7 +253,7 @@ class Utils {
      * @param {int} statusCode 
      * @returns {string} errorMessage
      */
-    getErrorMessage(statusCode) {
+    getErrorMessage(statusCode: number): string {
         let errorMessage = "";
                             
         if([400, 429, 409, 502, 0].includes(statusCode)) {
@@ -298,7 +298,7 @@ class Utils {
      * @param callback 
      */    
     async asyncRequestToServer(type: string, address: string, data = {}): Promise<FetchResponse> {
-        let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+        const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
         return await (this.asyncRequestToCustomServer(type, serverAddress + address, data));
     }
@@ -310,8 +310,8 @@ class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */
-    sendRequestToServer(type: string, address: string, callback?: (response: FetchResponse) => void) {
-        let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+    sendRequestToServer(type: string, address: string, callback?: (response: FetchResponse) => void): void {
+        const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
         // Ask the background script to do the work
         chrome.runtime.sendMessage({
@@ -324,15 +324,15 @@ class Utils {
     }
 
     getFormattedTime(seconds: number, precise?: boolean): string {
-        let hours = Math.floor(seconds / 60 / 60);
-        let minutes = Math.floor(seconds / 60) % 60;
+        const hours = Math.floor(seconds / 60 / 60);
+        const minutes = Math.floor(seconds / 60) % 60;
         let minutesDisplay = String(minutes);
         let secondsNum = seconds % 60;
         if (!precise) {
             secondsNum = Math.floor(secondsNum);
         }
 
-        let secondsDisplay: string = String(precise ? secondsNum.toFixed(3) : secondsNum);
+        let secondsDisplay = String(precise ? secondsNum.toFixed(3) : secondsNum);
         
         if (secondsNum < 10) {
             //add a zero
@@ -343,7 +343,7 @@ class Utils {
             minutesDisplay = "0" + minutesDisplay;
         }
 
-        let formatted = (hours ? hours + ":" : "") + minutesDisplay + ":" + secondsDisplay;
+        const formatted = (hours ? hours + ":" : "") + minutesDisplay + ":" + secondsDisplay;
 
         return formatted;
     }

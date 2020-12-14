@@ -1,17 +1,18 @@
 import * as CompileConfig from "../config.json";
 
 import Config from "./config";
+import { Registration } from "./types";
 // Make the config public for debugging purposes
 (<any> window).SB = Config;
 
 import Utils from "./utils";
-var utils = new Utils({
+const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
 });
 
 // Used only on Firefox, which does not support non persistent background pages.
-var contentScriptRegistrations = {};
+const contentScriptRegistrations = {};
 
 // Register content script if needed
 if (utils.isFirefox()) {
@@ -58,6 +59,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
                     iconUrl: "./icons/LogoSponsorBlocker256px.png"
                 });
             }
+            break;
         case "registerContentScript": 
             registerFirefoxContentScript(request);
             return false;
@@ -93,8 +95,8 @@ chrome.runtime.onInstalled.addListener(function (object) {
  * 
  * @param {JSON} options 
  */
-function registerFirefoxContentScript(options) {
-    let oldRegistration = contentScriptRegistrations[options.id];
+function registerFirefoxContentScript(options: Registration) {
+    const oldRegistration = contentScriptRegistrations[options.id];
     if (oldRegistration) oldRegistration.unregister();
 
     browser.contentScripts.register({
@@ -124,10 +126,10 @@ async function submitVote(type: number, UUID: string, category: string) {
         Config.config.userID = userID;
     }
 
-    let typeSection = (type !== undefined) ? "&type=" + type : "&category=" + category;
+    const typeSection = (type !== undefined) ? "&type=" + type : "&category=" + category;
 
     //publish this vote
-    let response = await asyncRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection);
+    const response = await asyncRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection);
 
     if (response.ok) {
         return {
@@ -149,7 +151,7 @@ async function submitVote(type: number, UUID: string, category: string) {
 }
 
 async function asyncRequestToServer(type: string, address: string, data = {}) {
-    let serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+    const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
     return await (sendRequestToCustomServer(type, serverAddress + address, data));
 }
@@ -165,8 +167,8 @@ async function sendRequestToCustomServer(type: string, url: string, data = {}) {
     // If GET, convert JSON to parameters
     if (type.toLowerCase() === "get") {
         for (const key in data) {
-            let seperator = url.includes("?") ? "&" : "?";
-            let value = (typeof(data[key]) === "string") ? data[key]: JSON.stringify(data[key]);
+            const seperator = url.includes("?") ? "&" : "?";
+            const value = (typeof(data[key]) === "string") ? data[key]: JSON.stringify(data[key]);
             url += seperator + key + "=" + value;
         }
 
