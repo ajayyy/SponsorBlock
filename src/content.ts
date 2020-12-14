@@ -807,10 +807,10 @@ function getYouTubeVideoID(url: string) {
         return id.length == 11 ? id : false;
     } else if ((match = urlObject.pathname.match(/^\/(?:youtube.com\/)?(?:embed|youtu.be)\/([^&\/]{11})/))) {
         return match[1];
-    } else if (urlObject.pathname.includes("/tv/") && (match = urlObject.hash.match(/^#\/watch\?(.*)&v=([^&\/]{11})/))) {
-        return match[2];
+    } else if (urlObject.pathname.includes("/tv/") && (match = urlObject.hash.match(/^#\/watch\?(?:.*)&v=([^&\/]{11})/))) {
+        return match[1];
     }
-    
+
     return false;
 }
 
