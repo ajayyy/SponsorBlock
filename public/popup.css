@@ -17,9 +17,8 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  width: calc(100% - 6px);
-  height: calc(100% - 22px);
-  padding: 22px 3px 0;
+  width: 330px;
+  margin: 22px;
   text-align: center;
 }
 
