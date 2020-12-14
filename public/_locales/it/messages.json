@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Il Segmento Termina Ora"
     },
-    "noVideoID": {
-        "message": "Probabilmente questa non è una scheda di YouTube, oppure hai cliccato troppo presto. \nSe sei sicuro di essere in una scheda di YouTube,\n riapri questo popup."
-    },
     "success": {
         "message": "Successo!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
     },
-    "whitelistChannel": {
-        "message": "Aggiungi Canale alla Whitelist"
-    },
-    "removeFromWhitelist": {
-        "message": "Rimuovi Canale dalla Whitelist"
-    },
     "voteOnTime": {
         "message": "Vota un Segmento"
     },
-    "soFarUHSubmited": {
-        "message": "Fino ad ora hai inviato"
-    },
-    "savedPeopleFrom": {
-        "message": "Hai salvato le persone da "
-    },
-    "viewLeaderboard": {
-        "message": "Guarda la classifica"
-    },
     "here": {
         "message": "qui"
-    },
-    "recordTimesDescription": {
-        "message": "Premi il pulsante in basso quando il segmento inizia e finisce per registrarlo ed inviarlo al database."
-    },
-    "popupHint": {
-        "message": "Suggerimento: Premi il pulsante 'punto e virgola' mentre sei concentrato su un video, per segnalare l'inizio e la fine di un segmento e la relativa citazione da inviare. (Questo può essere modificato nelle opzioni)"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -206,13 +182,13 @@
         "message": "Ricerca tramite prefisso hash"
     },
     "whatQueryByHashPrefix": {
-        "message": "Invece di richiedere i segmenti dal server usando il videoID, i primi 4 caratteri dell'hash del videoID sono inviati. Questo server reinvierà i dati per tutti i video con hash simili."
+        "message": "Invece di richiedere segmenti dal server utilizzando l'Id video, vengono inviati i primi 4 caratteri dell'hash dell'ID video. Questo server invierà i dati per tutti i video con hash simili."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Riprendi Segmenti Sui Nuovi Video"
+        "message": "Ricarica I Segmenti Su Nuovi Video"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Se il video è nuovo e non ci sono segmenti al suo interno, continuerà a recuperare ogni qualche minuto mentre lo guardi."
+        "message": "Se il video è nuovo, e non risultano esserci segmenti, questi continueranno ad essere ricaricati dopo pochi minuti mentre guardi il video."
     },
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
@@ -252,12 +228,6 @@
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
     },
-    "disableSkipping": {
-        "message": "Disabilita SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Abilita SponsorBlock"
-    },
     "yourWork": {
         "message": "Il Tuo Lavoro",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +265,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Questo tempo appare tra parentesi accanto al tempo attuale sotto alla barra di progresso. Questo mostra la durata totale del video meno gli spezzoni. Include spezzoni marcati come \"Mostra solo nella barra di progresso\"."
     },
-    "youHaveSkipped": {
-        "message": "Hai saltato "
-    },
     "youHaveSaved": {
         "message": "Ti sei salvato "
     },
@@ -312,12 +279,6 @@
     },
     "hoursLower": {
         "message": "ore"
-    },
-    "youHaveSavedTime": {
-        "message": "Hai salvato alle persone"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " delle loro vite."
     },
     "statusReminder": {
         "message": "Controlla status.sponsor.ajay.app per lo stato del server."
