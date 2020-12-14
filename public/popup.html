@@ -39,14 +39,13 @@
         <div id="whitelistButton" class="hidden bottomSpace" title="__MSG_forceChannelCheckPopup__">
           <input type="checkbox" style="display:none;" id="whitelistToggle">
           <label for="whitelistToggle" class="whitelistToggleText">
-            <svg viewBox="0 0 24 24" width="16" height="16">
-              <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
-            </svg>
+            <div class="SBWhitelistIconContainer">
+              <svg viewBox="0 0 24 24" width="16" height="16" class="SBWhitelistIcon">
+                <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
+              </svg>
+            </div>
             <p id="whitelistChannel">__MSG_whitelistChannel__</p>
             <p id="unwhitelistChannel" style="display: none">__MSG_removeFromWhitelist__</p>
-            <div id="whitelistForceCheck" style="text-decoration: underline; cursor: pointer;display: none">
-              __MSG_forceChannelCheckPopup__
-            </div>
           </label>
         </div>
         <button id="optionsButton" title="__MSG_optionsInfo__">
@@ -55,6 +54,11 @@
         </button>
       </div>
     </div>
+
+    <div id="whitelistForceCheck" class="hidden">
+      __MSG_forceChannelCheckPopup__
+    </div>
+
     <div id="mainControls" style="display: none">
       <p class="sbHeader sbSubHeader">
         __MSG_recordTimesDescription__

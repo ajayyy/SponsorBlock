@@ -199,6 +199,14 @@ background-color:#ec1c1c;
   margin-bottom: 2px !important;
 }
 
+#whitelistForceCheck {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: large;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
 .sbHeader {
   margin-bottom: 5px !important;
 }
@@ -248,14 +256,16 @@ background-color:#ec1c1c;
   font-size: 16px;
 }
 
-#whitelistButton > label > svg {
+.SBWhitelistIcon {
   min-width: 16px;
   min-height: 16px;
   margin-top: auto;
   margin-bottom: auto;
+
+  height: 100%;
 }
 
-label>svg>path {
+.SBWhitelistIcon>path {
   fill: var(--sb-main-fg-color);
 }
 
@@ -267,8 +277,7 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
   text-align: start;
 }
 
-
-.grayedOut>label>svg>path {
+.grayedOut>.SBWhitelistIcon>path {
   fill: var(--sb-gray-fg-color);
 }
 
@@ -276,11 +285,11 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
   color: var(--sb-gray-fg-color);
 }
 
-label>svg.rotated {
+.SBWhitelistIcon.rotated {
   transform: rotate(45deg);
 }
 
-label>svg, button#optionsButton>img, .logoText>img, #usernameValue {
+.SBWhitelistIconContainer, button#optionsButton>img, .logoText>img, #usernameValue {
   margin-right: 8px;
 }
 

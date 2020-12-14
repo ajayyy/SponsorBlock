@@ -339,7 +339,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         PageElements.whitelistChannel.style.display = "none";
                         PageElements.unwhitelistChannel.style.display = "unset";
                         PageElements.whitelistToggle.checked = true;
-                        document.querySelectorAll('label > svg')[0].classList.add("rotated");
+                        document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
                     }
                 });
             }
@@ -972,9 +972,9 @@ async function runThePopup(messageListener?: MessageListener) {
                     //change button
                     PageElements.whitelistChannel.style.display = "none";
                     PageElements.unwhitelistChannel.style.display = "unset";
-                    document.querySelectorAll('label > svg')[0].classList.add("rotated");
+                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
 
-                    if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.style.display = "unset";
+                    if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
 
                     //save this
                     Config.config.whitelistedChannels = whitelistedChannels;
@@ -1019,10 +1019,7 @@ async function runThePopup(messageListener?: MessageListener) {
                         //change button
                         PageElements.whitelistChannel.style.display = "unset";
                         PageElements.unwhitelistChannel.style.display = "none";
-                        document.querySelectorAll('label > svg')[0].classList.remove("rotated");
-
-                        //PageElements.downloadedSponsorMessageTimes.innerText = "";
-                        //PageElements.downloadedSponsorMessageTimes.style.fontWeight = "unset";
+                        document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
 
                         //save this
                         Config.config.whitelistedChannels = whitelistedChannels;
