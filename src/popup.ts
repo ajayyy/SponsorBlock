@@ -125,21 +125,6 @@ async function runThePopup(messageListener?: MessageListener) {
     //current video ID of this tab
     let currentVideoID = null;
 
-    //see if discord link can be shown
-    let hideDiscordLink = Config.config.hideDiscordLink;
-    if (hideDiscordLink == undefined || !hideDiscordLink) {
-            let hideDiscordLaunches = Config.config.hideDiscordLaunches;
-            //only if less than 10 launches
-            if (hideDiscordLaunches == undefined || hideDiscordLaunches < 10) {
-                //PageElements.discordButtonContainer.style.display = null;
-
-                if (hideDiscordLaunches == undefined) {
-                    hideDiscordLaunches = 1;
-                }
-                Config.config.hideDiscordLaunches = hideDiscordLaunches + 1;
-            }
-    }
-
     //show proper disable skipping button
     let disableSkipping = Config.config.disableSkipping;
     if (disableSkipping != undefined && disableSkipping) {
@@ -199,7 +184,6 @@ async function runThePopup(messageListener?: MessageListener) {
                         }
 
                         PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                        //PageElements.sponsorTimesOthersTimeSavedContainer.style.display = "unset";
                     }
                 }
             });
@@ -1072,10 +1056,6 @@ async function runThePopup(messageListener?: MessageListener) {
 }
 
 if (chrome.tabs != undefined) {
-    //add the width restriction (because Firefox)
-    let link = <HTMLLinkElement> document.getElementById("sponsorBlockStyleSheet");
-    //(<CSSStyleSheet> link.sheet).insertRule('.popupBody { width: 325 }', 0);
-
     //this means it is actually opened in the popup
     runThePopup();
 }

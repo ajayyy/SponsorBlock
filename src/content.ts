@@ -1283,8 +1283,6 @@ function openInfoMenu() {
             htmlData = htmlData.replace(/<body/gi, "<div");
             htmlData = htmlData.replace(/<\/body/gi, "</div");
 
-            console.log(htmlData)
-
             popup.innerHTML = htmlData;
 
             //close button

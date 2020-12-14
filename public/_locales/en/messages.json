@@ -130,8 +130,8 @@
     "voteOnTime": {
          "message": "Vote On A Segment"
     },
-    "soFarUHSubmited": {
-         "message": "Submissions:"
+    "Submissions": {
+         "message": "Submissions"
     },
     "savedPeopleFrom": {
          "message": "You've saved people from "
@@ -150,7 +150,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-         "message": "Hint: Press the semicolon key while focused on a video to report the start/end of a segment and quote to submit."
+         "message": "Hint: You can setup keybinds for submitting in the options"
     },
     "clearTimesButton": {
         "message": "Clear Times"
@@ -162,7 +162,7 @@
         "message": "This is used on the public stats page to show off how much you've contributed. See it"
     },
     "Username": {
-        "message": "Username:"
+        "message": "Username"
     },
     "setUsername": {
         "message": "Set Username"
