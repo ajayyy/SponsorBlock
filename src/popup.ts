@@ -340,9 +340,6 @@ async function runThePopup(messageListener?: MessageListener) {
                         PageElements.unwhitelistChannel.style.display = "unset";
                         PageElements.whitelistToggle.checked = true;
                         document.querySelectorAll('label > svg')[0].classList.add("rotated");
-
-                        //PageElements.downloadedSponsorMessageTimes.innerText = chrome.i18n.getMessage("channelWhitelisted");
-                        //PageElements.downloadedSponsorMessageTimes.style.fontWeight = "bold";
                     }
                 });
             }
@@ -412,8 +409,12 @@ async function runThePopup(messageListener?: MessageListener) {
             //add them as buttons to the issue reporting container
             let container = document.getElementById("issueReporterTimeButtons");
             for (let i = 0; i < segmentTimes.length; i++) {
+                let UUID = segmentTimes[i].UUID;
+
                 let sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
+
+                let prefix = chrome.i18n.getMessage("category_" + segmentTimes[i].category) + ": ";
 
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
@@ -424,12 +425,16 @@ async function runThePopup(messageListener?: MessageListener) {
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
-                sponsorTimeButton.innerText = getFormattedTime(segmentTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segmentTimes[i].segment[1]) + extraInfo;
+                sponsorTimeButton.innerText = prefix + getFormattedTime(segmentTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segmentTimes[i].segment[1]) + extraInfo;
+
+                let categoryColorCircle = document.createElement("span");
+                categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
+                categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category].color;
+                categoryColorCircle.classList.add("dot");
+                categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
 
                 let votingButtons = document.createElement("div");
                 votingButtons.classList.add("votingButtons");
-
-                let UUID = segmentTimes[i].UUID;
 
                 //thumbs up and down buttons
                 let voteButtonsContainer = document.createElement("div");
@@ -469,6 +474,7 @@ async function runThePopup(messageListener?: MessageListener) {
                 thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
                 voteStatusContainer.appendChild(thanksForVotingText);
 
+                votingButtons.append(categoryColorCircle);
                 votingButtons.append(sponsorTimeButton);
                 votingButtons.append(voteButtonsContainer);
                 votingButtons.append(voteStatusContainer);
