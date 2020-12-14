@@ -1125,7 +1125,7 @@ async function createButtons(): Promise<boolean> {
     let createdButton = false;
 
     // Add button if does not already exist in html
-    createdButton = createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png") || createdButton;	  
+    createdButton = createButton("startSponsor", "sponsorStart", startSponsorClicked, "PlayerStartIconSponsorBlocker256px.png") || createdButton;
     createdButton = createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png") || createdButton;
     createdButton = createButton("delete", "clearTimes", clearSponsorTimes, "PlayerDeleteIconSponsorBlocker256px.png") || createdButton;
     createdButton = createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png") || createdButton;
@@ -1275,9 +1275,17 @@ function openInfoMenu() {
 
     sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var popup = document.createElement("div");
+            let popup = document.createElement("div");
             popup.id = "sponsorBlockPopupContainer";
-            popup.innerHTML = xmlhttp.responseText
+
+            let htmlData = xmlhttp.responseText;
+            // Hack to replace head data (title, favicon)
+            htmlData = htmlData.replace(/<head>[\S\s]*<\/head>/gi, "");
+            // Hack to replace body tag with div
+            htmlData = htmlData.replace(/<body/gi, "<div");
+            htmlData = htmlData.replace(/<\/body/gi, "</div");
+
+            popup.innerHTML = htmlData;
 
             //close button
             let closeButton = document.createElement("div");
@@ -1302,16 +1310,18 @@ function openInfoMenu() {
                 //old youtube theme
                 parentNode = document.getElementById("watch7-sidebar-contents");
             }
-                
 
             //make the logo source not 404
             //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
             let logo = <HTMLImageElement> popup.querySelector("#sponsorBlockPopupLogo");
+            let settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
+            let edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
+            let check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
             logo.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
-
-            //remove the style sheet and font that are not necessary
-            popup.querySelector("#sponsorBlockPopupFont").remove();
-            popup.querySelector("#sponsorBlockStyleSheet").remove();
+            settings.src = chrome.extension.getURL("icons/settings.svg");
+            edit.src = chrome.extension.getURL("icons/pencil.svg");
+            check.src = chrome.extension.getURL("icons/check.svg");
+            check.src = chrome.extension.getURL("icons/thumb.svg");
 
             parentNode.insertBefore(popup, parentNode.firstChild);
 
