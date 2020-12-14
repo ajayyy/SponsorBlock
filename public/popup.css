@@ -7,7 +7,7 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 #sponsorblockPopup {
@@ -329,6 +329,12 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
   border: white 1px solid;
   color: var(--sb-main-fg-color);
   width: calc(100% - 24px);
+
+  text-overflow: ellipsis;
+}
+
+#setUsername.SBExpanded {
+  width: 200%;
 }
 
 /* footer */

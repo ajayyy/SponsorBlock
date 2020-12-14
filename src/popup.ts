@@ -188,8 +188,8 @@ async function runThePopup(messageListener?: MessageListener) {
         } else {
             PageElements.sponsorTimesContributionsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
         }*/
-        PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed;
-        PageElements.sponsorTimesContributionsContainer.style.display = "flex";
+        PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
+        PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
 
         //get the userID
         let userID = Config.config.userID;
@@ -206,7 +206,7 @@ async function runThePopup(messageListener?: MessageListener) {
                             PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                         }
 
-                        PageElements.sponsorTimesViewsDisplay.innerText = viewCount;
+                        PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
                         PageElements.sponsorTimesViewsContainer.style.display = "unset";
                     }
                 }
@@ -239,7 +239,7 @@ async function runThePopup(messageListener?: MessageListener) {
             PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segment");
         }
 
-        PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount;
+        PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount.toLocaleString();
         PageElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
     }
 
@@ -856,8 +856,11 @@ async function runThePopup(messageListener?: MessageListener) {
 
         PageElements.setUsernameContainer.style.display = "none";
         PageElements.setUsername.style.display = "flex";
+        PageElements.setUsername.classList.add("SBExpanded");
         
         PageElements.setUsernameStatusContainer.style.display = "none";
+
+        PageElements.sponsorTimesContributionsContainer.classList.add("hidden");
     }
 
     //submit the new username
@@ -873,9 +876,12 @@ async function runThePopup(messageListener?: MessageListener) {
                 PageElements.usernameInput.style.display = "none";
 
                 PageElements.setUsernameContainer.style.removeProperty("display");
+                PageElements.setUsername.classList.remove("SBExpanded");
                 PageElements.usernameValue.innerText = PageElements.usernameInput.value;
 
                 PageElements.setUsernameStatusContainer.style.display = "none";
+
+                PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
             } else {
                 PageElements.setUsernameStatus.innerText = utils.getErrorMessage(response.status);
             }
