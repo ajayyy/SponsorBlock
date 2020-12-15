@@ -206,7 +206,7 @@ class Utils {
 
     getLocalizedMessage(text: string): string | false {
         const valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
-            return v1 ? chrome.i18n.getMessage(v1) : "";
+            return v1 ? chrome.i18n.getMessage(v1).replace("\n", "<br/>") : "";
         });
 
         if(valNewH != text) {

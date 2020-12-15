@@ -375,7 +375,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
 
-                const prefix = chrome.i18n.getMessage("category_" + segmentTimes[i].category) + ": ";
+                const prefix = utils.shortCategoryName(segmentTimes[i].category) + ": ";
 
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
