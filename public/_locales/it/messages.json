@@ -121,12 +121,6 @@
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
     },
-    "whitelistChannel": {
-        "message": "Aggiungi alla whitelist"
-    },
-    "removeFromWhitelist": {
-        "message": "Rimuovi dalla whitelist"
-    },
     "voteOnTime": {
         "message": "Vota un Segmento"
     },

@@ -121,14 +121,11 @@
     "submitCheck": {
         "message": "Вы уверены, что хотите отправить эту информацию?"
     },
-    "whitelistChannel": {
-        "message": "Добавить в белый список"
-    },
-    "removeFromWhitelist": {
-        "message": "Удалить из белого списка"
-    },
     "voteOnTime": {
         "message": "Проголосовать за сегмент"
+    },
+    "Submissions": {
+        "message": "Отправлено сегментов"
     },
     "savedPeopleFrom": {
         "message": "Вы помогли людям пропустить "

@@ -121,12 +121,6 @@
     "submitCheck": {
         "message": "Opravdu to chcete odeslat?"
     },
-    "whitelistChannel": {
-        "message": "Přidat do výjimek"
-    },
-    "removeFromWhitelist": {
-        "message": "Odebrat z výjimek"
-    },
     "voteOnTime": {
         "message": "Hlasovat pro segment"
     },

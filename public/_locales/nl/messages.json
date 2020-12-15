@@ -122,10 +122,10 @@
         "message": "Weet u zeker dat u dit wilt indienen?"
     },
     "whitelistChannel": {
-        "message": "Toevoegen aan whitelist"
+        "message": "Kanaal whitelisten"
     },
     "removeFromWhitelist": {
-        "message": "Verwijderen van whitelist"
+        "message": "Kanaal verwijderen van whitelist"
     },
     "voteOnTime": {
         "message": "Stemmen op een segment"
