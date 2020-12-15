@@ -589,6 +589,8 @@ async function sponsorsLookup(id: string) {
             }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
+        // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
+        video.addEventListener('videoSpeed_ratechange', () => startSponsorSchedule());
         video.addEventListener('pause', () => {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
