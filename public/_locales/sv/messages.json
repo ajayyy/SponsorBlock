@@ -121,12 +121,6 @@
     "submitCheck": {
         "message": "Är du säker på att du vill rapportera detta?"
     },
-    "whitelistChannel": {
-        "message": "Lägg till i vitlistan"
-    },
-    "removeFromWhitelist": {
-        "message": "Tag bort från vitlistan"
-    },
     "voteOnTime": {
         "message": "Rösta på ett segment"
     },
