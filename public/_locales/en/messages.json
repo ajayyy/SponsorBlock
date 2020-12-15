@@ -122,10 +122,10 @@
         "message": "Are you sure you want to submit this?"
     },
     "whitelistChannel": {
-         "message": "Add to whitelist"
+         "message": "Whitelist channel"
     },
     "removeFromWhitelist": {
-         "message": "Remove from whitelist"
+         "message": "Remove channel from whitelist"
     },
     "voteOnTime": {
          "message": "Vote On A Segment"
