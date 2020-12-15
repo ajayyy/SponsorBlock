@@ -122,10 +122,10 @@
         "message": "Czy na pewno chcesz to zamieścić?"
     },
     "whitelistChannel": {
-        "message": "Dodaj do białej listy"
+        "message": "Dodaj kanał do wyjątków"
     },
     "removeFromWhitelist": {
-        "message": "Usuń z białej listy"
+        "message": "Usuń kanał z listy wyjątków"
     },
     "voteOnTime": {
         "message": "Oceń segment"
