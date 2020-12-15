@@ -242,9 +242,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (!Config.config.categorySelections.some((category) => category.name === event.target.value)) {
             const chosenCategory = event.target.value;
             event.target.value = DEFAULT_CATEGORY;
-
+            
             // Alert that they have to enable this category first
-            alert(chrome.i18n.getMessage("enableThisCategoryFirst").replace("{0}", chosenCategory));
+            alert(chrome.i18n.getMessage("enableThisCategoryFirst").replace("{0}", chrome.i18n.getMessage("category_" + chosenCategory)));
 
             // Open options page
             chrome.runtime.sendMessage({"message": "openConfig"});
