@@ -53,6 +53,9 @@ let durationListenerSetUp = false;
 // Is the video currently being switched
 let switchingVideos = null;
 
+// Made true every videoID change
+let firstEvent = false;
+
 // Used by the play and playing listeners to make sure two aren't
 // called at the same time
 let lastCheckTime = 0;
@@ -244,6 +247,8 @@ function resetValues() {
         switchingVideos = true;
     }
 
+    firstEvent = true;
+
     // Reset advert playing flag
     isAdPlaying = false;
 }
@@ -410,7 +415,7 @@ function createPreviewBar(): void {
  * Triggered every time the video duration changes.
  * This happens when the resolution changes or at random time to clear memory.
  */
-function durationChangeListener() {
+function durationChangeListener(): void {
     updateAdFlag();
     updatePreviewBar();
 }
@@ -544,6 +549,12 @@ async function sponsorsLookup(id: string) {
 
         video.addEventListener('play', () => {
             switchingVideos = false;
+
+            // If it is not the first event, then the only way to get to 0 is if there is a seek event
+            // This check makes sure that changing the video resolution doesn't cause the extension to think it
+            // gone back to the begining
+            if (!firstEvent && video.currentTime === 0) return;
+            firstEvent = false;
 
             // Check if an ad is playing
             updateAdFlag();
@@ -804,7 +815,7 @@ function updatePreviewBarPositionMobile(parent: Element) {
     }
 }
 
-function updatePreviewBar() {
+function updatePreviewBar(): void {
     if(isAdPlaying) {
         previewBar.set([], [], 0);
         return;
@@ -1595,7 +1606,7 @@ function sendRequestToCustomServer(type, fullAddress, callback) {
 /**
  * Update the isAdPlaying flag and hide preview bar/controls if ad is playing
  */
-function updateAdFlag() {
+function updateAdFlag(): void {
     const wasAdPlaying = isAdPlaying;
     isAdPlaying = document.getElementsByClassName('ad-showing').length > 0;
 
