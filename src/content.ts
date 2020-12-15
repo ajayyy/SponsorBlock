@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -25,7 +25,7 @@ let sponsorTimes: SponsorTime[] = null;
 let sponsorVideoID: VideoID = null;
 
 // JSON video info 
-let videoInfo: any = null;
+let videoInfo: VideoInfo = null;
 //the channel this video is about
 let channelID;
 
