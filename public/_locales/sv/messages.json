@@ -121,8 +121,14 @@
     "submitCheck": {
         "message": "Är du säker på att du vill rapportera detta?"
     },
+    "removeFromWhitelist": {
+        "message": "Ta bort kanal från vitlistan"
+    },
     "voteOnTime": {
         "message": "Rösta på ett segment"
+    },
+    "Submissions": {
+        "message": "Inskickade"
     },
     "savedPeopleFrom": {
         "message": "Du har sparat andra från "
@@ -195,6 +201,12 @@
     },
     "enableQueryByHashPrefix": {
         "message": "Fråga efter hash-prefix"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Uppdatera segment på nya videor"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Om videon är ny och inga segment hittades då kommer den att uppdatera med några minuter mellanrum medan du tittar på videon."
     },
     "showNotice": {
         "message": "Visa Notisen Igen"
@@ -476,6 +488,9 @@
     "category_interaction": {
         "message": "Interaktionspåminnelse (Prenumerera)"
     },
+    "category_interaction_short": {
+        "message": "Interaktionspåminnelse"
+    },
     "category_selfpromo": {
         "message": "Obetald/självbefodran"
     },
@@ -488,6 +503,9 @@
     "category_music_offtopic_short": {
         "message": "Icke-musik"
     },
+    "category_livestream_messages": {
+        "message": "Liveström: Donations-/meddelandeavläsningar"
+    },
     "category_livestream_messages_short": {
         "message": "Läser meddelande"
     },
@@ -499,6 +517,9 @@
     },
     "showOverlay": {
         "message": "Visa Lager Ovanpå Spelare"
+    },
+    "colorFormatIncorrect": {
+        "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."
     },
     "previewColor": {
         "message": "Förhandsgranskningsfärg",
@@ -564,6 +585,9 @@
     },
     "incorrectCategory": {
         "message": "Fel kategori"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Den här videon kategoriseras som musik. Är du säker på att denna har en sponsor? Om detta faktiskt är ett \"icke-musiksegment\", öppna tilläggsalternativen och aktivera denna kategori. Då kan du skicka in detta segment som \"icke-musik\" i stället för sponsor. Läs riktlinjerna om något är oklart."
     },
     "multipleSegments": {
         "message": "Flera segment"
