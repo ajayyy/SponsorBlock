@@ -5,7 +5,7 @@ import { SponsorTime, SponsorHideType } from "./types";
 const utils = new Utils();
 
 interface MessageListener {
-    (request: any, sender: any, callback: (response: any) => void): void;
+    (request: any, sender: unknown, callback: (response: any) => void): void;
 } 
 
 class MessageHandler {

@@ -536,7 +536,7 @@ function copyDebugOutputToClipboard() {
       .then(() => {
         alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
       })
-      .catch((err) => {
+      .catch(() => {
         alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
       });
 }
