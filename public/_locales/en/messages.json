@@ -581,6 +581,10 @@
     "chooseACategory": {
         "message": "Choose a Category"
     },
+    "enableThisCategoryFirst": {
+        "message": "To submit segments with the category of \"{0}\", you must enable it in the options. You will be redirected to the options now.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "You must select a category for all segments you are submitting!"
     },
