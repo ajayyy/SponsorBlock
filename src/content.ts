@@ -12,6 +12,7 @@ import PreviewBar from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
+import { Message, MessageResponse } from "./messageTypes";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -27,7 +28,7 @@ let sponsorVideoID: VideoID = null;
 // JSON video info 
 let videoInfo: any = null;
 //the channel this video is about
-let channelID;
+let channelID: string;
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -112,7 +113,7 @@ const skipNoticeContentContainer: ContentContainer = () => ({
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
-function messageListener(request: any, sender: any, sendResponse: (response: any) => void): void {
+function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void {
     //messages from popup script
     switch(request.message){
         case "update":
@@ -169,7 +170,6 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
             break;
         case "submitTimes":
             submitSponsorTimes();
-
             break;
     }
 }
@@ -1209,7 +1209,7 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
     }
 }
 
-async function changeStartSponsorButton(showStartSponsor, uploadButtonVisible) {
+async function changeStartSponsorButton(showStartSponsor: boolean, uploadButtonVisible: boolean): Promise<boolean> {
     if(!sponsorVideoID) return false;
     
     //if it isn't visible, there is no data
@@ -1410,7 +1410,7 @@ function dontShowNoticeAgain() {
     closeAllSkipNotices();
 }
 
-function sponsorMessageStarted(callback) {
+function sponsorMessageStarted(callback: (response: MessageResponse) => void) {
     video = document.querySelector('video');
 
     //send back current time
