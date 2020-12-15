@@ -439,11 +439,6 @@ async function setupConfig() {
     Config.config = config;
 }
 
-// Reset config
-function resetConfig() {
-    Config.config = Config.defaults;
-}
-
 function convertJSON(): void {
     Object.keys(Config.localConfig).forEach(key => {
         Config.localConfig[key] = decodeStoredItem(key, Config.localConfig[key]);
