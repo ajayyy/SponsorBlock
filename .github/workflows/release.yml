@@ -36,8 +36,6 @@ jobs:
         with:
           name: FirefoxExtension
           path: dist
-      - name: Zip Artifacts
-        run: cd ./dist ; zip -r ../builds/FirefoxExtension.zip *
 
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
@@ -63,13 +61,6 @@ jobs:
           args: builds/ChromeExtensionBeta.zip
           name: ChromeExtensionBeta.zip
           path: ./builds/ChromeExtensionBeta.zip
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload FirefoxExtension to release
-        uses: Shopify/upload-to-release@master
-        with:
-          args: builds/FirefoxExtension.zip
-          name: FirefoxExtension.zip
-          path: ./builds/FirefoxExtension.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Firefox Beta
