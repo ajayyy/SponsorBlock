@@ -276,7 +276,7 @@ function decodeStoredItem<T>(id: string, data: T): T | SBMap<string, SponsorTime
 }
 
 function configProxy(): any {
-    chrome.storage.onChanged.addListener((changes, namespace) => {
+    chrome.storage.onChanged.addListener((changes) => {
         for (const key in changes) {
             Config.localConfig[key] = decodeStoredItem(key, changes[key].newValue);
         }
@@ -315,7 +315,7 @@ function configProxy(): any {
 }
 
 function fetchConfig(): Promise<void> { 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         chrome.storage.sync.get(null, function(items) {
             Config.localConfig = <SBConfig> <unknown> items;  // Data is ready
             resolve();
