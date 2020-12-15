@@ -85,6 +85,9 @@
     "sponsorEnd": {
         "message": "Segmen Berakhir Sekarang"
     },
+    "noVideoID": {
+        "message": "Tiada video YouTube dijumpai.\nSekiranya ini tidak betul, muat semula tab."
+    },
     "success": {
         "message": "Berjaya!"
     },
@@ -118,11 +121,36 @@
     "submitCheck": {
         "message": "Adakah anda pasti mahu menghantarnya?"
     },
+    "whitelistChannel": {
+        "message": "Saluran senarai putih"
+    },
+    "removeFromWhitelist": {
+        "message": "Alih keluar saluran dari senarai putih"
+    },
     "voteOnTime": {
         "message": "Undi Segmen"
     },
+    "Submissions": {
+        "message": "Penyerahan"
+    },
+    "savedPeopleFrom": {
+        "message": "Anda telah menyelamatkan orang dari "
+    },
+    "viewLeaderboard": {
+        "message": "Papan pendahulu"
+    },
     "here": {
         "message": "di sini"
+    },
+    "recordTimesDescription": {
+        "message": "Hantar"
+    },
+    "submissionEditHint": {
+        "message": "Penyuntingan bahagian akan muncul setelah anda mengklik hantar",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Petunjuk: Anda boleh menetapkan kunci untuk dihantar dalam pilihan"
     },
     "clearTimesButton": {
         "message": "Jelas Masa"
@@ -132,6 +160,9 @@
     },
     "publicStats": {
         "message": "Ini digunakan di halaman statistik awam untuk menunjukkan berapa banyak yang anda sumbangkan. Lihatlah"
+    },
+    "Username": {
+        "message": "Nama pengguna"
     },
     "setUsername": {
         "message": "Tetapkan Nama Pengguna"
@@ -228,6 +259,12 @@
     "0": {
         "message": "Masa sambungan telah tamat. Periksa sambungan internet anda. Sekiranya internet anda berfungsi, pelayan mungkin berlebihan atau tidak berfungsi."
     },
+    "disableSkipping": {
+        "message": "Melangkau diaktifkan"
+    },
+    "enableSkipping": {
+        "message": "Melangkau dilumpuhkan"
+    },
     "yourWork": {
         "message": "Kerja awak",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +302,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Kali ini muncul dalam tanda kurung di sebelah waktu semasa di bawah bar carian. Ini menunjukkan jumlah durasi video tolak segmen mana pun. Ini merangkumi segmen yang ditandai sebagai \"Show In Seekbar\" sahaja."
     },
+    "youHaveSkipped": {
+        "message": "Anda telah melangkau "
+    },
     "youHaveSaved": {
         "message": "Anda telah menyelamatkan diri "
     },
@@ -279,6 +319,12 @@
     },
     "hoursLower": {
         "message": "jam"
+    },
+    "youHaveSavedTime": {
+        "message": "Anda telah menyelamatkan orang"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " kehidupan mereka"
     },
     "statusReminder": {
         "message": "Periksa status.sponsor.ajay.app untuk status pelayan."
@@ -595,5 +641,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Kirim pemberitahuan ketika anda meninggalkan video dengan segmen yang tidak diunggah"
+    },
+    "help": {
+        "message": "Bantuan"
     }
 }
