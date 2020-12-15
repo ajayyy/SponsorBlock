@@ -70,9 +70,6 @@
     "sponsorEnd": {
         "message": "Сегментът Свършва Сега"
     },
-    "noVideoID": {
-        "message": "Не е намерено YouTube видео в този раздел. Ако сте сигурни, че това е YouTube раздел, затворете този изскачащ прозорец и го отворете отново. Ако това не проработи, опитайте се да презаредите раздела."
-    },
     "success": {
         "message": "Успешно!"
     },
@@ -90,18 +87,6 @@
     },
     "submitCheck": {
         "message": "Сигурни ли сте, че искате да подадете това?"
-    },
-    "whitelistChannel": {
-        "message": "Добавяне на канала към Whitelist"
-    },
-    "removeFromWhitelist": {
-        "message": "Премахване на канала от Whitelist"
-    },
-    "savedPeopleFrom": {
-        "message": "Вие сте помогнали на хора да пропуснат "
-    },
-    "viewLeaderboard": {
-        "message": "Вижте leaderboard-а"
     },
     "here": {
         "message": "тук"

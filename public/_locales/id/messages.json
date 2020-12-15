@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Segmen Berakhir Sekarang"
     },
-    "noVideoID": {
-        "message": "Tidak ada video YouTube yang ditemukan di tab ini. Jika anda tahu ini merupakan tab YouTube, tutup popup ini dan buka lagi. Jika masih tidak berfungsi, coba muat ulang tab."
-    },
     "success": {
         "message": "Sukses!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Apakah anda yakin ingin mengirim ini?"
     },
-    "whitelistChannel": {
-        "message": "Daftar-putihkan Channel"
-    },
-    "removeFromWhitelist": {
-        "message": "Hapus Channel Dari Daftar Putih"
-    },
     "voteOnTime": {
         "message": "Beri Segmen Vote"
     },
-    "soFarUHSubmited": {
-        "message": "Sejauh ini, anda sudah mengirim"
-    },
-    "savedPeopleFrom": {
-        "message": "Anda sudah menghemat waktu orang dari "
-    },
-    "viewLeaderboard": {
-        "message": "Lihat papan peringkat"
-    },
     "here": {
         "message": "disini"
-    },
-    "recordTimesDescription": {
-        "message": "Klik tombol dibawah saat segmen dimulai dan berakhir untuk direkam lalu dikirim ke basis data."
-    },
-    "popupHint": {
-        "message": "Petunjuk: Tekan tombol titik koma saat terfokus pada video untuk melaporkan awal/akhir dari segmen untuk dikirim. (Bisa diganti di pengaturan)"
     },
     "clearTimesButton": {
         "message": "Hapus Waktu"
@@ -252,12 +228,6 @@
     "0": {
         "message": "Koneksi Timeout. Cek koneksi internet anda. Jika internet anda berfungsi, server mungkin kewalahan atau down."
     },
-    "disableSkipping": {
-        "message": "Nonaktifkan SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Aktifkan SponsorBlock"
-    },
     "yourWork": {
         "message": "Hasil Kerja Anda",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +265,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Waktu ini muncul di dalam kurung disamping waktu asli di bilah waktu. Ini menunjukkan durasi total video yang tidak termasuk segmen apapun. Ini termasuk segmen yang ditandai hanya \"Tampilkan Di Bilah Waktu\"."
     },
-    "youHaveSkipped": {
-        "message": "Anda sudah melewati "
-    },
     "youHaveSaved": {
         "message": "Anda sudah menghemat waktu "
     },
@@ -312,12 +279,6 @@
     },
     "hoursLower": {
         "message": "jam"
-    },
-    "youHaveSavedTime": {
-        "message": "Anda sudah menghemat waktu orang lain"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " dari hidup mereka."
     },
     "statusReminder": {
         "message": "Cek status.sponsor.ajay.app untuk status server."

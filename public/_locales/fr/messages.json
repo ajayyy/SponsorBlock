@@ -86,7 +86,7 @@
         "message": "Fin du segment"
     },
     "noVideoID": {
-        "message": "Ceci n'est pas un onglet YouTube, ou vous avez cliqué trop tôt. \n Si vous êtes sûr(e) que c'est un onglet YouTube, fermez cette fenêtre et réessayez."
+        "message": "Aucune vidéo Youtube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
     },
     "success": {
         "message": "Succès !"
@@ -122,31 +122,16 @@
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
     },
     "whitelistChannel": {
-        "message": "Ajouter la chaîne à la liste blanche"
+        "message": "Ajouter à la liste blanche"
     },
     "removeFromWhitelist": {
-        "message": "Supprimer la chaîne de la liste blanche"
+        "message": "Retirer de la liste blanche"
     },
     "voteOnTime": {
         "message": "Voter pour un segment"
     },
-    "soFarUHSubmited": {
-        "message": "Vous avez soumis jusqu'à présent"
-    },
-    "savedPeopleFrom": {
-        "message": "Vous avez permis aux autres de passer "
-    },
-    "viewLeaderboard": {
-        "message": "Consulter le classement"
-    },
     "here": {
         "message": "ici"
-    },
-    "recordTimesDescription": {
-        "message": "Cliquez sur le bouton ci-dessous quand le segment commence puis quand il finit pour l'enregistrer et le soumettre à la base de données."
-    },
-    "popupHint": {
-        "message": "Astuce : utilisez la touche point-virgule lorsque la vidéo est sélectionnée pour enregistrer le début et la fin d'un segment commercial; utilisez la touche guillemet pour le soumettre. (Les touches peuvent être modifiées dans les options)"
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
@@ -156,6 +141,9 @@
     },
     "publicStats": {
         "message": "Votre pseudo est inscrit dans le classement public pour afficher vos contributions. Le consulter"
+    },
+    "Username": {
+        "message": "Pseudonyme"
     },
     "setUsername": {
         "message": "Choisir un pseudonyme"
@@ -252,12 +240,6 @@
     "0": {
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
     },
-    "disableSkipping": {
-        "message": "Désactiver SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Activer SponsorBlock"
-    },
     "yourWork": {
         "message": "Votre travail",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -312,12 +294,6 @@
     },
     "hoursLower": {
         "message": "heures"
-    },
-    "youHaveSavedTime": {
-        "message": "Vous avez économisé"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " aux autres."
     },
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."

@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Đoạn quảng cáo kết thúc vào lúc này"
     },
-    "noVideoID": {
-        "message": "Không tìm thấy video Youtube trong tab này. Nếu bạn chắc chắn đây là tab Youtube, hãy đóng bảng popup này rồi mở lại. Nếu vẫn không được, hãy thử tải lại tab."
-    },
     "success": {
         "message": "Thành công!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Bạn có chắc là muốn đăng không?"
     },
-    "whitelistChannel": {
-        "message": "Không chặn kênh này"
-    },
-    "removeFromWhitelist": {
-        "message": "Bỏ kênh này khỏi danh sách không chặn"
-    },
     "voteOnTime": {
         "message": "Bầu chọn một đoạn quảng cáo"
     },
-    "soFarUHSubmited": {
-        "message": "Cho tới giờ, bạn đã đăng"
-    },
-    "savedPeopleFrom": {
-        "message": "Bạn đã giúp mọi người bỏ qua "
-    },
-    "viewLeaderboard": {
-        "message": "Xem bảng xếp hạng"
-    },
     "here": {
         "message": "ở đây"
-    },
-    "recordTimesDescription": {
-        "message": "Nhấn nút phía dưới khi đoạn quảng cáo bắt đầu và kết thúc để ghi lại và đăng lên kho dữ liệu."
-    },
-    "popupHint": {
-        "message": "Gợi ý: Nhấn phím dấu chấm phẩy khi đang xem video để báo cáo lúc quảng cáo bắt đầu/kết thúc, và nhấn phím ngoặc kép để đăng. (Có thể thay đổi phím trong phần tùy chọn)"
     },
     "clearTimesButton": {
         "message": "Xóa thời gian"
@@ -243,12 +219,6 @@
     "0": {
         "message": "Kết nối quá hạn thời gian. Hãy kiểm tra đường truyền mạng của bạn. Nếu mạng của bạn vẫn hoạt động, có thể máy chủ đang bị quá tải hoặc không hoạt động."
     },
-    "disableSkipping": {
-        "message": "Tắt SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Bật SponsorBlock"
-    },
     "yourWork": {
         "message": "Thành quả của bạn",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -286,9 +256,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Độ dài này được hiển thị trong ngoặc đơn, bên cạnh độ dài hiện tại, phía dưới thanh tiến trình video. Con số này là độ dài video trừ đi các đoạn quảng cáo, bao gồm cả những đoạn được đánh dấu là chỉ \"Hiển thị trong thanh tiến trình video\"."
     },
-    "youHaveSkipped": {
-        "message": "Bạn đã bỏ qua "
-    },
     "youHaveSaved": {
         "message": "Bạn đã tiết kiệm cho mình "
     },
@@ -303,12 +270,6 @@
     },
     "hoursLower": {
         "message": "giờ"
-    },
-    "youHaveSavedTime": {
-        "message": "Bạn đã giúp người khác tiết kiệm"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " của đời họ."
     },
     "statusReminder": {
         "message": "Truy cập trang status.sponsor.ajay.app để biết tình trạng máy chủ."

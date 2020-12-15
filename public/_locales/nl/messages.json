@@ -86,7 +86,7 @@
         "message": "Segment eindigt nu"
     },
     "noVideoID": {
-        "message": "Er is geen YouTube-video gevonden op dit tabblad. Als u weet dat dit een YouTube-tabblad is, sluit dan deze pop-up en open hem opnieuw. Als dat niet werkt, probeer dan het tabblad opnieuw te laden."
+        "message": "Geen YouTube-video gevonden.\nVernieuw het tabblad als dit onjuist is."
     },
     "success": {
         "message": "Gelukt!"
@@ -122,31 +122,35 @@
         "message": "Weet u zeker dat u dit wilt indienen?"
     },
     "whitelistChannel": {
-        "message": "Kanaal whitelisten"
+        "message": "Toevoegen aan whitelist"
     },
     "removeFromWhitelist": {
-        "message": "Kanaal verwijderen van whitelist"
+        "message": "Verwijderen van whitelist"
     },
     "voteOnTime": {
         "message": "Stemmen op een segment"
     },
-    "soFarUHSubmited": {
-        "message": "Tot nu toe heeft u ingediend:"
+    "Submissions": {
+        "message": "Inzendingen"
     },
     "savedPeopleFrom": {
-        "message": "U heeft mensen geholpen met het vermijden van "
+        "message": "U heeft mensen gered van "
     },
     "viewLeaderboard": {
-        "message": "Bekijk de ranglijst"
+        "message": "Ranglijst"
     },
     "here": {
         "message": "hier"
     },
     "recordTimesDescription": {
-        "message": "Klik op de knop hieronder wanneer het segment begint en eindigt om het te registreren en te verzenden naar de database."
+        "message": "Indienen"
+    },
+    "submissionEditHint": {
+        "message": "Sectiebewerking verschijnt nadat u op verzenden hebt geklikt",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Tip: druk op de puntkomma-toets terwijl een video in focus is om het begin/einde van een segment te registreren en op de aanhalingsteken-toets om het in te dienen (dit kan worden gewijzigd in de opties)."
+        "message": "Tip: u kunt sneltoetsen voor het indienen instellen in de opties"
     },
     "clearTimesButton": {
         "message": "Tijdstippen wissen"
@@ -156,6 +160,9 @@
     },
     "publicStats": {
         "message": "Dit wordt gebruikt op de publieke statistiekenpagina om te laten zien hoeveel u heeft bijgedragen. Bekijk het"
+    },
+    "Username": {
+        "message": "Gebruikersnaam"
     },
     "setUsername": {
         "message": "Gebruikersnaam instellen"
@@ -253,10 +260,10 @@
         "message": "Time-out van de verbinding. Controleer uw internetverbinding. Als uw internet werkt, is de server waarschijnlijk overbelast of offline."
     },
     "disableSkipping": {
-        "message": "SponsorBlock uitschakelen"
+        "message": "Overslaan is ingeschakeld"
     },
     "enableSkipping": {
-        "message": "SponsorBlock inschakelen"
+        "message": "Overslaan is uitgeschakeld"
     },
     "yourWork": {
         "message": "Uw werk",
@@ -314,10 +321,10 @@
         "message": "uren"
     },
     "youHaveSavedTime": {
-        "message": "U heeft andere mensen bespaard:"
+        "message": "U heeft mensen bespaard:"
     },
     "youHaveSavedTimeEnd": {
-        "message": " van hun leven."
+        "message": " van hun leven"
     },
     "statusReminder": {
         "message": "Controleer status.sponsor.ajay.app voor de serverstatus."
@@ -634,5 +641,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Een melding sturen wanneer u een video verlaat met segmenten die niet zijn geüpload"
+    },
+    "help": {
+        "message": "Help"
     }
 }

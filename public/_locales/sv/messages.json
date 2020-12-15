@@ -86,7 +86,7 @@
         "message": "Segmentet slutar nu"
     },
     "noVideoID": {
-        "message": "Kunde inte hitta någon YouTube-video i denna tab. Om du är säker på att detta är en Youtube-flik, stäng den här rutan och öppna den igen. Ladda om fliken om inte det funkar."
+        "message": "Hittade ingen YouTube-video.\nUppdatera fliken om detta är felaktigt."
     },
     "success": {
         "message": "Lyckades!"
@@ -122,31 +122,25 @@
         "message": "Är du säker på att du vill rapportera detta?"
     },
     "whitelistChannel": {
-        "message": "Vitlista Kanal"
+        "message": "Lägg till i vitlistan"
     },
     "removeFromWhitelist": {
-        "message": "Ta bort kanal från vitlistan"
+        "message": "Tag bort från vitlistan"
     },
     "voteOnTime": {
         "message": "Rösta på ett segment"
     },
-    "soFarUHSubmited": {
-        "message": "Hitills har du rapporterat"
-    },
     "savedPeopleFrom": {
-        "message": "Du har sparat andra "
+        "message": "Du har sparat andra från "
     },
     "viewLeaderboard": {
-        "message": "Se leaderboarden"
+        "message": "Topplista"
     },
     "here": {
         "message": "här"
     },
     "recordTimesDescription": {
-        "message": "Klicka på knappen nedan när segmentet startar och slutar för att spela in och skicka in det till databasen."
-    },
-    "popupHint": {
-        "message": "Tips: Tryck på tangenten semikolon medan du fokuserar på en video för att rapportera början/slutet av ett segment för att skicka in. (Detta kan ändras i alternativen)"
+        "message": "Skicka"
     },
     "clearTimesButton": {
         "message": "Rensa Tider"
@@ -156,6 +150,9 @@
     },
     "publicStats": {
         "message": "Detta kommer att användas på den publika statistiksidan för att visa hur mycket du har bidragit. Spana in den"
+    },
+    "Username": {
+        "message": "Användarnamn"
     },
     "setUsername": {
         "message": "Ange Användarnamn"
@@ -244,10 +241,10 @@
         "message": "Anslutningsfel. Se över din internetanslutning. Om du kan komma åt internet så är servern förmodligen överbelastad eller nere."
     },
     "disableSkipping": {
-        "message": "Avaktivera SponsorBlock"
+        "message": "Hoppa över är aktiverat"
     },
     "enableSkipping": {
-        "message": "Aktivera SponsorBlock"
+        "message": "Hoppa över är inaktiverat"
     },
     "yourWork": {
         "message": "Ditt Bidrag",
@@ -308,7 +305,7 @@
         "message": "Du har sparat andra"
     },
     "youHaveSavedTimeEnd": {
-        "message": " av deras liv."
+        "message": " av deras liv"
     },
     "statusReminder": {
         "message": "Gå till status.sponsor.ajay.app för serverstatus."
@@ -592,5 +589,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Visa en avisering när du lämnar en video med segment som inte har laddats upp"
+    },
+    "help": {
+        "message": "Hjälp"
     }
 }
