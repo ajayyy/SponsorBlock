@@ -121,12 +121,6 @@
     "submitCheck": {
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
     },
-    "whitelistChannel": {
-        "message": "Ajouter à la liste blanche"
-    },
-    "removeFromWhitelist": {
-        "message": "Retirer de la liste blanche"
-    },
     "voteOnTime": {
         "message": "Voter pour un segment"
     },
