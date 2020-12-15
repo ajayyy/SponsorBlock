@@ -33,7 +33,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             chrome.runtime.openOptionsPage();
             return;
         case "openHelp":
-            window.open(chrome.runtime.getURL('help/index_en.html'));
+            chrome.tabs.create({url: chrome.runtime.getURL('help/index_en.html')});
             return;
         case "sendRequest":
             sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
