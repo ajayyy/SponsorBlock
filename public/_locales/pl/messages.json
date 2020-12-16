@@ -65,7 +65,7 @@
         "message": "Timer zatrzymany"
     },
     "confirmMSG": {
-        "message": "Żeby zmienić lub usunąć wartości, kliknij na guzik informacji lub otwórz okienko rozszerzenia klikając w ikonę rozszerzenia znajdującą się w prawym górnym rogu."
+        "message": "Aby edytować lub usuwać poszczególne wartości, kliknij na przycisk informacyjny lub otwórz okienko rozszerzenia, klikając na ikonę rozszerzenia w prawym górnym rogu."
     },
     "clearThis": {
         "message": "Czy na pewno chcesz to usunąć?\n\n"
@@ -86,7 +86,7 @@
         "message": "Koniec segmentu"
     },
     "noVideoID": {
-        "message": "Nie znaleziono filmu YouTube.\nJeśli jest to niepoprawne, odśwież stronę."
+        "message": "Nie znaleziono filmu YouTube.\nJeśli jest to nieprawidłowe, odśwież stronę."
     },
     "success": {
         "message": "Sukces!"
