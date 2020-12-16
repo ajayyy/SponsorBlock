@@ -360,7 +360,7 @@
         "message": "Invidious (https://invidio.us) ist ein Drittanbieter-YouTube-Client. Um SponsorBlock mit Invidious verwenden zu können, musst du die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT in Chrome's Inkognitomodus oder anderen Chromium-Varianten."
     },
     "optionsInfo": {
-        "message": "Zu überspringende Videosegmente auswählen, automatisches Überspringen, Knöpfe ein- & ausblenden und noch viel mehr."
+        "message": "Zu überspringende Kategorien auswählen, automatisches Überspringen, Tasten ein- & ausblenden und noch viel mehr."
     },
     "addInvidiousInstance": {
         "message": "Invidious-Instanzen hinzufügen"
