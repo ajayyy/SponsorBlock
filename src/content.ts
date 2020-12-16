@@ -1052,6 +1052,8 @@ function unskipSponsorTime(segment: SponsorTime) {
 
 function reskipSponsorTime(segment: SponsorTime) {
     video.currentTime = segment.segment[1];
+
+    startSponsorSchedule(true, segment.segment[1], false);
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false): boolean {
