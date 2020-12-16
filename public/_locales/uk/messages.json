@@ -85,6 +85,9 @@
     "sponsorEnd": {
         "message": "Сегмент закінчується тут"
     },
+    "noVideoID": {
+        "message": "Відео YouTube, не знайдено.\nЯкщо це не так, поновіть вкладку."
+    },
     "success": {
         "message": "Успіх!"
     },
@@ -118,11 +121,36 @@
     "submitCheck": {
         "message": "Ви впевнені, що хочете надіслати цю інформацію?"
     },
+    "whitelistChannel": {
+        "message": "Додати канал в білий список"
+    },
+    "removeFromWhitelist": {
+        "message": "Видалити канал з білого списку"
+    },
     "voteOnTime": {
         "message": "Проголосувати за сегмент"
     },
+    "Submissions": {
+        "message": "Надіслано сегментів"
+    },
+    "savedPeopleFrom": {
+        "message": "Ви допомогли людям пропустити "
+    },
+    "viewLeaderboard": {
+        "message": "Дошка пошани"
+    },
     "here": {
         "message": "тут"
+    },
+    "recordTimesDescription": {
+        "message": "Надіслати"
+    },
+    "submissionEditHint": {
+        "message": "Редагування сегментів з'явиться після натискання на кнопку \"Надіслати\"",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Підказка: Ви можете налаштувати комбінації клавіш для надсилання в опціях"
     },
     "clearTimesButton": {
         "message": "Очистити час"
@@ -132,6 +160,9 @@
     },
     "publicStats": {
         "message": "Воно використовується на публічній сторінці статистики, щоб показати Ваш внесок. Її можна подивитися"
+    },
+    "Username": {
+        "message": "Ім'я користувача"
     },
     "setUsername": {
         "message": "Встановити ім'я користувача"
@@ -228,6 +259,12 @@
     "0": {
         "message": "Таймаут підключення. Перевірте ваше з'єднання з інтернетом. Якщо ваш інтернет працює, сервер, швидше за все, перевантажений або лежить."
     },
+    "disableSkipping": {
+        "message": "Пропуск увімкнено"
+    },
+    "enableSkipping": {
+        "message": "Пропуск вимкнено"
+    },
     "yourWork": {
         "message": "Ваша робота",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +302,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Ця тривалість відображається в дужках поруч з фактичної під смугою прокрутки. Показує тривалість відео без сегментів. Включає сегменти, для яких вибрано \"Відображати в смузі прокрутки\"."
     },
+    "youHaveSkipped": {
+        "message": "Ви пропустили "
+    },
     "youHaveSaved": {
         "message": "Ви заощадили "
     },
@@ -279,6 +319,12 @@
     },
     "hoursLower": {
         "message": "годин"
+    },
+    "youHaveSavedTime": {
+        "message": "Ви заощадили людям"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " їх життів"
     },
     "statusReminder": {
         "message": "Дивіться стан сервера на status.sponsor.ajay.app."
@@ -595,5 +641,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Надсилати повідомлення, коли ви йдете зі сторінки відео, сегменти до якого Ви не надіслали"
+    },
+    "help": {
+        "message": "Допомога"
     }
 }
