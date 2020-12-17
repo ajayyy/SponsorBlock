@@ -1,1 +1,44 @@
-{}
+{
+    "Segment": {
+        "message": "segmendi"
+    },
+    "Segments": {
+        "message": "segmenti"
+    },
+    "reportButtonTitle": {
+        "message": "Teavita"
+    },
+    "reportButtonInfo": {
+        "message": "Teavita sellest pakkumisest kui sobimatust."
+    },
+    "Dismiss": {
+        "message": "Sulge"
+    },
+    "Loading": {
+        "message": "Laadimine..."
+    },
+    "Mins": {
+        "message": "Minutit"
+    },
+    "Secs": {
+        "message": "Sekundit"
+    },
+    "Hide": {
+        "message": "Ära näita kunagi"
+    },
+    "hitGoBack": {
+        "message": "Vajuta \"tühista vahelejätmine\", et jõuda sinna, kust tulid."
+    },
+    "unskip": {
+        "message": "Tühista vahelejätmine"
+    },
+    "reskip": {
+        "message": "Jäta uuesti vahele"
+    },
+    "paused": {
+        "message": "Pausil"
+    },
+    "manualPaused": {
+        "message": "Taimer peatatud"
+    }
+}
