@@ -2,7 +2,7 @@ import Config from "./config";
 import * as CompileConfig from "../config.json";
 
 // Make the config public for debugging purposes
-(<any> window).SB = Config;
+window.SB = Config;
 
 import Utils from "./utils";
 import CategoryChooser from "./render/CategoryChooser";
@@ -107,7 +107,7 @@ async function init() {
 
                             // Permission needed on Firefox
                             if (utils.isFirefox()) {
-                                const permissionSuccess = await new Promise((resolve, reject) => {
+                                const permissionSuccess = await new Promise((resolve) => {
                                     chrome.permissions.request({
                                         origins: [textChangeInput.value + "/"],
                                         permissions: []
@@ -202,7 +202,7 @@ async function init() {
  * 
  * @param {String} element 
  */
-function optionsConfigUpdateListener(changes) {
+function optionsConfigUpdateListener() {
     const optionsContainer = document.getElementById("options");
     const optionsElements = optionsContainer.querySelectorAll("*");
 
@@ -243,7 +243,7 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
     const button = element.querySelector(".trigger-button");
 
     const setButton = element.querySelector(".text-change-set");
-    setButton.addEventListener("click", async function(e) {
+    setButton.addEventListener("click", async function() {
         if (textBox.value == "" || textBox.value.includes("/") || textBox.value.includes("http")) {
             alert(chrome.i18n.getMessage("addInvidiousInstanceError"));
         } else {
@@ -269,7 +269,7 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
     });
 
     const resetButton = element.querySelector(".invidious-instance-reset");
-    resetButton.addEventListener("click", function(e) {
+    resetButton.addEventListener("click", function() {
         if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
             // Set to a clone of the default
             Config.config[option] = Config.defaults[option].slice(0);
@@ -536,7 +536,7 @@ function copyDebugOutputToClipboard() {
       .then(() => {
         alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
       })
-      .catch((err) => {
+      .catch(() => {
         alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
       });
 }

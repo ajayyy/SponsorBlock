@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, CategorySkipOption, CategorySelection, VideoID, SponsorHideType, FetchResponse } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -25,9 +25,9 @@ let sponsorTimes: SponsorTime[] = null;
 let sponsorVideoID: VideoID = null;
 
 // JSON video info 
-let videoInfo: any = null;
+let videoInfo: VideoInfo = null;
 //the channel this video is about
-let channelID;
+let channelID: string;
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -115,7 +115,7 @@ const skipNoticeContentContainer: ContentContainer = () => ({
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
-function messageListener(request: any, sender: any, sendResponse: (response: any) => void): void {
+function messageListener(request: any, sender: unknown, sendResponse: (response: any) => void): void {
     //messages from popup script
     switch(request.message){
         case "update":
@@ -182,7 +182,7 @@ function messageListener(request: any, sender: any, sendResponse: (response: any
  * 
  * @param {String} changes 
  */
-function contentConfigUpdateListener(changes) {
+function contentConfigUpdateListener(changes: StorageChangesObject) {
     for (const key in changes) {
         switch(key) {
             case "hideVideoPlayerControls":
@@ -368,7 +368,7 @@ function handleMobileControlsMutations(): void {
     
     if (previewBar !== null) {
         if (document.body.contains(previewBar.container)) {
-            updatePreviewBarPositionMobile(document.getElementsByClassName(mobileYouTubeSelector)[0]);
+            updatePreviewBarPositionMobile(document.getElementsByClassName(mobileYouTubeSelector)[0] as HTMLElement);
 
             return;
         } else {
@@ -402,7 +402,7 @@ function createPreviewBar(): void {
         const el = document.querySelectorAll(selector);
 
         if (el && el.length && el[0]) {
-            previewBar = new PreviewBar(el[0], onMobileYouTube, onInvidious);
+            previewBar = new PreviewBar(el[0] as HTMLElement, onMobileYouTube, onInvidious);
             
             updatePreviewBar();
 
@@ -753,7 +753,7 @@ function startSkipScheduleCheckingForStartSponsors() {
  * Get the video info for the current tab from YouTube
  */
 function getVideoInfo() {
-    sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID, function(xmlhttp, error) {
+    sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID, function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             const decodedData = decodeURIComponent(xmlhttp.responseText).match(/player_response=([^&]*)/)[1];
             if (!decodedData) {
@@ -811,7 +811,7 @@ function getYouTubeVideoID(url: string) {
 /**
  * This function is required on mobile YouTube and will keep getting called whenever the preview bar disapears
  */
-function updatePreviewBarPositionMobile(parent: Element) {
+function updatePreviewBarPositionMobile(parent: HTMLElement) {
     if (document.getElementById("previewbar") === null) {
         previewBar.updatePosition(parent);
     }
@@ -1064,7 +1064,7 @@ function createButton(baseID, title, callback, imageName, isDraggable=false): bo
     newButton.classList.add("playerButton");
     newButton.classList.add("ytp-button");
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
-    newButton.addEventListener("click", (event: Event) => {
+    newButton.addEventListener("click", () => {
         callback();
     });
 
@@ -1448,8 +1448,6 @@ function submitSponsorTimes() {
     //it can't update to this info yet
     closeInfoMenu();
 
-    const currentVideoID = sponsorVideoID;
-
     if (sponsorTimesSubmitting !== undefined && sponsorTimesSubmitting.length > 0) {
         submissionNotice = new SubmissionNotice(skipNoticeContentContainer, sendSubmitMessage);
     }
@@ -1596,7 +1594,7 @@ function sendRequestToCustomServer(type, fullAddress, callback) {
             callback(xmlhttp, false);
         };
   
-        xmlhttp.onerror = function(ev) {
+        xmlhttp.onerror = function() {
             callback(xmlhttp, true);
         };
     }
