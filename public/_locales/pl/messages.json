@@ -86,7 +86,7 @@
         "message": "Koniec segmentu"
     },
     "noVideoID": {
-        "message": "Nie znaleziono filmu na tej karcie. Jeśli wiesz, że to karta YouTube'a, zamknij to okienko i otwórz je ponownie. Jeśli to nie zadziała, spróbuj odświeżyć stronę."
+        "message": "Nie znaleziono filmu YouTube.\nJeśli jest to niepoprawne, odśwież stronę."
     },
     "success": {
         "message": "Sukces!"
@@ -130,23 +130,27 @@
     "voteOnTime": {
         "message": "Oceń segment"
     },
-    "soFarUHSubmited": {
-        "message": "Do tej pory zgłosiłeś"
+    "Submissions": {
+        "message": "Zgłoszenia"
     },
     "savedPeopleFrom": {
-        "message": "Ocaliłeś ludzi przed "
+        "message": "Oszczędziłeś innym "
     },
     "viewLeaderboard": {
-        "message": "Zobacz ranking użytkowników"
+        "message": "Ranking"
     },
     "here": {
         "message": "tutaj"
     },
     "recordTimesDescription": {
-        "message": "Kliknij przycisk poniżej, gdy segment zaczyna się i kończy, by oznaczyć go i przesłać do bazy danych."
+        "message": "Wyślij"
+    },
+    "submissionEditHint": {
+        "message": "Edycja sekcji pojawi się po kliknięciu wyślij",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Podpowiedź: Wciśnij średnik, koncentrując się na filmie, aby oznaczyć początek/koniec segmentu, i cudzysłów, by go wysłać. (Klawisze można zmienić w opcjach)"
+        "message": "Wskazówka: Możesz skonfigurować skróty klawiszowe do zatwierdzania w opcjach"
     },
     "clearTimesButton": {
         "message": "Usuń czasy"
@@ -156,6 +160,9 @@
     },
     "publicStats": {
         "message": "Ten dane są używane na naszej stronie żeby pokazać twój wkład. Zobacz to"
+    },
+    "Username": {
+        "message": "Nazwa użytkownika"
     },
     "setUsername": {
         "message": "Ustaw nazwę użytkownika"
@@ -253,10 +260,10 @@
         "message": "Połączenie przerwane z powodu braku odpowiedzi. Sprawdź swoje połączenie z internetem. Jeśli wszystko z nim w porządku oznacza to, że serwer jest prawdopodobnie przeciążony lub nie działa."
     },
     "disableSkipping": {
-        "message": "Wyłącz SponsorBlock"
+        "message": "Pomijanie jest włączone"
     },
     "enableSkipping": {
-        "message": "Włącz SponsorBlock"
+        "message": "Pomijanie jest wyłączone"
     },
     "yourWork": {
         "message": "Twój wkład",
@@ -317,7 +324,7 @@
         "message": "Oszczędziłeś ludziom"
     },
     "youHaveSavedTimeEnd": {
-        "message": " czasu."
+        "message": " ich życia"
     },
     "statusReminder": {
         "message": "Sprawdź status serwera na status.sponsor.ajay.app"
@@ -634,5 +641,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Wyślij powiadomienie po opuszczeniu filmu z segmentami, które nie zostały przesłane"
+    },
+    "help": {
+        "message": "Pomoc"
     }
 }

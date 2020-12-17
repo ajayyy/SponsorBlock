@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Szegmens vége"
     },
-    "noVideoID": {
-        "message": "Nem található YouTube videó ezen a fülön. Ha ez biztosan egy YouTube fül, csukja be ezt az ablakot, és nyissa meg újra. Amennyiben nem működik, próbája újratölteni a fület."
-    },
     "success": {
         "message": "Siker!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Biztosan be akarja küldeni?"
     },
-    "whitelistChannel": {
-        "message": "Csatorna engedélyezőlistára helyezése"
-    },
-    "removeFromWhitelist": {
-        "message": "Csatorna eltávolítása az engedélyezőlistáról"
-    },
     "voteOnTime": {
         "message": "Szavazzon a szegmensről"
     },
-    "soFarUHSubmited": {
-        "message": "Eddig beküldött"
-    },
-    "savedPeopleFrom": {
-        "message": "Megspórolt másoknak "
-    },
-    "viewLeaderboard": {
-        "message": "Ranglista megtekintése"
-    },
     "here": {
         "message": "itt"
-    },
-    "recordTimesDescription": {
-        "message": "Kattintson az alábbi gombra a szegmens kezdeténél és végénél megjelöléshez, és adja hozzá az adatbázishoz."
-    },
-    "popupHint": {
-        "message": "Tipp: Nyomja le a pontosvessző gombot, hogy megjelölje egy szegmens kezdetét/végét és beküldhesse. (Változtatható a beállításokban)"
     },
     "clearTimesButton": {
         "message": "Időpontok törlése"
@@ -252,12 +228,6 @@
     "0": {
         "message": "Kapcsolati időtúllépés. Ellenőrizze az internetkapcsolatot. Ha az internet működik, a kiszolgáló valószínűleg túlterhelt vagy leállt."
     },
-    "disableSkipping": {
-        "message": "SponsorBlock kikapcsolása"
-    },
-    "enableSkipping": {
-        "message": "SponsorBlock bekapcsolása"
-    },
     "yourWork": {
         "message": "Te munkád",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +265,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Ez az idő zárójelben jelenik meg az aktuális idő mellett a keresősáv alatt. Megmutatja a videó teljes időtartamát, levonva a szegmenseket. Beletartoznak a csak \"Megjelenítés a keresősávban\" jelöléssel ellátott szegmensek is."
     },
-    "youHaveSkipped": {
-        "message": "Ön átugrott "
-    },
     "youHaveSaved": {
         "message": "Megtakarított magának "
     },
@@ -312,12 +279,6 @@
     },
     "hoursLower": {
         "message": "óra"
-    },
-    "youHaveSavedTime": {
-        "message": "Megspórolt másoknak"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " az életükből."
     },
     "statusReminder": {
         "message": "A szerver állapotához tekintse meg a status.sponsor.ajay.app oldalt."

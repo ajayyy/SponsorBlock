@@ -18,7 +18,7 @@
   flex-flow: column nowrap;
   align-items: center;
   width: 330px;
-  margin: 22px;
+  padding: 22px;
   text-align: center;
 }
 
@@ -27,7 +27,7 @@
   color: var(--sb-main-fg-color);
   background: none;
   border: none;
-  padding: 10px 8px;
+  padding: 7px;
   outline: none;
 
   cursor: pointer;

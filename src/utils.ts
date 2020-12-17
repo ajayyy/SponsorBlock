@@ -119,8 +119,7 @@ class Utils {
                 const rule = {
                     id: "invidious",
                     conditions,
-                    // This API is experimental and not visible by the TypeScript compiler
-                    actions: [new (<any> chrome.declarativeContent).RequestContentScript({
+                    actions: [new chrome.declarativeContent.RequestContentScript({
                         allFrames: true,
                         js: self.js,
                         css: self.css
@@ -206,7 +205,7 @@ class Utils {
 
     getLocalizedMessage(text: string): string | false {
         const valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
-            return v1 ? chrome.i18n.getMessage(v1) : "";
+            return v1 ? chrome.i18n.getMessage(v1).replace("\n", "<br/>") : "";
         });
 
         if(valNewH != text) {

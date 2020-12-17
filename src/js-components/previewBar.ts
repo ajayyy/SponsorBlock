@@ -11,14 +11,14 @@ const utils = new Utils();
 
 class PreviewBar {
 	container: HTMLUListElement;
-	parent: any;
+	parent: HTMLElement;
 	onMobileYouTube: boolean;
 	onInvidious: boolean;
 
 	timestamps: number[][];
 	types: string[];
 
-	constructor(parent: any, onMobileYouTube: boolean, onInvidious: boolean) {
+	constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean) {
 		this.container = document.createElement('ul');
 		this.container.id = 'previewbar';
 		this.parent = parent;
@@ -47,16 +47,16 @@ class PreviewBar {
 
 		let mouseOnSeekBar = false;
 
-		seekBar.addEventListener("mouseenter", (event) => {
+		seekBar.addEventListener("mouseenter", () => {
 			mouseOnSeekBar = true;
 		});
 
-		seekBar.addEventListener("mouseleave", (event) => {
+		seekBar.addEventListener("mouseleave", () => {
 			mouseOnSeekBar = false;
 			categoryTooltip.classList.add("sbHidden");
 		});
 
-		const observer = new MutationObserver((mutations, observer) => {
+		const observer = new MutationObserver((mutations) => {
 			if (!mouseOnSeekBar) return;
 
 			// See if mutation observed is only this ID (if so, ignore)
@@ -112,7 +112,7 @@ class PreviewBar {
 		});
 	}
 
-	updatePosition(parent: any): void {
+	updatePosition(parent: HTMLElement): void {
 		//below the seek bar
 		// this.parent.insertAdjacentElement("afterEnd", this.container);
 
@@ -126,7 +126,7 @@ class PreviewBar {
 		}
 		
 		//on the seek bar
-		this.parent.insertAdjacentElement("afterBegin", this.container);
+		this.parent.insertAdjacentElement("afterbegin", this.container);
 	}
 
 	updateColor(segment: string, color: string, opacity: string): void {
