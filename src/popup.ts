@@ -38,6 +38,8 @@ class MessageHandler {
     }
 }
 
+
+
 //make this a function to allow this to run on the content page
 async function runThePopup(messageListener?: MessageListener): Promise<void> {
     const messageHandler = new MessageHandler(messageListener);
@@ -46,7 +48,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     await utils.wait(() => Config.config !== null);
 
-    const PageElements: any = {};
+    type InputPageElements = {
+        whitelistToggle?: HTMLInputElement,
+        toggleSwitch?: HTMLInputElement,
+        usernameInput?: HTMLInputElement,
+    };
+    type PageElements = { [key: string]: HTMLElement } & InputPageElements
+
+    const PageElements: PageElements = {};
 
     [
         "sponsorblockPopup",
@@ -376,7 +385,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
 
-                const prefix = chrome.i18n.getMessage("category_" + segmentTimes[i].category) + ": ";
+                const prefix = utils.shortCategoryName(segmentTimes[i].category) + ": ";
 
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {

@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "광고 구간 끝"
     },
-    "noVideoID": {
-        "message": "현재 페이지에서 YouTube 영상을 찾지 못하였습니다. 이 페이지에 YouTube 영상이 있는 경우, 이 팝업을 닫고 다시 열어주세요. 그래도 이 팝업이 바뀌지 않는 경우, 페이지를 새로고침하세요."
-    },
     "success": {
         "message": "성공!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "정말로 제출하시겠습니까?"
     },
-    "whitelistChannel": {
-        "message": "채널을 화이트리스트에 추가하기"
-    },
-    "removeFromWhitelist": {
-        "message": "채널을 화이트리스트에서 삭제하기"
-    },
     "voteOnTime": {
         "message": "구간 투표"
     },
-    "soFarUHSubmited": {
-        "message": "지금까지 제출한 구간:"
-    },
-    "savedPeopleFrom": {
-        "message": "사람을 다음에서 구했습니다 "
-    },
-    "viewLeaderboard": {
-        "message": "리더보드 보기"
-    },
     "here": {
         "message": "링크"
-    },
-    "recordTimesDescription": {
-        "message": "구간이 시작 및 종료될 때 아래의 버튼을 눌러 구간을 기록하고 데이터베이스에 제출하세요."
-    },
-    "popupHint": {
-        "message": "참고: 영상 내에서 쉼표 키를 눌러서 초점을 맞추어서 시작/끝을 제보하고 따옴표로 제출하세요. (설정에서 변경 가능)"
     },
     "clearTimesButton": {
         "message": "시간 초기화"
@@ -252,12 +228,6 @@
     "0": {
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
     },
-    "disableSkipping": {
-        "message": "SponsorBlock 비활성화"
-    },
-    "enableSkipping": {
-        "message": "SponsorBlock 활성화"
-    },
     "yourWork": {
         "message": "지금까지 한 일",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +265,6 @@
     "showTimeWithSkipsDescription": {
         "message": "이 시간은 탐색 막대 아래의 현재 시간 옆에 있는 괄호 안에 표시되며 부분을 제외한 총 동영상 길이를 보여줍니다. 여기에는 \"슬라이드바에 표시\"로만 표시된 부분도 포함됩니다."
     },
-    "youHaveSkipped": {
-        "message": "지금까지 스킵한 구간: "
-    },
     "youHaveSaved": {
         "message": "지금까지 절약한 시간: "
     },
@@ -312,12 +279,6 @@
     },
     "hoursLower": {
         "message": "시간"
-    },
-    "youHaveSavedTime": {
-        "message": "사람들"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": "의 시간을 아꼈습니다."
     },
     "statusReminder": {
         "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."

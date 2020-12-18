@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Segmen Berakhir Sekarang"
     },
-    "noVideoID": {
-        "message": "Tidak terdapat video YouTube di tab ini. Sekiranya anda tahu ini adalah tab YouTube, tutup pop timbul ini dan buka lagi. Sekiranya tidak berjaya, cuba muat semula tab."
-    },
     "success": {
         "message": "Berjaya!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Adakah anda pasti mahu menghantarnya?"
     },
-    "whitelistChannel": {
-        "message": "Saluran Senarai Putih"
-    },
-    "removeFromWhitelist": {
-        "message": "Alih keluar Saluran Dari Senarai Putih"
-    },
     "voteOnTime": {
         "message": "Undi Segmen"
     },
-    "soFarUHSubmited": {
-        "message": "Setakat ini, anda telah menghantar"
-    },
-    "savedPeopleFrom": {
-        "message": "Anda telah menyelamatkan orang dari "
-    },
-    "viewLeaderboard": {
-        "message": "Lihat papan pendahulu"
-    },
     "here": {
         "message": "di sini"
-    },
-    "recordTimesDescription": {
-        "message": "Klik butang di bawah apabila segmen bermula dan berakhir untuk merekod dan menyerahkannya ke pangkalan data."
-    },
-    "popupHint": {
-        "message": "Petunjuk: Tekan kekunci titik koma sambil fokus pada video untuk melaporkan permulaan / akhir segmen dan petikan untuk dihantar. (Ini boleh diubah dalam pilihan)"
     },
     "clearTimesButton": {
         "message": "Jelas Masa"
@@ -252,12 +228,6 @@
     "0": {
         "message": "Masa sambungan telah tamat. Periksa sambungan internet anda. Sekiranya internet anda berfungsi, pelayan mungkin berlebihan atau tidak berfungsi."
     },
-    "disableSkipping": {
-        "message": "Lumpuhkan SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Dayakan SponsorBlock"
-    },
     "yourWork": {
         "message": "Kerja awak",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +265,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Kali ini muncul dalam tanda kurung di sebelah waktu semasa di bawah bar carian. Ini menunjukkan jumlah durasi video tolak segmen mana pun. Ini merangkumi segmen yang ditandai sebagai \"Show In Seekbar\" sahaja."
     },
-    "youHaveSkipped": {
-        "message": "Anda telah melangkau "
-    },
     "youHaveSaved": {
         "message": "Anda telah menyelamatkan diri "
     },
@@ -312,12 +279,6 @@
     },
     "hoursLower": {
         "message": "jam"
-    },
-    "youHaveSavedTime": {
-        "message": "Anda telah menyelamatkan orang"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " kehidupan mereka."
     },
     "statusReminder": {
         "message": "Periksa status.sponsor.ajay.app untuk status pelayan."
