@@ -2,11 +2,12 @@ import Config from "./config";
 
 import Utils from "./utils";
 import { SponsorTime, SponsorHideType } from "./types";
+import { Message, MessageResponse } from "./messageTypes";
 const utils = new Utils();
 
 interface MessageListener {
-    (request: any, sender: unknown, callback: (response: any) => void): void;
-} 
+    (request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void;
+}
 
 class MessageHandler {
     messageListener: MessageListener;
@@ -15,7 +16,7 @@ class MessageHandler {
         this.messageListener = messageListener;
     }
 
-    sendMessage(id: number, request, callback?) {
+    sendMessage(id: number, request: Message, callback?) {
         if (this.messageListener) {
             this.messageListener(request, null, callback);
         } else {
