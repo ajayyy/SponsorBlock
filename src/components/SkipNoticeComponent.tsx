@@ -2,10 +2,6 @@ import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config"
 import { ContentContainer, SponsorHideType, SponsorTime } from "../types";
-
-import Utils from "../utils";
-const utils = new Utils();
-
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 
@@ -42,7 +38,7 @@ export interface SkipNoticeState {
 
     downvoting: boolean;
     choosingCategory: boolean;
-    thanksForVotingText: boolean; //null until the voting buttons should be hidden
+    thanksForVotingText: string; //null until the voting buttons should be hidden
 
     actionState: SkipNoticeAction;
 }
@@ -447,7 +443,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
     }
 
-    getUnskippedModeInfo(index: number, buttonText: string) {
+    getUnskippedModeInfo(index: number, buttonText: string): SkipNoticeState {
         const self = this;
         const maxCountdownTime = function() {
             const sponsorTime = self.segments[index];
@@ -458,14 +454,11 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         return {
             unskipText: buttonText,
-
             unskipCallback: (index) => this.reskip(index),
-
-            //change max duration to however much of the sponsor is left
+            // change max duration to however much of the sponsor is left
             maxCountdownTime: maxCountdownTime,
-
             countdownTime: maxCountdownTime()
-        }
+        } as SkipNoticeState;
     }
 
     reskip(index: number): void {
@@ -508,7 +501,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => any, ...messages: string[]): void {
+    setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => unknown, ...messages: string[]): void {
         this.setState({
             messages,
             messageOnClick: (event) => onClick(event)
@@ -521,7 +514,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
     }
     
-    addVoteButtonInfo(message): void {
+    addVoteButtonInfo(message: string): void {
         this.setState({
             thanksForVotingText: message
         });

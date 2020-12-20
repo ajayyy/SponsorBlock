@@ -39,12 +39,6 @@
     "closePopup": {
         "message": "ポップアップを閉じる"
     },
-    "removeFromWhitelist": {
-        "message": "ホワイトリストからチャンネルを削除"
-    },
-    "viewLeaderboard": {
-        "message": "リーダーボードを表示"
-    },
     "here": {
         "message": "こちら"
     },
@@ -71,12 +65,6 @@
         "message": "ソースコード",
         "description": "Used on Firefox Store Page"
     },
-    "disableSkipping": {
-        "message": "SponsorBlock を無効にする"
-    },
-    "enableSkipping": {
-        "message": "SponsorBlock を有効にする"
-    },
     "errorCode": {
         "message": "エラーコード: "
     },
@@ -97,9 +85,6 @@
     },
     "audioNotification": {
         "message": "オーディオ通知をスキップ"
-    },
-    "youHaveSkipped": {
-        "message": "スキップしました "
     },
     "minLower": {
         "message": "分"

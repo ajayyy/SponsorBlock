@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Isječak završava sada"
     },
-    "noVideoID": {
-        "message": "YouTube video nije pronađen na ovoj kartici. Ako si siguran da je ovo YouTube kartica, zatvori ovaj okvir i ponovno ga otvori. Ako to ne radi, probaj ponovno učitati karticu."
-    },
     "success": {
         "message": "Uspjeh!"
     },
@@ -118,32 +115,11 @@
     "submitCheck": {
         "message": "Jesi li siguran da želiš unijeti ovo?"
     },
-    "whitelistChannel": {
-        "message": "Dodaj kanal na popis dopuštenih"
-    },
-    "removeFromWhitelist": {
-        "message": "Makni kanal s popisa dopuštenih"
-    },
     "voteOnTime": {
         "message": "Glasaj za isječak"
     },
-    "soFarUHSubmited": {
-        "message": "Do sada si podnio"
-    },
-    "savedPeopleFrom": {
-        "message": "Sačuvao si ljude od "
-    },
-    "viewLeaderboard": {
-        "message": "Pregledaj tablicu bodova"
-    },
     "here": {
         "message": "ovdje"
-    },
-    "recordTimesDescription": {
-        "message": "Klikni gumb ispod kada isječak započinje i završava kako bi ga zabilježio i unio u bazu podataka."
-    },
-    "popupHint": {
-        "message": "Savjet: Pritisni tipku točka-zarez dok si fokusiran na video kako bi zabilježio početak i kraj isječka te podnio isječak. (Ovo se može promijeniti u postavkama)"
     },
     "clearTimesButton": {
         "message": "Očisti vremena"
