@@ -1181,6 +1181,7 @@ function startSponsorClicked() {
     if (sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length < 2) {
         //it is an end time
         sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[1] = getRealCurrentTime();
+        sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.sort((a, b) => a > b ? 1 : (a < b ? -1 : 0));
     } else {
         //it is a start time
         sponsorTimesSubmitting.push({
