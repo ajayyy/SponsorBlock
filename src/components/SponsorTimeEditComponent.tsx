@@ -23,6 +23,8 @@ export interface SponsorTimeEditState {
     sponsorTimeEdits: [string, string];
 }
 
+const DEFAULT_CATEGORY = "chooseACategory";
+
 class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, SponsorTimeEditState> {
 
     idSuffix: string;
@@ -217,27 +219,17 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     getCategoryOptions(): React.ReactElement[] {
         const elements = [(
-            <option value={"chooseACategory"}
-                    key={"chooseACategory"}>
-                {chrome.i18n.getMessage("chooseACategory")}
+            <option value={DEFAULT_CATEGORY}
+                    key={DEFAULT_CATEGORY}>
+                {chrome.i18n.getMessage(DEFAULT_CATEGORY)}
             </option>
         )];
 
-        for (const category of Config.config.categorySelections) {
+        for (const category of CompileConfig.categoryList) {
             elements.push(
-                <option value={category.name}
-                        key={category.name}>
-                    {chrome.i18n.getMessage("category_" + category.name)}
-                </option>
-            );
-        }
-
-        if (elements.length < CompileConfig.categoryList.length) {
-            // Add show more button
-            elements.push(
-                <option value={"moreCategories"}
-                        key={"moreCategories"}>
-                    {chrome.i18n.getMessage("moreCategories")}
+                <option value={category}
+                        key={category}>
+                    {chrome.i18n.getMessage("category_" + category)}
                 </option>
             );
         }
@@ -247,15 +239,20 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         // See if show more categories was pressed
-        if (event.target.value === "moreCategories") {
-            // Open options page
-            chrome.runtime.sendMessage({"message": "openConfig"});
-
-            // Reset option to previous
-            event.target.value = this.props.contentContainer().sponsorTimesSubmitting[this.props.index].category;
+        if (!Config.config.categorySelections.some((category) => category.name === event.target.value)) {
+            const chosenCategory = event.target.value;
+            event.target.value = DEFAULT_CATEGORY;
+            
+            // Alert that they have to enable this category first
+            if (confirm(chrome.i18n.getMessage("enableThisCategoryFirst")
+                            .replace("{0}", chrome.i18n.getMessage("category_" + chosenCategory)))) {
+                // Open options page
+                chrome.runtime.sendMessage({"message": "openConfig"});
+            }
+            
             return;
         }
-
+        
         this.saveEditTimes();
     }
 

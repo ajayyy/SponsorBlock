@@ -752,18 +752,18 @@ function startSkipScheduleCheckingForStartSponsors() {
 /**
  * Get the video info for the current tab from YouTube
  */
-function getVideoInfo() {
-    sendRequestToCustomServer('GET', "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID, function(xmlhttp) {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            const decodedData = decodeURIComponent(xmlhttp.responseText).match(/player_response=([^&]*)/)[1];
-            if (!decodedData) {
-                console.error("[SB] Failed at getting video info from YouTube.");
-                return;
-            }
+async function getVideoInfo(): Promise<void> {
+    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID);
 
-            videoInfo = JSON.parse(decodedData);
+    if (result.ok) {
+        const decodedData = decodeURIComponent(result.responseText).match(/player_response=([^&]*)/)[1];
+        if (!decodedData) {
+            console.error("[SB] Failed at getting video info from YouTube.");
+            return;
         }
-    });
+
+        videoInfo = JSON.parse(decodedData);
+    }
 }
 
 function getYouTubeVideoID(url: string) {
@@ -1052,6 +1052,8 @@ function unskipSponsorTime(segment: SponsorTime) {
 
 function reskipSponsorTime(segment: SponsorTime) {
     video.currentTime = segment.segment[1];
+
+    startSponsorSchedule(true, segment.segment[1], false);
 }
 
 function createButton(baseID, title, callback, imageName, isDraggable=false): boolean {
