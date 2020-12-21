@@ -581,6 +581,10 @@
     "chooseACategory": {
         "message": "ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക"
     },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" വിഭാഗത്തിൽ സെഗ്‌മെന്റുകൾ സമർപ്പിക്കുന്നതിന്, നിങ്ങൾ ഇത് ഓപ്ഷനുകളിൽ പ്രവർത്തനക്ഷമമാക്കണം. നിങ്ങളെ ഇപ്പോൾ ഓപ്ഷനുകളിലേക്ക് റീഡയറക്ട് ചെയ്യും.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "നിങ്ങൾ സമർപ്പിക്കുന്ന എല്ലാ സെഗ്‌മെന്റുകൾക്കും നിങ്ങൾ ഒരു വിഭാഗം തിരഞ്ഞെടുക്കണം!"
     },
