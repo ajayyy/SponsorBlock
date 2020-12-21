@@ -155,6 +155,9 @@
     "submitTimesButton": {
         "message": "Esita ajad"
     },
+    "publicStats": {
+        "message": "Seda kasutatakse avaliku statistika lehel, et näidata välja, kui palju oled panustanud. Vaata seda"
+    },
     "Username": {
         "message": "Kasutajanimi"
     },
@@ -194,8 +197,17 @@
     "showDeleteButton": {
         "message": "Kuva kustutusnupp YouTube mängijal"
     },
+    "whatDeleteButton": {
+        "message": "YouTube'i mängija nupp, mis tühjendab kõik sinu praeguse video saatmata segmendid."
+    },
     "enableViewTracking": {
         "message": "Luba vahelejätmiste arvu jälgimine"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Küsi räsi eesliite järgi"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "VideoID järgi segmentide küsimise asemel saadetakse VideoID räsi 4 esimest märki ning server saadab tagasi kõigi sarnaste räsidega videote andmed."
     },
     "showNotice": {
         "message": "Kuva märkus uuesti"
@@ -215,6 +227,12 @@
     "noticeUpdate2": {
         "message": "Kui sulle see ikka ei meeldi, vajuta \"ära näita kunagi\" nuppu.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "keybindDescription": {
+        "message": "Vali klahv selle kirjutamisega"
+    },
+    "keybindDescriptionComplete": {
+        "message": "Otsetee on seatud: "
     },
     "disableSkipping": {
         "message": "Vahelejätmine on lubatud"
@@ -277,8 +295,17 @@
     "statusReminder": {
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
     },
+    "changeUserID": {
+        "message": "Impordi/ekspordi oma UserID"
+    },
+    "whatChangeUserID": {
+        "message": "Seda tuleks privaatsena hoida. See on nagu parool ning ei tohiks kellegagi jagada. Kui kellelgi see on, saavad nad sinuna esineda."
+    },
     "setUserID": {
         "message": "Seadista UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Hoiatus: UserID muutmine on püsiv. Kas soovid kindlasti seda teha? Igaks juhuks soovitame eelmise UserID varundada."
     },
     "createdBy": {
         "message": "Autor"
@@ -298,6 +325,9 @@
     "supportInvidiousDescription": {
         "message": "Invidious (invidio.us) on kolmanda osapoole YouTube'i klient. Selle toe lubamiseks pead nõustuma lisalubadega. See EI tööta inkognito-režiimis nii Chromes kui ka teistes Chromiumi brauserites."
     },
+    "optionsInfo": {
+        "message": "Luba Invidiouse tugi, keela automaatne vahelejätmine, peida nupud ja muud valikud."
+    },
     "addInvidiousInstance": {
         "message": "Lisa Invidiouse eksemplar"
     },
@@ -306,6 +336,12 @@
     },
     "add": {
         "message": "Lisa"
+    },
+    "addInvidiousInstanceError": {
+        "message": "See on sobimatu domeen. Siia tuleks kirjutada AINULT domeeniosa, nt invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Lähtesta Invidiouse eksemplaride nimekiri"
     },
     "currentInstances": {
         "message": "Praegused eksemplarid:"
@@ -328,11 +364,20 @@
     "reset": {
         "message": "Lähtesta"
     },
+    "customAddressError": {
+        "message": "Aadress ei ole õiges vormingus. Veendu, et sul on alguses http:// või https:// ning lõpus ei ole kaldkriipsu."
+    },
+    "areYouSureReset": {
+        "message": "Kas soovid kindlasti selle lähtestada?"
+    },
     "unlistedCheck": {
         "message": "Ignoreeri nimekirjaväliseid/privaatsed videoid"
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com on nüüd toetatud"
+    },
+    "whatExportOptions": {
+        "message": "See on sinu kogu seadistus JSON-formaadis. Selle hulgas on ka UserID, seega jaga seda targalt."
     },
     "setOptions": {
         "message": "Määra valikud"
@@ -437,6 +482,9 @@
     "showOverlay": {
         "message": "Kuva mängija ajaribal"
     },
+    "colorFormatIncorrect": {
+        "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
+    },
     "previewColor": {
         "message": "Värvi eelvaade",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -465,6 +513,10 @@
     },
     "chooseACategory": {
         "message": "Vali kategooria"
+    },
+    "enableThisCategoryFirst": {
+        "message": "Kategooriaga \"{0}\" segmentide saatmiseks pead selle enne valikutes lubama. Sind suunatakse valikutesse nüüd.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "Sa pead igale segmendile enne esitamist kategooria valima!"
