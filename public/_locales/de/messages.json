@@ -357,7 +357,7 @@
         "message": "Invidious-Kompatibilität"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (https://invidio.us) ist ein Drittanbieter-YouTube-Client. Um SponsorBlock mit Invidious verwenden zu können, musst du die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT in Chrome's Inkognitomodus oder anderen Chromium-Varianten."
+        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Incongnito-modus auf Chrome und anderen Chromium-Varianten."
     },
     "optionsInfo": {
         "message": "Zu überspringende Kategorien auswählen, automatisches Überspringen, Tasten ein- & ausblenden und noch viel mehr."
@@ -580,6 +580,10 @@
     },
     "chooseACategory": {
         "message": "Wähle eine Kategorie"
+    },
+    "enableThisCategoryFirst": {
+        "message": "Um Segmente aus der Kategorie \"{0}\" zu senden, musst du diese in den Optionen aktivieren. Du wirst jetzt zu den Optionen weitergeleitet.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "Du musst eine Kategorie für jedes zu übermittelnde Segment auswählen!"
