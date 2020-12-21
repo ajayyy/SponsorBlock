@@ -581,6 +581,10 @@
     "chooseACategory": {
         "message": "Pilih Kategori"
     },
+    "enableThisCategoryFirst": {
+        "message": "Untuk menghantar segmen dengan kategori \"{0}\", anda mesti mengaktifkannya dalam pilihan. Anda akan diarahkan ke pilihan sekarang.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Anda mesti memilih kategori untuk semua segmen yang anda kirimkan!"
     },
