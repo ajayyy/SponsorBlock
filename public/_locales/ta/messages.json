@@ -581,6 +581,10 @@
     "chooseACategory": {
         "message": "ஒரு வகையைத் தேர்வுசெய்க"
     },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" வகையுடன் பிரிவுகளைச் சமர்ப்பிக்க, நீங்கள் அதை விருப்பங்களில் இயக்க வேண்டும். நீங்கள் இப்போது விருப்பங்களுக்கு திருப்பி விடப்படுவீர்கள்.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "நீங்கள் சமர்ப்பிக்கும் அனைத்து பிரிவுகளுக்கும் ஒரு வகையைத் தேர்ந்தெடுக்க வேண்டும்!"
     },
