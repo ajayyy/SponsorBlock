@@ -581,6 +581,10 @@
     "chooseACategory": {
         "message": "వర్గాన్ని ఎంచుకోండి"
     },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" వర్గంతో విభాగాలను సమర్పించడానికి, మీరు దీన్ని ఎంపికలలో ప్రారంభించాలి. మీరు ఇప్పుడు ఎంపికలకు మళ్ళించబడతారు.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "మీరు సమర్పించే అన్ని విభాగాల కోసం మీరు తప్పనిసరిగా ఒక వర్గాన్ని ఎంచుకోవాలి!"
     },
