@@ -581,6 +581,10 @@
     "chooseACategory": {
         "message": "Selecione uma Categoria"
     },
+    "enableThisCategoryFirst": {
+        "message": "Para enviar os segmentos com a categoria de \"{0}\", você deve ativá-lo nas opções. Você será redirecionado para as opções agora.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Você deve selecionar uma categoria para todos os segmentos que você está enviando!"
     },
