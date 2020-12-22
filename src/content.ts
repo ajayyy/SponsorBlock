@@ -293,12 +293,18 @@ async function videoIDChange(id) {
         if (onMobileYouTube) {
             // Mobile YouTube workaround
             const observer = new MutationObserver(handleMobileControlsMutations);
+            let controlsContainer = null;
 
-            observer.observe(document.getElementById("player-control-container"), { 
-                attributes: true, 
-                childList: true, 
-                subtree: true 
-            });
+            utils.wait(() => {
+                controlsContainer = document.getElementById("player-control-container") 
+                return controlsContainer !== null
+            }).then(() => {
+                observer.observe(document.getElementById("player-control-container"), { 
+                    attributes: true, 
+                    childList: true, 
+                    subtree: true 
+                });
+            }).catch();
         } else {
             utils.wait(getControls).then(createPreviewBar);
         }
@@ -353,18 +359,6 @@ async function videoIDChange(id) {
 
 function handleMobileControlsMutations(): void {
     const mobileYouTubeSelector = ".progress-bar-background";
-    
-    updateVisibilityOfPlayerControlsButton().then((createdButtons) => {
-        if (createdButtons) {
-            if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length >= 2) {
-                changeStartSponsorButton(true, true);
-            } else if (sponsorTimesSubmitting != null && sponsorTimesSubmitting.length > 0 && sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment.length < 2) {
-                changeStartSponsorButton(false, true);
-            } else {
-                changeStartSponsorButton(true, false);
-            }
-        }
-    });
     
     if (previewBar !== null) {
         if (document.body.contains(previewBar.container)) {
@@ -1133,6 +1127,7 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<boolean> {
     if (!sponsorVideoID) return false;
 
     const createdButtons = await createButtons();
+    if (!createdButtons) return;
 
     if (Config.config.hideVideoPlayerControls || onInvidious) {
         document.getElementById("startSponsorButton").style.display = "none";
@@ -1226,7 +1221,7 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
 }
 
 async function changeStartSponsorButton(showStartSponsor: boolean, uploadButtonVisible: boolean): Promise<boolean> {
-    if(!sponsorVideoID) return false;
+    if(!sponsorVideoID || onMobileYouTube) return false;
     
     //if it isn't visible, there is no data
     const shouldHide = (uploadButtonVisible && !(Config.config.hideDeleteButtonPlayerControls || onInvidious)) ? "unset" : "none"
