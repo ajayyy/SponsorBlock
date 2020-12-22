@@ -581,6 +581,10 @@
     "chooseACategory": {
         "message": "Vyberte kategorii"
     },
+    "enableThisCategoryFirst": {
+        "message": "Pro odeslání segmentů v kategorii \"{0}\" to nejprve musíte povolit v nastavení. Nyní budete přesměrováni do nastavení.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Musíte vybrat kategorii pro všechny odeslané segmenty!"
     },
