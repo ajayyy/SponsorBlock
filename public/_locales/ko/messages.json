@@ -85,6 +85,9 @@
     "sponsorEnd": {
         "message": "광고 구간 끝"
     },
+    "noVideoID": {
+        "message": "찾은 유튜브 비디오가 없습니다.\n이 것이 틀리다면, 텝을 새로고침 하세요."
+    },
     "success": {
         "message": "성공!"
     },
@@ -117,6 +120,12 @@
     },
     "submitCheck": {
         "message": "정말로 제출하시겠습니까?"
+    },
+    "whitelistChannel": {
+        "message": "화이트리스트 체널"
+    },
+    "removeFromWhitelist": {
+        "message": "항목을 화이트리스트에서 삭제하기"
     },
     "voteOnTime": {
         "message": "구간 투표"
@@ -595,5 +604,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "업로드되지 않은 구간이 있는 영상이 있을 때 알림을 보냅니다"
+    },
+    "help": {
+        "message": "도움"
     }
 }
