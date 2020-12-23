@@ -11,7 +11,7 @@
         "message": "Server ütles, et see taotlus oli sobimatu"
     },
     "429": {
-        "message": "Sa oled sellele ühele videole liiga palju sponsoriaegu saatnud, kas oled kindel et neid on tõesti nii palju?"
+        "message": "Sa oled sellele ühele videole liiga palju sponsoriaegu saatnud, kas oled kindel, et neid on tõesti nii palju?"
     },
     "409": {
         "message": "See on juba varasemalt saadetud"
@@ -98,16 +98,16 @@
         "message": "Ühendusega esines tõrge. Veakood: "
     },
     "wantToSubmit": {
-        "message": "Kas soovid segmendid saata video ID'le"
+        "message": "Kas soovid segmendid saata video IDle"
     },
     "leftTimes": {
-        "message": "Sul tunduvad olevat mõned saatmata segmendid. Mine sellele lehele tagasi, et need saata (need ei ole kustutatud)."
+        "message": "Sul tunduvad olevat mõned segmendid esitamata. Nende esitamiseks mine sellele lehele tagasi (need ei ole kustutatud)."
     },
     "clearTimes": {
         "message": "Tühjenda segmendid"
     },
     "openPopup": {
-        "message": "Ava SponsorBlock'i hüpik"
+        "message": "Ava SponsorBlocki hüpik"
     },
     "closePopup": {
         "message": "Sulge hüpik"
@@ -140,20 +140,20 @@
         "message": "siin"
     },
     "recordTimesDescription": {
-        "message": "Esita"
+        "message": "Saada"
     },
     "submissionEditHint": {
-        "message": "Segmendi töötlemine avaneb pärast esitamist",
+        "message": "Segmendi töötlemine avaneb pärast saatmist",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Vihje: sa võid valikutes edastamiseks määrata klaviatuuriotseteid"
+        "message": "Vihje: sa võid saatmiseks määrata valikutes klaviatuuriotseteid"
     },
     "clearTimesButton": {
         "message": "Tühjenda ajad"
     },
     "submitTimesButton": {
-        "message": "Esita ajad"
+        "message": "Saada ajad"
     },
     "publicStats": {
         "message": "Seda kasutatakse avaliku statistika lehel, et näidata välja, kui palju oled panustanud. Vaata seda"
@@ -180,7 +180,7 @@
         "message": "Peida nupud YouTube mängijal"
     },
     "hideButtonsDescription": {
-        "message": "See peidab nupud, mis kuvatakse YouTube'i mängijal vahelejätmiste segmentide edastamiseks."
+        "message": "See peidab nupud, mis kuvatakse YouTube'i mängijal vahelejätmiste segmentide saatmiseks."
     },
     "showInfoButton": {
         "message": "Kuva infonupp YouTube mängijal"
@@ -386,10 +386,10 @@
         "message": "See JSON ei ole korralikult vormistatud. Sinu valikuid ei muudetud."
     },
     "confirmNoticeTitle": {
-        "message": "Esita segment"
+        "message": "Saada segment"
     },
     "submit": {
-        "message": "Esita"
+        "message": "Saada"
     },
     "cancel": {
         "message": "Katkesta"
@@ -515,11 +515,11 @@
         "message": "Vali kategooria"
     },
     "enableThisCategoryFirst": {
-        "message": "Kategooriaga \"{0}\" segmentide saatmiseks pead selle enne valikutes lubama. Sind suunatakse valikutesse nüüd.",
+        "message": "Kategooriaga \"{0}\" segmentide saatmiseks pead selle enne valikutes lubama. Sind suunatakse nüüd valikutesse.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
-        "message": "Sa pead igale segmendile enne esitamist kategooria valima!"
+        "message": "Sa pead enne saatmist igale segmendile kategooria valima!"
     },
     "bracketEnd": {
         "message": "(lõpp)"
@@ -559,7 +559,7 @@
         "message": "Ava valikud, et jätta vahele vaheaegu, müüdavat kaupa jms"
     },
     "unsubmittedWarning": {
-        "message": "Esitamata segmentide teatis"
+        "message": "Saatmata segmentide teatis"
     },
     "unsubmittedWarningDescription": {
         "message": "Saada teavitus, kui lahkud videost segmentidega, mis ei ole üles laaditud"
