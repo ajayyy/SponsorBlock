@@ -32,15 +32,15 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         for (const categorySelection of Config.config.categorySelections) {
             if (categorySelection.name === this.props.category) {
                 switch (categorySelection.option) {
-                    case CategorySkipOption.ShowOverlay:
-                        defaultOption = "showOverlay";
-                        break;
-                    case CategorySkipOption.ManualSkip:
-                        defaultOption = "manualSkip";
-                        break;
-                    case CategorySkipOption.AutoSkip:
-                        defaultOption = "autoSkip";
-                        break;
+                case CategorySkipOption.ShowOverlay:
+                    defaultOption = "showOverlay";
+                    break;
+                case CategorySkipOption.ManualSkip:
+                    defaultOption = "manualSkip";
+                    break;
+                case CategorySkipOption.AutoSkip:
+                    defaultOption = "autoSkip";
+                    break;
                 }
 
                 break;
@@ -53,7 +53,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                     className="categoryTableElement">
                     <td id={this.props.category + "OptionName"}
                         className="categoryTableLabel">
-                            {chrome.i18n.getMessage("category_" + this.props.category)}
+                        {chrome.i18n.getMessage("category_" + this.props.category)}
                     </td>
 
                     <td id={this.props.category + "SkipOption"}>
@@ -61,7 +61,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             className="categoryOptionsSelector"
                             defaultValue={defaultOption}
                             onChange={this.skipOptionSelected.bind(this)}>
-                                {this.getCategorySkipOptions()}
+                            {this.getCategorySkipOptions()}
                         </select>
                     </td>
                     
@@ -85,10 +85,10 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
                 <tr id={this.props.category + "DescriptionRow"}
                     className="small-description">
-                        <td
-                            colSpan={2}>
-                            {chrome.i18n.getMessage("category_" + this.props.category + "_description")}
-                        </td>
+                    <td
+                        colSpan={2}>
+                        {chrome.i18n.getMessage("category_" + this.props.category + "_description")}
+                    </td>
                 </tr>
 
             </>
@@ -101,20 +101,20 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         this.removeCurrentCategorySelection();
 
         switch (event.target.value) {
-            case "disable": 
-                return;
-            case "showOverlay":
-                option = CategorySkipOption.ShowOverlay;
+        case "disable": 
+            return;
+        case "showOverlay":
+            option = CategorySkipOption.ShowOverlay;
 
-                break;
-            case "manualSkip":
-                option = CategorySkipOption.ManualSkip;
+            break;
+        case "manualSkip":
+            option = CategorySkipOption.ManualSkip;
 
-                break;
-            case "autoSkip":
-                option = CategorySkipOption.AutoSkip;
+            break;
+        case "autoSkip":
+            option = CategorySkipOption.AutoSkip;
 
-                break;
+            break;
         }
 
         Config.config.categorySelections.push({

@@ -32,163 +32,163 @@ async function init() {
 
     for (let i = 0; i < optionsElements.length; i++) {
         switch (optionsElements[i].getAttribute("option-type")) {
-            case "toggle": {
-                const option = optionsElements[i].getAttribute("sync-option");
-                const optionResult = Config.config[option];
+        case "toggle": {
+            const option = optionsElements[i].getAttribute("sync-option");
+            const optionResult = Config.config[option];
 
-                const checkbox = optionsElements[i].querySelector("input");
-                const reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
+            const checkbox = optionsElements[i].querySelector("input");
+            const reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
 
-                const confirmMessage = optionsElements[i].getAttribute("confirm-message");
+            const confirmMessage = optionsElements[i].getAttribute("confirm-message");
 
-                if (optionResult != undefined) {
-                    checkbox.checked = optionResult;
+            if (optionResult != undefined) {
+                checkbox.checked = optionResult;
 
-                    if (reverse) {
-                        optionsElements[i].querySelector("input").checked = !optionResult;
-                    }
+                if (reverse) {
+                    optionsElements[i].querySelector("input").checked = !optionResult;
+                }
+            }
+
+            // See if anything extra should be run first time
+            switch (option) {
+            case "supportInvidious":
+                invidiousInit(checkbox, option);
+                break;
+            }
+
+            // Add click listener
+            checkbox.addEventListener("click", () => {
+                // Confirm if required
+                if (checkbox.checked && confirmMessage && !confirm(chrome.i18n.getMessage(confirmMessage))){
+                    checkbox.checked = false;
+                    return;
                 }
 
-                // See if anything extra should be run first time
+                Config.config[option] = reverse ? !checkbox.checked : checkbox.checked;
+
+                // See if anything extra must be run
                 switch (option) {
-                    case "supportInvidious":
-                        invidiousInit(checkbox, option);
-                        break;
-                }
+                case "supportInvidious":
+                    invidiousOnClick(checkbox, option);
+                    break;
+                case "disableAutoSkip":
+                    if (!checkbox.checked) {
+                        // Enable the notice
+                        Config.config["dontShowNotice"] = false;
+                                
+                        const showNoticeSwitch = <HTMLInputElement> document.querySelector("[sync-option='dontShowNotice'] > label > label > input");
+                        showNoticeSwitch.checked = true;
+                    }
 
-                // Add click listener
-                checkbox.addEventListener("click", () => {
-                    // Confirm if required
-                    if (checkbox.checked && confirmMessage && !confirm(chrome.i18n.getMessage(confirmMessage))){
-                        checkbox.checked = false;
+                    break;
+                }
+            });
+            break;
+        }
+        case "text-change": {
+            const textChangeOption = optionsElements[i].getAttribute("sync-option");
+            const textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
+                
+            const textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
+
+            textChangeInput.value = Config.config[textChangeOption];
+
+            textChangeSetButton.addEventListener("click", async () => {
+                // See if anything extra must be done
+                switch (textChangeOption) {
+                case "serverAddress": {
+                    const result = validateServerAddress(textChangeInput.value);
+
+                    if (result !== null) {
+                        textChangeInput.value = result;
+                    } else {
                         return;
                     }
 
-                    Config.config[option] = reverse ? !checkbox.checked : checkbox.checked;
+                    // Permission needed on Firefox
+                    if (utils.isFirefox()) {
+                        const permissionSuccess = await new Promise((resolve) => {
+                            chrome.permissions.request({
+                                origins: [textChangeInput.value + "/"],
+                                permissions: []
+                            }, resolve);
+                        });
 
-                    // See if anything extra must be run
-                    switch (option) {
-                        case "supportInvidious":
-                            invidiousOnClick(checkbox, option);
-                            break;
-                        case "disableAutoSkip":
-                            if (!checkbox.checked) {
-                                // Enable the notice
-                                Config.config["dontShowNotice"] = false;
-                                
-                                const showNoticeSwitch = <HTMLInputElement> document.querySelector("[sync-option='dontShowNotice'] > label > label > input");
-                                showNoticeSwitch.checked = true;
-                            }
-
-                            break;
+                        if (!permissionSuccess) return;
                     }
-                });
-                break;
-            }
-            case "text-change": {
-                const textChangeOption = optionsElements[i].getAttribute("sync-option");
-                const textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
-                
-                const textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
+
+                    break;
+                }
+                }
+
+                Config.config[textChangeOption] = textChangeInput.value;
+            });
+
+            // Reset to the default if needed
+            const textChangeResetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-reset");
+            textChangeResetButton.addEventListener("click", () => {
+                if (!confirm(chrome.i18n.getMessage("areYouSureReset"))) return;
+
+                Config.config[textChangeOption] = Config.defaults[textChangeOption];
 
                 textChangeInput.value = Config.config[textChangeOption];
+            });
 
-                textChangeSetButton.addEventListener("click", async () => {
-                    // See if anything extra must be done
-                    switch (textChangeOption) {
-                        case "serverAddress": {
-                            const result = validateServerAddress(textChangeInput.value);
+            break;
+        }
+        case "private-text-change": {
+            const button = optionsElements[i].querySelector(".trigger-button");
+            button.addEventListener("click", () => activatePrivateTextChange(<HTMLElement> optionsElements[i]));
 
-                            if (result !== null) {
-                                textChangeInput.value = result;
-                            } else {
-                                return;
-                            }
+            const privateTextChangeOption = optionsElements[i].getAttribute("sync-option");
+            // See if anything extra must be done
+            switch (privateTextChangeOption) {
+            case "invidiousInstances":
+                invidiousInstanceAddInit(<HTMLElement> optionsElements[i], privateTextChangeOption);
+            }
 
-                            // Permission needed on Firefox
-                            if (utils.isFirefox()) {
-                                const permissionSuccess = await new Promise((resolve) => {
-                                    chrome.permissions.request({
-                                        origins: [textChangeInput.value + "/"],
-                                        permissions: []
-                                    }, resolve);
-                                });
+            break;
+        }
+        case "button-press": {
+            const actionButton = optionsElements[i].querySelector(".trigger-button");
 
-                                if (!permissionSuccess) return;
-                            }
-
-                            break;
-                        }
-                    }
-
-                    Config.config[textChangeOption] = textChangeInput.value;
-                });
-
-                // Reset to the default if needed
-                const textChangeResetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-reset");
-                textChangeResetButton.addEventListener("click", () => {
-                    if (!confirm(chrome.i18n.getMessage("areYouSureReset"))) return;
-
-                    Config.config[textChangeOption] = Config.defaults[textChangeOption];
-
-                    textChangeInput.value = Config.config[textChangeOption];
-                });
-
+            switch(optionsElements[i].getAttribute("sync-option")) {
+            case "copyDebugInformation":
+                actionButton.addEventListener("click", copyDebugOutputToClipboard);
                 break;
             }
-            case "private-text-change": {
-                const button = optionsElements[i].querySelector(".trigger-button");
-                button.addEventListener("click", () => activatePrivateTextChange(<HTMLElement> optionsElements[i]));
 
-                const privateTextChangeOption = optionsElements[i].getAttribute("sync-option");
-                // See if anything extra must be done
-                switch (privateTextChangeOption) {
-                    case "invidiousInstances":
-                        invidiousInstanceAddInit(<HTMLElement> optionsElements[i], privateTextChangeOption);
-                }
+            break;
+        }
+        case "keybind-change": {
+            const keybindButton = optionsElements[i].querySelector(".trigger-button");
+            keybindButton.addEventListener("click", () => activateKeybindChange(<HTMLElement> optionsElements[i]));
 
-                break;
+            break;
+        }
+        case "display":{
+            updateDisplayElement(<HTMLElement> optionsElements[i])
+            break;
+        }
+        case "number-change": {
+            const numberChangeOption = optionsElements[i].getAttribute("sync-option");
+            const configValue = Config.config[numberChangeOption];
+            const numberInput = optionsElements[i].querySelector("input");
+
+            if (isNaN(configValue) || configValue < 0) {
+                numberInput.value = Config.defaults[numberChangeOption];
+            } else {
+                numberInput.value = configValue;
             }
-            case "button-press": {
-                const actionButton = optionsElements[i].querySelector(".trigger-button");
 
-                switch(optionsElements[i].getAttribute("sync-option")) {
-                    case "copyDebugInformation":
-                        actionButton.addEventListener("click", copyDebugOutputToClipboard);
-                        break;
-                }
+            numberInput.addEventListener("input", () => {
+                Config.config[numberChangeOption] = numberInput.value;
+            });
 
-                break;
-            }
-            case "keybind-change": {
-                const keybindButton = optionsElements[i].querySelector(".trigger-button");
-                keybindButton.addEventListener("click", () => activateKeybindChange(<HTMLElement> optionsElements[i]));
-
-                break;
-            }
-            case "display":{
-                updateDisplayElement(<HTMLElement> optionsElements[i])
-                break;
-            }
-            case "number-change": {
-                const numberChangeOption = optionsElements[i].getAttribute("sync-option");
-                const configValue = Config.config[numberChangeOption];
-                const numberInput = optionsElements[i].querySelector("input");
-
-                if (isNaN(configValue) || configValue < 0) {
-                    numberInput.value = Config.defaults[numberChangeOption];
-                } else {
-                    numberInput.value = configValue;
-                }
-
-                numberInput.addEventListener("input", () => {
-                    Config.config[numberChangeOption] = numberInput.value;
-                });
-
-                break;
-            }
-            case "react-CategoryChooserComponent":
-                new CategoryChooser(optionsElements[i]);
+            break;
+        }
+        case "react-CategoryChooserComponent":
+            new CategoryChooser(optionsElements[i]);
             break;
         }
     }
@@ -208,8 +208,8 @@ function optionsConfigUpdateListener() {
 
     for (let i = 0; i < optionsElements.length; i++) {
         switch (optionsElements[i].getAttribute("option-type")) {
-            case "display":
-                updateDisplayElement(<HTMLElement> optionsElements[i])
+        case "display":
+            updateDisplayElement(<HTMLElement> optionsElements[i])
         }
     }
 }
@@ -226,9 +226,9 @@ function updateDisplayElement(element: HTMLElement) {
 
     // See if anything extra must be run
     switch (displayOption) {
-        case "invidiousInstances":
-            element.innerText = displayText.join(', ');
-            break;
+    case "invidiousInstances":
+        element.innerText = displayText.join(', ');
+        break;
     }
 }
 
@@ -425,24 +425,24 @@ function activatePrivateTextChange(element: HTMLElement) {
 
     // See if anything extra must be done
     switch (option) {
-        case "invidiousInstances":
-            element.querySelector(".option-hidden-section").classList.remove("hidden");
-            return;
+    case "invidiousInstances":
+        element.querySelector(".option-hidden-section").classList.remove("hidden");
+        return;
     }
     
     let result = Config.config[option];
 
     // See if anything extra must be done
     switch (option) {
-        case "*": {
-            const jsonData = JSON.parse(JSON.stringify(Config.localConfig));
+    case "*": {
+        const jsonData = JSON.parse(JSON.stringify(Config.localConfig));
 
-            // Fix segmentTimes data as it is destroyed from the JSON stringify
-            jsonData.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
+        // Fix segmentTimes data as it is destroyed from the JSON stringify
+        jsonData.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
 
-            result = JSON.stringify(jsonData);
-            break;
-        }
+        result = JSON.stringify(jsonData);
+        break;
+    }
     }
 
     textBox.value = result;
@@ -455,30 +455,30 @@ function activatePrivateTextChange(element: HTMLElement) {
             
             // See if anything extra must be done
             switch (option) {
-                case "*":
-                    try {
-                        const newConfig = JSON.parse(textBox.value);
-                        for (const key in newConfig) {
-                            Config.config[key] = newConfig[key];
-                        }
-                        Config.convertJSON();
+            case "*":
+                try {
+                    const newConfig = JSON.parse(textBox.value);
+                    for (const key in newConfig) {
+                        Config.config[key] = newConfig[key];
+                    }
+                    Config.convertJSON();
 
-                        if (newConfig.supportInvidious) {
-                            const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > label > label > input");
+                    if (newConfig.supportInvidious) {
+                        const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > label > label > input");
                             
-                            checkbox.checked = true;
-                            await invidiousOnClick(checkbox, "supportInvidious");
-                        }
-
-                        window.location.reload();
-                        
-                    } catch (e) {
-                        alert(chrome.i18n.getMessage("incorrectlyFormattedOptions"));
+                        checkbox.checked = true;
+                        await invidiousOnClick(checkbox, "supportInvidious");
                     }
 
-                    break;
-                default:
-                    Config.config[option] = textBox.value;
+                    window.location.reload();
+                        
+                } catch (e) {
+                    alert(chrome.i18n.getMessage("incorrectlyFormattedOptions"));
+                }
+
+                break;
+            default:
+                Config.config[option] = textBox.value;
             }
         }
     });
@@ -533,10 +533,10 @@ function copyDebugOutputToClipboard() {
 
     // Copy object to clipboard
     navigator.clipboard.writeText(JSON.stringify(output, null, 4))
-      .then(() => {
-        alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
-      })
-      .catch(() => {
-        alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
-      });
+        .then(() => {
+            alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
+        })
+        .catch(() => {
+            alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
+        });
 }

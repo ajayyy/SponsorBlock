@@ -227,8 +227,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     setTimeout(() => PageElements.sponsorblockPopup.classList.remove("preload"), 250);
 
     messageHandler.query({
-            active: true,
-            currentWindow: true
+        active: true,
+        currentWindow: true
     }, onTabs);
 
     function onTabs(tabs) {
@@ -313,7 +313,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                         document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
                     }
                 });
-            }
+        }
         );
     }
 
@@ -374,8 +374,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             // Sort list by start time
             const segmentTimes = request.sponsorTimes
-                                .sort((a, b) => a.segment[1] - b.segment[1])
-                                .sort((a, b) => a.segment[0] - b.segment[0]);
+                .sort((a, b) => a.segment[1] - b.segment[1])
+                .sort((a, b) => a.segment[0] - b.segment[0]);
 
             //add them as buttons to the issue reporting container
             const container = document.getElementById("issueReporterTimeButtons");
@@ -655,7 +655,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                                 message: 'whitelistChange',
                                 value: true
                             });
-                        }
+                    }
                     );
                 }
             );
@@ -673,35 +673,35 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 {message: 'getChannelID'},
                 function(response) {
                     //get whitelisted channels
-                        let whitelistedChannels = Config.config.whitelistedChannels;
-                        if (whitelistedChannels == undefined) {
-                            whitelistedChannels = [];
-                        }
+                    let whitelistedChannels = Config.config.whitelistedChannels;
+                    if (whitelistedChannels == undefined) {
+                        whitelistedChannels = [];
+                    }
 
-                        //remove this channel
-                        const index = whitelistedChannels.indexOf(response.channelID);
-                        whitelistedChannels.splice(index, 1);
+                    //remove this channel
+                    const index = whitelistedChannels.indexOf(response.channelID);
+                    whitelistedChannels.splice(index, 1);
 
-                        //change button
-                        PageElements.whitelistChannel.style.display = "unset";
-                        PageElements.unwhitelistChannel.style.display = "none";
-                        document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
+                    //change button
+                    PageElements.whitelistChannel.style.display = "unset";
+                    PageElements.unwhitelistChannel.style.display = "none";
+                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
 
-                        //save this
-                        Config.config.whitelistedChannels = whitelistedChannels;
+                    //save this
+                    Config.config.whitelistedChannels = whitelistedChannels;
 
-                        //send a message to the client
-                        messageHandler.query({
-                            active: true,
-                            currentWindow: true
-                        }, tabs => {
-                            messageHandler.sendMessage(
-                                tabs[0].id, {
-                                    message: 'whitelistChange',
-                                    value: false
-                                });
-                            }
-                        );
+                    //send a message to the client
+                    messageHandler.query({
+                        active: true,
+                        currentWindow: true
+                    }, tabs => {
+                        messageHandler.sendMessage(
+                            tabs[0].id, {
+                                message: 'whitelistChange',
+                                value: false
+                            });
+                    }
+                    );
                 }
             );
         });
@@ -711,7 +711,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
      * Should skipping be disabled (visuals stay)
      */
     function toggleSkipping(disabled) {
-		Config.config.disableSkipping = disabled;
+        Config.config.disableSkipping = disabled;
 
         let hiddenButton = PageElements.disableSkipping;
         let shownButton = PageElements.enableSkipping;

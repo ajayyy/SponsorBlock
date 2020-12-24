@@ -29,7 +29,7 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
                 <tbody>
                     {/* Headers */}
                     <tr id={"CategoryOptionsRow"}
-                            className="categoryTableElement categoryTableHeader">
+                        className="categoryTableElement categoryTableHeader">
                         <td id={"CategoryOptionName"}>
                             {chrome.i18n.getMessage("category")}
                         </td>
