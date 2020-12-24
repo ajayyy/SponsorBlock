@@ -848,12 +848,7 @@ function updatePreviewBar(): void {
     previewBar.set(previewBarSegments, video.duration)
 
     if (Config.config.showTimeWithSkips) {
-        const skippedSegments = previewBarSegments.filter((segment) => {
-            // Count the segment only if the category is autoskipped
-            return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip;
-        });
-
-        const skippedDuration = utils.getTimestampsDuration(skippedSegments.map(({segment}) => segment));
+        const skippedDuration = utils.getTimestampsDuration(previewBarSegments.map(({segment}) => segment));
 
         showTimeWithoutSkips(skippedDuration);
     }
