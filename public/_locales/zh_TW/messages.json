@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "片段現在結束"
     },
-    "noVideoID": {
-        "message": "未在這個分頁找到任何YouTube影片。 如果您知道這是個YouTube分頁的話，關閉這個彈出視窗並重新開啟它。如果還是不管用，嘗試重新載入分頁"
-    },
     "success": {
         "message": "成功！"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "您確定要提交這個嗎？"
     },
-    "whitelistChannel": {
-        "message": "將頻道列入白名單"
-    },
-    "removeFromWhitelist": {
-        "message": "將頻道從白名單移除"
-    },
     "voteOnTime": {
         "message": "為分段投票"
     },
-    "soFarUHSubmited": {
-        "message": "您目前已提交"
-    },
-    "savedPeopleFrom": {
-        "message": "您已為大家節省 "
-    },
-    "viewLeaderboard": {
-        "message": "查看排行榜"
-    },
     "here": {
         "message": "這裡"
-    },
-    "recordTimesDescription": {
-        "message": "點擊下方的按鈕來錄製分段的始與末"
-    },
-    "popupHint": {
-        "message": "小提醒：在聚焦於影片時按下分號鍵來記錄分段的始與末然後按下冒號鍵來提交（您可以透過選項來更改這項設定）"
     },
     "clearTimesButton": {
         "message": "清除時間"
@@ -252,12 +228,6 @@
     "0": {
         "message": "連線超時。請檢查您的網路連線。若您的網路運作正常，則可能是伺服器超載或離線"
     },
-    "disableSkipping": {
-        "message": "停用 SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "啟用 SponsorBlock"
-    },
     "yourWork": {
         "message": "您的成果",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -270,9 +240,6 @@
     },
     "skip": {
         "message": "略過"
-    },
-    "skip_category": {
-        "message": "略過 {0}?"
     },
     "skipped": {
         "message": "已跳過"
@@ -295,9 +262,6 @@
     "showTimeWithSkipsDescription": {
         "message": "這個時間會出現在現在時間旁邊的括號內。這會顯示總影片長度減掉任何片段後的結果。這只會包含標為\"在時間條中顯示\"的片段"
     },
-    "youHaveSkipped": {
-        "message": "您已跳過 "
-    },
     "youHaveSaved": {
         "message": "您為自己節省了 "
     },
@@ -312,12 +276,6 @@
     },
     "hoursLower": {
         "message": "小時"
-    },
-    "youHaveSavedTime": {
-        "message": "您已為大家節省"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " 的生命。"
     },
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 檢查伺服器狀態"

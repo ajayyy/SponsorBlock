@@ -20,10 +20,8 @@ module.exports = {
     plugins: ["react", "@typescript-eslint"],
     rules: {
         // TODO: Remove warn rules when not needed anymore
-        "@typescript-eslint/no-this-alias": "warn",
-        "no-self-assign": "warn",
-        "@typescript-eslint/no-empty-interface": "warn",
-        "@typescript-eslint/ban-types": "warn",
+        "no-self-assign": "off",
+        "@typescript-eslint/no-empty-interface": "off",
     },
     settings: {
         react: {

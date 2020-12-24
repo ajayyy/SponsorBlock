@@ -54,9 +54,6 @@
     "Unknown": {
         "message": "Erro ao enviar os seus segmentos, tente novamente mais tarde."
     },
-    "noVideoID": {
-        "message": "Isto provavelmente não é uma tab do YouTube, ou pode ter clicado muito cedo. \n Se sabe que é uma tab do YouTube,\n feche este popup e abra de novo."
-    },
     "success": {
         "message": "Sucesso!"
     },
@@ -71,21 +68,6 @@
     },
     "submitCheck": {
         "message": "Tem a certeza que pretende submeter?"
-    },
-    "whitelistChannel": {
-        "message": "Meter canal na Whitelist"
-    },
-    "removeFromWhitelist": {
-        "message": "Remover canal da Whitelist"
-    },
-    "soFarUHSubmited": {
-        "message": "Até agora submeteu"
-    },
-    "savedPeopleFrom": {
-        "message": "Poupaste a outros de "
-    },
-    "viewLeaderboard": {
-        "message": "Ver a leaderboard"
     },
     "here": {
         "message": "aqui"

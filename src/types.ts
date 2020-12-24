@@ -3,7 +3,7 @@ import SkipNoticeComponent from "./components/SkipNoticeComponent";
 
 interface ContentContainer {
     (): {
-        vote: (type: any, UUID: any, category?: string, skipNotice?: SkipNoticeComponent) => void,
+        vote: (type: number, UUID: string, category?: string, skipNotice?: SkipNoticeComponent) => void,
         dontShowNoticeAgain: () => void,
         unskipSponsorTime: (segment: SponsorTime) => void,
         sponsorTimes: SponsorTime[],
@@ -15,9 +15,9 @@ interface ContentContainer {
         onMobileYouTube: boolean,
         sponsorSubmissionNotice: SubmissionNotice,
         resetSponsorSubmissionNotice: () => void,
-        changeStartSponsorButton: (showStartSponsor: any, uploadButtonVisible: any) => Promise<boolean>,
+        changeStartSponsorButton: (showStartSponsor: boolean, uploadButtonVisible: boolean) => Promise<boolean>,
         previewTime: (time: number, unpause?: boolean) => void,
-        videoInfo: any,
+        videoInfo: VideoInfo,
         getRealCurrentTime: () => number
     }
 }
@@ -78,7 +78,85 @@ interface BackgroundScriptContainer {
     unregisterFirefoxContentScript: (id: string) => void
 }
 
+interface VideoInfo {
+    responseContext: {
+        serviceTrackingParams: Array<{service: string, params: Array<{key: string, value: string}>}>,
+        webResponseContextExtensionData: {
+            hasDecorated: boolean
+        }
+    },
+    playabilityStatus: {
+        status: string,
+        playableInEmbed: boolean,
+        miniplayer: {
+            miniplayerRenderer: {
+                playbackMode: string
+            }
+        }
+    };
+    streamingData: unknown;
+    playbackTracking: unknown;
+    videoDetails: {
+        videoId: string,
+        title: string,
+        lengthSeconds: string,
+        keywords: string[],
+        channelId: string,
+        isOwnerViewing: boolean,
+        shortDescription: string,
+        isCrawlable: boolean,
+        thumbnail: {
+            thumbnails: Array<{url: string, width: number, height: number}>
+        },
+        averageRating: number,
+        allowRatings: boolean,
+        viewCount: string,
+        author: string,
+        isPrivate: boolean,
+        isUnpluggedCorpus: boolean,
+        isLiveContent: boolean,
+    };
+    playerConfig: unknown;
+    storyboards: unknown;
+    microformat: {
+        playerMicroformatRenderer: {
+            thumbnail: {
+                thumbnails: Array<{url: string, width: number, height: number}>
+            },
+            embed: {
+                iframeUrl: string,
+                flashUrl: string,
+                width: number,
+                height: number,
+                flashSecureUrl: string,
+            },
+            title: {
+                simpleText: string,
+            },
+            description: {
+                simpleText: string,
+            },
+            lengthSeconds: string,
+            ownerProfileUrl: string,
+            externalChannelId: string,
+            availableCountries: string[],
+            isUnlisted: boolean,
+            hasYpcMetadata: boolean,
+            viewCount: string,
+            category: string,
+            publishDate: string,
+            ownerChannelName: string,
+            uploadDate: string,
+        }
+    };
+    trackingParams: string;
+    attestation: unknown;
+    messages: unknown;
+}
+
 type VideoID = string;
+
+type StorageChangesObject = { [key: string]: chrome.storage.StorageChange };
 
 export {
     FetchResponse,
@@ -91,5 +169,7 @@ export {
     SponsorHideType,
     PreviewBarOption,
     Registration,
-    BackgroundScriptContainer
+    BackgroundScriptContainer,
+    VideoInfo,
+    StorageChangesObject,
 };

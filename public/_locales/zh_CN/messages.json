@@ -63,9 +63,6 @@
     "Unknown": {
         "message": "提交您的赞助商广告时间时出错。请稍后再试。"
     },
-    "noVideoID": {
-        "message": "在此标签页未找到 Youtube 视频。如果您确定这是一个 Youtube 页面，请关闭此弹窗并重新打开。如果那没用，请尝试重新加载页面。"
-    },
     "success": {
         "message": "成功 ！"
     },
@@ -83,21 +80,6 @@
     },
     "submitCheck": {
         "message": "您确定要提交它吗？"
-    },
-    "whitelistChannel": {
-        "message": "白名单频道"
-    },
-    "removeFromWhitelist": {
-        "message": "将频道移出白名单"
-    },
-    "soFarUHSubmited": {
-        "message": "您目前已提交"
-    },
-    "savedPeopleFrom": {
-        "message": "您已为人们节省了 "
-    },
-    "viewLeaderboard": {
-        "message": "查看排行榜"
     },
     "here": {
         "message": "这里"
@@ -181,12 +163,6 @@
     "0": {
         "message": "连接超时。请检查您的网络连接。如果您的网络运行正常，则可能是服务器过载或宕机。"
     },
-    "disableSkipping": {
-        "message": "禁用 SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "启用 SponsorBlock"
-    },
     "yourWork": {
         "message": "您的成果",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -200,9 +176,6 @@
     "skip": {
         "message": "跳过"
     },
-    "skip_category": {
-        "message": "跳过 {0}?"
-    },
     "skipped": {
         "message": "跳过"
     },
@@ -214,9 +187,6 @@
     },
     "audioNotification": {
         "message": "跳过时音频通知"
-    },
-    "youHaveSkipped": {
-        "message": "您已跳过 "
     },
     "youHaveSaved": {
         "message": "您为自己节省了 "
@@ -232,12 +202,6 @@
     },
     "hoursLower": {
         "message": "小时"
-    },
-    "youHaveSavedTime": {
-        "message": "您为人们节省了"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " 的生命。"
     },
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 检查服务器状态。"

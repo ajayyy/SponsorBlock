@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Segmentul se termină acum"
     },
-    "noVideoID": {
-        "message": "Nu există niciun videoclip YouTube în aceast tab. Dacă știți că acesta este un tab YouTube, închideți acest popup și deschideți-l din nou. Daca nici asta nu merge, încercați să reîncărcați pagina."
-    },
     "success": {
         "message": "Succes!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Sunteți sigur că doriți să trimiteți asta?"
     },
-    "whitelistChannel": {
-        "message": "Adaugă Canalul La Excepții"
-    },
-    "removeFromWhitelist": {
-        "message": "Șterge Canalul De La Excepții"
-    },
     "voteOnTime": {
         "message": "Votează pe un Segment"
     },
-    "soFarUHSubmited": {
-        "message": "Până acum, ai trimis"
-    },
-    "savedPeopleFrom": {
-        "message": "Ai salvat alte persoane de la "
-    },
-    "viewLeaderboard": {
-        "message": "Vezi clasamentul"
-    },
     "here": {
         "message": "aici"
-    },
-    "recordTimesDescription": {
-        "message": "Faceţi clic pe butonul de mai jos atunci când segmentul începe şi se termină pentru a înregistra şi trimite-l în baza de date."
-    },
-    "popupHint": {
-        "message": "Indiciu: Apasă pe tasta punct și virgulă în timp ce ești centrat pe videoclip pentru a raporta începutul/finalul unei sponsorizări și apasă pe ghilimele pentru a o trimite. (Acest lucru poate fi schimbat din opțiuni)"
     },
     "clearTimesButton": {
         "message": "Șterge Timpii"
@@ -227,12 +203,6 @@
     "0": {
         "message": "Eroare de Conexiune. Verifică-ți conexiunea la internet. Daca internetul functionează, serverul este probabil supraîncărcat sau a căzut."
     },
-    "disableSkipping": {
-        "message": "Dezactivează SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Activează SponsorBlock"
-    },
     "yourWork": {
         "message": "Munca Ta",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -245,9 +215,6 @@
     },
     "skip": {
         "message": "Sari"
-    },
-    "skip_category": {
-        "message": "Sari {0}?"
     },
     "skipped": {
         "message": "Sărit"
@@ -267,9 +234,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Acest timp apare în paranteze lângă ora curentă sub bara de progres. Aceasta arată durata totală a videoclipului minus orice segment. Aceasta include segmente marcate doar ca \"Afișare în Seekbar\"."
     },
-    "youHaveSkipped": {
-        "message": "Ai sărit peste "
-    },
     "youHaveSaved": {
         "message": "V-ați salvat "
     },
@@ -284,12 +248,6 @@
     },
     "hoursLower": {
         "message": "ore"
-    },
-    "youHaveSavedTime": {
-        "message": "Ai salvat alte persoane"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " din viața lor."
     },
     "statusReminder": {
         "message": "Verificați status.sponsor.ajay.app pentru starea serverului."

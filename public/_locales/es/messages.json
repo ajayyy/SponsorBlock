@@ -86,7 +86,7 @@
         "message": "El segmento termina ahora"
     },
     "noVideoID": {
-        "message": "Ningún video de YouTube se encontró en esta pestaña. Si sabes que esto es una pestaña de YouTube, cierra esta ventana y ábrela otra vez. Si eso no funciona, intenta recargar la pestaña."
+        "message": "No se encontró vídeo de YouTube.\nSi esto es incorrecto, actualice la pestaña."
     },
     "success": {
         "message": "¡Completado!"
@@ -121,32 +121,30 @@
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
     },
-    "whitelistChannel": {
-        "message": "Permitir Canal"
-    },
-    "removeFromWhitelist": {
-        "message": "Parar De Permitir Canal"
-    },
     "voteOnTime": {
         "message": "Vote En Un Segmento"
     },
-    "soFarUHSubmited": {
-        "message": "Hasta ahora, has enviado"
+    "Submissions": {
+        "message": "Solicitudes"
     },
     "savedPeopleFrom": {
-        "message": "Has salvado personas de "
+        "message": "Has salvado a gente de "
     },
     "viewLeaderboard": {
-        "message": "Ver la tabla de clasificación"
+        "message": "Tablas de clasificación"
     },
     "here": {
         "message": "aquí"
     },
     "recordTimesDescription": {
-        "message": "Haga clic en el botón de abajo cuando el segmento comience y termine para grabarlo y enviarlo a la base de datos."
+        "message": "Enviar"
+    },
+    "submissionEditHint": {
+        "message": "La edición de la sección aparecerá después de hacer clic en enviar",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Pista: Presione la tecla de punto y coma mientras está enfocado en un video para indicar el comienzo/final de un segmento y citación para enviarlo. (Esto puede cambiarse en opciones)"
+        "message": "Sugerencia: puede configurar los teclas para enviar en las opciones"
     },
     "clearTimesButton": {
         "message": "Eliminar Tiempos"
@@ -156,6 +154,9 @@
     },
     "publicStats": {
         "message": "Esto se utiliza en la página de estadísticas públicas para mostrar cuánto has contribuido. Véala"
+    },
+    "Username": {
+        "message": "Nombre de usario"
     },
     "setUsername": {
         "message": "Escoger Nombre De Usuario"
@@ -253,10 +254,10 @@
         "message": "Tiempo de espera agotado. Compruebe su conexión a Internet. Si su internet está funcionando, el servidor probablemente esta sobrecargado o desconectado."
     },
     "disableSkipping": {
-        "message": "Desactivar SponsorBlock"
+        "message": "Saltar está activado"
     },
     "enableSkipping": {
-        "message": "Activar SponsorBlock"
+        "message": "Saltar está desactivado"
     },
     "yourWork": {
         "message": "Tu trabajo",
@@ -296,7 +297,7 @@
         "message": "Esta duración aparece entre paréntesis junto al tiempo actual del video, debajo de la barra de navegación. Esta muestra la duración total del vídeo menos cualquier segmento eliminado. Esto incluye los segmentos marcados como solo \"Mostrar en la barra de navegación\"."
     },
     "youHaveSkipped": {
-        "message": "Has omitido "
+        "message": "Lo has saltado "
     },
     "youHaveSaved": {
         "message": "Te has ahorrado "
@@ -314,10 +315,10 @@
         "message": "horas"
     },
     "youHaveSavedTime": {
-        "message": "Has ahorrado a otras personas"
+        "message": "Has salvado personas"
     },
     "youHaveSavedTimeEnd": {
-        "message": " de sus vidas."
+        "message": " de sus vidas"
     },
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
@@ -634,5 +635,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Envía una notificación cuando dejas un vídeo con segmentos que no se suben"
+    },
+    "help": {
+        "message": "Ayuda"
     }
 }

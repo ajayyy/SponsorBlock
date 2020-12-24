@@ -85,9 +85,6 @@
     "sponsorEnd": {
         "message": "Segmentti Päättyy Nyt"
     },
-    "noVideoID": {
-        "message": "Välilehdeltä ei löytynyt YouTube-videota. Jos olet varma, että tämä on YouTube-välilehti, sulje tämä ponnahdusikkuna ja avaa se uudelleen. Jos sekään ei toimi, yritä ladata välilehti uudelleen."
-    },
     "success": {
         "message": "Onnistui!"
     },
@@ -121,32 +118,11 @@
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
     },
-    "whitelistChannel": {
-        "message": "Lisää kanava valkoiselle listalle"
-    },
-    "removeFromWhitelist": {
-        "message": "Poista kanava valkoiselta listalta"
-    },
     "voteOnTime": {
         "message": "Äänestä Segmenttiä"
     },
-    "soFarUHSubmited": {
-        "message": "Tähän mennessä, olet lähettänyt"
-    },
-    "savedPeopleFrom": {
-        "message": "Olet säästänyt ihmisiltä "
-    },
-    "viewLeaderboard": {
-        "message": "Näytä tulostaulukko"
-    },
     "here": {
         "message": "tässä"
-    },
-    "recordTimesDescription": {
-        "message": "Napsauta alla olevaa painiketta, kun segmentti alkaa ja päättyy tallentaaksesi ja lähettääksesi sen tietokantaan."
-    },
-    "popupHint": {
-        "message": "Vihje: Paina puolipisteen näppäintä kun video on kohdennettu ilmoittaaksesi segmentin alku/loppu ja viesti lähetettäväksi. (Tämän voi muuttaa asetuksissa)"
     },
     "clearTimesButton": {
         "message": "Tyhjennä ajat"
@@ -233,12 +209,6 @@
     "0": {
         "message": "Yhteyden aikakatkaisu. Tarkista internet-yhteytesi. Jos internetyhteytesi toimii, palvelin on todennäköisesti ylikuormittunut tai alhaalla."
     },
-    "disableSkipping": {
-        "message": "Poista Sponsorblock käytöstä"
-    },
-    "enableSkipping": {
-        "message": "Ota SponsorBlock käyttöön"
-    },
     "yourWork": {
         "message": "Sinun työsi",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -267,9 +237,6 @@
     "audioNotificationDescription": {
         "message": "Ääni-ilmoitus ohittaessa toistaa äänen kun segmentti ohitetaan. Jos asetus on pois päältä (tai automaattinen ohitus on pois käytöstä), ääntä ei soiteta."
     },
-    "youHaveSkipped": {
-        "message": "Olet ohittanut "
-    },
     "youHaveSaved": {
         "message": "Olet säästänyt itseltäsi "
     },
@@ -284,12 +251,6 @@
     },
     "hoursLower": {
         "message": "tuntia"
-    },
-    "youHaveSavedTime": {
-        "message": "Olet säästänyt ihmisiltä"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " heidän elämästään."
     },
     "statusReminder": {
         "message": "Tarkista palvelimen tila osoitteessa status.sponsor.ajay.app."

@@ -2,11 +2,12 @@ import Config from "./config";
 
 import Utils from "./utils";
 import { SponsorTime, SponsorHideType } from "./types";
+import { Message, MessageResponse } from "./messageTypes";
 const utils = new Utils();
 
 interface MessageListener {
-    (request: any, sender: any, callback: (response: any) => void): void;
-} 
+    (request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void;
+}
 
 class MessageHandler {
     messageListener: MessageListener;
@@ -15,7 +16,7 @@ class MessageHandler {
         this.messageListener = messageListener;
     }
 
-    sendMessage(id: number, request, callback?) {
+    sendMessage(id: number, request: Message, callback?) {
         if (this.messageListener) {
             this.messageListener(request, null, callback);
         } else {
@@ -37,6 +38,8 @@ class MessageHandler {
     }
 }
 
+
+
 //make this a function to allow this to run on the content page
 async function runThePopup(messageListener?: MessageListener): Promise<void> {
     const messageHandler = new MessageHandler(messageListener);
@@ -45,7 +48,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     await utils.wait(() => Config.config !== null);
 
-    const PageElements: any = {};
+    type InputPageElements = {
+        whitelistToggle?: HTMLInputElement,
+        toggleSwitch?: HTMLInputElement,
+        usernameInput?: HTMLInputElement,
+    };
+    type PageElements = { [key: string]: HTMLElement } & InputPageElements
+
+    const PageElements: PageElements = {};
 
     [
         "sponsorblockPopup",
@@ -375,7 +385,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
 
-                const prefix = chrome.i18n.getMessage("category_" + segmentTimes[i].category) + ": ";
+                const prefix = utils.shortCategoryName(segmentTimes[i].category) + ": ";
 
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
@@ -584,7 +594,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             }
         });
     }
-  
+
     //converts time in seconds to minutes:seconds
     function getFormattedTime(seconds) {
         const minutes = Math.floor(seconds / 60);
@@ -715,25 +725,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         hiddenButton.style.display = "none";
     }
 
-    //converts time in seconds to minutes
-    function getTimeInMinutes(seconds) {
-        const minutes = Math.floor(seconds / 60);
-  
-        return minutes;
-    }
-  
-    //converts time in seconds to seconds past the last minute
-    function getTimeInFormattedSeconds(seconds) {
-        const minutes = seconds % 60;
-        let secondsFormatted = minutes.toFixed(3);
-  
-        if (minutes < 10) {
-            secondsFormatted = "0" + secondsFormatted;
-        }
-  
-        return secondsFormatted;
-    }
-  
     /**
      * Converts time in hours to 5h 25.1
      * If less than 1 hour, just returns minutes

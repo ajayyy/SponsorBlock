@@ -86,7 +86,7 @@
         "message": "Segment endet jetzt"
     },
     "noVideoID": {
-        "message": "Keine YouTube-Videos in diesem Tab gefunden. Wenn dies ein Youtube-Tab ist, schließe dieses Pop-up und öffne es erneut. Wenn das nicht hilft, versuche den Tab neu zu laden."
+        "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisieren Sie den Tab."
     },
     "success": {
         "message": "Geschafft!"
@@ -121,32 +121,11 @@
     "submitCheck": {
         "message": "Bist du sicher, dass du dies übermitteln willst?"
     },
-    "whitelistChannel": {
-        "message": "Kanal zur Whitelist hinzufügen"
-    },
-    "removeFromWhitelist": {
-        "message": "Kanal von der Whitelist entfernen"
-    },
     "voteOnTime": {
         "message": "Über ein Segment abstimmen"
     },
-    "soFarUHSubmited": {
-        "message": "Von dir bisher gemeldet:"
-    },
-    "savedPeopleFrom": {
-        "message": "\nDamit hast du anderen Nutzer folgendes erspart:"
-    },
-    "viewLeaderboard": {
-        "message": "Wirf einen Blick auf die Rangliste:"
-    },
     "here": {
         "message": "hier"
-    },
-    "recordTimesDescription": {
-        "message": "Klicke beim Start und am Ende des Segments auf den Knopf unten, um es in die Datenbank zu übermitteln."
-    },
-    "popupHint": {
-        "message": "Hinweis: Du kannst auch alternativ eine Taste in den Optionen festlegen, welche du drücken kannst, während du das Video guckst, um die Start- und Endpunkte des Segments zu markieren."
     },
     "clearTimesButton": {
         "message": "Zeiten löschen"
@@ -252,12 +231,6 @@
     "0": {
         "message": "Zeitüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
     },
-    "disableSkipping": {
-        "message": "SponsorBlock deaktivieren"
-    },
-    "enableSkipping": {
-        "message": "SponsorBlock aktivieren"
-    },
     "yourWork": {
         "message": "Deine Statistik",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -295,9 +268,6 @@
     "showTimeWithSkipsDescription": {
         "message": "Diese Zeit wird in Klammern neben der kompletten Videodauer im YouTube-Videoplayer angezeigt. Dies betrifft auch Segmente, die als \"In Suchleiste anzeigen\" markiert sind."
     },
-    "youHaveSkipped": {
-        "message": "Du übersprangst bisher "
-    },
     "youHaveSaved": {
         "message": " und erspartest dir damit "
     },
@@ -312,12 +282,6 @@
     },
     "hoursLower": {
         "message": "Stunden"
-    },
-    "youHaveSavedTime": {
-        "message": "\nAndere haben dank dir"
-    },
-    "youHaveSavedTimeEnd": {
-        "message": " ihrer wertvollen Zeit gespart."
     },
     "statusReminder": {
         "message": "Du kannst den Serverstatus auf https://status.sponsor.ajay.app überprüfen."

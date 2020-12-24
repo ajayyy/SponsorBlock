@@ -99,23 +99,8 @@
     "submitCheck": {
         "message": "مطمئن هستید که میخواهید این را ثبت کنید؟"
     },
-    "whitelistChannel": {
-        "message": "قرار دادن کانال در لیست سفید"
-    },
-    "removeFromWhitelist": {
-        "message": "حذف کانال از لیست سفید"
-    },
     "voteOnTime": {
         "message": "رأی دهی به یک بخش"
-    },
-    "soFarUHSubmited": {
-        "message": "شما تا اینجا، ثبت کرده اید"
-    },
-    "savedPeopleFrom": {
-        "message": "شما دیگران را نجات دادید از "
-    },
-    "viewLeaderboard": {
-        "message": "نمایش لیست امتیاز ها"
     },
     "here": {
         "message": "اینجا"

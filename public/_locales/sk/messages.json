@@ -101,12 +101,6 @@
     "0": {
         "message": "Spojenie vypršalo. Skontrolujte svoje internetové pripojenie. Ak váš internet funguje, server je pravdepodobne preťažený alebo nefunkčný."
     },
-    "disableSkipping": {
-        "message": "Vypnúť SponsorBlock"
-    },
-    "enableSkipping": {
-        "message": "Zapnúť SponsorBlock"
-    },
     "yourWork": {
         "message": "Vaša Práca",
         "description": "Used to describe the section that will show you the statistics from your submissions."

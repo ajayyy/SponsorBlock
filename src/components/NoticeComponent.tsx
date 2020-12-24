@@ -28,7 +28,7 @@ export interface NoticeState {
 
 class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdownInterval: NodeJS.Timeout;
-    idSuffix: any;
+    idSuffix: string;
 
     amountOfPreviousNotices: number;
 
