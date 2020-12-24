@@ -21,7 +21,6 @@ module.exports = {
     rules: {
         // silence some eslint:recommended rules
         // TODO: Remove warn rules when not needed anymore
-        "@typescript-eslint/no-this-alias": "warn",
         "no-self-assign": "off",
         "@typescript-eslint/no-empty-interface": "off",
 
