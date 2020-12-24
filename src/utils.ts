@@ -54,18 +54,16 @@ class Utils {
     setupExtraSitePermissions(callback: (granted: boolean) => void): void {
         // Request permission
         let permissions = ["declarativeContent"];
-        if (this.isFirefox()) permissions = [];
-        
-        const self = this;
+        if (this.isFirefox()) permissions = [];        
 
         chrome.permissions.request({
             origins: this.getInvidiousInstancesRegex(),
             permissions: permissions
-        }, async function (granted) {
+        }, async (granted) => {
             if (granted) {
-                self.setupExtraSiteContentScripts();
+                this.setupExtraSiteContentScripts();
             } else {
-                self.removeExtraSiteRegistration();
+                this.removeExtraSiteRegistration();
             }
 
             callback(granted);
@@ -80,7 +78,6 @@ class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-        const self = this;
 
         if (this.isFirefox()) {
             const firefoxJS = [];
@@ -107,9 +104,9 @@ class Utils {
                 chrome.runtime.sendMessage(registration);
             }
         } else {
-            chrome.declarativeContent.onPageChanged.removeRules(["invidious"], function() {
+            chrome.declarativeContent.onPageChanged.removeRules(["invidious"], () => {
                 const conditions = [];
-                for (const regex of self.getInvidiousInstancesRegex()) {
+                for (const regex of this.getInvidiousInstancesRegex()) {
                     conditions.push(new chrome.declarativeContent.PageStateMatcher({
                         pageUrl: { urlMatches: regex }
                     }));
@@ -121,8 +118,8 @@ class Utils {
                     conditions,
                     actions: [new chrome.declarativeContent.RequestContentScript({
                         allFrames: true,
-                        js: self.js,
-                        css: self.css
+                        js: this.js,
+                        css: this.css
                     })]
                 };
                 
