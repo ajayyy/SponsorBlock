@@ -24,51 +24,51 @@ if (utils.isFirefox()) {
 } 
 
 chrome.tabs.onUpdated.addListener(function(tabId) {
-	chrome.tabs.sendMessage(tabId, {
+    chrome.tabs.sendMessage(tabId, {
         message: 'update',
-	}, () => void chrome.runtime.lastError ); // Suppress error on Firefox
+    }, () => void chrome.runtime.lastError ); // Suppress error on Firefox
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
-	switch(request.message) {
-        case "openConfig":
-            chrome.runtime.openOptionsPage();
-            return;
-        case "openHelp":
-            chrome.tabs.create({url: chrome.runtime.getURL('help/index_en.html')});
-            return;
-        case "sendRequest":
-            sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
-                callback({
-                    responseText: await response.text(),
-                    status: response.status,
-                    ok: response.ok
-                });
+    switch(request.message) {
+    case "openConfig":
+        chrome.runtime.openOptionsPage();
+        return;
+    case "openHelp":
+        chrome.tabs.create({url: chrome.runtime.getURL('help/index_en.html')});
+        return;
+    case "sendRequest":
+        sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
+            callback({
+                responseText: await response.text(),
+                status: response.status,
+                ok: response.ok
             });
+        });
         
-            return true;
-        case "submitVote":
-            submitVote(request.type, request.UUID, request.category).then(callback);
+        return true;
+    case "submitVote":
+        submitVote(request.type, request.UUID, request.category).then(callback);
         
-            //this allows the callback to be called later
-            return true;
-        case "alertPrevious":
-            if (Config.config.unsubmittedWarning) {
-                chrome.notifications.create("stillThere" + Math.random(), {
-                    type: "basic",
-                    title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
-                    message: chrome.i18n.getMessage("leftTimes"),
-                    iconUrl: "./icons/LogoSponsorBlocker256px.png"
-                });
-            }
-            break;
-        case "registerContentScript": 
-            registerFirefoxContentScript(request);
-            return false;
-        case "unregisterContentScript": 
-            unregisterFirefoxContentScript(request.id)
-            return false;
-	}
+        //this allows the callback to be called later
+        return true;
+    case "alertPrevious":
+        if (Config.config.unsubmittedWarning) {
+            chrome.notifications.create("stillThere" + Math.random(), {
+                type: "basic",
+                title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
+                message: chrome.i18n.getMessage("leftTimes"),
+                iconUrl: "./icons/LogoSponsorBlocker256px.png"
+            });
+        }
+        break;
+    case "registerContentScript": 
+        registerFirefoxContentScript(request);
+        return false;
+    case "unregisterContentScript": 
+        unregisterFirefoxContentScript(request.id)
+        return false;
+    }
 });
 
 //add help page on install

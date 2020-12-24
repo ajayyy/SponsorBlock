@@ -28,7 +28,7 @@ class NoticeTextSelectionComponent extends React.Component<NoticeTextSelectionPr
                 onClick={this.props.onClick}
                 style={style}
                 className="sponsorTimesInfoMessage">
-                    {this.props.text}
+                {this.props.text}
             </p>
         );
     }

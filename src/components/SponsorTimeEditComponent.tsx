@@ -92,57 +92,57 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     className="sponsorTimeDisplay">
 
-                        <span id={"nowButton0" + this.idSuffix}
-                            className="sponsorNowButton"
-                            onClick={() => this.setTimeToNow(0)}>
-                                {chrome.i18n.getMessage("bracketNow")}
-                        </span>
+                    <span id={"nowButton0" + this.idSuffix}
+                        className="sponsorNowButton"
+                        onClick={() => this.setTimeToNow(0)}>
+                        {chrome.i18n.getMessage("bracketNow")}
+                    </span>
 
-                        <input id={"submittingTime0" + this.idSuffix}
-                            className="sponsorTimeEdit sponsorTimeEditInput"
-                            ref={oldYouTubeDarkStyles}
-                            type="text"
-                            value={this.state.sponsorTimeEdits[0]}
-                            onChange={(e) => {
-                                const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[0] = e.target.value;
+                    <input id={"submittingTime0" + this.idSuffix}
+                        className="sponsorTimeEdit sponsorTimeEditInput"
+                        ref={oldYouTubeDarkStyles}
+                        type="text"
+                        value={this.state.sponsorTimeEdits[0]}
+                        onChange={(e) => {
+                            const sponsorTimeEdits = this.state.sponsorTimeEdits;
+                            sponsorTimeEdits[0] = e.target.value;
 
-                                this.setState({sponsorTimeEdits});
+                            this.setState({sponsorTimeEdits});
 
-                                this.saveEditTimes();
-                            }}>
-                        </input>
+                            this.saveEditTimes();
+                        }}>
+                    </input>
 
-                        <span>
-                            {" " + chrome.i18n.getMessage("to") + " "}
-                        </span>
+                    <span>
+                        {" " + chrome.i18n.getMessage("to") + " "}
+                    </span>
 
-                        <input id={"submittingTime1" + this.idSuffix}
-                            className="sponsorTimeEdit sponsorTimeEditInput"
-                            ref={oldYouTubeDarkStyles}
-                            type="text"
-                            value={this.state.sponsorTimeEdits[1]}
-                            onChange={(e) => {
-                                const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[1] = e.target.value;
+                    <input id={"submittingTime1" + this.idSuffix}
+                        className="sponsorTimeEdit sponsorTimeEditInput"
+                        ref={oldYouTubeDarkStyles}
+                        type="text"
+                        value={this.state.sponsorTimeEdits[1]}
+                        onChange={(e) => {
+                            const sponsorTimeEdits = this.state.sponsorTimeEdits;
+                            sponsorTimeEdits[1] = e.target.value;
 
-                                this.setState({sponsorTimeEdits});
+                            this.setState({sponsorTimeEdits});
 
-                                this.saveEditTimes();
-                            }}>
-                        </input>
+                            this.saveEditTimes();
+                        }}>
+                    </input>
 
-                        <span id={"nowButton1" + this.idSuffix}
-                            className="sponsorNowButton"
-                            onClick={() => this.setTimeToNow(1)}>
-                                {chrome.i18n.getMessage("bracketNow")}
-                        </span>
+                    <span id={"nowButton1" + this.idSuffix}
+                        className="sponsorNowButton"
+                        onClick={() => this.setTimeToNow(1)}>
+                        {chrome.i18n.getMessage("bracketNow")}
+                    </span>
 
-                        <span id={"endButton" + this.idSuffix}
-                            className="sponsorNowButton"
-                            onClick={() => this.setTimeToEnd()}>
-                                {chrome.i18n.getMessage("bracketEnd")}
-                        </span>
+                    <span id={"endButton" + this.idSuffix}
+                        className="sponsorNowButton"
+                        onClick={() => this.setTimeToEnd()}>
+                        {chrome.i18n.getMessage("bracketEnd")}
+                    </span>
                 </div>
             );
         } else {
@@ -150,7 +150,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
-                        {utils.getFormattedTime(segment[0], true) +
+                    {utils.getFormattedTime(segment[0], true) +
                             ((!isNaN(segment[1])) ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
                 </div>
             );
@@ -220,7 +220,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     getCategoryOptions(): React.ReactElement[] {
         const elements = [(
             <option value={DEFAULT_CATEGORY}
-                    key={DEFAULT_CATEGORY}>
+                key={DEFAULT_CATEGORY}>
                 {chrome.i18n.getMessage(DEFAULT_CATEGORY)}
             </option>
         )];
@@ -228,7 +228,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         for (const category of CompileConfig.categoryList) {
             elements.push(
                 <option value={category}
-                        key={category}>
+                    key={category}>
                     {chrome.i18n.getMessage("category_" + category)}
                 </option>
             );
@@ -245,7 +245,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             
             // Alert that they have to enable this category first
             if (confirm(chrome.i18n.getMessage("enableThisCategoryFirst")
-                            .replace("{0}", chrome.i18n.getMessage("category_" + chosenCategory)))) {
+                .replace("{0}", chrome.i18n.getMessage("category_" + chosenCategory)))) {
                 // Open options page
                 chrome.runtime.sendMessage({"message": "openConfig"});
             }

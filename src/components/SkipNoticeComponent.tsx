@@ -190,8 +190,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         :
 
                         <td id={"sponsorTimesVoteButtonInfoMessage" + this.idSuffix}
-                                className="sponsorTimesInfoMessage sponsorTimesVoteButtonMessage"
-                                style={{marginRight: "10px"}}>
+                            className="sponsorTimesInfoMessage sponsorTimesVoteButtonMessage"
+                            style={{marginRight: "10px"}}>
                             {this.state.thanksForVotingText}
                         </td>
                     }
@@ -226,13 +226,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
                             {/* Normal downvote */}
                             <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                    onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
+                                onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
                                 {chrome.i18n.getMessage("downvoteDescription")}
                             </button>
 
                             {/* Category vote */}
                             <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                    onClick={() => this.openCategoryChooser()}>
+                                onClick={() => this.openCategoryChooser()}>
 
                                 {chrome.i18n.getMessage("incorrectCategory")}
                             </button>
@@ -247,10 +247,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         <td>
                             {/* Category Selector */}
                             <select id={"sponsorTimeCategories" + this.idSuffix}
-                                    className="sponsorTimeCategories"
-                                    defaultValue={this.segments[0].category} //Just default to the first segment, as we don't know which they'll choose
-                                    ref={this.categoryOptionRef}
-                                    onChange={this.categorySelectionChange.bind(this)}>
+                                className="sponsorTimeCategories"
+                                defaultValue={this.segments[0].category} //Just default to the first segment, as we don't know which they'll choose
+                                ref={this.categoryOptionRef}
+                                onChange={this.categorySelectionChange.bind(this)}>
 
                                 {this.getCategoryOptions()}
                             </select>
@@ -258,7 +258,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             {/* Submit Button */}
                             {this.segments.length === 1 &&
                                 <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                        onClick={() => this.prepAction(SkipNoticeAction.CategoryVote)}>
+                                    onClick={() => this.prepAction(SkipNoticeAction.CategoryVote)}>
 
                                     {chrome.i18n.getMessage("submit")}
                                 </button>
@@ -287,8 +287,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         for (let i = 0; i < this.segments.length; i++) {
             elements.push(
                 <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                        onClick={() => this.performAction(i)}
-                        key={"submission" + i + this.segments[i].category + this.idSuffix}>
+                    onClick={() => this.performAction(i)}
+                    key={"submission" + i + this.segments[i].category + this.idSuffix}>
                     {(i + 1) + ". " + chrome.i18n.getMessage("category_" + this.segments[i].category)}
                 </button>
             );
@@ -339,20 +339,20 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
      */
     performAction(index: number, action?: SkipNoticeAction): void {
         switch (action ?? this.state.actionState) {
-            case SkipNoticeAction.None:
-                break;
-            case SkipNoticeAction.Upvote:
-                this.contentContainer().vote(1, this.segments[index].UUID, undefined, this);
-                break;
-            case SkipNoticeAction.Downvote:
-                this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
-                break;
-            case SkipNoticeAction.CategoryVote:
-                this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value, this)
-                break;
-            case SkipNoticeAction.Unskip:
-                this.state.unskipCallback(index);
-                break;
+        case SkipNoticeAction.None:
+            break;
+        case SkipNoticeAction.Upvote:
+            this.contentContainer().vote(1, this.segments[index].UUID, undefined, this);
+            break;
+        case SkipNoticeAction.Downvote:
+            this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
+            break;
+        case SkipNoticeAction.CategoryVote:
+            this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value, this)
+            break;
+        case SkipNoticeAction.Unskip:
+            this.state.unskipCallback(index);
+            break;
         }
 
         this.setState({
@@ -398,7 +398,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         for (const category of Config.config.categorySelections) {
             elements.push(
                 <option value={category.name}
-                        key={category.name}>
+                    key={category.name}>
                     {chrome.i18n.getMessage("category_" + category.name)}
                 </option>
             );
@@ -408,7 +408,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             // Add show more button
             elements.push(
                 <option value={"moreCategories"}
-                        key={"moreCategories"}>
+                    key={"moreCategories"}>
                     {chrome.i18n.getMessage("moreCategories")}
                 </option>
             );

@@ -119,61 +119,61 @@ chrome.runtime.onMessage.addListener(messageListener);
 function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void {
     //messages from popup script
     switch(request.message){
-        case "update":
-            videoIDChange(getYouTubeVideoID(document.URL));
-            break;
-        case "sponsorStart":
-            sponsorMessageStarted(sendResponse);
+    case "update":
+        videoIDChange(getYouTubeVideoID(document.URL));
+        break;
+    case "sponsorStart":
+        sponsorMessageStarted(sendResponse);
 
-            break;
-        case "sponsorDataChanged":
-            updateSponsorTimesSubmitting();
+        break;
+    case "sponsorDataChanged":
+        updateSponsorTimesSubmitting();
 
-            break;
-        case "isInfoFound":
-            //send the sponsor times along with if it's found
-            sendResponse({
-                found: sponsorDataFound,
-                sponsorTimes: sponsorTimes
-            });
+        break;
+    case "isInfoFound":
+        //send the sponsor times along with if it's found
+        sendResponse({
+            found: sponsorDataFound,
+            sponsorTimes: sponsorTimes
+        });
 
-            if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
-                //the popup should be closed now that another is opening
-                closeInfoMenu();
-            }
+        if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+            //the popup should be closed now that another is opening
+            closeInfoMenu();
+        }
 
-            popupInitialised = true;
-            break;
-        case "getVideoID":
-            sendResponse({
-                videoID: sponsorVideoID
-            });
+        popupInitialised = true;
+        break;
+    case "getVideoID":
+        sendResponse({
+            videoID: sponsorVideoID
+        });
 
-            break;
-        case "getChannelID":
-            sendResponse({
-                channelID: channelID
-            });
+        break;
+    case "getChannelID":
+        sendResponse({
+            channelID: channelID
+        });
 
-            break;
-        case "isChannelWhitelisted":
-            sendResponse({
-                value: channelWhitelisted
-            });
+        break;
+    case "isChannelWhitelisted":
+        sendResponse({
+            value: channelWhitelisted
+        });
 
-            break;
-        case "whitelistChange":
-            channelWhitelisted = request.value;
-            sponsorsLookup(sponsorVideoID);
+        break;
+    case "whitelistChange":
+        channelWhitelisted = request.value;
+        sponsorsLookup(sponsorVideoID);
 
-            break;
-        case "changeStartSponsorButton":
-            changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
+        break;
+    case "changeStartSponsorButton":
+        changeStartSponsorButton(request.showStartSponsor, request.uploadButtonVisible);
 
-            break;
-        case "submitTimes":
-            submitSponsorTimes();
-            break;
+        break;
+    case "submitTimes":
+        submitSponsorTimes();
+        break;
     }
 }
 
@@ -185,11 +185,11 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
 function contentConfigUpdateListener(changes: StorageChangesObject) {
     for (const key in changes) {
         switch(key) {
-            case "hideVideoPlayerControls":
-            case "hideInfoButtonPlayerControls":
-            case "hideDeleteButtonPlayerControls":
-                updateVisibilityOfPlayerControlsButton()
-                break;
+        case "hideVideoPlayerControls":
+        case "hideInfoButtonPlayerControls":
+        case "hideDeleteButtonPlayerControls":
+            updateVisibilityOfPlayerControlsButton()
+            break;
         }
     }
 }
@@ -262,7 +262,7 @@ async function videoIDChange(id) {
 
     resetValues();
 
-	//id is not valid
+    //id is not valid
     if (!id) return;
 
     // Wait for options to be ready
@@ -938,8 +938,8 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
         if (currentSegment[0] <= latestEndTime && currentSegment[1] > latestEndTime 
             && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)
             && utils.getCategorySelection(sponsorTimes[i].category).option === CategorySkipOption.AutoSkip) {
-                // Overlapping segment
-                latestEndTimeIndex = i;
+            // Overlapping segment
+            latestEndTimeIndex = i;
         }
     }
 
@@ -1622,34 +1622,34 @@ function updateAdFlag(): void {
 function showTimeWithoutSkips(allSponsorTimes): void {
     if (onMobileYouTube || onInvidious) return;
 
-	let skipDuration = 0;
+    let skipDuration = 0;
 	
-	// Calculate skipDuration based from the segments in the preview bar
-	for (let i = 0; i < allSponsorTimes.length; i++) {
+    // Calculate skipDuration based from the segments in the preview bar
+    for (let i = 0; i < allSponsorTimes.length; i++) {
         // If an end time exists
         if (allSponsorTimes[i].segment[1]) {
             skipDuration += allSponsorTimes[i].segment[1] - allSponsorTimes[i].segment[0];
         }
 		
-	}
+    }
 	
-	// YouTube player time display
-	const display = document.getElementsByClassName("ytp-time-display notranslate")[0];
-	if (!display) return;
+    // YouTube player time display
+    const display = document.getElementsByClassName("ytp-time-display notranslate")[0];
+    if (!display) return;
 	
     const formatedTime = utils.getFormattedTime(video.duration - skipDuration);
 	
-	const durationID = "sponsorBlockDurationAfterSkips";	
+    const durationID = "sponsorBlockDurationAfterSkips";	
     let duration = document.getElementById(durationID);
 
-	// Create span if needed
-	if(duration === null) {
-		duration = document.createElement('span');
+    // Create span if needed
+    if(duration === null) {
+        duration = document.createElement('span');
         duration.id = durationID;
         duration.classList.add("ytp-time-duration");
 
-		display.appendChild(duration);
-	}
+        display.appendChild(duration);
+    }
 		
     duration.innerText = (skipDuration <= 0 || isNaN(skipDuration) || formatedTime.includes("NaN")) ? "" : " ("+formatedTime+")";
 }
