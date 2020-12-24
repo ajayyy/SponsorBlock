@@ -121,6 +121,9 @@
     "submitCheck": {
         "message": "Är du säker på att du vill rapportera detta?"
     },
+    "whitelistChannel": {
+        "message": "Vitlistkanal"
+    },
     "removeFromWhitelist": {
         "message": "Ta bort kanal från vitlistan"
     },
@@ -552,6 +555,10 @@
     },
     "chooseACategory": {
         "message": "Välj en kategori"
+    },
+    "enableThisCategoryFirst": {
+        "message": "För att skicka segment med kategorin \"{0}\" måste du först aktivera det i alternativen. Du kommer nu att bli omdirigerad till alternativen.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "Du måste välja en kategori för alla segment du skickar in!"
