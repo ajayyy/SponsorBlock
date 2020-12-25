@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Loading..."
     },
-    "Mins": {
-        "message": "Minutes"
-    },
-    "Secs": {
-        "message": "Seconds"
-    },
     "Hide": {
         "message": "Never Show"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
          "message": "Leaderboard"
-    },
-    "here": {
-        "message": "here"
     },
     "recordTimesDescription": {
          "message": "Submit"
