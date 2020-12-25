@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Загрузка..."
     },
-    "Mins": {
-        "message": "мин"
-    },
-    "Secs": {
-        "message": "сек"
-    },
     "Hide": {
         "message": "Больше не показывать"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Доска почёта"
-    },
-    "here": {
-        "message": "здесь"
     },
     "recordTimesDescription": {
         "message": "Отправить"
