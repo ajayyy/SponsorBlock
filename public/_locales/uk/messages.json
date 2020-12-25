@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Завантаження..."
     },
-    "Mins": {
-        "message": "хв"
-    },
-    "Secs": {
-        "message": "сек"
-    },
     "Hide": {
         "message": "Не відображати"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Дошка пошани"
-    },
-    "here": {
-        "message": "тут"
     },
     "recordTimesDescription": {
         "message": "Надіслати"
