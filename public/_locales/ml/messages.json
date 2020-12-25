@@ -40,12 +40,6 @@
     "Loading": {
         "message": "ലോഡിംഗ്..."
     },
-    "Mins": {
-        "message": "മിനിറ്റ്"
-    },
-    "Secs": {
-        "message": "സെക്കൻഡ്"
-    },
     "Hide": {
         "message": "ഒരിക്കലും കാണിക്കരുത്"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "ലീഡർബോർഡ്"
-    },
-    "here": {
-        "message": "ഇവിടെ"
     },
     "recordTimesDescription": {
         "message": "സമർപ്പിക്കുക"
