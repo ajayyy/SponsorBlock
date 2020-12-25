@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Chargement..."
     },
-    "Mins": {
-        "message": "Minutes"
-    },
-    "Secs": {
-        "message": "Secondes"
-    },
     "Hide": {
         "message": "Ne plus montrer"
     },
@@ -80,7 +74,7 @@
         "message": "Aucun segment trouvé"
     },
     "sponsorStart": {
-        "message": "Début du segement"
+        "message": "Début du segment"
     },
     "sponsorEnd": {
         "message": "Fin du segment"
@@ -123,9 +117,6 @@
     },
     "voteOnTime": {
         "message": "Voter pour un segment"
-    },
-    "here": {
-        "message": "ici"
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
