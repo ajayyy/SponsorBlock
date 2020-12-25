@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Ladataan..."
     },
-    "Mins": {
-        "message": "Minuuttia"
-    },
-    "Secs": {
-        "message": "Sekuntia"
-    },
     "Hide": {
         "message": "Älä näytä koskaan"
     },
@@ -120,9 +114,6 @@
     },
     "voteOnTime": {
         "message": "Äänestä Segmenttiä"
-    },
-    "here": {
-        "message": "tässä"
     },
     "clearTimesButton": {
         "message": "Tyhjennä ajat"
