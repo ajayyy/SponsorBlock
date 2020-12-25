@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Načítání..."
     },
-    "Mins": {
-        "message": "Minuty"
-    },
-    "Secs": {
-        "message": "Sekundy"
-    },
     "Hide": {
         "message": "Nikdy nezobrazovat"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Žebříček"
-    },
-    "here": {
-        "message": "zde"
     },
     "recordTimesDescription": {
         "message": "Odeslat"
