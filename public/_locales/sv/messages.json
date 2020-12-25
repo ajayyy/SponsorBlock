@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Laddar..."
     },
-    "Mins": {
-        "message": "Minuter"
-    },
-    "Secs": {
-        "message": "Sekunder"
-    },
     "Hide": {
         "message": "Visa Aldrig"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Topplista"
-    },
-    "here": {
-        "message": "här"
     },
     "recordTimesDescription": {
         "message": "Skicka"
