@@ -24,12 +24,6 @@
     "Loading": {
         "message": "Načítavanie..."
     },
-    "Mins": {
-        "message": "Minúty"
-    },
-    "Secs": {
-        "message": "Sekundy"
-    },
     "Hide": {
         "message": "Nikdy nezobrazovať"
     },
@@ -71,9 +65,6 @@
     },
     "closePopup": {
         "message": "Zavrieť okno"
-    },
-    "here": {
-        "message": "tu"
     },
     "hideThis": {
         "message": "Skryť"
