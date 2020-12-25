@@ -40,12 +40,6 @@
     "Loading": {
         "message": "載入中…"
     },
-    "Mins": {
-        "message": "分"
-    },
-    "Secs": {
-        "message": "秒"
-    },
     "Hide": {
         "message": "永不顯示"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "排行榜"
-    },
-    "here": {
-        "message": "這裡"
     },
     "recordTimesDescription": {
         "message": "提交"
