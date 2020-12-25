@@ -572,6 +572,10 @@
     "chooseACategory": {
         "message": "Оберіть категорію"
     },
+    "enableThisCategoryFirst": {
+        "message": "Щоб надіслати сегменти категорії \"{0}\", ви повинні включити її в налаштуваннях. Зараз ви будете туди перенаправлені.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Ви повинні обрати категорію для всіх сегментів, які ви відправляєте!"
     },
