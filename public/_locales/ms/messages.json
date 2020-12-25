@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Memuat..."
     },
-    "Mins": {
-        "message": "Minit"
-    },
-    "Secs": {
-        "message": "Detik"
-    },
     "Hide": {
         "message": "Jangan Tunjukkan"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Papan pendahulu"
-    },
-    "here": {
-        "message": "di sini"
     },
     "recordTimesDescription": {
         "message": "Hantar"
