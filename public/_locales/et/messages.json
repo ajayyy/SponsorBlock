@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Laadimine..."
     },
-    "Mins": {
-        "message": "Minutit"
-    },
-    "Secs": {
-        "message": "Sekundit"
-    },
     "Hide": {
         "message": "Ära näita kunagi"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Edetabel"
-    },
-    "here": {
-        "message": "siin"
     },
     "recordTimesDescription": {
         "message": "Saada"
