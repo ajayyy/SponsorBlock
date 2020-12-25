@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Učitavanje..."
     },
-    "Mins": {
-        "message": "Minute"
-    },
-    "Secs": {
-        "message": "Sekunde"
-    },
     "Hide": {
         "message": "Nikad ne prikazuj"
     },
@@ -117,9 +111,6 @@
     },
     "voteOnTime": {
         "message": "Glasaj za isječak"
-    },
-    "here": {
-        "message": "ovdje"
     },
     "clearTimesButton": {
         "message": "Očisti vremena"
