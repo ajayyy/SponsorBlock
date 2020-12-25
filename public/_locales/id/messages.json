@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Memuat..."
     },
-    "Mins": {
-        "message": "Menit"
-    },
-    "Secs": {
-        "message": "Detik"
-    },
     "Hide": {
         "message": "Jangan tampilkan"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Papan peringkat"
-    },
-    "here": {
-        "message": "disini"
     },
     "recordTimesDescription": {
         "message": "Kirim"
