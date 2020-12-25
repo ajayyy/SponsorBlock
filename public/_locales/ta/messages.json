@@ -40,12 +40,6 @@
     "Loading": {
         "message": "ஏற்றுகிறது..."
     },
-    "Mins": {
-        "message": "நிமிடம்"
-    },
-    "Secs": {
-        "message": "நொடிகள்"
-    },
     "Hide": {
         "message": "ஒருபோதும் அனுமதிக்காதே"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "லீடர்போர்டு"
-    },
-    "here": {
-        "message": "இங்கே"
     },
     "recordTimesDescription": {
         "message": "சமர்ப்பிக்கவும்"
