@@ -34,12 +34,6 @@
     "Loading": {
         "message": "Зареждане..."
     },
-    "Mins": {
-        "message": "Минути"
-    },
-    "Secs": {
-        "message": "Секунди"
-    },
     "Hide": {
         "message": "Никога не показвай"
     },
@@ -87,9 +81,6 @@
     },
     "submitCheck": {
         "message": "Сигурни ли сте, че искате да подадете това?"
-    },
-    "here": {
-        "message": "тук"
     },
     "discordAdvert": {
         "message": "Елате в официалния Discord сървър за да давате предложения!"
