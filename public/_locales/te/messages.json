@@ -40,12 +40,6 @@
     "Loading": {
         "message": "లోడ్ అవుతుంది..."
     },
-    "Mins": {
-        "message": "నిమిషాలు"
-    },
-    "Secs": {
-        "message": "సెకన్లు"
-    },
     "Hide": {
         "message": "నెవర్ షో"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "లీడర్‌బోర్డ్"
-    },
-    "here": {
-        "message": "ఇక్కడ"
     },
     "recordTimesDescription": {
         "message": "సమర్పించండి"
