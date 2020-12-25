@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Laden..."
     },
-    "Mins": {
-        "message": "Minuten"
-    },
-    "Secs": {
-        "message": "Seconden"
-    },
     "Hide": {
         "message": "Nooit weergeven"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Ranglijst"
-    },
-    "here": {
-        "message": "hier"
     },
     "recordTimesDescription": {
         "message": "Indienen"
