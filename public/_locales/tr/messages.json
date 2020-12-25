@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Yükleniyor..."
     },
-    "Mins": {
-        "message": "Dakika"
-    },
-    "Secs": {
-        "message": "Saniye"
-    },
     "Hide": {
         "message": "Asla Gösterme"
     },
@@ -138,9 +132,6 @@
     },
     "viewLeaderboard": {
         "message": "Lider Tablosu"
-    },
-    "here": {
-        "message": "burada"
     },
     "recordTimesDescription": {
         "message": "Gönder"
@@ -577,6 +568,10 @@
     },
     "chooseACategory": {
         "message": "Bir Kategori Seç"
+    },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" kategorisinde bir kısım göndermek için onu ayarlardan açmalısınız. Ayarlara yönlendiriliyorsunuz.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "Göndereceğin tüm kısımlar için bir kategori seçmelisin!"
