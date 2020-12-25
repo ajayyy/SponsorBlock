@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Carregant..."
     },
-    "Mins": {
-        "message": "Minuts"
-    },
-    "Secs": {
-        "message": "Segons"
-    },
     "Hide": {
         "message": "No mostris mai"
     }
