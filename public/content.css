@@ -19,7 +19,7 @@
 /* Preview Bar page hacks */
 
 .ytp-tooltip:not(.sponsorCategoryTooltipVisible) .sponsorCategoryTooltip {
-	display: none;
+	display: none !important;
 }
 
 .ytp-tooltip.sponsorCategoryTooltipVisible {
