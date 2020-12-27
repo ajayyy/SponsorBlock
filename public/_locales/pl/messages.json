@@ -95,7 +95,7 @@
         "message": "Błąd z połączeniem. Kod błędu: "
     },
     "wantToSubmit": {
-        "message": "Czy chcesz zamieścić dla filmu o ID"
+        "message": "Czy chcesz coś zamieścić dla filmu o ID"
     },
     "leftTimes": {
         "message": "Wygląda na to, że pozostawiono pewne niewysłane segmenty. Cofnij się do tamtej strony, aby je zamieścić (nie zostały usunięte)."
