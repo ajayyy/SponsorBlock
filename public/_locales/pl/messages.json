@@ -98,7 +98,7 @@
         "message": "Czy chcesz zamieścić dla filmu o ID"
     },
     "leftTimes": {
-        "message": "Wygląda na to, że zostawiłeś pewne niewysłane segmenty. Cofnij się do tamtej strony, by je zamieścić (nie zostały usunięte)."
+        "message": "Wygląda na to, że pozostawiono pewne niewysłane segmenty. Cofnij się do tamtej strony, aby je zamieścić (nie zostały usunięte)."
     },
     "clearTimes": {
         "message": "Wyczyść segmenty"
