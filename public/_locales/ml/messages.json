@@ -40,12 +40,6 @@
     "Loading": {
         "message": "ലോഡിംഗ്..."
     },
-    "Mins": {
-        "message": "മിനിറ്റ്"
-    },
-    "Secs": {
-        "message": "സെക്കൻഡ്"
-    },
     "Hide": {
         "message": "ഒരിക്കലും കാണിക്കരുത്"
     },
@@ -85,6 +79,9 @@
     "sponsorEnd": {
         "message": "സെഗ്മെന്റ് ഇപ്പോൾ അവസാനിക്കുന്നു"
     },
+    "noVideoID": {
+        "message": "YouTube വീഡിയോകളൊന്നും കണ്ടെത്തിയില്ല.\nഇത് തെറ്റാണെങ്കിൽ, ടാബ് പുതുക്കുക."
+    },
     "success": {
         "message": "വിജയം!"
     },
@@ -118,11 +115,33 @@
     "submitCheck": {
         "message": "ഇത് സമർപ്പിക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?"
     },
+    "whitelistChannel": {
+        "message": "വൈറ്റ്‌ലിസ്റ്റ് ചാനൽ"
+    },
+    "removeFromWhitelist": {
+        "message": "വൈറ്റ്‌ലിസ്റ്റിൽ നിന്ന് ചാനൽ നീക്കംചെയ്യുക"
+    },
     "voteOnTime": {
         "message": "ഒരു സെഗ്‌മെന്റിൽ വോട്ടുചെയ്യുക"
     },
-    "here": {
-        "message": "ഇവിടെ"
+    "Submissions": {
+        "message": "സമർപ്പിക്കലുകൾ"
+    },
+    "savedPeopleFrom": {
+        "message": "നിങ്ങൾ ആളുകളെ സംരക്ഷിച്ചു "
+    },
+    "viewLeaderboard": {
+        "message": "ലീഡർബോർഡ്"
+    },
+    "recordTimesDescription": {
+        "message": "സമർപ്പിക്കുക"
+    },
+    "submissionEditHint": {
+        "message": "സമർപ്പിക്കുക ക്ലിക്കുചെയ്‌തതിനുശേഷം വിഭാഗം എഡിറ്റിംഗ് ദൃശ്യമാകും",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "സൂചന: ഓപ്ഷനുകളിൽ സമർപ്പിക്കുന്നതിന് നിങ്ങൾക്ക് കീബൈൻഡുകൾ സജ്ജമാക്കാൻ കഴിയും"
     },
     "clearTimesButton": {
         "message": "ടൈംസ് മായ്‌ക്കുക"
@@ -132,6 +151,9 @@
     },
     "publicStats": {
         "message": "നിങ്ങൾ എത്രമാത്രം സംഭാവന നൽകി എന്ന് കാണിക്കുന്നതിന് ഇത് പൊതു സ്ഥിതിവിവരക്കണക്ക് പേജിൽ ഉപയോഗിക്കുന്നു. അത് കാണുക"
+    },
+    "Username": {
+        "message": "ഉപയോക്തൃനാമം"
     },
     "setUsername": {
         "message": "ഉപയോക്തൃനാമം സജ്ജമാക്കുക"
@@ -228,6 +250,12 @@
     "0": {
         "message": "കണക്ഷൻ കാലഹരണപ്പെട്ടു. നിങ്ങളുടെ ഇന്റർനെറ്റ് കണക്ഷൻ പരിശോധിക്കുക. നിങ്ങളുടെ ഇൻറർനെറ്റ് പ്രവർത്തിക്കുന്നുണ്ടെങ്കിൽ, സെർവർ ഓവർലോഡ് അല്ലെങ്കിൽ ഡ. ൺ ആയിരിക്കാം."
     },
+    "disableSkipping": {
+        "message": "ഒഴിവാക്കൽ പ്രാപ്തമാക്കി"
+    },
+    "enableSkipping": {
+        "message": "ഒഴിവാക്കുന്നത് പ്രവർത്തനരഹിതമാക്കി"
+    },
     "yourWork": {
         "message": "നിങ്ങളുടെ ജോലി",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +293,9 @@
     "showTimeWithSkipsDescription": {
         "message": "സീക്ക്ബാറിന് താഴെയുള്ള നിലവിലെ സമയത്തിന് അടുത്തുള്ള ബ്രാക്കറ്റുകളിൽ ഈ സമയം ദൃശ്യമാകുന്നു. ഏത് സെഗ്‌മെന്റുകളുടെയും മൈനസ് മൊത്തം വീഡിയോ ദൈർഘ്യം ഇത് കാണിക്കുന്നു. \"സീക്ക്ബാറിൽ കാണിക്കുക\" എന്ന് മാത്രം അടയാളപ്പെടുത്തിയ സെഗ്‌മെന്റുകൾ ഇതിൽ ഉൾപ്പെടുന്നു."
     },
+    "youHaveSkipped": {
+        "message": "നിങ്ങൾ ഒഴിവാക്കി "
+    },
     "youHaveSaved": {
         "message": "നിങ്ങൾ സ്വയം രക്ഷിച്ചു "
     },
@@ -279,6 +310,12 @@
     },
     "hoursLower": {
         "message": "മണിക്കൂറുകൾ"
+    },
+    "youHaveSavedTime": {
+        "message": "നിങ്ങൾ ആളുകളെ സംരക്ഷിച്ചു"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " അവരുടെ ജീവിതത്തിന്റെ"
     },
     "statusReminder": {
         "message": "സെർവർ നിലയ്ക്കായി status.sponsor.ajay.app പരിശോധിക്കുക."
@@ -535,6 +572,10 @@
     "chooseACategory": {
         "message": "ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക"
     },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" വിഭാഗത്തിൽ സെഗ്‌മെന്റുകൾ സമർപ്പിക്കുന്നതിന്, നിങ്ങൾ ഇത് ഓപ്ഷനുകളിൽ പ്രവർത്തനക്ഷമമാക്കണം. നിങ്ങളെ ഇപ്പോൾ ഓപ്ഷനുകളിലേക്ക് റീഡയറക്ട് ചെയ്യും.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "നിങ്ങൾ സമർപ്പിക്കുന്ന എല്ലാ സെഗ്‌മെന്റുകൾക്കും നിങ്ങൾ ഒരു വിഭാഗം തിരഞ്ഞെടുക്കണം!"
     },
@@ -595,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "അപ്‌ലോഡ് ചെയ്യാത്ത സെഗ്‌മെന്റുകളുള്ള ഒരു വീഡിയോ നിങ്ങൾ ഉപേക്ഷിക്കുമ്പോൾ ഒരു അറിയിപ്പ് അയയ്‌ക്കുക"
+    },
+    "help": {
+        "message": "സഹായം"
     }
 }

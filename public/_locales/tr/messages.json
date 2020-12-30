@@ -23,7 +23,7 @@
         "message": "kısım"
     },
     "Segments": {
-        "message": "kısımlar"
+        "message": "kısım"
     },
     "upvoteButtonInfo": {
         "message": "Bu öneriye oy ver"
@@ -39,12 +39,6 @@
     },
     "Loading": {
         "message": "Yükleniyor..."
-    },
-    "Mins": {
-        "message": "Dakika"
-    },
-    "Secs": {
-        "message": "Saniye"
     },
     "Hide": {
         "message": "Asla Gösterme"
@@ -74,7 +68,7 @@
         "message": "Sponsor sürelerini yollarken bir sorun oluştur, lütfen tekrar deneyin."
     },
     "sponsorFound": {
-        "message": "Bu videonun veri tabanımızda kısımları mevcut!"
+        "message": "Bu video için veritabanımızda kısımlar mevcut!"
     },
     "sponsor404": {
         "message": "Kısımlar bulunamadı"
@@ -84,6 +78,9 @@
     },
     "sponsorEnd": {
         "message": "Kısım Şimdi Bitiyor"
+    },
+    "noVideoID": {
+        "message": "YouTube videosu bulunamadı.\nHatalı olduğunu düşünüyorsanız sayfayı yenileyin."
     },
     "success": {
         "message": "Başarılı!"
@@ -118,11 +115,33 @@
     "submitCheck": {
         "message": "Bunu göndermek istediğinize emin misiniz?"
     },
+    "whitelistChannel": {
+        "message": "Kanalı beyaz listeye ekle"
+    },
+    "removeFromWhitelist": {
+        "message": "Kanalı beyaz listeden çıkar"
+    },
     "voteOnTime": {
         "message": "Bir Kısmı Oyla"
     },
-    "here": {
-        "message": "burada"
+    "Submissions": {
+        "message": "Gönderimleriniz"
+    },
+    "savedPeopleFrom": {
+        "message": "İnsanları şu kadar kısımdan kurtardınız "
+    },
+    "viewLeaderboard": {
+        "message": "Lider Tablosu"
+    },
+    "recordTimesDescription": {
+        "message": "Gönder"
+    },
+    "submissionEditHint": {
+        "message": "Kısım düzenlemesi Gönder'e tıkladığınızda görünecek",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "İpucu: Gönderim için ayarlardan kısayol tuşu atayabilirsiniz"
     },
     "clearTimesButton": {
         "message": "Süreleri Temizle"
@@ -132,6 +151,9 @@
     },
     "publicStats": {
         "message": "Bu, ne kadar katkı sağladığınızı göstermek için herkese açık istatistik sayfasında kullanılacaktır. Görün"
+    },
+    "Username": {
+        "message": "Kullanıcı adı"
     },
     "setUsername": {
         "message": "Kullanıcı Adı Belirle"
@@ -228,6 +250,12 @@
     "0": {
         "message": "Bağlantı zaman aşımına uğradı. İnternet bağlantınızı kontrol ediniz. Eğer internetiniz çalışıyor ise, büyük ihtimalle sunucuya erişilemiyor veya sunucuya aşırı yüklenilmiş olabilir."
     },
+    "disableSkipping": {
+        "message": "Atlama etkin"
+    },
+    "enableSkipping": {
+        "message": "Atlama devre dışı"
+    },
     "yourWork": {
         "message": "Çalışmalarınız",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +293,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Bu süre, video ilerleme çubuğunun altındaki geçerli zamanın yanında parantez içinde görüntülenir. Bu, videodaki kısımların silinmiş toplam video süresini gösterir. Bu, yalnızca \"Video İlerleme Çubuğunda Göster\" olarak işaretlenen kısımları içerir."
     },
+    "youHaveSkipped": {
+        "message": "Şu kadar kısım atladınız "
+    },
     "youHaveSaved": {
         "message": "Şu kadar süre kazandınız "
     },
@@ -279,6 +310,12 @@
     },
     "hoursLower": {
         "message": "saat"
+    },
+    "youHaveSavedTime": {
+        "message": "İnsanların şu kadar vaktini kurtardınız:"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " ömürden"
     },
     "statusReminder": {
         "message": "Sunucu durumu için status.sponsor.ajay.app kontrol edin."
@@ -535,6 +572,10 @@
     "chooseACategory": {
         "message": "Bir Kategori Seç"
     },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" kategorisinde bir kısım göndermek için onu ayarlardan açmalısınız. Ayarlara yönlendiriliyorsunuz.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Göndereceğin tüm kısımlar için bir kategori seçmelisin!"
     },
@@ -595,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Bir videodan kısımları göndermeden ayrılırsan bir bildirim gönderir"
+    },
+    "help": {
+        "message": "Yardım"
     }
 }

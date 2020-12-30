@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Chargement..."
     },
-    "Mins": {
-        "message": "Minutes"
-    },
-    "Secs": {
-        "message": "Secondes"
-    },
     "Hide": {
         "message": "Ne plus montrer"
     },
@@ -80,7 +74,7 @@
         "message": "Aucun segment trouvé"
     },
     "sponsorStart": {
-        "message": "Début du segement"
+        "message": "Début du segment"
     },
     "sponsorEnd": {
         "message": "Fin du segment"
@@ -121,11 +115,33 @@
     "submitCheck": {
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
     },
+    "whitelistChannel": {
+        "message": "Whitelister la chaîne"
+    },
+    "removeFromWhitelist": {
+        "message": "Enlever la chaîne de la liste blanche"
+    },
     "voteOnTime": {
         "message": "Voter pour un segment"
     },
-    "here": {
-        "message": "ici"
+    "Submissions": {
+        "message": "Contributions"
+    },
+    "savedPeopleFrom": {
+        "message": "Vous avez sauvé les utilisateurs de "
+    },
+    "viewLeaderboard": {
+        "message": "Classement"
+    },
+    "recordTimesDescription": {
+        "message": "Envoyer"
+    },
+    "submissionEditHint": {
+        "message": "Le menu d'édition du segment apparaîtra après que vous ayez cliqué sur envoyer",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Astuce : Vous pouvez configurer des raccourcis clavier dans les options"
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
@@ -234,6 +250,12 @@
     "0": {
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
     },
+    "disableSkipping": {
+        "message": "Le saut de segment est activé"
+    },
+    "enableSkipping": {
+        "message": "Le saut de segment est désactivé"
+    },
     "yourWork": {
         "message": "Votre travail",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -288,6 +310,9 @@
     },
     "hoursLower": {
         "message": "heures"
+    },
+    "youHaveSavedTime": {
+        "message": "Les utilisateurs ont gagné"
     },
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."

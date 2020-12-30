@@ -40,12 +40,6 @@
     "Loading": {
         "message": "ஏற்றுகிறது..."
     },
-    "Mins": {
-        "message": "நிமிடம்"
-    },
-    "Secs": {
-        "message": "நொடிகள்"
-    },
     "Hide": {
         "message": "ஒருபோதும் அனுமதிக்காதே"
     },
@@ -85,6 +79,9 @@
     "sponsorEnd": {
         "message": "பிரிவு இப்போது முடிகிறது"
     },
+    "noVideoID": {
+        "message": "YouTube வீடியோ எதுவும் கிடைக்கவில்லை.\nஇது தவறாக இருந்தால், தாவலைப் புதுப்பிக்கவும்."
+    },
     "success": {
         "message": "வெற்றி!"
     },
@@ -118,11 +115,33 @@
     "submitCheck": {
         "message": "இதை நிச்சயமாக சமர்ப்பிக்க விரும்புகிறீர்களா?"
     },
+    "whitelistChannel": {
+        "message": "அனுமதிப்பட்டியல் சேனல்"
+    },
+    "removeFromWhitelist": {
+        "message": "அனுமதிப்பட்டியலில் இருந்து சேனலை அகற்று"
+    },
     "voteOnTime": {
         "message": "ஒரு பிரிவில் வாக்களியுங்கள்"
     },
-    "here": {
-        "message": "இங்கே"
+    "Submissions": {
+        "message": "சமர்ப்பிப்புகள்"
+    },
+    "savedPeopleFrom": {
+        "message": "நீங்கள் மக்களை காப்பாற்றியுள்ளீர்கள் "
+    },
+    "viewLeaderboard": {
+        "message": "லீடர்போர்டு"
+    },
+    "recordTimesDescription": {
+        "message": "சமர்ப்பிக்கவும்"
+    },
+    "submissionEditHint": {
+        "message": "நீங்கள் சமர்ப்பி என்பதைக் கிளிக் செய்த பிறகு பிரிவு எடிட்டிங் தோன்றும்",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "குறிப்பு: விருப்பங்களில் சமர்ப்பிக்க விசைப்பலகைகளை அமைக்கலாம்"
     },
     "clearTimesButton": {
         "message": "நேரங்களை அழி"
@@ -132,6 +151,9 @@
     },
     "publicStats": {
         "message": "நீங்கள் எவ்வளவு பங்களித்தீர்கள் என்பதைக் காட்ட இது பொது புள்ளிவிவரங்கள் பக்கத்தில் பயன்படுத்தப்படுகிறது. அதை பார்"
+    },
+    "Username": {
+        "message": "பயனர்பெயர்"
     },
     "setUsername": {
         "message": "பயனர்பெயரை அமைக்கவும்"
@@ -228,6 +250,12 @@
     "0": {
         "message": "இணைப்பு நேரம் முடிந்தது. உங்கள் இணைய இணைப்பைச் சரிபார்க்கவும். உங்கள் இணையம் இயங்கினால், சேவையகம் அதிக சுமை அல்லது கீழே இருக்கும்."
     },
+    "disableSkipping": {
+        "message": "ஸ்கிப்பிங் இயக்கப்பட்டது"
+    },
+    "enableSkipping": {
+        "message": "ஸ்கிப்பிங் முடக்கப்பட்டுள்ளது"
+    },
     "yourWork": {
         "message": "உங்கள் வேலை",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +293,9 @@
     "showTimeWithSkipsDescription": {
         "message": "இந்த நேரம் தற்போதைய நேரத்திற்கு அடுத்த அடைப்புக்குறிக்குள் தோன்றும். இது எந்தவொரு வீடியோவிற்கும் கழித்த மொத்த வீடியோ கால அளவைக் காட்டுகிறது. இதில் \"சீக்பாரில் காண்பி\" என்று மட்டுமே குறிக்கப்பட்ட பகுதிகள் அடங்கும்."
     },
+    "youHaveSkipped": {
+        "message": "நீங்கள் தவிர்த்துவிட்டீர்கள் "
+    },
     "youHaveSaved": {
         "message": "உங்களை நீங்களே காப்பாற்றிக் கொண்டீர்கள் "
     },
@@ -279,6 +310,12 @@
     },
     "hoursLower": {
         "message": "மணி"
+    },
+    "youHaveSavedTime": {
+        "message": "நீங்கள் மக்களைக் காப்பாற்றியுள்ளீர்கள்"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " அவர்களின் வாழ்க்கையில்"
     },
     "statusReminder": {
         "message": "சேவையக நிலைக்கு status.sponsor.ajay.app ஐச் சரிபார்க்கவும்."
@@ -535,6 +572,10 @@
     "chooseACategory": {
         "message": "ஒரு வகையைத் தேர்வுசெய்க"
     },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" வகையுடன் பிரிவுகளைச் சமர்ப்பிக்க, நீங்கள் அதை விருப்பங்களில் இயக்க வேண்டும். நீங்கள் இப்போது விருப்பங்களுக்கு திருப்பி விடப்படுவீர்கள்.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "நீங்கள் சமர்ப்பிக்கும் அனைத்து பிரிவுகளுக்கும் ஒரு வகையைத் தேர்ந்தெடுக்க வேண்டும்!"
     },
@@ -595,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "பதிவேற்றப்படாத பிரிவுகளுடன் வீடியோவை விட்டு வெளியேறும்போது அறிவிப்பை அனுப்பவும்"
+    },
+    "help": {
+        "message": "உதவி"
     }
 }

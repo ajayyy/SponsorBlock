@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Caricamento..."
     },
-    "Mins": {
-        "message": "Minuti"
-    },
-    "Secs": {
-        "message": "Secondi"
-    },
     "Hide": {
         "message": "Non mostrare più"
     },
@@ -132,9 +126,6 @@
     },
     "viewLeaderboard": {
         "message": "Classifica"
-    },
-    "here": {
-        "message": "qui"
     },
     "recordTimesDescription": {
         "message": "Invia"

@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Đang tải..."
     },
-    "Mins": {
-        "message": "Phút"
-    },
-    "Secs": {
-        "message": "Giây"
-    },
     "Hide": {
         "message": "Không hiển thị nữa"
     },
@@ -120,9 +114,6 @@
     },
     "voteOnTime": {
         "message": "Bầu chọn một đoạn quảng cáo"
-    },
-    "here": {
-        "message": "ở đây"
     },
     "clearTimesButton": {
         "message": "Xóa thời gian"
