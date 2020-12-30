@@ -154,17 +154,54 @@ class Utils {
     }
 
     /**
-     * Gets just the timestamps from a sponsorTimes array
-     * 
-     * @param sponsorTimes 
+     * Merges any overlapping timestamp ranges into single segments and returns them as a new array.
      */
-    getSegmentsFromSponsorTimes(sponsorTimes: SponsorTime[]): number[][] {
-        const segments: number[][] = [];
-        for (const sponsorTime of sponsorTimes) {
-            segments.push(sponsorTime.segment);
-        }
+    getMergedTimestamps(timestamps: number[][]): [number, number][] {
+        let deduped: [number, number][] = [];
 
-        return segments;
+        // Cases ([] = another segment, <> = current range):
+        // [<]>, <[>], <[]>, [<>], [<][>]
+        timestamps.forEach((range) => {
+            // Find segments the current range overlaps
+            const startOverlaps = deduped.findIndex((other) => range[0] >= other[0] && range[0] <= other[1]);
+            const endOverlaps = deduped.findIndex((other) => range[1] >= other[0] && range[1] <= other[1]);
+
+            if (~startOverlaps && ~endOverlaps) {
+                // [<][>] Both the start and end of this range overlap another segment
+                // [<>] This range is already entirely contained within an existing segment
+                if (startOverlaps === endOverlaps) return;
+
+                // Remove the range with the higher index first to avoid the index shifting
+                const other1 = deduped.splice(Math.max(startOverlaps, endOverlaps), 1)[0];
+                const other2 = deduped.splice(Math.min(startOverlaps, endOverlaps), 1)[0];
+
+                // Insert a new segment spanning the start and end of the range
+                deduped.push([Math.min(other1[0], other2[0]), Math.max(other1[1], other2[1])]);
+            } else if (~startOverlaps) {
+                // [<]> The start of this range overlaps another segment, extend its end
+                deduped[startOverlaps][1] = range[1];
+            } else if (~endOverlaps) {
+                // <[>] The end of this range overlaps another segment, extend its beginning
+                deduped[endOverlaps][0] = range[0];
+            } else {
+                // No overlaps, just push in a copy
+                deduped.push(range.slice() as [number, number]);
+            }
+
+            // <[]> Remove other segments contained within this range
+            deduped = deduped.filter((other) => !(other[0] > range[0] && other[1] < range[1]));
+        });
+
+        return deduped;
+    }
+
+    /**
+     * Returns the total duration of the timestamps, taking into account overlaps.
+     */
+    getTimestampsDuration(timestamps: number[][]): number {
+        return this.getMergedTimestamps(timestamps).reduce((acc, range) => {
+            return acc + range[1] - range[0];
+        }, 0);
     }
 
     getSponsorIndexFromUUID(sponsorTimes: SponsorTime[], UUID: string): number {

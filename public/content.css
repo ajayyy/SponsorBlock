@@ -11,11 +11,6 @@
 	z-index: 40;
 }
 
-.sbHidden {
-	display: none !important;
-}
-
-
 .previewbar {
 	display: inline-block;
 	height: 100%;
@@ -23,12 +18,29 @@
 
 /* Preview Bar page hacks */
 
-.sbTooltipTwoTitleThumbnailOffset {
-	bottom: -5px !important;
+.ytp-tooltip:not(.sponsorCategoryTooltipVisible) .sponsorCategoryTooltip {
+	display: none !important;
 }
 
-.sbTooltipOneTitleThumbnailOffset {
-	bottom: 10px !important;
+.ytp-tooltip.sponsorCategoryTooltipVisible {
+	transform: translateY(-1em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible {
+	transform: translateY(-2em) !important;
+}
+
+#movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
+	transform: translateY(1em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
+	transform: translateY(0.5em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
+	display: block !important;
+	transform: translateY(1em) !important;
 }
 
 /*  */
