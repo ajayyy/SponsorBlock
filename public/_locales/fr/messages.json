@@ -314,6 +314,9 @@
     "youHaveSavedTime": {
         "message": "Les utilisateurs ont gagné"
     },
+    "youHaveSavedTimeEnd": {
+        "message": " grâce à vous"
+    },
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
     },
@@ -569,6 +572,10 @@
     "chooseACategory": {
         "message": "Choisissez une catégorie"
     },
+    "enableThisCategoryFirst": {
+        "message": "Pour envoyer des segments de la catégorie \"{0}\", vous devez l'activer dans les options. Vous allez être redirigé vers les options maintenant.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
     },
@@ -629,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Envoyer une notification lorsque vous quittez une vidéo avec des segments qui ne sont pas téléversés"
+    },
+    "help": {
+        "message": "Aide"
     }
 }
