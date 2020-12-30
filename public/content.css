@@ -23,24 +23,24 @@
 }
 
 .ytp-tooltip.sponsorCategoryTooltipVisible {
-	transform: translateY(-1em);
+	transform: translateY(-1em) !important;
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible {
-	transform: translateY(-2em);
+	transform: translateY(-2em) !important;
 }
 
 #movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
-	transform: translateY(1em);
+	transform: translateY(1em) !important;
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
-	transform: translateY(0.5em);
+	transform: translateY(0.5em) !important;
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
-	display: block;
-	transform: translateY(1em);
+	display: block !important;
+	transform: translateY(1em) !important;
 }
 
 /*  */
