@@ -133,9 +133,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
             <tr style={{textAlign: "center"}}>
                 <p style={{width: "300px", textAlign: "center", display: "inline-block", fontSize: "11px"}}>
                     Like contributing to crowdsourced projects? 
-                    Consider checking out <a href="https://youcap.video/" style={{textDecoration: "underline"}}>YouCap</a>,
-                    a new open-source replacement for YouTube{"'"}s now defunct community captions.
-                    YouCap is NOT made by me, but I think it looks like a cool idea.
+                    Consider checking out <a href="https://gist.github.com/ajayyy/6f2cf90dd66e51067a7ab5e63544cd4e" style={{textDecoration: "underline"}}>YouCap or NekoCap</a>,
+                    new open-source replacements for YouTube{"'"}s now defunct community captions.
                 </p>
 
                 <img src={chrome.extension.getURL("icons/close.png")}
