@@ -10,6 +10,14 @@
   display: none !important;
 }
 
+.sponsorTimesCategoryColorCircle {
+  margin: 0 8px;
+}
+
+.voteButtonsContainer--hide {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   #sponsorBlockPopupBody {
     width: 100%; 
@@ -41,8 +49,12 @@
   border: none;
   padding: 7px;
   outline: none;
+  
+  display: flex;
+  justify-content: flex-start;
 
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .dot {
