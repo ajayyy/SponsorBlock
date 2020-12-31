@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segmentul se termină acum"
     },
+    "noVideoID": {
+        "message": "Nu s-a găsit niciun videoclip YouTube.\nDacă acest lucru este incorect, actualizați fila."
+    },
     "success": {
         "message": "Succes!"
     },
@@ -112,8 +115,33 @@
     "submitCheck": {
         "message": "Sunteți sigur că doriți să trimiteți asta?"
     },
+    "whitelistChannel": {
+        "message": "Adaugă canalul la excepții"
+    },
+    "removeFromWhitelist": {
+        "message": "Șterge canalul de la excepții"
+    },
     "voteOnTime": {
         "message": "Votează pe un Segment"
+    },
+    "Submissions": {
+        "message": "Submisii"
+    },
+    "savedPeopleFrom": {
+        "message": "Tu ai salvat alte persoane de la "
+    },
+    "viewLeaderboard": {
+        "message": "Clasament"
+    },
+    "recordTimesDescription": {
+        "message": "Trimite"
+    },
+    "submissionEditHint": {
+        "message": "Editând secțiunea va apărea după ce faceți clic trimiteți",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Sugestie: Puteți configura combinații de taste pentru trimitere în opțiuni"
     },
     "clearTimesButton": {
         "message": "Șterge Timpii"
@@ -123,6 +151,9 @@
     },
     "publicStats": {
         "message": "Acest lucru este folosit pe pagina publică de statistici pentru a arăta cât de mult ai contribuit. Vezi pagina"
+    },
+    "Username": {
+        "message": "Nume de utilizator"
     },
     "setUsername": {
         "message": "Setează Numele De Utilizator"
@@ -163,8 +194,30 @@
     "whatDeleteButton": {
         "message": "Acest buton de pe playerul de YouTube va șterge toate segmentele netrimise pentru videoclipul curent."
     },
+    "enableViewTracking": {
+        "message": "Activează Urmărirea Săriturilor"
+    },
+    "whatViewTracking": {
+        "message": "Acest lucru urmărește peste ce segmente ai sărit pentru a informa utilizatorii cât de mult înregistrările lor i-au ajutat pe alții și este folosit ca un contor împreună cu upvoturile pentru a ne asigura că spamul nu pătrunde în baza de date. Extensia trimite un mesaj serverului de fiecare dată când sari peste un segment. Sperăm că majoritatea oamenilor nu vor schimba această setare astfel că numerele să fie exacte. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Interogare după Prefix Hash"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "În loc să solicite segmente de pe server folosind ID-ul video, primele 4 caractere ale hash-ului ID-ul videoului sunt trimise. Acest server va trimite înapoi date pentru toate videoclipurile cu hash-uri similare."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Refacere segmente pe videoclipuri noi"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Dacă videoclipul este nou și nu sunt segmente găsite, va continua să se refeteze la fiecare câteva minute în timp ce vizionați."
+    },
     "showNotice": {
         "message": "Arată Notificarea Din Nou"
+    },
+    "longDescription": {
+        "message": "SponsorBlock vă permite să săriți peste sponsori, intro, outros, memento-uri pentru abonament și alte părți enervante ale videoclipurilor YouTube SponsorBlock este o extensie crowdsourced de browser, care hai să trimită oricui timpul de început și de sfârșit pentru segmente sponsorizate și alte segmente de videoclipuri YouTube. Odată ce o persoană transmite aceste informații, toți ceilalți cu această extensie vor sări peste segmentul sponsorizat. De asemenea, poți sări peste secțiunile non-muzicale ale videoclipurilor.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Website",
@@ -182,6 +235,9 @@
         "message": "Dacă nu îți place, apasă butonul nu mai arăta niciodată.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setStartSponsorShortcut": {
+        "message": "Setează tasta pentru pornirea segmentului"
+    },
     "setSubmitKeybind": {
         "message": "Setează tasta pentru trimiterea sponsorizării"
     },
@@ -193,6 +249,12 @@
     },
     "0": {
         "message": "Eroare de Conexiune. Verifică-ți conexiunea la internet. Daca internetul functionează, serverul este probabil supraîncărcat sau a căzut."
+    },
+    "disableSkipping": {
+        "message": "Omiterea este activată"
+    },
+    "enableSkipping": {
+        "message": "Omiterea este dezactivată"
     },
     "yourWork": {
         "message": "Munca Ta",
@@ -207,6 +269,9 @@
     "skip": {
         "message": "Sari"
     },
+    "skip_category": {
+        "message": "Omiteți {0}?"
+    },
     "skipped": {
         "message": "Sărit"
     },
@@ -219,11 +284,17 @@
     "audioNotification": {
         "message": "Notificare Audio Când Sari"
     },
+    "audioNotificationDescription": {
+        "message": "Notificarea audio va reda un sunet atunci când sari peste o sponsorizare. Dacă este dezactivat (sau autoskip este dezactivat), niciun sunet va fi redat."
+    },
     "showTimeWithSkips": {
         "message": "Arată timpul cu săriturile eliminate"
     },
     "showTimeWithSkipsDescription": {
         "message": "Acest timp apare în paranteze lângă ora curentă sub bara de progres. Aceasta arată durata totală a videoclipului minus orice segment. Aceasta include segmente marcate doar ca \"Afișare în Seekbar\"."
+    },
+    "youHaveSkipped": {
+        "message": "Ai omis "
     },
     "youHaveSaved": {
         "message": "V-ați salvat "
@@ -239,6 +310,12 @@
     },
     "hoursLower": {
         "message": "ore"
+    },
+    "youHaveSavedTime": {
+        "message": "Tu ai salvat alte persoane"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " din viața lor"
     },
     "statusReminder": {
         "message": "Verificați status.sponsor.ajay.app pentru starea serverului."
@@ -260,6 +337,9 @@
     },
     "autoSkip": {
         "message": "Sari Peste Automat"
+    },
+    "showSkipNotice": {
+        "message": "Arată o notificare după ce un segment este sărit"
     },
     "keybindCurrentlySet": {
         "message": ". În prezent este setat:"
@@ -297,6 +377,9 @@
     "minDuration": {
         "message": "Durată minimă (secunde):"
     },
+    "minDurationDescription": {
+        "message": "Segmentele mai scurte decât valoarea setată nu vor fi omise sau afișate în player."
+    },
     "shortCheck": {
         "message": "Următoarea înregistrare este mai mică decât opțiunea voastră de durată minimă. Acest lucru ar putea însemna că a fost deja trimisă și a fost ignorat datorită acestei opțiuni. Sunteți sigur că doriți să trimiteți?"
     },
@@ -324,8 +407,14 @@
     "areYouSureReset": {
         "message": "Sunteți sigur că doriți să resetați asta?"
     },
+    "confirmPrivacy": {
+        "message": "Acest videoclip a fost detectat ca nelistat. Faceți clic pe anulați dacă nu doriți să verificați segmentele de sărire."
+    },
     "unlistedCheck": {
         "message": "Ignoră Videoclipurile Nelistate/Private"
+    },
+    "whatUnlistedCheck": {
+        "message": "Această setare va încetini puțin SponsorBlock. Căutările segmentelor de sărire necesită trimiterea ID-ului videoclipului către server. Dacă sunteți îngrijorat de trimiterea ID-ul videoclipurilor nelistate, activați această opțiune."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com este acum suportat"
@@ -483,6 +572,10 @@
     "chooseACategory": {
         "message": "Alege o categorie"
     },
+    "enableThisCategoryFirst": {
+        "message": "Pentru a trimite segmente cu categoria \"{0}\", trebuie să o activați în opțiuni. Veți fi redirecționat către opțiuni acum.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Trebuie să selectaţi o categorie pentru toate segmentele pe care le trimiteţi!"
     },
@@ -503,6 +596,15 @@
     },
     "itCouldBeAdblockerIssue": {
         "message": "Dacă acest lucru continuă să se întample, ar putea fi cauzat de adblocker-ul dumneavoastră. Vă rugăm să verificați \nhttps://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "forceChannelCheck": {
+        "message": "Forțează verificarea canalului înainte de a sări"
+    },
+    "whatForceChannelCheck": {
+        "message": "În mod implicit, va sări peste sponsorizări chiar și înainte de a ști ce canal este. În mod implicit, unele segmente la începutul videoclipului poate fi omis din canalele excluse. Activând această opțiune va preveni asta, dar va face ca toate săriturile să aibă o ușoară întârziere, deoarece obținerea ID-ul canalului poate dura ceva timp. Această întărziere poate fi neobservată daca aveți internet rapid."
+    },
+    "forceChannelCheckPopup": {
+        "message": "Consideră activarea \"Forțează verificarii canalului înainte de a sări\""
     },
     "downvoteDescription": {
         "message": "Timpi Incorecți/Greșiți"
@@ -534,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Trimite o notificare atunci când părăsești un video cu segmente care nu au fost încărcate"
+    },
+    "help": {
+        "message": "Ajutor"
     }
 }
