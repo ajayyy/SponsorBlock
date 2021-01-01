@@ -147,7 +147,7 @@
         "message": "Usuń czasy"
     },
     "submitTimesButton": {
-        "message": "Zgłoś czasy"
+        "message": "Wyślij czasy"
     },
     "publicStats": {
         "message": "Ten dane są używane na naszej stronie żeby pokazać twój wkład. Zobacz to"
@@ -297,19 +297,19 @@
         "message": "Przewinięto "
     },
     "youHaveSaved": {
-        "message": "Oszczędziłeś sobie "
+        "message": "Oszczędzono sobie "
     },
     "minLower": {
-        "message": "minuta"
+        "message": "min"
     },
     "minsLower": {
-        "message": "minuty"
+        "message": "min"
     },
     "hourLower": {
-        "message": "godzina"
+        "message": "godz."
     },
     "hoursLower": {
-        "message": "godziny"
+        "message": "godz."
     },
     "youHaveSavedTime": {
         "message": "Oszczędzono innym"
@@ -613,7 +613,7 @@
         "message": "Zła kategoria"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Ten film jest skategoryzowany jako muzyka. Czy jesteś pewien, że to jest sponsor? Jeśli jest to rzeczywiście \"segment niemuzyczny\", otwórz opcje rozszerzenia i włącz tę kategorię. Następnie możesz przesłać ten segment jako \"Niemuzyczny\" zamiast sponsora. Proszę przeczytać wytyczne, jeśli jesteś zdezorientowany."
+        "message": "Ten film jest skategoryzowany jako muzyka. Czy masz pewność, że jest tutaj sponsor? Jeśli w rzeczywistości jest to „Sekcja Niemuzyczna”, otwórz opcje rozszerzenia i włącz tę kategorię. Wtedy będziesz w stanie zamieścić ten segment jako „Bez Muzyki” zamiast sponsora. Przeczytaj proszę wytyczne, jeśli masz wątpliwości."
     },
     "multipleSegments": {
         "message": "Wiele segmentów"
