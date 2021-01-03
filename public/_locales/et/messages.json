@@ -270,7 +270,7 @@
         "message": "Jätad {0} vahele?"
     },
     "skipped": {
-        "message": "Vahelejäetud"
+        "message": "vahelejäetud"
     },
     "disableAutoSkip": {
         "message": "Keela automaatne vahelejätmine"
@@ -306,7 +306,7 @@
         "message": "Oled inimestel säästnud"
     },
     "youHaveSavedTimeEnd": {
-        "message": " nende ajast"
+        "message": " nende eludest"
     },
     "statusReminder": {
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
