@@ -1,1 +1,38 @@
-{}
+{
+    "Segment": {
+        "message": "מקטע"
+    },
+    "Segments": {
+        "message": "מקטעים"
+    },
+    "reportButtonTitle": {
+        "message": "דווח"
+    },
+    "Loading": {
+        "message": "טוען..."
+    },
+    "sponsor404": {
+        "message": "לא נמצאו מקטעים"
+    },
+    "errorCode": {
+        "message": "קוד שגיאה: "
+    },
+    "minLower": {
+        "message": "דקה"
+    },
+    "minsLower": {
+        "message": "דקות"
+    },
+    "hourLower": {
+        "message": "שעה"
+    },
+    "hoursLower": {
+        "message": "שעות"
+    },
+    "youHaveSavedTime": {
+        "message": "חסכת לאנשים"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " מחייהם"
+    }
+}
