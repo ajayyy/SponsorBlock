@@ -41,6 +41,9 @@
     "viewLeaderboard": {
         "message": "לוח מובילים"
     },
+    "Username": {
+        "message": "שם משתמש"
+    },
     "Options": {
         "message": "אפשרויות"
     },
