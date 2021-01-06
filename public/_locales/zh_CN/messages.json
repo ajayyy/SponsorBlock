@@ -57,6 +57,9 @@
     "Unknown": {
         "message": "提交您的赞助商广告时间时出错。请稍后再试。"
     },
+    "noVideoID": {
+        "message": "未找到 YouTube 视频。\n如果识别错误，请刷新此页面。"
+    },
     "success": {
         "message": "成功 ！"
     },
@@ -72,8 +75,26 @@
     "openPopup": {
         "message": "打开 SponsorBlock 弹窗"
     },
+    "closePopup": {
+        "message": "关闭弹窗"
+    },
     "submitCheck": {
         "message": "您确定要提交它吗？"
+    },
+    "whitelistChannel": {
+        "message": "将频道列入白名单"
+    },
+    "removeFromWhitelist": {
+        "message": "将频道移出白名单"
+    },
+    "Submissions": {
+        "message": "提交数"
+    },
+    "viewLeaderboard": {
+        "message": "排行榜"
+    },
+    "recordTimesDescription": {
+        "message": "提交"
     },
     "clearTimesButton": {
         "message": "清除时间"
