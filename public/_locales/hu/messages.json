@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Betöltés..."
     },
-    "Mins": {
-        "message": "Perc"
-    },
-    "Secs": {
-        "message": "Másodperc"
-    },
     "Hide": {
         "message": "Ne mutassa többé"
     },
@@ -120,9 +114,6 @@
     },
     "voteOnTime": {
         "message": "Szavazzon a szegmensről"
-    },
-    "here": {
-        "message": "itt"
     },
     "clearTimesButton": {
         "message": "Időpontok törlése"

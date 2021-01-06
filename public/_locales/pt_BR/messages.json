@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Carregando..."
     },
-    "Mins": {
-        "message": "Minutos"
-    },
-    "Secs": {
-        "message": "Segundos"
-    },
     "Hide": {
         "message": "Nunca mostrar"
     },
@@ -85,6 +79,9 @@
     "sponsorEnd": {
         "message": "O segmento termina agora"
     },
+    "noVideoID": {
+        "message": "Nenhum vídeo do YouTube encontrado.\nSe isto estiver incorreto, atualize a aba."
+    },
     "success": {
         "message": "Sucesso!"
     },
@@ -118,11 +115,33 @@
     "submitCheck": {
         "message": "Você tem certeza que deseja enviar isto?"
     },
+    "whitelistChannel": {
+        "message": "Canal na lista branca"
+    },
+    "removeFromWhitelist": {
+        "message": "Remover canal da lista branca"
+    },
     "voteOnTime": {
         "message": "Votar Em Um Segmento"
     },
-    "here": {
-        "message": "aqui"
+    "Submissions": {
+        "message": "Envios"
+    },
+    "savedPeopleFrom": {
+        "message": "Você salvou pessoas de "
+    },
+    "viewLeaderboard": {
+        "message": "Classificação"
+    },
+    "recordTimesDescription": {
+        "message": "Enviar"
+    },
+    "submissionEditHint": {
+        "message": "A edição da seção aparecerá depois que você clicar em enviar",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Dica: Você pode configurar os atalhos de tecla para enviar nas opções"
     },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
@@ -132,6 +151,9 @@
     },
     "publicStats": {
         "message": "Isso é usado na página pública de estatísticas que mostra o quanto você já contríbuíu. Veja-a"
+    },
+    "Username": {
+        "message": "Usuário"
     },
     "setUsername": {
         "message": "Definir nome de usuário"
@@ -228,6 +250,12 @@
     "0": {
         "message": "Tempo limite de conexão excedida. Cheque a sua conexão de internet. Se a sua internet estiver funcionando, o servidor está sobrecarregado ou fora do ar."
     },
+    "disableSkipping": {
+        "message": "Pular está habilitado"
+    },
+    "enableSkipping": {
+        "message": "Pular está desabilitado"
+    },
     "yourWork": {
         "message": "Suas submissões",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +293,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Esta vez aparece em parênteses ao lado da hora atual abaixo da barra de procura. Isto mostra a duração total do vídeo menos qualquer segmento. Isto inclui segmentos marcados como apenas \"Mostrar em Seekbar\"."
     },
+    "youHaveSkipped": {
+        "message": "Você pulou "
+    },
     "youHaveSaved": {
         "message": "Você poupou "
     },
@@ -279,6 +310,12 @@
     },
     "hoursLower": {
         "message": "horas"
+    },
+    "youHaveSavedTime": {
+        "message": "Você poupou das pessoas"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " de suas vidas"
     },
     "statusReminder": {
         "message": "Verifique status.sponsor.ajay.app para o status do servidor."
@@ -535,6 +572,10 @@
     "chooseACategory": {
         "message": "Selecione uma Categoria"
     },
+    "enableThisCategoryFirst": {
+        "message": "Para enviar os segmentos com a categoria de \"{0}\", você deve ativá-lo nas opções. Você será redirecionado para as opções agora.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Você deve selecionar uma categoria para todos os segmentos que você está enviando!"
     },
@@ -595,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Enviar uma notificação quando você sair de um vídeo com segmentos que não foram enviados"
+    },
+    "help": {
+        "message": "Ajuda"
     }
 }

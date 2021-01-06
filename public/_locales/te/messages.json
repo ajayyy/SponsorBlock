@@ -40,12 +40,6 @@
     "Loading": {
         "message": "లోడ్ అవుతుంది..."
     },
-    "Mins": {
-        "message": "నిమిషాలు"
-    },
-    "Secs": {
-        "message": "సెకన్లు"
-    },
     "Hide": {
         "message": "నెవర్ షో"
     },
@@ -85,6 +79,9 @@
     "sponsorEnd": {
         "message": "సెగ్మెంట్ ఇప్పుడు ముగుస్తుంది"
     },
+    "noVideoID": {
+        "message": "YouTube వీడియో కనుగొనబడలేదు.\nఇది తప్పు అయితే, టాబ్‌ను రిఫ్రెష్ చేయండి."
+    },
     "success": {
         "message": "విజయం!"
     },
@@ -118,11 +115,33 @@
     "submitCheck": {
         "message": "మీరు దీన్ని ఖచ్చితంగా సమర్పించాలనుకుంటున్నారా?"
     },
+    "whitelistChannel": {
+        "message": "వైట్‌లిస్ట్ ఛానెల్"
+    },
+    "removeFromWhitelist": {
+        "message": "వైట్‌లిస్ట్ నుండి ఛానెల్‌ని తొలగించండి"
+    },
     "voteOnTime": {
         "message": "ఒక విభాగంలో ఓటు వేయండి"
     },
-    "here": {
-        "message": "ఇక్కడ"
+    "Submissions": {
+        "message": "సమర్పణలు"
+    },
+    "savedPeopleFrom": {
+        "message": "మీరు ప్రజలను రక్షించారు "
+    },
+    "viewLeaderboard": {
+        "message": "లీడర్‌బోర్డ్"
+    },
+    "recordTimesDescription": {
+        "message": "సమర్పించండి"
+    },
+    "submissionEditHint": {
+        "message": "మీరు సమర్పించు క్లిక్ చేసిన తర్వాత విభాగం సవరణ కనిపిస్తుంది",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "సూచన: మీరు ఎంపికలలో సమర్పించడానికి కీబైండ్లను సెటప్ చేయవచ్చు"
     },
     "clearTimesButton": {
         "message": "టైమ్స్ క్లియర్"
@@ -132,6 +151,9 @@
     },
     "publicStats": {
         "message": "మీరు ఎంత సహకరించారో చూపించడానికి ఇది పబ్లిక్ గణాంకాల పేజీలో ఉపయోగించబడుతుంది. ఇది చూడు"
+    },
+    "Username": {
+        "message": "వినియోగదారు పేరు"
     },
     "setUsername": {
         "message": "వినియోగదారు పేరును సెట్ చేయండి"
@@ -228,6 +250,12 @@
     "0": {
         "message": "అనుసంధాన సమయం సమాప్తం. మీ ఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేయండి. మీ ఇంటర్నెట్ పనిచేస్తుంటే, సర్వర్ ఓవర్‌లోడ్ లేదా డౌన్ అయి ఉండవచ్చు."
     },
+    "disableSkipping": {
+        "message": "దాటవేయడం ప్రారంభించబడింది"
+    },
+    "enableSkipping": {
+        "message": "దాటవేయడం నిలిపివేయబడింది"
+    },
     "yourWork": {
         "message": "నీ పని",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +293,9 @@
     "showTimeWithSkipsDescription": {
         "message": "ఈ సమయం సీక్ బార్ క్రింద ప్రస్తుత సమయం పక్కన బ్రాకెట్లలో కనిపిస్తుంది. ఇది మొత్తం వీడియో వ్యవధి మైనస్ ఏదైనా విభాగాలను చూపుతుంది. ఇందులో \"సీక్బార్లో చూపించు\" అని మాత్రమే గుర్తించబడిన విభాగాలు ఉన్నాయి."
     },
+    "youHaveSkipped": {
+        "message": "మీరు దాటవేశారు "
+    },
     "youHaveSaved": {
         "message": "మీరు మీరే రక్షించుకున్నారు "
     },
@@ -279,6 +310,12 @@
     },
     "hoursLower": {
         "message": "గంటలు"
+    },
+    "youHaveSavedTime": {
+        "message": "మీరు ప్రజలను రక్షించారు"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " వారి జీవితాల"
     },
     "statusReminder": {
         "message": "సర్వర్ స్థితి కోసం status.sponsor.ajay.app ని తనిఖీ చేయండి."
@@ -535,6 +572,10 @@
     "chooseACategory": {
         "message": "వర్గాన్ని ఎంచుకోండి"
     },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" వర్గంతో విభాగాలను సమర్పించడానికి, మీరు దీన్ని ఎంపికలలో ప్రారంభించాలి. మీరు ఇప్పుడు ఎంపికలకు మళ్ళించబడతారు.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "మీరు సమర్పించే అన్ని విభాగాల కోసం మీరు తప్పనిసరిగా ఒక వర్గాన్ని ఎంచుకోవాలి!"
     },
@@ -595,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "మీరు అప్‌లోడ్ చేయని విభాగాలతో వీడియోను వదిలివేసినప్పుడు నోటిఫికేషన్ పంపండి"
+    },
+    "help": {
+        "message": "సహాయం"
     }
 }

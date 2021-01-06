@@ -40,12 +40,6 @@
     "Loading": {
         "message": "載入中…"
     },
-    "Mins": {
-        "message": "分"
-    },
-    "Secs": {
-        "message": "秒"
-    },
     "Hide": {
         "message": "永不顯示"
     },
@@ -85,6 +79,9 @@
     "sponsorEnd": {
         "message": "片段現在結束"
     },
+    "noVideoID": {
+        "message": "找不到 YouTube 影片。\n如果這是不正確的，重新整理此分頁"
+    },
     "success": {
         "message": "成功！"
     },
@@ -118,11 +115,33 @@
     "submitCheck": {
         "message": "您確定要提交這個嗎？"
     },
+    "whitelistChannel": {
+        "message": "將頻道列入白名單"
+    },
+    "removeFromWhitelist": {
+        "message": "將頻道從白名單移除"
+    },
     "voteOnTime": {
         "message": "為分段投票"
     },
-    "here": {
-        "message": "這裡"
+    "Submissions": {
+        "message": "提交數"
+    },
+    "savedPeopleFrom": {
+        "message": "您已為大家節省 "
+    },
+    "viewLeaderboard": {
+        "message": "排行榜"
+    },
+    "recordTimesDescription": {
+        "message": "提交"
+    },
+    "submissionEditHint": {
+        "message": "段落編輯會在您提交之後出現",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "小提醒：你可以為提交在設定裡綁定一個按鍵"
     },
     "clearTimesButton": {
         "message": "清除時間"
@@ -132,6 +151,9 @@
     },
     "publicStats": {
         "message": "這會被公開的統計頁面來展示您的貢獻。查看它"
+    },
+    "Username": {
+        "message": "使用者名稱"
     },
     "setUsername": {
         "message": "設定使用者名稱"
@@ -228,6 +250,12 @@
     "0": {
         "message": "連線超時。請檢查您的網路連線。若您的網路運作正常，則可能是伺服器超載或離線"
     },
+    "disableSkipping": {
+        "message": "跳過已啟用"
+    },
+    "enableSkipping": {
+        "message": "跳過已停用"
+    },
     "yourWork": {
         "message": "您的成果",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -240,6 +268,9 @@
     },
     "skip": {
         "message": "略過"
+    },
+    "skip_category": {
+        "message": "跳過 {0}？"
     },
     "skipped": {
         "message": "已跳過"
@@ -262,6 +293,9 @@
     "showTimeWithSkipsDescription": {
         "message": "這個時間會出現在現在時間旁邊的括號內。這會顯示總影片長度減掉任何片段後的結果。這只會包含標為\"在時間條中顯示\"的片段"
     },
+    "youHaveSkipped": {
+        "message": "您已跳過 "
+    },
     "youHaveSaved": {
         "message": "您為自己節省了 "
     },
@@ -276,6 +310,12 @@
     },
     "hoursLower": {
         "message": "小時"
+    },
+    "youHaveSavedTime": {
+        "message": "您已為大家節省"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " 的生命。"
     },
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 檢查伺服器狀態"
@@ -592,5 +632,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "在您離開含有未提交的片段的影片時寄送通知"
+    },
+    "help": {
+        "message": "幫助"
     }
 }

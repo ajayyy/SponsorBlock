@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Cargando..."
     },
-    "Mins": {
-        "message": "Minutos"
-    },
-    "Secs": {
-        "message": "Segundos"
-    },
     "Hide": {
         "message": "Nunca Mostrar"
     },
@@ -128,13 +122,10 @@
         "message": "Solicitudes"
     },
     "savedPeopleFrom": {
-        "message": "Has salvado a gente de "
+        "message": "Tú salvado personas de "
     },
     "viewLeaderboard": {
         "message": "Tablas de clasificación"
-    },
-    "here": {
-        "message": "aquí"
     },
     "recordTimesDescription": {
         "message": "Enviar"
@@ -156,7 +147,7 @@
         "message": "Esto se utiliza en la página de estadísticas públicas para mostrar cuánto has contribuido. Véala"
     },
     "Username": {
-        "message": "Nombre de usario"
+        "message": "Usuario"
     },
     "setUsername": {
         "message": "Escoger Nombre De Usuario"
@@ -297,7 +288,7 @@
         "message": "Esta duración aparece entre paréntesis junto al tiempo actual del video, debajo de la barra de navegación. Esta muestra la duración total del vídeo menos cualquier segmento eliminado. Esto incluye los segmentos marcados como solo \"Mostrar en la barra de navegación\"."
     },
     "youHaveSkipped": {
-        "message": "Lo has saltado "
+        "message": "Los has saltado "
     },
     "youHaveSaved": {
         "message": "Te has ahorrado "

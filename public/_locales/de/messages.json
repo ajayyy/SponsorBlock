@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Überspringe gesponserte Videosegmente, Betteln um Abonnenten und mehr in YouTube Videos. Melde gesponserte Videosegmente in Videos, die du guckst, um anderen Zeit zu sparen.",
+        "message": "Überspringe Sponsoren, betteln um Abonnenten und mehr in YouTube Videos. Melde Sponsoren in Videos, die du guckst, um anderen Zeit zu sparen.",
         "description": "Description of the extension."
     },
     "400": {
@@ -39,12 +39,6 @@
     },
     "Loading": {
         "message": "Laden..."
-    },
-    "Mins": {
-        "message": "Minuten"
-    },
-    "Secs": {
-        "message": "Sekunden"
     },
     "Hide": {
         "message": "Verstecken"
@@ -86,7 +80,7 @@
         "message": "Segment endet jetzt"
     },
     "noVideoID": {
-        "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisieren Sie den Tab."
+        "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisiere den Tab."
     },
     "success": {
         "message": "Geschafft!"
@@ -121,11 +115,33 @@
     "submitCheck": {
         "message": "Bist du sicher, dass du dies übermitteln willst?"
     },
+    "whitelistChannel": {
+        "message": "Kanal zur Whitelist hinzufügen"
+    },
+    "removeFromWhitelist": {
+        "message": "Kanal von der Whitelist entfernen"
+    },
     "voteOnTime": {
         "message": "Über ein Segment abstimmen"
     },
-    "here": {
-        "message": "hier"
+    "Submissions": {
+        "message": "Beiträge"
+    },
+    "savedPeopleFrom": {
+        "message": "Andere Nutzer bewahrt vor: "
+    },
+    "viewLeaderboard": {
+        "message": "Rangliste"
+    },
+    "recordTimesDescription": {
+        "message": "Senden"
+    },
+    "submissionEditHint": {
+        "message": "Die Bearbeitung von Beiträgen wird angezeigt, nachdem du auf Senden klickst",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Tipp: Du kannst Tastenkombinationen für das Senden in den Optionen festlegen"
     },
     "clearTimesButton": {
         "message": "Zeiten löschen"
@@ -135,6 +151,9 @@
     },
     "publicStats": {
         "message": "So wirst du in der öffentlichen Rangliste angezeigt. Siehe"
+    },
+    "Username": {
+        "message": "Benutzername"
     },
     "setUsername": {
         "message": "Alias festlegen"
@@ -231,6 +250,12 @@
     "0": {
         "message": "Zeitüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
     },
+    "disableSkipping": {
+        "message": "Überspringen ist aktiviert"
+    },
+    "enableSkipping": {
+        "message": "Überspringen ist deaktiviert"
+    },
     "yourWork": {
         "message": "Deine Statistik",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -268,6 +293,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Diese Zeit wird in Klammern neben der kompletten Videodauer im YouTube-Videoplayer angezeigt. Dies betrifft auch Segmente, die als \"In Suchleiste anzeigen\" markiert sind."
     },
+    "youHaveSkipped": {
+        "message": "Du übersprangst "
+    },
     "youHaveSaved": {
         "message": " und erspartest dir damit "
     },
@@ -282,6 +310,12 @@
     },
     "hoursLower": {
         "message": "Stunden"
+    },
+    "youHaveSavedTime": {
+        "message": "Du erspartest anderen"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " ihres Lebens"
     },
     "statusReminder": {
         "message": "Du kannst den Serverstatus auf https://status.sponsor.ajay.app überprüfen."
@@ -314,10 +348,10 @@
         "message": "Invidious-Kompatibilität"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (https://invidio.us) ist ein Drittanbieter-YouTube-Client. Um SponsorBlock mit Invidious verwenden zu können, musst du die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT in Chrome's Inkognitomodus oder anderen Chromium-Varianten."
+        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Incongnito-modus auf Chrome und anderen Chromium-Varianten."
     },
     "optionsInfo": {
-        "message": "Zu überspringende Videosegmente auswählen, automatisches Überspringen, Knöpfe ein- & ausblenden und noch viel mehr."
+        "message": "Zu überspringende Kategorien auswählen, automatisches Überspringen, Tasten ein- & ausblenden und noch viel mehr."
     },
     "addInvidiousInstance": {
         "message": "Invidious-Instanzen hinzufügen"
@@ -524,10 +558,10 @@
         "message": "Betatest-Server aktivieren"
     },
     "whatEnableTestingServer": {
-        "message": "Deine Einreichungen und Bewertungen/Meldungen werden NICHT an den Hauptserver übertragen. Benutze diese Option also nur für Tests."
+        "message": "Deine Beiträge und Bewertungen/Meldungen werden NICHT an den Hauptserver übertragen. Benutze diese Option also nur für Tests."
     },
     "testingServerWarning": {
-        "message": "Alle Einreichungen und Bewertungen/Meldungen werden NICHT an den Hauptserver übertragen. Deaktiviere die Betatest-Server Option um Einreichungen an den Hauptserver zu senden."
+        "message": "Alle Beiträge und Bewertungen/Meldungen werden NICHT an den Hauptserver übertragen. Deaktiviere die Betatest-Server Option um Einreichungen an den Hauptserver zu senden."
     },
     "bracketNow": {
         "message": "(jetzt)"
@@ -537,6 +571,10 @@
     },
     "chooseACategory": {
         "message": "Wähle eine Kategorie"
+    },
+    "enableThisCategoryFirst": {
+        "message": "Um Segmente aus der Kategorie \"{0}\" zu senden, musst du diese in den Optionen aktivieren. Du wirst jetzt zu den Optionen weitergeleitet.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "Du musst eine Kategorie für jedes zu übermittelnde Segment auswählen!"
@@ -598,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Zeigt eine Benachrichtigung an, wenn du ein Video mit nicht übertragenden Segmenten verlässt."
+    },
+    "help": {
+        "message": "Hilfe"
     }
 }

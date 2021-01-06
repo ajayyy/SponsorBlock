@@ -24,12 +24,6 @@
     "Loading": {
         "message": "A carregar..."
     },
-    "Mins": {
-        "message": "Minutos"
-    },
-    "Secs": {
-        "message": "Segundos"
-    },
     "Hide": {
         "message": "Nunca mostrar"
     },
@@ -68,9 +62,6 @@
     },
     "submitCheck": {
         "message": "Tem a certeza que pretende submeter?"
-    },
-    "here": {
-        "message": "aqui"
     },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
