@@ -115,6 +115,12 @@
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
     },
+    "whitelistChannel": {
+        "message": "Permitir Canal"
+    },
+    "removeFromWhitelist": {
+        "message": "Quitar canal de la lista blanca"
+    },
     "voteOnTime": {
         "message": "Vote En Un Segmento"
     },
