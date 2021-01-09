@@ -281,6 +281,9 @@
     "audioNotification": {
         "message": "Heliteavitus vahelejätmisel"
     },
+    "audioNotificationDescription": {
+        "message": "Heliteavitus vahelejätmisel esitab iga kord heli, kui segment on vahelejäetud. Keelamisel (või autom. vahelejätmise keelamisel) heli ei esitata."
+    },
     "showTimeWithSkips": {
         "message": "Kuva vahelejäetud segmentidega aeg"
     },
@@ -413,6 +416,9 @@
     "setOptions": {
         "message": "Määra valikud"
     },
+    "exportOptionsWarning": {
+        "message": "Hoiatus: valikute muutmine on püsiv ning võib su paigalduse lõhkuda. Kas soovid kindlasti seda teha? Varunda kindlasti varasemad valikud, igaks juhuks."
+    },
     "incorrectlyFormattedOptions": {
         "message": "See JSON ei ole korralikult vormistatud. Sinu valikuid ei muudetud."
     },
@@ -442,6 +448,9 @@
     },
     "copyDebugInformationFailed": {
         "message": "Lõikelauale kirjutamine ebaõnnestus"
+    },
+    "copyDebugInformationComplete": {
+        "message": "Silumisinfo on lõikelauale kopeeritud. Võid sellelt vabalt eemaldada mistahes info, mida ei soovi jagada. Salvesta see tekstifaili või kleebi vearaportisse."
     },
     "theKey": {
         "message": "Klahv"
