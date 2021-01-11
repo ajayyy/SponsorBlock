@@ -55,9 +55,7 @@ interface SBConfig {
         "preview-selfpromo": PreviewBarOption,
         "music_offtopic": PreviewBarOption,
         "preview-music_offtopic": PreviewBarOption,
-    },
-
-    hasShownYouCapNotice: boolean
+    }
 }
 
 export interface SBObject {
@@ -231,9 +229,7 @@ const Config: SBObject = {
                 color: "#a6634a",
                 opacity: "0.7"
             }
-        },
-
-        hasShownYouCapNotice: false
+        }
     },
     localConfig: null,
     config: null,
