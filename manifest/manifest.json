@@ -46,7 +46,6 @@
     ],
     "permissions": [
         "storage",
-        "notifications",
         "https://sponsor.ajay.app/*"
     ],
     "optional_permissions": [

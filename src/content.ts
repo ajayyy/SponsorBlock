@@ -19,7 +19,6 @@ utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
 
 //was sponsor data found when doing SponsorsLookup
 let sponsorDataFound = false;
-let previousVideoID: VideoID = null;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 let sponsorTimes: SponsorTime[] = null;
 //what video id are these sponsors for
@@ -310,25 +309,6 @@ async function videoIDChange(id) {
         }
     }
 
-    //warn them if they had unsubmitted times
-    if (previousVideoID != null) {
-        //get the sponsor times from storage
-        const sponsorTimes = Config.config.segmentTimes.get(previousVideoID);
-        if (sponsorTimes != undefined && sponsorTimes.length > 0 && new URL(document.URL).host !== "music.youtube.com") {
-            //warn them that they have unsubmitted sponsor times
-            chrome.runtime.sendMessage({
-                message: "alertPrevious",
-                previousVideoID: previousVideoID
-            });
-        }
-
-        //set the previous video id to the currentID
-        previousVideoID = id;
-    } else {
-        //set the previous id now, don't wait for chrome.storage.get
-        previousVideoID = id;
-    }
-  
     //close popup
     closeInfoMenu();
 	

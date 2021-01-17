@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Do you want to submit for video id"
     },
-    "leftTimes": {
-        "message": "You seem to have left some segments unsubmitted. Go back to that page to submit them (they are not deleted)."
-    },
     "clearTimes": {
         "message": "Clear Segments"
     },
@@ -630,12 +627,6 @@
     },
     "categoryUpdate2": {
         "message": "Open the options to skip intros, outros, merch, etc."
-    },
-    "unsubmittedWarning": {
-        "message": "Unsubmitted Segments Notification"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Send a notification when you leave a video with segments that are not uploaded"
     },
     "help": {
         "message": "Help"
