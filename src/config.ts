@@ -1,5 +1,5 @@
 import * as CompileConfig from "../config.json";
-import { CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime, StorageChangesObject } from "./types";
+import { CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
 
 import Utils from "./utils";
 const utils = new Utils();
@@ -247,7 +247,7 @@ const Config: SBObject = {
  * 
  * @param data 
  */
-function encodeStoredItem<T>(data: T): T | Array<[string, Array<SponsorTime>]>  {
+function encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes  {
     // if data is SBMap convert to json for storing
     if(!(data instanceof SBMap)) return data;
     return Array.from(data.entries()).filter((element) => element[1] === []); // Remove empty entries
@@ -265,7 +265,7 @@ function decodeStoredItem<T>(id: string, data: T): T | SBMap<string, SponsorTime
     if (Config.defaults[id] instanceof SBMap) {
         try {
             if (!Array.isArray(data)) return data;
-            return new SBMap(id, data);
+            return new SBMap(id, data as UnencodedSegmentTimes);
         } catch(e) {
             console.error("Failed to parse SBMap: " + id);
         }

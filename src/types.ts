@@ -1,7 +1,7 @@
 import SubmissionNotice from "./render/SubmissionNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 
-interface ContentContainer {
+export interface ContentContainer {
     (): {
         vote: (type: number, UUID: string, category?: string, skipNotice?: SkipNoticeComponent) => void,
         dontShowNoticeAgain: () => void,
@@ -22,34 +22,34 @@ interface ContentContainer {
     }
 }
 
-interface FetchResponse {
+export interface FetchResponse {
     responseText: string,
     status: number,
     ok: boolean
 }
 
-interface VideoDurationResponse {
+export interface VideoDurationResponse {
     duration: number;
 }
 
-enum CategorySkipOption {
+export enum CategorySkipOption {
     ShowOverlay,
     ManualSkip,
     AutoSkip
 }
 
-interface CategorySelection {
+export interface CategorySelection {
     name: string;
     option: CategorySkipOption
 }
 
-enum SponsorHideType {
+export enum SponsorHideType {
     Visible = undefined,
     Downvoted = 1,
     MinimumDuration
 }
 
-interface SponsorTime {
+export interface SponsorTime {
     segment: number[];
     UUID: string;
 
@@ -58,13 +58,13 @@ interface SponsorTime {
     hidden?: SponsorHideType;
 }
 
-interface PreviewBarOption {
+export interface PreviewBarOption {
     color: string,
     opacity: string
 }
 
 
-interface Registration {
+export interface Registration {
     message: string,
     id: string,
     allFrames: boolean,
@@ -73,12 +73,12 @@ interface Registration {
     matches: string[]
 }
 
-interface BackgroundScriptContainer {
+export interface BackgroundScriptContainer {
     registerFirefoxContentScript: (opts: Registration) => void,
     unregisterFirefoxContentScript: (id: string) => void
 }
 
-interface VideoInfo {
+export interface VideoInfo {
     responseContext: {
         serviceTrackingParams: Array<{service: string, params: Array<{key: string, value: string}>}>,
         webResponseContextExtensionData: {
@@ -154,22 +154,8 @@ interface VideoInfo {
     messages: unknown;
 }
 
-type VideoID = string;
+export type VideoID = string;
 
-type StorageChangesObject = { [key: string]: chrome.storage.StorageChange };
+export type StorageChangesObject = { [key: string]: chrome.storage.StorageChange };
 
-export {
-    FetchResponse,
-    VideoDurationResponse,
-    ContentContainer,
-    CategorySelection,
-    CategorySkipOption,
-    SponsorTime,
-    VideoID,
-    SponsorHideType,
-    PreviewBarOption,
-    Registration,
-    BackgroundScriptContainer,
-    VideoInfo,
-    StorageChangesObject,
-};
+export type UnEncodedSegmentTimes = [string, SponsorTime[]][];
