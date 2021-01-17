@@ -232,6 +232,9 @@
         "message": "If you still don't like it, hit the never show button.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Set key for skipping a segment"
+    },
     "setStartSponsorShortcut": {
         "message": "Set key for start segment keybind"
     },

@@ -177,12 +177,19 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             countdownTime
         })
     }
+    
+    removeFadeAnimation(): void {
+        //remove the fade out class if it exists
+        const notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
+        notice.classList.remove("sponsorSkipNoticeFadeOut");
+        notice.style.animation = "none";
+    }
 
     pauseCountdown(): void {
         if (!this.props.timed) return;
 
         //remove setInterval
-        clearInterval(this.countdownInterval);
+        if (this.countdownInterval) clearInterval(this.countdownInterval);
         this.countdownInterval = null;
 
         //reset countdown and inform the user
@@ -191,10 +198,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             countdownText: this.state.countdownManuallyPaused ? chrome.i18n.getMessage("manualPaused") : chrome.i18n.getMessage("paused")
         });
         
-        //remove the fade out class if it exists
-        const notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
-        notice.classList.remove("sponsorSkipNoticeFadeOut");
-        notice.style.animation = "none";
+        this.removeFadeAnimation();
     }
 
     startCountdown(): void {
@@ -208,16 +212,25 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             countdownText: null
         });
 
+        this.setupInterval();
+    }
+
+    setupInterval(): void {
+        if (this.countdownInterval) clearInterval(this.countdownInterval);
         this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
     }
 
     resetCountdown(): void {
         if (!this.props.timed) return;
 
+        this.setupInterval();
+
         this.setState({
             countdownTime: this.state.maxCountdownTime(),
             countdownText: null
         });
+
+        this.removeFadeAnimation();
     }
     
     /**

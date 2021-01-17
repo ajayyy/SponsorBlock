@@ -1,5 +1,6 @@
 import SubmissionNotice from "./render/SubmissionNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
+import SkipNotice from "./render/SkipNotice";
 
 export interface ContentContainer {
     (): {
@@ -8,6 +9,7 @@ export interface ContentContainer {
         unskipSponsorTime: (segment: SponsorTime) => void,
         sponsorTimes: SponsorTime[],
         sponsorTimesSubmitting: SponsorTime[],
+        skipNotices: SkipNotice[],
         v: HTMLVideoElement,
         sponsorVideoID,
         reskipSponsorTime: (segment: SponsorTime) => void,
