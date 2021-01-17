@@ -91,13 +91,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
         this.idSuffix += this.amountOfPreviousNotices;
 
-        if (this.amountOfPreviousNotices > 0) {
-            //another notice exists
-
-            const previousNotice = document.getElementsByClassName("sponsorSkipNotice")[0];
-            previousNotice.classList.add("secondSkipNotice")
-        }
-
         // Setup state
         this.state = {
             noticeTitle,
