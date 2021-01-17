@@ -64,7 +64,7 @@ export interface SBObject {
     config: SBConfig;
 
     // Functions
-    encodeStoredItem<T>(data: T): T | Array<any>;
+    encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes;
     convertJSON(): void;
 }
 
@@ -393,7 +393,7 @@ function migrateOldFormats(config: SBConfig) {
 
     // Migrate old "sponsorTimes"
     if (config["sponsorTimes"]) {
-        let jsonData: any = config["sponsorTimes"];
+        let jsonData: unknown = config["sponsorTimes"];
 
         // Check if data is stored in the old format for SBMap (a JSON string)
         if (typeof jsonData === "string") {
