@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import SkipNoticeComponent from "../components/SkipNoticeComponent";
+import SkipNoticeComponent, { SkipNoticeAction } from "../components/SkipNoticeComponent";
 import { SponsorTime, ContentContainer } from "../types";
 
 class SkipNotice {
@@ -15,6 +15,8 @@ class SkipNotice {
     skipNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
 
     constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer) {
+        this.skipNoticeRef = React.createRef();
+
         this.segments = segments;
         this.autoSkip = autoSkip;
         this.contentContainer = contentContainer;
@@ -67,6 +69,13 @@ class SkipNotice {
         ReactDOM.unmountComponentAtNode(this.noticeElement);
 
         this.noticeElement.remove();
+
+        const skipNotices = this.contentContainer().skipNotices;
+        skipNotices.splice(skipNotices.indexOf(this), 1);
+    }
+
+    toggleSkip(): void {
+        this.skipNoticeRef.current.prepAction(SkipNoticeAction.Unskip);
     }
 }
 

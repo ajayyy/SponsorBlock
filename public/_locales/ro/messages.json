@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Se încarcă..."
     },
-    "Mins": {
-        "message": "Minute"
-    },
-    "Secs": {
-        "message": "Secunde"
-    },
     "Hide": {
         "message": "Nu mai afișa niciodată"
     },
@@ -120,9 +114,6 @@
     },
     "voteOnTime": {
         "message": "Votează pe un Segment"
-    },
-    "here": {
-        "message": "aici"
     },
     "clearTimesButton": {
         "message": "Șterge Timpii"

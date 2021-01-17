@@ -10,6 +10,18 @@
   display: none !important;
 }
 
+@media only screen and (max-width: 600px) {
+  #sponsorBlockPopupBody {
+    width: 100%; 
+  }
+}
+
+#sponsorBlockPopupBody {
+  margin: auto; 
+  width: 374px; 
+  background: var(--sb-main-bg-color);
+}
+
 #sponsorblockPopup {
   color: var(--sb-main-fg-color);
   font-family: 'Source Sans Pro', sans-serif;

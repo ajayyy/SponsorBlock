@@ -21,12 +21,6 @@
     "Loading": {
         "message": "読み込み中..."
     },
-    "Mins": {
-        "message": "分"
-    },
-    "Secs": {
-        "message": "秒"
-    },
     "unskip": {
         "message": "スキップしない"
     },
@@ -38,9 +32,6 @@
     },
     "closePopup": {
         "message": "ポップアップを閉じる"
-    },
-    "here": {
-        "message": "こちら"
     },
     "Options": {
         "message": "オプション"

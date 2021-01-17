@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Ładowanie..."
     },
-    "Mins": {
-        "message": "Minuty"
-    },
-    "Secs": {
-        "message": "Sekundy"
-    },
     "Hide": {
         "message": "Nie pokazuj więcej"
     },
@@ -65,10 +59,10 @@
         "message": "Timer zatrzymany"
     },
     "confirmMSG": {
-        "message": "Żeby zmienić lub usunąć wartości, kliknij na guzik informacji lub otwórz okienko rozszerzenia klikając w ikonę rozszerzenia znajdującą się w prawym górnym rogu."
+        "message": "Aby edytować lub usuwać poszczególne wartości, kliknij na przycisk informacyjny lub otwórz okienko rozszerzenia, klikając na ikonę rozszerzenia w prawym górnym rogu."
     },
     "clearThis": {
-        "message": "Jesteś pewien, że chcesz to usunąć?\n\n"
+        "message": "Czy na pewno chcesz to usunąć?\n\n"
     },
     "Unknown": {
         "message": "Wystąpił błąd podczas przesyłania twojego segmentu. Proszę spróbować ponownie później."
@@ -86,7 +80,7 @@
         "message": "Koniec segmentu"
     },
     "noVideoID": {
-        "message": "Nie znaleziono filmu YouTube.\nJeśli jest to niepoprawne, odśwież stronę."
+        "message": "Nie znaleziono filmu YouTube.\nJeśli jest to nieprawidłowe, odśwież stronę."
     },
     "success": {
         "message": "Sukces!"
@@ -101,10 +95,10 @@
         "message": "Błąd z połączeniem. Kod błędu: "
     },
     "wantToSubmit": {
-        "message": "Czy chcesz zamieścić dla filmu o ID"
+        "message": "Czy chcesz coś zamieścić dla filmu o ID"
     },
     "leftTimes": {
-        "message": "Wygląda na to, że zostawiłeś pewne niewysłane segmenty. Cofnij się do tamtej strony, by je zamieścić (nie zostały usunięte)."
+        "message": "Wygląda na to, że pozostawiono pewne niewysłane segmenty. Cofnij się do tamtej strony, aby je zamieścić (nie zostały usunięte)."
     },
     "clearTimes": {
         "message": "Wyczyść segmenty"
@@ -139,14 +133,11 @@
     "viewLeaderboard": {
         "message": "Ranking"
     },
-    "here": {
-        "message": "tutaj"
-    },
     "recordTimesDescription": {
         "message": "Wyślij"
     },
     "submissionEditHint": {
-        "message": "Edycja sekcji pojawi się po kliknięciu wyślij",
+        "message": "Edycja sekcji pojawi się po kliknięciu",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -366,7 +357,7 @@
         "message": "Dodaj instancje Invidious"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Dodaj niestandardową instancje Invidious. W formie domeny. Na przykład: invidious.ajay.app"
+        "message": "Dodaj niestandardową instancję Invidious. Musi to być w formie samej domeny. Przykładowo: invidious.ajay.app"
     },
     "add": {
         "message": "Dodaj"
@@ -580,6 +571,10 @@
     },
     "chooseACategory": {
         "message": "Wybierz kategorię"
+    },
+    "enableThisCategoryFirst": {
+        "message": "Aby przesyłać segmenty o kategorii \"{0}\", musisz ją włączyć w opcjach. Zostaniesz przekierowany do ustawień.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "Musisz wybrać kategorię dla każdego segmentu, który zamieszczasz!"

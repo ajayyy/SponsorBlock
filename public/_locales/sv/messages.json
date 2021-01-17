@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Laddar..."
     },
-    "Mins": {
-        "message": "Minuter"
-    },
-    "Secs": {
-        "message": "Sekunder"
-    },
     "Hide": {
         "message": "Visa Aldrig"
     },
@@ -121,17 +115,23 @@
     "submitCheck": {
         "message": "Är du säker på att du vill rapportera detta?"
     },
+    "whitelistChannel": {
+        "message": "Vitlistkanal"
+    },
+    "removeFromWhitelist": {
+        "message": "Ta bort kanal från vitlistan"
+    },
     "voteOnTime": {
         "message": "Rösta på ett segment"
+    },
+    "Submissions": {
+        "message": "Inskickade"
     },
     "savedPeopleFrom": {
         "message": "Du har sparat andra från "
     },
     "viewLeaderboard": {
         "message": "Topplista"
-    },
-    "here": {
-        "message": "här"
     },
     "recordTimesDescription": {
         "message": "Skicka"
@@ -195,6 +195,12 @@
     },
     "enableQueryByHashPrefix": {
         "message": "Fråga efter hash-prefix"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Uppdatera segment på nya videor"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Om videon är ny och inga segment hittades då kommer den att uppdatera med några minuter mellanrum medan du tittar på videon."
     },
     "showNotice": {
         "message": "Visa Notisen Igen"
@@ -476,6 +482,9 @@
     "category_interaction": {
         "message": "Interaktionspåminnelse (Prenumerera)"
     },
+    "category_interaction_short": {
+        "message": "Interaktionspåminnelse"
+    },
     "category_selfpromo": {
         "message": "Obetald/självbefodran"
     },
@@ -488,6 +497,9 @@
     "category_music_offtopic_short": {
         "message": "Icke-musik"
     },
+    "category_livestream_messages": {
+        "message": "Liveström: Donations-/meddelandeavläsningar"
+    },
     "category_livestream_messages_short": {
         "message": "Läser meddelande"
     },
@@ -499,6 +511,9 @@
     },
     "showOverlay": {
         "message": "Visa Lager Ovanpå Spelare"
+    },
+    "colorFormatIncorrect": {
+        "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."
     },
     "previewColor": {
         "message": "Förhandsgranskningsfärg",
@@ -532,6 +547,10 @@
     "chooseACategory": {
         "message": "Välj en kategori"
     },
+    "enableThisCategoryFirst": {
+        "message": "För att skicka segment med kategorin \"{0}\" måste du först aktivera det i alternativen. Du kommer nu att bli omdirigerad till alternativen.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Du måste välja en kategori för alla segment du skickar in!"
     },
@@ -564,6 +583,9 @@
     },
     "incorrectCategory": {
         "message": "Fel kategori"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Den här videon kategoriseras som musik. Är du säker på att denna har en sponsor? Om detta faktiskt är ett \"icke-musiksegment\", öppna tilläggsalternativen och aktivera denna kategori. Då kan du skicka in detta segment som \"icke-musik\" i stället för sponsor. Läs riktlinjerna om något är oklart."
     },
     "multipleSegments": {
         "message": "Flera segment"

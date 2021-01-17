@@ -40,12 +40,6 @@
     "Loading": {
         "message": "กำลังโหลด..."
     },
-    "Mins": {
-        "message": "นาที"
-    },
-    "Secs": {
-        "message": "วินาที"
-    },
     "Hide": {
         "message": "ไม่แสดงเสมอ"
     },
@@ -69,9 +63,6 @@
     },
     "sponsor404": {
         "message": "ไม่พบส่วนในวีดีโอนี้"
-    },
-    "here": {
-        "message": "ที่นี่"
     },
     "clearTimesButton": {
         "message": "ล้างเวลา"

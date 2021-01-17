@@ -30,12 +30,6 @@
     "Loading": {
         "message": "加载中..."
     },
-    "Mins": {
-        "message": "分钟"
-    },
-    "Secs": {
-        "message": "秒"
-    },
     "Hide": {
         "message": "不再显示"
     },
@@ -80,9 +74,6 @@
     },
     "submitCheck": {
         "message": "您确定要提交它吗？"
-    },
-    "here": {
-        "message": "这里"
     },
     "clearTimesButton": {
         "message": "清除时间"

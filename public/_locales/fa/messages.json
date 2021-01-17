@@ -30,12 +30,6 @@
     "Loading": {
         "message": "درحال بارگذاری..."
     },
-    "Mins": {
-        "message": "دقیقه"
-    },
-    "Secs": {
-        "message": "ثانیه"
-    },
     "Hide": {
         "message": "هرگز نمایش نده"
     },
@@ -101,9 +95,6 @@
     },
     "voteOnTime": {
         "message": "رأی دهی به یک بخش"
-    },
-    "here": {
-        "message": "اینجا"
     },
     "clearTimesButton": {
         "message": "حذف دفعات"
