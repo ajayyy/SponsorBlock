@@ -247,10 +247,10 @@ const Config: SBObject = {
  * 
  * @param data 
  */
-function encodeStoredItem<T>(data: T): T | Array<any>  {
+function encodeStoredItem<T>(data: T): T | Array<[string, Array<SponsorTime>]>  {
     // if data is SBMap convert to json for storing
     if(!(data instanceof SBMap)) return data;
-    return Array.from(data.entries());
+    return Array.from(data.entries()).filter((element) => element[1] === []); // Remove empty entries
 }
 
 /**
