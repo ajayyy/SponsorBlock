@@ -128,7 +128,7 @@
         "message": "Gönderimleriniz"
     },
     "savedPeopleFrom": {
-        "message": "İnsanları şu kadar kısımdan kurtardınız "
+        "message": "İnsanları şu kadar kısımdan kurtardınız: "
     },
     "viewLeaderboard": {
         "message": "Lider Tablosu"
@@ -294,7 +294,7 @@
         "message": "Bu süre, video ilerleme çubuğunun altındaki geçerli zamanın yanında parantez içinde görüntülenir. Bu, videodaki kısımların silinmiş toplam video süresini gösterir. Bu, yalnızca \"Video İlerleme Çubuğunda Göster\" olarak işaretlenen kısımları içerir."
     },
     "youHaveSkipped": {
-        "message": "Şu kadar kısım atladınız "
+        "message": "Şu kadar kısım atladınız: "
     },
     "youHaveSaved": {
         "message": "Şu kadar süre kazandınız "
@@ -315,7 +315,7 @@
         "message": "İnsanların şu kadar vaktini kurtardınız:"
     },
     "youHaveSavedTimeEnd": {
-        "message": " ömürden"
+        "message": " yaşam süresi"
     },
     "statusReminder": {
         "message": "Sunucu durumu için status.sponsor.ajay.app kontrol edin."

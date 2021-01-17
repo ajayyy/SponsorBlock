@@ -247,6 +247,9 @@
     "keybindDescriptionComplete": {
         "message": "Otsetee on seatud: "
     },
+    "0": {
+        "message": "Ühenduse ajalõpp. Kontrolli oma võrguühendust. Kui internet töötab, on ilmselt server ülekoormatud või maas."
+    },
     "disableSkipping": {
         "message": "Vahelejätmine on lubatud"
     },
@@ -270,7 +273,7 @@
         "message": "Jätad {0} vahele?"
     },
     "skipped": {
-        "message": "Vahelejäetud"
+        "message": "vahelejäetud"
     },
     "disableAutoSkip": {
         "message": "Keela automaatne vahelejätmine"
@@ -281,8 +284,14 @@
     "audioNotification": {
         "message": "Heliteavitus vahelejätmisel"
     },
+    "audioNotificationDescription": {
+        "message": "Heliteavitus vahelejätmisel esitab igal korral heli, kui segment vahele jäetakse. Keelamisel (või autom. vahelejätmise keelamisel) heli ei esitata."
+    },
     "showTimeWithSkips": {
         "message": "Kuva vahelejäetud segmentidega aeg"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "See aeg kuvatakse sulgudes praeguse aja kõrval, ajariba all. See näitab video, millest on segmendid eemaldatud, kogukestvust. Sealhulgas arvestatakse ka segmente, mis on märgitud valikuga \"kuva mängija ajaribal\"."
     },
     "youHaveSkipped": {
         "message": "Oled vahele jätnud "
@@ -306,7 +315,7 @@
         "message": "Oled inimestel säästnud"
     },
     "youHaveSavedTimeEnd": {
-        "message": " nende ajast"
+        "message": " nende eludest"
     },
     "statusReminder": {
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
@@ -371,6 +380,9 @@
     "minDurationDescription": {
         "message": "Segmendid, mis on lühemad kui määratud väärtus ei jäeta vahele või ei kuvata mängijal."
     },
+    "shortCheck": {
+        "message": "See saadetav segment on lühem, kui sinu lühima pikkuse valik. See võib tähendada, et see on juba saadetud ning on selle valiku tõttu lihtsalt ignoreeritud. Kas soovid kindlasti seda saata?"
+    },
     "showUploadButton": {
         "message": "Kuva üleslaadimisnupp"
     },
@@ -379,6 +391,9 @@
     },
     "customServerAddress": {
         "message": "SponsorBlocki serveri aadress"
+    },
+    "customServerAddressDescription": {
+        "message": "Aadress, mida SponsorBlock kasutab serveriga info vahetamiseks.\nKui sul just oma serverit pole, ei peaks sa seda valikut muutma."
     },
     "save": {
         "message": "Salvesta"
@@ -413,6 +428,9 @@
     "setOptions": {
         "message": "Määra valikud"
     },
+    "exportOptionsWarning": {
+        "message": "Hoiatus: valikute muutmine on püsiv ning võib su paigalduse lõhkuda. Kas soovid kindlasti seda teha? Varunda kindlasti igaks juhuks varasemad valikud."
+    },
     "incorrectlyFormattedOptions": {
         "message": "See JSON ei ole korralikult vormistatud. Sinu valikuid ei muudetud."
     },
@@ -442,6 +460,12 @@
     },
     "copyDebugInformationFailed": {
         "message": "Lõikelauale kirjutamine ebaõnnestus"
+    },
+    "copyDebugInformationOptions": {
+        "message": "Kopeerib lõikelauale info, mida saad arendajale anda veast teatamisel või siis, kui arendaja seda sinult taotleb. Tundlik info, sealhulgas sinu kasutaja ID, lubamisnimekirjas kanalid ning kohandatud serveri aadress on eemaldatud. Siiski see sisaldab teatud infot, nagu sinu kasutajaagent, brauser, opsüsteem ning laienduse versiooninumber."
+    },
+    "copyDebugInformationComplete": {
+        "message": "Silumisinfo on lõikelauale kopeeritud. Võid sellelt vabalt eemaldada mistahes info, mida ei soovi jagada. Salvesta see tekstifaili või kleebi vearaportisse."
     },
     "theKey": {
         "message": "Klahv"
@@ -536,6 +560,9 @@
     "whatEnableTestingServer": {
         "message": "Sinu saadetud segmendid ja hääled EI LÄHE põhiserveri alla. Kasuta seda vaid katsetamiseks."
     },
+    "testingServerWarning": {
+        "message": "Kõik segmendid ja hääled EI LÄHE põhiserveri alla, kuni oled ühendatud testserveriga. Veendu, et keelad selle valiku, kui soovid tegelikult segmente saata."
+    },
     "bracketNow": {
         "message": "(nüüd)"
     },
@@ -572,6 +599,9 @@
     },
     "forceChannelCheck": {
         "message": "Sunnitud kanalikontroll enne vahelejätmist"
+    },
+    "whatForceChannelCheck": {
+        "message": "Vaikimisi jätab see segmendid vahele juba siis, kui veel kanalitki ei tea. Vaikimisi võidakse mõned video alguses olevad segmendid lubamisnimekirjas olevatel kanalitel vahele jätta. Selle valiku lubamine väldib seda, kuid võib lisada vahelejätmistele väikese viivituse, sest kanali ID hankimine võib aega võtta. Viivitus võib kiire interneti puhul olla märkamatu."
     },
     "forceChannelCheckPopup": {
         "message": "Kaalu valiku \"Sunnitud kanalikontroll enne vahelejätmist\" lubamist"

@@ -124,6 +124,25 @@
     "voteOnTime": {
         "message": "구간 투표"
     },
+    "Submissions": {
+        "message": "제출"
+    },
+    "savedPeopleFrom": {
+        "message": "사람들의 "
+    },
+    "viewLeaderboard": {
+        "message": "순위표"
+    },
+    "recordTimesDescription": {
+        "message": "제출"
+    },
+    "submissionEditHint": {
+        "message": "제출을 클릭하면 섹션 편집이 나타납니다",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "팁: 설정에서 제출 단축키를 설정할 수 있습니다"
+    },
     "clearTimesButton": {
         "message": "시간 초기화"
     },
@@ -132,6 +151,9 @@
     },
     "publicStats": {
         "message": "이것은 사용자가 구간 제출에 얼마나 기여했는지를 나타내기 위해 사용하는 정보로, 여기서 확인하실 수 있습니다:"
+    },
+    "Username": {
+        "message": "사용자명"
     },
     "setUsername": {
         "message": "사용자 이름 설정"
@@ -228,6 +250,12 @@
     "0": {
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
     },
+    "disableSkipping": {
+        "message": "건너뛰기 활성화됨"
+    },
+    "enableSkipping": {
+        "message": "건너뛰기 비활성화됨"
+    },
     "yourWork": {
         "message": "지금까지 한 일",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -265,6 +293,9 @@
     "showTimeWithSkipsDescription": {
         "message": "이 시간은 탐색 막대 아래의 현재 시간 옆에 있는 괄호 안에 표시되며 부분을 제외한 총 동영상 길이를 보여줍니다. 여기에는 \"슬라이드바에 표시\"로만 표시된 부분도 포함됩니다."
     },
+    "youHaveSkipped": {
+        "message": "건너뜀 "
+    },
     "youHaveSaved": {
         "message": "지금까지 절약한 시간: "
     },
@@ -279,6 +310,12 @@
     },
     "hoursLower": {
         "message": "시간"
+    },
+    "youHaveSavedTime": {
+        "message": "사람들의"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " 의 시간을 아꼈습니다."
     },
     "statusReminder": {
         "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
@@ -534,6 +571,10 @@
     },
     "chooseACategory": {
         "message": "카테고리 선택"
+    },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" 카테고리의 세그먼트를 제출하려면 설정에서 활성화 해주셔야 합니다. 지금 설정으로 이동합니다.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "제출 해야하는 모든 구간의 카테고리를 설정해야합니다!"

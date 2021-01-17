@@ -1,1 +1,93 @@
-{}
+{
+    "Segment": {
+        "message": "מקטע"
+    },
+    "Segments": {
+        "message": "מקטעים"
+    },
+    "reportButtonTitle": {
+        "message": "דווח"
+    },
+    "Dismiss": {
+        "message": "סגור"
+    },
+    "Loading": {
+        "message": "טוען..."
+    },
+    "Hide": {
+        "message": "אל תציג אף פעם"
+    },
+    "manualPaused": {
+        "message": "טיימר נעצר"
+    },
+    "sponsor404": {
+        "message": "לא נמצאו מקטעים"
+    },
+    "sponsorStart": {
+        "message": "מקטע מתחיל עכשיו"
+    },
+    "sponsorEnd": {
+        "message": "מקטע נגמר עכשיו"
+    },
+    "clearTimes": {
+        "message": "נקה מקטעים"
+    },
+    "closePopup": {
+        "message": "סגור חלון"
+    },
+    "SubmitTimes": {
+        "message": "הגש מקטעים"
+    },
+    "viewLeaderboard": {
+        "message": "לוח מובילים"
+    },
+    "Username": {
+        "message": "שם משתמש"
+    },
+    "Options": {
+        "message": "אפשרויות"
+    },
+    "hideButtonsDescription": {
+        "message": "זה מחביא את הכפתורים שמופיעים בנגן YouTube להגיש מקטעי דילוג."
+    },
+    "showInfoButton": {
+        "message": "הראה כפתור מידע בנגן YouTube"
+    },
+    "hideInfoButton": {
+        "message": "החבא כפתור מידע בנגן YouTube"
+    },
+    "sourceCode": {
+        "message": "קוד מקור",
+        "description": "Used on Firefox Store Page"
+    },
+    "errorCode": {
+        "message": "קוד שגיאה: "
+    },
+    "minLower": {
+        "message": "דקה"
+    },
+    "minsLower": {
+        "message": "דקות"
+    },
+    "hourLower": {
+        "message": "שעה"
+    },
+    "hoursLower": {
+        "message": "שעות"
+    },
+    "youHaveSavedTime": {
+        "message": "חסכת לאנשים"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " מחייהם"
+    },
+    "createdBy": {
+        "message": "נוצר על ידי"
+    },
+    "autoSkip": {
+        "message": "דילוג אוטומטי"
+    },
+    "add": {
+        "message": "הוסף"
+    }
+}

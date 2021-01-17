@@ -1,6 +1,6 @@
 {
     "fullName": {
-        "message": "SponsorBlock para YouTube - Saltar los patrocinios",
+        "message": "SponsorBlock para YouTube - Omitir Sponsors",
         "description": "Name of the extension."
     },
     "Description": {
@@ -115,11 +115,17 @@
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
     },
+    "whitelistChannel": {
+        "message": "Permitir Canal"
+    },
+    "removeFromWhitelist": {
+        "message": "Quitar canal de la lista blanca"
+    },
     "voteOnTime": {
         "message": "Vote En Un Segmento"
     },
     "Submissions": {
-        "message": "Solicitudes"
+        "message": "Envíos"
     },
     "savedPeopleFrom": {
         "message": "Tú salvado personas de "
@@ -195,7 +201,7 @@
         "message": "Esta función rastrea los segmentos que se han saltado para que los usuarios sepan en qué medida sus aportes ayudaron a los demás y se utilizan como una métrica junto con los votos favorables para garantizar que no aparezca spam en la base de datos. La extensión envía un mensaje al servidor cada vez que se salta un segmento. Esperemos que la mayoría de la gente no cambie esta configuración para que los números de vista sean exactos. :)"
     },
     "enableQueryByHashPrefix": {
-        "message": "Consulta por prefijo Hash"
+        "message": "Consulta Por Prefijo Hash"
     },
     "whatQueryByHashPrefix": {
         "message": "En el lugar de solicitar segmentos del servidor usando el videoID, se envían los primeros 4 caracteres del hash del videoID. Este servidor devolverá los datos de todos los vídeos con hashes similares."
@@ -565,6 +571,10 @@
     },
     "chooseACategory": {
         "message": "Elija una categoría"
+    },
+    "enableThisCategoryFirst": {
+        "message": "Para enviar segmentos con la categoría de \"{0}\", debes activarlo en las opciones. Serás redirigido a las opciones ahora.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "¡Debes seleccionar una categoría para todos los segmentos que estés presentando!"

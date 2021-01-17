@@ -80,7 +80,7 @@
         "message": "Fin du segment"
     },
     "noVideoID": {
-        "message": "Aucune vidéo Youtube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
+        "message": "Aucune vidéo YouTube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
     },
     "success": {
         "message": "Succès !"
@@ -116,7 +116,7 @@
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
     },
     "whitelistChannel": {
-        "message": "Whitelister la chaîne"
+        "message": "Ajouter la chaîne à la liste blanche"
     },
     "removeFromWhitelist": {
         "message": "Enlever la chaîne de la liste blanche"
@@ -137,7 +137,7 @@
         "message": "Envoyer"
     },
     "submissionEditHint": {
-        "message": "Le menu d'édition du segment apparaîtra après que vous ayez cliqué sur envoyer",
+        "message": "Le menu d'édition apparaîtra après que vous avez cliqué sur envoyer",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -153,7 +153,7 @@
         "message": "Votre pseudo est inscrit dans le classement public pour afficher vos contributions. Le consulter"
     },
     "Username": {
-        "message": "Pseudonyme"
+        "message": "Pseudo"
     },
     "setUsername": {
         "message": "Choisir un pseudonyme"
@@ -201,13 +201,13 @@
         "message": "Cette fonctionnalité permet de suivre les segments que vous avez sautés pour faire savoir aux utilisateurs à quel point leur soumission a aidé les autres et est utilisée comme donnée avec les votes positifs pour s'assurer que des spams n'entre pas dans la base de données. L'extension envoie un message au serveur chaque fois que vous sautez un segment. Il est à espérer que la plupart des gens ne modifient pas ce paramètre pour que les données sur le nombre d'affichage soient exacts :)"
     },
     "enableQueryByHashPrefix": {
-        "message": "Requête par préfixe du hash"
+        "message": "Requête avec seulement le début du hash"
     },
     "whatQueryByHashPrefix": {
         "message": "Au lieu de demander des segments au serveur à l'aide de l'identifiant de la vidéo, les 4 premiers caractères du hash de l'identifiant de la vidéo sont envoyés. Ce serveur renverra les données pour toutes les vidéos ayant des hash similaires."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Récupérer les segments sur les nouvelles vidéos"
+        "message": "Re-récupérer les segments sur les nouvelles vidéos"
     },
     "whatRefetchWhenNotFound": {
         "message": "Si la vidéo est nouvelle et qu'aucun segment n'a été trouvé, ils seront réactualisés toutes les quelques minutes pendant le visionnage."
@@ -251,10 +251,10 @@
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
     },
     "disableSkipping": {
-        "message": "Le saut de segment est activé"
+        "message": "Saut automatique activé"
     },
     "enableSkipping": {
-        "message": "Le saut de segment est désactivé"
+        "message": "Saut automatique désactivé"
     },
     "yourWork": {
         "message": "Votre travail",
@@ -312,7 +312,10 @@
         "message": "heures"
     },
     "youHaveSavedTime": {
-        "message": "Les utilisateurs ont gagné"
+        "message": "Vous avez fait économiser les utilisateurs"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " de leurs vies"
     },
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
@@ -569,6 +572,10 @@
     "chooseACategory": {
         "message": "Choisissez une catégorie"
     },
+    "enableThisCategoryFirst": {
+        "message": "Pour envoyer des segments de la catégorie \"{0}\", vous devez l'activer dans les options. Vous allez être redirigé vers les options maintenant.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
     },
@@ -629,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Envoyer une notification lorsque vous quittez une vidéo avec des segments qui ne sont pas téléversés"
+    },
+    "help": {
+        "message": "Aide"
     }
 }

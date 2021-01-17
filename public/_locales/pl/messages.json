@@ -80,7 +80,7 @@
         "message": "Koniec segmentu"
     },
     "noVideoID": {
-        "message": "Nie znaleziono filmu YouTube.\nJeśli jest to nieprawidłowe, odśwież stronę."
+        "message": "Nie znaleziono filmu YouTube.\nJeżeli to błąd, odśwież stronę."
     },
     "success": {
         "message": "Sukces!"
@@ -128,16 +128,16 @@
         "message": "Zgłoszenia"
     },
     "savedPeopleFrom": {
-        "message": "Oszczędziłeś innym "
+        "message": "Oszczędzono innym "
     },
     "viewLeaderboard": {
         "message": "Ranking"
     },
     "recordTimesDescription": {
-        "message": "Wyślij"
+        "message": "Prześlij"
     },
     "submissionEditHint": {
-        "message": "Edycja sekcji pojawi się po kliknięciu",
+        "message": "Edycja sekcji pojawi się po kliknięciu przycisku „Wyślij”",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -147,7 +147,7 @@
         "message": "Usuń czasy"
     },
     "submitTimesButton": {
-        "message": "Zgłoś czasy"
+        "message": "Wyślij czasy"
     },
     "publicStats": {
         "message": "Ten dane są używane na naszej stronie żeby pokazać twój wkład. Zobacz to"
@@ -210,7 +210,7 @@
         "message": "Ponawiaj pobieranie segmentów na nowych filmach"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Jeśli film jest nowy i nie znaleziono żadnych segmentów, dane będą pobierane na nowo, co kilka minut, w czasie kiedy oglądasz."
+        "message": "Jeśli film jest nowy i nie znaleziono żadnych segmentów, dane będą pobierane na nowo co kilka minut w czasie oglądania."
     },
     "showNotice": {
         "message": "Pokaż informacje ponownie"
@@ -294,25 +294,25 @@
         "message": "Czas ten pojawia się w nawiasie obok czasu bieżącego, pod paskiem postępu. Pokazuje on długość całego filmu po odjęciu wszystkich segmentów. Wliczają się w to segmenty ustawione jako \"pokaż na pasku\"."
     },
     "youHaveSkipped": {
-        "message": "Przewinąłeś "
+        "message": "Przewinięto "
     },
     "youHaveSaved": {
-        "message": "Oszczędziłeś sobie "
+        "message": "Oszczędzono sobie "
     },
     "minLower": {
-        "message": "minuta"
+        "message": "min"
     },
     "minsLower": {
-        "message": "minuty"
+        "message": "min"
     },
     "hourLower": {
-        "message": "godzina"
+        "message": "godz."
     },
     "hoursLower": {
-        "message": "godziny"
+        "message": "godz."
     },
     "youHaveSavedTime": {
-        "message": "Oszczędziłeś ludziom"
+        "message": "Oszczędzono innym"
     },
     "youHaveSavedTimeEnd": {
         "message": " ich życia"
@@ -393,7 +393,7 @@
         "message": "Adres serwera SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "Adres, który jest używany przez SponsorBlock podczas połączeń do serwera.\nDopóki nie posiadasz własnego serwera, nie powinieneś tego zmieniać."
+        "message": "Adres, którego SponsorBlock używa do wykonywania połączeń z serwerem. O ile nie posiadasz własnego serwera, nie powinno to być zmieniane."
     },
     "save": {
         "message": "Zapisz"
@@ -573,7 +573,7 @@
         "message": "Wybierz kategorię"
     },
     "enableThisCategoryFirst": {
-        "message": "Aby przesyłać segmenty o kategorii \"{0}\", musisz ją włączyć w opcjach. Zostaniesz przekierowany do ustawień.",
+        "message": "Aby przesyłać segmenty o kategorii „{0}”, musisz ją włączyć w opcjach. Za chwilę nastąpi przekierowanie do ustawień.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
@@ -613,7 +613,7 @@
         "message": "Zła kategoria"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Ten film jest skategoryzowany jako muzyka. Czy jesteś pewien, że to jest sponsor? Jeśli jest to rzeczywiście \"segment niemuzyczny\", otwórz opcje rozszerzenia i włącz tę kategorię. Następnie możesz przesłać ten segment jako \"Niemuzyczny\" zamiast sponsora. Proszę przeczytać wytyczne, jeśli jesteś zdezorientowany."
+        "message": "Ten film jest skategoryzowany jako muzyka. Czy masz pewność, że jest tutaj sponsor? Jeśli w rzeczywistości jest to „Sekcja Niemuzyczna”, otwórz opcje rozszerzenia i włącz tę kategorię. Wtedy będziesz w stanie zamieścić ten segment jako „Bez Muzyki” zamiast sponsora. Przeczytaj proszę wytyczne, jeśli masz wątpliwości."
     },
     "multipleSegments": {
         "message": "Wiele segmentów"

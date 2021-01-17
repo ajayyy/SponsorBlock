@@ -3,6 +3,10 @@
         "message": "SponsorBlock for YouTube - 跳过赞助商广告",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "跳过 YouTube 视频中的赞助广告、订阅提醒等片段。标记视频中的赞助广告来节约大家的时间。",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "服务器说此请求无效"
     },
@@ -14,6 +18,12 @@
     },
     "channelWhitelisted": {
         "message": "频道已加入白名单！"
+    },
+    "Segment": {
+        "message": "片段"
+    },
+    "Segments": {
+        "message": "片段"
     },
     "upvoteButtonInfo": {
         "message": "为这个提交点赞"
@@ -57,6 +67,21 @@
     "Unknown": {
         "message": "提交您的赞助商广告时间时出错。请稍后再试。"
     },
+    "sponsorFound": {
+        "message": "此视频在数据库中存在可跳片段！"
+    },
+    "sponsor404": {
+        "message": "未找到可跳片段"
+    },
+    "sponsorStart": {
+        "message": "片段现在开始"
+    },
+    "sponsorEnd": {
+        "message": "片段现在结束"
+    },
+    "noVideoID": {
+        "message": "未找到 YouTube 视频。\n如果识别错误，请刷新此页面。"
+    },
     "success": {
         "message": "成功 ！"
     },
@@ -69,11 +94,54 @@
     "connectionError": {
         "message": "连接错误。错误代码： "
     },
+    "wantToSubmit": {
+        "message": "您是否想为以下视频 ID 提交："
+    },
+    "leftTimes": {
+        "message": "您似乎还有一些片段未提交。你可以回到那个页面提交（它们未被删除）。"
+    },
+    "clearTimes": {
+        "message": "清除片段"
+    },
     "openPopup": {
         "message": "打开 SponsorBlock 弹窗"
     },
+    "closePopup": {
+        "message": "关闭弹窗"
+    },
+    "SubmitTimes": {
+        "message": "提交片段"
+    },
     "submitCheck": {
         "message": "您确定要提交它吗？"
+    },
+    "whitelistChannel": {
+        "message": "将频道列入白名单"
+    },
+    "removeFromWhitelist": {
+        "message": "将频道移出白名单"
+    },
+    "voteOnTime": {
+        "message": "对片段投票"
+    },
+    "Submissions": {
+        "message": "提交数"
+    },
+    "savedPeopleFrom": {
+        "message": "您为大家节省了 "
+    },
+    "viewLeaderboard": {
+        "message": "排行榜"
+    },
+    "recordTimesDescription": {
+        "message": "提交"
+    },
+    "submissionEditHint": {
+        "message": "片段编辑将在您单击提交后显示",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "提示：您可以在选项中为提交动作绑定按键"
     },
     "clearTimesButton": {
         "message": "清除时间"
@@ -83,6 +151,9 @@
     },
     "publicStats": {
         "message": "这被用于在公开统计页面上展示您的贡献。查看它"
+    },
+    "Username": {
+        "message": "用户名"
     },
     "setUsername": {
         "message": "设定用户名"
@@ -123,8 +194,30 @@
     "whatDeleteButton": {
         "message": "此按钮用于在 Youtube 播放器中清除所有赞助商广告。"
     },
+    "enableViewTracking": {
+        "message": "启用跳过次数统计跟踪"
+    },
+    "whatViewTracking": {
+        "message": "此功能追踪您跳过了哪些片段，以让用户知道他们提交的信息帮助了多少人，并与点赞一同作为依据，来确保垃圾信息不会进入数据库。在您每次跳过片段时，此扩展都会向服务器发送一条消息。希望大部分人不要改变此设置，以使观看数字准确。:)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "按哈希前缀查询"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "使用视频 ID 哈希值的前 4 个字符而非整个视频 ID 向服务器查询片段。服务器将返回所有具有类似哈希值的视频数据。"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "在新视频中再次获取片段"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "如果视频是新的且没有发现可跳片段，将在您观看时每隔几分钟再次获取信息。"
+    },
     "showNotice": {
         "message": "重新显示通知"
+    },
+    "longDescription": {
+        "message": "SponsorBlock 可帮您跳过 YouTube 视频中的赞助商广告、开场、结尾、订阅提醒和其他烦人片段。SponsorBlock 是一个众包的浏览器扩展，可以让任何人提交 YouTube 视频的赞助商广告和其他片段的开始和结束时间。若有一人提交了信息，其他所有使用此扩展的人都能直接跳过赞助商广告片段。您也可以跳过音乐视频中的非音乐部分。",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "网站",
@@ -142,6 +235,9 @@
         "message": "如果您依然不喜欢它，请按下不再显示按钮。",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setStartSponsorShortcut": {
+        "message": "设定片段开始的绑定按键"
+    },
     "setSubmitKeybind": {
         "message": "设定提交的绑定按键"
     },
@@ -153,6 +249,12 @@
     },
     "0": {
         "message": "连接超时。请检查您的网络连接。如果您的网络运行正常，则可能是服务器过载或宕机。"
+    },
+    "disableSkipping": {
+        "message": "已开启跳过"
+    },
+    "enableSkipping": {
+        "message": "已关闭跳过"
     },
     "yourWork": {
         "message": "您的成果",
@@ -167,6 +269,9 @@
     "skip": {
         "message": "跳过"
     },
+    "skip_category": {
+        "message": "跳过{0}？"
+    },
     "skipped": {
         "message": "跳过"
     },
@@ -178,6 +283,18 @@
     },
     "audioNotification": {
         "message": "跳过时音频通知"
+    },
+    "audioNotificationDescription": {
+        "message": "在跳过片段时播放声音。如果禁用（或禁用自动跳过），则不会播放声音。"
+    },
+    "showTimeWithSkips": {
+        "message": "显示减去可跳片段后的时间"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "此时间位于进度条下方的当前时间旁边，用括号框住。 显示的是视频减去所有可跳片段后的时间，可跳片段包括标记为“在进度条中显示”的片段。"
+    },
+    "youHaveSkipped": {
+        "message": "您已跳过 "
     },
     "youHaveSaved": {
         "message": "您为自己节省了 "
@@ -193,6 +310,12 @@
     },
     "hoursLower": {
         "message": "小时"
+    },
+    "youHaveSavedTime": {
+        "message": "您为大家节省了"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " 的生命"
     },
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 检查服务器状态。"
@@ -214,6 +337,9 @@
     },
     "autoSkip": {
         "message": "自动跳过"
+    },
+    "showSkipNotice": {
+        "message": "在跳过片段后显示通知"
     },
     "keybindCurrentlySet": {
         "message": "。目前被设定为："
@@ -251,6 +377,9 @@
     "minDuration": {
         "message": "最小持续时间(秒)："
     },
+    "minDurationDescription": {
+        "message": "短于设定值的片段将不会被跳过或显示在播放器中。"
+    },
     "shortCheck": {
         "message": "以下的提交短于您的最小持续时间选项。这代表它们可能已经被提交，只是由于该选项被忽略了。您确定要提交吗？"
     },
@@ -278,8 +407,14 @@
     "areYouSureReset": {
         "message": "您确定要重置它吗？"
     },
+    "confirmPrivacy": {
+        "message": "检测到此视频为未公开列出视频。如果您不想进行跳过片段开始，请点击取消。"
+    },
     "unlistedCheck": {
         "message": "忽略未找到记录的视频"
+    },
+    "whatUnlistedCheck": {
+        "message": "此设置将略微减慢 SponsorBlock 的速度。查询可跳过片段时需要向服务器发送视频 ID。如果您对通过互联网发送不公开列出视频的 ID 有疑虑，请启用此选项。"
     },
     "mobileUpdateInfo": {
         "message": "现已支持 m.youtube.com"
@@ -314,6 +449,9 @@
     "preview": {
         "message": "预览"
     },
+    "inspect": {
+        "message": "检查"
+    },
     "edit": {
         "message": "编辑"
     },
@@ -342,11 +480,29 @@
     "category_sponsor": {
         "message": "赞助商广告"
     },
+    "category_sponsor_description": {
+        "message": "付费推广、付费推荐和直接广告。不应用于自我推广或免费提及、推荐他们喜欢的事物/创作者/网站/产品。"
+    },
+    "category_intro": {
+        "message": "过场/开场动画"
+    },
+    "category_intro_description": {
+        "message": "没有实际内容的间隔片段。可以是暂停、静态帧或重复动画。不应用于包含信息的过渡。"
+    },
+    "category_intro_short": {
+        "message": "过场"
+    },
     "category_outro": {
         "message": "结束画面/结尾职员表"
     },
+    "category_outro_description": {
+        "message": "鸣谢画面或出现 YouTube 片尾画面。不应用于包含信息的结尾。"
+    },
     "category_interaction": {
         "message": "互动提醒（订阅）"
+    },
+    "category_interaction_description": {
+        "message": "视频中间简短提醒观众来点赞、订阅或关注。 如果片段较长，或是关于某个具体事物，则应分类为自我推广。"
     },
     "category_interaction_short": {
         "message": "互动提醒"
@@ -354,8 +510,14 @@
     "category_selfpromo": {
         "message": "未收钱的/自我推销"
     },
+    "category_selfpromo_description": {
+        "message": "类似于 “赞助商广告” ，但为无报酬或自我推广。包括有关商品、捐赠的部分或合作者的信息。"
+    },
     "category_music_offtopic": {
         "message": "音乐：非音乐部分"
+    },
+    "category_music_offtopic_description": {
+        "message": "仅用于音乐视频。包括音乐视频中的开头或结尾。"
     },
     "category_music_offtopic_short": {
         "message": "无音乐"
@@ -374,6 +536,9 @@
     },
     "showOverlay": {
         "message": "在搜索栏中显示"
+    },
+    "colorFormatIncorrect": {
+        "message": "颜色格式错误。应为以“#”开头的 3 位或 6 位十六进制数字。"
     },
     "previewColor": {
         "message": "预览颜色",
@@ -404,6 +569,16 @@
     "moreCategories": {
         "message": "更多类别"
     },
+    "chooseACategory": {
+        "message": "选择类别"
+    },
+    "enableThisCategoryFirst": {
+        "message": "要提交“{0}”类别的片段，您必须在选项中启用此类别。现在将重定向到选项。",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "youMustSelectACategory": {
+        "message": "您必须为所有您要提交的片段选择类别！"
+    },
     "bracketEnd": {
         "message": "（结束）"
     },
@@ -422,11 +597,23 @@
     "itCouldBeAdblockerIssue": {
         "message": "如果这种情况不断发生，它可能是由您的广告拦截器引起的。请查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "forceChannelCheck": {
+        "message": "跳过前强制进行频道检查"
+    },
+    "whatForceChannelCheck": {
+        "message": "默认情况下，即使还未检测出当前是什么频道，也会立即跳过片段。即使在白名单中的频道，一些在开头的片段也可能被跳过。启用此选项将防止这种情况，但所有的跳过将会产生轻微的延迟，因为获取频道 ID 需要一点时间。如果您的网速很快，那延迟可能非常短。"
+    },
+    "forceChannelCheckPopup": {
+        "message": "请考虑启用“跳过前强制进行频道检查”"
+    },
     "downvoteDescription": {
         "message": "不正确/错误的时间"
     },
     "incorrectCategory": {
         "message": "错误的类别"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "此视频的分类为音乐。 您确定其中包含赞助商广告吗？如果这是“非音乐片段”，请打开扩展选项并启用此类别。 之后，您可以以“非音乐”而不是赞助商广告类别提交此片段。如果您不太明白，请阅读指南。"
     },
     "multipleSegments": {
         "message": "多个片段"
@@ -443,5 +630,14 @@
     },
     "categoryUpdate2": {
         "message": "打开选项，跳过开头，结尾，商业等。"
+    },
+    "unsubmittedWarning": {
+        "message": "未提交片段通知"
+    },
+    "unsubmittedWarningDescription": {
+        "message": "当您关闭含有未上传片段的视频时发送通知"
+    },
+    "help": {
+        "message": "帮助"
     }
 }
