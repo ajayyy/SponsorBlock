@@ -19,11 +19,12 @@ utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
 
 //was sponsor data found when doing SponsorsLookup
 let sponsorDataFound = false;
-let previousVideoID: VideoID = null;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 let sponsorTimes: SponsorTime[] = null;
 //what video id are these sponsors for
 let sponsorVideoID: VideoID = null;
+// List of open skip notices
+const skipNotices: SkipNotice[] = [];
 
 // JSON video info 
 let videoInfo: VideoInfo = null;
@@ -36,11 +37,13 @@ let channelID: string;
 let currentSkipSchedule: NodeJS.Timeout = null;
 let seekListenerSetUp = false
 
-/** @type {Array[boolean]} Has the sponsor been skipped */
+/** Has the sponsor been skipped */
 let sponsorSkipped: boolean[] = [];
 
 //the video
 let video: HTMLVideoElement;
+// List of videos that have had event listeners added to them
+const videoRootsWithEventListeners: HTMLDivElement[] = [];
 
 let onInvidious;
 let onMobileYouTube;
@@ -100,6 +103,7 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     unskipSponsorTime,
     sponsorTimes,
     sponsorTimesSubmitting,
+    skipNotices,
     v: video,
     sponsorVideoID,
     reskipSponsorTime,
@@ -198,28 +202,6 @@ if (!Config.configListeners.includes(contentConfigUpdateListener)) {
     Config.configListeners.push(contentConfigUpdateListener);
 }
 
-//check for hotkey pressed
-document.onkeydown = function(e: KeyboardEvent){
-    const key = e.key;
-
-    const video = document.getElementById("movie_player");
-
-    const startSponsorKey = Config.config.startSponsorKeybind;
-
-    const submitKey = Config.config.submitKeybind;
-
-    //is the video in focus, otherwise they could be typing a comment
-    if (document.activeElement === video) {
-        if(key == startSponsorKey){
-            //semicolon
-            startSponsorClicked();
-        } else if (key == submitKey) {
-            //single quote
-            submitSponsorTimes();
-        }
-    }
-}
-
 function resetValues() {
     lastCheckTime = 0;
     lastCheckVideoTime = -1;
@@ -310,25 +292,6 @@ async function videoIDChange(id) {
         }
     }
 
-    //warn them if they had unsubmitted times
-    if (previousVideoID != null) {
-        //get the sponsor times from storage
-        const sponsorTimes = Config.config.segmentTimes.get(previousVideoID);
-        if (sponsorTimes != undefined && sponsorTimes.length > 0 && new URL(document.URL).host !== "music.youtube.com") {
-            //warn them that they have unsubmitted sponsor times
-            chrome.runtime.sendMessage({
-                message: "alertPrevious",
-                previousVideoID: previousVideoID
-            });
-        }
-
-        //set the previous video id to the currentID
-        previousVideoID = id;
-    } else {
-        //set the previous id now, don't wait for chrome.storage.get
-        previousVideoID = id;
-    }
-  
     //close popup
     closeInfoMenu();
 	
@@ -531,6 +494,8 @@ async function sponsorsLookup(id: string) {
         setTimeout(() => sponsorsLookup(id), 100);
         return;
     }
+
+    addHotkeyListener();
 
     if (!durationListenerSetUp) {
         durationListenerSetUp = true;
@@ -1016,7 +981,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!Config.config.dontShowNotice || !autoSkip) {
-            new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer);
+            skipNotices.push(new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer));
         }
     }
 
@@ -1560,6 +1525,41 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
     }
 
     return sponsorTimesMessage;
+}
+
+function addHotkeyListener(): boolean {
+    const videoRoot = document.getElementById("movie_player") as HTMLDivElement;
+
+    if (!videoRootsWithEventListeners.includes(videoRoot)) {
+        videoRoot.addEventListener("keydown", hotkeyListener);
+        videoRootsWithEventListeners.push(videoRoot);
+        return true;
+    }
+
+    return false;
+}
+
+function hotkeyListener(e: KeyboardEvent): void {
+    const key = e.key;
+
+    const skipKey = Config.config.skipKeybind;
+    const startSponsorKey = Config.config.startSponsorKeybind;
+    const submitKey = Config.config.submitKeybind;
+
+    switch (key) {
+        case skipKey:
+            if (skipNotices.length > 0) {
+                const latestSkipNotice = skipNotices[skipNotices.length - 1];
+                latestSkipNotice.toggleSkip.call(latestSkipNotice);
+            }
+            break; 
+        case startSponsorKey:
+            startSponsorClicked();
+            break;
+        case submitKey:
+            submitSponsorTimes();
+            break;
+    }
 }
 
 /**

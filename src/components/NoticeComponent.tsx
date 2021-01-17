@@ -8,6 +8,8 @@ export interface NoticeProps {
     timed?: boolean,
     idSuffix?: string,
 
+    videoSpeed?: () => number,
+
     fadeIn?: boolean,
 
     // Callback for when this is closed
@@ -19,7 +21,7 @@ export interface NoticeProps {
 export interface NoticeState {
     noticeTitle: string,
 
-    maxCountdownTime?: () => number,
+    maxCountdownTime: () => number,
 
     countdownTime: number,
     countdownText: string,
@@ -28,6 +30,8 @@ export interface NoticeState {
 
 class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdownInterval: NodeJS.Timeout;
+    intervalVideoSpeed: number;
+
     idSuffix: string;
 
     amountOfPreviousNotices: number;
@@ -71,7 +75,9 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         return (
             <table id={"sponsorSkipNotice" + this.idSuffix} 
-                className={"sponsorSkipObject sponsorSkipNotice" + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")}
+                className={"sponsorSkipObject sponsorSkipNotice" 
+                        + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")
+                        + (this.amountOfPreviousNotices > 0 ? " secondSkipNotice" : "")}
                 style={noticeStyle}
                 onMouseEnter={() => this.timerMouseEnter()}
                 onMouseLeave={() => this.timerMouseLeave()}> 
@@ -152,7 +158,11 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdown(): void {
         if (!this.props.timed) return;
 
-        const countdownTime = this.state.countdownTime - 1;
+        const countdownTime = Math.min(this.state.countdownTime - 1, this.state.maxCountdownTime());
+
+        if (this.props.videoSpeed && this.intervalVideoSpeed != this.props.videoSpeed()) {
+            this.setupInterval();
+        }
 
         if (countdownTime <= 0) {
             //remove this from setInterval
@@ -175,12 +185,19 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             countdownTime
         })
     }
+    
+    removeFadeAnimation(): void {
+        //remove the fade out class if it exists
+        const notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
+        notice.classList.remove("sponsorSkipNoticeFadeOut");
+        notice.style.animation = "none";
+    }
 
     pauseCountdown(): void {
         if (!this.props.timed) return;
 
         //remove setInterval
-        clearInterval(this.countdownInterval);
+        if (this.countdownInterval) clearInterval(this.countdownInterval);
         this.countdownInterval = null;
 
         //reset countdown and inform the user
@@ -189,10 +206,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             countdownText: this.state.countdownManuallyPaused ? chrome.i18n.getMessage("manualPaused") : chrome.i18n.getMessage("paused")
         });
         
-        //remove the fade out class if it exists
-        const notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
-        notice.classList.remove("sponsorSkipNoticeFadeOut");
-        notice.style.animation = "none";
+        this.removeFadeAnimation();
     }
 
     startCountdown(): void {
@@ -206,16 +220,29 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             countdownText: null
         });
 
-        this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
+        this.setupInterval();
+    }
+
+    setupInterval(): void {
+        if (this.countdownInterval) clearInterval(this.countdownInterval);
+
+        const intervalDuration = this.props.videoSpeed ? 1000 / this.props.videoSpeed() : 1000;
+        this.countdownInterval = setInterval(this.countdown.bind(this), intervalDuration);
+
+        if (this.props.videoSpeed) this.intervalVideoSpeed = this.props.videoSpeed();
     }
 
     resetCountdown(): void {
         if (!this.props.timed) return;
 
+        this.setupInterval();
+
         this.setState({
             countdownTime: this.state.maxCountdownTime(),
             countdownText: null
         });
+
+        this.removeFadeAnimation();
     }
     
     /**

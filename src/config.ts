@@ -1,5 +1,5 @@
 import * as CompileConfig from "../config.json";
-import { CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime, StorageChangesObject } from "./types";
+import { CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
 
 import Utils from "./utils";
 const utils = new Utils();
@@ -10,6 +10,7 @@ interface SBConfig {
     defaultCategory: string,
     whitelistedChannels: string[],
     forceChannelCheck: boolean,
+    skipKeybind: string,
     startSponsorKeybind: string,
     submitKeybind: string,
     minutesSaved: number,
@@ -17,7 +18,6 @@ interface SBConfig {
     sponsorTimesContributed: number,
     submissionCountSinceCategories: number, // New count used to show the "Read The Guidelines!!" message
     showTimeWithSkips: boolean,
-    unsubmittedWarning: boolean,
     disableSkipping: boolean,
     trackViewCount: boolean,
     dontShowNotice: boolean,
@@ -65,7 +65,7 @@ export interface SBObject {
     config: SBConfig;
 
     // Functions
-    encodeStoredItem<T>(data: T): T | Array<any>;
+    encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes;
     convertJSON(): void;
 }
 
@@ -143,6 +143,7 @@ const Config: SBObject = {
         defaultCategory: "chooseACategory",
         whitelistedChannels: [],
         forceChannelCheck: false,
+        skipKeybind: "Enter",
         startSponsorKeybind: ";",
         submitKeybind: "'",
         minutesSaved: 0,
@@ -150,7 +151,6 @@ const Config: SBObject = {
         sponsorTimesContributed: 0,
         submissionCountSinceCategories: 0,
         showTimeWithSkips: true,
-        unsubmittedWarning: true,
         disableSkipping: false,
         trackViewCount: true,
         dontShowNotice: false,
@@ -247,10 +247,10 @@ const Config: SBObject = {
  * 
  * @param data 
  */
-function encodeStoredItem<T>(data: T): T | Array<any>  {
+function encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes  {
     // if data is SBMap convert to json for storing
     if(!(data instanceof SBMap)) return data;
-    return Array.from(data.entries());
+    return Array.from(data.entries()).filter((element) => element[1] === []); // Remove empty entries
 }
 
 /**
@@ -265,7 +265,7 @@ function decodeStoredItem<T>(id: string, data: T): T | SBMap<string, SponsorTime
     if (Config.defaults[id] instanceof SBMap) {
         try {
             if (!Array.isArray(data)) return data;
-            return new SBMap(id, data);
+            return new SBMap(id, data as UnencodedSegmentTimes);
         } catch(e) {
             console.error("Failed to parse SBMap: " + id);
         }
@@ -395,7 +395,7 @@ function migrateOldFormats(config: SBConfig) {
 
     // Migrate old "sponsorTimes"
     if (config["sponsorTimes"]) {
-        let jsonData: any = config["sponsorTimes"];
+        let jsonData: unknown = config["sponsorTimes"];
 
         // Check if data is stored in the old format for SBMap (a JSON string)
         if (typeof jsonData === "string") {
