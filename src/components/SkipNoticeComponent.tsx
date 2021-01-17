@@ -141,6 +141,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 fadeIn={true}
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
+                videoSpeed={() => this.contentContainer().v?.playbackRate}
                 ref={this.noticeRef}
                 closeListener={() => this.closeListener()}>
                     

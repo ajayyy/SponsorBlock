@@ -8,6 +8,8 @@ export interface NoticeProps {
     timed?: boolean,
     idSuffix?: string,
 
+    videoSpeed?: () => number,
+
     fadeIn?: boolean,
 
     // Callback for when this is closed
@@ -19,7 +21,7 @@ export interface NoticeProps {
 export interface NoticeState {
     noticeTitle: string,
 
-    maxCountdownTime?: () => number,
+    maxCountdownTime: () => number,
 
     countdownTime: number,
     countdownText: string,
@@ -28,6 +30,8 @@ export interface NoticeState {
 
 class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdownInterval: NodeJS.Timeout;
+    intervalVideoSpeed: number;
+
     idSuffix: string;
 
     amountOfPreviousNotices: number;
@@ -154,7 +158,11 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdown(): void {
         if (!this.props.timed) return;
 
-        const countdownTime = this.state.countdownTime - 1;
+        const countdownTime = Math.min(this.state.countdownTime - 1, this.state.maxCountdownTime());
+
+        if (this.props.videoSpeed && this.intervalVideoSpeed != this.props.videoSpeed()) {
+            this.setupInterval();
+        }
 
         if (countdownTime <= 0) {
             //remove this from setInterval
@@ -217,7 +225,11 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
     setupInterval(): void {
         if (this.countdownInterval) clearInterval(this.countdownInterval);
-        this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
+
+        const intervalDuration = this.props.videoSpeed ? 1000 / this.props.videoSpeed() : 1000;
+        this.countdownInterval = setInterval(this.countdown.bind(this), intervalDuration);
+
+        if (this.props.videoSpeed) this.intervalVideoSpeed = this.props.videoSpeed();
     }
 
     resetCountdown(): void {
