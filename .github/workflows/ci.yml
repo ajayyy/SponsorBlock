@@ -16,6 +16,10 @@ jobs:
       - name: Copy configuration
         run: cp config.json.example config.json
 
+      # Run linter
+      - name: Lint
+        run: npm run lint
+
       # Create Chrome artifacts
       - name: Create Chrome artifacts
         run: npm run build:chrome
