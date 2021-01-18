@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Doriți să trimiteți pentru id video"
     },
-    "leftTimes": {
-        "message": "Se pare că aţi lăsat unele segmente netrimise. Du-te înapoi la acea pagină pentru a le trimite (nu sunt şterse)."
-    },
     "clearTimes": {
         "message": "Curăță segmentele"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Dacă nu îți place, apasă butonul nu mai arăta niciodată.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Setați cheia pentru omiterea unui segment"
     },
     "setStartSponsorShortcut": {
         "message": "Setează tasta pentru pornirea segmentului"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Deschide opțiunile pentru a sări peste intro-uri, outro-uri, merch, etc."
-    },
-    "unsubmittedWarning": {
-        "message": "Notificare Segmente Netrimise"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Trimite o notificare atunci când părăsești un video cu segmente care nu au fost încărcate"
     },
     "help": {
         "message": "Ajutor"
