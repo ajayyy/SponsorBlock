@@ -345,11 +345,5 @@
     },
     "categoryUpdate2": {
         "message": "Otvorte možnosti pre preskočenie úvodov, záverov, merchu, atď."
-    },
-    "unsubmittedWarning": {
-        "message": "Oznámenie O Neuložených Segmentoch"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Poslať notifikáciu ak zatvoríte video so segmentmi, ktoré neboli uložené"
     }
 }
