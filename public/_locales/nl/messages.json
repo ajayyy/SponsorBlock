@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Wilt u indienen voor video-id"
     },
-    "leftTimes": {
-        "message": "Het lijkt erop dat sommige segmenten niet ingediend zijn. Ga terug naar die pagina om ze in te dienen (de segmenten zijn niet verwijderd)."
-    },
     "clearTimes": {
         "message": "Segmenten verwijderen"
     },
@@ -630,12 +627,6 @@
     },
     "categoryUpdate2": {
         "message": "Open de opties om intro's, outro's, koopwaar,... over te slaan."
-    },
-    "unsubmittedWarning": {
-        "message": "Melding voor niet-ingediende segmenten"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Een melding sturen wanneer u een video verlaat met segmenten die niet zijn geüpload"
     },
     "help": {
         "message": "Help"
