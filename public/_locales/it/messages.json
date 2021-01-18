@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Desideri inviare per l'id video"
     },
-    "leftTimes": {
-        "message": "Sembra che tu abbia non abbia inviato alcuni segmenti. Torna a quella pagina per inviarli (non sono stati eliminati)."
-    },
     "clearTimes": {
         "message": "Pulisci Segmenti"
     },
@@ -620,12 +617,6 @@
     },
     "categoryUpdate2": {
         "message": "Apri queste opzioni per saltare le introduzioni, conclusioni, vendita di prodotti ecc."
-    },
-    "unsubmittedWarning": {
-        "message": "Notifica Segmenti Non Inviati"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Invia una notifica quando lasci un video con segmenti non caricati"
     },
     "help": {
         "message": "Aiuto"
