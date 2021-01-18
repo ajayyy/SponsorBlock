@@ -94,9 +94,6 @@
     "wantToSubmit": {
         "message": "Haluatko lähettää segmentit videotunnukselle"
     },
-    "leftTimes": {
-        "message": "Näyttää siltä, että joitakin segmenttejä ei ole vielä lähetetty. Siirry takaisin sivulle lähettääksesi ne (niitä ei poisteta)."
-    },
     "clearTimes": {
         "message": "Tyhjennä Segmentit"
     },
@@ -507,11 +504,5 @@
     },
     "categoryUpdate2": {
         "message": "Avaa asetukset ohittaaksesi introt, outrot, kauppatavarat, jne."
-    },
-    "unsubmittedWarning": {
-        "message": "Lähettämättömien Segmenttien Ilmoitus"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Lähetä ilmoitus, kun poistut videosta jos on lataamattomia segmenttejä"
     }
 }
