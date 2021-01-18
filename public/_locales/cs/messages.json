@@ -232,6 +232,9 @@
         "message": "Pokud se vám to stále nelíbí, klikněte na tlačítko Nikdy nezobrazovat.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Nastavit klíč pro přeskočení segmentu"
+    },
     "setStartSponsorShortcut": {
         "message": "Nastavte klávesu pro spuštění segmentu"
     },
