@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Apakah anda ingin mengirim untuk id video"
     },
-    "leftTimes": {
-        "message": "Sepertinya anda lupa mengirimkan beberapa segmen. Kembali ke halaman tadi dan kirimkan itu (itu tidak terhapus)."
-    },
     "clearTimes": {
         "message": "Hapus Segmen"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Jika anda masih tidak menyukainya, tekan tombol jangan tampilkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Atur tombol untuk melewati sebuah segmen"
     },
     "setStartSponsorShortcut": {
         "message": "Atur tombol untuk mulai segmen"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Buka opsi untuk melewati intro, outro, merch, dll."
-    },
-    "unsubmittedWarning": {
-        "message": "Notifikasi Segmen Yang Belum Dikirim"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Tampilkan notifikasi saat kamu meninggalkan video dengan segmen yang belum diunggah"
     },
     "help": {
         "message": "Bantuan"
