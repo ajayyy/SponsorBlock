@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Möchtest du für Video-ID einreichen"
     },
-    "leftTimes": {
-        "message": "Scheinbar hast du einige Segmente noch nicht übermittelt. Kehre zur Seite zurück um sie zu senden (sie sind noch gespeichert)."
-    },
     "clearTimes": {
         "message": "Alle Segmente löschen"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Gefällt dir immer noch nicht? Dann klicke auf den Verstecken-Knopf.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Taste zum Überspringen eines Segments festlegen"
     },
     "setStartSponsorShortcut": {
         "message": "Eine Taste zum Markieren des Startpunkts eines Segments festlegen"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Öffne die Optionen um das Verhalten bei Intros, Outros, Merchandising (Fanartikel) usw. einzustellen."
-    },
-    "unsubmittedWarning": {
-        "message": "Benachrichtigung bei nicht übertragenden Segmentem"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Zeigt eine Benachrichtigung an, wenn du ein Video mit nicht übertragenden Segmenten verlässt."
     },
     "help": {
         "message": "Hilfe"
