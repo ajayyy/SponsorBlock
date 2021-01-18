@@ -232,6 +232,9 @@
         "message": "Als het u nog steeds niet bevalt, druk dan op de knop \"nooit weergeven\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Sleutel instellen voor het overslaan van een segment"
+    },
     "setStartSponsorShortcut": {
         "message": "Sneltoets instellen voor begin van segment"
     },
