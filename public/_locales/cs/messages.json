@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Chcete odeslat segmenty pro video s id"
     },
-    "leftTimes": {
-        "message": "Zdá se, že některé segmenty jste nechali neodeslané. Vraťte se na danou stránku a odešlete je (nebyly vymazány)."
-    },
     "clearTimes": {
         "message": "Vymazat segmenty"
     },
@@ -630,12 +627,6 @@
     },
     "categoryUpdate2": {
         "message": "Otevřít možnosti pro přeskočení intra, outra, merche apod."
-    },
-    "unsubmittedWarning": {
-        "message": "Neodeslané oznámení o segmentech"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Odeslat upozornění, když opustíte video s nenahranými segmenty"
     },
     "help": {
         "message": "Nápověda"
