@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Bu video kimliği için göndermek istiyor musun"
     },
-    "leftTimes": {
-        "message": "Bazı kısımları göndermediniz. Göndermek için sayfaya geri dönün (hala mevcutlar)."
-    },
     "clearTimes": {
         "message": "Kısımları temizle"
     },
@@ -630,12 +627,6 @@
     },
     "categoryUpdate2": {
         "message": "Girişleri, bitişleri, ürünleri ve benzeri şeyleri atlamak için ayarları açın."
-    },
-    "unsubmittedWarning": {
-        "message": "Gönderilmemiş Kısımlar Uyarısı"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Bir videodan kısımları göndermeden ayrılırsan bir bildirim gönderir"
     },
     "help": {
         "message": "Yardım"
