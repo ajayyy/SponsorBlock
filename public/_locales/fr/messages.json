@@ -232,6 +232,9 @@
         "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Définir une touche pour passer un segment"
+    },
     "setStartSponsorShortcut": {
         "message": "Définir le raccourci pour commencer un segment"
     },
