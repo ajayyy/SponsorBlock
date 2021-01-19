@@ -232,6 +232,9 @@
         "message": "Якщо воно Вам все одно не подобається, натисніть «не показувати\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Призначити гарячу клавішу для пропуску сегмента"
+    },
     "setStartSponsorShortcut": {
         "message": "Призначити гарячу клавішу для початку сегмента"
     },
