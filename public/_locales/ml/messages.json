@@ -232,6 +232,9 @@
         "message": "നിങ്ങൾക്ക് ഇപ്പോഴും ഇഷ്‌ടമായില്ലെങ്കിൽ, ഒരിക്കലും കാണിക്കരുത് ബട്ടൺ അമർത്തുക.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "ഒരു സെഗ്മെന്റ് ഒഴിവാക്കുന്നതിനായി കീ സജ്ജമാക്കുക"
+    },
     "setStartSponsorShortcut": {
         "message": "ആരംഭ സെഗ്‌മെന്റ് കീബൈൻഡിനായി കീ സജ്ജമാക്കുക"
     },
