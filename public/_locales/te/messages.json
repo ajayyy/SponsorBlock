@@ -232,6 +232,9 @@
         "message": "మీకు ఇంకా నచ్చకపోతే, ఎప్పుడూ చూపించు బటన్ నొక్కండి.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "విభాగాన్ని దాటవేయడానికి కీని సెట్ చేయండి"
+    },
     "setStartSponsorShortcut": {
         "message": "ప్రారంభ విభాగం కీబైండ్ కోసం కీని సెట్ చేయండి"
     },
