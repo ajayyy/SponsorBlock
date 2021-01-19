@@ -232,6 +232,9 @@
         "message": "Sekiranya anda masih tidak menyukainya, tekan butang jangan tunjukkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Tetapkan kunci untuk melangkau segmen"
+    },
     "setStartSponsorShortcut": {
         "message": "Tetapkan kunci untuk keybind segmen permulaan"
     },
