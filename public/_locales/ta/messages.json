@@ -232,6 +232,9 @@
         "message": "உங்களுக்கு இன்னும் பிடிக்கவில்லை என்றால், ஒருபோதும் காண்பி பொத்தானை அழுத்தவும்.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "ஒரு பகுதியைத் தவிர்ப்பதற்கான விசையை அமைக்கவும்"
+    },
     "setStartSponsorShortcut": {
         "message": "தொடக்க பிரிவு விசைப்பலகைக்கு விசையை அமைக்கவும்"
     },
