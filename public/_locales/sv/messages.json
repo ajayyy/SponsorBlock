@@ -133,6 +133,10 @@
     "recordTimesDescription": {
         "message": "Skicka"
     },
+    "submissionEditHint": {
+        "message": "Sektionsredigering kommer att visas efter du har klickat på skicka",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
     "clearTimesButton": {
         "message": "Rensa Tider"
     },
@@ -221,6 +225,9 @@
     "noticeUpdate2": {
         "message": "Om du ändå inte gillar det, tryck på \"Visa aldrig\"-knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Ställ in knapp för att hoppa över ett segment"
     },
     "setStartSponsorShortcut": {
         "message": "Ange den tangent som ska fungera som starttangent för ett segment"
