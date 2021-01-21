@@ -232,6 +232,9 @@
         "message": "Se você ainda não gostar dessa, aperte o botão não mostrar novamente.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Definir chave para ignorar um segmento"
+    },
     "setStartSponsorShortcut": {
         "message": "Defina a tecla para que marca o início do segmento"
     },
