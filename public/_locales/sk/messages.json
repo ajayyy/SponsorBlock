@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Preskoč sponzorstvá, žiadosti o odber a ďalšie v YouTube videách. Nahlás sponzorované segmenty vo videách čo sleduješ a ušetri ostatným čas.",
+        "message": "Preskoč sponzorstvá, žiadosti o odber atď. v YouTube videách. Nahlás sponzorované segmenty vo videách čo sleduješ a ušetri ostatným čas.",
         "description": "Description of the extension."
     },
     "400": {
@@ -80,7 +80,7 @@
         "message": "Koniec segmentu"
     },
     "noVideoID": {
-        "message": "Nenašlo sa žiadne YouTube video.\nAk to je chyba, obnovte záložku."
+        "message": "Nenašlo sa žiadne YouTube video.\nAk je to chyba, obnovte záložku."
     },
     "success": {
         "message": "Hotovo!"
@@ -98,10 +98,10 @@
         "message": "Chcete odoslať segmenty pre video id"
     },
     "clearTimes": {
-        "message": "Vymazať segmenty"
+        "message": "Zmazať segmenty"
     },
     "openPopup": {
-        "message": "Otvoriť vyskakovacie okno SponsorBlock"
+        "message": "Otvoriť podokno SponsorBlock"
     },
     "closePopup": {
         "message": "Zavrieť okno"
@@ -152,6 +152,12 @@
     "Username": {
         "message": "Používateľské meno"
     },
+    "setUsername": {
+        "message": "Nastaviť Používateľské meno"
+    },
+    "discordAdvert": {
+        "message": "Pripojte sa k oficiálnemu Discord serveru a zanechajte nám pripomienky!"
+    },
     "hideThis": {
         "message": "Skryť"
     },
@@ -189,7 +195,7 @@
         "message": "Zapnúť počítanie preskočení"
     },
     "whatViewTracking": {
-        "message": "Toto sleduje aké segmenty ste preskočili, aby ste vedeli ako ste pomohli ostatným a spolu s hlasmi zaistí databázu bez spamu. Rozšírenie odošle správu na server vždy keď preskočíte segment. Dúfajme, že si väčšina ľudí toto nastavenie nezmení, aby boli čísla presné. :)"
+        "message": "Sleduje aké segmenty ste preskočili, aby sa ostatní používatelia dozvedeli ako prispeli a pomohli ostatným. Spolu s hlasmi to potom zaistí databázu bez spamu. Rozšírenie odošle správu na server vždy keď preskočíte segment. Dúfame, že si väčšina ľudí toto nastavenie nezmení, aby boli čísla presné. :)"
     },
     "enableQueryByHashPrefix": {
         "message": "Dopyt podľa hash prefixu"
@@ -207,7 +213,7 @@
         "message": "Znovu zobraziť upozornenie"
     },
     "longDescription": {
-        "message": "SponsorBlock umožňuje preskočiť sponzorov, úvodné časti, záverečné časti, pripomienky na odber, ne-hudobné časti videoklipov alebo iné otravné časti YouTube videí. SponsorBlock je crowdsourcované rozšírenie prehliadača, pomocou ktorého môže ktokoľvek označiť začiatok a koniec takéhoto segmentu. Po odoslaní potom všetci ostatní s týmto rozšírením tieto segmenty automaticky preskočia.",
+        "message": "SponsorBlock umožňuje preskočiť sponzorov, úvodné časti, záverečné časti, pripomienky na odber, nehudobné časti videoklipov alebo iné otravné časti YouTube videí. SponsorBlock je crowdsourceové rozšírenie prehliadača, pomocou ktorého môže ktokoľvek označiť začiatok a koniec takéhoto segmentu. Po odoslaní potom všetci ostatní s týmto rozšírením tieto segmenty automaticky preskočia.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -342,7 +348,7 @@
         "message": "Podpora Invidious"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) je alternatívny YouTube klient. Pre zapnutie podpory musíte povoliť zvláštne oprávnenia. Nefunguje to v anonymnom režime v prehliadači Chrome ani v Chromium variantoch."
+        "message": "Invidious (invidio.us) je alternatívny YouTube klient. Pre zapnutie podpory musíte povoliť zvláštne oprávnenia. Nefunguje v anonymnom režime v prehliadači Chrome ani v Chromium variantoch."
     },
     "optionsInfo": {
         "message": "Zapnúť podporu Invidious, vypnúť automatické preskočenie, skryť tlačidlá a iné."
@@ -351,13 +357,43 @@
         "message": "Pridať inštanciu Invidious"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Pridá vlastnú inštanciu Invidious. Musi byť vo formáte len doména. Napr. invidious.ajay.app"
+        "message": "Pridá vlastnú inštanciu Invidious. Musí byť vo formáte len doména. Napr. invidious.ajay.app"
     },
     "add": {
         "message": "Pridať"
     },
+    "addInvidiousInstanceError": {
+        "message": "Neplatná doména. Tu musí byť len doménová časť. Napr. invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Obnoviť zoznam inštancií Invidious"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Chystáte sa obnoviť zoznam inštancií Invidious"
+    },
+    "currentInstances": {
+        "message": "Aktuálne inštancie:"
+    },
+    "minDuration": {
+        "message": "Minimálna dĺžka (v sekundách):"
+    },
+    "minDurationDescription": {
+        "message": "Segmenty kratšie ako nastavená hodnota nebudú preskočené ani zobrazené v prehrávači."
+    },
+    "shortCheck": {
+        "message": "Segment je kratší ako vami nastavená minimálna dĺžka. Možno už bol niekým odoslaný a kvôli tomuto nastaveniu je teraz ignorovaný. Naozaj ho chcete odoslať?"
+    },
     "showUploadButton": {
         "message": "Ukázať Nahrávacie Tlačidlo"
+    },
+    "whatUploadButton": {
+        "message": "Toto tlačidlo sa zobrazí v YouTube prehrávači po tom ako označíte začiatok a koniec segmentu na odoslanie."
+    },
+    "customServerAddress": {
+        "message": "Adresa serveru SponsorBlock"
+    },
+    "customServerAddressDescription": {
+        "message": "Adresa, ktorú používa SponsorBlock pre komunikáciu so serverom.\nAk nemáte vlastný server, tak to nemeňte."
     },
     "save": {
         "message": "Uložiť"
@@ -365,8 +401,41 @@
     "reset": {
         "message": "Vynulovať"
     },
+    "customAddressError": {
+        "message": "Táto adresa nie je platná. Musí začínať http:// alebo https:// a končiť bez lomky."
+    },
+    "areYouSureReset": {
+        "message": "Naozaj to chcete obnoviť?"
+    },
+    "confirmPrivacy": {
+        "message": "Toto video je nezaradené. Ak nechcete skontrolovať preskočiteľné segmenty, stlačte Zrušiť."
+    },
+    "unlistedCheck": {
+        "message": "Ignorovať nezaradené a súkromné videá"
+    },
+    "whatUnlistedCheck": {
+        "message": "Toto nastavenie mierne spomalí SponsorBlock. Vyhľadávanie segmentov na preskočenie si vyžaduje odoslanie ID videa na server. Ak si nie ste istí odosielaním ID nezaradených videí cez internet, tak toto nastavenie zapnite."
+    },
+    "mobileUpdateInfo": {
+        "message": "už je podporované aj m.youtube.com"
+    },
+    "exportOptions": {
+        "message": "Import/export všetkých nastavení"
+    },
+    "whatExportOptions": {
+        "message": "Toto sú vaše kompletné nastavenia vo formáte JSON. Obsahuje aj vaše Používateľské ID, takže s ním narábajte opatrne."
+    },
     "setOptions": {
         "message": "Nastaviť Nastavenia"
+    },
+    "exportOptionsWarning": {
+        "message": "Varovanie: zmena nastavení je nezvratná a môže poškodiť inštaláciu. Naozaj to chcete spraviť? Pre istotu si staré nastavenia zazálohujte."
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "Tento JSON súbor nemá správny formát. Nastavenia neboli zmenené."
+    },
+    "confirmNoticeTitle": {
+        "message": "Odoslať segment"
     },
     "submit": {
         "message": "Poslať"
@@ -503,6 +572,10 @@
     "chooseACategory": {
         "message": "Vyberte kategóriu"
     },
+    "enableThisCategoryFirst": {
+        "message": "Pre odoslanie segmentov z kategórie \"{0}\" ju musíte zapnúť v nastaveniach. Teraz tam budete presmerovaní.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Musíte zvoliť kategóriu pre každý segment!"
     },
@@ -510,7 +583,7 @@
         "message": "(Koniec)"
     },
     "hiddenDueToDownvote": {
-        "message": "skryté: hlasy proti"
+        "message": "skryté: negatívne hlasy"
     },
     "hiddenDueToDuration": {
         "message": "skryté: príliš krátke"
@@ -540,23 +613,23 @@
         "message": "Nesprávna kategória"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Toto video je kategorizované ako hudobné. Ste si istý, že to obsahuje sponzora? Ak sa skutočne jedná o časť bez hudby, otvorte možnosti rozšírenia a povoľte túto kategóriu. Potom môžete tento segment uložiť ako kategóriu \"Bez Hudby\" namiesto sponzora. Prosím, prečítajte si pokyny ak ste zmätení."
+        "message": "Toto video je kategorizované ako hudobné. Ste si istý, že obsahuje sponzora? Ak sa skutočne jedná o časť bez hudby, otvorte možnosti rozšírenia a povoľte túto kategóriu. Potom môžete tento segment uložiť ako kategóriu \"Bez hudby\" namiesto sponzora. Ak si neviete rady, tak si prosím prečítajte pravidlá."
     },
     "multipleSegments": {
         "message": "Viac segmentov"
     },
     "guidelines": {
-        "message": "Pokyny"
+        "message": "Pravidlá"
     },
     "readTheGuidelines": {
-        "message": "Prečítajte si pokyny!!",
+        "message": "Prečítajte si pravidlá!!",
         "description": "Show the first time they submit or if they are \"high risk\""
     },
     "categoryUpdate1": {
         "message": "Kategórie sú tu!"
     },
     "categoryUpdate2": {
-        "message": "Otvorte nastavenia pre preskočenie úvodov, záverov, merchu, atď."
+        "message": "Otvorte nastavenia pre preskočenie úvodov, záverov, podpory reklamných predmetov, atď."
     },
     "help": {
         "message": "Pomoc"
