@@ -652,7 +652,7 @@ async function sponsorsLookup(id: string) {
 
             //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id), 10000 + Math.random() * 30000);
+            setTimeout(() => sponsorsLookup(id), 5000 + Math.random() * 15000);
 
             sponsorLookupRetries++;
         }
@@ -670,8 +670,7 @@ function retryFetch(id: string): void {
 
         //if less than 3 days old
         if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
-            //TODO lower when server becomes better
-            setTimeout(() => sponsorsLookup(id), 120000);
+            setTimeout(() => sponsorsLookup(id), 30000 + Math.random() * 90000);
         }
     });
 
