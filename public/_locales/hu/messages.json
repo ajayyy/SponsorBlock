@@ -94,9 +94,6 @@
     "wantToSubmit": {
         "message": "Szeretné beküldeni a szegmenst ehhez a videóhoz:"
     },
-    "leftTimes": {
-        "message": "Úgy tűnik pár megjelölt szegmenst beküldetlenül hagyott. Lépjen vissza az oldalra, hogy beküldhesse őket (nem kerültek törlésre)."
-    },
     "clearTimes": {
         "message": "Szegmensek törlése"
     },
@@ -576,11 +573,5 @@
     },
     "categoryUpdate2": {
         "message": "Nyissa meg a beállításokat, hogy átugorhasson introkat, outrokat stb."
-    },
-    "unsubmittedWarning": {
-        "message": "Beküldetlen szegmens értesítő"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Küldjön egy értesítést, ha elhagy egy videót amelyen beküldetlen szegmensek vannak"
     }
 }

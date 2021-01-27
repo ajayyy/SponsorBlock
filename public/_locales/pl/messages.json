@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Czy chcesz coś zamieścić dla filmu o ID"
     },
-    "leftTimes": {
-        "message": "Wygląda na to, że pozostawiono pewne niewysłane segmenty. Cofnij się do tamtej strony, aby je zamieścić (nie zostały usunięte)."
-    },
     "clearTimes": {
         "message": "Wyczyść segmenty"
     },
@@ -235,6 +232,9 @@
         "message": "Jeśli nadal jej nie lubisz wybierz opcje nie pokazuj więcej.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Ustaw klawisz do pomijania segmentów"
+    },
     "setStartSponsorShortcut": {
         "message": "Ustaw klawisz do oznaczania początku segmentu"
     },
@@ -242,7 +242,7 @@
         "message": "Ustaw klawisz do wysyłania czasów"
     },
     "keybindDescription": {
-        "message": "Wybierz klawisz klikając go na klawiaturze"
+        "message": "Wybierz klawisz, wciskając go na klawiaturze"
     },
     "keybindDescriptionComplete": {
         "message": "Ustawiony klawisz to: "
@@ -342,7 +342,7 @@
         "message": "Pokaż informację po pominięciu segmentu"
     },
     "keybindCurrentlySet": {
-        "message": ". Jest obecnie ustawione jako:"
+        "message": ". Obecnie ustawiony:"
     },
     "supportInvidious": {
         "message": "Wsparcie dla Invidious"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Otwórz opcje, aby pominąć intra, outra, merch, itp."
-    },
-    "unsubmittedWarning": {
-        "message": "Powiadomienie o niewysłanych segmentach"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Wyślij powiadomienie po opuszczeniu filmu z segmentami, które nie zostały przesłane"
     },
     "help": {
         "message": "Pomoc"

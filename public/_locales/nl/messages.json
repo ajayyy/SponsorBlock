@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Wilt u indienen voor video-id"
     },
-    "leftTimes": {
-        "message": "Het lijkt erop dat sommige segmenten niet ingediend zijn. Ga terug naar die pagina om ze in te dienen (de segmenten zijn niet verwijderd)."
-    },
     "clearTimes": {
         "message": "Segmenten verwijderen"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Als het u nog steeds niet bevalt, druk dan op de knop \"nooit weergeven\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Sleutel instellen voor het overslaan van een segment"
     },
     "setStartSponsorShortcut": {
         "message": "Sneltoets instellen voor begin van segment"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Open de opties om intro's, outro's, koopwaar,... over te slaan."
-    },
-    "unsubmittedWarning": {
-        "message": "Melding voor niet-ingediende segmenten"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Een melding sturen wanneer u een video verlaat met segmenten die niet zijn geüpload"
     },
     "help": {
         "message": "Help"

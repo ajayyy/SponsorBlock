@@ -94,9 +94,6 @@
     "wantToSubmit": {
         "message": "Želiš li unijeti za video id"
     },
-    "leftTimes": {
-        "message": "Izgleda da si ostavio neke isječke nepodnešene. Vrati se na tu stranicu i podnesi ih (nisu izbrisani)."
-    },
     "clearTimes": {
         "message": "Očisti isječke"
     },

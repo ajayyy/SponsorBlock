@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "您是否想为以下视频 ID 提交："
     },
-    "leftTimes": {
-        "message": "您似乎还有一些片段未提交。你可以回到那个页面提交（它们未被删除）。"
-    },
     "clearTimes": {
         "message": "清除片段"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "如果您依然不喜欢它，请按下不再显示按钮。",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "设置用于跳过片段的按键"
     },
     "setStartSponsorShortcut": {
         "message": "设定片段开始的绑定按键"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "打开选项，跳过开头，结尾，商业等。"
-    },
-    "unsubmittedWarning": {
-        "message": "未提交片段通知"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "当您关闭含有未上传片段的视频时发送通知"
     },
     "help": {
         "message": "帮助"

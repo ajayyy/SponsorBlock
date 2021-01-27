@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Adakah anda ingin menghantar untuk id video"
     },
-    "leftTimes": {
-        "message": "Nampaknya anda telah meninggalkan beberapa segmen. Kembali ke halaman itu untuk menyerahkannya (mereka tidak dihapuskan)."
-    },
     "clearTimes": {
         "message": "Kosongkan Segmen"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Sekiranya anda masih tidak menyukainya, tekan butang jangan tunjukkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Tetapkan kunci untuk melangkau segmen"
     },
     "setStartSponsorShortcut": {
         "message": "Tetapkan kunci untuk keybind segmen permulaan"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Buka pilihan untuk melangkau perkenalan, pengeluaran luar, barang dagangan, dll."
-    },
-    "unsubmittedWarning": {
-        "message": "Pemberitahuan Segmen yang Tidak Dihantar"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Kirim pemberitahuan ketika anda meninggalkan video dengan segmen yang tidak diunggah"
     },
     "help": {
         "message": "Bantuan"

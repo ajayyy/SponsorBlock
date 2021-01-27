@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Vill skicka in med video-id"
     },
-    "leftTimes": {
-        "message": "Du verkar ha lämnat kvar några segment som inte skickats in. Gå tillbaka till den sidan för att skicka in dem (de är inte borttagna)."
-    },
     "clearTimes": {
         "message": "Rensa segmenten"
     },
@@ -135,6 +132,10 @@
     },
     "recordTimesDescription": {
         "message": "Skicka"
+    },
+    "submissionEditHint": {
+        "message": "Sektionsredigering kommer att visas efter du har klickat på skicka",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "clearTimesButton": {
         "message": "Rensa Tider"
@@ -224,6 +225,9 @@
     "noticeUpdate2": {
         "message": "Om du ändå inte gillar det, tryck på \"Visa aldrig\"-knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Ställ in knapp för att hoppa över ett segment"
     },
     "setStartSponsorShortcut": {
         "message": "Ange den tangent som ska fungera som starttangent för ett segment"
@@ -599,12 +603,6 @@
     },
     "categoryUpdate1": {
         "message": "Kategorier finns här!"
-    },
-    "unsubmittedWarning": {
-        "message": "Avisering när segment inte har skickats in"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Visa en avisering när du lämnar en video med segment som inte har laddats upp"
     },
     "help": {
         "message": "Hjälp"

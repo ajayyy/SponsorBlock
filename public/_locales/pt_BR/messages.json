@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Você deseja enviar para vídeo com id"
     },
-    "leftTimes": {
-        "message": "Parece que você se esqueceu de enviar segmentos. Volte para aquela página para enviá-los (eles não foram apagados)."
-    },
     "clearTimes": {
         "message": "Limpar Segmentos"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Se você ainda não gostar dessa, aperte o botão não mostrar novamente.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Definir chave para ignorar um segmento"
     },
     "setStartSponsorShortcut": {
         "message": "Defina a tecla para que marca o início do segmento"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Abra as opções para ignorar as introduções, outros, merch, etc."
-    },
-    "unsubmittedWarning": {
-        "message": "Notificação de segmentos não enviados"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Enviar uma notificação quando você sair de um vídeo com segmentos que não foram enviados"
     },
     "help": {
         "message": "Ajuda"

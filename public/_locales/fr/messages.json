@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Voulez-vous soumettre vos segments pour la vidéo"
     },
-    "leftTimes": {
-        "message": "Vous semblez avoir laissé certains segments non soumis. Retournez à cette page pour les soumettre (ils ne sont pas supprimés)."
-    },
     "clearTimes": {
         "message": "Effacer les segments"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Définir une touche pour passer un segment"
     },
     "setStartSponsorShortcut": {
         "message": "Définir le raccourci pour commencer un segment"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Ouvrir les options pour sauter les intros, outros, marchandises, etc."
-    },
-    "unsubmittedWarning": {
-        "message": "Notification de segments non soumis"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Envoyer une notification lorsque vous quittez une vidéo avec des segments qui ne sont pas téléversés"
     },
     "help": {
         "message": "Aide"

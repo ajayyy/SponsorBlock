@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Вы хотите отправить сегменты для видео с id"
     },
-    "leftTimes": {
-        "message": "Вы ещё не отправили информацию о некоторых сегментах. Вернитесь на эту страницу, чтобы отправить их (они не удалены)."
-    },
     "clearTimes": {
         "message": "Очистить сегменты"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Если оно Вам всё равно не нравится, нажмите \"не показывать\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Назначить горячую клавишу для пропуска сегмента"
     },
     "setStartSponsorShortcut": {
         "message": "Назначить горячую клавишу для начала сегмента"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Откройте настройки, чтобы пропускать начальные и конечные заставки, саморекламу и другое."
-    },
-    "unsubmittedWarning": {
-        "message": "Уведомления о неотправленных сегментах"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Отправлять уведомление, когда вы уходите со страницы видео, сегменты к которому Вы не отправили"
     },
     "help": {
         "message": "Помощь"

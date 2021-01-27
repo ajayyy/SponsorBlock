@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Kas soovid segmendid saata video IDle"
     },
-    "leftTimes": {
-        "message": "Sul tunduvad olevat mõned segmendid esitamata. Nende esitamiseks mine sellele lehele tagasi (need ei ole kustutatud)."
-    },
     "clearTimes": {
         "message": "Tühjenda segmendid"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Kui sulle see ikka ei meeldi, vajuta \"ära näita kunagi\" nuppu.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Seadista segmendi vahelejätmise klahv"
     },
     "setStartSponsorShortcut": {
         "message": "Seadista segmendi alustamise klahv"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Ava valikud, et jätta vahele vaheaegu, müüdavat kaupa jms."
-    },
-    "unsubmittedWarning": {
-        "message": "Saatmata segmentide teatis"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Saada teavitus, kui lahkud videost segmentidega, mis ei ole üleslaaditud"
     },
     "help": {
         "message": "Abi"
