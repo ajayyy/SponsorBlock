@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Ви хочете надіслати сегменти для відео з id"
     },
-    "leftTimes": {
-        "message": "Ви ще не надіслали інформацію про деякі сегменти. Поверніться на цю сторінку, щоб надіслати їх (вони не видалені)."
-    },
     "clearTimes": {
         "message": "Очистити сегменти"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Якщо воно Вам все одно не подобається, натисніть «не показувати\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Призначити гарячу клавішу для пропуску сегмента"
     },
     "setStartSponsorShortcut": {
         "message": "Призначити гарячу клавішу для початку сегмента"
@@ -630,12 +630,6 @@
     },
     "categoryUpdate2": {
         "message": "Відкрийте налаштування, щоб пропускати початкові і кінцеві заставки, саморекламу та інше."
-    },
-    "unsubmittedWarning": {
-        "message": "Сповіщенняння про невідправлені сегменти"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Надсилати повідомлення, коли ви йдете зі сторінки відео, сегменти до якого Ви не надіслали"
     },
     "help": {
         "message": "Допомога"

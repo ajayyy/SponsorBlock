@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "¿Quiere enviar segmento para el video con ID"
     },
-    "leftTimes": {
-        "message": "Parece que has dejado algunos segmentos sin enviar. Vuelva a esa página para enviarlos (no se han borrado)."
-    },
     "clearTimes": {
         "message": "Borrar Segmentos"
     },
@@ -630,12 +627,6 @@
     },
     "categoryUpdate2": {
         "message": "Abre las opciones de saltarse intros, otros, mercantil, etc."
-    },
-    "unsubmittedWarning": {
-        "message": "Notificación de segmentos no enviados"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Envía una notificación cuando dejas un vídeo con segmentos que no se suben"
     },
     "help": {
         "message": "Ayuda"

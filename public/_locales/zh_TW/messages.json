@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "您想為這個影片ID提交嗎"
     },
-    "leftTimes": {
-        "message": "您好像沒有提及一些片段。返回至該頁面來提交（它們尚未被刪除）"
-    },
     "clearTimes": {
         "message": "清除片段"
     },
@@ -626,12 +623,6 @@
     },
     "categoryUpdate2": {
         "message": "開啟選項以跳過開場、結尾、工商等。"
-    },
-    "unsubmittedWarning": {
-        "message": "未提交的片段提醒"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "在您離開含有未提交的片段的影片時寄送通知"
     },
     "help": {
         "message": "幫助"

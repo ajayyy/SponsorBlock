@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "영상 id를 제출하시겠습니까"
     },
-    "leftTimes": {
-        "message": "몇몇 구간을 제출하지 않은 채 있는 것 같습니다. 해당 페이지로 다시 돌아가 제출하세요 (삭제되지 않았습니다)"
-    },
     "clearTimes": {
         "message": "구간 제거"
     },
@@ -630,12 +627,6 @@
     },
     "categoryUpdate2": {
         "message": "인트로, 아웃트로, 기타 등을 스킵하는 설정을 여세요"
-    },
-    "unsubmittedWarning": {
-        "message": "제출되지 않은 구간 알림"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "업로드되지 않은 구간이 있는 영상이 있을 때 알림을 보냅니다"
     },
     "help": {
         "message": "도움"

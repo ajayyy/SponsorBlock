@@ -94,9 +94,6 @@
     "wantToSubmit": {
         "message": "Bạn có muốn đăng đoạn quảng cáo cho video có mã id"
     },
-    "leftTimes": {
-        "message": "Có vẻ bạn còn vài đoạn quảng cáo chưa đăng. Hãy quay lại trang đó để đăng (đoạn quảng cáo đó chưa bị xóa)."
-    },
     "clearTimes": {
         "message": "Xóa đoạn quảng cáo"
     },
@@ -559,11 +556,5 @@
     },
     "categoryUpdate2": {
         "message": "Mở Tùy chọn để bỏ qua đoạn mở đầu, kết thúc, giới thiệu hàng hoá, v.v."
-    },
-    "unsubmittedWarning": {
-        "message": "Thông báo chưa đăng tải phân đoạn chứa quảng cáo của nhà tài trợ"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Gửi thông báo khi bạn rời video mà chưa đăng tải phân đoạn chứa quảng cáo nhà tài trợ"
     }
 }
