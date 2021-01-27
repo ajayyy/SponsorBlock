@@ -1373,7 +1373,7 @@ function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNo
                     //success (treat rate limits as a success)
                     skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
                 } else if (response.successType == -1) {
-                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode))
+                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode, response.responseText))
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }
@@ -1500,7 +1500,7 @@ async function sendSubmitMessage(): Promise<void> {
         document.getElementById("submitButton").style.animation = "unset";
         (<HTMLImageElement> document.getElementById("submitImage")).src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker256px.png");
 
-        alert(utils.getErrorMessage(response.status) + "\n\n" + (response.responseText));
+        alert(utils.getErrorMessage(response.status, response.responseText));
     }
 }
 

@@ -125,19 +125,22 @@ async function submitVote(type: number, UUID: string, category: string) {
 
     if (response.ok) {
         return {
-            successType: 1
+            successType: 1,
+            responseText: await response.text()
         };
     } else if (response.status == 405) {
         //duplicate vote
         return {
             successType: 0,
-            statusCode: response.status
+            statusCode: response.status,
+            responseText: await response.text()
         };
     } else {
         //error while connect
         return {
             successType: -1,
-            statusCode: response.status
+            statusCode: response.status,
+            responseText: await response.text()
         };
     }
 }

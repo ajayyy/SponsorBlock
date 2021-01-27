@@ -548,7 +548,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
             } else {
-                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(response.status);
+                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(response.status, response.responseText);
             }
         });
 
@@ -575,7 +575,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
   
     function vote(type, UUID) {
         //add loading info
-        addVoteMessage(chrome.i18n.getMessage("Loading"), UUID)
+        addVoteMessage(chrome.i18n.getMessage("Loading"), UUID);
   
         //send the vote message to the tab
         chrome.runtime.sendMessage({
@@ -587,9 +587,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 //see if it was a success or failure
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
-                    addVoteMessage(chrome.i18n.getMessage("voted"), UUID)
+                    addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
                 } else if (response.successType == -1) {
-                    addVoteMessage(utils.getErrorMessage(response.statusCode), UUID)
+                    addVoteMessage(utils.getErrorMessage(response.statusCode, response.responseText), UUID);
                 }
             }
         });

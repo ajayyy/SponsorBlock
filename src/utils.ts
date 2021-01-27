@@ -286,8 +286,9 @@ class Utils {
      * @param {int} statusCode 
      * @returns {string} errorMessage
      */
-    getErrorMessage(statusCode: number): string {
+    getErrorMessage(statusCode: number, responseText: string): string {
         let errorMessage = "";
+        const postFix = (responseText ? "\n\n" + responseText : "");
                             
         if([400, 429, 409, 502, 0].includes(statusCode)) {
             //treat them the same
@@ -299,7 +300,7 @@ class Utils {
             errorMessage = chrome.i18n.getMessage("connectionError") + statusCode;
         }
 
-        return errorMessage;
+        return errorMessage + postFix;
     }
 
     /**
