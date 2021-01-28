@@ -258,7 +258,7 @@ async function videoIDChange(id) {
         try {
             await utils.wait(() => !!videoInfo, 5000, 1);
         } catch (err) {
-            alert(chrome.i18n.getMessage("adblockerIssue"));
+            alert(chrome.i18n.getMessage("adblockerIssue") + "\n\n" + chrome.i18n.getMessage("adblockerIssueUnlistedVideosInfo"));
         }
 
         if (isUnlisted()) {
@@ -719,6 +719,7 @@ async function getVideoInfo(): Promise<void> {
         const decodedData = decodeURIComponent(result.responseText).match(/player_response=([^&]*)/)[1];
         if (!decodedData) {
             console.error("[SB] Failed at getting video info from YouTube.");
+            console.error("[SB] Data returned from YouTube: " + result.responseText);
             return;
         }
 
