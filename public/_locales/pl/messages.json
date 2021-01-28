@@ -594,6 +594,9 @@
     "adblockerIssue": {
         "message": "Wygląda na to, że coś blokuje możliwość pobierania danych o filmach przez SponsorBlock. To prawdopodobnie Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Jeżeli nie możesz naprawić tego to wyłącz w ustawieniach opcję \"Ignoruj prywatne filmy\", ponieważ SponsorBlock nie może uzyskać informacji o widoczności tego filmu"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
