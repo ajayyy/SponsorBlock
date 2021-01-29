@@ -232,6 +232,9 @@
         "message": "Eğer hala beğenmediyseniz, asla gösterme butonuna basın.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Kısım atlamak için bir tuş ata"
+    },
     "setStartSponsorShortcut": {
         "message": "Kısım kaydına başlamak için bir tuş belirleyin"
     },
