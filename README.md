@@ -105,4 +105,4 @@ Icons made by:
 
 ### License
 
-This project is licensed under GNU GPL v3-only
+This project is licensed under GNU GPL v3
