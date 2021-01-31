@@ -250,7 +250,7 @@ const Config: SBObject = {
 function encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes  {
     // if data is SBMap convert to json for storing
     if(!(data instanceof SBMap)) return data;
-    return Array.from(data.entries()).filter((element) => element[1] === []); // Remove empty entries
+    return Array.from(data.entries()).filter((element) => element[1].length > 0); // Remove empty entries
 }
 
 /**
