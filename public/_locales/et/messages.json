@@ -44,10 +44,10 @@
         "message": "Ära näita kunagi"
     },
     "hitGoBack": {
-        "message": "Vajuta \"tühista vahelejätmine\", et jõuda sinna, kust tulid."
+        "message": "Vajuta \"kuva uuesti\", et jõuda sinna, kust tulid."
     },
     "unskip": {
-        "message": "Tühista vahelejätmine"
+        "message": "Kuva uuesti"
     },
     "reskip": {
         "message": "Jäta uuesti vahele"
