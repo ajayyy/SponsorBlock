@@ -594,6 +594,9 @@
     "adblockerIssue": {
         "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Eine mögliche Ursache sind Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Nicht gelistete und private Videos ignorieren', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Falls dies weiterhin geschieht, könnte dies durch einen Werbeblocker verursacht werden. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
