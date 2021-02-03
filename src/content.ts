@@ -1528,7 +1528,8 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 }
 
 function addHotkeyListener(): boolean {
-    const videoRoot = document.getElementById("movie_player") as HTMLDivElement;
+    let videoRoot = document.getElementById("movie_player") as HTMLDivElement;
+    if (onInvidious) videoRoot = document.getElementById("player-container") as HTMLDivElement;
 
     if (!videoRootsWithEventListeners.includes(videoRoot)) {
         videoRoot.addEventListener("keydown", hotkeyListener);
