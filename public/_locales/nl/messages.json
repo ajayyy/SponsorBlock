@@ -594,6 +594,9 @@
     "adblockerIssue": {
         "message": "Het lijkt erop dat iets de mogelijkheid van SponsorBlock om videogegevens te krijgen blokkeert. Dit is waarschijnlijk uw reclamefilter. Zie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocks-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Als u dit niet kunt oplossen, schakel dan de instelling 'onvermelde/privé-video's negeren' uit omdat SponsorBlock niet in staat is de zichtbaarheidsinformatie voor deze video op te halen"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Als dit blijft optreden, kan dit worden veroorzaakt door uw reclamefilter. Zie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },

@@ -594,6 +594,9 @@
     "adblockerIssue": {
         "message": "Кажется, что-то блокирует возможность SponsorBlock'а получать данные о видео. Возможно, это ваш блокировщик рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Если вы не можете решить эту проблему, попробуйте отключить \"Игнорировать непубличные видео\" в настройках, т. к. SponsorBlock не может получить настройки доступа этого видео"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Если это сообщения появляется слишком часто, это может быть вызвано вашим блокировщиком рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },

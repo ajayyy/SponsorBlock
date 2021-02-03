@@ -594,6 +594,9 @@
     "adblockerIssue": {
         "message": "Sepertinya ada sesuatu yang memblokir kemampuan SponsorBlock untuk mendapatkan data video. Kemungkinan karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Jika anda tidak bisa menyelesaikan ini, maka nonaktifkan pengaturan 'Abaikan video tidak terdaftar/privat', karena SponsorBlock tidak bisa mendapatkan informasi visibilitas untuk video ini"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Jika ini terus terjadi, kemungkinan terjadi karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },

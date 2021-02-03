@@ -486,6 +486,9 @@
     "category_interaction": {
         "message": "Interaktionspåminnelse (Prenumerera)"
     },
+    "category_interaction_description": {
+        "message": "När där är en kort påminnelse att gilla, prenumerera eller följa dem. Om det är långt eller om det gäller något specifikt bör det istället vara under självbefodran."
+    },
     "category_interaction_short": {
         "message": "Interaktionspåminnelse"
     },
@@ -578,6 +581,9 @@
     },
     "forceChannelCheck": {
         "message": "Tvinga kontroll av kanalen innan hoppa över"
+    },
+    "whatForceChannelCheck": {
+        "message": "Som standard kommer segment att hoppas över direkt innan ens den vet vad det är för kanal. Som standard kan vissa segment i början av videon hoppas över på vitlistade kanaler. Aktiverar du detta alternativet kommer du att förhindra detta, men det göra att alla överhoppningar har en liten fördröjning eftersom det tar lite tid att få kanal-ID. Denna fördröjning kan vara obetydlig om du har en snabb internetuppkoppling."
     },
     "forceChannelCheckPopup": {
         "message": "Överväg att aktivera \"Tvinga kontroll av kanalen innan hoppa över\""

@@ -44,10 +44,10 @@
         "message": "Ära näita kunagi"
     },
     "hitGoBack": {
-        "message": "Vajuta \"tühista vahelejätmine\", et jõuda sinna, kust tulid."
+        "message": "Vajuta \"kuva uuesti\", et jõuda sinna, kust tulid."
     },
     "unskip": {
-        "message": "Tühista vahelejätmine"
+        "message": "Kuva uuesti"
     },
     "reskip": {
         "message": "Jäta uuesti vahele"
@@ -593,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. See on ilmselt sinu reklaamiblokeerija. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Kui sa ei suuda seda lahendada, keela valik \"ignoreeri registriväliseid/privaatsed videoid\", kuna SponsorBlock ei leia selle video nähtavusteavet"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Kui see jätkub, võib see olla põhjustatud sinu reklaamiblokeerijast. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
