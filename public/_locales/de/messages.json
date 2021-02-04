@@ -348,7 +348,7 @@
         "message": "Invidious-Kompatibilität"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Incongnito-modus auf Chrome und anderen Chromium-Varianten."
+        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, musst du die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Inkognitomodus auf Chrome und anderen Chromium-Varianten."
     },
     "optionsInfo": {
         "message": "Zu überspringende Kategorien auswählen, automatisches Überspringen, Tasten ein- & ausblenden und noch viel mehr."
