@@ -594,6 +594,9 @@
     "adblockerIssue": {
         "message": "Parece que algo está bloqueando o SponsorBlock de obter dados de vídeo. Isso é provavelmente o seu bloqueador de anúncios. Por favor, verifique https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Se você não consegue resolver isso, desative a configuração 'Ignorar vídeos não listados/privados', pois o SponsorBlock não pode recuperar as informações de visibilidade deste vídeo"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Se isso continuar acontecendo, pode ser causado pelo seu bloqueador de anúncios. Por favor, verifique https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock-Requests"
     },
