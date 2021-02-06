@@ -594,6 +594,9 @@
     "adblockerIssue": {
         "message": "Nampaknya ada sesuatu yang menyekat kemampuan SponsorBlock untuk mendapatkan data video. Ini mungkin penyekat iklan anda. Sila periksa https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Sekiranya anda tidak dapat menyelesaikannya, maka matikan tetapan 'Abaikan video tidak tersenarai / peribadi', kerana SponsorBlock tidak dapat mengambil maklumat keterlihatan untuk video ini"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Sekiranya ini terus berlaku, ini mungkin disebabkan oleh penyekat iklan anda. Sila periksa https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
