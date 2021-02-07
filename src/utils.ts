@@ -360,13 +360,13 @@ class Utils {
     getFormattedTime(seconds: number, precise?: boolean): string {
         const hours = Math.floor(seconds / 60 / 60);
         const minutes = Math.floor(seconds / 60) % 60;
-        let minutesDisplay = String(minutes);
+        let minutesDisplay = !isNaN(minutes) ? String(minutes) : '0';
         let secondsNum = seconds % 60;
         if (!precise) {
             secondsNum = Math.floor(secondsNum);
         }
 
-        let secondsDisplay = String(precise ? secondsNum.toFixed(3) : secondsNum);
+        let secondsDisplay = !isNaN(secondsNum) ? (String(precise ? secondsNum.toFixed(3) : secondsNum)) : '00';
         
         if (secondsNum < 10) {
             //add a zero
