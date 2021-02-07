@@ -376,6 +376,9 @@ class Utils {
             //add a zero
             minutesDisplay = "0" + minutesDisplay;
         }
+        if (isNaN(hours) || isNaN(minutes)) {
+            return null;
+        }
 
         const formatted = (hours ? hours + ":" : "") + minutesDisplay + ":" + secondsDisplay;
 
