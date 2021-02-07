@@ -1649,5 +1649,5 @@ function showTimeWithoutSkips(skippedDuration: number): void {
     
     const durationAfterSkips = utils.getFormattedTime(video.duration - skippedDuration)
 
-    duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")");
+    duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")";
 }
