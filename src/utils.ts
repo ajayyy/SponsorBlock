@@ -357,7 +357,7 @@ class Utils {
         });
     }
 
-    getFormattedTime(seconds: number, precise?: boolean): string | null {
+    getFormattedTime(seconds: number, precise?: boolean): string {
         const hours = Math.floor(seconds / 60 / 60);
         const minutes = Math.floor(seconds / 60) % 60;
         let minutesDisplay = String(minutes);
