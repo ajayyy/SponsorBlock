@@ -95,7 +95,7 @@
         "message": "Błąd z połączeniem. Kod błędu: "
     },
     "wantToSubmit": {
-        "message": "Czy chcesz coś zamieścić dla filmu o ID"
+        "message": "Czy chcesz wysłać dla video o id"
     },
     "clearTimes": {
         "message": "Wyczyść segmenty"
@@ -134,7 +134,7 @@
         "message": "Prześlij"
     },
     "submissionEditHint": {
-        "message": "Edycja sekcji pojawi się po kliknięciu przycisku „Wyślij”",
+        "message": "Edycja sekcji pojawi się po kliknięciu „Wyślij”",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
