@@ -167,7 +167,7 @@ const Config: SBObject = {
         audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         testingServer: false,
-        hashPrefix: false,
+        hashPrefix: true,
         refetchWhenNotFound: true,
 
         categorySelections: [{
