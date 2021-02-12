@@ -1,1 +1,387 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock for YouTube - Hopp over sponsinger",
+        "description": "Name of the extension."
+    },
+    "409": {
+        "message": "Dette har allerede blitt sendt inn tidligere"
+    },
+    "channelWhitelisted": {
+        "message": "Kanalen ble hvitelistet!"
+    },
+    "Segment": {
+        "message": "segment"
+    },
+    "Segments": {
+        "message": "segmenter"
+    },
+    "upvoteButtonInfo": {
+        "message": "Gi plusstemme til denne innsendingen"
+    },
+    "reportButtonTitle": {
+        "message": "Rapporter"
+    },
+    "reportButtonInfo": {
+        "message": "Rapporter inn denne innsendingen som en feil."
+    },
+    "Dismiss": {
+        "message": "Lukk"
+    },
+    "Loading": {
+        "message": "Laster..."
+    },
+    "Hide": {
+        "message": "Aldri vis"
+    },
+    "paused": {
+        "message": "På pause"
+    },
+    "sponsor404": {
+        "message": "Ingen segmenter ble funnet"
+    },
+    "sponsorStart": {
+        "message": "Segmentet starter nå"
+    },
+    "sponsorEnd": {
+        "message": "Segmentet slutter nå"
+    },
+    "success": {
+        "message": "Suksess!"
+    },
+    "voted": {
+        "message": "Du har stemt!"
+    },
+    "clearTimes": {
+        "message": "Tøm segmenter"
+    },
+    "openPopup": {
+        "message": "Åpne SponsorBlock-oppsprett"
+    },
+    "closePopup": {
+        "message": "Lukk oppsprett"
+    },
+    "SubmitTimes": {
+        "message": "Send inn segmenter"
+    },
+    "whitelistChannel": {
+        "message": "Hvitelist kanalen"
+    },
+    "removeFromWhitelist": {
+        "message": "Fjern kanalen fra hvitelisten"
+    },
+    "voteOnTime": {
+        "message": "Stem på et segment"
+    },
+    "Submissions": {
+        "message": "Innsendinger"
+    },
+    "savedPeopleFrom": {
+        "message": "Du har spart folk fra "
+    },
+    "viewLeaderboard": {
+        "message": "Toppliste"
+    },
+    "recordTimesDescription": {
+        "message": "Send"
+    },
+    "clearTimesButton": {
+        "message": "Tøm tidspunkter"
+    },
+    "submitTimesButton": {
+        "message": "Send inn tidspunkter"
+    },
+    "Username": {
+        "message": "Brukernavn"
+    },
+    "setUsername": {
+        "message": "Angi brukernavn"
+    },
+    "hideThis": {
+        "message": "Skjul dette"
+    },
+    "Options": {
+        "message": "Valg"
+    },
+    "showButtons": {
+        "message": "Vis knapper på YouTube-avspilleren"
+    },
+    "hideButtons": {
+        "message": "Skjul knapper på YouTube-avspilleren"
+    },
+    "showInfoButton": {
+        "message": "Vis infoknappen på YouTube-avspilleren"
+    },
+    "hideInfoButton": {
+        "message": "Skjul infoknappen på YouTube-avspilleren"
+    },
+    "hideDeleteButton": {
+        "message": "Skjul Slett-knappen på YouTube-avspilleren"
+    },
+    "showDeleteButton": {
+        "message": "Vis Slett-knappen på YouTube-avspilleren"
+    },
+    "showNotice": {
+        "message": "Vis varselet igjen"
+    },
+    "website": {
+        "message": "Nettsted",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Kildekode",
+        "description": "Used on Firefox Store Page"
+    },
+    "setSkipShortcut": {
+        "message": "Angi tast for å hoppe over et segment"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Angi tast for å starte segmenter"
+    },
+    "setSubmitKeybind": {
+        "message": "Angi tast for innsending"
+    },
+    "keybindDescription": {
+        "message": "Velg en tast ved å trykke på den"
+    },
+    "keybindDescriptionComplete": {
+        "message": "Hurtigtasten har blitt satt til: "
+    },
+    "disableSkipping": {
+        "message": "Hopping er skrudd på"
+    },
+    "enableSkipping": {
+        "message": "Hopping er skrudd av"
+    },
+    "yourWork": {
+        "message": "Arbeidet ditt",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "errorCode": {
+        "message": "Feilkode: "
+    },
+    "skip": {
+        "message": "Hopp over"
+    },
+    "skip_category": {
+        "message": "Vil du hoppe over {0}?"
+    },
+    "skipped": {
+        "message": "Hoppet over"
+    },
+    "disableAutoSkip": {
+        "message": "Skru av autohopping"
+    },
+    "enableAutoSkip": {
+        "message": "Skru på autohopping"
+    },
+    "audioNotification": {
+        "message": "Lydvarsel ved hopp"
+    },
+    "youHaveSkipped": {
+        "message": "Du har hoppet over "
+    },
+    "youHaveSaved": {
+        "message": "Du har spart deg selv for "
+    },
+    "minLower": {
+        "message": "minutt"
+    },
+    "minsLower": {
+        "message": "minutter"
+    },
+    "hourLower": {
+        "message": "time"
+    },
+    "hoursLower": {
+        "message": "timer"
+    },
+    "youHaveSavedTime": {
+        "message": "Du har spart folk for"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": "av sine liv"
+    },
+    "changeUserID": {
+        "message": "Importer/Eksporter din bruker-ID"
+    },
+    "setUserID": {
+        "message": "Angi bruker-ID"
+    },
+    "createdBy": {
+        "message": "Opprettet av"
+    },
+    "autoSkip": {
+        "message": "Hopp over automatisk"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Den er før øyeblikket satt til:"
+    },
+    "supportInvidious": {
+        "message": "Støtt Invidious"
+    },
+    "addInvidiousInstance": {
+        "message": "Legg til Invidious-instans"
+    },
+    "add": {
+        "message": "Legg til"
+    },
+    "resetInvidiousInstance": {
+        "message": "Tilbakestill Invidious-instansliste"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Du er i ferd med å tilbakestille Invidious-instanslisten"
+    },
+    "currentInstances": {
+        "message": "Gjeldende instanser:"
+    },
+    "minDuration": {
+        "message": "Minimumsvarighet (i sekunder):"
+    },
+    "showUploadButton": {
+        "message": "Vis opplastingsknapp"
+    },
+    "save": {
+        "message": "Lagre"
+    },
+    "reset": {
+        "message": "Nullstill"
+    },
+    "areYouSureReset": {
+        "message": "Er du sikker på at du vil tilbakestille dette?"
+    },
+    "unlistedCheck": {
+        "message": "Ignorer uoppførte/private videoer"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com er nå støttet"
+    },
+    "exportOptions": {
+        "message": "Importer/Eksporter alle innstillinger"
+    },
+    "setOptions": {
+        "message": "Angi innstillinger"
+    },
+    "confirmNoticeTitle": {
+        "message": "Send inn segment"
+    },
+    "submit": {
+        "message": "Send"
+    },
+    "cancel": {
+        "message": "Avbryt"
+    },
+    "delete": {
+        "message": "Slett"
+    },
+    "preview": {
+        "message": "Forhåndsvisning"
+    },
+    "inspect": {
+        "message": "Inspiser"
+    },
+    "edit": {
+        "message": "Rediger "
+    },
+    "copyDebugInformationFailed": {
+        "message": "Klarte ikke å skrive til utklippstavlen"
+    },
+    "theKey": {
+        "message": "Nøkkelen"
+    },
+    "keyAlreadyUsed": {
+        "message": "er bundet til en annen handling. Vennligst velg en annen tast."
+    },
+    "to": {
+        "message": "til",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_intro_short": {
+        "message": "Midtpause"
+    },
+    "category_outro": {
+        "message": "Rulletekster"
+    },
+    "category_outro_description": {
+        "message": "Rulletekster eller når YouTube-sluttkortene dukker opp. Ikke for avslutninger med informasjon."
+    },
+    "category_interaction": {
+        "message": "Samhandlingspåminnelse (Abonner)"
+    },
+    "category_interaction_description": {
+        "message": "Når det er en kort påminnelse om å like, abonnere på eller følge dem midt i innholdet. Hvis det er langt eller handler om noe spesifikt, burde det føres opp som selvpromotering i stedet."
+    },
+    "category_interaction_short": {
+        "message": "Samhandlingspåminnelse"
+    },
+    "category_selfpromo": {
+        "message": "Ubetalt/Selvpromotering"
+    },
+    "category_selfpromo_description": {
+        "message": "Minner om «Sponsor», men er ubetalt eller selvpromotering. Dette inkluderer segmenter om merchandise, donasjoner, eller info om hvem de samarbeidet med."
+    },
+    "category_music_offtopic": {
+        "message": "Musikk: Seksjon uten musikk"
+    },
+    "category_music_offtopic_description": {
+        "message": "Kun for bruk i musikkvideoer. Dette inkluderer introduksjoner eller outro-er i musikkvideoer."
+    },
+    "category_music_offtopic_short": {
+        "message": "Ikke-musikk"
+    },
+    "category_livestream_messages_short": {
+        "message": "Høytlesning av meldinger"
+    },
+    "disable": {
+        "message": "Deaktiver"
+    },
+    "previewColor": {
+        "message": "Forhåndsvisningsfarge",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "category": {
+        "message": "Kategori"
+    },
+    "enableTestingServer": {
+        "message": "Skru på betatestingstjeneren"
+    },
+    "bracketNow": {
+        "message": "(Nå)"
+    },
+    "moreCategories": {
+        "message": "Flere kategorier"
+    },
+    "chooseACategory": {
+        "message": "Velg en kategori"
+    },
+    "bracketEnd": {
+        "message": "(Slutt)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "skjult: stemt ned"
+    },
+    "hiddenDueToDuration": {
+        "message": "skjult: for kort"
+    },
+    "incorrectCategory": {
+        "message": "Feil kategori"
+    },
+    "multipleSegments": {
+        "message": "Flere segmenter"
+    },
+    "guidelines": {
+        "message": "Retningslinjer"
+    },
+    "readTheGuidelines": {
+        "message": "Les retningslinjene!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategorier er her!"
+    },
+    "help": {
+        "message": "Hjelp"
+    }
+}
