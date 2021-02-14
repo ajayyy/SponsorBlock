@@ -598,8 +598,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //converts time in seconds to minutes:seconds
     function getFormattedTime(seconds) {
         const minutes = Math.floor(seconds / 60);
-        const secondsDisplayNumber = Math.floor(seconds - minutes * 60);
-        let secondsDisplay = String(secondsDisplayNumber);
+        const secondsDisplayNumber = seconds - minutes * 60;
+        let secondsDisplay = secondsDisplayNumber.toFixed(3);
         if (secondsDisplayNumber < 10) {
             //add a zero
             secondsDisplay = "0" + secondsDisplay;
