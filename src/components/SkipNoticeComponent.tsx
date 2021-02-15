@@ -127,7 +127,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     render(): React.ReactElement {
         const noticeStyle: React.CSSProperties = {
-            zIndex: 50 + this.amountOfPreviousNotices
+            zIndex: 1000 + this.amountOfPreviousNotices
         }
         if (this.contentContainer().onMobileYouTube) {
             noticeStyle.bottom = "4em";
