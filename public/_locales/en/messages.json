@@ -517,7 +517,7 @@
         "message": "Music: Non-Music Section"
     },
     "category_music_offtopic_description": {
-        "message": "Only for use in music videos. This includes introductions or outros in music videos."
+        "message": "Only for use in music videos. This only should be used for sections of music videos that aren't already covered by another category."
     },
     "category_music_offtopic_short": {
         "message": "Non-Music"
