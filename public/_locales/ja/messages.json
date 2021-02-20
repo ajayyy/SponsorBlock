@@ -33,6 +33,18 @@
     "closePopup": {
         "message": "ポップアップを閉じる"
     },
+    "recordTimesDescription": {
+        "message": "送信"
+    },
+    "Username": {
+        "message": "ユーザー名"
+    },
+    "setUsername": {
+        "message": "ユーザー名を設定"
+    },
+    "hideThis": {
+        "message": "非表示にする"
+    },
     "Options": {
         "message": "オプション"
     },
@@ -76,6 +88,9 @@
     },
     "audioNotification": {
         "message": "オーディオ通知をスキップ"
+    },
+    "youHaveSkipped": {
+        "message": "スキップしました "
     },
     "minLower": {
         "message": "分"
@@ -166,6 +181,9 @@
     "enableTestingServer": {
         "message": "ベータテストサーバーを有効にする"
     },
+    "bracketNow": {
+        "message": "(今)"
+    },
     "chooseACategory": {
         "message": "カテゴリーを選択"
     },
@@ -184,5 +202,8 @@
     },
     "categoryUpdate1": {
         "message": "カテゴリはこちらです!"
+    },
+    "help": {
+        "message": "ヘルプ"
     }
 }
