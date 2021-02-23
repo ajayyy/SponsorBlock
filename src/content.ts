@@ -1281,7 +1281,7 @@ function openInfoMenu() {
             const settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
             const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
             const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
-            logo.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+            logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
             settings.src = chrome.extension.getURL("icons/settings.svg");
             edit.src = chrome.extension.getURL("icons/pencil.svg");
             check.src = chrome.extension.getURL("icons/check.svg");
