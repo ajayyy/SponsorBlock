@@ -109,8 +109,20 @@
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
     },
+    "removeFromWhitelist": {
+        "message": "Poista kanava sallittujen listalta"
+    },
     "voteOnTime": {
         "message": "Äänestä Segmenttiä"
+    },
+    "savedPeopleFrom": {
+        "message": "Olet säästänyt ihmisiä "
+    },
+    "viewLeaderboard": {
+        "message": "Tulostaulu"
+    },
+    "recordTimesDescription": {
+        "message": "Lähetä"
     },
     "clearTimesButton": {
         "message": "Tyhjennä ajat"
@@ -196,6 +208,12 @@
     },
     "0": {
         "message": "Yhteyden aikakatkaisu. Tarkista internet-yhteytesi. Jos internetyhteytesi toimii, palvelin on todennäköisesti ylikuormittunut tai alhaalla."
+    },
+    "disableSkipping": {
+        "message": "Ohitus on käytössä"
+    },
+    "enableSkipping": {
+        "message": "Ohitus on poistettu käytöstä"
     },
     "yourWork": {
         "message": "Sinun työsi",
@@ -387,6 +405,9 @@
     },
     "category_interaction_description": {
         "message": "Kun sisällön keskellä on lyhyt muistutus tykätä, tilata tai seurata. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi."
+    },
+    "category_interaction_short": {
+        "message": "Vuorovaikutus Muistutus"
     },
     "category_selfpromo": {
         "message": "Maksamaton/Itsensä Mainostus"
