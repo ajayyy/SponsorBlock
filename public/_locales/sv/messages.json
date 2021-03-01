@@ -610,6 +610,9 @@
     "categoryUpdate1": {
         "message": "Kategorier finns här!"
     },
+    "categoryUpdate2": {
+        "message": "Öppna inställningarna för att skippa intros, outros, merch, osv."
+    },
     "help": {
         "message": "Hjälp"
     }
