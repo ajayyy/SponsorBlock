@@ -1529,7 +1529,7 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 
 function addHotkeyListener(): boolean {
     let videoRoot = document.getElementById("movie_player") as HTMLDivElement;
-    if (onInvidious) videoRoot = document.getElementById("player-container") as HTMLDivElement;
+    if (onInvidious) videoRoot = (document.getElementById("player-container") ?? document.getElementById("player")) as HTMLDivElement;
 
     if (!videoRootsWithEventListeners.includes(videoRoot)) {
         videoRoot.addEventListener("keydown", hotkeyListener);
