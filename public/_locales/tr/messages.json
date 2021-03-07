@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"
     },
-    "category_music_offtopic_description": {
-        "message": "Sadece müzik klipleri içindir. Buna kliplerin başlarında ve sonlarında şarkı bulunmayan kısımlar dahildir."
-    },
     "category_music_offtopic_short": {
         "message": "Müzik Olmayan Bölüm"
     },
