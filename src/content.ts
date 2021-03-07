@@ -647,12 +647,12 @@ async function sponsorsLookup(id: string) {
             sponsorLookupRetries = 0;
         } else if (response?.status === 404) {
             retryFetch(id);
-        } else if (sponsorLookupRetries < 90 && !recheckStarted) {
+        } else if (sponsorLookupRetries < 15 && !recheckStarted) {
             recheckStarted = true;
 
             //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id), 5000 + Math.random() * 15000);
+            setTimeout(() => sponsorsLookup(id), 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
 
             sponsorLookupRetries++;
         }
@@ -1281,7 +1281,7 @@ function openInfoMenu() {
             const settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
             const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
             const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
-            logo.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+            logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
             settings.src = chrome.extension.getURL("icons/settings.svg");
             edit.src = chrome.extension.getURL("icons/pencil.svg");
             check.src = chrome.extension.getURL("icons/check.svg");

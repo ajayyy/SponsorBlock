@@ -290,7 +290,7 @@ class Utils {
         let errorMessage = "";
         const postFix = (responseText ? "\n\n" + responseText : "");
                             
-        if([400, 429, 409, 502, 0].includes(statusCode)) {
+        if([400, 429, 409, 502, 503, 0].includes(statusCode)) {
             //treat them the same
             if (statusCode == 503) statusCode = 502;
 

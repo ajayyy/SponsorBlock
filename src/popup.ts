@@ -396,7 +396,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
-                sponsorTimeButton.innerText = prefix + getFormattedTime(segmentTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segmentTimes[i].segment[1]) + extraInfo;
+                sponsorTimeButton.innerText = prefix + utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) + extraInfo;
 
                 const categoryColorCircle = document.createElement("span");
                 categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
@@ -593,21 +593,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 }
             }
         });
-    }
-
-    //converts time in seconds to minutes:seconds
-    function getFormattedTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secondsDisplayNumber = Math.round(seconds - minutes * 60);
-        let secondsDisplay = String(secondsDisplayNumber);
-        if (secondsDisplayNumber < 10) {
-            //add a zero
-            secondsDisplay = "0" + secondsDisplay;
-        }
-  
-        const formatted = minutes + ":" + secondsDisplay;
-  
-        return formatted;
     }
 
     function whitelistChannel() {
