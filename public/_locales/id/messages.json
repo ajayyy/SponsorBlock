@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Musik: Bagian Non-Musik"
     },
-    "category_music_offtopic_description": {
-        "message": "Hanya gunakan di video musik. Ini termasuk intro dan outro di video musik."
-    },
     "category_music_offtopic_short": {
         "message": "Non-Musik"
     },
