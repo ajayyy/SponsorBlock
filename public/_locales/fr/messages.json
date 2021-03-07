@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Musique : Segment non-musical"
     },
-    "category_music_offtopic_description": {
-        "message": "A utiliser uniquement dans les vidéos musicales. Cela inclut les introductions ou les fins dans les vidéos."
-    },
     "category_music_offtopic_short": {
         "message": "Hors musique"
     },
