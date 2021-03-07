@@ -507,9 +507,6 @@
     "category_music_offtopic": {
         "message": "Musica: Sezione Non-Musicale"
     },
-    "category_music_offtopic_description": {
-        "message": "Solo per utilizzo su video musicali. Ciò include introduzioni o conclusioni in video musicali."
-    },
     "category_music_offtopic_short": {
         "message": "Non-Musicale"
     },
