@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Hudba: nehudební sekce"
     },
-    "category_music_offtopic_description": {
-        "message": "Pouze pro použití v hudebních videích. Zahrnuje intro nebo outro v hudebních videích."
-    },
     "category_music_offtopic_short": {
         "message": "Jiné než hudba"
     },
