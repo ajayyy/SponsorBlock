@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Hudba: časť bez hudby"
     },
-    "category_music_offtopic_description": {
-        "message": "Iba pre hudobné videá. Patria sem úvody alebo závery v hudobných videách."
-    },
     "category_music_offtopic_short": {
         "message": "Bez hudby"
     },
