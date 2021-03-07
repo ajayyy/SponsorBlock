@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "音乐：非音乐部分"
     },
-    "category_music_offtopic_description": {
-        "message": "仅用于音乐视频。包括音乐视频中的开头或结尾。"
-    },
     "category_music_offtopic_short": {
         "message": "无音乐"
     },
