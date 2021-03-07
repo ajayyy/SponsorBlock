@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "இசை: இசை அல்லாத பிரிவு"
     },
-    "category_music_offtopic_description": {
-        "message": "இசை வீடியோக்களில் பயன்படுத்த மட்டுமே. இசை வீடியோக்களில் அறிமுகங்கள் அல்லது அவுட்ரோக்கள் இதில் அடங்கும்."
-    },
     "category_music_offtopic_short": {
         "message": "இசை அல்லாதது"
     },
