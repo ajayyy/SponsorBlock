@@ -513,9 +513,6 @@
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
     },
-    "category_music_offtopic_description": {
-        "message": "Chỉ sử dụng trong video âm nhạc. Điều này bao gồm phần giới thiệu và phần kết thúc trong video âm nhạc."
-    },
     "category_music_offtopic_short": {
         "message": "Không có nhạc"
     },
