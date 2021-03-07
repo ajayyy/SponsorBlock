@@ -116,9 +116,6 @@
     "category_music_offtopic": {
         "message": "Музика: Част без музика"
     },
-    "category_music_offtopic_description": {
-        "message": "Само да се използва в музикални клипове. Това включва интрота и outro-та в музикални клипове."
-    },
     "category_livestream_messages": {
         "message": "Поточно предаване: Четене на съобщения/дарения"
     },
