@@ -467,9 +467,6 @@
     "category_music_offtopic": {
         "message": "Zene: nem-zene szegmens"
     },
-    "category_music_offtopic_description": {
-        "message": "Csak zenei videókon. Beletartoznak a zenei videók intro és outro részei is."
-    },
     "category_music_offtopic_short": {
         "message": "Nem-Zene"
     },
