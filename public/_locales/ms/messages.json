@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Muzik: Bahagian Bukan Muzik"
     },
-    "category_music_offtopic_description": {
-        "message": "Hanya untuk digunakan dalam video muzik. Ini termasuk perkenalan atau outro dalam video muzik."
-    },
     "category_music_offtopic_short": {
         "message": "Bukan Muzik"
     },
