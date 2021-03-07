@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
     },
-    "category_music_offtopic_description": {
-        "message": "Somente para uso em vídeos de música. Isso inclui introduções ou outros em vídeos de música."
-    },
     "category_music_offtopic_short": {
         "message": "Sem-Música"
     },
