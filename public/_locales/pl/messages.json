@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
     },
-    "category_music_offtopic_description": {
-        "message": "Do użytku tylko w filmach muzycznych. Wliczają się w to wprowadzenia i outro w teledyskach."
-    },
     "category_music_offtopic_short": {
         "message": "Bez muzyki"
     },
