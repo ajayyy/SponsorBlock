@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "സംഗീതം: സംഗീതേതര വിഭാഗം"
     },
-    "category_music_offtopic_description": {
-        "message": "സംഗീത വീഡിയോകളിൽ ഉപയോഗിക്കാൻ മാത്രം. സംഗീത വീഡിയോകളിലെ ആമുഖങ്ങളോ ro ട്ട്‌റോകളോ ഇതിൽ ഉൾപ്പെടുന്നു."
-    },
     "category_music_offtopic_short": {
         "message": "നോൺ-മ്യൂസിക്"
     },
