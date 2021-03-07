@@ -418,9 +418,6 @@
     "category_music_offtopic": {
         "message": "Musiikki: muussa kuin Musiikki-osiossa"
     },
-    "category_music_offtopic_description": {
-        "message": "Tarkoitettu vain musiikkivideoihin. Tämä sisältää musiikkivideoiden introt ja outrot."
-    },
     "category_music_offtopic_short": {
         "message": "Ei-Musiikki"
     },
