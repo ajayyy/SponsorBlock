@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "음악이 아닌 구간"
     },
-    "category_music_offtopic_description": {
-        "message": "뮤직 비디오에서만 해당됩니다. 여기에는 시작 부분 (인트로) 영상이나 끝 부분 (아웃트로) 영상이 포함됩니다."
-    },
     "category_music_offtopic_short": {
         "message": "음악이 아닌 구간"
     },
