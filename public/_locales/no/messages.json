@@ -516,6 +516,9 @@
     "category_music_offtopic": {
         "message": "Musikk: Seksjon uten musikk"
     },
+    "category_music_offtopic_description": {
+        "message": "Kun for bruk i musikkvideoer. Dette burde kun brukes for seksjoner i musikkvideoer som ikke allerede dekkes av en annen kategori."
+    },
     "category_music_offtopic_short": {
         "message": "Ikke-musikk"
     },
