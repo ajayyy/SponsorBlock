@@ -516,6 +516,9 @@
     "category_music_offtopic": {
         "message": "Musik: Bagian Non-Musik"
     },
+    "category_music_offtopic_description": {
+        "message": "Hanya digunakan untuk video musik. Ini seharusnya hanya digunakan untuk bagian dari video musik yang tidak tercakup kategori lain."
+    },
     "category_music_offtopic_short": {
         "message": "Non-Musik"
     },
