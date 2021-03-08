@@ -516,6 +516,9 @@
     "category_music_offtopic": {
         "message": "Música: Sección sin musica"
     },
+    "category_music_offtopic_description": {
+        "message": "Sólo para el uso en vídeos musicales. Esto sólo debe utilizarse para secciones de vídeos musicales que no están ya cubiertos por otra categoría."
+    },
     "category_music_offtopic_short": {
         "message": "No musical"
     },
