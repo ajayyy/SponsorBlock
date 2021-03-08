@@ -516,6 +516,9 @@
     "category_music_offtopic": {
         "message": "Musikvideoteile ohne Musik"
     },
+    "category_music_offtopic_description": {
+        "message": "Nur für die Verwendung in Musikvideos. Dies sollte nur für Abschnitte von Musikvideos verwendet werden, die noch nicht von einer anderen Kategorie abgedeckt sind."
+    },
     "category_music_offtopic_short": {
         "message": "Musikvideoteile ohne Musik"
     },
