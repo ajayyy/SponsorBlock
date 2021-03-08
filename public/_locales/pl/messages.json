@@ -516,6 +516,9 @@
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
     },
+    "category_music_offtopic_description": {
+        "message": "Tylko do użytku w teledyskach, używane tylko w sekcjach muzyki, które nie są uwzględnione w innej kategorii."
+    },
     "category_music_offtopic_short": {
         "message": "Bez muzyki"
     },
