@@ -80,7 +80,7 @@
         "message": "Segment nyní končí"
     },
     "noVideoID": {
-        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to nesprávně, obnovte záložku."
+        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte záložku."
     },
     "success": {
         "message": "Úspěch!"
@@ -515,6 +515,9 @@
     },
     "category_music_offtopic": {
         "message": "Hudba: nehudební sekce"
+    },
+    "category_music_offtopic_description": {
+        "message": "Použijte pouze u hudebních videí. Mělo by to být použito pouze pro části hudebních videí, které nepokrývá jiná kategorie."
     },
     "category_music_offtopic_short": {
         "message": "Jiné než hudba"
