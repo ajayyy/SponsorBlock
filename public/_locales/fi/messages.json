@@ -116,7 +116,7 @@
         "message": "Laita kanava valkolistalle"
     },
     "removeFromWhitelist": {
-        "message": "Poista kanava sallittujen listalta"
+        "message": "Poista kanava valkolistalta"
     },
     "voteOnTime": {
         "message": "Äänestä Segmenttiä"
