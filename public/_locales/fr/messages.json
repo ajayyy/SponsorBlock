@@ -487,7 +487,7 @@
         "message": "Entracte/Animation d'intro"
     },
     "category_intro_description": {
-        "message": "Intervalle sans contenu telle une pause, une image statique ou une animation répétitive. Ne dois pas être utilisé pour une transition contenant des informations."
+        "message": "Un intervalle sans réel contenu, comme une pause, une image statique ou une animation répétitive. Ne doit pas être utilisé pour les transitions avec des informations."
     },
     "category_intro_short": {
         "message": "Entracte"
