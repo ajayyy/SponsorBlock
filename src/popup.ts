@@ -425,9 +425,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 downvoteButton.src = chrome.extension.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
-                //add thumbs up and down buttons to the container
+                //uuid button
+
+                const uuidButton = document.createElement("img");
+                uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
+                uuidButton.className = "uuidButton";
+                uuidButton.src = chrome.extension.getURL("icons/clipboard.svg");
+                uuidButton.addEventListener("click", () => navigator.clipboard.writeText(UUID));
+
+                //add thumbs up, thumbs down and uuid copy buttons to the container
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
+                voteButtonsContainer.appendChild(uuidButton);
 
                 //add click listener to open up vote panel
                 sponsorTimeButton.addEventListener("click", function() {
@@ -576,13 +585,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function vote(type, UUID) {
         //add loading info
         addVoteMessage(chrome.i18n.getMessage("Loading"), UUID);
-  
+
         //send the vote message to the tab
         chrome.runtime.sendMessage({
             message: "submitVote",
             type: type,
             UUID: UUID
-        }, function(response) {
+        }, function (response) {
             if (response != undefined) {
                 //see if it was a success or failure
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
