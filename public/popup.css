@@ -63,13 +63,6 @@
   cursor: pointer;
 }
 
-.uuidButton {
-  height: 20px;
-  padding: 0 5px;
-
-  cursor: pointer;
-}
-
 #videoInfo>p, #videoInfo>div>p {
   margin: 0;
 }

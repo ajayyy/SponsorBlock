@@ -429,7 +429,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 const uuidButton = document.createElement("img");
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
-                uuidButton.className = "uuidButton";
+                uuidButton.className = "voteButton";
                 uuidButton.src = chrome.extension.getURL("icons/clipboard.svg");
                 uuidButton.addEventListener("click", () => navigator.clipboard.writeText(UUID));
 
