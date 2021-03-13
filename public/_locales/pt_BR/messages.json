@@ -95,7 +95,7 @@
         "message": "Ocorreu um erro de conexão. Código de erro: "
     },
     "wantToSubmit": {
-        "message": "Você deseja enviar para vídeo com id"
+        "message": "Deseja enviar para o vídeo com id"
     },
     "clearTimes": {
         "message": "Limpar Segmentos"
@@ -113,7 +113,7 @@
         "message": "Você tem certeza que deseja enviar isto?"
     },
     "whitelistChannel": {
-        "message": "Canal na lista branca"
+        "message": "Adicionar canal à lista branca"
     },
     "removeFromWhitelist": {
         "message": "Remover canal da lista branca"
@@ -128,7 +128,7 @@
         "message": "Você salvou pessoas de "
     },
     "viewLeaderboard": {
-        "message": "Classificação"
+        "message": "Placar de classificação"
     },
     "recordTimesDescription": {
         "message": "Enviar"
@@ -150,7 +150,7 @@
         "message": "Isso é usado na página pública de estatísticas que mostra o quanto você já contríbuíu. Veja-a"
     },
     "Username": {
-        "message": "Usuário"
+        "message": "Nome de usuário"
     },
     "setUsername": {
         "message": "Definir nome de usuário"
@@ -192,13 +192,13 @@
         "message": "Este é o botão que lhe permite saltar todos os patrocínios do player do Youtube."
     },
     "enableViewTracking": {
-        "message": "Ativar Registo De Visualização De Patrocínios"
+        "message": "Ativar contador de segmentos pulados"
     },
     "whatViewTracking": {
-        "message": "Este recurso controla quais segmentos você pulou para permitir que os usuários saibam quanto a submissão deles ajudou outros e usou como métrica, juntamente com votos positivos para garantir que o spam não entre no banco de dados. A extensão envia uma mensagem ao servidor cada vez que você pular um segmento. Espero que a maioria das pessoas não mude essa configuração para que os números de exibição estejam corretos. :)"
+        "message": "Este recurso controla quais segmentos você pulou para permitir que os usuários saibam o quanto a submissão deles ajudou outros e é usado como métrica, juntamente com votos positivos para garantir que spam não entre no banco de dados. A extensão envia uma mensagem ao servidor cada vez que você pular um segmento. Espera-se que a maioria das pessoas não mude essa configuração, para que os números de exibição estejam corretos. :)"
     },
     "enableQueryByHashPrefix": {
-        "message": "Consulta Por Hash Prefix"
+        "message": "Consulta Por Prefixo Hash"
     },
     "whatQueryByHashPrefix": {
         "message": "Em vez de solicitar segmentos do servidor usando o videoID, os 4 primeiros caracteres do hash do videoID foram enviados. Este servidor irá enviar dados de volta para todos os vídeos com hashes similares."
@@ -207,7 +207,7 @@
         "message": "Recuperar Segmentos Em Novos Vídeos"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Se o vídeo for novo e não houver segmentos encontrados, ele continuará fazendo a cada poucos minutos enquanto você assiste."
+        "message": "Se o vídeo for novo e não houver segmentos encontrados, continuaremos buscando enquanto você assiste."
     },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
@@ -515,6 +515,9 @@
     },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
+    },
+    "category_music_offtopic_description": {
+        "message": "Para uso em vídeos musicais somente. Deve ser usado exclusivamente para seções de vídeos musicais que já não pertençam à outra categoria."
     },
     "category_music_offtopic_short": {
         "message": "Sem-Música"
