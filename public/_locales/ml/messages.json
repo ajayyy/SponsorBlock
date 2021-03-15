@@ -516,6 +516,9 @@
     "category_music_offtopic": {
         "message": "സംഗീതം: സംഗീതേതര വിഭാഗം"
     },
+    "category_music_offtopic_description": {
+        "message": "സംഗീത വീഡിയോകളിൽ മാത്രം ഉപയോഗിക്കുന്നതിന് മാത്രം. ഇതിനകം മറ്റൊരു വിഭാഗത്തിൽ ഉൾപ്പെടാത്ത സംഗീത വീഡിയോകളുടെ വിഭാഗങ്ങൾക്കായി മാത്രമേ ഉപയോഗിക്കാവൂ."
+    },
     "category_music_offtopic_short": {
         "message": "നോൺ-മ്യൂസിക്"
     },
