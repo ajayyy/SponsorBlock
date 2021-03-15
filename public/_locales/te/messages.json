@@ -516,6 +516,9 @@
     "category_music_offtopic": {
         "message": "సంగీతం: నాన్-మ్యూజిక్ విభాగం"
     },
+    "category_music_offtopic_description": {
+        "message": "మ్యూజిక్ వీడియోలలో మాత్రమే ఉపయోగం కోసం. ఇది ఇప్పటికే మరొక వర్గం ద్వారా కవర్ చేయని సంగీతం వీడియోల విభాగాలకు మాత్రమే ఉపయోగించాలి."
+    },
     "category_music_offtopic_short": {
         "message": "నాన్-మ్యూజిక్"
     },
