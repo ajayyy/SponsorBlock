@@ -498,9 +498,6 @@
     "category_music_offtopic": {
         "message": "Musik: Icke-musikavsnitt"
     },
-    "category_music_offtopic_description": {
-        "message": "Endast för användning i musikvideor. Detta inkluderar intros och outros i musikvideor."
-    },
     "category_music_offtopic_short": {
         "message": "Icke-musik"
     },
@@ -609,6 +606,9 @@
     },
     "categoryUpdate1": {
         "message": "Kategorier finns här!"
+    },
+    "categoryUpdate2": {
+        "message": "Öppna inställningarna för att skippa intros, outros, merch, osv."
     },
     "help": {
         "message": "Hjälp"

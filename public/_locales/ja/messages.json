@@ -21,8 +21,14 @@
     "Loading": {
         "message": "読み込み中..."
     },
+    "Hide": {
+        "message": "非表示"
+    },
     "unskip": {
         "message": "スキップしない"
+    },
+    "paused": {
+        "message": "一時停止"
     },
     "success": {
         "message": "成功しました!"
@@ -30,8 +36,32 @@
     "voted": {
         "message": "投票しました!"
     },
+    "openPopup": {
+        "message": "SponsorBlock のポップアップを開く"
+    },
     "closePopup": {
         "message": "ポップアップを閉じる"
+    },
+    "whitelistChannel": {
+        "message": "ホワイトリストのチャンネル"
+    },
+    "removeFromWhitelist": {
+        "message": "ホワイトリストからチャンネルを削除"
+    },
+    "viewLeaderboard": {
+        "message": "リーダーボード"
+    },
+    "recordTimesDescription": {
+        "message": "送信"
+    },
+    "Username": {
+        "message": "ユーザー名"
+    },
+    "setUsername": {
+        "message": "ユーザー名を設定"
+    },
+    "hideThis": {
+        "message": "非表示にする"
     },
     "Options": {
         "message": "オプション"
@@ -76,6 +106,9 @@
     },
     "audioNotification": {
         "message": "オーディオ通知をスキップ"
+    },
+    "youHaveSkipped": {
+        "message": "スキップしました "
     },
     "minLower": {
         "message": "分"
@@ -166,6 +199,9 @@
     "enableTestingServer": {
         "message": "ベータテストサーバーを有効にする"
     },
+    "bracketNow": {
+        "message": "(今)"
+    },
     "chooseACategory": {
         "message": "カテゴリーを選択"
     },
@@ -184,5 +220,8 @@
     },
     "categoryUpdate1": {
         "message": "カテゴリはこちらです!"
+    },
+    "help": {
+        "message": "ヘルプ"
     }
 }

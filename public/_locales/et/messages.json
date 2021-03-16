@@ -517,7 +517,7 @@
         "message": "Muusika: mitte-muusika jaotis"
     },
     "category_music_offtopic_description": {
-        "message": "Ainult muusikavideotes kasutamiseks. Sisaldab muusikavideote sissejuhatusi ja väljajuhatusi."
+        "message": "Ainult muusikavideotes kasutamiseks. Seda peaks kasutama vaid muusikavideote jaotiste puhul, mis ei läheks mõne teise kategooria alla."
     },
     "category_music_offtopic_short": {
         "message": "Mitte-muusika"

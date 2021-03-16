@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segmentti Päättyy Nyt"
     },
+    "noVideoID": {
+        "message": "YouTube-videota ei löytynyt.\nJos tämä on väärässä, päivitä välilehti."
+    },
     "success": {
         "message": "Onnistui!"
     },
@@ -109,8 +112,33 @@
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
     },
+    "whitelistChannel": {
+        "message": "Laita kanava valkolistalle"
+    },
+    "removeFromWhitelist": {
+        "message": "Poista kanava valkolistalta"
+    },
     "voteOnTime": {
         "message": "Äänestä Segmenttiä"
+    },
+    "Submissions": {
+        "message": "Lähetykset"
+    },
+    "savedPeopleFrom": {
+        "message": "Olet säästänyt ihmisiä "
+    },
+    "viewLeaderboard": {
+        "message": "Tulostaulu"
+    },
+    "recordTimesDescription": {
+        "message": "Lähetä"
+    },
+    "submissionEditHint": {
+        "message": "Osien muokkaus ilmestyy kun klikkaat lähetä",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Vihje: Voit asettaa pikanäppäimet lähettämistä varten asetuksissa"
     },
     "clearTimesButton": {
         "message": "Tyhjennä ajat"
@@ -120,6 +148,9 @@
     },
     "publicStats": {
         "message": "Tätä käytetään julkisella tilastosivulla näyttääksesi kuinka paljon olet osallistunut. Näytä"
+    },
+    "Username": {
+        "message": "Käyttäjänimi"
     },
     "setUsername": {
         "message": "Aseta käyttäjänimi"
@@ -163,8 +194,27 @@
     "enableViewTracking": {
         "message": "Ota Ohitusten Lukumäärän Seuranta Käyttöön"
     },
+    "whatViewTracking": {
+        "message": "Tämä toiminto seuraa, mitkä segmentit olet ohittanut, jonka avulla käyttäjät saavat tietää kuinka paljon heidän lähetyksensä ovat auttaneet muita ja sitä myös käytetään mittarina äänestysten kanssa sen varmistamiseksi, että spämmi ei pääse tietokantaan. Laajennus lähettää viestin palvelimelle aina, kun ohitat segmentin. Toivottavasti useimmat ihmiset eivät muuta tätä asetusta, jotta katselunumerot pysyisivät tarkkoina. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Kysely Tiiviste-etuliittellä"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Sen sijaan, että videoID:tä käyttäen pyydettäisiin segmenttejä palvelimelta, videoID:n tiivisteen 4 ensimmäistä merkkiä lähetetään. Tämä palvelin lähettää takaisin dataa kaikista videoista, joilla on samankaltaiset tiivisteet."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Hae Segmentit Uudelleen Uusissa Videoissa"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Jos video on uusi, eikä segmenttejä löydy, niitä haetaan uudelleen muutaman minuutin välein katsoessasi."
+    },
     "showNotice": {
         "message": "Näytä Huomautus Uudelleen"
+    },
+    "longDescription": {
+        "message": "SponsorBlockin avulla voit ohittaa sponsorit, introt, outrot, tilausmuistutukset ja muut ärsyttävät osat YouTube-videoissa. SponsorBlock on joukkoistettu selainlaajennus, jonka avulla kuka tahansa voi lähettää sponsoroitujen ja muiden Youtube-videoiden segmenttien aloitus- ja päättymisajat. Kun yksi henkilö on lähettänyt tämän tiedon, kaikki muut, joilla on tämä laajennus, ohittavat sponsoroidun segmentin. Voit myös ohittaa musiikkivideoiden musiikittomat osat.",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "Sivusto",
@@ -182,6 +232,9 @@
         "message": "Jos et vieläkään pidä siitä, paina \"älä koskaan näytä\" -painiketta.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Aseta näppäin segmentin ohittamista varten"
+    },
     "setStartSponsorShortcut": {
         "message": "Aseta näppäin segmentin aloittamiseen näppäimistössä"
     },
@@ -197,6 +250,12 @@
     "0": {
         "message": "Yhteyden aikakatkaisu. Tarkista internet-yhteytesi. Jos internetyhteytesi toimii, palvelin on todennäköisesti ylikuormittunut tai alhaalla."
     },
+    "disableSkipping": {
+        "message": "Ohitus on käytössä"
+    },
+    "enableSkipping": {
+        "message": "Ohitus on poistettu käytöstä"
+    },
     "yourWork": {
         "message": "Sinun työsi",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -209,6 +268,9 @@
     },
     "skip": {
         "message": "Ohita"
+    },
+    "skip_category": {
+        "message": "Ohita {0}?"
     },
     "skipped": {
         "message": "Ohitettu"
@@ -225,6 +287,15 @@
     "audioNotificationDescription": {
         "message": "Ääni-ilmoitus ohittaessa toistaa äänen kun segmentti ohitetaan. Jos asetus on pois päältä (tai automaattinen ohitus on pois käytöstä), ääntä ei soiteta."
     },
+    "showTimeWithSkips": {
+        "message": "Näytä Aika Ohitetut Osiot Poistettuna"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Tämä aika näkyy sulkeissa nykyisen ajan vieressä liukusäätimen alapuolella. Tämä näyttää videon koko pituuden miinus segmentit. Tämä sisältää segmentit, jotka on merkitty vain \"Näytä Liukusäätimessä\"."
+    },
+    "youHaveSkipped": {
+        "message": "Olet ohittanut "
+    },
     "youHaveSaved": {
         "message": "Olet säästänyt itseltäsi "
     },
@@ -240,6 +311,12 @@
     "hoursLower": {
         "message": "tuntia"
     },
+    "youHaveSavedTime": {
+        "message": "Olet säästänyt ihmisiä"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " heidän elämistään"
+    },
     "statusReminder": {
         "message": "Tarkista palvelimen tila osoitteessa status.sponsor.ajay.app."
     },
@@ -252,6 +329,9 @@
     "setUserID": {
         "message": "Aseta UserID"
     },
+    "userIDChangeWarning": {
+        "message": "Varoitus: UserID:n vaihtaminen on pysyvää. Oletko varma, että haluat tehdä tämän? Varmuuskopioi vanha UserID:si varmuuden vuoksi."
+    },
     "createdBy": {
         "message": "Luonut"
     },
@@ -259,7 +339,7 @@
         "message": "Ohita Automaattisesti"
     },
     "showSkipNotice": {
-        "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
+        "message": "Näytä Ilmoitus Ohitetun Segmentin Jälkeen"
     },
     "keybindCurrentlySet": {
         "message": ". Tällä hetkellä se on asetettu:"
@@ -276,8 +356,14 @@
     "addInvidiousInstance": {
         "message": "Lisää Invidious-instanssi"
     },
+    "addInvidiousInstanceDescription": {
+        "message": "Lisää mukautettu Invidious-instanssi. Tämä on muotoiltava VAIN verkkotunnuksella. Esimerkiksi: invidious.ajay.app"
+    },
     "add": {
         "message": "Lisää"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Tämä on virheellinen verkkotunnus. Tämän pitäisi sisältää VAIN verkkotunnus. Esimerkiksi: invidious.ajay.app"
     },
     "resetInvidiousInstance": {
         "message": "Nollaa Invidious-instanssien lista"
@@ -293,6 +379,9 @@
     },
     "minDurationDescription": {
         "message": "Segmenttejä jotka ovat asetettua arvoa lyhyempiä ei ohiteta tai näytetä soittimessa."
+    },
+    "shortCheck": {
+        "message": "Seuraava lähetys on lyhyempi kuin vähimmäiskeston asetuksesi. Tämä voi tarkoittaa sitä, että tämä on jo lähetetty ja sitä ei vain oteta huomioon tämän asetuksen vuoksi. Oletko varma, että haluat lähettää?"
     },
     "showUploadButton": {
         "message": "Näytä lähetä-painike"
@@ -318,8 +407,14 @@
     "areYouSureReset": {
         "message": "Oletko varma, että haluat nollata tämän?"
     },
+    "confirmPrivacy": {
+        "message": "Video on havaittu piilotetuksi. Paina peruuta jos et halua tarkistaa ohitettavia segmenttejä."
+    },
     "unlistedCheck": {
-        "message": "Ohita listaamattomat/yksityiset videot"
+        "message": "Ohita Piilotetut/Yksityiset Videot"
+    },
+    "whatUnlistedCheck": {
+        "message": "Tämä asetus hidastaa SponsorBlockia hieman. Ohitus-segmenttien haku edellyttää video ID:n lähettämistä palvelimelle. Jos olet huolissasi, että piilotettujen videoiden ID:itä lähetetään internetin kautta, ota tämä asetus käyttöön."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com-osoitetta tuetaan nyt"
@@ -327,8 +422,14 @@
     "exportOptions": {
         "message": "Vie/tuo kaikki asetukset"
     },
+    "whatExportOptions": {
+        "message": "Tämä on koko konfiguraatiosi JSON:ina. Tämä sisältää userID:si, joten jaa tämä viisaasti."
+    },
     "setOptions": {
         "message": "Käytä asetuksia"
+    },
+    "exportOptionsWarning": {
+        "message": "Varoitus: Asetusten vaihtaminen on pysyvää ja voi rikkoa asennuksesi. Oletko varma, että haluat tehdä tämän? Varmuuskopioi vanha varmuuden vuoksi."
     },
     "incorrectlyFormattedOptions": {
         "message": "Tämä JSON ei ole muotoiltu oikein. Asetuksiasi ei ole muutettu."
@@ -348,6 +449,9 @@
     "preview": {
         "message": "Esikatsele"
     },
+    "inspect": {
+        "message": "Tarkista"
+    },
     "edit": {
         "message": "Muokkaa"
     },
@@ -358,7 +462,10 @@
         "message": "Kirjoittaminen leikepöydälle epäonnistui"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopioi tiedot leikepöydälle, joka annetaan kehittäjälle kun ilmoitetaan viasta / kun kehittäjä pyytää sitä. Arkaluonteiset tiedot, kuten käyttäjätunnus, sallitut kanavat ja mukautettu palvelimen osoite on poistettu. Se sisältää kuitenkin tietoja, kuten käyttäjän, selaimen, käyttöjärjestelmän ja laajennuksen versionumeron. "
+        "message": "Kopioi tiedot leikepöydälle, joka annetaan kehittäjälle kun ilmoitetaan viasta / kun kehittäjä pyytää sitä. Arkaluonteiset tiedot, kuten käyttäjätunnus, sallitut kanavat ja mukautettu palvelimen osoite on poistettu. Se sisältää kuitenkin tietoja, kuten käyttäjäagentin, selaimen, käyttöjärjestelmän ja laajennuksen versionumeron. "
+    },
+    "copyDebugInformationComplete": {
+        "message": "Virheenkorjaustiedot on kopioitu leikepöydälle. Voit poistaa mitä tahansa tietoa mitä et mielummin jakaisi. Tallenna tämä tekstitiedostoon tai liitä se virheraporttiin."
     },
     "theKey": {
         "message": "Näppäin"
@@ -373,14 +480,23 @@
     "category_sponsor": {
         "message": "Sponsori"
     },
+    "category_sponsor_description": {
+        "message": "Maksettu mainostus, maksetut viittaukset ja suorat mainokset. Ei itsensä mainostukselle tai huikkauksille kampanjoista/luojista/nettisivuista/tuotteista, joista he pitävät."
+    },
     "category_intro": {
-        "message": "Väli- tai introanimaatio"
+        "message": "Tauko/Introanimaatio"
     },
     "category_intro_description": {
         "message": "Aikaväli ilman varsinaista sisältöä. Voi olla tauko, staattinen kehys, toistuva animaatio. Tätä ei pitäisi käyttää siirtymisiin, jotka sisältävät tietoa."
     },
+    "category_intro_short": {
+        "message": "Tauko"
+    },
     "category_outro": {
         "message": "Loppukortit/-tekstit"
+    },
+    "category_outro_description": {
+        "message": "Lopputekstit tai kun YouTuben loppukortit tulevat näkyviin. Ei lopetuksille joissa on tietoa."
     },
     "category_interaction": {
         "message": "Vuorovaikutusmuistutus (tilaaminen)"
@@ -388,17 +504,20 @@
     "category_interaction_description": {
         "message": "Kun sisällön keskellä on lyhyt muistutus tykätä, tilata tai seurata. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi."
     },
+    "category_interaction_short": {
+        "message": "Vuorovaikutus Muistutus"
+    },
     "category_selfpromo": {
         "message": "Maksamaton/Itsensä Mainostus"
     },
     "category_selfpromo_description": {
-        "message": "Samankaltainen \"sponsorin\" kanssa paitsi maksamaton tai itsensän mainostus. Tämä sisältää osioita joissa kauppatavaraa, lahjoituksia tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
+        "message": "Samankaltainen \"sponsorin\" kanssa paitsi maksamaton tai itsensä mainostus. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
     },
     "category_music_offtopic": {
         "message": "Musiikki: muussa kuin Musiikki-osiossa"
     },
     "category_music_offtopic_description": {
-        "message": "Tarkoitettu vain musiikkivideoihin. Tämä sisältää musiikkivideoiden introt ja outrot."
+        "message": "Vain käytettävissä musiikkivideoissa. Tätä tulee käyttää vain musiikkivideoiden osissa, jotka eivät jo kuulu toiseen kategoriaan."
     },
     "category_music_offtopic_short": {
         "message": "Ei-Musiikki"
@@ -441,6 +560,9 @@
     "whatEnableTestingServer": {
         "message": "Lähetyksiäsi ja ääniäsi EI LASKETA pääpalvelimella. Käytä tätä vain testaamiseen."
     },
+    "testingServerWarning": {
+        "message": "Kaikki lähetykset ja äänet EIVÄT LASKE pääpalvelinta kohti, kun muodostat yhteyden testipalvelimeen. Varmista, että poistat tämän käytöstä, kun haluat tehdä oikeita lähetyksiä."
+    },
     "bracketNow": {
         "message": "(Nyt)"
     },
@@ -449,6 +571,10 @@
     },
     "chooseACategory": {
         "message": "Valitse kategoria"
+    },
+    "enableThisCategoryFirst": {
+        "message": "Lähettääksesi segmenttejä \"{0}\" kategorialla, sinun täytyy aktivoida se asetuksista. Sinut uudelleenohjataan asetuksiin nyt.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "Sinun täytyy valita kategoria kaikille segmenteille, jota olet lähettämässä!"
@@ -467,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Näyttää siltä, että jokin estää SponsorBlockin kykyä saada videotietoja. Tämä on luultavasti mainosten esto-ohjelmasi. Tarkista https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Jos et pysty ratkaisemaan tätä, poista käytöstä asetus 'Ohita piilotetut/yksityiset videot', koska SponsorBlock ei pysty noutamaan tämän videon näkyvyystietoja"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Jos tämä toistuu, mainosten esto-ohjelmasi voi olla syynä. Katso https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
@@ -504,5 +633,8 @@
     },
     "categoryUpdate2": {
         "message": "Avaa asetukset ohittaaksesi introt, outrot, kauppatavarat, jne."
+    },
+    "help": {
+        "message": "Ohje"
     }
 }

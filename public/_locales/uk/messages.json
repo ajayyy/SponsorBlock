@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Музика: Сегмент без музики"
     },
-    "category_music_offtopic_description": {
-        "message": "Тільки для використання в музичних кліпах. Включає в себе початкові і кінцеві заставки кліпів."
-    },
     "category_music_offtopic_short": {
         "message": "Без музики"
     },

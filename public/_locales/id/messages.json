@@ -80,7 +80,7 @@
         "message": "Segmen Berakhir Sekarang"
     },
     "noVideoID": {
-        "message": "Video YouTube tidak ditemukan.\nJika ini salah, segarkan tab."
+        "message": "Video YouTube tidak ditemukan.\nJika hal ini salah, refresh tab."
     },
     "success": {
         "message": "Sukses!"
@@ -113,16 +113,16 @@
         "message": "Apakah anda yakin ingin mengirim ini?"
     },
     "whitelistChannel": {
-        "message": "Saluran daftar putih"
+        "message": "Daftar putih channel"
     },
     "removeFromWhitelist": {
-        "message": "Hapus saluran dari daftar putih"
+        "message": "Hapus channel dari daftar putih"
     },
     "voteOnTime": {
         "message": "Beri Segmen Vote"
     },
     "Submissions": {
-        "message": "Kiriman"
+        "message": "Submisi"
     },
     "savedPeopleFrom": {
         "message": "Anda telah menyelamatkan orang dari "
@@ -138,7 +138,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Petunjuk: Anda dapat mengatur keybinds untuk dikirim dalam opsi"
+        "message": "Petunjuk: Anda dapat mengatur keybinds untuk pengiriman dalam opsi"
     },
     "clearTimesButton": {
         "message": "Hapus Waktu"
@@ -517,7 +517,7 @@
         "message": "Musik: Bagian Non-Musik"
     },
     "category_music_offtopic_description": {
-        "message": "Hanya gunakan di video musik. Ini termasuk intro dan outro di video musik."
+        "message": "Hanya digunakan untuk video musik. Ini seharusnya hanya digunakan untuk bagian dari video musik yang tidak tercakup kategori lain."
     },
     "category_music_offtopic_short": {
         "message": "Non-Musik"

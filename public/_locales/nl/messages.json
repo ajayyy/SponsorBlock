@@ -517,7 +517,7 @@
         "message": "Muziek: sectie niet-muziek"
     },
     "category_music_offtopic_description": {
-        "message": "Alleen voor gebruik in muziekvideo's. Dit is inclusief introducties of outro's in muziekvideo's."
+        "message": "Alleen voor gebruik in muziekvideo's. Dit mag alleen worden gebruikt voor secties van muziekvideo's die nog niet door een andere categorie worden bedekt."
     },
     "category_music_offtopic_short": {
         "message": "Niet-muziek"

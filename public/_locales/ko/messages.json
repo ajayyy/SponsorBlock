@@ -80,7 +80,7 @@
         "message": "광고 구간 끝"
     },
     "noVideoID": {
-        "message": "찾은 유튜브 비디오가 없습니다.\n이 것이 틀리다면, 텝을 새로고침 하세요."
+        "message": "유튜브 동영상을 찾을 수 없습니다.\n오류라면, 탭을 새로고침해보세요."
     },
     "success": {
         "message": "성공!"
@@ -232,6 +232,9 @@
         "message": "계속 이것이 싫다면, 보지 않기 버튼을 누르세요.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "구간 건너뛰기 키 설정"
+    },
     "setStartSponsorShortcut": {
         "message": "시작 부분 키 할당 설정"
     },
@@ -248,10 +251,10 @@
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
     },
     "disableSkipping": {
-        "message": "건너뛰기 활성화됨"
+        "message": "건너뛰기 켜짐"
     },
     "enableSkipping": {
-        "message": "건너뛰기 비활성화됨"
+        "message": "건너뛰기 꺼짐"
     },
     "yourWork": {
         "message": "지금까지 한 일",
@@ -291,7 +294,7 @@
         "message": "이 시간은 탐색 막대 아래의 현재 시간 옆에 있는 괄호 안에 표시되며 부분을 제외한 총 동영상 길이를 보여줍니다. 여기에는 \"슬라이드바에 표시\"로만 표시된 부분도 포함됩니다."
     },
     "youHaveSkipped": {
-        "message": "건너뜀 "
+        "message": "건너뛴 구간: "
     },
     "youHaveSaved": {
         "message": "지금까지 절약한 시간: "
@@ -514,7 +517,7 @@
         "message": "음악이 아닌 구간"
     },
     "category_music_offtopic_description": {
-        "message": "뮤직 비디오에서만 해당됩니다. 여기에는 시작 부분 (인트로) 영상이나 끝 부분 (아웃트로) 영상이 포함됩니다."
+        "message": "뮤직 비디오에서만 해당됩니다. 다른 유형에 속하지 않는 뮤직 비디오에서만 이 항목을 사용하십시오."
     },
     "category_music_offtopic_short": {
         "message": "음악이 아닌 구간"
@@ -590,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "무언가가 SponsorBlock의 영상 데이터 수집을 막고 있는 것으로 보입니다. 이것은 광고 차단기로 인해 그럴 가능성이 있습니다. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests 사이트를 참조하세요"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "이 문제를 해결할 수 없는 경우, SponsorBlock이 이 동영상에 대한 보이는 정보를 찾을 수 없으므로 '일부 공개/비공개 동영상 무시' 설정을 꺼주십시오."
     },
     "itCouldBeAdblockerIssue": {
         "message": "오류가 지속된다면, 광고 차단기로 인해 발생할 수 있습니다. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests 사이트를 참조하세요"

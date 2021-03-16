@@ -14,7 +14,7 @@
         "message": "Zgłosiłeś za dużo segmentów sponsora dla tego jednego filmu. Jesteś pewien, że jest ich tak dużo?"
     },
     "409": {
-        "message": "To już zostało wcześniej zgłoszone"
+        "message": "To już zostało wysłane wcześniej"
     },
     "channelWhitelisted": {
         "message": "Kanał dodany do wyjątków!"
@@ -23,10 +23,10 @@
         "message": "segment"
     },
     "Segments": {
-        "message": "segmenty"
+        "message": "segmentów"
     },
     "upvoteButtonInfo": {
-        "message": "Oceń pozytywnie ten segment"
+        "message": "Zagłosuj na ten segment"
     },
     "reportButtonTitle": {
         "message": "Zgłoś"
@@ -59,7 +59,7 @@
         "message": "Timer zatrzymany"
     },
     "confirmMSG": {
-        "message": "Aby edytować lub usuwać poszczególne wartości, kliknij na przycisk informacyjny lub otwórz okienko rozszerzenia, klikając na ikonę rozszerzenia w prawym górnym rogu."
+        "message": "Aby edytować lub usuwać poszczególne wartości, kliknij na przycisk info lub otwórz okno rozszerzenia, klikając na ikonę rozszerzenia w prawym górnym rogu."
     },
     "clearThis": {
         "message": "Czy na pewno chcesz to usunąć?\n\n"
@@ -92,16 +92,16 @@
         "message": "Wygląda na to, że serwer nie działa. Skontaktuj się niezwłocznie z deweloperem."
     },
     "connectionError": {
-        "message": "Błąd z połączeniem. Kod błędu: "
+        "message": "Wystąpił błąd połączenia. Kod błędu: "
     },
     "wantToSubmit": {
-        "message": "Czy chcesz coś zamieścić dla filmu o ID"
+        "message": "Czy chcesz wysłać dla video o id"
     },
     "clearTimes": {
         "message": "Wyczyść segmenty"
     },
     "openPopup": {
-        "message": "Otwórz okienko SponsorBlock"
+        "message": "Otwórz okno SponsorBlock"
     },
     "closePopup": {
         "message": "Zamknij okno"
@@ -134,7 +134,7 @@
         "message": "Prześlij"
     },
     "submissionEditHint": {
-        "message": "Edycja sekcji pojawi się po kliknięciu przycisku „Wyślij”",
+        "message": "Edycja sekcji pojawi się po kliknięciu „Wyślij”",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -198,10 +198,10 @@
         "message": "Ta opcja monitoruje pomijane przez Ciebie segmenty, by dać znać użytkownikom, jak bardzo ich wkład pomógł innym, oraz w połączeniu z systemem głosowania zapobiegać dostawaniu się spamu do bazy danych. Rozszerzenie wysyła wiadomość do serwera za każdym razem, kiedy pomijasz segment. Miejmy nadzieję, że większość ludzi tego nie wyłączy i liczniki wyświetleń będą wiarygodne. :)"
     },
     "enableQueryByHashPrefix": {
-        "message": "Zapytanie z użyciem funkcji skrótu"
+        "message": "Zapytanie według prefiksu Hash"
     },
     "whatQueryByHashPrefix": {
-        "message": "Zamiast wysyłać do serwera zapytanie o segmenty zawierające ID filmu, wysyłane są 4 pierwsze znaki hashu tego ID. Serwer zwróci dane dla wszystkich filmów z podobnymi hashami."
+        "message": "Zamiast wysyłać do serwera zapytanie o segmenty używając ID filmu, wysyłane są 4 pierwsze znaki hashu tego ID. Serwer zwróci dane dla wszystkich filmów z podobnymi hashami."
     },
     "enableRefetchWhenNotFound": {
         "message": "Ponawiaj pobieranie segmentów na nowych filmach"
@@ -285,7 +285,7 @@
         "message": "Powiadomienie dźwiękowe przy pominięciu"
     },
     "audioNotificationDescription": {
-        "message": "Powiadomienie dźwiękowe przy pominięciu będzie odtwarzane za każdym razem, gdy pomijany jest segment. Jeśli wyłączone (lub automatyczne pomijanie jest wyłączone), dźwięk nie zostanie odtworzony."
+        "message": "Powiadomienie dźwiękowe będzie odtwarzane za każdym razem, gdy pomijany jest segment. Jeśli jest wyłączone (lub automatyczne pomijanie jest wyłączone), nie będzie żadnego dźwięku."
     },
     "showTimeWithSkips": {
         "message": "Pokaż czas po usunięciu segmentów"
@@ -315,7 +315,7 @@
         "message": "Oszczędzono innym"
     },
     "youHaveSavedTimeEnd": {
-        "message": " ich życia"
+        "message": " życia"
     },
     "statusReminder": {
         "message": "Sprawdź status serwera na status.sponsor.ajay.app"
@@ -348,7 +348,7 @@
         "message": "Wsparcie dla Invidious"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) to nieoficjalny klient YouTube'a. Aby włączyć dla niego wsparcie musisz przyznać dodatkowe uprawnienia. W Chrome'ie i innych przeglądarkach bazujących na Chromium, ta opcja nie działa w trybie incognito."
+        "message": "Invidious (invidio.us) to nieoficjalny klient YouTube’a. Aby włączyć dla niego wsparcie, musisz przyznać dodatkowe uprawnienia. W Chrome i innych przeglądarkach bazujących na Chromium ta opcja nie działa w trybie incognito."
     },
     "optionsInfo": {
         "message": "Włącz wsparcie dla Invidious, wyłącz autopomijanie, ukryj przyciski i więcej."
@@ -517,7 +517,7 @@
         "message": "Muzyka: Sekcja niemuzyczna"
     },
     "category_music_offtopic_description": {
-        "message": "Do użytku tylko w filmach muzycznych. Wliczają się w to wprowadzenia i outro w teledyskach."
+        "message": "Do użytku tylko na filmach muzycznych. Powinno to być używane jedynie do tych sekcji filmów muzycznych, które nie są uwzględnione w innej kategorii."
     },
     "category_music_offtopic_short": {
         "message": "Bez muzyki"
@@ -601,13 +601,13 @@
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
-        "message": "Wymuś sprawdzenie kanału przed pominięciem"
+        "message": "Wymuś sprawdzanie kanału przed pomijaniem"
     },
     "whatForceChannelCheck": {
         "message": "Domyślnie, rozszerzenie pominie segmenty od razu, jeszcze zanim dowie się jaki to kanał. Domyślnie, pewne segmenty na początku filmu mogą zostać pominięte na kanałach dodanych do wyjątków. Włączenie tej opcji temu zapobiegnie, ale wszystkie pominięcia będą nieco opóźnione, gdyż uzyskanie ID kanału może chwilę potrwać. Opóźnienie to może być nieodczuwalne, jeśli masz szybki internet."
     },
     "forceChannelCheckPopup": {
-        "message": "Rozważ włączenie \"Wymuś sprawdzenie kanału przed pominięciem\""
+        "message": "Rozważ włączenie opcji \"Wymuś sprawdzanie kanału przed pomijaniem\""
     },
     "downvoteDescription": {
         "message": "Niepoprawne/Zły czas"
