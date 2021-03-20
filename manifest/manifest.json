@@ -4,6 +4,7 @@
     "version": "2.0.13",
     "default_locale": "en",
     "description": "__MSG_Description__",
+    "homepage_url": "https://sponsor.ajay.app",
     "content_scripts": [{
         "run_at": "document_start",
         "matches": [
