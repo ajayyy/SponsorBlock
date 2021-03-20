@@ -1458,6 +1458,7 @@ async function sendSubmitMessage(): Promise<void> {
     const response = await utils.asyncRequestToServer("POST", "/api/skipSegments", {
         videoID: sponsorVideoID,
         userID: Config.config.userID,
+        videoDuration: video.duration,
         segments: sponsorTimesSubmitting
     });
 
