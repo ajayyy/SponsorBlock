@@ -95,7 +95,7 @@
         "message": "Wystąpił błąd połączenia. Kod błędu: "
     },
     "wantToSubmit": {
-        "message": "Czy chcesz wysłać dla video o id"
+        "message": "Czy chcesz wysłać dla filmu o id"
     },
     "clearTimes": {
         "message": "Wyczyść segmenty"
@@ -131,10 +131,10 @@
         "message": "Ranking"
     },
     "recordTimesDescription": {
-        "message": "Prześlij"
+        "message": "Wyślij"
     },
     "submissionEditHint": {
-        "message": "Edycja sekcji pojawi się po kliknięciu „Wyślij”",
+        "message": "Edycja sekcji pojawi się po wciśnięciu „Wyślij”",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -517,7 +517,7 @@
         "message": "Muzyka: Sekcja niemuzyczna"
     },
     "category_music_offtopic_description": {
-        "message": "Do użytku tylko na filmach muzycznych. Powinno to być używane jedynie do tych sekcji filmów muzycznych, które nie są uwzględnione w innej kategorii."
+        "message": "Do użytku jedynie w filmach muzycznych. Powinno to być używane jedynie do tych sekcji filmów muzycznych, które nie są uwzględnione w innej kategorii."
     },
     "category_music_offtopic_short": {
         "message": "Bez muzyki"
