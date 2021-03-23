@@ -1,7 +1,7 @@
 {
     "name": "__MSG_fullName__",
     "short_name": "SponsorBlock",
-    "version": "2.0.13",
+    "version": "2.0.13.1",
     "default_locale": "en",
     "description": "__MSG_Description__",
     "content_scripts": [{
