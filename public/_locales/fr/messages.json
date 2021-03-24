@@ -291,7 +291,7 @@
         "message": "Afficher le temps avec les passages supprimés"
     },
     "showTimeWithSkipsDescription": {
-        "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tout les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
+        "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tous les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
     },
     "youHaveSkipped": {
         "message": "Vous avez passé "
@@ -324,7 +324,7 @@
         "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
     "whatChangeUserID": {
-        "message": "Gardez ça privé. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtiens, il peut vous usurper."
+        "message": "Cette information doit rester confidentielle. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtient, il pourra se faire passer pour vous."
     },
     "setUserID": {
         "message": "Définir \"UserID\""
@@ -514,7 +514,7 @@
         "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
     },
     "category_music_offtopic": {
-        "message": "Musique : Segment non-musical"
+        "message": "Musique : Segment non musical"
     },
     "category_music_offtopic_short": {
         "message": "Hors musique"
