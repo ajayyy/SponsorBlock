@@ -258,7 +258,7 @@ async function videoIDChange(id) {
         try {
             await utils.wait(() => !!videoInfo, 5000, 1);
         } catch (err) {
-            alert(chrome.i18n.getMessage("adblockerIssue") + "\n\n" + chrome.i18n.getMessage("adblockerIssueUnlistedVideosInfo"));
+            await videoInfoFetchFailed("adblockerIssueUnlistedVideosInfo");
         }
 
         if (isUnlisted()) {
@@ -268,7 +268,11 @@ async function videoIDChange(id) {
     }
 
     // Update whitelist data when the video data is loaded
-    utils.wait(() => !!videoInfo, 5000, 10).then(whitelistCheck);
+    utils.wait(() => !!videoInfo, 5000, 10).then(whitelistCheck).catch(() => {
+        if (Config.config.forceChannelCheck) {
+            videoInfoFetchFailed("adblockerIssueWhitelist");
+        }
+    });
 
     //setup the preview bar
     if (previewBar === null) {
@@ -724,6 +728,21 @@ async function getVideoInfo(): Promise<void> {
         }
 
         videoInfo = JSON.parse(decodedData);
+    }
+}
+
+async function videoInfoFetchFailed(errorMessage: string): Promise<void> {
+    console.log("failed\t" + errorMessage)
+    if (utils.isFirefox()) {
+        // Attempt to ask permission for youtube.com domain
+        alert(chrome.i18n.getMessage("youtubePermissionRequest"));
+        
+        chrome.runtime.sendMessage({
+            message: "openPage",
+            url: "permissions/index.html#youtube.com"
+        });
+    } else {
+        alert(chrome.i18n.getMessage("adblockerIssue") + "\n\n" + chrome.i18n.getMessage(errorMessage));
     }
 }
 
