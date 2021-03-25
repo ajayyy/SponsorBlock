@@ -408,7 +408,7 @@
         "message": "Oletko varma, että haluat nollata tämän?"
     },
     "confirmPrivacy": {
-        "message": "Video on havaittu piilotetuksi. Paina peruuta jos et halua tarkistaa ohitettavia segmenttejä."
+        "message": "Video on havaittu piilotetuksi. Paina peruuta, jos et halua tarkistaa ohitettavia segmenttejä."
     },
     "unlistedCheck": {
         "message": "Ohita Piilotetut/Yksityiset Videot"
@@ -511,7 +511,7 @@
         "message": "Maksamaton/Itsensä Mainostus"
     },
     "category_selfpromo_description": {
-        "message": "Samankaltainen \"sponsorin\" kanssa paitsi maksamaton tai itsensä mainostus. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
+        "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
     },
     "category_music_offtopic": {
         "message": "Musiikki: Ei-Musiikki-Osio"
