@@ -138,7 +138,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Astuce: Vous pouvez configurer des raccourcis clavier dans les options"
+        "message": "Astuce : vous pouvez configurer des raccourcis clavier dans les options"
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
