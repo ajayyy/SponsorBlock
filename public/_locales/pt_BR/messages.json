@@ -125,7 +125,7 @@
         "message": "Envios"
     },
     "savedPeopleFrom": {
-        "message": "Você salvou pessoas de "
+        "message": "Poupaste a outros de "
     },
     "viewLeaderboard": {
         "message": "Placar de classificação"
@@ -315,7 +315,7 @@
         "message": "Você poupou das pessoas"
     },
     "youHaveSavedTimeEnd": {
-        "message": " de suas vidas"
+        "message": " das vidas dos outros"
     },
     "statusReminder": {
         "message": "Verifique status.sponsor.ajay.app para o status do servidor."
