@@ -14,7 +14,7 @@ const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 export interface PreviewBarSegment {
     segment: [number, number];
     category: string;
-    preview: boolean;
+    unsubmitted: boolean;
 }
 
 class PreviewBar {
@@ -117,8 +117,8 @@ class PreviewBar {
             } else if (segment !== null) {
                 this.tooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
 
-                if (segment.preview) {
-                    this.categoryTooltip.textContent = chrome.i18n.getMessage("preview") + " " + utils.shortCategoryName(segment.category);
+                if (segment.unsubmitted) {
+                    this.categoryTooltip.textContent = chrome.i18n.getMessage("unsubmitted") + " " + utils.shortCategoryName(segment.category);
                 } else {
                     this.categoryTooltip.textContent = utils.shortCategoryName(segment.category);
                 }
@@ -185,12 +185,12 @@ class PreviewBar {
         });
     }
 
-    createBar({category, preview, segment}: PreviewBarSegment): HTMLLIElement {
+    createBar({category, unsubmitted, segment}: PreviewBarSegment): HTMLLIElement {
         const bar = document.createElement('li');
         bar.classList.add('previewbar');
         bar.innerHTML = '&nbsp;';
 
-        const barSegmentType = (preview ? 'preview-' : '') + category;
+        const barSegmentType = (unsubmitted ? 'preview-' : '') + category;
 
         bar.setAttribute('data-vs-segment-type', barSegmentType);
 

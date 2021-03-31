@@ -449,6 +449,9 @@
     "preview": {
         "message": "Preview"
     },
+    "unsubmitted": {
+        "message": "Unsubmitted"
+    },
     "inspect": {
         "message": "Inspect"
     },
@@ -483,6 +486,21 @@
     "category_sponsor_description": {
         "message": "Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shoutouts to causes/creators/websites/products they like."
     },
+    "category_selfpromo": {
+        "message": "Unpaid/Self Promotion"
+    },
+    "category_selfpromo_description": {
+        "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
+    },
+    "category_interaction": {
+        "message": "Interaction Reminder (Subscribe)"
+    },
+    "category_interaction_description": {
+        "message": "When there is a short reminder to like, subscribe or follow them in the middle of content. If it is long or about something specific, it should be under self promotion instead."
+    },
+    "category_interaction_short": {
+        "message": "Interaction Reminder"
+    },
     "category_intro": {
         "message": "Intermission/Intro Animation"
     },
@@ -498,20 +516,14 @@
     "category_outro_description": {
         "message": "Credits or when the YouTube endcards appear. Not for conclusions with information."
     },
-    "category_interaction": {
-        "message": "Interaction Reminder (Subscribe)"
+    "category_preview": {
+        "message": "Preview/Recap"
     },
-    "category_interaction_description": {
-        "message": "When there is a short reminder to like, subscribe or follow them in the middle of content. If it is long or about something specific, it should be under self promotion instead."
+    "category_preview_description": {
+        "message": "Quick recap of previous episodes, or a preview of what's coming up later in the current video. Meant for edited together clips, not for spoken summaries."
     },
-    "category_interaction_short": {
-        "message": "Interaction Reminder"
-    },
-    "category_selfpromo": {
-        "message": "Unpaid/Self Promotion"
-    },
-    "category_selfpromo_description": {
-        "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
+    "category_preview_short": {
+        "message": "Preview"
     },
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
@@ -541,7 +553,7 @@
         "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
     },
     "previewColor": {
-        "message": "Preview Color",
+        "message": "Unsubmitted Color",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {

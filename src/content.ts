@@ -816,7 +816,7 @@ function updatePreviewBar(): void {
             previewBarSegments.push({
                 segment: segment.segment as [number, number],
                 category: segment.category,
-                preview: false,
+                unsubmitted: false,
             });
         });
     }
@@ -825,7 +825,7 @@ function updatePreviewBar(): void {
         previewBarSegments.push({
             segment: segment.segment as [number, number],
             category: segment.category,
-            preview: true,
+            unsubmitted: true,
         });
     });
 
@@ -873,14 +873,14 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
     const minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
     const endTimeIndex = getLatestEndTimeIndex(sponsorTimes, minSponsorTimeIndex);
 
-    const previewSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments);
-    const previewSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false, false);
+    const unsubmittedSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments);
+    const unsubmittedSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false, false);
 
-    const minPreviewSponsorTimeIndex = previewSponsorStartTimes.indexOf(Math.min(...previewSponsorStartTimesAfterCurrentTime));
-    const previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minPreviewSponsorTimeIndex);
+    const minUnsubmittedSponsorTimeIndex = unsubmittedSponsorStartTimes.indexOf(Math.min(...unsubmittedSponsorStartTimesAfterCurrentTime));
+    const previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minUnsubmittedSponsorTimeIndex);
 
-    if ((minPreviewSponsorTimeIndex === -1 && minSponsorTimeIndex !== -1) || 
-            sponsorStartTimes[minSponsorTimeIndex] < previewSponsorStartTimes[minPreviewSponsorTimeIndex]) {
+    if ((minUnsubmittedSponsorTimeIndex === -1 && minSponsorTimeIndex !== -1) || 
+            sponsorStartTimes[minSponsorTimeIndex] < unsubmittedSponsorStartTimes[minUnsubmittedSponsorTimeIndex]) {
         return {
             array: sponsorTimes,
             index: minSponsorTimeIndex,
@@ -890,7 +890,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
     } else {
         return {
             array: sponsorTimesSubmitting,
-            index: minPreviewSponsorTimeIndex,
+            index: minUnsubmittedSponsorTimeIndex,
             endIndex: previewEndTimeIndex,
             openNotice: false
         };
@@ -1007,7 +1007,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     //send telemetry that a this sponsor was skipped
     if (Config.config.trackViewCount && autoSkip) {
         let alreadySkipped = false;
-        let isPreviewSegment = false;
+        let isUnsubmittedSegment = false;
 
         for (const segment of skippingSegments) {
             const index = sponsorTimes.indexOf(segment);
@@ -1019,11 +1019,11 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
                 alreadySkipped = true;
             }
 
-            if (index === -1) isPreviewSegment = true;
+            if (index === -1) isUnsubmittedSegment = true;
         }
         
         // Count this as a skip
-        if (!alreadySkipped && !isPreviewSegment) {
+        if (!alreadySkipped && !isUnsubmittedSegment) {
             Config.config.minutesSaved = Config.config.minutesSaved + (skipTime[1] - skipTime[0]) / 60;
             Config.config.skipCount = Config.config.skipCount + 1;
         }
