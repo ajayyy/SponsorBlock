@@ -487,7 +487,7 @@
         "message": "Intervalo/Animação de Introdução"
     },
     "category_intro_description": {
-        "message": "Um intervalo sem conteúdo real. Pode ser um quadro em pausa, um frame estático, repetindo animação. Isso não deve ser usado para transições que contenham informação."
+        "message": "Um intervalo sem conteúdo real. Pode ser uma pausa, um quadro estático, uma animação repetitiva. Isso não deve ser usado em transições que contenham informação."
     },
     "category_intro_short": {
         "message": "Intervalo"
@@ -502,7 +502,7 @@
         "message": "Lembrete de interação (inscrever-se)"
     },
     "category_interaction_description": {
-        "message": "Quando houver um pequeno lembrete para curtir, inscreva-se ou segui-los no meio do conteúdo. Se é longo ou sobre algo específico, deveria ser sob auto-promoção."
+        "message": "Quando houver um pequeno lembrete para curtir, inscrever-se ou segui-los no meio do conteúdo. Se é longo ou sobre algo específico, deveria ser sob Não-pago/Auto promoção."
     },
     "category_interaction_short": {
         "message": "Lembrete de interação"
@@ -511,7 +511,7 @@
         "message": "Não-pago/Auto promoção"
     },
     "category_selfpromo_description": {
-        "message": "Similar a \"patrocinador\", exceto para auto promoções e não-pagas. Isto inclui seções sobre vendas, doações ou informações sobre com quem colaboraram."
+        "message": "Similar a \"patrocinador\", mas para auto promoções e segmentos não-pagos. Isto inclui seções sobre vendas, doações ou informações sobre com quem colaboraram."
     },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
