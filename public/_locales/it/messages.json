@@ -112,6 +112,12 @@
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
     },
+    "whitelistChannel": {
+        "message": "Aggiungi Canale alla Whitelist"
+    },
+    "removeFromWhitelist": {
+        "message": "Rimuovi Canale dalla Whitelist"
+    },
     "voteOnTime": {
         "message": "Vota un Segmento"
     },
@@ -225,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Imposta tasto per saltare un segmento"
     },
     "setStartSponsorShortcut": {
         "message": "Imposta chiave di associazione per l'inizio del segmento"
@@ -507,6 +516,9 @@
     "category_music_offtopic": {
         "message": "Musica: Sezione Non-Musicale"
     },
+    "category_music_offtopic_description": {
+        "message": "Solo per l'uso in video musicali. Questo dovrebbe essere usato solo per sezioni di video musicali che non sono già compresi in un'altra categoria."
+    },
     "category_music_offtopic_short": {
         "message": "Non-Musicale"
     },
@@ -560,6 +572,10 @@
     "chooseACategory": {
         "message": "Scegli una Categoria"
     },
+    "enableThisCategoryFirst": {
+        "message": "Per inviare segmenti della categoria \"{0}\", è necessario abilitarlo nelle opzioni. Sarai reindirizzato alle opzioni ora.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Devi selezionare una categoria per tutti i segmenti che stai inviando!"
     },
@@ -577,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Sembra che qualcosa stia bloccando la capacità di SponsorBlock di ottenere dati video. Questo probabilmente è il tuo ad blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Se non riesci a risolvere questo problema, disabilita l'impostazione 'Ignora video non elencati/privati', poichè SponsorBlock non è in grado di recuperare le informazioni di visibilità per questo video"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Se questo continua a verificarsi, potrebbe essere causato dal tuo ad-blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
