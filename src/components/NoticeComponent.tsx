@@ -70,7 +70,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
     render(): React.ReactElement {
         const noticeStyle: React.CSSProperties = {
-            zIndex: this.props.zIndex || (50 + this.amountOfPreviousNotices)
+            zIndex: this.props.zIndex || (1000 + this.amountOfPreviousNotices)
         }
 
         return (
