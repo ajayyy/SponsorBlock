@@ -3,6 +3,19 @@
         "message": "SponserBlock for YouTube - 動画のスポンサーセクションを自動でスキップする",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "YouTube動画の提供表示や購読要求を飛ばします。視聴している動画の該当部分を報告して，みんなが時間を節約できるようにしましょう。",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "この要求はサーバーに対して妥当でないようです。"
+    },
+    "429": {
+        "message": "一つの動画に対してあまりに多くの跳躍箇所を提出しています。本当にこれほど多くありますか？"
+    },
+    "409": {
+        "message": "これは既に提案されています。"
+    },
     "channelWhitelisted": {
         "message": "チャンネルをホワイトリストに登録しました!"
     },
@@ -11,6 +24,9 @@
     },
     "Segments": {
         "message": "セグメント"
+    },
+    "upvoteButtonInfo": {
+        "message": "この提案を支持する"
     },
     "reportButtonTitle": {
         "message": "報告"
