@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "YouTube動画の提供表示や購読要求を飛ばします。視聴している動画の該当部分を報告して，みんなが時間を節約できるようにしましょう。",
+        "message": "YouTube動画の提供表示や購読要求を飛び越します。視聴している動画の該当部分を報告して，みんなが時間を節約できるようにしましょう。",
         "description": "Description of the extension."
     },
     "400": {
@@ -31,6 +31,9 @@
     "reportButtonTitle": {
         "message": "報告"
     },
+    "reportButtonInfo": {
+        "message": "この提案が正しくないことを報告する。"
+    },
     "Dismiss": {
         "message": "無視"
     },
@@ -40,11 +43,35 @@
     "Hide": {
         "message": "非表示"
     },
+    "hitGoBack": {
+        "message": "元の場所に戻るには，「飛び越さない」を押してください。"
+    },
     "unskip": {
         "message": "スキップしない"
     },
+    "reskip": {
+        "message": "再飛び越し"
+    },
     "paused": {
         "message": "一時停止"
+    },
+    "manualPaused": {
+        "message": "計時器が停止しました"
+    },
+    "confirmMSG": {
+        "message": "個々の値を編集・削除するには，案内ボタンを押すか右上隅にある拡張機能のアイコンを押して拡張機能の吹き出しを表示します。"
+    },
+    "clearThis": {
+        "message": "本当に消去しますか？\n\n"
+    },
+    "Unknown": {
+        "message": "提供表示の提案を送信中に異常が発生しました。しばらく経ってからもう一度お試しください。"
+    },
+    "sponsorFound": {
+        "message": "この動画用の区画はデータベースに登録されています！"
+    },
+    "sponsor404": {
+        "message": "区画が見付かりませんでした"
     },
     "success": {
         "message": "成功しました!"
