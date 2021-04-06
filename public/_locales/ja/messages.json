@@ -73,6 +73,15 @@
     "sponsor404": {
         "message": "区画が見付かりませんでした"
     },
+    "sponsorStart": {
+        "message": "区画がすぐに始まります"
+    },
+    "sponsorEnd": {
+        "message": "区画がすぐに終了します"
+    },
+    "noVideoID": {
+        "message": "YouTube動画が見付かりませんでした。\n間違っている場合は，タブを再読込してください。"
+    },
     "success": {
         "message": "成功しました!"
     },
