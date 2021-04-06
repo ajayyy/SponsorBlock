@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject, CategoryActionType, SegmentUUID, Category } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -691,14 +691,16 @@ function startSkipScheduleCheckingForStartSponsors() {
         // See if there are any starting sponsors
         let startingSponsor = -1;
         for (const time of sponsorTimes) {
-            if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+            if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime 
+                    && utils.getCategoryActionType(time.category) === CategoryActionType.Skippable) {
                 startingSponsor = time.segment[0];
                 break;
             }
         }
         if (startingSponsor === -1) {
             for (const time of sponsorTimesSubmitting) {
-                if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime) {
+                if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime 
+                        && utils.getCategoryActionType(time.category) === CategoryActionType.Skippable) {
                     startingSponsor = time.segment[0];
                     break;
                 }
@@ -959,7 +961,8 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
                 || ((includeNonIntersectingSegments && sponsorTimes[i].segment[0] >= minimum) 
                     || (includeIntersectingSegments && sponsorTimes[i].segment[0] < minimum && sponsorTimes[i].segment[1] > minimum))) 
                 && (!onlySkippableSponsors || utils.getCategorySelection(sponsorTimes[i].category).option !== CategorySkipOption.ShowOverlay)
-                && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)) {
+                && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)
+                && utils.getCategoryActionType(sponsorTimes[i].category) === CategoryActionType.Skippable) {
 
             startTimes.push(sponsorTimes[i].segment[0]);
         } 
@@ -1031,10 +1034,8 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
 }
 
 function unskipSponsorTime(segment: SponsorTime) {
-    if (sponsorTimes != null) {
-        //add a tiny bit of time to make sure it is not skipped again
-        video.currentTime = segment.segment[0] + 0.001;
-    }
+    //add a tiny bit of time to make sure it is not skipped again
+    video.currentTime = segment.segment[0] + 0.001;
 }
 
 function reskipSponsorTime(segment: SponsorTime) {
@@ -1353,7 +1354,7 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNoticeComponent) {
+function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) {
     if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
         skipNotice.addVoteButtonInfo.bind(skipNotice)(chrome.i18n.getMessage("Loading"))

@@ -1,13 +1,10 @@
 import * as CompileConfig from "../config.json";
-import { CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
-
-import Utils from "./utils";
-const utils = new Utils();
+import { Category, CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
 
 interface SBConfig {
     userID: string,
     segmentTimes: SBMap<string, SponsorTime[]>,
-    defaultCategory: string,
+    defaultCategory: Category,
     whitelistedChannels: string[],
     forceChannelCheck: boolean,
     skipKeybind: string,
@@ -57,6 +54,8 @@ interface SBConfig {
         "preview-preview": PreviewBarOption,
         "music_offtopic": PreviewBarOption,
         "preview-music_offtopic": PreviewBarOption,
+        "highlight": PreviewBarOption,
+        "preview-highlight": PreviewBarOption,
     }
 }
 
@@ -142,7 +141,7 @@ const Config: SBObject = {
     defaults: {
         userID: null,
         segmentTimes: new SBMap("segmentTimes"),
-        defaultCategory: "chooseACategory",
+        defaultCategory: "chooseACategory" as Category,
         whitelistedChannels: [],
         forceChannelCheck: false,
         skipKeybind: "Enter",
@@ -173,7 +172,7 @@ const Config: SBObject = {
         refetchWhenNotFound: true,
 
         categorySelections: [{
-            name: "sponsor",
+            name: "sponsor" as Category,
             option: CategorySkipOption.AutoSkip
         }],
 
@@ -237,6 +236,14 @@ const Config: SBObject = {
             },
             "preview-music_offtopic": {
                 color: "#a6634a",
+                opacity: "0.7"
+            },
+            "highlight": {
+                color: "#ff1684",
+                opacity: "0.7"
+            },
+            "preview-highlight": {
+                color: "#9b044c",
                 opacity: "0.7"
             }
         }
@@ -334,108 +341,15 @@ function fetchConfig(): Promise<void> {
 }
 
 function migrateOldFormats(config: SBConfig) {
-    if (config["disableAutoSkip"]) {
-        for (const selection of config.categorySelections) {
-            if (selection.name === "sponsor") {
-                selection.option = CategorySkipOption.ManualSkip;
+    if (!config["highlightCategoryAdded"] && !config.categorySelections.some((s) => s.name === "highlight")) {
+        config["highlightCategoryAdded"] = true;
 
-                chrome.storage.sync.remove("disableAutoSkip");
-            }
-        }
-    }
+        config.categorySelections.push({
+            name: "highlight" as Category,
+            option: CategorySkipOption.AutoSkip
+        });
 
-    // Auto vote removal
-    if (config["autoUpvote"]) {
-        chrome.storage.sync.remove("autoUpvote");
-    }
-    // mobileUpdateShowCount removal
-    if (config["mobileUpdateShowCount"] !== undefined) {
-        chrome.storage.sync.remove("mobileUpdateShowCount");
-    }
-    // categoryUpdateShowCount removal
-    if (config["categoryUpdateShowCount"] !== undefined) {
-        chrome.storage.sync.remove("categoryUpdateShowCount");
-    }
-
-    // Channel URLS
-    if (config.whitelistedChannels.length > 0 && 
-            (config.whitelistedChannels[0] == null || config.whitelistedChannels[0].includes("/"))) {
-        const channelURLFixer = async() => {
-            const newChannelList: string[] = [];
-            for (const item of config.whitelistedChannels) {
-                if (item != null) {
-                    if (item.includes("/channel/")) {
-                        newChannelList.push(item.split("/")[2]);
-                    } else if (item.includes("/user/") &&  utils.isContentScript()) {
-
-                        
-                        // Replace channel URL with channelID
-                        const response = await utils.asyncRequestToCustomServer("GET", "https://sponsor.ajay.app/invidious/api/v1/channels/" + item.split("/")[2] + "?fields=authorId");
-                    
-                        if (response.ok) {
-                            newChannelList.push((JSON.parse(response.responseText)).authorId);
-                        } else {
-                            // Add it at the beginning so it gets converted later
-                            newChannelList.unshift(item);
-                        }
-                    } else if (item.includes("/user/")) {
-                        // Add it at the beginning so it gets converted later (The API can only be called in the content script due to CORS issues)
-                        newChannelList.unshift(item);
-                    } else {
-                        newChannelList.push(item);
-                    }
-                }
-            }
-
-            config.whitelistedChannels = newChannelList;
-        }
-
-        channelURLFixer();
-    }
-
-    // Check if off-topic category needs to be removed
-    for (let i = 0; i < config.categorySelections.length; i++) {
-        if (config.categorySelections[i].name === "offtopic") {
-            config.categorySelections.splice(i, 1);
-            // Call set listener
-            config.categorySelections = config.categorySelections;
-            break;
-        }
-    }
-
-    // Migrate old "sponsorTimes"
-    if (config["sponsorTimes"]) {
-        let jsonData: unknown = config["sponsorTimes"];
-
-        // Check if data is stored in the old format for SBMap (a JSON string)
-        if (typeof jsonData === "string") {
-            try {	
-                jsonData = JSON.parse(jsonData);	   
-            } catch(e) {
-                // Continue normally (out of this if statement)
-            }
-        }
-
-        // Otherwise junk data
-        if (Array.isArray(jsonData)) {
-            const oldMap = new Map(jsonData);
-            oldMap.forEach((sponsorTimes: number[][], key) => {
-                const segmentTimes: SponsorTime[] = [];
-                for (const segment of sponsorTimes) {
-                    segmentTimes.push({
-                        segment: segment,
-                        category: "sponsor",
-                        UUID: null
-                    });
-                }
-
-                config.segmentTimes.rawSet(key, segmentTimes);
-            });
-
-            config.segmentTimes.update();
-        }
-
-        chrome.storage.sync.remove("sponsorTimes");
+        config.categorySelections = config.categorySelections;
     }
 }
 

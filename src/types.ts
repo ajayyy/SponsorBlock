@@ -4,7 +4,7 @@ import SkipNotice from "./render/SkipNotice";
 
 export interface ContentContainer {
     (): {
-        vote: (type: number, UUID: string, category?: string, skipNotice?: SkipNoticeComponent) => void,
+        vote: (type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) => void,
         dontShowNoticeAgain: () => void,
         unskipSponsorTime: (segment: SponsorTime) => void,
         sponsorTimes: SponsorTime[],
@@ -41,7 +41,7 @@ export enum CategorySkipOption {
 }
 
 export interface CategorySelection {
-    name: string;
+    name: Category;
     option: CategorySkipOption
 }
 
@@ -51,11 +51,19 @@ export enum SponsorHideType {
     MinimumDuration
 }
 
+export enum CategoryActionType {
+    Skippable = "", // Strings are used to find proper language configs
+    POI = "_POI"
+}
+
+export type SegmentUUID = string  & { __segmentUUIDBrand: unknown };
+export type Category = string & { __categoryBrand: unknown };
+
 export interface SponsorTime {
     segment: number[];
-    UUID: string;
+    UUID: SegmentUUID;
 
-    category: string;
+    category: Category;
 
     hidden?: SponsorHideType;
 }
@@ -145,7 +153,7 @@ export interface VideoInfo {
             isUnlisted: boolean,
             hasYpcMetadata: boolean,
             viewCount: string,
-            category: string,
+            category: Category,
             publishDate: string,
             ownerChannelName: string,
             uploadDate: string,

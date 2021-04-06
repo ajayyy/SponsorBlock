@@ -1,9 +1,12 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config"
-import { ContentContainer, SponsorHideType, SponsorTime } from "../types";
+import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
+
+import Utils from "../utils";
+const utils = new Utils();
 
 export enum SkipNoticeAction {
     None,
@@ -342,7 +345,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
                 break;
             case SkipNoticeAction.CategoryVote:
-                this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value, this)
+                this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value as Category, this)
                 break;
             case SkipNoticeAction.Unskip:
                 this.state.unskipCallback(index);
@@ -389,7 +392,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     getCategoryOptions(): React.ReactElement[] {
         const elements = [];
 
-        for (const category of Config.config.categorySelections) {
+        const categories = Config.config.categorySelections.filter((cat => utils.getCategoryActionType(cat.name as Category) === CategoryActionType.Skippable));
+        for (const category of categories) {
             elements.push(
                 <option value={category.name}
                         key={category.name}>
@@ -476,7 +480,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
     }
 
-    afterVote(segment: SponsorTime, type: number, category: string): void {
+    afterVote(segment: SponsorTime, type: number, category: Category): void {
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
 
         if (type === 0) {

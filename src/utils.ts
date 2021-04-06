@@ -1,5 +1,5 @@
 import Config from "./config";
-import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration } from "./types";
+import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, Category, CategoryActionType } from "./types";
 
 import * as CompileConfig from "../config.json";
 
@@ -41,6 +41,15 @@ export default class Utils {
             //run the check once first, this speeds it up a lot
             intervalCheck();
         });
+    }
+
+    getCategoryActionType(category: Category): CategoryActionType {
+        switch (category) {
+            case "highlight":
+                return CategoryActionType.POI;
+            default:
+                return CategoryActionType.Skippable;
+        }
     }
 
     containsPermission(permissions: chrome.permissions.Permissions): Promise<boolean> {

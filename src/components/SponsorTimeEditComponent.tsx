@@ -4,7 +4,7 @@ import Config from "../config";
 import * as CompileConfig from "../../config.json";
 
 import Utils from "../utils";
-import { ContentContainer, SponsorTime } from "../types";
+import { Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 const utils = new Utils();
 
@@ -16,6 +16,7 @@ export interface SponsorTimeEditProps {
     contentContainer: ContentContainer,
 
     submissionNotice: SubmissionNoticeComponent;
+    categoryList?: Category[];
 }
 
 export interface SponsorTimeEditState {
@@ -106,43 +107,47 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             onChange={(e) => {
                                 const sponsorTimeEdits = this.state.sponsorTimeEdits;
                                 sponsorTimeEdits[0] = e.target.value;
+                                if (utils.getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = e.target.value;
 
                                 this.setState({sponsorTimeEdits});
-
                                 this.saveEditTimes();
                             }}>
                         </input>
 
-                        <span>
-                            {" " + chrome.i18n.getMessage("to") + " "}
-                        </span>
+                        {utils.getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable ? (
+                            <span>
+                                <span>
+                                    {" " + chrome.i18n.getMessage("to") + " "}
+                                </span>
 
-                        <input id={"submittingTime1" + this.idSuffix}
-                            className="sponsorTimeEdit sponsorTimeEditInput"
-                            ref={oldYouTubeDarkStyles}
-                            type="text"
-                            value={this.state.sponsorTimeEdits[1]}
-                            onChange={(e) => {
-                                const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[1] = e.target.value;
+                                <input id={"submittingTime1" + this.idSuffix}
+                                    className="sponsorTimeEdit sponsorTimeEditInput"
+                                    ref={oldYouTubeDarkStyles}
+                                    type="text"
+                                    value={this.state.sponsorTimeEdits[1]}
+                                    onChange={(e) => {
+                                        const sponsorTimeEdits = this.state.sponsorTimeEdits;
+                                        sponsorTimeEdits[1] = e.target.value;
 
-                                this.setState({sponsorTimeEdits});
+                                        this.setState({sponsorTimeEdits});
 
-                                this.saveEditTimes();
-                            }}>
-                        </input>
+                                        this.saveEditTimes();
+                                    }}>
+                                </input>
 
-                        <span id={"nowButton1" + this.idSuffix}
-                            className="sponsorNowButton"
-                            onClick={() => this.setTimeToNow(1)}>
-                                {chrome.i18n.getMessage("bracketNow")}
-                        </span>
+                                <span id={"nowButton1" + this.idSuffix}
+                                    className="sponsorNowButton"
+                                    onClick={() => this.setTimeToNow(1)}>
+                                        {chrome.i18n.getMessage("bracketNow")}
+                                </span>
 
-                        <span id={"endButton" + this.idSuffix}
-                            className="sponsorNowButton"
-                            onClick={() => this.setTimeToEnd()}>
-                                {chrome.i18n.getMessage("bracketEnd")}
-                        </span>
+                                <span id={"endButton" + this.idSuffix}
+                                    className="sponsorNowButton"
+                                    onClick={() => this.setTimeToEnd()}>
+                                        {chrome.i18n.getMessage("bracketEnd")}
+                                </span>
+                            </span>
+                        ): ""}
                 </div>
             );
         } else {
@@ -151,7 +156,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
                         {utils.getFormattedTime(segment[0], true) +
-                            ((!isNaN(segment[1])) ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
+                            ((!isNaN(segment[1]) && utils.getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable)
+                                     ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
                 </div>
             );
         }
@@ -190,7 +196,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     {chrome.i18n.getMessage("delete")}
                 </span>
 
-                {(!isNaN(segment[1])) ? (
+                {(!isNaN(segment[1]) && utils.getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable) ? (
                     <span id={"sponsorTimePreviewButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.previewTime.bind(this)}>
@@ -225,7 +231,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             </option>
         )];
 
-        for (const category of CompileConfig.categoryList) {
+        for (const category of (this.props.categoryList ?? CompileConfig.categoryList)) {
             elements.push(
                 <option value={category}
                         key={category}>
@@ -252,6 +258,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             
             return;
         }
+
+        if (utils.getCategoryActionType(event.target.value as Category) === CategoryActionType.POI) {
+            this.setTimeTo(1, null);
+        }
         
         this.saveEditTimes();
     }
@@ -264,11 +274,16 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.setTimeTo(1, this.props.contentContainer().v.duration);
     }
 
+    /**
+     * @param index 
+     * @param time If null, will set time to the first index's time
+     */
     setTimeTo(index: number, time: number): void {
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+        if (time === null) time = sponsorTime.segment[0];
 
-        sponsorTime.segment[index] = 
-            time;
+        sponsorTime.segment[index] = time;
+        if (utils.getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTime.segment[1] = time;
 
         this.setState({
             sponsorTimeEdits: this.getFormattedSponsorTimesEdits(sponsorTime)
@@ -312,7 +327,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             }
         }
 
-        sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value;
+        sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value as Category;
 
         Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 
