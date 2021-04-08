@@ -1220,25 +1220,18 @@ async function changeStartSponsorButton(showStartSponsor: boolean, uploadButtonV
     //if it isn't visible, there is no data
     const shouldHide = (uploadButtonVisible && !(Config.config.hideDeleteButtonPlayerControls || onInvidious)) ? "unset" : "none"
     document.getElementById("deleteButton").style.display = shouldHide;
+    if (!Config.config.hideUploadButtonPlayerControls && !onInvidious) {
+        document.getElementById("submitButton").style.display = shouldHide;
+    }
 
     if (showStartSponsor) {
         showingStartSponsor = true;
         (<HTMLImageElement> document.getElementById("startSponsorImage")).src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
-
-        if (document.getElementById("startSponsorImage").style.display != "none" && uploadButtonVisible && !Config.config.hideUploadButtonPlayerControls && !onInvidious) {
-            document.getElementById("submitButton").style.display = "unset";
-        } else if (!uploadButtonVisible || onInvidious) {
-            //disable submit button
-            document.getElementById("submitButton").style.display = "none";
-        }
     } else {
         showingStartSponsor = false;
         (<HTMLImageElement> document.getElementById("startSponsorImage")).src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
         document.getElementById("startSponsorButton").setAttribute("title", chrome.i18n.getMessage("sponsorEND"));
-
-        //disable submit button
-        document.getElementById("submitButton").style.display = "none";
     }
 }
 

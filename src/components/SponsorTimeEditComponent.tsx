@@ -261,6 +261,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         if (utils.getCategoryActionType(event.target.value as Category) === CategoryActionType.POI) {
             this.setTimeTo(1, null);
+            this.props.contentContainer().changeStartSponsorButton(true, true);
         }
         
         this.saveEditTimes();
@@ -359,7 +360,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         //if it is not a complete sponsor time
         if (sponsorTimes[index].segment.length < 2) {
             //update video player
-            this.props.contentContainer().changeStartSponsorButton(true, false);
+            this.props.contentContainer().changeStartSponsorButton(true, true);
         }
   
         sponsorTimes.splice(index, 1);
