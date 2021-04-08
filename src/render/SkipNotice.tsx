@@ -23,7 +23,9 @@ class SkipNotice {
 
         //get reference node
         let referenceNode = document.getElementById("player-container-id") 
-                                || document.getElementById("movie_player") || document.querySelector("#player-container .video-js");
+                                ?? document.getElementById("movie_player") 
+                                ?? document.querySelector("#player-container .video-js") // Invidious
+                                ?? document.querySelector(".main-video-section > .video-container");  // Cloudtube
         if (referenceNode == null) {
             //for embeds
             const player = document.getElementById("player");
