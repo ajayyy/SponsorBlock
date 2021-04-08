@@ -350,20 +350,23 @@
     "keybindCurrentlySet": {
         "message": ". It is currently set to:"
     },
-    "supportInvidious": {
-        "message": "Support Invidious"
+    "supportOtherSites": {
+        "message": "Support 3rd Party YouTube-Sites"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) is a third party YouTube client. To enable support, you must accept the extra permissions. This does NOT work in incognito on Chrome and other Chromium variants."
+    "supportOtherSitesDescription": {
+        "message": "Support third party party YouTube clients. To enable support, you must accept the extra permissions. This does NOT work in incognito on Chrome and other Chromium variants."
+    },
+    "supportedSites": {
+        "message": "Supported Sites: "
     },
     "optionsInfo": {
         "message": "Enable Invidious support, disable autoskip, hide buttons and more."
     },
     "addInvidiousInstance": {
-        "message": "Add Invidious Instance"
+        "message": "Add 3rd-Party Client Instance"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Add a custom instance of Invidious. This must be formatted with JUST the domain. Example: invidious.ajay.app"
+        "message": "Add a custom instance. This must be formatted with JUST the domain. Example: invidious.ajay.app"
     },
     "add": {
         "message": "Add"

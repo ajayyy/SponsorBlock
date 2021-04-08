@@ -22,12 +22,11 @@ class SkipNotice {
         this.contentContainer = contentContainer;
 
         //get reference node
-        let referenceNode = document.getElementById("player-container-id") 
-                                || document.getElementById("movie_player") || document.querySelector("#player-container .video-js");
-        // YouTube Music
-        if (new URL(document.URL).host === "music.youtube.com") {
-            referenceNode = document.querySelector("#main-panel.ytmusic-player-page");
-        }
+        let referenceNode = document.getElementById("player-container-id")
+                                ?? document.getElementById("movie_player") 
+                                ?? document.querySelector("#main-panel.ytmusic-player-page") // YouTube music
+                                ?? document.querySelector("#player-container .video-js") // Invidious
+                                ?? document.querySelector(".main-video-section > .video-container");  // Cloudtube  
         if (referenceNode == null) {
             //for embeds
             const player = document.getElementById("player");
