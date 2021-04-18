@@ -88,6 +88,12 @@
     "voted": {
         "message": "投票しました!"
     },
+    "serverDown": {
+        "message": "サーバーがダウンしているようです。今すぐ開発者にお知らせください。"
+    },
+    "connectionError": {
+        "message": "接続エラーが発生しました。エラーコード: "
+    },
     "openPopup": {
         "message": "SponsorBlock のポップアップを開く"
     },
