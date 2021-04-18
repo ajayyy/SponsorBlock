@@ -94,11 +94,23 @@
     "connectionError": {
         "message": "接続エラーが発生しました。エラーコード: "
     },
+    "wantToSubmit": {
+        "message": "次の動画IDで提出します:"
+    },
+    "clearTimes": {
+        "message": "セグメントをクリア"
+    },
     "openPopup": {
         "message": "SponsorBlock のポップアップを開く"
     },
     "closePopup": {
         "message": "ポップアップを閉じる"
+    },
+    "SubmitTimes": {
+        "message": "セグメントを提出"
+    },
+    "submitCheck": {
+        "message": "本当に提出してよろしいですか？"
     },
     "whitelistChannel": {
         "message": "ホワイトリストのチャンネル"
@@ -106,17 +118,45 @@
     "removeFromWhitelist": {
         "message": "ホワイトリストからチャンネルを削除"
     },
+    "voteOnTime": {
+        "message": "セグメントに投票"
+    },
+    "Submissions": {
+        "message": "提出数"
+    },
+    "savedPeopleFrom": {
+        "message": "次のセグメント数から人々を救いました: "
+    },
     "viewLeaderboard": {
         "message": "リーダーボード"
     },
     "recordTimesDescription": {
         "message": "送信"
     },
+    "submissionEditHint": {
+        "message": "提出をクリックするとセクション編集画面が表示されます",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "ヒント: オプションから提出時のキーバインドを設定できます"
+    },
+    "clearTimesButton": {
+        "message": "時間をクリア"
+    },
+    "submitTimesButton": {
+        "message": "時間を提出"
+    },
+    "publicStats": {
+        "message": "これは公開の統計ページであなたがどれだけ貢献したかを示すために使用され、ここで確認することができます: "
+    },
     "Username": {
         "message": "ユーザー名"
     },
     "setUsername": {
         "message": "ユーザー名を設定"
+    },
+    "discordAdvert": {
+        "message": "公式Discordサーバーに参加して意見やフィードバックをお寄せください！"
     },
     "hideThis": {
         "message": "非表示にする"
@@ -130,11 +170,29 @@
     "hideButtons": {
         "message": "YouTube プレイヤーにボタンを表示しない"
     },
+    "hideButtonsDescription": {
+        "message": "これを有効にするとYouTubeプレーヤーのセグメント提出ボタンが非表示になります。"
+    },
+    "showInfoButton": {
+        "message": "YouTubeプレーヤーの情報ボタンを表示する"
+    },
+    "hideInfoButton": {
+        "message": "YouTubeプレーヤーの情報ボタンを隠す"
+    },
+    "whatInfoButton": {
+        "message": "これはYouTubeのページ上でポップアップを開くためのボタンです。"
+    },
     "hideDeleteButton": {
         "message": "YouTube プレイヤーから削除ボタンを隠す"
     },
     "showDeleteButton": {
         "message": "YouTube プレイヤーから削除ボタンを表示する"
+    },
+    "whatDeleteButton": {
+        "message": "これはYouTubeプレーヤー上のボタンで、現在の動画から未提出のセグメントを全て消去します。"
+    },
+    "enableViewTracking": {
+        "message": "スキップ回数の統計を有効にする"
     },
     "website": {
         "message": "ウェブサイト",
