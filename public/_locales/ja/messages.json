@@ -194,6 +194,24 @@
     "enableViewTracking": {
         "message": "スキップ回数の統計を有効にする"
     },
+    "whatViewTracking": {
+        "message": "この機能は、あなたがスキップしたセグメントを追跡して、そのセグメントがどれだけ役に立ったかを他のユーザーに知らせることで、スパムがデータベースに紛れないようにするための評価基準として使用されます。あなたがセグメントをスキップするたびに、拡張機能はサーバーにメッセージを送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "ハッシュプレフィックスを使って要求"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "動画IDを使用してサーバーからセグメントを要求する代わりに、動画IDのハッシュから最初の4文字が送信されます。それに対して、サーバーは類似したハッシュを持つすべての動画のデータを返却します。"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "新しい動画ではセグメントを再取得する"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "動画がまだ新しくセグメントが見つからない場合は、動画を視聴している間、数分おきにセグメントを検索し続けます。"
+    },
+    "showNotice": {
+        "message": "再度通知を表示する"
+    },
     "website": {
         "message": "ウェブサイト",
         "description": "Used on Firefox Store Page"
