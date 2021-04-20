@@ -4,17 +4,17 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "YouTube動画の提供表示や購読要求を飛び越します。視聴している動画の該当部分を報告して，みんなが時間を節約できるようにしましょう。",
+        "message": "YouTube動画の提供表示や登録要求をスキップします。視聴している動画の当該部分を報告して，みんなが時間を節約できるようにしましょう。",
         "description": "Description of the extension."
     },
     "400": {
-        "message": "この要求はサーバーに対して妥当でないようです。"
+        "message": "サーバーがこのリクエストは無効であると返答しました"
     },
     "429": {
-        "message": "一つの動画に対してあまりに多くの跳躍箇所を提出しています。本当にこれほど多くありますか？"
+        "message": "一つの動画に対してあまりに多くのセグメントを提出しています。本当にこれだけ必要ですか？"
     },
     "409": {
-        "message": "これは既に提案されています。"
+        "message": "これは既に提出されています。"
     },
     "channelWhitelisted": {
         "message": "チャンネルをホワイトリストに登録しました!"
@@ -44,43 +44,43 @@
         "message": "非表示"
     },
     "hitGoBack": {
-        "message": "元の場所に戻るには，「飛び越さない」を押してください。"
+        "message": "元の場所に戻るには「スキップを取り消す」をクリックしてください。"
     },
     "unskip": {
-        "message": "スキップしない"
+        "message": "スキップを取り消す"
     },
     "reskip": {
-        "message": "再飛び越し"
+        "message": "再スキップ"
     },
     "paused": {
-        "message": "一時停止"
+        "message": "一時停止中"
     },
     "manualPaused": {
-        "message": "計時器が停止しました"
+        "message": "タイマーが停止しました"
     },
     "confirmMSG": {
-        "message": "個々の値を編集・削除するには，案内ボタンを押すか右上隅にある拡張機能のアイコンを押して拡張機能の吹き出しを表示します。"
+        "message": "個々の値を編集・削除するには、情報ボタンをクリックするか右上隅にある拡張機能のアイコンをクリックして拡張機能のポップアップを表示します。"
     },
     "clearThis": {
         "message": "本当に消去しますか？\n\n"
     },
     "Unknown": {
-        "message": "提供表示の提案を送信中に異常が発生しました。しばらく経ってからもう一度お試しください。"
+        "message": "スポンサー表示の投稿中にエラーが発生しました。しばらく経ってからもう一度お試しください。"
     },
     "sponsorFound": {
-        "message": "この動画用の区画はデータベースに登録されています！"
+        "message": "この動画用のセグメントはデータベースに登録されています！"
     },
     "sponsor404": {
-        "message": "区画が見付かりませんでした"
+        "message": "セグメントが見つかりませんでした"
     },
     "sponsorStart": {
-        "message": "区画がすぐに始まります"
+        "message": "セグメントが始まりました"
     },
     "sponsorEnd": {
-        "message": "区画がすぐに終了します"
+        "message": "セグメントが終わりました"
     },
     "noVideoID": {
-        "message": "YouTube動画が見付かりませんでした。\n間違っている場合は，タブを再読込してください。"
+        "message": "YouTube動画が見つかりませんでした。\nこれが正しくない場合は、タブを再読み込みしてください。"
     },
     "success": {
         "message": "成功しました!"
@@ -212,6 +212,10 @@
     "showNotice": {
         "message": "再度通知を表示する"
     },
+    "longDescription": {
+        "message": "SponsorBlockはスポンサー、イントロ、アウトロ、チャンネル登録のお願いなど、YouTube動画の煩わしい部分をスキップします。SponsorBlockはYouTube動画のスポンサー付きセグメントなどの開始時間と終了時間を誰でも投稿できる、クラウドソースのブラウザ拡張機能です。一人がセグメントの情報を送信すると、この拡張機能を使用している他の全員が、スポンサー付きセグメントをスキップできるようになります。また、ミュージックビデオの音楽がない部分をスキップすることもできます。",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "ウェブサイト",
         "description": "Used on Firefox Store Page"
@@ -219,6 +223,45 @@
     "sourceCode": {
         "message": "ソースコード",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "通知がアップグレードされました！",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "もしそれでも気に入らない場合は、非表示ボタンをクリックしてください。",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "セグメントをスキップするキーを設定"
+    },
+    "setStartSponsorShortcut": {
+        "message": "セグメントを開始するキーを設定"
+    },
+    "setSubmitKeybind": {
+        "message": "投稿するキーを設定"
+    },
+    "keybindDescription": {
+        "message": "キーを入力して設定します"
+    },
+    "keybindDescriptionComplete": {
+        "message": "キーバインドを次の通り設定しました: "
+    },
+    "0": {
+        "message": "接続がタイムアウトになりました。インターネット接続をご確認ください。接続に問題がない場合、サーバーが混雑またはダウンしている可能性があります。"
+    },
+    "disableSkipping": {
+        "message": "スキップは有効です"
+    },
+    "enableSkipping": {
+        "message": "スキップは無効です"
+    },
+    "yourWork": {
+        "message": "あなたの貢献",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "サーバーが混雑中です。数秒後にもう一度お試しください。"
     },
     "errorCode": {
         "message": "エラーコード: "
@@ -241,8 +284,17 @@
     "audioNotification": {
         "message": "オーディオ通知をスキップ"
     },
+    "audioNotificationDescription": {
+        "message": "スキップ時の音声通知は、セグメントがスキップされる毎に音を鳴らす機能です。無効 (または自動スキップが無効) の場合、音は再生されません。"
+    },
+    "showTimeWithSkips": {
+        "message": "スキップした分を除いた時間を表示する"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "この時間は、シークバーの下にある現在の時間の隣に表示されます。これは、動画の合計時間からすべてのセグメントの時間を差し引いたもので「シークバーに表示」として設定されているセグメントも含まれます。"
+    },
     "youHaveSkipped": {
-        "message": "スキップしました "
+        "message": "スキップしたセグメント数: "
     },
     "minLower": {
         "message": "分"
