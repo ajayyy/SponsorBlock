@@ -516,6 +516,9 @@
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"
     },
+    "category_music_offtopic_description": {
+        "message": "Yalnızca müzik videolarında kullanım içindir. Bu yalnızca başka bir kategoriye katılmamış müzik videolarının parçaları için kullanılmalıdır."
+    },
     "category_music_offtopic_short": {
         "message": "Müzik Olmayan Bölüm"
     },
