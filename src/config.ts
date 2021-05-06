@@ -346,7 +346,7 @@ function migrateOldFormats(config: SBConfig) {
 
         config.categorySelections.push({
             name: "highlight" as Category,
-            option: CategorySkipOption.AutoSkip
+            option: CategorySkipOption.ManualSkip
         });
 
         config.categorySelections = config.categorySelections;
