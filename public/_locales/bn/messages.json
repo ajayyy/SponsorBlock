@@ -1,1 +1,6 @@
-{}
+{
+    "fullName": {
+        "message": "ইউটিউবের জন্য স্পনসরব্লক - স্পনসরশিপ এড়িয়ে যান",
+        "description": "Name of the extension."
+    }
+}
