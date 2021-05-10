@@ -37,6 +37,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "openHelp":
             chrome.tabs.create({url: chrome.runtime.getURL('help/index_en.html')});
             return;
+        case "openPage":
+            chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
+            return;
         case "sendRequest":
             sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
                 callback({

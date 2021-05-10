@@ -1,0 +1,356 @@
+/* Options page CSS */
+body {
+    font-family: sans-serif;
+}
+
+.center {
+    text-align: center;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.keybind-status {
+    display: inline;
+}
+
+.small-description {
+    color: white;
+    font-size: 13px;
+}
+
+.medium-description {
+    color: white;
+    font-size: 15px;
+}
+
+.option-text-box {
+    width: 300px;
+}
+
+.option-button {
+    cursor: pointer;
+
+    background-color: #c00000;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+
+    width: max-content;
+}
+
+.option-button:hover {
+    background-color: #fc0303;
+}
+
+.option-button.disabled {
+    cursor: default;
+
+    background-color: #520000;
+    color: grey;
+}
+
+#options {
+    max-width: 60%;
+    text-align: left;
+    display: inline-block;
+}
+
+.switch-container:after {
+	content: attr(label-name);
+    position: absolute;
+    padding: 4px;
+    width: max-content;
+
+    font-size: 14px;
+    color: white;
+}
+
+.text-label-container {
+    font-size: 14px;
+    color: white;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #707070;
+}
+
+.animated * {
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+}
+
+.animated .slider:before {
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #fc0303;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* Boilerplate CSS from https://ajay.app */
+
+body {
+    background-color: #333333;
+}
+
+.projectPreview {
+    position: relative;
+}
+
+.projectPreviewImage {
+    position: absolute;
+    left: -90px;
+    width: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.projectPreviewImageLarge {
+    position: absolute;
+    left: -210px;
+    width: 200px;
+    top: 50%;
+    transform: translateY(-20%);
+}
+
+.projectPreviewImageLargeRight {
+    position: absolute;
+    right: -210px;
+    width: 200px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.createdBy {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    display: inline-block;
+}
+
+#title {
+    background-color: #636363;
+  
+    text-align: center;
+    vertical-align: middle;
+  
+    font-size: 50px;
+    color: #212121;
+  
+    padding: 20px;
+  
+    text-decoration: none;
+  
+    transition: font-size 1s;
+}
+
+.subtitle {
+    font-size: 40px;
+    color: #dad8d8;
+  
+    padding-top: 10px;
+  
+    transition: font-size 0.4s;
+}
+
+.subtitle:hover {
+    font-size: 45px;
+  
+    transition: font-size 0.4s;
+}
+
+.profilepic {
+    background-color: #636363 !important;
+    vertical-align: middle;
+}
+
+.profilepiccircle {
+    vertical-align: middle;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+a {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.link {
+    padding: 20px;
+  
+    height: 80px;
+  
+    transition: height 0.2s;
+}
+
+.link:hover {
+    height: 95px;
+  
+    transition: height 0.2s;
+}
+
+#contact,.smalllink {
+    font-size: 25px;
+    color: #e8e8e8;
+  
+    text-align: center;
+  
+    padding: 10px;
+}
+
+#contact {
+    text-decoration: none;
+}
+
+p,li {
+    font-size: 20px;
+    color: #c4c4c4;
+  
+    padding: 10px;
+}
+
+p,li,code,a {
+    max-width: 60%;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+@media screen and (orientation:portrait) {
+    p,li,code,a {
+        max-width: 100%;
+    }
+  
+    .projectPreviewImage {
+        position: unset;
+        width: 130px;
+        display: block;
+        margin: auto;
+        transform: none;
+    }
+}
+
+.previewImage {
+    max-height: 200px;
+}
+
+img {
+    max-width: 100%;
+  
+    text-align: center;
+}
+
+#recentPostTitle {
+    font-size: 30px;
+    color: #dad8d8;
+}
+
+#recentPostDate {
+    font-size: 15px;
+    color: #dad8d8;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #dad8d8;
+}
+
+svg {
+    text-decoration: none; 
+}
+
+.number-container:before {
+    content: attr(label-name);
+    padding-right: 4px;
+    width: max-content;
+
+    font-size: 14px;
+    color: white;
+}
+
+/* React styles */
+
+.categoryTableElement {
+    font-size: 16px;
+
+    color: white;
+}
+
+.categoryTableElement > * {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.categoryOptionsSelector {
+    background-color: #c00000;
+    color: white;
+    
+    border: none;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.categoryColorTextBox {
+    width: 60px;
+
+    background: none;
+    border: none;
+}
