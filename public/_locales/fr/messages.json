@@ -138,7 +138,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Astuce: Vous pouvez configurer des raccourcis clavier dans les options"
+        "message": "Astuce : vous pouvez configurer des raccourcis clavier dans les options"
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
@@ -291,7 +291,7 @@
         "message": "Afficher le temps avec les passages supprimés"
     },
     "showTimeWithSkipsDescription": {
-        "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tout les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
+        "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tous les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
     },
     "youHaveSkipped": {
         "message": "Vous avez passé "
@@ -324,7 +324,7 @@
         "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
     "whatChangeUserID": {
-        "message": "Gardez ça privé. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtiens, il peut vous usurper."
+        "message": "Cette information doit rester confidentielle. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtient, il pourra se faire passer pour vous."
     },
     "setUserID": {
         "message": "Définir \"UserID\""
@@ -514,7 +514,10 @@
         "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
     },
     "category_music_offtopic": {
-        "message": "Musique : Segment non-musical"
+        "message": "Musique : Segment non musical"
+    },
+    "category_music_offtopic_description": {
+        "message": "A utiliser seulement pour les vidéos de musiques. Ceci ne devrait qu'être utilisé que pour des morceaux de vidéos de musiques qui ne sont pas couvert par d'autres catégories."
     },
     "category_music_offtopic_short": {
         "message": "Hors musique"
@@ -590,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Il semble que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. C'est probablement votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Si vous ne pouvez pas résoudre ça, désactivé le paramètre 'Ignorer vidéos privées ou pas listées\", car SponsorBlock ne peux pas trouver cette vidéo"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Si ça se reproduit, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

@@ -56,7 +56,7 @@
         "message": "Pausado"
     },
     "manualPaused": {
-        "message": "Tempo parado"
+        "message": "Temporizador parado"
     },
     "confirmMSG": {
         "message": "\n\nPara editar ou remover linhas individuais, clique com o botão direito ou abra o popup da extensão pelo icone no canto superior direito."
@@ -125,7 +125,7 @@
         "message": "Envios"
     },
     "savedPeopleFrom": {
-        "message": "Você salvou pessoas de "
+        "message": "Poupaste a outros de "
     },
     "viewLeaderboard": {
         "message": "Placar de classificação"
@@ -147,7 +147,7 @@
         "message": "Enviar Intervalos"
     },
     "publicStats": {
-        "message": "Isso é usado na página pública de estatísticas que mostra o quanto você já contríbuíu. Veja-a"
+        "message": "Isso é usado na página pública de estatísticas que mostra o quanto você já contribuiu. Veja-a"
     },
     "Username": {
         "message": "Nome de usuário"
@@ -171,7 +171,7 @@
         "message": "Esconder botões no player do Youtube"
     },
     "hideButtonsDescription": {
-        "message": "Isto esconde os botões que aparecem no player do Youtube para submeter patrocínios. Entendemos que possa ser\n incómodo a algumas pessoas. Em vez de usar esses botões pode usar os do popup. Para esconder a mensagem que aparece, \n ususe o botão na mesma que diz \"Don't show this again\". Pode sempre reactivar estas definições novamente."
+        "message": "Esta opção esconde os botões que aparecem para enviar segmentos no player do YouTube."
     },
     "showInfoButton": {
         "message": "Mostrar botão de Informações no player do Youtube"
@@ -315,7 +315,7 @@
         "message": "Você poupou das pessoas"
     },
     "youHaveSavedTimeEnd": {
-        "message": " de suas vidas"
+        "message": " das vidas dos outros"
     },
     "statusReminder": {
         "message": "Verifique status.sponsor.ajay.app para o status do servidor."
@@ -423,13 +423,13 @@
         "message": "Importar/Exportar Todas as Opções"
     },
     "whatExportOptions": {
-        "message": "Essa suas preferências em JSON. Isso inclui seu ID de usuário, então lembre-se de compartilhar com cuidado."
+        "message": "Essas são suas preferências no formato JSON. Isso inclui seu ID de usuário, então lembre-se de compartilhar com cuidado."
     },
     "setOptions": {
         "message": "Definir Opções"
     },
     "exportOptionsWarning": {
-        "message": "Aviso: Alterar as opções é permanente e pode fazer a extensão parar de funcionar. Tem certeza que deseja fazer isso? Certifique-se de fazer um backup de seu antigo por precaução."
+        "message": "Aviso: Alterar as opções é permanente e pode fazer a extensão parar de funcionar. Tem certeza que deseja fazer isso? Certifique-se de fazer um backup por precaução."
     },
     "incorrectlyFormattedOptions": {
         "message": "Este JSON não está formatado corretamente. Suas opções não foram alteradas."
@@ -487,7 +487,7 @@
         "message": "Intervalo/Animação de Introdução"
     },
     "category_intro_description": {
-        "message": "Um intervalo sem conteúdo real. Pode ser um quadro em pausa, um frame estático, repetindo animação. Isso não deve ser usado para transições que contenham informação."
+        "message": "Um intervalo sem conteúdo real. Pode ser uma pausa, um quadro estático, uma animação repetitiva. Isso não deve ser usado em transições que contenham informação."
     },
     "category_intro_short": {
         "message": "Intervalo"
@@ -502,7 +502,7 @@
         "message": "Lembrete de interação (inscrever-se)"
     },
     "category_interaction_description": {
-        "message": "Quando houver um pequeno lembrete para curtir, inscreva-se ou segui-los no meio do conteúdo. Se é longo ou sobre algo específico, deveria ser sob auto-promoção."
+        "message": "Quando houver um pequeno lembrete para curtir, inscrever-se ou segui-los no meio do conteúdo. Se é longo ou sobre algo específico, deveria ser sob Não-pago/Auto promoção."
     },
     "category_interaction_short": {
         "message": "Lembrete de interação"
@@ -511,7 +511,7 @@
         "message": "Não-pago/Auto promoção"
     },
     "category_selfpromo_description": {
-        "message": "Similar a \"patrocinador\", exceto para auto promoções e não-pagas. Isto inclui seções sobre vendas, doações ou informações sobre com quem colaboraram."
+        "message": "Similar a \"patrocinador\", mas para auto promoções e segmentos não-pagos. Isto inclui seções sobre vendas, doações ou informações sobre com quem colaboraram."
     },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
@@ -541,7 +541,7 @@
         "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma tralha / hashtag no início."
     },
     "previewColor": {
-        "message": "Cor de pré-visualização",
+        "message": "Pré-visualizar cor",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -610,7 +610,7 @@
         "message": "Considere ativar a 'forçar verificação de canal antes de pular\""
     },
     "downvoteDescription": {
-        "message": "Incorreto/tempo errado"
+        "message": "Tempo errado ou incorreto"
     },
     "incorrectCategory": {
         "message": "Categoria errada"
@@ -619,7 +619,7 @@
         "message": "Este vídeo é categorizado como música. Tem certeza que isto tem um patrocinador? Se este é realmente um \"segmento não musical\", abra as opções da extensão e habilite esta categoria. Assim você pode enviar este segmento como \"não-musical\" ao invés de patrocinador. Por favor leia as diretrizes se estiver confuso."
     },
     "multipleSegments": {
-        "message": "Multiplos segmentos"
+        "message": "Múltiplos segmentos"
     },
     "guidelines": {
         "message": "Diretrizes"

@@ -80,7 +80,7 @@
         "message": "Segmen Berakhir Sekarang"
     },
     "noVideoID": {
-        "message": "Video YouTube tidak ditemukan.\nJika hal ini salah, refresh tab."
+        "message": "Video YouTube tidak ditemukan.\nJika terjadi kesalahan, silahkan ulangin halaman."
     },
     "success": {
         "message": "Sukses!"
@@ -113,10 +113,10 @@
         "message": "Apakah anda yakin ingin mengirim ini?"
     },
     "whitelistChannel": {
-        "message": "Daftar putih channel"
+        "message": "Daftar kanal putih"
     },
     "removeFromWhitelist": {
-        "message": "Hapus channel dari daftar putih"
+        "message": "Hapus kanal dari daftar putih"
     },
     "voteOnTime": {
         "message": "Beri Segmen Vote"
@@ -294,7 +294,7 @@
         "message": "Waktu ini muncul di dalam kurung disamping waktu asli di bilah waktu. Ini menunjukkan durasi total video yang tidak termasuk segmen apapun. Ini termasuk segmen yang ditandai hanya \"Tampilkan Di Bilah Waktu\"."
     },
     "youHaveSkipped": {
-        "message": "Anda telah melewatkan "
+        "message": "Anda sudah melewati "
     },
     "youHaveSaved": {
         "message": "Anda sudah menghemat waktu "
@@ -312,10 +312,10 @@
         "message": "jam"
     },
     "youHaveSavedTime": {
-        "message": "Anda telah menyelamatkan orang"
+        "message": "Anda sudah menghemat waktu orang lain"
     },
     "youHaveSavedTimeEnd": {
-        "message": " dalam hidup mereka"
+        "message": " dari hidup mereka"
     },
     "statusReminder": {
         "message": "Cek status.sponsor.ajay.app untuk status server."
