@@ -600,6 +600,9 @@
     "acceptPermission": {
         "message": "Zaakceptuj uprawnienie"
     },
+    "permissionRequestSuccess": {
+        "message": "Uzyskano uprawnienia!"
+    },
     "permissionRequestFailed": {
         "message": "Prośba odrzucona. Może kliknięto „Odmów”?"
     },
