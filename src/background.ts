@@ -32,7 +32,8 @@ chrome.tabs.onUpdated.addListener(function(tabId) {
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	switch(request.message) {
         case "openConfig":
-            chrome.runtime.openOptionsPage();
+            console.log(chrome.runtime.getURL('permissions/index.html' + (request.hash ?  '#' + request.hash : '')))
+            chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
             return;
         case "openHelp":
             chrome.tabs.create({url: chrome.runtime.getURL('help/index_en.html')});

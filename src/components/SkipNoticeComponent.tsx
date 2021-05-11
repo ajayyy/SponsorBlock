@@ -198,7 +198,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         </td>
                     }
 
-                    {/* Unskip Button */}
+                    {/* Unskip/Skip Button */}
                     <td className="sponsorSkipNoticeUnskipSection">
                         <button id={"sponsorSkipUnskipButton" + this.idSuffix}
                             className="sponsorSkipObject sponsorSkipNoticeButton"
@@ -424,7 +424,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         // See if show more categories was pressed
         if (event.target.value === "moreCategories") {
             // Open options page
-            chrome.runtime.sendMessage({"message": "openConfig"});
+            chrome.runtime.sendMessage({message: "openConfig", hash: event.target.value + "OptionsName"});
 
             // Reset option to original
             event.target.value = this.segments[0].category;

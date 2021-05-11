@@ -734,7 +734,6 @@ async function getVideoInfo(): Promise<void> {
 }
 
 async function videoInfoFetchFailed(errorMessage: string): Promise<void> {
-    console.log("failed\t" + errorMessage)
     if (utils.isFirefox()) {
         // Attempt to ask permission for youtube.com domain
         alert(chrome.i18n.getMessage("youtubePermissionRequest"));

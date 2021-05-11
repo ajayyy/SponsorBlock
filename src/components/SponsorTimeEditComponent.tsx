@@ -253,7 +253,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             if (confirm(chrome.i18n.getMessage("enableThisCategoryFirst")
                             .replace("{0}", chrome.i18n.getMessage("category_" + chosenCategory)))) {
                 // Open options page
-                chrome.runtime.sendMessage({"message": "openConfig"});
+                chrome.runtime.sendMessage({message: "openConfig", hash: chosenCategory + "OptionsName"});
             }
             
             return;
