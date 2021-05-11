@@ -594,8 +594,23 @@
     "adblockerIssue": {
         "message": "Кажется, что-то блокирует возможность SponsorBlock'а получать данные о видео. Возможно, это ваш блокировщик рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "youtubePermissionRequest": {
+        "message": "Кажется, SponsorBlock не может получить доступ к API YouTube. Чтобы исправить эту ошибку, дайте разрешение в окне, которое сейчас появится, подождите несколько секунд и затем перезагрузите страницу."
+    },
+    "acceptPermission": {
+        "message": "Дать разрешение"
+    },
+    "permissionRequestSuccess": {
+        "message": "Разрешение получено!"
+    },
+    "permissionRequestFailed": {
+        "message": "Не удалось получить разрешение, вы нажали на \"Блокировать\"?"
+    },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Если вы не можете решить эту проблему, попробуйте отключить \"Игнорировать непубличные видео\" в настройках, т. к. SponsorBlock не может получить настройки доступа этого видео"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Если вы не можете решить эту проблему, попробуйте отключить \"Принудительная проверка каналов перед пропуском\" в настройках, т. к. SponsorBlock не может получить настройки доступа этого видео"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Если это сообщения появляется слишком часто, это может быть вызвано вашим блокировщиком рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
