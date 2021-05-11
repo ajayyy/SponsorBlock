@@ -102,9 +102,10 @@ class PreviewBar {
             let currentSegmentLength = Infinity;
 
             for (const seg of this.segments) {
-                if (seg.segment[0] <= timeInSeconds && seg.segment[1] > timeInSeconds) {
-                    const segmentLength = seg.segment[1] - seg.segment[0];
-
+                const segmentLength = seg.segment[1] - seg.segment[0];
+                const startTime = segmentLength !== 0 ? seg.segment[0] : Math.floor(seg.segment[0]);
+                const endTime = segmentLength !== 0 ? seg.segment[1] : Math.ceil(seg.segment[1]);
+                if (startTime <= timeInSeconds && endTime >= timeInSeconds) {
                     if (segmentLength < currentSegmentLength) {
                         currentSegmentLength = segmentLength;
                         segment = seg;
