@@ -233,7 +233,7 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Establecer clave para omitir un segmento"
+        "message": "Establecer tecla para omitir un segmento"
     },
     "setStartSponsorShortcut": {
         "message": "Establecer tecla para iniciar segmento"
@@ -594,8 +594,23 @@
     "adblockerIssue": {
         "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de vídeo. Este es probablemente su bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "youtubePermissionRequest": {
+        "message": "Parece que SponsorBlock no puede acceder a la API de YouTube. Para solucionarlo, acepta el aviso de permiso que aparecerá a continuación, espera unos segundos y vuelve a cargar la página."
+    },
+    "acceptPermission": {
+        "message": "Aceptar permiso"
+    },
+    "permissionRequestSuccess": {
+        "message": "¡Petición de permiso realizada con éxito!"
+    },
+    "permissionRequestFailed": {
+        "message": "La petición de permiso ha fallado, ¿has hecho clic en denegar?"
+    },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Si no puedes resolver esto, desactiva la configuración 'Ignorar vídeos no listados/privados', porque SponsorBlock no puede recuperar la información de visibilidad de este vídeo"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Si no puede resolverlo, desactive la opción \"Forzar la comprobación del canal antes de saltar\", ya que SponsorBlock no puede recuperar la información de visibilidad de este vídeo"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Si esto sigue ocurriendo, podría ser causado por tu bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Solicitudes"
