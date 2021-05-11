@@ -41,7 +41,7 @@
         "message": "Ladataan..."
     },
     "Hide": {
-        "message": "Älä näytä koskaan"
+        "message": "Älä Näytä Koskaan"
     },
     "hitGoBack": {
         "message": "Paina 'älä ohita' mennäksesi takaisin kohtaan jossa olit."
@@ -104,7 +104,7 @@
         "message": "Avaa SponsorBlock-ponnahdusikkuna"
     },
     "closePopup": {
-        "message": "Sulje Ponnahdus-ikkuna"
+        "message": "Sulje Ponnahdusikkuna"
     },
     "SubmitTimes": {
         "message": "Lähetä Segmentit"
@@ -165,7 +165,7 @@
         "message": "Asetukset"
     },
     "showButtons": {
-        "message": "Näytä painikkeet YouTuben soittimessa"
+        "message": "Näytä Painikkeet YouTuben Soittimessa"
     },
     "hideButtons": {
         "message": "Piilota painikkeet YouTuben soittimessa"
@@ -174,7 +174,7 @@
         "message": "Tämä piilottaa YouTuben soittimessa näkyvät, ohitettavien aikojen lähettämiseen käytetyt painikkeet."
     },
     "showInfoButton": {
-        "message": "Näytä info-painike YouTuben soittimessa"
+        "message": "Näytä Info-Painike YouTuben Soittimessa"
     },
     "hideInfoButton": {
         "message": "Piilota info-painike YouTuben soittimessa"
@@ -186,7 +186,7 @@
         "message": "Piilota poista-painike YouTuben soittimessa"
     },
     "showDeleteButton": {
-        "message": "Näytä poista-painike YouTuben soittimessa"
+        "message": "Näytä Poista-Painike YouTuben Soittimessa"
     },
     "whatDeleteButton": {
         "message": "Tämä on YouTuben soittimen painike, joka poistaa kaikki kyseisen videon sponsorointikohdat, joita et ole vielä lähettänyt."
@@ -229,7 +229,7 @@
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "Jos et vieläkään pidä siitä, paina \"älä koskaan näytä\" -painiketta.",
+        "message": "Jos et vieläkään pidä siitä, paina \"älä näytä koskaan\" -painiketta.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
@@ -408,7 +408,7 @@
         "message": "Oletko varma, että haluat nollata tämän?"
     },
     "confirmPrivacy": {
-        "message": "Video on havaittu piilotetuksi. Paina peruuta jos et halua tarkistaa ohitettavia segmenttejä."
+        "message": "Video on havaittu piilotetuksi. Paina peruuta, jos et halua tarkistaa ohitettavia segmenttejä."
     },
     "unlistedCheck": {
         "message": "Ohita Piilotetut/Yksityiset Videot"
@@ -511,10 +511,10 @@
         "message": "Maksamaton/Itsensä Mainostus"
     },
     "category_selfpromo_description": {
-        "message": "Samankaltainen \"sponsorin\" kanssa paitsi maksamaton tai itsensä mainostus. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
+        "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
     },
     "category_music_offtopic": {
-        "message": "Musiikki: muussa kuin Musiikki-osiossa"
+        "message": "Musiikki: Ei-Musiikki-Osio"
     },
     "category_music_offtopic_description": {
         "message": "Vain käytettävissä musiikkivideoissa. Tätä tulee käyttää vain musiikkivideoiden osissa, jotka eivät jo kuulu toiseen kategoriaan."

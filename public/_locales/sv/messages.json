@@ -17,7 +17,7 @@
         "message": "Den här har redan blivit rapporterad"
     },
     "channelWhitelisted": {
-        "message": "Kanal vitlistad!"
+        "message": "Kanalen är vitlistad!"
     },
     "Segment": {
         "message": "segment"
@@ -41,16 +41,16 @@
         "message": "Laddar..."
     },
     "Hide": {
-        "message": "Visa Aldrig"
+        "message": "Visa aldrig"
     },
     "hitGoBack": {
         "message": "Tryck på Tillbaka för att ångra åtgärden."
     },
     "unskip": {
-        "message": "Tillbaka"
+        "message": "Hoppa inte över"
     },
     "reskip": {
-        "message": "Framåt"
+        "message": "Hoppa över"
     },
     "paused": {
         "message": "Pausad"
@@ -83,7 +83,7 @@
         "message": "Hittade ingen YouTube-video.\nUppdatera fliken om detta är felaktigt."
     },
     "success": {
-        "message": "Lyckades!"
+        "message": "Klart!"
     },
     "voted": {
         "message": "Röstat!"
@@ -137,8 +137,11 @@
         "message": "Sektionsredigering kommer att visas efter du har klickat på skicka",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
+    "popupHint": {
+        "message": "Tips: Du kan ställa in snabbtangenter för de olika inskickningsalternativen"
+    },
     "clearTimesButton": {
-        "message": "Rensa Tider"
+        "message": "Rensa tider"
     },
     "submitTimesButton": {
         "message": "Rapportera Tider"
@@ -197,6 +200,9 @@
     "enableQueryByHashPrefix": {
         "message": "Fråga efter hash-prefix"
     },
+    "whatQueryByHashPrefix": {
+        "message": "I stället för att begära segment från servern med hjälp av video-ID skickas de första 4 tecknen i hashen av video-ID:et. Servern kommer då att skicka tillbaka data för alla videor med liknande hashar."
+    },
     "enableRefetchWhenNotFound": {
         "message": "Uppdatera segment på nya videor"
     },
@@ -230,13 +236,13 @@
         "message": "Ställ in knapp för att hoppa över ett segment"
     },
     "setStartSponsorShortcut": {
-        "message": "Ange den tangent som ska fungera som starttangent för ett segment"
+        "message": "Ange den tangent som ska fungera som snabbstartstangent för ett segment"
     },
     "setSubmitKeybind": {
         "message": "Välj knapp att koppla till rapportering av sponsormeddelande"
     },
     "keybindDescription": {
-        "message": "Koppla knapp genom att trycka på den"
+        "message": "Ange tangent genom att trycka på den"
     },
     "keybindDescriptionComplete": {
         "message": "Kopplad till: "
@@ -345,7 +351,7 @@
         "message": "Invidious (invidio.us) är en tredjeparts YouTube-klient. För att aktivera stöd måste du acceptera de extra behörigheterna. Detta kommer INTE att fungera i incognito i Chrome och andra Cromium-varianter."
     },
     "optionsInfo": {
-        "message": "Aktivera Invidious stöd, avaktivera hoppa över automatiskt, dölj knappar och mer."
+        "message": "Aktivera Invidious stöd, inaktivera hoppa över automatiskt, dölj knappar och mer."
     },
     "addInvidiousInstance": {
         "message": "Lägg Till Invidious Instans"
@@ -405,7 +411,7 @@
         "message": "Den här videon verkar vara olistad. Klicka på avbryt om du inte vill söka efter överhoppade segment."
     },
     "unlistedCheck": {
-        "message": "Ignorera Olistade Videor"
+        "message": "Ignorera olistade/privata videor"
     },
     "whatUnlistedCheck": {
         "message": "Den här inställningen kommer att slöa ner SponsorBlock. Segmentöverhoppssökningar kräver att video-ID skickas till servern. Om du är orolig över att olistade video-ID:s skickas över internet, aktivera då detta alternativ."
@@ -474,14 +480,23 @@
     "category_sponsor": {
         "message": "Sponsormeddelande"
     },
+    "category_sponsor_description": {
+        "message": "Betald marknadsföring, betalda hänvisningar och direktannonser, men inte till egen marknadsföring eller gratis shoutouts till skapare/webbplatser/produkter de gillar."
+    },
     "category_intro": {
         "message": "Paus/Introduktion"
+    },
+    "category_intro_description": {
+        "message": "Ett intervall utan faktiskt innehåll. Kan vara en paus, statisk ram, upprepande animation. Denna bör inte användas för övergångar som innehåller information."
     },
     "category_intro_short": {
         "message": "Uppehåll"
     },
     "category_outro": {
         "message": "Slutkort/Credits"
+    },
+    "category_outro_description": {
+        "message": "Credits eller när YouTube-slutkort visas. Inte för slut med information."
     },
     "category_interaction": {
         "message": "Interaktionspåminnelse (Prenumerera)"
@@ -495,8 +510,14 @@
     "category_selfpromo": {
         "message": "Obetald/självbefodran"
     },
+    "category_selfpromo_description": {
+        "message": "Som \"sponsormeddelande\" men med undantag för obetald eller självkampanj. Detta inkluderar avsnitt om varor, donationer eller information om vem de samarbetade med."
+    },
     "category_music_offtopic": {
         "message": "Musik: Icke-musikavsnitt"
+    },
+    "category_music_offtopic_description": {
+        "message": "Ska endast användas i musikvideor. Denna ska endast användas för delar av musikvideor som inte redan omfattas av en annan kategori."
     },
     "category_music_offtopic_short": {
         "message": "Icke-musik"
@@ -508,7 +529,7 @@
         "message": "Läser meddelande"
     },
     "disable": {
-        "message": "Avaktivera"
+        "message": "Inaktivera"
     },
     "manualSkip": {
         "message": "Hoppa Över Manuellt"
@@ -573,6 +594,9 @@
     "adblockerIssue": {
         "message": "Det verkar som om något blockerar SponsorBlocks från att hämta videodata. Det beror förmodligen på din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Om du inte kan lösa detta kan du inaktivera 'Ignorera olistade/privata videor' i inställningar, eftersom SponsorBlock inte kan hämta synlighetsinformationen för den här videon"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
@@ -608,7 +632,7 @@
         "message": "Kategorier finns här!"
     },
     "categoryUpdate2": {
-        "message": "Öppna inställningarna för att skippa intros, outros, merch, osv."
+        "message": "Öppna inställningarna för att hoppa över intros, outros, merch, osv."
     },
     "help": {
         "message": "Hjälp"

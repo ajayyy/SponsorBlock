@@ -1,0 +1,1 @@
+- [ ] I agree to license my contribution under LGPL-3.0 **or** my contribution is from another project with a license compatible with LGPL-3.0

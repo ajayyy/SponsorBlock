@@ -3,6 +3,19 @@
         "message": "SponserBlock for YouTube - 動画のスポンサーセクションを自動でスキップする",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "YouTube動画の提供表示や登録要求をスキップします。視聴している動画の当該部分を報告して，みんなが時間を節約できるようにしましょう。",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "サーバーがこのリクエストは無効であると返答しました"
+    },
+    "429": {
+        "message": "一つの動画に対してあまりに多くのセグメントを提出しています。本当にこれだけ必要ですか？"
+    },
+    "409": {
+        "message": "これは既に提出されています。"
+    },
     "channelWhitelisted": {
         "message": "チャンネルをホワイトリストに登録しました!"
     },
@@ -12,8 +25,14 @@
     "Segments": {
         "message": "セグメント"
     },
+    "upvoteButtonInfo": {
+        "message": "この提案を支持する"
+    },
     "reportButtonTitle": {
         "message": "報告"
+    },
+    "reportButtonInfo": {
+        "message": "この提案が正しくないことを報告する。"
     },
     "Dismiss": {
         "message": "無視"
@@ -24,11 +43,44 @@
     "Hide": {
         "message": "非表示"
     },
+    "hitGoBack": {
+        "message": "元の場所に戻るには「スキップを取り消す」をクリックしてください。"
+    },
     "unskip": {
-        "message": "スキップしない"
+        "message": "スキップを取り消す"
+    },
+    "reskip": {
+        "message": "再スキップ"
     },
     "paused": {
-        "message": "一時停止"
+        "message": "一時停止中"
+    },
+    "manualPaused": {
+        "message": "タイマーが停止しました"
+    },
+    "confirmMSG": {
+        "message": "個々の値を編集・削除するには、情報ボタンをクリックするか右上隅にある拡張機能のアイコンをクリックして拡張機能のポップアップを表示します。"
+    },
+    "clearThis": {
+        "message": "本当に消去しますか？\n\n"
+    },
+    "Unknown": {
+        "message": "スポンサー表示の投稿中にエラーが発生しました。しばらく経ってからもう一度お試しください。"
+    },
+    "sponsorFound": {
+        "message": "この動画用のセグメントはデータベースに登録されています！"
+    },
+    "sponsor404": {
+        "message": "セグメントが見つかりませんでした"
+    },
+    "sponsorStart": {
+        "message": "セグメントが始まりました"
+    },
+    "sponsorEnd": {
+        "message": "セグメントが終わりました"
+    },
+    "noVideoID": {
+        "message": "YouTube動画が見つかりませんでした。\nこれが正しくない場合は、タブを再読み込みしてください。"
     },
     "success": {
         "message": "成功しました!"
@@ -36,11 +88,29 @@
     "voted": {
         "message": "投票しました!"
     },
+    "serverDown": {
+        "message": "サーバーがダウンしているようです。今すぐ開発者にお知らせください。"
+    },
+    "connectionError": {
+        "message": "接続エラーが発生しました。エラーコード: "
+    },
+    "wantToSubmit": {
+        "message": "次の動画IDで提出します:"
+    },
+    "clearTimes": {
+        "message": "セグメントをクリア"
+    },
     "openPopup": {
         "message": "SponsorBlock のポップアップを開く"
     },
     "closePopup": {
         "message": "ポップアップを閉じる"
+    },
+    "SubmitTimes": {
+        "message": "セグメントを提出"
+    },
+    "submitCheck": {
+        "message": "本当に提出してよろしいですか？"
     },
     "whitelistChannel": {
         "message": "ホワイトリストのチャンネル"
@@ -48,17 +118,45 @@
     "removeFromWhitelist": {
         "message": "ホワイトリストからチャンネルを削除"
     },
+    "voteOnTime": {
+        "message": "セグメントに投票"
+    },
+    "Submissions": {
+        "message": "提出数"
+    },
+    "savedPeopleFrom": {
+        "message": "次のセグメント数から人々を救いました: "
+    },
     "viewLeaderboard": {
         "message": "リーダーボード"
     },
     "recordTimesDescription": {
         "message": "送信"
     },
+    "submissionEditHint": {
+        "message": "提出をクリックするとセクション編集画面が表示されます",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "ヒント: オプションから提出時のキーバインドを設定できます"
+    },
+    "clearTimesButton": {
+        "message": "時間をクリア"
+    },
+    "submitTimesButton": {
+        "message": "時間を提出"
+    },
+    "publicStats": {
+        "message": "これは公開の統計ページであなたがどれだけ貢献したかを示すために使用され、ここで確認することができます: "
+    },
     "Username": {
         "message": "ユーザー名"
     },
     "setUsername": {
         "message": "ユーザー名を設定"
+    },
+    "discordAdvert": {
+        "message": "公式Discordサーバーに参加して意見やフィードバックをお寄せください！"
     },
     "hideThis": {
         "message": "非表示にする"
@@ -72,11 +170,51 @@
     "hideButtons": {
         "message": "YouTube プレイヤーにボタンを表示しない"
     },
+    "hideButtonsDescription": {
+        "message": "これを有効にするとYouTubeプレーヤーのセグメント提出ボタンが非表示になります。"
+    },
+    "showInfoButton": {
+        "message": "YouTubeプレーヤーの情報ボタンを表示する"
+    },
+    "hideInfoButton": {
+        "message": "YouTubeプレーヤーの情報ボタンを隠す"
+    },
+    "whatInfoButton": {
+        "message": "これはYouTubeのページ上でポップアップを開くためのボタンです。"
+    },
     "hideDeleteButton": {
         "message": "YouTube プレイヤーから削除ボタンを隠す"
     },
     "showDeleteButton": {
         "message": "YouTube プレイヤーから削除ボタンを表示する"
+    },
+    "whatDeleteButton": {
+        "message": "これはYouTubeプレーヤー上のボタンで、現在の動画から未提出のセグメントを全て消去します。"
+    },
+    "enableViewTracking": {
+        "message": "スキップ回数の統計を有効にする"
+    },
+    "whatViewTracking": {
+        "message": "この機能は、あなたがスキップしたセグメントを追跡して、そのセグメントがどれだけ役に立ったかを他のユーザーに知らせることで、スパムがデータベースに紛れないようにするための評価基準として使用されます。あなたがセグメントをスキップするたびに、拡張機能はサーバーにメッセージを送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "ハッシュプレフィックスを使って要求"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "動画IDを使用してサーバーからセグメントを要求する代わりに、動画IDのハッシュから最初の4文字が送信されます。それに対して、サーバーは類似したハッシュを持つすべての動画のデータを返却します。"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "新しい動画ではセグメントを再取得する"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "動画がまだ新しくセグメントが見つからない場合は、動画を視聴している間、数分おきにセグメントを検索し続けます。"
+    },
+    "showNotice": {
+        "message": "再度通知を表示する"
+    },
+    "longDescription": {
+        "message": "SponsorBlockはスポンサー、イントロ、アウトロ、チャンネル登録のお願いなど、YouTube動画の煩わしい部分をスキップします。SponsorBlockはYouTube動画のスポンサー付きセグメントなどの開始時間と終了時間を誰でも投稿できる、クラウドソースのブラウザ拡張機能です。一人がセグメントの情報を送信すると、この拡張機能を使用している他の全員が、スポンサー付きセグメントをスキップできるようになります。また、ミュージックビデオの音楽がない部分をスキップすることもできます。",
+        "description": "Full description of the extension on the store pages."
     },
     "website": {
         "message": "ウェブサイト",
@@ -85,6 +223,45 @@
     "sourceCode": {
         "message": "ソースコード",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "通知がアップグレードされました！",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "もしそれでも気に入らない場合は、非表示ボタンをクリックしてください。",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "セグメントをスキップするキーを設定"
+    },
+    "setStartSponsorShortcut": {
+        "message": "セグメントを開始するキーを設定"
+    },
+    "setSubmitKeybind": {
+        "message": "投稿するキーを設定"
+    },
+    "keybindDescription": {
+        "message": "キーを入力して設定します"
+    },
+    "keybindDescriptionComplete": {
+        "message": "キーバインドを次の通り設定しました: "
+    },
+    "0": {
+        "message": "接続がタイムアウトになりました。インターネット接続をご確認ください。接続に問題がない場合、サーバーが混雑またはダウンしている可能性があります。"
+    },
+    "disableSkipping": {
+        "message": "スキップは有効です"
+    },
+    "enableSkipping": {
+        "message": "スキップは無効です"
+    },
+    "yourWork": {
+        "message": "あなたの貢献",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "サーバーが混雑中です。数秒後にもう一度お試しください。"
     },
     "errorCode": {
         "message": "エラーコード: "
@@ -107,8 +284,17 @@
     "audioNotification": {
         "message": "オーディオ通知をスキップ"
     },
+    "audioNotificationDescription": {
+        "message": "スキップ時の音声通知は、セグメントがスキップされる毎に音を鳴らす機能です。無効 (または自動スキップが無効) の場合、音は再生されません。"
+    },
+    "showTimeWithSkips": {
+        "message": "スキップした分を除いた時間を表示する"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "この時間は、シークバーの下にある現在の時間の隣に表示されます。これは、動画の合計時間からすべてのセグメントの時間を差し引いたもので「シークバーに表示」として設定されているセグメントも含まれます。"
+    },
     "youHaveSkipped": {
-        "message": "スキップしました "
+        "message": "スキップしたセグメント数: "
     },
     "minLower": {
         "message": "分"

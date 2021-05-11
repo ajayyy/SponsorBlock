@@ -631,7 +631,7 @@
         "message": "Accept permission"
     },
     "permissionRequestSuccess": {
-        "message": "Permission success succeeded!"
+        "message": "Permission request succeeded!"
     },
     "permissionRequestFailed": {
         "message": "Permission request failed, did you click deny?"
