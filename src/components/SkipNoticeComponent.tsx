@@ -23,7 +23,8 @@ export interface SkipNoticeProps {
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
-    closeListener: () => void
+    closeListener: () => void;
+    showKeybindHint?: boolean;
 }
 
 export interface SkipNoticeState {
@@ -44,6 +45,8 @@ export interface SkipNoticeState {
     thanksForVotingText?: string; //null until the voting buttons should be hidden
 
     actionState?: SkipNoticeAction;
+
+    showKeybindHint?: boolean;
 }
 
 class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeState> {
@@ -112,7 +115,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             choosingCategory: false,
             thanksForVotingText: null,
 
-            actionState: SkipNoticeAction.None
+            actionState: SkipNoticeAction.None,
+
+            showKeybindHint: this.props.showKeybindHint ?? true
         }
 
         if (!this.autoSkip) {
@@ -200,7 +205,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             style={{marginLeft: "4px"}}
                             onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
 
-                            {this.state.unskipText + " (" + Config.config.skipKeybind + ")"}
+                            {this.state.unskipText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
                         </button>
                     </td>
 

@@ -1003,6 +1003,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     if (openNotice) {
         //send out the message saying that a sponsor message was skipped
         if (!Config.config.dontShowNotice || !autoSkip) {
+            skipNotices.forEach((notice) => notice.setShowKeybindHint(false));
             skipNotices.push(new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer));
         }
     }

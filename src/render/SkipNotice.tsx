@@ -67,6 +67,12 @@ class SkipNotice {
         );
     }
 
+    setShowKeybindHint(value: boolean): void {
+        this.skipNoticeRef.current.setState({
+            showKeybindHint: value
+        });
+    }
+
     close(): void {
         ReactDOM.unmountComponentAtNode(this.noticeElement);
 
