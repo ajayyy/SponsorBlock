@@ -394,6 +394,9 @@
     "channelDataNotFound": {
         "message": "まだチャンネル ID が読み込まれてません。"
     },
+    "permissionRequestSuccess": {
+        "message": "許可要求が成功しました。"
+    },
     "incorrectCategory": {
         "message": "カテゴリが違います"
     },
