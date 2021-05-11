@@ -594,8 +594,23 @@
     "adblockerIssue": {
         "message": "Sepertinya ada sesuatu yang memblokir kemampuan SponsorBlock untuk mendapatkan data video. Kemungkinan karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "youtubePermissionRequest": {
+        "message": "Sepertinya SponsorBlock tidak dapat menjangkau API YouTube. Untuk menyelesaikan masalah ini, terima permintaan izin yang akan muncul selanjutnya, tunggu beberapa detik, dan muat ulang halaman ini."
+    },
+    "acceptPermission": {
+        "message": "Terima permintaan izin"
+    },
+    "permissionRequestSuccess": {
+        "message": "Permintaan izin berhasil!"
+    },
+    "permissionRequestFailed": {
+        "message": "Permintaan izin gagal, apakah anda mengklik tolak?"
+    },
     "adblockerIssueUnlistedVideosInfo": {
-        "message": "Jika anda tidak bisa menyelesaikan ini, maka nonaktifkan pengaturan 'Abaikan video tidak terdaftar/privat', karena SponsorBlock tidak bisa mendapatkan informasi visibilitas untuk video ini"
+        "message": "Jika anda tidak dapat menyelesaikan masalah ini, maka nonaktifkan pengaturan 'Abaikan video tidak terdaftar/privat', dikarenakan SponsorBlock tidak dapat menerima informasi visibilitas untuk video ini"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Apabila anda tidak dapat menyelesaikan masalah ini, maka nonaktifkan pengaturan 'Paksa Cek Channel Sebelum Melewati', dikarenakan SponsorBlock tidak dapat menerima informasi visibilitas untuk video ini"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Jika ini terus terjadi, kemungkinan terjadi karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
