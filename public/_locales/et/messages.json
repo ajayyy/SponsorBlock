@@ -594,8 +594,23 @@
     "adblockerIssue": {
         "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. See on ilmselt sinu reklaamiblokeerija. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "youtubePermissionRequest": {
+        "message": "Tundub, et SponsorBlock ei pääse YouTube'i rakendusliidesele ligi. Selle parandamiseks nõustu järgnevalt kuvatava loataotlusega, oota paar sekundit ning seejärel laadi leht uuesti."
+    },
+    "acceptPermission": {
+        "message": "Nõustu loaga"
+    },
+    "permissionRequestSuccess": {
+        "message": "Loataotlus õnnestus!"
+    },
+    "permissionRequestFailed": {
+        "message": "Loataotlus ebaõnnestus, kas sa keeldusid?"
+    },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Kui sa ei suuda seda lahendada, keela valik \"ignoreeri registriväliseid/privaatsed videoid\", kuna SponsorBlock ei leia selle video nähtavusteavet"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Kui sa ei suuda seda lahendada, keela valik \"sunnitud kanalikontroll enne vahelejätmist\", kuna SponsorBlock ei leia selle video nähtavusteavet"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Kui see jätkub, võib see olla põhjustatud sinu reklaamiblokeerijast. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
