@@ -22,6 +22,8 @@ async function init() {
             if (granted) {
                 alert(chrome.i18n.getMessage("permissionRequestSuccess"));
 
+                Config.config.ytInfoPermissionGranted = true;
+
                 chrome.tabs.getCurrent((tab) => {
                     chrome.tabs.remove(tab.id);
                 });
