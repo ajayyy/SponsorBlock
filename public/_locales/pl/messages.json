@@ -609,9 +609,6 @@
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Jeżeli nie możesz naprawić tego to wyłącz w ustawieniach opcję \"Ignoruj prywatne filmy\", ponieważ SponsorBlock nie może uzyskać informacji o widoczności tego filmu"
     },
-    "adblockerIssueWhitelist": {
-        "message": "Jeśli nie możesz rozwiązać tego problemu, wyłącz opcję „Wymuś sprawdzanie kanału przed pomijaniem”, ponieważ SponsorBlock nie jest w stanie pobrać informacji o widoczności dla tego wideo."
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
