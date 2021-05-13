@@ -606,9 +606,6 @@
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Se você não consegue resolver isso, desative a configuração 'Ignorar vídeos não listados/privados', pois o SponsorBlock não pode recuperar as informações de visibilidade deste vídeo"
     },
-    "adblockerIssueWhitelist": {
-        "message": "Se você não é capaz de resolver isso, em seguida, desative a configuração 'Verificar canal de força', como Patrocinador não pode recuperar as informações de visibilidade deste vídeo"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Se isso continuar acontecendo, pode ser causado pelo seu bloqueador de anúncios. Por favor, verifique https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock-Requests"
     },
