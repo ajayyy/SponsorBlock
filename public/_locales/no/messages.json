@@ -609,9 +609,6 @@
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Hvis du ikke klarer å løse dette, skru av innstillingen «Ignorer uoppførte/private videoer», siden SponsorBlock er ute av stand til å innhente synlighetsinformasjonen til denne videoen."
     },
-    "adblockerIssueWhitelist": {
-        "message": "Hvis du ikke klarer å løse dette, skru av innstillingen «Fremtving kanalsjekk før hopping», siden SponsorBlock er ute av stand til å innhente synlighetsinformasjonen til denne videoen"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Hvis dette skjer til stadighet, kan det være forårsaket av reklameblokkereren din. Vennligst sjekk https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
