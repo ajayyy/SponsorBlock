@@ -606,9 +606,6 @@
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Ak to neviete vyriešiť, vypnite nastavenie \"Ignorovať nezaradené a súkromné videá\", lebo SponsorBlock nevie zistiť viditeľnosť tohto videa"
     },
-    "adblockerIssueWhitelist": {
-        "message": "Ak to neviete vyriešiť, vypnite nastavenie \"Vynútiť kontrolu kanála pred preskočením\", lebo SponsorBlock nevie zistiť viditeľnosť tohto videa"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Ak sa to bude diať aj naďalej, môže to byť spôsobené Vašim adblockerom. Prosím navštívte https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
