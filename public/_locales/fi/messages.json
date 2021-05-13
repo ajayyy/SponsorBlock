@@ -609,9 +609,6 @@
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Jos et pysty ratkaisemaan tätä, poista käytöstä asetus 'Ohita piilotetut/yksityiset videot', koska SponsorBlock ei pysty noutamaan tämän videon näkyvyystietoja"
     },
-    "adblockerIssueWhitelist": {
-        "message": "Jos et pysty ratkaisemaan tätä, poista käytöstä asetus 'Pakota Kanavan Tarkistus Ennen Ohittamista', koska SponsorBlock ei pysty noutamaan tämän videon näkyvyystietoja"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Jos tämä toistuu, mainosten esto-ohjelmasi voi olla syynä. Katso https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
