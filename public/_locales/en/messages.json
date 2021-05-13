@@ -610,7 +610,7 @@
         "message": "If you are unable to resolve this, then disable the setting 'Ignore unlisted/private videos', as SponsorBlock is unable to retrieve the visibility information for this video"
     },
     "adblockerIssueWhitelist": {
-        "message": "If you are unable to resolve this, then disable the setting 'Force Channel Check Before Skipping', as SponsorBlock is unable to retrieve the visibility information for this video"
+        "message": "If you are unable to resolve this, then disable the setting 'Force Channel Check Before Skipping', as SponsorBlock is unable to retrieve the channel information for this video"
     },
     "itCouldBeAdblockerIssue": {
         "message": "If this keeps occuring, it could be caused by your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
