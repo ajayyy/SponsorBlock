@@ -991,15 +991,14 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
     for (const segment of skippingSegments) {
         const index = sponsorTimes.indexOf(segment);
         if (index !== -1 && !sponsorSkipped[index]) {
-            if (Config.config.trackViewCount) {
-                if (!counted) {
-                    Config.config.minutesSaved = Config.config.minutesSaved + secondsSkipped / 60;
-                    Config.config.skipCount = Config.config.skipCount + 1;
-                    counted = true
-                }
-                if (fullSkip) utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
-            }
             sponsorSkipped[index] = true;
+            if (!Config.config.trackViewCount) return
+            if (!counted) {
+                Config.config.minutesSaved = Config.config.minutesSaved + secondsSkipped / 60;
+                Config.config.skipCount = Config.config.skipCount + 1;
+                counted = true
+            }
+            if (fullSkip) utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
         }
     }
 }
