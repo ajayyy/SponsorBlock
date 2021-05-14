@@ -13,7 +13,6 @@ export interface SubmissionNoticeProps {
     callback: () => unknown;
 
     closeListener: () => void;
-    smaller: boolean;
 }
 
 export interface SubmissionNoticeeState {

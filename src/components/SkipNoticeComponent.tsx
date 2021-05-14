@@ -25,6 +25,7 @@ export interface SkipNoticeProps {
 
     closeListener: () => void;
     showKeybindHint?: boolean;
+    smaller: boolean;
 }
 
 export interface SkipNoticeState {
@@ -142,6 +143,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             noticeStyle.transform = "scale(0.8) translate(10%, 10%)";
         }
 
+        const firstColumn = this.props.smaller ? (
+            this.getSkipButton()
+        ) : null;
+
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 amountOfPreviousNotices={this.amountOfPreviousNotices}
@@ -151,75 +156,73 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 maxCountdownTime={this.state.maxCountdownTime}
                 videoSpeed={() => this.contentContainer().v?.playbackRate}
                 ref={this.noticeRef}
-                closeListener={() => this.closeListener()}>
+                closeListener={() => this.closeListener()}
+                smaller={this.props.smaller}
+                firstColumn={firstColumn}>
                     
                 {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
                     <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>
                 </audio>}
 
                 {/* Text Boxes */}
-                {this.getMessageBoxes()}
+                {!this.props.smaller ? 
+                    this.getMessageBoxes() 
+                : ""}
               
                 {/* Bottom Row */}
-                <tr id={"sponsorSkipNoticeSecondRow" + this.idSuffix}>
+                {!this.props.smaller ?
+                    (<tr id={"sponsorSkipNoticeSecondRow" + this.idSuffix}>
 
-                    {/* Vote Button Container */}
-                    {!this.state.thanksForVotingText ?
-                        <td id={"sponsorTimesVoteButtonsContainer" + this.idSuffix}
-                            className="sponsorTimesVoteButtonsContainer">
+                        {/* Vote Button Container */}
+                        {!this.state.thanksForVotingText ?
+                            <td id={"sponsorTimesVoteButtonsContainer" + this.idSuffix}
+                                className="sponsorTimesVoteButtonsContainer">
 
-                            {/* Upvote Button */}
-                            <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                                className="sponsorSkipObject voteButton"
-                                style={{marginRight: "10px"}}
-                                src={chrome.extension.getURL("icons/thumbs_up.svg")}
-                                title={chrome.i18n.getMessage("upvoteButtonInfo")}
-                                onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
-                            
-                            </img>
+                                {/* Upvote Button */}
+                                <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
+                                    className="sponsorSkipObject voteButton"
+                                    style={{marginRight: "10px"}}
+                                    src={chrome.extension.getURL("icons/thumbs_up.svg")}
+                                    title={chrome.i18n.getMessage("upvoteButtonInfo")}
+                                    onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
+                                
+                                </img>
 
-                            {/* Report Button */}
-                            <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                                className="sponsorSkipObject voteButton"
-                                src={chrome.extension.getURL("icons/thumbs_down.svg")}
-                                title={chrome.i18n.getMessage("reportButtonInfo")}
-                                onClick={() => this.adjustDownvotingState(true)}>
-                            
-                            </img>
+                                {/* Report Button */}
+                                <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
+                                    className="sponsorSkipObject voteButton"
+                                    src={chrome.extension.getURL("icons/thumbs_down.svg")}
+                                    title={chrome.i18n.getMessage("reportButtonInfo")}
+                                    onClick={() => this.adjustDownvotingState(true)}>
+                                
+                                </img>
 
-                        </td>
+                            </td>
 
-                        :
+                            :
 
-                        <td id={"sponsorTimesVoteButtonInfoMessage" + this.idSuffix}
-                                className="sponsorTimesInfoMessage sponsorTimesVoteButtonMessage"
-                                style={{marginRight: "10px"}}>
-                            {this.state.thanksForVotingText}
-                        </td>
-                    }
+                            <td id={"sponsorTimesVoteButtonInfoMessage" + this.idSuffix}
+                                    className="sponsorTimesInfoMessage sponsorTimesVoteButtonMessage"
+                                    style={{marginRight: "10px"}}>
+                                {this.state.thanksForVotingText}
+                            </td>
+                        }
 
-                    {/* Unskip/Skip Button */}
-                    <td className="sponsorSkipNoticeUnskipSection">
-                        <button id={"sponsorSkipUnskipButton" + this.idSuffix}
-                            className="sponsorSkipObject sponsorSkipNoticeButton"
-                            style={{marginLeft: "4px"}}
-                            onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
+                        {/* Unskip/Skip Button */}
+                        {this.getSkipButton()}
 
-                            {this.state.unskipText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
-                        </button>
-                    </td>
+                        {/* Never show button if autoSkip is enabled */}
+                        {!this.autoSkip ? "" : 
+                            <td className="sponsorSkipNoticeRightSection">
+                                <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
+                                    onClick={this.contentContainer().dontShowNoticeAgain}>
 
-                    {/* Never show button if autoSkip is enabled */}
-                    {!this.autoSkip ? "" : 
-                        <td className="sponsorSkipNoticeRightSection">
-                            <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
-                                onClick={this.contentContainer().dontShowNoticeAgain}>
-
-                                {chrome.i18n.getMessage("Hide")}
-                            </button>
-                        </td>
-                    }
-                </tr>
+                                    {chrome.i18n.getMessage("Hide")}
+                                </button>
+                            </td>
+                        }
+                    </tr>)
+                : ""}
 
                 {/* Downvote Options Row */}
                 {this.state.downvoting &&
@@ -280,6 +283,20 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 }
 
             </NoticeComponent>
+        );
+    }
+
+    getSkipButton(): JSX.Element {
+        return (
+            <span className="sponsorSkipNoticeUnskipSection">
+                <button id={"sponsorSkipUnskipButton" + this.idSuffix}
+                    className="sponsorSkipObject sponsorSkipNoticeButton"
+                    style={{marginLeft: "4px"}}
+                    onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
+
+                    {this.state.unskipText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
+                </button>
+            </span>
         );
     }
 

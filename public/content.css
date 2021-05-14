@@ -116,6 +116,10 @@
 	border-collapse: unset;
 }
 
+.sponsorSkipNotice .hidden {
+	display: none;
+}
+
 .sponsorSkipNoticeFadeIn {
 	animation: fadeIn 0.5s;
 }
@@ -131,7 +135,18 @@
     padding: 2px 5px;
     font-size: 12px;
 
+	display: flex;
+    align-items: center;
+
 	border: 1px solid #eeeeee;
+}
+
+.sponsorSkipNoticeTimeLeft img {
+	vertical-align: middle;
+    height: 13px;
+
+	padding-top: 7.8%;
+    padding-bottom: 7.8%;
 }
 
 /* if two are very close to eachother */
@@ -139,6 +154,11 @@
 	bottom: 250px;
 
   	transition: bottom 0.2s;
+}
+
+.noticeLeftIcon {
+	display: flex;
+  	align-items: center;
 }
 
 .sponsorSkipNoticeUnskipSection {
@@ -183,6 +203,8 @@
 	float: right;
 
 	margin-right: 5px;
+	display: flex;
+	align-items: center;
 }
 
 .sponsorSkipNoticeRightButton {
@@ -205,7 +227,9 @@
 	font-weight: bold;
 	color: rgb(235, 235, 235);
 	
+	margin-top: auto;
 	display: inline-block;
+	margin-right: 10px;
 }
 
 .sponsorSkipInfo {
@@ -404,10 +428,6 @@ input::-webkit-inner-spin-button {
     color: white;
     border-width: 3px;
     padding: 3px;
-}
-
-.helpButton {
-
 }
 
 .helpButton {

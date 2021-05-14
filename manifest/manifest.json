@@ -40,6 +40,8 @@
         "icons/report.png",
         "icons/close.png",
         "icons/beep.ogg",
+        "icons/pause.svg",
+        "icons/stop.svg",
         "icons/PlayerInfoIconSponsorBlocker256px.png",
         "icons/PlayerDeleteIconSponsorBlocker256px.png",
         "popup.html",

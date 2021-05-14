@@ -1,5 +1,11 @@
 import * as React from "react";
 
+enum CountdownMode {
+    Timer,
+    Paused,
+    Stopped
+}
+
 export interface NoticeProps {
     noticeTitle: string,
 
@@ -11,6 +17,10 @@ export interface NoticeProps {
     videoSpeed?: () => number,
 
     fadeIn?: boolean,
+    firstColumn?: React.ReactElement,
+    firstRow?: React.ReactElement,
+
+    smaller?: boolean,
 
     // Callback for when this is closed
     closeListener: () => void,
@@ -24,8 +34,9 @@ export interface NoticeState {
     maxCountdownTime: () => number,
 
     countdownTime: number,
-    countdownText: string,
-    countdownManuallyPaused: boolean,
+    countdownMode: CountdownMode,
+
+    mouseHovering: boolean;
 }
 
 class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
@@ -59,8 +70,8 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
             //the countdown until this notice closes
             countdownTime: maxCountdownTime(),
-            countdownText: null,
-            countdownManuallyPaused: false
+            countdownMode: CountdownMode.Timer,
+            mouseHovering: false
         }
     }
 
@@ -86,7 +97,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                     {/* First row */}
                     <tr id={"sponsorSkipNoticeFirstRow" + this.idSuffix}>
                         {/* Left column */}
-                        <td>
+                        <td className="noticeLeftIcon">
                             {/* Logo */}
                             <img id={"sponsorSkipLogo" + this.idSuffix} 
                                 className="sponsorSkipLogo sponsorSkipObject"
@@ -99,11 +110,15 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                                 
                                 {this.state.noticeTitle}
                             </span>
+
+                            {this.props.firstColumn}
                         </td>
+
+                        {this.props.firstRow}
 
                         {/* Right column */}
                         <td className="sponsorSkipNoticeRightSection"
-                            style={{top: "11px"}}>
+                            style={{top: this.props.smaller ? "9.32px" : "8px"}}>
                             
                             {/* Time left */}
                             {this.props.timed ? ( 
@@ -111,7 +126,8 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                                     onClick={() => this.toggleManualPause()}
                                     className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
 
-                                    {this.state.countdownText || (this.state.countdownTime + "s")}
+                                    {this.getCountdownElements()}
+
                                 </span>
                             ) : ""}
                         
@@ -131,23 +147,56 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         );
     }
 
+    getCountdownElements(): React.ReactElement[] {
+        return [(
+                    <span 
+                        id={"skipNoticeTimerText" + this.idSuffix}
+                        key="skipNoticeTimerText"
+                        className={this.state.countdownMode !== CountdownMode.Timer ? "hidden" : ""} >
+                            {this.state.countdownTime + "s"}
+                    </span>
+                ),(
+                    <img 
+                        id={"skipNoticeTimerPaused" + this.idSuffix}
+                        key="skipNoticeTimerPaused"
+                        className={this.state.countdownMode !== CountdownMode.Paused ? "hidden" : ""}
+                        src={chrome.runtime.getURL("icons/pause.svg")}
+                        alt={chrome.i18n.getMessage("paused")} />
+                ),(
+                    <img 
+                        id={"skipNoticeTimerStopped" + this.idSuffix}
+                        key="skipNoticeTimerStopped"
+                        className={this.state.countdownMode !== CountdownMode.Stopped ? "hidden" : ""}
+                        src={chrome.runtime.getURL("icons/stop.svg")}
+                        alt={chrome.i18n.getMessage("manualPaused")} />
+        )];
+    }
+
     timerMouseEnter(): void {
-        if (this.state.countdownManuallyPaused) return;
+        if (this.state.countdownMode === CountdownMode.Stopped) return;
 
         this.pauseCountdown();
+
+        this.setState({
+            mouseHovering: true
+        });
     }
 
     timerMouseLeave(): void {
-        if (this.state.countdownManuallyPaused) return;
+        if (this.state.countdownMode === CountdownMode.Stopped) return;
 
         this.startCountdown();
+
+        this.setState({
+            mouseHovering: false
+        });
     }
 
     toggleManualPause(): void {
         this.setState({
-            countdownManuallyPaused: !this.state.countdownManuallyPaused
+            countdownMode: this.state.countdownMode === CountdownMode.Stopped ? CountdownMode.Timer : CountdownMode.Stopped
         }, () => {
-            if (this.state.countdownManuallyPaused) {
+            if (this.state.countdownMode === CountdownMode.Stopped || this.state.mouseHovering) {
                 this.pauseCountdown();
             } else {
                 this.startCountdown();
@@ -204,7 +253,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         //reset countdown and inform the user
         this.setState({
             countdownTime: this.state.maxCountdownTime(),
-            countdownText: this.state.countdownManuallyPaused ? chrome.i18n.getMessage("manualPaused") : chrome.i18n.getMessage("paused")
+            countdownMode: this.state.countdownMode === CountdownMode.Timer ? CountdownMode.Paused : this.state.countdownMode
         });
         
         this.removeFadeAnimation();
@@ -218,7 +267,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         this.setState({
             countdownTime: this.state.maxCountdownTime(),
-            countdownText: null
+            countdownMode: CountdownMode.Timer
         });
 
         this.setupInterval();
@@ -240,7 +289,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         this.setState({
             countdownTime: this.state.maxCountdownTime(),
-            countdownText: null
+            countdownMode: CountdownMode.Timer
         });
 
         this.removeFadeAnimation();

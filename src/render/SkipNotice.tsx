@@ -62,7 +62,8 @@ class SkipNotice {
                 autoSkip={autoSkip} 
                 contentContainer={contentContainer}
                 ref={this.skipNoticeRef}
-                closeListener={() => this.close()} />,
+                closeListener={() => this.close()}
+                smaller={true} />,
             this.noticeElement
         );
     }

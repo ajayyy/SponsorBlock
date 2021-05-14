@@ -47,8 +47,7 @@ class SubmissionNotice {
                 contentContainer={contentContainer}
                 callback={callback} 
                 ref={this.noticeRef}
-                closeListener={() => this.close()}
-                smaller={true} />,
+                closeListener={() => this.close()} />,
             this.noticeElement
         );
     }
