@@ -117,6 +117,9 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     getRealCurrentTime: getRealCurrentTime
 });
 
+// value determining when to count segment as skipped and send telemetry to server (percent based)
+const manualSkipPercentCount = 0.5;
+
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
@@ -988,12 +991,14 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
     for (const segment of skippingSegments) {
         const index = sponsorTimes.indexOf(segment);
         if (index !== -1 && !sponsorSkipped[index]) {
-            if (!counted) {
-                Config.config.minutesSaved = Config.config.minutesSaved + secondsSkipped / 60;
-                Config.config.skipCount = Config.config.skipCount + 1;
-                counted = true
+            if (Config.config.trackViewCount) {
+                if (!counted) {
+                    Config.config.minutesSaved = Config.config.minutesSaved + secondsSkipped / 60;
+                    Config.config.skipCount = Config.config.skipCount + 1;
+                    counted = true
+                }
+                if (fullSkip) utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
             }
-            if (fullSkip) utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
             sponsorSkipped[index] = true;
         }
     }
@@ -1022,7 +1027,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     }
 
     //send telemetry that a this sponsor was skipped
-    if (Config.config.trackViewCount && autoSkip) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true)
+    if (autoSkip) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true)
 }
 
 function unskipSponsorTime(segment: SponsorTime) {
@@ -1032,13 +1037,10 @@ function unskipSponsorTime(segment: SponsorTime) {
     }
 }
 
-// value determining when to count segment as skipped and send telemetry to server (percent based)
-let manualSkipPercentCount = 0.5;
-
 function reskipSponsorTime(segment: SponsorTime) {
-    let skippedTime = segment.segment[1] - video.currentTime;
-    let segmentDuration = segment.segment[1] - segment.segment[0];
-    let fullSkip = skippedTime / segmentDuration > manualSkipPercentCount ? true : false
+    const skippedTime = segment.segment[1] - video.currentTime;
+    const segmentDuration = segment.segment[1] - segment.segment[0];
+    const fullSkip = skippedTime / segmentDuration > manualSkipPercentCount ? true : false
     video.currentTime = segment.segment[1];
     sendTelemetryAndCount([segment], skippedTime, fullSkip)
     startSponsorSchedule(true, segment.segment[1], false);
