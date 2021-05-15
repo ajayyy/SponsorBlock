@@ -1028,7 +1028,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     }
 
     //send telemetry that a this sponsor was skipped
-    if (autoSkip) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true)
+    if (autoSkip) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true);
 }
 
 function unskipSponsorTime(segment: SponsorTime) {
