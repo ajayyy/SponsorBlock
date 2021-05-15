@@ -987,17 +987,19 @@ function previewTime(time: number, unpause = true) {
 
 //send telemetry and count skip
 function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: number, fullSkip: boolean) {
+    if (!Config.config.trackViewCount) return;
+    
     let counted = false
     for (const segment of skippingSegments) {
         const index = sponsorTimes.indexOf(segment);
         if (index !== -1 && !sponsorSkipped[index]) {
             sponsorSkipped[index] = true;
-            if (!Config.config.trackViewCount) return
             if (!counted) {
                 Config.config.minutesSaved = Config.config.minutesSaved + secondsSkipped / 60;
                 Config.config.skipCount = Config.config.skipCount + 1;
-                counted = true
+                counted = true;
             }
+            
             if (fullSkip) utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
         }
     }
@@ -1037,11 +1039,12 @@ function unskipSponsorTime(segment: SponsorTime) {
 }
 
 function reskipSponsorTime(segment: SponsorTime) {
-    const skippedTime = segment.segment[1] - video.currentTime;
+    const skippedTime = Math.max(segment.segment[1] - video.currentTime, 0);
     const segmentDuration = segment.segment[1] - segment.segment[0];
-    const fullSkip = skippedTime / segmentDuration > manualSkipPercentCount ? true : false
+    const fullSkip = skippedTime / segmentDuration > manualSkipPercentCount;
+    
     video.currentTime = segment.segment[1];
-    sendTelemetryAndCount([segment], skippedTime, fullSkip)
+    sendTelemetryAndCount([segment], skippedTime, fullSkip);
     startSponsorSchedule(true, segment.segment[1], false);
 }
 
