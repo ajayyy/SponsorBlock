@@ -609,6 +609,9 @@
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Pokud vám tento problém nepůjde vyřešit, vypněte nastavení 'Ignore unlisted/private videos', protože SponsorBlock nemůže zjistit, jestli je vaše video veřejné či nikoliv"
     },
+    "adblockerIssueWhitelist": {
+        "message": "Pokud vám tento problém nepůjde vyřešit, vypněte nastavení 'Vynutit kontrolu kanálu před přeskočením', protože SponsorBlock nemůže zjistit informace o kanálu"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Pokud k tomu stále dochází, může to být způsobeno vaším adblockerem. Podívejte se prosím https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
