@@ -610,7 +610,7 @@
         "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Nicht gelistete und private Videos ignorieren', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen"
     },
     "adblockerIssueWhitelist": {
-        "message": "Wenn Sie das nicht lösen können, dann deaktivieren Sie die Einstellung \"Erzwinge Kanalprüfung vor Überspringen\", da SponsorBlock nicht in der Lage ist, die Kanal-Informationen für dieses Video abzurufen"
+        "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Kanalprüfung vor dem Überspringen von Segmenten erzwingen', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen."
     },
     "itCouldBeAdblockerIssue": {
         "message": "Falls dies weiterhin geschieht, könnte dies durch einen Werbeblocker verursacht werden. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
