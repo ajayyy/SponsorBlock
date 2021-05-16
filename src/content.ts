@@ -989,7 +989,7 @@ function previewTime(time: number, unpause = true) {
 function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: number, fullSkip: boolean) {
     if (!Config.config.trackViewCount) return;
     
-    let counted = false
+    let counted = false;
     for (const segment of skippingSegments) {
         const index = sponsorTimes.indexOf(segment);
         if (index !== -1 && !sponsorSkipped[index]) {
