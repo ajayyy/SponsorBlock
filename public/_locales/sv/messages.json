@@ -609,6 +609,9 @@
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Om du inte kan lösa detta kan du inaktivera 'Ignorera olistade/privata videor' i inställningar, eftersom SponsorBlock inte kan hämta synlighetsinformationen för den här videon"
     },
+    "adblockerIssueWhitelist": {
+        "message": "Om du inte kan lösa detta kan du inaktivera 'Tvinga kontroll av kanalen innan hoppa över' i inställningarna, eftersom SponsorBlock inte kan hämta kanalinformationen för den här videon"
+    },
     "itCouldBeAdblockerIssue": {
         "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
