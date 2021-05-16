@@ -742,7 +742,7 @@ async function videoInfoFetchFailed(errorMessage: string): Promise<void> {
             url: "permissions/index.html#youtube.com"
         });
     } else {
-        alert(chrome.i18n.getMessage("adblockerIssue") + "\n\n" + chrome.i18n.getMessage(errorMessage));
+        alert(chrome.i18n.getMessage("videoInfoFetchFailed") + "\n\n" + chrome.i18n.getMessage(errorMessage));
     }
 }
 
