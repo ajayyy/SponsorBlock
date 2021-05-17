@@ -130,7 +130,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             videoIDChange(getYouTubeVideoID(document.URL));
             break;
         case "sponsorStart":
-            closeInfoMenuAnd(() => startOrEndTimingNewSegment());
+            startOrEndTimingNewSegment()
 
             sendResponse({
                 creatingSegment: currentlyTimedSegment !== null,
@@ -176,7 +176,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
 
             break;
         case "submitTimes":
-            closeInfoMenuAnd(() => submitSponsorTimes());
+            submitSponsorTimes();
             break;
     }
 }
@@ -1077,8 +1077,8 @@ async function createButtons(): Promise<void> {
     controls = await utils.wait(getControls).catch();
 
     // Add button if does not already exist in html
-    createButton("startSponsor", "sponsorStart", startOrEndTimingNewSegment, "PlayerStartIconSponsorBlocker256px.png");
-    createButton("cancelSponsor", "sponsorCancel", cancelCreatingSegment, "PlayerUploadFailedIconSponsorBlocker256px.png");
+    createButton("startSponsor", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker256px.png");
+    createButton("cancelSponsor", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerUploadFailedIconSponsorBlocker256px.png");
     createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png");
     createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker256px.png");
     createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
