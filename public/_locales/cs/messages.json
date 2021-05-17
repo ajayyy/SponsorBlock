@@ -591,9 +591,6 @@
     "channelDataNotFound": {
         "message": "ID kanálu ještě nebylo načteno."
     },
-    "adblockerIssue": {
-        "message": "Zdá se, že něco blokuje schopnost rozšíření SponsorBlock získat data o videu. Bude to nejspíš váš adblocker. Podívejte se prosím na https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "youtubePermissionRequest": {
         "message": "Vypadá to, že se SponsorBlock nemůže připojit k YouTube API. Pro opravení tohoto problému přijměte žádost o oprávnění, která se dále objeví, a poté znovu načtěte stránku."
     },
