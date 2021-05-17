@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Il Segmento Termina Ora"
     },
+    "sponsorCancel": {
+        "message": "Annulla Creazione del Segmento"
+    },
     "noVideoID": {
         "message": "Nessun video YouTube trovato.\nSe è un errore, ricarica la scheda."
     },
@@ -590,6 +593,9 @@
     },
     "channelDataNotFound": {
         "message": "ID canale non ancora caricato."
+    },
+    "videoInfoFetchFailed": {
+        "message": "Sembra che qualcosa stia bloccando l'abilità di SponsorBlock di ottenere i dati del video. Sei pregato di vedere https://github.com/ajayyy/SponsorBlock/issues/741 per ulteriori informazioni."
     },
     "youtubePermissionRequest": {
         "message": "Sembra che SponsorBlock non sia in grado di raggiungere l'API di YouTube. Per risolverlo, accetta la richiesta di autorizzazione che comparirà in seguito, attendi qualche secondo, quindi ricarica la pagina."
