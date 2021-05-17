@@ -591,9 +591,6 @@
     "channelDataNotFound": {
         "message": "L'ID de la chaîne n'a pas encore été chargé."
     },
-    "adblockerIssue": {
-        "message": "Il semble que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. C'est probablement votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Si vous ne pouvez pas résoudre ça, désactivé le paramètre 'Ignorer vidéos privées ou pas listées\", car SponsorBlock ne peux pas trouver cette vidéo"
     },
