@@ -591,9 +591,6 @@
     "channelDataNotFound": {
         "message": "Kanali ID pole veel laaditud."
     },
-    "adblockerIssue": {
-        "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. See on ilmselt sinu reklaamiblokeerija. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "youtubePermissionRequest": {
         "message": "Tundub, et SponsorBlock ei pääse YouTube'i rakendusliidesele ligi. Selle parandamiseks nõustu järgnevalt kuvatava loataotlusega, oota paar sekundit ning seejärel laadi leht uuesti."
     },
