@@ -591,8 +591,11 @@
     "channelDataNotFound": {
         "message": "频道 ID 尚未加载。"
     },
-    "adblockerIssue": {
-        "message": "似乎某些东西正在阻止 SponsorBlock 获取视频数据的功能。它很可能是您的广告拦截器。请查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "acceptPermission": {
+        "message": "接受权限"
+    },
+    "permissionRequestSuccess": {
+        "message": "权限请求成功！"
     },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "如果您无法解决这个问题，请禁用“忽略未公开列出/私有视频”设置，因为 SpongorBlock 无法检索此视频是否可见"
