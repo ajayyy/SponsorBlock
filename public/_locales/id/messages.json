@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segmen Berakhir Sekarang"
     },
+    "sponsorCancel": {
+        "message": "Batalkan Segmen Baru"
+    },
     "noVideoID": {
         "message": "Video YouTube tidak ditemukan.\nJika terjadi kesalahan, silahkan ulangin halaman."
     },
@@ -590,6 +593,9 @@
     },
     "channelDataNotFound": {
         "message": "ID Channel belum dimuat."
+    },
+    "videoInfoFetchFailed": {
+        "message": "Sepertinya sesuatu menghalangi kemampuan SponsorBlock untuk mendapatkan data video. Silahkan lihat https://github.com/ajayyy/SponsorBlock/issues/741 untuk info lebih lanjut."
     },
     "youtubePermissionRequest": {
         "message": "Sepertinya SponsorBlock tidak dapat menjangkau API YouTube. Untuk menyelesaikan masalah ini, terima permintaan izin yang akan muncul selanjutnya, tunggu beberapa detik, dan muat ulang halaman ini."
