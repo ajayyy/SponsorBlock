@@ -17,7 +17,7 @@ export interface ContentContainer {
         onMobileYouTube: boolean,
         sponsorSubmissionNotice: SubmissionNotice,
         resetSponsorSubmissionNotice: () => void,
-        changeStartSponsorButton: (showStartSponsor: boolean, uploadButtonVisible: boolean) => Promise<boolean>,
+        updateEditButtonsOnPlayer: () => void,
         previewTime: (time: number, unpause?: boolean) => void,
         videoInfo: VideoInfo,
         getRealCurrentTime: () => number
@@ -59,6 +59,10 @@ export interface SponsorTime {
 
     hidden?: SponsorHideType;
 }
+
+export type IncompleteSponsorTime = Omit<SponsorTime, 'segment'> & {
+    segment: [number];
+};
 
 export interface PreviewBarOption {
     color: string,

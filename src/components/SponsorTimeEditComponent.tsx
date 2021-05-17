@@ -344,7 +344,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         //if it is not a complete sponsor time
         if (sponsorTimes[index].segment.length < 2) {
             //update video player
-            this.props.contentContainer().changeStartSponsorButton(true, false);
+            this.props.contentContainer().updateEditButtonsOnPlayer();
         }
   
         sponsorTimes.splice(index, 1);
@@ -359,7 +359,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             this.props.submissionNotice.cancel();
             
             //update video player
-            this.props.contentContainer().changeStartSponsorButton(true, false);
+            this.props.contentContainer().updateEditButtonsOnPlayer();
         } else {
             //update display
             this.props.submissionNotice.forceUpdate();

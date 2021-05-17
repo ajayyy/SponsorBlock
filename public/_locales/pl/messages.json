@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Koniec segmentu"
     },
+    "sponsorCancel": {
+        "message": "Anuluj tworzenie segmentu"
+    },
     "noVideoID": {
         "message": "Nie znaleziono filmu YouTube.\nJeżeli to błąd, odśwież stronę."
     },
