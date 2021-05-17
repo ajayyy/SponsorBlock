@@ -591,9 +591,6 @@
     "channelDataNotFound": {
         "message": "Kanal kimliği henüz yüklenmedi."
     },
-    "adblockerIssue": {
-        "message": "Bir şeyin SponsorBlock'un video bilgisi almasını engelliyor gibi görünüyor. Bu reklam engelleyiciniz olabilir. Lütfen şu adresi kontrol edin https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Bunu çözümleyemiyorsanız \"Liste dışı/gizli videoları göz ardı et\" seçeneğini kapatın, SponsorBlock bu videonun gizlilik bilgisini alamıyor"
     },
