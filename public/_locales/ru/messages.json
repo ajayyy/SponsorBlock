@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Пропускайте спонсорские вставки, просьбы подписаться и другое в видео на YouTube. Отправляйте информацию о спонсорах в видео, чтобы сохранять другим время.",
+        "message": "Пропускайте спонсорские вставки, просьбы подписаться и другое в видео на YouTube. Отправляйте информацию о спонсорах в видео, чтобы экономить другим время.",
         "description": "Description of the extension."
     },
     "400": {
@@ -517,7 +517,7 @@
         "message": "Музыка: Сегмент без музыки"
     },
     "category_music_offtopic_description": {
-        "message": "Только для использования в музыкальных клипах. Включает в себя начальные и конечные заставки клипов."
+        "message": "Только для использования в музыкальных клипах. Используется для сегментов музыкальных клипов, которые не относятся к другой категории."
     },
     "category_music_offtopic_short": {
         "message": "Без музыки"
@@ -593,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Кажется, что-то блокирует возможность SponsorBlock'а получать данные о видео. Возможно, это ваш блокировщик рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Если вы не можете решить эту проблему, попробуйте отключить \"Игнорировать непубличные видео\" в настройках, т. к. SponsorBlock не может получить настройки доступа этого видео"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Если это сообщения появляется слишком часто, это может быть вызвано вашим блокировщиком рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

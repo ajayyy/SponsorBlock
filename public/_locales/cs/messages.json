@@ -80,7 +80,7 @@
         "message": "Segment nyní končí"
     },
     "noVideoID": {
-        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to nesprávně, obnovte záložku."
+        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte záložku."
     },
     "success": {
         "message": "Úspěch!"
@@ -517,7 +517,7 @@
         "message": "Hudba: nehudební sekce"
     },
     "category_music_offtopic_description": {
-        "message": "Pouze pro použití v hudebních videích. Zahrnuje intro nebo outro v hudebních videích."
+        "message": "Použijte pouze u hudebních videí. Mělo by to být použito pouze pro části hudebních videí, které nepokrývá jiná kategorie."
     },
     "category_music_offtopic_short": {
         "message": "Jiné než hudba"
@@ -593,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Zdá se, že něco blokuje schopnost rozšíření SponsorBlock získat data o videu. Bude to nejspíš váš adblocker. Podívejte se prosím na https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Pokud vám tento problém nepůjde vyřešit, vypněte nastavení 'Ignore unlisted/private videos', protože SponsorBlock nemůže zjistit, jestli je vaše video veřejné či nikoliv"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Pokud k tomu stále dochází, může to být způsobeno vaším adblockerem. Podívejte se prosím https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

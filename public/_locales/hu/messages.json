@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Szegmens vége"
     },
+    "noVideoID": {
+        "message": "Nem találtunk YouTube videót.\nHa ez helytelen, frissítsd a lapot."
+    },
     "success": {
         "message": "Siker!"
     },
@@ -109,8 +112,23 @@
     "submitCheck": {
         "message": "Biztosan be akarja küldeni?"
     },
+    "whitelistChannel": {
+        "message": "Csatorna fehérlistára tétele"
+    },
+    "removeFromWhitelist": {
+        "message": "Csatorna törlése fehérlistáról"
+    },
     "voteOnTime": {
         "message": "Szavazzon a szegmensről"
+    },
+    "Submissions": {
+        "message": "Beküldések"
+    },
+    "viewLeaderboard": {
+        "message": "Ranglista"
+    },
+    "recordTimesDescription": {
+        "message": "Küldés"
     },
     "clearTimesButton": {
         "message": "Időpontok törlése"
@@ -120,6 +138,9 @@
     },
     "publicStats": {
         "message": "Ezt használja a nyilvános ranglistán, hogy megmutassa mennyit járult hozzá. Nézze meg"
+    },
+    "Username": {
+        "message": "Felhasználónév"
     },
     "setUsername": {
         "message": "Felhasználónév megadása"
@@ -216,6 +237,12 @@
     "0": {
         "message": "Kapcsolati időtúllépés. Ellenőrizze az internetkapcsolatot. Ha az internet működik, a kiszolgáló valószínűleg túlterhelt vagy leállt."
     },
+    "disableSkipping": {
+        "message": "Átugrás bekapcsolva"
+    },
+    "enableSkipping": {
+        "message": "Átugrás kikapcsolva"
+    },
     "yourWork": {
         "message": "Te munkád",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -267,6 +294,9 @@
     },
     "hoursLower": {
         "message": "óra"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " az életükből"
     },
     "statusReminder": {
         "message": "A szerver állapotához tekintse meg a status.sponsor.ajay.app oldalt."
@@ -466,9 +496,6 @@
     },
     "category_music_offtopic": {
         "message": "Zene: nem-zene szegmens"
-    },
-    "category_music_offtopic_description": {
-        "message": "Csak zenei videókon. Beletartoznak a zenei videók intro és outro részei is."
     },
     "category_music_offtopic_short": {
         "message": "Nem-Zene"

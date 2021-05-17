@@ -517,7 +517,7 @@
         "message": "Музика: Сегмент без музики"
     },
     "category_music_offtopic_description": {
-        "message": "Тільки для використання в музичних кліпах. Включає в себе початкові і кінцеві заставки кліпів."
+        "message": "Тільки для використання в музичних кліпах. Використовується для сегментів музичних кліпів, які не належать до іншої категорії."
     },
     "category_music_offtopic_short": {
         "message": "Без музики"
@@ -593,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Здається, щось блокує можливість SponsorBlock'а отримувати дані про відео. Можливо, це ваш блокувальник реклами. Будь ласка, перейдіть на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Якщо вам не вдалося вирішити це, вимкніть параметр \"Ігнорувати непублічні відео\", оскільки SponsorBlock не в змозі отримати інформацію про видимість цього відео"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Якщо це повідомлення з'являється занадто часто, це може бути викликано вашим блокувальником реклами. Будь ласка, перейдіть на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

@@ -517,7 +517,7 @@
         "message": "Muziek: sectie niet-muziek"
     },
     "category_music_offtopic_description": {
-        "message": "Alleen voor gebruik in muziekvideo's. Dit is inclusief introducties of outro's in muziekvideo's."
+        "message": "Alleen voor gebruik in muziekvideo's. Dit mag alleen worden gebruikt voor secties van muziekvideo's die nog niet door een andere categorie worden bedekt."
     },
     "category_music_offtopic_short": {
         "message": "Niet-muziek"
@@ -593,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Het lijkt erop dat iets de mogelijkheid van SponsorBlock om videogegevens te krijgen blokkeert. Dit is waarschijnlijk uw reclamefilter. Zie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocks-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Als u dit niet kunt oplossen, schakel dan de instelling 'onvermelde/privé-video's negeren' uit omdat SponsorBlock niet in staat is de zichtbaarheidsinformatie voor deze video op te halen"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Als dit blijft optreden, kan dit worden veroorzaakt door uw reclamefilter. Zie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

@@ -80,7 +80,7 @@
         "message": "Segmen Berakhir Sekarang"
     },
     "noVideoID": {
-        "message": "Video YouTube tidak ditemukan.\nJika ini salah, segarkan tab."
+        "message": "Video YouTube tidak ditemukan.\nJika terjadi kesalahan, silahkan ulangin halaman."
     },
     "success": {
         "message": "Sukses!"
@@ -113,16 +113,16 @@
         "message": "Apakah anda yakin ingin mengirim ini?"
     },
     "whitelistChannel": {
-        "message": "Saluran daftar putih"
+        "message": "Daftar kanal putih"
     },
     "removeFromWhitelist": {
-        "message": "Hapus saluran dari daftar putih"
+        "message": "Hapus kanal dari daftar putih"
     },
     "voteOnTime": {
         "message": "Beri Segmen Vote"
     },
     "Submissions": {
-        "message": "Kiriman"
+        "message": "Submisi"
     },
     "savedPeopleFrom": {
         "message": "Anda telah menyelamatkan orang dari "
@@ -138,7 +138,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Petunjuk: Anda dapat mengatur keybinds untuk dikirim dalam opsi"
+        "message": "Petunjuk: Anda dapat mengatur keybinds untuk pengiriman dalam opsi"
     },
     "clearTimesButton": {
         "message": "Hapus Waktu"
@@ -294,7 +294,7 @@
         "message": "Waktu ini muncul di dalam kurung disamping waktu asli di bilah waktu. Ini menunjukkan durasi total video yang tidak termasuk segmen apapun. Ini termasuk segmen yang ditandai hanya \"Tampilkan Di Bilah Waktu\"."
     },
     "youHaveSkipped": {
-        "message": "Anda telah melewatkan "
+        "message": "Anda sudah melewati "
     },
     "youHaveSaved": {
         "message": "Anda sudah menghemat waktu "
@@ -312,10 +312,10 @@
         "message": "jam"
     },
     "youHaveSavedTime": {
-        "message": "Anda telah menyelamatkan orang"
+        "message": "Anda sudah menghemat waktu orang lain"
     },
     "youHaveSavedTimeEnd": {
-        "message": " dalam hidup mereka"
+        "message": " dari hidup mereka"
     },
     "statusReminder": {
         "message": "Cek status.sponsor.ajay.app untuk status server."
@@ -517,7 +517,7 @@
         "message": "Musik: Bagian Non-Musik"
     },
     "category_music_offtopic_description": {
-        "message": "Hanya gunakan di video musik. Ini termasuk intro dan outro di video musik."
+        "message": "Hanya digunakan untuk video musik. Ini seharusnya hanya digunakan untuk bagian dari video musik yang tidak tercakup kategori lain."
     },
     "category_music_offtopic_short": {
         "message": "Non-Musik"
@@ -593,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Sepertinya ada sesuatu yang memblokir kemampuan SponsorBlock untuk mendapatkan data video. Kemungkinan karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Jika anda tidak bisa menyelesaikan ini, maka nonaktifkan pengaturan 'Abaikan video tidak terdaftar/privat', karena SponsorBlock tidak bisa mendapatkan informasi visibilitas untuk video ini"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Jika ini terus terjadi, kemungkinan terjadi karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

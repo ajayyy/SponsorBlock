@@ -236,10 +236,10 @@
         "message": "Taste zum Überspringen eines Segments festlegen"
     },
     "setStartSponsorShortcut": {
-        "message": "Eine Taste zum Markieren des Startpunkts eines Segments festlegen"
+        "message": "Taste für das Starten eines Segments festlegen"
     },
     "setSubmitKeybind": {
-        "message": "Eine Taste für das Übermitteln festlegen"
+        "message": "Taste für das Einsenden festlegen"
     },
     "keybindDescription": {
         "message": "Zum Festlegen eine Taste drücken"
@@ -348,7 +348,7 @@
         "message": "Invidious-Kompatibilität"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Incongnito-modus auf Chrome und anderen Chromium-Varianten."
+        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, musst du die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Inkognitomodus auf Chrome und anderen Chromium-Varianten."
     },
     "optionsInfo": {
         "message": "Zu überspringende Kategorien auswählen, automatisches Überspringen, Tasten ein- & ausblenden und noch viel mehr."
@@ -517,7 +517,7 @@
         "message": "Musikvideoteile ohne Musik"
     },
     "category_music_offtopic_description": {
-        "message": "Nur für den Einsatz in Musikvideos."
+        "message": "Nur für die Verwendung in Musikvideos. Dies sollte nur für Abschnitte von Musikvideos verwendet werden, die noch nicht von einer anderen Kategorie abgedeckt sind."
     },
     "category_music_offtopic_short": {
         "message": "Musikvideoteile ohne Musik"
@@ -593,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Eine mögliche Ursache sind Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Nicht gelistete und private Videos ignorieren', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Falls dies weiterhin geschieht, könnte dies durch einen Werbeblocker verursacht werden. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

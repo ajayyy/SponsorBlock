@@ -516,9 +516,6 @@
     "category_music_offtopic": {
         "message": "Muzică: Secţiune Non-Muzicală"
     },
-    "category_music_offtopic_description": {
-        "message": "Doar pentru videoclipuri muzicale. Include introducțiile sau outro-urile în videoclipurile muzicale."
-    },
     "category_music_offtopic_short": {
         "message": "Non-Muzical"
     },

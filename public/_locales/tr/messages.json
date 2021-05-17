@@ -113,10 +113,10 @@
         "message": "Bunu göndermek istediğinize emin misiniz?"
     },
     "whitelistChannel": {
-        "message": "Kanalı beyaz listeye ekle"
+        "message": "Kanala izin ver"
     },
     "removeFromWhitelist": {
-        "message": "Kanalı beyaz listeden çıkar"
+        "message": "Kanalı izin listesinden çıkar"
     },
     "voteOnTime": {
         "message": "Bir Kısmı Oyla"
@@ -231,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Eğer hala beğenmediyseniz, asla gösterme butonuna basın.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Kısım atlamak için bir tuş ata"
     },
     "setStartSponsorShortcut": {
         "message": "Kısım kaydına başlamak için bir tuş belirleyin"
@@ -514,7 +517,7 @@
         "message": "Müzik: Müzik Olmayan Bölüm"
     },
     "category_music_offtopic_description": {
-        "message": "Sadece müzik klipleri içindir. Buna kliplerin başlarında ve sonlarında şarkı bulunmayan kısımlar dahildir."
+        "message": "Yalnızca müzik videolarında kullanım içindir. Bu yalnızca başka bir kategoriye katılmamış müzik videolarının parçaları için kullanılmalıdır."
     },
     "category_music_offtopic_short": {
         "message": "Müzik Olmayan Bölüm"
@@ -590,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Bir şeyin SponsorBlock'un video bilgisi almasını engelliyor gibi görünüyor. Bu reklam engelleyiciniz olabilir. Lütfen şu adresi kontrol edin https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Bunu çözümleyemiyorsanız \"Liste dışı/gizli videoları göz ardı et\" seçeneğini kapatın, SponsorBlock bu videonun gizlilik bilgisini alamıyor"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Bunu sürekli yaşıyorsanız, reklam engelleyiciniz tarafından gerçekleşiyor olabilir. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests adresini kontrol edin."

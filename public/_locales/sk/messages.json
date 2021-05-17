@@ -221,7 +221,7 @@
         "description": "Used on Firefox Store Page"
     },
     "sourceCode": {
-        "message": "Zdrojový Kód",
+        "message": "Zdrojový kód",
         "description": "Used on Firefox Store Page"
     },
     "noticeUpdate": {
@@ -517,7 +517,7 @@
         "message": "Hudba: časť bez hudby"
     },
     "category_music_offtopic_description": {
-        "message": "Iba pre hudobné videá. Patria sem úvody alebo závery v hudobných videách."
+        "message": "Len pre hudobné videá. Použite len ak segment nie je možné zaradiť do inej kategórie."
     },
     "category_music_offtopic_short": {
         "message": "Bez hudby"
@@ -593,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Zdá sa, že niečo blokuje SponsorBlocku možnosť získať dáta o videu. Pravdepodobne to bude Váš adblocker. Prosím navštívte https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Ak to neviete vyriešiť, vypnite nastavenie \"Ignorovať nezaradené a súkromné videá\", lebo SponsorBlock nevie zistiť viditeľnosť tohto videa"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Ak sa to bude diať aj naďalej, môže to byť spôsobené Vašim adblockerom. Prosím navštívte https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

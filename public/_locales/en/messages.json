@@ -520,7 +520,7 @@
         "message": "Music: Non-Music Section"
     },
     "category_music_offtopic_description": {
-        "message": "Only for use in music videos. This includes introductions or outros in music videos."
+        "message": "Only for use in music videos. This only should be used for sections of music videos that aren't already covered by another category."
     },
     "category_music_offtopic_short": {
         "message": "Non-Music"
@@ -594,11 +594,26 @@
     "channelDataNotFound": {
         "message": "Channel ID not loaded yet."
     },
-    "adblockerIssue": {
-        "message": "It seems that something is blocking SponsorBlock's ability to get video data. This is probably your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "It seems that something is blocking SponsorBlock's ability to get video data. Please see https://github.com/ajayyy/SponsorBlock/issues/741 for more info."
+    },
+    "youtubePermissionRequest": {
+        "message": "It seems that SponsorBlock is unable to reach the YouTube API. To fix this, accept the permission prompt that will appear next, wait a few seconds, and then reload the page."
+    },
+    "acceptPermission": {
+        "message": "Accept permission"
+    },
+    "permissionRequestSuccess": {
+        "message": "Permission request succeeded!"
+    },
+    "permissionRequestFailed": {
+        "message": "Permission request failed, did you click deny?"
     },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "If you are unable to resolve this, then disable the setting 'Ignore unlisted/private videos', as SponsorBlock is unable to retrieve the visibility information for this video"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "If you are unable to resolve this, then disable the setting 'Force Channel Check Before Skipping', as SponsorBlock is unable to retrieve the channel information for this video"
     },
     "itCouldBeAdblockerIssue": {
         "message": "If this keeps occuring, it could be caused by your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

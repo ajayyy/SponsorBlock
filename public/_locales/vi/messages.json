@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Đoạn quảng cáo kết thúc vào lúc này"
     },
+    "noVideoID": {
+        "message": "Không tìm thấy video này.\nNếu sai, hãy thử tải lại thẻ này."
+    },
     "success": {
         "message": "Thành công!"
     },
@@ -109,8 +112,33 @@
     "submitCheck": {
         "message": "Bạn có chắc là muốn đăng không?"
     },
+    "whitelistChannel": {
+        "message": "Đưa kênh vào danh sách không chặn"
+    },
+    "removeFromWhitelist": {
+        "message": "Bỏ kênh này khỏi danh sách không chặn"
+    },
     "voteOnTime": {
         "message": "Bầu chọn một đoạn quảng cáo"
+    },
+    "Submissions": {
+        "message": "Các phân đoạn"
+    },
+    "savedPeopleFrom": {
+        "message": "Bạn đã giúp mọi người bỏ qua "
+    },
+    "viewLeaderboard": {
+        "message": "Bảng xếp hạng"
+    },
+    "recordTimesDescription": {
+        "message": "Gửi"
+    },
+    "submissionEditHint": {
+        "message": "Phần chỉnh sửa sẽ xuất hiện sau khi bạn bấm gửi",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Gợi ý: Bạn có thể thêm phím tắt để gửi trong phần tuỳ chọn"
     },
     "clearTimesButton": {
         "message": "Xóa thời gian"
@@ -120,6 +148,9 @@
     },
     "publicStats": {
         "message": "Tên này được dùng tại trang thông tin công khai để thể hiện lượng đóng góp của bạn. Xem"
+    },
+    "Username": {
+        "message": "Tên người dùng"
     },
     "setUsername": {
         "message": "Đặt tên người dùng"
@@ -166,6 +197,12 @@
     "whatViewTracking": {
         "message": "Tính năng này theo dõi những đoạn quảng cáo bạn đã bỏ qua để cho người dùng khác biết những đoạn họ đăng đã giúp người khác đến mức nào. Tính năng này, cùng với tính năng bầu chọn, còn được dùng làm thước đo để đảm bảo spam không lọt vào kho dữ liệu. Tiện ích mở rộng này gửi tín hiệu đến máy chủ mỗi lần bạn bỏ qua một đoạn quảng cáo. Mong là đa phần mọi người không thay đổi cài đặt này để thông số người xem được chính xác nhất. :)"
     },
+    "whatQueryByHashPrefix": {
+        "message": "Thay vì yêu cầu phân đoạn từ máy chủ bằng cách sử dụng videoID, 4 ký tự đầu tiên của hash của videoID sẽ được gửi. Máy chủ sau đó sẽ gửi dữ liệu cho tất cả video với các hash tương tự."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Nạp lại các đoạn trên video mới"
+    },
     "whatRefetchWhenNotFound": {
         "message": "Nếu đây là video mới và chưa có phân đoạn nào được xác định, SponsorBlock sẽ tiếp tục truy vấn dữ liệu mỗi vài phút trong khi bạn đang xem."
     },
@@ -192,6 +229,9 @@
         "message": "Nếu bạn vẫn không thích, hãy nhấn nút không hiển thị lại.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Chọn phím tắt để bỏ qua phân đoạn"
+    },
     "setStartSponsorShortcut": {
         "message": "Đặt phím tắt đánh dấu đoạn quảng cáo bắt đầu"
     },
@@ -206,6 +246,12 @@
     },
     "0": {
         "message": "Kết nối quá hạn thời gian. Hãy kiểm tra đường truyền mạng của bạn. Nếu mạng của bạn vẫn hoạt động, có thể máy chủ đang bị quá tải hoặc không hoạt động."
+    },
+    "disableSkipping": {
+        "message": "Bỏ qua được bật"
+    },
+    "enableSkipping": {
+        "message": "Bỏ qua đã bị vô hiệu hoá"
     },
     "yourWork": {
         "message": "Thành quả của bạn",
@@ -244,6 +290,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Độ dài này được hiển thị trong ngoặc đơn, bên cạnh độ dài hiện tại, phía dưới thanh tiến trình video. Con số này là độ dài video trừ đi các đoạn quảng cáo, bao gồm cả những đoạn được đánh dấu là chỉ \"Hiển thị trong thanh tiến trình video\"."
     },
+    "youHaveSkipped": {
+        "message": "Bạn đã bỏ qua "
+    },
     "youHaveSaved": {
         "message": "Bạn đã tiết kiệm cho mình "
     },
@@ -258,6 +307,12 @@
     },
     "hoursLower": {
         "message": "giờ"
+    },
+    "youHaveSavedTime": {
+        "message": "Bạn đã giúp người khác tiết kiệm được"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " của cuộc đời họ"
     },
     "statusReminder": {
         "message": "Truy cập trang status.sponsor.ajay.app để biết tình trạng máy chủ."
@@ -403,6 +458,9 @@
     "copyDebugInformationFailed": {
         "message": "Không sao chép được vào khay nhớ tạm"
     },
+    "copyDebugInformationOptions": {
+        "message": "Sao chép thông tin vào khay nhớ tạm để cung cấp cho nhà phát triển khi phát sinh lỗi / khi nhà phát triển yêu cầu. Thông tin nhạy cảm như ID người dùng của bạn, kênh trong danh sách không chặn, và địa chỉ máy chủ tuỳ chỉnh đã bị xoá. Tuy nhiên, nó có chứa thông tin như user agent, trình duyệt, hệ điều hành và phiên bản của tiện ích mở rộng. "
+    },
     "copyDebugInformationComplete": {
         "message": "Thông tin gỡ lỗi đã được sao chép vào bộ nhớ tạm. Hãy thoải mái xóa thông tin mà bạn không muốn chia sẻ. Lưu thông tin này vào một tập tin văn bản hoặc dán nó vào bản báo cáo lỗi."
     },
@@ -434,6 +492,9 @@
     "category_outro": {
         "message": "Màn hình kết thúc/Danh đề"
     },
+    "category_outro_description": {
+        "message": "Credits hoặc khi thẻ màn hình kết thúc của YouTube xuất hiện. Không dùng với những đoạn có thông tin."
+    },
     "category_interaction": {
         "message": "Nhắc tương tác (Đăng ký)"
     },
@@ -452,11 +513,14 @@
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
     },
-    "category_music_offtopic_description": {
-        "message": "Chỉ sử dụng trong video âm nhạc. Điều này bao gồm phần giới thiệu và phần kết thúc trong video âm nhạc."
-    },
     "category_music_offtopic_short": {
         "message": "Không có nhạc"
+    },
+    "category_livestream_messages": {
+        "message": "Luồng phát trực tiếp: Đọc Quyên góp/Tin nhắn"
+    },
+    "category_livestream_messages_short": {
+        "message": "Đọc tin nhắn"
     },
     "disable": {
         "message": "Tắt"
@@ -488,19 +552,23 @@
         "message": "Kích hoạt Máy chủ Thử nghiệm"
     },
     "whatEnableTestingServer": {
-        "message": "Những đóng góp của bạn sẽ không được tính ở máy chủ chính. Chỉ cho mục đích thử nghiệm."
+        "message": "Những đóng góp của bạn sẽ KHÔNG ĐƯỢC TÍNH ở máy chủ chính. Chỉ dùng cho mục đích thử nghiệm."
     },
     "testingServerWarning": {
-        "message": "Tất cả đóng góp hay bình chọn sẽ không được tính ở máy chủ chính khi kết nối đến máy chủ thử nghiệm. Hãy vô hiệu hoá lựa chọn này nếu bạn muốn tiếp tục đóng góp."
+        "message": "Tất cả đóng góp hay bình chọn sẽ KHÔNG ĐƯỢC TÍNH ở máy chủ chính khi kết nối đến máy chủ thử nghiệm. Hãy vô hiệu hoá lựa chọn này nếu bạn muốn tiếp tục đóng góp."
     },
     "bracketNow": {
         "message": "(Bây giờ)"
     },
     "moreCategories": {
-        "message": "Thêm các danh mục khác"
+        "message": "Các danh mục khác"
     },
     "chooseACategory": {
         "message": "Chọn một danh mục"
+    },
+    "enableThisCategoryFirst": {
+        "message": "Để gửi một phân đoạn với chủ đề \"{0}\", bạn cần phải kích hoạt nó trong phần tuỳ chọn. Bạn sẽ được đưa đến phần tuỳ chỉnh bây giờ.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
         "message": "Bạn phải lựa chọn một danh mục cho tất cả phân đoạn bạn đang muốn đăng tải!"
@@ -515,13 +583,16 @@
         "message": "đã bị ẩn: quá ngắn"
     },
     "channelDataNotFound": {
-        "message": "Chưa đọc được ID của Kênh"
+        "message": "Chưa đọc được ID của kênh."
     },
     "adblockerIssue": {
         "message": "Hình như có gì đó đã ngăn chặn SponsorBlock truy vấn dữ liệu của video. Có thể do trình chặn quảng cáo của bạn. Hãy kiểm tra ở đây: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Nếu bạn không thể giải quyết được vấn đề này, hãy vô hiệu hoá cài đặt 'Bỏ qua video không công khai/riêng tư', vì SponsorBlock không thể lấy được thông tin hiển thị của video này"
+    },
     "itCouldBeAdblockerIssue": {
-        "message": "Nếu lỗi này tiếp tục xuất hiện, có thể nó bị gây ra bởi trình chặn quảng cáo của bạn. Hãy kiểm tra ở đây: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+        "message": "Nếu lỗi này tiếp tục xuất hiện, nó có thể là do trình chặn quảng cáo của bạn. Hãy kiểm tra ở đây: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Bắt buộc kiểm tra kênh trước khi bỏ qua"
@@ -556,5 +627,8 @@
     },
     "categoryUpdate2": {
         "message": "Mở Tùy chọn để bỏ qua đoạn mở đầu, kết thúc, giới thiệu hàng hoá, v.v."
+    },
+    "help": {
+        "message": "Trợ giúp"
     }
 }

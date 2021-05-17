@@ -383,7 +383,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
-                sponsorTimeButton.innerText = prefix + getFormattedTime(segmentTimes[i].segment[0]) + " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segmentTimes[i].segment[1]) + extraInfo;
+                sponsorTimeButton.innerText = prefix + utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) + extraInfo;
 
                 const categoryColorCircle = document.createElement("span");
                 categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
@@ -412,9 +412,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 downvoteButton.src = chrome.extension.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
-                //add thumbs up and down buttons to the container
+                //uuid button
+
+                const uuidButton = document.createElement("img");
+                uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
+                uuidButton.className = "voteButton";
+                uuidButton.src = chrome.extension.getURL("icons/clipboard.svg");
+                uuidButton.addEventListener("click", () => navigator.clipboard.writeText(UUID));
+
+                //add thumbs up, thumbs down and uuid copy buttons to the container
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
+                voteButtonsContainer.appendChild(uuidButton);
 
                 //add click listener to open up vote panel
                 sponsorTimeButton.addEventListener("click", function() {
@@ -542,13 +551,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function vote(type, UUID) {
         //add loading info
         addVoteMessage(chrome.i18n.getMessage("Loading"), UUID);
-  
+
         //send the vote message to the tab
         chrome.runtime.sendMessage({
             message: "submitVote",
             type: type,
             UUID: UUID
-        }, function(response) {
+        }, function (response) {
             if (response != undefined) {
                 //see if it was a success or failure
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
@@ -559,21 +568,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 }
             }
         });
-    }
-
-    //converts time in seconds to minutes:seconds
-    function getFormattedTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secondsDisplayNumber = Math.round(seconds - minutes * 60);
-        let secondsDisplay = String(secondsDisplayNumber);
-        if (secondsDisplayNumber < 10) {
-            //add a zero
-            secondsDisplay = "0" + secondsDisplay;
-        }
-  
-        const formatted = minutes + ":" + secondsDisplay;
-  
-        return formatted;
     }
 
     function whitelistChannel() {
@@ -698,10 +692,11 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
      * @param {float} seconds 
      * @returns {string}
      */
-    function getFormattedHours(minues) {
-        const hours = Math.floor(minues / 60);
-        return (hours > 0 ? hours + "h " : "") + (minues % 60).toFixed(1);
-    }
+	function getFormattedHours(minutes) {
+		minutes = Math.round(minutes * 10) / 10
+		const hours = Math.floor(minutes / 60);
+		return (hours > 0 ? hours + "h " : "") + (minutes % 60).toFixed(1);
+	}
   
 //end of function
 }

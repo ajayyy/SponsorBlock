@@ -37,6 +37,7 @@ interface SBConfig {
     testingServer: boolean,
     hashPrefix: boolean,
     refetchWhenNotFound: boolean,
+    ytInfoPermissionGranted: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -168,8 +169,9 @@ const Config: SBObject = {
         audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         testingServer: false,
-        hashPrefix: false,
+        hashPrefix: true,
         refetchWhenNotFound: true,
+        ytInfoPermissionGranted: false,
 
         categorySelections: [{
             name: "sponsor",

@@ -125,7 +125,7 @@
         "message": "Envíos"
     },
     "savedPeopleFrom": {
-        "message": "Tú salvado personas de "
+        "message": "Has salvado a personas de "
     },
     "viewLeaderboard": {
         "message": "Tablas de clasificación"
@@ -232,6 +232,9 @@
         "message": "Si aún no te gusta, pulsa el botón de nunca mostrar.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Establecer clave para omitir un segmento"
+    },
     "setStartSponsorShortcut": {
         "message": "Establecer tecla para iniciar segmento"
     },
@@ -291,7 +294,7 @@
         "message": "Esta duración aparece entre paréntesis junto al tiempo actual del video, debajo de la barra de navegación. Esta muestra la duración total del vídeo menos cualquier segmento eliminado. Esto incluye los segmentos marcados como solo \"Mostrar en la barra de navegación\"."
     },
     "youHaveSkipped": {
-        "message": "Los has saltado "
+        "message": "Has saltado "
     },
     "youHaveSaved": {
         "message": "Te has ahorrado "
@@ -514,7 +517,7 @@
         "message": "Música: Sección sin musica"
     },
     "category_music_offtopic_description": {
-        "message": "Sólo para su uso en vídeos musicales. Esto incluye las introducciones o las salidas en los vídeos musicales."
+        "message": "Sólo para el uso en vídeos musicales. Esto sólo debe utilizarse para secciones de vídeos musicales que no están ya cubiertos por otra categoría."
     },
     "category_music_offtopic_short": {
         "message": "No musical"
@@ -590,6 +593,9 @@
     },
     "adblockerIssue": {
         "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de vídeo. Este es probablemente su bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    },
+    "adblockerIssueUnlistedVideosInfo": {
+        "message": "Si no puedes resolver esto, desactiva la configuración 'Ignorar vídeos no listados/privados', porque SponsorBlock no puede recuperar la información de visibilidad de este vídeo"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Si esto sigue ocurriendo, podría ser causado por tu bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Solicitudes"

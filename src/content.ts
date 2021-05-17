@@ -258,7 +258,7 @@ async function videoIDChange(id) {
         try {
             await utils.wait(() => !!videoInfo, 5000, 1);
         } catch (err) {
-            alert(chrome.i18n.getMessage("adblockerIssue") + "\n\n" + chrome.i18n.getMessage("adblockerIssueUnlistedVideosInfo"));
+            await videoInfoFetchFailed("adblockerIssueUnlistedVideosInfo");
         }
 
         if (isUnlisted()) {
@@ -268,7 +268,11 @@ async function videoIDChange(id) {
     }
 
     // Update whitelist data when the video data is loaded
-    utils.wait(() => !!videoInfo, 5000, 10).then(whitelistCheck);
+    utils.wait(() => !!videoInfo, 5000, 10).then(whitelistCheck).catch(() => {
+        if (Config.config.forceChannelCheck) {
+            videoInfoFetchFailed("adblockerIssueWhitelist");
+        }
+    });
 
     //setup the preview bar
     if (previewBar === null) {
@@ -635,12 +639,12 @@ async function sponsorsLookup(id: string) {
             sponsorLookupRetries = 0;
         } else if (response?.status === 404) {
             retryFetch(id);
-        } else if (sponsorLookupRetries < 90 && !recheckStarted) {
+        } else if (sponsorLookupRetries < 15 && !recheckStarted) {
             recheckStarted = true;
 
             //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id), 5000 + Math.random() * 15000);
+            setTimeout(() => sponsorsLookup(id), 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
 
             sponsorLookupRetries++;
         }
@@ -712,6 +716,21 @@ async function getVideoInfo(): Promise<void> {
         }
 
         videoInfo = JSON.parse(decodedData);
+    }
+}
+
+async function videoInfoFetchFailed(errorMessage: string): Promise<void> {
+    console.log("failed\t" + errorMessage)
+    if (utils.isFirefox() && !Config.config.ytInfoPermissionGranted) {
+        // Attempt to ask permission for youtube.com domain
+        alert(chrome.i18n.getMessage("youtubePermissionRequest"));
+        
+        chrome.runtime.sendMessage({
+            message: "openPage",
+            url: "permissions/index.html#youtube.com"
+        });
+    } else {
+        alert(chrome.i18n.getMessage("videoInfoFetchFailed") + "\n\n" + chrome.i18n.getMessage(errorMessage));
     }
 }
 
@@ -1276,7 +1295,7 @@ function openInfoMenu() {
             const settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
             const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
             const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
-            logo.src = chrome.extension.getURL("icons/LogoSponsorBlocker256px.png");
+            logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
             settings.src = chrome.extension.getURL("icons/settings.svg");
             edit.src = chrome.extension.getURL("icons/pencil.svg");
             check.src = chrome.extension.getURL("icons/check.svg");
@@ -1517,9 +1536,11 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 }
 
 function addHotkeyListener(): boolean {
-    const videoRoot = document.getElementById("movie_player") as HTMLDivElement;
+    let videoRoot = document.getElementById("movie_player") as HTMLDivElement;
+    if (onInvidious) videoRoot = (document.getElementById("player-container") ?? document.getElementById("player")) as HTMLDivElement;
+    if (video.baseURI.startsWith("https://www.youtube.com/tv#/")) videoRoot = document.querySelector("ytlr-watch-page") as HTMLDivElement;
 
-    if (!videoRootsWithEventListeners.includes(videoRoot)) {
+    if (videoRoot && !videoRootsWithEventListeners.includes(videoRoot)) {
         videoRoot.addEventListener("keydown", hotkeyListener);
         videoRootsWithEventListeners.push(videoRoot);
         return true;
@@ -1634,6 +1655,8 @@ function showTimeWithoutSkips(skippedDuration: number): void {
 
         display.appendChild(duration);
     }
+    
+    const durationAfterSkips = utils.getFormattedTime(video.duration - skippedDuration)
 
-    duration.innerText = skippedDuration <= 0 ? "" : " (" + utils.getFormattedTime(video.duration - skippedDuration) + ")";
+    duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")";
 }
