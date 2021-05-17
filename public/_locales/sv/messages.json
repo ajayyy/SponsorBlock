@@ -591,8 +591,8 @@
     "channelDataNotFound": {
         "message": "Kanal-ID är inte inladdat än."
     },
-    "adblockerIssue": {
-        "message": "Det verkar som om något blockerar SponsorBlocks från att hämta videodata. Det beror förmodligen på din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Det verkar som om något blockerar SponsorBlock från att hämta videodata. Gå till https://github.com/ajayyy/SponsorBlock/issues/741 för mer info."
     },
     "youtubePermissionRequest": {
         "message": "Det verkar som att SponsorBlock inte kan nå YouTube-API:t. För att åtgärda problemet ska du acceptera behörighetsfrågan som visas härnäst och vänta några sekunder och sedan ladda om sidan."
