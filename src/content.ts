@@ -1123,9 +1123,9 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<void> {
 /** Updates the visibility of buttons on the player related to creating segments. */
 function updateEditButtonsOnPlayer(): void {
     // Don't try to update the buttons if we aren't on a YouTube video page
-    if (!sponsorVideoID || onInvidious) return;
+    if (!sponsorVideoID) return;
 
-    const buttonsEnabled = !Config.config.hideVideoPlayerControls;
+    const buttonsEnabled = !Config.config.hideVideoPlayerControls && !onInvidious;
 
     let creatingSegment = false;
     let submitButtonVisible = false;
