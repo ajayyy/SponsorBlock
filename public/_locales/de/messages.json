@@ -591,9 +591,6 @@
     "channelDataNotFound": {
         "message": "Kanal-ID wurde noch nicht geladen."
     },
-    "adblockerIssue": {
-        "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Eine mögliche Ursache sind Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "youtubePermissionRequest": {
         "message": "Es scheint, dass SponsorBlock nicht in der Lage ist, die YouTube-API zu erreichen. Um dies zu beheben, akzeptieren Sie die Berechtigungsanfrage, die gleich erscheint; Warten Sie ein paar Sekunden, und laden Sie die Seite neu."
     },
