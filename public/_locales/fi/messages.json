@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segmentti Päättyy Nyt"
     },
+    "sponsorCancel": {
+        "message": "Peruuta Segmentin Luominen"
+    },
     "noVideoID": {
         "message": "YouTube-videota ei löytynyt.\nJos tämä on väärässä, päivitä välilehti."
     },
@@ -591,8 +594,8 @@
     "channelDataNotFound": {
         "message": "Kanavatunnusta ei ole vielä ladattu."
     },
-    "adblockerIssue": {
-        "message": "Näyttää siltä, että jokin estää SponsorBlockin kykyä saada videotietoja. Tämä on luultavasti mainosten esto-ohjelmasi. Tarkista https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Näyttää siltä, että jokin estää SponsorBlockin kykyä saada videotietoja. Katso https://github.com/ajayyy/SponsorBlock/issues/741 lisätietoja varten."
     },
     "youtubePermissionRequest": {
         "message": "Näyttää siltä, että SponsorBlock ei pysty saavuttamaan YouTube-APIa. Korjataksesi tämän, hyväksy seuraavaksi ilmestyvä käyttöoikeusilmoitus, odota muutama sekunti ja lataa sitten sivu uudelleen."
