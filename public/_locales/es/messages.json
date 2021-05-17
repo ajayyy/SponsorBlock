@@ -595,10 +595,10 @@
         "message": "ID de canal no cargado todavía."
     },
     "videoInfoFetchFailed": {
-        "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de vídeo, Por favor, vea https://github.com/ajayyy/SponsorBlock/issues/741 para más información."
+        "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de video, Por favor, vea https://github.com/ajayyy/SponsorBlock/issues/741 para más información."
     },
     "youtubePermissionRequest": {
-        "message": "Parece que SponsorBlock no puede acceder a la API de YouTube. Para solucionarlo, acepta el aviso de permiso que aparecerá a continuación, espera unos segundos y vuelve a cargar la página."
+        "message": "Parece que SponsorBlock no puede acceder a la API de YouTube. Para solucionarlo, acepte el aviso de permiso que aparecerá a continuación, espera unos segundos y vuelve a cargar la página."
     },
     "acceptPermission": {
         "message": "Aceptar permiso"
@@ -607,10 +607,13 @@
         "message": "¡Petición de permiso realizada con éxito!"
     },
     "permissionRequestFailed": {
-        "message": "La petición de permiso ha fallado, ¿has hecho clic en denegar?"
+        "message": "La petición de permiso ha fallado, ¿ha hecho clic en denegar?"
     },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Si no puedes resolver esto, desactiva la configuración 'Ignorar vídeos no listados/privados', porque SponsorBlock no puede recuperar la información de visibilidad de este vídeo"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Si no puede resolverlo, desactive la opción \"Forzar Comprobación de Canal antes de Saltar\", ya que SponsorBlock no puede recuperar la información del canal de este video"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Si esto sigue ocurriendo, podría ser causado por tu bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Solicitudes"
