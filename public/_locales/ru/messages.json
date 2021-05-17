@@ -591,8 +591,8 @@
     "channelDataNotFound": {
         "message": "ID канала еще не загружен."
     },
-    "adblockerIssue": {
-        "message": "Кажется, что-то блокирует возможность SponsorBlock'а получать данные о видео. Возможно, это ваш блокировщик рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Похоже, что-то блокирует возможность SponsorBlock'а получать данные о видео. Подробнее: https://github.com/ajayyy/SponsorBlock/issues/741."
     },
     "youtubePermissionRequest": {
         "message": "Кажется, SponsorBlock не может получить доступ к API YouTube. Чтобы исправить эту ошибку, дайте разрешение в окне, которое сейчас появится, подождите несколько секунд и затем перезагрузите страницу."
