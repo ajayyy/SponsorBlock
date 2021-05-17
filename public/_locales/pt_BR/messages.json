@@ -591,9 +591,6 @@
     "channelDataNotFound": {
         "message": "ID do canal ainda não carregado."
     },
-    "adblockerIssue": {
-        "message": "Parece que algo está bloqueando o SponsorBlock de obter dados de vídeo. Isso é provavelmente o seu bloqueador de anúncios. Por favor, verifique https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock-Requests"
-    },
     "youtubePermissionRequest": {
         "message": "Parece que o SponsorBlock é incapaz de acessar a API do YouTube. Para corrigir isso, aceite a permissão do prompt que aparecerá a seguir, espere alguns segundos e recarregue a página."
     },
