@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segmentet slutar nu"
     },
+    "sponsorCancel": {
+        "message": "Avbryt skapandet av segmentet"
+    },
     "noVideoID": {
         "message": "Hittade ingen YouTube-video.\nUppdatera fliken om detta är felaktigt."
     },
