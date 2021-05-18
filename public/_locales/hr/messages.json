@@ -47,10 +47,10 @@
         "message": "Klikni unskip kako bi se vratio otkuda si došao."
     },
     "unskip": {
-        "message": "Unskip"
+        "message": "Ne preskači"
     },
     "reskip": {
-        "message": "Reskip"
+        "message": "Preskoči opet"
     },
     "paused": {
         "message": "Pauzirano"
@@ -109,11 +109,22 @@
     "voteOnTime": {
         "message": "Glasaj za isječak"
     },
+    "recordTimesDescription": {
+        "message": "Pošalji"
+    },
+    "submissionEditHint": {
+        "message": "Uređivanje dijela prikazat će se nakon što pritisneš gumb za slanje",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
     "clearTimesButton": {
         "message": "Očisti vremena"
     },
     "submitTimesButton": {
         "message": "Unesi vremena"
+    },
+    "yourWork": {
+        "message": "Tvoja slanja",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "whatChangeUserID": {
         "message": "Ovo bi trebalo ostati privatno. slično je lozinki i ne bi se smjelo dijeliti ni s kime. Ako netko ovo ima, mogu se lažno predstavljati kao ti."
@@ -171,5 +182,75 @@
     },
     "minDurationDescription": {
         "message": "Isječci kraći od postavljene vrijednosti neće biti preskočeni ili prikazani u playeru."
+    },
+    "confirmNoticeTitle": {
+        "message": "Pošalji segment"
+    },
+    "submit": {
+        "message": "Pošalji"
+    },
+    "category_sponsor": {
+        "message": "Sponzor"
+    },
+    "category_intro": {
+        "message": "Stanka/Uvodna animacija"
+    },
+    "category_intro_description": {
+        "message": "Interval bez stvarnog sadržaja. Može biti stanka, statični kadar, ponavljajuća animacija. Ovo se ne bi trebalo koristiti za prijelaze koji sadrže informacije."
+    },
+    "category_intro_short": {
+        "message": "Stanka"
+    },
+    "category_outro": {
+        "message": "Završni kadrovi/Zasluge"
+    },
+    "category_interaction": {
+        "message": "Podsjetnik interakcije (Pretplati se)"
+    },
+    "category_interaction_short": {
+        "message": "Podsjetnik interakcije"
+    },
+    "category_selfpromo": {
+        "message": "Neplaćena promocija ili samopromocija"
+    },
+    "category_selfpromo_description": {
+        "message": "Slično kao „sponzor”, osim za neplaćenu promociju i samopromociju. To uključuje odlomke marketinga, donacija ili informacija o tome, s kim su surađivali."
+    },
+    "category_music_offtopic": {
+        "message": "Glazba: Ne-glazbeni dio"
+    },
+    "category_music_offtopic_description": {
+        "message": "Samo za videospotove. Ovo bi se trebalo koristiti samo za dijelove videospotova koji još nisu obuhvaćeni drugom kategorijom."
+    },
+    "category_music_offtopic_short": {
+        "message": "Ne-glazbeni"
+    },
+    "manualSkip": {
+        "message": "Ručno preskakanje"
+    },
+    "youMustSelectACategory": {
+        "message": "Moraš odabrati kategoriju za sve segmente koje šalješ!"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "Ovaj je video kategoriziran kao glazba. Je li stvarno ima sponzora? Ako je ovo zapravo „Ne-glazbeni segment”, otvori opcije proširenja i aktiviraj ovu kategoriju. Zatim ovaj segment možeš posalti kao „Ne-glazbeni” umjesto sponzora. Pročitaj smjernice ako nešto nije jasno."
+    },
+    "multipleSegments": {
+        "message": "Više segmenata"
+    },
+    "guidelines": {
+        "message": "Smjernice"
+    },
+    "readTheGuidelines": {
+        "message": "Pročitaj Smjernice!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Stigle su kategorije!"
+    },
+    "categoryUpdate2": {
+        "message": "Otvori opcije za preskakanje uvoda, kraja, proizvoda itd."
+    },
+    "help": {
+        "message": "Pomoć"
     }
 }
