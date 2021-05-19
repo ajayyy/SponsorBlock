@@ -591,9 +591,6 @@
     "channelDataNotFound": {
         "message": "ఛానెల్ ID ఇంకా లోడ్ కాలేదు."
     },
-    "adblockerIssue": {
-        "message": "వీడియో డేటాను పొందే స్పాన్సర్బ్లాక్ సామర్థ్యాన్ని ఏదో అడ్డుకుంటున్నట్లు కనిపిస్తోంది. ఇది బహుశా మీ యాడ్ బ్లాకర్. దయచేసి https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests తనిఖీ చేయండి"
-    },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "మీరు దీన్ని పరిష్కరించలేకపోతే, స్పాన్సర్బ్లాక్ ఈ వీడియో కోసం దృశ్యమాన సమాచారాన్ని తిరిగి పొందలేకపోతున్నందున, 'జాబితా చేయని / ప్రైవేట్ వీడియోలను విస్మరించండి' సెట్టింగ్‌ను నిలిపివేయండి"
     },

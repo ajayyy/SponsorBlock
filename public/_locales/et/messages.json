@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segment lõpeb nüüd"
     },
+    "sponsorCancel": {
+        "message": "Tühista segmendi loomine"
+    },
     "noVideoID": {
         "message": "YouTube'i videot ei leitud.\nKui see ei vasta tõele, laadi kaart uuesti."
     },
@@ -591,11 +594,26 @@
     "channelDataNotFound": {
         "message": "Kanali ID pole veel laaditud."
     },
-    "adblockerIssue": {
-        "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. See on ilmselt sinu reklaamiblokeerija. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. Rohkema abi saamiseks palun vaata: https://github.com/ajayyy/SponsorBlock/issues/741"
+    },
+    "youtubePermissionRequest": {
+        "message": "Tundub, et SponsorBlock ei pääse YouTube'i rakendusliidesele ligi. Selle parandamiseks nõustu järgnevalt kuvatava loataotlusega, oota paar sekundit ning seejärel laadi leht uuesti."
+    },
+    "acceptPermission": {
+        "message": "Nõustu loaga"
+    },
+    "permissionRequestSuccess": {
+        "message": "Loataotlus õnnestus!"
+    },
+    "permissionRequestFailed": {
+        "message": "Loataotlus ebaõnnestus, kas sa keeldusid?"
     },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Kui sa ei suuda seda lahendada, keela valik \"ignoreeri registriväliseid/privaatsed videoid\", kuna SponsorBlock ei leia selle video nähtavusteavet"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Kui sa ei suuda seda lahendada, keela valik \"sunnitud kanalikontroll enne vahelejätmist\", kuna SponsorBlock ei leia selle video kanaliteavet"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Kui see jätkub, võib see olla põhjustatud sinu reklaamiblokeerijast. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

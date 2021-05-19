@@ -561,9 +561,6 @@
     "channelDataNotFound": {
         "message": "A csatorna azonosító még nem töltődött be."
     },
-    "adblockerIssue": {
-        "message": "Valami meggátolja a SponsorBlockot a videó adatainak megszerzésében. Valószínűleg az ad-blockere. Kérem ellenőrizze: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Ha ez folyamatosan előfordul, lehet hogy az ad-blockere okozza. Kérem nézzen utána: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },

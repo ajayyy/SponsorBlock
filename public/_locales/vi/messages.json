@@ -585,9 +585,6 @@
     "channelDataNotFound": {
         "message": "Chưa đọc được ID của kênh."
     },
-    "adblockerIssue": {
-        "message": "Hình như có gì đó đã ngăn chặn SponsorBlock truy vấn dữ liệu của video. Có thể do trình chặn quảng cáo của bạn. Hãy kiểm tra ở đây: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "adblockerIssueUnlistedVideosInfo": {
         "message": "Nếu bạn không thể giải quyết được vấn đề này, hãy vô hiệu hoá cài đặt 'Bỏ qua video không công khai/riêng tư', vì SponsorBlock không thể lấy được thông tin hiển thị của video này"
     },

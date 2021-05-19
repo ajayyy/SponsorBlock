@@ -588,9 +588,6 @@
     "channelDataNotFound": {
         "message": "ID-ul Canalului nu a fost încărcat încă."
     },
-    "adblockerIssue": {
-        "message": "Se pare că ceva blocheaza abilitatea extensiei SponsorBlock pentru a obține datele videoclipului. Cel mai probabil este adblocker-ul dumneavoastră. Vă rugăm să verificați https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Dacă acest lucru continuă să se întample, ar putea fi cauzat de adblocker-ul dumneavoastră. Vă rugăm să verificați \nhttps://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
