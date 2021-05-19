@@ -410,15 +410,6 @@
     "areYouSureReset": {
         "message": "Oletko varma, että haluat nollata tämän?"
     },
-    "confirmPrivacy": {
-        "message": "Video on havaittu piilotetuksi. Paina peruuta, jos et halua tarkistaa ohitettavia segmenttejä."
-    },
-    "unlistedCheck": {
-        "message": "Ohita Piilotetut/Yksityiset Videot"
-    },
-    "whatUnlistedCheck": {
-        "message": "Tämä asetus hidastaa SponsorBlockia hieman. Ohitus-segmenttien haku edellyttää video ID:n lähettämistä palvelimelle. Jos olet huolissasi, että piilotettujen videoiden ID:itä lähetetään internetin kautta, ota tämä asetus käyttöön."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com-osoitetta tuetaan nyt"
     },
@@ -608,9 +599,6 @@
     },
     "permissionRequestFailed": {
         "message": "Käyttöoikeuspyyntö epäonnistui, klikkasitko kiellä?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Jos et pysty ratkaisemaan tätä, poista käytöstä asetus 'Ohita piilotetut/yksityiset videot', koska SponsorBlock ei pysty noutamaan tämän videon näkyvyystietoja"
     },
     "adblockerIssueWhitelist": {
         "message": "Jos et pysty ratkaisemaan tätä, poista käytöstä asetus 'Pakota Kanavan Tarkistus Ennen Ohittamista', koska SponsorBlock ei pysty noutamaan tämän videon kanavatietoja"
