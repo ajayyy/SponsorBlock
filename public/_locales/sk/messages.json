@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Naozaj to chcete obnoviť?"
     },
-    "confirmPrivacy": {
-        "message": "Toto video je nezaradené. Ak nechcete skontrolovať preskočiteľné segmenty, stlačte Zrušiť."
-    },
-    "unlistedCheck": {
-        "message": "Ignorovať nezaradené a súkromné videá"
-    },
-    "whatUnlistedCheck": {
-        "message": "Toto nastavenie mierne spomalí SponsorBlock. Vyhľadávanie segmentov na preskočenie si vyžaduje odoslanie ID videa na server. Ak si nie ste istí odosielaním ID nezaradených videí cez internet, tak toto nastavenie zapnite."
-    },
     "mobileUpdateInfo": {
         "message": "už je podporované aj m.youtube.com"
     },
@@ -599,9 +590,6 @@
     },
     "permissionRequestFailed": {
         "message": "Povolenie oprávnenia zlyhalo, stlačili ste odmietnuť?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Ak to neviete vyriešiť, vypnite nastavenie \"Ignorovať nezaradené a súkromné videá\", lebo SponsorBlock nevie zistiť viditeľnosť tohto videa"
     },
     "adblockerIssueWhitelist": {
         "message": "Ak to neviete vyriešiť, vypnite nastavenie \"Vynútiť kontrolu kanála pred preskočením\", lebo SponsorBlock nevie zistiť informácie o kanále tohto videa"
