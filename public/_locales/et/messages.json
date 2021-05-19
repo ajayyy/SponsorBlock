@@ -410,15 +410,6 @@
     "areYouSureReset": {
         "message": "Kas soovid kindlasti selle lähtestada?"
     },
-    "confirmPrivacy": {
-        "message": "See video on registrivälisena tuvastatud. Klõpsa \"tühista\", kui ei soovi otsida vahelejätmise segmente."
-    },
-    "unlistedCheck": {
-        "message": "Ignoreeri registriväliseid/privaatsed videoid"
-    },
-    "whatUnlistedCheck": {
-        "message": "See valik aeglustab veidi SponsorBlocki. Vahelejätmise segmentide hankimiseks saadetakse video ID serverisse. Kui oled mures registriväliste videote IDde internetti saatmise üle, luba see valik."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com on nüüd toetatud"
     },
@@ -608,9 +599,6 @@
     },
     "permissionRequestFailed": {
         "message": "Loataotlus ebaõnnestus, kas sa keeldusid?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Kui sa ei suuda seda lahendada, keela valik \"ignoreeri registriväliseid/privaatsed videoid\", kuna SponsorBlock ei leia selle video nähtavusteavet"
     },
     "adblockerIssueWhitelist": {
         "message": "Kui sa ei suuda seda lahendada, keela valik \"sunnitud kanalikontroll enne vahelejätmist\", kuna SponsorBlock ei leia selle video kanaliteavet"
