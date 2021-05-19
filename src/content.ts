@@ -253,29 +253,25 @@ async function videoIDChange(id) {
     // Wait for options to be ready
     await utils.wait(() => Config.config !== null, 5000, 1);
 
-    // Get new video info
-    getVideoInfo();
-
     // If enabled, it will check if this video is private or unlisted and double check with the user if the sponsors should be looked up
     if (Config.config.checkForUnlistedVideos) {
-        try {
-            await utils.wait(() => !!videoInfo, 5000, 1);
-        } catch (err) {
-            await videoInfoFetchFailed("adblockerIssueUnlistedVideosInfo");
-        }
-
-        if (isUnlisted()) {
-            const shouldContinue = confirm(chrome.i18n.getMessage("confirmPrivacy"));
-            if(!shouldContinue) return;
+        const shouldContinue = confirm("SponsorBlock: You have the setting 'Ignore Unlisted/Private Videos' enabled." 
+                                + " Due to a change in how segment fetching works, this setting is not needed anymore as it cannot leak your video ID to the server."
+                                + " It instead sends just the first 4 characters of a longer hash of the videoID to the server, and filters through a subset of the database."
+                                + " More info about this implementation can be found here: https://github.com/ajayyy/SponsorBlockServer/issues/25"
+                                + "\n\nPlease click okay to confirm that you acknowledge this and continue using SponsorBlock.");
+        if (shouldContinue) {
+            Config.config.checkForUnlistedVideos = false;
+        } else {
+            return;
         }
     }
 
+    // Get new video info
+    getVideoInfo();
+
     // Update whitelist data when the video data is loaded
-    utils.wait(() => !!videoInfo, 5000, 10).then(whitelistCheck).catch(() => {
-        if (Config.config.forceChannelCheck) {
-            videoInfoFetchFailed("adblockerIssueWhitelist");
-        }
-    });
+    whitelistCheck();
 
     //setup the preview bar
     if (previewBar === null) {
@@ -833,8 +829,31 @@ function updatePreviewBar(): void {
 }
 
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
-function whitelistCheck() {
-    channelID = videoInfo?.videoDetails?.channelId;
+async function whitelistCheck() {
+    const whitelistedChannels = Config.config.whitelistedChannels;
+
+    const getChannelID = () => videoInfo?.videoDetails?.channelId 
+        ?? document.querySelector(".ytd-channel-name a")?.getAttribute("href")?.replace(/\/.+\//, "") // YouTube
+        ?? document.querySelector(".ytp-title-channel-logo")?.getAttribute("href")?.replace(/https:\/.+\//, "") // YouTube Embed
+        ?? document.querySelector("a > .channel-profile")?.parentElement?.getAttribute("href")?.replace(/\/.+\//, ""); // Invidious
+
+    try {
+        await utils.wait(() => !!getChannelID(), 6000, 20);
+    } catch {
+        if (Config.config.forceChannelCheck) {
+            // treat as not whitelisted
+            channelID = "";
+
+            // Don't warn for Invidious embeds
+            if (!(onInvidious && document.URL.includes("/embed/"))) {
+                videoInfoFetchFailed("adblockerIssueWhitelist");
+            }
+        }
+
+        return;
+    }
+
+    channelID = getChannelID();
     if (!channelID) {
         channelID = null;
 
@@ -842,8 +861,6 @@ function whitelistCheck() {
     }
 
     //see if this is a whitelisted channel
-    const whitelistedChannels = Config.config.whitelistedChannels;
-
     if (whitelistedChannels != undefined && whitelistedChannels.includes(channelID)) {
         channelWhitelisted = true;
     }

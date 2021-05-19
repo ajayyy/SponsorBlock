@@ -410,15 +410,6 @@
     "areYouSureReset": {
         "message": "Are you sure you would like to reset this?"
     },
-    "confirmPrivacy": {
-        "message": "The video has been detected as unlisted. Click cancel if you do not want to check for skip segments."
-    },
-    "unlistedCheck": {
-        "message": "Ignore Unlisted/Private Videos"
-    },
-    "whatUnlistedCheck": {
-        "message": "This setting will slightly slow down SponsorBlock. Skip segment lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com is now supported"
     },
@@ -608,9 +599,6 @@
     },
     "permissionRequestFailed": {
         "message": "Permission request failed, did you click deny?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "If you are unable to resolve this, then disable the setting 'Ignore unlisted/private videos', as SponsorBlock is unable to retrieve the visibility information for this video"
     },
     "adblockerIssueWhitelist": {
         "message": "If you are unable to resolve this, then disable the setting 'Force Channel Check Before Skipping', as SponsorBlock is unable to retrieve the channel information for this video"
