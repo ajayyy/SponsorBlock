@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Bist du dir sicher, dass du das zurücksetzen möchtest?"
     },
-    "confirmPrivacy": {
-        "message": "Das Video wurde als \"nicht gelistet\" erkannt. Klicke auf \"Abbrechen\", wenn du nicht nach Segmenten suchen möchtest."
-    },
-    "unlistedCheck": {
-        "message": "Nicht gelistete und private Videos ignorieren"
-    },
-    "whatUnlistedCheck": {
-        "message": "Diese Einstellung wird SponsorBlock leicht verlangsamen. Das Abfragen von überspringbaren Videosegmenten erfordert das Senden der Video-ID an den Server. Wenn du dir Sorgen darüber machst, dass IDs von nicht gelisteten Videos über das Internet gesendet werden, aktiviere diese Option."
-    },
     "mobileUpdateInfo": {
         "message": "https://m.youtube.com wird jetzt unterstützt"
     },
@@ -602,9 +593,6 @@
     },
     "permissionRequestFailed": {
         "message": "Berechtigungsanfrage fehlgeschlagen, haben Sie \"Ablehnen\" angeklickt?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Nicht gelistete und private Videos ignorieren', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen"
     },
     "adblockerIssueWhitelist": {
         "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Kanalprüfung vor dem Überspringen von Segmenten erzwingen', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen."
