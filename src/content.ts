@@ -120,6 +120,9 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     getRealCurrentTime: getRealCurrentTime
 });
 
+// value determining when to count segment as skipped and send telemetry to server (percent based)
+const manualSkipPercentCount = 0.5;
+
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
@@ -970,6 +973,26 @@ function previewTime(time: number, unpause = true) {
     }
 }
 
+//send telemetry and count skip
+function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: number, fullSkip: boolean) {
+    if (!Config.config.trackViewCount) return;
+    
+    let counted = false;
+    for (const segment of skippingSegments) {
+        const index = sponsorTimes.indexOf(segment);
+        if (index !== -1 && !sponsorSkipped[index]) {
+            sponsorSkipped[index] = true;
+            if (!counted) {
+                Config.config.minutesSaved = Config.config.minutesSaved + secondsSkipped / 60;
+                Config.config.skipCount = Config.config.skipCount + 1;
+                counted = true;
+            }
+            
+            if (fullSkip) utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
+        }
+    }
+}
+
 //skip from the start time to the end time for a certain index sponsor time
 function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: SponsorTime[], openNotice: boolean) {
     // There will only be one submission if it is manual skip
@@ -993,29 +1016,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     }
 
     //send telemetry that a this sponsor was skipped
-    if (Config.config.trackViewCount && autoSkip) {
-        let alreadySkipped = false;
-        let isPreviewSegment = false;
-
-        for (const segment of skippingSegments) {
-            const index = sponsorTimes.indexOf(segment);
-            if (index !== -1 && !sponsorSkipped[index]) {
-                utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
-
-                sponsorSkipped[index] = true;
-            } else if (sponsorSkipped[index]) {
-                alreadySkipped = true;
-            }
-
-            if (index === -1) isPreviewSegment = true;
-        }
-        
-        // Count this as a skip
-        if (!alreadySkipped && !isPreviewSegment) {
-            Config.config.minutesSaved = Config.config.minutesSaved + (skipTime[1] - skipTime[0]) / 60;
-            Config.config.skipCount = Config.config.skipCount + 1;
-        }
-    }
+    if (autoSkip) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true);
 }
 
 function unskipSponsorTime(segment: SponsorTime) {
@@ -1026,8 +1027,12 @@ function unskipSponsorTime(segment: SponsorTime) {
 }
 
 function reskipSponsorTime(segment: SponsorTime) {
+    const skippedTime = Math.max(segment.segment[1] - video.currentTime, 0);
+    const segmentDuration = segment.segment[1] - segment.segment[0];
+    const fullSkip = skippedTime / segmentDuration > manualSkipPercentCount;
+    
     video.currentTime = segment.segment[1];
-
+    sendTelemetryAndCount([segment], skippedTime, fullSkip);
     startSponsorSchedule(true, segment.segment[1], false);
 }
 
