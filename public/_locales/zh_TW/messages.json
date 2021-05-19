@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "您確定要重製這個嗎？"
     },
-    "confirmPrivacy": {
-        "message": "此影片已被偵測為未列出。點擊取消以不檢查跳過片段"
-    },
-    "unlistedCheck": {
-        "message": "忽略私人/未列出的影片"
-    },
-    "whatUnlistedCheck": {
-        "message": "此設定會微微降低 SponsorBlock 的速度。跳過片段檢查會需要將影片 ID 送到伺服器。如果您對將未列出的影片被流出的話，啟用這個選項"
-    },
     "mobileUpdateInfo": {
         "message": "現已支援 m.youtube.com"
     },
@@ -599,9 +590,6 @@
     },
     "permissionRequestFailed": {
         "message": "允許權限失敗，您是不是按到拒絕了？"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "如果您沒辦法解決這個問題，請停用\"忽略私人或不公開影片\"，因為 SponsorBlock 無法獲取這部影片的可見性資料。"
     },
     "adblockerIssueWhitelist": {
         "message": "如果您沒辦法解決這個問題，請停用\"強制在跳過前檢查頻道\"，因為 SponsorBlock 無法獲取這部影片的頻道資料。"
