@@ -35,7 +35,6 @@ interface SBConfig {
     audioNotificationOnSkip,
     checkForUnlistedVideos: boolean,
     testingServer: boolean,
-    hashPrefix: boolean,
     refetchWhenNotFound: boolean,
     ytInfoPermissionGranted: boolean,
 
@@ -169,7 +168,6 @@ const Config: SBObject = {
         audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         testingServer: false,
-        hashPrefix: true,
         refetchWhenNotFound: true,
         ytInfoPermissionGranted: false,
 

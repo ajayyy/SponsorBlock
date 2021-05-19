@@ -564,33 +564,22 @@ async function sponsorsLookup(id: string) {
     }
 
     // Check for hashPrefix setting
-    let getRequest;
-    if (Config.config.hashPrefix) {
-        const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
-        getRequest = utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
-            categories
-        });
-    } else {
-        getRequest = utils.asyncRequestToServer('GET', "/api/skipSegments", {
-            videoID: id,
-            categories
-        });
-    }
-    getRequest.then(async (response: FetchResponse) => {
+    const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
+    utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
+        categories
+    }).then(async (response: FetchResponse) => {
         if (response?.ok) {
             let result = JSON.parse(response.responseText);
-            if (Config.config.hashPrefix) {
-                result = result.filter((video) => video.videoID === id);
-                if (result.length > 0) {
-                    result = result[0].segments;
-                    if (result.length === 0) { // return if no segments found
-                        retryFetch(id);
-                        return;
-                    }
-                } else { // return if no video found
+            result = result.filter((video) => video.videoID === id);
+            if (result.length > 0) {
+                result = result[0].segments;
+                if (result.length === 0) { // return if no segments found
                     retryFetch(id);
                     return;
                 }
+            } else { // return if no video found
+                retryFetch(id);
+                return;
             }
 
             const recievedSegments: SponsorTime[] = result;
@@ -1592,14 +1581,6 @@ function hotkeyListener(e: KeyboardEvent): void {
             submitSponsorTimes();
             break;
     }
-}
-
-/**
- * Is this an unlisted YouTube video.
- * Assumes that the the privacy info is available.
- */
-function isUnlisted(): boolean {
-    return videoInfo?.microformat?.playerMicroformatRenderer?.isUnlisted || videoInfo?.videoDetails?.isPrivate;
 }
 
 /**
