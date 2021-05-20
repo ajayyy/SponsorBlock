@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "片段現在結束"
     },
+    "sponsorCancel": {
+        "message": "取消創建片段"
+    },
     "noVideoID": {
         "message": "找不到 YouTube 影片。\n如果這是不正確的，重新整理此分頁"
     },
