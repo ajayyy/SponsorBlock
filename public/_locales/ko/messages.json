@@ -410,15 +410,6 @@
     "areYouSureReset": {
         "message": "정말로 초기화하시겠습니까?"
     },
-    "confirmPrivacy": {
-        "message": "이 영상은 일부 공개 영상으로 감지되었습니다. 구간 스킵을 확인하지 않으려면 취소를 누르세요."
-    },
-    "unlistedCheck": {
-        "message": "일부 공개/비공개 영상 무시"
-    },
-    "whatUnlistedCheck": {
-        "message": "이 설정은 SponsorBlock을 약간 느리게 만듭니다. 건너뛰기 부분 질의는 서버에 영상 ID를 전송해야 합니다. 목록에 없는 영상 ID가 인터넷으로 전송되는 것이 우려된다면 이 옵션을 활성화 해주세요."
-    },
     "mobileUpdateInfo": {
         "message": "이제 m.youtube.com 링크를 지원합니다"
     },
@@ -608,9 +599,6 @@
     },
     "permissionRequestFailed": {
         "message": "권한 요청에 실패했습니다. 거부를 누르셨나요?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "이 문제를 해결할 수 없는 경우, SponsorBlock이 이 동영상에 대한 보이는 정보를 찾을 수 없으므로 '일부 공개/비공개 동영상 무시' 설정을 꺼주십시오."
     },
     "adblockerIssueWhitelist": {
         "message": "이 문제를 해결할 수 없는 경우, SponsorBlock이 이 동영상에 대한 채널 정보를 찾을 수 없으므로 '건너뛰기 전 채널 강제 체크' 설정을 꺼주십시오."

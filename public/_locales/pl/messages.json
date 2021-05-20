@@ -79,9 +79,6 @@
     "sponsorEnd": {
         "message": "Koniec segmentu"
     },
-    "sponsorCancel": {
-        "message": "Anuluj tworzenie segmentu"
-    },
     "noVideoID": {
         "message": "Nie znaleziono filmu YouTube.\nJeżeli to błąd, odśwież stronę."
     },
@@ -410,15 +407,6 @@
     "areYouSureReset": {
         "message": "Czy na pewno chcesz to zresetować?"
     },
-    "confirmPrivacy": {
-        "message": "Ten film został wykryty jako niepubliczny. Kliknij Anuluj, jeśli nie chcesz sprawdzać, czy są dla niego segmenty."
-    },
-    "unlistedCheck": {
-        "message": "Ignoruj niepubliczne/prywatne filmy"
-    },
-    "whatUnlistedCheck": {
-        "message": "Ta opcja spowolni nieco SponsorBlock. Wyszukiwanie istniejących segmentów wymaga wysłania ID filmu do serwera. Jeśli niepokoi Cię fakt wysyłania przez internet ID niepublicznych filmów, włącz tę opcję."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com jest teraz wspierany"
     },
@@ -605,9 +593,6 @@
     },
     "permissionRequestFailed": {
         "message": "Prośba odrzucona. Może kliknięto „Odmów”?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Jeżeli nie możesz naprawić tego to wyłącz w ustawieniach opcję \"Ignoruj prywatne filmy\", ponieważ SponsorBlock nie może uzyskać informacji o widoczności tego filmu"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

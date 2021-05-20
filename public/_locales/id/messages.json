@@ -410,15 +410,6 @@
     "areYouSureReset": {
         "message": "Apakah anda yakin ingin mengatur ulang ini?"
     },
-    "confirmPrivacy": {
-        "message": "Video ini dideteksi sebagai tidak terdaftar. Klik batal jika kamu tidak ingin mengecek untuk melewati segmen."
-    },
-    "unlistedCheck": {
-        "message": "Abaikan Video Tidak Terdaftar/Privat"
-    },
-    "whatUnlistedCheck": {
-        "message": "Pengaturan ini akan sedikit melambatkan SponsorBlock. Pencarian lewati segmen membutuhkan pengiriman ID video ke server. Jika anda khawatir tentang ID unlisted video terkirim ke internet, hidupkan opsi ini."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com sekarang didukung"
     },
@@ -608,9 +599,6 @@
     },
     "permissionRequestFailed": {
         "message": "Permintaan izin gagal, apakah anda mengklik tolak?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Jika anda tidak dapat menyelesaikan masalah ini, maka nonaktifkan pengaturan 'Abaikan video tidak terdaftar/privat', dikarenakan SponsorBlock tidak dapat menerima informasi visibilitas untuk video ini"
     },
     "adblockerIssueWhitelist": {
         "message": "Apabila anda tidak dapat menyelesaikan masalah ini, maka nonaktifkan pengaturan 'Paksa Cek Channel Sebelum Melewati', dikarenakan SponsorBlock tidak dapat menerima informasi channel untuk video ini"

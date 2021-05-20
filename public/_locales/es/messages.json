@@ -410,15 +410,6 @@
     "areYouSureReset": {
         "message": "¿Estás seguro de que te gustaría reiniciar esto?"
     },
-    "confirmPrivacy": {
-        "message": "El vídeo ha sido detectado como no listado. Haz clic en cancelar si no quieres comprobar si hay segmentos salteados."
-    },
-    "unlistedCheck": {
-        "message": "Ignorar los vídeos no listados/privados"
-    },
-    "whatUnlistedCheck": {
-        "message": "Esta configuración ralentizará ligeramente a SponsorBlock. Las búsquedas de segmentos de salto requieren el envío de la identificación del vídeo al servidor. Si le preocupa que se envíen por Internet identificadores de vídeo no listados, habilite esta opción."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com ahora es compatible"
     },
@@ -608,9 +599,6 @@
     },
     "permissionRequestFailed": {
         "message": "La petición de permiso ha fallado, ¿ha hecho clic en denegar?"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Si no puedes resolver esto, desactiva la configuración 'Ignorar vídeos no listados/privados', porque SponsorBlock no puede recuperar la información de visibilidad de este vídeo"
     },
     "adblockerIssueWhitelist": {
         "message": "Si no puede resolverlo, desactive la opción \"Forzar Comprobación de Canal antes de Saltar\", ya que SponsorBlock no puede recuperar la información del canal de este video"
