@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Koniec segmentu"
     },
+    "sponsorCancel": {
+        "message": "Zrušiť vytváranie segmentu"
+    },
     "noVideoID": {
         "message": "Nenašlo sa žiadne YouTube video.\nAk je to chyba, obnovte záložku."
     },
@@ -582,11 +585,17 @@
     "channelDataNotFound": {
         "message": "ID kanála nie je zatiaľ načítané."
     },
+    "videoInfoFetchFailed": {
+        "message": "Zdá sa, že niečo blokuje SponsorBlocku možnosť získať dáta o videu. Prosím navštívte https://github.com/ajayyy/SponsorBlock/issues/741 pre viac informácií."
+    },
     "youtubePermissionRequest": {
         "message": "SponsorBlock nemá prístup k YouTube API. Povoľte oprávnenie v nasledovnej výzve, počkajte pár sekúnd a znovu nahrajte stránku."
     },
     "acceptPermission": {
         "message": "Povoľte oprávnenie"
+    },
+    "permissionRequestSuccess": {
+        "message": "Oprávnenie bolo úspešne povolené!"
     },
     "permissionRequestFailed": {
         "message": "Povolenie oprávnenia zlyhalo, stlačili ste odmietnuť?"
