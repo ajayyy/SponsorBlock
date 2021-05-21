@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, IncompleteSponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -84,9 +84,6 @@ utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYo
 //this only happens if there is an error
 let sponsorLookupRetries = 0;
 
-/** Currently timed segment, which will be added to the unsubmitted segments when ready. */
-let currentlyTimedSegment: IncompleteSponsorTime | null = null;
-
 /** Segments created by the user which have not yet been submitted. */
 let sponsorTimesSubmitting: SponsorTime[] = [];
 
@@ -136,7 +133,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             startOrEndTimingNewSegment()
 
             sendResponse({
-                creatingSegment: currentlyTimedSegment !== null,
+                creatingSegment: isSegmentCreationInProgress(),
             });
 
             break;
@@ -157,7 +154,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "getVideoID":
             sendResponse({
                 videoID: sponsorVideoID,
-                creatingSegment: currentlyTimedSegment !== null,
+                creatingSegment: isSegmentCreationInProgress(),
             });
 
             break;
@@ -305,7 +302,6 @@ async function videoIDChange(id) {
 
     // Clear unsubmitted segments from the previous video
     sponsorTimesSubmitting = [];
-    currentlyTimedSegment = null;
     updateSponsorTimesSubmitting();
 }
 
@@ -1144,7 +1140,7 @@ function updateEditButtonsOnPlayer(): void {
 
     // Only check if buttons should be visible if they're enabled
     if (buttonsEnabled) {
-        creatingSegment = currentlyTimedSegment !== null;
+        creatingSegment = isSegmentCreationInProgress();
 
         // Show only if there are any segments to submit
         submitButtonVisible = sponsorTimesSubmitting.length > 0;
@@ -1190,39 +1186,47 @@ function getRealCurrentTime(): number {
 }
 
 function startOrEndTimingNewSegment() {
-    if (!currentlyTimedSegment) {
-        // Start a new segment
-        currentlyTimedSegment = {
+    if (!isSegmentCreationInProgress()) {
+        sponsorTimesSubmitting.push({
             segment: [getRealCurrentTime()],
             UUID: null,
             category: Config.config.defaultCategory,
-        };
+        });
     } else {
         // Finish creating the new segment
-        const existingTime = currentlyTimedSegment.segment[0];
+        const existingSegment = getIncompleteSegment();
+        const existingTime = existingSegment.segment[0];
         const currentTime = getRealCurrentTime();
+            
+        // Swap timestamps if the user put the segment end before the start
+        existingSegment.segment = [Math.min(existingTime, currentTime), Math.max(existingTime, currentTime)];
+    }
 
-        sponsorTimesSubmitting.push({
-            ...currentlyTimedSegment,
-            // Swap timestamps if the user put the segment end before the start
-            segment: [Math.min(existingTime, currentTime), Math.max(existingTime, currentTime)],
-        });
+    // Save the newly created segment
+    Config.config.segmentTimes.set(sponsorVideoID, sponsorTimesSubmitting);
 
-        currentlyTimedSegment = null;
+    updateEditButtonsOnPlayer();
+    updateSponsorTimesSubmitting(false);
+}
 
-        // Save the newly created segment
+function getIncompleteSegment(): SponsorTime {
+    return sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1];
+}
+
+/** Is the latest submitting segment incomplete */
+function isSegmentCreationInProgress(): boolean {
+    const segment = getIncompleteSegment();
+    return segment && segment?.segment?.length !== 2;
+}
+
+function cancelCreatingSegment() {
+    if (isSegmentCreationInProgress()) {
+        sponsorTimesSubmitting.splice(sponsorTimesSubmitting.length - 1, 1);
         Config.config.segmentTimes.set(sponsorVideoID, sponsorTimesSubmitting);
     }
 
     updateEditButtonsOnPlayer();
-
     updateSponsorTimesSubmitting(false);
-}
-
-function cancelCreatingSegment() {
-    currentlyTimedSegment = null;
-
-    updateEditButtonsOnPlayer();
 }
 
 function updateSponsorTimesSubmitting(getFromConfig = true) {
@@ -1500,7 +1504,6 @@ async function sendSubmitMessage() {
         Config.config.segmentTimes.delete(sponsorVideoID);
 
         // Add submissions to current sponsors list
-        // FIXME: segments from sponsorTimesSubmitting do not contain UUIDs .-.
         sponsorTimes = (sponsorTimes || []).concat(sponsorTimesSubmitting);
 
         // Increase contribution count
@@ -1511,7 +1514,6 @@ async function sendSubmitMessage() {
         Config.config.submissionCountSinceCategories = Config.config.submissionCountSinceCategories + 1;
 
         // Empty the submitting times
-        currentlyTimedSegment = null;
         sponsorTimesSubmitting = [];
 
         updatePreviewBar();

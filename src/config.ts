@@ -410,7 +410,7 @@ function migrateOldFormats(config: SBConfig) {
         // Otherwise junk data
         if (Array.isArray(jsonData)) {
             const oldMap = new Map(jsonData);
-            oldMap.forEach((sponsorTimes: number[][], key) => {
+            oldMap.forEach((sponsorTimes: [number, number][], key) => {
                 const segmentTimes: SponsorTime[] = [];
                 for (const segment of sponsorTimes) {
                     segmentTimes.push({

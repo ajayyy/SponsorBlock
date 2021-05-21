@@ -52,17 +52,13 @@ export enum SponsorHideType {
 }
 
 export interface SponsorTime {
-    segment: number[];
+    segment: [number] | [number, number];
     UUID: string;
 
     category: string;
 
     hidden?: SponsorHideType;
 }
-
-export type IncompleteSponsorTime = Omit<SponsorTime, 'segment'> & {
-    segment: [number];
-};
 
 export interface PreviewBarOption {
     color: string,
