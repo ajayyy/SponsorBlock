@@ -583,7 +583,8 @@
         "message": "hidden: too short"
     },
     "channelDataNotFound": {
-        "message": "Channel ID not loaded yet."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Channel ID is not loaded yet. If you are using an embedded video, try using the YouTube homepage instead. This could also be caused by changes in the YouTube layout, if you think so, make a comment here:"
     },
     "videoInfoFetchFailed": {
         "message": "It seems that something is blocking SponsorBlock's ability to get video data. Please see https://github.com/ajayyy/SponsorBlock/issues/741 for more info."
@@ -602,9 +603,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "If you are unable to resolve this, then disable the setting 'Force Channel Check Before Skipping', as SponsorBlock is unable to retrieve the channel information for this video"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "If this keeps occuring, it could be caused by your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Force Channel Check Before Skipping"

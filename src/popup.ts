@@ -581,8 +581,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 {message: 'getChannelID'},
                 function(response) {
                     if (!response.channelID) {
-                        alert(chrome.i18n.getMessage("channelDataNotFound") + "\n\n" + 
-                            chrome.i18n.getMessage("itCouldBeAdblockerIssue"));
+                        alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
                         return;
                     }
 

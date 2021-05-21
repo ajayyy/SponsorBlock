@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject, ChannelIDInfo, ChannelIDStatus } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -29,7 +29,7 @@ const skipNotices: SkipNotice[] = [];
 // JSON video info 
 let videoInfo: VideoInfo = null;
 //the channel this video is about
-let channelID: string;
+let channelIDInfo: ChannelIDInfo;
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -160,7 +160,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             break;
         case "getChannelID":
             sendResponse({
-                channelID: channelID
+                channelID: channelIDInfo.id
             });
 
             break;
@@ -212,7 +212,10 @@ function resetValues() {
 
     videoInfo = null;
     channelWhitelisted = false;
-    channelID = null;
+    channelIDInfo = {
+        status: ChannelIDStatus.Fetching,
+        id: null
+    };
 
     //empty the preview bar
     if (previewBar !== null) {
@@ -392,7 +395,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
     if (video.paused) return;
 
-    if (Config.config.disableSkipping || channelWhitelisted || (channelID === null && Config.config.forceChannelCheck)){
+    if (Config.config.disableSkipping || channelWhitelisted || (channelIDInfo.status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
         return;
     }
 
@@ -703,21 +706,6 @@ async function getVideoInfo(): Promise<void> {
     }
 }
 
-async function videoInfoFetchFailed(errorMessage: string): Promise<void> {
-    console.log("failed\t" + errorMessage)
-    if (utils.isFirefox() && !Config.config.ytInfoPermissionGranted) {
-        // Attempt to ask permission for youtube.com domain
-        alert(chrome.i18n.getMessage("youtubePermissionRequest"));
-        
-        chrome.runtime.sendMessage({
-            message: "openPage",
-            url: "permissions/index.html#youtube.com"
-        });
-    } else {
-        alert(chrome.i18n.getMessage("videoInfoFetchFailed") + "\n\n" + chrome.i18n.getMessage(errorMessage));
-    }
-}
-
 function getYouTubeVideoID(url: string) {
     // For YouTube TV support
     if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
@@ -817,30 +805,20 @@ function updatePreviewBar(): void {
 async function whitelistCheck() {
     const whitelistedChannels = Config.config.whitelistedChannels;
 
-    const getChannelID = () => videoInfo?.videoDetails?.channelId 
-        ?? document.querySelector(".ytd-channel-name a")?.getAttribute("href")?.replace(/\/.+\//, "") // YouTube
+    const channelID = document.querySelector(".ytd-channel-name a")?.getAttribute("href")?.replace(/\/.+\//, "") // YouTube
         ?? document.querySelector(".ytp-title-channel-logo")?.getAttribute("href")?.replace(/https:\/.+\//, "") // YouTube Embed
         ?? document.querySelector("a > .channel-profile")?.parentElement?.getAttribute("href")?.replace(/\/.+\//, ""); // Invidious
 
-    try {
-        await utils.wait(() => !!getChannelID(), 6000, 20);
-    } catch {
-        if (Config.config.forceChannelCheck) {
-            // treat as not whitelisted
-            channelID = "";
-
-            // Don't warn for Invidious embeds
-            if (!(onInvidious && document.URL.includes("/embed/"))) {
-                videoInfoFetchFailed("adblockerIssueWhitelist");
-            }
+    if (channelID) {
+        channelIDInfo = {
+            status: ChannelIDStatus.Found,
+            id: channelID
         }
-
-        return;
-    }
-
-    channelID = getChannelID();
-    if (!channelID) {
-        channelID = null;
+    } else {
+        channelIDInfo = {
+            status: ChannelIDStatus.Failed,
+            id: null
+        }
 
         return;
     }
@@ -851,7 +829,7 @@ async function whitelistCheck() {
     }
 
     // check if the start of segments were missed
-    if (Config.config.forceChannelCheck && sponsorTimes && sponsorTimes.length > 0) startSkipScheduleCheckingForStartSponsors();
+    if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
 /**
