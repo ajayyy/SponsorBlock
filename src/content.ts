@@ -1103,11 +1103,11 @@ async function createButtons(): Promise<void> {
     controls = await utils.wait(getControls).catch();
 
     // Add button if does not already exist in html
-    createButton("startSponsor", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker256px.png");
+    createButton("startSponsor", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker.svg");
     createButton("cancelSponsor", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerCancelSegmentIconSponsorBlocker.svg");
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker256px.png");
-    createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker256px.png");
-    createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker256px.png");
+    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
+    createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker.svg");
+    createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
 }
 
 /** Creates any missing buttons on the player and updates their visiblity. */
@@ -1155,10 +1155,10 @@ function updateEditButtonsOnPlayer(): void {
 
     if (buttonsEnabled) {
         if (creatingSegment) {
-            playerButtons.startSponsor.image.src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker256px.png");
+            playerButtons.startSponsor.image.src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker.svg");
             playerButtons.startSponsor.button.setAttribute("title", chrome.i18n.getMessage("sponsorEnd"));
         } else {
-            playerButtons.startSponsor.image.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker256px.png");
+            playerButtons.startSponsor.image.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker.svg");
             playerButtons.startSponsor.button.setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
         }
     }
@@ -1451,7 +1451,7 @@ function submitSponsorTimes() {
 //called after all the checks have been made that it's okay to do so
 async function sendSubmitMessage() {
     // Add loading animation
-    playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker256px.png");
+    playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
     playerButtons.submit.button.style.animation = "rotate 1s 0s infinite";
 
     //check if a sponsor exceeds the duration of the video

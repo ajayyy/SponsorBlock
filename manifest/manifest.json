@@ -24,9 +24,9 @@
     "web_accessible_resources": [
         "icons/LogoSponsorBlocker256px.png",
         "icons/IconSponsorBlocker256px.png",
-        "icons/PlayerStartIconSponsorBlocker256px.png",
-        "icons/PlayerStopIconSponsorBlocker256px.png",
-        "icons/PlayerUploadIconSponsorBlocker256px.png",
+        "icons/PlayerStartIconSponsorBlocker.svg",
+        "icons/PlayerStopIconSponsorBlocker.svg",
+        "icons/PlayerUploadIconSponsorBlocker.svg",
         "icons/PlayerUploadFailedIconSponsorBlocker.svg",
         "icons/PlayerCancelSegmentIconSponsorBlocker.svg",
         "icons/settings.svg",
@@ -40,8 +40,8 @@
         "icons/report.png",
         "icons/close.png",
         "icons/beep.ogg",
-        "icons/PlayerInfoIconSponsorBlocker256px.png",
-        "icons/PlayerDeleteIconSponsorBlocker256px.png",
+        "icons/PlayerInfoIconSponsorBlocker.svg",
+        "icons/PlayerDeleteIconSponsorBlocker.svg",
         "popup.html",
         "content.css"
     ],
