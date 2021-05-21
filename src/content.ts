@@ -1143,10 +1143,10 @@ function updateEditButtonsOnPlayer(): void {
         creatingSegment = isSegmentCreationInProgress();
 
         // Show only if there are any segments to submit
-        submitButtonVisible = sponsorTimesSubmitting.length > 0;
+        submitButtonVisible = sponsorTimesSubmitting.length > 1 || (sponsorTimesSubmitting.length > 0 && !creatingSegment);
 
         // Show only if there are any segments to delete
-        deleteButtonVisible = sponsorTimesSubmitting.length > 0;
+        deleteButtonVisible = sponsorTimesSubmitting.length > 1 || (sponsorTimesSubmitting.length > 0 && !creatingSegment);
     }
 
     // Update the elements
