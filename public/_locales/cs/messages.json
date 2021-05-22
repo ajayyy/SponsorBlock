@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segment nyní končí"
     },
+    "sponsorCancel": {
+        "message": "Zrušit vytváření segmentu"
+    },
     "noVideoID": {
         "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte záložku."
     },
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Jste si jisti, že toto chcete obnovit?"
     },
-    "confirmPrivacy": {
-        "message": "Toto video bylo zjištěno jako neuvedené. Klikněte na Zrušit, pokud nechcete kontrolovat pro přeskočitelné segmenty."
-    },
-    "unlistedCheck": {
-        "message": "Ignorovat neuvedená / soukromá videa"
-    },
-    "whatUnlistedCheck": {
-        "message": "Toto nastavení mírně zpomalí SponsorBlock. Přeskakování vyhledávání segmentů vyžaduje posílání ID videa serveru. Pokud vám vadí odesílání neuvedených videí přes internet, povolte tuto možnost."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com je nyní podporováno"
     },
@@ -591,11 +585,23 @@
     "channelDataNotFound": {
         "message": "ID kanálu ještě nebylo načteno."
     },
-    "adblockerIssue": {
-        "message": "Zdá se, že něco blokuje schopnost rozšíření SponsorBlock získat data o videu. Bude to nejspíš váš adblocker. Podívejte se prosím na https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Vypadá to, že něco blokuje schopnost SponsorBlocku získat údaje o videu. Pro více informací prosím navštivte https://github.com/ajayyy/SponsorBlock/issues/741."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Pokud vám tento problém nepůjde vyřešit, vypněte nastavení 'Ignore unlisted/private videos', protože SponsorBlock nemůže zjistit, jestli je vaše video veřejné či nikoliv"
+    "youtubePermissionRequest": {
+        "message": "Vypadá to, že se SponsorBlock nemůže připojit k YouTube API. Pro opravení tohoto problému přijměte žádost o oprávnění, která se dále objeví, a poté znovu načtěte stránku."
+    },
+    "acceptPermission": {
+        "message": "Přijmout oprávnění"
+    },
+    "permissionRequestSuccess": {
+        "message": "Žádost o oprávnění byla úspěšná!"
+    },
+    "permissionRequestFailed": {
+        "message": "Žádost o oprávnění se nezdařila, neklikli jste na Odmítnout?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Pokud vám tento problém nepůjde vyřešit, vypněte nastavení 'Vynutit kontrolu kanálu před přeskočením', protože SponsorBlock nemůže zjistit informace o kanálu"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Pokud k tomu stále dochází, může to být způsobeno vaším adblockerem. Podívejte se prosím https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

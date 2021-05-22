@@ -125,7 +125,7 @@
         "message": "Zgłoszenia"
     },
     "savedPeopleFrom": {
-        "message": "Oszczędzono innym "
+        "message": "Oszczędziłeś innym "
     },
     "viewLeaderboard": {
         "message": "Ranking"
@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Czy na pewno chcesz to zresetować?"
     },
-    "confirmPrivacy": {
-        "message": "Ten film został wykryty jako niepubliczny. Kliknij Anuluj, jeśli nie chcesz sprawdzać, czy są dla niego segmenty."
-    },
-    "unlistedCheck": {
-        "message": "Ignoruj niepubliczne/prywatne filmy"
-    },
-    "whatUnlistedCheck": {
-        "message": "Ta opcja spowolni nieco SponsorBlock. Wyszukiwanie istniejących segmentów wymaga wysłania ID filmu do serwera. Jeśli niepokoi Cię fakt wysyłania przez internet ID niepublicznych filmów, włącz tę opcję."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com jest teraz wspierany"
     },
@@ -591,11 +582,17 @@
     "channelDataNotFound": {
         "message": "ID kanału nie zostało póki co załadowane."
     },
-    "adblockerIssue": {
-        "message": "Wygląda na to, że coś blokuje możliwość pobierania danych o filmach przez SponsorBlock. To prawdopodobnie Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "youtubePermissionRequest": {
+        "message": "Wygląda na to, że SponsorBlock nie jest w stanie połączyć się z API YouTube. Aby to naprawić, zaakceptuj monit o pozwolenie, który pojawi się za chwilę, odczekaj kilka sekund, a następnie odśwież stronę."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Jeżeli nie możesz naprawić tego to wyłącz w ustawieniach opcję \"Ignoruj prywatne filmy\", ponieważ SponsorBlock nie może uzyskać informacji o widoczności tego filmu"
+    "acceptPermission": {
+        "message": "Zaakceptuj uprawnienie"
+    },
+    "permissionRequestSuccess": {
+        "message": "Uzyskano uprawnienia!"
+    },
+    "permissionRequestFailed": {
+        "message": "Prośba odrzucona. Może kliknięto „Odmów”?"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

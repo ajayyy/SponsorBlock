@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "మీరు దీన్ని రీసెట్ చేయాలనుకుంటున్నారా?"
     },
-    "confirmPrivacy": {
-        "message": "వీడియో జాబితా చేయనిదిగా కనుగొనబడింది. మీరు విభాగాలను దాటవేయాలనుకుంటే రద్దు చేయి క్లిక్ చేయండి."
-    },
-    "unlistedCheck": {
-        "message": "జాబితా చేయని / ప్రైవేట్ వీడియోలను విస్మరించండి"
-    },
-    "whatUnlistedCheck": {
-        "message": "ఈ సెట్టింగ్ స్పాన్సర్బ్లాక్‌ను కొద్దిగా నెమ్మదిస్తుంది. సెగ్మెంట్ శోధనను దాటవేయి వీడియో ID ని సర్వర్‌కు పంపడం అవసరం. జాబితా చేయని వీడియో ఐడిలను ఇంటర్నెట్ ద్వారా పంపడం గురించి మీకు ఆందోళన ఉంటే, ఈ ఎంపికను ప్రారంభించండి."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com కి ఇప్పుడు మద్దతు ఉంది"
     },
@@ -590,12 +581,6 @@
     },
     "channelDataNotFound": {
         "message": "ఛానెల్ ID ఇంకా లోడ్ కాలేదు."
-    },
-    "adblockerIssue": {
-        "message": "వీడియో డేటాను పొందే స్పాన్సర్బ్లాక్ సామర్థ్యాన్ని ఏదో అడ్డుకుంటున్నట్లు కనిపిస్తోంది. ఇది బహుశా మీ యాడ్ బ్లాకర్. దయచేసి https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests తనిఖీ చేయండి"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "మీరు దీన్ని పరిష్కరించలేకపోతే, స్పాన్సర్బ్లాక్ ఈ వీడియో కోసం దృశ్యమాన సమాచారాన్ని తిరిగి పొందలేకపోతున్నందున, 'జాబితా చేయని / ప్రైవేట్ వీడియోలను విస్మరించండి' సెట్టింగ్‌ను నిలిపివేయండి"
     },
     "itCouldBeAdblockerIssue": {
         "message": "ఇది జరుగుతూ ఉంటే, అది మీ ప్రకటన బ్లాకర్ వల్ల సంభవించవచ్చు. దయచేసి https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests తనిఖీ చేయండి"

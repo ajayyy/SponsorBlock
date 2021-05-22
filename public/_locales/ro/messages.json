@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Sunteți sigur că doriți să resetați asta?"
     },
-    "confirmPrivacy": {
-        "message": "Acest videoclip a fost detectat ca nelistat. Faceți clic pe anulați dacă nu doriți să verificați segmentele de sărire."
-    },
-    "unlistedCheck": {
-        "message": "Ignoră Videoclipurile Nelistate/Private"
-    },
-    "whatUnlistedCheck": {
-        "message": "Această setare va încetini puțin SponsorBlock. Căutările segmentelor de sărire necesită trimiterea ID-ului videoclipului către server. Dacă sunteți îngrijorat de trimiterea ID-ul videoclipurilor nelistate, activați această opțiune."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com este acum suportat"
     },
@@ -587,9 +578,6 @@
     },
     "channelDataNotFound": {
         "message": "ID-ul Canalului nu a fost încărcat încă."
-    },
-    "adblockerIssue": {
-        "message": "Se pare că ceva blocheaza abilitatea extensiei SponsorBlock pentru a obține datele videoclipului. Cel mai probabil este adblocker-ul dumneavoastră. Vă rugăm să verificați https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Dacă acest lucru continuă să se întample, ar putea fi cauzat de adblocker-ul dumneavoastră. Vă rugăm să verificați \nhttps://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

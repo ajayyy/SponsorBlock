@@ -79,8 +79,11 @@
     "sponsorEnd": {
         "message": "Segmen Berakhir Sekarang"
     },
+    "sponsorCancel": {
+        "message": "Batalkan Membuat Segmen"
+    },
     "noVideoID": {
-        "message": "Video YouTube tidak ditemukan.\nJika terjadi kesalahan, silahkan ulangin halaman."
+        "message": "Video YouTube tidak ditemukan.\nJika terjadi kesalahan, segarkan halaman."
     },
     "success": {
         "message": "Sukses!"
@@ -113,10 +116,10 @@
         "message": "Apakah anda yakin ingin mengirim ini?"
     },
     "whitelistChannel": {
-        "message": "Daftar kanal putih"
+        "message": "Daftar putih channel"
     },
     "removeFromWhitelist": {
-        "message": "Hapus kanal dari daftar putih"
+        "message": "Hapus channel dari daftar putih"
     },
     "voteOnTime": {
         "message": "Beri Segmen Vote"
@@ -207,7 +210,7 @@
         "message": "Fetch Ulang Segmen Di Video Baru"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Jika ini merupakan video baru, dan tidak ada segmen yang ditemukan, itu akan terus merefetch setiap beberapa menit saat anda menonton."
+        "message": "Jika ini merupakan video baru, dan tidak ada segmen yang ditemukan, SponsorBlock akan terus merefetch setiap beberapa menit saat anda menonton."
     },
     "showNotice": {
         "message": "Tampilkan Pemberitahuan Lagi"
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Apakah anda yakin ingin mengatur ulang ini?"
     },
-    "confirmPrivacy": {
-        "message": "Video ini dideteksi sebagai tidak terdaftar. Klik batal jika kamu tidak ingin mengecek untuk melewati segmen."
-    },
-    "unlistedCheck": {
-        "message": "Abaikan Video Tidak Terdaftar/Privat"
-    },
-    "whatUnlistedCheck": {
-        "message": "Pengaturan ini akan sedikit melambatkan SponsorBlock. Pencarian lewati segmen membutuhkan pengiriman ID video ke server. Jika anda khawatir tentang ID unlisted video terkirim ke internet, hidupkan opsi ini."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com sekarang didukung"
     },
@@ -591,11 +585,23 @@
     "channelDataNotFound": {
         "message": "ID Channel belum dimuat."
     },
-    "adblockerIssue": {
-        "message": "Sepertinya ada sesuatu yang memblokir kemampuan SponsorBlock untuk mendapatkan data video. Kemungkinan karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Sepertinya sesuatu memnghalangi abilitas SponsorBlock untuk mendapatkan data video. Silahkan lihat https://github.com/ajayyy/SponsorBlock/issues/741 untuk info lebih lanjut."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Jika anda tidak bisa menyelesaikan ini, maka nonaktifkan pengaturan 'Abaikan video tidak terdaftar/privat', karena SponsorBlock tidak bisa mendapatkan informasi visibilitas untuk video ini"
+    "youtubePermissionRequest": {
+        "message": "Sepertinya SponsorBlock tidak dapat menjangkau API YouTube. Untuk menyelesaikan masalah ini, terima permintaan izin yang akan muncul selanjutnya, tunggu beberapa detik, dan muat ulang halaman ini."
+    },
+    "acceptPermission": {
+        "message": "Terima permintaan izin"
+    },
+    "permissionRequestSuccess": {
+        "message": "Permintaan izin berhasil!"
+    },
+    "permissionRequestFailed": {
+        "message": "Permintaan izin gagal, apakah anda mengklik tolak?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Apabila anda tidak dapat menyelesaikan masalah ini, maka nonaktifkan pengaturan 'Paksa Cek Channel Sebelum Melewati', dikarenakan SponsorBlock tidak dapat menerima informasi channel untuk video ini"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Jika ini terus terjadi, kemungkinan terjadi karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

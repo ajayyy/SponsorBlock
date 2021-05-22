@@ -261,7 +261,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         if (utils.getCategoryActionType(event.target.value as Category) === CategoryActionType.POI) {
             this.setTimeTo(1, null);
-            this.props.contentContainer().changeStartSponsorButton(true, true);
+            this.props.contentContainer().updateEditButtonsOnPlayer();
         }
         
         this.saveEditTimes();
@@ -356,13 +356,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     deleteTime(): void {
         const sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
         const index = this.props.index;
+        const removingIncomplete = sponsorTimes[index].segment.length < 2;
 
-        //if it is not a complete sponsor time
-        if (sponsorTimes[index].segment.length < 2) {
-            //update video player
-            this.props.contentContainer().changeStartSponsorButton(true, true);
-        }
-  
         sponsorTimes.splice(index, 1);
   
         //save this
@@ -373,12 +368,15 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         //if they are all removed
         if (sponsorTimes.length == 0) {
             this.props.submissionNotice.cancel();
-            
-            //update video player
-            this.props.contentContainer().changeStartSponsorButton(true, false);
         } else {
             //update display
             this.props.submissionNotice.forceUpdate();
+        }
+
+        //if it is not a complete segment, or all are removed
+        if (sponsorTimes.length === 0 || removingIncomplete) {
+            //update video player
+            this.props.contentContainer().updateEditButtonsOnPlayer();
         }
     }
 

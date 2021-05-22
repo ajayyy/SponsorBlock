@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Bist du dir sicher, dass du das zurücksetzen möchtest?"
     },
-    "confirmPrivacy": {
-        "message": "Das Video wurde als \"nicht gelistet\" erkannt. Klicke auf \"Abbrechen\", wenn du nicht nach Segmenten suchen möchtest."
-    },
-    "unlistedCheck": {
-        "message": "Nicht gelistete und private Videos ignorieren"
-    },
-    "whatUnlistedCheck": {
-        "message": "Diese Einstellung wird SponsorBlock leicht verlangsamen. Das Abfragen von überspringbaren Videosegmenten erfordert das Senden der Video-ID an den Server. Wenn du dir Sorgen darüber machst, dass IDs von nicht gelisteten Videos über das Internet gesendet werden, aktiviere diese Option."
-    },
     "mobileUpdateInfo": {
         "message": "https://m.youtube.com wird jetzt unterstützt"
     },
@@ -591,23 +582,32 @@
     "channelDataNotFound": {
         "message": "Kanal-ID wurde noch nicht geladen."
     },
-    "adblockerIssue": {
-        "message": "Irgendwas hält SponsorBlock davon ab, die Videodaten abzurufen. Eine mögliche Ursache sind Werbeblocker. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "youtubePermissionRequest": {
+        "message": "Es scheint, dass SponsorBlock nicht in der Lage ist, die YouTube-API zu erreichen. Um dies zu beheben, akzeptieren Sie die Berechtigungsanfrage, die gleich erscheint; Warten Sie ein paar Sekunden, und laden Sie die Seite neu."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Nicht gelistete und private Videos ignorieren', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen"
+    "acceptPermission": {
+        "message": "Berechtigung akzeptieren"
+    },
+    "permissionRequestSuccess": {
+        "message": "Die Berechtigungsanfrage war erfolgreich!"
+    },
+    "permissionRequestFailed": {
+        "message": "Berechtigungsanfrage fehlgeschlagen, haben Sie \"Ablehnen\" angeklickt?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Kanalprüfung vor dem Überspringen von Segmenten erzwingen', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen."
     },
     "itCouldBeAdblockerIssue": {
         "message": "Falls dies weiterhin geschieht, könnte dies durch einen Werbeblocker verursacht werden. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
-        "message": "Erzwingen, dass vor dem Überspringen von Segmenten überprüft wird, ob der Kanal zur Whitelist hinzugefügt wurde"
+        "message": "Kanalprüfung vor dem Überspringen von Segmenten erzwingen"
     },
     "whatForceChannelCheck": {
         "message": "Standardmäßig werden Segmente schon übersprungen, bevor SponsorBlock die Kanal-ID einliest. Das kann dazu führen, dass Segmente am Anfang von Videos eines Kanals übersprungen werden, der zur Whitelist hinzugefügt wurde. Diese Option zwingt SponsorBlock dazu, auf die Kanal-ID zu warten - dies resultiert in einer kleinen Verzögerung, die aber mit einer schnellen Internetverbindung nicht spürbar sein sollte."
     },
     "forceChannelCheckPopup": {
-        "message": "Eventuell solltest du die Option \"Erzwingen, dass vor dem Überspringen von Segmenten überprüft wird, ob der Kanal zur Whitelist hinzugefügt wurde\" aktivieren."
+        "message": "Eventuell solltest du die Option \"Kanalprüfung vor dem Überspringen von Segmenten erzwingen\" aktivieren."
     },
     "downvoteDescription": {
         "message": "Nicht korrekt oder falsches Timing"

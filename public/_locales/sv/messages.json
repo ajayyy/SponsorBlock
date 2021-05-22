@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segmentet slutar nu"
     },
+    "sponsorCancel": {
+        "message": "Avbryt skapandet av segmentet"
+    },
     "noVideoID": {
         "message": "Hittade ingen YouTube-video.\nUppdatera fliken om detta är felaktigt."
     },
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Är du säker på att du vill rensa?"
     },
-    "confirmPrivacy": {
-        "message": "Den här videon verkar vara olistad. Klicka på avbryt om du inte vill söka efter överhoppade segment."
-    },
-    "unlistedCheck": {
-        "message": "Ignorera olistade/privata videor"
-    },
-    "whatUnlistedCheck": {
-        "message": "Den här inställningen kommer att slöa ner SponsorBlock. Segmentöverhoppssökningar kräver att video-ID skickas till servern. Om du är orolig över att olistade video-ID:s skickas över internet, aktivera då detta alternativ."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com stöds nu"
     },
@@ -591,11 +585,23 @@
     "channelDataNotFound": {
         "message": "Kanal-ID är inte inladdat än."
     },
-    "adblockerIssue": {
-        "message": "Det verkar som om något blockerar SponsorBlocks från att hämta videodata. Det beror förmodligen på din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Det verkar som om något blockerar SponsorBlock från att hämta videodata. Gå till https://github.com/ajayyy/SponsorBlock/issues/741 för mer info."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Om du inte kan lösa detta kan du inaktivera 'Ignorera olistade/privata videor' i inställningar, eftersom SponsorBlock inte kan hämta synlighetsinformationen för den här videon"
+    "youtubePermissionRequest": {
+        "message": "Det verkar som att SponsorBlock inte kan nå YouTube-API:t. För att åtgärda problemet ska du acceptera behörighetsfrågan som visas härnäst och vänta några sekunder och sedan ladda om sidan."
+    },
+    "acceptPermission": {
+        "message": "Godkänn behörighet"
+    },
+    "permissionRequestSuccess": {
+        "message": "Behörighet godkänd!"
+    },
+    "permissionRequestFailed": {
+        "message": "Behörighetsbegäran misslyckades, tryckte du på förneka?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Om du inte kan lösa detta kan du inaktivera 'Tvinga kontroll av kanalen innan hoppa över' i inställningarna, eftersom SponsorBlock inte kan hämta kanalinformationen för den här videon"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Om detta fortsätter att inträffa, kan orsaken vara din annonsblockerare. Vänligen kontrollera https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

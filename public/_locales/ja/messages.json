@@ -20,10 +20,10 @@
         "message": "チャンネルをホワイトリストに登録しました!"
     },
     "Segment": {
-        "message": "セグメント"
+        "message": "区域"
     },
     "Segments": {
-        "message": "セグメント"
+        "message": "区域"
     },
     "upvoteButtonInfo": {
         "message": "この提案を支持する"
@@ -68,16 +68,16 @@
         "message": "スポンサー表示の投稿中にエラーが発生しました。しばらく経ってからもう一度お試しください。"
     },
     "sponsorFound": {
-        "message": "この動画用のセグメントはデータベースに登録されています！"
+        "message": "この動画用の区域は情報集合体に登録されています！"
     },
     "sponsor404": {
-        "message": "セグメントが見つかりませんでした"
+        "message": "区域が見つかりませんでした"
     },
     "sponsorStart": {
-        "message": "セグメントが始まりました"
+        "message": "区域が始まりました"
     },
     "sponsorEnd": {
-        "message": "セグメントが終わりました"
+        "message": "区域が終わりました"
     },
     "noVideoID": {
         "message": "YouTube動画が見つかりませんでした。\nこれが正しくない場合は、タブを再読み込みしてください。"
@@ -98,7 +98,7 @@
         "message": "次の動画IDで提出します:"
     },
     "clearTimes": {
-        "message": "セグメントをクリア"
+        "message": "区域を消去"
     },
     "openPopup": {
         "message": "SponsorBlock のポップアップを開く"
@@ -107,7 +107,7 @@
         "message": "ポップアップを閉じる"
     },
     "SubmitTimes": {
-        "message": "セグメントを提出"
+        "message": "区域を提出"
     },
     "submitCheck": {
         "message": "本当に提出してよろしいですか？"
@@ -119,7 +119,7 @@
         "message": "ホワイトリストからチャンネルを削除"
     },
     "voteOnTime": {
-        "message": "セグメントに投票"
+        "message": "区域に投票"
     },
     "Submissions": {
         "message": "提出数"
@@ -171,7 +171,7 @@
         "message": "YouTube プレイヤーにボタンを表示しない"
     },
     "hideButtonsDescription": {
-        "message": "これを有効にするとYouTubeプレーヤーのセグメント提出ボタンが非表示になります。"
+        "message": "これを有効にするとYouTube再生画面の区域提出UIが非表示になります。"
     },
     "showInfoButton": {
         "message": "YouTubeプレーヤーの情報ボタンを表示する"
@@ -189,25 +189,25 @@
         "message": "YouTube プレイヤーから削除ボタンを表示する"
     },
     "whatDeleteButton": {
-        "message": "これはYouTubeプレーヤー上のボタンで、現在の動画から未提出のセグメントを全て消去します。"
+        "message": "これはYouTube再生画面上のUIで，現在の動画から未提出の区域を全て消去します。"
     },
     "enableViewTracking": {
         "message": "スキップ回数の統計を有効にする"
     },
     "whatViewTracking": {
-        "message": "この機能は、あなたがスキップしたセグメントを追跡して、そのセグメントがどれだけ役に立ったかを他のユーザーに知らせることで、スパムがデータベースに紛れないようにするための評価基準として使用されます。あなたがセグメントをスキップするたびに、拡張機能はサーバーにメッセージを送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
+        "message": "この機能は、あなたが飛び越した区域を追跡して、当該区域がどれだけ役に立ったかを他の利用者に知らせることで、不正な情報が情報集合体に紛れないようにするための評価基準として使用されます。あなたが区域を飛び越すたびに、拡張機能はサーバーに通報を送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
     },
     "enableQueryByHashPrefix": {
         "message": "ハッシュプレフィックスを使って要求"
     },
     "whatQueryByHashPrefix": {
-        "message": "動画IDを使用してサーバーからセグメントを要求する代わりに、動画IDのハッシュから最初の4文字が送信されます。それに対して、サーバーは類似したハッシュを持つすべての動画のデータを返却します。"
+        "message": "サーバーに区域を要求する際に，動画IDの代わりに動画IDのハッシュから最初の4文字を送信します。それに対して，サーバーは類似したハッシュを持つすべての動画の情報を応答します。"
     },
     "enableRefetchWhenNotFound": {
-        "message": "新しい動画ではセグメントを再取得する"
+        "message": "新しい動画では区域を再取得する"
     },
     "whatRefetchWhenNotFound": {
-        "message": "動画がまだ新しくセグメントが見つからない場合は、動画を視聴している間、数分おきにセグメントを検索し続けます。"
+        "message": "動画がまだ新しく区域が見つからない場合は、動画を視聴している間、数分おきに区域を検索し続けます。"
     },
     "showNotice": {
         "message": "再度通知を表示する"
@@ -296,6 +296,9 @@
     "youHaveSkipped": {
         "message": "スキップしたセグメント数: "
     },
+    "youHaveSaved": {
+        "message": "ご自身の時間をこれだけ節約しました: "
+    },
     "minLower": {
         "message": "分"
     },
@@ -308,14 +311,74 @@
     "hoursLower": {
         "message": "時間"
     },
+    "youHaveSavedTime": {
+        "message": "他の人々の時間をこれだけ節約しました:"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": "（彼らの人生のうち）"
+    },
+    "statusReminder": {
+        "message": "サーバーの状態についてはstatus.sponsor.ajay.appを確認してください。"
+    },
+    "changeUserID": {
+        "message": "利用者IDの読み込み・書き出し"
+    },
+    "whatChangeUserID": {
+        "message": "これを公開してはいけません。これは暗証語のようなものであり，誰とも共有するべきではありません。これを持っている人はあなたになりすませてしまいます。"
+    },
+    "setUserID": {
+        "message": "利用者IDを設定"
+    },
+    "userIDChangeWarning": {
+        "message": "警告: 利用者IDの変更は恒久的です。本当に実行しますか？ 念のため，旧IDを控えておいてください。"
+    },
     "createdBy": {
         "message": "作成者"
     },
     "autoSkip": {
         "message": "自動スキップ"
     },
+    "showSkipNotice": {
+        "message": "区域を飛び越した後に通知を表示する"
+    },
+    "keybindCurrentlySet": {
+        "message": "。現在の設定は:"
+    },
+    "supportInvidious": {
+        "message": "Invidiousに対応"
+    },
+    "supportInvidiousDescription": {
+        "message": "Invidious (invidio.us) は第三者製のYouTubeクライアントです。Invidious対応を有効にするには，追加の権限を受け入れなければいけません。 これはChromeやその他のChromium系列の匿名閲覧状態では動作しません。"
+    },
+    "optionsInfo": {
+        "message": "Invidious対応を有効にし，自動飛越を無効にし，GUIを非表示にします。"
+    },
+    "addInvidiousInstance": {
+        "message": "Invidiousインスタンスを追加"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "任意のInvidiousインスタンスを追加します。ドメイン名だけを記入してください。例: invidious.ajay.app"
+    },
     "add": {
         "message": "追加"
+    },
+    "addInvidiousInstanceError": {
+        "message": "無効なドメイン名です。ドメイン部分だけを含めてください。例: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Invidiousインスタンス一覧を初期化"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Invidiousインスタン一覧を初期化しようとしています"
+    },
+    "currentInstances": {
+        "message": "現在のインスタンス:"
+    },
+    "minDuration": {
+        "message": "飛越す最短の時間（秒）:"
+    },
+    "minDurationDescription": {
+        "message": "設定値より短い区域は飛び越されず，再生画面にも表示されません。"
     },
     "customServerAddress": {
         "message": "SponsorBlock サーバーアドレス"
@@ -328,6 +391,9 @@
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com は現在サポートされています"
+    },
+    "confirmNoticeTitle": {
+        "message": "区域を提出"
     },
     "submit": {
         "message": "送信"
@@ -344,6 +410,10 @@
     "edit": {
         "message": "編集"
     },
+    "to": {
+        "message": "～",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
     "category_sponsor": {
         "message": "スポンサー"
     },
@@ -358,6 +428,9 @@
     },
     "category_selfpromo": {
         "message": "無報酬 / セルフプロモーション"
+    },
+    "category_music_offtopic": {
+        "message": "音楽: 音楽ではない区間"
     },
     "disable": {
         "message": "無効"
@@ -379,7 +452,7 @@
         "message": "カテゴリ"
     },
     "skipOption": {
-        "message": "スキップ オプション",
+        "message": "飛越設定",
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
@@ -391,8 +464,23 @@
     "chooseACategory": {
         "message": "カテゴリーを選択"
     },
+    "youMustSelectACategory": {
+        "message": "提出する全ての区域について，その範疇を選択する必要があります！"
+    },
     "channelDataNotFound": {
         "message": "まだチャンネル ID が読み込まれてません。"
+    },
+    "youtubePermissionRequest": {
+        "message": "SponsorBlockがYouTube APIを参照できないようです。修正するには，次に表示される画面で許可を承認してから，数秒後に再読み込みしてください。"
+    },
+    "acceptPermission": {
+        "message": "許可を承認する"
+    },
+    "permissionRequestSuccess": {
+        "message": "許可要求が成功しました。"
+    },
+    "permissionRequestFailed": {
+        "message": "権限要求に失敗しました。承認を拒否しましたか？"
     },
     "incorrectCategory": {
         "message": "カテゴリが違います"

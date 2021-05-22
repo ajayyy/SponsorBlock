@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Voulez-vous vraiment remettre à zéro ?"
     },
-    "confirmPrivacy": {
-        "message": "La vidéo a été détectée comme étant non répertoriée. Cliquez sur annuler si vous ne voulez pas vérifier les segments sautés."
-    },
-    "unlistedCheck": {
-        "message": "Ignorer les vidéos non listées"
-    },
-    "whatUnlistedCheck": {
-        "message": "Ce réglage ralentira légèrement SponsorBlock. Pour sauter des segments, il faut envoyer l'ID de la vidéo au serveur. Si vous craignez que des identifiants de vidéo non répertoriés soient envoyés sur Internet, activez cette option."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com est maintenant pris en charge"
     },
@@ -590,12 +581,6 @@
     },
     "channelDataNotFound": {
         "message": "L'ID de la chaîne n'a pas encore été chargé."
-    },
-    "adblockerIssue": {
-        "message": "Il semble que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. C'est probablement votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Si vous ne pouvez pas résoudre ça, désactivé le paramètre 'Ignorer vidéos privées ou pas listées\", car SponsorBlock ne peux pas trouver cette vidéo"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Si ça se reproduit, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Ви дійсно хочете це скинути?"
     },
-    "confirmPrivacy": {
-        "message": "Було виявлено, що це відео - з доступом по посиланню. Натисніть \"скасування\", якщо не хочете перевіряти для нього сегменти."
-    },
-    "unlistedCheck": {
-        "message": "Ігнорувати непублічні відео"
-    },
-    "whatUnlistedCheck": {
-        "message": "Це налаштування дещо сповільнить SponsorBlock. Пошук сегментів вимагає надсилання ідентифікатора відео на сервер. Якщо Вас турбує надсилання ідентифікаторів прихованих відео по інтернету, включіть це налаштування."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com тепер підтримується"
     },
@@ -590,12 +581,6 @@
     },
     "channelDataNotFound": {
         "message": "ID каналу ще не завантажений."
-    },
-    "adblockerIssue": {
-        "message": "Здається, щось блокує можливість SponsorBlock'а отримувати дані про відео. Можливо, це ваш блокувальник реклами. Будь ласка, перейдіть на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Якщо вам не вдалося вирішити це, вимкніть параметр \"Ігнорувати непублічні відео\", оскільки SponsorBlock не в змозі отримати інформацію про видимість цього відео"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Якщо це повідомлення з'являється занадто часто, це може бути викликано вашим блокувальником реклами. Будь ласка, перейдіть на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

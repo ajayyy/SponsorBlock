@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "您确定要重置它吗？"
     },
-    "confirmPrivacy": {
-        "message": "检测到此视频为未公开列出视频。如果您不想进行跳过片段开始，请点击取消。"
-    },
-    "unlistedCheck": {
-        "message": "忽略未找到记录的视频"
-    },
-    "whatUnlistedCheck": {
-        "message": "此设置将略微减慢 SponsorBlock 的速度。查询可跳过片段时需要向服务器发送视频 ID。如果您对通过互联网发送不公开列出视频的 ID 有疑虑，请启用此选项。"
-    },
     "mobileUpdateInfo": {
         "message": "现已支持 m.youtube.com"
     },
@@ -591,11 +582,11 @@
     "channelDataNotFound": {
         "message": "频道 ID 尚未加载。"
     },
-    "adblockerIssue": {
-        "message": "似乎某些东西正在阻止 SponsorBlock 获取视频数据的功能。它很可能是您的广告拦截器。请查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "acceptPermission": {
+        "message": "接受权限"
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "如果您无法解决这个问题，请禁用“忽略未公开列出/私有视频”设置，因为 SpongorBlock 无法检索此视频是否可见"
+    "permissionRequestSuccess": {
+        "message": "权限请求成功！"
     },
     "itCouldBeAdblockerIssue": {
         "message": "如果这种情况不断发生，它可能是由您的广告拦截器引起的。请查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

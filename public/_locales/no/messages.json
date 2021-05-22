@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Er du sikker på at du vil tilbakestille dette?"
     },
-    "confirmPrivacy": {
-        "message": "Denne videoen har blitt oppdaget å være uoppført. Klikk Avbryt hvis du ikke vil se etter hoppesegmenter."
-    },
-    "unlistedCheck": {
-        "message": "Ignorer uoppførte/private videoer"
-    },
-    "whatUnlistedCheck": {
-        "message": "Denne innstillingen vil gjøre SponsorBlock marginalt tregere. Å se etter segmenter å hoppe over, krever å sende inn video-ID-en til tjeneren. Hvis du er bekymret for at uoppførte video-ID-er blir sendt over internettet, skru på denne innstillingen."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com er nå støttet"
     },
@@ -591,11 +582,17 @@
     "channelDataNotFound": {
         "message": "Kanal-ID-en er ikke lastet inn enda."
     },
-    "adblockerIssue": {
-        "message": "Det ser ut som noe blokkerer SponsorBlock sin evne til å innhente videodata. Det er sannsynligvis reklameblokkereren din. Vennligst sjekk https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "youtubePermissionRequest": {
+        "message": "Det ser ut til at SponsorBlock ikke klarer å nå YouTube-API-en. For å fikse dette, godta tillatelsesspørringen som dukker opp etter dette, vent noen sekunder, og så last inn siden på nytt."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Hvis du ikke klarer å løse dette, skru av innstillingen «Ignorer uoppførte/private videoer», siden SponsorBlock er ute av stand til å innhente synlighetsinformasjonen til denne videoen."
+    "acceptPermission": {
+        "message": "Godta tillatelse"
+    },
+    "permissionRequestSuccess": {
+        "message": "Tillatelsesforespørselen lyktes!"
+    },
+    "permissionRequestFailed": {
+        "message": "Tillatelsesforespørselen mislyktes, klikket du på Avvis?"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Hvis dette skjer til stadighet, kan det være forårsaket av reklameblokkereren din. Vennligst sjekk https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

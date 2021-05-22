@@ -404,15 +404,6 @@
     "areYouSureReset": {
         "message": "Bạn có chắc mình muốn thiết lập lại không?"
     },
-    "confirmPrivacy": {
-        "message": "Video này là video không công khai. Ấn hủy nếu bạn không muốn tìm xem có đoạn quảng cáo không."
-    },
-    "unlistedCheck": {
-        "message": "Bỏ qua video không công khai/riêng tư"
-    },
-    "whatUnlistedCheck": {
-        "message": "Cài đặt này sẽ làm chậm SponsorBlock một chút. Mã video cần phải được gửi đến máy chủ để truy vấn đoạn quảng cáo. Nếu bạn quan ngại về việc mã video không công khai bị gửi qua mạng, hãy bật tùy chọn này."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com đã được hỗ trợ"
     },
@@ -584,12 +575,6 @@
     },
     "channelDataNotFound": {
         "message": "Chưa đọc được ID của kênh."
-    },
-    "adblockerIssue": {
-        "message": "Hình như có gì đó đã ngăn chặn SponsorBlock truy vấn dữ liệu của video. Có thể do trình chặn quảng cáo của bạn. Hãy kiểm tra ở đây: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Nếu bạn không thể giải quyết được vấn đề này, hãy vô hiệu hoá cài đặt 'Bỏ qua video không công khai/riêng tư', vì SponsorBlock không thể lấy được thông tin hiển thị của video này"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Nếu lỗi này tiếp tục xuất hiện, nó có thể là do trình chặn quảng cáo của bạn. Hãy kiểm tra ở đây: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

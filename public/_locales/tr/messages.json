@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Bunu sıfırlamak istediğinize emin misiniz?"
     },
-    "confirmPrivacy": {
-        "message": "Videonun liste dışı olduğu tespit edildi. Atlanan kısımları kontrol etmek istemiyorsanız iptal'i tıklayın."
-    },
-    "unlistedCheck": {
-        "message": "Listedışı/Özel Videoları Görmezden Gel"
-    },
-    "whatUnlistedCheck": {
-        "message": "Bu ayar, SponsorBlock'u biraz yavaşlatacaktır. atlama kısımlarının bulunması için, video kimliğinin sunucuya gönderilmesini gerektirir. Listelenmemiş video kimliklerinin İnternet üzerinden gönderilmesi konusunda endişeleriniz varsa, bu seçeneği etkinleştirin."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com şu an desteklenmektedir"
     },
@@ -590,12 +581,6 @@
     },
     "channelDataNotFound": {
         "message": "Kanal kimliği henüz yüklenmedi."
-    },
-    "adblockerIssue": {
-        "message": "Bir şeyin SponsorBlock'un video bilgisi almasını engelliyor gibi görünüyor. Bu reklam engelleyiciniz olabilir. Lütfen şu adresi kontrol edin https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Bunu çözümleyemiyorsanız \"Liste dışı/gizli videoları göz ardı et\" seçeneğini kapatın, SponsorBlock bu videonun gizlilik bilgisini alamıyor"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Bunu sürekli yaşıyorsanız, reklam engelleyiciniz tarafından gerçekleşiyor olabilir. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests adresini kontrol edin."

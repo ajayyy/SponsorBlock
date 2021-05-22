@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Il Segmento Termina Ora"
     },
+    "sponsorCancel": {
+        "message": "Annulla Creazione del Segmento"
+    },
     "noVideoID": {
         "message": "Nessun video YouTube trovato.\nSe è un errore, ricarica la scheda."
     },
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Sei sicuro di voler eseguire il reset?"
     },
-    "confirmPrivacy": {
-        "message": "Il video è stato rilevato come non in elenco. Clicca su Annulla se non desideri verificare la presenza di segmenti da saltare."
-    },
-    "unlistedCheck": {
-        "message": "Ignora Video Non Pubblicati/Privati"
-    },
-    "whatUnlistedCheck": {
-        "message": "Questa impostazione rallenterà leggermente SponsorBlock. Le ricerche di segmenti da saltare richiedono l'invio dell'ID video al server. Se sei preoccupato per gli ID video non in elenco inviati su Internet, attiva questa opzione."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com è ora supportato"
     },
@@ -591,11 +585,23 @@
     "channelDataNotFound": {
         "message": "ID canale non ancora caricato."
     },
-    "adblockerIssue": {
-        "message": "Sembra che qualcosa stia bloccando la capacità di SponsorBlock di ottenere dati video. Questo probabilmente è il tuo ad blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Sembra che qualcosa stia bloccando l'abilità di SponsorBlock di ottenere i dati del video. Sei pregato di vedere https://github.com/ajayyy/SponsorBlock/issues/741 per ulteriori informazioni."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Se non riesci a risolvere questo problema, disabilita l'impostazione 'Ignora video non elencati/privati', poiché SponsorBlock non è in grado di recuperare le informazioni di visibilità di questo video"
+    "youtubePermissionRequest": {
+        "message": "Sembra che SponsorBlock non sia in grado di raggiungere l'API di YouTube. Per risolverlo, accetta la richiesta di autorizzazione che comparirà in seguito, attendi qualche secondo, quindi ricarica la pagina."
+    },
+    "acceptPermission": {
+        "message": "Accetta autorizzazione"
+    },
+    "permissionRequestSuccess": {
+        "message": "Richiesta di autorizzazione riuscita!"
+    },
+    "permissionRequestFailed": {
+        "message": "Richiesta di assicurazione fallita, hai cliccato nega?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Se non riesci a risolverlo, disabilita allora l'impostazione 'Forza Controllo Canale Prima di Saltare', poiché SponsorBlock non è in grado di recuperare le informazioni del canale per questo video"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Se questo continua a verificarsi, potrebbe essere causato dal tuo ad-blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

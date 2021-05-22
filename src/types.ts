@@ -17,7 +17,7 @@ export interface ContentContainer {
         onMobileYouTube: boolean,
         sponsorSubmissionNotice: SubmissionNotice,
         resetSponsorSubmissionNotice: () => void,
-        changeStartSponsorButton: (showStartSponsor: boolean, uploadButtonVisible: boolean) => Promise<boolean>,
+        updateEditButtonsOnPlayer: () => void,
         previewTime: (time: number, unpause?: boolean) => void,
         videoInfo: VideoInfo,
         getRealCurrentTime: () => number
@@ -60,7 +60,7 @@ export type SegmentUUID = string  & { __segmentUUIDBrand: unknown };
 export type Category = string & { __categoryBrand: unknown };
 
 export interface SponsorTime {
-    segment: number[];
+    segment: [number] | [number, number];
     UUID: SegmentUUID;
 
     category: Category;
@@ -169,3 +169,14 @@ export type VideoID = string;
 export type StorageChangesObject = { [key: string]: chrome.storage.StorageChange };
 
 export type UnEncodedSegmentTimes = [string, SponsorTime[]][];
+
+export enum ChannelIDStatus {
+    Fetching,
+    Found,
+    Failed
+}
+
+export interface ChannelIDInfo {
+    id: string,
+    status: ChannelIDStatus
+}

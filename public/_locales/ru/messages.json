@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Сегмент заканчивается здесь"
     },
+    "sponsorCancel": {
+        "message": "Отменить создание сегмента"
+    },
     "noVideoID": {
         "message": "Видео YouTube не найдено.\nЕсли это не так, обновите вкладку."
     },
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Вы действительно хотите это сбросить?"
     },
-    "confirmPrivacy": {
-        "message": "Было обнаружено, что это видео - с доступом по ссылке. Нажмите \"отмена\", если не хотите проверять для него сегменты."
-    },
-    "unlistedCheck": {
-        "message": "Игнорировать непубличные видео"
-    },
-    "whatUnlistedCheck": {
-        "message": "Эта настройка незначительно замедлит SponsorBlock. Поиск сегментов требует отправки идентификатора видео на сервер. Если Вас беспокоит отправка идентификаторов скрытых видео по интернету, включите эту настройку."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com теперь поддерживается"
     },
@@ -591,11 +585,23 @@
     "channelDataNotFound": {
         "message": "ID канала еще не загружен."
     },
-    "adblockerIssue": {
-        "message": "Кажется, что-то блокирует возможность SponsorBlock'а получать данные о видео. Возможно, это ваш блокировщик рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Похоже, что-то блокирует возможность SponsorBlock'а получать данные о видео. Подробнее: https://github.com/ajayyy/SponsorBlock/issues/741."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Если вы не можете решить эту проблему, попробуйте отключить \"Игнорировать непубличные видео\" в настройках, т. к. SponsorBlock не может получить настройки доступа этого видео"
+    "youtubePermissionRequest": {
+        "message": "Кажется, SponsorBlock не может получить доступ к API YouTube. Чтобы исправить эту ошибку, дайте разрешение в окне, которое сейчас появится, подождите несколько секунд и затем перезагрузите страницу."
+    },
+    "acceptPermission": {
+        "message": "Дать разрешение"
+    },
+    "permissionRequestSuccess": {
+        "message": "Разрешение получено!"
+    },
+    "permissionRequestFailed": {
+        "message": "Не удалось получить разрешение, вы нажали на \"Блокировать\"?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Если вы не можете решить эту проблему, попробуйте отключить \"Принудительная проверка каналов перед пропуском\" в настройках, т. к. SponsorBlock не может определить название канала для этого видео"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Если это сообщения появляется слишком часто, это может быть вызвано вашим блокировщиком рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

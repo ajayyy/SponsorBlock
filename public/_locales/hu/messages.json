@@ -388,15 +388,6 @@
     "areYouSureReset": {
         "message": "Biztosan vissza szeretné állítani?"
     },
-    "confirmPrivacy": {
-        "message": "Videó észlelve nem listázottként. Kattintson a Mégse gombra, ha nem akar ellenőrizni átugorható szegmensek után."
-    },
-    "unlistedCheck": {
-        "message": "Nem listázott/Privát videók ignorálása"
-    },
-    "whatUnlistedCheck": {
-        "message": "Ez a beállítás kissé lelassíthatja a SponsorBlockot. A szegmensek átugrásához szükséges, hogy a videoID el legyen küldve a szerverre. Ha aggódik az interneten küldött nem listázott videóazonosítók küldése miatt, kapcsolja be ezt a funkciót."
-    },
     "mobileUpdateInfo": {
         "message": "az m.youtube.com már támogatott"
     },
@@ -560,9 +551,6 @@
     },
     "channelDataNotFound": {
         "message": "A csatorna azonosító még nem töltődött be."
-    },
-    "adblockerIssue": {
-        "message": "Valami meggátolja a SponsorBlockot a videó adatainak megszerzésében. Valószínűleg az ad-blockere. Kérem ellenőrizze: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Ha ez folyamatosan előfordul, lehet hogy az ad-blockere okozza. Kérem nézzen utána: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"

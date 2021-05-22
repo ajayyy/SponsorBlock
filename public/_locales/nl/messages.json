@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segment eindigt nu"
     },
+    "sponsorCancel": {
+        "message": "Segment aanmaken annuleren"
+    },
     "noVideoID": {
         "message": "Geen YouTube-video gevonden.\nVernieuw het tabblad als dit onjuist is."
     },
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Weet u zeker dat u dit wilt herstellen?"
     },
-    "confirmPrivacy": {
-        "message": "De video is als onvermeld gedetecteerd. Klik op annuleren als u niet wilt controleren op segmenten om over te slaan."
-    },
-    "unlistedCheck": {
-        "message": "Onvermelde/privé-video's negeren"
-    },
-    "whatUnlistedCheck": {
-        "message": "Deze instelling zal SponsorBlock iets vertragen. Opzoeken van segmenten om over te slaan vereist het versturen van de video-ID naar de server. Schakel deze optie in als u bezorgd bent over het versturen van ID's van onvermelde video's via internet."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com wordt nu ondersteund"
     },
@@ -591,11 +585,23 @@
     "channelDataNotFound": {
         "message": "Kanaal-ID is nog niet geladen."
     },
-    "adblockerIssue": {
-        "message": "Het lijkt erop dat iets de mogelijkheid van SponsorBlock om videogegevens te krijgen blokkeert. Dit is waarschijnlijk uw reclamefilter. Zie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocks-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Het lijkt erop dat iets de mogelijkheid van SponsorBlock om videogegevens op te halen, blokkeert. Zie https://github.com/ajayyy/SponsorBlock/issues/741 voor meer informatie."
     },
-    "adblockerIssueUnlistedVideosInfo": {
-        "message": "Als u dit niet kunt oplossen, schakel dan de instelling 'onvermelde/privé-video's negeren' uit omdat SponsorBlock niet in staat is de zichtbaarheidsinformatie voor deze video op te halen"
+    "youtubePermissionRequest": {
+        "message": "Het lijkt erop dat SponsorBlock de YouTube API niet kan bereiken. Om dit op te lossen, accepteer het machtigingsverzoek dat hierna wordt weergegeven, wacht een aantal seconden en laad de pagina vervolgens opnieuw."
+    },
+    "acceptPermission": {
+        "message": "Machtiging accepteren"
+    },
+    "permissionRequestSuccess": {
+        "message": "Verzoek om machtiging gelukt!"
+    },
+    "permissionRequestFailed": {
+        "message": "Verzoek om machtiging mislukt. Heeft u op geweigerd geklikt?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Als u dit niet kunt oplossen, schakel dan de instelling 'kanaalcontrole forceren vóór overslaan' uit omdat SponsorBlock niet in staat is de kanaalinformatie voor deze video op te halen"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Als dit blijft optreden, kan dit worden veroorzaakt door uw reclamefilter. Zie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
