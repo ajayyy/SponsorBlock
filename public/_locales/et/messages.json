@@ -582,9 +582,6 @@
     "hiddenDueToDuration": {
         "message": "peidetud: liiga lühike"
     },
-    "channelDataNotFound": {
-        "message": "Kanali ID pole veel laaditud."
-    },
     "videoInfoFetchFailed": {
         "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. Rohkema abi saamiseks palun vaata: https://github.com/ajayyy/SponsorBlock/issues/741"
     },
@@ -602,9 +599,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Kui sa ei suuda seda lahendada, keela valik \"sunnitud kanalikontroll enne vahelejätmist\", kuna SponsorBlock ei leia selle video kanaliteavet"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Kui see jätkub, võib see olla põhjustatud sinu reklaamiblokeerijast. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Sunnitud kanalikontroll enne vahelejätmist"
