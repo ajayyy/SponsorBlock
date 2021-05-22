@@ -573,12 +573,6 @@
     "hiddenDueToDuration": {
         "message": "đã bị ẩn: quá ngắn"
     },
-    "channelDataNotFound": {
-        "message": "Chưa đọc được ID của kênh."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Nếu lỗi này tiếp tục xuất hiện, nó có thể là do trình chặn quảng cáo của bạn. Hãy kiểm tra ở đây: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "forceChannelCheck": {
         "message": "Bắt buộc kiểm tra kênh trước khi bỏ qua"
     },
