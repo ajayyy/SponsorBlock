@@ -579,12 +579,6 @@
     "hiddenDueToDuration": {
         "message": "gizlendi: çok kısa"
     },
-    "channelDataNotFound": {
-        "message": "Kanal kimliği henüz yüklenmedi."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Bunu sürekli yaşıyorsanız, reklam engelleyiciniz tarafından gerçekleşiyor olabilir. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests adresini kontrol edin."
-    },
     "forceChannelCheck": {
         "message": "Atlamadan Önce Kanal Kontrolüne Zorla"
     },
