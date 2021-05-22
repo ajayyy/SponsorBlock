@@ -583,7 +583,8 @@
         "message": "piilotettu: liian lyhyt"
     },
     "channelDataNotFound": {
-        "message": "Kanavatunnusta ei ole vielä ladattu."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanavan ID ei ole vielä latautunut. Jos käytät upotettua videota, kokeile sen sijaan käyttää YouTuben kotisivua. Tämä voi myös johtua muutoksista YouTuben ulkoasussa, jos luulet luulet niin, tee kommenti tänne:"
     },
     "videoInfoFetchFailed": {
         "message": "Näyttää siltä, että jokin estää SponsorBlockin kykyä saada videotietoja. Katso https://github.com/ajayyy/SponsorBlock/issues/741 lisätietoja varten."
@@ -602,9 +603,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Jos et pysty ratkaisemaan tätä, poista käytöstä asetus 'Pakota Kanavan Tarkistus Ennen Ohittamista', koska SponsorBlock ei pysty noutamaan tämän videon kanavatietoja"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Jos tämä toistuu, mainosten esto-ohjelmasi voi olla syynä. Katso https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Pakota Kanavan Tarkistus Ennen Ohittamista"
