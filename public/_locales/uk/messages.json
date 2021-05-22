@@ -579,12 +579,6 @@
     "hiddenDueToDuration": {
         "message": "приховано: занадто коротко"
     },
-    "channelDataNotFound": {
-        "message": "ID каналу ще не завантажений."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Якщо це повідомлення з'являється занадто часто, це може бути викликано вашим блокувальником реклами. Будь ласка, перейдіть на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "forceChannelCheck": {
         "message": "Примусова перевірка каналів перед пропуском"
     },
