@@ -1201,6 +1201,8 @@ function cancelCreatingSegment() {
     if (isSegmentCreationInProgress()) {
         sponsorTimesSubmitting.splice(sponsorTimesSubmitting.length - 1, 1);
         Config.config.segmentTimes.set(sponsorVideoID, sponsorTimesSubmitting);
+
+        if (sponsorTimesSubmitting.length <= 0) resetSponsorSubmissionNotice();
     }
 
     updateEditButtonsOnPlayer();
@@ -1335,6 +1337,8 @@ function clearSponsorTimes() {
                                 + "\n" + chrome.i18n.getMessage("confirmMSG")
         if(!confirm(confirmMessage)) return;
 
+        resetSponsorSubmissionNotice();
+
         //clear the sponsor times
         Config.config.segmentTimes.delete(currentVideoID);
 
@@ -1342,7 +1346,6 @@ function clearSponsorTimes() {
         sponsorTimesSubmitting = [];
 
         updatePreviewBar();
-
         updateEditButtonsOnPlayer();
     }
 }
@@ -1413,6 +1416,7 @@ function dontShowNoticeAgain() {
  * Helper method for the submission notice to clear itself when it closes
  */
 function resetSponsorSubmissionNotice() {
+    submissionNotice?.close();
     submissionNotice = null;
 }
 
