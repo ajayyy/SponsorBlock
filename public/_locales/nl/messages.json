@@ -582,9 +582,6 @@
     "hiddenDueToDuration": {
         "message": "verborgen: te kort"
     },
-    "channelDataNotFound": {
-        "message": "Kanaal-ID is nog niet geladen."
-    },
     "videoInfoFetchFailed": {
         "message": "Het lijkt erop dat iets de mogelijkheid van SponsorBlock om videogegevens op te halen, blokkeert. Zie https://github.com/ajayyy/SponsorBlock/issues/741 voor meer informatie."
     },
@@ -602,9 +599,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Als u dit niet kunt oplossen, schakel dan de instelling 'kanaalcontrole forceren vóór overslaan' uit omdat SponsorBlock niet in staat is de kanaalinformatie voor deze video op te halen"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Als dit blijft optreden, kan dit worden veroorzaakt door uw reclamefilter. Zie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Kanaalcontrole forceren vóór overslaan"
