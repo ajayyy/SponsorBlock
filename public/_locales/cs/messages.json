@@ -582,9 +582,6 @@
     "hiddenDueToDuration": {
         "message": "skryté: moc krátké"
     },
-    "channelDataNotFound": {
-        "message": "ID kanálu ještě nebylo načteno."
-    },
     "videoInfoFetchFailed": {
         "message": "Vypadá to, že něco blokuje schopnost SponsorBlocku získat údaje o videu. Pro více informací prosím navštivte https://github.com/ajayyy/SponsorBlock/issues/741."
     },
@@ -602,9 +599,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Pokud vám tento problém nepůjde vyřešit, vypněte nastavení 'Vynutit kontrolu kanálu před přeskočením', protože SponsorBlock nemůže zjistit informace o kanálu"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Pokud k tomu stále dochází, může to být způsobeno vaším adblockerem. Podívejte se prosím https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Vynutit kontrolu kanálu před přeskočením"
