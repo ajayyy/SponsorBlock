@@ -582,6 +582,10 @@
     "hiddenDueToDuration": {
         "message": "skryté: príliš krátke"
     },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID kanála sa ešte nenačítalo. Ak pozeráte video vložené na stránke, skúste ísť radšej priamo na YouTube. Problém mohli spôsobiť zmeny na YouTube. Ak je tomu tak, zanechajte komentár:"
+    },
     "videoInfoFetchFailed": {
         "message": "Zdá sa, že niečo blokuje SponsorBlocku možnosť získať dáta o videu. Prosím navštívte https://github.com/ajayyy/SponsorBlock/issues/741 pre viac informácií."
     },
