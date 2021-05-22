@@ -582,9 +582,6 @@
     "hiddenDueToDuration": {
         "message": "disembunyikan: terlalu pendek"
     },
-    "channelDataNotFound": {
-        "message": "ID Channel belum dimuat."
-    },
     "videoInfoFetchFailed": {
         "message": "Sepertinya sesuatu memnghalangi abilitas SponsorBlock untuk mendapatkan data video. Silahkan lihat https://github.com/ajayyy/SponsorBlock/issues/741 untuk info lebih lanjut."
     },
@@ -602,9 +599,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Apabila anda tidak dapat menyelesaikan masalah ini, maka nonaktifkan pengaturan 'Paksa Cek Channel Sebelum Melewati', dikarenakan SponsorBlock tidak dapat menerima informasi channel untuk video ini"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Jika ini terus terjadi, kemungkinan terjadi karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Paksa Cek Channel Sebelum Melewati"
