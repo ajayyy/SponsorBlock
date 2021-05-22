@@ -582,6 +582,10 @@
     "hiddenDueToDuration": {
         "message": "peidetud: liiga lühike"
     },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanali ID pole veel laaditud. Kui vaatad manustatud videot, proovi seda vaadata YouTube'i kodulehelt. See võib olla põhjustatud ka YouTube'i paigutuse muudatustest - kui arvad et see nii on, kommenteeri siin:"
+    },
     "videoInfoFetchFailed": {
         "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. Rohkema abi saamiseks palun vaata: https://github.com/ajayyy/SponsorBlock/issues/741"
     },
