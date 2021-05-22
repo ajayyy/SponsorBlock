@@ -549,12 +549,6 @@
     "hiddenDueToDuration": {
         "message": "elrejtve: túl rövid"
     },
-    "channelDataNotFound": {
-        "message": "A csatorna azonosító még nem töltődött be."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Ha ez folyamatosan előfordul, lehet hogy az ad-blockere okozza. Kérem nézzen utána: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "forceChannelCheck": {
         "message": "Csatorna ellenőrzése átugrás előtt"
     },
