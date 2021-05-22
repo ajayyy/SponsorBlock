@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segment endet jetzt"
     },
+    "sponsorCancel": {
+        "message": "Segmenterstellung abbrechen"
+    },
     "noVideoID": {
         "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisiere den Tab."
     },
@@ -580,10 +583,14 @@
         "message": "Ausgeblendet: zu kurz"
     },
     "channelDataNotFound": {
-        "message": "Kanal-ID wurde noch nicht geladen."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanal-ID ist noch nicht geladen. Falls es sich um ein eingebettetes Video handelt, probiere stattdessen die YouTube-Homepage. Dies könnte auch durch Änderungen im YouTube-Layout verursacht werden. Sollte das der Fall sein, kannst du das hier anmerken:"
+    },
+    "videoInfoFetchFailed": {
+        "message": "Etwas hält SponsorBlock davon ab, die Videodaten abzurufen. Eine mögliche Ursache sind Werbeblocker. Für zusätzliche Informationen besuche: https://github.com/ajayyy/SponsorBlock/issues/741."
     },
     "youtubePermissionRequest": {
-        "message": "Es scheint, dass SponsorBlock nicht in der Lage ist, die YouTube-API zu erreichen. Um dies zu beheben, akzeptieren Sie die Berechtigungsanfrage, die gleich erscheint; Warten Sie ein paar Sekunden, und laden Sie die Seite neu."
+        "message": "Es scheint, dass SponsorBlock die YouTube-API nicht erreichen kann. Um dies zu beheben, akzeptieren Sie die folgende Berechtigungsanfrage; Warten Sie ein paar Sekunden und laden Sie die Seite erneut."
     },
     "acceptPermission": {
         "message": "Berechtigung akzeptieren"
@@ -592,13 +599,10 @@
         "message": "Die Berechtigungsanfrage war erfolgreich!"
     },
     "permissionRequestFailed": {
-        "message": "Berechtigungsanfrage fehlgeschlagen, haben Sie \"Ablehnen\" angeklickt?"
+        "message": "Berechtigungsanfrage fehlgeschlagen, haben Sie sie abgelehnt?"
     },
     "adblockerIssueWhitelist": {
-        "message": "Wenn Sie dies nicht lösen können, deaktivieren Sie die Einstellung 'Kanalprüfung vor dem Überspringen von Segmenten erzwingen', da SponsorBlock nicht in der Lage ist, die Sichtbarkeit für dieses Video abzurufen."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Falls dies weiterhin geschieht, könnte dies durch einen Werbeblocker verursacht werden. Mehr Infos: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+        "message": "Wenn du dies nicht beheben kannst, deaktiviere die Einstellung 'Kanalprüfung vor dem Überspringen von Segmenten erzwingen', da SponsorBlock nicht in der Lage ist die Kanal-Informationen für dieses Video abzurufen"
     },
     "forceChannelCheck": {
         "message": "Kanalprüfung vor dem Überspringen von Segmenten erzwingen"
