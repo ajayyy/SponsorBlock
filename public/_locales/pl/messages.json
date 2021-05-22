@@ -579,9 +579,6 @@
     "hiddenDueToDuration": {
         "message": "ukryty: zbyt krótki"
     },
-    "channelDataNotFound": {
-        "message": "ID kanału nie zostało póki co załadowane."
-    },
     "youtubePermissionRequest": {
         "message": "Wygląda na to, że SponsorBlock nie jest w stanie połączyć się z API YouTube. Aby to naprawić, zaakceptuj monit o pozwolenie, który pojawi się za chwilę, odczekaj kilka sekund, a następnie odśwież stronę."
     },
@@ -593,9 +590,6 @@
     },
     "permissionRequestFailed": {
         "message": "Prośba odrzucona. Może kliknięto „Odmów”?"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Wymuś sprawdzanie kanału przed pomijaniem"
