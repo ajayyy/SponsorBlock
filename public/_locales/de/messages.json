@@ -65,7 +65,7 @@
         "message": "Bist du sicher, dass du Folgendes löschen möchtest?\n\n"
     },
     "Unknown": {
-        "message": "Deine Einreichung konnte nicht übertragen werden, bitte versuche es später erneut."
+        "message": "Dein Beitrag konnte nicht übertragen werden, bitte versuche es später erneut."
     },
     "sponsorFound": {
         "message": "In der Datenbank wurden überspringbare Segmente für dieses Video gefunden!"
@@ -195,7 +195,7 @@
         "message": "Dieser Knopf im YouTube-Videoplayer löscht alle nicht übermittelten Segmente für das aktuelle Video."
     },
     "enableViewTracking": {
-        "message": "Aktiviere das Mitzählen übersprungener Segmente"
+        "message": "Aktiviere das Zählen übersprungener Segmente"
     },
     "whatViewTracking": {
         "message": "Diese Funktion verfolgt welche Segmente du übersprungen hast, um andere Benutzer wissen zu lassen, wie sehr ihre Einreichung anderen geholfen hat, sowie um als Metrik zusammen mit positiven Bewertungen sicherzustellen, dass kein Spam in die Datenbank gelangt. Die Erweiterung sendet jedes Mal, wenn du ein Segment überspringst, eine Nachricht an den Server. Hoffentlich ändern die meisten Leute diese Einstellung nicht, so dass die Zahlen korrekt sind. :)"
@@ -232,7 +232,7 @@
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "Gefällt dir immer noch nicht? Dann klicke auf den Verstecken-Knopf.",
+        "message": "Falls es dir trotzdem nicht gefällt, drücke auf \"Verstecken\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
@@ -475,7 +475,7 @@
         "message": "Gesponserte Videosegmente"
     },
     "category_sponsor_description": {
-        "message": "Bezahlte Promotion, bezahlte Empfehlungen und direkte Werbung. Nicht für Selbstpromotion oder kostenlose Shoutouts an Anlässe/Personen/Webseiten/Produkte."
+        "message": "Bezahlte Werbung, bezahlte Empfehlungen und direkte Werbung, nicht für Eigenwerbung, kostenlose Fremdwerbung oder Empfehlungen für Anlässe/Personen/Webseiten/Produkte."
     },
     "category_intro": {
         "message": "Unterbrechung/Intro-Animation"
