@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Définir une touche pour passer un segment"
     },
-    "setStartSponsorShortcut": {
-        "message": "Définir le raccourci pour commencer un segment"
-    },
     "setSubmitKeybind": {
         "message": "Changer le raccourci pour soumettre les segments"
     },
