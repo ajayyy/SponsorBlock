@@ -239,7 +239,7 @@
         "message": "Defina a tecla para ignorar um segmento"
     },
     "setStartSponsorShortcut": {
-        "message": "Defina a tecla para que marca o início do segmento"
+        "message": "Defina a tecla para iniciar/interromper o segmento"
     },
     "setSubmitKeybind": {
         "message": "Defina a tecla para enviar o segmento de patrocínio"
