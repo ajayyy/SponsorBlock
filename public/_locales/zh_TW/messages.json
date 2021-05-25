@@ -238,9 +238,6 @@
     "setSkipShortcut": {
         "message": "設定跳過段落的快捷鍵"
     },
-    "setStartSponsorShortcut": {
-        "message": "設定開始片段快捷鍵"
-    },
     "setSubmitKeybind": {
         "message": "設定提交快捷鍵"
     },
