@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Angi tast for å hoppe over et segment"
     },
-    "setStartSponsorShortcut": {
-        "message": "Angi tast for å starte segmenter"
-    },
     "setSubmitKeybind": {
         "message": "Angi tast for innsending"
     },
