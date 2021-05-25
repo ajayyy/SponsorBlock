@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "设置用于跳过片段的按键"
     },
-    "setStartSponsorShortcut": {
-        "message": "设定片段开始的绑定按键"
-    },
     "setSubmitKeybind": {
         "message": "设定提交的绑定按键"
     },
