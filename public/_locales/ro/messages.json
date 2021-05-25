@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Setați cheia pentru omiterea unui segment"
     },
-    "setStartSponsorShortcut": {
-        "message": "Setează tasta pentru pornirea segmentului"
-    },
     "setSubmitKeybind": {
         "message": "Setează tasta pentru trimiterea sponsorizării"
     },
