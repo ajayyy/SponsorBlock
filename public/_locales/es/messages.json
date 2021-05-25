@@ -239,7 +239,7 @@
         "message": "Establecer tecla para omitir un segmento"
     },
     "setStartSponsorShortcut": {
-        "message": "Establecer tecla para iniciar segmento"
+        "message": "Establecer tecla para iniciar/detener un segmento"
     },
     "setSubmitKeybind": {
         "message": "Establecer botón de envio"
