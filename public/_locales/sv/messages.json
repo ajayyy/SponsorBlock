@@ -239,7 +239,7 @@
         "message": "Ställ in knapp för att hoppa över ett segment"
     },
     "setStartSponsorShortcut": {
-        "message": "Ange den tangent som ska fungera som snabbstartstangent för ett segment"
+        "message": "Ange den genväg som ska fungera som start-/stopptangent för ett segment"
     },
     "setSubmitKeybind": {
         "message": "Välj knapp att koppla till rapportering av sponsormeddelande"
