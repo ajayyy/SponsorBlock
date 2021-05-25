@@ -239,7 +239,7 @@
         "message": "Aseta näppäin segmentin ohittamista varten"
     },
     "setStartSponsorShortcut": {
-        "message": "Aseta näppäin segmentin aloittamiseen näppäimistössä"
+        "message": "Aseta näppäin segmentin aloittamiseen/lopettamiseen näppäimistössä"
     },
     "setSubmitKeybind": {
         "message": "Aseta näppäin tietojen lähetykseen"
