@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Tetapkan kunci untuk melangkau segmen"
     },
-    "setStartSponsorShortcut": {
-        "message": "Tetapkan kunci untuk keybind segmen permulaan"
-    },
     "setSubmitKeybind": {
         "message": "Tetapkan kunci untuk pengikat kunci penyerahan"
     },
