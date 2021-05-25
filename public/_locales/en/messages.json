@@ -239,7 +239,7 @@
         "message": "Set key for skipping a segment"
     },
     "setStartSponsorShortcut": {
-        "message": "Set key for start segment keybind"
+        "message": "Set key for start/stop segment keybind"
     },
     "setSubmitKeybind": {
         "message": "Set key for submission keybind"
