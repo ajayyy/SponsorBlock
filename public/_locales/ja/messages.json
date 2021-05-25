@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "セグメントをスキップするキーを設定"
     },
-    "setStartSponsorShortcut": {
-        "message": "セグメントを開始するキーを設定"
-    },
     "setSubmitKeybind": {
         "message": "投稿するキーを設定"
     },
