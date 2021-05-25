@@ -239,7 +239,7 @@
         "message": "구간 건너뛰기 키 설정"
     },
     "setStartSponsorShortcut": {
-        "message": "시작 부분 키 할당 설정"
+        "message": "시작/끝 부분 키 할당 설정"
     },
     "setSubmitKeybind": {
         "message": "제출 키 할당 설정"
