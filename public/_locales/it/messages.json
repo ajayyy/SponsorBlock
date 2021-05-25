@@ -238,9 +238,6 @@
     "setSkipShortcut": {
         "message": "Imposta un tasto per saltare un segmento"
     },
-    "setStartSponsorShortcut": {
-        "message": "Imposta chiave di associazione per l'inizio del segmento"
-    },
     "setSubmitKeybind": {
         "message": "Imposta chiave di associazione tasti per i tuoi contributi"
     },
