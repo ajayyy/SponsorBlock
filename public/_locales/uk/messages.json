@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Призначити гарячу клавішу для пропуску сегмента"
     },
-    "setStartSponsorShortcut": {
-        "message": "Призначити гарячу клавішу для початку сегмента"
-    },
     "setSubmitKeybind": {
         "message": "Призначити гарячу клавішу для надсилання"
     },
