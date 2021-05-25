@@ -238,9 +238,6 @@
     "setSkipShortcut": {
         "message": "Sleutel instellen voor het overslaan van een segment"
     },
-    "setStartSponsorShortcut": {
-        "message": "Sneltoets instellen voor begin van segment"
-    },
     "setSubmitKeybind": {
         "message": "Sneltoets instellen voor indienen"
     },
