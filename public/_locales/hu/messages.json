@@ -222,9 +222,6 @@
         "message": "Ha még mindig nem tetszik, kattintson a ne mutassa többé gombra.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setStartSponsorShortcut": {
-        "message": "Billentyű beállítása a szegmenskezdés gombhoz"
-    },
     "setSubmitKeybind": {
         "message": "Billentyű beállítása a beküldés gombhoz"
     },
