@@ -238,9 +238,6 @@
     "setSkipShortcut": {
         "message": "Atur tombol untuk melewati sebuah segmen"
     },
-    "setStartSponsorShortcut": {
-        "message": "Atur tombol untuk mulai segmen"
-    },
     "setSubmitKeybind": {
         "message": "Atur tombol untuk kirim submisi"
     },
