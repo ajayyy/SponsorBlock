@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "విభాగాన్ని దాటవేయడానికి కీని సెట్ చేయండి"
     },
-    "setStartSponsorShortcut": {
-        "message": "ప్రారంభ విభాగం కీబైండ్ కోసం కీని సెట్ చేయండి"
-    },
     "setSubmitKeybind": {
         "message": "సమర్పణ కీబైండ్ కోసం కీని సెట్ చేయండి"
     },
