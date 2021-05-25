@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Ustaw klawisz do pomijania segmentów"
     },
-    "setStartSponsorShortcut": {
-        "message": "Ustaw klawisz do oznaczania początku segmentu"
-    },
     "setSubmitKeybind": {
         "message": "Ustaw klawisz do wysyłania czasów"
     },
