@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Kısım atlamak için bir tuş ata"
     },
-    "setStartSponsorShortcut": {
-        "message": "Kısım kaydına başlamak için bir tuş belirleyin"
-    },
     "setSubmitKeybind": {
         "message": "Gönderim için bir tuş belirleyin"
     },
