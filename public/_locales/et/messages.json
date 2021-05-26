@@ -238,6 +238,9 @@
     "setSkipShortcut": {
         "message": "Seadista segmendi vahelejätmise klahv"
     },
+    "setStartSponsorShortcut": {
+        "message": "Seadista segmendi alustamise/lõpetamise klahv"
+    },
     "setSubmitKeybind": {
         "message": "Seadista segmendi saatmise klahv"
     },
