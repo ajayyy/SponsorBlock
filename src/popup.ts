@@ -387,14 +387,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
                 
-                const segmentTimeFromTo = utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true);
-                
-                const segmentTimeFromToNode = document.createTextNode(segmentTimeFromTo);
                 const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
+                const segmentTimeFromToNode = document.createElement("div");
+                segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true);
+                segmentTimeFromToNode.style.margin = "5px";
 
-                sponsorTimeButton.appendChild(segmentTimeFromToNode);
                 sponsorTimeButton.appendChild(categoryColorCircle);
                 sponsorTimeButton.appendChild(textNode);
+                sponsorTimeButton.appendChild(segmentTimeFromToNode);
 
                 const votingButtons = document.createElement("div");
                 votingButtons.classList.add("votingButtons");
