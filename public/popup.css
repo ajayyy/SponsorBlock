@@ -42,6 +42,15 @@
   text-align: center;
 }
 
+#issueReporterContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#issueReporterTimeButtons {
+  text-align: left;
+}
+
 #issueReporterTimeButtons > .votingButtons > .segmentTimeButton {
   font-weight: bold;
   color: var(--sb-main-fg-color);
@@ -49,9 +58,6 @@
   border: none;
   padding: 7px;
   outline: none;
-  
-  display: flex;
-  justify-content: flex-start;
 
   cursor: pointer;
   white-space: nowrap;
