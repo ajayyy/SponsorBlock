@@ -6,3 +6,4 @@ web-ext-artifacts
 .vscode/
 dist/
 tmp/
+.DS_Store

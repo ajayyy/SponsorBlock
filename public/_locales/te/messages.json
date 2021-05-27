@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "మీరు వీడియో ఐడి కోసం సమర్పించాలనుకుంటున్నారా"
     },
-    "leftTimes": {
-        "message": "మీరు కొన్ని విభాగాలను సమర్పించకుండా వదిలేసినట్లు కనిపిస్తోంది. వాటిని సమర్పించడానికి ఆ పేజీకి తిరిగి వెళ్ళు (అవి తొలగించబడవు)."
-    },
     "clearTimes": {
         "message": "విభాగాలను క్లియర్ చేయండి"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "మీకు ఇంకా నచ్చకపోతే, ఎప్పుడూ చూపించు బటన్ నొక్కండి.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "విభాగాన్ని దాటవేయడానికి కీని సెట్ చేయండి"
     },
     "setStartSponsorShortcut": {
         "message": "ప్రారంభ విభాగం కీబైండ్ కోసం కీని సెట్ చేయండి"
@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "మీరు దీన్ని రీసెట్ చేయాలనుకుంటున్నారా?"
     },
-    "confirmPrivacy": {
-        "message": "వీడియో జాబితా చేయనిదిగా కనుగొనబడింది. మీరు విభాగాలను దాటవేయాలనుకుంటే రద్దు చేయి క్లిక్ చేయండి."
-    },
-    "unlistedCheck": {
-        "message": "జాబితా చేయని / ప్రైవేట్ వీడియోలను విస్మరించండి"
-    },
-    "whatUnlistedCheck": {
-        "message": "ఈ సెట్టింగ్ స్పాన్సర్బ్లాక్‌ను కొద్దిగా నెమ్మదిస్తుంది. సెగ్మెంట్ శోధనను దాటవేయి వీడియో ID ని సర్వర్‌కు పంపడం అవసరం. జాబితా చేయని వీడియో ఐడిలను ఇంటర్నెట్ ద్వారా పంపడం గురించి మీకు ఆందోళన ఉంటే, ఈ ఎంపికను ప్రారంభించండి."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com కి ఇప్పుడు మద్దతు ఉంది"
     },
@@ -517,7 +508,7 @@
         "message": "సంగీతం: నాన్-మ్యూజిక్ విభాగం"
     },
     "category_music_offtopic_description": {
-        "message": "మ్యూజిక్ వీడియోలలో ఉపయోగించడానికి మాత్రమే. మ్యూజిక్ వీడియోలలో పరిచయాలు లేదా ro ట్‌రోస్ ఇందులో ఉన్నాయి."
+        "message": "మ్యూజిక్ వీడియోలలో మాత్రమే ఉపయోగం కోసం. ఇది ఇప్పటికే మరొక వర్గం ద్వారా కవర్ చేయని సంగీతం వీడియోల విభాగాలకు మాత్రమే ఉపయోగించాలి."
     },
     "category_music_offtopic_short": {
         "message": "నాన్-మ్యూజిక్"
@@ -591,9 +582,6 @@
     "channelDataNotFound": {
         "message": "ఛానెల్ ID ఇంకా లోడ్ కాలేదు."
     },
-    "adblockerIssue": {
-        "message": "వీడియో డేటాను పొందే స్పాన్సర్బ్లాక్ సామర్థ్యాన్ని ఏదో అడ్డుకుంటున్నట్లు కనిపిస్తోంది. ఇది బహుశా మీ యాడ్ బ్లాకర్. దయచేసి https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests తనిఖీ చేయండి"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "ఇది జరుగుతూ ఉంటే, అది మీ ప్రకటన బ్లాకర్ వల్ల సంభవించవచ్చు. దయచేసి https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests తనిఖీ చేయండి"
     },
@@ -630,12 +618,6 @@
     },
     "categoryUpdate2": {
         "message": "పరిచయాలు, ros ట్రోస్, మెర్చ్ మొదలైనవాటిని దాటవేయడానికి ఎంపికలను తెరవండి."
-    },
-    "unsubmittedWarning": {
-        "message": "సమర్పించని విభాగాల నోటిఫికేషన్"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "మీరు అప్‌లోడ్ చేయని విభాగాలతో వీడియోను వదిలివేసినప్పుడు నోటిఫికేషన్ పంపండి"
     },
     "help": {
         "message": "సహాయం"

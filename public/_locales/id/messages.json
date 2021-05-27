@@ -79,8 +79,11 @@
     "sponsorEnd": {
         "message": "Segmen Berakhir Sekarang"
     },
+    "sponsorCancel": {
+        "message": "Batalkan Membuat Segmen"
+    },
     "noVideoID": {
-        "message": "Video YouTube tidak ditemukan.\nJika ini salah, segarkan tab."
+        "message": "Video YouTube tidak ditemukan.\nJika terjadi kesalahan, segarkan halaman."
     },
     "success": {
         "message": "Sukses!"
@@ -96,9 +99,6 @@
     },
     "wantToSubmit": {
         "message": "Apakah anda ingin mengirim untuk id video"
-    },
-    "leftTimes": {
-        "message": "Sepertinya anda lupa mengirimkan beberapa segmen. Kembali ke halaman tadi dan kirimkan itu (itu tidak terhapus)."
     },
     "clearTimes": {
         "message": "Hapus Segmen"
@@ -116,16 +116,16 @@
         "message": "Apakah anda yakin ingin mengirim ini?"
     },
     "whitelistChannel": {
-        "message": "Saluran daftar putih"
+        "message": "Daftar putih channel"
     },
     "removeFromWhitelist": {
-        "message": "Hapus saluran dari daftar putih"
+        "message": "Hapus channel dari daftar putih"
     },
     "voteOnTime": {
         "message": "Beri Segmen Vote"
     },
     "Submissions": {
-        "message": "Kiriman"
+        "message": "Submisi"
     },
     "savedPeopleFrom": {
         "message": "Anda telah menyelamatkan orang dari "
@@ -141,7 +141,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Petunjuk: Anda dapat mengatur keybinds untuk dikirim dalam opsi"
+        "message": "Petunjuk: Anda dapat mengatur keybinds untuk pengiriman dalam opsi"
     },
     "clearTimesButton": {
         "message": "Hapus Waktu"
@@ -210,7 +210,7 @@
         "message": "Fetch Ulang Segmen Di Video Baru"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Jika ini merupakan video baru, dan tidak ada segmen yang ditemukan, itu akan terus merefetch setiap beberapa menit saat anda menonton."
+        "message": "Jika ini merupakan video baru, dan tidak ada segmen yang ditemukan, SponsorBlock akan terus merefetch setiap beberapa menit saat anda menonton."
     },
     "showNotice": {
         "message": "Tampilkan Pemberitahuan Lagi"
@@ -234,6 +234,9 @@
     "noticeUpdate2": {
         "message": "Jika anda masih tidak menyukainya, tekan tombol jangan tampilkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Atur tombol untuk melewati sebuah segmen"
     },
     "setStartSponsorShortcut": {
         "message": "Atur tombol untuk mulai segmen"
@@ -294,7 +297,7 @@
         "message": "Waktu ini muncul di dalam kurung disamping waktu asli di bilah waktu. Ini menunjukkan durasi total video yang tidak termasuk segmen apapun. Ini termasuk segmen yang ditandai hanya \"Tampilkan Di Bilah Waktu\"."
     },
     "youHaveSkipped": {
-        "message": "Anda telah melewatkan "
+        "message": "Anda sudah melewati "
     },
     "youHaveSaved": {
         "message": "Anda sudah menghemat waktu "
@@ -312,10 +315,10 @@
         "message": "jam"
     },
     "youHaveSavedTime": {
-        "message": "Anda telah menyelamatkan orang"
+        "message": "Anda sudah menghemat waktu orang lain"
     },
     "youHaveSavedTimeEnd": {
-        "message": " dalam hidup mereka"
+        "message": " dari hidup mereka"
     },
     "statusReminder": {
         "message": "Cek status.sponsor.ajay.app untuk status server."
@@ -406,15 +409,6 @@
     },
     "areYouSureReset": {
         "message": "Apakah anda yakin ingin mengatur ulang ini?"
-    },
-    "confirmPrivacy": {
-        "message": "Video ini dideteksi sebagai tidak terdaftar. Klik batal jika kamu tidak ingin mengecek untuk melewati segmen."
-    },
-    "unlistedCheck": {
-        "message": "Abaikan Video Tidak Terdaftar/Privat"
-    },
-    "whatUnlistedCheck": {
-        "message": "Pengaturan ini akan sedikit melambatkan SponsorBlock. Pencarian lewati segmen membutuhkan pengiriman ID video ke server. Jika anda khawatir tentang ID unlisted video terkirim ke internet, hidupkan opsi ini."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com sekarang didukung"
@@ -517,7 +511,7 @@
         "message": "Musik: Bagian Non-Musik"
     },
     "category_music_offtopic_description": {
-        "message": "Hanya gunakan di video musik. Ini termasuk intro dan outro di video musik."
+        "message": "Hanya digunakan untuk video musik. Ini seharusnya hanya digunakan untuk bagian dari video musik yang tidak tercakup kategori lain."
     },
     "category_music_offtopic_short": {
         "message": "Non-Musik"
@@ -591,8 +585,23 @@
     "channelDataNotFound": {
         "message": "ID Channel belum dimuat."
     },
-    "adblockerIssue": {
-        "message": "Sepertinya ada sesuatu yang memblokir kemampuan SponsorBlock untuk mendapatkan data video. Kemungkinan karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Sepertinya sesuatu memnghalangi abilitas SponsorBlock untuk mendapatkan data video. Silahkan lihat https://github.com/ajayyy/SponsorBlock/issues/741 untuk info lebih lanjut."
+    },
+    "youtubePermissionRequest": {
+        "message": "Sepertinya SponsorBlock tidak dapat menjangkau API YouTube. Untuk menyelesaikan masalah ini, terima permintaan izin yang akan muncul selanjutnya, tunggu beberapa detik, dan muat ulang halaman ini."
+    },
+    "acceptPermission": {
+        "message": "Terima permintaan izin"
+    },
+    "permissionRequestSuccess": {
+        "message": "Permintaan izin berhasil!"
+    },
+    "permissionRequestFailed": {
+        "message": "Permintaan izin gagal, apakah anda mengklik tolak?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Apabila anda tidak dapat menyelesaikan masalah ini, maka nonaktifkan pengaturan 'Paksa Cek Channel Sebelum Melewati', dikarenakan SponsorBlock tidak dapat menerima informasi channel untuk video ini"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Jika ini terus terjadi, kemungkinan terjadi karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
@@ -630,12 +639,6 @@
     },
     "categoryUpdate2": {
         "message": "Buka opsi untuk melewati intro, outro, merch, dll."
-    },
-    "unsubmittedWarning": {
-        "message": "Notifikasi Segmen Yang Belum Dikirim"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Tampilkan notifikasi saat kamu meninggalkan video dengan segmen yang belum diunggah"
     },
     "help": {
         "message": "Bantuan"

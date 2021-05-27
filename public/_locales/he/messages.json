@@ -1,1 +1,192 @@
-{}
+{
+    "fullName": {
+        "message": "חוסם פרסומות ליוטיוב - דלג על החסויות",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "דלג על החסויות, ההתחננויות לעשות מנוי ועוד בסרטוני יוטיוב. דווח על ספונסרים בסרטונים שאתה צופה בהם כדי לחסוך לאחרים זמן.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "השרת אמר שהבקשה הזו לא בתוקף"
+    },
+    "429": {
+        "message": "הגשת יותר מדי זמני חסויות עבור הסרטון היחיד הזה, אתה בטוח שיש כל כך הרבה?"
+    },
+    "409": {
+        "message": "זה כבר הוגש בעבר"
+    },
+    "channelWhitelisted": {
+        "message": "הערוץ הורשה!"
+    },
+    "Segment": {
+        "message": "מקטע"
+    },
+    "Segments": {
+        "message": "מקטעים"
+    },
+    "upvoteButtonInfo": {
+        "message": "הצבע לדיווח הזה"
+    },
+    "reportButtonTitle": {
+        "message": "דווח"
+    },
+    "reportButtonInfo": {
+        "message": "דווח על הדיווח הזה כלא נכון."
+    },
+    "Dismiss": {
+        "message": "סגור"
+    },
+    "Loading": {
+        "message": "טוען..."
+    },
+    "Hide": {
+        "message": "אל תציג אף פעם"
+    },
+    "hitGoBack": {
+        "message": "לחץ על דלג אחורה כדי להגיע מאיפה שבאת."
+    },
+    "unskip": {
+        "message": "דלג אחורה"
+    },
+    "reskip": {
+        "message": "דלג קדימה"
+    },
+    "paused": {
+        "message": "מושהה"
+    },
+    "manualPaused": {
+        "message": "טיימר נעצר"
+    },
+    "confirmMSG": {
+        "message": "כדי לערוך או למחוק קטעים יחידים, לחץ על כפתור המידע או פתח את החלונית של ההרחבה בדפדפן ע\"י לחיצה על הסמליל בצד ימין למעלה (יכול להיות ששמאל למעלה בדפדפנים בעברית)."
+    },
+    "clearThis": {
+        "message": "אתה בטוח שאתה רוצה לנקות את זה?\n\n"
+    },
+    "Unknown": {
+        "message": "אירעה שגיאה בדיווח הזמנים, נסה שוב מאוחר יותר."
+    },
+    "sponsorFound": {
+        "message": "לסרטון הזה יש קטעים במאגר הנתונים!"
+    },
+    "sponsor404": {
+        "message": "לא נמצאו מקטעים"
+    },
+    "sponsorStart": {
+        "message": "מקטע מתחיל עכשיו"
+    },
+    "sponsorEnd": {
+        "message": "מקטע נגמר עכשיו"
+    },
+    "noVideoID": {
+        "message": "לא נמצא סרטון יוטיוב.\nאם זה לא נכון, רענן את הכרטיסייה."
+    },
+    "success": {
+        "message": "הצלחה!"
+    },
+    "voted": {
+        "message": "הצבעת!"
+    },
+    "serverDown": {
+        "message": "נראה שהשרת נפל. צור קשר עם המפתח מיד."
+    },
+    "connectionError": {
+        "message": "התקבלה שגיאת חיבור. קוד השגיאה: "
+    },
+    "wantToSubmit": {
+        "message": "האם אתה רוצה לדווח עבור סרטון שמספר הזיהוי שלו הוא"
+    },
+    "clearTimes": {
+        "message": "נקה מקטעים"
+    },
+    "openPopup": {
+        "message": "פתח חלונית SponsorBlock"
+    },
+    "closePopup": {
+        "message": "סגור חלון"
+    },
+    "SubmitTimes": {
+        "message": "הגש מקטעים"
+    },
+    "submitCheck": {
+        "message": "אתה בטוח שאתה רוצה להזין את זה?"
+    },
+    "whitelistChannel": {
+        "message": "הרשה ערוץ"
+    },
+    "removeFromWhitelist": {
+        "message": "הסר ערוץ מרשימת ערוצים מורשים"
+    },
+    "voteOnTime": {
+        "message": "הצבע על מקטע"
+    },
+    "Submissions": {
+        "message": "הזנות"
+    },
+    "savedPeopleFrom": {
+        "message": "הצלת אנשים מ "
+    },
+    "viewLeaderboard": {
+        "message": "לוח מובילים"
+    },
+    "recordTimesDescription": {
+        "message": "הגש"
+    },
+    "submissionEditHint": {
+        "message": "עריכת מקטע תופיע אחרי שתלחץ הגש",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "רמז: אתה יכול להגדיר קיצורים מהמקלדת דרך תפריט אפשרויות כדי להזין זמנים"
+    },
+    "Username": {
+        "message": "שם משתמש"
+    },
+    "Options": {
+        "message": "אפשרויות"
+    },
+    "hideButtonsDescription": {
+        "message": "זה מחביא את הכפתורים שמופיעים בנגן YouTube להגיש מקטעי דילוג."
+    },
+    "showInfoButton": {
+        "message": "הראה כפתור מידע בנגן YouTube"
+    },
+    "hideInfoButton": {
+        "message": "החבא כפתור מידע בנגן YouTube"
+    },
+    "sourceCode": {
+        "message": "קוד מקור",
+        "description": "Used on Firefox Store Page"
+    },
+    "errorCode": {
+        "message": "קוד שגיאה: "
+    },
+    "minLower": {
+        "message": "דקה"
+    },
+    "minsLower": {
+        "message": "דקות"
+    },
+    "hourLower": {
+        "message": "שעה"
+    },
+    "hoursLower": {
+        "message": "שעות"
+    },
+    "youHaveSavedTime": {
+        "message": "חסכת לאנשים"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " מחייהם"
+    },
+    "createdBy": {
+        "message": "נוצר על ידי"
+    },
+    "autoSkip": {
+        "message": "דילוג אוטומטי"
+    },
+    "add": {
+        "message": "הוסף"
+    }
+}

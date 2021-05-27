@@ -1,6 +1,6 @@
 {
     "fullName": {
-        "message": "SponsorBlock para YouTube - Saltar los patrocinios",
+        "message": "SponsorBlock para YouTube - Omitir Sponsors",
         "description": "Name of the extension."
     },
     "Description": {
@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "El segmento termina ahora"
     },
+    "sponsorCancel": {
+        "message": "Cancelar Creación de Segmento"
+    },
     "noVideoID": {
         "message": "No se encontró vídeo de YouTube.\nSi esto es incorrecto, actualice la pestaña."
     },
@@ -97,9 +100,6 @@
     "wantToSubmit": {
         "message": "¿Quiere enviar segmento para el video con ID"
     },
-    "leftTimes": {
-        "message": "Parece que has dejado algunos segmentos sin enviar. Vuelva a esa página para enviarlos (no se han borrado)."
-    },
     "clearTimes": {
         "message": "Borrar Segmentos"
     },
@@ -115,14 +115,20 @@
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
     },
+    "whitelistChannel": {
+        "message": "Permitir Canal"
+    },
+    "removeFromWhitelist": {
+        "message": "Quitar canal de la lista blanca"
+    },
     "voteOnTime": {
         "message": "Vote En Un Segmento"
     },
     "Submissions": {
-        "message": "Solicitudes"
+        "message": "Envíos"
     },
     "savedPeopleFrom": {
-        "message": "Tú salvado personas de "
+        "message": "Has salvado a personas de "
     },
     "viewLeaderboard": {
         "message": "Tablas de clasificación"
@@ -195,7 +201,7 @@
         "message": "Esta función rastrea los segmentos que se han saltado para que los usuarios sepan en qué medida sus aportes ayudaron a los demás y se utilizan como una métrica junto con los votos favorables para garantizar que no aparezca spam en la base de datos. La extensión envía un mensaje al servidor cada vez que se salta un segmento. Esperemos que la mayoría de la gente no cambie esta configuración para que los números de vista sean exactos. :)"
     },
     "enableQueryByHashPrefix": {
-        "message": "Consulta por prefijo Hash"
+        "message": "Consulta Por Prefijo Hash"
     },
     "whatQueryByHashPrefix": {
         "message": "En el lugar de solicitar segmentos del servidor usando el videoID, se envían los primeros 4 caracteres del hash del videoID. Este servidor devolverá los datos de todos los vídeos con hashes similares."
@@ -228,6 +234,9 @@
     "noticeUpdate2": {
         "message": "Si aún no te gusta, pulsa el botón de nunca mostrar.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Establecer tecla para omitir un segmento"
     },
     "setStartSponsorShortcut": {
         "message": "Establecer tecla para iniciar segmento"
@@ -288,7 +297,7 @@
         "message": "Esta duración aparece entre paréntesis junto al tiempo actual del video, debajo de la barra de navegación. Esta muestra la duración total del vídeo menos cualquier segmento eliminado. Esto incluye los segmentos marcados como solo \"Mostrar en la barra de navegación\"."
     },
     "youHaveSkipped": {
-        "message": "Los has saltado "
+        "message": "Has saltado "
     },
     "youHaveSaved": {
         "message": "Te has ahorrado "
@@ -401,15 +410,6 @@
     "areYouSureReset": {
         "message": "¿Estás seguro de que te gustaría reiniciar esto?"
     },
-    "confirmPrivacy": {
-        "message": "El vídeo ha sido detectado como no listado. Haz clic en cancelar si no quieres comprobar si hay segmentos salteados."
-    },
-    "unlistedCheck": {
-        "message": "Ignorar los vídeos no listados/privados"
-    },
-    "whatUnlistedCheck": {
-        "message": "Esta configuración ralentizará ligeramente a SponsorBlock. Las búsquedas de segmentos de salto requieren el envío de la identificación del vídeo al servidor. Si le preocupa que se envíen por Internet identificadores de vídeo no listados, habilite esta opción."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com ahora es compatible"
     },
@@ -511,7 +511,7 @@
         "message": "Música: Sección sin musica"
     },
     "category_music_offtopic_description": {
-        "message": "Sólo para su uso en vídeos musicales. Esto incluye las introducciones o las salidas en los vídeos musicales."
+        "message": "Sólo para el uso en vídeos musicales. Esto sólo debe utilizarse para secciones de vídeos musicales que no están ya cubiertos por otra categoría."
     },
     "category_music_offtopic_short": {
         "message": "No musical"
@@ -566,6 +566,10 @@
     "chooseACategory": {
         "message": "Elija una categoría"
     },
+    "enableThisCategoryFirst": {
+        "message": "Para enviar segmentos con la categoría de \"{0}\", debes activarlo en las opciones. Serás redirigido a las opciones ahora.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "¡Debes seleccionar una categoría para todos los segmentos que estés presentando!"
     },
@@ -581,8 +585,23 @@
     "channelDataNotFound": {
         "message": "ID de canal no cargado todavía."
     },
-    "adblockerIssue": {
-        "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de vídeo. Este es probablemente su bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de video, Por favor, vea https://github.com/ajayyy/SponsorBlock/issues/741 para más información."
+    },
+    "youtubePermissionRequest": {
+        "message": "Parece que SponsorBlock no puede acceder a la API de YouTube. Para solucionarlo, acepte el aviso de permiso que aparecerá a continuación, espera unos segundos y vuelve a cargar la página."
+    },
+    "acceptPermission": {
+        "message": "Aceptar permiso"
+    },
+    "permissionRequestSuccess": {
+        "message": "¡Petición de permiso realizada con éxito!"
+    },
+    "permissionRequestFailed": {
+        "message": "La petición de permiso ha fallado, ¿ha hecho clic en denegar?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Si no puede resolverlo, desactive la opción \"Forzar Comprobación de Canal antes de Saltar\", ya que SponsorBlock no puede recuperar la información del canal de este video"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Si esto sigue ocurriendo, podría ser causado por tu bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Solicitudes"
@@ -620,12 +639,6 @@
     },
     "categoryUpdate2": {
         "message": "Abre las opciones de saltarse intros, otros, mercantil, etc."
-    },
-    "unsubmittedWarning": {
-        "message": "Notificación de segmentos no enviados"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Envía una notificación cuando dejas un vídeo con segmentos que no se suben"
     },
     "help": {
         "message": "Ayuda"

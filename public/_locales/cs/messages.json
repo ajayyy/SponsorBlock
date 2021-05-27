@@ -79,8 +79,11 @@
     "sponsorEnd": {
         "message": "Segment nyní končí"
     },
+    "sponsorCancel": {
+        "message": "Zrušit vytváření segmentu"
+    },
     "noVideoID": {
-        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to nesprávně, obnovte záložku."
+        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte záložku."
     },
     "success": {
         "message": "Úspěch!"
@@ -96,9 +99,6 @@
     },
     "wantToSubmit": {
         "message": "Chcete odeslat segmenty pro video s id"
-    },
-    "leftTimes": {
-        "message": "Zdá se, že některé segmenty jste nechali neodeslané. Vraťte se na danou stránku a odešlete je (nebyly vymazány)."
     },
     "clearTimes": {
         "message": "Vymazat segmenty"
@@ -234,6 +234,9 @@
     "noticeUpdate2": {
         "message": "Pokud se vám to stále nelíbí, klikněte na tlačítko Nikdy nezobrazovat.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Nastavit klíč pro přeskočení segmentu"
     },
     "setStartSponsorShortcut": {
         "message": "Nastavte klávesu pro spuštění segmentu"
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Jste si jisti, že toto chcete obnovit?"
     },
-    "confirmPrivacy": {
-        "message": "Toto video bylo zjištěno jako neuvedené. Klikněte na Zrušit, pokud nechcete kontrolovat pro přeskočitelné segmenty."
-    },
-    "unlistedCheck": {
-        "message": "Ignorovat neuvedená / soukromá videa"
-    },
-    "whatUnlistedCheck": {
-        "message": "Toto nastavení mírně zpomalí SponsorBlock. Přeskakování vyhledávání segmentů vyžaduje posílání ID videa serveru. Pokud vám vadí odesílání neuvedených videí přes internet, povolte tuto možnost."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com je nyní podporováno"
     },
@@ -517,7 +511,7 @@
         "message": "Hudba: nehudební sekce"
     },
     "category_music_offtopic_description": {
-        "message": "Pouze pro použití v hudebních videích. Zahrnuje intro nebo outro v hudebních videích."
+        "message": "Použijte pouze u hudebních videí. Mělo by to být použito pouze pro části hudebních videí, které nepokrývá jiná kategorie."
     },
     "category_music_offtopic_short": {
         "message": "Jiné než hudba"
@@ -591,8 +585,23 @@
     "channelDataNotFound": {
         "message": "ID kanálu ještě nebylo načteno."
     },
-    "adblockerIssue": {
-        "message": "Zdá se, že něco blokuje schopnost rozšíření SponsorBlock získat data o videu. Bude to nejspíš váš adblocker. Podívejte se prosím na https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Vypadá to, že něco blokuje schopnost SponsorBlocku získat údaje o videu. Pro více informací prosím navštivte https://github.com/ajayyy/SponsorBlock/issues/741."
+    },
+    "youtubePermissionRequest": {
+        "message": "Vypadá to, že se SponsorBlock nemůže připojit k YouTube API. Pro opravení tohoto problému přijměte žádost o oprávnění, která se dále objeví, a poté znovu načtěte stránku."
+    },
+    "acceptPermission": {
+        "message": "Přijmout oprávnění"
+    },
+    "permissionRequestSuccess": {
+        "message": "Žádost o oprávnění byla úspěšná!"
+    },
+    "permissionRequestFailed": {
+        "message": "Žádost o oprávnění se nezdařila, neklikli jste na Odmítnout?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Pokud vám tento problém nepůjde vyřešit, vypněte nastavení 'Vynutit kontrolu kanálu před přeskočením', protože SponsorBlock nemůže zjistit informace o kanálu"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Pokud k tomu stále dochází, může to být způsobeno vaším adblockerem. Podívejte se prosím https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
@@ -630,12 +639,6 @@
     },
     "categoryUpdate2": {
         "message": "Otevřít možnosti pro přeskočení intra, outra, merche apod."
-    },
-    "unsubmittedWarning": {
-        "message": "Neodeslané oznámení o segmentech"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Odeslat upozornění, když opustíte video s nenahranými segmenty"
     },
     "help": {
         "message": "Nápověda"

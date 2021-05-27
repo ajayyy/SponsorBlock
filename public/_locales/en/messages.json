@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segment Ends Now"
     },
+    "sponsorCancel": {
+        "message": "Cancel Creating Segment"
+    },
     "noVideoID": {
         "message": "No YouTube video found.\nIf this is incorrect, refresh the tab."
     },
@@ -96,9 +99,6 @@
     },
     "wantToSubmit": {
         "message": "Do you want to submit for video id"
-    },
-    "leftTimes": {
-        "message": "You seem to have left some segments unsubmitted. Go back to that page to submit them (they are not deleted)."
     },
     "clearTimes": {
         "message": "Clear Segments"
@@ -235,8 +235,11 @@
         "message": "If you still don't like it, hit the never show button.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Set key for skipping a segment"
+    },
     "setStartSponsorShortcut": {
-        "message": "Set key for start segment keybind"
+        "message": "Set key for start/stop segment keybind"
     },
     "setSubmitKeybind": {
         "message": "Set key for submission keybind"
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Are you sure you would like to reset this?"
     },
-    "confirmPrivacy": {
-        "message": "The video has been detected as unlisted. Click cancel if you do not want to check for skip segments."
-    },
-    "unlistedCheck": {
-        "message": "Ignore Unlisted/Private Videos"
-    },
-    "whatUnlistedCheck": {
-        "message": "This setting will slightly slow down SponsorBlock. Skip segment lookups require sending the video ID to the server. If you are concerned about unlisted video IDs being sent over the internet, enable this option."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com is now supported"
     },
@@ -517,7 +511,7 @@
         "message": "Music: Non-Music Section"
     },
     "category_music_offtopic_description": {
-        "message": "Only for use in music videos. This includes introductions or outros in music videos."
+        "message": "Only for use in music videos. This only should be used for sections of music videos that aren't already covered by another category."
     },
     "category_music_offtopic_short": {
         "message": "Non-Music"
@@ -589,13 +583,26 @@
         "message": "hidden: too short"
     },
     "channelDataNotFound": {
-        "message": "Channel ID not loaded yet."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Channel ID is not loaded yet. If you are using an embedded video, try using the YouTube homepage instead. This could also be caused by changes in the YouTube layout, if you think so, make a comment here:"
     },
-    "adblockerIssue": {
-        "message": "It seems that something is blocking SponsorBlock's ability to get video data. This is probably your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "It seems that something is blocking SponsorBlock's ability to get video data. Please see https://github.com/ajayyy/SponsorBlock/issues/741 for more info."
     },
-    "itCouldBeAdblockerIssue": {
-        "message": "If this keeps occuring, it could be caused by your ad blocker. Please check https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "youtubePermissionRequest": {
+        "message": "It seems that SponsorBlock is unable to reach the YouTube API. To fix this, accept the permission prompt that will appear next, wait a few seconds, and then reload the page."
+    },
+    "acceptPermission": {
+        "message": "Accept permission"
+    },
+    "permissionRequestSuccess": {
+        "message": "Permission request succeeded!"
+    },
+    "permissionRequestFailed": {
+        "message": "Permission request failed, did you click deny?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "If you are unable to resolve this, then disable the setting 'Force Channel Check Before Skipping', as SponsorBlock is unable to retrieve the channel information for this video"
     },
     "forceChannelCheck": {
         "message": "Force Channel Check Before Skipping"
@@ -630,12 +637,6 @@
     },
     "categoryUpdate2": {
         "message": "Open the options to skip intros, outros, merch, etc."
-    },
-    "unsubmittedWarning": {
-        "message": "Unsubmitted Segments Notification"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Send a notification when you leave a video with segments that are not uploaded"
     },
     "help": {
         "message": "Help"

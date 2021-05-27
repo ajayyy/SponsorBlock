@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Пропускайте спонсорские вставки, просьбы подписаться и другое в видео на YouTube. Отправляйте информацию о спонсорах в видео, чтобы сохранять другим время.",
+        "message": "Пропускайте спонсорские вставки, просьбы подписаться и другое в видео на YouTube. Отправляйте информацию о спонсорах в видео, чтобы экономить другим время.",
         "description": "Description of the extension."
     },
     "400": {
@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Сегмент заканчивается здесь"
     },
+    "sponsorCancel": {
+        "message": "Отменить создание сегмента"
+    },
     "noVideoID": {
         "message": "Видео YouTube не найдено.\nЕсли это не так, обновите вкладку."
     },
@@ -96,9 +99,6 @@
     },
     "wantToSubmit": {
         "message": "Вы хотите отправить сегменты для видео с id"
-    },
-    "leftTimes": {
-        "message": "Вы ещё не отправили информацию о некоторых сегментах. Вернитесь на эту страницу, чтобы отправить их (они не удалены)."
     },
     "clearTimes": {
         "message": "Очистить сегменты"
@@ -234,6 +234,9 @@
     "noticeUpdate2": {
         "message": "Если оно Вам всё равно не нравится, нажмите \"не показывать\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Назначить горячую клавишу для пропуска сегмента"
     },
     "setStartSponsorShortcut": {
         "message": "Назначить горячую клавишу для начала сегмента"
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "Вы действительно хотите это сбросить?"
     },
-    "confirmPrivacy": {
-        "message": "Было обнаружено, что это видео - с доступом по ссылке. Нажмите \"отмена\", если не хотите проверять для него сегменты."
-    },
-    "unlistedCheck": {
-        "message": "Игнорировать непубличные видео"
-    },
-    "whatUnlistedCheck": {
-        "message": "Эта настройка незначительно замедлит SponsorBlock. Поиск сегментов требует отправки идентификатора видео на сервер. Если Вас беспокоит отправка идентификаторов скрытых видео по интернету, включите эту настройку."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com теперь поддерживается"
     },
@@ -517,7 +511,7 @@
         "message": "Музыка: Сегмент без музыки"
     },
     "category_music_offtopic_description": {
-        "message": "Только для использования в музыкальных клипах. Включает в себя начальные и конечные заставки клипов."
+        "message": "Только для использования в музыкальных клипах. Используется для сегментов музыкальных клипов, которые не относятся к другой категории."
     },
     "category_music_offtopic_short": {
         "message": "Без музыки"
@@ -591,8 +585,23 @@
     "channelDataNotFound": {
         "message": "ID канала еще не загружен."
     },
-    "adblockerIssue": {
-        "message": "Кажется, что-то блокирует возможность SponsorBlock'а получать данные о видео. Возможно, это ваш блокировщик рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Похоже, что-то блокирует возможность SponsorBlock'а получать данные о видео. Подробнее: https://github.com/ajayyy/SponsorBlock/issues/741."
+    },
+    "youtubePermissionRequest": {
+        "message": "Кажется, SponsorBlock не может получить доступ к API YouTube. Чтобы исправить эту ошибку, дайте разрешение в окне, которое сейчас появится, подождите несколько секунд и затем перезагрузите страницу."
+    },
+    "acceptPermission": {
+        "message": "Дать разрешение"
+    },
+    "permissionRequestSuccess": {
+        "message": "Разрешение получено!"
+    },
+    "permissionRequestFailed": {
+        "message": "Не удалось получить разрешение, вы нажали на \"Блокировать\"?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Если вы не можете решить эту проблему, попробуйте отключить \"Принудительная проверка каналов перед пропуском\" в настройках, т. к. SponsorBlock не может определить название канала для этого видео"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Если это сообщения появляется слишком часто, это может быть вызвано вашим блокировщиком рекламы. Пожалуйста, перейдите на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
@@ -630,12 +639,6 @@
     },
     "categoryUpdate2": {
         "message": "Откройте настройки, чтобы пропускать начальные и конечные заставки, саморекламу и другое."
-    },
-    "unsubmittedWarning": {
-        "message": "Уведомления о неотправленных сегментах"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Отправлять уведомление, когда вы уходите со страницы видео, сегменты к которому Вы не отправили"
     },
     "help": {
         "message": "Помощь"

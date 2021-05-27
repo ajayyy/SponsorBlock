@@ -79,8 +79,11 @@
     "sponsorEnd": {
         "message": "Il Segmento Termina Ora"
     },
+    "sponsorCancel": {
+        "message": "Annulla Creazione del Segmento"
+    },
     "noVideoID": {
-        "message": "Nessun video YouTube trovato.\nSe questo non è corretto, ricarica la scheda."
+        "message": "Nessun video YouTube trovato.\nSe è un errore, ricarica la scheda."
     },
     "success": {
         "message": "Successo!"
@@ -97,9 +100,6 @@
     "wantToSubmit": {
         "message": "Desideri inviare per l'id video"
     },
-    "leftTimes": {
-        "message": "Sembra che tu abbia non abbia inviato alcuni segmenti. Torna a quella pagina per inviarli (non sono stati eliminati)."
-    },
     "clearTimes": {
         "message": "Pulisci Segmenti"
     },
@@ -115,14 +115,20 @@
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
     },
+    "whitelistChannel": {
+        "message": "Aggiungi il canale alle eccezioni"
+    },
+    "removeFromWhitelist": {
+        "message": "Rimuovi il canale dalle eccezioni"
+    },
     "voteOnTime": {
         "message": "Vota un Segmento"
     },
     "Submissions": {
-        "message": "Iscrizioni"
+        "message": "Contributi"
     },
     "savedPeopleFrom": {
-        "message": "Hai salvato le persone da "
+        "message": "Hai fatto risparmiare in totale "
     },
     "viewLeaderboard": {
         "message": "Classifica"
@@ -131,11 +137,11 @@
         "message": "Invia"
     },
     "submissionEditHint": {
-        "message": "La modifica della sezione comparirà dopo aver cliccato Iscriviti",
+        "message": "La modifica della sezione comparirà dopo che hai cliccato su Inviare",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Suggerimento: Puoi configurare combinazioni di tasti per l'inserimento nelle opzioni"
+        "message": "Suggerimento: Puoi configurare dei comandi rapidi per l'inserimento nelle opzioni"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -147,7 +153,7 @@
         "message": "Viene utilizzato nelle pagine delle statistiche pubbliche che mostrano quanto hai contribuito. Vedi"
     },
     "Username": {
-        "message": "Nome Utente"
+        "message": "Nome utente"
     },
     "setUsername": {
         "message": "Imposta Username"
@@ -229,6 +235,9 @@
         "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Imposta un tasto per saltare un segmento"
+    },
     "setStartSponsorShortcut": {
         "message": "Imposta chiave di associazione per l'inizio del segmento"
     },
@@ -245,10 +254,10 @@
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
     },
     "disableSkipping": {
-        "message": "Salta abilitato"
+        "message": "Saltare è abilitato"
     },
     "enableSkipping": {
-        "message": "Salta disabilitato"
+        "message": "Saltare è disabilitato"
     },
     "yourWork": {
         "message": "Il Tuo Lavoro",
@@ -306,7 +315,7 @@
         "message": "ore"
     },
     "youHaveSavedTime": {
-        "message": "Hai salvato le persone"
+        "message": "Hai salvato alle persone"
     },
     "youHaveSavedTimeEnd": {
         "message": " delle loro vite"
@@ -400,15 +409,6 @@
     },
     "areYouSureReset": {
         "message": "Sei sicuro di voler eseguire il reset?"
-    },
-    "confirmPrivacy": {
-        "message": "Il video è stato rilevato come non in elenco. Clicca su Annulla se non desideri verificare la presenza di segmenti da saltare."
-    },
-    "unlistedCheck": {
-        "message": "Ignora Video Non Pubblicati/Privati"
-    },
-    "whatUnlistedCheck": {
-        "message": "Questa impostazione rallenterà leggermente SponsorBlock. Le ricerche di segmenti da saltare richiedono l'invio dell'ID video al server. Se sei preoccupato per gli ID video non in elenco inviati su Internet, attiva questa opzione."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com è ora supportato"
@@ -511,7 +511,7 @@
         "message": "Musica: Sezione Non-Musicale"
     },
     "category_music_offtopic_description": {
-        "message": "Solo per utilizzo su video musicali. Ciò include introduzioni o conclusioni in video musicali."
+        "message": "Solo per video musicali. Dovrebbe essere usata solo per sezioni di video musicali non già comprese in un'altra categoria."
     },
     "category_music_offtopic_short": {
         "message": "Non-Musicale"
@@ -566,6 +566,10 @@
     "chooseACategory": {
         "message": "Scegli una Categoria"
     },
+    "enableThisCategoryFirst": {
+        "message": "Per inviare segmenti della categoria \"{0}\", è necessario abilitarlo nelle opzioni. Sarai reindirizzato alle opzioni.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Devi selezionare una categoria per tutti i segmenti che stai inviando!"
     },
@@ -581,8 +585,23 @@
     "channelDataNotFound": {
         "message": "ID canale non ancora caricato."
     },
-    "adblockerIssue": {
-        "message": "Sembra che qualcosa stia bloccando la capacità di SponsorBlock di ottenere dati video. Questo probabilmente è il tuo ad blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Sembra che qualcosa stia bloccando l'abilità di SponsorBlock di ottenere i dati del video. Sei pregato di vedere https://github.com/ajayyy/SponsorBlock/issues/741 per ulteriori informazioni."
+    },
+    "youtubePermissionRequest": {
+        "message": "Sembra che SponsorBlock non sia in grado di raggiungere l'API di YouTube. Per risolverlo, accetta la richiesta di autorizzazione che comparirà in seguito, attendi qualche secondo, quindi ricarica la pagina."
+    },
+    "acceptPermission": {
+        "message": "Accetta autorizzazione"
+    },
+    "permissionRequestSuccess": {
+        "message": "Richiesta di autorizzazione riuscita!"
+    },
+    "permissionRequestFailed": {
+        "message": "Richiesta di assicurazione fallita, hai cliccato nega?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Se non riesci a risolverlo, disabilita allora l'impostazione 'Forza Controllo Canale Prima di Saltare', poiché SponsorBlock non è in grado di recuperare le informazioni del canale per questo video"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Se questo continua a verificarsi, potrebbe essere causato dal tuo ad-blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
@@ -620,12 +639,6 @@
     },
     "categoryUpdate2": {
         "message": "Apri queste opzioni per saltare le introduzioni, conclusioni, vendita di prodotti ecc."
-    },
-    "unsubmittedWarning": {
-        "message": "Notifica Segmenti Non Inviati"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Invia una notifica quando lasci un video con segmenti non caricati"
     },
     "help": {
         "message": "Aiuto"

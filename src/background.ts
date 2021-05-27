@@ -37,6 +37,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "openHelp":
             chrome.tabs.create({url: chrome.runtime.getURL('help/index_en.html')});
             return;
+        case "openPage":
+            chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
+            return;
         case "sendRequest":
             sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
                 callback({
@@ -52,16 +55,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         
             //this allows the callback to be called later
             return true;
-        case "alertPrevious":
-            if (Config.config.unsubmittedWarning) {
-                chrome.notifications.create("stillThere" + Math.random(), {
-                    type: "basic",
-                    title: chrome.i18n.getMessage("wantToSubmit") + " " + request.previousVideoID + "?",
-                    message: chrome.i18n.getMessage("leftTimes"),
-                    iconUrl: "./icons/LogoSponsorBlocker256px.png"
-                });
-            }
-            break;
         case "registerContentScript": 
             registerFirefoxContentScript(request);
             return false;
@@ -135,19 +128,22 @@ async function submitVote(type: number, UUID: string, category: string) {
 
     if (response.ok) {
         return {
-            successType: 1
+            successType: 1,
+            responseText: await response.text()
         };
     } else if (response.status == 405) {
         //duplicate vote
         return {
             successType: 0,
-            statusCode: response.status
+            statusCode: response.status,
+            responseText: await response.text()
         };
     } else {
         //error while connect
         return {
             successType: -1,
-            statusCode: response.status
+            statusCode: response.status,
+            responseText: await response.text()
         };
     }
 }

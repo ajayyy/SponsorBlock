@@ -80,7 +80,7 @@
         "message": "Fin du segment"
     },
     "noVideoID": {
-        "message": "Aucune vidéo Youtube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
+        "message": "Aucune vidéo YouTube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
     },
     "success": {
         "message": "Succès !"
@@ -96,9 +96,6 @@
     },
     "wantToSubmit": {
         "message": "Voulez-vous soumettre vos segments pour la vidéo"
-    },
-    "leftTimes": {
-        "message": "Vous semblez avoir laissé certains segments non soumis. Retournez à cette page pour les soumettre (ils ne sont pas supprimés)."
     },
     "clearTimes": {
         "message": "Effacer les segments"
@@ -116,7 +113,7 @@
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
     },
     "whitelistChannel": {
-        "message": "Whitelister la chaîne"
+        "message": "Ajouter la chaîne à la liste blanche"
     },
     "removeFromWhitelist": {
         "message": "Enlever la chaîne de la liste blanche"
@@ -137,11 +134,11 @@
         "message": "Envoyer"
     },
     "submissionEditHint": {
-        "message": "Le menu d'édition du segment apparaîtra après que vous ayez cliqué sur envoyer",
+        "message": "Le menu d'édition apparaîtra après que vous avez cliqué sur envoyer",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Astuce : Vous pouvez configurer des raccourcis clavier dans les options"
+        "message": "Astuce : vous pouvez configurer des raccourcis clavier dans les options"
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
@@ -153,7 +150,7 @@
         "message": "Votre pseudo est inscrit dans le classement public pour afficher vos contributions. Le consulter"
     },
     "Username": {
-        "message": "Pseudonyme"
+        "message": "Pseudo"
     },
     "setUsername": {
         "message": "Choisir un pseudonyme"
@@ -198,16 +195,16 @@
         "message": "Activer le suivi du nombre de sauts de segments"
     },
     "whatViewTracking": {
-        "message": "Cette fonctionnalité permet de suivre les segments que vous avez sautés pour faire savoir aux utilisateurs à quel point leur soumission a aidé les autres et est utilisée comme donnée avec les votes positifs pour s'assurer que des spams n'entre pas dans la base de données. L'extension envoie un message au serveur chaque fois que vous sautez un segment. Il est à espérer que la plupart des gens ne modifient pas ce paramètre pour que les données sur le nombre d'affichage soient exacts :)"
+        "message": "Cette fonctionnalité permet de suivre les segments que vous avez sautés pour faire savoir aux utilisateurs à quel point leur soumission a aidé les autres et est utilisée comme donnée avec les votes positifs pour s'assurer que des spams n'entrent pas dans la base de données. L'extension envoie un message au serveur chaque fois que vous sautez un segment. Il est à espérer que la plupart des gens ne modifient pas ce paramètre pour que les données sur le nombre d'affichages soient exactes. :)"
     },
     "enableQueryByHashPrefix": {
-        "message": "Requête par préfixe du hash"
+        "message": "Requête avec seulement le début du hash"
     },
     "whatQueryByHashPrefix": {
         "message": "Au lieu de demander des segments au serveur à l'aide de l'identifiant de la vidéo, les 4 premiers caractères du hash de l'identifiant de la vidéo sont envoyés. Ce serveur renverra les données pour toutes les vidéos ayant des hash similaires."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Récupérer les segments sur les nouvelles vidéos"
+        "message": "Re-récupérer les segments sur les nouvelles vidéos"
     },
     "whatRefetchWhenNotFound": {
         "message": "Si la vidéo est nouvelle et qu'aucun segment n'a été trouvé, ils seront réactualisés toutes les quelques minutes pendant le visionnage."
@@ -235,6 +232,9 @@
         "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Définir une touche pour passer un segment"
+    },
     "setStartSponsorShortcut": {
         "message": "Définir le raccourci pour commencer un segment"
     },
@@ -251,10 +251,10 @@
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
     },
     "disableSkipping": {
-        "message": "Le saut de segment est activé"
+        "message": "Saut automatique activé"
     },
     "enableSkipping": {
-        "message": "Le saut de segment est désactivé"
+        "message": "Saut automatique désactivé"
     },
     "yourWork": {
         "message": "Votre travail",
@@ -291,7 +291,7 @@
         "message": "Afficher le temps avec les passages supprimés"
     },
     "showTimeWithSkipsDescription": {
-        "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tout les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
+        "message": "Ce temps apparaît entre crochets à côté du temps actuel sous la barre de défilement. Cela indique la durée totale de la vidéo après déduction de tous les segments. Ceci comprend les segments marqués comme étant uniquement à \"Afficher dans la barre de recherche\"."
     },
     "youHaveSkipped": {
         "message": "Vous avez passé "
@@ -312,7 +312,10 @@
         "message": "heures"
     },
     "youHaveSavedTime": {
-        "message": "Les utilisateurs ont gagné"
+        "message": "Vous avez fait économiser les utilisateurs"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " de leurs vies"
     },
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
@@ -321,7 +324,7 @@
         "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
     "whatChangeUserID": {
-        "message": "Gardez ça privé. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtiens, il peut vous usurper."
+        "message": "Cette information doit rester confidentielle. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtient, il pourra se faire passer pour vous."
     },
     "setUserID": {
         "message": "Définir \"UserID\""
@@ -404,15 +407,6 @@
     "areYouSureReset": {
         "message": "Voulez-vous vraiment remettre à zéro ?"
     },
-    "confirmPrivacy": {
-        "message": "La vidéo a été détectée comme étant non répertoriée. Cliquez sur annuler si vous ne voulez pas vérifier les segments sautés."
-    },
-    "unlistedCheck": {
-        "message": "Ignorer les vidéos non listées"
-    },
-    "whatUnlistedCheck": {
-        "message": "Ce réglage ralentira légèrement SponsorBlock. Pour sauter des segments, il faut envoyer l'ID de la vidéo au serveur. Si vous craignez que des identifiants de vidéo non répertoriés soient envoyés sur Internet, activez cette option."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com est maintenant pris en charge"
     },
@@ -493,7 +487,7 @@
         "message": "Générique de fin"
     },
     "category_outro_description": {
-        "message": "Crédits ou quand les annotations Youtube de fin apparaissent. Pas pour les conclusions qui contiennent des informations."
+        "message": "Crédits ou écrans de fin YouTube. Pas pour les conclusions contenant des informations."
     },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
@@ -511,10 +505,10 @@
         "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
     },
     "category_music_offtopic": {
-        "message": "Musique : Segment non-musical"
+        "message": "Musique : Segment non musical"
     },
     "category_music_offtopic_description": {
-        "message": "A utiliser uniquement dans les vidéos musicales. Cela inclut les introductions ou les fins dans les vidéos."
+        "message": "A utiliser seulement pour les vidéos de musiques. Ceci ne devrait qu'être utilisé que pour des morceaux de vidéos de musiques qui ne sont pas couvert par d'autres catégories."
     },
     "category_music_offtopic_short": {
         "message": "Hors musique"
@@ -569,6 +563,10 @@
     "chooseACategory": {
         "message": "Choisissez une catégorie"
     },
+    "enableThisCategoryFirst": {
+        "message": "Pour envoyer des segments de la catégorie \"{0}\", vous devez l'activer dans les options. Vous allez être redirigé vers les options maintenant.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
     },
@@ -583,9 +581,6 @@
     },
     "channelDataNotFound": {
         "message": "L'ID de la chaîne n'a pas encore été chargé."
-    },
-    "adblockerIssue": {
-        "message": "Il semble que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. C'est probablement votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Si ça se reproduit, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
@@ -606,7 +601,7 @@
         "message": "Mauvaise catégorie"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Cette vidéo est catégorisée comme de la musique. Êtes-vous sûr qu'elle est sponsorisée ? S'il s'agit en fait d'un \"segment non-musical\", allez dans les options de l'extension et activez cette catégorie. Ensuite, vous pourrez soumettre ce segment en tant que \"segment non-musical\" au lieu de sponsor. Lisez les instructions en cas de confusion."
+        "message": "Cette vidéo est catégorisée comme de la musique. Êtes-vous sûr qu'elle est sponsorisée? S'il s'agit en fait d'un \"Segment non musical\", allez dans les options de l'extension et activez cette catégorie. Ensuite, vous pourrez soumettre ce segment en tant que \"Segment non musical\" au lieu de sponsor. Lisez les instructions en cas de confusion."
     },
     "multipleSegments": {
         "message": "Plusieurs segments"
@@ -624,10 +619,7 @@
     "categoryUpdate2": {
         "message": "Ouvrir les options pour sauter les intros, outros, marchandises, etc."
     },
-    "unsubmittedWarning": {
-        "message": "Notification de segments non soumis"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Envoyer une notification lorsque vous quittez une vidéo avec des segments qui ne sont pas téléversés"
+    "help": {
+        "message": "Aide"
     }
 }

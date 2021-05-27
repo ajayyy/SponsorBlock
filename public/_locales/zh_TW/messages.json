@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "片段現在結束"
     },
+    "sponsorCancel": {
+        "message": "取消創建片段"
+    },
     "noVideoID": {
         "message": "找不到 YouTube 影片。\n如果這是不正確的，重新整理此分頁"
     },
@@ -96,9 +99,6 @@
     },
     "wantToSubmit": {
         "message": "您想為這個影片ID提交嗎"
-    },
-    "leftTimes": {
-        "message": "您好像沒有提及一些片段。返回至該頁面來提交（它們尚未被刪除）"
     },
     "clearTimes": {
         "message": "清除片段"
@@ -141,7 +141,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "小提醒：你可以為提交在設定裡綁定一個按鍵"
+        "message": "小提醒：您可以為提交在設定裡綁定一個按鍵"
     },
     "clearTimesButton": {
         "message": "清除時間"
@@ -234,6 +234,9 @@
     "noticeUpdate2": {
         "message": "如果您還是不喜歡它，請按下永不顯示按鈕",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "設定跳過段落的快捷鍵"
     },
     "setStartSponsorShortcut": {
         "message": "設定開始片段快捷鍵"
@@ -407,15 +410,6 @@
     "areYouSureReset": {
         "message": "您確定要重製這個嗎？"
     },
-    "confirmPrivacy": {
-        "message": "此影片已被偵測為未列出。點擊取消以不檢查跳過片段"
-    },
-    "unlistedCheck": {
-        "message": "忽略私人/未列出的影片"
-    },
-    "whatUnlistedCheck": {
-        "message": "此設定會微微降低 SponsorBlock 的速度。跳過片段檢查會需要將影片 ID 送到伺服器。如果您對將未列出的影片被流出的話，啟用這個選項"
-    },
     "mobileUpdateInfo": {
         "message": "現已支援 m.youtube.com"
     },
@@ -516,9 +510,6 @@
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
     },
-    "category_music_offtopic_description": {
-        "message": "僅用於音樂影片。這包括音樂影片中的開頭或結尾"
-    },
     "category_music_offtopic_short": {
         "message": "非音樂"
     },
@@ -572,6 +563,10 @@
     "chooseACategory": {
         "message": "選擇一個類別"
     },
+    "enableThisCategoryFirst": {
+        "message": "若想要提交{0} 類的分段，您必須要在選項內將其啟用。您現在將被重新導向至選項頁面。",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "您必須為所有您要提交的片段選擇類別！"
     },
@@ -587,8 +582,20 @@
     "channelDataNotFound": {
         "message": "頻道 ID 尚未載入"
     },
-    "adblockerIssue": {
-        "message": "似乎某些東西正在阻止 SponsorBlock 獲取影片資料的功能。它很可能是您的廣告攔截器。請查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "似乎有東西在阻止 SponsorBlock 獲取影片資料。請查看 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"
+    },
+    "acceptPermission": {
+        "message": "允許權限"
+    },
+    "permissionRequestSuccess": {
+        "message": "成功允許權限！"
+    },
+    "permissionRequestFailed": {
+        "message": "允許權限失敗，您是不是按到拒絕了？"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "如果您沒辦法解決這個問題，請停用\"強制在跳過前檢查頻道\"，因為 SponsorBlock 無法獲取這部影片的頻道資料。"
     },
     "itCouldBeAdblockerIssue": {
         "message": "如果這種情況不斷發生，它可能是由您的廣告攔截器引起的。請查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
@@ -626,12 +633,6 @@
     },
     "categoryUpdate2": {
         "message": "開啟選項以跳過開場、結尾、工商等。"
-    },
-    "unsubmittedWarning": {
-        "message": "未提交的片段提醒"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "在您離開含有未提交的片段的影片時寄送通知"
     },
     "help": {
         "message": "幫助"

@@ -79,8 +79,11 @@
     "sponsorEnd": {
         "message": "광고 구간 끝"
     },
+    "sponsorCancel": {
+        "message": "구간 생성 취소"
+    },
     "noVideoID": {
-        "message": "찾은 유튜브 비디오가 없습니다.\n이 것이 틀리다면, 텝을 새로고침 하세요."
+        "message": "유튜브 동영상을 찾을 수 없습니다.\n오류라면, 탭을 새로고침해보세요."
     },
     "success": {
         "message": "성공!"
@@ -96,9 +99,6 @@
     },
     "wantToSubmit": {
         "message": "영상 id를 제출하시겠습니까"
-    },
-    "leftTimes": {
-        "message": "몇몇 구간을 제출하지 않은 채 있는 것 같습니다. 해당 페이지로 다시 돌아가 제출하세요 (삭제되지 않았습니다)"
     },
     "clearTimes": {
         "message": "구간 제거"
@@ -124,6 +124,25 @@
     "voteOnTime": {
         "message": "구간 투표"
     },
+    "Submissions": {
+        "message": "제출"
+    },
+    "savedPeopleFrom": {
+        "message": "사람들의 "
+    },
+    "viewLeaderboard": {
+        "message": "순위표"
+    },
+    "recordTimesDescription": {
+        "message": "제출"
+    },
+    "submissionEditHint": {
+        "message": "제출을 클릭하면 섹션 편집이 나타납니다",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "팁: 설정에서 제출 단축키를 설정할 수 있습니다"
+    },
     "clearTimesButton": {
         "message": "시간 초기화"
     },
@@ -132,6 +151,9 @@
     },
     "publicStats": {
         "message": "이것은 사용자가 구간 제출에 얼마나 기여했는지를 나타내기 위해 사용하는 정보로, 여기서 확인하실 수 있습니다:"
+    },
+    "Username": {
+        "message": "사용자명"
     },
     "setUsername": {
         "message": "사용자 이름 설정"
@@ -213,6 +235,9 @@
         "message": "계속 이것이 싫다면, 보지 않기 버튼을 누르세요.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "구간 건너뛰기 키 설정"
+    },
     "setStartSponsorShortcut": {
         "message": "시작 부분 키 할당 설정"
     },
@@ -227,6 +252,12 @@
     },
     "0": {
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
+    },
+    "disableSkipping": {
+        "message": "건너뛰기 켜짐"
+    },
+    "enableSkipping": {
+        "message": "건너뛰기 꺼짐"
     },
     "yourWork": {
         "message": "지금까지 한 일",
@@ -265,6 +296,9 @@
     "showTimeWithSkipsDescription": {
         "message": "이 시간은 탐색 막대 아래의 현재 시간 옆에 있는 괄호 안에 표시되며 부분을 제외한 총 동영상 길이를 보여줍니다. 여기에는 \"슬라이드바에 표시\"로만 표시된 부분도 포함됩니다."
     },
+    "youHaveSkipped": {
+        "message": "건너뛴 구간: "
+    },
     "youHaveSaved": {
         "message": "지금까지 절약한 시간: "
     },
@@ -279,6 +313,12 @@
     },
     "hoursLower": {
         "message": "시간"
+    },
+    "youHaveSavedTime": {
+        "message": "사람들의"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " 의 시간을 아꼈습니다."
     },
     "statusReminder": {
         "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
@@ -369,15 +409,6 @@
     },
     "areYouSureReset": {
         "message": "정말로 초기화하시겠습니까?"
-    },
-    "confirmPrivacy": {
-        "message": "이 영상은 일부 공개 영상으로 감지되었습니다. 구간 스킵을 확인하지 않으려면 취소를 누르세요."
-    },
-    "unlistedCheck": {
-        "message": "일부 공개/비공개 영상 무시"
-    },
-    "whatUnlistedCheck": {
-        "message": "이 설정은 SponsorBlock을 약간 느리게 만듭니다. 건너뛰기 부분 질의는 서버에 영상 ID를 전송해야 합니다. 목록에 없는 영상 ID가 인터넷으로 전송되는 것이 우려된다면 이 옵션을 활성화 해주세요."
     },
     "mobileUpdateInfo": {
         "message": "이제 m.youtube.com 링크를 지원합니다"
@@ -480,7 +511,7 @@
         "message": "음악이 아닌 구간"
     },
     "category_music_offtopic_description": {
-        "message": "뮤직 비디오에서만 해당됩니다. 여기에는 시작 부분 (인트로) 영상이나 끝 부분 (아웃트로) 영상이 포함됩니다."
+        "message": "뮤직 비디오에서만 해당됩니다. 다른 유형에 속하지 않는 뮤직 비디오에서만 이 항목을 사용하십시오."
     },
     "category_music_offtopic_short": {
         "message": "음악이 아닌 구간"
@@ -535,6 +566,10 @@
     "chooseACategory": {
         "message": "카테고리 선택"
     },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" 카테고리의 세그먼트를 제출하려면 설정에서 활성화 해주셔야 합니다. 지금 설정으로 이동합니다.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "제출 해야하는 모든 구간의 카테고리를 설정해야합니다!"
     },
@@ -550,8 +585,23 @@
     "channelDataNotFound": {
         "message": "채널 ID가 로드되지 않았습니다."
     },
-    "adblockerIssue": {
-        "message": "무언가가 SponsorBlock의 영상 데이터 수집을 막고 있는 것으로 보입니다. 이것은 광고 차단기로 인해 그럴 가능성이 있습니다. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests 사이트를 참조하세요"
+    "videoInfoFetchFailed": {
+        "message": "무언가가 SponsorBlock의 동영상 데이터 수집을 막고 있는 것 같습니다. https://github.com/ajayyy/SponsorBlock/issues/741 사이트를 참조하세요."
+    },
+    "youtubePermissionRequest": {
+        "message": "SponsorBlock이 YouTube API에 접근할 수 없는 것으로 보입니다. 이 문제를 해결하려면, 다음에 뜨는 권한 창에서 권한을 허용해주시고 잠시 기다린 뒤, 페이지를 새로고침하십시오."
+    },
+    "acceptPermission": {
+        "message": "권한 허용"
+    },
+    "permissionRequestSuccess": {
+        "message": "권한 요청에 성공했습니다!"
+    },
+    "permissionRequestFailed": {
+        "message": "권한 요청에 실패했습니다. 거부를 누르셨나요?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "이 문제를 해결할 수 없는 경우, SponsorBlock이 이 동영상에 대한 채널 정보를 찾을 수 없으므로 '건너뛰기 전 채널 강제 체크' 설정을 꺼주십시오."
     },
     "itCouldBeAdblockerIssue": {
         "message": "오류가 지속된다면, 광고 차단기로 인해 발생할 수 있습니다. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests 사이트를 참조하세요"
@@ -589,12 +639,6 @@
     },
     "categoryUpdate2": {
         "message": "인트로, 아웃트로, 기타 등을 스킵하는 설정을 여세요"
-    },
-    "unsubmittedWarning": {
-        "message": "제출되지 않은 구간 알림"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "업로드되지 않은 구간이 있는 영상이 있을 때 알림을 보냅니다"
     },
     "help": {
         "message": "도움"

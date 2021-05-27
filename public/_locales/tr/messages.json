@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Bu video kimliği için göndermek istiyor musun"
     },
-    "leftTimes": {
-        "message": "Bazı kısımları göndermediniz. Göndermek için sayfaya geri dönün (hala mevcutlar)."
-    },
     "clearTimes": {
         "message": "Kısımları temizle"
     },
@@ -116,10 +113,10 @@
         "message": "Bunu göndermek istediğinize emin misiniz?"
     },
     "whitelistChannel": {
-        "message": "Kanalı beyaz listeye ekle"
+        "message": "Kanala izin ver"
     },
     "removeFromWhitelist": {
-        "message": "Kanalı beyaz listeden çıkar"
+        "message": "Kanalı izin listesinden çıkar"
     },
     "voteOnTime": {
         "message": "Bir Kısmı Oyla"
@@ -128,7 +125,7 @@
         "message": "Gönderimleriniz"
     },
     "savedPeopleFrom": {
-        "message": "İnsanları şu kadar kısımdan kurtardınız "
+        "message": "İnsanları şu kadar kısımdan kurtardınız: "
     },
     "viewLeaderboard": {
         "message": "Lider Tablosu"
@@ -235,6 +232,9 @@
         "message": "Eğer hala beğenmediyseniz, asla gösterme butonuna basın.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Kısım atlamak için bir tuş ata"
+    },
     "setStartSponsorShortcut": {
         "message": "Kısım kaydına başlamak için bir tuş belirleyin"
     },
@@ -294,7 +294,7 @@
         "message": "Bu süre, video ilerleme çubuğunun altındaki geçerli zamanın yanında parantez içinde görüntülenir. Bu, videodaki kısımların silinmiş toplam video süresini gösterir. Bu, yalnızca \"Video İlerleme Çubuğunda Göster\" olarak işaretlenen kısımları içerir."
     },
     "youHaveSkipped": {
-        "message": "Şu kadar kısım atladınız "
+        "message": "Şu kadar kısım atladınız: "
     },
     "youHaveSaved": {
         "message": "Şu kadar süre kazandınız "
@@ -315,7 +315,7 @@
         "message": "İnsanların şu kadar vaktini kurtardınız:"
     },
     "youHaveSavedTimeEnd": {
-        "message": " ömürden"
+        "message": " yaşam süresi"
     },
     "statusReminder": {
         "message": "Sunucu durumu için status.sponsor.ajay.app kontrol edin."
@@ -406,15 +406,6 @@
     },
     "areYouSureReset": {
         "message": "Bunu sıfırlamak istediğinize emin misiniz?"
-    },
-    "confirmPrivacy": {
-        "message": "Videonun liste dışı olduğu tespit edildi. Atlanan kısımları kontrol etmek istemiyorsanız iptal'i tıklayın."
-    },
-    "unlistedCheck": {
-        "message": "Listedışı/Özel Videoları Görmezden Gel"
-    },
-    "whatUnlistedCheck": {
-        "message": "Bu ayar, SponsorBlock'u biraz yavaşlatacaktır. atlama kısımlarının bulunması için, video kimliğinin sunucuya gönderilmesini gerektirir. Listelenmemiş video kimliklerinin İnternet üzerinden gönderilmesi konusunda endişeleriniz varsa, bu seçeneği etkinleştirin."
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com şu an desteklenmektedir"
@@ -517,7 +508,7 @@
         "message": "Müzik: Müzik Olmayan Bölüm"
     },
     "category_music_offtopic_description": {
-        "message": "Sadece müzik klipleri içindir. Buna kliplerin başlarında ve sonlarında şarkı bulunmayan kısımlar dahildir."
+        "message": "Yalnızca müzik videolarında kullanım içindir. Bu yalnızca başka bir kategoriye katılmamış müzik videolarının parçaları için kullanılmalıdır."
     },
     "category_music_offtopic_short": {
         "message": "Müzik Olmayan Bölüm"
@@ -591,9 +582,6 @@
     "channelDataNotFound": {
         "message": "Kanal kimliği henüz yüklenmedi."
     },
-    "adblockerIssue": {
-        "message": "Bir şeyin SponsorBlock'un video bilgisi almasını engelliyor gibi görünüyor. Bu reklam engelleyiciniz olabilir. Lütfen şu adresi kontrol edin https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Bunu sürekli yaşıyorsanız, reklam engelleyiciniz tarafından gerçekleşiyor olabilir. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests adresini kontrol edin."
     },
@@ -630,12 +618,6 @@
     },
     "categoryUpdate2": {
         "message": "Girişleri, bitişleri, ürünleri ve benzeri şeyleri atlamak için ayarları açın."
-    },
-    "unsubmittedWarning": {
-        "message": "Gönderilmemiş Kısımlar Uyarısı"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Bir videodan kısımları göndermeden ayrılırsan bir bildirim gönderir"
     },
     "help": {
         "message": "Yardım"

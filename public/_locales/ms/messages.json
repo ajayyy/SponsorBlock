@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Adakah anda ingin menghantar untuk id video"
     },
-    "leftTimes": {
-        "message": "Nampaknya anda telah meninggalkan beberapa segmen. Kembali ke halaman itu untuk menyerahkannya (mereka tidak dihapuskan)."
-    },
     "clearTimes": {
         "message": "Kosongkan Segmen"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Sekiranya anda masih tidak menyukainya, tekan butang jangan tunjukkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Tetapkan kunci untuk melangkau segmen"
     },
     "setStartSponsorShortcut": {
         "message": "Tetapkan kunci untuk keybind segmen permulaan"
@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Adakah anda pasti mahu menetapkan semula ini?"
     },
-    "confirmPrivacy": {
-        "message": "Video tersebut dikesan sebagai tidak tersenarai. Klik batal jika anda tidak mahu memeriksa segmen langkau."
-    },
-    "unlistedCheck": {
-        "message": "Abaikan Video Tidak Tersenarai / Peribadi"
-    },
-    "whatUnlistedCheck": {
-        "message": "Tetapan ini sedikit melambatkan SponsorBlock. Skip segmen carian memerlukan penghantaran ID video ke pelayan. Sekiranya anda bimbang tentang ID video yang tidak tersenarai dihantar melalui internet, aktifkan pilihan ini."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com kini disokong"
     },
@@ -517,7 +508,7 @@
         "message": "Muzik: Bahagian Bukan Muzik"
     },
     "category_music_offtopic_description": {
-        "message": "Hanya untuk digunakan dalam video muzik. Ini termasuk perkenalan atau outro dalam video muzik."
+        "message": "Hanya untuk digunakan dalam video muzik. Ini hanya harus digunakan untuk bahagian video muzik yang belum dilindungi oleh kategori lain."
     },
     "category_music_offtopic_short": {
         "message": "Bukan Muzik"
@@ -591,9 +582,6 @@
     "channelDataNotFound": {
         "message": "ID Saluran belum dimuat."
     },
-    "adblockerIssue": {
-        "message": "Nampaknya ada sesuatu yang menyekat kemampuan SponsorBlock untuk mendapatkan data video. Ini mungkin penyekat iklan anda. Sila periksa https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Sekiranya ini terus berlaku, ini mungkin disebabkan oleh penyekat iklan anda. Sila periksa https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
@@ -630,12 +618,6 @@
     },
     "categoryUpdate2": {
         "message": "Buka pilihan untuk melangkau perkenalan, pengeluaran luar, barang dagangan, dll."
-    },
-    "unsubmittedWarning": {
-        "message": "Pemberitahuan Segmen yang Tidak Dihantar"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Kirim pemberitahuan ketika anda meninggalkan video dengan segmen yang tidak diunggah"
     },
     "help": {
         "message": "Bantuan"

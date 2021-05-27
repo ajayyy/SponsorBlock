@@ -1,7 +1,7 @@
 {
     "name": "__MSG_fullName__",
     "short_name": "SponsorBlock",
-    "version": "2.0.11",
+    "version": "2.0.16.2",
     "default_locale": "en",
     "description": "__MSG_Description__",
     "content_scripts": [{
@@ -24,10 +24,11 @@
     "web_accessible_resources": [
         "icons/LogoSponsorBlocker256px.png",
         "icons/IconSponsorBlocker256px.png",
-        "icons/PlayerStartIconSponsorBlocker256px.png",
-        "icons/PlayerStopIconSponsorBlocker256px.png",
-        "icons/PlayerUploadIconSponsorBlocker256px.png",
-        "icons/PlayerUploadFailedIconSponsorBlocker256px.png",
+        "icons/PlayerStartIconSponsorBlocker.svg",
+        "icons/PlayerStopIconSponsorBlocker.svg",
+        "icons/PlayerUploadIconSponsorBlocker.svg",
+        "icons/PlayerUploadFailedIconSponsorBlocker.svg",
+        "icons/PlayerCancelSegmentIconSponsorBlocker.svg",
         "icons/settings.svg",
         "icons/pencil.svg",
         "icons/check.svg",
@@ -39,14 +40,13 @@
         "icons/report.png",
         "icons/close.png",
         "icons/beep.ogg",
-        "icons/PlayerInfoIconSponsorBlocker256px.png",
-        "icons/PlayerDeleteIconSponsorBlocker256px.png",
+        "icons/PlayerInfoIconSponsorBlocker.svg",
+        "icons/PlayerDeleteIconSponsorBlocker.svg",
         "popup.html",
         "content.css"
     ],
     "permissions": [
         "storage",
-        "notifications",
         "https://sponsor.ajay.app/*"
     ],
     "optional_permissions": [

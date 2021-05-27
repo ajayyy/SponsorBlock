@@ -12,7 +12,6 @@ interface DefaultMessage {
     message: 
         "update"
         | "sponsorStart"
-        | "sponsorDataChanged"
         | "isInfoFound"
         | "getVideoID"
         | "getChannelID"
@@ -25,13 +24,7 @@ interface BoolValueMessage {
     value: boolean;
 }
 
-interface ChangeStartSponsorButtonMessage {
-    message: "changeStartSponsorButton";
-    showStartSponsor: boolean;
-    uploadButtonVisible: boolean;
-}
-
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | ChangeStartSponsorButtonMessage);
+export type Message = BaseMessage & (DefaultMessage | BoolValueMessage);
 
 interface IsInfoFoundMessageResponse {
     found: boolean;
@@ -47,7 +40,7 @@ interface GetChannelIDResponse {
 }
 
 interface SponsorStartResponse {
-    time: number;
+    creatingSegment: boolean;
 }
 
 interface IsChannelWhitelistedResponse {

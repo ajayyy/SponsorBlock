@@ -1,1 +1,61 @@
-{}
+{
+    "fullName": {
+        "message": "سبونسر بلوك لليوتيوب - تخطي الرعاية الاعلانية",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "تخطي الرعاية الاعلانية ، التسول في الاشتراك والمزيد على مقاطع الفيديو على اليوتيوب. التبليغ عن الرعايه الاعلانيه علي مقاطع الفيديو التي تشاهدها لتوفير وقتك و وقت الآخرين.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "الخادم قال أن هذا الطلب خاطيء"
+    },
+    "429": {
+        "message": "لقد قدمت الكثير من اوقات الرعاية الاعلانية لهذا الفيديو الواحد، هل أنت متأكد من وجود هذا العدد؟"
+    },
+    "409": {
+        "message": "تم تقديم هذا بالفعل من قبل"
+    },
+    "channelWhitelisted": {
+        "message": "القناة في القائمة البيضاء!"
+    },
+    "Segment": {
+        "message": "جزء"
+    },
+    "Segments": {
+        "message": "أجزاء"
+    },
+    "upvoteButtonInfo": {
+        "message": "التصويت على هذا الإرسال"
+    },
+    "reportButtonTitle": {
+        "message": "إبلاغ"
+    },
+    "reportButtonInfo": {
+        "message": "الإبلاغ عن هذا التقديم كغير صحيح."
+    },
+    "Dismiss": {
+        "message": "إلغاء"
+    },
+    "Loading": {
+        "message": "جاري التحميل..."
+    },
+    "Hide": {
+        "message": "لا تظهر أبداً"
+    },
+    "hitGoBack": {
+        "message": "قم الضغط علي تخطي للوصول إلى المكان الذي أتيت منه."
+    },
+    "unskip": {
+        "message": "الرجوع في التخطي"
+    },
+    "reskip": {
+        "message": "اعاده التخطي"
+    },
+    "paused": {
+        "message": "ايقاف مؤقت"
+    },
+    "manualPaused": {
+        "message": "تم إيقاف الموقت"
+    }
+}

@@ -288,7 +288,7 @@ function invidiousInit(checkbox: HTMLInputElement, option: string) {
     if (utils.isFirefox()) permissions = [];
 
     chrome.permissions.contains({
-        origins: utils.getInvidiousInstancesRegex(),
+        origins: utils.getPermissionRegex(),
         permissions: permissions
     }, function (result) {
         if (result != checkbox.checked) {

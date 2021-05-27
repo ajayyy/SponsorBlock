@@ -3,10 +3,10 @@ import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContaine
 
 import * as CompileConfig from "../config.json";
 
-class Utils {
+export default class Utils {
     
     // Contains functions needed from the background script
-    backgroundScriptContainer: BackgroundScriptContainer | null = null;
+    backgroundScriptContainer: BackgroundScriptContainer | null;
 
     // Used to add content scripts and CSS required
     js = [
@@ -19,12 +19,12 @@ class Utils {
         "popup.css"
     ];
 
-    constructor(backgroundScriptContainer?: BackgroundScriptContainer) {
+    constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
-    // Function that can be used to wait for a condition before returning
-    async wait(condition: () => HTMLElement | boolean, timeout = 5000, check = 100): Promise<HTMLElement | boolean> { 
+    /** Function that can be used to wait for a condition before returning. */
+    async wait<T>(condition: () => T | false, timeout = 5000, check = 100): Promise<T> {
         return await new Promise((resolve, reject) => {
             setTimeout(() => reject("TIMEOUT"), timeout);
 
@@ -43,6 +43,12 @@ class Utils {
         });
     }
 
+    containsPermission(permissions: chrome.permissions.Permissions): Promise<boolean> {
+        return new Promise((resolve) => {
+            chrome.permissions.contains(permissions, resolve)
+        });
+    }
+
     /**
      * Asks for the optional permissions required for all extra sites.
      * It also starts the content script registrations.
@@ -57,7 +63,7 @@ class Utils {
         if (this.isFirefox()) permissions = [];        
 
         chrome.permissions.request({
-            origins: this.getInvidiousInstancesRegex(),
+            origins: this.getPermissionRegex(),
             permissions: permissions
         }, async (granted) => {
             if (granted) {
@@ -78,7 +84,6 @@ class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-
         if (this.isFirefox()) {
             const firefoxJS = [];
             for (const file of this.js) {
@@ -95,7 +100,7 @@ class Utils {
                 allFrames: true,
                 js: firefoxJS,
                 css: firefoxCSS,
-                matches: this.getInvidiousInstancesRegex()
+                matches: this.getPermissionRegex()
             };
 
             if (this.backgroundScriptContainer) {
@@ -106,7 +111,7 @@ class Utils {
         } else {
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"], () => {
                 const conditions = [];
-                for (const regex of this.getInvidiousInstancesRegex()) {
+                for (const regex of this.getPermissionRegex()) {
                     conditions.push(new chrome.declarativeContent.PageStateMatcher({
                         pageUrl: { urlMatches: regex }
                     }));
@@ -149,7 +154,7 @@ class Utils {
         }
 
         chrome.permissions.remove({
-            origins: this.getInvidiousInstancesRegex()
+            origins: this.getPermissionRegex()
         });
     }
 
@@ -250,16 +255,20 @@ class Utils {
     }
 
     /**
-     * @returns {String[]} Invidious Instances in regex form
+     * @returns {String[]} Domains in regex form
      */
-    getInvidiousInstancesRegex(): string[] {
-        const invidiousInstancesRegex: string[] = [];
-        for (const url of Config.config.invidiousInstances) {
-            invidiousInstancesRegex.push("https://*." + url + "/*");
-            invidiousInstancesRegex.push("http://*." + url + "/*");
+    getPermissionRegex(domains: string[] = []): string[] {
+        const permissionRegex: string[] = [];
+        if (domains.length === 0) {
+            domains = [...Config.config.invidiousInstances];
         }
 
-        return invidiousInstancesRegex;
+        for (const url of domains) {
+            permissionRegex.push("https://*." + url + "/*");
+            permissionRegex.push("http://*." + url + "/*");
+        }
+
+        return permissionRegex;
     }
 
     generateUserID(length = 36): string {
@@ -286,10 +295,11 @@ class Utils {
      * @param {int} statusCode 
      * @returns {string} errorMessage
      */
-    getErrorMessage(statusCode: number): string {
+    getErrorMessage(statusCode: number, responseText: string): string {
         let errorMessage = "";
+        const postFix = (responseText ? "\n\n" + responseText : "");
                             
-        if([400, 429, 409, 502, 0].includes(statusCode)) {
+        if([400, 429, 409, 502, 503, 0].includes(statusCode)) {
             //treat them the same
             if (statusCode == 503) statusCode = 502;
 
@@ -299,7 +309,7 @@ class Utils {
             errorMessage = chrome.i18n.getMessage("connectionError") + statusCode;
         }
 
-        return errorMessage;
+        return errorMessage + postFix;
     }
 
     /**
@@ -375,6 +385,9 @@ class Utils {
             //add a zero
             minutesDisplay = "0" + minutesDisplay;
         }
+        if (isNaN(hours) || isNaN(minutes)) {
+            return null;
+        }
 
         const formatted = (hours ? hours + ":" : "") + minutesDisplay + ":" + secondsDisplay;
 
@@ -430,5 +443,3 @@ class Utils {
     }
 
 }
-
-export default Utils;

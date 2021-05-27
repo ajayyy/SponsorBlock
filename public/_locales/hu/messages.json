@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Szegmens vége"
     },
+    "noVideoID": {
+        "message": "Nem találtunk YouTube videót.\nHa ez helytelen, frissítsd a lapot."
+    },
     "success": {
         "message": "Siker!"
     },
@@ -93,9 +96,6 @@
     },
     "wantToSubmit": {
         "message": "Szeretné beküldeni a szegmenst ehhez a videóhoz:"
-    },
-    "leftTimes": {
-        "message": "Úgy tűnik pár megjelölt szegmenst beküldetlenül hagyott. Lépjen vissza az oldalra, hogy beküldhesse őket (nem kerültek törlésre)."
     },
     "clearTimes": {
         "message": "Szegmensek törlése"
@@ -112,8 +112,23 @@
     "submitCheck": {
         "message": "Biztosan be akarja küldeni?"
     },
+    "whitelistChannel": {
+        "message": "Csatorna fehérlistára tétele"
+    },
+    "removeFromWhitelist": {
+        "message": "Csatorna törlése fehérlistáról"
+    },
     "voteOnTime": {
         "message": "Szavazzon a szegmensről"
+    },
+    "Submissions": {
+        "message": "Beküldések"
+    },
+    "viewLeaderboard": {
+        "message": "Ranglista"
+    },
+    "recordTimesDescription": {
+        "message": "Küldés"
     },
     "clearTimesButton": {
         "message": "Időpontok törlése"
@@ -123,6 +138,9 @@
     },
     "publicStats": {
         "message": "Ezt használja a nyilvános ranglistán, hogy megmutassa mennyit járult hozzá. Nézze meg"
+    },
+    "Username": {
+        "message": "Felhasználónév"
     },
     "setUsername": {
         "message": "Felhasználónév megadása"
@@ -219,6 +237,12 @@
     "0": {
         "message": "Kapcsolati időtúllépés. Ellenőrizze az internetkapcsolatot. Ha az internet működik, a kiszolgáló valószínűleg túlterhelt vagy leállt."
     },
+    "disableSkipping": {
+        "message": "Átugrás bekapcsolva"
+    },
+    "enableSkipping": {
+        "message": "Átugrás kikapcsolva"
+    },
     "yourWork": {
         "message": "Te munkád",
         "description": "Used to describe the section that will show you the statistics from your submissions."
@@ -270,6 +294,9 @@
     },
     "hoursLower": {
         "message": "óra"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " az életükből"
     },
     "statusReminder": {
         "message": "A szerver állapotához tekintse meg a status.sponsor.ajay.app oldalt."
@@ -360,15 +387,6 @@
     },
     "areYouSureReset": {
         "message": "Biztosan vissza szeretné állítani?"
-    },
-    "confirmPrivacy": {
-        "message": "Videó észlelve nem listázottként. Kattintson a Mégse gombra, ha nem akar ellenőrizni átugorható szegmensek után."
-    },
-    "unlistedCheck": {
-        "message": "Nem listázott/Privát videók ignorálása"
-    },
-    "whatUnlistedCheck": {
-        "message": "Ez a beállítás kissé lelassíthatja a SponsorBlockot. A szegmensek átugrásához szükséges, hogy a videoID el legyen küldve a szerverre. Ha aggódik az interneten küldött nem listázott videóazonosítók küldése miatt, kapcsolja be ezt a funkciót."
     },
     "mobileUpdateInfo": {
         "message": "az m.youtube.com már támogatott"
@@ -470,9 +488,6 @@
     "category_music_offtopic": {
         "message": "Zene: nem-zene szegmens"
     },
-    "category_music_offtopic_description": {
-        "message": "Csak zenei videókon. Beletartoznak a zenei videók intro és outro részei is."
-    },
     "category_music_offtopic_short": {
         "message": "Nem-Zene"
     },
@@ -537,9 +552,6 @@
     "channelDataNotFound": {
         "message": "A csatorna azonosító még nem töltődött be."
     },
-    "adblockerIssue": {
-        "message": "Valami meggátolja a SponsorBlockot a videó adatainak megszerzésében. Valószínűleg az ad-blockere. Kérem ellenőrizze: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Ha ez folyamatosan előfordul, lehet hogy az ad-blockere okozza. Kérem nézzen utána: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
@@ -576,11 +588,5 @@
     },
     "categoryUpdate2": {
         "message": "Nyissa meg a beállításokat, hogy átugorhasson introkat, outrokat stb."
-    },
-    "unsubmittedWarning": {
-        "message": "Beküldetlen szegmens értesítő"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Küldjön egy értesítést, ha elhagy egy videót amelyen beküldetlen szegmensek vannak"
     }
 }

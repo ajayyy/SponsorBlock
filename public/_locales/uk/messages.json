@@ -97,9 +97,6 @@
     "wantToSubmit": {
         "message": "Ви хочете надіслати сегменти для відео з id"
     },
-    "leftTimes": {
-        "message": "Ви ще не надіслали інформацію про деякі сегменти. Поверніться на цю сторінку, щоб надіслати їх (вони не видалені)."
-    },
     "clearTimes": {
         "message": "Очистити сегменти"
     },
@@ -234,6 +231,9 @@
     "noticeUpdate2": {
         "message": "Якщо воно Вам все одно не подобається, натисніть «не показувати\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Призначити гарячу клавішу для пропуску сегмента"
     },
     "setStartSponsorShortcut": {
         "message": "Призначити гарячу клавішу для початку сегмента"
@@ -407,15 +407,6 @@
     "areYouSureReset": {
         "message": "Ви дійсно хочете це скинути?"
     },
-    "confirmPrivacy": {
-        "message": "Було виявлено, що це відео - з доступом по посиланню. Натисніть \"скасування\", якщо не хочете перевіряти для нього сегменти."
-    },
-    "unlistedCheck": {
-        "message": "Ігнорувати непублічні відео"
-    },
-    "whatUnlistedCheck": {
-        "message": "Це налаштування дещо сповільнить SponsorBlock. Пошук сегментів вимагає надсилання ідентифікатора відео на сервер. Якщо Вас турбує надсилання ідентифікаторів прихованих відео по інтернету, включіть це налаштування."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com тепер підтримується"
     },
@@ -517,7 +508,7 @@
         "message": "Музика: Сегмент без музики"
     },
     "category_music_offtopic_description": {
-        "message": "Тільки для використання в музичних кліпах. Включає в себе початкові і кінцеві заставки кліпів."
+        "message": "Тільки для використання в музичних кліпах. Використовується для сегментів музичних кліпів, які не належать до іншої категорії."
     },
     "category_music_offtopic_short": {
         "message": "Без музики"
@@ -591,9 +582,6 @@
     "channelDataNotFound": {
         "message": "ID каналу ще не завантажений."
     },
-    "adblockerIssue": {
-        "message": "Здається, щось блокує можливість SponsorBlock'а отримувати дані про відео. Можливо, це ваш блокувальник реклами. Будь ласка, перейдіть на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocker-Blocking-SponsorBlock's-Requests"
-    },
     "itCouldBeAdblockerIssue": {
         "message": "Якщо це повідомлення з'являється занадто часто, це може бути викликано вашим блокувальником реклами. Будь ласка, перейдіть на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
@@ -630,12 +618,6 @@
     },
     "categoryUpdate2": {
         "message": "Відкрийте налаштування, щоб пропускати початкові і кінцеві заставки, саморекламу та інше."
-    },
-    "unsubmittedWarning": {
-        "message": "Сповіщенняння про невідправлені сегменти"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Надсилати повідомлення, коли ви йдете зі сторінки відео, сегменти до якого Ви не надіслали"
     },
     "help": {
         "message": "Допомога"

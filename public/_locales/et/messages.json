@@ -44,10 +44,10 @@
         "message": "Ära näita kunagi"
     },
     "hitGoBack": {
-        "message": "Vajuta \"tühista vahelejätmine\", et jõuda sinna, kust tulid."
+        "message": "Vajuta \"kuva uuesti\", et jõuda sinna, kust tulid."
     },
     "unskip": {
-        "message": "Tühista vahelejätmine"
+        "message": "Kuva uuesti"
     },
     "reskip": {
         "message": "Jäta uuesti vahele"
@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Segment lõpeb nüüd"
     },
+    "sponsorCancel": {
+        "message": "Tühista segmendi loomine"
+    },
     "noVideoID": {
         "message": "YouTube'i videot ei leitud.\nKui see ei vasta tõele, laadi kaart uuesti."
     },
@@ -96,9 +99,6 @@
     },
     "wantToSubmit": {
         "message": "Kas soovid segmendid saata video IDle"
-    },
-    "leftTimes": {
-        "message": "Sul tunduvad olevat mõned segmendid esitamata. Nende esitamiseks mine sellele lehele tagasi (need ei ole kustutatud)."
     },
     "clearTimes": {
         "message": "Tühjenda segmendid"
@@ -235,6 +235,9 @@
         "message": "Kui sulle see ikka ei meeldi, vajuta \"ära näita kunagi\" nuppu.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Seadista segmendi vahelejätmise klahv"
+    },
     "setStartSponsorShortcut": {
         "message": "Seadista segmendi alustamise klahv"
     },
@@ -246,6 +249,9 @@
     },
     "keybindDescriptionComplete": {
         "message": "Otsetee on seatud: "
+    },
+    "0": {
+        "message": "Ühenduse ajalõpp. Kontrolli oma võrguühendust. Kui internet töötab, on ilmselt server ülekoormatud või maas."
     },
     "disableSkipping": {
         "message": "Vahelejätmine on lubatud"
@@ -270,7 +276,7 @@
         "message": "Jätad {0} vahele?"
     },
     "skipped": {
-        "message": "Vahelejäetud"
+        "message": "vahelejäetud"
     },
     "disableAutoSkip": {
         "message": "Keela automaatne vahelejätmine"
@@ -281,8 +287,14 @@
     "audioNotification": {
         "message": "Heliteavitus vahelejätmisel"
     },
+    "audioNotificationDescription": {
+        "message": "Heliteavitus vahelejätmisel esitab igal korral heli, kui segment vahele jäetakse. Keelamisel (või autom. vahelejätmise keelamisel) heli ei esitata."
+    },
     "showTimeWithSkips": {
         "message": "Kuva vahelejäetud segmentidega aeg"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "See aeg kuvatakse sulgudes praeguse aja kõrval, ajariba all. See näitab video, millest on segmendid eemaldatud, kogukestvust. Sealhulgas arvestatakse ka segmente, mis on märgitud valikuga \"kuva mängija ajaribal\"."
     },
     "youHaveSkipped": {
         "message": "Oled vahele jätnud "
@@ -306,7 +318,7 @@
         "message": "Oled inimestel säästnud"
     },
     "youHaveSavedTimeEnd": {
-        "message": " nende ajast"
+        "message": " nende eludest"
     },
     "statusReminder": {
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
@@ -371,6 +383,9 @@
     "minDurationDescription": {
         "message": "Segmendid, mis on lühemad kui määratud väärtus ei jäeta vahele või ei kuvata mängijal."
     },
+    "shortCheck": {
+        "message": "See saadetav segment on lühem, kui sinu lühima pikkuse valik. See võib tähendada, et see on juba saadetud ning on selle valiku tõttu lihtsalt ignoreeritud. Kas soovid kindlasti seda saata?"
+    },
     "showUploadButton": {
         "message": "Kuva üleslaadimisnupp"
     },
@@ -379,6 +394,9 @@
     },
     "customServerAddress": {
         "message": "SponsorBlocki serveri aadress"
+    },
+    "customServerAddressDescription": {
+        "message": "Aadress, mida SponsorBlock kasutab serveriga info vahetamiseks.\nKui sul just oma serverit pole, ei peaks sa seda valikut muutma."
     },
     "save": {
         "message": "Salvesta"
@@ -392,15 +410,6 @@
     "areYouSureReset": {
         "message": "Kas soovid kindlasti selle lähtestada?"
     },
-    "confirmPrivacy": {
-        "message": "See video on registrivälisena tuvastatud. Klõpsa \"tühista\", kui ei soovi otsida vahelejätmise segmente."
-    },
-    "unlistedCheck": {
-        "message": "Ignoreeri registriväliseid/privaatsed videoid"
-    },
-    "whatUnlistedCheck": {
-        "message": "See valik aeglustab veidi SponsorBlocki. Vahelejätmise segmentide hankimiseks saadetakse video ID serverisse. Kui oled mures registriväliste videote IDde internetti saatmise üle, luba see valik."
-    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com on nüüd toetatud"
     },
@@ -412,6 +421,9 @@
     },
     "setOptions": {
         "message": "Määra valikud"
+    },
+    "exportOptionsWarning": {
+        "message": "Hoiatus: valikute muutmine on püsiv ning võib su paigalduse lõhkuda. Kas soovid kindlasti seda teha? Varunda kindlasti igaks juhuks varasemad valikud."
     },
     "incorrectlyFormattedOptions": {
         "message": "See JSON ei ole korralikult vormistatud. Sinu valikuid ei muudetud."
@@ -442,6 +454,12 @@
     },
     "copyDebugInformationFailed": {
         "message": "Lõikelauale kirjutamine ebaõnnestus"
+    },
+    "copyDebugInformationOptions": {
+        "message": "Kopeerib lõikelauale info, mida saad arendajale anda veast teatamisel või siis, kui arendaja seda sinult taotleb. Tundlik info, sealhulgas sinu kasutaja ID, lubamisnimekirjas kanalid ning kohandatud serveri aadress on eemaldatud. Siiski see sisaldab teatud infot, nagu sinu kasutajaagent, brauser, opsüsteem ning laienduse versiooninumber."
+    },
+    "copyDebugInformationComplete": {
+        "message": "Silumisinfo on lõikelauale kopeeritud. Võid sellelt vabalt eemaldada mistahes info, mida ei soovi jagada. Salvesta see tekstifaili või kleebi vearaportisse."
     },
     "theKey": {
         "message": "Klahv"
@@ -493,7 +511,7 @@
         "message": "Muusika: mitte-muusika jaotis"
     },
     "category_music_offtopic_description": {
-        "message": "Ainult muusikavideotes kasutamiseks. Sisaldab muusikavideote sissejuhatusi ja väljajuhatusi."
+        "message": "Ainult muusikavideotes kasutamiseks. Seda peaks kasutama vaid muusikavideote jaotiste puhul, mis ei läheks mõne teise kategooria alla."
     },
     "category_music_offtopic_short": {
         "message": "Mitte-muusika"
@@ -536,6 +554,9 @@
     "whatEnableTestingServer": {
         "message": "Sinu saadetud segmendid ja hääled EI LÄHE põhiserveri alla. Kasuta seda vaid katsetamiseks."
     },
+    "testingServerWarning": {
+        "message": "Kõik segmendid ja hääled EI LÄHE põhiserveri alla, kuni oled ühendatud testserveriga. Veendu, et keelad selle valiku, kui soovid tegelikult segmente saata."
+    },
     "bracketNow": {
         "message": "(nüüd)"
     },
@@ -564,14 +585,32 @@
     "channelDataNotFound": {
         "message": "Kanali ID pole veel laaditud."
     },
-    "adblockerIssue": {
-        "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. See on ilmselt sinu reklaamiblokeerija. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. Rohkema abi saamiseks palun vaata: https://github.com/ajayyy/SponsorBlock/issues/741"
+    },
+    "youtubePermissionRequest": {
+        "message": "Tundub, et SponsorBlock ei pääse YouTube'i rakendusliidesele ligi. Selle parandamiseks nõustu järgnevalt kuvatava loataotlusega, oota paar sekundit ning seejärel laadi leht uuesti."
+    },
+    "acceptPermission": {
+        "message": "Nõustu loaga"
+    },
+    "permissionRequestSuccess": {
+        "message": "Loataotlus õnnestus!"
+    },
+    "permissionRequestFailed": {
+        "message": "Loataotlus ebaõnnestus, kas sa keeldusid?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Kui sa ei suuda seda lahendada, keela valik \"sunnitud kanalikontroll enne vahelejätmist\", kuna SponsorBlock ei leia selle video kanaliteavet"
     },
     "itCouldBeAdblockerIssue": {
         "message": "Kui see jätkub, võib see olla põhjustatud sinu reklaamiblokeerijast. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Sunnitud kanalikontroll enne vahelejätmist"
+    },
+    "whatForceChannelCheck": {
+        "message": "Vaikimisi jätab see segmendid vahele juba siis, kui veel kanalitki ei tea. Vaikimisi võidakse mõned video alguses olevad segmendid lubamisnimekirjas olevatel kanalitel vahele jätta. Selle valiku lubamine väldib seda, kuid võib lisada vahelejätmistele väikese viivituse, sest kanali ID hankimine võib aega võtta. Viivitus võib kiire interneti puhul olla märkamatu."
     },
     "forceChannelCheckPopup": {
         "message": "Kaalu valiku \"Sunnitud kanalikontroll enne vahelejätmist\" lubamist"
@@ -600,12 +639,6 @@
     },
     "categoryUpdate2": {
         "message": "Ava valikud, et jätta vahele vaheaegu, müüdavat kaupa jms."
-    },
-    "unsubmittedWarning": {
-        "message": "Saatmata segmentide teatis"
-    },
-    "unsubmittedWarningDescription": {
-        "message": "Saada teavitus, kui lahkud videost segmentidega, mis ei ole üleslaaditud"
     },
     "help": {
         "message": "Abi"
