@@ -391,8 +391,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 categoryColorCircle.classList.add("dot");
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
                 
-                const prefix = utils.shortCategoryName(segmentTimes[i].category) + ": ";
-
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
                     //this one is downvoted
