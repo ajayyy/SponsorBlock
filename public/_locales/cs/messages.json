@@ -238,6 +238,9 @@
     "setSkipShortcut": {
         "message": "Nastavit klíč pro přeskočení segmentu"
     },
+    "setStartSponsorShortcut": {
+        "message": "Nastavte klávesu pro spuštění/zastavení segmentu"
+    },
     "setSubmitKeybind": {
         "message": "Nastavte klávesu pro odeslání"
     },
