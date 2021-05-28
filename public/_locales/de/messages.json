@@ -590,10 +590,10 @@
         "message": "Etwas hält SponsorBlock davon ab, die Videodaten abzurufen. Eine mögliche Ursache sind Adblocker. Für weitere Informationen besuche: https://github.com/ajayyy/SponsorBlock/issues/741."
     },
     "youtubePermissionRequest": {
-        "message": "Anscheinend kann SponsorBlock die YouTube-API nicht erreichen. Um dies zu beheben, akzeptiere die nun folgende Berechtigungsanfrage; Warten kurz und lade die Seite erneut."
+        "message": "Anscheinend kann SponsorBlock die YouTube-API nicht erreichen. Um dies zu beheben, akzeptiere die nun folgende Berechtigungsanfrage, warte kurz, und lade dann die Seite neu."
     },
     "acceptPermission": {
-        "message": "Berechtigung geben"
+        "message": "Berechtigung erteilen"
     },
     "permissionRequestSuccess": {
         "message": "Die Berechtigungsanfrage war erfolgreich!"
