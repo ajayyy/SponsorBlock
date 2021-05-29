@@ -128,7 +128,7 @@
         "message": "Lähetykset"
     },
     "savedPeopleFrom": {
-        "message": "Olet säästänyt ihmisiä "
+        "message": "Olet säästänyt ihmisiltä "
     },
     "viewLeaderboard": {
         "message": "Tulostaulu"
@@ -137,11 +137,11 @@
         "message": "Lähetä"
     },
     "submissionEditHint": {
-        "message": "Osien muokkaus ilmestyy kun klikkaat lähetä",
+        "message": "Osien muokkaus ilmestyy sen jälkeen, kun klikkaat lähetä-nappia",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Vihje: Voit asettaa pikanäppäimet lähettämistä varten asetuksissa"
+        "message": "Vihje: Voit asettaa lähettämisen pikanäppäimet asetuksissa"
     },
     "clearTimesButton": {
         "message": "Tyhjennä ajat"
@@ -198,7 +198,7 @@
         "message": "Ota Ohitusten Lukumäärän Seuranta Käyttöön"
     },
     "whatViewTracking": {
-        "message": "Tämä toiminto seuraa, mitkä segmentit olet ohittanut, jonka avulla käyttäjät saavat tietää kuinka paljon heidän lähetyksensä ovat auttaneet muita ja sitä myös käytetään mittarina äänestysten kanssa sen varmistamiseksi, että spämmi ei pääse tietokantaan. Laajennus lähettää viestin palvelimelle aina, kun ohitat segmentin. Toivottavasti useimmat ihmiset eivät muuta tätä asetusta, jotta katselunumerot pysyisivät tarkkoina. :)"
+        "message": "Tämä toiminto seuraa, mitä segmenttejä olet ohittanut. Sen avulla käyttäjät saavat tietää, kuinka paljon heidän lähetyksensä ovat auttaneet muita, ja sitä käytetään myös mittarina äänestysten kanssa estääksemme spämmin pääsyn tietokantaan. Laajennus lähettää viestin palvelimelle aina, kun ohitat segmentin. Toivottavasti useimmat eivät muuta tätä asetusta, jotta katselunumerot pysyisivät tarkkoina. :)"
     },
     "enableQueryByHashPrefix": {
         "message": "Kysely Tiiviste-etuliittellä"
