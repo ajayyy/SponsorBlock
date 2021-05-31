@@ -589,6 +589,7 @@ async function sponsorsLookup(id: string) {
                 }
             }
 
+            const oldSegments = sponsorTimes;
             sponsorTimes = recievedSegments;
 
             // Hide all submissions smaller than the minimum duration
@@ -597,6 +598,15 @@ async function sponsorsLookup(id: string) {
                     if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] < Config.config.minDuration) {
                         sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
                     }
+                }
+            }
+
+            for (const segment of oldSegments) {
+                const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
+                if (otherSegment) {
+                    // If they downvoted it, or changed the category, keep it
+                    otherSegment.hidden = segment.hidden;
+                    otherSegment.category = segment.category;
                 }
             }
 
@@ -1180,6 +1190,9 @@ function startOrEndTimingNewSegment() {
 
     // Save the newly created segment
     Config.config.segmentTimes.set(sponsorVideoID, sponsorTimesSubmitting);
+
+    // Make sure they know if someone has already submitted something it while they were watching
+    sponsorsLookup(sponsorVideoID);
 
     updateEditButtonsOnPlayer();
     updateSponsorTimesSubmitting(false);
