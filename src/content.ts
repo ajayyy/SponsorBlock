@@ -568,22 +568,12 @@ async function sponsorsLookup(id: string) {
         categories
     }).then(async (response: FetchResponse) => {
         if (response?.ok) {
-            let result = JSON.parse(response.responseText);
-            result = result.filter((video) => video.videoID === id);
-            if (result.length > 0) {
-                result = result[0].segments;
-                if (result.length === 0) { // return if no segments found
-                    retryFetch();
-                    return;
-                }
-            } else { // return if no video found
+            const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
+                        ?.filter((video) => video.videoID === id)
+                        ?.map((video) => video.segments)[0];
+            if (!recievedSegments || !recievedSegments.length) { 
+                // return if no video found
                 retryFetch();
-                return;
-            }
-
-            const recievedSegments: SponsorTime[] = result;
-            if (!recievedSegments.length) {
-                console.error("[SponsorBlock] Server returned malformed response: " + JSON.stringify(recievedSegments));
                 return;
             }
 
