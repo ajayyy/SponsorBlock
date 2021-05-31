@@ -21,8 +21,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
         // Setup state
         this.state = {
-            color: props.defaultColor || Config.config.barTypes[this.props.category].color,
-            previewColor: props.defaultPreviewColor || Config.config.barTypes["preview-" + this.props.category].color,
+            color: props.defaultColor || Config.config.barTypes[this.props.category]?.color,
+            previewColor: props.defaultPreviewColor || Config.config.barTypes["preview-" + this.props.category]?.color,
         }
     }
 

@@ -374,7 +374,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 const categoryColorCircle = document.createElement("span");
                 categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
-                categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category].color;
+                categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category]?.color;
                 categoryColorCircle.classList.add("dot");
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
                 

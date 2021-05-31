@@ -194,7 +194,7 @@ class PreviewBar {
 
         bar.setAttribute('data-vs-segment-type', barSegmentType);
 
-        bar.style.backgroundColor = Config.config.barTypes[barSegmentType].color;
+        bar.style.backgroundColor = Config.config.barTypes[barSegmentType]?.color;
         if (!this.onMobileYouTube) bar.style.opacity = Config.config.barTypes[barSegmentType].opacity;
 
         bar.style.position = "absolute";
