@@ -621,7 +621,11 @@ async function sponsorsLookup(id: string) {
 
             //TODO lower when server becomes better (back to 1 second)
             //some error occurred, try again in a second
-            setTimeout(() => sponsorsLookup(id), 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
+            setTimeout(() => {
+                if (sponsorVideoID && sponsorTimes?.length === 0) {
+                    sponsorsLookup(sponsorVideoID);
+                }
+            }, 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
 
             sponsorLookupRetries++;
         }
