@@ -573,11 +573,11 @@ async function sponsorsLookup(id: string) {
             if (result.length > 0) {
                 result = result[0].segments;
                 if (result.length === 0) { // return if no segments found
-                    retryFetch(id);
+                    retryFetch();
                     return;
                 }
             } else { // return if no video found
-                retryFetch(id);
+                retryFetch();
                 return;
             }
 
@@ -625,7 +625,7 @@ async function sponsorsLookup(id: string) {
 
             sponsorLookupRetries = 0;
         } else if (response?.status === 404) {
-            retryFetch(id);
+            retryFetch();
         } else if (sponsorLookupRetries < 15 && !recheckStarted) {
             recheckStarted = true;
 
@@ -638,7 +638,7 @@ async function sponsorsLookup(id: string) {
     });
 }
 
-function retryFetch(id: string): void {
+function retryFetch(): void {
     if (!Config.config.refetchWhenNotFound) return;
 
     sponsorDataFound = false;
@@ -649,7 +649,11 @@ function retryFetch(id: string): void {
 
         //if less than 3 days old
         if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
-            setTimeout(() => sponsorsLookup(id), 30000 + Math.random() * 90000);
+            setTimeout(() => {
+                if (sponsorVideoID && sponsorTimes?.length === 0) {
+                    sponsorsLookup(sponsorVideoID);
+                }
+            }, 10000 + Math.random() * 30000);
         }
     });
 
