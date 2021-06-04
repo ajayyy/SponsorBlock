@@ -204,13 +204,13 @@
         "message": "Ricerca tramite prefisso hash"
     },
     "whatQueryByHashPrefix": {
-        "message": "Invece di richiedere segmenti dal server utilizzando l'Id video, vengono inviati i primi 4 caratteri dell'hash dell'ID video. Questo server invierà i dati per tutti i video con hash simili."
+        "message": "Invece di richiedere i segmenti dal server utilizzando l'ID del video, viene inviato un hash dei primi 4 caratteri dell'ID. Questo server invierà i dati per tutti i video con hash simili."
     },
     "enableRefetchWhenNotFound": {
         "message": "Ricarica I Segmenti Su Nuovi Video"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Se il video è nuovo, e non risultano esserci segmenti, questi continueranno ad essere ricaricati dopo pochi minuti mentre guardi il video."
+        "message": "Se il video è nuovo, e non risultano esserci segmenti, continueremo a cercarne di nuovi ogni pochi minuti."
     },
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
@@ -312,7 +312,7 @@
         "message": "ore"
     },
     "youHaveSavedTime": {
-        "message": "Hai salvato alle persone"
+        "message": "Hai fatto risparmiare"
     },
     "youHaveSavedTimeEnd": {
         "message": " delle loro vite"
