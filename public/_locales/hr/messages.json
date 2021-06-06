@@ -316,8 +316,20 @@
         "message": "Preskoči opciju",
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
+    "bracketNow": {
+        "message": "(sada)"
+    },
+    "moreCategories": {
+        "message": "Više kategorija"
+    },
+    "chooseACategory": {
+        "message": "Odaberi kategoriju"
+    },
     "youMustSelectACategory": {
         "message": "Moraš odabrati kategoriju za sve segmente koje šalješ!"
+    },
+    "bracketEnd": {
+        "message": "(kraj)"
     },
     "downvoteDescription": {
         "message": "Neispravno/krivo vrijeme"
