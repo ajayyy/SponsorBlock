@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Fin du segment"
     },
+    "sponsorCancel": {
+        "message": "Annuler la création de segment"
+    },
     "noVideoID": {
         "message": "Aucune vidéo YouTube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
     },
@@ -234,6 +237,9 @@
     },
     "setSkipShortcut": {
         "message": "Définir une touche pour passer un segment"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Définir le raccourci pour démarrer/terminer un segment"
     },
     "setSubmitKeybind": {
         "message": "Changer le raccourci pour soumettre les segments"
@@ -575,6 +581,18 @@
     },
     "hiddenDueToDuration": {
         "message": "masqué : trop court"
+    },
+    "youtubePermissionRequest": {
+        "message": "Il semblerait que SponsorBlock ne puisse pas accéder à l'API YouTube. Pour corriger cela, acceptez la demande de permission qui apparaîtra, attendez quelques secondes, puis rechargez la page."
+    },
+    "acceptPermission": {
+        "message": "Accepter l'autorisation"
+    },
+    "permissionRequestSuccess": {
+        "message": "Demande de permission réussie !"
+    },
+    "permissionRequestFailed": {
+        "message": "La demande d'autorisation a échoué, avez-vous cliqué sur refuser ?"
     },
     "forceChannelCheck": {
         "message": "Forcer la vérification du canal avant de passer"
