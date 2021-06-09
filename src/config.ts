@@ -428,6 +428,14 @@ function migrateOldFormats(config: SBConfig) {
 
         chrome.storage.sync.remove("sponsorTimes");
     }
+
+    // Remove some old unused options
+    if (config["sponsorVideoID"] !== undefined) {
+        chrome.storage.sync.remove("sponsorVideoID");
+    }
+    if (config["previousVideoID"] !== undefined) {
+        chrome.storage.sync.remove("previousVideoID");
+    }
 }
 
 async function setupConfig() {
