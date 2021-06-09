@@ -24,6 +24,10 @@ class SkipNotice {
         //get reference node
         let referenceNode = document.getElementById("player-container-id") 
                                 || document.getElementById("movie_player") || document.querySelector("#player-container .video-js");
+        // YouTube Music
+        if (new URL(document.URL).host === "music.youtube.com") {
+            referenceNode = document.querySelector("#main-panel.ytmusic-player-page");
+        }
         if (referenceNode == null) {
             //for embeds
             const player = document.getElementById("player");
@@ -31,16 +35,13 @@ class SkipNotice {
             let index = 1;
 
             //find the child that is the video player (sometimes it is not the first)
-            while (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed")) {
+            while (index < player.children.length && (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed"))) {
                 referenceNode = player.children[index] as HTMLElement;
 
                 index++;
             }
         }
-        // YouTube Music
-        if (new URL(document.URL).host === "music.youtube.com") {
-            referenceNode = document.querySelector("#main-panel.ytmusic-player-page");
-        }
+        
     
         const amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
         //this is the suffix added at the end of every id
