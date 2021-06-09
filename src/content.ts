@@ -42,6 +42,7 @@ let sponsorSkipped: boolean[] = [];
 
 //the video
 let video: HTMLVideoElement;
+let videoMutationObserver: MutationObserver = null;
 // List of videos that have had event listeners added to them
 const videoRootsWithEventListeners: HTMLDivElement[] = [];
 
@@ -50,9 +51,6 @@ let onMobileYouTube;
 
 //the video id of the last preview bar update
 let lastPreviewBarUpdate;
-
-//whether the duration listener listening for the duration changes of the video has been setup yet
-let durationListenerSetUp = false;
 
 // Is the video currently being switched
 let switchingVideos = null;
@@ -477,48 +475,54 @@ function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boole
     }
 }
 
-async function sponsorsLookup(id: string) {
-    video = document.querySelector('video') // Youtube video player
-    //there is no video here
-    if (video == null) {
-        setTimeout(() => sponsorsLookup(id), 100);
-        return;
-    }
+function setupMobileVideoMutationListener() {
+    const videoContainer = document.querySelector(".html5-video-container");
+    if (!videoContainer || videoMutationObserver !== null) return;
 
-    addHotkeyListener();
+    videoMutationObserver = new MutationObserver(() => {
+        const newVideo = document.querySelector('video');
+        if (newVideo && newVideo !== video) {
+            video = newVideo;
+            setupVideoListeners();
+        }
+    });
 
-    if (!durationListenerSetUp) {
-        durationListenerSetUp = true;
+    videoMutationObserver.observe(videoContainer, { 
+        attributes: true, 
+        childList: true, 
+        subtree: true 
+    });
+}
 
-        //wait until it is loaded
-        video.addEventListener('durationchange', durationChangeListener);
-    }
+function setupVideoListeners() {
+    //wait until it is loaded
+    video.addEventListener('durationchange', durationChangeListener);
 
-    if (!seekListenerSetUp && !Config.config.disableSkipping) {
-        seekListenerSetUp = true;
+
+    if (!Config.config.disableSkipping) {
         switchingVideos = false;
 
         video.addEventListener('play', () => {
             switchingVideos = false;
-
+    
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
             // gone back to the begining
             if (!firstEvent && video.currentTime === 0) return;
             firstEvent = false;
-
+    
             // Check if an ad is playing
             updateAdFlag();
-
+    
             // Make sure it doesn't get double called with the playing event
             if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
                     || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
-
+    
                 startSponsorSchedule();
             }
-
+    
         });
         video.addEventListener('playing', () => {
             // Make sure it doesn't get double called with the play event
@@ -526,7 +530,7 @@ async function sponsorsLookup(id: string) {
                     || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
-
+    
                 startSponsorSchedule();
             }
         });
@@ -535,7 +539,7 @@ async function sponsorsLookup(id: string) {
                 // Reset lastCheckVideoTime
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
-
+    
                 startSponsorSchedule();
             }
         });
@@ -546,11 +550,29 @@ async function sponsorsLookup(id: string) {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
             lastCheckTime = 0;
-
+    
             cancelSponsorSchedule();
         });
-
+    
         startSponsorSchedule();
+    }
+}
+
+async function sponsorsLookup(id: string) {
+    video = document.querySelector('video'); // Youtube video player
+    //there is no video here
+    if (video == null) {
+        setTimeout(() => sponsorsLookup(id), 100);
+        return;
+    }
+
+    if (onMobileYouTube) setupMobileVideoMutationListener();
+
+    addHotkeyListener();
+
+    if (!seekListenerSetUp && !Config.config.disableSkipping) {
+        seekListenerSetUp = true;
+        setupVideoListeners();
     }
 
     //check database for sponsor times
@@ -589,7 +611,7 @@ async function sponsorsLookup(id: string) {
                 }
             }
 
-            const oldSegments = sponsorTimes;
+            const oldSegments = sponsorTimes || [];
             sponsorTimes = recievedSegments;
 
             // Hide all submissions smaller than the minimum duration
@@ -1099,7 +1121,7 @@ async function createButtons(): Promise<void> {
 /** Creates any missing buttons on the player and updates their visiblity. */
 async function updateVisibilityOfPlayerControlsButton(): Promise<void> {
     // Not on a proper video yet
-    if (!sponsorVideoID) return;
+    if (!sponsorVideoID || onMobileYouTube) return;
 
     await createButtons();
 
@@ -1116,7 +1138,7 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<void> {
 /** Updates the visibility of buttons on the player related to creating segments. */
 function updateEditButtonsOnPlayer(): void {
     // Don't try to update the buttons if we aren't on a YouTube video page
-    if (!sponsorVideoID) return;
+    if (!sponsorVideoID || onMobileYouTube) return;
 
     const buttonsEnabled = !Config.config.hideVideoPlayerControls && !onInvidious;
 
