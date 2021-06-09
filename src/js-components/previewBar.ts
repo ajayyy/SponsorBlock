@@ -179,12 +179,12 @@ class PreviewBar {
         bar.classList.add('previewbar');
         bar.innerHTML = '&nbsp;';
 
-        const barSegmentType = (preview ? 'preview-' : '') + category;
+        const fullCategoryName = (preview ? 'preview-' : '') + category;
 
-        bar.setAttribute('data-vs-segment-type', barSegmentType);
+        bar.setAttribute('sponsorblock-category', fullCategoryName);
 
-        bar.style.backgroundColor = Config.config.barTypes[barSegmentType]?.color;
-        if (!this.onMobileYouTube) bar.style.opacity = Config.config.barTypes[barSegmentType]?.opacity;
+        bar.style.backgroundColor = Config.config.barTypes[fullCategoryName]?.color;
+        if (!this.onMobileYouTube) bar.style.opacity = Config.config.barTypes[fullCategoryName]?.opacity;
 
         bar.style.position = "absolute";
         bar.style.width = this.timeToPercentage(segment[1] - segment[0]);
