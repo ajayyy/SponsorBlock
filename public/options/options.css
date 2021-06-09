@@ -268,23 +268,13 @@ p,li {
     padding: 10px;
 }
 
-p,li,code,a {
-    max-width: 60%;
-    text-align: left;
-    overflow-wrap: break-word;
-}
-
 @media screen and (orientation:portrait) {
-    p,li,code,a {
+    #options {
         max-width: 100%;
     }
-  
-    .projectPreviewImage {
-        position: unset;
-        width: 130px;
-        display: block;
-        margin: auto;
-        transform: none;
+
+    .previewColorOption {
+        display: none;
     }
 }
 

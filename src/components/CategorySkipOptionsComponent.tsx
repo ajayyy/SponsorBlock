@@ -56,7 +56,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             {chrome.i18n.getMessage("category_" + this.props.category)}
                     </td>
 
-                    <td id={this.props.category + "SkipOption"}>
+                    <td id={this.props.category + "SkipOption"}
+                        className="skipOption">
                         <select
                             className="categoryOptionsSelector"
                             defaultValue={defaultOption}
@@ -65,7 +66,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         </select>
                     </td>
                     
-                    <td id={this.props.category + "ColorOption"}>
+                    <td id={this.props.category + "ColorOption"}
+                        className="colorOption">
                         <input
                             className="categoryColorTextBox option-text-box"
                             type="color"
@@ -73,7 +75,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             value={this.state.color} />
                     </td>
 
-                    <td id={this.props.category + "PreviewColorOption"}>
+                    <td id={this.props.category + "PreviewColorOption"}
+                        className="previewColorOption">
                         <input
                             className="categoryColorTextBox option-text-box"
                             type="color"
