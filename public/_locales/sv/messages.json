@@ -98,13 +98,13 @@
         "message": "Anslutningsfel. Felkod: "
     },
     "wantToSubmit": {
-        "message": "Vill skicka in med video-id"
+        "message": "Vill du skicka in för video-ID"
     },
     "clearTimes": {
         "message": "Rensa segmenten"
     },
     "openPopup": {
-        "message": "Öppna SponsorBlock Popup"
+        "message": "Öppna SponsorBlock-popup"
     },
     "closePopup": {
         "message": "Stäng popup"
@@ -141,7 +141,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Tips: Du kan ställa in snabbtangenter för de olika inskickningsalternativen"
+        "message": "Tips: Du kan ställa in snabbtangenter för att skicka in i alternativen"
     },
     "clearTimesButton": {
         "message": "Rensa tider"
@@ -156,7 +156,7 @@
         "message": "Användarnamn"
     },
     "setUsername": {
-        "message": "Ange Användarnamn"
+        "message": "Ange användarnamn"
     },
     "discordAdvert": {
         "message": "Gå med i den officiella discordservern för att ge förslag och feedback!"
@@ -165,7 +165,7 @@
         "message": "Dölj detta"
     },
     "Options": {
-        "message": "Inställningar"
+        "message": "Alternativ"
     },
     "showButtons": {
         "message": "Visa Knappar På YouTube-spelaren"
@@ -414,19 +414,19 @@
         "message": "m.youtube.com stöds nu"
     },
     "exportOptions": {
-        "message": "Importera/Exportera Alla Inställningar"
+        "message": "Importera/Exportera alla alternativen"
     },
     "whatExportOptions": {
-        "message": "Detta är alla dina inställningar i JSON-format. Det inkluderar ditt AnvändarID, så var nog med hur du hanterar datan."
+        "message": "Detta är alla dina alternativ i JSON-format. Det inkluderar ditt användar-ID, så var noga med hur du hanterar datan."
     },
     "setOptions": {
-        "message": "Ange Inställningar"
+        "message": "Ange alternativ"
     },
     "exportOptionsWarning": {
-        "message": "Varning: Att ändra inställningarna är permanent och kan förstöra din installation. Är du säker på att du vill göra detta? Se till att göra en backup för säkerhets skull."
+        "message": "Varning: Att ändra alternativen är permanent och kan förstöra din installation. Är du säker på att du vill göra detta? Se till och gör en säkerhetskopia för säkerhets skull."
     },
     "incorrectlyFormattedOptions": {
-        "message": "Denna JSON är inte korrekt formaterad. Dina inställningar har inte ändrats."
+        "message": "Denna JSON är inte korrekt formaterad. Dina alternativ har inte ändrats."
     },
     "confirmNoticeTitle": {
         "message": "Rapportera Segment"
@@ -456,7 +456,7 @@
         "message": "Misslyckades med att kopiera debuginformation till urklipp"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopierar information till urklipp för att dela med en utvecklare vid rapportering av en bugg / när en utvecklare ber om det. Känslig data som AnvändarID, vitlistade kanaler, och anpassad serveradress följer inte med. Däremot innehåller det information om useragent, webbläsare, operativsystem, och tilläggsversion."
+        "message": "Kopierar information till urklipp för att dela med en utvecklare vid rapportering av en bugg / när en utvecklare ber om det. Känslig data som användar-ID, vitlistade kanaler, och anpassad serveradress följer inte med. Däremot innehåller det information om useragent, webbläsare, operativsystem, och tilläggsversion. "
     },
     "copyDebugInformationComplete": {
         "message": "Debuginformationen har kopierats till urklipp. Ta bort eventuell information du inte vill dela med dig av. Spara informationen i en textfil eller klistra in den i en buggrapport."
@@ -520,7 +520,7 @@
         "message": "Liveström: Donations-/meddelandeavläsningar"
     },
     "category_livestream_messages_short": {
-        "message": "Läser meddelande"
+        "message": "Meddelandeläsning"
     },
     "disable": {
         "message": "Inaktivera"
@@ -636,7 +636,7 @@
         "message": "Kategorier finns här!"
     },
     "categoryUpdate2": {
-        "message": "Öppna inställningarna för att hoppa över intros, outros, merch, osv."
+        "message": "Öppna alternativen för att hoppa över intros, outros, merch, osv."
     },
     "help": {
         "message": "Hjälp"
