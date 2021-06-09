@@ -582,6 +582,13 @@
     "hiddenDueToDuration": {
         "message": "masqué : trop court"
     },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Le Channel ID n'est pas encore chargé. Si vous utilisez une vidéo intégrée, essayez d'utiliser la page d'accueil de YouTube. Cela pourrait également être causé par des changements dans l'interface de YouTube. Si vous pensez que c'est le cas, écrivez un commentaire ici :"
+    },
+    "videoInfoFetchFailed": {
+        "message": "Il semblerait que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. Veuillez consulter https://github.com/ajayyy/SponsorBlock/issues/741 pour plus d'informations."
+    },
     "youtubePermissionRequest": {
         "message": "Il semblerait que SponsorBlock ne puisse pas accéder à l'API YouTube. Pour corriger cela, acceptez la demande de permission qui apparaîtra, attendez quelques secondes, puis rechargez la page."
     },
@@ -593,6 +600,9 @@
     },
     "permissionRequestFailed": {
         "message": "La demande d'autorisation a échoué, avez-vous cliqué sur refuser ?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Si vous ne parvenez pas à résoudre ce problème, désactivez le paramètre 'Force Channel Check Before Skipping' car SponsorBlock est incapable de récupérer les informations de la chaine pour cette vidéo"
     },
     "forceChannelCheck": {
         "message": "Forcer la vérification du canal avant de passer"
