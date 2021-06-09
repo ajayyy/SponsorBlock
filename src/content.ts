@@ -761,7 +761,7 @@ function getYouTubeVideoID(url: string) {
  */
 function updatePreviewBarPositionMobile(parent: HTMLElement) {
     if (document.getElementById("previewbar") === null) {
-        previewBar.updatePosition(parent);
+        previewBar.createElement(parent);
     }
 }
 
