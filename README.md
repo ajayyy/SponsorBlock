@@ -102,4 +102,4 @@ Icons made by:
 
 ### License
 
-This project is licensed under GNU GPL v3 or any later version
+This project is licensed under GNU LGPL v3 or any later version
