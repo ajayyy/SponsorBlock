@@ -90,7 +90,7 @@ mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
 
 # Credit
 
-The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used.
+The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) as a to get video info from YouTube.
 
 Originally forked from [YTSponsorSkip](https://github.com/NDevTK/YTSponsorSkip), but very little code remains.
 
