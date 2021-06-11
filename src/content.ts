@@ -44,7 +44,6 @@ let video: HTMLVideoElement;
 let videoMutationObserver: MutationObserver = null;
 // List of videos that have had event listeners added to them
 const videosWithEventListeners: HTMLVideoElement[] = [];
-const videoRootsWithEventListeners: HTMLDivElement[] = [];
 
 let onInvidious;
 let onMobileYouTube;
@@ -77,6 +76,7 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
+addHotkeyListener();
 
 //the amount of times the sponsor lookup has retried
 //this only happens if there is an error
@@ -493,7 +493,6 @@ function refreshVideoAttachments() {
     if (newVideo && newVideo !== video) {
         video = newVideo;
 
-        addHotkeyListener();
         if (!videosWithEventListeners.includes(video)) {
             videosWithEventListeners.push(video);
 
@@ -1563,21 +1562,14 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
     return sponsorTimesMessage;
 }
 
-function addHotkeyListener(): boolean {
-    let videoRoot = document.getElementById("movie_player") as HTMLDivElement;
-    if (onInvidious) videoRoot = (document.getElementById("player-container") ?? document.getElementById("player")) as HTMLDivElement;
-    if (video.baseURI.startsWith("https://www.youtube.com/tv#/")) videoRoot = document.querySelector("ytlr-watch-page") as HTMLDivElement;
-
-    if (videoRoot && !videoRootsWithEventListeners.includes(videoRoot)) {
-        videoRoot.addEventListener("keydown", hotkeyListener);
-        videoRootsWithEventListeners.push(videoRoot);
-        return true;
-    }
-
-    return false;
+function addHotkeyListener(): void {
+    document.addEventListener("keydown", hotkeyListener);
 }
 
 function hotkeyListener(e: KeyboardEvent): void {
+    if (["textarea", "input"].includes(document.activeElement?.tagName?.toLowerCase())
+        || document.activeElement?.id?.toLowerCase()?.includes("editable")) return;
+
     const key = e.key;
 
     const skipKey = Config.config.skipKeybind;
