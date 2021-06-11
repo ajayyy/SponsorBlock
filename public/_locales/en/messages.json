@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "This feature tracks which segments you have skipped to let users know how much their submission has helped others and used as a metric along with upvotes to ensure that spam doesn't get into the database. The extension sends a message to the server each time you skip a segment. Hopefully most people don't change this setting so that the view numbers are accurate. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Enable Skip Count Tracking In Private/Incognito tabs"
+    },
     "enableQueryByHashPrefix": {
         "message": "Query By Hash Prefix"
     },

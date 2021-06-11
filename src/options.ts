@@ -31,6 +31,11 @@ async function init() {
     const optionsElements = optionsContainer.querySelectorAll("*");
 
     for (let i = 0; i < optionsElements.length; i++) {
+        if (optionsElements[i].getAttribute("private-mode-only") === "true" && !(await isIncognitoAllowed())) {
+            optionsElements[i].classList.add("hidden");
+            continue;
+        }
+
         switch (optionsElements[i].getAttribute("option-type")) {
             case "toggle": {
                 const option = optionsElements[i].getAttribute("sync-option");
@@ -539,4 +544,8 @@ function copyDebugOutputToClipboard() {
       .catch(() => {
         alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
       });
+}
+
+function isIncognitoAllowed(): Promise<boolean> {
+    return new Promise((resolve) => chrome.extension.isAllowedIncognitoAccess(resolve));
 }

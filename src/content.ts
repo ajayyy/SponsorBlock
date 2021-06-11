@@ -987,8 +987,8 @@ function previewTime(time: number, unpause = true) {
 
 //send telemetry and count skip
 function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: number, fullSkip: boolean) {
-    if (!Config.config.trackViewCount) return;
-    
+    if (!Config.config.trackViewCount || (!Config.config.trackViewCountInPrivate && chrome.extension.inIncognitoContext)) return;
+
     let counted = false;
     for (const segment of skippingSegments) {
         const index = sponsorTimes.indexOf(segment);
