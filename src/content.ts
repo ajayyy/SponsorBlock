@@ -735,7 +735,7 @@ async function getVideoInfo(): Promise<void> {
     }
 }
 
-function getYouTubeVideoID(url: string) {
+function getYouTubeVideoID(url: string): string | boolean {
     // For YouTube TV support
     if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 
