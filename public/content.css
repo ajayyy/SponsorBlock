@@ -9,6 +9,12 @@
 	height: 100%;
 	transform: scaleY(0.6) translateY(-30%) translateY(1.5px);
 	z-index: 40;
+
+	transition: transform .1s cubic-bezier(0,0,0.2,1);
+}
+
+#previewbar.hovered {
+	transform: scaleY(1)
 }
 
 .previewbar {
