@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Tämä toiminto seuraa, mitä segmenttejä olet ohittanut. Sen avulla käyttäjät saavat tietää, kuinka paljon heidän lähetyksensä ovat auttaneet muita, ja sitä käytetään myös mittarina äänestysten kanssa estääksemme spämmin pääsyn tietokantaan. Laajennus lähettää viestin palvelimelle aina, kun ohitat segmentin. Toivottavasti useimmat eivät muuta tätä asetusta, jotta katselunumerot pysyisivät tarkkoina. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Ota Ohitusten Lukumäärän Seuranta Käyttöön Yksityis-/Incognito-välilehdissä"
+    },
     "enableQueryByHashPrefix": {
         "message": "Kysely Tiiviste-etuliittellä"
     },
