@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Den här funktionen spårar vilka segment du har hoppat över för att låta användarna veta hur mycket tid en användare har sparat andra och tillsammans med användarnas röster säkerställa att spam inte kommer in i databasen. Detta tillägg skickar ett meddelande till servern varje gång du hoppar över ett segment. Förhoppningsvis ändrar inte folk den här inställningen så statistiken hålls tillförlitlig. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Aktivera spåra antalet hoppa över i privata/inkognitoflikar"
+    },
     "enableQueryByHashPrefix": {
         "message": "Fråga efter hash-prefix"
     },
@@ -351,7 +354,7 @@
         "message": "Stöd Invidious"
     },
     "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) är en tredjeparts YouTube-klient. För att aktivera stöd måste du acceptera de extra behörigheterna. Detta kommer INTE att fungera i incognito i Chrome och andra Cromium-varianter."
+        "message": "Invidious (invidio.us) är en tredjeparts YouTube-klient. För att aktivera stöd måste du acceptera de extra behörigheterna. Detta kommer INTE att fungera i inkognito i Chrome och andra Chromium-varianter."
     },
     "optionsInfo": {
         "message": "Aktivera Invidious stöd, inaktivera hoppa över automatiskt, dölj knappar och mer."
