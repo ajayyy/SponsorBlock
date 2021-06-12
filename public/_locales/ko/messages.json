@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "이 기능은 건너 뛴 부분을 추적하여 사용자가 제출한 내용이 다른 사람에게 얼마나 도움이 되는지 알려주고 스팸이 데이터베이스에 들어가지 않도록 추천과 함께 분석에 사용합니다. 확장 프로그램은 부분을 건너뛸 때마다 서버에 메시지를 보냅니다. 조회수가 정확하도록 대부분의 사람들이 이 설정을 변경하지 않기를 바랍니다. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "시크릿/사생활 보호 탭에서 스킵 개수 추적 활성화"
+    },
     "enableQueryByHashPrefix": {
         "message": "Hash Prefix가 쿼리를 제공함"
     },
