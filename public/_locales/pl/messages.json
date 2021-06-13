@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Ta opcja monitoruje pomijane przez Ciebie segmenty, by dać znać użytkownikom, jak bardzo ich wkład pomógł innym, oraz w połączeniu z systemem głosowania zapobiegać dostawaniu się spamu do bazy danych. Rozszerzenie wysyła wiadomość do serwera za każdym razem, kiedy pomijasz segment. Miejmy nadzieję, że większość ludzi tego nie wyłączy i liczniki wyświetleń będą wiarygodne. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Włącz licznik śledzenia pominięć w zakładkach Prywatnych/Incognito"
+    },
     "enableQueryByHashPrefix": {
         "message": "Zapytanie według prefiksu Hash"
     },
