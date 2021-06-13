@@ -15,7 +15,8 @@ export interface NoticeProps {
     // Callback for when this is closed
     closeListener: () => void,
 
-    zIndex?: number
+    zIndex?: number,
+    style?: React.CSSProperties
 }
 
 export interface NoticeState {
@@ -70,7 +71,8 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
     render(): React.ReactElement {
         const noticeStyle: React.CSSProperties = {
-            zIndex: this.props.zIndex || (50 + this.amountOfPreviousNotices)
+            zIndex: this.props.zIndex || (1000 + this.amountOfPreviousNotices),
+            ...(this.props.style ?? {})
         }
 
         return (
