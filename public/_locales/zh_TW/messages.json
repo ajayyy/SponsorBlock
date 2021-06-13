@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "這個功能會追蹤您跳過的片段來讓其他使用者知道您的提交幫助了其他人多少，並同時用作計算錯誤提交的方式。這個擴充功能會在您每一次跳過片段時向伺服器回報。希望大家盡量不要改變這個設定來確保資料的正確性。 ：）"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "在私人/無痕分頁啟用跳過次數追蹤"
+    },
     "enableQueryByHashPrefix": {
         "message": "使用雜湊前綴查詢"
     },
