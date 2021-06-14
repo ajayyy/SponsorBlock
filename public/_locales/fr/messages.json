@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Cette fonctionnalité permet de suivre les segments que vous avez sautés pour faire savoir aux utilisateurs à quel point leur soumission a aidé les autres et est utilisée comme donnée avec les votes positifs pour s'assurer que des spams n'entrent pas dans la base de données. L'extension envoie un message au serveur chaque fois que vous sautez un segment. Il est à espérer que la plupart des gens ne modifient pas ce paramètre pour que les données sur le nombre d'affichages soient exactes. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Activer le suivi du nombre de sauts dans les onglets privés/incognito"
+    },
     "enableQueryByHashPrefix": {
         "message": "Requête avec seulement le début du hash"
     },
