@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Bu özellik, hangi kısımları atladığınızı takip ederek kullanıcıların gönderilerinin diğerlerine ne kadar yardımcı olduğunu bilmelerini sağlar ve olumlu oyları bir ölçüm aracı olarak kullanarak gereksiz yollanan kısımların veri tabanına girmemesini sağlar. Eklenti, bir kısmı her atladığınızda sunucuya bir mesaj gönderir. Umarım çoğu insan bu ayarı değiştirmez böylece görüntüleme sayıları doğru olur. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Özel/Gizli sekmelerde atlama sayısı takibini etkinleştir"
+    },
     "enableQueryByHashPrefix": {
         "message": "Karma Ön eki ile Sorgula"
     },
