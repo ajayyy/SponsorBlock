@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Nuvarande snabbtangent är:"
     },
-    "supportInvidious": {
-        "message": "Stöd Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) är en tredjeparts YouTube-klient. För att aktivera stöd måste du acceptera de extra behörigheterna. Detta kommer INTE att fungera i inkognito i Chrome och andra Chromium-varianter."
-    },
     "optionsInfo": {
         "message": "Aktivera Invidious stöd, inaktivera hoppa över automatiskt, dölj knappar och mer."
-    },
-    "addInvidiousInstance": {
-        "message": "Lägg Till Invidious Instans"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Lägg till en anpassad instans av Invidious. Denna måste vara formaterad med ENBART domänen. Exempelvis: invidious.ajay.app"
     },
     "add": {
         "message": "Lägg till"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Betald marknadsföring, betalda hänvisningar och direktannonser, men inte till egen marknadsföring eller gratis shoutouts till skapare/webbplatser/produkter de gillar."
     },
+    "category_selfpromo": {
+        "message": "Obetald/självbefodran"
+    },
+    "category_selfpromo_description": {
+        "message": "Som \"sponsormeddelande\" men med undantag för obetald eller självkampanj. Detta inkluderar avsnitt om varor, donationer eller information om vem de samarbetade med."
+    },
+    "category_interaction": {
+        "message": "Interaktionspåminnelse (Prenumerera)"
+    },
+    "category_interaction_description": {
+        "message": "När där är en kort påminnelse att gilla, prenumerera eller följa dem. Om det är långt eller om det gäller något specifikt bör det istället vara under självbefodran."
+    },
+    "category_interaction_short": {
+        "message": "Interaktionspåminnelse"
+    },
     "category_intro": {
         "message": "Paus/Introduktion"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Credits eller när YouTube-slutkort visas. Inte för slut med information."
-    },
-    "category_interaction": {
-        "message": "Interaktionspåminnelse (Prenumerera)"
-    },
-    "category_interaction_description": {
-        "message": "När där är en kort påminnelse att gilla, prenumerera eller följa dem. Om det är långt eller om det gäller något specifikt bör det istället vara under självbefodran."
-    },
-    "category_interaction_short": {
-        "message": "Interaktionspåminnelse"
-    },
-    "category_selfpromo": {
-        "message": "Obetald/självbefodran"
-    },
-    "category_selfpromo_description": {
-        "message": "Som \"sponsormeddelande\" men med undantag för obetald eller självkampanj. Detta inkluderar avsnitt om varor, donationer eller information om vem de samarbetade med."
     },
     "category_music_offtopic": {
         "message": "Musik: Icke-musikavsnitt"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."
-    },
-    "previewColor": {
-        "message": "Förhandsgranskningsfärg",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Sökfältsfärg"
