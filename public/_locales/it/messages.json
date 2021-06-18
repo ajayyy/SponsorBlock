@@ -344,20 +344,8 @@
     "keybindCurrentlySet": {
         "message": ". Attualmente è impostato su:"
     },
-    "supportInvidious": {
-        "message": "Supporta Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) è un client YouTube di terze parti. Per abilitare il supporto, è necessario accettare i permessi aggiuntivi. Questo NON funziona in incognito su Chrome e altre varianti di Chromium."
-    },
     "optionsInfo": {
         "message": "Abilita supporto invidioso, disabilita salto automatico, nascondi i pulsanti e altro ancora."
-    },
-    "addInvidiousInstance": {
-        "message": "Aggiungi istanza di Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Aggiungi un'istanza personalizzata di Invidious. Questo deve essere formattato SOLO con il dominio. Esempio: invidious.ajay.app"
     },
     "add": {
         "message": "Aggiungi"
@@ -474,6 +462,21 @@
     "category_sponsor_description": {
         "message": "Promozione a pagamento, referral a pagamento e pubblicità diretta. Non per auto-promozione o ringraziamenti gratuiti a cause/creatori/siti web/ prodotti di loro gradimento."
     },
+    "category_selfpromo": {
+        "message": "Promozione non pagata/Autopromozione"
+    },
+    "category_selfpromo_description": {
+        "message": "Simile alle \"sponsorizzazioni\" tranne che per promozioni non pagate o autopromozioni. Ciò include sezioni riguardanti vendita di merce, donazioni o informazioni in merito a collaboratori."
+    },
+    "category_interaction": {
+        "message": "Promemoria di Interazione (Sottoscrizione)"
+    },
+    "category_interaction_description": {
+        "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per aggiunta di mi piace, iscrizione o seguito. Se dovesse risultare esteso o riguardare qualcosa di specifico, potrebbe essere un'autopromozione."
+    },
+    "category_interaction_short": {
+        "message": "Promemoria di Interazione"
+    },
     "category_intro": {
         "message": "Animazione Interruzione/Introduzione"
     },
@@ -488,21 +491,6 @@
     },
     "category_outro_description": {
         "message": "I titoli di coda o quando vengono mostrate annotazioni a fine video su YouTube. Non per conclusioni provviste di informazioni."
-    },
-    "category_interaction": {
-        "message": "Promemoria di Interazione (Sottoscrizione)"
-    },
-    "category_interaction_description": {
-        "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per aggiunta di mi piace, iscrizione o seguito. Se dovesse risultare esteso o riguardare qualcosa di specifico, potrebbe essere un'autopromozione."
-    },
-    "category_interaction_short": {
-        "message": "Promemoria di Interazione"
-    },
-    "category_selfpromo": {
-        "message": "Promozione non pagata/Autopromozione"
-    },
-    "category_selfpromo_description": {
-        "message": "Simile alle \"sponsorizzazioni\" tranne che per promozioni non pagate o autopromozioni. Ciò include sezioni riguardanti vendita di merce, donazioni o informazioni in merito a collaboratori."
     },
     "category_music_offtopic": {
         "message": "Musica: Sezione Non-Musicale"
@@ -530,10 +518,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
-    },
-    "previewColor": {
-        "message": "Anteprima Colore",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Colore Barra di Ricerca"
