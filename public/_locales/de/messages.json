@@ -347,20 +347,8 @@
     "keybindCurrentlySet": {
         "message": ". Aktuelle Einstellung:"
     },
-    "supportInvidious": {
-        "message": "Invidious-Kompatibilität"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, musst du die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Inkognitomodus auf Chrome und anderen Chromium-Varianten."
-    },
     "optionsInfo": {
         "message": "Zu überspringende Kategorien auswählen, automatisches Überspringen, Tasten ein- & ausblenden und noch viel mehr."
-    },
-    "addInvidiousInstance": {
-        "message": "Invidious-Instanzen hinzufügen"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Füge eine benutzerdefinierte Instanz von Invidious hinzu. Dies darf nur den Domain-Teil beinhalten. Beispiel: \"invidious.ajay.app\""
     },
     "add": {
         "message": "Hinzufügen"
@@ -477,6 +465,21 @@
     "category_sponsor_description": {
         "message": "Bezahlte Werbung, bezahlte Empfehlungen und direkte Werbung, nicht für Eigenwerbung, kostenlose Fremdwerbung oder Empfehlungen für Anlässe/Personen/Webseiten/Produkte."
     },
+    "category_selfpromo": {
+        "message": "Unbezahlt/Eigenwerbung"
+    },
+    "category_selfpromo_description": {
+        "message": "Ähnlich wie bei \"gesponserte Videosegmente\", mit Ausnahme von unbezahlten oder Selbstpromotionen. Dies beinhaltet Merchandising (Fan-Artikel), Spenden oder Informationen darüber, mit wem für das Video zusammengearbeitet wurde."
+    },
+    "category_interaction": {
+        "message": "Interaktions-Erinnerungen (Abonnieren, etc.)"
+    },
+    "category_interaction_description": {
+        "message": "Wenn es im Video eine kurze Erinnerung gibt, den Kanal zu abonnieren oder das Video mit \"Mag ich\" zu markieren."
+    },
+    "category_interaction_short": {
+        "message": "Interaktions-Erinnerung"
+    },
     "category_intro": {
         "message": "Unterbrechung/Intro-Animation"
     },
@@ -491,21 +494,6 @@
     },
     "category_outro_description": {
         "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für videobeendende Schlussfolgerungen mit Informationen."
-    },
-    "category_interaction": {
-        "message": "Interaktions-Erinnerungen (Abonnieren, etc.)"
-    },
-    "category_interaction_description": {
-        "message": "Wenn es im Video eine kurze Erinnerung gibt, den Kanal zu abonnieren oder das Video mit \"Mag ich\" zu markieren."
-    },
-    "category_interaction_short": {
-        "message": "Interaktions-Erinnerung"
-    },
-    "category_selfpromo": {
-        "message": "Unbezahlt/Eigenwerbung"
-    },
-    "category_selfpromo_description": {
-        "message": "Ähnlich wie bei \"gesponserte Videosegmente\", mit Ausnahme von unbezahlten oder Selbstpromotionen. Dies beinhaltet Merchandising (Fan-Artikel), Spenden oder Informationen darüber, mit wem für das Video zusammengearbeitet wurde."
     },
     "category_music_offtopic": {
         "message": "Musikvideoteile ohne Musik"
@@ -533,10 +521,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
-    },
-    "previewColor": {
-        "message": "Farbe für noch nicht übermittelte Videosegmente",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Farbe in der Video-Zeitleiste"
