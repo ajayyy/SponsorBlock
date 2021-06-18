@@ -338,20 +338,8 @@
     "keybindCurrentlySet": {
         "message": ". Phím đang được đặt:"
     },
-    "supportInvidious": {
-        "message": "Hỗ trợ Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) là ứng dụng Youtube của bên thứ ba. Để bật hỗ trợ cho ứng dụng này, bạn phải chấp nhận các yêu cầu cho phép thêm. Ứng dụng này không có tác dụng trong chế độ ẩn danh của Chrome và các trình duyệt có nền tảng Chromium."
-    },
     "optionsInfo": {
         "message": "Bật hỗ trợ cho Invidious, tắt tự động bỏ qua quảng cáo, không hiển thị nút, và nhiều tùy chọn khác."
-    },
-    "addInvidiousInstance": {
-        "message": "Thêm phiên bản của Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Thêm một phiên bản tùy chọn của Invidious. Phải dùng định dạng của RIÊNG tên miền thôi. Ví dụ: invidious.ajay.app"
     },
     "add": {
         "message": "Thêm vào"
@@ -468,6 +456,21 @@
     "category_sponsor_description": {
         "message": "Nội dung được trả tiền để quảng cáo, giới thiệu và quảng cáo trực tiếp. Không phải là quảng cáo không trả công hay được đề cập miễn phí."
     },
+    "category_selfpromo": {
+        "message": "Quảng cáo không trả công/Tự quảng cáo"
+    },
+    "category_selfpromo_description": {
+        "message": "Tương tự như 'nhà tài trợ' ngoại trừ việc quảng cáo không được trả tiền hay tự quảng cáo. Điều này bao gồm các phần hàng hóa, đóng góp, hoặc thông tin về người mà họ hợp tác với."
+    },
+    "category_interaction": {
+        "message": "Nhắc tương tác (Đăng ký)"
+    },
+    "category_interaction_description": {
+        "message": "Nhắc nhở người xem Thích, Đăng ký hoặc Theo dõi. Nếu nó dài hoặc là một cái gì cụ thể, nó nên là danh mục \"Tự quảng cáo\"."
+    },
+    "category_interaction_short": {
+        "message": "Nhắc nhở tương tác"
+    },
     "category_intro": {
         "message": "Tạm dừng/Giới thiệu"
     },
@@ -482,21 +485,6 @@
     },
     "category_outro_description": {
         "message": "Credits hoặc khi thẻ màn hình kết thúc của YouTube xuất hiện. Không dùng với những đoạn có thông tin."
-    },
-    "category_interaction": {
-        "message": "Nhắc tương tác (Đăng ký)"
-    },
-    "category_interaction_description": {
-        "message": "Nhắc nhở người xem Thích, Đăng ký hoặc Theo dõi. Nếu nó dài hoặc là một cái gì cụ thể, nó nên là danh mục \"Tự quảng cáo\"."
-    },
-    "category_interaction_short": {
-        "message": "Nhắc nhở tương tác"
-    },
-    "category_selfpromo": {
-        "message": "Quảng cáo không trả công/Tự quảng cáo"
-    },
-    "category_selfpromo_description": {
-        "message": "Tương tự như 'nhà tài trợ' ngoại trừ việc quảng cáo không được trả tiền hay tự quảng cáo. Điều này bao gồm các phần hàng hóa, đóng góp, hoặc thông tin về người mà họ hợp tác với."
     },
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
@@ -521,10 +509,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Mã màu sai định dạng. Mã màu phải có 3 hoặc 6 ký tự hệ hex và có dấu thăng ở đầu."
-    },
-    "previewColor": {
-        "message": "Xem thử màu",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Màu của thanh xem trước"
