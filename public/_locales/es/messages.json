@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Actualmente está configurado para:"
     },
-    "supportInvidious": {
-        "message": "Apoya a Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) es un cliente de YouTube independiente. Para habilitar su soporte, debes aceptar los permisos extra. Esto NO funcionará en modo incógnito de Chrome y otras variantes del Chromium."
-    },
     "optionsInfo": {
         "message": "Activar el soporte para Invidious, desactivar la omisión automática, oculta botones y más."
-    },
-    "addInvidiousInstance": {
-        "message": "Agregar una Instancia de Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Añade una instancia personalizada de Invidious. Este debe formatearse SÓLO con el dominio. Ejemplo: invidious.ajay.app"
     },
     "add": {
         "message": "Agregar"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Promoción pagada, referencias pagadas y anuncios directos. No para autopromoción o anuncios gratuitos a causas/creadores/sitios web/productos que les gusten."
     },
+    "category_selfpromo": {
+        "message": "No remunerado/Autopromoción"
+    },
+    "category_selfpromo_description": {
+        "message": "Similar a \"patrocinador\", excepto que no es remunerado o se autopromociona. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
+    },
+    "category_interaction": {
+        "message": "Recordatorio de interacción (subscribir)"
+    },
+    "category_interaction_description": {
+        "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
+    },
+    "category_interaction_short": {
+        "message": "Recordatorio de interacción"
+    },
     "category_intro": {
         "message": "Intermisión/Introducción de animación"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Créditos o cuando aparecen las tarjetas finales de YouTube. No para conclusiones con información."
-    },
-    "category_interaction": {
-        "message": "Recordatorio de interacción (subscribir)"
-    },
-    "category_interaction_description": {
-        "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
-    },
-    "category_interaction_short": {
-        "message": "Recordatorio de interacción"
-    },
-    "category_selfpromo": {
-        "message": "No remunerado/Autopromoción"
-    },
-    "category_selfpromo_description": {
-        "message": "Similar a \"patrocinador\", excepto que no es remunerado o se autopromociona. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
     },
     "category_music_offtopic": {
         "message": "Música: Sección sin musica"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
-    },
-    "previewColor": {
-        "message": "Vista previa del color",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Busca el color de la barra"
