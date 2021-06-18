@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Obecnie ustawiony:"
     },
-    "supportInvidious": {
-        "message": "Wsparcie dla Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) to nieoficjalny klient YouTube’a. Aby włączyć dla niego wsparcie, musisz przyznać dodatkowe uprawnienia. W Chrome i innych przeglądarkach bazujących na Chromium ta opcja nie działa w trybie incognito."
-    },
     "optionsInfo": {
         "message": "Włącz wsparcie dla Invidious, wyłącz autopomijanie, ukryj przyciski i więcej."
-    },
-    "addInvidiousInstance": {
-        "message": "Dodaj instancje Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Dodaj niestandardową instancję Invidious. Musi to być w formie samej domeny. Przykładowo: invidious.ajay.app"
     },
     "add": {
         "message": "Dodaj"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Płatna promocja, płatne rekomendacje oraz bezpośrednie reklamy. Nie do autopromocji ani darmowych wyrazów uznania dla kwestii/twórców/stron/produktów, które im się podobają."
     },
+    "category_selfpromo": {
+        "message": "Nieopłacona/Własna promocja"
+    },
+    "category_selfpromo_description": {
+        "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
+    },
+    "category_interaction": {
+        "message": "Przypomnienie o interakcji (Subskrybuj)"
+    },
+    "category_interaction_description": {
+        "message": "Gdy ma miejsce krótkie przypomnienie, by lajkować, subskrybować lub śledzić ich w trakcie kontentu. Jeśli trwa to długo lub dotyczy czegoś konkretnego, powinno być zamiast tego jako promocja własna."
+    },
+    "category_interaction_short": {
+        "message": "Przypomnienie o interakcji"
+    },
     "category_intro": {
         "message": "Przerwa/Animowane intro"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Napisy końcowe lub gdy pojawia się ekran końcowy. Nie do konkluzji zawierających informacje."
-    },
-    "category_interaction": {
-        "message": "Przypomnienie o interakcji (Subskrybuj)"
-    },
-    "category_interaction_description": {
-        "message": "Gdy ma miejsce krótkie przypomnienie, by lajkować, subskrybować lub śledzić ich w trakcie kontentu. Jeśli trwa to długo lub dotyczy czegoś konkretnego, powinno być zamiast tego jako promocja własna."
-    },
-    "category_interaction_short": {
-        "message": "Przypomnienie o interakcji"
-    },
-    "category_selfpromo": {
-        "message": "Nieopłacona/Własna promocja"
-    },
-    "category_selfpromo_description": {
-        "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
     },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Nieprawidłowy format koloru. Powinien to być zapis szesnastkowy (heksadecymalny) składający się z 3 lub 6 znaków poprzedzonych kratką (#)."
-    },
-    "previewColor": {
-        "message": "Kolor podglądu",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Kolor paska postępu"
