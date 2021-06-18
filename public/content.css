@@ -9,6 +9,12 @@
 	height: 100%;
 	transform: scaleY(0.6) translateY(-30%) translateY(1.5px);
 	z-index: 40;
+
+	transition: transform .1s cubic-bezier(0,0,0.2,1);
+}
+
+#previewbar.hovered {
+	transform: scaleY(1)
 }
 
 .previewbar {
@@ -120,6 +126,11 @@
 	display: none;
 }
 
+/* For Cloudtube */
+.sponsorSkipNotice td, .sponsorSkipNotice table, .sponsorSkipNotice th {
+	border: none;
+}
+
 .sponsorSkipNoticeFadeIn {
 	animation: fadeIn 0.5s;
 }
@@ -128,7 +139,7 @@
 	animation: fadeOut 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.sponsorSkipNoticeTimeLeft {
+.sponsorSkipNotice .sponsorSkipNoticeTimeLeft {
 	color: #eeeeee;
 
 	border-radius: 4px;
@@ -161,7 +172,7 @@
   	align-items: center;
 }
 
-.sponsorSkipNoticeUnskipSection {
+.sponsorSkipNotice .sponsorSkipNoticeUnskipSection {
 	float: left;
 
 	border-left: 1px solid rgb(150, 150, 150);

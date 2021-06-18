@@ -66,14 +66,22 @@ body {
     display: inline-block;
 }
 
-.switch-container:after {
+.switch-container {
 	content: attr(label-name);
     position: absolute;
-    padding: 4px;
     width: max-content;
 
     font-size: 14px;
     color: white;
+
+    display: table;
+}
+
+.switch-container .switch-label {
+    display: table-cell;
+    vertical-align: middle;
+
+    padding: 4px;
 }
 
 .text-label-container {
@@ -268,23 +276,13 @@ p,li {
     padding: 10px;
 }
 
-p,li,code,a {
-    max-width: 60%;
-    text-align: left;
-    overflow-wrap: break-word;
-}
-
 @media screen and (orientation:portrait) {
-    p,li,code,a {
+    #options {
         max-width: 100%;
     }
-  
-    .projectPreviewImage {
-        position: unset;
-        width: 130px;
-        display: block;
-        margin: auto;
-        transform: none;
+
+    .previewColorOption {
+        display: none;
     }
 }
 

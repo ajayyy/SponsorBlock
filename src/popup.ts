@@ -372,8 +372,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
 
-                const prefix = utils.shortCategoryName(segmentTimes[i].category) + ": ";
-
+                const categoryColorCircle = document.createElement("span");
+                categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
+                categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category]?.color;
+                categoryColorCircle.classList.add("dot");
+                categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
+                
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
                     //this one is downvoted
@@ -382,14 +386,15 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     //this one is too short
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
+                
+                const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
+                const segmentTimeFromToNode = document.createElement("div");
+                segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true);
+                segmentTimeFromToNode.style.margin = "5px";
 
-                sponsorTimeButton.innerText = prefix + utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) + extraInfo;
-
-                const categoryColorCircle = document.createElement("span");
-                categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
-                categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category].color;
-                categoryColorCircle.classList.add("dot");
-                categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
+                sponsorTimeButton.appendChild(categoryColorCircle);
+                sponsorTimeButton.appendChild(textNode);
+                sponsorTimeButton.appendChild(segmentTimeFromToNode);
 
                 const votingButtons = document.createElement("div");
                 votingButtons.classList.add("votingButtons");
@@ -398,7 +403,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const voteButtonsContainer = document.createElement("div");
                 voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
                 voteButtonsContainer.setAttribute("align", "center");
-                voteButtonsContainer.style.display = "none"
+                voteButtonsContainer.classList.add('voteButtonsContainer--hide');
 
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
@@ -427,7 +432,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 //add click listener to open up vote panel
                 sponsorTimeButton.addEventListener("click", function() {
-                    voteButtonsContainer.style.removeProperty("display");
+                    voteButtonsContainer.classList.toggle("voteButtonsContainer--hide");
                 });
 
                 // Will contain request status
@@ -441,7 +446,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
                 voteStatusContainer.appendChild(thanksForVotingText);
 
-                votingButtons.append(categoryColorCircle);
                 votingButtons.append(sponsorTimeButton);
                 votingButtons.append(voteButtonsContainer);
                 votingButtons.append(voteStatusContainer);

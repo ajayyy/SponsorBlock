@@ -52,7 +52,7 @@ The backend server code is available here: https://github.com/ajayyy/SponsorBloc
 
 To make sure that this project doesn't die, I have made the database publicly downloadable at https://sponsor.ajay.app/database ([License](https://github.com/ajayyy/SponsorBlock/wiki/Database-and-API-License)). If you are planning on using the database in another project, please read the [API Docs](https://github.com/ajayyy/SponsorBlock/wiki/API-Docs) page for more information.
 
-The dataset and API are now being used in some [ports](https://github.com/ajayyy/SponsorBlock/wiki/Unofficial-Ports) as well as a [neural network](https://github.com/andrewzlee/NeuralBlock).
+The dataset and API are now being used in some [ports](https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports) as well as a [neural network](https://github.com/andrewzlee/NeuralBlock).
 
 # API
 
@@ -75,6 +75,8 @@ The result is in `dist`. This can be loaded as an unpacked extension
 Run `npm run dev` to run the extension using a clean browser profile with hot reloading. Use `npm run dev:firefox` for Firefox. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).  
 Known chromium bug: Extension is not loaded properly on first start. Visit `chrome://extensions/` and reload the extension.
 
+For Firefox for Android, use `npm run dev:firefox-android -- --adb-device <ip-address of the device>`. See the [Firefox documentation](https://extensionworkshop.com/documentation/develop/developing-extensions-for-firefox-for-android/#debug-your-extension) for more information.
+
 ### Attribution Generation
 
 If you contribute and add a dependency, update the attribution file using the following steps:
@@ -88,7 +90,7 @@ mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
 
 # Credit
 
-The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used.
+The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) as a to get video info from YouTube.
 
 Originally forked from [YTSponsorSkip](https://github.com/NDevTK/YTSponsorSkip), but very little code remains.
 
@@ -100,4 +102,4 @@ Icons made by:
 
 ### License
 
-This project is licensed under GNU GPL v3 or any later version
+This project is licensed under GNU LGPL v3 or any later version

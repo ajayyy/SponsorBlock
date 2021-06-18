@@ -10,6 +10,14 @@
   display: none !important;
 }
 
+.sponsorTimesCategoryColorCircle {
+  margin: 0 8px;
+}
+
+.voteButtonsContainer--hide {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   #sponsorBlockPopupBody {
     width: 100%; 
@@ -43,6 +51,7 @@
   outline: none;
 
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .dot {
@@ -277,8 +286,6 @@ background-color:#ec1c1c;
   min-height: 16px;
   margin-top: auto;
   margin-bottom: auto;
-
-  height: 100%;
 }
 
 .SBWhitelistIcon>path {

@@ -18,6 +18,7 @@ interface SBConfig {
     showTimeWithSkips: boolean,
     disableSkipping: boolean,
     trackViewCount: boolean,
+    trackViewCountInPrivate: boolean,
     dontShowNotice: boolean,
     hideVideoPlayerControls: boolean,
     hideInfoButtonPlayerControls: boolean,
@@ -155,6 +156,7 @@ const Config: SBObject = {
         showTimeWithSkips: true,
         disableSkipping: false,
         trackViewCount: true,
+        trackViewCountInPrivate: true,
         dontShowNotice: false,
         hideVideoPlayerControls: false,
         hideInfoButtonPlayerControls: false,
@@ -224,11 +226,11 @@ const Config: SBObject = {
                 opacity: "0.7"
             },
             "preview": {
-                color: "#ff1684",
+                color: "#0b9d65",
                 opacity: "0.7"
             },
             "preview-preview": {
-                color: "#9b044c",
+                color: "#065b3a",
                 opacity: "0.7"
             },
             "music_offtopic": {
@@ -351,6 +353,14 @@ function migrateOldFormats(config: SBConfig) {
         });
 
         config.categorySelections = config.categorySelections;
+    }
+
+    // Remove some old unused options
+    if (config["sponsorVideoID"] !== undefined) {
+        chrome.storage.sync.remove("sponsorVideoID");
+    }
+    if (config["previousVideoID"] !== undefined) {
+        chrome.storage.sync.remove("previousVideoID");
     }
 }
 

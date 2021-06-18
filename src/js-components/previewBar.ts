@@ -1,5 +1,5 @@
 /*
-This is based on code from VideoSegments.
+Parts of this are inspired from code from VideoSegments, but rewritten and under the LGPLv3 license
 https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd51f62a4e7fef4d4/segmentsbar/segmentsbar.js
 */
 
@@ -37,7 +37,7 @@ class PreviewBar {
         this.onMobileYouTube = onMobileYouTube;
         this.onInvidious = onInvidious;
 
-        this.updatePosition(parent);
+        this.createElement(parent);
 
         this.setupHoverText();
     }
@@ -135,7 +135,7 @@ class PreviewBar {
         });
     }
 
-    updatePosition(parent: HTMLElement): void {
+    createElement(parent: HTMLElement): void {
         this.parent = parent;
 
         if (this.onMobileYouTube) {
@@ -143,20 +143,17 @@ class PreviewBar {
             parent.style.opacity = "1";
             
             this.container.style.transform = "none";
+        } else if (!this.onInvidious) {
+            // Hover listener
+            this.parent.addEventListener("mouseenter", () => this.container.classList.add("hovered"));
+
+            this.parent.addEventListener("mouseleave", () => this.container.classList.remove("hovered"));
         }
+
+        
 
         // On the seek bar
         this.parent.prepend(this.container);
-    }
-
-    // TODO: call on config changes
-    updateColor(segmentType: string, color: string, opacity: number): void {
-        const bars = <NodeListOf<HTMLElement>> document.querySelectorAll('[data-vs-segment-type=' + segmentType + ']');
-
-        for (const bar of bars) {
-            bar.style.backgroundColor = color;
-            bar.style.opacity = String(opacity);
-        }
     }
 
     clear(): void {
@@ -170,7 +167,6 @@ class PreviewBar {
 
     set(segments: PreviewBarSegment[], videoDuration: number): void {
         this.clear();
-
         if (!segments) return;
 
         this.segments = segments;
@@ -191,12 +187,11 @@ class PreviewBar {
         bar.classList.add('previewbar');
         bar.innerHTML = '&nbsp;';
 
-        const barSegmentType = (unsubmitted ? 'preview-' : '') + category;
+        const fullCategoryName = (unsubmitted ? 'preview-' : '') + category;
+        bar.setAttribute('sponsorblock-category', fullCategoryName);
 
-        bar.setAttribute('data-vs-segment-type', barSegmentType);
-
-        bar.style.backgroundColor = Config.config.barTypes[barSegmentType].color;
-        if (!this.onMobileYouTube) bar.style.opacity = Config.config.barTypes[barSegmentType].opacity;
+        bar.style.backgroundColor = Config.config.barTypes[fullCategoryName]?.color;
+        if (!this.onMobileYouTube) bar.style.opacity = Config.config.barTypes[fullCategoryName]?.opacity;
 
         bar.style.position = "absolute";
         if (segment[1] - segment[0] > 0) bar.style.width = this.timeToPercentage(segment[1] - segment[0]);
