@@ -120,10 +120,6 @@
     "disable": {
         "message": "Απενεργοποίηση"
     },
-    "previewColor": {
-        "message": "Προεπισκόπηση χρώματος",
-        "description": "Referring to submissions that have not been sent to the server yet."
-    },
     "category": {
         "message": "Κατηγορία"
     },
