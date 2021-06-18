@@ -341,20 +341,8 @@
     "keybindCurrentlySet": {
         "message": "。現在の設定は:"
     },
-    "supportInvidious": {
-        "message": "Invidiousに対応"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) は第三者製のYouTubeクライアントです。Invidious対応を有効にするには，追加の権限を受け入れなければいけません。 これはChromeやその他のChromium系列の匿名閲覧状態では動作しません。"
-    },
     "optionsInfo": {
         "message": "Invidious対応を有効にし，自動飛越を無効にし，GUIを非表示にします。"
-    },
-    "addInvidiousInstance": {
-        "message": "Invidiousインスタンスを追加"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "任意のInvidiousインスタンスを追加します。ドメイン名だけを記入してください。例: invidious.ajay.app"
     },
     "add": {
         "message": "追加"
@@ -414,6 +402,9 @@
     "category_sponsor": {
         "message": "スポンサー"
     },
+    "category_selfpromo": {
+        "message": "無報酬 / セルフプロモーション"
+    },
     "category_intro": {
         "message": "インターミッション / イントロアニメーション"
     },
@@ -422,9 +413,6 @@
     },
     "category_outro": {
         "message": "エンドカード/クレジット"
-    },
-    "category_selfpromo": {
-        "message": "無報酬 / セルフプロモーション"
     },
     "category_music_offtopic": {
         "message": "音楽: 音楽ではない区間"
@@ -437,10 +425,6 @@
     },
     "showOverlay": {
         "message": "シークバーに表示"
-    },
-    "previewColor": {
-        "message": "プレビューカラー",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "シークバーのカラー"
