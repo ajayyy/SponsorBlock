@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Setați cheia pentru omiterea unui segment"
     },
-    "setStartSponsorShortcut": {
-        "message": "Setează tasta pentru pornirea segmentului"
-    },
     "setSubmitKeybind": {
         "message": "Setează tasta pentru trimiterea sponsorizării"
     },
@@ -575,12 +572,6 @@
     },
     "hiddenDueToDuration": {
         "message": "ascuns: prea scurt"
-    },
-    "channelDataNotFound": {
-        "message": "ID-ul Canalului nu a fost încărcat încă."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Dacă acest lucru continuă să se întample, ar putea fi cauzat de adblocker-ul dumneavoastră. Vă rugăm să verificați \nhttps://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Forțează verificarea canalului înainte de a sări"

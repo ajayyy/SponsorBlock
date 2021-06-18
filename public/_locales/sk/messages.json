@@ -238,9 +238,6 @@
     "setSkipShortcut": {
         "message": "Nastaviť kláves pre preskočenie segmentu"
     },
-    "setStartSponsorShortcut": {
-        "message": "Nastaviť kláves pre začiatok segmentu"
-    },
     "setSubmitKeybind": {
         "message": "Nastaviť kláves pre odoslanie segmentu"
     },
@@ -583,7 +580,8 @@
         "message": "skryté: príliš krátke"
     },
     "channelDataNotFound": {
-        "message": "ID kanála nie je zatiaľ načítané."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID kanála sa ešte nenačítalo. Ak pozeráte video vložené na stránke, skúste ísť radšej priamo na YouTube. Problém mohli spôsobiť zmeny na YouTube. Ak je tomu tak, zanechajte komentár:"
     },
     "videoInfoFetchFailed": {
         "message": "Zdá sa, že niečo blokuje SponsorBlocku možnosť získať dáta o videu. Prosím navštívte https://github.com/ajayyy/SponsorBlock/issues/741 pre viac informácií."
@@ -602,9 +600,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Ak to neviete vyriešiť, vypnite nastavenie \"Vynútiť kontrolu kanála pred preskočením\", lebo SponsorBlock nevie zistiť informácie o kanále tohto videa"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Ak sa to bude diať aj naďalej, môže to byť spôsobené Vašim adblockerom. Prosím navštívte https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Vynútiť kontrolu kanála pred preskočením"

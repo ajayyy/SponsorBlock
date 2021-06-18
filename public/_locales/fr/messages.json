@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Fin du segment"
     },
+    "sponsorCancel": {
+        "message": "Annuler la création de segment"
+    },
     "noVideoID": {
         "message": "Aucune vidéo YouTube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
     },
@@ -197,6 +200,9 @@
     "whatViewTracking": {
         "message": "Cette fonctionnalité permet de suivre les segments que vous avez sautés pour faire savoir aux utilisateurs à quel point leur soumission a aidé les autres et est utilisée comme donnée avec les votes positifs pour s'assurer que des spams n'entrent pas dans la base de données. L'extension envoie un message au serveur chaque fois que vous sautez un segment. Il est à espérer que la plupart des gens ne modifient pas ce paramètre pour que les données sur le nombre d'affichages soient exactes. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Activer le suivi du nombre de sauts dans les onglets privés/incognito"
+    },
     "enableQueryByHashPrefix": {
         "message": "Requête avec seulement le début du hash"
     },
@@ -236,7 +242,7 @@
         "message": "Définir une touche pour passer un segment"
     },
     "setStartSponsorShortcut": {
-        "message": "Définir le raccourci pour commencer un segment"
+        "message": "Définir le raccourci pour démarrer/terminer un segment"
     },
     "setSubmitKeybind": {
         "message": "Changer le raccourci pour soumettre les segments"
@@ -580,10 +586,26 @@
         "message": "masqué : trop court"
     },
     "channelDataNotFound": {
-        "message": "L'ID de la chaîne n'a pas encore été chargé."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Le Channel ID n'est pas encore chargé. Si vous utilisez une vidéo intégrée, essayez d'utiliser la page d'accueil de YouTube. Cela pourrait également être causé par des changements dans l'interface de YouTube. Si vous pensez que c'est le cas, écrivez un commentaire ici :"
     },
-    "itCouldBeAdblockerIssue": {
-        "message": "Si ça se reproduit, c'est peut-être causé par votre bloqueur de publicités. Veuillez consulter https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Il semblerait que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. Veuillez consulter https://github.com/ajayyy/SponsorBlock/issues/741 pour plus d'informations."
+    },
+    "youtubePermissionRequest": {
+        "message": "Il semblerait que SponsorBlock ne puisse pas accéder à l'API YouTube. Pour corriger cela, acceptez la demande de permission qui apparaîtra, attendez quelques secondes, puis rechargez la page."
+    },
+    "acceptPermission": {
+        "message": "Accepter l'autorisation"
+    },
+    "permissionRequestSuccess": {
+        "message": "Demande de permission réussie !"
+    },
+    "permissionRequestFailed": {
+        "message": "La demande d'autorisation a échoué, avez-vous cliqué sur refuser ?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Si vous ne parvenez pas à résoudre ce problème, désactivez le paramètre 'Force Channel Check Before Skipping' car SponsorBlock est incapable de récupérer les informations de la chaine pour cette vidéo"
     },
     "forceChannelCheck": {
         "message": "Forcer la vérification du canal avant de passer"

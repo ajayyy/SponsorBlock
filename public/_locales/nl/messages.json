@@ -44,10 +44,10 @@
         "message": "Nooit weergeven"
     },
     "hitGoBack": {
-        "message": "Druk op \"niet overslaan\" om terug te gaan naar waar u vandaan komt."
+        "message": "Druk op \"overslaan ongedaan maken\" om terug te gaan naar waar u vandaan komt."
     },
     "unskip": {
-        "message": "Niet overslaan"
+        "message": "Overslaan ongedaan maken"
     },
     "reskip": {
         "message": "Opnieuw overslaan"
@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Deze functie houdt bij welke segmenten u heeft overgeslagen om gebruikers te laten weten hoezeer hun indiening anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer u een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Bijhouden van het aantal keren overslaan inschakelen in privé-/incognito-tabbladen"
+    },
     "enableQueryByHashPrefix": {
         "message": "Opvragen via hash-voorvoegsel"
     },
@@ -239,7 +242,7 @@
         "message": "Sleutel instellen voor het overslaan van een segment"
     },
     "setStartSponsorShortcut": {
-        "message": "Sneltoets instellen voor begin van segment"
+        "message": "Sneltoets instellen voor begin/einde van segment"
     },
     "setSubmitKeybind": {
         "message": "Sneltoets instellen voor indienen"
@@ -583,7 +586,8 @@
         "message": "verborgen: te kort"
     },
     "channelDataNotFound": {
-        "message": "Kanaal-ID is nog niet geladen."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanaal-ID is nog niet geladen. Als u een ingesloten video gebruikt, probeer dan in plaats daarvan de YouTube-homepagina. Dit kan ook worden veroorzaakt door wijzigingen in de YouTube-lay-out. Als u denkt dat dit het geval is, maak dan hier een opmerking:"
     },
     "videoInfoFetchFailed": {
         "message": "Het lijkt erop dat iets de mogelijkheid van SponsorBlock om videogegevens op te halen, blokkeert. Zie https://github.com/ajayyy/SponsorBlock/issues/741 voor meer informatie."
@@ -602,9 +606,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Als u dit niet kunt oplossen, schakel dan de instelling 'kanaalcontrole forceren vóór overslaan' uit omdat SponsorBlock niet in staat is de kanaalinformatie voor deze video op te halen"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Als dit blijft optreden, kan dit worden veroorzaakt door uw reclamefilter. Zie https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Kanaalcontrole forceren vóór overslaan"

@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Esta función rastrea los segmentos que se han saltado para que los usuarios sepan en qué medida sus aportes ayudaron a los demás y se utilizan como una métrica junto con los votos favorables para garantizar que no aparezca spam en la base de datos. La extensión envía un mensaje al servidor cada vez que se salta un segmento. Esperemos que la mayoría de la gente no cambie esta configuración para que los números de vista sean exactos. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Activar el seguimiento del número de saltos en las pestañas privadas/de incógnito"
+    },
     "enableQueryByHashPrefix": {
         "message": "Consulta Por Prefijo Hash"
     },
@@ -239,7 +242,7 @@
         "message": "Establecer tecla para omitir un segmento"
     },
     "setStartSponsorShortcut": {
-        "message": "Establecer tecla para iniciar segmento"
+        "message": "Establecer tecla para iniciar/detener un segmento"
     },
     "setSubmitKeybind": {
         "message": "Establecer botón de envio"
@@ -583,7 +586,8 @@
         "message": "oculto: demasiado corto"
     },
     "channelDataNotFound": {
-        "message": "ID de canal no cargado todavía."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "El ID del canal no está cargado todavía. Si está usando un vídeo incrustado, intente usar la página de inicio de YouTube en su lugar. Esto también podría ser causado por cambios en el diseño de YouTube, si lo cree, haga un comentario aquí:"
     },
     "videoInfoFetchFailed": {
         "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de video, Por favor, vea https://github.com/ajayyy/SponsorBlock/issues/741 para más información."
@@ -602,9 +606,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Si no puede resolverlo, desactive la opción \"Forzar Comprobación de Canal antes de Saltar\", ya que SponsorBlock no puede recuperar la información del canal de este video"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Si esto sigue ocurriendo, podría ser causado por tu bloqueador de anuncios. Por favor, compruebe https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Solicitudes"
     },
     "forceChannelCheck": {
         "message": "Comprobación forzada del canal antes de saltarse"

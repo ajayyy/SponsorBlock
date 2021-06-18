@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "這個功能會追蹤您跳過的片段來讓其他使用者知道您的提交幫助了其他人多少，並同時用作計算錯誤提交的方式。這個擴充功能會在您每一次跳過片段時向伺服器回報。希望大家盡量不要改變這個設定來確保資料的正確性。 ：）"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "在私人/無痕分頁啟用跳過次數追蹤"
+    },
     "enableQueryByHashPrefix": {
         "message": "使用雜湊前綴查詢"
     },
@@ -239,7 +242,7 @@
         "message": "設定跳過段落的快捷鍵"
     },
     "setStartSponsorShortcut": {
-        "message": "設定開始片段快捷鍵"
+        "message": "設定開始/結束片段快捷鍵"
     },
     "setSubmitKeybind": {
         "message": "設定提交快捷鍵"
@@ -579,9 +582,6 @@
     "hiddenDueToDuration": {
         "message": "隱藏：太短"
     },
-    "channelDataNotFound": {
-        "message": "頻道 ID 尚未載入"
-    },
     "videoInfoFetchFailed": {
         "message": "似乎有東西在阻止 SponsorBlock 獲取影片資料。請查看 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"
     },
@@ -596,9 +596,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "如果您沒辦法解決這個問題，請停用\"強制在跳過前檢查頻道\"，因為 SponsorBlock 無法獲取這部影片的頻道資料。"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "如果這種情況不斷發生，它可能是由您的廣告攔截器引起的。請查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "在跳過之前強制頻道檢查"

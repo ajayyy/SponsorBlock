@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Koniec segmentu"
     },
+    "sponsorCancel": {
+        "message": "Anuluj tworzenie segmentu"
+    },
     "noVideoID": {
         "message": "Nie znaleziono filmu YouTube.\nJeżeli to błąd, odśwież stronę."
     },
@@ -197,6 +200,9 @@
     "whatViewTracking": {
         "message": "Ta opcja monitoruje pomijane przez Ciebie segmenty, by dać znać użytkownikom, jak bardzo ich wkład pomógł innym, oraz w połączeniu z systemem głosowania zapobiegać dostawaniu się spamu do bazy danych. Rozszerzenie wysyła wiadomość do serwera za każdym razem, kiedy pomijasz segment. Miejmy nadzieję, że większość ludzi tego nie wyłączy i liczniki wyświetleń będą wiarygodne. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Włącz licznik śledzenia pominięć w zakładkach Prywatnych/Incognito"
+    },
     "enableQueryByHashPrefix": {
         "message": "Zapytanie według prefiksu Hash"
     },
@@ -236,7 +242,7 @@
         "message": "Ustaw klawisz do pomijania segmentów"
     },
     "setStartSponsorShortcut": {
-        "message": "Ustaw klawisz do oznaczania początku segmentu"
+        "message": "Ustaw klawisz do oznaczania początku/końca segmentu"
     },
     "setSubmitKeybind": {
         "message": "Ustaw klawisz do wysyłania czasów"
@@ -580,7 +586,11 @@
         "message": "ukryty: zbyt krótki"
     },
     "channelDataNotFound": {
-        "message": "ID kanału nie zostało póki co załadowane."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID kanału nie zostało jeszcze załadowane. Jeśli używasz embeddowanego filmu, spróbuj użyć strony głównej YouTube'a. Może to być również spowodowane zmianami w layout'cie YouTube'a, jeśli myślisz, że to przez to, dodaj swój komentarz tutaj:"
+    },
+    "videoInfoFetchFailed": {
+        "message": "Wygląda na to, że coś blokuje możliwość pobierania danych o filmach przez SponsorBlock. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/issues/741 po więcej informacji."
     },
     "youtubePermissionRequest": {
         "message": "Wygląda na to, że SponsorBlock nie jest w stanie połączyć się z API YouTube. Aby to naprawić, zaakceptuj monit o pozwolenie, który pojawi się za chwilę, odczekaj kilka sekund, a następnie odśwież stronę."
@@ -594,8 +604,8 @@
     "permissionRequestFailed": {
         "message": "Prośba odrzucona. Może kliknięto „Odmów”?"
     },
-    "itCouldBeAdblockerIssue": {
-        "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "adblockerIssueWhitelist": {
+        "message": "Jeśli nie możesz rozwiązać tego problemu, wyłącz opcję „Wymuś sprawdzanie kanału przed pomijaniem”, ponieważ SponsorBlock nie jest w stanie pobrać informacji o kanale dla tego wideo"
     },
     "forceChannelCheck": {
         "message": "Wymuś sprawdzanie kanału przed pomijaniem"

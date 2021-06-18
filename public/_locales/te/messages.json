@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "విభాగాన్ని దాటవేయడానికి కీని సెట్ చేయండి"
     },
-    "setStartSponsorShortcut": {
-        "message": "ప్రారంభ విభాగం కీబైండ్ కోసం కీని సెట్ చేయండి"
-    },
     "setSubmitKeybind": {
         "message": "సమర్పణ కీబైండ్ కోసం కీని సెట్ చేయండి"
     },
@@ -578,12 +575,6 @@
     },
     "hiddenDueToDuration": {
         "message": "దాచబడింది: చాలా చిన్నది"
-    },
-    "channelDataNotFound": {
-        "message": "ఛానెల్ ID ఇంకా లోడ్ కాలేదు."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "ఇది జరుగుతూ ఉంటే, అది మీ ప్రకటన బ్లాకర్ వల్ల సంభవించవచ్చు. దయచేసి https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests తనిఖీ చేయండి"
     },
     "forceChannelCheck": {
         "message": "దాటవేయడానికి ముందు ఛానెల్ తనిఖీ చేయమని బలవంతం చేయండి"

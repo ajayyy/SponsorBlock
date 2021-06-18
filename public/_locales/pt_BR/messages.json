@@ -239,7 +239,7 @@
         "message": "Defina a tecla para ignorar um segmento"
     },
     "setStartSponsorShortcut": {
-        "message": "Defina a tecla para que marca o início do segmento"
+        "message": "Defina a tecla para iniciar/interromper o segmento"
     },
     "setSubmitKeybind": {
         "message": "Defina a tecla para enviar o segmento de patrocínio"
@@ -583,7 +583,8 @@
         "message": "oculto: muito curto"
     },
     "channelDataNotFound": {
-        "message": "ID do canal ainda não carregado."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID do canal ainda não foi carregado. Se você estiver usando um vídeo embutido, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se você achar que este é o caso, faça um comentário aqui:"
     },
     "videoInfoFetchFailed": {
         "message": "Parece que algo está bloqueando a habilidade do SponsorBlock de obter dados de vídeo. Por favor, veja https://github.com/ajayyy/SponsorBlock/issues/741 para mais informações."
@@ -602,9 +603,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Se você não consegue resolver isso, desative a configuração 'Forçar Verificação do Canal Antes de Pular', pois o SponsorBlock não pode recuperar as informações deste vídeo"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Se isso continuar acontecendo, pode ser causado pelo seu bloqueador de anúncios. Por favor, verifique https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock-Requests"
     },
     "forceChannelCheck": {
         "message": "Forçar verificação do canal antes de pular"

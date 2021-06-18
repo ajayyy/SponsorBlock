@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "ஒரு பகுதியைத் தவிர்ப்பதற்கான விசையை அமைக்கவும்"
     },
-    "setStartSponsorShortcut": {
-        "message": "தொடக்க பிரிவு விசைப்பலகைக்கு விசையை அமைக்கவும்"
-    },
     "setSubmitKeybind": {
         "message": "சமர்ப்பிக்கும் விசைப்பலகைக்கு விசையை அமைக்கவும்"
     },
@@ -578,12 +575,6 @@
     },
     "hiddenDueToDuration": {
         "message": "மறைக்கப்பட்ட: மிகக் குறுகிய"
-    },
-    "channelDataNotFound": {
-        "message": "சேனல் ஐடி இன்னும் ஏற்றப்படவில்லை."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "இது தொடர்ந்து நடந்தால், அது உங்கள் விளம்பர தடுப்பாளரால் ஏற்படலாம். Https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests ஐ சரிபார்க்கவும்"
     },
     "forceChannelCheck": {
         "message": "தவிர்ப்பதற்கு முன் சேனல் சோதனை கட்டாயப்படுத்தவும்"

@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "セグメントをスキップするキーを設定"
     },
-    "setStartSponsorShortcut": {
-        "message": "セグメントを開始するキーを設定"
-    },
     "setSubmitKeybind": {
         "message": "投稿するキーを設定"
     },
@@ -466,9 +463,6 @@
     },
     "youMustSelectACategory": {
         "message": "提出する全ての区域について，その範疇を選択する必要があります！"
-    },
-    "channelDataNotFound": {
-        "message": "まだチャンネル ID が読み込まれてません。"
     },
     "youtubePermissionRequest": {
         "message": "SponsorBlockがYouTube APIを参照できないようです。修正するには，次に表示される画面で許可を承認してから，数秒後に再読み込みしてください。"

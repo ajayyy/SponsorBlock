@@ -204,13 +204,13 @@
         "message": "Ricerca tramite prefisso hash"
     },
     "whatQueryByHashPrefix": {
-        "message": "Invece di richiedere segmenti dal server utilizzando l'Id video, vengono inviati i primi 4 caratteri dell'hash dell'ID video. Questo server invierà i dati per tutti i video con hash simili."
+        "message": "Invece di richiedere i segmenti dal server utilizzando l'ID del video, viene inviato un hash dei primi 4 caratteri dell'ID. Questo server invierà i dati per tutti i video con hash simili."
     },
     "enableRefetchWhenNotFound": {
         "message": "Ricarica I Segmenti Su Nuovi Video"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Se il video è nuovo, e non risultano esserci segmenti, questi continueranno ad essere ricaricati dopo pochi minuti mentre guardi il video."
+        "message": "Se il video è nuovo, e non risultano esserci segmenti, continueremo a cercarne di nuovi ogni pochi minuti."
     },
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
@@ -237,9 +237,6 @@
     },
     "setSkipShortcut": {
         "message": "Imposta un tasto per saltare un segmento"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Imposta chiave di associazione per l'inizio del segmento"
     },
     "setSubmitKeybind": {
         "message": "Imposta chiave di associazione tasti per i tuoi contributi"
@@ -315,7 +312,7 @@
         "message": "ore"
     },
     "youHaveSavedTime": {
-        "message": "Hai salvato alle persone"
+        "message": "Hai fatto risparmiare"
     },
     "youHaveSavedTimeEnd": {
         "message": " delle loro vite"
@@ -583,7 +580,8 @@
         "message": "nascosto: troppo corto"
     },
     "channelDataNotFound": {
-        "message": "ID canale non ancora caricato."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "L'ID del canale non è ancora caricato. Se stai usando un video incorporato, prova piuttosto a usare la pagina principale di YouTube. Questo potrebbe esser causato dalle modifiche al layout di YouTube, se pensi che sia così, scrivi qui un commento:"
     },
     "videoInfoFetchFailed": {
         "message": "Sembra che qualcosa stia bloccando l'abilità di SponsorBlock di ottenere i dati del video. Sei pregato di vedere https://github.com/ajayyy/SponsorBlock/issues/741 per ulteriori informazioni."
@@ -602,9 +600,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Se non riesci a risolverlo, disabilita allora l'impostazione 'Forza Controllo Canale Prima di Saltare', poiché SponsorBlock non è in grado di recuperare le informazioni del canale per questo video"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Se questo continua a verificarsi, potrebbe essere causato dal tuo ad-blocker. Controlla https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Forza controllo canale prima di andare avanti"

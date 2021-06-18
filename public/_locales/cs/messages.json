@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Tato vlastnost sleduje, jaké segmenty jste přeskočili, abychom dali uživatelům vědět, jak moc jejich příspěvek pomohl ostatním a může být použita jako sledování společně s hlasy pro zajištění, že se spam nedostane do databáze. Toto rozšíření posílá zprávu serveru pokaždé když přeskočíte segment. Doufejme, že si moc lidí nezmění toto nastavení, aby byla zobrazená čísla přesná. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Povolit sledování počtu přeskočení v soukromých/anonymních oknech"
+    },
     "enableQueryByHashPrefix": {
         "message": "Dotaz podle hash předpony"
     },
@@ -239,7 +242,7 @@
         "message": "Nastavit klíč pro přeskočení segmentu"
     },
     "setStartSponsorShortcut": {
-        "message": "Nastavte klávesu pro spuštění segmentu"
+        "message": "Nastavte klávesu pro spuštění/zastavení segmentu"
     },
     "setSubmitKeybind": {
         "message": "Nastavte klávesu pro odeslání"
@@ -583,7 +586,8 @@
         "message": "skryté: moc krátké"
     },
     "channelDataNotFound": {
-        "message": "ID kanálu ještě nebylo načteno."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID kanálu ještě není načteno. Pokud používáte vložené video, zkuste místo toho použít domovskou stránku YouTube. Toto může být také způsobeno změnami v rozložení YouTube, pokud si myslíte, že tomu tak bude, zanechte zde komentář:"
     },
     "videoInfoFetchFailed": {
         "message": "Vypadá to, že něco blokuje schopnost SponsorBlocku získat údaje o videu. Pro více informací prosím navštivte https://github.com/ajayyy/SponsorBlock/issues/741."
@@ -602,9 +606,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Pokud vám tento problém nepůjde vyřešit, vypněte nastavení 'Vynutit kontrolu kanálu před přeskočením', protože SponsorBlock nemůže zjistit informace o kanálu"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Pokud k tomu stále dochází, může to být způsobeno vaším adblockerem. Podívejte se prosím https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Vynutit kontrolu kanálu před přeskočením"

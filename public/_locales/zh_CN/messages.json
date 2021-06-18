@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "设置用于跳过片段的按键"
     },
-    "setStartSponsorShortcut": {
-        "message": "设定片段开始的绑定按键"
-    },
     "setSubmitKeybind": {
         "message": "设定提交的绑定按键"
     },
@@ -579,17 +576,11 @@
     "hiddenDueToDuration": {
         "message": "隐藏：过短"
     },
-    "channelDataNotFound": {
-        "message": "频道 ID 尚未加载。"
-    },
     "acceptPermission": {
         "message": "接受权限"
     },
     "permissionRequestSuccess": {
         "message": "权限请求成功！"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "如果这种情况不断发生，它可能是由您的广告拦截器引起的。请查看 https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "跳过前强制进行频道检查"

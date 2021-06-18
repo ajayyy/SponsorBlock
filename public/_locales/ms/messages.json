@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Tetapkan kunci untuk melangkau segmen"
     },
-    "setStartSponsorShortcut": {
-        "message": "Tetapkan kunci untuk keybind segmen permulaan"
-    },
     "setSubmitKeybind": {
         "message": "Tetapkan kunci untuk pengikat kunci penyerahan"
     },
@@ -578,12 +575,6 @@
     },
     "hiddenDueToDuration": {
         "message": "tersembunyi: terlalu pendek"
-    },
-    "channelDataNotFound": {
-        "message": "ID Saluran belum dimuat."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Sekiranya ini terus berlaku, ini mungkin disebabkan oleh penyekat iklan anda. Sila periksa https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Pakai Pemeriksaan Saluran Sebelum Melangkau"
