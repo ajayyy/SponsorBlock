@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": "。它目前被設定為："
     },
-    "supportInvidious": {
-        "message": "支持 Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) 是第三方的 YouTube 客戶端。要啟用對其之支援，您必須接受額外的權限。這在 Chrome 中的無痕模式和其他 Chromium 分支無效"
-    },
     "optionsInfo": {
         "message": "啟用 Invidious 支援，停用自動跳過、隱藏按鈕等。"
-    },
-    "addInvidiousInstance": {
-        "message": "添加 Invidious 進程"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "添加一個 Invidious 自定進程。它必須只有域名。例如：invidious.ajay.app"
     },
     "add": {
         "message": "新增"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "有收錢的工商廣告和直接廣告。不是為了自我推銷或為了其他創作的免費推銷"
     },
+    "category_selfpromo": {
+        "message": "非付費/自我推廣"
+    },
+    "category_selfpromo_description": {
+        "message": "類似 “贊助商廣告” ，但是非付費或自我推廣。這包括有關商品、捐贈或與他人合作的信息。"
+    },
+    "category_interaction": {
+        "message": "互動提醒 (訂閱)"
+    },
+    "category_interaction_description": {
+        "message": "當有短提醒來請觀眾按讚、訂閱或跟隨他們時。如果該片段很長或很針對某事，它應該歸類為自我推銷。"
+    },
+    "category_interaction_short": {
+        "message": "互動提醒"
+    },
     "category_intro": {
         "message": "中場休息/開頭動畫"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "鳴謝或當 YouTube 結尾資訊卡出現時。不是含有資訊的總結"
-    },
-    "category_interaction": {
-        "message": "互動提醒 (訂閱)"
-    },
-    "category_interaction_description": {
-        "message": "當有短提醒來請觀眾按讚、訂閱或跟隨他們時。如果該片段很長或很針對某事，它應該歸類為自我推銷。"
-    },
-    "category_interaction_short": {
-        "message": "互動提醒"
-    },
-    "category_selfpromo": {
-        "message": "非付費/自我推廣"
-    },
-    "category_selfpromo_description": {
-        "message": "類似 “贊助商廣告” ，但是非付費或自我推廣。這包括有關商品、捐贈或與他人合作的信息。"
     },
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
@@ -533,10 +521,6 @@
     },
     "colorFormatIncorrect": {
         "message": "您設定的顏色無效。它應該是三或六位數的 hex 碼，且以井字號開頭。"
-    },
-    "previewColor": {
-        "message": "預覽顏色",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "時間條顏色"
