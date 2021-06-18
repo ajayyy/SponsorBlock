@@ -354,7 +354,8 @@
         "message": "Support 3rd Party YouTube-Sites"
     },
     "supportOtherSitesDescription": {
-        "message": "Support third party party YouTube clients. To enable support, you must accept the extra permissions. This does NOT work in incognito on Chrome and other Chromium variants."
+        "message": "Support third party YouTube clients. To enable support, you must accept the extra permissions. This does NOT work in incognito on Chrome and other Chromium variants.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Supported Sites: "
