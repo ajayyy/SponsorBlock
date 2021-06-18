@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Tällä hetkellä se on asetettu:"
     },
-    "supportInvidious": {
-        "message": "Tue Invidious:ta"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) on kolmannen osapuolen YouTube-ohjelmisto. Jotta voit ottaa käyttöön tuen, sinun täytyy hyväksyä lisäkäyttöoikeudet. Tämä EI toimi incognitossa Chromessa ja muissa Chromiumin versioissa."
-    },
     "optionsInfo": {
         "message": "Ota käyttöön Invidious tuki, poista käytöstä automaattinen ohitus, piilota painikkeet ja muuta."
-    },
-    "addInvidiousInstance": {
-        "message": "Lisää Invidious-instanssi"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Lisää mukautettu Invidious-instanssi. Tämä on muotoiltava VAIN verkkotunnuksella. Esimerkiksi: invidious.ajay.app"
     },
     "add": {
         "message": "Lisää"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Maksettu mainostus, maksetut viittaukset ja suorat mainokset. Ei itsensä mainostukselle tai huikkauksille kampanjoista/luojista/nettisivuista/tuotteista, joista he pitävät."
     },
+    "category_selfpromo": {
+        "message": "Maksamaton/Itsensä Mainostus"
+    },
+    "category_selfpromo_description": {
+        "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
+    },
+    "category_interaction": {
+        "message": "Vuorovaikutusmuistutus (tilaaminen)"
+    },
+    "category_interaction_description": {
+        "message": "Lyhyt muistutus tykätä, tilata tai seurata sisällön keskellä. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi."
+    },
+    "category_interaction_short": {
+        "message": "Vuorovaikutusmuistutus"
+    },
     "category_intro": {
         "message": "Tauko tai introanimaatio"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Lopputekstit tai YouTuben loppukortit. Ei lopetuksille, joissa on tärkeää tietoa."
-    },
-    "category_interaction": {
-        "message": "Vuorovaikutusmuistutus (tilaaminen)"
-    },
-    "category_interaction_description": {
-        "message": "Lyhyt muistutus tykätä, tilata tai seurata sisällön keskellä. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi."
-    },
-    "category_interaction_short": {
-        "message": "Vuorovaikutusmuistutus"
-    },
-    "category_selfpromo": {
-        "message": "Maksamaton/Itsensä Mainostus"
-    },
-    "category_selfpromo_description": {
-        "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
     },
     "category_music_offtopic": {
         "message": "Musiikki: Ei-Musiikki-Osio"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on risuaita alussa."
-    },
-    "previewColor": {
-        "message": "Esikatsele Väri",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Siirtymispalkin Väri"
