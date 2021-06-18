@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Hetkel on selleks määratud:"
     },
-    "supportInvidious": {
-        "message": "Invidiouse tugi"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) on kolmanda osapoole YouTube'i klient. Selle toe lubamiseks pead nõustuma lisalubadega. See EI tööta inkognito-režiimis nii Chromes kui ka teistes Chromiumi brauserites."
-    },
     "optionsInfo": {
         "message": "Luba Invidiouse tugi, keela automaatne vahelejätmine, peida nupud ja muud valikud."
-    },
-    "addInvidiousInstance": {
-        "message": "Lisa Invidiouse eksemplar"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Lisa kohandatud Invidiouse eksemplar. See tuleb vormistada AINULT domeeniga. Näide:\ninvidious.ajay.app"
     },
     "add": {
         "message": "Lisa"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Tasulised promod, tasulised viited ja otsesed reklaamid. Pole mõeldud enesepromo või tasuta petitsioonide/autorite/veebilehtede/toodete mainimiste puhul."
     },
+    "category_selfpromo": {
+        "message": "Tasumata/enesepromo"
+    },
+    "category_selfpromo_description": {
+        "message": "Sarnaneb \"sponsorile\", ent on mõeldud tasumata või enesepromo jaoks. Selle alla kuuluvad jaotised oma müüdava kauba, annetuste ja koostööpartnerite kohta."
+    },
+    "category_interaction": {
+        "message": "Tegutsemise meeldetuletus (kanali tellimine)"
+    },
+    "category_interaction_description": {
+        "message": "Lühike sisukeskne meeldetuletus anda videole meeldib, tellida kanalit või jälgida autorit. Kui see on pikk või millegi kindlaga seotud, peaks see olema enesepromo all."
+    },
+    "category_interaction_short": {
+        "message": "Tegutsemise meeldetuletus"
+    },
     "category_intro": {
         "message": "Vaheaeg/sissejuhatav animatsioon"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Tiitrid või YouTube'i lõpukaardid. Pole mõeldud informatsiooniga järelduste jaoks."
-    },
-    "category_interaction": {
-        "message": "Tegutsemise meeldetuletus (kanali tellimine)"
-    },
-    "category_interaction_description": {
-        "message": "Lühike sisukeskne meeldetuletus anda videole meeldib, tellida kanalit või jälgida autorit. Kui see on pikk või millegi kindlaga seotud, peaks see olema enesepromo all."
-    },
-    "category_interaction_short": {
-        "message": "Tegutsemise meeldetuletus"
-    },
-    "category_selfpromo": {
-        "message": "Tasumata/enesepromo"
-    },
-    "category_selfpromo_description": {
-        "message": "Sarnaneb \"sponsorile\", ent on mõeldud tasumata või enesepromo jaoks. Selle alla kuuluvad jaotised oma müüdava kauba, annetuste ja koostööpartnerite kohta."
     },
     "category_music_offtopic": {
         "message": "Muusika: mitte-muusika jaotis"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
-    },
-    "previewColor": {
-        "message": "Värvi eelvaade",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Ajariba värv"
