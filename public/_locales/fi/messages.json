@@ -350,8 +350,17 @@
     "keybindCurrentlySet": {
         "message": ". Tällä hetkellä se on asetettu:"
     },
+    "supportOtherSites": {
+        "message": "Tue Kolmansien Osapuolien YouTube-sivustoja"
+    },
+    "supportedSites": {
+        "message": "Tuetut Sivustot: "
+    },
     "optionsInfo": {
         "message": "Ota käyttöön Invidious tuki, poista käytöstä automaattinen ohitus, piilota painikkeet ja muuta."
+    },
+    "addInvidiousInstance": {
+        "message": "Lisää Kolmannen Osapuolen Asiakasinstanssi"
     },
     "add": {
         "message": "Lisää"
@@ -434,6 +443,9 @@
     "preview": {
         "message": "Esikatsele"
     },
+    "unsubmitted": {
+        "message": "Lähettämätön"
+    },
     "inspect": {
         "message": "Tarkista"
     },
@@ -498,6 +510,15 @@
     "category_outro_description": {
         "message": "Lopputekstit tai YouTuben loppukortit. Ei lopetuksille, joissa on tärkeää tietoa."
     },
+    "category_preview": {
+        "message": "Esikatselu/Kertaus"
+    },
+    "category_preview_description": {
+        "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
+    },
+    "category_preview_short": {
+        "message": "Esikatselu"
+    },
     "category_music_offtopic": {
         "message": "Musiikki: Ei-Musiikki-Osio"
     },
@@ -524,6 +545,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on risuaita alussa."
+    },
+    "previewColor": {
+        "message": "Lähettämättömien Väri",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Siirtymispalkin Väri"
