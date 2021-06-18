@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Je momentálně nastaveno na:"
     },
-    "supportInvidious": {
-        "message": "Podpora Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) je YouTube klient třetí strany. Chcete-li povolit podporu, musíte přijmout další oprávnění. Toto NEFUNGUJE v anonymním režimu v Chromu a dalších Chromium prohlížečích."
-    },
     "optionsInfo": {
         "message": "Povolení podpory Invidious, zakázání automatického přeskočení, skrytí tlačítek a více."
-    },
-    "addInvidiousInstance": {
-        "message": "Přidat relaci Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Přidat vlastní relaci Invidious. Musí být formátována POUZE s doménou. Například: invidious.ajay.app"
     },
     "add": {
         "message": "Přidat"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Placená propagace, placená doporučení a přímé reklamy. Nezahrnuje sebepropagaci nebo shout-outy uživatelů/tvůrců/webů/produktů, které se tvůrcovi líbí."
     },
+    "category_selfpromo": {
+        "message": "Neplacená / vlastní propagace"
+    },
+    "category_selfpromo_description": {
+        "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
+    },
+    "category_interaction": {
+        "message": "Připomenutí interakce (odběr)"
+    },
+    "category_interaction_description": {
+        "message": "Při krátké připomínce dát like, odběr nebo sledování tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
+    },
+    "category_interaction_short": {
+        "message": "Připomenutí interakce"
+    },
     "category_intro": {
         "message": "Přestávka / úvodní animace"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Titulky nebo když se objeví konečné karty YouTube. Není pro závěry s informacemi."
-    },
-    "category_interaction": {
-        "message": "Připomenutí interakce (odběr)"
-    },
-    "category_interaction_description": {
-        "message": "Při krátké připomínce dát like, odběr nebo sledování tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
-    },
-    "category_interaction_short": {
-        "message": "Připomenutí interakce"
-    },
-    "category_selfpromo": {
-        "message": "Neplacená / vlastní propagace"
-    },
-    "category_selfpromo_description": {
-        "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
     },
     "category_music_offtopic": {
         "message": "Hudba: nehudební sekce"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Vaše barva má nesprávný formát. Měl by to být 3 nebo 6 znaků dlouhý HEX kód s křížkem na začátku."
-    },
-    "previewColor": {
-        "message": "Barva náhledu",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Barva lišty"
