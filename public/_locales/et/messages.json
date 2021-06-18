@@ -350,8 +350,17 @@
     "keybindCurrentlySet": {
         "message": ". Hetkel on selleks määratud:"
     },
+    "supportedSites": {
+        "message": "Toetatud saidid: "
+    },
     "optionsInfo": {
         "message": "Luba Invidiouse tugi, keela automaatne vahelejätmine, peida nupud ja muud valikud."
+    },
+    "addInvidiousInstance": {
+        "message": "Lisa 3. osapoole kliendi eksemplar"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Lisa kohandatud eksemplar. See tuleb vormistada AINULT domeeniga. Näide: invidious.ajay.app"
     },
     "add": {
         "message": "Lisa"
@@ -434,6 +443,9 @@
     "preview": {
         "message": "Eelvaade"
     },
+    "unsubmitted": {
+        "message": "Saatmata"
+    },
     "inspect": {
         "message": "Inspekteeri"
     },
@@ -498,6 +510,12 @@
     "category_outro_description": {
         "message": "Tiitrid või YouTube'i lõpukaardid. Pole mõeldud informatsiooniga järelduste jaoks."
     },
+    "category_preview": {
+        "message": "Eelvaade/kokkuvõte"
+    },
+    "category_preview_short": {
+        "message": "Eelvaade"
+    },
     "category_music_offtopic": {
         "message": "Muusika: mitte-muusika jaotis"
     },
@@ -524,6 +542,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
+    },
+    "previewColor": {
+        "message": "Saatmata värv",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Ajariba värv"
