@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "区域が終わりました"
     },
+    "sponsorCancel": {
+        "message": "区間の作成を取り止める"
+    },
     "noVideoID": {
         "message": "YouTube動画が見つかりませんでした。\nこれが正しくない場合は、タブを再読み込みしてください。"
     },
@@ -197,6 +200,9 @@
     "whatViewTracking": {
         "message": "この機能は、あなたが飛び越した区域を追跡して、当該区域がどれだけ役に立ったかを他の利用者に知らせることで、不正な情報が情報集合体に紛れないようにするための評価基準として使用されます。あなたが区域を飛び越すたびに、拡張機能はサーバーに通報を送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "匿名閲覧状態で計数追跡を飛び越す"
+    },
     "enableQueryByHashPrefix": {
         "message": "ハッシュプレフィックスを使って要求"
     },
@@ -234,6 +240,9 @@
     },
     "setSkipShortcut": {
         "message": "セグメントをスキップするキーを設定"
+    },
+    "setStartSponsorShortcut": {
+        "message": "区間を開始する鍵を設定"
     },
     "setSubmitKeybind": {
         "message": "投稿するキーを設定"
@@ -341,8 +350,23 @@
     "keybindCurrentlySet": {
         "message": "。現在の設定は:"
     },
+    "supportOtherSites": {
+        "message": "第三者製のYouTube関連サイトに対応"
+    },
+    "supportOtherSitesDescription": {
+        "message": "第三者製のYouTubeクライアンに対応しました。有効にするには，追加の権限を受け入れる必要があります。これはChromeやその他のChromium系列の匿名閲覧状態では動作しません。"
+    },
+    "supportedSites": {
+        "message": "対応サイト: "
+    },
     "optionsInfo": {
         "message": "Invidious対応を有効にし，自動飛越を無効にし，GUIを非表示にします。"
+    },
+    "addInvidiousInstance": {
+        "message": "第三者製クライアントの実体を追加"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "任意の実体を追加できます。ドメイン名だけを記入してください。例: invidious.ajay.app"
     },
     "add": {
         "message": "追加"
@@ -365,6 +389,15 @@
     "minDurationDescription": {
         "message": "設定値より短い区域は飛び越されず，再生画面にも表示されません。"
     },
+    "shortCheck": {
+        "message": "提出しようとしている区間の長さが個人設定における最短時間よりも短かいです。これは，既に当区間は提出されており，個人設定によって無視されていることを意味します。本当に提出しますか？"
+    },
+    "showUploadButton": {
+        "message": "アップロードボタンを表示"
+    },
+    "whatUploadButton": {
+        "message": "時刻印を選択し提出準備が整ったあとにYouTube再生機上に表示されます。"
+    },
     "customServerAddress": {
         "message": "SponsorBlock サーバーアドレス"
     },
@@ -376,6 +409,21 @@
     },
     "mobileUpdateInfo": {
         "message": "m.youtube.com は現在サポートされています"
+    },
+    "exportOptions": {
+        "message": "全ての設定をインポート/エクスポート"
+    },
+    "whatExportOptions": {
+        "message": "JSON形式の個人設定全体です。利用者IDが含まれているので，共有するときは注意してください。"
+    },
+    "setOptions": {
+        "message": "設定する"
+    },
+    "exportOptionsWarning": {
+        "message": "警告: 設定の変更は恒久的で，本拡張機能を破壊する可能性があります。本当に実行しますか？ 念のため，旧設定を控えておいてください。"
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "JSONの書式が正しくありません。設定は変更されませんでした。"
     },
     "confirmNoticeTitle": {
         "message": "区域を提出"
@@ -392,8 +440,20 @@
     "preview": {
         "message": "プレビュー"
     },
+    "unsubmitted": {
+        "message": "未確定"
+    },
+    "inspect": {
+        "message": "調査"
+    },
     "edit": {
         "message": "編集"
+    },
+    "copyDebugInformation": {
+        "message": "詳細情報をクリップボードに写す"
+    },
+    "copyDebugInformationFailed": {
+        "message": "クリップボードに書き込めませんでした"
     },
     "to": {
         "message": "～",
@@ -414,8 +474,26 @@
     "category_outro": {
         "message": "エンドカード/クレジット"
     },
+    "category_preview": {
+        "message": "予告と前回の粗筋"
+    },
+    "category_preview_description": {
+        "message": "前回の粗筋，または動画の後半内容の予告。音声による要約ではなく，編集された映像を指します。"
+    },
+    "category_preview_short": {
+        "message": "予告"
+    },
     "category_music_offtopic": {
         "message": "音楽: 音楽ではない区間"
+    },
+    "category_music_offtopic_short": {
+        "message": "非音楽"
+    },
+    "category_livestream_messages": {
+        "message": "生配信: 寄付などの読み上げ"
+    },
+    "category_livestream_messages_short": {
+        "message": "寄付などの読み上げ"
     },
     "disable": {
         "message": "無効"
@@ -425,6 +503,13 @@
     },
     "showOverlay": {
         "message": "シークバーに表示"
+    },
+    "colorFormatIncorrect": {
+        "message": "色の書式が正しくありません。井桁記号に続く3桁あるいは6桁の16進数である必要があります。"
+    },
+    "previewColor": {
+        "message": "未確定の色",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "シークバーのカラー"
@@ -442,11 +527,20 @@
     "bracketNow": {
         "message": "(今)"
     },
+    "moreCategories": {
+        "message": "範疇を変更"
+    },
     "chooseACategory": {
         "message": "カテゴリーを選択"
     },
     "youMustSelectACategory": {
         "message": "提出する全ての区域について，その範疇を選択する必要があります！"
+    },
+    "hiddenDueToDownvote": {
+        "message": "低い評価の区間を無視する"
+    },
+    "hiddenDueToDuration": {
+        "message": "あまりに短かい区間を無視する"
     },
     "youtubePermissionRequest": {
         "message": "SponsorBlockがYouTube APIを参照できないようです。修正するには，次に表示される画面で許可を承認してから，数秒後に再読み込みしてください。"
@@ -460,8 +554,14 @@
     "permissionRequestFailed": {
         "message": "権限要求に失敗しました。承認を拒否しましたか？"
     },
+    "downvoteDescription": {
+        "message": "不正確あるいは間違った時刻です"
+    },
     "incorrectCategory": {
         "message": "カテゴリが違います"
+    },
+    "multipleSegments": {
+        "message": "複数の区域"
     },
     "guidelines": {
         "message": "ガイドライン"
