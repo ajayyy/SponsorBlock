@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Hij is momenteel ingesteld op:"
     },
-    "supportInvidious": {
-        "message": "Ondersteuning voor Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) is een YouTube-client van derden. Om ondersteuning in te schakelen, moet u de extra machtigingen accepteren. Dit werkt NIET in incognito in Chrome en andere Chromium-varianten."
-    },
     "optionsInfo": {
         "message": "Ondersteuning voor Invidious inschakelen, automatisch overslaan uitschakelen, knoppen verbergen en meer."
-    },
-    "addInvidiousInstance": {
-        "message": "Invidious-instantie toevoegen"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Een aangepaste instantie van Invidious toevoegen. Dit moet geformatteerd worden met ALLEEN het domein. Voorbeeld: invidious.ajay.app"
     },
     "add": {
         "message": "Toevoegen"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Betaalde promotie, betaalde aanbevelingen en directe reclame. Niet voor zelfpromotie of gratis uitroepen naar zaken/makers/websites/producten waar ze van houden."
     },
+    "category_selfpromo": {
+        "message": "Onbetaalde promotie of zelfpromotie"
+    },
+    "category_selfpromo_description": {
+        "message": "Vergelijkbaar met \"sponsor\", behalve voor onbetaalde of zelfpromotie. Dit is inclusief secties over koopwaar, donaties of informatie over met wie ze hebben samengewerkt."
+    },
+    "category_interaction": {
+        "message": "Interactieherinnering (abonneren)"
+    },
+    "category_interaction_description": {
+        "message": "Als er een korte herinnering is om ze leuk te vinden, u te abonneren of ze te volgen in het midden van de inhoud. Als het lang is of over iets specifieks gaat, moet het in plaats daarvan onder zelfpromotie vallen."
+    },
+    "category_interaction_short": {
+        "message": "Interactieherinnering"
+    },
     "category_intro": {
         "message": "Onderbreking/intro-animatie"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Aftiteling of wanneer de YouTube-eindkaarten verschijnen. Niet voor conclusies met informatie."
-    },
-    "category_interaction": {
-        "message": "Interactieherinnering (abonneren)"
-    },
-    "category_interaction_description": {
-        "message": "Als er een korte herinnering is om ze leuk te vinden, u te abonneren of ze te volgen in het midden van de inhoud. Als het lang is of over iets specifieks gaat, moet het in plaats daarvan onder zelfpromotie vallen."
-    },
-    "category_interaction_short": {
-        "message": "Interactieherinnering"
-    },
-    "category_selfpromo": {
-        "message": "Onbetaalde promotie of zelfpromotie"
-    },
-    "category_selfpromo_description": {
-        "message": "Vergelijkbaar met \"sponsor\", behalve voor onbetaalde of zelfpromotie. Dit is inclusief secties over koopwaar, donaties of informatie over met wie ze hebben samengewerkt."
     },
     "category_music_offtopic": {
         "message": "Muziek: sectie niet-muziek"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Uw kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
-    },
-    "previewColor": {
-        "message": "Voorbeeld van kleur",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Kleur van tijdbalk"
