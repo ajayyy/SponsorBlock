@@ -350,8 +350,23 @@
     "keybindCurrentlySet": {
         "message": ". Hij is momenteel ingesteld op:"
     },
+    "supportOtherSites": {
+        "message": "Ondersteuning voor YouTube-sites van derden"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Ondersteuning voor YouTube-clients van derden. Om ondersteuning in te schakelen moet u de extra machtigingen accepteren. Dit werkt NIET in incognito in Chrome en andere Chromium-varianten."
+    },
+    "supportedSites": {
+        "message": "Ondersteunde sites: "
+    },
     "optionsInfo": {
         "message": "Ondersteuning voor Invidious inschakelen, automatisch overslaan uitschakelen, knoppen verbergen en meer."
+    },
+    "addInvidiousInstance": {
+        "message": "Client-instantie van derden toevoegen"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Een aangepaste instantie toevoegen. Dit moet worden opgemaakt met ALLEEN het domein. Bijvoorbeeld: invidious.ajay.app"
     },
     "add": {
         "message": "Toevoegen"
@@ -434,6 +449,9 @@
     "preview": {
         "message": "Voorbeeld"
     },
+    "unsubmitted": {
+        "message": "Niet ingediend"
+    },
     "inspect": {
         "message": "Inspecteren"
     },
@@ -498,6 +516,15 @@
     "category_outro_description": {
         "message": "Aftiteling of wanneer de YouTube-eindkaarten verschijnen. Niet voor conclusies met informatie."
     },
+    "category_preview": {
+        "message": "Voorbeeld/samenvatting"
+    },
+    "category_preview_description": {
+        "message": "Snelle samenvatting van vorige afleveringen of een voorbeeld van wat er later komt in de huidige video. Bedoeld voor samengevoegde clips, niet voor gesproken samenvattingen."
+    },
+    "category_preview_short": {
+        "message": "Voorbeeld"
+    },
     "category_music_offtopic": {
         "message": "Muziek: sectie niet-muziek"
     },
@@ -524,6 +551,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Uw kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
+    },
+    "previewColor": {
+        "message": "Niet ingediend kleur",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Kleur van tijdbalk"
