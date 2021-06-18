@@ -66,14 +66,22 @@ body {
     display: inline-block;
 }
 
-.switch-container:after {
+.switch-container {
 	content: attr(label-name);
     position: absolute;
-    padding: 4px;
     width: max-content;
 
     font-size: 14px;
     color: white;
+
+    display: table;
+}
+
+.switch-container .switch-label {
+    display: table-cell;
+    vertical-align: middle;
+
+    padding: 4px;
 }
 
 .text-label-container {
