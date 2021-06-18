@@ -350,8 +350,20 @@
     "keybindCurrentlySet": {
         "message": "。它目前被設定為："
     },
+    "supportOtherSites": {
+        "message": "支援第三方的 YouTube 網站"
+    },
+    "supportOtherSitesDescription": {
+        "message": "支援第三方的 YouTube 客戶端。若要啟用，您必須同意額外的權限。這在 Chrome 中的無痕模式和其他 Chromium 分支無效。"
+    },
+    "supportedSites": {
+        "message": "支援的網站："
+    },
     "optionsInfo": {
         "message": "啟用 Invidious 支援，停用自動跳過、隱藏按鈕等。"
+    },
+    "addInvidiousInstance": {
+        "message": "新增第三方的客戶端實例"
     },
     "add": {
         "message": "新增"
@@ -434,6 +446,9 @@
     "preview": {
         "message": "預覽"
     },
+    "unsubmitted": {
+        "message": "未提交"
+    },
     "inspect": {
         "message": "檢查"
     },
@@ -498,6 +513,12 @@
     "category_outro_description": {
         "message": "鳴謝或當 YouTube 結尾資訊卡出現時。不是含有資訊的總結"
     },
+    "category_preview": {
+        "message": "預覽/摘要"
+    },
+    "category_preview_short": {
+        "message": "預覽"
+    },
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
     },
@@ -521,6 +542,10 @@
     },
     "colorFormatIncorrect": {
         "message": "您設定的顏色無效。它應該是三或六位數的 hex 碼，且以井字號開頭。"
+    },
+    "previewColor": {
+        "message": "未提交的顏色",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "時間條顏色"
@@ -568,6 +593,9 @@
     },
     "videoInfoFetchFailed": {
         "message": "似乎有東西在阻止 SponsorBlock 獲取影片資料。請查看 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"
+    },
+    "youtubePermissionRequest": {
+        "message": "SponsorBlock 貌似無法存取 YouTube API。若要解決，請同意稍後出現的權限提示，等待幾秒鐘，然後重新載入頁面。"
     },
     "acceptPermission": {
         "message": "允許權限"
