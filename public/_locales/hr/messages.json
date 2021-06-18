@@ -122,9 +122,62 @@
     "submitTimesButton": {
         "message": "Unesi vremena"
     },
+    "Username": {
+        "message": "Korisničko ime"
+    },
+    "setUsername": {
+        "message": "Postavi korisničko ime"
+    },
+    "Options": {
+        "message": "Opcije"
+    },
+    "website": {
+        "message": "Web-stranica",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Izvorni kod",
+        "description": "Used on Firefox Store Page"
+    },
+    "disableSkipping": {
+        "message": "Preskakanje je aktivirano"
+    },
+    "enableSkipping": {
+        "message": "Preskakanje je deaktivirano"
+    },
     "yourWork": {
         "message": "Tvoja slanja",
         "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "errorCode": {
+        "message": "Kȏd greške: "
+    },
+    "skip": {
+        "message": "Preskoči"
+    },
+    "skip_category": {
+        "message": "Preskočiti {0}?"
+    },
+    "skipped": {
+        "message": "Preskočeno"
+    },
+    "disableAutoSkip": {
+        "message": "Deaktiviraj automatsko preskakanje"
+    },
+    "enableAutoSkip": {
+        "message": "Aktiviraj automatsko preskakanje"
+    },
+    "minLower": {
+        "message": "min"
+    },
+    "minsLower": {
+        "message": "min"
+    },
+    "hourLower": {
+        "message": "h"
+    },
+    "hoursLower": {
+        "message": "h"
     },
     "whatChangeUserID": {
         "message": "Ovo bi trebalo ostati privatno. slično je lozinki i ne bi se smjelo dijeliti ni s kime. Ako netko ovo ima, mogu se lažno predstavljati kao ti."
@@ -183,11 +236,35 @@
     "minDurationDescription": {
         "message": "Isječci kraći od postavljene vrijednosti neće biti preskočeni ili prikazani u playeru."
     },
+    "save": {
+        "message": "Spremi"
+    },
+    "reset": {
+        "message": "Resetiraj"
+    },
+    "setOptions": {
+        "message": "Postavi opcije"
+    },
     "confirmNoticeTitle": {
         "message": "Pošalji segment"
     },
     "submit": {
         "message": "Pošalji"
+    },
+    "cancel": {
+        "message": "Odustani"
+    },
+    "delete": {
+        "message": "Izbriši"
+    },
+    "preview": {
+        "message": "Pregledaj"
+    },
+    "inspect": {
+        "message": "Provjeri"
+    },
+    "edit": {
+        "message": "Uredi"
     },
     "category_sponsor": {
         "message": "Sponzor"
@@ -228,8 +305,37 @@
     "manualSkip": {
         "message": "Ručno preskakanje"
     },
+    "previewColor": {
+        "message": "Boja pregleda",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "category": {
+        "message": "Kategorija"
+    },
+    "skipOption": {
+        "message": "Preskoči opciju",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "bracketNow": {
+        "message": "(sada)"
+    },
+    "moreCategories": {
+        "message": "Više kategorija"
+    },
+    "chooseACategory": {
+        "message": "Odaberi kategoriju"
+    },
     "youMustSelectACategory": {
         "message": "Moraš odabrati kategoriju za sve segmente koje šalješ!"
+    },
+    "bracketEnd": {
+        "message": "(kraj)"
+    },
+    "downvoteDescription": {
+        "message": "Neispravno/krivo vrijeme"
+    },
+    "incorrectCategory": {
+        "message": "Kriva kategorija"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Ovaj je video kategoriziran kao glazba. Je li stvarno ima sponzora? Ako je ovo zapravo „Ne-glazbeni segment”, otvori opcije proširenja i aktiviraj ovu kategoriju. Zatim ovaj segment možeš posalti kao „Ne-glazbeni” umjesto sponzora. Pročitaj smjernice ako nešto nije jasno."

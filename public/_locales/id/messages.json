@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Fitur ini melacak segmen mana yang sudah anda lewati untuk memberitahu pengguna berapa banyak submisi mereka telah membantu orang lain dan digunakan sebagai metrik bersamaan dengan upvote untuk memastikan tidak ada spam dalam basis data. Ekstensi mengirim pesan ke server tiap kali anda melewati segmen. Harapannya kebanyakan orang tidak akan mengubah opsi ini agar jumlah tayangan akurat. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Aktifkan Pelacakan Jumlah Lewati Pada Tab Privat/Penyamaran"
+    },
     "enableQueryByHashPrefix": {
         "message": "Query By Hash Prefix"
     },
@@ -239,7 +242,7 @@
         "message": "Atur tombol untuk melewati sebuah segmen"
     },
     "setStartSponsorShortcut": {
-        "message": "Atur tombol untuk mulai segmen"
+        "message": "Atur tombol untuk mulai/hentikan segmen"
     },
     "setSubmitKeybind": {
         "message": "Atur tombol untuk kirim submisi"
@@ -583,7 +586,8 @@
         "message": "disembunyikan: terlalu pendek"
     },
     "channelDataNotFound": {
-        "message": "ID Channel belum dimuat."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID Channel belum dimuat. Apabila anda menggunakan video yang tersematkan, coba menggunakan halaman utama YouTube. Hal ini juga dapat disebabkan oleh perubahan yang ada pada tampilan YouTUbe, apabila anda mengira seperti itu, buat komentar disini:"
     },
     "videoInfoFetchFailed": {
         "message": "Sepertinya sesuatu memnghalangi abilitas SponsorBlock untuk mendapatkan data video. Silahkan lihat https://github.com/ajayyy/SponsorBlock/issues/741 untuk info lebih lanjut."
@@ -602,9 +606,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Apabila anda tidak dapat menyelesaikan masalah ini, maka nonaktifkan pengaturan 'Paksa Cek Channel Sebelum Melewati', dikarenakan SponsorBlock tidak dapat menerima informasi channel untuk video ini"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Jika ini terus terjadi, kemungkinan terjadi karena ad blocker anda. Mohon cek https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Paksa Cek Channel Sebelum Melewati"

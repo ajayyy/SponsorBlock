@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Сегмент закінчується тут"
     },
+    "sponsorCancel": {
+        "message": "Скасувати створення сегмента"
+    },
     "noVideoID": {
         "message": "Відео YouTube, не знайдено.\nЯкщо це не так, поновіть вкладку."
     },
@@ -236,7 +239,7 @@
         "message": "Призначити гарячу клавішу для пропуску сегмента"
     },
     "setStartSponsorShortcut": {
-        "message": "Призначити гарячу клавішу для початку сегмента"
+        "message": "Призначити гарячу клавішу для початку/зупинки сегмента"
     },
     "setSubmitKeybind": {
         "message": "Призначити гарячу клавішу для надсилання"
@@ -580,10 +583,26 @@
         "message": "приховано: занадто коротко"
     },
     "channelDataNotFound": {
-        "message": "ID каналу ще не завантажений."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID каналу ще не завантажений. Якщо ви використовуєте вбудоване відео, спробуйте замість цього скористатися домашньою сторінкою YouTube. Це також може бути викликано змінами в дизайні YouTube, якщо ви вважаєте, що це так, залиште коментар тут:"
     },
-    "itCouldBeAdblockerIssue": {
-        "message": "Якщо це повідомлення з'являється занадто часто, це може бути викликано вашим блокувальником реклами. Будь ласка, перейдіть на https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "videoInfoFetchFailed": {
+        "message": "Схоже, щось блокує можливість SponsorBlock'а отримувати дані про відео. Докладніше: https://github.com/ajayyy/SponsorBlock/issues/741."
+    },
+    "youtubePermissionRequest": {
+        "message": "Здається, SponsorBlock не може отримати доступ до API YouTube. Щоб виправити цю помилку, дайте дозвіл у вікні, яке зараз з'явиться, зачекайте кілька секунд і потім перезавантажте сторінку."
+    },
+    "acceptPermission": {
+        "message": "Надати дозвіл"
+    },
+    "permissionRequestSuccess": {
+        "message": "Дозвіл отримано!"
+    },
+    "permissionRequestFailed": {
+        "message": "Не вдалося отримати дозвіл, ви натиснули на \"Блокувати\"?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Якщо ви не можете вирішити цю проблему, спробуйте відключити \"Примусова перевірка каналів перед пропуском\" в налаштуваннях, так як SponsorBlock не може визначити назву каналу для цього відео"
     },
     "forceChannelCheck": {
         "message": "Примусова перевірка каналів перед пропуском"

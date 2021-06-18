@@ -222,9 +222,6 @@
         "message": "Ha még mindig nem tetszik, kattintson a ne mutassa többé gombra.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setStartSponsorShortcut": {
-        "message": "Billentyű beállítása a szegmenskezdés gombhoz"
-    },
     "setSubmitKeybind": {
         "message": "Billentyű beállítása a beküldés gombhoz"
     },
@@ -548,12 +545,6 @@
     },
     "hiddenDueToDuration": {
         "message": "elrejtve: túl rövid"
-    },
-    "channelDataNotFound": {
-        "message": "A csatorna azonosító még nem töltődött be."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Ha ez folyamatosan előfordul, lehet hogy az ad-blockere okozza. Kérem nézzen utána: https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Csatorna ellenőrzése átugrás előtt"

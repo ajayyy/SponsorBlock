@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "Angi tast for å hoppe over et segment"
     },
-    "setStartSponsorShortcut": {
-        "message": "Angi tast for å starte segmenter"
-    },
     "setSubmitKeybind": {
         "message": "Angi tast for innsending"
     },
@@ -579,9 +576,6 @@
     "hiddenDueToDuration": {
         "message": "skjult: for kort"
     },
-    "channelDataNotFound": {
-        "message": "Kanal-ID-en er ikke lastet inn enda."
-    },
     "youtubePermissionRequest": {
         "message": "Det ser ut til at SponsorBlock ikke klarer å nå YouTube-API-en. For å fikse dette, godta tillatelsesspørringen som dukker opp etter dette, vent noen sekunder, og så last inn siden på nytt."
     },
@@ -593,9 +587,6 @@
     },
     "permissionRequestFailed": {
         "message": "Tillatelsesforespørselen mislyktes, klikket du på Avvis?"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Hvis dette skjer til stadighet, kan det være forårsaket av reklameblokkereren din. Vennligst sjekk https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Fremtving kanalsjekk før hopp"

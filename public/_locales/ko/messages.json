@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "이 기능은 건너 뛴 부분을 추적하여 사용자가 제출한 내용이 다른 사람에게 얼마나 도움이 되는지 알려주고 스팸이 데이터베이스에 들어가지 않도록 추천과 함께 분석에 사용합니다. 확장 프로그램은 부분을 건너뛸 때마다 서버에 메시지를 보냅니다. 조회수가 정확하도록 대부분의 사람들이 이 설정을 변경하지 않기를 바랍니다. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "시크릿/사생활 보호 탭에서 스킵 개수 추적 활성화"
+    },
     "enableQueryByHashPrefix": {
         "message": "Hash Prefix가 쿼리를 제공함"
     },
@@ -239,7 +242,7 @@
         "message": "구간 건너뛰기 키 설정"
     },
     "setStartSponsorShortcut": {
-        "message": "시작 부분 키 할당 설정"
+        "message": "시작/끝 부분 키 할당 설정"
     },
     "setSubmitKeybind": {
         "message": "제출 키 할당 설정"
@@ -583,7 +586,8 @@
         "message": "숨겨짐: 너무 짧음"
     },
     "channelDataNotFound": {
-        "message": "채널 ID가 로드되지 않았습니다."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "채널 ID를 아직 불러오지 못했습니다. 임베디드 동영상에서 시도한 경우 YouTube 페이지에서 시도해주십시오. 이 오류는 YouTube의 레이아웃 변경으로 인해서도 발생할 수 있습니다. 레이아웃 변경에 의해 오류가 발생했다고 생각하면 여기에 의견을 남겨주십시오."
     },
     "videoInfoFetchFailed": {
         "message": "무언가가 SponsorBlock의 동영상 데이터 수집을 막고 있는 것 같습니다. https://github.com/ajayyy/SponsorBlock/issues/741 사이트를 참조하세요."
@@ -602,9 +606,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "이 문제를 해결할 수 없는 경우, SponsorBlock이 이 동영상에 대한 채널 정보를 찾을 수 없으므로 '건너뛰기 전 채널 강제 체크' 설정을 꺼주십시오."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "오류가 지속된다면, 광고 차단기로 인해 발생할 수 있습니다. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests 사이트를 참조하세요"
     },
     "forceChannelCheck": {
         "message": "건너뛰기 전 채널 강제 체크"

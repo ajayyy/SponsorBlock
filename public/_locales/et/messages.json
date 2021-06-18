@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "See funktsioon jälgib, milliseid segmente sa oled vahele jätnud, et kasutajad teaksid, kui palju nende sisestus on teisi aidanud ning et koos poolthäältega veenduda rämpsu mittesattumises andmebaasi. Laiendus saadab iga segmendi vahelejätmisel serverisse sõnumi. Loodetavasti enamus inimesi ei muuda seda seadistust, et vaatamisarvud oleksid täpsed. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Luba vahelejätmiste arvu jälgimine privaatsetel/inkognito kaartidel"
+    },
     "enableQueryByHashPrefix": {
         "message": "Küsi räsi eesliite järgi"
     },
@@ -239,7 +242,7 @@
         "message": "Seadista segmendi vahelejätmise klahv"
     },
     "setStartSponsorShortcut": {
-        "message": "Seadista segmendi alustamise klahv"
+        "message": "Seadista segmendi alustamise/lõpetamise klahv"
     },
     "setSubmitKeybind": {
         "message": "Seadista segmendi saatmise klahv"
@@ -583,7 +586,8 @@
         "message": "peidetud: liiga lühike"
     },
     "channelDataNotFound": {
-        "message": "Kanali ID pole veel laaditud."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanali ID pole veel laaditud. Kui vaatad manustatud videot, proovi seda vaadata YouTube'i kodulehelt. See võib olla põhjustatud ka YouTube'i paigutuse muudatustest - kui arvad et see nii on, kommenteeri siin:"
     },
     "videoInfoFetchFailed": {
         "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. Rohkema abi saamiseks palun vaata: https://github.com/ajayyy/SponsorBlock/issues/741"
@@ -602,9 +606,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Kui sa ei suuda seda lahendada, keela valik \"sunnitud kanalikontroll enne vahelejätmist\", kuna SponsorBlock ei leia selle video kanaliteavet"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Kui see jätkub, võib see olla põhjustatud sinu reklaamiblokeerijast. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Sunnitud kanalikontroll enne vahelejätmist"

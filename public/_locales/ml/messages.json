@@ -235,9 +235,6 @@
     "setSkipShortcut": {
         "message": "ഒരു സെഗ്മെന്റ് ഒഴിവാക്കുന്നതിനായി കീ സജ്ജമാക്കുക"
     },
-    "setStartSponsorShortcut": {
-        "message": "ആരംഭ സെഗ്‌മെന്റ് കീബൈൻഡിനായി കീ സജ്ജമാക്കുക"
-    },
     "setSubmitKeybind": {
         "message": "സമർപ്പിക്കൽ കീബൈൻഡിനായി കീ സജ്ജമാക്കുക"
     },
@@ -578,12 +575,6 @@
     },
     "hiddenDueToDuration": {
         "message": "മറഞ്ഞിരിക്കുന്നു: വളരെ ചെറുതാണ്"
-    },
-    "channelDataNotFound": {
-        "message": "ചാനൽ ഐഡി ഇതുവരെ ലോഡുചെയ്തിട്ടില്ല."
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "ഇത് സംഭവിച്ചുകൊണ്ടിരിക്കുകയാണെങ്കിൽ, ഇത് നിങ്ങളുടെ പരസ്യ ബ്ലോക്കർ കാരണമാകാം. Https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests പരിശോധിക്കുക"
     },
     "forceChannelCheck": {
         "message": "ഒഴിവാക്കുന്നതിനുമുമ്പ് ചാനൽ പരിശോധന നിർബന്ധിക്കുക"

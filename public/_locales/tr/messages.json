@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Kısım Şimdi Bitiyor"
     },
+    "sponsorCancel": {
+        "message": "Kısım Oluşturmayı İptal Et"
+    },
     "noVideoID": {
         "message": "YouTube videosu bulunamadı.\nHatalı olduğunu düşünüyorsanız sayfayı yenileyin."
     },
@@ -197,6 +200,9 @@
     "whatViewTracking": {
         "message": "Bu özellik, hangi kısımları atladığınızı takip ederek kullanıcıların gönderilerinin diğerlerine ne kadar yardımcı olduğunu bilmelerini sağlar ve olumlu oyları bir ölçüm aracı olarak kullanarak gereksiz yollanan kısımların veri tabanına girmemesini sağlar. Eklenti, bir kısmı her atladığınızda sunucuya bir mesaj gönderir. Umarım çoğu insan bu ayarı değiştirmez böylece görüntüleme sayıları doğru olur. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Özel/Gizli sekmelerde atlama sayısı takibini etkinleştir"
+    },
     "enableQueryByHashPrefix": {
         "message": "Karma Ön eki ile Sorgula"
     },
@@ -236,7 +242,7 @@
         "message": "Kısım atlamak için bir tuş ata"
     },
     "setStartSponsorShortcut": {
-        "message": "Kısım kaydına başlamak için bir tuş belirleyin"
+        "message": "Kısım başlatmak/durdurmak için kısayol ayarla"
     },
     "setSubmitKeybind": {
         "message": "Gönderim için bir tuş belirleyin"
@@ -580,10 +586,26 @@
         "message": "gizlendi: çok kısa"
     },
     "channelDataNotFound": {
-        "message": "Kanal kimliği henüz yüklenmedi."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanal kimliği henüz yüklenmedi. Gömülü bir video kullanıyorsanız, bunun yerine YouTube ana sayfasından izlemeyi deneyin. Bu, YouTube düzenindeki değişikliklerden de kaynaklanabilir, eğer öyleyse, buraya bir yorum yazın:"
     },
-    "itCouldBeAdblockerIssue": {
-        "message": "Bunu sürekli yaşıyorsanız, reklam engelleyiciniz tarafından gerçekleşiyor olabilir. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests adresini kontrol edin."
+    "videoInfoFetchFailed": {
+        "message": "SponsorBlock'un video verilerini almasını engelleyen bir şey var gibi görünüyor. Lütfen daha fazla bilgi için şuraya göz atın: https://github.com/ajayyy/SponsorBlock/issues/741"
+    },
+    "youtubePermissionRequest": {
+        "message": "SponsorBlock YouTube API'sine ulaşamıyor gibi gözüküyor. Bunu düzeltmek için, bundan sonra görünecek izin isteğini kabul edin, birkaç saniye bekleyin ve ardından sayfayı yeniden yükleyin."
+    },
+    "acceptPermission": {
+        "message": "İzni kabul et"
+    },
+    "permissionRequestSuccess": {
+        "message": "İzin isteği başarılı!"
+    },
+    "permissionRequestFailed": {
+        "message": "İzin isteği başarısız. Reddet butonuna mı tıkladınız?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Bunu çözemiyorsanız, SponsorBlock, bu video için kanal bilgilerini alamadığı için 'Atlamadan Önce Kanal Kontrolünü Zorla' ayarını devre dışı bırakın"
     },
     "forceChannelCheck": {
         "message": "Atlamadan Önce Kanal Kontrolüne Zorla"
