@@ -350,8 +350,23 @@
     "keybindCurrentlySet": {
         "message": ". Он сейчас назначен на:"
     },
+    "supportOtherSites": {
+        "message": "Поддерживать сторонние YouTube-сайты"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Поддерживать сторонние клиенты для YouTube. Чтобы включить поддержку, Вам понадобится принять дополнительные разрешения. Эта функция НЕ работает в режиме \"инкогнито\" в Chrome и браузерах, основанных на Chromium."
+    },
+    "supportedSites": {
+        "message": "Поддерживаемые сайты: "
+    },
     "optionsInfo": {
         "message": "Включить поддержку Invidious, выключить автоматический пропуск, скрыть кнопки и не только."
+    },
+    "addInvidiousInstance": {
+        "message": "Добавить инстанс стороннего клиента"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Добавить свой инстанс. Формат: ТОЛЬКО домен. Например, invidious.ajay.app"
     },
     "add": {
         "message": "Добавить"
@@ -434,6 +449,9 @@
     "preview": {
         "message": "Предпросмотр"
     },
+    "unsubmitted": {
+        "message": "Неопубликованный"
+    },
     "inspect": {
         "message": "Исследовать"
     },
@@ -498,6 +516,15 @@
     "category_outro_description": {
         "message": "Титры или время появления конечных заставок YouTube. Не для подведения итогов сказанного в видео."
     },
+    "category_preview": {
+        "message": "Предварительный просмотр/краткое содержание"
+    },
+    "category_preview_description": {
+        "message": "Краткое содержание предыдущих эпизодов или предварительный просмотр того, что будет в данном видео. Предназначено для сегментов, смонтированных из кусков видео, а не для устных пересказов."
+    },
+    "category_preview_short": {
+        "message": "Предпросмотр"
+    },
     "category_music_offtopic": {
         "message": "Музыка: Сегмент без музыки"
     },
@@ -524,6 +551,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Вы ввели цвет в неправильном формате. Это должно быть 3-х или 6-ти значное шестнадцатеричное число с символом # в начале."
+    },
+    "previewColor": {
+        "message": "Цвет неотправленного сегмента",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Цвет в полосе прокрутки"
