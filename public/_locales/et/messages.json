@@ -350,6 +350,13 @@
     "keybindCurrentlySet": {
         "message": ". Hetkel on selleks määratud:"
     },
+    "supportOtherSites": {
+        "message": "Toeta 3. osapoole YouTube-saite"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Kolmanda osapoole YouTube'i klientide tugi. Selle toe lubamiseks pead nõustuma lisalubadega. See EI tööta inkognito-režiimis nii Chromes kui ka teistes Chromiumi brauserites.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Toetatud saidid: "
     },
@@ -513,8 +520,8 @@
     "category_preview": {
         "message": "Eelvaade/kokkuvõte"
     },
-    "category_preview_short": {
-        "message": "Eelvaade"
+    "category_preview_description": {
+        "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
     },
     "category_music_offtopic": {
         "message": "Muusika: mitte-muusika jaotis"
