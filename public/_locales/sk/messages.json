@@ -344,8 +344,24 @@
     "keybindCurrentlySet": {
         "message": ". Aktuálne je nastavené na:"
     },
+    "supportOtherSites": {
+        "message": "Podpora alternatívnych Youtube webov"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Podpora alternatívnych Youtube klientov. Pre zapnutie podpory musíte povoliť zvláštne oprávnenia. Nefunguje v anonymnom režime v prehliadači Chrome ani v Chromium variantoch.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Podporované weby: "
+    },
     "optionsInfo": {
         "message": "Zapnúť podporu Invidious, vypnúť automatické preskočenie, skryť tlačidlá a iné."
+    },
+    "addInvidiousInstance": {
+        "message": "Pridať inštanciu alternatívneho klienta"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Pridať vlastnú inštanciu. Musí byť vo formáte len doména. Napr. invidious.ajay.app"
     },
     "add": {
         "message": "Pridať"
@@ -428,6 +444,9 @@
     "preview": {
         "message": "Ukážka"
     },
+    "unsubmitted": {
+        "message": "Neodoslané"
+    },
     "inspect": {
         "message": "Kontrola"
     },
@@ -492,6 +511,12 @@
     "category_outro_description": {
         "message": "Kredity alebo keď sa zobrazia YouTube koncové karty. Neplatí pre zhrnutia s informáciami."
     },
+    "category_preview": {
+        "message": "Ukážka/Rekapitulácia"
+    },
+    "category_preview_description": {
+        "message": "Rýchla rekapitulácia predošlej epizódy alebo ukážka toho, čo bude nasledovať neskôr v aktuálnom videu. Myslené pre zostrihané videá, nie pre hovorený súhrn."
+    },
     "category_music_offtopic": {
         "message": "Hudba: časť bez hudby"
     },
@@ -518,6 +543,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Vaša farba je nesprávne naformátovaná. Mal by to byť 3 alebo 6-miestny hexadecimálny kód so znakom čísla na začiatku."
+    },
+    "previewColor": {
+        "message": "Neodoslaná farba",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Farba časovej lišty"
