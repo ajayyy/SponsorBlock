@@ -347,8 +347,20 @@
     "keybindCurrentlySet": {
         "message": ". Aktuelle Einstellung:"
     },
+    "supportOtherSites": {
+        "message": "Drittanbieter YouTube-Sites unterstützen"
+    },
+    "supportedSites": {
+        "message": "Unterstützte Seiten: "
+    },
     "optionsInfo": {
         "message": "Zu überspringende Kategorien auswählen, automatisches Überspringen, Tasten ein- & ausblenden und noch viel mehr."
+    },
+    "addInvidiousInstance": {
+        "message": "Client-Instanz eines Drittanbieters hinzufügen"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Füge eine benutzerdefinierte Invidious-Instanz hinzu. Diese darf nur den Domain-Teil beinhalten. Beispiel: \"invidious.ajay.app\""
     },
     "add": {
         "message": "Hinzufügen"
@@ -431,6 +443,9 @@
     "preview": {
         "message": "Vorschau"
     },
+    "unsubmitted": {
+        "message": "Nicht eingereicht"
+    },
     "inspect": {
         "message": "Überprüfen"
     },
@@ -495,6 +510,9 @@
     "category_outro_description": {
         "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für videobeendende Schlussfolgerungen mit Informationen."
     },
+    "category_preview": {
+        "message": "Vorschau/Zusammenfassung"
+    },
     "category_music_offtopic": {
         "message": "Musikvideoteile ohne Musik"
     },
@@ -521,6 +539,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
+    },
+    "previewColor": {
+        "message": "Nicht eingereichte Farbe",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Farbe in der Video-Zeitleiste"
