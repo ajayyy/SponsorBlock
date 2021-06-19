@@ -74,7 +74,7 @@
         "message": "Segmenttejä ei löytynyt"
     },
     "sponsorStart": {
-        "message": "Segmentti Alkaa Nyt"
+        "message": "Segmentti alkaa nyt"
     },
     "sponsorEnd": {
         "message": "Segmentti Päättyy Nyt"
@@ -362,6 +362,9 @@
     "addInvidiousInstance": {
         "message": "Lisää Kolmannen Osapuolen Asiakasinstanssi"
     },
+    "addInvidiousInstanceDescription": {
+        "message": "Lisää mukautettu instanssi. Tämän täytyy olla formatoitu VAIN verkkotunnuksella. Esimerkki: invidious.ajay.app"
+    },
     "add": {
         "message": "Lisää"
     },
@@ -459,10 +462,10 @@
         "message": "Kirjoittaminen leikepöydälle epäonnistui"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopioi tiedot leikepöydälle, joka annetaan kehittäjälle kun ilmoitetaan viasta / kun kehittäjä pyytää sitä. Arkaluonteiset tiedot, kuten käyttäjätunnus, sallitut kanavat ja mukautettu palvelimen osoite on poistettu. Se sisältää kuitenkin tietoja, kuten user agentin, selaimen, käyttöjärjestelmän ja laajennuksen versionumeron. "
+        "message": "Kopioi tiedot leikepöydälle, joka annetaan kehittäjälle kun ilmoitetaan viasta / kun kehittäjä pyytää sitä. Arkaluonteiset tiedot, kuten käyttäjätunnus, sallitut kanavat ja mukautettu palvelimen osoite on poistettu. Se sisältää kuitenkin tietoja, kuten käyttäjäagentin, selaimen, käyttöjärjestelmän ja laajennuksen versionumeron. "
     },
     "copyDebugInformationComplete": {
-        "message": "Virheenkorjaustiedot on kopioitu leikepöydälle. Voit poistaa mitä tahansa tietoa mitä et mielummin jakaisi. Tallenna se tekstitiedostoon tai liitä se virheraporttiin."
+        "message": "Virheenkorjaustiedot on kopioitu leikepöydälle. Voit poistaa mitä tahansa tietoa mitä et mielummin jakaisi. Tallenna tämä tekstitiedostoon tai liitä se virheraporttiin."
     },
     "theKey": {
         "message": "Näppäin"
@@ -516,9 +519,6 @@
     "category_preview_description": {
         "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
     },
-    "category_preview_short": {
-        "message": "Esikatselu"
-    },
     "category_music_offtopic": {
         "message": "Musiikki: Ei-Musiikki-Osio"
     },
@@ -544,7 +544,7 @@
         "message": "Näytä Liukusäätimessä"
     },
     "colorFormatIncorrect": {
-        "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on risuaita alussa."
+        "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on # alussa."
     },
     "previewColor": {
         "message": "Lähettämättömien Väri",
