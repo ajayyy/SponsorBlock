@@ -350,8 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Je momentálně nastaveno na:"
     },
+    "supportOtherSites": {
+        "message": "Podpora pro weby YouTube třetích stran"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Podpora pro YouTube klienty třetích stran. Chcete-li povolit podporu, musíte přijmout další oprávnění. Toto NEFUNGUJE v anonymním režimu v Chromu a dalších Chromium prohlížečích.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Podporované weby: "
+    },
     "optionsInfo": {
         "message": "Povolení podpory Invidious, zakázání automatického přeskočení, skrytí tlačítek a více."
+    },
+    "addInvidiousInstance": {
+        "message": "Přidat relaci klienta třetí strany"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Přidat vlastní relaci. Musí být formátována POUZE s doménou. Například: invidious.ajay.app"
     },
     "add": {
         "message": "Přidat"
@@ -434,6 +450,9 @@
     "preview": {
         "message": "Náhled"
     },
+    "unsubmitted": {
+        "message": "Neodesláno"
+    },
     "inspect": {
         "message": "Kontrola"
     },
@@ -498,6 +517,12 @@
     "category_outro_description": {
         "message": "Titulky nebo když se objeví konečné karty YouTube. Není pro závěry s informacemi."
     },
+    "category_preview": {
+        "message": "Náhled/shrnutí"
+    },
+    "category_preview_description": {
+        "message": "Rychlé shrnutí předchozích epizod nebo náhled toho, co se objeví v aktuálním videu. Myšleno pro upravené sloučené klipy, ne pro mluvená shrnutí."
+    },
     "category_music_offtopic": {
         "message": "Hudba: nehudební sekce"
     },
@@ -524,6 +549,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Vaše barva má nesprávný formát. Měl by to být 3 nebo 6 znaků dlouhý HEX kód s křížkem na začátku."
+    },
+    "previewColor": {
+        "message": "Barva neodeslaného segmentu",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Barva lišty"
