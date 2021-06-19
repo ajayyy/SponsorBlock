@@ -353,9 +353,6 @@
     "supportOtherSites": {
         "message": "Obsługa stron YouTube firm trzecich"
     },
-    "supportOtherSitesDescription": {
-        "message": "Wspieraj nieoficjalne klienty YouTube'a. Aby włączyć dla nich wsparcie, musisz przyznać dodatkowe uprawnienia. W Chrome i innych przeglądarkach bazujących na Chromium ta opcja nie działa w trybie incognito."
-    },
     "supportedSites": {
         "message": "Wspierane strony: "
     },
@@ -521,9 +518,6 @@
     },
     "category_preview_description": {
         "message": "Szybkie podsumowanie poprzednich odcinków lub podgląd tego, co pojawia się później w bieżącym filmie. Dotyczy zmontowanych klipów, a nie ustnych podsumowań."
-    },
-    "category_preview_short": {
-        "message": "Zapowiedź"
     },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
