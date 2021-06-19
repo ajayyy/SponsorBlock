@@ -353,9 +353,6 @@
     "supportOtherSites": {
         "message": "Ondersteuning voor YouTube-sites van derden"
     },
-    "supportOtherSitesDescription": {
-        "message": "Ondersteuning voor YouTube-clients van derden. Om ondersteuning in te schakelen moet u de extra machtigingen accepteren. Dit werkt NIET in incognito in Chrome en andere Chromium-varianten."
-    },
     "supportedSites": {
         "message": "Ondersteunde sites: "
     },
@@ -521,9 +518,6 @@
     },
     "category_preview_description": {
         "message": "Snelle samenvatting van vorige afleveringen of een voorbeeld van wat er later komt in de huidige video. Bedoeld voor samengevoegde clips, niet voor gesproken samenvattingen."
-    },
-    "category_preview_short": {
-        "message": "Voorbeeld"
     },
     "category_music_offtopic": {
         "message": "Muziek: sectie niet-muziek"
