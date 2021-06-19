@@ -239,10 +239,10 @@
         "message": "Imposta un tasto per saltare un segmento"
     },
     "setSubmitKeybind": {
-        "message": "Imposta chiave di associazione tasti per i tuoi contributi"
+        "message": "Imposta un comando rapido per l'invio"
     },
     "keybindDescription": {
-        "message": "Seleziona una chiave digitandola"
+        "message": "Seleziona un tasto premendolo sulla tastiera"
     },
     "keybindDescriptionComplete": {
         "message": "L'associazione di tasti è stata impostata a: "
