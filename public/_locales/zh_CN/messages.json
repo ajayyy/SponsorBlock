@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "片段现在结束"
     },
+    "sponsorCancel": {
+        "message": "取消创建片段"
+    },
     "noVideoID": {
         "message": "未找到 YouTube 视频。\n如果识别错误，请刷新此页面。"
     },
@@ -340,6 +343,9 @@
     },
     "keybindCurrentlySet": {
         "message": "。目前被设定为："
+    },
+    "supportOtherSites": {
+        "message": "支持第三方 YouTube 网站"
     },
     "optionsInfo": {
         "message": "启用 Invidious 支持，禁用自动跳过，隐藏按钮等等。"
