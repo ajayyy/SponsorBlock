@@ -354,7 +354,8 @@
         "message": "Поддерживать сторонние YouTube-сайты"
     },
     "supportOtherSitesDescription": {
-        "message": "Поддерживать сторонние клиенты для YouTube. Чтобы включить поддержку, Вам понадобится принять дополнительные разрешения. Эта функция НЕ работает в режиме \"инкогнито\" в Chrome и браузерах, основанных на Chromium."
+        "message": "Поддерживать сторонние клиенты для YouTube. Чтобы включить поддержку, Вам понадобится принять дополнительные разрешения. Эта функция НЕ работает в режиме \"инкогнито\" в Chrome и браузерах, основанных на Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Поддерживаемые сайты: "
@@ -521,9 +522,6 @@
     },
     "category_preview_description": {
         "message": "Краткое содержание предыдущих эпизодов или предварительный просмотр того, что будет в данном видео. Предназначено для сегментов, смонтированных из кусков видео, а не для устных пересказов."
-    },
-    "category_preview_short": {
-        "message": "Предпросмотр"
     },
     "category_music_offtopic": {
         "message": "Музыка: Сегмент без музыки"
