@@ -8,7 +8,7 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "伺服器說這個請求無效"
+        "message": "伺服器回應此請求無效"
     },
     "429": {
         "message": "您為這部影片提交了過多的贊助廣告片段，您確定有這麼多嗎？"
@@ -354,7 +354,8 @@
         "message": "支援第三方的 YouTube 網站"
     },
     "supportOtherSitesDescription": {
-        "message": "支援第三方的 YouTube 客戶端。若要啟用，您必須同意額外的權限。這在 Chrome 中的無痕模式和其他 Chromium 分支無效。"
+        "message": "支援第三方的 YouTube 客戶端。若要啟用，您必須同意額外的權限。這在 Chrome 中的無痕模式和其他 Chromium 分支無效。",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "支援的網站："
@@ -516,9 +517,6 @@
     "category_preview": {
         "message": "預覽/摘要"
     },
-    "category_preview_short": {
-        "message": "預覽"
-    },
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
     },
@@ -561,7 +559,7 @@
         "message": "啟用 Beta 測試伺服器"
     },
     "whatEnableTestingServer": {
-        "message": "寧的提交和投票不會記入主伺服器。僅會被用來測試"
+        "message": "您的提交和投票將不會記入主伺服器。僅在測試時啟用此選項"
     },
     "testingServerWarning": {
         "message": "當連結到測試伺服器，所有的提交和投票都不會計入主伺服器。當您想要進行有效提交時，請停用此選項"
