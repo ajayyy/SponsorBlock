@@ -354,7 +354,8 @@
         "message": "Stöd för tredjeparts YouTube-webbplatser"
     },
     "supportOtherSitesDescription": {
-        "message": "Stöder tredje parts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna. Detta fungerar INTE i inkognito på Chrome och andra Chromium-varianter."
+        "message": "Stöd tredje parts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna. Detta fungerar INTE i inkognito på Chrome och andra Chromium-varianter.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Webbplatser som stöds: "
@@ -519,8 +520,8 @@
     "category_preview": {
         "message": "Förhandsgranska/sammanfatta"
     },
-    "category_preview_short": {
-        "message": "Förhandsgranska"
+    "category_preview_description": {
+        "message": "Snabb sammanfattning av tidigare avsnitt eller en förhandsvisning av vad som kommer upp senare i den aktuella videon. Avsett för redigerade klipp, inte för sammanfattningar."
     },
     "category_music_offtopic": {
         "message": "Musik: Icke-musikavsnitt"
@@ -548,6 +549,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."
+    },
+    "previewColor": {
+        "message": "Färg på ej inskickade",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Sökfältsfärg"
