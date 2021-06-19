@@ -353,6 +353,10 @@
     "supportOtherSites": {
         "message": "Tue Kolmansien Osapuolien YouTube-sivustoja"
     },
+    "supportOtherSitesDescription": {
+        "message": "Tue kolmannen osapuolen YouTube-asiakasohjelmia. Jotta voit ottaa käyttöön tuen, sinun täytyy hyväksyä lisäkäyttöoikeudet. Tämä EI toimi incognitossa Chromessa ja muissa Chromium varianteissa.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Tuetut Sivustot: "
     },
@@ -360,7 +364,7 @@
         "message": "Ota käyttöön Invidious tuki, poista käytöstä automaattinen ohitus, piilota painikkeet ja muuta."
     },
     "addInvidiousInstance": {
-        "message": "Lisää Kolmannen Osapuolen Asiakasinstanssi"
+        "message": "Lisää Kolmannen Osapuolen Asiakasohjelmainstanssi"
     },
     "addInvidiousInstanceDescription": {
         "message": "Lisää mukautettu instanssi. Tämän täytyy olla formatoitu VAIN verkkotunnuksella. Esimerkki: invidious.ajay.app"
