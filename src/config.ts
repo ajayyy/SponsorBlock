@@ -227,11 +227,11 @@ const Config: SBObject = {
                 opacity: "0.7"
             },
             "preview": {
-                color: "#0b9d65",
+                color: "#008fd6",
                 opacity: "0.7"
             },
             "preview-preview": {
-                color: "#065b3a",
+                color: "#005799",
                 opacity: "0.7"
             },
             "music_offtopic": {
