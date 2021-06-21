@@ -75,6 +75,22 @@
 	vertical-align: top;
 }
 
+#infoButton.playerButton:not(.hidden) {
+	transform: translateX(0%) scale(1);
+	/* opacity is from YouTube page */
+	transition: transform 0.2s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
+}
+
+#infoButton.playerButton.hidden {
+	transform: translateX(100%) scale(0);
+	/* opacity is from YouTube page */
+	transition: transform 0.2s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
+}
+
+.playerButton.hidden {
+	display: none;
+}
+
 .sponsorSkipObject {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 		
