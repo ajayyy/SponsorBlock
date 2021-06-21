@@ -276,7 +276,7 @@
         "message": "Salta"
     },
     "skip_category": {
-        "message": "Saltare {0}?"
+        "message": "Vuoi saltare {0}?"
     },
     "skipped": {
         "message": "Saltato"
