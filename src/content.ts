@@ -721,7 +721,7 @@ function startSkipScheduleCheckingForStartSponsors() {
  * Get the video info for the current tab from YouTube
  */
 async function getVideoInfo(): Promise<void> {
-    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID + "&html5=1");
+    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID + "&html5=1&c=TVHTML5&cver=7.20190319");
 
     if (result.ok) {
         const decodedData = decodeURIComponent(result.responseText).match(/player_response=([^&]*)/)[1];
