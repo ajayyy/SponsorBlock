@@ -515,7 +515,7 @@
         "message": "Loppukortit/-tekstit"
     },
     "category_outro_description": {
-        "message": "Lopputekstit tai YouTuben loppukortit. Ei lopetuksille, joissa on tärkeää tietoa."
+        "message": "Lopputekstit tai kun YouTuben loppukortit tulevat näkyviin. Ei lopetuksille joissa on tietoa."
     },
     "category_preview": {
         "message": "Esikatselu/Kertaus"
