@@ -69,7 +69,8 @@
         "64": "icons/LogoSponsorBlocker64px.png",
         "128": "icons/LogoSponsorBlocker128px.png",
         "256": "icons/LogoSponsorBlocker256px.png",
-        "512": "icons/LogoSponsorBlocker512px.png"
+        "512": "icons/LogoSponsorBlocker512px.png",
+        "1024": "icons/LogoSponsorBlocker1024px.png"
     },
     "options_ui": {
         "page": "options/options.html",
