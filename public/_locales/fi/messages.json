@@ -242,7 +242,7 @@
         "message": "Aseta näppäin segmentin ohittamista varten"
     },
     "setStartSponsorShortcut": {
-        "message": "Aseta pikanäppäin segmentin aloittamiseen ja lopettamiseen"
+        "message": "Aseta pikanäppäin segmentin aloittamiseen/lopettamiseen"
     },
     "setSubmitKeybind": {
         "message": "Aseta näppäin tietojen lähetykseen"
@@ -503,7 +503,7 @@
         "message": "Vuorovaikutusmuistutus"
     },
     "category_intro": {
-        "message": "Tauko tai introanimaatio"
+        "message": "Tauko/Introanimaatio"
     },
     "category_intro_description": {
         "message": "Aikaväli ilman varsinaista sisältöä. Voi olla tauko, staattinen kehys, toistuva animaatio. Tätä ei pitäisi käyttää siirtymisiin, jotka sisältävät tietoa."
