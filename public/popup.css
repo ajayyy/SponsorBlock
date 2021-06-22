@@ -6,7 +6,7 @@
   --sb-green-bg: #077B27;
 }
 
-.sponsorBlockPopupBody .hidden {
+#sponsorBlockPopupBody .hidden {
   display: none !important;
 }
 
