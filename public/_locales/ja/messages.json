@@ -627,7 +627,11 @@
     "categoryUpdate2": {
         "message": "導入画面・終了画面・商品紹介などを飛び越す個人設定を開きます。"
     },
-    "help": {
-        "message": "ヘルプ"
+    "experiementOptOut": {
+        "message": "実験的機能をすべて無効にする",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "二度と表示しない"
     }
 }
