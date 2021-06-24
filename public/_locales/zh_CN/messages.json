@@ -605,8 +605,5 @@
     },
     "categoryUpdate2": {
         "message": "打开选项，跳过开头，结尾，商业等。"
-    },
-    "help": {
-        "message": "帮助"
     }
 }
