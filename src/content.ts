@@ -882,7 +882,7 @@ async function unlistedCheck() {
         const year = yearMatches ? parseInt(yearMatches[0]) : -1;
         const isOld = !isNaN(year) && year < 2017 && year > 2004;
         const views = parseInt(videoInfo?.videoDetails?.viewCount);
-        const isHighViews = views > 20000;
+        const isHighViews = views > 15000;
 
         if (isUnlisted && isOld && isHighViews) {
             // Ask if they want to submit this videoID
