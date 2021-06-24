@@ -658,7 +658,7 @@
         "message": "Help prevent this from disappearing"
     },
     "experimentUnlistedText": {
-        "message": "This video is detected as unlisted and uploaded before 2017\nOld unlisted videos are being set to private next month\nWe are collecting *public* videos to back up\nWould you like anonymously to send this video to us?"
+        "message": "This video is detected as unlisted and uploaded before 2017\nOld unlisted videos are being set to private next month\nWe are collecting *public* videos to back up\nWould you like anonymously to send this video to us?\nhttps://support.google.com/youtube/answer/9230970"
     },
     "experiementOptOut": {
         "message": "Opt-out of all future experiments",
