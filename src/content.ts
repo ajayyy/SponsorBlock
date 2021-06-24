@@ -884,7 +884,7 @@ async function unlistedCheck() {
         const views = parseInt(videoInfo?.videoDetails?.viewCount);
         const isHighViews = views > 15000;
 
-        if (isUnlisted && isOld && isHighViews) {
+        if (isUnlisted && isOld && isHighViews && (!sponsorTimes || sponsorTimes.length <= 0)) {
             // Ask if they want to submit this videoID
             const notice = new GenericNotice(skipNoticeContentContainer, "unlistedWarning", {
                 title: chrome.i18n.getMessage("experimentUnlistedTitle"),
