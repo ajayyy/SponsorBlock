@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Sleduje aké segmenty ste preskočili, aby sa ostatní používatelia dozvedeli ako prispeli a pomohli ostatným. Spolu s hlasmi to potom zaistí databázu bez spamu. Rozšírenie odošle správu na server vždy keď preskočíte segment. Dúfame, že si väčšina ľudí toto nastavenie nezmení, aby boli čísla presné. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Zapnúť počítanie preskočení v inkognito oknách"
+    },
     "enableQueryByHashPrefix": {
         "message": "Dopyt podľa hash prefixu"
     },
@@ -237,6 +240,9 @@
     },
     "setSkipShortcut": {
         "message": "Nastaviť kláves pre preskočenie segmentu"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Nastaviť kláves pre začiatok/ukončenie segmentu"
     },
     "setSubmitKeybind": {
         "message": "Nastaviť kláves pre odoslanie segmentu"
