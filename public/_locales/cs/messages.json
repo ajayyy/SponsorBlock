@@ -44,7 +44,7 @@
         "message": "Nikdy nezobrazovat"
     },
     "hitGoBack": {
-        "message": "Stiskněte \"Vrátit se\" aby jste se dostali do místa před přeskočením."
+        "message": "Klikněte na \"Vrátit se\", abyste se dostali do místa před přeskočením."
     },
     "unskip": {
         "message": "Vrátit se"
@@ -350,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Je momentálně nastaveno na:"
     },
-    "supportInvidious": {
-        "message": "Podpora Invidious"
+    "supportOtherSites": {
+        "message": "Podpora pro weby YouTube třetích stran"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) je YouTube klient třetí strany. Chcete-li povolit podporu, musíte přijmout další oprávnění. Toto NEFUNGUJE v anonymním režimu v Chromu a dalších Chromium prohlížečích."
+    "supportOtherSitesDescription": {
+        "message": "Podpora pro YouTube klienty třetích stran. Chcete-li povolit podporu, musíte přijmout další oprávnění. Toto NEFUNGUJE v anonymním režimu v Chromu a dalších Chromium prohlížečích.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Podporované weby: "
     },
     "optionsInfo": {
         "message": "Povolení podpory Invidious, zakázání automatického přeskočení, skrytí tlačítek a více."
     },
     "addInvidiousInstance": {
-        "message": "Přidat relaci Invidious"
+        "message": "Přidat relaci klienta třetí strany"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Přidat vlastní relaci Invidious. Musí být formátována POUZE s doménou. Například: invidious.ajay.app"
+        "message": "Přidat vlastní relaci. Musí být formátována POUZE s doménou. Například: invidious.ajay.app"
     },
     "add": {
         "message": "Přidat"
@@ -446,6 +450,9 @@
     "preview": {
         "message": "Náhled"
     },
+    "unsubmitted": {
+        "message": "Neodesláno"
+    },
     "inspect": {
         "message": "Kontrola"
     },
@@ -480,6 +487,21 @@
     "category_sponsor_description": {
         "message": "Placená propagace, placená doporučení a přímé reklamy. Nezahrnuje sebepropagaci nebo shout-outy uživatelů/tvůrců/webů/produktů, které se tvůrcovi líbí."
     },
+    "category_selfpromo": {
+        "message": "Neplacená / vlastní propagace"
+    },
+    "category_selfpromo_description": {
+        "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
+    },
+    "category_interaction": {
+        "message": "Připomenutí interakce (odběr)"
+    },
+    "category_interaction_description": {
+        "message": "Při krátké připomínce dát like, odběr nebo sledování tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
+    },
+    "category_interaction_short": {
+        "message": "Připomenutí interakce"
+    },
     "category_intro": {
         "message": "Přestávka / úvodní animace"
     },
@@ -495,20 +517,11 @@
     "category_outro_description": {
         "message": "Titulky nebo když se objeví konečné karty YouTube. Není pro závěry s informacemi."
     },
-    "category_interaction": {
-        "message": "Připomenutí interakce (odběr)"
+    "category_preview": {
+        "message": "Náhled/shrnutí"
     },
-    "category_interaction_description": {
-        "message": "Při krátké připomínce dát like, odběr nebo sledování tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
-    },
-    "category_interaction_short": {
-        "message": "Připomenutí interakce"
-    },
-    "category_selfpromo": {
-        "message": "Neplacená / vlastní propagace"
-    },
-    "category_selfpromo_description": {
-        "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
+    "category_preview_description": {
+        "message": "Rychlé shrnutí předchozích epizod nebo náhled toho, co se objeví v aktuálním videu. Myšleno pro upravené sloučené klipy, ne pro mluvená shrnutí."
     },
     "category_music_offtopic": {
         "message": "Hudba: nehudební sekce"
@@ -538,7 +551,7 @@
         "message": "Vaše barva má nesprávný formát. Měl by to být 3 nebo 6 znaků dlouhý HEX kód s křížkem na začátku."
     },
     "previewColor": {
-        "message": "Barva náhledu",
+        "message": "Barva neodeslaného segmentu",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -641,7 +654,17 @@
     "categoryUpdate2": {
         "message": "Otevřít možnosti pro přeskočení intra, outra, merche apod."
     },
-    "help": {
-        "message": "Nápověda"
+    "experimentUnlistedTitle": {
+        "message": "Pomozte zabránit zmizení tohoto"
+    },
+    "experimentUnlistedText": {
+        "message": "Toto video bylo detekováno jako neuvedené a bylo nahráno před rokem 2017\nStará neuvedená videa budou nastavena příští měsíc na soukromá\nSbíráme *veřejná* videa pro zálohu\nChtěli byste nám anonymně poslat toto video?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Odhlásit se ze všech budoucích experimentů",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Skrýt napořád"
     }
 }

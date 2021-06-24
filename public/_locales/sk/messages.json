@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Sleduje aké segmenty ste preskočili, aby sa ostatní používatelia dozvedeli ako prispeli a pomohli ostatným. Spolu s hlasmi to potom zaistí databázu bez spamu. Rozšírenie odošle správu na server vždy keď preskočíte segment. Dúfame, že si väčšina ľudí toto nastavenie nezmení, aby boli čísla presné. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Zapnúť počítanie preskočení v inkognito oknách"
+    },
     "enableQueryByHashPrefix": {
         "message": "Dopyt podľa hash prefixu"
     },
@@ -237,6 +240,9 @@
     },
     "setSkipShortcut": {
         "message": "Nastaviť kláves pre preskočenie segmentu"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Nastaviť kláves pre začiatok/ukončenie segmentu"
     },
     "setSubmitKeybind": {
         "message": "Nastaviť kláves pre odoslanie segmentu"
@@ -344,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Aktuálne je nastavené na:"
     },
-    "supportInvidious": {
-        "message": "Podpora Invidious"
+    "supportOtherSites": {
+        "message": "Podpora alternatívnych Youtube webov"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) je alternatívny YouTube klient. Pre zapnutie podpory musíte povoliť zvláštne oprávnenia. Nefunguje v anonymnom režime v prehliadači Chrome ani v Chromium variantoch."
+    "supportOtherSitesDescription": {
+        "message": "Podpora alternatívnych Youtube klientov. Pre zapnutie podpory musíte povoliť zvláštne oprávnenia. Nefunguje v anonymnom režime v prehliadači Chrome ani v Chromium variantoch.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Podporované weby: "
     },
     "optionsInfo": {
         "message": "Zapnúť podporu Invidious, vypnúť automatické preskočenie, skryť tlačidlá a iné."
     },
     "addInvidiousInstance": {
-        "message": "Pridať inštanciu Invidious"
+        "message": "Pridať inštanciu alternatívneho klienta"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Pridá vlastnú inštanciu Invidious. Musí byť vo formáte len doména. Napr. invidious.ajay.app"
+        "message": "Pridať vlastnú inštanciu. Musí byť vo formáte len doména. Napr. invidious.ajay.app"
     },
     "add": {
         "message": "Pridať"
@@ -440,6 +450,9 @@
     "preview": {
         "message": "Ukážka"
     },
+    "unsubmitted": {
+        "message": "Neodoslané"
+    },
     "inspect": {
         "message": "Kontrola"
     },
@@ -474,6 +487,21 @@
     "category_sponsor_description": {
         "message": "Platená propagácia, platené odporúčania a priame reklamy. Neplatí pre vlastnú propagáciu alebo neplatenú propagáciu dobročinností/tvorcov/webových stránok/produktov, ktoré sa im páčia."
     },
+    "category_selfpromo": {
+        "message": "Neplatená/Vlastná propagácia"
+    },
+    "category_selfpromo_description": {
+        "message": "Podobné ako sponzor, okrem neplatenej alebo vlastnej propagácie. Patria sem sekcie týkajúce sa merchu, donatov alebo informácií o tom, s kým spolupracovali."
+    },
+    "category_interaction": {
+        "message": "Pripomienka interakcie (Prihlásiť sa na odber)"
+    },
+    "category_interaction_description": {
+        "message": "Krátka výzva dať like, prihlásiť sa na odber alebo sledovať ich v strede obsahu. Ak je to dlhé alebo sa týka niečoho konkrétneho, malo by to radšej byť v ramci vlastnej propagácie."
+    },
+    "category_interaction_short": {
+        "message": "Pripomienka interakcie"
+    },
     "category_intro": {
         "message": "Prerušenie/Úvodná animácia"
     },
@@ -489,20 +517,11 @@
     "category_outro_description": {
         "message": "Kredity alebo keď sa zobrazia YouTube koncové karty. Neplatí pre zhrnutia s informáciami."
     },
-    "category_interaction": {
-        "message": "Pripomienka interakcie (Prihlásiť sa na odber)"
+    "category_preview": {
+        "message": "Ukážka/Rekapitulácia"
     },
-    "category_interaction_description": {
-        "message": "Krátka výzva dať like, prihlásiť sa na odber alebo sledovať ich v strede obsahu. Ak je to dlhé alebo sa týka niečoho konkrétneho, malo by to radšej byť v ramci vlastnej propagácie."
-    },
-    "category_interaction_short": {
-        "message": "Pripomienka interakcie"
-    },
-    "category_selfpromo": {
-        "message": "Neplatená/Vlastná propagácia"
-    },
-    "category_selfpromo_description": {
-        "message": "Podobné ako sponzor, okrem neplatenej alebo vlastnej propagácie. Patria sem sekcie týkajúce sa merchu, donatov alebo informácií o tom, s kým spolupracovali."
+    "category_preview_description": {
+        "message": "Rýchla rekapitulácia predošlej epizódy alebo ukážka toho, čo bude nasledovať neskôr v aktuálnom videu. Myslené pre zostrihané videá, nie pre hovorený súhrn."
     },
     "category_music_offtopic": {
         "message": "Hudba: časť bez hudby"
@@ -532,7 +551,7 @@
         "message": "Vaša farba je nesprávne naformátovaná. Mal by to byť 3 alebo 6-miestny hexadecimálny kód so znakom čísla na začiatku."
     },
     "previewColor": {
-        "message": "Farba ukážky",
+        "message": "Neodoslaná farba",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -634,8 +653,5 @@
     },
     "categoryUpdate2": {
         "message": "Otvorte nastavenia pre preskočenie úvodov, záverov, podpory reklamných predmetov, atď."
-    },
-    "help": {
-        "message": "Pomoc"
     }
 }

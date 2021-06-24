@@ -341,20 +341,8 @@
     "keybindCurrentlySet": {
         "message": ". Den er før øyeblikket satt til:"
     },
-    "supportInvidious": {
-        "message": "Støtt Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) er en tredjeparts YouTube-klient. For å skru på støtte for det, må du akseptere de ekstra tillatelsene. Dette fungerer IKKE i inkognito på Chrome og andre Chromium-varianter."
-    },
     "optionsInfo": {
         "message": "Skru på Invidious-støtte, skru av autohopp, skjul knapper, og mer."
-    },
-    "addInvidiousInstance": {
-        "message": "Legg til Invidious-instans"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Legg til en selvvalgt Invidious-instans. Dette må formatteres som KUN domenet. For eksempel: invidious.ajay.app"
     },
     "add": {
         "message": "Legg til"
@@ -471,6 +459,21 @@
     "category_sponsor_description": {
         "message": "Betalt promotering, betalte henvisninger, og reklamer direkte til seerne. Ikke for selvpromotering eller gratis hyllester av saker/skapere/nettsteder/produkter som de liker."
     },
+    "category_selfpromo": {
+        "message": "Ubetalt/Selvpromotering"
+    },
+    "category_selfpromo_description": {
+        "message": "Minner om «Sponsor», men er ubetalt eller selvpromotering. Dette inkluderer segmenter om merchandise, donasjoner, eller info om hvem de samarbeidet med."
+    },
+    "category_interaction": {
+        "message": "Samhandlingspåminnelse (Abonner)"
+    },
+    "category_interaction_description": {
+        "message": "Når det er en kort påminnelse om å like, abonnere på eller følge dem midt i innholdet. Hvis det er langt eller handler om noe spesifikt, burde det føres opp som selvpromotering i stedet."
+    },
+    "category_interaction_short": {
+        "message": "Samhandlingspåminnelse"
+    },
     "category_intro": {
         "message": "Midtpause-/Introanimasjon"
     },
@@ -485,21 +488,6 @@
     },
     "category_outro_description": {
         "message": "Rulletekster eller når YouTube-sluttkortene dukker opp. Ikke for avslutninger med informasjon."
-    },
-    "category_interaction": {
-        "message": "Samhandlingspåminnelse (Abonner)"
-    },
-    "category_interaction_description": {
-        "message": "Når det er en kort påminnelse om å like, abonnere på eller følge dem midt i innholdet. Hvis det er langt eller handler om noe spesifikt, burde det føres opp som selvpromotering i stedet."
-    },
-    "category_interaction_short": {
-        "message": "Samhandlingspåminnelse"
-    },
-    "category_selfpromo": {
-        "message": "Ubetalt/Selvpromotering"
-    },
-    "category_selfpromo_description": {
-        "message": "Minner om «Sponsor», men er ubetalt eller selvpromotering. Dette inkluderer segmenter om merchandise, donasjoner, eller info om hvem de samarbeidet med."
     },
     "category_music_offtopic": {
         "message": "Musikk: Seksjon uten musikk"
@@ -527,10 +515,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Fargen din er formattert feil. Det burde være en 3- eller 6-sifret heksadesimal kode med et nummertegn foran."
-    },
-    "previewColor": {
-        "message": "Forhåndsvisningsfarge",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Tidsstripefarge"
@@ -621,8 +605,5 @@
     },
     "categoryUpdate2": {
         "message": "Åpne innstillingene for å hoppe over introer, outro-er, merchandise, osv."
-    },
-    "help": {
-        "message": "Hjelp"
     }
 }

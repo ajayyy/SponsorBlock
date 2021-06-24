@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Questa funzionalità tiene traccia dei segmenti che hai saltato, per far sapere agli utenti quanto il loro contributo abbia aiutato gli altri e sia stato utilizzato come metrica insieme ai voti positivi, per garantire che lo spam non entri nel database. L'estensione invierà un messaggio al server ogni volta che salterai un segmento. Si spera che la maggior parte delle persone non modifichino questa impostazione, in modo da non intaccare l'accuratezza dei numeri di visualizzazione. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Abilita il conteggio dei salti nelle schede private/anonime"
+    },
     "enableQueryByHashPrefix": {
         "message": "Ricerca tramite prefisso hash"
     },
@@ -238,11 +241,14 @@
     "setSkipShortcut": {
         "message": "Imposta un tasto per saltare un segmento"
     },
+    "setStartSponsorShortcut": {
+        "message": "Imposta un tasto personalizzato per iniziare/finire il segmento"
+    },
     "setSubmitKeybind": {
-        "message": "Imposta chiave di associazione tasti per i tuoi contributi"
+        "message": "Imposta un comando rapido per l'invio"
     },
     "keybindDescription": {
-        "message": "Seleziona una chiave digitandola"
+        "message": "Seleziona un tasto premendolo sulla tastiera"
     },
     "keybindDescriptionComplete": {
         "message": "L'associazione di tasti è stata impostata a: "
@@ -270,7 +276,7 @@
         "message": "Salta"
     },
     "skip_category": {
-        "message": "Saltare {0}?"
+        "message": "Vuoi saltare {0}?"
     },
     "skipped": {
         "message": "Saltato"
@@ -344,20 +350,21 @@
     "keybindCurrentlySet": {
         "message": ". Attualmente è impostato su:"
     },
-    "supportInvidious": {
-        "message": "Supporta Invidious"
+    "supportOtherSites": {
+        "message": "Supporta siti di YouTube di terze parti"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) è un client YouTube di terze parti. Per abilitare il supporto, è necessario accettare i permessi aggiuntivi. Questo NON funziona in incognito su Chrome e altre varianti di Chromium."
+    "supportOtherSitesDescription": {
+        "message": "Supporta client YouTube di terze parti. Per abilitare il supporto, devi accettare i permessi aggiuntivi. Questo NON funziona in incognito su Chrome e altre varianti di Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Pagine supportate: "
     },
     "optionsInfo": {
         "message": "Abilita supporto invidioso, disabilita salto automatico, nascondi i pulsanti e altro ancora."
     },
-    "addInvidiousInstance": {
-        "message": "Aggiungi istanza di Invidious"
-    },
     "addInvidiousInstanceDescription": {
-        "message": "Aggiungi un'istanza personalizzata di Invidious. Questo deve essere formattato SOLO con il dominio. Esempio: invidious.ajay.app"
+        "message": "Aggiungi un'istanza personalizzata. Deve essere formattata SOLO con il dominio. Esempio: invidious.ajay.app"
     },
     "add": {
         "message": "Aggiungi"
@@ -440,6 +447,9 @@
     "preview": {
         "message": "Anteprima"
     },
+    "unsubmitted": {
+        "message": "Non inviato"
+    },
     "inspect": {
         "message": "Esamina"
     },
@@ -474,6 +484,21 @@
     "category_sponsor_description": {
         "message": "Promozione a pagamento, referral a pagamento e pubblicità diretta. Non per auto-promozione o ringraziamenti gratuiti a cause/creatori/siti web/ prodotti di loro gradimento."
     },
+    "category_selfpromo": {
+        "message": "Promozione non pagata/Autopromozione"
+    },
+    "category_selfpromo_description": {
+        "message": "Simile alle \"sponsorizzazioni\" tranne che per promozioni non pagate o autopromozioni. Ciò include sezioni riguardanti vendita di merce, donazioni o informazioni in merito a collaboratori."
+    },
+    "category_interaction": {
+        "message": "Promemoria di Interazione (Sottoscrizione)"
+    },
+    "category_interaction_description": {
+        "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per aggiunta di mi piace, iscrizione o seguito. Se dovesse risultare esteso o riguardare qualcosa di specifico, potrebbe essere un'autopromozione."
+    },
+    "category_interaction_short": {
+        "message": "Promemoria di Interazione"
+    },
     "category_intro": {
         "message": "Animazione Interruzione/Introduzione"
     },
@@ -489,20 +514,11 @@
     "category_outro_description": {
         "message": "I titoli di coda o quando vengono mostrate annotazioni a fine video su YouTube. Non per conclusioni provviste di informazioni."
     },
-    "category_interaction": {
-        "message": "Promemoria di Interazione (Sottoscrizione)"
+    "category_preview": {
+        "message": "Anteprima"
     },
-    "category_interaction_description": {
-        "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per aggiunta di mi piace, iscrizione o seguito. Se dovesse risultare esteso o riguardare qualcosa di specifico, potrebbe essere un'autopromozione."
-    },
-    "category_interaction_short": {
-        "message": "Promemoria di Interazione"
-    },
-    "category_selfpromo": {
-        "message": "Promozione non pagata/Autopromozione"
-    },
-    "category_selfpromo_description": {
-        "message": "Simile alle \"sponsorizzazioni\" tranne che per promozioni non pagate o autopromozioni. Ciò include sezioni riguardanti vendita di merce, donazioni o informazioni in merito a collaboratori."
+    "category_preview_description": {
+        "message": "Riepilogo rapido degli episodi precedenti, o un'anteprima di ciò che sta arrivando più tardi nel video attuale. Inteso per clip, non per riassunti a voce."
     },
     "category_music_offtopic": {
         "message": "Musica: Sezione Non-Musicale"
@@ -532,7 +548,7 @@
         "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
     },
     "previewColor": {
-        "message": "Anteprima Colore",
+        "message": "Segmento non inviato",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -634,8 +650,5 @@
     },
     "categoryUpdate2": {
         "message": "Apri queste opzioni per saltare le introduzioni, conclusioni, vendita di prodotti ecc."
-    },
-    "help": {
-        "message": "Aiuto"
     }
 }

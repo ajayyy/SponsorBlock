@@ -350,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Он сейчас назначен на:"
     },
-    "supportInvidious": {
-        "message": "Поддержка Invidious"
+    "supportOtherSites": {
+        "message": "Поддерживать сторонние YouTube-сайты"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) — это неофициальный клиент для YouTube. Чтобы включить поддержку, Вам понадобится принять дополнительные разрешения. Эта функция НЕ работает в режиме \"инкогнито\" в Chrome и браузерах, основанных на Chromium."
+    "supportOtherSitesDescription": {
+        "message": "Поддерживать сторонние клиенты для YouTube. Чтобы включить поддержку, Вам понадобится принять дополнительные разрешения. Эта функция НЕ работает в режиме \"инкогнито\" в Chrome и браузерах, основанных на Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Поддерживаемые сайты: "
     },
     "optionsInfo": {
         "message": "Включить поддержку Invidious, выключить автоматический пропуск, скрыть кнопки и не только."
     },
     "addInvidiousInstance": {
-        "message": "Добавить инстанс Invidious"
+        "message": "Добавить инстанс стороннего клиента"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Добавить свой инстанс Invidious. Формат: ТОЛЬКО домен. Например, invidious.ajay.app"
+        "message": "Добавить свой инстанс. Формат: ТОЛЬКО домен. Например, invidious.ajay.app"
     },
     "add": {
         "message": "Добавить"
@@ -446,6 +450,9 @@
     "preview": {
         "message": "Предпросмотр"
     },
+    "unsubmitted": {
+        "message": "Неопубликованный"
+    },
     "inspect": {
         "message": "Исследовать"
     },
@@ -480,6 +487,21 @@
     "category_sponsor_description": {
         "message": "Рекламные интеграции, реферальные ссылки и реклама напрямую. Не для саморекламы или рекомендаций разных событий/создателей/сайтов/продуктов, которые нравятся автору видео."
     },
+    "category_selfpromo": {
+        "message": "Самореклама/рекомендация"
+    },
+    "category_selfpromo_description": {
+        "message": "Похоже на \"Спонсора\", но для бесплатной рекламы и саморекламы. Включает себя вставки про мерчендайз, пожертвования или информацию о тех, вместе с кем было сделано видео."
+    },
+    "category_interaction": {
+        "message": "Напоминание о взаимодействии (подписка)"
+    },
+    "category_interaction_description": {
+        "message": "Когда есть краткое напоминание поставить лайк, подписаться на канал или в соцсетях в середине содержимого. Если эта вставка длительная или о чём-то конкретном, она должна классифицироваться как самореклама."
+    },
+    "category_interaction_short": {
+        "message": "Напоминание о взаимодействии"
+    },
     "category_intro": {
         "message": "Пауза/интро"
     },
@@ -495,20 +517,11 @@
     "category_outro_description": {
         "message": "Титры или время появления конечных заставок YouTube. Не для подведения итогов сказанного в видео."
     },
-    "category_interaction": {
-        "message": "Напоминание о взаимодействии (подписка)"
+    "category_preview": {
+        "message": "Предварительный просмотр/краткое содержание"
     },
-    "category_interaction_description": {
-        "message": "Когда есть краткое напоминание поставить лайк, подписаться на канал или в соцсетях в середине содержимого. Если эта вставка длительная или о чём-то конкретном, она должна классифицироваться как самореклама."
-    },
-    "category_interaction_short": {
-        "message": "Напоминание о взаимодействии"
-    },
-    "category_selfpromo": {
-        "message": "Самореклама/рекомендация"
-    },
-    "category_selfpromo_description": {
-        "message": "Похоже на \"Спонсора\", но для бесплатной рекламы и саморекламы. Включает себя вставки про мерчендайз, пожертвования или информацию о тех, вместе с кем было сделано видео."
+    "category_preview_description": {
+        "message": "Краткое содержание предыдущих эпизодов или предварительный просмотр того, что будет в данном видео. Предназначено для сегментов, смонтированных из кусков видео, а не для устных пересказов."
     },
     "category_music_offtopic": {
         "message": "Музыка: Сегмент без музыки"
@@ -538,7 +551,7 @@
         "message": "Вы ввели цвет в неправильном формате. Это должно быть 3-х или 6-ти значное шестнадцатеричное число с символом # в начале."
     },
     "previewColor": {
-        "message": "Цвет предпросмотра",
+        "message": "Цвет неотправленного сегмента",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -641,7 +654,17 @@
     "categoryUpdate2": {
         "message": "Откройте настройки, чтобы пропускать начальные и конечные заставки, саморекламу и другое."
     },
-    "help": {
-        "message": "Помощь"
+    "experimentUnlistedTitle": {
+        "message": "Помогите архивировать это видео"
+    },
+    "experimentUnlistedText": {
+        "message": "Это видео было загружено до 2017 и имеет доступ по ссылке\nДля всех подобных видео в следующем месяце будет установлен ограниченный доступ\nМы собираем *публичные* видео для резервного копирования\nВы хотели бы анонимно отправить нам это видео?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Отказаться от всех будущих экспериментов",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Скрыть навсегда"
     }
 }

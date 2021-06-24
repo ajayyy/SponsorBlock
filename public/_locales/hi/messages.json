@@ -24,5 +24,26 @@
     },
     "Segments": {
         "message": "खंडों"
+    },
+    "Dismiss": {
+        "message": "रद्द करें"
+    },
+    "Loading": {
+        "message": "लोड कर रहा है..."
+    },
+    "paused": {
+        "message": "रुका हुआ"
+    },
+    "clearThis": {
+        "message": "क्या आप वाकई इसे साफ़ करना चाहते हैं?\n\n"
+    },
+    "sponsorEnd": {
+        "message": "खंड अब समाप्त होता है"
+    },
+    "success": {
+        "message": "सफल!"
+    },
+    "Options": {
+        "message": "विकल्प"
     }
 }

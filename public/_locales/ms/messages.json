@@ -341,20 +341,8 @@
     "keybindCurrentlySet": {
         "message": ". Pada masa ini ditetapkan untuk:"
     },
-    "supportInvidious": {
-        "message": "Sokong Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) adalah pelanggan YouTube pihak ketiga. Untuk mengaktifkan sokongan, anda mesti menerima kebenaran tambahan. Ini TIDAK berfungsi dalam penyamaran pada Chrome dan varian Chromium lain."
-    },
     "optionsInfo": {
         "message": "Dayakan sokongan Invidious, lumpuhkan autoskip, sembunyikan butang dan banyak lagi."
-    },
-    "addInvidiousInstance": {
-        "message": "Tambah Contoh Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Tambahkan contoh tersuai Invidious. Ini mesti diformat dengan HANYA domain. Contoh: invidious.ajay.app"
     },
     "add": {
         "message": "Tambah"
@@ -471,6 +459,21 @@
     "category_sponsor_description": {
         "message": "Promosi berbayar, rujukan berbayar dan iklan langsung. Bukan untuk promosi diri atau sapaan percuma kepada penyebab / pencipta / laman web / produk yang mereka suka."
     },
+    "category_selfpromo": {
+        "message": "Promosi Tanpa Bayaran / Diri"
+    },
+    "category_selfpromo_description": {
+        "message": "Sama dengan \"penaja\" kecuali untuk promosi tanpa gaji atau diri. Ini merangkumi bahagian mengenai barang dagangan, sumbangan, atau maklumat tentang siapa mereka bekerjasama."
+    },
+    "category_interaction": {
+        "message": "Peringatan Interaksi (Langgan)"
+    },
+    "category_interaction_description": {
+        "message": "Apabila ada peringatan pendek untuk menyukai, melanggan atau mengikutinya di tengah-tengah kandungan. Sekiranya ia panjang atau mengenai sesuatu yang spesifik, ia harus dipromosikan sendiri."
+    },
+    "category_interaction_short": {
+        "message": "Peringatan Interaksi"
+    },
     "category_intro": {
         "message": "Intermission / Pengenalan Animasi"
     },
@@ -485,21 +488,6 @@
     },
     "category_outro_description": {
         "message": "Kredit atau ketika kad akhir YouTube muncul. Bukan untuk kesimpulan dengan maklumat."
-    },
-    "category_interaction": {
-        "message": "Peringatan Interaksi (Langgan)"
-    },
-    "category_interaction_description": {
-        "message": "Apabila ada peringatan pendek untuk menyukai, melanggan atau mengikutinya di tengah-tengah kandungan. Sekiranya ia panjang atau mengenai sesuatu yang spesifik, ia harus dipromosikan sendiri."
-    },
-    "category_interaction_short": {
-        "message": "Peringatan Interaksi"
-    },
-    "category_selfpromo": {
-        "message": "Promosi Tanpa Bayaran / Diri"
-    },
-    "category_selfpromo_description": {
-        "message": "Sama dengan \"penaja\" kecuali untuk promosi tanpa gaji atau diri. Ini merangkumi bahagian mengenai barang dagangan, sumbangan, atau maklumat tentang siapa mereka bekerjasama."
     },
     "category_music_offtopic": {
         "message": "Muzik: Bahagian Bukan Muzik"
@@ -527,10 +515,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan betul. Ia mestilah kod hex 3 atau 6 digit dengan tanda nombor pada awalnya."
-    },
-    "previewColor": {
-        "message": "Warna Pratonton",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Cari Warna Bar"
@@ -609,8 +593,5 @@
     },
     "categoryUpdate2": {
         "message": "Buka pilihan untuk melangkau perkenalan, pengeluaran luar, barang dagangan, dll."
-    },
-    "help": {
-        "message": "Bantuan"
     }
 }

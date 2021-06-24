@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "Ця можливість відстежує, які сегменти Ви пропустили, щоб допомогти користувачам дізнатися, наскільки їх внесок допоміг іншим, і, поряд з голосами, використовується як метрика, щоб переконатися, що спам не влучає у базу даних. Розширення надсилає повідомлення на сервер кожен раз, коли Ви пропускаєте сегмент. Сподіваємося, велика частина користувачів не поміняє це налаштування, так що у нас буде точна статистика переглядів. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Увімкнути відстеження пропусків у вкладках інкогніто"
+    },
     "enableQueryByHashPrefix": {
         "message": "Пошук по частині хеша"
     },
@@ -347,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Він зараз призначений на:"
     },
-    "supportInvidious": {
-        "message": "Підтримка Invidious"
+    "supportOtherSites": {
+        "message": "Підтримувати сторонні YouTube-сайти"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) - це неофіційний клієнт для YouTube. Щоб увімкнути підтримку, Вам знадобиться прийняти додаткові дозволи. Ця функція НЕ працює в режимі \"інкогніто\" в Chrome і браузерах, заснованих на Chromium."
+    "supportOtherSitesDescription": {
+        "message": "Підтримувати сторонні клієнти для YouTube. Щоб включити підтримку, Вам знадобиться прийняти додаткові дозволи. Ця функція НЕ працює в режимі \"інкогніто\" в Chrome і браузерах, заснованих на Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Підтримувані сайти: "
     },
     "optionsInfo": {
         "message": "Увімкнути підтримку Invidious, вимкнути автоматичний пропуск, приховати кнопки і не тільки."
     },
     "addInvidiousInstance": {
-        "message": "Додати інстанси Invidious"
+        "message": "Додати інстанси стороннього клієнта"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Додати свій інстанси Invidious. Формат: ТІЛЬКИ домен. Наприклад: invidious.ajay.app"
+        "message": "Додати свій інстанс. Формат: ТІЛЬКИ домен. Наприклад, invidious.ajay.app"
     },
     "add": {
         "message": "Додати"
@@ -443,6 +450,9 @@
     "preview": {
         "message": "Попередній перегляд"
     },
+    "unsubmitted": {
+        "message": "Неопублікований"
+    },
     "inspect": {
         "message": "Дослідити"
     },
@@ -477,6 +487,21 @@
     "category_sponsor_description": {
         "message": "Рекламні інтеграції, реферальні посилання і реклама безпосередньо. Не для самореклами або рекомендацій різних подій/творців/сайтів/продуктів, які подобаються автору відео."
     },
+    "category_selfpromo": {
+        "message": "Самореклама/рекомендація"
+    },
+    "category_selfpromo_description": {
+        "message": "Схоже на \"Спонсора\", але для безкоштовної реклами і самореклами. Включає себе вставки про мерчендайз, пожертвування або інформацію про тих, разом з ким було зроблено відео."
+    },
+    "category_interaction": {
+        "message": "Нагадування про взаємодію (підписка)"
+    },
+    "category_interaction_description": {
+        "message": "Коли є коротке нагадування поставити лайк, підписатися на канал або в соцмережах в середині вмісту. Якщо ця вставка тривала або про щось конкретне, вона повинна класифікуватися як самореклама."
+    },
+    "category_interaction_short": {
+        "message": "Нагадування про взаємодію"
+    },
     "category_intro": {
         "message": "Пауза/заставка"
     },
@@ -492,20 +517,11 @@
     "category_outro_description": {
         "message": "Титри або час появи кінцевих заставок YouTube. Не для підведення підсумків сказаного у відео."
     },
-    "category_interaction": {
-        "message": "Нагадування про взаємодію (підписка)"
+    "category_preview": {
+        "message": "Попередній перегляд/короткий зміст"
     },
-    "category_interaction_description": {
-        "message": "Коли є коротке нагадування поставити лайк, підписатися на канал або в соцмережах в середині вмісту. Якщо ця вставка тривала або про щось конкретне, вона повинна класифікуватися як самореклама."
-    },
-    "category_interaction_short": {
-        "message": "Нагадування про взаємодію"
-    },
-    "category_selfpromo": {
-        "message": "Самореклама/рекомендація"
-    },
-    "category_selfpromo_description": {
-        "message": "Схоже на \"Спонсора\", але для безкоштовної реклами і самореклами. Включає себе вставки про мерчендайз, пожертвування або інформацію про тих, разом з ким було зроблено відео."
+    "category_preview_description": {
+        "message": "Короткий зміст попередніх епізодів або попередній перегляд того, що буде в даному відео. Призначено для сегментів, змонтованих зі шматків відео, а не для усних переказів."
     },
     "category_music_offtopic": {
         "message": "Музика: Сегмент без музики"
@@ -535,7 +551,7 @@
         "message": "Ви ввели колір в неправильному форматі. Це повинно бути 3-х або 6-ти значне шістнадцяткове число з символом # на початку."
     },
     "previewColor": {
-        "message": "Колір предпросмотра",
+        "message": "Колір не надісланого сегмента",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -638,7 +654,17 @@
     "categoryUpdate2": {
         "message": "Відкрийте налаштування, щоб пропускати початкові і кінцеві заставки, саморекламу та інше."
     },
-    "help": {
-        "message": "Допомога"
+    "experimentUnlistedTitle": {
+        "message": "Допоможіть цьому не зникнути"
+    },
+    "experimentUnlistedText": {
+        "message": "Це відео приховане і завантажено до 2017.\nСтарі приховані відео стануть приватними наступного місяця\nМи збираємо загальнодоступні відео для резервного копіювання\nЧи ви хочете анонімно надіслати це відео нам?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Відмова від усіх майбутніх експериментів",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Сховати назавжди"
     }
 }

@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Şu an buna ayarlı:"
     },
-    "supportInvidious": {
-        "message": "Invidious'a Destek Ver"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) üçüncü parti YouTube istemcisidir. Desteği etkinleştirmek için fazladan izinlere onay vermelisiniz. Bu Chrome ve Chromium bazlı tarayıcılarda gizli pencere modunda ÇALIŞMAZ."
-    },
     "optionsInfo": {
         "message": "Invidious desteğini, otomatik atlamayı, butonları saklamayı ve daha fazlasını etkinleştir."
-    },
-    "addInvidiousInstance": {
-        "message": "Invidious Oluşumu Ekle"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Özel Indivious oluşumu ekle. Bu SADECE alan adıyla düzenlenmelidir. Örnek: invidious.ajay.app"
     },
     "add": {
         "message": "Ekle"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Ücretli tanıtım, ücretli yönlendirmeler ve doğrudan reklamlar. Kendini pazarlayan veya beğendiği içerik üreticilerine/sitelere/ürünlere atıfta bulunanlar için değil."
     },
+    "category_selfpromo": {
+        "message": "Karşılıksız/Kendi Reklamı"
+    },
+    "category_selfpromo_description": {
+        "message": "\"Sponsor\" seçeneğinden farkı para karşılığı olmaması veya kendi reklamını yapmasıdır. Buna kendi markalı ürünlerini satmak, bağış toplamak ve videoda işbirliği yaptığı kimselerden bahsetmek dahildir."
+    },
+    "category_interaction": {
+        "message": "Etkileşim Hatırlatıcısı (Abonelik)"
+    },
+    "category_interaction_description": {
+        "message": "Videonun ortasında beğenmek, abone olmak veya takip etmek için kısa bir hatırlatma olan kısımdır. Eğer süresi uzunsa veya belirli bir şey hakkındaysa, kendi reklamını yapan kategorisi seçilmelidir."
+    },
+    "category_interaction_short": {
+        "message": "Etkileşim Hatırlatıcısı"
+    },
     "category_intro": {
         "message": "Aralık/Giriş Animasyonu"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Videoda emeği geçenlerin veya video sonunda çıkan kartların gösterildiği kısımlar. Bilgilendirici sona sahip videolar için değil."
-    },
-    "category_interaction": {
-        "message": "Etkileşim Hatırlatıcısı (Abonelik)"
-    },
-    "category_interaction_description": {
-        "message": "Videonun ortasında beğenmek, abone olmak veya takip etmek için kısa bir hatırlatma olan kısımdır. Eğer süresi uzunsa veya belirli bir şey hakkındaysa, kendi reklamını yapan kategorisi seçilmelidir."
-    },
-    "category_interaction_short": {
-        "message": "Etkileşim Hatırlatıcısı"
-    },
-    "category_selfpromo": {
-        "message": "Karşılıksız/Kendi Reklamı"
-    },
-    "category_selfpromo_description": {
-        "message": "\"Sponsor\" seçeneğinden farkı para karşılığı olmaması veya kendi reklamını yapmasıdır. Buna kendi markalı ürünlerini satmak, bağış toplamak ve videoda işbirliği yaptığı kimselerden bahsetmek dahildir."
     },
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
-    },
-    "previewColor": {
-        "message": "Önizleme Rengi",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Oynatma Çubuğu Rengi"
@@ -640,8 +624,5 @@
     },
     "categoryUpdate2": {
         "message": "Girişleri, bitişleri, ürünleri ve benzeri şeyleri atlamak için ayarları açın."
-    },
-    "help": {
-        "message": "Yardım"
     }
 }

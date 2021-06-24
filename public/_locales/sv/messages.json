@@ -350,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Nuvarande snabbtangent är:"
     },
-    "supportInvidious": {
-        "message": "Stöd Invidious"
+    "supportOtherSites": {
+        "message": "Stöd för tredjeparts YouTube-webbplatser"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) är en tredjeparts YouTube-klient. För att aktivera stöd måste du acceptera de extra behörigheterna. Detta kommer INTE att fungera i inkognito i Chrome och andra Chromium-varianter."
+    "supportOtherSitesDescription": {
+        "message": "Stöd tredje parts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna. Detta fungerar INTE i inkognito på Chrome och andra Chromium-varianter.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Webbplatser som stöds: "
     },
     "optionsInfo": {
         "message": "Aktivera Invidious stöd, inaktivera hoppa över automatiskt, dölj knappar och mer."
     },
     "addInvidiousInstance": {
-        "message": "Lägg Till Invidious Instans"
+        "message": "Lägg till tredjepartsklientinstans"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Lägg till en anpassad instans av Invidious. Denna måste vara formaterad med ENBART domänen. Exempelvis: invidious.ajay.app"
+        "message": "Lägg till en anpassad instans. Denna måste vara formaterad med ENDAST domänen. Exempelvis: invidious.ajay.app"
     },
     "add": {
         "message": "Lägg till"
@@ -446,6 +450,9 @@
     "preview": {
         "message": "Förhandsgranska"
     },
+    "unsubmitted": {
+        "message": "Ej inskickade"
+    },
     "inspect": {
         "message": "Granska"
     },
@@ -480,6 +487,21 @@
     "category_sponsor_description": {
         "message": "Betald marknadsföring, betalda hänvisningar och direktannonser, men inte till egen marknadsföring eller gratis shoutouts till skapare/webbplatser/produkter de gillar."
     },
+    "category_selfpromo": {
+        "message": "Obetald/självbefodran"
+    },
+    "category_selfpromo_description": {
+        "message": "Som \"sponsormeddelande\" men med undantag för obetald eller självkampanj. Detta inkluderar avsnitt om varor, donationer eller information om vem de samarbetade med."
+    },
+    "category_interaction": {
+        "message": "Interaktionspåminnelse (Prenumerera)"
+    },
+    "category_interaction_description": {
+        "message": "När där är en kort påminnelse att gilla, prenumerera eller följa dem. Om det är långt eller om det gäller något specifikt bör det istället vara under självbefodran."
+    },
+    "category_interaction_short": {
+        "message": "Interaktionspåminnelse"
+    },
     "category_intro": {
         "message": "Paus/Introduktion"
     },
@@ -495,20 +517,11 @@
     "category_outro_description": {
         "message": "Credits eller när YouTube-slutkort visas. Inte för slut med information."
     },
-    "category_interaction": {
-        "message": "Interaktionspåminnelse (Prenumerera)"
+    "category_preview": {
+        "message": "Förhandsgranska/sammanfatta"
     },
-    "category_interaction_description": {
-        "message": "När där är en kort påminnelse att gilla, prenumerera eller följa dem. Om det är långt eller om det gäller något specifikt bör det istället vara under självbefodran."
-    },
-    "category_interaction_short": {
-        "message": "Interaktionspåminnelse"
-    },
-    "category_selfpromo": {
-        "message": "Obetald/självbefodran"
-    },
-    "category_selfpromo_description": {
-        "message": "Som \"sponsormeddelande\" men med undantag för obetald eller självkampanj. Detta inkluderar avsnitt om varor, donationer eller information om vem de samarbetade med."
+    "category_preview_description": {
+        "message": "Snabb sammanfattning av tidigare avsnitt eller en förhandsvisning av vad som kommer upp senare i den aktuella videon. Avsett för redigerade klipp, inte för sammanfattningar."
     },
     "category_music_offtopic": {
         "message": "Musik: Icke-musikavsnitt"
@@ -538,7 +551,7 @@
         "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."
     },
     "previewColor": {
-        "message": "Förhandsgranskningsfärg",
+        "message": "Färg på ej inskickade",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -641,7 +654,17 @@
     "categoryUpdate2": {
         "message": "Öppna alternativen för att hoppa över intros, outros, merch, osv."
     },
-    "help": {
-        "message": "Hjälp"
+    "experimentUnlistedTitle": {
+        "message": "Hjälp till att förhindra att detta försvinner"
+    },
+    "experimentUnlistedText": {
+        "message": "Detta är en olistad videon som laddades upp före 2017.\nGamla olistade videor kommer att bli ändrade till privata nästa månad.\nVi samlar in *offentliga* videor för att säkerhetskopiera.\nVill du anonymt skicka den här videon till oss?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Hoppa av alla framtida experiment",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Dölj för alltid"
     }
 }

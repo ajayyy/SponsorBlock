@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Überspringe Sponsoren, betteln um Abonnenten und mehr in YouTube Videos. Melde Sponsoren in Videos, die du guckst, um anderen Zeit zu sparen.",
+        "message": "Überspringe Sponsoren, Betteln um Abonnenten und mehr in YouTube-Videos. Melde Sponsoren in Videos, die du guckst, um Anderen Zeit zu sparen.",
         "description": "Description of the extension."
     },
     "400": {
@@ -92,7 +92,7 @@
         "message": "Abgestimmt!"
     },
     "serverDown": {
-        "message": "Der Server ist scheinbar offline. Bitte unverzüglich dem Entwickler melden."
+        "message": "Der Server ist anscheinend offline. Bitte unverzüglich dem Entwickler melden."
     },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
@@ -119,7 +119,7 @@
         "message": "Kanal zur Whitelist hinzufügen"
     },
     "removeFromWhitelist": {
-        "message": "Kanal von der Whitelist entfernen"
+        "message": "Kanal aus der Whitelist entfernen"
     },
     "voteOnTime": {
         "message": "Über ein Segment abstimmen"
@@ -156,7 +156,7 @@
         "message": "Benutzername"
     },
     "setUsername": {
-        "message": "Alias festlegen"
+        "message": "Benutzernamen festlegen"
     },
     "discordAdvert": {
         "message": "Tritt dem offiziellen Discord-Server bei und teile Anregungen und Feedback!"
@@ -198,7 +198,7 @@
         "message": "Aktiviere das Zählen übersprungener Segmente"
     },
     "whatViewTracking": {
-        "message": "Diese Funktion verfolgt welche Segmente du übersprungen hast, um andere Benutzer wissen zu lassen, wie sehr ihre Einreichung anderen geholfen hat, sowie um als Metrik zusammen mit positiven Bewertungen sicherzustellen, dass kein Spam in die Datenbank gelangt. Die Erweiterung sendet jedes Mal, wenn du ein Segment überspringst, eine Nachricht an den Server. Hoffentlich ändern die meisten Leute diese Einstellung nicht, so dass die Zahlen korrekt sind. :)"
+        "message": "Diese Funktion erfasst, welche Segmente du übersprungen hast, um andere Nutzer zu zeigen, wie hilfreich ihre Beiträge sind. Außerdem stellt dies zusammen mit positiven Bewertungen sicher, dass keine unerwünschten Inhalte in die Datenbank gelangen. Die Erweiterung sendet jedes Mal, wenn du ein Segment überspringst, eine Meldung an den Server. Hoffentlich verändern die meisten Nutzer diese Einstellung nicht, um unsere Statistik zu verbessern :)"
     },
     "enableQueryByHashPrefix": {
         "message": "Abfrage nach Hash-Präfix"
@@ -207,7 +207,7 @@
         "message": "Anstatt Segmente mit der Video-ID vom Server anzufordern, werden die ersten 4 Zeichen des Hashs der Video-ID gesendet. Der Server sendet Daten für alle Videos mit ähnlichen Hashes zurück."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Segmente für neue Videos neu abrufen"
+        "message": "Segmente bei neuen Videos erneut abrufen"
     },
     "whatRefetchWhenNotFound": {
         "message": "Wenn das Video neu ist und keine Segmente gefunden wurden, wird während des Betrachtens alle paar Minuten erneut eine Anfrage gesendet."
@@ -347,20 +347,20 @@
     "keybindCurrentlySet": {
         "message": ". Aktuelle Einstellung:"
     },
-    "supportInvidious": {
-        "message": "Invidious-Kompatibilität"
+    "supportOtherSites": {
+        "message": "Drittanbieter YouTube-Sites unterstützen"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) ist ein Drittanbieter-YouTube-Client. Um Support zu aktivieren, musst du die zusätzlichen Berechtigungen akzeptieren. Dies funktioniert NICHT im Inkognitomodus auf Chrome und anderen Chromium-Varianten."
+    "supportedSites": {
+        "message": "Unterstützte Seiten: "
     },
     "optionsInfo": {
         "message": "Zu überspringende Kategorien auswählen, automatisches Überspringen, Tasten ein- & ausblenden und noch viel mehr."
     },
     "addInvidiousInstance": {
-        "message": "Invidious-Instanzen hinzufügen"
+        "message": "Client-Instanz eines Drittanbieters hinzufügen"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Füge eine benutzerdefinierte Instanz von Invidious hinzu. Dies darf nur den Domain-Teil beinhalten. Beispiel: \"invidious.ajay.app\""
+        "message": "Füge eine benutzerdefinierte Invidious-Instanz hinzu. Diese darf nur den Domain-Teil beinhalten. Beispiel: \"invidious.ajay.app\""
     },
     "add": {
         "message": "Hinzufügen"
@@ -443,6 +443,9 @@
     "preview": {
         "message": "Vorschau"
     },
+    "unsubmitted": {
+        "message": "Nicht eingereicht"
+    },
     "inspect": {
         "message": "Überprüfen"
     },
@@ -477,6 +480,21 @@
     "category_sponsor_description": {
         "message": "Bezahlte Werbung, bezahlte Empfehlungen und direkte Werbung, nicht für Eigenwerbung, kostenlose Fremdwerbung oder Empfehlungen für Anlässe/Personen/Webseiten/Produkte."
     },
+    "category_selfpromo": {
+        "message": "Unbezahlt/Eigenwerbung"
+    },
+    "category_selfpromo_description": {
+        "message": "Ähnlich wie bei \"gesponserte Videosegmente\", mit Ausnahme von unbezahlten oder Selbstpromotionen. Dies beinhaltet Merchandising (Fan-Artikel), Spenden oder Informationen darüber, mit wem für das Video zusammengearbeitet wurde."
+    },
+    "category_interaction": {
+        "message": "Interaktions-Erinnerungen (Abonnieren, etc.)"
+    },
+    "category_interaction_description": {
+        "message": "Wenn es im Video eine kurze Erinnerung gibt, den Kanal zu abonnieren oder das Video mit \"Mag ich\" zu markieren."
+    },
+    "category_interaction_short": {
+        "message": "Interaktions-Erinnerung"
+    },
     "category_intro": {
         "message": "Unterbrechung/Intro-Animation"
     },
@@ -492,20 +510,8 @@
     "category_outro_description": {
         "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für videobeendende Schlussfolgerungen mit Informationen."
     },
-    "category_interaction": {
-        "message": "Interaktions-Erinnerungen (Abonnieren, etc.)"
-    },
-    "category_interaction_description": {
-        "message": "Wenn es im Video eine kurze Erinnerung gibt, den Kanal zu abonnieren oder das Video mit \"Mag ich\" zu markieren."
-    },
-    "category_interaction_short": {
-        "message": "Interaktions-Erinnerung"
-    },
-    "category_selfpromo": {
-        "message": "Unbezahlt/Eigenwerbung"
-    },
-    "category_selfpromo_description": {
-        "message": "Ähnlich wie bei \"gesponserte Videosegmente\", mit Ausnahme von unbezahlten oder Selbstpromotionen. Dies beinhaltet Merchandising (Fan-Artikel), Spenden oder Informationen darüber, mit wem für das Video zusammengearbeitet wurde."
+    "category_preview": {
+        "message": "Vorschau/Zusammenfassung"
     },
     "category_music_offtopic": {
         "message": "Musikvideoteile ohne Musik"
@@ -535,7 +541,7 @@
         "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
     },
     "previewColor": {
-        "message": "Farbe für noch nicht übermittelte Videosegmente",
+        "message": "Nicht eingereichte Farbe",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -637,8 +643,5 @@
     },
     "categoryUpdate2": {
         "message": "Öffne die Optionen um das Verhalten bei Intros, Outros, Merchandising (Fanartikel) usw. einzustellen."
-    },
-    "help": {
-        "message": "Hilfe"
     }
 }

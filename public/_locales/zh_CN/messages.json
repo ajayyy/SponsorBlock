@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "片段现在结束"
     },
+    "sponsorCancel": {
+        "message": "取消创建片段"
+    },
     "noVideoID": {
         "message": "未找到 YouTube 视频。\n如果识别错误，请刷新此页面。"
     },
@@ -341,20 +344,11 @@
     "keybindCurrentlySet": {
         "message": "。目前被设定为："
     },
-    "supportInvidious": {
-        "message": "支持 Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) 是一个第三方 Youtube 客户端。要启用支持，您必须允许额外的权限。在 Chrome 及其他 Chromium 变种的匿名模式中无法工作。"
+    "supportOtherSites": {
+        "message": "支持第三方 YouTube 网站"
     },
     "optionsInfo": {
         "message": "启用 Invidious 支持，禁用自动跳过，隐藏按钮等等。"
-    },
-    "addInvidiousInstance": {
-        "message": "添加 Invidious 实例"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "添加一个 Invidious 自定义实例。它必须是只有域名的格式。例如：invidious.ajay.app"
     },
     "add": {
         "message": "添加"
@@ -471,6 +465,21 @@
     "category_sponsor_description": {
         "message": "付费推广、付费推荐和直接广告。不应用于自我推广或免费提及、推荐他们喜欢的事物/创作者/网站/产品。"
     },
+    "category_selfpromo": {
+        "message": "未收钱的/自我推销"
+    },
+    "category_selfpromo_description": {
+        "message": "类似于 “赞助商广告” ，但为无报酬或自我推广。包括有关商品、捐赠的部分或合作者的信息。"
+    },
+    "category_interaction": {
+        "message": "互动提醒（订阅）"
+    },
+    "category_interaction_description": {
+        "message": "视频中间简短提醒观众来点赞、订阅或关注。 如果片段较长，或是关于某个具体事物，则应分类为自我推广。"
+    },
+    "category_interaction_short": {
+        "message": "互动提醒"
+    },
     "category_intro": {
         "message": "过场/开场动画"
     },
@@ -485,21 +494,6 @@
     },
     "category_outro_description": {
         "message": "鸣谢画面或出现 YouTube 片尾画面。不应用于包含信息的结尾。"
-    },
-    "category_interaction": {
-        "message": "互动提醒（订阅）"
-    },
-    "category_interaction_description": {
-        "message": "视频中间简短提醒观众来点赞、订阅或关注。 如果片段较长，或是关于某个具体事物，则应分类为自我推广。"
-    },
-    "category_interaction_short": {
-        "message": "互动提醒"
-    },
-    "category_selfpromo": {
-        "message": "未收钱的/自我推销"
-    },
-    "category_selfpromo_description": {
-        "message": "类似于 “赞助商广告” ，但为无报酬或自我推广。包括有关商品、捐赠的部分或合作者的信息。"
     },
     "category_music_offtopic": {
         "message": "音乐：非音乐部分"
@@ -527,10 +521,6 @@
     },
     "colorFormatIncorrect": {
         "message": "颜色格式错误。应为以“#”开头的 3 位或 6 位十六进制数字。"
-    },
-    "previewColor": {
-        "message": "预览颜色",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "拖动条颜色"
@@ -615,8 +605,5 @@
     },
     "categoryUpdate2": {
         "message": "打开选项，跳过开头，结尾，商业等。"
-    },
-    "help": {
-        "message": "帮助"
     }
 }

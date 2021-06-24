@@ -200,20 +200,8 @@
     "keybindCurrentlySet": {
         "message": ". Trenutno je postavljeno na:"
     },
-    "supportInvidious": {
-        "message": "Podrži Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) je YouTube client treće strane. Kako bi omogućio podršku, moraš prihvatiti dodatna dopuštenja. Ovo NE radi u privatnoj kartici na Chrome-u ili drugim carijantama Chromiuma."
-    },
     "optionsInfo": {
         "message": "Omogući podržavanje Invidiousa, onemogući automatsko preskakanje, sakrij gumbe i drugo."
-    },
-    "addInvidiousInstance": {
-        "message": "Dodaj instancu Invidiousa"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Dodaj prilagođenu instancu Invidiousa. Ona mora biti formatirana sa samom domenom. Primjer: invidious.ajay.app"
     },
     "add": {
         "message": "Dodaj"
@@ -269,6 +257,18 @@
     "category_sponsor": {
         "message": "Sponzor"
     },
+    "category_selfpromo": {
+        "message": "Neplaćena promocija ili samopromocija"
+    },
+    "category_selfpromo_description": {
+        "message": "Slično kao „sponzor”, osim za neplaćenu promociju i samopromociju. To uključuje odlomke marketinga, donacija ili informacija o tome, s kim su surađivali."
+    },
+    "category_interaction": {
+        "message": "Podsjetnik interakcije (Pretplati se)"
+    },
+    "category_interaction_short": {
+        "message": "Podsjetnik interakcije"
+    },
     "category_intro": {
         "message": "Stanka/Uvodna animacija"
     },
@@ -281,18 +281,6 @@
     "category_outro": {
         "message": "Završni kadrovi/Zasluge"
     },
-    "category_interaction": {
-        "message": "Podsjetnik interakcije (Pretplati se)"
-    },
-    "category_interaction_short": {
-        "message": "Podsjetnik interakcije"
-    },
-    "category_selfpromo": {
-        "message": "Neplaćena promocija ili samopromocija"
-    },
-    "category_selfpromo_description": {
-        "message": "Slično kao „sponzor”, osim za neplaćenu promociju i samopromociju. To uključuje odlomke marketinga, donacija ili informacija o tome, s kim su surađivali."
-    },
     "category_music_offtopic": {
         "message": "Glazba: Ne-glazbeni dio"
     },
@@ -304,10 +292,6 @@
     },
     "manualSkip": {
         "message": "Ručno preskakanje"
-    },
-    "previewColor": {
-        "message": "Boja pregleda",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "category": {
         "message": "Kategorija"
@@ -355,8 +339,5 @@
     },
     "categoryUpdate2": {
         "message": "Otvori opcije za preskakanje uvoda, kraja, proizvoda itd."
-    },
-    "help": {
-        "message": "Pomoć"
     }
 }

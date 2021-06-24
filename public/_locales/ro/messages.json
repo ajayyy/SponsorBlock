@@ -341,20 +341,8 @@
     "keybindCurrentlySet": {
         "message": ". În prezent este setat:"
     },
-    "supportInvidious": {
-        "message": "Sprijină Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) este un client YouTube terț. Pentru a susține, trebuie să acceptați permisiunile suprimentare. Această funcție NU funcționează în incognito pe Chrome sau în alte variante Chromium."
-    },
     "optionsInfo": {
         "message": "Activează suportul Invidious, dezactivează autoskip-ul, ascunde butoanele și altele."
-    },
-    "addInvidiousInstance": {
-        "message": "Adaugă O Instanță Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Adaugă o instanță personalizată Invidious. Aceasta trebuie să fie formatată DOAR cu domeniul. Exemplu: invidious.ajay.app"
     },
     "add": {
         "message": "Adaugă"
@@ -471,6 +459,21 @@
     "category_sponsor_description": {
         "message": "Promovare plătită, refferali plătiți și reclame directe. Nu pentru autopromovări sau promovări gratis ale cauzelor/creatorilor/website-urilor/produselor."
     },
+    "category_selfpromo": {
+        "message": "Promovare neplătită/autopromovare"
+    },
+    "category_selfpromo_description": {
+        "message": "Similar cu \"sponsorizare\" doar că este neplătit sau autopromovare. Aceasta include secțiuni despre merchandise, donații, sau informații despre cei cu care au colaborat."
+    },
+    "category_interaction": {
+        "message": "Reamintire de Interactiune (Abonare)"
+    },
+    "category_interaction_description": {
+        "message": "Când există o scurtă remintire pentru like, abonare sau urmărire în mijlocul conținutului. Daca este mai lung sau despre ceva specific, folosiți autopromovarea."
+    },
+    "category_interaction_short": {
+        "message": "Reamintire de Interacțiune"
+    },
     "category_intro": {
         "message": "Pauză/Animație Intro"
     },
@@ -485,21 +488,6 @@
     },
     "category_outro_description": {
         "message": "Credite sau atunci când apare ecranul de final YouTube. Nu pentru concluzii cu informații."
-    },
-    "category_interaction": {
-        "message": "Reamintire de Interactiune (Abonare)"
-    },
-    "category_interaction_description": {
-        "message": "Când există o scurtă remintire pentru like, abonare sau urmărire în mijlocul conținutului. Daca este mai lung sau despre ceva specific, folosiți autopromovarea."
-    },
-    "category_interaction_short": {
-        "message": "Reamintire de Interacțiune"
-    },
-    "category_selfpromo": {
-        "message": "Promovare neplătită/autopromovare"
-    },
-    "category_selfpromo_description": {
-        "message": "Similar cu \"sponsorizare\" doar că este neplătit sau autopromovare. Aceasta include secțiuni despre merchandise, donații, sau informații despre cei cu care au colaborat."
     },
     "category_music_offtopic": {
         "message": "Muzică: Secţiune Non-Muzicală"
@@ -524,10 +512,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Culoarea ta este formatată incorect. Ar trebui să fie un cod hexadecimal de 3 sau 6 cifre cu un hash la început."
-    },
-    "previewColor": {
-        "message": "Previzualizare Culoare",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Culoarea Barei de Derulare"
@@ -606,8 +590,5 @@
     },
     "categoryUpdate2": {
         "message": "Deschide opțiunile pentru a sări peste intro-uri, outro-uri, merch, etc."
-    },
-    "help": {
-        "message": "Ajutor"
     }
 }

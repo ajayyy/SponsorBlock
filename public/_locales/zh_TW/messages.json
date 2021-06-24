@@ -8,7 +8,7 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "伺服器說這個請求無效"
+        "message": "伺服器回應此請求無效"
     },
     "429": {
         "message": "您為這部影片提交了過多的贊助廣告片段，您確定有這麼多嗎？"
@@ -350,20 +350,21 @@
     "keybindCurrentlySet": {
         "message": "。它目前被設定為："
     },
-    "supportInvidious": {
-        "message": "支持 Invidious"
+    "supportOtherSites": {
+        "message": "支援第三方的 YouTube 網站"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) 是第三方的 YouTube 客戶端。要啟用對其之支援，您必須接受額外的權限。這在 Chrome 中的無痕模式和其他 Chromium 分支無效"
+    "supportOtherSitesDescription": {
+        "message": "支援第三方的 YouTube 客戶端。若要啟用，您必須同意額外的權限。這在 Chrome 中的無痕模式和其他 Chromium 分支無效。",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "支援的網站："
     },
     "optionsInfo": {
         "message": "啟用 Invidious 支援，停用自動跳過、隱藏按鈕等。"
     },
     "addInvidiousInstance": {
-        "message": "添加 Invidious 進程"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "添加一個 Invidious 自定進程。它必須只有域名。例如：invidious.ajay.app"
+        "message": "新增第三方的客戶端實例"
     },
     "add": {
         "message": "新增"
@@ -446,6 +447,9 @@
     "preview": {
         "message": "預覽"
     },
+    "unsubmitted": {
+        "message": "未提交"
+    },
     "inspect": {
         "message": "檢查"
     },
@@ -480,6 +484,21 @@
     "category_sponsor_description": {
         "message": "有收錢的工商廣告和直接廣告。不是為了自我推銷或為了其他創作的免費推銷"
     },
+    "category_selfpromo": {
+        "message": "非付費/自我推廣"
+    },
+    "category_selfpromo_description": {
+        "message": "類似 “贊助商廣告” ，但是非付費或自我推廣。這包括有關商品、捐贈或與他人合作的信息。"
+    },
+    "category_interaction": {
+        "message": "互動提醒 (訂閱)"
+    },
+    "category_interaction_description": {
+        "message": "當有短提醒來請觀眾按讚、訂閱或跟隨他們時。如果該片段很長或很針對某事，它應該歸類為自我推銷。"
+    },
+    "category_interaction_short": {
+        "message": "互動提醒"
+    },
     "category_intro": {
         "message": "中場休息/開頭動畫"
     },
@@ -495,20 +514,8 @@
     "category_outro_description": {
         "message": "鳴謝或當 YouTube 結尾資訊卡出現時。不是含有資訊的總結"
     },
-    "category_interaction": {
-        "message": "互動提醒 (訂閱)"
-    },
-    "category_interaction_description": {
-        "message": "當有短提醒來請觀眾按讚、訂閱或跟隨他們時。如果該片段很長或很針對某事，它應該歸類為自我推銷。"
-    },
-    "category_interaction_short": {
-        "message": "互動提醒"
-    },
-    "category_selfpromo": {
-        "message": "非付費/自我推廣"
-    },
-    "category_selfpromo_description": {
-        "message": "類似 “贊助商廣告” ，但是非付費或自我推廣。這包括有關商品、捐贈或與他人合作的信息。"
+    "category_preview": {
+        "message": "預覽/摘要"
     },
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
@@ -535,7 +542,7 @@
         "message": "您設定的顏色無效。它應該是三或六位數的 hex 碼，且以井字號開頭。"
     },
     "previewColor": {
-        "message": "預覽顏色",
+        "message": "未提交的顏色",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -552,7 +559,7 @@
         "message": "啟用 Beta 測試伺服器"
     },
     "whatEnableTestingServer": {
-        "message": "寧的提交和投票不會記入主伺服器。僅會被用來測試"
+        "message": "您的提交和投票將不會記入主伺服器。僅在測試時啟用此選項"
     },
     "testingServerWarning": {
         "message": "當連結到測試伺服器，所有的提交和投票都不會計入主伺服器。當您想要進行有效提交時，請停用此選項"
@@ -584,6 +591,9 @@
     },
     "videoInfoFetchFailed": {
         "message": "似乎有東西在阻止 SponsorBlock 獲取影片資料。請查看 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"
+    },
+    "youtubePermissionRequest": {
+        "message": "SponsorBlock 貌似無法存取 YouTube API。若要解決，請同意稍後出現的權限提示，等待幾秒鐘，然後重新載入頁面。"
     },
     "acceptPermission": {
         "message": "允許權限"
@@ -631,7 +641,11 @@
     "categoryUpdate2": {
         "message": "開啟選項以跳過開場、結尾、工商等。"
     },
-    "help": {
-        "message": "幫助"
+    "experiementOptOut": {
+        "message": "關閉所有未來的實驗性功能",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "永久隱藏"
     }
 }

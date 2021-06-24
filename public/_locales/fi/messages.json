@@ -74,7 +74,7 @@
         "message": "Segmenttejä ei löytynyt"
     },
     "sponsorStart": {
-        "message": "Segmentti Alkaa Nyt"
+        "message": "Segmentti alkaa nyt"
     },
     "sponsorEnd": {
         "message": "Segmentti Päättyy Nyt"
@@ -242,7 +242,7 @@
         "message": "Aseta näppäin segmentin ohittamista varten"
     },
     "setStartSponsorShortcut": {
-        "message": "Aseta pikanäppäin segmentin aloittamiseen ja lopettamiseen"
+        "message": "Aseta pikanäppäin segmentin aloittamiseen/lopettamiseen"
     },
     "setSubmitKeybind": {
         "message": "Aseta näppäin tietojen lähetykseen"
@@ -350,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Tällä hetkellä se on asetettu:"
     },
-    "supportInvidious": {
-        "message": "Tue Invidious:ta"
+    "supportOtherSites": {
+        "message": "Tue Kolmansien Osapuolien YouTube-sivustoja"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) on kolmannen osapuolen YouTube-ohjelmisto. Jotta voit ottaa käyttöön tuen, sinun täytyy hyväksyä lisäkäyttöoikeudet. Tämä EI toimi incognitossa Chromessa ja muissa Chromiumin versioissa."
+    "supportOtherSitesDescription": {
+        "message": "Tue kolmannen osapuolen YouTube-asiakasohjelmia. Jotta voit ottaa käyttöön tuen, sinun täytyy hyväksyä lisäkäyttöoikeudet. Tämä EI toimi incognitossa Chromessa ja muissa Chromium varianteissa.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Tuetut Sivustot: "
     },
     "optionsInfo": {
         "message": "Ota käyttöön Invidious tuki, poista käytöstä automaattinen ohitus, piilota painikkeet ja muuta."
     },
     "addInvidiousInstance": {
-        "message": "Lisää Invidious-instanssi"
+        "message": "Lisää Kolmannen Osapuolen Asiakasohjelmainstanssi"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Lisää mukautettu Invidious-instanssi. Tämä on muotoiltava VAIN verkkotunnuksella. Esimerkiksi: invidious.ajay.app"
+        "message": "Lisää mukautettu instanssi. Tämän täytyy olla formatoitu VAIN verkkotunnuksella. Esimerkki: invidious.ajay.app"
     },
     "add": {
         "message": "Lisää"
@@ -446,6 +450,9 @@
     "preview": {
         "message": "Esikatsele"
     },
+    "unsubmitted": {
+        "message": "Lähettämätön"
+    },
     "inspect": {
         "message": "Tarkista"
     },
@@ -459,10 +466,10 @@
         "message": "Kirjoittaminen leikepöydälle epäonnistui"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopioi tiedot leikepöydälle, joka annetaan kehittäjälle kun ilmoitetaan viasta / kun kehittäjä pyytää sitä. Arkaluonteiset tiedot, kuten käyttäjätunnus, sallitut kanavat ja mukautettu palvelimen osoite on poistettu. Se sisältää kuitenkin tietoja, kuten user agentin, selaimen, käyttöjärjestelmän ja laajennuksen versionumeron. "
+        "message": "Kopioi tiedot leikepöydälle, joka annetaan kehittäjälle kun ilmoitetaan viasta / kun kehittäjä pyytää sitä. Arkaluonteiset tiedot, kuten käyttäjätunnus, sallitut kanavat ja mukautettu palvelimen osoite on poistettu. Se sisältää kuitenkin tietoja, kuten käyttäjäagentin, selaimen, käyttöjärjestelmän ja laajennuksen versionumeron. "
     },
     "copyDebugInformationComplete": {
-        "message": "Virheenkorjaustiedot on kopioitu leikepöydälle. Voit poistaa mitä tahansa tietoa mitä et mielummin jakaisi. Tallenna se tekstitiedostoon tai liitä se virheraporttiin."
+        "message": "Virheenkorjaustiedot on kopioitu leikepöydälle. Voit poistaa mitä tahansa tietoa mitä et mielummin jakaisi. Tallenna tämä tekstitiedostoon tai liitä se virheraporttiin."
     },
     "theKey": {
         "message": "Näppäin"
@@ -480,8 +487,23 @@
     "category_sponsor_description": {
         "message": "Maksettu mainostus, maksetut viittaukset ja suorat mainokset. Ei itsensä mainostukselle tai huikkauksille kampanjoista/luojista/nettisivuista/tuotteista, joista he pitävät."
     },
+    "category_selfpromo": {
+        "message": "Maksamaton/Itsensä Mainostus"
+    },
+    "category_selfpromo_description": {
+        "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
+    },
+    "category_interaction": {
+        "message": "Vuorovaikutusmuistutus (tilaaminen)"
+    },
+    "category_interaction_description": {
+        "message": "Lyhyt muistutus tykätä, tilata tai seurata sisällön keskellä. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi."
+    },
+    "category_interaction_short": {
+        "message": "Vuorovaikutusmuistutus"
+    },
     "category_intro": {
-        "message": "Tauko tai introanimaatio"
+        "message": "Tauko/Introanimaatio"
     },
     "category_intro_description": {
         "message": "Aikaväli ilman varsinaista sisältöä. Voi olla tauko, staattinen kehys, toistuva animaatio. Tätä ei pitäisi käyttää siirtymisiin, jotka sisältävät tietoa."
@@ -493,22 +515,13 @@
         "message": "Loppukortit/-tekstit"
     },
     "category_outro_description": {
-        "message": "Lopputekstit tai YouTuben loppukortit. Ei lopetuksille, joissa on tärkeää tietoa."
+        "message": "Lopputekstit tai kun YouTuben loppukortit tulevat näkyviin. Ei lopetuksille joissa on tietoa."
     },
-    "category_interaction": {
-        "message": "Vuorovaikutusmuistutus (tilaaminen)"
+    "category_preview": {
+        "message": "Esikatselu/Kertaus"
     },
-    "category_interaction_description": {
-        "message": "Lyhyt muistutus tykätä, tilata tai seurata sisällön keskellä. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi."
-    },
-    "category_interaction_short": {
-        "message": "Vuorovaikutusmuistutus"
-    },
-    "category_selfpromo": {
-        "message": "Maksamaton/Itsensä Mainostus"
-    },
-    "category_selfpromo_description": {
-        "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
+    "category_preview_description": {
+        "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
     },
     "category_music_offtopic": {
         "message": "Musiikki: Ei-Musiikki-Osio"
@@ -535,10 +548,10 @@
         "message": "Näytä Liukusäätimessä"
     },
     "colorFormatIncorrect": {
-        "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on risuaita alussa."
+        "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on # alussa."
     },
     "previewColor": {
-        "message": "Esikatsele Väri",
+        "message": "Lähettämättömien Väri",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -587,7 +600,7 @@
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
-        "message": "Kanavan ID ei ole vielä latautunut. Jos käytät upotettua videota, kokeile sen sijaan YouTuben kotisivua. Tämä voi myös johtua muutoksista YouTuben ulkoasussa. Jos luulet luulet niin, tee kommenti tänne:"
+        "message": "Kanavan ID ei ole vielä latautunut. Jos käytät upotettua videota, kokeile sen sijaan käyttää YouTuben kotisivua. Tämä voi myös johtua muutoksista YouTuben ulkoasussa. Jos luulet luulet niin, tee kommenti tänne:"
     },
     "videoInfoFetchFailed": {
         "message": "Näyttää siltä, että jokin estää SponsorBlockin kykyä saada videotietoja. Katso https://github.com/ajayyy/SponsorBlock/issues/741 lisätietoja varten."
@@ -640,8 +653,5 @@
     },
     "categoryUpdate2": {
         "message": "Avaa asetukset ohittaaksesi introt, outrot, kauppatavarat, jne."
-    },
-    "help": {
-        "message": "Ohje"
     }
 }

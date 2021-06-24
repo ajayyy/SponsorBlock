@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Il est actuellement réglé sur :"
     },
-    "supportInvidious": {
-        "message": "Supporter Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) est un client tiers pour YouTube. Vous devez accepter des permissions supplémentaires pour activer son support. Cette fonctionnalité ne fonctionne pas en mode incognito sur Chrome et les autres variantes de Chromium."
-    },
     "optionsInfo": {
         "message": "Activer Invidious, désactiver le passage automatique, masquer les boutons et plus encore."
-    },
-    "addInvidiousInstance": {
-        "message": "Ajouter une instance Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Ajouter une instance Invidious personnalisée. Doit être formaté avec SEULEMENT le domaine. Exemple: invidious.ajay.app"
     },
     "add": {
         "message": "Ajouter"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
     },
+    "category_selfpromo": {
+        "message": "Non rémunéré/autopromotion"
+    },
+    "category_selfpromo_description": {
+        "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
+    },
+    "category_interaction": {
+        "message": "Rappel d'interaction (abonnement)"
+    },
+    "category_interaction_description": {
+        "message": "Lorsqu'il y a un bref rappel pour aimer, s'abonner ou les suivre parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
+    },
+    "category_interaction_short": {
+        "message": "Rappel d'interaction"
+    },
     "category_intro": {
         "message": "Entracte/Animation d'intro"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Crédits ou écrans de fin YouTube. Pas pour les conclusions contenant des informations."
-    },
-    "category_interaction": {
-        "message": "Rappel d'interaction (abonnement)"
-    },
-    "category_interaction_description": {
-        "message": "Lorsqu'il y a un bref rappel pour aimer, s'abonner ou les suivre parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
-    },
-    "category_interaction_short": {
-        "message": "Rappel d'interaction"
-    },
-    "category_selfpromo": {
-        "message": "Non rémunéré/autopromotion"
-    },
-    "category_selfpromo_description": {
-        "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
     },
     "category_music_offtopic": {
         "message": "Musique : Segment non musical"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Votre couleur est mal formatée. Il devrait s'agir d'un code hexadécimal à 3 ou 6 chiffres avec un signe numérique au début."
-    },
-    "previewColor": {
-        "message": "Couleur en mode aperçu",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Couleur dans la barre de progression"
@@ -640,8 +624,5 @@
     },
     "categoryUpdate2": {
         "message": "Ouvrir les options pour sauter les intros, outros, marchandises, etc."
-    },
-    "help": {
-        "message": "Aide"
     }
 }

@@ -350,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Saat ini diatur pada:"
     },
-    "supportInvidious": {
-        "message": "Dukungan Invidious"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) adalah layanan klien YouTube pihak ketiga. Untuk mengaktifkan dukungan, anda harus menerima izin tambahan. Ini TIDAK dapat bekerja di mode penyamaran Chrome dan peramban berbasis Chromium lainnya."
-    },
     "optionsInfo": {
         "message": "Aktifkan dukungan Invidious, nonaktifkan lewati otomatis, tombol sembunyi dan lainnya."
-    },
-    "addInvidiousInstance": {
-        "message": "Tambah Instansi Invidious"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Tambahkan instansi khusus Invidious. Ini harus diformat dengan HANYA domainnya. Contoh: invidious.ajay.app"
     },
     "add": {
         "message": "Tambah"
@@ -480,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Promosi dibayar, tautan dibayar dan iklan langsung. Tidak untuk promosi diri sendiri atau dukungan gratis untuk gerakan/kreator/situs/produk yang mereka suka."
     },
+    "category_selfpromo": {
+        "message": "Promosi Diri Sendiri/Tidak Dibayar"
+    },
+    "category_selfpromo_description": {
+        "message": "Mirip dengan \"sponsor\" kecuali ini tidak dibayar atau promosi diri sendiri. Ini termasuk merchandise, donasi, atau informasi tentang siapa yang berkolaborasi dengan mereka."
+    },
+    "category_interaction": {
+        "message": "Pengingat Interaksi (Berlangganan)"
+    },
+    "category_interaction_description": {
+        "message": "Saat ada pengingat singkat untuk meminta suka, berlangganan atau mengikuti mereka di tengah konten. Jika panjang atau tentang sesuatu yang spesifik, sebaiknya pakai kategori promosi diri sendiri."
+    },
+    "category_interaction_short": {
+        "message": "Pengingat Interaksi"
+    },
     "category_intro": {
         "message": "Jeda/Animasi Intro"
     },
@@ -494,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Kredit atau saat kartu akhir YouTube muncul. Tidak untuk kesimpulan dengan informasi."
-    },
-    "category_interaction": {
-        "message": "Pengingat Interaksi (Berlangganan)"
-    },
-    "category_interaction_description": {
-        "message": "Saat ada pengingat singkat untuk meminta suka, berlangganan atau mengikuti mereka di tengah konten. Jika panjang atau tentang sesuatu yang spesifik, sebaiknya pakai kategori promosi diri sendiri."
-    },
-    "category_interaction_short": {
-        "message": "Pengingat Interaksi"
-    },
-    "category_selfpromo": {
-        "message": "Promosi Diri Sendiri/Tidak Dibayar"
-    },
-    "category_selfpromo_description": {
-        "message": "Mirip dengan \"sponsor\" kecuali ini tidak dibayar atau promosi diri sendiri. Ini termasuk merchandise, donasi, atau informasi tentang siapa yang berkolaborasi dengan mereka."
     },
     "category_music_offtopic": {
         "message": "Musik: Bagian Non-Musik"
@@ -536,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan benar. Harusnya terdiri dari 3 atau 6 digit kode heksa dengan tagar di awal."
-    },
-    "previewColor": {
-        "message": "Warna Pratinjau",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Warna Bilah Waktu"
@@ -640,8 +624,5 @@
     },
     "categoryUpdate2": {
         "message": "Buka opsi untuk melewati intro, outro, merch, dll."
-    },
-    "help": {
-        "message": "Bantuan"
     }
 }

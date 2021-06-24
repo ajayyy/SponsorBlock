@@ -350,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". 현재 다음으로 설정되어 있습니다:"
     },
-    "supportInvidious": {
-        "message": "Invidious 지원 활성화"
+    "supportOtherSites": {
+        "message": "제3자 YouTube 사이트 지원"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us)는 서드 파티 YouTube 클라이언트입니다. Invidious 지원을 활성화하시려면 추가적인 권한을 허용해주셔야 합니다. 이 기능은 Chrome 및 Chromium 기반 브라우저의 시크릿 모드에서는 작동하지 않습니다."
+    "supportOtherSitesDescription": {
+        "message": "제3자 YouTube 클라이언트를 지원합니다. 이 기능을 사용하려면 추가 권한을 허용하여야 합니다. 크롬 및 기타 크로미움 계열 브라우저의 시크릿 모드에서는 작동하지 않습니다.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "지원되는 사이트: "
     },
     "optionsInfo": {
         "message": "Invidious 지원을 활성화하고, 자동 건너뛰기 기능을 끄거나, 사용하지 않는 버튼을 숨겨보세요."
     },
     "addInvidiousInstance": {
-        "message": "Invidious 인스턴스 추가"
+        "message": "제3자 클라이언트 인스턴스 추가"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Invidious의 커스텀 인스턴스를 추가합니다. 도메인 형식으로만 되어있어야 합니다. 예시: invidious.ajay.app"
+        "message": "사용자 지정 인스턴스를 추가합니다. 도메인 형식으로만 되어있어야 합니다. 예시: invidious.ajay.app"
     },
     "add": {
         "message": "추가"
@@ -446,6 +450,9 @@
     "preview": {
         "message": "미리보기"
     },
+    "unsubmitted": {
+        "message": "미제출됨"
+    },
     "inspect": {
         "message": "보기"
     },
@@ -480,6 +487,21 @@
     "category_sponsor_description": {
         "message": "유료 광고, 유료 협찬과 직접 광고입니다. 원인/크리에이터/웹사이트/제품에 자체 홍보나 대가 없는 홍보는 여기에 해당되지 않습니다."
     },
+    "category_selfpromo": {
+        "message": "자체 홍보 구간"
+    },
+    "category_selfpromo_description": {
+        "message": "'스폰서 광고'와 비슷하지만 협찬 없이 자기 채널을 홍보하는 구간입니다. 여기에는 채널 굿즈 광고, 기부 광고와 영상에 참여한 사람들을 홍보하는 광고가 해당됩니다."
+    },
+    "category_interaction": {
+        "message": "상호 작용 알림 (구독)"
+    },
+    "category_interaction_description": {
+        "message": "컨텐츠 중앙의 좋아요, 구독이나 팔로우에 대한 짧은 설명이 뜨는 경우입니다. 길거나 특정적인 거라면 자가 홍보에 해당됩니다."
+    },
+    "category_interaction_short": {
+        "message": "상호 작용 알림"
+    },
     "category_intro": {
         "message": "무음 구간 / 인트로 영상"
     },
@@ -495,20 +517,11 @@
     "category_outro_description": {
         "message": "엔딩 크레딧이나 최종 화면이 나타나는 구간입니다. 단순히 결론을 말하는 부분은 여기에 포함되지 않습니다."
     },
-    "category_interaction": {
-        "message": "상호 작용 알림 (구독)"
+    "category_preview": {
+        "message": "미리보기/요약"
     },
-    "category_interaction_description": {
-        "message": "컨텐츠 중앙의 좋아요, 구독이나 팔로우에 대한 짧은 설명이 뜨는 경우입니다. 길거나 특정적인 거라면 자가 홍보에 해당됩니다."
-    },
-    "category_interaction_short": {
-        "message": "상호 작용 알림"
-    },
-    "category_selfpromo": {
-        "message": "자체 홍보 구간"
-    },
-    "category_selfpromo_description": {
-        "message": "'스폰서 광고'와 비슷하지만 협찬 없이 자기 채널을 홍보하는 구간입니다. 여기에는 채널 굿즈 광고, 기부 광고와 영상에 참여한 사람들을 홍보하는 광고가 해당됩니다."
+    "category_preview_description": {
+        "message": "이전 에피소드를 간략히 요약하거나 현재 동영상에서 나중에 나올 내용을 예고해줍니다. 음성 요약이 아니라 편집된 동영상을 통한 요약입니다."
     },
     "category_music_offtopic": {
         "message": "음악이 아닌 구간"
@@ -538,7 +551,7 @@
         "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
     },
     "previewColor": {
-        "message": "미리보기 색상",
+        "message": "미제출한 색상",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -640,8 +653,5 @@
     },
     "categoryUpdate2": {
         "message": "인트로, 아웃트로, 기타 등을 스킵하는 설정을 여세요"
-    },
-    "help": {
-        "message": "도움"
     }
 }

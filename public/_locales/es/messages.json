@@ -141,7 +141,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Sugerencia: puede configurar los teclas para enviar en las opciones"
+        "message": "Sugerencia: Puede asignar teclas para el envío en las opciones"
     },
     "clearTimesButton": {
         "message": "Eliminar Tiempos"
@@ -245,7 +245,7 @@
         "message": "Establecer tecla para iniciar/detener un segmento"
     },
     "setSubmitKeybind": {
-        "message": "Establecer botón de envio"
+        "message": "Establecer botón de envío"
     },
     "keybindDescription": {
         "message": "Seleccione un botón escribiéndolo"
@@ -350,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Actualmente está configurado para:"
     },
-    "supportInvidious": {
-        "message": "Apoya a Invidious"
+    "supportOtherSites": {
+        "message": "Soportar sitios de YouTube de terceros"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) es un cliente de YouTube independiente. Para habilitar su soporte, debes aceptar los permisos extra. Esto NO funcionará en modo incógnito de Chrome y otras variantes del Chromium."
+    "supportOtherSitesDescription": {
+        "message": "Soportar clientes de YouTube de terceros. Para habilitar el soporte, debes aceptar los permisos extra. Esto NO funciona en incógnito en Chrome y otras variantes de Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Sitios soportados: "
     },
     "optionsInfo": {
         "message": "Activar el soporte para Invidious, desactivar la omisión automática, oculta botones y más."
     },
     "addInvidiousInstance": {
-        "message": "Agregar una Instancia de Invidious"
+        "message": "Añadir instancia de cliente de terceros"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Añade una instancia personalizada de Invidious. Este debe formatearse SÓLO con el dominio. Ejemplo: invidious.ajay.app"
+        "message": "Añadir una instancia personalizada. Esta debe formatearse SÓLO con el dominio. Ejemplo: invidious.ajay.app"
     },
     "add": {
         "message": "Agregar"
@@ -446,6 +450,9 @@
     "preview": {
         "message": "Vista Previa"
     },
+    "unsubmitted": {
+        "message": "No enviado"
+    },
     "inspect": {
         "message": "Inspeccionar"
     },
@@ -480,8 +487,23 @@
     "category_sponsor_description": {
         "message": "Promoción pagada, referencias pagadas y anuncios directos. No para autopromoción o anuncios gratuitos a causas/creadores/sitios web/productos que les gusten."
     },
+    "category_selfpromo": {
+        "message": "No remunerado/Autopromoción"
+    },
+    "category_selfpromo_description": {
+        "message": "Similar a \"patrocinador\", excepto que no es remunerado o se autopromociona. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
+    },
+    "category_interaction": {
+        "message": "Recordatorio de interacción (subscribir)"
+    },
+    "category_interaction_description": {
+        "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
+    },
+    "category_interaction_short": {
+        "message": "Recordatorio de interacción"
+    },
     "category_intro": {
-        "message": "Intermisión/Introducción de animación"
+        "message": "Intermisión/Animación de Introducción"
     },
     "category_intro_description": {
         "message": "Un intervalo sin contenido real. Podría ser una pausa, un cuadro estático, una animación repetida. Esto no debe ser usado para transiciones que contengan información."
@@ -495,20 +517,11 @@
     "category_outro_description": {
         "message": "Créditos o cuando aparecen las tarjetas finales de YouTube. No para conclusiones con información."
     },
-    "category_interaction": {
-        "message": "Recordatorio de interacción (subscribir)"
+    "category_preview": {
+        "message": "Vista previa/Recapitulación"
     },
-    "category_interaction_description": {
-        "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
-    },
-    "category_interaction_short": {
-        "message": "Recordatorio de interacción"
-    },
-    "category_selfpromo": {
-        "message": "No remunerado/Autopromoción"
-    },
-    "category_selfpromo_description": {
-        "message": "Similar a \"patrocinador\", excepto que no es remunerado o se autopromociona. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
+    "category_preview_description": {
+        "message": "Recapitulación rápida de los episodios anteriores, o una vista previa de lo que va a ocurrir más adelante en el vídeo actual. Está pensado para clips editados juntos, no para resúmenes hablados."
     },
     "category_music_offtopic": {
         "message": "Música: Sección sin musica"
@@ -538,7 +551,7 @@
         "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
     },
     "previewColor": {
-        "message": "Vista previa del color",
+        "message": "Color No Enviado",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -640,8 +653,5 @@
     },
     "categoryUpdate2": {
         "message": "Abre las opciones de saltarse intros, otros, mercantil, etc."
-    },
-    "help": {
-        "message": "Ayuda"
     }
 }

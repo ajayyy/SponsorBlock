@@ -322,20 +322,8 @@
     "keybindCurrentlySet": {
         "message": ". Jelenleg erre van állítva:"
     },
-    "supportInvidious": {
-        "message": "Invidious támogatása"
-    },
-    "supportInvidiousDescription": {
-        "message": "Az Invidious (invidio.us) egy harmadik fél által készített YouTube kliens. A támogatás engedélyezéséhez el kell fogadnia további engedélyeket. NEM működik inkognitómódban a Chrome-on vagy más Chromium-változatokon."
-    },
     "optionsInfo": {
         "message": "Invidious támogatás engedélyezése, autoátugrás kikapcsolása, gombok eltűntetése és több."
-    },
-    "addInvidiousInstance": {
-        "message": "Invidious példány hozzáadása"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Egyedi Invidious példány hozzáadása. CSAK a domain-nel kell formázni. Például: invidious.ajay.app"
     },
     "add": {
         "message": "Hozzáadás"
@@ -452,6 +440,21 @@
     "category_sponsor_description": {
         "message": "Fizetett promóció, vagy közvetlen reklám. Nem ön-promóció vagy ingyenes ajánlat (/shoutout) emberekről/termékekről/weboldalakról amik tetszenek nekik."
     },
+    "category_selfpromo": {
+        "message": "Nem fizetett/ön-promóció"
+    },
+    "category_selfpromo_description": {
+        "message": "Hasonló a szponzorhoz, de nem fizetett vagy ön-promóció. Beletartozik a saját ruhaáru, adományok, vagy infó arról hogy kivel működtek együtt."
+    },
+    "category_interaction": {
+        "message": "Emlékeztető (Feliratkozás)"
+    },
+    "category_interaction_description": {
+        "message": "Egy rövid emlékeztető arról, hogy likeoljunk, iratkozzunk fel, vagy kövessük a tartalom közben. Ha hosszabb szakasz, vagy egy adott témáról van, inkább a az ön-promóció alá tartozik."
+    },
+    "category_interaction_short": {
+        "message": "Emlékeztető"
+    },
     "category_intro": {
         "message": "Megszakítás/Intro animáció"
     },
@@ -466,21 +469,6 @@
     },
     "category_outro_description": {
         "message": "Stáblista, vagy amikor megjelennek a YouTube zárókártyák. Nem használandó információt tartalmazó következtetésekkor."
-    },
-    "category_interaction": {
-        "message": "Emlékeztető (Feliratkozás)"
-    },
-    "category_interaction_description": {
-        "message": "Egy rövid emlékeztető arról, hogy likeoljunk, iratkozzunk fel, vagy kövessük a tartalom közben. Ha hosszabb szakasz, vagy egy adott témáról van, inkább a az ön-promóció alá tartozik."
-    },
-    "category_interaction_short": {
-        "message": "Emlékeztető"
-    },
-    "category_selfpromo": {
-        "message": "Nem fizetett/ön-promóció"
-    },
-    "category_selfpromo_description": {
-        "message": "Hasonló a szponzorhoz, de nem fizetett vagy ön-promóció. Beletartozik a saját ruhaáru, adományok, vagy infó arról hogy kivel működtek együtt."
     },
     "category_music_offtopic": {
         "message": "Zene: nem-zene szegmens"
@@ -505,10 +493,6 @@
     },
     "colorFormatIncorrect": {
         "message": "A szín helytelenül van formázva. Egy 3 vagy 6 számjegyből álló hex kódnak kell lennie egy kettőskereszttel az elején."
-    },
-    "previewColor": {
-        "message": "Előnézeti szín",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Keresősáv színe"

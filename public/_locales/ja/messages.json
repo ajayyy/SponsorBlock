@@ -17,7 +17,7 @@
         "message": "これは既に提出されています。"
     },
     "channelWhitelisted": {
-        "message": "チャンネルをホワイトリストに登録しました!"
+        "message": "番組を許可表に登録しました！"
     },
     "Segment": {
         "message": "区域"
@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "区域が終わりました"
     },
+    "sponsorCancel": {
+        "message": "区間の作成を取り止める"
+    },
     "noVideoID": {
         "message": "YouTube動画が見つかりませんでした。\nこれが正しくない場合は、タブを再読み込みしてください。"
     },
@@ -113,10 +116,10 @@
         "message": "本当に提出してよろしいですか？"
     },
     "whitelistChannel": {
-        "message": "ホワイトリストのチャンネル"
+        "message": "許可表にある番組"
     },
     "removeFromWhitelist": {
-        "message": "ホワイトリストからチャンネルを削除"
+        "message": "許可表から番組を削除"
     },
     "voteOnTime": {
         "message": "区域に投票"
@@ -138,7 +141,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "ヒント: オプションから提出時のキーバインドを設定できます"
+        "message": "心得: 利用者設定で，提出用の鍵盤束縛を設定できます"
     },
     "clearTimesButton": {
         "message": "時間をクリア"
@@ -197,6 +200,9 @@
     "whatViewTracking": {
         "message": "この機能は、あなたが飛び越した区域を追跡して、当該区域がどれだけ役に立ったかを他の利用者に知らせることで、不正な情報が情報集合体に紛れないようにするための評価基準として使用されます。あなたが区域を飛び越すたびに、拡張機能はサーバーに通報を送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "匿名閲覧状態で計数追跡を飛び越す"
+    },
     "enableQueryByHashPrefix": {
         "message": "ハッシュプレフィックスを使って要求"
     },
@@ -233,16 +239,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "セグメントをスキップするキーを設定"
+        "message": "区域を飛び越す鍵束縛を設定"
+    },
+    "setStartSponsorShortcut": {
+        "message": "区域を開始する鍵束縛を設定"
     },
     "setSubmitKeybind": {
-        "message": "投稿するキーを設定"
+        "message": "投稿する鍵束縛を設定"
     },
     "keybindDescription": {
-        "message": "キーを入力して設定します"
+        "message": "選択する鍵束縛を打鍵してください"
     },
     "keybindDescriptionComplete": {
-        "message": "キーバインドを次の通り設定しました: "
+        "message": "鍵束縛を次の通り設定しました: "
     },
     "0": {
         "message": "接続がタイムアウトになりました。インターネット接続をご確認ください。接続に問題がない場合、サーバーが混雑またはダウンしている可能性があります。"
@@ -341,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": "。現在の設定は:"
     },
-    "supportInvidious": {
-        "message": "Invidiousに対応"
+    "supportOtherSites": {
+        "message": "第三者製のYouTube関連サイトに対応"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) は第三者製のYouTubeクライアントです。Invidious対応を有効にするには，追加の権限を受け入れなければいけません。 これはChromeやその他のChromium系列の匿名閲覧状態では動作しません。"
+    "supportOtherSitesDescription": {
+        "message": "第三者製のYouTubeクライアントに対応しました。有効にするには，追加の権限を受け入れる必要があります。これはChromeやその他のChromium系列の匿名閲覧状態では動作しません。",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "対応サイト: "
     },
     "optionsInfo": {
         "message": "Invidious対応を有効にし，自動飛越を無効にし，GUIを非表示にします。"
     },
     "addInvidiousInstance": {
-        "message": "Invidiousインスタンスを追加"
+        "message": "第三者製クライアントの実体を追加"
     },
     "addInvidiousInstanceDescription": {
-        "message": "任意のInvidiousインスタンスを追加します。ドメイン名だけを記入してください。例: invidious.ajay.app"
+        "message": "任意の実体を追加できます。ドメイン名だけを記入してください。例: invidious.ajay.app"
     },
     "add": {
         "message": "追加"
@@ -377,8 +390,20 @@
     "minDurationDescription": {
         "message": "設定値より短い区域は飛び越されず，再生画面にも表示されません。"
     },
+    "shortCheck": {
+        "message": "提出しようとしている区間の長さが個人設定における最短時間よりも短かいです。これは，既に当区間は提出されており，個人設定によって無視されていることを意味します。本当に提出しますか？"
+    },
+    "showUploadButton": {
+        "message": "アップロードボタンを表示"
+    },
+    "whatUploadButton": {
+        "message": "時刻印を選択し提出準備が整ったあとにYouTube再生機上に表示されます。"
+    },
     "customServerAddress": {
         "message": "SponsorBlock サーバーアドレス"
+    },
+    "customServerAddressDescription": {
+        "message": "SponsorBlockがサーバーへの呼び出しに用いるアドレスです。\n自分のサーバー実体を持っていない限り，この設定を変更してはいけません。"
     },
     "save": {
         "message": "保存"
@@ -386,8 +411,29 @@
     "reset": {
         "message": "リセット"
     },
+    "customAddressError": {
+        "message": "このアドレスの形式は正しくありません。最初にhttp://あるいはhttps://があり，最後が斜線で終わっていないことを確かめてください。"
+    },
+    "areYouSureReset": {
+        "message": "初期設定に戻します。よろしいですか？"
+    },
     "mobileUpdateInfo": {
         "message": "m.youtube.com は現在サポートされています"
+    },
+    "exportOptions": {
+        "message": "全ての設定をインポート/エクスポート"
+    },
+    "whatExportOptions": {
+        "message": "JSON形式の個人設定全体です。利用者IDが含まれているので，共有するときは注意してください。"
+    },
+    "setOptions": {
+        "message": "設定する"
+    },
+    "exportOptionsWarning": {
+        "message": "警告: 設定の変更は恒久的で，本拡張機能を破壊する可能性があります。本当に実行しますか？ 念のため，旧設定を控えておいてください。"
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "JSONの書式が正しくありません。設定は変更されませんでした。"
     },
     "confirmNoticeTitle": {
         "message": "区域を提出"
@@ -404,8 +450,29 @@
     "preview": {
         "message": "プレビュー"
     },
+    "unsubmitted": {
+        "message": "未確定"
+    },
+    "inspect": {
+        "message": "調査"
+    },
     "edit": {
         "message": "編集"
+    },
+    "copyDebugInformation": {
+        "message": "詳細情報をクリップボードに写す"
+    },
+    "copyDebugInformationFailed": {
+        "message": "クリップボードに書き込めませんでした"
+    },
+    "copyDebugInformationOptions": {
+        "message": "不具合があった，あるいは開発者から要求があった際に提供する為の情報をクリップボードに写します。利用者ID，許可表にある番組，および個人サーバーのアドレスなどの機密情報は含まれていません。ただし，利用者エージェント，Web閲覧機，OS，および拡張機能の版番などの情報は含まれています。"
+    },
+    "theKey": {
+        "message": "鍵束縛"
+    },
+    "keyAlreadyUsed": {
+        "message": "は別の動作に割り当て済みです。違う鍵を設定してください。"
     },
     "to": {
         "message": "～",
@@ -413,6 +480,21 @@
     },
     "category_sponsor": {
         "message": "スポンサー"
+    },
+    "category_sponsor_description": {
+        "message": "報酬のある販売促進・製品紹介，および直接広告です。自己販促や好きな運動・製作者・Webサイト・製品に対する無報酬での宣伝とは違います。"
+    },
+    "category_selfpromo": {
+        "message": "無報酬 / セルフプロモーション"
+    },
+    "category_selfpromo_description": {
+        "message": "無報酬での宣伝あるいは自己販促を除いて「提供者」と同様です。商品・寄付・合作情報にかんする節を含みます。"
+    },
+    "category_interaction": {
+        "message": "動画の間に挟まる告知（番組登録）"
+    },
+    "category_interaction_short": {
+        "message": "動画の間に挟まる告知"
     },
     "category_intro": {
         "message": "インターミッション / イントロアニメーション"
@@ -423,11 +505,23 @@
     "category_outro": {
         "message": "エンドカード/クレジット"
     },
-    "category_selfpromo": {
-        "message": "無報酬 / セルフプロモーション"
+    "category_preview": {
+        "message": "予告と前回の粗筋"
+    },
+    "category_preview_description": {
+        "message": "前回の粗筋，または動画の後半内容の予告。音声による要約ではなく，編集された映像を指します。"
     },
     "category_music_offtopic": {
         "message": "音楽: 音楽ではない区間"
+    },
+    "category_music_offtopic_short": {
+        "message": "非音楽"
+    },
+    "category_livestream_messages": {
+        "message": "生配信: 寄付などの読み上げ"
+    },
+    "category_livestream_messages_short": {
+        "message": "寄付などの読み上げ"
     },
     "disable": {
         "message": "無効"
@@ -438,8 +532,11 @@
     "showOverlay": {
         "message": "シークバーに表示"
     },
+    "colorFormatIncorrect": {
+        "message": "色の書式が正しくありません。井桁記号に続く3桁あるいは6桁の16進数である必要があります。"
+    },
     "previewColor": {
-        "message": "プレビューカラー",
+        "message": "未確定の色",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -449,7 +546,7 @@
         "message": "カテゴリ"
     },
     "skipOption": {
-        "message": "飛越設定",
+        "message": "飛び越し設定",
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
@@ -458,11 +555,28 @@
     "bracketNow": {
         "message": "(今)"
     },
+    "moreCategories": {
+        "message": "範疇を変更"
+    },
     "chooseACategory": {
         "message": "カテゴリーを選択"
     },
+    "enableThisCategoryFirst": {
+        "message": "分類「{0}」で区域を提出するには，個人設定で当分類を有効にしてください。個人設定画面に転送します。",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "提出する全ての区域について，その範疇を選択する必要があります！"
+    },
+    "hiddenDueToDownvote": {
+        "message": "低い評価の区間を無視する"
+    },
+    "hiddenDueToDuration": {
+        "message": "あまりに短かい区間を無視する"
+    },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "番組IDがまだ読み込まれていません。埋め込み動画でご覧になっている場合は，代わりにYouTubeの公式サイトで再生してみてください。この問題はYouTubeの画面構成を変えた際にも発生する可能性があります。その場合は，こちらに意見をお書きください:"
     },
     "youtubePermissionRequest": {
         "message": "SponsorBlockがYouTube APIを参照できないようです。修正するには，次に表示される画面で許可を承認してから，数秒後に再読み込みしてください。"
@@ -476,8 +590,29 @@
     "permissionRequestFailed": {
         "message": "権限要求に失敗しました。承認を拒否しましたか？"
     },
+    "adblockerIssueWhitelist": {
+        "message": "これを解決できない場合は，「飛び越し前に強制的に番組を検査する」を無効にしてください。SponsorBlockはこの動画の番組情報を取得できませんでした。"
+    },
+    "forceChannelCheck": {
+        "message": "飛び越し前に強制的に番組を検査する"
+    },
+    "whatForceChannelCheck": {
+        "message": "既定では，番組のいかんにかかわらず区域をすぐに飛び越します。また，既定では，許可表にある番組であっても再生開始直後の区域を飛び越してしまう場合があります。この個人設定を有効にすると前述の挙動を防げます。ただし，番組IDの取得に時間が掛かるせいで，全ての飛び越しを作成するのに遅延が生じます。高速な通信環境であれば，ほとんど遅延を感じないでしょう。"
+    },
+    "forceChannelCheckPopup": {
+        "message": "「飛び越し前に強制的に番組を検査する」を有効にすることを検討してください"
+    },
+    "downvoteDescription": {
+        "message": "不正確あるいは間違った時刻です"
+    },
     "incorrectCategory": {
         "message": "カテゴリが違います"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "この動画は音楽として分類されています。本当にこの動画に提供表示画面がありますか？ 当区域が本当に「音楽以外の区域」だった場合は，拡張機能の個人設定を開いて，この分類を有効にしてください。その後，「提供表示画面」の代わりに「非音楽」として区域を提出してください。よく分からない場合は，区域分野にかんする指針をお読みください。"
+    },
+    "multipleSegments": {
+        "message": "複数の区域"
     },
     "guidelines": {
         "message": "ガイドライン"
@@ -489,7 +624,14 @@
     "categoryUpdate1": {
         "message": "カテゴリはこちらです!"
     },
-    "help": {
-        "message": "ヘルプ"
+    "categoryUpdate2": {
+        "message": "導入画面・終了画面・商品紹介などを飛び越す個人設定を開きます。"
+    },
+    "experiementOptOut": {
+        "message": "実験的機能をすべて無効にする",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "二度と表示しない"
     }
 }

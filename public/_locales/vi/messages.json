@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Đoạn quảng cáo kết thúc vào lúc này"
     },
+    "sponsorCancel": {
+        "message": "Thoát việc tạo ra phân đoạn"
+    },
     "noVideoID": {
         "message": "Không tìm thấy video này.\nNếu sai, hãy thử tải lại thẻ này."
     },
@@ -197,6 +200,12 @@
     "whatViewTracking": {
         "message": "Tính năng này theo dõi những đoạn quảng cáo bạn đã bỏ qua để cho người dùng khác biết những đoạn họ đăng đã giúp người khác đến mức nào. Tính năng này, cùng với tính năng bầu chọn, còn được dùng làm thước đo để đảm bảo spam không lọt vào kho dữ liệu. Tiện ích mở rộng này gửi tín hiệu đến máy chủ mỗi lần bạn bỏ qua một đoạn quảng cáo. Mong là đa phần mọi người không thay đổi cài đặt này để thông số người xem được chính xác nhất. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Bật việc theo dõi số lượng người bỏ qua phân đoạn trong tab Riêng tư/Ẩn danh"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Truy vấn theo Hash Prefix"
+    },
     "whatQueryByHashPrefix": {
         "message": "Thay vì yêu cầu phân đoạn từ máy chủ bằng cách sử dụng videoID, 4 ký tự đầu tiên của hash của videoID sẽ được gửi. Máy chủ sau đó sẽ gửi dữ liệu cho tất cả video với các hash tương tự."
     },
@@ -231,6 +240,9 @@
     },
     "setSkipShortcut": {
         "message": "Chọn phím tắt để bỏ qua phân đoạn"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Đặt phím nóng đánh dấu một phân đoạn bắt đầu/kết thúc"
     },
     "setSubmitKeybind": {
         "message": "Đặt phím tắt đăng đoạn quảng cáo"
@@ -338,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Phím đang được đặt:"
     },
-    "supportInvidious": {
-        "message": "Hỗ trợ Invidious"
+    "supportOtherSites": {
+        "message": "Hỗ trợ các trang web Youtube thuộc bên thứ 3"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) là ứng dụng Youtube của bên thứ ba. Để bật hỗ trợ cho ứng dụng này, bạn phải chấp nhận các yêu cầu cho phép thêm. Ứng dụng này không có tác dụng trong chế độ ẩn danh của Chrome và các trình duyệt có nền tảng Chromium."
+    "supportOtherSitesDescription": {
+        "message": "Bật hỗ trợ các ứng dụng/trang web Youtube của bên thứ ba. Để bật hỗ trợ cho ứng dụng này, bạn phải chấp nhận các yêu cầu cho phép bổ sung. Nó KHÔNG CÓ tác dụng trong chế độ ẩn danh của Chrome và các trình duyệt có nền tảng Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Các trang web được hỗ trợ: "
     },
     "optionsInfo": {
         "message": "Bật hỗ trợ cho Invidious, tắt tự động bỏ qua quảng cáo, không hiển thị nút, và nhiều tùy chọn khác."
     },
     "addInvidiousInstance": {
-        "message": "Thêm phiên bản của Invidious"
+        "message": "Thêm Instance của ứng dụng bên thứ 3"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Thêm một phiên bản tùy chọn của Invidious. Phải dùng định dạng của RIÊNG tên miền thôi. Ví dụ: invidious.ajay.app"
+        "message": "Thêm một instance. Chỉ có mỗi tên miền. Ví dụ: invidious.ajay.app"
     },
     "add": {
         "message": "Thêm vào"
@@ -434,6 +450,9 @@
     "preview": {
         "message": "Xem trước"
     },
+    "unsubmitted": {
+        "message": "Chưa gửi lên: "
+    },
     "inspect": {
         "message": "Xem trước"
     },
@@ -468,6 +487,21 @@
     "category_sponsor_description": {
         "message": "Nội dung được trả tiền để quảng cáo, giới thiệu và quảng cáo trực tiếp. Không phải là quảng cáo không trả công hay được đề cập miễn phí."
     },
+    "category_selfpromo": {
+        "message": "Quảng cáo không trả công/Tự quảng cáo"
+    },
+    "category_selfpromo_description": {
+        "message": "Tương tự như 'nhà tài trợ' ngoại trừ việc quảng cáo không được trả tiền hay tự quảng cáo. Điều này bao gồm các phần hàng hóa, đóng góp, hoặc thông tin về người mà họ hợp tác với."
+    },
+    "category_interaction": {
+        "message": "Nhắc tương tác (Đăng ký)"
+    },
+    "category_interaction_description": {
+        "message": "Nhắc nhở người xem Thích, Đăng ký hoặc Theo dõi. Nếu nó dài hoặc là một cái gì cụ thể, nó nên là danh mục \"Tự quảng cáo\"."
+    },
+    "category_interaction_short": {
+        "message": "Nhắc nhở tương tác"
+    },
     "category_intro": {
         "message": "Tạm dừng/Giới thiệu"
     },
@@ -483,23 +517,14 @@
     "category_outro_description": {
         "message": "Credits hoặc khi thẻ màn hình kết thúc của YouTube xuất hiện. Không dùng với những đoạn có thông tin."
     },
-    "category_interaction": {
-        "message": "Nhắc tương tác (Đăng ký)"
-    },
-    "category_interaction_description": {
-        "message": "Nhắc nhở người xem Thích, Đăng ký hoặc Theo dõi. Nếu nó dài hoặc là một cái gì cụ thể, nó nên là danh mục \"Tự quảng cáo\"."
-    },
-    "category_interaction_short": {
-        "message": "Nhắc nhở tương tác"
-    },
-    "category_selfpromo": {
-        "message": "Quảng cáo không trả công/Tự quảng cáo"
-    },
-    "category_selfpromo_description": {
-        "message": "Tương tự như 'nhà tài trợ' ngoại trừ việc quảng cáo không được trả tiền hay tự quảng cáo. Điều này bao gồm các phần hàng hóa, đóng góp, hoặc thông tin về người mà họ hợp tác với."
+    "category_preview_description": {
+        "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
     },
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
+    },
+    "category_music_offtopic_description": {
+        "message": "Chỉ sử dụng cho video âm nhạc. Điều này có nghĩa là các phân đoạn đó nằm trong 1 video âm nhạc chưa thuộc về một loại danh mục khác."
     },
     "category_music_offtopic_short": {
         "message": "Không có nhạc"
@@ -521,10 +546,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Mã màu sai định dạng. Mã màu phải có 3 hoặc 6 ký tự hệ hex và có dấu thăng ở đầu."
-    },
-    "previewColor": {
-        "message": "Xem thử màu",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Màu của thanh xem trước"
@@ -603,8 +624,5 @@
     },
     "categoryUpdate2": {
         "message": "Mở Tùy chọn để bỏ qua đoạn mở đầu, kết thúc, giới thiệu hàng hoá, v.v."
-    },
-    "help": {
-        "message": "Trợ giúp"
     }
 }
