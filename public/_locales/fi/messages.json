@@ -653,8 +653,5 @@
     },
     "categoryUpdate2": {
         "message": "Avaa asetukset ohittaaksesi introt, outrot, kauppatavarat, jne."
-    },
-    "help": {
-        "message": "Ohje"
     }
 }
