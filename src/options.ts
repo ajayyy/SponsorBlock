@@ -31,7 +31,8 @@ async function init() {
     const optionsElements = optionsContainer.querySelectorAll("*");
 
     for (let i = 0; i < optionsElements.length; i++) {
-        if (optionsElements[i].getAttribute("private-mode-only") === "true" && !(await isIncognitoAllowed())) {
+        if ((optionsElements[i].getAttribute("private-mode-only") === "true" && !(await isIncognitoAllowed()))
+            || (optionsElements[i].getAttribute("no-safari") === "true" && navigator.vendor === "Apple Computer, Inc.")) {
             optionsElements[i].classList.add("hidden");
             continue;
         }
