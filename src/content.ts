@@ -13,6 +13,7 @@ import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse } from "./messageTypes";
+import GenericNotice from "./render/GenericNotice";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -271,6 +272,9 @@ async function videoIDChange(id) {
     // Update whitelist data when the video data is loaded
     whitelistCheck();
 
+    // Temporary expirement
+    unlistedCheck();
+
     //setup the preview bar
     if (previewBar === null) {
         if (onMobileYouTube) {
@@ -391,7 +395,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         return;
     }
 
-    if (video.paused) return;
+    if (!video || video.paused) return;
 
     if (Config.config.disableSkipping || channelWhitelisted || (channelIDInfo.status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
         return;
@@ -862,6 +866,72 @@ async function whitelistCheck() {
 
     // check if the start of segments were missed
     if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
+}
+
+async function unlistedCheck() {
+    if (!Config.config.allowExpirements || !Config.config.askAboutUnlistedVideos) return;
+
+    try {
+        await utils.wait(() => !!videoInfo && !!document.getElementById("info-text") 
+                && !!document.querySelector(".ytd-video-primary-info-renderer > .badge > yt-icon > svg"), 6000, 1000);
+
+        const isUnlisted = document.querySelector(".ytd-video-primary-info-renderer > .badge > yt-icon > svg > g > path")
+                            ?.getAttribute("d")?.includes("M3.9 12c0-1.71 1.39-3.1 3.1-3.1h"); // Icon of unlisted badge
+        const yearMatches = document.querySelector("#info-text > #info-strings > yt-formatted-string")
+                            ?.innerHTML?.match(/20[0-9]{2}/);
+        const year = yearMatches ? parseInt(yearMatches[0]) : -1;
+        const isOld = !isNaN(year) && year < 2017 && year > 2004;
+        const isHighViews = parseInt(videoInfo?.videoDetails?.viewCount) > 20000;
+
+        console.log({
+            isUnlisted,
+            year,
+            isOld,
+            isHighViews
+        })
+
+        if (isUnlisted && isOld && isHighViews) {
+            // Ask if they want to submit this videoID
+            const notice = new GenericNotice(skipNoticeContentContainer, "unlistedWarning", {
+                title: "Help prevent this from disappearing",
+                textBoxes: ("This video is detected as unlisted and uploaded before 2017\n"
+                        + "Old unlisted videos are being set to private soon\n"
+                        + "We are collecting *public* videos to back up\n"
+                        + "Would you like anonymously to submit this video?").split("\n"),
+                buttons: [
+                    {
+                        name: "Opt-out of all future experiments",
+                        listener: () => {
+                            Config.config.allowExpirements = false;
+
+                            notice.close();
+                        }
+                    },
+                    {
+                        name: "Never show this",
+                        listener: () => {
+                            Config.config.askAboutUnlistedVideos = false;
+
+                            notice.close();
+                        }
+                    },
+                    {
+                        name: "Submit",
+                        listener: () => {
+                            utils.asyncRequestToServer("POST", "/api/unlistedVideo", {
+                                videoID: sponsorVideoID
+                            });
+
+                            notice.close();
+                        }
+                    }
+                ]
+            });
+        }
+
+    } catch (e) {
+        return;
+    }
 }
 
 /**
