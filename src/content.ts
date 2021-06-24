@@ -881,14 +881,8 @@ async function unlistedCheck() {
                             ?.innerHTML?.match(/20[0-9]{2}/);
         const year = yearMatches ? parseInt(yearMatches[0]) : -1;
         const isOld = !isNaN(year) && year < 2017 && year > 2004;
-        const isHighViews = parseInt(videoInfo?.videoDetails?.viewCount) > 20000;
-
-        console.log({
-            isUnlisted,
-            year,
-            isOld,
-            isHighViews
-        })
+        const views = parseInt(videoInfo?.videoDetails?.viewCount);
+        const isHighViews = views > 20000;
 
         if (isUnlisted && isOld && isHighViews) {
             // Ask if they want to submit this videoID
@@ -916,7 +910,10 @@ async function unlistedCheck() {
                         name: "Submit",
                         listener: () => {
                             utils.asyncRequestToServer("POST", "/api/unlistedVideo", {
-                                videoID: sponsorVideoID
+                                videoID: sponsorVideoID,
+                                year,
+                                views,
+                                channelID: channelIDInfo.status === ChannelIDStatus.Found ? channelIDInfo.id : undefined
                             });
 
                             notice.close();
