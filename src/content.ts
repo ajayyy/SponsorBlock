@@ -45,6 +45,7 @@ let video: HTMLVideoElement;
 let videoMutationObserver: MutationObserver = null;
 // List of videos that have had event listeners added to them
 const videosWithEventListeners: HTMLVideoElement[] = [];
+const controlsWithEventListeners: HTMLElement[] = []
 
 let onInvidious;
 let onMobileYouTube;
@@ -73,7 +74,7 @@ let previewBar: PreviewBar = null;
 let controls: HTMLElement | null = null;
 
 /** Contains buttons created by `createButton()`. */
-const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImageElement}> = {};
+const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImageElement, setupListener: boolean}> = {};
 
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
@@ -1144,6 +1145,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
     playerButtons[baseID] = {
         button: newButton,
         image: newButtonImage,
+        setupListener: false
     };
 
     return newButton;
@@ -1179,9 +1181,23 @@ async function createButtons(): Promise<void> {
     // Add button if does not already exist in html
     createButton("startSegment", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker.svg");
     createButton("cancelSegment", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerCancelSegmentIconSponsorBlocker.svg");
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
     createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker.svg");
     createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
+    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
+
+    const controlsContainer = getControls();
+    if (!onInvidious && controlsContainer && playerButtons["info"]?.button && !controlsWithEventListeners.includes(controlsContainer)) {
+        controlsWithEventListeners.push(controlsContainer);
+        playerButtons["info"].button.classList.add("hidden");
+
+        controlsContainer.addEventListener("mouseenter", () => {
+            playerButtons["info"].button.classList.remove("hidden");
+        });
+
+        controlsContainer.addEventListener("mouseleave", () => {
+            playerButtons["info"].button.classList.add("hidden");
+        });
+    }
 }
 
 /** Creates any missing buttons on the player and updates their visiblity. */

@@ -103,7 +103,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sponsorMessageTimes",
         //"downloadedSponsorMessageTimes",
         "whitelistButton",
+        "sbDonate"
     ].forEach(id => PageElements[id] = document.getElementById(id));
+
+    // Hide donate button on safari
+    if (navigator.vendor === "Apple Computer, Inc.") {
+        PageElements.sbDonate.style.display = "none";
+    }
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
