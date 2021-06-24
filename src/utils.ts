@@ -366,6 +366,29 @@ export default class Utils {
         });
     }
 
+    findReferenceNode(): HTMLElement {
+        let referenceNode = document.getElementById("player-container-id")
+                                ?? document.getElementById("movie_player") 
+                                ?? document.querySelector("#main-panel.ytmusic-player-page") // YouTube music
+                                ?? document.querySelector("#player-container .video-js") // Invidious
+                                ?? document.querySelector(".main-video-section > .video-container");  // Cloudtube  
+        if (referenceNode == null) {
+            //for embeds
+            const player = document.getElementById("player");
+            referenceNode = player.firstChild as HTMLElement;
+            let index = 1;
+
+            //find the child that is the video player (sometimes it is not the first)
+            while (index < player.children.length && (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed"))) {
+                referenceNode = player.children[index] as HTMLElement;
+
+                index++;
+            }
+        }
+
+        return referenceNode;
+    }
+
     getFormattedTime(seconds: number, precise?: boolean): string {
         const hours = Math.floor(seconds / 60 / 60);
         const minutes = Math.floor(seconds / 60) % 60;
