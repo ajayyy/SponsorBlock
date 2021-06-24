@@ -653,8 +653,5 @@
     },
     "categoryUpdate2": {
         "message": "인트로, 아웃트로, 기타 등을 스킵하는 설정을 여세요"
-    },
-    "help": {
-        "message": "도움"
     }
 }
