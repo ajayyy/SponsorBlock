@@ -279,7 +279,7 @@
         "message": "¿Saltar {0}?"
     },
     "skipped": {
-        "message": "Omitido"
+        "message": "Omitido/a(s)"
     },
     "disableAutoSkip": {
         "message": "Desactivar la omisión automática"
