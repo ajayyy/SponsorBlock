@@ -653,5 +653,8 @@
     },
     "categoryUpdate2": {
         "message": "Ava valikud, et jätta vahele vaheaegu, müüdavat kaupa jms."
+    },
+    "hideForever": {
+        "message": "Peida igaveseks"
     }
 }
