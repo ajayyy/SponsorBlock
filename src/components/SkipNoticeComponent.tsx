@@ -98,8 +98,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             messageOnClick: null,
 
             //the countdown until this notice closes
-            maxCountdownTime: () => 4,
-            countdownTime: 4,
+            maxCountdownTime: () => Config.config.skipNoticeDuration,
+            countdownTime: Config.config.skipNoticeDuration,
             countdownText: null,
 
             unskipText: chrome.i18n.getMessage("unskip"),
@@ -418,7 +418,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             const sponsorTime = this.segments[index];
             const duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
 
-            return Math.max(duration, 4);
+            return Math.max(duration, Config.config.skipNoticeDuration);
         };
 
         return {
@@ -437,8 +437,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             unskipText: chrome.i18n.getMessage("unskip"),
             unskipCallback: this.unskip.bind(this),
 
-            maxCountdownTime: () => 4,
-            countdownTime: 4
+            maxCountdownTime: () => Config.config.skipNoticeDuration,
+            countdownTime: Config.config.skipNoticeDuration
         };
 
         // See if the title should be changed

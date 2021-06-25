@@ -389,7 +389,13 @@
     },
     "minDurationDescription": {
         "message": "Segments shorter than the set value will not be skipped or show in the player."
-     },
+    },
+    "skipNoticeDuration": {
+        "message": "Skip notice duration (seconds):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "The skip notice will stay on screen for at least this long. For manual skipping, it may be visible for longer."
+    },
     "shortCheck": {
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
     },
