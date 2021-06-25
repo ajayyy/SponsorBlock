@@ -242,8 +242,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             <select id={"sponsorTimeCategories" + this.idSuffix}
                                     className="sponsorTimeCategories"
                                     defaultValue={this.segments[0].category} //Just default to the first segment, as we don't know which they'll choose
-                                    ref={this.categoryOptionRef}
-                                    onChange={this.categorySelectionChange.bind(this)}>
+                                    ref={this.categoryOptionRef}>
 
                                 {this.getCategoryOptions()}
                             </select>
@@ -388,38 +387,16 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     getCategoryOptions(): React.ReactElement[] {
         const elements = [];
 
-        for (const category of Config.config.categorySelections) {
+        for (const category of CompileConfig.categoryList) {
             elements.push(
-                <option value={category.name}
-                        key={category.name}>
-                    {chrome.i18n.getMessage("category_" + category.name)}
-                </option>
-            );
-        }
-
-        if (elements.length < CompileConfig.categoryList.length) {
-            // Add show more button
-            elements.push(
-                <option value={"moreCategories"}
-                        key={"moreCategories"}>
-                    {chrome.i18n.getMessage("moreCategories")}
+                <option value={category}
+                        key={category}>
+                    {chrome.i18n.getMessage("category_" + category)}
                 </option>
             );
         }
 
         return elements;
-    }
-
-    categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
-        // See if show more categories was pressed
-        if (event.target.value === "moreCategories") {
-            // Open options page
-            chrome.runtime.sendMessage({"message": "openConfig"});
-
-            // Reset option to original
-            event.target.value = this.segments[0].category;
-            return;
-        }
     }
 
     unskip(index: number): void {
