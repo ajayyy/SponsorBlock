@@ -390,6 +390,12 @@
     "minDurationDescription": {
         "message": "Segmenttejä jotka ovat asetettua arvoa lyhyempiä ei ohiteta tai näytetä soittimessa."
     },
+    "skipNoticeDuration": {
+        "message": "Ohitusilmoituksen kesto (sekuntia):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Ohitusimoitus pysyy näytöllä ainakin näin kauan.\nManuaalisella ohituksella se saattaa pysyä pitempäänkin."
+    },
     "shortCheck": {
         "message": "Seuraava lähetys on lyhyempi kuin vähimmäiskeston asetuksesi. Tämä voi tarkoittaa sitä, että tämä on jo lähetetty ja sitä ei vain oteta huomioon tämän asetuksen vuoksi. Oletko varma, että haluat lähettää?"
     },
