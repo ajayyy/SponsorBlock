@@ -1186,7 +1186,8 @@ async function createButtons(): Promise<void> {
     createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
 
     const controlsContainer = getControls();
-    if (!onInvidious && controlsContainer && playerButtons["info"]?.button && !controlsWithEventListeners.includes(controlsContainer)) {
+    if (Config.config.autoHideInfoButton && !onInvidious && controlsContainer 
+            && playerButtons["info"]?.button && !controlsWithEventListeners.includes(controlsContainer)) {
         controlsWithEventListeners.push(controlsContainer);
         playerButtons["info"].button.classList.add("hidden");
 

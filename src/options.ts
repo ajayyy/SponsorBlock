@@ -32,7 +32,8 @@ async function init() {
 
     for (let i = 0; i < optionsElements.length; i++) {
         if ((optionsElements[i].getAttribute("private-mode-only") === "true" && !(await isIncognitoAllowed()))
-            || (optionsElements[i].getAttribute("no-safari") === "true" && navigator.vendor === "Apple Computer, Inc.")) {
+            || (optionsElements[i].getAttribute("no-safari") === "true" && navigator.vendor === "Apple Computer, Inc.")
+            || (optionsElements[i].getAttribute("if-false") && Config.config[optionsElements[i].getAttribute("if-false")])) {
             optionsElements[i].classList.add("hidden");
             continue;
         }

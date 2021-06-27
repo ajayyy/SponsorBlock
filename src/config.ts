@@ -41,6 +41,7 @@ interface SBConfig {
     ytInfoPermissionGranted: boolean,
     askAboutUnlistedVideos: boolean,
     allowExpirements: boolean,
+    autoHideInfoButton: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -180,6 +181,7 @@ const Config: SBObject = {
         ytInfoPermissionGranted: false,
         askAboutUnlistedVideos: true,
         allowExpirements: true,
+        autoHideInfoButton: true,
 
         categorySelections: [{
             name: "sponsor",
