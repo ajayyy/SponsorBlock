@@ -641,6 +641,9 @@
     "categoryUpdate2": {
         "message": "開啟選項以跳過開場、結尾、工商等。"
     },
+    "help": {
+        "message": "幫助"
+    },
     "experiementOptOut": {
         "message": "關閉所有未來的實驗性功能",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
