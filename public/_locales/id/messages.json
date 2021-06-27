@@ -624,5 +624,8 @@
     },
     "categoryUpdate2": {
         "message": "Buka opsi untuk melewati intro, outro, merch, dll."
+    },
+    "hideForever": {
+        "message": "Sembunyikan selamanya"
     }
 }
