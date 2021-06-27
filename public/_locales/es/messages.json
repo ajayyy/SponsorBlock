@@ -660,6 +660,9 @@
     "categoryUpdate2": {
         "message": "Abre las opciones de saltarse intros, otros, mercantil, etc."
     },
+    "help": {
+        "message": "Ayuda"
+    },
     "experimentUnlistedTitle": {
         "message": "Ayude a evitar que esto desaparezca"
     },
