@@ -1577,6 +1577,7 @@ async function sendSubmitMessage() {
         videoID: sponsorVideoID,
         userID: Config.config.userID,
         segments: sponsorTimesSubmitting,
+        videoDuration: video?.duration
     });
 
     if (response.status === 200) {
