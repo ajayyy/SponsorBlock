@@ -390,6 +390,12 @@
     "minDurationDescription": {
         "message": "Segmendid, mis on lühemad kui määratud väärtus ei jäeta vahele või ei kuvata mängijal."
     },
+    "skipNoticeDuration": {
+        "message": "Vahelejätmise teavituse kestus (sekundites):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Vahelejätmise teavitus püsib ekraanil vähemalt nii kaua. Käsitsi vahelejätmise puhul võib see kauem püsida."
+    },
     "shortCheck": {
         "message": "See saadetav segment on lühem, kui sinu lühima pikkuse valik. See võib tähendada, et see on juba saadetud ning on selle valiku tõttu lihtsalt ignoreeritud. Kas soovid kindlasti seda saata?"
     },
@@ -653,6 +659,10 @@
     },
     "categoryUpdate2": {
         "message": "Ava valikud, et jätta vahele vaheaegu, müüdavat kaupa jms."
+    },
+    "experiementOptOut": {
+        "message": "Keeldu kõigist tulevikus tehtavatatest eksperimentidest",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Peida igaveseks"
