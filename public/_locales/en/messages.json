@@ -660,6 +660,9 @@
     "categoryUpdate2": {
         "message": "Open the options to skip intros, outros, merch, etc."
     },
+    "help": {
+        "message": "Help"
+    },
     "experimentUnlistedTitle": {
         "message": "Help prevent this from disappearing"
     },
