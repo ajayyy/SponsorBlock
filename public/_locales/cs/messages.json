@@ -390,6 +390,12 @@
     "minDurationDescription": {
         "message": "Segmenty kratší než nastavená hodnota nebudou přeskočeny nebo zobrazeny v přehrávači."
     },
+    "skipNoticeDuration": {
+        "message": "Délka trvání oznámení o přeskočení (v sekundách):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Oznámení o přeskočení zůstane na obrazovce alespoň po tuto dobu. Pro ruční může být zobrazeno déle."
+    },
     "shortCheck": {
         "message": "Váš příspěvek je kratší než vaše možnost nejkratší doby trvání. To by mohlo znamenat, že někdo segment již odeslal, a je jenom ignorován kvůli této možnosti. Opravdu chcete odeslat váš příspěvek?"
     },
@@ -653,6 +659,9 @@
     },
     "categoryUpdate2": {
         "message": "Otevřít možnosti pro přeskočení intra, outra, merche apod."
+    },
+    "help": {
+        "message": "Nápověda"
     },
     "experimentUnlistedTitle": {
         "message": "Pomozte zabránit zmizení tohoto"
