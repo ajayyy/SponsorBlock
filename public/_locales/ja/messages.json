@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "これはYouTubeのページ上でポップアップを開くためのボタンです。"
     },
+    "autoHideInfoButton": {
+        "message": "情報ボタンを自動的に隠す"
+    },
     "hideDeleteButton": {
         "message": "YouTube プレイヤーから削除ボタンを隠す"
     },
