@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Detta är knappen som öppnar popup-rutan på YouTube-sidan."
     },
+    "autoHideInfoButton": {
+        "message": "Dölj informationsknappen automatiskt"
+    },
     "hideDeleteButton": {
         "message": "Dölj \"Ta Bort\"-knappen På YouTube-spelaren"
     },
