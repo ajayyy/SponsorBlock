@@ -660,6 +660,9 @@
     "categoryUpdate2": {
         "message": "Open de opties om intro's, outro's, koopwaar,... over te slaan."
     },
+    "help": {
+        "message": "Help"
+    },
     "experimentUnlistedTitle": {
         "message": "Helpen voorkomen dat dit verdwijnt"
     },
