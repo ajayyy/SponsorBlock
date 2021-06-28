@@ -186,7 +186,7 @@
         "message": "Este es el botón que abre una ventana en la página de YouTube."
     },
     "autoHideInfoButton": {
-        "message": "Auto-ocultar botón de información"
+        "message": "Ocular automáticamente el Botón de Información"
     },
     "hideDeleteButton": {
         "message": "Ocultar botón de eliminar en el reproductor de YouTube"
@@ -282,7 +282,7 @@
         "message": "¿Saltar {0}?"
     },
     "skipped": {
-        "message": "Omitido/a(s)"
+        "message": "Omitido/as"
     },
     "disableAutoSkip": {
         "message": "Desactivar la omisión automática"
