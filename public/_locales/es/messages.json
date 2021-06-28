@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Este es el botón que abre una ventana en la página de YouTube."
     },
+    "autoHideInfoButton": {
+        "message": "Auto-ocultar botón de información"
+    },
     "hideDeleteButton": {
         "message": "Ocultar botón de eliminar en el reproductor de YouTube"
     },
