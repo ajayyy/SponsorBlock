@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Tämä on painike, joka avaa ponnahdusikkunan YouTube-sivulla."
     },
+    "autoHideInfoButton": {
+        "message": "Piilota info-painike automaattisesti"
+    },
     "hideDeleteButton": {
         "message": "Piilota poista-painike YouTuben soittimessa"
     },
