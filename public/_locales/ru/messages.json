@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Эта кнопка открывает всплывающее окно на странице YouTube."
     },
+    "autoHideInfoButton": {
+        "message": "Автоматически скрывать кнопку Информация"
+    },
     "hideDeleteButton": {
         "message": "Скрыть кнопку удаления в плеере YouTube"
     },
