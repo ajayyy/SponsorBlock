@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Đây là nút để mở bảng popup trên trang Youtube."
     },
+    "autoHideInfoButton": {
+        "message": "Tự động ẩn nút Info"
+    },
     "hideDeleteButton": {
         "message": "Không hiển thị nút xóa trên trình chạy video Youtube"
     },
