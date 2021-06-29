@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Toto tlačidlo zobrazí vyskakovacie okno na YouTube stránke."
     },
+    "autoHideInfoButton": {
+        "message": "Automaticky skryť tlačidlo Info"
+    },
     "hideDeleteButton": {
         "message": "Skryť tlačidlo Zmazať v YouTube prehrávači"
     },
