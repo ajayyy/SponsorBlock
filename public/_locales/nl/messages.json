@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Dit is de knop die een pop-up opent op de YouTube-pagina."
     },
+    "autoHideInfoButton": {
+        "message": "Infoknop automatisch verbergen"
+    },
     "hideDeleteButton": {
         "message": "Verwijderen-knop op YouTube-speler verbergen"
     },
