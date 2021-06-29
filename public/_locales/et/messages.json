@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "See on see nupp, mis avab YouTube'i lehel hüpiku."
     },
+    "autoHideInfoButton": {
+        "message": "Peida infonupp automaatselt"
+    },
     "hideDeleteButton": {
         "message": "Peida YouTube'i mängijal kustutusnupp"
     },
@@ -659,6 +662,15 @@
     },
     "categoryUpdate2": {
         "message": "Ava valikud, et jätta vahele vaheaegu, müüdavat kaupa jms."
+    },
+    "help": {
+        "message": "Abi"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Aita video kadumist vältida"
+    },
+    "experimentUnlistedText": {
+        "message": "See video tuvastati kui registriväline ning see laaditi üles enne 2017. aastat.\nVanad registrivälised videod muudetakse järgmisel kuul privaatseks.\nMe kogume varundamiseks *avalikke* videoid, \nkas sooviksid anonüümselt selle video meile saata?\nhttps://support.google.com/youtube/answer/9230970"
     },
     "experiementOptOut": {
         "message": "Keeldu kõigist tulevikus tehtavatatest eksperimentidest",
