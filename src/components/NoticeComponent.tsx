@@ -154,7 +154,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
                         {this.props.children}
 
-                        {!this.props.smaller ? 
+                        {!this.props.smaller && this.props.bottomRow ? 
                             this.props.bottomRow
                         : null}
 
@@ -162,9 +162,11 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                 </table>
 
                 {/* Add as a hidden table to keep the height constant */}
-                {this.props.smaller ? 
+                {this.props.smaller && this.props.bottomRow ? 
                     <table style={{visibility: "hidden", paddingTop: "14px"}}>
+                        <tbody>
                         {this.props.bottomRow}
+                        </tbody>
                     </table>
                 : null}
             </div>

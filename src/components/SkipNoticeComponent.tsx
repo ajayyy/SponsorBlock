@@ -348,7 +348,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             return [
                 <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
                     className="sponsorBlockSpacer"
-                    key={0}>
+                    key={"messageBoxSpacer"}>
                 </tr>
             ];
         }
@@ -360,7 +360,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 <NoticeTextSelectionComponent idSuffix={this.idSuffix}
                     text={this.state.messages[i]}
                     onClick={this.state.messageOnClick}
-                    key={i}>
+                    key={"messageBox" + i}>
                 </NoticeTextSelectionComponent>
             )
         }
