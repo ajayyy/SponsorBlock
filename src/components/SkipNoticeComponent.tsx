@@ -145,11 +145,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             noticeStyle.transform = "scale(0.8) translate(10%, 10%)";
         }
 
-        if (this.state.smaller) {
-            // noticeStyle.transform = "translate(0, -45%)";
-            // noticeStyle.bottom = "148px";
-        }
-
         // If it started out as smaller, always keep the 
         // skip button there
         const firstColumn = this.props.smaller ? (
@@ -157,46 +152,26 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         ) : null;
 
         return (
-            <div className="sponsorSkipNoticeParent">
-                <NoticeComponent noticeTitle={this.state.noticeTitle}
-                    amountOfPreviousNotices={this.amountOfPreviousNotices}
-                    idSuffix={this.idSuffix}
-                    fadeIn={true}
-                    startFaded={true}
-                    timed={true}
-                    maxCountdownTime={this.state.maxCountdownTime}
-                    videoSpeed={() => this.contentContainer().v?.playbackRate}
-                    style={noticeStyle}
-                    ref={this.noticeRef}
-                    closeListener={() => this.closeListener()}
-                    smaller={this.props.smaller}
-                    firstColumn={firstColumn}
-                    onMouseEnter={() => this.onMouseEnter() } >
-                        
-                    {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
-                        <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>
-                    </audio>}
-
-                    {/* Text Boxes */}
-                    {!this.state.smaller ? 
-                        this.getMessageBoxes() 
-                    : null}
-
-                    {!this.state.smaller ? 
-                        this.getBottomRow() 
-                    : null}
-
-                </NoticeComponent>
-
-                {/* Text Boxes */}
-                {this.state.smaller ? (
-                    <table style={{visibility: "hidden", paddingTop: "14px"}}>
-                        {this.getMessageBoxes()}
-
-                        {this.getBottomRow()}
-                    </table>
-                ) : null}
-            </div>
+            <NoticeComponent noticeTitle={this.state.noticeTitle}
+                amountOfPreviousNotices={this.amountOfPreviousNotices}
+                idSuffix={this.idSuffix}
+                fadeIn={true}
+                startFaded={true}
+                timed={true}
+                maxCountdownTime={this.state.maxCountdownTime}
+                videoSpeed={() => this.contentContainer().v?.playbackRate}
+                style={noticeStyle}
+                ref={this.noticeRef}
+                closeListener={() => this.closeListener()}
+                smaller={this.state.smaller}
+                firstColumn={firstColumn}
+                bottomRow={[...this.getMessageBoxes(), ...this.getBottomRow() ]}
+                onMouseEnter={() => this.onMouseEnter() } >
+                    
+                {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
+                    <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>
+                </audio>}
+            </NoticeComponent>
         );
     }
 
@@ -367,14 +342,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    getMessageBoxes(): JSX.Element[] | JSX.Element {
+    getMessageBoxes(): JSX.Element[] {
         if (this.state.messages.length === 0) {
             // Add a spacer if there is no text
-            return (
+            return [
                 <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
-                    className="sponsorBlockSpacer">
+                    className="sponsorBlockSpacer"
+                    key={0}>
                 </tr>
-            );
+            ];
         }
 
         const elements: JSX.Element[] = [];
