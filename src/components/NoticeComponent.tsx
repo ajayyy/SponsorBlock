@@ -26,6 +26,7 @@ export interface NoticeProps {
 
     // Callback for when this is closed
     closeListener: () => void,
+    onMouseEnter?: (e: React.MouseEvent<HTMLTableElement, MouseEvent>) => void,
 
     zIndex?: number,
     style?: React.CSSProperties
@@ -99,8 +100,8 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                         + (this.state.startFaded ? " sponsorSkipNoticeFaded" : "")
                         + (this.amountOfPreviousNotices > 0 ? " secondSkipNotice" : "")}
                 style={noticeStyle}
-                onMouseEnter={() => { this.timerMouseEnter(); this.fadedMouseEnter(); } }
-                onMouseLeave={() => this.timerMouseLeave()}> 
+                onMouseEnter={(e) => this.onMouseEnter(e) }
+                onMouseLeave={() => this.timerMouseLeave()}>
                 <tbody>
 
                     {/* First row */}
@@ -179,6 +180,13 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                         src={chrome.runtime.getURL("icons/stop.svg")}
                         alt={chrome.i18n.getMessage("manualPaused")} />
         )];
+    }
+
+    onMouseEnter(event: React.MouseEvent<HTMLTableElement, MouseEvent>): void {
+        if (this.props.onMouseEnter) this.props.onMouseEnter(event);
+
+        this.fadedMouseEnter();
+        this.timerMouseEnter();
     }
 
     fadedMouseEnter(): void {

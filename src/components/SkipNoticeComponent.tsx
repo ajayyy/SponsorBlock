@@ -48,6 +48,8 @@ export interface SkipNoticeState {
     actionState?: SkipNoticeAction;
 
     showKeybindHint?: boolean;
+
+    smaller?: boolean;
 }
 
 class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeState> {
@@ -118,7 +120,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
             actionState: SkipNoticeAction.None,
 
-            showKeybindHint: this.props.showKeybindHint ?? true
+            showKeybindHint: this.props.showKeybindHint ?? true,
+
+            smaller: this.props.smaller ?? false
         }
 
         if (!this.autoSkip) {
@@ -141,148 +145,178 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             noticeStyle.transform = "scale(0.8) translate(10%, 10%)";
         }
 
+        if (this.state.smaller) {
+            // noticeStyle.transform = "translate(0, -45%)";
+            // noticeStyle.bottom = "148px";
+        }
+
+        // If it started out as smaller, always keep the 
+        // skip button there
         const firstColumn = this.props.smaller ? (
             this.getSkipButton()
         ) : null;
 
         return (
-            <NoticeComponent noticeTitle={this.state.noticeTitle}
-                amountOfPreviousNotices={this.amountOfPreviousNotices}
-                idSuffix={this.idSuffix}
-                fadeIn={true}
-                startFaded={true}
-                timed={true}
-                maxCountdownTime={this.state.maxCountdownTime}
-                videoSpeed={() => this.contentContainer().v?.playbackRate}
-                style={noticeStyle}
-                ref={this.noticeRef}
-                closeListener={() => this.closeListener()}
-                smaller={this.props.smaller}
-                firstColumn={firstColumn}>
-                    
-                {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
-                    <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>
-                </audio>}
+            <div className="sponsorSkipNoticeParent">
+                <NoticeComponent noticeTitle={this.state.noticeTitle}
+                    amountOfPreviousNotices={this.amountOfPreviousNotices}
+                    idSuffix={this.idSuffix}
+                    fadeIn={true}
+                    startFaded={true}
+                    timed={true}
+                    maxCountdownTime={this.state.maxCountdownTime}
+                    videoSpeed={() => this.contentContainer().v?.playbackRate}
+                    style={noticeStyle}
+                    ref={this.noticeRef}
+                    closeListener={() => this.closeListener()}
+                    smaller={this.props.smaller}
+                    firstColumn={firstColumn}
+                    onMouseEnter={() => this.onMouseEnter() } >
+                        
+                    {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
+                        <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>
+                    </audio>}
+
+                    {/* Text Boxes */}
+                    {!this.state.smaller ? 
+                        this.getMessageBoxes() 
+                    : null}
+
+                    {!this.state.smaller ? 
+                        this.getBottomRow() 
+                    : null}
+
+                </NoticeComponent>
 
                 {/* Text Boxes */}
-                {!this.props.smaller ? 
-                    this.getMessageBoxes() 
-                : ""}
-              
-                {/* Bottom Row */}
-                {!this.props.smaller ?
-                    (<tr id={"sponsorSkipNoticeSecondRow" + this.idSuffix}>
+                {this.state.smaller ? (
+                    <table style={{visibility: "hidden", paddingTop: "14px"}}>
+                        {this.getMessageBoxes()}
 
-                        {/* Vote Button Container */}
-                        {!this.state.thanksForVotingText ?
-                            <td id={"sponsorTimesVoteButtonsContainer" + this.idSuffix}
-                                className="sponsorTimesVoteButtonsContainer">
-
-                                {/* Upvote Button */}
-                                <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                                    className="sponsorSkipObject voteButton"
-                                    style={{marginRight: "10px"}}
-                                    src={chrome.extension.getURL("icons/thumbs_up.svg")}
-                                    title={chrome.i18n.getMessage("upvoteButtonInfo")}
-                                    onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
-                                
-                                </img>
-
-                                {/* Report Button */}
-                                <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                                    className="sponsorSkipObject voteButton"
-                                    src={chrome.extension.getURL("icons/thumbs_down.svg")}
-                                    title={chrome.i18n.getMessage("reportButtonInfo")}
-                                    onClick={() => this.adjustDownvotingState(true)}>
-                                
-                                </img>
-
-                            </td>
-
-                            :
-
-                            <td id={"sponsorTimesVoteButtonInfoMessage" + this.idSuffix}
-                                    className="sponsorTimesInfoMessage sponsorTimesVoteButtonMessage"
-                                    style={{marginRight: "10px"}}>
-                                {this.state.thanksForVotingText}
-                            </td>
-                        }
-
-                        {/* Unskip/Skip Button */}
-                        {this.getSkipButton()}
-
-                        {/* Never show button if autoSkip is enabled */}
-                        {!this.autoSkip ? "" : 
-                            <td className="sponsorSkipNoticeRightSection">
-                                <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
-                                    onClick={this.contentContainer().dontShowNoticeAgain}>
-
-                                    {chrome.i18n.getMessage("Hide")}
-                                </button>
-                            </td>
-                        }
-                    </tr>)
-                : ""}
-
-                {/* Downvote Options Row */}
-                {this.state.downvoting &&
-                    <tr id={"sponsorSkipNoticeDownvoteOptionsRow" + this.idSuffix}>
-                        <td id={"sponsorTimesDownvoteOptionsContainer" + this.idSuffix}>
-
-                            {/* Normal downvote */}
-                            <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                    onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
-                                {chrome.i18n.getMessage("downvoteDescription")}
-                            </button>
-
-                            {/* Category vote */}
-                            <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                    onClick={() => this.openCategoryChooser()}>
-
-                                {chrome.i18n.getMessage("incorrectCategory")}
-                            </button>
-                        </td>
-
-                    </tr>
-                }
-
-                {/* Category Chooser Row */}
-                {this.state.choosingCategory &&
-                    <tr id={"sponsorSkipNoticeCategoryChooserRow" + this.idSuffix}>
-                        <td>
-                            {/* Category Selector */}
-                            <select id={"sponsorTimeCategories" + this.idSuffix}
-                                    className="sponsorTimeCategories"
-                                    defaultValue={this.segments[0].category} //Just default to the first segment, as we don't know which they'll choose
-                                    ref={this.categoryOptionRef}>
-
-                                {this.getCategoryOptions()}
-                            </select>
-
-                            {/* Submit Button */}
-                            {this.segments.length === 1 &&
-                                <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                                        onClick={() => this.prepAction(SkipNoticeAction.CategoryVote)}>
-
-                                    {chrome.i18n.getMessage("submit")}
-                                </button>
-                            }
-                            
-                        </td>
-                    </tr>
-                }
-
-                {/* Segment Chooser Row */}
-                {this.state.actionState !== SkipNoticeAction.None &&
-                    <tr id={"sponsorSkipNoticeSubmissionOptionsRow" + this.idSuffix}>
-                        <td id={"sponsorTimesSubmissionOptionsContainer" + this.idSuffix}>
-                            {this.getSubmissionChooser()}
-                        </td>
-                    </tr>
-                }
-
-            </NoticeComponent>
+                        {this.getBottomRow()}
+                    </table>
+                ) : null}
+            </div>
         );
+    }
+
+    getBottomRow(): JSX.Element[] {
+        return [
+            /* Bottom Row */
+            (<tr id={"sponsorSkipNoticeSecondRow" + this.idSuffix}
+                key={0}>
+
+                {/* Vote Button Container */}
+                {!this.state.thanksForVotingText ?
+                    <td id={"sponsorTimesVoteButtonsContainer" + this.idSuffix}
+                        className="sponsorTimesVoteButtonsContainer">
+
+                        {/* Upvote Button */}
+                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
+                            className="sponsorSkipObject voteButton"
+                            style={{marginRight: "10px"}}
+                            src={chrome.extension.getURL("icons/thumbs_up.svg")}
+                            title={chrome.i18n.getMessage("upvoteButtonInfo")}
+                            onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
+                        
+                        </img>
+
+                        {/* Report Button */}
+                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
+                            className="sponsorSkipObject voteButton"
+                            src={chrome.extension.getURL("icons/thumbs_down.svg")}
+                            title={chrome.i18n.getMessage("reportButtonInfo")}
+                            onClick={() => this.adjustDownvotingState(true)}>
+                        
+                        </img>
+
+                    </td>
+
+                    :
+
+                    <td id={"sponsorTimesVoteButtonInfoMessage" + this.idSuffix}
+                            className="sponsorTimesInfoMessage sponsorTimesVoteButtonMessage"
+                            style={{marginRight: "10px"}}>
+                        {this.state.thanksForVotingText}
+                    </td>
+                }
+
+                {/* Unskip/Skip Button */}
+                {!this.props.smaller ? this.getSkipButton() : null}
+
+                {/* Never show button if autoSkip is enabled */}
+                {!this.autoSkip ? "" : 
+                    <td className="sponsorSkipNoticeRightSection"
+                        key={1}>
+                        <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
+                            onClick={this.contentContainer().dontShowNoticeAgain}>
+
+                            {chrome.i18n.getMessage("Hide")}
+                        </button>
+                    </td>
+                }
+            </tr>),
+
+            /* Downvote Options Row */
+            (this.state.downvoting &&
+                <tr id={"sponsorSkipNoticeDownvoteOptionsRow" + this.idSuffix}
+                    key={2}>
+                    <td id={"sponsorTimesDownvoteOptionsContainer" + this.idSuffix}>
+
+                        {/* Normal downvote */}
+                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
+                            {chrome.i18n.getMessage("downvoteDescription")}
+                        </button>
+
+                        {/* Category vote */}
+                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                onClick={() => this.openCategoryChooser()}>
+
+                            {chrome.i18n.getMessage("incorrectCategory")}
+                        </button>
+                    </td>
+
+                </tr>
+            ),
+
+            /* Category Chooser Row */
+            (this.state.choosingCategory &&
+                <tr id={"sponsorSkipNoticeCategoryChooserRow" + this.idSuffix}
+                    key={3}>
+                    <td>
+                        {/* Category Selector */}
+                        <select id={"sponsorTimeCategories" + this.idSuffix}
+                                className="sponsorTimeCategories"
+                                defaultValue={this.segments[0].category} //Just default to the first segment, as we don't know which they'll choose
+                                ref={this.categoryOptionRef}>
+
+                            {this.getCategoryOptions()}
+                        </select>
+
+                        {/* Submit Button */}
+                        {this.segments.length === 1 &&
+                            <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                    onClick={() => this.prepAction(SkipNoticeAction.CategoryVote)}>
+
+                                {chrome.i18n.getMessage("submit")}
+                            </button>
+                        }
+                        
+                    </td>
+                </tr>
+            ),
+
+            /* Segment Chooser Row */
+            (this.state.actionState !== SkipNoticeAction.None &&
+                <tr id={"sponsorSkipNoticeSubmissionOptionsRow" + this.idSuffix}
+                    key={4}>
+                    <td id={"sponsorTimesSubmissionOptionsContainer" + this.idSuffix}>
+                        {this.getSubmissionChooser()}
+                    </td>
+                </tr>
+            )
+        ];
     }
 
     getSkipButton(): JSX.Element {
@@ -313,6 +347,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
 
         return elements;
+    }
+
+    onMouseEnter(): void {
+        if (this.state.smaller) {
+            this.setState({
+                smaller: false
+            });
+        }
     }
 
     prepAction(action: SkipNoticeAction): void {
