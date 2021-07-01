@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Bu, YouTube sayfasında açılan pencereyi açan butondur."
     },
+    "autoHideInfoButton": {
+        "message": "Bilgi düğmesini otomatik gizle"
+    },
     "hideDeleteButton": {
         "message": "YouTube Oynatıcısında Silme Tuşunu Gizle"
     },
@@ -350,8 +353,17 @@
     "keybindCurrentlySet": {
         "message": ". Şu an buna ayarlı:"
     },
+    "supportOtherSites": {
+        "message": "3. Taraf Youtube Sitelerini Destekle"
+    },
+    "supportedSites": {
+        "message": "Desteklenen Siteler: "
+    },
     "optionsInfo": {
         "message": "Invidious desteğini, otomatik atlamayı, butonları saklamayı ve daha fazlasını etkinleştir."
+    },
+    "addInvidiousInstance": {
+        "message": "3. Taraf İstemci Örneği Ekle"
     },
     "add": {
         "message": "Ekle"
@@ -433,6 +445,9 @@
     },
     "preview": {
         "message": "Önizle"
+    },
+    "unsubmitted": {
+        "message": "Gönderilmemiş"
     },
     "inspect": {
         "message": "Kontrol et"
@@ -524,6 +539,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
+    },
+    "previewColor": {
+        "message": "Gönderilmemiş Renk",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Oynatma Çubuğu Rengi"
@@ -624,5 +643,11 @@
     },
     "categoryUpdate2": {
         "message": "Girişleri, bitişleri, ürünleri ve benzeri şeyleri atlamak için ayarları açın."
+    },
+    "help": {
+        "message": "Yardım"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Bunun kaybolmasını önlemeye yardımcı ol"
     }
 }
