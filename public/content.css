@@ -106,12 +106,10 @@
 
 @keyframes fadeIn {
 	from { opacity: 0; }
-	  to { opacity: 1; }
 }
 
 @keyframes fadeOut {
-	from { opacity: 1; }
-	  to { opacity: 0; }
+	to { opacity: 0; }
 }
 
 .sponsorBlockSpacer {
@@ -136,6 +134,8 @@
 	padding-right: 5px;
 
 	border-collapse: unset;
+
+	transition: opacity 0.1s ease-out;
 }
 
 .sponsorSkipNotice .hidden {
@@ -148,11 +148,17 @@
 }
 
 .sponsorSkipNoticeFadeIn {
-	animation: fadeIn 0.5s;
+	animation: fadeIn 0.5s ease-out;
+}
+
+.sponsorSkipNoticeFaded {
+	opacity: 0.3;
 }
 
 .sponsorSkipNoticeFadeOut {
-	animation: fadeOut 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	transition: opacity 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	opacity: 0 !important;
+	animation: none !important;
 }
 
 .sponsorSkipNotice .sponsorSkipNoticeTimeLeft {
