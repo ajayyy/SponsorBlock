@@ -200,6 +200,9 @@
     "whatViewTracking": {
         "message": "See funktsioon jälgib, milliseid segmente sa oled vahele jätnud, et kasutajad teaksid, kui palju nende sisestus on teisi aidanud ning et koos poolthäältega veenduda rämpsu mittesattumises andmebaasi. Laiendus saadab iga segmendi vahelejätmisel serverisse sõnumi. Loodetavasti enamus inimesi ei muuda seda seadistust, et vaatamisarvud oleksid täpsed. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Luba vahelejätmiste arvu jälgimine privaatsetel/inkognito kaartidel"
+    },
     "enableQueryByHashPrefix": {
         "message": "Küsi räsi eesliite järgi"
     },
@@ -239,7 +242,7 @@
         "message": "Seadista segmendi vahelejätmise klahv"
     },
     "setStartSponsorShortcut": {
-        "message": "Seadista segmendi alustamise klahv"
+        "message": "Seadista segmendi alustamise/lõpetamise klahv"
     },
     "setSubmitKeybind": {
         "message": "Seadista segmendi saatmise klahv"
@@ -347,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Hetkel on selleks määratud:"
     },
-    "supportInvidious": {
-        "message": "Invidiouse tugi"
+    "supportOtherSites": {
+        "message": "Toeta 3. osapoole YouTube-saite"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) on kolmanda osapoole YouTube'i klient. Selle toe lubamiseks pead nõustuma lisalubadega. See EI tööta inkognito-režiimis nii Chromes kui ka teistes Chromiumi brauserites."
+    "supportOtherSitesDescription": {
+        "message": "Kolmanda osapoole YouTube'i klientide tugi. Selle toe lubamiseks pead nõustuma lisalubadega. See EI tööta inkognito-režiimis nii Chromes kui ka teistes Chromiumi brauserites.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Toetatud saidid: "
     },
     "optionsInfo": {
         "message": "Luba Invidiouse tugi, keela automaatne vahelejätmine, peida nupud ja muud valikud."
     },
     "addInvidiousInstance": {
-        "message": "Lisa Invidiouse eksemplar"
+        "message": "Lisa 3. osapoole kliendi eksemplar"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Lisa kohandatud Invidiouse eksemplar. See tuleb vormistada AINULT domeeniga. Näide:\ninvidious.ajay.app"
+        "message": "Lisa kohandatud eksemplar. See tuleb vormistada AINULT domeeniga. Näide: invidious.ajay.app"
     },
     "add": {
         "message": "Lisa"
@@ -443,6 +450,9 @@
     "preview": {
         "message": "Eelvaade"
     },
+    "unsubmitted": {
+        "message": "Saatmata"
+    },
     "inspect": {
         "message": "Inspekteeri"
     },
@@ -477,6 +487,21 @@
     "category_sponsor_description": {
         "message": "Tasulised promod, tasulised viited ja otsesed reklaamid. Pole mõeldud enesepromo või tasuta petitsioonide/autorite/veebilehtede/toodete mainimiste puhul."
     },
+    "category_selfpromo": {
+        "message": "Tasumata/enesepromo"
+    },
+    "category_selfpromo_description": {
+        "message": "Sarnaneb \"sponsorile\", ent on mõeldud tasumata või enesepromo jaoks. Selle alla kuuluvad jaotised oma müüdava kauba, annetuste ja koostööpartnerite kohta."
+    },
+    "category_interaction": {
+        "message": "Tegutsemise meeldetuletus (kanali tellimine)"
+    },
+    "category_interaction_description": {
+        "message": "Lühike sisukeskne meeldetuletus anda videole meeldib, tellida kanalit või jälgida autorit. Kui see on pikk või millegi kindlaga seotud, peaks see olema enesepromo all."
+    },
+    "category_interaction_short": {
+        "message": "Tegutsemise meeldetuletus"
+    },
     "category_intro": {
         "message": "Vaheaeg/sissejuhatav animatsioon"
     },
@@ -492,20 +517,11 @@
     "category_outro_description": {
         "message": "Tiitrid või YouTube'i lõpukaardid. Pole mõeldud informatsiooniga järelduste jaoks."
     },
-    "category_interaction": {
-        "message": "Tegutsemise meeldetuletus (kanali tellimine)"
+    "category_preview": {
+        "message": "Eelvaade/kokkuvõte"
     },
-    "category_interaction_description": {
-        "message": "Lühike sisukeskne meeldetuletus anda videole meeldib, tellida kanalit või jälgida autorit. Kui see on pikk või millegi kindlaga seotud, peaks see olema enesepromo all."
-    },
-    "category_interaction_short": {
-        "message": "Tegutsemise meeldetuletus"
-    },
-    "category_selfpromo": {
-        "message": "Tasumata/enesepromo"
-    },
-    "category_selfpromo_description": {
-        "message": "Sarnaneb \"sponsorile\", ent on mõeldud tasumata või enesepromo jaoks. Selle alla kuuluvad jaotised oma müüdava kauba, annetuste ja koostööpartnerite kohta."
+    "category_preview_description": {
+        "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
     },
     "category_music_offtopic": {
         "message": "Muusika: mitte-muusika jaotis"
@@ -535,7 +551,7 @@
         "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
     },
     "previewColor": {
-        "message": "Värvi eelvaade",
+        "message": "Saatmata värv",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -583,7 +599,8 @@
         "message": "peidetud: liiga lühike"
     },
     "channelDataNotFound": {
-        "message": "Kanali ID pole veel laaditud."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanali ID pole veel laaditud. Kui vaatad manustatud videot, proovi seda vaadata YouTube'i kodulehelt. See võib olla põhjustatud ka YouTube'i paigutuse muudatustest - kui arvad et see nii on, kommenteeri siin:"
     },
     "videoInfoFetchFailed": {
         "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. Rohkema abi saamiseks palun vaata: https://github.com/ajayyy/SponsorBlock/issues/741"
@@ -602,9 +619,6 @@
     },
     "adblockerIssueWhitelist": {
         "message": "Kui sa ei suuda seda lahendada, keela valik \"sunnitud kanalikontroll enne vahelejätmist\", kuna SponsorBlock ei leia selle video kanaliteavet"
-    },
-    "itCouldBeAdblockerIssue": {
-        "message": "Kui see jätkub, võib see olla põhjustatud sinu reklaamiblokeerijast. Palun vaata https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
     },
     "forceChannelCheck": {
         "message": "Sunnitud kanalikontroll enne vahelejätmist"
@@ -639,8 +653,5 @@
     },
     "categoryUpdate2": {
         "message": "Ava valikud, et jätta vahele vaheaegu, müüdavat kaupa jms."
-    },
-    "help": {
-        "message": "Abi"
     }
 }

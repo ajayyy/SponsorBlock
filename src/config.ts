@@ -30,11 +30,15 @@ interface SBConfig {
     supportInvidious: boolean,
     serverAddress: string,
     minDuration: number,
+    skipNoticeDuration: number,
     audioNotificationOnSkip,
     checkForUnlistedVideos: boolean,
     testingServer: boolean,
     refetchWhenNotFound: boolean,
     ytInfoPermissionGranted: boolean,
+    askAboutUnlistedVideos: boolean,
+    allowExpirements: boolean,
+    autoHideInfoButton: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -168,11 +172,15 @@ const Config: SBObject = {
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
         minDuration: 0,
+        skipNoticeDuration: 4,
         audioNotificationOnSkip: false,
         checkForUnlistedVideos: false,
         testingServer: false,
         refetchWhenNotFound: true,
         ytInfoPermissionGranted: false,
+        askAboutUnlistedVideos: true,
+        allowExpirements: true,
+        autoHideInfoButton: true,
 
         categorySelections: [{
             name: "sponsor" as Category,
@@ -226,11 +234,11 @@ const Config: SBObject = {
                 opacity: "0.7"
             },
             "preview": {
-                color: "#0b9d65",
+                color: "#008fd6",
                 opacity: "0.7"
             },
             "preview-preview": {
-                color: "#065b3a",
+                color: "#005799",
                 opacity: "0.7"
             },
             "music_offtopic": {
@@ -346,13 +354,42 @@ function fetchConfig(): Promise<void> {
 function migrateOldFormats(config: SBConfig) {
     if (!config["highlightCategoryAdded"] && !config.categorySelections.some((s) => s.name === "highlight")) {
         config["highlightCategoryAdded"] = true;
-
+        
         config.categorySelections.push({
             name: "highlight" as Category,
             option: CategorySkipOption.ManualSkip
         });
 
         config.categorySelections = config.categorySelections;
+    }
+
+    // Adding preview category
+    if (!config["previewCategoryUpdate"]) {
+        config["previewCategoryUpdate"] = true;
+        for (const selection of config.categorySelections) {
+            if (selection.name === "intro" 
+                    && selection.option === CategorySkipOption.AutoSkip ||  selection.option === CategorySkipOption.ManualSkip) {
+                
+                // Add a default skip option for preview category
+                config.categorySelections.push({
+                    name: "preview" as Category,
+                    option: CategorySkipOption.ManualSkip
+                });
+                // Ensure it gets updated
+                config.categorySelections = config.categorySelections;
+                break;
+            }
+        }
+    }
+
+    if (config["disableAutoSkip"]) {
+        for (const selection of config.categorySelections) {
+            if (selection.name === "sponsor") {
+                selection.option = CategorySkipOption.ManualSkip;
+
+                chrome.storage.sync.remove("disableAutoSkip");
+            }
+        }
     }
 
     // Remove some old unused options

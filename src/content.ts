@@ -11,6 +11,7 @@ import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse } from "./messageTypes";
+import GenericNotice from "./render/GenericNotice";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -42,6 +43,7 @@ let video: HTMLVideoElement;
 let videoMutationObserver: MutationObserver = null;
 // List of videos that have had event listeners added to them
 const videosWithEventListeners: HTMLVideoElement[] = [];
+const controlsWithEventListeners: HTMLElement[] = []
 
 let onInvidious;
 let onMobileYouTube;
@@ -70,7 +72,7 @@ let previewBar: PreviewBar = null;
 let controls: HTMLElement | null = null;
 
 /** Contains buttons created by `createButton()`. */
-const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImageElement}> = {};
+const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImageElement, setupListener: boolean}> = {};
 
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
@@ -269,6 +271,9 @@ async function videoIDChange(id) {
     // Update whitelist data when the video data is loaded
     whitelistCheck();
 
+    // Temporary expirement
+    unlistedCheck();
+
     //setup the preview bar
     if (previewBar === null) {
         if (onMobileYouTube) {
@@ -389,7 +394,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         return;
     }
 
-    if (video.paused) return;
+    if (!video || video.paused) return;
 
     if (Config.config.disableSkipping || channelWhitelisted || (channelIDInfo.status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
         return;
@@ -721,7 +726,7 @@ function startSkipScheduleCheckingForStartSponsors() {
  * Get the video info for the current tab from YouTube
  */
 async function getVideoInfo(): Promise<void> {
-    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID + "&html5=1");
+    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID + "&html5=1&c=TVHTML5&cver=7.20190319");
 
     if (result.ok) {
         const decodedData = decodeURIComponent(result.responseText).match(/player_response=([^&]*)/)[1];
@@ -862,6 +867,66 @@ async function whitelistCheck() {
 
     // check if the start of segments were missed
     if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
+}
+
+async function unlistedCheck() {
+    if (!Config.config.allowExpirements || !Config.config.askAboutUnlistedVideos) return;
+
+    try {
+        await utils.wait(() => !!videoInfo && !!document.getElementById("info-text") 
+                && !!document.querySelector(".ytd-video-primary-info-renderer > .badge > yt-icon > svg"), 6000, 1000);
+
+        const isUnlisted = document.querySelector(".ytd-video-primary-info-renderer > .badge > yt-icon > svg > g > path")
+                            ?.getAttribute("d")?.includes("M3.9 12c0-1.71 1.39-3.1 3.1-3.1h"); // Icon of unlisted badge
+        const yearMatches = document.querySelector("#info-text > #info-strings > yt-formatted-string")
+                            ?.innerHTML?.match(/20[0-9]{2}/);
+        const year = yearMatches ? parseInt(yearMatches[0]) : -1;
+        const isOld = !isNaN(year) && year < 2017 && year > 2004;
+        const views = parseInt(videoInfo?.videoDetails?.viewCount);
+        const isHighViews = views > 15000;
+
+        if (isUnlisted && isOld && isHighViews && (!sponsorTimes || sponsorTimes.length <= 0)) {
+            // Ask if they want to submit this videoID
+            const notice = new GenericNotice(skipNoticeContentContainer, "unlistedWarning", {
+                title: chrome.i18n.getMessage("experimentUnlistedTitle"),
+                textBoxes: chrome.i18n.getMessage("experimentUnlistedText").split("\n"),
+                buttons: [
+                    {
+                        name: chrome.i18n.getMessage("experiementOptOut"),
+                        listener: () => {
+                            Config.config.allowExpirements = false;
+
+                            notice.close();
+                        }
+                    },
+                    {
+                        name: chrome.i18n.getMessage("hideForever"),
+                        listener: () => {
+                            Config.config.askAboutUnlistedVideos = false;
+
+                            notice.close();
+                        }
+                    },
+                    {
+                        name: "Submit",
+                        listener: () => {
+                            utils.asyncRequestToServer("POST", "/api/unlistedVideo", {
+                                videoID: sponsorVideoID,
+                                year,
+                                views,
+                                channelID: channelIDInfo.status === ChannelIDStatus.Found ? channelIDInfo.id : undefined
+                            });
+
+                            notice.close();
+                        }
+                    }
+                ]
+            });
+        }
+
+    } catch (e) {
+        return;
+    }
 }
 
 /**
@@ -1080,6 +1145,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
     playerButtons[baseID] = {
         button: newButton,
         image: newButtonImage,
+        setupListener: false
     };
 
     return newButton;
@@ -1115,9 +1181,24 @@ async function createButtons(): Promise<void> {
     // Add button if does not already exist in html
     createButton("startSegment", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker.svg");
     createButton("cancelSegment", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerCancelSegmentIconSponsorBlocker.svg");
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
     createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker.svg");
     createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
+    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
+
+    const controlsContainer = getControls();
+    if (Config.config.autoHideInfoButton && !onInvidious && controlsContainer 
+            && playerButtons["info"]?.button && !controlsWithEventListeners.includes(controlsContainer)) {
+        controlsWithEventListeners.push(controlsContainer);
+        playerButtons["info"].button.classList.add("hidden");
+
+        controlsContainer.addEventListener("mouseenter", () => {
+            playerButtons["info"].button.classList.remove("hidden");
+        });
+
+        controlsContainer.addEventListener("mouseleave", () => {
+            playerButtons["info"].button.classList.add("hidden");
+        });
+    }
 }
 
 /** Creates any missing buttons on the player and updates their visiblity. */
@@ -1496,8 +1577,8 @@ async function sendSubmitMessage() {
     const response = await utils.asyncRequestToServer("POST", "/api/skipSegments", {
         videoID: sponsorVideoID,
         userID: Config.config.userID,
-        videoDuration: video.duration,
-        segments: sponsorTimesSubmitting
+        segments: sponsorTimesSubmitting,
+        videoDuration: video?.duration
     });
 
     if (response.status === 200) {

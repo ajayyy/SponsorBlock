@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Koniec segmentu"
     },
+    "sponsorCancel": {
+        "message": "Anuluj tworzenie segmentu"
+    },
     "noVideoID": {
         "message": "Nie znaleziono filmu YouTube.\nJeżeli to błąd, odśwież stronę."
     },
@@ -197,6 +200,9 @@
     "whatViewTracking": {
         "message": "Ta opcja monitoruje pomijane przez Ciebie segmenty, by dać znać użytkownikom, jak bardzo ich wkład pomógł innym, oraz w połączeniu z systemem głosowania zapobiegać dostawaniu się spamu do bazy danych. Rozszerzenie wysyła wiadomość do serwera za każdym razem, kiedy pomijasz segment. Miejmy nadzieję, że większość ludzi tego nie wyłączy i liczniki wyświetleń będą wiarygodne. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Włącz licznik śledzenia pominięć w zakładkach Prywatnych/Incognito"
+    },
     "enableQueryByHashPrefix": {
         "message": "Zapytanie według prefiksu Hash"
     },
@@ -236,7 +242,7 @@
         "message": "Ustaw klawisz do pomijania segmentów"
     },
     "setStartSponsorShortcut": {
-        "message": "Ustaw klawisz do oznaczania początku segmentu"
+        "message": "Ustaw klawisz do oznaczania początku/końca segmentu"
     },
     "setSubmitKeybind": {
         "message": "Ustaw klawisz do wysyłania czasów"
@@ -344,20 +350,24 @@
     "keybindCurrentlySet": {
         "message": ". Obecnie ustawiony:"
     },
-    "supportInvidious": {
-        "message": "Wsparcie dla Invidious"
+    "supportOtherSites": {
+        "message": "Obsługa stron YouTube firm trzecich"
     },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) to nieoficjalny klient YouTube’a. Aby włączyć dla niego wsparcie, musisz przyznać dodatkowe uprawnienia. W Chrome i innych przeglądarkach bazujących na Chromium ta opcja nie działa w trybie incognito."
+    "supportOtherSitesDescription": {
+        "message": "Wspieraj nieoficjalne klienty YouTube'a. Aby włączyć dla nich wsparcie, musisz przyznać dodatkowe uprawnienia. Ta opcja nie działa w trybie incognito w Chrome i innych przeglądarkach bazujących na Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Wspierane strony: "
     },
     "optionsInfo": {
         "message": "Włącz wsparcie dla Invidious, wyłącz autopomijanie, ukryj przyciski i więcej."
     },
     "addInvidiousInstance": {
-        "message": "Dodaj instancje Invidious"
+        "message": "Dodaj instancję zewnętrznego klienta"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Dodaj niestandardową instancję Invidious. Musi to być w formie samej domeny. Przykładowo: invidious.ajay.app"
+        "message": "Dodaj niestandardową instancję. Musi to być w formie samej domeny. Przykładowo: invidious.ajay.app"
     },
     "add": {
         "message": "Dodaj"
@@ -440,6 +450,9 @@
     "preview": {
         "message": "Podgląd"
     },
+    "unsubmitted": {
+        "message": "Niewysłane"
+    },
     "inspect": {
         "message": "Sprawdź"
     },
@@ -474,6 +487,21 @@
     "category_sponsor_description": {
         "message": "Płatna promocja, płatne rekomendacje oraz bezpośrednie reklamy. Nie do autopromocji ani darmowych wyrazów uznania dla kwestii/twórców/stron/produktów, które im się podobają."
     },
+    "category_selfpromo": {
+        "message": "Nieopłacona/Własna promocja"
+    },
+    "category_selfpromo_description": {
+        "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
+    },
+    "category_interaction": {
+        "message": "Przypomnienie o interakcji (Subskrybuj)"
+    },
+    "category_interaction_description": {
+        "message": "Gdy ma miejsce krótkie przypomnienie, by lajkować, subskrybować lub śledzić ich w trakcie kontentu. Jeśli trwa to długo lub dotyczy czegoś konkretnego, powinno być zamiast tego jako promocja własna."
+    },
+    "category_interaction_short": {
+        "message": "Przypomnienie o interakcji"
+    },
     "category_intro": {
         "message": "Przerwa/Animowane intro"
     },
@@ -489,20 +517,11 @@
     "category_outro_description": {
         "message": "Napisy końcowe lub gdy pojawia się ekran końcowy. Nie do konkluzji zawierających informacje."
     },
-    "category_interaction": {
-        "message": "Przypomnienie o interakcji (Subskrybuj)"
+    "category_preview": {
+        "message": "Zapowiedź/Podsumowanie"
     },
-    "category_interaction_description": {
-        "message": "Gdy ma miejsce krótkie przypomnienie, by lajkować, subskrybować lub śledzić ich w trakcie kontentu. Jeśli trwa to długo lub dotyczy czegoś konkretnego, powinno być zamiast tego jako promocja własna."
-    },
-    "category_interaction_short": {
-        "message": "Przypomnienie o interakcji"
-    },
-    "category_selfpromo": {
-        "message": "Nieopłacona/Własna promocja"
-    },
-    "category_selfpromo_description": {
-        "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
+    "category_preview_description": {
+        "message": "Szybkie podsumowanie poprzednich odcinków lub podgląd tego, co pojawia się później w bieżącym filmie. Dotyczy zmontowanych klipów, a nie ustnych podsumowań."
     },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
@@ -532,7 +551,7 @@
         "message": "Nieprawidłowy format koloru. Powinien to być zapis szesnastkowy (heksadecymalny) składający się z 3 lub 6 znaków poprzedzonych kratką (#)."
     },
     "previewColor": {
-        "message": "Kolor podglądu",
+        "message": "Nieprzesłany kolor",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -580,7 +599,11 @@
         "message": "ukryty: zbyt krótki"
     },
     "channelDataNotFound": {
-        "message": "ID kanału nie zostało póki co załadowane."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID kanału nie zostało jeszcze załadowane. Jeśli używasz embeddowanego filmu, spróbuj użyć strony głównej YouTube'a. Może to być również spowodowane zmianami w layout'cie YouTube'a, jeśli myślisz, że to przez to, dodaj swój komentarz tutaj:"
+    },
+    "videoInfoFetchFailed": {
+        "message": "Wygląda na to, że coś blokuje możliwość pobierania danych o filmach przez SponsorBlock. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/issues/741 po więcej informacji."
     },
     "youtubePermissionRequest": {
         "message": "Wygląda na to, że SponsorBlock nie jest w stanie połączyć się z API YouTube. Aby to naprawić, zaakceptuj monit o pozwolenie, który pojawi się za chwilę, odczekaj kilka sekund, a następnie odśwież stronę."
@@ -594,8 +617,8 @@
     "permissionRequestFailed": {
         "message": "Prośba odrzucona. Może kliknięto „Odmów”?"
     },
-    "itCouldBeAdblockerIssue": {
-        "message": "Jeśli ten problem się powtarza, możliwą przyczyną jest Twój ad blocker. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests"
+    "adblockerIssueWhitelist": {
+        "message": "Jeśli nie możesz rozwiązać tego problemu, wyłącz opcję „Wymuś sprawdzanie kanału przed pomijaniem”, ponieważ SponsorBlock nie jest w stanie pobrać informacji o kanale dla tego wideo"
     },
     "forceChannelCheck": {
         "message": "Wymuś sprawdzanie kanału przed pomijaniem"
@@ -630,8 +653,5 @@
     },
     "categoryUpdate2": {
         "message": "Otwórz opcje, aby pominąć intra, outra, merch, itp."
-    },
-    "help": {
-        "message": "Pomoc"
     }
 }

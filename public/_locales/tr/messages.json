@@ -79,6 +79,9 @@
     "sponsorEnd": {
         "message": "Kısım Şimdi Bitiyor"
     },
+    "sponsorCancel": {
+        "message": "Kısım Oluşturmayı İptal Et"
+    },
     "noVideoID": {
         "message": "YouTube videosu bulunamadı.\nHatalı olduğunu düşünüyorsanız sayfayı yenileyin."
     },
@@ -197,6 +200,9 @@
     "whatViewTracking": {
         "message": "Bu özellik, hangi kısımları atladığınızı takip ederek kullanıcıların gönderilerinin diğerlerine ne kadar yardımcı olduğunu bilmelerini sağlar ve olumlu oyları bir ölçüm aracı olarak kullanarak gereksiz yollanan kısımların veri tabanına girmemesini sağlar. Eklenti, bir kısmı her atladığınızda sunucuya bir mesaj gönderir. Umarım çoğu insan bu ayarı değiştirmez böylece görüntüleme sayıları doğru olur. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Özel/Gizli sekmelerde atlama sayısı takibini etkinleştir"
+    },
     "enableQueryByHashPrefix": {
         "message": "Karma Ön eki ile Sorgula"
     },
@@ -236,7 +242,7 @@
         "message": "Kısım atlamak için bir tuş ata"
     },
     "setStartSponsorShortcut": {
-        "message": "Kısım kaydına başlamak için bir tuş belirleyin"
+        "message": "Kısım başlatmak/durdurmak için kısayol ayarla"
     },
     "setSubmitKeybind": {
         "message": "Gönderim için bir tuş belirleyin"
@@ -344,20 +350,8 @@
     "keybindCurrentlySet": {
         "message": ". Şu an buna ayarlı:"
     },
-    "supportInvidious": {
-        "message": "Invidious'a Destek Ver"
-    },
-    "supportInvidiousDescription": {
-        "message": "Invidious (invidio.us) üçüncü parti YouTube istemcisidir. Desteği etkinleştirmek için fazladan izinlere onay vermelisiniz. Bu Chrome ve Chromium bazlı tarayıcılarda gizli pencere modunda ÇALIŞMAZ."
-    },
     "optionsInfo": {
         "message": "Invidious desteğini, otomatik atlamayı, butonları saklamayı ve daha fazlasını etkinleştir."
-    },
-    "addInvidiousInstance": {
-        "message": "Invidious Oluşumu Ekle"
-    },
-    "addInvidiousInstanceDescription": {
-        "message": "Özel Indivious oluşumu ekle. Bu SADECE alan adıyla düzenlenmelidir. Örnek: invidious.ajay.app"
     },
     "add": {
         "message": "Ekle"
@@ -474,6 +468,21 @@
     "category_sponsor_description": {
         "message": "Ücretli tanıtım, ücretli yönlendirmeler ve doğrudan reklamlar. Kendini pazarlayan veya beğendiği içerik üreticilerine/sitelere/ürünlere atıfta bulunanlar için değil."
     },
+    "category_selfpromo": {
+        "message": "Karşılıksız/Kendi Reklamı"
+    },
+    "category_selfpromo_description": {
+        "message": "\"Sponsor\" seçeneğinden farkı para karşılığı olmaması veya kendi reklamını yapmasıdır. Buna kendi markalı ürünlerini satmak, bağış toplamak ve videoda işbirliği yaptığı kimselerden bahsetmek dahildir."
+    },
+    "category_interaction": {
+        "message": "Etkileşim Hatırlatıcısı (Abonelik)"
+    },
+    "category_interaction_description": {
+        "message": "Videonun ortasında beğenmek, abone olmak veya takip etmek için kısa bir hatırlatma olan kısımdır. Eğer süresi uzunsa veya belirli bir şey hakkındaysa, kendi reklamını yapan kategorisi seçilmelidir."
+    },
+    "category_interaction_short": {
+        "message": "Etkileşim Hatırlatıcısı"
+    },
     "category_intro": {
         "message": "Aralık/Giriş Animasyonu"
     },
@@ -488,21 +497,6 @@
     },
     "category_outro_description": {
         "message": "Videoda emeği geçenlerin veya video sonunda çıkan kartların gösterildiği kısımlar. Bilgilendirici sona sahip videolar için değil."
-    },
-    "category_interaction": {
-        "message": "Etkileşim Hatırlatıcısı (Abonelik)"
-    },
-    "category_interaction_description": {
-        "message": "Videonun ortasında beğenmek, abone olmak veya takip etmek için kısa bir hatırlatma olan kısımdır. Eğer süresi uzunsa veya belirli bir şey hakkındaysa, kendi reklamını yapan kategorisi seçilmelidir."
-    },
-    "category_interaction_short": {
-        "message": "Etkileşim Hatırlatıcısı"
-    },
-    "category_selfpromo": {
-        "message": "Karşılıksız/Kendi Reklamı"
-    },
-    "category_selfpromo_description": {
-        "message": "\"Sponsor\" seçeneğinden farkı para karşılığı olmaması veya kendi reklamını yapmasıdır. Buna kendi markalı ürünlerini satmak, bağış toplamak ve videoda işbirliği yaptığı kimselerden bahsetmek dahildir."
     },
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"
@@ -530,10 +524,6 @@
     },
     "colorFormatIncorrect": {
         "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
-    },
-    "previewColor": {
-        "message": "Önizleme Rengi",
-        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Oynatma Çubuğu Rengi"
@@ -580,10 +570,26 @@
         "message": "gizlendi: çok kısa"
     },
     "channelDataNotFound": {
-        "message": "Kanal kimliği henüz yüklenmedi."
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanal kimliği henüz yüklenmedi. Gömülü bir video kullanıyorsanız, bunun yerine YouTube ana sayfasından izlemeyi deneyin. Bu, YouTube düzenindeki değişikliklerden de kaynaklanabilir, eğer öyleyse, buraya bir yorum yazın:"
     },
-    "itCouldBeAdblockerIssue": {
-        "message": "Bunu sürekli yaşıyorsanız, reklam engelleyiciniz tarafından gerçekleşiyor olabilir. https://github.com/ajayyy/SponsorBlock/wiki/Fix-Ad-Blocker-Blocking-SponsorBlock's-Requests adresini kontrol edin."
+    "videoInfoFetchFailed": {
+        "message": "SponsorBlock'un video verilerini almasını engelleyen bir şey var gibi görünüyor. Lütfen daha fazla bilgi için şuraya göz atın: https://github.com/ajayyy/SponsorBlock/issues/741"
+    },
+    "youtubePermissionRequest": {
+        "message": "SponsorBlock YouTube API'sine ulaşamıyor gibi gözüküyor. Bunu düzeltmek için, bundan sonra görünecek izin isteğini kabul edin, birkaç saniye bekleyin ve ardından sayfayı yeniden yükleyin."
+    },
+    "acceptPermission": {
+        "message": "İzni kabul et"
+    },
+    "permissionRequestSuccess": {
+        "message": "İzin isteği başarılı!"
+    },
+    "permissionRequestFailed": {
+        "message": "İzin isteği başarısız. Reddet butonuna mı tıkladınız?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Bunu çözemiyorsanız, SponsorBlock, bu video için kanal bilgilerini alamadığı için 'Atlamadan Önce Kanal Kontrolünü Zorla' ayarını devre dışı bırakın"
     },
     "forceChannelCheck": {
         "message": "Atlamadan Önce Kanal Kontrolüne Zorla"
@@ -618,8 +624,5 @@
     },
     "categoryUpdate2": {
         "message": "Girişleri, bitişleri, ürünleri ve benzeri şeyleri atlamak için ayarları açın."
-    },
-    "help": {
-        "message": "Yardım"
     }
 }

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Config from "../config";
 
 enum CountdownMode {
     Timer,
@@ -53,7 +54,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         const maxCountdownTime = () => {
             if (this.props.maxCountdownTime) return this.props.maxCountdownTime();
-            else return 4;
+            else return Config.config.skipNoticeDuration;
         };
     
         //the id for the setInterval running the countdown

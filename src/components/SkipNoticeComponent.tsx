@@ -105,8 +105,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             messageOnClick: null,
 
             //the countdown until this notice closes
-            maxCountdownTime: () => 4,
-            countdownTime: 4,
+            maxCountdownTime: () => Config.config.skipNoticeDuration,
+            countdownTime: Config.config.skipNoticeDuration,
             countdownText: null,
 
             unskipText: chrome.i18n.getMessage("unskip"),
@@ -253,8 +253,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             <select id={"sponsorTimeCategories" + this.idSuffix}
                                     className="sponsorTimeCategories"
                                     defaultValue={this.segments[0].category} //Just default to the first segment, as we don't know which they'll choose
-                                    ref={this.categoryOptionRef}
-                                    onChange={this.categorySelectionChange.bind(this)}>
+                                    ref={this.categoryOptionRef}>
 
                                 {this.getCategoryOptions()}
                             </select>
@@ -413,39 +412,17 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     getCategoryOptions(): React.ReactElement[] {
         const elements = [];
 
-        const categories = Config.config.categorySelections.filter((cat => utils.getCategoryActionType(cat.name as Category) === CategoryActionType.Skippable));
+        const categories = CompileConfig.categoryList.filter((cat => utils.getCategoryActionType(cat as Category) === CategoryActionType.Skippable));
         for (const category of categories) {
             elements.push(
-                <option value={category.name}
-                        key={category.name}>
-                    {chrome.i18n.getMessage("category_" + category.name)}
-                </option>
-            );
-        }
-
-        if (elements.length < CompileConfig.categoryList.length) {
-            // Add show more button
-            elements.push(
-                <option value={"moreCategories"}
-                        key={"moreCategories"}>
-                    {chrome.i18n.getMessage("moreCategories")}
+                <option value={category}
+                        key={category}>
+                    {chrome.i18n.getMessage("category_" + category)}
                 </option>
             );
         }
 
         return elements;
-    }
-
-    categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
-        // See if show more categories was pressed
-        if (event.target.value === "moreCategories") {
-            // Open options page
-            chrome.runtime.sendMessage({message: "openConfig", hash: event.target.value + "OptionsName"});
-
-            // Reset option to original
-            event.target.value = this.segments[0].category;
-            return;
-        }
     }
 
     unskip(index: number): void {
@@ -467,7 +444,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             const sponsorTime = this.segments[index];
             const duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
 
-            return Math.max(duration, 4);
+            return Math.max(duration, Config.config.skipNoticeDuration);
         };
 
         return {
@@ -486,8 +463,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             unskipText: chrome.i18n.getMessage("unskip"),
             unskipCallback: this.unskip.bind(this),
 
-            maxCountdownTime: () => 4,
-            countdownTime: 4
+            maxCountdownTime: () => Config.config.skipNoticeDuration,
+            countdownTime: Config.config.skipNoticeDuration
         };
 
         // See if the title should be changed

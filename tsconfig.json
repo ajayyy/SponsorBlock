@@ -5,7 +5,7 @@
         "noImplicitAny": false,
         "sourceMap": false,
         "outDir": "dist/js",
-        "noEmitOnError": true,
+        "noEmitOnError": false,
         "typeRoots": [ "node_modules/@types" ],
         "resolveJsonModule": true,
         "jsx": "react"

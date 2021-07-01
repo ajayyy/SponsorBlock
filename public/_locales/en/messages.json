@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "This is the button that opens up a popup in the YouTube page."
     },
+    "autoHideInfoButton": {
+        "message": "Auto-hide Info Button"
+    },
     "hideDeleteButton": {
         "message": "Hide Delete Button On YouTube Player"
     },
@@ -351,7 +354,8 @@
         "message": "Support 3rd Party YouTube-Sites"
     },
     "supportOtherSitesDescription": {
-        "message": "Support third party party YouTube clients. To enable support, you must accept the extra permissions. This does NOT work in incognito on Chrome and other Chromium variants."
+        "message": "Support third party YouTube clients. To enable support, you must accept the extra permissions. This does NOT work in incognito on Chrome and other Chromium variants.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Supported Sites: "
@@ -385,7 +389,13 @@
     },
     "minDurationDescription": {
         "message": "Segments shorter than the set value will not be skipped or show in the player."
-     },
+    },
+    "skipNoticeDuration": {
+        "message": "Skip notice duration (seconds):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "The skip notice will stay on screen for at least this long. For manual skipping, it may be visible for longer."
+    },
     "shortCheck": {
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
     },
@@ -518,9 +528,6 @@
     },
     "category_preview_description": {
         "message": "Quick recap of previous episodes, or a preview of what's coming up later in the current video. Meant for edited together clips, not for spoken summaries."
-    },
-    "category_preview_short": {
-        "message": "Preview"
     },
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
@@ -673,5 +680,18 @@
     },
     "help": {
         "message": "Help"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Help prevent this from disappearing"
+    },
+    "experimentUnlistedText": {
+        "message": "This video is detected as unlisted and uploaded before 2017\nOld unlisted videos are being set to private next month\nWe are collecting *public* videos to back up\nWould you like anonymously to send this video to us?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Opt-out of all future experiments",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Hide forever"
     }
 }

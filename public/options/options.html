@@ -32,7 +32,7 @@
 			<br/>
 			<br/>
 
-			<div id="support-invidious" option-type="toggle" sync-option="supportInvidious">
+			<div id="support-invidious" option-type="toggle" sync-option="supportInvidious" no-safari="true">
 				<label class="switch-container">
 					<label class="switch">
 						<input type="checkbox">
@@ -50,12 +50,13 @@
 				<div class="small-description">(__MSG_supportedSites__ Invidious, CloudTube)</div>
 				<br/>
 				<span class="small-description">__MSG_supportOtherSitesDescription__ </span>
-			</div>
 
-			<br/>
-			<br/>
+				<br/>
+				<br/>
+				<br/>
+			</div>
 	
-			<div option-type="private-text-change" sync-option="invidiousInstances">
+			<div option-type="private-text-change" sync-option="invidiousInstances" no-safari="true">
 				<div class="option-button trigger-button">
 					__MSG_addInvidiousInstance__
 				</div>
@@ -86,10 +87,10 @@
 					<span class="small-description">__MSG_currentInstances__</span>
 					<span class="small-description" option-type="display" sync-option="invidiousInstances"></span>
 				</div>
-			</div>
 
-			<br/>
-			<br/>
+				<br/>
+				<br/>
+			</div>
 
 			<div option-type="keybind-change" sync-option="skipKeybind">
 				<div class="option-button trigger-button">
@@ -153,6 +154,20 @@
 
 			<br/>
 			<br/>
+
+			<div option-type="number-change" sync-option="skipNoticeDuration">
+				<label class="number-container">
+					<input type="number" step="1" min="1">
+				</label>
+
+				<br/>
+				<br/>
+
+				<div class="small-description">__MSG_skipNoticeDurationDescription__</div>
+			</div>
+
+			<br/>
+			<br/>
 	
 			<div option-type="number-change" sync-option="minDuration">
 				<label class="number-container">
@@ -180,6 +195,7 @@
 				</label>
 			</div>
 	
+			<br/>
 			<br/>
 			<br/>
 			<br/>
@@ -243,9 +259,27 @@
 	
 				<div class="small-description">__MSG_whatInfoButton__</div>
 			</div>
+
+			<br/>
+			<br/>
+
+			<div option-type="toggle" sync-option="autoHideInfoButton" if-false="hideInfoButtonPlayerControls">
+				<label class="switch-container">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+					<div class="switch-label">
+						__MSG_autoHideInfoButton__
+					</div>
+				</label>
 	
-			<br/>
-			<br/>
+				<br/>
+				<br/>
+				<br/>
+
+				<br/>
+			</div>
 	
 			<div option-type="toggle" toggle-type="reverse" sync-option="hideDeleteButtonPlayerControls">
 				<label class="switch-container">
@@ -455,7 +489,7 @@
 			<br/>
 			<br/>
 	
-			<div option-type="toggle" sync-option="testingServer" confirm-message="testingServerWarning">
+			<div option-type="toggle" sync-option="testingServer" confirm-message="testingServerWarning" no-safari="true">
 				<label class="switch-container">
 					<label class="switch">
 						<input type="checkbox">
@@ -471,10 +505,11 @@
 				<br/>
 	
 				<div class="small-description">__MSG_whatEnableTestingServer__</div>
-			</div>
 
-			<br/>
-			<br/>
+				<br/>
+				<br/>
+				<br/>
+			</div>
 
 			<div option-type="text-change" sync-option="serverAddress">
 				<label class="text-label-container">

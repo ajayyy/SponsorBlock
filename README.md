@@ -13,6 +13,7 @@
   <a href="https://addons.mozilla.org/addon/sponsorblock/?src=external-github">Firefox</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Android">Android</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Edge">Edge</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Safari">Safari for MacOS</a> |
   <a href="https://sponsor.ajay.app">Website</a> |
   <a href="https://sponsor.ajay.app/stats">Stats</a>
 </p>
@@ -21,7 +22,6 @@
   <b>3rd-Party Ports:</b>
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#mpv-media-player">MPV</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#kodi">Kodi</a> |
-  <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#Safari-macos">Safari for MacOS</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#Chromecast">Chromecast</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports#ios">iOS</a>
 </p>
