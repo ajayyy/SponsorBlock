@@ -17,13 +17,13 @@
         "message": "これは既に提出されています。"
     },
     "channelWhitelisted": {
-        "message": "番組を許可表に登録しました！"
+        "message": "チャンネルをホワイトリストに登録しました!"
     },
     "Segment": {
-        "message": "区域"
+        "message": "セグメント"
     },
     "Segments": {
-        "message": "区域"
+        "message": "セグメント"
     },
     "upvoteButtonInfo": {
         "message": "この提案を支持する"
@@ -68,16 +68,16 @@
         "message": "スポンサー表示の投稿中にエラーが発生しました。しばらく経ってからもう一度お試しください。"
     },
     "sponsorFound": {
-        "message": "この動画用の区域は情報集合体に登録されています！"
+        "message": "この動画用のセグメントはデータベースに登録されています！"
     },
     "sponsor404": {
-        "message": "区域が見つかりませんでした"
+        "message": "セグメントが見つかりませんでした"
     },
     "sponsorStart": {
-        "message": "区域が始まりました"
+        "message": "セグメント開始を記録"
     },
     "sponsorEnd": {
-        "message": "区域が終わりました"
+        "message": "セグメント終了を記録"
     },
     "sponsorCancel": {
         "message": "区間の作成を取り止める"
@@ -101,7 +101,7 @@
         "message": "次の動画IDで提出します:"
     },
     "clearTimes": {
-        "message": "区域を消去"
+        "message": "セグメントを消去"
     },
     "openPopup": {
         "message": "SponsorBlock のポップアップを開く"
@@ -110,7 +110,7 @@
         "message": "ポップアップを閉じる"
     },
     "SubmitTimes": {
-        "message": "区域を提出"
+        "message": "セグメントを送信"
     },
     "submitCheck": {
         "message": "本当に提出してよろしいですか？"
@@ -122,7 +122,7 @@
         "message": "許可表から番組を削除"
     },
     "voteOnTime": {
-        "message": "区域に投票"
+        "message": "セグメントに投票"
     },
     "Submissions": {
         "message": "提出数"
@@ -174,7 +174,7 @@
         "message": "YouTube プレイヤーにボタンを表示しない"
     },
     "hideButtonsDescription": {
-        "message": "これを有効にするとYouTube再生画面の区域提出UIが非表示になります。"
+        "message": "YouTube再生画面のセグメント提出ボタンを非表示にします。"
     },
     "showInfoButton": {
         "message": "YouTubeプレーヤーの情報ボタンを表示する"
@@ -213,7 +213,7 @@
         "message": "サーバーに区域を要求する際に，動画IDの代わりに動画IDのハッシュから最初の4文字を送信します。それに対して，サーバーは類似したハッシュを持つすべての動画の情報を応答します。"
     },
     "enableRefetchWhenNotFound": {
-        "message": "新しい動画では区域を再取得する"
+        "message": "新しい動画ではセグメントを再取得する"
     },
     "whatRefetchWhenNotFound": {
         "message": "動画がまだ新しく区域が見つからない場合は、動画を視聴している間、数分おきに区域を検索し続けます。"
@@ -242,10 +242,10 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "区域を飛び越す鍵束縛を設定"
+        "message": "セグメントをスキップするキーを設定"
     },
     "setStartSponsorShortcut": {
-        "message": "区域を開始する鍵束縛を設定"
+        "message": "セグメントを開始するキーを設定"
     },
     "setSubmitKeybind": {
         "message": "投稿する鍵束縛を設定"
@@ -348,7 +348,7 @@
         "message": "自動スキップ"
     },
     "showSkipNotice": {
-        "message": "区域を飛び越した後に通知を表示する"
+        "message": "セグメントがスキップされた後に通知を表示する"
     },
     "keybindCurrentlySet": {
         "message": "。現在の設定は:"
@@ -370,7 +370,7 @@
         "message": "第三者製クライアントの実体を追加"
     },
     "addInvidiousInstanceDescription": {
-        "message": "任意の実体を追加できます。ドメイン名だけを記入してください。例: invidious.ajay.app"
+        "message": "任意のインスタンスを追加できます。ドメイン名だけを記入してください。例: invidious.ajay.app"
     },
     "add": {
         "message": "追加"
@@ -382,7 +382,7 @@
         "message": "Invidiousインスタンス一覧を初期化"
     },
     "resetInvidiousInstanceAlert": {
-        "message": "Invidiousインスタン一覧を初期化しようとしています"
+        "message": "Invidiousインスタンス一覧を初期化しようとしています"
     },
     "currentInstances": {
         "message": "現在のインスタンス:"
@@ -391,7 +391,7 @@
         "message": "飛越す最短の時間（秒）:"
     },
     "minDurationDescription": {
-        "message": "設定値より短い区域は飛び越されず，再生画面にも表示されません。"
+        "message": "設定値より短いセグメントはスキップされず、プレーヤーにも表示されません。"
     },
     "skipNoticeDuration": {
         "message": "飛び越し通知の表示時間（秒）:"
@@ -445,7 +445,7 @@
         "message": "JSONの書式が正しくありません。設定は変更されませんでした。"
     },
     "confirmNoticeTitle": {
-        "message": "区域を提出"
+        "message": "セグメントを送信"
     },
     "submit": {
         "message": "送信"
@@ -460,7 +460,7 @@
         "message": "プレビュー"
     },
     "unsubmitted": {
-        "message": "未確定"
+        "message": "未提出"
     },
     "inspect": {
         "message": "調査"
@@ -500,7 +500,7 @@
         "message": "無報酬での宣伝あるいは自己販促を除いて「提供者」と同様です。商品・寄付・合作情報にかんする節を含みます。"
     },
     "category_interaction": {
-        "message": "動画の間に挟まる告知（番組登録）"
+        "message": "行動を促すメッセージ(チャンネル登録)"
     },
     "category_interaction_short": {
         "message": "動画の間に挟まる告知"
@@ -524,10 +524,10 @@
         "message": "音楽: 音楽ではない区間"
     },
     "category_music_offtopic_short": {
-        "message": "非音楽"
+        "message": "音楽以外の部分"
     },
     "category_livestream_messages": {
-        "message": "生配信: 寄付などの読み上げ"
+        "message": "ライブ配信: 寄付/メッセージの読み上げ"
     },
     "category_livestream_messages_short": {
         "message": "寄付などの読み上げ"
@@ -565,17 +565,17 @@
         "message": "(今)"
     },
     "moreCategories": {
-        "message": "範疇を変更"
+        "message": "カテゴリーをさらに表示"
     },
     "chooseACategory": {
         "message": "カテゴリーを選択"
     },
     "enableThisCategoryFirst": {
-        "message": "分類「{0}」で区域を提出するには，個人設定で当分類を有効にしてください。個人設定画面に転送します。",
+        "message": "\"{0}\" のカテゴリでセグメントを送信するには、オプションでセグメントを有効にする必要があります。オプション画面にリダイレクトします。",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
-        "message": "提出する全ての区域について，その範疇を選択する必要があります！"
+        "message": "送信するすべてのセグメントにカテゴリを選択する必要があります！"
     },
     "hiddenDueToDownvote": {
         "message": "低い評価の区間を無視する"
@@ -606,7 +606,7 @@
         "message": "飛び越し前に強制的に番組を検査する"
     },
     "whatForceChannelCheck": {
-        "message": "既定では，番組のいかんにかかわらず区域をすぐに飛び越します。また，既定では，許可表にある番組であっても再生開始直後の区域を飛び越してしまう場合があります。この個人設定を有効にすると前述の挙動を防げます。ただし，番組IDの取得に時間が掛かるせいで，全ての飛び越しを作成するのに遅延が生じます。高速な通信環境であれば，ほとんど遅延を感じないでしょう。"
+        "message": "デフォルト設定では、チャンネル情報を取得する前にセグメントをスキップします。デフォルト設定では、ホワイトリストに追加されているチャンネルでも動画の先頭部分にあるセグメントがスキップされる場合があります。この設定を有効にするとこの挙動が回避されますが、channelIDの取得に時間がかかるため、すべてのスキップに遅延が発生します。高速なインターネット回線を使用している場合は気にならないかもしれません。"
     },
     "forceChannelCheckPopup": {
         "message": "「飛び越し前に強制的に番組を検査する」を有効にすることを検討してください"
@@ -618,10 +618,10 @@
         "message": "カテゴリが違います"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "この動画は音楽として分類されています。本当にこの動画に提供表示画面がありますか？ 当区域が本当に「音楽以外の区域」だった場合は，拡張機能の個人設定を開いて，この分類を有効にしてください。その後，「提供表示画面」の代わりに「非音楽」として区域を提出してください。よく分からない場合は，区域分野にかんする指針をお読みください。"
+        "message": "この動画は音楽として分類されています。本当にこの動画にスポンサー部分がありますか? 本セグメントが本当に「音楽以外の区域」だった場合は、設定画面からこの分類を有効にしてください。その後、「スポンサー部分」の代わりに「音楽以外のセグメント」としてセグメントを提出できます。よく分からない場合は、ガイドラインを参照してください。"
     },
     "multipleSegments": {
-        "message": "複数の区域"
+        "message": "複数のセグメント"
     },
     "guidelines": {
         "message": "ガイドライン"
