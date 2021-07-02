@@ -11,7 +11,7 @@
         "message": "Palvelin sanoi tämän pyynnön olevan virheellinen"
     },
     "429": {
-        "message": "Olet lähettänyt liian monta sponsorointiaikaa tälle yhdelle videolle. Oletko varma, että niitä on useita?"
+        "message": "Olet lähettänyt liian monta sponsorointiaikaa tälle yhdelle videolle. Oletko varma, että niitä on näin monta?"
     },
     "409": {
         "message": "Tämä on jo lähetetty aiemmin"
