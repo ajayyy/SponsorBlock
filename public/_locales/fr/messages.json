@@ -350,8 +350,14 @@
     "keybindCurrentlySet": {
         "message": ". Il est actuellement réglé sur :"
     },
+    "supportedSites": {
+        "message": "Sites pris en charge : "
+    },
     "optionsInfo": {
         "message": "Activer Invidious, désactiver le passage automatique, masquer les boutons et plus encore."
+    },
+    "addInvidiousInstance": {
+        "message": "Ajouter une instance de client tiers"
     },
     "add": {
         "message": "Ajouter"
@@ -434,6 +440,9 @@
     "preview": {
         "message": "Aperçu"
     },
+    "unsubmitted": {
+        "message": "Non soumis"
+    },
     "inspect": {
         "message": "Inspecter"
     },
@@ -498,6 +507,9 @@
     "category_outro_description": {
         "message": "Crédits ou écrans de fin YouTube. Pas pour les conclusions contenant des informations."
     },
+    "category_preview": {
+        "message": "Aperçu/Résumé"
+    },
     "category_music_offtopic": {
         "message": "Musique : Segment non musical"
     },
@@ -524,6 +536,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Votre couleur est mal formatée. Il devrait s'agir d'un code hexadécimal à 3 ou 6 chiffres avec un signe numérique au début."
+    },
+    "previewColor": {
+        "message": "Couleur non soumise",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Couleur dans la barre de progression"
@@ -624,5 +640,8 @@
     },
     "categoryUpdate2": {
         "message": "Ouvrir les options pour sauter les intros, outros, marchandises, etc."
+    },
+    "help": {
+        "message": "Aide"
     }
 }
