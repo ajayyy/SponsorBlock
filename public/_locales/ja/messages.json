@@ -23,7 +23,7 @@
         "message": "セグメント"
     },
     "Segments": {
-        "message": "セグメント"
+        "message": "区域"
     },
     "upvoteButtonInfo": {
         "message": "この提案を支持する"
@@ -131,7 +131,7 @@
         "message": "次のセグメント数から人々を救いました: "
     },
     "viewLeaderboard": {
-        "message": "リーダーボード"
+        "message": "投票結果"
     },
     "recordTimesDescription": {
         "message": "送信"
@@ -153,10 +153,10 @@
         "message": "これは公開の統計ページであなたがどれだけ貢献したかを示すために使用され、ここで確認することができます: "
     },
     "Username": {
-        "message": "ユーザー名"
+        "message": "利用者名"
     },
     "setUsername": {
-        "message": "ユーザー名を設定"
+        "message": "利用者名を設定"
     },
     "discordAdvert": {
         "message": "公式Discordサーバーに参加して意見やフィードバックをお寄せください！"
@@ -477,6 +477,9 @@
     "copyDebugInformationOptions": {
         "message": "不具合があった，あるいは開発者から要求があった際に提供する為の情報をクリップボードに写します。利用者ID，許可表にある番組，および個人サーバーのアドレスなどの機密情報は含まれていません。ただし，利用者エージェント，Web閲覧機，OS，および拡張機能の版番などの情報は含まれています。"
     },
+    "copyDebugInformationComplete": {
+        "message": "診断用情報がクリップボードに複製されました。共有したくない情報があればそこから削除できます。これをファイルに保存したり，不具合報告に貼り付けてください。"
+    },
     "theKey": {
         "message": "鍵束縛"
     },
@@ -502,17 +505,26 @@
     "category_interaction": {
         "message": "行動を促すメッセージ(チャンネル登録)"
     },
+    "category_interaction_description": {
+        "message": "動画の途中に挟まれる，高評価，チャンネル登録・通知の有効化を促す短かい場面。長かったり具体的な商品についての場面は，中断ではなく自己販売促進に分類するべきです。"
+    },
     "category_interaction_short": {
         "message": "動画の間に挟まる告知"
     },
     "category_intro": {
         "message": "インターミッション / イントロアニメーション"
     },
+    "category_intro_description": {
+        "message": "意味のある内容を含まない場面です。一時停止，静止画面，繰り返される動作などが相等します。意味のある情報を含む転換場面に対しては使わないでください。"
+    },
     "category_intro_short": {
         "message": "インターミッション"
     },
     "category_outro": {
         "message": "エンドカード/クレジット"
+    },
+    "category_outro_description": {
+        "message": "提供表示やYouTubeの終了画面が表示されている場面。動画の内容を結論している場面には使用しないで下さい。"
     },
     "category_preview": {
         "message": "予告と前回の粗筋"
@@ -522,6 +534,9 @@
     },
     "category_music_offtopic": {
         "message": "音楽: 音楽ではない区間"
+    },
+    "category_music_offtopic_description": {
+        "message": "MVでのみ使用できます。MVにおける飛び越したい場面のうち，他の範疇に該当しないものです。"
     },
     "category_music_offtopic_short": {
         "message": "音楽以外の部分"
@@ -561,6 +576,12 @@
     "enableTestingServer": {
         "message": "ベータテストサーバーを有効にする"
     },
+    "whatEnableTestingServer": {
+        "message": "提出した区域と区域への投票が主サーバーで**取り扱われなく**なります。試験目的にのみ利用してください。"
+    },
+    "testingServerWarning": {
+        "message": "試サーバーに接続している間，全ての提出・投票は主サーバーで取り扱われなくなります。実際の提出・投票を行う際は，この設定を無効にしてください。"
+    },
     "bracketNow": {
         "message": "(今)"
     },
@@ -577,6 +598,9 @@
     "youMustSelectACategory": {
         "message": "送信するすべてのセグメントにカテゴリを選択する必要があります！"
     },
+    "bracketEnd": {
+        "message": "（終了）"
+    },
     "hiddenDueToDownvote": {
         "message": "低い評価の区間を無視する"
     },
@@ -586,6 +610,9 @@
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "番組IDがまだ読み込まれていません。埋め込み動画でご覧になっている場合は，代わりにYouTubeの公式サイトで再生してみてください。この問題はYouTubeの画面構成を変えた際にも発生する可能性があります。その場合は，こちらに意見をお書きください:"
+    },
+    "videoInfoFetchFailed": {
+        "message": "SponsorBlockの動画情報取得が拒否されています。詳細は https://github.com/ajayyy/SponsorBlock/issues/741 を参照してください。"
     },
     "youtubePermissionRequest": {
         "message": "SponsorBlockがYouTube APIを参照できないようです。修正するには，次に表示される画面で許可を承認してから，数秒後に再読み込みしてください。"
@@ -638,6 +665,12 @@
     },
     "help": {
         "message": "手引き"
+    },
+    "experimentUnlistedTitle": {
+        "message": "これが消えないようにできます。"
+    },
+    "experimentUnlistedText": {
+        "message": "この動画は2017年以前の限定公開動画のようです。\n古い限定公開動画は来月中に非公開にされます。\nSponsorBlockでは**公開されている**動画の情報を収集しています。\nこの動画をSponsorBlockに匿名で送信していただけますか？\n参考: https://support.google.com/youtube/answer/9230970"
     },
     "experiementOptOut": {
         "message": "実験的機能をすべて無効にする",
