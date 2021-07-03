@@ -18,6 +18,8 @@ async function init() {
         for (const element of document.getElementsByClassName("titleBar")) {
             element.classList.add("hidden");
         }
+
+        document.getElementById("options").classList.add("embed");
     }
 
     if (!Config.configListeners.includes(optionsConfigUpdateListener)) {

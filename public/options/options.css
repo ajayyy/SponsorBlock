@@ -66,6 +66,12 @@ body {
     display: inline-block;
 }
 
+#options.embed {
+    max-width: 100%;
+    text-align: left;
+    display: inline-block;
+}
+
 .switch-container {
 	content: attr(label-name);
     position: absolute;
