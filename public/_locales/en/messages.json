@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "No YouTube video found.\nIf this is incorrect, refresh the tab."
     },
+    "refreshSegments": {
+        "message": "Refresh segments"
+    },
     "success": {
         "message": "Success!"
     },

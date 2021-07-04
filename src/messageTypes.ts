@@ -16,7 +16,8 @@ interface DefaultMessage {
         | "getVideoID"
         | "getChannelID"
         | "isChannelWhitelisted"
-        | "submitTimes";
+        | "submitTimes"
+        | "refreshSegments";
 }
 
 interface BoolValueMessage {

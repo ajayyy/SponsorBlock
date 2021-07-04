@@ -178,6 +178,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "submitTimes":
             submitSponsorTimes();
             break;
+        case "refreshSegments":
+            sponsorsLookup(sponsorVideoID, false);
+            break;
     }
 }
 
@@ -209,6 +212,7 @@ function resetValues() {
     //reset sponsor times
     sponsorTimes = null;
     sponsorLookupRetries = 0;
+    sponsorSkipped = [];
 
     videoInfo = null;
     channelWhitelisted = false;
@@ -569,7 +573,7 @@ function setupVideoListeners() {
     }
 }
 
-async function sponsorsLookup(id: string) {
+async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     if (!video) refreshVideoAttachments();
     //there is still no video here
     if (!video) {
@@ -606,7 +610,7 @@ async function sponsorsLookup(id: string) {
             sponsorDataFound = true;
 
             // Check if any old submissions should be kept
-            if (sponsorTimes !== null) {
+            if (sponsorTimes !== null && keepOldSubmissions) {
                 for (let i = 0; i < sponsorTimes.length; i++) {
                     if (sponsorTimes[i].source === SponsorSourceType.Local)  {
                         // This is a user submission, keep it
@@ -627,19 +631,18 @@ async function sponsorsLookup(id: string) {
                 }
             }
 
-            for (const segment of oldSegments) {
-                const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
-                if (otherSegment) {
-                    // If they downvoted it, or changed the category, keep it
-                    otherSegment.hidden = segment.hidden;
-                    otherSegment.category = segment.category;
+            if (keepOldSubmissions) {
+                for (const segment of oldSegments) {
+                    const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
+                    if (otherSegment) {
+                        // If they downvoted it, or changed the category, keep it
+                        otherSegment.hidden = segment.hidden;
+                        otherSegment.category = segment.category;
+                    }
                 }
             }
 
             startSkipScheduleCheckingForStartSponsors();
-
-            // Reset skip save
-            sponsorSkipped = [];
 
             //update the preview bar
             //leave the type blank for now until categories are added
@@ -1408,11 +1411,12 @@ function openInfoMenu() {
             const settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
             const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
             const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
+            const refreshSegments = <HTMLImageElement> popup.querySelector("#refreshSegments");
             logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
             settings.src = chrome.extension.getURL("icons/settings.svg");
             edit.src = chrome.extension.getURL("icons/pencil.svg");
             check.src = chrome.extension.getURL("icons/check.svg");
-            check.src = chrome.extension.getURL("icons/thumb.svg");
+            refreshSegments.src = chrome.extension.getURL("icons/refresh.svg");
 
             parentNode.insertBefore(popup, parentNode.firstChild);
 
