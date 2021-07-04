@@ -29,7 +29,7 @@
     "ts-jest": "^26.2.0",
     "ts-loader": "^6.2.1",
     "typescript": "~3.7.3",
-    "web-ext": "^5.4.1",
+    "web-ext": "^6.2.0",
     "webpack": "~4.41.2",
     "webpack-cli": "~3.3.10",
     "webpack-merge": "~4.2.2"
