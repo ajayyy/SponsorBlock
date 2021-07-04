@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Dit is de knop die een pop-up opent op de YouTube-pagina."
     },
+    "autoHideInfoButton": {
+        "message": "Infoknop automatisch verbergen"
+    },
     "hideDeleteButton": {
         "message": "Verwijderen-knop op YouTube-speler verbergen"
     },
@@ -389,6 +392,12 @@
     },
     "minDurationDescription": {
         "message": "Segmenten korter dan de ingestelde waarde worden niet overgeslagen of weergegeven in de speler."
+    },
+    "skipNoticeDuration": {
+        "message": "Duur van melding om over te slaan (seconden):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "De melding om over te slaan blijft ten minste zo lang op het scherm staan. Voor handmatig overslaan kan dit misschien zelfs langer zichtbaar zijn."
     },
     "shortCheck": {
         "message": "De volgende inzending is korter dan uw \"minimale tijdsduur\"-instelling. Dit kan betekenen dat dit al is ingediend en genegeerd wordt door deze optie. Weet u zeker dat u dit wilt indienen?"
@@ -653,6 +662,9 @@
     },
     "categoryUpdate2": {
         "message": "Open de opties om intro's, outro's, koopwaar,... over te slaan."
+    },
+    "help": {
+        "message": "Help"
     },
     "experimentUnlistedTitle": {
         "message": "Helpen voorkomen dat dit verdwijnt"

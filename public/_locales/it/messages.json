@@ -363,6 +363,9 @@
     "optionsInfo": {
         "message": "Abilita supporto invidioso, disabilita salto automatico, nascondi i pulsanti e altro ancora."
     },
+    "addInvidiousInstance": {
+        "message": "Aggiungi Istanza Client 3Rd-Party"
+    },
     "addInvidiousInstanceDescription": {
         "message": "Aggiungi un'istanza personalizzata. Deve essere formattata SOLO con il dominio. Esempio: invidious.ajay.app"
     },
@@ -650,5 +653,11 @@
     },
     "categoryUpdate2": {
         "message": "Apri queste opzioni per saltare le introduzioni, conclusioni, vendita di prodotti ecc."
+    },
+    "help": {
+        "message": "Aiuto"
+    },
+    "hideForever": {
+        "message": "Nascondi per sempre"
     }
 }

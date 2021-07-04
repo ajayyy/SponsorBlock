@@ -98,7 +98,7 @@
         "message": "Ha ocurrido un error de conexión. Código de error: "
     },
     "wantToSubmit": {
-        "message": "¿Quiere enviar segmento para el video con ID"
+        "message": "¿Quiere enviar el segmento para el video con ID"
     },
     "clearTimes": {
         "message": "Borrar Segmentos"
@@ -184,6 +184,9 @@
     },
     "whatInfoButton": {
         "message": "Este es el botón que abre una ventana en la página de YouTube."
+    },
+    "autoHideInfoButton": {
+        "message": "Ocular automáticamente el Botón de Información"
     },
     "hideDeleteButton": {
         "message": "Ocultar botón de eliminar en el reproductor de YouTube"
@@ -279,7 +282,7 @@
         "message": "¿Saltar {0}?"
     },
     "skipped": {
-        "message": "Omitido"
+        "message": "Omitido/as"
     },
     "disableAutoSkip": {
         "message": "Desactivar la omisión automática"
@@ -390,6 +393,12 @@
     "minDurationDescription": {
         "message": "Los segmentos más cortos que el valor configurado no se omitirán ni se mostrarán en el reproductor."
     },
+    "skipNoticeDuration": {
+        "message": "Duración del aviso de omisión (segundos):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "El aviso de omisión permanecerá en la pantalla por lo menos este tiempo. Si la omisión es manual, podría ser visible por más tiempo."
+    },
     "shortCheck": {
         "message": "La siguiente sumisión es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
     },
@@ -488,10 +497,10 @@
         "message": "Promoción pagada, referencias pagadas y anuncios directos. No para autopromoción o anuncios gratuitos a causas/creadores/sitios web/productos que les gusten."
     },
     "category_selfpromo": {
-        "message": "No remunerado/Autopromoción"
+        "message": "Promoción Propia/No Remunerada"
     },
     "category_selfpromo_description": {
-        "message": "Similar a \"patrocinador\", excepto que no es remunerado o se autopromociona. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
+        "message": "Similar a \"sponsor\", excepto que para la promoción propia o no remunerada. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
     },
     "category_interaction": {
         "message": "Recordatorio de interacción (subscribir)"
@@ -653,5 +662,21 @@
     },
     "categoryUpdate2": {
         "message": "Abre las opciones de saltarse intros, otros, mercantil, etc."
+    },
+    "help": {
+        "message": "Ayuda"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Ayude a evitar que esto desaparezca"
+    },
+    "experimentUnlistedText": {
+        "message": "Este vídeo se detecta como oculto y subido antes de 2017\nLos vídeos ocultos antiguos se pondrán como privados el próximo mes\nEstamos recopilando vídeos *públicos* para respaldar\n¿Quisiera enviarnos este vídeo de forma anónima?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "No participar en futuros experimentos",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Ocultar para siempre"
     }
 }

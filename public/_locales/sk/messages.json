@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Toto tlačidlo zobrazí vyskakovacie okno na YouTube stránke."
     },
+    "autoHideInfoButton": {
+        "message": "Automaticky skryť tlačidlo Info"
+    },
     "hideDeleteButton": {
         "message": "Skryť tlačidlo Zmazať v YouTube prehrávači"
     },
@@ -389,6 +392,12 @@
     },
     "minDurationDescription": {
         "message": "Segmenty kratšie ako nastavená hodnota nebudú preskočené ani zobrazené v prehrávači."
+    },
+    "skipNoticeDuration": {
+        "message": "Trvanie oznámenia o preskočení (v sekundách):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Oznámenie o preskočení zostane minimálne takto dlho zobrazené. Pri manuálnom preskočení to môže byť aj dlhšie."
     },
     "shortCheck": {
         "message": "Segment je kratší ako vami nastavená minimálna dĺžka. Možno už bol niekým odoslaný a kvôli tomuto nastaveniu je teraz ignorovaný. Naozaj ho chcete odoslať?"
@@ -653,5 +662,21 @@
     },
     "categoryUpdate2": {
         "message": "Otvorte nastavenia pre preskočenie úvodov, záverov, podpory reklamných predmetov, atď."
+    },
+    "help": {
+        "message": "Pomocník"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Pomôžte zamedziť zmiznutiu tohto videa"
+    },
+    "experimentUnlistedText": {
+        "message": "Toto video bolo nahraté pred r. 2007 a je nezverejnené.\nTakéto videá budú o mesiac zmenené na súkromné.\nZbierame a zálohujeme *verejné*.\nChceli by ste nám toto video anonymne poslať?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Odmietnuť všetky budúce experimenty",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Navždy skryť"
     }
 }

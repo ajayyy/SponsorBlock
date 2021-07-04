@@ -1,6 +1,6 @@
 {
     "fullName": {
-        "message": "SponsorBlock för YouTube - Hoppa över sponsring",
+        "message": "SponsorBlock for YouTube - Skip Sponsorships",
         "description": "Name of the extension."
     },
     "Description": {
@@ -50,7 +50,7 @@
         "message": "Hoppa inte över"
     },
     "reskip": {
-        "message": "Hoppa över"
+        "message": "Hoppa över igen"
     },
     "paused": {
         "message": "Pausad"
@@ -147,7 +147,7 @@
         "message": "Rensa tider"
     },
     "submitTimesButton": {
-        "message": "Rapportera Tider"
+        "message": "Skicka tider"
     },
     "publicStats": {
         "message": "Detta kommer att användas på den publika statistiksidan för att visa hur mycket du har bidragit. Spana in den"
@@ -184,6 +184,9 @@
     },
     "whatInfoButton": {
         "message": "Detta är knappen som öppnar popup-rutan på YouTube-sidan."
+    },
+    "autoHideInfoButton": {
+        "message": "Dölj informationsknappen automatiskt"
     },
     "hideDeleteButton": {
         "message": "Dölj \"Ta Bort\"-knappen På YouTube-spelaren"
@@ -389,6 +392,12 @@
     },
     "minDurationDescription": {
         "message": "Segment som är kortare än det angivna värdet kommer inte att hoppas över eller visas i spelaren."
+    },
+    "skipNoticeDuration": {
+        "message": "Hoppa över varaktighet (sekunder):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Meddelandet om att hoppa över kommer att visas på skärmen åtminstone så här länge. För manuell överhoppning kan det visas längre."
     },
     "shortCheck": {
         "message": "Följande rapport är kortare än ditt minstavärde i inställningarna. Det skulle kunna betyda att det redan är rapporterat och bara ignorerat på grund av denna inställning. Är du säker på att du vill rapportera?"
@@ -653,6 +662,9 @@
     },
     "categoryUpdate2": {
         "message": "Öppna alternativen för att hoppa över intros, outros, merch, osv."
+    },
+    "help": {
+        "message": "Hjälp"
     },
     "experimentUnlistedTitle": {
         "message": "Hjälp till att förhindra att detta försvinner"

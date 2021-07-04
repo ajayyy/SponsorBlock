@@ -68,7 +68,7 @@
         "message": "Sponsor sürelerini yollarken bir sorun oluştur, lütfen tekrar deneyin."
     },
     "sponsorFound": {
-        "message": "Bu video için veritabanımızda kısımlar mevcut!"
+        "message": "Bu videonun kısımları veri tabanımızda mevut"
     },
     "sponsor404": {
         "message": "Kısımlar bulunamadı"
@@ -184,6 +184,9 @@
     },
     "whatInfoButton": {
         "message": "Bu, YouTube sayfasında açılan pencereyi açan butondur."
+    },
+    "autoHideInfoButton": {
+        "message": "Bilgi düğmesini otomatik gizle"
     },
     "hideDeleteButton": {
         "message": "YouTube Oynatıcısında Silme Tuşunu Gizle"
@@ -350,8 +353,24 @@
     "keybindCurrentlySet": {
         "message": ". Şu an buna ayarlı:"
     },
+    "supportOtherSites": {
+        "message": "3. Taraf Youtube Sitelerini Destekle"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Üçüncü taraf YouTube istemci desteği. Desteği etkinleştirmek için özel izinleri kabul etmelisiniz. Bu özellik Chrome ve diğer Chromium tarayıcılarda gizli modda çalışmaz.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Desteklenen Siteler: "
+    },
     "optionsInfo": {
         "message": "Invidious desteğini, otomatik atlamayı, butonları saklamayı ve daha fazlasını etkinleştir."
+    },
+    "addInvidiousInstance": {
+        "message": "3. Taraf İstemci Örneği Ekle"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Özel bir örnek ekle. Buraya sadece alan adı yazılmalıdır. Örnek: invidious.ajay.app"
     },
     "add": {
         "message": "Ekle"
@@ -373,6 +392,12 @@
     },
     "minDurationDescription": {
         "message": "Ayarlanan değerden daha kısa kısımlar atlanmayacak veya oynatıcıda gösterilmeyecektir."
+    },
+    "skipNoticeDuration": {
+        "message": "Atlandı uyarısı süresi (saniye cinsinden):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Bir kısım atlandığında ekranda atlandı uyarısı bu süre kadar gösterilir. Atlama elle gerçekleştiğinde bu uyarı daha uzun sürebilir."
     },
     "shortCheck": {
         "message": "Sıradaki öneri belirlediğiniz minimum süre ayarından daha kısa. Bu zaten yollandığı ve bu ayardan dolayı yok sayıldığı anlamına gelebilir. Göndermek istediğinizden emin misiniz?"
@@ -433,6 +458,9 @@
     },
     "preview": {
         "message": "Önizle"
+    },
+    "unsubmitted": {
+        "message": "Gönderilmemiş"
     },
     "inspect": {
         "message": "Kontrol et"
@@ -498,6 +526,12 @@
     "category_outro_description": {
         "message": "Videoda emeği geçenlerin veya video sonunda çıkan kartların gösterildiği kısımlar. Bilgilendirici sona sahip videolar için değil."
     },
+    "category_preview": {
+        "message": "Ön İzleme/Özet"
+    },
+    "category_preview_description": {
+        "message": "Önceki bölümlerin bir özeti veya geçerli videonun içeriğine yönelik bir ön izleme. Bu özellik birleştirilmiş klipler içindir, konuşarak anlatılan özetleri kapsamaz."
+    },
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"
     },
@@ -524,6 +558,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
+    },
+    "previewColor": {
+        "message": "Gönderilmemiş Renk",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Oynatma Çubuğu Rengi"
@@ -624,5 +662,21 @@
     },
     "categoryUpdate2": {
         "message": "Girişleri, bitişleri, ürünleri ve benzeri şeyleri atlamak için ayarları açın."
+    },
+    "help": {
+        "message": "Yardım"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Bunun kaybolmasını önlemeye yardımcı ol"
+    },
+    "experimentUnlistedText": {
+        "message": "Bu video liste dışı ve 2017'den önce yüklenmiş\nListe dışı eski videolar önümüzdeki aydan itibaren gizli hâle getirilecek\n*Herkese açık* videoları derleyerek yedekliyoruz\nBu videoyu bize anonim kalarak göndermek ister misiniz?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Gelecekteki deneylerin hiçbirine katılma",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Asla gösterme"
     }
 }

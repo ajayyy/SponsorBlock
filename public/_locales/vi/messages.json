@@ -80,10 +80,10 @@
         "message": "Đoạn quảng cáo kết thúc vào lúc này"
     },
     "sponsorCancel": {
-        "message": "Thoát việc tạo ra phân đoạn"
+        "message": "Huỷ tạo phân đoạn"
     },
     "noVideoID": {
-        "message": "Không tìm thấy video này.\nNếu sai, hãy thử tải lại thẻ này."
+        "message": "Không tìm thấy video nào.\nNếu sai, hãy thử tải lại thẻ này."
     },
     "success": {
         "message": "Thành công!"
@@ -119,7 +119,7 @@
         "message": "Đưa kênh vào danh sách không chặn"
     },
     "removeFromWhitelist": {
-        "message": "Bỏ kênh này khỏi danh sách không chặn"
+        "message": "Loại kênh khỏi danh sách không chặn"
     },
     "voteOnTime": {
         "message": "Bầu chọn một đoạn quảng cáo"
@@ -184,6 +184,9 @@
     },
     "whatInfoButton": {
         "message": "Đây là nút để mở bảng popup trên trang Youtube."
+    },
+    "autoHideInfoButton": {
+        "message": "Tự động ẩn nút Info"
     },
     "hideDeleteButton": {
         "message": "Không hiển thị nút xóa trên trình chạy video Youtube"
@@ -454,7 +457,7 @@
         "message": "Chưa gửi lên: "
     },
     "inspect": {
-        "message": "Xem trước"
+        "message": "Kiểm tra"
     },
     "edit": {
         "message": "Chỉnh sửa"
@@ -516,6 +519,9 @@
     },
     "category_outro_description": {
         "message": "Credits hoặc khi thẻ màn hình kết thúc của YouTube xuất hiện. Không dùng với những đoạn có thông tin."
+    },
+    "category_preview": {
+        "message": "Xem trước/Tóm tắt"
     },
     "category_preview_description": {
         "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
@@ -624,5 +630,11 @@
     },
     "categoryUpdate2": {
         "message": "Mở Tùy chọn để bỏ qua đoạn mở đầu, kết thúc, giới thiệu hàng hoá, v.v."
+    },
+    "help": {
+        "message": "Trợ giúp"
+    },
+    "hideForever": {
+        "message": "Ẩn vĩnh viễn"
     }
 }

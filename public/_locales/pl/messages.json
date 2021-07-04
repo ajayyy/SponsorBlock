@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Jest to przycisk otwierający okienko pop-up na stronie YouTube."
     },
+    "autoHideInfoButton": {
+        "message": "Autoukrywanie przycisku informacji"
+    },
     "hideDeleteButton": {
         "message": "Ukryj przycisk usuwania na odtwarzaczu YouTube"
     },
@@ -389,6 +392,12 @@
     },
     "minDurationDescription": {
         "message": "Segmenty krótsze niż ustawiona wartość nie będą pomijane ani pokazywane w odtwarzaczu."
+    },
+    "skipNoticeDuration": {
+        "message": "Czas trwania powiadomienia pominięcia (sekundy):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Powiadomienie o pominięciu pozostanie na ekranie przez co najmniej tyle. Po ręcznym pominięciu, może być widoczna przez dłuższy czas."
     },
     "shortCheck": {
         "message": "Ten segment jest krótszy od ustawionego przez Ciebie minimalnego czasu trwania. Może to oznaczać, że ktoś już to zamieścił, ale nie widzisz tego przez to ustawienie. Czy na pewno chcesz to zamieścić?"
@@ -653,5 +662,21 @@
     },
     "categoryUpdate2": {
         "message": "Otwórz opcje, aby pominąć intra, outra, merch, itp."
+    },
+    "help": {
+        "message": "Pomoc"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Pomóż zapobiec zniknięciu tego"
+    },
+    "experimentUnlistedText": {
+        "message": "Ten film jest wykryty jako nienotowany i przesłany przed 2017 r.\nStare filmy nienotowane są ustawione na prywatne w przyszłym miesiącu\nZbieramy *publiczne* filmy do kopii zapasowej\nCzy chcesz anonimowo wysłać do nas ten film?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Wyłączenie wszystkich przyszłych eksperymentów",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Schowaj na zawsze"
     }
 }

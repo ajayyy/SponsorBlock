@@ -11,7 +11,7 @@
         "message": "Palvelin sanoi tämän pyynnön olevan virheellinen"
     },
     "429": {
-        "message": "Olet lähettänyt liian monta sponsorointiaikaa tälle yhdelle videolle. Oletko varma, että niitä on useita?"
+        "message": "Olet lähettänyt liian monta sponsorointiaikaa tälle yhdelle videolle. Oletko varma, että niitä on näin monta?"
     },
     "409": {
         "message": "Tämä on jo lähetetty aiemmin"
@@ -184,6 +184,9 @@
     },
     "whatInfoButton": {
         "message": "Tämä on painike, joka avaa ponnahdusikkunan YouTube-sivulla."
+    },
+    "autoHideInfoButton": {
+        "message": "Piilota info-painike automaattisesti"
     },
     "hideDeleteButton": {
         "message": "Piilota poista-painike YouTuben soittimessa"
@@ -389,6 +392,12 @@
     },
     "minDurationDescription": {
         "message": "Segmenttejä jotka ovat asetettua arvoa lyhyempiä ei ohiteta tai näytetä soittimessa."
+    },
+    "skipNoticeDuration": {
+        "message": "Ohitusilmoituksen kesto (sekuntia):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Ohitusimoitus pysyy näytöllä ainakin näin kauan.\nManuaalisella ohituksella se saattaa pysyä pitempäänkin."
     },
     "shortCheck": {
         "message": "Seuraava lähetys on lyhyempi kuin vähimmäiskeston asetuksesi. Tämä voi tarkoittaa sitä, että tämä on jo lähetetty ja sitä ei vain oteta huomioon tämän asetuksen vuoksi. Oletko varma, että haluat lähettää?"
@@ -653,5 +662,21 @@
     },
     "categoryUpdate2": {
         "message": "Avaa asetukset ohittaaksesi introt, outrot, kauppatavarat, jne."
+    },
+    "help": {
+        "message": "Ohje"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Auta estämään tätä katoamasta"
+    },
+    "experimentUnlistedText": {
+        "message": "Tämä video on havaittu piilotetuksi ja se on ladattu YouTubeen ennen vuotta 2017\nVanhat piilotetut videot asetetaan yksityisiksi ensi kuussa\nKeräämme *julkisia* videoita varmuuskopioitavaksi\nHaluaisitko anonyymisti lähettää tämän videon meille?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Jättäydy pois kaikista tulevista kokeiluista",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Piilota ikuisesti"
     }
 }
