@@ -51,6 +51,11 @@ export enum SponsorHideType {
     MinimumDuration
 }
 
+export enum SponsorSourceType {
+    Server = undefined,
+    Local = 1
+}
+
 export interface SponsorTime {
     segment: [number] | [number, number];
     UUID: string;
@@ -58,6 +63,7 @@ export interface SponsorTime {
     category: string;
 
     hidden?: SponsorHideType;
+    source?: SponsorSourceType;
 }
 
 export interface PreviewBarOption {

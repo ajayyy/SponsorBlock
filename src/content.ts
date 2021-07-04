@@ -1,6 +1,6 @@
 import Config from "./config";
 
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject, ChannelIDInfo, ChannelIDStatus } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, FetchResponse, VideoInfo, StorageChangesObject, ChannelIDInfo, ChannelIDStatus, SponsorSourceType } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -608,7 +608,7 @@ async function sponsorsLookup(id: string) {
             // Check if any old submissions should be kept
             if (sponsorTimes !== null) {
                 for (let i = 0; i < sponsorTimes.length; i++) {
-                    if (sponsorTimes[i].UUID === null)  {
+                    if (sponsorTimes[i].source === SponsorSourceType.Local)  {
                         // This is a user submission, keep it
                         recievedSegments.push(sponsorTimes[i]);
                     }
@@ -1282,6 +1282,7 @@ function startOrEndTimingNewSegment() {
             segment: [getRealCurrentTime()],
             UUID: null,
             category: Config.config.defaultCategory,
+            source: SponsorSourceType.Local
         });
     } else {
         // Finish creating the new segment
@@ -1335,8 +1336,9 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
         for (const segmentTime of segmentTimes) {
             sponsorTimesSubmitting.push({
                 segment: segmentTime.segment,
-                UUID: null,
-                category: segmentTime.category
+                UUID: segmentTime.UUID,
+                category: segmentTime.category,
+                source: segmentTime.source
             });
         }
     }
@@ -1602,8 +1604,18 @@ async function sendSubmitMessage() {
         // Remove segments from storage since they've already been submitted
         Config.config.segmentTimes.delete(sponsorVideoID);
 
+        const newSegments = sponsorTimesSubmitting;
+        try {
+            const recievedNewSegments = JSON.parse(response.responseText);
+            if (recievedNewSegments?.length === newSegments.length) {
+                for (let i = 0; i < recievedNewSegments.length; i++) {
+                    newSegments[i].UUID = recievedNewSegments[i].UUID;
+                }
+            }
+        } catch(e) {} // eslint-disable-line no-empty
+
         // Add submissions to current sponsors list
-        sponsorTimes = (sponsorTimes || []).concat(sponsorTimesSubmitting);
+        sponsorTimes = (sponsorTimes || []).concat(newSegments);
 
         // Increase contribution count
         Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimesSubmitting.length;
