@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Видео YouTube не найдено.\nЕсли это не так, обновите вкладку."
     },
+    "refreshSegments": {
+        "message": "Обновить сегменты"
+    },
     "success": {
         "message": "Успех!"
     },
