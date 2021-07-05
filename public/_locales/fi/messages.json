@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "YouTube-videota ei löytynyt.\nJos tämä on väärässä, päivitä välilehti."
     },
+    "refreshSegments": {
+        "message": "Päivitä segmentit"
+    },
     "success": {
         "message": "Onnistui!"
     },
