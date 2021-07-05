@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Hittade ingen YouTube-video.\nUppdatera fliken om detta är felaktigt."
     },
+    "refreshSegments": {
+        "message": "Uppdatera segment"
+    },
     "success": {
         "message": "Klart!"
     },
@@ -174,7 +177,7 @@
         "message": "Dölj Knappar På YouTube-spelaren"
     },
     "hideButtonsDescription": {
-        "message": "Detta döljer knapparna på YouTube-spelaren som du kan rapportera sponsormeddelanden med. Jag förstår att det kan se störande ut för en del. Istället för att ha knappen där kan den här popup-rutan användas för att rapportera sponsormeddelanden. För att dölja notisen som dyker upp, tryck på knappen som syns på notisen som säger \"Visa inte det här igen\". Du kan alltid slå på dessa inställningar igen senare."
+        "message": "Detta döljer knapparna på YouTube-spelaren som du kan rapportera segment med som ska hoppas över."
     },
     "showInfoButton": {
         "message": "Visa Infoknapp På YouTube-spelaren"
@@ -195,13 +198,13 @@
         "message": "Visa \"Ta Bort\"-knappen På YouTube-spelaren"
     },
     "whatDeleteButton": {
-        "message": "Denna knappen tar bort alla sponsormeddelanden på YouTube-spelaren."
+        "message": "Denna knappen tar bort alla segment som ej har skickats in på aktuell video."
     },
     "enableViewTracking": {
         "message": "Aktivera spåra antalet hoppa över"
     },
     "whatViewTracking": {
-        "message": "Den här funktionen spårar vilka segment du har hoppat över för att låta användarna veta hur mycket tid en användare har sparat andra och tillsammans med användarnas röster säkerställa att spam inte kommer in i databasen. Detta tillägg skickar ett meddelande till servern varje gång du hoppar över ett segment. Förhoppningsvis ändrar inte folk den här inställningen så statistiken hålls tillförlitlig. :)"
+        "message": "Den här funktionen spårar vilka segment du har hoppat över för att låta användarna veta hur mycket tid en användare har sparat andra och tillsammans med användarnas röster säkerställa att spam inte kommer in i databasen. Detta tillägg skickar ett meddelande till servern varje gång du hoppar över ett segment. Förhoppningsvis ändrar de flesta inte den här inställningen så statistiken hålls tillförlitlig. :)"
     },
     "enableViewTrackingInPrivate": {
         "message": "Aktivera spåra antalet hoppa över i privata/inkognitoflikar"
@@ -216,7 +219,7 @@
         "message": "Uppdatera segment på nya videor"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Om videon är ny och inga segment hittades då kommer den att uppdatera med några minuter mellanrum medan du tittar på videon."
+        "message": "Om videon är ny och inga segment hittades då kommer den att uppdateras med några minuters mellanrum medan du tittar på videon."
     },
     "showNotice": {
         "message": "Visa Notisen Igen"
