@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Không tìm thấy video nào.\nNếu sai, hãy thử tải lại thẻ này."
     },
+    "refreshSegments": {
+        "message": "Làm mới segments"
+    },
     "success": {
         "message": "Thành công!"
     },
