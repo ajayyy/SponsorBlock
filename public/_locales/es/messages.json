@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "No se encontró vídeo de YouTube.\nSi esto es incorrecto, actualice la pestaña."
     },
+    "refreshSegments": {
+        "message": "Actualizar segmentos"
+    },
     "success": {
         "message": "¡Completado!"
     },
