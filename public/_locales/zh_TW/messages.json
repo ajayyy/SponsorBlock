@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "找不到 YouTube 影片。\n如果這是不正確的，重新整理此分頁"
     },
+    "refreshSegments": {
+        "message": "重新載入片段"
+    },
     "success": {
         "message": "成功！"
     },
