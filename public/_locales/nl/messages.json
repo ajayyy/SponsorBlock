@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Geen YouTube-video gevonden.\nVernieuw het tabblad als dit onjuist is."
     },
+    "refreshSegments": {
+        "message": "Segmenten vernieuwen"
+    },
     "success": {
         "message": "Gelukt!"
     },
