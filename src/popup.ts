@@ -168,34 +168,30 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         PageElements.usernameValue.innerText = userInfo.userName;
 
-        //get the amount of times this user has contributed and display it to thank them
-        if (Config.config.sponsorTimesContributed != undefined) {
-            PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
-            PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
+        PageElements.sponsorTimesContributionsDisplay.innerText = userInfo.segmentCount.toLocaleString();
+        PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
 
-            //get the userID
-            const viewCount = userInfo.viewCount;
-            if (viewCount != 0) {
-                if (viewCount > 1) {
-                    PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
-                } else {
-                    PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-                }
-
-                PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
-                PageElements.sponsorTimesViewsContainer.style.display = "unset";
+        const viewCount = userInfo.viewCount;
+        if (viewCount != 0) {
+            if (viewCount > 1) {
+                PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
+            } else {
+                PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
             }
 
-            const minutesSaved = userInfo.minutesSaved;
-            if (minutesSaved != 0) {
-                if (minutesSaved != 1) {
-                    PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-                } else {
-                    PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-                }
+            PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
+            PageElements.sponsorTimesViewsContainer.style.display = "unset";
+        }
 
-                PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
+        const minutesSaved = userInfo.minutesSaved;
+        if (minutesSaved != 0) {
+            if (minutesSaved != 1) {
+                PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+            } else {
+                PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
             }
+
+            PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
         }
     }
 
