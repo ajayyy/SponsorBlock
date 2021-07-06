@@ -1,0 +1,14 @@
+# .github/workflows/take.yml 
+name: Assign issue to contributor
+on: 
+  issue_comment:
+
+jobs:
+  assign:
+    name: Take an issue
+    runs-on: ubuntu-latest
+    steps:
+    - name: take the issue
+      uses: bdougie/take-action@main
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
