@@ -144,7 +144,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Suggerimento: Puoi configurare dei comandi rapidi per l'inserimento nelle opzioni"
+        "message": "Suggerimento: puoi configurare dei comandi rapidi nelle opzioni"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -263,10 +263,10 @@
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
     },
     "disableSkipping": {
-        "message": "Saltare è abilitato"
+        "message": "Abilitato"
     },
     "enableSkipping": {
-        "message": "Saltare è disabilitato"
+        "message": "Disabilitato"
     },
     "yourWork": {
         "message": "Il Tuo Lavoro",
