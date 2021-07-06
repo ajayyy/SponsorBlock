@@ -146,17 +146,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     let currentVideoID = null;
 
     //show proper disable skipping button
-    const disableSkipping = Config.config.disableSkipping;
-    if (disableSkipping != undefined && disableSkipping) {
+    if (Config.config.disableSkipping) {
         PageElements.disableSkipping.style.display = "none";
         PageElements.enableSkipping.style.display = "unset";
         PageElements.toggleSwitch.checked = false;
     }
 
-    //if the don't show notice again variable is true, an option to
-    //  disable should be available
-    const dontShowNotice = Config.config.dontShowNotice;
-    if (dontShowNotice != undefined && dontShowNotice) {
+    if (Config.config.dontShowNotice) {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
@@ -195,28 +191,22 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
     }
 
-    //get the amount of times this user has skipped a sponsor
-    if (Config.config.skipCount != undefined) {
-        if (Config.config.skipCount != 1) {
-            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segments");
-        } else {
-            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segment");
-        }
-
-        PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount.toLocaleString();
-        PageElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
+    if (Config.config.skipCount != 1) {
+        PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segments");
+    } else {
+        PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segment");
     }
 
-    //get the amount of time this user has saved.
-    if (Config.config.minutesSaved != undefined) {
-        if (Config.config.minutesSaved != 1) {
-            PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-        } else {
-            PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-        }
+    PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount.toLocaleString();
+    PageElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
 
-        PageElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(Config.config.minutesSaved);
+    if (Config.config.minutesSaved != 1) {
+        PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+    } else {
+        PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
     }
+
+    PageElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(Config.config.minutesSaved);
 
     // Must be delayed so it only happens once loaded
     setTimeout(() => PageElements.sponsorblockPopup.classList.remove("preload"), 250);
