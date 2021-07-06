@@ -103,6 +103,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sponsorMessageTimes",
         //"downloadedSponsorMessageTimes",
         "refreshSegmentsButton",
+        "lockSegmentsButton",
         "whitelistButton",
         "sbDonate"
     ].forEach(id => PageElements[id] = document.getElementById(id));
@@ -133,6 +134,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.optionsButton.addEventListener("click", openOptions);
     PageElements.helpButton.addEventListener("click", openHelp);
     PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
+    PageElements.lockSegmentsButton.addEventListener("click", lockSegments);
 
     /** If true, the content script is in the process of creating a new segment. */
     let creatingSegment = false;
@@ -158,53 +160,42 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, (res) => {
-        if (res.status === 200) {
-            PageElements.usernameValue.innerText = JSON.parse(res.responseText).userName
-        }
-    })
+    const userInfoRes = await utils.asyncRequestToServer("GET", "/api/userInfo?userID=" + Config.config.userID);
+    if (userInfoRes.ok) {
+        const userInfo = JSON.parse(userInfoRes.responseText);
 
-    //get the amount of times this user has contributed and display it to thank them
-    if (Config.config.sponsorTimesContributed != undefined) {
-        PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
-        PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
+        if (userInfo.vip) PageElements.lockSegmentsButton.classList.remove("hidden");
 
-        //get the userID
-        const userID = Config.config.userID;
-        if (userID != undefined) {
-            //there are probably some views on these submissions then
-            //get the amount of views from the sponsors submitted
-            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(response) {
-                if (response.status == 200) {
-                    const viewCount = JSON.parse(response.responseText).viewCount;
-                    if (viewCount != 0) {
-                        if (viewCount > 1) {
-                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
-                        } else {
-                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-                        }
+        PageElements.usernameValue.innerText = userInfo.userName;
 
-                        PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
-                        PageElements.sponsorTimesViewsContainer.style.display = "unset";
-                    }
+        //get the amount of times this user has contributed and display it to thank them
+        if (Config.config.sponsorTimesContributed != undefined) {
+            PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
+            PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
+
+            //get the userID
+            const viewCount = userInfo.viewCount;
+            if (viewCount != 0) {
+                if (viewCount > 1) {
+                    PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
+                } else {
+                    PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                 }
-            });
 
-            //get this time in minutes
-            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(response) {
-                if (response.status == 200) {
-                    const minutesSaved = JSON.parse(response.responseText).timeSaved;
-                    if (minutesSaved != 0) {
-                        if (minutesSaved != 1) {
-                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-                        } else {
-                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-                        }
+                PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
+                PageElements.sponsorTimesViewsContainer.style.display = "unset";
+            }
 
-                        PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                    }
+            const minutesSaved = userInfo.minutesSaved;
+            if (minutesSaved != 0) {
+                if (minutesSaved != 1) {
+                    PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+                } else {
+                    PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
                 }
-            });
+
+                PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
+            }
         }
     }
 
@@ -688,6 +679,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 {message: 'refreshSegments'}
             )}
         );
+    }
+
+    function lockSegments() {
+        alert("lock");
     }
 
     /**

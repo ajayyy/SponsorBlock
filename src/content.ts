@@ -1412,11 +1412,13 @@ function openInfoMenu() {
             const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
             const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
             const refreshSegments = <HTMLImageElement> popup.querySelector("#refreshSegments");
+            const lockSegments = <HTMLImageElement> popup.querySelector("#lockSegments");
             logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
             settings.src = chrome.extension.getURL("icons/settings.svg");
             edit.src = chrome.extension.getURL("icons/pencil.svg");
             check.src = chrome.extension.getURL("icons/check.svg");
             refreshSegments.src = chrome.extension.getURL("icons/refresh.svg");
+            lockSegments.src = chrome.extension.getURL("icons/lock.svg");
 
             parentNode.insertBefore(popup, parentNode.firstChild);
 
