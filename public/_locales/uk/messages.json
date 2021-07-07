@@ -657,9 +657,6 @@
     "experimentUnlistedTitle": {
         "message": "Допоможіть цьому не зникнути"
     },
-    "experimentUnlistedText": {
-        "message": "Це відео приховане і завантажено до 2017.\nСтарі приховані відео стануть приватними наступного місяця\nМи збираємо загальнодоступні відео для резервного копіювання\nЧи ви хочете анонімно надіслати це відео нам?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
