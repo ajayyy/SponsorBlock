@@ -672,9 +672,6 @@
     "experimentUnlistedTitle": {
         "message": "Ayude a evitar que esto desaparezca"
     },
-    "experimentUnlistedText": {
-        "message": "Este vídeo se detecta como oculto y subido antes de 2017\nLos vídeos ocultos antiguos se pondrán como privados el próximo mes\nEstamos recopilando vídeos *públicos* para respaldar\n¿Quisiera enviarnos este vídeo de forma anónima?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "No participar en futuros experimentos",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
