@@ -669,6 +669,13 @@
     "help": {
         "message": "도움"
     },
+    "experimentUnlistedTitle": {
+        "message": "이 항목이 사라지지 않도록 설정"
+    },
+    "experiementOptOut": {
+        "message": "향후 모든 실험 기능 비활성화",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
     "hideForever": {
         "message": "다시 보지 않음"
     }
