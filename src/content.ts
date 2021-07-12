@@ -852,7 +852,7 @@ async function whitelistCheck() {
 
         channelIDInfo = {
             status: ChannelIDStatus.Found,
-            id: getChannelID()
+            id: getChannelID().match(/^\/?([^\s/]+)/)[0]
         }
     } catch (e) {
         channelIDInfo = {
@@ -864,7 +864,8 @@ async function whitelistCheck() {
     }
 
     //see if this is a whitelisted channel
-    if (whitelistedChannels != undefined && whitelistedChannels.includes(getChannelID())) {
+    if (whitelistedChannels != undefined && 
+            channelIDInfo.status === ChannelIDStatus.Found && whitelistedChannels.includes(channelIDInfo.id)) {
         channelWhitelisted = true;
     }
 
