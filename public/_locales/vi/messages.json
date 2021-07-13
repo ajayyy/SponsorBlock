@@ -396,6 +396,9 @@
     "minDurationDescription": {
         "message": "Đoạn quảng cáo ngắn hơn giá trị được đặt sẽ không bị bỏ qua hoặc hiển thị trong trình chạy video."
     },
+    "skipNoticeDuration": {
+        "message": "Thời gian tự động đóng bảng thông báo phân đoạn (giây):"
+    },
     "shortCheck": {
         "message": "Đoạn quảng cáo sau ngắn hơn tùy chọn độ dài ngắn nhất của bạn. Điều này có thể có nghĩa là nó đã được đăng rồi, và không được bỏ qua vì tùy chọn này. Bạn có chắc muốn đăng nó không?"
     },
