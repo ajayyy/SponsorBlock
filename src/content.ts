@@ -123,7 +123,7 @@ const manualSkipPercentCount = 0.5;
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
-function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void {
+async function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): Promise<void> {
     //messages from popup script
     switch(request.message){
         case "update":
@@ -179,7 +179,8 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             submitSponsorTimes();
             break;
         case "refreshSegments":
-            sponsorsLookup(sponsorVideoID, false);
+            await sponsorsLookup(sponsorVideoID, false);
+            sendResponse({});
             break;
     }
 }
@@ -594,81 +595,81 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
     // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
-    utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
+    const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories
-    }).then(async (response: FetchResponse) => {
-        if (response?.ok) {
-            const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
-                        ?.filter((video) => video.videoID === id)
-                        ?.map((video) => video.segments)[0];
-            if (!recievedSegments || !recievedSegments.length) { 
-                // return if no video found
-                retryFetch();
-                return;
-            }
-
-            sponsorDataFound = true;
-
-            // Check if any old submissions should be kept
-            if (sponsorTimes !== null && keepOldSubmissions) {
-                for (let i = 0; i < sponsorTimes.length; i++) {
-                    if (sponsorTimes[i].source === SponsorSourceType.Local)  {
-                        // This is a user submission, keep it
-                        recievedSegments.push(sponsorTimes[i]);
-                    }
-                }
-            }
-
-            const oldSegments = sponsorTimes || [];
-            sponsorTimes = recievedSegments;
-
-            // Hide all submissions smaller than the minimum duration
-            if (Config.config.minDuration !== 0) {
-                for (let i = 0; i < sponsorTimes.length; i++) {
-                    if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] < Config.config.minDuration) {
-                        sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
-                    }
-                }
-            }
-
-            if (keepOldSubmissions) {
-                for (const segment of oldSegments) {
-                    const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
-                    if (otherSegment) {
-                        // If they downvoted it, or changed the category, keep it
-                        otherSegment.hidden = segment.hidden;
-                        otherSegment.category = segment.category;
-                    }
-                }
-            }
-
-            startSkipScheduleCheckingForStartSponsors();
-
-            //update the preview bar
-            //leave the type blank for now until categories are added
-            if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
-                //set it now
-                //otherwise the listener can handle it
-                updatePreviewBar();
-            }
-
-            sponsorLookupRetries = 0;
-        } else if (response?.status === 404) {
-            retryFetch();
-        } else if (sponsorLookupRetries < 15 && !recheckStarted) {
-            recheckStarted = true;
-
-            //TODO lower when server becomes better (back to 1 second)
-            //some error occurred, try again in a second
-            setTimeout(() => {
-                if (sponsorVideoID && sponsorTimes?.length === 0) {
-                    sponsorsLookup(sponsorVideoID);
-                }
-            }, 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
-
-            sponsorLookupRetries++;
-        }
     });
+
+    if (response?.ok) {
+        const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
+                    ?.filter((video) => video.videoID === id)
+                    ?.map((video) => video.segments)[0];
+        if (!recievedSegments || !recievedSegments.length) { 
+            // return if no video found
+            retryFetch();
+            return;
+        }
+
+        sponsorDataFound = true;
+
+        // Check if any old submissions should be kept
+        if (sponsorTimes !== null && keepOldSubmissions) {
+            for (let i = 0; i < sponsorTimes.length; i++) {
+                if (sponsorTimes[i].source === SponsorSourceType.Local)  {
+                    // This is a user submission, keep it
+                    recievedSegments.push(sponsorTimes[i]);
+                }
+            }
+        }
+
+        const oldSegments = sponsorTimes || [];
+        sponsorTimes = recievedSegments;
+
+        // Hide all submissions smaller than the minimum duration
+        if (Config.config.minDuration !== 0) {
+            for (let i = 0; i < sponsorTimes.length; i++) {
+                if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] < Config.config.minDuration) {
+                    sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
+                }
+            }
+        }
+
+        if (keepOldSubmissions) {
+            for (const segment of oldSegments) {
+                const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
+                if (otherSegment) {
+                    // If they downvoted it, or changed the category, keep it
+                    otherSegment.hidden = segment.hidden;
+                    otherSegment.category = segment.category;
+                }
+            }
+        }
+
+        startSkipScheduleCheckingForStartSponsors();
+
+        //update the preview bar
+        //leave the type blank for now until categories are added
+        if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
+            //set it now
+            //otherwise the listener can handle it
+            updatePreviewBar();
+        }
+
+        sponsorLookupRetries = 0;
+    } else if (response?.status === 404) {
+        retryFetch();
+    } else if (sponsorLookupRetries < 15 && !recheckStarted) {
+        recheckStarted = true;
+
+        //TODO lower when server becomes better (back to 1 second)
+        //some error occurred, try again in a second
+        setTimeout(() => {
+            if (sponsorVideoID && sponsorTimes?.length === 0) {
+                sponsorsLookup(sponsorVideoID);
+            }
+        }, 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
+
+        sponsorLookupRetries++;
+    }
 }
 
 function retryFetch(): void {

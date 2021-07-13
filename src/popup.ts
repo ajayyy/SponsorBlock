@@ -679,13 +679,28 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     function refreshSegments() {
+        PageElements.refreshSegmentsButton.style.animation = "rotate 0.3s 0s infinite";
+
         messageHandler.query({
             active: true,
             currentWindow: true
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'refreshSegments'}
+                {message: 'refreshSegments'},
+                () => {
+                    // Make the animation finite
+                    PageElements.refreshSegmentsButton.style.animation = "rotate 0.3s";
+
+                    // When the animation is over, hide the button
+                    const animationEndListener = () => {
+                        PageElements.refreshSegmentsButton.style.animation = "none";
+
+                        PageElements.refreshSegmentsButton.removeEventListener("animationend", animationEndListener);
+                    };
+
+                    PageElements.refreshSegmentsButton.addEventListener("animationend", animationEndListener);
+                }
             )}
         );
     }

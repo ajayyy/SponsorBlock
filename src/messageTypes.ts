@@ -53,5 +53,6 @@ export type MessageResponse =
     | GetVideoIdResponse
     | GetChannelIDResponse
     | SponsorStartResponse
-    | IsChannelWhitelistedResponse;
+    | IsChannelWhitelistedResponse
+    | Record<string, never>;
 
