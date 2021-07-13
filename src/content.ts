@@ -1558,7 +1558,7 @@ function submitSponsorTimes() {
 async function sendSubmitMessage() {
     // Add loading animation
     playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
-    playerButtons.submit.button.style.animation = "rotate 1s 0s infinite";
+    const stopAnimation = utils.applyLoadingAnimation(playerButtons.submit.button, 1, () => updateEditButtonsOnPlayer());
 
     //check if a sponsor exceeds the duration of the video
     for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
@@ -1590,22 +1590,7 @@ async function sendSubmitMessage() {
     });
 
     if (response.status === 200) {
-        // Handle submission success
-        const submitButton = playerButtons.submit.button;
-
-        // Make the animation finite
-        submitButton.style.animation = "rotate 1s";
-
-        // When the animation is over, hide the button
-        const animationEndListener = () => {
-            updateEditButtonsOnPlayer();
-
-            submitButton.style.animation = "none";
-
-            submitButton.removeEventListener("animationend", animationEndListener);
-        };
-
-        submitButton.addEventListener("animationend", animationEndListener);
+        stopAnimation();
 
         // Remove segments from storage since they've already been submitted
         Config.config.segmentTimes.delete(sponsorVideoID);

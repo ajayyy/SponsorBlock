@@ -431,7 +431,11 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 uuidButton.className = "voteButton";
                 uuidButton.src = chrome.extension.getURL("icons/clipboard.svg");
-                uuidButton.addEventListener("click", () => navigator.clipboard.writeText(UUID));
+                uuidButton.addEventListener("click", () => {
+                    navigator.clipboard.writeText(UUID);
+                    const stopAnimation = utils.applyLoadingAnimation(uuidButton, 0.3);
+                    stopAnimation();
+                });
 
                 //add thumbs up, thumbs down and uuid copy buttons to the container
                 voteButtonsContainer.appendChild(upvoteButton);
@@ -679,7 +683,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     function refreshSegments() {
-        PageElements.refreshSegmentsButton.style.animation = "rotate 0.3s 0s infinite";
+        const stopAnimation = utils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
 
         messageHandler.query({
             active: true,
@@ -688,19 +692,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             messageHandler.sendMessage(
                 tabs[0].id,
                 {message: 'refreshSegments'},
-                () => {
-                    // Make the animation finite
-                    PageElements.refreshSegmentsButton.style.animation = "rotate 0.3s";
-
-                    // When the animation is over, hide the button
-                    const animationEndListener = () => {
-                        PageElements.refreshSegmentsButton.style.animation = "none";
-
-                        PageElements.refreshSegmentsButton.removeEventListener("animationend", animationEndListener);
-                    };
-
-                    PageElements.refreshSegmentsButton.addEventListener("animationend", animationEndListener);
-                }
+                () => stopAnimation()
             )}
         );
     }

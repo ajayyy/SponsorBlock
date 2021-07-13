@@ -159,6 +159,31 @@ export default class Utils {
     }
 
     /**
+     * Starts a spinning animation and returns a function to be called when it should be stopped
+     * The callback will be called when the animation is finished 
+     * It waits until a full rotation is complete
+     */
+    applyLoadingAnimation(element: HTMLElement, time: number, callback?: () => void): () => void {
+        element.style.animation = `rotate ${time}s 0s infinite`;
+
+        return () => {
+            // Make the animation finite
+            element.style.animation = `rotate ${time}s`;
+
+            // When the animation is over, hide the button
+            const animationEndListener = () => {
+                if (callback) callback();
+
+                element.style.animation = "none";
+
+                element.removeEventListener("animationend", animationEndListener);
+            };
+
+            element.addEventListener("animationend", animationEndListener);
+        }
+    }
+
+    /**
      * Merges any overlapping timestamp ranges into single segments and returns them as a new array.
      */
     getMergedTimestamps(timestamps: number[][]): [number, number][] {
