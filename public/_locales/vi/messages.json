@@ -399,6 +399,9 @@
     "skipNoticeDuration": {
         "message": "Thời gian tự động đóng bảng thông báo phân đoạn (giây):"
     },
+    "skipNoticeDurationDescription": {
+        "message": "Đặt thời gian hiển thị bảng thông báo phân đoạn. Nếu như bạn tự nhấn nút bỏ qua, nó sẽ hiện lâu hơn 1 chút."
+    },
     "shortCheck": {
         "message": "Đoạn quảng cáo sau ngắn hơn tùy chọn độ dài ngắn nhất của bạn. Điều này có thể có nghĩa là nó đã được đăng rồi, và không được bỏ qua vì tùy chọn này. Bạn có chắc muốn đăng nó không?"
     },
@@ -606,6 +609,18 @@
     },
     "hiddenDueToDuration": {
         "message": "đã bị ẩn: quá ngắn"
+    },
+    "youtubePermissionRequest": {
+        "message": "Có vẻ như SponsorBlock không thể truy cập API YouTube. Để khắc phục điều này, hãy chấp nhận lời nhắc cấp quyền sẽ xuất hiện tiếp theo, đợi vài giây rồi tải lại trang."
+    },
+    "acceptPermission": {
+        "message": "Cho phép truy cập"
+    },
+    "permissionRequestSuccess": {
+        "message": "Đã có quyền truy cập!"
+    },
+    "permissionRequestFailed": {
+        "message": "Truy cập bị từ chối, bạn đã nhấp vào từ chối à?"
     },
     "forceChannelCheck": {
         "message": "Bắt buộc kiểm tra kênh trước khi bỏ qua"
