@@ -270,8 +270,8 @@ export default class Utils {
     getLocalizedMessage(text: string): string | false {
         console.log(chrome.i18n.getMessage("forceChannelCheckPopup"));
         const valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
-            return v1 ? chrome.i18n.getMessage(v1).replaceAll("<", "&#60;")
-                .replaceAll('"', "&quot;").replaceAll("\n", "<br/>") : "";
+            return v1 ? chrome.i18n.getMessage(v1).replace(/</g, "&#60;")
+                .replace(/"/g, "&quot;").replace(/\n/g, "<br/>") : "";
         });
 
         if(valNewH != text) {
