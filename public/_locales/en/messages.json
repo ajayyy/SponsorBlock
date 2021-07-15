@@ -281,6 +281,10 @@
     "skip_category": {
         "message": "Skip {0}?"
     },
+    "skip_to_category": {
+        "message": "Skip to {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
         "message": "Skipped"
     },

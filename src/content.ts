@@ -696,26 +696,41 @@ function retryFetch(): void {
 function startSkipScheduleCheckingForStartSponsors() {
     if (!switchingVideos) {
         // See if there are any starting sponsors
-        let startingSponsor = -1;
+        let startingSegmentTime = -1;
+        let startingSegment: SponsorTime = null;
         for (const time of sponsorTimes) {
-            if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime 
+            if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime 
                     && utils.getCategoryActionType(time.category) === CategoryActionType.Skippable) {
-                startingSponsor = time.segment[0];
+                        startingSegmentTime = time.segment[0];
+                        startingSegment = time;
                 break;
             }
         }
-        if (startingSponsor === -1) {
+        if (startingSegmentTime === -1) {
             for (const time of sponsorTimesSubmitting) {
-                if (time.segment[0] <= video.currentTime && time.segment[0] > startingSponsor && time.segment[1] > video.currentTime 
+                if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime 
                         && utils.getCategoryActionType(time.category) === CategoryActionType.Skippable) {
-                    startingSponsor = time.segment[0];
+                            startingSegmentTime = time.segment[0];
+                            startingSegment = time;
                     break;
                 }
             }
         }
 
-        if (startingSponsor !== -1) {
-            startSponsorSchedule(undefined, startingSponsor);
+        // For highlight category
+        const poiSegments = sponsorTimes
+            .filter((time) => time.segment[1] > video.currentTime && utils.getCategoryActionType(time.category) === CategoryActionType.POI)
+            .sort((a, b) => b.segment[0] - a.segment[0]);
+        for (const time of poiSegments) {
+            const skipOption = utils.getCategorySelection(time.category)?.option;
+            if (skipOption !== CategorySkipOption.ShowOverlay) {
+                skipToTime(video, time.segment, [time], true);
+                if (skipOption === CategorySkipOption.AutoSkip) break;
+            }
+        }
+
+        if (startingSegmentTime !== -1) {
+            startSponsorSchedule(undefined, startingSegmentTime);
         } else {
             startSponsorSchedule();
         }

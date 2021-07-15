@@ -83,7 +83,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             : "category_" + this.segments[0].category + "_short") || chrome.i18n.getMessage("category_" + this.segments[0].category);
         let noticeTitle = categoryName + " " + chrome.i18n.getMessage("skipped");
         if (!this.autoSkip) {
-            noticeTitle = chrome.i18n.getMessage("skip_category").replace("{0}", categoryName);
+            const messageId = utils.getCategoryActionType(this.segments[0].category) === CategoryActionType.Skippable 
+                ? "skip_category" : "skip_to_category";
+            noticeTitle = chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
         }
     
         //add notice
