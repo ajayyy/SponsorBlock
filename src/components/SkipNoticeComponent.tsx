@@ -461,12 +461,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getUnskippedModeInfo(index: number, buttonText: string): SkipNoticeState {
-        const maxCountdownTime = () => {
+        const changeCountdown = utils.getCategoryActionType(this.segments[index].category) === CategoryActionType.Skippable;
+
+        const maxCountdownTime = changeCountdown ? () => {
             const sponsorTime = this.segments[index];
             const duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
 
             return Math.max(duration, Config.config.skipNoticeDuration);
-        };
+        } : this.state.maxCountdownTime;
 
         return {
             unskipText: buttonText,
