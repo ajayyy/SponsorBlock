@@ -292,10 +292,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             if (request.found) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
+                PageElements.refreshSegmentsButton.classList.remove("hidden");
 
                 displayDownloadedSponsorTimes(request);
             } else {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
+                PageElements.refreshSegmentsButton.classList.add("hidden");
             }
         }
 
