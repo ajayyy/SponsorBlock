@@ -79,8 +79,14 @@
     "sponsorEnd": {
         "message": "Szegmens vége"
     },
+    "sponsorCancel": {
+        "message": "Szegmens Készítés Visszavonása"
+    },
     "noVideoID": {
         "message": "Nem találtunk YouTube videót.\nHa ez helytelen, frissítsd a lapot."
+    },
+    "refreshSegments": {
+        "message": "Szegmensek frissítése"
     },
     "success": {
         "message": "Siker!"
@@ -124,11 +130,21 @@
     "Submissions": {
         "message": "Beküldések"
     },
+    "savedPeopleFrom": {
+        "message": "Megspóroltál másoknak "
+    },
     "viewLeaderboard": {
         "message": "Ranglista"
     },
     "recordTimesDescription": {
         "message": "Küldés"
+    },
+    "submissionEditHint": {
+        "message": "A szegmens szerkesztés azután fog megjelenni miután a közzétételre kattintasz",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Tipp: A beállításokban készíthetsz gyorsbillentyűket a közzétetelhez"
     },
     "clearTimesButton": {
         "message": "Időpontok törlése"
@@ -171,6 +187,9 @@
     },
     "whatInfoButton": {
         "message": "Ez a gomb felhoz egy felugró dobozt a YouTube oldalon."
+    },
+    "autoHideInfoButton": {
+        "message": "Automatikus elrejtése az Információ Gombnak"
     },
     "hideDeleteButton": {
         "message": "Törlés gomb elrejtése a YouTube lejátszón"
@@ -221,6 +240,9 @@
     "noticeUpdate2": {
         "message": "Ha még mindig nem tetszik, kattintson a ne mutassa többé gombra.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Billentyű beállítása szegmens átugráshoz"
     },
     "setSubmitKeybind": {
         "message": "Billentyű beállítása a beküldés gombhoz"
@@ -277,6 +299,9 @@
     "showTimeWithSkipsDescription": {
         "message": "Ez az idő zárójelben jelenik meg az aktuális idő mellett a keresősáv alatt. Megmutatja a videó teljes időtartamát, levonva a szegmenseket. Beletartoznak a csak \"Megjelenítés a keresősávban\" jelöléssel ellátott szegmensek is."
     },
+    "youHaveSkipped": {
+        "message": "Átugrottál "
+    },
     "youHaveSaved": {
         "message": "Megtakarított magának "
     },
@@ -291,6 +316,9 @@
     },
     "hoursLower": {
         "message": "óra"
+    },
+    "youHaveSavedTime": {
+        "message": "Megspóroltál másoknak"
     },
     "youHaveSavedTimeEnd": {
         "message": " az életükből"
@@ -321,6 +349,9 @@
     },
     "keybindCurrentlySet": {
         "message": ". Jelenleg erre van állítva:"
+    },
+    "supportOtherSites": {
+        "message": "Harmadik fél Youtube oldalainak támogatása"
     },
     "optionsInfo": {
         "message": "Invidious támogatás engedélyezése, autoátugrás kikapcsolása, gombok eltűntetése és több."
@@ -530,6 +561,9 @@
     "hiddenDueToDuration": {
         "message": "elrejtve: túl rövid"
     },
+    "acceptPermission": {
+        "message": "Engedély jóváhagyása"
+    },
     "forceChannelCheck": {
         "message": "Csatorna ellenőrzése átugrás előtt"
     },
@@ -563,5 +597,8 @@
     },
     "categoryUpdate2": {
         "message": "Nyissa meg a beállításokat, hogy átugorhasson introkat, outrokat stb."
+    },
+    "help": {
+        "message": "Segítség"
     }
 }
