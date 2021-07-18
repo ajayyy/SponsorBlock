@@ -59,6 +59,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     contentContainer: ContentContainer;
 
     amountOfPreviousNotices: number;
+    showInSecondSlot: boolean;
     audio: HTMLAudioElement;
     
     idSuffix: string;
@@ -88,8 +89,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             noticeTitle = chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
         }
     
-        //add notice
-        this.amountOfPreviousNotices = document.getElementsByClassName("sponsorSkipNotice").length;
+        const previousSkipNotices = document.getElementsByClassName("sponsorSkipNoticeParent");
+        this.amountOfPreviousNotices = previousSkipNotices.length;
+        // If there is at least one already in the first slot
+        this.showInSecondSlot = previousSkipNotices.length > 0 && [...previousSkipNotices].some(notice => !notice.classList.contains("secondSkipNotice"));
 
         // Sort segments
         if (this.segments.length > 1) {
@@ -156,6 +159,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 amountOfPreviousNotices={this.amountOfPreviousNotices}
+                showInSecondSlot={this.showInSecondSlot}
                 idSuffix={this.idSuffix}
                 fadeIn={true}
                 startFaded={true}
