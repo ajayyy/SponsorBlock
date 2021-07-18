@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Nenhum vídeo do YouTube encontrado.\nSe isto estiver incorreto, atualize a aba."
     },
+    "refreshSegments": {
+        "message": "Atualizar segmentos"
+    },
     "success": {
         "message": "Sucesso!"
     },
@@ -185,6 +188,9 @@
     "whatInfoButton": {
         "message": "Este é o botão que abre o popup na pagina do Youtube."
     },
+    "autoHideInfoButton": {
+        "message": "Esconder automaticamente botão de informação"
+    },
     "hideDeleteButton": {
         "message": "Esconder botão de Apagar no player do Youtube"
     },
@@ -199,6 +205,9 @@
     },
     "whatViewTracking": {
         "message": "Este recurso controla quais segmentos você pulou para permitir que os usuários saibam o quanto a submissão deles ajudou outros e é usado como métrica, juntamente com votos positivos para garantir que spam não entre no banco de dados. A extensão envia uma mensagem ao servidor cada vez que você pular um segmento. Espera-se que a maioria das pessoas não mude essa configuração, para que os números de exibição estejam corretos. :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "Ativar Pular Contagem de Rastreamento em abas Privadas/Incógnito"
     },
     "enableQueryByHashPrefix": {
         "message": "Consulta Por Prefixo Hash"
@@ -347,8 +356,24 @@
     "keybindCurrentlySet": {
         "message": ". Atualmente, está definido para:"
     },
+    "supportOtherSites": {
+        "message": "Suporte a Sites do YouTube de terceiros"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Apoie clientes de terceiros do YouTube. Para habilitar o suporte, você deve aceitar as permissões extras. Isso NÃO funciona em incógnito no Chrome e outras variantes do Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Sites Suportados: "
+    },
     "optionsInfo": {
         "message": "Ativar apoio ao Invidious, desabilitar pular automaticamente, ocultar botões e mais."
+    },
+    "addInvidiousInstance": {
+        "message": "Adicionar Instância de Cliente de Terceiros"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Adicione uma instância personalizada. Isso deve ser formatado com APENAS o domínio. Exemplo: invidious.ajay.app"
     },
     "add": {
         "message": "Adicionar"
@@ -370,6 +395,12 @@
     },
     "minDurationDescription": {
         "message": "Segmentos menores do que o valor definido não serão pulados ou mostrados no reprodutor."
+    },
+    "skipNoticeDuration": {
+        "message": "Duração do aviso prévio de pular (segundos):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "O aviso de pular ficará na tela por pelo menos este tempo. Para o pular manual, pode ser visível por mais tempo."
     },
     "shortCheck": {
         "message": "A seguinte submissão é mais curta do que sua opção de duração mínima. Isto significa que já foi enviada e que está sendo ignorada devido a esta opção. Tem certeza que deseja enviar mesmo assim?"
@@ -430,6 +461,9 @@
     },
     "preview": {
         "message": "Pré-visualizar"
+    },
+    "unsubmitted": {
+        "message": "Não enviado"
     },
     "inspect": {
         "message": "Inspecionar"
@@ -495,6 +529,12 @@
     "category_outro_description": {
         "message": "Créditos ou quando os cards finais do YouTube aparecem. Não deve ser usado para conclusões informativas."
     },
+    "category_preview": {
+        "message": "Pré-visualização/Recapitulação"
+    },
+    "category_preview_description": {
+        "message": "Recapitulação rápida de episódios anteriores, ou uma prévia do que está chegando mais tarde no vídeo atual. Destinado a clipes editados juntos, não para resumos falados."
+    },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
     },
@@ -521,6 +561,10 @@
     },
     "colorFormatIncorrect": {
         "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma tralha / hashtag no início."
+    },
+    "previewColor": {
+        "message": "Cor Não Enviada",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Cor da barra"
@@ -621,5 +665,21 @@
     },
     "categoryUpdate2": {
         "message": "Abra as opções para ignorar as introduções, outros, promoção de mercadoria, etc."
+    },
+    "help": {
+        "message": "Ajuda"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Ajude a evitar que isso desapareça"
+    },
+    "experimentUnlistedText": {
+        "message": "Este vídeo é detectado como não listado e carregado antes de 2017\nVídeos antigos não listados estão sendo definidos para privado no próximo mês\nEstamos coletando vídeos *público* para fazer backup\nGostaria de nos enviar esse vídeo anonimamente?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Optar por sair de todos os experimentos futuros",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Ocultar para sempre"
     }
 }
