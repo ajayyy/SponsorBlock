@@ -241,6 +241,10 @@ function resetValues() {
 
     // Reset advert playing flag
     isAdPlaying = false;
+
+    for (let i = 0; i < skipNotices.length; i++) {
+        skipNotices.pop().close();
+    }
 }
 
 async function videoIDChange(id) {
