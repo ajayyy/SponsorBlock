@@ -669,12 +669,6 @@
     "help": {
         "message": "Ajuda"
     },
-    "experimentUnlistedTitle": {
-        "message": "Ajude a evitar que isso desapareça"
-    },
-    "experimentUnlistedText": {
-        "message": "Este vídeo é detectado como não listado e carregado antes de 2017\nVídeos antigos não listados estão sendo definidos para privado no próximo mês\nEstamos coletando vídeos *público* para fazer backup\nGostaria de nos enviar esse vídeo anonimamente?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Optar por sair de todos os experimentos futuros",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
