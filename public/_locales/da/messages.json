@@ -66,5 +66,56 @@
     },
     "Unknown": {
         "message": "Der skete en fejl da du prøvede at indsende dine reklame tider, prøv lige igen."
+    },
+    "sponsorFound": {
+        "message": "Denne video har segmenter i databasen!"
+    },
+    "sponsor404": {
+        "message": "Ingen segmenter fundet"
+    },
+    "sponsorStart": {
+        "message": "Segment Begynder Nu"
+    },
+    "sponsorEnd": {
+        "message": "Segment Slutter Nu"
+    },
+    "sponsorCancel": {
+        "message": "Annuller Oprettelse Af Segment"
+    },
+    "noVideoID": {
+        "message": "Ingen YouTube-video fundet.\nHvis dette er forkert, så genindlæs siden."
+    },
+    "refreshSegments": {
+        "message": "Opdater segmenter"
+    },
+    "success": {
+        "message": "Succes!"
+    },
+    "voted": {
+        "message": "Stemt!"
+    },
+    "serverDown": {
+        "message": "Det ser ud til at serveren er nede. Kontakt udvikleren straks."
+    },
+    "connectionError": {
+        "message": "Der opstod en forbindelsesfejl. Fejlkode: "
+    },
+    "clearTimes": {
+        "message": "Ryd Segmenter"
+    },
+    "openPopup": {
+        "message": "Åbn SponsorBloker Pop-op"
+    },
+    "closePopup": {
+        "message": "Luk Pop-op"
+    },
+    "SubmitTimes": {
+        "message": "Indsend Segmenter"
+    },
+    "submitCheck": {
+        "message": "Er du sikker på, at du vil indsende dette?"
+    },
+    "voteOnTime": {
+        "message": "Stem På Et Segment"
     }
 }

@@ -17,7 +17,7 @@
         "message": "Tämä on jo lähetetty aiemmin"
     },
     "channelWhitelisted": {
-        "message": "Kanava lisätty valkoiselle listalle!"
+        "message": "Kanava lisätty valkolistalle!"
     },
     "Segment": {
         "message": "segmentti"
@@ -41,7 +41,7 @@
         "message": "Ladataan..."
     },
     "Hide": {
-        "message": "Älä Näytä Koskaan"
+        "message": "Älä näytä koskaan"
     },
     "hitGoBack": {
         "message": "Paina 'älä ohita' mennäksesi takaisin kohtaan jossa olit."
@@ -77,13 +77,16 @@
         "message": "Segmentti alkaa nyt"
     },
     "sponsorEnd": {
-        "message": "Segmentti Päättyy Nyt"
+        "message": "Segmentti päättyy nyt"
     },
     "sponsorCancel": {
-        "message": "Peruuta Segmentin Luominen"
+        "message": "Peruuta segmentin luominen"
     },
     "noVideoID": {
         "message": "YouTube-videota ei löytynyt.\nJos tämä on väärässä, päivitä välilehti."
+    },
+    "refreshSegments": {
+        "message": "Päivitä segmentit"
     },
     "success": {
         "message": "Onnistui!"
@@ -101,16 +104,16 @@
         "message": "Haluatko lähettää segmentit videotunnukselle"
     },
     "clearTimes": {
-        "message": "Tyhjennä Segmentit"
+        "message": "Tyhjennä segmentit"
     },
     "openPopup": {
         "message": "Avaa SponsorBlock-ponnahdusikkuna"
     },
     "closePopup": {
-        "message": "Sulje Ponnahdusikkuna"
+        "message": "Sulje ponnahdusikkuna"
     },
     "SubmitTimes": {
-        "message": "Lähetä Segmentit"
+        "message": "Lähetä segmentit"
     },
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
@@ -122,7 +125,7 @@
         "message": "Poista kanava valkolistalta"
     },
     "voteOnTime": {
-        "message": "Äänestä Segmenttiä"
+        "message": "Äänestä segmenttiä"
     },
     "Submissions": {
         "message": "Lähetykset"
@@ -137,7 +140,7 @@
         "message": "Lähetä"
     },
     "submissionEditHint": {
-        "message": "Osien muokkaus ilmestyy sen jälkeen, kun klikkaat lähetä-nappia",
+        "message": "Osien muokkaus ilmestyy sen jälkeen, kun klikkaat lähetä-painiketta",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -159,7 +162,7 @@
         "message": "Aseta käyttäjänimi"
     },
     "discordAdvert": {
-        "message": "Liity mukaan viralliseen discord-palvelimeen, jotta voit antaa ehdotuksia ja palautetta!"
+        "message": "Liity mukaan viralliselle Discord-palvelimelle, jotta voit antaa ehdotuksia ja palautetta!"
     },
     "hideThis": {
         "message": "Piilota tämä"
@@ -168,7 +171,7 @@
         "message": "Asetukset"
     },
     "showButtons": {
-        "message": "Näytä Painikkeet YouTuben Soittimessa"
+        "message": "Näytä painikkeet YouTuben soittimessa"
     },
     "hideButtons": {
         "message": "Piilota painikkeet YouTuben soittimessa"
@@ -177,7 +180,7 @@
         "message": "Tämä piilottaa YouTuben soittimessa näkyvät, ohitettavien aikojen lähettämiseen käytetyt painikkeet."
     },
     "showInfoButton": {
-        "message": "Näytä Info-Painike YouTuben Soittimessa"
+        "message": "Näytä info-painike YouTuben soittimessa"
     },
     "hideInfoButton": {
         "message": "Piilota info-painike YouTuben soittimessa"
@@ -192,25 +195,25 @@
         "message": "Piilota poista-painike YouTuben soittimessa"
     },
     "showDeleteButton": {
-        "message": "Näytä Poista-Painike YouTuben Soittimessa"
+        "message": "Näytä poista-painike YouTuben soittimessa"
     },
     "whatDeleteButton": {
         "message": "Tämä on YouTuben soittimen painike, joka poistaa kaikki kyseisen videon sponsorointikohdat, joita et ole vielä lähettänyt."
     },
     "enableViewTracking": {
-        "message": "Ota Ohitusten Lukumäärän Seuranta Käyttöön"
+        "message": "Ota ohitusten lukumäärän seuranta käyttöön"
     },
     "whatViewTracking": {
         "message": "Tämä toiminto seuraa, mitä segmenttejä olet ohittanut. Sen avulla käyttäjät saavat tietää, kuinka paljon heidän lähetyksensä ovat auttaneet muita, ja sitä käytetään myös mittarina äänestysten kanssa estääksemme spämmin pääsyn tietokantaan. Laajennus lähettää viestin palvelimelle aina, kun ohitat segmentin. Toivottavasti useimmat eivät muuta tätä asetusta, jotta katselunumerot pysyisivät tarkkoina. :)"
     },
     "enableViewTrackingInPrivate": {
-        "message": "Ota Ohitusten Lukumäärän Seuranta Käyttöön Yksityis-/Incognito-välilehdissä"
+        "message": "Ota ohitusten lukumäärän seuranta käyttöön yksityis-/incognito-välilehdissä"
     },
     "enableQueryByHashPrefix": {
-        "message": "Kysely Tiiviste-etuliittellä"
+        "message": "Kysely tiiviste-etuliittellä"
     },
     "whatQueryByHashPrefix": {
-        "message": "Kokonaisen videon ID:n lähettämisen sijaan ID:n hashin 4 ensimmäistä merkkiä lähetetään. Palvelin lähettää takaisin dataa kaikista videoista, joilla on vastaavat hashit."
+        "message": "Sen sijaan, että videoID:tä käyttäen pyydettäisiin segmenttejä palvelimelta, videoID:n tiivisteen 4 ensimmäistä merkkiä lähetetään. Tämä palvelin lähettää takaisin dataa kaikista videoista, joilla on samankaltaiset tiivisteet."
     },
     "enableRefetchWhenNotFound": {
         "message": "Hae segmentit uudelleen uusissa videoissa"
@@ -219,10 +222,10 @@
         "message": "Jos video on uusi, eikä segmenttejä löydy, niitä haetaan uudelleen muutaman minuutin välein katsoessasi."
     },
     "showNotice": {
-        "message": "Näytä Huomautus Uudelleen"
+        "message": "Näytä ilmoitus uudelleen"
     },
     "longDescription": {
-        "message": "SponsorBlockin avulla voit ohittaa sponsorit, introt, outrot, tilausmuistutukset ja muut ärsyttävät osat YouTube-videoissa. SponsorBlock on joukkoistettu selainlaajennus, jonka avulla kuka tahansa voi lähettää sponsoroitujen ja muiden Youtube-videoiden segmenttien aloitus- ja päättymisajat. Kun yksi henkilö on lähettänyt tämän tiedon, kaikki muut, joilla on tämä laajennus, ohittavat sponsoroidun segmentin. Voit myös ohittaa musiikkivideoiden musiikittomat osat.",
+        "message": "SponsorBlockin avulla voit ohittaa sponsorit, introt, outrot, tilausmuistutukset ja muut ärsyttävät osat YouTube-videoissa. SponsorBlock on joukkoistettu selainlaajennus, jonka avulla kuka tahansa voi lähettää Youtube-videoiden sponsoroitujen ja muiden segmenttien aloitus- ja päättymisajat. Kun yksi henkilö on lähettänyt tämän tiedon, kaikki muut, joilla on tämä laajennus, ohittavat sponsoroidun segmentin. Voit myös ohittaa musiikkivideoiden musiikittomat osat.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -248,13 +251,13 @@
         "message": "Aseta pikanäppäin segmentin aloittamiseen/lopettamiseen"
     },
     "setSubmitKeybind": {
-        "message": "Aseta näppäin tietojen lähetykseen"
+        "message": "Aseta pikanäppäin tietojen lähetykseen"
     },
     "keybindDescription": {
         "message": "Valitse näppäin painamalla sitä"
     },
     "keybindDescriptionComplete": {
-        "message": "Näppäinmääritys on asetettu näppäimeen: "
+        "message": "Pikanäppäin on asetettu näppäimeen: "
     },
     "0": {
         "message": "Yhteyden aikakatkaisu. Tarkista internet-yhteytesi. Jos internetyhteytesi toimii, palvelin on todennäköisesti ylikuormittunut tai alhaalla."
@@ -266,7 +269,7 @@
         "message": "Ohitus on poistettu käytöstä"
     },
     "yourWork": {
-        "message": "Sinun työsi",
+        "message": "Työsi",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
@@ -291,7 +294,7 @@
         "message": "Ota automaattinen ohitus käyttöön"
     },
     "audioNotification": {
-        "message": "Äänellinen Ilmoitus Ohitettaessa"
+        "message": "Ääni-ilmoitus ohitettaessa"
     },
     "audioNotificationDescription": {
         "message": "Ääni-ilmoitus ohittaessa toistaa äänen kun segmentti ohitetaan. Jos asetus on pois päältä (tai automaattinen ohitus on pois käytöstä), ääntä ei soiteta."
@@ -309,13 +312,13 @@
         "message": "Olet säästänyt itseltäsi "
     },
     "minLower": {
-        "message": "minuutti"
+        "message": "minuutin"
     },
     "minsLower": {
         "message": "minuuttia"
     },
     "hourLower": {
-        "message": "tunti"
+        "message": "tunnin"
     },
     "hoursLower": {
         "message": "tuntia"
@@ -330,7 +333,7 @@
         "message": "Tarkista palvelimen tila osoitteessa status.sponsor.ajay.app."
     },
     "changeUserID": {
-        "message": "Tuo/vie sinun UserID:si"
+        "message": "Tuo/vie UserID:si"
     },
     "whatChangeUserID": {
         "message": "Tämä tulisi pitää yksityisenä. Tämä on kuin salasana eikä sitä pitäisi jakaa kenellekään. Jos joku saa tämän, hän voi esiintyä sinuna."
@@ -345,29 +348,29 @@
         "message": "Luonut"
     },
     "autoSkip": {
-        "message": "Ohita Automaattisesti"
+        "message": "Ohita automaattisesti"
     },
     "showSkipNotice": {
         "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
     },
     "keybindCurrentlySet": {
-        "message": ". Tällä hetkellä se on asetettu:"
+        "message": ". Tällä hetkellä se on asetettu näppäimeen:"
     },
     "supportOtherSites": {
-        "message": "Tue Kolmansien Osapuolien YouTube-sivustoja"
+        "message": "Tue kolmansien osapuolien YouTube-sivustoja"
     },
     "supportOtherSitesDescription": {
         "message": "Tue kolmannen osapuolen YouTube-asiakasohjelmia. Jotta voit ottaa käyttöön tuen, sinun täytyy hyväksyä lisäkäyttöoikeudet. Tämä EI toimi incognitossa Chromessa ja muissa Chromium varianteissa.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
-        "message": "Tuetut Sivustot: "
+        "message": "Tuetut sivustot: "
     },
     "optionsInfo": {
         "message": "Ota käyttöön Invidious tuki, poista käytöstä automaattinen ohitus, piilota painikkeet ja muuta."
     },
     "addInvidiousInstance": {
-        "message": "Lisää Kolmannen Osapuolen Asiakasohjelmainstanssi"
+        "message": "Lisää kolmannen osapuolen asiakasohjelmainstanssi"
     },
     "addInvidiousInstanceDescription": {
         "message": "Lisää mukautettu instanssi. Tämän täytyy olla formatoitu VAIN verkkotunnuksella. Esimerkki: invidious.ajay.app"
@@ -400,7 +403,7 @@
         "message": "Ohitusimoitus pysyy näytöllä ainakin näin kauan.\nManuaalisella ohituksella se saattaa pysyä pitempäänkin."
     },
     "shortCheck": {
-        "message": "Seuraava lähetys on lyhyempi kuin vähimmäiskeston asetuksesi. Tämä voi tarkoittaa sitä, että tämä on jo lähetetty ja sitä ei vain oteta huomioon tämän asetuksen vuoksi. Oletko varma, että haluat lähettää?"
+        "message": "Seuraava lähetys on lyhyempi kuin vähimmäiskeston asetuksesi. Tämä voi tarkoittaa sitä, että tämä on jo lähetetty, ja sitä ei vain oteta huomioon tämän asetuksen vuoksi. Oletko varma, että haluat lähettää?"
     },
     "showUploadButton": {
         "message": "Näytä lähetä-painike"
@@ -409,7 +412,7 @@
         "message": "Tämä painike ilmestyy YouTube-soittimeen, kun olet valinnut aikaleiman ja olet valmis lähettämään sen."
     },
     "customServerAddress": {
-        "message": "SponsorBlock Palvelimen Osoite"
+        "message": "SponsorBlock-palvelimen osoite"
     },
     "customServerAddressDescription": {
         "message": "Osoite, jota SponsorBlock käyttää lähettääkseen kutsuja palvelimelle.\nEllei sinulla ole omaa palvelininstanssia, tätä ei pitäisi muuttaa."
@@ -445,10 +448,10 @@
         "message": "Tämä JSON ei ole muotoiltu oikein. Asetuksiasi ei ole muutettu."
     },
     "confirmNoticeTitle": {
-        "message": "Lähetä kohta"
+        "message": "Lähetä segmentti"
     },
     "submit": {
-        "message": "Jatka"
+        "message": "Lähetä"
     },
     "cancel": {
         "message": "Peruuta"
@@ -469,7 +472,7 @@
         "message": "Muokkaa"
     },
     "copyDebugInformation": {
-        "message": "Kopioi Vianetsintätiedot Leikepöydälle"
+        "message": "Kopioi vianetsintätiedot leikepöydälle"
     },
     "copyDebugInformationFailed": {
         "message": "Kirjoittaminen leikepöydälle epäonnistui"
@@ -497,7 +500,7 @@
         "message": "Maksettu mainostus, maksetut viittaukset ja suorat mainokset. Ei itsensä mainostukselle tai huikkauksille kampanjoista/luojista/nettisivuista/tuotteista, joista he pitävät."
     },
     "category_selfpromo": {
-        "message": "Maksamaton/Itsensä Mainostus"
+        "message": "Maksamaton/Itsensä mainostus"
     },
     "category_selfpromo_description": {
         "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
@@ -533,19 +536,19 @@
         "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
     },
     "category_music_offtopic": {
-        "message": "Musiikki: Ei-Musiikki-Osio"
+        "message": "Musiikki: Musiikiton osa"
     },
     "category_music_offtopic_description": {
         "message": "Vain musiikkivideoille. Tätä tulee käyttää vain musiikkivideoiden osissa, jotka eivät jo kuulu toiseen kategoriaan."
     },
     "category_music_offtopic_short": {
-        "message": "Ei-Musiikki"
+        "message": "Musiikiton"
     },
     "category_livestream_messages": {
-        "message": "Livestream: lahjoituksen/viestin lukeminen"
+        "message": "Livestream: lahjoitusten/viestien lukeminen"
     },
     "category_livestream_messages_short": {
-        "message": "Viestin Lukeminen"
+        "message": "Viestien lukeminen"
     },
     "disable": {
         "message": "Poista käytöstä"
@@ -554,17 +557,17 @@
         "message": "Manuaalinen ohitus"
     },
     "showOverlay": {
-        "message": "Näytä Liukusäätimessä"
+        "message": "Näytä liukusäätimessä"
     },
     "colorFormatIncorrect": {
         "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on # alussa."
     },
     "previewColor": {
-        "message": "Lähettämättömien Väri",
+        "message": "Lähettämättömien väri",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
-        "message": "Siirtymispalkin Väri"
+        "message": "Siirtymispalkin väri"
     },
     "category": {
         "message": "Kategoria"
@@ -592,14 +595,14 @@
         "message": "Valitse kategoria"
     },
     "enableThisCategoryFirst": {
-        "message": "Lähettääksesi segmenttejä kategorialla \"{0}\", sinun täytyy aktivoida se asetuksista. Sinut uudelleenohjataan asetuksiin nyt.",
+        "message": "Lähettääksesi segmenttejä \"{0}\" kategorialla, sinun täytyy aktivoida se asetuksista. Sinut uudelleenohjataan asetuksiin nyt.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
-        "message": "Sinun täytyy valita kategoria kaikille segmenteille, jota olet lähettämässä!"
+        "message": "Sinun täytyy valita kategoria kaikille segmenteille, joita olet lähettämässä!"
     },
     "bracketEnd": {
-        "message": "(Päättyy)"
+        "message": "(Loppu)"
     },
     "hiddenDueToDownvote": {
         "message": "piilotettu: miinusääniä"
@@ -630,13 +633,13 @@
         "message": "Jos et pysty ratkaisemaan tätä, poista käytöstä asetus 'Pakota kanavan tarkistus ennen ohittamista', koska SponsorBlock ei pysty noutamaan tämän videon kanavatietoja"
     },
     "forceChannelCheck": {
-        "message": "Pakota Kanavan Tarkistus Ennen Ohittamista"
+        "message": "Pakota kanavan tarkistus ennen ohittamista"
     },
     "whatForceChannelCheck": {
         "message": "Oletuksena segmentit ohitetaan heti ennen kuin kanava tiedetään. Oletuksena jotkut segmentit videon alussa saattavat tulla ohitetuiksi sallituilla kanavilla. Tämän vaihtoehdon ottaminen käyttöön estää sen, mutta kaikki ohitukset viivästyvät hieman, koska kanavatunnuksen saaminen voi kestää jonkin aikaa. Tämä viive saattaa olla huomaamaton, jos sinulla on nopea internetyhteys."
     },
     "forceChannelCheckPopup": {
-        "message": "Harkitse \"Pakota Kanavan Tarkistus Ennen Ohittamista\" käyttöön ottaminen"
+        "message": "Harkitse asetuksen \"Pakota kanavan tarkistus ennen ohittamista\" käyttöön ottaminen"
     },
     "downvoteDescription": {
         "message": "Virheellinen/väärä aika"
@@ -645,16 +648,16 @@
         "message": "Väärä kategoria"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Tämä video on luokiteltu musiikiksi. Oletko varma, että siinä on sponsori? Jos tämä on sen sijaan \"musiikiton segmentti\", avaa laajennuksen asetukset ja ota tämä kategoria käyttöön. Sitten voit lähettää tämän segmentin oikeassa kategoriassa. Lue ohjeistus, jos on lisää kysyttävää."
+        "message": "Tämä video on luokiteltu musiikiksi. Oletko varma, että siinä on sponsori? Jos tämä on oikeasti \"Musiikiton segmentti\", avaa laajennuksen asetukset ja ota tämä kategoria käyttöön. Sitten voit lähettää tämän segmentin oikeassa kategoriassa. Lue säännöt, jos olet vielä hämilläsi."
     },
     "multipleSegments": {
-        "message": "Useita kohtia"
+        "message": "Useita segmenttejä"
     },
     "guidelines": {
-        "message": "Säännökset"
+        "message": "Säännöt"
     },
     "readTheGuidelines": {
-        "message": "Lue Säännökset!!",
+        "message": "Lue säännöt!!",
         "description": "Show the first time they submit or if they are \"high risk\""
     },
     "categoryUpdate1": {
@@ -670,7 +673,7 @@
         "message": "Auta estämään tätä katoamasta"
     },
     "experimentUnlistedText": {
-        "message": "Tämä video on havaittu piilotetuksi ja se on ladattu YouTubeen ennen vuotta 2017\nVanhat piilotetut videot asetetaan yksityisiksi ensi kuussa\nKeräämme *julkisia* videoita varmuuskopioitavaksi\nHaluaisitko anonyymisti lähettää tämän videon meille?\nhttps://support.google.com/youtube/answer/9230970"
+        "message": "Tämä video on havaittu piilotetuksi ja se on ladattu YouTubeen ennen vuotta 2017.\nVanhat piilotetut videot asetetaan yksityisiksi ensi kuussa.\nKeräämme *julkisia* videoita varmuuskopioitavaksi.\nHaluaisitko anonyymisti lähettää tämän videon meille?\nhttps://support.google.com/youtube/answer/9230970"
     },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",

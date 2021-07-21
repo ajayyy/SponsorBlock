@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Nessun video YouTube trovato.\nSe è un errore, ricarica la scheda."
     },
+    "refreshSegments": {
+        "message": "Ricarica i segmenti"
+    },
     "success": {
         "message": "Successo!"
     },
@@ -141,7 +144,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Suggerimento: Puoi configurare dei comandi rapidi per l'inserimento nelle opzioni"
+        "message": "Suggerimento: puoi configurare dei comandi rapidi nelle opzioni"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -184,6 +187,9 @@
     },
     "whatInfoButton": {
         "message": "Questo è il pulsante che apre un popup nella pagina YouTube."
+    },
+    "autoHideInfoButton": {
+        "message": "Nascondi in automatico il Pulsante di Informazioni"
     },
     "hideDeleteButton": {
         "message": "Nascondi il Pulsante Elimina nel Lettore di YouTube"
@@ -257,10 +263,10 @@
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
     },
     "disableSkipping": {
-        "message": "Saltare è abilitato"
+        "message": "Abilitato"
     },
     "enableSkipping": {
-        "message": "Saltare è disabilitato"
+        "message": "Disabilitato"
     },
     "yourWork": {
         "message": "Il Tuo Lavoro",
@@ -389,6 +395,12 @@
     },
     "minDurationDescription": {
         "message": "I segmenti più brevi del valore impostato non verranno saltati o visualizzati nel lettore."
+    },
+    "skipNoticeDuration": {
+        "message": "Salta durata avviso (secondi):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "L'avviso salta rimarrà sullo schermo per almeno questo tempo. Per saltarlo manualmente, potrebbe esser visibile più a lungo."
     },
     "shortCheck": {
         "message": "Il seguente contributo è più breve della tua opzione di durata minima. Ciò potrebbe significare che questo è già stato inviato e viene semplicemente ignorato a causa di questa opzione. Sei sicuro di voler inviare?"
@@ -656,6 +668,16 @@
     },
     "help": {
         "message": "Aiuto"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Aiuta a impedire che scompaia"
+    },
+    "experimentUnlistedText": {
+        "message": "Questo video è rilevato come non elencato e caricato prima del 2017\nI vecchi video elencati saranno impostati a privati il prossimo mese\nStiamo raccogliendo i video *pubblici* per eseguire il backup\nVorresti inviarci anonimamente questo video?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Disiscriviti dagli esperimenti futuri",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Nascondi per sempre"

@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Nenašlo sa žiadne YouTube video.\nAk je to chyba, obnovte záložku."
     },
+    "refreshSegments": {
+        "message": "Znova načítať segmenty"
+    },
     "success": {
         "message": "Hotovo!"
     },
@@ -670,7 +673,7 @@
         "message": "Pomôžte zamedziť zmiznutiu tohto videa"
     },
     "experimentUnlistedText": {
-        "message": "Toto video bolo nahraté pred r. 2007 a je nezverejnené.\nTakéto videá budú o mesiac zmenené na súkromné.\nZbierame a zálohujeme *verejné*.\nChceli by ste nám toto video anonymne poslať?\nhttps://support.google.com/youtube/answer/9230970"
+        "message": "Toto video bolo nahraté pred r. 2007 a je nezverejnené.\nTakéto videá budú o mesiac zmenené na súkromné.\nZbierame a zálohujeme *verejné* videá.\nChceli by ste nám toto video anonymne poslať?\nhttps://support.google.com/youtube/answer/9230970"
     },
     "experiementOptOut": {
         "message": "Odmietnuť všetky budúce experimenty",

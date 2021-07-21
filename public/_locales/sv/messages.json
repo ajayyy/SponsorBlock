@@ -8,7 +8,7 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "Felaktigt anrop enligt servern"
+        "message": "Servern sa att denna begäran var ogiltig"
     },
     "429": {
         "message": "Du har rapporterat för många sponsormeddelanden för den här videon, är du säker att det finns så många?"
@@ -65,7 +65,7 @@
         "message": "Är du säker på att du vill rensa detta?\n\n"
     },
     "Unknown": {
-        "message": "Ett fel uppstod vid rapportering av sponsorsegment, försök igen senare."
+        "message": "Ett fel uppstod vid rapportering av sponsormeddelandet, försök igen senare."
     },
     "sponsorFound": {
         "message": "Denna video har segment i databasen!"
@@ -80,10 +80,13 @@
         "message": "Segmentet slutar nu"
     },
     "sponsorCancel": {
-        "message": "Avbryt skapandet av segmentet"
+        "message": "Avbryt skapande av segment"
     },
     "noVideoID": {
         "message": "Hittade ingen YouTube-video.\nUppdatera fliken om detta är felaktigt."
+    },
+    "refreshSegments": {
+        "message": "Uppdatera segment"
     },
     "success": {
         "message": "Klart!"
@@ -168,13 +171,13 @@
         "message": "Alternativ"
     },
     "showButtons": {
-        "message": "Visa Knappar På YouTube-spelaren"
+        "message": "Visa knappar på YouTube-spelaren"
     },
     "hideButtons": {
         "message": "Dölj Knappar På YouTube-spelaren"
     },
     "hideButtonsDescription": {
-        "message": "Detta döljer knapparna på YouTube-spelaren som du kan rapportera sponsormeddelanden med. Jag förstår att det kan se störande ut för en del. Istället för att ha knappen där kan den här popup-rutan användas för att rapportera sponsormeddelanden. För att dölja notisen som dyker upp, tryck på knappen som syns på notisen som säger \"Visa inte det här igen\". Du kan alltid slå på dessa inställningar igen senare."
+        "message": "Detta döljer knapparna på YouTube-spelaren som du kan skicka in segment med som ska hoppas över."
     },
     "showInfoButton": {
         "message": "Visa Infoknapp På YouTube-spelaren"
@@ -192,16 +195,16 @@
         "message": "Dölj \"Ta Bort\"-knappen På YouTube-spelaren"
     },
     "showDeleteButton": {
-        "message": "Visa \"Ta Bort\"-knappen På YouTube-spelaren"
+        "message": "Visa knappen ta bort på YouTube-spelaren"
     },
     "whatDeleteButton": {
-        "message": "Denna knappen tar bort alla sponsormeddelanden på YouTube-spelaren."
+        "message": "Den här knappen på YouTube-spelaren rensar bort alla segment som ej har skickats in på aktuell video."
     },
     "enableViewTracking": {
         "message": "Aktivera spåra antalet hoppa över"
     },
     "whatViewTracking": {
-        "message": "Den här funktionen spårar vilka segment du har hoppat över för att låta användarna veta hur mycket tid en användare har sparat andra och tillsammans med användarnas röster säkerställa att spam inte kommer in i databasen. Detta tillägg skickar ett meddelande till servern varje gång du hoppar över ett segment. Förhoppningsvis ändrar inte folk den här inställningen så statistiken hålls tillförlitlig. :)"
+        "message": "Den här funktionen spårar vilka segment du har hoppat över för att låta användarna veta hur mycket tid en användare har sparat andra och tillsammans med användarnas röster säkerställa att spam inte kommer in i databasen. Detta tillägg skickar ett meddelande till servern varje gång du hoppar över ett segment. Förhoppningsvis ändrar de flesta inte den här inställningen så statistiken hålls tillförlitlig. :)"
     },
     "enableViewTrackingInPrivate": {
         "message": "Aktivera spåra antalet hoppa över i privata/inkognitoflikar"
@@ -216,7 +219,7 @@
         "message": "Uppdatera segment på nya videor"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Om videon är ny och inga segment hittades då kommer den att uppdatera med några minuter mellanrum medan du tittar på videon."
+        "message": "Om videon är ny och inga segment hittades då kommer den att uppdateras med några minuters mellanrum medan du tittar på videon."
     },
     "showNotice": {
         "message": "Visa Notisen Igen"
@@ -248,7 +251,7 @@
         "message": "Ange den genväg som ska fungera som start-/stopptangent för ett segment"
     },
     "setSubmitKeybind": {
-        "message": "Välj knapp att koppla till rapportering av sponsormeddelande"
+        "message": "Ange den tangent som ska fungera som inskickningstangent"
     },
     "keybindDescription": {
         "message": "Ange tangent genom att trycka på den"
@@ -291,7 +294,7 @@
         "message": "Aktivera Hoppa Över Automatiskt"
     },
     "audioNotification": {
-        "message": "Ljudeffekt vid hopp"
+        "message": "Ljudavisering vid hoppa över"
     },
     "audioNotificationDescription": {
         "message": "Ljudavisering vid hoppa över kommer att spela upp ett ljud när ett segment hoppas över. Om inaktiverad (eller om hoppa över automatiskt är inaktiverat), kommer inget ljud att spelas upp."
@@ -333,7 +336,7 @@
         "message": "Importera/Exportera Ditt AnvändarID"
     },
     "whatChangeUserID": {
-        "message": "Detta bör hållas hemligt. Det fungerar som ett lösenord och borde inte delas vidare med någon. Om någon kommer över detta kan den personen utge sig för att vara dig."
+        "message": "Denna ska hållas privat. Den fungerar som ett lösenord och ska inte delas med någon. Om någon får tag i den kan de utge sig för att vara dig."
     },
     "setUserID": {
         "message": "Ange AnvändarID"
@@ -345,7 +348,7 @@
         "message": "Skapad av"
     },
     "autoSkip": {
-        "message": "Hoppa Över Automatiskt"
+        "message": "Hoppa över automatiskt"
     },
     "showSkipNotice": {
         "message": "Visa ett meddelande efter att ett segment har hoppats över"
@@ -357,14 +360,14 @@
         "message": "Stöd för tredjeparts YouTube-webbplatser"
     },
     "supportOtherSitesDescription": {
-        "message": "Stöd tredje parts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna. Detta fungerar INTE i inkognito på Chrome och andra Chromium-varianter.",
+        "message": "Stöd tredjeparts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna. Detta fungerar INTE i inkognito på Chrome och andra Chromium-varianter.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Webbplatser som stöds: "
     },
     "optionsInfo": {
-        "message": "Aktivera Invidious stöd, inaktivera hoppa över automatiskt, dölj knappar och mer."
+        "message": "Aktivera stöd för Invidious, inaktivera hoppa över automatiskt, dölj knappar och mer."
     },
     "addInvidiousInstance": {
         "message": "Lägg till tredjepartsklientinstans"
@@ -376,7 +379,7 @@
         "message": "Lägg till"
     },
     "addInvidiousInstanceError": {
-        "message": "Detta är en individuell domän. Den måste ENBART inkludera domändelen. Exempelvis: invidious.ajay.app"
+        "message": "Detta är en ogiltig domän. Den ska ENDAST inkludera domändelen. Exempelvis: invidious.ajay.app"
     },
     "resetInvidiousInstance": {
         "message": "Rensa Invidious instanslista"
@@ -403,16 +406,16 @@
         "message": "Följande rapport är kortare än ditt minstavärde i inställningarna. Det skulle kunna betyda att det redan är rapporterat och bara ignorerat på grund av denna inställning. Är du säker på att du vill rapportera?"
     },
     "showUploadButton": {
-        "message": "Visa Uppladdningsknapp"
+        "message": "Visa uppladdningsknapp"
     },
     "whatUploadButton": {
         "message": "Denna knapp visas på YouTube-spelaren efter att du har valt en tidpunkt och är redo att rapportera."
     },
     "customServerAddress": {
-        "message": "SponsorBlock Serveradress"
+        "message": "Serveradress för SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "Adressen SponsorBlock använder för att prata med servern.\nOm du inte har din egen serverinstans ska den här inställningen inte ändras."
+        "message": "Adressen SponsorBlock använder för att kommunicera med servern.\nOm du inte har din egen serverinstans ska den här inställningen inte ändras."
     },
     "save": {
         "message": "Spara"
@@ -433,7 +436,7 @@
         "message": "Importera/Exportera alla alternativen"
     },
     "whatExportOptions": {
-        "message": "Detta är alla dina alternativ i JSON-format. Det inkluderar ditt användar-ID, så var noga med hur du hanterar datan."
+        "message": "Detta är alla dina alternativ i JSON-format. Det inkluderar ditt användar-ID, så var noga med hur du hanterar informationen."
     },
     "setOptions": {
         "message": "Ange alternativ"
@@ -551,10 +554,10 @@
         "message": "Inaktivera"
     },
     "manualSkip": {
-        "message": "Hoppa Över Manuellt"
+        "message": "Hoppa över manuellt"
     },
     "showOverlay": {
-        "message": "Visa Lager Ovanpå Spelare"
+        "message": "Visa i sökfältet"
     },
     "colorFormatIncorrect": {
         "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."
@@ -580,7 +583,7 @@
         "message": "Dina rapporter och röster KOMMER INTE RÄKNAS mot huvudservern. Använd endast detta för testning."
     },
     "testingServerWarning": {
-        "message": "Alla rapporter och röster KOMMER INTE RÄKNAS mot huvudservern så länge du är ansluten mot testservern. Se till att avaktivera detta när du vill rapportera ett riktigt sponsormeddelande."
+        "message": "Alla inskickningar och röster KOMMER INTE ATT RÄKNAS mot huvudservern så länge du är ansluten mot testservern. Se till att inaktivera detta när du vill skicka in riktiga inskickningar."
     },
     "bracketNow": {
         "message": "(Nu)"
@@ -633,7 +636,7 @@
         "message": "Tvinga kontroll av kanalen innan hoppa över"
     },
     "whatForceChannelCheck": {
-        "message": "Som standard kommer segment att hoppas över direkt innan ens den vet vad det är för kanal. Som standard kan vissa segment i början av videon hoppas över på vitlistade kanaler. Aktiverar du detta alternativet kommer du att förhindra detta, men det göra att alla överhoppningar har en liten fördröjning eftersom det tar lite tid att få kanal-ID. Denna fördröjning kan vara obetydlig om du har en snabb internetuppkoppling."
+        "message": "Som standard kommer segment att hoppas över direkt innan ens den vet vad det är för kanal. Som standard kan vissa segment i början av videon hoppas över på vitlistade kanaler. Aktiverar du detta alternativet kommer du att förhindra detta, men det gör att alla överhoppningar har en liten fördröjning eftersom det tar lite tid att få kanal-ID. Denna fördröjning kan vara obetydlig om du har en snabb internetuppkoppling."
     },
     "forceChannelCheckPopup": {
         "message": "Överväg att aktivera \"Tvinga kontroll av kanalen innan hoppa över\""

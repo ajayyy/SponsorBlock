@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "No se encontró vídeo de YouTube.\nSi esto es incorrecto, actualice la pestaña."
     },
+    "refreshSegments": {
+        "message": "Actualizar segmentos"
+    },
     "success": {
         "message": "¡Completado!"
     },
@@ -612,7 +615,7 @@
         "message": "El ID del canal no está cargado todavía. Si está usando un vídeo incrustado, intente usar la página de inicio de YouTube en su lugar. Esto también podría ser causado por cambios en el diseño de YouTube, si lo cree, haga un comentario aquí:"
     },
     "videoInfoFetchFailed": {
-        "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de video, Por favor, vea https://github.com/ajayyy/SponsorBlock/issues/741 para más información."
+        "message": "Parece que algo está bloqueando la capacidad de SponsorBlock para obtener datos de video. Por favor, vea https://github.com/ajayyy/SponsorBlock/issues/741 para más información."
     },
     "youtubePermissionRequest": {
         "message": "Parece que SponsorBlock no puede acceder a la API de YouTube. Para solucionarlo, acepte el aviso de permiso que aparecerá a continuación, espera unos segundos y vuelve a cargar la página."
@@ -670,7 +673,7 @@
         "message": "Ayude a evitar que esto desaparezca"
     },
     "experimentUnlistedText": {
-        "message": "Este vídeo se detecta como oculto y subido antes de 2017\nLos vídeos ocultos antiguos se pondrán como privados el próximo mes\nEstamos recopilando vídeos *públicos* para respaldar\n¿Quisiera enviarnos este vídeo de forma anónima?\nhttps://support.google.com/youtube/answer/9230970"
+        "message": "Este vídeo se detecta como oculto y subido antes de 2017\nLos vídeos ocultos antiguos se volverán privados el próximo mes \nEstamos recolectando vídeos *públicos* para respaldarlos\n¿Te gustaría enviarnos este vídeo de forma anónima?\nhttps://support.google.com/youtube/answer/9230970"
     },
     "experiementOptOut": {
         "message": "No participar en futuros experimentos",

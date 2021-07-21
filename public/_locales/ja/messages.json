@@ -23,16 +23,16 @@
         "message": "セグメント"
     },
     "Segments": {
-        "message": "区域"
+        "message": "セグメント"
     },
     "upvoteButtonInfo": {
-        "message": "この提案を支持する"
+        "message": "この提案を支持"
     },
     "reportButtonTitle": {
         "message": "報告"
     },
     "reportButtonInfo": {
-        "message": "この提案が正しくないことを報告する。"
+        "message": "この提案が正しくないと報告"
     },
     "Dismiss": {
         "message": "無視"
@@ -44,10 +44,10 @@
         "message": "非表示"
     },
     "hitGoBack": {
-        "message": "元の場所に戻るには「スキップを取り消す」をクリックしてください。"
+        "message": "スキップ解除を押すと元の場所へ戻ります"
     },
     "unskip": {
-        "message": "スキップを取り消す"
+        "message": "スキップ解除"
     },
     "reskip": {
         "message": "再スキップ"
@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "YouTube動画が見つかりませんでした。\nこれが正しくない場合は、タブを再読み込みしてください。"
     },
+    "refreshSegments": {
+        "message": "区域を更新"
+    },
     "success": {
         "message": "成功しました!"
     },
@@ -95,7 +98,7 @@
         "message": "サーバーがダウンしているようです。今すぐ開発者にお知らせください。"
     },
     "connectionError": {
-        "message": "接続エラーが発生しました。エラーコード: "
+        "message": "接続エラーが発生しました。 エラーコード: "
     },
     "wantToSubmit": {
         "message": "次の動画IDで提出します:"
@@ -116,22 +119,22 @@
         "message": "本当に提出してよろしいですか？"
     },
     "whitelistChannel": {
-        "message": "許可表にある番組"
+        "message": "ホワイトリストのチャンネル"
     },
     "removeFromWhitelist": {
-        "message": "許可表から番組を削除"
+        "message": "ホワイトリストからチャンネルを削除"
     },
     "voteOnTime": {
         "message": "セグメントに投票"
     },
     "Submissions": {
-        "message": "提出数"
+        "message": "提案数"
     },
     "savedPeopleFrom": {
         "message": "次のセグメント数から人々を救いました: "
     },
     "viewLeaderboard": {
-        "message": "投票結果"
+        "message": "リーダーボード"
     },
     "recordTimesDescription": {
         "message": "送信"
@@ -141,7 +144,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "心得: 利用者設定で，提出用の鍵盤束縛を設定できます"
+        "message": "ヒント: オプションから提出時のキーバインドを設定できます"
     },
     "clearTimesButton": {
         "message": "時間をクリア"
@@ -153,10 +156,10 @@
         "message": "これは公開の統計ページであなたがどれだけ貢献したかを示すために使用され、ここで確認することができます: "
     },
     "Username": {
-        "message": "利用者名"
+        "message": "ユーザー名"
     },
     "setUsername": {
-        "message": "利用者名を設定"
+        "message": "ユーザー名を設定"
     },
     "discordAdvert": {
         "message": "公式Discordサーバーに参加して意見やフィードバックをお寄せください！"
@@ -192,19 +195,19 @@
         "message": "YouTube プレイヤーから削除ボタンを隠す"
     },
     "showDeleteButton": {
-        "message": "YouTube プレイヤーから削除ボタンを表示する"
+        "message": "YouTubeプレーヤーに削除ボタンを表示"
     },
     "whatDeleteButton": {
-        "message": "これはYouTube再生画面上のUIで，現在の動画から未提出の区域を全て消去します。"
+        "message": "これはYouTubeプレーヤー上のボタンで、現在の動画から未提出のセグメントを全て消去します。"
     },
     "enableViewTracking": {
         "message": "スキップ回数の統計を有効にする"
     },
     "whatViewTracking": {
-        "message": "この機能は、あなたが飛び越した区域を追跡して、当該区域がどれだけ役に立ったかを他の利用者に知らせることで、不正な情報が情報集合体に紛れないようにするための評価基準として使用されます。あなたが区域を飛び越すたびに、拡張機能はサーバーに通報を送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
+        "message": "この機能は、あなたがスキップしたセグメントを追跡して、そのセグメントがどれだけ役に立ったかを他のユーザーに知らせることで、スパムがデータベースに紛れないようにするための評価基準として使用されます。あなたがセグメントをスキップするたびに、拡張機能はサーバーにメッセージを送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
     },
     "enableViewTrackingInPrivate": {
-        "message": "匿名閲覧状態で計数追跡を飛び越す"
+        "message": "プライベート/シークレット タブでスキップカウントトラッキングを有効にする"
     },
     "enableQueryByHashPrefix": {
         "message": "ハッシュプレフィックスを使って要求"
@@ -216,7 +219,7 @@
         "message": "新しい動画ではセグメントを再取得する"
     },
     "whatRefetchWhenNotFound": {
-        "message": "動画がまだ新しく区域が見つからない場合は、動画を視聴している間、数分おきに区域を検索し続けます。"
+        "message": "動画がまだ新しくセグメントが見つからない場合は、動画を視聴している間、数分おきにセグメントを検索し続けます。"
     },
     "showNotice": {
         "message": "再度通知を表示する"
@@ -245,32 +248,32 @@
         "message": "セグメントをスキップするキーを設定"
     },
     "setStartSponsorShortcut": {
-        "message": "セグメントを開始するキーを設定"
+        "message": "セグメントの開始/停止キーのバインドを設定"
     },
     "setSubmitKeybind": {
-        "message": "投稿する鍵束縛を設定"
+        "message": "提案キーのバインドを設定"
     },
     "keybindDescription": {
-        "message": "選択する鍵束縛を打鍵してください"
+        "message": "キーを入力して設定します"
     },
     "keybindDescriptionComplete": {
-        "message": "鍵束縛を次の通り設定しました: "
+        "message": "キーバインドは次のように設定されました: "
     },
     "0": {
         "message": "接続がタイムアウトになりました。インターネット接続をご確認ください。接続に問題がない場合、サーバーが混雑またはダウンしている可能性があります。"
     },
     "disableSkipping": {
-        "message": "スキップは有効です"
+        "message": "スキップ有効"
     },
     "enableSkipping": {
-        "message": "スキップは無効です"
+        "message": "スキップ無効"
     },
     "yourWork": {
         "message": "あなたの貢献",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
-        "message": "サーバーが混雑中です。数秒後にもう一度お試しください。"
+        "message": "サーバー側で問題が起きているようです。時間をおいて再び試してください。"
     },
     "errorCode": {
         "message": "エラーコード: "
@@ -291,10 +294,10 @@
         "message": "自動スキップを有効にする"
     },
     "audioNotification": {
-        "message": "オーディオ通知をスキップ"
+        "message": "スキップ時に通知音を鳴らす"
     },
     "audioNotificationDescription": {
-        "message": "スキップ時の音声通知は、セグメントがスキップされる毎に音を鳴らす機能です。無効 (または自動スキップが無効) の場合、音は再生されません。"
+        "message": "セグメントがスキップされた時に音を鳴らします。 無効 (もしくは自動スキップが無効) の場合、音は再生されません。"
     },
     "showTimeWithSkips": {
         "message": "スキップした分を除いた時間を表示する"
@@ -330,19 +333,19 @@
         "message": "サーバーの状態についてはstatus.sponsor.ajay.appを確認してください。"
     },
     "changeUserID": {
-        "message": "利用者IDの読み込み・書き出し"
+        "message": "ユーザーIDのインポート/エクスポート"
     },
     "whatChangeUserID": {
-        "message": "これを公開してはいけません。これは暗証語のようなものであり，誰とも共有するべきではありません。これを持っている人はあなたになりすませてしまいます。"
+        "message": "ユーザーIDは公開しないでください。これはパスワードのようなもので誰とも共有するべきではありません。 他の誰かが知った場合、あなたになりすます可能性があります。"
     },
     "setUserID": {
-        "message": "利用者IDを設定"
+        "message": "ユーザーIDを設定"
     },
     "userIDChangeWarning": {
-        "message": "警告: 利用者IDの変更は恒久的です。本当に実行しますか？ 念のため，旧IDを控えておいてください。"
+        "message": "警告: ユーザーIDの変更は恒久的です。本当に実行しますか? 念のため以前のユーザーIDは控えておいてください。"
     },
     "createdBy": {
-        "message": "作成者"
+        "message": "作成者:"
     },
     "autoSkip": {
         "message": "自動スキップ"
@@ -367,7 +370,7 @@
         "message": "Invidious対応を有効にし，自動飛越を無効にし，GUIを非表示にします。"
     },
     "addInvidiousInstance": {
-        "message": "第三者製クライアントの実体を追加"
+        "message": "サードパーティーのクライアントインスタンスを追加"
     },
     "addInvidiousInstanceDescription": {
         "message": "任意のインスタンスを追加できます。ドメイン名だけを記入してください。例: invidious.ajay.app"
@@ -388,7 +391,7 @@
         "message": "現在のインスタンス:"
     },
     "minDuration": {
-        "message": "飛越す最短の時間（秒）:"
+        "message": "最小持続時間（秒）:"
     },
     "minDurationDescription": {
         "message": "設定値より短いセグメントはスキップされず、プレーヤーにも表示されません。"
@@ -406,7 +409,7 @@
         "message": "アップロードボタンを表示"
     },
     "whatUploadButton": {
-        "message": "時刻印を選択し提出準備が整ったあとにYouTube再生機上に表示されます。"
+        "message": "このボタンはタイムスタンプを選択して投稿の準備ができた後にYouTubeプレーヤーに表示されます。"
     },
     "customServerAddress": {
         "message": "SponsorBlock サーバーアドレス"
@@ -436,7 +439,7 @@
         "message": "JSON形式の個人設定全体です。利用者IDが含まれているので，共有するときは注意してください。"
     },
     "setOptions": {
-        "message": "設定する"
+        "message": "オプション設定"
     },
     "exportOptionsWarning": {
         "message": "警告: 設定の変更は恒久的で，本拡張機能を破壊する可能性があります。本当に実行しますか？ 念のため，旧設定を控えておいてください。"
@@ -469,7 +472,7 @@
         "message": "編集"
     },
     "copyDebugInformation": {
-        "message": "詳細情報をクリップボードに写す"
+        "message": "デバッグ情報をクリップボードにコピー"
     },
     "copyDebugInformationFailed": {
         "message": "クリップボードに書き込めませんでした"
@@ -481,10 +484,10 @@
         "message": "診断用情報がクリップボードに複製されました。共有したくない情報があればそこから削除できます。これをファイルに保存したり，不具合報告に貼り付けてください。"
     },
     "theKey": {
-        "message": "鍵束縛"
+        "message": "キー"
     },
     "keyAlreadyUsed": {
-        "message": "は別の動作に割り当て済みです。違う鍵を設定してください。"
+        "message": "は他の動作に割り当てられています。異なったキーを選択してください。"
     },
     "to": {
         "message": "～",
@@ -533,10 +536,10 @@
         "message": "前回の粗筋，または動画の後半内容の予告。音声による要約ではなく，編集された映像を指します。"
     },
     "category_music_offtopic": {
-        "message": "音楽: 音楽ではない区間"
+        "message": "音楽: 音楽以外のセクション"
     },
     "category_music_offtopic_description": {
-        "message": "MVでのみ使用できます。MVにおける飛び越したい場面のうち，他の範疇に該当しないものです。"
+        "message": "ミュージックビデオでの使用に限ります。他のカテゴリーに含まれていないミュージックビデオのセクションにのみ使用してください。"
     },
     "category_music_offtopic_short": {
         "message": "音楽以外の部分"
@@ -557,7 +560,7 @@
         "message": "シークバーに表示"
     },
     "colorFormatIncorrect": {
-        "message": "色の書式が正しくありません。井桁記号に続く3桁あるいは6桁の16進数である必要があります。"
+        "message": "カラーコードの書式が間違っています。 #から始まる3桁または6桁の16進数コードでなければなりません。"
     },
     "previewColor": {
         "message": "未確定の色",
@@ -570,7 +573,7 @@
         "message": "カテゴリ"
     },
     "skipOption": {
-        "message": "飛び越し設定",
+        "message": "スキップ設定",
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
@@ -621,16 +624,16 @@
         "message": "許可を承認する"
     },
     "permissionRequestSuccess": {
-        "message": "許可要求が成功しました。"
+        "message": "許可リクエストが成功しました！"
     },
     "permissionRequestFailed": {
-        "message": "権限要求に失敗しました。承認を拒否しましたか？"
+        "message": "権限要求に失敗しました。拒否をクリックしましたか？"
     },
     "adblockerIssueWhitelist": {
-        "message": "これを解決できない場合は，「飛び越し前に強制的に番組を検査する」を無効にしてください。SponsorBlockはこの動画の番組情報を取得できませんでした。"
+        "message": "これを解決できない場合は、設定「スキップする前にチャンネルチェックを強制」を無効にしてください。 SponsorBlockはこのビデオのチャンネル情報を取得できません。"
     },
     "forceChannelCheck": {
-        "message": "飛び越し前に強制的に番組を検査する"
+        "message": "スキップする前にチャンネルチェックを強制する"
     },
     "whatForceChannelCheck": {
         "message": "デフォルト設定では、チャンネル情報を取得する前にセグメントをスキップします。デフォルト設定では、ホワイトリストに追加されているチャンネルでも動画の先頭部分にあるセグメントがスキップされる場合があります。この設定を有効にするとこの挙動が回避されますが、channelIDの取得に時間がかかるため、すべてのスキップに遅延が発生します。高速なインターネット回線を使用している場合は気にならないかもしれません。"
@@ -664,7 +667,7 @@
         "message": "導入画面・終了画面・商品紹介などを飛び越す個人設定を開きます。"
     },
     "help": {
-        "message": "手引き"
+        "message": "ヘルプ"
     },
     "experimentUnlistedTitle": {
         "message": "これが消えないようにできます。"
