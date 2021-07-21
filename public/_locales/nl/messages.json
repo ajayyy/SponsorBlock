@@ -669,12 +669,6 @@
     "help": {
         "message": "Help"
     },
-    "experimentUnlistedTitle": {
-        "message": "Helpen voorkomen dat dit verdwijnt"
-    },
-    "experimentUnlistedText": {
-        "message": "Deze video is gedetecteerd als niet-genoteerd en geüpload voor 2017.\nOude niet-genoteerde video's worden volgende maand op privé gezet.\nWe zijn *publieke* video's aan het verzamelen om te back-uppen.\nWilt u deze video anoniem naar ons toesturen?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Uitschrijven van alle toekomstige experimenten",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
