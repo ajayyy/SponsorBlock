@@ -669,12 +669,6 @@
     "help": {
         "message": "ヘルプ"
     },
-    "experimentUnlistedTitle": {
-        "message": "これが消えないようにできます。"
-    },
-    "experimentUnlistedText": {
-        "message": "この動画は2017年以前の限定公開動画のようです。\n古い限定公開動画は来月中に非公開にされます。\nSponsorBlockでは**公開されている**動画の情報を収集しています。\nこの動画をSponsorBlockに匿名で送信していただけますか？\n参考: https://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "実験的機能をすべて無効にする",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
