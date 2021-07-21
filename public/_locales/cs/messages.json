@@ -669,12 +669,6 @@
     "help": {
         "message": "Nápověda"
     },
-    "experimentUnlistedTitle": {
-        "message": "Pomozte zabránit zmizení tohoto"
-    },
-    "experimentUnlistedText": {
-        "message": "Toto video bylo detekováno jako neuvedené a bylo nahráno před rokem 2017\nStará neuvedená videa budou nastavena příští měsíc na soukromá\nSbíráme *veřejná* videa pro zálohu\nChtěli byste nám anonymně poslat toto video?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Odhlásit se ze všech budoucích experimentů",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
