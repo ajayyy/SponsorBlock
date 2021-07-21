@@ -654,9 +654,6 @@
     "categoryUpdate2": {
         "message": "Відкрийте налаштування, щоб пропускати початкові і кінцеві заставки, саморекламу та інше."
     },
-    "experimentUnlistedTitle": {
-        "message": "Допоможіть цьому не зникнути"
-    },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
