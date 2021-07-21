@@ -669,12 +669,6 @@
     "help": {
         "message": "Помощь"
     },
-    "experimentUnlistedTitle": {
-        "message": "Помогите архивировать это видео"
-    },
-    "experimentUnlistedText": {
-        "message": "Это видео было загружено до 2017 и имеет доступ по ссылке\nДля всех подобных видео в следующем месяце будет установлен ограниченный доступ\nМы собираем *публичные* видео для резервного копирования\nВы хотели бы анонимно отправить нам это видео?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Отказаться от всех будущих экспериментов",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
