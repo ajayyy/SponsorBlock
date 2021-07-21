@@ -39,7 +39,6 @@ interface SBConfig {
     testingServer: boolean,
     refetchWhenNotFound: boolean,
     ytInfoPermissionGranted: boolean,
-    askAboutUnlistedVideos: boolean,
     allowExpirements: boolean,
     autoHideInfoButton: boolean,
 
@@ -179,7 +178,6 @@ const Config: SBObject = {
         testingServer: false,
         refetchWhenNotFound: true,
         ytInfoPermissionGranted: false,
-        askAboutUnlistedVideos: true,
         allowExpirements: true,
         autoHideInfoButton: true,
 
@@ -345,6 +343,10 @@ function fetchConfig(): Promise<void> {
 }
 
 function migrateOldFormats(config: SBConfig) {
+    if (config["askAboutUnlistedVideos"]) {
+        chrome.storage.sync.remove("askAboutUnlistedVideos");
+    }
+
     // Adding preview category
     if (!config["previewCategoryUpdate"]) {
         config["previewCategoryUpdate"] = true;
