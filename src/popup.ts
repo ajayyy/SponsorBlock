@@ -103,6 +103,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sponsorMessageTimes",
         //"downloadedSponsorMessageTimes",
         "refreshSegmentsButton",
+        "lockSegmentsButton",
         "whitelistButton",
         "sbDonate"
     ].forEach(id => PageElements[id] = document.getElementById(id));
@@ -133,6 +134,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.optionsButton.addEventListener("click", openOptions);
     PageElements.helpButton.addEventListener("click", openHelp);
     PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
+    PageElements.lockSegmentsButton.addEventListener("click", lockSegments);
 
     /** If true, the content script is in the process of creating a new segment. */
     let creatingSegment = false;
@@ -144,92 +146,67 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     let currentVideoID = null;
 
     //show proper disable skipping button
-    const disableSkipping = Config.config.disableSkipping;
-    if (disableSkipping != undefined && disableSkipping) {
+    if (Config.config.disableSkipping) {
         PageElements.disableSkipping.style.display = "none";
         PageElements.enableSkipping.style.display = "unset";
         PageElements.toggleSwitch.checked = false;
     }
 
-    //if the don't show notice again variable is true, an option to
-    //  disable should be available
-    const dontShowNotice = Config.config.dontShowNotice;
-    if (dontShowNotice != undefined && dontShowNotice) {
+    if (Config.config.dontShowNotice) {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, (res) => {
-        if (res.status === 200) {
-            PageElements.usernameValue.innerText = JSON.parse(res.responseText).userName
-        }
-    })
+    const userInfoRes = await utils.asyncRequestToServer("GET", "/api/userInfo?userID=" + Config.config.userID);
+    if (userInfoRes.ok) {
+        const userInfo = JSON.parse(userInfoRes.responseText);
 
-    //get the amount of times this user has contributed and display it to thank them
-    if (Config.config.sponsorTimesContributed != undefined) {
-        PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
+        if (userInfo.vip) PageElements.lockSegmentsButton.classList.remove("hidden");
+
+        PageElements.usernameValue.innerText = userInfo.userName;
+
+        PageElements.sponsorTimesContributionsDisplay.innerText = userInfo.segmentCount.toLocaleString();
         PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
 
-        //get the userID
-        const userID = Config.config.userID;
-        if (userID != undefined) {
-            //there are probably some views on these submissions then
-            //get the amount of views from the sponsors submitted
-            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(response) {
-                if (response.status == 200) {
-                    const viewCount = JSON.parse(response.responseText).viewCount;
-                    if (viewCount != 0) {
-                        if (viewCount > 1) {
-                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
-                        } else {
-                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-                        }
+        const viewCount = userInfo.viewCount;
+        if (viewCount != 0) {
+            if (viewCount > 1) {
+                PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
+            } else {
+                PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
+            }
 
-                        PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
-                        PageElements.sponsorTimesViewsContainer.style.display = "unset";
-                    }
-                }
-            });
+            PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
+            PageElements.sponsorTimesViewsContainer.style.display = "unset";
+        }
 
-            //get this time in minutes
-            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(response) {
-                if (response.status == 200) {
-                    const minutesSaved = JSON.parse(response.responseText).timeSaved;
-                    if (minutesSaved != 0) {
-                        if (minutesSaved != 1) {
-                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-                        } else {
-                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-                        }
+        const minutesSaved = userInfo.minutesSaved;
+        if (minutesSaved != 0) {
+            if (minutesSaved != 1) {
+                PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+            } else {
+                PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
+            }
 
-                        PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                    }
-                }
-            });
+            PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
         }
     }
 
-    //get the amount of times this user has skipped a sponsor
-    if (Config.config.skipCount != undefined) {
-        if (Config.config.skipCount != 1) {
-            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segments");
-        } else {
-            PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segment");
-        }
-
-        PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount.toLocaleString();
-        PageElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
+    if (Config.config.skipCount != 1) {
+        PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segments");
+    } else {
+        PageElements.sponsorTimesSkipsDoneEndWord.innerText = chrome.i18n.getMessage("Segment");
     }
 
-    //get the amount of time this user has saved.
-    if (Config.config.minutesSaved != undefined) {
-        if (Config.config.minutesSaved != 1) {
-            PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-        } else {
-            PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-        }
+    PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount.toLocaleString();
+    PageElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
 
-        PageElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(Config.config.minutesSaved);
+    if (Config.config.minutesSaved != 1) {
+        PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+    } else {
+        PageElements.sponsorTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
     }
+
+    PageElements.sponsorTimeSavedDisplay.innerText = getFormattedHours(Config.config.minutesSaved);
 
     // Must be delayed so it only happens once loaded
     setTimeout(() => PageElements.sponsorblockPopup.classList.remove("preload"), 250);
@@ -697,6 +674,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 () => stopAnimation()
             )}
         );
+    }
+
+    function lockSegments() {
+        alert("lock");
     }
 
     /**
