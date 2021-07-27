@@ -6,6 +6,10 @@
   --sb-green-bg: #077B27;
 }
 
+html {
+  color-scheme: dark;
+}
+
 #sponsorBlockPopupBody .hidden {
   display: none !important;
 }
