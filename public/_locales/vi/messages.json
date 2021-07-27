@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Không tìm thấy video nào.\nNếu sai, hãy thử tải lại thẻ này."
     },
+    "refreshSegments": {
+        "message": "Làm mới segments"
+    },
     "success": {
         "message": "Thành công!"
     },
@@ -393,6 +396,12 @@
     "minDurationDescription": {
         "message": "Đoạn quảng cáo ngắn hơn giá trị được đặt sẽ không bị bỏ qua hoặc hiển thị trong trình chạy video."
     },
+    "skipNoticeDuration": {
+        "message": "Thời gian tự động đóng bảng thông báo phân đoạn (giây):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Đặt thời gian hiển thị bảng thông báo phân đoạn. Nếu như bạn tự nhấn nút bỏ qua, nó sẽ hiện lâu hơn 1 chút."
+    },
     "shortCheck": {
         "message": "Đoạn quảng cáo sau ngắn hơn tùy chọn độ dài ngắn nhất của bạn. Điều này có thể có nghĩa là nó đã được đăng rồi, và không được bỏ qua vì tùy chọn này. Bạn có chắc muốn đăng nó không?"
     },
@@ -494,7 +503,7 @@
         "message": "Quảng cáo không trả công/Tự quảng cáo"
     },
     "category_selfpromo_description": {
-        "message": "Tương tự như 'nhà tài trợ' ngoại trừ việc quảng cáo không được trả tiền hay tự quảng cáo. Điều này bao gồm các phần hàng hóa, đóng góp, hoặc thông tin về người mà họ hợp tác với."
+        "message": "Tương tự như 'nhà tài trợ' ngoại trừ việc quảng cáo không được trả tiền hay tự quảng cáo. Điều này bao gồm các phần hàng hóa, đóng góp, hoặc thông tin về người mà họ hợp tác cùng."
     },
     "category_interaction": {
         "message": "Nhắc tương tác (Đăng ký)"
@@ -524,7 +533,7 @@
         "message": "Xem trước/Tóm tắt"
     },
     "category_preview_description": {
-        "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
+        "message": "Tóm tắt nhanh các tập trước, hoặc xem trước những gì sẽ xảy ra sau video hiện tại. Dùng cho các đoạn clip gắn kèm với nhau, không phải cho tóm tắt bằng lời."
     },
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
@@ -553,8 +562,12 @@
     "colorFormatIncorrect": {
         "message": "Mã màu sai định dạng. Mã màu phải có 3 hoặc 6 ký tự hệ hex và có dấu thăng ở đầu."
     },
+    "previewColor": {
+        "message": "Màu khi chưa được gửi đi",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
     "seekBarColor": {
-        "message": "Màu của thanh xem trước"
+        "message": "Màu của thanh tìm kiếm"
     },
     "category": {
         "message": "Thể loại"
@@ -596,6 +609,18 @@
     },
     "hiddenDueToDuration": {
         "message": "đã bị ẩn: quá ngắn"
+    },
+    "youtubePermissionRequest": {
+        "message": "Có vẻ như SponsorBlock không thể truy cập API YouTube. Để khắc phục điều này, hãy chấp nhận lời nhắc cấp quyền sẽ xuất hiện tiếp theo, đợi vài giây rồi tải lại trang."
+    },
+    "acceptPermission": {
+        "message": "Cho phép truy cập"
+    },
+    "permissionRequestSuccess": {
+        "message": "Đã có quyền truy cập!"
+    },
+    "permissionRequestFailed": {
+        "message": "Truy cập bị từ chối, bạn đã nhấp vào từ chối à?"
     },
     "forceChannelCheck": {
         "message": "Bắt buộc kiểm tra kênh trước khi bỏ qua"

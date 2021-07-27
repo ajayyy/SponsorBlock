@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "YouTube'i videot ei leitud.\nKui see ei vasta tõele, laadi kaart uuesti."
     },
+    "refreshSegments": {
+        "message": "Värskenda segmendid"
+    },
     "success": {
         "message": "Õnnestus!"
     },

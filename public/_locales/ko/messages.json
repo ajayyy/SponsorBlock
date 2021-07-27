@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "유튜브 동영상을 찾을 수 없습니다.\n오류라면, 탭을 새로고침해보세요."
     },
+    "refreshSegments": {
+        "message": "구간 새로고침"
+    },
     "success": {
         "message": "성공!"
     },
@@ -665,6 +668,16 @@
     },
     "help": {
         "message": "도움"
+    },
+    "experimentUnlistedTitle": {
+        "message": "이 항목이 사라지지 않도록 설정"
+    },
+    "experimentUnlistedText": {
+        "message": "이 동영상은 2017년 이전에 올린 미등록 동영상으로 보입니다\n이전의 미등록 동영상은 다음 달부터 비공개 처리됩니다\n저희는 백업할 *공개* 동영상만을 수집하고 있습니다\n이 동영상을 익명으로 보내시겠습니까?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "향후 모든 실험 기능 비활성화",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "다시 보지 않음"

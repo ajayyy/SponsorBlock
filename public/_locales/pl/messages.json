@@ -669,9 +669,6 @@
     "experimentUnlistedTitle": {
         "message": "Pomóż zapobiec zniknięciu tego"
     },
-    "experimentUnlistedText": {
-        "message": "Ten film jest wykryty jako nienotowany i przesłany przed 2017 r.\nStare filmy nienotowane są ustawione na prywatne w przyszłym miesiącu\nZbieramy *publiczne* filmy do kopii zapasowej\nCzy chcesz anonimowo wysłać do nas ten film?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Wyłączenie wszystkich przyszłych eksperymentów",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."

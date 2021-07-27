@@ -97,6 +97,9 @@
     "hideButtons": {
         "message": "Скриване на бутоните в YouTube Player-а"
     },
+    "autoSkip": {
+        "message": "Автоматично пропускане"
+    },
     "to": {
         "message": "до",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -110,11 +113,26 @@
     "category_selfpromo_description": {
         "message": "Подобно на \"спонсорство\", но е неплатено. Това включва merchandise, дарения или информация с кого каналът има сътрудничество."
     },
+    "category_interaction": {
+        "message": "Напомняне за действие (Абониране)"
+    },
     "category_interaction_description": {
         "message": "Когато има кратко напомняне да харесате, да се абонирате или да последвате канала по средата на съдържанието. Ако е дълго или заради нещо специфично, трябва да е под \"само-реклама\"."
     },
+    "category_intro": {
+        "message": "Пауза/Начална анимация"
+    },
+    "category_outro": {
+        "message": "Крайни картички/Заслуги"
+    },
+    "category_preview": {
+        "message": "Предварително изявление/Обобщение"
+    },
     "category_music_offtopic": {
         "message": "Музика: Част без музика"
+    },
+    "category_music_offtopic_short": {
+        "message": "Без музика"
     },
     "category_livestream_messages": {
         "message": "Поточно предаване: Четене на съобщения/дарения"
@@ -134,8 +152,19 @@
     "colorFormatIncorrect": {
         "message": "Вашият цвят не е форматиран правилно. Трябва да бъде 3- или 6-цифрен hex код с \"#\" в началото."
     },
+    "previewColor": {
+        "message": "Цвят на неизпратен сегмент",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "Цвят на лентата за превъртане"
+    },
     "category": {
         "message": "Категория"
+    },
+    "skipOption": {
+        "message": "Метод за пропускане",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "downvoteDescription": {
         "message": "Грешно/Неправилно Време"

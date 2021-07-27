@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Aucune vidéo YouTube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
     },
+    "refreshSegments": {
+        "message": "Rafraîchir les segments"
+    },
     "success": {
         "message": "Succès !"
     },
@@ -185,6 +188,9 @@
     "whatInfoButton": {
         "message": "Il s'agit du bouton qui ouvre l'encart sur la page YouTube."
     },
+    "autoHideInfoButton": {
+        "message": "Masquer Automatiquement Le Button Info"
+    },
     "hideDeleteButton": {
         "message": "Cacher le bouton Supprimer sur le lecteur YouTube"
     },
@@ -204,13 +210,13 @@
         "message": "Activer le suivi du nombre de sauts dans les onglets privés/incognito"
     },
     "enableQueryByHashPrefix": {
-        "message": "Requête avec seulement le début du hash"
+        "message": "Requête par préfixe du hash"
     },
     "whatQueryByHashPrefix": {
         "message": "Au lieu de demander des segments au serveur à l'aide de l'identifiant de la vidéo, les 4 premiers caractères du hash de l'identifiant de la vidéo sont envoyés. Ce serveur renverra les données pour toutes les vidéos ayant des hash similaires."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Re-récupérer les segments sur les nouvelles vidéos"
+        "message": "Récupérer les segments sur les nouvelles vidéos"
     },
     "whatRefetchWhenNotFound": {
         "message": "Si la vidéo est nouvelle et qu'aucun segment n'a été trouvé, ils seront réactualisés toutes les quelques minutes pendant le visionnage."
@@ -350,6 +356,13 @@
     "keybindCurrentlySet": {
         "message": ". Il est actuellement réglé sur :"
     },
+    "supportOtherSites": {
+        "message": "Support de YouTube-Sites tierces"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Support de clients YouTube tierces. Pour habiliter le support, vous devez accepter les autorisations supplémentaires. Cela ne fonctionne PAS en incognito sur Chrome et d'autres variantes de Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Sites pris en charge : "
     },
@@ -358,6 +371,9 @@
     },
     "addInvidiousInstance": {
         "message": "Ajouter une instance de client tiers"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Ajouter une instance personnalisée. Elle doit être formaté avec SEULEMENT le domaine. Exemple: invidious.ajay.app"
     },
     "add": {
         "message": "Ajouter"
@@ -379,6 +395,12 @@
     },
     "minDurationDescription": {
         "message": "Les segments plus courts que la valeur fixée ne seront pas sautés ou affichés dans le lecteur."
+    },
+    "skipNoticeDuration": {
+        "message": "Durée du saut de segment (secondes):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "L'avis du saut restera à l'écran pendant au moins aussi longtemps. Pour passer manuellement, il peut être visible plus longtemps."
     },
     "shortCheck": {
         "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
@@ -509,6 +531,9 @@
     },
     "category_preview": {
         "message": "Aperçu/Résumé"
+    },
+    "category_preview_description": {
+        "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
     },
     "category_music_offtopic": {
         "message": "Musique : Segment non musical"
@@ -643,5 +668,18 @@
     },
     "help": {
         "message": "Aide"
+    },
+    "experimentUnlistedTitle": {
+        "message": "Aide à éviter que ça cela ne disparaisse"
+    },
+    "experimentUnlistedText": {
+        "message": "Cette vidéo a été détectée comme non listée et a été téléchargée avant 2017\nLes anciennes vidéos non listées seront définies comme privés le mois prochain.\nNous collectons les vidéos *publiques* pour les sauvegarder\nSouhaitez-vous nous envoyer anonymement cette vidéo à nous?\nhttps://support.google.com/youtube/answer/9230970"
+    },
+    "experiementOptOut": {
+        "message": "Se désinscrire de toutes les futures expériences",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Cacher pour toujours"
     }
 }

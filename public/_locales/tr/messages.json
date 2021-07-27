@@ -71,7 +71,7 @@
         "message": "Bu videonun kısımları veri tabanımızda mevut"
     },
     "sponsor404": {
-        "message": "Kısımlar bulunamadı"
+        "message": "Kısım bulunamadı"
     },
     "sponsorStart": {
         "message": "Kısım Şimdi Başlıyor"
@@ -84,6 +84,9 @@
     },
     "noVideoID": {
         "message": "YouTube videosu bulunamadı.\nHatalı olduğunu düşünüyorsanız sayfayı yenileyin."
+    },
+    "refreshSegments": {
+        "message": "Kısımları tazele"
     },
     "success": {
         "message": "Başarılı!"
@@ -670,7 +673,7 @@
         "message": "Bunun kaybolmasını önlemeye yardımcı ol"
     },
     "experimentUnlistedText": {
-        "message": "Bu video liste dışı ve 2017'den önce yüklenmiş\nListe dışı eski videolar önümüzdeki aydan itibaren gizli hâle getirilecek\n*Herkese açık* videoları derleyerek yedekliyoruz\nBu videoyu bize anonim kalarak göndermek ister misiniz?\nhttps://support.google.com/youtube/answer/9230970"
+        "message": "Bu video liste dışı ve 2017'den önce yüklenmiş\nListe dışı eski videolar önümüzdeki aydan itibaren gizli hâle getirilecek\n*Herkese açık* videoları derleyerek yedekliyoruz\nBize anonim olarak bu videoyu göndermek ister misiniz?\nhttps://support.google.com/youtube/answer/9230970"
     },
     "experiementOptOut": {
         "message": "Gelecekteki deneylerin hiçbirine katılma",

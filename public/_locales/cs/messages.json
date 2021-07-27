@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte záložku."
     },
+    "refreshSegments": {
+        "message": "Aktualizovat segmenty"
+    },
     "success": {
         "message": "Úspěch!"
     },
