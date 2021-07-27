@@ -1,152 +1,154 @@
-<head>
-  <title>__MSG_openPopup__</title>
-  <link id="sponsorBlockPopupFont" rel="stylesheet" type="text/css" href="/libs/Source+Sans+Pro.css">
-  <link id="sponsorBlockStyleSheet" rel="stylesheet" type="text/css" href="popup.css">
+<html id="sponsorBlockPopupHTML">
+  <head>
+    <title>__MSG_openPopup__</title>
+    <link id="sponsorBlockPopupFont" rel="stylesheet" type="text/css" href="/libs/Source+Sans+Pro.css">
+    <link id="sponsorBlockStyleSheet" rel="stylesheet" type="text/css" href="popup.css">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 
-<body id="sponsorBlockPopupBody">
-  <div id="sponsorblockPopup" class="sponsorBlockPageBody preload">
-    <div class="logoText bottomSpace">
-      <img src="icons/IconSponsorBlocker256px.png" height="40px" id="sponsorBlockPopupLogo">
-      <p>SponsorBlock</p>
-    </div>
-    <div id="videoInfo" class="bottomSpace">
-      <div class="bottomSpace">
-        <!-- Loading text -->
-        <p id="loadingIndicator">__MSG_noVideoID__</p>
-        <!-- If the video was found in the database -->
-        <p id="videoFound"></p>
-        <button class="sbSlimButton hidden" id="refreshSegmentsButton" title="__MSG_refreshSegments__">
-          <img id="refreshSegments" src="/icons/refresh.svg"/>
-        </button>
+  <body id="sponsorBlockPopupBody">
+    <div id="sponsorblockPopup" class="sponsorBlockPageBody preload">
+      <div class="logoText bottomSpace">
+        <img src="icons/IconSponsorBlocker256px.png" height="40px" id="sponsorBlockPopupLogo">
+        <p>SponsorBlock</p>
       </div>
-      <div id="issueReporterContainer">
-        <div id="issueReporterTimeButtons"></div>
+      <div id="videoInfo" class="bottomSpace">
+        <div class="bottomSpace">
+          <!-- Loading text -->
+          <p id="loadingIndicator">__MSG_noVideoID__</p>
+          <!-- If the video was found in the database -->
+          <p id="videoFound"></p>
+          <button class="sbSlimButton hidden" id="refreshSegmentsButton" title="__MSG_refreshSegments__">
+            <img id="refreshSegments" src="/icons/refresh.svg"/>
+          </button>
+        </div>
+        <div id="issueReporterContainer">
+          <div id="issueReporterTimeButtons"></div>
+        </div>
       </div>
-    </div>
-    <div class="sidebyside">
-      <div id="disableExtension">
-        <!--github: mbledkowski/toggle-switch-->
-        <label for="toggleSwitch" class="toggleSwitchContainer">
-          <input type="checkbox" style="display:none;" id="toggleSwitch" checked>
-          <span class="switchBg shadow"></span>
-          <span class="switchBg white"></span>
-          <span class="switchBg green"></span>
-          <span class="switchDot"></span>
-        </label>
-        <p id="disableSkipping">__MSG_disableSkipping__</p>
-        <p id="enableSkipping" style="display: none">__MSG_enableSkipping__</p>
-      </div>
-      <div id="additionalButtons">
-        <!-- grayedOut until loading complete -->
-        <div id="whitelistButton" class="hidden bottomSpace" title="__MSG_forceChannelCheckPopup__">
-          <input type="checkbox" style="display:none;" id="whitelistToggle">
-          <label for="whitelistToggle" class="whitelistToggleText">
-            <div class="SBWhitelistIconContainer">
-              <svg viewBox="0 0 24 24" width="16" height="16" class="SBWhitelistIcon">
-                <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
-              </svg>
-            </div>
-            <p id="whitelistChannel">__MSG_whitelistChannel__</p>
-            <p id="unwhitelistChannel" style="display: none">__MSG_removeFromWhitelist__</p>
+      <div class="sidebyside">
+        <div id="disableExtension">
+          <!--github: mbledkowski/toggle-switch-->
+          <label for="toggleSwitch" class="toggleSwitchContainer">
+            <input type="checkbox" style="display:none;" id="toggleSwitch" checked>
+            <span class="switchBg shadow"></span>
+            <span class="switchBg white"></span>
+            <span class="switchBg green"></span>
+            <span class="switchDot"></span>
           </label>
+          <p id="disableSkipping">__MSG_disableSkipping__</p>
+          <p id="enableSkipping" style="display: none">__MSG_enableSkipping__</p>
         </div>
-        <button id="optionsButton" title="__MSG_optionsInfo__">
-          <img src="/icons/settings.svg" alt="Settings icon" width="16" height="16" id="sbPopupIconSettings">
-          __MSG_Options__
-        </button>
-      </div>
-    </div>
-
-    <div id="whitelistForceCheck" class="hidden">
-      __MSG_forceChannelCheckPopup__
-    </div>
-
-    <div id="mainControls" style="display: none">
-      <p class="sbHeader sbSubHeader">
-        __MSG_recordTimesDescription__
-      </p>
-      <sub style="margin-bottom: 12px;">__MSG_popupHint__</sub>
-      <div>
-        <button id="sponsorStart" class="mediumButton">__MSG_sponsorStart__</button>
-      </div>
-      <div id="submissionSection" style="display: none">
-        <b style="display: block; margin-top: 12px;">__MSG_submissionEditHint__</b>
-        <div id="submitTimesContainer" style="margin-top: 12px;">
-          <button id="submitTimes" class="mediumButton">__MSG_submitTimesButton__</button>
-        </div>
-      </div>
-    </div>
-    <h1 class="recordingSubtitle sbHeader sbSubHeader">__MSG_yourWork__</h1>
-    <div class="sidebyside">
-      <div id="usernameElement">
-        <div>
-          <p>__MSG_Username__:</p>
-          <div id="setUsernameContainer">
-            <p id="usernameValue"></p>
-            <button id="setUsernameButton" title="__MSG_setUsername__">
-              <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
-            </button>
+        <div id="additionalButtons">
+          <!-- grayedOut until loading complete -->
+          <div id="whitelistButton" class="hidden bottomSpace" title="__MSG_forceChannelCheckPopup__">
+            <input type="checkbox" style="display:none;" id="whitelistToggle">
+            <label for="whitelistToggle" class="whitelistToggleText">
+              <div class="SBWhitelistIconContainer">
+                <svg viewBox="0 0 24 24" width="16" height="16" class="SBWhitelistIcon">
+                  <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
+                </svg>
+              </div>
+              <p id="whitelistChannel">__MSG_whitelistChannel__</p>
+              <p id="unwhitelistChannel" style="display: none">__MSG_removeFromWhitelist__</p>
+            </label>
           </div>
-          <div id="setUsername" style="display: none">
-            <div id="setUsernameStatusContainer" style="display: none">
-              <p id="setUsernameStatus"></p>
+          <button id="optionsButton" title="__MSG_optionsInfo__">
+            <img src="/icons/settings.svg" alt="Settings icon" width="16" height="16" id="sbPopupIconSettings">
+            __MSG_Options__
+          </button>
+        </div>
+      </div>
+
+      <div id="whitelistForceCheck" class="hidden">
+        __MSG_forceChannelCheckPopup__
+      </div>
+
+      <div id="mainControls" style="display: none">
+        <p class="sbHeader sbSubHeader">
+          __MSG_recordTimesDescription__
+        </p>
+        <sub style="margin-bottom: 12px;">__MSG_popupHint__</sub>
+        <div>
+          <button id="sponsorStart" class="mediumButton">__MSG_sponsorStart__</button>
+        </div>
+        <div id="submissionSection" style="display: none">
+          <b style="display: block; margin-top: 12px;">__MSG_submissionEditHint__</b>
+          <div id="submitTimesContainer" style="margin-top: 12px;">
+            <button id="submitTimes" class="mediumButton">__MSG_submitTimesButton__</button>
+          </div>
+        </div>
+      </div>
+      <h1 class="recordingSubtitle sbHeader sbSubHeader">__MSG_yourWork__</h1>
+      <div class="sidebyside">
+        <div id="usernameElement">
+          <div>
+            <p>__MSG_Username__:</p>
+            <div id="setUsernameContainer">
+              <p id="usernameValue"></p>
+              <button id="setUsernameButton" title="__MSG_setUsername__">
+                <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
+              </button>
             </div>
-            <input id="usernameInput" hint="Username"></input>
-            <button id="submitUsername">
-              <img src="/icons/check.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconCheck">
-            </button>
+            <div id="setUsername" style="display: none">
+              <div id="setUsernameStatusContainer" style="display: none">
+                <p id="setUsernameStatus"></p>
+              </div>
+              <input id="usernameInput" hint="Username"></input>
+              <button id="submitUsername">
+                <img src="/icons/check.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconCheck">
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="sponsorTimesContributionsContainer" class="hidden">
+          <div>
+            <p>__MSG_Submissions__:</p>
+            <span id="sponsorTimesContributionsDisplay">
+              0
+            </span>
           </div>
         </div>
       </div>
-      <div id="sponsorTimesContributionsContainer" class="hidden">
-        <div>
-          <p>__MSG_Submissions__:</p>
-          <span id="sponsorTimesContributionsDisplay">
+
+      <span id="sponsorTimesViewsContainer" style="display: none">
+        __MSG_savedPeopleFrom__
+        <b><span id="sponsorTimesViewsDisplay">
+            0
+          </span></b>
+        <span id="sponsorTimesViewsDisplayEndWord">__MSG_Segments__</span>
+        <br>
+        (<b><span id="sponsorTimesOthersTimeSavedDisplay">0</span>
+          <span id="sponsorTimesOthersTimeSavedEndWord">__MSG_minsLower__</span></b>
+        <span>__MSG_youHaveSavedTimeEnd__</span>).
+      </span>
+      <div id="sponsorTimesSkipsDoneContainer" style="display: none">
+        __MSG_youHaveSkipped__
+        <b><span id="sponsorTimesSkipsDoneDisplay">
+            0
+          </span></b>
+        <span id="sponsorTimesSkipsDoneEndWord">__MSG_Segments__</span>
+        (<b><span id="sponsorTimeSavedDisplay">
             0
           </span>
-        </div>
+          <span id="sponsorTimeSavedEndWord">__MSG_minsLower__</span></b>).
       </div>
-    </div>
+      <footer id="sbFooter">
+        <a href="https://sponsor.ajay.app" target="_blank" rel="noopener">__MSG_website__</a> |
+        <a href="https://sponsor.ajay.app/stats" target="_blank" rel="noopener">__MSG_viewLeaderboard__</a> |
+        <a href="https://github.com/ajayyy/SponsorBlock" target="_blank" rel="noopener">GitHub</a>
+        <br/>
+        <a href="https://discord.gg/QnmVMpU" target="_blank" rel="noopener">Discord</a> |
+        <a href="https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org" target="_blank" rel="noopener">Matrix</a> |
+        <a id="helpButton" style="cursor: pointer;">__MSG_help__</a> |
+        <a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">$</a>
+      </footer>
 
-    <span id="sponsorTimesViewsContainer" style="display: none">
-      __MSG_savedPeopleFrom__
-      <b><span id="sponsorTimesViewsDisplay">
-          0
-        </span></b>
-      <span id="sponsorTimesViewsDisplayEndWord">__MSG_Segments__</span>
-      <br>
-      (<b><span id="sponsorTimesOthersTimeSavedDisplay">0</span>
-        <span id="sponsorTimesOthersTimeSavedEndWord">__MSG_minsLower__</span></b>
-      <span>__MSG_youHaveSavedTimeEnd__</span>).
-    </span>
-    <div id="sponsorTimesSkipsDoneContainer" style="display: none">
-      __MSG_youHaveSkipped__
-      <b><span id="sponsorTimesSkipsDoneDisplay">
-          0
-        </span></b>
-      <span id="sponsorTimesSkipsDoneEndWord">__MSG_Segments__</span>
-      (<b><span id="sponsorTimeSavedDisplay">
-          0
-        </span>
-        <span id="sponsorTimeSavedEndWord">__MSG_minsLower__</span></b>).
+      <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">__MSG_showNotice__</button>
     </div>
-    <footer id="sbFooter">
-      <a href="https://sponsor.ajay.app" target="_blank" rel="noopener">__MSG_website__</a> |
-      <a href="https://sponsor.ajay.app/stats" target="_blank" rel="noopener">__MSG_viewLeaderboard__</a> |
-      <a href="https://github.com/ajayyy/SponsorBlock" target="_blank" rel="noopener">GitHub</a>
-      <br/>
-      <a href="https://discord.gg/QnmVMpU" target="_blank" rel="noopener">Discord</a> |
-      <a href="https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org" target="_blank" rel="noopener">Matrix</a> |
-      <a id="helpButton" style="cursor: pointer;">__MSG_help__</a> |
-      <a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">$</a>
-    </footer>
-
-    <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">__MSG_showNotice__</button>
-  </div>
-  <!-- Scripts that need to load after the html -->
-  <script src="./js/vendor.js" async></script>
-  <script src="./js/popup.js" async></script>
-</body>
+    <!-- Scripts that need to load after the html -->
+    <script src="./js/vendor.js" async></script>
+    <script src="./js/popup.js" async></script>
+  </body>
+</html>

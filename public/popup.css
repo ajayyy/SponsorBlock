@@ -6,7 +6,7 @@
   --sb-green-bg: #077B27;
 }
 
-html {
+#sponsorBlockPopupHTML {
   color-scheme: dark;
 }
 
@@ -32,6 +32,8 @@ html {
   margin: auto; 
   width: 374px; 
   background: var(--sb-main-bg-color);
+
+  color-scheme: dark;
 }
 
 #sponsorblockPopup {
