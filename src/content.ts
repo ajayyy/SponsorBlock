@@ -1318,9 +1318,11 @@ function openInfoMenu() {
             let htmlData = xmlhttp.responseText;
             // Hack to replace head data (title, favicon)
             htmlData = htmlData.replace(/<head>[\S\s]*<\/head>/gi, "");
-            // Hack to replace body tag with div
+            // Hack to replace body and html tag with div
             htmlData = htmlData.replace(/<body/gi, "<div");
             htmlData = htmlData.replace(/<\/body/gi, "</div");
+            htmlData = htmlData.replace(/<html/gi, "<div");
+            htmlData = htmlData.replace(/<\/html/gi, "</div");
 
             popup.innerHTML = htmlData;
 
