@@ -26,8 +26,6 @@ export function openChat(config: ChatConfig): void {
     });
     chat.appendChild(closeButton);
 
-    console.log(utils.objectToURI("", config, false))
-
     const referenceNode = utils.findReferenceNode();
     referenceNode.prepend(chat);
 }

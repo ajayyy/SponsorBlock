@@ -1458,7 +1458,15 @@ function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNo
                     //success (treat rate limits as a success)
                     skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
                 } else if (response.successType == -1) {
-                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode, response.responseText))
+                    if (response.statusCode === 403 && response.responseText.startsWith("Vote rejected due to a warning from a moderator.")) {
+                        skipNotice.setNoticeInfoMessageWithOnClick.bind(skipNotice)(() => {
+                            Chat.openWarningChat(response.responseText);
+                            skipNotice.closeListener.call(skipNotice);
+                        }, chrome.i18n.getMessage("voteRejectedWarning"));
+                    } else {
+                        skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode, response.responseText))
+                    }
+                    
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }

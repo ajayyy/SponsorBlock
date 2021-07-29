@@ -133,6 +133,7 @@
 
 .sponsorSkipNotice {
     min-width: 350px;
+	max-width: 50%;
     background-color: rgba(28, 28, 28, 0.9);
     position: absolute;
 	right: 5px;
