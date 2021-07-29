@@ -121,6 +121,16 @@
 	margin-left: 5px;
 }
 
+.chatNotice {
+	min-width: 350px;
+	height: 70%;
+
+	position: absolute;
+	right: 5px;
+	bottom: 100px;
+	right: 10px;
+}
+
 .sponsorSkipNotice {
     min-width: 350px;
     background-color: rgba(28, 28, 28, 0.9);
