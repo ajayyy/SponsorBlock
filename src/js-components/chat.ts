@@ -9,10 +9,22 @@ export interface ChatConfig {
 }
 
 export function openChat(config: ChatConfig): void {
-    const chat = document.createElement("iframe");
-    chat.src = "https://chat.sponsor.ajay.app/#" + utils.objectToURI("", config, false);
-    chat.classList.add("chatNotice");
+    const chat = document.createElement("div");
+    chat.classList.add("sbChatNotice");
     chat.style.zIndex = "2000";
+
+    const iframe= document.createElement("iframe");
+    iframe.src = "https://chat.sponsor.ajay.app/#" + utils.objectToURI("", config, false);
+    chat.appendChild(iframe);
+
+    const closeButton  = document.createElement("img");
+    closeButton.classList.add("sbChatClose");
+    closeButton.src = chrome.extension.getURL("icons/close.png");
+    closeButton.addEventListener("click", () => {
+        chat.remove();
+        closeButton.remove();
+    });
+    chat.appendChild(closeButton);
 
     console.log(utils.objectToURI("", config, false))
 
