@@ -121,8 +121,19 @@
 	margin-left: 5px;
 }
 
+.sbChatNotice {
+	min-width: 350px;
+	height: 70%;
+
+	position: absolute;
+	right: 5px;
+	bottom: 100px;
+	right: 10px;
+}
+
 .sponsorSkipNotice {
     min-width: 350px;
+	max-width: 50%;
     background-color: rgba(28, 28, 28, 0.9);
     position: absolute;
 	right: 5px;
@@ -445,4 +456,15 @@ input::-webkit-inner-spin-button {
 }
 .helpButton:hover {
 	filter: brightness(80%);
+}
+
+.sbChatNotice iframe {
+	height: 32px;
+	cursor: pointer;
+	height: 100%;
+}
+
+.sbChatClose {
+	height: 14px;
+	cursor: pointer;
 }

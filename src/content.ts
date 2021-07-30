@@ -13,7 +13,7 @@ import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse } from "./messageTypes";
-import GenericNotice from "./render/GenericNotice";
+import * as Chat from "./js-components/chat";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -1458,7 +1458,15 @@ function vote(type: number, UUID: string, category?: string, skipNotice?: SkipNo
                     //success (treat rate limits as a success)
                     skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
                 } else if (response.successType == -1) {
-                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode, response.responseText))
+                    if (response.statusCode === 403 && response.responseText.startsWith("Vote rejected due to a warning from a moderator.")) {
+                        skipNotice.setNoticeInfoMessageWithOnClick.bind(skipNotice)(() => {
+                            Chat.openWarningChat(response.responseText);
+                            skipNotice.closeListener.call(skipNotice);
+                        }, chrome.i18n.getMessage("voteRejectedWarning"));
+                    } else {
+                        skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode, response.responseText))
+                    }
+                    
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
                 }
             }
@@ -1567,7 +1575,11 @@ async function sendSubmitMessage() {
         playerButtons.submit.button.style.animation = "unset";
         playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker.svg");
 
-        alert(utils.getErrorMessage(response.status, response.responseText));
+        if (response.status === 403 && response.responseText.startsWith("Submission rejected due to a warning from a moderator.")) {
+            Chat.openWarningChat(response.responseText);
+        } else {
+            alert(utils.getErrorMessage(response.status, response.responseText));
+        }
     }
 }
 

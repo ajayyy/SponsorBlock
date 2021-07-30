@@ -415,6 +415,19 @@ export default class Utils {
         return referenceNode;
     }
 
+    objectToURI<T>(url: string, data: T, includeQuestionMark: boolean): string {
+        let counter = 0;
+        for (const key in data) {
+            const seperator = (url.includes("?") || counter > 0) ? "&" : (includeQuestionMark ? "?" : "");
+            const value = (typeof(data[key]) === "string") ? data[key] as unknown as string : JSON.stringify(data[key]);
+            url += seperator + encodeURIComponent(key) + "=" + encodeURIComponent(value);
+
+            counter++;
+        }
+
+        return url;
+    }
+
     getFormattedTime(seconds: number, precise?: boolean): string {
         const hours = Math.floor(seconds / 60 / 60);
         const minutes = Math.floor(seconds / 60) % 60;
@@ -479,14 +492,13 @@ export default class Utils {
     async getHash(value: string, times = 5000): Promise<string> {
         if (times <= 0) return "";
 
-        let hashBuffer = new TextEncoder().encode(value).buffer;
-
+        let hashHex = value;
         for (let i = 0; i < times; i++) {
-            hashBuffer = await crypto.subtle.digest('SHA-256', hashBuffer);
-        }
+            const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(hashHex).buffer);
 
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
 
         return hashHex;
     }
