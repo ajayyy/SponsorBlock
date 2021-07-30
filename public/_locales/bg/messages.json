@@ -180,5 +180,12 @@
     },
     "categoryUpdate1": {
         "message": "Категориите са тук!"
+    },
+    "warningChatInfo": {
+        "message": "Получихте предупреждение и временно не можете да изпращате сегменти. Това означава, че забелязахме, че допускате някои често срещани грешки, които не са злонамерени, и просто искаме да изясним правилата. Можете също да се присъедините към този чат с помощта на discord.gg/SponsorBlock или matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Гласуването е отхвърлено поради предупреждение. Щракнете, за да отворите чат и да го разрешите, или се върнете по-късно, когато имате време.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }
