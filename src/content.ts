@@ -123,7 +123,7 @@ const manualSkipPercentCount = 0.5;
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
-async function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): Promise<void> {
+function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): Promise<void> {
     //messages from popup script
     switch(request.message){
         case "update":
@@ -179,8 +179,7 @@ async function messageListener(request: Message, sender: unknown, sendResponse: 
             submitSponsorTimes();
             break;
         case "refreshSegments":
-            await sponsorsLookup(sponsorVideoID, false);
-            sendResponse({});
+            sponsorsLookup(sponsorVideoID, false).then(() => sendResponse({}));
             break;
     }
 }

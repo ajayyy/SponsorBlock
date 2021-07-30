@@ -241,6 +241,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     function onTabs(tabs) {
         messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
+            console.log(result)
             if (result !== undefined && result.videoID) {
                 currentVideoID = result.videoID;
                 creatingSegment = result.creatingSegment;
@@ -418,13 +419,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
                 upvoteButton.className = "voteButton";
-                upvoteButton.src = chrome.extension.getURL("icons/thumbs_up.svg");
+                upvoteButton.src = chrome.runtime.getURL("icons/thumbs_up.svg");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
 
                 const downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton";
-                downvoteButton.src = chrome.extension.getURL("icons/thumbs_down.svg");
+                downvoteButton.src = chrome.runtime.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
                 //uuid button
@@ -432,7 +433,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const uuidButton = document.createElement("img");
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 uuidButton.className = "voteButton";
-                uuidButton.src = chrome.extension.getURL("icons/clipboard.svg");
+                uuidButton.src = chrome.runtime.getURL("icons/clipboard.svg");
                 uuidButton.addEventListener("click", () => {
                     navigator.clipboard.writeText(UUID);
                     const stopAnimation = utils.applyLoadingAnimation(uuidButton, 0.3);
