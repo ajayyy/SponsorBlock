@@ -669,12 +669,6 @@
     "help": {
         "message": "Yardım"
     },
-    "experimentUnlistedTitle": {
-        "message": "Bunun kaybolmasını önlemeye yardımcı ol"
-    },
-    "experimentUnlistedText": {
-        "message": "Bu video liste dışı ve 2017'den önce yüklenmiş\nListe dışı eski videolar önümüzdeki aydan itibaren gizli hâle getirilecek\n*Herkese açık* videoları derleyerek yedekliyoruz\nBize anonim olarak bu videoyu göndermek ister misiniz?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Gelecekteki deneylerin hiçbirine katılma",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."

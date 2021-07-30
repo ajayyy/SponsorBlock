@@ -669,17 +669,18 @@
     "help": {
         "message": "Ohje"
     },
-    "experimentUnlistedTitle": {
-        "message": "Auta estämään tätä katoamasta"
-    },
-    "experimentUnlistedText": {
-        "message": "Tämä video on havaittu piilotetuksi ja se on ladattu YouTubeen ennen vuotta 2017.\nVanhat piilotetut videot asetetaan yksityisiksi ensi kuussa.\nKeräämme *julkisia* videoita varmuuskopioitavaksi.\nHaluaisitko anonyymisti lähettää tämän videon meille?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Piilota ikuisesti"
+    },
+    "warningChatInfo": {
+        "message": "Sait varoituksen ja et voi lähettää segmenttejä väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, ja haluamme vain selventää säännöt. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Ääni hylättiin varoituksen takia. Klikkaa avataksesi chatin sen ratkaisemiseksi, tai tule takaisin myöhemmin kun sinulla on siihen aikaa.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

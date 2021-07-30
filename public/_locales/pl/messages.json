@@ -666,9 +666,6 @@
     "help": {
         "message": "Pomoc"
     },
-    "experimentUnlistedTitle": {
-        "message": "Pomóż zapobiec zniknięciu tego"
-    },
     "experiementOptOut": {
         "message": "Wyłączenie wszystkich przyszłych eksperymentów",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."

@@ -669,12 +669,6 @@
     "help": {
         "message": "Hjälp"
     },
-    "experimentUnlistedTitle": {
-        "message": "Hjälp till att förhindra att detta försvinner"
-    },
-    "experimentUnlistedText": {
-        "message": "Detta är en olistad videon som laddades upp före 2017.\nGamla olistade videor kommer att bli ändrade till privata nästa månad.\nVi samlar in *offentliga* videor för att säkerhetskopiera.\nVill du anonymt skicka den här videon till oss?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Hoppa av alla framtida experiment",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."

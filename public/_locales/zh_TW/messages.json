@@ -188,6 +188,9 @@
     "whatInfoButton": {
         "message": "這個按鈕可用來在 YouTube 頁面打開彈出視窗"
     },
+    "autoHideInfoButton": {
+        "message": "自動隱藏資訊按鈕"
+    },
     "hideDeleteButton": {
         "message": "在 YouTube 播放器上隱藏刪除按鈕"
     },
@@ -390,6 +393,9 @@
     "minDurationDescription": {
         "message": "小於設定值的片段不會被跳過或在播放器中顯示"
     },
+    "skipNoticeDurationDescription": {
+        "message": "跳過片段提示的顯示時間將會以上列時間長度為準（單位：秒）；手動跳過的時候會顯示較長於上面的時間"
+    },
     "shortCheck": {
         "message": "以下的提交小於您的最小時間設定。這表是它們可能已經被提交，只是被該設定忽略了。您確定要提交嗎？"
     },
@@ -520,8 +526,14 @@
     "category_preview": {
         "message": "預覽/摘要"
     },
+    "category_preview_description": {
+        "message": "係指影片的前情提要或內容預告等刻意編輯過的內容"
+    },
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
+    },
+    "category_music_offtopic_description": {
+        "message": "此功能僅供音樂影片使用。本功能僅應該用於音樂錄影帶中並未包含其他類別的段落。"
     },
     "category_music_offtopic_short": {
         "message": "非音樂"
@@ -593,10 +605,10 @@
         "message": "隱藏：太短"
     },
     "videoInfoFetchFailed": {
-        "message": "似乎有東西在阻止 SponsorBlock 獲取影片資料。請查看 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"
+        "message": "似乎有東西在阻止 SponsorBlock 取得影片資料。請至 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"
     },
     "youtubePermissionRequest": {
-        "message": "SponsorBlock 貌似無法存取 YouTube API。若要解決，請同意稍後出現的權限提示，等待幾秒鐘，然後重新載入頁面。"
+        "message": "SponsorBlock 貌似無法存取 YouTube API。若要解決此問題，請同意稍後出現的權限提示，等待幾秒鐘，然後重新載入頁面。"
     },
     "acceptPermission": {
         "message": "允許權限"
@@ -645,7 +657,7 @@
         "message": "開啟選項以跳過開場、結尾、工商等。"
     },
     "help": {
-        "message": "幫助"
+        "message": "說明"
     },
     "experiementOptOut": {
         "message": "關閉所有未來的實驗性功能",

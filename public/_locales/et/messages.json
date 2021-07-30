@@ -669,12 +669,6 @@
     "help": {
         "message": "Abi"
     },
-    "experimentUnlistedTitle": {
-        "message": "Aita video kadumist vältida"
-    },
-    "experimentUnlistedText": {
-        "message": "See video tuvastati kui registriväline ning see laaditi üles enne 2017. aastat.\nVanad registrivälised videod muudetakse järgmisel kuul privaatseks.\nMe kogume varundamiseks *avalikke* videoid, \nkas sooviksid anonüümselt selle video meile saata?\nhttps://support.google.com/youtube/answer/9230970"
-    },
     "experiementOptOut": {
         "message": "Keeldu kõigist tulevikus tehtavatatest eksperimentidest",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
