@@ -188,6 +188,9 @@
     "whatInfoButton": {
         "message": "這個按鈕可用來在 YouTube 頁面打開彈出視窗"
     },
+    "autoHideInfoButton": {
+        "message": "自動隱藏資訊按鈕"
+    },
     "hideDeleteButton": {
         "message": "在 YouTube 播放器上隱藏刪除按鈕"
     },
@@ -390,6 +393,9 @@
     "minDurationDescription": {
         "message": "小於設定值的片段不會被跳過或在播放器中顯示"
     },
+    "skipNoticeDurationDescription": {
+        "message": "跳過片段提示的顯示時間將會以上列時間長度為準（單位：秒）；手動跳過的時候會顯示較長於上面的時間"
+    },
     "shortCheck": {
         "message": "以下的提交小於您的最小時間設定。這表是它們可能已經被提交，只是被該設定忽略了。您確定要提交嗎？"
     },
@@ -519,6 +525,9 @@
     },
     "category_preview": {
         "message": "預覽/摘要"
+    },
+    "category_preview_description": {
+        "message": "係指影片的前情提要或內容預告等刻意編輯過的內容"
     },
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
