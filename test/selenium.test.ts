@@ -24,6 +24,8 @@ test("Selenium Chrome test", async () => {
         await createSegment(driver, "4", "10.33", "0:04.000 to 0:10.330");
 
         await editSegments(driver, 0, "0:04.000", "0:10.330", "5", "13.211", "0:05.000 to 0:13.211", false);
+
+        await skipSegment(driver, 5, 13.211);
     } finally {
         await driver.quit();
     }
@@ -85,4 +87,16 @@ async function editSegments(driver: WebDriver, index: number, expectedStartTimeB
     sponsorTimeDisplays = await driver.findElements(By.className("sponsorTimeDisplay"));
     sponsorTimeDisplay = sponsorTimeDisplays[index];
     await driver.wait(until.elementTextIs(sponsorTimeDisplay, expectedDisplayedTime));
+}
+
+async function skipSegment(driver: WebDriver, startTime: number, endTime: number): Promise<void> {
+    const video = await driver.findElement(By.css("video"));
+
+    await driver.executeScript("document.querySelector('video').currentTime = " + (startTime - 0.5));
+    await driver.executeScript("document.querySelector('video').play()");
+
+    await driver.sleep(1000);
+
+    expect(parseFloat(await video.getAttribute("currentTime"))).toBeGreaterThan(endTime);
+    await driver.executeScript("document.querySelector('video').pause()");
 }
