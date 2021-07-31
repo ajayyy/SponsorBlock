@@ -1,8 +1,26 @@
-import { Builder, By, until, Key, WebDriver } from "selenium-webdriver";
+import { Builder, By, until, WebDriver } from "selenium-webdriver";
 import * as Chrome from "selenium-webdriver/chrome";
 import * as Path from "path";
 
 test("Selenium Chrome test", async () => {
+    const driver = await setup();    
+
+    try {
+        await waitForInstall(driver);
+        // This video has no ads
+        await goToVideo(driver, "jNQXAC9IVRw");
+
+        await createSegment(driver, "4", "10.33", "0:04.000 to 0:10.330");
+
+        await editSegments(driver, 0, "0:04.000", "0:10.330", "5", "13.211", "0:05.000 to 0:13.211", false);
+
+        await autoskipSegment(driver, 5, 13.211);
+    } finally {
+        await driver.quit();
+    }
+}, 100_000);
+
+async function setup(): Promise<WebDriver> {
     const options = new Chrome.Options();
     options.addArguments("--load-extension=" + Path.join(__dirname, "../dist/"));
     options.addArguments("--mute-audio");
@@ -13,23 +31,22 @@ test("Selenium Chrome test", async () => {
         implicit: 5000
     });
 
-    try {
-        // Selenium only knows about the one tab it's on,
-        // so we can't wait for the help page to appear
-        await driver.sleep(3000);
-        // This video has no ads
-        await driver.get("https://www.youtube.com/watch?v=jNQXAC9IVRw");
-        await driver.wait(until.elementIsVisible(await driver.findElement(By.className("ytd-video-primary-info-renderer"))));
+    return driver;
+}
 
-        await createSegment(driver, "4", "10.33", "0:04.000 to 0:10.330");
+async function waitForInstall(driver: WebDriver, startingTab = 0): Promise<void> {
+    // Selenium only knows about the one tab it's on,
+    // so we can't wait for the help page to appear
+    await driver.sleep(3000);
 
-        await editSegments(driver, 0, "0:04.000", "0:10.330", "5", "13.211", "0:05.000 to 0:13.211", false);
+    const handles = await driver.getAllWindowHandles();
+    await driver.switchTo().window(handles[startingTab]);
+}
 
-        await skipSegment(driver, 5, 13.211);
-    } finally {
-        await driver.quit();
-    }
-}, 100_000);
+async function goToVideo(driver: WebDriver, videoId: string): Promise<void> {
+    await driver.get("https://www.youtube.com/watch?v=" + videoId);
+    await driver.wait(until.elementIsVisible(await driver.findElement(By.className("ytd-video-primary-info-renderer"))));
+}
 
 async function createSegment(driver: WebDriver, startTime: string, endTime: string, expectedDisplayedTime: string): Promise<void> {
     const startSegmentButton = await driver.findElement(By.id("startSegmentButton"));
@@ -89,13 +106,13 @@ async function editSegments(driver: WebDriver, index: number, expectedStartTimeB
     await driver.wait(until.elementTextIs(sponsorTimeDisplay, expectedDisplayedTime));
 }
 
-async function skipSegment(driver: WebDriver, startTime: number, endTime: number): Promise<void> {
+async function autoskipSegment(driver: WebDriver, startTime: number, endTime: number): Promise<void> {
     const video = await driver.findElement(By.css("video"));
 
     await driver.executeScript("document.querySelector('video').currentTime = " + (startTime - 0.5));
     await driver.executeScript("document.querySelector('video').play()");
 
-    await driver.sleep(1000);
+    await driver.sleep(1300);
 
     expect(parseFloat(await video.getAttribute("currentTime"))).toBeGreaterThan(endTime);
     await driver.executeScript("document.querySelector('video').pause()");
