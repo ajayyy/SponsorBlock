@@ -24,9 +24,39 @@ async function setup(): Promise<WebDriver> {
     const options = new Chrome.Options();
     options.addArguments("--load-extension=" + Path.join(__dirname, "../dist/"));
     options.addArguments("--mute-audio");
-    options.addArguments("--disable-features=PreloadMediaEngagementData, MediaEngagementBypassAutoplayPolicies")
+    options.addArguments("--disable-features=PreloadMediaEngagementData, MediaEngagementBypassAutoplayPolicies");
+    options.windowSize({
+        width: 1280,
+        height: 720
+    });
 
-    const driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
+    let driver;
+    if (process.env.BROWSERSTACK_BUILD_NAME) {
+        const capabilities = {
+            'os': 'windows',
+            'os_version': '10',
+            'browserName': 'chrome',
+            'browser_version' : 'latest',
+            'browserstack.local': 'true',
+            'build': process.env.BROWSERSTACK_BUILD_NAME,
+            'project': process.env.BROWSERSTACK_PROJECT_NAME,
+            'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
+            'browserstack.user': process.env.BROWSERSTACK_USERNAME,
+            'browserstack.key': process.env.BROWSERSTACK_ACCESS_KEY
+        }
+
+        driver = await new Builder()
+            .usingServer('http://hub-cloud.browserstack.com/wd/hub')
+            .setChromeOptions(options)
+            .withCapabilities(capabilities)
+            .build();
+    } else {
+        driver = await new Builder()
+            .forBrowser("chrome")
+            .setChromeOptions(options)
+            .build();
+    }
+
     driver.manage().setTimeouts({
         implicit: 5000
     });
