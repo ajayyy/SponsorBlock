@@ -16,7 +16,8 @@ interface DefaultMessage {
         | "getVideoID"
         | "getChannelID"
         | "isChannelWhitelisted"
-        | "submitTimes";
+        | "submitTimes"
+        | "refreshSegments";
 }
 
 interface BoolValueMessage {
@@ -52,5 +53,6 @@ export type MessageResponse =
     | GetVideoIdResponse
     | GetChannelIDResponse
     | SponsorStartResponse
-    | IsChannelWhitelistedResponse;
+    | IsChannelWhitelistedResponse
+    | Record<string, never>;
 

@@ -119,6 +119,16 @@
 	margin-left: 5px;
 }
 
+.sbChatNotice {
+	min-width: 350px;
+	height: 70%;
+
+	position: absolute;
+	right: 5px;
+	bottom: 100px;
+	right: 10px;
+}
+
 .sponsorSkipNoticeParent {
     position: absolute;
 
@@ -128,6 +138,7 @@
 
 .sponsorSkipNoticeParent, .sponsorSkipNotice {
 	min-width: 350px;
+	max-width: 50%;
 
 	border-radius: 5px;
 	border-spacing: 5px 10px;
@@ -481,4 +492,15 @@ input::-webkit-inner-spin-button {
 }
 .helpButton:hover {
 	filter: brightness(80%);
+}
+
+.sbChatNotice iframe {
+	height: 32px;
+	cursor: pointer;
+	height: 100%;
+}
+
+.sbChatClose {
+	height: 14px;
+	cursor: pointer;
 }

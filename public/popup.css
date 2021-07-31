@@ -6,6 +6,10 @@
   --sb-green-bg: #077B27;
 }
 
+#sponsorBlockPopupHTML {
+  color-scheme: dark;
+}
+
 #sponsorBlockPopupBody .hidden {
   display: none !important;
 }
@@ -28,6 +32,8 @@
   margin: auto; 
   width: 374px; 
   background: var(--sb-main-bg-color);
+
+  color-scheme: dark;
 }
 
 #sponsorblockPopup {
@@ -259,7 +265,7 @@ background-color:#ec1c1c;
   align-items: center;
 }
 
-#additionalButtons>button, button#setUsernameButton, #submitUsername {
+.sbSlimButton, #additionalButtons>button, button#setUsernameButton, #submitUsername {
   background: none;
   border: none;
   color: white;
@@ -321,12 +327,12 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
   margin-right: 8px;
 }
 
-#whitelistButton>label, #additionalButtons>button, div#setUsernameContainer {
+#whitelistButton>label, #additionalButtons>button, div#setUsernameContainer>button {
   display: flex;
   flex-flow: row nowrap;
 }
 
-#whitelistButton>label, #additionalButtons>button, div#setUsernameContainer>button {
+.sbSlimButton, #whitelistButton>label, #additionalButtons>button, div#setUsernameContainer>button {
   cursor: pointer;
 }
 

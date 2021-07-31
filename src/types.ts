@@ -59,6 +59,11 @@ export enum CategoryActionType {
 export type SegmentUUID = string  & { __segmentUUIDBrand: unknown };
 export type Category = string & { __categoryBrand: unknown };
 
+export enum SponsorSourceType {
+    Server = undefined,
+    Local = 1
+}
+
 export interface SponsorTime {
     segment: [number] | [number, number];
     UUID: SegmentUUID;
@@ -66,6 +71,7 @@ export interface SponsorTime {
     category: Category;
 
     hidden?: SponsorHideType;
+    source?: SponsorSourceType;
 }
 
 export interface PreviewBarOption {

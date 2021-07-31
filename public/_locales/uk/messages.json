@@ -555,7 +555,7 @@
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
-        "message": "Колір в смузі прокрутки"
+        "message": "Колір в смужці прокрутки"
     },
     "category": {
         "message": "Категорія"
@@ -653,12 +653,6 @@
     },
     "categoryUpdate2": {
         "message": "Відкрийте налаштування, щоб пропускати початкові і кінцеві заставки, саморекламу та інше."
-    },
-    "experimentUnlistedTitle": {
-        "message": "Допоможіть цьому не зникнути"
-    },
-    "experimentUnlistedText": {
-        "message": "Це відео приховане і завантажено до 2017.\nСтарі приховані відео стануть приватними наступного місяця\nМи збираємо загальнодоступні відео для резервного копіювання\nЧи ви хочете анонімно надіслати це відео нам?\nhttps://support.google.com/youtube/answer/9230970"
     },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",

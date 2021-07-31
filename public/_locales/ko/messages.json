@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "유튜브 동영상을 찾을 수 없습니다.\n오류라면, 탭을 새로고침해보세요."
     },
+    "refreshSegments": {
+        "message": "구간 새로고침"
+    },
     "success": {
         "message": "성공!"
     },
@@ -184,6 +187,9 @@
     },
     "whatInfoButton": {
         "message": "YouTube 페이지에 팝업으로 표시되는 버튼입니다"
+    },
+    "autoHideInfoButton": {
+        "message": "정보 버튼 자동 숨김"
     },
     "hideDeleteButton": {
         "message": "YouTube 플레이어에서 삭제 버튼 숨기기"
@@ -389,6 +395,12 @@
     },
     "minDurationDescription": {
         "message": "설정 값보다 작은 구간은 건너뛰거나 플레이어에서 표시하지 않습니다"
+    },
+    "skipNoticeDuration": {
+        "message": "건너뛰기 알림 길이 (초):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "건너뛰기 알림이 최소한 이 길이 동안 표시됩니다. 수동 건너뛰기를 한 경우 알림이 더 길게 표시될 수 있습니다."
     },
     "shortCheck": {
         "message": "다음 제출은 최소 기간 옵션보다 짧습니다. 이 말은 이미 제출되었으며, 이 옵션으로 인해 무시될 수 있습니다. 제출하시겠습니까?"
@@ -653,5 +665,15 @@
     },
     "categoryUpdate2": {
         "message": "인트로, 아웃트로, 기타 등을 스킵하는 설정을 여세요"
+    },
+    "help": {
+        "message": "도움"
+    },
+    "experiementOptOut": {
+        "message": "향후 모든 실험 기능 비활성화",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "다시 보지 않음"
     }
 }

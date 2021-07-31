@@ -168,6 +168,31 @@ export default class Utils {
     }
 
     /**
+     * Starts a spinning animation and returns a function to be called when it should be stopped
+     * The callback will be called when the animation is finished 
+     * It waits until a full rotation is complete
+     */
+    applyLoadingAnimation(element: HTMLElement, time: number, callback?: () => void): () => void {
+        element.style.animation = `rotate ${time}s 0s infinite`;
+
+        return () => {
+            // Make the animation finite
+            element.style.animation = `rotate ${time}s`;
+
+            // When the animation is over, hide the button
+            const animationEndListener = () => {
+                if (callback) callback();
+
+                element.style.animation = "none";
+
+                element.removeEventListener("animationend", animationEndListener);
+            };
+
+            element.addEventListener("animationend", animationEndListener);
+        }
+    }
+
+    /**
      * Merges any overlapping timestamp ranges into single segments and returns them as a new array.
      */
     getMergedTimestamps(timestamps: number[][]): [number, number][] {
@@ -253,7 +278,8 @@ export default class Utils {
 
     getLocalizedMessage(text: string): string | false {
         const valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
-            return v1 ? chrome.i18n.getMessage(v1).replace("\n", "<br/>") : "";
+            return v1 ? chrome.i18n.getMessage(v1).replace(/</g, "&#60;")
+                .replace(/"/g, "&quot;").replace(/\n/g, "<br/>") : "";
         });
 
         if(valNewH != text) {
@@ -398,6 +424,19 @@ export default class Utils {
         return referenceNode;
     }
 
+    objectToURI<T>(url: string, data: T, includeQuestionMark: boolean): string {
+        let counter = 0;
+        for (const key in data) {
+            const seperator = (url.includes("?") || counter > 0) ? "&" : (includeQuestionMark ? "?" : "");
+            const value = (typeof(data[key]) === "string") ? data[key] as unknown as string : JSON.stringify(data[key]);
+            url += seperator + encodeURIComponent(key) + "=" + encodeURIComponent(value);
+
+            counter++;
+        }
+
+        return url;
+    }
+
     getFormattedTime(seconds: number, precise?: boolean): string {
         const hours = Math.floor(seconds / 60 / 60);
         const minutes = Math.floor(seconds / 60) % 60;
@@ -462,14 +501,13 @@ export default class Utils {
     async getHash(value: string, times = 5000): Promise<string> {
         if (times <= 0) return "";
 
-        let hashBuffer = new TextEncoder().encode(value).buffer;
-
+        let hashHex = value;
         for (let i = 0; i < times; i++) {
-            hashBuffer = await crypto.subtle.digest('SHA-256', hashBuffer);
-        }
+            const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(hashHex).buffer);
 
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
 
         return hashHex;
     }

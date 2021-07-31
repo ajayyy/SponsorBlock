@@ -102,6 +102,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "videoFound",
         "sponsorMessageTimes",
         //"downloadedSponsorMessageTimes",
+        "refreshSegmentsButton",
         "whitelistButton",
         "sbDonate"
     ].forEach(id => PageElements[id] = document.getElementById(id));
@@ -131,6 +132,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.submitUsername.addEventListener("click", submitUsername);
     PageElements.optionsButton.addEventListener("click", openOptions);
     PageElements.helpButton.addEventListener("click", openHelp);
+    PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
 
     /** If true, the content script is in the process of creating a new segment. */
     let creatingSegment = false;
@@ -239,6 +241,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     function onTabs(tabs) {
         messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
+            console.log(result)
             if (result !== undefined && result.videoID) {
                 currentVideoID = result.videoID;
                 creatingSegment = result.creatingSegment;
@@ -290,10 +293,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             if (request.found) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
+                PageElements.refreshSegmentsButton.classList.remove("hidden");
 
                 displayDownloadedSponsorTimes(request);
             } else {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
+                PageElements.refreshSegmentsButton.classList.add("hidden");
             }
         }
 
@@ -414,13 +419,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
                 upvoteButton.className = "voteButton";
-                upvoteButton.src = chrome.extension.getURL("icons/thumbs_up.svg");
+                upvoteButton.src = chrome.runtime.getURL("icons/thumbs_up.svg");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
 
                 const downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton";
-                downvoteButton.src = chrome.extension.getURL("icons/thumbs_down.svg");
+                downvoteButton.src = chrome.runtime.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
                 //uuid button
@@ -428,8 +433,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const uuidButton = document.createElement("img");
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 uuidButton.className = "voteButton";
-                uuidButton.src = chrome.extension.getURL("icons/clipboard.svg");
-                uuidButton.addEventListener("click", () => navigator.clipboard.writeText(UUID));
+                uuidButton.src = chrome.runtime.getURL("icons/clipboard.svg");
+                uuidButton.addEventListener("click", () => {
+                    navigator.clipboard.writeText(UUID);
+                    const stopAnimation = utils.applyLoadingAnimation(uuidButton, 0.3);
+                    stopAnimation();
+                });
 
                 //add thumbs up, thumbs down and uuid copy buttons to the container
                 voteButtonsContainer.appendChild(upvoteButton);
@@ -674,6 +683,21 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 }
             );
         });
+    }
+
+    function refreshSegments() {
+        const stopAnimation = utils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
+
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                {message: 'refreshSegments'},
+                () => stopAnimation()
+            )}
+        );
     }
 
     /**

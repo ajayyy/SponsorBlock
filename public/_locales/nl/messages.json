@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Geen YouTube-video gevonden.\nVernieuw het tabblad als dit onjuist is."
     },
+    "refreshSegments": {
+        "message": "Segmenten vernieuwen"
+    },
     "success": {
         "message": "Gelukt!"
     },
@@ -184,6 +187,9 @@
     },
     "whatInfoButton": {
         "message": "Dit is de knop die een pop-up opent op de YouTube-pagina."
+    },
+    "autoHideInfoButton": {
+        "message": "Infoknop automatisch verbergen"
     },
     "hideDeleteButton": {
         "message": "Verwijderen-knop op YouTube-speler verbergen"
@@ -389,6 +395,12 @@
     },
     "minDurationDescription": {
         "message": "Segmenten korter dan de ingestelde waarde worden niet overgeslagen of weergegeven in de speler."
+    },
+    "skipNoticeDuration": {
+        "message": "Duur van melding om over te slaan (seconden):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "De melding om over te slaan blijft ten minste zo lang op het scherm staan. Voor handmatig overslaan kan dit misschien zelfs langer zichtbaar zijn."
     },
     "shortCheck": {
         "message": "De volgende inzending is korter dan uw \"minimale tijdsduur\"-instelling. Dit kan betekenen dat dit al is ingediend en genegeerd wordt door deze optie. Weet u zeker dat u dit wilt indienen?"
@@ -654,11 +666,8 @@
     "categoryUpdate2": {
         "message": "Open de opties om intro's, outro's, koopwaar,... over te slaan."
     },
-    "experimentUnlistedTitle": {
-        "message": "Helpen voorkomen dat dit verdwijnt"
-    },
-    "experimentUnlistedText": {
-        "message": "Deze video is gedetecteerd als niet-genoteerd en geüpload voor 2017.\nOude niet-genoteerde video's worden volgende maand op privé gezet.\nWe zijn *publieke* video's aan het verzamelen om te backuppen.\nWilt u deze video anoniem naar ons toesturen?\nhttps://support.google.com/youtube/answer/9230970"
+    "help": {
+        "message": "Help"
     },
     "experiementOptOut": {
         "message": "Uitschrijven van alle toekomstige experimenten",
