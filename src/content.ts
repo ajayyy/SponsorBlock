@@ -1536,7 +1536,8 @@ async function sendSubmitMessage() {
         videoID: sponsorVideoID,
         userID: Config.config.userID,
         segments: sponsorTimesSubmitting,
-        videoDuration: video?.duration
+        videoDuration: video?.duration,
+        userAgent: `${chrome.runtime.id}/v${chrome.runtime.getManifest().version}`
     });
 
     if (response.status === 200) {
