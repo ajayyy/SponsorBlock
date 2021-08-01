@@ -596,7 +596,8 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
-        categories
+        categories,
+        userAgent: `${chrome.runtime.id}`
     });
 
     if (response?.ok) {
