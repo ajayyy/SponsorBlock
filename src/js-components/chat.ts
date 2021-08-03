@@ -36,7 +36,7 @@ export async function openWarningChat(warningMessage: string): Promise<void> {
     const publicUserID = await utils.getHash(Config.config.userID);
 
     openChat({
-        displayName: `${userName ? `${userName} | `: ``}${userName !== publicUserID ? publicUserID : ``}`,
+        displayName: `${userName ? userName : ``}${userName !== publicUserID ? ` | ${publicUserID}` : ``}`,
         composerInitialValue: `I got a warning and want to know what I need to do to improve. ` +
                               `Warning reason: ${warningMessage.match(/Warning reason: '(.+)'/)[1]}`,
         customDescription: chrome.i18n.getMessage("warningChatInfo")
