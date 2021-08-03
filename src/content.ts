@@ -123,7 +123,7 @@ const manualSkipPercentCount = 0.5;
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
-function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void {
+function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void | boolean {
     //messages from popup script
     switch(request.message){
         case "update":
@@ -144,7 +144,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 sponsorTimes: sponsorTimes
             });
 
-            if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+            if (!request.updating && popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
                 //the popup should be closed now that another is opening
                 closeInfoMenu();
             }
@@ -179,8 +179,12 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             submitSponsorTimes();
             break;
         case "refreshSegments":
-            sponsorsLookup(sponsorVideoID, false).then(() => sendResponse({}));
-            break;
+            sponsorsLookup(sponsorVideoID, false).then(() => sendResponse({
+                found: sponsorDataFound,
+                sponsorTimes: sponsorTimes
+            }));
+
+            return true;
     }
 }
 
