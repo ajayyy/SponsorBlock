@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Show In Seek Bar"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Auto skip all segments when there is a non-music segment"
+    },
     "colorFormatIncorrect": {
         "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
     },

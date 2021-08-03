@@ -41,6 +41,7 @@ interface SBConfig {
     ytInfoPermissionGranted: boolean,
     allowExpirements: boolean,
     autoHideInfoButton: boolean,
+    autoSkipOnMusicVideos: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -180,6 +181,7 @@ const Config: SBObject = {
         ytInfoPermissionGranted: false,
         allowExpirements: true,
         autoHideInfoButton: true,
+        autoSkipOnMusicVideos: false,
 
         categorySelections: [{
             name: "sponsor",
@@ -345,6 +347,18 @@ function fetchConfig(): Promise<void> {
 function migrateOldFormats(config: SBConfig) {
     if (config["askAboutUnlistedVideos"]) {
         chrome.storage.sync.remove("askAboutUnlistedVideos");
+    }
+
+    if (!config["autoSkipOnMusicVideosUpdate"]) {
+        config["autoSkipOnMusicVideosUpdate"] = true;
+        for (const selection of config.categorySelections) {
+            if (selection.name === "music_offtopic" 
+                    && selection.option === CategorySkipOption.AutoSkip) {
+                
+                config.autoSkipOnMusicVideos = true;
+                break;
+            }
+        }
     }
 
     // Adding preview category
