@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Kuva mängija ajaribal"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Jäta automaatselt kõik segmendid vahele, kui eksisteerib mitte-muusika segment"
+    },
     "colorFormatIncorrect": {
         "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
     },
