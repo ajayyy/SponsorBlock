@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Pokaż na pasku"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"
+    },
     "colorFormatIncorrect": {
         "message": "Nieprawidłowy format koloru. Powinien to być zapis szesnastkowy (heksadecymalny) składający się z 3 lub 6 znaków poprzedzonych kratką (#)."
     },
