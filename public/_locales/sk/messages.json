@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Zobraziť v časovej lište"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Automaticky preskočiť všetky segmenty ak neexistuje segment bez hudby"
+    },
     "colorFormatIncorrect": {
         "message": "Vaša farba je nesprávne naformátovaná. Mal by to byť 3 alebo 6-miestny hexadecimálny kód so znakom čísla na začiatku."
     },
