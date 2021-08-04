@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "재생 시간 바 표시"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "음악이 아닌 구간이 있을 때는 모든 구간 자동 건너뛰기"
+    },
     "colorFormatIncorrect": {
         "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
     },
