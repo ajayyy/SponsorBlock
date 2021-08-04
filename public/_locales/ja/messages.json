@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "シークバーに表示"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "非音楽区域がある場合，全区域を自動的に飛び越す"
+    },
     "colorFormatIncorrect": {
         "message": "カラーコードの書式が間違っています。 #から始まる3桁または6桁の16進数コードでなければなりません。"
     },
