@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Visa i sökfältet"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Hoppa över alla segment automatiskt när det finns ett icke-musiksegment"
+    },
     "colorFormatIncorrect": {
         "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."
     },
