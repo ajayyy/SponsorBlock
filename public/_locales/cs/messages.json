@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Zobrazit v liště"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Automaticky přeskočit všechny segmenty, když je ve videu nehudební segment"
+    },
     "colorFormatIncorrect": {
         "message": "Vaše barva má nesprávný formát. Měl by to být 3 nebo 6 znaků dlouhý HEX kód s křížkem na začátku."
     },
@@ -675,5 +678,12 @@
     },
     "hideForever": {
         "message": "Skrýt napořád"
+    },
+    "warningChatInfo": {
+        "message": "Dostali jste varování a nemůžete dočasně přidávat segmenty. To znamená, že jsme si všimli, že děláte běžné chyby, které nejsou škodlivé, jen chceme vyjasnit pravidla. Také se můžete připojit do tohoto chatu pomocí discord.gg/SponsorBlock nebo matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Hlas zamítnut kvůli varování. Klikněte pro otevření chatu pro vyřešení, nebo se vraťte později, až budete mít čas.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }
