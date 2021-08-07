@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Pule patrocinadores, pedidos para se inscrever e mais nos vídeos do YouTube. Reporte patrocinadores nos vídeos que você assistir para economizar o tempo dos outros.",
+        "message": "Pule patrocinadores, pedidos para se inscrever, e outros nos vídeos do YouTube. Reporte patrocinadores nos vídeos que você assistir para economizar o tempo dos outros.",
         "description": "Description of the extension."
     },
     "400": {
@@ -497,7 +497,7 @@
         "message": "Patrocinador"
     },
     "category_sponsor_description": {
-        "message": "Promoção paga, indicações pagas e anúncios diretos. Não para auto-promoção ou mensagens grátis para causas/criadores/websites/produtos que eles gostam."
+        "message": "Promoção paga, referências pagas e anúncios diretos. Não deve ser usado para Auto promoção ou mensagens grátis para causas/criadores/sites/produtos que eles gostam."
     },
     "category_selfpromo": {
         "message": "Não-pago/Auto promoção"
@@ -560,7 +560,7 @@
         "message": "Mostrar barra de progresso"
     },
     "colorFormatIncorrect": {
-        "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma tralha / hashtag no início."
+        "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma cerquilha (hashtag) no início."
     },
     "previewColor": {
         "message": "Cor Não Enviada",
