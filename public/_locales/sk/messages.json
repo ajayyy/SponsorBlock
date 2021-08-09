@@ -23,7 +23,7 @@
         "message": "segment"
     },
     "Segments": {
-        "message": "segmenty"
+        "message": "segmentov"
     },
     "upvoteButtonInfo": {
         "message": "Hlasovať pre tento príspevok"
@@ -315,7 +315,7 @@
         "message": "minúta"
     },
     "minsLower": {
-        "message": "minúty"
+        "message": "minút"
     },
     "hourLower": {
         "message": "hodina"
@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Zobraziť v časovej lište"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Automaticky preskočiť všetky segmenty ak neexistuje segment bez hudby"
+    },
     "colorFormatIncorrect": {
         "message": "Vaša farba je nesprávne naformátovaná. Mal by to byť 3 alebo 6-miestny hexadecimálny kód so znakom čísla na začiatku."
     },
@@ -675,5 +678,12 @@
     },
     "hideForever": {
         "message": "Navždy skryť"
+    },
+    "warningChatInfo": {
+        "message": "Dostali ste varovanie a nemôžete tak dočasne odosielať segmenty. To znamená, že sme si všimli, že ste spravili nejaké chyby, ktoré nie sú myslené zle, a chceme Vám len objasniť pravidlá. Môžete sa pripojiť do konverzácie pomocou discord.gg/SponsorBlock alebo matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Hlasovanie bolo zamietnuté kvôli varovaniu. Kliknite pre otvorenie chatu, aby ste ho vyriešili, alebo sa vrátťe až budete mať čas.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

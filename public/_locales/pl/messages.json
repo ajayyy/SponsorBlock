@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Nie znaleziono filmu YouTube.\nJeżeli to błąd, odśwież stronę."
     },
+    "refreshSegments": {
+        "message": "Odśwież segmenty"
+    },
     "success": {
         "message": "Sukces!"
     },
@@ -556,6 +559,9 @@
     "showOverlay": {
         "message": "Pokaż na pasku"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"
+    },
     "colorFormatIncorrect": {
         "message": "Nieprawidłowy format koloru. Powinien to być zapis szesnastkowy (heksadecymalny) składający się z 3 lub 6 znaków poprzedzonych kratką (#)."
     },
@@ -672,5 +678,12 @@
     },
     "hideForever": {
         "message": "Schowaj na zawsze"
+    },
+    "warningChatInfo": {
+        "message": "Otrzymałeś ostrzeżenie i nie możesz tymczasowo przesłać segmentów. Oznacza to, że zauważyliśmy, że popełniałeś pewne pospolite błędy, które nie są złośliwe i po prostu chcemy wyjaśnić zasady. Możesz również dołączyć do tego czatu używając discord.gg/SponsorBlock lub matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Głosowanie odrzucone z powodu ostrzeżenia. Kliknij, aby otworzyć czat w celu rozwiązania problemu lub wróć później, gdy będziesz miał czas.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

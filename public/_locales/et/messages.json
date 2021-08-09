@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Kuva mängija ajaribal"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Jäta automaatselt kõik segmendid vahele, kui eksisteerib mitte-muusika segment"
+    },
     "colorFormatIncorrect": {
         "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
     },
@@ -675,5 +678,12 @@
     },
     "hideForever": {
         "message": "Peida igaveseks"
+    },
+    "warningChatInfo": {
+        "message": "Sa said hoiatuse ning ei saa ajutiselt segmente saata. See tähendab, et me leidsime sind tegemast teatud sagedasi, mitte-pahatahtlikke vigu, ning soovime sulle meie reegleid täpsustada (inglise keeles). Sa võid selle vestlusega liituda ka discord.gg/SponsorBlock või matrix.to/#/+sponsor:ajay.app kaudu."
+    },
+    "voteRejectedWarning": {
+        "message": "Hääletus hoiatuse tõttu tagasilükatud. Klõpsa, et avada selle lahendamiseks vestlus või tule hiljem tagasi, kui aega saad.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

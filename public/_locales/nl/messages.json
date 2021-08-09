@@ -26,13 +26,13 @@
         "message": "segmenten"
     },
     "upvoteButtonInfo": {
-        "message": "Stemmen op deze indiening"
+        "message": "Stemmen op deze inzending"
     },
     "reportButtonTitle": {
         "message": "Rapporteren"
     },
     "reportButtonInfo": {
-        "message": "Deze indiening als onjuist rapporteren."
+        "message": "Deze inzending als onjuist rapporteren."
     },
     "Dismiss": {
         "message": "Verwerpen"
@@ -140,7 +140,7 @@
         "message": "Indienen"
     },
     "submissionEditHint": {
-        "message": "Sectiebewerking verschijnt nadat u op verzenden hebt geklikt",
+        "message": "Sectiebewerking verschijnt nadat u op indienen hebt geklikt",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -204,7 +204,7 @@
         "message": "Bijhouden van het aantal keren overslaan inschakelen"
     },
     "whatViewTracking": {
-        "message": "Deze functie houdt bij welke segmenten u heeft overgeslagen om gebruikers te laten weten hoezeer hun indiening anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer u een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
+        "message": "Deze functie houdt bij welke segmenten u heeft overgeslagen om gebruikers te laten weten hoezeer hun inzending anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer u een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
     },
     "enableViewTrackingInPrivate": {
         "message": "Bijhouden van het aantal keren overslaan inschakelen in privé-/incognito-tabbladen"
@@ -251,7 +251,7 @@
         "message": "Sneltoets instellen voor begin/einde van segment"
     },
     "setSubmitKeybind": {
-        "message": "Sneltoets instellen voor indienen"
+        "message": "Sneltoets instellen voor inzending"
     },
     "keybindDescription": {
         "message": "Selecteer een toets door hem in te drukken"
@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Weergeven in tijdbalk"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Automatisch alle segmenten overslaan wanneer er een niet-muziek-segment is"
+    },
     "colorFormatIncorrect": {
         "message": "Uw kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
     },
@@ -675,5 +678,12 @@
     },
     "hideForever": {
         "message": "Voor altijd verbergen"
+    },
+    "warningChatInfo": {
+        "message": "U heeft een waarschuwing gekregen en kunt tijdelijk geen segmenten indienen. Dit betekent dat we gemerkt hebben dat u een aantal veelvoorkomende fouten maakt die niet kwaadaardig zijn, en we willen gewoon de regels verduidelijken. U kunt ook deelnemen aan deze chat via discord.gg/SponsorBlock of matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Stem geweigerd vanwege een waarschuwing. Klik om een chat te openen om het op te lossen, of kom later terug als u tijd hebt.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }
