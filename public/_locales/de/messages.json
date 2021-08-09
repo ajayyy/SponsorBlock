@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisiere den Tab."
     },
+    "refreshSegments": {
+        "message": "Segment aktualisieren"
+    },
     "success": {
         "message": "Geschafft!"
     },
@@ -185,6 +188,9 @@
     "whatInfoButton": {
         "message": "Dieser Knopf öffnet ein Pop-up auf der Youtube-Seite."
     },
+    "autoHideInfoButton": {
+        "message": "Info-Button automatisch ausblenden"
+    },
     "hideDeleteButton": {
         "message": "Deaktiviere den Löschen-Knopf im Youtube-Videoplayer"
     },
@@ -199,6 +205,9 @@
     },
     "whatViewTracking": {
         "message": "Diese Funktion erfasst, welche Segmente du übersprungen hast, um andere Nutzer zu zeigen, wie hilfreich ihre Beiträge sind. Außerdem stellt dies zusammen mit positiven Bewertungen sicher, dass keine unerwünschten Inhalte in die Datenbank gelangen. Die Erweiterung sendet jedes Mal, wenn du ein Segment überspringst, eine Meldung an den Server. Hoffentlich verändern die meisten Nutzer diese Einstellung nicht, um unsere Statistik zu verbessern :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "Aktiviere den Übersprungen Zähler in Privaten/Incognito Tabs"
     },
     "enableQueryByHashPrefix": {
         "message": "Abfrage nach Hash-Präfix"
@@ -350,6 +359,10 @@
     "supportOtherSites": {
         "message": "Drittanbieter YouTube-Sites unterstützen"
     },
+    "supportOtherSitesDescription": {
+        "message": "Unterstütze Drittanbieter YouTube Clients. Zum unterstützen müssen zusätzlichliche Berechtigungen akzeptiert werden. Dies funktioniert NICHT im Incognitomodus auf Chrome oder anderen Chromium Varianten.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Unterstützte Seiten: "
     },
@@ -382,6 +395,12 @@
     },
     "minDurationDescription": {
         "message": "Videosegmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
+    },
+    "skipNoticeDuration": {
+        "message": "Benachrichtigungsdauer überspringen (Sekunden):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Die Überspringen Benachrichtigung wird mindestens so lange angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
     },
     "shortCheck": {
         "message": "Die folgende Einreichung ist kürzer als deine Mindestdauer. Das könnte bedeuten, dass dieses Videosegment bereits eingereicht wurde und aufgrund dieser Option einfach ignoriert wird. Bist du dir sicher, dass du es übermitteln möchtest?"
@@ -537,6 +556,9 @@
     "showOverlay": {
         "message": "In der Video-Zeitleiste anzeigen"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Alle Segmente automatisch überspringen, wenn ein nicht-Musiksegment vorhanden ist"
+    },
     "colorFormatIncorrect": {
         "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
     },
@@ -643,6 +665,16 @@
     },
     "categoryUpdate2": {
         "message": "Öffne die Optionen um das Verhalten bei Intros, Outros, Merchandising (Fanartikel) usw. einzustellen."
+    },
+    "help": {
+        "message": "Hilfe"
+    },
+    "experiementOptOut": {
+        "message": "Abmeldung aller zukünftigen Experimente",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Dauerhaft verbergen"
     },
     "warningChatInfo": {
         "message": "Du wurdest ermahnt und kannst zur Zeit keine Segmente einreichen. Uns ist nämlich aufgefallen, dass du ein paar gängige Fehler machst, die nicht bösartig sind. Um die Regeln klarzustellen laden wir dich zu einem kurzem Gespräch auf discord.gg/SponsorBlock oder matrix.to/#/+sponsor:ajay.app ein"
