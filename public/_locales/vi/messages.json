@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Hiện ở thanh xem trước"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Tự động bỏ qua tất cả các phân đoạn nếu trong video có phân đoạn không phải nhạc"
+    },
     "colorFormatIncorrect": {
         "message": "Mã màu sai định dạng. Mã màu phải có 3 hoặc 6 ký tự hệ hex và có dấu thăng ở đầu."
     },
@@ -610,6 +613,13 @@
     "hiddenDueToDuration": {
         "message": "đã bị ẩn: quá ngắn"
     },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Không xác định được ID kênh. Nếu bạn đang xem video này trên 1 trang web thứ 3, hãy mở lại video này trên trang chủ Youtube rồi thử lại. Điều này cũng có thể do những thay đổi trong mã nguồn trang web YouTube, nếu bạn nghĩ vậy, hãy bình luận tại đây:"
+    },
+    "videoInfoFetchFailed": {
+        "message": "SponsorBlock không thể truy vấn dữ liệu lịch sử phân đoạn video. Có thể do trình chặn quảng cáo của bạn. Bạn có thể tìm hiểu nguyên nhân và cách fix ở đây: https://github.com/ajayyy/SponsorBlock/issues/741."
+    },
     "youtubePermissionRequest": {
         "message": "Có vẻ như SponsorBlock không thể truy cập API YouTube. Để khắc phục điều này, hãy chấp nhận lời nhắc cấp quyền sẽ xuất hiện tiếp theo, đợi vài giây rồi tải lại trang."
     },
@@ -621,6 +631,9 @@
     },
     "permissionRequestFailed": {
         "message": "Truy cập bị từ chối, bạn đã nhấp vào từ chối à?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Nếu bạn không thể giải quyết được vấn đề này, hãy vô hiệu hoá cài đặt 'Bỏ qua video không công khai/riêng tư', vì SponsorBlock không thể lấy được thông tin của video này"
     },
     "forceChannelCheck": {
         "message": "Bắt buộc kiểm tra kênh trước khi bỏ qua"
@@ -658,6 +671,10 @@
     },
     "help": {
         "message": "Trợ giúp"
+    },
+    "experiementOptOut": {
+        "message": "Từ chối tham gia thử nghiệm trong tương lai",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Ẩn vĩnh viễn"
