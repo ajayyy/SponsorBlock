@@ -185,6 +185,9 @@
     "whatInfoButton": {
         "message": "Ця кнопка відкриває спливаюче вікно на сторінці YouTube."
     },
+    "autoHideInfoButton": {
+        "message": "Кнопка \"Автоматично сховати інформацію\""
+    },
     "hideDeleteButton": {
         "message": "Приховати кнопку видалення в плеєрі YouTube"
     },
@@ -390,6 +393,9 @@
     "minDurationDescription": {
         "message": "Сегменти коротше цього значення не будуть пропускатися і не будуть показані в плеєрі."
     },
+    "skipNoticeDuration": {
+        "message": "Тривалість повідомлення пропуску (в секундах):"
+    },
     "shortCheck": {
         "message": "Наступний діапазон часу коротше, ніж Ваше налаштування мінімальної тривалості. Це може означати, що він вже був надісланий, і просто ігнорується через це налаштування. Ви дійсно хочете надіслати?"
     },
@@ -547,6 +553,9 @@
     "showOverlay": {
         "message": "Показувати в смузі прокрутки"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Автоматично пропустити усі сегменти, якщо присутній сегмент без музики"
+    },
     "colorFormatIncorrect": {
         "message": "Ви ввели колір в неправильному форматі. Це повинно бути 3-х або 6-ти значне шістнадцяткове число з символом # на початку."
     },
@@ -654,11 +663,21 @@
     "categoryUpdate2": {
         "message": "Відкрийте налаштування, щоб пропускати початкові і кінцеві заставки, саморекламу та інше."
     },
+    "help": {
+        "message": "Довідка"
+    },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Сховати назавжди"
+    },
+    "warningChatInfo": {
+        "message": "Ви отримали попередження, тому тимчасово не можете обирати сегменти. Це означає, що ми помітили, що ви робили кілька поширених помилок, які не є злісними. Тому ми хочемо нагадати вам правила. Ви можете приєднатися до чату з правилами використовуючи discord.gg/SponsorBlock або matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Голосування відхилено через попередження. Натисніть, щоб відкрити чат для вирішення цієї проблеми, або поверніться пізніше.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }
