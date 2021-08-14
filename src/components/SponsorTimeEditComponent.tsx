@@ -239,7 +239,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         // See if show more categories was pressed
-        if (!Config.config.categorySelections.some((category) => category.name === event.target.value)) {
+        if (event.target.value !== DEFAULT_CATEGORY && !Config.config.categorySelections.some((category) => category.name === event.target.value)) {
             const chosenCategory = event.target.value;
             event.target.value = DEFAULT_CATEGORY;
             
