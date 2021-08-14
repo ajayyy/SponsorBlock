@@ -429,6 +429,8 @@ export default class Utils {
     }
 
     getFormattedTime(seconds: number, precise?: boolean): string {
+        seconds = Math.max(seconds, 0);
+        
         const hours = Math.floor(seconds / 60 / 60);
         const minutes = Math.floor(seconds / 60) % 60;
         let minutesDisplay = String(minutes);
