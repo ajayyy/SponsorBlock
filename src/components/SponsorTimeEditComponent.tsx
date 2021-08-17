@@ -171,13 +171,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         {this.getCategoryOptions()}
                     </select>
 
-                    <img id={"sponsorTimeCategoriesHelpButton" + this.idSuffix}
-                        className="helpButton"
-                        src={chrome.extension.getURL("icons/help.svg")}
-                        title={chrome.i18n.getMessage("categoryGuidelines")}
-                        onClick={() => chrome.runtime.sendMessage({"message": "openConfig"})}>
-                    
-                    </img>
+                    {/* open in new tab */}
+                    <a href="https://wiki.sponsor.ajay.app/index.php/Segment_Categories"
+                        target="_blank" rel="noreferrer">
+                        <img id={"sponsorTimeCategoriesHelpButton" + this.idSuffix}
+                            className="helpButton"
+                            src={chrome.extension.getURL("icons/help.svg")}
+                            title={chrome.i18n.getMessage("categoryGuidelines")} />
+                    </a>
                 </div>
 
                 <br/>
