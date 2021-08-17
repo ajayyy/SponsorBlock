@@ -827,7 +827,6 @@ function updatePreviewBar(): void {
     if (video === null) return;
 
     const previewBarSegments: PreviewBarSegment[] = [];
-
     if (sponsorTimes) {
         sponsorTimes.forEach((segment) => {
             if (segment.hidden !== SponsorHideType.Visible) return;
@@ -836,6 +835,7 @@ function updatePreviewBar(): void {
                 segment: segment.segment as [number, number],
                 category: segment.category,
                 unsubmitted: false,
+                showLarger: utils.getCategoryActionType(segment.category) === CategoryActionType.POI
             });
         });
     }
@@ -845,6 +845,7 @@ function updatePreviewBar(): void {
             segment: segment.segment as [number, number],
             category: segment.category,
             unsubmitted: true,
+            showLarger: utils.getCategoryActionType(segment.category) === CategoryActionType.POI
         });
     });
 

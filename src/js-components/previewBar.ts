@@ -15,6 +15,7 @@ export interface PreviewBarSegment {
     segment: [number, number];
     category: string;
     unsubmitted: boolean;
+    showLarger: boolean;
 }
 
 class PreviewBar {
@@ -182,10 +183,10 @@ class PreviewBar {
         });
     }
 
-    createBar({category, unsubmitted, segment}: PreviewBarSegment): HTMLLIElement {
+    createBar({category, unsubmitted, segment, showLarger}: PreviewBarSegment): HTMLLIElement {
         const bar = document.createElement('li');
         bar.classList.add('previewbar');
-        bar.innerHTML = '&nbsp;';
+        bar.innerHTML = showLarger ? '&nbsp;&nbsp;' : '&nbsp;';
 
         const fullCategoryName = (unsubmitted ? 'preview-' : '') + category;
         bar.setAttribute('sponsorblock-category', fullCategoryName);
