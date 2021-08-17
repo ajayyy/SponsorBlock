@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Mostrar en la barra de búsqueda"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Saltar automáticamente todos los segmentos cuando hay un segmento no musical"
+    },
     "colorFormatIncorrect": {
         "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
     },

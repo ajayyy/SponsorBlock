@@ -122,7 +122,7 @@ const manualSkipPercentCount = 0.5;
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
   
-function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void {
+function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void | boolean {
     //messages from popup script
     switch(request.message){
         case "update":
@@ -143,7 +143,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 sponsorTimes: sponsorTimes
             });
 
-            if (popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
+            if (!request.updating && popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
                 //the popup should be closed now that another is opening
                 closeInfoMenu();
             }
@@ -178,8 +178,12 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             submitSponsorTimes();
             break;
         case "refreshSegments":
-            sponsorsLookup(sponsorVideoID, false).then(() => sendResponse({}));
-            break;
+            sponsorsLookup(sponsorVideoID, false).then(() => sendResponse({
+                found: sponsorDataFound,
+                sponsorTimes: sponsorTimes
+            }));
+
+            return true;
     }
 }
 
@@ -425,7 +429,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         skippingSegments = [];
 
         for (const segment of skipInfo.array) {
-            if (utils.getCategorySelection(segment.category).option === CategorySkipOption.AutoSkip &&
+            if (shouldAutoSkip(segment) &&
                     segment.segment[0] >= skipTime[0] && segment.segment[1] <= skipTime[1]) {
                 skippingSegments.push(segment);
             }
@@ -595,7 +599,8 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
-        categories
+        categories,
+        userAgent: `${chrome.runtime.id}`
     });
 
     if (response?.ok) {
@@ -942,7 +947,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
 function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideHiddenSponsors = true): number {
     // Only combine segments for AutoSkip
     if (index == -1 || 
-        utils.getCategorySelection(sponsorTimes[index].category)?.option !== CategorySkipOption.AutoSkip) return index;
+        shouldAutoSkip(sponsorTimes[index])) return index;
 
     // Default to the normal endTime
     let latestEndTimeIndex = index;
@@ -953,7 +958,7 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
 
         if (currentSegment[0] <= latestEndTime && currentSegment[1] > latestEndTime 
             && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)
-            && utils.getCategorySelection(sponsorTimes[i].category).option === CategorySkipOption.AutoSkip) {
+            && shouldAutoSkip(sponsorTimes[i])) {
                 // Overlapping segment
                 latestEndTimeIndex = i;
         }
@@ -1035,7 +1040,7 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
 //skip from the start time to the end time for a certain index sponsor time
 function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: SponsorTime[], openNotice: boolean) {
     // There will only be one submission if it is manual skip
-    const autoSkip: boolean = utils.getCategorySelection(skippingSegments[0].category)?.option === CategorySkipOption.AutoSkip;
+    const autoSkip: boolean = shouldAutoSkip(skippingSegments[0]);
 
     if ((autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) && v.currentTime !== skipTime[1]) {
         // Fix for looped videos not working when skipping to the end #426
@@ -1110,6 +1115,11 @@ function createButton(baseID: string, title: string, callback: () => void, image
     };
 
     return newButton;
+}
+
+function shouldAutoSkip(segment: SponsorTime): boolean {
+    return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+            (Config.config.autoSkipOnMusicVideos && sponsorTimes.some((s) => s.category === "music_offtopic"));
 }
 
 function getControls(): HTMLElement | false {
@@ -1552,7 +1562,8 @@ async function sendSubmitMessage() {
         videoID: sponsorVideoID,
         userID: Config.config.userID,
         segments: sponsorTimesSubmitting,
-        videoDuration: video?.duration
+        videoDuration: video?.duration,
+        userAgent: `${chrome.runtime.id}/v${chrome.runtime.getManifest().version}`
     });
 
     if (response.status === 200) {

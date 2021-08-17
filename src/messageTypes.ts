@@ -12,7 +12,6 @@ interface DefaultMessage {
     message: 
         "update"
         | "sponsorStart"
-        | "isInfoFound"
         | "getVideoID"
         | "getChannelID"
         | "isChannelWhitelisted"
@@ -25,7 +24,12 @@ interface BoolValueMessage {
     value: boolean;
 }
 
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage);
+interface IsInfoFoundMessage {
+    message: "isInfoFound";
+    updating: boolean;
+}
+
+export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage);
 
 interface IsInfoFoundMessageResponse {
     found: boolean;

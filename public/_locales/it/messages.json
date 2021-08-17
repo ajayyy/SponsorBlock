@@ -675,5 +675,12 @@
     },
     "hideForever": {
         "message": "Nascondi per sempre"
+    },
+    "warningChatInfo": {
+        "message": "Hai ricevuto un ammonimento and non puoi inviare segmenti temporaneamente. Ciò significa che abbiamo notato che stavi commettendo alcuni errori comuni senza scopo malevolo, e vogliamo che tu ricontrollassi le regole. Puoi anche partecipare a questa chat su discord.gg/SponsorBlock o matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Voto rifiutato a causa di un ammonimento. Clicca per aprire una chat per risolverlo, oppure torna dopo quando hai tempo.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

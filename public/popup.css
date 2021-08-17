@@ -318,6 +318,11 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
   transform: rotate(45deg);
 }
 
+@keyframes rotate {
+	from { transform: rotate(0deg); }
+	  to { transform: rotate(360deg); }
+}
+
 .SBWhitelistIconContainer, button#optionsButton {
   display: flex;
   align-items: center;

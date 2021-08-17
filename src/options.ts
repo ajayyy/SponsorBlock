@@ -492,6 +492,22 @@ function activatePrivateTextChange(element: HTMLElement) {
         }
     });
 
+    // See if anything extra must be done
+    switch (option) {
+        case "userID":
+            utils.asyncRequestToServer("GET", "/api/userInfo", {
+                userID: Config.config[option],
+                values: ["warnings", "banned"]
+            }).then((result) => {
+                const userInfo = JSON.parse(result.responseText);
+                if (userInfo.warnings > 0 || userInfo.banned) {
+                    setButton.classList.add("hidden");
+                }
+            });
+
+            break;
+    }
+
     element.querySelector(".option-hidden-section").classList.remove("hidden");
 }
 

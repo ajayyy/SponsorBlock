@@ -234,19 +234,15 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     // Must be delayed so it only happens once loaded
     setTimeout(() => PageElements.sponsorblockPopup.classList.remove("preload"), 250);
 
-    messageHandler.query({
-            active: true,
-            currentWindow: true
-    }, onTabs);
+    getSegmentsFromContentScript(false);
 
-    function onTabs(tabs) {
+    function onTabs(tabs, updating: boolean): void {
         messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
-            console.log(result)
             if (result !== undefined && result.videoID) {
                 currentVideoID = result.videoID;
                 creatingSegment = result.creatingSegment;
 
-                loadTabData(tabs);
+                loadTabData(tabs, updating);
             } else if (result === undefined && chrome.runtime.lastError) {
                 //this isn't a YouTube video then, or at least the content script is not loaded
                 displayNoVideo();
@@ -254,27 +250,28 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     }
 
-    function loadTabData(tabs) {
+    function loadTabData(tabs, updating: boolean): void {
         if (!currentVideoID) {
             //this isn't a YouTube video then
             displayNoVideo();
             return;
         }
 
-        //load video times for this video
-        const sponsorTimesStorage = Config.config.segmentTimes.get(currentVideoID);
-        if (sponsorTimesStorage != undefined && sponsorTimesStorage.length > 0) {
-            sponsorTimes = sponsorTimesStorage;
-        }
-
+        sponsorTimes = Config.config.segmentTimes.get(currentVideoID) ?? [];
         updateSegmentEditingUI();
 
-        //check if this video's sponsors are known
         messageHandler.sendMessage(
             tabs[0].id,
-            {message: 'isInfoFound'},
+            {message: 'isInfoFound', updating},
             infoFound
         );
+    }
+
+    function getSegmentsFromContentScript(updating: boolean): void {
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, (tabs) => onTabs(tabs, updating));
     }
 
     function infoFound(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
@@ -369,7 +366,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //display the video times from the array at the top, in a different section
     function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
         if (request.sponsorTimes != undefined) {
-
             // Sort list by start time
             const segmentTimes = request.sponsorTimes
                                 .sort((a, b) => a.segment[1] - b.segment[1])
@@ -377,6 +373,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             //add them as buttons to the issue reporting container
             const container = document.getElementById("issueReporterTimeButtons");
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+
             for (let i = 0; i < segmentTimes.length; i++) {
                 const UUID = segmentTimes[i].UUID;
 
@@ -695,7 +695,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             messageHandler.sendMessage(
                 tabs[0].id,
                 {message: 'refreshSegments'},
-                () => stopAnimation()
+                (response) => {
+                    infoFound(response);
+                    stopAnimation();
+                }
             )}
         );
     }

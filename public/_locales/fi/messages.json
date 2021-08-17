@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Näytä liukusäätimessä"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Ohita kaikki segmentit automaattisesti, kun videossa on \"Musiikiton\" segmentti"
+    },
     "colorFormatIncorrect": {
         "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on # alussa."
     },

@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Pule patrocinadores, pedidos para se inscrever e mais nos vídeos do YouTube. Reporte patrocinadores nos vídeos que você assistir para economizar o tempo dos outros.",
+        "message": "Pule patrocinadores, pedidos para se inscrever, e outros nos vídeos do YouTube. Reporte patrocinadores nos vídeos que você assistir para economizar o tempo dos outros.",
         "description": "Description of the extension."
     },
     "400": {
@@ -74,10 +74,10 @@
         "message": "Nenhum segmento encontrado"
     },
     "sponsorStart": {
-        "message": "O segmento começa agora"
+        "message": "O Segmento Começa Agora"
     },
     "sponsorEnd": {
-        "message": "O segmento termina agora"
+        "message": "O Segmento Termina Agora"
     },
     "sponsorCancel": {
         "message": "Cancelar Criação de Segmento"
@@ -140,7 +140,7 @@
         "message": "Enviar"
     },
     "submissionEditHint": {
-        "message": "A edição da seção aparecerá depois que você clicar em enviar",
+        "message": "A edição da seção aparecerá após você clicar em enviar",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -189,7 +189,7 @@
         "message": "Este é o botão que abre o popup na pagina do Youtube."
     },
     "autoHideInfoButton": {
-        "message": "Esconder automaticamente botão de informação"
+        "message": "Esconder Automaticamente o Botão de Informação"
     },
     "hideDeleteButton": {
         "message": "Esconder botão de Apagar no player do Youtube"
@@ -201,31 +201,31 @@
         "message": "Este é o botão que lhe permite saltar todos os patrocínios do player do Youtube."
     },
     "enableViewTracking": {
-        "message": "Ativar contador de segmentos pulados"
+        "message": "Ativar Contador de Segmentos Pulados"
     },
     "whatViewTracking": {
-        "message": "Este recurso controla quais segmentos você pulou para permitir que os usuários saibam o quanto a submissão deles ajudou outros e é usado como métrica, juntamente com votos positivos para garantir que spam não entre no banco de dados. A extensão envia uma mensagem ao servidor cada vez que você pular um segmento. Espera-se que a maioria das pessoas não mude essa configuração, para que os números de exibição estejam corretos. :)"
+        "message": "Este recurso controla quais segmentos você pulou para permitir que os usuários saibam o quanto a submissão deles ajudou outros e foi usada como métrica, juntamente com votos positivos para garantir que nenhum spam entre no banco de dados. A extensão envia uma mensagem ao servidor cada vez que você pular um segmento. Espera-se que a maioria das pessoas não mude essa configuração, para que os números de exibição estejam corretos. :)"
     },
     "enableViewTrackingInPrivate": {
-        "message": "Ativar Pular Contagem de Rastreamento em abas Privadas/Incógnito"
+        "message": "Ativar Pular Contagem de Rastreamento em Abas Privadas/Incógnito"
     },
     "enableQueryByHashPrefix": {
         "message": "Consulta Por Prefixo Hash"
     },
     "whatQueryByHashPrefix": {
-        "message": "Em vez de solicitar segmentos do servidor usando o videoID, os 4 primeiros caracteres do hash do videoID foram enviados. Este servidor irá enviar dados de volta para todos os vídeos com hashes similares."
+        "message": "Em vez de solicitar segmentos do servidor usando o videoID, os 4 primeiros caracteres do hash do videoID foram enviados. Este servidor enviará dados de volta para todos os vídeos com hashes similares."
     },
     "enableRefetchWhenNotFound": {
         "message": "Recuperar Segmentos Em Novos Vídeos"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Se o vídeo for novo e não houver segmentos encontrados, continuaremos buscando enquanto você assiste."
+        "message": "Se o vídeo for novo e nenhum segmento for encontrado, continuaremos buscando enquanto você assiste."
     },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
     },
     "longDescription": {
-        "message": "O SponsorBlock permite que você pule patrocinadores, introduções, outros, lembretes de inscrição e outras partes irritantes dos vídeos do YouTube. O SponsorBlock é uma extensão de navegador de crowdsourcing que permite enviar o tempo inicial e final de segmentos patrocinados de vídeos do YouTube. Assim que uma pessoa enviar essa informação, todas as outras pessoas com essa extensão irão pular o segmento patrocinado. Você também pode pular seções que não são de música dos vídeos de música.",
+        "message": "O SponsorBlock permite que você pule patrocinadores, introduções, créditos finais, lembretes de inscrição, e outras partes irritantes dos vídeos do YouTube. O SponsorBlock é uma extensão de navegador de crowdsourcing que permite enviar a qualquer um o tempo inicial e final de segmentos patrocinados de vídeos do YouTube. Assim que uma pessoa enviar essa informação, todas as outras pessoas com essa extensão irão pular o segmento patrocinado. Você também pode pular seções que não são de música dos vídeos de música.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -297,7 +297,7 @@
         "message": "Notificação de áudio ao pular"
     },
     "audioNotificationDescription": {
-        "message": "A notificação de áudio ao pular irá tocar um som sempre que um segmento for ignorado. Se desativado (ou o pulo automático estiver desativado), nenhum som será reproduzido."
+        "message": "A notificação de áudio ao pular irá tocar um som sempre que um segmento for pulado. Se desativado (ou o pulo automático estiver desativado), nenhum som será reproduzido."
     },
     "showTimeWithSkips": {
         "message": "Mostrar tempo com pulos removidos"
@@ -351,16 +351,16 @@
         "message": "Pular automaticamente"
     },
     "showSkipNotice": {
-        "message": "Mostrar aviso após um segmento ser ignorado"
+        "message": "Mostrar Aviso Após um Segmento Ser Ignorado"
     },
     "keybindCurrentlySet": {
         "message": ". Atualmente, está definido para:"
     },
     "supportOtherSites": {
-        "message": "Suporte a Sites do YouTube de terceiros"
+        "message": "Suporte a Sites do YouTube de Terceiros"
     },
     "supportOtherSitesDescription": {
-        "message": "Apoie clientes de terceiros do YouTube. Para habilitar o suporte, você deve aceitar as permissões extras. Isso NÃO funciona em incógnito no Chrome e outras variantes do Chromium.",
+        "message": "Suporte a clientes de terceiros do YouTube. Para habilitar o suporte, você deve aceitar as permissões extras. Isso NÃO funciona em incógnito no Chrome e outras variantes do Chromium.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -373,7 +373,7 @@
         "message": "Adicionar Instância de Cliente de Terceiros"
     },
     "addInvidiousInstanceDescription": {
-        "message": "Adicione uma instância personalizada. Isso deve ser formatado com APENAS o domínio. Exemplo: invidious.ajay.app"
+        "message": "Adicionar uma instância personalizada. Isso deve ser formatado APENAS com o domínio. Exemplo: invidious.ajay.app"
     },
     "add": {
         "message": "Adicionar"
@@ -400,7 +400,7 @@
         "message": "Duração do aviso prévio de pular (segundos):"
     },
     "skipNoticeDurationDescription": {
-        "message": "O aviso de pular ficará na tela por pelo menos este tempo. Para o pular manual, pode ser visível por mais tempo."
+        "message": "O aviso de pular ficará na tela por pelo menos este tempo. Para o pulo manual, pode ser visível por mais tempo."
     },
     "shortCheck": {
         "message": "A seguinte submissão é mais curta do que sua opção de duração mínima. Isto significa que já foi enviada e que está sendo ignorada devido a esta opção. Tem certeza que deseja enviar mesmo assim?"
@@ -497,19 +497,19 @@
         "message": "Patrocinador"
     },
     "category_sponsor_description": {
-        "message": "Promoção paga, indicações pagas e anúncios diretos. Não para auto-promoção ou mensagens grátis para causas/criadores/websites/produtos que eles gostam."
+        "message": "Promoção paga, referências pagas e anúncios diretos. Não deve ser usado para Auto promoção ou mensagens grátis para causas/criadores/sites/produtos que eles gostam."
     },
     "category_selfpromo": {
         "message": "Não-pago/Auto promoção"
     },
     "category_selfpromo_description": {
-        "message": "Similar a \"patrocinador\", mas para auto promoções e segmentos não-pagos. Isto inclui seções sobre vendas, doações ou informações sobre com quem colaboraram."
+        "message": "Similar a \"patrocinador\", mas para auto promoções e segmentos não-pagos. Isso inclui seções sobre vendas, doações ou informações sobre com quem colaboraram."
     },
     "category_interaction": {
         "message": "Lembrete de interação (inscrever-se)"
     },
     "category_interaction_description": {
-        "message": "Quando houver um pequeno lembrete para curtir, inscrever-se ou segui-los no meio do conteúdo. Se é longo ou sobre algo específico, deveria ser sob Não-pago/Auto promoção."
+        "message": "Quando houver um pequeno lembrete para curtir, inscrever-se ou segui-los no meio do conteúdo. Se é longo ou sobre algo em específico, deveria ser sob Não-pago/Auto promoção."
     },
     "category_interaction_short": {
         "message": "Lembrete de interação"
@@ -539,7 +539,7 @@
         "message": "Música: Seção sem música"
     },
     "category_music_offtopic_description": {
-        "message": "Para uso em vídeos musicais somente. Deve ser usado exclusivamente para seções de vídeos musicais que já não pertençam à outra categoria."
+        "message": "Apenas para uso em vídeos musicais. Deve ser usado exclusivamente para seções de vídeos musicais que já não pertençam à outra categoria."
     },
     "category_music_offtopic_short": {
         "message": "Não musical"
@@ -559,8 +559,11 @@
     "showOverlay": {
         "message": "Mostrar barra de progresso"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Pular automaticamente todos os segmentos quando há um segmento que não é música"
+    },
     "colorFormatIncorrect": {
-        "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma tralha / hashtag no início."
+        "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma cerquilha (hashtag) no início."
     },
     "previewColor": {
         "message": "Cor Não Enviada",
@@ -595,7 +598,7 @@
         "message": "Selecione uma Categoria"
     },
     "enableThisCategoryFirst": {
-        "message": "Para enviar os segmentos com a categoria de \"{0}\", você deve ativá-lo nas opções. Você será redirecionado para as opções agora.",
+        "message": "Para enviar os segmentos com a categoria de \"{0}\", você deve ativá-la nas opções. Você será redirecionado para as opções agora.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
@@ -612,13 +615,13 @@
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
-        "message": "ID do canal ainda não foi carregado. Se você estiver usando um vídeo embutido, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se você achar que este é o caso, faça um comentário aqui:"
+        "message": "O ID do canal ainda não foi carregado. Se você estiver usando um vídeo embutido, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se você achar que este é o caso, faça um comentário aqui:"
     },
     "videoInfoFetchFailed": {
         "message": "Parece que algo está bloqueando a habilidade do SponsorBlock de obter dados de vídeo. Por favor, veja https://github.com/ajayyy/SponsorBlock/issues/741 para mais informações."
     },
     "youtubePermissionRequest": {
-        "message": "Parece que o SponsorBlock é incapaz de acessar a API do YouTube. Para corrigir isso, aceite a permissão do prompt que aparecerá a seguir, espere alguns segundos e recarregue a página."
+        "message": "Parece que o SponsorBlock não foi capaz de acessar a API do YouTube. Para corrigir isso, aceite a permissão do prompt que aparecerá a seguir, espere alguns segundos, e recarregue a página."
     },
     "acceptPermission": {
         "message": "Aceitar permissão"
@@ -627,19 +630,19 @@
         "message": "Solicitação de permissão bem-sucedida!"
     },
     "permissionRequestFailed": {
-        "message": "Falha na solicitação de permissão. Você clicou em negar?"
+        "message": "Falha na solicitação de permissão, você clicou em negar?"
     },
     "adblockerIssueWhitelist": {
         "message": "Se você não consegue resolver isso, desative a configuração 'Forçar Verificação do Canal Antes de Pular', pois o SponsorBlock não pode recuperar as informações deste vídeo"
     },
     "forceChannelCheck": {
-        "message": "Forçar verificação do canal antes de pular"
+        "message": "Forçar Verificação do Canal Antes de Pular"
     },
     "whatForceChannelCheck": {
-        "message": "Por padrão, isso pulará os segimentos imediatamente mesmo antes de saber qual é o canal. Por padrão, alguns segimentos no inicio do video podem ser ignorados nos canais da lista branca. Habilitar esta opção evitará isso, mas irá fazer com que todos os saltos tenham um ligeiro atraso, já que obter o channelID pode levar algum tempo. Este atraso pode não ser perceptível se você tiver internet rápida."
+        "message": "Por padrão, isso pulará os seguimentos imediatamente, mesmo antes de saber qual é o canal. Por padrão, alguns seguimentos no inicio do vídeo podem ser ignorados nos canais da lista branca. Habilitar esta opção evitará isso, mas fará com que todos os pulos tenham um ligeiro atraso, já que obter o channelID pode levar algum tempo. Este atraso pode não ser perceptível se você tiver internet rápida."
     },
     "forceChannelCheckPopup": {
-        "message": "Considere ativar a 'forçar verificação de canal antes de pular\""
+        "message": "Considere Ativar a \"Forçar Verificação de Canal Antes de Pular\""
     },
     "downvoteDescription": {
         "message": "Tempo errado ou incorreto"
@@ -648,7 +651,7 @@
         "message": "Categoria errada"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Este vídeo é categorizado como música. Tem certeza que isto tem um patrocinador? Se este é realmente um \"segmento não musical\", abra as opções da extensão e habilite esta categoria. Assim você pode enviar este segmento como \"não-musical\" ao invés de patrocinador. Por favor leia as diretrizes se estiver confuso."
+        "message": "Este vídeo é categorizado como música. Tem certeza de que isto tem um patrocinador? Se este é realmente um \"Segmento Não Musical\", abra as opções da extensão e habilite esta categoria. Assim você pode enviar este segmento como \"Não-Musical\" ao invés de patrocinador. Por favor leia as diretrizes se estiver confuso."
     },
     "multipleSegments": {
         "message": "Múltiplos segmentos"
@@ -664,7 +667,7 @@
         "message": "As categorias estão aqui!"
     },
     "categoryUpdate2": {
-        "message": "Abra as opções para ignorar as introduções, outros, promoção de mercadoria, etc."
+        "message": "Abra as opções para ignorar as introduções, créditos finais, promoção de mercadoria, etc."
     },
     "help": {
         "message": "Ajuda"
@@ -675,5 +678,12 @@
     },
     "hideForever": {
         "message": "Ocultar para sempre"
+    },
+    "warningChatInfo": {
+        "message": "Você recebeu um aviso e temporariamente não poderá enviar segmentos. Isso significa que notamos que você cometeu alguns erros comuns que não são maliciosos, e queremos apenas clarificar as regras. Você também pode participar desse chat usando discord.gg/SponsorBlock ou matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Voto rejeitado devido a um aviso. Clique para abrir um chat para resolvê-lo, ou volte mais tarde quando tiver tempo.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

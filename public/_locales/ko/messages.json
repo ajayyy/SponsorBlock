@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "재생 시간 바 표시"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "음악이 아닌 구간이 있을 때는 모든 구간 자동 건너뛰기"
+    },
     "colorFormatIncorrect": {
         "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
     },
@@ -675,5 +678,12 @@
     },
     "hideForever": {
         "message": "다시 보지 않음"
+    },
+    "warningChatInfo": {
+        "message": "현재 귀하가 악의적이지 않은 일반적인 실수를 저지르고 있음을 발견했습니다. 이에 따라 경고 조치가 내려져 일시적으로 구간을 제출할 수 없게 되었습니다. 저희는 단지 규칙을 명확히 전달하고자 합니다. discord.gg/SponsorBlock 또는 matrix.to/#/+sponsor:ajay.app 링크를 통해 대화에 참여할 수도 있습니다."
+    },
+    "voteRejectedWarning": {
+        "message": "경고로 인해 투표가 거부되었습니다. 클릭하여 대화로 해결하거나, 나중에 시간이 나면 다시 오세요.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

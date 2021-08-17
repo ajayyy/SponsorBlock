@@ -177,13 +177,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         {this.getCategoryOptions()}
                     </select>
 
-                    <img id={"sponsorTimeCategoriesHelpButton" + this.idSuffix}
-                        className="helpButton"
-                        src={chrome.extension.getURL("icons/help.svg")}
-                        title={chrome.i18n.getMessage("categoryGuidelines")}
-                        onClick={() => chrome.runtime.sendMessage({"message": "openConfig"})}>
-                    
-                    </img>
+                    {/* open in new tab */}
+                    <a href="https://wiki.sponsor.ajay.app/index.php/Segment_Categories"
+                        target="_blank" rel="noreferrer">
+                        <img id={"sponsorTimeCategoriesHelpButton" + this.idSuffix}
+                            className="helpButton"
+                            src={chrome.extension.getURL("icons/help.svg")}
+                            title={chrome.i18n.getMessage("categoryGuidelines")} />
+                    </a>
                 </div>
 
                 <br/>
@@ -245,7 +246,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         // See if show more categories was pressed
-        if (!Config.config.categorySelections.some((category) => category.name === event.target.value)) {
+        if (event.target.value !== DEFAULT_CATEGORY && !Config.config.categorySelections.some((category) => category.name === event.target.value)) {
             const chosenCategory = event.target.value;
             event.target.value = DEFAULT_CATEGORY;
             
@@ -350,7 +351,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         const skipTime = sponsorTimes[index].segment[0];
 
-        this.props.contentContainer().previewTime(skipTime + 0.000001, false);
+        this.props.contentContainer().previewTime(skipTime + 0.0001, false);
     }
 
     deleteTime(): void {

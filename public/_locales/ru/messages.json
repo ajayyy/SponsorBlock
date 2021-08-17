@@ -559,6 +559,9 @@
     "showOverlay": {
         "message": "Показывать в полосе прокрутки"
     },
+    "autoSkipOnMusicVideos": {
+        "message": "Пропускать все сегменты автоматически при наличии сегмента без музыки"
+    },
     "colorFormatIncorrect": {
         "message": "Вы ввели цвет в неправильном формате. Это должно быть 3-х или 6-ти значное шестнадцатеричное число с символом # в начале."
     },
@@ -675,5 +678,12 @@
     },
     "hideForever": {
         "message": "Скрыть навсегда"
+    },
+    "warningChatInfo": {
+        "message": "Вы получили предупреждение и временно не можете отправлять сегменты. Мы заметили, что вы совершали распространенные ошибки, которые не являются злонамеренными, и просто хотим уточнить для вас правила. Вы также можете присоединиться к нашему чату, используя discord.gg/SponsorBlock или matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Голосование отклонено из-за предупреждения. Нажмите, чтобы открыть чат, где вы можете решить проблему, или вернитесь, когда у вас будет время.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }
