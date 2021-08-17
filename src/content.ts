@@ -561,6 +561,16 @@ function setupVideoListeners() {
     
                 startSponsorSchedule();
             }
+
+            if (!Config.config.dontShowNotice) {
+                const currentPoiSegment = sponsorTimes.find((segment) => 
+                        utils.getCategoryActionType(segment.category) === CategoryActionType.POI &&
+                        video.currentTime - segment.segment[0] > 0 &&
+                        video.currentTime - segment.segment[0] < video.duration * 0.006); // Approximate size on preview bar
+                if (currentPoiSegment) {
+                    skipToTime(video, currentPoiSegment.segment, [currentPoiSegment], true, true);
+                }
+            }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
@@ -1039,9 +1049,9 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
 }
 
 //skip from the start time to the end time for a certain index sponsor time
-function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: SponsorTime[], openNotice: boolean) {
+function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: SponsorTime[], openNotice: boolean, forceAutoSkip = false) {
     // There will only be one submission if it is manual skip
-    const autoSkip: boolean = shouldAutoSkip(skippingSegments[0]);
+    const autoSkip: boolean = forceAutoSkip || shouldAutoSkip(skippingSegments[0]);
 
     if ((autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) && v.currentTime !== skipTime[1]) {
         // Fix for looped videos not working when skipping to the end #426
