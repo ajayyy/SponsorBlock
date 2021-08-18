@@ -572,7 +572,7 @@ function setupVideoListeners() {
                         utils.getCategoryActionType(segment.category) === CategoryActionType.POI &&
                         video.currentTime - segment.segment[0] > 0 &&
                         video.currentTime - segment.segment[0] < video.duration * 0.006); // Approximate size on preview bar
-                if (currentPoiSegment) {
+                if (currentPoiSegment && !skipNotices.some((notice) => notice.segments.some((s) => s.UUID === currentPoiSegment.UUID))) {
                     skipToTime({
                         v: video, 
                         skipTime: currentPoiSegment.segment, 
