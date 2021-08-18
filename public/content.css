@@ -202,8 +202,6 @@
 /* if two are very close to eachother */
 .secondSkipNotice {
 	bottom: 250px;
-
-  	transition: bottom 0.2s;
 }
 
 .noticeLeftIcon {
