@@ -508,6 +508,10 @@ input::-webkit-inner-spin-button {
 	display: flex;
 }
 
+.skipButtonControlBarContainer.hidden {
+	display: none !important;
+}
+
 #sbSkipIconControlBarImage {
 	height: 60%;
     top: 0px;
