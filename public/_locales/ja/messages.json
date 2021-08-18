@@ -137,17 +137,17 @@
         "message": "リーダーボード"
     },
     "recordTimesDescription": {
-        "message": "送信"
+        "message": "提出"
     },
     "submissionEditHint": {
         "message": "提出をクリックするとセクション編集画面が表示されます",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "ヒント: オプションから提出時のキーバインドを設定できます"
+        "message": "心得: 利用者設定で提出時のキーバインドを設定できます"
     },
     "clearTimesButton": {
-        "message": "時間をクリア"
+        "message": "時間を消去"
     },
     "submitTimesButton": {
         "message": "時間を提出"
