@@ -379,25 +379,6 @@ function migrateOldFormats(config: SBConfig) {
         }
     }
 
-    // Adding preview category
-    if (!config["previewCategoryUpdate"]) {
-        config["previewCategoryUpdate"] = true;
-        for (const selection of config.categorySelections) {
-            if (selection.name === "intro" 
-                    && selection.option === CategorySkipOption.AutoSkip ||  selection.option === CategorySkipOption.ManualSkip) {
-                
-                // Add a default skip option for preview category
-                config.categorySelections.push({
-                    name: "preview" as Category,
-                    option: CategorySkipOption.ManualSkip
-                });
-                // Ensure it gets updated
-                config.categorySelections = config.categorySelections;
-                break;
-            }
-        }
-    }
-
     if (config["disableAutoSkip"]) {
         for (const selection of config.categorySelections) {
             if (selection.name === "sponsor") {
