@@ -6,7 +6,7 @@ export interface ContentContainer {
     (): {
         vote: (type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) => void,
         dontShowNoticeAgain: () => void,
-        unskipSponsorTime: (segment: SponsorTime) => void,
+        unskipSponsorTime: (segment: SponsorTime, unskipTime: number) => void,
         sponsorTimes: SponsorTime[],
         sponsorTimesSubmitting: SponsorTime[],
         skipNotices: SkipNotice[],
@@ -185,4 +185,13 @@ export enum ChannelIDStatus {
 export interface ChannelIDInfo {
     id: string,
     status: ChannelIDStatus
+}
+
+export interface SkipToTimeParams {
+    v: HTMLVideoElement, 
+    skipTime: number[], 
+    skippingSegments: SponsorTime[], 
+    openNotice: boolean, 
+    forceAutoSkip?: boolean,
+    unskipTime?: number
 }

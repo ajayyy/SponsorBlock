@@ -26,6 +26,8 @@ export interface SkipNoticeProps {
     closeListener: () => void;
     showKeybindHint?: boolean;
     smaller: boolean;
+
+    unskipTime?: number;
 }
 
 export interface SkipNoticeState {
@@ -455,7 +457,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     unskip(index: number): void {
-        this.contentContainer().unskipSponsorTime(this.segments[index]);
+        this.contentContainer().unskipSponsorTime(this.segments[index], this.props.unskipTime);
 
         this.unskippedMode(index, chrome.i18n.getMessage("reskip"));
     }

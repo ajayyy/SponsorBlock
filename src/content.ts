@@ -1,5 +1,5 @@
 import Config from "./config";
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -448,7 +448,12 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         if (incorrectVideoCheck(videoID, currentSkip)) return;
 
         if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
-            skipToTime(video, skipTime, skippingSegments, skipInfo.openNotice);
+            skipToTime({
+                v: video, 
+                skipTime, 
+                skippingSegments, 
+                openNotice: skipInfo.openNotice
+            });
 
             if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip) {
                 forcedSkipTime = skipTime[0] + 0.001;
@@ -568,7 +573,13 @@ function setupVideoListeners() {
                         video.currentTime - segment.segment[0] > 0 &&
                         video.currentTime - segment.segment[0] < video.duration * 0.006); // Approximate size on preview bar
                 if (currentPoiSegment) {
-                    skipToTime(video, currentPoiSegment.segment, [currentPoiSegment], true, true);
+                    skipToTime({
+                        v: video, 
+                        skipTime: currentPoiSegment.segment, 
+                        skippingSegments: [currentPoiSegment], 
+                        openNotice: true, 
+                        forceAutoSkip: true
+                    });
                 }
             }
         });
@@ -744,7 +755,13 @@ function startSkipScheduleCheckingForStartSponsors() {
         for (const time of poiSegments) {
             const skipOption = utils.getCategorySelection(time.category)?.option;
             if (skipOption !== CategorySkipOption.ShowOverlay) {
-                skipToTime(video, time.segment, [time], true);
+                skipToTime({
+                    v: video,
+                    skipTime: time.segment, 
+                    skippingSegments: [time], 
+                    openNotice: true,
+                    unskipTime: video.currentTime
+                });
                 if (skipOption === CategorySkipOption.AutoSkip) break;
             }
         }
@@ -1049,7 +1066,7 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
 }
 
 //skip from the start time to the end time for a certain index sponsor time
-function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: SponsorTime[], openNotice: boolean, forceAutoSkip = false) {
+function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, unskipTime}: SkipToTimeParams): void {
     // There will only be one submission if it is manual skip
     const autoSkip: boolean = forceAutoSkip || shouldAutoSkip(skippingSegments[0]);
 
@@ -1067,7 +1084,7 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
         //send out the message saying that a sponsor message was skipped
         if (!Config.config.dontShowNotice || !autoSkip) {
             skipNotices.forEach((notice) => notice.setShowKeybindHint(false));
-            skipNotices.push(new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer));
+            skipNotices.push(new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime));
         }
     }
 
@@ -1075,9 +1092,10 @@ function skipToTime(v: HTMLVideoElement, skipTime: number[], skippingSegments: S
     if (autoSkip) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true);
 }
 
-function unskipSponsorTime(segment: SponsorTime) {
+function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null) {
     //add a tiny bit of time to make sure it is not skipped again
-    video.currentTime = segment.segment[0] + 0.001;
+    console.log(unskipTime)
+    video.currentTime = unskipTime ?? segment.segment[0] + 0.001;
 }
 
 function reskipSponsorTime(segment: SponsorTime) {
