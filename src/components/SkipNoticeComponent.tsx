@@ -303,17 +303,19 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getSkipButton(): JSX.Element {
-        return (
-            <span className="sponsorSkipNoticeUnskipSection">
-                <button id={"sponsorSkipUnskipButton" + this.idSuffix}
-                    className="sponsorSkipObject sponsorSkipNoticeButton"
-                    style={{marginLeft: "4px"}}
-                    onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
+        if (this.segments.length > 1 || utils.getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI) {
+            return (
+                <span className="sponsorSkipNoticeUnskipSection">
+                    <button id={"sponsorSkipUnskipButton" + this.idSuffix}
+                        className="sponsorSkipObject sponsorSkipNoticeButton"
+                        style={{marginLeft: "4px"}}
+                        onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
 
-                    {this.state.unskipText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
-                </button>
-            </span>
-        );
+                        {this.state.unskipText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
+                    </button>
+                </span>
+            );
+        }
     }
 
     getSubmissionChooser(): JSX.Element[] {
