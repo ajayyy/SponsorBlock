@@ -5,8 +5,7 @@ import { Category, ContentContainer, CategoryActionType, SponsorHideType, Sponso
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 
-import Utils from "../utils";
-const utils = new Utils();
+import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
 
 export enum SkipNoticeAction {
     None,
@@ -82,18 +81,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.contentContainer = props.contentContainer;
         this.audio = null;
 
-        const categoryName = chrome.i18n.getMessage(this.segments.length > 1 ? "multipleSegments" 
-            : "category_" + this.segments[0].category + "_short") || chrome.i18n.getMessage("category_" + this.segments[0].category);
-        let noticeTitle = "";
-        if (this.autoSkip) {
-            const messageId = utils.getCategoryActionType(this.segments[0].category) === CategoryActionType.Skippable 
-                ? "skipped" : "skipped_to_category";
-            noticeTitle = chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
-        } else {
-            const messageId = utils.getCategoryActionType(this.segments[0].category) === CategoryActionType.Skippable 
-                ? "skip_category" : "skip_to_category";
-            noticeTitle = chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
-        }
+        const noticeTitle = getSkippingText(this.segments, this.props.autoSkip);
     
         const previousSkipNotices = document.getElementsByClassName("sponsorSkipNoticeParent");
         this.amountOfPreviousNotices = previousSkipNotices.length;
@@ -308,7 +296,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     getSkipButton(): JSX.Element {
         if (this.segments.length > 1 
-                || utils.getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI
+                || getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI
                 || this.props.unskipTime) {
             return (
                 <span className="sponsorSkipNoticeUnskipSection">
@@ -451,7 +439,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     getCategoryOptions(): React.ReactElement[] {
         const elements = [];
 
-        const categories = CompileConfig.categoryList.filter((cat => utils.getCategoryActionType(cat as Category) === CategoryActionType.Skippable));
+        const categories = CompileConfig.categoryList.filter((cat => getCategoryActionType(cat as Category) === CategoryActionType.Skippable));
         for (const category of categories) {
             elements.push(
                 <option value={category}
@@ -479,7 +467,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getUnskippedModeInfo(index: number, buttonText: string): SkipNoticeState {
-        const changeCountdown = utils.getCategoryActionType(this.segments[index].category) === CategoryActionType.Skippable;
+        const changeCountdown = getCategoryActionType(this.segments[index].category) === CategoryActionType.Skippable;
 
         const maxCountdownTime = changeCountdown ? () => {
             const sponsorTime = this.segments[index];

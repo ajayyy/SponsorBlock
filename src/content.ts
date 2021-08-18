@@ -13,6 +13,8 @@ import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse } from "./messageTypes";
 import * as Chat from "./js-components/chat";
+import { getCategoryActionType } from "./utils/categoryUtils";
+import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -68,6 +70,7 @@ let channelWhitelisted = false;
 
 // create preview bar
 let previewBar: PreviewBar = null;
+let skipButtonControlBar: SkipButtonControlBar = null;
 
 /** Element containing the player controls on the YouTube player. */
 let controls: HTMLElement | null = null;
@@ -515,6 +518,7 @@ function refreshVideoAttachments() {
             videosWithEventListeners.push(video);
 
             setupVideoListeners();
+            setupSkipButtonControlBar();
         }
     }
 }
@@ -569,7 +573,7 @@ function setupVideoListeners() {
 
             if (!Config.config.dontShowNotice) {
                 const currentPoiSegment = sponsorTimes.find((segment) => 
-                        utils.getCategoryActionType(segment.category) === CategoryActionType.POI &&
+                        getCategoryActionType(segment.category) === CategoryActionType.POI &&
                         video.currentTime - segment.segment[0] > 0 &&
                         video.currentTime - segment.segment[0] < video.duration * 0.006); // Approximate size on preview bar
                 if (currentPoiSegment && !skipNotices.some((notice) => notice.segments.some((s) => s.UUID === currentPoiSegment.UUID))) {
@@ -596,6 +600,22 @@ function setupVideoListeners() {
     
         startSponsorSchedule();
     }
+}
+
+function setupSkipButtonControlBar() {
+    if (!skipButtonControlBar) {
+        skipButtonControlBar = new SkipButtonControlBar({
+            skip: (segment) => skipToTime({
+                v: video, 
+                skipTime: segment.segment, 
+                skippingSegments: [segment], 
+                openNotice: true, 
+                forceAutoSkip: true
+            })
+        });
+    }
+
+    skipButtonControlBar.attachToPage();
 }
 
 async function sponsorsLookup(id: string, keepOldSubmissions = true) {
@@ -731,7 +751,7 @@ function startSkipScheduleCheckingForStartSponsors() {
         let startingSegment: SponsorTime = null;
         for (const time of sponsorTimes) {
             if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime 
-                    && utils.getCategoryActionType(time.category) === CategoryActionType.Skippable) {
+                    && getCategoryActionType(time.category) === CategoryActionType.Skippable) {
                         startingSegmentTime = time.segment[0];
                         startingSegment = time;
                 break;
@@ -740,7 +760,7 @@ function startSkipScheduleCheckingForStartSponsors() {
         if (startingSegmentTime === -1) {
             for (const time of sponsorTimesSubmitting) {
                 if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime 
-                        && utils.getCategoryActionType(time.category) === CategoryActionType.Skippable) {
+                        && getCategoryActionType(time.category) === CategoryActionType.Skippable) {
                             startingSegmentTime = time.segment[0];
                             startingSegment = time;
                     break;
@@ -750,7 +770,7 @@ function startSkipScheduleCheckingForStartSponsors() {
 
         // For highlight category
         const poiSegments = sponsorTimes
-            .filter((time) => time.segment[1] > video.currentTime && utils.getCategoryActionType(time.category) === CategoryActionType.POI)
+            .filter((time) => time.segment[1] > video.currentTime && getCategoryActionType(time.category) === CategoryActionType.POI)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
             const skipOption = utils.getCategorySelection(time.category)?.option;
@@ -862,7 +882,7 @@ function updatePreviewBar(): void {
                 segment: segment.segment as [number, number],
                 category: segment.category,
                 unsubmitted: false,
-                showLarger: utils.getCategoryActionType(segment.category) === CategoryActionType.POI
+                showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI
             });
         });
     }
@@ -872,7 +892,7 @@ function updatePreviewBar(): void {
             segment: segment.segment as [number, number],
             category: segment.category,
             unsubmitted: true,
-            showLarger: utils.getCategoryActionType(segment.category) === CategoryActionType.POI
+            showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI
         });
     });
 
@@ -1022,7 +1042,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
                     || (includeIntersectingSegments && sponsorTimes[i].segment[0] < minimum && sponsorTimes[i].segment[1] > minimum))) 
                 && (!onlySkippableSponsors || utils.getCategorySelection(sponsorTimes[i].category).option !== CategorySkipOption.ShowOverlay)
                 && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)
-                && utils.getCategoryActionType(sponsorTimes[i].category) === CategoryActionType.Skippable) {
+                && getCategoryActionType(sponsorTimes[i].category) === CategoryActionType.Skippable) {
 
             startTimes.push(sponsorTimes[i].segment[0]);
         } 
@@ -1080,11 +1100,17 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
         }
     }
 
-    if (openNotice) {
-        //send out the message saying that a sponsor message was skipped
-        if (!Config.config.dontShowNotice || !autoSkip) {
-            skipNotices.forEach((notice) => notice.setShowKeybindHint(false));
-            skipNotices.push(new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime));
+    if (!autoSkip 
+            && skippingSegments.length === 1 
+            && getCategoryActionType(skippingSegments[0].category) === CategoryActionType.POI) {
+        skipButtonControlBar.enable(skippingSegments[0]);
+    } else {
+        if (openNotice) {
+            //send out the message saying that a sponsor message was skipped
+            if (!Config.config.dontShowNotice || !autoSkip) {
+                skipNotices.forEach((notice) => notice.setShowKeybindHint(false));
+                skipNotices.push(new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime));
+            }
         }
     }
 
