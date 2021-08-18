@@ -289,7 +289,12 @@
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
-        "message": "Skipped"
+        "message": "{0} Skipped",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Skipped to {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Disable Auto Skip"

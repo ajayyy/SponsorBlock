@@ -84,8 +84,12 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         const categoryName = chrome.i18n.getMessage(this.segments.length > 1 ? "multipleSegments" 
             : "category_" + this.segments[0].category + "_short") || chrome.i18n.getMessage("category_" + this.segments[0].category);
-        let noticeTitle = categoryName + " " + chrome.i18n.getMessage("skipped");
-        if (!this.autoSkip) {
+        let noticeTitle = "";
+        if (this.autoSkip) {
+            const messageId = utils.getCategoryActionType(this.segments[0].category) === CategoryActionType.Skippable 
+                ? "skipped" : "skipped_to_category";
+            noticeTitle = chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
+        } else {
             const messageId = utils.getCategoryActionType(this.segments[0].category) === CategoryActionType.Skippable 
                 ? "skip_category" : "skip_to_category";
             noticeTitle = chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
@@ -303,7 +307,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getSkipButton(): JSX.Element {
-        if (this.segments.length > 1 || utils.getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI) {
+        if (this.segments.length > 1 
+                || utils.getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI
+                || this.props.unskipTime) {
             return (
                 <span className="sponsorSkipNoticeUnskipSection">
                     <button id={"sponsorSkipUnskipButton" + this.idSuffix}
