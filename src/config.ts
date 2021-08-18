@@ -60,8 +60,8 @@ interface SBConfig {
         "preview-preview": PreviewBarOption,
         "music_offtopic": PreviewBarOption,
         "preview-music_offtopic": PreviewBarOption,
-        "highlight": PreviewBarOption,
-        "preview-highlight": PreviewBarOption,
+        "poi_highlight": PreviewBarOption,
+        "preview-poi_highlight": PreviewBarOption,
     }
 }
 
@@ -249,11 +249,11 @@ const Config: SBObject = {
                 color: "#a6634a",
                 opacity: "0.7"
             },
-            "highlight": {
+            "poi_highlight": {
                 color: "#ff1684",
                 opacity: "0.7"
             },
-            "preview-highlight": {
+            "preview-poi_highlight": {
                 color: "#9b044c",
                 opacity: "0.7"
             }
@@ -352,11 +352,11 @@ function fetchConfig(): Promise<void> {
 }
 
 function migrateOldFormats(config: SBConfig) {
-    if (!config["highlightCategoryAdded"] && !config.categorySelections.some((s) => s.name === "highlight")) {
+    if (!config["highlightCategoryAdded"] && !config.categorySelections.some((s) => s.name === "poi_highlight")) {
         config["highlightCategoryAdded"] = true;
         
         config.categorySelections.push({
-            name: "highlight" as Category,
+            name: "poi_highlight" as Category,
             option: CategorySkipOption.ManualSkip
         });
 

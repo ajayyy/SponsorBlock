@@ -44,11 +44,10 @@ export default class Utils {
     }
 
     getCategoryActionType(category: Category): CategoryActionType {
-        switch (category) {
-            case "highlight":
-                return CategoryActionType.POI;
-            default:
-                return CategoryActionType.Skippable;
+        if (category.startsWith("poi_")) {
+            return CategoryActionType.POI;
+        } else {
+            return CategoryActionType.Skippable;
         }
     }
 

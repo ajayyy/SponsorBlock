@@ -550,10 +550,10 @@
     "category_music_offtopic_short": {
         "message": "Non-Music"
     },
-    "category_highlight": {
+    "category_poi_highlight": {
         "message": "Highlight"
     },
-    "category_highlight_description": {
+    "category_poi_highlight_description": {
         "message": "The part of the video that most people are looking for. Similar to \"Video starts at x\" comments."
     },
     "category_livestream_messages": {
