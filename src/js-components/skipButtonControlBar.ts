@@ -36,6 +36,8 @@ export class SkipButtonControlBar {
         this.container.appendChild(this.skipIcon);
         this.container.appendChild(this.textContainer);
         this.container.addEventListener("click", () => this.onClick());
+        this.container.addEventListener("mouseenter", () => this.stopTimer());
+        this.container.addEventListener("mouseleave", () => this.startTimer());
     }
 
     attachToPage(): void {
@@ -53,7 +55,15 @@ export class SkipButtonControlBar {
         this.container.classList.remove("hidden");
         this.textContainer.innerText = getSkippingText([segment], false);
 
+        this.startTimer();
+    }
+
+    stopTimer(): void {
         if (this.timeout) clearTimeout(this.timeout);
+    }
+
+    startTimer() {
+        this.stopTimer();
         this.timeout = setTimeout(() => this.disable(), Config.config.skipNoticeDuration * 1000);
     }
 
