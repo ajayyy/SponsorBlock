@@ -269,9 +269,6 @@
     "skip_category": {
         "message": "{0} ని దాటవేయాలా?"
     },
-    "skipped": {
-        "message": "దాటవేయబడింది"
-    },
     "disableAutoSkip": {
         "message": "ఆటో దాటవేయిని ఆపివేయి"
     },
@@ -331,9 +328,6 @@
     },
     "createdBy": {
         "message": "సృష్టికర్త"
-    },
-    "autoSkip": {
-        "message": "ఆటో దాటవేయి"
     },
     "showSkipNotice": {
         "message": "ఒక విభాగం దాటవేయబడిన తర్వాత నోటీసు చూపించు"
@@ -504,14 +498,17 @@
     "category_livestream_messages_short": {
         "message": "సందేశ పఠనం"
     },
-    "disable": {
-        "message": "డిసేబుల్"
+    "autoSkip": {
+        "message": "ఆటో దాటవేయి"
     },
     "manualSkip": {
         "message": "మాన్యువల్ దాటవేయి"
     },
     "showOverlay": {
         "message": "సీక్ బార్‌లో చూపించు"
+    },
+    "disable": {
+        "message": "డిసేబుల్"
     },
     "colorFormatIncorrect": {
         "message": "మీ రంగు తప్పుగా ఆకృతీకరించబడింది. ఇది ప్రారంభంలో సంఖ్య గుర్తుతో 3 లేదా 6 అంకెల హెక్స్ కోడ్ అయి ఉండాలి."
