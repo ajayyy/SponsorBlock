@@ -269,9 +269,6 @@
     "skip_category": {
         "message": "{0} ഒഴിവാക്കുക?"
     },
-    "skipped": {
-        "message": "ഒഴിവാക്കി"
-    },
     "disableAutoSkip": {
         "message": "യാന്ത്രിക ഒഴിവാക്കൽ പ്രവർത്തനരഹിതമാക്കുക"
     },
@@ -331,9 +328,6 @@
     },
     "createdBy": {
         "message": "ഉണ്ടാക്കിയത്"
-    },
-    "autoSkip": {
-        "message": "യാന്ത്രിക ഒഴിവാക്കുക"
     },
     "showSkipNotice": {
         "message": "ഒരു സെഗ്മെന്റ് ഒഴിവാക്കിയതിനുശേഷം അറിയിപ്പ് കാണിക്കുക"
@@ -504,14 +498,17 @@
     "category_livestream_messages_short": {
         "message": "സന്ദേശ വായന"
     },
-    "disable": {
-        "message": "പ്രവർത്തനരഹിതമാക്കുക"
+    "autoSkip": {
+        "message": "യാന്ത്രിക ഒഴിവാക്കുക"
     },
     "manualSkip": {
         "message": "സ്വമേധയാലുള്ള ഒഴിവാക്കൽ"
     },
     "showOverlay": {
         "message": "സീക്ക് ബാറിൽ കാണിക്കുക"
+    },
+    "disable": {
+        "message": "പ്രവർത്തനരഹിതമാക്കുക"
     },
     "colorFormatIncorrect": {
         "message": "നിങ്ങളുടെ നിറം തെറ്റായി ഫോർമാറ്റുചെയ്‌തു. ഇത് തുടക്കത്തിൽ ഒരു നമ്പർ ചിഹ്നമുള്ള 3 അല്ലെങ്കിൽ 6 അക്ക ഹെക്സ് കോഡായിരിക്കണം."
