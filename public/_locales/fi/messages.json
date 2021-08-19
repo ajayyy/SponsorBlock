@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Ohita {0}?"
     },
-    "skipped": {
-        "message": "Ohitettu"
-    },
     "disableAutoSkip": {
         "message": "Poista automaattinen ohitus käytöstä"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Luonut"
-    },
-    "autoSkip": {
-        "message": "Ohita automaattisesti"
     },
     "showSkipNotice": {
         "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Viestien lukeminen"
     },
-    "disable": {
-        "message": "Poista käytöstä"
+    "autoSkip": {
+        "message": "Ohita automaattisesti"
     },
     "manualSkip": {
         "message": "Manuaalinen ohitus"
     },
     "showOverlay": {
         "message": "Näytä liukusäätimessä"
+    },
+    "disable": {
+        "message": "Poista käytöstä"
     },
     "autoSkipOnMusicVideos": {
         "message": "Ohita kaikki segmentit automaattisesti, kun videossa on \"Musiikiton\" segmentti"
