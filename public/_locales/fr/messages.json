@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Passer {0} ?"
     },
-    "skipped": {
-        "message": "Passé"
-    },
     "disableAutoSkip": {
         "message": "Désactiver le passage automatique"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Créé par"
-    },
-    "autoSkip": {
-        "message": "Passage automatique"
     },
     "showSkipNotice": {
         "message": "Notifier après qu'un segment ait été sauté"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Lecture de messages"
     },
-    "disable": {
-        "message": "Désactiver"
+    "autoSkip": {
+        "message": "Passage automatique"
     },
     "manualSkip": {
         "message": "Passer manuellement"
     },
     "showOverlay": {
         "message": "Afficher dans la barre de progression"
+    },
+    "disable": {
+        "message": "Désactiver"
     },
     "colorFormatIncorrect": {
         "message": "Votre couleur est mal formatée. Il devrait s'agir d'un code hexadécimal à 3 ou 6 chiffres avec un signe numérique au début."
