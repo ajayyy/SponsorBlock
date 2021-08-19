@@ -278,9 +278,6 @@
     "skip_category": {
         "message": "Átugorja ezt: {0}?"
     },
-    "skipped": {
-        "message": "Átugorva"
-    },
     "disableAutoSkip": {
         "message": "Auto átugrás kikapcsolása"
     },
@@ -340,9 +337,6 @@
     },
     "createdBy": {
         "message": "Készítette"
-    },
-    "autoSkip": {
-        "message": "Auto átugrás"
     },
     "showSkipNotice": {
         "message": "Jelezzen, ha egy szegmens át lett ugorva"
@@ -513,14 +507,17 @@
     "category_livestream_messages_short": {
         "message": "Üzenet beolvasása"
     },
-    "disable": {
-        "message": "Kikapcsol"
+    "autoSkip": {
+        "message": "Auto átugrás"
     },
     "manualSkip": {
         "message": "Átugrás manuálisan"
     },
     "showOverlay": {
         "message": "Megjelenítés a keresősávban"
+    },
+    "disable": {
+        "message": "Kikapcsol"
     },
     "colorFormatIncorrect": {
         "message": "A szín helytelenül van formázva. Egy 3 vagy 6 számjegyből álló hex kódnak kell lennie egy kettőskereszttel az elején."
