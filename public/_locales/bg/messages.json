@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Пропускане на {0}?"
     },
-    "skipped": {
-        "message": "Пропуснато"
-    },
     "disableAutoSkip": {
         "message": "Деактивиране на автоматичното пропускане"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Създаден от"
-    },
-    "autoSkip": {
-        "message": "Автоматично пропускане"
     },
     "showSkipNotice": {
         "message": "Показване на известие след пропускане на сегмент"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Четене на съобщения"
     },
-    "disable": {
-        "message": "Забрани"
+    "autoSkip": {
+        "message": "Автоматично пропускане"
     },
     "manualSkip": {
         "message": "Ръчно Прескачане"
     },
     "showOverlay": {
         "message": "Показване в seek лентата"
+    },
+    "disable": {
+        "message": "Забрани"
     },
     "autoSkipOnMusicVideos": {
         "message": "Автоматично пропускане на всички сегменти, когато има сегмент без музика"
