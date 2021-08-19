@@ -62,9 +62,6 @@
     "skip": {
         "message": "Παράκαμψη"
     },
-    "skipped": {
-        "message": "Παραλείφθηκε"
-    },
     "minLower": {
         "message": "λεπτό"
     },
