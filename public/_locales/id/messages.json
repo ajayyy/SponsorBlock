@@ -278,9 +278,6 @@
     "skip_category": {
         "message": "Lewati {0}?"
     },
-    "skipped": {
-        "message": "Dilewati"
-    },
     "disableAutoSkip": {
         "message": "Nonaktifkan Lewati Otomatis"
     },
@@ -340,9 +337,6 @@
     },
     "createdBy": {
         "message": "Dibuat Oleh"
-    },
-    "autoSkip": {
-        "message": "Lewati Otomatis"
     },
     "showSkipNotice": {
         "message": "Tampilkan pemberitahuan setelah melewati segmen"
@@ -513,14 +507,17 @@
     "category_livestream_messages_short": {
         "message": "Membaca Pesan Chat"
     },
-    "disable": {
-        "message": "Nonaktif"
+    "autoSkip": {
+        "message": "Lewati Otomatis"
     },
     "manualSkip": {
         "message": "Lewati Manual"
     },
     "showOverlay": {
         "message": "Tampilkan Di Bilah Waktu"
+    },
+    "disable": {
+        "message": "Nonaktif"
     },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan benar. Harusnya terdiri dari 3 atau 6 digit kode heksa dengan tagar di awal."
