@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Preskočiť {0}?"
     },
-    "skipped": {
-        "message": "preskočené"
-    },
     "disableAutoSkip": {
         "message": "Zakázať Automatické Preskočenie"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Vytvoril"
-    },
-    "autoSkip": {
-        "message": "Automatické Preskočenie"
     },
     "showSkipNotice": {
         "message": "Zobraziť upozornenie pri preskočení segmentu"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Oznamy"
     },
-    "disable": {
-        "message": "Zakázať"
+    "autoSkip": {
+        "message": "Automatické Preskočenie"
     },
     "manualSkip": {
         "message": "Manuálne Preskočenie"
     },
     "showOverlay": {
         "message": "Zobraziť v časovej lište"
+    },
+    "disable": {
+        "message": "Zakázať"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky preskočiť všetky segmenty ak neexistuje segment bez hudby"
