@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "{0} atla?"
     },
-    "skipped": {
-        "message": "Atlandı"
-    },
     "disableAutoSkip": {
         "message": "Otomatik Atlamayı Devredışı Bırak"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Oluşturan"
-    },
-    "autoSkip": {
-        "message": "Otomatik Atla"
     },
     "showSkipNotice": {
         "message": "Bir Kısmı Atladıktan Sonra Uyarı Göster"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Canlı Yayın Mesajlarını Okumak"
     },
-    "disable": {
-        "message": "Devredışı"
+    "autoSkip": {
+        "message": "Otomatik Atla"
     },
     "manualSkip": {
         "message": "Elle Atla"
     },
     "showOverlay": {
         "message": "Arama Çubuğunda Göster"
+    },
+    "disable": {
+        "message": "Devredışı"
     },
     "autoSkipOnMusicVideos": {
         "message": "Müzik olmayan kısım varsa tüm kısımları otomatik atla"
