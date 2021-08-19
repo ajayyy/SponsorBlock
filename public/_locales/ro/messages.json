@@ -269,9 +269,6 @@
     "skip_category": {
         "message": "Omiteți {0}?"
     },
-    "skipped": {
-        "message": "Sărit"
-    },
     "disableAutoSkip": {
         "message": "Dezactivează Autoskip"
     },
@@ -331,9 +328,6 @@
     },
     "createdBy": {
         "message": "Creat De"
-    },
-    "autoSkip": {
-        "message": "Sari Peste Automat"
     },
     "showSkipNotice": {
         "message": "Arată o notificare după ce un segment este sărit"
@@ -501,14 +495,17 @@
     "category_livestream_messages_short": {
         "message": "Citire Mesaj"
     },
-    "disable": {
-        "message": "Dezactivare"
+    "autoSkip": {
+        "message": "Sari Peste Automat"
     },
     "manualSkip": {
         "message": "Sari Peste Manual"
     },
     "showOverlay": {
         "message": "Arată În Bara de Derulare"
+    },
+    "disable": {
+        "message": "Dezactivare"
     },
     "colorFormatIncorrect": {
         "message": "Culoarea ta este formatată incorect. Ar trebui să fie un cod hexadecimal de 3 sau 6 cifre cu un hash la început."
