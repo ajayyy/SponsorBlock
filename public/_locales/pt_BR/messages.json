@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Pular {0}?"
     },
-    "skipped": {
-        "message": "Pulado"
-    },
     "disableAutoSkip": {
         "message": "Desativar Salto Automático"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Criado por"
-    },
-    "autoSkip": {
-        "message": "Pular automaticamente"
     },
     "showSkipNotice": {
         "message": "Mostrar Aviso Após Um Segmento Ser Ignorado"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Leitura de mensagens"
     },
-    "disable": {
-        "message": "Desativar"
+    "autoSkip": {
+        "message": "Pular automaticamente"
     },
     "manualSkip": {
         "message": "Pular manualmente"
     },
     "showOverlay": {
         "message": "Mostrar barra de progresso"
+    },
+    "disable": {
+        "message": "Desativar"
     },
     "autoSkipOnMusicVideos": {
         "message": "Pular automaticamente todos os segmentos quando há um segmento que não é música"
