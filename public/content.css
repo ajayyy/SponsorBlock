@@ -106,12 +106,10 @@
 
 @keyframes fadeIn {
 	from { opacity: 0; }
-	  to { opacity: 1; }
 }
 
 @keyframes fadeOut {
-	from { opacity: 1; }
-	  to { opacity: 0; }
+	to { opacity: 0; }
 }
 
 .sponsorBlockSpacer {
@@ -131,22 +129,34 @@
 	right: 10px;
 }
 
-.sponsorSkipNotice {
-    min-width: 350px;
-	max-width: 50%;
-    background-color: rgba(28, 28, 28, 0.9);
+.sponsorSkipNoticeParent {
     position: absolute;
-	right: 5px;
+
 	bottom: 100px;
 	right: 10px;
+}
+
+.sponsorSkipNoticeParent, .sponsorSkipNotice {
+	min-width: 350px;
+	max-width: 50%;
 
 	border-radius: 5px;
-
 	border-spacing: 5px 10px;
 	padding-left: 5px;
 	padding-right: 5px;
 
 	border-collapse: unset;
+}
+
+.sponsorSkipNotice {
+	min-width: 350px;
+	background-color: rgba(28, 28, 28, 0.9);
+
+	transition: all 0.1s ease-out;
+}
+
+.sponsorSkipNotice .hidden {
+	display: none;
 }
 
 /* For Cloudtube */
@@ -155,11 +165,17 @@
 }
 
 .sponsorSkipNoticeFadeIn {
-	animation: fadeIn 0.5s;
+	animation: fadeIn 0.5s ease-out;
+}
+
+.sponsorSkipNoticeFaded {
+	opacity: 0.5;
 }
 
 .sponsorSkipNoticeFadeOut {
-	animation: fadeOut 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	transition: opacity 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	opacity: 0 !important;
+	animation: none !important;
 }
 
 .sponsorSkipNotice .sponsorSkipNoticeTimeLeft {
@@ -169,14 +185,28 @@
     padding: 2px 5px;
     font-size: 12px;
 
+	display: flex;
+    align-items: center;
+
 	border: 1px solid #eeeeee;
+}
+
+.sponsorSkipNoticeTimeLeft img {
+	vertical-align: middle;
+    height: 13px;
+
+	padding-top: 7.8%;
+    padding-bottom: 7.8%;
 }
 
 /* if two are very close to eachother */
 .secondSkipNotice {
 	bottom: 250px;
+}
 
-  	transition: bottom 0.2s;
+.noticeLeftIcon {
+	display: flex;
+  	align-items: center;
 }
 
 .sponsorSkipNotice .sponsorSkipNoticeUnskipSection {
@@ -220,7 +250,9 @@
 
 	float: right;
 
-	margin-right: 5px;
+	margin-right: 10px;
+	display: flex;
+	align-items: center;
 }
 
 .sponsorSkipNoticeRightButton {
@@ -243,7 +275,9 @@
 	font-weight: bold;
 	color: rgb(235, 235, 235);
 	
+	margin-top: auto;
 	display: inline-block;
+	margin-right: 10px;
 }
 
 .sponsorSkipInfo {
@@ -467,4 +501,21 @@ input::-webkit-inner-spin-button {
 .sbChatClose {
 	height: 14px;
 	cursor: pointer;
+}
+
+.skipButtonControlBarContainer {
+	cursor: pointer;
+	display: flex;
+}
+
+.skipButtonControlBarContainer.hidden {
+	display: none !important;
+}
+
+#sbSkipIconControlBarImage {
+	height: 60%;
+    top: 0px;
+    bottom: 0px;
+    display: block;
+    margin: auto;
 }

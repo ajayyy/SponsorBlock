@@ -129,8 +129,11 @@ a {
   text-decoration: none;
 }
 
+p,li {
+  font-size: 16px;
+}
+
 p,li,a {
-  font-size: 20px;
   color: #c4c4c4;
 }
 

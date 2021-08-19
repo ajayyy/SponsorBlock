@@ -284,8 +284,17 @@
     "skip_category": {
         "message": "Skip {0}?"
     },
+    "skip_to_category": {
+        "message": "Skip to {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "Skipped"
+        "message": "{0} Skipped",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Skipped to {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Disable Auto Skip"
@@ -346,9 +355,6 @@
     },
     "createdBy": {
         "message": "Created By"
-    },
-    "autoSkip": {
-        "message": "Auto Skip"
     },
     "showSkipNotice": {
         "message": "Show Notice After A Segment Is Skipped"
@@ -544,19 +550,37 @@
     "category_music_offtopic_short": {
         "message": "Non-Music"
     },
+    "category_poi_highlight": {
+        "message": "Highlight"
+    },
+    "category_poi_highlight_description": {
+        "message": "The part of the video that most people are looking for. Similar to \"Video starts at x\" comments."
+    },
     "category_livestream_messages": {
         "message": "Livestream: Donation/Message Readings"
     },
     "category_livestream_messages_short": {
         "message": "Message Reading"
     },
-    "disable": {
-        "message": "Disable"
+    "autoSkip": {
+        "message": "Auto Skip"
     },
     "manualSkip": {
         "message": "Manual Skip"
     },
     "showOverlay": {
+        "message": "Show In Seek Bar"
+    },
+    "disable": {
+        "message": "Disable"
+    },
+    "autoSkip_POI": {
+        "message": "Auto skip to the start"
+    },
+    "manualSkip_POI": {
+        "message": "Ask when video loads"
+    },
+    "showOverlay_POI": {
         "message": "Show In Seek Bar"
     },
     "autoSkipOnMusicVideos": {

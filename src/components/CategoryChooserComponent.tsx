@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import * as CompileConfig from "../../config.json";
+import { Category } from "../types";
 import CategorySkipOptionsComponent from "./CategorySkipOptionsComponent";
 
 export interface CategoryChooserProps { 
@@ -61,7 +62,7 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
 
         for (const category of CompileConfig.categoryList) {
             elements.push(
-                <CategorySkipOptionsComponent category={category}
+                <CategorySkipOptionsComponent category={category as Category}
                     key={category}>
                 </CategorySkipOptionsComponent>
             );

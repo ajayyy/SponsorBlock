@@ -4,6 +4,7 @@
     "version": "2.2",
     "default_locale": "en",
     "description": "__MSG_Description__",
+    "homepage_url": "https://sponsor.ajay.app",
     "content_scripts": [{
         "run_at": "document_start",
         "matches": [
@@ -40,8 +41,11 @@
         "icons/help.svg",
         "icons/report.png",
         "icons/close.png",
+        "icons/skipIcon.svg",
         "icons/refresh.svg",
         "icons/beep.ogg",
+        "icons/pause.svg",
+        "icons/stop.svg",
         "icons/PlayerInfoIconSponsorBlocker.svg",
         "icons/PlayerDeleteIconSponsorBlocker.svg",
         "popup.html",

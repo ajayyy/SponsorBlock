@@ -356,7 +356,7 @@ export default class Utils {
             }, (response) => {
                 resolve(response);
             });
-        })
+        });
     }
 
     /**

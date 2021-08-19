@@ -343,6 +343,9 @@ svg {
 
 .categoryTableElement > * {
     padding-right: 15px;
+}
+
+.categoryTableDescription > * {
     padding-bottom: 15px;
 }
 

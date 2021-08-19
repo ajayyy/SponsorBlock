@@ -4,9 +4,9 @@ import SkipNotice from "./render/SkipNotice";
 
 export interface ContentContainer {
     (): {
-        vote: (type: number, UUID: string, category?: string, skipNotice?: SkipNoticeComponent) => void,
+        vote: (type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) => void,
         dontShowNoticeAgain: () => void,
-        unskipSponsorTime: (segment: SponsorTime) => void,
+        unskipSponsorTime: (segment: SponsorTime, unskipTime: number) => void,
         sponsorTimes: SponsorTime[],
         sponsorTimesSubmitting: SponsorTime[],
         skipNotices: SkipNotice[],
@@ -41,7 +41,7 @@ export enum CategorySkipOption {
 }
 
 export interface CategorySelection {
-    name: string;
+    name: Category;
     option: CategorySkipOption
 }
 
@@ -51,6 +51,14 @@ export enum SponsorHideType {
     MinimumDuration
 }
 
+export enum CategoryActionType {
+    Skippable = "", // Strings are used to find proper language configs
+    POI = "_POI"
+}
+
+export type SegmentUUID = string  & { __segmentUUIDBrand: unknown };
+export type Category = string & { __categoryBrand: unknown };
+
 export enum SponsorSourceType {
     Server = undefined,
     Local = 1
@@ -58,9 +66,9 @@ export enum SponsorSourceType {
 
 export interface SponsorTime {
     segment: [number] | [number, number];
-    UUID: string;
+    UUID: SegmentUUID;
 
-    category: string;
+    category: Category;
 
     hidden?: SponsorHideType;
     source?: SponsorSourceType;
@@ -151,7 +159,7 @@ export interface VideoInfo {
             isUnlisted: boolean,
             hasYpcMetadata: boolean,
             viewCount: string,
-            category: string,
+            category: Category,
             publishDate: string,
             ownerChannelName: string,
             uploadDate: string,
@@ -177,4 +185,18 @@ export enum ChannelIDStatus {
 export interface ChannelIDInfo {
     id: string,
     status: ChannelIDStatus
+}
+
+export interface SkipToTimeParams {
+    v: HTMLVideoElement, 
+    skipTime: number[], 
+    skippingSegments: SponsorTime[], 
+    openNotice: boolean, 
+    forceAutoSkip?: boolean,
+    unskipTime?: number
+}
+
+export interface ToggleSkippable {
+    toggleSkip: () => void;
+    setShowKeybindHint: (show: boolean) => void;
 }

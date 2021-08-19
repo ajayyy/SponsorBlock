@@ -1,10 +1,14 @@
 import * as React from "react";
 
 import Config from "../config"
-import { CategorySkipOption } from "../types";
+import { Category, CategorySkipOption } from "../types";
+
+import Utils from "../utils";
+import { getCategoryActionType } from "../utils/categoryUtils";
+const utils = new Utils();
 
 export interface CategorySkipOptionsProps { 
-    category: string;
+    category: Category;
     defaultColor?: string;
     defaultPreviewColor?: string;
 }
@@ -87,7 +91,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 </tr>
 
                 <tr id={this.props.category + "DescriptionRow"}
-                    className="small-description">
+                    className="small-description categoryTableDescription">
                         <td
                             colSpan={2}>
                             {chrome.i18n.getMessage("category_" + this.props.category + "_description")}
@@ -149,10 +153,13 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
         const optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
 
+        console.log(getCategoryActionType(this.props.category))
+
         for (const optionName of optionNames) {
             elements.push(
                 <option key={optionName} value={optionName}>
-                    {chrome.i18n.getMessage(optionName)}
+                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategoryActionType(this.props.category) 
+                                                                     : optionName)}
                 </option>
             );
         }

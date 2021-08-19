@@ -17,7 +17,7 @@ class SkipNotice {
 
     skipNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
 
-    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer) {
+    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer, unskipTime: number = null) {
         this.skipNoticeRef = React.createRef();
 
         this.segments = segments;
@@ -44,9 +44,17 @@ class SkipNotice {
                 autoSkip={autoSkip} 
                 contentContainer={contentContainer}
                 ref={this.skipNoticeRef}
-                closeListener={() => this.close()} />,
+                closeListener={() => this.close()}
+                smaller={true}
+                unskipTime={unskipTime} />,
             this.noticeElement
         );
+    }
+
+    setShowKeybindHint(value: boolean): void {
+        this.skipNoticeRef.current.setState({
+            showKeybindHint: value
+        });
     }
 
     close(): void {
