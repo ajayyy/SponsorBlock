@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "跳過 {0}？"
     },
-    "skipped": {
-        "message": "已跳過"
-    },
     "disableAutoSkip": {
         "message": "停用自動跳過"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "創建者"
-    },
-    "autoSkip": {
-        "message": "自動跳過"
     },
     "showSkipNotice": {
         "message": "在跳過片段後顯示通知"
@@ -547,14 +541,17 @@
     "category_livestream_messages_short": {
         "message": "閱讀訊息"
     },
-    "disable": {
-        "message": "停用"
+    "autoSkip": {
+        "message": "自動跳過"
     },
     "manualSkip": {
         "message": "手動跳過"
     },
     "showOverlay": {
         "message": "在時間條顯示"
+    },
+    "disable": {
+        "message": "停用"
     },
     "autoSkipOnMusicVideos": {
         "message": "自動跳過非音樂片段（如果有的話）"
