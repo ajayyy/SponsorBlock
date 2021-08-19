@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "{0} überspringen?"
     },
-    "skipped": {
-        "message": "Übersprungen"
-    },
     "disableAutoSkip": {
         "message": "Automatisches Überspringen deaktivieren"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Erstellt von"
-    },
-    "autoSkip": {
-        "message": "Automatisch überspringen"
     },
     "showSkipNotice": {
         "message": "Zeige Pop-up nach dem Überspringen eines Segments"
@@ -547,14 +541,17 @@
     "category_livestream_messages_short": {
         "message": "Wertschätzungen im Livestream"
     },
-    "disable": {
-        "message": "Deaktivieren"
+    "autoSkip": {
+        "message": "Automatisch überspringen"
     },
     "manualSkip": {
         "message": "Manuelles Überspringen"
     },
     "showOverlay": {
         "message": "In der Video-Zeitleiste anzeigen"
+    },
+    "disable": {
+        "message": "Deaktivieren"
     },
     "autoSkipOnMusicVideos": {
         "message": "Alle Segmente automatisch überspringen, wenn ein nicht-Musiksegment vorhanden ist"
