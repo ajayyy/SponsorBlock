@@ -269,9 +269,6 @@
     "skip_category": {
         "message": "Langkau {0}?"
     },
-    "skipped": {
-        "message": "Langkau"
-    },
     "disableAutoSkip": {
         "message": "Lumpuhkan Langkau Auto"
     },
@@ -331,9 +328,6 @@
     },
     "createdBy": {
         "message": "Dicipta oleh"
-    },
-    "autoSkip": {
-        "message": "Langkau Auto"
     },
     "showSkipNotice": {
         "message": "Tunjukkan Makluman Setelah Segmen Dilangkau"
@@ -504,14 +498,17 @@
     "category_livestream_messages_short": {
         "message": "Bacaan Mesej"
     },
-    "disable": {
-        "message": "Nyahaktifkan"
+    "autoSkip": {
+        "message": "Langkau Auto"
     },
     "manualSkip": {
         "message": "Langkau Manual"
     },
     "showOverlay": {
         "message": "Tunjukkan Di Bar Mencari"
+    },
+    "disable": {
+        "message": "Nyahaktifkan"
     },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan betul. Ia mestilah kod hex 3 atau 6 digit dengan tanda nombor pada awalnya."
