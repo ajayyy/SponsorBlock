@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Jätad {0} vahele?"
     },
-    "skipped": {
-        "message": "vahelejäetud"
-    },
     "disableAutoSkip": {
         "message": "Keela automaatne vahelejätmine"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Autor"
-    },
-    "autoSkip": {
-        "message": "Autom. vahelejätmine"
     },
     "showSkipNotice": {
         "message": "Kuva segmendi vahelejätmisel teatis"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Sõnumite lugemine"
     },
-    "disable": {
-        "message": "Keela"
+    "autoSkip": {
+        "message": "Autom. vahelejätmine"
     },
     "manualSkip": {
         "message": "Käsitsi vahelejätmine"
     },
     "showOverlay": {
         "message": "Kuva mängija ajaribal"
+    },
+    "disable": {
+        "message": "Keela"
     },
     "autoSkipOnMusicVideos": {
         "message": "Jäta automaatselt kõik segmendid vahele, kui eksisteerib mitte-muusika segment"
