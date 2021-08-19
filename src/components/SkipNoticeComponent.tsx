@@ -156,7 +156,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 showInSecondSlot={this.showInSecondSlot}
                 idSuffix={this.idSuffix}
                 fadeIn={true}
-                startFaded={true}
+                startFaded={false}
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
                 videoSpeed={() => this.contentContainer().v?.playbackRate}
