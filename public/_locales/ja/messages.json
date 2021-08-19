@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "{0} をスキップしますか?"
     },
-    "skipped": {
-        "message": "スキップしました"
-    },
     "disableAutoSkip": {
         "message": "自動スキップを無効にする"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "作成者:"
-    },
-    "autoSkip": {
-        "message": "自動スキップ"
     },
     "showSkipNotice": {
         "message": "セグメントがスキップされた後に通知を表示する"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "寄付などの読み上げ"
     },
-    "disable": {
-        "message": "無効"
+    "autoSkip": {
+        "message": "自動スキップ"
     },
     "manualSkip": {
         "message": "手動スキップ"
     },
     "showOverlay": {
         "message": "シークバーに表示"
+    },
+    "disable": {
+        "message": "無効"
     },
     "autoSkipOnMusicVideos": {
         "message": "非音楽区域がある場合，全区域を自動的に飛び越す"
