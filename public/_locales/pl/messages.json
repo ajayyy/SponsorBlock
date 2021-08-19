@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Pominąć {0}?"
     },
-    "skipped": {
-        "message": "Pominięto"
-    },
     "disableAutoSkip": {
         "message": "Wyłącz autopomijanie"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Stworzony przez"
-    },
-    "autoSkip": {
-        "message": "Autopomijanie"
     },
     "showSkipNotice": {
         "message": "Pokaż informację po pominięciu segmentu"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Czytanie wiadomości"
     },
-    "disable": {
-        "message": "Wyłączone"
+    "autoSkip": {
+        "message": "Autopomijanie"
     },
     "manualSkip": {
         "message": "Ręczne pomijanie"
     },
     "showOverlay": {
         "message": "Pokaż na pasku"
+    },
+    "disable": {
+        "message": "Wyłączone"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"
