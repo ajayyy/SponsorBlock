@@ -269,9 +269,6 @@
     "skip_category": {
         "message": "{0} ஐ தவிர்?"
     },
-    "skipped": {
-        "message": "தவிர்க்கப்பட்டது"
-    },
     "disableAutoSkip": {
         "message": "ஆட்டோ ஸ்கிப்பை முடக்கு"
     },
@@ -331,9 +328,6 @@
     },
     "createdBy": {
         "message": "உருவாக்கியது"
-    },
-    "autoSkip": {
-        "message": "ஆட்டோ ஸ்கிப்"
     },
     "showSkipNotice": {
         "message": "ஒரு பிரிவு தவிர்க்கப்பட்ட பிறகு அறிவிப்பைக் காட்டு"
@@ -504,14 +498,17 @@
     "category_livestream_messages_short": {
         "message": "செய்தி வாசிப்பு"
     },
-    "disable": {
-        "message": "முடக்கு"
+    "autoSkip": {
+        "message": "ஆட்டோ ஸ்கிப்"
     },
     "manualSkip": {
         "message": "கையேடு தவிர்"
     },
     "showOverlay": {
         "message": "சீக் பட்டியில் காட்டு"
+    },
+    "disable": {
+        "message": "முடக்கு"
     },
     "colorFormatIncorrect": {
         "message": "உங்கள் நிறம் தவறாக வடிவமைக்கப்பட்டுள்ளது. இது ஆரம்பத்தில் எண் அடையாளத்துடன் 3 அல்லது 6 இலக்க ஹெக்ஸ் குறியீடாக இருக்க வேண்டும்."
