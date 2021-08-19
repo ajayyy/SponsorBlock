@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Пропустить {0}?"
     },
-    "skipped": {
-        "message": "Пропущено"
-    },
     "disableAutoSkip": {
         "message": "Отключить автоматический пропуск"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Создано"
-    },
-    "autoSkip": {
-        "message": "Автоматический пропуск"
     },
     "showSkipNotice": {
         "message": "Показывать уведомление после пропуска сегмента"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Чтение сообщений"
     },
-    "disable": {
-        "message": "Отключить"
+    "autoSkip": {
+        "message": "Автоматический пропуск"
     },
     "manualSkip": {
         "message": "Пропускать вручную"
     },
     "showOverlay": {
         "message": "Показывать в полосе прокрутки"
+    },
+    "disable": {
+        "message": "Отключить"
     },
     "autoSkipOnMusicVideos": {
         "message": "Пропускать все сегменты автоматически при наличии сегмента без музыки"
