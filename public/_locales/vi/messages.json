@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "Bỏ qua {0}?"
     },
-    "skipped": {
-        "message": "Đã bỏ qua"
-    },
     "disableAutoSkip": {
         "message": "Tắt tự động bỏ qua quảng cáo"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Được tạo bởi"
-    },
-    "autoSkip": {
-        "message": "Tự động bỏ qua quảng cáo"
     },
     "showSkipNotice": {
         "message": "Hiển thị thông báo sau khi bỏ qua quảng cáo"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Đọc tin nhắn"
     },
-    "disable": {
-        "message": "Tắt"
+    "autoSkip": {
+        "message": "Tự động bỏ qua quảng cáo"
     },
     "manualSkip": {
         "message": "Bỏ qua thủ công"
     },
     "showOverlay": {
         "message": "Hiện ở thanh xem trước"
+    },
+    "disable": {
+        "message": "Tắt"
     },
     "autoSkipOnMusicVideos": {
         "message": "Tự động bỏ qua tất cả các phân đoạn nếu trong video có phân đoạn không phải nhạc"
