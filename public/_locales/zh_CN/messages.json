@@ -272,9 +272,6 @@
     "skip_category": {
         "message": "跳过{0}？"
     },
-    "skipped": {
-        "message": "跳过"
-    },
     "disableAutoSkip": {
         "message": "禁用自动跳过"
     },
@@ -334,9 +331,6 @@
     },
     "createdBy": {
         "message": "创建者"
-    },
-    "autoSkip": {
-        "message": "自动跳过"
     },
     "showSkipNotice": {
         "message": "在跳过片段后显示通知"
@@ -510,14 +504,17 @@
     "category_livestream_messages_short": {
         "message": "阅读消息"
     },
-    "disable": {
-        "message": "禁用"
+    "autoSkip": {
+        "message": "自动跳过"
     },
     "manualSkip": {
         "message": "手动跳过"
     },
     "showOverlay": {
         "message": "在搜索栏中显示"
+    },
+    "disable": {
+        "message": "禁用"
     },
     "colorFormatIncorrect": {
         "message": "颜色格式错误。应为以“#”开头的 3 位或 6 位十六进制数字。"
