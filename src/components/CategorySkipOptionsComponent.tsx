@@ -3,9 +3,7 @@ import * as React from "react";
 import Config from "../config"
 import { Category, CategorySkipOption } from "../types";
 
-import Utils from "../utils";
 import { getCategoryActionType } from "../utils/categoryUtils";
-const utils = new Utils();
 
 export interface CategorySkipOptionsProps { 
     category: Category;
