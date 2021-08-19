@@ -158,9 +158,6 @@
     "skip_category": {
         "message": "Preskočiti {0}?"
     },
-    "skipped": {
-        "message": "Preskočeno"
-    },
     "disableAutoSkip": {
         "message": "Deaktiviraj automatsko preskakanje"
     },
@@ -190,9 +187,6 @@
     },
     "createdBy": {
         "message": "Izradio"
-    },
-    "autoSkip": {
-        "message": "Automatsko preskakanje"
     },
     "showSkipNotice": {
         "message": "Pokaži obavijest nakon preskakanja isječka"
@@ -289,6 +283,9 @@
     },
     "category_music_offtopic_short": {
         "message": "Ne-glazbeni"
+    },
+    "autoSkip": {
+        "message": "Automatsko preskakanje"
     },
     "manualSkip": {
         "message": "Ručno preskakanje"
