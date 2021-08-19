@@ -15,6 +15,8 @@ export class SkipButtonControlBar {
     chapterText: HTMLElement;
     segment: SponsorTime;
 
+    showKeybindHint = true;
+
     timeout: NodeJS.Timeout;
 
     skip: (segment: SponsorTime) => void;
@@ -35,7 +37,7 @@ export class SkipButtonControlBar {
         
         this.container.appendChild(this.skipIcon);
         this.container.appendChild(this.textContainer);
-        this.container.addEventListener("click", () => this.onClick());
+        this.container.addEventListener("click", () => this.toggleSkip());
         this.container.addEventListener("mouseenter", () => this.stopTimer());
         this.container.addEventListener("mouseleave", () => this.startTimer());
     }
@@ -51,18 +53,30 @@ export class SkipButtonControlBar {
 
     enable(segment: SponsorTime): void {
         this.segment = segment;
-        this.chapterText?.classList?.add("hidden");
-        this.container.classList.remove("hidden");
-        this.textContainer.innerText = getSkippingText([segment], false);
+        this.refreshText();
 
         this.startTimer();
+    }
+
+    refreshText(): void {
+        if (this.segment) {
+            this.chapterText?.classList?.add("hidden");
+            this.container.classList.remove("hidden");
+            this.textContainer.innerText = getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "");
+        }
+    }
+
+    setShowKeybindHint(show: boolean): void {
+        this.showKeybindHint = show;
+
+        this.refreshText();
     }
 
     stopTimer(): void {
         if (this.timeout) clearTimeout(this.timeout);
     }
 
-    startTimer() {
+    startTimer(): void {
         this.stopTimer();
         this.timeout = setTimeout(() => this.disable(), Config.config.skipNoticeDuration * 1000);
     }
@@ -72,7 +86,7 @@ export class SkipButtonControlBar {
         this.chapterText?.classList?.remove("hidden");
     }
 
-    onClick(): void {
+    toggleSkip(): void {
         this.skip(this.segment);
         this.disable();
     }

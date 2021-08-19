@@ -1,5 +1,5 @@
 import Config from "./config";
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -27,6 +27,7 @@ let sponsorTimes: SponsorTime[] = null;
 let sponsorVideoID: VideoID = null;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
+let activeSkipKeybindElement: ToggleSkippable = null;
 
 // JSON video info 
 let videoInfo: VideoInfo = null;
@@ -1104,12 +1105,18 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
             && skippingSegments.length === 1 
             && getCategoryActionType(skippingSegments[0].category) === CategoryActionType.POI) {
         skipButtonControlBar.enable(skippingSegments[0]);
+
+        activeSkipKeybindElement?.setShowKeybindHint(false);
+        activeSkipKeybindElement = skipButtonControlBar;
     } else {
         if (openNotice) {
             //send out the message saying that a sponsor message was skipped
             if (!Config.config.dontShowNotice || !autoSkip) {
-                skipNotices.forEach((notice) => notice.setShowKeybindHint(false));
-                skipNotices.push(new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime));
+                const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime);
+                skipNotices.push(newSkipNotice);
+
+                activeSkipKeybindElement?.setShowKeybindHint(false);
+                activeSkipKeybindElement = newSkipNotice;
             }
         }
     }
@@ -1702,9 +1709,8 @@ function hotkeyListener(e: KeyboardEvent): void {
 
     switch (key) {
         case skipKey:
-            if (skipNotices.length > 0) {
-                const latestSkipNotice = skipNotices[skipNotices.length - 1];
-                latestSkipNotice.toggleSkip.call(latestSkipNotice);
+            if (activeSkipKeybindElement) {
+                activeSkipKeybindElement.toggleSkip.call(activeSkipKeybindElement);
             }
             break; 
         case startSponsorKey:
