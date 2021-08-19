@@ -284,9 +284,6 @@
     "skip_category": {
         "message": "¿Saltar {0}?"
     },
-    "skipped": {
-        "message": "Omitido/as"
-    },
     "disableAutoSkip": {
         "message": "Desactivar la omisión automática"
     },
@@ -346,9 +343,6 @@
     },
     "createdBy": {
         "message": "Creado Por"
-    },
-    "autoSkip": {
-        "message": "Omitir automáticamente"
     },
     "showSkipNotice": {
         "message": "Mostrar aviso después de que se omita un segmento"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Lectura del mensaje"
     },
-    "disable": {
-        "message": "Desactivar"
+    "autoSkip": {
+        "message": "Omitir automáticamente"
     },
     "manualSkip": {
         "message": "Omisión manual"
     },
     "showOverlay": {
         "message": "Mostrar en la barra de búsqueda"
+    },
+    "disable": {
+        "message": "Desactivar"
     },
     "autoSkipOnMusicVideos": {
         "message": "Saltar automáticamente todos los segmentos cuando hay un segmento no musical"
