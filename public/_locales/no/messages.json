@@ -269,9 +269,6 @@
     "skip_category": {
         "message": "Vil du hoppe over {0}?"
     },
-    "skipped": {
-        "message": "Hoppet over"
-    },
     "disableAutoSkip": {
         "message": "Skru av autohopping"
     },
@@ -331,9 +328,6 @@
     },
     "createdBy": {
         "message": "Opprettet av"
-    },
-    "autoSkip": {
-        "message": "Hopp over automatisk"
     },
     "showSkipNotice": {
         "message": "Vis varsel etter at et segment har blitt hoppet over"
@@ -504,14 +498,17 @@
     "category_livestream_messages_short": {
         "message": "Høytlesning av meldinger"
     },
-    "disable": {
-        "message": "Deaktiver"
+    "autoSkip": {
+        "message": "Hopp over automatisk"
     },
     "manualSkip": {
         "message": "Manuelt hopp"
     },
     "showOverlay": {
         "message": "Vis i tidsstripen"
+    },
+    "disable": {
+        "message": "Deaktiver"
     },
     "colorFormatIncorrect": {
         "message": "Fargen din er formattert feil. Det burde være en 3- eller 6-sifret heksadesimal kode med et nummertegn foran."
