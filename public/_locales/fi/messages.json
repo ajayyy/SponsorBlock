@@ -227,6 +227,21 @@
     "showSkipNotice": {
         "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
     },
+    "noticeVisibilityMode0": {
+        "message": "Täysikokoiset ohitusilmoitukset"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Pienet ohitusilmoitukset automaattiselle ohitukselle"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Kaikki pienet ohitusilmoitukset"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Haalistuneet ohitusilmoitukset automaattiselle ohitukselle"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Kaikki haalistuneet ohitusilmoitukset"
+    },
     "longDescription": {
         "message": "SponsorBlockin avulla voit ohittaa sponsorit, introt, outrot, tilausmuistutukset ja muut ärsyttävät osat YouTube-videoissa. SponsorBlock on joukkoistettu selainlaajennus, jonka avulla kuka tahansa voi lähettää Youtube-videoiden sponsoroitujen ja muiden segmenttien aloitus- ja päättymisajat. Kun yksi henkilö on lähettänyt tämän tiedon, kaikki muut, joilla on tämä laajennus, ohittavat sponsoroidun segmentin. Voit myös ohittaa musiikkivideoiden musiikittomat osat.",
         "description": "Full description of the extension on the store pages."
@@ -696,6 +711,10 @@
     "help": {
         "message": "Ohje"
     },
+    "GotIt": {
+        "message": "Selvä",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -709,5 +728,74 @@
     "voteRejectedWarning": {
         "message": "Ääni hylättiin varoituksen takia. Klikkaa avataksesi chatin sen ratkaisemiseksi, tai tule takaisin myöhemmin kun sinulla on siihen aikaa.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Lahjoita"
+    },
+    "hideDonationLink": {
+        "message": "Piilota lahjoituslinkki"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Kiitos, että asensit SponsorBlockin."
+    },
+    "helpPageReviewOptions": {
+        "message": "Tarkista alla olevat vaihtoehdot kiitos"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Monet ominaisuudet ovat oletuksena pois päältä. Jos haluat ohittaa introt, outrot, käyttää Invidiousta, jne., ota ne käyttöön alhaalla. Voit myös piilottaa/näyttää käyttöliittymäelementtejä."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Miten ohittaminen toimii"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Videosegmentit ohitetaan automaattisesti, jos ne löytyvät tietokannasta. Voit avata ponnahdusikkunan klikkaamalla laajennuksen kuvaketta saadaksesi esikatselun siitä, mitä ne ovat."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Aina kun ohitat segmentin, saat ilmoituksen. Jos ajoitus näyttää väärältä, äänestä alaspäin klikkaamalla 👎! Voit myös äänestää ponnahdusikkunassa."
+    },
+    "Submitting": {
+        "message": "Lähettäminen"
+    },
+    "helpPageSubmitting1": {
+        "message": "Lähettäminen voidaan tehdä joko ponnahdusikkunassa painamalla \"Segmentti alkaa nyt\" -painiketta tai videosoittimessa olevilla painikkeilla."
+    },
+    "helpPageSubmitting2": {
+        "message": "Toistopainikkeen klikkaaminen osoittaa segmentin alun ja pysäytyskuvakkeen klikkaaminen sen lopun. Voit valmistella useita sponsoreita ennen kuin painat lähetä. Lähetä-painikkeen klikkaaminen lähettää segmentin. Roskakorin klikkaaminen poistaa."
+    },
+    "Editing": {
+        "message": "Muokkaus"
+    },
+    "helpPageEditing1": {
+        "message": "Jos jokin meni pieleen, voit muokata tai poistaa segmenttisi ylänuolipainikkeen klikkaamisen jälkeen."
+    },
+    "helpPageTooSlow": {
+        "message": "Tämä on liian hidasta"
+    },
+    "helpPageTooSlow1": {
+        "message": "Voit käyttää pikanäppäimiä jos haluat. Paina puolipiste näppäintä merkitäksesi sponsori segmentin alun/lopun, ja paina heittomerkkiä lähettääksesi sen. Nämä voidaan vaihtaa asetuksista. Jos et käytä QWERTYä, sinun varmaan kannattaisi vaihtaa pikanäppäimet."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Voinko saada kopion tietokannasta? Mitä tapahtuu, jos katoat?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Tietokanta on julkinen ja saatavilla osoitteessa"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Lähdekoodi on vapaasti saatavilla. Joten, vaikka jotain tapahtuisi minulle, sinun lähetyksesi eivät katoa."
+    },
+    "helpPageNews": {
+        "message": "Uutiset ja miten se on tehty"
+    },
+    "helpPageSourceCode": {
+        "message": "Mistä voin saada lähdekoodin?"
+    },
+    "Credits": {
+        "message": "Tekijät"
+    },
+    "highlightNewFeature": {
+        "message": "Uutta! Pääse videon asiaan yhdellä klikkauksella uudella kohokohta kategorialla"
+    },
+    "LearnMore": {
+        "message": "Opi lisää"
     }
 }
