@@ -227,6 +227,21 @@
     "showSkipNotice": {
         "message": "Mostra Avviso Dopo Aver Saltato un Segmento"
     },
+    "noticeVisibilityMode0": {
+        "message": "Salta Avvisi di Dimensioni Complete"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Piccoli Salta Avvisi per Salto Automatico"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Tutti i Piccoli Salta Avvisi"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Salta Avvisi Offuscati per Salto Automatico"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Tutti i Salta Avvisi Offuscati"
+    },
     "longDescription": {
         "message": "SponsorBlock ti consente di saltare sponsorizzazioni, introduzioni, conclusioni, promemoria di iscrizione e altre componenti fastidiose dei video su YouTube. SponsorBlock è un'estensione per browser in crowdsourcing, che consente a chiunque di inviare l'ora di inizio e di fine dei segmenti sponsorizzati e altri segmenti video su YouTube. Quando una persona invia queste informazioni, chiunque altro in possesso di questa estensione sarà in grado di saltare direttamente il segmento sponsorizzato. È possibile saltare anche le sezioni non musicali dei video musicali.",
         "description": "Full description of the extension on the store pages."
@@ -286,6 +301,18 @@
     },
     "skip_category": {
         "message": "Vuoi saltare {0}?"
+    },
+    "skip_to_category": {
+        "message": "Saltare a {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} Saltato",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Saltato a {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Disabilita Salto Automatico"
@@ -538,6 +565,12 @@
     "category_music_offtopic_short": {
         "message": "Non-Musicale"
     },
+    "category_poi_highlight": {
+        "message": "Evidenzia"
+    },
+    "category_poi_highlight_description": {
+        "message": "La parte del video che gran parte delle persone stanno cercando. Simile ai commenti \"Il video inizia a x\"."
+    },
     "category_livestream_messages": {
         "message": "Livestream: Donazione/Letture dei Messaggi"
     },
@@ -555,6 +588,18 @@
     },
     "disable": {
         "message": "Disattiva"
+    },
+    "autoSkip_POI": {
+        "message": "Salta automaticamente all'avvio"
+    },
+    "manualSkip_POI": {
+        "message": "Chiedi quando il video carica"
+    },
+    "showOverlay_POI": {
+        "message": "Mostra Nella Barra di Ricerca"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "Salta automaticamente tutti i segmenti quando c'è un segmento non musicale"
     },
     "colorFormatIncorrect": {
         "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
@@ -666,6 +711,10 @@
     "help": {
         "message": "Aiuto"
     },
+    "GotIt": {
+        "message": "Capito",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Disiscriviti dagli esperimenti futuri",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -679,5 +728,74 @@
     "voteRejectedWarning": {
         "message": "Voto rifiutato a causa di un ammonimento. Clicca per aprire una chat per risolverlo, oppure torna dopo quando hai tempo.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Dona"
+    },
+    "hideDonationLink": {
+        "message": "Nascondi Link di Donazione"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Grazie per aver installato SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Sei pregato di revisionare le seguenti opzioni"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Molte funzionalità sono disabilitate di default. Se vuoi saltare intro, outro, usare Invidious, etc. abilitale sotto. Puoi anche nascondere/mostrare gli elementi dell'UI."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Come funziona il salto"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "I segmenti video saranno automaticamente ignorati se sono trovati nel database. Puoi aprire il popup cliccando l'icona dell'estensione per ottenere un'anteprima di cosa sono."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Ogni volta che salti un segmento, sarai avvisato. Se il momento sembra sbagliato, vota in negativo cliccando downvote! Puoi anche votare nel popup."
+    },
+    "Submitting": {
+        "message": "Inviando"
+    },
+    "helpPageSubmitting1": {
+        "message": "L'invio può esser eseguito nel popup cliccando il pulsante il \"Segmento Inizia Ora\" o nel lettore video con i pulsanti sul lettore."
+    },
+    "helpPageSubmitting2": {
+        "message": "Cliccare il pulsante di riproduzione indica l'inizio di un segmento e cliccare l'icona di interruzione indica la fine. Puoi preparare più sponsor prima di cliccare invio. Cliccare il pulsante carica invierà. Cliccare il cestino eliminerà."
+    },
+    "Editing": {
+        "message": "Modifica"
+    },
+    "helpPageEditing1": {
+        "message": "Se hai fatto casino, puoi modificare o eliminare i tuoi segmenti dopo aver cliccato il pulsante della freccia in su."
+    },
+    "helpPageTooSlow": {
+        "message": "Questo è troppo lento"
+    },
+    "helpPageTooSlow1": {
+        "message": "Esistono dei tasti di scelta rapida se desideri usarli. Premi il tasto del punto e virgola per indicare l'inizio/la fine di un segmento dello sponsor e clicca l'apostrofo per inviare. Questi sono modificabili nelle opzioni. Se non usi QWERTY, dovresti probabilmente cambiare l'associazione dei tasti."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Posso ottenere una copia del Database? Che succede se scompari?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Il database è pubblico e disponibile a"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Il codice sorgente è liberamente disponibile. Quindi, anche se mi succede qualcosa, i tuoi contributi non saranno persi."
+    },
+    "helpPageNews": {
+        "message": "Notizie e come è fatto"
+    },
+    "helpPageSourceCode": {
+        "message": "Dove posso ottenere il codice sorgente?"
+    },
+    "Credits": {
+        "message": "Crediti"
+    },
+    "highlightNewFeature": {
+        "message": "Novità! Vai al punto del video con un click con la nuova categoria d'evidenziazione"
+    },
+    "LearnMore": {
+        "message": "Scopri di Più"
     }
 }
