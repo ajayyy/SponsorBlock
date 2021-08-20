@@ -85,6 +85,9 @@
     "noVideoID": {
         "message": "Відео YouTube, не знайдено.\nЯкщо це не так, поновіть вкладку."
     },
+    "refreshSegments": {
+        "message": "Оновити сегменти"
+    },
     "success": {
         "message": "Успіх!"
     },
@@ -185,6 +188,9 @@
     "whatInfoButton": {
         "message": "Ця кнопка відкриває спливаюче вікно на сторінці YouTube."
     },
+    "autoHideInfoButton": {
+        "message": "Кнопка \"Автоматично сховати інформацію\""
+    },
     "hideDeleteButton": {
         "message": "Приховати кнопку видалення в плеєрі YouTube"
     },
@@ -217,6 +223,9 @@
     },
     "showNotice": {
         "message": "Показувати сповіщення знову"
+    },
+    "showSkipNotice": {
+        "message": "Показувати сповіщення після пропуску сегмента"
     },
     "longDescription": {
         "message": "SponsorBlock дозволяє пропускати спонсорські вставки, початкові і кінцеві заставки, прохання підписатися і інше в відео на YouTube. SponsorBlock - колективне розширення, яке дозволяє кожному надіслати час початку і кінця подібних сегментів в відео. Після того, як хто-небудь надсилає цю інформацію, всі інші користувачі розширення будуть автоматично пропускати ці сегменти. Так само можна пропускати частини кліпів без музики.",
@@ -278,8 +287,17 @@
     "skip_category": {
         "message": "Пропустити {0}?"
     },
+    "skip_to_category": {
+        "message": "Пропустить до {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "Пропущено"
+        "message": "{0} Пропущено",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Пропущено до {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Вимкнути автоматичний пропуск"
@@ -341,12 +359,6 @@
     "createdBy": {
         "message": "Створено"
     },
-    "autoSkip": {
-        "message": "Автоматичний пропуск"
-    },
-    "showSkipNotice": {
-        "message": "Показувати сповіщення після пропуску сегмента"
-    },
     "keybindCurrentlySet": {
         "message": ". Він зараз призначений на:"
     },
@@ -389,6 +401,12 @@
     },
     "minDurationDescription": {
         "message": "Сегменти коротше цього значення не будуть пропускатися і не будуть показані в плеєрі."
+    },
+    "skipNoticeDuration": {
+        "message": "Тривалість повідомлення пропуску (в секундах):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Повідомлення про пропуск залишиться на екрані принаймні так довго. Для пропуску вручну він може бути видимим довше."
     },
     "shortCheck": {
         "message": "Наступний діапазон часу коротше, ніж Ваше налаштування мінімальної тривалості. Це може означати, що він вже був надісланий, і просто ігнорується через це налаштування. Ви дійсно хочете надіслати?"
@@ -532,20 +550,41 @@
     "category_music_offtopic_short": {
         "message": "Без музики"
     },
+    "category_poi_highlight": {
+        "message": "Основные"
+    },
+    "category_poi_highlight_description": {
+        "message": "Часть видео, которую ищут большинство людей. Аналогично комментарию «Видео начинается с X:XX»."
+    },
     "category_livestream_messages": {
         "message": "Прямі трансляції: пожертвування/читання повідомлення"
     },
     "category_livestream_messages_short": {
         "message": "Читання повідомлень"
     },
-    "disable": {
-        "message": "Вимкнути"
+    "autoSkip": {
+        "message": "Автоматичний пропуск"
     },
     "manualSkip": {
         "message": "Пропуск вручну"
     },
     "showOverlay": {
         "message": "Показувати в смузі прокрутки"
+    },
+    "disable": {
+        "message": "Вимкнути"
+    },
+    "autoSkip_POI": {
+        "message": "Автоматический переход к началу"
+    },
+    "manualSkip_POI": {
+        "message": "Спросите, когда видео загружается"
+    },
+    "showOverlay_POI": {
+        "message": "Показать на панели поиска"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "Автоматично пропустити усі сегменти, якщо присутній сегмент без музики"
     },
     "colorFormatIncorrect": {
         "message": "Ви ввели колір в неправильному форматі. Це повинно бути 3-х або 6-ти значне шістнадцяткове число з символом # на початку."
@@ -654,11 +693,21 @@
     "categoryUpdate2": {
         "message": "Відкрийте налаштування, щоб пропускати початкові і кінцеві заставки, саморекламу та інше."
     },
+    "help": {
+        "message": "Довідка"
+    },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Сховати назавжди"
+    },
+    "warningChatInfo": {
+        "message": "Ви отримали попередження, тому тимчасово не можете обирати сегменти. Це означає, що ми помітили, що ви робили кілька поширених помилок, які не є злісними. Тому ми хочемо нагадати вам правила. Ви можете приєднатися до чату з правилами використовуючи discord.gg/SponsorBlock або matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Голосування відхилено через попередження. Натисніть, щоб відкрити чат для вирішення цієї проблеми, або поверніться пізніше.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

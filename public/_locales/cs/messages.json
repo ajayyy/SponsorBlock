@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Znovu zobrazit upozornění"
     },
+    "showSkipNotice": {
+        "message": "Zobrazit upozornění po přeskočení segmentu"
+    },
     "longDescription": {
         "message": "SponsorBlock vám umožní přeskakovat sponzorské sekce, intra, outra, oznámení k odběru a další otravné části YouTube videí. SponsorBlock je crowdsourcované rozšíření prohlížeče, které dává komukoli možnost odeslat začátek a konec sponzorovaných segmentů a dalších segmentů YouTube videí. Jakmile jedna osoba odešle tuto informaci, všichni ostatní s tímto rozšířením automaticky přeskočí sponzorovaný segment. Můžete také přeskakovat nehudební sekce v hudebních videích.",
         "description": "Full description of the extension on the store pages."
@@ -284,9 +287,6 @@
     "skip_category": {
         "message": "Přeskočit {0}?"
     },
-    "skipped": {
-        "message": "- přeskočeno"
-    },
     "disableAutoSkip": {
         "message": "Zakázat automatické přeskočení"
     },
@@ -346,12 +346,6 @@
     },
     "createdBy": {
         "message": "Vytvořil"
-    },
-    "autoSkip": {
-        "message": "Automatické přeskočení"
-    },
-    "showSkipNotice": {
-        "message": "Zobrazit upozornění po přeskočení segmentu"
     },
     "keybindCurrentlySet": {
         "message": ". Je momentálně nastaveno na:"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Čtení zpráv"
     },
-    "disable": {
-        "message": "Zakázat"
+    "autoSkip": {
+        "message": "Automatické přeskočení"
     },
     "manualSkip": {
         "message": "Ruční přeskočení"
     },
     "showOverlay": {
         "message": "Zobrazit v liště"
+    },
+    "disable": {
+        "message": "Zakázat"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky přeskočit všechny segmenty, když je ve videu nehudební segment"

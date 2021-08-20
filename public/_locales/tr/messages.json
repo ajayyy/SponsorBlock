@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
     },
+    "showSkipNotice": {
+        "message": "Bir Kısmı Atladıktan Sonra Uyarı Göster"
+    },
     "longDescription": {
         "message": "SponsorBlock, sponsorları, giriş ve bitiş kısımlarını, abonelik hatırlatıcılarını ve YouTube videolarının diğer can sıkıcı kısımlarını atlamanıza olanak tanır. SponsorBlock, herkesin sponsorlu kısımları ve YouTube videolarının diğer kısımlarının başlangıç ve bitiş zamanlarını göndermesine izin veren kitle kaynaklı bir tarayıcı uzantısıdır. Bir kişi bu bilgiyi gönderdikten sonra, bu uzantıya sahip diğer herkes sponsorlu kısımları hemen atlayacaktır. Müzik videolarının müzik dışı bölümlerini de atlayabilirsiniz.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +287,17 @@
     "skip_category": {
         "message": "{0} atla?"
     },
+    "skip_to_category": {
+        "message": "{0} kısmına atlansın mı?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "Atlandı"
+        "message": "{0} Atlandı",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "{0} kısmına atlandı",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Otomatik Atlamayı Devredışı Bırak"
@@ -346,12 +358,6 @@
     },
     "createdBy": {
         "message": "Oluşturan"
-    },
-    "autoSkip": {
-        "message": "Otomatik Atla"
-    },
-    "showSkipNotice": {
-        "message": "Bir Kısmı Atladıktan Sonra Uyarı Göster"
     },
     "keybindCurrentlySet": {
         "message": ". Şu an buna ayarlı:"
@@ -550,13 +556,25 @@
     "category_livestream_messages_short": {
         "message": "Canlı Yayın Mesajlarını Okumak"
     },
-    "disable": {
-        "message": "Devredışı"
+    "autoSkip": {
+        "message": "Otomatik Atla"
     },
     "manualSkip": {
         "message": "Elle Atla"
     },
     "showOverlay": {
+        "message": "Arama Çubuğunda Göster"
+    },
+    "disable": {
+        "message": "Devredışı"
+    },
+    "autoSkip_POI": {
+        "message": "Başlangıca otomatik atla"
+    },
+    "manualSkip_POI": {
+        "message": "Videonun başında sor"
+    },
+    "showOverlay_POI": {
         "message": "Arama Çubuğunda Göster"
     },
     "autoSkipOnMusicVideos": {

@@ -131,7 +131,7 @@
         "message": "Envios"
     },
     "savedPeopleFrom": {
-        "message": "Poupaste a outros de "
+        "message": "Você poupou as pessoas de "
     },
     "viewLeaderboard": {
         "message": "Placar de classificação"
@@ -224,6 +224,24 @@
     "showNotice": {
         "message": "Mostrar notificação outra vez"
     },
+    "showSkipNotice": {
+        "message": "Mostrar Aviso Após Um Segmento Ser Ignorado"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Avisos de Ignorar em Tamanho Inteiro"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Avisos de Ignorar pequenos quando Pulado Automaticamente"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Todos os Avisos de Ignorar em Tamanho Pequeno"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Avisos de Ignorar semi-transparentes quando Pulado Automaticamente"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Todos os Avisos de Ignorar semi-transparentes"
+    },
     "longDescription": {
         "message": "O SponsorBlock permite que você pule patrocinadores, introduções, créditos finais, lembretes de inscrição, e outras partes irritantes dos vídeos do YouTube. O SponsorBlock é uma extensão de navegador de crowdsourcing que permite enviar a qualquer um o tempo inicial e final de segmentos patrocinados de vídeos do YouTube. Assim que uma pessoa enviar essa informação, todas as outras pessoas com essa extensão irão pular o segmento patrocinado. Você também pode pular seções que não são de música dos vídeos de música.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +302,17 @@
     "skip_category": {
         "message": "Pular {0}?"
     },
+    "skip_to_category": {
+        "message": "Pular para {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "Pulado"
+        "message": "{0} Ignorado",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Pulado para {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Desativar Salto Automático"
@@ -346,12 +373,6 @@
     },
     "createdBy": {
         "message": "Criado por"
-    },
-    "autoSkip": {
-        "message": "Pular automaticamente"
-    },
-    "showSkipNotice": {
-        "message": "Mostrar Aviso Após um Segmento Ser Ignorado"
     },
     "keybindCurrentlySet": {
         "message": ". Atualmente, está definido para:"
@@ -544,20 +565,38 @@
     "category_music_offtopic_short": {
         "message": "Não musical"
     },
+    "category_poi_highlight": {
+        "message": "Destaques"
+    },
+    "category_poi_highlight_description": {
+        "message": "A parte do vídeo que a maioria das pessoas procura. Similar aos comentários \"Vídeo começa aos x\"."
+    },
     "category_livestream_messages": {
         "message": "Livestream: Leituras de Doação/Mensagem"
     },
     "category_livestream_messages_short": {
         "message": "Leitura de mensagens"
     },
-    "disable": {
-        "message": "Desativar"
+    "autoSkip": {
+        "message": "Pular automaticamente"
     },
     "manualSkip": {
         "message": "Pular manualmente"
     },
     "showOverlay": {
         "message": "Mostrar barra de progresso"
+    },
+    "disable": {
+        "message": "Desativar"
+    },
+    "autoSkip_POI": {
+        "message": "Pular automaticamente para o início"
+    },
+    "manualSkip_POI": {
+        "message": "Perguntar quando o vídeo carregar"
+    },
+    "showOverlay_POI": {
+        "message": "Mostrar na barra de progresso"
     },
     "autoSkipOnMusicVideos": {
         "message": "Pular automaticamente todos os segmentos quando há um segmento que não é música"

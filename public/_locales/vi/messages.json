@@ -77,7 +77,7 @@
         "message": "Đoạn quảng cáo bắt đầu vào lúc này"
     },
     "sponsorEnd": {
-        "message": "Đoạn quảng cáo kết thúc vào lúc này"
+        "message": "Phân đoạn kết thúc vào lúc này"
     },
     "sponsorCancel": {
         "message": "Huỷ tạo phân đoạn"
@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Hiện thông báo lại"
     },
+    "showSkipNotice": {
+        "message": "Hiển thị thông báo sau khi bỏ qua quảng cáo"
+    },
     "longDescription": {
         "message": "SponsorBlock giúp bạn bỏ qua quảng cáo từ nhà tài trợ, đoạn giới thiệu, đoạn kết, lời nhắc đăng ký kênh, và những phần khó chịu khác trong các video Youtube. SponsorBlock là một tiện ích mở rộng cho trình duyệt, cho phép tất cả người dùng đăng thời điểm bắt đầu và kết thúc của những đoạn quảng cáo từ nhà tài trợ và các đoạn khác trong video Youtube. Sau khi một người đăng thông tin này lên, tất cả mọi người dùng tiện ích mở rộng này sẽ bỏ qua đoạn quảng cáo đó. Bạn cũng có thể bỏ qua phần không có nhạc trong những video âm nhạc.",
         "description": "Full description of the extension on the store pages."
@@ -284,11 +287,8 @@
     "skip_category": {
         "message": "Bỏ qua {0}?"
     },
-    "skipped": {
-        "message": "Đã bỏ qua"
-    },
     "disableAutoSkip": {
-        "message": "Tắt tự động bỏ qua quảng cáo"
+        "message": "Tắt tự động bỏ qua"
     },
     "enableAutoSkip": {
         "message": "Bật tự động bỏ qua quảng cáo"
@@ -346,12 +346,6 @@
     },
     "createdBy": {
         "message": "Được tạo bởi"
-    },
-    "autoSkip": {
-        "message": "Tự động bỏ qua quảng cáo"
-    },
-    "showSkipNotice": {
-        "message": "Hiển thị thông báo sau khi bỏ qua quảng cáo"
     },
     "keybindCurrentlySet": {
         "message": ". Phím đang được đặt:"
@@ -533,7 +527,7 @@
         "message": "Xem trước/Tóm tắt"
     },
     "category_preview_description": {
-        "message": "Tóm tắt nhanh các tập trước, hoặc xem trước những gì sẽ xảy ra sau video hiện tại. Dùng cho các đoạn clip gắn kèm với nhau, không phải cho tóm tắt bằng lời."
+        "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
     },
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
@@ -550,14 +544,20 @@
     "category_livestream_messages_short": {
         "message": "Đọc tin nhắn"
     },
-    "disable": {
-        "message": "Tắt"
+    "autoSkip": {
+        "message": "Tự động bỏ qua quảng cáo"
     },
     "manualSkip": {
         "message": "Bỏ qua thủ công"
     },
     "showOverlay": {
         "message": "Hiện ở thanh xem trước"
+    },
+    "disable": {
+        "message": "Tắt"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "Tự động bỏ qua tất cả các phân đoạn nếu trong video có phân đoạn không phải nhạc"
     },
     "colorFormatIncorrect": {
         "message": "Mã màu sai định dạng. Mã màu phải có 3 hoặc 6 ký tự hệ hex và có dấu thăng ở đầu."
@@ -610,6 +610,13 @@
     "hiddenDueToDuration": {
         "message": "đã bị ẩn: quá ngắn"
     },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Không xác định được ID kênh. Nếu bạn đang xem video này trên 1 trang web thứ 3, hãy mở lại video này trên trang chủ Youtube rồi thử lại. Điều này cũng có thể do những thay đổi trong mã nguồn trang web YouTube, nếu bạn nghĩ vậy, hãy bình luận tại đây:"
+    },
+    "videoInfoFetchFailed": {
+        "message": "SponsorBlock không thể truy vấn dữ liệu lịch sử phân đoạn video. Có thể do trình chặn quảng cáo của bạn. Bạn có thể tìm hiểu nguyên nhân và cách fix ở đây: https://github.com/ajayyy/SponsorBlock/issues/741."
+    },
     "youtubePermissionRequest": {
         "message": "Có vẻ như SponsorBlock không thể truy cập API YouTube. Để khắc phục điều này, hãy chấp nhận lời nhắc cấp quyền sẽ xuất hiện tiếp theo, đợi vài giây rồi tải lại trang."
     },
@@ -621,6 +628,9 @@
     },
     "permissionRequestFailed": {
         "message": "Truy cập bị từ chối, bạn đã nhấp vào từ chối à?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "Nếu bạn không thể giải quyết được vấn đề này, hãy vô hiệu hoá cài đặt 'Bỏ qua video không công khai/riêng tư', vì SponsorBlock không thể lấy được thông tin của video này"
     },
     "forceChannelCheck": {
         "message": "Bắt buộc kiểm tra kênh trước khi bỏ qua"
@@ -659,7 +669,18 @@
     "help": {
         "message": "Trợ giúp"
     },
+    "experiementOptOut": {
+        "message": "Từ chối tham gia thử nghiệm trong tương lai",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
     "hideForever": {
         "message": "Ẩn vĩnh viễn"
+    },
+    "warningChatInfo": {
+        "message": "Bạn đã nhận được một cảnh báo (Warring) và tạm thời không thể gửi các phân đoạn. Bạn đã mắc lỗi trong việc tạo quá nhiều lần (có thể là chọn sai kiểu phân đoạn hoặc sai thời gian phân đoạn). Chúng tôi muốn bạn nhận ra điều đó để có thể giúp bạn khắc phục điều này trong tương lai, không mắc lỗi nữa. Bạn có thể gặp các VIP User tại đây: discord.gg/SponsorBlock hoặc matrix.to/#/+sponsor:ajay.app. Bọn họ sẽ giúp bạn gỡ cảnh báo sau khi bạn đã hiểu ra lỗi sai của bạn."
+    },
+    "voteRejectedWarning": {
+        "message": "Bỏ phiếu bị từ chối do có cảnh báo. Nhấp để mở cuộc trò chuyện để giải quyết hoặc quay lại sau.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }

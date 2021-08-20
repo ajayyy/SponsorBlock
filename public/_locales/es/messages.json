@@ -224,6 +224,24 @@
     "showNotice": {
         "message": "Mostrar aviso de nuevo"
     },
+    "showSkipNotice": {
+        "message": "Mostrar aviso después de que se omita un segmento"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Avisos de Omisión de Tamaño Completo"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Avisos de Omisión Pequeños para la Omisión Automática"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Todos los Avisos de Omisión Pequeños"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Avisos de Omisión Desvanecidos para la Omisión Automática"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Todos los Avisos de Omisión Desvanecidos"
+    },
     "longDescription": {
         "message": "SponsorBlock te permite saltarte los patrocinadores, intros, outros, recordatorios de suscripción y otras partes molestas de los videos de YouTube. SponsorBlock es una extensión de navegador de código abierto que permite a cualquiera enviar el tiempo de inicio y fin de los segmentos de patrocinadores y otros segmentos de los videos de YouTube. Una vez que una persona envía esta información, todos los que tengan esta extensión podrán saltearse ese segmento. También es posible saltar las secciones no musicales de los videos musicales.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +302,17 @@
     "skip_category": {
         "message": "¿Saltar {0}?"
     },
+    "skip_to_category": {
+        "message": "¿Saltar a {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "Omitido/as"
+        "message": "{0} Omitido/as",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Se ha saltado a {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Desactivar la omisión automática"
@@ -346,12 +373,6 @@
     },
     "createdBy": {
         "message": "Creado Por"
-    },
-    "autoSkip": {
-        "message": "Omitir automáticamente"
-    },
-    "showSkipNotice": {
-        "message": "Mostrar aviso después de que se omita un segmento"
     },
     "keybindCurrentlySet": {
         "message": ". Actualmente está configurado para:"
@@ -544,14 +565,20 @@
     "category_music_offtopic_short": {
         "message": "No musical"
     },
+    "category_poi_highlight": {
+        "message": "Destacar"
+    },
+    "category_poi_highlight_description": {
+        "message": "La parte del video que la mayoría de gente está buscando. Similar a los comentarios que dicen \"El video comienza en x\"."
+    },
     "category_livestream_messages": {
         "message": "Directo: Lecturas de donaciones y mensajes"
     },
     "category_livestream_messages_short": {
         "message": "Lectura del mensaje"
     },
-    "disable": {
-        "message": "Desactivar"
+    "autoSkip": {
+        "message": "Omitir automáticamente"
     },
     "manualSkip": {
         "message": "Omisión manual"
@@ -559,8 +586,20 @@
     "showOverlay": {
         "message": "Mostrar en la barra de búsqueda"
     },
+    "disable": {
+        "message": "Desactivar"
+    },
+    "autoSkip_POI": {
+        "message": "Omitir automáticamente al inicio"
+    },
+    "manualSkip_POI": {
+        "message": "Preguntar cuando cargue el video"
+    },
+    "showOverlay_POI": {
+        "message": "Mostrar en la barra de búsqueda"
+    },
     "autoSkipOnMusicVideos": {
-        "message": "Saltar automáticamente todos los segmentos cuando hay un segmento no musical"
+        "message": "Omitir automáticamente todos los segmentos cuando hay un segmento no musical"
     },
     "colorFormatIncorrect": {
         "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."

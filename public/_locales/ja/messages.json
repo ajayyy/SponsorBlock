@@ -137,17 +137,17 @@
         "message": "リーダーボード"
     },
     "recordTimesDescription": {
-        "message": "送信"
+        "message": "提出"
     },
     "submissionEditHint": {
         "message": "提出をクリックするとセクション編集画面が表示されます",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "ヒント: オプションから提出時のキーバインドを設定できます"
+        "message": "心得: 利用者設定で提出時のキーバインドを設定できます"
     },
     "clearTimesButton": {
-        "message": "時間をクリア"
+        "message": "時間を消去"
     },
     "submitTimesButton": {
         "message": "時間を提出"
@@ -224,6 +224,24 @@
     "showNotice": {
         "message": "再度通知を表示する"
     },
+    "showSkipNotice": {
+        "message": "セグメントがスキップされた後に通知を表示する"
+    },
+    "noticeVisibilityMode0": {
+        "message": "飛び越し通知（全体）"
+    },
+    "noticeVisibilityMode1": {
+        "message": "自動飛び越し通知（小）"
+    },
+    "noticeVisibilityMode2": {
+        "message": "すべての飛び越し通知（小）"
+    },
+    "noticeVisibilityMode3": {
+        "message": "表示の終了した自動飛び越し通知"
+    },
+    "noticeVisibilityMode4": {
+        "message": "表示の終了した全ての飛び越し通知"
+    },
     "longDescription": {
         "message": "SponsorBlockはスポンサー、イントロ、アウトロ、チャンネル登録のお願いなど、YouTube動画の煩わしい部分をスキップします。SponsorBlockはYouTube動画のスポンサー付きセグメントなどの開始時間と終了時間を誰でも投稿できる、クラウドソースのブラウザ拡張機能です。一人がセグメントの情報を送信すると、この拡張機能を使用している他の全員が、スポンサー付きセグメントをスキップできるようになります。また、ミュージックビデオの音楽がない部分をスキップすることもできます。",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +302,17 @@
     "skip_category": {
         "message": "{0} をスキップしますか?"
     },
+    "skip_to_category": {
+        "message": "{0}まで飛び越しますか？",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "スキップしました"
+        "message": "{0}を飛び越しました",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "{0}まで飛び越しました",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "自動スキップを無効にする"
@@ -346,12 +373,6 @@
     },
     "createdBy": {
         "message": "作成者:"
-    },
-    "autoSkip": {
-        "message": "自動スキップ"
-    },
-    "showSkipNotice": {
-        "message": "セグメントがスキップされた後に通知を表示する"
     },
     "keybindCurrentlySet": {
         "message": "。現在の設定は:"
@@ -544,19 +565,37 @@
     "category_music_offtopic_short": {
         "message": "音楽以外の部分"
     },
+    "category_poi_highlight": {
+        "message": "強調表示"
+    },
+    "category_poi_highlight_description": {
+        "message": "ほとんどの人が必要としている動画の箇所。「xx:xx 開始」というようなコメントと類似。"
+    },
     "category_livestream_messages": {
         "message": "ライブ配信: 寄付/メッセージの読み上げ"
     },
     "category_livestream_messages_short": {
         "message": "寄付などの読み上げ"
     },
-    "disable": {
-        "message": "無効"
+    "autoSkip": {
+        "message": "自動スキップ"
     },
     "manualSkip": {
         "message": "手動スキップ"
     },
     "showOverlay": {
+        "message": "シークバーに表示"
+    },
+    "disable": {
+        "message": "無効"
+    },
+    "autoSkip_POI": {
+        "message": "動画の開始時刻まで飛び越し"
+    },
+    "manualSkip_POI": {
+        "message": "動画を読み込んだ際に確認する"
+    },
+    "showOverlay_POI": {
         "message": "シークバーに表示"
     },
     "autoSkipOnMusicVideos": {

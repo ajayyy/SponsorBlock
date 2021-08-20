@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Kuva märkus uuesti"
     },
+    "showSkipNotice": {
+        "message": "Kuva segmendi vahelejätmisel teatis"
+    },
     "longDescription": {
         "message": "SponsorBlock lubab sul vahele jätta sponsorid, vaheajad, kanali tellimise meeldetuletused ja muud YouTube'i videote tüütud kohad. SponsorBlock on rahva ühistööna toimiv brauserilaiendus, mis lubab igaühel saata sponsoreeritud segmendi algus- ja lõpuaegu ning teiste video segmentide aegu. Kui üks inimene saadab sponsoreeritud segmendi, jätavad teised laienduse kasutajad kohe selle vahele. Laiendus võimaldab ka muusikavideotel mitte-muusika jaotised vahele jätta.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +287,17 @@
     "skip_category": {
         "message": "Jätad {0} vahele?"
     },
+    "skip_to_category": {
+        "message": "Jäta {0}-ni vahele?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "vahelejäetud"
+        "message": "{0} vahelejäetud",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "{0}-ni vahelejäetud",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Keela automaatne vahelejätmine"
@@ -346,12 +358,6 @@
     },
     "createdBy": {
         "message": "Autor"
-    },
-    "autoSkip": {
-        "message": "Autom. vahelejätmine"
-    },
-    "showSkipNotice": {
-        "message": "Kuva segmendi vahelejätmisel teatis"
     },
     "keybindCurrentlySet": {
         "message": ". Hetkel on selleks määratud:"
@@ -544,19 +550,37 @@
     "category_music_offtopic_short": {
         "message": "Mitte-muusika"
     },
+    "category_poi_highlight": {
+        "message": "Esiletõst"
+    },
+    "category_poi_highlight_description": {
+        "message": "Video osa, mida enamus inimesed otsivad. Sarnaneb kommentaaridele stiilis \"video algab ajal x\"."
+    },
     "category_livestream_messages": {
         "message": "Otseülekanne: annetuste ja sõnumite lugemine"
     },
     "category_livestream_messages_short": {
         "message": "Sõnumite lugemine"
     },
-    "disable": {
-        "message": "Keela"
+    "autoSkip": {
+        "message": "Autom. vahelejätmine"
     },
     "manualSkip": {
         "message": "Käsitsi vahelejätmine"
     },
     "showOverlay": {
+        "message": "Kuva mängija ajaribal"
+    },
+    "disable": {
+        "message": "Keela"
+    },
+    "autoSkip_POI": {
+        "message": "Jäta automaatselt alguseni vahele"
+    },
+    "manualSkip_POI": {
+        "message": "Küsi video laadimisel"
+    },
+    "showOverlay_POI": {
         "message": "Kuva mängija ajaribal"
     },
     "autoSkipOnMusicVideos": {

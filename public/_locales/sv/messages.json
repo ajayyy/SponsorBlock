@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Visa Notisen Igen"
     },
+    "showSkipNotice": {
+        "message": "Visa ett meddelande efter att ett segment har hoppats över"
+    },
     "longDescription": {
         "message": "SponsorBlock låter dig hoppa över sponsormeddelanden, introduktioner, eftertexter, prenumerationspåminnelser och andra irriterande delar av YouTube-videor. SponsorBlock är ett crowdsourced webbläsartillägg som låter vem som helst att skicka in start- och sluttid på sponsorsegment och andra segment av YouTube-videor. När en person skickar in denna information kommer alla andra som har detta tillägg installerat att hoppa över det sponsrade segmentet. Du kan även hoppa över icke-musikavsnitt i musikvideor.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +287,17 @@
     "skip_category": {
         "message": "Hoppa över {0}?"
     },
+    "skip_to_category": {
+        "message": "Hoppa till {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "Skippat"
+        "message": "{0} överhoppad",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Hoppat till {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Inaktivera hoppa över automatiskt"
@@ -346,12 +358,6 @@
     },
     "createdBy": {
         "message": "Skapad av"
-    },
-    "autoSkip": {
-        "message": "Hoppa över automatiskt"
-    },
-    "showSkipNotice": {
-        "message": "Visa ett meddelande efter att ett segment har hoppats över"
     },
     "keybindCurrentlySet": {
         "message": ". Nuvarande snabbtangent är:"
@@ -544,19 +550,37 @@
     "category_music_offtopic_short": {
         "message": "Icke-musik"
     },
+    "category_poi_highlight": {
+        "message": "Markera"
+    },
+    "category_poi_highlight_description": {
+        "message": "Den del av videon som de flesta letar efter. Liknande kommentarer \"Video börjar på x\"."
+    },
     "category_livestream_messages": {
         "message": "Liveström: Donations-/meddelandeavläsningar"
     },
     "category_livestream_messages_short": {
         "message": "Meddelandeläsning"
     },
-    "disable": {
-        "message": "Inaktivera"
+    "autoSkip": {
+        "message": "Hoppa över automatiskt"
     },
     "manualSkip": {
         "message": "Hoppa över manuellt"
     },
     "showOverlay": {
+        "message": "Visa i sökfältet"
+    },
+    "disable": {
+        "message": "Inaktivera"
+    },
+    "autoSkip_POI": {
+        "message": "Hoppa automatiskt till start"
+    },
+    "manualSkip_POI": {
+        "message": "Fråga när video laddas"
+    },
+    "showOverlay_POI": {
         "message": "Visa i sökfältet"
     },
     "autoSkipOnMusicVideos": {

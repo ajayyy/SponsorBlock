@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Pokaż informacje ponownie"
     },
+    "showSkipNotice": {
+        "message": "Pokaż informację po pominięciu segmentu"
+    },
     "longDescription": {
         "message": "SponsorBlock pozwala pomijać sponsorów, intra, outra, przypomnienia o subskrypcjach i inne irytujące fragmenty filmów na YouTube. SponsorBlock jest opartym na crowdsourcingu rozszerzeniem do przeglądarki, które pozwala każdemu zgłosić początek i koniec segmentów sponsorowanych oraz innych segmentów w filmach na YouTube. Kiedy ktoś już zamieści te informacje, wszyscy pozostali z tym rozszerzeniem będą pomijać segment sponsorowany. Możesz również pomijać fragmenty teledysków bez muzyki.",
         "description": "Full description of the extension on the store pages."
@@ -284,9 +287,6 @@
     "skip_category": {
         "message": "Pominąć {0}?"
     },
-    "skipped": {
-        "message": "Pominięto"
-    },
     "disableAutoSkip": {
         "message": "Wyłącz autopomijanie"
     },
@@ -346,12 +346,6 @@
     },
     "createdBy": {
         "message": "Stworzony przez"
-    },
-    "autoSkip": {
-        "message": "Autopomijanie"
-    },
-    "showSkipNotice": {
-        "message": "Pokaż informację po pominięciu segmentu"
     },
     "keybindCurrentlySet": {
         "message": ". Obecnie ustawiony:"
@@ -550,14 +544,17 @@
     "category_livestream_messages_short": {
         "message": "Czytanie wiadomości"
     },
-    "disable": {
-        "message": "Wyłączone"
+    "autoSkip": {
+        "message": "Autopomijanie"
     },
     "manualSkip": {
         "message": "Ręczne pomijanie"
     },
     "showOverlay": {
         "message": "Pokaż na pasku"
+    },
+    "disable": {
+        "message": "Wyłączone"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"

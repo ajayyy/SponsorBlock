@@ -224,6 +224,24 @@
     "showNotice": {
         "message": "Отново покажете известието"
     },
+    "showSkipNotice": {
+        "message": "Показване на известие след пропускане на сегмент"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Известия за пропускане в пълен размер"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Малки известия за пропускане при автоматично пропускане"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Изцяло малки известия за пропускане"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Плавни известия за пропускане при автоматично пропускане"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Изцяло плавни известия за пропускане"
+    },
     "longDescription": {
         "message": "SponsorBlock ви позволява да прескачате спонсори, въведения, заключения, напомняния за абониране и други досадни части от видеоклиповете в YouTube. SponsorBlock е разширение за браузър, създадено от множество хора, което позволява на всеки да изпраща началния и крайния час на спонсорирани сегменти и други сегменти от видеоклиповете в YouTube. След като един човек подаде тази информация, всички останали с това разширение ще прескочат спонсорирания сегмент. Можете също да пропуснете части без музика при музикалните видеоклипове.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +302,17 @@
     "skip_category": {
         "message": "Пропускане на {0}?"
     },
+    "skip_to_category": {
+        "message": "Прескачане до {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "Пропуснато"
+        "message": "{0} пропуснат",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Прескочено до {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Деактивиране на автоматичното пропускане"
@@ -346,12 +373,6 @@
     },
     "createdBy": {
         "message": "Създаден от"
-    },
-    "autoSkip": {
-        "message": "Автоматично пропускане"
-    },
-    "showSkipNotice": {
-        "message": "Показване на известие след пропускане на сегмент"
     },
     "keybindCurrentlySet": {
         "message": ". В момента е настроено на:"
@@ -544,20 +565,38 @@
     "category_music_offtopic_short": {
         "message": "Без музика"
     },
+    "category_poi_highlight": {
+        "message": "Акцент"
+    },
+    "category_poi_highlight_description": {
+        "message": "Частта от видеото, която повечето хора търсят. Подобно на коментарите „Видеото започва от х“."
+    },
     "category_livestream_messages": {
         "message": "Поточно предаване: Четене на съобщения/дарения"
     },
     "category_livestream_messages_short": {
         "message": "Четене на съобщения"
     },
-    "disable": {
-        "message": "Забрани"
+    "autoSkip": {
+        "message": "Автоматично пропускане"
     },
     "manualSkip": {
         "message": "Ръчно Прескачане"
     },
     "showOverlay": {
         "message": "Показване в seek лентата"
+    },
+    "disable": {
+        "message": "Забрани"
+    },
+    "autoSkip_POI": {
+        "message": "Автоматично прескачане до началото"
+    },
+    "manualSkip_POI": {
+        "message": "Питане, когато видеото се зарежда"
+    },
+    "showOverlay_POI": {
+        "message": "Показване в лентата за превъртане"
     },
     "autoSkipOnMusicVideos": {
         "message": "Автоматично пропускане на всички сегменти, когато има сегмент без музика"

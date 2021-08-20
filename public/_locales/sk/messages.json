@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Znovu zobraziť upozornenie"
     },
+    "showSkipNotice": {
+        "message": "Zobraziť upozornenie pri preskočení segmentu"
+    },
     "longDescription": {
         "message": "SponsorBlock umožňuje preskočiť sponzorov, úvodné časti, záverečné časti, pripomienky na odber, nehudobné časti videoklipov alebo iné otravné časti YouTube videí. SponsorBlock je crowdsourceové rozšírenie prehliadača, pomocou ktorého môže ktokoľvek označiť začiatok a koniec takéhoto segmentu. Po odoslaní potom všetci ostatní s týmto rozšírením tieto segmenty automaticky preskočia.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +287,17 @@
     "skip_category": {
         "message": "Preskočiť {0}?"
     },
+    "skip_to_category": {
+        "message": "Preskočiť na {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "preskočené"
+        "message": "{0} preskočené",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Preskočené na {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Zakázať Automatické Preskočenie"
@@ -346,12 +358,6 @@
     },
     "createdBy": {
         "message": "Vytvoril"
-    },
-    "autoSkip": {
-        "message": "Automatické Preskočenie"
-    },
-    "showSkipNotice": {
-        "message": "Zobraziť upozornenie pri preskočení segmentu"
     },
     "keybindCurrentlySet": {
         "message": ". Aktuálne je nastavené na:"
@@ -544,19 +550,37 @@
     "category_music_offtopic_short": {
         "message": "Bez hudby"
     },
+    "category_poi_highlight": {
+        "message": "Hlavný obsah videa"
+    },
+    "category_poi_highlight_description": {
+        "message": "Tá časť videa, ktorú ľudia vyhľadávajú. Podobné komentárom \"Video začína v čase x\"."
+    },
     "category_livestream_messages": {
         "message": "Živé vysielanie: oznamy a dary"
     },
     "category_livestream_messages_short": {
         "message": "Oznamy"
     },
-    "disable": {
-        "message": "Zakázať"
+    "autoSkip": {
+        "message": "Automatické Preskočenie"
     },
     "manualSkip": {
         "message": "Manuálne Preskočenie"
     },
     "showOverlay": {
+        "message": "Zobraziť v časovej lište"
+    },
+    "disable": {
+        "message": "Zakázať"
+    },
+    "autoSkip_POI": {
+        "message": "Automaticky preskočiť na začiatok"
+    },
+    "manualSkip_POI": {
+        "message": "Opýtať sa, keď sa video nahraje"
+    },
+    "showOverlay_POI": {
         "message": "Zobraziť v časovej lište"
     },
     "autoSkipOnMusicVideos": {
@@ -683,7 +707,7 @@
         "message": "Dostali ste varovanie a nemôžete tak dočasne odosielať segmenty. To znamená, že sme si všimli, že ste spravili nejaké chyby, ktoré nie sú myslené zle, a chceme Vám len objasniť pravidlá. Môžete sa pripojiť do konverzácie pomocou discord.gg/SponsorBlock alebo matrix.to/#/+sponsor:ajay.app"
     },
     "voteRejectedWarning": {
-        "message": "Hlasovanie bolo zamietnuté kvôli varovaniu. Kliknite pre otvorenie chatu, aby ste ho vyriešili, alebo sa vrátťe až budete mať čas.",
+        "message": "Hlasovanie bolo zamietnuté kvôli varovaniu. Kliknite pre otvorenie chatu, aby ste ho vyriešili, alebo sa vráťte až budete mať čas.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     }
 }
