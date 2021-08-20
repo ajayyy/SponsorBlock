@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Melding opnieuw weergeven"
     },
+    "showSkipNotice": {
+        "message": "Melding weergeven nadat een segment is overgeslagen"
+    },
     "longDescription": {
         "message": "SponsorBlock laat u sponsoring, intro's, outro's, herinneringen om te abonneren en andere vervelende onderdelen van YouTube-video's overslaan. SponsorBlock is een gecrowdsourcete browser-extensie waarmee iedereen de begin- en eindtijd van gesponsorde segmenten en andere segmenten van YouTube-video's kan indienen. Zodra één persoon deze informatie indient, zal iedereen met deze extensie het gesponsorde segment overslaan. U kunt ook secties zonder muziek in muziekvideo's overslaan.",
         "description": "Full description of the extension on the store pages."
@@ -343,9 +346,6 @@
     },
     "createdBy": {
         "message": "Gemaakt door"
-    },
-    "showSkipNotice": {
-        "message": "Melding weergeven nadat een segment is overgeslagen"
     },
     "keybindCurrentlySet": {
         "message": ". Hij is momenteel ingesteld op:"
