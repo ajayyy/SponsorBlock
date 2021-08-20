@@ -358,6 +358,7 @@ function fetchConfig(): Promise<void> {
 }
 
 function migrateOldFormats(config: SBConfig) {
+    // Should eventually move into defaults
     if (!config["highlightCategoryAdded"] && !config.categorySelections.some((s) => s.name === "poi_highlight")) {
         config["highlightCategoryAdded"] = true;
         
