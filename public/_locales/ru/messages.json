@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Показать уведомление снова"
     },
+    "showSkipNotice": {
+        "message": "Показывать уведомление после пропуска сегмента"
+    },
     "longDescription": {
         "message": "SponsorBlock позволяет пропускать спонсорские вставки, начальные и конечные заставки, просьбы подписаться и другое в видео на YouTube. SponsorBlock — коллективное расширение, которое позволяет каждому отправить время начала и конца подобных сегментов в видео. После того, как кто-нибудь отправляет эту информацию, все остальные пользователи расширения будут автоматически пропускать эти сегменты. Так же можно пропускать части клипов без музыки.",
         "description": "Full description of the extension on the store pages."
@@ -284,6 +287,18 @@
     "skip_category": {
         "message": "Пропустить {0}?"
     },
+    "skip_to_category": {
+        "message": "Пропустить до {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "Пропущено: {0}",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Пропущено до {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
     "disableAutoSkip": {
         "message": "Отключить автоматический пропуск"
     },
@@ -343,9 +358,6 @@
     },
     "createdBy": {
         "message": "Создано"
-    },
-    "showSkipNotice": {
-        "message": "Показывать уведомление после пропуска сегмента"
     },
     "keybindCurrentlySet": {
         "message": ". Он сейчас назначен на:"
@@ -538,6 +550,12 @@
     "category_music_offtopic_short": {
         "message": "Без музыки"
     },
+    "category_poi_highlight": {
+        "message": "Важное"
+    },
+    "category_poi_highlight_description": {
+        "message": "Часть видео, которую ищет большинство людей. По сути заменяет комментарии типа \"Видео начинается с x:xx\"."
+    },
     "category_livestream_messages": {
         "message": "Прямые трансляции: пожертвование/чтение сообщения"
     },
@@ -555,6 +573,15 @@
     },
     "disable": {
         "message": "Отключить"
+    },
+    "autoSkip_POI": {
+        "message": "Автоматически пропускать к началу видео"
+    },
+    "manualSkip_POI": {
+        "message": "Спрашивать после загрузки видео"
+    },
+    "showOverlay_POI": {
+        "message": "Показывать в полосе прокрутки"
     },
     "autoSkipOnMusicVideos": {
         "message": "Пропускать все сегменты автоматически при наличии сегмента без музыки"
