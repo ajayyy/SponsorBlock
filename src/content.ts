@@ -252,6 +252,8 @@ function resetValues() {
     for (let i = 0; i < skipNotices.length; i++) {
         skipNotices.pop().close();
     }
+
+    skipButtonControlBar?.disable();
 }
 
 async function videoIDChange(id) {
@@ -727,6 +729,7 @@ function retryFetch(): void {
     //check if this video was uploaded recently
     utils.wait(() => !!videoInfo).then(() => {
         const dateUploaded = videoInfo?.microformat?.playerMicroformatRenderer?.uploadDate;
+        console.log(dateUploaded)
 
         //if less than 3 days old
         if (Date.now() - new Date(dateUploaded).getTime() < 259200000) {
