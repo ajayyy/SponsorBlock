@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Znovu zobraziť upozornenie"
     },
+    "showSkipNotice": {
+        "message": "Zobraziť upozornenie pri preskočení segmentu"
+    },
     "longDescription": {
         "message": "SponsorBlock umožňuje preskočiť sponzorov, úvodné časti, záverečné časti, pripomienky na odber, nehudobné časti videoklipov alebo iné otravné časti YouTube videí. SponsorBlock je crowdsourceové rozšírenie prehliadača, pomocou ktorého môže ktokoľvek označiť začiatok a koniec takéhoto segmentu. Po odoslaní potom všetci ostatní s týmto rozšírením tieto segmenty automaticky preskočia.",
         "description": "Full description of the extension on the store pages."
@@ -284,6 +287,18 @@
     "skip_category": {
         "message": "Preskočiť {0}?"
     },
+    "skip_to_category": {
+        "message": "Preskočiť na {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} preskočené",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Preskočené na {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
     "disableAutoSkip": {
         "message": "Zakázať Automatické Preskočenie"
     },
@@ -343,9 +358,6 @@
     },
     "createdBy": {
         "message": "Vytvoril"
-    },
-    "showSkipNotice": {
-        "message": "Zobraziť upozornenie pri preskočení segmentu"
     },
     "keybindCurrentlySet": {
         "message": ". Aktuálne je nastavené na:"
@@ -538,6 +550,12 @@
     "category_music_offtopic_short": {
         "message": "Bez hudby"
     },
+    "category_poi_highlight": {
+        "message": "Hlavný obsah videa"
+    },
+    "category_poi_highlight_description": {
+        "message": "Tá časť videa, ktorú ľudia vyhľadávajú. Podobné komentárom \"Video začína v čase x\"."
+    },
     "category_livestream_messages": {
         "message": "Živé vysielanie: oznamy a dary"
     },
@@ -555,6 +573,15 @@
     },
     "disable": {
         "message": "Zakázať"
+    },
+    "autoSkip_POI": {
+        "message": "Automaticky preskočiť na začiatok"
+    },
+    "manualSkip_POI": {
+        "message": "Opýtať sa, keď sa video nahraje"
+    },
+    "showOverlay_POI": {
+        "message": "Zobraziť v časovej lište"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky preskočiť všetky segmenty ak neexistuje segment bez hudby"
