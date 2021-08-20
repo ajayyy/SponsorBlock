@@ -19,7 +19,7 @@
     "channelWhitelisted": {
         "message": "Channel Whitelisted!"
     },
-   "Segment": {
+    "Segment": {
         "message": "segment"
     },
     "Segments": {
@@ -711,6 +711,10 @@
     "help": {
         "message": "Help"
     },
+    "GotIt": {
+        "message": "Got it",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Opt-out of all future experiments",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -787,5 +791,11 @@
     },
     "Credits": {
         "message": "Credits"
+    },
+    "highlightNewFeature": {
+        "message": "New! Get to the point of the video with one click with the new highlight category"
+    },
+    "LearnMore": {
+        "message": "Learn More"
     }
 }

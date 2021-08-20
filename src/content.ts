@@ -15,6 +15,7 @@ import { Message, MessageResponse } from "./messageTypes";
 import * as Chat from "./js-components/chat";
 import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
+import { Tooltip } from "./render/Tooltip";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -1104,7 +1105,19 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
     if (!autoSkip 
             && skippingSegments.length === 1 
             && getCategoryActionType(skippingSegments[0].category) === CategoryActionType.POI) {
-        skipButtonControlBar.enable(skippingSegments[0]);
+        skipButtonControlBar.enable(skippingSegments[0], !Config.config.highlightCategoryUpdate ? 15 : 0);
+
+        if (!Config.config.highlightCategoryUpdate) {
+            new Tooltip({
+                text: chrome.i18n.getMessage("highlightNewFeature"),
+                link: "https://blog.ajay.app/highlight-sponsorblock",
+                referenceNode: skipButtonControlBar.getElement().parentElement,
+                prependElement: skipButtonControlBar.getElement(),
+                timeout: 15
+            });
+
+            Config.config.highlightCategoryUpdate = true;
+        }
 
         activeSkipKeybindElement?.setShowKeybindHint(false);
         activeSkipKeybindElement = skipButtonControlBar;

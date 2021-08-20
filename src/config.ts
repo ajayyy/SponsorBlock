@@ -41,6 +41,7 @@ interface SBConfig {
     showDonationLink: boolean,
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
+    highlightCategoryUpdate: boolean
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -185,6 +186,7 @@ const Config: SBObject = {
         showDonationLink: true,
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
+        highlightCategoryUpdate: false, // TODO: Remove this once update is done
 
         categorySelections: [{
             name: "sponsor" as Category,
