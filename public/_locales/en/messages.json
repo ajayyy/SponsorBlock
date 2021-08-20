@@ -724,5 +724,11 @@
     "voteRejectedWarning": {
         "message": "Vote rejected due to a warning. Click to open a chat to resolve it, or come back later when you have time.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Donate"
+    },
+    "hideDonationLink": {
+        "message": "Hide Donation Link"
     }
 }

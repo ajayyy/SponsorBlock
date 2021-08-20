@@ -19,7 +19,12 @@
 	</div>
 
 	<div class="center">
-		<p class="createdBy titleBar">__MSG_createdBy__ <a href="https://ajay.app">Ajay Ramachandran</a> <img src="../icons/newprofilepic.jpg" height="30" class="profilepiccircle"/></p>
+		<p class="createdBy titleBar">
+			<img src="../icons/newprofilepic.jpg" height="30" class="profilepiccircle"/>
+			__MSG_createdBy__ 
+			<a href="https://ajay.app">Ajay Ramachandran</a> 
+			<a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">(__MSG_Donate__)</a>
+		</p>
 
 		<h1>__MSG_Options__</h1>
 	
@@ -449,6 +454,24 @@
 				<div class="small-description">__MSG_whatRefetchWhenNotFound__</div>
 			</div>
 
+			<br/>
+			<br/>
+
+			<div option-type="toggle" toggle-type="reverse" sync-option="showDonationLink" no-safari="true">
+				<label class="switch-container">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+					<div class="switch-label">
+						__MSG_hideDonationLink__
+					</div>
+				</label>
+	
+			</div>
+
+			<br/>
+			<br/>
 			<br/>
 			<br/>
 	

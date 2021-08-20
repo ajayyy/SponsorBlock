@@ -3,6 +3,7 @@ import Config from "./config";
 import Utils from "./utils";
 import { SponsorTime, SponsorHideType } from "./types";
 import { Message, MessageResponse } from "./messageTypes";
+import { showDonationLink } from "./utils/configUtils";
 const utils = new Utils();
 
 interface MessageListener {
@@ -12,7 +13,7 @@ interface MessageListener {
 class MessageHandler {
     messageListener: MessageListener;
 
-    constructor (messageListener?: MessageListener) {
+    constructor(messageListener?: MessageListener) {
         this.messageListener = messageListener;
     }
 
@@ -107,14 +108,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sbDonate"
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
-    // Hide donate button on safari
-    if (navigator.vendor === "Apple Computer, Inc.") {
+    // Hide donate button if wanted (Safari, or user choice)
+    if (!showDonationLink()) {
         PageElements.sbDonate.style.display = "none";
     }
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
-    PageElements.whitelistToggle.addEventListener("change", function() {
+    PageElements.whitelistToggle.addEventListener("change", function () {
         if (this.checked) {
             whitelistChannel();
         } else {
@@ -122,7 +123,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
     });
     PageElements.whitelistForceCheck.addEventListener("click", openOptions);
-    PageElements.toggleSwitch.addEventListener("change", function() {
+    PageElements.toggleSwitch.addEventListener("change", function () {
         toggleSkipping(!this.checked);
     });
     PageElements.submitTimes.addEventListener("click", submitTimes);
@@ -174,7 +175,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         if (userID != undefined) {
             //there are probably some views on these submissions then
             //get the amount of views from the sponsors submitted
-            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function(response) {
+            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function (response) {
                 if (response.status == 200) {
                     const viewCount = JSON.parse(response.responseText).viewCount;
                     if (viewCount != 0) {
@@ -191,7 +192,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             });
 
             //get this time in minutes
-            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function(response) {
+            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function (response) {
                 if (response.status == 200) {
                     const minutesSaved = JSON.parse(response.responseText).timeSaved;
                     if (minutesSaved != 0) {
@@ -237,7 +238,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     getSegmentsFromContentScript(false);
 
     function onTabs(tabs, updating: boolean): void {
-        messageHandler.sendMessage(tabs[0].id, {message: 'getVideoID'}, function(result) {
+        messageHandler.sendMessage(tabs[0].id, { message: 'getVideoID' }, function (result) {
             if (result !== undefined && result.videoID) {
                 currentVideoID = result.videoID;
                 creatingSegment = result.creatingSegment;
@@ -262,7 +263,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         messageHandler.sendMessage(
             tabs[0].id,
-            {message: 'isInfoFound', updating},
+            { message: 'isInfoFound', updating },
             infoFound
         );
     }
@@ -274,8 +275,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, (tabs) => onTabs(tabs, updating));
     }
 
-    function infoFound(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
-        if(chrome.runtime.lastError) {
+    function infoFound(request: { found: boolean, sponsorTimes: SponsorTime[] }) {
+        if (chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
             return;
@@ -306,8 +307,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'isChannelWhitelisted'},
-                function(response) {
+                { message: 'isChannelWhitelisted' },
+                function (response) {
                     if (response.value) {
                         PageElements.whitelistChannel.style.display = "none";
                         PageElements.unwhitelistChannel.style.display = "unset";
@@ -315,7 +316,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                         document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
                     }
                 });
-            }
+        }
         );
     }
 
@@ -327,7 +328,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, (tabs) => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {from: 'popup', message: 'sponsorStart'},
+                { from: 'popup', message: 'sponsorStart' },
                 async (response) => {
                     startSponsorCallback(response);
 
@@ -351,7 +352,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     }
 
-    function startSponsorCallback(response: {creatingSegment: boolean}) {
+    function startSponsorCallback(response: { creatingSegment: boolean }) {
         creatingSegment = response.creatingSegment;
 
         // Only update the segments after a segment was created
@@ -364,12 +365,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     //display the video times from the array at the top, in a different section
-    function displayDownloadedSponsorTimes(request: {found: boolean, sponsorTimes: SponsorTime[]}) {
+    function displayDownloadedSponsorTimes(request: { found: boolean, sponsorTimes: SponsorTime[] }) {
         if (request.sponsorTimes != undefined) {
             // Sort list by start time
             const segmentTimes = request.sponsorTimes
-                                .sort((a, b) => a.segment[1] - b.segment[1])
-                                .sort((a, b) => a.segment[0] - b.segment[0]);
+                .sort((a, b) => a.segment[1] - b.segment[1])
+                .sort((a, b) => a.segment[0] - b.segment[0]);
 
             //add them as buttons to the issue reporting container
             const container = document.getElementById("issueReporterTimeButtons");
@@ -388,7 +389,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category]?.color;
                 categoryColorCircle.classList.add("dot");
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
-                
+
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
                     //this one is downvoted
@@ -397,7 +398,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     //this one is too short
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
-                
+
                 const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
                 segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true);
@@ -446,7 +447,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 voteButtonsContainer.appendChild(uuidButton);
 
                 //add click listener to open up vote panel
-                sponsorTimeButton.addEventListener("click", function() {
+                sponsorTimeButton.addEventListener("click", function () {
                     voteButtonsContainer.classList.toggle("voteButtonsContainer--hide");
                 });
 
@@ -478,15 +479,15 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             }, tabs => {
                 messageHandler.sendMessage(
                     tabs[0].id,
-                    {message: 'submitTimes'},
+                    { message: 'submitTimes' },
                 );
             });
         }
     }
-  
+
     function showNoticeAgain() {
         Config.config.dontShowNotice = false;
-  
+
         PageElements.showNoticeAgain.style.display = "none";
     }
 
@@ -499,11 +500,11 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     //make the options div visible
     function openOptions() {
-        chrome.runtime.sendMessage({"message": "openConfig"});
+        chrome.runtime.sendMessage({ "message": "openConfig" });
     }
 
     function openHelp() {
-        chrome.runtime.sendMessage({"message": "openHelp"});
+        chrome.runtime.sendMessage({ "message": "openHelp" });
     }
 
     //make the options username setting option visible
@@ -516,7 +517,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.setUsernameContainer.style.display = "none";
         PageElements.setUsername.style.display = "flex";
         PageElements.setUsername.classList.add("SBExpanded");
-        
+
         PageElements.setUsernameStatusContainer.style.display = "none";
 
         PageElements.sponsorTimesContributionsContainer.classList.add("hidden");
@@ -555,18 +556,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function displayNoVideo() {
         document.getElementById("loadingIndicator").innerText = chrome.i18n.getMessage("noVideoID");
     }
-  
+
     function addVoteMessage(message, UUID) {
         const voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
         voteButtonsContainer.style.display = "none";
 
         const voteStatusContainer = document.getElementById("sponsorTimesVoteStatusContainer" + UUID);
         voteStatusContainer.style.removeProperty("display");
-        
+
         const thanksForVotingText = document.getElementById("sponsorTimesThanksForVotingText" + UUID);
         thanksForVotingText.innerText = message;
     }
-  
+
     function vote(type, UUID) {
         //add loading info
         addVoteMessage(chrome.i18n.getMessage("Loading"), UUID);
@@ -597,8 +598,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'getChannelID'},
-                function(response) {
+                { message: 'getChannelID' },
+                function (response) {
                     if (!response.channelID) {
                         alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
                         return;
@@ -630,10 +631,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     }, tabs => {
                         messageHandler.sendMessage(
                             tabs[0].id, {
-                                message: 'whitelistChange',
-                                value: true
-                            });
-                        }
+                            message: 'whitelistChange',
+                            value: true
+                        });
+                    }
                     );
                 }
             );
@@ -648,38 +649,38 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'getChannelID'},
-                function(response) {
+                { message: 'getChannelID' },
+                function (response) {
                     //get whitelisted channels
-                        let whitelistedChannels = Config.config.whitelistedChannels;
-                        if (whitelistedChannels == undefined) {
-                            whitelistedChannels = [];
-                        }
+                    let whitelistedChannels = Config.config.whitelistedChannels;
+                    if (whitelistedChannels == undefined) {
+                        whitelistedChannels = [];
+                    }
 
-                        //remove this channel
-                        const index = whitelistedChannels.indexOf(response.channelID);
-                        whitelistedChannels.splice(index, 1);
+                    //remove this channel
+                    const index = whitelistedChannels.indexOf(response.channelID);
+                    whitelistedChannels.splice(index, 1);
 
-                        //change button
-                        PageElements.whitelistChannel.style.display = "unset";
-                        PageElements.unwhitelistChannel.style.display = "none";
-                        document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
+                    //change button
+                    PageElements.whitelistChannel.style.display = "unset";
+                    PageElements.unwhitelistChannel.style.display = "none";
+                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
 
-                        //save this
-                        Config.config.whitelistedChannels = whitelistedChannels;
+                    //save this
+                    Config.config.whitelistedChannels = whitelistedChannels;
 
-                        //send a message to the client
-                        messageHandler.query({
-                            active: true,
-                            currentWindow: true
-                        }, tabs => {
-                            messageHandler.sendMessage(
-                                tabs[0].id, {
-                                    message: 'whitelistChange',
-                                    value: false
-                                });
-                            }
-                        );
+                    //send a message to the client
+                    messageHandler.query({
+                        active: true,
+                        currentWindow: true
+                    }, tabs => {
+                        messageHandler.sendMessage(
+                            tabs[0].id, {
+                            message: 'whitelistChange',
+                            value: false
+                        });
+                    }
+                    );
                 }
             );
         });
@@ -694,12 +695,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                {message: 'refreshSegments'},
+                { message: 'refreshSegments' },
                 (response) => {
                     infoFound(response);
                     stopAnimation();
                 }
-            )}
+            )
+        }
         );
     }
 
@@ -707,7 +709,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
      * Should skipping be disabled (visuals stay)
      */
     function toggleSkipping(disabled) {
-		Config.config.disableSkipping = disabled;
+        Config.config.disableSkipping = disabled;
 
         let hiddenButton = PageElements.disableSkipping;
         let shownButton = PageElements.enableSkipping;
@@ -728,13 +730,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
      * @param {float} seconds 
      * @returns {string}
      */
-	function getFormattedHours(minutes) {
-		minutes = Math.round(minutes * 10) / 10
-		const hours = Math.floor(minutes / 60);
-		return (hours > 0 ? hours + "h " : "") + (minutes % 60).toFixed(1);
-	}
-  
-//end of function
+    function getFormattedHours(minutes) {
+        minutes = Math.round(minutes * 10) / 10
+        const hours = Math.floor(minutes / 60);
+        return (hours > 0 ? hours + "h " : "") + (minutes % 60).toFixed(1);
+    }
+
+    //end of function
 }
 
 if (chrome.tabs != undefined) {
