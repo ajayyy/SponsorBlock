@@ -74,7 +74,7 @@
         "message": "Nebyly nalezeny žádné segmenty"
     },
     "sponsorStart": {
-        "message": "Segment nyní začíná"
+        "message": "Nyní začíná segment"
     },
     "sponsorEnd": {
         "message": "Segment nyní končí"
@@ -227,6 +227,21 @@
     "showSkipNotice": {
         "message": "Zobrazit upozornění po přeskočení segmentu"
     },
+    "noticeVisibilityMode0": {
+        "message": "Oznámení o přeskočení v plné velikosti"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Malá oznámení o automatickém přeskočení"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Všechna malá oznámení o přeskočení"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Vybledlá oznámení o automatickém přeskočení"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Všechna vybledlá oznámení o přeskočení"
+    },
     "longDescription": {
         "message": "SponsorBlock vám umožní přeskakovat sponzorské sekce, intra, outra, oznámení k odběru a další otravné části YouTube videí. SponsorBlock je crowdsourcované rozšíření prohlížeče, které dává komukoli možnost odeslat začátek a konec sponzorovaných segmentů a dalších segmentů YouTube videí. Jakmile jedna osoba odešle tuto informaci, všichni ostatní s tímto rozšířením automaticky přeskočí sponzorovaný segment. Můžete také přeskakovat nehudební sekce v hudebních videích.",
         "description": "Full description of the extension on the store pages."
@@ -286,6 +301,18 @@
     },
     "skip_category": {
         "message": "Přeskočit {0}?"
+    },
+    "skip_to_category": {
+        "message": "Přeskočit na {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "Segment {0} přeskočen",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Přeskočeno na {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Zakázat automatické přeskočení"
@@ -538,6 +565,12 @@
     "category_music_offtopic_short": {
         "message": "Jiné než hudba"
     },
+    "category_poi_highlight": {
+        "message": "Zvýraznění"
+    },
+    "category_poi_highlight_description": {
+        "message": "Část videa, kterou hledá většina lidí. Podobné komentářům typu \"Video začíná v x\"."
+    },
     "category_livestream_messages": {
         "message": "Livestream: Čtení donatů / zpráv"
     },
@@ -555,6 +588,15 @@
     },
     "disable": {
         "message": "Zakázat"
+    },
+    "autoSkip_POI": {
+        "message": "Automatické přeskočení na začátek"
+    },
+    "manualSkip_POI": {
+        "message": "Zeptat se při načtení videa"
+    },
+    "showOverlay_POI": {
+        "message": "Zobrazit v liště"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky přeskočit všechny segmenty, když je ve videu nehudební segment"
@@ -669,6 +711,10 @@
     "help": {
         "message": "Nápověda"
     },
+    "GotIt": {
+        "message": "Rozumím",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Odhlásit se ze všech budoucích experimentů",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -682,5 +728,47 @@
     "voteRejectedWarning": {
         "message": "Hlas zamítnut kvůli varování. Klikněte pro otevření chatu pro vyřešení, nebo se vraťte později, až budete mít čas.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Přispět"
+    },
+    "hideDonationLink": {
+        "message": "Skrýt odkaz na přispění"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Děkujeme za instalaci SponsorBlocku."
+    },
+    "helpPageReviewOptions": {
+        "message": "Zkontrolujte prosím možnosti níže"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Spousta funkcí je ve výchozím nastavení zakázána. Pokud chcete přeskakovat intra, outra, používat Invidious atd., povolte je níže. Můžete také zobrazit/skrýt UI prvky."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Jak funguje přeskakování"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Segmenty videa budou automaticky přeskočeny, pokud budou nalezeny v databázi. Můžete si otevřít vyskakovací okno kliknutím na ikonu rozšíření pro náhled, co jsou zač."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Kdykoli přeskočíte segment, dostanete oznámení. Pokud je časování nesprávné, můžete hlasovat proti kliknutím na palec dolů! Také můžete hlasovat ve vyskakovacím okně."
+    },
+    "Submitting": {
+        "message": "Odesílání"
+    },
+    "helpPageSubmitting1": {
+        "message": "Odeslání může být provedeno buď ve vyskakovacím okně kliknutím na tlačítko \"Nyní začíná segment\" v přehrávači videa nebo na tlačítkách na přehrávači."
+    },
+    "helpPageSubmitting2": {
+        "message": "Kliknutím na tlačítko přehrávání označí začátek segmentu a kliknutí na ikonu stop označuje konec. Před odesláním si můžete připravit více segmentů. Kliknutím na tlačítko k nahrání odešlete vaše segmenty. Kliknutím na ikonu koše vše smažete."
+    },
+    "Editing": {
+        "message": "Úprava"
+    },
+    "helpPageEditing1": {
+        "message": "Pokud jste něco pokazili, můžete kliknutím na šipku nahoru upravit nebo odstranit své segmenty."
+    },
+    "helpPageTooSlow": {
+        "message": "Je to příliš pomalé"
     }
 }
