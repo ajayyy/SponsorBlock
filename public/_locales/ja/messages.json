@@ -711,6 +711,10 @@
     "help": {
         "message": "ヘルプ"
     },
+    "GotIt": {
+        "message": "了解",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "実験的機能をすべて無効にする",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -724,5 +728,50 @@
     "voteRejectedWarning": {
         "message": "警告により投票が拒否されました。クリックして運営に連絡するか，少し時間を置いてからやりなおしてください。",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "寄付"
+    },
+    "hideDonationLink": {
+        "message": "寄付のお願いを表示しない"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "SponsorBlockを導入いただきありがとうございます。"
+    },
+    "helpPageReviewOptions": {
+        "message": "以下の設定を確認してください"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "多くの機能は既定では無効となっています。動画の導入部や最後の余計な部分を飛び越したい場合は「非本質的な内容」を飛び越すようにしてください。また，UI要素の表示・非表示を切り替えることもできます。"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "飛び越しの仕組み"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "データベースにある動画区域が自動的に飛び越されます。この拡張機能のアイコンをクリックすると，区域の位置や範囲を確かめることができます。"
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "区域を飛び越すたびに通知されます。区域の範囲がおかしいと思ったら，その区域を低評価してください。ポップアップ画面でも同様に投票ができます。"
+    },
+    "Submitting": {
+        "message": "提出中"
+    },
+    "Editing": {
+        "message": "編集中"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "ソースコードは自由に利用できます。運営になにがあろうとも，あなたの貢献（提出された区域）が失われることはありません。"
+    },
+    "helpPageNews": {
+        "message": "お知らせと作成方法"
+    },
+    "helpPageSourceCode": {
+        "message": "ソースコードの入手先"
+    },
+    "Credits": {
+        "message": "謝辞"
+    },
+    "LearnMore": {
+        "message": "さらに詳しく"
     }
 }

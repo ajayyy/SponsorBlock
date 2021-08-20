@@ -696,6 +696,10 @@
     "help": {
         "message": "Abi"
     },
+    "GotIt": {
+        "message": "Sain aru",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Keeldu kõigist tulevikus tehtavatatest eksperimentidest",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -709,5 +713,20 @@
     "voteRejectedWarning": {
         "message": "Hääletus hoiatuse tõttu tagasilükatud. Klõpsa, et avada selle lahendamiseks vestlus või tule hiljem tagasi, kui aega saad.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Anneta"
+    },
+    "hideDonationLink": {
+        "message": "Peida annetuste link"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Täname SponsorBlocki paigaldamise eest."
+    },
+    "Credits": {
+        "message": "Tiitrid"
+    },
+    "LearnMore": {
+        "message": "Lisateave"
     }
 }
