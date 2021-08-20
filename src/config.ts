@@ -1,5 +1,5 @@
 import * as CompileConfig from "../config.json";
-import { Category, CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
 
 interface SBConfig {
     userID: string,
@@ -20,6 +20,7 @@ interface SBConfig {
     trackViewCount: boolean,
     trackViewCountInPrivate: boolean,
     dontShowNotice: boolean,
+    noticeVisibilityMode: NoticeVisbilityMode,
     hideVideoPlayerControls: boolean,
     hideInfoButtonPlayerControls: boolean,
     hideDeleteButtonPlayerControls: boolean,
@@ -162,6 +163,7 @@ const Config: SBObject = {
         trackViewCount: true,
         trackViewCountInPrivate: true,
         dontShowNotice: false,
+        noticeVisibilityMode: NoticeVisbilityMode.FadedForAutoSkip,
         hideVideoPlayerControls: false,
         hideInfoButtonPlayerControls: false,
         hideDeleteButtonPlayerControls: false,

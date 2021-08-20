@@ -5,7 +5,8 @@ import Utils from "../utils";
 const utils = new Utils();
 
 import SkipNoticeComponent, { SkipNoticeAction } from "../components/SkipNoticeComponent";
-import { SponsorTime, ContentContainer } from "../types";
+import { SponsorTime, ContentContainer, NoticeVisbilityMode } from "../types";
+import Config from "../config";
 
 class SkipNotice {
     segments: SponsorTime[];
@@ -45,7 +46,8 @@ class SkipNotice {
                 contentContainer={contentContainer}
                 ref={this.skipNoticeRef}
                 closeListener={() => this.close()}
-                smaller={true}
+                smaller={Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAll 
+                    || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAutoSkip && autoSkip)}
                 unskipTime={unskipTime} />,
             this.noticeElement
         );

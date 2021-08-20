@@ -3,9 +3,7 @@ import * as React from "react";
 import Config from "../config"
 import { Category, CategorySkipOption } from "../types";
 
-import Utils from "../utils";
 import { getCategoryActionType } from "../utils/categoryUtils";
-const utils = new Utils();
 
 export interface CategorySkipOptionsProps { 
     category: Category;
@@ -63,7 +61,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                     <td id={this.props.category + "SkipOption"}
                         className="skipOption">
                         <select
-                            className="categoryOptionsSelector"
+                            className="optionsSelector"
                             defaultValue={defaultOption}
                             onChange={this.skipOptionSelected.bind(this)}>
                                 {this.getCategorySkipOptions()}
