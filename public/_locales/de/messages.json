@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Hinweis erneut anzeigen"
     },
+    "showSkipNotice": {
+        "message": "Zeige Pop-up nach dem Überspringen eines Segments"
+    },
     "longDescription": {
         "message": "SponsorBlock lässt dich gesponserte Videosegmente, Intros, Outros, Interaktions-Erinnerungen, Musikvideoteile ohne Musik und andere nervige Teile von YouTube-Videos überspringen. SponsorBlock ist eine crowdsourced Browser-Erweiterung, in der jeder die Start- und Endzeit gesponserter Videosegmente und anderer Segmente von YouTube-Videos einreicht. Sobald eine Person diese Informationen einreicht, überspringen alle anderen mit dieser Erweiterung das gesponserte Segment.",
         "description": "Full description of the extension on the store pages."
@@ -284,6 +287,18 @@
     "skip_category": {
         "message": "{0} überspringen?"
     },
+    "skip_to_category": {
+        "message": "Zu {0} springen?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} übersprungen",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Zu {0} gesprungen",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
     "disableAutoSkip": {
         "message": "Automatisches Überspringen deaktivieren"
     },
@@ -343,9 +358,6 @@
     },
     "createdBy": {
         "message": "Erstellt von"
-    },
-    "showSkipNotice": {
-        "message": "Zeige Pop-up nach dem Überspringen eines Segments"
     },
     "keybindCurrentlySet": {
         "message": ". Aktuelle Einstellung:"
@@ -526,6 +538,9 @@
     "category_preview": {
         "message": "Vorschau/Zusammenfassung"
     },
+    "category_preview_description": {
+        "message": "Kurze Zusammenfassung bisheriger Videos oder eine Vorschau auf das aktuelle Video. Für zusammengeschnittene Clips gedacht, jedoch nicht für mündliche Zusammenfassungen."
+    },
     "category_music_offtopic": {
         "message": "Musikvideoteile ohne Musik"
     },
@@ -534,6 +549,12 @@
     },
     "category_music_offtopic_short": {
         "message": "Musikvideoteile ohne Musik"
+    },
+    "category_poi_highlight": {
+        "message": "Hervorheben"
+    },
+    "category_poi_highlight_description": {
+        "message": "Der Teil des Videos, nach dem die meisten Leute suchen, ähnlich wie \"Video startet bei x\" Kommentare."
     },
     "category_livestream_messages": {
         "message": "In Livestreams Spenden/Nachrichten vorlesen"
@@ -552,6 +573,12 @@
     },
     "disable": {
         "message": "Deaktivieren"
+    },
+    "autoSkip_POI": {
+        "message": "Automatisch zum Start springen"
+    },
+    "showOverlay_POI": {
+        "message": "In der Video-Zeitleiste anzeigen"
     },
     "autoSkipOnMusicVideos": {
         "message": "Alle Segmente automatisch überspringen, wenn ein nicht-Musiksegment vorhanden ist"
