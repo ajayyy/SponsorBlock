@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Näytä ilmoitus uudelleen"
     },
+    "showSkipNotice": {
+        "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
+    },
     "longDescription": {
         "message": "SponsorBlockin avulla voit ohittaa sponsorit, introt, outrot, tilausmuistutukset ja muut ärsyttävät osat YouTube-videoissa. SponsorBlock on joukkoistettu selainlaajennus, jonka avulla kuka tahansa voi lähettää Youtube-videoiden sponsoroitujen ja muiden segmenttien aloitus- ja päättymisajat. Kun yksi henkilö on lähettänyt tämän tiedon, kaikki muut, joilla on tämä laajennus, ohittavat sponsoroidun segmentin. Voit myös ohittaa musiikkivideoiden musiikittomat osat.",
         "description": "Full description of the extension on the store pages."
@@ -284,6 +287,18 @@
     "skip_category": {
         "message": "Ohita {0}?"
     },
+    "skip_to_category": {
+        "message": "Ohita {0}an?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} ohitettu",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Ohitettiin {0}an",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
     "disableAutoSkip": {
         "message": "Poista automaattinen ohitus käytöstä"
     },
@@ -343,9 +358,6 @@
     },
     "createdBy": {
         "message": "Luonut"
-    },
-    "showSkipNotice": {
-        "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
     },
     "keybindCurrentlySet": {
         "message": ". Tällä hetkellä se on asetettu näppäimeen:"
@@ -538,6 +550,12 @@
     "category_music_offtopic_short": {
         "message": "Musiikiton"
     },
+    "category_poi_highlight": {
+        "message": "Kohokohta"
+    },
+    "category_poi_highlight_description": {
+        "message": "Kohta videossa, mitä suurin osa ihmisistä etsivät.\nSamankaltainen \"Video alkaa kohdassa x\" kommenttien kanssa."
+    },
     "category_livestream_messages": {
         "message": "Livestream: lahjoitusten/viestien lukeminen"
     },
@@ -555,6 +573,15 @@
     },
     "disable": {
         "message": "Poista käytöstä"
+    },
+    "autoSkip_POI": {
+        "message": "Ohita automaattisesti alkuun"
+    },
+    "manualSkip_POI": {
+        "message": "Kysy kun video latautuu"
+    },
+    "showOverlay_POI": {
+        "message": "Näytä liukusäätimessä"
     },
     "autoSkipOnMusicVideos": {
         "message": "Ohita kaikki segmentit automaattisesti, kun videossa on \"Musiikiton\" segmentti"
