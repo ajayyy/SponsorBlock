@@ -77,7 +77,7 @@
         "message": "Đoạn quảng cáo bắt đầu vào lúc này"
     },
     "sponsorEnd": {
-        "message": "Đoạn quảng cáo kết thúc vào lúc này"
+        "message": "Phân đoạn kết thúc vào lúc này"
     },
     "sponsorCancel": {
         "message": "Huỷ tạo phân đoạn"
@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Hiện thông báo lại"
     },
+    "showSkipNotice": {
+        "message": "Hiển thị thông báo sau khi bỏ qua quảng cáo"
+    },
     "longDescription": {
         "message": "SponsorBlock giúp bạn bỏ qua quảng cáo từ nhà tài trợ, đoạn giới thiệu, đoạn kết, lời nhắc đăng ký kênh, và những phần khó chịu khác trong các video Youtube. SponsorBlock là một tiện ích mở rộng cho trình duyệt, cho phép tất cả người dùng đăng thời điểm bắt đầu và kết thúc của những đoạn quảng cáo từ nhà tài trợ và các đoạn khác trong video Youtube. Sau khi một người đăng thông tin này lên, tất cả mọi người dùng tiện ích mở rộng này sẽ bỏ qua đoạn quảng cáo đó. Bạn cũng có thể bỏ qua phần không có nhạc trong những video âm nhạc.",
         "description": "Full description of the extension on the store pages."
@@ -285,7 +288,7 @@
         "message": "Bỏ qua {0}?"
     },
     "disableAutoSkip": {
-        "message": "Tắt tự động bỏ qua quảng cáo"
+        "message": "Tắt tự động bỏ qua"
     },
     "enableAutoSkip": {
         "message": "Bật tự động bỏ qua quảng cáo"
@@ -343,9 +346,6 @@
     },
     "createdBy": {
         "message": "Được tạo bởi"
-    },
-    "showSkipNotice": {
-        "message": "Hiển thị thông báo sau khi bỏ qua quảng cáo"
     },
     "keybindCurrentlySet": {
         "message": ". Phím đang được đặt:"
