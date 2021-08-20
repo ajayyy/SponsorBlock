@@ -212,6 +212,9 @@
     "showNotice": {
         "message": "Arată Notificarea Din Nou"
     },
+    "showSkipNotice": {
+        "message": "Arată o notificare după ce un segment este sărit"
+    },
     "longDescription": {
         "message": "SponsorBlock vă permite să săriți peste sponsori, intro, outros, memento-uri pentru abonament și alte părți enervante ale videoclipurilor YouTube SponsorBlock este o extensie crowdsourced de browser, care hai să trimită oricui timpul de început și de sfârșit pentru segmente sponsorizate și alte segmente de videoclipuri YouTube. Odată ce o persoană transmite aceste informații, toți ceilalți cu această extensie vor sări peste segmentul sponsorizat. De asemenea, poți sări peste secțiunile non-muzicale ale videoclipurilor.",
         "description": "Full description of the extension on the store pages."
@@ -268,9 +271,6 @@
     },
     "skip_category": {
         "message": "Omiteți {0}?"
-    },
-    "skipped": {
-        "message": "Sărit"
     },
     "disableAutoSkip": {
         "message": "Dezactivează Autoskip"
@@ -331,12 +331,6 @@
     },
     "createdBy": {
         "message": "Creat De"
-    },
-    "autoSkip": {
-        "message": "Sari Peste Automat"
-    },
-    "showSkipNotice": {
-        "message": "Arată o notificare după ce un segment este sărit"
     },
     "keybindCurrentlySet": {
         "message": ". În prezent este setat:"
@@ -501,14 +495,17 @@
     "category_livestream_messages_short": {
         "message": "Citire Mesaj"
     },
-    "disable": {
-        "message": "Dezactivare"
+    "autoSkip": {
+        "message": "Sari Peste Automat"
     },
     "manualSkip": {
         "message": "Sari Peste Manual"
     },
     "showOverlay": {
         "message": "Arată În Bara de Derulare"
+    },
+    "disable": {
+        "message": "Dezactivare"
     },
     "colorFormatIncorrect": {
         "message": "Culoarea ta este formatată incorect. Ar trebui să fie un cod hexadecimal de 3 sau 6 cifre cu un hash la început."

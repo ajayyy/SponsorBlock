@@ -15,6 +15,7 @@ export interface PreviewBarSegment {
     segment: [number, number];
     category: string;
     unsubmitted: boolean;
+    showLarger: boolean;
 }
 
 class PreviewBar {
@@ -102,9 +103,10 @@ class PreviewBar {
             let currentSegmentLength = Infinity;
 
             for (const seg of this.segments) {
-                if (seg.segment[0] <= timeInSeconds && seg.segment[1] > timeInSeconds) {
-                    const segmentLength = seg.segment[1] - seg.segment[0];
-
+                const segmentLength = seg.segment[1] - seg.segment[0];
+                const startTime = segmentLength !== 0 ? seg.segment[0] : Math.floor(seg.segment[0]);
+                const endTime = segmentLength !== 0 ? seg.segment[1] : Math.ceil(seg.segment[1]);
+                if (startTime <= timeInSeconds && endTime >= timeInSeconds) {
                     if (segmentLength < currentSegmentLength) {
                         currentSegmentLength = segmentLength;
                         segment = seg;
@@ -181,10 +183,10 @@ class PreviewBar {
         });
     }
 
-    createBar({category, unsubmitted, segment}: PreviewBarSegment): HTMLLIElement {
+    createBar({category, unsubmitted, segment, showLarger}: PreviewBarSegment): HTMLLIElement {
         const bar = document.createElement('li');
         bar.classList.add('previewbar');
-        bar.innerHTML = '&nbsp;';
+        bar.innerHTML = showLarger ? '&nbsp;&nbsp;' : '&nbsp;';
 
         const fullCategoryName = (unsubmitted ? 'preview-' : '') + category;
         bar.setAttribute('sponsorblock-category', fullCategoryName);
@@ -193,7 +195,7 @@ class PreviewBar {
         if (!this.onMobileYouTube) bar.style.opacity = Config.config.barTypes[fullCategoryName]?.opacity;
 
         bar.style.position = "absolute";
-        bar.style.width = this.timeToPercentage(segment[1] - segment[0]);
+        if (segment[1] - segment[0] > 0) bar.style.width = this.timeToPercentage(segment[1] - segment[0]);
         bar.style.left = this.timeToPercentage(segment[0]);
 
         return bar;

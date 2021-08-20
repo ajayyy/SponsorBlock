@@ -1,10 +1,12 @@
 import * as React from "react";
 
 import Config from "../config"
-import { CategorySkipOption } from "../types";
+import { Category, CategorySkipOption } from "../types";
+
+import { getCategoryActionType } from "../utils/categoryUtils";
 
 export interface CategorySkipOptionsProps { 
-    category: string;
+    category: Category;
     defaultColor?: string;
     defaultPreviewColor?: string;
 }
@@ -59,7 +61,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                     <td id={this.props.category + "SkipOption"}
                         className="skipOption">
                         <select
-                            className="categoryOptionsSelector"
+                            className="optionsSelector"
                             defaultValue={defaultOption}
                             onChange={this.skipOptionSelected.bind(this)}>
                                 {this.getCategorySkipOptions()}
@@ -87,7 +89,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 </tr>
 
                 <tr id={this.props.category + "DescriptionRow"}
-                    className="small-description">
+                    className="small-description categoryTableDescription">
                         <td
                             colSpan={2}>
                             {chrome.i18n.getMessage("category_" + this.props.category + "_description")}
@@ -152,7 +154,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         for (const optionName of optionNames) {
             elements.push(
                 <option key={optionName} value={optionName}>
-                    {chrome.i18n.getMessage(optionName)}
+                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategoryActionType(this.props.category) 
+                                                                     : optionName)}
                 </option>
             );
         }

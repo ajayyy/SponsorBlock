@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "再次顯示通知"
     },
+    "showSkipNotice": {
+        "message": "在跳過片段後顯示通知"
+    },
     "longDescription": {
         "message": "SponsorBlock 讓您可以跳過贊助工商，開場動畫，結束動畫，訂閱提醒等煩人的 YouTube 影片片段。SponsorBlock 是個大眾外包的網頁瀏覽器擴充功能，能讓任何人提交贊助片段的始與末。當一個人提交這個片段後，所有使用這個擴充功能的人都可以跳過該片段。您也可以跳過在音樂中的非音樂片段",
         "description": "Full description of the extension on the store pages."
@@ -283,9 +286,6 @@
     },
     "skip_category": {
         "message": "跳過 {0}？"
-    },
-    "skipped": {
-        "message": "已跳過"
     },
     "disableAutoSkip": {
         "message": "停用自動跳過"
@@ -347,12 +347,6 @@
     "createdBy": {
         "message": "創建者"
     },
-    "autoSkip": {
-        "message": "自動跳過"
-    },
-    "showSkipNotice": {
-        "message": "在跳過片段後顯示通知"
-    },
     "keybindCurrentlySet": {
         "message": "。它目前被設定為："
     },
@@ -392,6 +386,9 @@
     },
     "minDurationDescription": {
         "message": "小於設定值的片段不會被跳過或在播放器中顯示"
+    },
+    "skipNoticeDuration": {
+        "message": "跳過通知持續顯示時間（秒）："
     },
     "skipNoticeDurationDescription": {
         "message": "跳過片段提示的顯示時間將會以上列時間長度為準（單位：秒）；手動跳過的時候會顯示較長於上面的時間"
@@ -544,14 +541,20 @@
     "category_livestream_messages_short": {
         "message": "閱讀訊息"
     },
-    "disable": {
-        "message": "停用"
+    "autoSkip": {
+        "message": "自動跳過"
     },
     "manualSkip": {
         "message": "手動跳過"
     },
     "showOverlay": {
         "message": "在時間條顯示"
+    },
+    "disable": {
+        "message": "停用"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "自動跳過非音樂片段（如果有的話）"
     },
     "colorFormatIncorrect": {
         "message": "您設定的顏色無效。它應該是三或六位數的 hex 碼，且以井字號開頭。"
@@ -603,6 +606,10 @@
     },
     "hiddenDueToDuration": {
         "message": "隱藏：太短"
+    },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "未偵測到頻道ID，如果您正在使用嵌入式YouTube播放器，請移至YouTube網站上觀看本影片。此問題亦有可能是由於YouTube改變了系統架構，如果你認為這是造成此問題的原因，請留言告訴我們："
     },
     "videoInfoFetchFailed": {
         "message": "似乎有東西在阻止 SponsorBlock 取得影片資料。請至 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"

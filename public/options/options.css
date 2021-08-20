@@ -343,10 +343,13 @@ svg {
 
 .categoryTableElement > * {
     padding-right: 15px;
+}
+
+.categoryTableDescription > * {
     padding-bottom: 15px;
 }
 
-.categoryOptionsSelector {
+.optionsSelector {
     background-color: #c00000;
     color: white;
     
@@ -361,4 +364,8 @@ svg {
 
     background: none;
     border: none;
+}
+
+#sbDonate {
+    font-size: 10px;
 }
