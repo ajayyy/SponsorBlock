@@ -224,6 +224,9 @@
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
     },
+    "showSkipNotice": {
+        "message": "Mostra Avviso Dopo Aver Saltato un Segmento"
+    },
     "longDescription": {
         "message": "SponsorBlock ti consente di saltare sponsorizzazioni, introduzioni, conclusioni, promemoria di iscrizione e altre componenti fastidiose dei video su YouTube. SponsorBlock è un'estensione per browser in crowdsourcing, che consente a chiunque di inviare l'ora di inizio e di fine dei segmenti sponsorizzati e altri segmenti video su YouTube. Quando una persona invia queste informazioni, chiunque altro in possesso di questa estensione sarà in grado di saltare direttamente il segmento sponsorizzato. È possibile saltare anche le sezioni non musicali dei video musicali.",
         "description": "Full description of the extension on the store pages."
@@ -343,9 +346,6 @@
     },
     "createdBy": {
         "message": "Creato da"
-    },
-    "showSkipNotice": {
-        "message": "Mostra Avviso Dopo Aver Saltato un Segmento"
     },
     "keybindCurrentlySet": {
         "message": ". Attualmente è impostato su:"
