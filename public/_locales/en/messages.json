@@ -730,5 +730,62 @@
     },
     "hideDonationLink": {
         "message": "Hide Donation Link"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Thanks for installing SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Please review the options below"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Many features are disabled by default. If you want to skip intros, outros, use Invidious, etc., enable them below. You can also hide/show UI elements."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "How skipping works"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Video segments will automatically be skipped if they are found in the database. You can open the popup by clicking the extension icon to get a preview of what they are."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Whenever you skip a segment, you will get notice. If the timing seems wrong vote down by clicking downvote! You can also vote in the popup."
+    },
+    "Submitting": {
+        "message": "Submitting"
+    },
+    "helpPageSubmitting1": {
+        "message": "Submitting can either be done in the popup by hitting the \"Segment Starts Now\" button or in the video player with the buttons on the player."
+    },
+    "helpPageSubmitting2": {
+        "message": "Clicking the play button indicated the start of a segment and clicking the stop icon indicates the end. You can prepare multiple sponsors before hitting submit. Clicking the upload button will submit. Clicking the garbage can will delete."
+    },
+    "Editing": {
+        "message": "Editing"
+    },
+    "helpPageEditing1": {
+        "message": "If you messed up, you can edit or delete your segments after clicking the up arrow button."
+    },
+    "helpPageTooSlow": {
+        "message": "This is too slow"
+    },
+    "helpPageTooSlow1": {
+        "message": "There are hotkeys if you want to use them. Press the semicolon key to indicate the start/end of a sponsor segment and click the apostrophe to submit. These can be changed in the options. If you don't use QWERTY, you should probably change the keybinding."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Can I get a copy of the Database? What happens if you disappear?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "The database is public and available at"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "The source code is freely available. So, even if something happens to me, your submissions are not lost."
+    },
+    "helpPageNews": {
+        "message": "News and how it is made"
+    },
+    "helpPageSourceCode": {
+        "message": "Where can I get the source code?"
+    },
+    "Credits": {
+        "message": "Credits"
     }
 }
