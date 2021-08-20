@@ -38,8 +38,10 @@ interface SBConfig {
     refetchWhenNotFound: boolean,
     ytInfoPermissionGranted: boolean,
     allowExpirements: boolean,
+    showDonationLink: boolean,
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
+    highlightCategoryUpdate: boolean
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -181,8 +183,10 @@ const Config: SBObject = {
         refetchWhenNotFound: true,
         ytInfoPermissionGranted: false,
         allowExpirements: true,
+        showDonationLink: true,
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
+        highlightCategoryUpdate: false, // TODO: Remove this once update is done
 
         categorySelections: [{
             name: "sponsor" as Category,

@@ -519,3 +519,24 @@ input::-webkit-inner-spin-button {
     display: block;
     margin: auto;
 }
+
+.sponsorBlockTooltip {
+    position: absolute;
+    background-color: rgba(28, 28, 28, 0.7);
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 300px;
+    white-space: normal;
+    line-height: 1.5em;
+}
+
+.sponsorBlockTooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 15%;
+    margin-left: -15px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: rgba(28, 28, 28, 0.7) transparent transparent transparent;
+}

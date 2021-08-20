@@ -261,7 +261,6 @@ export default class Utils {
         const objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
         for (let j = 0; j < objects.length; j++) {
             const obj = objects[j];
-            
             const localizedMessage = this.getLocalizedMessage(obj.innerHTML.toString());
             if (localizedMessage) obj.innerHTML = localizedMessage;
         }

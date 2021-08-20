@@ -35,7 +35,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
             return;
         case "openHelp":
-            chrome.tabs.create({url: chrome.runtime.getURL('help/index_en.html')});
+            chrome.tabs.create({url: chrome.runtime.getURL('help/index.html')});
             return;
         case "openPage":
             chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
@@ -74,12 +74,14 @@ chrome.runtime.onInstalled.addListener(function () {
         // If there is no userID, then it is the first install.
         if (!userID){
             //open up the install page
-            chrome.tabs.create({url: chrome.extension.getURL("/help/index_en.html")});
+            chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
 
             //generate a userID
             const newUserID = utils.generateUserID();
             //save this UUID
             Config.config.userID = newUserID;
+
+            Config.config.highlightCategoryUpdate = false;
         }
     }, 1500);
 });

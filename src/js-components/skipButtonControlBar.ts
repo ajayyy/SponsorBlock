@@ -18,6 +18,7 @@ export class SkipButtonControlBar {
     showKeybindHint = true;
 
     timeout: NodeJS.Timeout;
+    duration = 0;
 
     skip: (segment: SponsorTime) => void;
 
@@ -42,6 +43,10 @@ export class SkipButtonControlBar {
         this.container.addEventListener("mouseleave", () => this.startTimer());
     }
 
+    getElement(): HTMLElement {
+        return this.container;
+    }
+
     attachToPage(): void {
         const leftControlsContainer = document.querySelector(".ytp-left-controls");
         this.chapterText = document.querySelector(".ytp-chapter-container");
@@ -51,7 +56,8 @@ export class SkipButtonControlBar {
         }
     }
 
-    enable(segment: SponsorTime): void {
+    enable(segment: SponsorTime, duration?: number): void {
+        if (duration) this.duration = duration;
         this.segment = segment;
         this.refreshText();
 
@@ -78,7 +84,7 @@ export class SkipButtonControlBar {
 
     startTimer(): void {
         this.stopTimer();
-        this.timeout = setTimeout(() => this.disable(), Config.config.skipNoticeDuration * 1000);
+        this.timeout = setTimeout(() => this.disable(), Math.max(Config.config.skipNoticeDuration, this.duration) * 1000);
     }
 
     disable(): void {

@@ -5,6 +5,9 @@
   <meta charset="utf-8">
 
   <link href="styles.css" rel="stylesheet"/>
+
+  <script src="../js/vendor.js"></script>
+  <script src="../js/help.js"></script>
 </head>
 
 <body>
@@ -14,90 +17,92 @@
     SponsorBlock
   </div>
 
-  <div class="container">
+  <div class="container sponsorBlockPageBody">
 
-    <p class="createdBy">Created By <a href="https://ajay.app">Ajay Ramachandran</a> <img src="https://ajay.app/newprofilepic.jpg" height="30" class="profilepiccircle"/></p>
+    <p class="createdBy">
+      <img src="https://ajay.app/newprofilepic.jpg" height="30" class="profilepiccircle"/>
+      Created By <a href="https://ajay.app">Ajay Ramachandran</a> 
+      <a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">(Donate)</a>
+    </p>
 
     <p>
-        Thanks for installing SponsorBlock. By using this extension, you agree to the <a href="https://gist.github.com/ajayyy/aa9f8ded2b573d4f73a3ffa0ef74f796">Privacy Policy</a> and <a href="https://gist.github.com/ajayyy/9e8100f069348e0bc062641f34d6af12">Terms of Use</a>.
+        __MSG_helpPageThanksForInstalling__ By using this extension, you agree to the <a href="https://gist.github.com/ajayyy/aa9f8ded2b573d4f73a3ffa0ef74f796">Privacy Policy</a> and <a href="https://gist.github.com/ajayyy/9e8100f069348e0bc062641f34d6af12">Terms of Use</a>.
     </p>
 
     <p>
 	      Come contribute, make some suggestions and help out on <a href="https://discord.gg/QnmVMpU">Discord</a> or on <a href="https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org">Matrix</a>.
     </p>
 
-    <p style="margin-bottom: 0; margin-top: 0" class="bigText center">Please review the options below</p>
+    <p style="margin-bottom: 0; margin-top: 0" class="bigText center">__MSG_helpPageReviewOptions__</p>
 
     <p class="smallText">
-      Many features are disabled by default. If you want to skip intros, outros, use Invidious, etc., enable them below.
-      You can also hide/show UI elements.
+      __MSG_helpPageFeatureDisclaimer__
     </p>
 
     <iframe src="../options/options.html#embed" width="100%" height="500px" style="border: none"></iframe>
 
-    <h1>How skipping works</h1>
+    <h1>__MSG_helpPageHowSkippingWorks__</h1>
 
     <p class="projectPreview">
       <span class="projectPreviewImageLarge">
-          <img src="https://i.imgur.com/caf5Bju.png">
+          <img src="images/popup.png">
       </span>
 
-      Video segments will automatically be skipped if they are found in the database. You can open the popup by clicking the extension icon to get a preview of what they are.
+      __MSG_helpPageHowSkippingWorks1__
       
       <br/>
       <br/>
 
-      Whenever you skip a segment, you will get notice. If the timing seems wrong vote down by clicking downvote! You can also vote in the popup.
+      __MSG_helpPageHowSkippingWorks2__
     </p>
 
-    <div class="center"><img height="120px" src="https://user-images.githubusercontent.com/12688112/63067735-5a638700-bede-11e9-8147-f321b57527ec.gif"></div>
+    <div class="center"><img height="120px" src="images/voting on notice.gif"></div>
 
-    <h1>Submitting</h1>
+    <h1>__MSG_Submitting__</h1>
 
     <p class="projectPreview">
         <span class="projectPreviewImageLargeRight">
             <img src="https://i.imgur.com/A1ilk6x.gif">
         </span>
   
-        Submitting can either be done in the popup by hitting the "Segment Starts Now" button or in the video player with the buttons on the player.
+        __MSG_helpPageSubmitting1__
         
         <br/>
         <br/>
 
-        Clicking the play button indicated the start of a segment and clicking the stop icon indicates the end. You can prepare multiple sponsors before hitting submit. Clicking the upload button will submit. Clicking the garbage can will delete.
+        __MSG_helpPageSubmitting2__
     </p>
 
-    <h1>Editing</h1>
+    <h1>__MSG_Editing__</h1>
 
     <p class="projectPreview">
         <span class="projectPreviewImageLarge">
-            <img src="https://i.imgur.com/DZHqbsx.gif">
+            <img src="https://wiki.sponsor.ajay.app/images/6/6a/Popup_only.png">
         </span>
   
-        If you messed up, you can edit or delete your segments in the popup or in the info menu (by hitting the info icon).
+        __MSG_helpPageEditing1__
 
     </p>
 
-    <h1>This is too slow</h1>
+    <h1>__MSG_helpPageTooSlow__</h1>
 
     <p>
-      There are hotkeys if you want to use them. Press the semicolon key to indicate the start/end of a sponsor segment and click the apostrophe to submit.
-      These can be changed in the options. If you don't use QWERTY, you should probably change the keybinding.
+      __MSG_helpPageTooSlow1__
     </p>
 
-    <h1>Can I get a copy of the Database? What happens if you disappear?</h1>
+    <h1>__MSG_helpPageCopyOfDatabase__</h1>
 
     <p>
-      The database is public and available at <a href="https://sponsor.ajay.app/database">https://sponsor.ajay.app/database</a>. The source code is freely available. So, even if something happens to me, your submissions are not lost.
+      __MSG_helpPageCopyOfDatabase1__ <a href="https://sponsor.ajay.app/database">https://sponsor.ajay.app/database</a>. __MSG_helpPageCopyOfDatabase2__
     </p>
 
-    <h1>News and how it is made</h1>
+    <h1>__MSG_helpPageNews__</h1>
 
     <p>
       See <a href="https://sponsor.ajay.app/news">https://sponsor.ajay.app/news</a>.
     </p>
 
-    <h1>Where can I get the source code?</h1>
+    <h1>__MSG_helpPageSourceCode__</h1>
 
     <h4 style="display: inline">Client:</h4>
     <!-- Github logo -->
@@ -107,7 +112,7 @@
     <!-- Github logo -->
     <a href="https://github.com/ajayyy/SponsorBlockServer"><svg aria-hidden="true" version="1.1" viewBox="0 0 16 16" height="58px" style="padding-left: 15px"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a>
 
-    <h1>Credits</h1>
+    <h1>__MSG_Credits__</h1>
 
     <p>
       Thanks to all <a href="https://github.com/ajayyy/SponsorBlock/graphs/contributors">SponsorBlock contributors</a>,

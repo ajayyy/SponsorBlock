@@ -151,8 +151,6 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
         const optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
 
-        console.log(getCategoryActionType(this.props.category))
-
         for (const optionName of optionNames) {
             elements.push(
                 <option key={optionName} value={optionName}>
