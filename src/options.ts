@@ -40,9 +40,10 @@ async function init() {
             continue;
         }
 
+        const option = optionsElements[i].getAttribute("sync-option");
+
         switch (optionsElements[i].getAttribute("option-type")) {
             case "toggle": {
-                const option = optionsElements[i].getAttribute("sync-option");
                 const optionResult = Config.config[option];
 
                 const checkbox = optionsElements[i].querySelector("input");
@@ -95,16 +96,15 @@ async function init() {
                 break;
             }
             case "text-change": {
-                const textChangeOption = optionsElements[i].getAttribute("sync-option");
                 const textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
                 
                 const textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
 
-                textChangeInput.value = Config.config[textChangeOption];
+                textChangeInput.value = Config.config[option];
 
                 textChangeSetButton.addEventListener("click", async () => {
                     // See if anything extra must be done
-                    switch (textChangeOption) {
+                    switch (option) {
                         case "serverAddress": {
                             const result = validateServerAddress(textChangeInput.value);
 
@@ -130,7 +130,7 @@ async function init() {
                         }
                     }
 
-                    Config.config[textChangeOption] = textChangeInput.value;
+                    Config.config[option] = textChangeInput.value;
                 });
 
                 // Reset to the default if needed
@@ -138,9 +138,9 @@ async function init() {
                 textChangeResetButton.addEventListener("click", () => {
                     if (!confirm(chrome.i18n.getMessage("areYouSureReset"))) return;
 
-                    Config.config[textChangeOption] = Config.defaults[textChangeOption];
+                    Config.config[option] = Config.defaults[option];
 
-                    textChangeInput.value = Config.config[textChangeOption];
+                    textChangeInput.value = Config.config[option];
                 });
 
                 break;
@@ -175,30 +175,42 @@ async function init() {
 
                 break;
             }
-            case "display":{
+            case "display": {
                 updateDisplayElement(<HTMLElement> optionsElements[i])
                 break;
             }
             case "number-change": {
-                const numberChangeOption = optionsElements[i].getAttribute("sync-option");
-                const configValue = Config.config[numberChangeOption];
+                const configValue = Config.config[option];
                 const numberInput = optionsElements[i].querySelector("input");
 
                 if (isNaN(configValue) || configValue < 0) {
-                    numberInput.value = Config.defaults[numberChangeOption];
+                    numberInput.value = Config.defaults[option];
                 } else {
                     numberInput.value = configValue;
                 }
 
                 numberInput.addEventListener("input", () => {
-                    Config.config[numberChangeOption] = numberInput.value;
+                    Config.config[option] = numberInput.value;
                 });
 
                 break;
             }
+            case "selector": {
+                const configValue = Config.config[option];
+                const selectorElement = optionsElements[i].querySelector(".selector-element") as HTMLSelectElement;
+                selectorElement.value = configValue;
+
+                selectorElement.addEventListener("change", () => {
+                    let value: string | number = selectorElement.value;
+                    if (!isNaN(Number(value))) value = Number(value);
+
+                    Config.config[option] = value;
+                });
+                break;
+            }
             case "react-CategoryChooserComponent":
                 new CategoryChooser(optionsElements[i]);
-            break;
+                break;
         }
     }
 

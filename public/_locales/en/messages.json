@@ -224,6 +224,24 @@
     "showNotice": {
         "message": "Show Notice Again"
     },
+    "showSkipNotice": {
+        "message": "Show Notice After A Segment Is Skipped"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Full Size Skip Notices"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Small Skip Notices for Auto Skip"
+    },
+    "noticeVisibilityMode2": {
+        "message": "All Small Skip Notices"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Faded Skip Notices for Auto Skip"
+    },
+    "noticeVisibilityMode4": {
+        "message": "All Faded Skip Notices"
+    },
     "longDescription": {
         "message": "SponsorBlock lets you skip over sponsors, intros, outros, subscription reminders, and other annoying parts of YouTube videos. SponsorBlock is a crowdsourced browser extension that let's anyone submit the start and end time's of sponsored segments and other segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment. You can also skip over non music sections of music videos.",
         "description": "Full description of the extension on the store pages."
@@ -355,9 +373,6 @@
     },
     "createdBy": {
         "message": "Created By"
-    },
-    "showSkipNotice": {
-        "message": "Show Notice After A Segment Is Skipped"
     },
     "keybindCurrentlySet": {
         "message": ". It is currently set to:"
