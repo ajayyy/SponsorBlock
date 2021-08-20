@@ -131,6 +131,9 @@
     "Options": {
         "message": "Opcije"
     },
+    "showSkipNotice": {
+        "message": "Pokaži obavijest nakon preskakanja isječka"
+    },
     "website": {
         "message": "Web-stranica",
         "description": "Used on Firefox Store Page"
@@ -187,9 +190,6 @@
     },
     "createdBy": {
         "message": "Izradio"
-    },
-    "showSkipNotice": {
-        "message": "Pokaži obavijest nakon preskakanja isječka"
     },
     "keybindCurrentlySet": {
         "message": ". Trenutno je postavljeno na:"
