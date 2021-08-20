@@ -696,6 +696,10 @@
     "help": {
         "message": "Pomocník"
     },
+    "GotIt": {
+        "message": "Rozumiem",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Odmietnuť všetky budúce experimenty",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -709,5 +713,74 @@
     "voteRejectedWarning": {
         "message": "Hlasovanie bolo zamietnuté kvôli varovaniu. Kliknite pre otvorenie chatu, aby ste ho vyriešili, alebo sa vráťte až budete mať čas.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Prispieť"
+    },
+    "hideDonationLink": {
+        "message": "Skryť možnosti prispenia"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Ďakujeme za inštaláciu SponsorBlock-u."
+    },
+    "helpPageReviewOptions": {
+        "message": "Skontrolujte prosím možnosti nižšie"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Veľa funkcií je vo východiskovom stave vypnutých. Ak chcete preskakovať úvody, závery, používať Invidious apod., zapnite ich nižšie. Taktiež môžete zobraziť alebo skryť niektoré ovládacie prvky."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Ako funguje preskakovanie"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Video segmenty budú automaticky preskočené, ak sa nájdu v databáze. Zobraziť si ich môžete po kliknutí na ikonu rozšírenia vo vyskakovacom okne."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Vždy keď preskočíte segment, tak dostanete oznam. Ak sa vám nepozdáva načasovanie, môžete o tom zahlasovať palcom dole! Zahlasovať tiež môžete vo vyskakovacom okne."
+    },
+    "Submitting": {
+        "message": "Odosielam"
+    },
+    "helpPageSubmitting1": {
+        "message": "Odosielanie môžete vykonať z vyskakovacieho okna stlačením \"Začiatok segmentu\" alebo priamo tlačidlami v prehrávači."
+    },
+    "helpPageSubmitting2": {
+        "message": "Stlačenie tlačidla Prehrať označí začiatok segmentu a stlačenie tlačidla Stop označí koniec. Takto viete označiť aj viac segmentov pred odoslaním. Stlačením tlačidla \"Nahrať\" segmenty odošlete. Stlačením tlačidla \"Kôš\" segmenty zmažete."
+    },
+    "Editing": {
+        "message": "Úpravy"
+    },
+    "helpPageEditing1": {
+        "message": "Ak ste sa pomýlili, môžete segment upraviť alebo zmazať po stlačení šípky hore."
+    },
+    "helpPageTooSlow": {
+        "message": "Príliš pomalé"
+    },
+    "helpPageTooSlow1": {
+        "message": "Môžete využiť aj klávesové skratky. Bodkočiarka označí začiatok alebo koniec segmentu a apostrof ho odošle."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Viem získať kópiu databázy? Čo bude ak zmizneš?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Databáza je verejná a dostupná na"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Zdrojový kód je voľne dostupný. Takže aj keby sa mi niečo stalo, vaše príspevky sa nestratia."
+    },
+    "helpPageNews": {
+        "message": "Novinky a ako to funguje"
+    },
+    "helpPageSourceCode": {
+        "message": "Kde môžem získať zdrojový kód?"
+    },
+    "Credits": {
+        "message": "Autori"
+    },
+    "highlightNewFeature": {
+        "message": "Novinka! Pomocou novej kategórie \"Hlavný obsah videa\" môžete jedným klikom preskočiť \"k veci\""
+    },
+    "LearnMore": {
+        "message": "Zistiť viac"
     }
 }
