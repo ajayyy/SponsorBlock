@@ -215,6 +215,9 @@
     "showNotice": {
         "message": "重新显示通知"
     },
+    "showSkipNotice": {
+        "message": "在跳过片段后显示通知"
+    },
     "longDescription": {
         "message": "SponsorBlock 可帮您跳过 YouTube 视频中的赞助商广告、开场、结尾、订阅提醒和其他烦人片段。SponsorBlock 是一个众包的浏览器扩展，可以让任何人提交 YouTube 视频的赞助商广告和其他片段的开始和结束时间。若有一人提交了信息，其他所有使用此扩展的人都能直接跳过赞助商广告片段。您也可以跳过音乐视频中的非音乐部分。",
         "description": "Full description of the extension on the store pages."
@@ -331,9 +334,6 @@
     },
     "createdBy": {
         "message": "创建者"
-    },
-    "showSkipNotice": {
-        "message": "在跳过片段后显示通知"
     },
     "keybindCurrentlySet": {
         "message": "。目前被设定为："
@@ -602,5 +602,8 @@
     },
     "categoryUpdate2": {
         "message": "打开选项，跳过开头，结尾，商业等。"
+    },
+    "help": {
+        "message": "帮助"
     }
 }
