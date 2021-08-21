@@ -227,6 +227,21 @@
     "showSkipNotice": {
         "message": "Visa ett meddelande efter att ett segment har hoppats över"
     },
+    "noticeVisibilityMode0": {
+        "message": "Hoppa över-meddelanden i fullstorlek"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Små meddelanden för automatisk hoppa över"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Alla hoppa över-meddelanden är små"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Meddelanden som tonar bort för automatisk hoppa över"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Alla hoppa över-meddelanden tonas bort"
+    },
     "longDescription": {
         "message": "SponsorBlock låter dig hoppa över sponsormeddelanden, introduktioner, eftertexter, prenumerationspåminnelser och andra irriterande delar av YouTube-videor. SponsorBlock är ett crowdsourced webbläsartillägg som låter vem som helst att skicka in start- och sluttid på sponsorsegment och andra segment av YouTube-videor. När en person skickar in denna information kommer alla andra som har detta tillägg installerat att hoppa över det sponsrade segmentet. Du kan även hoppa över icke-musikavsnitt i musikvideor.",
         "description": "Full description of the extension on the store pages."
@@ -669,7 +684,7 @@
         "message": "Överväg att aktivera \"Tvinga kontroll av kanalen innan hoppa över\""
     },
     "downvoteDescription": {
-        "message": "Fel timing"
+        "message": "Fel/Fel tidsintervall"
     },
     "incorrectCategory": {
         "message": "Fel kategori"
@@ -696,6 +711,10 @@
     "help": {
         "message": "Hjälp"
     },
+    "GotIt": {
+        "message": "Jag förstår",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Hoppa av alla framtida experiment",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -709,5 +728,74 @@
     "voteRejectedWarning": {
         "message": "Rösten avvisades på grund av en varning. Klicka för att öppna ett chattfönster för att lösa problemet eller kom tillbaka senare när du har tid.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Donera"
+    },
+    "hideDonationLink": {
+        "message": "Dölj donationslänk"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Tack för att du installerade SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Granska alternativen nedan"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Många funktioner är inaktiverade som standard. Om du vill hoppa över intros, outros, använda Invidious, etc, aktivera dem nedan. Du kan också dölja/visa UI-element."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Hur hoppa över fungerar"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Videosegment hoppas över automatiskt om de finns i databasen. Du kan öppna popup-fönstret genom att klicka på tilläggsikonen för att få en förhandsvisning av vad de är."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "När du hoppar över ett segment får du ett meddelande. Om tidpunkten verkar felaktig rösta då ner genom att klicka på nerröstning! Du kan också rösta i popup-fönstret."
+    },
+    "Submitting": {
+        "message": "Skickar in"
+    },
+    "helpPageSubmitting1": {
+        "message": "Skicka in kan antingen göras i popup-fönstret genom att trycka på knappen \"Segmentet startar nu\" eller i videospelaren med knapparna på spelaren."
+    },
+    "helpPageSubmitting2": {
+        "message": "Genom att klicka på uppspelningsknappen anges början på ett segment och genom att klicka på stopp-ikonen anges slutet. Du kan förbereda flera sponsorer innan du trycker på skicka. Klicka på uppladdningsknappen för att skicka in. Klicka på papperskorgen för att ta bort."
+    },
+    "Editing": {
+        "message": "Redigerar"
+    },
+    "helpPageEditing1": {
+        "message": "Om du gör fel kan du redigera eller ta bort dina segment efter att du klickat på uppåtpilen."
+    },
+    "helpPageTooSlow": {
+        "message": "Detta är för långsamt"
+    },
+    "helpPageTooSlow1": {
+        "message": "Det finns snabbtangenter om du vill använda dem. Tryck på semikolontangenten för att ange start/slut på ett sponsorsegment och klicka på apostrofen för att skicka in. Dessa kan ändras i inställningarna. Om du inte använder QWERTY, bör du förmodligen ändra tangentbindningen."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Kan jag få en kopia av databasen? Vad händer om du försvinner?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Databasen är offentlig och finns på"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Källkoden är fritt tillgänglig. Så, även om något händer mig, är dina bidrag inte förlorade."
+    },
+    "helpPageNews": {
+        "message": "Nyheter och hur är det gjort"
+    },
+    "helpPageSourceCode": {
+        "message": "Var kan jag få tag på källkoden?"
+    },
+    "Credits": {
+        "message": "Medverkande"
+    },
+    "highlightNewFeature": {
+        "message": "Nytt! Ta dig till stället i videon med ett klick med den nya markeringskategorin"
+    },
+    "LearnMore": {
+        "message": "Läs mer"
     }
 }
