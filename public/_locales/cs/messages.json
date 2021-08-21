@@ -770,5 +770,32 @@
     },
     "helpPageTooSlow": {
         "message": "Je to příliš pomalé"
+    },
+    "helpPageTooSlow1": {
+        "message": "Pokud je chcete použít, jsou zde zkratky. Stiskněte pomlčku pro označení začátku/konce sponzorského segmentu a klikněte na apostrof pro odeslání. Tyto zkratky lze změnit v možnostech. Pokud nepoužíváte QWERTY, měli byste si je nejspíše změnit."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Mohu získat kopii databáze? Co se stane, pokud zmizíte?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Databáze je veřejná a dostupná na"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Zdrojový kód je volně dostupný. Takže i když se mi něco stane, vaše příspěvky nebudou ztraceny."
+    },
+    "helpPageNews": {
+        "message": "Novinky a jak to funguje"
+    },
+    "helpPageSourceCode": {
+        "message": "Kde získám zdrojový kód?"
+    },
+    "Credits": {
+        "message": "Poděkování"
+    },
+    "highlightNewFeature": {
+        "message": "Novinka! Dostaňte se k pointě videa jedním kliknutím s novou kategorií zvýraznění"
+    },
+    "LearnMore": {
+        "message": "Zjistit více"
     }
 }
