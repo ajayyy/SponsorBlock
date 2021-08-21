@@ -711,6 +711,10 @@
     "help": {
         "message": "Ajuda"
     },
+    "GotIt": {
+        "message": "Entendi",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Optar por sair de todos os experimentos futuros",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -724,5 +728,74 @@
     "voteRejectedWarning": {
         "message": "Voto rejeitado devido a um aviso. Clique para abrir um chat para resolvê-lo, ou volte mais tarde quando tiver tempo.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Doar"
+    },
+    "hideDonationLink": {
+        "message": "Ocultar o Link de Doação"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Obrigado por instalar o SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Por favor revise as opções abaixo"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Muitoa recursos são desativados por padrão. Se você deseja pular introduções, encerramentos, usar o Invidious, etc, ative as opções abaixo. Você também pode ocultar/mostrar elementos da interface."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Como a função pular funciona"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Segmentos do vídeo serão pulados automaticamente se forem encontrados na base de dados. Você pode abrir a pop-up clicando no ícone da extensão para ter uma prévia de quais são."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Sempre que você pular um segmento, você receberá um aviso. Se o tempo estiver errado vote contra clicando no voto negativo! Você também pode votar na pop-up."
+    },
+    "Submitting": {
+        "message": "Enviando"
+    },
+    "helpPageSubmitting1": {
+        "message": "O envio pode ser feito no pop-up apertando o botão \"Segmento começa Agora\" ou no reprodutor de vídeo com os botões no reprodutor."
+    },
+    "helpPageSubmitting2": {
+        "message": "Clicar no botão inicio indica o começo de um segmento e clicar no ícone parar indica o fim. Você pode preparar vários patrocinadores antes de clicar em enviar. Clicar no botão upload irá enviar. Clicar no lixo irá excluir."
+    },
+    "Editing": {
+        "message": "Editando"
+    },
+    "helpPageEditing1": {
+        "message": "Se você errar, você pode editar ou deletar seus segmentos clicando na seta para cima."
+    },
+    "helpPageTooSlow": {
+        "message": "Isto está muito devagar"
+    },
+    "helpPageTooSlow1": {
+        "message": "Há teclas de atalho se você quiser usá-las. Pressione a tecla ponto e vírgula para indicar o início/fim de um segmento de patrocinador e clique no apóstrofo para enviar. Estas podem ser alteradas nas opções. Se você não usa QWERTY, você provavelmente deve alterar as teclas vinculadas."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Posso baixar uma cópia do banco de dados? O que acontece se vocês desaparecerem?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "O banco de dados é público e está disponível em"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "O código-fonte está disponível gratuitamente. Então, mesmo que algo aconteça comigo, seus envios não estarão perdidos."
+    },
+    "helpPageNews": {
+        "message": "Notícias e como tudo é feito"
+    },
+    "helpPageSourceCode": {
+        "message": "Onde posso obter o código-fonte?"
+    },
+    "Credits": {
+        "message": "Créditos"
+    },
+    "highlightNewFeature": {
+        "message": "Novo! Vá direto ao ponto do vídeo com um clique com a nova categoria de Destaque"
+    },
+    "LearnMore": {
+        "message": "Saiba mais"
     }
 }
