@@ -74,10 +74,10 @@
         "message": "No se han encontrado segmentos"
     },
     "sponsorStart": {
-        "message": "El segmento comienza ahora"
+        "message": "El Segmento Inicia Ahora"
     },
     "sponsorEnd": {
-        "message": "El segmento termina ahora"
+        "message": "El Segmento Termina Ahora"
     },
     "sponsorCancel": {
         "message": "Cancelar Creación de Segmento"
@@ -563,10 +563,10 @@
         "message": "Sólo para el uso en vídeos musicales. Esto sólo debe utilizarse para secciones de vídeos musicales que no están ya cubiertos por otra categoría."
     },
     "category_music_offtopic_short": {
-        "message": "No musical"
+        "message": "Sin Música"
     },
     "category_poi_highlight": {
-        "message": "Destacar"
+        "message": "Destacado"
     },
     "category_poi_highlight_description": {
         "message": "La parte del video que la mayoría de gente está buscando. Similar a los comentarios que dicen \"El video comienza en x\"."
@@ -599,7 +599,7 @@
         "message": "Mostrar en la barra de búsqueda"
     },
     "autoSkipOnMusicVideos": {
-        "message": "Omitir automáticamente todos los segmentos cuando hay un segmento no musical"
+        "message": "Omitir automáticamente todos los segmentos cuando hay un segmento sin música"
     },
     "colorFormatIncorrect": {
         "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
@@ -678,7 +678,7 @@
         "message": "Comprobación forzada del canal antes de saltarse"
     },
     "whatForceChannelCheck": {
-        "message": "Por defecto, se saltará los segmentos inmediatamente antes de saber cuál es el canal. Por defecto, algunos segmentos al principio del vídeo pueden ser salteados en los canales de la lista blanca. Al activar esta opción se evitará esto, pero haciendo que todos los saltos tengan un ligero retraso ya que obtener el ID del canal puede llevar algún tiempo. Este retraso podría ser imperceptible si tienes una Internet rápida."
+        "message": "Por defecto, se saltará los segmentos inmediatamente antes de saber cuál es el canal. Por defecto, algunos segmentos al principio del vídeo pueden ser salteados en los canales de la lista blanca. Al activar esta opción se evitará esto, pero haciendo que todos los saltos tengan un ligero retraso, ya que obtener el ID del canal puede llevar algún tiempo. Este retraso podría ser imperceptible si tienes una Internet rápida."
     },
     "forceChannelCheckPopup": {
         "message": "Considere la posibilidad de activar \"Comprobación del canal de fuerza antes de saltar\""
@@ -690,7 +690,7 @@
         "message": "Categoría Incorrecta"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Este video está clasificado como música. ¿Estás seguro de que esto tiene un patrocinador? Si esto es realmente un \"Segmento sin música\", abre las opciones de extensión y habilita esta categoría. Entonces, puedes enviar este segmento como \"No-Música\" en lugar de patrocinador. Por favor, lee las directrices si estás confundido."
+        "message": "Este video está clasificado como música. ¿Estás seguro de que esto tiene un sponsor? Si esto es realmente un \"Segmento Sin Música\", abre las opciones de la extensión y activa esta categoría. Entonces, puedes enviar este segmento como \"Sin Música\" en lugar de sponsor. Por favor, lee las instrucciones si estás confundido/a."
     },
     "multipleSegments": {
         "message": "Múltiples segmentos"
@@ -711,6 +711,10 @@
     "help": {
         "message": "Ayuda"
     },
+    "GotIt": {
+        "message": "Entendido",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "No participar en futuros experimentos",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -724,5 +728,74 @@
     "voteRejectedWarning": {
         "message": "Voto rechazado debido a una advertencia. Haga clic aquí para abrir un chat para resolverlo, o vuelva más tarde cuando tenga tiempo.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Donar"
+    },
+    "hideDonationLink": {
+        "message": "Ocular Enlace de Donación"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Gracias por instalar SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Por favor, revise las siguientes opciones"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Muchas funciones están desactivadas por defecto. Si quiere saltar intros, outros, usar Invidious, etc., actívelos a continuación. También puede ocular/mostrar los elementos de la interfaz."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Como funciona el salteo"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Los segmentos de video serán omitidos automáticamente si son encontrados en la base de datos. Puede abrir la ventana emergente haciendo clic en el ícono de la extensión para obtener una vista previa de los que son."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Cada vez que salte un segmento, recibirá un aviso. ¡Si el tiempo parece equivocado, dele un voto negativo! También puede votar en la ventana emergente."
+    },
+    "Submitting": {
+        "message": "Envío"
+    },
+    "helpPageSubmitting1": {
+        "message": "El envío puede realizarse desde la ventana emergente pulsando el botón \"El Segmento Inicia Ahora\" o en el reproductor de video con los botones de este."
+    },
+    "helpPageSubmitting2": {
+        "message": "Hacer clic en el botón de reproducir indica el inicio de un segmento y hacer clic en el icono de detener indica el final de este. Puede preparar múltiples sponsors antes de enviarlos. Hacer clic en el botón de subida lo(s) enviará. Hacer clic en la papelera lo(s) borrará."
+    },
+    "Editing": {
+        "message": "Edición"
+    },
+    "helpPageEditing1": {
+        "message": "Si se equivoca, puede editar o eliminar sus segmentos después de hacer clic en el botón de flecha hacia arriba."
+    },
+    "helpPageTooSlow": {
+        "message": "Esto es muy lento"
+    },
+    "helpPageTooSlow1": {
+        "message": "Hay teclas de acceso directo, si quiere usarlas. Presione la tecla de punto y coma para indicar el inicio/final de un segmento de sponsor y haga clic en el apóstrofe para enviar. Estas se pueden cambiar en las opciones. Si no usa un teclado QWERTY, probablemente debería cambiar la asignación de teclas."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "¿Puedo obtener una copia de la base de datos? ¿Qué sucede si tú desapareces?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "La base de datos es pública y disponible en"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "El código fuente está disponible libremente. Así que, aun si algo me sucede, sus envíos no se perderán."
+    },
+    "helpPageNews": {
+        "message": "Noticias y cómo se hace"
+    },
+    "helpPageSourceCode": {
+        "message": "¿Dónde puedo conseguir el código fuente?"
+    },
+    "Credits": {
+        "message": "Créditos"
+    },
+    "highlightNewFeature": {
+        "message": "¡Nuevo! Llega al punto del video con un solo clic con la nueva categoría \"destacado\""
+    },
+    "LearnMore": {
+        "message": "Aprenda Más"
     }
 }
