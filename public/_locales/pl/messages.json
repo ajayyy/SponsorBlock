@@ -287,6 +287,10 @@
     "skip_category": {
         "message": "Pominąć {0}?"
     },
+    "skip_to_category": {
+        "message": "Przejść do {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "disableAutoSkip": {
         "message": "Wyłącz autopomijanie"
     },
@@ -538,6 +542,9 @@
     "category_music_offtopic_short": {
         "message": "Bez muzyki"
     },
+    "category_poi_highlight": {
+        "message": "Podświetlone"
+    },
     "category_livestream_messages": {
         "message": "Transmisja live: Dotacja/Czytanie wiadomości"
     },
@@ -682,5 +689,14 @@
     "voteRejectedWarning": {
         "message": "Głosowanie odrzucone z powodu ostrzeżenia. Kliknij, aby otworzyć czat w celu rozwiązania problemu lub wróć później, gdy będziesz miał czas.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "helpPageSourceCode": {
+        "message": "Gdzie mogę otrzymać kod źródłowy?"
+    },
+    "Credits": {
+        "message": "Autorzy"
+    },
+    "LearnMore": {
+        "message": "Dowiedz się więcej"
     }
 }
