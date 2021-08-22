@@ -444,8 +444,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     }
 
     // Don't skip if this category should not be skipped
-    if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ShowOverlay 
-        && skipInfo.array !== sponsorTimesSubmitting) return;
+    if (!shouldSkip(currentSkip) && skipInfo.array !== sponsorTimesSubmitting) return;
 
     const skippingFunction = () => {
         let forcedSkipTime: number = null;
@@ -1038,7 +1037,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
         if ((minimum === undefined
                 || ((includeNonIntersectingSegments && sponsorTimes[i].segment[0] >= minimum) 
                     || (includeIntersectingSegments && sponsorTimes[i].segment[0] < minimum && sponsorTimes[i].segment[1] > minimum))) 
-                && (!onlySkippableSponsors || utils.getCategorySelection(sponsorTimes[i].category).option !== CategorySkipOption.ShowOverlay)
+                && (!onlySkippableSponsors || shouldSkip(sponsorTimes[i]))
                 && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)
                 && getCategoryActionType(sponsorTimes[i].category) === CategoryActionType.Skippable) {
 
@@ -1190,6 +1189,11 @@ function createButton(baseID: string, title: string, callback: () => void, image
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
     return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+            (Config.config.autoSkipOnMusicVideos && sponsorTimes.some((s) => s.category === "music_offtopic"));
+}
+
+function shouldSkip(segment: SponsorTime): boolean {
+    return utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes.some((s) => s.category === "music_offtopic"));
 }
 
