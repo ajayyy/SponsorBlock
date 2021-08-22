@@ -1189,7 +1189,8 @@ function createButton(baseID: string, title: string, callback: () => void, image
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
     return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
-            (Config.config.autoSkipOnMusicVideos && sponsorTimes.some((s) => s.category === "music_offtopic"));
+            (Config.config.autoSkipOnMusicVideos && sponsorTimes.some((s) => s.category === "music_offtopic")
+                && getCategoryActionType(segment.category) === CategoryActionType.Skippable);
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
