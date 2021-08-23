@@ -51,7 +51,7 @@ export class SkipButtonControlBar {
         const leftControlsContainer = document.querySelector(".ytp-left-controls");
         this.chapterText = document.querySelector(".ytp-chapter-container");
     
-        if (!leftControlsContainer.contains(this.container)) {
+        if (leftControlsContainer && !leftControlsContainer.contains(this.container)) {
             leftControlsContainer.insertBefore(this.container, this.chapterText);
         }
     }
