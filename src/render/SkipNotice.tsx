@@ -54,7 +54,7 @@ class SkipNotice {
     }
 
     setShowKeybindHint(value: boolean): void {
-        this.skipNoticeRef.current.setState({
+        this.skipNoticeRef?.current?.setState({
             showKeybindHint: value
         });
     }
@@ -69,7 +69,7 @@ class SkipNotice {
     }
 
     toggleSkip(): void {
-        this.skipNoticeRef.current.prepAction(SkipNoticeAction.Unskip);
+        this.skipNoticeRef?.current?.prepAction(SkipNoticeAction.Unskip);
     }
 }
 
