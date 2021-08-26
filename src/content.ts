@@ -578,7 +578,7 @@ function setupVideoListeners() {
                 const currentPoiSegment = sponsorTimes.find((segment) => 
                         getCategoryActionType(segment.category) === CategoryActionType.POI &&
                         video.currentTime - segment.segment[0] > 0 &&
-                        video.currentTime - segment.segment[0] < video.duration * 0.006); // Approximate size on preview bar
+                        video.currentTime - segment.segment[0] < previewBar.getMinimumSize(true));
                 if (currentPoiSegment && !skipNotices.some((notice) => notice.segments.some((s) => s.UUID === currentPoiSegment.UUID))) {
                     skipToTime({
                         v: video, 

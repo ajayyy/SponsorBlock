@@ -102,10 +102,12 @@ class PreviewBar {
             let segment: PreviewBarSegment | null = null;
             let currentSegmentLength = Infinity;
 
-            for (const seg of this.segments) {
+            for (const seg of this.segments) {//
                 const segmentLength = seg.segment[1] - seg.segment[0];
+                const minSize = this.getMinimumSize(seg.showLarger);
+
                 const startTime = segmentLength !== 0 ? seg.segment[0] : Math.floor(seg.segment[0]);
-                const endTime = segmentLength !== 0 ? seg.segment[1] : Math.ceil(seg.segment[1]);
+                const endTime = segmentLength > minSize ? seg.segment[1] : Math.ceil(seg.segment[0] + minSize);
                 if (startTime <= timeInSeconds && endTime >= timeInSeconds) {
                     if (segmentLength < currentSegmentLength) {
                         currentSegmentLength = segmentLength;
@@ -217,6 +219,13 @@ class PreviewBar {
 
     timeToPercentage(time: number): string {
         return Math.min(100, time / this.videoDuration * 100) + '%';
+    }
+
+    /*
+    * Approximate size on preview bar for smallest element (due to &nbsp)
+    */
+    getMinimumSize(showLarger = false): number {
+        return this.videoDuration * (showLarger ? 0.006 : 0.003);
     }
 }
 
