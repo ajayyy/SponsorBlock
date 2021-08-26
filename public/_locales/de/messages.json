@@ -577,6 +577,9 @@
     "autoSkip_POI": {
         "message": "Automatisch zum Start springen"
     },
+    "manualSkip_POI": {
+        "message": "Beim Laden des Videos fragen"
+    },
     "showOverlay_POI": {
         "message": "In der Video-Zeitleiste anzeigen"
     },
@@ -693,6 +696,10 @@
     "help": {
         "message": "Hilfe"
     },
+    "GotIt": {
+        "message": "Verstanden",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Abmeldung aller zukünftigen Experimente",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -706,5 +713,17 @@
     "voteRejectedWarning": {
         "message": "Abstimmung wegen einer Warnung abgelehnt. Um über sie zu reden, klicke hier, oder schreibe uns später.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Spenden"
+    },
+    "hideDonationLink": {
+        "message": "Verstecke Spendenlink"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Danke fürs installieren von SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Bitte überprüfe die unten stehenden Optionen"
     }
 }
