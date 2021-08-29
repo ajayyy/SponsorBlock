@@ -597,5 +597,11 @@
     },
     "help": {
         "message": "Segítség"
+    },
+    "Credits": {
+        "message": "Készítők"
+    },
+    "LearnMore": {
+        "message": "Tudj meg többet"
     }
 }
