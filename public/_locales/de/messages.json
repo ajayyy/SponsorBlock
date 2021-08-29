@@ -701,7 +701,7 @@
         "message": "Dauerhaft verbergen"
     },
     "warningChatInfo": {
-        "message": "Du wurdest ermahnt und kannst zur Zeit keine Segmente einreichen. Uns ist nämlich aufgefallen, dass du ein paar gängige Fehler machst, die nicht bösartig sind. Um die Regeln klarzustellen laden wir dich zu einem kurzem Gespräch auf discord.gg/SponsorBlock oder matrix.to/#/+sponsor:ajay.app ein"
+        "message": "Du wurdest ermahnt und kannst zur Zeit keine Segmente einreichen. Uns ist nämlich aufgefallen, dass du ein paar gängige Fehler machst, die nicht bösartig sind. Um die Regeln klarzustellen laden wir dich zu einem kurzem Gespräch auf discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app ein"
     },
     "voteRejectedWarning": {
         "message": "Abstimmung wegen einer Warnung abgelehnt. Um über sie zu reden, klicke hier, oder schreibe uns später.",
