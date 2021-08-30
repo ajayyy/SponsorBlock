@@ -281,6 +281,18 @@
     "skip_category": {
         "message": "Lewati {0}?"
     },
+    "skip_to_category": {
+        "message": "Lompat ke {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} dilewati",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Melewati ke {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
     "disableAutoSkip": {
         "message": "Nonaktifkan Lewati Otomatis"
     },
@@ -343,6 +355,9 @@
     },
     "keybindCurrentlySet": {
         "message": ". Saat ini diatur pada:"
+    },
+    "supportOtherSites": {
+        "message": "Dukung Situs Youtube Pihak Ketiga"
     },
     "optionsInfo": {
         "message": "Aktifkan dukungan Invidious, nonaktifkan lewati otomatis, tombol sembunyi dan lainnya."
@@ -428,6 +443,9 @@
     "preview": {
         "message": "Pratinjau"
     },
+    "unsubmitted": {
+        "message": "Belum dikirim"
+    },
     "inspect": {
         "message": "Inspeksi"
     },
@@ -492,6 +510,12 @@
     "category_outro_description": {
         "message": "Kredit atau saat kartu akhir YouTube muncul. Tidak untuk kesimpulan dengan informasi."
     },
+    "category_preview": {
+        "message": "Pratinjau/Rekap"
+    },
+    "category_preview_description": {
+        "message": "Rekapan singkat dari episode sebelumnya, atau pratinjau tentang apa yang akan terjadi nanti di video. Dimaksudkan untuk klip bersama yang di edit, bukan ringkasan yang diucapkan."
+    },
     "category_music_offtopic": {
         "message": "Musik: Bagian Non-Musik"
     },
@@ -519,8 +543,21 @@
     "disable": {
         "message": "Nonaktif"
     },
+    "manualSkip_POI": {
+        "message": "Tanya saat video dimuat"
+    },
+    "showOverlay_POI": {
+        "message": "Tampilkan di Bilah Waktu"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "Lewati semua segmen secara otomatis ketika ada segmen non-music"
+    },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan benar. Harusnya terdiri dari 3 atau 6 digit kode heksa dengan tagar di awal."
+    },
+    "previewColor": {
+        "message": "Warna yang Belum Dikirim",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Warna Bilah Waktu"
@@ -622,7 +659,29 @@
     "categoryUpdate2": {
         "message": "Buka opsi untuk melewati intro, outro, merch, dll."
     },
+    "help": {
+        "message": "Bantuan"
+    },
+    "GotIt": {
+        "message": "Mengerti",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "hideForever": {
         "message": "Sembunyikan selamanya"
+    },
+    "Donate": {
+        "message": "Donasi"
+    },
+    "hideDonationLink": {
+        "message": "Sembunyikan tautan donasi"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Terima kasih telah menginstall SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Haram ditinjau opsi di bawah ini"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Cara kerja melewati segmen"
     }
 }
