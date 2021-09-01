@@ -265,7 +265,7 @@ background-color:#ec1c1c;
   align-items: center;
 }
 
-.sbSlimButton, #additionalButtons>button, button#setUsernameButton, #submitUsername {
+.sbSlimButton, #additionalButtons>button, button#setUsernameButton, #submitUsername, #copyUserID {
   background: none;
   border: none;
   color: white;
@@ -339,6 +339,14 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
 
 .sbSlimButton, #whitelistButton>label, #additionalButtons>button, div#setUsernameContainer>button {
   cursor: pointer;
+}
+
+#copyUserID {
+  width: 100%;
+}
+
+#setUsernameContainer {
+  display: flex;
 }
 
 #usernameElement > div, #sponsorTimesContributionsContainer > div {

@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Set Username"
     },
+    "copyPublicID": {
+        "message": "Copy Public UserID"
+    },
     "discordAdvert": {
         "message": "Come join the official discord server to give suggestions and feedback!"
     },
