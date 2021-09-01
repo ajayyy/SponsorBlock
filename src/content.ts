@@ -1,5 +1,5 @@
 import Config from "./config";
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable, ActionType } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable, ActionType, ScheduledTime } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -45,6 +45,7 @@ let sponsorSkipped: boolean[] = [];
 
 //the video
 let video: HTMLVideoElement;
+let videoMuted = false; // Has it been attempted to be muted
 let videoMutationObserver: MutationObserver = null;
 // List of videos that have had event listeners added to them
 const videosWithEventListeners: HTMLVideoElement[] = [];
@@ -396,7 +397,6 @@ function cancelSponsorSchedule(): void {
 }
 
 /**
- * 
  * @param currentTime Optional if you don't want to use the actual current time
  */
 function startSponsorSchedule(includeIntersectingSegments = false, currentTime?: number, includeNonIntersectingSegments = true): void {
@@ -412,6 +412,12 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     }
 
     if (!video || video.paused) return;
+    if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
+
+    if (videoMuted && !inMuteSegment(currentTime)) {
+        video.muted = false;
+        videoMuted = false;
+    }
 
     if (Config.config.disableSkipping || channelWhitelisted || (channelIDInfo.status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
         return;
@@ -419,14 +425,12 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
     if (incorrectVideoCheck()) return;
 
-    if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
-
     const skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
 
     if (skipInfo.index === -1) return;
 
     const currentSkip = skipInfo.array[skipInfo.index];
-    const skipTime: number[] = [currentSkip.segment[0], skipInfo.array[skipInfo.endIndex].segment[1]];
+    const skipTime: number[] = [currentSkip.scheduledTime, skipInfo.array[skipInfo.endIndex].segment[1]];
     const timeUntilSponsor = skipTime[0] - currentTime;
     const videoID = sponsorVideoID;
 
@@ -461,7 +465,8 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
                 openNotice: skipInfo.openNotice
             });
 
-            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip) {
+            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip 
+                    || currentSkip.actionType === ActionType.Mute) {
                 forcedSkipTime = skipTime[0] + 0.001;
             } else {
                 forcedSkipTime = skipTime[1];
@@ -480,12 +485,19 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     }
 }
 
+function inMuteSegment(currentTime: number): boolean {
+    const checkFunction = (segment) => segment.actionType === ActionType.Mute && segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
+    return sponsorTimes.some(checkFunction) || sponsorTimesSubmitting.some(checkFunction);
+}
+
 /**
  * This makes sure the videoID is still correct and if the sponsorTime is included
  */
 function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boolean {
     const currentVideoID = getYouTubeVideoID(document.URL);
-    if (currentVideoID !== (videoID || sponsorVideoID) || (sponsorTime && (!sponsorTimes || !sponsorTimes.includes(sponsorTime)) && !sponsorTimesSubmitting.includes(sponsorTime))) {
+    if (currentVideoID !== (videoID || sponsorVideoID) || (sponsorTime 
+            && (!sponsorTimes || !sponsorTimes.some((time) => time.segment === sponsorTime.segment)) 
+            && !sponsorTimesSubmitting.some((time) => time.segment === sponsorTime.segment))) {
         // Something has really gone wrong
         console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
         console.error("[SponsorBlock] VideoID recorded: " + sponsorVideoID + ". Actual VideoID: " + currentVideoID);
@@ -946,31 +958,33 @@ async function whitelistCheck() {
  * Returns info about the next upcoming sponsor skip
  */
 function getNextSkipIndex(currentTime: number, includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean): 
-        {array: SponsorTime[], index: number, endIndex: number, openNotice: boolean} {
+        {array: ScheduledTime[], index: number, endIndex: number, openNotice: boolean} {
 
-    const sponsorStartTimes = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments);
-    const sponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true, true);
+    const { includedTimes: submittedArray, startTimeIndexes: sponsorStartTimes } = 
+        getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments);
+    const { startTimeIndexes: sponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true, true);
 
     const minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
-    const endTimeIndex = getLatestEndTimeIndex(sponsorTimes, minSponsorTimeIndex);
+    const endTimeIndex = getLatestEndTimeIndex(submittedArray, minSponsorTimeIndex);
 
-    const unsubmittedSponsorStartTimes = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments);
-    const unsubmittedSponsorStartTimesAfterCurrentTime = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false, false);
+    const { includedTimes: unsubmittedArray, startTimeIndexes: unsubmittedSponsorStartTimes } = 
+        getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments);
+    const { startTimeIndexes: unsubmittedSponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false, false);
 
     const minUnsubmittedSponsorTimeIndex = unsubmittedSponsorStartTimes.indexOf(Math.min(...unsubmittedSponsorStartTimesAfterCurrentTime));
-    const previewEndTimeIndex = getLatestEndTimeIndex(sponsorTimesSubmitting, minUnsubmittedSponsorTimeIndex);
+    const previewEndTimeIndex = getLatestEndTimeIndex(unsubmittedArray, minUnsubmittedSponsorTimeIndex);
 
     if ((minUnsubmittedSponsorTimeIndex === -1 && minSponsorTimeIndex !== -1) || 
             sponsorStartTimes[minSponsorTimeIndex] < unsubmittedSponsorStartTimes[minUnsubmittedSponsorTimeIndex]) {
         return {
-            array: sponsorTimes.filter((segment) => getCategoryActionType(segment.category) === CategoryActionType.Skippable),
+            array: submittedArray,
             index: minSponsorTimeIndex,
             endIndex: endTimeIndex,
             openNotice: true
         };
     } else {
         return {
-            array: sponsorTimesSubmitting.filter((segment) => getCategoryActionType(segment.category) === CategoryActionType.Skippable),
+            array: unsubmittedArray,
             index: minUnsubmittedSponsorTimeIndex,
             endIndex: previewEndTimeIndex,
             openNotice: false
@@ -994,7 +1008,10 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
 function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideHiddenSponsors = true): number {
     // Only combine segments for AutoSkip
     if (index == -1 || 
-        !shouldAutoSkip(sponsorTimes[index])) return index;
+            !shouldAutoSkip(sponsorTimes[index])
+            || sponsorTimes[index].actionType !== ActionType.Skip) {
+        return index;
+    }
 
     // Default to the normal endTime
     let latestEndTimeIndex = index;
@@ -1005,7 +1022,8 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
 
         if (currentSegment[0] <= latestEndTime && currentSegment[1] > latestEndTime 
             && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)
-            && shouldAutoSkip(sponsorTimes[i])) {
+            && shouldAutoSkip(sponsorTimes[i])
+            && sponsorTimes[i].actionType === ActionType.Skip) {
                 // Overlapping segment
                 latestEndTimeIndex = i;
         }
@@ -1030,24 +1048,43 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
  *  the current time, but end after
  */
 function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean,
-    minimum?: number, onlySkippableSponsors = false, hideHiddenSponsors = false): number[] {
-    if (sponsorTimes === null) return [];
+    minimum?: number, onlySkippableSponsors = false, hideHiddenSponsors = false): {includedTimes: ScheduledTime[], startTimeIndexes: number[]} {
+    if (!sponsorTimes) return {includedTimes: [], startTimeIndexes: []};
 
-    const startTimes: number[] = [];
+    const includedTimes: ScheduledTime[] = [];
+    const startTimeIndexes: number[] = [];
 
-    for (let i = 0; i < sponsorTimes?.length; i++) {
+    const possibleTimes = sponsorTimes.flatMap((sponsorTime) => {
+        const results = [{
+            ...sponsorTime,
+            scheduledTime: sponsorTime.segment[0]
+        }]
+
+        if (sponsorTime.actionType === ActionType.Mute) {
+            // Schedule at the end time to know when to unmute
+            results.push({
+                ...sponsorTime,
+                scheduledTime: sponsorTime.segment[1]
+            })
+        }
+
+        return results;
+    })
+
+    for (let i = 0; i < possibleTimes.length; i++) {
         if ((minimum === undefined
-                || ((includeNonIntersectingSegments && sponsorTimes[i].segment[0] >= minimum) 
-                    || (includeIntersectingSegments && sponsorTimes[i].segment[0] < minimum && sponsorTimes[i].segment[1] > minimum))) 
-                && (!onlySkippableSponsors || shouldSkip(sponsorTimes[i]))
-                && (!hideHiddenSponsors || sponsorTimes[i].hidden === SponsorHideType.Visible)
-                && getCategoryActionType(sponsorTimes[i].category) === CategoryActionType.Skippable) {
+                || ((includeNonIntersectingSegments && possibleTimes[i].scheduledTime >= minimum)
+                    || (includeIntersectingSegments && possibleTimes[i].scheduledTime < minimum && possibleTimes[i].segment[1] > minimum))) 
+                && (!onlySkippableSponsors || shouldSkip(possibleTimes[i]))
+                && (!hideHiddenSponsors || possibleTimes[i].hidden === SponsorHideType.Visible)
+                && getCategoryActionType(possibleTimes[i].category) === CategoryActionType.Skippable) {
 
-            startTimes.push(sponsorTimes[i].segment[0]);
+            startTimeIndexes.push(possibleTimes[i].scheduledTime);
+            includedTimes.push(possibleTimes[i]);
         } 
     }
 
-    return startTimes;
+    return { includedTimes, startTimeIndexes };
 }
 
 /**
@@ -1093,13 +1130,27 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
 
     if ((autoSkip || sponsorTimesSubmitting.some((time) => time.segment === skippingSegments[0].segment)) 
             && v.currentTime !== skipTime[1]) {
-        // Fix for looped videos not working when skipping to the end #426
-        // for some reason you also can't skip to 1 second before the end
-        if (v.loop && v.duration > 1 && skipTime[1] >= v.duration - 1) {
-            v.currentTime = 0;
-        } else {
-            v.currentTime = skipTime[1];
+        switch(skippingSegments[0].actionType) {
+            case ActionType.Skip: {
+                // Fix for looped videos not working when skipping to the end #426
+                // for some reason you also can't skip to 1 second before the end
+                if (v.loop && v.duration > 1 && skipTime[1] >= v.duration - 1) {
+                    v.currentTime = 0;
+                } else {
+                    v.currentTime = skipTime[1];
+                }
+
+                break;
+            }
+            case ActionType.Mute: {
+                if (!v.muted) {
+                    v.muted = true;
+                    videoMuted = true;
+                }
+                break;
+            }
         }
+        
     }
 
     if (!autoSkip 

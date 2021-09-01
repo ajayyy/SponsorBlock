@@ -82,6 +82,10 @@ export interface SponsorTime {
     source?: SponsorSourceType;
 }
 
+export interface ScheduledTime extends SponsorTime {
+    scheduledTime: number;
+}
+
 export interface PreviewBarOption {
     color: string,
     opacity: string
