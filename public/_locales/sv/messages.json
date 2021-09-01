@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Ange användarnamn"
     },
+    "copyPublicID": {
+        "message": "Kopiera publikt Användar-ID"
+    },
     "discordAdvert": {
         "message": "Gå med i den officiella discordservern för att ge förslag och feedback!"
     },
