@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Benutzernamen festlegen"
     },
+    "copyPublicID": {
+        "message": "Öffentliche UserID kopieren"
+    },
     "discordAdvert": {
         "message": "Tritt dem offiziellen Discord-Server bei und teile Anregungen und Feedback!"
     },
