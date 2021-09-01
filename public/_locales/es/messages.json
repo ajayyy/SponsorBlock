@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Escoger Nombre De Usuario"
     },
+    "copyPublicID": {
+        "message": "Copiar el ID de usuario público"
+    },
     "discordAdvert": {
         "message": "¡Únete al servidor oficial de discord para darnos sugerencias y comentarios!"
     },
@@ -360,16 +363,16 @@
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
     },
     "changeUserID": {
-        "message": "Importar/Exportar tu UserID"
+        "message": "Importar/Exportar tu ID de usuario"
     },
     "whatChangeUserID": {
         "message": "Esto debería mantenerse privado. Es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, pueden imitarte."
     },
     "setUserID": {
-        "message": "Establecer la ID de usuario"
+        "message": "Establecer el ID de usuario"
     },
     "userIDChangeWarning": {
-        "message": "Advertencia: El cambio de la ID de usuario es irreversible. ¿Está seguro de que le desea hacerlo? Asegúrese de hacer una copia de respaldo de la anterior por si acaso."
+        "message": "Advertencia: El cambio del ID de usuario es irreversible. ¿Está seguro de que le desea hacerlo? Asegúrese de hacer una copia de respaldo de la anterior por si acaso."
     },
     "createdBy": {
         "message": "Creado Por"
