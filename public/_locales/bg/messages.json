@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Задайте потребителско име"
     },
+    "copyPublicID": {
+        "message": "Копиране на публичния UserID"
+    },
     "discordAdvert": {
         "message": "Елате в официалния Discord сървър, за да давате предложения!"
     },
