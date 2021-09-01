@@ -1090,7 +1090,8 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
     // There will only be one submission if it is manual skip
     const autoSkip: boolean = forceAutoSkip || shouldAutoSkip(skippingSegments[0]);
 
-    if ((autoSkip || sponsorTimesSubmitting.includes(skippingSegments[0])) && v.currentTime !== skipTime[1]) {
+    if ((autoSkip || sponsorTimesSubmitting.some((time) => time.segment === skippingSegments[0].segment)) 
+            && v.currentTime !== skipTime[1]) {
         // Fix for looped videos not working when skipping to the end #426
         // for some reason you also can't skip to 1 second before the end
         if (v.loop && v.duration > 1 && skipTime[1] >= v.duration - 1) {
