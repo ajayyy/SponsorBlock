@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Aseta käyttäjänimi"
     },
+    "copyPublicID": {
+        "message": "Kopio julkinen UserID"
+    },
     "discordAdvert": {
         "message": "Liity mukaan viralliselle Discord-palvelimelle, jotta voit antaa ehdotuksia ja palautetta!"
     },
