@@ -1,9 +1,10 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType } from "./types";
+import { SponsorTime, SponsorHideType, CategoryActionType } from "./types";
 import { Message, MessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
+import { getCategoryActionType } from "./utils/categoryUtils";
 const utils = new Utils();
 
 interface MessageListener {
@@ -403,7 +404,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
-                segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true);
+                segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
+                            (getCategoryActionType(segmentTimes[i].category) !== CategoryActionType.POI 
+                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) 
+                                : "");
                 segmentTimeFromToNode.style.margin = "5px";
 
                 sponsorTimeButton.appendChild(categoryColorCircle);
