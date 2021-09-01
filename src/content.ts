@@ -1085,6 +1085,8 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
 
 //skip from the start time to the end time for a certain index sponsor time
 function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, unskipTime}: SkipToTimeParams): void {
+    if (Config.config.disableSkipping) return;
+
     // There will only be one submission if it is manual skip
     const autoSkip: boolean = forceAutoSkip || shouldAutoSkip(skippingSegments[0]);
 
