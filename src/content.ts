@@ -993,7 +993,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
 function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideHiddenSponsors = true): number {
     // Only combine segments for AutoSkip
     if (index == -1 || 
-        shouldAutoSkip(sponsorTimes[index])) return index;
+        !shouldAutoSkip(sponsorTimes[index])) return index;
 
     // Default to the normal endTime
     let latestEndTimeIndex = index;
