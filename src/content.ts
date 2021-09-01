@@ -1,5 +1,5 @@
 import Config from "./config";
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable, ActionType } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -644,6 +644,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
+        actionTypes: Config.config.muteSegments ? [ActionType.Skip, ActionType.Mute] : [ActionType.Skip], 
         userAgent: `${chrome.runtime.id}`
     });
 
@@ -1333,6 +1334,7 @@ function startOrEndTimingNewSegment() {
             segment: [getRealCurrentTime()],
             UUID: null,
             category: Config.config.defaultCategory,
+            actionType: ActionType.Skip,
             source: SponsorSourceType.Local
         });
     } else {
@@ -1389,6 +1391,7 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
                 segment: segmentTime.segment,
                 UUID: segmentTime.UUID,
                 category: segmentTime.category,
+                actionType: segmentTime.actionType,
                 source: segmentTime.source
             });
         }

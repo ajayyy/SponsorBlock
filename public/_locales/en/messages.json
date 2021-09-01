@@ -302,6 +302,9 @@
     "skip": {
         "message": "Skip"
     },
+    "mute": {
+        "message": "Mute"
+    },
     "skip_category": {
         "message": "Skip {0}?"
     },

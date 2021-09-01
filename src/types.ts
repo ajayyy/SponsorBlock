@@ -56,6 +56,13 @@ export enum CategoryActionType {
     POI = "_POI"
 }
 
+export enum ActionType {
+    Skip = "skip",
+    Mute = "mute"
+}
+
+export const ActionTypes = [ActionType.Skip, ActionType.Mute];
+
 export type SegmentUUID = string  & { __segmentUUIDBrand: unknown };
 export type Category = string & { __categoryBrand: unknown };
 
@@ -69,6 +76,7 @@ export interface SponsorTime {
     UUID: SegmentUUID;
 
     category: Category;
+    actionType: ActionType;
 
     hidden?: SponsorHideType;
     source?: SponsorSourceType;
