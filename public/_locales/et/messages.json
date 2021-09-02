@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Määra kasutajanimi"
     },
+    "copyPublicID": {
+        "message": "Kopeeri avalik UserID"
+    },
     "discordAdvert": {
         "message": "Tule liitu ametliku Discordi serveriga, et anda soovitusi ja tagasisidet!"
     },
@@ -226,6 +229,21 @@
     },
     "showSkipNotice": {
         "message": "Kuva segmendi vahelejätmisel teatis"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Täissuuruses vahelejätmise teavitused"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Väikesed vahelejätmise teavitused autom. vahelejätmistele"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Kõik vahelejätmise teavitused on väikesed"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Hääbuvad vahelejätmise teavitused autom. vahelejätmistele"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Kõik vahelejätmise teavitused hääbuvad"
     },
     "longDescription": {
         "message": "SponsorBlock lubab sul vahele jätta sponsorid, vaheajad, kanali tellimise meeldetuletused ja muud YouTube'i videote tüütud kohad. SponsorBlock on rahva ühistööna toimiv brauserilaiendus, mis lubab igaühel saata sponsoreeritud segmendi algus- ja lõpuaegu ning teiste video segmentide aegu. Kui üks inimene saadab sponsoreeritud segmendi, jätavad teised laienduse kasutajad kohe selle vahele. Laiendus võimaldab ka muusikavideotel mitte-muusika jaotised vahele jätta.",
@@ -723,8 +741,14 @@
     "helpPageThanksForInstalling": {
         "message": "Täname SponsorBlocki paigaldamise eest."
     },
+    "helpPageNews": {
+        "message": "Uudised ja kuidas see on valmistatud"
+    },
     "Credits": {
         "message": "Tiitrid"
+    },
+    "highlightNewFeature": {
+        "message": "Uus! Mine ühe klõpsuga video eesmärgi juurde uue \"esiletõstu\" kategooriaga"
     },
     "LearnMore": {
         "message": "Lisateave"

@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Aseta käyttäjänimi"
     },
+    "copyPublicID": {
+        "message": "Kopio julkinen UserID"
+    },
     "discordAdvert": {
         "message": "Liity mukaan viralliselle Discord-palvelimelle, jotta voit antaa ehdotuksia ja palautetta!"
     },
@@ -303,7 +306,7 @@
         "message": "Ohita {0}?"
     },
     "skip_to_category": {
-        "message": "Ohita {0}an?",
+        "message": "Ohita kohtaan: {0}",
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
@@ -311,7 +314,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "skipped_to_category": {
-        "message": "Ohitettiin {0}an",
+        "message": "Ohitettiin kohtaan: {0}",
         "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {

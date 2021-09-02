@@ -431,6 +431,9 @@
     "preview": {
         "message": "Előnézet"
     },
+    "unsubmitted": {
+        "message": "Nincs beküldve"
+    },
     "inspect": {
         "message": "Megvizsgál"
     },
@@ -494,6 +497,9 @@
     },
     "category_outro_description": {
         "message": "Stáblista, vagy amikor megjelennek a YouTube zárókártyák. Nem használandó információt tartalmazó következtetésekkor."
+    },
+    "category_preview": {
+        "message": "Előzetes/Ismétlés"
     },
     "category_music_offtopic": {
         "message": "Zene: nem-zene szegmens"
@@ -597,5 +603,33 @@
     },
     "help": {
         "message": "Segítség"
+    },
+    "GotIt": {
+        "message": "Értettem",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "hideForever": {
+        "message": "Eltüntetés örökre"
+    },
+    "Donate": {
+        "message": "Támogatás"
+    },
+    "Submitting": {
+        "message": "Küldés"
+    },
+    "Editing": {
+        "message": "Szerkesztés"
+    },
+    "helpPageTooSlow": {
+        "message": "Ez túl lassú"
+    },
+    "helpPageNews": {
+        "message": "Hírek és hogyan készül"
+    },
+    "Credits": {
+        "message": "Készítők"
+    },
+    "LearnMore": {
+        "message": "Tudj meg többet"
     }
 }

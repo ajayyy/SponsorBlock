@@ -227,6 +227,21 @@
     "showSkipNotice": {
         "message": "Hiển thị thông báo sau khi bỏ qua quảng cáo"
     },
+    "noticeVisibilityMode0": {
+        "message": "Thông báo bỏ qua với kích thước đầy đủ"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Thông báo bỏ qua kích thước nhỏ nếu phân đoạn được tự động bỏ qua"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Thông báo bỏ qua kích thước nhỏ cho toàn bộ phân đoạn"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Thông báo bỏ qua mờ nếu phân đoạn được tự động bỏ qua"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Thông báo bỏ qua mờ cho tất cả các phân đoạn"
+    },
     "longDescription": {
         "message": "SponsorBlock giúp bạn bỏ qua quảng cáo từ nhà tài trợ, đoạn giới thiệu, đoạn kết, lời nhắc đăng ký kênh, và những phần khó chịu khác trong các video Youtube. SponsorBlock là một tiện ích mở rộng cho trình duyệt, cho phép tất cả người dùng đăng thời điểm bắt đầu và kết thúc của những đoạn quảng cáo từ nhà tài trợ và các đoạn khác trong video Youtube. Sau khi một người đăng thông tin này lên, tất cả mọi người dùng tiện ích mở rộng này sẽ bỏ qua đoạn quảng cáo đó. Bạn cũng có thể bỏ qua phần không có nhạc trong những video âm nhạc.",
         "description": "Full description of the extension on the store pages."
@@ -682,5 +697,14 @@
     "voteRejectedWarning": {
         "message": "Bỏ phiếu bị từ chối do có cảnh báo. Nhấp để mở cuộc trò chuyện để giải quyết hoặc quay lại sau.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "hideDonationLink": {
+        "message": "Ẩn link donate"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Cảm ơn bạn đã cài đặt SponsorBlock."
+    },
+    "helpPageTooSlow": {
+        "message": "Quá chậm"
     }
 }

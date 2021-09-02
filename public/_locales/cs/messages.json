@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Nastavit uživatelské jméno"
     },
+    "copyPublicID": {
+        "message": "Kopírovat veřejné uživatelské ID"
+    },
     "discordAdvert": {
         "message": "Připojte se k oficiálnímu Discord serveru k podání návrhů a zpětné vazby!"
     },
