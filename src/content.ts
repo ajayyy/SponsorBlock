@@ -492,7 +492,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
 function inMuteSegment(currentTime: number): boolean {
     const checkFunction = (segment) => segment.actionType === ActionType.Mute && segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
-    return sponsorTimes.some(checkFunction) || sponsorTimesSubmitting.some(checkFunction);
+    return sponsorTimes?.some(checkFunction) || sponsorTimesSubmitting.some(checkFunction);
 }
 
 /**
@@ -501,7 +501,7 @@ function inMuteSegment(currentTime: number): boolean {
 function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boolean {
     const currentVideoID = getYouTubeVideoID(document.URL);
     if (currentVideoID !== (videoID || sponsorVideoID) || (sponsorTime 
-            && (!sponsorTimes || !sponsorTimes.some((time) => time.segment === sponsorTime.segment)) 
+            && (!sponsorTimes || !sponsorTimes?.some((time) => time.segment === sponsorTime.segment)) 
             && !sponsorTimesSubmitting.some((time) => time.segment === sponsorTime.segment))) {
         // Something has really gone wrong
         console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
@@ -592,7 +592,7 @@ function setupVideoListeners() {
             }
 
             if (!Config.config.dontShowNotice) {
-                const currentPoiSegment = sponsorTimes.find((segment) => 
+                const currentPoiSegment = sponsorTimes?.find((segment) => 
                         getCategoryActionType(segment.category) === CategoryActionType.POI &&
                         video.currentTime - segment.segment[0] > 0 &&
                         video.currentTime - segment.segment[0] < previewBar.getMinimumSize(true));
@@ -1260,13 +1260,13 @@ function createButton(baseID: string, title: string, callback: () => void, image
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
     return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
-            (Config.config.autoSkipOnMusicVideos && sponsorTimes.some((s) => s.category === "music_offtopic")
+            (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && getCategoryActionType(segment.category) === CategoryActionType.Skippable);
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
     return utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay ||
-            (Config.config.autoSkipOnMusicVideos && sponsorTimes.some((s) => s.category === "music_offtopic"));
+            (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
 }
 
 function getControls(): HTMLElement | false {
