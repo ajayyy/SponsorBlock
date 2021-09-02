@@ -13,8 +13,11 @@ test("Selenium Chrome test", async () => {
         await createSegment(driver, "4", "10.33", "0:04.000 to 0:10.330");
 
         await editSegments(driver, 0, "0:04.000", "0:10.330", "5", "13.211", "0:05.000 to 0:13.211", false);
-
         await autoskipSegment(driver, 5, 13.211);
+
+        await setSegmentActionType(driver, 0, 1, false);
+        await editSegments(driver, 0, "0:05.000", "0:13.211", "5", "7.5", "0:05.000 to 0:07.500", false);
+        await muteSkipSegment(driver, 5, 7.5);
     } finally {
         await driver.quit();
     }
@@ -24,7 +27,7 @@ async function setup(): Promise<WebDriver> {
     const options = new Chrome.Options();
     options.addArguments("--load-extension=" + Path.join(__dirname, "../dist/"));
     options.addArguments("--mute-audio");
-    options.addArguments("--disable-features=PreloadMediaEngagementData, MediaEngagementBypassAutoplayPolicies")
+    options.addArguments("--disable-features=PreloadMediaEngagementData, MediaEngagementBypassAutoplayPolicies");
 
     const driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
     driver.manage().setTimeouts({
@@ -106,6 +109,16 @@ async function editSegments(driver: WebDriver, index: number, expectedStartTimeB
     await driver.wait(until.elementTextIs(sponsorTimeDisplay, expectedDisplayedTime));
 }
 
+async function setSegmentActionType(driver: WebDriver, index: number, actionTypeIndex: number, openSubmitBox: boolean): Promise<void> {
+    if (openSubmitBox) {
+        const submitButton = await driver.findElement(By.id("submitButton"));
+        await submitButton.click();
+    }
+
+    const actionTypeSelection = await driver.findElement(By.css(`#sponsorTimeActionTypesSubmissionNotice${index} > option:nth-child(${actionTypeIndex + 1})`));
+    actionTypeSelection.click();
+}
+
 async function autoskipSegment(driver: WebDriver, startTime: number, endTime: number): Promise<void> {
     const video = await driver.findElement(By.css("video"));
 
@@ -113,7 +126,21 @@ async function autoskipSegment(driver: WebDriver, startTime: number, endTime: nu
     await driver.executeScript("document.querySelector('video').play()");
 
     await driver.sleep(1300);
-
     expect(parseFloat(await video.getAttribute("currentTime"))).toBeGreaterThan(endTime);
+    await driver.executeScript("document.querySelector('video').pause()");
+}
+
+async function muteSkipSegment(driver: WebDriver, startTime: number, endTime: number): Promise<void> {
+    const duration = endTime - startTime;
+    const video = await driver.findElement(By.css("video"));
+
+    await driver.executeScript("document.querySelector('video').currentTime = " + (startTime - 0.5));
+    await driver.executeScript("document.querySelector('video').play()");
+
+    await driver.sleep(1300);
+    expect(await video.getAttribute("muted")).toEqual("true");
+
+    await driver.sleep(duration * 1000 + 300);
+    expect(await video.getAttribute("muted")).toBeNull(); // Default is null for some reason
     await driver.executeScript("document.querySelector('video').pause()");
 }
