@@ -320,9 +320,6 @@
     "changeUserID": {
         "message": "Importă/Exportă Id-ul Tău De Utilizator"
     },
-    "whatChangeUserID": {
-        "message": "Acest lucru trebuie să fie păstrat. Este ca și o parolă și nu ar trebui împartășită cu nimeni. Daca cineva are acest lucru, se poate da drept tu."
-    },
     "setUserID": {
         "message": "Setează Id-ul Utilizatorului"
     },
