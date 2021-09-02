@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Đặt tên người dùng"
     },
+    "copyPublicID": {
+        "message": "Sao chép Public UserID"
+    },
     "discordAdvert": {
         "message": "Hãy tham gia server Discord chính thức để đăng gợi ý và phản hồi!"
     },
@@ -349,9 +352,6 @@
     },
     "changeUserID": {
         "message": "Nhập/Xuất mã người dùng của bạn"
-    },
-    "whatChangeUserID": {
-        "message": "Bạn nên giữ bí mật mã này. Nó như mật khẩu vậy, do đó không nên chia sẻ với người khác. Nếu ai đó có mã này, họ có thể giả mạo bạn."
     },
     "setUserID": {
         "message": "Đặt mã người dùng"
@@ -698,11 +698,17 @@
         "message": "Bỏ phiếu bị từ chối do có cảnh báo. Nhấp để mở cuộc trò chuyện để giải quyết hoặc quay lại sau.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
+    "Donate": {
+        "message": "Donate"
+    },
     "hideDonationLink": {
         "message": "Ẩn link donate"
     },
     "helpPageThanksForInstalling": {
         "message": "Cảm ơn bạn đã cài đặt SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Xin hãy xem xét các tuỳ chọn bên dưới"
     },
     "helpPageTooSlow": {
         "message": "Quá chậm"
