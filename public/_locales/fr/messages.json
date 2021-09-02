@@ -335,9 +335,6 @@
     "changeUserID": {
         "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
-    "whatChangeUserID": {
-        "message": "Cette information doit rester confidentielle. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtient, il pourra se faire passer pour vous."
-    },
     "setUserID": {
         "message": "Définir \"UserID\""
     },
