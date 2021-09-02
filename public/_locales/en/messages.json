@@ -366,7 +366,7 @@
         "message": "Import/Export Your UserID"
     },
     "whatChangeUserID": {
-        "message": "This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you."
+        "message": "This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you. If you are looking for your public userID, click the clipboard icon in the popup."
     },
     "setUserID": {
         "message": "Set UserID"
