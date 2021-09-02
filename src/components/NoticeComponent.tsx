@@ -25,6 +25,7 @@ export interface NoticeProps {
     bottomRow?: React.ReactElement[],
 
     smaller?: boolean,
+    limitWidth?: boolean,
 
     // Callback for when this is closed
     closeListener: () => void,
@@ -105,11 +106,13 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                 <div className={"sponsorSkipNoticeTableContainer" 
                         + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")
                         + (this.state.startFaded ? " sponsorSkipNoticeFaded" : "") }>
-                    <table className="sponsorSkipObject sponsorSkipNotice">
+                    <table className={"sponsorSkipObject sponsorSkipNotice"
+                                + (this.props.limitWidth ? " sponsorSkipNoticeLimitWidth" : "")}>
                         <tbody>
 
                             {/* First row */}
-                            <tr id={"sponsorSkipNoticeFirstRow" + this.idSuffix}>
+                            <tr id={"sponsorSkipNoticeFirstRow" + this.idSuffix}
+                                    className="sponsorSkipNoticeFirstRow">
                                 {/* Left column */}
                                 <td className="noticeLeftIcon">
                                     {/* Logo */}
