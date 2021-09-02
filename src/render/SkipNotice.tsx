@@ -71,6 +71,10 @@ class SkipNotice {
     toggleSkip(): void {
         this.skipNoticeRef?.current?.prepAction(SkipNoticeAction.Unskip);
     }
+
+    unmutedListener(): void {
+        this.skipNoticeRef?.current?.unmutedListener();
+    }
 }
 
 export default SkipNotice;

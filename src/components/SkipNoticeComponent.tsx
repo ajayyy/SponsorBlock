@@ -41,6 +41,7 @@ export interface SkipNoticeState {
 
     skipButtonText?: string;
     skipButtonCallback?: (index: number) => void;
+    showSkipButton?: boolean;
 
     downvoting?: boolean;
     choosingCategory?: boolean;
@@ -112,6 +113,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
             skipButtonText: this.getUnskipText(),
             skipButtonCallback: (index) => this.unskip(index),
+            showSkipButton: true,
 
             downvoting: false,
             choosingCategory: false,
@@ -296,9 +298,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getSkipButton(): JSX.Element {
-        if (this.segments.length > 1 
+        if (this.state.showSkipButton && (this.segments.length > 1 
                 || getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI
-                || this.props.unskipTime) {
+                || this.props.unskipTime)) {
             return (
                 <span className="sponsorSkipNoticeUnskipSection">
                     <button id={"sponsorSkipUnskipButton" + this.idSuffix}
@@ -557,6 +559,16 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.clearConfigListener();
 
         this.props.closeListener();
+    }
+
+    unmutedListener(): void {
+        if (this.props.segments.length === 1 
+                && this.props.segments[0].actionType === ActionType.Mute 
+                && this.contentContainer().v.currentTime >= this.props.segments[0].segment[1]) {
+            this.setState({
+                showSkipButton: false
+            });
+        }
     }
 
     private getUnskipText(): string {

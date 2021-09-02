@@ -417,6 +417,11 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     if (videoMuted && !inMuteSegment(currentTime)) {
         video.muted = false;
         videoMuted = false;
+
+        for (const notice of skipNotices) {
+            // So that the notice can hide buttons
+            notice.unmutedListener();
+        }
     }
 
     if (Config.config.disableSkipping || channelWhitelisted || (channelIDInfo.status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
