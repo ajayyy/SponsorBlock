@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Ohita uudelleen"
     },
+    "unmute": {
+        "message": "Poista mykistys"
+    },
     "paused": {
         "message": "Pysäytetty"
     },
@@ -302,6 +305,9 @@
     "skip": {
         "message": "Ohita"
     },
+    "mute": {
+        "message": "Mykistä"
+    },
     "skip_category": {
         "message": "Ohita {0}?"
     },
@@ -366,7 +372,7 @@
         "message": "Tuo/vie UserID:si"
     },
     "whatChangeUserID": {
-        "message": "Tämä tulisi pitää yksityisenä. Tämä on kuin salasana eikä sitä pitäisi jakaa kenellekään. Jos joku saa tämän, hän voi esiintyä sinuna."
+        "message": "Tämä pitäisi pitää yksityisenä. Tämä on kuin salasana, eikä sitä pitäisi jakaa kenenkään kanssa. Jos jollakulla on tämä, he voivat esiintyä sinuna. Jos etsit julkista userID:täsi, napsauta leikepöydän kuvaketta ponnahdusikkunassa."
     },
     "setUserID": {
         "message": "Aseta UserID"
@@ -603,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Ohita kaikki segmentit automaattisesti, kun videossa on \"Musiikiton\" segmentti"
+    },
+    "muteSegments": {
+        "message": "Salli segmentit, jotka mykistävät äänen ohittamisen sijaan"
     },
     "colorFormatIncorrect": {
         "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on # alussa."
