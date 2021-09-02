@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Nochmal überspringen"
     },
+    "unmute": {
+        "message": "Ton an"
+    },
     "paused": {
         "message": "Pausiert"
     },
@@ -302,6 +305,9 @@
     "skip": {
         "message": "Überspringen"
     },
+    "mute": {
+        "message": "Ton aus"
+    },
     "skip_category": {
         "message": "{0} überspringen?"
     },
@@ -366,7 +372,7 @@
         "message": "Benutzer-ID importieren/exportieren"
     },
     "whatChangeUserID": {
-        "message": "Halte diese ID geheim. Sie ist dazu in der Lage dich eindeutig zu identifizieren und sollte mit niemanden geteilt werden."
+        "message": "Dies sollte geheim gehalten werden. Dies ist wie ein Passwort und sollte mit niemandem geteilt werden. Sollte es jemand haben, könnte er sich als dich ausgeben. Wenn du nach deiner öffentlichen userID suchst, klicke das \"Kopieren\"-Symbol bei deinem Benutzernamen im Popup."
     },
     "setUserID": {
         "message": "Interne Benutzer-ID festlegen"
@@ -603,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Alle Segmente automatisch überspringen, wenn ein nicht-Musiksegment vorhanden ist"
+    },
+    "muteSegments": {
+        "message": "Segmente zulassen, die den Ton ausschalten anstatt zu überspringen"
     },
     "colorFormatIncorrect": {
         "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
