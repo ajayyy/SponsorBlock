@@ -362,9 +362,6 @@
     "changeUserID": {
         "message": "사용자 ID 가져오기/내보내기"
     },
-    "whatChangeUserID": {
-        "message": "이 정보는 다른 사람에게 공개하지 마세요. 이것은 비밀번호처럼 절대로 알려주면 안되는 정보입니다. 다른 사람이 이 정보를 습득했을 경우 사용자를 사칭할 수도 있습니다."
-    },
     "setUserID": {
         "message": "사용자ID 설정"
     },
