@@ -341,9 +341,6 @@
     "changeUserID": {
         "message": "Impor/Ekspor UserID"
     },
-    "whatChangeUserID": {
-        "message": "Ini sebaiknya dirahasiakan. Ini terlihat seperti password dan sebaiknya tidak dibagikan ke orang lain. Jika seseorang mempunyai ini, dia dapat berpura-pura menjadi anda."
-    },
     "setUserID": {
         "message": "Atur UserID"
     },
