@@ -191,15 +191,17 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 </div>
 
                 {/* Action Type */}
-                <div style={{position: "relative"}}>
-                    <select id={"sponsorTimeActionTypes" + this.idSuffix}
-                        className="sponsorTimeEditSelector sponsorTimeActionTypes"
-                        defaultValue={sponsorTime.actionType}
-                        ref={this.actionTypeOptionRef}
-                        onChange={() => this.saveEditTimes()}>
-                        {this.getActionTypeOptions()}
-                    </select>
-                </div>
+                {getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable ? (
+                    <div style={{position: "relative"}}>
+                        <select id={"sponsorTimeActionTypes" + this.idSuffix}
+                            className="sponsorTimeEditSelector sponsorTimeActionTypes"
+                            defaultValue={sponsorTime.actionType}
+                            ref={this.actionTypeOptionRef}
+                            onChange={() => this.saveEditTimes()}>
+                            {this.getActionTypeOptions()}
+                        </select>
+                    </div>
+                ): ""}
 
                 <br/>
 
@@ -359,7 +361,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
 
         sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value as Category;
-        sponsorTimesSubmitting[this.props.index].actionType = this.actionTypeOptionRef.current.value as ActionType;
+        sponsorTimesSubmitting[this.props.index].actionType = 
+            this.actionTypeOptionRef?.current ? this.actionTypeOptionRef.current.value as ActionType : ActionType.Skip;
 
         Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 
