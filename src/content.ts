@@ -1190,19 +1190,29 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
 }
 
 function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null) {
-    //add a tiny bit of time to make sure it is not skipped again
-    console.log(unskipTime)
-    video.currentTime = unskipTime ?? segment.segment[0] + 0.001;
+    if (segment.actionType === ActionType.Mute) {
+        video.muted = false;
+        videoMuted = false;
+    } else {
+        //add a tiny bit of time to make sure it is not skipped again
+        video.currentTime = unskipTime ?? segment.segment[0] + 0.001;
+    }
+    
 }
 
 function reskipSponsorTime(segment: SponsorTime) {
-    const skippedTime = Math.max(segment.segment[1] - video.currentTime, 0);
-    const segmentDuration = segment.segment[1] - segment.segment[0];
-    const fullSkip = skippedTime / segmentDuration > manualSkipPercentCount;
-    
-    video.currentTime = segment.segment[1];
-    sendTelemetryAndCount([segment], skippedTime, fullSkip);
-    startSponsorSchedule(true, segment.segment[1], false);
+    if (segment.actionType === ActionType.Mute) {
+        video.muted = true;
+        videoMuted = true;
+    } else {
+        const skippedTime = Math.max(segment.segment[1] - video.currentTime, 0);
+        const segmentDuration = segment.segment[1] - segment.segment[0];
+        const fullSkip = skippedTime / segmentDuration > manualSkipPercentCount;
+        
+        video.currentTime = segment.segment[1];
+        sendTelemetryAndCount([segment], skippedTime, fullSkip);
+        startSponsorSchedule(true, segment.segment[1], false);
+    }
 }
 
 function createButton(baseID: string, title: string, callback: () => void, imageName: string, isDraggable = false): HTMLElement {

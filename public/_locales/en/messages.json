@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Reskip"
     },
+    "unmute": {
+        "message": "Unmute"
+    },
     "paused": {
         "message": "Paused"
     },
