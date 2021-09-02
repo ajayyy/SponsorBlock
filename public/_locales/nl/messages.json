@@ -365,9 +365,6 @@
     "changeUserID": {
         "message": "Uw gebruikers-ID importeren/exporteren"
     },
-    "whatChangeUserID": {
-        "message": "Dit moet privé gehouden worden. Dit is als een wachtwoord en mag met niemand gedeeld worden. Als iemand dit heeft, kan hij zich voordoen als u."
-    },
     "setUserID": {
         "message": "Gebruikers-ID instellen"
     },
