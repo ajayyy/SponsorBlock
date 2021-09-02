@@ -335,9 +335,6 @@
     "changeUserID": {
         "message": "匯入/匯出您的使用者 ID"
     },
-    "whatChangeUserID": {
-        "message": "這應該被保密。這就像一個密碼，不應該與他人分享。如果有人擁有它，他們就可以冒充您。"
-    },
     "setUserID": {
         "message": "設定使用者 ID"
     },
