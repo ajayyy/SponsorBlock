@@ -611,7 +611,7 @@
         "message": "Auto skip all segments when there is a non-music segment"
     },
     "muteSegments": {
-        "message": "Allow muting segments"
+        "message": "Allow segments that mute audio instead of skip"
     },
     "colorFormatIncorrect": {
         "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
