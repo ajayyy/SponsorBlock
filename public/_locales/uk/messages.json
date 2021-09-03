@@ -734,9 +734,6 @@
     "hideForever": {
         "message": "Сховати назавжди"
     },
-    "warningChatInfo": {
-        "message": "Ви отримали попередження, тому тимчасово не можете обирати сегменти. Це означає, що ми помітили, що ви робили кілька поширених помилок, які не є злісними. Тому ми хочемо нагадати вам правила. Ви можете приєднатися до чату з правилами використовуючи discord.gg/SponsorBlock або matrix.to/#/#sponsor:ajay.app"
-    },
     "voteRejectedWarning": {
         "message": "Голосування відхилено через попередження. Натисніть, щоб відкрити чат для вирішення цієї проблеми, або поверніться пізніше.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
