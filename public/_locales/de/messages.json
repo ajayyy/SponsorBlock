@@ -283,8 +283,7 @@
     "keybindDescriptionComplete": {
         "message": "Die Taste wurde festgelegt auf: "
     },
-   
-  "0": {
+    "0": {
         "message": "Zeitüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
     },
     "disableSkipping": {
