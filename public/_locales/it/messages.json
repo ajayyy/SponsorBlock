@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Salta ancora"
     },
+    "unmute": {
+        "message": "Riattiva microfono"
+    },
     "paused": {
         "message": "In pausa"
     },
@@ -301,6 +304,9 @@
     },
     "skip": {
         "message": "Salta"
+    },
+    "mute": {
+        "message": "Silenzia"
     },
     "skip_category": {
         "message": "Vuoi saltare {0}?"
@@ -604,6 +610,9 @@
     "autoSkipOnMusicVideos": {
         "message": "Salta automaticamente tutti i segmenti quando c'è un segmento non musicale"
     },
+    "muteSegments": {
+        "message": "Consenti i segmenti che silenziano l'audio invece di saltare"
+    },
     "colorFormatIncorrect": {
         "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
     },
@@ -724,9 +733,6 @@
     },
     "hideForever": {
         "message": "Nascondi per sempre"
-    },
-    "warningChatInfo": {
-        "message": "Hai ricevuto un ammonimento and non puoi inviare segmenti temporaneamente. Ciò significa che abbiamo notato che stavi commettendo alcuni errori comuni senza scopo malevolo, e vogliamo che tu ricontrollassi le regole. Puoi anche partecipare a questa chat su discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Voto rifiutato a causa di un ammonimento. Clicca per aprire una chat per risolverlo, oppure torna dopo quando hai tempo.",
