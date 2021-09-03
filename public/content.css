@@ -140,7 +140,6 @@
 	min-width: 350px;
 	max-width: 50%;
 
-	border-radius: 5px;
 	border-spacing: 5px 10px;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -148,11 +147,18 @@
 	border-collapse: unset;
 }
 
-.sponsorSkipNotice {
-	min-width: 350px;
+.sponsorSkipNoticeTableContainer {
 	background-color: rgba(28, 28, 28, 0.9);
+	border-radius: 5px;
+	min-width: 100%;
+}
 
+.sponsorSkipNotice {
 	transition: all 0.1s ease-out;
+}
+
+.sponsorSkipNoticeLimitWidth {
+	min-width: calc(100% - 50px);
 }
 
 .sponsorSkipNotice .hidden {
@@ -311,7 +317,6 @@
 .sponsorTimesInfoMessage {
 	font-size: 13.3333px;
     color: rgb(235, 235, 235);
-	text-align: center;
 }
 
 .voteButton {
@@ -467,7 +472,7 @@ input::-webkit-inner-spin-button {
 	text-decoration: underline;
 }
 
-.sponsorTimeCategories {
+.sponsorTimeEditSelector {
 	margin-top: 5px;
 	margin-bottom: 5px;
 

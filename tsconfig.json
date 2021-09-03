@@ -8,6 +8,11 @@
         "noEmitOnError": false,
         "typeRoots": [ "node_modules/@types" ],
         "resolveJsonModule": true,
-        "jsx": "react"
+        "jsx": "react",
+        "lib": [
+            "es2019", 
+            "dom",
+            "dom.iterable"
+        ]
     }
 }

@@ -25,6 +25,7 @@ export interface NoticeProps {
     bottomRow?: React.ReactElement[],
 
     smaller?: boolean,
+    limitWidth?: boolean,
 
     // Callback for when this is closed
     closeListener: () => void,
@@ -102,65 +103,69 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                 onMouseEnter={(e) => this.onMouseEnter(e) }
                 onMouseLeave={() => this.timerMouseLeave()}
                 style={noticeStyle} >
-                <table className={"sponsorSkipObject sponsorSkipNotice" 
+                <div className={"sponsorSkipNoticeTableContainer" 
                         + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")
-                        + (this.state.startFaded ? " sponsorSkipNoticeFaded" : "") } >
-                    <tbody>
+                        + (this.state.startFaded ? " sponsorSkipNoticeFaded" : "") }>
+                    <table className={"sponsorSkipObject sponsorSkipNotice"
+                                + (this.props.limitWidth ? " sponsorSkipNoticeLimitWidth" : "")}>
+                        <tbody>
 
-                        {/* First row */}
-                        <tr id={"sponsorSkipNoticeFirstRow" + this.idSuffix}>
-                            {/* Left column */}
-                            <td className="noticeLeftIcon">
-                                {/* Logo */}
-                                <img id={"sponsorSkipLogo" + this.idSuffix} 
-                                    className="sponsorSkipLogo sponsorSkipObject"
-                                    src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
-                                </img>
+                            {/* First row */}
+                            <tr id={"sponsorSkipNoticeFirstRow" + this.idSuffix}
+                                    className="sponsorSkipNoticeFirstRow">
+                                {/* Left column */}
+                                <td className="noticeLeftIcon">
+                                    {/* Logo */}
+                                    <img id={"sponsorSkipLogo" + this.idSuffix} 
+                                        className="sponsorSkipLogo sponsorSkipObject"
+                                        src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
+                                    </img>
 
-                                <span id={"sponsorSkipMessage" + this.idSuffix}
-                                    style={{float: "left"}}
-                                    className="sponsorSkipMessage sponsorSkipObject">
-                                    
-                                    {this.state.noticeTitle}
-                                </span>
-
-                                {this.props.firstColumn}
-                            </td>
-
-                            {this.props.firstRow}
-
-                            {/* Right column */}
-                            <td className="sponsorSkipNoticeRightSection"
-                                style={{top: "9.32px"}}>
-                                
-                                {/* Time left */}
-                                {this.props.timed ? ( 
-                                    <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
-                                        onClick={() => this.toggleManualPause()}
-                                        className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
-
-                                        {this.getCountdownElements()}
-
+                                    <span id={"sponsorSkipMessage" + this.idSuffix}
+                                        style={{float: "left"}}
+                                        className="sponsorSkipMessage sponsorSkipObject">
+                                        
+                                        {this.state.noticeTitle}
                                     </span>
-                                ) : ""}
-                            
 
-                                {/* Close button */}
-                                <img src={chrome.extension.getURL("icons/close.png")}
-                                    className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeCloseButton sponsorSkipNoticeRightButton"
-                                    onClick={() => this.close()}>
-                                </img>
-                            </td>
-                        </tr> 
+                                    {this.props.firstColumn}
+                                </td>
 
-                        {this.props.children}
+                                {this.props.firstRow}
 
-                        {!this.props.smaller && this.props.bottomRow ? 
-                            this.props.bottomRow
-                        : null}
+                                {/* Right column */}
+                                <td className="sponsorSkipNoticeRightSection"
+                                    style={{top: "9.32px"}}>
+                                    
+                                    {/* Time left */}
+                                    {this.props.timed ? ( 
+                                        <span id={"sponsorSkipNoticeTimeLeft" + this.idSuffix}
+                                            onClick={() => this.toggleManualPause()}
+                                            className="sponsorSkipObject sponsorSkipNoticeTimeLeft">
 
-                    </tbody> 
-                </table>
+                                            {this.getCountdownElements()}
+
+                                        </span>
+                                    ) : ""}
+                                
+
+                                    {/* Close button */}
+                                    <img src={chrome.extension.getURL("icons/close.png")}
+                                        className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeCloseButton sponsorSkipNoticeRightButton"
+                                        onClick={() => this.close()}>
+                                    </img>
+                                </td>
+                            </tr> 
+
+                            {this.props.children}
+
+                            {!this.props.smaller && this.props.bottomRow ? 
+                                this.props.bottomRow
+                            : null}
+
+                        </tbody> 
+                    </table>
+                </div>
 
                 {/* Add as a hidden table to keep the height constant */}
                 {this.props.smaller && this.props.bottomRow ? 

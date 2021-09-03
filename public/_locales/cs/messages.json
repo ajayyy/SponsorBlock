@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Znovu přeskočit"
     },
+    "unmute": {
+        "message": "Zrušit ztlumení"
+    },
     "paused": {
         "message": "Pozastaveno"
     },
@@ -160,6 +163,9 @@
     },
     "setUsername": {
         "message": "Nastavit uživatelské jméno"
+    },
+    "copyPublicID": {
+        "message": "Kopírovat veřejné uživatelské ID"
     },
     "discordAdvert": {
         "message": "Připojte se k oficiálnímu Discord serveru k podání návrhů a zpětné vazby!"
@@ -299,6 +305,9 @@
     "skip": {
         "message": "Přeskočit"
     },
+    "mute": {
+        "message": "Ztlumit"
+    },
     "skip_category": {
         "message": "Přeskočit {0}?"
     },
@@ -363,7 +372,7 @@
         "message": "Importovat / exportovat vaše UserID"
     },
     "whatChangeUserID": {
-        "message": "Toto byste měli udržet v soukromí. Je to jako heslo a neměli byste jej s nikým sdílet. Pokud jej někdo má, může se za vás vydávat."
+        "message": "Toto by mělo být ponecháno v soukromí. Je to jako heslo a nemělo by být s nikým sdíleno. Pokud to někdo má, může se za vás vydávat. Pokud hledáte vaše veřejné uživatelské ID, klikněte na ikonu schránky ve vyskakovacím okně."
     },
     "setUserID": {
         "message": "Nastavit UserID"
@@ -600,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky přeskočit všechny segmenty, když je ve videu nehudební segment"
+    },
+    "muteSegments": {
+        "message": "Povolit segmenty, které místo přeskočení ztlumují zvuk"
     },
     "colorFormatIncorrect": {
         "message": "Vaše barva má nesprávný formát. Měl by to být 3 nebo 6 znaků dlouhý HEX kód s křížkem na začátku."

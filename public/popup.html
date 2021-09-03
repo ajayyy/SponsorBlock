@@ -19,7 +19,7 @@
           <p id="loadingIndicator">__MSG_noVideoID__</p>
           <!-- If the video was found in the database -->
           <p id="videoFound"></p>
-          <button class="sbSlimButton hidden" id="refreshSegmentsButton" title="__MSG_refreshSegments__">
+          <button class="sbSlimButton" id="refreshSegmentsButton" title="__MSG_refreshSegments__">
             <img id="refreshSegments" src="/icons/refresh.svg"/>
           </button>
         </div>
@@ -89,6 +89,9 @@
               <p id="usernameValue"></p>
               <button id="setUsernameButton" title="__MSG_setUsername__">
                 <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
+              </button>
+              <button id="copyUserID" title="__MSG_copyPublicID__">
+                <img src="/icons/clipboard.svg" alt="__MSG_copyPublicID__" width="16" height="16" id="sbPopupIconCopyUserID">
               </button>
             </div>
             <div id="setUsername" style="display: none">

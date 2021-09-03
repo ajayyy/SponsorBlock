@@ -362,9 +362,6 @@
     "changeUserID": {
         "message": "Importar/Exportar seu ID de usuário"
     },
-    "whatChangeUserID": {
-        "message": "Isso deve ser mantido em segredo. É como se fosse uma senha e não deve ser compartilhado com ninguém. Se alguém tiver isso, poderá se passar por você."
-    },
     "setUserID": {
         "message": "Definir ID de usuário"
     },

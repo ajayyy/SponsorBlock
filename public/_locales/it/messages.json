@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "Imposta Username"
     },
+    "copyPublicID": {
+        "message": "Copia UserID Pubblico"
+    },
     "discordAdvert": {
         "message": "Entra nel server Discord ufficiale per darci suggerimenti e feedback!"
     },
@@ -363,7 +366,7 @@
         "message": "Importa/Esporta Il Tuo ID Utente"
     },
     "whatChangeUserID": {
-        "message": "Questo dovrebbe essere tenuto privato. Questo è come una password e non dovrebbe essere condiviso con nessuno. Se qualcuno ha questo, ti può impersonare."
+        "message": "Questo dovrebbe esser mantenuto privato. È come una password e non dovrebbe esser condiviso con nessuno. Se qualcuno lo possiede, può impersonarti. Se stai cercando il tuo userID pubblico, clicca l'icona degli appunti nel popup."
     },
     "setUserID": {
         "message": "Imposta ID utente"

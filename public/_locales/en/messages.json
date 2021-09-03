@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Reskip"
     },
+    "unmute": {
+        "message": "Unmute"
+    },
     "paused": {
         "message": "Paused"
     },
@@ -160,6 +163,9 @@
     },
     "setUsername": {
         "message": "Set Username"
+    },
+    "copyPublicID": {
+        "message": "Copy Public UserID"
     },
     "discordAdvert": {
         "message": "Come join the official discord server to give suggestions and feedback!"
@@ -299,6 +305,9 @@
     "skip": {
         "message": "Skip"
     },
+    "mute": {
+        "message": "Mute"
+    },
     "skip_category": {
         "message": "Skip {0}?"
     },
@@ -363,7 +372,7 @@
         "message": "Import/Export Your UserID"
     },
     "whatChangeUserID": {
-        "message": "This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you."
+        "message": "This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you. If you are looking for your public userID, click the clipboard icon in the popup."
     },
     "setUserID": {
         "message": "Set UserID"
@@ -600,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Auto skip all segments when there is a non-music segment"
+    },
+    "muteSegments": {
+        "message": "Allow segments that mute audio instead of skip"
     },
     "colorFormatIncorrect": {
         "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."

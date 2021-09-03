@@ -323,9 +323,6 @@
     "changeUserID": {
         "message": "导入/导出您的用户 ID"
     },
-    "whatChangeUserID": {
-        "message": "这应该被保密。这就像一个密码，且不应该告诉任何人。如果有人拥有它，他就可以冒充您。"
-    },
     "setUserID": {
         "message": "设定用户 ID"
     },

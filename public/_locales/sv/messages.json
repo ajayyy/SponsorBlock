@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Hoppa över igen"
     },
+    "unmute": {
+        "message": "Ljud på"
+    },
     "paused": {
         "message": "Pausad"
     },
@@ -160,6 +163,9 @@
     },
     "setUsername": {
         "message": "Ange användarnamn"
+    },
+    "copyPublicID": {
+        "message": "Kopiera publikt Användar-ID"
     },
     "discordAdvert": {
         "message": "Gå med i den officiella discordservern för att ge förslag och feedback!"
@@ -299,6 +305,9 @@
     "skip": {
         "message": "Hoppa över"
     },
+    "mute": {
+        "message": "Ljud av"
+    },
     "skip_category": {
         "message": "Hoppa över {0}?"
     },
@@ -363,7 +372,7 @@
         "message": "Importera/Exportera Ditt AnvändarID"
     },
     "whatChangeUserID": {
-        "message": "Denna ska hållas privat. Den fungerar som ett lösenord och ska inte delas med någon. Om någon får tag i den kan de utge sig för att vara dig."
+        "message": "Detta ska hållas privat. Detta är som ett lösenord och ska inte delas med någon. Om andra får tag i det kan de utge sig för att vara dig. Om du letar efter ditt offentliga Användar-ID kan du klicka på urklippsikonen i popupen."
     },
     "setUserID": {
         "message": "Ange AnvändarID"
@@ -600,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Hoppa över alla segment automatiskt när det finns ett icke-musiksegment"
+    },
+    "muteSegments": {
+        "message": "Tillåt segment som tystar ljudet i stället för att hoppa över"
     },
     "colorFormatIncorrect": {
         "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."

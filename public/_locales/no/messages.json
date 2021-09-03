@@ -320,9 +320,6 @@
     "changeUserID": {
         "message": "Importer/Eksporter din bruker-ID"
     },
-    "whatChangeUserID": {
-        "message": "Dette burde holdes privat. Dette er som et passord og burde ikke deles med noen. Hvis noen har dette, kan de etterligne deg."
-    },
     "setUserID": {
         "message": "Angi bruker-ID"
     },

@@ -32,7 +32,7 @@
         "message": "Melden"
     },
     "reportButtonInfo": {
-        "message": "Diesen Beitrag als falsch melden."
+        "message": "Beitrag als unzulässig melden."
     },
     "Dismiss": {
         "message": "Abbrechen"
@@ -51,6 +51,9 @@
     },
     "reskip": {
         "message": "Nochmal überspringen"
+    },
+    "unmute": {
+        "message": "Ton an"
     },
     "paused": {
         "message": "Pausiert"
@@ -86,7 +89,7 @@
         "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisiere den Tab."
     },
     "refreshSegments": {
-        "message": "Segment aktualisieren"
+        "message": "Segmente aktualisieren"
     },
     "success": {
         "message": "Geschafft!"
@@ -161,6 +164,9 @@
     "setUsername": {
         "message": "Benutzernamen festlegen"
     },
+    "copyPublicID": {
+        "message": "Öffentliche Benutzer-ID kopieren"
+    },
     "discordAdvert": {
         "message": "Tritt dem offiziellen Discord-Server bei und teile Anregungen und Feedback!"
     },
@@ -227,6 +233,21 @@
     "showSkipNotice": {
         "message": "Zeige Pop-up nach dem Überspringen eines Segments"
     },
+    "noticeVisibilityMode0": {
+        "message": "Skip-Meldung in voller größe"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Kleine Skip-Meldung für Auto-Skips"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Alles kleine Skip-Meldungen"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Verblasste Skip-Meldung für Auto-Skip"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Alles verblasste Skip-Meldungen"
+    },
     "longDescription": {
         "message": "SponsorBlock lässt dich gesponserte Videosegmente, Intros, Outros, Interaktions-Erinnerungen, Musikvideoteile ohne Musik und andere nervige Teile von YouTube-Videos überspringen. SponsorBlock ist eine crowdsourced Browser-Erweiterung, in der jeder die Start- und Endzeit gesponserter Videosegmente und anderer Segmente von YouTube-Videos einreicht. Sobald eine Person diese Informationen einreicht, überspringen alle anderen mit dieser Erweiterung das gesponserte Segment.",
         "description": "Full description of the extension on the store pages."
@@ -262,7 +283,8 @@
     "keybindDescriptionComplete": {
         "message": "Die Taste wurde festgelegt auf: "
     },
-    "0": {
+   
+  "0": {
         "message": "Zeitüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
     },
     "disableSkipping": {
@@ -283,6 +305,9 @@
     },
     "skip": {
         "message": "Überspringen"
+    },
+    "mute": {
+        "message": "Ton aus"
     },
     "skip_category": {
         "message": "{0} überspringen?"
@@ -348,7 +373,7 @@
         "message": "Benutzer-ID importieren/exportieren"
     },
     "whatChangeUserID": {
-        "message": "Halte diese ID geheim. Sie ist dazu in der Lage dich eindeutig zu identifizieren und sollte mit niemanden geteilt werden."
+        "message": "Dies sollte geheim gehalten werden. Dies ist wie ein Passwort und sollte mit niemandem geteilt werden. Sollte es jemand haben, könnte er sich als dich ausgeben. Wenn du nach deiner öffentlichen Benutzer-ID suchst, klicke das \"Kopieren\"-Symbol bei deinem Benutzernamen im Popup."
     },
     "setUserID": {
         "message": "Interne Benutzer-ID festlegen"
@@ -469,7 +494,7 @@
         "message": "Vorschau"
     },
     "unsubmitted": {
-        "message": "Nicht eingereicht"
+        "message": "Nicht übermittelt"
     },
     "inspect": {
         "message": "Überprüfen"
@@ -577,11 +602,17 @@
     "autoSkip_POI": {
         "message": "Automatisch zum Start springen"
     },
+    "manualSkip_POI": {
+        "message": "Beim Laden des Videos fragen"
+    },
     "showOverlay_POI": {
-        "message": "In der Video-Zeitleiste anzeigen"
+        "message": "In Suchleiste anzeigen"
     },
     "autoSkipOnMusicVideos": {
         "message": "Alle Segmente automatisch überspringen, wenn ein nicht-Musiksegment vorhanden ist"
+    },
+    "muteSegments": {
+        "message": "Segmente zulassen, die den Ton ausschalten anstatt zu überspringen"
     },
     "colorFormatIncorrect": {
         "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
@@ -693,18 +724,91 @@
     "help": {
         "message": "Hilfe"
     },
+    "GotIt": {
+        "message": "Verstanden",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
-        "message": "Abmeldung aller zukünftigen Experimente",
+        "message": "Aus allen zukünftigen Experimenten abmelden",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Dauerhaft verbergen"
     },
     "warningChatInfo": {
-        "message": "Du wurdest ermahnt und kannst zur Zeit keine Segmente einreichen. Uns ist nämlich aufgefallen, dass du ein paar gängige Fehler machst, die nicht bösartig sind. Um die Regeln klarzustellen laden wir dich zu einem kurzem Gespräch auf discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app ein"
+        "message": "Du wurdest verwarnt und kannst vorrübergehend keine Segmente einreichen. Es ist uns aufgefallen, dass du gängige Fehler machst, welche nicht schädlich sind, und wir wollen dir nur die Regeln klar machen. Du kannst auch dem Chat durch discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app beitreten"
     },
     "voteRejectedWarning": {
-        "message": "Abstimmung wegen einer Warnung abgelehnt. Um über sie zu reden, klicke hier, oder schreibe uns später.",
+        "message": "Abstimmung wegen einer Warnung abgelehnt. Klicke hier um einen Chat zu öffnen, oder versuch es später erneut, wenn du Zeit hast.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Spenden"
+    },
+    "hideDonationLink": {
+        "message": "Verstecke Spendenlink"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Danke fürs installieren von SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Bitte überprüfe die unten stehenden Optionen"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Viele Funktionen sind standardmäßig deaktiviert. Wenn du Intros und Outtros überspringen willst, Invidious verwenden willst, usw. aktiviere sie unten. Du kannst auch UI-Elemente verstecken/anzeigen."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Wie überspringen funktioniert"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Videosegmente werden automatisch übersprungen, wenn sie in der Datenbank gefunden werden. Du kannst das Popup öffnen, indem du auf das Erweiterungssymbol klickst, um eine Vorschau darüber zu erhalten, was diese sind."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Wannimmer du ein Segment überspringst, wirst du benachrichtigt. Wenn das Timing falsch erscheint, kannst du as durch klicken auf den Downvote button downvoten! Du kannst auch im Popup voten."
+    },
+    "Submitting": {
+        "message": "Übermitteln"
+    },
+    "helpPageSubmitting1": {
+        "message": "Das übermitteln kann entweder im Popup durch das drücken vom \"Segment Started Jetzt\" Knopf oder im Videoplayer mit den Knöpfen im Player gemacht werden."
+    },
+    "helpPageSubmitting2": {
+        "message": "Mit einem Klick auf den Play-Knopf wird der Beginn eines Segments und mit dem klick auf den Stop-Knopf das ende eines Segments markiert. Du kannst mehrere Sponsoren vorbereiten, bevor du auf Absenden klickst. Das klicken des Upload-Knopfes wird die Segmente übermitteln. Das klicken des Mülleimers löscht es."
+    },
+    "Editing": {
+        "message": "Bearbeitung"
+    },
+    "helpPageEditing1": {
+        "message": "Wenn du etwas falsch gemacht hast, kannst du ein Segment bearbeiten oder löschen nachdem du auf den Auf-Pfeil Knopf gedrückt hast."
+    },
+    "helpPageTooSlow": {
+        "message": "Das ist zu langsam"
+    },
+    "helpPageTooSlow1": {
+        "message": "Es gibt Hotkeys, wenn du diese verwenden möchtest. Drücke die Semikolon-Taste um den Anfang/das Ende eines Sponsor-Segments zu markieren und die Abostrophe-Taste um es zu übermitteln. Diese können in den Optionen geändert werden. Wenn du keine QWERTY-Tastatur verwendest, solltest du eventuell die Keybinds ändern."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Kann ich eine kopie der Datenbank erhalten? Was passiert wenn du verschwindest?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Die Datenbank ist öffentlich und verfügbar unter"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Der Quellcode ist frei verfügbar. Selbst wenn mir etwas passieren würde wären deine Übermittlungen nicht verloren."
+    },
+    "helpPageNews": {
+        "message": "Nachrichten und wie es gemacht wird"
+    },
+    "helpPageSourceCode": {
+        "message": "Wo kann ich den Quellcode kriegen?"
+    },
+    "Credits": {
+        "message": "Credits"
+    },
+    "highlightNewFeature": {
+        "message": "Neu! Gehe mit einem Klick zum Punkt des Videos mit der neuen \"Hervorheben\" Kategorie"
+    },
+    "LearnMore": {
+        "message": "Erfahre mehr"
     }
 }

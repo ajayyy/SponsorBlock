@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config"
-import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode } from "../types";
+import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 
@@ -39,8 +39,9 @@ export interface SkipNoticeState {
     maxCountdownTime?: () => number;
     countdownText?: string;
 
-    unskipText?: string;
-    unskipCallback?: (index: number) => void;
+    skipButtonText?: string;
+    skipButtonCallback?: (index: number) => void;
+    showSkipButton?: boolean;
 
     downvoting?: boolean;
     choosingCategory?: boolean;
@@ -82,7 +83,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.audio = null;
 
         const noticeTitle = getSkippingText(this.segments, this.props.autoSkip);
-    
+
         const previousSkipNotices = document.getElementsByClassName("sponsorSkipNoticeParent");
         this.amountOfPreviousNotices = previousSkipNotices.length;
         // If there is at least one already in the first slot
@@ -110,8 +111,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             countdownTime: Config.config.skipNoticeDuration,
             countdownText: null,
 
-            unskipText: chrome.i18n.getMessage("unskip"),
-            unskipCallback: (index) => this.unskip(index),
+            skipButtonText: this.getUnskipText(),
+            skipButtonCallback: (index) => this.unskip(index),
+            showSkipButton: true,
 
             downvoting: false,
             choosingCategory: false,
@@ -126,7 +128,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         if (!this.autoSkip) {
             // Assume manual skip is only skipping 1 submission
-            Object.assign(this.state, this.getUnskippedModeInfo(0, chrome.i18n.getMessage("skip")));
+            Object.assign(this.state, this.getUnskippedModeInfo(0, this.getSkipText()));
         }
     }
 
@@ -165,6 +167,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 ref={this.noticeRef}
                 closeListener={() => this.closeListener()}
                 smaller={this.state.smaller}
+                limitWidth={true}
                 firstColumn={firstColumn}
                 bottomRow={[...this.getMessageBoxes(), ...this.getBottomRow() ]}
                 onMouseEnter={() => this.onMouseEnter() } >
@@ -296,9 +299,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getSkipButton(): JSX.Element {
-        if (this.segments.length > 1 
+        if (this.state.showSkipButton && (this.segments.length > 1 
                 || getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI
-                || this.props.unskipTime) {
+                || this.props.unskipTime)) {
             return (
                 <span className="sponsorSkipNoticeUnskipSection">
                     <button id={"sponsorSkipUnskipButton" + this.idSuffix}
@@ -306,7 +309,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         style={{marginLeft: "4px"}}
                         onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
 
-                        {this.state.unskipText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
+                        {this.state.skipButtonText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
                     </button>
                 </span>
             );
@@ -396,7 +399,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value as Category, this)
                 break;
             case SkipNoticeAction.Unskip:
-                this.state.unskipCallback(index);
+                this.state.skipButtonCallback(index);
                 break;
         }
 
@@ -456,7 +459,29 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     unskip(index: number): void {
         this.contentContainer().unskipSponsorTime(this.segments[index], this.props.unskipTime);
 
-        this.unskippedMode(index, chrome.i18n.getMessage("reskip"));
+        this.unskippedMode(index, this.getReskipText());
+    }
+
+    reskip(index: number): void {
+        this.contentContainer().reskipSponsorTime(this.segments[index]);
+
+        const newState: SkipNoticeState = {
+            skipButtonText: this.getUnskipText(),
+            skipButtonCallback: this.unskip.bind(this),
+
+            maxCountdownTime: () => Config.config.skipNoticeDuration,
+            countdownTime: Config.config.skipNoticeDuration
+        };
+
+        // See if the title should be changed
+        if (!this.autoSkip) {
+            newState.noticeTitle = chrome.i18n.getMessage("noticeTitle");
+        }       
+
+        //reset countdown
+        this.setState(newState, () => {
+            this.noticeRef.current.resetCountdown();
+        });
     }
 
     /** Sets up notice to be not skipped yet */
@@ -478,34 +503,12 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         } : this.state.maxCountdownTime;
 
         return {
-            unskipText: buttonText,
-            unskipCallback: (index) => this.reskip(index),
+            skipButtonText: buttonText,
+            skipButtonCallback: (index) => this.reskip(index),
             // change max duration to however much of the sponsor is left
             maxCountdownTime: maxCountdownTime,
             countdownTime: maxCountdownTime()
         } as SkipNoticeState;
-    }
-
-    reskip(index: number): void {
-        this.contentContainer().reskipSponsorTime(this.segments[index]);
-
-        const newState: SkipNoticeState = {
-            unskipText: chrome.i18n.getMessage("unskip"),
-            unskipCallback: this.unskip.bind(this),
-
-            maxCountdownTime: () => Config.config.skipNoticeDuration,
-            countdownTime: Config.config.skipNoticeDuration
-        };
-
-        // See if the title should be changed
-        if (!this.autoSkip) {
-            newState.noticeTitle = chrome.i18n.getMessage("noticeTitle");
-        }       
-
-        //reset countdown
-        this.setState(newState, () => {
-            this.noticeRef.current.resetCountdown();
-        });
     }
 
     afterVote(segment: SponsorTime, type: number, category: Category): void {
@@ -557,6 +560,52 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.clearConfigListener();
 
         this.props.closeListener();
+    }
+
+    unmutedListener(): void {
+        if (this.props.segments.length === 1 
+                && this.props.segments[0].actionType === ActionType.Mute 
+                && this.contentContainer().v.currentTime >= this.props.segments[0].segment[1]) {
+            this.setState({
+                showSkipButton: false
+            });
+        }
+    }
+
+    private getUnskipText(): string {
+        switch (this.props.segments[0].actionType) {
+            case ActionType.Mute: {
+                return chrome.i18n.getMessage("unmute");
+            }
+            case ActionType.Skip: 
+            default: {
+                return chrome.i18n.getMessage("unskip");
+            }
+        }
+    }
+
+    private getReskipText(): string {
+        switch (this.props.segments[0].actionType) {
+            case ActionType.Mute: {
+                return chrome.i18n.getMessage("mute");
+            }
+            case ActionType.Skip: 
+            default: {
+                return chrome.i18n.getMessage("reskip");
+            }
+        }
+    }
+
+    private getSkipText(): string {
+        switch (this.props.segments[0].actionType) {
+            case ActionType.Mute: {
+                return chrome.i18n.getMessage("mute");
+            }
+            case ActionType.Skip: 
+            default: {
+                return chrome.i18n.getMessage("skip");
+            }
+        }
     }
 }
 

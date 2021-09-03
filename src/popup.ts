@@ -1,9 +1,10 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType } from "./types";
+import { SponsorTime, SponsorHideType, CategoryActionType } from "./types";
 import { Message, MessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
+import { getCategoryActionType } from "./utils/categoryUtils";
 const utils = new Utils();
 
 interface MessageListener {
@@ -96,6 +97,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "usernameInput",
         "usernameValue",
         "submitUsername",
+        "sbPopupIconCopyUserID",
         // More
         "submissionSection",
         "mainControls",
@@ -134,6 +136,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.optionsButton.addEventListener("click", openOptions);
     PageElements.helpButton.addEventListener("click", openHelp);
     PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
+    PageElements.sbPopupIconCopyUserID.addEventListener("click", async () => navigator.clipboard.writeText(await utils.getHash(Config.config.userID)));
 
     /** If true, the content script is in the process of creating a new segment. */
     let creatingSegment = false;
@@ -291,12 +294,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             if (request.found) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
-                PageElements.refreshSegmentsButton.classList.remove("hidden");
 
                 displayDownloadedSponsorTimes(request);
             } else {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
-                PageElements.refreshSegmentsButton.classList.add("hidden");
             }
         }
 
@@ -401,7 +402,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
-                segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true);
+                segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
+                            (getCategoryActionType(segmentTimes[i].category) !== CategoryActionType.POI 
+                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) 
+                                : "");
                 segmentTimeFromToNode.style.margin = "5px";
 
                 sponsorTimeButton.appendChild(categoryColorCircle);

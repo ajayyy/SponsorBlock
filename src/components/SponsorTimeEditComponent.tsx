@@ -1,12 +1,12 @@
 import * as React from "react";
-
-import Config from "../config";
 import * as CompileConfig from "../../config.json";
-
+import Config from "../config";
+import { ActionType, ActionTypes, Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
-import { Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
-import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { getCategoryActionType } from "../utils/categoryUtils";
+import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
+
+
 const utils = new Utils();
 
 export interface SponsorTimeEditProps {
@@ -32,6 +32,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     idSuffix: string;
 
     categoryOptionRef: React.RefObject<HTMLSelectElement>;
+    actionTypeOptionRef: React.RefObject<HTMLSelectElement>;
 
     configUpdateListener: () => void;
 
@@ -39,6 +40,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         super(props);
 
         this.categoryOptionRef = React.createRef();
+        this.actionTypeOptionRef = React.createRef();
 
         this.idSuffix = this.props.idSuffix;
 
@@ -171,7 +173,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 {/* Category */}
                 <div style={{position: "relative"}}>
                     <select id={"sponsorTimeCategories" + this.idSuffix}
-                        className="sponsorTimeCategories"
+                        className="sponsorTimeEditSelector sponsorTimeCategories"
                         defaultValue={sponsorTime.category}
                         ref={this.categoryOptionRef}
                         onChange={this.categorySelectionChange.bind(this)}>
@@ -187,6 +189,19 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             title={chrome.i18n.getMessage("categoryGuidelines")} />
                     </a>
                 </div>
+
+                {/* Action Type */}
+                {getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable ? (
+                    <div style={{position: "relative"}}>
+                        <select id={"sponsorTimeActionTypes" + this.idSuffix}
+                            className="sponsorTimeEditSelector sponsorTimeActionTypes"
+                            defaultValue={sponsorTime.actionType}
+                            ref={this.actionTypeOptionRef}
+                            onChange={() => this.saveEditTimes()}>
+                            {this.getActionTypeOptions()}
+                        </select>
+                    </div>
+                ): ""}
 
                 <br/>
 
@@ -269,6 +284,21 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.saveEditTimes();
     }
 
+    getActionTypeOptions(): React.ReactElement[] {
+        const elements = [];
+
+        for (const actionType of ActionTypes) {
+            elements.push(
+                <option value={actionType}
+                        key={actionType}>
+                    {chrome.i18n.getMessage(actionType)}
+                </option>
+            );
+        }
+
+        return elements;
+    }
+
     setTimeToNow(index: number): void {
         this.setTimeTo(index, this.props.contentContainer().getRealCurrentTime());
     }
@@ -331,6 +361,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
 
         sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value as Category;
+        sponsorTimesSubmitting[this.props.index].actionType = 
+            this.actionTypeOptionRef?.current ? this.actionTypeOptionRef.current.value as ActionType : ActionType.Skip;
 
         Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 

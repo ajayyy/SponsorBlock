@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Opnieuw overslaan"
     },
+    "unmute": {
+        "message": "Niet meer dempen"
+    },
     "paused": {
         "message": "Gepauzeerd"
     },
@@ -160,6 +163,9 @@
     },
     "setUsername": {
         "message": "Gebruikersnaam instellen"
+    },
+    "copyPublicID": {
+        "message": "Publieke gebruikers-ID kopiëren"
     },
     "discordAdvert": {
         "message": "Word lid van de officiële Discord-server om suggesties en feedback te geven!"
@@ -299,6 +305,9 @@
     "skip": {
         "message": "Overslaan"
     },
+    "mute": {
+        "message": "Dempen"
+    },
     "skip_category": {
         "message": "{0} overslaan?"
     },
@@ -363,7 +372,7 @@
         "message": "Uw gebruikers-ID importeren/exporteren"
     },
     "whatChangeUserID": {
-        "message": "Dit moet privé gehouden worden. Dit is als een wachtwoord en mag met niemand gedeeld worden. Als iemand dit heeft, kan hij zich voordoen als u."
+        "message": "Dit moet privé gehouden worden. Dit is als een wachtwoord en mag met niemand gedeeld worden. Als iemand dit heeft, kan hij zich voordoen als u. Klik op het klembordpictogram in de popup als u op zoek bent naar uw publieke gebrukers-ID."
     },
     "setUserID": {
         "message": "Gebruikers-ID instellen"
@@ -600,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Automatisch alle segmenten overslaan wanneer er een niet-muziek-segment is"
+    },
+    "muteSegments": {
+        "message": "Segmenten toestaan die audio dempen in plaats van overslaan"
     },
     "colorFormatIncorrect": {
         "message": "Uw kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
