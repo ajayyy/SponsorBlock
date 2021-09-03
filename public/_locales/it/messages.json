@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Salta ancora"
     },
+    "unmute": {
+        "message": "Riattiva microfono"
+    },
     "paused": {
         "message": "In pausa"
     },
@@ -301,6 +304,9 @@
     },
     "skip": {
         "message": "Salta"
+    },
+    "mute": {
+        "message": "Silenzia"
     },
     "skip_category": {
         "message": "Vuoi saltare {0}?"
@@ -603,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Salta automaticamente tutti i segmenti quando c'è un segmento non musicale"
+    },
+    "muteSegments": {
+        "message": "Consenti i segmenti che silenziano l'audio invece di saltare"
     },
     "colorFormatIncorrect": {
         "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
