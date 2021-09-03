@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Znovu preskočiť"
     },
+    "unmute": {
+        "message": "Zrušiť stíšenie"
+    },
     "paused": {
         "message": "Pozastavené"
     },
@@ -287,6 +290,9 @@
     "skip": {
         "message": "Preskočiť"
     },
+    "mute": {
+        "message": "Stíšiť"
+    },
     "skip_category": {
         "message": "Preskočiť {0}?"
     },
@@ -351,7 +357,7 @@
         "message": "Import/export vášho ID používateľa"
     },
     "whatChangeUserID": {
-        "message": "Toto si držte v bezpečí. Je to ako heslo a nemali by ste ho s nikým zdieľať. Ten kto ho má by sa mohol za vás vydávať."
+        "message": "Toto si starostlivo uchovajte. Podobne ako heslo by ste to nemali s nikým zdieľať. Ak by to získal niekto ďalší, mohol by vám uškodiť. Ak hľadáte vaše verejné ID používateľa, stlačte ikonu schránky v podokne."
     },
     "setUserID": {
         "message": "Nastaviť Používateľove ID"
@@ -588,6 +594,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky preskočiť všetky segmenty ak neexistuje segment bez hudby"
+    },
+    "muteSegments": {
+        "message": "Povoliť segmenty, ktoré namiesto preskočenia stíšía zvuk"
     },
     "colorFormatIncorrect": {
         "message": "Vaša farba je nesprávne naformátovaná. Mal by to byť 3 alebo 6-miestny hexadecimálny kód so znakom čísla na začiatku."

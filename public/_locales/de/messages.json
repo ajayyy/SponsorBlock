@@ -32,7 +32,7 @@
         "message": "Melden"
     },
     "reportButtonInfo": {
-        "message": "Diesen Beitrag als falsch melden."
+        "message": "Beitrag als unzulässig melden."
     },
     "Dismiss": {
         "message": "Abbrechen"
@@ -51,6 +51,9 @@
     },
     "reskip": {
         "message": "Nochmal überspringen"
+    },
+    "unmute": {
+        "message": "Ton an"
     },
     "paused": {
         "message": "Pausiert"
@@ -86,7 +89,7 @@
         "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisiere den Tab."
     },
     "refreshSegments": {
-        "message": "Segment aktualisieren"
+        "message": "Segmente aktualisieren"
     },
     "success": {
         "message": "Geschafft!"
@@ -162,7 +165,7 @@
         "message": "Benutzernamen festlegen"
     },
     "copyPublicID": {
-        "message": "Öffentliche UserID kopieren"
+        "message": "Öffentliche Benutzer-ID kopieren"
     },
     "discordAdvert": {
         "message": "Tritt dem offiziellen Discord-Server bei und teile Anregungen und Feedback!"
@@ -302,6 +305,9 @@
     "skip": {
         "message": "Überspringen"
     },
+    "mute": {
+        "message": "Ton aus"
+    },
     "skip_category": {
         "message": "{0} überspringen?"
     },
@@ -366,7 +372,7 @@
         "message": "Benutzer-ID importieren/exportieren"
     },
     "whatChangeUserID": {
-        "message": "Halte diese ID geheim. Sie ist dazu in der Lage dich eindeutig zu identifizieren und sollte mit niemanden geteilt werden."
+        "message": "Dies sollte geheim gehalten werden. Dies ist wie ein Passwort und sollte mit niemandem geteilt werden. Sollte es jemand haben, könnte er sich als dich ausgeben. Wenn du nach deiner öffentlichen Benutzer-ID suchst, klicke das \"Kopieren\"-Symbol bei deinem Benutzernamen im Popup."
     },
     "setUserID": {
         "message": "Interne Benutzer-ID festlegen"
@@ -487,7 +493,7 @@
         "message": "Vorschau"
     },
     "unsubmitted": {
-        "message": "Nicht eingereicht"
+        "message": "Nicht übermittelt"
     },
     "inspect": {
         "message": "Überprüfen"
@@ -599,10 +605,13 @@
         "message": "Beim Laden des Videos fragen"
     },
     "showOverlay_POI": {
-        "message": "In der Video-Zeitleiste anzeigen"
+        "message": "In Suchleiste anzeigen"
     },
     "autoSkipOnMusicVideos": {
         "message": "Alle Segmente automatisch überspringen, wenn ein nicht-Musiksegment vorhanden ist"
+    },
+    "muteSegments": {
+        "message": "Segmente zulassen, die den Ton ausschalten anstatt zu überspringen"
     },
     "colorFormatIncorrect": {
         "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
@@ -719,17 +728,17 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "experiementOptOut": {
-        "message": "Abmeldung aller zukünftigen Experimente",
+        "message": "Aus allen zukünftigen Experimenten abmelden",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Dauerhaft verbergen"
     },
     "warningChatInfo": {
-        "message": "Du wurdest ermahnt und kannst zur Zeit keine Segmente einreichen. Uns ist nämlich aufgefallen, dass du ein paar gängige Fehler machst, die nicht bösartig sind. Um die Regeln klarzustellen laden wir dich zu einem kurzem Gespräch auf discord.gg/SponsorBlock oder matrix.to/#/+sponsor:ajay.app ein"
+        "message": "Du wurdest verwarnt und kannst vorrübergehend keine Segmente einreichen. Es ist uns aufgefallen, dass du gängige Fehler machst, welche nicht schädlich sind, und wir wollen dir nur die Regeln klar machen. Du kannst auch dem Chat durch discord.gg/SponsorBlock oder matrix.to/#/+sponsor:ajay.app beitreten"
     },
     "voteRejectedWarning": {
-        "message": "Abstimmung wegen einer Warnung abgelehnt. Um über sie zu reden, klicke hier, oder schreibe uns später.",
+        "message": "Abstimmung wegen einer Warnung abgelehnt. Klicke hier um einen Chat zu öffnen, oder versuch es später erneut, wenn du Zeit hast.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
@@ -751,7 +760,7 @@
         "message": "Wie überspringen funktioniert"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Videosegmente werden automatisch übersprungen, wenn sie in der Datenbank gefunden werden. Du kannst das Popup öffnen, indem du auf das Erweiterungssymbol klickst, um eine Vorschau zu erhalten, was sie sind."
+        "message": "Videosegmente werden automatisch übersprungen, wenn sie in der Datenbank gefunden werden. Du kannst das Popup öffnen, indem du auf das Erweiterungssymbol klickst, um eine Vorschau darüber zu erhalten, was diese sind."
     },
     "helpPageHowSkippingWorks2": {
         "message": "Wannimmer du ein Segment überspringst, wirst du benachrichtigt. Wenn das Timing falsch erscheint, kannst du as durch klicken auf den Downvote button downvoten! Du kannst auch im Popup voten."
@@ -775,7 +784,7 @@
         "message": "Das ist zu langsam"
     },
     "helpPageTooSlow1": {
-        "message": "Es gibt Hotkeys, wenn du diese verwenden möchtest. Drücke die Semikolon-Taste um den Anfang/das Ende eines Sponsor-Segments zu markieren und die Abostrphe-Taste um es zu übermitteln. Diese können in den Optionen geändert werden. Wenn du keine QWERTY-Tastatur verwendest, solltest du eventuell die Keybinds ändern."
+        "message": "Es gibt Hotkeys, wenn du diese verwenden möchtest. Drücke die Semikolon-Taste um den Anfang/das Ende eines Sponsor-Segments zu markieren und die Abostrophe-Taste um es zu übermitteln. Diese können in den Optionen geändert werden. Wenn du keine QWERTY-Tastatur verwendest, solltest du eventuell die Keybinds ändern."
     },
     "helpPageCopyOfDatabase": {
         "message": "Kann ich eine kopie der Datenbank erhalten? Was passiert wenn du verschwindest?"
@@ -796,7 +805,7 @@
         "message": "Credits"
     },
     "highlightNewFeature": {
-        "message": "Neu! Gehe mit einem Klick zum Punkt des Videos mit der neuen Highlight Kategorie"
+        "message": "Neu! Gehe mit einem Klick zum Punkt des Videos mit der neuen \"Hervorheben\" Kategorie"
     },
     "LearnMore": {
         "message": "Erfahre mehr"

@@ -179,9 +179,6 @@
     "hoursLower": {
         "message": "h"
     },
-    "whatChangeUserID": {
-        "message": "Ovo bi trebalo ostati privatno. slično je lozinki i ne bi se smjelo dijeliti ni s kime. Ako netko ovo ima, mogu se lažno predstavljati kao ti."
-    },
     "setUserID": {
         "message": "Postavi UserID"
     },

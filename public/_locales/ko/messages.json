@@ -52,6 +52,9 @@
     "reskip": {
         "message": "다시 건너뛰기"
     },
+    "unmute": {
+        "message": "음소거 해제"
+    },
     "paused": {
         "message": "정지됨"
     },
@@ -160,6 +163,9 @@
     },
     "setUsername": {
         "message": "사용자 이름 설정"
+    },
+    "copyPublicID": {
+        "message": "공개 사용자 ID 복사"
     },
     "discordAdvert": {
         "message": "공식 디스코드 서버에 들어와서 기능 제안을 해주시거나 피드백을 남겨주세요!"
@@ -299,6 +305,9 @@
     "skip": {
         "message": "스킵"
     },
+    "mute": {
+        "message": "음소거"
+    },
     "skip_category": {
         "message": "{0} 을(를) 건너뛰겠어요?"
     },
@@ -363,7 +372,7 @@
         "message": "사용자 ID 가져오기/내보내기"
     },
     "whatChangeUserID": {
-        "message": "이 정보는 다른 사람에게 공개하지 마세요. 이것은 비밀번호처럼 절대로 알려주면 안되는 정보입니다. 다른 사람이 이 정보를 습득했을 경우 사용자를 사칭할 수도 있습니다."
+        "message": "이 정보는 다른 사람에게 공개하지 마세요. 이것은 비밀번호처럼 절대로 알려주면 안되는 정보입니다. 다른 사람이 이 정보를 습득했을 경우 사용자를 사칭할 수도 있습니다. 혹시 공개 사용자 ID를 찾고 있다면, 팝업 내 클립보드 아이콘을 누르시기 바랍니다."
     },
     "setUserID": {
         "message": "사용자ID 설정"
@@ -600,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "음악이 아닌 구간이 있을 때는 모든 구간 자동 건너뛰기"
+    },
+    "muteSegments": {
+        "message": "구간을 건너뛰지 않고 음소거 처리하도록 합니다"
     },
     "colorFormatIncorrect": {
         "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."

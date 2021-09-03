@@ -320,9 +320,6 @@
     "changeUserID": {
         "message": "Import / Eksport Id Pengguna Anda"
     },
-    "whatChangeUserID": {
-        "message": "Perkara ini harus dirahsiakan. Ini seperti kata laluan dan tidak boleh dikongsi dengan sesiapa pun. Sekiranya seseorang mempunyai ini, mereka boleh menyamar sebagai anda."
-    },
     "setUserID": {
         "message": "Tetapkan Id Pengguna"
     },

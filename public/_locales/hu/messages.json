@@ -329,9 +329,6 @@
     "changeUserID": {
         "message": "UserID importálása / exportálása"
     },
-    "whatChangeUserID": {
-        "message": "Ezt titokban kell tartani. Olyan, mint egy jelszó, nem szabad senkivel megosztania. Ha valakinek megvan, megszemélyesítheti Önt."
-    },
     "setUserID": {
         "message": "UserID beállítása"
     },

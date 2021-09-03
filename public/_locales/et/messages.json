@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Jäta uuesti vahele"
     },
+    "unmute": {
+        "message": "Tühista vaigistus"
+    },
     "paused": {
         "message": "Pausil"
     },
@@ -302,6 +305,9 @@
     "skip": {
         "message": "Jäta vahele"
     },
+    "mute": {
+        "message": "Vaigista"
+    },
     "skip_category": {
         "message": "Jätad {0} vahele?"
     },
@@ -366,7 +372,7 @@
         "message": "Impordi/ekspordi oma UserID"
     },
     "whatChangeUserID": {
-        "message": "Seda tuleks privaatsena hoida. See on nagu parool ning seda ei tohiks kellegagi jagada. Kui kellelgi see on, saavad nad sinuna esineda."
+        "message": "Seda tuleks privaatsena hoida. See on nagu parool ning seda ei tohiks kellegagi jagada. Kui kellelgi see on, saavad nad sinuna esineda.\nKui otsid avalikku UserID'd, klõpsa hüpikus olevat lõikelaua ikooni."
     },
     "setUserID": {
         "message": "Seadista UserID"
@@ -603,6 +609,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Jäta automaatselt kõik segmendid vahele, kui eksisteerib mitte-muusika segment"
+    },
+    "muteSegments": {
+        "message": "Luba segmente, mis vahelejätmise asemel vaigistavad heli"
     },
     "colorFormatIncorrect": {
         "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."

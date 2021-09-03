@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Sauter"
     },
+    "unmute": {
+        "message": "Réactiver le son"
+    },
     "paused": {
         "message": "En pause"
     },
@@ -161,6 +164,9 @@
     "setUsername": {
         "message": "Choisir un pseudonyme"
     },
+    "copyPublicID": {
+        "message": "Copier l'ID utilisateur"
+    },
     "discordAdvert": {
         "message": "Rejoignez le serveur Discord officiel pour toutes suggestions ou remarques!"
     },
@@ -227,6 +233,21 @@
     "showSkipNotice": {
         "message": "Notifier après qu'un segment ait été sauté"
     },
+    "noticeVisibilityMode0": {
+        "message": "Notifications de passage"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Petite notifications de passage pour l'auto skip"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Toute les petites notifications de passage"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Notifications de passage qui disparaissent pour l'auto skip"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Toute les notifications de passage qui disparaissent"
+    },
     "longDescription": {
         "message": "SponsorBlock vous permet de passer les sponsors, les intros, les outros, les rappels d'abonnement et autres parties ennuyeuses des vidéos YouTube. SponsorBlock est une extension de navigateur qui permet à n'importe qui de soumettre les temps de début et de fin des segments sponsorisés et d'autres segments de vidéos YouTube. Une fois qu'une personne a soumis ces informations, toutes les autres personnes possédant cette extension passeront directement les segments sponsorisés. Vous pouvez également sauter les sections non musicales des vidéos musicales.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +305,23 @@
     "skip": {
         "message": "Passer"
     },
+    "mute": {
+        "message": "Couper le son"
+    },
     "skip_category": {
         "message": "Passer {0} ?"
+    },
+    "skip_to_category": {
+        "message": "Passer à {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} ignoré",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Sauté à {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Désactiver le passage automatique"
@@ -336,7 +372,7 @@
         "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
     "whatChangeUserID": {
-        "message": "Cette information doit rester confidentielle. C'est comme un mot de passe et ne devrait pas être partagé avec quiconque. Si quelqu'un l'obtient, il pourra se faire passer pour vous."
+        "message": "Cela devrait rester privé. C'est comme un mot de passe et ne devrait être partagé avec personne. Si quelqu'un a cela, il peut vous usurper. Si vous recherchez votre identifiant d'utilisateur public, cliquez sur l'icône du presse-papiers dans le popup."
     },
     "setUserID": {
         "message": "Définir \"UserID\""
@@ -538,6 +574,12 @@
     "category_music_offtopic_short": {
         "message": "Hors musique"
     },
+    "category_poi_highlight": {
+        "message": "Surligner"
+    },
+    "category_poi_highlight_description": {
+        "message": "La partie de la vidéo que la plupart des gens veulent voir. Similaire à \"la vidéo commence à x mins\"."
+    },
     "category_livestream_messages": {
         "message": "Stream : lecture de dons et messages"
     },
@@ -555,6 +597,21 @@
     },
     "disable": {
         "message": "Désactiver"
+    },
+    "autoSkip_POI": {
+        "message": "Passer automatiquement au début"
+    },
+    "manualSkip_POI": {
+        "message": "Demander lors du chargement de la vidéo"
+    },
+    "showOverlay_POI": {
+        "message": "Afficher dans la barre de recherche"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "Ignorer automatiquement tous les segments lorsqu'il y a un segment non-musical"
+    },
+    "muteSegments": {
+        "message": "Autoriser les segments qui bloquent l'audio au lieu de le passer"
     },
     "colorFormatIncorrect": {
         "message": "Votre couleur est mal formatée. Il devrait s'agir d'un code hexadécimal à 3 ou 6 chiffres avec un signe numérique au début."
@@ -666,11 +723,91 @@
     "help": {
         "message": "Aide"
     },
+    "GotIt": {
+        "message": "Compris",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Se désinscrire de toutes les futures expériences",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Cacher pour toujours"
+    },
+    "warningChatInfo": {
+        "message": "Vous avez reçu un avertissement et ne pouvez pas soumettre des segments temporairement. Cela signifie que nous avons remarqué que vous commettez des erreurs courantes qui ne sont pas malveillantes, et que nous voulons simplement clarifier les règles. Vous pouvez également rejoindre ce chat en utilisant discord.gg/SponsorBlock ou matrix.to/#/+sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Le vote a été rejeté en raison d'un avertissement. Cliquez pour ouvrir un chat et y mettre fin , ou revenez plus tard lorsque vous avez le temps.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Faire un don"
+    },
+    "hideDonationLink": {
+        "message": "Cacher le lien de don"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Merci d'avoir installé SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Veuillez vérifier les options ci-dessous"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "De nombreuses fonctionnalités sont désactivées par défaut. Si vous voulez ignorer les intros, outros, utiliser Invidious, etc., activez-les ci-dessous. Vous pouvez également masquer/afficher les éléments de l'interface."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Comment fonctionne le saut d'un segment"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Les segments vidéo seront automatiquement ignorés s'ils sont trouvés dans la base de données. Vous pouvez ouvrir le popup en cliquant sur l'icône de l'extension pour obtenir un aperçu de ces segments."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "À chaque fois que vous sautez un segment, vous en serez averti. Si le timing semble incorrect, vous pouvez disliker le segment, vous pouvez également voter dans le popup."
+    },
+    "Submitting": {
+        "message": "Soumission en cours"
+    },
+    "helpPageSubmitting1": {
+        "message": "La soumission peut être effectuée dans le popup en appuyant sur le bouton \"le segment commence maintenant\" ou dans le lecteur vidéo avec les boutons du lecteur."
+    },
+    "helpPageSubmitting2": {
+        "message": "Cliquer sur le bouton de lecture indique le début d'un segment et cliquer sur l'icône d'arrêt indique la fin. Vous pouvez préparer plusieurs sponsors avant d'appuyer sur Soumettre. Cliquer sur le bouton de soumission enverra le segment. Cliquer sur le poubelle supprimera vos segments."
+    },
+    "Editing": {
+        "message": "Édition en cours"
+    },
+    "helpPageEditing1": {
+        "message": "Si vous avez fait une erreur, vous pouvez modifier ou supprimer vos segments après avoir cliqué sur le bouton avec la flèche vers le haut."
+    },
+    "helpPageTooSlow": {
+        "message": "Ceci est trop lent"
+    },
+    "helpPageTooSlow1": {
+        "message": "Il y a des raccourcis clavier si vous voulez les utiliser. Appuyez sur la touche point-virgule pour indiquer le début / la fin d'un segment sponsorisé et cliquez sur l'apostrophe pour soumettre. Cela peut être modifié dans les options. Si vous n'utilisez pas un clavier QWERTY, vous devriez probablement changer la touche assignée de base."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Puis-je obtenir une copie de la base de données ? Que se passe-t-il si vous disparaissez ?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "La base de données est publique et disponible à"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Le code source est librement disponible. Donc, même si il m'arrive quelque chose, vos soumissions ne seront pas perdues."
+    },
+    "helpPageNews": {
+        "message": "Nouvelles et comment elles sont faites"
+    },
+    "helpPageSourceCode": {
+        "message": "Où puis-je obtenir le code source ?"
+    },
+    "Credits": {
+        "message": "Crédits"
+    },
+    "highlightNewFeature": {
+        "message": "Nouveau! Aller à l'essentiel de la vidéo en un clic avec la nouvelle catégorie points essentiels"
+    },
+    "LearnMore": {
+        "message": "En savoir plus"
     }
 }

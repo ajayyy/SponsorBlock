@@ -339,9 +339,6 @@
     "changeUserID": {
         "message": "Importuj/Eksportuj swój identyfikator użytkownika"
     },
-    "whatChangeUserID": {
-        "message": "Ta informacja jest poufna i działa jak hasło. Użytkownik, który ma do niej dostęp, może zgłaszać treści jako ty."
-    },
     "setUserID": {
         "message": "Ustaw identyfikator użytkownika"
     },

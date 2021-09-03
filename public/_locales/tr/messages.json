@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Tekrar atla"
     },
+    "unmute": {
+        "message": "Sesi Aç"
+    },
     "paused": {
         "message": "Duraklatıldı"
     },
@@ -161,6 +164,9 @@
     "setUsername": {
         "message": "Kullanıcı Adı Belirle"
     },
+    "copyPublicID": {
+        "message": "Herkese Açık Kullanıcı Kimliğini Kopyala"
+    },
     "discordAdvert": {
         "message": "Öneri ve geri bildirimleriniz için resmi Discord serverımıza katılın!"
     },
@@ -227,6 +233,15 @@
     "showSkipNotice": {
         "message": "Bir Kısmı Atladıktan Sonra Uyarı Göster"
     },
+    "noticeVisibilityMode0": {
+        "message": "Tam Boyutlu Atlama Bildirimleri"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Otomatik Atlama için Küçük Atlama Bildirimleri"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Tüm Küçük Atlama Bildirimleri"
+    },
     "longDescription": {
         "message": "SponsorBlock, sponsorları, giriş ve bitiş kısımlarını, abonelik hatırlatıcılarını ve YouTube videolarının diğer can sıkıcı kısımlarını atlamanıza olanak tanır. SponsorBlock, herkesin sponsorlu kısımları ve YouTube videolarının diğer kısımlarının başlangıç ve bitiş zamanlarını göndermesine izin veren kitle kaynaklı bir tarayıcı uzantısıdır. Bir kişi bu bilgiyi gönderdikten sonra, bu uzantıya sahip diğer herkes sponsorlu kısımları hemen atlayacaktır. Müzik videolarının müzik dışı bölümlerini de atlayabilirsiniz.",
         "description": "Full description of the extension on the store pages."
@@ -283,6 +298,9 @@
     },
     "skip": {
         "message": "Atla"
+    },
+    "mute": {
+        "message": "Sustur"
     },
     "skip_category": {
         "message": "{0} atla?"
@@ -348,7 +366,7 @@
         "message": "Kullanıcı kimliğini Dışarı/İçeri Aktar"
     },
     "whatChangeUserID": {
-        "message": "Bu gizli tutulmalıdır. Bu bir şifreye benzer ve diğerleriyle paylaşılmaması gerekir. Birinin eline geçerse, sizi taklit edebilir."
+        "message": "Bu gizli tutulmalıdır. Bu bir şifre gibidir ve kimseyle paylaşılmamalıdır. Eğer birisi buna sahipse, seni taklit edebilir. Herkese açık kullanıcı kimliğinizi arıyorsanız, açılır pencerede pano simgesine tıklayın."
     },
     "setUserID": {
         "message": "Kullanıcı kimliği Belirle"
@@ -550,6 +568,12 @@
     "category_music_offtopic_short": {
         "message": "Müzik Olmayan Bölüm"
     },
+    "category_poi_highlight": {
+        "message": "Vurgu"
+    },
+    "category_poi_highlight_description": {
+        "message": "Videoda, çoğu insanın aradığı kısım. \"Video x sürede başlıyor\" yorumlarına benzer."
+    },
     "category_livestream_messages": {
         "message": "Canlı Yayın: Bağış/Mesaj Okuma"
     },
@@ -579,6 +603,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Müzik olmayan kısım varsa tüm kısımları otomatik atla"
+    },
+    "muteSegments": {
+        "message": "Atlamak yerine sesi kapatan bölümlere izin ver"
     },
     "colorFormatIncorrect": {
         "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
@@ -690,6 +717,10 @@
     "help": {
         "message": "Yardım"
     },
+    "GotIt": {
+        "message": "Anladım",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Gelecekteki deneylerin hiçbirine katılma",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -703,5 +734,23 @@
     "voteRejectedWarning": {
         "message": "Bir uyarı nedeniyle oy reddedildi. Çözüm bulmak için buraya tıklayarak bir sohbet açın veya daha sonra vaktiniz olduğunda uğrayın.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Bağış Yap"
+    },
+    "hideDonationLink": {
+        "message": "Bağış Bağlantısını Gizle"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "SponsorBlock'u yüklediğiniz için teşekkürler."
+    },
+    "helpPageReviewOptions": {
+        "message": "Lütfen aşağıdaki seçenekleri inceleyin"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Birçok özellik varsayılan olarak devre dışıdır. İntroları, outroları atlamak vb. kullanmak istiyorsanız, bunları aşağıdan etkinleştirin. Ayrıca arayüz öğelerini gizleyebilir/gösterebilirsiniz."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Atlama nasıl çalışıyor"
     }
 }
