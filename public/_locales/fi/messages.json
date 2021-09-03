@@ -735,7 +735,7 @@
         "message": "Piilota ikuisesti"
     },
     "warningChatInfo": {
-        "message": "Sait varoituksen ja et voi lähettää segmenttejä väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, ja haluamme vain selventää säännöt. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/+sponsor:ajay.app"
+        "message": "Sait varoituksen ja et voi lähettää segmenttejä väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, ja haluamme vain selventää säännöt. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Ääni hylättiin varoituksen takia. Klikkaa avataksesi chatin sen ratkaisemiseksi, tai tule takaisin myöhemmin kun sinulla on siihen aikaa.",

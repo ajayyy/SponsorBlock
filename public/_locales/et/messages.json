@@ -735,7 +735,7 @@
         "message": "Peida igaveseks"
     },
     "warningChatInfo": {
-        "message": "Sa said hoiatuse ning ei saa ajutiselt segmente saata. See tähendab, et me leidsime sind tegemast teatud sagedasi, mitte-pahatahtlikke vigu, ning soovime sulle meie reegleid täpsustada (inglise keeles). Sa võid selle vestlusega liituda ka discord.gg/SponsorBlock või matrix.to/#/+sponsor:ajay.app kaudu."
+        "message": "Sa said hoiatuse ning ei saa ajutiselt segmente saata. See tähendab, et me leidsime sind tegemast teatud sagedasi, mitte-pahatahtlikke vigu, ning soovime sulle meie reegleid täpsustada (inglise keeles). Sa võid selle vestlusega liituda ka discord.gg/SponsorBlock või matrix.to/#/#sponsor:ajay.app kaudu."
     },
     "voteRejectedWarning": {
         "message": "Hääletus hoiatuse tõttu tagasilükatud. Klõpsa, et avada selle lahendamiseks vestlus või tule hiljem tagasi, kui aega saad.",

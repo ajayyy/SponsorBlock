@@ -729,7 +729,7 @@
         "message": "Asla gösterme"
     },
     "warningChatInfo": {
-        "message": "Bir uyarı aldınız ve geçici bir süreliğine kısım gönderemeyeceksiniz. Sizin kısım göndermede zararlı olmayan bazı hatalar yaptığınızı belirledik ve size kuralları açıklamak istiyoruz. Bu sohbete discord.gg/SponsorBlock veya matrix.to/#/+sponsor:ajay.app üzerinden de katılabilirsiniz"
+        "message": "Bir uyarı aldınız ve geçici bir süreliğine kısım gönderemeyeceksiniz. Sizin kısım göndermede zararlı olmayan bazı hatalar yaptığınızı belirledik ve size kuralları açıklamak istiyoruz. Bu sohbete discord.gg/SponsorBlock veya matrix.to/#/#sponsor:ajay.app üzerinden de katılabilirsiniz"
     },
     "voteRejectedWarning": {
         "message": "Bir uyarı nedeniyle oy reddedildi. Çözüm bulmak için buraya tıklayarak bir sohbet açın veya daha sonra vaktiniz olduğunda uğrayın.",
