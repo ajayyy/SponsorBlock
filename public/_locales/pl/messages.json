@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Pomiń"
     },
+    "unmute": {
+        "message": "Odcisz"
+    },
     "paused": {
         "message": "Zatrzymany"
     },
@@ -161,6 +164,9 @@
     "setUsername": {
         "message": "Ustaw nazwę użytkownika"
     },
+    "copyPublicID": {
+        "message": "Kopiuj Publiczne ID Użytkownika"
+    },
     "discordAdvert": {
         "message": "Dołącz do oficjalnego serwera na discordzie i podziel się wrażeniami i sugestiami!"
     },
@@ -227,6 +233,9 @@
     "showSkipNotice": {
         "message": "Pokaż informację po pominięciu segmentu"
     },
+    "noticeVisibilityMode1": {
+        "message": "Małe powiadomienia o automatycznym przewijaniu"
+    },
     "longDescription": {
         "message": "SponsorBlock pozwala pomijać sponsorów, intra, outra, przypomnienia o subskrypcjach i inne irytujące fragmenty filmów na YouTube. SponsorBlock jest opartym na crowdsourcingu rozszerzeniem do przeglądarki, które pozwala każdemu zgłosić początek i koniec segmentów sponsorowanych oraz innych segmentów w filmach na YouTube. Kiedy ktoś już zamieści te informacje, wszyscy pozostali z tym rozszerzeniem będą pomijać segment sponsorowany. Możesz również pomijać fragmenty teledysków bez muzyki.",
         "description": "Full description of the extension on the store pages."
@@ -284,12 +293,23 @@
     "skip": {
         "message": "Pomiń"
     },
+    "mute": {
+        "message": "Wycisz"
+    },
     "skip_category": {
         "message": "Pominąć {0}?"
     },
     "skip_to_category": {
         "message": "Przejść do {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "Pominięto {0}",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Przewinięto do {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Wyłącz autopomijanie"
@@ -560,6 +580,12 @@
     "disable": {
         "message": "Wyłączone"
     },
+    "autoSkip_POI": {
+        "message": "Automatycznie przewiń do początku"
+    },
+    "manualSkip_POI": {
+        "message": "Zapytaj, gdy wideo się załaduje"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"
     },
@@ -673,6 +699,10 @@
     "help": {
         "message": "Pomoc"
     },
+    "GotIt": {
+        "message": "Rozumiem",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Wyłączenie wszystkich przyszłych eksperymentów",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -686,6 +716,27 @@
     "voteRejectedWarning": {
         "message": "Głosowanie odrzucone z powodu ostrzeżenia. Kliknij, aby otworzyć czat w celu rozwiązania problemu lub wróć później, gdy będziesz miał czas.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Dziękujemy za zainstalowanie SponsorBlock."
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Wiele funkcji jest domyślnie wyłączonych. Jeśli chcesz pomijać intra, outra, używać Invidious, itp., włącz je poniżej. Możesz również ukryć/pokazać elementy interfejsu użytkownika."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Jak działa pomijanie"
+    },
+    "Submitting": {
+        "message": "Wysyłanie"
+    },
+    "helpPageSubmitting1": {
+        "message": "Wysyłanie może być wykonane w wyskakującym okienku, poprzez kliknięcie przycisku \"Początek segmentu\" lub za pomocą przycisków na odtwarzaczu wideo."
+    },
+    "Editing": {
+        "message": "Edytowanie"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Baza danych jest publiczna i dostępna na stronie"
     },
     "helpPageSourceCode": {
         "message": "Gdzie mogę otrzymać kod źródłowy?"
