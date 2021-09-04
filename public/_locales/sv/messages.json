@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
     },
-    "wantToSubmit": {
-        "message": "Vill du skicka in för video-ID"
-    },
     "clearTimes": {
         "message": "Rensa segmenten"
     },
