@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "서버 오류가 발생하였습니다. 오류 코드: "
     },
-    "wantToSubmit": {
-        "message": "영상 id를 제출하시겠습니까"
-    },
     "clearTimes": {
         "message": "구간 제거"
     },
@@ -311,6 +308,9 @@
     "skip_category": {
         "message": "{0} 을(를) 건너뛰겠어요?"
     },
+    "mute_category": {
+        "message": "{0} 카테고리를 음소거하시겠습니까?"
+    },
     "skip_to_category": {
         "message": "{0}(으)로 건너뛰겠어요?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -318,6 +318,10 @@
     "skipped": {
         "message": "{0} 건너뜀",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} 음소거됨",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "{0}(으)로 건너뛰었습니다",
