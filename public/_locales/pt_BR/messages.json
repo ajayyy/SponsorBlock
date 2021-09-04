@@ -100,9 +100,6 @@
     "connectionError": {
         "message": "Ocorreu um erro de conexão. Código de erro: "
     },
-    "wantToSubmit": {
-        "message": "Deseja enviar para o vídeo com id"
-    },
     "clearTimes": {
         "message": "Limpar Segmentos"
     },
