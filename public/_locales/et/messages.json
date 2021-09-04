@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Ühendusega esines tõrge. Veakood: "
     },
-    "wantToSubmit": {
-        "message": "Kas soovid segmendid saata video IDle"
-    },
     "clearTimes": {
         "message": "Tühjenda segmendid"
     },
@@ -311,6 +308,9 @@
     "skip_category": {
         "message": "Jätad {0} vahele?"
     },
+    "mute_category": {
+        "message": "Vaigistad {0}?"
+    },
     "skip_to_category": {
         "message": "Jäta {0}-ni vahele?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -318,6 +318,10 @@
     "skipped": {
         "message": "{0} vahelejäetud",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} vaigistatud",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "{0}-ni vahelejäetud",
