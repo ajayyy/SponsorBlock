@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Yhteysvirhe on tapahtunut. Virhekoodi: "
     },
-    "wantToSubmit": {
-        "message": "Haluatko lähettää segmentit videotunnukselle"
-    },
     "clearTimes": {
         "message": "Tyhjennä segmentit"
     },
