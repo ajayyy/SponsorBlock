@@ -1,15 +1,39 @@
-import { Category, CategoryActionType, SponsorTime } from "../types";
+import { ActionType, Category, CategoryActionType, SponsorTime } from "../types";
 
 export function getSkippingText(segments: SponsorTime[], autoSkip: boolean): string {
     const categoryName = chrome.i18n.getMessage(segments.length > 1 ? "multipleSegments" 
         : "category_" + segments[0].category + "_short") || chrome.i18n.getMessage("category_" + segments[0].category);
     if (autoSkip) {
-        const messageId = getCategoryActionType(segments[0].category) === CategoryActionType.Skippable 
-            ? "skipped" : "skipped_to_category";
+        let messageId = "";
+        if (getCategoryActionType(segments[0].category) === CategoryActionType.Skippable) {
+            switch (segments[0].actionType) {
+                case ActionType.Skip:
+                    messageId = "skipped";
+                    break;
+                case ActionType.Mute:
+                    messageId = "muted";
+                    break;
+            }
+        } else {
+            messageId = "skipped_to_category";
+        }
+        
         return chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
     } else {
-        const messageId = getCategoryActionType(segments[0].category) === CategoryActionType.Skippable 
-            ? "skip_category" : "skip_to_category";
+        let messageId = "";
+        if (getCategoryActionType(segments[0].category) === CategoryActionType.Skippable) {
+            switch (segments[0].actionType) {
+                case ActionType.Skip:
+                    messageId = "skip_category";
+                    break;
+                case ActionType.Mute:
+                    messageId = "mute_category";
+                    break;
+            }
+        } else {
+            messageId = "skip_to_category";
+        }
+
         return chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
     }
 }
