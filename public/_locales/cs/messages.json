@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Došlo k chybě připojení. Kód chyby: "
     },
-    "wantToSubmit": {
-        "message": "Chcete odeslat segmenty pro video s id"
-    },
     "clearTimes": {
         "message": "Vymazat segmenty"
     },
