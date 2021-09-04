@@ -308,6 +308,9 @@
     "skip_category": {
         "message": "Пропустити {0}?"
     },
+    "mute_category": {
+        "message": "Заглушити {0}?"
+    },
     "skip_to_category": {
         "message": "Пропустить до {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -315,6 +318,10 @@
     "skipped": {
         "message": "{0} Пропущено",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} Заглушений",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Пропущено до {0}",
