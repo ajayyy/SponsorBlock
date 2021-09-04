@@ -100,9 +100,6 @@
     "connectionError": {
         "message": "已發生連線錯誤。錯誤碼： "
     },
-    "wantToSubmit": {
-        "message": "您想為這個影片ID提交嗎"
-    },
     "clearTimes": {
         "message": "清除片段"
     },
