@@ -91,9 +91,6 @@
     "connectionError": {
         "message": "Dogodija se greška u povezivanju. Kod pogreške: "
     },
-    "wantToSubmit": {
-        "message": "Želiš li unijeti za video id"
-    },
     "clearTimes": {
         "message": "Očisti isječke"
     },
