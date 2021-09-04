@@ -94,9 +94,6 @@
     "connectionError": {
         "message": "Ralat sambungan telah berlaku. Kod salah: "
     },
-    "wantToSubmit": {
-        "message": "Adakah anda ingin menghantar untuk id video"
-    },
     "clearTimes": {
         "message": "Kosongkan Segmen"
     },
