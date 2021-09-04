@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "A connection error has occured. Error code: "
     },
-    "wantToSubmit": {
-        "message": "Do you want to submit for video id"
-    },
     "clearTimes": {
         "message": "Clear Segments"
     },
