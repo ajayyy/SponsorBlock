@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Помилка з'єднання. Код помилки: "
     },
-    "wantToSubmit": {
-        "message": "Ви хочете надіслати сегменти для відео з id"
-    },
     "clearTimes": {
         "message": "Очистити сегменти"
     },
