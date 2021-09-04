@@ -191,14 +191,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 </div>
 
                 {/* Action Type */}
-                {getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable ? (
+                {CompileConfig.categorySupport[sponsorTime.category]?.length > 1 ? (
                     <div style={{position: "relative"}}>
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
                             defaultValue={sponsorTime.actionType}
                             ref={this.actionTypeOptionRef}
                             onChange={() => this.saveEditTimes()}>
-                            {this.getActionTypeOptions()}
+                            {this.getActionTypeOptions(sponsorTime)}
                         </select>
                     </div>
                 ): ""}
@@ -284,10 +284,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.saveEditTimes();
     }
 
-    getActionTypeOptions(): React.ReactElement[] {
+    getActionTypeOptions(sponsorTime: SponsorTime): React.ReactElement[] {
         const elements = [];
 
-        for (const actionType of ActionTypes) {
+        for (const actionType of CompileConfig.categorySupport[sponsorTime.category]) {
             elements.push(
                 <option value={actionType}
                         key={actionType}>
