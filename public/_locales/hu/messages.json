@@ -100,9 +100,6 @@
     "connectionError": {
         "message": "Kapcsolódási probléma merült fel. Error kód: "
     },
-    "wantToSubmit": {
-        "message": "Szeretné beküldeni a szegmenst ehhez a videóhoz:"
-    },
     "clearTimes": {
         "message": "Szegmensek törlése"
     },
