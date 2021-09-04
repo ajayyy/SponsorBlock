@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Überspringe Sponsoren, Betteln um Abonnenten und mehr in YouTube-Videos. Melde Sponsoren in Videos, die du guckst, um Anderen Zeit zu sparen.",
+        "message": "Überspringe Sponsoren, Betteln um Abonnenten und mehr in YouTube-Videos. Melde Sponsoren in Videos, die du schaust, um Anderen Zeit zu ersparen.",
         "description": "Description of the extension."
     },
     "400": {
@@ -92,7 +92,7 @@
         "message": "Segmente aktualisieren"
     },
     "success": {
-        "message": "Geschafft!"
+        "message": "Erfolg!"
     },
     "voted": {
         "message": "Abgestimmt!"
@@ -102,9 +102,6 @@
     },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
-    },
-    "wantToSubmit": {
-        "message": "Möchtest du für Video-ID einreichen"
     },
     "clearTimes": {
         "message": "Alle Segmente löschen"
@@ -466,7 +463,7 @@
         "message": "Import/Export aller Einstellungen"
     },
     "whatExportOptions": {
-        "message": "Dies ist deine gesamte Konfiguration im JSON-Format. Sie beinhält unter anderem auch deine interne Benutzer-ID und sollte daher ebenfalls mit niemanden geteilt werden."
+        "message": "Dies ist deine gesamte Konfiguration im JSON-Format. Sie beinhaltet unter anderem auch deine interne Benutzer-ID, also überlege es dir, mit wem du sie teilst."
     },
     "setOptions": {
         "message": "Konfiguration aus dem Eingabefeld übernehmen"
