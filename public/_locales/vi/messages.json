@@ -100,9 +100,6 @@
     "connectionError": {
         "message": "Đã xảy ra lỗi kết nối. Mã của lỗi: "
     },
-    "wantToSubmit": {
-        "message": "Bạn có muốn đăng đoạn quảng cáo cho video có mã id"
-    },
     "clearTimes": {
         "message": "Xóa đoạn quảng cáo"
     },
