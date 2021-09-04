@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Er is een verbindingsfout opgetreden. Foutcode: "
     },
-    "wantToSubmit": {
-        "message": "Wilt u indienen voor video-id"
-    },
     "clearTimes": {
         "message": "Segmenten verwijderen"
     },
