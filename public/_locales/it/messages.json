@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
     },
-    "wantToSubmit": {
-        "message": "Desideri inviare per l'id video"
-    },
     "clearTimes": {
         "message": "Pulisci Segmenti"
     },
