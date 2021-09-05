@@ -97,9 +97,6 @@
     "connectionError": {
         "message": "Kesalahan koneksi terjadi. Kode kesalahan: "
     },
-    "wantToSubmit": {
-        "message": "Apakah anda ingin mengirim untuk id video"
-    },
     "clearTimes": {
         "message": "Hapus Segmen"
     },

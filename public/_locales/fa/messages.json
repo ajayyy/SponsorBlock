@@ -6,6 +6,9 @@
     "400": {
         "message": "سرور گفت که این درخواست نامعتبر است"
     },
+    "429": {
+        "message": "شما برای این یک ویدیو تعداد بیش از حدی زمان اسپانسر ثبت کرده‌اید، آیا مطمئن هستید که به این تعداد وجود دارد؟"
+    },
     "409": {
         "message": "این قبلاً ثبت شده است"
     },
@@ -23,6 +26,9 @@
     },
     "reportButtonTitle": {
         "message": "گزارش"
+    },
+    "reportButtonInfo": {
+        "message": "گزارش این ارسال به‌عنوان غیر صحیح."
     },
     "Dismiss": {
         "message": "رد کردن"
@@ -42,6 +48,9 @@
     "reskip": {
         "message": "دوباره رد کردن"
     },
+    "unmute": {
+        "message": "صدادار"
+    },
     "paused": {
         "message": "وقفه شده"
     },
@@ -54,6 +63,9 @@
     "Unknown": {
         "message": "اشکالی در ثبت کردن زمان های ارسالی شما پیش آمد. لطفا بعداً دوباره تلاش کنید."
     },
+    "sponsorFound": {
+        "message": "این ویدیو دارای بخش‌هایی در پایگاه‌داده است!"
+    },
     "sponsor404": {
         "message": "هیچ بخشی پیدا نشد"
     },
@@ -62,6 +74,15 @@
     },
     "sponsorEnd": {
         "message": "بخش اینجا پایان می‌یابد"
+    },
+    "sponsorCancel": {
+        "message": "لغو ساختن بخش"
+    },
+    "noVideoID": {
+        "message": "هیچ ویدیوی یوتیوب‌ای یافت نشد.\nاگر این صحیح نیست، زبانه را تازه کنید."
+    },
+    "refreshSegments": {
+        "message": "تازه‌کردن بخش‌ها"
     },
     "success": {
         "message": "موفقیت!"
@@ -74,9 +95,6 @@
     },
     "connectionError": {
         "message": "خطای شبکه رخ داده است. کد خطا: "
-    },
-    "wantToSubmit": {
-        "message": "آی می‌خواهید که گزارش را ثبت کنید برای ویدیوی"
     },
     "clearTimes": {
         "message": "پاک‌نمودن بخش‌ها"
@@ -93,14 +111,35 @@
     "submitCheck": {
         "message": "مطمئن هستید که میخواهید این را ثبت کنید؟"
     },
+    "whitelistChannel": {
+        "message": "قرار دادن کانال در لیست سفید"
+    },
+    "removeFromWhitelist": {
+        "message": "حذف کانال از لیست سفید"
+    },
     "voteOnTime": {
         "message": "رأی دهی به یک بخش"
+    },
+    "Submissions": {
+        "message": "ارسالی‌ها"
+    },
+    "savedPeopleFrom": {
+        "message": "شما دیگران را نجات دادید از "
+    },
+    "viewLeaderboard": {
+        "message": "لیست سرنشینان"
+    },
+    "recordTimesDescription": {
+        "message": "ثبت"
     },
     "clearTimesButton": {
         "message": "حذف دفعات"
     },
     "submitTimesButton": {
         "message": "ثبت دفعات"
+    },
+    "Username": {
+        "message": "نام‌کاربری"
     },
     "setUsername": {
         "message": "تنظیم نام کاربری"
@@ -132,5 +171,101 @@
     "noticeUpdate2": {
         "message": "اگر همچنان این را نمی‌پسندید، گزینه هرگز نمایش نده را انتخاب کنید.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "disableSkipping": {
+        "message": "ردکردن فعال است"
+    },
+    "enableSkipping": {
+        "message": "ردکردن غیرفعال است"
+    },
+    "yourWork": {
+        "message": "کار شما",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "errorCode": {
+        "message": "کد خطا: "
+    },
+    "skip": {
+        "message": "رد کردن"
+    },
+    "mute": {
+        "message": "بی‌صدا"
+    },
+    "createdBy": {
+        "message": "ایجاد شده توسط"
+    },
+    "add": {
+        "message": "افزودن"
+    },
+    "save": {
+        "message": "ذخیره"
+    },
+    "reset": {
+        "message": "بازنشانی"
+    },
+    "areYouSureReset": {
+        "message": "آيا مطمئن هستيد که مي خواهيد این را بازنشانی کنید؟"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com اکنون پشتیبانی می‌شود"
+    },
+    "setOptions": {
+        "message": "تنظیم گزینه‌ها"
+    },
+    "submit": {
+        "message": "ثبت"
+    },
+    "cancel": {
+        "message": "لغو"
+    },
+    "delete": {
+        "message": "حذف"
+    },
+    "preview": {
+        "message": "پیش‌نمایش"
+    },
+    "unsubmitted": {
+        "message": "ثبت‌نشده"
+    },
+    "inspect": {
+        "message": "مشاهده"
+    },
+    "edit": {
+        "message": "ویرایش"
+    },
+    "to": {
+        "message": "به",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "اسپانسر"
+    },
+    "category_music_offtopic_short": {
+        "message": "غیر موسیقی"
+    },
+    "category_poi_highlight": {
+        "message": "برجسته"
+    },
+    "autoSkip": {
+        "message": "ردکردن خودکار"
+    },
+    "manualSkip": {
+        "message": "ردکردن دستی"
+    },
+    "bracketNow": {
+        "message": "(اکنون)"
+    },
+    "bracketEnd": {
+        "message": "(پایان)"
+    },
+    "help": {
+        "message": "راهنما"
+    },
+    "GotIt": {
+        "message": "فهمیدم",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "Donate": {
+        "message": "کمک مالی"
     }
 }

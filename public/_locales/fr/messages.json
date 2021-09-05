@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Erreur de connexion. Code d'erreur : "
     },
-    "wantToSubmit": {
-        "message": "Voulez-vous soumettre vos segments pour la vidéo"
-    },
     "clearTimes": {
         "message": "Effacer les segments"
     },

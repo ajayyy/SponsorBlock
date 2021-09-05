@@ -53,7 +53,7 @@
         "message": "Hoppa över igen"
     },
     "unmute": {
-        "message": "Ljud på"
+        "message": "Ljud"
     },
     "paused": {
         "message": "Pausad"
@@ -102,9 +102,6 @@
     },
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
-    },
-    "wantToSubmit": {
-        "message": "Vill du skicka in för video-ID"
     },
     "clearTimes": {
         "message": "Rensa segmenten"
@@ -306,10 +303,13 @@
         "message": "Hoppa över"
     },
     "mute": {
-        "message": "Ljud av"
+        "message": "Ljudlös"
     },
     "skip_category": {
         "message": "Hoppa över {0}?"
+    },
+    "mute_category": {
+        "message": "Gör {0} ljudlös?"
     },
     "skip_to_category": {
         "message": "Hoppa till {0}?",
@@ -318,6 +318,10 @@
     "skipped": {
         "message": "{0} överhoppad",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} ljudlös",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Hoppat till {0}",

@@ -100,9 +100,6 @@
     "connectionError": {
         "message": "接続エラーが発生しました。 エラーコード: "
     },
-    "wantToSubmit": {
-        "message": "次の動画IDで提出します:"
-    },
     "clearTimes": {
         "message": "セグメントを消去"
     },

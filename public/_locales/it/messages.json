@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
     },
-    "wantToSubmit": {
-        "message": "Desideri inviare per l'id video"
-    },
     "clearTimes": {
         "message": "Pulisci Segmenti"
     },
@@ -311,6 +308,9 @@
     "skip_category": {
         "message": "Vuoi saltare {0}?"
     },
+    "mute_category": {
+        "message": "Silenziare {0}?"
+    },
     "skip_to_category": {
         "message": "Saltare a {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -318,6 +318,10 @@
     "skipped": {
         "message": "{0} Saltato",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} Silenziato",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Saltato a {0}",

@@ -97,9 +97,6 @@
     "connectionError": {
         "message": "连接错误。错误代码： "
     },
-    "wantToSubmit": {
-        "message": "您是否想为以下视频 ID 提交："
-    },
     "clearTimes": {
         "message": "清除片段"
     },

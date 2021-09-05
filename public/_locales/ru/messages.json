@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Ошибка соединения. Код ошибки: "
     },
-    "wantToSubmit": {
-        "message": "Вы хотите отправить сегменты для видео с id"
-    },
     "clearTimes": {
         "message": "Очистить сегменты"
     },
@@ -311,6 +308,9 @@
     "skip_category": {
         "message": "Пропустить {0}?"
     },
+    "mute_category": {
+        "message": "Заглушить {0}?"
+    },
     "skip_to_category": {
         "message": "Пропустить до {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -318,6 +318,10 @@
     "skipped": {
         "message": "Пропущено: {0}",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} заглушен",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Пропущено до {0}",

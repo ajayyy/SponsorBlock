@@ -94,9 +94,6 @@
     "connectionError": {
         "message": "A apărut o eroare de conexiune. Cod de eroare: "
     },
-    "wantToSubmit": {
-        "message": "Doriți să trimiteți pentru id video"
-    },
     "clearTimes": {
         "message": "Curăță segmentele"
     },
