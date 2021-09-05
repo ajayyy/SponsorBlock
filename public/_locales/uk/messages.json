@@ -309,7 +309,7 @@
         "message": "Пропустити {0}?"
     },
     "mute_category": {
-        "message": "Заглушити {0}?"
+        "message": "Вимкнути звук {0}?"
     },
     "skip_to_category": {
         "message": "Пропустить до {0}?",
@@ -320,7 +320,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} Заглушений",
+        "message": "{0} Вимкнений звук",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
