@@ -1059,7 +1059,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
     const includedTimes: ScheduledTime[] = [];
     const startTimeIndexes: number[] = [];
 
-    const possibleTimes = sponsorTimes.flatMap((sponsorTime) => {
+    const possibleTimes = sponsorTimes.map((sponsorTime) => {
         const results = [{
             ...sponsorTime,
             scheduledTime: sponsorTime.segment[0]
@@ -1074,7 +1074,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
         }
 
         return results;
-    })
+    }).reduce((a, b) => a.concat(b), []);
 
     for (let i = 0; i < possibleTimes.length; i++) {
         if ((minimum === undefined
@@ -1112,7 +1112,7 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
 
     let counted = false;
     for (const segment of skippingSegments) {
-        const index = sponsorTimes.indexOf(segment);
+        const index = sponsorTimes.findIndex((s) => s.segment === segment.segment);
         if (index !== -1 && !sponsorSkipped[index]) {
             sponsorSkipped[index] = true;
             if (!counted) {
