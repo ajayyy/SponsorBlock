@@ -94,9 +94,6 @@
     "connectionError": {
         "message": "התקבלה שגיאת חיבור. קוד השגיאה: "
     },
-    "wantToSubmit": {
-        "message": "האם אתה רוצה לדווח עבור סרטון שמספר הזיהוי שלו הוא"
-    },
     "clearTimes": {
         "message": "נקה מקטעים"
     },

@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Pular novamente"
     },
+    "unmute": {
+        "message": "Desmutar"
+    },
     "paused": {
         "message": "Pausado"
     },
@@ -99,9 +102,6 @@
     },
     "connectionError": {
         "message": "Ocorreu um erro de conexão. Código de erro: "
-    },
-    "wantToSubmit": {
-        "message": "Deseja enviar para o vídeo com id"
     },
     "clearTimes": {
         "message": "Limpar Segmentos"
@@ -160,6 +160,9 @@
     },
     "setUsername": {
         "message": "Definir nome de usuário"
+    },
+    "copyPublicID": {
+        "message": "Copiar ID Pública de Usuário"
     },
     "discordAdvert": {
         "message": "Junte-se ao servidor do discord oficial para dar dicas e sugestões!"
@@ -299,8 +302,14 @@
     "skip": {
         "message": "Pular"
     },
+    "mute": {
+        "message": "Mutar"
+    },
     "skip_category": {
         "message": "Pular {0}?"
+    },
+    "mute_category": {
+        "message": "Mutar {0}?"
     },
     "skip_to_category": {
         "message": "Pular para {0}?",
@@ -309,6 +318,10 @@
     "skipped": {
         "message": "{0} Ignorado",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} Mutado",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Pulado para {0}",
@@ -361,6 +374,9 @@
     },
     "changeUserID": {
         "message": "Importar/Exportar seu ID de usuário"
+    },
+    "whatChangeUserID": {
+        "message": "Esta informação deve se mantida privada. Ela é como uma senha e não deve ser compartilhada. Outras pessoas poderão se passar por você caso obtenham acesso. Se estiver procurando por sua ID Pública de Usuário, clique no ícone de prancheta no popup."
     },
     "setUserID": {
         "message": "Definir ID de usuário"
@@ -597,6 +613,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Pular automaticamente todos os segmentos quando há um segmento que não é música"
+    },
+    "muteSegments": {
+        "message": "Permitir segmentos que mutam áudio ao invés de pular"
     },
     "colorFormatIncorrect": {
         "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma cerquilha (hashtag) no início."

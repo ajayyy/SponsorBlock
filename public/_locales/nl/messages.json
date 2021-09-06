@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Er is een verbindingsfout opgetreden. Foutcode: "
     },
-    "wantToSubmit": {
-        "message": "Wilt u indienen voor video-id"
-    },
     "clearTimes": {
         "message": "Segmenten verwijderen"
     },
@@ -311,6 +308,9 @@
     "skip_category": {
         "message": "{0} overslaan?"
     },
+    "mute_category": {
+        "message": "{0} dempen?"
+    },
     "skip_to_category": {
         "message": "Overslaan naar {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -318,6 +318,10 @@
     "skipped": {
         "message": "{0} overgeslagen",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} gedempt",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Overgeslagen naar {0}",

@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Überspringe Sponsoren, Betteln um Abonnenten und mehr in YouTube-Videos. Melde Sponsoren in Videos, die du guckst, um Anderen Zeit zu sparen.",
+        "message": "Überspringe Sponsoren, Betteln um Abonnenten und mehr in YouTube-Videos. Melde Sponsoren in Videos, die du schaust, um Anderen Zeit zu ersparen.",
         "description": "Description of the extension."
     },
     "400": {
@@ -92,7 +92,7 @@
         "message": "Segmente aktualisieren"
     },
     "success": {
-        "message": "Geschafft!"
+        "message": "Erfolg!"
     },
     "voted": {
         "message": "Abgestimmt!"
@@ -102,9 +102,6 @@
     },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
-    },
-    "wantToSubmit": {
-        "message": "Möchtest du für Video-ID einreichen"
     },
     "clearTimes": {
         "message": "Alle Segmente löschen"
@@ -311,6 +308,9 @@
     "skip_category": {
         "message": "{0} überspringen?"
     },
+    "mute_category": {
+        "message": "{0} stummschalten?"
+    },
     "skip_to_category": {
         "message": "Zu {0} springen?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -318,6 +318,10 @@
     "skipped": {
         "message": "{0} übersprungen",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} stummgeschalten",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Zu {0} gesprungen",
@@ -466,7 +470,7 @@
         "message": "Import/Export aller Einstellungen"
     },
     "whatExportOptions": {
-        "message": "Dies ist deine gesamte Konfiguration im JSON-Format. Sie beinhält unter anderem auch deine interne Benutzer-ID und sollte daher ebenfalls mit niemanden geteilt werden."
+        "message": "Dies ist deine gesamte Konfiguration im JSON-Format. Da diese auch deine Benutzer-ID enthält, solltest du dir genau überlegen, mit wem du diese teilen möchtest."
     },
     "setOptions": {
         "message": "Konfiguration aus dem Eingabefeld übernehmen"

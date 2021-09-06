@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Възникна грешка с връзката. Код на грешката: "
     },
-    "wantToSubmit": {
-        "message": "Искате ли да изпратите сегментите за видеоклип с id"
-    },
     "clearTimes": {
         "message": "Изчистване на сегментите"
     },
@@ -311,6 +308,9 @@
     "skip_category": {
         "message": "Пропускане на {0}?"
     },
+    "mute_category": {
+        "message": "Заглушаване на {0}?"
+    },
     "skip_to_category": {
         "message": "Прескачане до {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -318,6 +318,10 @@
     "skipped": {
         "message": "{0} пропуснат",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} заглушено",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Прескочено до {0}",

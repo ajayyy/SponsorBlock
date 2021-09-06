@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Wystąpił błąd połączenia. Kod błędu: "
     },
-    "wantToSubmit": {
-        "message": "Czy chcesz wysłać dla filmu o id"
-    },
     "clearTimes": {
         "message": "Wyczyść segmenty"
     },

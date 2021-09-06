@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Nastala chyba pripojenia. Kód chyby: "
     },
-    "wantToSubmit": {
-        "message": "Chcete odoslať segmenty pre video id"
-    },
     "clearTimes": {
         "message": "Zmazať segmenty"
     },
@@ -296,6 +293,9 @@
     "skip_category": {
         "message": "Preskočiť {0}?"
     },
+    "mute_category": {
+        "message": "Stíšiť {0}?"
+    },
     "skip_to_category": {
         "message": "Preskočiť na {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -303,6 +303,10 @@
     "skipped": {
         "message": "{0} preskočené",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} stíšený",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Preskočené na {0}",

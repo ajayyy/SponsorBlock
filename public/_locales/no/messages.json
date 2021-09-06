@@ -94,9 +94,6 @@
     "connectionError": {
         "message": "En tilkoblingsfeil har oppstått. Feilkode: "
     },
-    "wantToSubmit": {
-        "message": "Vil du sende inn for video-ID-en"
-    },
     "clearTimes": {
         "message": "Tøm segmenter"
     },

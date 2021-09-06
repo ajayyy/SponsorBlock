@@ -103,9 +103,6 @@
     "connectionError": {
         "message": "Bağlantı hatası oluştu. Hata kodu: "
     },
-    "wantToSubmit": {
-        "message": "Bu video kimliği için göndermek istiyor musun"
-    },
     "clearTimes": {
         "message": "Kısımları temizle"
     },

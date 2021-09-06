@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Volver a saltar"
     },
+    "unmute": {
+        "message": "Restaurar sonido"
+    },
     "paused": {
         "message": "Pausado"
     },
@@ -99,9 +102,6 @@
     },
     "connectionError": {
         "message": "Ha ocurrido un error de conexión. Código de error: "
-    },
-    "wantToSubmit": {
-        "message": "¿Quiere enviar el segmento para el video con ID"
     },
     "clearTimes": {
         "message": "Borrar Segmentos"
@@ -302,8 +302,14 @@
     "skip": {
         "message": "Omitir"
     },
+    "mute": {
+        "message": "Silenciar"
+    },
     "skip_category": {
         "message": "¿Saltar {0}?"
+    },
+    "mute_category": {
+        "message": "¿Silenciar {0}?"
     },
     "skip_to_category": {
         "message": "¿Saltar a {0}?",
@@ -312,6 +318,10 @@
     "skipped": {
         "message": "{0} Omitido/as",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} Silenciado",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Se ha saltado a {0}",
@@ -364,6 +374,9 @@
     },
     "changeUserID": {
         "message": "Importar/Exportar tu ID de usuario"
+    },
+    "whatChangeUserID": {
+        "message": "Esto se debería mantener privado. Esto es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, puede suplantarte. Si estás buscando tu ID de usuario público, haz clic en el icono de portapapeles en la ventana emergente."
     },
     "setUserID": {
         "message": "Establecer el ID de usuario"
@@ -600,6 +613,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Omitir automáticamente todos los segmentos cuando hay un segmento sin música"
+    },
+    "muteSegments": {
+        "message": "Permitir segmentos que silencian el audio en lugar de omitir"
     },
     "colorFormatIncorrect": {
         "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
