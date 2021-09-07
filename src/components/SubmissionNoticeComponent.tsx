@@ -15,13 +15,13 @@ export interface SubmissionNoticeProps {
     closeListener: () => void;
 }
 
-export interface SubmissionNoticeeState {
+export interface SubmissionNoticeState {
     noticeTitle: string,
     messages: string[],
     idSuffix: string;
 }
 
-class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, SubmissionNoticeeState> {
+class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, SubmissionNoticeState> {
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
