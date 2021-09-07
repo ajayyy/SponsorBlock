@@ -230,8 +230,20 @@
     "showSkipNotice": {
         "message": "Pokaż informację po pominięciu segmentu"
     },
+    "noticeVisibilityMode0": {
+        "message": "Duże powiadomienia o przewinięciu"
+    },
     "noticeVisibilityMode1": {
         "message": "Małe powiadomienia o automatycznym przewijaniu"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Małe powiadomienia o przewinięciu"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Znikające powiadomienia o automatycznym przewijaniu"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Znikające powiadomienia o przewijaniu"
     },
     "longDescription": {
         "message": "SponsorBlock pozwala pomijać sponsorów, intra, outra, przypomnienia o subskrypcjach i inne irytujące fragmenty filmów na YouTube. SponsorBlock jest opartym na crowdsourcingu rozszerzeniem do przeglądarki, które pozwala każdemu zgłosić początek i koniec segmentów sponsorowanych oraz innych segmentów w filmach na YouTube. Kiedy ktoś już zamieści te informacje, wszyscy pozostali z tym rozszerzeniem będą pomijać segment sponsorowany. Możesz również pomijać fragmenty teledysków bez muzyki.",
@@ -296,6 +308,9 @@
     "skip_category": {
         "message": "Pominąć {0}?"
     },
+    "mute_category": {
+        "message": "Wyciszyć {0}?"
+    },
     "skip_to_category": {
         "message": "Przejść do {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -303,6 +318,10 @@
     "skipped": {
         "message": "Pominięto {0}",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "Wyciszono {0}",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Przewinięto do {0}",
@@ -355,6 +374,9 @@
     },
     "changeUserID": {
         "message": "Importuj/Eksportuj swój identyfikator użytkownika"
+    },
+    "whatChangeUserID": {
+        "message": "Powinno pozostać prywatne. Jest to niczym hasło i nie powinno być nikomu udostępniane. Przy jego użyciu może się pod ciebie podszywać. Jeśli szukasz publicznego ID użytkownika, kliknij ikonę schowka w wyskakującym oknie."
     },
     "setUserID": {
         "message": "Ustaw identyfikator użytkownika"
@@ -559,6 +581,9 @@
     "category_poi_highlight": {
         "message": "Podświetlone"
     },
+    "category_poi_highlight_description": {
+        "message": "Część filmu, która interesuje większość osób. Podobne do komentarzy typu „Filmik zaczyna się od x”."
+    },
     "category_livestream_messages": {
         "message": "Transmisja live: Dotacja/Czytanie wiadomości"
     },
@@ -583,8 +608,14 @@
     "manualSkip_POI": {
         "message": "Zapytaj, gdy wideo się załaduje"
     },
+    "showOverlay_POI": {
+        "message": "Pokaż na pasku"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"
+    },
+    "muteSegments": {
+        "message": "Zezwalaj na segmenty, które wyciszą dźwięk zamiast pomijać"
     },
     "colorFormatIncorrect": {
         "message": "Nieprawidłowy format koloru. Powinien to być zapis szesnastkowy (heksadecymalny) składający się z 3 lub 6 znaków poprzedzonych kratką (#)."
@@ -714,8 +745,17 @@
         "message": "Głosowanie odrzucone z powodu ostrzeżenia. Kliknij, aby otworzyć czat w celu rozwiązania problemu lub wróć później, gdy będziesz miał czas.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
+    "Donate": {
+        "message": "Dotacje"
+    },
+    "hideDonationLink": {
+        "message": "Ukryj opcję dotacji"
+    },
     "helpPageThanksForInstalling": {
         "message": "Dziękujemy za zainstalowanie SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Przejrzyj poniższe opcje"
     },
     "helpPageFeatureDisclaimer": {
         "message": "Wiele funkcji jest domyślnie wyłączonych. Jeśli chcesz pomijać intra, outra, używać Invidious, itp., włącz je poniżej. Możesz również ukryć/pokazać elementy interfejsu użytkownika."
@@ -723,23 +763,53 @@
     "helpPageHowSkippingWorks": {
         "message": "Jak działa pomijanie"
     },
+    "helpPageHowSkippingWorks1": {
+        "message": "Segmenty filmu zostaną automatycznie pominięte, jeśli znajdują się w bazie danych. Możesz kliknąć na ikonę rozszerzenia, aby podejrzeć, czym one są."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Za każdym razem, gdy pominiesz segment, otrzymasz powiadomienie. Jeśli moment nie wydaje się być poprawny, kliknij łapkę w dół! Możesz również głosować w okienku pop-up."
+    },
     "Submitting": {
         "message": "Wysyłanie"
     },
     "helpPageSubmitting1": {
         "message": "Wysyłanie może być wykonane w wyskakującym okienku, poprzez kliknięcie przycisku \"Początek segmentu\" lub za pomocą przycisków na odtwarzaczu wideo."
     },
+    "helpPageSubmitting2": {
+        "message": "Kliknięcie przycisku odtwarzania wskazuje początek segmentu a kliknięcie ikony stop wskazuje koniec segmentu. Możesz przygotować wielu segmentów przed wysłaniem. Aby wysłać kliknij przycisk potwierdzający, a aby usunąć - na śmietnik."
+    },
     "Editing": {
         "message": "Edytowanie"
     },
+    "helpPageEditing1": {
+        "message": "Jeśli się pomyliłeś, możesz edytować i usuwać swoje segmenty poprzez kliknięcie przycisku ze strzałką w górę."
+    },
+    "helpPageTooSlow": {
+        "message": "Zbyt wolno"
+    },
+    "helpPageTooSlow1": {
+        "message": "Istnieją skróty klawiszowe, jeśli chcesz ich używać. Naciśnij klawisz średnika, aby wskazać początek/koniec segmentu sponsora i kliknij w apostrof, aby przesłać. Można je zmienić w opcjach. Jeśli nie używasz QWERTY, prawdopodobnie powinieneś zmienić skrót klawiszowy."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Czy mogę otrzymać kopię bazy danych? Co się stanie, jeśli przestaniecie istnieć?"
+    },
     "helpPageCopyOfDatabase1": {
         "message": "Baza danych jest publiczna i dostępna na stronie"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Kod źródłowy jest dostępny. Tak więc, nawet jeśli coś się ze mną stanie, wasze zgłoszenia nie zostaną utracone."
+    },
+    "helpPageNews": {
+        "message": "Wiadomości i jak to jest zrobione"
     },
     "helpPageSourceCode": {
         "message": "Gdzie mogę otrzymać kod źródłowy?"
     },
     "Credits": {
         "message": "Autorzy"
+    },
+    "highlightNewFeature": {
+        "message": "Nowość! Przejdź do interesującej części filmu jednym kliknięciem z nową kategorią wyróżnione"
     },
     "LearnMore": {
         "message": "Dowiedz się więcej"
