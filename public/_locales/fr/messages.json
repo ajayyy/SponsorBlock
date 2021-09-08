@@ -308,6 +308,9 @@
     "skip_category": {
         "message": "Passer {0} ?"
     },
+    "mute_category": {
+        "message": "Mute {0}?"
+    },
     "skip_to_category": {
         "message": "Passer à {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -315,6 +318,10 @@
     "skipped": {
         "message": "{0} ignoré",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} mis en sourdine",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Sauté à {0}",
