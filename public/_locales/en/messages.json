@@ -656,6 +656,9 @@
         "message": "To submit segments with the category of \"{0}\", you must enable it in the options. You will be redirected to the options now.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Warning: This type of segment can have a maximum of one active at a time. Submitting multiple will cause a random one to be shown."
+    },
     "youMustSelectACategory": {
         "message": "You must select a category for all segments you are submitting!"
     },

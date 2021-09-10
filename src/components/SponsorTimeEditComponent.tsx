@@ -279,6 +279,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (getCategoryActionType(event.target.value as Category) === CategoryActionType.POI) {
             this.setTimeTo(1, null);
             this.props.contentContainer().updateEditButtonsOnPlayer();
+
+            if (this.props.contentContainer().sponsorTimesSubmitting
+                    .some((segment, i) => segment.category === event.target.value && i !== this.props.index)) {
+                alert(chrome.i18n.getMessage("poiOnlyOneSegment"));
+            }
         }
         
         this.saveEditTimes();
