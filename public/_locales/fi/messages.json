@@ -649,6 +649,9 @@
         "message": "Lähettääksesi segmenttejä \"{0}\" kategorialla, sinun täytyy aktivoida se asetuksista. Sinut uudelleenohjataan asetuksiin nyt.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Varoitus: Tämäntyyppisiä segmenttejä voi olla aktiivisena enintään yksi. Usean lähettäminen aiheuttaa sen, että satunnainen segmentti näytetään."
+    },
     "youMustSelectACategory": {
         "message": "Sinun täytyy valita kategoria kaikille segmenteille, joita olet lähettämässä!"
     },
