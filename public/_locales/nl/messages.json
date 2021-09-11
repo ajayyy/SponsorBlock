@@ -656,6 +656,9 @@
         "message": "Om segmenten met de categorie \"{0}\" in te dienen, moet u deze in de opties inschakelen. U wordt nu doorgestuurd naar de opties.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Waarschuwing: dit type segment kan maximaal één keer tegelijk actief zijn. Meerdere segmenten indienen zal weergave van een willekeurig segment veroorzaken."
+    },
     "youMustSelectACategory": {
         "message": "U moet een categorie selecteren voor alle segmenten die u indient!"
     },
