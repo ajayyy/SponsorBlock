@@ -275,6 +275,10 @@ background-color:#ec1c1c;
   cursor: pointer;
 }
 
+button#setUsernameButton {
+	flex: 0 1;
+}
+
 #submitUsername {
   padding-left: 5pt;
 }
@@ -285,6 +289,7 @@ background-color:#ec1c1c;
 
 #usernameValue, #usernameInput, #sponsorTimesContributionsDisplay{
   font-size: 16px;
+  flex: 1 0;
 }
 
 .SBWhitelistIcon {
@@ -343,6 +348,7 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
 
 #copyUserID {
   width: 100%;
+  flex: 0 1;
 }
 
 #setUsernameContainer {
