@@ -656,6 +656,9 @@
         "message": "Щоб надіслати сегменти категорії \"{0}\", ви повинні включити її в налаштуваннях. Зараз ви будете туди перенаправлені.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Увага: Сегменти даного типу можуть бути активними лише по одному. Надсилання декількох призведе до відображення випадкового сегмента."
+    },
     "youMustSelectACategory": {
         "message": "Ви повинні обрати категорію для всіх сегментів, які ви відправляєте!"
     },
