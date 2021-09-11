@@ -656,6 +656,9 @@
         "message": "För att skicka segment med kategorin \"{0}\" måste du först aktivera det i alternativen. Du kommer nu att bli omdirigerad till alternativen.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Varning: Denna typ av segment kan endast ha ett segment aktivt åt gången. Skickas flera segment kommer en av dem att visas slumpmässigt."
+    },
     "youMustSelectACategory": {
         "message": "Du måste välja en kategori för alla segment du skickar in!"
     },
