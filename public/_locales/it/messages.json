@@ -4,20 +4,20 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Salta sponsorizzazioni, implorazioni di iscrizione ai canali e molto altro sui video di YouTube. Segnala gli sponsor sui video che guardi per salvare il tempo ad altri.",
+        "message": "Salta sponsorizzazioni, richieste d'iscrizione ai canali e molto altro sui video di YouTube. Segnala gli sponsor sui video che guardi per salvare il tempo agli altri.",
         "description": "Description of the extension."
     },
     "400": {
         "message": "Richiesta non valida"
     },
     "429": {
-        "message": "Stai inviando troppi spezzoni per questo video, sei sicuro che ce ne siano così tanti?"
+        "message": "Stai inviando troppi segmenti per questo video, sei sicuro che ce ne siano così tanti?"
     },
     "409": {
-        "message": "Questo spezzone è già stato inviato"
+        "message": "Questo è già stato inviato"
     },
     "channelWhitelisted": {
-        "message": "Canale aggiunto alla whitelist!"
+        "message": "Canale aggiunto alla lista delle esclusioni!"
     },
     "Segment": {
         "message": "segmento"
@@ -53,13 +53,13 @@
         "message": "Salta ancora"
     },
     "unmute": {
-        "message": "Riattiva microfono"
+        "message": "Riattiva il microfono"
     },
     "paused": {
         "message": "In pausa"
     },
     "manualPaused": {
-        "message": "Timer Fermato"
+        "message": "Timer fermato"
     },
     "confirmMSG": {
         "message": "\n\nPer modificare o eliminare valori specifici, premi il pulsante delle informazioni o apri il popup cliccando l'icona dell'estensione nell'angolo in alto a destra."
@@ -68,7 +68,7 @@
         "message": "Sei sicuro di volerlo cancellare?\n\n"
     },
     "Unknown": {
-        "message": "Si è verificato un errore durante l'invio dello spezzone sponsorizzato, per favore riprova più tardi."
+        "message": "Si è verificato un errore durante l'invio del segmento, per favore riprova più tardi."
     },
     "sponsorFound": {
         "message": "Questo video ha dei segmenti nel database!"
@@ -77,10 +77,10 @@
         "message": "Nessun segmento trovato"
     },
     "sponsorStart": {
-        "message": "Il Segmento Inizia Ora"
+        "message": "Il segmento inizia qui"
     },
     "sponsorEnd": {
-        "message": "Il Segmento Termina Ora"
+        "message": "Il segmento finisce ora"
     },
     "sponsorCancel": {
         "message": "Annulla Creazione del Segmento"
@@ -92,7 +92,7 @@
         "message": "Ricarica i segmenti"
     },
     "success": {
-        "message": "Successo!"
+        "message": "Ha funzionato!"
     },
     "voted": {
         "message": "Votato!"
@@ -104,16 +104,16 @@
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
     },
     "clearTimes": {
-        "message": "Pulisci Segmenti"
+        "message": "Rimuovi i segmenti"
     },
     "openPopup": {
-        "message": "Apri il Popup di SponsorBlock"
+        "message": "Apri il popup di SponsorBlock"
     },
     "closePopup": {
         "message": "Chiudi il popup"
     },
     "SubmitTimes": {
-        "message": "Invia Segmenti"
+        "message": "Invia i segmenti"
     },
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
@@ -125,7 +125,7 @@
         "message": "Rimuovi il canale dalle eccezioni"
     },
     "voteOnTime": {
-        "message": "Vota un Segmento"
+        "message": "Vota un segmento"
     },
     "Submissions": {
         "message": "Contributi"
@@ -147,19 +147,19 @@
         "message": "Suggerimento: puoi configurare dei comandi rapidi nelle opzioni"
     },
     "clearTimesButton": {
-        "message": "Cancella Minutaggi"
+        "message": "Cancella minutaggio"
     },
     "submitTimesButton": {
-        "message": "Invia Minutaggi"
+        "message": "Invia minutaggio"
     },
     "publicStats": {
-        "message": "Viene utilizzato nelle pagine delle statistiche pubbliche che mostrano quanto hai contribuito. Vedi"
+        "message": "Questo è usato nelle pagine pubbliche delle statistiche per mostrare quanto hai contribuito. Vedilo"
     },
     "Username": {
         "message": "Nome utente"
     },
     "setUsername": {
-        "message": "Imposta Username"
+        "message": "Imposta nome utente"
     },
     "copyPublicID": {
         "message": "Copia UserID Pubblico"
@@ -174,16 +174,16 @@
         "message": "Opzioni"
     },
     "showButtons": {
-        "message": "Mostra i Pulsanti nel Lettore di YouTube"
+        "message": "Mostra i pulsanti sul video"
     },
     "hideButtons": {
-        "message": "Nascondi i Pulsanti nel Lettore di YouTube"
+        "message": "Nascondi i pulsanti sul video"
     },
     "hideButtonsDescription": {
-        "message": "Nasconde i pulsanti che appaiono nel lettore di YouTube per inviare spezzoni sponsorizzati. Capisco che può essere fastidioso per alcune\n persone. Invece di utilizzare quei pulsanti, è possibile utilizzare questo popup per inviare gli spezzoni sponsorizzati. Per nascondere l'avviso che appare, \nusa il bottone \"Non mostrare più\" nell'avviso. Potrai sempre abilitare nuovamente queste impostazioni in futuro."
+        "message": "Nasconde i pulsanti che appaiono sul video per inviare i segmenti da nascondere."
     },
     "showInfoButton": {
-        "message": "Mostra il Pulsante Informazioni nel Lettore di YouTube"
+        "message": "Mostra il pulsante d'informazioni sopra al video"
     },
     "hideInfoButton": {
         "message": "Nascondi il Pulsante Informazioni nel Lettore di YouTube"
@@ -320,7 +320,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} Silenziato",
+        "message": "{0} silenziato",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -615,7 +615,7 @@
         "message": "Salta automaticamente tutti i segmenti quando c'è un segmento non musicale"
     },
     "muteSegments": {
-        "message": "Consenti i segmenti che silenziano l'audio invece di saltare"
+        "message": "Silenzia i segmenti invece di saltarli, quando possibile"
     },
     "colorFormatIncorrect": {
         "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
@@ -657,7 +657,7 @@
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
-        "message": "Attenzione: Questo tipo di segmento può avere un massimo di uno attivo per volta. Inviarne di più causerà la visualizzazione di uno casuale."
+        "message": "Attenzione: questo tipo di segmento può essere presente una sola volta. Inviarne più di uno causerà la visualizzazione casuale di uno solo."
     },
     "youMustSelectACategory": {
         "message": "Devi selezionare una categoria per tutti i segmenti che stai inviando!"
