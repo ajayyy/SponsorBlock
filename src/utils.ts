@@ -261,7 +261,6 @@ export default class Utils {
         const objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
         for (let j = 0; j < objects.length; j++) {
             const obj = objects[j];
-            
             const localizedMessage = this.getLocalizedMessage(obj.innerHTML.toString());
             if (localizedMessage) obj.innerHTML = localizedMessage;
         }
@@ -356,7 +355,7 @@ export default class Utils {
             }, (response) => {
                 resolve(response);
             });
-        })
+        });
     }
 
     /**
@@ -429,6 +428,8 @@ export default class Utils {
     }
 
     getFormattedTime(seconds: number, precise?: boolean): string {
+        seconds = Math.max(seconds, 0);
+        
         const hours = Math.floor(seconds / 60 / 60);
         const minutes = Math.floor(seconds / 60) % 60;
         let minutesDisplay = String(minutes);

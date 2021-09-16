@@ -19,7 +19,7 @@
     "channelWhitelisted": {
         "message": "Channel Whitelisted!"
     },
-   "Segment": {
+    "Segment": {
         "message": "segment"
     },
     "Segments": {
@@ -224,6 +224,24 @@
     "showNotice": {
         "message": "Show Notice Again"
     },
+    "showSkipNotice": {
+        "message": "Show Notice After A Segment Is Skipped"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Full Size Skip Notices"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Small Skip Notices for Auto Skip"
+    },
+    "noticeVisibilityMode2": {
+        "message": "All Small Skip Notices"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Faded Skip Notices for Auto Skip"
+    },
+    "noticeVisibilityMode4": {
+        "message": "All Faded Skip Notices"
+    },
     "longDescription": {
         "message": "SponsorBlock lets you skip over sponsors, intros, outros, subscription reminders, and other annoying parts of YouTube videos. SponsorBlock is a crowdsourced browser extension that let's anyone submit the start and end time's of sponsored segments and other segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment. You can also skip over non music sections of music videos.",
         "description": "Full description of the extension on the store pages."
@@ -284,8 +302,17 @@
     "skip_category": {
         "message": "Skip {0}?"
     },
+    "skip_to_category": {
+        "message": "Skip to {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
-        "message": "Skipped"
+        "message": "{0} Skipped",
+        "description": "Example: Sponsor Skipped"
+    },
+    "skipped_to_category": {
+        "message": "Skipped to {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Disable Auto Skip"
@@ -346,12 +373,6 @@
     },
     "createdBy": {
         "message": "Created By"
-    },
-    "autoSkip": {
-        "message": "Auto Skip"
-    },
-    "showSkipNotice": {
-        "message": "Show Notice After A Segment Is Skipped"
     },
     "keybindCurrentlySet": {
         "message": ". It is currently set to:"
@@ -544,20 +565,41 @@
     "category_music_offtopic_short": {
         "message": "Non-Music"
     },
+    "category_poi_highlight": {
+        "message": "Highlight"
+    },
+    "category_poi_highlight_description": {
+        "message": "The part of the video that most people are looking for. Similar to \"Video starts at x\" comments."
+    },
     "category_livestream_messages": {
         "message": "Livestream: Donation/Message Readings"
     },
     "category_livestream_messages_short": {
         "message": "Message Reading"
     },
-    "disable": {
-        "message": "Disable"
+    "autoSkip": {
+        "message": "Auto Skip"
     },
     "manualSkip": {
         "message": "Manual Skip"
     },
     "showOverlay": {
         "message": "Show In Seek Bar"
+    },
+    "disable": {
+        "message": "Disable"
+    },
+    "autoSkip_POI": {
+        "message": "Auto skip to the start"
+    },
+    "manualSkip_POI": {
+        "message": "Ask when video loads"
+    },
+    "showOverlay_POI": {
+        "message": "Show In Seek Bar"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "Auto skip all segments when there is a non-music segment"
     },
     "colorFormatIncorrect": {
         "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
@@ -669,6 +711,10 @@
     "help": {
         "message": "Help"
     },
+    "GotIt": {
+        "message": "Got it",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Opt-out of all future experiments",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -682,5 +728,74 @@
     "voteRejectedWarning": {
         "message": "Vote rejected due to a warning. Click to open a chat to resolve it, or come back later when you have time.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Donate"
+    },
+    "hideDonationLink": {
+        "message": "Hide Donation Link"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Thanks for installing SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Please review the options below"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Many features are disabled by default. If you want to skip intros, outros, use Invidious, etc., enable them below. You can also hide/show UI elements."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "How skipping works"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Video segments will automatically be skipped if they are found in the database. You can open the popup by clicking the extension icon to get a preview of what they are."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Whenever you skip a segment, you will get notice. If the timing seems wrong vote down by clicking downvote! You can also vote in the popup."
+    },
+    "Submitting": {
+        "message": "Submitting"
+    },
+    "helpPageSubmitting1": {
+        "message": "Submitting can either be done in the popup by hitting the \"Segment Starts Now\" button or in the video player with the buttons on the player."
+    },
+    "helpPageSubmitting2": {
+        "message": "Clicking the play button indicated the start of a segment and clicking the stop icon indicates the end. You can prepare multiple sponsors before hitting submit. Clicking the upload button will submit. Clicking the garbage can will delete."
+    },
+    "Editing": {
+        "message": "Editing"
+    },
+    "helpPageEditing1": {
+        "message": "If you messed up, you can edit or delete your segments after clicking the up arrow button."
+    },
+    "helpPageTooSlow": {
+        "message": "This is too slow"
+    },
+    "helpPageTooSlow1": {
+        "message": "There are hotkeys if you want to use them. Press the semicolon key to indicate the start/end of a sponsor segment and click the apostrophe to submit. These can be changed in the options. If you don't use QWERTY, you should probably change the keybinding."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Can I get a copy of the Database? What happens if you disappear?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "The database is public and available at"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "The source code is freely available. So, even if something happens to me, your submissions are not lost."
+    },
+    "helpPageNews": {
+        "message": "News and how it is made"
+    },
+    "helpPageSourceCode": {
+        "message": "Where can I get the source code?"
+    },
+    "Credits": {
+        "message": "Credits"
+    },
+    "highlightNewFeature": {
+        "message": "New! Get to the point of the video with one click with the new highlight category"
+    },
+    "LearnMore": {
+        "message": "Learn More"
     }
 }

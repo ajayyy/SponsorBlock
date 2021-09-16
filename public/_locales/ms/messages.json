@@ -212,6 +212,9 @@
     "showNotice": {
         "message": "Tunjukkan Notis Lagi"
     },
+    "showSkipNotice": {
+        "message": "Tunjukkan Makluman Setelah Segmen Dilangkau"
+    },
     "longDescription": {
         "message": "SponsorBlock membolehkan anda melewati penaja, intro, outro, peringatan langganan, dan bahagian lain dari video YouTube yang menjengkelkan. SponsorBlock adalah pelanjutan penyemak imbas yang banyak untuk membolehkan sesiapa sahaja menghantar segmen tajaan dan masa tayangan dari segmen video YouTube yang lain. Setelah satu orang menyerahkan maklumat ini, semua orang yang mempunyai pelanjutan ini akan melangkau segmen yang ditaja. Anda juga boleh melangkau bahagian muzik video muzik bukan.",
         "description": "Full description of the extension on the store pages."
@@ -268,9 +271,6 @@
     },
     "skip_category": {
         "message": "Langkau {0}?"
-    },
-    "skipped": {
-        "message": "Langkau"
     },
     "disableAutoSkip": {
         "message": "Lumpuhkan Langkau Auto"
@@ -331,12 +331,6 @@
     },
     "createdBy": {
         "message": "Dicipta oleh"
-    },
-    "autoSkip": {
-        "message": "Langkau Auto"
-    },
-    "showSkipNotice": {
-        "message": "Tunjukkan Makluman Setelah Segmen Dilangkau"
     },
     "keybindCurrentlySet": {
         "message": ". Pada masa ini ditetapkan untuk:"
@@ -504,14 +498,17 @@
     "category_livestream_messages_short": {
         "message": "Bacaan Mesej"
     },
-    "disable": {
-        "message": "Nyahaktifkan"
+    "autoSkip": {
+        "message": "Langkau Auto"
     },
     "manualSkip": {
         "message": "Langkau Manual"
     },
     "showOverlay": {
         "message": "Tunjukkan Di Bar Mencari"
+    },
+    "disable": {
+        "message": "Nyahaktifkan"
     },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan betul. Ia mestilah kod hex 3 atau 6 digit dengan tanda nombor pada awalnya."

@@ -218,6 +218,9 @@
     "showNotice": {
         "message": "Tampilkan Pemberitahuan Lagi"
     },
+    "showSkipNotice": {
+        "message": "Tampilkan pemberitahuan setelah melewati segmen"
+    },
     "longDescription": {
         "message": "SponsorBlock membuat anda melewati sponsor, intro, outro, pengingat berlangganan dan segmen mengganggu lainnya di video YouTube. SponsorBlock adalah ekstensi browser crowdsourced yang membolehkan siapa saja mengirim waktu awal dan akhir dari segmen sponsor dan segmen video YouTube lainnya. Setelah seseorang mengirim informasi ini, orang lain yang memakai ekstensi ini akan melewati segmen sponsor di video yang sama. Anda juga dapat melewati bagian non-musik di musik video.",
         "description": "Full description of the extension on the store pages."
@@ -278,9 +281,6 @@
     "skip_category": {
         "message": "Lewati {0}?"
     },
-    "skipped": {
-        "message": "Dilewati"
-    },
     "disableAutoSkip": {
         "message": "Nonaktifkan Lewati Otomatis"
     },
@@ -340,12 +340,6 @@
     },
     "createdBy": {
         "message": "Dibuat Oleh"
-    },
-    "autoSkip": {
-        "message": "Lewati Otomatis"
-    },
-    "showSkipNotice": {
-        "message": "Tampilkan pemberitahuan setelah melewati segmen"
     },
     "keybindCurrentlySet": {
         "message": ". Saat ini diatur pada:"
@@ -513,14 +507,17 @@
     "category_livestream_messages_short": {
         "message": "Membaca Pesan Chat"
     },
-    "disable": {
-        "message": "Nonaktif"
+    "autoSkip": {
+        "message": "Lewati Otomatis"
     },
     "manualSkip": {
         "message": "Lewati Manual"
     },
     "showOverlay": {
         "message": "Tampilkan Di Bilah Waktu"
+    },
+    "disable": {
+        "message": "Nonaktif"
     },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan benar. Harusnya terdiri dari 3 atau 6 digit kode heksa dengan tagar di awal."

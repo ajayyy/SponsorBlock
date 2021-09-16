@@ -212,6 +212,9 @@
     "showNotice": {
         "message": "Vis varselet igjen"
     },
+    "showSkipNotice": {
+        "message": "Vis varsel etter at et segment har blitt hoppet over"
+    },
     "longDescription": {
         "message": "SponsorBlock lar deg hoppe over sponsorer, introer, outro-er, abonnementspåminnelser, og andre irriterende deler av YouTube-videoer. SponsorBlock er en fellesskapsdrevet nettleserutvidelser som lar alle sende inn start- og sluttidspunktene til sponsede segmenter og andre segmenter i YouTube-videoer. Når en person sender inn denne informasjonen, vil alle andre med denne utvidelsen hoppe rett over det sponsede segmentet. Du kan også hoppe over ikke-musikk-seksjoner i musikkvideoer.",
         "description": "Full description of the extension on the store pages."
@@ -268,9 +271,6 @@
     },
     "skip_category": {
         "message": "Vil du hoppe over {0}?"
-    },
-    "skipped": {
-        "message": "Hoppet over"
     },
     "disableAutoSkip": {
         "message": "Skru av autohopping"
@@ -331,12 +331,6 @@
     },
     "createdBy": {
         "message": "Opprettet av"
-    },
-    "autoSkip": {
-        "message": "Hopp over automatisk"
-    },
-    "showSkipNotice": {
-        "message": "Vis varsel etter at et segment har blitt hoppet over"
     },
     "keybindCurrentlySet": {
         "message": ". Den er før øyeblikket satt til:"
@@ -504,14 +498,17 @@
     "category_livestream_messages_short": {
         "message": "Høytlesning av meldinger"
     },
-    "disable": {
-        "message": "Deaktiver"
+    "autoSkip": {
+        "message": "Hopp over automatisk"
     },
     "manualSkip": {
         "message": "Manuelt hopp"
     },
     "showOverlay": {
         "message": "Vis i tidsstripen"
+    },
+    "disable": {
+        "message": "Deaktiver"
     },
     "colorFormatIncorrect": {
         "message": "Fargen din er formattert feil. Det burde være en 3- eller 6-sifret heksadesimal kode med et nummertegn foran."

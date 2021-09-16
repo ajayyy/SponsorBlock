@@ -19,7 +19,12 @@
 	</div>
 
 	<div class="center">
-		<p class="createdBy titleBar">__MSG_createdBy__ <a href="https://ajay.app">Ajay Ramachandran</a> <img src="../icons/newprofilepic.jpg" height="30" class="profilepiccircle"/></p>
+		<p class="createdBy titleBar">
+			<img src="../icons/newprofilepic.jpg" height="30" class="profilepiccircle"/>
+			__MSG_createdBy__ 
+			<a href="https://ajay.app">Ajay Ramachandran</a> 
+			<a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">(__MSG_Donate__)</a>
+		</p>
 
 		<h1>__MSG_Options__</h1>
 	
@@ -27,6 +32,22 @@
 
 			<div id="category-type" option-type="react-CategoryChooserComponent">
 
+			</div>
+
+			<div option-type="toggle" sync-option="autoSkipOnMusicVideos">
+				<label class="switch-container">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+					<div class="switch-label">
+						__MSG_autoSkipOnMusicVideos__
+					</div>
+				</label>
+
+				<br/>
+				<br/>
+				<br/>
 			</div>
 
 			<br/>
@@ -194,9 +215,21 @@
 					</div>
 				</label>
 			</div>
+
+			<br/>
+			<br/>
+			<br/>
+
+			<div option-type="selector" sync-option="noticeVisibilityMode">
+				<select class="selector-element optionsSelector" >
+					<option value="0">__MSG_noticeVisibilityMode0__</option>
+					<option value="1">__MSG_noticeVisibilityMode1__</option>
+					<option value="2">__MSG_noticeVisibilityMode2__</option>
+					<option value="3">__MSG_noticeVisibilityMode3__</option>
+					<option value="4">__MSG_noticeVisibilityMode4__</option>
+				</select>
+			</div>
 	
-			<br/>
-			<br/>
 			<br/>
 			<br/>
 
@@ -421,6 +454,24 @@
 				<div class="small-description">__MSG_whatRefetchWhenNotFound__</div>
 			</div>
 
+			<br/>
+			<br/>
+
+			<div option-type="toggle" toggle-type="reverse" sync-option="showDonationLink" no-safari="true">
+				<label class="switch-container">
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+					<div class="switch-label">
+						__MSG_hideDonationLink__
+					</div>
+				</label>
+	
+			</div>
+
+			<br/>
+			<br/>
 			<br/>
 			<br/>
 	

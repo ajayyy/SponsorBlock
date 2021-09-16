@@ -129,8 +129,11 @@ a {
   text-decoration: none;
 }
 
+p,li {
+  font-size: 16px;
+}
+
 p,li,a {
-  font-size: 20px;
   color: #c4c4c4;
 }
 
@@ -180,4 +183,8 @@ h1,h2,h3,h4,h5,h6 {
 
 svg {
  text-decoration: none; 
+}
+
+#sbDonate {
+  font-size: 10px;
 }

@@ -5,7 +5,8 @@ import Utils from "../utils";
 const utils = new Utils();
 
 import SkipNoticeComponent, { SkipNoticeAction } from "../components/SkipNoticeComponent";
-import { SponsorTime, ContentContainer } from "../types";
+import { SponsorTime, ContentContainer, NoticeVisbilityMode } from "../types";
+import Config from "../config";
 
 class SkipNotice {
     segments: SponsorTime[];
@@ -17,7 +18,7 @@ class SkipNotice {
 
     skipNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
 
-    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer) {
+    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer, unskipTime: number = null) {
         this.skipNoticeRef = React.createRef();
 
         this.segments = segments;
@@ -44,9 +45,18 @@ class SkipNotice {
                 autoSkip={autoSkip} 
                 contentContainer={contentContainer}
                 ref={this.skipNoticeRef}
-                closeListener={() => this.close()} />,
+                closeListener={() => this.close()}
+                smaller={Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAll 
+                    || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAutoSkip && autoSkip)}
+                unskipTime={unskipTime} />,
             this.noticeElement
         );
+    }
+
+    setShowKeybindHint(value: boolean): void {
+        this.skipNoticeRef.current.setState({
+            showKeybindHint: value
+        });
     }
 
     close(): void {

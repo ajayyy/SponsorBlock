@@ -221,6 +221,9 @@
     "showNotice": {
         "message": "Értesítés megjelenítése ismét"
     },
+    "showSkipNotice": {
+        "message": "Jelezzen, ha egy szegmens át lett ugorva"
+    },
     "longDescription": {
         "message": "A SponsorBlock-al átugorhatja a szponzorokat, introkat, outrokat, feliratkozás emlékeztetőket és a YouTube videók többi idegesítő részeit. A SponsorBlock egy közösség által vezérelt böngészőbővítmény, ami lehetővé tesz bárkit arra, hogy megjelölhesse egy szponzor vagy más szegmens kezdő és végpontjait. Ha megosztja ezt az információt, mindenki más ennek a bővítménynek a birtokában egyenesen átugorja majd ezt a szponzorszegmenst. Emellett például a zene videók nem-zene részei is átugorhatóak.",
         "description": "Full description of the extension on the store pages."
@@ -277,9 +280,6 @@
     },
     "skip_category": {
         "message": "Átugorja ezt: {0}?"
-    },
-    "skipped": {
-        "message": "Átugorva"
     },
     "disableAutoSkip": {
         "message": "Auto átugrás kikapcsolása"
@@ -340,12 +340,6 @@
     },
     "createdBy": {
         "message": "Készítette"
-    },
-    "autoSkip": {
-        "message": "Auto átugrás"
-    },
-    "showSkipNotice": {
-        "message": "Jelezzen, ha egy szegmens át lett ugorva"
     },
     "keybindCurrentlySet": {
         "message": ". Jelenleg erre van állítva:"
@@ -513,14 +507,17 @@
     "category_livestream_messages_short": {
         "message": "Üzenet beolvasása"
     },
-    "disable": {
-        "message": "Kikapcsol"
+    "autoSkip": {
+        "message": "Auto átugrás"
     },
     "manualSkip": {
         "message": "Átugrás manuálisan"
     },
     "showOverlay": {
         "message": "Megjelenítés a keresősávban"
+    },
+    "disable": {
+        "message": "Kikapcsol"
     },
     "colorFormatIncorrect": {
         "message": "A szín helytelenül van formázva. Egy 3 vagy 6 számjegyből álló hex kódnak kell lennie egy kettőskereszttel az elején."
