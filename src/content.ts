@@ -965,16 +965,16 @@ async function whitelistCheck() {
 function getNextSkipIndex(currentTime: number, includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean): 
         {array: ScheduledTime[], index: number, endIndex: number, openNotice: boolean} {
 
-    const { includedTimes: submittedArray, startTimeIndexes: sponsorStartTimes } = 
+    const { includedTimes: submittedArray, scheduledTimes: sponsorStartTimes } = 
         getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments);
-    const { startTimeIndexes: sponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true, true);
+    const { scheduledTimes: sponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true, true);
 
     const minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
     const endTimeIndex = getLatestEndTimeIndex(submittedArray, minSponsorTimeIndex);
 
-    const { includedTimes: unsubmittedArray, startTimeIndexes: unsubmittedSponsorStartTimes } = 
+    const { includedTimes: unsubmittedArray, scheduledTimes: unsubmittedSponsorStartTimes } = 
         getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments);
-    const { startTimeIndexes: unsubmittedSponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false, false);
+    const { scheduledTimes: unsubmittedSponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false, false);
 
     const minUnsubmittedSponsorTimeIndex = unsubmittedSponsorStartTimes.indexOf(Math.min(...unsubmittedSponsorStartTimesAfterCurrentTime));
     const previewEndTimeIndex = getLatestEndTimeIndex(unsubmittedArray, minUnsubmittedSponsorTimeIndex);
@@ -1053,28 +1053,27 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
  *  the current time, but end after
  */
 function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean,
-    minimum?: number, onlySkippableSponsors = false, hideHiddenSponsors = false): {includedTimes: ScheduledTime[], startTimeIndexes: number[]} {
-    if (!sponsorTimes) return {includedTimes: [], startTimeIndexes: []};
+    minimum?: number, onlySkippableSponsors = false, hideHiddenSponsors = false): {includedTimes: ScheduledTime[], scheduledTimes: number[]} {
+    if (!sponsorTimes) return {includedTimes: [], scheduledTimes: []};
 
     const includedTimes: ScheduledTime[] = [];
-    const startTimeIndexes: number[] = [];
+    const scheduledTimes: number[] = [];
 
-    const possibleTimes = sponsorTimes.map((sponsorTime) => {
-        const results = [{
-            ...sponsorTime,
-            scheduledTime: sponsorTime.segment[0]
-        }]
+    const possibleTimes = sponsorTimes.map((sponsorTime) => ({
+        ...sponsorTime,
+        scheduledTime: sponsorTime.segment[0]
+    }));
 
-        if (sponsorTime.actionType === ActionType.Mute) {
-            // Schedule at the end time to know when to unmute
-            results.push({
+    // Schedule at the end time to know when to unmute
+    sponsorTimes.filter(sponsorTime => sponsorTime.actionType === ActionType.Mute)
+                .forEach(sponsorTime => {
+        if (!possibleTimes.some((time) => sponsorTime.segment[1] === time.scheduledTime)) {
+            possibleTimes.push({
                 ...sponsorTime,
                 scheduledTime: sponsorTime.segment[1]
-            })
+            });
         }
-
-        return results;
-    }).reduce((a, b) => a.concat(b), []);
+    });
 
     for (let i = 0; i < possibleTimes.length; i++) {
         if ((minimum === undefined
@@ -1084,12 +1083,12 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
                 && (!hideHiddenSponsors || possibleTimes[i].hidden === SponsorHideType.Visible)
                 && getCategoryActionType(possibleTimes[i].category) === CategoryActionType.Skippable) {
 
-            startTimeIndexes.push(possibleTimes[i].scheduledTime);
+            scheduledTimes.push(possibleTimes[i].scheduledTime);
             includedTimes.push(possibleTimes[i]);
         } 
     }
 
-    return { includedTimes, startTimeIndexes };
+    return { includedTimes, scheduledTimes };
 }
 
 /**
@@ -1112,7 +1111,7 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
 
     let counted = false;
     for (const segment of skippingSegments) {
-        const index = sponsorTimes.findIndex((s) => s.segment === segment.segment);
+        const index = sponsorTimes?.findIndex((s) => s.segment === segment.segment);
         if (index !== -1 && !sponsorSkipped[index]) {
             sponsorSkipped[index] = true;
             if (!counted) {
