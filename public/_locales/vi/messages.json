@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Bỏ qua lại"
     },
+    "unmute": {
+        "message": "Bật tiếng"
+    },
     "paused": {
         "message": "Tạm dừng"
     },
@@ -298,6 +301,9 @@
     },
     "skip": {
         "message": "Bỏ qua"
+    },
+    "mute": {
+        "message": "Ngắt tiếng"
     },
     "skip_category": {
         "message": "Bỏ qua {0}?"
