@@ -380,7 +380,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         const skipTime = sponsorTimes[index].segment[0];
 
-        this.props.contentContainer().previewTime(skipTime - 2);
+        this.props.contentContainer().previewTime(skipTime - (2 * this.props.contentContainer().v.playbackRate));
     }
 
     inspectTime(): void {
