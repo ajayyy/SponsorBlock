@@ -84,7 +84,7 @@ export class SkipButtonControlBar {
 
     startTimer(): void {
         this.stopTimer();
-        this.timeout = setTimeout(() => this.disable(), Math.max(Config.config.skipNoticeDuration, this.duration) * 1000);
+        this.timeout = setTimeout(() => this.textContainer.innerText = "", Math.max(Config.config.skipNoticeDuration, this.duration) * 1000);
     }
 
     disable(): void {
@@ -94,7 +94,7 @@ export class SkipButtonControlBar {
 
     toggleSkip(): void {
         this.skip(this.segment);
-        this.disable();
+        this.stopTimer();
+        this.textContainer.innerText = "";
     }
 }
-
