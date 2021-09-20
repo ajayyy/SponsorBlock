@@ -656,6 +656,9 @@
         "message": "За да изпратите сегменти с категория „{0}“, трябва да я активирате от опциите. Ще бъдете пренасочени към опциите сега.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Внимание: Само един сегмент от този тип може да е активен. Изпращането на няколко ще доведе до показване на случаен."
+    },
     "youMustSelectACategory": {
         "message": "Трябва да изберете категория за всички сегменти, които изпращате!"
     },

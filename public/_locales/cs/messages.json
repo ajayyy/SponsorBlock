@@ -656,6 +656,9 @@
         "message": "Pro odeslání segmentů v kategorii \"{0}\" to nejprve musíte povolit v nastavení. Nyní budete přesměrováni do nastavení.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Varování: tento typ segmentu může být aktivní najednou pouze jeden. Odeslání více segmentů způsobí zobrazení náhodného segmentu."
+    },
     "youMustSelectACategory": {
         "message": "Musíte vybrat kategorii pro všechny odeslané segmenty!"
     },

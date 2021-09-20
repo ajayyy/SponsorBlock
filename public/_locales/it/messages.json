@@ -4,20 +4,20 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Salta sponsorizzazioni, implorazioni di iscrizione ai canali e molto altro sui video di YouTube. Segnala gli sponsor sui video che guardi per salvare il tempo ad altri.",
+        "message": "Salta sponsorizzazioni, richieste d'iscrizione ai canali e molto altro sui video di YouTube. Segnala gli sponsor sui video che guardi per salvare il tempo agli altri.",
         "description": "Description of the extension."
     },
     "400": {
         "message": "Richiesta non valida"
     },
     "429": {
-        "message": "Stai inviando troppi spezzoni per questo video, sei sicuro che ce ne siano così tanti?"
+        "message": "Stai inviando troppi segmenti per questo video, sei sicuro che ce ne siano così tanti?"
     },
     "409": {
-        "message": "Questo spezzone è già stato inviato"
+        "message": "Questo è già stato inviato"
     },
     "channelWhitelisted": {
-        "message": "Canale aggiunto alla whitelist!"
+        "message": "Canale aggiunto alla lista delle esclusioni!"
     },
     "Segment": {
         "message": "segmento"
@@ -53,13 +53,13 @@
         "message": "Salta ancora"
     },
     "unmute": {
-        "message": "Riattiva microfono"
+        "message": "Riattiva il microfono"
     },
     "paused": {
         "message": "In pausa"
     },
     "manualPaused": {
-        "message": "Timer Fermato"
+        "message": "Timer fermato"
     },
     "confirmMSG": {
         "message": "\n\nPer modificare o eliminare valori specifici, premi il pulsante delle informazioni o apri il popup cliccando l'icona dell'estensione nell'angolo in alto a destra."
@@ -68,7 +68,7 @@
         "message": "Sei sicuro di volerlo cancellare?\n\n"
     },
     "Unknown": {
-        "message": "Si è verificato un errore durante l'invio dello spezzone sponsorizzato, per favore riprova più tardi."
+        "message": "Si è verificato un errore durante l'invio del segmento, per favore riprova più tardi."
     },
     "sponsorFound": {
         "message": "Questo video ha dei segmenti nel database!"
@@ -77,10 +77,10 @@
         "message": "Nessun segmento trovato"
     },
     "sponsorStart": {
-        "message": "Il Segmento Inizia Ora"
+        "message": "Il segmento inizia qui"
     },
     "sponsorEnd": {
-        "message": "Il Segmento Termina Ora"
+        "message": "Il segmento finisce ora"
     },
     "sponsorCancel": {
         "message": "Annulla Creazione del Segmento"
@@ -92,7 +92,7 @@
         "message": "Ricarica i segmenti"
     },
     "success": {
-        "message": "Successo!"
+        "message": "Ha funzionato!"
     },
     "voted": {
         "message": "Votato!"
@@ -104,16 +104,16 @@
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
     },
     "clearTimes": {
-        "message": "Pulisci Segmenti"
+        "message": "Rimuovi i segmenti"
     },
     "openPopup": {
-        "message": "Apri il Popup di SponsorBlock"
+        "message": "Apri il popup di SponsorBlock"
     },
     "closePopup": {
         "message": "Chiudi il popup"
     },
     "SubmitTimes": {
-        "message": "Invia Segmenti"
+        "message": "Invia i segmenti"
     },
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
@@ -125,7 +125,7 @@
         "message": "Rimuovi il canale dalle eccezioni"
     },
     "voteOnTime": {
-        "message": "Vota un Segmento"
+        "message": "Vota un segmento"
     },
     "Submissions": {
         "message": "Contributi"
@@ -147,19 +147,19 @@
         "message": "Suggerimento: puoi configurare dei comandi rapidi nelle opzioni"
     },
     "clearTimesButton": {
-        "message": "Cancella Minutaggi"
+        "message": "Cancella minutaggio"
     },
     "submitTimesButton": {
-        "message": "Invia Minutaggi"
+        "message": "Invia minutaggio"
     },
     "publicStats": {
-        "message": "Viene utilizzato nelle pagine delle statistiche pubbliche che mostrano quanto hai contribuito. Vedi"
+        "message": "Questo è usato nelle pagine pubbliche delle statistiche per mostrare quanto hai contribuito. Vedilo"
     },
     "Username": {
         "message": "Nome utente"
     },
     "setUsername": {
-        "message": "Imposta Username"
+        "message": "Imposta nome utente"
     },
     "copyPublicID": {
         "message": "Copia UserID Pubblico"
@@ -174,19 +174,19 @@
         "message": "Opzioni"
     },
     "showButtons": {
-        "message": "Mostra i Pulsanti nel Lettore di YouTube"
+        "message": "Mostra i pulsanti sul video"
     },
     "hideButtons": {
-        "message": "Nascondi i Pulsanti nel Lettore di YouTube"
+        "message": "Nascondi i pulsanti sul video"
     },
     "hideButtonsDescription": {
-        "message": "Nasconde i pulsanti che appaiono nel lettore di YouTube per inviare spezzoni sponsorizzati. Capisco che può essere fastidioso per alcune\n persone. Invece di utilizzare quei pulsanti, è possibile utilizzare questo popup per inviare gli spezzoni sponsorizzati. Per nascondere l'avviso che appare, \nusa il bottone \"Non mostrare più\" nell'avviso. Potrai sempre abilitare nuovamente queste impostazioni in futuro."
+        "message": "Nasconde i pulsanti che appaiono sul video per inviare i segmenti da nascondere."
     },
     "showInfoButton": {
-        "message": "Mostra il Pulsante Informazioni nel Lettore di YouTube"
+        "message": "Mostra il pulsante delle informazioni sopra al video"
     },
     "hideInfoButton": {
-        "message": "Nascondi il Pulsante Informazioni nel Lettore di YouTube"
+        "message": "Nascondi il pulsante d'informazioni sopra al video"
     },
     "whatInfoButton": {
         "message": "Questo è il pulsante che apre un popup nella pagina YouTube."
@@ -195,19 +195,19 @@
         "message": "Nascondi in automatico il Pulsante di Informazioni"
     },
     "hideDeleteButton": {
-        "message": "Nascondi il Pulsante Elimina nel Lettore di YouTube"
+        "message": "Nascondi il pulsante elimina"
     },
     "showDeleteButton": {
-        "message": "Mostra il Pulsante Elimina nel Lettore di YouTube"
+        "message": "Mostra il pulsante elimina"
     },
     "whatDeleteButton": {
-        "message": "Questo è il pulsante che ti permette di cancellare tutti gli spezzoni sponsorizzati nel lettore di YouTube."
+        "message": "Questo è il pulsante che ti permette di cancellare tutti i segmenti non inviati del video attuale."
     },
     "enableViewTracking": {
-        "message": "Attiva Monitoraggio Salti"
+        "message": "Attiva il conteggio dei salti"
     },
     "whatViewTracking": {
-        "message": "Questa funzionalità tiene traccia dei segmenti che hai saltato, per far sapere agli utenti quanto il loro contributo abbia aiutato gli altri e sia stato utilizzato come metrica insieme ai voti positivi, per garantire che lo spam non entri nel database. L'estensione invierà un messaggio al server ogni volta che salterai un segmento. Si spera che la maggior parte delle persone non modifichino questa impostazione, in modo da non intaccare l'accuratezza dei numeri di visualizzazione. :)"
+        "message": "Questa funzionalità tiene traccia dei segmenti che hai saltato per far sapere agli utenti quanto il loro contributo abbia aiutato gli altri e anche come statistica, insieme ai voti positivi, per garantire che lo spam non entri nel database. L'estensione invierà un messaggio al server ogni volta che salterai un segmento. Si spera che la maggior parte delle persone non modifichino questa impostazione, in modo da non intaccare l'accuratezza dei numeri di visualizzazione. :)"
     },
     "enableViewTrackingInPrivate": {
         "message": "Abilita il conteggio dei salti nelle schede private/anonime"
@@ -219,13 +219,13 @@
         "message": "Invece di richiedere i segmenti dal server utilizzando l'ID del video, viene inviato un hash dei primi 4 caratteri dell'ID. Questo server invierà i dati per tutti i video con hash simili."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Ricarica I Segmenti Su Nuovi Video"
+        "message": "Ricarica i segmenti su nuovi video"
     },
     "whatRefetchWhenNotFound": {
         "message": "Se il video è nuovo, e non risultano esserci segmenti, continueremo a cercarne di nuovi ogni pochi minuti."
     },
     "showNotice": {
-        "message": "Mostra di Nuovo l'Avviso"
+        "message": "Mostra di nuovo l'avviso"
     },
     "showSkipNotice": {
         "message": "Mostra Avviso Dopo Aver Saltato un Segmento"
@@ -246,15 +246,15 @@
         "message": "Tutti i Salta Avvisi Offuscati"
     },
     "longDescription": {
-        "message": "SponsorBlock ti consente di saltare sponsorizzazioni, introduzioni, conclusioni, promemoria di iscrizione e altre componenti fastidiose dei video su YouTube. SponsorBlock è un'estensione per browser in crowdsourcing, che consente a chiunque di inviare l'ora di inizio e di fine dei segmenti sponsorizzati e altri segmenti video su YouTube. Quando una persona invia queste informazioni, chiunque altro in possesso di questa estensione sarà in grado di saltare direttamente il segmento sponsorizzato. È possibile saltare anche le sezioni non musicali dei video musicali.",
+        "message": "SponsorBlock ti consente di saltare sponsorizzazioni, introduzioni, conclusioni, promemoria di iscrizione e altri elementi fastidiosi dai video YouTube. SponsorBlock è un'estensione per browser di crowdsourcing, cioè che consente a chiunque di inviare l'ora di inizio e di fine dei segmenti sponsorizzati e di altro tipo. Quando una persona invia queste informazioni, chiunque altro in possesso di questa estensione sarà in grado di saltare automaticamente il segmento sponsorizzato. È possibile saltare anche le sezioni non musicali dei video musicali.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
-        "message": "Sito Web",
+        "message": "Sito web",
         "description": "Used on Firefox Store Page"
     },
     "sourceCode": {
-        "message": "Codice Sorgente",
+        "message": "Codice sorgente",
         "description": "Used on Firefox Store Page"
     },
     "noticeUpdate": {
@@ -278,7 +278,7 @@
         "message": "Seleziona un tasto premendolo sulla tastiera"
     },
     "keybindDescriptionComplete": {
-        "message": "L'associazione di tasti è stata impostata a: "
+        "message": "Il comando rapido è stato impostato come: "
     },
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
@@ -320,7 +320,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} Silenziato",
+        "message": "{0} silenziato",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -615,7 +615,7 @@
         "message": "Salta automaticamente tutti i segmenti quando c'è un segmento non musicale"
     },
     "muteSegments": {
-        "message": "Consenti i segmenti che silenziano l'audio invece di saltare"
+        "message": "Silenzia i segmenti invece di saltarli, quando possibile"
     },
     "colorFormatIncorrect": {
         "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
@@ -655,6 +655,9 @@
     "enableThisCategoryFirst": {
         "message": "Per inviare segmenti della categoria \"{0}\", è necessario abilitarlo nelle opzioni. Sarai reindirizzato alle opzioni.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "poiOnlyOneSegment": {
+        "message": "Attenzione: questo tipo di segmento può essere presente una sola volta. Inviarne più di uno causerà la visualizzazione casuale di uno solo."
     },
     "youMustSelectACategory": {
         "message": "Devi selezionare una categoria per tutti i segmenti che stai inviando!"
@@ -739,7 +742,7 @@
         "message": "Nascondi per sempre"
     },
     "warningChatInfo": {
-        "message": "Hai ricevuto un ammonimento and non puoi inviare segmenti temporaneamente. Ciò significa che abbiamo notato che stavi commettendo alcuni errori comuni senza scopo malevolo, e vogliamo che tu ricontrollassi le regole. Puoi anche partecipare a questa chat su discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
+        "message": "Hai ricevuto un avvertimento e non puoi temporaneamente inviare i segmenti. Questo significa che abbiamo notato che stavi commettendo alcuni errori comuni non malevoli, e vogliamo solo chiarire le regole. Puoi anche unirti a questa chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Voto rifiutato a causa di un ammonimento. Clicca per aprire una chat per risolverlo, oppure torna dopo quando hai tempo.",

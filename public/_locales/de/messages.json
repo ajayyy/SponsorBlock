@@ -656,6 +656,9 @@
         "message": "Um Segmente aus der Kategorie \"{0}\" zu senden, musst du diese in den Optionen aktivieren. Du wirst jetzt zu den Optionen weitergeleitet.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Achtung: Diese Art von Segment kann nur einmal pro Video aktiv sein. Sollten mehrere eingereicht werden, wird ein zufälliges angezeigt werden."
+    },
     "youMustSelectACategory": {
         "message": "Du musst eine Kategorie für jedes zu übermittelnde Segment auswählen!"
     },
@@ -806,7 +809,7 @@
         "message": "Wo kann ich den Quellcode kriegen?"
     },
     "Credits": {
-        "message": "Credits"
+        "message": "Mitwirkende"
     },
     "highlightNewFeature": {
         "message": "Neu! Gehe mit einem Klick zum Punkt des Videos mit der neuen \"Hervorheben\" Kategorie"

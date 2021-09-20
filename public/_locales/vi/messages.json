@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Bỏ qua lại"
     },
+    "unmute": {
+        "message": "Bật tiếng"
+    },
     "paused": {
         "message": "Tạm dừng"
     },
@@ -299,6 +302,9 @@
     "skip": {
         "message": "Bỏ qua"
     },
+    "mute": {
+        "message": "Ngắt tiếng"
+    },
     "skip_category": {
         "message": "Bỏ qua {0}?"
     },
@@ -349,6 +355,9 @@
     },
     "changeUserID": {
         "message": "Nhập/Xuất mã người dùng của bạn"
+    },
+    "whatChangeUserID": {
+        "message": "Đây là mã cần được giữ bí mật. Nó giống như mật khẩu và không nên được chia sẻ cho bất kì ai khác. Nếu có ai đó lấy được mã này, họ có thể mạo danh bạn. Còn nếu như bạn đang tìm khoá ID công khai, hãy nhấn vào nút \"Sao chép Public ID\" trong popup của SponsorBlock."
     },
     "setUserID": {
         "message": "Đặt mã người dùng"
@@ -550,6 +559,12 @@
     "category_music_offtopic_short": {
         "message": "Không có nhạc"
     },
+    "category_poi_highlight": {
+        "message": "Điểm/Khoảnh khắc quan trọng"
+    },
+    "category_poi_highlight_description": {
+        "message": "Phần của video mà hầu hết mọi người đang tìm kiếm. Tương tự với câu nói \"Video bắt đầu từ x\"."
+    },
     "category_livestream_messages": {
         "message": "Luồng phát trực tiếp: Đọc Quyên góp/Tin nhắn"
     },
@@ -568,8 +583,20 @@
     "disable": {
         "message": "Tắt"
     },
+    "autoSkip_POI": {
+        "message": "Tự động bỏ qua"
+    },
+    "manualSkip_POI": {
+        "message": "Hỏi khi video bắt đầu"
+    },
+    "showOverlay_POI": {
+        "message": "Hiện ở thanh xem trước"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Tự động bỏ qua tất cả các phân đoạn nếu trong video có phân đoạn không phải nhạc"
+    },
+    "muteSegments": {
+        "message": "Cho phép các phân đoạn bị tắt tiếng hay vì bỏ qua"
     },
     "colorFormatIncorrect": {
         "message": "Mã màu sai định dạng. Mã màu phải có 3 hoặc 6 ký tự hệ hex và có dấu thăng ở đầu."
@@ -609,6 +636,9 @@
     "enableThisCategoryFirst": {
         "message": "Để gửi một phân đoạn với chủ đề \"{0}\", bạn cần phải kích hoạt nó trong phần tuỳ chọn. Bạn sẽ được đưa đến phần tuỳ chỉnh bây giờ.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "poiOnlyOneSegment": {
+        "message": "Cảnh báo: Loại phân đoạn này nếu hiển thị CHỈ CÓ 1 PHÂN ĐOẠN được xuất hiện trong video. Nếu bạn gửi lên, khi đó, phân đoạn xuất hiện duy nhất sẽ được lựa chọn ngẫu nhiên."
     },
     "youMustSelectACategory": {
         "message": "Bạn phải lựa chọn một danh mục cho tất cả phân đoạn bạn đang muốn đăng tải!"
@@ -681,6 +711,10 @@
     "help": {
         "message": "Trợ giúp"
     },
+    "GotIt": {
+        "message": "Đã hiểu",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "Từ chối tham gia thử nghiệm trong tương lai",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -706,6 +740,18 @@
     },
     "helpPageReviewOptions": {
         "message": "Xin hãy xem xét các tuỳ chọn bên dưới"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Nhiều tính năng sẽ bị tắt theo mặc định. Nếu bạn muốn bỏ qua phần intro, sử dụng trên các trang web bên thứ 3 như Invidious, v. v...., bạn có thể bật nó ở bên dưới. Bạn cũng có thể cho hiện/ẩn UI người dùng."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Việc bỏ qua 1 đoạn trong video được thực hiện thế nào?"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Các phân đoạn trong video sẽ tự động bị bỏ qua nếu chúng được tìm thấy trong cơ sở dữ liệu của chúng tôi. Bạn có thể mở cửa sổ xem trước các phân đoạn ấy bằng cách nhấp vào biểu tượng tiện ích mở rộng."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Bất cứ khi nào bỏ qua một phân đoạn, bạn sẽ nhận được 1 cửa sổ thông báo bât. Nếu phân đoạn có vẻ sai, hãy bỏ phiếu bằng cách nhấp vào nút downvote! Bạn cũng có thể bỏ phiếu trong cửa sổ bật lên khi nhấn vào biểu tượng tiện ích mở rộng. Và bạn có thể tắt việc hiển thị bảng thông báo này trong phần cài đặt tiện ích."
     },
     "helpPageTooSlow": {
         "message": "Quá chậm"

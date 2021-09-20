@@ -53,7 +53,7 @@
         "message": "Pular novamente"
     },
     "unmute": {
-        "message": "Desmutar"
+        "message": "Ativar som"
     },
     "paused": {
         "message": "Pausado"
@@ -303,13 +303,13 @@
         "message": "Pular"
     },
     "mute": {
-        "message": "Mutar"
+        "message": "Silenciar"
     },
     "skip_category": {
         "message": "Pular {0}?"
     },
     "mute_category": {
-        "message": "Mutar {0}?"
+        "message": "Silenciar {0}?"
     },
     "skip_to_category": {
         "message": "Pular para {0}?",
@@ -320,7 +320,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} Mutado",
+        "message": "{0} Silenciado",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -615,7 +615,7 @@
         "message": "Pular automaticamente todos os segmentos quando há um segmento que não é música"
     },
     "muteSegments": {
-        "message": "Permitir segmentos que mutam áudio ao invés de pular"
+        "message": "Permitir segmentos que silenciem o áudio ao invés de pular"
     },
     "colorFormatIncorrect": {
         "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma cerquilha (hashtag) no início."

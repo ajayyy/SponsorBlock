@@ -52,6 +52,9 @@
     "reskip": {
         "message": "繼續跳過"
     },
+    "unmute": {
+        "message": "解除靜音"
+    },
     "paused": {
         "message": "已暫停"
     },
@@ -529,6 +532,9 @@
     "category_music_offtopic_short": {
         "message": "非音樂"
     },
+    "category_poi_highlight": {
+        "message": "重點"
+    },
     "category_livestream_messages": {
         "message": "直播：捐贈/訊息閱讀"
     },
@@ -660,11 +666,18 @@
     "help": {
         "message": "說明"
     },
+    "GotIt": {
+        "message": "知道了",
+        "description": "Used as the button to dismiss a tooltip"
+    },
     "experiementOptOut": {
         "message": "關閉所有未來的實驗性功能",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "永久隱藏"
+    },
+    "Credits": {
+        "message": "致謝"
     }
 }

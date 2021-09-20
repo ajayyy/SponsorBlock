@@ -615,7 +615,7 @@
         "message": "음악이 아닌 구간이 있을 때는 모든 구간 자동 건너뛰기"
     },
     "muteSegments": {
-        "message": "구간을 건너뛰지 않고 음소거 처리하도록 합니다"
+        "message": "구간을 건너뛰지 않고 음소거 처리"
     },
     "colorFormatIncorrect": {
         "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
@@ -655,6 +655,9 @@
     "enableThisCategoryFirst": {
         "message": "\"{0}\" 카테고리의 세그먼트를 제출하려면 설정에서 활성화 해주셔야 합니다. 지금 설정으로 이동합니다.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "poiOnlyOneSegment": {
+        "message": "경고: 이 유형의 세그먼트는 한 번에 최대 하나씩 활성화될 수 있습니다. 여러 개를 제출하면 무작위로 표시됩니다."
     },
     "youMustSelectACategory": {
         "message": "제출 해야하는 모든 구간의 카테고리를 설정해야합니다!"

@@ -656,6 +656,9 @@
         "message": "Para enviar segmentos con la categoría de \"{0}\", debes activarlo en las opciones. Serás redirigido a las opciones ahora.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Advertencia: Solo puede haber uno de este tipo de segmento activo a la vez. Enviar múltiples causará que se muestre uno al azar."
+    },
     "youMustSelectACategory": {
         "message": "¡Debes seleccionar una categoría para todos los segmentos que estés presentando!"
     },

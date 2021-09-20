@@ -579,7 +579,7 @@
         "message": "Bez muzyki"
     },
     "category_poi_highlight": {
-        "message": "Podświetlone"
+        "message": "Wyróżnione"
     },
     "category_poi_highlight_description": {
         "message": "Część filmu, która interesuje większość osób. Podobne do komentarzy typu „Filmik zaczyna się od x”."
@@ -655,6 +655,9 @@
     "enableThisCategoryFirst": {
         "message": "Aby przesyłać segmenty o kategorii „{0}”, musisz ją włączyć w opcjach. Za chwilę nastąpi przekierowanie do ustawień.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "poiOnlyOneSegment": {
+        "message": "Ostrzeżenie: Ten typ segmentu, może być maksymalnie jeden. Przesyłanie kilku na raz spowoduje, że pojawi się losowy."
     },
     "youMustSelectACategory": {
         "message": "Musisz wybrać kategorię dla każdego segmentu, który zamieszczasz!"
