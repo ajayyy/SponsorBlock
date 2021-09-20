@@ -50,13 +50,13 @@ See the [Wiki](https://github.com/ajayyy/SponsorBlock/wiki) for important links.
 
 The backend server code is available here: https://github.com/ajayyy/SponsorBlockServer
 
-To make sure that this project doesn't die, I have made the database publicly downloadable at https://sponsor.ajay.app/database ([License](https://github.com/ajayyy/SponsorBlock/wiki/Database-and-API-License)). If you are planning on using the database in another project, please read the [API Docs](https://github.com/ajayyy/SponsorBlock/wiki/API-Docs) page for more information.
+To make sure that this project doesn't die, I have made the database publicly downloadable at https://sponsor.ajay.app/database ([License](https://github.com/ajayyy/SponsorBlock/wiki/Database-and-API-License)). If you are planning on using the database in another project, please read the [API Docs](https://wiki.sponsor.ajay.app/index.php/API_Docs) page for more information.
 
 The dataset and API are now being used in some [ports](https://github.com/ajayyy/SponsorBlock/wiki/3rd-Party-Ports) as well as a [neural network](https://github.com/andrewzlee/NeuralBlock).
 
 # API
 
-You can read the API docs [here](https://github.com/ajayyy/SponsorBlockServer#api-docs).
+You can read the API docs [here](https://wiki.sponsor.ajay.app/index.php/API_Docs).
 
 # Building
 
@@ -90,7 +90,7 @@ mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
 
 # Credit
 
-The awesome [Invidious API](https://github.com/omarroth/invidious/wiki/API) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) as a to get video info from YouTube.
+The awesome [Invidious API](https://docs.invidious.io/API.md) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) as a to get video info from YouTube.
 
 Originally forked from [YTSponsorSkip](https://github.com/NDevTK/YTSponsorSkip), but very little code remains.
 
