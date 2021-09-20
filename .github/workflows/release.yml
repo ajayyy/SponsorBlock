@@ -12,8 +12,8 @@ jobs:
 
     steps:
       # Initialization
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
       - run: npm install
       - name: Copy configuration
         run: cp config.json.example config.json
@@ -21,7 +21,7 @@ jobs:
       # Create Chrome artifacts
       - name: Create Chrome artifacts
         run: npm run build:chrome
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: ChromeExtension
           path: dist
@@ -32,7 +32,7 @@ jobs:
       # Create Firefox artifacts
       - name: Create Firefox artifacts
         run: npm run build:firefox
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: FirefoxExtension
           path: dist
@@ -42,7 +42,7 @@ jobs:
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
         run: npm run build:chrome -- --env.stream=beta
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: ChromeExtensionBeta
           path: dist
@@ -75,7 +75,7 @@ jobs:
       # Firefox Beta
       - name: Create Firefox Beta artifacts
         run: npm run build:firefox -- --env.stream=beta
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: FirefoxExtensionBeta
           path: dist
@@ -92,7 +92,7 @@ jobs:
         run: sudo apt-get install rename
       - name: Rename signed file
         run: cd ./web-ext-artifacts ; rename 's/.*/FirefoxSignedInstaller.xpi/' *
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: FirefoxExtensionSigned.xpi
           path: ./web-ext-artifacts/FirefoxSignedInstaller.xpi
