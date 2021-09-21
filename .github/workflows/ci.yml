@@ -10,8 +10,8 @@ jobs:
 
     steps:
       # Initialization
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
       - run: npm install
       - name: Copy configuration
         run: cp config.json.example config.json
@@ -23,44 +23,44 @@ jobs:
       # Create Chrome artifacts
       - name: Create Chrome artifacts
         run: npm run build:chrome
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: ChromeExtension
           path: dist
       - run: mkdir ./builds
-      - uses: montudor/action-zip@v0.1.0
+      - uses: montudor/action-zip@v1
         with:
           args: zip -qq -r ./builds/ChromeExtension.zip ./dist
 
       # Create Firefox artifacts
       - name: Create Firefox artifacts
         run: npm run build:firefox
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: FirefoxExtension
           path: dist
-      - uses: montudor/action-zip@v0.1.0
+      - uses: montudor/action-zip@v1
         with:
           args: zip -qq -r ./builds/FirefoxExtension.zip ./dist
 
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
         run: npm run build:chrome -- --env.stream=beta
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: ChromeExtensionBeta
           path: dist
-      - uses: montudor/action-zip@v0.1.0
+      - uses: montudor/action-zip@v1
         with:
           args: zip -qq -r ./builds/ChromeExtensionBeta.zip ./dist
 
       - name: Create Firefox Beta artifacts
         run: npm run build:firefox -- --env.stream=beta
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: FirefoxExtensionBeta
           path: dist
-      - uses: montudor/action-zip@v0.1.0
+      - uses: montudor/action-zip@v1
         with:
           args: zip -qq -r ./builds/FirefoxExtensionBeta.zip ./dist
 
