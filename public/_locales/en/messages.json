@@ -646,6 +646,9 @@
     "bracketNow": {
         "message": "(Now)"
     },
+    "bracketStart": {
+        "message": "(Start)"
+    },
     "moreCategories": {
         "message": "More Categories"
     },

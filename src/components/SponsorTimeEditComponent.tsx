@@ -71,7 +71,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     render(): React.ReactElement {
         const style: React.CSSProperties = {
-            textAlign: "center"
+            textAlign: "center",
+            width: "350px"
         };
 
         if (this.props.index != 0) {
@@ -100,6 +101,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             className="sponsorNowButton"
                             onClick={() => this.setTimeToNow(0)}>
                                 {chrome.i18n.getMessage("bracketNow")}
+                        </span>
+
+                        <span id={"startButton" + this.idSuffix}
+                            className="sponsorNowButton"
+                            onClick={() => this.setTimeTo(0, 0)}>
+                                {chrome.i18n.getMessage("bracketStart")}
                         </span>
 
                         <input id={"submittingTime0" + this.idSuffix}
