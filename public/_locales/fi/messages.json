@@ -308,6 +308,9 @@
     "skip_category": {
         "message": "Ohita {0}?"
     },
+    "mute_category": {
+        "message": "Mykistä {0}?"
+    },
     "skip_to_category": {
         "message": "Ohita kohtaan: {0}",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -315,6 +318,10 @@
     "skipped": {
         "message": "{0} ohitettu",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} Mykistetty",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Ohitettiin kohtaan: {0}",
