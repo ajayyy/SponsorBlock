@@ -646,8 +646,9 @@
     "bracketNow": {
         "message": "(Now)"
     },
-    "bracketStart": {
-        "message": "(Start)"
+    "start": {
+        "message": "Start",
+        "description": "Used on submission popup to set time to start of the video"
     },
     "moreCategories": {
         "message": "More Categories"
