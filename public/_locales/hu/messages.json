@@ -504,6 +504,9 @@
     "category_poi_highlight": {
         "message": "Kiemelés"
     },
+    "category_poi_highlight_description": {
+        "message": "A videónak az a része, amelyiket a legtöbb ember látni szeretne. Hasonlít az \"A videó x percnél kezdődik\" jellegű hozzászólásokhoz."
+    },
     "category_livestream_messages": {
         "message": "Élő adás: Adomány / üzenet olvasások"
     },
