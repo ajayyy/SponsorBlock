@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config";
-import { ActionType, ActionTypes, Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
+import { ActionType, Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
 import { getCategoryActionType } from "../utils/categoryUtils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";

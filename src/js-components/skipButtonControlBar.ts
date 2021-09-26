@@ -40,7 +40,9 @@ export class SkipButtonControlBar {
         this.container.appendChild(this.textContainer);
         this.container.addEventListener("click", () => this.toggleSkip());
         this.container.addEventListener("mouseenter", () => this.stopTimer());
+        this.container.addEventListener("mouseenter", () => console.log("mouseenter"));
         this.container.addEventListener("mouseleave", () => this.startTimer());
+        this.container.addEventListener("mouseleave", () => console.log("mouseleave"));
     }
 
     getElement(): HTMLElement {
