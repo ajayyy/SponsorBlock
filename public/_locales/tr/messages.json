@@ -650,6 +650,9 @@
         "message": "\"{0}\" kategorisinde bir kısım göndermek için onu ayarlardan açmalısınız. Ayarlara yönlendiriliyorsunuz.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Uyarı: Bu tür kısımlardan sadece bir adet etkin olabilir. Birden fazla gönderdiğinizde onlardan rastgele biri gösterilir."
+    },
     "youMustSelectACategory": {
         "message": "Göndereceğin tüm kısımlar için bir kategori seçmelisin!"
     },
@@ -756,6 +759,15 @@
     },
     "helpPageHowSkippingWorks": {
         "message": "Atlama nasıl çalışıyor"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Video kısımları veri tabanında mevcut ise otomatikman atlanır. Eklentinin simgesine tıklayınca açılan pencereden, video için mevcut olan kısımları görebilirsiniz."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Bir kısmı atladığınızda size bildirim gönderilir. Eğer kısım hatalıysa bunu eksi oylayınız. Eklentinin penceresinde de oy verebilirsiniz."
+    },
+    "Submitting": {
+        "message": "Gönderme"
     },
     "Editing": {
         "message": "Düzenleme"
