@@ -668,7 +668,8 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     if (response?.ok) {
         const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === id)
-                    ?.map((video) => video.segments)[0];
+                    ?.map((video) => video.segments)[0]
+                    ?.filter((segment) => segment.videoDuration === 0 || Math.abs(video.duration - segment.videoDuration) < 2);
         if (!recievedSegments || !recievedSegments.length) { 
             // return if no video found
             retryFetch();
