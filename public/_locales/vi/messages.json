@@ -722,9 +722,6 @@
     "hideForever": {
         "message": "Ẩn vĩnh viễn"
     },
-    "warningChatInfo": {
-        "message": "Bạn đã nhận được một cảnh báo (Warring) và tạm thời không thể gửi các phân đoạn. Bạn đã mắc lỗi trong việc tạo quá nhiều lần (có thể là chọn sai kiểu phân đoạn hoặc sai thời gian phân đoạn). Chúng tôi muốn bạn nhận ra điều đó để có thể giúp bạn khắc phục điều này trong tương lai, không mắc lỗi nữa. Bạn có thể gặp các VIP User tại đây: discord.gg/SponsorBlock hoặc matrix.to/#/#sponsor:ajay.app. Bọn họ sẽ giúp bạn gỡ cảnh báo sau khi bạn đã hiểu ra lỗi sai của bạn."
-    },
     "voteRejectedWarning": {
         "message": "Bỏ phiếu bị từ chối do có cảnh báo. Nhấp để mở cuộc trò chuyện để giải quyết hoặc quay lại sau.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
