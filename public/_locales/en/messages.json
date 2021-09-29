@@ -305,6 +305,10 @@
     "mute": {
         "message": "Mute"
     },
+    "visual": {
+        "message": "Visual",
+        "description": "This is the name of the option to create visual obstructions on top of the video to hide logos when a skip doesn't work."
+    },
     "skip_category": {
         "message": "Skip {0}?"
     },

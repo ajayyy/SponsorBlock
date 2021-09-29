@@ -58,10 +58,9 @@ export enum CategoryActionType {
 
 export enum ActionType {
     Skip = "skip",
-    Mute = "mute"
+    Mute = "mute",
+    Visual = "visual",
 }
-
-export const ActionTypes = [ActionType.Skip, ActionType.Mute];
 
 export type SegmentUUID = string  & { __segmentUUIDBrand: unknown };
 export type Category = string & { __categoryBrand: unknown };
@@ -80,6 +79,16 @@ export interface SponsorTime {
 
     hidden?: SponsorHideType;
     source?: SponsorSourceType;
+
+    visual: string;
+}
+
+export interface VisualSegmentInfo {
+    time: number;
+    bounds: [number, number][];
+    smooth: boolean;
+    curve: string;
+    color: string;
 }
 
 export interface ScheduledTime extends SponsorTime {
