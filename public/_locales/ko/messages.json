@@ -742,7 +742,7 @@
         "message": "다시 보지 않음"
     },
     "warningChatInfo": {
-        "message": "현재 귀하가 악의적이지 않은 일반적인 실수를 저지르고 있음을 발견했습니다. 이에 따라 경고 조치가 내려져 일시적으로 구간을 제출할 수 없게 되었습니다. 저희는 단지 규칙을 명확히 전달하고자 합니다. discord.gg/SponsorBlock 또는 matrix.to/#/#sponsor:ajay.app 링크를 통해 대화에 참여할 수도 있습니다."
+        "message": "현재 귀하가 악의적이지 않은 일반적인 실수를 저지르고 있음을 발견했습니다. 이에 따라 경고 조치가 내려져 일시적으로 구간을 제출할 수 없게 되었습니다. 규정을 잘 숙지했음을 확인해주십시오. 그러면 경고를 삭제하겠습니다. discord.gg/SponsorBlock 또는 matrix.to/#/#sponsor:ajay.app 링크를 통해 대화에 참여할 수도 있습니다."
     },
     "voteRejectedWarning": {
         "message": "경고로 인해 투표가 거부되었습니다. 클릭하여 대화로 해결하거나, 나중에 시간이 나면 다시 오세요.",
