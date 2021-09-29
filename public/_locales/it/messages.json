@@ -741,9 +741,6 @@
     "hideForever": {
         "message": "Nascondi per sempre"
     },
-    "warningChatInfo": {
-        "message": "Hai ricevuto un avvertimento e non puoi temporaneamente inviare i segmenti. Questo significa che abbiamo notato che stavi commettendo alcuni errori comuni non malevoli, e vogliamo solo chiarire le regole. Puoi anche unirti a questa chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
-    },
     "voteRejectedWarning": {
         "message": "Voto rifiutato a causa di un ammonimento. Clicca per aprire una chat per risolverlo, oppure torna dopo quando hai tempo.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
