@@ -742,7 +742,7 @@
         "message": "Dölj för alltid"
     },
     "warningChatInfo": {
-        "message": "Du har fått en tillfällig varning och kan inte skicka in segment. Detta innebär att vi har upptäckt att några vanliga misstag är gjorda som inte är uppsåtliga och vi vill bara klargöra reglerna. Du kan också gå med i den här chatten genom att använda discord.gg/SponsorBlock eller matrix.to/#/#sponsor:ajay.app"
+        "message": "Du har fått en tillfällig varning och kan inte längre skicka in segment. Vi har upptäckt att du har gjort några vanliga misstag som inte är uppsåtliga. Bekräfta därför att du förstår reglerna, så tar vi bort varningen. Du kan också gå med i den här chatten genom att använda discord.gg/SponsorBlock eller matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Rösten avvisades på grund av en varning. Klicka för att öppna ett chattfönster för att lösa problemet eller kom tillbaka senare när du har tid.",

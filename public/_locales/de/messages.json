@@ -320,7 +320,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} stummgeschalten",
+        "message": "{0} stummgeschaltet",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -742,7 +742,7 @@
         "message": "Dauerhaft verbergen"
     },
     "warningChatInfo": {
-        "message": "Du wurdest verwarnt und kannst vorrübergehend keine Segmente einreichen. Es ist uns aufgefallen, dass du gängige Fehler machst, welche nicht schädlich sind, und wir wollen dir nur die Regeln klar machen. Du kannst auch dem Chat durch discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app beitreten"
+        "message": "Du hast eine Warnung erhalten und kannst vorübergehend keine Segmente einreichen. Uns ist nämlich aufgefallen, dass du nicht bösartige Fehler in deinen Einreichungen machst. Bitte bestätige, dass du die Regeln verstanden hast. Darauffolgend können wir die Warnung entfernen. Du kannst diesem Chat auch mit discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app beitreten"
     },
     "voteRejectedWarning": {
         "message": "Abstimmung wegen einer Warnung abgelehnt. Klicke hier um einen Chat zu öffnen, oder versuch es später erneut, wenn du Zeit hast.",

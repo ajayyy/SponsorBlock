@@ -727,7 +727,7 @@
         "message": "Navždy skryť"
     },
     "warningChatInfo": {
-        "message": "Dostali ste varovanie a nemôžete tak dočasne odosielať segmenty. To znamená, že sme si všimli, že ste spravili nejaké chyby, ktoré nie sú myslené zle, a chceme Vám len objasniť pravidlá. Môžete sa pripojiť do konverzácie pomocou discord.gg/SponsorBlock alebo matrix.to/#/#sponsor:ajay.app"
+        "message": "Dostali ste varovanie a nemôžete tak dočasne odosielať segmenty. To znamená, že sme si všimli, že ste spravili nejaké chyby, ktoré nie sú myslené zle, a chceme Vám len objasniť pravidlá a potom Vám to varovanie odoberieme. Môžete sa pripojiť do konverzácie pomocou discord.gg/SponsorBlock alebo matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Hlasovanie bolo zamietnuté kvôli varovaniu. Kliknite pre otvorenie chatu, aby ste ho vyriešili, alebo sa vráťte až budete mať čas.",

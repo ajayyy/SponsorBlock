@@ -302,6 +302,9 @@
     "skip_category": {
         "message": "{0} atla?"
     },
+    "mute_category": {
+        "message": "{0} susturulsun mu?"
+    },
     "skip_to_category": {
         "message": "{0} kısmına atlansın mı?",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -309,6 +312,10 @@
     "skipped": {
         "message": "{0} Atlandı",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} susturuldu",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "{0} kısmına atlandı",
@@ -643,6 +650,9 @@
         "message": "\"{0}\" kategorisinde bir kısım göndermek için onu ayarlardan açmalısınız. Ayarlara yönlendiriliyorsunuz.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Uyarı: Bu tür kısımlardan sadece bir adet etkin olabilir. Birden fazla gönderdiğinizde onlardan rastgele biri gösterilir."
+    },
     "youMustSelectACategory": {
         "message": "Göndereceğin tüm kısımlar için bir kategori seçmelisin!"
     },
@@ -725,9 +735,6 @@
     "hideForever": {
         "message": "Asla gösterme"
     },
-    "warningChatInfo": {
-        "message": "Bir uyarı aldınız ve geçici bir süreliğine kısım gönderemeyeceksiniz. Sizin kısım göndermede zararlı olmayan bazı hatalar yaptığınızı belirledik ve size kuralları açıklamak istiyoruz. Bu sohbete discord.gg/SponsorBlock veya matrix.to/#/#sponsor:ajay.app üzerinden de katılabilirsiniz"
-    },
     "voteRejectedWarning": {
         "message": "Bir uyarı nedeniyle oy reddedildi. Çözüm bulmak için buraya tıklayarak bir sohbet açın veya daha sonra vaktiniz olduğunda uğrayın.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
@@ -749,5 +756,44 @@
     },
     "helpPageHowSkippingWorks": {
         "message": "Atlama nasıl çalışıyor"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Video kısımları veri tabanında mevcut ise otomatikman atlanır. Eklentinin simgesine tıklayınca açılan pencereden, video için mevcut olan kısımları görebilirsiniz."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Bir kısmı atladığınızda size bildirim gönderilir. Eğer kısım hatalıysa bunu eksi oylayınız. Eklentinin penceresinde de oy verebilirsiniz."
+    },
+    "Submitting": {
+        "message": "Gönderme"
+    },
+    "Editing": {
+        "message": "Düzenleme"
+    },
+    "helpPageEditing1": {
+        "message": "Eğer kısımlarda hata yaptıysanız, yukarı ok işareti olan düğmeye tıkladıktan sonra kısımları silebilir veya düzeltebilirsiniz."
+    },
+    "helpPageTooSlow": {
+        "message": "Bu fazla yavaş"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Veri tabanının bir kopyasını alabilir miyim? Bir gün ortadan kaybolursanız ne olacak?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Veri tabanı herkese açıktır ve şuradan erişilebilir: "
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Kaynak koduna serbestçe erişilebilir. Ben bir gün bu dünyada yalan olsam dahi, sizin gönderdiğiniz kısımlar kaybolmayacak."
+    },
+    "helpPageSourceCode": {
+        "message": "Kaynak koduna nereden ulaşabilirim?"
+    },
+    "Credits": {
+        "message": "Emeği Geçenler"
+    },
+    "highlightNewFeature": {
+        "message": "Yeni! \"Vurgu\" kategorisi sayesinde tek tıkla videonun asıl yerine gidebilirsiniz"
+    },
+    "LearnMore": {
+        "message": "Dahasını Öğren"
     }
 }

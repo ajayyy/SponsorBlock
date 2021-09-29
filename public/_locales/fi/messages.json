@@ -308,6 +308,9 @@
     "skip_category": {
         "message": "Ohita {0}?"
     },
+    "mute_category": {
+        "message": "Mykistä {0}?"
+    },
     "skip_to_category": {
         "message": "Ohita kohtaan: {0}",
         "description": "Used for skipping to things (Skip to Highlight)"
@@ -315,6 +318,10 @@
     "skipped": {
         "message": "{0} ohitettu",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} Mykistetty",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Ohitettiin kohtaan: {0}",
@@ -735,7 +742,7 @@
         "message": "Piilota ikuisesti"
     },
     "warningChatInfo": {
-        "message": "Sait varoituksen ja et voi lähettää segmenttejä väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, ja haluamme vain selventää säännöt. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/#sponsor:ajay.app"
+        "message": "Sait varoituksen ja et voi lähettää segmenttejä väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, joten vahvistakaa, että ymmärrätte säännöt ja poistamme varoituksen. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Ääni hylättiin varoituksen takia. Klikkaa avataksesi chatin sen ratkaisemiseksi, tai tule takaisin myöhemmin kun sinulla on siihen aikaa.",

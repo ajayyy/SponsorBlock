@@ -742,7 +742,7 @@
         "message": "Skrýt napořád"
     },
     "warningChatInfo": {
-        "message": "Dostali jste varování a nemůžete dočasně přidávat segmenty. To znamená, že jsme si všimli, že děláte běžné chyby, které nejsou škodlivé, jen chceme vyjasnit pravidla. Také se můžete připojit do tohoto chatu pomocí discord.gg/SponsorBlock nebo matrix.to/#/#sponsor:ajay.app"
+        "message": "Dostali jste varování a nemůžete dočasně přidávat segmenty. To znamená, že jsme si všimli, že děláte běžné chyby, které nejsou škodlivé, stačí potvrdit přečtení pravidel a odebereme varování. Tají se můžete připojit do tohoto chatu pomocí discord.gg/SponsorBlock nebo matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Hlas zamítnut kvůli varování. Klikněte pro otevření chatu pro vyřešení, nebo se vraťte později, až budete mít čas.",

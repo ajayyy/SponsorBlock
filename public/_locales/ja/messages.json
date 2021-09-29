@@ -716,9 +716,6 @@
     "hideForever": {
         "message": "二度と表示しない"
     },
-    "warningChatInfo": {
-        "message": "警告のため，区域の送信が一時的に禁止されています。これは利用者さまが間違いを犯されているというこちらどもの判断ではありますが，この間違いが悪意あるものとは思っておりません。単に，利用者さまに区域送信における規則を知っていただきたいだけです。連絡先: discord.gg/SponsorBlock，matrix.to/#/#sponsor:ajay.app"
-    },
     "voteRejectedWarning": {
         "message": "警告により投票が拒否されました。クリックして運営に連絡するか，少し時間を置いてからやりなおしてください。",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."

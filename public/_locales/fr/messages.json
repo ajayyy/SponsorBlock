@@ -656,6 +656,9 @@
         "message": "Pour envoyer des segments de la catégorie \"{0}\", vous devez l'activer dans les options. Vous allez être redirigé vers les options maintenant.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Avertissement: Ce type de segment peut avoir au maximum un seul actif à la fois. En soumettant plusieurs segments, un seul aléatoire sera affiché."
+    },
     "youMustSelectACategory": {
         "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
     },
@@ -737,9 +740,6 @@
     },
     "hideForever": {
         "message": "Cacher pour toujours"
-    },
-    "warningChatInfo": {
-        "message": "Vous avez reçu un avertissement et ne pouvez pas soumettre des segments temporairement. Cela signifie que nous avons remarqué que vous commettez des erreurs courantes qui ne sont pas malveillantes, et que nous voulons simplement clarifier les règles. Vous pouvez également rejoindre ce chat en utilisant discord.gg/SponsorBlock ou matrix.to/#/+sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Le vote a été rejeté en raison d'un avertissement. Cliquez pour ouvrir un chat et y mettre fin , ou revenez plus tard lorsque vous avez le temps.",
