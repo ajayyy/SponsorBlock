@@ -742,7 +742,7 @@
         "message": "Voor altijd verbergen"
     },
     "warningChatInfo": {
-        "message": "U heeft een waarschuwing gekregen en kunt tijdelijk geen segmenten indienen. Dit betekent dat we gemerkt hebben dat u een aantal veelvoorkomende fouten maakt die niet kwaadaardig zijn, en we willen gewoon de regels verduidelijken. U kunt ook deelnemen aan deze chat via discord.gg/SponsorBlock of matrix.to/#/#sponsor:ajay.app"
+        "message": "U heeft een waarschuwing gekregen en kunt tijdelijk geen segmenten indienen. Dit betekent dat we gemerkt hebben dat u een aantal veelvoorkomende fouten maakt die niet kwaadaardig zijn. Bevestig dat u de regels begrijpt en we zullen de waarschuwing verwijderen. U kunt ook deelnemen aan deze chat via discord.gg/SponsorBlock of matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Stem geweigerd vanwege een waarschuwing. Klik om een chat te openen om het op te lossen, of kom later terug als u tijd hebt.",
