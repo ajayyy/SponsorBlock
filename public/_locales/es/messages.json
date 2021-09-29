@@ -742,7 +742,7 @@
         "message": "Ocultar para siempre"
     },
     "warningChatInfo": {
-        "message": "Ha recibido una advertencia y no puede enviar segmentos temporalmente. Esto significa que hemos notado de que estaba cometiendo algunos errores comunes que no son maliciosos, y solo queremos aclarar las reglas. Puedes unirte a este chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
+        "message": "Has recibido una advertencia y no puedes enviar segmentos temporalmente. Esto significa que hemos notado que estabas cometiendo algunos errores comunes que no son maliciosos, por favor, solo confirma que entiendes las reglas y anularemos la advertencia. También puedes unirte a este chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Voto rechazado debido a una advertencia. Haga clic aquí para abrir un chat para resolverlo, o vuelva más tarde cuando tenga tiempo.",
