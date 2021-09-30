@@ -1306,15 +1306,8 @@ async function createButtons(): Promise<void> {
     if (Config.config.autoHideInfoButton && !onInvidious && controlsContainer 
             && playerButtons["info"]?.button && !controlsWithEventListeners.includes(controlsContainer)) {
         controlsWithEventListeners.push(controlsContainer);
-        playerButtons["info"].button.classList.add("hidden");
-
-        controlsContainer.addEventListener("mouseenter", () => {
-            playerButtons["info"].button.classList.remove("hidden");
-        });
-
-        controlsContainer.addEventListener("mouseleave", () => {
-            playerButtons["info"].button.classList.add("hidden");
-        });
+        
+        utils.setupAutoHideAnimation(playerButtons["info"].button, controlsContainer);
     }
 }
 

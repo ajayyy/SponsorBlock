@@ -75,16 +75,24 @@
 	vertical-align: top;
 }
 
-#infoButton.playerButton:not(.hidden) {
+.autoHiding:not(.hidden) {
 	transform: translateX(0%) scale(1);
 	/* opacity is from YouTube page */
 	transition: transform 0.2s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
 }
 
-#infoButton.playerButton.hidden {
+.autoHiding.hidden {
 	transform: translateX(100%) scale(0);
 	/* opacity is from YouTube page */
 	transition: transform 0.2s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
+}
+
+.autoHiding.hidden.autoHideLeft {
+	transform: translateX(-100%) scale(0);
+}
+
+.autoHiding.hidden.animationDone {
+	display: none !important;
 }
 
 .playerButton.hidden {

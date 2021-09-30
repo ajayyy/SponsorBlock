@@ -2,6 +2,8 @@ import Config from "../config";
 import { SponsorTime } from "../types";
 import { getSkippingText } from "../utils/categoryUtils";
 
+import Utils from "../utils";
+const utils = new Utils();
 
 export interface SkipButtonControlBarProps {
     skip: (segment: SponsorTime) => void;
@@ -53,13 +55,19 @@ export class SkipButtonControlBar {
     
         if (leftControlsContainer && !leftControlsContainer.contains(this.container)) {
             leftControlsContainer.insertBefore(this.container, this.chapterText);
+
+            if (Config.config.autoHideInfoButton) {
+                utils.setupAutoHideAnimation(this.skipIcon, leftControlsContainer, false, false);
+            }
         }
     }
 
     enable(segment: SponsorTime, duration?: number): void {
         if (duration) this.duration = duration;
         this.segment = segment;
+
         this.refreshText();
+        utils.disableAutoHideAnimation(this.skipIcon);
 
         this.startTimer();
     }
@@ -111,6 +119,8 @@ export class SkipButtonControlBar {
         this.chapterText?.classList?.remove("hidden");
 
         this.getChapterPrefix()?.classList?.add("hidden");
+
+        utils.enableAutoHideAnimation(this.skipIcon);
     }
 
     private getChapterPrefix(): HTMLElement {
