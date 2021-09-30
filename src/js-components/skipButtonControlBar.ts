@@ -68,6 +68,7 @@ export class SkipButtonControlBar {
         if (this.segment) {
             this.chapterText?.classList?.add("hidden");
             this.container.classList.remove("hidden");
+            this.textContainer?.classList?.remove("hidden");
             this.textContainer.innerText = getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "");
         }
     }
@@ -84,22 +85,36 @@ export class SkipButtonControlBar {
 
     startTimer(): void {
         this.stopTimer();
-        this.timeout = setTimeout(() => this.innerTextVanish(), Math.max(Config.config.skipNoticeDuration, this.duration) * 1000);
+        this.timeout = setTimeout(() => this.disableText(), Math.max(Config.config.skipNoticeDuration, this.duration) * 1000);
     }
 
     disable(): void {
         this.container.classList.add("hidden");
+        this.textContainer?.classList?.remove("hidden");
+
         this.chapterText?.classList?.remove("hidden");
+        this.getChapterPrefix()?.classList?.remove("hidden");
     }
 
     toggleSkip(): void {
         this.skip(this.segment);
-        this.innerTextVanish();
+        this.disableText();
     }
 
-    innerTextVanish(): void {
-        this.textContainer.innerText = "";
+    disableText(): void {
+        if (Config.config.hideVideoPlayerControls) {
+            this.disable();
+            return;
+        }
+
+        this.textContainer?.classList?.add("hidden");
         this.chapterText?.classList?.remove("hidden");
+
+        this.getChapterPrefix()?.classList?.add("hidden");
+    }
+
+    private getChapterPrefix(): HTMLElement {
+        return document.querySelector(".ytp-chapter-title-prefix");
     }
 }
 
