@@ -656,6 +656,9 @@
         "message": "Kategooriaga \"{0}\" segmentide saatmiseks pead selle enne valikutes lubama. Sind suunatakse nüüd valikutesse.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Hoiatus: Seda tüüpi segmenti saab korraga aktiivne olla vaid üks. Mitme saatmine põhjustab suvalise segmendi kuvamise."
+    },
     "youMustSelectACategory": {
         "message": "Sa pead enne saatmist igale segmendile kategooria valima!"
     },
