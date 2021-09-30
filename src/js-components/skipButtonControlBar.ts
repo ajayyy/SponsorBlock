@@ -2,6 +2,8 @@ import Config from "../config";
 import { SponsorTime } from "../types";
 import { getSkippingText } from "../utils/categoryUtils";
 
+import Utils from "../utils";
+const utils = new Utils();
 
 export interface SkipButtonControlBarProps {
     skip: (segment: SponsorTime) => void;
@@ -53,13 +55,20 @@ export class SkipButtonControlBar {
     
         if (leftControlsContainer && !leftControlsContainer.contains(this.container)) {
             leftControlsContainer.insertBefore(this.container, this.chapterText);
+
+            if (Config.config.autoHideInfoButton) {
+                utils.setupAutoHideAnimation(this.skipIcon, leftControlsContainer, false, false);
+            }
         }
     }
 
     enable(segment: SponsorTime, duration?: number): void {
         if (duration) this.duration = duration;
         this.segment = segment;
+
         this.refreshText();
+        this.textContainer?.classList?.remove("hidden");
+        utils.disableAutoHideAnimation(this.skipIcon);
 
         this.startTimer();
     }
@@ -68,7 +77,8 @@ export class SkipButtonControlBar {
         if (this.segment) {
             this.chapterText?.classList?.add("hidden");
             this.container.classList.remove("hidden");
-            this.textContainer.innerText = getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "");
+            this.textContainer.innerText = this.getTitle();
+            this.skipIcon.setAttribute("title", this.getTitle());
         }
     }
 
@@ -84,17 +94,42 @@ export class SkipButtonControlBar {
 
     startTimer(): void {
         this.stopTimer();
-        this.timeout = setTimeout(() => this.disable(), Math.max(Config.config.skipNoticeDuration, this.duration) * 1000);
+        this.timeout = setTimeout(() => this.disableText(), Math.max(Config.config.skipNoticeDuration, this.duration) * 1000);
     }
 
     disable(): void {
         this.container.classList.add("hidden");
+        this.textContainer?.classList?.remove("hidden");
+
         this.chapterText?.classList?.remove("hidden");
+        this.getChapterPrefix()?.classList?.remove("hidden");
     }
 
     toggleSkip(): void {
         this.skip(this.segment);
-        this.disable();
+        this.disableText();
+    }
+
+    disableText(): void {
+        if (Config.config.hideVideoPlayerControls || Config.config.hideSkipButtonPlayerControls) {
+            this.disable();
+            return;
+        }
+
+        this.textContainer?.classList?.add("hidden");
+        this.chapterText?.classList?.remove("hidden");
+
+        this.getChapterPrefix()?.classList?.add("hidden");
+
+        utils.enableAutoHideAnimation(this.skipIcon);
+    }
+
+    private getTitle(): string {
+        return getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "");
+    }
+
+    private getChapterPrefix(): HTMLElement {
+        return document.querySelector(".ytp-chapter-title-prefix");
     }
 }
 

@@ -183,6 +183,34 @@ export default class Utils {
         }
     }
 
+    setupAutoHideAnimation(element: Element, container: Element, enabled = true, rightSlide = true): void {
+        if (enabled) element.classList.add("autoHiding");
+        element.classList.add("hidden");
+        element.classList.add("animationDone");
+        if (!rightSlide) element.classList.add("autoHideLeft");
+
+        container.addEventListener("mouseenter", () => {
+            element.classList.remove("animationDone");
+
+            // Wait for next event loop
+            setTimeout(() => element.classList.remove("hidden"), 10);
+        });
+
+        container.addEventListener("mouseleave", () => {
+            if (element.classList.contains("autoHiding")) {
+                element.classList.add("hidden");
+            }
+        });
+    }
+
+    enableAutoHideAnimation(element: Element): void {
+        element.classList.add("autoHiding");
+    }
+
+    disableAutoHideAnimation(element: Element): void {
+        element.classList.remove("autoHiding");
+    }
+
     /**
      * Merges any overlapping timestamp ranges into single segments and returns them as a new array.
      */
