@@ -199,13 +199,6 @@ export default class Utils {
         container.addEventListener("mouseleave", () => {
             if (element.classList.contains("autoHiding")) {
                 element.classList.add("hidden");
-
-                const animationEndListener = () => {
-                    if (element.classList.contains("hidden")) element.classList.add("animationDone");
-                    element.removeEventListener("transitionend", animationEndListener);
-                };
-
-                element.addEventListener("transitionend", animationEndListener);
             }
         });
     }
