@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "This hides the buttons that appear on the YouTube player to submit skip segments."
     },
+    "showSkipButton": {
+        "message": "Keep Skip to Highlight Button on Player"
+    },
     "showInfoButton": {
         "message": "Show Info Button On YouTube Player"
     },
     "hideInfoButton": {
         "message": "Hide Info Button On YouTube Player"
-    },
-    "whatInfoButton": {
-        "message": "This is the button that opens up a popup in the YouTube page."
     },
     "autoHideInfoButton": {
         "message": "Auto-hide Info Button"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Show Delete Button On YouTube Player"
-    },
-    "whatDeleteButton": {
-        "message": "This is the button on the YouTube player that will clear all your un-submitted segments for the current video."
     },
     "enableViewTracking": {
         "message": "Enable Skip Count Tracking"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Show Upload Button"
-    },
-    "whatUploadButton": {
-        "message": "This button appears on the YouTube player after you have selected a timestamp and are ready to submit."
     },
     "customServerAddress": {
         "message": "SponsorBlock Server Address"

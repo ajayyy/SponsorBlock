@@ -111,7 +111,7 @@ export class SkipButtonControlBar {
     }
 
     disableText(): void {
-        if (Config.config.hideVideoPlayerControls) {
+        if (Config.config.hideVideoPlayerControls || Config.config.hideSkipButtonPlayerControls) {
             this.disable();
             return;
         }
