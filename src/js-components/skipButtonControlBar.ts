@@ -77,7 +77,8 @@ export class SkipButtonControlBar {
             this.chapterText?.classList?.add("hidden");
             this.container.classList.remove("hidden");
             this.textContainer?.classList?.remove("hidden");
-            this.textContainer.innerText = getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "");
+            this.textContainer.innerText = this.getTitle();
+            this.skipIcon.setAttribute("title", this.getTitle());
         }
     }
 
@@ -121,6 +122,10 @@ export class SkipButtonControlBar {
         this.getChapterPrefix()?.classList?.add("hidden");
 
         utils.enableAutoHideAnimation(this.skipIcon);
+    }
+
+    private getTitle(): string {
+        return getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "");
     }
 
     private getChapterPrefix(): HTMLElement {
