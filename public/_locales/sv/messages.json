@@ -188,9 +188,6 @@
     "hideInfoButton": {
         "message": "Dölj Infoknapp På YouTube-spelaren"
     },
-    "whatInfoButton": {
-        "message": "Detta är knappen som öppnar popup-rutan på YouTube-sidan."
-    },
     "autoHideInfoButton": {
         "message": "Dölj informationsknappen automatiskt"
     },
@@ -199,9 +196,6 @@
     },
     "showDeleteButton": {
         "message": "Visa knappen ta bort på YouTube-spelaren"
-    },
-    "whatDeleteButton": {
-        "message": "Den här knappen på YouTube-spelaren rensar bort alla segment som ej har skickats in på aktuell video."
     },
     "enableViewTracking": {
         "message": "Aktivera spåra antalet hoppa över"
@@ -441,9 +435,6 @@
     },
     "showUploadButton": {
         "message": "Visa uppladdningsknapp"
-    },
-    "whatUploadButton": {
-        "message": "Denna knapp visas på YouTube-spelaren efter att du har valt en tidpunkt och är redo att rapportera."
     },
     "customServerAddress": {
         "message": "Serveradress för SponsorBlock"
