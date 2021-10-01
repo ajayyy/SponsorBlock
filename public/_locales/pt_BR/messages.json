@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Esta opção esconde os botões que aparecem para enviar segmentos no player do YouTube."
     },
+    "showSkipButton": {
+        "message": "Manter botão Pular para os Destaques no player"
+    },
     "showInfoButton": {
         "message": "Mostrar botão de Informações no player do Youtube"
     },
     "hideInfoButton": {
         "message": "Esconder botão de Informações no player do Youtube"
-    },
-    "whatInfoButton": {
-        "message": "Este é o botão que abre o popup na pagina do Youtube."
     },
     "autoHideInfoButton": {
         "message": "Esconder Automaticamente o Botão de Informação"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Mostrar botão de Apagar no player do Youtube"
-    },
-    "whatDeleteButton": {
-        "message": "Este é o botão que lhe permite saltar todos os patrocínios do player do Youtube."
     },
     "enableViewTracking": {
         "message": "Ativar Contador de Segmentos Pulados"
@@ -442,9 +439,6 @@
     "showUploadButton": {
         "message": "Mostrar botão de envio"
     },
-    "whatUploadButton": {
-        "message": "Este botão aparece no reprodutor do YouTube depois de ter selecionado um carimbo de data/hora e está pronto para ser enviado."
-    },
     "customServerAddress": {
         "message": "Endereço do servidor do SponsorBlock"
     },
@@ -655,6 +649,9 @@
     "enableThisCategoryFirst": {
         "message": "Para enviar os segmentos com a categoria de \"{0}\", você deve ativá-la nas opções. Você será redirecionado para as opções agora.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "poiOnlyOneSegment": {
+        "message": "Aviso: Este tipo de segmento pode ter no máximo um ativo por vez. Enviar múltiplos fará com que um aleatório seja mostrado."
     },
     "youMustSelectACategory": {
         "message": "Você deve selecionar uma categoria para todos os segmentos que você está enviando!"
