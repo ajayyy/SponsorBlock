@@ -176,17 +176,11 @@
     "hideInfoButton": {
         "message": "YouTube ప్లేయర్‌లో సమాచారం బటన్‌ను దాచండి"
     },
-    "whatInfoButton": {
-        "message": "ఇది YouTube పేజీలో పాపప్‌ను తెరిచే బటన్."
-    },
     "hideDeleteButton": {
         "message": "YouTube ప్లేయర్‌లో తొలగించు బటన్‌ను దాచండి"
     },
     "showDeleteButton": {
         "message": "YouTube ప్లేయర్‌లో తొలగించు బటన్‌ను చూపించు"
-    },
-    "whatDeleteButton": {
-        "message": "ఇది YouTube ప్లేయర్‌లోని బటన్, ఇది ప్రస్తుత వీడియో కోసం మీరు సమర్పించని అన్ని విభాగాలను క్లియర్ చేస్తుంది."
     },
     "enableViewTracking": {
         "message": "స్కిప్ కౌంట్ ట్రాకింగ్‌ను ప్రారంభించండి"
@@ -358,9 +352,6 @@
     },
     "showUploadButton": {
         "message": "అప్‌లోడ్ బటన్ చూపించు"
-    },
-    "whatUploadButton": {
-        "message": "మీరు టైమ్‌స్టాంప్‌ను ఎంచుకుని సమర్పించడానికి సిద్ధంగా ఉన్న తర్వాత ఈ బటన్ YouTube ప్లేయర్‌లో కనిపిస్తుంది."
     },
     "customServerAddress": {
         "message": "స్పాన్సర్బ్లాక్ సర్వర్ చిరునామా"
