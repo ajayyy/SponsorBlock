@@ -188,9 +188,6 @@
     "hideInfoButton": {
         "message": "Skryť info tlačidlo v YouTube prehrávači"
     },
-    "whatInfoButton": {
-        "message": "Toto tlačidlo zobrazí vyskakovacie okno na YouTube stránke."
-    },
     "autoHideInfoButton": {
         "message": "Automaticky skryť tlačidlo Info"
     },
@@ -199,9 +196,6 @@
     },
     "showDeleteButton": {
         "message": "Zobraziť tlačidlo Zmazať v YouTube prehrávači"
-    },
-    "whatDeleteButton": {
-        "message": "Toto tlačidlo v YouTube prehrávači zmaže všetky ešte neodoslané segmenty v aktuálnom videu."
     },
     "enableViewTracking": {
         "message": "Zapnúť počítanie preskočení"
@@ -426,9 +420,6 @@
     },
     "showUploadButton": {
         "message": "Ukázať Nahrávacie Tlačidlo"
-    },
-    "whatUploadButton": {
-        "message": "Toto tlačidlo sa zobrazí v YouTube prehrávači po tom ako označíte začiatok a koniec segmentu na odoslanie."
     },
     "customServerAddress": {
         "message": "Adresa serveru SponsorBlock"
