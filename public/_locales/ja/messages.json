@@ -182,9 +182,6 @@
     "hideInfoButton": {
         "message": "YouTubeプレーヤーの情報ボタンを隠す"
     },
-    "whatInfoButton": {
-        "message": "これはYouTubeのページ上でポップアップを開くためのボタンです。"
-    },
     "autoHideInfoButton": {
         "message": "情報ボタンを自動的に隠す"
     },
@@ -193,9 +190,6 @@
     },
     "showDeleteButton": {
         "message": "YouTubeプレーヤーに削除ボタンを表示"
-    },
-    "whatDeleteButton": {
-        "message": "これはYouTubeプレーヤー上のボタンで、現在の動画から未提出のセグメントを全て消去します。"
     },
     "enableViewTracking": {
         "message": "スキップ回数の統計を有効にする"
@@ -422,9 +416,6 @@
     },
     "showUploadButton": {
         "message": "アップロードボタンを表示"
-    },
-    "whatUploadButton": {
-        "message": "このボタンはタイムスタンプを選択して投稿の準備ができた後にYouTubeプレーヤーに表示されます。"
     },
     "customServerAddress": {
         "message": "SponsorBlock サーバーアドレス"
