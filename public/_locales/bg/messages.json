@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Това скрива бутоните, които се показват в плейъра на YouTube за изпращане на сегменти за пропускане."
     },
+    "showSkipButton": {
+        "message": "Оставяне в плейъра на бутона за преминаване към акцента"
+    },
     "showInfoButton": {
         "message": "Показване на бутона за информация в плейъра на YouTube"
     },
     "hideInfoButton": {
         "message": "Скриване на бутона за информация в плейъра на YouTube"
-    },
-    "whatInfoButton": {
-        "message": "Това е бутонът, който отваря изскачащ прозорец в страницата на YouTube."
     },
     "autoHideInfoButton": {
         "message": "Автоматично скриване на бутона за информация"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Показване на бутона за изтриване в плейъра на YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Това е бутонът в плейъра на YouTube, който ще изчисти всичките ви неизпратени сегменти за текущия видеоклип."
     },
     "enableViewTracking": {
         "message": "Активиране проследяването на броя пропускания"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Показване на бутона за качване"
-    },
-    "whatUploadButton": {
-        "message": "Този бутон се появява в плейъра на YouTube, след като сте избрали времева отметка и сте готови за изпращане."
     },
     "customServerAddress": {
         "message": "Адрес на сървъра на SponsorBlock"
