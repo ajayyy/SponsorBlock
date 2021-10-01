@@ -82,13 +82,13 @@
 .autoHiding:not(.hidden) {
 	transform: translateX(0%) scale(1);
 	/* opacity is from YouTube page */
-	transition: transform 0.25s, width 0.25s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
+	transition: transform 0.2s, width 0.2s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
 }
 
 .autoHiding.hidden {
 	transform: translateX(100%) scale(0);
 	/* opacity is from YouTube page */
-	transition: transform 0.25s, width 0.25s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
+	transition: transform 0.2s, width 0.2s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
 
 	width: 0px !important;
 }
