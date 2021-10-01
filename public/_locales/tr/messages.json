@@ -188,9 +188,6 @@
     "hideInfoButton": {
         "message": "YouTube Oynatıcısındaki Bilgi Butonunu Gizle"
     },
-    "whatInfoButton": {
-        "message": "Bu, YouTube sayfasında açılan pencereyi açan butondur."
-    },
     "autoHideInfoButton": {
         "message": "Bilgi düğmesini otomatik gizle"
     },
@@ -199,9 +196,6 @@
     },
     "showDeleteButton": {
         "message": "YouTube Oynatıcısında Silme Tuşunu Göster"
-    },
-    "whatDeleteButton": {
-        "message": "Bu, YouTube oynatıcısındaki mevcut video için gönderilmemiş bölümleri temizleyen butondur."
     },
     "enableViewTracking": {
         "message": "Kısım Atlama Sayaç Takibine İzin Ver"
@@ -435,9 +429,6 @@
     },
     "showUploadButton": {
         "message": "Karşıya Yükleme Butonunu Göster"
-    },
-    "whatUploadButton": {
-        "message": "Bu buton, YouTube oynatıcısında bir zaman seçtiğiniz ve göndermeye hazır olduğunuzda gözükür."
     },
     "customServerAddress": {
         "message": "SponsorBlock Sunucu Adresi"
