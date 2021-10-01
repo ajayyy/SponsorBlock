@@ -386,6 +386,12 @@ function createPreviewBar(): void {
 function durationChangeListener(): void {
     updateAdFlag();
     updatePreviewBar();
+
+    sponsorTimes = sponsorTimes.filter(segmentDurationFilter);
+}
+
+function segmentDurationFilter(segment: SponsorTime): boolean {
+    return segment.videoDuration === 0 || video.duration === 0 || Math.abs(video.duration - segment.videoDuration) < 2;
 }
 
 function cancelSponsorSchedule(): void {
@@ -669,7 +675,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === id)
                     ?.map((video) => video.segments)[0]
-                    ?.filter((segment) => segment.videoDuration === 0 || Math.abs(video.duration - segment.videoDuration) < 2);
+                    ?.filter(segmentDurationFilter);
         if (!recievedSegments || !recievedSegments.length) { 
             // return if no video found
             retryFetch();
