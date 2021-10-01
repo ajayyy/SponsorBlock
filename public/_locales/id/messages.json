@@ -179,17 +179,11 @@
     "hideInfoButton": {
         "message": "Sembunyikan Tombol Info Di Pemutar Video YouTube"
     },
-    "whatInfoButton": {
-        "message": "Ini adalah tombol yang membuka popup di halaman YouTube."
-    },
     "hideDeleteButton": {
         "message": "Sembunyikan Tombol Hapus Di Pemutar Video YouTube"
     },
     "showDeleteButton": {
         "message": "Tampilkan Tombol Hapus Di Pemutar Video YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Ini adalah tombol di pemutar YouTube yang akan menghapus semua segmen yang belum dikirim pada video."
     },
     "enableViewTracking": {
         "message": "Aktifkan Pelacakan Jumlah Lewati"
@@ -382,9 +376,6 @@
     },
     "showUploadButton": {
         "message": "Tampilkan Tombol Unggah"
-    },
-    "whatUploadButton": {
-        "message": "Tombol ini muncul di pemutar video YouTube setelah anda memilih stempel waktu dan siap untuk dikirimkan."
     },
     "customServerAddress": {
         "message": "Alamat Server SponsorBlock"
