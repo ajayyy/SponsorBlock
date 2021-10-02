@@ -388,12 +388,11 @@ function durationChangeListener(): void {
     updateAdFlag();
     updatePreviewBar();
 
-    sponsorTimes = sponsorTimes.filter(segmentDurationFilter);
+    if (sponsorTimes) sponsorTimes = sponsorTimes.filter(segmentDurationFilter);
 }
 
 function segmentDurationFilter(segment: SponsorTime): boolean {
-    return segment.videoDuration === 0 || !video 
-        || video.duration === 0 || Math.abs(video.duration - segment.videoDuration) < 2;
+    return segment.videoDuration === 0 || !video?.duration || Math.abs(video.duration - segment.videoDuration) < 2;
 }
 
 function cancelSponsorSchedule(): void {
@@ -559,13 +558,17 @@ function setupVideoListeners() {
         switchingVideos = false;
 
         video.addEventListener('play', () => {
-            switchingVideos = false;
-    
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
             // gone back to the begining
             if (!firstEvent && video.currentTime === 0) return;
             firstEvent = false;
+
+            if (switchingVideos) {
+                switchingVideos = false;
+                // If already segments loaded before video, retry to skip starting segments
+                if (sponsorTimes) startSkipScheduleCheckingForStartSponsors();
+            }
     
             // Check if an ad is playing
             updateAdFlag();
@@ -770,7 +773,7 @@ function retryFetch(): void {
  * Ex. When segments are first loaded
  */
 function startSkipScheduleCheckingForStartSponsors() {
-    if (!switchingVideos) {
+    if (!switchingVideos && sponsorTimes) {
         // See if there are any starting sponsors
         let startingSegmentTime = -1;
         let startingSegment: SponsorTime = null;
