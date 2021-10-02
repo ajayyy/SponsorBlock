@@ -60,6 +60,8 @@ You can read the API docs [here](https://wiki.sponsor.ajay.app/index.php/API_Doc
 
 # Building
 
+You must have Node.js 16 installed.
+
 Rename `config.json.example` to `config.json` and adjust configuration as desired.
 
 There are also other build scripts available. Install `npm`, then run `npm install` in the repository to install dependencies. 

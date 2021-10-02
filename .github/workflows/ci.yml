@@ -12,7 +12,9 @@ jobs:
       # Initialization
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: npm install
+        with:
+          node-version: '16'
+      - run: npm ci
       - name: Copy configuration
         run: cp config.json.example config.json
 
