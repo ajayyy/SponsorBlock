@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Skryje tlačítka, která se zobrazí v YouTube přehrávači pro přeskočení segmentů."
     },
+    "showSkipButton": {
+        "message": "Nechat tlačítko přeskočení na zvýraznění v přehrávači"
+    },
     "showInfoButton": {
         "message": "Zobrazit informační tlačítko v YouTube přehrávači"
     },
