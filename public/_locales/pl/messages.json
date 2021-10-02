@@ -188,9 +188,6 @@
     "hideInfoButton": {
         "message": "Ukryj przycisk informacyjny na odtwarzaczu YouTube"
     },
-    "whatInfoButton": {
-        "message": "Jest to przycisk otwierający okienko pop-up na stronie YouTube."
-    },
     "autoHideInfoButton": {
         "message": "Autoukrywanie przycisku informacji"
     },
@@ -199,9 +196,6 @@
     },
     "showDeleteButton": {
         "message": "Pokaż przycisk usuwania na odtwarzaczu YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Ten przycisk na odtwarzaczu YouTube wyczyści wszystkie twoje niewysłane segmenty dla bieżącego filmu."
     },
     "enableViewTracking": {
         "message": "Włącz monitorowanie liczby pominięć"
@@ -441,9 +435,6 @@
     },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
-    },
-    "whatUploadButton": {
-        "message": "Ten przycisk pojawia się na odtwarzaczu YouTube po wybraniu przedziału czasowego, gdy segment jest gotowy do wysłania."
     },
     "customServerAddress": {
         "message": "Adres serwera SponsorBlock"

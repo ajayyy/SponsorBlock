@@ -188,9 +188,6 @@
     "hideInfoButton": {
         "message": "Cacher le bouton Info sur le lecteur YouTube"
     },
-    "whatInfoButton": {
-        "message": "Il s'agit du bouton qui ouvre l'encart sur la page YouTube."
-    },
     "autoHideInfoButton": {
         "message": "Masquer Automatiquement Le Button Info"
     },
@@ -199,9 +196,6 @@
     },
     "showDeleteButton": {
         "message": "Montrer le bouton Supprimer sur le lecteur YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Il s'agit du bouton qui permet de supprimer tous les segments commerciaux depuis le lecteur YouTube."
     },
     "enableViewTracking": {
         "message": "Activer le suivi du nombre de sauts de segments"
@@ -441,9 +435,6 @@
     },
     "showUploadButton": {
         "message": "Afficher le bouton de téléchargement"
-    },
-    "whatUploadButton": {
-        "message": "Ce bouton apparaît sur le lecteur YouTube dès qu'un segment est prêt à être envoyé."
     },
     "customServerAddress": {
         "message": "Adresse du serveur SponsorBlock"

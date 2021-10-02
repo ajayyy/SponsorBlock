@@ -188,9 +188,6 @@
     "hideInfoButton": {
         "message": "Không hiển thị nút thông tin trên trình chạy video Youtube"
     },
-    "whatInfoButton": {
-        "message": "Đây là nút để mở bảng popup trên trang Youtube."
-    },
     "autoHideInfoButton": {
         "message": "Tự động ẩn nút Info"
     },
@@ -199,9 +196,6 @@
     },
     "showDeleteButton": {
         "message": "Hiển thị nút xóa trên trình chạy video Youtube"
-    },
-    "whatDeleteButton": {
-        "message": "Đây là nút trên trình chạy video Youtube để xóa tất cả những đoạn quảng cáo chưa đăng của bạn trong video đang xem."
     },
     "enableViewTracking": {
         "message": "Bật tính năng theo dõi số quảng cáo được bỏ qua"
@@ -422,9 +416,6 @@
     },
     "showUploadButton": {
         "message": "Hiển thị nút tải lên"
-    },
-    "whatUploadButton": {
-        "message": "Nút này xuất hiện trên trình chạy video Youtube sau khi bạn chọn mốc thời gian và sẵn sàng đăng đoạn quảng cáo."
     },
     "customServerAddress": {
         "message": "Địa chỉ máy chủ SponsorBlock"

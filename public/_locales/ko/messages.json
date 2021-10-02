@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "스킵할 구간을 제출하기 위해 YouTube 플레이어에 나타나는 버튼을 숨깁니다"
     },
+    "showSkipButton": {
+        "message": "플레이어에 하이라이트로 건너뛰기 버튼 표시"
+    },
     "showInfoButton": {
         "message": "YouTube 플레이어에서 정보 버튼 표시하기"
     },
     "hideInfoButton": {
         "message": "YouTube 플레이어에서 정보 버튼 숨기기"
-    },
-    "whatInfoButton": {
-        "message": "YouTube 페이지에 팝업으로 표시되는 버튼입니다"
     },
     "autoHideInfoButton": {
         "message": "정보 버튼 자동 숨김"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "YouTube 플레이어에서 삭제 버튼 표시하기"
-    },
-    "whatDeleteButton": {
-        "message": "현재 영상에 제출되지 않은 구간을 YouTube 플레이어 내에서 지우는 버튼입니다"
     },
     "enableViewTracking": {
         "message": "스킵 개수 추적 활성화"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "업로드 버튼 표시"
-    },
-    "whatUploadButton": {
-        "message": "이 버튼은 타임 스탬프를 설정 후 제출 준비가 되었을 때 YouTube 플레이어에 나타납니다."
     },
     "customServerAddress": {
         "message": "SponsorBlock 서버 주소"

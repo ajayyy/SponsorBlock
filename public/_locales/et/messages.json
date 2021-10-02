@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "See peidab nupud, mis kuvatakse YouTube'i mängijal vahelejätmiste segmentide saatmiseks."
     },
+    "showSkipButton": {
+        "message": "Hoia esiletõstuni vahelejätmise nuppu mängijal"
+    },
     "showInfoButton": {
         "message": "Kuva YouTube'i mängijal infonupp"
     },
     "hideInfoButton": {
         "message": "Peida YouTube'i mängijal infonupp"
-    },
-    "whatInfoButton": {
-        "message": "See on see nupp, mis avab YouTube'i lehel hüpiku."
     },
     "autoHideInfoButton": {
         "message": "Peida infonupp automaatselt"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Kuva YouTube'i mängijal kustutusnupp"
-    },
-    "whatDeleteButton": {
-        "message": "YouTube'i mängija nupp, mis tühjendab kõik sinu praeguse video saatmata segmendid."
     },
     "enableViewTracking": {
         "message": "Luba vahelejätmiste arvu jälgimine"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Kuva üleslaadimisnupp"
-    },
-    "whatUploadButton": {
-        "message": "See nupp kuvatakse YouTube'i mängijal, kui oled ajatempli ära valinud ning saatmiseks valmis."
     },
     "customServerAddress": {
         "message": "SponsorBlocki serveri aadress"

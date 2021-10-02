@@ -182,9 +182,6 @@
     "hideInfoButton": {
         "message": "Info gomb elrejtése a YouTube lejátszón"
     },
-    "whatInfoButton": {
-        "message": "Ez a gomb felhoz egy felugró dobozt a YouTube oldalon."
-    },
     "autoHideInfoButton": {
         "message": "Automatikus elrejtése az Információ Gombnak"
     },
@@ -193,9 +190,6 @@
     },
     "showDeleteButton": {
         "message": "Törlés gomb mutatása a YouTube lejátszón"
-    },
-    "whatDeleteButton": {
-        "message": "Ez egy gomb a lejátszón, ami törli az összes beküldetlen szegmensét a jelenlegi videón."
     },
     "enableViewTracking": {
         "message": "Átugrás-számláló követés bekapcsolása"
@@ -370,9 +364,6 @@
     },
     "showUploadButton": {
         "message": "Feltöltés gomb megjelenítése"
-    },
-    "whatUploadButton": {
-        "message": "Ez a gomb a YouTube lejátszón jelenik meg, miután kiválasztott egy időtartamot és készen áll a beküldésre."
     },
     "customServerAddress": {
         "message": "SponsorBlock szerver címe"

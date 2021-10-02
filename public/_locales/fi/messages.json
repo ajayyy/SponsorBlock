@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Tämä piilottaa YouTuben soittimessa näkyvät, ohitettavien aikojen lähettämiseen käytetyt painikkeet."
     },
+    "showSkipButton": {
+        "message": "Pidä \"Ohita kohtaan: Kohokohta\" -painike soittimessa"
+    },
     "showInfoButton": {
         "message": "Näytä info-painike YouTuben soittimessa"
     },
     "hideInfoButton": {
         "message": "Piilota info-painike YouTuben soittimessa"
-    },
-    "whatInfoButton": {
-        "message": "Tämä on painike, joka avaa ponnahdusikkunan YouTube-sivulla."
     },
     "autoHideInfoButton": {
         "message": "Piilota info-painike automaattisesti"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Näytä poista-painike YouTuben soittimessa"
-    },
-    "whatDeleteButton": {
-        "message": "Tämä on YouTuben soittimen painike, joka poistaa kaikki kyseisen videon sponsorointikohdat, joita et ole vielä lähettänyt."
     },
     "enableViewTracking": {
         "message": "Ota ohitusten lukumäärän seuranta käyttöön"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Näytä lähetä-painike"
-    },
-    "whatUploadButton": {
-        "message": "Tämä painike ilmestyy YouTube-soittimeen, kun olet valinnut aikaleiman ja olet valmis lähettämään sen."
     },
     "customServerAddress": {
         "message": "SponsorBlock-palvelimen osoite"

@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Эта настройка скрывает кнопки для отправки сегментов, расположенные в плеере YouTube."
     },
+    "showSkipButton": {
+        "message": "Показывать кнопку \"Пропустить до важного\" в плеере"
+    },
     "showInfoButton": {
         "message": "Показывать кнопку информации в плеере YouTube"
     },
     "hideInfoButton": {
         "message": "Скрыть кнопку информации в плеере YouTube"
-    },
-    "whatInfoButton": {
-        "message": "Эта кнопка открывает всплывающее окно на странице YouTube."
     },
     "autoHideInfoButton": {
         "message": "Автоматически скрывать кнопку Информация"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Показывать кнопку удаления в плеере YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Эта кнопка позволяет Вам очистить все неотправленные сегменты в плеере YouTube для текущего видео."
     },
     "enableViewTracking": {
         "message": "Включить отслеживание количества пропусков сегментов"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Показывать кнопку отправки"
-    },
-    "whatUploadButton": {
-        "message": "Эта кнопка появляется в плеере YouTube после того, как Вы выбрали отметку времени и готовы к отправке."
     },
     "customServerAddress": {
         "message": "Адрес сервера SponsorBlock"

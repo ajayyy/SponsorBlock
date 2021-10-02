@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
+    "showSkipButton": {
+        "message": "Behalte \"Zum Highlight springen\"-Knopf in der Navigationsleiste"
+    },
     "showInfoButton": {
         "message": "Zeige Info-Knopf im Youtube-Videoplayer"
     },
     "hideInfoButton": {
         "message": "Deaktiviere Info-Knopf im Youtube-Videoplayer"
-    },
-    "whatInfoButton": {
-        "message": "Dieser Knopf öffnet ein Pop-up auf der Youtube-Seite."
     },
     "autoHideInfoButton": {
         "message": "Info-Button automatisch ausblenden"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Zeige den Löschen-Knopf im Youtube-Videoplayer"
-    },
-    "whatDeleteButton": {
-        "message": "Dieser Knopf im YouTube-Videoplayer löscht alle nicht übermittelten Segmente für das aktuelle Video."
     },
     "enableViewTracking": {
         "message": "Aktiviere das Zählen übersprungener Segmente"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Upload-Knopf anzeigen"
-    },
-    "whatUploadButton": {
-        "message": "Dieser Knopf erscheint im YouTube-Videoplayer, nachdem du ein Videosegment markiert hast und dazu bereit bist, es zu übermitteln."
     },
     "customServerAddress": {
         "message": "SponsorBlock Serveradresse"

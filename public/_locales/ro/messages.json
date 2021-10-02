@@ -176,17 +176,11 @@
     "hideInfoButton": {
         "message": "Ascunde Butoanele De Informații Pe Playerul De YouTube"
     },
-    "whatInfoButton": {
-        "message": "Acesta este butonul care deschide popup-ul pe pagina de YouTube."
-    },
     "hideDeleteButton": {
         "message": "Ascunde Butonul De Ștergere Pe Playerul De YouTube"
     },
     "showDeleteButton": {
         "message": "Arată Butonul De Ștergere Pe Playerul De YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Acest buton de pe playerul de YouTube va șterge toate segmentele netrimise pentru videoclipul curent."
     },
     "enableViewTracking": {
         "message": "Activează Urmărirea Săriturilor"
@@ -358,9 +352,6 @@
     },
     "showUploadButton": {
         "message": "Arată Butonul De Încărcare"
-    },
-    "whatUploadButton": {
-        "message": "Acest buton apare pe playerul YouTube după ce ați selectat un marcaj de timp și sunteți gata să îl trimiteți."
     },
     "customServerAddress": {
         "message": "Adresa Serverului SponsorBlock"

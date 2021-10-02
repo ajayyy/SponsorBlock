@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Це налаштування приховує кнопки для надсилання спонсорських вставок, які з'являються в плеєрі YouTube."
     },
+    "showSkipButton": {
+        "message": "Залишати кнопку \"Перейти до Основне\" на плеєрі"
+    },
     "showInfoButton": {
         "message": "Показувати кнопку інформації в плеєрі YouTube"
     },
     "hideInfoButton": {
         "message": "Приховати кнопку інформації в плеєрі YouTube"
-    },
-    "whatInfoButton": {
-        "message": "Ця кнопка відкриває спливаюче вікно на сторінці YouTube."
     },
     "autoHideInfoButton": {
         "message": "Кнопка \"Автоматично сховати інформацію\""
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Показувати кнопку видалення в плеєрі YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Ця кнопка дозволяє очистити всі спонсорські вставки в плеєрі YouTube."
     },
     "enableViewTracking": {
         "message": "Увімкнути відстеження кількості пропусків сегментів"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Показувати кнопку надсилання"
-    },
-    "whatUploadButton": {
-        "message": "Ця кнопка з'являється в плеєрі YouTube після того, як Ви вибрали позначку часу і готові до надсилання."
     },
     "customServerAddress": {
         "message": "Адреса сервера SponsorBlock"

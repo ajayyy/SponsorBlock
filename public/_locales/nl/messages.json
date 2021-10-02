@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Dit verbergt de knoppen die verschijnen op de YouTube-speler om segmenten over te slaan."
     },
+    "showSkipButton": {
+        "message": "Knop voor \"overslaan naar hoogtepunt\" op speler houden"
+    },
     "showInfoButton": {
         "message": "Info-knop op YouTube-speler weergeven"
     },
     "hideInfoButton": {
         "message": "Info-knop op YouTube-speler verbergen"
-    },
-    "whatInfoButton": {
-        "message": "Dit is de knop die een pop-up opent op de YouTube-pagina."
     },
     "autoHideInfoButton": {
         "message": "Infoknop automatisch verbergen"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Verwijderen-knop op YouTube-speler weergeven"
-    },
-    "whatDeleteButton": {
-        "message": "Dit is de knop op de YouTube-speler die al uw niet-ingediende segmenten van de huidige video zal wissen."
     },
     "enableViewTracking": {
         "message": "Bijhouden van het aantal keren overslaan inschakelen"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Uploaden-knop weergeven"
-    },
-    "whatUploadButton": {
-        "message": "Deze knop verschijnt op de YouTube-speler nadat u een tijdstempel heeft geselecteerd en klaar bent om in te dienen."
     },
     "customServerAddress": {
         "message": "SponsorBlock-serveradres"

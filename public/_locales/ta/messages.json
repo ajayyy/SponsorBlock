@@ -176,17 +176,11 @@
     "hideInfoButton": {
         "message": "YouTube பிளேயரில் தகவல் பொத்தானை மறைக்கவும்"
     },
-    "whatInfoButton": {
-        "message": "YouTube பக்கத்தில் ஒரு பாப்அப்பைத் திறக்கும் பொத்தான் இது."
-    },
     "hideDeleteButton": {
         "message": "YouTube பிளேயரில் நீக்கு பொத்தானை மறைக்க"
     },
     "showDeleteButton": {
         "message": "YouTube பிளேயரில் நீக்கு பொத்தானைக் காட்டு"
-    },
-    "whatDeleteButton": {
-        "message": "இது YouTube பிளேயரில் உள்ள பொத்தானாகும், இது தற்போதைய வீடியோவிற்கு நீங்கள் சமர்ப்பிக்காத அனைத்து பகுதிகளையும் அழிக்கும்."
     },
     "enableViewTracking": {
         "message": "ஸ்கிப் கவுண்ட் டிராக்கிங்கை இயக்கு"
@@ -358,9 +352,6 @@
     },
     "showUploadButton": {
         "message": "பதிவேற்ற பொத்தானைக் காட்டு"
-    },
-    "whatUploadButton": {
-        "message": "நீங்கள் நேர முத்திரையைத் தேர்ந்தெடுத்து சமர்ப்பிக்கத் தயாரான பிறகு இந்த பொத்தான் YouTube பிளேயரில் தோன்றும்."
     },
     "customServerAddress": {
         "message": "ஸ்பான்சர் பிளாக் சேவையக முகவரி"
