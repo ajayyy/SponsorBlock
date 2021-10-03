@@ -56,6 +56,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             event.stopPropagation();
         });
 
+        // Prevent scrolling while changing times
+        document.getElementById("sponsorTimesContainer" + this.idSuffix).addEventListener('wheel', function (event) {
+            event.preventDefault();
+        }, {passive: false});
+
         // Add as a config listener
         if (!this.configUpdateListener) {
             this.configUpdateListener = () => this.configUpdate();
@@ -86,7 +91,6 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 node.style.setProperty("text-shadow", "none", "important");
             }
         };
-
         // Create time display
         let timeDisplay: JSX.Element;
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
@@ -101,7 +105,6 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             onClick={() => this.setTimeToNow(0)}>
                                 {chrome.i18n.getMessage("bracketNow")}
                         </span>
-
                         <input id={"submittingTime0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput"
                             ref={oldYouTubeDarkStyles}
@@ -114,6 +117,24 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                                 this.setState({sponsorTimeEdits});
                                 this.saveEditTimes();
+                            }}
+                            onWheel={(e) => {
+                                // Using mousewheel will increment the number in the edit box
+                                const step = 0.01;
+                                const sponsorTimeEdits = this.state.sponsorTimeEdits;
+                                var timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
+                                if (timeAsNumber !== null) {
+                                    if (this.wheelUpOrDown(e)){
+                                        timeAsNumber += step;
+                                    }else if (timeAsNumber >= step){
+                                        timeAsNumber -= step;
+                                    } else {
+                                        timeAsNumber = 0;
+                                    }
+                                    sponsorTimeEdits[0] = utils.getFormattedTime(timeAsNumber, true);
+                                    this.setState({sponsorTimeEdits});
+                                    this.saveEditTimes();
+                                }
                             }}>
                         </input>
 
@@ -135,6 +156,24 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                         this.setState({sponsorTimeEdits});
 
                                         this.saveEditTimes();
+                                    }}
+                                    onWheel={(e) => {
+                                        // Using mousewheel will decrement the number in the edit box
+                                        const step = 0.01;
+                                        const sponsorTimeEdits = this.state.sponsorTimeEdits;
+                                        var timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
+                                        if (timeAsNumber !== null) {
+                                            if (this.wheelUpOrDown(e)){
+                                                timeAsNumber += step;
+                                            }else if (timeAsNumber >= step){
+                                                timeAsNumber -= step;
+                                            } else {
+                                                timeAsNumber = 0;
+                                            }
+                                            sponsorTimeEdits[1] = utils.getFormattedTime(timeAsNumber, true);
+                                            this.setState({sponsorTimeEdits});
+                                            this.saveEditTimes();
+                                        }
                                     }}>
                                 </input>
 
@@ -155,12 +194,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             );
         } else {
             timeDisplay = (
+                
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     className="sponsorTimeDisplay"
-                    onClick={this.toggleEditTime.bind(this)}>
+                    onClick={this.toggleEditTime.bind(this)}
+                    onWheel={this.toggleEditTime.bind(this)}>
                         {utils.getFormattedTime(segment[0], true) +
                             ((!isNaN(segment[1]) && getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable)
-                                     ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
+                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
                 </div>
             );
         }
@@ -240,6 +281,18 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         );
     }
 
+    wheelUpOrDown(e: React.WheelEvent): Boolean{
+        // Returns true if the wheel scrolls up and false if the wheel scrolls down
+        console.log("wheelUpOrDown")
+        if (e.deltaY < 0)
+        {
+            return true;
+        }
+        else if (e.deltaY > 0)
+        {
+            return false;
+        }
+    }
     getCategoryOptions(): React.ReactElement[] {
         const elements = [(
             <option value={DEFAULT_CATEGORY}
