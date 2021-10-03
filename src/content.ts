@@ -851,7 +851,7 @@ function getYouTubeVideoID(url: string): string | boolean {
     if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 
     //Attempt to parse url
-    let urlObject = null;
+    let urlObject: URL = null;
     try { 
         urlObject = new URL(url);
     } catch (e) {      
@@ -877,9 +877,10 @@ function getYouTubeVideoID(url: string): string | boolean {
     if (urlObject.searchParams.has("v") && ["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
         const id = urlObject.searchParams.get("v");
         return id.length == 11 ? id : false;
-    } else if (urlObject.pathname.startsWith("/embed/")) {
+    } else if (urlObject.pathname.startsWith("/embed/") || urlObject.pathname.startsWith("/shorts/")) {
         try {
-            return urlObject.pathname.substr(7, 11);
+            const id = urlObject.pathname.split("/")[2];
+            if (id && id.length == 11) return id;
         } catch (e) {
             console.error("[SB] Video ID not valid for " + url);
             return false;
