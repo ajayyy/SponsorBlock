@@ -122,7 +122,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                 // Using mousewheel will increment the number in the edit box
                                 const step = 0.01;
                                 const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                var timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
+                                let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
                                 if (timeAsNumber !== null) {
                                     if (this.wheelUpOrDown(e)){
                                         timeAsNumber += step;
@@ -162,7 +162,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                         // Using mousewheel will decrement the number in the edit box
                                         const step = 0.01;
                                         const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                        var timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
+                                        let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
                                         if (timeAsNumber !== null) {
                                             if (this.wheelUpOrDown(e)){
                                                 timeAsNumber += step;
@@ -282,7 +282,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         );
     }
 
-    wheelUpOrDown(e: React.WheelEvent): Boolean{
+    wheelUpOrDown(e: React.WheelEvent): boolean{
         // Returns true if the wheel scrolls up and false if the wheel scrolls down
         console.log("wheelUpOrDown")
         if (e.deltaY < 0)
