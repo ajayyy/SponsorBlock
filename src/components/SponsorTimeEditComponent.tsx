@@ -132,6 +132,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                         timeAsNumber = 0;
                                     }
                                     sponsorTimeEdits[0] = utils.getFormattedTime(timeAsNumber, true);
+                                    if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = sponsorTimeEdits[0];
                                     this.setState({sponsorTimeEdits});
                                     this.saveEditTimes();
                                 }
