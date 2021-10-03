@@ -880,7 +880,7 @@ function getYouTubeVideoID(url: string): string | boolean {
     } else if (urlObject.pathname.startsWith("/embed/") || urlObject.pathname.startsWith("/shorts/")) {
         try {
             const id = urlObject.pathname.split("/")[2];
-            if (id && id.length == 11) return id;
+            if (id && id.length >= 11) return id.substr(0, 11);
         } catch (e) {
             console.error("[SB] Video ID not valid for " + url);
             return false;
