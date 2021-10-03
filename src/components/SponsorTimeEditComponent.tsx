@@ -251,8 +251,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const step = 0.01;
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
         let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
-        if (timeAsNumber !== null) {
-            if (this.isWheelScrollingUp(e)){
+        if (timeAsNumber !== null && e.deltaY != 0) {
+            if (e.deltaY < 0){
                 timeAsNumber += step;
             }else if (timeAsNumber >= step){
                 timeAsNumber -= step;
@@ -266,17 +266,6 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }   
     }
 
-    isWheelScrollingUp(e: React.WheelEvent): boolean {
-        console.log("wheelUpOrDown")
-        if (e.deltaY < 0)
-        {
-            return true;
-        }
-        else if (e.deltaY > 0)
-        {
-            return false;
-        }
-    }
     getCategoryOptions(): React.ReactElement[] {
         const elements = [(
             <option value={DEFAULT_CATEGORY}
