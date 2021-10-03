@@ -118,25 +118,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                 this.setState({sponsorTimeEdits});
                                 this.saveEditTimes();
                             }}
-                            onWheel={(e) => {
-                                // Using mousewheel will increment the number in the edit box
-                                const step = 0.01;
-                                const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                var timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
-                                if (timeAsNumber !== null) {
-                                    if (this.wheelUpOrDown(e)){
-                                        timeAsNumber += step;
-                                    }else if (timeAsNumber >= step){
-                                        timeAsNumber -= step;
-                                    } else {
-                                        timeAsNumber = 0;
-                                    }
-                                    sponsorTimeEdits[0] = utils.getFormattedTime(timeAsNumber, true);
-                                    if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = sponsorTimeEdits[0];
-                                    this.setState({sponsorTimeEdits});
-                                    this.saveEditTimes();
-                                }
-                            }}>
+                            onWheel={(e) => {this.changeTimesWhenScrolling(0, e, sponsorTime)}}>
                         </input>
 
                         {getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable ? (
@@ -158,24 +140,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                                         this.saveEditTimes();
                                     }}
-                                    onWheel={(e) => {
-                                        // Using mousewheel will decrement the number in the edit box
-                                        const step = 0.01;
-                                        const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                        var timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
-                                        if (timeAsNumber !== null) {
-                                            if (this.wheelUpOrDown(e)){
-                                                timeAsNumber += step;
-                                            }else if (timeAsNumber >= step){
-                                                timeAsNumber -= step;
-                                            } else {
-                                                timeAsNumber = 0;
-                                            }
-                                            sponsorTimeEdits[1] = utils.getFormattedTime(timeAsNumber, true);
-                                            this.setState({sponsorTimeEdits});
-                                            this.saveEditTimes();
-                                        }
-                                    }}>
+                                    onWheel={(e) => {this.changeTimesWhenScrolling(1, e, sponsorTime)}}>
                                 </input>
 
                                 <span id={"nowButton1" + this.idSuffix}
@@ -282,8 +247,26 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         );
     }
 
-    wheelUpOrDown(e: React.WheelEvent): Boolean{
-        // Returns true if the wheel scrolls up and false if the wheel scrolls down
+    changeTimesWhenScrolling(index: number, e: React.WheelEvent, sponsorTime: SponsorTime): void {
+        const step = 0.01;
+        const sponsorTimeEdits = this.state.sponsorTimeEdits;
+        let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
+        if (timeAsNumber !== null) {
+            if (this.isWheelScrollingUp(e)){
+                timeAsNumber += step;
+            }else if (timeAsNumber >= step){
+                timeAsNumber -= step;
+            } else {
+                timeAsNumber = 0;
+            }
+            sponsorTimeEdits[index] = utils.getFormattedTime(timeAsNumber, true);
+            if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = sponsorTimeEdits[0];
+            this.setState({sponsorTimeEdits});
+            this.saveEditTimes();
+        }   
+    }
+
+    isWheelScrollingUp(e: React.WheelEvent): boolean {
         console.log("wheelUpOrDown")
         if (e.deltaY < 0)
         {
