@@ -248,7 +248,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     changeTimesWhenScrolling(index: number, e: React.WheelEvent, sponsorTime: SponsorTime): void {
-        const step = (e.shiftKey) ? 0.001 : 0.01;
+        let step = 0;
+        // shift + ctrl = 1
+        // ctrl = 0.1
+        // default = 0.01
+        // shift = 0.001
+        if (e.shiftKey) step = (e.ctrlKey) ? 1 : 0.001;
+        else step = (e.ctrlKey) ? 0.1 : 0.01;
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
         let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
         if (timeAsNumber !== null && e.deltaY != 0) {
@@ -263,7 +269,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = sponsorTimeEdits[0];
             this.setState({sponsorTimeEdits});
             this.saveEditTimes();
-        }   
+        }
     }
 
     getCategoryOptions(): React.ReactElement[] {
