@@ -558,7 +558,6 @@ input::-webkit-inner-spin-button {
 
 .sponsorBlockRectangleTooltip {
     position: absolute;
-    background-color: rgba(28, 28, 28, 0.7);
     border-radius: 5px;
     padding: 10px;
 	min-width: 250px;
