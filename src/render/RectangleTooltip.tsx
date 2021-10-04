@@ -27,7 +27,7 @@ export class RectangleTooltip {
         props.maxHeight ??= "100px";
         props.maxWidth ??= "300px";
         this.text = props.text;
-        props.buttonFunction ??= () => {};
+        props.buttonFunction ??= function () {};
 
         this.container = document.createElement('div');
         props.htmlId ??= props.text;
