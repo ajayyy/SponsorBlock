@@ -5,6 +5,7 @@ import { ActionType, ActionTypes, Category, CategoryActionType, ContentContainer
 import Utils from "../utils";
 import { getCategoryActionType } from "../utils/categoryUtils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
+import { RectangleTooltip } from "../render/RectangleTooltip";
 
 
 const utils = new Utils();
@@ -110,14 +111,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             ref={oldYouTubeDarkStyles}
                             type="text"
                             value={this.state.sponsorTimeEdits[0]}
-                            onChange={(e) => {
-                                const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[0] = e.target.value;
-                                if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = e.target.value;
-
-                                this.setState({sponsorTimeEdits});
-                                this.saveEditTimes();
-                            }}
+                            onChange={(e) => {this.handleOnChange(0, e, sponsorTime, e.target.value)}}
                             onWheel={(e) => {this.changeTimesWhenScrolling(0, e, sponsorTime)}}>
                         </input>
 
@@ -132,14 +126,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                     ref={oldYouTubeDarkStyles}
                                     type="text"
                                     value={this.state.sponsorTimeEdits[1]}
-                                    onChange={(e) => {
-                                        const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                        sponsorTimeEdits[1] = e.target.value;
-
-                                        this.setState({sponsorTimeEdits});
-
-                                        this.saveEditTimes();
-                                    }}
+                                    onChange={(e) => {this.handleOnChange(1, e, sponsorTime, e.target.value)}}
                                     onWheel={(e) => {this.changeTimesWhenScrolling(1, e, sponsorTime)}}>
                                 </input>
 
@@ -247,6 +234,21 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         );
     }
 
+    handleOnChange(index: number, e: React.ChangeEvent, sponsorTime: SponsorTime, targetValue: string): void {
+        const sponsorTimeEdits = this.state.sponsorTimeEdits;
+        
+        // check if change is small engough to show tooltip
+        const before = utils.getFormattedTimeToSeconds(sponsorTimeEdits[index]);
+        const after = utils.getFormattedTimeToSeconds(targetValue);
+        const difference = Math.abs(before - after);
+        if (0 < difference && difference< 0.5) this.showToolTip();
+
+        sponsorTimeEdits[index] = targetValue;
+        if (index === 0 && getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = targetValue;
+
+        this.setState({sponsorTimeEdits});
+        this.saveEditTimes();
+    }
     changeTimesWhenScrolling(index: number, e: React.WheelEvent, sponsorTime: SponsorTime): void {
         let step = 0;
         // shift + ctrl = 1
@@ -269,6 +271,22 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = sponsorTimeEdits[0];
             this.setState({sponsorTimeEdits});
             this.saveEditTimes();
+        }
+    }
+
+    showToolTip(): void {
+        if (!Config.config.scrollToEditTimeUpdate && document.getElementById("sponsorRectangleTooltip" + "sponsorTimesContainer" + this.idSuffix) === null) {
+            const element = document.getElementById("sponsorTimesContainer" + this.idSuffix);
+            new RectangleTooltip({
+                text: "Use your mousewheel while hovering over the edit box to quickly adjust the time. Combinations of the ctrl or shift key can be used to fine tune the changes.",
+                referenceNode: element.parentElement,
+                prependElement: element,
+                timeout: 15,
+                bottomOffset: 75 + "px",
+                leftOffset: -318 + "px",
+                htmlId: "sponsorTimesContainer" + this.idSuffix,
+                buttonFunction: () => {Config.config.scrollToEditTimeUpdate = true}
+            });
         }
     }
 
