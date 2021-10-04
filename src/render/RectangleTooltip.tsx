@@ -27,7 +27,6 @@ export class RectangleTooltip {
         props.maxHeight ??= "100px";
         props.maxWidth ??= "300px";
         this.text = props.text;
-        props.buttonFunction ??= function () {};
 
         this.container = document.createElement('div');
         props.htmlId ??= props.text;
@@ -70,7 +69,7 @@ export class RectangleTooltip {
                     <button className="sponsorSkipObject sponsorSkipNoticeButton"
                         style ={{float: "right" }}
                         onClick={() => {
-                            props.buttonFunction();
+                            if (props.buttonFunction) props.buttonFunction();
                             this.close();
                         }}>
 
