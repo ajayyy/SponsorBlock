@@ -123,7 +123,7 @@ class SBMap<T, U> extends Map {
 
     addArray(key: T, value: U) {
         // Expand an array by value
-        let result = super.get(key).concat(value);
+        const result = super.get(key).concat(value);
         this.set(key, result);
         this.update();
         return result;
