@@ -43,7 +43,8 @@ interface SBConfig {
     showDonationLink: boolean,
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
-    highlightCategoryUpdate: boolean
+    highlightCategoryUpdate: boolean,
+    wikiPages: SBMap<string, string>
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -117,14 +118,6 @@ class SBMap<T, U> extends Map {
     set(key: T, value: U) {
         const result = super.set(key, value);
 
-        this.update();
-        return result;
-    }
-
-    addArray(key: T, value: U) {
-        // Expand an array by value
-        let result = super.get(key).concat(value);
-        this.set(key, result);
         this.update();
         return result;
     }
@@ -204,6 +197,19 @@ const Config: SBObject = {
             name: "sponsor" as Category,
             option: CategorySkipOption.AutoSkip
         }],
+
+        wikiPages: new SBMap("wikiLinks", [
+            ["sponsor", "https://wiki.sponsor.ajay.app/w/Sponsor"],
+            ["selfpromo", "https://wiki.sponsor.ajay.app/w/Unpaid/Self_Promotion"],
+            ["interaction", "https://wiki.sponsor.ajay.app/w/Interaction_Reminder_(Subscribe)"],
+            ["intro", "https://wiki.sponsor.ajay.app/w/Intermission/Intro_Animation"],
+            ["outro", "https://wiki.sponsor.ajay.app/w/Endcards/Credits"],
+            ["preview", "https://wiki.sponsor.ajay.app/w/Preview/Recap"],
+            ["music_offtopic", "https://wiki.sponsor.ajay.app/w/Music:_Non-Music_Section"],
+            ["highlight_poi", "https://wiki.sponsor.ajay.app/w/Highlight"],
+            ["guidelines", "https://wiki.sponsor.ajay.app/w/Guidelines"],
+            ["mute", "https://wiki.sponsor.ajay.app/w/Mute_Segment"],
+            ]),
 
         // Preview bar
         barTypes: {
