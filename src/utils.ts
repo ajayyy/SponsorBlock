@@ -205,10 +205,12 @@ export default class Utils {
 
     enableAutoHideAnimation(element: Element): void {
         element.classList.add("autoHiding");
+        element.classList.add("hidden");
     }
 
     disableAutoHideAnimation(element: Element): void {
         element.classList.remove("autoHiding");
+        element.classList.remove("hidden");
     }
 
     /**
