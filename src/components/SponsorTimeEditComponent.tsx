@@ -278,7 +278,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (!Config.config.scrollToEditTimeUpdate && document.getElementById("sponsorRectangleTooltip" + "sponsorTimesContainer" + this.idSuffix) === null) {
             const element = document.getElementById("sponsorTimesContainer" + this.idSuffix);
             new RectangleTooltip({
-                text: "Use your mousewheel while hovering over the edit box to quickly adjust the time. Combinations of the ctrl or shift key can be used to fine tune the changes.",
+                text: chrome.i18n.getMessage("SponsorTimeEditScrollNewFeature"),
                 referenceNode: element.parentElement,
                 prependElement: element,
                 timeout: 15,
