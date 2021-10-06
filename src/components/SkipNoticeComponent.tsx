@@ -4,6 +4,7 @@ import Config from "../config"
 import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
+import SubmissionNotice from "../render/SubmissionNotice";
 
 import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
 
@@ -12,6 +13,7 @@ export enum SkipNoticeAction {
     Upvote,
     Downvote,
     CategoryVote,
+    CopyDownvote,
     Unskip
 }
 
@@ -203,12 +205,20 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         {/* Report Button */}
                         <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
                             className="sponsorSkipObject voteButton"
+                            style={{marginRight: "10px"}}
                             src={chrome.extension.getURL("icons/thumbs_down.svg")}
                             title={chrome.i18n.getMessage("reportButtonInfo")}
                             onClick={() => this.adjustDownvotingState(true)}>
                         
                         </img>
 
+                        {/* Copy and Downvote Button */}
+                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
+                            className="sponsorSkipObject voteButton voteButtonImageCopyDownvote"
+                            title="Copy and downvote to create your own segment and downvote."
+                            src={chrome.extension.getURL("icons/clipboard.svg")}
+                            onClick={() => this.prepAction(SkipNoticeAction.CopyDownvote)}>
+                        </img>
                     </td>
 
                     :
@@ -340,16 +350,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    prepAction(action: SkipNoticeAction): void {
-        if (this.segments.length === 1) {
-            this.performAction(0, action);
-        } else {
-            this.setState({
-                actionState: action
-            });
-        }
-    }
-
     getMessageBoxes(): JSX.Element[] {
         if (this.state.messages.length === 0) {
             // Add a spacer if there is no text
@@ -380,6 +380,19 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         return elements;
     }
 
+    prepAction(action: SkipNoticeAction): void {
+        const isDownvotingCategory =  (SkipNoticeAction.CategoryVote === action);
+        if (this.segments.length === 1) {
+            this.performAction(0, action);
+        } else {
+            this.setState({
+                actionState: action,
+                downvoting: false,
+                choosingCategory: isDownvotingCategory
+            });
+        }
+    }
+
     /**
      * Performs the action from the current state
      * 
@@ -398,37 +411,29 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             case SkipNoticeAction.CategoryVote:
                 this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value as Category, this)
                 break;
+            case SkipNoticeAction.CopyDownvote:
+                this.copyDownvote(index);
+                break;
             case SkipNoticeAction.Unskip:
                 this.state.skipButtonCallback(index);
                 break;
         }
-
         this.setState({
-            actionState: SkipNoticeAction.None
-        });
-    }
-
-    adjustDownvotingState(value: boolean): void {
-        if (!value) this.clearConfigListener();
-
-        this.setState({
-            downvoting: value,
+            actionState: SkipNoticeAction.None,
+            downvoting: false,
             choosingCategory: false
         });
     }
 
-    clearConfigListener(): void {
-        if (this.configListener) {
-            Config.configListeners.splice(Config.configListeners.indexOf(this.configListener), 1);
-            this.configListener = null;
-        }
+    adjustDownvotingState(value: boolean): void {
+        this.setState({
+            downvoting: value,
+            choosingCategory: false,
+            actionState: SkipNoticeAction.None
+        });
     }
 
     openCategoryChooser(): void {
-        // Add as a config listener
-        this.configListener = () => this.forceUpdate();
-        Config.configListeners.push(this.configListener);
-
         this.setState({
             choosingCategory: true,
             downvoting: false
@@ -531,6 +536,24 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
+    copyDownvote(index: number): void {
+        const sponsorVideoID = this.props.contentContainer().sponsorVideoID;
+        const sponsorTimesSubmitting : SponsorTime = {
+            segment: this.segments[index].segment,
+            UUID: null,
+            category: this.segments[index].category,
+            actionType: this.segments[index].actionType,
+            source: 2
+        };
+        let segmentTimes = Config.config.segmentTimes.get(sponsorVideoID) || [];
+        segmentTimes.push(sponsorTimesSubmitting);
+        Config.config.segmentTimes.set(sponsorVideoID, segmentTimes);
+        this.props.contentContainer().sponsorTimesSubmitting.push(sponsorTimesSubmitting);
+        this.props.contentContainer().updatePreviewBar();
+        this.props.contentContainer().resetSponsorSubmissionNotice();
+        this.props.contentContainer().updateEditButtonsOnPlayer();
+    }
+
     setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => unknown, ...messages: string[]): void {
         this.setState({
             messages,
@@ -557,7 +580,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     closeListener(): void {
-        this.clearConfigListener();
+        //this.clearConfigListener();
 
         this.props.closeListener();
     }
