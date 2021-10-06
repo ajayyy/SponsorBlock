@@ -227,7 +227,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             style={{marginRight: "10px"}}>
 
                         {/* Submitted string */}
+                        <span style={{marginRight: "10px"}}>
                         {this.state.thanksForVotingText}
+                        </span>
 
                         {/* Continue Voting Button */}
                         <button id={"sponsorTimesContinueVotingContainer" + this.idSuffix}
