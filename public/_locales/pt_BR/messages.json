@@ -182,9 +182,6 @@
     "hideButtonsDescription": {
         "message": "Esta opção esconde os botões que aparecem para enviar segmentos no player do YouTube."
     },
-    "showSkipButton": {
-        "message": "Manter botão Pular para os Destaques no player"
-    },
     "showInfoButton": {
         "message": "Mostrar botão de Informações no player do Youtube"
     },
