@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "See peidab nupud, mis kuvatakse YouTube'i mängijal vahelejätmiste segmentide saatmiseks."
     },
+    "showSkipButton": {
+        "message": "Hoia esiletõstuni vahelejätmise nuppu mängijal"
+    },
     "showInfoButton": {
         "message": "Kuva YouTube'i mängijal infonupp"
     },
