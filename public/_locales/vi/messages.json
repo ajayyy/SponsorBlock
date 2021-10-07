@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Không hiển thị nút trên trình chạy video Youtube để đăng đoạn quảng cáo."
     },
+    "showSkipButton": {
+        "message": "Giữ nút bỏ qua Highlight trên trình phát player"
+    },
     "showInfoButton": {
         "message": "Hiển thị nút thông tin trên trình chạy video Youtube"
     },
@@ -301,6 +304,14 @@
     },
     "skip_category": {
         "message": "Bỏ qua {0}?"
+    },
+    "skipped": {
+        "message": "{0} đã bỏ qua",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} đã ngắt tiếng (Muted)",
+        "description": "Example: Sponsor Muted"
     },
     "disableAutoSkip": {
         "message": "Tắt tự động bỏ qua"
@@ -713,6 +724,9 @@
     "hideForever": {
         "message": "Ẩn vĩnh viễn"
     },
+    "warningChatInfo": {
+        "message": "Bạn đã nhận được một cảnh báo và tạm thời không thể gửi các phân đoạn. Bạn đã mắc lỗi trong việc tạo phân đoạn quá nhiều lần (có thể là chọn sai kiểu phân đoạn hoặc sai thời gian phân đoạn). Chúng tôi muốn bạn nhận ra điều đó để giúp bạn không mắc lỗi trong tương lai. Bạn có thể gặp các Vip User tại đây: discord.gg/SponsorBlock hoặc matrix.to/#/#sponsor:ajay.app. Bọn họ sẽ giúp bạn gỡ cảnh báo sau khi bạn đã hiểu ra lỗi sai của bạn"
+    },
     "voteRejectedWarning": {
         "message": "Bỏ phiếu bị từ chối do có cảnh báo. Nhấp để mở cuộc trò chuyện để giải quyết hoặc quay lại sau.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
@@ -741,7 +755,49 @@
     "helpPageHowSkippingWorks2": {
         "message": "Bất cứ khi nào bỏ qua một phân đoạn, bạn sẽ nhận được 1 cửa sổ thông báo bât. Nếu phân đoạn có vẻ sai, hãy bỏ phiếu bằng cách nhấp vào nút downvote! Bạn cũng có thể bỏ phiếu trong cửa sổ bật lên khi nhấn vào biểu tượng tiện ích mở rộng. Và bạn có thể tắt việc hiển thị bảng thông báo này trong phần cài đặt tiện ích."
     },
+    "Submitting": {
+        "message": "Gửi lên"
+    },
+    "helpPageSubmitting1": {
+        "message": "Việc gửi một phân đoạn mới có thể được thực hiện trong cửa sổ bật lên bằng cách nhấn vào nút \"Đoạn quảng cáo bắt đầu vào lúc này\" hoặc trong trình phát video bằng các nút trên thanh trình phát."
+    },
+    "helpPageSubmitting2": {
+        "message": "Bạn nhấp 1 lần vào nút \"Đoạn quảng cáo bắt đầu vào lúc này\" để bắt đầu 1 phân đoạn, nhấn 2 lần để đánh dấu kết thúc phân đoạn đó. Bạn có thể chuẩn bị nhiều phân đoạn trước khi nhấn gửi. Nhấp vào nút \"Đăng đoạn quảng cáo\" sẽ gửi. Nhấp vào nút \"Xoá đoạn quảng cáo\" để xóa."
+    },
+    "Editing": {
+        "message": "Chỉnh sửa"
+    },
+    "helpPageEditing1": {
+        "message": "Nếu bạn muốn chỉnh sửa thời gian phân đoạn hoặc kiểu của phân đoạn, bạn có thể chỉnh sửa hoặc xóa các phân đoạn của mình sau khi nhấp vào nút \"Đăng đoạn quảng cáo\"."
+    },
     "helpPageTooSlow": {
-        "message": "Quá chậm"
+        "message": "Nếu như bạn cảm thấy thao tác ở trên quá chậm..."
+    },
+    "helpPageTooSlow1": {
+        "message": "Bạn có thể sử dụng các hotkeys - phím nóng. Nhấn phím dấu chấm phẩy (;) để chỉ ra điểm bắt đầu / kết thúc của phân đoạn nhà tài trợ và nhấp vào dấu nháy đơn (') để gửi. Nếu bạn không sử dụng QWERTY, có lẽ bạn nên thay đổi keybinding bằng cách vào phần cài đặt của tiện ích."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Tôi có thể lấy bản sao của database không? Điều gì xảy ra nếu có chuyện tệ (server chết, chủ nhân trang web mất, ...)?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Database được công khai và luôn có sẵn tại "
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Mã nguồn mở cũng luôn có sẵn. Vì vậy, ngay cả khi có điều gì đó tệ, các phân đoạn cũng sẽ không biến mất."
+    },
+    "helpPageNews": {
+        "message": "Tôi có thể cập nhật tin tức ở đâu?"
+    },
+    "helpPageSourceCode": {
+        "message": "Bạn có thể tìm thấy source code ở đâu?"
+    },
+    "Credits": {
+        "message": "Lời cảm ơn đến"
+    },
+    "highlightNewFeature": {
+        "message": "Tính năng mới! Đi đến đoạn quan trọng của video chỉ với 1 cú click với dạng phân đoạn Highlight"
+    },
+    "LearnMore": {
+        "message": "Tìm hiểu thêm"
     }
 }
