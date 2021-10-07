@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "스킵할 구간을 제출하기 위해 YouTube 플레이어에 나타나는 버튼을 숨깁니다"
     },
+    "showSkipButton": {
+        "message": "플레이어에 하이라이트로 건너뛰기 버튼 표시"
+    },
     "showInfoButton": {
         "message": "YouTube 플레이어에서 정보 버튼 표시하기"
     },
