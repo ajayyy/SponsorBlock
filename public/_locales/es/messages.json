@@ -182,9 +182,6 @@
     "hideButtonsDescription": {
         "message": "Esto oculta los botones que aparecen en el reproductor de YouTube que se usan para enviar segmentos saltados."
     },
-    "showSkipButton": {
-        "message": "Mantener el Botón de \"Saltar a Destacado\" en el Reproductor"
-    },
     "showInfoButton": {
         "message": "Mostrar botón de información en el reproductor de YouTube"
     },
