@@ -182,9 +182,6 @@
     "hideButtonsDescription": {
         "message": "Dit verbergt de knoppen die verschijnen op de YouTube-speler om segmenten over te slaan."
     },
-    "showSkipButton": {
-        "message": "Knop voor \"overslaan naar hoogtepunt\" op speler houden"
-    },
     "showInfoButton": {
         "message": "Info-knop op YouTube-speler weergeven"
     },
