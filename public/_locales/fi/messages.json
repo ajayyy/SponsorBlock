@@ -182,9 +182,6 @@
     "hideButtonsDescription": {
         "message": "Tämä piilottaa YouTuben soittimessa näkyvät, ohitettavien aikojen lähettämiseen käytetyt painikkeet."
     },
-    "showSkipButton": {
-        "message": "Pidä \"Ohita kohtaan: Kohokohta\" -painike soittimessa"
-    },
     "showInfoButton": {
         "message": "Näytä info-painike YouTuben soittimessa"
     },
