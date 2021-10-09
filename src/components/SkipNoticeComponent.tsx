@@ -651,9 +651,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     afterVote(segment: SponsorTime, type: number, category: Category): void {
         const index = this.segments.findIndex(x => x.UUID === segment.UUID);
+        const wikiLinkText = Config.config.wikiPages.get(segment.category);
         switch (type) {
             case 0:
-                const wikiLinkText = Config.config.wikiPages.get(segment.category);
                 this.setNoticeInfoMessageWithOnClick(() => window.open(wikiLinkText), chrome.i18n.getMessage("OpenCategoryWikiPage"));
                 this.setState({
                     voted: utils.replaceArrayElement(this.state.voted, SkipNoticeAction.Downvote, index)
@@ -724,7 +724,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    resetStateToStart(actionState: SkipNoticeAction = SkipNoticeAction.None, editing: boolean = false, choosingCategory: boolean = false): void {
+    resetStateToStart(actionState: SkipNoticeAction = SkipNoticeAction.None, editing = false, choosingCategory = false): void {
         actionState ??= SkipNoticeAction.None;
         editing ??= false;
         choosingCategory ??= false;
