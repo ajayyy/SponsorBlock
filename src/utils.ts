@@ -531,5 +531,9 @@ export default class Utils {
 
         return hashHex;
     }
-
+    
+    replaceArrayElement<Type>(array: Type[], value: Type, index: number): Type[] {
+        array[index] = value;
+        return array;
+    }
 }
