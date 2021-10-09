@@ -235,10 +235,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 className="voteButton"
                                 style={{marginLeft: "5px"}}
                                 onClick={() => this.openEditingOptions()}>
-                            <PencilSvg fill={(this.state.editing === true ||
-                                                this.state.actionState === SkipNoticeAction.CopyDownvote ||
-                                                this.state.choosingCategory === true)
-                                                ? this.selectedColor : this.unselectedColor} />
+                            <PencilSvg fill={this.state.editing === true
+                                            || this.state.actionState === SkipNoticeAction.CopyDownvote
+                                            || this.state.choosingCategory === true
+                                            ? this.selectedColor : this.unselectedColor} />
                         </div>
                     </td>
 
@@ -257,7 +257,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         <button id={"sponsorTimesContinueVotingContainer" + this.idSuffix}
                             className="sponsorSkipObject sponsorSkipNoticeButton"
                             title={"Continue Voting"}
-                            onClick={() => this.resetStateToStart()}>
+                            onClick={() => this.setState({
+                                thanksForVotingText: null,
+                                messages: []
+                            })}>
                             {chrome.i18n.getMessage("ContinueVoting")}
                         </button>
                     </td>
@@ -279,7 +282,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             </tr>),
 
             /* Edit Segments Row */
-            (this.state.editing &&
+            (this.state.editing && !this.state.thanksForVotingText && !(this.state.choosingCategory || this.state.actionState === SkipNoticeAction.CopyDownvote) &&
                 <tr id={"sponsorSkipNoticeEditSegmentsRow" + this.idSuffix}
                     key={2}>
                     <td id={"sponsorTimesEditSegmentsContainer" + this.idSuffix}>
@@ -287,7 +290,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         {/* Copy Segment */}
                         <button className="sponsorSkipObject sponsorSkipNoticeButton"
                                 title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
-                                style={{color: (this.state.actionState === SkipNoticeAction.CopyDownvote && this.state.editing == true) ? this.selectedColor : this.unselectedColor}}
+                                //style={{color: (this.state.actionState === SkipNoticeAction.CopyDownvote && this.state.editing == true) ? this.selectedColor : this.unselectedColor}}
+                                //style={{color: (this.state.editing == true) ? this.selectedColor : this.unselectedColor}}
                                 onClick={() => this.prepAction(SkipNoticeAction.CopyDownvote)}>
                             {chrome.i18n.getMessage("CopyAndDownvote")}
                         </button>
@@ -296,16 +300,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         <button className="sponsorSkipObject sponsorSkipNoticeButton"
                                 title={chrome.i18n.getMessage("ChangeCategoryTooltip")}
                                 style={{color: (this.state.actionState === SkipNoticeAction.CategoryVote && this.state.editing == true) ? this.selectedColor : this.unselectedColor}}
-                                onClick={() => this.openCategoryChooser()}>
+                                onClick={() => this.resetStateToStart(SkipNoticeAction.CategoryVote, true, true)}>
                             {chrome.i18n.getMessage("incorrectCategory")}
                         </button>
                     </td>
-
                 </tr>
             ),
 
             /* Category Chooser Row */
-            (this.state.choosingCategory &&
+            (this.state.choosingCategory && !this.state.thanksForVotingText &&
                 <tr id={"sponsorSkipNoticeCategoryChooserRow" + this.idSuffix}
                     key={3}>
                     <td>
@@ -326,13 +329,12 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 {chrome.i18n.getMessage("submit")}
                             </button>
                         }
-                        
                     </td>
                 </tr>
             ),
 
             /* Segment Chooser Row */
-            (this.state.actionState !== SkipNoticeAction.None &&
+            (this.state.actionState !== SkipNoticeAction.None && this.segments.length > 1 && !this.state.thanksForVotingText &&
                 <tr id={"sponsorSkipNoticeSubmissionOptionsRow" + this.idSuffix}
                     key={4}>
                     <td id={"sponsorTimesSubmissionOptionsContainer" + this.idSuffix}>
@@ -364,11 +366,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     getSubmissionChooser(): JSX.Element[] {
         const elements: JSX.Element[] = [];
-
+        const isUpvote = this.state.actionState === SkipNoticeAction.Upvote;
+        const isDownvote = this.state.actionState == SkipNoticeAction.Downvote;
+        const isCopyDownvote = this.state.actionState == SkipNoticeAction.CopyDownvote;
         for (let i = 0; i < this.segments.length; i++) {
-            const shouldBeGray: boolean= ((this.state.actionState == SkipNoticeAction.Upvote && this.state.voted[i] == SkipNoticeAction.Upvote) ||
-                                        (this.state.actionState == SkipNoticeAction.Downvote && this.state.voted[i] == SkipNoticeAction.Downvote )) ||
-                                        (this.state.actionState == SkipNoticeAction.CopyDownvote && this.state.copied[i] == SkipNoticeAction.CopyDownvote );
+            const shouldBeGray: boolean= isUpvote && this.state.voted[i] == SkipNoticeAction.Upvote ||
+                                        isDownvote && this.state.voted[i] == SkipNoticeAction.Downvote ||
+                                        isCopyDownvote && this.state.copied[i] == SkipNoticeAction.CopyDownvote;
             const opacity = shouldBeGray ? 0.35 : 1;
             elements.push(
                 <button className="sponsorSkipObject sponsorSkipNoticeButton"
@@ -474,11 +478,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 this.SkipNoticeActionUnskip(index);
                 break;
             default:
-                this.setState({
-                    actionState: SkipNoticeAction.None,
-                    editing: false,
-                    choosingCategory: false
-                });
+                this.resetStateToStart();
                 break;
         }
     }
@@ -487,40 +487,23 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.setState({
             voted: utils.replaceArrayElement(this.state.voted, SkipNoticeAction.None, index)
         })
-        return;
     }
 
     SkipNoticeActionUpvote(index: number): void {
         this.contentContainer().vote(1, this.segments[index].UUID, undefined, this);
-
-        this.segments[index].hidden = SponsorHideType.Visible; // This doesnt work D:
-        this.contentContainer().updatePreviewBar();
-
-        this.setState({
-            actionState: SkipNoticeAction.None,
-            editing: false,
-            choosingCategory: false
-        });
+        if (this.segments.length === 1) this.resetStateToStart();
     }
 
     SkipNoticeActionDownvote(index: number): void {
         this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
         
-        this.setState({
-            actionState: SkipNoticeAction.None,
-            editing: false,
-            choosingCategory: false
-        });
+        if (this.segments.length === 1) this.resetStateToStart();
     }
 
     SkipNoticeActionCategoryVote(index: number): void {
         this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value as Category, this)
         
-        this.setState({
-            actionState: SkipNoticeAction.None,
-            editing: false,
-            choosingCategory: false
-        });
+        //this.resetStateToStart();
     }
 
     skipNoticeActionCopyDownvote(index: number): void {
@@ -541,41 +524,18 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.props.contentContainer().updateEditButtonsOnPlayer();
 
         this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
+        //this.resetStateToStart();
         this.setState({
-            actionState: SkipNoticeAction.None,
-            editing: false,
-            choosingCategory: false,
             copied: utils.replaceArrayElement(this.state.copied, SkipNoticeAction.CopyDownvote, index)
         });
     }
 
     SkipNoticeActionUnskip(index: number): void {
         this.state.skipButtonCallback(index);
-        
-        this.setState({
-            actionState: SkipNoticeAction.None,
-            editing: false,
-            choosingCategory: false
-        });
     }
 
     openEditingOptions(): void {
-        this.setState({
-            editing: true,
-            choosingCategory: false,
-            actionState: SkipNoticeAction.None
-        });
-    }
-
-    openCategoryChooser(): void {
-        this.setState({
-            choosingCategory: true
-        }, () => {
-            if (this.segments.length > 1) {
-                // Use the action selectors as a submit button
-                this.prepAction(SkipNoticeAction.CategoryVote);
-            }
-        });
+        this.resetStateToStart(undefined, true);
     }
 
     getCategoryOptions(): React.ReactElement[] {
@@ -650,7 +610,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     afterVote(segment: SponsorTime, type: number, category: Category): void {
-        const index = this.segments.findIndex(x => x.UUID === segment.UUID);
+        const index = utils.getSponsorIndexFromUUID(this.segments, segment.UUID);
         const wikiLinkText = Config.config.wikiPages.get(segment.category);
         switch (type) {
             case 0:
@@ -671,13 +631,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 break;
         }
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
-        
         // Change the sponsor locally
         if (segment) {
             if (type === 0) {
                 segment.hidden = SponsorHideType.Downvoted;
             } else if (category) {
-                segment.category = category;
+                segment.category = category; // This is the actual segment on the video page
+                this.segments[index].category = category; //this is the segment inside the skip notice. 
+            } else if (type === 1) {
+                segment.hidden = SponsorHideType.Visible;
             }
             this.contentContainer().updatePreviewBar();
         }
