@@ -254,10 +254,14 @@
 
 .sponsorTimesVoteButtonsContainer {
 	float: left;
-	
+	vertical-align:middle;
 	padding: 2px 5px;
 
 	margin-right: 4px;
+}
+
+.sponsorTimesVoteButtonsContainer div{
+	display: inline-block;
 }
 
 .sponsorSkipNoticeRightSection {
@@ -330,7 +334,8 @@
 }
 
 .voteButton {
-	height: 17px;
+	height: 24px;
+	width: 24px;
 	cursor: pointer;
 }
 .voteButton:hover {

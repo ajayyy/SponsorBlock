@@ -8,6 +8,10 @@ import SubmissionNotice from "../render/SubmissionNotice";
 
 import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
 
+import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
+import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
+import PencilSvg from "../svg-icons/pencil_svg";
+
 export enum SkipNoticeAction {
     None,
     Upvote,
@@ -96,7 +100,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             this.segments.sort((a, b) => a.segment[0] - b.segment[0]);
         }
     
-        //this is the suffix added at the end of every id
+        // This is the suffix added at the end of every id
         for (const segment of this.segments) {
             this.idSuffix += segment.UUID;
         }
@@ -188,36 +192,37 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 key={0}>
 
                 {/* Vote Button Container */}
-                {!this.state.thanksForVotingText ?
+                {!this.state.thanksForVotingText ? 
                     <td id={"sponsorTimesVoteButtonsContainer" + this.idSuffix}
                         className="sponsorTimesVoteButtonsContainer">
 
                         {/* Upvote Button */}
-                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                            className="sponsorSkipObject voteButton"
-                            style={{marginRight: "10px"}}
-                            src={chrome.extension.getURL("icons/thumbs_up.svg")}
-                            title={chrome.i18n.getMessage("upvoteButtonInfo")}
-                            onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
-                        
-                        </img>
+                        <div id={"sponsorTimesDownvoteButtonsContainerUpvote" + this.idSuffix}
+                                className="voteButton"
+                                style={{marginRight: "5px"}}
+                                title={chrome.i18n.getMessage("upvoteButtonInfo")}
+                                onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
+                            <ThumbsUpSvg fill={(this.state.actionState === SkipNoticeAction.Upvote) ? Config.config.colorPalette.get("SponsorBlockRed") : Config.config.colorPalette.get("SponsorBlockWhite")} />
+                        </div>
 
                         {/* Report Button */}
-                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                            className="sponsorSkipObject voteButton"
-                            style={{marginRight: "10px"}}
-                            src={chrome.extension.getURL("icons/thumbs_down.svg")}
-                            title={chrome.i18n.getMessage("reportButtonInfo")}
-                            onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
-                        </img>
+                        <div id={"sponsorTimesDownvoteButtonsContainerDownvote" + this.idSuffix}
+                                className="voteButton"
+                                style={{marginRight: "5px", marginLeft: "5px"}}
+                                title={chrome.i18n.getMessage("reportButtonInfo")}
+                                onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
+                            <ThumbsDownSvg fill={(this.state.actionState === SkipNoticeAction.Downvote) ? Config.config.colorPalette.get("SponsorBlockRed") : Config.config.colorPalette.get("SponsorBlockWhite")} />
+                        </div>
 
                         {/* Copy and Downvote Button */}
-                        <img id={"sponsorTimesDownvoteButtonsContainer" + this.idSuffix}
-                            className="sponsorSkipObject voteButton voteButtonImageCopyDownvote"
-                            title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
-                            src={chrome.extension.getURL("icons/pencil.svg")}
-                            onClick={() => this.adjustEditingState(true)}>
-                        </img>
+                        <div id={"sponsorTimesDownvoteButtonsContainerCopyDownvote" + this.idSuffix}
+                                className="voteButton"
+                                style={{marginLeft: "5px"}}
+                                onClick={() => this.adjustEditingState(true)}>
+                            <PencilSvg fill={(this.state.editing === true ||
+                                            this.state.actionState === SkipNoticeAction.CopyDownvote ||
+                                            this.state.choosingCategory === true) ? Config.config.colorPalette.get("SponsorBlockRed") : Config.config.colorPalette.get("SponsorBlockWhite")} />
+                        </div>
                     </td>
 
                     :
@@ -250,7 +255,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         key={1}>
                         <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
                             onClick={this.contentContainer().dontShowNoticeAgain}>
-
                             {chrome.i18n.getMessage("Hide")}
                         </button>
                     </td>
@@ -265,14 +269,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
                         {/* Copy Segment */}
                         <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
                                 onClick={() => this.prepAction(SkipNoticeAction.CopyDownvote)}>
-                                {chrome.i18n.getMessage("CopyAndDownvote")}
+                            {chrome.i18n.getMessage("CopyAndDownvote")}
                         </button>
 
                         {/* Category vote */}
                         <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                                title={chrome.i18n.getMessage("ChangeCategoryTooltip")}
                                 onClick={() => this.openCategoryChooser()}>
-
                             {chrome.i18n.getMessage("incorrectCategory")}
                         </button>
                     </td>

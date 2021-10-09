@@ -44,7 +44,8 @@ interface SBConfig {
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
     highlightCategoryUpdate: boolean,
-    wikiPages: SBMap<string, string>
+    wikiPages: SBMap<string, string>,
+    colorPalette: SBMap<string, string>
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -209,6 +210,11 @@ const Config: SBObject = {
             ["highlight_poi", "https://wiki.sponsor.ajay.app/w/Highlight"],
             ["guidelines", "https://wiki.sponsor.ajay.app/w/Guidelines"],
             ["mute", "https://wiki.sponsor.ajay.app/w/Mute_Segment"],
+            ]),
+
+        colorPalette: new SBMap("colorPalette", [
+            ["SponsorBlockRed", "#780303"],
+            ["SponsorBlockWhite", "#ffffff"]
             ]),
 
         // Preview bar
