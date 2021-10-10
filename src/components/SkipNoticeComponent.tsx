@@ -83,6 +83,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     selectedColor: string;
     unselectedColor: string;
+    lockedColor: string;
 
     // Used to update on config change
     configListener: () => void;
@@ -117,6 +118,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         this.selectedColor = Config.config.colorPalette.get("SponsorBlockRed");
         this.unselectedColor = Config.config.colorPalette.get("SponsorBlockWhite");
+        this.lockedColor = Config.config.colorPalette.get("SponsorBlockLocked");
 
         // Setup state
         this.state = {
@@ -227,7 +229,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 style={{marginRight: "5px", marginLeft: "5px"}}
                                 title={chrome.i18n.getMessage("reportButtonInfo")}
                                 onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
-                            <ThumbsDownSvg fill={(this.state.actionState === SkipNoticeAction.Downvote) ? this.selectedColor : this.unselectedColor} />
+                            <ThumbsDownSvg fill={this.downvoteButtonColor(SkipNoticeAction.Downvote)} />
                         </div>
 
                         {/* Copy and Downvote Button */}
@@ -290,8 +292,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         {/* Copy Segment */}
                         <button className="sponsorSkipObject sponsorSkipNoticeButton"
                                 title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
-                                //style={{color: (this.state.actionState === SkipNoticeAction.CopyDownvote && this.state.editing == true) ? this.selectedColor : this.unselectedColor}}
-                                //style={{color: (this.state.editing == true) ? this.selectedColor : this.unselectedColor}}
+                                style={{color: this.downvoteButtonColor(SkipNoticeAction.Downvote)}}
                                 onClick={() => this.prepAction(SkipNoticeAction.CopyDownvote)}>
                             {chrome.i18n.getMessage("CopyAndDownvote")}
                         </button>
@@ -315,7 +316,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         {/* Category Selector */}
                         <select id={"sponsorTimeCategories" + this.idSuffix}
                                 className="sponsorTimeCategories sponsorTimeEditSelector"
-                                defaultValue={this.segments[0].category} //Just default to the first segment, as we don't know which they'll choose
+                                defaultValue={this.segments[0].category}
                                 ref={this.categoryOptionRef}>
 
                             {this.getCategoryOptions()}
@@ -366,25 +367,36 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     getSubmissionChooser(): JSX.Element[] {
         const elements: JSX.Element[] = [];
-        const isUpvote = this.state.actionState === SkipNoticeAction.Upvote;
-        const isDownvote = this.state.actionState == SkipNoticeAction.Downvote;
-        const isCopyDownvote = this.state.actionState == SkipNoticeAction.CopyDownvote;
         for (let i = 0; i < this.segments.length; i++) {
-            const shouldBeGray: boolean= isUpvote && this.state.voted[i] == SkipNoticeAction.Upvote ||
-                                        isDownvote && this.state.voted[i] == SkipNoticeAction.Downvote ||
-                                        isCopyDownvote && this.state.copied[i] == SkipNoticeAction.CopyDownvote;
-            const opacity = shouldBeGray ? 0.35 : 1;
             elements.push(
                 <button className="sponsorSkipObject sponsorSkipNoticeButton"
-                        style={{opacity: opacity}}
+                        style={{opacity: this.submissionChooserOpacitySelector(i), 
+                                color: this.submissionChooserColorSelector(i)}}
                         onClick={() => this.performAction(i)}
                         key={"submission" + i + this.segments[i].category + this.idSuffix}>
                     {(i + 1) + ". " + chrome.i18n.getMessage("category_" + this.segments[i].category)}
                 </button>
             );
         }
-
         return elements;
+    }
+
+    submissionChooserOpacitySelector(index: number): number {
+        const isUpvote = this.state.actionState === SkipNoticeAction.Upvote;
+        const isDownvote = this.state.actionState == SkipNoticeAction.Downvote;
+        const isCopyDownvote = this.state.actionState == SkipNoticeAction.CopyDownvote;
+        const shouldBeGray: boolean= isUpvote && this.state.voted[index] == SkipNoticeAction.Upvote ||
+                                        isDownvote && this.state.voted[index] == SkipNoticeAction.Downvote ||
+                                        isCopyDownvote && this.state.copied[index] == SkipNoticeAction.CopyDownvote;
+        return shouldBeGray ? 0.35 : 1;
+    }
+
+    submissionChooserColorSelector(index: number): string {
+        const isDownvote = this.state.actionState == SkipNoticeAction.Downvote;
+        const isCopyDownvote = this.state.actionState == SkipNoticeAction.CopyDownvote;
+        const shouldWarnUser: boolean = (isDownvote || isCopyDownvote) 
+                                        && this.segments[index].locked === true;
+        return (shouldWarnUser) ? this.lockedColor : this.unselectedColor;
     }
 
     onMouseEnter(): void {
@@ -541,17 +553,20 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     getCategoryOptions(): React.ReactElement[] {
         const elements = [];
 
-        const categories = CompileConfig.categoryList.filter((cat => getCategoryActionType(cat as Category) === CategoryActionType.Skippable));
+        const categories = (CompileConfig.categoryList.filter((cat => getCategoryActionType(cat as Category) === CategoryActionType.Skippable))) as Category[];
         for (const category of categories) {
             elements.push(
                 <option value={category}
                         key={category}>
-                    {chrome.i18n.getMessage("category_" + category)}
+                    {this.categoryVoteButtonLockIcon(category) + chrome.i18n.getMessage("category_" + category)}
                 </option>
             );
         }
-
         return elements;
+    }
+
+    categoryVoteButtonLockIcon(category: Category): string {
+        return (this.contentContainer().lockedCategories.includes(category)) ? "🔒" : "  ";
     }
 
     unskip(index: number): void {
@@ -697,6 +712,16 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             thanksForVotingText: null,
             messages: []
         })
+    }
+
+    downvoteButtonColor(downvoteType: SkipNoticeAction): string {
+        // Also used for "Copy and Downvote"
+        if (this.segments.length > 1) {
+            return (this.state.actionState === downvoteType) ? this.selectedColor : this.unselectedColor;
+        } else {
+            // You dont have segment selectors so the lockbutton needs to be colored and cannot be selected.
+            return (this.segments[0].locked === true) ? this.lockedColor : this.unselectedColor;
+        }
     }
 
     private getUnskipText(): string {

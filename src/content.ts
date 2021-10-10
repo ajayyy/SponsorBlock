@@ -34,8 +34,10 @@ let lastPOISkip = 0;
 
 // JSON video info 
 let videoInfo: VideoInfo = null;
-//the channel this video is about
+// The channel this video is about
 let channelIDInfo: ChannelIDInfo;
+// Locked Categories in this tab, like: ["sponsor","intro","outro"]
+let lockedCategories: Category[] = [];
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -121,7 +123,8 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     updateEditButtonsOnPlayer,
     previewTime,
     videoInfo,
-    getRealCurrentTime: getRealCurrentTime
+    getRealCurrentTime: getRealCurrentTime,
+    lockedCategories
 });
 
 // value determining when to count segment as skipped and send telemetry to server (percent based)
@@ -752,6 +755,62 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
         sponsorLookupRetries++;
     }
+    // Look up locked status if the user is a vip
+    isVipLookup();
+    const isVip = Config.config.isVip;
+    if (isVip) {
+        lockedCategoriesLookup(id);
+        lockedSegmentsLookup()
+    }
+}
+
+async function isVipLookup() {
+    const currentTime = Date.now();
+    const lastUpdate = Config.config.lastIsVipUpdate;
+    if (currentTime - lastUpdate > 1000*60*60*24) { //max every 24 hours 1000*60*60*24
+        Config.config.lastIsVipUpdate = currentTime;
+        utils.sendRequestToServer("GET", "/api/isUserVIP?userID=" + Config.config.userID, 
+        (response) => {
+            if (response.status === 200 && response.ok) {
+                console.log(JSON.parse(response.responseText).vip);
+                console.log(Config.config.userID);
+                if (JSON.parse(response.responseText).vip === true) {
+                    Config.config.isVip = true;
+                }
+                else Config.config.isVip = false;
+            }
+        }
+    )
+    }
+}
+
+async function lockedSegmentsLookup() {
+    let url = ""
+    for (let i = 0; i < sponsorTimes.length; i++) {
+        if (i !== 0) url += ",";
+        url += `"` + sponsorTimes[i].UUID + `"`;
+    }
+    utils.sendRequestToServer("GET", "/api/segmentInfo?UUIDs=[" + url + "]", 
+        (response) => {
+            if (response.status === 200 && response.ok) {
+                for (let i = 0; i < sponsorTimes.length && i < 10; i++) { //because the api only return 10 segments maximum
+                    sponsorTimes[i].locked = (JSON.parse(response.responseText)[i].locked === 1) ? true : false;
+                }
+            }
+        }
+    )
+}
+
+async function lockedCategoriesLookup(id: string) {
+    utils.sendRequestToServer("GET", "/api/lockCategories?videoID=" + id,
+        (response) => {
+            if (response.status === 200 && response.ok) {
+                for (const category of JSON.parse(response.responseText).categories) {
+                    lockedCategories.push(category);
+                }
+            }
+        }
+    )
 }
 
 function retryFetch(): void {
