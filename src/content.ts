@@ -37,7 +37,7 @@ let videoInfo: VideoInfo = null;
 // The channel this video is about
 let channelIDInfo: ChannelIDInfo;
 // Locked Categories in this tab, like: ["sponsor","intro","outro"]
-let lockedCategories: Category[] = [];
+const lockedCategories: Category[] = [];
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
