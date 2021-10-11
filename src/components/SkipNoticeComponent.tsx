@@ -557,16 +557,17 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         for (const category of categories) {
             elements.push(
                 <option value={category}
-                        key={category}>
-                    {this.categoryVoteButtonLockIcon(category) + chrome.i18n.getMessage("category_" + category)}
+                        key={category}
+                        className={this.categoryLockedClass(category)}>
+                    {chrome.i18n.getMessage("category_" + category)}
                 </option>
             );
         }
         return elements;
     }
 
-    categoryVoteButtonLockIcon(category: Category): string {
-        return (this.contentContainer().lockedCategories.includes(category)) ? "🔒" : "  ";
+    categoryLockedClass(category: string): string {
+        return(this.props.contentContainer().lockedCategories.includes(category)) ? "SponsorBlockLockedColor" : ""
     }
 
     unskip(index: number): void {

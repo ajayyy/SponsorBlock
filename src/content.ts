@@ -755,6 +755,11 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
         sponsorLookupRetries++;
     }
+    
+    getVipSegmentsWarnings(id);
+}
+
+function getVipSegmentsWarnings(id: string): void {
     // Look up locked status if the user is a vip
     isVipLookup();
     const isVip = Config.config.isVip;
@@ -767,7 +772,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 async function isVipLookup() {
     const currentTime = Date.now();
     const lastUpdate = Config.config.lastIsVipUpdate;
-    if (currentTime - lastUpdate > 1000*60*60*24) { //max every 24 hours 1000*60*60*24
+    if (currentTime - lastUpdate > 1) { //max every 24 hours 1000*60*60*24
         Config.config.lastIsVipUpdate = currentTime;
         utils.sendRequestToServer("GET", "/api/isUserVIP?userID=" + Config.config.userID, 
         (response) => {
