@@ -189,14 +189,20 @@ export default class Utils {
         element.classList.add("animationDone");
         if (!rightSlide) element.classList.add("autoHideLeft");
 
+        let mouseEntered = false;
+
         container.addEventListener("mouseenter", () => {
+            mouseEntered = true;
             element.classList.remove("animationDone");
 
             // Wait for next event loop
-            setTimeout(() => element.classList.remove("hidden"), 10);
+            setTimeout(() => {
+                if (mouseEntered) element.classList.remove("hidden")
+            }, 10);
         });
 
         container.addEventListener("mouseleave", () => {
+            mouseEntered = false;
             if (element.classList.contains("autoHiding")) {
                 element.classList.add("hidden");
             }
