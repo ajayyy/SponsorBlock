@@ -461,7 +461,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     }
 
     // Don't skip if this category should not be skipped
-    if (!shouldSkip(currentSkip) && skipInfo.array !== sponsorTimesSubmitting) return;
+    if (!shouldSkip(currentSkip) && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) return;
 
     const skippingFunction = () => {
         let forcedSkipTime: number = null;
