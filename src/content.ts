@@ -419,9 +419,12 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         return;
     }
 
-    if (!video || video.paused) return;
+    if (!video) return;
     if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
+    previewBar.updateChapterText(sponsorTimes, currentTime);
+
+    if (video.paused) return;
     if (videoMuted && !inMuteSegment(currentTime)) {
         video.muted = false;
         videoMuted = false;
@@ -601,6 +604,8 @@ function setupVideoListeners() {
                 lastCheckVideoTime = video.currentTime;
     
                 startSponsorSchedule();
+            } else {
+                previewBar.updateChapterText(sponsorTimes, video.currentTime);
             }
 
             if (!Config.config.dontShowNotice) {

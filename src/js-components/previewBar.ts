@@ -6,7 +6,9 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 'use strict';
 
 import Config from "../config";
+import { ActionType, ActionTypes, SponsorTime } from "../types";
 import Utils from "../utils";
+import { getSkippingText } from "../utils/categoryUtils";
 const utils = new Utils();
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
@@ -201,6 +203,51 @@ class PreviewBar {
         bar.style.left = this.timeToPercentage(segment[0]);
 
         return bar;
+    }
+
+    updateChapterText(segments: SponsorTime[], currentTime: number): void {
+        if (!segments) return;
+
+        const activeSegments = segments.filter((segment) => {
+            return segment.segment[0] <= currentTime && segment.segment[1] >= currentTime;
+        });
+
+        this.setActiveSegments(activeSegments);
+    }
+
+    /**
+     * Adds the text to the chapters slot if not filled by default
+     */
+    private setActiveSegments(segments: SponsorTime[]): void {
+        const chaptersContainer = document.querySelector(".ytp-chapter-container") as HTMLDivElement;
+
+        if (chaptersContainer) {
+            // TODO: Check if existing chapters exist (if big chapters menu is available?)
+
+            if (segments.length > 0) {
+                chaptersContainer.style.removeProperty("display");
+
+                const chosenSegment = segments.sort((a, b) => {
+                    if (a.actionType === ActionType.Chapter && b.actionType !== ActionType.Chapter) {
+                        return -1;
+                    } else if (a.actionType !== ActionType.Chapter && b.actionType === ActionType.Chapter) {
+                        return 1;
+                    } else {
+                        return (a.segment[0] - b.segment[1]);
+                    }
+                })[0];
+
+                const chapterButton = chaptersContainer.querySelector("button.ytp-chapter-title") as HTMLButtonElement;
+                chapterButton.classList.remove("ytp-chapter-container-disabled");
+                chapterButton.disabled = false;
+
+                const chapterTitle = chaptersContainer.querySelector(".ytp-chapter-title-content") as HTMLDivElement;
+                chapterTitle.innerText = chosenSegment.description || utils.shortCategoryName(chosenSegment.category);
+            } else {
+                // Hide chapters menu again
+                chaptersContainer.style.display = "none";
+            }
+        }
     }
 
     remove(): void {
