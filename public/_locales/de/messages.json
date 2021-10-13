@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
+    "showSkipButton": {
+        "message": "\"Zum Highlight springen\" Feld im Player behalten"
+    },
     "showInfoButton": {
         "message": "Zeige Info-Knopf im Youtube-Videoplayer"
     },
