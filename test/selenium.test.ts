@@ -3,7 +3,15 @@ import * as Chrome from "selenium-webdriver/chrome";
 import * as Path from "path";
 
 test("Selenium Chrome test", async () => {
-    const driver = await setup();    
+    let driver;
+    try {
+        driver = await setup();   
+    } catch (e) {
+        console.warn("A browser is probably not installed, skipping selenium tests");
+        console.warn(e);
+
+        return;
+    }
 
     try {
         await waitForInstall(driver);

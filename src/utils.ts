@@ -183,6 +183,42 @@ export default class Utils {
         }
     }
 
+    setupAutoHideAnimation(element: Element, container: Element, enabled = true, rightSlide = true): void {
+        if (enabled) element.classList.add("autoHiding");
+        element.classList.add("hidden");
+        element.classList.add("animationDone");
+        if (!rightSlide) element.classList.add("autoHideLeft");
+
+        let mouseEntered = false;
+
+        container.addEventListener("mouseenter", () => {
+            mouseEntered = true;
+            element.classList.remove("animationDone");
+
+            // Wait for next event loop
+            setTimeout(() => {
+                if (mouseEntered) element.classList.remove("hidden")
+            }, 10);
+        });
+
+        container.addEventListener("mouseleave", () => {
+            mouseEntered = false;
+            if (element.classList.contains("autoHiding")) {
+                element.classList.add("hidden");
+            }
+        });
+    }
+
+    enableAutoHideAnimation(element: Element): void {
+        element.classList.add("autoHiding");
+        element.classList.add("hidden");
+    }
+
+    disableAutoHideAnimation(element: Element): void {
+        element.classList.remove("autoHiding");
+        element.classList.remove("hidden");
+    }
+
     /**
      * Merges any overlapping timestamp ranges into single segments and returns them as a new array.
      */

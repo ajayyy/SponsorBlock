@@ -179,17 +179,11 @@
     "hideInfoButton": {
         "message": "在 Youtube 播放器上隐藏信息按钮"
     },
-    "whatInfoButton": {
-        "message": "此按钮用于在 Youtube 页面中打开弹窗。"
-    },
     "hideDeleteButton": {
         "message": "在 Youtube 播放器上隐藏删除按钮"
     },
     "showDeleteButton": {
         "message": "在 Youtube 播放器上显示删除按钮"
-    },
-    "whatDeleteButton": {
-        "message": "此按钮用于在 Youtube 播放器中清除所有赞助商广告。"
     },
     "enableViewTracking": {
         "message": "启用跳过次数统计跟踪"
@@ -364,9 +358,6 @@
     },
     "showUploadButton": {
         "message": "显示上传按钮"
-    },
-    "whatUploadButton": {
-        "message": "在您选择了时间并准备提交后，此按钮会出现在 Youtube 播放器中。"
     },
     "customServerAddress": {
         "message": "SponsorBlock 服务器地址"

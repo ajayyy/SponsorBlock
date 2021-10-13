@@ -176,17 +176,11 @@
     "hideInfoButton": {
         "message": "YouTube പ്ലെയറിൽ വിവര ബട്ടൺ മറയ്‌ക്കുക"
     },
-    "whatInfoButton": {
-        "message": "YouTube പേജിൽ ഒരു പോപ്പ്അപ്പ് തുറക്കുന്ന ബട്ടണാണിത്."
-    },
     "hideDeleteButton": {
         "message": "YouTube പ്ലെയറിൽ ഇല്ലാതാക്കുക ബട്ടൺ മറയ്‌ക്കുക"
     },
     "showDeleteButton": {
         "message": "YouTube പ്ലെയറിൽ ഇല്ലാതാക്കുക ബട്ടൺ കാണിക്കുക"
-    },
-    "whatDeleteButton": {
-        "message": "നിലവിലെ വീഡിയോയ്‌ക്കായി നിങ്ങൾ സമർപ്പിക്കാത്ത എല്ലാ സെഗ്‌മെന്റുകളും മായ്‌ക്കുന്ന YouTube പ്ലെയറിലെ ബട്ടൺ ഇതാണ്."
     },
     "enableViewTracking": {
         "message": "ക Count ണ്ട് ട്രാക്കിംഗ് ഒഴിവാക്കുക പ്രാപ്തമാക്കുക"
@@ -358,9 +352,6 @@
     },
     "showUploadButton": {
         "message": "അപ്‌ലോഡ് ബട്ടൺ കാണിക്കുക"
-    },
-    "whatUploadButton": {
-        "message": "നിങ്ങൾ ഒരു ടൈംസ്റ്റാമ്പ് തിരഞ്ഞെടുത്ത് സമർപ്പിക്കാൻ തയ്യാറായ ശേഷം ഈ ബട്ടൺ YouTube പ്ലെയറിൽ ദൃശ്യമാകും."
     },
     "customServerAddress": {
         "message": "സ്പോൺസർബ്ലോക്ക് സെർവർ വിലാസം"

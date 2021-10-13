@@ -188,9 +188,6 @@
     "hideInfoButton": {
         "message": "Nascondi il pulsante d'informazioni sopra al video"
     },
-    "whatInfoButton": {
-        "message": "Questo è il pulsante che apre un popup nella pagina YouTube."
-    },
     "autoHideInfoButton": {
         "message": "Nascondi in automatico il Pulsante di Informazioni"
     },
@@ -199,9 +196,6 @@
     },
     "showDeleteButton": {
         "message": "Mostra il pulsante elimina"
-    },
-    "whatDeleteButton": {
-        "message": "Questo è il pulsante che ti permette di cancellare tutti i segmenti non inviati del video attuale."
     },
     "enableViewTracking": {
         "message": "Attiva il conteggio dei salti"
@@ -441,9 +435,6 @@
     },
     "showUploadButton": {
         "message": "Mostra Pulsante di Caricamento"
-    },
-    "whatUploadButton": {
-        "message": "Questo pulsante appare sul riproduttore di YouTube dopo che hai selezionato un marcatore temporale e sei pronto ad inviarlo."
     },
     "customServerAddress": {
         "message": "Indirizzo Server SponsorBlock"
@@ -740,9 +731,6 @@
     },
     "hideForever": {
         "message": "Nascondi per sempre"
-    },
-    "warningChatInfo": {
-        "message": "Hai ricevuto un avvertimento e non puoi temporaneamente inviare i segmenti. Questo significa che abbiamo notato che stavi commettendo alcuni errori comuni non malevoli, e vogliamo solo chiarire le regole. Puoi anche unirti a questa chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Voto rifiutato a causa di un ammonimento. Clicca per aprire una chat per risolverlo, oppure torna dopo quando hai tempo.",

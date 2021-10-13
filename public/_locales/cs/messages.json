@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Skryje tlačítka, která se zobrazí v YouTube přehrávači pro přeskočení segmentů."
     },
+    "showSkipButton": {
+        "message": "Nechat tlačítko přeskočení na zvýraznění v přehrávači"
+    },
     "showInfoButton": {
         "message": "Zobrazit informační tlačítko v YouTube přehrávači"
     },
     "hideInfoButton": {
         "message": "Skrýt informační tlačítko v YouTube přehrávači"
-    },
-    "whatInfoButton": {
-        "message": "Toto je tlačítko, které otevře vyskakovací nabídku na YouTube stránce."
     },
     "autoHideInfoButton": {
         "message": "Automaticky skrýt informační tlačítko"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Zobrazit tlačítko Odstranit v YouTube přehrávači"
-    },
-    "whatDeleteButton": {
-        "message": "Toto je tlačítko v YouTube přehrávači, které odebere všechny vaše neodeslané segmenty v současném videu."
     },
     "enableViewTracking": {
         "message": "Povolit počítadlo přeskočení"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Zobrazit tlačítko Nahrát"
-    },
-    "whatUploadButton": {
-        "message": "Toto tlačítko se objeví v YouTube přehrávači po vybrání časového razítka a po připravení k odeslání."
     },
     "customServerAddress": {
         "message": "Adresa serveru SponsorBlock"
@@ -742,7 +736,7 @@
         "message": "Skrýt napořád"
     },
     "warningChatInfo": {
-        "message": "Dostali jste varování a nemůžete dočasně přidávat segmenty. To znamená, že jsme si všimli, že děláte běžné chyby, které nejsou škodlivé, jen chceme vyjasnit pravidla. Také se můžete připojit do tohoto chatu pomocí discord.gg/SponsorBlock nebo matrix.to/#/#sponsor:ajay.app"
+        "message": "Dostali jste varování a nemůžete dočasně přidávat segmenty. To znamená, že jsme si všimli, že děláte běžné chyby, které nejsou škodlivé, stačí potvrdit přečtení pravidel a odebereme varování. Tají se můžete připojit do tohoto chatu pomocí discord.gg/SponsorBlock nebo matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Hlas zamítnut kvůli varování. Klikněte pro otevření chatu pro vyřešení, nebo se vraťte později, až budete mít čas.",

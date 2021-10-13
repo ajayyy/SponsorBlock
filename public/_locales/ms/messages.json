@@ -176,17 +176,11 @@
     "hideInfoButton": {
         "message": "Sembunyikan Butang Maklumat Pada Pemain YouTube"
     },
-    "whatInfoButton": {
-        "message": "Ini adalah butang yang membuka pop timbul di halaman YouTube."
-    },
     "hideDeleteButton": {
         "message": "Sembunyikan Butang Padam Pada Pemain YouTube"
     },
     "showDeleteButton": {
         "message": "Tunjukkan Butang Padam Pada Pemain YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Ini adalah butang pada pemain YouTube yang akan membersihkan semua segmen anda yang belum dihantar untuk video semasa."
     },
     "enableViewTracking": {
         "message": "Dayakan Skip Count Tracking"
@@ -358,9 +352,6 @@
     },
     "showUploadButton": {
         "message": "Tunjukkan Butang Muat Naik"
-    },
-    "whatUploadButton": {
-        "message": "Butang ini muncul di pemain YouTube setelah anda memilih cap waktu dan siap untuk dihantar."
     },
     "customServerAddress": {
         "message": "Alamat Pelayan Sponsorblock"

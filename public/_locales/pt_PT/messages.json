@@ -99,17 +99,11 @@
     "hideInfoButton": {
         "message": "Esconder botão de Informações no player do Youtube"
     },
-    "whatInfoButton": {
-        "message": "Este é o botão que abre o popup na pagina do Youtube."
-    },
     "hideDeleteButton": {
         "message": "Esconder botão de Apagar no player do Youtube"
     },
     "showDeleteButton": {
         "message": "Mostrar botão de Apagar no player do Youtube"
-    },
-    "whatDeleteButton": {
-        "message": "Este é o botão que lhe permite saltar todos os patrocínios do player do Youtube."
     },
     "showNotice": {
         "message": "Mostrar notificação outra vez"

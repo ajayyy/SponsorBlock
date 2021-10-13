@@ -176,17 +176,11 @@
     "hideInfoButton": {
         "message": "Skjul infoknappen på YouTube-avspilleren"
     },
-    "whatInfoButton": {
-        "message": "Dette er knappen som åpner et oppsprett på YouTube-siden."
-    },
     "hideDeleteButton": {
         "message": "Skjul Slett-knappen på YouTube-avspilleren"
     },
     "showDeleteButton": {
         "message": "Vis Slett-knappen på YouTube-avspilleren"
-    },
-    "whatDeleteButton": {
-        "message": "Dette er knappen på YouTube-avspilleren som tømmer alle dine uinnsendte segmenter for den nåværende videoen."
     },
     "enableViewTracking": {
         "message": "Skru på telling av hopp"
@@ -358,9 +352,6 @@
     },
     "showUploadButton": {
         "message": "Vis opplastingsknapp"
-    },
-    "whatUploadButton": {
-        "message": "Denne knappen dukker opp på YouTube-avspilleren etter at du har valgt et tidsstempel og er klar til å sende inn."
     },
     "customServerAddress": {
         "message": "SponsorBlock-tjeneradresse"

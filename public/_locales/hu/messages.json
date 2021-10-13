@@ -182,9 +182,6 @@
     "hideInfoButton": {
         "message": "Info gomb elrejtése a YouTube lejátszón"
     },
-    "whatInfoButton": {
-        "message": "Ez a gomb felhoz egy felugró dobozt a YouTube oldalon."
-    },
     "autoHideInfoButton": {
         "message": "Automatikus elrejtése az Információ Gombnak"
     },
@@ -193,9 +190,6 @@
     },
     "showDeleteButton": {
         "message": "Törlés gomb mutatása a YouTube lejátszón"
-    },
-    "whatDeleteButton": {
-        "message": "Ez egy gomb a lejátszón, ami törli az összes beküldetlen szegmensét a jelenlegi videón."
     },
     "enableViewTracking": {
         "message": "Átugrás-számláló követés bekapcsolása"
@@ -371,9 +365,6 @@
     "showUploadButton": {
         "message": "Feltöltés gomb megjelenítése"
     },
-    "whatUploadButton": {
-        "message": "Ez a gomb a YouTube lejátszón jelenik meg, miután kiválasztott egy időtartamot és készen áll a beküldésre."
-    },
     "customServerAddress": {
         "message": "SponsorBlock szerver címe"
     },
@@ -501,6 +492,12 @@
     "category_music_offtopic_short": {
         "message": "Nem-Zene"
     },
+    "category_poi_highlight": {
+        "message": "Kiemelés"
+    },
+    "category_poi_highlight_description": {
+        "message": "A videónak az a része, amelyiket a legtöbb ember látni szeretne. Hasonlít az \"A videó x percnél kezdődik\" jellegű hozzászólásokhoz."
+    },
     "category_livestream_messages": {
         "message": "Élő adás: Adomány / üzenet olvasások"
     },
@@ -527,6 +524,10 @@
     },
     "category": {
         "message": "Kategória"
+    },
+    "skipOption": {
+        "message": "Átugrás beállítása",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
         "message": "Bétateszt szerver bekapcsolása"

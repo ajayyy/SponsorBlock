@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "See peidab nupud, mis kuvatakse YouTube'i mängijal vahelejätmiste segmentide saatmiseks."
     },
+    "showSkipButton": {
+        "message": "Hoia esiletõstuni vahelejätmise nuppu mängijal"
+    },
     "showInfoButton": {
         "message": "Kuva YouTube'i mängijal infonupp"
     },
     "hideInfoButton": {
         "message": "Peida YouTube'i mängijal infonupp"
-    },
-    "whatInfoButton": {
-        "message": "See on see nupp, mis avab YouTube'i lehel hüpiku."
     },
     "autoHideInfoButton": {
         "message": "Peida infonupp automaatselt"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Kuva YouTube'i mängijal kustutusnupp"
-    },
-    "whatDeleteButton": {
-        "message": "YouTube'i mängija nupp, mis tühjendab kõik sinu praeguse video saatmata segmendid."
     },
     "enableViewTracking": {
         "message": "Luba vahelejätmiste arvu jälgimine"
@@ -442,9 +439,6 @@
     "showUploadButton": {
         "message": "Kuva üleslaadimisnupp"
     },
-    "whatUploadButton": {
-        "message": "See nupp kuvatakse YouTube'i mängijal, kui oled ajatempli ära valinud ning saatmiseks valmis."
-    },
     "customServerAddress": {
         "message": "SponsorBlocki serveri aadress"
     },
@@ -656,6 +650,9 @@
         "message": "Kategooriaga \"{0}\" segmentide saatmiseks pead selle enne valikutes lubama. Sind suunatakse nüüd valikutesse.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Hoiatus: Seda tüüpi segmenti saab korraga aktiivne olla vaid üks. Mitme saatmine põhjustab suvalise segmendi kuvamise."
+    },
     "youMustSelectACategory": {
         "message": "Sa pead enne saatmist igale segmendile kategooria valima!"
     },
@@ -739,7 +736,7 @@
         "message": "Peida igaveseks"
     },
     "warningChatInfo": {
-        "message": "Sa said hoiatuse ning ei saa ajutiselt segmente saata. See tähendab, et me leidsime sind tegemast teatud sagedasi, mitte-pahatahtlikke vigu, ning soovime sulle meie reegleid täpsustada (inglise keeles). Sa võid selle vestlusega liituda ka discord.gg/SponsorBlock või matrix.to/#/#sponsor:ajay.app kaudu."
+        "message": "Sa said hoiatuse ning ei saa ajutiselt segmente saata. See tähendab, et me leidsime sind tegemast teatud sagedasi, mitte-pahatahtlikke vigu - palun kinnita (inglise keeles), et mõistad reegleid ning me eemaldame hoiatuse. Sa võid selle vestlusega liituda ka discord.gg/SponsorBlock või matrix.to/#/#sponsor:ajay.app kaudu."
     },
     "voteRejectedWarning": {
         "message": "Hääletus hoiatuse tõttu tagasilükatud. Klõpsa, et avada selle lahendamiseks vestlus või tule hiljem tagasi, kui aega saad.",
@@ -753,6 +750,9 @@
     },
     "helpPageThanksForInstalling": {
         "message": "Täname SponsorBlocki paigaldamise eest."
+    },
+    "helpPageReviewOptions": {
+        "message": "Palun vaata allolevad valikud üle"
     },
     "helpPageNews": {
         "message": "Uudised ja kuidas see on valmistatud"

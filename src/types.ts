@@ -80,6 +80,7 @@ export interface SponsorTime {
 
     hidden?: SponsorHideType;
     source?: SponsorSourceType;
+    videoDuration?: number;
 }
 
 export interface ScheduledTime extends SponsorTime {

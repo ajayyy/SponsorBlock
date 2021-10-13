@@ -185,9 +185,6 @@
     "hideInfoButton": {
         "message": "在 YouTube 播放器上隱藏資訊按鈕"
     },
-    "whatInfoButton": {
-        "message": "這個按鈕可用來在 YouTube 頁面打開彈出視窗"
-    },
     "autoHideInfoButton": {
         "message": "自動隱藏資訊按鈕"
     },
@@ -196,9 +193,6 @@
     },
     "showDeleteButton": {
         "message": "在 YouTube 播放器上顯示刪除按鈕"
-    },
-    "whatDeleteButton": {
-        "message": "這個按鈕可用來在 YouTube 播放器清除所有未提交的片段"
     },
     "enableViewTracking": {
         "message": "啟用跳過次數追蹤"
@@ -395,9 +389,6 @@
     },
     "showUploadButton": {
         "message": "顯示上傳按鈕"
-    },
-    "whatUploadButton": {
-        "message": "在您選擇了時間範圍並準備提交後，此按鈕會出現在 YouTube 播放器中。"
     },
     "customServerAddress": {
         "message": "SponsorBlock 伺服器地址"

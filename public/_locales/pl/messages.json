@@ -188,9 +188,6 @@
     "hideInfoButton": {
         "message": "Ukryj przycisk informacyjny na odtwarzaczu YouTube"
     },
-    "whatInfoButton": {
-        "message": "Jest to przycisk otwierający okienko pop-up na stronie YouTube."
-    },
     "autoHideInfoButton": {
         "message": "Autoukrywanie przycisku informacji"
     },
@@ -199,9 +196,6 @@
     },
     "showDeleteButton": {
         "message": "Pokaż przycisk usuwania na odtwarzaczu YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Ten przycisk na odtwarzaczu YouTube wyczyści wszystkie twoje niewysłane segmenty dla bieżącego filmu."
     },
     "enableViewTracking": {
         "message": "Włącz monitorowanie liczby pominięć"
@@ -441,9 +435,6 @@
     },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
-    },
-    "whatUploadButton": {
-        "message": "Ten przycisk pojawia się na odtwarzaczu YouTube po wybraniu przedziału czasowego, gdy segment jest gotowy do wysłania."
     },
     "customServerAddress": {
         "message": "Adres serwera SponsorBlock"
@@ -742,7 +733,7 @@
         "message": "Schowaj na zawsze"
     },
     "warningChatInfo": {
-        "message": "Otrzymałeś ostrzeżenie i nie możesz tymczasowo przesłać segmentów. Oznacza to, że zauważyliśmy, że popełniałeś pewne pospolite błędy, które nie są złośliwe i po prostu chcemy wyjaśnić zasady. Możesz również dołączyć do tego czatu używając discord.gg/SponsorBlock lub matrix.to/#/#sponsor:ajay.app"
+        "message": "Otrzymałeś ostrzeżenie i nie możesz tymczasowo przesyłać segmentów. Oznacza to, że zauważyliśmy, że popełniłeś/aś pewne powszechne błędy, które nie są złośliwe, Proszę tylko potwierdzić, że rozumiesz zasady i usuniemy ostrzeżenie. Możesz również dołączyć do tego czatu używając discord.gg/SponsorBlock lub matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Głosowanie odrzucone z powodu ostrzeżenia. Kliknij, aby otworzyć czat w celu rozwiązania problemu lub wróć później, gdy będziesz miał czas.",

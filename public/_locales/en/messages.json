@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "This hides the buttons that appear on the YouTube player to submit skip segments."
     },
+    "showSkipButton": {
+        "message": "Keep Skip To Highlight Button On Player"
+    },
     "showInfoButton": {
         "message": "Show Info Button On YouTube Player"
     },
     "hideInfoButton": {
         "message": "Hide Info Button On YouTube Player"
-    },
-    "whatInfoButton": {
-        "message": "This is the button that opens up a popup in the YouTube page."
     },
     "autoHideInfoButton": {
         "message": "Auto-hide Info Button"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Show Delete Button On YouTube Player"
-    },
-    "whatDeleteButton": {
-        "message": "This is the button on the YouTube player that will clear all your un-submitted segments for the current video."
     },
     "enableViewTracking": {
         "message": "Enable Skip Count Tracking"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Show Upload Button"
-    },
-    "whatUploadButton": {
-        "message": "This button appears on the YouTube player after you have selected a timestamp and are ready to submit."
     },
     "customServerAddress": {
         "message": "SponsorBlock Server Address"
@@ -746,7 +740,7 @@
         "message": "Hide forever"
     },
     "warningChatInfo": {
-        "message": "You got a warning and cannot submit segments temporarily. This means that we noticed you were making some common mistakes that are not malicious, and we just want to clarify the rules. You can also join this chat using discord.gg/SponsorBlock or matrix.to/#/#sponsor:ajay.app"
+        "message": "You got a warning and cannot submit segments temporarily. This means that we noticed you were making some common mistakes that are not malicious, please just confirm that you understand the rules and we will remove the warning. You can also join this chat using discord.gg/SponsorBlock or matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Vote rejected due to a warning. Click to open a chat to resolve it, or come back later when you have time.",

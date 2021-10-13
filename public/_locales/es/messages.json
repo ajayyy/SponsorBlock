@@ -182,14 +182,14 @@
     "hideButtonsDescription": {
         "message": "Esto oculta los botones que aparecen en el reproductor de YouTube que se usan para enviar segmentos saltados."
     },
+    "showSkipButton": {
+        "message": "Mantener el Botón de \"Saltar a Destacado\" en el Reproductor"
+    },
     "showInfoButton": {
         "message": "Mostrar botón de información en el reproductor de YouTube"
     },
     "hideInfoButton": {
         "message": "Ocultar botón de información en el reproductor de YouTube"
-    },
-    "whatInfoButton": {
-        "message": "Este es el botón que abre una ventana en la página de YouTube."
     },
     "autoHideInfoButton": {
         "message": "Ocular automáticamente el Botón de Información"
@@ -199,9 +199,6 @@
     },
     "showDeleteButton": {
         "message": "Mostrar botón de eliminar en el reproductor de YouTube"
-    },
-    "whatDeleteButton": {
-        "message": "Este es el botón en el reproductor de YouTube que eliminará todos tus segmentos no enviados para el vídeo actual."
     },
     "enableViewTracking": {
         "message": "Habilitar el conteo de omisiones"
@@ -441,9 +438,6 @@
     },
     "showUploadButton": {
         "message": "Mostrar botón de subida"
-    },
-    "whatUploadButton": {
-        "message": "Este botón aparece en el reproductor de YouTube después de que has seleccionado una marca de tiempo y estas listo para enviar."
     },
     "customServerAddress": {
         "message": "Dirección del servidor SponsorBlock"
@@ -742,7 +736,7 @@
         "message": "Ocultar para siempre"
     },
     "warningChatInfo": {
-        "message": "Ha recibido una advertencia y no puede enviar segmentos temporalmente. Esto significa que hemos notado de que estaba cometiendo algunos errores comunes que no son maliciosos, y solo queremos aclarar las reglas. Puedes unirte a este chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
+        "message": "Has recibido una advertencia y no puedes enviar segmentos temporalmente. Esto significa que hemos notado que estabas cometiendo algunos errores comunes que no son maliciosos, por favor, solo confirma que entiendes las reglas y anularemos la advertencia. También puedes unirte a este chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Voto rechazado debido a una advertencia. Haga clic aquí para abrir un chat para resolverlo, o vuelva más tarde cuando tenga tiempo.",

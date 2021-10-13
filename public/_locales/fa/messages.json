@@ -182,6 +182,9 @@
         "message": "کار شما",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
+    "502": {
+        "message": "به نظر می‌رسد سرور زیر فشار است. چند ثانیه‌ی دیگر دوباره امتحان کنید."
+    },
     "errorCode": {
         "message": "کد خطا: "
     },
@@ -190,6 +193,12 @@
     },
     "mute": {
         "message": "بی‌صدا"
+    },
+    "minLower": {
+        "message": "دقیقه"
+    },
+    "hourLower": {
+        "message": "ساعت"
     },
     "createdBy": {
         "message": "ایجاد شده توسط"
