@@ -260,9 +260,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
         let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
         if (timeAsNumber !== null && e.deltaY != 0) {
-            if (e.deltaY < 0){
+            if (e.deltaY < 0) {
                 timeAsNumber += step;
-            }else if (timeAsNumber >= step){
+            } else if (timeAsNumber >= step) {
                 timeAsNumber -= step;
             } else {
                 timeAsNumber = 0;
