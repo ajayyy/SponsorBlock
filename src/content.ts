@@ -797,7 +797,7 @@ async function lockedSegmentsLookup() {
     }
     utils.sendRequestToServer("GET", "/api/segmentInfo?UUIDs=[" + url + "]", 
         (response) => {
-            if (response.status === 200 && response.ok) {
+            if (response.status === 200) {
                 for (let i = 0; i < sponsorTimes.length && i < 10; i++) { //because the api only return 10 segments maximum
                     sponsorTimes[i].locked = (JSON.parse(response.responseText)[i].locked === 1) ? true : false;
                 }
