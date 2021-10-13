@@ -255,8 +255,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         // ctrl = 0.1
         // default = 0.01
         // shift = 0.001
-        if (e.shiftKey) step = (e.ctrlKey) ? 1 : 0.001;
-        else step = (e.ctrlKey) ? 0.1 : 0.01;
+        if (e.shiftKey) {
+            step = (e.ctrlKey) ? 1 : 0.001;
+        } else {
+            step = (e.ctrlKey) ? 0.1 : 0.01;
+        }
+        
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
         let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
         if (timeAsNumber !== null && e.deltaY != 0) {
