@@ -46,6 +46,7 @@
   width: 330px;
   padding: 22px;
   text-align: center;
+  margin-bottom: var(--ytd-margin-6x);
 }
 
 #issueReporterTimeButtons > .votingButtons > .segmentTimeButton {
