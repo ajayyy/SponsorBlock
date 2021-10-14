@@ -776,9 +776,7 @@ async function isVipLookup() {
         Config.config.lastIsVipUpdate = currentTime;
         utils.sendRequestToServer("GET", "/api/isUserVIP?userID=" + Config.config.userID, 
         (response) => {
-            if (response.status === 200 && response.ok) {
-                console.log(JSON.parse(response.responseText).vip);
-                console.log(Config.config.userID);
+            if (response.status === 200) {
                 if (JSON.parse(response.responseText).vip === true) {
                     Config.config.isVip = true;
                 }
