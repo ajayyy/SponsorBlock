@@ -46,11 +46,13 @@ interface SBConfig {
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
     highlightCategoryUpdate: boolean,
+    copySegment,
     colorPalette: {
         red: string,
         white: string,
         locked: string
-    }
+    },
+    scrollToEditTimeUpdate: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -200,6 +202,7 @@ const Config: SBObject = {
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
         highlightCategoryUpdate: false, // TODO: Remove this once update is done
+        scrollToEditTimeUpdate: false, // false means the tooltip will be shown
 
         categorySelections: [{
             name: "sponsor" as Category,

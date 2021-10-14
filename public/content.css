@@ -564,3 +564,14 @@ input::-webkit-inner-spin-button {
 .SponsorBlockLockedColor {
 	color: #ffc83d;
 }
+
+.sponsorBlockRectangleTooltip {
+    position: absolute;
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 250px;
+    min-height: 75px;
+    white-space: normal;
+    line-height: 1.5em;
+}
+
