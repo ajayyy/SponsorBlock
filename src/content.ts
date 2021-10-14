@@ -768,7 +768,7 @@ function lookupVipInformation(id: string): void {
     })
 }
 
-async function updateVipInfo() {
+async function updateVipInfo(): Promise<boolean> {
     const currentTime = Date.now();
     const lastUpdate = Config.config.lastIsVipUpdate;
     if (currentTime - lastUpdate > 1000 * 60 * 60 * 72) { // 72 hours
@@ -793,28 +793,26 @@ async function updateVipInfo() {
     return Config.config.isVip;
 }
 
-async function lockedSegmentsLookup() {
-    utils.asyncRequestToServer("GET", "/api/segmentInfo", { UUIDs: sponsorTimes?.map((segment) => segment.UUID) })
-    .then((response) => {
-        if (response.status === 200) {
-            for (let i = 0; i < sponsorTimes.length && i < 10; i++) { // Because the api only return 10 segments maximum
-                try {
-                    sponsorTimes[i].locked = (JSON.parse(response.responseText)[i].locked === 1) ? true : false;
-                } catch (e) { } //eslint-disable-line no-empty
-            }
+async function lockedSegmentsLookup(): Promise<void> {
+    const response = await utils.asyncRequestToServer("GET", "/api/segmentInfo", { UUIDs: sponsorTimes?.map((segment) => segment.UUID) });
+    
+    if (response.status === 200) {
+        for (let i = 0; i < sponsorTimes.length && i < 10; i++) { // Because the api only return 10 segments maximum
+            try {
+                sponsorTimes[i].locked = (JSON.parse(response.responseText)[i].locked === 1) ? true : false;
+            } catch (e) { } //eslint-disable-line no-empty
         }
-    });
+    }
 }
 
-async function lockedCategoriesLookup(id: string) {
-    utils.asyncRequestToServer("GET", "/api/lockCategories", { videoID: id })
-    .then((response) => {
-        if (response.status === 200 && response.ok) {
-            for (const category of JSON.parse(response.responseText).categories) {
-                lockedCategories.push(category);
-            }
+async function lockedCategoriesLookup(id: string): Promise<void> {
+    const response = await utils.asyncRequestToServer("GET", "/api/lockCategories", { videoID: id });
+
+    if (response.status === 200 && response.ok) {
+        for (const category of JSON.parse(response.responseText).categories) {
+            lockedCategories.push(category);
         }
-    });
+    }
 }
 
 function retryFetch(): void {
