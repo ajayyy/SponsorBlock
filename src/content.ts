@@ -756,12 +756,12 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         sponsorLookupRetries++;
     }
     
-    getVipSegmentsWarnings(id);
+    lookupVipInformation(id);
 }
 
-function getVipSegmentsWarnings(id: string): void {
-    // Look up locked status if the user is a vip
-    isVipLookup();
+function lookupVipInformation(id: string): void {
+    updateVipInfo();
+
     const isVip = Config.config.isVip;
     if (isVip) {
         lockedCategoriesLookup(id);
@@ -769,51 +769,50 @@ function getVipSegmentsWarnings(id: string): void {
     }
 }
 
-async function isVipLookup() {
+async function updateVipInfo() {
     const currentTime = Date.now();
     const lastUpdate = Config.config.lastIsVipUpdate;
-    if (currentTime - lastUpdate > 1000*60*60*24) { //max every 24 hours 1000*60*60*24
+    if (currentTime - lastUpdate > 1000 * 60 * 60 * 72) { // 72 hours
         Config.config.lastIsVipUpdate = currentTime;
-        utils.sendRequestToServer("GET", "/api/isUserVIP?userID=" + Config.config.userID, 
-        (response) => {
+
+        utils.sendRequestToServer("GET", "/api/isUserVIP?userID=" + Config.config.userID,  (response) => {
             if (response.status === 200) {
-                if (JSON.parse(response.responseText).vip === true) {
-                    Config.config.isVip = true;
-                }
-                else Config.config.isVip = false;
+                let isVip = false;
+                try {
+                    const vipResponse = JSON.parse(response.responseText)?.vip;
+                    if (typeof(vipResponse) === "boolean") {
+                        isVip = vipResponse;
+                    }
+                } catch (e) { } //eslint-disable-line no-empty
+
+                Config.config.isVip = isVip;
             }
-        }
-    )
+        });
     }
 }
 
 async function lockedSegmentsLookup() {
-    let url = ""
-    for (let i = 0; i < sponsorTimes.length; i++) {
-        if (i !== 0) url += ",";
-        url += `"` + sponsorTimes[i].UUID + `"`;
-    }
-    utils.sendRequestToServer("GET", "/api/segmentInfo?UUIDs=[" + url + "]", 
-        (response) => {
-            if (response.status === 200) {
-                for (let i = 0; i < sponsorTimes.length && i < 10; i++) { //because the api only return 10 segments maximum
+    utils.asyncRequestToServer("GET", "/api/segmentInfo", { UUIDs: sponsorTimes?.map((segment) => segment.UUID) })
+    .then((response) => {
+        if (response.status === 200) {
+            for (let i = 0; i < sponsorTimes.length && i < 10; i++) { // Because the api only return 10 segments maximum
+                try {
                     sponsorTimes[i].locked = (JSON.parse(response.responseText)[i].locked === 1) ? true : false;
-                }
+                } catch (e) { } //eslint-disable-line no-empty
             }
         }
-    )
+    });
 }
 
 async function lockedCategoriesLookup(id: string) {
-    utils.sendRequestToServer("GET", "/api/lockCategories?videoID=" + id,
-        (response) => {
-            if (response.status === 200 && response.ok) {
-                for (const category of JSON.parse(response.responseText).categories) {
-                    lockedCategories.push(category);
-                }
+    utils.asyncRequestToServer("GET", "/api/lockCategories?videoID=" + id)
+    .then((response) => {
+        if (response.status === 200 && response.ok) {
+            for (const category of JSON.parse(response.responseText).categories) {
+                lockedCategories.push(category);
             }
         }
-    )
+    });
 }
 
 function retryFetch(): void {
