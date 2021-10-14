@@ -263,8 +263,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         return elements;
     }
 
-    categoryLockedClass(category: string): string {
-        return(this.props.contentContainer().lockedCategories.includes(category)) ? "SponsorBlockLockedColor" : ""
+    getCategoryLockedClass(category: string): string {
+        return (this.props.contentContainer().lockedCategories.includes(category)) ? "SponsorBlockLockedColor" : "";
     }
 
     categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
