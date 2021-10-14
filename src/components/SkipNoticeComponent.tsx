@@ -642,7 +642,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 break;
             case 20:
                 this.setState({
-                    voted: utils.replaceArrayElement(this.state.voted, SkipNoticeAction.CopyDownvote, index)
+                    voted: utils.replaceArrayElement(this.state.voted, SkipNoticeAction.None, index)
                 });
                 break;
         }
