@@ -37,7 +37,7 @@ let videoInfo: VideoInfo = null;
 // The channel this video is about
 let channelIDInfo: ChannelIDInfo;
 // Locked Categories in this tab, like: ["sponsor","intro","outro"]
-const lockedCategories: Category[] = [];
+let lockedCategories: Category[] = [];
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -234,6 +234,7 @@ function resetValues() {
         status: ChannelIDStatus.Fetching,
         id: null
     };
+    lockedCategories = [];
 
     //empty the preview bar
     if (previewBar !== null) {
@@ -808,10 +809,13 @@ async function lockedSegmentsLookup(): Promise<void> {
 async function lockedCategoriesLookup(id: string): Promise<void> {
     const response = await utils.asyncRequestToServer("GET", "/api/lockCategories", { videoID: id });
 
-    if (response.status === 200 && response.ok) {
-        for (const category of JSON.parse(response.responseText).categories) {
-            lockedCategories.push(category);
-        }
+    if (response.ok) {
+        try {
+            const categoriesResponse = JSON.parse(response.responseText).categories;
+            if (Array.isArray(categoriesResponse)) {
+                lockedCategories = categoriesResponse;
+            }
+        } catch (e) { } //eslint-disable-line no-empty
     }
 }
 
