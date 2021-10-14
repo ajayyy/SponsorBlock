@@ -578,6 +578,12 @@
     "category_poi_highlight_description": {
         "message": "The part of the video that most people are looking for. Similar to \"Video starts at x\" comments."
     },
+    "category_chapter": {
+        "message": "Chapter"
+    },
+    "category_chapter_description": {
+        "message": "Custom named chapters describing major sections of a video."
+    },
     "category_livestream_messages": {
         "message": "Livestream: Donation/Message Readings"
     },
