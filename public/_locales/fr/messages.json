@@ -810,5 +810,8 @@
     },
     "LearnMore": {
         "message": "En savoir plus"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
     }
 }
