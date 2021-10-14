@@ -760,13 +760,12 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 }
 
 function lookupVipInformation(id: string): void {
-    updateVipInfo();
-
-    const isVip = Config.config.isVip;
-    if (isVip) {
-        lockedCategoriesLookup(id);
-        lockedSegmentsLookup()
-    }
+    updateVipInfo().then((isVip) => {
+        if (isVip) {
+            lockedCategoriesLookup(id);
+            lockedSegmentsLookup()
+        }
+    })
 }
 
 async function updateVipInfo() {
@@ -775,20 +774,23 @@ async function updateVipInfo() {
     if (currentTime - lastUpdate > 1000 * 60 * 60 * 72) { // 72 hours
         Config.config.lastIsVipUpdate = currentTime;
 
-        utils.sendRequestToServer("GET", "/api/isUserVIP?userID=" + Config.config.userID,  (response) => {
-            if (response.status === 200) {
-                let isVip = false;
-                try {
-                    const vipResponse = JSON.parse(response.responseText)?.vip;
-                    if (typeof(vipResponse) === "boolean") {
-                        isVip = vipResponse;
-                    }
-                } catch (e) { } //eslint-disable-line no-empty
+        const response = await utils.asyncRequestToServer("GET", "/api/isUserVIP", { userID: Config.config.userID});
 
-                Config.config.isVip = isVip;
-            }
-        });
+        if (response.ok) {
+            let isVip = false;
+            try {
+                const vipResponse = JSON.parse(response.responseText)?.vip;
+                if (typeof(vipResponse) === "boolean") {
+                    isVip = vipResponse;
+                }
+            } catch (e) { } //eslint-disable-line no-empty
+
+            Config.config.isVip = isVip;
+            return isVip;
+        }
     }
+
+    return Config.config.isVip;
 }
 
 async function lockedSegmentsLookup() {
@@ -805,7 +807,7 @@ async function lockedSegmentsLookup() {
 }
 
 async function lockedCategoriesLookup(id: string) {
-    utils.asyncRequestToServer("GET", "/api/lockCategories?videoID=" + id)
+    utils.asyncRequestToServer("GET", "/api/lockCategories", { videoID: id })
     .then((response) => {
         if (response.status === 200 && response.ok) {
             for (const category of JSON.parse(response.responseText).categories) {
