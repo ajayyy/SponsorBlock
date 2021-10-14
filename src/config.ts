@@ -46,8 +46,11 @@ interface SBConfig {
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
     highlightCategoryUpdate: boolean,
-    wikiPages: SBMap<string, string>,
-    colorPalette: SBMap<string, string>
+    colorPalette: {
+        red: string,
+        white: string,
+        locked: string
+    }
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -203,24 +206,11 @@ const Config: SBObject = {
             option: CategorySkipOption.AutoSkip
         }],
 
-        wikiPages: new SBMap("wikiLinks", [
-            ["sponsor", "https://wiki.sponsor.ajay.app/w/Sponsor"],
-            ["selfpromo", "https://wiki.sponsor.ajay.app/w/Unpaid/Self_Promotion"],
-            ["interaction", "https://wiki.sponsor.ajay.app/w/Interaction_Reminder_(Subscribe)"],
-            ["intro", "https://wiki.sponsor.ajay.app/w/Intermission/Intro_Animation"],
-            ["outro", "https://wiki.sponsor.ajay.app/w/Endcards/Credits"],
-            ["preview", "https://wiki.sponsor.ajay.app/w/Preview/Recap"],
-            ["music_offtopic", "https://wiki.sponsor.ajay.app/w/Music:_Non-Music_Section"],
-            ["highlight_poi", "https://wiki.sponsor.ajay.app/w/Highlight"],
-            ["guidelines", "https://wiki.sponsor.ajay.app/w/Guidelines"],
-            ["mute", "https://wiki.sponsor.ajay.app/w/Mute_Segment"],
-            ]),
-
-        colorPalette: new SBMap("colorPalette", [
-            ["SponsorBlockRed", "#780303"],
-            ["SponsorBlockWhite", "#ffffff"],
-            ["SponsorBlockLocked", "#ffc83d"]
-            ]),
+        colorPalette: {
+            red: "#780303",
+            white: "#ffffff",
+            locked: "#ffc83d"
+        },
 
         // Preview bar
         barTypes: {

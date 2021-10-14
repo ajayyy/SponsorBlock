@@ -1746,7 +1746,8 @@ function resetSponsorSubmissionNotice() {
 
 function submitSponsorTimes() {
     if (submissionNotice !== null){
-        submissionNotice.noticeElement.style.display = (submissionNotice.noticeElement.style.display === "none") ? null : "none";
+        submissionNotice.close();
+        submissionNotice = null;
         return;
     } 
     

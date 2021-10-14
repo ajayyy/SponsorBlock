@@ -116,9 +116,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
         this.idSuffix += this.amountOfPreviousNotices;
 
-        this.selectedColor = Config.config.colorPalette.get("SponsorBlockRed");
-        this.unselectedColor = Config.config.colorPalette.get("SponsorBlockWhite");
-        this.lockedColor = Config.config.colorPalette.get("SponsorBlockLocked");
+        this.selectedColor = Config.config.colorPalette.red;
+        this.unselectedColor = Config.config.colorPalette.white;
+        this.lockedColor = Config.config.colorPalette.locked;
 
         // Setup state
         this.state = {
@@ -627,26 +627,32 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     afterVote(segment: SponsorTime, type: number, category: Category): void {
         const index = utils.getSponsorIndexFromUUID(this.segments, segment.UUID);
-        const wikiLinkText = Config.config.wikiPages.get(segment.category);
+        const wikiLinkText = CompileConfig.wikiLinks[segment.category];
+
         switch (type) {
             case 0:
                 this.setNoticeInfoMessageWithOnClick(() => window.open(wikiLinkText), chrome.i18n.getMessage("OpenCategoryWikiPage"));
                 this.setState({
                     voted: utils.replaceArrayElement(this.state.voted, SkipNoticeAction.Downvote, index)
                 });
+
                 break;
             case 1:
                 this.setState({
                     voted: utils.replaceArrayElement(this.state.voted, SkipNoticeAction.Upvote, index)
                 });
+
                 break;
             case 20:
                 this.setState({
                     voted: utils.replaceArrayElement(this.state.voted, SkipNoticeAction.None, index)
                 });
+
                 break;
         }
+
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
+
         // Change the sponsor locally
         if (segment) {
             if (type === 0) {
@@ -657,6 +663,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             } else if (type === 1) {
                 segment.hidden = SponsorHideType.Visible;
             }
+            
             this.contentContainer().updatePreviewBar();
         }
     }
