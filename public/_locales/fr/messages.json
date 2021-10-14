@@ -183,7 +183,7 @@
         "message": "Cela permet de cacher du lecteur YouTube les boutons utilisés pour soumettre des segments commerciaux. Je peux \ncomprendre que certaines personnes les trouvent perturbants. Au lieu d'utiliser ces boutons, cette fenêtre peut être utilisée \npour soumettre des segments commerciaux. Pour cacher la notification, utilisez le bouton \"Ne plus montrer\" sur la notification. Vous pouvez toujours réactiver ces paramètres plus tard."
     },
     "showSkipButton": {
-        "message": "Conserver le bouton \"Passer au segment mis en évidence\" sur le lecteur"
+        "message": "Conserver le bouton \"Aller au point d'intérêt\" sur le lecteur"
     },
     "showInfoButton": {
         "message": "Montrer le bouton Info sur le lecteur YouTube"
@@ -306,7 +306,7 @@
         "message": "Passer {0} ?"
     },
     "mute_category": {
-        "message": "Mute {0}?"
+        "message": "Mettre en sourdine {0} ?"
     },
     "skip_to_category": {
         "message": "Passer à {0}?",
