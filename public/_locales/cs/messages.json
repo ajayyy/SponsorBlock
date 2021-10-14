@@ -810,5 +810,8 @@
     },
     "LearnMore": {
         "message": "Zjistit více"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Použijte kolečko myši při přechodu přes editační okno pro rychlou úpravu času. Kombinace kláves Ctrl nebo Shift mohou být použity k doladění změn."
     }
 }
