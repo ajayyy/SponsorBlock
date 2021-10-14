@@ -810,5 +810,8 @@
     },
     "LearnMore": {
         "message": "Erfahre mehr"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
     }
 }
