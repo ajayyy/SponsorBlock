@@ -365,9 +365,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             }
         }
 
-        sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value as Category;
+        const category = this.categoryOptionRef.current.value as Category
+        sponsorTimesSubmitting[this.props.index].category = category;
         sponsorTimesSubmitting[this.props.index].actionType = 
-            this.actionTypeOptionRef?.current ? this.actionTypeOptionRef.current.value as ActionType : ActionType.Skip;
+            this.actionTypeOptionRef?.current ? this.actionTypeOptionRef.current.value as ActionType 
+                : CompileConfig.categorySupport[category];
 
         Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 
