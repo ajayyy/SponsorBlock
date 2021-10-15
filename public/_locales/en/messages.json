@@ -700,7 +700,7 @@
         "message": "Incorrect/Wrong Timing"
     },
     "incorrectCategory": {
-        "message": "Wrong Category"
+        "message": "Change Category"
     },
     "nonMusicCategoryOnMusic": {
         "message": "This video is categorized as music. Are you sure this has a sponsor? If this is actually a \"Non-Music segment\", open up the extension options and enable this category. Then, you can submit this segment as \"Non-Music\" instead of sponsor. Please read the guidelines if you are confused."
@@ -810,6 +810,21 @@
     },
     "LearnMore": {
         "message": "Learn More"
+    },
+	  "CopyDownvoteButtonInfo": {
+        "message": "Downvotes and creates a local copy for you to resubmit"
+    },
+	  "OpenCategoryWikiPage": {
+		    "message": "Open this category's wiki page."
+	  },
+	  "CopyAndDownvote": {
+        "message": "Copy and downvote"
+    },
+	  "ContinueVoting": {
+        "message": "Continue Voting"
+    },
+	  "ChangeCategoryTooltip": {
+        "message": "This will instantly apply to your segments"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use your mousewheel while hovering over the edit box to quickly adjust the time. Combinations of the ctrl or shift key can be used to fine tune the changes."
