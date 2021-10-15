@@ -183,7 +183,7 @@
         "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
     "showSkipButton": {
-        "message": "\"Zum Highlight springen\" Feld im Player behalten"
+        "message": "\"Zum Highlight springen\"-Knopf im Player behalten"
     },
     "showInfoButton": {
         "message": "Zeige Info-Knopf im Youtube-Videoplayer"
@@ -812,6 +812,6 @@
         "message": "Erfahre mehr"
     },
     "SponsorTimeEditScrollNewFeature": {
-        "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
+        "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schnell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
     }
 }
