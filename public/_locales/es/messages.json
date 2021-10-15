@@ -810,5 +810,8 @@
     },
     "LearnMore": {
         "message": "Aprenda Más"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Utilice la rueda del ratón mientras pasa el cursor por encima del cuadro de edición para ajustar el tiempo. Se pueden utilizar combinaciones de la tecla ctrl o shift para afinar los cambios."
     }
 }

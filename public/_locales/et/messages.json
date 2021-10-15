@@ -765,5 +765,8 @@
     },
     "LearnMore": {
         "message": "Lisateave"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Kasuta hiirekursorit muutmiskasti kohal, et kiirelt aega reguleerida. Täpsemaks muutmiseks hoia kerimise ajal all Ctrl või Shift klahvi."
     }
 }

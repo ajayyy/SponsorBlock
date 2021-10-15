@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Skryje tlačidlá pre preskočenie segmentov, ktoré sa zobrazujú v YouTube prehrávači."
     },
+    "showSkipButton": {
+        "message": "Zobrazovať tlačidlo preskočiť na hlavný obsah videa"
+    },
     "showInfoButton": {
         "message": "Zobraziť info tlačidlo v YouTube prehrávači"
     },
@@ -223,6 +226,21 @@
     },
     "showSkipNotice": {
         "message": "Zobraziť upozornenie pri preskočení segmentu"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Veľké upozornenia o preskočení"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Malé upozornenia o automatickom preskočení"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Malé upozornenia o všetkých preskočeniach"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Priehľadné upozornenia o automatickom preskočení"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Priehľadné upozornenia o všetkých preskočeniach"
     },
     "longDescription": {
         "message": "SponsorBlock umožňuje preskočiť sponzorov, úvodné časti, záverečné časti, pripomienky na odber, nehudobné časti videoklipov alebo iné otravné časti YouTube videí. SponsorBlock je crowdsourceové rozšírenie prehliadača, pomocou ktorého môže ktokoľvek označiť začiatok a koniec takéhoto segmentu. Po odoslaní potom všetci ostatní s týmto rozšírením tieto segmenty automaticky preskočia.",

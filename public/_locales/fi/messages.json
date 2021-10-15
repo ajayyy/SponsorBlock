@@ -810,5 +810,8 @@
     },
     "LearnMore": {
         "message": "Opi lisää"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."
     }
 }

@@ -810,5 +810,8 @@
     },
     "LearnMore": {
         "message": "Meer informatie"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Gebruik het muiswiel terwijl u over het invoerveld beweegt om de tijd snel aan te passen. Combinaties van de ctrl- of shift-toets kunnen worden gebruikt om de wijzigingen te verfijnen."
     }
 }
