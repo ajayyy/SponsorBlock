@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Detta döljer knapparna på YouTube-spelaren som du kan skicka in segment med som ska hoppas över."
     },
+    "showSkipButton": {
+        "message": "Behåll knappen hoppa till markerat på spelaren"
+    },
     "showInfoButton": {
         "message": "Visa Infoknapp På YouTube-spelaren"
     },
@@ -807,5 +810,8 @@
     },
     "LearnMore": {
         "message": "Läs mer"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Använd mushjulet medan du håller muspekaren över redigeringsrutan för att snabbt justera tiden. Kombinationer av CTRL- eller SKIFT-tangenten kan användas för att finjustera tiden."
     }
 }

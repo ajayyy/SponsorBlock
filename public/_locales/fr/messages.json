@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Cela permet de cacher du lecteur YouTube les boutons utilisés pour soumettre des segments commerciaux. Je peux \ncomprendre que certaines personnes les trouvent perturbants. Au lieu d'utiliser ces boutons, cette fenêtre peut être utilisée \npour soumettre des segments commerciaux. Pour cacher la notification, utilisez le bouton \"Ne plus montrer\" sur la notification. Vous pouvez toujours réactiver ces paramètres plus tard."
     },
+    "showSkipButton": {
+        "message": "Conserver le bouton \"Aller au point d'intérêt\" sur le lecteur"
+    },
     "showInfoButton": {
         "message": "Montrer le bouton Info sur le lecteur YouTube"
     },
@@ -303,7 +306,7 @@
         "message": "Passer {0} ?"
     },
     "mute_category": {
-        "message": "Mute {0}?"
+        "message": "Mettre en sourdine {0} ?"
     },
     "skip_to_category": {
         "message": "Passer à {0}?",
@@ -648,7 +651,7 @@
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
-        "message": "Avertissement: Ce type de segment peut avoir au maximum un seul actif à la fois. En soumettant plusieurs segments, un seul aléatoire sera affiché."
+        "message": "Avertissement : Ce type de segment ne peut avoir qu'un seul segment actif à la fois. Si vous en soumettez plusieurs, le choix sera fait au hasard."
     },
     "youMustSelectACategory": {
         "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
@@ -732,6 +735,9 @@
     "hideForever": {
         "message": "Cacher pour toujours"
     },
+    "warningChatInfo": {
+        "message": "Vous avez reçu un avertissement et ne pouvez pas soumettre de segments temporairement. Cela signifie que nous avons remarqué que vous commettiez des erreurs courantes qui ne sont pas malveillantes. Veuillez simplement confirmer que vous comprenez les règles et nous supprimerons l'avertissement. Vous pouvez également rejoindre cette discussion en utilisant discord.gg/SponsorBlock ou matrix.to/#/#sponsor:ajay.app"
+    },
     "voteRejectedWarning": {
         "message": "Le vote a été rejeté en raison d'un avertissement. Cliquez pour ouvrir un chat et y mettre fin , ou revenez plus tard lorsque vous avez le temps.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
@@ -804,5 +810,8 @@
     },
     "LearnMore": {
         "message": "En savoir plus"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
     }
 }

@@ -24,6 +24,7 @@ export interface SponsorTimeEditProps {
 export interface SponsorTimeEditState {
     editing: boolean;
     sponsorTimeEdits: [string, string];
+    selectedCategory: Category;
 }
 
 const DEFAULT_CATEGORY = "chooseACategory";
@@ -47,7 +48,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         this.state = {
             editing: false,
-            sponsorTimeEdits: [null, null]
+            sponsorTimeEdits: [null, null],
+            selectedCategory: DEFAULT_CATEGORY as Category
         };
     }
 
@@ -306,13 +308,18 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         for (const category of (this.props.categoryList ?? CompileConfig.categoryList)) {
             elements.push(
                 <option value={category}
-                        key={category}>
+                        key={category}
+                        className={this.getCategoryLockedClass(category)}>
                     {chrome.i18n.getMessage("category_" + category)}
                 </option>
             );
         }
 
         return elements;
+    }
+
+    getCategoryLockedClass(category: string): string {
+        return this.props.contentContainer().lockedCategories.includes(category) ? "sponsorBlockLockedColor" : "";
     }
 
     categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {

@@ -53,7 +53,7 @@
         "message": "Lewati Ulang"
     },
     "unmute": {
-        "message": "Bunyikan"
+        "message": "Batalkan bisu"
     },
     "paused": {
         "message": "Dijeda"
@@ -89,7 +89,7 @@
         "message": "Video YouTube tidak ditemukan.\nJika terjadi kesalahan, segarkan halaman."
     },
     "refreshSegments": {
-        "message": "Segarkan segmen"
+        "message": "Perbarui segmen"
     },
     "success": {
         "message": "Sukses!"
@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Ini akan menyembunyikan tombol yang muncul di pemutar YouTube untuk mengirimkan segmen yang dilewati."
     },
+    "showSkipButton": {
+        "message": "Tetap lewati ke tombol Highlight di Pemutar"
+    },
     "showInfoButton": {
         "message": "Tampilkan Tombol Info Di Pemutar Video YouTube"
     },
@@ -207,7 +210,7 @@
         "message": "Aktifkan Pelacakan Jumlah Lewati Pada Tab Privat/Penyamaran"
     },
     "enableQueryByHashPrefix": {
-        "message": "Query By Hash Prefix"
+        "message": "Kueri dengan Hash Prefix"
     },
     "whatQueryByHashPrefix": {
         "message": "Daripada meminta segmen dari server menggunakan videoID, 4 huruf pertama dari hash dari videoID dikirim. Server akan mengirim kembali data untuk semua video dengan hash yang mirip."
@@ -223,6 +226,21 @@
     },
     "showSkipNotice": {
         "message": "Tampilkan pemberitahuan setelah melewati segmen"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Lewati maklumat ukuran penuh"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Maklumat lewati kecil untuk lewati otomatis"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Lewati semua maklumat kecil"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Pudar maklumat lewati untuk semua lewati otomatis"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Lewati semua maklumat pudar"
     },
     "longDescription": {
         "message": "SponsorBlock membuat anda melewati sponsor, intro, outro, pengingat berlangganan dan segmen mengganggu lainnya di video YouTube. SponsorBlock adalah ekstensi browser crowdsourced yang membolehkan siapa saja mengirim waktu awal dan akhir dari segmen sponsor dan segmen video YouTube lainnya. Setelah seseorang mengirim informasi ini, orang lain yang memakai ekstensi ini akan melewati segmen sponsor di video yang sama. Anda juga dapat melewati bagian non-musik di musik video.",
@@ -383,7 +401,10 @@
         "message": "Aktifkan dukungan Invidious, nonaktifkan lewati otomatis, tombol sembunyi dan lainnya."
     },
     "addInvidiousInstance": {
-        "message": "Tambah Instance Klien Pihak Ketiga"
+        "message": "Tambah Instansi Klien Pihak Ketiga"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Tambahkan instansi khusus. Ini harus diformat Hanya dengan domain. Contoh: invidious.ajay.app"
     },
     "add": {
         "message": "Tambah"
@@ -405,6 +426,12 @@
     },
     "minDurationDescription": {
         "message": "Segmen yang lebih kecil dari nilai yang diatur tidak akan dilewati atau tampil di pemutar."
+    },
+    "skipNoticeDuration": {
+        "message": "Lewati maklumat berdurasi (detik):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Maklumat lewati akan tetap di layar setidaknya selama ini. Untuk lewati manual, mungkin akan terlihat lebih lama."
     },
     "shortCheck": {
         "message": "Submisi ini lebih pendek dari opsi durasi minimalmu. Ini dapat berarti ini sudah dikirim, dan hanya akan diabaikan karena opsi ini. Apakah anda yakin ingin mengirim?"
@@ -545,6 +572,12 @@
     "category_music_offtopic_short": {
         "message": "Non-Musik"
     },
+    "category_poi_highlight": {
+        "message": "Sorotan"
+    },
+    "category_poi_highlight_description": {
+        "message": "Bagian video yang banyak orang lihat. Sama untuk komentar \"Video dimulai di x\"."
+    },
     "category_livestream_messages": {
         "message": "Livestream: Baca Pesan/Donasi"
     },
@@ -563,6 +596,9 @@
     "disable": {
         "message": "Nonaktif"
     },
+    "autoSkip_POI": {
+        "message": "Otomatis lewati ke awal"
+    },
     "manualSkip_POI": {
         "message": "Tanya saat video dimuat"
     },
@@ -571,6 +607,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "Lewati semua segmen secara otomatis ketika ada segmen non-music"
+    },
+    "muteSegments": {
+        "message": "Perbolehkan segmen untuk bisu daripada melewati"
     },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan benar. Harusnya terdiri dari 3 atau 6 digit kode heksa dengan tagar di awal."
@@ -610,6 +649,9 @@
     "enableThisCategoryFirst": {
         "message": "Untuk mengirimkan segmen dengan kategori \"{0}\", Anda harus mengaktifkannya di opsi. Anda akan diarahkan ke opsi sekarang.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "poiOnlyOneSegment": {
+        "message": "Perhatian: Tipe segmen ini hanya bisa maksimum aktif satu kali. Mengirimkan beberapa dapat mengakibatkan muncul pada kondisi acak."
     },
     "youMustSelectACategory": {
         "message": "Anda harus memilih kategori untuk semua segmen yang anda kirimkan!"
@@ -686,8 +728,19 @@
         "message": "Mengerti",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "experiementOptOut": {
+        "message": "Tidak ikut eksperimen masa depan",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
     "hideForever": {
         "message": "Sembunyikan selamanya"
+    },
+    "warningChatInfo": {
+        "message": "Anda mendapatkan peringatan dan tidak bisa mengirim segmen sementara. Ini dikarenakan kami melihat kamu melakukan beberapa kesalahan yang umum, mohon konfirmasi bahwa kamu mengerti perundangan dan kami akan hapus peringatan. Kamu bisa bergabung ke obrolan menggunakan discord.gg/SponsorBlock atau matrix.io/#/#sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Suara ditolak karena peringatan. Klik untuk buka obrolan untuk menyelesaikannya, atau kembali beberapa saat lagi ketika ada waktu.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
         "message": "Donasi"
@@ -701,7 +754,64 @@
     "helpPageReviewOptions": {
         "message": "Haram ditinjau opsi di bawah ini"
     },
+    "helpPageFeatureDisclaimer": {
+        "message": "Banyak fitur yang dinonaktifkan secara bawaan. Jika kamu ingin lewati mula, akhir, gunakan Invidious, dll, aktifkan mereka dibawah ini.\nKamu bisa menyembunyikan/menghadirkan elemen UI."
+    },
     "helpPageHowSkippingWorks": {
         "message": "Cara kerja melewati segmen"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Segmen video akan otomatis dilewati jika ditemukan di databasis. Kamu bisa buka munculan dengan klik ikon ekstensi untuk mendapatkan pratinjau apa adanya."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Kapanpun kamu melewati segmen, kamu akan mendapatkan maklumat. Jika waktu terlihat salah dapat menyuarakan turun dengan klik turun-suara! Kamu juga bisa menyuarakan di maklumat."
+    },
+    "Submitting": {
+        "message": "Mengirim"
+    },
+    "helpPageSubmitting1": {
+        "message": "Mengirim bisa baik dilakukan di maklumat dengan menekan tombol \"Mulai Segmen Sekarang\" atau di pemutar video dengan tombol di pemutar."
+    },
+    "helpPageSubmitting2": {
+        "message": "Klik tombol putar indikasikan memulai segmen dan klik tombol ikon stop indikasikan mengakhiri. Kamu bisa persiapkan beberapa sponsor sebelum menekan kirim. Klik tombol unggah akan mengirimkan. Klik tombol sampah akan menghapuskan."
+    },
+    "Editing": {
+        "message": "Sunting"
+    },
+    "helpPageEditing1": {
+        "message": "Jika kamu mengacaukan, kamu bisa sunting atau hapus segmen setelah klik tombol panah atas."
+    },
+    "helpPageTooSlow": {
+        "message": "Ini terlalu lambat"
+    },
+    "helpPageTooSlow1": {
+        "message": "Terdapat tombol pintas jika kamu ingin menggunakannya. Tekan tombol semikolon untuk indikasi mulai/akhir segmen sponsor dan tekan tombol kutip untuk mengirimkan. Ini bisa diganti di opsi. Jika kamu tidak menggunakan QWERTY, kamu dimungkinkan harus mengubah tombol."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Bisakah saya mendapatkan salinan Databasis? Apa yang terjadi jika kamu tiada?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Databasis adalah publik dan tersedia di"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Sumber kode tersedia secara bebas. Jadi, jika sesuatu terjadi pada saya, pengajuan kamu tidak akan hilang."
+    },
+    "helpPageNews": {
+        "message": "Berita dan bagaimana ini diciptakan"
+    },
+    "helpPageSourceCode": {
+        "message": "Dimana saya mendapatkankan sumber kode?"
+    },
+    "Credits": {
+        "message": "Kredit"
+    },
+    "highlightNewFeature": {
+        "message": "Baru! Dapat ke poin video dengan satu klik dengan kategori highlight terbaru"
+    },
+    "LearnMore": {
+        "message": "Pelajari Lebih Lanjut"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Gunakan roda mouse ketika berada di kotak edit untuk mengatur waktu dengan cepat. Kombinasi dengan tombol [Ctrl + Shift] bisa digunakan untuk perubahan yang halus."
     }
 }

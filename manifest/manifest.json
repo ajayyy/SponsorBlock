@@ -1,7 +1,7 @@
 {
     "name": "__MSG_fullName__",
     "short_name": "SponsorBlock",
-    "version": "3.3.3",
+    "version": "3.4",
     "default_locale": "en",
     "description": "__MSG_Description__",
     "homepage_url": "https://sponsor.ajay.app",
@@ -37,6 +37,7 @@
         "icons/upvote.png",
         "icons/downvote.png",
         "icons/thumbs_down.svg",
+        "icons/thumbs_down_locked.svg",
         "icons/thumbs_up.svg",
         "icons/help.svg",
         "icons/report.png",

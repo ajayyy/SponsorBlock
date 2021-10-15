@@ -810,5 +810,8 @@
     },
     "LearnMore": {
         "message": "더보기"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "편집 상자 위에 커서를 올린 채 스크롤하면 시간을 빠르게 조정할 수 있습니다. Ctrl이나 Shift 키를 누른 채로 스크롤하면 세밀한 조정이 가능합니다."
     }
 }

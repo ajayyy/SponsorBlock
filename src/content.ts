@@ -34,8 +34,10 @@ let lastPOISkip = 0;
 
 // JSON video info 
 let videoInfo: VideoInfo = null;
-//the channel this video is about
+// The channel this video is about
 let channelIDInfo: ChannelIDInfo;
+// Locked Categories in this tab, like: ["sponsor","intro","outro"]
+let lockedCategories: Category[] = [];
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -121,7 +123,8 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     updateEditButtonsOnPlayer,
     previewTime,
     videoInfo,
-    getRealCurrentTime: getRealCurrentTime
+    getRealCurrentTime: getRealCurrentTime,
+    lockedCategories
 });
 
 // value determining when to count segment as skipped and send telemetry to server (percent based)
@@ -231,6 +234,7 @@ function resetValues() {
         status: ChannelIDStatus.Fetching,
         id: null
     };
+    lockedCategories = [];
 
     //empty the preview bar
     if (previewBar !== null) {
@@ -756,6 +760,55 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         }, 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
 
         sponsorLookupRetries++;
+    }
+    
+    lookupVipInformation(id);
+}
+
+function lookupVipInformation(id: string): void {
+    updateVipInfo().then((isVip) => {
+        if (isVip) {
+            lockedCategoriesLookup(id);
+        }
+    });
+}
+
+async function updateVipInfo(): Promise<boolean> {
+    const currentTime = Date.now();
+    const lastUpdate = Config.config.lastIsVipUpdate;
+    if (currentTime - lastUpdate > 1000 * 60 * 60 * 72) { // 72 hours
+        Config.config.lastIsVipUpdate = currentTime;
+
+        const response = await utils.asyncRequestToServer("GET", "/api/isUserVIP", { userID: Config.config.userID});
+
+        if (response.ok) {
+            let isVip = false;
+            try {
+                const vipResponse = JSON.parse(response.responseText)?.vip;
+                if (typeof(vipResponse) === "boolean") {
+                    isVip = vipResponse;
+                }
+            } catch (e) { } //eslint-disable-line no-empty
+
+            Config.config.isVip = isVip;
+            return isVip;
+        }
+    }
+
+    return Config.config.isVip;
+}
+
+async function lockedCategoriesLookup(id: string): Promise<void> {
+    const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
+    const response = await utils.asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix);
+
+    if (response.ok) {
+        try {
+            const categoriesResponse = JSON.parse(response.responseText).filter((lockInfo) => lockInfo.videoID === id)[0]?.categories;
+            if (Array.isArray(categoriesResponse)) {
+                lockedCategories = categoriesResponse;
+            }
+        } catch (e) { } //eslint-disable-line no-empty
     }
 }
 
@@ -1688,8 +1741,12 @@ function resetSponsorSubmissionNotice() {
 }
 
 function submitSponsorTimes() {
-    if (submissionNotice !== null) return;
-
+    if (submissionNotice !== null){
+        submissionNotice.close();
+        submissionNotice = null;
+        return;
+    } 
+    
     if (sponsorTimesSubmitting !== undefined && sponsorTimesSubmitting.length > 0) {
         submissionNotice = new SubmissionNotice(skipNoticeContentContainer, sendSubmitMessage);
     }
