@@ -502,20 +502,17 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     SkipNoticeActionUpvote(index: number): void {
-        this.contentContainer().vote(1, this.segments[index].UUID, undefined, this);
         if (this.segments.length === 1) this.resetStateToStart();
+        this.contentContainer().vote(1, this.segments[index].UUID, undefined, this);
     }
 
     SkipNoticeActionDownvote(index: number): void {
-        this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
-        
         if (this.segments.length === 1) this.resetStateToStart();
+        this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
     }
 
     SkipNoticeActionCategoryVote(index: number): void {
         this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value as Category, this)
-        
-        //this.resetStateToStart();
     }
 
     skipNoticeActionCopyDownvote(index: number): void {
@@ -631,6 +628,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         switch (type) {
             case 0:
+                this.clearConfigListener();
                 this.setNoticeInfoMessageWithOnClick(() => window.open(wikiLinkText), chrome.i18n.getMessage("OpenCategoryWikiPage"));
                 this.setState({
                     voted: utils.replaceArrayElement(this.state.voted, SkipNoticeAction.Downvote, index)
@@ -694,9 +692,16 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     closeListener(): void {
-        //this.clearConfigListener();
+        this.clearConfigListener();
 
         this.props.closeListener();
+    }
+
+    clearConfigListener(): void {
+        if (this.configListener) {
+            Config.configListeners.splice(Config.configListeners.indexOf(this.configListener), 1);
+            this.configListener = null;
+        }
     }
 
     unmutedListener(): void {
