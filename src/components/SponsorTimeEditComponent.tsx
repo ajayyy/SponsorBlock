@@ -5,6 +5,7 @@ import { ActionType, ActionTypes, Category, CategoryActionType, ContentContainer
 import Utils from "../utils";
 import { getCategoryActionType } from "../utils/categoryUtils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
+import { RectangleTooltip } from "../render/RectangleTooltip";
 
 
 const utils = new Utils();
@@ -56,6 +57,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             event.stopPropagation();
         });
 
+        // Prevent scrolling while changing times
+        document.getElementById("sponsorTimesContainer" + this.idSuffix).addEventListener('wheel', function (event) {
+            event.preventDefault();
+        }, {passive: false});
+
         // Add as a config listener
         if (!this.configUpdateListener) {
             this.configUpdateListener = () => this.configUpdate();
@@ -86,7 +92,6 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 node.style.setProperty("text-shadow", "none", "important");
             }
         };
-
         // Create time display
         let timeDisplay: JSX.Element;
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
@@ -101,20 +106,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             onClick={() => this.setTimeToNow(0)}>
                                 {chrome.i18n.getMessage("bracketNow")}
                         </span>
-
                         <input id={"submittingTime0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput"
                             ref={oldYouTubeDarkStyles}
                             type="text"
                             value={this.state.sponsorTimeEdits[0]}
-                            onChange={(e) => {
-                                const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                sponsorTimeEdits[0] = e.target.value;
-                                if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = e.target.value;
-
-                                this.setState({sponsorTimeEdits});
-                                this.saveEditTimes();
-                            }}>
+                            onChange={(e) => {this.handleOnChange(0, e, sponsorTime, e.target.value)}}
+                            onWheel={(e) => {this.changeTimesWhenScrolling(0, e, sponsorTime)}}>
                         </input>
 
                         {getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable ? (
@@ -128,14 +126,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                     ref={oldYouTubeDarkStyles}
                                     type="text"
                                     value={this.state.sponsorTimeEdits[1]}
-                                    onChange={(e) => {
-                                        const sponsorTimeEdits = this.state.sponsorTimeEdits;
-                                        sponsorTimeEdits[1] = e.target.value;
-
-                                        this.setState({sponsorTimeEdits});
-
-                                        this.saveEditTimes();
-                                    }}>
+                                    onChange={(e) => {this.handleOnChange(1, e, sponsorTime, e.target.value)}}
+                                    onWheel={(e) => {this.changeTimesWhenScrolling(1, e, sponsorTime)}}>
                                 </input>
 
                                 <span id={"nowButton1" + this.idSuffix}
@@ -155,12 +147,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             );
         } else {
             timeDisplay = (
+                
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     className="sponsorTimeDisplay"
-                    onClick={this.toggleEditTime.bind(this)}>
+                    onClick={this.toggleEditTime.bind(this)}
+                    onWheel={this.toggleEditTime.bind(this)}>
                         {utils.getFormattedTime(segment[0], true) +
                             ((!isNaN(segment[1]) && getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable)
-                                     ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
+                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
                 </div>
             );
         }
@@ -238,6 +232,67 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 ): ""}
             </div>
         );
+    }
+
+    handleOnChange(index: number, e: React.ChangeEvent, sponsorTime: SponsorTime, targetValue: string): void {
+        const sponsorTimeEdits = this.state.sponsorTimeEdits;
+        
+        // check if change is small engough to show tooltip
+        const before = utils.getFormattedTimeToSeconds(sponsorTimeEdits[index]);
+        const after = utils.getFormattedTimeToSeconds(targetValue);
+        const difference = Math.abs(before - after);
+        if (0 < difference && difference< 0.5) this.showToolTip();
+
+        sponsorTimeEdits[index] = targetValue;
+        if (index === 0 && getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = targetValue;
+
+        this.setState({sponsorTimeEdits});
+        this.saveEditTimes();
+    }
+    changeTimesWhenScrolling(index: number, e: React.WheelEvent, sponsorTime: SponsorTime): void {
+        let step = 0;
+        // shift + ctrl = 1
+        // ctrl = 0.1
+        // default = 0.01
+        // shift = 0.001
+        if (e.shiftKey) {
+            step = (e.ctrlKey) ? 1 : 0.001;
+        } else {
+            step = (e.ctrlKey) ? 0.1 : 0.01;
+        }
+        
+        const sponsorTimeEdits = this.state.sponsorTimeEdits;
+        let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
+        if (timeAsNumber !== null && e.deltaY != 0) {
+            if (e.deltaY < 0) {
+                timeAsNumber += step;
+            } else if (timeAsNumber >= step) {
+                timeAsNumber -= step;
+            } else {
+                timeAsNumber = 0;
+            }
+            sponsorTimeEdits[index] = utils.getFormattedTime(timeAsNumber, true);
+            if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = sponsorTimeEdits[0];
+            this.setState({sponsorTimeEdits});
+            this.saveEditTimes();
+        }
+    }
+
+    showToolTip(): void {
+        if (!Config.config.scrollToEditTimeUpdate && document.getElementById("sponsorRectangleTooltip" + "sponsorTimesContainer" + this.idSuffix) === null) {
+            const element = document.getElementById("sponsorTimesContainer" + this.idSuffix);
+            new RectangleTooltip({
+                text: chrome.i18n.getMessage("SponsorTimeEditScrollNewFeature"),
+                referenceNode: element.parentElement,
+                prependElement: element,
+                timeout: 15,
+                bottomOffset: 75 + "px",
+                leftOffset: -318 + "px",
+                backgroundColor: "rgba(28, 28, 28, 1.0)",
+                htmlId: "sponsorTimesContainer" + this.idSuffix,
+                buttonFunction: () => {Config.config.scrollToEditTimeUpdate = true}
+            });
+        }
     }
 
     getCategoryOptions(): React.ReactElement[] {
