@@ -394,9 +394,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     submissionChooserColorSelector(index: number): string {
         const isDownvote = this.state.actionState == SkipNoticeAction.Downvote;
         const isCopyDownvote = this.state.actionState == SkipNoticeAction.CopyDownvote;
-        const shouldWarnUser: boolean = (isDownvote || isCopyDownvote) 
-                                        && this.segments[index].locked === true;
-        return (shouldWarnUser) ? this.lockedColor : this.unselectedColor;
+        const shouldWarnUser = Config.config.isVip && (isDownvote || isCopyDownvote) 
+                                        && this.segments[index].locked === 1;
+        return shouldWarnUser ? this.lockedColor : this.unselectedColor;
     }
 
     onMouseEnter(): void {
@@ -728,7 +728,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             return (this.state.actionState === downvoteType) ? this.selectedColor : this.unselectedColor;
         } else {
             // You dont have segment selectors so the lockbutton needs to be colored and cannot be selected.
-            return (this.segments[0].locked === true) ? this.lockedColor : this.unselectedColor;
+            return Config.config.isVip && this.segments[0].locked === 1 ? this.lockedColor : this.unselectedColor;
         }
     }
 

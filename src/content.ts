@@ -764,7 +764,6 @@ function lookupVipInformation(id: string): void {
     updateVipInfo().then((isVip) => {
         if (isVip) {
             lockedCategoriesLookup(id);
-            lockedSegmentsLookup()
         }
     })
 }
@@ -794,24 +793,13 @@ async function updateVipInfo(): Promise<boolean> {
     return Config.config.isVip;
 }
 
-async function lockedSegmentsLookup(): Promise<void> {
-    const response = await utils.asyncRequestToServer("GET", "/api/segmentInfo", { UUIDs: sponsorTimes?.map((segment) => segment.UUID) });
-    
-    if (response.status === 200) {
-        for (let i = 0; i < sponsorTimes.length && i < 10; i++) { // Because the api only return 10 segments maximum
-            try {
-                sponsorTimes[i].locked = (JSON.parse(response.responseText)[i].locked === 1) ? true : false;
-            } catch (e) { } //eslint-disable-line no-empty
-        }
-    }
-}
-
 async function lockedCategoriesLookup(id: string): Promise<void> {
-    const response = await utils.asyncRequestToServer("GET", "/api/lockCategories", { videoID: id });
+    const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
+    const response = await utils.asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix);
 
     if (response.ok) {
         try {
-            const categoriesResponse = JSON.parse(response.responseText).categories;
+            const categoriesResponse = JSON.parse(response.responseText).filter((lockInfo) => lockInfo.videoID === id)[0]?.categories;
             if (Array.isArray(categoriesResponse)) {
                 lockedCategories = categoriesResponse;
             }
