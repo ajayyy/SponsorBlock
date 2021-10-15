@@ -765,7 +765,7 @@ function lookupVipInformation(id: string): void {
         if (isVip) {
             lockedCategoriesLookup(id);
         }
-    })
+    });
 }
 
 async function updateVipInfo(): Promise<boolean> {
