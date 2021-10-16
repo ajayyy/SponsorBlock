@@ -699,9 +699,6 @@
     "downvoteDescription": {
         "message": "Sobimatu/vale ajastus"
     },
-    "incorrectCategory": {
-        "message": "Vale kategooria"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "See video on muusikana kategoriseeritud. Kas oled kindel, et sellel on sponsor? Kui see on tegelikult \"mitte-muusika segment\", ava laienduse valikud ning luba see kategooria. Seejärel saad selle segmendi saata \"mitte-muusika\" kategoorias. Segaduse korral palun loe üle juhised."
     },
