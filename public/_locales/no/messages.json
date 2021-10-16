@@ -566,9 +566,6 @@
     "downvoteDescription": {
         "message": "Feil tidtaking"
     },
-    "incorrectCategory": {
-        "message": "Feil kategori"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Denne videoen er kategorisert som musikk. Er du sikker på at dette har en sponsor? Hvis det egentlig er et \"Ikke-musikk-segment\", åpne opp innstillingene til utvidelsen og skru på denne kategorien. Deretter kan du sende dette segmentet som \"Ikke-musikk\" i stedet for som sponsing. Vennligst les retningslinjene hvis du er forvirret."
     },
