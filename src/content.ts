@@ -1527,6 +1527,7 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
                 UUID: segmentTime.UUID,
                 category: segmentTime.category,
                 actionType: segmentTime.actionType,
+                description: segmentTime.description,
                 source: segmentTime.source
             });
         }
