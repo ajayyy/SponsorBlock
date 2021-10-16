@@ -696,9 +696,6 @@
     "downvoteDescription": {
         "message": "Tempo Non Corretto/Errato"
     },
-    "incorrectCategory": {
-        "message": "Categoria Errata"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Questo video è classificato come musica. Sei sicuro che questo video contenga uno sponsor? Se questo è in realtà un \"Segmento Non-Musica\", apri le opzioni di questa estensione e abilita questa categoria. Quindi, è possibile inviare questo segmento come \"Non-Music\" invece di sponsor. Si prega di leggere la guida se si è confusi."
     },
