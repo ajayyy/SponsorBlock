@@ -699,9 +699,6 @@
     "downvoteDescription": {
         "message": "Verkeerde timing"
     },
-    "incorrectCategory": {
-        "message": "Verkeerde categorie"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Deze video is gecategoriseerd als muziek. Weet u zeker dat dit een sponsor heeft? Als dit eigenlijk een \"niet-muzieksegment\" is, open dan de extensie-opties en schakel deze categorie in. Vervolgens kunt u dit segment indienen als \"niet-muziek\" in plaats van als sponsor. Lees de richtlijnen als u in de war bent."
     },
