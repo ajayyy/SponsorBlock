@@ -700,7 +700,7 @@
         "message": "Fel/Fel tidsintervall"
     },
     "incorrectCategory": {
-        "message": "Fel kategori"
+        "message": "Ändra kategori"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Den här videon kategoriseras som musik. Är du säker på att denna har en sponsor? Om detta faktiskt är ett \"icke-musiksegment\", öppna tilläggsalternativen och aktivera denna kategori. Då kan du skicka in detta segment som \"icke-musik\" i stället för sponsor. Läs riktlinjerna om något är oklart."
@@ -810,6 +810,21 @@
     },
     "LearnMore": {
         "message": "Läs mer"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Rösta ner och skapar en lokal kopia för dig att skicka igen"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Öppna denna kategoris wiki-sida."
+    },
+    "CopyAndDownvote": {
+        "message": "Kopiera och rösta ner"
+    },
+    "ContinueVoting": {
+        "message": "Fortsätt rösta"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Detta kommer omedelbart att verkställas till dina segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Använd mushjulet medan du håller muspekaren över redigeringsrutan för att snabbt justera tiden. Kombinationer av CTRL- eller SKIFT-tangenten kan användas för att finjustera tiden."
