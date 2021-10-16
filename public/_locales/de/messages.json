@@ -699,9 +699,6 @@
     "downvoteDescription": {
         "message": "Nicht korrekt oder falsches Timing"
     },
-    "incorrectCategory": {
-        "message": "Falsche Kategorie"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Dieses Video ist als Musikvideo kategorisiert. Bist du dir sicher, dass es ein gesponsertes Videosegment hat? Wenn dies tatsächlich ein Musikvideoteil ohne Musik ist, öffne die Optionen von SponsorBlock und aktiviere diese Kategorie. Danach kannst du dieses Segment als solches markieren. Bitte lese die Richtlinien, wenn du dir nicht sicher bist."
     },
