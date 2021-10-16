@@ -197,8 +197,9 @@ class PreviewBar {
         if (!this.onMobileYouTube) bar.style.opacity = Config.config.barTypes[fullCategoryName]?.opacity;
 
         bar.style.position = "absolute";
+        const duration = segment[1] - segment[0];
         if (segment[1] - segment[0] > 0) bar.style.width = this.timeToPercentage(segment[1] - segment[0]);
-        bar.style.left = this.timeToPercentage(segment[0]);
+        bar.style.left = this.timeToPercentage(Math.min(this.videoDuration - Math.max(0, duration), segment[0]));
 
         return bar;
     }
