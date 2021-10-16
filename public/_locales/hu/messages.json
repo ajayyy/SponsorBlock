@@ -574,9 +574,6 @@
     "downvoteDescription": {
         "message": "Helytelen/rossz időzítés"
     },
-    "incorrectCategory": {
-        "message": "Hibás kategória"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Ez a videó zeneként van kategorizálva. Biztos benne, hogy ennek van szponzora? Ha ez valójában egy \"nem-zene szegmens\", nyissa meg a bővítmény beállításait és kapcsolja be azt a kategóriát. Ezt követően elküldheti ezt a szegmenst \"nem-zene\"-ként szponzor helyett. Amennyiben nem érti, kérjük olvassa el az irányelveket."
     },
