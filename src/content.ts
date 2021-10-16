@@ -397,7 +397,8 @@ function durationChangeListener(): void {
 }
 
 function segmentDurationFilter(segment: SponsorTime): boolean {
-    return segment.videoDuration === 0 || !video?.duration || Math.abs(video.duration - segment.videoDuration) < 2;
+    return segment.videoDuration === 0 || !video?.duration 
+            || switchingVideos || Math.abs(video.duration - segment.videoDuration) < 2;
 }
 
 function cancelSponsorSchedule(): void {
