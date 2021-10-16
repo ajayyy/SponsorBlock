@@ -699,9 +699,6 @@
     "downvoteDescription": {
         "message": "Nesprávne/Zlé načasovanie"
     },
-    "incorrectCategory": {
-        "message": "Nesprávna kategória"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Toto video je kategorizované ako hudobné. Ste si istý, že obsahuje sponzora? Ak sa skutočne jedná o časť bez hudby, otvorte možnosti rozšírenia a povoľte túto kategóriu. Potom môžete tento segment uložiť ako kategóriu \"Bez hudby\" namiesto sponzora. Ak si neviete rady, tak si prosím prečítajte pravidlá."
     },
@@ -810,5 +807,8 @@
     },
     "LearnMore": {
         "message": "Zistiť viac"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Čas môžete rýchlo zmeniť kolieskom myši, ak je kurozor nad zadávacím políčkom. Pre jemné zmeny pritom držte kláves ctrl alebo shift."
     }
 }
