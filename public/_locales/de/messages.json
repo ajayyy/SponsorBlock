@@ -573,7 +573,7 @@
         "message": "Musikvideoteile ohne Musik"
     },
     "category_poi_highlight": {
-        "message": "Hervorheben"
+        "message": "Highlight"
     },
     "category_poi_highlight_description": {
         "message": "Der Teil des Videos, nach dem die meisten Leute suchen, ähnlich wie \"Video startet bei x\" Kommentare."
