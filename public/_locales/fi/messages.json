@@ -699,9 +699,6 @@
     "downvoteDescription": {
         "message": "Virheellinen/väärä aika"
     },
-    "incorrectCategory": {
-        "message": "Väärä kategoria"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Tämä video on luokiteltu musiikiksi. Oletko varma, että siinä on sponsori? Jos tämä on oikeasti \"Musiikiton segmentti\", avaa laajennuksen asetukset ja ota tämä kategoria käyttöön. Sitten voit lähettää tämän segmentin oikeassa kategoriassa. Lue säännöt, jos olet vielä hämilläsi."
     },

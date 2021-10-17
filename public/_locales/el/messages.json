@@ -139,9 +139,6 @@
     "chooseACategory": {
         "message": "Επιλέξτε μια κατηγορία"
     },
-    "incorrectCategory": {
-        "message": "Λάθος κατηγορία"
-    },
     "multipleSegments": {
         "message": "Πολλαπλά Τμήματα"
     },

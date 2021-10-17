@@ -699,9 +699,6 @@
     "downvoteDescription": {
         "message": "잘못된 타이밍입니다"
     },
-    "incorrectCategory": {
-        "message": "잘못된 카테고리입니다"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "이 영상은 음악 영상으로 분류됩니다. 정말로 스폰서가 있는 것이 확실한가요? 만약 음악 이외의 구간인 경우, 확장 옵션을 열어 이 카테고리를 활성화 하세요. 그리고, 이 구간을 스폰서 대신 음악이 아닌 구간으로 제출하세요. 헷갈릴 경우 가이드라인을 읽으세요."
     },

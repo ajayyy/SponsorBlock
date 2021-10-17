@@ -688,14 +688,11 @@
     "downvoteDescription": {
         "message": "Phân đoạn sai / không đúng"
     },
-    "incorrectCategory": {
-        "message": "Sai thể loại"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Video này đã được phân loại là âm nhạc. Bạn có chắc đây là quảng cáo nhà tài trợ không? Nếu đây là phân đoạn \"Không phải nhạc\", hãy mở Cài đặt tiện ích và bật lựa chọn đó. Rồi bạn có thể đăng tải phân đoạn lên dưới danh mục \"Không phải nhạc\" thay vì \"Quảng cáo nhà tài trợ\". Hãy đọc Hướng dẫn nếu bạn vẫn còn vướng mắc"
     },
     "multipleSegments": {
-        "message": "Nhiều đoạn"
+        "message": "Nhiều phân đoạn"
     },
     "guidelines": {
         "message": "Hướng dẫn"

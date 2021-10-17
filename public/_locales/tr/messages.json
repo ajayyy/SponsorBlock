@@ -690,9 +690,6 @@
     "downvoteDescription": {
         "message": "Hatalı/Yanlış Zaman"
     },
-    "incorrectCategory": {
-        "message": "Yanlış Kategori"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Bu video müzik olarak sınıflandırılmıştır. Bunun bir sponsor olduğundan emin misin? Bu aslında bir \"Müzik Dışı bölüm\" ise, uzantı seçeneklerini açın ve bu kategoriyi etkinleştirin. Ardından, bu kısmı sponsor yerine \"Müzik Olmayan\" olarak gönderebilirsiniz. Kafanız karıştıysa lütfen yönergeleri okuyun."
     },
