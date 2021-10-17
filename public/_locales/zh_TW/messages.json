@@ -632,9 +632,6 @@
     "downvoteDescription": {
         "message": "不正確/錯誤的時間"
     },
-    "incorrectCategory": {
-        "message": "錯誤的類別"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "這個影片被分類為音樂。您確定這有贊助內容嗎？如果這其實是\"非音樂片段\"的話，開啟擴充功能設定並啟用這個類別。接下來您即可提交這個片段為\"非音樂片段\"。如果您感到困惑，請閱讀方針"
     },

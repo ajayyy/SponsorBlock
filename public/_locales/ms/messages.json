@@ -554,9 +554,6 @@
     "downvoteDescription": {
         "message": "Pemasaan Tidak Betul / Salah"
     },
-    "incorrectCategory": {
-        "message": "Kategori Salah"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Video ini dikategorikan sebagai muzik. Adakah anda pasti ini mempunyai penaja? Sekiranya ini sebenarnya adalah \"Segmen Bukan Muzik\", buka pilihan peluasan dan aktifkan kategori ini. Kemudian, anda boleh menghantar segmen ini sebagai \"Bukan Muzik\" dan bukannya penaja. Sila baca panduan sekiranya anda keliru."
     },

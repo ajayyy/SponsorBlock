@@ -696,9 +696,6 @@
     "downvoteDescription": {
         "message": "Niepoprawne/Zły czas"
     },
-    "incorrectCategory": {
-        "message": "Zła kategoria"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Ten film jest skategoryzowany jako muzyka. Czy masz pewność, że jest tutaj sponsor? Jeśli w rzeczywistości jest to „Sekcja Niemuzyczna”, otwórz opcje rozszerzenia i włącz tę kategorię. Wtedy będziesz w stanie zamieścić ten segment jako „Bez Muzyki” zamiast sponsora. Przeczytaj proszę wytyczne, jeśli masz wątpliwości."
     },

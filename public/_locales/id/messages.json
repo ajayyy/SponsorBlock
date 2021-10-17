@@ -699,9 +699,6 @@
     "downvoteDescription": {
         "message": "Salah, Waktu Tidak Tepat"
     },
-    "incorrectCategory": {
-        "message": "Salah Kategori"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Video ini dikategorikan sebagai musik. Apakah anda yakin ini berisi sponsor? Jika ini ternyata adalah \"Segmen non-musik\", buka pengaturan ekstensi dan aktifkan kategorinya. Lalu, anda bisa mengirim segmen ini sebagai \"Non-musik\" bukannya sponsor. Harap membaca panduan jika anda kebingungan."
     },

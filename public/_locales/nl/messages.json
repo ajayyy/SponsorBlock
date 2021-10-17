@@ -700,7 +700,7 @@
         "message": "Verkeerde timing"
     },
     "incorrectCategory": {
-        "message": "Verkeerde categorie"
+        "message": "Categorie wijzigen"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Deze video is gecategoriseerd als muziek. Weet u zeker dat dit een sponsor heeft? Als dit eigenlijk een \"niet-muzieksegment\" is, open dan de extensie-opties en schakel deze categorie in. Vervolgens kunt u dit segment indienen als \"niet-muziek\" in plaats van als sponsor. Lees de richtlijnen als u in de war bent."
@@ -810,6 +810,21 @@
     },
     "LearnMore": {
         "message": "Meer informatie"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Doet een downvote en maakt een lokale kopie aan die u opnieuw kunt indienen"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Wikipagina van deze categorie openen."
+    },
+    "CopyAndDownvote": {
+        "message": "Kopiëren en downvote doen"
+    },
+    "ContinueVoting": {
+        "message": "Doorgaan met stemmen"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Dit is direct van toepassing op uw segmenten"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gebruik het muiswiel terwijl u over het invoerveld beweegt om de tijd snel aan te passen. Combinaties van de ctrl- of shift-toets kunnen worden gebruikt om de wijzigingen te verfijnen."
