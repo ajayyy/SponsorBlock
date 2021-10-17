@@ -83,13 +83,13 @@
         "message": "セグメント終了を記録"
     },
     "sponsorCancel": {
-        "message": "区間の作成を取り止める"
+        "message": "セグメントの作成を取り消す"
     },
     "noVideoID": {
         "message": "YouTube動画が見つかりませんでした。\nこれが正しくない場合は、タブを再読み込みしてください。"
     },
     "refreshSegments": {
-        "message": "区域を更新"
+        "message": "セグメントを更新"
     },
     "success": {
         "message": "成功しました!"
@@ -228,19 +228,19 @@
         "message": "セグメントがスキップされた後に通知を表示する"
     },
     "noticeVisibilityMode0": {
-        "message": "飛び越し通知（全体）"
+        "message": "標準サイズのスキップ通知"
     },
     "noticeVisibilityMode1": {
-        "message": "自動飛び越し通知（小）"
+        "message": "自動スキップ通知を小型化"
     },
     "noticeVisibilityMode2": {
-        "message": "すべての飛び越し通知（小）"
+        "message": "すべてのスキップ通知を小型化"
     },
     "noticeVisibilityMode3": {
-        "message": "表示の終了した自動飛び越し通知"
+        "message": "自動スキップ通知を透過"
     },
     "noticeVisibilityMode4": {
-        "message": "表示の終了した全ての飛び越し通知"
+        "message": "すべてのスキップ通知を透過"
     },
     "longDescription": {
         "message": "SponsorBlockはスポンサー、イントロ、アウトロ、チャンネル登録のお願いなど、YouTube動画の煩わしい部分をスキップします。SponsorBlockはYouTube動画のスポンサー付きセグメントなどの開始時間と終了時間を誰でも投稿できる、クラウドソースのブラウザ拡張機能です。一人がセグメントの情報を送信すると、この拡張機能を使用している他の全員が、スポンサー付きセグメントをスキップできるようになります。また、ミュージックビデオの音楽がない部分をスキップすることもできます。",
@@ -573,10 +573,10 @@
         "message": "音楽以外の部分"
     },
     "category_poi_highlight": {
-        "message": "強調表示"
+        "message": "ハイライト"
     },
     "category_poi_highlight_description": {
-        "message": "ほとんどの人が必要としている動画の箇所。「xx:xx 開始」というようなコメントと類似。"
+        "message": "多くの人が求めている動画の部分。「動画はXからスタート」のようなコメントです。"
     },
     "category_livestream_messages": {
         "message": "ライブ配信: 寄付/メッセージの読み上げ"
@@ -597,7 +597,7 @@
         "message": "無効"
     },
     "autoSkip_POI": {
-        "message": "動画の開始時刻まで飛び越し"
+        "message": "冒頭へ自動スキップ"
     },
     "manualSkip_POI": {
         "message": "動画を読み込んだ際に確認する"
