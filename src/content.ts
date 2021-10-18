@@ -676,12 +676,25 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         categories.push(categorySelection.name);
     }
 
+    const extraRequestData: Record<string, unknown> = {};
+    const windowHash = window.location.hash.substr(1);
+    if (windowHash) {
+        const params: Record<string, unknown> = windowHash.split('&').reduce((acc, param) => {
+            const [key, value] = param.split('=');
+            acc[key] = value;
+            return acc;
+        }, {});
+
+        if (params.requiredSegment) extraRequestData.requiredSegment = params.requiredSegment;
+    }
+
     // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
         actionTypes: Config.config.muteSegments ? [ActionType.Skip, ActionType.Mute] : [ActionType.Skip], 
-        userAgent: `${chrome.runtime.id}`
+        userAgent: `${chrome.runtime.id}`,
+        ...extraRequestData
     });
 
     if (response?.ok) {
