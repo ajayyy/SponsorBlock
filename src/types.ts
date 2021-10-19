@@ -2,7 +2,7 @@ import SubmissionNotice from "./render/SubmissionNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import ControlPanelComponent from "./components/ControlPanelComponent";
 import SkipNotice from "./render/SkipNotice";
-import ControlPanel from "./render/controlPanel";
+import ControlPanel from "./render/ControlPanel";
 
 export interface ContentContainer {
     (): {
