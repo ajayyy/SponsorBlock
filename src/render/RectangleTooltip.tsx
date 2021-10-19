@@ -13,6 +13,7 @@ export interface RectangleTooltipProps {
     maxHeight?: string,
     maxWidth?: string,
     backgroundColor?: string,
+    fontSize?: string,
     buttonFunction?: () => void;
 }
 
@@ -29,6 +30,7 @@ export class RectangleTooltip {
         props.maxWidth ??= "300px";
         props.backgroundColor ??= "rgba(28, 28, 28, 0.7)";
         this.text = props.text;
+        props.fontSize ??= "10px";
 
         this.container = document.createElement('div');
         props.htmlId ??= props.text;
@@ -51,7 +53,8 @@ export class RectangleTooltip {
                 left: props.leftOffset,
                 maxHeight: props.maxHeight,
                 maxWidth: props.maxWidth,
-                backgroundColor: props.backgroundColor}} 
+                backgroundColor: props.backgroundColor,
+                fontSize: props.fontSize}} 
                     className="sponsorBlockRectangleTooltip" >
                     <div>
                         <img className="sponsorSkipLogo sponsorSkipObject"
