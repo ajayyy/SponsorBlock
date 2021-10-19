@@ -87,14 +87,6 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
         });
     }
 
-    componentDidMount(): void {
-
-    }
-
-    componentWillUnmount(): void {
-        
-    }
-
     render(): React.ReactElement {
 
         return (
@@ -123,7 +115,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
     getSegments(): React.ReactElement[] {
 
-        let elements = [];
+        const elements = [];
         //for (const segment of segments) {
         for (let i = 0; i < this.state.segments.length; i++) {
             const segment = this.state.segments[i];
@@ -475,8 +467,9 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
     }
 
     setHide(i: number, value: SponsorHideType): void {
-        this.state.segments[i].hidden = value;
-        this.contentContainer().updateSegments([this.state.segments[i]]);
+        const segment = this.state.segments[i];
+        segment.hidden = value;
+        this.contentContainer().updateSegments([segment]);
         this.props.contentContainer().updatePreviewBar();
     }
 
@@ -486,13 +479,14 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
     }
 
     updateStateViaCC(segments: SponsorTime[]): void {
+        const stateSegments = this.state.segments;
         for (const segment of segments) {
-            const index = utils.getSponsorIndexFromUUID(this.state.segments, segment.UUID);
+            const index = utils.getSponsorIndexFromUUID(stateSegments, segment.UUID);
             // Sort out those segments that are not included in the skipNotice
-            if (index !== -1) this.state.segments[index] = segment;
+            if (index !== -1) stateSegments[index] = segment;
         }
         this.setState({
-            segments: this.state.segments
+            segments: stateSegments
         })
     }
 
@@ -511,7 +505,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
     }
 
     setWhitelist(shouldAdd: boolean): void {
-        let whitelist = Config.config.whitelistedChannels;
+        const whitelist = Config.config.whitelistedChannels;
         if (shouldAdd) {
             //whitelist.push(this.state.channelID);
         }

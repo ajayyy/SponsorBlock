@@ -31,10 +31,6 @@ class ControlPanel {
         );
     }
 
-    update(): void {
-
-    }
-
     close(): void {
         ReactDOM.unmountComponentAtNode(this.controlPanelElement);
 

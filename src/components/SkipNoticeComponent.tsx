@@ -753,13 +753,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     updateStateViaCC(segments: SponsorTime[]): void {
+        const stateSegments = this.state.segments;
         for (const segment of segments) {
             const index = utils.getSponsorIndexFromUUID(this.state.segments, segment.UUID);
             // Sort out those segments that are not included in the skipNotice
-            if (index !== -1) this.state.segments[index] = segment;
+            if (index !== -1) stateSegments[index] = segment;
         }
         this.setState({
-            segments: this.state.segments
+            segments: stateSegments
         })
     }
 }

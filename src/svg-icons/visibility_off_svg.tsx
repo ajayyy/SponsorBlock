@@ -1,5 +1,4 @@
 import * as React from "react";
-import Config from "../config"
 
 const visibilityOffSvg = ({
   fill = "#ffffff"
