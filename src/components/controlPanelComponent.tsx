@@ -7,8 +7,6 @@ import Utils from "../utils";
 const utils = new Utils();
 
 // Pictures
-//import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
-//import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import PencilSvg from "../svg-icons/pencil_svg";

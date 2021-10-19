@@ -10,7 +10,7 @@ import runThePopup from "./popup";
 import PreviewBar, {PreviewBarSegment} from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
-import ControlPanelComponent, { voteState } from "./components/ControlPanelComponent";
+import ControlPanelComponent from "./components/ControlPanelComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse } from "./messageTypes";
 import * as Chat from "./js-components/chat";

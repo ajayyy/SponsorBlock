@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 import Utils from "../utils";
 const utils = new Utils();
 
-import ControlPanelComponent from "../components/controlPanelComponent";
+import ControlPanelComponent from "../components/ControlPanelComponent";
 import { ContentContainer } from "../types";
 
 class ControlPanel {
