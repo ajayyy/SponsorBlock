@@ -1,5 +1,5 @@
 import Config from "./config";
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable, ActionType, ScheduledTime } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable, ActionType, ScheduledTime, voteStatus } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -10,6 +10,7 @@ import runThePopup from "./popup";
 import PreviewBar, {PreviewBarSegment} from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
+import ControlPanelComponent, { voteState } from "./components/ControlPanelComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse } from "./messageTypes";
 import * as Chat from "./js-components/chat";
@@ -17,6 +18,7 @@ import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { Tooltip } from "./render/Tooltip";
 import { getStartTimeFromUrl } from "./utils/urlParser";
+import ControlPanel from "./render/controlPanel";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -100,6 +102,8 @@ let sponsorTimesSubmitting: SponsorTime[] = [];
 //this is used to close the popup on YouTube when the other popup opens
 let popupInitialised = false;
 
+let controlPanel: ControlPanel = null;
+
 let submissionNotice: SubmissionNotice = null;
 
 // If there is an advert playing (or about to be played), this is true
@@ -113,6 +117,7 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     sponsorTimes,
     sponsorTimesSubmitting,
     skipNotices,
+    controlPanel,
     v: video,
     sponsorVideoID,
     reskipSponsorTime,
@@ -124,7 +129,8 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     previewTime,
     videoInfo,
     getRealCurrentTime: getRealCurrentTime,
-    lockedCategories
+    lockedCategories,
+    updateSegments
 });
 
 // value determining when to count segment as skipped and send telemetry to server (percent based)
@@ -1372,7 +1378,7 @@ async function createButtons(): Promise<void> {
     createButton("cancelSegment", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerCancelSegmentIconSponsorBlocker.svg");
     createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker.svg");
     createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
+    createButton("info", "openPopup", openControlPanel, "PlayerInfoIconSponsorBlocker.svg");
 
     const controlsContainer = getControls();
     if (Config.config.autoHideInfoButton && !onInvidious && controlsContainer 
@@ -1537,6 +1543,15 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
     }
 }
 
+function openControlPanel() {
+    if (controlPanel === null) {
+        controlPanel = new ControlPanel(skipNoticeContentContainer);
+    } else {
+        controlPanel.close();
+        controlPanel = null;
+    }
+}
+
 function openInfoMenu() {
     if (document.getElementById("sponsorBlockPopupContainer") != null) {
         //it's already added
@@ -1658,11 +1673,17 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) {
+function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent, controlPanel?: [ControlPanelComponent, number]) {
     if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
-        skipNotice.addVoteButtonInfo.bind(skipNotice)(chrome.i18n.getMessage("Loading"))
+        skipNotice.addVoteButtonInfo.bind(skipNotice)(chrome.i18n.getMessage("Loading"));
         skipNotice.setNoticeInfoMessage.bind(skipNotice)();
+    }
+
+    if (controlPanel !== null && controlPanel !== undefined && controlPanel[0] !== null && controlPanel[0] !== undefined) {
+        //add loading info
+        controlPanel[0].addVoteButtonInfo.bind(controlPanel[0])(controlPanel[1], chrome.i18n.getMessage("Loading"));
+        controlPanel[0].setNoticeInfoMessage.bind(controlPanel[0])();
     }
 
     const sponsorIndex = utils.getSponsorIndexFromUUID(sponsorTimes, UUID);
@@ -1692,8 +1713,8 @@ function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?:
         category: category
     }, function(response) {
         if (response != undefined) {
-            //see if it was a success or failure
-            if (skipNotice != null) {
+            // See if it was a success or failure
+            if (skipNotice != null && skipNotice !== undefined) {
                 if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
                     //success (treat rate limits as a success)
                     skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
@@ -1706,12 +1727,51 @@ function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?:
                     } else {
                         skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode, response.responseText))
                     }
-                    
                     skipNotice.resetVoteButtonInfo.bind(skipNotice)();
+                }
+            }
+            if (controlPanel !== null && controlPanel !== undefined && controlPanel[0] != null && controlPanel[0] !== undefined) {
+                if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
+                    //success (treat rate limits as a success)
+                    controlPanel[0].afterVote.bind(controlPanel[0])(controlPanel[1], utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
+                } else if (response.successType == -1) {
+                    if (response.statusCode === 403 && response.responseText.startsWith("Vote rejected due to a warning from a moderator.")) {
+                        // Does this work????
+                        controlPanel[0].setNoticeInfoMessageWithOnClick.bind(controlPanel[0])(controlPanel[1], () => {
+                            Chat.openWarningChat(response.responseText);
+                        }, chrome.i18n.getMessage("voteRejectedWarning"));
+                    } else {
+                        controlPanel[0].setNoticeInfoMessage.bind(controlPanel[0])(controlPanel[1], utils.getErrorMessage(response.statusCode, response.responseText))
+                    }
+                    controlPanel[0].resetVoteButtonInfo.bind(controlPanel[0])(controlPanel[1]);
                 }
             }
         }
     });
+}
+
+// This syncs segments between cc components.
+// Searches for the UUID in the components and updates them. This needs "updateStateViaCC" implemented in the component.
+function updateSegments(x: SponsorTime[]) {
+    // Find relevant skipNotices
+    const relevantNotices: SkipNoticeComponent[] = [];
+    for (const skipNotice of skipNotices) {
+        const skipNoticeComponent = skipNotice.skipNoticeRef.current;
+        for (const segment of skipNoticeComponent.state.segments) {
+            if (utils.getSponsorIndexFromUUID(x, segment.UUID) !== -1) {
+                relevantNotices.push(skipNotice.skipNoticeRef.current); // What am i doing????
+                break;
+            }
+        }
+    }
+    for (const skipNoticeComponent of relevantNotices) {
+        skipNoticeComponent.updateStateViaCC.bind(skipNoticeComponent)(x);
+    }
+    if (controlPanel) {
+        const ControlPanelComponent = controlPanel.controlPanelRef.current;
+        ControlPanelComponent.updateStateViaCC.bind(ControlPanelComponent)(x);
+    }
+    updatePreviewBar();
 }
 
 //Closes all notices that tell the user that a sponsor was just skipped

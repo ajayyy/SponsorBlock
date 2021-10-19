@@ -1,3 +1,11 @@
+:root {
+	--sb-main-bg-color: #222626;
+	--sb-main-fg-color: white;
+	--sb-gray-fg-color: #444848;
+	--sb-on-white-bg: black;
+	--sb-green-bg: #077B27;
+}
+
 #previewbar {
     overflow: visible;
     padding: 0;
@@ -573,5 +581,16 @@ input::-webkit-inner-spin-button {
     min-height: 75px;
     white-space: normal;
     line-height: 1.5em;
+}
+
+.controlPanelSegmentInfo {
+	color: var(--sb-main-fg-color);
+  	font-family: 'Source Sans Pro', sans-serif;
+  	font-size: 14px;
+  	align-items: center;
+  	width: 330px;
+  	padding: 10px;
+  	text-align: center;
+  	margin-bottom: 1px;
 }
 

@@ -1,15 +1,18 @@
 import SubmissionNotice from "./render/SubmissionNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
+import ControlPanelComponent from "./components/ControlPanelComponent";
 import SkipNotice from "./render/SkipNotice";
+import ControlPanel from "./render/controlPanel";
 
 export interface ContentContainer {
     (): {
-        vote: (type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) => void,
+        vote: (type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent, controlPanel?: [ControlPanelComponent, number]) => void,
         dontShowNoticeAgain: () => void,
         unskipSponsorTime: (segment: SponsorTime, unskipTime: number) => void,
         sponsorTimes: SponsorTime[],
         sponsorTimesSubmitting: SponsorTime[],
         skipNotices: SkipNotice[],
+        controlPanel: ControlPanel,
         v: HTMLVideoElement,
         sponsorVideoID,
         reskipSponsorTime: (segment: SponsorTime) => void,
@@ -21,7 +24,8 @@ export interface ContentContainer {
         previewTime: (time: number, unpause?: boolean) => void,
         videoInfo: VideoInfo,
         getRealCurrentTime: () => number,
-        lockedCategories: string[]
+        lockedCategories: string[],
+        updateSegments: (segments: SponsorTime[]) => void,
     }
 }
 
@@ -49,7 +53,14 @@ export interface CategorySelection {
 export enum SponsorHideType {
     Visible = undefined,
     Downvoted = 1,
-    MinimumDuration
+    MinimumDuration,
+    Local
+}
+
+export enum voteStatus {
+    None,
+    Upvoted,
+    Downvoted
 }
 
 export enum CategoryActionType {
@@ -75,12 +86,15 @@ export enum SponsorSourceType {
 export interface SponsorTime {
     segment: [number] | [number, number];
     UUID: SegmentUUID;
-    locked?: number;
-
-    category: Category;
+    
     actionType: ActionType;
+    category: Category;
 
+    locked?: number;
+    voted?: voteStatus;
+    copied?: boolean;
     hidden?: SponsorHideType;
+    
     source?: SponsorSourceType;
     videoDuration?: number;
 }
