@@ -207,7 +207,7 @@
         "message": "Ez a funkció követi, mely szegmenseket ugrotta át, hogy más felhasználók megtudhassák mennyit segítettek a bejelentéseik és a szavazatokkal együtt egy mértékegységként van használva, hogy ne kerülhessen spam az adatbázisba. A bővítmény küld egy üzenetet a szervernek, minden alkalommal, mikor átugrik egy szegmenst. Remélhetőleg nem sokan állítják át ezt a beállítást, hogy a számok pontosak maradhassanak. :)"
     },
     "enableViewTrackingInPrivate": {
-        "message": "Átugrás számlálásának engedélyezése inkognitó füleken"
+        "message": "Átugrások számlálásának engedélyezése privát/inkognitó füleken"
     },
     "enableQueryByHashPrefix": {
         "message": "Lekérdezés Hash előtaggal"
@@ -761,7 +761,7 @@
         "message": "Az átugrás működése"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "A videók szegmensei automatikusan átugrásra kerülnek, ha szerepelnek az adatbázisban. Megnyithatja a felugró ablakot a kiegészítő ikonjára kattintva, hogy megtekinthesse őket."
+        "message": "A videók szegmensei automatikusan átugrásra kerülnek, ha szerepelnek az adatbázisban. Megnyithatja a felugró ablakot a bővítmény ikonjára kattintva, hogy megtekinthesse őket."
     },
     "helpPageHowSkippingWorks2": {
         "message": "Ahányszor átugrik egy szegmenst, kapni fog egy értesítést. Ha rossznak tűnik az időzítés, szavazza le a leszavazás gombra kattintva! A felugró ablakban is szavazhat."
