@@ -379,8 +379,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 container.removeChild(container.firstChild);
             }
 
+            const isVip = Config.config.isVip;
             for (let i = 0; i < segmentTimes.length; i++) {
                 const UUID = segmentTimes[i].UUID;
+                const locked = segmentTimes[i].locked;
 
                 const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
@@ -430,7 +432,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton";
-                downvoteButton.src = chrome.runtime.getURL("icons/thumbs_down.svg");
+                downvoteButton.src = locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
                 //uuid button

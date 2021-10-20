@@ -700,7 +700,7 @@
         "message": "Tempo errado ou incorreto"
     },
     "incorrectCategory": {
-        "message": "Categoria errada"
+        "message": "Mudar Categoria"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Este vídeo é categorizado como música. Tem certeza de que isto tem um patrocinador? Se este é realmente um \"Segmento Não Musical\", abra as opções da extensão e habilite esta categoria. Assim você pode enviar este segmento como \"Não-Musical\" ao invés de patrocinador. Por favor leia as diretrizes se estiver confuso."
@@ -810,5 +810,20 @@
     },
     "LearnMore": {
         "message": "Saiba mais"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Dá voto negativo e cria uma cópia local para você reenviar"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Abrir a wiki dessa categoria."
+    },
+    "CopyAndDownvote": {
+        "message": "Copiar e dar voto negativo"
+    },
+    "ContinueVoting": {
+        "message": "Continuar Votando"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Isto irá aplicar instantaneamente seus segmentos"
     }
 }

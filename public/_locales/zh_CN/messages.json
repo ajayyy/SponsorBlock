@@ -566,9 +566,6 @@
     "downvoteDescription": {
         "message": "不正确/错误的时间"
     },
-    "incorrectCategory": {
-        "message": "错误的类别"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "此视频的分类为音乐。 您确定其中包含赞助商广告吗？如果这是“非音乐片段”，请打开扩展选项并启用此类别。 之后，您可以以“非音乐”而不是赞助商广告类别提交此片段。如果您不太明白，请阅读指南。"
     },

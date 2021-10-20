@@ -309,9 +309,6 @@
     "downvoteDescription": {
         "message": "Neispravno/krivo vrijeme"
     },
-    "incorrectCategory": {
-        "message": "Kriva kategorija"
-    },
     "nonMusicCategoryOnMusic": {
         "message": "Ovaj je video kategoriziran kao glazba. Je li stvarno ima sponzora? Ako je ovo zapravo „Ne-glazbeni segment”, otvori opcije proširenja i aktiviraj ovu kategoriju. Zatim ovaj segment možeš posalti kao „Ne-glazbeni” umjesto sponzora. Pročitaj smjernice ako nešto nije jasno."
     },

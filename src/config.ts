@@ -3,7 +3,9 @@ import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, P
 
 interface SBConfig {
     userID: string,
-    /** Contains unsubmitted segments that the user has created. */
+    isVip: boolean,
+    lastIsVipUpdate: number,
+    /* Contains unsubmitted segments that the user has created. */
     segmentTimes: SBMap<string, SponsorTime[]>,
     defaultCategory: Category,
     whitelistedChannels: string[],
@@ -43,7 +45,13 @@ interface SBConfig {
     showDonationLink: boolean,
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
-    highlightCategoryUpdate: boolean
+    highlightCategoryUpdate: boolean,
+    colorPalette: {
+        red: string,
+        white: string,
+        locked: string
+    },
+    scrollToEditTimeUpdate: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -151,6 +159,8 @@ const Config: SBObject = {
     configListeners: [],
     defaults: {
         userID: null,
+        isVip: false,
+        lastIsVipUpdate: 0,
         segmentTimes: new SBMap("segmentTimes"),
         defaultCategory: "chooseACategory" as Category,
         whitelistedChannels: [],
@@ -191,11 +201,18 @@ const Config: SBObject = {
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
         highlightCategoryUpdate: false, // TODO: Remove this once update is done
+        scrollToEditTimeUpdate: false, // false means the tooltip will be shown
 
         categorySelections: [{
             name: "sponsor" as Category,
             option: CategorySkipOption.AutoSkip
         }],
+
+        colorPalette: {
+            red: "#780303",
+            white: "#ffffff",
+            locked: "#ffc83d"
+        },
 
         // Preview bar
         barTypes: {

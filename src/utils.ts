@@ -539,5 +539,4 @@ export default class Utils {
 
         return hashHex;
     }
-
 }
