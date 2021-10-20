@@ -716,25 +716,26 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
         const oldSegments = sponsorTimes || [];
         sponsorTimes = recievedSegments;
-
-        // Hide all submissions smaller than the minimum duration
+        
+        // Hide all submissions smaller than the minimum duration, unless they were unhidden manually
         if (Config.config.minDuration !== 0) {
             for (let i = 0; i < sponsorTimes.length; i++) {
                 if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] < Config.config.minDuration
-                        && getCategoryActionType(sponsorTimes[i].category) !== CategoryActionType.POI) {
+                        && getCategoryActionType(sponsorTimes[i].category) !== CategoryActionType.POI
+                        && sponsorTimes[i].hidden !== SponsorHideType.Visible) { // If the minDuration didnt change this will only be false for manually unhidden segments
                     sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
                 }
             }
         }
 
-        if (keepOldSubmissions) {
-            for (const segment of oldSegments) {
-                const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
-                if (otherSegment) {
-                    // If they downvoted it, or changed the category, keep it
-                    otherSegment.hidden = segment.hidden;
-                    otherSegment.category = segment.category;
-                }
+        // Old locally set properties should not be overwritten. Also initializes recievedSegments local properties
+        for (const oldSegment of oldSegments) {
+            const newSegment = sponsorTimes.find((newSegment) => oldSegment.UUID === newSegment.UUID);
+            if (newSegment) {
+                if (keepOldSubmissions) newSegment.category = oldSegment.category;
+                newSegment.hidden = oldSegment.hidden === SponsorHideType.Local || oldSegment.hidden === SponsorHideType.Downvoted ? oldSegment.hidden : SponsorHideType.Visible;
+                newSegment.copied = oldSegment.copied === true ? oldSegment.copied : false;
+                newSegment.voted = oldSegment.voted === voteStatus.Downvoted || oldSegment.voted === voteStatus.Upvoted ? oldSegment.voted : voteStatus.None;
             }
         }
 

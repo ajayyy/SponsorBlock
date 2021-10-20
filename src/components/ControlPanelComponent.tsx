@@ -66,12 +66,6 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
         if (length > 1) {
             segments.sort((a, b) => a.segment[0] - b.segment[0]);
         }
-        for (const segment of segments) {
-            segment.locked ||= 0;
-            segment.voted ||= voteStatus.None;
-            segment.copied ||= false;
-            segment.hidden = SponsorHideType.Visible;
-        }
         this.categoryOptionRef = new Array(length).fill(React.createRef());
         this.channelID = this.contentContainer().channelIDInfo.id;
         // Set State
@@ -118,14 +112,13 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
     refreshSegments(): void {
         this.contentContainer().sponsorsLookup(this.contentContainer().sponsorVideoID, false).then( () => {
-            // If it is hidden locally, keep it that way.
-            const segments = this.contentContainer().sponsorTimes || [];
-            for (const segment of segments) {
-                const index = utils.getSponsorIndexFromUUID(this.state.segments, segment.UUID);
-                segment.hidden = this.state.segments[index].hidden === SponsorHideType.Local ? SponsorHideType.Local : segment.hidden;
+            
+            const newSegments = this.contentContainer().sponsorTimes || [];
+            if (length > 1) {
+                newSegments.sort((a, b) => a.segment[0] - b.segment[0]);
             }
             this.setState({
-                segments: segments
+                segments: newSegments
             })
         });
     }
@@ -133,7 +126,6 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
     getSegments(): React.ReactElement[] {
 
         const elements = [];
-        //for (const segment of segments) {
         for (let i = 0; i < this.state.segments.length; i++) {
             const segment = this.state.segments[i];
             const UUID = segment.UUID;
@@ -161,7 +153,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                             style={{cursor: "pointer"}}
                             onClick={() => this.switchSegmentButtonDisplay(i)}>
                         <span id={this.idPrefix + "segmentCircle" + UUID}
-                                className="CPdot CPsponsorTimesCategoryColorCircle"
+                                className="dot sponsorTimesCategoryColorCircle"
                                 style={{backgroundColor: Config.config.barTypes[segment.category]?.color}}>
                         </span>
                         {utils.shortCategoryName(category) + extraInfo}
@@ -312,7 +304,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                             </button>
 
                                             {/* Copy UUID */}
-                                            <div id={this.idPrefix + "segmentCopyUUID" + UUID}
+                                            <button id={this.idPrefix + "segmentCopyUUID" + UUID}
                                                     key={11 + UUID}
                                                     className=""
                                                     style={{
@@ -320,7 +312,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                                     title={chrome.i18n.getMessage("copyUUIDButtonInfo")}
                                                     onClick={() => navigator.clipboard.writeText(UUID)}>
                                                 <ClipboardSvg fill={this.unselectedColor} />
-                                            </div>
+                                            </button>
                                         </td>
                                     </tr>
                                     :
