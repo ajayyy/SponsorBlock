@@ -192,7 +192,8 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "refreshSegments":
             sponsorsLookup(sponsorVideoID, false).then(() => sendResponse({
                 found: sponsorDataFound,
-                sponsorTimes: sponsorTimes
+                sponsorTimes: sponsorTimes,
+                onMobileYouTube
             }));
 
             return true;
