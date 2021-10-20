@@ -39,7 +39,7 @@ export interface SkipNoticeProps {
 export interface SkipNoticeState {
     noticeTitle?: string;
 
-    message?: string;
+    messages?: string[];
     messageOnClick?: (event: React.MouseEvent) => unknown;
 
     countdownTime?: number;
@@ -125,7 +125,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             segments: segments,
 
             noticeTitle,
-            message: null,
+            messages: [],
             messageOnClick: null,
 
             //the countdown until this notice closes
@@ -190,7 +190,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 smaller={this.state.smaller}
                 limitWidth={true}
                 firstColumn={firstColumn}
-                bottomRow={[this.getMessageBox(), ...this.getBottomRow() ]}
+                bottomRow={[...this.getMessageBox(), ...this.getBottomRow() ]}
                 onMouseEnter={() => this.onMouseEnter() } >
                     
                 {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
@@ -258,7 +258,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             title={"Continue Voting"}
                             onClick={() => this.setState({
                                 thanksForVotingText: null,
-                                message: null
+                                messages: []
                             })}>
                             {chrome.i18n.getMessage("ContinueVoting")}
                         </button>
@@ -405,25 +405,30 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    getMessageBox(): JSX.Element {
-        if (this.state.message === null) {
+    getMessageBox(): JSX.Element[] {
+        if (this.state.messages === null) {
             // Add a spacer if there is no text
-            return 
+            return [
                 <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
                     className="sponsorBlockSpacer"
                     key={"messageBoxSpacer"}>
-                </tr>;
+                </tr>];
         } else {
-            return 
-            <tr key={"messageBox"}>
-                <td key={"messageBox"}>
-                    <NoticeTextSelectionComponent idSuffix={this.idSuffix}
-                        text={this.state.message}
-                        onClick={this.state.messageOnClick}
-                        key={"messageBox"}>
-                    </NoticeTextSelectionComponent>
-                </td>
-            </tr>
+            const elements = [];
+            this.state.messages.forEach(message =>
+                elements.push(
+                    <tr key={"messageBox"}>
+                        <td key={"messageBox"}>
+                            <NoticeTextSelectionComponent idSuffix={this.idSuffix}
+                                text={message}
+                                onClick={this.state.messageOnClick}
+                                key={"messageBox"}>
+                            </NoticeTextSelectionComponent>
+                        </td>
+                    </tr>
+                )
+            );
+            return elements;
         }
     }
 
@@ -496,7 +501,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     downvote(index: number): void {
         if (this.state.segments.length === 1) this.resetStateToStart();
-
         this.contentContainer().vote(0, this.state.segments[index].UUID, undefined, this);
     }
 
@@ -649,16 +653,16 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => unknown, message: string): void {
+    setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => unknown, ...messages: string[]): void {
         this.setState({
-            message,
+            messages,
             messageOnClick: (event) => onClick(event)
         });
     }
 
-    setNoticeInfoMessage(message: string): void {
+    setNoticeInfoMessage(...messages: string[]): void {
         this.setState({
-            message
+           messages
         });
     }
     
@@ -702,7 +706,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             editing: editing,
             choosingCategory: choosingCategory,
             thanksForVotingText: null,
-            message: null
+            messages: []
         });
     }
 
@@ -759,8 +763,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             // Sort out those segments that are not included in the skipNotice
             if (index !== -1) stateSegments[index] = segment;
         }
+        console.log(getSkippingText(stateSegments, this.props.autoSkip)); // This shows that the title is correct
         this.setState({
-            segments: stateSegments
+            segments: stateSegments,
+            noticeTitle: getSkippingText(stateSegments, this.props.autoSkip) // Why does this not update the title?
         })
     }
 }

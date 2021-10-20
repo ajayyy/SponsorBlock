@@ -14,6 +14,7 @@ import VisibilitySvg from "../svg-icons/visibility_svg";
 import VisibilityOffSvg from "../svg-icons/visibility_off_svg";
 import UndoSvg from "../svg-icons/undo_svg";
 import ClipboardSvg from "../svg-icons/clipboard_svg";
+import RefreshSvg from "../svg-icons/refresh_svg";
 
 
 export enum voteState {
@@ -41,13 +42,14 @@ export interface ControlPanelState {
     messageOnClick?: ((event: React.MouseEvent) => unknown)[];
 
     isVip: boolean;
-    //channelID: string;
+    isWhitelisted: boolean;
 }
 
 class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPanelState> {
     contentContainer: ContentContainer;
     categoryOptionRef: React.RefObject<HTMLSelectElement>[]; // Category selectors when changing category
     idPrefix: string;
+    channelID: string;
 
     selectedColor: string;
     unselectedColor: string;
@@ -71,6 +73,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
             segment.hidden = SponsorHideType.Visible;
         }
         this.categoryOptionRef = new Array(length).fill(React.createRef());
+        this.channelID = this.contentContainer().channelIDInfo.id;
         // Set State
         this.state = ({
             segments: segments,
@@ -80,8 +83,8 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
             thanksForVotingText: new Array(length).fill(null),
             message: new Array(length).fill(null),
             messageOnClick: new Array(length).fill(null),
-            isVip: Config.config.isVip
-            //channelID: this.contentContainer().videoInfo?.videoDetails?.channelId
+            isVip: Config.config.isVip,
+            isWhitelisted: Config.config.whitelistedChannels.includes(this.channelID)
         });
     }
 
@@ -89,26 +92,44 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
         return (
             <div id={this.idPrefix}
-                className="sponsorBlockPageBody preload">
+                    style={{
+                        colorScheme: "dark"}}
+                    className="">
                 <div id={this.idPrefix + "CloseDiv"}></div>
                 <div id={this.idPrefix + "videoInfoDiv"}
-                        className="bottomSpace">
-                    <div id={this.idPrefix + "refreshSegmentsButtonDiv"}>
-                        <button id={this.idPrefix + "refreshSegmentsButton"}
-                                className="sbSlimButton"
-                                title={chrome.i18n.getMessage("refreshSegments")}>
-                            <img id={this.idPrefix + "refreshSegments"} src={chrome.runtime.getURL("/icons/refresh.svg")}/>
-                        </button>
-                    </div>
-                    <div id={this.idPrefix + "segmentInteractionContainerDiv"}>
-                        {this.getSegments()}
-                    </div>
+                        className="">
+                    {this.getRefreshSegments()}
+                    {this.getSegments()}
                 </div>
-                <div id={this.idPrefix + "WhitelistDiv"}>
-                        {this.getWhitelistDiv()}
-                </div>
+                {this.getWhitelistDiv()}
             </div>
         );
+    }
+
+    getRefreshSegments(): React.ReactElement {
+
+        return (
+            <div id={this.idPrefix + "refreshSegmentsButton"}
+                    style={{}}
+                    title={chrome.i18n.getMessage("refreshSegments")}
+                    onClick={() => this.refreshSegments()}>
+                <RefreshSvg fill={this.unselectedColor} />
+            </div>
+        );
+    }
+
+    refreshSegments(): void {
+        this.contentContainer().sponsorsLookup(this.contentContainer().sponsorVideoID, false).then( () => {
+            // If it is hidden locally, keep it that way.
+            const segments = this.contentContainer().sponsorTimes || [];
+            for (const segment of segments) {
+                const index = utils.getSponsorIndexFromUUID(this.state.segments, segment.UUID);
+                segment.hidden = this.state.segments[index].hidden === SponsorHideType.Local ? SponsorHideType.Local : segment.hidden;
+            }
+            this.setState({
+                segments: segments
+            })
+        });
     }
 
     getSegments(): React.ReactElement[] {
@@ -131,17 +152,24 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
             elements.push(
                 <div id={this.idPrefix + "segmentInteractionContainer" + UUID}
-                        className="votingButtons">
+                        style={{color: "#ffffff",
+                        margin: "5px",
+                        fontSize: "14px",
+                        display: "block",
+                        textAlign: "center"}}
+                        className="">
                     <div id={this.idPrefix + "segmentInfo" + UUID} //Also opens the vote buttons
-                            className="segmentTimeButton popupElement"
+                            className=""
+                            style={{cursor: "pointer"}}
                             onClick={() => this.switchSegmentButtonDisplay(i)}>
                         <span id={this.idPrefix + "segmentCircle" + UUID}
-                                className="dot sponsorTimesCategoryColorCircle"
+                                className="CPdot CPsponsorTimesCategoryColorCircle"
                                 style={{backgroundColor: Config.config.barTypes[segment.category]?.color}}>
                         </span>
                         {utils.shortCategoryName(category) + extraInfo}
                         <div id={this.idPrefix + "segmentStateDescription" + UUID}
-                                style={{margin: "5px"}}>
+                                className=""
+                                style={{ }}>
                                 {utils.getFormattedTime(segment.segment[0], true) +
                             (getCategoryActionType(category) !== CategoryActionType.POI
                                 ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment.segment[1], true)
@@ -151,19 +179,27 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                     {this.state.segmentButtonsVisible[i] ?
                         <table id={this.idPrefix + "Table" + UUID}
                                 key={0 + UUID}
-                                style={{}}>
+                                className=""
+                                style={{
+                                    marginLeft: "auto",
+                                    marginRight: "auto"}}>
                             <tbody id={this.idPrefix + "TableBody" + UUID}>
                                 <tr id={this.idPrefix + "1stTableRow" + UUID}>
                                     {!this.state.thanksForVotingText[i] ?
                                         <td id={this.idPrefix + "segmentButtons" + UUID}
-                                                className="sponsorTimesVoteButtonsContainer"
-                                                style={{alignItems: "center"}}>
+                                                className=""
+                                                style={{
+                                                    alignItems: "center",
+                                                    alignSelf: "center"}}>
 
                                             {/* Upvote Button */}
                                             <div id={this.idPrefix + "segmentUpvote" + UUID}
                                                     key={1 + UUID}
-                                                    className="segmentTimeButton"
-                                                    style={{marginRight: "0px"}}
+                                                    className=""
+                                                    style={{
+                                                        marginRight: "5px",
+                                                        display: "inline-block",
+                                                        cursor: "pointer"}}
                                                     title={chrome.i18n.getMessage("upvoteButtonInfo")}
                                                     onClick={() => this.upvote(i)}>
                                                 <ThumbsUpSvg fill={this.unselectedColor} />
@@ -172,7 +208,12 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                             {/* Downvote Button */}
                                             <div id={this.idPrefix + "segmentDownvote" + UUID}
                                                     key={2 + UUID}
-                                                    className="segmentTimeButton"
+                                                    className=""
+                                                    style={{
+                                                        marginRight: "5px",
+                                                        marginLeft: "5px",
+                                                        display: "inline-block",
+                                                        cursor: "pointer"}}
                                                     title={chrome.i18n.getMessage("reportButtonInfo")}
                                                     onClick={() => this.downvote(i)}>
                                                 <ThumbsDownSvg fill={this.state.isVip && this.state.segments[i].locked === 1 ? this.lockedColor : this.unselectedColor} />
@@ -182,7 +223,12 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                                 /* Undo Button */
                                                 <div id={this.idPrefix + "segmentUndo" + UUID}
                                                         key={10 + UUID}
-                                                        className="segmentTimeButton"
+                                                        className=""
+                                                        style={{
+                                                            marginRight: "5px",
+                                                            marginLeft: "5px",
+                                                            display: "inline-block",
+                                                            cursor: "pointer"}}
                                                         title={chrome.i18n.getMessage("undoButtonInfo")}
                                                         onClick={() => this.undo(i)}>
                                                     <UndoSvg fill={this.unselectedColor}/>
@@ -194,7 +240,12 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                             {/* Edit Button */}
                                             <div id={this.idPrefix + "segmentEdit" + UUID}
                                                     key={3 + UUID}
-                                                    className="segmentTimeButton"
+                                                    className=""
+                                                    style={{
+                                                        marginRight: "5px",
+                                                        marginLeft: "5px",
+                                                        display: "inline-block",
+                                                        cursor: "pointer"}}
                                                     onClick={() => this.editButtonOnClick(i)}>
                                                 <PencilSvg fill={(this.state.editing[i] === true || this.state.choosingCategory[i] === true) ? this.selectedColor : this.unselectedColor} />
                                             </div>
@@ -202,7 +253,12 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                             {/* Hide */}
                                             <div id={this.idPrefix + "segmentHide" + UUID}
                                                     key={4 + UUID}
-                                                    className="segmentTimeButton"
+                                                    className=""
+                                                    style={{
+                                                        marginRight: "5px",
+                                                        marginLeft: "5px",
+                                                        display: "inline-block",
+                                                        cursor: "pointer"}}
                                                     title={this.state.segments[i].hidden === SponsorHideType.Visible ? chrome.i18n.getMessage("hideButtonInfo") : chrome.i18n.getMessage("unhideButtonInfo")}
                                                     onClick={() => this.toggleHide(i)}>
                                                 {this.state.segments[i].hidden === SponsorHideType.Visible ? <VisibilitySvg fill={this.unselectedColor}/> : <VisibilityOffSvg fill={this.unselectedColor}/>}
@@ -218,7 +274,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
                                             {/* Continue Voting Button */}
                                             <button id={"sponsorTimesContinueVotingContainer" + UUID}
-                                                    className="sponsorSkipObject sponsorSkipNoticeButton"
+                                                    className=""
                                                     title={"Continue Voting"}
                                                     onClick={() => this.setState({
                                                         thanksForVotingText: this.setArrayElement(i, this.state.thanksForVotingText, null),
@@ -235,18 +291,24 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                         <td>
                                             {/* Copy Segment */}
                                             <button id={this.idPrefix + "DownvoteCopyButton" + UUID}
-                                                    className="sponsorSkipObject sponsorSkipNoticeButton"
+                                                    className=""
                                                     title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
-                                                    style={{color: this.unselectedColor}}
+                                                    style={{
+                                                        color: this.unselectedColor,
+                                                        display: "inline-block",
+                                                        bottom: "5px"}}
                                                     onClick={() => this.copyDownvote(i)}>
                                                 {chrome.i18n.getMessage("CopyAndDownvote")}
                                             </button>
 
                                             {/* Category vote opener */}
                                             <button id={this.idPrefix + "ChangeCategoryButton" + UUID}
-                                                    className="sponsorSkipObject sponsorSkipNoticeButton"
+                                                    className=""
                                                     title={chrome.i18n.getMessage("ChangeCategoryTooltip")}
-                                                    style={{color: (this.state.choosingCategory[i]) ? this.selectedColor : this.unselectedColor}}
+                                                    style={{
+                                                        color: (this.state.choosingCategory[i]) ? this.selectedColor : this.unselectedColor,
+                                                        display: "inline-block",
+                                                        bottom: "20px"}}
                                                     onClick={() => this.categoryVoteOpenerOnClick(i)}>
                                                 {chrome.i18n.getMessage("incorrectCategory")}
                                             </button>
@@ -254,7 +316,9 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                             {/* Copy UUID */}
                                             <div id={this.idPrefix + "segmentCopyUUID" + UUID}
                                                     key={11 + UUID}
-                                                    className="segmentTimeButton"
+                                                    className=""
+                                                    style={{
+                                                        display: "inline-block"}}
                                                     title={chrome.i18n.getMessage("copyUUIDButtonInfo")}
                                                     onClick={() => navigator.clipboard.writeText(UUID)}>
                                                 <ClipboardSvg fill={this.unselectedColor} />
@@ -270,7 +334,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                         <td>
                                             {/* Category Selector */}
                                             <select id={this.idPrefix + "sponsorTimeCategorySelector" + UUID}
-                                                    className="sponsorTimeCategories sponsorTimeEditSelector"
+                                                    className=""
                                                     defaultValue={category}
                                                     ref={this.categoryOptionRef[i]}>
                                                 {this.getCategoryOptions(UUID)}
@@ -278,7 +342,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
                                             {/* Submit Button */}
                                             <button id={this.idPrefix + "CategoryChangeButton" + UUID}
-                                                    className="sponsorSkipObject sponsorSkipNoticeButton"
+                                                    className=""
                                                     onClick={() => this.categoryVote(i, this.categoryOptionRef[i].current.value as Category)}>
                                                 {chrome.i18n.getMessage("submit")}
                                             </button>
@@ -302,24 +366,27 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
     switchSegmentButtonDisplay(i: number): void {
         // Opens the menu to all buttons
         this.setState({
-            segmentButtonsVisible: this.setArrayElement(i, this.state.segmentButtonsVisible, !this.state.segmentButtonsVisible[i]),
-            editing: this.setArrayElement(i, this.state.editing, false),
+            segmentButtonsVisible: this.setArrayElement(i, this.state.segmentButtonsVisible, !this.state.segmentButtonsVisible[i])
         });
+        this.closeSubmenus(i);
         this.resetVoteButtonInfo(i);
     }
 
     upvote(i: number): void {
         // Upvote
+        this.closeSubmenus(i);
         this.contentContainer().vote(1, this.state.segments[i].UUID, undefined, undefined, [this, i]);
     }
 
     downvote(i: number): void {
         // Downvote
+        this.closeSubmenus(i);
         this.contentContainer().vote(0, this.state.segments[i].UUID, undefined, undefined, [this, i]);
     }
 
     undo(i: number): void {
         // Undo Vote; type is 20
+        this.closeSubmenus(i);
         this.contentContainer().vote(20, this.state.segments[i].UUID, undefined, undefined, [this, i]);
     }
 
@@ -328,7 +395,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
         const sponsorVideoID = this.props.contentContainer().sponsorVideoID;
         const sponsorTimesSubmitting : SponsorTime = {
             segment: this.state.segments[i].segment,
-            UUID: null,
+            UUID: this.state.segments[i].UUID,
             category: this.state.segments[i].category,
             actionType: this.state.segments[i].actionType,
             source: SponsorSourceType.Local
@@ -346,16 +413,14 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
         segment.copied = true;
         this.contentContainer().updateSegments([segment]);
 
-        // Close editing row
-        this.setState({
-            editing: this.setArrayElement(i, this.state.editing, false)
-        })
+        this.closeSubmenus(i);
 
         this.contentContainer().vote(0, this.state.segments[i].UUID, undefined, undefined, [this, i]);
     }
 
     categoryVote(i: number, category: Category): void {
         // Category vote
+        this.closeSubmenus(i);
         this.contentContainer().vote(undefined, this.state.segments[i].UUID, this.categoryOptionRef[i].current.value as Category, undefined, [this, i]);
     }
 
@@ -412,11 +477,12 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
             } else if (category) {
                 segment.category = category;
             } else if (type === 1) {
-                segment.hidden = SponsorHideType.Visible;
+                segment.hidden = segment.hidden === SponsorHideType.Local ? SponsorHideType.Local : SponsorHideType.Visible;
             }
             this.props.contentContainer().updateSegments([segment]);
             this.props.contentContainer().updatePreviewBar();
         }
+        this.setState
     }
 
     getCategoryOptions(UUID: SegmentUUID): React.ReactElement[] {
@@ -464,6 +530,13 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
         });
     }
 
+    closeSubmenus(i: number): void {
+        this.setState({
+            editing: this.setArrayElement(i, this.state.editing, false),
+            choosingCategory: this.setArrayElement(i, this.state.choosingCategory, false)
+        });
+    }
+
     setHide(i: number, value: SponsorHideType): void {
         const segment = this.state.segments[i];
         segment.hidden = value;
@@ -491,12 +564,12 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
     
 
     getWhitelistDiv(): React.ReactElement {
-        const isWhitelisted = true;//Config.config.whitelistedChannels.includes(this.state.channelID);
         return (
             <div id={this.idPrefix + "Whitelist"}>
                 <button id={this.idPrefix + "WhitelistToggleButton"}
-                    onClick={() => this.setWhitelist(!isWhitelisted)}>
-                    {isWhitelisted ? chrome.i18n.getMessage("whitelistChannel") : chrome.i18n.getMessage("removeFromWhitelist")}
+                        key={"whitelistDiv"}
+                        onClick={() => {this.setWhitelist(!this.state.isWhitelisted)}}>
+                    {this.state.isWhitelisted ? chrome.i18n.getMessage("whitelistChannel") : chrome.i18n.getMessage("removeFromWhitelist")}
                 </button>
             </div>
         );
@@ -504,16 +577,22 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
     setWhitelist(shouldAdd: boolean): void {
         const whitelist = Config.config.whitelistedChannels;
+        const index = whitelist.indexOf(this.channelID);
         if (shouldAdd) {
-            //whitelist.push(this.state.channelID);
+            if (index === -1) {
+                whitelist.push(this.channelID);
+            }
         }
         else {
-            const index = 0;//whitelist.indexOf(this.state.channelID, 0);
             if (index > -1) {
                 whitelist.splice(index, 1);
             }
         }
-        Config.config.whitelistedChannels = whitelist;
+        console.log(whitelist);
+        Config.config.whitelistedChannels = whitelist
+        this.setState({
+            isWhitelisted: Config.config.whitelistedChannels.includes(this.channelID)
+        })
     }
 }
 

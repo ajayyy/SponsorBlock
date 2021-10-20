@@ -26,6 +26,8 @@ export interface ContentContainer {
         getRealCurrentTime: () => number,
         lockedCategories: string[],
         updateSegments: (segments: SponsorTime[]) => void,
+        channelIDInfo: ChannelIDInfo,
+        sponsorsLookup: (id: string, keepOldSubmissions) => Promise<void>
     }
 }
 
