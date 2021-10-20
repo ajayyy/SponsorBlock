@@ -92,8 +92,6 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
         return (
             <div id={this.idPrefix}
-                    style={{
-                        colorScheme: "dark"}}
                     className="">
                 <div id={this.idPrefix + "CloseDiv"}></div>
                 <div id={this.idPrefix + "videoInfoDiv"}
