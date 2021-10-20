@@ -31,9 +31,10 @@ interface IsInfoFoundMessage {
 
 export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage);
 
-interface IsInfoFoundMessageResponse {
+export interface IsInfoFoundMessageResponse {
     found: boolean;
     sponsorTimes: SponsorTime[];
+    onMobileYouTube: boolean;
 }
 
 interface GetVideoIdResponse {

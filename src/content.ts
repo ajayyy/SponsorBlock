@@ -151,7 +151,8 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             //send the sponsor times along with if it's found
             sendResponse({
                 found: sponsorDataFound,
-                sponsorTimes: sponsorTimes
+                sponsorTimes: sponsorTimes,
+                onMobileYouTube
             });
 
             if (!request.updating && popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
