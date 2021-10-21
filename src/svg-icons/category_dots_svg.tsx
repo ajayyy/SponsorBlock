@@ -3,21 +3,21 @@ import Config from "../config";
 import * as CompileConfig from "../../config.json";
 
 const categoryDotsSvg = ({
-  opacity = "0",
-  selectFill = "#ffffff"
-  }): JSX.Element => {
-    const radius = 8;
-    const dotSize = 2;
-    return (
-        <svg 
+    opacity = "0",
+    selectFill = "#ffffff"
+    }): JSX.Element => {
+        const radius = 8;
+        const dotSize = 2;
+        return (
+            <svg
             className="categoryDotsTurn"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24">
-            {...getcircles(radius, dotSize)}
-        </svg>
-    );
+                {...getcircles(radius, dotSize)}
+            </svg>
+        );
 };
 
 function getcircles(radius: number, dotSize: number): JSX.Element[] {
@@ -39,15 +39,15 @@ function getcircles(radius: number, dotSize: number): JSX.Element[] {
     for (let i = 0; i < colors.length; i++) {
         elements[i] = (
             <circle
-                key={i}
-                transform={`rotate(${i * fraction}, 12, 12)`}
-                fill={colors[i]}
-                cx={(12 + radius)}
-                cy={radius}
-                r={dotSize}/>
+            key={i}
+            transform={`rotate(${i * fraction}, 12, 12)`}
+            fill={colors[i]}
+            cx={(12 + radius)}
+            cy={radius}
+            r={dotSize}/>
         );
     }
-    
+
     return elements;
 }
 
