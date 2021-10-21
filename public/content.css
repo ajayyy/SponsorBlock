@@ -526,9 +526,27 @@ input::-webkit-inner-spin-button {
 .skipButtonControlBarContainer {
 	cursor: pointer;
 	display: flex;
+    color: white;
 }
 
-.skipButtonControlBarContainer.hidden {
+.skipButtonControlBarContainer.mobile {
+	bottom: 30%;
+    margin-left: 5px;
+	position: absolute;
+	height: 20px;
+
+	background-color: #00000030;
+	opacity: 0.5;
+	border-radius: 10px;
+	padding: 4px;
+}
+
+.skipButtonControlBarContainer.mobile > div {
+	margin: auto;
+	margin-left: 5px;
+}
+
+.skipButtonControlBarContainer.hidden, .skipButtonControlBarContainer.mobile .hidden {
 	display: none !important;
 }
 
@@ -538,6 +556,10 @@ input::-webkit-inner-spin-button {
     bottom: 0px;
     display: block;
     margin: auto;
+}
+
+.mobile #sbSkipIconControlBarImage {
+	height: 100%;
 }
 
 .sponsorBlockTooltip {

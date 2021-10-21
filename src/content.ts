@@ -17,6 +17,7 @@ import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { Tooltip } from "./render/Tooltip";
 import { getStartTimeFromUrl } from "./utils/urlParser";
+import { getControls } from "./utils/pageUtils";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -338,6 +339,8 @@ async function videoIDChange(id) {
 function handleMobileControlsMutations(): void {
     updateVisibilityOfPlayerControlsButton();
 
+    skipButtonControlBar?.updateMobileControls();
+
     if (previewBar !== null) {
         if (document.body.contains(previewBar.container)) {
             const progressBarBackground = document.querySelector<HTMLElement>(".progress-bar-background");
@@ -652,7 +655,8 @@ function setupSkipButtonControlBar() {
                 skippingSegments: [segment], 
                 openNotice: true, 
                 forceAutoSkip: true
-            })
+            }),
+            onMobileYouTube
         });
     }
 
@@ -1249,6 +1253,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
             && skippingSegments.length === 1 
             && getCategoryActionType(skippingSegments[0].category) === CategoryActionType.POI) {
         skipButtonControlBar.enable(skippingSegments[0], !Config.config.highlightCategoryUpdate ? 15 : 0);
+        if (onMobileYouTube) skipButtonControlBar.setShowKeybindHint(false);
 
         if (!Config.config.highlightCategoryUpdate) {
             new Tooltip({
@@ -1269,6 +1274,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
             //send out the message saying that a sponsor message was skipped
             if (!Config.config.dontShowNotice || !autoSkip) {
                 const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime);
+                if (onMobileYouTube) newSkipNotice.setShowKeybindHint(false);
                 skipNotices.push(newSkipNotice);
 
                 activeSkipKeybindElement?.setShowKeybindHint(false);
@@ -1354,27 +1360,6 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 function shouldSkip(segment: SponsorTime): boolean {
     return utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
-}
-
-function getControls(): HTMLElement | false {
-    const controlsSelectors = [
-        // YouTube
-        ".ytp-right-controls",
-        // Mobile YouTube
-        ".player-controls-top",
-        // Invidious/videojs video element's controls element
-        ".vjs-control-bar",
-    ];
-
-    for (const controlsSelector of controlsSelectors) {
-        const controls = document.querySelectorAll(controlsSelector);
-
-        if (controls && controls.length > 0) {
-            return <HTMLElement> controls[controls.length - 1];
-        }
-    }
-
-    return false;
 }
 
 /** Creates any missing buttons on the YouTube player if possible. */
