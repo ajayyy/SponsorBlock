@@ -7,6 +7,7 @@ const utils = new Utils();
 
 export interface SkipButtonControlBarProps {
     skip: (segment: SponsorTime) => void;
+    onMobileYouTube: boolean;
 }
 
 export class SkipButtonControlBar {
@@ -18,6 +19,9 @@ export class SkipButtonControlBar {
     segment: SponsorTime;
 
     showKeybindHint = true;
+    onMobileYouTube: boolean;
+
+    enabled = false;
 
     timeout: NodeJS.Timeout;
     duration = 0;
@@ -26,10 +30,12 @@ export class SkipButtonControlBar {
 
     constructor(props: SkipButtonControlBarProps) {
         this.skip = props.skip;
+        this.onMobileYouTube = props.onMobileYouTube;
 
         this.container = document.createElement("div");
         this.container.classList.add("skipButtonControlBarContainer");
         this.container.classList.add("hidden");
+        if (this.onMobileYouTube) this.container.classList.add("mobile");
 
         this.skipIcon = document.createElement("img");
         this.skipIcon.src = chrome.runtime.getURL("icons/skipIcon.svg");
@@ -50,21 +56,34 @@ export class SkipButtonControlBar {
     }
 
     attachToPage(): void {
-        const leftControlsContainer = document.querySelector(".ytp-left-controls");
+        const mountingContainer = this.getMountingContainer();
         this.chapterText = document.querySelector(".ytp-chapter-container");
     
-        if (leftControlsContainer && !leftControlsContainer.contains(this.container)) {
-            leftControlsContainer.insertBefore(this.container, this.chapterText);
-
-            if (Config.config.autoHideInfoButton) {
-                utils.setupAutoHideAnimation(this.skipIcon, leftControlsContainer, false, false);
+        if (mountingContainer && !mountingContainer.contains(this.container)) {
+            if (this.onMobileYouTube) {
+                mountingContainer.appendChild(this.container);
+            } else {
+                mountingContainer.insertBefore(this.container, this.chapterText);
             }
+
+            if (Config.config.autoHideInfoButton && !this.onMobileYouTube) {
+                utils.setupAutoHideAnimation(this.skipIcon, mountingContainer, false, false);
+            }
+        }
+    }
+
+    private getMountingContainer(): HTMLElement {
+        if (!this.onMobileYouTube) {
+            return document.querySelector(".ytp-left-controls");
+        } else {
+            return document.getElementById("player-container-id");
         }
     }
 
     enable(segment: SponsorTime, duration?: number): void {
         if (duration) this.duration = duration;
         this.segment = segment;
+        this.enabled = true;
 
         this.refreshText();
         this.textContainer?.classList?.remove("hidden");
@@ -97,12 +116,14 @@ export class SkipButtonControlBar {
         this.timeout = setTimeout(() => this.disableText(), Math.max(Config.config.skipNoticeDuration, this.duration) * 1000);
     }
 
-    disable(): void {
+    disable(keepActive = false): void {
         this.container.classList.add("hidden");
         this.textContainer?.classList?.remove("hidden");
 
         this.chapterText?.classList?.remove("hidden");
         this.getChapterPrefix()?.classList?.remove("hidden");
+
+        if (!keepActive) this.enabled = false;
     }
 
     toggleSkip(): void {
@@ -110,18 +131,32 @@ export class SkipButtonControlBar {
         this.disableText();
     }
 
-    disableText(): void {
-        if (Config.config.hideVideoPlayerControls || Config.config.hideSkipButtonPlayerControls) {
-            this.disable();
+    disableText(forceNotDisable = false): void {
+        if (!forceNotDisable && (Config.config.hideVideoPlayerControls || Config.config.hideSkipButtonPlayerControls || this.onMobileYouTube)) {
+            this.disable(this.onMobileYouTube);
             return;
         }
 
+        this.container.classList.remove("hidden");
         this.textContainer?.classList?.add("hidden");
         this.chapterText?.classList?.remove("hidden");
 
         this.getChapterPrefix()?.classList?.add("hidden");
 
         utils.enableAutoHideAnimation(this.skipIcon);
+    }
+
+    updateMobileControls(): void {
+        const overlay = document.getElementById("player-control-overlay");
+
+        if (overlay && this.enabled) {
+            if (overlay?.classList?.contains("pointer-events-off")) {
+                this.disable(true);
+            } else {
+                this.disableText(true);
+                this.skipIcon.classList.remove("hidden");
+            }
+        }
     }
 
     private getTitle(): string {

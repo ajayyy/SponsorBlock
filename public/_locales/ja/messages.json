@@ -52,6 +52,9 @@
     "reskip": {
         "message": "再スキップ"
     },
+    "unmute": {
+        "message": "ミュート解除"
+    },
     "paused": {
         "message": "一時停止中"
     },
@@ -80,13 +83,13 @@
         "message": "セグメント終了を記録"
     },
     "sponsorCancel": {
-        "message": "区間の作成を取り止める"
+        "message": "セグメントの作成を取り消す"
     },
     "noVideoID": {
         "message": "YouTube動画が見つかりませんでした。\nこれが正しくない場合は、タブを再読み込みしてください。"
     },
     "refreshSegments": {
-        "message": "区域を更新"
+        "message": "セグメントを更新"
     },
     "success": {
         "message": "成功しました!"
@@ -158,6 +161,9 @@
     "setUsername": {
         "message": "ユーザー名を設定"
     },
+    "copyPublicID": {
+        "message": "パブリックユーザIDをコピー"
+    },
     "discordAdvert": {
         "message": "公式Discordサーバーに参加して意見やフィードバックをお寄せください！"
     },
@@ -175,6 +181,9 @@
     },
     "hideButtonsDescription": {
         "message": "YouTube再生画面のセグメント提出ボタンを非表示にします。"
+    },
+    "showSkipButton": {
+        "message": "プレイヤーの「ハイライトまでスキップ」ボタン表示を維持する"
     },
     "showInfoButton": {
         "message": "YouTubeプレーヤーの情報ボタンを表示する"
@@ -219,19 +228,19 @@
         "message": "セグメントがスキップされた後に通知を表示する"
     },
     "noticeVisibilityMode0": {
-        "message": "飛び越し通知（全体）"
+        "message": "標準サイズのスキップ通知"
     },
     "noticeVisibilityMode1": {
-        "message": "自動飛び越し通知（小）"
+        "message": "自動スキップ通知を小型化"
     },
     "noticeVisibilityMode2": {
-        "message": "すべての飛び越し通知（小）"
+        "message": "すべてのスキップ通知を小型化"
     },
     "noticeVisibilityMode3": {
-        "message": "表示の終了した自動飛び越し通知"
+        "message": "自動スキップ通知を透過"
     },
     "noticeVisibilityMode4": {
-        "message": "表示の終了した全ての飛び越し通知"
+        "message": "すべてのスキップ通知を透過"
     },
     "longDescription": {
         "message": "SponsorBlockはスポンサー、イントロ、アウトロ、チャンネル登録のお願いなど、YouTube動画の煩わしい部分をスキップします。SponsorBlockはYouTube動画のスポンサー付きセグメントなどの開始時間と終了時間を誰でも投稿できる、クラウドソースのブラウザ拡張機能です。一人がセグメントの情報を送信すると、この拡張機能を使用している他の全員が、スポンサー付きセグメントをスキップできるようになります。また、ミュージックビデオの音楽がない部分をスキップすることもできます。",
@@ -290,8 +299,14 @@
     "skip": {
         "message": "スキップ"
     },
+    "mute": {
+        "message": "ミュート"
+    },
     "skip_category": {
         "message": "{0} をスキップしますか?"
+    },
+    "mute_category": {
+        "message": "{0} をミュートしますか?"
     },
     "skip_to_category": {
         "message": "{0}まで飛び越しますか？",
@@ -300,6 +315,10 @@
     "skipped": {
         "message": "{0}を飛び越しました",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} ミュート済み",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "{0}まで飛び越しました",
@@ -352,6 +371,9 @@
     },
     "changeUserID": {
         "message": "ユーザーIDのインポート/エクスポート"
+    },
+    "whatChangeUserID": {
+        "message": "この情報を誰にも開示しないでください。これはパスワードのように、誰とも共有するべきではありません。 誰かがこれを持っている場合、あなたになりすますことができます。パブリックユーザーIDを探している場合は、ポップアップのクリップボードアイコンをクリックしてください。"
     },
     "setUserID": {
         "message": "ユーザーIDを設定"
@@ -551,10 +573,10 @@
         "message": "音楽以外の部分"
     },
     "category_poi_highlight": {
-        "message": "強調表示"
+        "message": "ハイライト"
     },
     "category_poi_highlight_description": {
-        "message": "ほとんどの人が必要としている動画の箇所。「xx:xx 開始」というようなコメントと類似。"
+        "message": "多くの人が求めている動画の部分。「動画はXからスタート」のようなコメントです。"
     },
     "category_livestream_messages": {
         "message": "ライブ配信: 寄付/メッセージの読み上げ"
@@ -575,7 +597,7 @@
         "message": "無効"
     },
     "autoSkip_POI": {
-        "message": "動画の開始時刻まで飛び越し"
+        "message": "冒頭へ自動スキップ"
     },
     "manualSkip_POI": {
         "message": "動画を読み込んだ際に確認する"
@@ -585,6 +607,9 @@
     },
     "autoSkipOnMusicVideos": {
         "message": "非音楽区域がある場合，全区域を自動的に飛び越す"
+    },
+    "muteSegments": {
+        "message": "スキップする代わりに音声をミュートしてセグメントを許可"
     },
     "colorFormatIncorrect": {
         "message": "カラーコードの書式が間違っています。 #から始まる3桁または6桁の16進数コードでなければなりません。"
@@ -624,6 +649,9 @@
     "enableThisCategoryFirst": {
         "message": "\"{0}\" のカテゴリでセグメントを送信するには、オプションでセグメントを有効にする必要があります。オプション画面にリダイレクトします。",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "poiOnlyOneSegment": {
+        "message": "警告: このタイプのセグメントは一度に最大一つだけ有効にすることができます。複数送信するとランダムなものが表示されます。"
     },
     "youMustSelectACategory": {
         "message": "送信するすべてのセグメントにカテゴリを選択する必要があります！"
@@ -672,7 +700,7 @@
         "message": "不正確あるいは間違った時刻です"
     },
     "incorrectCategory": {
-        "message": "カテゴリが違います"
+        "message": "カテゴリーを変更してください"
     },
     "nonMusicCategoryOnMusic": {
         "message": "この動画は音楽として分類されています。本当にこの動画にスポンサー部分がありますか? 本セグメントが本当に「音楽以外の区域」だった場合は、設定画面からこの分類を有効にしてください。その後、「スポンサー部分」の代わりに「音楽以外のセグメント」としてセグメントを提出できます。よく分からない場合は、ガイドラインを参照してください。"
@@ -707,6 +735,9 @@
     "hideForever": {
         "message": "二度と表示しない"
     },
+    "warningChatInfo": {
+        "message": "警告のためにあなたは一時的にセグメントを提出することができなくなりました。これはあなたが悪意のない一般的なミスを犯していることに私たちが気づいた事を意味します、ルールを理解していることを確認していただければこの警告を解除します。discord.gg/SponsorBlock または matrix.to/#/#sponsor:ajay.app を使ってこのチャットに参加することもできます。"
+    },
     "voteRejectedWarning": {
         "message": "警告により投票が拒否されました。クリックして運営に連絡するか，少し時間を置いてからやりなおしてください。",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
@@ -738,8 +769,29 @@
     "Submitting": {
         "message": "提出中"
     },
+    "helpPageSubmitting1": {
+        "message": "提出するにはポップアップの「セグメント開始を記録」ボタン、またはビデオプレーヤー内にあるボタンを押してください。"
+    },
+    "helpPageSubmitting2": {
+        "message": "再生ボタンをクリックするとセグメントの開始、停止アイコンをクリックすると終了となります。 複数のスポンサーを用意してから送信ボタンを押すことができます。アップロードボタンをクリックすると提出されます。ゴミ箱をクリックすると削除されます。"
+    },
     "Editing": {
         "message": "編集中"
+    },
+    "helpPageEditing1": {
+        "message": "もし失敗しても、上矢印ボタンをクリックすれば、セグメントを編集・削除することができます。"
+    },
+    "helpPageTooSlow": {
+        "message": "遅すぎます"
+    },
+    "helpPageTooSlow1": {
+        "message": "利用可能なホットキーがあります。セミコロンキーを押してスポンサーセグメントの開始/終了を示し、アポストロフィキーを押して送信します。これらはオプションで変更できます。QWERTYを使わない場合は、キーバインドを変更したほうがいいでしょう。"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "データベースのコピーを取得できますか? あなたがいなくなった場合はどうなりますか?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "データベースは公開されており、次の場所で利用できます:"
     },
     "helpPageCopyOfDatabase2": {
         "message": "ソースコードは自由に利用できます。運営になにがあろうとも，あなたの貢献（提出された区域）が失われることはありません。"
@@ -753,7 +805,28 @@
     "Credits": {
         "message": "謝辞"
     },
+    "highlightNewFeature": {
+        "message": "新機能! 新しいハイライトカテゴリを使用し、動画の要点にワンクリックで\n移動できます。"
+    },
     "LearnMore": {
         "message": "さらに詳しく"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "反対票を投じ、再提出するためにローカルコピーを作成します。"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "このカテゴリーのWikiページを開きます。"
+    },
+    "CopyAndDownvote": {
+        "message": "コピーして反対票を投じる"
+    },
+    "ContinueVoting": {
+        "message": "投票を続ける"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "この変更は即座にあなたのセグメントに適用されます"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "編集ボックスにカーソルを合わせながらマウスホイールを使用すると、時間をすばやく調整できます。 CtrlキーまたはShiftキーの組み合わせを使用して変更を微調整できます。"
     }
 }

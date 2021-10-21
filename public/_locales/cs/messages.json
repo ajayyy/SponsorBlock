@@ -700,7 +700,7 @@
         "message": "Nesprávné / špatné časování"
     },
     "incorrectCategory": {
-        "message": "Špatná kategorie"
+        "message": "Změnit kategorii"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Toto video je kategorizováno jako hudba. Jste si jisti, že je v něm sponzorská sekce? Pokud se opravdu jedná o \"Nehudební segment\", otevřete nastavení a povolte tuto kategorii. Poté budete moct odeslat segment jako \"Nehudební\" místo sponzorského. Pokud jste zmateni, přečtěte si prosím pokyny."
@@ -810,6 +810,21 @@
     },
     "LearnMore": {
         "message": "Zjistit více"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Zahlasuje proti a vytvoří pro vás lokální kopii pro opětovné odeslání"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Otevřít wiki stránku této kategorie."
+    },
+    "CopyAndDownvote": {
+        "message": "Zkopírovat a hlasovat proti"
+    },
+    "ContinueVoting": {
+        "message": "Pokračovat v hlasování"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Toto bude okamžitě platit pro vaše segmenty"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Použijte kolečko myši při přechodu přes editační okno pro rychlou úpravu času. Kombinace kláves Ctrl nebo Shift mohou být použity k doladění změn."

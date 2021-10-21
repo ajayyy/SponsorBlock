@@ -700,7 +700,7 @@
         "message": "Sobimatu/vale ajastus"
     },
     "incorrectCategory": {
-        "message": "Vale kategooria"
+        "message": "Muuda kategooriat"
     },
     "nonMusicCategoryOnMusic": {
         "message": "See video on muusikana kategoriseeritud. Kas oled kindel, et sellel on sponsor? Kui see on tegelikult \"mitte-muusika segment\", ava laienduse valikud ning luba see kategooria. Seejärel saad selle segmendi saata \"mitte-muusika\" kategoorias. Segaduse korral palun loe üle juhised."
@@ -765,6 +765,21 @@
     },
     "LearnMore": {
         "message": "Lisateave"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Annab vastuhääle ja loob kohaliku koopia, mida saad uuesti saata"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Ava selle kategooria vikileht."
+    },
+    "CopyAndDownvote": {
+        "message": "Kopeeri ja anna vastuhääl"
+    },
+    "ContinueVoting": {
+        "message": "Jätka hääletamist"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "See rakendub sinu segmentidele koheselt"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Kasuta hiirekursorit muutmiskasti kohal, et kiirelt aega reguleerida. Täpsemaks muutmiseks hoia kerimise ajal all Ctrl või Shift klahvi."

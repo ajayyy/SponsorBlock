@@ -700,7 +700,7 @@
         "message": "Tiempo incorrecto/equivocado"
     },
     "incorrectCategory": {
-        "message": "Categoría Incorrecta"
+        "message": "Cambiar Categoría"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Este video está clasificado como música. ¿Estás seguro de que esto tiene un sponsor? Si esto es realmente un \"Segmento Sin Música\", abre las opciones de la extensión y activa esta categoría. Entonces, puedes enviar este segmento como \"Sin Música\" en lugar de sponsor. Por favor, lee las instrucciones si estás confundido/a."
@@ -810,6 +810,21 @@
     },
     "LearnMore": {
         "message": "Aprenda Más"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Vota negativamente y crea una copia local para que la puedas volver a enviar"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Abrir la página de la wiki de esta categoría."
+    },
+    "CopyAndDownvote": {
+        "message": "Copiar y votar negativamente"
+    },
+    "ContinueVoting": {
+        "message": "Continuar Votando"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Esto se aplicará instantáneamente a tus segmentos"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilice la rueda del ratón mientras pasa el cursor por encima del cuadro de edición para ajustar el tiempo. Se pueden utilizar combinaciones de la tecla ctrl o shift para afinar los cambios."
