@@ -15,6 +15,9 @@ import VisibilityOffSvg from "../svg-icons/visibility_off_svg";
 import UndoSvg from "../svg-icons/undo_svg";
 import ClipboardSvg from "../svg-icons/clipboard_svg";
 import RefreshSvg from "../svg-icons/refresh_svg";
+import CopyPlusDownvoteSvg from "../svg-icons/copy_plus_downvote_svg";
+import ChangeCategorySvg from "../svg-icons/change_category_svg";
+import CategoryDotsSvg from "../svg-icons/category_dots_svg";
 
 
 export enum voteState {
@@ -43,6 +46,8 @@ export interface ControlPanelState {
 
     isVip: boolean;
     isWhitelisted: boolean;
+
+    hovering: boolean[][]
 }
 
 class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPanelState> {
@@ -54,7 +59,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
     selectedColor: string;
     unselectedColor: string;
     lockedColor: string;
-
+    selectedOpacity: string;
 
     constructor(props: ControlPanelProps) {
         super(props);
@@ -68,6 +73,12 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
         }
         this.categoryOptionRef = new Array(length).fill(React.createRef());
         this.channelID = this.contentContainer().channelIDInfo.id;
+
+        this.selectedColor = Config.config.colorPalette.red;
+        this.unselectedColor = Config.config.colorPalette.white;
+        this.lockedColor = Config.config.colorPalette.locked;
+        this.selectedOpacity = "0.4";
+
         // Set State
         this.state = ({
             segments: segments,
@@ -78,7 +89,8 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
             message: new Array(length).fill(null),
             messageOnClick: new Array(length).fill(null),
             isVip: Config.config.isVip,
-            isWhitelisted: Config.config.whitelistedChannels.includes(this.channelID)
+            isWhitelisted: Config.config.whitelistedChannels.includes(this.channelID),
+            hovering: new Array(length).fill(false).map(() => new Array(8).fill(false)) // There are 8 icons
         });
     }
 
@@ -86,7 +98,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
         return (
             <div id={this.idPrefix}
-                    className="">
+                    className="cpMainContainer">
                 <div id={this.idPrefix + "CloseDiv"}></div>
                 <div id={this.idPrefix + "videoInfoDiv"}
                         className="">
@@ -142,15 +154,12 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
             elements.push(
                 <div id={this.idPrefix + "segmentInteractionContainer" + UUID}
-                        style={{color: "#ffffff",
-                        margin: "5px",
-                        fontSize: "14px",
-                        display: "block",
-                        textAlign: "center"}}
-                        className="">
+                        key={UUID}
+                        className="cpSegmentInteractionContainer">
                     <div id={this.idPrefix + "segmentInfo" + UUID} //Also opens the vote buttons
                             className=""
-                            style={{cursor: "pointer"}}
+                            style={{cursor: "pointer",
+                                textAlign: "center"}}
                             onClick={() => this.switchSegmentButtonDisplay(i)}>
                         <span id={this.idPrefix + "segmentCircle" + UUID}
                                 className="dot sponsorTimesCategoryColorCircle"
@@ -168,7 +177,6 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                     </div>
                     {this.state.segmentButtonsVisible[i] ?
                         <table id={this.idPrefix + "Table" + UUID}
-                                key={0 + UUID}
                                 className=""
                                 style={{
                                     marginLeft: "auto",
@@ -177,51 +185,49 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                 <tr id={this.idPrefix + "1stTableRow" + UUID}>
                                     {!this.state.thanksForVotingText[i] ?
                                         <td id={this.idPrefix + "segmentButtons" + UUID}
-                                                className=""
+                                                className="cpSvgButton"
                                                 style={{
                                                     alignItems: "center",
                                                     alignSelf: "center"}}>
 
                                             {/* Upvote Button */}
                                             <div id={this.idPrefix + "segmentUpvote" + UUID}
-                                                    key={1 + UUID}
-                                                    className=""
-                                                    style={{
-                                                        marginRight: "5px",
-                                                        display: "inline-block",
-                                                        cursor: "pointer"}}
+                                                    className="cpSvgButtonLeft"
                                                     title={chrome.i18n.getMessage("upvoteButtonInfo")}
+                                                    onMouseLeave={() => this.hoverHandler(i, 0, false)}
+                                                    onMouseEnter={() => this.hoverHandler(i, 0, true)}
                                                     onClick={() => this.upvote(i)}>
-                                                <ThumbsUpSvg fill={this.unselectedColor} />
+                                                <ThumbsUpSvg 
+                                                    fill={this.unselectedColor}
+                                                    selectFill={this.selectedColor} 
+                                                    opacity={this.state.hovering[i][0] ? this.selectedOpacity : "0"}/>
                                             </div>
 
                                             {/* Downvote Button */}
                                             <div id={this.idPrefix + "segmentDownvote" + UUID}
-                                                    key={2 + UUID}
-                                                    className=""
-                                                    style={{
-                                                        marginRight: "5px",
-                                                        marginLeft: "5px",
-                                                        display: "inline-block",
-                                                        cursor: "pointer"}}
+                                                    className="cpSvgButtonLeft cpSvgButtonRight"
                                                     title={chrome.i18n.getMessage("reportButtonInfo")}
+                                                    onMouseLeave={() => this.hoverHandler(i, 1, false)}
+                                                    onMouseEnter={() => this.hoverHandler(i, 1, true)}
                                                     onClick={() => this.downvote(i)}>
-                                                <ThumbsDownSvg fill={this.state.isVip && this.state.segments[i].locked === 1 ? this.lockedColor : this.unselectedColor} />
+                                                <ThumbsDownSvg 
+                                                    fill={this.state.isVip && this.state.segments[i].locked === 1 ? this.lockedColor : this.unselectedColor}
+                                                    selectFill={this.selectedColor} 
+                                                    opacity={this.state.hovering[i][1] ? this.selectedOpacity : "0"}/>
                                             </div>
 
                                             {this.state.isVip ?
                                                 /* Undo Button */
                                                 <div id={this.idPrefix + "segmentUndo" + UUID}
-                                                        key={10 + UUID}
-                                                        className=""
-                                                        style={{
-                                                            marginRight: "5px",
-                                                            marginLeft: "5px",
-                                                            display: "inline-block",
-                                                            cursor: "pointer"}}
+                                                        className="cpSvgButtonLeft cpSvgButtonRight"
                                                         title={chrome.i18n.getMessage("undoButtonInfo")}
+                                                        onMouseLeave={() => this.hoverHandler(i, 2, false)}
+                                                        onMouseEnter={() => this.hoverHandler(i, 2, true)}
                                                         onClick={() => this.undo(i)}>
-                                                    <UndoSvg fill={this.unselectedColor}/>
+                                                    <UndoSvg 
+                                                        fill={this.unselectedColor} 
+                                                        selectFill={this.selectedColor} 
+                                                        opacity={this.state.hovering[i][2] ? this.selectedOpacity : "0"} />
                                                 </div>
                                                 :
                                                 null
@@ -229,34 +235,36 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
 
                                             {/* Edit Button */}
                                             <div id={this.idPrefix + "segmentEdit" + UUID}
-                                                    key={3 + UUID}
-                                                    className=""
-                                                    style={{
-                                                        marginRight: "5px",
-                                                        marginLeft: "5px",
-                                                        display: "inline-block",
-                                                        cursor: "pointer"}}
+                                                    className="cpSvgButtonLeft cpSvgButtonRight"
+                                                    onMouseLeave={() => this.hoverHandler(i, 3, false)}
+                                                    onMouseEnter={() => this.hoverHandler(i, 3, true)}
                                                     onClick={() => this.editButtonOnClick(i)}>
-                                                <PencilSvg fill={(this.state.editing[i] === true || this.state.choosingCategory[i] === true) ? this.selectedColor : this.unselectedColor} />
+                                                <PencilSvg 
+                                                    fill={(this.state.editing[i] === true || this.state.choosingCategory[i] === true) ? this.selectedColor : this.unselectedColor} 
+                                                    selectFill={this.selectedColor} 
+                                                    opacity={this.state.hovering[i][3] ? this.selectedOpacity : "0"} />
                                             </div>
 
                                             {/* Hide */}
                                             <div id={this.idPrefix + "segmentHide" + UUID}
-                                                    key={4 + UUID}
-                                                    className=""
-                                                    style={{
-                                                        marginRight: "5px",
-                                                        marginLeft: "5px",
-                                                        display: "inline-block",
-                                                        cursor: "pointer"}}
+                                                    className="cpSvgButtonRight"
                                                     title={this.state.segments[i].hidden === SponsorHideType.Visible ? chrome.i18n.getMessage("hideButtonInfo") : chrome.i18n.getMessage("unhideButtonInfo")}
+                                                    onMouseLeave={() => this.hoverHandler(i, 4, false)}
+                                                    onMouseEnter={() => this.hoverHandler(i, 4, true)}
                                                     onClick={() => this.toggleHide(i)}>
-                                                {this.state.segments[i].hidden === SponsorHideType.Visible ? <VisibilitySvg fill={this.unselectedColor}/> : <VisibilityOffSvg fill={this.unselectedColor}/>}
+                                                {this.state.segments[i].hidden === SponsorHideType.Visible 
+                                                    ? <VisibilitySvg 
+                                                        fill={this.unselectedColor} 
+                                                        selectFill={this.selectedColor} 
+                                                        opacity={this.state.hovering[i][4] ? this.selectedOpacity : "0"} /> 
+                                                    : <VisibilityOffSvg 
+                                                        fill={this.unselectedColor} 
+                                                        selectFill={this.selectedColor} 
+                                                        opacity={this.state.hovering[i][4] ? this.selectedOpacity : "0"} />}
                                             </div>
                                         </td>
                                         :
-                                        <td id={this.idPrefix + "segmentAfterVote" + UUID}
-                                                key={5 + UUID}>
+                                        <td id={this.idPrefix + "segmentAfterVote" + UUID}>
                                             {/* Submitted string */}
                                             <span style={{marginRight: "10px"}}>
                                                 {this.state.thanksForVotingText}
@@ -266,6 +274,8 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                             <button id={"sponsorTimesContinueVotingContainer" + UUID}
                                                     className=""
                                                     title={"Continue Voting"}
+                                                    onMouseLeave={() => this.hoverHandler(i, 5, false)}
+                                                    onMouseEnter={() => this.hoverHandler(i, 5, true)}
                                                     onClick={() => this.setState({
                                                         thanksForVotingText: this.setArrayElement(i, this.state.thanksForVotingText, null),
                                                         message: this.setArrayElement(i, this.state.message, null)
@@ -276,51 +286,52 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                     }
                                 </tr>
                                 {this.state.editing[i] ?
-                                    <tr id={this.idPrefix + "2ndTableRow" + UUID}
-                                            key={6 + UUID}>
-                                        <td>
+                                    <tr id={this.idPrefix + "2ndTableRow" + UUID}>
+                                        <td className="cpSvgButton">
                                             {/* Copy Segment */}
-                                            <button id={this.idPrefix + "DownvoteCopyButton" + UUID}
-                                                    className=""
+                                            <div id={this.idPrefix + "DownvoteCopyButton" + UUID}
+                                                    className="cpSvgButtonLeft"
                                                     title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
-                                                    style={{
-                                                        color: this.unselectedColor,
-                                                        display: "inline-block",
-                                                        bottom: "5px"}}
+                                                    onMouseLeave={() => this.hoverHandler(i, 7, false)}
+                                                    onMouseEnter={() => this.hoverHandler(i, 7, true)}
                                                     onClick={() => this.copyDownvote(i)}>
-                                                {chrome.i18n.getMessage("CopyAndDownvote")}
-                                            </button>
+                                                <CopyPlusDownvoteSvg
+                                                    fill={this.state.isVip ? this.lockedColor : this.unselectedColor} 
+                                                    selectFill={this.selectedColor} 
+                                                    opacity={this.state.hovering[i][7] ? this.selectedOpacity : "0"}/>
+                                            </div>
 
                                             {/* Category vote opener */}
-                                            <button id={this.idPrefix + "ChangeCategoryButton" + UUID}
-                                                    className=""
+                                            <div id={this.idPrefix + "ChangeCategoryButton" + UUID}
+                                                    className="cpSvgButtonLeft cpSvgButtonRight"
                                                     title={chrome.i18n.getMessage("ChangeCategoryTooltip")}
-                                                    style={{
-                                                        color: (this.state.choosingCategory[i]) ? this.selectedColor : this.unselectedColor,
-                                                        display: "inline-block",
-                                                        bottom: "20px"}}
+                                                    onMouseLeave={() => this.hoverHandler(i, 8, false)}
+                                                    onMouseEnter={() => this.hoverHandler(i, 8, true)}
                                                     onClick={() => this.categoryVoteOpenerOnClick(i)}>
-                                                {chrome.i18n.getMessage("incorrectCategory")}
-                                            </button>
+                                                <CategoryDotsSvg
+                                                    selectFill={this.selectedColor} 
+                                                    opacity={this.state.hovering[i][8] ? this.selectedOpacity : "0"} />
+                                            </div>
 
                                             {/* Copy UUID */}
-                                            <button id={this.idPrefix + "segmentCopyUUID" + UUID}
-                                                    key={11 + UUID}
-                                                    className=""
-                                                    style={{
-                                                        display: "inline-block"}}
+                                            <div id={this.idPrefix + "segmentCopyUUID" + UUID}
+                                                    className="cpSvgButtonRight"
                                                     title={chrome.i18n.getMessage("copyUUIDButtonInfo")}
+                                                    onMouseLeave={() => this.hoverHandler(i, 6, false)}
+                                                    onMouseEnter={() => this.hoverHandler(i, 6, true)}
                                                     onClick={() => navigator.clipboard.writeText(UUID)}>
-                                                <ClipboardSvg fill={this.unselectedColor} />
-                                            </button>
+                                                <ClipboardSvg 
+                                                    fill={this.unselectedColor} 
+                                                    selectFill={this.selectedColor} 
+                                                    opacity={this.state.hovering[i][6] ? this.selectedOpacity : "0"} />
+                                            </div>
                                         </td>
                                     </tr>
                                     :
                                     null
                                 }
                                 {this.state.choosingCategory[i] ?
-                                    (<tr id={this.idPrefix + "1stTableRow" + UUID}
-                                            key={7 + UUID}>
+                                    (<tr id={this.idPrefix + "1stTableRow" + UUID}>
                                         <td>
                                             {/* Category Selector */}
                                             <select id={this.idPrefix + "sponsorTimeCategorySelector" + UUID}
@@ -481,8 +492,8 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
         const categories = (CompileConfig.categoryList.filter((cat => getCategoryActionType(cat as Category) === CategoryActionType.Skippable))) as Category[];
         for (const category of categories) {
             elements.push(
-                <option value={category}
-                        key={category + UUID}
+                <option key={category}
+                        value={category}
                         className={this.getCategoryNameClass(category)}>
                     {chrome.i18n.getMessage("category_" + category)}
                 </option>
@@ -551,7 +562,14 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
         })
     }
 
-    
+    hoverHandler(index: number, iconIndex: number, select: boolean): void {
+        const hovering = this.state.hovering;
+        hovering[index][iconIndex] = select;
+
+        this.setState({
+            hovering: hovering
+        });
+    }
 
     getWhitelistDiv(): React.ReactElement {
         return (

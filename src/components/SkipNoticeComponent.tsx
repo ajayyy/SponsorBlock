@@ -92,12 +92,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.audio = null;
 
         const segments = this.props.segments;
-        for (const segment of segments) {
-            segment.locked ||= 0;
-            segment.voted ||= voteStatus.None;
-            segment.copied ||= false;
-            segment.hidden ||= SponsorHideType.Visible;
-        }
         const noticeTitle = getSkippingText(segments, this.props.autoSkip);
 
         const previousSkipNotices = document.getElementsByClassName("sponsorSkipNoticeParent");

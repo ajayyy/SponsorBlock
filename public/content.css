@@ -583,14 +583,53 @@ input::-webkit-inner-spin-button {
     line-height: 1.5em;
 }
 
-.controlPanelSegmentInfo {
-	color: var(--sb-main-fg-color);
-  	font-family: 'Source Sans Pro', sans-serif;
-  	font-size: 14px;
-  	align-items: center;
-  	width: 330px;
-  	padding: 10px;
-  	text-align: center;
-  	margin-bottom: 1px;
+/* ControlPanel Styles */
+.cpMainContainer {
+	width: 330px;
+	margin-bottom: 24px;
+	padding: 20px;
+	background-color: #222626;
+	flex-direction: column;
 }
 
+.cpSegmentInfo {
+	width: fit-content;
+}
+
+.cpSvgButton > div {
+	display: inline-block;
+    cursor: pointer;
+}
+
+.cpSvgButtonLeft {
+  	margin-right: 10px;
+}
+
+.cpSvgButtonRight {
+	margin-left: 10px;
+}
+
+.categoryDotsTurn {
+    transition: transform 0.6s ease-in;
+}
+
+.categoryDotsTurn:hover {
+	transform-origin: center;
+    transform: rotate(360deg);
+}
+
+.cpCopyUUIDButton {
+	transition: transform 0.2s;
+}
+
+.cpCopyUUIDButton:active {
+	transform: rotate(360deg);
+}
+
+.cpSegmentInteractionContainer {
+	color: #ffffff;
+	margin: 5px;
+	font-size: 14px;
+	display: block;
+	text-align: center;
+}
