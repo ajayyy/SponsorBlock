@@ -538,6 +538,10 @@ input::-webkit-inner-spin-button {
     color: white;
 }
 
+.skipButtonControlBarContainer.hidden {
+	display: none !important;
+}
+
 .skipButtonControlBarContainer.mobile {
 	bottom: 30%;
     margin-left: 5px;
