@@ -294,6 +294,10 @@
     float: right;
 }
 
+.sponsorSkipNoticeCloseButton.biggerCloseButton {
+	padding: 20px;
+}
+
 .sponsorSkipMessage {
 	font-size: 14px;
 	font-weight: bold;
@@ -302,6 +306,7 @@
 	margin-top: auto;
 	display: inline-block;
 	margin-right: 10px;
+	margin-bottom: auto;
 }
 
 .sponsorSkipInfo {

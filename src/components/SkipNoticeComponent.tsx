@@ -188,6 +188,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 maxCountdownTime={this.state.maxCountdownTime}
                 videoSpeed={() => this.contentContainer().v?.playbackRate}
                 style={noticeStyle}
+                biggerCloseButton={this.contentContainer().onMobileYouTube}
                 ref={this.noticeRef}
                 closeListener={() => this.closeListener()}
                 smaller={this.state.smaller}
@@ -350,13 +351,21 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         if (this.state.showSkipButton && (this.segments.length > 1 
                 || getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI
                 || this.props.unskipTime)) {
+
+            const style: React.CSSProperties = {
+                marginLeft: "4px",
+                color: (this.state.actionState === SkipNoticeAction.Unskip) ? this.selectedColor : this.unselectedColor
+            };
+            if (this.contentContainer().onMobileYouTube) {
+                style.padding = "20px";
+                style.minWidth = "100px";
+            }
+
             return (
                 <span className="sponsorSkipNoticeUnskipSection">
                     <button id={"sponsorSkipUnskipButton" + this.idSuffix}
                             className="sponsorSkipObject sponsorSkipNoticeButton"
-                            style={{marginLeft: "4px",
-                                color: (this.state.actionState === SkipNoticeAction.Unskip) ? this.selectedColor : this.unselectedColor
-                            }}
+                            style={style}
                             onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
                         {this.state.skipButtonText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
                     </button>
