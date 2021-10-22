@@ -1,3 +1,7 @@
+.hidden {
+	display: none;
+}
+
 #previewbar {
     overflow: visible;
     padding: 0;
@@ -541,13 +545,14 @@ input::-webkit-inner-spin-button {
 	padding: 4px;
 }
 
+.skipButtonControlBarContainer.mobile.textDisabled {
+	padding: 0;
+	background-color: transparent;
+}
+
 .skipButtonControlBarContainer.mobile > div {
 	margin: auto;
 	margin-left: 5px;
-}
-
-.skipButtonControlBarContainer.hidden, .skipButtonControlBarContainer.mobile .hidden {
-	display: none !important;
 }
 
 #sbSkipIconControlBarImage {
@@ -560,6 +565,7 @@ input::-webkit-inner-spin-button {
 
 .mobile #sbSkipIconControlBarImage {
 	height: 100%;
+	width: 20px;
 }
 
 .sponsorBlockTooltip {
