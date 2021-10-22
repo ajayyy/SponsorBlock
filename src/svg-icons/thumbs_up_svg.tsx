@@ -1,15 +1,30 @@
 import * as React from "react";
+import * as CompileConfig from "../../config.json";
+
+
+const s = CompileConfig.iconSize;
 
 const thumbsUpSvg = ({
-  fill = "#ffffff"
+  fill = "#ffffff",
+  opacity = "0",
+  selectFill = "#ffffff"
   }): JSX.Element => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
+      width={s}
+      height={s}
       fill={fill}
       viewBox="0 0 24 24"
       >
+      <rect 
+        x="0"
+        y="0" 
+        rx="5"
+        opacity={opacity}
+        fill={selectFill}
+        height="24" 
+        width="24" 
+      />
       <path
         fill="none"
         d="M0 0h24v24H0V0z"></path>

@@ -4,7 +4,7 @@ import * as CompileConfig from "../../config.json";
 
 const s = CompileConfig.iconSize;
 
-const thumbsDownSvg = ({
+const clipboardSvg = ({
   fill = "#ffffff",
   opacity = "0",
   selectFill = "#ffffff"
@@ -13,8 +13,9 @@ const thumbsDownSvg = ({
       xmlns="http://www.w3.org/2000/svg"
       width={s}
       height={s}
-      fill={fill}
       viewBox="0 0 24 24"
+      fill={fill}
+      className="cpCopyUUIDButton"
       >
       <rect 
         x="0"
@@ -25,14 +26,13 @@ const thumbsDownSvg = ({
         height="24" 
         width="24" 
       />
-      <path
-          fill="none"
-          d="M0 0h24v24H0z">
-      </path>
-      <path
-          d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"
-      ></path>
+      <path 
+        fill="none"
+        d="M0 0h24v24H0z" />
+      <path 
+        d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z" />
     </svg>
+    
   );
 
-export default thumbsDownSvg;
+export default clipboardSvg;

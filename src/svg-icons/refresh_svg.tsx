@@ -4,17 +4,19 @@ import * as CompileConfig from "../../config.json";
 
 const s = CompileConfig.iconSize;
 
-const thumbsDownSvg = ({
+const visibilitySvg = ({
   fill = "#ffffff",
   opacity = "0",
-  selectFill = "#ffffff"
+  selectFill = "#ffffff",
+  className = ""
   }): JSX.Element => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={s}
       height={s}
-      fill={fill}
       viewBox="0 0 24 24"
+      fill={fill}
+      className={className}
       >
       <rect 
         x="0"
@@ -25,14 +27,10 @@ const thumbsDownSvg = ({
         height="24" 
         width="24" 
       />
-      <path
-          fill="none"
-          d="M0 0h24v24H0z">
-      </path>
-      <path
-          d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"
-      ></path>
+      <path fill="none"
+        d="M0 0h24v24H0V0z" />
+      <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
     </svg>
   );
 
-export default thumbsDownSvg;
+export default visibilitySvg;

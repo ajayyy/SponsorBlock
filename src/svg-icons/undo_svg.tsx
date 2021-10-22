@@ -4,7 +4,7 @@ import * as CompileConfig from "../../config.json";
 
 const s = CompileConfig.iconSize;
 
-const thumbsDownSvg = ({
+const visibilitySvg = ({
   fill = "#ffffff",
   opacity = "0",
   selectFill = "#ffffff"
@@ -13,8 +13,8 @@ const thumbsDownSvg = ({
       xmlns="http://www.w3.org/2000/svg"
       width={s}
       height={s}
-      fill={fill}
       viewBox="0 0 24 24"
+      fill={fill}
       >
       <rect 
         x="0"
@@ -25,14 +25,10 @@ const thumbsDownSvg = ({
         height="24" 
         width="24" 
       />
-      <path
-          fill="none"
-          d="M0 0h24v24H0z">
-      </path>
-      <path
-          d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"
-      ></path>
+      <path fill="none"
+        d="M0 0h24v24H0V0z" />
+      <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/>
     </svg>
   );
 
-export default thumbsDownSvg;
+export default visibilitySvg;

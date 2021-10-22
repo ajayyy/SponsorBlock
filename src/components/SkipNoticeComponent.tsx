@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config"
-import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType } from "../types";
+import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType, voteStatus, SponsorSourceType } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import SubmissionNotice from "../render/SubmissionNotice";
@@ -13,6 +13,8 @@ import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import PencilSvg from "../svg-icons/pencil_svg";
+import CopyPlusDownvoteSvg from "../svg-icons/copy_plus_downvote_svg";
+import CategoryDotsSvg from "../svg-icons/category_dots_svg";
 
 export enum SkipNoticeAction {
     None,
@@ -25,7 +27,6 @@ export enum SkipNoticeAction {
 
 export interface SkipNoticeProps {
     segments: SponsorTime[];
-
     autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
@@ -51,23 +52,19 @@ export interface SkipNoticeState {
     skipButtonCallback?: (index: number) => void;
     showSkipButton?: boolean;
 
+    segments: SponsorTime[]; // Contains information on how to render
     editing?: boolean;
     choosingCategory?: boolean;
+    hovering: boolean[];
     thanksForVotingText?: string; //null until the voting buttons should be hidden
-
     actionState?: SkipNoticeAction;
-
+    isVip?: boolean;
     showKeybindHint?: boolean;
 
     smaller?: boolean;
-
-    voted?: SkipNoticeAction[];
-    copied?: SkipNoticeAction[];
-
 }
 
 class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeState> {
-    segments: SponsorTime[];
     autoSkip: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
@@ -84,6 +81,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     selectedColor: string;
     unselectedColor: string;
     lockedColor: string;
+    selectedOpacity: string;
+    amountIcons: number;
 
     // Used to update on config change
     configListener: () => void;
@@ -93,12 +92,12 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.noticeRef = React.createRef();
         this.categoryOptionRef = React.createRef();
 
-        this.segments = props.segments;
         this.autoSkip = props.autoSkip;
         this.contentContainer = props.contentContainer;
         this.audio = null;
 
-        const noticeTitle = getSkippingText(this.segments, this.props.autoSkip);
+        const segments = this.props.segments;
+        const noticeTitle = getSkippingText(segments, this.props.autoSkip);
 
         const previousSkipNotices = document.getElementsByClassName("sponsorSkipNoticeParent");
         this.amountOfPreviousNotices = previousSkipNotices.length;
@@ -106,12 +105,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.showInSecondSlot = previousSkipNotices.length > 0 && [...previousSkipNotices].some(notice => !notice.classList.contains("secondSkipNotice"));
 
         // Sort segments
-        if (this.segments.length > 1) {
-            this.segments.sort((a, b) => a.segment[0] - b.segment[0]);
+        const length = segments.length;
+        if (length > 1) {
+            segments.sort((a, b) => a.segment[0] - b.segment[0]);
         }
     
         // This is the suffix added at the end of every id
-        for (const segment of this.segments) {
+        for (const segment of segments) {
             this.idSuffix += segment.UUID;
         }
         this.idSuffix += this.amountOfPreviousNotices;
@@ -119,9 +119,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.selectedColor = Config.config.colorPalette.red;
         this.unselectedColor = Config.config.colorPalette.white;
         this.lockedColor = Config.config.colorPalette.locked;
+        this.selectedOpacity = "0.4";
+        this.amountIcons = 8;
 
         // Setup state
         this.state = {
+            segments: segments,
+
             noticeTitle,
             messages: [],
             messageOnClick: null,
@@ -131,23 +135,19 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             countdownTime: Config.config.skipNoticeDuration,
             countdownText: null,
 
-            skipButtonText: this.getUnskipText(),
+            skipButtonText: this.getUnskipText(segments[0]),
             skipButtonCallback: (index) => this.unskip(index),
             showSkipButton: true,
 
             editing: false,
             choosingCategory: false,
             thanksForVotingText: null,
+            isVip: Config.config.isVip || false,
 
             actionState: SkipNoticeAction.None,
-
             showKeybindHint: this.props.showKeybindHint ?? true,
-
             smaller: this.props.smaller ?? false,
-
-            // Keep track of what segment the user interacted with.
-            voted: new Array(this.props.segments.length).fill(SkipNoticeAction.None),
-            copied: new Array(this.props.segments.length).fill(SkipNoticeAction.None),
+            hovering: new Array(this.amountIcons).fill(false)
         }
 
         if (!this.autoSkip) {
@@ -193,7 +193,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 smaller={this.state.smaller}
                 limitWidth={true}
                 firstColumn={firstColumn}
-                bottomRow={[...this.getMessageBoxes(), ...this.getBottomRow() ]}
+                bottomRow={[...this.getMessageBox(), ...this.getBottomRow() ]}
                 onMouseEnter={() => this.onMouseEnter() } >
                     
                 {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
@@ -219,8 +219,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 className="voteButton"
                                 style={{marginRight: "5px"}}
                                 title={chrome.i18n.getMessage("upvoteButtonInfo")}
+                                onMouseLeave={() => this.hoverHandler(0, false)}
+                                onMouseEnter={() => this.hoverHandler(0, true)}
                                 onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
-                            <ThumbsUpSvg fill={(this.state.actionState === SkipNoticeAction.Upvote) ? this.selectedColor : this.unselectedColor} />
+                            <ThumbsUpSvg 
+                                fill={(this.state.actionState === SkipNoticeAction.Upvote) ? this.selectedColor : this.unselectedColor}
+                                selectFill={this.selectedColor} 
+                                opacity={this.state.hovering[0] ? this.selectedOpacity : "0"}/>
                         </div>
 
                         {/* Report Button */}
@@ -228,19 +233,28 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 className="voteButton"
                                 style={{marginRight: "5px", marginLeft: "5px"}}
                                 title={chrome.i18n.getMessage("reportButtonInfo")}
+                                onMouseLeave={() => this.hoverHandler(1, false)}
+                                onMouseEnter={() => this.hoverHandler(1, true)}
                                 onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
-                            <ThumbsDownSvg fill={this.downvoteButtonColor(SkipNoticeAction.Downvote)} />
+                            <ThumbsDownSvg 
+                                fill={this.downvoteButtonColor(SkipNoticeAction.Downvote)}
+                                selectFill={this.selectedColor} 
+                                opacity={this.state.hovering[1] ? this.selectedOpacity : "0"}/>
                         </div>
 
                         {/* Copy and Downvote Button */}
                         <div id={"sponsorTimesDownvoteButtonsContainerCopyDownvote" + this.idSuffix}
                                 className="voteButton"
                                 style={{marginLeft: "5px"}}
+                                onMouseLeave={() => this.hoverHandler(2, false)}
+                                onMouseEnter={() => this.hoverHandler(2, true)}
                                 onClick={() => this.openEditingOptions()}>
                             <PencilSvg fill={this.state.editing === true
                                             || this.state.actionState === SkipNoticeAction.CopyDownvote
                                             || this.state.choosingCategory === true
-                                            ? this.selectedColor : this.unselectedColor} />
+                                            ? this.selectedColor : this.unselectedColor}
+                                        selectFill={this.selectedColor} 
+                                        opacity={this.state.hovering[2] ? this.selectedOpacity : "0"} />
                         </div>
                     </td>
 
@@ -287,23 +301,29 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             (this.state.editing && !this.state.thanksForVotingText && !(this.state.choosingCategory || this.state.actionState === SkipNoticeAction.CopyDownvote) &&
                 <tr id={"sponsorSkipNoticeEditSegmentsRow" + this.idSuffix}
                     key={2}>
-                    <td id={"sponsorTimesEditSegmentsContainer" + this.idSuffix}>
+                    <td id={"sponsorTimesEditSegmentsContainer" + this.idSuffix}
+                            className="cpSvgButton">
 
                         {/* Copy Segment */}
-                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                        <div className="cpSvgButtonLeft"
                                 title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
-                                style={{color: this.downvoteButtonColor(SkipNoticeAction.Downvote)}}
+                                onMouseLeave={() => this.hoverHandler(4, false)}
+                                onMouseEnter={() => this.hoverHandler(4, true)}
                                 onClick={() => this.prepAction(SkipNoticeAction.CopyDownvote)}>
-                            {chrome.i18n.getMessage("CopyAndDownvote")}
-                        </button>
+                            <CopyPlusDownvoteSvg
+                                fill={this.state.isVip ? this.lockedColor : this.unselectedColor} 
+                                selectFill={this.selectedColor} 
+                                opacity={this.state.hovering[4] ? this.selectedOpacity : "0"}/>
+                        </div>
 
-                        {/* Category vote */}
-                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                        {/* Category vote opener */}
+                        <div className="cpSvgButtonLeft cpSvgButtonRight"
                                 title={chrome.i18n.getMessage("ChangeCategoryTooltip")}
-                                style={{color: (this.state.actionState === SkipNoticeAction.CategoryVote && this.state.editing == true) ? this.selectedColor : this.unselectedColor}}
+                                onMouseLeave={() => this.hoverHandler(5, false)}
+                                onMouseEnter={() => this.hoverHandler(5, true)}
                                 onClick={() => this.resetStateToStart(SkipNoticeAction.CategoryVote, true, true)}>
-                            {chrome.i18n.getMessage("incorrectCategory")}
-                        </button>
+                            <CategoryDotsSvg />
+                        </div>
                     </td>
                 </tr>
             ),
@@ -316,14 +336,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         {/* Category Selector */}
                         <select id={"sponsorTimeCategories" + this.idSuffix}
                                 className="sponsorTimeCategories sponsorTimeEditSelector"
-                                defaultValue={this.segments[0].category}
+                                defaultValue={this.state.segments[0].category}
                                 ref={this.categoryOptionRef}>
 
                             {this.getCategoryOptions()}
                         </select>
 
                         {/* Submit Button */}
-                        {this.segments.length === 1 &&
+                        {this.state.segments.length === 1 &&
                             <button className="sponsorSkipObject sponsorSkipNoticeButton"
                                     onClick={() => this.prepAction(SkipNoticeAction.CategoryVote)}>
 
@@ -335,7 +355,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             ),
 
             /* Segment Chooser Row */
-            (this.state.actionState !== SkipNoticeAction.None && this.segments.length > 1 && !this.state.thanksForVotingText &&
+            (this.state.actionState !== SkipNoticeAction.None && this.state.segments.length > 1 && !this.state.thanksForVotingText &&
                 <tr id={"sponsorSkipNoticeSubmissionOptionsRow" + this.idSuffix}
                     key={4}>
                     <td id={"sponsorTimesSubmissionOptionsContainer" + this.idSuffix}>
@@ -346,9 +366,18 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         ];
     }
 
+    hoverHandler(iconIndex: number, select: boolean): void {
+        const hovering = this.state.hovering;
+        hovering[iconIndex] = select;
+
+        this.setState({
+            hovering: hovering
+        });
+    }
+
     getSkipButton(): JSX.Element {
-        if (this.state.showSkipButton && (this.segments.length > 1 
-                || getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI
+        if (this.state.showSkipButton && (this.state.segments.length > 1 
+                || getCategoryActionType(this.state.segments[0].category) !== CategoryActionType.POI
                 || this.props.unskipTime)) {
             return (
                 <span className="sponsorSkipNoticeUnskipSection">
@@ -367,14 +396,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     getSubmissionChooser(): JSX.Element[] {
         const elements: JSX.Element[] = [];
-        for (let i = 0; i < this.segments.length; i++) {
+        for (let i = 0; i < this.state.segments.length; i++) {
             elements.push(
                 <button className="sponsorSkipObject sponsorSkipNoticeButton"
                         style={{opacity: this.getSubmissionChooserOpacity(i), 
                                 color: this.getSubmissionChooserColor(i)}}
                         onClick={() => this.performAction(i)}
-                        key={"submission" + i + this.segments[i].category + this.idSuffix}>
-                    {(i + 1) + ". " + chrome.i18n.getMessage("category_" + this.segments[i].category)}
+                        key={"submission" + i + this.state.segments[i].category + this.idSuffix}>
+                    {(i + 1) + ". " + chrome.i18n.getMessage("category_" + this.state.segments[i].category)}
                 </button>
             );
         }
@@ -385,18 +414,17 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         const isUpvote = this.state.actionState === SkipNoticeAction.Upvote;
         const isDownvote = this.state.actionState == SkipNoticeAction.Downvote;
         const isCopyDownvote = this.state.actionState == SkipNoticeAction.CopyDownvote;
-        const shouldBeGray: boolean = (isUpvote && this.state.voted[index] == SkipNoticeAction.Upvote) ||
-                                        (isDownvote && this.state.voted[index] == SkipNoticeAction.Downvote) ||
-                                        (isCopyDownvote && this.state.copied[index] == SkipNoticeAction.CopyDownvote);
-
+        const shouldBeGray: boolean = (isUpvote && this.state.segments[index].voted === voteStatus.Upvoted) ||
+                                        (isDownvote && this.state.segments[index].voted === voteStatus.Downvoted) ||
+                                        (isCopyDownvote && this.state.segments[index].copied === true);
         return shouldBeGray ? 0.35 : 1;
     }
 
     getSubmissionChooserColor(index: number): string {
         const isDownvote = this.state.actionState == SkipNoticeAction.Downvote;
         const isCopyDownvote = this.state.actionState == SkipNoticeAction.CopyDownvote;
-        const shouldWarnUser = Config.config.isVip && (isDownvote || isCopyDownvote) 
-                                        && this.segments[index].locked === 1;
+        const shouldWarnUser = this.state.isVip && (isDownvote || isCopyDownvote) 
+                                        && this.state.segments[index].locked === 1;
 
         return shouldWarnUser ? this.lockedColor : this.unselectedColor;
     }
@@ -409,38 +437,35 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    getMessageBoxes(): JSX.Element[] {
-        if (this.state.messages.length === 0) {
+    getMessageBox(): JSX.Element[] {
+        if (this.state.messages === null) {
             // Add a spacer if there is no text
             return [
                 <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
                     className="sponsorBlockSpacer"
                     key={"messageBoxSpacer"}>
-                </tr>
-            ];
+                </tr>];
+        } else {
+            const elements = [];
+            this.state.messages.forEach(message =>
+                elements.push(
+                    <tr key={"messageBox"}>
+                        <td key={"messageBox"}>
+                            <NoticeTextSelectionComponent idSuffix={this.idSuffix}
+                                text={message}
+                                onClick={this.state.messageOnClick}
+                                key={"messageBox"}>
+                            </NoticeTextSelectionComponent>
+                        </td>
+                    </tr>
+                )
+            );
+            return elements;
         }
-
-        const elements: JSX.Element[] = [];
-
-        for (let i = 0; i < this.state.messages.length; i++) {
-            elements.push(
-                <tr key={i + "_messageBox"}>
-                    <td key={i + "_messageBox"}>
-                        <NoticeTextSelectionComponent idSuffix={this.idSuffix}
-                            text={this.state.messages[i]}
-                            onClick={this.state.messageOnClick}
-                            key={i + "_messageBox"}>
-                        </NoticeTextSelectionComponent>
-                    </td>
-                </tr>
-            )
-        }
-
-        return elements;
     }
 
     prepAction(action: SkipNoticeAction): void {
-        if (this.segments.length === 1) {
+        if (this.state.segments.length === 1) {
             this.performAction(0, action);
         } else {
             switch (action ?? this.state.actionState) {
@@ -498,56 +523,46 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     noAction(index: number): void {
-        const voted = this.state.voted;
-        voted[index] = SkipNoticeAction.None;
-
-        this.setState({
-            voted
-        });
+        return;
     }
 
     upvote(index: number): void {
-        if (this.segments.length === 1) this.resetStateToStart();
-        this.contentContainer().vote(1, this.segments[index].UUID, undefined, this);
+        if (this.state.segments.length === 1) this.resetStateToStart();
+        this.contentContainer().vote(1, this.state.segments[index].UUID, undefined, this);
     }
 
     downvote(index: number): void {
-        if (this.segments.length === 1) this.resetStateToStart();
-
-        this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
+        if (this.state.segments.length === 1) this.resetStateToStart();
+        this.contentContainer().vote(0, this.state.segments[index].UUID, undefined, this);
     }
 
     categoryVote(index: number): void {
-        this.contentContainer().vote(undefined, this.segments[index].UUID, this.categoryOptionRef.current.value as Category, this)
+        this.contentContainer().vote(undefined, this.state.segments[index].UUID, this.categoryOptionRef.current.value as Category, this)
     }
 
     copyDownvote(index: number): void {
+        this.contentContainer().vote(0, this.state.segments[index].UUID, undefined, this);
+        this.props.contentContainer().updatePreviewBar();
+        
         const sponsorVideoID = this.props.contentContainer().sponsorVideoID;
         const sponsorTimesSubmitting : SponsorTime = {
-            segment: this.segments[index].segment,
+            segment: this.state.segments[index].segment,
             UUID: null,
-            category: this.segments[index].category,
-            actionType: this.segments[index].actionType,
-            source: 2
+            category: this.state.segments[index].category,
+            actionType: this.state.segments[index].actionType,
+            source: SponsorSourceType.Local
         };
-
         const segmentTimes = Config.config.segmentTimes.get(sponsorVideoID) || [];
         segmentTimes.push(sponsorTimesSubmitting);
         Config.config.segmentTimes.set(sponsorVideoID, segmentTimes);
-
         this.props.contentContainer().sponsorTimesSubmitting.push(sponsorTimesSubmitting);
-        this.props.contentContainer().updatePreviewBar();
         this.props.contentContainer().resetSponsorSubmissionNotice();
         this.props.contentContainer().updateEditButtonsOnPlayer();
+        const segment = this.state.segments[index];
+        segment.copied = true;
+        this.contentContainer().updateSegments([segment]);
 
-        this.contentContainer().vote(0, this.segments[index].UUID, undefined, this);
-
-        const copied = this.state.copied;
-        copied[index] = SkipNoticeAction.CopyDownvote;
-
-        this.setState({
-            copied
-        });
+        
     }
 
     unskipAction(index: number): void {
@@ -555,7 +570,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     openEditingOptions(): void {
-        this.resetStateToStart(undefined, true);
+        if (this.state.editing === true && this.state.actionState === SkipNoticeAction.CopyDownvote) {
+            this.resetStateToStart(undefined, true);
+        } else if ((this.state.editing === false && this.state.choosingCategory === false) || (this.state.editing === true && this.state.choosingCategory === true)) {
+            this.resetStateToStart(undefined, true);
+        } else if (this.state.editing === true && this.state.choosingCategory === false) {
+            this.resetStateToStart();
+        }
     }
 
     getCategoryOptions(): React.ReactElement[] {
@@ -579,20 +600,23 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     unskip(index: number): void {
-        this.contentContainer().unskipSponsorTime(this.segments[index], this.props.unskipTime);
+        this.contentContainer().unskipSponsorTime(this.state.segments[index], this.props.unskipTime);
 
         this.unskippedMode(index, this.getReskipText());
     }
 
     reskip(index: number): void {
-        this.contentContainer().reskipSponsorTime(this.segments[index]);
+        this.contentContainer().reskipSponsorTime(this.state.segments[index]);
 
         const newState: SkipNoticeState = {
             skipButtonText: this.getUnskipText(),
             skipButtonCallback: this.unskip.bind(this),
 
+            segments: this.state.segments,
+
             maxCountdownTime: () => Config.config.skipNoticeDuration,
-            countdownTime: Config.config.skipNoticeDuration
+            countdownTime: Config.config.skipNoticeDuration,
+            hovering: this.state.hovering
         };
 
         // See if the title should be changed
@@ -615,10 +639,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getUnskippedModeInfo(index: number, buttonText: string): SkipNoticeState {
-        const changeCountdown = getCategoryActionType(this.segments[index].category) === CategoryActionType.Skippable;
+        const changeCountdown = getCategoryActionType(this.state.segments[index].category) === CategoryActionType.Skippable;
 
         const maxCountdownTime = changeCountdown ? () => {
-            const sponsorTime = this.segments[index];
+            const sponsorTime = this.state.segments[index];
             const duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
 
             return Math.max(duration, Config.config.skipNoticeDuration);
@@ -634,42 +658,39 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     afterVote(segment: SponsorTime, type: number, category: Category): void {
-        const index = utils.getSponsorIndexFromUUID(this.segments, segment.UUID);
-        const wikiLinkText = CompileConfig.wikiLinks[segment.category];
-
-        const voted = this.state.voted;
-        switch (type) {
-            case 0:
-                this.clearConfigListener();
-                this.setNoticeInfoMessageWithOnClick(() => window.open(wikiLinkText), chrome.i18n.getMessage("OpenCategoryWikiPage"));
-
-                voted[index] = SkipNoticeAction.Downvote;
-                break;
-            case 1:
-                voted[index] = SkipNoticeAction.Upvote;
-                break;
-            case 20:
-                voted[index] = SkipNoticeAction.None;
-                break;
-        }
-
-        this.setState({
-            voted
-        });
-
-        this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
-
-        // Change the sponsor locally
         if (segment) {
+            const index = utils.getSponsorIndexFromUUID(this.state.segments, segment.UUID);
+            const wikiLinkText = CompileConfig.wikiLinks[segment.category];
+
+            switch (type) {
+                case 0:
+                    this.clearConfigListener();
+                    this.setNoticeInfoMessageWithOnClick(() => window.open(wikiLinkText), chrome.i18n.getMessage("OpenCategoryWikiPage"));
+                    segment.voted = voteStatus.Downvoted;
+                    break;
+                case 1:
+                    segment.voted = voteStatus.Upvoted;
+                    break;
+                case 20:
+                    segment.voted = voteStatus.None;
+                    break;
+            }
+
+            this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
+
+            // Change the sponsor locally
             if (type === 0) {
                 segment.hidden = SponsorHideType.Downvoted;
             } else if (category) {
-                segment.category = category; // This is the actual segment on the video page
-                this.segments[index].category = category; //this is the segment inside the skip notice. 
+                segment.category = category; // This is the actual segment on the video page. This should now change cc and skipnotice
+                //this.segments[index].category = category; //this is the segment inside the skip notice.
             } else if (type === 1) {
                 segment.hidden = SponsorHideType.Visible;
             }
-            
+            this.setState({
+                hovering: new Array(this.amountIcons).fill(false)
+            })
+            this.contentContainer().updateSegments([segment]);
             this.contentContainer().updatePreviewBar();
         }
     }
@@ -683,7 +704,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     setNoticeInfoMessage(...messages: string[]): void {
         this.setState({
-            messages
+           messages
         });
     }
     
@@ -701,7 +722,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     closeListener(): void {
         this.clearConfigListener();
-
         this.props.closeListener();
     }
 
@@ -713,9 +733,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     unmutedListener(): void {
-        if (this.props.segments.length === 1 
-                && this.props.segments[0].actionType === ActionType.Mute 
-                && this.contentContainer().v.currentTime >= this.props.segments[0].segment[1]) {
+        if (this.state.segments.length === 1 
+                && this.state.segments[0].actionType === ActionType.Mute 
+                && this.contentContainer().v.currentTime >= this.state.segments[0].segment[1]) {
             this.setState({
                 showSkipButton: false
             });
@@ -734,16 +754,16 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     downvoteButtonColor(downvoteType: SkipNoticeAction): string {
         // Also used for "Copy and Downvote"
-        if (this.segments.length > 1) {
+        if (this.state.segments.length > 1) {
             return (this.state.actionState === downvoteType) ? this.selectedColor : this.unselectedColor;
         } else {
             // You dont have segment selectors so the lockbutton needs to be colored and cannot be selected.
-            return Config.config.isVip && this.segments[0].locked === 1 ? this.lockedColor : this.unselectedColor;
+            return this.state.isVip && this.state.segments[0].locked === 1 ? this.lockedColor : this.unselectedColor;
         }
     }
 
-    private getUnskipText(): string {
-        switch (this.props.segments[0].actionType) {
+    private getUnskipText(segment?: SponsorTime): string {
+        switch (segment || this.state.segments[0].actionType) {
             case ActionType.Mute: {
                 return chrome.i18n.getMessage("unmute");
             }
@@ -755,7 +775,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     private getReskipText(): string {
-        switch (this.props.segments[0].actionType) {
+        switch (this.state.segments[0].actionType) {
             case ActionType.Mute: {
                 return chrome.i18n.getMessage("mute");
             }
@@ -767,7 +787,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     private getSkipText(): string {
-        switch (this.props.segments[0].actionType) {
+        switch (this.state.segments[0].actionType) {
             case ActionType.Mute: {
                 return chrome.i18n.getMessage("mute");
             }
@@ -776,6 +796,20 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 return chrome.i18n.getMessage("skip");
             }
         }
+    }
+
+    updateStateViaCC(segments: SponsorTime[]): void {
+        const stateSegments = this.state.segments;
+        for (const segment of segments) {
+            const index = utils.getSponsorIndexFromUUID(this.state.segments, segment.UUID);
+            // Sort out those segments that are not included in the skipNotice
+            if (index !== -1) stateSegments[index] = segment;
+        }
+        console.log(getSkippingText(stateSegments, this.props.autoSkip)); // This shows that the title is correct
+        this.setState({
+            segments: stateSegments,
+            noticeTitle: getSkippingText(stateSegments, this.props.autoSkip) // Why does this not update the title?
+        })
     }
 }
 
