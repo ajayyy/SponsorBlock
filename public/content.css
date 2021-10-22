@@ -655,6 +655,7 @@ input::-webkit-inner-spin-button {
 	font-size: 14px;
 	display: block;
 	text-align: center;
+	padding: 2px 5px;
 }
 
 .cpRefreshButton {

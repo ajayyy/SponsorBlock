@@ -298,8 +298,6 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                                             <div id={this.idPrefix + "ChangeCategoryButton" + UUID}
                                                     className="cpSvgButtonLeft cpSvgButtonRight"
                                                     title={chrome.i18n.getMessage("ChangeCategoryTooltip")}
-                                                    onMouseLeave={() => this.hoverHandler(i, 8, false)}
-                                                    onMouseEnter={() => this.hoverHandler(i, 8, true)}
                                                     onClick={() => this.categoryVoteOpenerOnClick(i)}>
                                                 <CategoryDotsSvg />
                                             </div>
@@ -594,7 +592,7 @@ class ControlPanelComponent extends React.Component<ControlPanelProps, ControlPa
                         key={"whitelistDiv"}
                         className="sponsorSkipNoticeButton sponsorSkipObject"
                         onClick={() => {this.setWhitelist(!this.state.isWhitelisted)}}>
-                    {this.state.isWhitelisted ? chrome.i18n.getMessage("whitelistChannel") : chrome.i18n.getMessage("removeFromWhitelist")}
+                    {this.state.isWhitelisted ? chrome.i18n.getMessage("removeFromWhitelist") : chrome.i18n.getMessage("whitelistChannel")}
                 </button>
             </div>
         );

@@ -319,8 +319,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         {/* Category vote opener */}
                         <div className="cpSvgButtonLeft cpSvgButtonRight"
                                 title={chrome.i18n.getMessage("ChangeCategoryTooltip")}
-                                onMouseLeave={() => this.hoverHandler(5, false)}
-                                onMouseEnter={() => this.hoverHandler(5, true)}
                                 onClick={() => this.resetStateToStart(SkipNoticeAction.CategoryVote, true, true)}>
                             <CategoryDotsSvg />
                         </div>
