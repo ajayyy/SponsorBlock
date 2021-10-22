@@ -1,4 +1,8 @@
 import * as React from "react";
+import * as CompileConfig from "../../config.json";
+
+
+const s = CompileConfig.iconSize;
 
 const pencilSvg = ({
   fill = "#ffffff",
@@ -7,8 +11,8 @@ const pencilSvg = ({
   }): JSX.Element => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={s}
+      height={s}
       viewBox="0 0 24 24"
       fill={fill}
       >

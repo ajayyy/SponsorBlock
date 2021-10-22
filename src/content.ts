@@ -759,6 +759,11 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
             }
         }
 
+        // Sort segments
+        if (sponsorTimes.length > 1) {
+            sponsorTimes.sort((a, b) => a.segment[0] - b.segment[0]);
+        }
+
         startSkipScheduleCheckingForStartSponsors();
 
         //update the preview bar

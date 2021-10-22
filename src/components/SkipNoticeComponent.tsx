@@ -13,6 +13,8 @@ import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import PencilSvg from "../svg-icons/pencil_svg";
+import CopyPlusDownvoteSvg from "../svg-icons/copy_plus_downvote_svg";
+import CategoryDotsSvg from "../svg-icons/category_dots_svg";
 
 export enum SkipNoticeAction {
     None,
@@ -53,6 +55,7 @@ export interface SkipNoticeState {
     segments: SponsorTime[]; // Contains information on how to render
     editing?: boolean;
     choosingCategory?: boolean;
+    hovering: boolean[];
     thanksForVotingText?: string; //null until the voting buttons should be hidden
     actionState?: SkipNoticeAction;
     isVip?: boolean;
@@ -78,6 +81,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     selectedColor: string;
     unselectedColor: string;
     lockedColor: string;
+    selectedOpacity: string;
+    amountIcons: number;
 
     // Used to update on config change
     configListener: () => void;
@@ -100,7 +105,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.showInSecondSlot = previousSkipNotices.length > 0 && [...previousSkipNotices].some(notice => !notice.classList.contains("secondSkipNotice"));
 
         // Sort segments
-        if (segments.length > 1) {
+        const length = segments.length;
+        if (length > 1) {
             segments.sort((a, b) => a.segment[0] - b.segment[0]);
         }
     
@@ -113,6 +119,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.selectedColor = Config.config.colorPalette.red;
         this.unselectedColor = Config.config.colorPalette.white;
         this.lockedColor = Config.config.colorPalette.locked;
+        this.selectedOpacity = "0.4";
+        this.amountIcons = 8;
 
         // Setup state
         this.state = {
@@ -138,7 +146,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
             actionState: SkipNoticeAction.None,
             showKeybindHint: this.props.showKeybindHint ?? true,
-            smaller: this.props.smaller ?? false
+            smaller: this.props.smaller ?? false,
+            hovering: new Array(this.amountIcons).fill(false)
         }
 
         if (!this.autoSkip) {
@@ -210,8 +219,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 className="voteButton"
                                 style={{marginRight: "5px"}}
                                 title={chrome.i18n.getMessage("upvoteButtonInfo")}
+                                onMouseLeave={() => this.hoverHandler(0, false)}
+                                onMouseEnter={() => this.hoverHandler(0, true)}
                                 onClick={() => this.prepAction(SkipNoticeAction.Upvote)}>
-                            <ThumbsUpSvg fill={(this.state.actionState === SkipNoticeAction.Upvote) ? this.selectedColor : this.unselectedColor} />
+                            <ThumbsUpSvg 
+                                fill={(this.state.actionState === SkipNoticeAction.Upvote) ? this.selectedColor : this.unselectedColor}
+                                selectFill={this.selectedColor} 
+                                opacity={this.state.hovering[0] ? this.selectedOpacity : "0"}/>
                         </div>
 
                         {/* Report Button */}
@@ -219,19 +233,28 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 className="voteButton"
                                 style={{marginRight: "5px", marginLeft: "5px"}}
                                 title={chrome.i18n.getMessage("reportButtonInfo")}
+                                onMouseLeave={() => this.hoverHandler(1, false)}
+                                onMouseEnter={() => this.hoverHandler(1, true)}
                                 onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
-                            <ThumbsDownSvg fill={this.downvoteButtonColor(SkipNoticeAction.Downvote)} />
+                            <ThumbsDownSvg 
+                                fill={this.downvoteButtonColor(SkipNoticeAction.Downvote)}
+                                selectFill={this.selectedColor} 
+                                opacity={this.state.hovering[1] ? this.selectedOpacity : "0"}/>
                         </div>
 
                         {/* Copy and Downvote Button */}
                         <div id={"sponsorTimesDownvoteButtonsContainerCopyDownvote" + this.idSuffix}
                                 className="voteButton"
                                 style={{marginLeft: "5px"}}
+                                onMouseLeave={() => this.hoverHandler(2, false)}
+                                onMouseEnter={() => this.hoverHandler(2, true)}
                                 onClick={() => this.openEditingOptions()}>
                             <PencilSvg fill={this.state.editing === true
                                             || this.state.actionState === SkipNoticeAction.CopyDownvote
                                             || this.state.choosingCategory === true
-                                            ? this.selectedColor : this.unselectedColor} />
+                                            ? this.selectedColor : this.unselectedColor}
+                                        selectFill={this.selectedColor} 
+                                        opacity={this.state.hovering[2] ? this.selectedOpacity : "0"} />
                         </div>
                     </td>
 
@@ -278,23 +301,29 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             (this.state.editing && !this.state.thanksForVotingText && !(this.state.choosingCategory || this.state.actionState === SkipNoticeAction.CopyDownvote) &&
                 <tr id={"sponsorSkipNoticeEditSegmentsRow" + this.idSuffix}
                     key={2}>
-                    <td id={"sponsorTimesEditSegmentsContainer" + this.idSuffix}>
+                    <td id={"sponsorTimesEditSegmentsContainer" + this.idSuffix}
+                            className="cpSvgButton">
 
                         {/* Copy Segment */}
-                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                        <div className="cpSvgButtonLeft"
                                 title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
-                                style={{color: this.downvoteButtonColor(SkipNoticeAction.Downvote)}}
+                                onMouseLeave={() => this.hoverHandler(4, false)}
+                                onMouseEnter={() => this.hoverHandler(4, true)}
                                 onClick={() => this.prepAction(SkipNoticeAction.CopyDownvote)}>
-                            {chrome.i18n.getMessage("CopyAndDownvote")}
-                        </button>
+                            <CopyPlusDownvoteSvg
+                                fill={this.state.isVip ? this.lockedColor : this.unselectedColor} 
+                                selectFill={this.selectedColor} 
+                                opacity={this.state.hovering[4] ? this.selectedOpacity : "0"}/>
+                        </div>
 
-                        {/* Category vote */}
-                        <button className="sponsorSkipObject sponsorSkipNoticeButton"
+                        {/* Category vote opener */}
+                        <div className="cpSvgButtonLeft cpSvgButtonRight"
                                 title={chrome.i18n.getMessage("ChangeCategoryTooltip")}
-                                style={{color: (this.state.actionState === SkipNoticeAction.CategoryVote && this.state.editing == true) ? this.selectedColor : this.unselectedColor}}
+                                onMouseLeave={() => this.hoverHandler(5, false)}
+                                onMouseEnter={() => this.hoverHandler(5, true)}
                                 onClick={() => this.resetStateToStart(SkipNoticeAction.CategoryVote, true, true)}>
-                            {chrome.i18n.getMessage("incorrectCategory")}
-                        </button>
+                            <CategoryDotsSvg />
+                        </div>
                     </td>
                 </tr>
             ),
@@ -335,6 +364,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 </tr>
             )
         ];
+    }
+
+    hoverHandler(iconIndex: number, select: boolean): void {
+        const hovering = this.state.hovering;
+        hovering[iconIndex] = select;
+
+        this.setState({
+            hovering: hovering
+        });
     }
 
     getSkipButton(): JSX.Element {
@@ -532,7 +570,13 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     openEditingOptions(): void {
-        this.resetStateToStart(undefined, true);
+        if (this.state.editing === true && this.state.actionState === SkipNoticeAction.CopyDownvote) {
+            this.resetStateToStart(undefined, true);
+        } else if ((this.state.editing === false && this.state.choosingCategory === false) || (this.state.editing === true && this.state.choosingCategory === true)) {
+            this.resetStateToStart(undefined, true);
+        } else if (this.state.editing === true && this.state.choosingCategory === false) {
+            this.resetStateToStart();
+        }
     }
 
     getCategoryOptions(): React.ReactElement[] {
@@ -571,7 +615,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             segments: this.state.segments,
 
             maxCountdownTime: () => Config.config.skipNoticeDuration,
-            countdownTime: Config.config.skipNoticeDuration
+            countdownTime: Config.config.skipNoticeDuration,
+            hovering: this.state.hovering
         };
 
         // See if the title should be changed
@@ -642,6 +687,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             } else if (type === 1) {
                 segment.hidden = SponsorHideType.Visible;
             }
+            this.setState({
+                hovering: new Array(this.amountIcons).fill(false)
+            })
             this.contentContainer().updateSegments([segment]);
             this.contentContainer().updatePreviewBar();
         }

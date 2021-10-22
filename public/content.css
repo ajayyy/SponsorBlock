@@ -606,11 +606,12 @@ input::-webkit-inner-spin-button {
 }
 
 /* ControlPanel Styles */
+
 .cpMainContainer {
 	width: 330px;
 	margin-bottom: 24px;
 	padding: 20px;
-	background-color: #222626;
+	background-color: #262626;
 	flex-direction: column;
 }
 
@@ -654,4 +655,20 @@ input::-webkit-inner-spin-button {
 	font-size: 14px;
 	display: block;
 	text-align: center;
+}
+
+.cpRefreshButton {
+	text-align: center;
+}
+
+.cpRefreshButtonRotate {
+	animation-name: cpRefreshButtonRotate;
+	animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes cpRefreshButtonRotate {
+	from {transform:rotate(0deg);}
+	to {transform:rotate(360deg);}
 }

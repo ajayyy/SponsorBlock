@@ -1,5 +1,8 @@
 import * as React from "react";
-import Config from "../config"
+import * as CompileConfig from "../../config.json";
+
+
+const s = CompileConfig.iconSize;
 
 const clipboardSvg = ({
   fill = "#ffffff",
@@ -8,8 +11,8 @@ const clipboardSvg = ({
   }): JSX.Element => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={s}
+      height={s}
       viewBox="0 0 24 24"
       fill={fill}
       className="cpCopyUUIDButton"

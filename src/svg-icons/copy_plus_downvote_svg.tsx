@@ -1,4 +1,8 @@
 import * as React from "react";
+import * as CompileConfig from "../../config.json";
+
+
+const s = CompileConfig.iconSize;
 
 const copyPlusDownvoteSvg = ({
   fill = "#ffffff",
@@ -7,8 +11,8 @@ const copyPlusDownvoteSvg = ({
   }): JSX.Element => (
     <svg 
         xmlns="http://www.w3.org/2000/svg"
-        width="72"
-        height="24"
+        width={s*3}
+        height={s}
         viewBox="0 0 72 24">
         <rect 
             x="0"
