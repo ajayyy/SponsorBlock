@@ -152,8 +152,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     className="sponsorTimeDisplay"
-                    onClick={this.toggleEditTime.bind(this)}
-                    onWheel={this.toggleEditTime.bind(this)}>
+                    onClick={this.toggleEditTime.bind(this)}>
                         {utils.getFormattedTime(segment[0], true) +
                             ((!isNaN(segment[1]) && getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable)
                                 ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
