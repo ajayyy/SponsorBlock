@@ -262,7 +262,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         } else {
             step = (e.ctrlKey) ? 0.1 : 0.01;
         }
-        
+
+        // Prevent the browser from changing page zoom
+        e.preventDefault();
+
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
         let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
         if (timeAsNumber !== null && e.deltaY != 0) {
