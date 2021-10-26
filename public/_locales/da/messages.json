@@ -138,5 +138,9 @@
     },
     "recordTimesDescription": {
         "message": "Indsend"
+    },
+    "submissionEditHint": {
+        "message": "Sektionsredigering vises, når du klikker på afsend",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     }
 }
