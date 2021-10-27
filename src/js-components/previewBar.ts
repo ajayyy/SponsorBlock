@@ -6,16 +6,16 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 'use strict';
 
 import Config from "../config";
-import { ActionType, ActionTypes, SponsorTime } from "../types";
+import { ActionType, ActionTypes, Category, CategoryActionType, SponsorTime } from "../types";
 import Utils from "../utils";
-import { getSkippingText } from "../utils/categoryUtils";
+import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
 const utils = new Utils();
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 
 export interface PreviewBarSegment {
     segment: [number, number];
-    category: string;
+    category: Category;
     unsubmitted: boolean;
     showLarger: boolean;
 }
@@ -177,14 +177,17 @@ class PreviewBar {
         this.segments = segments;
         this.videoDuration = videoDuration;
 
-        this.segments.sort(({segment: a}, {segment: b}) => {
+        const sortedSegments = this.segments.sort(({segment: a}, {segment: b}) => {
             // Sort longer segments before short segments to make shorter segments render later
             return (b[1] - b[0]) - (a[1] - a[0]);
-        }).forEach((segment) => {
+        });
+        for (const segment of sortedSegments) {
             const bar = this.createBar(segment);
 
             this.container.appendChild(bar);
-        });
+        }
+
+        this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]));
     }
 
     createBar({category, unsubmitted, segment, showLarger}: PreviewBarSegment): HTMLLIElement {
@@ -200,10 +203,99 @@ class PreviewBar {
 
         bar.style.position = "absolute";
         const duration = segment[1] - segment[0];
-        if (segment[1] - segment[0] > 0) bar.style.width = this.timeToPercentage(segment[1] - segment[0]);
-        bar.style.left = this.timeToPercentage(Math.min(this.videoDuration - Math.max(0, duration), segment[0]));
+        if (segment[1] - segment[0] > 0) bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])} - 2px)`;
+        bar.style.left = `calc(${this.timeToPercentage(Math.min(this.videoDuration - Math.max(0, duration), segment[0]))})`;
 
         return bar;
+    }
+
+    createChaptersBar(segments: PreviewBarSegment[]): void {
+        //<div class="ytp-chapter-hover-container ytp-exp-chapter-hover-container ytp-exp-chapter-hover-effect" style="margin-right: 2px; width: 458px;"><div class="ytp-progress-bar-padding"></div><div class="ytp-progress-list"><div class="ytp-play-progress ytp-swatch-background-color" style="left: 0px; transform: scaleX(0);"></div><div class="ytp-progress-linear-live-buffer"></div><div class="ytp-load-progress" style="left: 0px; transform: scaleX(1);"></div><div class="ytp-hover-progress ytp-hover-progress-light" style="left: 0px; transform: scaleX(0.708652);"></div><div class="ytp-ad-progress-list"></div></div></div>
+        // set specific width (use calc(% - 4px))
+
+        // TODO: run this only once, then just update it in another function
+
+        const progressBar = document.querySelector('.ytp-progress-bar');
+        const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
+        if (!progressBar || !chapterBar || segments?.length <= 0) return;
+
+        const observer = new MutationObserver((mutations) => {
+            const changes: Record<string, CSSStyleDeclaration> = {};
+            for (const mutation of mutations) {
+                const currentElement = mutation.target as HTMLElement;
+                if (mutation.type === "attributes" && mutation.attributeName === "style"
+                        && currentElement.parentElement.classList.contains("ytp-chapter-hover-container")) {
+                    changes[currentElement.classList[0]] = currentElement.style;
+                }
+            }
+
+            // newChapterBar.querySelector(`.${className}).style.width = `calc(${width * someFactor}% - 4px)`;
+        });
+
+        // observer.observe(chapterBar, {
+        //     childList: true,
+        //     subtree: true
+        // });
+
+        // Create it from cloning
+        const newChapterBar = chapterBar.cloneNode(true) as HTMLElement;
+        newChapterBar.classList.add("sponsorBlockChapterBar");
+        const originalSectionClone = newChapterBar.querySelector(".ytp-chapter-hover-container");
+
+        // Merge overlapping chapters
+        const mergedSegments = segments.filter((segment) => getCategoryActionType(segment.category) !== CategoryActionType.POI)
+                                    .reduce((acc, curr) => {
+            if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
+                acc.push(curr);
+            } else {
+                acc[acc.length - 1].segment[1] = Math.max(acc[acc.length - 1].segment[1], curr.segment[1]);
+            }
+
+            return acc;
+        }, [] as PreviewBarSegment[]);
+
+        // Modify it to have sections for each segment
+        for (let i = 0; i < mergedSegments.length; i++) {
+            const segment = mergedSegments[i];
+            if (i === 0 && segment.segment[0] > 0) {
+                const newBlankSection = originalSectionClone.cloneNode(true) as HTMLElement;
+                const blankDuration = segment.segment[0];
+
+                newBlankSection.style.marginRight = "2px";
+                newBlankSection.style.width = `calc(${this.timeToPercentage(blankDuration)} - 2px)`;
+                newChapterBar.appendChild(newBlankSection);
+            }
+
+            const duration = segment.segment[1] - segment.segment[0];
+            const newSection = originalSectionClone.cloneNode(true) as HTMLElement;
+
+            newSection.style.marginRight = "2px";
+            newSection.style.width = `calc(${this.timeToPercentage(duration)} - 2px)`;
+            newChapterBar.appendChild(newSection);
+
+            if (segment.segment[1] < this.videoDuration) {
+                const nextSegment = mergedSegments[i + 1];
+                const newBlankSection = originalSectionClone.cloneNode(true) as HTMLElement;
+                const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
+                const blankDuration = nextTime - segment.segment[1];
+
+                newBlankSection.style.marginRight = "2px";
+                newBlankSection.style.width = `calc(${this.timeToPercentage(blankDuration)} - 2px)`;
+                console.log(blankDuration + "\t" + this.videoDuration)
+                newChapterBar.appendChild(newBlankSection);
+            }
+        }
+
+        originalSectionClone.remove();
+        progressBar.prepend(newChapterBar);
+        
+        // Hide old bar
+        chapterBar.style.display = "none";
+
+        // clone stuff
+        // Setup mutation listener
+        // Modify sizes to meet new scales values
+        // Hide old element
     }
 
     updateChapterText(segments: SponsorTime[], currentTime: number): void {
