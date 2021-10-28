@@ -811,8 +811,20 @@
     "LearnMore": {
         "message": "Opi lisää"
     },
+    "CopyDownvoteButtonInfo": {
+        "message": "Äänestää alas ja luo paikallisen kopion, jonka voit lähettää uudelleen"
+    },
     "OpenCategoryWikiPage": {
         "message": "Avaa tämän kategorian wiki-sivu."
+    },
+    "CopyAndDownvote": {
+        "message": "Kopioi ja äänestä alas"
+    },
+    "ContinueVoting": {
+        "message": "Jatka äänestystä"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Tämä vaikuttaa sinun segmentteihin välittömästi"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."
