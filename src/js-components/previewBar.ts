@@ -224,18 +224,39 @@ class PreviewBar {
             for (const mutation of mutations) {
                 const currentElement = mutation.target as HTMLElement;
                 if (mutation.type === "attributes" && mutation.attributeName === "style"
-                        && currentElement.parentElement.classList.contains("ytp-chapter-hover-container")) {
+                        && currentElement.parentElement.classList.contains("ytp-progress-list")) {
                     changes[currentElement.classList[0]] = currentElement.style;
                 }
             }
 
-            // newChapterBar.querySelector(`.${className}).style.width = `calc(${width * someFactor}% - 4px)`;
+            // Go through each newly generated chapter bar and update the width based on changes array
+            const generatedChapterBar = document.querySelector(".sponsorBlockChapterBar");
+            if (generatedChapterBar) {
+                // Width reached so far in decimal percent
+                let cursor = 0;
+
+                const sections = generatedChapterBar.querySelectorAll(".ytp-chapter-hover-container") as NodeListOf<HTMLElement>;
+                for (const section of sections) {
+                    const sectionWidth = parseFloat(section.getAttribute("decimal-width"));
+
+                    for (const className in changes) {
+                        const currentChangedElement = section.querySelector(`.${className}`) as HTMLElement;
+                        if (currentChangedElement) {
+                            const transformScale = parseFloat(changes[className].transform.match(/scaleX\(([0-9.]+?)\)/)[1]);
+                            currentChangedElement.style.transform = `scaleX(${Math.min(1, (transformScale - cursor) / sectionWidth)}`;
+                        }
+                    }
+
+                    cursor += sectionWidth;
+                }
+            }
         });
 
-        // observer.observe(chapterBar, {
-        //     childList: true,
-        //     subtree: true
-        // });
+        observer.observe(chapterBar, {
+            subtree: true,
+            attributes: true,
+            attributeFilter: ["style"] //TODO: check for left too
+        });
 
         // Create it from cloning
         const newChapterBar = chapterBar.cloneNode(true) as HTMLElement;
@@ -263,6 +284,7 @@ class PreviewBar {
 
                 newBlankSection.style.marginRight = "2px";
                 newBlankSection.style.width = `calc(${this.timeToPercentage(blankDuration)} - 2px)`;
+                newBlankSection.setAttribute("decimal-width", String(this.timeToDecimal(blankDuration)));
                 newChapterBar.appendChild(newBlankSection);
             }
 
@@ -271,6 +293,7 @@ class PreviewBar {
 
             newSection.style.marginRight = "2px";
             newSection.style.width = `calc(${this.timeToPercentage(duration)} - 2px)`;
+            newSection.setAttribute("decimal-width", String(this.timeToDecimal(duration)));
             newChapterBar.appendChild(newSection);
 
             if (segment.segment[1] < this.videoDuration) {
@@ -281,7 +304,7 @@ class PreviewBar {
 
                 newBlankSection.style.marginRight = "2px";
                 newBlankSection.style.width = `calc(${this.timeToPercentage(blankDuration)} - 2px)`;
-                console.log(blankDuration + "\t" + this.videoDuration)
+                newBlankSection.setAttribute("decimal-width", String(this.timeToDecimal(blankDuration)));
                 newChapterBar.appendChild(newBlankSection);
             }
         }
@@ -359,6 +382,10 @@ class PreviewBar {
 
     timeToPercentage(time: number): string {
         return Math.min(100, time / this.videoDuration * 100) + '%';
+    }
+
+    timeToDecimal(time: number): number {
+        return Math.min(1, time / this.videoDuration);
     }
 
     /*
