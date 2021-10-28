@@ -220,12 +220,12 @@ class PreviewBar {
         if (!progressBar || !chapterBar || segments?.length <= 0) return;
 
         const observer = new MutationObserver((mutations) => {
-            const changes: Record<string, CSSStyleDeclaration> = {};
+            const changes: Record<string, MutationRecord> = {};
             for (const mutation of mutations) {
                 const currentElement = mutation.target as HTMLElement;
-                if (mutation.type === "attributes" && mutation.attributeName === "style"
+                if (mutation.type === "attributes" 
                         && currentElement.parentElement.classList.contains("ytp-progress-list")) {
-                    changes[currentElement.classList[0]] = currentElement.style;
+                    changes[currentElement.classList[0]] = mutation;
                 }
             }
 
@@ -237,17 +237,24 @@ class PreviewBar {
 
                 const sections = generatedChapterBar.querySelectorAll(".ytp-chapter-hover-container") as NodeListOf<HTMLElement>;
                 for (const section of sections) {
-                    const sectionWidth = parseFloat(section.getAttribute("decimal-width"));
+                    const sectionWidthDecimal = parseFloat(section.getAttribute("decimal-width"));
 
                     for (const className in changes) {
                         const currentChangedElement = section.querySelector(`.${className}`) as HTMLElement;
                         if (currentChangedElement) {
-                            const transformScale = parseFloat(changes[className].transform.match(/scaleX\(([0-9.]+?)\)/)[1]);
-                            currentChangedElement.style.transform = `scaleX(${Math.min(1, (transformScale - cursor) / sectionWidth)}`;
+                            const currentChange = changes[className];
+                            const changedElement = changes[className].target as HTMLElement;
+                            const left = parseFloat(changedElement.style.left.replace("px", "")) / progressBar.clientWidth;
+                            if (currentChange.attributeName === "style") {
+                                const transformScale = parseFloat(changedElement.style.transform.match(/scaleX\(([0-9.]+?)\)/)[1]) + left;
+                                currentChangedElement.style.transform = `scaleX(${Math.max(0, Math.min(1, (transformScale - cursor) / sectionWidthDecimal))}`;
+                            } else if  (currentChange.attributeName === "left") {
+                                currentChangedElement.style.left = `${Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal)) * 100}%`;
+                            }
                         }
                     }
 
-                    cursor += sectionWidth;
+                    cursor += sectionWidthDecimal;
                 }
             }
         });
@@ -255,7 +262,7 @@ class PreviewBar {
         observer.observe(chapterBar, {
             subtree: true,
             attributes: true,
-            attributeFilter: ["style"] //TODO: check for left too
+            attributeFilter: ["style", "left"]
         });
 
         // Create it from cloning
