@@ -32,6 +32,9 @@ class PreviewBar {
     segments: PreviewBarSegment[] = [];
     videoDuration = 0;
 
+    // For chapter bar
+    hoveredSection?: HTMLElement;
+
     constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean) {
         this.container = document.createElement('ul');
         this.container.id = 'previewbar';
@@ -246,8 +249,11 @@ class PreviewBar {
                             const changedElement = changes[className].target as HTMLElement;
                             const left = parseFloat(changedElement.style.left.replace("px", "")) / progressBar.clientWidth;
                             if (currentChange.attributeName === "style") {
-                                const transformScale = parseFloat(changedElement.style.transform.match(/scaleX\(([0-9.]+?)\)/)[1]) + left;
-                                currentChangedElement.style.transform = `scaleX(${Math.max(0, Math.min(1, (transformScale - cursor) / sectionWidthDecimal))}`;
+                                const transformMatch = changedElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
+                                if (transformMatch) {
+                                    const transformScale = parseFloat(transformMatch[1]) + left;
+                                    currentChangedElement.style.transform = `scaleX(${Math.max(0, Math.min(1, (transformScale - cursor) / sectionWidthDecimal))}`;
+                                }
                             } else if  (currentChange.attributeName === "left") {
                                 currentChangedElement.style.left = `${Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal)) * 100}%`;
                             }
@@ -289,18 +295,14 @@ class PreviewBar {
                 const newBlankSection = originalSectionClone.cloneNode(true) as HTMLElement;
                 const blankDuration = segment.segment[0];
 
-                newBlankSection.style.marginRight = "2px";
-                newBlankSection.style.width = `calc(${this.timeToPercentage(blankDuration)} - 2px)`;
-                newBlankSection.setAttribute("decimal-width", String(this.timeToDecimal(blankDuration)));
+                this.setupChapterSection(newBlankSection, blankDuration);
                 newChapterBar.appendChild(newBlankSection);
             }
 
             const duration = segment.segment[1] - segment.segment[0];
             const newSection = originalSectionClone.cloneNode(true) as HTMLElement;
 
-            newSection.style.marginRight = "2px";
-            newSection.style.width = `calc(${this.timeToPercentage(duration)} - 2px)`;
-            newSection.setAttribute("decimal-width", String(this.timeToDecimal(duration)));
+            this.setupChapterSection(newSection, duration);
             newChapterBar.appendChild(newSection);
 
             if (segment.segment[1] < this.videoDuration) {
@@ -309,9 +311,7 @@ class PreviewBar {
                 const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
                 const blankDuration = nextTime - segment.segment[1];
 
-                newBlankSection.style.marginRight = "2px";
-                newBlankSection.style.width = `calc(${this.timeToPercentage(blankDuration)} - 2px)`;
-                newBlankSection.setAttribute("decimal-width", String(this.timeToDecimal(blankDuration)));
+                this.setupChapterSection(newBlankSection, blankDuration);
                 newChapterBar.appendChild(newBlankSection);
             }
         }
@@ -321,11 +321,18 @@ class PreviewBar {
         
         // Hide old bar
         chapterBar.style.display = "none";
+    }
 
-        // clone stuff
-        // Setup mutation listener
-        // Modify sizes to meet new scales values
-        // Hide old element
+    private setupChapterSection(section: HTMLElement, duration: number): void {
+        section.style.marginRight = "2px";
+        section.style.width = `calc(${this.timeToPercentage(duration)} - 2px)`;
+        section.setAttribute("decimal-width", String(this.timeToDecimal(duration)));
+
+        section.addEventListener("mouseenter", () => {
+            this.hoveredSection?.classList.remove("ytp-exp-chapter-hover-effect");
+            section.classList.add("ytp-exp-chapter-hover-effect");
+            this.hoveredSection = section;
+        });
     }
 
     updateChapterText(segments: SponsorTime[], currentTime: number): void {
