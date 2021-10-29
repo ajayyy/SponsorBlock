@@ -50,7 +50,7 @@
 }
 
 .sponsorBlockChapterBar:hover {
-	z-index: 41;
+	z-index: 41 !important;
 }
 
 /*  */
