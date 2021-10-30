@@ -243,20 +243,26 @@ class PreviewBar {
                     const sectionWidthDecimal = parseFloat(section.getAttribute("decimal-width"));
 
                     for (const className in changes) {
-                        const currentChangedElement = section.querySelector(`.${className}`) as HTMLElement;
-                        if (currentChangedElement) {
-                            const currentChange = changes[className];
+                        const customChangedElement = section.querySelector(`.${className}`) as HTMLElement;
+                        if (customChangedElement) {
                             const changedElement = changes[className].target as HTMLElement;
+
                             const left = parseFloat(changedElement.style.left.replace("px", "")) / progressBar.clientWidth;
-                            if (currentChange.attributeName === "style") {
-                                const transformMatch = changedElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
-                                if (transformMatch) {
-                                    const transformScale = parseFloat(transformMatch[1]) + left;
-                                    currentChangedElement.style.transform = `scaleX(${Math.max(0, Math.min(1, (transformScale - cursor) / sectionWidthDecimal))}`;
-                                }
-                            } else if  (currentChange.attributeName === "left") {
-                                currentChangedElement.style.left = `${Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal)) * 100}%`;
+                            const calculatedLeft = Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal));
+                            if (!isNaN(left) && !isNaN(calculatedLeft)) {
+                                customChangedElement.style.left = `${calculatedLeft * 100}%`;
+                                customChangedElement.style.removeProperty("display");
                             }
+
+                            const transformMatch = changedElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
+                            if (transformMatch) {
+                                const transformScale = parseFloat(transformMatch[1]) + left;
+                                customChangedElement.style.transform = 
+                                    `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, 
+                                        (transformScale - cursor) / sectionWidthDecimal - calculatedLeft))}`;
+                            }
+
+                            customChangedElement.className = changedElement.className;
                         }
                     }
 
@@ -268,7 +274,7 @@ class PreviewBar {
         observer.observe(chapterBar, {
             subtree: true,
             attributes: true,
-            attributeFilter: ["style", "left"]
+            attributeFilter: ["style", "class"],
         });
 
         // Create it from cloning
