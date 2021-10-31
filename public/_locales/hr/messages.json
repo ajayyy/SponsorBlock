@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Preskoči opet"
     },
+    "unmute": {
+        "message": "Uključi zvuk"
+    },
     "paused": {
         "message": "Pauzirano"
     },
@@ -79,6 +82,15 @@
     "sponsorEnd": {
         "message": "Isječak završava sada"
     },
+    "sponsorCancel": {
+        "message": "Otkaži Kreiranje Segmenta"
+    },
+    "noVideoID": {
+        "message": "Nijedan YouTube video nije pronađen.\nAko ovo nije točno, osvježite karticu."
+    },
+    "refreshSegments": {
+        "message": "Osvježi segmente"
+    },
     "success": {
         "message": "Uspjeh!"
     },
@@ -97,11 +109,20 @@
     "openPopup": {
         "message": "Otvori okvir SponsorBlock"
     },
+    "closePopup": {
+        "message": "Zatvori izbornik"
+    },
     "SubmitTimes": {
         "message": "Podnesi isječke"
     },
     "submitCheck": {
         "message": "Jesi li siguran da želiš unijeti ovo?"
+    },
+    "whitelistChannel": {
+        "message": "Dopusti kanal"
+    },
+    "removeFromWhitelist": {
+        "message": "Izbaci kanal iz bijele liste"
     },
     "voteOnTime": {
         "message": "Glasaj za isječak"
