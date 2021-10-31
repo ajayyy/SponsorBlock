@@ -158,8 +158,6 @@ class PreviewBar {
             this.parent.addEventListener("mouseleave", () => this.container.classList.remove("hovered"));
         }
 
-        
-
         // On the seek bar
         this.parent.prepend(this.container);
     }
@@ -323,7 +321,11 @@ class PreviewBar {
         }
 
         originalSectionClone.remove();
-        progressBar.prepend(newChapterBar);
+        if (this.container?.parentElement === progressBar) {
+            progressBar.insertBefore(newChapterBar, this.container.nextSibling);
+        } else {
+            progressBar.prepend(newChapterBar);
+        }
         
         // Hide old bar
         chapterBar.style.display = "none";
