@@ -31,7 +31,6 @@ let sponsorVideoID: VideoID = null;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
-let lastPOISkip = 0;
 
 // JSON video info 
 let videoInfo: VideoInfo = null;
@@ -611,24 +610,6 @@ function setupVideoListeners() {
                 lastCheckVideoTime = video.currentTime;
     
                 startSponsorSchedule();
-            }
-
-            if (!Config.config.dontShowNotice) {
-                const currentPoiSegment = sponsorTimes?.find((segment) => 
-                        getCategoryActionType(segment.category) === CategoryActionType.POI &&
-                        video.currentTime - segment.segment[0] > 0 &&
-                        video.currentTime - segment.segment[0] < previewBar.getMinimumSize(true));
-                if (currentPoiSegment && lastPOISkip < Date.now() - 3000
-                        && !skipNotices.some((notice) => notice.segments.some((s) => s.UUID === currentPoiSegment.UUID))) {
-                    lastPOISkip = Date.now();
-                    skipToTime({
-                        v: video, 
-                        skipTime: currentPoiSegment.segment, 
-                        skippingSegments: [currentPoiSegment], 
-                        openNotice: true, 
-                        forceAutoSkip: true
-                    });
-                }
             }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
