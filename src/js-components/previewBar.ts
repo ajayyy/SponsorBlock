@@ -219,7 +219,7 @@ class PreviewBar {
 
         // TODO: run this only once, then just update it in another function
 
-        const progressBar = document.querySelector('.ytp-progress-bar');
+        const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar) return;
 
@@ -290,6 +290,8 @@ class PreviewBar {
         } else {
             progressBar.prepend(newChapterBar);
         }
+
+        this.updateChapterAllMutation(chapterBar, progressBar);
     }
 
     private setupChapterSection(section: HTMLElement, duration: number): void {
@@ -305,17 +307,17 @@ class PreviewBar {
     }
 
     private createChapterMutationObserver(): void {
-        const progressBar = document.querySelector('.ytp-progress-bar');
+        const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar) return;
 
         const observer = new MutationObserver((mutations) => {
-            const changes: Record<string, MutationRecord> = {};
+            const changes: Record<string, HTMLElement> = {};
             for (const mutation of mutations) {
                 const currentElement = mutation.target as HTMLElement;
                 if (mutation.type === "attributes" 
                         && currentElement.parentElement.classList.contains("ytp-progress-list")) {
-                    changes[currentElement.classList[0]] = mutation;
+                    changes[currentElement.classList[0]] = mutation.target as HTMLElement;
                 }
             }
 
@@ -328,8 +330,18 @@ class PreviewBar {
             attributeFilter: ["style", "class"],
         });
     }
+    
+    private updateChapterAllMutation(originalChapterBar: HTMLElement, progressBar: HTMLElement): void {
+        const elements = originalChapterBar.querySelectorAll(".ytp-progress-list > *");
+        const changes: Record<string, HTMLElement> = {};
+        for (const element of elements) {
+            changes[element.classList[0]] = element as HTMLElement;
+        }
 
-    private updateChapterMutation(changes: Record<string, MutationRecord>, progressBar: HTMLElement): void {
+        this.updateChapterMutation(changes, progressBar);
+    }
+
+    private updateChapterMutation(changes: Record<string, HTMLElement>, progressBar: HTMLElement): void {
         // Go through each newly generated chapter bar and update the width based on changes array
         if (this.customChaptersBar) {
             // Width reached so far in decimal percent
@@ -342,7 +354,7 @@ class PreviewBar {
                 for (const className in changes) {
                     const customChangedElement = section.querySelector(`.${className}`) as HTMLElement;
                     if (customChangedElement) {
-                        const changedElement = changes[className].target as HTMLElement;
+                        const changedElement = changes[className];
 
                         const left = parseFloat(changedElement.style.left.replace("px", "")) / progressBar.clientWidth;
                         const calculatedLeft = Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal));
