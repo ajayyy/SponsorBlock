@@ -1433,9 +1433,10 @@ function getRealCurrentTime(): number {
 }
 
 function startOrEndTimingNewSegment() {
+    const roundedTime = Math.round((getRealCurrentTime() + Number.EPSILON) * 1000) / 1000;
     if (!isSegmentCreationInProgress()) {
         sponsorTimesSubmitting.push({
-            segment: [getRealCurrentTime()],
+            segment: [roundedTime],
             UUID: null,
             category: Config.config.defaultCategory,
             actionType: ActionType.Skip,
@@ -1445,7 +1446,7 @@ function startOrEndTimingNewSegment() {
         // Finish creating the new segment
         const existingSegment = getIncompleteSegment();
         const existingTime = existingSegment.segment[0];
-        const currentTime = getRealCurrentTime();
+        const currentTime = roundedTime;
             
         // Swap timestamps if the user put the segment end before the start
         existingSegment.segment = [Math.min(existingTime, currentTime), Math.max(existingTime, currentTime)];
