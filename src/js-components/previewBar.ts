@@ -152,7 +152,7 @@ class PreviewBar {
         if (this.onMobileYouTube) {
             parent.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
             parent.style.opacity = "1";
-            
+
             this.container.style.transform = "none";
         } else if (!this.onInvidious) {
             // Hover listener
@@ -181,7 +181,7 @@ class PreviewBar {
         this.segments = segments;
         this.videoDuration = videoDuration;
 
-        const sortedSegments = this.segments.sort(({segment: a}, {segment: b}) => {
+        const sortedSegments = this.segments.sort(({ segment: a }, { segment: b }) => {
             // Sort longer segments before short segments to make shorter segments render later
             return (b[1] - b[0]) - (a[1] - a[0]);
         });
@@ -194,7 +194,7 @@ class PreviewBar {
         this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]));
     }
 
-    createBar({category, unsubmitted, segment, showLarger}: PreviewBarSegment): HTMLLIElement {
+    createBar({ category, unsubmitted, segment, showLarger }: PreviewBarSegment): HTMLLIElement {
         const bar = document.createElement('li');
         bar.classList.add('previewbar');
         bar.innerHTML = showLarger ? '&nbsp;&nbsp;' : '&nbsp;';
@@ -241,17 +241,17 @@ class PreviewBar {
         this.chaptersBarSegments = segments;
 
         // Merge overlapping chapters
-        const mergedSegments = segments.filter((segment) => getCategoryActionType(segment.category) !== CategoryActionType.POI 
-                                                            && segment.segment.length === 2)
-                                        .reduce((acc, curr) => {
-            if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
-                acc.push(curr);
-            } else {
-                acc[acc.length - 1].segment[1] = Math.max(acc[acc.length - 1].segment[1], curr.segment[1]);
-            }
+        const mergedSegments = segments.filter((segment) => getCategoryActionType(segment.category) !== CategoryActionType.POI
+            && segment.segment.length === 2)
+            .reduce((acc, curr) => {
+                if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
+                    acc.push(curr);
+                } else {
+                    acc[acc.length - 1].segment[1] = Math.max(acc[acc.length - 1].segment[1], curr.segment[1]);
+                }
 
-            return acc;
-        }, [] as PreviewBarSegment[]);
+                return acc;
+            }, [] as PreviewBarSegment[]);
 
         // Modify it to have sections for each segment
         for (let i = 0; i < mergedSegments.length; i++) {
@@ -291,7 +291,7 @@ class PreviewBar {
             progressBar.prepend(newChapterBar);
         }
 
-        this.updateChapterAllMutation(chapterBar, progressBar);
+        this.updateChapterAllMutation(chapterBar, progressBar, true);
     }
 
     private setupChapterSection(section: HTMLElement, duration: number): void {
@@ -315,8 +315,8 @@ class PreviewBar {
             const changes: Record<string, HTMLElement> = {};
             for (const mutation of mutations) {
                 const currentElement = mutation.target as HTMLElement;
-                if (mutation.type === "attributes" 
-                        && currentElement.parentElement.classList.contains("ytp-progress-list")) {
+                if (mutation.type === "attributes"
+                    && currentElement.parentElement.classList.contains("ytp-progress-list")) {
                     changes[currentElement.classList[0]] = mutation.target as HTMLElement;
                 }
             }
@@ -330,18 +330,18 @@ class PreviewBar {
             attributeFilter: ["style", "class"],
         });
     }
-    
-    private updateChapterAllMutation(originalChapterBar: HTMLElement, progressBar: HTMLElement): void {
+
+    private updateChapterAllMutation(originalChapterBar: HTMLElement, progressBar: HTMLElement, firstUpdate = false): void {
         const elements = originalChapterBar.querySelectorAll(".ytp-progress-list > *");
         const changes: Record<string, HTMLElement> = {};
         for (const element of elements) {
             changes[element.classList[0]] = element as HTMLElement;
         }
 
-        this.updateChapterMutation(changes, progressBar);
+        this.updateChapterMutation(changes, progressBar, firstUpdate);
     }
 
-    private updateChapterMutation(changes: Record<string, HTMLElement>, progressBar: HTMLElement): void {
+    private updateChapterMutation(changes: Record<string, HTMLElement>, progressBar: HTMLElement, firstUpdate = false): void {
         // Go through each newly generated chapter bar and update the width based on changes array
         if (this.customChaptersBar) {
             // Width reached so far in decimal percent
@@ -366,9 +366,15 @@ class PreviewBar {
                         const transformMatch = changedElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
                         if (transformMatch) {
                             const transformScale = parseFloat(transformMatch[1]) + left;
-                            customChangedElement.style.transform = 
-                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, 
+                            customChangedElement.style.transform =
+                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft,
                                     (transformScale - cursor) / sectionWidthDecimal - calculatedLeft))}`;
+
+                            // Prevent transition from occuring
+                            if (firstUpdate) {
+                                customChangedElement.style.transition = "none";
+                                setTimeout(() => customChangedElement.style.transition = "inherit", 50);
+                            }
                         }
 
                         customChangedElement.className = changedElement.className;
