@@ -292,11 +292,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 referenceNode: element.parentElement,
                 prependElement: element,
                 timeout: 15,
-                bottomOffset: 75 + "px",
+                bottomOffset: 0 + "px",
                 leftOffset: -318 + "px",
                 backgroundColor: "rgba(28, 28, 28, 1.0)",
                 htmlId: "sponsorTimesContainer" + this.idSuffix,
-                buttonFunction: () => {Config.config.scrollToEditTimeUpdate = true}
+                buttonFunction: () => { Config.config.scrollToEditTimeUpdate = true },
+                fontSize: "14px",
+                maxHeight: "200px"
             });
         }
     }
