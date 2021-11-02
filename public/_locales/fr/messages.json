@@ -699,6 +699,9 @@
     "downvoteDescription": {
         "message": "Segment de mauvaise qualité"
     },
+    "incorrectCategory": {
+        "message": "Changer de catégorie"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Cette vidéo est catégorisée comme de la musique. Êtes-vous sûr qu'elle est sponsorisée? S'il s'agit en fait d'un \"Segment non musical\", allez dans les options de l'extension et activez cette catégorie. Ensuite, vous pourrez soumettre ce segment en tant que \"Segment non musical\" au lieu de sponsor. Lisez les instructions en cas de confusion."
     },
@@ -807,6 +810,21 @@
     },
     "LearnMore": {
         "message": "En savoir plus"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Vote négatif et crée une copie locale que vous pouvez soumettre à nouveau"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Ouvrez la page wiki de cette catégorie."
+    },
+    "CopyAndDownvote": {
+        "message": "Copier et voter contre"
+    },
+    "ContinueVoting": {
+        "message": "Continuer à voter"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Cela s'appliquera instantanément à vos segments"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."

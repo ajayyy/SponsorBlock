@@ -699,6 +699,9 @@
     "downvoteDescription": {
         "message": "잘못된 타이밍입니다"
     },
+    "incorrectCategory": {
+        "message": "카테고리 변경"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "이 영상은 음악 영상으로 분류됩니다. 정말로 스폰서가 있는 것이 확실한가요? 만약 음악 이외의 구간인 경우, 확장 옵션을 열어 이 카테고리를 활성화 하세요. 그리고, 이 구간을 스폰서 대신 음악이 아닌 구간으로 제출하세요. 헷갈릴 경우 가이드라인을 읽으세요."
     },
@@ -807,6 +810,21 @@
     },
     "LearnMore": {
         "message": "더보기"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "반대에 투표한 뒤 다시 제출할 수 있도록 미제출 사본을 생성합니다"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "해당 카테고리의 위키 페이지를 엽니다."
+    },
+    "CopyAndDownvote": {
+        "message": "복사 및 반대"
+    },
+    "ContinueVoting": {
+        "message": "계속 투표"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "당신의 구간에 즉시 적용될 것입니다"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "편집 상자 위에 커서를 올린 채 스크롤하면 시간을 빠르게 조정할 수 있습니다. Ctrl이나 Shift 키를 누른 채로 스크롤하면 세밀한 조정이 가능합니다."

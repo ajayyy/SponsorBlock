@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Spring over"
     },
+    "unmute": {
+        "message": "Lyd til"
+    },
     "paused": {
         "message": "Sat på pause"
     },
@@ -115,7 +118,29 @@
     "submitCheck": {
         "message": "Er du sikker på, at du vil indsende dette?"
     },
+    "whitelistChannel": {
+        "message": "Hvidliste kanal"
+    },
+    "removeFromWhitelist": {
+        "message": "Fjern kanal fra hvidliste"
+    },
     "voteOnTime": {
         "message": "Stem På Et Segment"
+    },
+    "Submissions": {
+        "message": "Indsendelser"
+    },
+    "savedPeopleFrom": {
+        "message": "Du har reddet folk fra "
+    },
+    "viewLeaderboard": {
+        "message": "Topliste"
+    },
+    "recordTimesDescription": {
+        "message": "Indsend"
+    },
+    "submissionEditHint": {
+        "message": "Sektionsredigering vises, når du klikker på afsend",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     }
 }
