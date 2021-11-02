@@ -825,5 +825,8 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Isto irá aplicar instantaneamente seus segmentos"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Use a roda do mouse enquanto mantêm o cursor sobre a caixa de edição para ajustar o tempo rapidamente. Combinações das teclas ctrl e shift podem ser usadas para refinar as mudanças."
     }
 }
