@@ -242,7 +242,7 @@ class PreviewBar {
 
         // Merge overlapping chapters
         const mergedSegments = segments.filter((segment) => getCategoryActionType(segment.category) !== CategoryActionType.POI
-            && segment.segment.length === 2)
+            && segment.segment.length === 2 && this.timeToDecimal(segment.segment[1] - segment.segment[0]) > 0.003)
             .reduce((acc, curr) => {
                 if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
                     acc.push(curr);
