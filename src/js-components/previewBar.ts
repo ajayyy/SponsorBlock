@@ -33,7 +33,9 @@ class PreviewBar {
     videoDuration = 0;
 
     // For chapter bar
-    hoveredSection?: HTMLElement;
+    hoveredSection: HTMLElement;
+    customChaptersBar: HTMLElement;
+    chaptersBarSegments: PreviewBarSegment[];
 
     constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean) {
         this.container = document.createElement('ul');
@@ -44,6 +46,7 @@ class PreviewBar {
         this.onInvidious = onInvidious;
 
         this.createElement(parent);
+        this.createChapterMutationObserver();
 
         this.setupHoverText();
     }
@@ -218,71 +221,29 @@ class PreviewBar {
 
         const progressBar = document.querySelector('.ytp-progress-bar');
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
-        if (!progressBar || !chapterBar || segments?.length <= 0) return;
+        if (!progressBar || !chapterBar) return;
 
-        const observer = new MutationObserver((mutations) => {
-            const changes: Record<string, MutationRecord> = {};
-            for (const mutation of mutations) {
-                const currentElement = mutation.target as HTMLElement;
-                if (mutation.type === "attributes" 
-                        && currentElement.parentElement.classList.contains("ytp-progress-list")) {
-                    changes[currentElement.classList[0]] = mutation;
-                }
-            }
+        if (segments === this.chaptersBarSegments) return;
+        this.customChaptersBar?.remove();
 
-            // Go through each newly generated chapter bar and update the width based on changes array
-            const generatedChapterBar = document.querySelector(".sponsorBlockChapterBar");
-            if (generatedChapterBar) {
-                // Width reached so far in decimal percent
-                let cursor = 0;
-
-                const sections = generatedChapterBar.querySelectorAll(".ytp-chapter-hover-container") as NodeListOf<HTMLElement>;
-                for (const section of sections) {
-                    const sectionWidthDecimal = parseFloat(section.getAttribute("decimal-width"));
-
-                    for (const className in changes) {
-                        const customChangedElement = section.querySelector(`.${className}`) as HTMLElement;
-                        if (customChangedElement) {
-                            const changedElement = changes[className].target as HTMLElement;
-
-                            const left = parseFloat(changedElement.style.left.replace("px", "")) / progressBar.clientWidth;
-                            const calculatedLeft = Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal));
-                            if (!isNaN(left) && !isNaN(calculatedLeft)) {
-                                customChangedElement.style.left = `${calculatedLeft * 100}%`;
-                                customChangedElement.style.removeProperty("display");
-                            }
-
-                            const transformMatch = changedElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
-                            if (transformMatch) {
-                                const transformScale = parseFloat(transformMatch[1]) + left;
-                                customChangedElement.style.transform = 
-                                    `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, 
-                                        (transformScale - cursor) / sectionWidthDecimal - calculatedLeft))}`;
-                            }
-
-                            customChangedElement.className = changedElement.className;
-                        }
-                    }
-
-                    cursor += sectionWidthDecimal;
-                }
-            }
-        });
-
-        observer.observe(chapterBar, {
-            subtree: true,
-            attributes: true,
-            attributeFilter: ["style", "class"],
-        });
+        if (segments?.length <= 0) {
+            chapterBar.style.removeProperty("display");
+            return;
+        }
 
         // Create it from cloning
         const newChapterBar = chapterBar.cloneNode(true) as HTMLElement;
         newChapterBar.classList.add("sponsorBlockChapterBar");
-        const originalSectionClone = newChapterBar.querySelector(".ytp-chapter-hover-container");
+        newChapterBar.style.removeProperty("display");
+        const originalSection = newChapterBar.querySelector(".ytp-chapter-hover-container");
+
+        this.customChaptersBar = newChapterBar;
+        this.chaptersBarSegments = segments;
 
         // Merge overlapping chapters
-        const mergedSegments = segments.filter((segment) => getCategoryActionType(segment.category) !== CategoryActionType.POI)
-                                    .reduce((acc, curr) => {
+        const mergedSegments = segments.filter((segment) => getCategoryActionType(segment.category) !== CategoryActionType.POI 
+                                                            && segment.segment.length === 2)
+                                        .reduce((acc, curr) => {
             if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
                 acc.push(curr);
             } else {
@@ -296,7 +257,7 @@ class PreviewBar {
         for (let i = 0; i < mergedSegments.length; i++) {
             const segment = mergedSegments[i];
             if (i === 0 && segment.segment[0] > 0) {
-                const newBlankSection = originalSectionClone.cloneNode(true) as HTMLElement;
+                const newBlankSection = originalSection.cloneNode(true) as HTMLElement;
                 const blankDuration = segment.segment[0];
 
                 this.setupChapterSection(newBlankSection, blankDuration);
@@ -304,14 +265,14 @@ class PreviewBar {
             }
 
             const duration = segment.segment[1] - segment.segment[0];
-            const newSection = originalSectionClone.cloneNode(true) as HTMLElement;
+            const newSection = originalSection.cloneNode(true) as HTMLElement;
 
             this.setupChapterSection(newSection, duration);
             newChapterBar.appendChild(newSection);
 
             if (segment.segment[1] < this.videoDuration) {
                 const nextSegment = mergedSegments[i + 1];
-                const newBlankSection = originalSectionClone.cloneNode(true) as HTMLElement;
+                const newBlankSection = originalSection.cloneNode(true) as HTMLElement;
                 const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
                 const blankDuration = nextTime - segment.segment[1];
 
@@ -320,15 +281,15 @@ class PreviewBar {
             }
         }
 
-        originalSectionClone.remove();
+        // Hide old bar
+        chapterBar.style.display = "none";
+
+        originalSection.remove();
         if (this.container?.parentElement === progressBar) {
             progressBar.insertBefore(newChapterBar, this.container.nextSibling);
         } else {
             progressBar.prepend(newChapterBar);
         }
-        
-        // Hide old bar
-        chapterBar.style.display = "none";
     }
 
     private setupChapterSection(section: HTMLElement, duration: number): void {
@@ -341,6 +302,70 @@ class PreviewBar {
             section.classList.add("ytp-exp-chapter-hover-effect");
             this.hoveredSection = section;
         });
+    }
+
+    private createChapterMutationObserver(): void {
+        const progressBar = document.querySelector('.ytp-progress-bar');
+        const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
+        if (!progressBar || !chapterBar) return;
+
+        const observer = new MutationObserver((mutations) => {
+            const changes: Record<string, MutationRecord> = {};
+            for (const mutation of mutations) {
+                const currentElement = mutation.target as HTMLElement;
+                if (mutation.type === "attributes" 
+                        && currentElement.parentElement.classList.contains("ytp-progress-list")) {
+                    changes[currentElement.classList[0]] = mutation;
+                }
+            }
+
+            this.updateChapterMutation(changes, progressBar);
+        });
+
+        observer.observe(chapterBar, {
+            subtree: true,
+            attributes: true,
+            attributeFilter: ["style", "class"],
+        });
+    }
+
+    private updateChapterMutation(changes: Record<string, MutationRecord>, progressBar: HTMLElement): void {
+        // Go through each newly generated chapter bar and update the width based on changes array
+        if (this.customChaptersBar) {
+            // Width reached so far in decimal percent
+            let cursor = 0;
+
+            const sections = this.customChaptersBar.querySelectorAll(".ytp-chapter-hover-container") as NodeListOf<HTMLElement>;
+            for (const section of sections) {
+                const sectionWidthDecimal = parseFloat(section.getAttribute("decimal-width"));
+
+                for (const className in changes) {
+                    const customChangedElement = section.querySelector(`.${className}`) as HTMLElement;
+                    if (customChangedElement) {
+                        const changedElement = changes[className].target as HTMLElement;
+
+                        const left = parseFloat(changedElement.style.left.replace("px", "")) / progressBar.clientWidth;
+                        const calculatedLeft = Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal));
+                        if (!isNaN(left) && !isNaN(calculatedLeft)) {
+                            customChangedElement.style.left = `${calculatedLeft * 100}%`;
+                            customChangedElement.style.removeProperty("display");
+                        }
+
+                        const transformMatch = changedElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
+                        if (transformMatch) {
+                            const transformScale = parseFloat(transformMatch[1]) + left;
+                            customChangedElement.style.transform = 
+                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, 
+                                    (transformScale - cursor) / sectionWidthDecimal - calculatedLeft))}`;
+                        }
+
+                        customChangedElement.className = changedElement.className;
+                    }
+                }
+
+                cursor += sectionWidthDecimal;
+            }
+        }
     }
 
     updateChapterText(segments: SponsorTime[], currentTime: number): void {
