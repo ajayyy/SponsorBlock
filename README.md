@@ -60,21 +60,24 @@ You can read the API docs [here](https://wiki.sponsor.ajay.app/index.php/API_Doc
 
 # Building
 
-You must have Node.js 16 installed.
+You must have [Node.js 16](https://nodejs.org/) and npm installed.
 
-Rename `config.json.example` to `config.json` and adjust configuration as desired.
+1. Copy the file `config.json.example` to `config.json` and adjust configuration as desired.
 
-There are also other build scripts available. Install `npm`, then run `npm install` in the repository to install dependencies. 
+    - You will need to repeat this step in the future if you get build errors related to `CompileConfig`. This can happen for example when a new category is added.
 
-Run `npm run build` to generate a Chrome extension.
+2. Run `npm install` in the repository to install dependencies.
 
-Use `npm run build:firefox` to generate a Firefox extension.
+3. Run `npm run build:dev` (for Chrome) or `npm run build:dev:firefox` (for Firefox) to generate a development version of the extension with source maps.
 
-The result is in `dist`. This can be loaded as an unpacked extension
+    - You can also run `npm run build` (for Chrome) or `npm run build:firefox` (for Firefox) to generate a production build.
 
-## Developing with a clean profile
+4. The built extension is now in `dist/`. You can load it in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest) or in Firefox as a [temporary extension](https://developer.mozilla.org/en-US/docs/Tools/about:debugging#loading_a_temporary_extension).
 
-Run `npm run dev` to run the extension using a clean browser profile with hot reloading. Use `npm run dev:firefox` for Firefox. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).  
+### Developing with a clean profile and hot reloading
+
+Run `npm run dev` (for Chrome) or `npm run dev:firefox` (for Firefox) to run the extension using a clean browser profile with hot reloading. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
+
 Known chromium bug: Extension is not loaded properly on first start. Visit `chrome://extensions/` and reload the extension.
 
 For Firefox for Android, use `npm run dev:firefox-android -- --adb-device <ip-address of the device>`. See the [Firefox documentation](https://extensionworkshop.com/documentation/develop/developing-extensions-for-firefox-for-android/#debug-your-extension) for more information.
