@@ -62,7 +62,7 @@ You can read the API docs [here](https://wiki.sponsor.ajay.app/index.php/API_Doc
 
 You must have [Node.js 16](https://nodejs.org/) and npm installed.
 
-1. Copy the file `config.json.example` to `config.json`.
+1. Copy the file `config.json.example` to `config.json` and adjust configuration as desired.
 
     - You will need to repeat this step in the future if you get build errors related to `CompileConfig`. This can happen for example when a new category is added.
 
