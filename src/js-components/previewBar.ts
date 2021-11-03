@@ -194,7 +194,9 @@ class PreviewBar {
         this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]));
     }
 
-    createBar({ category, unsubmitted, segment, showLarger }: PreviewBarSegment): HTMLLIElement {
+    createBar(barSegment: PreviewBarSegment): HTMLLIElement {
+        const { category, unsubmitted, segment, showLarger } = barSegment;
+
         const bar = document.createElement('li');
         bar.classList.add('previewbar');
         bar.innerHTML = showLarger ? '&nbsp;&nbsp;' : '&nbsp;';
@@ -207,8 +209,8 @@ class PreviewBar {
 
         bar.style.position = "absolute";
         const duration = segment[1] - segment[0];
-        if (segment[1] - segment[0] > 0) bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])} - 2px)`;
-        bar.style.left = `calc(${this.timeToPercentage(Math.min(this.videoDuration - Math.max(0, duration), segment[0]))})`;
+        if (segment[1] - segment[0] > 0) bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${this.chapterFilter(barSegment) ? '- 2px' : ''})`;
+        bar.style.left = this.timeToPercentage(Math.min(this.videoDuration - Math.max(0, duration), segment[0]));
 
         return bar;
     }
@@ -241,8 +243,7 @@ class PreviewBar {
         this.chaptersBarSegments = segments;
 
         // Merge overlapping chapters
-        const mergedSegments = segments.filter((segment) => getCategoryActionType(segment.category) !== CategoryActionType.POI
-            && segment.segment.length === 2 && this.timeToDecimal(segment.segment[1] - segment.segment[0]) > 0.003)
+        const mergedSegments = segments.filter((segment) => this.chapterFilter(segment))
             .reduce((acc, curr) => {
                 if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
                     acc.push(curr);
@@ -443,6 +444,11 @@ class PreviewBar {
             this.tooltipContainer.classList.remove(TOOLTIP_VISIBLE_CLASS);
             this.tooltipContainer = undefined;
         }
+    }
+
+    private chapterFilter(segment: PreviewBarSegment): boolean {
+        return getCategoryActionType(segment.category) !== CategoryActionType.POI
+                && segment.segment.length === 2 && this.timeToDecimal(segment.segment[1] - segment.segment[0]) > 0.003;
     }
 
     timeToPercentage(time: number): string {
