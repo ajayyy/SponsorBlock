@@ -458,8 +458,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         sponsorTimesSubmitting[this.props.index].category = category;
 
         const inputActionType = this.actionTypeOptionRef?.current?.value as ActionType;
-        const actionType = inputActionType && CompileConfig.categorySupport[category].includes(inputActionType) ? inputActionType as ActionType 
-                                : CompileConfig.categorySupport[category][0];
+        const actionType = inputActionType && CompileConfig.categorySupport[category]?.includes(inputActionType) ? inputActionType as ActionType 
+                                : CompileConfig.categorySupport[category]?.[0] ?? ActionType.Skip;
         sponsorTimesSubmitting[this.props.index].actionType = actionType;
         
 
