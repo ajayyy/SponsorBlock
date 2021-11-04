@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Preskoči opet"
     },
+    "unmute": {
+        "message": "Uključi zvuk"
+    },
     "paused": {
         "message": "Pauzirano"
     },
@@ -79,6 +82,15 @@
     "sponsorEnd": {
         "message": "Isječak završava sada"
     },
+    "sponsorCancel": {
+        "message": "Otkaži Kreiranje Segmenta"
+    },
+    "noVideoID": {
+        "message": "Nijedan YouTube video nije pronađen.\nAko ovo nije točno, osvježite karticu."
+    },
+    "refreshSegments": {
+        "message": "Osvježi segmente"
+    },
     "success": {
         "message": "Uspjeh!"
     },
@@ -97,14 +109,32 @@
     "openPopup": {
         "message": "Otvori okvir SponsorBlock"
     },
+    "closePopup": {
+        "message": "Zatvori izbornik"
+    },
     "SubmitTimes": {
         "message": "Podnesi isječke"
     },
     "submitCheck": {
         "message": "Jesi li siguran da želiš unijeti ovo?"
     },
+    "whitelistChannel": {
+        "message": "Dopusti kanal"
+    },
+    "removeFromWhitelist": {
+        "message": "Izbaci kanal iz bijele liste"
+    },
     "voteOnTime": {
         "message": "Glasaj za isječak"
+    },
+    "Submissions": {
+        "message": "Podnesci"
+    },
+    "savedPeopleFrom": {
+        "message": "Sačuvali ste ljude od"
+    },
+    "viewLeaderboard": {
+        "message": "Ljestvica"
     },
     "recordTimesDescription": {
         "message": "Pošalji"
@@ -113,11 +143,17 @@
         "message": "Uređivanje dijela prikazat će se nakon što pritisneš gumb za slanje",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
+    "popupHint": {
+        "message": "Savjet: Možete namjestiti tipke za podnošenje u opcijama"
+    },
     "clearTimesButton": {
         "message": "Očisti vremena"
     },
     "submitTimesButton": {
         "message": "Unesi vremena"
+    },
+    "publicStats": {
+        "message": "Ovo se koristi na stranici sa javnim statistikama da se pokaže koliko se pridonijeli. Pogledajte"
     },
     "Username": {
         "message": "Korisničko ime"
@@ -125,8 +161,35 @@
     "setUsername": {
         "message": "Postavi korisničko ime"
     },
+    "copyPublicID": {
+        "message": "Kopiraj javni UserID"
+    },
+    "discordAdvert": {
+        "message": "Pridružite nam se u službenoj Discord zajednici i pošaljite svoje prijedloge i povrate informacije!"
+    },
+    "hideThis": {
+        "message": "Sakrijte ovo"
+    },
     "Options": {
         "message": "Opcije"
+    },
+    "showButtons": {
+        "message": "Pokažite gumbove na YouTube Player-u"
+    },
+    "hideButtons": {
+        "message": "Sakrite gumbove na YouTube Player-u"
+    },
+    "hideButtonsDescription": {
+        "message": "Ovo sakrije gumbove za pridonose segmenta za preskočiti koje se pokažu na YouTuve Player-u."
+    },
+    "showSkipButton": {
+        "message": "Ostavite gumb za preskakanje"
+    },
+    "showInfoButton": {
+        "message": "Pokažite gumb za Informacije na YouTube Player-u"
+    },
+    "hideInfoButton": {
+        "message": "Sakrijte gumb za Informacije na YouTube Player-u"
     },
     "showSkipNotice": {
         "message": "Pokaži obavijest nakon preskakanja isječka"

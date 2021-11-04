@@ -699,6 +699,9 @@
     "downvoteDescription": {
         "message": "Virheellinen/väärä aika"
     },
+    "incorrectCategory": {
+        "message": "Vaihda kategoria"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Tämä video on luokiteltu musiikiksi. Oletko varma, että siinä on sponsori? Jos tämä on oikeasti \"Musiikiton segmentti\", avaa laajennuksen asetukset ja ota tämä kategoria käyttöön. Sitten voit lähettää tämän segmentin oikeassa kategoriassa. Lue säännöt, jos olet vielä hämilläsi."
     },
@@ -807,6 +810,21 @@
     },
     "LearnMore": {
         "message": "Opi lisää"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Äänestää alas ja luo paikallisen kopion, jonka voit lähettää uudelleen"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Avaa tämän kategorian wiki-sivu."
+    },
+    "CopyAndDownvote": {
+        "message": "Kopioi ja äänestä alas"
+    },
+    "ContinueVoting": {
+        "message": "Jatka äänestystä"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Tämä vaikuttaa sinun segmentteihin välittömästi"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."

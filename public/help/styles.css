@@ -40,14 +40,6 @@ body {
   transform: translateY(-20%);
 }
 
-.projectPreviewImageLargeRight {
-  position: absolute;
-  right: -210px;
-  width: 200px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 .createdBy {
   font-size: 14px;
   text-align: center;
@@ -142,18 +134,9 @@ p,li,code,a {
 	overflow-wrap: break-word;
 }
 
-@media screen and (orientation:portrait) {
-  p,li,code,a {
-	max-width: 100%;
-  }
-  
-  .projectPreviewImage {
-    position: unset;
-    width: 130px;
-    display: block;
-    margin: auto;
-    transform: none;
-  }
+.optionsFrame {
+  width: 100%;
+  height: 500px;
 }
 
 .previewImage {
@@ -187,4 +170,33 @@ svg {
 
 #sbDonate {
   font-size: 10px;
+}
+
+@media screen and (orientation:portrait) {
+  .projectPreviewImage {
+    position: unset;
+    width: 50%;
+    display: block;
+    margin: auto;
+    transform: none;
+  }
+
+  .projectPreviewImageLarge {
+    position: unset;
+    left: 0;
+    width: 50%;
+    display: block;
+    margin: auto;
+    transform: unset;
+  }
+
+  .container {
+    max-width: 100%;
+    margin: 5px;
+    text-align: center;
+  }
+
+  p,li,code,a {
+    text-align: center;
+  }
 }

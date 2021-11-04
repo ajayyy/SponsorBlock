@@ -2,7 +2,7 @@ import Config from "./config";
 
 import Utils from "./utils";
 import { SponsorTime, SponsorHideType, CategoryActionType } from "./types";
-import { Message, MessageResponse } from "./messageTypes";
+import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { getCategoryActionType } from "./utils/categoryUtils";
 const utils = new Utils();
@@ -278,7 +278,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, (tabs) => onTabs(tabs, updating));
     }
 
-    function infoFound(request: { found: boolean, sponsorTimes: SponsorTime[] }) {
+    function infoFound(request: IsInfoFoundMessageResponse) {
         if (chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
@@ -289,6 +289,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         if (request != undefined) {
             //remove loading text
             PageElements.mainControls.style.display = "flex";
+            if (request.onMobileYouTube) PageElements.mainControls.classList.add("hidden");
             PageElements.whitelistButton.classList.remove("hidden");
             PageElements.loadingIndicator.style.display = "none";
 

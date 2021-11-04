@@ -183,7 +183,7 @@ export default class Utils {
         }
     }
 
-    setupAutoHideAnimation(element: Element, container: Element, enabled = true, rightSlide = true): void {
+    setupCustomHideAnimation(element: Element, container: Element, enabled = true, rightSlide = true): { hide: () => void, show: () => void } {
         if (enabled) element.classList.add("autoHiding");
         element.classList.add("hidden");
         element.classList.add("animationDone");
@@ -191,22 +191,30 @@ export default class Utils {
 
         let mouseEntered = false;
 
-        container.addEventListener("mouseenter", () => {
-            mouseEntered = true;
-            element.classList.remove("animationDone");
-
-            // Wait for next event loop
-            setTimeout(() => {
-                if (mouseEntered) element.classList.remove("hidden")
-            }, 10);
-        });
-
-        container.addEventListener("mouseleave", () => {
-            mouseEntered = false;
-            if (element.classList.contains("autoHiding")) {
-                element.classList.add("hidden");
+        return {
+            hide: () => {
+                mouseEntered = false;
+                if (element.classList.contains("autoHiding")) {
+                    element.classList.add("hidden");
+                }
+            },
+            show: () => {
+                mouseEntered = true;
+                element.classList.remove("animationDone");
+    
+                // Wait for next event loop
+                setTimeout(() => {
+                    if (mouseEntered) element.classList.remove("hidden")
+                }, 10);
             }
-        });
+        };
+    }
+
+    setupAutoHideAnimation(element: Element, container: Element, enabled = true, rightSlide = true): void {
+        const { hide, show } = this.setupCustomHideAnimation(element, container, enabled, rightSlide);
+
+        container.addEventListener("mouseleave", () => hide());
+        container.addEventListener("mouseenter", () => show());
     }
 
     enableAutoHideAnimation(element: Element): void {

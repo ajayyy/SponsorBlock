@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Ta opcja ukrywa przyciski do zamieszczania segmentów pojawiające się na odtwarzaczu YouTube."
     },
+    "showSkipButton": {
+        "message": "Kontynuuj wyświetlanie przycisku pomijania"
+    },
     "showInfoButton": {
         "message": "Pokaż przycisk informacyjny na odtwarzaczu YouTube"
     },
@@ -696,6 +699,9 @@
     "downvoteDescription": {
         "message": "Niepoprawne/Zły czas"
     },
+    "incorrectCategory": {
+        "message": "Zmień kategorię"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Ten film jest skategoryzowany jako muzyka. Czy masz pewność, że jest tutaj sponsor? Jeśli w rzeczywistości jest to „Sekcja Niemuzyczna”, otwórz opcje rozszerzenia i włącz tę kategorię. Wtedy będziesz w stanie zamieścić ten segment jako „Bez Muzyki” zamiast sponsora. Przeczytaj proszę wytyczne, jeśli masz wątpliwości."
     },
@@ -804,5 +810,23 @@
     },
     "LearnMore": {
         "message": "Dowiedz się więcej"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Minusuje i tworzy lokalną kopię, abyś mógł przesłać poprawioną wersję"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Otwórz stronę wiki dla tej kategorii."
+    },
+    "CopyAndDownvote": {
+        "message": "Skopiuj i zminusuj"
+    },
+    "ContinueVoting": {
+        "message": "Kontynuuj głosowanie"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "To natychmiastowo zostanie zastosowane do twoich segmentów"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Użyj scroll'a myszy po najechaniu nad pole edycji, aby szybko dostosować czas. Kombinacje z ctrl'em i shift'em mogą być użyte, aby doszlifować zmiany."
     }
 }

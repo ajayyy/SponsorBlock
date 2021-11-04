@@ -210,7 +210,9 @@ class PreviewBar {
         bar.style.position = "absolute";
         const duration = segment[1] - segment[0];
         if (segment[1] - segment[0] > 0) bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${this.chapterFilter(barSegment) ? ' - 2px' : ''})`;
-        bar.style.left = this.timeToPercentage(Math.min(this.videoDuration - Math.max(0, duration), segment[0]));
+        
+        const time = segment[1] ? Math.min(this.videoDuration - Math.max(0, duration), segment[0]) : segment[0];
+        bar.style.left = this.timeToPercentage(time);
 
         return bar;
     }

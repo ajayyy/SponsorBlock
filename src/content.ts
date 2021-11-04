@@ -17,6 +17,7 @@ import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { Tooltip } from "./render/Tooltip";
 import { getStartTimeFromUrl } from "./utils/urlParser";
+import { getControls } from "./utils/pageUtils";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -30,7 +31,6 @@ let sponsorVideoID: VideoID = null;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
-let lastPOISkip = 0;
 
 // JSON video info 
 let videoInfo: VideoInfo = null;
@@ -151,7 +151,8 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             //send the sponsor times along with if it's found
             sendResponse({
                 found: sponsorDataFound,
-                sponsorTimes: sponsorTimes
+                sponsorTimes: sponsorTimes,
+                onMobileYouTube
             });
 
             if (!request.updating && popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
@@ -191,7 +192,8 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "refreshSegments":
             sponsorsLookup(sponsorVideoID, false).then(() => sendResponse({
                 found: sponsorDataFound,
-                sponsorTimes: sponsorTimes
+                sponsorTimes: sponsorTimes,
+                onMobileYouTube
             }));
 
             return true;
@@ -336,6 +338,8 @@ async function videoIDChange(id) {
 function handleMobileControlsMutations(): void {
     updateVisibilityOfPlayerControlsButton();
 
+    skipButtonControlBar?.updateMobileControls();
+
     if (previewBar !== null) {
         if (document.body.contains(previewBar.container)) {
             const progressBarBackground = document.querySelector<HTMLElement>(".progress-bar-background");
@@ -392,13 +396,6 @@ function createPreviewBar(): void {
 function durationChangeListener(): void {
     updateAdFlag();
     updatePreviewBar();
-
-    if (sponsorTimes) sponsorTimes = sponsorTimes.filter(segmentDurationFilter);
-}
-
-function segmentDurationFilter(segment: SponsorTime): boolean {
-    return segment.videoDuration === 0 || !video?.duration 
-            || switchingVideos || Math.abs(video.duration - segment.videoDuration) < 2;
 }
 
 function cancelSponsorSchedule(): void {
@@ -612,24 +609,6 @@ function setupVideoListeners() {
             } else {
                 previewBar.updateChapterText(sponsorTimes, video.currentTime);
             }
-
-            if (!Config.config.dontShowNotice) {
-                const currentPoiSegment = sponsorTimes?.find((segment) => 
-                        getCategoryActionType(segment.category) === CategoryActionType.POI &&
-                        video.currentTime - segment.segment[0] > 0 &&
-                        video.currentTime - segment.segment[0] < previewBar.getMinimumSize(true));
-                if (currentPoiSegment && lastPOISkip < Date.now() - 3000
-                        && !skipNotices.some((notice) => notice.segments.some((s) => s.UUID === currentPoiSegment.UUID))) {
-                    lastPOISkip = Date.now();
-                    skipToTime({
-                        v: video, 
-                        skipTime: currentPoiSegment.segment, 
-                        skippingSegments: [currentPoiSegment], 
-                        openNotice: true, 
-                        forceAutoSkip: true
-                    });
-                }
-            }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
@@ -655,7 +634,8 @@ function setupSkipButtonControlBar() {
                 skippingSegments: [segment], 
                 openNotice: true, 
                 forceAutoSkip: true
-            })
+            }),
+            onMobileYouTube
         });
     }
 
@@ -681,19 +661,31 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         categories.push(categorySelection.name);
     }
 
+    const extraRequestData: Record<string, unknown> = {};
+    const windowHash = window.location.hash.substr(1);
+    if (windowHash) {
+        const params: Record<string, unknown> = windowHash.split('&').reduce((acc, param) => {
+            const [key, value] = param.split('=');
+            acc[key] = value;
+            return acc;
+        }, {});
+
+        if (params.requiredSegment) extraRequestData.requiredSegment = params.requiredSegment;
+    }
+
     // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
         actionTypes: Config.config.muteSegments ? [ActionType.Skip, ActionType.Mute] : [ActionType.Skip], 
-        userAgent: `${chrome.runtime.id}`
+        userAgent: `${chrome.runtime.id}`,
+        ...extraRequestData
     });
 
     if (response?.ok) {
         const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === id)
-                    ?.map((video) => video.segments)[0]
-                    ?.filter(segmentDurationFilter);
+                    ?.map((video) => video.segments)[0];
         if (!recievedSegments || !recievedSegments.length) { 
             // return if no video found
             retryFetch();
@@ -1239,6 +1231,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
             && skippingSegments.length === 1 
             && getCategoryActionType(skippingSegments[0].category) === CategoryActionType.POI) {
         skipButtonControlBar.enable(skippingSegments[0], !Config.config.highlightCategoryUpdate ? 15 : 0);
+        if (onMobileYouTube) skipButtonControlBar.setShowKeybindHint(false);
 
         if (!Config.config.highlightCategoryUpdate) {
             new Tooltip({
@@ -1259,6 +1252,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
             //send out the message saying that a sponsor message was skipped
             if (!Config.config.dontShowNotice || !autoSkip) {
                 const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime);
+                if (onMobileYouTube) newSkipNotice.setShowKeybindHint(false);
                 skipNotices.push(newSkipNotice);
 
                 activeSkipKeybindElement?.setShowKeybindHint(false);
@@ -1344,27 +1338,6 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 function shouldSkip(segment: SponsorTime): boolean {
     return utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
-}
-
-function getControls(): HTMLElement | false {
-    const controlsSelectors = [
-        // YouTube
-        ".ytp-right-controls",
-        // Mobile YouTube
-        ".player-controls-top",
-        // Invidious/videojs video element's controls element
-        ".vjs-control-bar",
-    ];
-
-    for (const controlsSelector of controlsSelectors) {
-        const controls = document.querySelectorAll(controlsSelector);
-
-        if (controls && controls.length > 0) {
-            return <HTMLElement> controls[controls.length - 1];
-        }
-    }
-
-    return false;
 }
 
 /** Creates any missing buttons on the YouTube player if possible. */
@@ -1465,9 +1438,10 @@ function getRealCurrentTime(): number {
 }
 
 function startOrEndTimingNewSegment() {
+    const roundedTime = Math.round((getRealCurrentTime() + Number.EPSILON) * 1000) / 1000;
     if (!isSegmentCreationInProgress()) {
         sponsorTimesSubmitting.push({
-            segment: [getRealCurrentTime()],
+            segment: [roundedTime],
             UUID: null,
             category: Config.config.defaultCategory,
             actionType: ActionType.Skip,
@@ -1477,7 +1451,7 @@ function startOrEndTimingNewSegment() {
         // Finish creating the new segment
         const existingSegment = getIncompleteSegment();
         const existingTime = existingSegment.segment[0];
-        const currentTime = getRealCurrentTime();
+        const currentTime = roundedTime;
             
         // Swap timestamps if the user put the segment end before the start
         existingSegment.segment = [Math.min(existingTime, currentTime), Math.max(existingTime, currentTime)];

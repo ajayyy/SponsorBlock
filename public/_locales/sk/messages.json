@@ -699,6 +699,9 @@
     "downvoteDescription": {
         "message": "Nesprávne/Zlé načasovanie"
     },
+    "incorrectCategory": {
+        "message": "Zmeniť kategóriu"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Toto video je kategorizované ako hudobné. Ste si istý, že obsahuje sponzora? Ak sa skutočne jedná o časť bez hudby, otvorte možnosti rozšírenia a povoľte túto kategóriu. Potom môžete tento segment uložiť ako kategóriu \"Bez hudby\" namiesto sponzora. Ak si neviete rady, tak si prosím prečítajte pravidlá."
     },
@@ -807,6 +810,21 @@
     },
     "LearnMore": {
         "message": "Zistiť viac"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Dá palec dole a vytvorí kópiu, aby ste mohli segment znova odoslať"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Otvoriť wiki stránku tejto kategórie."
+    },
+    "CopyAndDownvote": {
+        "message": "Skopírovať a dať palec dole"
+    },
+    "ContinueVoting": {
+        "message": "Pokračovať v hodnotení"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Týmto ihneď vykonáte zmeny v segmentoch"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Čas môžete rýchlo zmeniť kolieskom myši, ak je kurozor nad zadávacím políčkom. Pre jemné zmeny pritom držte kláves ctrl alebo shift."
