@@ -209,23 +209,17 @@ class PreviewBar {
 
         bar.style.position = "absolute";
         const duration = segment[1] - segment[0];
-        if (segment[1] - segment[0] > 0) bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${this.chapterFilter(barSegment) ? '- 2px' : ''})`;
+        if (segment[1] - segment[0] > 0) bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${this.chapterFilter(barSegment) ? ' - 2px' : ''})`;
         bar.style.left = this.timeToPercentage(Math.min(this.videoDuration - Math.max(0, duration), segment[0]));
 
         return bar;
     }
 
     createChaptersBar(segments: PreviewBarSegment[]): void {
-        //<div class="ytp-chapter-hover-container ytp-exp-chapter-hover-container ytp-exp-chapter-hover-effect" style="margin-right: 2px; width: 458px;"><div class="ytp-progress-bar-padding"></div><div class="ytp-progress-list"><div class="ytp-play-progress ytp-swatch-background-color" style="left: 0px; transform: scaleX(0);"></div><div class="ytp-progress-linear-live-buffer"></div><div class="ytp-load-progress" style="left: 0px; transform: scaleX(1);"></div><div class="ytp-hover-progress ytp-hover-progress-light" style="left: 0px; transform: scaleX(0.708652);"></div><div class="ytp-ad-progress-list"></div></div></div>
-        // set specific width (use calc(% - 4px))
-
-        // TODO: run this only once, then just update it in another function
-
         const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar) return;
 
-        if (segments === this.chaptersBarSegments) return;
         this.customChaptersBar?.remove();
 
         if (segments?.length <= 0) {
