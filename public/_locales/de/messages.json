@@ -98,7 +98,7 @@
         "message": "Abgestimmt!"
     },
     "serverDown": {
-        "message": "Der Server ist anscheinend offline. Bitte unverzüglich dem Entwickler melden."
+        "message": "Der Server ist anscheinend offline. Bitte kontaktiere den Entwickler unverzüglich."
     },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
