@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Bu YouTube oynatıcısındaki bölüm geçişlerini yolladığınız butonları saklayacaktır."
     },
+    "showSkipButton": {
+        "message": "“Asıl Kısma Atla” Düğmesi Oynatıcıda Kalsın"
+    },
     "showInfoButton": {
         "message": "YouTube Oynatıcısındaki Bilgi Butonunu Göster"
     },
