@@ -18,6 +18,7 @@ export interface PreviewBarSegment {
     category: Category;
     unsubmitted: boolean;
     showLarger: boolean;
+    description: string;
 }
 
 class PreviewBar {
@@ -129,10 +130,11 @@ class PreviewBar {
             } else if (segment !== null) {
                 this.tooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
 
+                const name = segment.description || utils.shortCategoryName(segment.category);
                 if (segment.unsubmitted) {
-                    this.categoryTooltip.textContent = chrome.i18n.getMessage("unsubmitted") + " " + utils.shortCategoryName(segment.category);
+                    this.categoryTooltip.textContent = chrome.i18n.getMessage("unsubmitted") + " " + name;
                 } else {
-                    this.categoryTooltip.textContent = utils.shortCategoryName(segment.category);
+                    this.categoryTooltip.textContent = name;
                 }
 
                 // Use the class if the timestamp text uses it to prevent overlapping
