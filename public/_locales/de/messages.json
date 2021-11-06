@@ -812,13 +812,13 @@
         "message": "Erfahre mehr"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Meldet als unzulässig und erstellt eine lokale Kopie zur späteren Einreichung"
+        "message": "Abwerten, und eine lokale Kopie zum erneuten Einreichen erstellen"
     },
     "OpenCategoryWikiPage": {
-        "message": "Den Wiki-Artikel dieser Kategorie aufrufen."
+        "message": "Öffne den Wiki-Artikel dieser Kategorie."
     },
     "CopyAndDownvote": {
-        "message": "Kopieren und abwerten"
+        "message": "Abwerten & Kopieren"
     },
     "ContinueVoting": {
         "message": "Bewerten fortsetzen"
