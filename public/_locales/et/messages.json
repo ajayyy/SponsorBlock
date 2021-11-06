@@ -754,8 +754,32 @@
     "helpPageReviewOptions": {
         "message": "Palun vaata allolevad valikud üle"
     },
+    "helpPageHowSkippingWorks": {
+        "message": "Kuidas vahelejätmine töötab"
+    },
+    "Submitting": {
+        "message": "Segmentide saatmine"
+    },
+    "Editing": {
+        "message": "Redigeerimine"
+    },
+    "helpPageTooSlow": {
+        "message": "See on liiga aeglane"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Kas ma saaksin andmebaasist koopia? Mis juhtub, kui sa kaod?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Andmebaas on avalik ning saadaval aadressil"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Lähtekood on vabalt saadaval. Seega, isegi kui minuga midagi juhtub, ei ole sinu saadetud segmendid kadunud."
+    },
     "helpPageNews": {
         "message": "Uudised ja kuidas see on valmistatud"
+    },
+    "helpPageSourceCode": {
+        "message": "Kust ma saan selle lähtekoodi?"
     },
     "Credits": {
         "message": "Tiitrid"
