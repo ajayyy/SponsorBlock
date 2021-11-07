@@ -403,7 +403,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
-                const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
+                const name = segmentTimes[i].description || utils.shortCategoryName(segmentTimes[i].category);
+                const textNode = document.createTextNode(name + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
                 segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
                             (getCategoryActionType(segmentTimes[i].category) !== CategoryActionType.POI 
