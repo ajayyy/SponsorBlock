@@ -362,7 +362,7 @@
         "message": "Nhập/Xuất mã người dùng của bạn"
     },
     "whatChangeUserID": {
-        "message": "Đây là mã cần được giữ bí mật. Nó giống như mật khẩu và không nên được chia sẻ cho bất kì ai khác. Nếu có ai đó lấy được mã này, họ có thể mạo danh bạn. Còn nếu như bạn đang tìm khoá ID công khai, hãy nhấn vào nút \"Sao chép Public ID\" trong popup của SponsorBlock."
+        "message": "Đây là mã cần được giữ bí mật. Nó giống như mật khẩu và không nên được chia sẻ cho bất kì ai khác. Nếu có ai đó lấy được mã này, họ có thể mạo danh bạn. Còn nếu như bạn đang tìm khoá ID công khai, hãy nhấn vào nút \"Sao chép Public UserID\" trong popup của SponsorBlock."
     },
     "setUserID": {
         "message": "Đặt mã người dùng"
