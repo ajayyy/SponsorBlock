@@ -427,6 +427,8 @@ function migrateOldFormats(config: SBConfig) {
 }
 
 async function setupConfig() {
+    if (typeof(chrome) === "undefined") return;
+
     await fetchConfig();
     addDefaults();
     convertJSON();

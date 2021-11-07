@@ -6,9 +6,9 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 'use strict';
 
 import Config from "../config";
-import { ActionType, ActionTypes, Category, CategoryActionType, SponsorTime } from "../types";
+import { ActionType, Category, CategoryActionType, SegmentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
-import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
+import { getCategoryActionType } from "../utils/categoryUtils";
 const utils = new Utils();
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
@@ -20,6 +20,10 @@ export interface PreviewBarSegment {
     unsubmitted: boolean;
     showLarger: boolean;
     description: string;
+}
+
+interface ChapterGroup extends SegmentContainer {
+    originalDuration: number 
 }
 
 class PreviewBar {
@@ -39,7 +43,8 @@ class PreviewBar {
     customChaptersBar: HTMLElement;
     chaptersBarSegments: PreviewBarSegment[];
 
-    constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean) {
+    constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean, test=false) {
+        if (test) return;
         this.container = document.createElement('ul');
         this.container.id = 'previewbar';
 
@@ -228,18 +233,10 @@ class PreviewBar {
         this.customChaptersBar?.remove();
 
         // Merge overlapping chapters
-        const mergedSegments = segments?.filter((segment) => this.chapterFilter(segment))
-            .reduce((acc, curr) => {
-                if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
-                    acc.push(curr);
-                } else {
-                    acc[acc.length - 1].segment[1] = Math.max(acc[acc.length - 1].segment[1], curr.segment[1]);
-                }
+        const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
+        const chaptersToRender = this.createChapterRenderGroups(filteredSegments).filter((segment) => this.chapterGroupFilter(segment));
 
-                return acc;
-            }, [] as PreviewBarSegment[]);
-
-        if (mergedSegments?.length <= 0) {
+        if (chaptersToRender?.length <= 0) {
             chapterBar.style.removeProperty("display");
             return;
         }
@@ -254,31 +251,13 @@ class PreviewBar {
         this.chaptersBarSegments = segments;
 
         // Modify it to have sections for each segment
-        for (let i = 0; i < mergedSegments.length; i++) {
-            const segment = mergedSegments[i];
-            if (i === 0 && segment.segment[0] > 0) {
-                const newBlankSection = originalSection.cloneNode(true) as HTMLElement;
-                const blankDuration = segment.segment[0];
-
-                this.setupChapterSection(newBlankSection, blankDuration);
-                newChapterBar.appendChild(newBlankSection);
-            }
-
-            const duration = segment.segment[1] - segment.segment[0];
+        for (let i = 0; i < chaptersToRender.length; i++) {
+            const chapter = chaptersToRender[i].segment;
+            const duration = chapter[1] - chapter[0];
             const newSection = originalSection.cloneNode(true) as HTMLElement;
 
             this.setupChapterSection(newSection, duration);
             newChapterBar.appendChild(newSection);
-
-            const nextSegment = mergedSegments[i + 1];
-            const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
-            if (this.timeToDecimal(nextTime - segment.segment[1]) > MIN_CHAPTER_SIZE) {
-                const newBlankSection = originalSection.cloneNode(true) as HTMLElement;
-                const blankDuration = nextTime - segment.segment[1];
-
-                this.setupChapterSection(newBlankSection, blankDuration);
-                newChapterBar.appendChild(newBlankSection);
-            }
         }
 
         // Hide old bar
@@ -292,6 +271,83 @@ class PreviewBar {
         }
 
         this.updateChapterAllMutation(chapterBar, progressBar, true);
+    }
+
+    createChapterRenderGroups(segments: PreviewBarSegment[]): ChapterGroup[] {
+        const result: ChapterGroup[] = [];
+
+        segments?.forEach((segment, index) => {
+            const latestChapter = result[result.length - 1];
+            if (latestChapter && latestChapter.segment[1] > segment.segment[0]) {
+                const segmentDuration = segment.segment[1] - segment.segment[0];
+                if (segmentDuration < latestChapter.originalDuration) {
+                    // Remove latest if it starts too late
+                    let latestValidChapter = latestChapter;
+                    const chaptersToAddBack: ChapterGroup[] = []
+                    while (latestValidChapter?.segment[0] >= segment.segment[0]) {
+                        const invalidChapter = result.pop();
+                        if (invalidChapter.segment[1] > segment.segment[1]) {
+                            if (invalidChapter.segment[0] === segment.segment[0]) {
+                                invalidChapter.segment[0] = segment.segment[1];
+                            }
+                            chaptersToAddBack.push(invalidChapter);
+                        }
+                        latestValidChapter = result[result.length - 1];
+                    }
+
+                    // Split the latest chapter if smaller
+                    result.push({
+                        segment: [segment.segment[0], segment.segment[1]],
+                        originalDuration: segmentDuration,
+                    });
+                    if (latestValidChapter?.segment[1] > segment.segment[1]) {
+                        result.push({
+                            segment: [segment.segment[1], latestValidChapter.segment[1]],
+                            originalDuration: latestValidChapter.originalDuration
+                        });
+                    }
+
+                    result.push(...chaptersToAddBack);
+                    if (latestValidChapter) latestValidChapter.segment[1] = segment.segment[0];
+                } else {
+                    // Start at end of old one if bigger
+                    result.push({
+                        segment: [latestChapter.segment[1], segment.segment[1]],
+                        originalDuration: segmentDuration
+                    });
+                }
+            } else {
+                // Add empty buffer before segment if needed
+                const lastTime = latestChapter?.segment[1] || 0;
+                if (segment.segment[0] > lastTime) {
+                    result.push({
+                        segment: [lastTime, segment.segment[0]],
+                        originalDuration: 0
+                    });
+                }
+
+                // Normal case
+                result.push({
+                    segment: [segment.segment[0], segment.segment[1]],
+                    originalDuration: segment.segment[1] - segment.segment[0]
+                });
+            }
+
+            // Add empty buffer after segment if needed
+            if (index === segments.length - 1) {
+                const nextSegment = segments[index + 1];
+                const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
+                const lastTime = result[result.length - 1]?.segment[1] || segment.segment[1];
+                if (this.timeToDecimal(nextTime - lastTime) > MIN_CHAPTER_SIZE) {
+                    result.push({
+                        segment: [lastTime, nextTime],
+                        originalDuration: 0
+                    });
+                }
+            }
+        });
+
+        return result;
     }
 
     private setupChapterSection(section: HTMLElement, duration: number): void {
@@ -447,7 +503,11 @@ class PreviewBar {
 
     private chapterFilter(segment: PreviewBarSegment): boolean {
         return getCategoryActionType(segment.category) !== CategoryActionType.POI
-                && segment.segment.length === 2 && this.timeToDecimal(segment.segment[1] - segment.segment[0]) > MIN_CHAPTER_SIZE;
+                && this.chapterGroupFilter(segment);
+    }
+
+    private chapterGroupFilter(segment: SegmentContainer): boolean {
+        return segment.segment.length === 2 && this.timeToDecimal(segment.segment[1] - segment.segment[0]) > MIN_CHAPTER_SIZE;
     }
 
     timeToPercentage(time: number): string {

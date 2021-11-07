@@ -74,8 +74,11 @@ export enum SponsorSourceType {
     Local = 1
 }
 
-export interface SponsorTime {
+export interface SegmentContainer {
     segment: [number] | [number, number];
+}
+
+export interface SponsorTime extends SegmentContainer {
     UUID: SegmentUUID;
     locked?: number;
 
