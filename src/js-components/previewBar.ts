@@ -12,6 +12,7 @@ import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
 const utils = new Utils();
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
+const MIN_CHAPTER_SIZE = 0.003;
 
 export interface PreviewBarSegment {
     segment: [number, number];
@@ -269,10 +270,10 @@ class PreviewBar {
             this.setupChapterSection(newSection, duration);
             newChapterBar.appendChild(newSection);
 
-            if (segment.segment[1] < this.videoDuration) {
-                const nextSegment = mergedSegments[i + 1];
+            const nextSegment = mergedSegments[i + 1];
+            const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
+            if (this.timeToDecimal(nextTime - segment.segment[1]) > MIN_CHAPTER_SIZE) {
                 const newBlankSection = originalSection.cloneNode(true) as HTMLElement;
-                const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
                 const blankDuration = nextTime - segment.segment[1];
 
                 this.setupChapterSection(newBlankSection, blankDuration);
@@ -446,7 +447,7 @@ class PreviewBar {
 
     private chapterFilter(segment: PreviewBarSegment): boolean {
         return getCategoryActionType(segment.category) !== CategoryActionType.POI
-                && segment.segment.length === 2 && this.timeToDecimal(segment.segment[1] - segment.segment[0]) > 0.003;
+                && segment.segment.length === 2 && this.timeToDecimal(segment.segment[1] - segment.segment[0]) > MIN_CHAPTER_SIZE;
     }
 
     timeToPercentage(time: number): string {
