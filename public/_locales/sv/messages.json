@@ -287,7 +287,7 @@
         "message": "Hoppa över är inaktiverat"
     },
     "yourWork": {
-        "message": "Ditt Bidrag",
+        "message": "Ditt bidrag",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
@@ -719,7 +719,7 @@
         "message": "Kategorier finns här!"
     },
     "categoryUpdate2": {
-        "message": "Öppna alternativen för att hoppa över intros, outros, merch, osv."
+        "message": "Öppna alternativen för att hoppa över intros, outros, varor, osv."
     },
     "help": {
         "message": "Hjälp"
@@ -794,7 +794,7 @@
         "message": "Databasen är offentlig och finns på"
     },
     "helpPageCopyOfDatabase2": {
-        "message": "Källkoden är fritt tillgänglig. Så, även om något händer mig, är dina bidrag inte förlorade."
+        "message": "Källkoden är fritt tillgänglig. Så, även om något händer mig, är dina inskickningar inte förlorade."
     },
     "helpPageNews": {
         "message": "Nyheter och hur är det gjort"
