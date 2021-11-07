@@ -227,7 +227,19 @@ class PreviewBar {
 
         this.customChaptersBar?.remove();
 
-        if (segments?.length <= 0) {
+        // Merge overlapping chapters
+        const mergedSegments = segments?.filter((segment) => this.chapterFilter(segment))
+            .reduce((acc, curr) => {
+                if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
+                    acc.push(curr);
+                } else {
+                    acc[acc.length - 1].segment[1] = Math.max(acc[acc.length - 1].segment[1], curr.segment[1]);
+                }
+
+                return acc;
+            }, [] as PreviewBarSegment[]);
+
+        if (mergedSegments?.length <= 0) {
             chapterBar.style.removeProperty("display");
             return;
         }
@@ -240,18 +252,6 @@ class PreviewBar {
 
         this.customChaptersBar = newChapterBar;
         this.chaptersBarSegments = segments;
-
-        // Merge overlapping chapters
-        const mergedSegments = segments.filter((segment) => this.chapterFilter(segment))
-            .reduce((acc, curr) => {
-                if (acc.length === 0 || curr.segment[0] > acc[acc.length - 1].segment[1]) {
-                    acc.push(curr);
-                } else {
-                    acc[acc.length - 1].segment[1] = Math.max(acc[acc.length - 1].segment[1], curr.segment[1]);
-                }
-
-                return acc;
-            }, [] as PreviewBarSegment[]);
 
         // Modify it to have sections for each segment
         for (let i = 0; i < mergedSegments.length; i++) {
