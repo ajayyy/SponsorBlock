@@ -1,7 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, CategoryActionType } from "./types";
+import { SponsorTime, SponsorHideType, CategoryActionType, ActionType } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { getCategoryActionType } from "./utils/categoryUtils";
@@ -411,7 +411,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                                 : "");
                 segmentTimeFromToNode.style.margin = "5px";
 
-                sponsorTimeButton.appendChild(categoryColorCircle);
+                if (segmentTimes[i].actionType !== ActionType.Chapter) sponsorTimeButton.appendChild(categoryColorCircle);
                 sponsorTimeButton.appendChild(textNode);
                 sponsorTimeButton.appendChild(segmentTimeFromToNode);
 
