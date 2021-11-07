@@ -69,23 +69,27 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         </select>
                     </td>
                     
-                    <td id={this.props.category + "ColorOption"}
-                        className="colorOption">
-                        <input
-                            className="categoryColorTextBox option-text-box"
-                            type="color"
-                            onChange={(event) => this.setColorState(event, false)}
-                            value={this.state.color} />
-                    </td>
+                    {this.props.category !== "chapter" &&
+                        <td id={this.props.category + "ColorOption"}
+                            className="colorOption">
+                            <input
+                                className="categoryColorTextBox option-text-box"
+                                type="color"
+                                onChange={(event) => this.setColorState(event, false)}
+                                value={this.state.color} />
+                        </td>
+                    }
 
-                    <td id={this.props.category + "PreviewColorOption"}
-                        className="previewColorOption">
-                        <input
-                            className="categoryColorTextBox option-text-box"
-                            type="color"
-                            onChange={(event) => this.setColorState(event, true)}
-                            value={this.state.previewColor} />
-                    </td>
+                    {this.props.category !== "chapter" &&
+                        <td id={this.props.category + "PreviewColorOption"}
+                            className="previewColorOption">
+                            <input
+                                className="categoryColorTextBox option-text-box"
+                                type="color"
+                                onChange={(event) => this.setColorState(event, true)}
+                                value={this.state.previewColor} />
+                        </td>
+                    }
 
                 </tr>
 
@@ -154,7 +158,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     getCategorySkipOptions(): JSX.Element[] {
         const elements: JSX.Element[] = [];
 
-        const optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+        let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+        if (this.props.category === "chapter") optionNames = ["disable", "showOverlay"]
 
         for (const optionName of optionNames) {
             elements.push(
