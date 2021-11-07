@@ -124,7 +124,8 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     previewTime,
     videoInfo,
     getRealCurrentTime: getRealCurrentTime,
-    lockedCategories
+    lockedCategories,
+    channelIDInfo
 });
 
 // value determining when to count segment as skipped and send telemetry to server (percent based)

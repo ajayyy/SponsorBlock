@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config";
-import { ActionType, ActionTypes, Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
+import { ActionType, ActionTypes, Category, CategoryActionType, ChannelIDStatus, ContentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
 import { getCategoryActionType } from "../utils/categoryUtils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
+import SelectorComponent, { SelectorOption } from "./SelectorComponent";
 
 
 const utils = new Utils();
@@ -25,6 +26,9 @@ export interface SponsorTimeEditState {
     editing: boolean;
     sponsorTimeEdits: [string, string];
     selectedCategory: Category;
+    description: string;
+    suggestedNames: SelectorOption[];
+    chapterNameSelectorOpen: boolean;
 }
 
 const DEFAULT_CATEGORY = "chooseACategory";
@@ -42,6 +46,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     previousSkipType: CategoryActionType;
     timeBeforeChangingToPOI: number; // Initialized when first selecting POI
 
+    // For description auto-complete
+    fetchingSuggestions: boolean;
+
     constructor(props: SponsorTimeEditProps) {
         super(props);
 
@@ -52,10 +59,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.idSuffix = this.props.idSuffix;
         this.previousSkipType = CategoryActionType.Skippable;
         
+        const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
         this.state = {
             editing: false,
             sponsorTimeEdits: [null, null],
-            selectedCategory: DEFAULT_CATEGORY as Category
+            selectedCategory: DEFAULT_CATEGORY as Category,
+            description: sponsorTime.description || "",
+            suggestedNames: [],
+            chapterNameSelectorOpen: false
         };
     }
 
@@ -206,14 +217,22 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                 {/* Chapter Name */}
                 {sponsorTime.actionType === ActionType.Chapter ? (
-                    <div style={{position: "relative"}}>
+                    <div onMouseLeave={() => this.setState({chapterNameSelectorOpen: false})}>
                         <input id={"chapterName" + this.idSuffix}
                             className="sponsorTimeEdit"
                             ref={this.descriptionOptionRef}
                             type="text"
-                            value={sponsorTime.description || ""}
-                            onChange={() => this.saveEditTimes()}>
+                            value={this.state.description}
+                            onChange={(e) => this.descriptionUpdate(e.target.value)}
+                            onFocus={() => this.setState({chapterNameSelectorOpen: true})}>
                         </input>
+                        {this.state.chapterNameSelectorOpen && this.state.description &&
+                            <SelectorComponent
+                                id={"chapterNameSelector" + this.idSuffix}
+                                options={this.state.suggestedNames}
+                                onChange={(v) => this.descriptionUpdate(v)}
+                            />
+                        }
                     </div>
                 ): ""}
 
@@ -518,6 +537,41 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             //update video player
             this.props.contentContainer().updateEditButtonsOnPlayer();
         }
+    }
+
+    descriptionUpdate(description: string): void {
+        this.setState({
+            description
+        });
+
+        if (!this.fetchingSuggestions) {
+            this.fetchSuggestions(description);
+        }
+
+        this.saveEditTimes();
+    }
+
+    async fetchSuggestions(description: string): Promise<void> {
+        if (this.props.contentContainer().channelIDInfo.status !== ChannelIDStatus.Found) return;
+
+        this.fetchingSuggestions = true;
+        const result = await utils.asyncRequestToServer("GET", "/api/chapterNames", {
+            description,
+            channelID: this.props.contentContainer().channelIDInfo.id
+        });
+
+        if (result.ok) {
+            try {
+                const names = JSON.parse(result.responseText) as {description: string}[];
+                this.setState({
+                    suggestedNames: names.map(n => ({
+                        label: n.description
+                    }))
+                });
+            } catch (e) {} //eslint-disable-line no-empty
+        }
+
+        this.fetchingSuggestions = false;
     }
 
     configUpdate(): void {
