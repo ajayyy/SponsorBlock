@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "이전 에피소드를 간략히 요약하거나 현재 동영상에서 나중에 나올 내용을 예고해줍니다. 음성 요약이 아니라 편집된 동영상을 통한 요약입니다."
     },
+    "category_filler": {
+        "message": "쓸데없는 잡담"
+    },
+    "category_filler_description": {
+        "message": "쓸데없는 잡담은 동영상의 주요 콘텐츠를 이해하는 데 필요없는 시간 떼우기 장면이나 농담만을 말합니다. 맥락이나 상세한 배경지식을 설명하는 부분은 해당하지 않습니다."
+    },
+    "category_filler_short": {
+        "message": "잡담"
+    },
     "category_music_offtopic": {
         "message": "음악이 아닌 구간"
     },
