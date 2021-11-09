@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Az előző részekben történtek rövid ismétlése, vagy a videó további tartalmának előzetese. Összevágott jelenetekhez, nem szóbeli összegzéshez."
     },
+    "category_filler": {
+        "message": "Témától eltérő töltelék"
+    },
+    "category_filler_description": {
+        "message": "Csak töltelékként, vagy humornak hozzáadott részek, amik nem szükségesek a videó fő tartalmának megértéséhez. Ne tartalmazzon olyan szegmenseket, amik kontextust, vagy alapvető információkat szolgáltatnak."
+    },
+    "category_filler_short": {
+        "message": "Töltelék"
+    },
     "category_music_offtopic": {
         "message": "Zene: nem-zene szegmens"
     },
