@@ -45,7 +45,6 @@ interface SBConfig {
     showDonationLink: boolean,
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
-    highlightCategoryUpdate: boolean,
     colorPalette: {
         red: string,
         white: string,
@@ -202,12 +201,14 @@ const Config: SBObject = {
         showDonationLink: true,
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
-        highlightCategoryUpdate: false, // TODO: Remove this once update is done
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
 
         categorySelections: [{
             name: "sponsor" as Category,
             option: CategorySkipOption.AutoSkip
+        }, {
+            name: "poi_highlight" as Category,
+            option: CategorySkipOption.ManualSkip
         }],
 
         colorPalette: {
@@ -389,16 +390,11 @@ function fetchConfig(): Promise<void> {
 }
 
 function migrateOldFormats(config: SBConfig) {
-    // Should eventually move into defaults
-    if (!config["highlightCategoryAdded"] && !config.categorySelections.some((s) => s.name === "poi_highlight")) {
-        config["highlightCategoryAdded"] = true;
-        
-        config.categorySelections.push({
-            name: "poi_highlight" as Category,
-            option: CategorySkipOption.ManualSkip
-        });
-
-        config.categorySelections = config.categorySelections;
+    if (config["highlightCategoryAdded"] !== undefined) {
+        chrome.storage.sync.remove("highlightCategoryAdded");
+    }
+    if (config["highlightCategoryUpdate"] !== undefined) {
+        chrome.storage.sync.remove("highlightCategoryUpdate");
     }
 
     if (config["askAboutUnlistedVideos"]) {

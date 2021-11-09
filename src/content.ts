@@ -1225,20 +1225,8 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
     if (!autoSkip 
             && skippingSegments.length === 1 
             && getCategoryActionType(skippingSegments[0].category) === CategoryActionType.POI) {
-        skipButtonControlBar.enable(skippingSegments[0], !Config.config.highlightCategoryUpdate ? 15 : 0);
+        skipButtonControlBar.enable(skippingSegments[0]);
         if (onMobileYouTube) skipButtonControlBar.setShowKeybindHint(false);
-
-        if (!Config.config.highlightCategoryUpdate) {
-            new Tooltip({
-                text: chrome.i18n.getMessage("highlightNewFeature"),
-                link: "https://blog.ajay.app/highlight-sponsorblock",
-                referenceNode: skipButtonControlBar.getElement().parentElement,
-                prependElement: skipButtonControlBar.getElement(),
-                timeout: 15
-            });
-
-            Config.config.highlightCategoryUpdate = true;
-        }
 
         activeSkipKeybindElement?.setShowKeybindHint(false);
         activeSkipKeybindElement = skipButtonControlBar;
