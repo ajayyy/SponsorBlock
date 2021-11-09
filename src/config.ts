@@ -75,6 +75,8 @@ interface SBConfig {
         "preview-music_offtopic": PreviewBarOption,
         "poi_highlight": PreviewBarOption,
         "preview-poi_highlight": PreviewBarOption,
+        "filler": PreviewBarOption,
+        "preview-filler": PreviewBarOption,
     }
 }
 
@@ -282,6 +284,14 @@ const Config: SBObject = {
             },
             "preview-poi_highlight": {
                 color: "#9b044c",
+                opacity: "0.7"
+            },
+            "filler": {
+                color: "#7300FF",
+                opacity: "0.9"
+            },
+            "preview-filler": {
+                color: "#2E0066",
                 opacity: "0.7"
             }
         }

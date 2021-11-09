@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Quick recap of previous episodes, or a preview of what's coming up later in the current video. Meant for edited together clips, not for spoken summaries."
     },
+    "category_filler": {
+        "message": "Filler Tangent"
+    },
+    "category_filler_description": {
+        "message": "Tangential scenes added only for filler or humor that are not required to understand the main content of the video. This should not include segments providing context or background details."
+    },
+    "category_filler_short": {
+        "message": "Filler"
+    },
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
     },
