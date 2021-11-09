@@ -563,6 +563,12 @@
     "category_preview_description": {
         "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
     },
+    "category_filler_description": {
+        "message": "Filleriksi tai huumoriksi lisättyjä sekundaarisia kohtauksia, joita ei vaadita videon pääsisällön ymmärtämiseen. Tämän ei tulisi sisältää segmenttejä, jotka tarjoavat kontekstia tai taustatietoja."
+    },
+    "category_filler_short": {
+        "message": "Filleri"
+    },
     "category_music_offtopic": {
         "message": "Musiikki: Musiikiton osa"
     },
