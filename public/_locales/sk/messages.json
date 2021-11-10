@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Rýchla rekapitulácia predošlej epizódy alebo ukážka toho, čo bude nasledovať neskôr v aktuálnom videu. Myslené pre zostrihané videá, nie pre hovorený súhrn."
     },
+    "category_filler": {
+        "message": "Odbočka mimo tému"
+    },
+    "category_filler_description": {
+        "message": "Odbočky mimo tému pridané len pre zábavu, nepotrebné pre pochopenie hlavného obsahu videa. Nemalo by zahŕňať segmenty, ktoré vysvetľujú kontext alebo vedľajšie detaily."
+    },
+    "category_filler_short": {
+        "message": "Odbočka"
+    },
     "category_music_offtopic": {
         "message": "Hudba: časť bez hudby"
     },
