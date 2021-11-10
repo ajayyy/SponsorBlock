@@ -3,6 +3,22 @@
         "message": "SponsorBlock for YouTube - Skip Sponsorships",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Παράλειψη χορηγιών, επαιτείας συνδρομής και άλλων στα βίντεο του YouTube. Αναφέρετε χορηγούς σε βίντεο που βλέπετε για να εξοικονομήσετε τον χρόνο άλλων.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Ο διακομιστής είπε πως το αίτημα αυτό ήταν άκυρο"
+    },
+    "429": {
+        "message": "Έχετε υποβάλει πάρα πολλές ώρες χορηγών για αυτό το βίντεο, είστε σίγουροι ότι υπάρχουν τόσες πολλές;"
+    },
+    "409": {
+        "message": "Αυτό έχει ήδη υποβληθεί"
+    },
+    "channelWhitelisted": {
+        "message": "Το κανάλι προστέθηκε στην λίστα επιτρεπόμενων!"
+    },
     "Segment": {
         "message": "τμήμα"
     },

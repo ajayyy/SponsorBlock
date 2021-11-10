@@ -182,6 +182,9 @@
     "hideButtonsDescription": {
         "message": "Nasconde i pulsanti che appaiono sul video per inviare i segmenti da nascondere."
     },
+    "showSkipButton": {
+        "message": "Mantieni Salta Per Evidenziare il Pulsante Sul Lettore"
+    },
     "showInfoButton": {
         "message": "Mostra il pulsante delle informazioni sopra al video"
     },
@@ -560,6 +563,15 @@
     "category_preview_description": {
         "message": "Riepilogo rapido degli episodi precedenti, o un'anteprima di ciò che sta arrivando più tardi nel video attuale. Inteso per clip, non per riassunti a voce."
     },
+    "category_filler": {
+        "message": "Tangente di Riempimento"
+    },
+    "category_filler_description": {
+        "message": "Le scene tangenziali aggiunte solo per riempire o per umorismo che non sono richieste per comprendere il contenuto principale del video. Questo non dovrebbe includere segmenti che forniscono contesto o dettagli di sfondo."
+    },
+    "category_filler_short": {
+        "message": "Riempimento"
+    },
     "category_music_offtopic": {
         "message": "Musica: Sezione Non-Musicale"
     },
@@ -696,6 +708,9 @@
     "downvoteDescription": {
         "message": "Tempo Non Corretto/Errato"
     },
+    "incorrectCategory": {
+        "message": "Cambia Categoria"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Questo video è classificato come musica. Sei sicuro che questo video contenga uno sponsor? Se questo è in realtà un \"Segmento Non-Musica\", apri le opzioni di questa estensione e abilita questa categoria. Quindi, è possibile inviare questo segmento come \"Non-Music\" invece di sponsor. Si prega di leggere la guida se si è confusi."
     },
@@ -728,6 +743,9 @@
     },
     "hideForever": {
         "message": "Nascondi per sempre"
+    },
+    "warningChatInfo": {
+        "message": "Hai ricevuto un avviso e non puoi inviare temporaneamente i segmenti. Questo significa che abbiamo notato che stavi commettendo degli errori comuni, non malevoli; sei pregato di confermare di comprendere le regole e rimuoveremo l'avviso. Puoi anche unirti a questa chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Voto rifiutato a causa di un ammonimento. Clicca per aprire una chat per risolverlo, oppure torna dopo quando hai tempo.",
@@ -801,5 +819,23 @@
     },
     "LearnMore": {
         "message": "Scopri di Più"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Vota negativamente e crea una copia locale per reinviare"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Apri la pagina della wiki di questa categoria."
+    },
+    "CopyAndDownvote": {
+        "message": "Copia e vota negativamente"
+    },
+    "ContinueVoting": {
+        "message": "Continua a Votare"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Questo si applicherà istantaneamente ai tuoi segmenti"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Usa la rotellina del mouse passando sulla casella di modifica per regolare rapidamente il tempo. Le combinazioni dei tasti ctrl o shift sono utilizzabili per perfezionare le modifiche."
     }
 }

@@ -23,7 +23,7 @@
         "message": "szegmens"
     },
     "Segments": {
-        "message": "szegmensek"
+        "message": "szegmens"
     },
     "upvoteButtonInfo": {
         "message": "Részlet felszavazása"
@@ -83,7 +83,7 @@
         "message": "Szegmens vége"
     },
     "sponsorCancel": {
-        "message": "Szegmens Készítés Visszavonása"
+        "message": "Szegmens készítés visszavonása"
     },
     "noVideoID": {
         "message": "Nem találtunk YouTube videót.\nHa ez helytelen, frissítsd a lapot."
@@ -101,7 +101,7 @@
         "message": "Úgy tűnik a szerver nem működik. Kérjük, mihamarabb értesítse a fejlesztőket."
     },
     "connectionError": {
-        "message": "Kapcsolódási probléma merült fel. Error kód: "
+        "message": "Kapcsolódási probléma merült fel. Hibakód: "
     },
     "clearTimes": {
         "message": "Szegmensek törlése"
@@ -131,7 +131,7 @@
         "message": "Beküldések"
     },
     "savedPeopleFrom": {
-        "message": "Megspóroltál másoknak "
+        "message": "Megspóroltál másoknak: "
     },
     "viewLeaderboard": {
         "message": "Ranglista"
@@ -140,17 +140,17 @@
         "message": "Küldés"
     },
     "submissionEditHint": {
-        "message": "A szegmens szerkesztés azután fog megjelenni miután a közzétételre kattintasz",
+        "message": "A szegmens szerkesztés azután fog megjelenni, hogy a beküldésre kattintasz",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Tipp: A beállításokban készíthetsz gyorsbillentyűket a közzétetelhez"
+        "message": "Tipp: A beállításokban megadhatsz gyorsbillentyűket a beküldéshez"
     },
     "clearTimesButton": {
         "message": "Időpontok törlése"
     },
     "submitTimesButton": {
-        "message": "Időpontok megadása"
+        "message": "Időpontok beküldése"
     },
     "publicStats": {
         "message": "Ezt használja a nyilvános ranglistán, hogy megmutassa mennyit járult hozzá. Nézze meg"
@@ -343,7 +343,7 @@
         "message": "Ez az idő zárójelben jelenik meg az aktuális idő mellett a keresősáv alatt. Megmutatja a videó teljes időtartamát, levonva a szegmenseket. Beletartoznak a csak \"Megjelenítés a keresősávban\" jelöléssel ellátott szegmensek is."
     },
     "youHaveSkipped": {
-        "message": "Átugrottál "
+        "message": "Átugrottál: "
     },
     "youHaveSaved": {
         "message": "Megtakarított magának "
@@ -467,7 +467,7 @@
         "message": "Ez az össze beállítása JSON-ban. Ebbe bele tartozik a userID-ja, szóval csak ésszel ossza meg."
     },
     "setOptions": {
-        "message": "Beállítások"
+        "message": "Beállítások módosítása"
     },
     "exportOptionsWarning": {
         "message": "Figyelem: Az beállítások megváltoztatása végleges, és tönkreteheti a bővítményét. Biztosan meg szeretné tenni? Készítsen egy biztonsági mentést a régi beállításairól, biztos, ami biztos."
@@ -518,7 +518,7 @@
         "message": "már máshoz van állítva. Kérem, válasszon egy másik billentyűt."
     },
     "to": {
-        "message": "-tól eddig:",
+        "message": "–",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
@@ -562,6 +562,15 @@
     },
     "category_preview_description": {
         "message": "Az előző részekben történtek rövid ismétlése, vagy a videó további tartalmának előzetese. Összevágott jelenetekhez, nem szóbeli összegzéshez."
+    },
+    "category_filler": {
+        "message": "Témától eltérő töltelék"
+    },
+    "category_filler_description": {
+        "message": "Csak töltelékként, vagy humornak hozzáadott részek, amik nem szükségesek a videó fő tartalmának megértéséhez. Ne tartalmazzon olyan szegmenseket, amik kontextust, vagy alapvető információkat szolgáltatnak."
+    },
+    "category_filler_short": {
+        "message": "Töltelék"
     },
     "category_music_offtopic": {
         "message": "Zene: nem-zene szegmens"
@@ -694,7 +703,7 @@
         "message": "Alapértelmezett állapotban, a bővítmény átugorhat szegmenseket, mielőtt tudná melyik csatornán van. Alapból ezért, néhány szegmens, ami a videók legelején van, engedélyezett csatornákon is átugródhat. Ennek a bekapcsolásával ez elkerülhető, de minden átugrás előtt lesz egy kis késleltetés, hiszen a channelID megszerzéséhez elkell egy kis idő. Ez a késleltetés akár észrevehetetlen is lehet, ha elég gyors a kapcsolata."
     },
     "forceChannelCheckPopup": {
-        "message": "Gondolja át a \"Csatorna ellenőrzése átugrás előtt\" bekapcsolását"
+        "message": "Fontolja meg a \"Csatorna ellenőrzése átugrás előtt\" bekapcsolását"
     },
     "downvoteDescription": {
         "message": "Helytelen/rossz időzítés"
@@ -767,7 +776,7 @@
         "message": "Ahányszor átugrik egy szegmenst, kapni fog egy értesítést. Ha rossznak tűnik az időzítés, szavazza le a leszavazás gombra kattintva! A felugró ablakban is szavazhat."
     },
     "Submitting": {
-        "message": "Küldés"
+        "message": "Beküldés"
     },
     "helpPageSubmitting1": {
         "message": "Beküldeni lehet a felugró ablakban a \"Szegmens eleje\" gombra kattintva, vagy a videó lejátszón lévő gombokkal."
