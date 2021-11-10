@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Kurze Zusammenfassung bisheriger Videos oder eine Vorschau auf das aktuelle Video. Für zusammengeschnittene Clips gedacht, jedoch nicht für mündliche Zusammenfassungen."
     },
+    "category_filler": {
+        "message": "Füller Nebensächlichkeit"
+    },
+    "category_filler_description": {
+        "message": "Nebensächliche Szenen, die nur als Füller oder Witz dienen und nicht benötigt sind um den Hauptinhalt des Videos zu verstehen. Dies bezieht sich nicht auf Segmente, die Kontext oder Hintergrunddetails liefern."
+    },
+    "category_filler_short": {
+        "message": "Füller"
+    },
     "category_music_offtopic": {
         "message": "Musikvideoteile ohne Musik"
     },
