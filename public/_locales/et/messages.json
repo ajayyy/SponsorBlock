@@ -17,7 +17,7 @@
         "message": "See on juba varasemalt saadetud"
     },
     "channelWhitelisted": {
-        "message": "Kanal lubamisnimekirjas!"
+        "message": "Kanal ignoreerimisnimekirjas!"
     },
     "Segment": {
         "message": "segmendi"
@@ -119,10 +119,10 @@
         "message": "Kas soovid kindlasti selle saata?"
     },
     "whitelistChannel": {
-        "message": "Lisa kanal lubamisnimekirja"
+        "message": "Lisa kanal ignoreerimisnimekirja"
     },
     "removeFromWhitelist": {
-        "message": "Eemalda kanal lubamisnimekirjast"
+        "message": "Eemalda kanal ignoreerimisnimekirjast"
     },
     "voteOnTime": {
         "message": "Hääleta segmendi sobivust"
@@ -506,7 +506,7 @@
         "message": "Lõikelauale kirjutamine ebaõnnestus"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopeerib lõikelauale info, mida saad arendajale anda veast teatamisel või siis, kui arendaja seda sinult taotleb. Tundlik info, sealhulgas sinu kasutaja ID, lubamisnimekirjas kanalid ning kohandatud serveri aadress on eemaldatud. Siiski see sisaldab teatud infot, nagu sinu kasutajaagent, brauser, opsüsteem ning laienduse versiooninumber."
+        "message": "Kopeerib lõikelauale info, mida saad arendajale anda veast teatamisel või siis, kui arendaja seda sinult taotleb. Tundlik info, sealhulgas sinu kasutaja ID, ignoreerimisnimekirjas kanalid ning kohandatud serveri aadress on eemaldatud. Siiski see sisaldab teatud infot, nagu sinu kasutajaagent, brauser, opsüsteem ning laienduse versiooninumber."
     },
     "copyDebugInformationComplete": {
         "message": "Silumisinfo on lõikelauale kopeeritud. Võid sellelt vabalt eemaldada mistahes info, mida ei soovi jagada. Salvesta see tekstifaili või kleebi vearaportisse."
@@ -700,7 +700,7 @@
         "message": "Sunnitud kanalikontroll enne vahelejätmist"
     },
     "whatForceChannelCheck": {
-        "message": "Vaikimisi jätab see segmendid vahele juba siis, kui veel kanalitki ei tea. Vaikimisi võidakse mõned video alguses olevad segmendid lubamisnimekirjas olevatel kanalitel vahele jätta. Selle valiku lubamine väldib seda, kuid võib lisada vahelejätmistele väikese viivituse, sest kanali ID hankimine võib aega võtta. Viivitus võib kiire interneti puhul olla märkamatu."
+        "message": "Vaikimisi jätab see segmendid vahele juba siis, kui veel kanalitki ei tea. Vaikimisi võidakse mõned video alguses olevad segmendid ignoreerimisnimekirjas olevatel kanalitel vahele jätta. Selle valiku lubamine väldib seda, kuid võib lisada vahelejätmistele väikese viivituse, sest kanali ID hankimine võib aega võtta. Viivitus võib kiire interneti puhul olla märkamatu."
     },
     "forceChannelCheckPopup": {
         "message": "Kaalu valiku \"Sunnitud kanalikontroll enne vahelejätmist\" lubamist"
@@ -815,6 +815,6 @@
         "message": "See rakendub sinu segmentidele koheselt"
     },
     "SponsorTimeEditScrollNewFeature": {
-        "message": "Kasuta hiirekursorit muutmiskasti kohal, et kiirelt aega reguleerida. Täpsemaks muutmiseks hoia kerimise ajal all Ctrl või Shift klahvi."
+        "message": "Kiireks aja reguleerimiseks keri hiirega muutmiskasti kohal. Täpsemaks reguleerimiseks hoia kerimise ajal all Ctrl või Shift klahvi."
     }
 }
