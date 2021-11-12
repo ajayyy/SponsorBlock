@@ -41,7 +41,7 @@
         "message": "Laadimine..."
     },
     "Hide": {
-        "message": "Ära näita kunagi"
+        "message": "Ära kunagi näita"
     },
     "hitGoBack": {
         "message": "Vajuta \"kuva uuesti\", et jõuda sinna, kust tulid."
@@ -259,7 +259,7 @@
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "Kui sulle see ikka ei meeldi, vajuta \"ära näita kunagi\" nuppu.",
+        "message": "Kui sulle see ikka ei meeldi, vajuta \"ära kunagi näita\" nuppu.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
