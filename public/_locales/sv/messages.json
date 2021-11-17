@@ -287,7 +287,7 @@
         "message": "Hoppa över är inaktiverat"
     },
     "yourWork": {
-        "message": "Ditt Bidrag",
+        "message": "Ditt bidrag",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
@@ -563,6 +563,12 @@
     "category_preview_description": {
         "message": "Snabb sammanfattning av tidigare avsnitt eller en förhandsvisning av vad som kommer upp senare i den aktuella videon. Avsett för redigerade klipp, inte för sammanfattningar."
     },
+    "category_filler_description": {
+        "message": "Tangentiella scener endast tillagda för utfyllnad eller humor som inte krävs för att förstå det huvudsakliga innehållet i videon. Detta bör inte omfatta segment som tillhandahåller innehåll eller bakgrundsdetaljer."
+    },
+    "category_filler_short": {
+        "message": "Utfyllnad"
+    },
     "category_music_offtopic": {
         "message": "Musik: Icke-musikavsnitt"
     },
@@ -719,7 +725,7 @@
         "message": "Kategorier finns här!"
     },
     "categoryUpdate2": {
-        "message": "Öppna alternativen för att hoppa över intros, outros, merch, osv."
+        "message": "Öppna alternativen för att hoppa över intros, outros, varor, osv."
     },
     "help": {
         "message": "Hjälp"
@@ -794,7 +800,7 @@
         "message": "Databasen är offentlig och finns på"
     },
     "helpPageCopyOfDatabase2": {
-        "message": "Källkoden är fritt tillgänglig. Så, även om något händer mig, är dina bidrag inte förlorade."
+        "message": "Källkoden är fritt tillgänglig. Så, även om något händer mig, är dina inskickningar inte förlorade."
     },
     "helpPageNews": {
         "message": "Nyheter och hur är det gjort"

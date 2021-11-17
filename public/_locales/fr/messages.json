@@ -528,7 +528,7 @@
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
     },
     "category_selfpromo": {
-        "message": "Non rémunéré/autopromotion"
+        "message": "Promotion non rémunérée/autopromotion"
     },
     "category_selfpromo_description": {
         "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."

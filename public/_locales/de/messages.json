@@ -98,7 +98,7 @@
         "message": "Abgestimmt!"
     },
     "serverDown": {
-        "message": "Der Server ist anscheinend offline. Bitte unverzüglich dem Entwickler melden."
+        "message": "Der Server ist anscheinend offline. Bitte kontaktiere den Entwickler unverzüglich."
     },
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Kurze Zusammenfassung bisheriger Videos oder eine Vorschau auf das aktuelle Video. Für zusammengeschnittene Clips gedacht, jedoch nicht für mündliche Zusammenfassungen."
     },
+    "category_filler": {
+        "message": "Füller Nebensächlichkeit"
+    },
+    "category_filler_description": {
+        "message": "Nebensächliche Szenen, die nur als Füller oder Witz dienen und nicht benötigt sind um den Hauptinhalt des Videos zu verstehen. Dies bezieht sich nicht auf Segmente, die Kontext oder Hintergrunddetails liefern."
+    },
+    "category_filler_short": {
+        "message": "Füller"
+    },
     "category_music_offtopic": {
         "message": "Musikvideoteile ohne Musik"
     },
@@ -812,10 +821,10 @@
         "message": "Erfahre mehr"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Meldet als unzulässig und erstellt eine lokale Kopie zur späteren Einreichung"
+        "message": "Abwerten, und eine lokale Kopie zum erneuten Einreichen erstellen"
     },
     "OpenCategoryWikiPage": {
-        "message": "Den Wiki-Artikel dieser Kategorie aufrufen."
+        "message": "Öffne den Wiki-Artikel dieser Kategorie."
     },
     "CopyAndDownvote": {
         "message": "Kopieren und abwerten"

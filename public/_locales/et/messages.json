@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
     },
+    "category_filler": {
+        "message": "Täitesisu"
+    },
+    "category_filler_description": {
+        "message": "Video täiteks või huumori eesmärgil lisatud sisu, mis ei ole vajalik video põhieesmärgi mõistmiseks. Selle alla ei kuulu segmendid, mis annavad kontekstiteavet või taustainfot."
+    },
+    "category_filler_short": {
+        "message": "Täide"
+    },
     "category_music_offtopic": {
         "message": "Muusika: mitte-muusika jaotis"
     },
@@ -754,8 +763,32 @@
     "helpPageReviewOptions": {
         "message": "Palun vaata allolevad valikud üle"
     },
+    "helpPageHowSkippingWorks": {
+        "message": "Kuidas vahelejätmine töötab"
+    },
+    "Submitting": {
+        "message": "Segmentide saatmine"
+    },
+    "Editing": {
+        "message": "Redigeerimine"
+    },
+    "helpPageTooSlow": {
+        "message": "See on liiga aeglane"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Kas ma saaksin andmebaasist koopia? Mis juhtub, kui sa kaod?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Andmebaas on avalik ning saadaval aadressil"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Lähtekood on vabalt saadaval. Seega, isegi kui minuga midagi juhtub, ei ole sinu saadetud segmendid kadunud."
+    },
     "helpPageNews": {
         "message": "Uudised ja kuidas see on valmistatud"
+    },
+    "helpPageSourceCode": {
+        "message": "Kust ma saan selle lähtekoodi?"
     },
     "Credits": {
         "message": "Tiitrid"

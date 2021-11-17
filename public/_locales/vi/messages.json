@@ -23,7 +23,7 @@
         "message": "đoạn quảng cáo"
     },
     "Segments": {
-        "message": "đoạn quảng cáo"
+        "message": "phân đoạn"
     },
     "upvoteButtonInfo": {
         "message": "Tán thành phân đoạn này"
@@ -101,10 +101,10 @@
         "message": "Có vẻ máy chủ đang không hoạt động. Hãy liên hệ nhà phát triển ngay lập tức."
     },
     "connectionError": {
-        "message": "Đã xảy ra lỗi kết nối. Mã của lỗi: "
+        "message": "Đã xảy ra lỗi kết nối. Mã lỗi: "
     },
     "clearTimes": {
-        "message": "Xóa đoạn quảng cáo"
+        "message": "Xóa các phân đoạn"
     },
     "openPopup": {
         "message": "Mở bảng popup của SponsorBlock"
@@ -113,7 +113,7 @@
         "message": "Đóng bảng popup"
     },
     "SubmitTimes": {
-        "message": "Đăng đoạn quảng cáo"
+        "message": "Đăng phân đoạn"
     },
     "submitCheck": {
         "message": "Bạn có chắc là muốn đăng không?"
@@ -125,7 +125,7 @@
         "message": "Loại kênh khỏi danh sách không chặn"
     },
     "voteOnTime": {
-        "message": "Bầu chọn một đoạn quảng cáo"
+        "message": "Bầu chọn một phân đoạn"
     },
     "Submissions": {
         "message": "Các phân đoạn"
@@ -165,7 +165,7 @@
         "message": "Sao chép Public UserID"
     },
     "discordAdvert": {
-        "message": "Hãy tham gia server Discord chính thức để đăng gợi ý và phản hồi!"
+        "message": "Hãy tham gia server Discord chính thức để đưa ra gợi ý và phản hồi!"
     },
     "hideThis": {
         "message": "Đóng lại"
@@ -225,7 +225,7 @@
         "message": "Hiện thông báo lại"
     },
     "showSkipNotice": {
-        "message": "Hiển thị thông báo sau khi bỏ qua quảng cáo"
+        "message": "Hiển thị thông báo sau khi bỏ qua phân đoạn"
     },
     "noticeVisibilityMode0": {
         "message": "Thông báo bỏ qua với kích thước đầy đủ"
@@ -320,7 +320,7 @@
         "message": "Bật tự động bỏ qua quảng cáo"
     },
     "audioNotification": {
-        "message": "Thông báo bằng âm thanh khi bỏ qua quảng cáo"
+        "message": "Thông báo bằng âm thanh khi bỏ qua"
     },
     "audioNotificationDescription": {
         "message": "Thông báo bằng âm thanh sẽ được bật khi bỏ qua quảng cáo. Nếu tắt tính năng này (hoặc tính năng tự động bỏ qua quảng cáo bị tắt), sẽ không có âm thanh kêu."
@@ -362,7 +362,7 @@
         "message": "Nhập/Xuất mã người dùng của bạn"
     },
     "whatChangeUserID": {
-        "message": "Đây là mã cần được giữ bí mật. Nó giống như mật khẩu và không nên được chia sẻ cho bất kì ai khác. Nếu có ai đó lấy được mã này, họ có thể mạo danh bạn. Còn nếu như bạn đang tìm khoá ID công khai, hãy nhấn vào nút \"Sao chép Public ID\" trong popup của SponsorBlock."
+        "message": "Đây là mã cần được giữ bí mật. Nó giống như mật khẩu và không nên được chia sẻ cho bất kì ai khác. Nếu có ai đó lấy được mã này, họ có thể mạo danh bạn. Còn nếu như bạn đang tìm khoá ID công khai, hãy nhấn vào nút \"Sao chép Public UserID\" trong popup của SponsorBlock."
     },
     "setUserID": {
         "message": "Đặt mã người dùng"
@@ -465,7 +465,7 @@
         "message": "Tệp JSON này không được định dạng đúng cách. Tùy chọn của bạn chưa được thay đổi."
     },
     "confirmNoticeTitle": {
-        "message": "Đăng đoạn quảng cáo"
+        "message": "Đăng phân đoạn"
     },
     "submit": {
         "message": "Đăng"
