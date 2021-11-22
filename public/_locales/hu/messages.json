@@ -834,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Használja egérgörgőjét a szerkesztő mező fölött, hogy gyorsan módosíthassa az időt. A ctrl vagy shift billentyűk kombinációjával finomhangolhatja a változás mértékét."
+    },
+    "fillerNewFeature": {
+        "message": "Új! Ugorj át vicceket és a témához nem tartozó részeket a töltelék kategóriával. Engedélyezd a beállításokban"
     }
 }
