@@ -834,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schnell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
+    },
+    "fillerNewFeature": {
+        "message": "Neu! Überspringe tangenten und Witze mit der Füller-Kategorie. Aktiviere sie in den Optionen"
     }
 }
