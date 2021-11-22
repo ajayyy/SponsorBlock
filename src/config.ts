@@ -51,6 +51,7 @@ interface SBConfig {
         locked: string
     },
     scrollToEditTimeUpdate: boolean,
+    fillerUpdate: boolean,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -202,6 +203,7 @@ const Config: SBObject = {
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
+        fillerUpdate: false,
 
         categorySelections: [{
             name: "sponsor" as Category,

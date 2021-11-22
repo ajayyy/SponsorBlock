@@ -333,6 +333,25 @@ async function videoIDChange(id) {
     // Clear unsubmitted segments from the previous video
     sponsorTimesSubmitting = [];
     updateSponsorTimesSubmitting();
+
+    // Filler update
+    if (!Config.config.fillerUpdate) {
+        Config.config.fillerUpdate = true;
+
+        utils.wait(getControls).then(() => {
+            const playButton = document.querySelector(".ytp-play-button") as HTMLElement;
+            const allCategories = ["sponsor", "intro", "outro", "selfpromo", "interaction"];
+            if (playButton && allCategories.every((name) => Config.config.categorySelections.some((selection) => selection.name === name))) {
+                new Tooltip({
+                    text: chrome.i18n.getMessage("fillerNewFeature"),
+                    link: "https://wiki.sponsor.ajay.app/w/Filler_Tangent",
+                    referenceNode: playButton.parentElement,
+                    prependElement: playButton,
+                    timeout: 10
+                });
+            }
+        });
+    }
 }
 
 function handleMobileControlsMutations(): void {

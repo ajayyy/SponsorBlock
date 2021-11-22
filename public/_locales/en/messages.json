@@ -814,9 +814,6 @@
     "Credits": {
         "message": "Credits"
     },
-    "highlightNewFeature": {
-        "message": "New! Get to the point of the video with one click with the new highlight category"
-    },
     "LearnMore": {
         "message": "Learn More"
     },
@@ -837,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use your mousewheel while hovering over the edit box to quickly adjust the time. Combinations of the ctrl or shift key can be used to fine tune the changes."
+    },
+    "fillerNewFeature": {
+        "message": "New! Skip tangents and jokes with the filler category. Enable in options"
     }
 }
