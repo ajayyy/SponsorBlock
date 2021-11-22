@@ -834,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."
+    },
+    "fillerNewFeature": {
+        "message": "Uutta! Ohita epäolennaiset kohdat ja vitsit täytesisältö kategorialla. Ota se käyttöön asetuksista"
     }
 }
