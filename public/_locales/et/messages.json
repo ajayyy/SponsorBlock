@@ -813,5 +813,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Kiireks aja reguleerimiseks keri hiirega muutmiskasti kohal. Täpsemaks reguleerimiseks hoia kerimise ajal all Ctrl või Shift klahvi."
+    },
+    "fillerNewFeature": {
+        "message": "Uus! Jäta täitesisu ja naljad vahele täitesisu kategooriaga. Luba valikutes"
     }
 }
