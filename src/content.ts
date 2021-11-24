@@ -341,7 +341,8 @@ async function videoIDChange(id) {
         utils.wait(getControls).then(() => {
             const playButton = document.querySelector(".ytp-play-button") as HTMLElement;
             const allCategories = ["sponsor", "intro", "outro", "selfpromo", "interaction"];
-            if (playButton && allCategories.every((name) => Config.config.categorySelections.some((selection) => selection.name === name))) {
+            if (playButton && allCategories.every((name) => Config.config.categorySelections.some((selection) => selection.name === name))
+                            && utils.getCategorySelection("filler") === undefined) {
                 new Tooltip({
                     text: chrome.i18n.getMessage("fillerNewFeature"),
                     link: "https://wiki.sponsor.ajay.app/w/Filler_Tangent",
