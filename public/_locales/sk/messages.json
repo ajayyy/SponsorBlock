@@ -814,9 +814,6 @@
     "Credits": {
         "message": "Autori"
     },
-    "highlightNewFeature": {
-        "message": "Novinka! Pomocou novej kategórie \"Hlavný obsah videa\" môžete jedným klikom preskočiť \"k veci\""
-    },
     "LearnMore": {
         "message": "Zistiť viac"
     },
@@ -837,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Čas môžete rýchlo zmeniť kolieskom myši, ak je kurozor nad zadávacím políčkom. Pre jemné zmeny pritom držte kláves ctrl alebo shift."
+    },
+    "fillerNewFeature": {
+        "message": "Nové! Preskočte odbočky mimo tému a vtipy s kategóriou filler. Zapnite si ju v nastaveniach"
     }
 }

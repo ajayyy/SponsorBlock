@@ -17,7 +17,7 @@
         "message": "See on juba varasemalt saadetud"
     },
     "channelWhitelisted": {
-        "message": "Kanal lubamisnimekirjas!"
+        "message": "Kanal ignoreerimisnimekirjas!"
     },
     "Segment": {
         "message": "segmendi"
@@ -41,7 +41,7 @@
         "message": "Laadimine..."
     },
     "Hide": {
-        "message": "Ära näita kunagi"
+        "message": "Ära kunagi näita"
     },
     "hitGoBack": {
         "message": "Vajuta \"kuva uuesti\", et jõuda sinna, kust tulid."
@@ -119,10 +119,10 @@
         "message": "Kas soovid kindlasti selle saata?"
     },
     "whitelistChannel": {
-        "message": "Lisa kanal lubamisnimekirja"
+        "message": "Lisa kanal ignoreerimisnimekirja"
     },
     "removeFromWhitelist": {
-        "message": "Eemalda kanal lubamisnimekirjast"
+        "message": "Eemalda kanal ignoreerimisnimekirjast"
     },
     "voteOnTime": {
         "message": "Hääleta segmendi sobivust"
@@ -259,7 +259,7 @@
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "Kui sulle see ikka ei meeldi, vajuta \"ära näita kunagi\" nuppu.",
+        "message": "Kui sulle see ikka ei meeldi, vajuta \"ära kunagi näita\" nuppu.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
@@ -506,7 +506,7 @@
         "message": "Lõikelauale kirjutamine ebaõnnestus"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopeerib lõikelauale info, mida saad arendajale anda veast teatamisel või siis, kui arendaja seda sinult taotleb. Tundlik info, sealhulgas sinu kasutaja ID, lubamisnimekirjas kanalid ning kohandatud serveri aadress on eemaldatud. Siiski see sisaldab teatud infot, nagu sinu kasutajaagent, brauser, opsüsteem ning laienduse versiooninumber."
+        "message": "Kopeerib lõikelauale info, mida saad arendajale anda veast teatamisel või siis, kui arendaja seda sinult taotleb. Tundlik info, sealhulgas sinu kasutaja ID, ignoreerimisnimekirjas kanalid ning kohandatud serveri aadress on eemaldatud. Siiski see sisaldab teatud infot, nagu sinu kasutajaagent, brauser, opsüsteem ning laienduse versiooninumber."
     },
     "copyDebugInformationComplete": {
         "message": "Silumisinfo on lõikelauale kopeeritud. Võid sellelt vabalt eemaldada mistahes info, mida ei soovi jagada. Salvesta see tekstifaili või kleebi vearaportisse."
@@ -700,7 +700,7 @@
         "message": "Sunnitud kanalikontroll enne vahelejätmist"
     },
     "whatForceChannelCheck": {
-        "message": "Vaikimisi jätab see segmendid vahele juba siis, kui veel kanalitki ei tea. Vaikimisi võidakse mõned video alguses olevad segmendid lubamisnimekirjas olevatel kanalitel vahele jätta. Selle valiku lubamine väldib seda, kuid võib lisada vahelejätmistele väikese viivituse, sest kanali ID hankimine võib aega võtta. Viivitus võib kiire interneti puhul olla märkamatu."
+        "message": "Vaikimisi jätab see segmendid vahele juba siis, kui veel kanalitki ei tea. Vaikimisi võidakse mõned video alguses olevad segmendid ignoreerimisnimekirjas olevatel kanalitel vahele jätta. Selle valiku lubamine väldib seda, kuid võib lisada vahelejätmistele väikese viivituse, sest kanali ID hankimine võib aega võtta. Viivitus võib kiire interneti puhul olla märkamatu."
     },
     "forceChannelCheckPopup": {
         "message": "Kaalu valiku \"Sunnitud kanalikontroll enne vahelejätmist\" lubamist"
@@ -793,9 +793,6 @@
     "Credits": {
         "message": "Tiitrid"
     },
-    "highlightNewFeature": {
-        "message": "Uus! Mine ühe klõpsuga video eesmärgi juurde uue \"esiletõstu\" kategooriaga"
-    },
     "LearnMore": {
         "message": "Lisateave"
     },
@@ -815,6 +812,9 @@
         "message": "See rakendub sinu segmentidele koheselt"
     },
     "SponsorTimeEditScrollNewFeature": {
-        "message": "Kasuta hiirekursorit muutmiskasti kohal, et kiirelt aega reguleerida. Täpsemaks muutmiseks hoia kerimise ajal all Ctrl või Shift klahvi."
+        "message": "Kiireks aja reguleerimiseks keri hiirega muutmiskasti kohal. Täpsemaks reguleerimiseks hoia kerimise ajal all Ctrl või Shift klahvi."
+    },
+    "fillerNewFeature": {
+        "message": "Uus! Jäta täitesisu ja naljad vahele täitesisu kategooriaga. Luba valikutes"
     }
 }

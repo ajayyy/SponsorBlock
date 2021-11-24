@@ -814,9 +814,6 @@
     "Credits": {
         "message": "Créditos"
     },
-    "highlightNewFeature": {
-        "message": "Novo! Vá direto ao ponto do vídeo com um clique com a nova categoria de Destaque"
-    },
     "LearnMore": {
         "message": "Saiba mais"
     },
@@ -837,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use a roda do mouse enquanto mantêm o cursor sobre a caixa de edição para ajustar o tempo rapidamente. Combinações das teclas ctrl e shift podem ser usadas para refinar as mudanças."
+    },
+    "fillerNewFeature": {
+        "message": "Novo! Pule tangentes e piadas com a categoria filler. Ative em opções"
     }
 }

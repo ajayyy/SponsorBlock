@@ -563,6 +563,9 @@
     "category_preview_description": {
         "message": "Snabb sammanfattning av tidigare avsnitt eller en förhandsvisning av vad som kommer upp senare i den aktuella videon. Avsett för redigerade klipp, inte för sammanfattningar."
     },
+    "category_filler": {
+        "message": "Ämnesavvikelse"
+    },
     "category_filler_description": {
         "message": "Tangentiella scener endast tillagda för utfyllnad eller humor som inte krävs för att förstå det huvudsakliga innehållet i videon. Detta bör inte omfatta segment som tillhandahåller innehåll eller bakgrundsdetaljer."
     },
@@ -811,9 +814,6 @@
     "Credits": {
         "message": "Medverkande"
     },
-    "highlightNewFeature": {
-        "message": "Nytt! Ta dig till stället i videon med ett klick med den nya markeringskategorin"
-    },
     "LearnMore": {
         "message": "Läs mer"
     },
@@ -834,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Använd mushjulet medan du håller muspekaren över redigeringsrutan för att snabbt justera tiden. Kombinationer av CTRL- eller SKIFT-tangenten kan användas för att finjustera tiden."
+    },
+    "fillerNewFeature": {
+        "message": "Nytt! Hoppa över ämnesavvikelser och skämt med utfyllnadskategorin. Aktiveras i alternativen"
     }
 }

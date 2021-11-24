@@ -814,9 +814,6 @@
     "Credits": {
         "message": "크레딧"
     },
-    "highlightNewFeature": {
-        "message": "새 기능! 새로운 하이라이트 카테고리를 통해 동영상의 중요 지점으로 이동하세요"
-    },
     "LearnMore": {
         "message": "더보기"
     },
@@ -837,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "편집 상자 위에 커서를 올린 채 스크롤하면 시간을 빠르게 조정할 수 있습니다. Ctrl이나 Shift 키를 누른 채로 스크롤하면 세밀한 조정이 가능합니다."
+    },
+    "fillerNewFeature": {
+        "message": "새 기능! 쓸데없는 말이나 농담 구간을 잡담 카테고리로 건너 뛰세요. 설정에서 활성화하세요"
     }
 }

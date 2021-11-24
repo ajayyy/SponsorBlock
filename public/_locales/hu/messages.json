@@ -373,7 +373,7 @@
         "message": "UserID importálása / exportálása"
     },
     "whatChangeUserID": {
-        "message": "Ez privát információnak minősül. Ez olyan, mint egy jelszó, így nem ajánlott megosztani senkivel. Ha valakinek birtokában van, megszemélyesítheti önt. Ha a nyilvános userID-ját keresi, kattintson a vágólap ikonra a felugró ablakban."
+        "message": "Ez privát információnak minősül. Ez olyan, mint egy jelszó, így nem ajánlott megosztani senkivel. Ha valakinek birtokában van, megszemélyesíthet téged. Ha a nyilvános userID-dat keresed, kattints a vágólap ikonra a felugró ablakban."
     },
     "setUserID": {
         "message": "UserID beállítása"
@@ -391,7 +391,7 @@
         "message": "Harmadik fél Youtube oldalainak támogatása"
     },
     "supportOtherSitesDescription": {
-        "message": "Harmadik fél YouTube oldalainak támogatása. A támogatás bekapcsolásához el kell fogadnia az extra engedélyeket. NEM működik inkognitó módban Chrome-ban és egyéb Chromium változatokban.",
+        "message": "Harmadik fél YouTube oldalainak támogatása. A támogatás bekapcsolásához el kell fogadnod az extra engedélyeket. NEM működik inkognitó módban Chrome-ban és egyéb Chromium változatokban.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -656,7 +656,7 @@
         "message": "Válasszon kategóriát"
     },
     "enableThisCategoryFirst": {
-        "message": "Hogy \"{0}\" kategóriájú szegmenst küldhessen be, először engedélyeznie kell a beállításokban. Most átirányításra kerül a beállításokhoz.",
+        "message": "Hogy \"{0}\" kategóriájú szegmenst küldhess be, először engedélyezned kell a beállításokban. Most átirányításra kerülsz a beállításokhoz.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
@@ -676,13 +676,13 @@
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
-        "message": "A csatorna ID még nem került betöltésre. Ha beágyazott videót használ, próbálja meg inkább a YouTube oldalon keresztül. Ezt okozhatja még a YouTube elrendezésének változása is. Ha így gondolja, hagyjon egy kommentet itt:"
+        "message": "A csatorna ID még nem került betöltésre. Ha beágyazott videót használsz, próbáld meg inkább a YouTube oldalon keresztül. Ezt okozhatja még a YouTube elrendezésének változása is. Ha így gondolod, hagyj egy kommentet itt:"
     },
     "videoInfoFetchFailed": {
-        "message": "Úgy tűnik, valami korlátozza a SponsorBlock hozzáférését a videó adataihoz. További információkért látogasson el ide: https://github.com/ajayyy/SponsorBlock/issues/741 (angol nyelvű)."
+        "message": "Úgy tűnik, valami korlátozza a SponsorBlock hozzáférését a videó adataihoz. További információkért látogass el ide: https://github.com/ajayyy/SponsorBlock/issues/741 (angol nyelvű)."
     },
     "youtubePermissionRequest": {
-        "message": "Úgy tűnik, a SponsorBlock nem tud csatlakozni a YouTube API-hoz. A javításhoz fogadja el a megjelenő engedélykérést, várjon néhány másodpercet, majd töltse újra az oldalt."
+        "message": "Úgy tűnik, a SponsorBlock nem tud csatlakozni a YouTube API-hoz. A javításhoz fogadd el a megjelenő engedélykérést, várj néhány másodpercet, majd töltsd újra az oldalt."
     },
     "acceptPermission": {
         "message": "Engedély jóváhagyása"
@@ -691,10 +691,10 @@
         "message": "Engedélykérés sikeres!"
     },
     "permissionRequestFailed": {
-        "message": "Engedélykérés sikertelen. Nem nyomott az elutasításra?"
+        "message": "Engedélykérés sikertelen. Nem nyomtál az elutasításra?"
     },
     "adblockerIssueWhitelist": {
-        "message": "Ha nem sikerül megoldani a problémát, kapcsolja ki a \"Csatorna ellenőrzése átugrás előtt\" opciót, mert a SponsorBlock nem tudja megszerezni a csatorna-információkat ehhez a videóhoz"
+        "message": "Ha nem sikerül megoldani a problémát, kapcsold ki a \"Csatorna ellenőrzése átugrás előtt\" opciót, mert a SponsorBlock nem tudja megszerezni a csatorna-információkat ehhez a videóhoz"
     },
     "forceChannelCheck": {
         "message": "Csatorna ellenőrzése átugrás előtt"
@@ -703,7 +703,7 @@
         "message": "Alapértelmezett állapotban, a bővítmény átugorhat szegmenseket, mielőtt tudná melyik csatornán van. Alapból ezért, néhány szegmens, ami a videók legelején van, engedélyezett csatornákon is átugródhat. Ennek a bekapcsolásával ez elkerülhető, de minden átugrás előtt lesz egy kis késleltetés, hiszen a channelID megszerzéséhez elkell egy kis idő. Ez a késleltetés akár észrevehetetlen is lehet, ha elég gyors a kapcsolata."
     },
     "forceChannelCheckPopup": {
-        "message": "Fontolja meg a \"Csatorna ellenőrzése átugrás előtt\" bekapcsolását"
+        "message": "Fontold meg a \"Csatorna ellenőrzése átugrás előtt\" bekapcsolását"
     },
     "downvoteDescription": {
         "message": "Helytelen/rossz időzítés"
@@ -745,10 +745,10 @@
         "message": "Eltüntetés örökre"
     },
     "warningChatInfo": {
-        "message": "Ön figyelmeztetést kapott, és ideiglenesen nem tud szegmenseket beküldeni. Ez azt jelenti, hogy észrevettük, hogy néhány ártalmatlan gyakori hibát vétett. Kérjük erősítse meg, hogy megértette a szabályokat és eltávolítjuk a figyelmeztetést. Ehhez a beszélgetéshez csatlakozhat a discord.gg/SponsorBlock vagy matrix.to/#/#sponsor:ajay.app címeken is."
+        "message": "Figyelmeztetést kaptál, és ideiglenesen nem tudsz szegmenseket beküldeni. Ez azt jelenti, hogy észrevettük, hogy néhány ártalmatlan gyakori hibát vétettél. Kérjük erősítsd meg, hogy megértetted a szabályokat és eltávolítjuk a figyelmeztetést. Ehhez a beszélgetéshez csatlakozhatsz a discord.gg/SponsorBlock vagy matrix.to/#/#sponsor:ajay.app címeken is."
     },
     "voteRejectedWarning": {
-        "message": "Szavazás visszautasítva figyelmeztetés miatt. Kattintson, hogy megnyisson egy beszélgetést a tisztázásához, vagy jöjjön vissza később, amikor ideje van.",
+        "message": "Szavazás visszautasítva figyelmeztetés miatt. Kattints, hogy megnyiss egy beszélgetést a tisztázásához, vagy gyere vissza később, amikor időd van rá.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
@@ -758,22 +758,22 @@
         "message": "Támogatás link elrejtése"
     },
     "helpPageThanksForInstalling": {
-        "message": "Köszönjük, hogy telepítette a SponsorBlockot."
+        "message": "Köszönjük, hogy telepítetted a SponsorBlockot."
     },
     "helpPageReviewOptions": {
-        "message": "Kérjük, nézze át az alábbi beállításokat"
+        "message": "Kérjük, nézd át az alábbi beállításokat"
     },
     "helpPageFeatureDisclaimer": {
-        "message": "Sok funkció le van tiltva alapból. Ha át akar ugrani bevezetőket, záróképernyőket, Invidioust használna, stb., engedélyezze őket alább. Lehetőség van a felület különböző elemeinek elrejtésére/megjelenítésére is."
+        "message": "Sok funkció le van tiltva alapból. Ha át akarsz ugrani bevezetőket, záróképernyőket, Invidioust használnál, stb., engedélyezd őket alább. Lehetőség van a felület különböző elemeinek elrejtésére/megjelenítésére is."
     },
     "helpPageHowSkippingWorks": {
         "message": "Az átugrás működése"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "A videók szegmensei automatikusan átugrásra kerülnek, ha szerepelnek az adatbázisban. Megnyithatja a felugró ablakot a bővítmény ikonjára kattintva, hogy megtekinthesse őket."
+        "message": "A videók szegmensei automatikusan átugrásra kerülnek, ha szerepelnek az adatbázisban. Megnyithatod a felugró ablakot a bővítmény ikonjára kattintva, hogy megtekinthesd őket."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Ahányszor átugrik egy szegmenst, kapni fog egy értesítést. Ha rossznak tűnik az időzítés, szavazza le a leszavazás gombra kattintva! A felugró ablakban is szavazhat."
+        "message": "Ahányszor átugrasz egy szegmenst, kapni fogsz egy értesítést. Ha rossznak tűnik az időzítés, szavazd le a leszavazás gombra kattintva! A felugró ablakban is szavazhatsz."
     },
     "Submitting": {
         "message": "Beküldés"
@@ -782,19 +782,19 @@
         "message": "Beküldeni lehet a felugró ablakban a \"Szegmens eleje\" gombra kattintva, vagy a videó lejátszón lévő gombokkal."
     },
     "helpPageSubmitting2": {
-        "message": "A lejátszás gomb megnyomása jelezte a szegmens kezdetét és a stop gomb megnyomása jelzi a végét. Több szponzort is előkészíthet, mielőtt a beküldésre nyomna. A feltöltés gombra kattintva beküldésre kerülnek a szegmensek. A szemetesre kattintva kitörlődnek."
+        "message": "A lejátszás gomb megnyomása jelezte a szegmens kezdetét és a stop gomb megnyomása jelzi a végét. Több szponzort is előkészíthetsz, mielőtt a beküldésre nyomnál. A feltöltés gombra kattintva beküldésre kerülnek a szegmensek. A szemetesre kattintva kitörlődnek."
     },
     "Editing": {
         "message": "Szerkesztés"
     },
     "helpPageEditing1": {
-        "message": "Ha hibázott, szerkesztheti, vagy törölheti a szegmenseit, a felfele nyílra kattintást követően."
+        "message": "Ha hibáztál, szerkesztheted vagy törölheted a szegmenseid, a felfele nyílra kattintást követően."
     },
     "helpPageTooSlow": {
         "message": "Ez túl lassú"
     },
     "helpPageTooSlow1": {
-        "message": "Vannak gyorsbillentyűk is, ha használni szeretné őket. Nyomja meg a pontosvessző billentyűt egy szponzor szegmens elejének/végének jelzéséhez és nyomja meg a vesszőt a beküldéshez. Ezek módosíthatók a beállításokban. Ha nem QWERTY-t használ, valószínűleg szükséges lesz megváltoztatnia a billentyűket."
+        "message": "Vannak gyorsbillentyűk is, ha használni szeretnéd őket. Nyomd meg a pontosvessző billentyűt egy szponzor szegmens elejének/végének jelzéséhez és nyomd meg a vesszőt a beküldéshez. Ezek módosíthatók a beállításokban. Ha nem QWERTY-t használsz, valószínűleg szükséges lesz megváltoztatni a billentyűket."
     },
     "helpPageCopyOfDatabase": {
         "message": "Szerezhetek egy másolatot az adatbázisról? Mi történik, ha eltűnik a fejlesztő?"
@@ -814,14 +814,11 @@
     "Credits": {
         "message": "Készítők"
     },
-    "highlightNewFeature": {
-        "message": "Új! Juss a videó lényegéhez csak egy kattintással, az új kiemelés kategóriával"
-    },
     "LearnMore": {
         "message": "Tudj meg többet"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Leszavazza és készít egy helyi másolatot, amit beküldhet"
+        "message": "Leszavazza és készít egy helyi másolatot, amit beküldhetsz"
     },
     "OpenCategoryWikiPage": {
         "message": "A kategória wiki lapjának megnyitása."
@@ -833,9 +830,12 @@
         "message": "Szavazás folytatása"
     },
     "ChangeCategoryTooltip": {
-        "message": "Ez azonnal érvényes lesz a szegmenseire"
+        "message": "Ez azonnal érvényes lesz a szegmenseidre"
     },
     "SponsorTimeEditScrollNewFeature": {
-        "message": "Használja egérgörgőjét a szerkesztő mező fölött, hogy gyorsan módosíthassa az időt. A ctrl vagy shift billentyűk kombinációjával finomhangolhatja a változás mértékét."
+        "message": "Használd egérgörgődet a szerkesztő mező fölött, hogy gyorsan módosíthasd az időt. A ctrl vagy shift billentyűk kombinációjával finomhangolhatod a változás mértékét."
+    },
+    "fillerNewFeature": {
+        "message": "Új! Ugorj át vicceket és a témához nem tartozó részeket a töltelék kategóriával. Engedélyezd a beállításokban"
     }
 }

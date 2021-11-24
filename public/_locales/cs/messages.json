@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Rychlé shrnutí předchozích epizod nebo náhled toho, co se objeví v aktuálním videu. Myšleno pro upravené sloučené klipy, ne pro mluvená shrnutí."
     },
+    "category_filler": {
+        "message": "Výplň"
+    },
+    "category_filler_description": {
+        "message": "Výplňové scény přidané jen jako přídavek nebo humor, které nejsou vyžadovány pro pochopení hlavního obsahu videa. Toto by nemělo zahrnovat segmenty poskytující kontext nebo podrobnosti na pozadí."
+    },
+    "category_filler_short": {
+        "message": "Výplň"
+    },
     "category_music_offtopic": {
         "message": "Hudba: nehudební sekce"
     },
@@ -805,9 +814,6 @@
     "Credits": {
         "message": "Poděkování"
     },
-    "highlightNewFeature": {
-        "message": "Novinka! Dostaňte se k pointě videa jedním kliknutím s novou kategorií zvýraznění"
-    },
     "LearnMore": {
         "message": "Zjistit více"
     },
@@ -828,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Použijte kolečko myši při přechodu přes editační okno pro rychlou úpravu času. Kombinace kláves Ctrl nebo Shift mohou být použity k doladění změn."
+    },
+    "fillerNewFeature": {
+        "message": "Novinka! Překakujte výplňové části a vtipy s kategorií výplň. Povolte ji v nastavení"
     }
 }
