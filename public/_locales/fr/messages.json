@@ -564,10 +564,10 @@
         "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
     },
     "category_filler": {
-        "message": "Tergiversations"
+        "message": "Tergiversions"
     },
     "category_filler_description": {
-        "message": "Des tergiversations ajoutées uniquement pour le remplissage ou l'humour qui ne sont pas requis pour comprendre le contenu principal de la vidéo. Cela ne devrait pas inclure des segments fournissant du contexte ou des détails de fond."
+        "message": "Des tergiversions ajoutées uniquement pour le remplissage ou l'humour qui ne sont pas requis pour comprendre le contenu principal de la vidéo. Cela ne devrait pas inclure des segments fournissant du contexte ou des détails de fond."
     },
     "category_filler_short": {
         "message": "Remplissage"
@@ -836,6 +836,6 @@
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
     },
     "fillerNewFeature": {
-        "message": "Nouveau ! Ignorer les tergiversations et les blagues avec la catégorie \"remplissage\". Activable dans les options"
+        "message": "Nouveau ! Ignorer les tergiversions et les blagues avec la catégorie \"remplissage\". Activable dans les options"
     }
 }
