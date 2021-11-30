@@ -183,7 +183,7 @@
         "message": "Cela permet de cacher du lecteur YouTube les boutons utilisés pour soumettre des segments commerciaux. Je peux \ncomprendre que certaines personnes les trouvent perturbants. Au lieu d'utiliser ces boutons, cette fenêtre peut être utilisée \npour soumettre des segments commerciaux. Pour cacher la notification, utilisez le bouton \"Ne plus montrer\" sur la notification. Vous pouvez toujours réactiver ces paramètres plus tard."
     },
     "showSkipButton": {
-        "message": "Conserver le bouton \"Aller au point d'intérêt\" sur le lecteur"
+        "message": "Conserver le bouton \"Aller au point essentiel\" sur le lecteur"
     },
     "showInfoButton": {
         "message": "Montrer le bouton Info sur le lecteur YouTube"
@@ -564,10 +564,10 @@
         "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
     },
     "category_filler": {
-        "message": "Tergiversions"
+        "message": "Digressions"
     },
     "category_filler_description": {
-        "message": "Des tergiversions ajoutées uniquement pour le remplissage ou l'humour qui ne sont pas requis pour comprendre le contenu principal de la vidéo. Cela ne devrait pas inclure des segments fournissant du contexte ou des détails de fond."
+        "message": "Des digressions ajoutées uniquement pour le remplissage ou l'humour qui ne sont pas requis pour comprendre le contenu principal de la vidéo. Cela ne devrait pas inclure des segments fournissant du contexte ou des détails de fond."
     },
     "category_filler_short": {
         "message": "Remplissage"
@@ -582,7 +582,7 @@
         "message": "Hors musique"
     },
     "category_poi_highlight": {
-        "message": "Surligner"
+        "message": "Point essentiel"
     },
     "category_poi_highlight_description": {
         "message": "La partie de la vidéo que la plupart des gens veulent voir. Similaire à \"la vidéo commence à x mins\"."
@@ -836,6 +836,6 @@
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
     },
     "fillerNewFeature": {
-        "message": "Nouveau ! Ignorer les tergiversions et les blagues avec la catégorie \"remplissage\". Activable dans les options"
+        "message": "Nouveau ! Ignorer les digressions et les blagues avec la catégorie \"remplissage\". Activable dans les options"
     }
 }
