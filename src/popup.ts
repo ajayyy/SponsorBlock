@@ -731,10 +731,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     /**
-     * Converts time in hours to 5h 25.1
+     * Converts time in minutes to 5h 25.1
      * If less than 1 hour, just returns minutes
      * 
-     * @param {float} seconds 
+     * @param {float} minutes 
      * @returns {string}
      */
     function getFormattedHours(minutes) {
