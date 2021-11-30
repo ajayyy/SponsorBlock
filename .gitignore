@@ -7,4 +7,4 @@ web-ext-artifacts
 dist/
 tmp/
 .DS_Store
-src/ci/data.json
+ci/data.json

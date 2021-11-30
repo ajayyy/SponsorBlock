@@ -4,10 +4,15 @@ This file is only ran by GitHub Actions in order to populate the Invidious insta
 This file should not be shipped with the extension
 */
 
-import { writeFile } from 'fs';
+import { writeFile, existsSync } from 'fs';
 import { join } from 'path';
 
-// import file downloade from https://api.invidious.io/instances.json
+// import file from https://api.invidious.io/instances.json
+if (!existsSync('./data.json')) {
+  process.exit(1);
+}
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import * as data from "./data.json";
 
 type instanceMap = {

@@ -1,5 +1,5 @@
 import * as CompileConfig from "../config.json";
-import * as invidiousList from "../src/ci/invidiouslist.json";
+import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
 
 interface SBConfig {

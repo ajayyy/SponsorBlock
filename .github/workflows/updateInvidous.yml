@@ -1,0 +1,32 @@
+name: update invidious
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *' # check every month
+
+jobs:
+  check-list:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download instance list
+        run: |
+          wget https://api.invidious.io/instances.json -O data.json
+      - name: "Run CI"
+        run: npm run ci:invidious
+      - name: setup git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: "Commit new files"
+        run : |
+          if [ $(git status --porcelain=v1 2>/dev/null | wc -l) -ge 1 ]
+          then
+            echo "pushing changes"
+            git add invidiouslist.json
+            git commit -m "[CI] New Invidious List"
+            git push origin main
+          else
+            echo "no changes"
+          fi
