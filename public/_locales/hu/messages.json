@@ -1,6 +1,6 @@
 {
     "fullName": {
-        "message": "SponorBlock YouTube-ra - Szponzorok átugrására",
+        "message": "SponsorBlock YouTube-ra - Szponzorok átugrására",
         "description": "Name of the extension."
     },
     "Description": {
@@ -243,7 +243,7 @@
         "message": "Csak halvány átugrási értesítők"
     },
     "longDescription": {
-        "message": "A SponsorBlock-al átugorhatja a szponzorokat, introkat, outrokat, feliratkozás emlékeztetőket és a YouTube videók többi idegesítő részeit. A SponsorBlock egy közösség által vezérelt böngészőbővítmény, ami lehetővé tesz bárkit arra, hogy megjelölhesse egy szponzor vagy más szegmens kezdő és végpontjait. Ha megosztja ezt az információt, mindenki más ennek a bővítménynek a birtokában egyenesen átugorja majd ezt a szponzorszegmenst. Emellett például a zene videók nem-zene részei is átugorhatóak.",
+        "message": "A SponsorBlockkal átugorhatja a szponzorokat, introkat, outrokat, feliratkozás emlékeztetőket és a YouTube videók többi idegesítő részeit. A SponsorBlock egy közösség által vezérelt böngészőbővítmény, ami lehetővé teszi bárkinek, hogy megjelölhesse egy szponzor vagy más szegmens kezdő és végpontjait. Amint valaki megosztja ezt az információt, mindenki más ennek a bővítménynek a birtokában egyenesen átugorja majd ezt a szponzorszegmenst. Emellett például a videóklipek nem-zene részei is átugorhatóak.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -525,19 +525,19 @@
         "message": "Szponzor"
     },
     "category_sponsor_description": {
-        "message": "Fizetett promóció, vagy közvetlen reklám. Nem ön-promóció vagy ingyenes ajánlat (/shoutout) emberekről/termékekről/weboldalakról amik tetszenek nekik."
+        "message": "Fizetett promóció, vagy közvetlen reklám. Nem önpromóció vagy ingyenes ajánlat (shoutout) emberekről/termékekről/weboldalakról amik tetszenek nekik."
     },
     "category_selfpromo": {
-        "message": "Nem fizetett/ön-promóció"
+        "message": "Nem fizetett/önpromóció"
     },
     "category_selfpromo_description": {
-        "message": "Hasonló a szponzorhoz, de nem fizetett vagy ön-promóció. Beletartozik a saját ruhaáru, adományok, vagy infó arról hogy kivel működtek együtt."
+        "message": "Hasonló a szponzorhoz, de nem fizetett, vagy önpromóció. Beletartozik a saját ruhaáru, adományok, vagy infó arról, hogy kivel működtek együtt."
     },
     "category_interaction": {
         "message": "Emlékeztető (Feliratkozás)"
     },
     "category_interaction_description": {
-        "message": "Egy rövid emlékeztető arról, hogy likeoljunk, iratkozzunk fel, vagy kövessük a tartalom közben. Ha hosszabb szakasz, vagy egy adott témáról van, inkább a az ön-promóció alá tartozik."
+        "message": "Egy rövid emlékeztető arról, hogy likeoljunk, iratkozzunk fel, vagy kövessük a tartalom közben. Ha hosszabb szakasz, vagy egy adott témáról van, inkább az önpromóció alá tartozik."
     },
     "category_interaction_short": {
         "message": "Emlékeztető"
