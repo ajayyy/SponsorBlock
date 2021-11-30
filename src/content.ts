@@ -86,7 +86,7 @@ let controls: HTMLElement | null = null;
 const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImageElement, setupListener: boolean}> = {};
 
 // Direct Links after the config is loaded
-utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
+utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
 addHotkeyListener();
 
 //the amount of times the sponsor lookup has retried
@@ -137,7 +137,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
     //messages from popup script
     switch(request.message){
         case "update":
-            videoIDChange(getYouTubeVideoID(document.URL));
+            videoIDChange(getYouTubeVideoID(document));
             break;
         case "sponsorStart":
             startOrEndTimingNewSegment()
@@ -509,7 +509,7 @@ function inMuteSegment(currentTime: number): boolean {
  * This makes sure the videoID is still correct and if the sponsorTime is included
  */
 function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boolean {
-    const currentVideoID = getYouTubeVideoID(document.URL);
+    const currentVideoID = getYouTubeVideoID(document);
     if (currentVideoID !== (videoID || sponsorVideoID) || (sponsorTime 
             && (!sponsorTimes || !sponsorTimes?.some((time) => time.segment === sponsorTime.segment)) 
             && !sponsorTimesSubmitting.some((time) => time.segment === sponsorTime.segment))) {
@@ -892,8 +892,23 @@ async function getVideoInfo(): Promise<void> {
     }
 }
 
-function getYouTubeVideoID(url: string): string | boolean {
-    // For YouTube TV support
+function getYouTubeVideoID(document: Document): string | boolean {
+    const url = document.URL;
+    // skip to URL if matches youtube watch or invidious or matches youtube pattern
+    if ((!url.includes("youtube.com")) || url.includes("/watch") || url.includes("/embed/") || url.includes("/shorts/") || url.includes("playlist")) return getYouTubeVideoIDFromURL(url);
+    // skip to document if matches pattern
+    if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument(document);
+    // not sure, try URL then document
+    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document);
+}
+
+function getYouTubeVideoIDFromDocument(document: Document): string | boolean {
+    // get ID from document (channel trailer)
+    const videoURL = document.querySelector("[data-sessionlink='feature=player-title']")?.getAttribute("href");
+    return getYouTubeVideoIDFromURL(videoURL);
+}
+
+function getYouTubeVideoIDFromURL(url: string): string | boolean {
     if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 
     //Attempt to parse url
@@ -913,7 +928,7 @@ function getYouTubeVideoID(url: string): string | boolean {
     } else if (!["m.youtube.com", "www.youtube.com", "www.youtube-nocookie.com", "music.youtube.com"].includes(urlObject.host)) {
         if (!Config.config) {
             // Call this later, in case this is an Invidious tab
-            utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoID(url)));
+            utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoIDFromURL(url)));
         }
 
         return false
@@ -931,7 +946,7 @@ function getYouTubeVideoID(url: string): string | boolean {
             console.error("[SB] Video ID not valid for " + url);
             return false;
         }
-    } 
+    }
     return false;
 }
 
