@@ -905,7 +905,12 @@ function getYouTubeVideoID(document: Document): string | boolean {
 function getYouTubeVideoIDFromDocument(document: Document): string | boolean {
     // get ID from document (channel trailer)
     const videoURL = document.querySelector("[data-sessionlink='feature=player-title']")?.getAttribute("href");
-    return getYouTubeVideoIDFromURL(videoURL);
+    if (videoURL) {
+        onInvidious = true;
+        return getYouTubeVideoIDFromURL(videoURL);
+    } else {
+        return false
+    }
 }
 
 function getYouTubeVideoIDFromURL(url: string): string | boolean {
