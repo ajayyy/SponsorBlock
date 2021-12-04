@@ -739,8 +739,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
      */
     function getFormattedHours(minutes) {
         minutes = Math.round(minutes * 10) / 10
-        const hours = Math.floor(minutes / 60);
-        return (hours > 0 ? hours + "h " : "") + (minutes % 60).toFixed(1);
+        const days = Math.floor(minutes / 3600)
+        const hours = Math.floor(minutes / 60) % 24;
+        return (days > 0 ? days + "d " : "") + (hours > 0 ? hours + "h " : "") + (minutes % 60).toFixed(1);
     }
 
     //end of function
