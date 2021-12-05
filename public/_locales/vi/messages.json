@@ -113,7 +113,7 @@
         "message": "Đóng bảng popup"
     },
     "SubmitTimes": {
-        "message": "Đăng phân đoạn"
+        "message": "Gửi phân đoạn"
     },
     "submitCheck": {
         "message": "Bạn có chắc là muốn đăng không?"
@@ -305,6 +305,13 @@
     "skip_category": {
         "message": "Bỏ qua {0}?"
     },
+    "mute_category": {
+        "message": "Ngắt tiếng {0} chứ?"
+    },
+    "skip_to_category": {
+        "message": "Bỏ qua đến {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
         "message": "{0} đã bỏ qua",
         "description": "Example: Sponsor Skipped"
@@ -312,6 +319,10 @@
     "muted": {
         "message": "{0} đã ngắt tiếng (Muted)",
         "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "Đã bỏ qua đến {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Tắt tự động bỏ qua"
@@ -465,7 +476,7 @@
         "message": "Tệp JSON này không được định dạng đúng cách. Tùy chọn của bạn chưa được thay đổi."
     },
     "confirmNoticeTitle": {
-        "message": "Đăng phân đoạn"
+        "message": "Gửi phân đoạn"
     },
     "submit": {
         "message": "Đăng"
@@ -729,7 +740,7 @@
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
-        "message": "Donate"
+        "message": "Ủng hộ"
     },
     "hideDonationLink": {
         "message": "Ẩn link donate"
@@ -753,7 +764,7 @@
         "message": "Bất cứ khi nào bỏ qua một phân đoạn, bạn sẽ nhận được 1 cửa sổ thông báo bât. Nếu phân đoạn có vẻ sai, hãy bỏ phiếu bằng cách nhấp vào nút downvote! Bạn cũng có thể bỏ phiếu trong cửa sổ bật lên khi nhấn vào biểu tượng tiện ích mở rộng. Và bạn có thể tắt việc hiển thị bảng thông báo này trong phần cài đặt tiện ích."
     },
     "Submitting": {
-        "message": "Gửi lên"
+        "message": "Đang gửi lên"
     },
     "helpPageSubmitting1": {
         "message": "Việc gửi một phân đoạn mới có thể được thực hiện trong cửa sổ bật lên bằng cách nhấn vào nút \"Đoạn quảng cáo bắt đầu vào lúc này\" hoặc trong trình phát video bằng các nút trên thanh trình phát."
@@ -793,5 +804,11 @@
     },
     "LearnMore": {
         "message": "Tìm hiểu thêm"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Hạ bình chọn và tạo một bản sao cục bộ cho bạn gửi lại"
+    },
+    "CopyAndDownvote": {
+        "message": "Sao chép và hạ bình chọn"
     }
 }
