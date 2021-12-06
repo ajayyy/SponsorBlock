@@ -837,5 +837,11 @@
     },
     "fillerNewFeature": {
         "message": "New! Skip tangents and jokes with the filler category. Enable in options"
+    },
+    "dayAbbreviation": {
+        "message": "d"
+    },
+    "hourAbbreviation": {
+        "message": "h"
     }
 }

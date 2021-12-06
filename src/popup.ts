@@ -731,17 +731,17 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     /**
-     * Converts time in hours to 5h 25.1
+     * Converts time in hours to 2d 5h 25.1
      * If less than 1 hour, just returns minutes
      * 
      * @param {float} seconds 
      * @returns {string}
      */
     function getFormattedHours(minutes) {
-        minutes = Math.round(minutes * 10) / 10
-        const days = Math.floor(minutes / 3600)
+        minutes = Math.round(minutes * 10) / 10;
+        const days = Math.floor(minutes / 3600);
         const hours = Math.floor(minutes / 60) % 24;
-        return (days > 0 ? days + "d " : "") + (hours > 0 ? hours + "h " : "") + (minutes % 60).toFixed(1);
+        return (days > 0 ? days + chrome.i18n.getMessage("dayAbbreviation") + " " : "") + (hours > 0 ? hours + chrome.i18n.getMessage("hourAbbreviation") + " " : "") + (minutes % 60).toFixed(1);
     }
 
     //end of function
