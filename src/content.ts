@@ -1225,6 +1225,9 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                 // for some reason you also can't skip to 1 second before the end
                 if (v.loop && v.duration > 1 && skipTime[1] >= v.duration - 1) {
                     v.currentTime = 0;
+                } else if (navigator.vendor === "Apple Computer, Inc." && v.duration > 1 && skipTime[1] >= v.duration - 1) {
+                    // MacOS will loop otherwise #1027
+                    v.currentTime = skipTime[1] - 0.01;
                 } else {
                     v.currentTime = skipTime[1];
                 }
