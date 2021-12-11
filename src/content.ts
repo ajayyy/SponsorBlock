@@ -1242,7 +1242,12 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                 break;
             }
         }
-        
+    }
+
+    if (autoSkip && Config.config.audioNotificationOnSkip) {
+        const beep = new Audio(chrome.runtime.getURL("icons/beep.ogg"));
+        beep.volume = skipNoticeContentContainer().v.volume * 0.1;
+        beep.play();
     }
 
     if (!autoSkip 
