@@ -101,10 +101,6 @@
 	transform: translateX(-100%) scale(0);
 }
 
-.playerButton.hidden {
-	display: none;
-}
-
 .sponsorSkipObject {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 		
