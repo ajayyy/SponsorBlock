@@ -818,13 +818,13 @@
         "message": "더보기"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "반대에 투표한 뒤 다시 제출할 수 있도록 미제출 사본을 생성합니다"
+        "message": "비추천에 투표한 뒤 다시 제출할 수 있도록 미제출 사본을 생성합니다"
     },
     "OpenCategoryWikiPage": {
         "message": "해당 카테고리의 위키 페이지를 엽니다."
     },
     "CopyAndDownvote": {
-        "message": "복사 및 반대"
+        "message": "복사 및 비추천"
     },
     "ContinueVoting": {
         "message": "계속 투표"
@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "새 기능! 쓸데없는 말이나 농담 구간을 잡담 카테고리로 건너 뛰세요. 설정에서 활성화하세요"
+    },
+    "dayAbbreviation": {
+        "message": "일",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "시간",
+        "description": "100h"
     }
 }
