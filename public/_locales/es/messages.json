@@ -53,7 +53,7 @@
         "message": "Volver a saltar"
     },
     "unmute": {
-        "message": "Restaurar sonido"
+        "message": "Quitar silencio"
     },
     "paused": {
         "message": "Pausado"
@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "¡Nuevo! Omite tangentes y bromas con la categoría de relleno. Habilítala en opciones"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }
