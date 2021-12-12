@@ -38,23 +38,23 @@ async function init() {
     const optionsElements = optionsContainer.querySelectorAll("*");
 
     for (let i = 0; i < optionsElements.length; i++) {
-        if ((optionsElements[i].getAttribute("private-mode-only") === "true" && !(await isIncognitoAllowed()))
-            || (optionsElements[i].getAttribute("no-safari") === "true" && navigator.vendor === "Apple Computer, Inc.")
-            || (optionsElements[i].getAttribute("if-false") && Config.config[optionsElements[i].getAttribute("if-false")])) {
+        if ((optionsElements[i].getAttribute("data-private-only") === "true" && !(await isIncognitoAllowed()))
+            || (optionsElements[i].getAttribute("data-no-safari") === "true" && navigator.vendor === "Apple Computer, Inc.")
+            || (optionsElements[i].getAttribute("data-dependent-on") && Config.config[optionsElements[i].getAttribute("data-dependent-on")])) {
             optionsElements[i].classList.add("hidden");
             continue;
         }
 
-        const option = optionsElements[i].getAttribute("sync-option");
+        const option = optionsElements[i].getAttribute("data-sync");
 
-        switch (optionsElements[i].getAttribute("option-type")) {
+        switch (optionsElements[i].getAttribute("data-type")) {
             case "toggle": {
                 const optionResult = Config.config[option];
 
                 const checkbox = optionsElements[i].querySelector("input");
-                const reverse = optionsElements[i].getAttribute("toggle-type") === "reverse";
+                const reverse = optionsElements[i].getAttribute("data-toggle-type") === "reverse";
 
-                const confirmMessage = optionsElements[i].getAttribute("confirm-message");
+                const confirmMessage = optionsElements[i].getAttribute("data-confirm-message");
 
                 if (optionResult != undefined) {
                     checkbox.checked = optionResult;
@@ -91,7 +91,7 @@ async function init() {
                                 // Enable the notice
                                 Config.config["dontShowNotice"] = false;
                                 
-                                const showNoticeSwitch = <HTMLInputElement> document.querySelector("[sync-option='dontShowNotice'] > label > label > input");
+                                const showNoticeSwitch = <HTMLInputElement> document.querySelector("[data-sync='dontShowNotice'] > div > label > input");
                                 showNoticeSwitch.checked = true;
                             }
 
@@ -154,7 +154,7 @@ async function init() {
                 const button = optionsElements[i].querySelector(".trigger-button");
                 button.addEventListener("click", () => activatePrivateTextChange(<HTMLElement> optionsElements[i]));
 
-                const privateTextChangeOption = optionsElements[i].getAttribute("sync-option");
+                const privateTextChangeOption = optionsElements[i].getAttribute("data-sync");
                 // See if anything extra must be done
                 switch (privateTextChangeOption) {
                     case "invidiousInstances":
@@ -166,7 +166,7 @@ async function init() {
             case "button-press": {
                 const actionButton = optionsElements[i].querySelector(".trigger-button");
 
-                switch(optionsElements[i].getAttribute("sync-option")) {
+                switch(optionsElements[i].getAttribute("data-sync")) {
                     case "copyDebugInformation":
                         actionButton.addEventListener("click", copyDebugOutputToClipboard);
                         break;
@@ -219,6 +219,18 @@ async function init() {
         }
     }
 
+    // Tab interaction
+    const tabElements = document.getElementsByClassName("tab-heading");
+    for (let i = 0; i < tabElements.length; i++) {
+        tabElements[i].addEventListener("click", () => {
+            document.querySelectorAll(".tab-heading").forEach(element => { element.classList.remove("selected"); });
+            optionsContainer.querySelectorAll(".option-group").forEach(element => { element.classList.add("hidden"); });
+
+            tabElements[i].classList.add("selected");
+            document.getElementById(tabElements[i].getAttribute("data-for")).classList.remove("hidden");
+        });
+    }
+
     optionsContainer.classList.remove("hidden");
     optionsContainer.classList.add("animated");
 }
@@ -233,7 +245,7 @@ function optionsConfigUpdateListener() {
     const optionsElements = optionsContainer.querySelectorAll("*");
 
     for (let i = 0; i < optionsElements.length; i++) {
-        switch (optionsElements[i].getAttribute("option-type")) {
+        switch (optionsElements[i].getAttribute("data-type")) {
             case "display":
                 updateDisplayElement(<HTMLElement> optionsElements[i])
         }
@@ -246,7 +258,7 @@ function optionsConfigUpdateListener() {
  * @param element 
  */
 function updateDisplayElement(element: HTMLElement) {
-    const displayOption = element.getAttribute("sync-option")
+    const displayOption = element.getAttribute("data-sync")
     const displayText = Config.config[displayOption];
     element.innerText = displayText;
 
@@ -361,7 +373,7 @@ function activateKeybindChange(element: HTMLElement) {
 
     button.classList.add("disabled");
 
-    const option = element.getAttribute("sync-option");
+    const option = element.getAttribute("data-sync");
 
     const currentlySet = Config.config[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
     
@@ -393,7 +405,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
     } else {
         const button: HTMLElement = element.querySelector(".trigger-button");
-        const option = element.getAttribute("sync-option");
+        const option = element.getAttribute("data-sync");
 
         // Make sure keybind isn't used by the other listener
         // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
@@ -447,7 +459,7 @@ function activatePrivateTextChange(element: HTMLElement) {
     button.classList.add("disabled");
 
     const textBox = <HTMLInputElement> element.querySelector(".option-text-box");
-    const option = element.getAttribute("sync-option");
+    const option = element.getAttribute("data-sync");
 
     // See if anything extra must be done
     switch (option) {
@@ -475,7 +487,7 @@ function activatePrivateTextChange(element: HTMLElement) {
     
     const setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", async () => {
-        const confirmMessage = element.getAttribute("confirm-message");
+        const confirmMessage = element.getAttribute("data-confirm-message");
 
         if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
             
@@ -490,7 +502,7 @@ function activatePrivateTextChange(element: HTMLElement) {
                         Config.convertJSON();
 
                         if (newConfig.supportInvidious) {
-                            const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > label > label > input");
+                            const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > div > label > input");
                             
                             checkbox.checked = true;
                             await invidiousOnClick(checkbox, "supportInvidious");

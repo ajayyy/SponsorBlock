@@ -1,10 +1,138 @@
 /* Options page CSS */
+
+/* Dark mode CSS, this is the default if unsupported */
 html {
     color-scheme: dark;
 }
-
 body {
+    background-color: #333333;
+}
+#navigation {
+    background-color: #181818;
+    color: white;
+}
+.tab-heading {
+    background-color: #242424;
+    color: white;
+}
+.tab-heading:hover {
+    outline: 3px solid white;
+}
+.medium-description, .switch-container, .text-label-container, .categoryTableElement {
+    color: white;
+}
+.small-description, p,li {
+    color: #dfdfdf;
+}
+.option-button.disabled {
+    background-color: #520000;
+    color: grey;
+}
+.slider {
+    background-color: #707070;
+}
+h1,h2,h3,h4,h5,h6 {
+    color: #dad8d8;
+}
+.option-group > div {
+    border-bottom: 1px solid #484848;
+    border-image: linear-gradient(to right, #484848, #00000000 80%)  1;
+}
+.categoryTableElement td {
+    border-top: 1px solid #484848;
+}
+
+/* Light mode, if requested */
+@media only screen and (prefers-color-scheme: light) {
+    html {
+        color-scheme: light;
+    }
+    body {
+        background-color: #f9f9f9;
+    }
+    #navigation {
+        background-color: #dbdbdb;
+        color: #212121;
+    }
+    .tab-heading {
+        background-color: #ababab;
+        color: black;
+    }
+    .tab-heading:hover {
+        outline: 3px solid #2e2e2e;
+    }
+    .medium-description, .switch-container, .text-label-container, .categoryTableElement {
+        color: black;
+    }
+    .small-description, p,li {
+        color: #262626;
+    }
+    .option-button.disabled {
+        background-color: #ffcaca;
+        color: grey;
+    }
+    .slider {
+        background-color: #bfbebe;
+    }
+    h1,h2,h3,h4,h5,h6 {
+        color: #707070;
+    }
+    .option-group > div {
+        border-bottom: 1px solid #d9d9d9;
+        border-image: linear-gradient(to right, #d9d9d9, #00000000 80%)  1;
+    }
+    .categoryTableElement td {
+        border-top: 1px solid #d9d9d9;
+    }
+}
+
+html, body {
     font-family: sans-serif;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#options-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-basis: 20%;
+    min-width: 300px;
+    max-width: 600px;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.tab-heading {
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.tab-heading.selected {
+    background-color: #c00000;
+    color: white;
+}
+
+.option-group > div {
+    min-height: 50px;
+    padding: 20px 0;
+}
+
+.option-group > div:last-child {
+    border-bottom: inherit;
 }
 
 .center {
@@ -27,13 +155,20 @@ body {
     display: inline;
 }
 
-.small-description {
-    color: white;
+.small-description{
     font-size: 13px;
+    padding: 15px 0 0 20px;
+}
+
+.small-description td {
+    padding: 10px 0 20px 20px;
+}
+
+.categoryTableElement td {
+    padding-top: 10px;
 }
 
 .medium-description {
-    color: white;
     font-size: 15px;
 }
 
@@ -53,21 +188,23 @@ body {
     width: max-content;
 }
 
-.option-button:hover {
+.option-button:hover:not(.disabled) {
     background-color: #fc0303;
 }
 
 .option-button.disabled {
     cursor: default;
-
-    background-color: #520000;
-    color: grey;
 }
 
 #options {
-    max-width: 60%;
+    height: 100vh;
+    flex-basis: 80%;
+    overflow: auto;
     text-align: left;
-    display: inline-block;
+    padding: 80px 15px 0 3%;
+    box-sizing: border-box;
+
+    transition: padding 0.3s;
 }
 
 #options.embed {
@@ -76,13 +213,15 @@ body {
     display: inline-block;
 }
 
+#title .profilepic {
+    height: 60px;
+}
+
 .switch-container {
 	content: attr(label-name);
-    position: absolute;
     width: max-content;
 
     font-size: 14px;
-    color: white;
 
     display: table;
 }
@@ -96,7 +235,6 @@ body {
 
 .text-label-container {
     font-size: 14px;
-    color: white;
 }
 
 .switch {
@@ -119,7 +257,6 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #707070;
 }
 
 .animated * {
@@ -162,11 +299,8 @@ input:checked + .slider:before {
 }
 
 
-/* Boilerplate CSS from https://ajay.app */
 
-body {
-    background-color: #333333;
-}
+/* Boilerplate CSS from https://ajay.app (edited) */
 
 .projectPreview {
     position: relative;
@@ -196,29 +330,21 @@ body {
     transform: translateY(-50%);
 }
 
-.createdBy {
+#createdBy {
     font-size: 14px;
     text-align: center;
-    padding-top: 0px;
-    padding-bottom: 0px;
-
-    display: inline-block;
+    margin-top: auto;
 }
 
 #title {
-    background-color: #636363;
-  
     text-align: center;
     vertical-align: middle;
   
-    font-size: 50px;
-    color: #212121;
+    font-size: 40px;
   
     padding: 20px;
   
     text-decoration: none;
-  
-    transition: font-size 1s;
 }
 
 .subtitle {
@@ -237,7 +363,6 @@ body {
 }
 
 .profilepic {
-    background-color: #636363 !important;
     vertical-align: middle;
 }
 
@@ -281,19 +406,7 @@ a {
 
 p,li {
     font-size: 20px;
-    color: #c4c4c4;
-  
     padding: 10px;
-}
-
-@media screen and (orientation:portrait) {
-    #options {
-        max-width: 100%;
-    }
-
-    .previewColorOption {
-        display: none;
-    }
 }
 
 .previewImage {
@@ -316,10 +429,6 @@ img {
     color: #dad8d8;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    color: #dad8d8;
-}
-
 svg {
     text-decoration: none; 
 }
@@ -337,8 +446,6 @@ svg {
 
 .categoryTableElement {
     font-size: 16px;
-
-    color: white;
 }
 
 .categoryTableElement > * {
@@ -369,3 +476,49 @@ svg {
 #sbDonate {
     font-size: 10px;
 }
+
+
+/* Handle smaller screensizes */
+@media only screen and (max-height: 770px), only screen and (max-width: 1200px) {
+    #options-container {
+        flex-direction: column;
+    }
+    #navigation {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        min-width: unset;
+        max-width: unset;
+        padding: 8px;
+    }
+    #options {
+        padding: 0 50px;
+    }
+    .tab-heading {
+        width: unset;
+        min-width: 150px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0;
+        flex-grow: 1;
+    }
+    #title {
+        width: 100%;
+        font-size: 30px;
+    }
+    #title .profilepic {
+        height: 40px;
+    }
+    #createdBy {
+        margin: unset;
+        width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    #options {
+        padding: 0 15px;
+    }
+  }

@@ -845,5 +845,33 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabCategories" : {
+        "message": "Categories",
+        "description": "Appears in Options as a tab header for setting up categories."
+    },
+    "optionsTabBehavior" : {
+        "message": "Behavior",
+        "description": "Appears in Options as a tab header for options related to the general behavior of the extension."
+    },
+    "optionsTabInterface" : {
+        "message": "Interface",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds"
+    },
+    "optionsTabKeyBinds" : {
+        "message": "Key Bindings",
+        "description": "Appears in Options as a tab header for keybinds"
+    },
+    "optionsTabPrivacy" : {
+        "message": "Privacy",
+        "description": "Appears in Options as a tab header for options related to privacy (data stored/sent to server)"
+    },
+    "optionsTabBackup" : {
+        "message": "Backup/Restore",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings"
+    },
+    "optionsTabAdvanced" : {
+        "message": "Advanced",
+        "description": "Appears in Options as a tab header for advanced/niche options"
     }
 }
