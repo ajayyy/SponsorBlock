@@ -135,6 +135,20 @@ html, body {
     border-bottom: inherit;
 }
 
+.optionLabel {
+    font-size: 14px;
+}
+
+input[type='number'] {
+    width: 50px;
+}
+
+.low-profile {
+    height: 23px;
+    line-height: 5px;
+    vertical-align: middle;
+}
+
 .center {
     text-align: center;
 }
@@ -155,7 +169,7 @@ html, body {
     display: inline;
 }
 
-.small-description{
+.small-description {
     font-size: 13px;
     padding: 15px 0 0 20px;
 }

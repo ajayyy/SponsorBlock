@@ -96,6 +96,8 @@
 				</div>
 
 				<div data-type="number-change" data-sync="minDuration">
+					<span class="optionLabel">__MSG_minDuration__</span>
+
 					<label class="number-container">
 						<input type="number" step="0.1" min="0">
 					</label>
@@ -136,6 +138,8 @@
 			<div id="interface-options" class="option-group hidden">
 
 				<div data-type="number-change" data-sync="skipNoticeDuration">
+					<span class="optionLabel">__MSG_skipNoticeDuration__</span>
+
 					<label class="number-container">
 						<input type="number" step="1" min="1">
 					</label>
@@ -156,6 +160,8 @@
 				</div>
 	
 				<div data-type="selector" data-sync="noticeVisibilityMode">
+					<span class="optionLabel">__MSG_noticeVisibilityLabel__</span>
+
 					<select class="selector-element optionsSelector" >
 						<option value="0">__MSG_noticeVisibilityMode0__</option>
 						<option value="1">__MSG_noticeVisibilityMode1__</option>
@@ -177,6 +183,30 @@
 					</div>
 	
 					<div class="small-description">__MSG_hideButtonsDescription__</div>
+				</div>
+
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideDeleteButtonPlayerControls" data-dependent-on="hideVideoPlayerControls">
+					<div class="switch-container">
+						<label class="switch">
+							<input type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<div class="switch-label">
+							__MSG_showDeleteButton__
+						</div>
+					</div>
+				</div>
+	
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideUploadButtonPlayerControls" data-dependent-on="hideVideoPlayerControls">
+					<div class="switch-container">
+						<label class="switch">
+							<input type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<div class="switch-label">
+							__MSG_showUploadButton__
+						</div>
+					</div>
 				</div>
 	
 				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideSkipButtonPlayerControls">
@@ -211,30 +241,6 @@
 						</label>
 						<div class="switch-label">
 							__MSG_autoHideInfoButton__
-						</div>
-					</div>
-				</div>
-	
-				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideDeleteButtonPlayerControls">
-					<div class="switch-container">
-						<label class="switch">
-							<input type="checkbox" checked>
-							<span class="slider round"></span>
-						</label>
-						<div class="switch-label">
-							__MSG_showDeleteButton__
-						</div>
-					</div>
-				</div>
-	
-				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideUploadButtonPlayerControls">
-					<div class="switch-container">
-						<label class="switch">
-							<input type="checkbox" checked>
-							<span class="slider round"></span>
-						</label>
-						<div class="switch-label">
-							__MSG_showUploadButton__
 						</div>
 					</div>
 				</div>
@@ -351,7 +357,7 @@
 					<div class="small-description">__MSG_whatViewTracking__</div>
 				</div>
 	
-				<div data-type="toggle" data-sync="trackViewCountInPrivate" data-private-only="true">
+				<div data-type="toggle" data-sync="trackViewCountInPrivate" data-dependent-on="trackViewCount" data-private-only="true">
 					<div class="switch-container">
 						<label class="switch">
 							<input type="checkbox" checked>
@@ -468,18 +474,18 @@
 					<div class="small-description">__MSG_whatEnableTestingServer__</div>
 				</div>
 	
-				<div data-type="text-change" data-sync="serverAddress">
+				<div data-type="text-change" data-sync="serverAddress" data-dependent-on="testingServer" data-dependent-on-inverted="true">
 					<div class="text-label-container inline">
-						<div>__MSG_customServerAddress__</div>
+						<span class="optionLabel">__MSG_customServerAddress__:</span>
 	
-						<input class="option-text-box" type="text">
+						<input class="option-text-box" type="text" style="margin-right:10px">
 					</div>
 	
-					<div class="option-button text-change-set inline">
+					<div class="option-button text-change-set inline low-profile">
 						__MSG_save__
 					</div>
 	
-					<div class="option-button text-change-reset inline">
+					<div class="option-button text-change-reset inline low-profile">
 						__MSG_reset__
 					</div>
 	

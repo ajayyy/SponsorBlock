@@ -873,5 +873,9 @@
     "optionsTabAdvanced" : {
         "message": "Advanced",
         "description": "Appears in Options as a tab header for advanced/niche options"
+    },
+    "noticeVisibilityLabel" : {
+        "message": "Notice appearance:",
+        "description": "Option label"
     }
 }

@@ -30,7 +30,7 @@ async function init() {
     await utils.wait(() => Config.config !== null);
 
     if (!showDonationLink()) {
-        document.getElementById("sbDonate").style.visibility = "hidden";
+        document.getElementById("sbDonate").style.display = "none";
     }
 
     // Set all of the toggle options to the correct option
@@ -38,11 +38,18 @@ async function init() {
     const optionsElements = optionsContainer.querySelectorAll("*");
 
     for (let i = 0; i < optionsElements.length; i++) {
+        const dependentOnName = optionsElements[i].getAttribute("data-dependent-on");
+        const dependentOn = optionsContainer.querySelector(`[data-sync='${dependentOnName}']`);
+        let isDependentOnReversed = false;
+        if (dependentOn)
+            isDependentOnReversed = dependentOn.getAttribute("data-toggle-type") === "reverse" || optionsElements[i].getAttribute("data-dependent-on-inverted") === "true";
+
         if ((optionsElements[i].getAttribute("data-private-only") === "true" && !(await isIncognitoAllowed()))
             || (optionsElements[i].getAttribute("data-no-safari") === "true" && navigator.vendor === "Apple Computer, Inc.")
-            || (optionsElements[i].getAttribute("data-dependent-on") && Config.config[optionsElements[i].getAttribute("data-dependent-on")])) {
+            || (dependentOn && (isDependentOnReversed ? Config.config[dependentOnName] : !Config.config[dependentOnName]))) {
             optionsElements[i].classList.add("hidden");
-            continue;
+            if (!dependentOn)
+                continue;
         }
 
         const option = optionsElements[i].getAttribute("data-sync");
@@ -56,13 +63,8 @@ async function init() {
 
                 const confirmMessage = optionsElements[i].getAttribute("data-confirm-message");
 
-                if (optionResult != undefined) {
-                    checkbox.checked = optionResult;
-
-                    if (reverse) {
-                        optionsElements[i].querySelector("input").checked = !optionResult;
-                    }
-                }
+                if (optionResult != undefined)
+                    checkbox.checked =  reverse ? !optionResult : optionResult;
 
                 // See if anything extra should be run first time
                 switch (option) {
@@ -94,8 +96,29 @@ async function init() {
                                 const showNoticeSwitch = <HTMLInputElement> document.querySelector("[data-sync='dontShowNotice'] > div > label > input");
                                 showNoticeSwitch.checked = true;
                             }
-
                             break;
+                        case "showDonationLink":
+                            if (checkbox.checked)
+                                document.getElementById("sbDonate").style.display = "none";
+                            else
+                                document.getElementById("sbDonate").style.display = "unset";
+                            break;
+                    }
+
+                    // If other options depend on this, hide and disable them
+                    const dependents = optionsContainer.querySelectorAll(`[data-dependent-on='${option}']`);
+                    for (let j = 0; j < dependents.length; j++) {
+                        const isDependentReversed = dependents[j].getAttribute("data-toggle-type") === "reverse";
+                        const disableWhenChecked = dependents[j].getAttribute("data-dependent-on-inverted") === "true";
+                        if (!disableWhenChecked && checkbox.checked || disableWhenChecked && !checkbox.checked) {
+                            dependents[j].classList.remove("hidden");
+                        } else {
+                            if (dependents[j].getAttribute("data-type") === "toggle") {
+                                (dependents[j].querySelector("div > label > input") as HTMLInputElement).checked = false;
+                                Config.config[dependents[j].getAttribute("data-sync")] = isDependentReversed;
+                            }
+                            dependents[j].classList.add("hidden");
+                        }                        
                     }
                 });
                 break;
