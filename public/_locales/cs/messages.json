@@ -263,7 +263,7 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Nastavit klíč pro přeskočení segmentu"
+        "message": "Nastavit klávesu pro přeskočení segmentu"
     },
     "setStartSponsorShortcut": {
         "message": "Nastavte klávesu pro spuštění/zastavení segmentu"
@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "Novinka! Překakujte výplňové části a vtipy s kategorií výplň. Povolte ji v nastavení"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }
