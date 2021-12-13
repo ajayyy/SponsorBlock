@@ -428,7 +428,7 @@
         "message": "A beállított értéknél rövidebb szegmenseket nem ugorja át és nem jeleníti meg a lejátszó."
     },
     "skipNoticeDuration": {
-        "message": "Átugrási értesítés hossza (másodpercek):"
+        "message": "Átugrási értesítés hossza (másodpercekben):"
     },
     "skipNoticeDurationDescription": {
         "message": "Az átugrási értesítés ennyi ideig marad a képernyőn. Manuális átugrásnál tovább is látható maradhat."
