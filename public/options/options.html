@@ -23,7 +23,7 @@
 				<div id="version"></div>
 			</div>
 
-			<div class="tab-heading selected" data-for="segment-options">
+			<div class="tab-heading" data-for="segment-options">
 				__MSG_optionsTabCategories__
 			</div>
 
@@ -62,7 +62,7 @@
 
 		<div id="options" class="hidden">
 
-			<div id="segment-options" class="option-group">
+			<div id="segment-options" class="option-group hidden">
 
 				<div id="category-type" data-type="react-CategoryChooserComponent">
 
@@ -159,7 +159,7 @@
 				</div>
 	
 				<div data-type="selector" data-sync="noticeVisibilityMode">
-					<label class="optionLabel" for="noticeVisibilityMode">__MSG_noticeVisibilityLabel__</label>
+					<label class="optionLabel" for="noticeVisibilityMode">__MSG_noticeVisibilityLabel__:</label>
 
 					<select id="noticeVisibilityMode" class="selector-element optionsSelector" >
 						<option value="0">__MSG_noticeVisibilityMode0__</option>
@@ -379,10 +379,10 @@
 	
 					<div class="small-description">__MSG_whatChangeUserID__</div>
 	
-					<div class="option-hidden-section hidden">
+					<div class="option-hidden-section hidden spacing indent">
 						<input class="option-text-box" type="text">
 	
-						<div class="option-button text-change-set">
+						<div class="option-button text-change-set inline low-profile">
 							__MSG_setUserID__
 						</div>
 					</div>
@@ -395,8 +395,8 @@
 	
 					<div class="small-description">__MSG_whatExportOptions__</div>
 	
-					<div class="option-hidden-section hidden">	
-						<input class="option-text-box" type="text">
+					<div class="option-hidden-section hidden spacing indent">	
+						<textarea class="option-text-box" rows="10" style="width:80%"></textarea>
 	
 						<div class="option-button text-change-set">
 							__MSG_setOptions__
@@ -420,8 +420,7 @@
 					</div>
 	
 					<div class="small-description">(__MSG_supportedSites__ Invidious, CloudTube)</div>
-					<br/>
-					<span class="small-description">__MSG_supportOtherSitesDescription__ </span>
+					<div class="small-description">__MSG_supportOtherSitesDescription__ </div>
 				</div>
 	
 				<div data-type="private-text-change" data-sync="invidiousInstances" data-no-safari="true">
@@ -431,22 +430,23 @@
 	
 					<div class="small-description">__MSG_addInvidiousInstanceDescription__</div>
 	
-					<div class="option-hidden-section hidden">
+					<div class="indent option-hidden-section hidden spacing">
 						<input class="option-text-box" type="text">
-	
-						<div>
-							<div class="option-button text-change-set inline">
+						<div class="inline">
+							<div class="option-button text-change-set inline low-profile">
 								__MSG_add__
 							</div>
-		
-							<div class="option-button invidious-instance-reset inline">
-								__MSG_resetInvidiousInstance__
+							<div class="option-button text-change-reset inline low-profile">
+								__MSG_cancel__
 							</div>
 						</div>
-						
-						<div>
-							<span class="small-description">__MSG_currentInstances__</span>
-							<span class="small-description" data-type="display" data-sync="invidiousInstances"></span>
+					</div>
+
+					<div style="margin-top:15px">
+						<span>__MSG_currentInstances__</span>
+						<span data-type="display" data-sync="invidiousInstances"></span>
+						<div class="option-button invidious-instance-reset spacing hidden">
+							__MSG_resetInvidiousInstance__
 						</div>
 					</div>
 				</div>
@@ -480,12 +480,14 @@
 						<input class="option-text-box" type="text" style="margin-right:10px">
 					</label>
 	
-					<div class="option-button text-change-set inline low-profile">
-						__MSG_save__
-					</div>
-	
-					<div class="option-button text-change-reset inline low-profile">
-						__MSG_reset__
+					<div class="inline">
+						<div class="option-button text-change-set inline low-profile">
+							__MSG_save__
+						</div>
+		
+						<div class="option-button text-change-reset inline low-profile">
+							__MSG_reset__
+						</div>
 					</div>
 	
 					<div class="small-description">__MSG_customServerAddressDescription__</div>

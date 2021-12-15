@@ -60,6 +60,8 @@ body {
   
   text-decoration: none;
 
+  border-radius: 15px;
+
   transition: font-size 1s;
 }
 
@@ -198,5 +200,24 @@ svg {
 
   p,li,code,a {
     text-align: center;
+  }
+}
+
+/* Light mode, if requested */
+@media only screen and (prefers-color-scheme: light) {
+  html {
+      color-scheme: light;
+  }
+  body {
+      background-color: #f9f9f9;
+  }
+  p,li,a {
+      color: #262626;
+  }
+  h1,h2,h3,h4,h5,h6 {
+      color: #707070;
+  }
+  #title {
+    color: white;
   }
 }

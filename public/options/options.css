@@ -89,6 +89,7 @@ h1,h2,h3,h4,h5,h6 {
 html, body {
     font-family: sans-serif;
     margin: 0;
+    font-size: 14px;
 }
 
 * {
@@ -109,6 +110,7 @@ html, body {
     max-width: 600px;
     border-radius: 15px;
     margin: 15px;
+    z-index: 10;
 }
 
 .tab-heading {
@@ -127,6 +129,10 @@ html, body {
 .tab-heading.selected {
     background-color: #c00000;
     color: white;
+}
+
+.tab-heading:active {
+    background-color: #950000;
 }
 
 .option-group > div {
@@ -168,6 +174,10 @@ input[type='number'] {
     display: none !important;
 }
 
+.spacing {
+    margin-top: 15px;
+}
+
 .keybind-status {
     display: inline;
 }
@@ -179,6 +189,10 @@ input[type='number'] {
 
 .small-description td {
     padding: 10px 0 20px 20px;
+}
+
+.indent {
+    padding-left: 20px;
 }
 
 .categoryTableElement td {
@@ -511,9 +525,11 @@ svg {
     }
     .tab-heading {
         width: unset;
-        min-width: 150px;
-        height: 40px;
-        line-height: 40px;
+        min-width: unset;
+        height: 35px;
+        line-height: 35px;
+        font-size: 16px;
+        padding: 0 10px;
         margin: 0;
         flex-grow: 1;
     }
@@ -530,6 +546,15 @@ svg {
     }
     #version {
         font-size: 10px;
+    }
+    .sticky #navigation {
+        position: fixed;
+        left: 0;
+        right: 0;
+        margin: 0 15px;
+    }
+    .sticky #title, .sticky #createdBy {
+        display: none;
     }
   }
 
