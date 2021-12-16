@@ -152,6 +152,10 @@
     "hideInfoButton": {
         "message": "החבא כפתור מידע בנגן YouTube"
     },
+    "website": {
+        "message": "אתר",
+        "description": "Used on Firefox Store Page"
+    },
     "sourceCode": {
         "message": "קוד מקור",
         "description": "Used on Firefox Store Page"
