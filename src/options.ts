@@ -359,8 +359,8 @@ function activateKeybindChange(element: HTMLElement) {
     const button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
-    let keybindOptions = getKeybindOptions();
-    for (let keybindOption of keybindOptions) {
+    const keybindOptions = getKeybindOptions();
+    for (const keybindOption of keybindOptions) {
 		const keybindButton = keybindOption.querySelector(".trigger-button");
 		keybindButton.classList.add("disabled");
 	}
@@ -400,7 +400,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         const option = element.getAttribute("sync-option");
 
         // Make sure keybind isn't used by any other listeners
-	    const otherBoundKeys = Array.from(getKeybindOptions()).filter(a => a != element).map(a => Config.config[a.getAttribute("sync-option")]);
+        const otherBoundKeys = Array.from(getKeybindOptions()).filter(a => a != element).map(a => Config.config[a.getAttribute("sync-option")]);
         if (otherBoundKeys.includes(key)) {
             closeKeybindOption(element, button);
             enableKeybindOptions();
@@ -441,7 +441,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
  */
  function enableKeybindOptions() {
 	const options = getKeybindOptions();
-	for (let option of options) {
+	for (const option of options) {
 		const button = option.querySelector(".trigger-button");
 		button.classList.remove("disabled");
 	}
