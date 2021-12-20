@@ -359,7 +359,11 @@ function activateKeybindChange(element: HTMLElement) {
     const button = element.querySelector(".trigger-button");
     if (button.classList.contains("disabled")) return;
 
-    button.classList.add("disabled");
+    let keybindOptions = getKeybindOptions();
+    for (let keybindOption of keybindOptions) {
+		const keybindButton = keybindOption.querySelector(".trigger-button");
+		keybindButton.classList.add("disabled");
+	}
 
     const option = element.getAttribute("sync-option");
 
@@ -395,11 +399,11 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         const button: HTMLElement = element.querySelector(".trigger-button");
         const option = element.getAttribute("sync-option");
 
-        // Make sure keybind isn't used by the other listener
-        // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
-        const otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
-        if (key === otherKeybind) {
+        // Make sure keybind isn't used by any other listeners
+	    const otherBoundKeys = Array.from(getKeybindOptions()).filter(a => a != element).map(a => Config.config[a.getAttribute("sync-option")]);
+        if (otherBoundKeys.includes(key)) {
             closeKeybindOption(element, button);
+            enableKeybindOptions();
 
             alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsed"));
             return;
@@ -408,6 +412,7 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         // cancel setting a keybind
         if (key === "Escape") {
             closeKeybindOption(element, button);
+            enableKeybindOptions()
 
             return;
         }
@@ -420,8 +425,26 @@ function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
         const statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
         statusKey.innerText = key;
 
-        button.classList.remove("disabled");
+        enableKeybindOptions();
     }
+}
+
+/**
+ * Gets a NodeList of all keybind options
+ */
+ function getKeybindOptions() {
+    return document.getElementById("options").querySelectorAll('[option-type="keybind-change"]');
+}
+
+/**
+ * Releases lock on editing keybinds
+ */
+ function enableKeybindOptions() {
+	const options = getKeybindOptions();
+	for (let option of options) {
+		const button = option.querySelector(".trigger-button");
+		button.classList.remove("disabled");
+	}
 }
 
 /**
