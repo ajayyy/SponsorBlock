@@ -74,7 +74,7 @@
         "message": "Video này có đoạn quảng cáo trong kho dữ liệu rồi!"
     },
     "sponsor404": {
-        "message": "Không tìm thấy đoạn nào"
+        "message": "Không tìm thấy phân đoạn nào"
     },
     "sponsorStart": {
         "message": "Đoạn quảng cáo bắt đầu vào lúc này"
@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
     },
+    "category_filler": {
+        "message": "Cảnh phụ"
+    },
+    "category_filler_description": {
+        "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
+    },
+    "category_filler_short": {
+        "message": "Cảnh phụ"
+    },
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
     },
@@ -699,6 +708,9 @@
     "downvoteDescription": {
         "message": "Chỉnh thời gian sai/không đúng"
     },
+    "incorrectCategory": {
+        "message": "Đổi danh mục"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Video này đã được phân loại là âm nhạc. Bạn có chắc đây là quảng cáo nhà tài trợ không? Nếu đây là phân đoạn \"Không phải nhạc\", hãy mở Cài đặt tiện ích và bật lựa chọn đó. Rồi bạn có thể đăng tải phân đoạn lên dưới danh mục \"Không phải nhạc\" thay vì \"Quảng cáo nhà tài trợ\". Hãy đọc Hướng dẫn nếu bạn vẫn còn vướng mắc"
     },
@@ -808,7 +820,30 @@
     "CopyDownvoteButtonInfo": {
         "message": "Hạ bình chọn và tạo một bản sao cục bộ cho bạn gửi lại"
     },
+    "OpenCategoryWikiPage": {
+        "message": "Mở trang wiki của danh mục này để tìm hiểu thêm."
+    },
     "CopyAndDownvote": {
         "message": "Sao chép và hạ bình chọn"
+    },
+    "ContinueVoting": {
+        "message": "Tiếp tục bỏ phiếu"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Điều này sẽ ngay lập tức áp dụng cho phân đoạn của bạn"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Sử dụng con lăn chuột của bạn khi di chuột qua hộp chỉnh sửa để nhanh chóng điều chỉnh thời gian. Kết hợp phím ctrl hoặc shift có thể được sử dụng để tinh chỉnh các thay đổi."
+    },
+    "fillerNewFeature": {
+        "message": "Mới! Bỏ qua các phân đoạn phụ và joke với danh mục \"Cảnh phụ\". Bật trong tùy chọn"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }
