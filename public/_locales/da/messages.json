@@ -142,5 +142,59 @@
     "submissionEditHint": {
         "message": "Sektionsredigering vises, når du klikker på afsend",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Tip: Du kan opsætte keybinds til indsendelse i indstillingerne"
+    },
+    "clearTimesButton": {
+        "message": "Ryd Tider"
+    },
+    "submitTimesButton": {
+        "message": "Indsend Tider"
+    },
+    "publicStats": {
+        "message": "Dette bruges på siden med offentlige statistikker til at vise, hvor meget du har bidraget. Se det"
+    },
+    "Username": {
+        "message": "Brugernavn"
+    },
+    "setUsername": {
+        "message": "Angiv Brugernavn"
+    },
+    "copyPublicID": {
+        "message": "Kopier Offentligt Bruger-ID"
+    },
+    "discordAdvert": {
+        "message": "Kom til den officielle Discord-server for at give forslag og feedback!"
+    },
+    "hideThis": {
+        "message": "Skjul dette"
+    },
+    "Options": {
+        "message": "Indstillinger"
+    },
+    "showButtons": {
+        "message": "Vis Knapper På YouTube-Afspiller"
+    },
+    "hideButtons": {
+        "message": "Skjul Knapper På YouTube-Afspiller"
+    },
+    "hideButtonsDescription": {
+        "message": "Dette skjuler knapperne, der vises på YouTube-afspilleren for indsende springe segmenter."
+    },
+    "showSkipButton": {
+        "message": "Behold Knappen Spring Til Fremhævning På Afspilleren"
+    },
+    "showInfoButton": {
+        "message": "Vis Info-Knap På YouTube-Afspiller"
+    },
+    "hideInfoButton": {
+        "message": "Skjul Info-Knap På YouTube-Afspiller"
+    },
+    "autoHideInfoButton": {
+        "message": "Auto-Skjul Info-Knap"
+    },
+    "hideDeleteButton": {
+        "message": "Skjul Slet-Knappen på YouTube-Afspiller"
     }
 }
