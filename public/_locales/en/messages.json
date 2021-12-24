@@ -25,6 +25,12 @@
     "Segments": {
         "message": "segments"
     },
+    "SegmentsCap": {
+        "message": "Segments"
+    },
+    "Chapters": {
+        "message": "Chapters"
+    },
     "upvoteButtonInfo": {
         "message": "Upvote this submission"
     },

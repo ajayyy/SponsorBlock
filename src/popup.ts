@@ -107,7 +107,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         //"downloadedSponsorMessageTimes",
         "refreshSegmentsButton",
         "whitelistButton",
-        "sbDonate"
+        "sbDonate",
+        "issueReporterTabs",
+        "issueReporterTabSegments",
+        "issueReporterTabChapters"
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     // Hide donate button if wanted (Safari, or user choice)
@@ -146,6 +149,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     //current video ID of this tab
     let currentVideoID = null;
+
+    enum SegmentTab {
+        Segments,
+        Chapters
+    }
+    let segmentTab = SegmentTab.Segments;
 
     //show proper disable skipping button
     const disableSkipping = Config.config.disableSkipping;
@@ -239,6 +248,22 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     setTimeout(() => PageElements.sponsorblockPopup.classList.remove("preload"), 250);
 
     getSegmentsFromContentScript(false);
+
+    PageElements.issueReporterTabSegments.addEventListener("click", () => {
+        PageElements.issueReporterTabSegments.classList.add("sbSelected");
+        PageElements.issueReporterTabChapters.classList.remove("sbSelected");
+
+        segmentTab = SegmentTab.Segments;
+        getSegmentsFromContentScript(true);
+    });
+
+    PageElements.issueReporterTabChapters.addEventListener("click", () => {
+        PageElements.issueReporterTabSegments.classList.remove("sbSelected");
+        PageElements.issueReporterTabChapters.classList.add("sbSelected");
+
+        segmentTab = SegmentTab.Chapters;
+        getSegmentsFromContentScript(true);
+    });
 
     function onTabs(tabs, updating: boolean): void {
         messageHandler.sendMessage(tabs[0].id, { message: 'getVideoID' }, function (result) {
@@ -369,8 +394,25 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //display the video times from the array at the top, in a different section
     function displayDownloadedSponsorTimes(request: { found: boolean, sponsorTimes: SponsorTime[] }) {
         if (request.sponsorTimes != undefined) {
+            let currentSegmentTab = segmentTab;
+            if (!request.sponsorTimes.some((segment) => segment.actionType === ActionType.Chapter)) {
+                PageElements.issueReporterTabs.classList.add("hidden");
+                currentSegmentTab = SegmentTab.Segments;
+            } else {
+                PageElements.issueReporterTabs.classList.remove("hidden");
+            }
+
             // Sort list by start time
             const segmentTimes = request.sponsorTimes
+                .filter((segment) => {
+                    if (currentSegmentTab === SegmentTab.Segments) {
+                        return segment.actionType !== ActionType.Chapter;
+                    } else if (currentSegmentTab === SegmentTab.Chapters) {
+                        return segment.actionType === ActionType.Chapter;
+                    } else {
+                        return true;
+                    }
+                })
                 .sort((a, b) => a.segment[1] - b.segment[1])
                 .sort((a, b) => a.segment[0] - b.segment[0]);
 
@@ -438,7 +480,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
                 //uuid button
-
                 const uuidButton = document.createElement("img");
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 uuidButton.className = "voteButton";
@@ -563,6 +604,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //this is not a YouTube video page
     function displayNoVideo() {
         document.getElementById("loadingIndicator").innerText = chrome.i18n.getMessage("noVideoID");
+
+        PageElements.issueReporterTabs.classList.add("hidden");
     }
 
     function addVoteMessage(message, UUID) {

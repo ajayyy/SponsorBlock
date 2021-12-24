@@ -409,3 +409,37 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
 
   border-radius: 5px;
 }
+
+#issueReporterTabs {
+  margin: 5px;
+}
+
+#issueReporterTabs > span {
+  padding: 2px 4px;
+  margin: 0 3px;
+  cursor: pointer;
+  background-color: #444848;
+  border-radius: 10px;
+}
+
+#issueReporterTabs > span > span {
+  position: relative;
+  padding: 0.2em 0;
+}
+
+#issueReporterTabs > span > span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: rgb(145, 0, 0);
+  transition: transform 300ms;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+#issueReporterTabs > span.sbSelected > span::after {
+  transform: scaleX(0.8);
+}
