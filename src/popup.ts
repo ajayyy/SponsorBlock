@@ -1,7 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, CategoryActionType, ActionType } from "./types";
+import { SponsorTime, SponsorHideType, CategoryActionType, ActionType, SegmentUUID } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { getCategoryActionType } from "./utils/categoryUtils";
@@ -426,13 +426,15 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             for (let i = 0; i < segmentTimes.length; i++) {
                 const UUID = segmentTimes[i].UUID;
                 const locked = segmentTimes[i].locked;
+                const category = segmentTimes[i].category;
+                const actionType = segmentTimes[i].actionType;
 
                 const sponsorTimeButton = document.createElement("button");
                 sponsorTimeButton.className = "segmentTimeButton popupElement";
 
                 const categoryColorCircle = document.createElement("span");
                 categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
-                categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category]?.color;
+                categoryColorCircle.style.backgroundColor = Config.config.barTypes[category]?.color;
                 categoryColorCircle.classList.add("dot");
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
 
@@ -445,16 +447,16 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 }
 
-                const name = segmentTimes[i].description || utils.shortCategoryName(segmentTimes[i].category);
+                const name = segmentTimes[i].description || utils.shortCategoryName(category);
                 const textNode = document.createTextNode(name + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
                 segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
-                            (getCategoryActionType(segmentTimes[i].category) !== CategoryActionType.POI 
+                            (getCategoryActionType(category) !== CategoryActionType.POI 
                                 ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) 
                                 : "");
                 segmentTimeFromToNode.style.margin = "5px";
 
-                if (segmentTimes[i].actionType !== ActionType.Chapter) sponsorTimeButton.appendChild(categoryColorCircle);
+                if (actionType !== ActionType.Chapter) sponsorTimeButton.appendChild(categoryColorCircle);
                 sponsorTimeButton.appendChild(textNode);
                 sponsorTimeButton.appendChild(segmentTimeFromToNode);
 
@@ -490,10 +492,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     stopAnimation();
                 });
 
+                const skipButton = document.createElement("img");
+                skipButton.id = "sponsorTimesSkipButtonContainer" + UUID;
+                skipButton.className = "voteButton";
+                skipButton.src = chrome.runtime.getURL("icons/skip.svg");
+                skipButton.addEventListener("click", () => skipSegment(actionType, UUID, skipButton));
+                container.addEventListener("dblclick", () => skipSegment(actionType, UUID));
+
                 //add thumbs up, thumbs down and uuid copy buttons to the container
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
                 voteButtonsContainer.appendChild(uuidButton);
+                voteButtonsContainer.appendChild(skipButton);
 
                 //add click listener to open up vote panel
                 sponsorTimeButton.addEventListener("click", function () {
@@ -754,6 +764,37 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             )
         }
         );
+    }
+
+    function skipSegment(actionType: ActionType, UUID: SegmentUUID, element?: HTMLElement): void {
+        if (actionType === ActionType.Chapter) {
+            sendMessage({
+                message: "unskip",
+                UUID: UUID
+            });
+        } else {
+            sendMessage({
+                message: "reskip",
+                UUID: UUID
+            });
+        }
+        
+        if (element) {
+            const stopAnimation = utils.applyLoadingAnimation(element, 0.3);
+            stopAnimation();
+        }
+    }
+
+    function sendMessage(request: Message): void {
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                request
+            );
+        });
     }
 
     /**

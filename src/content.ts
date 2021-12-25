@@ -198,13 +198,17 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             }));
 
             return true;
+        case "unskip":
+            unskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID));
+            break;
+        case "reskip":
+            reskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID));
+            break;
     }
 }
 
 /**
  * Called when the config is updated
- * 
- * @param {String} changes 
  */
 function contentConfigUpdateListener(changes: StorageChangesObject) {
     for (const key in changes) {
