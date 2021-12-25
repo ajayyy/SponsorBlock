@@ -970,6 +970,7 @@ function updatePreviewBar(): void {
             previewBarSegments.push({
                 segment: segment.segment as [number, number],
                 category: segment.category,
+                actionType: segment.actionType,
                 unsubmitted: false,
                 showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI,
                 description: segment.description,
@@ -981,6 +982,7 @@ function updatePreviewBar(): void {
         previewBarSegments.push({
             segment: segment.segment as [number, number],
             category: segment.category,
+            actionType: segment.actionType,
             unsubmitted: true,
             showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI,
             description: segment.description,

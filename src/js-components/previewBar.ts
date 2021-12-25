@@ -8,6 +8,7 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 import Config from "../config";
 import { ActionType, Category, CategoryActionType, SegmentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
+import { partition } from "../utils/arrayUtils";
 import { getCategoryActionType } from "../utils/categoryUtils";
 const utils = new Utils();
 
@@ -17,6 +18,7 @@ const MIN_CHAPTER_SIZE = 0.003;
 export interface PreviewBarSegment {
     segment: [number, number];
     category: Category;
+    actionType: ActionType;
     unsubmitted: boolean;
     showLarger: boolean;
     description: string;
@@ -29,7 +31,8 @@ interface ChapterGroup extends SegmentContainer {
 class PreviewBar {
     container: HTMLUListElement;
     categoryTooltip?: HTMLDivElement;
-    tooltipContainer?: HTMLElement;
+    categoryTooltipContainer?: HTMLElement;
+    chapterTooltip?: HTMLDivElement;
 
     parent: HTMLElement;
     onMobileYouTube: boolean;
@@ -64,16 +67,19 @@ class PreviewBar {
         // Create label placeholder
         this.categoryTooltip = document.createElement("div");
         this.categoryTooltip.className = "ytp-tooltip-title sponsorCategoryTooltip";
+        this.chapterTooltip = document.createElement("div");
+        this.chapterTooltip.className = "ytp-tooltip-title sponsorCategoryTooltip";
 
         const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper");
         if (!tooltipTextWrapper || !tooltipTextWrapper.parentElement) return;
 
         // Grab the tooltip from the text wrapper as the tooltip doesn't have its classes on init
-        this.tooltipContainer = tooltipTextWrapper.parentElement;
+        this.categoryTooltipContainer = tooltipTextWrapper.parentElement;
         const titleTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title");
-        if (!this.tooltipContainer || !titleTooltip) return;
+        if (!this.categoryTooltipContainer || !titleTooltip) return;
 
         tooltipTextWrapper.insertBefore(this.categoryTooltip, titleTooltip.nextSibling);
+        tooltipTextWrapper.insertBefore(this.chapterTooltip, titleTooltip.nextSibling);
 
         const seekBar = document.querySelector(".ytp-progress-bar-container");
         if (!seekBar) return;
@@ -89,7 +95,7 @@ class PreviewBar {
         });
 
         const observer = new MutationObserver((mutations) => {
-            if (!mouseOnSeekBar || !this.categoryTooltip || !this.tooltipContainer) return;
+            if (!mouseOnSeekBar || !this.categoryTooltip || !this.categoryTooltipContainer) return;
 
             // If the mutation observed is only for our tooltip text, ignore
             if (mutations.length === 1 && (mutations[0].target as HTMLElement).classList.contains("sponsorCategoryTooltip")) {
@@ -114,37 +120,26 @@ class PreviewBar {
             if (timeInSeconds === null) return;
 
             // Find the segment at that location, using the shortest if multiple found
-            let segment: PreviewBarSegment | null = null;
-            let currentSegmentLength = Infinity;
+            const [normalSegments, chapterSegments] = partition(this.segments, (segment) => segment.actionType !== ActionType.Chapter)
+            const normalSegment = this.getSmallestSegment(timeInSeconds, normalSegments);
+            const chapterSegment = this.getSmallestSegment(timeInSeconds, chapterSegments);
 
-            for (const seg of this.segments) {//
-                const segmentLength = seg.segment[1] - seg.segment[0];
-                const minSize = this.getMinimumSize(seg.showLarger);
-
-                const startTime = segmentLength !== 0 ? seg.segment[0] : Math.floor(seg.segment[0]);
-                const endTime = segmentLength > minSize ? seg.segment[1] : Math.ceil(seg.segment[0] + minSize);
-                if (startTime <= timeInSeconds && endTime >= timeInSeconds) {
-                    if (segmentLength < currentSegmentLength) {
-                        currentSegmentLength = segmentLength;
-                        segment = seg;
-                    }
-                }
-            }
-
-            if (segment === null && this.tooltipContainer.classList.contains(TOOLTIP_VISIBLE_CLASS)) {
-                this.tooltipContainer.classList.remove(TOOLTIP_VISIBLE_CLASS);
-            } else if (segment !== null) {
-                this.tooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
-
-                const name = segment.description || utils.shortCategoryName(segment.category);
-                if (segment.unsubmitted) {
-                    this.categoryTooltip.textContent = chrome.i18n.getMessage("unsubmitted") + " " + name;
+            if (normalSegment === null && chapterSegment === null) {
+                this.categoryTooltipContainer.classList.remove(TOOLTIP_VISIBLE_CLASS);
+            } else {
+                this.categoryTooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
+                if (noYoutubeChapters && normalSegment !== null && chapterSegment !== null) {
+                    this.categoryTooltipContainer.classList.add("sponsorTwoTooltips");
                 } else {
-                    this.categoryTooltip.textContent = name;
+                    this.categoryTooltipContainer.classList.remove("sponsorTwoTooltips");
                 }
 
-                // Use the class if the timestamp text uses it to prevent overlapping
+                this.setTooltipTitle(normalSegment, this.categoryTooltip);
+                this.setTooltipTitle(chapterSegment, this.chapterTooltip);
+
+                // Used to prevent overlapping
                 this.categoryTooltip.classList.toggle("ytp-tooltip-text-no-title", noYoutubeChapters);
+                this.chapterTooltip.classList.toggle("ytp-tooltip-text-no-title", noYoutubeChapters);
             }
         });
 
@@ -152,6 +147,21 @@ class PreviewBar {
             childList: true,
             subtree: true,
         });
+    }
+
+    private setTooltipTitle(segment: PreviewBarSegment, tooltip: HTMLElement): void {
+        if (segment) {
+            const name = segment.description || utils.shortCategoryName(segment.category);
+            if (segment.unsubmitted) {
+                tooltip.textContent = chrome.i18n.getMessage("unsubmitted") + " " + name;
+            } else {
+                tooltip.textContent = name;
+            }
+
+            tooltip.style.removeProperty("display");
+        } else {
+            tooltip.style.display = "none";
+        }
     }
 
     createElement(parent: HTMLElement): void {
@@ -495,9 +505,9 @@ class PreviewBar {
             this.categoryTooltip = undefined;
         }
 
-        if (this.tooltipContainer) {
-            this.tooltipContainer.classList.remove(TOOLTIP_VISIBLE_CLASS);
-            this.tooltipContainer = undefined;
+        if (this.categoryTooltipContainer) {
+            this.categoryTooltipContainer.classList.remove(TOOLTIP_VISIBLE_CLASS);
+            this.categoryTooltipContainer = undefined;
         }
     }
 
@@ -523,6 +533,27 @@ class PreviewBar {
     */
     getMinimumSize(showLarger = false): number {
         return this.videoDuration * (showLarger ? 0.006 : 0.003);
+    }
+
+    private getSmallestSegment(timeInSeconds: number, segments: PreviewBarSegment[]): PreviewBarSegment | null {
+        let segment: PreviewBarSegment | null = null;
+        let currentSegmentLength = Infinity;
+
+        for (const seg of segments) { //
+            const segmentLength = seg.segment[1] - seg.segment[0];
+            const minSize = this.getMinimumSize(seg.showLarger);
+
+            const startTime = segmentLength !== 0 ? seg.segment[0] : Math.floor(seg.segment[0]);
+            const endTime = segmentLength > minSize ? seg.segment[1] : Math.ceil(seg.segment[0] + minSize);
+            if (startTime <= timeInSeconds && endTime >= timeInSeconds) {
+                if (segmentLength < currentSegmentLength) {
+                    currentSegmentLength = segmentLength;
+                    segment = seg;
+                }
+            }
+        }
+
+        return segment;
     }
 }
 

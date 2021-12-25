@@ -45,21 +45,42 @@
 	transform: translateY(-1em) !important;
 }
 
+.ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips {
+	transform: translateY(-2em) !important;
+}
+
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible {
 	transform: translateY(-2em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips {
+	transform: translateY(-4em) !important;
 }
 
 #movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
 	transform: translateY(1em) !important;
 }
 
+#movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper {
+	transform: translateY(2em) !important;
+}
+
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
 	transform: translateY(0.5em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper {
+	transform: translateY(1em) !important;
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
 	display: block !important;
 	transform: translateY(1em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
+	display: block !important;
+	transform: translateY(2em) !important;
 }
 
 div:hover > .sponsorBlockChapterBar {
