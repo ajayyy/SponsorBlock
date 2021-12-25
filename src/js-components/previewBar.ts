@@ -446,7 +446,7 @@ class PreviewBar {
         if (!segments) return;
 
         const activeSegments = segments.filter((segment) => {
-            return segment.segment[0] <= currentTime && segment.segment[1] >= currentTime;
+            return segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
         });
 
         this.setActiveSegments(activeSegments);

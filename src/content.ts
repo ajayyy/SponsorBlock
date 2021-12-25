@@ -470,9 +470,6 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         }
     }
 
-    // Don't skip if this category should not be skipped
-    if (!shouldSkip(currentSkip) && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) return;
-
     const skippingFunction = () => {
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
@@ -480,7 +477,8 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
         if (incorrectVideoCheck(videoID, currentSkip)) return;
 
-        if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
+        if ((shouldSkip(currentSkip) || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) 
+                && video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
             skipToTime({
                 v: video, 
                 skipTime, 
@@ -1044,14 +1042,14 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
 
     const { includedTimes: submittedArray, scheduledTimes: sponsorStartTimes } = 
         getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments);
-    const { scheduledTimes: sponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true, true);
+    const { scheduledTimes: sponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true);
 
     const minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
     const endTimeIndex = getLatestEndTimeIndex(submittedArray, minSponsorTimeIndex);
 
     const { includedTimes: unsubmittedArray, scheduledTimes: unsubmittedSponsorStartTimes } = 
         getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments);
-    const { scheduledTimes: unsubmittedSponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false, false);
+    const { scheduledTimes: unsubmittedSponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimesSubmitting, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, false);
 
     const minUnsubmittedSponsorTimeIndex = unsubmittedSponsorStartTimes.indexOf(Math.min(...unsubmittedSponsorStartTimesAfterCurrentTime));
     const previewEndTimeIndex = getLatestEndTimeIndex(unsubmittedArray, minUnsubmittedSponsorTimeIndex);
@@ -1130,7 +1128,7 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
  *  the current time, but end after
  */
 function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean,
-    minimum?: number, onlySkippableSponsors = false, hideHiddenSponsors = false): {includedTimes: ScheduledTime[], scheduledTimes: number[]} {
+    minimum?: number, hideHiddenSponsors = false): {includedTimes: ScheduledTime[], scheduledTimes: number[]} {
     if (!sponsorTimes) return {includedTimes: [], scheduledTimes: []};
 
     const includedTimes: ScheduledTime[] = [];
@@ -1141,9 +1139,8 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
         scheduledTime: sponsorTime.segment[0]
     }));
 
-    // Schedule at the end time to know when to unmute
-    sponsorTimes.filter(sponsorTime => sponsorTime.actionType === ActionType.Mute)
-                .forEach(sponsorTime => {
+    // Schedule at the end time to know when to unmute and remove title from seek bar
+    sponsorTimes.forEach(sponsorTime => {
         if (!possibleTimes.some((time) => sponsorTime.segment[1] === time.scheduledTime)) {
             possibleTimes.push({
                 ...sponsorTime,
@@ -1156,7 +1153,6 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
         if ((minimum === undefined
                 || ((includeNonIntersectingSegments && possibleTimes[i].scheduledTime >= minimum)
                     || (includeIntersectingSegments && possibleTimes[i].scheduledTime < minimum && possibleTimes[i].segment[1] > minimum))) 
-                && (!onlySkippableSponsors || shouldSkip(possibleTimes[i]))
                 && (!hideHiddenSponsors || possibleTimes[i].hidden === SponsorHideType.Visible)
                 && possibleTimes[i].segment.length === 2
                 && getCategoryActionType(possibleTimes[i].category) === CategoryActionType.Skippable) {
