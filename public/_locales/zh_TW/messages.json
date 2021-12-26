@@ -336,7 +336,7 @@
         "message": "警告：更改用戶 ID 是永久性的。您確定要這麼做嗎？請務必備份您的舊用戶 ID 來以防萬一。"
     },
     "createdBy": {
-        "message": "創建者"
+        "message": "作者"
     },
     "keybindCurrentlySet": {
         "message": "。它目前被設定為："

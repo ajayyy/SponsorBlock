@@ -563,6 +563,12 @@
     "category_preview_description": {
         "message": "前回の粗筋，または動画の後半内容の予告。音声による要約ではなく，編集された映像を指します。"
     },
+    "category_filler_description": {
+        "message": "脱線したシーンには、動画の主な内容を理解するのに必要がない穴埋めやユーモアのみを追加してください。これには、文脈や背景の詳細を提供するセグメントを含めないでください。"
+    },
+    "category_filler_short": {
+        "message": "フィラー"
+    },
     "category_music_offtopic": {
         "message": "音楽: 音楽以外のセクション"
     },
@@ -804,9 +810,6 @@
     },
     "Credits": {
         "message": "謝辞"
-    },
-    "highlightNewFeature": {
-        "message": "新機能! 新しいハイライトカテゴリを使用し、動画の要点にワンクリックで\n移動できます。"
     },
     "LearnMore": {
         "message": "さらに詳しく"

@@ -66,6 +66,6 @@
     "url": "git+https://github.com/ajayyy/SponsorBlock.git"
   },
   "author": "Ajay Ramachandran",
-  "license": "GPL-3.0-only",
+  "license": "LGPL-3.0-or-later",
   "private": true
 }

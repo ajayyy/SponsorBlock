@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config"
-import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType } from "../types";
+import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType, SponsorSourceType, SegmentUUID } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import SubmissionNotice from "../render/SubmissionNotice";
@@ -534,10 +534,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         const sponsorVideoID = this.props.contentContainer().sponsorVideoID;
         const sponsorTimesSubmitting : SponsorTime = {
             segment: this.segments[index].segment,
-            UUID: null,
+            UUID: utils.generateUserID() as SegmentUUID,
             category: this.segments[index].category,
             actionType: this.segments[index].actionType,
-            source: 2
+            source: SponsorSourceType.Local
         };
 
         const segmentTimes = Config.config.segmentTimes.get(sponsorVideoID) || [];

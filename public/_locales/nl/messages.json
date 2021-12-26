@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Snelle samenvatting van vorige afleveringen of een voorbeeld van wat er later komt in de huidige video. Bedoeld voor samengevoegde clips, niet voor gesproken samenvattingen."
     },
+    "category_filler": {
+        "message": "Zijspoor-opvulling"
+    },
+    "category_filler_description": {
+        "message": "Zijspoor-scènes die alleen ter opvulling of als humor worden toegevoegd en niet noodzakelijk zijn om de hoofdinhoud van de video te begrijpen. Segmenten die context of achtergrondinformatie verschaffen, mogen hier niet onder vallen."
+    },
+    "category_filler_short": {
+        "message": "Opvulling"
+    },
     "category_music_offtopic": {
         "message": "Muziek: sectie niet-muziek"
     },
@@ -805,9 +814,6 @@
     "Credits": {
         "message": "Dank aan"
     },
-    "highlightNewFeature": {
-        "message": "Nieuw! Ga met één klik naar de kern van de video met de nieuwe hoogtepunt-categorie"
-    },
     "LearnMore": {
         "message": "Meer informatie"
     },
@@ -828,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gebruik het muiswiel terwijl u over het invoerveld beweegt om de tijd snel aan te passen. Combinaties van de ctrl- of shift-toets kunnen worden gebruikt om de wijzigingen te verfijnen."
+    },
+    "fillerNewFeature": {
+        "message": "Nieuw! Sla zijsporen en grapjes over met de opvulling-categorie. Schakel in via opties"
     }
 }

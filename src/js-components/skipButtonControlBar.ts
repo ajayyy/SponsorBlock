@@ -79,7 +79,7 @@ export class SkipButtonControlBar {
                 mountingContainer.insertBefore(this.container, this.chapterText);
             }
 
-            if (Config.config.autoHideInfoButton && !this.onMobileYouTube) {
+            if (!this.onMobileYouTube) {
                 utils.setupAutoHideAnimation(this.skipIcon, mountingContainer, false, false);
             } else {
                 const { hide, show } = utils.setupCustomHideAnimation(this.skipIcon, mountingContainer, false, false);
