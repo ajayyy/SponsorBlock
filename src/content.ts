@@ -708,7 +708,11 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     if (response?.ok) {
         const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === id)
-                    ?.map((video) => video.segments)[0];
+                    ?.map((video) => video.segments)?.[0]
+                    ?.map((segment) => ({
+                        ...segment,
+                        source: SponsorSourceType.Server
+                    }));
         if (!recievedSegments || !recievedSegments.length) { 
             // return if no video found
             retryFetch();
@@ -1666,7 +1670,7 @@ function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?:
     const sponsorIndex = utils.getSponsorIndexFromUUID(sponsorTimes, UUID);
 
     // Don't vote for preview sponsors
-    if (sponsorIndex == -1 || sponsorTimes[sponsorIndex].source === SponsorSourceType.Local) return;
+    if (sponsorIndex == -1 || sponsorTimes[sponsorIndex].source !== SponsorSourceType.Server) return;
 
     // See if the local time saved count and skip count should be saved
     if (type === 0 && sponsorSkipped[sponsorIndex] || type === 1 && !sponsorSkipped[sponsorIndex]) {

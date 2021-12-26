@@ -87,7 +87,7 @@ export interface SponsorTime extends SegmentContainer {
     description?: string;
 
     hidden?: SponsorHideType;
-    source?: SponsorSourceType;
+    source: SponsorSourceType;
     videoDuration?: number;
 }
 
