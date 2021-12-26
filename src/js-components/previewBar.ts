@@ -255,7 +255,8 @@ class PreviewBar {
         const newChapterBar = chapterBar.cloneNode(true) as HTMLElement;
         newChapterBar.classList.add("sponsorBlockChapterBar");
         newChapterBar.style.removeProperty("display");
-        const originalSection = newChapterBar.querySelector(".ytp-chapter-hover-container");
+        const originalSections = newChapterBar.querySelectorAll(".ytp-chapter-hover-container");
+        const originalSection = originalSections[0];
 
         this.customChaptersBar = newChapterBar;
         this.chaptersBarSegments = segments;
@@ -273,7 +274,7 @@ class PreviewBar {
         // Hide old bar
         chapterBar.style.display = "none";
 
-        originalSection.remove();
+        originalSections.forEach((section) => section.remove());
         if (this.container?.parentElement === progressBar) {
             progressBar.insertBefore(newChapterBar, this.container.nextSibling);
         } else {
