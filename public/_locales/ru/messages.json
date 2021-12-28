@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "Новое! Пропускайте сегменты с отвлечёнными темами или шутками. Включите в настройках"
+    },
+    "dayAbbreviation": {
+        "message": "д",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "ч",
+        "description": "100h"
     }
 }

@@ -74,7 +74,7 @@
         "message": "Video này có đoạn quảng cáo trong kho dữ liệu rồi!"
     },
     "sponsor404": {
-        "message": "Không tìm thấy đoạn nào"
+        "message": "Không tìm thấy phân đoạn nào"
     },
     "sponsorStart": {
         "message": "Đoạn quảng cáo bắt đầu vào lúc này"
@@ -113,10 +113,10 @@
         "message": "Đóng bảng popup"
     },
     "SubmitTimes": {
-        "message": "Đăng phân đoạn"
+        "message": "Gửi phân đoạn"
     },
     "submitCheck": {
-        "message": "Bạn có chắc là muốn đăng không?"
+        "message": "Bạn có chắc chắn muốn gửi không?"
     },
     "whitelistChannel": {
         "message": "Đưa kênh vào danh sách không chặn"
@@ -150,7 +150,7 @@
         "message": "Xóa thời gian"
     },
     "submitTimesButton": {
-        "message": "Đăng thời gian"
+        "message": "Gửi thời gian"
     },
     "publicStats": {
         "message": "Tên này được dùng tại trang thông tin công khai để thể hiện lượng đóng góp của bạn. Xem"
@@ -305,6 +305,13 @@
     "skip_category": {
         "message": "Bỏ qua {0}?"
     },
+    "mute_category": {
+        "message": "Ngắt tiếng {0} chứ?"
+    },
+    "skip_to_category": {
+        "message": "Bỏ qua đến {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
     "skipped": {
         "message": "{0} đã bỏ qua",
         "description": "Example: Sponsor Skipped"
@@ -312,6 +319,10 @@
     "muted": {
         "message": "{0} đã ngắt tiếng (Muted)",
         "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "Đã bỏ qua đến {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Tắt tự động bỏ qua"
@@ -465,10 +476,10 @@
         "message": "Tệp JSON này không được định dạng đúng cách. Tùy chọn của bạn chưa được thay đổi."
     },
     "confirmNoticeTitle": {
-        "message": "Đăng phân đoạn"
+        "message": "Gửi phân đoạn"
     },
     "submit": {
-        "message": "Đăng"
+        "message": "Gửi"
     },
     "cancel": {
         "message": "Huỷ"
@@ -551,6 +562,15 @@
     },
     "category_preview_description": {
         "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
+    },
+    "category_filler": {
+        "message": "Cảnh phụ"
+    },
+    "category_filler_description": {
+        "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
+    },
+    "category_filler_short": {
+        "message": "Cảnh phụ"
     },
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
@@ -649,7 +669,7 @@
         "message": "(Kết thúc)"
     },
     "hiddenDueToDownvote": {
-        "message": "đã bị ẩn: Không tán thành"
+        "message": "đã ẩn: hạ bình chọn"
     },
     "hiddenDueToDuration": {
         "message": "đã bị ẩn: quá ngắn"
@@ -686,7 +706,10 @@
         "message": "Cân nhắc bật chế độ \"Bắt buộc kiểm tra kênh YouTube trước khi bỏ qua phân đoạn\""
     },
     "downvoteDescription": {
-        "message": "Phân đoạn sai / không đúng"
+        "message": "Chỉnh thời gian sai/không đúng"
+    },
+    "incorrectCategory": {
+        "message": "Đổi danh mục"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Video này đã được phân loại là âm nhạc. Bạn có chắc đây là quảng cáo nhà tài trợ không? Nếu đây là phân đoạn \"Không phải nhạc\", hãy mở Cài đặt tiện ích và bật lựa chọn đó. Rồi bạn có thể đăng tải phân đoạn lên dưới danh mục \"Không phải nhạc\" thay vì \"Quảng cáo nhà tài trợ\". Hãy đọc Hướng dẫn nếu bạn vẫn còn vướng mắc"
@@ -729,7 +752,7 @@
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
-        "message": "Donate"
+        "message": "Ủng hộ"
     },
     "hideDonationLink": {
         "message": "Ẩn link donate"
@@ -753,7 +776,7 @@
         "message": "Bất cứ khi nào bỏ qua một phân đoạn, bạn sẽ nhận được 1 cửa sổ thông báo bât. Nếu phân đoạn có vẻ sai, hãy bỏ phiếu bằng cách nhấp vào nút downvote! Bạn cũng có thể bỏ phiếu trong cửa sổ bật lên khi nhấn vào biểu tượng tiện ích mở rộng. Và bạn có thể tắt việc hiển thị bảng thông báo này trong phần cài đặt tiện ích."
     },
     "Submitting": {
-        "message": "Gửi lên"
+        "message": "Đang gửi lên"
     },
     "helpPageSubmitting1": {
         "message": "Việc gửi một phân đoạn mới có thể được thực hiện trong cửa sổ bật lên bằng cách nhấn vào nút \"Đoạn quảng cáo bắt đầu vào lúc này\" hoặc trong trình phát video bằng các nút trên thanh trình phát."
@@ -793,5 +816,34 @@
     },
     "LearnMore": {
         "message": "Tìm hiểu thêm"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Hạ bình chọn và tạo một bản sao cục bộ cho bạn gửi lại"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Mở trang wiki của danh mục này để tìm hiểu thêm."
+    },
+    "CopyAndDownvote": {
+        "message": "Sao chép và hạ bình chọn"
+    },
+    "ContinueVoting": {
+        "message": "Tiếp tục bỏ phiếu"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Điều này sẽ ngay lập tức áp dụng cho phân đoạn của bạn"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Sử dụng con lăn chuột của bạn khi di chuột qua hộp chỉnh sửa để nhanh chóng điều chỉnh thời gian. Kết hợp phím ctrl hoặc shift có thể được sử dụng để tinh chỉnh các thay đổi."
+    },
+    "fillerNewFeature": {
+        "message": "Mới! Bỏ qua các phân đoạn phụ và joke với danh mục \"Cảnh phụ\". Bật trong tùy chọn"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }

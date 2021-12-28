@@ -834,5 +834,8 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Usa la rotellina del mouse passando sulla casella di modifica per regolare rapidamente il tempo. Le combinazioni dei tasti ctrl o shift sono utilizzabili per perfezionare le modifiche."
+    },
+    "fillerNewFeature": {
+        "message": "Novità! Salta battute e tergiversazioni con il riempitivo. Attivala nelle opzioni"
     }
 }

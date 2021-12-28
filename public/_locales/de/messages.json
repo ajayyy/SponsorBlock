@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "Neu! Überspringe Nebensächliches und Witze mit der Füller-Kategorie. Aktiviere sie in den Optionen"
+    },
+    "dayAbbreviation": {
+        "message": "T",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "S",
+        "description": "100h"
     }
 }

@@ -142,5 +142,453 @@
     "submissionEditHint": {
         "message": "Sektionsredigering vises, når du klikker på afsend",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Tip: Du kan opsætte keybinds til indsendelse i indstillingerne"
+    },
+    "clearTimesButton": {
+        "message": "Ryd Tider"
+    },
+    "submitTimesButton": {
+        "message": "Indsend Tider"
+    },
+    "publicStats": {
+        "message": "Dette bruges på siden med offentlige statistikker til at vise, hvor meget du har bidraget. Se det"
+    },
+    "Username": {
+        "message": "Brugernavn"
+    },
+    "setUsername": {
+        "message": "Angiv Brugernavn"
+    },
+    "copyPublicID": {
+        "message": "Kopier Offentligt Bruger-ID"
+    },
+    "discordAdvert": {
+        "message": "Kom til den officielle Discord-server for at give forslag og feedback!"
+    },
+    "hideThis": {
+        "message": "Skjul dette"
+    },
+    "Options": {
+        "message": "Indstillinger"
+    },
+    "showButtons": {
+        "message": "Vis Knapper På YouTube-Afspiller"
+    },
+    "hideButtons": {
+        "message": "Skjul Knapper På YouTube-Afspiller"
+    },
+    "hideButtonsDescription": {
+        "message": "Dette skjuler knapperne, der vises på YouTube-afspilleren for indsende springe segmenter."
+    },
+    "showSkipButton": {
+        "message": "Behold Knappen Spring Til Fremhævning På Afspilleren"
+    },
+    "showInfoButton": {
+        "message": "Vis Info-Knap På YouTube-Afspiller"
+    },
+    "hideInfoButton": {
+        "message": "Skjul Info-Knap På YouTube-Afspiller"
+    },
+    "autoHideInfoButton": {
+        "message": "Auto-Skjul Info-Knap"
+    },
+    "hideDeleteButton": {
+        "message": "Skjul Slet-Knappen på YouTube-Afspiller"
+    },
+    "showDeleteButton": {
+        "message": "Vis Slet-Knappen på YouTube-Afspiller"
+    },
+    "enableViewTracking": {
+        "message": "Aktiver Optælling Af Antal Spring Over"
+    },
+    "whatViewTracking": {
+        "message": "Denne funktion registrerer hvilke segmenter, du har sprunget over, så brugere kan se, hvor meget deres bidrag har hjulpet andre, og bruges som en måleenhed sammen med upvotes for at sikre, at spam ikke kommer ind i databasen. Udvidelsen sender en besked til serveren hver gang, du springer et segment over. Forhåbentlig ændrer de fleste ikke denne indstilling, så visningstallene er korrete. :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "Aktiver Optælling Af Antal Spring Over I Private-/Inkognitovinduer"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Forespørg Efter Hashpræfiks"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "I stedet for at anmode om segmenter fra serveren ved hjælp af videoID'et, sendes de første 4 tegn i hashen af videoID'et. Serveren sender data tilbage for alle videoer med lignende hashes."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Opdater Segmenter På Nye Videoer"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Hvis videoen er ny, og der ikke er nogle segmenter fundet, vil den opdatere hvert par minutter, mens du ser."
+    },
+    "showNotice": {
+        "message": "Vis Bemærkning Igen"
+    },
+    "showSkipNotice": {
+        "message": "Vis Bemærkning Efter Et Segment Skippes"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Fuld Størrelse Skip-Bemærkninger"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Små Skip-Bemærkninger for Auto-Skip"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Alle Små Skip-Bemærkninger"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Faded Skip-Bemærkninger for Auto-Skip"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Alle Faded Skip-Bemærkninger"
+    },
+    "longDescription": {
+        "message": "SponsoBlock lader dig skippe sponsorer, introer, outroer, abonnement påmindelser og andre irriterende dele af YouTube-Videoer. SponsorBlock er en crowdsourced browerudvidelse, hvor alle kan indsende start- og sluttidspunkter for sponsorerede og andre segmenter i YouTube-Videoer. Du kan også springe over de dele af musikvideoer, som ikke er musik.",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "Hjemmeside",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "Kildekode",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "Meddelelsen er blevet opgraderet!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Hvis du stadig ikke kan lide det, så tryk på aldrig vis knappen.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Indstil tast for at springe et segment over"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Indstil tast til start/stop segment tastaturbinding"
+    },
+    "setSubmitKeybind": {
+        "message": "Indstil tast til indsendelse tastaturbinding"
+    },
+    "keybindDescription": {
+        "message": "Vælg en tast ved at skrive den"
+    },
+    "keybindDescriptionComplete": {
+        "message": "Tastaturbindingen er blevet sat til: "
+    },
+    "0": {
+        "message": "Forbindelsestimeout. Tjek din internetforbindelse. Hvis dit internet fungerer, er serveren sandsynligvis overbelastet eller nede."
+    },
+    "disableSkipping": {
+        "message": "Spring over er aktiveret"
+    },
+    "enableSkipping": {
+        "message": "Spring over er deaktiveret"
+    },
+    "yourWork": {
+        "message": "Dit Arbejde",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "Serveren virker at være overbelastet. Prøv igen om et par sekunder."
+    },
+    "errorCode": {
+        "message": "Fejlkode: "
+    },
+    "skip": {
+        "message": "Spring Over"
+    },
+    "mute": {
+        "message": "Gør Tavs"
+    },
+    "skip_category": {
+        "message": "Spring {0} over?"
+    },
+    "mute_category": {
+        "message": "Gør {0} tavs?"
+    },
+    "skip_to_category": {
+        "message": "Spring til {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} Sprunget Over",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} Tavsgjort",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "Skipped til {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
+    "disableAutoSkip": {
+        "message": "Deaktiver Auto-Skip"
+    },
+    "enableAutoSkip": {
+        "message": "Aktiver Auto-Skip"
+    },
+    "audioNotification": {
+        "message": "Lydnofikation på Skip"
+    },
+    "audioNotificationDescription": {
+        "message": "Lydnotifikation ved skip vil spille en lyd når et segment skippes. Hvis deaktiveret (eller auto-skip er deaktiveret) vil ingen lyd blive spillet."
+    },
+    "showTimeWithSkips": {
+        "message": "Vis Tid Med Skip Fjernet"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "Denne tid vises i parantes ved siden af den aktuelle tid under søgelinjen. Dette viser den totale videovarighed minus alle segmenter. Dette inkluderer segmenter markeret som kun \"Vis I Søgelinjen\"."
+    },
+    "youHaveSkipped": {
+        "message": "Du har sprunget over "
+    },
+    "youHaveSaved": {
+        "message": "Du har gemt dig selv "
+    },
+    "minLower": {
+        "message": "minut"
+    },
+    "minsLower": {
+        "message": "minutter"
+    },
+    "hourLower": {
+        "message": "time"
+    },
+    "hoursLower": {
+        "message": "timer"
+    },
+    "youHaveSavedTime": {
+        "message": "Du har sparret folk"
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " af deres liv"
+    },
+    "statusReminder": {
+        "message": "Tjek status.sponsor.ajay.app for serverstatus."
+    },
+    "changeUserID": {
+        "message": "Importer/Eksporter Dit Bruger-ID"
+    },
+    "whatChangeUserID": {
+        "message": "Dette bør holdes privat. Det er ligesom en adgangskode og bør ikke deles med nogen. Hvis nogen har dette, kan de udgive sig for at være dig. Hvis du leder efter dit offentlige bruger-ID, skal du klikke på udklipsholderikonet i popup-vinduet."
+    },
+    "setUserID": {
+        "message": "Indstil Bruger-ID"
+    },
+    "userIDChangeWarning": {
+        "message": "Advarsel: Ændring af Bruger-IDet er permanent. Er du sikker på, at du vil gøre det? Sørg for at sikkerhedskopiere din gamle for en sikkerheds skyld."
+    },
+    "createdBy": {
+        "message": "Oprettet Af"
+    },
+    "keybindCurrentlySet": {
+        "message": ". Det er i øjeblikket sat til:"
+    },
+    "supportOtherSites": {
+        "message": "Understøtter tredjeparts YouTube sider"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Understøt tredjeparts YouTube klienter. For at aktivere understøttelse, skal du acceptere de ekstra tilladelser. Dette virker IKKE i inkognito på Chrome og andre Chromium varianter.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Understøttede Sider: "
+    },
+    "optionsInfo": {
+        "message": "Aktiver Invidious understøttelse, deaktiver auto spring over, skjul knapper og mere."
+    },
+    "addInvidiousInstance": {
+        "message": "Tilføj Tredjeparts Klientinstans"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Tilføj brugerdefineret instans. Dette skal formateres med KUN domænet. Eksempel: invidious.ajay.app"
+    },
+    "add": {
+        "message": "Tilføj"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Dette er et ugyldigt domæne. Dette bør KUN omfatte domænedele. Eksempel: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Nulstil Liste over Invidious-Instanser"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "Du er ved at nulstille listen over Invidious-instancer"
+    },
+    "currentInstances": {
+        "message": "Nuværende Instans:"
+    },
+    "minDuration": {
+        "message": "Minimumsvarighed (sekunder):"
+    },
+    "minDurationDescription": {
+        "message": "Segmenter kortere end den indstillede værdi vil ikke blive sprunget over eller vist i spilleren."
+    },
+    "skipNoticeDuration": {
+        "message": "Spring meddelelsesvarighed over (sekunder):"
+    },
+    "save": {
+        "message": "Gem"
+    },
+    "reset": {
+        "message": "Nulstil"
+    },
+    "areYouSureReset": {
+        "message": "Er du sikker på, at du ønsker at nulstille dette?"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com understøttes nu"
+    },
+    "exportOptions": {
+        "message": "Importer/Eksporter Alle Indstillinger"
+    },
+    "setOptions": {
+        "message": "Indstil Indstillinger"
+    },
+    "confirmNoticeTitle": {
+        "message": "Indsend Segment"
+    },
+    "submit": {
+        "message": "Indsend"
+    },
+    "cancel": {
+        "message": "Annuller"
+    },
+    "delete": {
+        "message": "Slet"
+    },
+    "preview": {
+        "message": "Forhåndsvisning"
+    },
+    "unsubmitted": {
+        "message": "Ikke Indsendt"
+    },
+    "inspect": {
+        "message": "Undersøg"
+    },
+    "edit": {
+        "message": "Rediger"
+    },
+    "theKey": {
+        "message": "Tasten"
+    },
+    "to": {
+        "message": "til",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "Sponsor"
+    },
+    "category_selfpromo": {
+        "message": "Ubetalt/Egen Markedsføring"
+    },
+    "category_interaction": {
+        "message": "Påmindelse Om Interaktion (Abonnement)"
+    },
+    "category_interaction_short": {
+        "message": "Påmindelse Om Interaktion"
+    },
+    "category_intro": {
+        "message": "Pause/Intro-Animation"
+    },
+    "category_intro_short": {
+        "message": "Pause"
+    },
+    "category_outro": {
+        "message": "Slutkort/Kreditter"
+    },
+    "category_preview": {
+        "message": "Forhåndsvisning/Opsamling"
+    },
+    "skipOption": {
+        "message": "Spring Over Indstillinger",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "enableTestingServer": {
+        "message": "Aktiver Betatestserver"
+    },
+    "bracketNow": {
+        "message": "(Nu)"
+    },
+    "moreCategories": {
+        "message": "Flere Kategorier"
+    },
+    "chooseACategory": {
+        "message": "Vælg en Kategori"
+    },
+    "bracketEnd": {
+        "message": "(Slut)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "skjult: downvote"
+    },
+    "hiddenDueToDuration": {
+        "message": "skjult: for kort"
+    },
+    "acceptPermission": {
+        "message": "Accepter tilladelse"
+    },
+    "permissionRequestSuccess": {
+        "message": "Tilladelsesandmodning lykkedes!"
+    },
+    "permissionRequestFailed": {
+        "message": "Tilladelsesanmodning mislykkedes, klikkede du på afvis?"
+    },
+    "downvoteDescription": {
+        "message": "Ukorrekt/Forkert Timing"
+    },
+    "incorrectCategory": {
+        "message": "Skift Kategori"
+    },
+    "multipleSegments": {
+        "message": "Adskillige Segmenter"
+    },
+    "guidelines": {
+        "message": "Retningslinjer"
+    },
+    "readTheGuidelines": {
+        "message": "Læs Retningslinjerne!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "Kategorier er her!"
+    },
+    "help": {
+        "message": "Hjælp"
+    },
+    "GotIt": {
+        "message": "Forstået",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "experiementOptOut": {
+        "message": "Fravælg alle fremtidige eksperimenter",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Skjul for evigt"
+    },
+    "Donate": {
+        "message": "Doner"
+    },
+    "hideDonationLink": {
+        "message": "Skjul Donationslink"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Tak for at installere SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Venligst gennemgå indstillingerne nedenfor"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Hvordan spring over virker"
+    },
+    "Submitting": {
+        "message": "Indsendelse"
+    },
+    "Editing": {
+        "message": "Redigering"
     }
 }

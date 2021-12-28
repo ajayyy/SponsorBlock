@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "Uutta! Ohita epäolennaiset kohdat ja vitsit täytesisältö kategorialla. Ota se käyttöön asetuksista"
+    },
+    "dayAbbreviation": {
+        "message": "pv",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "t",
+        "description": "100h"
     }
 }

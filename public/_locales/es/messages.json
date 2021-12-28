@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Salte todos los patrocinios, súplicas por suscripción y más en los vídeos de YouTube. Reporta secciones de patrocinio en los vídeos que veas para ahorrarle tiempo a los demás.",
+        "message": "Salte todos los sponsors, súplicas de suscripción y más en vídeos de YouTube. Reporta sponsors en los vídeos que veas para ahorrarle tiempo a los demás.",
         "description": "Description of the extension."
     },
     "400": {
@@ -26,13 +26,13 @@
         "message": "segmentos"
     },
     "upvoteButtonInfo": {
-        "message": "Votar a favor de esta sumisión"
+        "message": "Votar positivamente este envío"
     },
     "reportButtonTitle": {
-        "message": "Denunciar"
+        "message": "Reportar"
     },
     "reportButtonInfo": {
-        "message": "Denunciar esta sumisión como incorrecta."
+        "message": "Reportar este envío como incorrecto."
     },
     "Dismiss": {
         "message": "Descartar"
@@ -53,7 +53,7 @@
         "message": "Volver a saltar"
     },
     "unmute": {
-        "message": "Restaurar sonido"
+        "message": "Quitar silencio"
     },
     "paused": {
         "message": "Pausado"
@@ -156,7 +156,7 @@
         "message": "Esto se utiliza en la página de estadísticas públicas para mostrar cuánto has contribuido. Véala"
     },
     "Username": {
-        "message": "Usuario"
+        "message": "Nombre de Usuario"
     },
     "setUsername": {
         "message": "Escoger Nombre De Usuario"
@@ -204,7 +204,7 @@
         "message": "Habilitar el conteo de omisiones"
     },
     "whatViewTracking": {
-        "message": "Esta función rastrea los segmentos que se han saltado para que los usuarios sepan en qué medida sus aportes ayudaron a los demás y se utilizan como una métrica junto con los votos favorables para garantizar que no aparezca spam en la base de datos. La extensión envía un mensaje al servidor cada vez que se salta un segmento. Esperemos que la mayoría de la gente no cambie esta configuración para que los números de vista sean exactos. :)"
+        "message": "Esta función rastrea los segmentos que se han saltado para que los usuarios sepan en qué medida sus envíos ayudaron a los demás y se utilizan como una métrica junto con los votos positivos para garantizar que no aparezca spam en la base de datos. La extensión envía un mensaje al servidor cada vez que se salta un segmento. Esperemos que la mayoría de la gente no cambie esta configuración para que los números de vistas sean exactos. :)"
     },
     "enableViewTrackingInPrivate": {
         "message": "Activar el seguimiento del número de saltos en las pestañas privadas/de incógnito"
@@ -269,13 +269,13 @@
         "message": "Establecer tecla para iniciar/detener un segmento"
     },
     "setSubmitKeybind": {
-        "message": "Establecer botón de envío"
+        "message": "Establecer tecla para el envío"
     },
     "keybindDescription": {
-        "message": "Seleccione un botón escribiéndolo"
+        "message": "Seleccione una tecla escribiéndola"
     },
     "keybindDescriptionComplete": {
-        "message": "El botón se ha establecido a: "
+        "message": "Ese atajo de teclas se ha establecido como: "
     },
     "0": {
         "message": "Tiempo de espera agotado. Compruebe su conexión a Internet. Si su internet está funcionando, el servidor probablemente esta sobrecargado o desconectado."
@@ -434,7 +434,7 @@
         "message": "El aviso de omisión permanecerá en la pantalla por lo menos este tiempo. Si la omisión es manual, podría ser visible por más tiempo."
     },
     "shortCheck": {
-        "message": "La siguiente sumisión es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
+        "message": "El siguiente envío es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
     },
     "showUploadButton": {
         "message": "Mostrar botón de subida"
@@ -512,10 +512,10 @@
         "message": "La información de depuración ha sido copiada al portapapeles. Siéntase libre de eliminar cualquier información que prefiera no compartir. Guarde esto en un archivo de texto o péguelo en el informe de errores."
     },
     "theKey": {
-        "message": "El botón"
+        "message": "La tecla"
     },
     "keyAlreadyUsed": {
-        "message": "está enlazado a otra acción. Por favor, seleccione otro botón."
+        "message": "está enlazada a otra acción. Por favor, seleccione otra tecla."
     },
     "to": {
         "message": "a",
@@ -525,7 +525,7 @@
         "message": "Sponsor"
     },
     "category_sponsor_description": {
-        "message": "Promoción pagada, referencias pagadas y anuncios directos. No para autopromoción o anuncios gratuitos a causas/creadores/sitios web/productos que les gusten."
+        "message": "Promoción pagada, recomendaciones pagadas y anuncios directos. No para promoción propia o anuncios gratuitos a causas/creadores/sitios web/productos que les gusten."
     },
     "category_selfpromo": {
         "message": "Promoción Propia/No Remunerada"
@@ -562,6 +562,15 @@
     },
     "category_preview_description": {
         "message": "Recapitulación rápida de los episodios anteriores, o una vista previa de lo que va a ocurrir más adelante en el vídeo actual. Está pensado para clips editados juntos, no para resúmenes hablados."
+    },
+    "category_filler": {
+        "message": "Tangente de Relleno"
+    },
+    "category_filler_description": {
+        "message": "Escenas tangenciales añadidas solo para relleno o humor que no son necesarias para entender el contenido principal del video. Esto no debe incluir segmentos que proporcionen contexto o detalles de fondo."
+    },
+    "category_filler_short": {
+        "message": "Relleno"
     },
     "category_music_offtopic": {
         "message": "Música: Sección sin musica"
@@ -719,7 +728,7 @@
         "message": "¡Las categorías están aquí!"
     },
     "categoryUpdate2": {
-        "message": "Abre las opciones de saltarse intros, otros, mercantil, etc."
+        "message": "Abre las opciones de saltarse intros, outros, mercancía, etc."
     },
     "help": {
         "message": "Ayuda"
@@ -825,5 +834,16 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilice la rueda del ratón mientras pasa el cursor por encima del cuadro de edición para ajustar el tiempo. Se pueden utilizar combinaciones de la tecla ctrl o shift para afinar los cambios."
+    },
+    "fillerNewFeature": {
+        "message": "¡Nuevo! Omite tangentes y bromas con la categoría de relleno. Habilítala en opciones"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }

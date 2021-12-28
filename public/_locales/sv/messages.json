@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "Nytt! Hoppa över ämnesavvikelser och skämt med utfyllnadskategorin. Aktiveras i alternativen"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }
