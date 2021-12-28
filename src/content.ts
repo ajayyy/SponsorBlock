@@ -87,6 +87,7 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
+addPageListeners();
 addHotkeyListener();
 
 //the amount of times the sponsor lookup has retried
@@ -377,7 +378,7 @@ function createPreviewBar(): void {
     ];
 
     for (const selector of progressElementSelectors) {
-        const el = document.querySelector<HTMLElement>(selector);
+        const el = findValidElement(document.querySelectorAll(selector));
 
         if (el) {
             previewBar = new PreviewBar(el, onMobileYouTube, onInvidious);
@@ -549,6 +550,14 @@ function refreshVideoAttachments() {
 
             setupVideoListeners();
             setupSkipButtonControlBar();
+        }
+
+        // Create a new bar in the new video element
+        if (previewBar && !utils.findReferenceNode()?.contains(previewBar.container)) {
+            previewBar.remove();
+            previewBar = null;
+
+            createPreviewBar();
         }
     }
 }
@@ -1841,6 +1850,16 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
     }
 
     return sponsorTimesMessage;
+}
+
+function addPageListeners(): void {
+    const refreshListners = () => {
+        if (!isVisible(video)) {
+            refreshVideoAttachments();
+        }
+    };
+
+    document.addEventListener("yt-navigate-finish", refreshListners);
 }
 
 function addHotkeyListener(): void {
