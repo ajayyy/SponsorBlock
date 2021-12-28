@@ -17,7 +17,7 @@ import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { Tooltip } from "./render/Tooltip";
 import { getStartTimeFromUrl } from "./utils/urlParser";
-import { getControls } from "./utils/pageUtils";
+import { findValidElement, getControls, isVisible } from "./utils/pageUtils";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -266,8 +266,8 @@ function resetValues() {
 }
 
 async function videoIDChange(id) {
-    //if the id has not changed return
-    if (sponsorVideoID === id) return;
+    //if the id has not changed return unless the video element has changed
+    if (sponsorVideoID === id && isVisible(video)) return;
 
     //set the global videoID
     sponsorVideoID = id;
@@ -540,7 +540,7 @@ function setupVideoMutationListener() {
 }
 
 function refreshVideoAttachments() {
-    const newVideo = document.querySelector('video');
+    const newVideo = findValidElement(document.querySelectorAll('video')) as HTMLVideoElement;
     if (newVideo && newVideo !== video) {
         video = newVideo;
 
@@ -638,7 +638,7 @@ function setupSkipButtonControlBar() {
 }
 
 async function sponsorsLookup(id: string, keepOldSubmissions = true) {
-    if (!video) refreshVideoAttachments();
+    if (!video || !isVisible(video)) refreshVideoAttachments();
     //there is still no video here
     if (!video) {
         setTimeout(() => sponsorsLookup(id), 100);

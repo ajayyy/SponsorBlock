@@ -2,7 +2,7 @@ import Config from "./config";
 import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration } from "./types";
 
 import * as CompileConfig from "../config.json";
-import { findValidElement } from "./utils/pageUtils";
+import { findValidElementFromSelector } from "./utils/pageUtils";
 
 export default class Utils {
     
@@ -445,7 +445,7 @@ export default class Utils {
             "#player-container .video-js", // Invidious
             ".main-video-section > .video-container" // Cloudtube  
         ]
-        let referenceNode = findValidElement(selectors)
+        let referenceNode = findValidElementFromSelector(selectors)
         if (referenceNode == null) {
             //for embeds
             const player = document.getElementById("player");
