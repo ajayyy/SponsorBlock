@@ -436,7 +436,7 @@ function migrateOldFormats(config: SBConfig) {
 
     // populate invidiousInstances with new instances if 3p support is **DISABLED**
     if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
-        config["invidiousInstances"] = invidiousList
+        config["invidiousInstances"] = invidiousList;
     }
 }
 
