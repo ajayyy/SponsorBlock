@@ -2,6 +2,7 @@ import Config from "./config";
 import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration } from "./types";
 
 import * as CompileConfig from "../config.json";
+import { findValidElement } from "./utils/pageUtils";
 
 export default class Utils {
     
@@ -436,11 +437,15 @@ export default class Utils {
     }
 
     findReferenceNode(): HTMLElement {
-        let referenceNode = document.getElementById("player-container-id")
-                                ?? document.getElementById("movie_player") 
-                                ?? document.querySelector("#main-panel.ytmusic-player-page") // YouTube music
-                                ?? document.querySelector("#player-container .video-js") // Invidious
-                                ?? document.querySelector(".main-video-section > .video-container");  // Cloudtube  
+        const selectors = [
+            "#player-container-id",
+            "#movie_player",
+            "#c4-player", // Channel Trailer
+            "#main-panel.ytmusic-player-page", // YouTube music
+            "#player-container .video-js", // Invidious
+            ".main-video-section > .video-container" // Cloudtube  
+        ]
+        let referenceNode = findValidElement(selectors)
         if (referenceNode == null) {
             //for embeds
             const player = document.getElementById("player");

@@ -18,3 +18,18 @@ export function getControls(): HTMLElement | false {
 
     return false;
 }
+
+export function isVisible(element: HTMLElement): boolean {
+    return element.offsetWidth > 0 && element.offsetHeight > 0;
+}
+
+export function findValidElement(selectors: string[]): HTMLElement {
+    for (const selector of selectors) {
+        const element = document.querySelector(selector) as HTMLElement;
+        if (element && isVisible(element)) {
+            return element;
+        }
+    }
+
+    return null;
+}
