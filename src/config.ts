@@ -1,4 +1,5 @@
 import * as CompileConfig from "../config.json";
+import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
 
 interface SBConfig {
@@ -187,7 +188,7 @@ const Config: SBObject = {
         hideSkipButtonPlayerControls: false,
         hideDiscordLaunches: 0,
         hideDiscordLink: false,
-        invidiousInstances: ["invidious.snopyta.org"],
+        invidiousInstances: ["invidious.snopyta.org"], // leave as default
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
         minDuration: 0,
@@ -432,6 +433,11 @@ function migrateOldFormats(config: SBConfig) {
     }
     if (config["previousVideoID"] !== undefined) {
         chrome.storage.sync.remove("previousVideoID");
+    }
+
+    // populate invidiousInstances with new instances if 3p support is **DISABLED**
+    if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
+        config["invidiousInstances"] = invidiousList;
     }
 }
 
