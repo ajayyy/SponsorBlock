@@ -73,7 +73,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                 idSuffix={this.state.idSuffix}
                 ref={this.noticeRef}
                 closeListener={this.cancel.bind(this)}
-                zIndex={50000}>
+                zIndex={5000}>
 
                 {/* Text Boxes */}
                 {this.getMessageBoxes()}
