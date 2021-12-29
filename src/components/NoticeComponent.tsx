@@ -16,8 +16,6 @@ export interface NoticeProps {
     timed?: boolean,
     idSuffix?: string,
 
-    videoSpeed?: () => number,
-
     fadeIn?: boolean,
     startFaded?: boolean,
     firstColumn?: React.ReactElement,
@@ -51,7 +49,6 @@ export interface NoticeState {
 
 class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdownInterval: NodeJS.Timeout;
-    intervalVideoSpeed: number;
 
     idSuffix: string;
 
@@ -259,10 +256,6 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         const countdownTime = Math.min(this.state.countdownTime - 1, this.state.maxCountdownTime());
 
-        if (this.props.videoSpeed && this.intervalVideoSpeed != this.props.videoSpeed()) {
-            this.setupInterval();
-        }
-
         if (countdownTime <= 0) {
             //remove this from setInterval
             clearInterval(this.countdownInterval);
@@ -325,10 +318,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     setupInterval(): void {
         if (this.countdownInterval) clearInterval(this.countdownInterval);
 
-        const intervalDuration = this.props.videoSpeed ? 1000 / this.props.videoSpeed() : 1000;
-        this.countdownInterval = setInterval(this.countdown.bind(this), intervalDuration);
-
-        if (this.props.videoSpeed) this.intervalVideoSpeed = this.props.videoSpeed();
+        this.countdownInterval = setInterval(this.countdown.bind(this), 1000);
     }
 
     resetCountdown(): void {
