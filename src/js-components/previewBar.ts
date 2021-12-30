@@ -436,7 +436,7 @@ class PreviewBar {
                             customChangedElement.style.removeProperty("display");
                         }
 
-                        if (changedData.scale) {
+                        if (changedData.scale !== null) {
                             const transformScale = (changedData.scale) / progressBar.clientWidth;
                             
                             customChangedElement.style.transform =
@@ -492,14 +492,15 @@ class PreviewBar {
                 if (transformScale < 1 && transformScale + checkLeft / currentSectionWidthNoMargin < 0.99999) {
                     scale = transformScale;
                     scaleWidth = currentSectionWidth;
-                    scalePosition = currentWidth;
-                    if (checkLeft !== 0) {
-                        scalePosition += left;
-                    }
 
                     if (transformScale > 0) {
                         // reached the end of this section for sure, since the scale is now between 0 and 1
                         // if the scale is always zero, then it will go through all sections but still return 0
+
+                        scalePosition = currentWidth;
+                        if (checkLeft !== 0) {
+                            scalePosition += left;
+                        }
                         break;
                     }
                 }
@@ -510,7 +511,7 @@ class PreviewBar {
 
         return { 
             left: left + leftPosition, 
-            scale: scale * scaleWidth + scalePosition
+            scale: scale !== null ? scale * scaleWidth + scalePosition : null
         };
     }
 
