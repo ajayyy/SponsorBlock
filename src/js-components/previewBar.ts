@@ -366,6 +366,7 @@ class PreviewBar {
             section.style.marginRight = "2px";
             section.style.width = `calc(${this.timeToPercentage(duration)} - 2px)`;
         } else {
+            section.style.marginRight = "0";
             section.style.width = this.timeToPercentage(duration);
         }
         section.setAttribute("decimal-width", String(this.timeToDecimal(duration)));
