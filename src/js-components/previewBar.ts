@@ -437,7 +437,7 @@ class PreviewBar {
                         }
 
                         if (changedData.scale) {
-                            const transformScale = (changedData.scale * changedData.scaleWidth + changedData.scalePosition) / progressBar.clientWidth;
+                            const transformScale = (changedData.scale) / progressBar.clientWidth;
                             
                             customChangedElement.style.transform =
                                 `scaleX(${Math.max(0, Math.min(1 - calculatedLeft,
@@ -460,7 +460,7 @@ class PreviewBar {
     }
 
     private findLeftAndScale(selector: string, currentElement: HTMLElement, progressBar: HTMLElement): 
-            { left: number, leftPosition: number, scale: number, scalePosition: number, scaleWidth: number } {
+            { left: number, scale: number } {
         const sections = currentElement.parentElement.parentElement.parentElement.children;
         let currentWidth = 0;
 
@@ -508,7 +508,10 @@ class PreviewBar {
             currentWidth += currentSectionWidth;
         }
 
-        return { left: left + leftPosition, leftPosition, scale, scalePosition, scaleWidth };
+        return { 
+            left: left + leftPosition, 
+            scale: scale * scaleWidth + scalePosition
+        };
     }
 
     private getPartialChapterSectionStyle(element: HTMLElement, param: string): number {
