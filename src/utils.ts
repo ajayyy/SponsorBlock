@@ -28,7 +28,7 @@ export default class Utils {
         return await new Promise((resolve, reject) => {
             setTimeout(() => {
                 clearInterval(interval);
-                reject("TIMEOUT")
+                reject("TIMEOUT");
             }, timeout);
 
             const intervalCheck = () => {
