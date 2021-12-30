@@ -427,7 +427,7 @@ class PreviewBar {
                     const customChangedElement = section.querySelector(selector) as HTMLElement;
                     if (customChangedElement) {
                         const changedElement = changes[className];
-                        const changedData = this.findLeftAndScale(selector, changedElement);
+                        const changedData = this.findLeftAndScale(selector, changedElement, progressBar);
 
                         const left = (changedData.left) / progressBar.clientWidth;
                         const calculatedLeft = Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal));
@@ -459,7 +459,7 @@ class PreviewBar {
         }
     }
 
-    private findLeftAndScale(selector: string, currentElement: HTMLElement): 
+    private findLeftAndScale(selector: string, currentElement: HTMLElement, progressBar: HTMLElement): 
             { left: number, leftPosition: number, scale: number, scalePosition: number, scaleWidth: number } {
         const sections = currentElement.parentElement.parentElement.parentElement.children;
         let currentWidth = 0;
@@ -474,10 +474,10 @@ class PreviewBar {
         for (const sectionElement of sections) {
             const section = sectionElement as HTMLElement;
             const checkElement = section.querySelector(selector) as HTMLElement;
-            const currentSectionWidthNoMargin = this.getPartialChapterSectionStyle(section, "width");
+            const currentSectionWidthNoMargin = this.getPartialChapterSectionStyle(section, "width") || progressBar.clientWidth;
             const currentSectionWidth = currentSectionWidthNoMargin 
                 + this.getPartialChapterSectionStyle(section, "marginRight");
-            
+
             // First check for left
             const checkLeft = parseFloat(checkElement.style.left.replace("px", ""));
             if (checkLeft !== 0) {
@@ -512,7 +512,12 @@ class PreviewBar {
     }
 
     private getPartialChapterSectionStyle(element: HTMLElement, param: string): number {
-        return parseInt(element.style[param].match(/\d+/g)?.[0]) || 0;
+        const data = element.style[param];
+        if (data?.includes("100%")) {
+            return 0;
+        } else {
+            return parseInt(element.style[param].match(/\d+/g)?.[0]) || 0;
+        }
     }
 
     updateChapterText(segments: SponsorTime[], currentTime: number): void {
