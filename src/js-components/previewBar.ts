@@ -459,68 +459,54 @@ class PreviewBar {
         }
     }
 
-    private findLeftAndScale(selector: string, element: HTMLElement): 
+    private findLeftAndScale(selector: string, currentElement: HTMLElement): 
             { left: number, leftPosition: number, scale: number, scalePosition: number, scaleWidth: number } {
-        const section = element.parentElement.parentElement;
+        const sections = currentElement.parentElement.parentElement.parentElement.children;
         let currentWidth = 0;
 
-        // Walk left and find lowest left
         let left = 0;
-        let leftPositionOffset = 0;
-        let leftSection = null;
-        let checkSection = section;
-        // If true, keep walking to find width, but don't set the left
-        let foundEarly = false;
-        do {
-            if (checkSection) {
-                if (checkSection !== section) {
-                    currentWidth += this.getPartialChapterSectionStyle(checkSection, "width")
-                        + this.getPartialChapterSectionStyle(checkSection, "marginRight");
-                }
+        let leftPosition = 0;
 
-                const checkElement = checkSection.querySelector(selector) as HTMLElement;
-                const checkLeft = parseFloat(checkElement.style.left.replace("px", ""));
-                if (!foundEarly) {
-                    left = checkLeft;
-                    leftPositionOffset = currentWidth;
-                    leftSection = checkSection;
-                }
-
-                if (checkLeft !== 0) {
-                    foundEarly = true;
-                }
-            }
-        } while ((checkSection = checkSection.previousElementSibling as HTMLElement) !== null);
-        const leftPosition = currentWidth - leftPositionOffset;
-
-        // Then walk right and find the first with a scale below 1
         let scale = null;
         let scalePosition = 0;
         let scaleWidth = 0;
-        checkSection = section;
-        do {
-            if (checkSection) {
-                const checkSectionWidth = this.getPartialChapterSectionStyle(checkSection, "width")
-                    + this.getPartialChapterSectionStyle(checkSection, "marginRight");
-                const checkElement = checkSection.querySelector(selector) as HTMLElement;
-                const transformMatch = checkElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
-                if (transformMatch) {
-                    const transformScale = parseFloat(transformMatch[1]);
-                    if (transformScale < 1) {
-                        scale = transformScale;
-                        scaleWidth = checkSectionWidth;
-                        scalePosition = currentWidth;
-                        if (checkSection === leftSection) {
-                            scalePosition += left;
-                        }
 
+        for (const sectionElement of sections) {
+            const section = sectionElement as HTMLElement;
+            const checkElement = section.querySelector(selector) as HTMLElement;
+            const currentSectionWidthNoMargin = this.getPartialChapterSectionStyle(section, "width");
+            const currentSectionWidth = currentSectionWidthNoMargin 
+                + this.getPartialChapterSectionStyle(section, "marginRight");
+            
+            // First check for left
+            const checkLeft = parseFloat(checkElement.style.left.replace("px", ""));
+            if (checkLeft !== 0) {
+                left = checkLeft;
+                leftPosition = currentWidth;
+            }
+
+            // Then check for scale
+            const transformMatch = checkElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
+            if (transformMatch) {
+                const transformScale = parseFloat(transformMatch[1]);
+                if (transformScale < 1 && transformScale + checkLeft / currentSectionWidthNoMargin < 0.99999) {
+                    scale = transformScale;
+                    scaleWidth = currentSectionWidth;
+                    scalePosition = currentWidth;
+                    if (checkLeft !== 0) {
+                        scalePosition += left;
+                    }
+
+                    if (transformScale > 0) {
+                        // reached the end of this section for sure, since the scale is now between 0 and 1
+                        // if the scale is always zero, then it will go through all sections but still return 0
                         break;
                     }
                 }
-
-                currentWidth += checkSectionWidth;
             }
-        } while ((checkSection = checkSection.nextElementSibling as HTMLElement) !== null);
+
+            currentWidth += currentSectionWidth;
+        }
 
         return { left: left + leftPosition, leftPosition, scale, scalePosition, scaleWidth };
     }
