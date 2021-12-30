@@ -26,7 +26,10 @@ export default class Utils {
     /** Function that can be used to wait for a condition before returning. */
     async wait<T>(condition: () => T | false, timeout = 5000, check = 100): Promise<T> {
         return await new Promise((resolve, reject) => {
-            setTimeout(() => reject("TIMEOUT"), timeout);
+            setTimeout(() => {
+                clearInterval(interval);
+                reject("TIMEOUT");
+            }, timeout);
 
             const intervalCheck = () => {
                 const result = condition();
