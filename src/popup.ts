@@ -739,7 +739,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
      */
     function getFormattedHours(minutes) {
         minutes = Math.round(minutes * 10) / 10;
-        const days = Math.floor(minutes / 3600);
+        const days = Math.floor(minutes / 1440);
         const hours = Math.floor(minutes / 60) % 24;
         return (days > 0 ? days + chrome.i18n.getMessage("dayAbbreviation") + " " : "") + (hours > 0 ? hours + chrome.i18n.getMessage("hourAbbreviation") + " " : "") + (minutes % 60).toFixed(1);
     }
