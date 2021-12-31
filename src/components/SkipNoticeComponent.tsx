@@ -177,7 +177,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.FadedForAutoSkip && this.autoSkip)}
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
-                videoSpeed={() => this.contentContainer().v?.playbackRate}
                 style={noticeStyle}
                 biggerCloseButton={this.contentContainer().onMobileYouTube}
                 ref={this.noticeRef}

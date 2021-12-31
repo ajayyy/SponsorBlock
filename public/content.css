@@ -26,6 +26,11 @@
 	height: 100%;
 }
 
+/* Make sure settings are upfront */
+.ytp-settings-menu {
+	z-index: 6000 !important;
+}
+
 /* Preview Bar page hacks */
 
 .ytp-tooltip:not(.sponsorCategoryTooltipVisible) .sponsorCategoryTooltip {
