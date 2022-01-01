@@ -399,6 +399,16 @@ function durationChangeListener(): void {
     updatePreviewBar();
 }
 
+/**
+ * Triggered once the video is ready.
+ * This is mainly to attach to embedded players who don't have a video element visible.
+ */
+function videoOnReadyListener(): void {
+    createPreviewBar();
+    updatePreviewBar();
+    createButtons();
+}
+
 function cancelSponsorSchedule(): void {
     if (currentSkipSchedule !== null) {
         clearTimeout(currentSkipSchedule);
@@ -564,6 +574,7 @@ function refreshVideoAttachments() {
 
 function setupVideoListeners() {
     //wait until it is loaded
+    video.addEventListener('loadstart', videoOnReadyListener)
     video.addEventListener('durationchange', durationChangeListener);
 
     if (!Config.config.disableSkipping) {
@@ -905,17 +916,19 @@ function getYouTubeVideoID(document: Document): string | boolean {
     const url = document.URL;
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
     if ((!url.includes("youtube.com")) || url.includes("/watch") || url.includes("/shorts/") || url.includes("playlist")) return getYouTubeVideoIDFromURL(url);
+    // skip to document and don't hide if on /embed/
+    if (url.includes("/embed/")) return getYouTubeVideoIDFromDocument(document, false);
     // skip to document if matches pattern
-    if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/") || url.includes("/embed/")) return getYouTubeVideoIDFromDocument(document);
+    if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument(document);
     // not sure, try URL then document
     return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document);
 }
 
-function getYouTubeVideoIDFromDocument(document: Document): string | boolean {
+function getYouTubeVideoIDFromDocument(document: Document, hideIcon = true): string | boolean {
     // get ID from document (channel trailer / embedded playlist)
     const videoURL = document.querySelector("[data-sessionlink='feature=player-title']")?.getAttribute("href");
     if (videoURL) {
-        onInvidious = true;
+        onInvidious = hideIcon;
         return getYouTubeVideoIDFromURL(videoURL);
     } else {
         return false
