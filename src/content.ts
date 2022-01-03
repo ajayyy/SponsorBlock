@@ -449,7 +449,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     if (!video) return;
     if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
 
-    previewBar.updateChapterText(sponsorTimes, currentTime);
+    previewBar?.updateChapterText(sponsorTimes, currentTime);
 
     if (video.paused) return;
     if (videoMuted && !inMuteSegment(currentTime)) {
@@ -630,7 +630,7 @@ function setupVideoListeners() {
     
                 startSponsorSchedule();
             } else {
-                previewBar.updateChapterText(sponsorTimes, video.currentTime);
+                previewBar?.updateChapterText(sponsorTimes, video.currentTime);
             }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
