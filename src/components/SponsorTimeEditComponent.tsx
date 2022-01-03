@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config";
-import { ActionType, ActionTypes, Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
+import { ActionType, Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
 import { getCategoryActionType } from "../utils/categoryUtils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
@@ -100,11 +100,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         };
         // Create time display
         let timeDisplay: JSX.Element;
+        const timeDisplayStyle: React.CSSProperties = {};
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
         const segment = sponsorTime.segment;
+        if (sponsorTime?.actionType === ActionType.Full) timeDisplayStyle.display = "none";
         if (this.state.editing) {
             timeDisplay = (
                 <div id={"sponsorTimesContainer" + this.idSuffix}
+                    style={timeDisplayStyle}
                     className="sponsorTimeDisplay">
 
                         <span id={"nowButton0" + this.idSuffix}
@@ -155,6 +158,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             timeDisplay = (
                 
                 <div id={"sponsorTimesContainer" + this.idSuffix}
+                    style={timeDisplayStyle}
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
                         {utils.getFormattedTime(segment[0], true) +
@@ -444,6 +448,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 
         this.props.contentContainer().updatePreviewBar();
+
+        if (sponsorTimesSubmitting[this.props.index].actionType === ActionType.Full 
+                && (sponsorTimesSubmitting[this.props.index].segment[0] !== 0 || sponsorTimesSubmitting[this.props.index].segment[1] !== 0)) {
+            this.setTimeTo(0, 0);
+            this.setTimeTo(1, 0);
+        }
     }
 
     previewTime(ctrlPressed = false, shiftPressed = false): void {
