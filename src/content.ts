@@ -18,6 +18,7 @@ import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { Tooltip } from "./render/Tooltip";
 import { getStartTimeFromUrl } from "./utils/urlParser";
 import { getControls } from "./utils/pageUtils";
+import { CategoryPill } from "./render/CategoryPill";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -75,9 +76,11 @@ let lastCheckVideoTime = -1;
 //is this channel whitelised from getting sponsors skipped
 let channelWhitelisted = false;
 
-// create preview bar
 let previewBar: PreviewBar = null;
+// Skip to highlight button
 let skipButtonControlBar: SkipButtonControlBar = null;
+// For full video sponsors/selfpromo
+let categoryPill: CategoryPill = null;
 
 /** Element containing the player controls on the YouTube player. */
 let controls: HTMLElement | null = null;
@@ -263,6 +266,7 @@ function resetValues() {
     }
 
     skipButtonControlBar?.disable();
+    categoryPill?.setVisibility(false);
 }
 
 async function videoIDChange(id) {
@@ -549,6 +553,7 @@ function refreshVideoAttachments() {
 
             setupVideoListeners();
             setupSkipButtonControlBar();
+            setupCategoryPill();
         }
     }
 }
@@ -637,6 +642,14 @@ function setupSkipButtonControlBar() {
     skipButtonControlBar.attachToPage();
 }
 
+function setupCategoryPill() {
+    if (!categoryPill) {
+        categoryPill = new CategoryPill();
+    }
+
+    categoryPill.attachToPage();
+}
+
 async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     if (!video) refreshVideoAttachments();
     //there is still no video here
@@ -672,7 +685,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
-        actionTypes: Config.config.muteSegments ? [ActionType.Skip, ActionType.Mute] : [ActionType.Skip], 
+        actionTypes: Config.config.muteSegments ? [ActionType.Skip, ActionType.Mute, ActionType.Full] : [ActionType.Skip, ActionType.Full], 
         userAgent: `${chrome.runtime.id}`,
         ...extraRequestData
     });
@@ -862,6 +875,11 @@ function startSkipScheduleCheckingForStartSponsors() {
                 });
                 if (skipOption === CategorySkipOption.AutoSkip) break;
             }
+        }
+
+        const fullVideoSegment = sponsorTimes.filter((time) => time.actionType === ActionType.Full)[0];
+        if (fullVideoSegment) {
+            categoryPill?.setSegment(fullVideoSegment);
         }
 
         if (startingSegmentTime !== -1) {

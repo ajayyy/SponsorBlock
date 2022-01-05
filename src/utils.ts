@@ -2,6 +2,7 @@ import Config from "./config";
 import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration } from "./types";
 
 import * as CompileConfig from "../config.json";
+import { GenericUtils } from "./utils/genericUtils";
 
 export default class Utils {
     
@@ -23,27 +24,8 @@ export default class Utils {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
-    /** Function that can be used to wait for a condition before returning. */
     async wait<T>(condition: () => T | false, timeout = 5000, check = 100): Promise<T> {
-        return await new Promise((resolve, reject) => {
-            setTimeout(() => {
-                clearInterval(interval);
-                reject("TIMEOUT");
-            }, timeout);
-
-            const intervalCheck = () => {
-                const result = condition();
-                if (result !== false) {
-                    resolve(result);
-                    clearInterval(interval);
-                }
-            };
-
-            const interval = setInterval(intervalCheck, check);
-            
-            //run the check once first, this speeds it up a lot
-            intervalCheck();
-        });
+        return GenericUtils.wait(condition, timeout, check);
     }
 
     containsPermission(permissions: chrome.permissions.Permissions): Promise<boolean> {

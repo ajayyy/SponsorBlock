@@ -613,3 +613,15 @@ input::-webkit-inner-spin-button {
     line-height: 1.5em;
 }
 
+.sponsorBlockCategoryPill {
+    border-radius: 25px;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-right: 3px;
+	color: white;
+}
+
+.sponsorBlockCategoryPillTitleSection {
+	display: flex;
+	align-items: center;
+}
