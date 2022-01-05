@@ -981,6 +981,7 @@ function updatePreviewBar(): void {
                 segment: segment.segment as [number, number],
                 category: segment.category,
                 unsubmitted: false,
+                actionType: segment.actionType,
                 showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI
             });
         });
@@ -991,11 +992,12 @@ function updatePreviewBar(): void {
             segment: segment.segment as [number, number],
             category: segment.category,
             unsubmitted: true,
+            actionType: segment.actionType,
             showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI
         });
     });
 
-    previewBar.set(previewBarSegments, video?.duration)
+    previewBar.set(previewBarSegments.filter((segment) => segment.actionType !== ActionType.Full), video?.duration)
 
     if (Config.config.showTimeWithSkips) {
         const skippedDuration = utils.getTimestampsDuration(previewBarSegments.map(({segment}) => segment));
