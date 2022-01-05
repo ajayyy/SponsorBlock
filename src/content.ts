@@ -647,7 +647,7 @@ function setupCategoryPill() {
         categoryPill = new CategoryPill();
     }
 
-    categoryPill.attachToPage();
+    categoryPill.attachToPage(onMobileYouTube);
 }
 
 async function sponsorsLookup(id: string, keepOldSubmissions = true) {

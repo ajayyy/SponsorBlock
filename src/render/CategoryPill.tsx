@@ -9,15 +9,19 @@ export class CategoryPill {
     ref: React.RefObject<CategoryPillComponent>;
 
     unsavedState: CategoryPillState;
+
+    mutationObserver?: MutationObserver;
     
     constructor() {
         this.ref = React.createRef();
     }
 
-    async attachToPage(): Promise<void> {
-        // TODO: Mobile and invidious
-        const referenceNode = await GenericUtils.wait(() => document.querySelector(".ytd-video-primary-info-renderer.title") as HTMLElement);
-        
+    async attachToPage(onMobileYouTube: boolean): Promise<void> {
+        const referenceNode = 
+            await GenericUtils.wait(() => 
+                // YouTube, Mobile YouTube, Invidious
+                document.querySelector(".ytd-video-primary-info-renderer.title, .slim-video-information-title, #player-container + .h-box > h1") as HTMLElement);
+
         if (referenceNode && !referenceNode.contains(this.container)) {
             this.container = document.createElement('span');
             this.container.id = "categoryPill";
@@ -25,6 +29,10 @@ export class CategoryPill {
 
             referenceNode.prepend(this.container);
             referenceNode.style.display = "flex";
+
+            if (this.ref.current) {
+                this.unsavedState = this.ref.current.state;
+            }
 
             ReactDOM.render(
                 <CategoryPillComponent ref={this.ref} />,
@@ -34,6 +42,19 @@ export class CategoryPill {
             if (this.unsavedState) {
                 this.ref.current?.setState(this.unsavedState);
                 this.unsavedState = null;
+            }
+
+            if (onMobileYouTube) {
+                if (this.mutationObserver) {
+                    this.mutationObserver.disconnect();
+                }
+                
+                this.mutationObserver = new MutationObserver(() => this.attachToPage(onMobileYouTube));
+
+                this.mutationObserver.observe(referenceNode, { 
+                    childList: true,
+                    subtree: true
+                });
             }
         }
     }
