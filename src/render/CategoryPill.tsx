@@ -16,7 +16,7 @@ export class CategoryPill {
         this.ref = React.createRef();
     }
 
-    async attachToPage(onMobileYouTube: boolean): Promise<void> {
+    async attachToPage(onMobileYouTube: boolean, onInvidious: boolean): Promise<void> {
         const referenceNode = 
             await GenericUtils.wait(() => 
                 // YouTube, Mobile YouTube, Invidious
@@ -49,7 +49,7 @@ export class CategoryPill {
                     this.mutationObserver.disconnect();
                 }
                 
-                this.mutationObserver = new MutationObserver(() => this.attachToPage(onMobileYouTube));
+                this.mutationObserver = new MutationObserver(() => this.attachToPage(onMobileYouTube, onInvidious));
 
                 this.mutationObserver.observe(referenceNode, { 
                     childList: true,
@@ -66,7 +66,8 @@ export class CategoryPill {
 
     setVisibility(show: boolean): void {
         const newState = {
-            show
+            show,
+            open: show ? this.ref.current?.state.open : false
         };
 
         if (this.ref.current) {
