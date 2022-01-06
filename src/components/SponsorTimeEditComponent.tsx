@@ -40,6 +40,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     previousSkipType: CategoryActionType;
     timeBeforeChangingToPOI: number; // Initialized when first selecting POI
+    fullVideoWarningShown = false;
 
     constructor(props: SponsorTimeEditProps) {
         super(props);
@@ -73,6 +74,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             this.configUpdateListener = () => this.configUpdate();
             Config.configListeners.push(this.configUpdate.bind(this));
         }
+
+        this.checkToShowFullVideoWarning();
     }
 
     componentWillUnmount(): void {
@@ -82,6 +85,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     render(): React.ReactElement {
+        this.checkToShowFullVideoWarning();
+
         const style: React.CSSProperties = {
             textAlign: "center"
         };
@@ -250,7 +255,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const before = utils.getFormattedTimeToSeconds(sponsorTimeEdits[index]);
         const after = utils.getFormattedTimeToSeconds(targetValue);
         const difference = Math.abs(before - after);
-        if (0 < difference && difference< 0.5) this.showToolTip();
+        if (0 < difference && difference< 0.5) this.showScrollToEditToolTip();
 
         sponsorTimeEdits[index] = targetValue;
         if (index === 0 && getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = targetValue;
@@ -258,6 +263,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.setState({sponsorTimeEdits});
         this.saveEditTimes();
     }
+
     changeTimesWhenScrolling(index: number, e: React.WheelEvent, sponsorTime: SponsorTime): void {
         let step = 0;
         // shift + ctrl = 1
@@ -288,11 +294,17 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
     }
 
-    showToolTip(): void {
+    showScrollToEditToolTip(): void {
         if (!Config.config.scrollToEditTimeUpdate && document.getElementById("sponsorRectangleTooltip" + "sponsorTimesContainer" + this.idSuffix) === null) {
-            const element = document.getElementById("sponsorTimesContainer" + this.idSuffix);
+            this.showToolTip(chrome.i18n.getMessage("SponsorTimeEditScrollNewFeature"), () => { Config.config.scrollToEditTimeUpdate = true });
+        }
+    }
+
+    showToolTip(text: string, buttonFunction?: () => void): boolean {
+        const element = document.getElementById("sponsorTimesContainer" + this.idSuffix);
+        if (element) { 
             new RectangleTooltip({
-                text: chrome.i18n.getMessage("SponsorTimeEditScrollNewFeature"),
+                text,
                 referenceNode: element.parentElement,
                 prependElement: element,
                 timeout: 15,
@@ -300,10 +312,27 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 leftOffset: -318 + "px",
                 backgroundColor: "rgba(28, 28, 28, 1.0)",
                 htmlId: "sponsorTimesContainer" + this.idSuffix,
-                buttonFunction: () => { Config.config.scrollToEditTimeUpdate = true },
+                buttonFunction,
                 fontSize: "14px",
                 maxHeight: "200px"
             });
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    checkToShowFullVideoWarning(): void {
+        const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+        const segmentDuration = sponsorTime.segment[1] - sponsorTime.segment[0];
+        const videoPercentage = segmentDuration / this.props.contentContainer().v.duration;
+
+        if (videoPercentage > 0.6 && !this.fullVideoWarningShown 
+                && (sponsorTime.category === "sponsor" || sponsorTime.category === "selfpromo" || sponsorTime.category === "chooseACategory")) {
+            if (this.showToolTip(chrome.i18n.getMessage("fullVideoTooltipWarning"))) {
+                this.fullVideoWarningShown = true;
+            }
         }
     }
 
