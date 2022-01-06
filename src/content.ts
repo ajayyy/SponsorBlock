@@ -11,13 +11,16 @@ import PreviewBar, {PreviewBarSegment} from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
-import { Message, MessageResponse } from "./messageTypes";
+import { Message, MessageResponse, VoteResponse } from "./messageTypes";
 import * as Chat from "./js-components/chat";
 import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { Tooltip } from "./render/Tooltip";
 import { getStartTimeFromUrl } from "./utils/urlParser";
 import { findValidElement, getControls, isVisible } from "./utils/pageUtils";
+import { CategoryPill } from "./render/CategoryPill";
+import { AnimationUtils } from "./utils/animationUtils";
+import { GenericUtils } from "./utils/genericUtils";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -75,9 +78,11 @@ let lastCheckVideoTime = -1;
 //is this channel whitelised from getting sponsors skipped
 let channelWhitelisted = false;
 
-// create preview bar
 let previewBar: PreviewBar = null;
+// Skip to highlight button
 let skipButtonControlBar: SkipButtonControlBar = null;
+// For full video sponsors/selfpromo
+let categoryPill: CategoryPill = null;
 
 /** Element containing the player controls on the YouTube player. */
 let controls: HTMLElement | null = null;
@@ -264,6 +269,7 @@ function resetValues() {
     }
 
     skipButtonControlBar?.disable();
+    categoryPill?.setVisibility(false);
 }
 
 async function videoIDChange(id) {
@@ -560,6 +566,7 @@ function refreshVideoAttachments() {
 
             setupVideoListeners();
             setupSkipButtonControlBar();
+            setupCategoryPill();
         }
 
         // Create a new bar in the new video element
@@ -657,6 +664,14 @@ function setupSkipButtonControlBar() {
     skipButtonControlBar.attachToPage();
 }
 
+function setupCategoryPill() {
+    if (!categoryPill) {
+        categoryPill = new CategoryPill();
+    }
+
+    categoryPill.attachToPage(onMobileYouTube, onInvidious, voteAsync);
+}
+
 async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     if (!video || !isVisible(video)) refreshVideoAttachments();
     //there is still no video here
@@ -692,7 +707,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
-        actionTypes: Config.config.muteSegments ? [ActionType.Skip, ActionType.Mute] : [ActionType.Skip], 
+        actionTypes: getEnabledActionTypes(), 
         userAgent: `${chrome.runtime.id}`,
         ...extraRequestData
     });
@@ -771,6 +786,18 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     }
     
     lookupVipInformation(id);
+}
+
+function getEnabledActionTypes(): ActionType[] {
+    const actionTypes = [ActionType.Skip];
+    if (Config.config.muteSegments) {
+        actionTypes.push(ActionType.Mute);
+    }
+    if (Config.config.fullVideoSegments) {
+        actionTypes.push(ActionType.Full);
+    }
+
+    return actionTypes;
 }
 
 function lookupVipInformation(id: string): void {
@@ -882,6 +909,11 @@ function startSkipScheduleCheckingForStartSponsors() {
                 });
                 if (skipOption === CategorySkipOption.AutoSkip) break;
             }
+        }
+
+        const fullVideoSegment = sponsorTimes.filter((time) => time.actionType === ActionType.Full)[0];
+        if (fullVideoSegment) {
+            categoryPill?.setSegment(fullVideoSegment);
         }
 
         if (startingSegmentTime !== -1) {
@@ -1005,6 +1037,7 @@ function updatePreviewBar(): void {
                 segment: segment.segment as [number, number],
                 category: segment.category,
                 unsubmitted: false,
+                actionType: segment.actionType,
                 showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI
             });
         });
@@ -1015,11 +1048,12 @@ function updatePreviewBar(): void {
             segment: segment.segment as [number, number],
             category: segment.category,
             unsubmitted: true,
+            actionType: segment.actionType,
             showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI
         });
     });
 
-    previewBar.set(previewBarSegments, video?.duration)
+    previewBar.set(previewBarSegments.filter((segment) => segment.actionType !== ActionType.Full), video?.duration)
 
     if (Config.config.showTimeWithSkips) {
         const skippedDuration = utils.getTimestampsDuration(previewBarSegments.map(({segment}) => segment));
@@ -1391,7 +1425,7 @@ async function createButtons(): Promise<void> {
             && playerButtons["info"]?.button && !controlsWithEventListeners.includes(controlsContainer)) {
         controlsWithEventListeners.push(controlsContainer);
         
-        utils.setupAutoHideAnimation(playerButtons["info"].button, controlsContainer);
+        AnimationUtils.setupAutoHideAnimation(playerButtons["info"].button, controlsContainer);
     }
 }
 
@@ -1671,13 +1705,37 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) {
+async function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent): Promise<void> {
     if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
         skipNotice.addVoteButtonInfo.bind(skipNotice)(chrome.i18n.getMessage("Loading"))
         skipNotice.setNoticeInfoMessage.bind(skipNotice)();
     }
 
+    const response = await voteAsync(type, UUID, category);
+    if (response != undefined) {
+        //see if it was a success or failure
+        if (skipNotice != null) {
+            if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
+                //success (treat rate limits as a success)
+                skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
+            } else if (response.successType == -1) {
+                if (response.statusCode === 403 && response.responseText.startsWith("Vote rejected due to a warning from a moderator.")) {
+                    skipNotice.setNoticeInfoMessageWithOnClick.bind(skipNotice)(() => {
+                        Chat.openWarningChat(response.responseText);
+                        skipNotice.closeListener.call(skipNotice);
+                    }, chrome.i18n.getMessage("voteRejectedWarning"));
+                } else {
+                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(GenericUtils.getErrorMessage(response.statusCode, response.responseText))
+                }
+                
+                skipNotice.resetVoteButtonInfo.bind(skipNotice)();
+            }
+        }
+    }
+}
+
+async function voteAsync(type: number, UUID: SegmentUUID, category?: Category): Promise<VoteResponse> {
     const sponsorIndex = utils.getSponsorIndexFromUUID(sponsorTimes, UUID);
 
     // Don't vote for preview sponsors
@@ -1697,33 +1755,14 @@ function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?:
     
         Config.config.skipCount = Config.config.skipCount + factor;
     }
- 
-    chrome.runtime.sendMessage({
-        message: "submitVote",
-        type: type,
-        UUID: UUID,
-        category: category
-    }, function(response) {
-        if (response != undefined) {
-            //see if it was a success or failure
-            if (skipNotice != null) {
-                if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
-                    //success (treat rate limits as a success)
-                    skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
-                } else if (response.successType == -1) {
-                    if (response.statusCode === 403 && response.responseText.startsWith("Vote rejected due to a warning from a moderator.")) {
-                        skipNotice.setNoticeInfoMessageWithOnClick.bind(skipNotice)(() => {
-                            Chat.openWarningChat(response.responseText);
-                            skipNotice.closeListener.call(skipNotice);
-                        }, chrome.i18n.getMessage("voteRejectedWarning"));
-                    } else {
-                        skipNotice.setNoticeInfoMessage.bind(skipNotice)(utils.getErrorMessage(response.statusCode, response.responseText))
-                    }
-                    
-                    skipNotice.resetVoteButtonInfo.bind(skipNotice)();
-                }
-            }
-        }
+
+    return new Promise((resolve) => {
+        chrome.runtime.sendMessage({
+            message: "submitVote",
+            type: type,
+            UUID: UUID,
+            category: category
+        }, resolve);
     });
 }
 
@@ -1766,7 +1805,7 @@ function submitSponsorTimes() {
 async function sendSubmitMessage() {
     // Add loading animation
     playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
-    const stopAnimation = utils.applyLoadingAnimation(playerButtons.submit.button, 1, () => updateEditButtonsOnPlayer());
+    const stopAnimation = AnimationUtils.applyLoadingAnimation(playerButtons.submit.button, 1, () => updateEditButtonsOnPlayer());
 
     //check if a sponsor exceeds the duration of the video
     for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
@@ -1838,7 +1877,7 @@ async function sendSubmitMessage() {
         if (response.status === 403 && response.responseText.startsWith("Submission rejected due to a warning from a moderator.")) {
             Chat.openWarningChat(response.responseText);
         } else {
-            alert(utils.getErrorMessage(response.status, response.responseText));
+            alert(GenericUtils.getErrorMessage(response.status, response.responseText));
         }
     }
 }

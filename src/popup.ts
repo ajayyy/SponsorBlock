@@ -1,10 +1,12 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, CategoryActionType } from "./types";
+import { SponsorTime, SponsorHideType, CategoryActionType, ActionType } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { getCategoryActionType } from "./utils/categoryUtils";
+import { AnimationUtils } from "./utils/animationUtils";
+import { GenericUtils } from "./utils/genericUtils";
 const utils = new Utils();
 
 interface MessageListener {
@@ -405,10 +407,15 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
-                segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
+                if (segmentTimes[i].actionType === ActionType.Full) {
+                    segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
+                } else {
+                    segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
                             (getCategoryActionType(segmentTimes[i].category) !== CategoryActionType.POI 
                                 ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) 
                                 : "");
+                }
+                
                 segmentTimeFromToNode.style.margin = "5px";
 
                 sponsorTimeButton.appendChild(categoryColorCircle);
@@ -444,7 +451,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 uuidButton.src = chrome.runtime.getURL("icons/clipboard.svg");
                 uuidButton.addEventListener("click", () => {
                     navigator.clipboard.writeText(UUID);
-                    const stopAnimation = utils.applyLoadingAnimation(uuidButton, 0.3);
+                    const stopAnimation = AnimationUtils.applyLoadingAnimation(uuidButton, 0.3);
                     stopAnimation();
                 });
 
@@ -550,7 +557,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
             } else {
-                PageElements.setUsernameStatus.innerText = utils.getErrorMessage(response.status, response.responseText);
+                PageElements.setUsernameStatus.innerText = GenericUtils.getErrorMessage(response.status, response.responseText);
             }
         });
 
@@ -591,7 +598,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     //success (treat rate limits as a success)
                     addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
                 } else if (response.successType == -1) {
-                    addVoteMessage(utils.getErrorMessage(response.statusCode, response.responseText), UUID);
+                    addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
                 }
             }
         });
@@ -694,7 +701,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     function refreshSegments() {
-        const stopAnimation = utils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
+        const stopAnimation = AnimationUtils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
 
         messageHandler.query({
             active: true,
