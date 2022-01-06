@@ -624,6 +624,10 @@
     "muteSegments": {
         "message": "Allow segments that mute audio instead of skip"
     },
+    "fullVideoSegments": {
+        "message": "Show an icon when a video is entirely an advertisement",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
     },

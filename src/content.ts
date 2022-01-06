@@ -687,7 +687,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
-        actionTypes: Config.config.muteSegments ? [ActionType.Skip, ActionType.Mute, ActionType.Full] : [ActionType.Skip, ActionType.Full], 
+        actionTypes: getEnabledActionTypes(), 
         userAgent: `${chrome.runtime.id}`,
         ...extraRequestData
     });
@@ -766,6 +766,18 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     }
     
     lookupVipInformation(id);
+}
+
+function getEnabledActionTypes(): ActionType[] {
+    const actionTypes = [ActionType.Skip];
+    if (Config.config.muteSegments) {
+        actionTypes.push(ActionType.Mute);
+    }
+    if (Config.config.fullVideoSegments) {
+        actionTypes.push(ActionType.Full);
+    }
+
+    return actionTypes;
 }
 
 function lookupVipInformation(id: string): void {
