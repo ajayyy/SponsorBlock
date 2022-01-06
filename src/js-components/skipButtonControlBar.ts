@@ -3,6 +3,7 @@ import { SponsorTime } from "../types";
 import { getSkippingText } from "../utils/categoryUtils";
 
 import Utils from "../utils";
+import { AnimationUtils } from "../utils/animationUtils";
 const utils = new Utils();
 
 export interface SkipButtonControlBarProps {
@@ -80,9 +81,9 @@ export class SkipButtonControlBar {
             }
 
             if (!this.onMobileYouTube) {
-                utils.setupAutoHideAnimation(this.skipIcon, mountingContainer, false, false);
+                AnimationUtils.setupAutoHideAnimation(this.skipIcon, mountingContainer, false, false);
             } else {
-                const { hide, show } = utils.setupCustomHideAnimation(this.skipIcon, mountingContainer, false, false);
+                const { hide, show } = AnimationUtils.setupCustomHideAnimation(this.skipIcon, mountingContainer, false, false);
                 this.hideButton = hide;
                 this.showButton = show;
             }
@@ -104,7 +105,7 @@ export class SkipButtonControlBar {
 
         this.refreshText();
         this.textContainer?.classList?.remove("hidden");
-        utils.disableAutoHideAnimation(this.skipIcon);
+        AnimationUtils.disableAutoHideAnimation(this.skipIcon);
 
         this.startTimer();
     }
@@ -160,7 +161,7 @@ export class SkipButtonControlBar {
 
         this.getChapterPrefix()?.classList?.add("hidden");
 
-        utils.enableAutoHideAnimation(this.skipIcon);
+        AnimationUtils.enableAutoHideAnimation(this.skipIcon);
         if (this.onMobileYouTube) {
             this.hideButton();
         }

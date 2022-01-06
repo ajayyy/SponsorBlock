@@ -302,6 +302,10 @@
     "mute": {
         "message": "Mute"
     },
+    "full": {
+        "message": "Full Video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Skip {0}?"
     },
@@ -620,6 +624,10 @@
     "muteSegments": {
         "message": "Allow segments that mute audio instead of skip"
     },
+    "fullVideoSegments": {
+        "message": "Show an icon when a video is entirely an advertisement",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
     },
@@ -736,6 +744,12 @@
     "GotIt": {
         "message": "Got it",
         "description": "Used as the button to dismiss a tooltip"
+    },
+    "fullVideoTooltipWarning": {
+        "message": "This segment is large. If the whole video is about one topic, then change from \"Skip\" to \"Full Video\". See the guidelines for more information."
+    },
+    "categoryPillTitleText": {
+        "message": "This entire video is labeled as this category and is too tightly integrated to be able to separate"
     },
     "experiementOptOut": {
         "message": "Opt-out of all future experiments",
