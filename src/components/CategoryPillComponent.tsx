@@ -40,6 +40,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         return (
             <span style={style}
                 className={"sponsorBlockCategoryPill"} 
+                title={chrome.i18n.getMessage("categoryPillTitleText")}
                 onClick={() => this.state.show && this.setState({ open: !this.state.open })}>
                 <span className="sponsorBlockCategoryPillTitleSection">
                     <img className="sponsorSkipLogo sponsorSkipObject"
@@ -83,7 +84,10 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
             await stopAnimation();
 
             if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
-                this.setState({ open: false });
+                this.setState({ 
+                    open: false, 
+                    show: type === 1
+                });
             } else if (response.statusCode !== 403) {
                 alert(GenericUtils.getErrorMessage(response.statusCode, response.responseText));
             }

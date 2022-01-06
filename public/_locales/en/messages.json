@@ -744,6 +744,9 @@
     "fullVideoTooltipWarning": {
         "message": "This segment is large. If the whole video is about one topic, then change from \"Skip\" to \"Full Video\". See the guidelines for more information."
     },
+    "categoryPillTitleText": {
+        "message": "This entire video is labeled as this category and is too tightly integrated to be able to separate"
+    },
     "experiementOptOut": {
         "message": "Opt-out of all future experiments",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
