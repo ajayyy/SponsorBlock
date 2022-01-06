@@ -4,9 +4,10 @@ import * as ReactDOM from "react-dom";
 import Utils from "../utils";
 const utils = new Utils();
 
-import SkipNoticeComponent, { SkipNoticeAction } from "../components/SkipNoticeComponent";
+import SkipNoticeComponent from "../components/SkipNoticeComponent";
 import { SponsorTime, ContentContainer, NoticeVisbilityMode } from "../types";
 import Config from "../config";
+import { SkipNoticeAction } from "../utils/noticeUtils";
 
 class SkipNotice {
     segments: SponsorTime[];
