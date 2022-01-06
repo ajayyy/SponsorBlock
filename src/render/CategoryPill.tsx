@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import CategoryPillComponent, { CategoryPillState } from "../components/CategoryPillComponent";
-import { SponsorTime } from "../types";
+import { VoteResponse } from "../messageTypes";
+import { Category, SegmentUUID, SponsorTime } from "../types";
 import { GenericUtils } from "../utils/genericUtils";
 
 export class CategoryPill {
@@ -16,7 +17,8 @@ export class CategoryPill {
         this.ref = React.createRef();
     }
 
-    async attachToPage(onMobileYouTube: boolean, onInvidious: boolean): Promise<void> {
+    async attachToPage(onMobileYouTube: boolean, onInvidious: boolean,
+            vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>): Promise<void> {
         const referenceNode = 
             await GenericUtils.wait(() => 
                 // YouTube, Mobile YouTube, Invidious
@@ -35,7 +37,7 @@ export class CategoryPill {
             }
 
             ReactDOM.render(
-                <CategoryPillComponent ref={this.ref} />,
+                <CategoryPillComponent ref={this.ref} vote={vote} />,
                 this.container
             );
 
@@ -49,7 +51,7 @@ export class CategoryPill {
                     this.mutationObserver.disconnect();
                 }
                 
-                this.mutationObserver = new MutationObserver(() => this.attachToPage(onMobileYouTube, onInvidious));
+                this.mutationObserver = new MutationObserver(() => this.attachToPage(onMobileYouTube, onInvidious, vote));
 
                 this.mutationObserver.observe(referenceNode, { 
                     childList: true,
@@ -78,15 +80,18 @@ export class CategoryPill {
     }
 
     setSegment(segment: SponsorTime): void {
-        const newState = {
-            segment,
-            show: true
-        };
+        if (this.ref.current?.state?.segment !== segment) {
+            const newState = {
+                segment,
+                show: true,
+                open: false
+            };
 
-        if (this.ref.current) {
-            this.ref.current?.setState(newState);
-        } else {
-            this.unsavedState = newState;
+            if (this.ref.current) {
+                this.ref.current?.setState(newState);
+            } else {
+                this.unsavedState = newState;
+            }
         }
         
     }

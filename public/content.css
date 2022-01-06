@@ -622,6 +622,7 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 	font-size: 75%;
 	height: 100%;
+	align-items: center;
 }
 
 .sponsorBlockCategoryPillTitleSection {
