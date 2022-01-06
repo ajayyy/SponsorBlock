@@ -236,6 +236,12 @@
     "noticeVisibilityMode2": {
         "message": "Tüm Küçük Atlama Bildirimleri"
     },
+    "noticeVisibilityMode3": {
+        "message": "Otomatik Atlama için Soluk Atlama Bildirimleri"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Tüm Soluk Atlama Bildirimleri"
+    },
     "longDescription": {
         "message": "SponsorBlock, sponsorları, giriş ve bitiş kısımlarını, abonelik hatırlatıcılarını ve YouTube videolarının diğer can sıkıcı kısımlarını atlamanıza olanak tanır. SponsorBlock, herkesin sponsorlu kısımları ve YouTube videolarının diğer kısımlarının başlangıç ve bitiş zamanlarını göndermesine izin veren kitle kaynaklı bir tarayıcı uzantısıdır. Bir kişi bu bilgiyi gönderdikten sonra, bu uzantıya sahip diğer herkes sponsorlu kısımları hemen atlayacaktır. Müzik videolarının müzik dışı bölümlerini de atlayabilirsiniz.",
         "description": "Full description of the extension on the store pages."
@@ -557,6 +563,15 @@
     "category_preview_description": {
         "message": "Önceki bölümlerin bir özeti veya geçerli videonun içeriğine yönelik bir ön izleme. Bu özellik birleştirilmiş klipler içindir, konuşarak anlatılan özetleri kapsamaz."
     },
+    "category_filler": {
+        "message": "Alakasız Konu"
+    },
+    "category_filler_description": {
+        "message": "Videonun ana içeriğini anlamak için gerekli olmayan, yalnızca alakasız konu veya mizah için eklenen sahneler. Bu, alakalı veya arka plan ayrıntısı veren kısımları içermemelidir."
+    },
+    "category_filler_short": {
+        "message": "Alakasız Konu"
+    },
     "category_music_offtopic": {
         "message": "Müzik: Müzik Olmayan Bölüm"
     },
@@ -693,6 +708,9 @@
     "downvoteDescription": {
         "message": "Hatalı/Yanlış Zaman"
     },
+    "incorrectCategory": {
+        "message": "Kategoriyi değiştir"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Bu video müzik olarak sınıflandırılmıştır. Bunun bir sponsor olduğundan emin misin? Bu aslında bir \"Müzik Dışı bölüm\" ise, uzantı seçeneklerini açın ve bu kategoriyi etkinleştirin. Ardından, bu kısmı sponsor yerine \"Müzik Olmayan\" olarak gönderebilirsiniz. Kafanız karıştıysa lütfen yönergeleri okuyun."
     },
@@ -726,6 +744,9 @@
     "hideForever": {
         "message": "Asla gösterme"
     },
+    "warningChatInfo": {
+        "message": "Bir uyarı aldınız ve geçici olarak gönderim yapamazsınız. Bu, kötü niyetli olmayan bazı yaygın hatalar yaptığınızı fark ettiğimiz anlamına gelir, lütfen kuralları anladığınızı onaylayın, uyarıyı sonra kaldıracağız. Bu konuşmaya discord.gg/SponsorBlock ya da matrix.to/#/#sponsor:ajay.app kullanarak katılabilirsiniz."
+    },
     "voteRejectedWarning": {
         "message": "Bir uyarı nedeniyle oy reddedildi. Çözüm bulmak için buraya tıklayarak bir sohbet açın veya daha sonra vaktiniz olduğunda uğrayın.",
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
@@ -757,6 +778,12 @@
     "Submitting": {
         "message": "Gönderme"
     },
+    "helpPageSubmitting1": {
+        "message": "Gönderi, açılır pencerede \"Kısım Şimdi Başlıyor\" düğmesine basılarak veya oynatıcıdaki düğmelerle video oynatıcıda yapılabilir."
+    },
+    "helpPageSubmitting2": {
+        "message": "Oynat düğmesine tıklamak bir kısımın başlangıcını, durdurma simgesine tıklamak ise bitişini gösterir. Gönder düğmesine basmadan önce birden fazla sponsor hazırlayabilirsiniz. Yükle düğmesine tıklamak kısımları gönderir. Çöp kutusuna tıkladığınızda silinir."
+    },
     "Editing": {
         "message": "Düzenleme"
     },
@@ -765,6 +792,9 @@
     },
     "helpPageTooSlow": {
         "message": "Bu fazla yavaş"
+    },
+    "helpPageTooSlow1": {
+        "message": "Kullanmak isterseniz kısayol tuşları var. Sponsorlu kısmın başlangıcını/sonunu belirtmek için noktalı virgül tuşuna basın ve göndermek için kesme işaretine tıklayın. Bu tuşlar ayarlarda değiştirilebilir. QWERTY klavye kullanmıyorsanız, tuş ayarlarını değiştirmelisiniz."
     },
     "helpPageCopyOfDatabase": {
         "message": "Veri tabanının bir kopyasını alabilir miyim? Bir gün ortadan kaybolursanız ne olacak?"
@@ -775,6 +805,9 @@
     "helpPageCopyOfDatabase2": {
         "message": "Kaynak koduna serbestçe erişilebilir. Ben bir gün bu dünyada yalan olsam dahi, sizin gönderdiğiniz kısımlar kaybolmayacak."
     },
+    "helpPageNews": {
+        "message": "Haberler ve nasıl yapılır"
+    },
     "helpPageSourceCode": {
         "message": "Kaynak koduna nereden ulaşabilirim?"
     },
@@ -783,5 +816,34 @@
     },
     "LearnMore": {
         "message": "Dahasını Öğren"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Olumsuz oy verir ve yeni bir kısım seçmeniz için bir kopya oluşturur"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Bu kategorinin wiki sayfasını açın."
+    },
+    "CopyAndDownvote": {
+        "message": "Kopyala ve olumsuz"
+    },
+    "ContinueVoting": {
+        "message": "Oylamaya devam et"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Bu, kısımlarınız için anında geçerli olur"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Zaman aralığını hızlı bir şekilde ayarlamak için düzenleme kutusunun üzerinde fare tekerini kullanın. Değişikliklere ince ayar yapmak için ctrl veya shift tuşunun kombinasyonları kullanılabilir."
+    },
+    "fillerNewFeature": {
+        "message": "Yeni! Alakasız Konu kategorisiyle boş muhabbetleri ve şakaları atlayın. Ayarlarda etkinleştir"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }
