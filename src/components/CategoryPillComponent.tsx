@@ -34,7 +34,8 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
     render(): React.ReactElement {
         const style: React.CSSProperties = {
             backgroundColor: Config.config.barTypes["preview-" + this.state.segment?.category]?.color,
-            display: this.state.show ? "flex" : "none"
+            display: this.state.show ? "flex" : "none",
+            color: this.state.segment?.category === "sponsor" ? "white" : "black",
         }
 
         return (
