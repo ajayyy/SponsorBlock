@@ -17,7 +17,7 @@ import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { Tooltip } from "./render/Tooltip";
 import { getStartTimeFromUrl } from "./utils/urlParser";
-import { getControls } from "./utils/pageUtils";
+import { findValidElement, getControls, isVisible } from "./utils/pageUtils";
 import { CategoryPill } from "./render/CategoryPill";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
@@ -91,7 +91,8 @@ let controls: HTMLElement | null = null;
 const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImageElement, setupListener: boolean}> = {};
 
 // Direct Links after the config is loaded
-utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document.URL)));
+utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
+addPageListeners();
 addHotkeyListener();
 
 //the amount of times the sponsor lookup has retried
@@ -142,7 +143,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
     //messages from popup script
     switch(request.message){
         case "update":
-            videoIDChange(getYouTubeVideoID(document.URL));
+            videoIDChange(getYouTubeVideoID(document));
             break;
         case "sponsorStart":
             startOrEndTimingNewSegment()
@@ -272,8 +273,8 @@ function resetValues() {
 }
 
 async function videoIDChange(id) {
-    //if the id has not changed return
-    if (sponsorVideoID === id) return;
+    //if the id has not changed return unless the video element has changed
+    if (sponsorVideoID === id && isVisible(video)) return;
 
     //set the global videoID
     sponsorVideoID = id;
@@ -383,7 +384,7 @@ function createPreviewBar(): void {
     ];
 
     for (const selector of progressElementSelectors) {
-        const el = document.querySelector<HTMLElement>(selector);
+        const el = findValidElement(document.querySelectorAll(selector));
 
         if (el) {
             previewBar = new PreviewBar(el, onMobileYouTube, onInvidious);
@@ -402,6 +403,16 @@ function createPreviewBar(): void {
 function durationChangeListener(): void {
     updateAdFlag();
     updatePreviewBar();
+}
+
+/**
+ * Triggered once the video is ready.
+ * This is mainly to attach to embedded players who don't have a video element visible.
+ */
+function videoOnReadyListener(): void {
+    createPreviewBar();
+    updatePreviewBar();
+    createButtons();
 }
 
 function cancelSponsorSchedule(): void {
@@ -515,7 +526,7 @@ function inMuteSegment(currentTime: number): boolean {
  * This makes sure the videoID is still correct and if the sponsorTime is included
  */
 function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boolean {
-    const currentVideoID = getYouTubeVideoID(document.URL);
+    const currentVideoID = getYouTubeVideoID(document);
     if (currentVideoID !== (videoID || sponsorVideoID) || (sponsorTime 
             && (!sponsorTimes || !sponsorTimes?.some((time) => time.segment === sponsorTime.segment)) 
             && !sponsorTimesSubmitting.some((time) => time.segment === sponsorTime.segment))) {
@@ -546,7 +557,7 @@ function setupVideoMutationListener() {
 }
 
 function refreshVideoAttachments() {
-    const newVideo = document.querySelector('video');
+    const newVideo = findValidElement(document.querySelectorAll('video')) as HTMLVideoElement;
     if (newVideo && newVideo !== video) {
         video = newVideo;
 
@@ -557,11 +568,20 @@ function refreshVideoAttachments() {
             setupSkipButtonControlBar();
             setupCategoryPill();
         }
+
+        // Create a new bar in the new video element
+        if (previewBar && !utils.findReferenceNode()?.contains(previewBar.container)) {
+            previewBar.remove();
+            previewBar = null;
+
+            createPreviewBar();
+        }
     }
 }
 
 function setupVideoListeners() {
     //wait until it is loaded
+    video.addEventListener('loadstart', videoOnReadyListener)
     video.addEventListener('durationchange', durationChangeListener);
 
     if (!Config.config.disableSkipping) {
@@ -653,7 +673,7 @@ function setupCategoryPill() {
 }
 
 async function sponsorsLookup(id: string, keepOldSubmissions = true) {
-    if (!video) refreshVideoAttachments();
+    if (!video || !isVisible(video)) refreshVideoAttachments();
     //there is still no video here
     if (!video) {
         setTimeout(() => sponsorsLookup(id), 100);
@@ -924,8 +944,30 @@ async function getVideoInfo(): Promise<void> {
     }
 }
 
-function getYouTubeVideoID(url: string): string | boolean {
-    // For YouTube TV support
+function getYouTubeVideoID(document: Document): string | boolean {
+    const url = document.URL;
+    // skip to URL if matches youtube watch or invidious or matches youtube pattern
+    if ((!url.includes("youtube.com")) || url.includes("/watch") || url.includes("/shorts/") || url.includes("playlist")) return getYouTubeVideoIDFromURL(url);
+    // skip to document and don't hide if on /embed/
+    if (url.includes("/embed/")) return getYouTubeVideoIDFromDocument(document, false);
+    // skip to document if matches pattern
+    if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument(document);
+    // not sure, try URL then document
+    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document);
+}
+
+function getYouTubeVideoIDFromDocument(document: Document, hideIcon = true): string | boolean {
+    // get ID from document (channel trailer / embedded playlist)
+    const videoURL = document.querySelector("[data-sessionlink='feature=player-title']")?.getAttribute("href");
+    if (videoURL) {
+        onInvidious = hideIcon;
+        return getYouTubeVideoIDFromURL(videoURL);
+    } else {
+        return false
+    }
+}
+
+function getYouTubeVideoIDFromURL(url: string): string | boolean {
     if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 
     //Attempt to parse url
@@ -945,7 +987,7 @@ function getYouTubeVideoID(url: string): string | boolean {
     } else if (!["m.youtube.com", "www.youtube.com", "www.youtube-nocookie.com", "music.youtube.com"].includes(urlObject.host)) {
         if (!Config.config) {
             // Call this later, in case this is an Invidious tab
-            utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoID(url)));
+            utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoIDFromURL(url)));
         }
 
         return false
@@ -963,7 +1005,7 @@ function getYouTubeVideoID(url: string): string | boolean {
             console.error("[SB] Video ID not valid for " + url);
             return false;
         }
-    } 
+    }
     return false;
 }
 
@@ -1860,6 +1902,16 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
     }
 
     return sponsorTimesMessage;
+}
+
+function addPageListeners(): void {
+    const refreshListners = () => {
+        if (!isVisible(video)) {
+            refreshVideoAttachments();
+        }
+    };
+
+    document.addEventListener("yt-navigate-finish", refreshListners);
 }
 
 function addHotkeyListener(): void {
