@@ -835,9 +835,6 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Brug musehjulet, mens du holder musen over redigeringsfeltet for hurtigt at justere tiden. Kombinationer af ctrl eller shift-tastenerne kan bruges til at finjustere ændringerne."
     },
-    "fillerNewFeature": {
-        "message": "Nyt! Spring tangenter over og vittigheder med fyldstofkategorien. Aktivér i indstillinger"
-    },
     "dayAbbreviation": {
         "message": "d",
         "description": "100d"
