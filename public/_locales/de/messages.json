@@ -302,6 +302,10 @@
     "mute": {
         "message": "Ton aus"
     },
+    "full": {
+        "message": "Komplettes Video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "{0} überspringen?"
     },
@@ -620,6 +624,10 @@
     "muteSegments": {
         "message": "Segmente zulassen, die den Ton ausschalten anstatt zu überspringen"
     },
+    "fullVideoSegments": {
+        "message": "Zeige ein Icon wenn das gesamte Video Werbung ist",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
     },
@@ -737,6 +745,12 @@
         "message": "Verstanden",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Dieses Segment ist gross. Wenn das gesammte Video nur über ein Thema ist, wechsle von \"Überspringen\" zu \"Ganzes Video\". Siehe die Richtlinien für weitere Informationen."
+    },
+    "categoryPillTitleText": {
+        "message": "Das gesammte Video ist als diese Kategorie markiert und ist zu eng integriert um separiert zu werden"
+    },
     "experiementOptOut": {
         "message": "Aus allen zukünftigen Experimenten abmelden",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -834,9 +848,6 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schnell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
-    },
-    "fillerNewFeature": {
-        "message": "Neu! Überspringe Nebensächliches und Witze mit der Füller-Kategorie. Aktiviere sie in den Optionen"
     },
     "dayAbbreviation": {
         "message": "T",
