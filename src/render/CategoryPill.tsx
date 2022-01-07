@@ -1,9 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import CategoryPillComponent, { CategoryPillState } from "../components/CategoryPillComponent";
+import Config from "../config";
 import { VoteResponse } from "../messageTypes";
 import { Category, SegmentUUID, SponsorTime } from "../types";
 import { GenericUtils } from "../utils/genericUtils";
+import { Tooltip } from "./Tooltip";
 
 export class CategoryPill {
     container: HTMLElement;
@@ -79,7 +81,7 @@ export class CategoryPill {
         }
     }
 
-    setSegment(segment: SponsorTime): void {
+    async setSegment(segment: SponsorTime): Promise<void> {
         if (this.ref.current?.state?.segment !== segment) {
             const newState = {
                 segment,
@@ -92,7 +94,23 @@ export class CategoryPill {
             } else {
                 this.unsavedState = newState;
             }
+
+            if (!Config.config.categoryPillUpdate) {
+                Config.config.categoryPillUpdate = true;
+
+                const watchDiv = await GenericUtils.wait(() => document.querySelector("#info.ytd-watch-flexy") as HTMLElement);
+                if (watchDiv) {
+                    new Tooltip({
+                        text: chrome.i18n.getMessage("categoryPillNewFeature"),
+                        link: "https://blog.ajay.app/full-video-sponsorblock",
+                        referenceNode: watchDiv,
+                        prependElement: watchDiv.firstChild as HTMLElement,
+                        bottomOffset: "-10px",
+                        opacity: 0.95,
+                        timeout: 50000
+                    });
+                }
+            }
         }
-        
     }
 }

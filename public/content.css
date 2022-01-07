@@ -586,6 +586,12 @@ input::-webkit-inner-spin-button {
     max-width: 300px;
     white-space: normal;
     line-height: 1.5em;
+	color: white;
+	font-size: 12px;
+}
+
+.sponsorBlockTooltip a {
+	color: white;
 }
 
 .sponsorBlockTooltip::after {

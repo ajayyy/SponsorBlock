@@ -80,6 +80,9 @@ chrome.runtime.onInstalled.addListener(function () {
             const newUserID = utils.generateUserID();
             //save this UUID
             Config.config.userID = newUserID;
+
+            // Don't show update notification
+            Config.config.categoryPillUpdate = true;
         }
     }, 1500);
 });

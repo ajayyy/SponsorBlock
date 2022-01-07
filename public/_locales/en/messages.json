@@ -849,8 +849,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use your mousewheel while hovering over the edit box to quickly adjust the time. Combinations of the ctrl or shift key can be used to fine tune the changes."
     },
-    "fillerNewFeature": {
-        "message": "New! Skip tangents and jokes with the filler category. Enable in options"
+    "categoryPillNewFeature": {
+        "message": "New! See when a video is entirely sponsored or self-promotion"
     },
     "dayAbbreviation": {
         "message": "d",
