@@ -835,9 +835,6 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Sử dụng con lăn chuột của bạn khi di chuột qua hộp chỉnh sửa để nhanh chóng điều chỉnh thời gian. Kết hợp phím ctrl hoặc shift có thể được sử dụng để tinh chỉnh các thay đổi."
     },
-    "fillerNewFeature": {
-        "message": "Mới! Bỏ qua các phân đoạn phụ và joke với danh mục \"Cảnh phụ\". Bật trong tùy chọn"
-    },
     "dayAbbreviation": {
         "message": "d",
         "description": "100d"
