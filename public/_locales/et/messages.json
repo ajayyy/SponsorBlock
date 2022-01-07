@@ -302,6 +302,10 @@
     "mute": {
         "message": "Vaigista"
     },
+    "full": {
+        "message": "Terve video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Jätad {0} vahele?"
     },
@@ -620,6 +624,10 @@
     "muteSegments": {
         "message": "Luba segmente, mis vahelejätmise asemel vaigistavad heli"
     },
+    "fullVideoSegments": {
+        "message": "Kuva ikoon, kui terve video on reklaam",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
     },
@@ -813,9 +821,6 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Kiireks aja reguleerimiseks keri hiirega muutmiskasti kohal. Täpsemaks reguleerimiseks hoia kerimise ajal all Ctrl või Shift klahvi."
-    },
-    "fillerNewFeature": {
-        "message": "Uus! Jäta täitesisu ja naljad vahele täitesisu kategooriaga. Luba valikutes"
     },
     "dayAbbreviation": {
         "message": "p",
