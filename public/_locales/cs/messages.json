@@ -835,9 +835,6 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Použijte kolečko myši při přechodu přes editační okno pro rychlou úpravu času. Kombinace kláves Ctrl nebo Shift mohou být použity k doladění změn."
     },
-    "fillerNewFeature": {
-        "message": "Novinka! Překakujte výplňové části a vtipy s kategorií výplň. Povolte ji v nastavení"
-    },
     "dayAbbreviation": {
         "message": "d",
         "description": "100d"
