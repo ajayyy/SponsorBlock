@@ -303,7 +303,7 @@
         "message": "Ton aus"
     },
     "full": {
-        "message": "Komplettes Video",
+        "message": "Vollständiges Video",
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
@@ -625,7 +625,7 @@
         "message": "Segmente zulassen, die den Ton ausschalten anstatt zu überspringen"
     },
     "fullVideoSegments": {
-        "message": "Zeige ein Icon wenn das gesamte Video Werbung ist",
+        "message": "Zeige an, wenn das gesamte Video Werbung ist",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
@@ -746,10 +746,10 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "Dieses Segment ist gross. Wenn das gesammte Video nur über ein Thema ist, wechsle von \"Überspringen\" zu \"Ganzes Video\". Siehe die Richtlinien für weitere Informationen."
+        "message": "Dieses Segment ist lang. Wenn das gesamte Video nur ein Thema behandelt, wechsle von \"Überspringen\" zu \"Ganzes Video\". Erfahre mehr in den Richtlinien."
     },
     "categoryPillTitleText": {
-        "message": "Das gesammte Video ist als diese Kategorie markiert und ist zu eng integriert um separiert zu werden"
+        "message": "Das gesamte Video ist dieser Kategorie zugeordnet, da diese zu sehr im Video eingebaut ist, um einzelne Segmente zu erstellen"
     },
     "experiementOptOut": {
         "message": "Aus allen zukünftigen Experimenten abmelden",
@@ -848,6 +848,9 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schnell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
+    },
+    "categoryPillNewFeature": {
+        "message": "Neu! Sehe, ob ein Video ausschließlich Sponsor oder Eigenwerbung ist"
     },
     "dayAbbreviation": {
         "message": "T",
