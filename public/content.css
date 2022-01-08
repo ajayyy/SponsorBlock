@@ -26,6 +26,11 @@
 	height: 100%;
 }
 
+/* Make sure settings are upfront */
+.ytp-settings-menu {
+	z-index: 6000 !important;
+}
+
 /* Preview Bar page hacks */
 
 .ytp-tooltip:not(.sponsorCategoryTooltipVisible) .sponsorCategoryTooltip {
@@ -581,6 +586,12 @@ input::-webkit-inner-spin-button {
     max-width: 300px;
     white-space: normal;
     line-height: 1.5em;
+	color: white;
+	font-size: 12px;
+}
+
+.sponsorBlockTooltip a {
+	color: white;
 }
 
 .sponsorBlockTooltip::after {
@@ -608,3 +619,18 @@ input::-webkit-inner-spin-button {
     line-height: 1.5em;
 }
 
+.sponsorBlockCategoryPill {
+    border-radius: 25px;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-right: 3px;
+	cursor: pointer;
+	font-size: 75%;
+	height: 100%;
+	align-items: center;
+}
+
+.sponsorBlockCategoryPillTitleSection {
+	display: flex;
+	align-items: center;
+}

@@ -183,7 +183,7 @@
         "message": "Cela permet de cacher du lecteur YouTube les boutons utilisés pour soumettre des segments commerciaux. Je peux \ncomprendre que certaines personnes les trouvent perturbants. Au lieu d'utiliser ces boutons, cette fenêtre peut être utilisée \npour soumettre des segments commerciaux. Pour cacher la notification, utilisez le bouton \"Ne plus montrer\" sur la notification. Vous pouvez toujours réactiver ces paramètres plus tard."
     },
     "showSkipButton": {
-        "message": "Conserver le bouton \"Aller au point d'intérêt\" sur le lecteur"
+        "message": "Conserver le bouton \"Aller au point essentiel\" sur le lecteur"
     },
     "showInfoButton": {
         "message": "Montrer le bouton Info sur le lecteur YouTube"
@@ -528,7 +528,7 @@
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
     },
     "category_selfpromo": {
-        "message": "Promotion non rémunérée/autopromotion"
+        "message": "Non rémunéré/autopromotion"
     },
     "category_selfpromo_description": {
         "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
     },
+    "category_filler": {
+        "message": "Digressions"
+    },
+    "category_filler_description": {
+        "message": "Des digressions ajoutées uniquement pour le remplissage ou l'humour qui ne sont pas requis pour comprendre le contenu principal de la vidéo. Cela ne devrait pas inclure des segments fournissant du contexte ou des détails de fond."
+    },
+    "category_filler_short": {
+        "message": "Remplissage"
+    },
     "category_music_offtopic": {
         "message": "Musique : Segment non musical"
     },
@@ -573,7 +582,7 @@
         "message": "Hors musique"
     },
     "category_poi_highlight": {
-        "message": "Surligner"
+        "message": "Point essentiel"
     },
     "category_poi_highlight_description": {
         "message": "La partie de la vidéo que la plupart des gens veulent voir. Similaire à \"la vidéo commence à x mins\"."
@@ -651,7 +660,7 @@
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
-        "message": "Avertissement : Ce type de segment ne peut avoir qu'un seul segment actif à la fois. Si vous en soumettez plusieurs, le choix sera fait au hasard."
+        "message": "Avertissement: Ce type de segment peut avoir au maximum un seul actif à la fois. En soumettant plusieurs segments, un seul aléatoire sera affiché."
     },
     "youMustSelectACategory": {
         "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
@@ -809,7 +818,7 @@
         "message": "En savoir plus"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Vote négatif et crée une copie locale que vous pouvez soumettre à nouveau"
+        "message": "Voter contre et crée une copie locale pour la resoumettre"
     },
     "OpenCategoryWikiPage": {
         "message": "Ouvrez la page wiki de cette catégorie."
@@ -825,5 +834,16 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
+    },
+    "fillerNewFeature": {
+        "message": "Nouveau ! Ignorer les digressions et les blagues avec la catégorie \"remplissage\". Activable dans les options"
+    },
+    "dayAbbreviation": {
+        "message": "j",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }

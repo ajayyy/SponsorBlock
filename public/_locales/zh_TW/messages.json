@@ -281,6 +281,10 @@
     "skip_category": {
         "message": "跳過 {0}？"
     },
+    "muted": {
+        "message": "{0} 已靜音",
+        "description": "Example: Sponsor Muted"
+    },
     "disableAutoSkip": {
         "message": "停用自動跳過"
     },
@@ -665,7 +669,16 @@
     "hideForever": {
         "message": "永久隱藏"
     },
+    "Submitting": {
+        "message": "正在提交"
+    },
+    "Editing": {
+        "message": "編輯中"
+    },
     "Credits": {
         "message": "致謝"
+    },
+    "LearnMore": {
+        "message": "了解更多"
     }
 }

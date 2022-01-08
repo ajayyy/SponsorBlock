@@ -836,6 +836,14 @@
         "message": "Gebruik het muiswiel terwijl u over het invoerveld beweegt om de tijd snel aan te passen. Combinaties van de ctrl- of shift-toets kunnen worden gebruikt om de wijzigingen te verfijnen."
     },
     "fillerNewFeature": {
-        "message": "Nieuw! Sla zijsporen en grapjes over met de opvulling-categorie. Schakel in via opties"
+        "message": "Nieuw! Zijsporen en grapjes overslaan met de opvulling-categorie. Inschakelen via opties"
+    },
+    "dayAbbreviation": {
+        "message": " d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": " h",
+        "description": "100h"
     }
 }

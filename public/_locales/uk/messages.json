@@ -834,5 +834,13 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Навівши курсор на поле редагування, користуйтеся колесом прокрутки, щоб швидко відрегулювати час. Комбінації клавіш ctrl або shift можуть бути використані для точнішої настройки змін."
+    },
+    "dayAbbreviation": {
+        "message": "д",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "г",
+        "description": "100h"
     }
 }

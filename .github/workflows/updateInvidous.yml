@@ -1,0 +1,26 @@
+name: update invidious
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *' # check every month
+
+jobs:
+  check-list:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download instance list
+        run: |
+          wget https://api.invidious.io/instances.json -O data.json
+      - name: "Run CI"
+        run: npm run ci:invidious
+
+      - name: Create pull request to update list
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Update Invidious List
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          branch: ci/update_invidious_list
+          title: Update Invidious List
+          body: Automated Invidious list update

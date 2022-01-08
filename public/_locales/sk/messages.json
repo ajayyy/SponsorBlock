@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "Nové! Preskočte odbočky mimo tému a vtipy s kategóriou filler. Zapnite si ju v nastaveniach"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }

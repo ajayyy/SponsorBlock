@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Rekapan singkat dari episode sebelumnya, atau pratinjau tentang apa yang akan terjadi nanti di video. Dimaksudkan untuk klip bersama yang di edit, bukan ringkasan yang diucapkan."
     },
+    "category_filler": {
+        "message": "Pengisi Tangensial"
+    },
+    "category_filler_description": {
+        "message": "Adegan tangensial ditambahkan hanya untuk pengisi atau humor yang tidak diperlukan untuk memahami isi utama video. Ini tidak boleh mencakup segmen yang memberikan detail konteks atau latar belakang."
+    },
+    "category_filler_short": {
+        "message": "Isian"
+    },
     "category_music_offtopic": {
         "message": "Musik: Bagian Non-Musik"
     },
@@ -699,6 +708,9 @@
     "downvoteDescription": {
         "message": "Salah, Waktu Tidak Tepat"
     },
+    "incorrectCategory": {
+        "message": "Ubah Kategori"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Video ini dikategorikan sebagai musik. Apakah anda yakin ini berisi sponsor? Jika ini ternyata adalah \"Segmen non-musik\", buka pengaturan ekstensi dan aktifkan kategorinya. Lalu, anda bisa mengirim segmen ini sebagai \"Non-musik\" bukannya sponsor. Harap membaca panduan jika anda kebingungan."
     },
@@ -805,7 +817,25 @@
     "LearnMore": {
         "message": "Pelajari Lebih Lanjut"
     },
+    "CopyDownvoteButtonInfo": {
+        "message": "Menurunkan suara dan membuat salinan lokal untuk Anda kirim ulang"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Membuka halaman wiki kategori ini."
+    },
+    "CopyAndDownvote": {
+        "message": "Salin dan berikan turunkan suara"
+    },
+    "ContinueVoting": {
+        "message": "Lanjutkan Memvoting"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Ini akan menerapkan ke segmen Anda"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gunakan roda mouse ketika berada di kotak edit untuk mengatur waktu dengan cepat. Kombinasi dengan tombol [Ctrl + Shift] bisa digunakan untuk perubahan yang halus."
+    },
+    "fillerNewFeature": {
+        "message": "Baru! Lewati tangen dan lelucon dengan kategori pengisi. Aktifkan dalam opsi"
     }
 }

@@ -6,6 +6,7 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 'use strict';
 
 import Config from "../config";
+import { ActionType } from "../types";
 import Utils from "../utils";
 const utils = new Utils();
 
@@ -15,6 +16,7 @@ export interface PreviewBarSegment {
     segment: [number, number];
     category: string;
     unsubmitted: boolean;
+    actionType: ActionType;
     showLarger: boolean;
 }
 

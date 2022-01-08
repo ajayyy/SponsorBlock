@@ -1,4 +1,5 @@
 import * as CompileConfig from "../config.json";
+import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind } from "./types";
 import { keybindEquals } from "./utils/configUtils";
 
@@ -18,6 +19,7 @@ interface SBConfig {
     showTimeWithSkips: boolean,
     disableSkipping: boolean,
     muteSegments: boolean,
+    fullVideoSegments: boolean,
     trackViewCount: boolean,
     trackViewCountInPrivate: boolean,
     dontShowNotice: boolean,
@@ -49,7 +51,7 @@ interface SBConfig {
         locked: string
     },
     scrollToEditTimeUpdate: boolean,
-    fillerUpdate: boolean,
+    categoryPillUpdate: boolean,
 
     skipKeybind: Keybind,
     startSponsorKeybind: Keybind,
@@ -176,6 +178,7 @@ const Config: SBObject = {
         showTimeWithSkips: true,
         disableSkipping: false,
         muteSegments: true,
+        fullVideoSegments: true,
         trackViewCount: true,
         trackViewCountInPrivate: true,
         dontShowNotice: false,
@@ -187,7 +190,7 @@ const Config: SBObject = {
         hideSkipButtonPlayerControls: false,
         hideDiscordLaunches: 0,
         hideDiscordLink: false,
-        invidiousInstances: ["invidious.snopyta.org"],
+        invidiousInstances: ["invidious.snopyta.org"], // leave as default
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
         minDuration: 0,
@@ -202,7 +205,7 @@ const Config: SBObject = {
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
-        fillerUpdate: false,
+        categoryPillUpdate: false,
 
         /**
          * Default keybinds should not set "code" as that's gonna be different based on the user's locale. They should also only use EITHER ctrl OR alt modifiers (or none).
@@ -402,6 +405,9 @@ function fetchConfig(): Promise<void> {
 }
 
 function migrateOldFormats(config: SBConfig) {
+    if (config["fillerUpdate"] !== undefined) {
+        chrome.storage.sync.remove("fillerUpdate");
+    }
     if (config["highlightCategoryAdded"] !== undefined) {
         chrome.storage.sync.remove("highlightCategoryAdded");
     }
@@ -464,6 +470,11 @@ function migrateOldFormats(config: SBConfig) {
     }
     if (config["previousVideoID"] !== undefined) {
         chrome.storage.sync.remove("previousVideoID");
+    }
+
+    // populate invidiousInstances with new instances if 3p support is **DISABLED**
+    if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
+        config["invidiousInstances"] = invidiousList;
     }
 }
 

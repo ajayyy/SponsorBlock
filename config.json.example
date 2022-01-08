@@ -4,8 +4,8 @@
     "serverAddressComment": "This specifies the default SponsorBlock server to connect to",
     "categoryList": ["sponsor", "selfpromo", "interaction", "poi_highlight", "intro", "outro", "preview", "filler", "music_offtopic"],
     "categorySupport": {
-        "sponsor": ["skip", "mute"],
-        "selfpromo": ["skip", "mute"],
+        "sponsor": ["skip", "mute", "full"],
+        "selfpromo": ["skip", "mute", "full"],
         "interaction": ["skip", "mute"],
         "intro": ["skip", "mute"],
         "outro": ["skip", "mute"],

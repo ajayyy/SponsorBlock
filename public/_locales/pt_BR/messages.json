@@ -837,5 +837,13 @@
     },
     "fillerNewFeature": {
         "message": "Novo! Pule tangentes e piadas com a categoria filler. Ative em opções"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }

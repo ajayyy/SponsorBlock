@@ -73,7 +73,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                 idSuffix={this.state.idSuffix}
                 ref={this.noticeRef}
                 closeListener={this.cancel.bind(this)}
-                zIndex={50000}>
+                zIndex={5000}>
 
                 {/* Text Boxes */}
                 {this.getMessageBoxes()}
@@ -123,7 +123,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
             const timeRef = React.createRef<SponsorTimeEditComponent>();
 
             elements.push(
-                <SponsorTimeEditComponent key={i}
+                <SponsorTimeEditComponent key={sponsorTimes[i].UUID}
                     idSuffix={this.state.idSuffix + i}
                     index={i}
                     contentContainer={this.props.contentContainer}

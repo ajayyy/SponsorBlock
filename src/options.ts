@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import Config from "./config";
 import * as CompileConfig from "../config.json";
+import * as invidiousList from "../ci/invidiouslist.json";
 
 // Make the config public for debugging purposes
 window.SB = Config;
@@ -342,10 +343,9 @@ function updateDisplayElement(element: HTMLElement) {
     switch (displayOption) {
         case "invidiousInstances": {
             element.innerText = displayText.join(', ');
-            const defaults = Config.defaults[displayOption];
-            let allEquals = displayText.length == defaults.length;
-            for (let i = 0; i < defaults.length && allEquals; i++) {
-                if (displayText[i] != defaults[i])
+            let allEquals = displayText.length == invidiousList.length;
+            for (let i = 0; i < invidiousList.length && allEquals; i++) {
+                if (displayText[i] != invidiousList[i])
                     allEquals = false;
             }
             if (!allEquals) {
@@ -404,8 +404,8 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
 
     resetButton.addEventListener("click", function() {
         if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
-            // Set to a clone of the default
-            Config.config[option] = Config.defaults[option].slice(0);
+            // Set to CI populated list
+            Config.config[option] = invidiousList;
             resetButton.classList.add("hidden");
         }
     });
@@ -504,15 +504,17 @@ function activatePrivateTextChange(element: HTMLElement) {
     // See if anything extra must be done
     switch (option) {
         case "userID":
-            utils.asyncRequestToServer("GET", "/api/userInfo", {
-                userID: Config.config[option],
-                values: ["warnings", "banned"]
-            }).then((result) => {
-                const userInfo = JSON.parse(result.responseText);
-                if (userInfo.warnings > 0 || userInfo.banned) {
-                    setButton.classList.add("hidden");
-                }
-            });
+            if (Config.config[option]) {
+                utils.asyncRequestToServer("GET", "/api/userInfo", {
+                    userID: Config.config[option],
+                    values: ["warnings", "banned"]
+                }).then((result) => {
+                    const userInfo = JSON.parse(result.responseText);
+                    if (userInfo.warnings > 0 || userInfo.banned) {
+                        setButton.classList.add("hidden");
+                    }
+                });
+            }
 
             break;
     }

@@ -563,6 +563,15 @@
     "category_preview_description": {
         "message": "Szybkie podsumowanie poprzednich odcinków lub podgląd tego, co pojawia się później w bieżącym filmie. Dotyczy zmontowanych klipów, a nie ustnych podsumowań."
     },
+    "category_filler": {
+        "message": "Filtr nietematyczny"
+    },
+    "category_filler_description": {
+        "message": "Sceny nietematyczne dodawane tylko dla wypełniacza lub humoru, które nie są wymagane do zrozumienia głównej treści wideo. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
+    },
+    "category_filler_short": {
+        "message": "Wypełniacz"
+    },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
     },
@@ -825,5 +834,16 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Użyj scroll'a myszy po najechaniu nad pole edycji, aby szybko dostosować czas. Kombinacje z ctrl'em i shift'em mogą być użyte, aby doszlifować zmiany."
+    },
+    "fillerNewFeature": {
+        "message": "Nowość! Pomiń nietematyczne sceny i żarty z kategorią wypełnienia. Włącz w opcjach"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }

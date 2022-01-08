@@ -61,3 +61,8 @@ export type MessageResponse =
     | IsChannelWhitelistedResponse
     | Record<string, never>;
 
+export interface VoteResponse {
+    successType: number;
+    statusCode: number;
+    responseText: string;
+}

@@ -816,5 +816,13 @@
     },
     "fillerNewFeature": {
         "message": "Uus! Jäta täitesisu ja naljad vahele täitesisu kategooriaga. Luba valikutes"
+    },
+    "dayAbbreviation": {
+        "message": "p",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "t",
+        "description": "100h"
     }
 }
