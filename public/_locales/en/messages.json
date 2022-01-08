@@ -846,35 +846,35 @@
         "message": "h",
         "description": "100h"
     },
-    "optionsTabCategories" : {
+    "optionsTabCategories": {
         "message": "Categories",
         "description": "Appears in Options as a tab header for setting up categories. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
-    "optionsTabBehavior" : {
+    "optionsTabBehavior": {
         "message": "Behavior",
         "description": "Appears in Options as a tab header for options related to the general behavior of the extension. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
-    "optionsTabInterface" : {
+    "optionsTabInterface": {
         "message": "Interface",
         "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
-    "optionsTabKeyBinds" : {
+    "optionsTabKeyBinds": {
         "message": "Key Bindings",
         "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
-    "optionsTabPrivacy" : {
+    "optionsTabPrivacy": {
         "message": "Privacy",
         "description": "Appears in Options as a tab header for options related to privacy (data stored/sent to server). To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
-    "optionsTabBackup" : {
+    "optionsTabBackup": {
         "message": "Backup/Restore",
         "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
-    "optionsTabAdvanced" : {
+    "optionsTabAdvanced": {
         "message": "Advanced",
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
-    "noticeVisibilityLabel" : {
+    "noticeVisibilityLabel": {
         "message": "Skip notice appearance",
         "description": "Option label"
     }

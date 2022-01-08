@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Link to specific tabs by using their ID in the URL like: options.html#keybinds -->
 
 <head>
   <title>Options - SponsorBlock</title>
@@ -23,31 +24,31 @@
 				<div id="version"></div>
 			</div>
 
-			<div class="tab-heading" data-for="segment-options">
+			<div class="tab-heading" data-for="segments">
 				__MSG_optionsTabCategories__
 			</div>
 
-			<div class="tab-heading" data-for="logic-options">
+			<div class="tab-heading" data-for="behavior">
 				__MSG_optionsTabBehavior__
 			</div>
 
-			<div class="tab-heading" data-for="interface-options">
+			<div class="tab-heading" data-for="interface">
 				__MSG_optionsTabInterface__
 			</div>
 
-			<div class="tab-heading" data-for="keybind-options">
+			<div class="tab-heading" data-for="keybinds">
 				__MSG_optionsTabKeyBinds__
 			</div>
 
-			<div class="tab-heading" data-for="privacy-options">
+			<div class="tab-heading" data-for="privacy">
 				__MSG_optionsTabPrivacy__
 			</div>
 
-			<div class="tab-heading" data-for="import-options">
+			<div class="tab-heading" data-for="import">
 				__MSG_optionsTabBackup__
 			</div>
 
-			<div class="tab-heading" data-for="advanced-options">
+			<div class="tab-heading" data-for="advanced">
 				__MSG_optionsTabAdvanced__
 			</div>
 
@@ -62,7 +63,7 @@
 
 		<div id="options" class="hidden">
 
-			<div id="segment-options" class="option-group hidden">
+			<div id="segments" class="option-group hidden">
 
 				<div id="category-type" data-type="react-CategoryChooserComponent">
 
@@ -70,7 +71,7 @@
 
 			</div>
 
-			<div id="logic-options" class="option-group hidden">
+			<div id="behavior" class="option-group hidden">
 
 				<div data-type="toggle" data-sync="autoSkipOnMusicVideos">
 					<div class="switch-container">
@@ -135,7 +136,7 @@
 
 			</div>
 
-			<div id="interface-options" class="option-group hidden">
+			<div id="interface" class="option-group hidden">
 
 				<div data-type="number-change" data-sync="skipNoticeDuration">
 					<label class="number-container">
@@ -286,7 +287,7 @@
 
 			</div>
 
-			<div id="keybind-options" class="option-group hidden">
+			<div id="keybinds" class="option-group hidden">
 
 				<div data-type="keybind-change" data-sync="skipKeybind">
 					<div class="option-button trigger-button">
@@ -340,7 +341,7 @@
 
 			</div>
 
-			<div id="privacy-options" class="option-group hidden">
+			<div id="privacy" class="option-group hidden">
 
 				<div data-type="toggle" data-sync="trackViewCount">
 					<div class="switch-container">
@@ -370,7 +371,7 @@
 
 			</div>
 
-			<div id="import-options" class="option-group hidden">
+			<div id="import" class="option-group hidden">
 
 				<div data-type="private-text-change" data-sync="userID" data-confirm-message="userIDChangeWarning">
 					<div class="option-button trigger-button">
@@ -406,7 +407,7 @@
 
 			</div>
 
-			<div id="advanced-options" class="option-group hidden">
+			<div id="advanced" class="option-group hidden">
 
 				<div id="support-invidious" data-type="toggle" data-sync="supportInvidious" data-no-safari="true">
 					<div class="switch-container">
@@ -423,7 +424,7 @@
 					<div class="small-description">__MSG_supportOtherSitesDescription__ </div>
 				</div>
 	
-				<div data-type="private-text-change" data-sync="invidiousInstances" data-no-safari="true">
+				<div data-type="private-text-change" data-sync="invidiousInstances" data-no-safari="true" data-dependent-on="supportInvidious">
 					<div class="option-button trigger-button">
 						__MSG_addInvidiousInstance__
 					</div>

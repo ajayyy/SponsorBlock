@@ -21,7 +21,7 @@ body {
 .medium-description, .switch-container, .optionLabel, .categoryTableElement {
     color: white;
 }
-.small-description, p,li {
+.small-description, p, li, span, div {
     color: #dfdfdf;
 }
 .option-button.disabled {
@@ -64,7 +64,7 @@ h1,h2,h3,h4,h5,h6 {
     .medium-description, .switch-container, .optionLabel, .categoryTableElement {
         color: black;
     }
-    .small-description, p,li {
+    .small-description, p, li, span, div {
         color: #262626;
     }
     .option-button.disabled {
@@ -168,6 +168,10 @@ input[type='number'] {
 
 .bold {
     font-weight: bold;
+}
+
+.hiding {
+    opacity: 0;
 }
 
 .hidden {
@@ -546,6 +550,7 @@ svg {
     }
     #version {
         font-size: 10px;
+        transform: translate(-50px, -5px);
     }
     .sticky #navigation {
         position: fixed;

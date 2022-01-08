@@ -45,7 +45,7 @@ async function init() {
             isDependentOnReversed = dependentOn.getAttribute("data-toggle-type") === "reverse" || optionsElements[i].getAttribute("data-dependent-on-inverted") === "true";
 
         if (await shouldHideOption(optionsElements[i]) || (dependentOn && (isDependentOnReversed ? Config.config[dependentOnName] : !Config.config[dependentOnName]))) {
-            optionsElements[i].classList.add("hidden");
+            optionsElements[i].classList.add("hidden", "hiding");
             if (!dependentOn)
                 continue;
         }
@@ -109,8 +109,10 @@ async function init() {
                         const disableWhenChecked = dependents[j].getAttribute("data-dependent-on-inverted") === "true";
                         if (!await shouldHideOption(dependents[j]) && (!disableWhenChecked && checkbox.checked || disableWhenChecked && !checkbox.checked)) {
                             dependents[j].classList.remove("hidden");
+                            setTimeout(() => dependents[j].classList.remove("hiding"), 1);
                         } else {
-                            dependents[j].classList.add("hidden");
+                            dependents[j].classList.add("hiding");
+                            setTimeout(() => dependents[j].classList.add("hidden"), 400);
                         }
                     }
                 });
@@ -240,10 +242,10 @@ async function init() {
         const substr = location.hash.substring(1);
         let menuItem = document.querySelector(`[data-for='${substr}']`);
         if (menuItem == null)
-            menuItem = document.querySelector(`[data-for='segment-options']`);
+            menuItem = document.querySelector(`[data-for='segments']`);
         menuItem.classList.add("selected");
     } else {
-        document.querySelector(`[data-for='segment-options']`).classList.add("selected");
+        document.querySelector(`[data-for='segments']`).classList.add("selected");
     }
 
     const tabElements = document.getElementsByClassName("tab-heading");
@@ -328,13 +330,20 @@ function updateDisplayElement(element: HTMLElement) {
 
     // See if anything extra must be run
     switch (displayOption) {
-        case "invidiousInstances":
+        case "invidiousInstances": {
             element.innerText = displayText.join(', ');
-            if (displayText.length > 1) {
+            const defaults = Config.defaults[displayOption];
+            let allEquals = displayText.length == defaults.length;
+            for (let i = 0; i < defaults.length && allEquals; i++) {
+                if (displayText[i] != defaults[i])
+                    allEquals = false;
+            }
+            if (!allEquals) {
                 const resetButton = element.parentElement.querySelector(".invidious-instance-reset");
                 resetButton.classList.remove("hidden");
             }
             break;
+        }
     }
 }
 
