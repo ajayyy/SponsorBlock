@@ -7,7 +7,7 @@ html {
 body {
     background-color: #333333;
 }
-#navigation {
+#navigation, #keybind-dialog .dialog {
     background-color: #181818;
     color: white;
 }
@@ -41,6 +41,9 @@ h1,h2,h3,h4,h5,h6 {
 .categoryTableElement td {
     border-top: 1px solid #484848;
 }
+.key, #keybind-dialog .dialog {
+    border-color: white;
+}
 
 /* Light mode, if requested */
 @media only screen and (prefers-color-scheme: light) {
@@ -50,7 +53,7 @@ h1,h2,h3,h4,h5,h6 {
     body {
         background-color: #f9f9f9;
     }
-    #navigation {
+    #navigation, #keybind-dialog .dialog {
         background-color: #dbdbdb;
         color: #212121;
     }
@@ -83,6 +86,9 @@ h1,h2,h3,h4,h5,h6 {
     }
     .categoryTableElement td {
         border-top: 1px solid #d9d9d9;
+    }
+    .key, #keybind-dialog .dialog {
+        border-color: black;
     }
 }
 
@@ -140,7 +146,7 @@ html, body {
     padding: 20px 0;
 }
 
-.option-group > div:last-child {
+.option-group > div:last-child, .option-group > #keybind-dialog {
     border-bottom: inherit;
 }
 
@@ -148,8 +154,92 @@ html, body {
     font-size: 14px;
 }
 
+div[data-type="keybind-change"] .optionLabel {
+    display: inline-block;
+    min-width: 150px;
+    margin-right: 20px;
+}
+
 input[type='number'] {
     width: 50px;
+}
+
+.key {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    display: inline-block;
+    min-width: 33px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.unbound, .key {
+    padding: 8px;
+}
+
+.keybind-buttons {
+    border-radius: 5px;
+    padding: 5px 3px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.keybind-buttons:hover {
+    background-color: #00000080;
+}
+
+.keybind-buttons > div, .keybind-buttons > span {
+    margin: 0 2px;
+}
+
+#keybind-dialog .dialog {
+    position: fixed;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 15px;
+    max-height: 100vh;
+    width: 400px;
+    overflow-x: auto;
+    z-index: 100;
+    padding: 15px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#change-keybind-buttons {
+    float: right;
+}
+
+#change-keybind-buttons > .option-button {
+    margin: 0 2px;
+}
+
+#change-keybind-settings {
+    margin: 15px 15px 30px;
+}
+
+#change-keybind-settings .key {
+    vertical-align: top;
+    margin: 15px 0 0 40px;
+    height: 34px;
+}
+
+#change-keybind-error {
+    margin-bottom: 15px;
+    color: red;
+    font-weight: bold;
+}
+
+.blocker {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 90;
+    background-color: #00000080;
 }
 
 .low-profile {

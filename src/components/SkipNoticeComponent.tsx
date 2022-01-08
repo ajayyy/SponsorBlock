@@ -4,11 +4,11 @@ import Config from "../config"
 import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
-import SubmissionNotice from "../render/SubmissionNotice";
 import Utils from "../utils";
 const utils = new Utils();
 
 import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
+import { keybindToString } from "../utils/configUtils";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
@@ -367,7 +367,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                             className="sponsorSkipObject sponsorSkipNoticeButton"
                             style={style}
                             onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
-                        {this.state.skipButtonText + (this.state.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "")}
+                        {this.state.skipButtonText + (this.state.showKeybindHint ? " (" + keybindToString(Config.config.skipKeybind) + ")" : "")}
                     </button>
                 </span>
             );

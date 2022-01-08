@@ -1,3 +1,6 @@
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+
 import Config from "./config";
 import * as CompileConfig from "../config.json";
 
@@ -6,6 +9,7 @@ window.SB = Config;
 
 import Utils from "./utils";
 import CategoryChooser from "./render/CategoryChooser";
+import KeybindComponent from "./components/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
 const utils = new Utils();
 
@@ -193,9 +197,7 @@ async function init() {
                 break;
             }
             case "keybind-change": {
-                const keybindButton = optionsElements[i].querySelector(".trigger-button");
-                keybindButton.addEventListener("click", () => activateKeybindChange(<HTMLElement> optionsElements[i]));
-
+                ReactDOM.render(React.createElement(KeybindComponent, {option: option}), optionsElements[i].querySelector("div"));
                 break;
             }
             case "display": {
@@ -446,91 +448,6 @@ async function invidiousOnClick(checkbox: HTMLInputElement, option: string): Pro
             utils.removeExtraSiteRegistration();
         }
     });
-}
-
-/**
- * Will trigger the container to ask the user for a keybind.
- * 
- * @param element 
- */
-function activateKeybindChange(element: HTMLElement) {
-    const button = element.querySelector(".trigger-button");
-    if (button.classList.contains("disabled")) return;
-
-    button.classList.add("disabled");
-
-    const option = element.getAttribute("data-sync");
-
-    const currentlySet = Config.config[option] !== null ? chrome.i18n.getMessage("keybindCurrentlySet") : "";
-    
-    const status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
-    status.innerText = chrome.i18n.getMessage("keybindDescription") + currentlySet;
-
-    if (Config.config[option] !== null) {
-        const statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
-        statusKey.innerText = Config.config[option];
-    }
-
-    element.querySelector(".option-hidden-section").classList.remove("hidden");
-    
-    document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true}); 
-}
-
-/**
- * Called when a key is pressed in an activiated keybind change option.
- * 
- * @param element 
- * @param e
- */
-function keybindKeyPressed(element: HTMLElement, e: KeyboardEvent) {
-    const key = e.key;
-
-    if (["Shift", "Control", "Meta", "Alt", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Tab"].indexOf(key) !== -1) {
-
-        // Wait for more
-        document.addEventListener("keydown", (e) => keybindKeyPressed(element, e), {once: true});
-    } else {
-        const button: HTMLElement = element.querySelector(".trigger-button");
-        const option = element.getAttribute("data-sync");
-
-        // Make sure keybind isn't used by the other listener
-        // TODO: If other keybindings are going to be added, we need a better way to find the other keys used.
-        const otherKeybind = (option === "startSponsorKeybind") ? Config.config['submitKeybind'] : Config.config['startSponsorKeybind'];
-        if (key === otherKeybind) {
-            closeKeybindOption(element, button);
-
-            alert(chrome.i18n.getMessage("theKey") + " " + key + " " + chrome.i18n.getMessage("keyAlreadyUsed"));
-            return;
-        }
-
-        // cancel setting a keybind
-        if (key === "Escape") {
-            closeKeybindOption(element, button);
-
-            return;
-        }
-        
-        Config.config[option] = key;
-
-        const status = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status");
-        status.innerText = chrome.i18n.getMessage("keybindDescriptionComplete");
-
-        const statusKey = <HTMLElement> element.querySelector(".option-hidden-section > .keybind-status-key");
-        statusKey.innerText = key;
-
-        button.classList.remove("disabled");
-    }
-}
-
-/**
- * Closes the menu for editing the keybind
- * 
- * @param element 
- * @param button 
- */
-function closeKeybindOption(element: HTMLElement, button: HTMLElement) {
-    element.querySelector(".option-hidden-section").classList.add("hidden");
-    button.classList.remove("disabled");
 }
 
 /**
