@@ -746,7 +746,7 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "Ez a szegmens nagy. Ha az egész videó egy témáról szól, akkor válts \"Átugrás\"-ról \"Teljes videó\"-ra. További információkért tekintsd meg az irányelveket."
+        "message": "Ez a szegmens nagy. Ha az egész videó egy témáról szól, akkor válts \"Átugrás\"-ról \"Teljes videó\"-ra. További információkért lásd az irányelveket."
     },
     "categoryPillTitleText": {
         "message": "Az egész videó ezzel a kategóriával van megjelölve és túl szorosan kapcsolódik hozzá, hogy le lehessen választani"
