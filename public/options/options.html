@@ -355,8 +355,19 @@
 				</div>
 	
 				<div data-type="private-text-change" data-sync="*" data-confirm-message="exportOptionsWarning">
-					<div class="option-button trigger-button">
-						__MSG_exportOptions__
+					<h2>__MSG_exportOptions__</h2>
+					
+					<div>
+						<div class="option-button trigger-button inline">
+							__MSG_exportOptionsCopy__
+						</div>
+						<div class="option-button download-button inline">
+							__MSG_exportOptionsDownload__
+						</div>
+						<label for="importOptions" class="option-button inline">
+							__MSG_exportOptionsUpload__
+						</label>
+						<input id="importOptions" type="file" class="upload-button hidden" />
 					</div>
 	
 					<div class="small-description">__MSG_whatExportOptions__</div>

@@ -176,6 +176,14 @@ async function init() {
                 const button = optionsElements[i].querySelector(".trigger-button");
                 button.addEventListener("click", () => activatePrivateTextChange(<HTMLElement> optionsElements[i]));
 
+                if (option == "*")  {
+                    const downloadButton = optionsElements[i].querySelector(".download-button");
+                    downloadButton.addEventListener("click", downloadConfig);
+
+                    const uploadButton = optionsElements[i].querySelector(".upload-button");
+                    uploadButton.addEventListener("change", (e) => uploadConfig(e));
+                }
+
                 const privateTextChangeOption = optionsElements[i].getAttribute("data-sync");
                 // See if anything extra must be done
                 switch (privateTextChangeOption) {
@@ -490,38 +498,7 @@ function activatePrivateTextChange(element: HTMLElement) {
     
     const setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", async () => {
-        const confirmMessage = element.getAttribute("data-confirm-message");
-
-        if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
-            
-            // See if anything extra must be done
-            switch (option) {
-                case "*":
-                    try {
-                        const newConfig = JSON.parse(textBox.value);
-                        for (const key in newConfig) {
-                            Config.config[key] = newConfig[key];
-                        }
-                        Config.convertJSON();
-
-                        if (newConfig.supportInvidious) {
-                            const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > div > label > input");
-                            
-                            checkbox.checked = true;
-                            await invidiousOnClick(checkbox, "supportInvidious");
-                        }
-
-                        window.location.reload();
-                        
-                    } catch (e) {
-                        alert(chrome.i18n.getMessage("incorrectlyFormattedOptions"));
-                    }
-
-                    break;
-                default:
-                    Config.config[option] = textBox.value;
-            }
-        }
+        setTextOption(option, element, textBox.value);
     });
 
     // See if anything extra must be done
@@ -541,6 +518,77 @@ function activatePrivateTextChange(element: HTMLElement) {
     }
 
     element.querySelector(".option-hidden-section").classList.remove("hidden");
+}
+
+/**
+ * Function to run when a textbox change is submitted
+ * 
+ * @param option data-sync value
+ * @param element main container div
+ * @param value new text
+ * @param callbackOnError function to run if confirmMessage was denied
+ */
+async function setTextOption(option: string, element: HTMLElement, value: string, callbackOnError?: () => void) {
+    const confirmMessage = element.getAttribute("data-confirm-message");
+
+    if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
+        
+        // See if anything extra must be done
+        switch (option) {
+            case "*":
+                try {
+                    const newConfig = JSON.parse(value);
+                    for (const key in newConfig) {
+                        Config.config[key] = newConfig[key];
+                    }
+                    Config.convertJSON();
+
+                    if (newConfig.supportInvidious) {
+                        const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > div > label > input");
+                        
+                        checkbox.checked = true;
+                        await invidiousOnClick(checkbox, "supportInvidious");
+                    }
+
+                    window.location.reload();
+                    
+                } catch (e) {
+                    alert(chrome.i18n.getMessage("incorrectlyFormattedOptions"));
+                }
+
+                break;
+            default:
+                Config.config[option] = value;
+        }
+    } else {
+        if (typeof callbackOnError == "function")
+            callbackOnError();
+    }
+}
+
+function downloadConfig() {
+    const file = document.createElement("a");
+    const jsonData = JSON.parse(JSON.stringify(Config.localConfig));
+    jsonData.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
+    file.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonData)));
+    file.setAttribute("download", "SponsorBlockConfig.json");
+    document.body.append(file);
+    file.click();
+    file.remove();
+}
+
+function uploadConfig(e) {
+    if (e.target.files.length == 1) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        const element = document.querySelector("[data-sync='*']") as HTMLElement;
+        reader.onload = function(ev) {
+            setTextOption("*", element, ev.target.result as string, () => {
+                e.target.value = null;
+            });
+        };
+        reader.readAsText(file);
+    }
 }
 
 /**

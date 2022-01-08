@@ -460,6 +460,15 @@
     "exportOptions": {
         "message": "Import/Export All Options"
     },
+    "exportOptionsCopy": {
+        "message": "Edit/copy"
+    },
+    "exportOptionsDownload": {
+        "message": "Save to file"
+    },
+    "exportOptionsUpload": {
+        "message": "Load from file"
+    },
     "whatExportOptions": {
         "message": "This is your entire configuration in JSON. This includes your userID, so be sure to share this wisely."
     },
