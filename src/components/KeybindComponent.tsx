@@ -53,9 +53,9 @@ class KeybindComponent extends React.Component<KeybindProps, KeybindState> {
     }
 
     openEditDialog(): void {
-        dialog = document.createElement("div");
+        dialog = parent.document.createElement("div");
         dialog.id = "keybind-dialog";
-        document.body.prepend(dialog);
+        parent.document.body.prepend(dialog);
         ReactDOM.render(<KeybindDialogComponent option={this.props.option} closeListener={(updateWith) => this.closeEditDialog(updateWith)} />, dialog);
     }
 

@@ -16,7 +16,7 @@
 
 	<div id="options-container">
 
-		<div id="navigation" class="center">
+		<div id="menubar" class="center">
 
 			<div id="title" class="titleBar">
 				<img src="../icons/LogoSponsorBlocker256px.png" class="profilepic" alt="SponsorBlock logo"/>
@@ -24,54 +24,46 @@
 				<div id="version"></div>
 			</div>
 
-			<div class="tab-heading" data-for="segments">
-				__MSG_optionsTabCategories__
-			</div>
+			<div id="navigation">
+				<div class="tab-heading" data-for="behavior">
+					__MSG_optionsTabBehavior__
+				</div>
 
-			<div class="tab-heading" data-for="behavior">
-				__MSG_optionsTabBehavior__
-			</div>
+				<div class="tab-heading" data-for="interface">
+					__MSG_optionsTabInterface__
+				</div>
 
-			<div class="tab-heading" data-for="interface">
-				__MSG_optionsTabInterface__
-			</div>
+				<div class="tab-heading" data-for="keybinds">
+					__MSG_optionsTabKeyBinds__
+				</div>
 
-			<div class="tab-heading" data-for="keybinds">
-				__MSG_optionsTabKeyBinds__
-			</div>
+				<div class="tab-heading" data-for="import">
+					__MSG_optionsTabBackup__
+				</div>
 
-			<div class="tab-heading" data-for="privacy">
-				__MSG_optionsTabPrivacy__
-			</div>
+				<div class="tab-heading" data-for="advanced">
+					__MSG_optionsTabAdvanced__
+				</div>
+		</div>
 
-			<div class="tab-heading" data-for="import">
-				__MSG_optionsTabBackup__
-			</div>
-
-			<div class="tab-heading" data-for="advanced">
-				__MSG_optionsTabAdvanced__
-			</div>
-
-			<p id="createdBy" class="titleBar">
-				<img src="../icons/newprofilepic.jpg" height="30" class="profilepiccircle" alt="profile picture of creator"/>
-				__MSG_createdBy__ 
-				<a href="https://ajay.app">Ajay Ramachandran</a> 
+			<div id="createdBy" class="titleBar">
+				<div>
+					<img src="../icons/newprofilepic.jpg" height="30" class="profilepiccircle" alt="profile picture of creator"/>
+					__MSG_createdBy__ 
+					<a href="https://ajay.app">Ajay Ramachandran</a> 
+				</div>
 				<a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">(__MSG_Donate__)</a>
-			</p>
+			</div>
 
 		</div>
 
-		<div id="options" class="hidden">
+		<div id="options">
 
-			<div id="segments" class="option-group hidden">
+			<div id="behavior" class="option-group hidden">
 
 				<div id="category-type" data-type="react-CategoryChooserComponent">
 
 				</div>
-
-			</div>
-
-			<div id="behavior" class="option-group hidden">
 
 				<div data-type="toggle" data-sync="autoSkipOnMusicVideos">
 					<div class="switch-container">
@@ -318,36 +310,6 @@
 
 			</div>
 
-			<div id="privacy" class="option-group hidden">
-
-				<div data-type="toggle" data-sync="trackViewCount">
-					<div class="switch-container">
-						<label class="switch">
-							<input id="trackViewCount" type="checkbox" checked>
-							<span class="slider round"></span>
-						</label>
-						<label class="switch-label" for="trackViewCount">
-							__MSG_enableViewTracking__
-						</label>
-					</div>
-	
-					<div class="small-description">__MSG_whatViewTracking__</div>
-				</div>
-	
-				<div data-type="toggle" data-sync="trackViewCountInPrivate" data-dependent-on="trackViewCount" data-private-only="true">
-					<div class="switch-container">
-						<label class="switch">
-							<input id="trackViewCountInPrivate" type="checkbox" checked>
-							<span class="slider round"></span>
-						</label>
-						<label class="switch-label" for="trackViewCountInPrivate">
-							__MSG_enableViewTrackingInPrivate__
-						</label>
-					</div>
-				</div>
-
-			</div>
-
 			<div id="import" class="option-group hidden">
 
 				<div data-type="private-text-change" data-sync="userID" data-confirm-message="userIDChangeWarning">
@@ -437,6 +399,32 @@
 						<div class="option-button invidious-instance-reset spacing hidden">
 							__MSG_resetInvidiousInstance__
 						</div>
+					</div>
+				</div>
+
+				<div data-type="toggle" data-sync="trackViewCount">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="trackViewCount" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="trackViewCount">
+							__MSG_enableViewTracking__
+						</label>
+					</div>
+	
+					<div class="small-description">__MSG_whatViewTracking__</div>
+				</div>
+	
+				<div data-type="toggle" data-sync="trackViewCountInPrivate" data-dependent-on="trackViewCount" data-private-only="true">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="trackViewCountInPrivate" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="trackViewCountInPrivate">
+							__MSG_enableViewTrackingInPrivate__
+						</label>
 					</div>
 				</div>
 	

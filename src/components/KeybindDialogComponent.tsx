@@ -76,10 +76,12 @@ class KeybindDialogComponent extends React.Component<KeybindDialogProps, Keybind
     }
 
     componentDidMount(): void {
+        parent.document.addEventListener("keydown", this.keybindKeyPressed);
         document.addEventListener("keydown", this.keybindKeyPressed);
     }
 
     componentWillUnmount(): void {
+        parent.document.removeEventListener("keydown", this.keybindKeyPressed);
         document.removeEventListener("keydown", this.keybindKeyPressed);
     }
 

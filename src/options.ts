@@ -13,19 +13,41 @@ import CategoryChooser from "./render/CategoryChooser";
 import KeybindComponent from "./components/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
 const utils = new Utils();
+let embed = false;
 
 window.addEventListener('DOMContentLoaded', init);
 
 async function init() {
     utils.localizeHtmlPage();
 
+    //switch to light mode when requested, except for Chrome on Linux or older Windows/Mac versions, where Chrome doesn't support themes
+    if (window.matchMedia("(prefers-color-scheme: light)")?.matches &&
+            !(navigator.vendor == "Google Inc." && (navigator.userAgent.includes("Linux") ||
+                                                    navigator.userAgent.includes("Windows NT 6") ||
+                                                    navigator.userAgent.includes("Mac OS X") && navigator.userAgent.match(/Mac OS X [^)]+/)[0] < "Mac OS X 10_14")))
+        document.documentElement.setAttribute("data-theme", "light");
+
+    // selected tab
+    if (location.hash != "") {
+        const substr = location.hash.substring(1);
+        let menuItem = document.querySelector(`[data-for='${substr}']`);
+        if (menuItem == null)
+            menuItem = document.querySelector(`[data-for='behavior']`);
+        menuItem.classList.add("selected");
+    } else {
+        document.querySelector(`[data-for='behavior']`).classList.add("selected");
+    }
+
+    document.getElementById("version").innerText = "v. " + chrome.runtime.getManifest().version;
+
     // Remove header if needed
     if (window.location.hash === "#embed") {
+        embed = true;
         for (const element of document.getElementsByClassName("titleBar")) {
             element.classList.add("hidden");
         }
-
         document.getElementById("options").classList.add("embed");
+        createStickyHeader();
     }
 
     if (!Config.configListeners.includes(optionsConfigUpdateListener)) {
@@ -35,7 +57,7 @@ async function init() {
     await utils.wait(() => Config.config !== null);
 
     if (!showDonationLink()) {
-        document.getElementById("sbDonate").style.display = "none";
+        document.getElementById("sbDonate").classList.add("hidden");
     }
 
     // Set all of the toggle options to the correct option
@@ -102,9 +124,9 @@ async function init() {
                             break;
                         case "showDonationLink":
                             if (checkbox.checked)
-                                document.getElementById("sbDonate").style.display = "none";
+                                document.getElementById("sbDonate").classList.add("hidden");
                             else
-                                document.getElementById("sbDonate").style.display = "unset";
+                                document.getElementById("sbDonate").classList.remove("hidden");
                             break;
                     }
 
@@ -249,16 +271,6 @@ async function init() {
     }
 
     // Tab interaction
-    if (location.hash != "") {
-        const substr = location.hash.substring(1);
-        let menuItem = document.querySelector(`[data-for='${substr}']`);
-        if (menuItem == null)
-            menuItem = document.querySelector(`[data-for='segments']`);
-        menuItem.classList.add("selected");
-    } else {
-        document.querySelector(`[data-for='segments']`).classList.add("selected");
-    }
-
     const tabElements = document.getElementsByClassName("tab-heading");
     for (let i = 0; i < tabElements.length; i++) {
         const tabFor = tabElements[i].getAttribute("data-for");
@@ -279,11 +291,8 @@ async function init() {
         });
     }
 
-    document.getElementById("version").innerText = "v. " + chrome.runtime.getManifest().version;
-
     window.onscroll = () => createStickyHeader();
 
-    optionsContainer.classList.remove("hidden");
     optionsContainer.classList.add("animated");
 }
 
@@ -291,7 +300,7 @@ function createStickyHeader() {
     const container = document.getElementById("options-container");
     const options = document.getElementById("options");
 
-    if (window.pageYOffset > 115) {
+    if (window.pageYOffset > 90 && (window.innerHeight <= 770 || window.innerWidth <= 1200) || embed) {
         if (!container.classList.contains("sticky")) {
             options.style.marginTop = options.offsetTop.toString()+"px";
             container.classList.add("sticky");

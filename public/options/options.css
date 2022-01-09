@@ -1,101 +1,59 @@
 /* Options page CSS */
 
-/* Dark mode CSS, this is the default if unsupported */
-html {
-    color-scheme: dark;
-}
-body {
-    background-color: #333333;
-}
-#navigation, #keybind-dialog .dialog {
-    background-color: #181818;
-    color: white;
-}
-.tab-heading {
-    background-color: #242424;
-    color: white;
-}
-.tab-heading:hover {
-    outline: 3px solid white;
-}
-.medium-description, .switch-container, .optionLabel, .categoryTableElement {
-    color: white;
-}
-.small-description, p, li, span, div {
-    color: #dfdfdf;
-}
-.option-button.disabled {
-    background-color: #520000;
-    color: grey;
-}
-.slider {
-    background-color: #707070;
-}
-h1,h2,h3,h4,h5,h6 {
-    color: #dad8d8;
-}
-.option-group > div {
-    border-bottom: 1px solid #484848;
-    border-image: linear-gradient(to right, #484848, #00000000 80%)  1;
-}
-.categoryTableElement td {
-    border-top: 1px solid #484848;
-}
-.key, #keybind-dialog .dialog {
-    border-color: white;
+:root {
+    --color-scheme: dark;
+    --background: #333333;
+    --menu-background: #181818;
+    --menu-foreground: white;
+    --dialog-background: #181818;
+    --dialog-border: white;
+    --tab-color: #242424;
+    --tab-hover: white;
+    --description: #dfdfdf;
+    --disabled: #520000;
+    --slider: #707070;
+    --title: #dad8d8;
+    --border-color: #484848;
+    --black: black;
+    --white: white;
 }
 
-/* Light mode, if requested */
-@media only screen and (prefers-color-scheme: light) {
-    html {
-        color-scheme: light;
-    }
-    body {
-        background-color: #f9f9f9;
-    }
-    #navigation, #keybind-dialog .dialog {
-        background-color: #dbdbdb;
-        color: #212121;
-    }
-    .tab-heading {
-        background-color: #ababab;
-        color: black;
-    }
-    .tab-heading:hover {
-        outline: 3px solid #2e2e2e;
-    }
-    .medium-description, .switch-container, .optionLabel, .categoryTableElement {
-        color: black;
-    }
-    .small-description, p, li, span, div {
-        color: #262626;
-    }
-    .option-button.disabled {
-        background-color: #ffcaca;
-        color: grey;
-    }
-    .slider {
-        background-color: #bfbebe;
-    }
-    h1,h2,h3,h4,h5,h6 {
-        color: #707070;
-    }
-    .option-group > div {
-        border-bottom: 1px solid #d9d9d9;
-        border-image: linear-gradient(to right, #d9d9d9, #00000000 80%)  1;
-    }
-    .categoryTableElement td {
-        border-top: 1px solid #d9d9d9;
-    }
-    .key, #keybind-dialog .dialog {
-        border-color: black;
-    }
+[data-theme="light"] {
+    --color-scheme: light;
+    --background: #f9f9f9;
+    --menu-background: #dbdbdb;
+    --menu-foreground: #212121;
+    --dialog-background: #f9f9f9;
+    --dialog-border: #282828;
+    --tab-color: #ababab;
+    --tab-hover: #2e2e2e;
+    --description: #262626;
+    --disabled: #ffcaca;
+    --slider: #bfbebe;
+    --title: #707070;
+    --border-color: #d9d9d9;
+    --black: white;
+    --white: black;
+}
+
+.medium-description, .switch-container, .optionLabel, .categoryTableElement {
+    color: var(--white);
+}
+
+.small-description, p, li, span, div {
+    color: var(--description);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--title);
 }
 
 html, body {
+    color-scheme: var(--color-scheme);
     font-family: sans-serif;
     margin: 0;
     font-size: 14px;
+    background-color: var(--background);
 }
 
 * {
@@ -104,10 +62,9 @@ html, body {
 
 #options-container {
     display: flex;
-    justify-content: space-between;
 }
 
-#navigation {
+#menubar {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -117,12 +74,20 @@ html, body {
     border-radius: 15px;
     margin: 15px;
     z-index: 10;
+    background-color: var(--menu-background);
+    color: var(--menu-foreground);
+}
+
+#navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .tab-heading {
     font-size: 18px;
-    height: 50px;
-    line-height: 50px;
+    height: 55px;
+    line-height: 55px;
     width: 80%;
     margin: 0 auto;
     border-radius: 15px;
@@ -130,6 +95,12 @@ html, body {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    background-color: var(--tab-color);
+    color: var(--white);
+}
+
+.tab-heading:hover {
+    outline: 3px solid var(--tab-hover);
 }
 
 .tab-heading.selected {
@@ -144,6 +115,8 @@ html, body {
 .option-group > div {
     min-height: 50px;
     padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    border-image: linear-gradient(to right, var(--border-color), #00000000 80%)  1;
 }
 
 .option-group > div:last-child, .option-group > #keybind-dialog {
@@ -152,6 +125,7 @@ html, body {
 
 .optionLabel, #version {
     font-size: 14px;
+    height: 15px;
 }
 
 div[data-type="keybind-change"] .optionLabel {
@@ -172,6 +146,7 @@ input[type='number'] {
     min-width: 33px;
     text-align: center;
     font-weight: bold;
+    border-color: var(--white);
 }
 
 .unbound, .key {
@@ -186,7 +161,7 @@ input[type='number'] {
 }
 
 .keybind-buttons:hover {
-    background-color: #00000080;
+    background-color: #00000030;
 }
 
 .keybind-buttons > div, .keybind-buttons > span {
@@ -206,6 +181,8 @@ input[type='number'] {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    background-color: var(--dialog-background);
+    border-color: var(--dialog-border);
 }
 
 #change-keybind-buttons {
@@ -291,6 +268,7 @@ input[type='number'] {
 
 .categoryTableElement td {
     padding-top: 10px;
+    border-top: 1px solid var(--border-color);
 }
 
 .medium-description {
@@ -319,6 +297,8 @@ input[type='number'] {
 
 .option-button.disabled {
     cursor: default;
+    background-color: var(--disabled);
+    color: grey;
 }
 
 #options {
@@ -326,7 +306,7 @@ input[type='number'] {
     flex-basis: 80%;
     overflow: auto;
     text-align: left;
-    padding: 80px 15px 0 3%;
+    padding: 80px 15% 0 3%;
     box-sizing: border-box;
 
     transition: padding 0.3s;
@@ -378,6 +358,7 @@ input[type='number'] {
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: var(--slider);
 }
 
 .animated * {
@@ -452,9 +433,13 @@ input:checked + .slider:before {
 }
 
 #createdBy {
-    font-size: 14px;
     text-align: center;
-    margin-top: auto;
+    margin: auto 0 10px 0;
+    height: 50px;
+}
+
+#createdBy > * {
+    font-size: 14px;
 }
 
 #title {
@@ -463,7 +448,7 @@ input:checked + .slider:before {
   
     font-size: 40px;
   
-    padding: 20px;
+    padding: 40px 20px;
   
     text-decoration: none;
 }
@@ -600,19 +585,27 @@ svg {
 
 
 /* Handle smaller screensizes */
+@media only screen and (max-width: 1600px){
+    #options {
+        padding-right: 8%;
+    }
+}
+
 @media only screen and (max-height: 770px), only screen and (max-width: 1200px) {
     #options-container {
         flex-direction: column;
     }
-    #navigation {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-items: center;
+    #menubar {
         gap: 8px;
         min-width: unset;
         max-width: unset;
         padding: 8px;
+    }
+    #navigation {
+        gap: 8px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     #options {
         padding: 0 50px;
@@ -625,24 +618,34 @@ svg {
         font-size: 16px;
         padding: 0 10px;
         margin: 0;
-        flex-grow: 1;
     }
     #title {
         width: 100%;
         font-size: 30px;
+        padding: 10px;
     }
     #title .profilepic {
         height: 40px;
     }
     #createdBy {
-        margin: unset;
+        margin: 10px 0 0 0;
+        height: unset;
         width: 100%;
+    }
+    #createdBy > div {
+        display: inline-block;
+    }
+    #sbDonate {
+        position: absolute;
+        right: 30px;
+        margin-top: 10px;
     }
     #version {
         font-size: 10px;
+        height: 10px;
         transform: translate(-50px, -5px);
     }
-    .sticky #navigation {
+    .sticky #menubar {
         position: fixed;
         left: 0;
         right: 0;

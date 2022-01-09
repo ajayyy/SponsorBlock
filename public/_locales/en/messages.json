@@ -863,13 +863,9 @@
         "message": "h",
         "description": "100h"
     },
-    "optionsTabCategories": {
-        "message": "Categories",
-        "description": "Appears in Options as a tab header for setting up categories. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
-    },
     "optionsTabBehavior": {
         "message": "Behavior",
-        "description": "Appears in Options as a tab header for options related to the general behavior of the extension. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabInterface": {
         "message": "Interface",
@@ -879,16 +875,12 @@
         "message": "Keyboard shortcuts",
         "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
-    "optionsTabPrivacy": {
-        "message": "Privacy",
-        "description": "Appears in Options as a tab header for options related to privacy (data stored/sent to server). To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
-    },
     "optionsTabBackup": {
         "message": "Backup/Restore",
         "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabAdvanced": {
-        "message": "Advanced",
+        "message": "Miscellaneous",
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "noticeVisibilityLabel": {
