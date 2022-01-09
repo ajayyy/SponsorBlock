@@ -302,6 +302,10 @@
     "mute": {
         "message": "Ztlumit"
     },
+    "full": {
+        "message": "Celé video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Přeskočit {0}?"
     },
@@ -619,6 +623,10 @@
     },
     "muteSegments": {
         "message": "Povolit segmenty, které místo přeskočení ztlumují zvuk"
+    },
+    "fullVideoSegments": {
+        "message": "Zobrazit ikonu, když je celé video reklama",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Vaše barva má nesprávný formát. Měl by to být 3 nebo 6 znaků dlouhý HEX kód s křížkem na začátku."
