@@ -745,6 +745,12 @@
         "message": "Rozumím",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Tento segment je velký. Pokud je celé video o jednom tématu, změňte z \"Přeskočit\" na \"Celé video\". Pro více informací se podívejte na pokyny."
+    },
+    "categoryPillTitleText": {
+        "message": "Toto celé video je označeno jako tato kategorie a je příliš integrované na to, aby se dalo rozdělit"
+    },
     "experiementOptOut": {
         "message": "Odhlásit se ze všech budoucích experimentů",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -842,6 +848,9 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Použijte kolečko myši při přechodu přes editační okno pro rychlou úpravu času. Kombinace kláves Ctrl nebo Shift mohou být použity k doladění změn."
+    },
+    "categoryPillNewFeature": {
+        "message": "Novinka! Nyní uvidíte, zda je video zcela sponzorované nebo celé obsahuje sebepropagaci"
     },
     "dayAbbreviation": {
         "message": "d",
