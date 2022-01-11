@@ -841,13 +841,16 @@
         "message": "Skopírovať a dať palec dole"
     },
     "ContinueVoting": {
-        "message": "Pokračovať v hodnotení"
+        "message": "Pokračovať v hlasovaní"
     },
     "ChangeCategoryTooltip": {
         "message": "Týmto ihneď vykonáte zmeny v segmentoch"
     },
     "SponsorTimeEditScrollNewFeature": {
-        "message": "Čas môžete rýchlo zmeniť kolieskom myši, ak je kurozor nad zadávacím políčkom. Pre jemné zmeny pritom držte kláves ctrl alebo shift."
+        "message": "Čas môžete rýchlo zmeniť kolieskom myši, ak je kurzor nad zadávacím políčkom. Pre jemné zmeny pritom držte kláves ctrl alebo shift."
+    },
+    "categoryPillNewFeature": {
+        "message": "Nové! Zistite, kedy je video kompletne sponzorované alebo vlastná propagácia"
     },
     "dayAbbreviation": {
         "message": "d",
