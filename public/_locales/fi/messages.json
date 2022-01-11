@@ -853,7 +853,7 @@
         "message": "Uutta! Näe, kun video on kokonaan sponsoroitu tai itsensä mainostusta"
     },
     "dayAbbreviation": {
-        "message": "pv",
+        "message": "vrk",
         "description": "100d"
     },
     "hourAbbreviation": {
