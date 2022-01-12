@@ -746,7 +746,7 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "Tento segment je dlhý. Ak je celé video o jednej téme, zmeňte \"Preskočiť\" na \"Celé video\". Pre ďalšie informácie si pozrite inštrukcie."
+        "message": "Tento segment je dlhý. Ak je celé video o jednej téme, zmeňte \"Preskočiť\" na \"Celé video\". Pre ďalšie informácie si pozrite pravidlá."
     },
     "categoryPillTitleText": {
         "message": "Celé video je označené touto kategóriou a je príliš previazané, aby sa to dalo rozlíšiť"
