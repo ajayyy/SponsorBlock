@@ -13,7 +13,8 @@ async function init() {
     if (window.matchMedia("(prefers-color-scheme: light)")?.matches &&
             !(navigator.vendor == "Google Inc." && (navigator.userAgent.includes("Linux") ||
                                                     navigator.userAgent.includes("Windows NT 6") ||
-                                                    navigator.userAgent.includes("Mac OS X") && navigator.userAgent.match(/Mac OS X [^)]+/)[0] < "Mac OS X 10_14")))
+                                                    navigator.userAgent.includes("Mac OS X") && navigator.userAgent.match(/Mac OS X [^)]+/)[0] < "Mac OS X 10_14") &&
+            !navigator.userAgent.includes("OPR/") && !navigator.userAgent.includes("Edg/")))
         document.documentElement.setAttribute("data-theme", "light");
 
     await utils.wait(() => Config.config !== null);
