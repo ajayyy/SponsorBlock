@@ -537,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
     },
+    "category_exclusive_access": {
+        "message": "Exkluzivní přístup"
+    },
+    "category_exclusive_access_description": {
+        "message": "Pouze pro označování celých videí. Používá se v případě, že je ve videu zobrazován produkt, služba nebo místo, které autor obdržel zdarma nebo s bezplatným přístupem."
+    },
+    "category_exclusive_access_pill": {
+        "message": "V tomto videu je zobrazován produkt, služba nebo místo, které autor obdržel zdarma nebo s bezplatným přístupem",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Připomenutí interakce (odběr)"
     },
@@ -617,6 +627,9 @@
     },
     "showOverlay_POI": {
         "message": "Zobrazit v liště"
+    },
+    "showOverlay_full": {
+        "message": "Zobrazit štítek"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky přeskočit všechny segmenty, když je ve videu nehudební segment"
