@@ -4,7 +4,7 @@ import Config from "../config"
 import * as CompileConfig from "../../config.json";
 import { Category, CategorySkipOption } from "../types";
 
-import { getCategoryActionType } from "../utils/categoryUtils";
+import { getCategorySuffix } from "../utils/categoryUtils";
 
 export interface CategorySkipOptionsProps { 
     category: Category;
@@ -78,14 +78,16 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             value={this.state.color} />
                     </td>
 
-                    <td id={this.props.category + "PreviewColorOption"}
-                        className="previewColorOption">
-                        <input
-                            className="categoryColorTextBox option-text-box"
-                            type="color"
-                            onChange={(event) => this.setColorState(event, true)}
-                            value={this.state.previewColor} />
-                    </td>
+                    {this.props.category !== "exclusive_access" &&
+                        <td id={this.props.category + "PreviewColorOption"}
+                            className="previewColorOption">
+                            <input
+                                className="categoryColorTextBox option-text-box"
+                                type="color"
+                                onChange={(event) => this.setColorState(event, true)}
+                                value={this.state.previewColor} />
+                        </td>
+                    }
 
                 </tr>
 
@@ -154,12 +156,13 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     getCategorySkipOptions(): JSX.Element[] {
         const elements: JSX.Element[] = [];
 
-        const optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+        let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+        if (this.props.category === "exclusive_access") optionNames = ["disable", "showOverlay"];
 
         for (const optionName of optionNames) {
             elements.push(
                 <option key={optionName} value={optionName}>
-                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategoryActionType(this.props.category) 
+                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategorySuffix(this.props.category) 
                                                                      : optionName)}
                 </option>
             );

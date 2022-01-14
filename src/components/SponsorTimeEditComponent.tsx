@@ -199,7 +199,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 </div>
 
                 {/* Action Type */}
-                {CompileConfig.categorySupport[sponsorTime.category]?.length > 1 ? (
+                {CompileConfig.categorySupport[sponsorTime.category]?.length > 1 
+                        || CompileConfig.categorySupport[sponsorTime.category][0] !== "skip" ? (
                     <div style={{position: "relative"}}>
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
