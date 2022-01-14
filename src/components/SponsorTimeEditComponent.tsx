@@ -189,7 +189,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </select>
 
                     {/* open in new tab */}
-                    <a href="https://wiki.sponsor.ajay.app/index.php/Segment_Categories"
+                    <a href={CompileConfig.wikiLinks[sponsorTime.category] 
+                            || "https://wiki.sponsor.ajay.app/index.php/Segment_Categories"}
                         target="_blank" rel="noreferrer">
                         <img id={"sponsorTimeCategoriesHelpButton" + this.idSuffix}
                             className="helpButton"
@@ -199,8 +200,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 </div>
 
                 {/* Action Type */}
-                {CompileConfig.categorySupport[sponsorTime.category]?.length > 1 
-                        || CompileConfig.categorySupport[sponsorTime.category][0] !== "skip" ? (
+                {CompileConfig.categorySupport[sponsorTime.category] && 
+                    (CompileConfig.categorySupport[sponsorTime.category]?.length > 1 
+                        || CompileConfig.categorySupport[sponsorTime.category]?.[0] !== "skip") ? (
                     <div style={{position: "relative"}}>
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
