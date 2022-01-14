@@ -537,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Hasonló a szponzorhoz, de nem fizetett, vagy önpromóció. Beletartozik a saját ruhaáru, adományok, vagy infó arról, hogy kivel működtek együtt."
     },
+    "category_exclusive_access": {
+        "message": "Exkluzív hozzáférés"
+    },
+    "category_exclusive_access_description": {
+        "message": "Csak teljes videók megjelölésére. Akkor használt, amikor egy videó egy olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyen vagy kedvezményes hozzáférést kaptak."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Ez a videó olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyen vagy kedvezményes hozzáférést kaptak",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Emlékeztető (Feliratkozás)"
     },
@@ -617,6 +627,9 @@
     },
     "showOverlay_POI": {
         "message": "Megjelenítés a keresősávban"
+    },
+    "showOverlay_full": {
+        "message": "Címke megjelenítése"
     },
     "autoSkipOnMusicVideos": {
         "message": "Minden szegmens automatikus átugrása, ha van nem-zene szegmens"
