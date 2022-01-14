@@ -618,6 +618,9 @@
     "showOverlay_POI": {
         "message": "재생 시간 바에 표시"
     },
+    "showOverlay_full": {
+        "message": "라벨 표시"
+    },
     "autoSkipOnMusicVideos": {
         "message": "음악이 아닌 구간이 있을 때는 모든 구간 자동 건너뛰기"
     },
