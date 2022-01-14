@@ -265,7 +265,7 @@ function resetValues() {
     isAdPlaying = false;
 
     for (let i = 0; i < skipNotices.length; i++) {
-        skipNotices.pop().close();
+        skipNotices.pop()?.close();
     }
 
     skipButtonControlBar?.disable();
