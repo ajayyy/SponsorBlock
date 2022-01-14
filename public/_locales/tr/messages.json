@@ -302,6 +302,10 @@
     "mute": {
         "message": "Sustur"
     },
+    "full": {
+        "message": "Bütün Video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "{0} atla?"
     },
@@ -620,6 +624,10 @@
     "muteSegments": {
         "message": "Atlamak yerine sesi kapatan bölümlere izin ver"
     },
+    "fullVideoSegments": {
+        "message": "Video bütünüyle bir reklamsa simge göster",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
     },
@@ -737,6 +745,12 @@
         "message": "Anladım",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Bu kısım büyük. Bütün video tek bir konu hakkındaysa \"Atla\" yerine \"Bütün Video\"yu seçin. Daha çok bilgi için kılavuzlara bakın."
+    },
+    "categoryPillTitleText": {
+        "message": "Bu videonun bütünü bu şekilde sınıflandırılmış ve kısımları birbirinden ayrılamayacak kadar sıkı bütünleştirilmiş"
+    },
     "experiementOptOut": {
         "message": "Gelecekteki deneylerin hiçbirine katılma",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +849,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Zaman aralığını hızlı bir şekilde ayarlamak için düzenleme kutusunun üzerinde fare tekerini kullanın. Değişikliklere ince ayar yapmak için ctrl veya shift tuşunun kombinasyonları kullanılabilir."
     },
-    "fillerNewFeature": {
-        "message": "Yeni! Alakasız Konu kategorisiyle boş muhabbetleri ve şakaları atlayın. Ayarlarda etkinleştir"
+    "categoryPillNewFeature": {
+        "message": "Yeni! Videonun bütünü sponsor veya kendi reklamıysa öngörün"
     },
     "dayAbbreviation": {
         "message": "d",

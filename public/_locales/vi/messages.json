@@ -302,6 +302,10 @@
     "mute": {
         "message": "Ngắt tiếng"
     },
+    "full": {
+        "message": "Toàn bộ Video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Bỏ qua {0}?"
     },
@@ -737,6 +741,9 @@
         "message": "Đã hiểu",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "categoryPillTitleText": {
+        "message": "Toàn bộ video này được gắn thẻ vào thể loại này và được tích hợp quá chặt chẽ để có thể tách ra"
+    },
     "experiementOptOut": {
         "message": "Từ chối tham gia thử nghiệm trong tương lai",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +842,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Sử dụng con lăn chuột của bạn khi di chuột qua hộp chỉnh sửa để nhanh chóng điều chỉnh thời gian. Kết hợp phím ctrl hoặc shift có thể được sử dụng để tinh chỉnh các thay đổi."
     },
-    "fillerNewFeature": {
-        "message": "Mới! Bỏ qua các phân đoạn phụ và joke với danh mục \"Cảnh phụ\". Bật trong tùy chọn"
+    "categoryPillNewFeature": {
+        "message": "Mới! Xem khi nào video được tài trợ hoàn toàn hoặc tự quảng bá"
     },
     "dayAbbreviation": {
         "message": "d",

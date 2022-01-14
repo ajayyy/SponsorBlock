@@ -302,6 +302,10 @@
     "mute": {
         "message": "Silenzia"
     },
+    "full": {
+        "message": "Video Completo",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Vuoi saltare {0}?"
     },
@@ -620,6 +624,10 @@
     "muteSegments": {
         "message": "Silenzia i segmenti invece di saltarli, quando possibile"
     },
+    "fullVideoSegments": {
+        "message": "Mostra un'icona quando un video è interamente una pubblicità",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
     },
@@ -737,6 +745,12 @@
         "message": "Capito",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Questo segmento è grande. Se l'intero video è su un argomento, passa da \"Salta\" a \"Video Completo\". Vedi le linee guida per ulteriori informazioni."
+    },
+    "categoryPillTitleText": {
+        "message": "Questo intero video è etichettato come questa categoria ed è troppo integrato per poterlo separarare"
+    },
     "experiementOptOut": {
         "message": "Disiscriviti dagli esperimenti futuri",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,7 +849,15 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Usa la rotellina del mouse passando sulla casella di modifica per regolare rapidamente il tempo. Le combinazioni dei tasti ctrl o shift sono utilizzabili per perfezionare le modifiche."
     },
-    "fillerNewFeature": {
-        "message": "Novità! Salta battute e tergiversazioni con il riempitivo. Attivala nelle opzioni"
+    "categoryPillNewFeature": {
+        "message": "Novità! Vedi quando un video è interamente sponsorizzato o auto-promosso"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
     }
 }

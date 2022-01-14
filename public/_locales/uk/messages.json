@@ -302,6 +302,10 @@
     "mute": {
         "message": "Вимкнути звук"
     },
+    "full": {
+        "message": "Повне відео",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Пропустити {0}?"
     },
@@ -533,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Схоже на \"Спонсора\", але для безкоштовної реклами і самореклами. Включає себе вставки про мерчендайз, пожертвування або інформацію про тих, разом з ким було зроблено відео."
     },
+    "category_exclusive_access": {
+        "message": "Ексклюзивний доступ"
+    },
+    "category_exclusive_access_description": {
+        "message": "Лише для позначення цілих відео. Використовується, коли відео демонструє продукт, послугу або місцеположення, до яких автори отримали безоплатний або субсидований доступ."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Це відео демонструє продукт, послугу або місцеположення, до яких автори отримали безоплатний або субсидований доступ",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Нагадування про взаємодію (підписка)"
     },
@@ -614,11 +628,18 @@
     "showOverlay_POI": {
         "message": "Показати в смузі перемотування"
     },
+    "showOverlay_full": {
+        "message": "Показати мітку"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Автоматично пропустити усі сегменти, якщо присутній сегмент без музики"
     },
     "muteSegments": {
         "message": "Дозволити сегменти, які відключають звук замість пропуску"
+    },
+    "fullVideoSegments": {
+        "message": "Показувати значок, коли все відео є рекламою",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Ви ввели колір в неправильному форматі. Це повинно бути 3-х або 6-ти значне шістнадцяткове число з символом # на початку."
@@ -737,6 +758,12 @@
         "message": "Зрозуміло",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Цей сегмент великий. Якщо все відео на одну тему, тоді змініть значення з \"Пропустити\" на \"Повне відео\". Продивіться керівництво для додаткової інформації."
+    },
+    "categoryPillTitleText": {
+        "message": "Все це відео позначене як ця категорія, і воно занадто інтегровано, щоб його було розділити"
+    },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -834,6 +861,9 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Навівши курсор на поле редагування, користуйтеся колесом прокрутки, щоб швидко відрегулювати час. Комбінації клавіш ctrl або shift можуть бути використані для точнішої настройки змін."
+    },
+    "categoryPillNewFeature": {
+        "message": "Нове! Бачте, коли відео повністю спонсорське або є саморекламою"
     },
     "dayAbbreviation": {
         "message": "д",

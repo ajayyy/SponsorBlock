@@ -302,6 +302,10 @@
     "mute": {
         "message": "Némítás"
     },
+    "full": {
+        "message": "Teljes videó",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Átugorja ezt: {0}?"
     },
@@ -533,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Hasonló a szponzorhoz, de nem fizetett, vagy önpromóció. Beletartozik a saját ruhaáru, adományok, vagy infó arról, hogy kivel működtek együtt."
     },
+    "category_exclusive_access": {
+        "message": "Exkluzív hozzáférés"
+    },
+    "category_exclusive_access_description": {
+        "message": "Csak teljes videók megjelölésére. Akkor használt, amikor egy videó egy olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyen vagy kedvezményes hozzáférést kaptak."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Ez a videó olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyen vagy kedvezményes hozzáférést kaptak",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Emlékeztető (Feliratkozás)"
     },
@@ -614,11 +628,18 @@
     "showOverlay_POI": {
         "message": "Megjelenítés a keresősávban"
     },
+    "showOverlay_full": {
+        "message": "Címke megjelenítése"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Minden szegmens automatikus átugrása, ha van nem-zene szegmens"
     },
     "muteSegments": {
         "message": "Szegmensek engedélyezése, amelyek lenémítják a hangot az átugrás helyett"
+    },
+    "fullVideoSegments": {
+        "message": "Mutasson egy ikont, amikor egy videó egésze reklám",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "A szín helytelenül van formázva. Egy 3 vagy 6 számjegyből álló hex kódnak kell lennie egy kettőskereszttel az elején."
@@ -737,6 +758,12 @@
         "message": "Értettem",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Ez a szegmens nagy. Ha az egész videó egy témáról szól, akkor válts \"Átugrás\"-ról \"Teljes videó\"-ra. További információkért lásd az irányelveket."
+    },
+    "categoryPillTitleText": {
+        "message": "Az egész videó ezzel a kategóriával van megjelölve és túl szorosan kapcsolódik hozzá, hogy le lehessen választani"
+    },
     "experiementOptOut": {
         "message": "Minden további kísérlet elutasítása",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +862,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Használd egérgörgődet a szerkesztő mező fölött, hogy gyorsan módosíthasd az időt. A ctrl vagy shift billentyűk kombinációjával finomhangolhatod a változás mértékét."
     },
-    "fillerNewFeature": {
-        "message": "Új! Ugorj át vicceket és a témához nem tartozó részeket a töltelék kategóriával. Engedélyezd a beállításokban"
+    "categoryPillNewFeature": {
+        "message": "Új! Láthatod, ha egy videó teljes egészében szponzorált, vagy önpromóció"
     },
     "dayAbbreviation": {
         "message": "n",

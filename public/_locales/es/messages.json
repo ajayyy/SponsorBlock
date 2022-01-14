@@ -302,6 +302,10 @@
     "mute": {
         "message": "Silenciar"
     },
+    "full": {
+        "message": "Video Completo",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "¿Saltar {0}?"
     },
@@ -620,6 +624,10 @@
     "muteSegments": {
         "message": "Permitir segmentos que silencian el audio en lugar de omitir"
     },
+    "fullVideoSegments": {
+        "message": "Mostrar un icono cuando un video es enteramente un anuncio",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
     },
@@ -737,6 +745,12 @@
         "message": "Entendido",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Este segmento es grande. Si todo el video es acerca de un tema, entonces cámbielo de \"Omitir\" a \"Video completo\". Consulte las instrucciones para más información."
+    },
+    "categoryPillTitleText": {
+        "message": "Todo el video está etiquetado como esta categoría y está muy estrechamente integrado como para poder separarlo"
+    },
     "experiementOptOut": {
         "message": "No participar en futuros experimentos",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +849,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilice la rueda del ratón mientras pasa el cursor por encima del cuadro de edición para ajustar el tiempo. Se pueden utilizar combinaciones de la tecla ctrl o shift para afinar los cambios."
     },
-    "fillerNewFeature": {
-        "message": "¡Nuevo! Omite tangentes y bromas con la categoría de relleno. Habilítala en opciones"
+    "categoryPillNewFeature": {
+        "message": "¡Nuevo! Mira cuando un video es enteramente un sponsor o una promoción propia"
     },
     "dayAbbreviation": {
         "message": "d",

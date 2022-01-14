@@ -302,6 +302,10 @@
     "mute": {
         "message": "Заглушить"
     },
+    "full": {
+        "message": "Всё видео",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Пропустить {0}?"
     },
@@ -533,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Похоже на \"Спонсора\", но для бесплатной рекламы и саморекламы. Включает себя вставки про мерчендайз, пожертвования или информацию о тех, вместе с кем было сделано видео."
     },
+    "category_exclusive_access": {
+        "message": "Эксклюзивный доступ"
+    },
+    "category_exclusive_access_description": {
+        "message": "Категория для всего видео. Используется когда видео демонстрирует продукт, сервис или местоположение, к которому автор получил бесплатный или проспонсированный доступ."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Это видео демонстрирует продукт, сервис или местоположение, к которому автор получил бесплатный или проспонсированный доступ",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Напоминание о взаимодействии (подписка)"
     },
@@ -614,11 +628,18 @@
     "showOverlay_POI": {
         "message": "Показывать в полосе прокрутки"
     },
+    "showOverlay_full": {
+        "message": "Отображать название"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Пропускать все сегменты автоматически при наличии сегмента без музыки"
     },
     "muteSegments": {
         "message": "Разрешить сегменты, которые отключают звук вместо пропуска"
+    },
+    "fullVideoSegments": {
+        "message": "Показывать иконку, когда всё видео является рекламой",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Вы ввели цвет в неправильном формате. Это должно быть 3-х или 6-ти значное шестнадцатеричное число с символом # в начале."
@@ -737,6 +758,12 @@
         "message": "Ясно",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Этот сегмент большой. Если в видео только одна тема, то измените значение с «Пропустить» на «Всё видео». Дополнительную информацию смотрите в руководстве."
+    },
+    "categoryPillTitleText": {
+        "message": "Это видео помечено как данная категория и слишком сильно интегрировано для разделения"
+    },
     "experiementOptOut": {
         "message": "Отказаться от всех будущих экспериментов",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +862,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Наведите курсор на поле редактирования и используйте колесо мыши для быстрой настройки времени. Клавиши Ctrl или Shift могут быть использованы для точной настройки."
     },
-    "fillerNewFeature": {
-        "message": "Новое! Пропускайте сегменты с отвлечёнными темами или шутками. Включите в настройках"
+    "categoryPillNewFeature": {
+        "message": "Новинка! Расширение покажет, когда видео полностью является спонсорским или саморекламой"
     },
     "dayAbbreviation": {
         "message": "д",

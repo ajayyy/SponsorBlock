@@ -302,6 +302,10 @@
     "mute": {
         "message": "Wycisz"
     },
+    "full": {
+        "message": "Cały film",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Pominąć {0}?"
     },
@@ -609,7 +613,7 @@
         "message": "Automatycznie przewiń do początku"
     },
     "manualSkip_POI": {
-        "message": "Zapytaj, gdy wideo się załaduje"
+        "message": "Zapytaj, gdy film się załaduje"
     },
     "showOverlay_POI": {
         "message": "Pokaż na pasku"
@@ -619,6 +623,10 @@
     },
     "muteSegments": {
         "message": "Zezwalaj na segmenty, które wyciszą dźwięk zamiast pomijać"
+    },
+    "fullVideoSegments": {
+        "message": "Pokaż ikonę, gdy film jest w całości reklamą",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Nieprawidłowy format koloru. Powinien to być zapis szesnastkowy (heksadecymalny) składający się z 3 lub 6 znaków poprzedzonych kratką (#)."
@@ -737,6 +745,12 @@
         "message": "Rozumiem",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Ten segment jest duży. Jeśli cały film dotyczy jednego tematu, zmień z \"Pomiń\" na \"Cały film\". Zobacz wytyczne, po więcej informacji."
+    },
+    "categoryPillTitleText": {
+        "message": "Cały film jest oznaczony jako ta kategoria i jest za bardzo zintegrowany, aby można było go podzielić"
+    },
     "experiementOptOut": {
         "message": "Wyłączenie wszystkich przyszłych eksperymentów",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +849,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Użyj scroll'a myszy po najechaniu nad pole edycji, aby szybko dostosować czas. Kombinacje z ctrl'em i shift'em mogą być użyte, aby doszlifować zmiany."
     },
-    "fillerNewFeature": {
-        "message": "Nowość! Pomiń nietematyczne sceny i żarty z kategorią wypełnienia. Włącz w opcjach"
+    "categoryPillNewFeature": {
+        "message": "Nowość! Zobacz, kiedy film jest w całości sponsorowany lub jest autopromocją"
     },
     "dayAbbreviation": {
         "message": "d",

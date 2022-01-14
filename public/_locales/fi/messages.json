@@ -302,6 +302,10 @@
     "mute": {
         "message": "Mykistä"
     },
+    "full": {
+        "message": "Koko video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Ohita {0}?"
     },
@@ -620,6 +624,10 @@
     "muteSegments": {
         "message": "Salli segmentit, jotka mykistävät äänen ohittamisen sijaan"
     },
+    "fullVideoSegments": {
+        "message": "Näytä kuvake, kun video on kokonaan mainos",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on # alussa."
     },
@@ -737,6 +745,12 @@
         "message": "Selvä",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Tämä segmentti on suuri. Jos koko video koskee yhtä aihetta, vaihda \"Ohita\" valintaan \"Koko video\". Katso lisätietoja säännöistä."
+    },
+    "categoryPillTitleText": {
+        "message": "Tämä koko video on merkitty täksi kategoriaksi ja on liian tiiviisti integroitu jotta ne voitaisiin erottaa"
+    },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,11 +849,11 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."
     },
-    "fillerNewFeature": {
-        "message": "Uutta! Ohita epäolennaiset kohdat ja vitsit täytesisältö kategorialla. Ota se käyttöön asetuksista"
+    "categoryPillNewFeature": {
+        "message": "Uutta! Näe, kun video on kokonaan sponsoroitu tai itsensä mainostusta"
     },
     "dayAbbreviation": {
-        "message": "pv",
+        "message": "vrk",
         "description": "100d"
     },
     "hourAbbreviation": {

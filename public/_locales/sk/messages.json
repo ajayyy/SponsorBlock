@@ -302,6 +302,10 @@
     "mute": {
         "message": "Stíšiť"
     },
+    "full": {
+        "message": "Celé video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Preskočiť {0}?"
     },
@@ -620,6 +624,10 @@
     "muteSegments": {
         "message": "Povoliť segmenty, ktoré namiesto preskočenia stíšía zvuk"
     },
+    "fullVideoSegments": {
+        "message": "Zobraziť ikonu, ak je celé video reklama",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Vaša farba je nesprávne naformátovaná. Mal by to byť 3 alebo 6-miestny hexadecimálny kód so znakom čísla na začiatku."
     },
@@ -737,6 +745,12 @@
         "message": "Rozumiem",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Tento segment je dlhý. Ak je celé video o jednej téme, zmeňte \"Preskočiť\" na \"Celé video\". Pre ďalšie informácie si pozrite pravidlá."
+    },
+    "categoryPillTitleText": {
+        "message": "Celé video je označené touto kategóriou a je príliš previazané, aby sa to dalo rozlíšiť"
+    },
     "experiementOptOut": {
         "message": "Odmietnuť všetky budúce experimenty",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -827,16 +841,16 @@
         "message": "Skopírovať a dať palec dole"
     },
     "ContinueVoting": {
-        "message": "Pokračovať v hodnotení"
+        "message": "Pokračovať v hlasovaní"
     },
     "ChangeCategoryTooltip": {
         "message": "Týmto ihneď vykonáte zmeny v segmentoch"
     },
     "SponsorTimeEditScrollNewFeature": {
-        "message": "Čas môžete rýchlo zmeniť kolieskom myši, ak je kurozor nad zadávacím políčkom. Pre jemné zmeny pritom držte kláves ctrl alebo shift."
+        "message": "Čas môžete rýchlo zmeniť kolieskom myši, ak je kurzor nad zadávacím políčkom. Pre jemné zmeny pritom držte kláves ctrl alebo shift."
     },
-    "fillerNewFeature": {
-        "message": "Nové! Preskočte odbočky mimo tému a vtipy s kategóriou filler. Zapnite si ju v nastaveniach"
+    "categoryPillNewFeature": {
+        "message": "Nové! Zistite, kedy je video kompletne sponzorované alebo vlastná propagácia"
     },
     "dayAbbreviation": {
         "message": "d",

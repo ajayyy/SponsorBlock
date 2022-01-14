@@ -302,6 +302,10 @@
     "mute": {
         "message": "Ztlumit"
     },
+    "full": {
+        "message": "Celé video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Přeskočit {0}?"
     },
@@ -533,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
     },
+    "category_exclusive_access": {
+        "message": "Exkluzivní přístup"
+    },
+    "category_exclusive_access_description": {
+        "message": "Pouze pro označování celých videí. Používá se v případě, že je ve videu zobrazován produkt, služba nebo místo, které autor obdržel zdarma nebo s bezplatným přístupem."
+    },
+    "category_exclusive_access_pill": {
+        "message": "V tomto videu je zobrazován produkt, služba nebo místo, které autor obdržel zdarma nebo s bezplatným přístupem",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Připomenutí interakce (odběr)"
     },
@@ -614,11 +628,18 @@
     "showOverlay_POI": {
         "message": "Zobrazit v liště"
     },
+    "showOverlay_full": {
+        "message": "Zobrazit štítek"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky přeskočit všechny segmenty, když je ve videu nehudební segment"
     },
     "muteSegments": {
         "message": "Povolit segmenty, které místo přeskočení ztlumují zvuk"
+    },
+    "fullVideoSegments": {
+        "message": "Zobrazit ikonu, když je celé video reklama",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Vaše barva má nesprávný formát. Měl by to být 3 nebo 6 znaků dlouhý HEX kód s křížkem na začátku."
@@ -737,6 +758,12 @@
         "message": "Rozumím",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Tento segment je velký. Pokud je celé video o jednom tématu, změňte z \"Přeskočit\" na \"Celé video\". Pro více informací se podívejte na pokyny."
+    },
+    "categoryPillTitleText": {
+        "message": "Toto celé video je označeno jako tato kategorie a je příliš integrované na to, aby se dalo rozdělit"
+    },
     "experiementOptOut": {
         "message": "Odhlásit se ze všech budoucích experimentů",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +862,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Použijte kolečko myši při přechodu přes editační okno pro rychlou úpravu času. Kombinace kláves Ctrl nebo Shift mohou být použity k doladění změn."
     },
-    "fillerNewFeature": {
-        "message": "Novinka! Překakujte výplňové části a vtipy s kategorií výplň. Povolte ji v nastavení"
+    "categoryPillNewFeature": {
+        "message": "Novinka! Nyní uvidíte, zda je video zcela sponzorované nebo celé obsahuje sebepropagaci"
     },
     "dayAbbreviation": {
         "message": "d",
