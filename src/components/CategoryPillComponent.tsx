@@ -72,6 +72,12 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                         </div>
                     </>
                 )}
+
+                {/* Close Button */}
+                <img src={chrome.extension.getURL("icons/close.png")}
+                    className="categoryPillClose"
+                    onClick={() => this.setState({ show: false })}>
+                </img>
             </span>
         );
     }
