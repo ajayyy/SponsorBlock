@@ -537,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Ähnlich wie bei \"gesponserte Videosegmente\", mit Ausnahme von unbezahlten oder Selbstpromotionen. Dies beinhaltet Merchandising (Fan-Artikel), Spenden oder Informationen darüber, mit wem für das Video zusammengearbeitet wurde."
     },
+    "category_exclusive_access": {
+        "message": "Exklusiver Zugriff"
+    },
+    "category_exclusive_access_description": {
+        "message": "Nur für das Kennzeichnen ganzer Videos. Wird verwendet wenn ein Video ein Produkt, eine Dienstleistung oder einen Ort präsentiert, zu welchem sie freien oder subventionierten Zugriff erhalten haben."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Dieses Video präsentiert ein Produkt, eine Dienstleistung oder einen Ort, zu welchem sie freien oder subventionierten Zigriff erhalten haben",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Interaktions-Erinnerungen (Abonnieren, etc.)"
     },
@@ -617,6 +627,9 @@
     },
     "showOverlay_POI": {
         "message": "In Suchleiste anzeigen"
+    },
+    "showOverlay_full": {
+        "message": "Zeige Label"
     },
     "autoSkipOnMusicVideos": {
         "message": "Alle Segmente automatisch überspringen, wenn ein nicht-Musiksegment vorhanden ist"
