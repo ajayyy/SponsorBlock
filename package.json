@@ -47,6 +47,7 @@
     "build:chrome": "webpack --env.browser=chrome --config webpack/webpack.prod.js",
     "build:firefox": "webpack --env.browser=firefox --config webpack/webpack.prod.js",
     "build:safari": "webpack --env.browser=safari --config webpack/webpack.prod.js",
+    "build:edge": "webpack --env.browser=edge --config webpack/webpack.prod.js",
     "build:dev": "npm run build:dev:chrome",
     "build:dev:chrome": "webpack --env.browser=chrome --config webpack/webpack.dev.js",
     "build:dev:firefox": "webpack --env.browser=firefox --config webpack/webpack.dev.js",

@@ -5,6 +5,22 @@ const BuildManifest = require('./webpack.manifest');
 const srcDir = '../src/';
 const fs = require("fs");
 
+const edgeLanguages = [
+    "de",
+    "en",
+    "es",
+    "fr",
+    "pl",
+    "pt_BR",
+    "ro",
+    "ru",
+    "sk",
+    "sv",
+    "tr",
+    "uk",
+    "zh_CN"
+]
+
 module.exports = env => ({
     entry: {
         popup: path.join(__dirname, srcDir + 'popup.ts'),
@@ -49,6 +65,11 @@ module.exports = env => ({
                     context: './public',
                     filter: async (path) => {
                         if (path.match(/\/_locales\/.+/)) {
+                            if (env.browser.toLowerCase() === "edge" 
+                                    && !edgeLanguages.includes(path.match(/(?<=\/_locales\/)[^/]+(?=\/[^/]+$)/)[0])) {
+                                return false;
+                            }
+
                             const data = await fs.promises.readFile(path);
                             const parsed = JSON.parse(data.toString());
 
