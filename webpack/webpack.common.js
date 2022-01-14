@@ -3,6 +3,7 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const BuildManifest = require('./webpack.manifest');
 const srcDir = '../src/';
+const fs = require("fs");
 
 module.exports = env => ({
     entry: {
@@ -38,16 +39,46 @@ module.exports = env => ({
     plugins: [
         // exclude locale files in moment
         new CopyPlugin({
-          patterns: [
-            {
-              from: '.',
-              to: '../',
-              globOptions: {
-                ignore: ['manifest.json'],
-              },
-              context: './public',
-            }
-          ]
+            patterns: [
+                {
+                    from: '.',
+                    to: '../',
+                    globOptions: {
+                    ignore: ['manifest.json'],
+                    },
+                    context: './public',
+                    filter: async (path) => {
+                        if (path.match(/\/_locales\/.+/)) {
+                            const data = await fs.promises.readFile(path);
+                            const parsed = JSON.parse(data.toString());
+
+                            return parsed.fullName && parsed.Description;
+                        } else {
+                            return true;
+                        }
+                    },
+                    transform(content, path) {
+                        if (path.match(/\/_locales\/.+/)) {
+                            const parsed = JSON.parse(content.toString());
+                            if (env.browser.toLowerCase() === "safari") {
+                                parsed.fullName.message = parsed.fullName.message.match(/^.+(?= -)/)?.[0] || parsed.fullName.message;
+                                if (parsed.fullName.message.length > 50) {
+                                    parsed.fullName.message = parsed.fullName.message.substr(0, 47) + "...";
+                                }
+
+                                parsed.Description.message = parsed.Description.message.match(/^.+(?=\. )/)?.[0] || parsed.Description.message;
+                                if (parsed.Description.message.length > 80) {
+                                    parsed.Description.message = parsed.Description.message.substr(0, 77) + "...";
+                                }
+                            }
+            
+                            return Buffer.from(JSON.stringify(parsed));
+                        }
+
+                        return content;
+                    }
+                }
+            ]
         }),
         new BuildManifest({
             browser: env.browser,
