@@ -529,13 +529,23 @@
         "message": "Sponsormeddelande"
     },
     "category_sponsor_description": {
-        "message": "Betald marknadsföring, betalda hänvisningar och direktannonser, men inte till egen marknadsföring eller gratis shoutouts till skapare/webbplatser/produkter de gillar."
+        "message": "Betald marknadsföring, betalda hänvisningar och direktannonser, men inte till självbefodran eller gratis shoutouts till skapare/webbplatser/produkter de gillar."
     },
     "category_selfpromo": {
         "message": "Obetald/självbefodran"
     },
     "category_selfpromo_description": {
         "message": "Som \"sponsormeddelande\" men med undantag för obetald eller självkampanj. Detta inkluderar avsnitt om varor, donationer eller information om vem de samarbetade med."
+    },
+    "category_exclusive_access": {
+        "message": "Exklusiv tillgång"
+    },
+    "category_exclusive_access_description": {
+        "message": "Endast för att märka hela videor. Används när en video visar upp en produkt, tjänst eller plats som de har fått fri eller subventionerad tillgång till."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Denna video visar en produkt, tjänst eller plats som de har fått gratis eller subventionerad tillgång till",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "Interaktionspåminnelse (Prenumerera)"
@@ -617,6 +627,9 @@
     },
     "showOverlay_POI": {
         "message": "Visa i sökfältet"
+    },
+    "showOverlay_full": {
+        "message": "Visa etikett"
     },
     "autoSkipOnMusicVideos": {
         "message": "Hoppa över alla segment automatiskt när det finns ett icke-musiksegment"
@@ -848,6 +861,9 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Använd mushjulet medan du håller muspekaren över redigeringsrutan för att snabbt justera tiden. Kombinationer av CTRL- eller SKIFT-tangenten kan användas för att finjustera tiden."
+    },
+    "categoryPillNewFeature": {
+        "message": "Nytt! Se när en video är helt sponsrad eller självbefodran"
     },
     "dayAbbreviation": {
         "message": "d",
