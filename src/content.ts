@@ -1820,8 +1820,8 @@ async function sendSubmitMessage() {
     // Check to see if any of the submissions are below the minimum duration set
     if (Config.config.minDuration > 0) {
         for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-            if (sponsorTimesSubmitting[i].segment[1] - sponsorTimesSubmitting[i].segment[0] < Config.config.minDuration
-                    && getCategoryActionType(sponsorTimesSubmitting[i].category) !== CategoryActionType.POI) {
+            const duration = sponsorTimesSubmitting[i].segment[1] - sponsorTimesSubmitting[i].segment[0];
+            if (duration > 0 && duration < Config.config.minDuration) {
                 const confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + 
                     getSegmentsMessage(sponsorTimesSubmitting);
                 
