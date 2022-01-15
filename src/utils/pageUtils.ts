@@ -41,3 +41,18 @@ function findValidElementFromGenerator<T>(objects: T[] | NodeListOf<HTMLElement>
 
     return null;
 }
+
+export function getHashParams(): Record<string, unknown> {
+    const windowHash = window.location.hash.substr(1);
+    if (windowHash) {
+        const params: Record<string, unknown> = windowHash.split('&').reduce((acc, param) => {
+            const [key, value] = param.split('=');
+            acc[key] = value;
+            return acc;
+        }, {});
+
+        return params;
+    }
+
+    return {};
+}
