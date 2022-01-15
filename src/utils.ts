@@ -343,13 +343,15 @@ export default class Utils {
             //for embeds
             const player = document.getElementById("player");
             referenceNode = player.firstChild as HTMLElement;
-            let index = 1;
+            if (referenceNode) {
+                let index = 1;
 
-            //find the child that is the video player (sometimes it is not the first)
-            while (index < player.children.length && (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed"))) {
-                referenceNode = player.children[index] as HTMLElement;
+                //find the child that is the video player (sometimes it is not the first)
+                while (index < player.children.length && (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed"))) {
+                    referenceNode = player.children[index] as HTMLElement;
 
-                index++;
+                    index++;
+                }
             }
         }
 
