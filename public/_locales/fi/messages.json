@@ -537,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
     },
+    "category_exclusive_access": {
+        "message": "Yksinoikeudellinen ensikatsaus"
+    },
+    "category_exclusive_access_description": {
+        "message": "Vain kokonaisten videoiden merkitsemiseen. Käytetään kun videossa esitellään tuote, palvelu tai sijainti, johon he ovat saaneet ilmaisen tai tuetun käyttöoikeuden."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Tämä video esittelee tuotteen, palvelun tai sijainnin, johon he ovat saaneet ilmaisen tai tuetun käyttöoikeuden",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Vuorovaikutusmuistutus (tilaaminen)"
     },
@@ -617,6 +627,9 @@
     },
     "showOverlay_POI": {
         "message": "Näytä liukusäätimessä"
+    },
+    "showOverlay_full": {
+        "message": "Näytä merkki"
     },
     "autoSkipOnMusicVideos": {
         "message": "Ohita kaikki segmentit automaattisesti, kun videossa on \"Musiikiton\" segmentti"
