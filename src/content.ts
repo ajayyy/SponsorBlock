@@ -2021,19 +2021,20 @@ function showTimeWithoutSkips(skippedDuration: number): void {
 function checkForPreloadedSegment() {
     const hashParams = getHashParams();
 
-    const startTime = hashParams.sbStart as number;
-    const endTime = hashParams.sbEnd as number;
-    const category = hashParams.sbCategory as Category;
-    const actionType = hashParams.sbActionType as ActionType;
-    if (startTime && endTime) {
-        if (!sponsorTimesSubmitting.some((segment) => segment.segment[0] === startTime && segment.segment[1] === endTime)) {
-            sponsorTimesSubmitting.push({
-                segment: [startTime, endTime],
-                UUID: utils.generateUserID() as SegmentUUID,
-                category: category ? category : Config.config.defaultCategory,
-                actionType: actionType ? actionType : ActionType.Skip,
-                source: SponsorSourceType.Local
-            });
+    const segments = hashParams.segments;
+    if (Array.isArray(segments)) {
+        for (const segment of segments) {
+            if (Array.isArray(segment.segment)) {
+                if (!sponsorTimesSubmitting.some((s) => s.segment[0] === segment.segment[0] && s.segment[1] === s.segment[1])) {
+                    sponsorTimesSubmitting.push({
+                        segment: segment.segment,
+                        UUID: utils.generateUserID() as SegmentUUID,
+                        category: segment.category ? segment.category : Config.config.defaultCategory,
+                        actionType: segment.actionType ? segment.actionType : ActionType.Skip,
+                        source: SponsorSourceType.Local
+                    });
+                }
+            }
         }
     }
 }
