@@ -537,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Podobné ako sponzor, okrem neplatenej alebo vlastnej propagácie. Patria sem sekcie týkajúce sa merchu, donatov alebo informácií o tom, s kým spolupracovali."
     },
+    "category_exclusive_access": {
+        "message": "Exkluzívny Prístup"
+    },
+    "category_exclusive_access_description": {
+        "message": "Iba pre označovanie celých videí. Používa sa, keď video predstavuje produkt, službu alebo miesto, ku ktorým získali bezplatný alebo dotovaný prístup."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Toto video predstavuje produkt, službu alebo miesto, ku ktorým získali bezplatný alebo dotovaný prístup",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Pripomienka interakcie (Prihlásiť sa na odber)"
     },
@@ -617,6 +627,9 @@
     },
     "showOverlay_POI": {
         "message": "Zobraziť v časovej lište"
+    },
+    "showOverlay_full": {
+        "message": "Ukázať Označenie"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky preskočiť všetky segmenty ak neexistuje segment bez hudby"
