@@ -541,10 +541,10 @@
         "message": "Özel Erişim"
     },
     "category_exclusive_access_description": {
-        "message": "Yalnızca videonun tamamını etiketlemek için kullanın. Ücretsiz olarak veya para yardımı alarak erişim elde ettikleri bir ürünün, hizmetin veya mekanın videoda reklamını yaptıklarında kullanılır."
+        "message": "Yalnızca bütün videoyu etiketlemek için kullanın. Video; ücretli veya ücretsiz elde edilen bir ürünün, hizmetin veya bir yerin reklamını yapıyorsa kullanılır."
     },
     "category_exclusive_access_pill": {
-        "message": "Bu video, kendilerine ücretsiz verilen veya para verilerek eriştikleri bir ürünün, hizmetin veya mekanın reklamını gösterir.",
+        "message": "Bu video; yayıncıya özel ücretle veya ücretsiz sunulan bir ürünün, hizmetin veya bir yerin reklamını yapıyor",
         "description": "Short description for this category"
     },
     "category_interaction": {
