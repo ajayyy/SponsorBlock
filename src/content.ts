@@ -1395,8 +1395,9 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
-    return utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay ||
-            (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
+    return (segment.actionType !== ActionType.Full 
+            && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay) 
+            || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
 }
 
 /** Creates any missing buttons on the YouTube player if possible. */
