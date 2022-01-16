@@ -541,10 +541,10 @@
         "message": "Exclusive Access"
     },
     "category_exclusive_access_description": {
-        "message": "Only for labeling entire videos. Used when a video showcases a product, service or location that they've recieved free or subsidized access to."
+        "message": "Only for labeling entire videos. Used when a video showcases a product, service or location that they've received free or subsidized access to."
     },
     "category_exclusive_access_pill": {
-        "message": "This video showcases a product, service or location that they've recieved free or subsidized access to",
+        "message": "This video showcases a product, service or location that they've received free or subsidized access to",
         "description": "Short description for this category"
     },
     "category_interaction": {
