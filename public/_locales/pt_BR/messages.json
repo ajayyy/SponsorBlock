@@ -540,13 +540,6 @@
     "category_exclusive_access": {
         "message": "Acesso Exclusivo"
     },
-    "category_exclusive_access_description": {
-        "message": "Apenas para rotular vídeos inteiros. Usado quando um vídeo mostra um produto, serviço ou local ao qual eles receberam acesso gratuito ou subsidiado."
-    },
-    "category_exclusive_access_pill": {
-        "message": "Este vídeo mostra um produto, serviço ou local ao qual eles receberam acesso gratuito ou subsidiado",
-        "description": "Short description for this category"
-    },
     "category_interaction": {
         "message": "Lembrete de interação (inscrever-se)"
     },
