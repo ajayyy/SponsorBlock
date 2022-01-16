@@ -945,7 +945,7 @@ function getYouTubeVideoID(document: Document): string | boolean {
     // skip to document if matches pattern
     if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument(document);
     // not sure, try URL then document
-    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document);
+    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document, false);
 }
 
 function getYouTubeVideoIDFromDocument(document: Document, hideIcon = true): string | boolean {
