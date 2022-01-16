@@ -540,13 +540,6 @@
     "category_exclusive_access": {
         "message": "Exklusiv tillgång"
     },
-    "category_exclusive_access_description": {
-        "message": "Endast för att märka hela videor. Används när en video visar upp en produkt, tjänst eller plats som de har fått fri eller subventionerad tillgång till."
-    },
-    "category_exclusive_access_pill": {
-        "message": "Denna video visar en produkt, tjänst eller plats som de har fått gratis eller subventionerad tillgång till",
-        "description": "Short description for this category"
-    },
     "category_interaction": {
         "message": "Interaktionspåminnelse (Prenumerera)"
     },
