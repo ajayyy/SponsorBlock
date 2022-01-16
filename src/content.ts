@@ -1798,6 +1798,12 @@ function submitSponsorTimes() {
 //send the message to the background js
 //called after all the checks have been made that it's okay to do so
 async function sendSubmitMessage() {
+    // Block if submitting on a running livestream or premiere
+    if (isVisible(document.querySelector(".ytp-live-badge"))) {
+        alert(chrome.i18n.getMessage("liveOrPremiere"));
+        return;
+    }
+
     // Add loading animation
     playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
     const stopAnimation = AnimationUtils.applyLoadingAnimation(playerButtons.submit.button, 1, () => updateEditButtonsOnPlayer());
