@@ -4,7 +4,7 @@ import Config from "../config"
 import * as CompileConfig from "../../config.json";
 import { Category, CategorySkipOption } from "../types";
 
-import { getCategoryActionType } from "../utils/categoryUtils";
+import { getCategorySuffix } from "../utils/categoryUtils";
 
 export interface CategorySkipOptionsProps { 
     category: Category;
@@ -80,7 +80,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         </td>
                     }
 
-                    {this.props.category !== "chapter" &&
+                    {!["chapter", "exclusive_access"].includes(this.props.category) &&
                         <td id={this.props.category + "PreviewColorOption"}
                             className="previewColorOption">
                             <input
@@ -160,11 +160,12 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
         let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
         if (this.props.category === "chapter") optionNames = ["disable", "showOverlay"]
+        else if (this.props.category === "exclusive_access") optionNames = ["disable", "showOverlay"];
 
         for (const optionName of optionNames) {
             elements.push(
                 <option key={optionName} value={optionName}>
-                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategoryActionType(this.props.category) 
+                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategorySuffix(this.props.category) 
                                                                      : optionName)}
                 </option>
             );

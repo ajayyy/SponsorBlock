@@ -308,6 +308,10 @@
     "mute": {
         "message": "Mute"
     },
+    "full": {
+        "message": "Full Video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Skip {0}?"
     },
@@ -442,6 +446,9 @@
     "shortCheck": {
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
     },
+    "liveOrPremiere": {
+        "message": "Submitting on an active livesteam or premiere is not allowed. Please wait until it finishes, then refresh the page and verify that the segments are still valid."
+    },
     "showUploadButton": {
         "message": "Show Upload Button"
     },
@@ -539,6 +546,16 @@
     "category_selfpromo_description": {
         "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
     },
+    "category_exclusive_access": {
+        "message": "Exclusive Access"
+    },
+    "category_exclusive_access_description": {
+        "message": "Only for labeling entire videos. Used when a video showcases a product, service or location that they've received free or subsidized access to."
+    },
+    "category_exclusive_access_pill": {
+        "message": "This video showcases a product, service or location that they've received free or subsidized access to",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Interaction Reminder (Subscribe)"
     },
@@ -626,11 +643,18 @@
     "showOverlay_POI": {
         "message": "Show In Seek Bar"
     },
+    "showOverlay_full": {
+        "message": "Show Label"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Auto skip all segments when there is a non-music segment"
     },
     "muteSegments": {
         "message": "Allow segments that mute audio instead of skip"
+    },
+    "fullVideoSegments": {
+        "message": "Show an icon when a video is entirely an advertisement",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
@@ -749,6 +773,12 @@
         "message": "Got it",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "This segment is large. If the whole video is about one topic, then change from \"Skip\" to \"Full Video\". See the guidelines for more information."
+    },
+    "categoryPillTitleText": {
+        "message": "This entire video is labeled as this category and is too tightly integrated to be able to separate"
+    },
     "experiementOptOut": {
         "message": "Opt-out of all future experiments",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -847,8 +877,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use your mousewheel while hovering over the edit box to quickly adjust the time. Combinations of the ctrl or shift key can be used to fine tune the changes."
     },
-    "fillerNewFeature": {
-        "message": "New! Skip tangents and jokes with the filler category. Enable in options"
+    "categoryPillNewFeature": {
+        "message": "New! See when a video is entirely sponsored or self-promotion"
     },
     "dayAbbreviation": {
         "message": "d",

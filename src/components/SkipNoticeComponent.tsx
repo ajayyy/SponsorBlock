@@ -4,7 +4,6 @@ import Config from "../config"
 import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType, SponsorSourceType, SegmentUUID } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
-import SubmissionNotice from "../render/SubmissionNotice";
 import Utils from "../utils";
 const utils = new Utils();
 
@@ -13,15 +12,7 @@ import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import PencilSvg from "../svg-icons/pencil_svg";
-
-export enum SkipNoticeAction {
-    None,
-    Upvote,
-    Downvote,
-    CategoryVote,
-    CopyDownvote,
-    Unskip
-}
+import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 
 export interface SkipNoticeProps {
     segments: SponsorTime[];
@@ -74,7 +65,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     amountOfPreviousNotices: number;
     showInSecondSlot: boolean;
-    audio: HTMLAudioElement;
     
     idSuffix: string;
 
@@ -96,7 +86,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.segments = props.segments;
         this.autoSkip = props.autoSkip;
         this.contentContainer = props.contentContainer;
-        this.audio = null;
 
         const noticeTitle = getSkippingText(this.segments, this.props.autoSkip);
 
@@ -156,13 +145,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    componentDidMount(): void {
-        if (Config.config.audioNotificationOnSkip && this.audio) {
-            this.audio.volume = this.contentContainer().v.volume * 0.1;
-            if (this.autoSkip) this.audio.play();
-        }
-    }
-
     render(): React.ReactElement {
         const noticeStyle: React.CSSProperties = { }
         if (this.contentContainer().onMobileYouTube) {
@@ -186,7 +168,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.FadedForAutoSkip && this.autoSkip)}
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
-                videoSpeed={() => this.contentContainer().v?.playbackRate}
                 style={noticeStyle}
                 biggerCloseButton={this.contentContainer().onMobileYouTube}
                 ref={this.noticeRef}
@@ -196,10 +177,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 firstColumn={firstColumn}
                 bottomRow={[...this.getMessageBoxes(), ...this.getBottomRow() ]}
                 onMouseEnter={() => this.onMouseEnter() } >
-                    
-                {(Config.config.audioNotificationOnSkip) && <audio ref={(source) => { this.audio = source; }}>
-                    <source src={chrome.extension.getURL("icons/beep.ogg")} type="audio/ogg"></source>
-                </audio>}
             </NoticeComponent>
         );
     }
@@ -230,7 +207,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 style={{marginRight: "5px", marginLeft: "5px"}}
                                 title={chrome.i18n.getMessage("reportButtonInfo")}
                                 onClick={() => this.prepAction(SkipNoticeAction.Downvote)}>
-                            <ThumbsDownSvg fill={this.downvoteButtonColor(SkipNoticeAction.Downvote)} />
+                            <ThumbsDownSvg fill={downvoteButtonColor(this.segments, this.state.actionState, SkipNoticeAction.Downvote)} />
                         </div>
 
                         {/* Copy and Downvote Button */}
@@ -293,7 +270,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         {/* Copy Segment */}
                         <button className="sponsorSkipObject sponsorSkipNoticeButton"
                                 title={chrome.i18n.getMessage("CopyDownvoteButtonInfo")}
-                                style={{color: this.downvoteButtonColor(SkipNoticeAction.Downvote)}}
+                                style={{color: downvoteButtonColor(this.segments, this.state.actionState, SkipNoticeAction.Downvote)}}
                                 onClick={() => this.prepAction(SkipNoticeAction.CopyDownvote)}>
                             {chrome.i18n.getMessage("CopyAndDownvote")}
                         </button>
@@ -739,16 +716,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             thanksForVotingText: null,
             messages: []
         });
-    }
-
-    downvoteButtonColor(downvoteType: SkipNoticeAction): string {
-        // Also used for "Copy and Downvote"
-        if (this.segments.length > 1) {
-            return (this.state.actionState === downvoteType) ? this.selectedColor : this.unselectedColor;
-        } else {
-            // You dont have segment selectors so the lockbutton needs to be colored and cannot be selected.
-            return Config.config.isVip && this.segments[0].locked === 1 ? this.lockedColor : this.unselectedColor;
-        }
     }
 
     private getUnskipText(): string {

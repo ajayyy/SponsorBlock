@@ -1,5 +1,6 @@
 import Config from "./config";
 import * as CompileConfig from "../config.json";
+import * as invidiousList from "../ci/invidiouslist.json";
 
 // Make the config public for debugging purposes
 window.SB = Config;
@@ -297,8 +298,8 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
     const resetButton = element.querySelector(".invidious-instance-reset");
     resetButton.addEventListener("click", function() {
         if (confirm(chrome.i18n.getMessage("resetInvidiousInstanceAlert"))) {
-            // Set to a clone of the default
-            Config.config[option] = Config.defaults[option].slice(0);
+            // Set to CI populated list
+            Config.config[option] = invidiousList;
         }
     });
 }

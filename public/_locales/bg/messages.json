@@ -302,6 +302,10 @@
     "mute": {
         "message": "Заглушаване"
     },
+    "full": {
+        "message": "Целия видеоклип",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Пропускане на {0}?"
     },
@@ -533,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Подобно на „спонсорство“, но за безплатна реклама или самореклама. Това включва търговия със стоки, дарения или информация с кого каналът има сътрудничество."
     },
+    "category_exclusive_access": {
+        "message": "Ексклузивен достъп"
+    },
+    "category_exclusive_access_description": {
+        "message": "Само за обозначаване на цели видеоклипове. Използва се, когато видеоклипът представя продукт, услуга или място, до които е получен безплатен или субсидиран достъп."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Този видеоклип представя продукт, услуга или място, до което е получен безплатен или субсидиран достъп",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Напомняне за действие (абониране)"
     },
@@ -614,11 +628,18 @@
     "showOverlay_POI": {
         "message": "Показване в лентата на прогреса"
     },
+    "showOverlay_full": {
+        "message": "Показване на етикета"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Автоматично пропускане на всички сегменти, когато има сегмент без музика"
     },
     "muteSegments": {
         "message": "Разрешаване на сегменти, които заглушават звука, вместо да се пропускат"
+    },
+    "fullVideoSegments": {
+        "message": "Показване на икона, когато видеоклипът е изцяло реклама",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Вашият цвят не е форматиран правилно. Трябва да бъде 3- или 6-цифрен шестнадесетичен код с „#“ в началото."
@@ -737,6 +758,12 @@
         "message": "Разбрах",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Този сегмент е голям. Ако целия видеоклип е на една тема, променете от „Пропускане“ на „Целия видеоклип“. Вижте насоките за повече информация."
+    },
+    "categoryPillTitleText": {
+        "message": "Целият видеоклип е обозначен с тази категория и е твърде тясно интегриран, за да може да се раздели"
+    },
     "experiementOptOut": {
         "message": "Отказ от всички бъдещи експерименти",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,7 +862,15 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Използвайте колелото на мишката, докато държите курсора върху полето за редактиране, за да коригирате бързо времето. Комбинации с клавиша ctrl или shift могат да се използват за фина настройка на промените."
     },
-    "fillerNewFeature": {
-        "message": "Ново! Пропускайте части извън темата и шегите с категорията „Пълнеж“. Активирайте я в опциите"
+    "categoryPillNewFeature": {
+        "message": "Ново! Вижте кога видеоклипът е изцяло спонсориран или саморекламен"
+    },
+    "dayAbbreviation": {
+        "message": "д",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "ч",
+        "description": "100h"
     }
 }

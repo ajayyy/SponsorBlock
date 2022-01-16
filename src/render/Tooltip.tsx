@@ -8,6 +8,7 @@ export interface TooltipProps {
     prependElement?: HTMLElement, // Element to append before
     bottomOffset?: string
     timeout?: number;
+    opacity?: number;
 }
 
 export class Tooltip {
@@ -18,11 +19,12 @@ export class Tooltip {
     
     constructor(props: TooltipProps) {
         props.bottomOffset ??= "70px";
+        props.opacity ??= 0.7;
         this.text = props.text;
 
         this.container = document.createElement('div');
         this.container.id = "sponsorTooltip" + props.text;
-        this.container.style.display = "relative";
+        this.container.style.position = "relative";
 
         if (props.prependElement) {
             props.referenceNode.insertBefore(this.container, props.prependElement);
@@ -34,8 +36,10 @@ export class Tooltip {
             this.timer = setTimeout(() => this.close(), props.timeout * 1000);
         }
 
+        const backgroundColor = `rgba(28, 28, 28, ${props.opacity})`;
+        
         ReactDOM.render(
-            <div style={{bottom: props.bottomOffset}} 
+            <div style={{bottom: props.bottomOffset, backgroundColor}} 
                 className="sponsorBlockTooltip" >
                 <div>
                     <img className="sponsorSkipLogo sponsorSkipObject"

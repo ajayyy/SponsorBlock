@@ -62,6 +62,7 @@ export enum ActionType {
     Skip = "skip",
     Mute = "mute",
     Chapter = "chapter",
+    Full = "full"
 }
 
 export const ActionTypes = [ActionType.Skip, ActionType.Mute];

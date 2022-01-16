@@ -51,6 +51,28 @@ jobs:
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/ChromeExtensionBeta.zip *
 
+
+      # Create Safari artifacts
+      - name: Create Safari artifacts
+        run: npm run build:safari
+      - uses: actions/upload-artifact@v2
+        with:
+          name: SafariExtension
+          path: dist
+      - name: Zip Artifacts
+        run: cd ./dist ; zip -r ../builds/SafariExtension.zip *
+      # Create Edge artifacts
+      - name: Clear dist for Edge
+        run: rm -rf ./dist
+      - name: Create Edge artifacts
+        run: npm run build:edge
+      - uses: actions/upload-artifact@v2
+        with:
+          name: EdgeExtension
+          path: dist
+      - name: Zip Artifacts
+        run: cd ./dist ; zip -r ../builds/EdgeExtension.zip *
+
       # Upload each release asset
       - name: Upload ChromeExtension to release
         uses: Shopify/upload-to-release@master
@@ -72,6 +94,20 @@ jobs:
           args: builds/FirefoxExtension.zip
           name: FirefoxExtension.zip
           path: ./builds/FirefoxExtension.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload SafariExtension to release
+        uses: Shopify/upload-to-release@master
+        with:
+          args: builds/SafariExtension.zip
+          name: SafariExtension.zip
+          path: ./builds/SafariExtension.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload EdgeExtension to release
+        uses: Shopify/upload-to-release@master
+        with:
+          args: builds/EdgeExtension.zip
+          name: EdgeExtension.zip
+          path: ./builds/EdgeExtension.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Firefox Beta
