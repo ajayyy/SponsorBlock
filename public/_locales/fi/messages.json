@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "Seuraava lähetys on lyhyempi kuin vähimmäiskeston asetuksesi. Tämä voi tarkoittaa sitä, että tämä on jo lähetetty, ja sitä ei vain oteta huomioon tämän asetuksen vuoksi. Oletko varma, että haluat lähettää?"
     },
+    "liveOrPremiere": {
+        "message": "Aktiivisen livestriimin tai ensiesityksen aikana lähettäminen ei ole sallittua. Odota kunnes se loppuu, sitten päivitä sivu ja varmista, että segmentit ovat yhä oikein."
+    },
     "showUploadButton": {
         "message": "Näytä lähetä-painike"
     },
