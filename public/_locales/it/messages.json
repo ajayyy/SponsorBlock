@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "Il seguente contributo è più breve della tua opzione di durata minima. Ciò potrebbe significare che questo è già stato inviato e viene semplicemente ignorato a causa di questa opzione. Sei sicuro di voler inviare?"
     },
+    "liveOrPremiere": {
+        "message": "Inviare segmenti per una live o premiere non è consentito. Per favore aspetta che finisca, poi ricarica la pagina e verifica che i segmenti siano ancora validi."
+    },
     "showUploadButton": {
         "message": "Mostra Pulsante di Caricamento"
     },
