@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "A következő szegmens rövidebb, mint az általad beállított minimális időtartam. Ez azt jelentheti, hogy már beküldhették, csak emiatt az opció miatt nálad nem jelenik meg. Biztosan beküldöd?"
     },
+    "liveOrPremiere": {
+        "message": "Aktív élő közvetítés vagy premier közben nem lehet szegmenseket beküldeni. Kérjük várd meg a végét, majd frissítsd az oldalt és ellenőrizd, hogy a szegmensek nem csúsztak-e el."
+    },
     "showUploadButton": {
         "message": "Feltöltés gomb megjelenítése"
     },
