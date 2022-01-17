@@ -3,11 +3,15 @@
         "message": "اسپانسربلاک برای یوتیوب - اسپانسر ها را رد کنید",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "بخش های اسپانسر شده، درخواست ساب اسکرایب و خیلی چیز های دیگر در ویدیو های یوتیوب را رد کنید. قسمت های اسپانسری ویدیو هایی که میبینید را گزارش کنید تا در وقت دیگران صرفه جویی شود.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "سرور گفت که این درخواست نامعتبر است"
     },
     "429": {
-        "message": "شما برای این یک ویدیو تعداد بیش از حدی زمان اسپانسر ثبت کرده‌اید، آیا مطمئن هستید که به این تعداد وجود دارد؟"
+        "message": "شما برای این ویدیو قسمت های اسپانسری خیلی زیادی ثبت کرده اید، آیا مطمئنید که به این تعداد وجوددارد؟"
     },
     "409": {
         "message": "این قبلاً ثبت شده است"
@@ -127,7 +131,7 @@
         "message": "شما دیگران را نجات دادید از "
     },
     "viewLeaderboard": {
-        "message": "لیست سرنشینان"
+        "message": "نفرات برتر"
     },
     "recordTimesDescription": {
         "message": "ثبت"
@@ -274,7 +278,23 @@
         "message": "فهمیدم",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "warningChatInfo": {
+        "message": "شما یک اخطار دریافت کرده اید و موقتاً نمیتوانید بخشی را ثبت کنید. این یعنی ما متوجه شدیم که شما یک سری اشتباهات متداول داشتید اما قصد و نیت خرابکاری نداشتید، لطفاً فقط تایید کنید که شما از قوانین آگاهی دارید و سپس ما این اخطار را حذف خواهیم کرد. شما میتوانید به کمک discord.gg/SponsorBlock یا matrix.to/#/#sponsor:ajay.app عضو گروه ما بشوید."
+    },
+    "voteRejectedWarning": {
+        "message": "رای شما رد شد چون شما یک اخطار دارید. برای حل این مشکل یک کلیک کنید تا گروه چت ما باز بشود، یا اینکه بعداً هر موقع وقت داشتید این کار را انجام بدهید.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
     "Donate": {
         "message": "کمک مالی"
+    },
+    "hideDonationLink": {
+        "message": "پنهان کردن لینک کمک مالی"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "ازینکه افزونه SponserBlock را نصب کردید سپاسگزاریم."
+    },
+    "helpPageReviewOptions": {
+        "message": "لطفاً تنظیمات زیر را بررسی کنید"
     }
 }
