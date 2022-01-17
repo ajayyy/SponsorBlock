@@ -540,6 +540,13 @@
     "category_exclusive_access": {
         "message": "Exkluzívny Prístup"
     },
+    "category_exclusive_access_description": {
+        "message": "Iba pre označovanie celých videí. Používa sa, keď video predstavuje produkt, službu alebo miesto, ku ktorým získali bezplatný alebo dotovaný prístup."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Toto video predstavuje produkt, službu alebo miesto, ku ktorým získali bezplatný alebo dotovaný prístup",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Pripomienka interakcie (Prihlásiť sa na odber)"
     },
