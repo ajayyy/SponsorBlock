@@ -71,7 +71,7 @@
         "message": "Sponsor sürelerini yollarken bir sorun oluştur, lütfen tekrar deneyin."
     },
     "sponsorFound": {
-        "message": "Bu videonun kısımları veri tabanımızda mevut"
+        "message": "Bu videonun kısımları veri tabanımızda mevcut"
     },
     "sponsor404": {
         "message": "Kısım bulunamadı"
@@ -439,6 +439,9 @@
     },
     "shortCheck": {
         "message": "Sıradaki öneri belirlediğiniz minimum süre ayarından daha kısa. Bu zaten yollandığı ve bu ayardan dolayı yok sayıldığı anlamına gelebilir. Göndermek istediğinizden emin misiniz?"
+    },
+    "liveOrPremiere": {
+        "message": "Bir canlı yayın veya ön gösterim sırasında kısım gönderilemez. Yayının bitmesini bekleyin, sonra sayfayı tazeleyip kısımların geçerli olduğunu kontrol edin."
     },
     "showUploadButton": {
         "message": "Karşıya Yükleme Butonunu Göster"
