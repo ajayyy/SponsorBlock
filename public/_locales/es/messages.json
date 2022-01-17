@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "El siguiente envío es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
     },
+    "liveOrPremiere": {
+        "message": "No se permite enviar en una transmisión en vivo activa o estreno. Espere hasta que finalice, luego actualice la página y verifique que los segmentos aún sean válidos."
+    },
     "showUploadButton": {
         "message": "Mostrar botón de subida"
     },
