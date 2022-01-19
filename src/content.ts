@@ -92,8 +92,8 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
-// wait infinitely for hover preview
-utils.wait(() => getHoverPreview(), 0, 500).then(() => refreshVideoAttachments())
+// wait for hover preview to appear, and refresh attachments if ever found
+window.addEventListener("DOMContentLoaded", () => utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments()));
 addPageListeners();
 addHotkeyListener();
 
