@@ -19,6 +19,11 @@ export function getControls(): HTMLElement | false {
     return false;
 }
 
+export function getHoverPreview(): Element | false {
+    const hoverPreview = document.querySelector(".ytp-inline-preview-ui");
+    return hoverPreview || false;
+}
+
 export function isVisible(element: HTMLElement): boolean {
     return element && element.offsetWidth > 0 && element.offsetHeight > 0;
 }

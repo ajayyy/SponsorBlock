@@ -1,10 +1,11 @@
 /** Function that can be used to wait for a condition before returning. */
 async function wait<T>(condition: () => T | false, timeout = 5000, check = 100): Promise<T> {
     return await new Promise((resolve, reject) => {
-        setTimeout(() => {
+        const failTimeout = setTimeout(() => {
             clearInterval(interval);
             reject("TIMEOUT");
         }, timeout);
+        if (timeout === 0) clearTimeout(failTimeout);
 
         const intervalCheck = () => {
             const result = condition();
