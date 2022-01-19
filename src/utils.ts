@@ -331,9 +331,9 @@ export default class Utils {
 
     findReferenceNode(): HTMLElement {
         const selectors = [
-            "#player-container",
             "#movie_player",
             "#c4-player", // Channel Trailer
+            "#player-container", // Preview on hover
             "#main-panel.ytmusic-player-page", // YouTube music
             "#player-container .video-js", // Invidious
             ".main-video-section > .video-container" // Cloudtube  
