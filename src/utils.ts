@@ -21,12 +21,51 @@ export default class Utils {
         "popup.css"
     ];
 
+    /* Used for waitForElement */
+    waitingMutationObserver:MutationObserver = null;
+    waitingElements: { selector: string, callback: (element: Element) => void }[] = [];
+
     constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
     async wait<T>(condition: () => T | false, timeout = 5000, check = 100): Promise<T> {
         return GenericUtils.wait(condition, timeout, check);
+    }
+
+    /* Uses a mutation observer to wait asynchronously */
+    async waitForElement(selector: string): Promise<Element> {
+        return await new Promise((resolve) => {
+            this.waitingElements.push({
+                selector,
+                callback: resolve
+            });
+
+            if (!this.waitingMutationObserver) {
+                this.waitingMutationObserver = new MutationObserver(() => {
+                    const foundSelectors = [];
+                    for (const { selector, callback } of this.waitingElements) {
+                        const element = document.querySelector(selector);
+                        if (element) {
+                            callback(element);
+                            foundSelectors.push(selector);
+                        }
+                    }
+
+                    this.waitingElements = this.waitingElements.filter((element) => !foundSelectors.includes(element.selector));
+                    
+                    if (this.waitingElements.length === 0) {
+                        this.waitingMutationObserver.disconnect();
+                        this.waitingMutationObserver = null;
+                    }
+                });
+
+                this.waitingMutationObserver.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+        });
     }
 
     containsPermission(permissions: chrome.permissions.Permissions): Promise<boolean> {
@@ -331,9 +370,9 @@ export default class Utils {
 
     findReferenceNode(): HTMLElement {
         const selectors = [
-            "#player-container-id",
             "#movie_player",
             "#c4-player", // Channel Trailer
+            "#player-container", // Preview on hover
             "#main-panel.ytmusic-player-page", // YouTube music
             "#player-container .video-js", // Invidious
             ".main-video-section > .video-container" // Cloudtube  
@@ -347,7 +386,7 @@ export default class Utils {
                 let index = 1;
 
                 //find the child that is the video player (sometimes it is not the first)
-                while (index < player.children.length && (!referenceNode.classList.contains("html5-video-player") || !referenceNode.classList.contains("ytp-embed"))) {
+                while (index < player.children.length && (!referenceNode.classList?.contains("html5-video-player") || !referenceNode.classList?.contains("ytp-embed"))) {
                     referenceNode = player.children[index] as HTMLElement;
 
                     index++;
