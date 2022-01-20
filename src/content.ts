@@ -682,9 +682,6 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
     setupVideoMutationListener();
 
-    //check database for sponsor times
-    //made true once a setTimeout has been created to try again after a server error
-    let recheckStarted = false;
     // Create categories list
     const categories: string[] = [];
     for (const categorySelection of Config.config.categorySelections) {
@@ -763,18 +760,6 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         sponsorLookupRetries = 0;
     } else if (response?.status === 404) {
         retryFetch();
-    } else if (sponsorLookupRetries < 15 && !recheckStarted) {
-        recheckStarted = true;
-
-        //TODO lower when server becomes better (back to 1 second)
-        //some error occurred, try again in a second
-        setTimeout(() => {
-            if (sponsorVideoID && sponsorTimes?.length === 0) {
-                sponsorsLookup(sponsorVideoID);
-            }
-        }, 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
-
-        sponsorLookupRetries++;
     }
     
     lookupVipInformation(id);
