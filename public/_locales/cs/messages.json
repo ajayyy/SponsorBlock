@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "Váš příspěvek je kratší než vaše možnost nejkratší doby trvání. To by mohlo znamenat, že někdo segment již odeslal, a je jenom ignorován kvůli této možnosti. Opravdu chcete odeslat váš příspěvek?"
     },
+    "liveOrPremiere": {
+        "message": "Odesílání na aktivním streamu nebo premiéře. Počkejte prosím, než skončí, poté obnovte stránku a ověřte, zda jsou segmenty stále platné."
+    },
     "showUploadButton": {
         "message": "Zobrazit tlačítko Nahrát"
     },
@@ -541,10 +544,10 @@
         "message": "Exkluzivní přístup"
     },
     "category_exclusive_access_description": {
-        "message": "Pouze pro označování celých videí. Používá se v případě, že video propaguje produkt, službu nebo místo, ke kterému získali bezplatný nebo sponzorovaný přístup."
+        "message": "Pouze pro označování celých videí. Používá se v případě, že je ve videu zobrazován produkt, služba nebo místo, které autor obdržel zdarma nebo s bezplatným přístupem."
     },
     "category_exclusive_access_pill": {
-        "message": "Toto video propaguje produkt, službu nebo místo, ke kterému získali bezplatný nebo sponzorovaný přístup",
+        "message": "V tomto videu je zobrazován produkt, služba nebo místo, které autor obdržel zdarma nebo s bezplatným přístupem",
         "description": "Short description for this category"
     },
     "category_interaction": {
