@@ -95,10 +95,6 @@ window.addEventListener("DOMContentLoaded", () => utils.waitForElement(".ytp-inl
 addPageListeners();
 addHotkeyListener();
 
-//the amount of times the sponsor lookup has retried
-//this only happens if there is an error
-let sponsorLookupRetries = 0;
-
 /** Segments created by the user which have not yet been submitted. */
 let sponsorTimesSubmitting: SponsorTime[] = [];
 
@@ -233,7 +229,6 @@ function resetValues() {
 
     //reset sponsor times
     sponsorTimes = null;
-    sponsorLookupRetries = 0;
     sponsorSkipped = [];
 
     videoInfo = null;
@@ -756,8 +751,6 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
             //otherwise the listener can handle it
             updatePreviewBar();
         }
-
-        sponsorLookupRetries = 0;
     } else if (response?.status === 404) {
         retryFetch();
     }
@@ -834,8 +827,6 @@ function retryFetch(): void {
             sponsorsLookup(sponsorVideoID);
         }
     }, 10000 + Math.random() * 30000);
-
-    sponsorLookupRetries = 0;
 }
 
 /**
