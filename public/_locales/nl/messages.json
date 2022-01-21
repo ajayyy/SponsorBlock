@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "De volgende inzending is korter dan uw \"minimale tijdsduur\"-instelling. Dit kan betekenen dat dit al is ingediend en genegeerd wordt door deze optie. Weet u zeker dat u dit wilt indienen?"
     },
+    "liveOrPremiere": {
+        "message": "Indienen op een actieve livesteam of première is niet toegestaan. Wacht tot hij klaar is, vernieuw dan de pagina en controleer of de segmenten nog geldig zijn."
+    },
     "showUploadButton": {
         "message": "Uploaden-knop weergeven"
     },
@@ -537,6 +540,16 @@
     "category_selfpromo_description": {
         "message": "Vergelijkbaar met \"sponsor\", behalve voor onbetaalde of zelfpromotie. Dit is inclusief secties over koopwaar, donaties of informatie over met wie ze hebben samengewerkt."
     },
+    "category_exclusive_access": {
+        "message": "Exclusieve toegang"
+    },
+    "category_exclusive_access_description": {
+        "message": "Alleen voor het labelen van volledige video's. Wordt gebruikt wanneer een video een product, dienst of locatie laat zien waartoe men gratis of gesubsidieerd toegang heeft gekregen."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Deze video toont een product, dienst of locatie waartoe men gratis of gesubsidieerd toegang heeft gekregen",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Interactieherinnering (abonneren)"
     },
@@ -617,6 +630,9 @@
     },
     "showOverlay_POI": {
         "message": "Weergeven in tijdbalk"
+    },
+    "showOverlay_full": {
+        "message": "Label weergeven"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automatisch alle segmenten overslaan wanneer er een niet-muziek-segment is"

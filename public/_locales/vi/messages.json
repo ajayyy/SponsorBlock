@@ -537,6 +537,9 @@
     "category_selfpromo_description": {
         "message": "Tương tự như 'nhà tài trợ' ngoại trừ việc quảng cáo không được trả tiền hay tự quảng cáo. Điều này bao gồm các phần hàng hóa, đóng góp, hoặc thông tin về người mà họ hợp tác cùng."
     },
+    "category_exclusive_access": {
+        "message": "Truy cập riêng"
+    },
     "category_interaction": {
         "message": "Nhắc tương tác (Đăng ký)"
     },

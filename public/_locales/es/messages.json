@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "El siguiente envío es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
     },
+    "liveOrPremiere": {
+        "message": "No se permite enviar en una transmisión en vivo activa o estreno. Espere hasta que finalice, luego actualice la página y verifique que los segmentos aún sean válidos."
+    },
     "showUploadButton": {
         "message": "Mostrar botón de subida"
     },
@@ -537,6 +540,16 @@
     "category_selfpromo_description": {
         "message": "Similar a \"sponsor\", excepto que para la promoción propia o no remunerada. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
     },
+    "category_exclusive_access": {
+        "message": "Acceso Exclusivo"
+    },
+    "category_exclusive_access_description": {
+        "message": "Solo para etiquetar videos completos. Utilizado cuando un video exhibe un producto, servicio o ubicación al que han recibido acceso gratuito o subsidiado."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Este video exhibe un producto, servicio o ubicación al que han recibido acceso gratuito o subsidiado",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Recordatorio de interacción (subscribir)"
     },
@@ -617,6 +630,9 @@
     },
     "showOverlay_POI": {
         "message": "Mostrar en la barra de búsqueda"
+    },
+    "showOverlay_full": {
+        "message": "Mostrar Etiqueta"
     },
     "autoSkipOnMusicVideos": {
         "message": "Omitir automáticamente todos los segmentos cuando hay un segmento sin música"

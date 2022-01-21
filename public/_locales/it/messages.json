@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "Il seguente contributo è più breve della tua opzione di durata minima. Ciò potrebbe significare che questo è già stato inviato e viene semplicemente ignorato a causa di questa opzione. Sei sicuro di voler inviare?"
     },
+    "liveOrPremiere": {
+        "message": "Inviare segmenti per una live o premiere non è consentito. Per favore aspetta che finisca, poi ricarica la pagina e verifica che i segmenti siano ancora validi."
+    },
     "showUploadButton": {
         "message": "Mostra Pulsante di Caricamento"
     },
@@ -537,6 +540,16 @@
     "category_selfpromo_description": {
         "message": "Simile alle \"sponsorizzazioni\" tranne che per promozioni non pagate o autopromozioni. Ciò include sezioni riguardanti vendita di merce, donazioni o informazioni in merito a collaboratori."
     },
+    "category_exclusive_access": {
+        "message": "Accesso Esclusivo"
+    },
+    "category_exclusive_access_description": {
+        "message": "Solo per etichettare interi video. Usato quando un video mostra un prodotto, un servizio o un posto che hanno ricevuto gratuitamente o a cui hanno avuto un accesso sovvenzionato."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Questo video mostra un prodotto, un servizio o un posto che hanno ricevuto gratuitamente o a cui hanno avuto un accesso sovvenzionato",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Promemoria di Interazione (Sottoscrizione)"
     },
@@ -568,10 +581,10 @@
         "message": "Riepilogo rapido degli episodi precedenti, o un'anteprima di ciò che sta arrivando più tardi nel video attuale. Inteso per clip, non per riassunti a voce."
     },
     "category_filler": {
-        "message": "Tangente di Riempimento"
+        "message": "Tangente riempitiva"
     },
     "category_filler_description": {
-        "message": "Le scene tangenziali aggiunte solo per riempire o per umorismo che non sono richieste per comprendere il contenuto principale del video. Questo non dovrebbe includere segmenti che forniscono contesto o dettagli di sfondo."
+        "message": "Le scene riempitive sono aggiunte solo per riempire o per umorismo che non sono richieste per comprendere il contenuto principale del video. Questo non dovrebbe includere segmenti che forniscono contesto o dettagli di sfondo."
     },
     "category_filler_short": {
         "message": "Riempimento"
@@ -617,6 +630,9 @@
     },
     "showOverlay_POI": {
         "message": "Mostra Nella Barra di Ricerca"
+    },
+    "showOverlay_full": {
+        "message": "Mostra Etichetta"
     },
     "autoSkipOnMusicVideos": {
         "message": "Salta automaticamente tutti i segmenti quando c'è un segmento non musicale"
@@ -832,7 +848,7 @@
         "message": "Scopri di Più"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Vota negativamente e crea una copia locale per reinviare"
+        "message": "Vota negativamente e crea una copia locale da reinviare"
     },
     "OpenCategoryWikiPage": {
         "message": "Apri la pagina della wiki di questa categoria."
