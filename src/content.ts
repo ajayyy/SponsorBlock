@@ -1,5 +1,5 @@
 import Config from "./config";
-import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, CategoryActionType, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable, ActionType, ScheduledTime } from "./types";
+import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable, ActionType, ScheduledTime } from "./types";
 
 import { ContentContainer } from "./types";
 import Utils from "./utils";
@@ -13,7 +13,6 @@ import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse, VoteResponse } from "./messageTypes";
 import * as Chat from "./js-components/chat";
-import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { getStartTimeFromUrl } from "./utils/urlParser";
 import { findValidElement, getControls, getHashParams, isVisible } from "./utils/pageUtils";
@@ -731,7 +730,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         if (Config.config.minDuration !== 0) {
             for (let i = 0; i < sponsorTimes.length; i++) {
                 if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] < Config.config.minDuration
-                        && getCategoryActionType(sponsorTimes[i].category) !== CategoryActionType.POI) {
+                        && sponsorTimes[i].actionType !== ActionType.Poi) {
                     sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
                 }
             }
@@ -767,7 +766,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 }
 
 function getEnabledActionTypes(): ActionType[] {
-    const actionTypes = [ActionType.Skip];
+    const actionTypes = [ActionType.Skip, ActionType.Poi];
     if (Config.config.muteSegments) {
         actionTypes.push(ActionType.Mute);
     }
@@ -852,7 +851,7 @@ function startSkipScheduleCheckingForStartSponsors() {
         let startingSegment: SponsorTime = null;
         for (const time of sponsorTimes) {
             if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime 
-                    && getCategoryActionType(time.category) === CategoryActionType.Skippable) {
+                    && time.actionType !== ActionType.Poi) {
                         startingSegmentTime = time.segment[0];
                         startingSegment = time;
                         found = true;
@@ -862,7 +861,7 @@ function startSkipScheduleCheckingForStartSponsors() {
         if (!found) {
             for (const time of sponsorTimesSubmitting) {
                 if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime 
-                        && getCategoryActionType(time.category) === CategoryActionType.Skippable) {
+                        && time.actionType !== ActionType.Poi) {
                             startingSegmentTime = time.segment[0];
                             startingSegment = time;
                             found = true;
@@ -873,7 +872,7 @@ function startSkipScheduleCheckingForStartSponsors() {
 
         // For highlight category
         const poiSegments = sponsorTimes
-            .filter((time) => time.segment[1] > video.currentTime && getCategoryActionType(time.category) === CategoryActionType.POI)
+            .filter((time) => time.segment[1] > video.currentTime && time.actionType === ActionType.Poi)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
             const skipOption = utils.getCategorySelection(time.category)?.option;
@@ -1016,7 +1015,7 @@ function updatePreviewBar(): void {
                 category: segment.category,
                 unsubmitted: false,
                 actionType: segment.actionType,
-                showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI
+                showLarger: segment.actionType === ActionType.Poi
             });
         });
     }
@@ -1027,7 +1026,7 @@ function updatePreviewBar(): void {
             category: segment.category,
             unsubmitted: true,
             actionType: segment.actionType,
-            showLarger: getCategoryActionType(segment.category) === CategoryActionType.POI
+            showLarger: segment.actionType === ActionType.Poi
         });
     });
 
@@ -1200,7 +1199,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
                     || (includeIntersectingSegments && possibleTimes[i].scheduledTime < minimum && possibleTimes[i].segment[1] > minimum))) 
                 && (!onlySkippableSponsors || shouldSkip(possibleTimes[i]))
                 && (!hideHiddenSponsors || possibleTimes[i].hidden === SponsorHideType.Visible)
-                && getCategoryActionType(possibleTimes[i].category) === CategoryActionType.Skippable) {
+                && possibleTimes[i].actionType !== ActionType.Poi) {
 
             scheduledTimes.push(possibleTimes[i].scheduledTime);
             includedTimes.push(possibleTimes[i]);
@@ -1254,6 +1253,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
     if ((autoSkip || sponsorTimesSubmitting.some((time) => time.segment === skippingSegments[0].segment)) 
             && v.currentTime !== skipTime[1]) {
         switch(skippingSegments[0].actionType) {
+            case ActionType.Poi:
             case ActionType.Skip: {
                 // Fix for looped videos not working when skipping to the end #426
                 // for some reason you also can't skip to 1 second before the end
@@ -1286,7 +1286,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
 
     if (!autoSkip 
             && skippingSegments.length === 1 
-            && getCategoryActionType(skippingSegments[0].category) === CategoryActionType.POI) {
+            && skippingSegments[0].actionType === ActionType.Poi) {
         skipButtonControlBar.enable(skippingSegments[0]);
         if (onMobileYouTube) skipButtonControlBar.setShowKeybindHint(false);
 
@@ -1377,7 +1377,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
 function shouldAutoSkip(segment: SponsorTime): boolean {
     return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
-                && getCategoryActionType(segment.category) === CategoryActionType.Skippable);
+                && segment.actionType !== ActionType.Poi);
 }
 
 function shouldSkip(segment: SponsorTime): boolean {

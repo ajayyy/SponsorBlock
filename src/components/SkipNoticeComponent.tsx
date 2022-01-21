@@ -1,13 +1,13 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config"
-import { Category, ContentContainer, CategoryActionType, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType, SponsorSourceType, SegmentUUID } from "../types";
+import { Category, ContentContainer, SponsorHideType, SponsorTime, NoticeVisbilityMode, ActionType, SponsorSourceType, SegmentUUID } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import Utils from "../utils";
 const utils = new Utils();
 
-import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
+import { getSkippingText } from "../utils/categoryUtils";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
@@ -326,7 +326,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     getSkipButton(): JSX.Element {
         if (this.state.showSkipButton && (this.segments.length > 1 
-                || getCategoryActionType(this.segments[0].category) !== CategoryActionType.POI
+                || this.segments[0].actionType !== ActionType.Poi
                 || this.props.unskipTime)) {
 
             const style: React.CSSProperties = {
@@ -547,7 +547,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     getCategoryOptions(): React.ReactElement[] {
         const elements = [];
 
-        const categories = (CompileConfig.categoryList.filter((cat => getCategoryActionType(cat as Category) === CategoryActionType.Skippable))) as Category[];
+        const categories = (CompileConfig.categoryList.filter((cat => CompileConfig.categorySupport[cat].includes(ActionType.Skip)))) as Category[];
         for (const category of categories) {
             elements.push(
                 <option value={category}
@@ -601,7 +601,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getUnskippedModeInfo(index: number, buttonText: string): SkipNoticeState {
-        const changeCountdown = getCategoryActionType(this.segments[index].category) === CategoryActionType.Skippable;
+        const changeCountdown = this.segments[index].actionType !== ActionType.Poi;
 
         const maxCountdownTime = changeCountdown ? () => {
             const sponsorTime = this.segments[index];

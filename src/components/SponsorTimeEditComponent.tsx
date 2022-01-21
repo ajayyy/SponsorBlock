@@ -1,9 +1,8 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config";
-import { ActionType, Category, CategoryActionType, ContentContainer, SponsorTime } from "../types";
+import { ActionType, Category, ContentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
-import { getCategoryActionType } from "../utils/categoryUtils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
 
@@ -38,7 +37,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     configUpdateListener: () => void;
 
-    previousSkipType: CategoryActionType;
+    previousSkipType: ActionType;
     timeBeforeChangingToPOI: number; // Initialized when first selecting POI
     fullVideoWarningShown = false;
 
@@ -50,7 +49,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         this.idSuffix = this.props.idSuffix;
 
-        this.previousSkipType = CategoryActionType.Skippable;
+        this.previousSkipType = ActionType.Skip;
         this.state = {
             editing: false,
             sponsorTimeEdits: [null, null],
@@ -129,7 +128,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             onWheel={(e) => {this.changeTimesWhenScrolling(0, e, sponsorTime)}}>
                         </input>
 
-                        {getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable ? (
+                        {sponsorTime.actionType !== ActionType.Poi ? (
                             <span>
                                 <span>
                                     {" " + chrome.i18n.getMessage("to") + " "}
@@ -167,7 +166,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
                         {utils.getFormattedTime(segment[0], true) +
-                            ((!isNaN(segment[1]) && getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable)
+                            ((!isNaN(segment[1]) && sponsorTime.actionType !== ActionType.Poi)
                                 ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
                 </div>
             );
@@ -202,7 +201,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 {/* Action Type */}
                 {CompileConfig.categorySupport[sponsorTime.category] && 
                     (CompileConfig.categorySupport[sponsorTime.category]?.length > 1 
-                        || CompileConfig.categorySupport[sponsorTime.category]?.[0] !== "skip") ? (
+                        || ![ActionType.Skip, ActionType.Poi].includes(CompileConfig.categorySupport[sponsorTime.category]?.[0])) ? (
                     <div style={{position: "relative"}}>
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
@@ -224,7 +223,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     {chrome.i18n.getMessage("delete")}
                 </span>
 
-                {(!isNaN(segment[1]) && getCategoryActionType(sponsorTime.category) === CategoryActionType.Skippable) ? (
+                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(sponsorTime.actionType)) ? (
                     <span id={"sponsorTimePreviewButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey)}>
@@ -261,7 +260,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (0 < difference && difference< 0.5) this.showScrollToEditToolTip();
 
         sponsorTimeEdits[index] = targetValue;
-        if (index === 0 && getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = targetValue;
+        if (index === 0 && sponsorTime.actionType === ActionType.Poi) sponsorTimeEdits[1] = targetValue;
 
         this.setState({sponsorTimeEdits});
         this.saveEditTimes();
@@ -290,7 +289,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 timeAsNumber = 0;
             }
             sponsorTimeEdits[index] = utils.getFormattedTime(timeAsNumber, true);
-            if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTimeEdits[1] = sponsorTimeEdits[0];
+            if (sponsorTime.actionType === ActionType.Poi) sponsorTimeEdits[1] = sponsorTimeEdits[0];
 
             this.setState({sponsorTimeEdits});
             this.saveEditTimes();
@@ -380,8 +379,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             return;
         }
 
-        if (getCategoryActionType(event.target.value as Category) === CategoryActionType.POI) {
-            if (this.previousSkipType === CategoryActionType.Skippable) this.timeBeforeChangingToPOI = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
+        if (CompileConfig.categorySupport[event.target.value].includes(ActionType.Poi)) {
+            if (this.previousSkipType !== ActionType.Poi) this.timeBeforeChangingToPOI = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
             this.setTimeTo(1, null);
             this.props.contentContainer().updateEditButtonsOnPlayer();
 
@@ -389,11 +388,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     .some((segment, i) => segment.category === event.target.value && i !== this.props.index)) {
                 alert(chrome.i18n.getMessage("poiOnlyOneSegment"));
             }
-        } else if (getCategoryActionType(event.target.value as Category) === CategoryActionType.Skippable && this.previousSkipType === CategoryActionType.POI) {
+        } else if (CompileConfig.categorySupport[event.target.value].includes(ActionType.Skip) && this.previousSkipType === ActionType.Poi) {
             this.setTimeTo(1, this.timeBeforeChangingToPOI);
         }
 
-        this.previousSkipType = getCategoryActionType(event.target.value as Category);
+        this.previousSkipType = CompileConfig.categorySupport[event.target.value].includes(ActionType.Poi) ? ActionType.Poi : ActionType.Skip;
         this.saveEditTimes();
     }
 
@@ -429,7 +428,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (time === null) time = sponsorTime.segment[0];
 
         sponsorTime.segment[index] = time;
-        if (getCategoryActionType(sponsorTime.category) === CategoryActionType.POI) sponsorTime.segment[1] = time;
+        if (sponsorTime.actionType === ActionType.Poi) sponsorTime.segment[1] = time;
 
         this.setState({
             sponsorTimeEdits: this.getFormattedSponsorTimesEdits(sponsorTime)
