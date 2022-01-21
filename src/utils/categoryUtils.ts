@@ -45,3 +45,13 @@ export function getCategoryActionType(category: Category): CategoryActionType {
         return CategoryActionType.Skippable;
     }
 }
+
+export function getCategorySuffix(category: Category): string {
+    if (category.startsWith("poi_")) {
+        return "_POI";
+    } else if (category === "exclusive_access") {
+        return "_full";
+    } else {
+        return "";
+    }
+}

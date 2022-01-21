@@ -2,10 +2,11 @@
     "serverAddress": "https://sponsor.ajay.app",
     "testingServerAddress": "https://sponsor.ajay.app/test",
     "serverAddressComment": "This specifies the default SponsorBlock server to connect to",
-    "categoryList": ["sponsor", "selfpromo", "interaction", "poi_highlight", "intro", "outro", "preview", "filler", "music_offtopic"],
+    "categoryList": ["sponsor", "selfpromo", "exclusive_access", "interaction", "poi_highlight", "intro", "outro", "preview", "filler", "music_offtopic"],
     "categorySupport": {
         "sponsor": ["skip", "mute", "full"],
         "selfpromo": ["skip", "mute", "full"],
+        "exclusive_access": ["full"],
         "interaction": ["skip", "mute"],
         "intro": ["skip", "mute"],
         "outro": ["skip", "mute"],
@@ -17,6 +18,7 @@
     "wikiLinks": {
         "sponsor": "https://wiki.sponsor.ajay.app/w/Sponsor",
         "selfpromo": "https://wiki.sponsor.ajay.app/w/Unpaid/Self_Promotion",
+        "exclusive_access": "https://wiki.sponsor.ajay.app/w/Exclusive_Access",
         "interaction": "https://wiki.sponsor.ajay.app/w/Interaction_Reminder_(Subscribe)",
         "intro": "https://wiki.sponsor.ajay.app/w/Intermission/Intro_Animation",
         "outro": "https://wiki.sponsor.ajay.app/w/Endcards/Credits",

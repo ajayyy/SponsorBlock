@@ -620,6 +620,10 @@
     "muteSegments": {
         "message": "Perbolehkan segmen untuk bisu daripada melewati"
     },
+    "fullVideoSegments": {
+        "message": "Tunjukkan ikon ketika keseluruhan video merupakan iklan",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
     "colorFormatIncorrect": {
         "message": "Warna anda tidak diformat dengan benar. Harusnya terdiri dari 3 atau 6 digit kode heksa dengan tagar di awal."
     },
@@ -834,8 +838,5 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gunakan roda mouse ketika berada di kotak edit untuk mengatur waktu dengan cepat. Kombinasi dengan tombol [Ctrl + Shift] bisa digunakan untuk perubahan yang halus."
-    },
-    "fillerNewFeature": {
-        "message": "Baru! Lewati tangen dan lelucon dengan kategori pengisi. Aktifkan dalam opsi"
     }
 }

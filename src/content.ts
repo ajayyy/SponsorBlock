@@ -15,9 +15,8 @@ import { Message, MessageResponse, VoteResponse } from "./messageTypes";
 import * as Chat from "./js-components/chat";
 import { getCategoryActionType } from "./utils/categoryUtils";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
-import { Tooltip } from "./render/Tooltip";
 import { getStartTimeFromUrl } from "./utils/urlParser";
-import { findValidElement, getControls, isVisible } from "./utils/pageUtils";
+import { findValidElement, getControls, getHashParams, isVisible } from "./utils/pageUtils";
 import { keybindEquals } from "./utils/configUtils";
 import { CategoryPill } from "./render/CategoryPill";
 import { AnimationUtils } from "./utils/animationUtils";
@@ -93,6 +92,8 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
+// wait for hover preview to appear, and refresh attachments if ever found
+window.addEventListener("DOMContentLoaded", () => utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments()));
 addPageListeners();
 addHotkeyListener();
 
@@ -269,7 +270,7 @@ function resetValues() {
     isAdPlaying = false;
 
     for (let i = 0; i < skipNotices.length; i++) {
-        skipNotices.pop().close();
+        skipNotices.pop()?.close();
     }
 
     skipButtonControlBar?.disable();
@@ -686,9 +687,6 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
     setupVideoMutationListener();
 
-    //check database for sponsor times
-    //made true once a setTimeout has been created to try again after a server error
-    let recheckStarted = false;
     // Create categories list
     const categories: string[] = [];
     for (const categorySelection of Config.config.categorySelections) {
@@ -696,16 +694,8 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     }
 
     const extraRequestData: Record<string, unknown> = {};
-    const windowHash = window.location.hash.substr(1);
-    if (windowHash) {
-        const params: Record<string, unknown> = windowHash.split('&').reduce((acc, param) => {
-            const [key, value] = param.split('=');
-            acc[key] = value;
-            return acc;
-        }, {});
-
-        if (params.requiredSegment) extraRequestData.requiredSegment = params.requiredSegment;
-    }
+    const hashParams = getHashParams();
+    if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
     // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
@@ -775,18 +765,6 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         sponsorLookupRetries = 0;
     } else if (response?.status === 404) {
         retryFetch();
-    } else if (sponsorLookupRetries < 15 && !recheckStarted) {
-        recheckStarted = true;
-
-        //TODO lower when server becomes better (back to 1 second)
-        //some error occurred, try again in a second
-        setTimeout(() => {
-            if (sponsorVideoID && sponsorTimes?.length === 0) {
-                sponsorsLookup(sponsorVideoID);
-            }
-        }, 5000 + Math.random() * 15000 + 5000 * sponsorLookupRetries);
-
-        sponsorLookupRetries++;
     }
     
     lookupVipInformation(id);
@@ -957,7 +935,7 @@ function getYouTubeVideoID(document: Document): string | boolean {
     // skip to document if matches pattern
     if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument(document);
     // not sure, try URL then document
-    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document);
+    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document, false);
 }
 
 function getYouTubeVideoIDFromDocument(document: Document, hideIcon = true): string | boolean {
@@ -1407,8 +1385,9 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
-    return utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay ||
-            (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
+    return (segment.actionType !== ActionType.Full 
+            && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay) 
+            || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
 }
 
 /** Creates any missing buttons on the YouTube player if possible. */
@@ -1586,6 +1565,8 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
     if (submissionNotice !== null) {
         submissionNotice.update();
     }
+
+    checkForPreloadedSegment();
 }
 
 function openInfoMenu() {
@@ -1807,6 +1788,12 @@ function submitSponsorTimes() {
 //send the message to the background js
 //called after all the checks have been made that it's okay to do so
 async function sendSubmitMessage() {
+    // Block if submitting on a running livestream or premiere
+    if (isVisible(document.querySelector(".ytp-live-badge"))) {
+        alert(chrome.i18n.getMessage("liveOrPremiere"));
+        return;
+    }
+
     // Add loading animation
     playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
     const stopAnimation = AnimationUtils.applyLoadingAnimation(playerButtons.submit.button, 1, () => updateEditButtonsOnPlayer());
@@ -1824,8 +1811,8 @@ async function sendSubmitMessage() {
     // Check to see if any of the submissions are below the minimum duration set
     if (Config.config.minDuration > 0) {
         for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-            if (sponsorTimesSubmitting[i].segment[1] - sponsorTimesSubmitting[i].segment[0] < Config.config.minDuration
-                    && getCategoryActionType(sponsorTimesSubmitting[i].category) !== CategoryActionType.POI) {
+            const duration = sponsorTimesSubmitting[i].segment[1] - sponsorTimesSubmitting[i].segment[0];
+            if (duration > 0 && duration < Config.config.minDuration) {
                 const confirmShort = chrome.i18n.getMessage("shortCheck") + "\n\n" + 
                     getSegmentsMessage(sponsorTimesSubmitting);
                 
@@ -2042,4 +2029,25 @@ function showTimeWithoutSkips(skippedDuration: number): void {
     const durationAfterSkips = utils.getFormattedTime(video?.duration - skippedDuration)
 
     duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")";
+}
+
+function checkForPreloadedSegment() {
+    const hashParams = getHashParams();
+
+    const segments = hashParams.segments;
+    if (Array.isArray(segments)) {
+        for (const segment of segments) {
+            if (Array.isArray(segment.segment)) {
+                if (!sponsorTimesSubmitting.some((s) => s.segment[0] === segment.segment[0] && s.segment[1] === s.segment[1])) {
+                    sponsorTimesSubmitting.push({
+                        segment: segment.segment,
+                        UUID: utils.generateUserID() as SegmentUUID,
+                        category: segment.category ? segment.category : Config.config.defaultCategory,
+                        actionType: segment.actionType ? segment.actionType : ActionType.Skip,
+                        source: SponsorSourceType.Local
+                    });
+                }
+            }
+        }
+    }
 }

@@ -634,3 +634,16 @@ input::-webkit-inner-spin-button {
 	display: flex;
 	align-items: center;
 }
+
+.categoryPillClose {
+	display: none;
+	height: 10px;
+	width: 10px;
+	box-sizing: unset;
+	
+	margin: 0px 0px 0px 5px;
+}
+
+.sponsorBlockCategoryPill:hover .categoryPillClose {
+	display: inherit;
+}

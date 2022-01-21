@@ -302,6 +302,10 @@
     "mute": {
         "message": "Silenciar"
     },
+    "full": {
+        "message": "Video Completo",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "¿Saltar {0}?"
     },
@@ -436,6 +440,9 @@
     "shortCheck": {
         "message": "El siguiente envío es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
     },
+    "liveOrPremiere": {
+        "message": "No se permite enviar en una transmisión en vivo activa o estreno. Espere hasta que finalice, luego actualice la página y verifique que los segmentos aún sean válidos."
+    },
     "showUploadButton": {
         "message": "Mostrar botón de subida"
     },
@@ -533,6 +540,16 @@
     "category_selfpromo_description": {
         "message": "Similar a \"sponsor\", excepto que para la promoción propia o no remunerada. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
     },
+    "category_exclusive_access": {
+        "message": "Acceso Exclusivo"
+    },
+    "category_exclusive_access_description": {
+        "message": "Solo para etiquetar videos completos. Utilizado cuando un video exhibe un producto, servicio o ubicación al que han recibido acceso gratuito o subsidiado."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Este video exhibe un producto, servicio o ubicación al que han recibido acceso gratuito o subsidiado",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Recordatorio de interacción (subscribir)"
     },
@@ -614,11 +631,18 @@
     "showOverlay_POI": {
         "message": "Mostrar en la barra de búsqueda"
     },
+    "showOverlay_full": {
+        "message": "Mostrar Etiqueta"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Omitir automáticamente todos los segmentos cuando hay un segmento sin música"
     },
     "muteSegments": {
         "message": "Permitir segmentos que silencian el audio en lugar de omitir"
+    },
+    "fullVideoSegments": {
+        "message": "Mostrar un icono cuando un video es enteramente un anuncio",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
@@ -737,6 +761,12 @@
         "message": "Entendido",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Este segmento es grande. Si todo el video es acerca de un tema, entonces cámbielo de \"Omitir\" a \"Video completo\". Consulte las instrucciones para más información."
+    },
+    "categoryPillTitleText": {
+        "message": "Todo el video está etiquetado como esta categoría y está muy estrechamente integrado como para poder separarlo"
+    },
     "experiementOptOut": {
         "message": "No participar en futuros experimentos",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +865,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilice la rueda del ratón mientras pasa el cursor por encima del cuadro de edición para ajustar el tiempo. Se pueden utilizar combinaciones de la tecla ctrl o shift para afinar los cambios."
     },
-    "fillerNewFeature": {
-        "message": "¡Nuevo! Omite tangentes y bromas con la categoría de relleno. Habilítala en opciones"
+    "categoryPillNewFeature": {
+        "message": "¡Nuevo! Mira cuando un video es enteramente un sponsor o una promoción propia"
     },
     "dayAbbreviation": {
         "message": "d",

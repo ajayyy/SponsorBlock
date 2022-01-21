@@ -8,6 +8,7 @@ const fs = require('fs');
 const manifest = require("../manifest/manifest.json");
 const firefoxManifestExtra = require("../manifest/firefox-manifest-extra.json");
 const chromeManifestExtra = require("../manifest/chrome-manifest-extra.json");
+const safariManifestExtra = require("../manifest/safari-manifest-extra.json");
 const betaManifestExtra = require("../manifest/beta-manifest-extra.json");
 const firefoxBetaManifestExtra = require("../manifest/firefox-beta-manifest-extra.json");
 
@@ -41,8 +42,12 @@ class BuildManifest {
         // Add missing manifest elements
         if (this.options.browser.toLowerCase() === "firefox") {
             mergeObjects(manifest, firefoxManifestExtra);
-        } else if (this.options.browser.toLowerCase() === "chrome" || this.options.browser.toLowerCase() === "chromium") {
+        } else if (this.options.browser.toLowerCase() === "chrome" 
+                || this.options.browser.toLowerCase() === "chromium"
+                || this.options.browser.toLowerCase() === "edge") {
             mergeObjects(manifest, chromeManifestExtra);
+        }  else if (this.options.browser.toLowerCase() === "safari") {
+            mergeObjects(manifest, safariManifestExtra);
         }
 
         if (this.options.stream === "beta") {

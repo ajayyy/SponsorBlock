@@ -23,8 +23,8 @@ export class CategoryPill {
             vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>): Promise<void> {
         const referenceNode = 
             await GenericUtils.wait(() => 
-                // YouTube, Mobile YouTube, Invidious
-                document.querySelector(".ytd-video-primary-info-renderer.title, .slim-video-information-title, #player-container + .h-box > h1") as HTMLElement);
+                // New YouTube Title, YouTube, Mobile YouTube, Invidious
+                document.querySelector("#title h1, .ytd-video-primary-info-renderer.title, .slim-video-information-title, #player-container + .h-box > h1") as HTMLElement);
 
         if (referenceNode && !referenceNode.contains(this.container)) {
             this.container = document.createElement('span');

@@ -33,15 +33,16 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
 
     render(): React.ReactElement {
         const style: React.CSSProperties = {
-            backgroundColor: Config.config.barTypes["preview-" + this.state.segment?.category]?.color,
+            backgroundColor: this.getColor(),
             display: this.state.show ? "flex" : "none",
-            color: this.state.segment?.category === "sponsor" ? "white" : "black",
+            color: this.state.segment?.category === "sponsor" 
+                || this.state.segment?.category === "exclusive_access" ? "white" : "black",
         }
 
         return (
             <span style={style}
                 className={"sponsorBlockCategoryPill"} 
-                title={chrome.i18n.getMessage("categoryPillTitleText")}
+                title={this.getTitleText()}
                 onClick={(e) => this.toggleOpen(e)}>
                 <span className="sponsorBlockCategoryPillTitleSection">
                     <img className="sponsorSkipLogo sponsorSkipObject"
@@ -72,6 +73,12 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                         </div>
                     </>
                 )}
+
+                {/* Close Button */}
+                <img src={chrome.extension.getURL("icons/close.png")}
+                    className="categoryPillClose"
+                    onClick={() => this.setState({ show: false })}>
+                </img>
             </span>
         );
     }
@@ -101,6 +108,17 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                 alert(GenericUtils.getErrorMessage(response.statusCode, response.responseText));
             }
         }
+    }
+
+    private getColor(): string {
+        const configObject = Config.config.barTypes["preview-" + this.state.segment?.category] 
+            || Config.config.barTypes[this.state.segment?.category];
+        return configObject?.color;
+    }
+
+    getTitleText(): string {
+        const shortDescription = chrome.i18n.getMessage(`category_${this.state.segment?.category}_pill`);
+        return (shortDescription ? shortDescription + ". ": "") + chrome.i18n.getMessage("categoryPillTitleText");
     }
 }
 

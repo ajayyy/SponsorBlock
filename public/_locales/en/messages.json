@@ -437,6 +437,9 @@
     "shortCheck": {
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
     },
+    "liveOrPremiere": {
+        "message": "Submitting on an active livesteam or premiere is not allowed. Please wait until it finishes, then refresh the page and verify that the segments are still valid."
+    },
     "showUploadButton": {
         "message": "Show Upload Button"
     },
@@ -540,6 +543,16 @@
     "category_selfpromo_description": {
         "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
     },
+    "category_exclusive_access": {
+        "message": "Exclusive Access"
+    },
+    "category_exclusive_access_description": {
+        "message": "Only for labeling entire videos. Used when a video showcases a product, service or location that they've received free or subsidized access to."
+    },
+    "category_exclusive_access_pill": {
+        "message": "This video showcases a product, service or location that they've received free or subsidized access to",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Interaction Reminder (Subscribe)"
     },
@@ -620,6 +633,9 @@
     },
     "showOverlay_POI": {
         "message": "Show In Seek Bar"
+    },
+    "showOverlay_full": {
+        "message": "Show Label"
     },
     "autoSkipOnMusicVideos": {
         "message": "Auto skip all segments when there is a non-music segment"

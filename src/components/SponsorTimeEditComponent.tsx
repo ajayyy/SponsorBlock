@@ -189,7 +189,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </select>
 
                     {/* open in new tab */}
-                    <a href="https://wiki.sponsor.ajay.app/index.php/Segment_Categories"
+                    <a href={CompileConfig.wikiLinks[sponsorTime.category] 
+                            || "https://wiki.sponsor.ajay.app/index.php/Segment_Categories"}
                         target="_blank" rel="noreferrer">
                         <img id={"sponsorTimeCategoriesHelpButton" + this.idSuffix}
                             className="helpButton"
@@ -199,7 +200,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 </div>
 
                 {/* Action Type */}
-                {CompileConfig.categorySupport[sponsorTime.category]?.length > 1 ? (
+                {CompileConfig.categorySupport[sponsorTime.category] && 
+                    (CompileConfig.categorySupport[sponsorTime.category]?.length > 1 
+                        || CompileConfig.categorySupport[sponsorTime.category]?.[0] !== "skip") ? (
                     <div style={{position: "relative"}}>
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
@@ -470,9 +473,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             }
         }
 
-        sponsorTimesSubmitting[this.props.index].category = this.categoryOptionRef.current.value as Category;
-        sponsorTimesSubmitting[this.props.index].actionType = 
-            this.actionTypeOptionRef?.current ? this.actionTypeOptionRef.current.value as ActionType : ActionType.Skip;
+        const category = this.categoryOptionRef.current.value as Category
+        sponsorTimesSubmitting[this.props.index].category = category;
+
+        const inputActionType = this.actionTypeOptionRef?.current?.value as ActionType;
+        const actionType = inputActionType && CompileConfig.categorySupport[category]?.includes(inputActionType) ? inputActionType as ActionType 
+                                : CompileConfig.categorySupport[category]?.[0] ?? ActionType.Skip;
+        sponsorTimesSubmitting[this.props.index].actionType = actionType;
 
         Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 

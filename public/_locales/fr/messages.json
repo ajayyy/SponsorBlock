@@ -835,9 +835,6 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
     },
-    "fillerNewFeature": {
-        "message": "Nouveau ! Ignorer les digressions et les blagues avec la catégorie \"remplissage\". Activable dans les options"
-    },
     "dayAbbreviation": {
         "message": "j",
         "description": "100d"

@@ -302,6 +302,10 @@
     "mute": {
         "message": "Dempen"
     },
+    "full": {
+        "message": "Volledige video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "{0} overslaan?"
     },
@@ -436,6 +440,9 @@
     "shortCheck": {
         "message": "De volgende inzending is korter dan uw \"minimale tijdsduur\"-instelling. Dit kan betekenen dat dit al is ingediend en genegeerd wordt door deze optie. Weet u zeker dat u dit wilt indienen?"
     },
+    "liveOrPremiere": {
+        "message": "Indienen op een actieve livesteam of première is niet toegestaan. Wacht tot hij klaar is, vernieuw dan de pagina en controleer of de segmenten nog geldig zijn."
+    },
     "showUploadButton": {
         "message": "Uploaden-knop weergeven"
     },
@@ -533,6 +540,16 @@
     "category_selfpromo_description": {
         "message": "Vergelijkbaar met \"sponsor\", behalve voor onbetaalde of zelfpromotie. Dit is inclusief secties over koopwaar, donaties of informatie over met wie ze hebben samengewerkt."
     },
+    "category_exclusive_access": {
+        "message": "Exclusieve toegang"
+    },
+    "category_exclusive_access_description": {
+        "message": "Alleen voor het labelen van volledige video's. Wordt gebruikt wanneer een video een product, dienst of locatie laat zien waartoe men gratis of gesubsidieerd toegang heeft gekregen."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Deze video toont een product, dienst of locatie waartoe men gratis of gesubsidieerd toegang heeft gekregen",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Interactieherinnering (abonneren)"
     },
@@ -614,11 +631,18 @@
     "showOverlay_POI": {
         "message": "Weergeven in tijdbalk"
     },
+    "showOverlay_full": {
+        "message": "Label weergeven"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Automatisch alle segmenten overslaan wanneer er een niet-muziek-segment is"
     },
     "muteSegments": {
         "message": "Segmenten toestaan die audio dempen in plaats van overslaan"
+    },
+    "fullVideoSegments": {
+        "message": "Een pictogram weergeven wanneer de volledige video een advertentie is",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Uw kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
@@ -737,6 +761,12 @@
         "message": "Begrepen",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Dit segment is groot. Als de hele video over één onderwerp gaat, verander dan van \"overslaan\" naar \"volledige video\". Zie de richtlijnen voor meer informatie."
+    },
+    "categoryPillTitleText": {
+        "message": "De hele video is gelabeld als deze categorie en is te strak geïntegreerd om te kunnen scheiden"
+    },
     "experiementOptOut": {
         "message": "Uitschrijven van alle toekomstige experimenten",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -835,8 +865,8 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gebruik het muiswiel terwijl u over het invoerveld beweegt om de tijd snel aan te passen. Combinaties van de ctrl- of shift-toets kunnen worden gebruikt om de wijzigingen te verfijnen."
     },
-    "fillerNewFeature": {
-        "message": "Nieuw! Zijsporen en grapjes overslaan met de opvulling-categorie. Inschakelen via opties"
+    "categoryPillNewFeature": {
+        "message": "Nieuw! Zie wanneer een video volledig gesponsord of zelfpromotie is"
     },
     "dayAbbreviation": {
         "message": " d",
