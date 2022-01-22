@@ -6,10 +6,9 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 'use strict';
 
 import Config from "../config";
-import { ActionType, Category, CategoryActionType, SegmentContainer, SponsorTime } from "../types";
+import { ActionType, Category, SegmentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
 import { partition } from "../utils/arrayUtils";
-import { getCategoryActionType } from "../utils/categoryUtils";
 const utils = new Utils();
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
@@ -585,7 +584,7 @@ class PreviewBar {
     }
 
     private chapterFilter(segment: PreviewBarSegment): boolean {
-        return getCategoryActionType(segment.category) !== CategoryActionType.POI
+        return segment.actionType !== ActionType.Poi
                 && this.chapterGroupFilter(segment);
     }
 

@@ -537,6 +537,16 @@
     "category_selfpromo_description": {
         "message": "Sarnaneb \"sponsorile\", ent on mõeldud tasumata või enesepromo jaoks. Selle alla kuuluvad jaotised oma müüdava kauba, annetuste ja koostööpartnerite kohta."
     },
+    "category_exclusive_access": {
+        "message": "Eksklusiivne ligipääs"
+    },
+    "category_exclusive_access_description": {
+        "message": "Ainult tervete videote märkimiseks. Kasutatakse, kui video esitleb toodet, teenust või asukohta, millele isik on tasuta või toetusega ligipääsu saanud."
+    },
+    "category_exclusive_access_pill": {
+        "message": "See video esitleb toodet, teenust või asukohta, millele isik on tasuta või toetusega ligipääsu saanud",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Tegutsemise meeldetuletus (kanali tellimine)"
     },
@@ -617,6 +627,9 @@
     },
     "showOverlay_POI": {
         "message": "Kuva mängija ajaribal"
+    },
+    "showOverlay_full": {
+        "message": "Kuva silt"
     },
     "autoSkipOnMusicVideos": {
         "message": "Jäta automaatselt kõik segmendid vahele, kui eksisteerib mitte-muusika segment"
@@ -744,6 +757,9 @@
     "GotIt": {
         "message": "Sain aru",
         "description": "Used as the button to dismiss a tooltip"
+    },
+    "categoryPillTitleText": {
+        "message": "See terve video on selle kategooriaga sildistatud ning on liiga tihedalt integreeritud, et eraldada saaks"
     },
     "experiementOptOut": {
         "message": "Keeldu kõigist tulevikus tehtavatatest eksperimentidest",

@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "A következő szegmens rövidebb, mint az általad beállított minimális időtartam. Ez azt jelentheti, hogy már beküldhették, csak emiatt az opció miatt nálad nem jelenik meg. Biztosan beküldöd?"
     },
+    "liveOrPremiere": {
+        "message": "Aktív élő közvetítés vagy premier közben nem lehet szegmenseket beküldeni. Kérjük várd meg a végét, majd frissítsd az oldalt és ellenőrizd, hogy a szegmensek nem csúsztak-e el."
+    },
     "showUploadButton": {
         "message": "Feltöltés gomb megjelenítése"
     },
@@ -541,10 +544,10 @@
         "message": "Exkluzív hozzáférés"
     },
     "category_exclusive_access_description": {
-        "message": "Csak teljes videók megjelölésére. Akkor használt, amikor egy videó egy olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyen vagy kedvezményes hozzáférést kaptak."
+        "message": "Csak teljes videók megjelölésére. Akkor használt, amikor egy videó egy olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyenes vagy kedvezményes hozzáférést kaptak."
     },
     "category_exclusive_access_pill": {
-        "message": "Ez a videó olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyen vagy kedvezményes hozzáférést kaptak",
+        "message": "Ez a videó olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyenes vagy kedvezményes hozzáférést kaptak",
         "description": "Short description for this category"
     },
     "category_interaction": {

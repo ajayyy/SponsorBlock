@@ -71,7 +71,7 @@
         "message": "Sponsor sürelerini yollarken bir sorun oluştur, lütfen tekrar deneyin."
     },
     "sponsorFound": {
-        "message": "Bu videonun kısımları veri tabanımızda mevut"
+        "message": "Bu videonun kısımları veri tabanımızda mevcut"
     },
     "sponsor404": {
         "message": "Kısım bulunamadı"
@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "Sıradaki öneri belirlediğiniz minimum süre ayarından daha kısa. Bu zaten yollandığı ve bu ayardan dolayı yok sayıldığı anlamına gelebilir. Göndermek istediğinizden emin misiniz?"
     },
+    "liveOrPremiere": {
+        "message": "Bir canlı yayın veya ön gösterim sırasında kısım gönderilemez. Yayının bitmesini bekleyin, sonra sayfayı tazeleyip kısımların geçerli olduğunu kontrol edin."
+    },
     "showUploadButton": {
         "message": "Karşıya Yükleme Butonunu Göster"
     },
@@ -537,6 +540,16 @@
     "category_selfpromo_description": {
         "message": "\"Sponsor\" seçeneğinden farkı para karşılığı olmaması veya kendi reklamını yapmasıdır. Buna kendi markalı ürünlerini satmak, bağış toplamak ve videoda işbirliği yaptığı kimselerden bahsetmek dahildir."
     },
+    "category_exclusive_access": {
+        "message": "Özel Erişim"
+    },
+    "category_exclusive_access_description": {
+        "message": "Yalnızca bütün videoyu etiketlemek için kullanın. Video; ücretli veya ücretsiz elde edilen bir ürünün, hizmetin veya bir yerin reklamını yapıyorsa kullanılır."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Bu video; yayıncıya özel ücretle veya ücretsiz sunulan bir ürünün, hizmetin veya bir yerin reklamını yapıyor",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "Etkileşim Hatırlatıcısı (Abonelik)"
     },
@@ -617,6 +630,9 @@
     },
     "showOverlay_POI": {
         "message": "Arama Çubuğunda Göster"
+    },
+    "showOverlay_full": {
+        "message": "Etiketi Göster"
     },
     "autoSkipOnMusicVideos": {
         "message": "Müzik olmayan kısım varsa tüm kısımları otomatik atla"
@@ -850,7 +866,7 @@
         "message": "Zaman aralığını hızlı bir şekilde ayarlamak için düzenleme kutusunun üzerinde fare tekerini kullanın. Değişikliklere ince ayar yapmak için ctrl veya shift tuşunun kombinasyonları kullanılabilir."
     },
     "categoryPillNewFeature": {
-        "message": "Yeni! Videonun bütünü sponsor veya kendi reklamıysa öngörün"
+        "message": "Yeni! Videonun bütünü sponsor veya kendi reklamıysa bu uyarıyı görün"
     },
     "dayAbbreviation": {
         "message": "d",

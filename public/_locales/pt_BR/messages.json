@@ -302,6 +302,10 @@
     "mute": {
         "message": "Silenciar"
     },
+    "full": {
+        "message": "Vídeo completo",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Pular {0}?"
     },
@@ -533,6 +537,9 @@
     "category_selfpromo_description": {
         "message": "Similar a \"patrocinador\", mas para auto promoções e segmentos não-pagos. Isso inclui seções sobre vendas, doações ou informações sobre com quem colaboraram."
     },
+    "category_exclusive_access": {
+        "message": "Acesso Exclusivo"
+    },
     "category_interaction": {
         "message": "Lembrete de interação (inscrever-se)"
     },
@@ -614,11 +621,18 @@
     "showOverlay_POI": {
         "message": "Mostrar na barra de progresso"
     },
+    "showOverlay_full": {
+        "message": "Mostrar Rótulo"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Pular automaticamente todos os segmentos quando há um segmento que não é música"
     },
     "muteSegments": {
         "message": "Permitir segmentos que silenciem o áudio ao invés de pular"
+    },
+    "fullVideoSegments": {
+        "message": "Mostrar um ícone quando um vídeo é inteiramente um anúncio",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
         "message": "Sua cor está formatada incorretamente. Deve ser um código hexadecimal de 3 ou 6 dígitos com uma cerquilha (hashtag) no início."
@@ -737,6 +751,12 @@
         "message": "Entendi",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Este segmento é grande. Se o vídeo inteiro for sobre um tópico, altere de \"Pular\" para \"Vídeo completo\". Consulte as diretrizes para obter mais informações."
+    },
+    "categoryPillTitleText": {
+        "message": "Este vídeo inteiro está rotulado como esta categoria e está muito integrado para poder ser separado"
+    },
     "experiementOptOut": {
         "message": "Optar por sair de todos os experimentos futuros",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -834,6 +854,9 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use a roda do mouse enquanto mantêm o cursor sobre a caixa de edição para ajustar o tempo rapidamente. Combinações das teclas ctrl e shift podem ser usadas para refinar as mudanças."
+    },
+    "categoryPillNewFeature": {
+        "message": "Novo! Veja quando um vídeo é inteiramente patrocinado ou de autopromoção"
     },
     "dayAbbreviation": {
         "message": "d",

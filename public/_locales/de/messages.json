@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "Die folgende Einreichung ist kürzer als deine Mindestdauer. Das könnte bedeuten, dass dieses Videosegment bereits eingereicht wurde und aufgrund dieser Option einfach ignoriert wird. Bist du dir sicher, dass du es übermitteln möchtest?"
     },
+    "liveOrPremiere": {
+        "message": "Das Einreichen eines aktiven Livestreams oder Premiere ist nicht erlaubt. Bitte warte bis es zu ende ist, lade die Seite neu und überprüfe, dass die Segmente noch immer korrekt sind."
+    },
     "showUploadButton": {
         "message": "Upload-Knopf anzeigen"
     },
@@ -544,7 +547,7 @@
         "message": "Nur für das Kennzeichnen ganzer Videos. Wird verwendet wenn ein Video ein Produkt, eine Dienstleistung oder einen Ort präsentiert, zu welchem sie freien oder subventionierten Zugriff erhalten haben."
     },
     "category_exclusive_access_pill": {
-        "message": "Dieses Video präsentiert ein Produkt, eine Dienstleistung oder einen Ort, zu welchem sie freien oder subventionierten Zigriff erhalten haben",
+        "message": "Dieses Video präsentiert ein Produkt, eine Dienstleistung oder einen Ort, zu welchem sie freien oder subventionierten Zugriff erhalten haben",
         "description": "Short description for this category"
     },
     "category_interaction": {
@@ -638,7 +641,7 @@
         "message": "Segmente zulassen, die den Ton ausschalten anstatt zu überspringen"
     },
     "fullVideoSegments": {
-        "message": "Zeige an, wenn das gesamte Video Werbung ist",
+        "message": "Zeige ein Icon, wenn ein ganzes Video Werbung ist",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "colorFormatIncorrect": {
