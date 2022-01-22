@@ -242,6 +242,10 @@
     "noticeVisibilityMode4": {
         "message": "すべてのスキップ通知を透過"
     },
+    "longDescription": {
+        "message": "SponsorBlockはスポンサー、イントロ、アウトロ、チャンネル登録のお願いなど、YouTube動画の煩わしい部分をスキップします。SponsorBlockはYouTube動画のスポンサー付きセグメントなどの開始時間と終了時間を誰でも投稿できる、クラウドソースのブラウザ拡張機能です。一人がセグメントの情報を送信すると、この拡張機能を使用している他の全員が、スポンサー付きセグメントをスキップできるようになります。また、ミュージックビデオの音楽がない部分をスキップすることもできます。",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "ウェブサイト",
         "description": "Used on Firefox Store Page"
@@ -425,6 +429,9 @@
     },
     "skipNoticeDuration": {
         "message": "飛び越し通知の表示時間（秒）:"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "飛び越し通知が画面上に表示され続ける時間です。手動で飛び越した場合は，より長く表示される可能性があります。"
     },
     "shortCheck": {
         "message": "提出しようとしている区間の長さが個人設定における最短時間よりも短かいです。これは，既に当区間は提出されており，個人設定によって無視されていることを意味します。本当に提出しますか？"
