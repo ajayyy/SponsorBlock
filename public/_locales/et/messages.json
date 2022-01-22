@@ -242,6 +242,10 @@
     "noticeVisibilityMode4": {
         "message": "Kõik vahelejätmise teavitused hääbuvad"
     },
+    "longDescription": {
+        "message": "SponsorBlock lubab sul vahele jätta sponsorid, vaheajad, kanali tellimise meeldetuletused ja muud YouTube'i videote tüütud kohad. SponsorBlock on rahva ühistööna toimiv brauserilaiendus, mis lubab igaühel saata sponsoreeritud segmendi algus- ja lõpuaegu ning teiste video segmentide aegu. Kui üks inimene saadab sponsoreeritud segmendi, jätavad teised laienduse kasutajad kohe selle vahele. Laiendus võimaldab ka muusikavideotel mitte-muusika jaotised vahele jätta.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Veebileht",
         "description": "Used on Firefox Store Page"
@@ -429,6 +433,9 @@
     },
     "skipNoticeDuration": {
         "message": "Vahelejätmise teavituse kestus (sekundites):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Vahelejätmise teavitus püsib ekraanil vähemalt nii kaua. Käsitsi vahelejätmise puhul võib see kauem püsida."
     },
     "shortCheck": {
         "message": "See saadetav segment on lühem, kui sinu lühima pikkuse valik. See võib tähendada, et see on juba saadetud ning on selle valiku tõttu lihtsalt ignoreeritud. Kas soovid kindlasti seda saata?"
