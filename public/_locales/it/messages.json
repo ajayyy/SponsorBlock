@@ -242,6 +242,10 @@
     "noticeVisibilityMode4": {
         "message": "Tutti i Salta Avvisi Offuscati"
     },
+    "longDescription": {
+        "message": "SponsorBlock ti consente di saltare sponsorizzazioni, introduzioni, conclusioni, promemoria di iscrizione e altri elementi fastidiosi dai video YouTube. SponsorBlock è un'estensione per browser di crowdsourcing, cioè che consente a chiunque di inviare l'ora di inizio e di fine dei segmenti sponsorizzati e di altro tipo. Quando una persona invia queste informazioni, chiunque altro in possesso di questa estensione sarà in grado di saltare automaticamente il segmento sponsorizzato. È possibile saltare anche le sezioni non musicali dei video musicali.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Sito web",
         "description": "Used on Firefox Store Page"
@@ -429,6 +433,9 @@
     },
     "skipNoticeDuration": {
         "message": "Salta durata avviso (secondi):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "L'avviso salta rimarrà sullo schermo per almeno questo tempo. Per saltarlo manualmente, potrebbe esser visibile più a lungo."
     },
     "shortCheck": {
         "message": "Il seguente contributo è più breve della tua opzione di durata minima. Ciò potrebbe significare che questo è già stato inviato e viene semplicemente ignorato a causa di questa opzione. Sei sicuro di voler inviare?"
