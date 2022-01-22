@@ -313,9 +313,6 @@
     "skipNoticeDuration": {
         "message": "Duljina trajanja obavijesti o preskakanju (sekunde):"
     },
-    "skipNoticeDurationDescription": {
-        "message": "Obavijest o preskakanju ostat će na zaslonu barem ovoliko dugo. Za ručno preskakanje može biti duže vidljivo."
-    },
     "customServerAddress": {
         "message": "Adresa SponsorBlock poslužitelja"
     },
