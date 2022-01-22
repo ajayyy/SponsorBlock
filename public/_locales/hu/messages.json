@@ -242,6 +242,10 @@
     "noticeVisibilityMode4": {
         "message": "Csak halvány átugrási értesítők"
     },
+    "longDescription": {
+        "message": "A SponsorBlockkal átugorhatja a szponzorokat, introkat, outrokat, feliratkozás emlékeztetőket és a YouTube videók többi idegesítő részeit. A SponsorBlock egy közösség által vezérelt böngészőbővítmény, ami lehetővé teszi bárkinek, hogy megjelölhesse egy szponzor vagy más szegmens kezdő és végpontjait. Amint valaki megosztja ezt az információt, mindenki más ennek a bővítménynek a birtokában egyenesen átugorja majd ezt a szponzorszegmenst. Emellett például a videóklipek nem-zene részei is átugorhatóak.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Weboldal",
         "description": "Used on Firefox Store Page"
@@ -429,6 +433,9 @@
     },
     "skipNoticeDuration": {
         "message": "Átugrási értesítés hossza (másodpercekben):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Az átugrási értesítés ennyi ideig marad a képernyőn. Manuális átugrásnál tovább is látható maradhat."
     },
     "shortCheck": {
         "message": "A következő szegmens rövidebb, mint az általad beállított minimális időtartam. Ez azt jelentheti, hogy már beküldhették, csak emiatt az opció miatt nálad nem jelenik meg. Biztosan beküldöd?"
