@@ -242,10 +242,6 @@
     "noticeVisibilityMode4": {
         "message": "Alla hoppa över-meddelanden tonas bort"
     },
-    "longDescription": {
-        "message": "SponsorBlock låter dig hoppa över sponsormeddelanden, introduktioner, eftertexter, prenumerationspåminnelser och andra irriterande delar av YouTube-videor. SponsorBlock är ett crowdsourced webbläsartillägg som låter vem som helst att skicka in start- och sluttid på sponsorsegment och andra segment av YouTube-videor. När en person skickar in denna information kommer alla andra som har detta tillägg installerat att hoppa över det sponsrade segmentet. Du kan även hoppa över icke-musikavsnitt i musikvideor.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Hemsida",
         "description": "Used on Firefox Store Page"
@@ -433,9 +429,6 @@
     },
     "skipNoticeDuration": {
         "message": "Hoppa över varaktighet (sekunder):"
-    },
-    "skipNoticeDurationDescription": {
-        "message": "Meddelandet om att hoppa över kommer att visas på skärmen åtminstone så här länge. För manuell överhoppning kan det visas längre."
     },
     "shortCheck": {
         "message": "Följande rapport är kortare än ditt minstavärde i inställningarna. Det skulle kunna betyda att det redan är rapporterat och bara ignorerat på grund av denna inställning. Är du säker på att du vill rapportera?"
