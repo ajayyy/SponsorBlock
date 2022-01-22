@@ -242,6 +242,10 @@
     "noticeVisibilityMode4": {
         "message": "Todos los Avisos de Omisión Desvanecidos"
     },
+    "longDescription": {
+        "message": "SponsorBlock te permite saltarte los patrocinadores, intros, outros, recordatorios de suscripción y otras partes molestas de los videos de YouTube. SponsorBlock es una extensión de navegador de código abierto que permite a cualquiera enviar el tiempo de inicio y fin de los segmentos de patrocinadores y otros segmentos de los videos de YouTube. Una vez que una persona envía esta información, todos los que tengan esta extensión podrán saltearse ese segmento. También es posible saltar las secciones no musicales de los videos musicales.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Sitio Web",
         "description": "Used on Firefox Store Page"
@@ -429,6 +433,9 @@
     },
     "skipNoticeDuration": {
         "message": "Duración del aviso de omisión (segundos):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "El aviso de omisión permanecerá en la pantalla por lo menos este tiempo. Si la omisión es manual, podría ser visible por más tiempo."
     },
     "shortCheck": {
         "message": "El siguiente envío es más corto que su opción de duración mínima. Esto podría significar que esto ya se ha enviado y que simplemente se ha ignorado debido a esta opción. ¿Está seguro de que desea enviar?"
