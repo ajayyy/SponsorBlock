@@ -242,6 +242,10 @@
     "noticeVisibilityMode4": {
         "message": "Lewati semua maklumat pudar"
     },
+    "longDescription": {
+        "message": "SponsorBlock membuat anda melewati sponsor, intro, outro, pengingat berlangganan dan segmen mengganggu lainnya di video YouTube. SponsorBlock adalah ekstensi browser crowdsourced yang membolehkan siapa saja mengirim waktu awal dan akhir dari segmen sponsor dan segmen video YouTube lainnya. Setelah seseorang mengirim informasi ini, orang lain yang memakai ekstensi ini akan melewati segmen sponsor di video yang sama. Anda juga dapat melewati bagian non-musik di musik video.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Situs",
         "description": "Used on Firefox Store Page"
@@ -425,6 +429,9 @@
     },
     "skipNoticeDuration": {
         "message": "Lewati maklumat berdurasi (detik):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Maklumat lewati akan tetap di layar setidaknya selama ini. Untuk lewati manual, mungkin akan terlihat lebih lama."
     },
     "shortCheck": {
         "message": "Submisi ini lebih pendek dari opsi durasi minimalmu. Ini dapat berarti ini sudah dikirim, dan hanya akan diabaikan karena opsi ini. Apakah anda yakin ingin mengirim?"
