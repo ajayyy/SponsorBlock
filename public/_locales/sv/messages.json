@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "Följande rapport är kortare än ditt minstavärde i inställningarna. Det skulle kunna betyda att det redan är rapporterat och bara ignorerat på grund av denna inställning. Är du säker på att du vill rapportera?"
     },
+    "liveOrPremiere": {
+        "message": "Att skicka in på en aktiv liveström eller premiär är inte tillåtet. Vänta tills den är färdig, uppdatera sedan sidan och kontrollera att segmenten fortfarande är giltiga."
+    },
     "showUploadButton": {
         "message": "Visa uppladdningsknapp"
     },

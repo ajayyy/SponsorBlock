@@ -3,11 +3,15 @@
         "message": "اسپانسربلاک برای یوتیوب - اسپانسر ها را رد کنید",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "بخش های اسپانسر شده، درخواست ساب اسکرایب و خیلی چیز های دیگر در ویدیو های یوتیوب را رد کنید. قسمت های اسپانسری ویدیو هایی که میبینید را گزارش کنید تا در وقت دیگران صرفه جویی شود.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "سرور گفت که این درخواست نامعتبر است"
     },
     "429": {
-        "message": "شما برای این یک ویدیو تعداد بیش از حدی زمان اسپانسر ثبت کرده‌اید، آیا مطمئن هستید که به این تعداد وجود دارد؟"
+        "message": "شما برای این ویدیو قسمت های اسپانسری خیلی زیادی ثبت کرده اید، آیا مطمئنید که به این تعداد وجوددارد؟"
     },
     "409": {
         "message": "این قبلاً ثبت شده است"
@@ -127,7 +131,7 @@
         "message": "شما دیگران را نجات دادید از "
     },
     "viewLeaderboard": {
-        "message": "لیست سرنشینان"
+        "message": "نفرات برتر"
     },
     "recordTimesDescription": {
         "message": "ثبت"
@@ -144,6 +148,9 @@
     "setUsername": {
         "message": "تنظیم نام کاربری"
     },
+    "discordAdvert": {
+        "message": "به سرور رسمی دیسکورد بپیوندید تا پیشنهادات و بازخورد‌های خود را ارائه دهید!"
+    },
     "hideThis": {
         "message": "مخفی‌سازی"
     },
@@ -155,6 +162,9 @@
     },
     "hideButtons": {
         "message": "مخفی‌سازی کلید ها در پخش‌کننده یوتیوب"
+    },
+    "showNotice": {
+        "message": "نمایش مجدد اطلاعیه"
     },
     "longDescription": {
         "message": "افزونه اسپانسر بلاک به شما امکان رد کردن بخش‌های تبلیغاتی (اسپانسر شده)، قسمت‌های شروع و پایان ویدیو، درخواست ساب‌اسکرایب و سایر قسمت‌های آزار دهنده یوتیوب را می‌دهد. اسپانسر بلاک یک افزونه مرورگر است که به هر کسی امکان ثبت زمان شروع و پایان بخش های اسپانسر شده و سایر بخش های ویدیو های یوتیوب را می‌دهد. پس از اینکه هر کاربر این اطلاعات را ثبت کرده و گزارش دهد، بقیه کاربرانی که از این افزونه استفاده می‌کنند مستقیماً بخش اسپانسر شده ویدیو را رد خواهند کرد. شما همچنین می‌توانید در ویدیو های نماهنگ (موزیک ویدیو)، قسمت‌های غیر موسیقی ویدیو را رد کنید.",
@@ -171,6 +181,9 @@
     "noticeUpdate2": {
         "message": "اگر همچنان این را نمی‌پسندید، گزینه هرگز نمایش نده را انتخاب کنید.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "keybindDescription": {
+        "message": "یک کلید را با تایپ نمودن انتخاب نمایید"
     },
     "disableSkipping": {
         "message": "ردکردن فعال است"
@@ -194,6 +207,20 @@
     "mute": {
         "message": "بی‌صدا"
     },
+    "skip_category": {
+        "message": "{0} رد شود؟"
+    },
+    "mute_category": {
+        "message": "{0} بی‌صدا شود؟"
+    },
+    "skipped": {
+        "message": "{0} رد شد",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} بی‌صدا شد",
+        "description": "Example: Sponsor Muted"
+    },
     "minLower": {
         "message": "دقیقه"
     },
@@ -202,6 +229,12 @@
     },
     "createdBy": {
         "message": "ایجاد شده توسط"
+    },
+    "keybindCurrentlySet": {
+        "message": ". در حال حاضر تنظیم شده است به:"
+    },
+    "supportedSites": {
+        "message": "وب‌سایت‌های پشتیبانی شده: "
     },
     "add": {
         "message": "افزودن"
@@ -220,6 +253,9 @@
     },
     "setOptions": {
         "message": "تنظیم گزینه‌ها"
+    },
+    "confirmNoticeTitle": {
+        "message": "ثبت بخش"
     },
     "submit": {
         "message": "ثبت"
@@ -242,12 +278,21 @@
     "edit": {
         "message": "ویرایش"
     },
+    "theKey": {
+        "message": "کلید"
+    },
     "to": {
         "message": "به",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
         "message": "اسپانسر"
+    },
+    "category_exclusive_access": {
+        "message": "دسترسی اختصاصی"
+    },
+    "category_filler_short": {
+        "message": "پر کننده"
     },
     "category_music_offtopic_short": {
         "message": "غیر موسیقی"
@@ -261,11 +306,42 @@
     "manualSkip": {
         "message": "ردکردن دستی"
     },
+    "showOverlay": {
+        "message": "نمایش در نوار پیشرفت"
+    },
+    "disable": {
+        "message": "غیرفعال کردن"
+    },
+    "showOverlay_POI": {
+        "message": "نمایش در نوار پیشرفت"
+    },
+    "showOverlay_full": {
+        "message": "نمایش نام"
+    },
+    "category": {
+        "message": "دسته بندی"
+    },
     "bracketNow": {
         "message": "(اکنون)"
     },
+    "moreCategories": {
+        "message": "نمایش دسته‌بندی‌ها"
+    },
     "bracketEnd": {
         "message": "(پایان)"
+    },
+    "acceptPermission": {
+        "message": "تأیید دسترسی"
+    },
+    "incorrectCategory": {
+        "message": "تغییر دسته بندی"
+    },
+    "guidelines": {
+        "message": "دستورالعمل‌ها"
+    },
+    "readTheGuidelines": {
+        "message": "دستورالعمل‌ها را بخوانید!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
     },
     "help": {
         "message": "راهنما"
@@ -274,7 +350,61 @@
         "message": "فهمیدم",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "hideForever": {
+        "message": "مخفی‌سازی برای همیشه"
+    },
+    "warningChatInfo": {
+        "message": "شما یک اخطار دریافت کرده اید و موقتاً نمیتوانید بخشی را ثبت کنید. این یعنی ما متوجه شدیم که شما یک سری اشتباهات متداول داشتید اما قصد و نیت خرابکاری نداشتید، لطفاً فقط تایید کنید که شما از قوانین آگاهی دارید و سپس ما این اخطار را حذف خواهیم کرد. شما میتوانید به کمک discord.gg/SponsorBlock یا matrix.to/#/#sponsor:ajay.app عضو گروه ما بشوید."
+    },
+    "voteRejectedWarning": {
+        "message": "رای شما رد شد چون شما یک اخطار دارید. برای حل این مشکل یک کلیک کنید تا گروه چت ما باز بشود، یا اینکه بعداً هر موقع وقت داشتید این کار را انجام بدهید.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
     "Donate": {
         "message": "کمک مالی"
+    },
+    "hideDonationLink": {
+        "message": "پنهان کردن لینک کمک مالی"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "ازینکه افزونه SponserBlock را نصب کردید سپاسگزاریم."
+    },
+    "helpPageReviewOptions": {
+        "message": "لطفاً تنظیمات زیر را بررسی کنید"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "چگونه ردکردن کار می‌کند"
+    },
+    "Submitting": {
+        "message": "ثبت نمودن"
+    },
+    "Editing": {
+        "message": "ویرایش"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "آیا می‌توان یک کپی از پایگاه داده را دریافت کرد؟ اگر شما یک روز ناپدید شدید چه می‌شود؟"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "پایگاه داده به‌صورت عمومی در دسترس است در"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "سورس کد به‌صورت رایگان ارائه شده است. بنابراین، اگر اتفاقی برای من بیفتد، ارسالات شما از بین نمی‌روند."
+    },
+    "helpPageSourceCode": {
+        "message": "از کجا سورس کد را بگیرم؟"
+    },
+    "Credits": {
+        "message": "سازندگان"
+    },
+    "LearnMore": {
+        "message": "بیشتر بدانید"
+    },
+    "dayAbbreviation": {
+        "message": "روز",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "ساعت",
+        "description": "100h"
     }
 }
