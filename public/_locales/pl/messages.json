@@ -242,10 +242,6 @@
     "noticeVisibilityMode4": {
         "message": "Znikające powiadomienia o przewijaniu"
     },
-    "longDescription": {
-        "message": "SponsorBlock pozwala pomijać sponsorów, intra, outra, przypomnienia o subskrypcjach i inne irytujące fragmenty filmów na YouTube. SponsorBlock jest opartym na crowdsourcingu rozszerzeniem do przeglądarki, które pozwala każdemu zgłosić początek i koniec segmentów sponsorowanych oraz innych segmentów w filmach na YouTube. Kiedy ktoś już zamieści te informacje, wszyscy pozostali z tym rozszerzeniem będą pomijać segment sponsorowany. Możesz również pomijać fragmenty teledysków bez muzyki.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Strona",
         "description": "Used on Firefox Store Page"
@@ -307,7 +303,7 @@
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
-        "message": "Pominąć {0}?"
+        "message": "{0} — pominąć?"
     },
     "mute_category": {
         "message": "Wyciszyć {0}?"
@@ -433,9 +429,6 @@
     },
     "skipNoticeDuration": {
         "message": "Czas trwania powiadomienia pominięcia (sekundy):"
-    },
-    "skipNoticeDurationDescription": {
-        "message": "Powiadomienie o pominięciu pozostanie na ekranie przez co najmniej tyle. Po ręcznym pominięciu, może być widoczna przez dłuższy czas."
     },
     "shortCheck": {
         "message": "Ten segment jest krótszy od ustawionego przez Ciebie minimalnego czasu trwania. Może to oznaczać, że ktoś już to zamieścił, ale nie widzisz tego przez to ustawienie. Czy na pewno chcesz to zamieścić?"
