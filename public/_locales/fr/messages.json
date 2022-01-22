@@ -242,6 +242,10 @@
     "noticeVisibilityMode4": {
         "message": "Toute les notifications de passage qui disparaissent"
     },
+    "longDescription": {
+        "message": "SponsorBlock vous permet de passer les sponsors, les intros, les outros, les rappels d'abonnement et autres parties ennuyeuses des vidéos YouTube. SponsorBlock est une extension de navigateur qui permet à n'importe qui de soumettre les temps de début et de fin des segments sponsorisés et d'autres segments de vidéos YouTube. Une fois qu'une personne a soumis ces informations, toutes les autres personnes possédant cette extension passeront directement les segments sponsorisés. Vous pouvez également sauter les sections non musicales des vidéos musicales.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Site web",
         "description": "Used on Firefox Store Page"
@@ -425,6 +429,9 @@
     },
     "skipNoticeDuration": {
         "message": "Durée du saut de segment (secondes):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "L'avis du saut restera à l'écran pendant au moins aussi longtemps. Pour passer manuellement, il peut être visible plus longtemps."
     },
     "shortCheck": {
         "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
