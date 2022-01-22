@@ -242,10 +242,6 @@
     "noticeVisibilityMode4": {
         "message": "Všechna vybledlá oznámení o přeskočení"
     },
-    "longDescription": {
-        "message": "SponsorBlock vám umožní přeskakovat sponzorské sekce, intra, outra, oznámení k odběru a další otravné části YouTube videí. SponsorBlock je crowdsourcované rozšíření prohlížeče, které dává komukoli možnost odeslat začátek a konec sponzorovaných segmentů a dalších segmentů YouTube videí. Jakmile jedna osoba odešle tuto informaci, všichni ostatní s tímto rozšířením automaticky přeskočí sponzorovaný segment. Můžete také přeskakovat nehudební sekce v hudebních videích.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Web",
         "description": "Used on Firefox Store Page"
@@ -433,9 +429,6 @@
     },
     "skipNoticeDuration": {
         "message": "Délka trvání oznámení o přeskočení (v sekundách):"
-    },
-    "skipNoticeDurationDescription": {
-        "message": "Oznámení o přeskočení zůstane na obrazovce alespoň po tuto dobu. Pro ruční může být zobrazeno déle."
     },
     "shortCheck": {
         "message": "Váš příspěvek je kratší než vaše možnost nejkratší doby trvání. To by mohlo znamenat, že někdo segment již odeslal, a je jenom ignorován kvůli této možnosti. Opravdu chcete odeslat váš příspěvek?"
