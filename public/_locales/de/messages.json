@@ -242,10 +242,6 @@
     "noticeVisibilityMode4": {
         "message": "Alles verblasste Skip-Meldungen"
     },
-    "longDescription": {
-        "message": "SponsorBlock lässt dich gesponserte Videosegmente, Intros, Outros, Interaktions-Erinnerungen, Musikvideoteile ohne Musik und andere nervige Teile von YouTube-Videos überspringen. SponsorBlock ist eine crowdsourced Browser-Erweiterung, in der jeder die Start- und Endzeit gesponserter Videosegmente und anderer Segmente von YouTube-Videos einreicht. Sobald eine Person diese Informationen einreicht, überspringen alle anderen mit dieser Erweiterung das gesponserte Segment.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Webseite",
         "description": "Used on Firefox Store Page"
@@ -433,9 +429,6 @@
     },
     "skipNoticeDuration": {
         "message": "Benachrichtigungsdauer überspringen (Sekunden):"
-    },
-    "skipNoticeDurationDescription": {
-        "message": "Die Überspringen Benachrichtigung wird mindestens so lange angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
     },
     "shortCheck": {
         "message": "Die folgende Einreichung ist kürzer als deine Mindestdauer. Das könnte bedeuten, dass dieses Videosegment bereits eingereicht wurde und aufgrund dieser Option einfach ignoriert wird. Bist du dir sicher, dass du es übermitteln möchtest?"
