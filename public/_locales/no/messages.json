@@ -206,10 +206,6 @@
     "showSkipNotice": {
         "message": "Vis varsel etter at et segment har blitt hoppet over"
     },
-    "longDescription": {
-        "message": "SponsorBlock lar deg hoppe over sponsorer, introer, outro-er, abonnementspåminnelser, og andre irriterende deler av YouTube-videoer. SponsorBlock er en fellesskapsdrevet nettleserutvidelser som lar alle sende inn start- og sluttidspunktene til sponsede segmenter og andre segmenter i YouTube-videoer. Når en person sender inn denne informasjonen, vil alle andre med denne utvidelsen hoppe rett over det sponsede segmentet. Du kan også hoppe over ikke-musikk-seksjoner i musikkvideoer.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Nettsted",
         "description": "Used on Firefox Store Page"
