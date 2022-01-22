@@ -215,7 +215,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 {/* Action Type */}
                 {CompileConfig.categorySupport[sponsorTime.category] && 
                     (CompileConfig.categorySupport[sponsorTime.category]?.length > 1 
-                        || ![ActionType.Skip, ActionType.Poi].includes(CompileConfig.categorySupport[sponsorTime.category]?.[0])) ? (
+                        || CompileConfig.categorySupport[sponsorTime.category]?.[0] === ActionType.Full) ? (
                     <div style={{position: "relative"}}>
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
