@@ -38,7 +38,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     configUpdateListener: () => void;
 
     previousSkipType: ActionType;
-    timeBeforeChangingToPOI: number; // Initialized when first selecting POI
+    // Used when selecting POI or Full
+    timesBeforeChanging: number[] = [];
     fullVideoWarningShown = false;
 
     constructor(props: SponsorTimeEditProps) {
@@ -207,7 +208,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
                             defaultValue={sponsorTime.actionType}
                             ref={this.actionTypeOptionRef}
-                            onChange={() => this.saveEditTimes()}>
+                            onChange={(e) => this.actionTypeSelectionChange(e)}>
                             {this.getActionTypeOptions(sponsorTime)}
                         </select>
                     </div>
@@ -379,21 +380,51 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             return;
         }
 
-        if (CompileConfig.categorySupport[event.target.value].includes(ActionType.Poi)) {
-            if (this.previousSkipType !== ActionType.Poi) this.timeBeforeChangingToPOI = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
+        const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+        this.handleReplacingLostTimes(event.target.value as Category, sponsorTime.actionType);
+        this.saveEditTimes();
+    }
+
+    actionTypeSelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
+        const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+
+        this.handleReplacingLostTimes(sponsorTime.category, event.target.value as ActionType);
+        this.saveEditTimes();
+    }
+
+    private handleReplacingLostTimes(category: Category, actionType: ActionType): void {
+        if (CompileConfig.categorySupport[category]?.includes(ActionType.Poi)) {
+            if (this.previousSkipType !== ActionType.Poi) {
+                this.timesBeforeChanging = [null, utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1])];
+            }
+
             this.setTimeTo(1, null);
             this.props.contentContainer().updateEditButtonsOnPlayer();
 
             if (this.props.contentContainer().sponsorTimesSubmitting
-                    .some((segment, i) => segment.category === event.target.value && i !== this.props.index)) {
+                    .some((segment, i) => segment.category === category && i !== this.props.index)) {
                 alert(chrome.i18n.getMessage("poiOnlyOneSegment"));
             }
-        } else if (CompileConfig.categorySupport[event.target.value].includes(ActionType.Skip) && this.previousSkipType === ActionType.Poi) {
-            this.setTimeTo(1, this.timeBeforeChangingToPOI);
-        }
 
-        this.previousSkipType = CompileConfig.categorySupport[event.target.value].includes(ActionType.Poi) ? ActionType.Poi : ActionType.Skip;
-        this.saveEditTimes();
+            this.previousSkipType = ActionType.Poi;
+        } else if (CompileConfig.categorySupport[category]?.length === 1 
+                && CompileConfig.categorySupport[category]?.[0] === ActionType.Full) {
+            if (this.previousSkipType !== ActionType.Full) {
+                this.timesBeforeChanging = [utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]), utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1])];
+            }
+
+            this.previousSkipType = ActionType.Full;
+        } else if (CompileConfig.categorySupport[category]?.includes(ActionType.Skip) 
+                && ![ActionType.Poi, ActionType.Full].includes(this.getNextActionType(category, actionType)) && this.previousSkipType !== ActionType.Skip) {
+            if (this.timesBeforeChanging[0]) {
+                this.setTimeTo(0, this.timesBeforeChanging[0]);
+            }
+            if (this.timesBeforeChanging[1]) {
+                this.setTimeTo(1, this.timesBeforeChanging[1]);
+            }
+
+            this.previousSkipType = ActionType.Skip;
+        }
     }
 
     getActionTypeOptions(sponsorTime: SponsorTime): React.ReactElement[] {
@@ -476,9 +507,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         sponsorTimesSubmitting[this.props.index].category = category;
 
         const inputActionType = this.actionTypeOptionRef?.current?.value as ActionType;
-        const actionType = inputActionType && CompileConfig.categorySupport[category]?.includes(inputActionType) ? inputActionType as ActionType 
-                                : CompileConfig.categorySupport[category]?.[0] ?? ActionType.Skip;
-        sponsorTimesSubmitting[this.props.index].actionType = actionType;
+        sponsorTimesSubmitting[this.props.index].actionType = this.getNextActionType(category, inputActionType);
 
         Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
 
@@ -489,6 +518,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             this.setTimeTo(0, 0);
             this.setTimeTo(1, 0);
         }
+    }
+
+    private getNextActionType(category: Category, actionType: ActionType): ActionType {
+        return actionType && CompileConfig.categorySupport[category]?.includes(actionType) ? actionType
+            : CompileConfig.categorySupport[category]?.[0] ?? ActionType.Skip
     }
 
     previewTime(ctrlPressed = false, shiftPressed = false): void {
