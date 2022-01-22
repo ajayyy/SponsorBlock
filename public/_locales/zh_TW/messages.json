@@ -221,6 +221,10 @@
     "showSkipNotice": {
         "message": "在跳過片段後顯示通知"
     },
+    "longDescription": {
+        "message": "SponsorBlock 讓您可以跳過贊助工商，開場動畫，結束動畫，訂閱提醒等煩人的 YouTube 影片片段。SponsorBlock 是個大眾外包的網頁瀏覽器擴充功能，能讓任何人提交贊助片段的始與末。當一個人提交這個片段後，所有使用這個擴充功能的人都可以跳過該片段。您也可以跳過在音樂中的非音樂片段",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "網址",
         "description": "Used on Firefox Store Page"
@@ -380,6 +384,9 @@
     },
     "skipNoticeDuration": {
         "message": "跳過通知持續顯示時間（秒）："
+    },
+    "skipNoticeDurationDescription": {
+        "message": "跳過片段提示的顯示時間將會以上列時間長度為準（單位：秒）；手動跳過的時候會顯示較長於上面的時間"
     },
     "shortCheck": {
         "message": "以下的提交小於您的最小時間設定。這表是它們可能已經被提交，只是被該設定忽略了。您確定要提交嗎？"
