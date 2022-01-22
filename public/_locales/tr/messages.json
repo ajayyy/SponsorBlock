@@ -242,10 +242,6 @@
     "noticeVisibilityMode4": {
         "message": "Tüm Soluk Atlama Bildirimleri"
     },
-    "longDescription": {
-        "message": "SponsorBlock, sponsorları, giriş ve bitiş kısımlarını, abonelik hatırlatıcılarını ve YouTube videolarının diğer can sıkıcı kısımlarını atlamanıza olanak tanır. SponsorBlock, herkesin sponsorlu kısımları ve YouTube videolarının diğer kısımlarının başlangıç ve bitiş zamanlarını göndermesine izin veren kitle kaynaklı bir tarayıcı uzantısıdır. Bir kişi bu bilgiyi gönderdikten sonra, bu uzantıya sahip diğer herkes sponsorlu kısımları hemen atlayacaktır. Müzik videolarının müzik dışı bölümlerini de atlayabilirsiniz.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Website",
         "description": "Used on Firefox Store Page"
@@ -433,9 +429,6 @@
     },
     "skipNoticeDuration": {
         "message": "Atlandı uyarısı süresi (saniye cinsinden):"
-    },
-    "skipNoticeDurationDescription": {
-        "message": "Bir kısım atlandığında ekranda atlandı uyarısı bu süre kadar gösterilir. Atlama elle gerçekleştiğinde bu uyarı daha uzun sürebilir."
     },
     "shortCheck": {
         "message": "Sıradaki öneri belirlediğiniz minimum süre ayarından daha kısa. Bu zaten yollandığı ve bu ayardan dolayı yok sayıldığı anlamına gelebilir. Göndermek istediğinizden emin misiniz?"
