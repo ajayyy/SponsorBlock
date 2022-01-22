@@ -242,10 +242,6 @@
     "noticeVisibilityMode4": {
         "message": "Kaikki haalistuneet ohitusilmoitukset"
     },
-    "longDescription": {
-        "message": "SponsorBlockin avulla voit ohittaa sponsorit, introt, outrot, tilausmuistutukset ja muut ärsyttävät osat YouTube-videoissa. SponsorBlock on joukkoistettu selainlaajennus, jonka avulla kuka tahansa voi lähettää Youtube-videoiden sponsoroitujen ja muiden segmenttien aloitus- ja päättymisajat. Kun yksi henkilö on lähettänyt tämän tiedon, kaikki muut, joilla on tämä laajennus, ohittavat sponsoroidun segmentin. Voit myös ohittaa musiikkivideoiden musiikittomat osat.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Sivusto",
         "description": "Used on Firefox Store Page"
@@ -433,9 +429,6 @@
     },
     "skipNoticeDuration": {
         "message": "Ohitusilmoituksen kesto (sekuntia):"
-    },
-    "skipNoticeDurationDescription": {
-        "message": "Ohitusimoitus pysyy näytöllä ainakin näin kauan.\nManuaalisella ohituksella se saattaa pysyä pitempäänkin."
     },
     "shortCheck": {
         "message": "Seuraava lähetys on lyhyempi kuin vähimmäiskeston asetuksesi. Tämä voi tarkoittaa sitä, että tämä on jo lähetetty, ja sitä ei vain oteta huomioon tämän asetuksen vuoksi. Oletko varma, että haluat lähettää?"
