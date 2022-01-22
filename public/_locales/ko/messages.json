@@ -242,6 +242,10 @@
     "noticeVisibilityMode4": {
         "message": "모든 건너뛰기 알림 숨김"
     },
+    "longDescription": {
+        "message": "SponsorBlock을 사용하면 영상에서 스폰서 광고, 인트로 영상, 아웃트로 영상, 구독 광고와 그 외 쓸데없는 부분을 즉시 건너뛸 수 있습니다. SponsorBlock은 모든 사람들이 참여하는 브라우저 확장 기능으로 확장 기능 사용자는 스폰서 광고 또는 다른 광고의 시작 시간과 끝 시간을 확인하여 서버로 전송할 수 있습니다. 이러한 정보가 전송되면 그 영상을 보는 다른 사용자들은 광고 구간이 나오기 전에 자동으로 건너뛸 수 있습니다. SponsorBlock을 사용하면 뮤직 비디오에서 음악이나 노래가 아닌 구간도 건너뛸 수 있습니다.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "웹사이트",
         "description": "Used on Firefox Store Page"
@@ -429,6 +433,9 @@
     },
     "skipNoticeDuration": {
         "message": "건너뛰기 알림 길이 (초):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "건너뛰기 알림이 최소한 이 길이 동안 표시됩니다. 수동 건너뛰기를 한 경우 알림이 더 길게 표시될 수 있습니다."
     },
     "shortCheck": {
         "message": "다음 제출은 최소 기간 옵션보다 짧습니다. 이 말은 이미 제출되었으며, 이 옵션으로 인해 무시될 수 있습니다. 제출하시겠습니까?"
