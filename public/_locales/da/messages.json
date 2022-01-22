@@ -242,10 +242,6 @@
     "noticeVisibilityMode4": {
         "message": "Alle Faded Skip-Bemærkninger"
     },
-    "longDescription": {
-        "message": "SponsoBlock lader dig skippe sponsorer, introer, outroer, abonnement påmindelser og andre irriterende dele af YouTube-Videoer. SponsorBlock er en crowdsourced browerudvidelse, hvor alle kan indsende start- og sluttidspunkter for sponsorerede og andre segmenter i YouTube-Videoer. Du kan også springe over de dele af musikvideoer, som ikke er musik.",
-        "description": "Full description of the extension on the store pages."
-    },
     "website": {
         "message": "Hjemmeside",
         "description": "Used on Firefox Store Page"
@@ -429,9 +425,6 @@
     },
     "skipNoticeDuration": {
         "message": "Spring meddelelsesvarighed over (sekunder):"
-    },
-    "skipNoticeDurationDescription": {
-        "message": "Overspringsmeddelelsen vil blive på skærmen i mindst så længe. For manuel spring, kan den være synlig i længere tid."
     },
     "shortCheck": {
         "message": "Den følgende indsendelse er kortere end din minimums varighed indstilling. Dette kan betyde, at den allerede er indsendt, og bare bliver ignoreret på grund af denne indstilling. Er du sikker på, at du vil indsende?"
