@@ -435,7 +435,7 @@
         "message": "Benachrichtigungsdauer überspringen (Sekunden):"
     },
     "skipNoticeDurationDescription": {
-        "message": "Die Überspringen Benachrichtigung wird mindestens so lange angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
+        "message": "Die überspringen Benachrichtigung wird mindestens für so viele Sekunden angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
     },
     "shortCheck": {
         "message": "Die folgende Einreichung ist kürzer als deine Mindestdauer. Das könnte bedeuten, dass dieses Videosegment bereits eingereicht wurde und aufgrund dieser Option einfach ignoriert wird. Bist du dir sicher, dass du es übermitteln möchtest?"
