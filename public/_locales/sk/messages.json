@@ -440,6 +440,9 @@
     "shortCheck": {
         "message": "Segment je kratší ako vami nastavená minimálna dĺžka. Možno už bol niekým odoslaný a kvôli tomuto nastaveniu je teraz ignorovaný. Naozaj ho chcete odoslať?"
     },
+    "liveOrPremiere": {
+        "message": "Vytváranie segmentov v aktívnom živom prenose alebo premiére nie je dovolené. Počkajte prosím na jeho ukončenie, potom obnovte stránku a skontrolujte, či sú segmenty správne vytvorené."
+    },
     "showUploadButton": {
         "message": "Ukázať Nahrávacie Tlačidlo"
     },
