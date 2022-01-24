@@ -441,7 +441,7 @@
         "message": "De volgende inzending is korter dan uw \"minimale tijdsduur\"-instelling. Dit kan betekenen dat dit al is ingediend en genegeerd wordt door deze optie. Weet u zeker dat u dit wilt indienen?"
     },
     "liveOrPremiere": {
-        "message": "Indienen op een actieve livesteam of première is niet toegestaan. Wacht tot hij klaar is, vernieuw dan de pagina en controleer of de segmenten nog geldig zijn."
+        "message": "Indienen op een actieve livesteam of première is niet toegestaan. Wacht tot hij geëindigd is, vernieuw dan de pagina en controleer of de segmenten nog geldig zijn."
     },
     "showUploadButton": {
         "message": "Uploaden-knop weergeven"
