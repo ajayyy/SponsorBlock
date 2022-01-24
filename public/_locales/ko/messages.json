@@ -540,6 +540,16 @@
     "category_selfpromo_description": {
         "message": "'스폰서 광고'와 비슷하지만 협찬 없이 자기 채널을 홍보하는 구간입니다. 여기에는 채널 굿즈 광고, 기부 광고와 영상에 참여한 사람들을 홍보하는 광고가 해당됩니다."
     },
+    "category_exclusive_access": {
+        "message": "협찬"
+    },
+    "category_exclusive_access_description": {
+        "message": "전체 동영상 전용 카테고리입니다. 동영상이 유/무료 협찬을 받은 제품, 서비스, 장소를 소개하는 경우 사용합니다."
+    },
+    "category_exclusive_access_pill": {
+        "message": "본 동영상은 무료/유료 협찬을 받은 제품, 서비스, 장소를 소개합니다",
+        "description": "Short description for this category"
+    },
     "category_interaction": {
         "message": "상호 작용 알림 (구독)"
     },
