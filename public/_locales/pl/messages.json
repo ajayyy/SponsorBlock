@@ -262,6 +262,10 @@
         "message": "Jeśli nadal jej nie lubisz wybierz opcje nie pokazuj więcej.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Pomiń segment",
+        "description": "Keybind label"
+    },
     "0": {
         "message": "Połączenie przerwane z powodu braku odpowiedzi. Sprawdź swoje połączenie z internetem. Jeśli wszystko z nim w porządku oznacza to, że serwer jest prawdopodobnie przeciążony lub nie działa."
     },
@@ -835,5 +839,9 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabInterface": {
+        "message": "Interfejs",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     }
 }
