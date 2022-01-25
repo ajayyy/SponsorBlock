@@ -262,21 +262,6 @@
         "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Définir une touche pour passer un segment"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Définir le raccourci pour démarrer/terminer un segment"
-    },
-    "setSubmitKeybind": {
-        "message": "Changer le raccourci pour soumettre les segments"
-    },
-    "keybindDescription": {
-        "message": "Appuyez sur une touche"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Le raccourci choisi est : "
-    },
     "0": {
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
     },
@@ -383,9 +368,6 @@
     },
     "createdBy": {
         "message": "Créé par"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Il est actuellement réglé sur :"
     },
     "supportOtherSites": {
         "message": "Support de YouTube-Sites tierces"
@@ -510,12 +492,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous ne préférez pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
-    },
-    "theKey": {
-        "message": "La clé"
-    },
-    "keyAlreadyUsed": {
-        "message": "est lié à une autre action. Veuillez sélectionner une autre clé."
     },
     "to": {
         "message": "à",
