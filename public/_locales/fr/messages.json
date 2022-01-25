@@ -445,6 +445,9 @@
     "exportOptions": {
         "message": "Importer/Exporter toutes les options"
     },
+    "exportOptionsUpload": {
+        "message": "Charger à partir du fichier"
+    },
     "whatExportOptions": {
         "message": "C'est votre configuration complète au format JSON. Elle inclut votre identifiant utilisateur, gardez-la pour vous."
     },
@@ -818,5 +821,27 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportement",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interface",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Raccourcis clavier",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Divers",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "change": {
+        "message": "Changer"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Il s'agit d'un raccourci YouTube intégré. Êtes-vous sûr de vouloir l'utiliser ?"
     }
 }
