@@ -262,6 +262,21 @@
         "message": "계속 이것이 싫다면, 보지 않기 버튼을 누르세요.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "구간 건너뛰기",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "구간 시작/중지",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "구간 제출",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "키를 눌러서 선택하고 함께 사용하고 싶은 조합 키를 선택하십시오."
+    },
     "0": {
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
     },
@@ -452,6 +467,15 @@
     "exportOptions": {
         "message": "모든 설정 가져오기/내보내기"
     },
+    "exportOptionsCopy": {
+        "message": "수정/복사"
+    },
+    "exportOptionsDownload": {
+        "message": "파일로 저장"
+    },
+    "exportOptionsUpload": {
+        "message": "파일에서 불러오기"
+    },
     "whatExportOptions": {
         "message": "JSON의 전체 구성입니다. 사용자ID가 포함되므로 주의하세요."
     },
@@ -499,6 +523,9 @@
     },
     "copyDebugInformationComplete": {
         "message": "디버그 정보가 복사되었습니다. 공유하고 싶지 않은 내용이 있는 경우 자유롭게 수정하신 후, 텍스트 파일로 저장하시거나 버그 신고 페이지에 붙여넣으시면 됩니다."
+    },
+    "keyAlreadyUsed": {
+        "message": "이 단축키는 다른 동작에 할당되어 있습니다. 다른 키를 선택하세요."
     },
     "to": {
         "message": "-",
@@ -763,6 +790,9 @@
     "hideDonationLink": {
         "message": "후원 링크 숨기기"
     },
+    "darkModeOptionsPage": {
+        "message": "설정 페이지 내 다크 모드"
+    },
     "helpPageThanksForInstalling": {
         "message": "SponsorBlock을 설치해 주셔서 감사드립니다."
     },
@@ -851,5 +881,42 @@
     "hourAbbreviation": {
         "message": "시간",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "동작",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "인터페이스",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "키보드 단축키",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "백업/복원",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "기타",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "건너뛰기 알림 표시",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "할당 해제",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "설정되지 않음"
+    },
+    "change": {
+        "message": "변경"
+    },
+    "youtubeKeybindWarning": {
+        "message": "기본 YouTube 단축키와 겹칩니다. 그래도 사용하시겠습니까?"
     }
 }
