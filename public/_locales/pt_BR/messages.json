@@ -262,21 +262,6 @@
         "message": "Se você ainda não gostar dessa, aperte o botão não mostrar novamente.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Defina a tecla para ignorar um segmento"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Defina a tecla para iniciar/interromper o segmento"
-    },
-    "setSubmitKeybind": {
-        "message": "Defina a tecla para enviar o segmento de patrocínio"
-    },
-    "keybindDescription": {
-        "message": "Selecione uma tecla apertando-a"
-    },
-    "keybindDescriptionComplete": {
-        "message": "A tecla foi definida para: "
-    },
     "0": {
         "message": "Tempo limite de conexão excedida. Cheque a sua conexão de internet. Se a sua internet estiver funcionando, o servidor está sobrecarregado ou fora do ar."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Criado por"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Atualmente, está definido para:"
     },
     "supportOtherSites": {
         "message": "Suporte a Sites do YouTube de Terceiros"
@@ -514,12 +496,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "A informação de depuração foi copiada para a área de transferência. Sinta-se à vontade para remover qualquer informação que prefira não compartilhar. Salve em um arquivo de texto ou cole-a no relatório de bug."
-    },
-    "theKey": {
-        "message": "A tecla"
-    },
-    "keyAlreadyUsed": {
-        "message": "está vinculado a outra ação. Por favor, selecione outra tecla."
     },
     "to": {
         "message": "até",
