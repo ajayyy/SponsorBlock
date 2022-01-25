@@ -52,7 +52,7 @@ interface SBConfig {
     },
     scrollToEditTimeUpdate: boolean,
     categoryPillUpdate: boolean,
-    lightMode: boolean,
+    darkMode: boolean,
 
     skipKeybind: Keybind,
     startSponsorKeybind: Keybind,
@@ -208,7 +208,7 @@ const Config: SBObject = {
         autoSkipOnMusicVideos: false,
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
         categoryPillUpdate: false,
-        lightMode: false,
+        darkMode: true,
 
         /**
          * Default keybinds should not set "code" as that's gonna be different based on the user's locale. They should also only use EITHER ctrl OR alt modifiers (or none).
