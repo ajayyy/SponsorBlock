@@ -97,7 +97,6 @@ html, body {
     overflow: hidden;
     background-color: var(--tab-color);
     color: var(--white);
-    transition: background-color 0.1s;
 }
 
 .tab-heading:hover {
