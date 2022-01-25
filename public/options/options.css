@@ -8,6 +8,7 @@
     --dialog-background: #181818;
     --dialog-border: white;
     --tab-color: #242424;
+    --tab-button-hover: #4d0000;
     --tab-hover: white;
     --description: #dfdfdf;
     --disabled: #520000;
@@ -26,6 +27,7 @@
     --dialog-background: #f9f9f9;
     --dialog-border: #282828;
     --tab-color: #ababab;
+    --tab-button-hover: #750000;
     --tab-hover: #2e2e2e;
     --description: #262626;
     --disabled: #ffcaca;
@@ -100,7 +102,8 @@ html, body {
 }
 
 .tab-heading:hover {
-    background-color: #4d0000;
+    background-color: var(--tab-button-hover);
+    color: white;
 }
 
 .tab-heading.selected {
@@ -110,6 +113,7 @@ html, body {
 
 .tab-heading:active {
     background-color: #950000;
+    color: white;
 }
 
 .option-group > div {
