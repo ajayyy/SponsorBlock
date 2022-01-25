@@ -262,21 +262,6 @@
         "message": "Jos et vieläkään pidä siitä, paina \"älä näytä koskaan\" -painiketta.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Aseta näppäin segmentin ohittamista varten"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Aseta pikanäppäin segmentin aloittamiseen/lopettamiseen"
-    },
-    "setSubmitKeybind": {
-        "message": "Aseta pikanäppäin tietojen lähetykseen"
-    },
-    "keybindDescription": {
-        "message": "Valitse näppäin painamalla sitä"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Pikanäppäin on asetettu näppäimeen: "
-    },
     "0": {
         "message": "Yhteyden aikakatkaisu. Tarkista internet-yhteytesi. Jos internetyhteytesi toimii, palvelin on todennäköisesti ylikuormittunut tai alhaalla."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Luonut"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Tällä hetkellä se on asetettu näppäimeen:"
     },
     "supportOtherSites": {
         "message": "Tue kolmansien osapuolien YouTube-sivustoja"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Virheenkorjaustiedot on kopioitu leikepöydälle. Voit poistaa mitä tahansa tietoa mitä et mielummin jakaisi. Tallenna tämä tekstitiedostoon tai liitä se virheraporttiin."
-    },
-    "theKey": {
-        "message": "Näppäin"
-    },
-    "keyAlreadyUsed": {
-        "message": "on jo liitetty toiseen toimintoon. Valitse toinen näppäin."
     },
     "to": {
         "message": "-",
