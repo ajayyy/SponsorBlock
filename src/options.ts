@@ -293,7 +293,7 @@ async function init() {
         });
     }
 
-    window.onscroll = () => createStickyHeader();
+    window.addEventListener("scroll", () => createStickyHeader());
 
     optionsContainer.classList.add("animated");
 }
