@@ -6,7 +6,7 @@ import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import Utils from "../utils";
 const utils = new Utils();
-import { getCategoryActionType, getSkippingText } from "../utils/categoryUtils";
+import { getSkippingText } from "../utils/categoryUtils";
 import { keybindToString } from "../utils/configUtils";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
