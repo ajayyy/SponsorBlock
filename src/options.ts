@@ -47,6 +47,7 @@ async function init() {
         for (const element of document.getElementsByClassName("titleBar")) {
             element.classList.add("hidden");
         }
+
         document.getElementById("options").classList.add("embed");
         createStickyHeader();
     }
@@ -301,7 +302,7 @@ function createStickyHeader() {
     const container = document.getElementById("options-container");
     const options = document.getElementById("options");
 
-    if (window.pageYOffset > 90 && (window.innerHeight <= 770 || window.innerWidth <= 1200) || embed) {
+    if (!embed && window.pageYOffset > 90 && (window.innerHeight <= 770 || window.innerWidth <= 1200)) {
         if (!container.classList.contains("sticky")) {
             options.style.marginTop = options.offsetTop.toString()+"px";
             container.classList.add("sticky");
