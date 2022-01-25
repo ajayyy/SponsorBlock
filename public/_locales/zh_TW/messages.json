@@ -241,21 +241,6 @@
         "message": "如果您還是不喜歡它，請按下永不顯示按鈕",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "設定跳過段落的快捷鍵"
-    },
-    "setStartSponsorShortcut": {
-        "message": "設定開始/結束片段快捷鍵"
-    },
-    "setSubmitKeybind": {
-        "message": "設定提交快捷鍵"
-    },
-    "keybindDescription": {
-        "message": "按下您想選擇的按鍵"
-    },
-    "keybindDescriptionComplete": {
-        "message": "快捷鍵已設定為： "
-    },
     "0": {
         "message": "連線超時。請檢查您的網路連線。若您的網路運作正常，則可能是伺服器超載或離線"
     },
@@ -341,9 +326,6 @@
     },
     "createdBy": {
         "message": "作者"
-    },
-    "keybindCurrentlySet": {
-        "message": "。它目前被設定為："
     },
     "supportOtherSites": {
         "message": "支援第三方的 YouTube 網站"
@@ -465,12 +447,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "除錯資訊已複製到剪貼板中。您可以任意移除任何您不想分享的資訊。請將其另存為文字文件或貼到錯誤報告中。"
-    },
-    "theKey": {
-        "message": "按鍵"
-    },
-    "keyAlreadyUsed": {
-        "message": "已經綁定其它動作。請選擇其他按鍵"
     },
     "to": {
         "message": "到",
