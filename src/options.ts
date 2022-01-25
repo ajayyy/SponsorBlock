@@ -281,7 +281,7 @@ async function init() {
             document.getElementById(tabFor).classList.remove("hidden");
 
         tabElements[i].addEventListener("click", () => {
-            location.hash = tabFor;
+            if (!embed) location.hash = tabFor;
 
             createStickyHeader();
 
