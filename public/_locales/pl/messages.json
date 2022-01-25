@@ -262,21 +262,6 @@
         "message": "Jeśli nadal jej nie lubisz wybierz opcje nie pokazuj więcej.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Ustaw klawisz do pomijania segmentów"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Ustaw klawisz do oznaczania początku/końca segmentu"
-    },
-    "setSubmitKeybind": {
-        "message": "Ustaw klawisz do wysyłania czasów"
-    },
-    "keybindDescription": {
-        "message": "Wybierz klawisz, wciskając go na klawiaturze"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Ustawiony klawisz to: "
-    },
     "0": {
         "message": "Połączenie przerwane z powodu braku odpowiedzi. Sprawdź swoje połączenie z internetem. Jeśli wszystko z nim w porządku oznacza to, że serwer jest prawdopodobnie przeciążony lub nie działa."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Stworzony przez"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Obecnie ustawiony:"
     },
     "supportOtherSites": {
         "message": "Obsługa stron YouTube firm trzecich"
@@ -514,12 +496,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
-    },
-    "theKey": {
-        "message": "Klucz"
-    },
-    "keyAlreadyUsed": {
-        "message": "jest przypisane do innej akcji. Wybierz proszę inny klawisz."
     },
     "to": {
         "message": "do",
