@@ -262,21 +262,6 @@
         "message": "Якщо воно Вам все одно не подобається, натисніть «не показувати\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Призначити гарячу клавішу для пропуску сегмента"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Призначити гарячу клавішу для початку/зупинки сегмента"
-    },
-    "setSubmitKeybind": {
-        "message": "Призначити гарячу клавішу для надсилання"
-    },
-    "keybindDescription": {
-        "message": "Натисніть, щоб вибрати її"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Кнопка призначена на: "
-    },
     "0": {
         "message": "Таймаут підключення. Перевірте ваше з'єднання з інтернетом. Якщо ваш інтернет працює, сервер, швидше за все, перевантажений або лежить."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Створено"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Він зараз призначений на:"
     },
     "supportOtherSites": {
         "message": "Підтримувати сторонні YouTube-сайти"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Інформація про налагодження скопійована в буфер обміну. Ви можете видалити будь-яку інформацію, якої не хочете ділитися. Збережіть її в текстовий файл, вставте в звіт про помилку."
-    },
-    "theKey": {
-        "message": "Ключ"
-    },
-    "keyAlreadyUsed": {
-        "message": "прив'язана до іншого дії. Будь ласка, оберіть іншу клавішу."
     },
     "to": {
         "message": "до",
