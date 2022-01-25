@@ -126,6 +126,13 @@ async function init() {
                             else
                                 document.getElementById("sbDonate").classList.remove("hidden");
                             break;
+                        case "darkMode":
+                            if (checkbox.checked) {
+                                document.documentElement.setAttribute("data-theme", "dark");
+                            } else {
+                                document.documentElement.setAttribute("data-theme", "light");
+                            }
+                            break;
                     }
 
                     // If other options depend on this, hide/show them
