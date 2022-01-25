@@ -262,21 +262,6 @@
         "message": "Ha még mindig nem tetszik, kattints a ne mutassa többé gombra.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Billentyű beállítása szegmens átugráshoz"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Billentyű beállítása a szegmens kezdéséhez/befejezéséhez"
-    },
-    "setSubmitKeybind": {
-        "message": "Billentyű beállítása a beküldés gombhoz"
-    },
-    "keybindDescription": {
-        "message": "Válassz egy billentyűt azzal, hogy lenyomod"
-    },
-    "keybindDescriptionComplete": {
-        "message": "A funkció erre a billentyűre lett állítva: "
-    },
     "0": {
         "message": "Kapcsolati időtúllépés. Ellenőrizd az internetkapcsolatodat! Ha az internet működik, a kiszolgáló valószínűleg túlterhelt vagy leállt."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Készítette"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Jelenleg erre van állítva:"
     },
     "supportOtherSites": {
         "message": "Harmadik fél Youtube oldalainak támogatása"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "A hibakeresési információ másolva lett a vágólapjára. Nyugodtan távolíts el belőle olyan információkat, amiket nem szívesen osztanál meg. Mentsd el szöveges fájlként, vagy másold a hibajelentésbe."
-    },
-    "theKey": {
-        "message": "A(z)"
-    },
-    "keyAlreadyUsed": {
-        "message": "billentyű már máshoz van állítva. Kérlek, válassz egy másik billentyűt."
     },
     "to": {
         "message": "–",
