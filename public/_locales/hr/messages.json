@@ -280,9 +280,6 @@
     "createdBy": {
         "message": "Izradio"
     },
-    "keybindCurrentlySet": {
-        "message": ". Trenutno je postavljeno na:"
-    },
     "supportedSites": {
         "message": "Podržane stranice: "
     },
@@ -357,12 +354,6 @@
     },
     "copyDebugInformationOptions": {
         "message": "Kopira informacije u međuspremnik koje treba dati razvojnom programeru kada otkrije grešku / kada to programer zatraži. Osjetljive informacije kao što su vaš korisnički ID, kanali s popisa dopuštenih i prilagođena adresa poslužitelja uklonjeni su. Međutim, sadrži informacije kao što su vaš korisnički agent, preglednik, operativni sustav i broj verzije proširenja. "
-    },
-    "theKey": {
-        "message": "Tipka"
-    },
-    "keyAlreadyUsed": {
-        "message": "je vezana za drugu radnju. Molimo odaberite drugu tipku."
     },
     "to": {
         "message": "do",
