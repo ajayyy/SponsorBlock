@@ -125,7 +125,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             unwhitelistChannel();
         }
     });
-    PageElements.whitelistForceCheck.addEventListener("click", openOptions);
+    PageElements.whitelistForceCheck.addEventListener("click", () => {openOptionsAt("behavior")});
     PageElements.toggleSwitch.addEventListener("change", function () {
         toggleSkipping(!this.checked);
     });
@@ -514,6 +514,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //make the options div visible
     function openOptions() {
         chrome.runtime.sendMessage({ "message": "openConfig" });
+    }
+
+    function openOptionsAt(location) {
+        chrome.runtime.sendMessage({ "message": "openConfig", "hash": location });
     }
 
     function openHelp() {

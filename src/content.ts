@@ -1,7 +1,7 @@
 import Config from "./config";
 import { SponsorTime, CategorySkipOption, VideoID, SponsorHideType, VideoInfo, StorageChangesObject, ChannelIDInfo, ChannelIDStatus, SponsorSourceType, SegmentUUID, Category, SkipToTimeParams, ToggleSkippable, ActionType, ScheduledTime } from "./types";
 
-import { ContentContainer } from "./types";
+import { ContentContainer, Keybind } from "./types";
 import Utils from "./utils";
 const utils = new Utils();
 
@@ -16,6 +16,7 @@ import * as Chat from "./js-components/chat";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { getStartTimeFromUrl } from "./utils/urlParser";
 import { findValidElement, getControls, getHashParams, isVisible } from "./utils/pageUtils";
+import { keybindEquals } from "./utils/configUtils";
 import { CategoryPill } from "./render/CategoryPill";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
@@ -134,6 +135,9 @@ const manualSkipPercentCount = 0.5;
 
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
+
+//store pressed modifier keys
+const pressedKeys = new Set();
   
 function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void | boolean {
     //messages from popup script
@@ -1279,7 +1283,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
             && skippingSegments.length === 1 
             && skippingSegments[0].actionType === ActionType.Poi) {
         skipButtonControlBar.enable(skippingSegments[0]);
-        if (onMobileYouTube) skipButtonControlBar.setShowKeybindHint(false);
+        if (onMobileYouTube || Config.config.skipKeybind == null) skipButtonControlBar.setShowKeybindHint(false);
 
         activeSkipKeybindElement?.setShowKeybindHint(false);
         activeSkipKeybindElement = skipButtonControlBar;
@@ -1288,7 +1292,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
             //send out the message saying that a sponsor message was skipped
             if (!Config.config.dontShowNotice || !autoSkip) {
                 const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime);
-                if (onMobileYouTube) newSkipNotice.setShowKeybindHint(false);
+                if (onMobileYouTube || Config.config.skipKeybind == null) newSkipNotice.setShowKeybindHint(false);
                 skipNotices.push(newSkipNotice);
 
                 activeSkipKeybindElement?.setShowKeybindHint(false);
@@ -1894,30 +1898,46 @@ function addPageListeners(): void {
 
 function addHotkeyListener(): void {
     document.addEventListener("keydown", hotkeyListener);
+    document.addEventListener("keyup", (e) => pressedKeys.delete(e.key));
 }
 
 function hotkeyListener(e: KeyboardEvent): void {
     if (["textarea", "input"].includes(document.activeElement?.tagName?.toLowerCase())
         || document.activeElement?.id?.toLowerCase()?.includes("editable")) return;
 
-    const key = e.key;
+    if (["Alt", "Control", "Shift", "AltGraph"].includes(e.key)) {
+        pressedKeys.add(e.key);
+        return;
+    }
+
+    const key:Keybind = {key: e.key, code: e.code, alt: pressedKeys.has("Alt"), ctrl: pressedKeys.has("Control"), shift: pressedKeys.has("Shift")};
 
     const skipKey = Config.config.skipKeybind;
     const startSponsorKey = Config.config.startSponsorKeybind;
     const submitKey = Config.config.submitKeybind;
 
-    switch (key) {
-        case skipKey:
-            if (activeSkipKeybindElement) {
+    if (!pressedKeys.has("AltGraph")) {
+        if (keybindEquals(key, skipKey)) {
+            if (activeSkipKeybindElement)
                 activeSkipKeybindElement.toggleSkip.call(activeSkipKeybindElement);
-            }
-            break; 
-        case startSponsorKey:
+            return;
+        } else if (keybindEquals(key, startSponsorKey)) {
             startOrEndTimingNewSegment();
-            break;
-        case submitKey:
+            return;
+        } else if (keybindEquals(key, submitKey)) {
             submitSponsorTimes();
-            break;
+            return;
+        }
+    }
+
+    //legacy - to preserve keybinds for skipKey, startSponsorKey and submitKey for people who set it before the update. (shouldn't be changed for future keybind options)
+    if (key.key == skipKey?.key && skipKey.code == null && !keybindEquals(Config.defaults.skipKeybind, skipKey)) {
+        if (activeSkipKeybindElement)
+            activeSkipKeybindElement.toggleSkip.call(activeSkipKeybindElement);
+    } else if (key.key == startSponsorKey?.key && startSponsorKey.code == null && !keybindEquals(Config.defaults.startSponsorKeybind, startSponsorKey)) {
+        startOrEndTimingNewSegment();
+    } else if (key.key == submitKey?.key && submitKey.code == null && !keybindEquals(Config.defaults.submitKeybind, submitKey)) {
+        submitSponsorTimes();
     }
 }
 

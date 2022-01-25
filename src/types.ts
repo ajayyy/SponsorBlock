@@ -220,3 +220,11 @@ export enum NoticeVisbilityMode {
     FadedForAutoSkip = 3,
     FadedForAll = 4
 }
+
+export type Keybind = {
+    key: string,
+    code?: string,
+    ctrl?: boolean,
+    alt?: boolean,
+    shift?: boolean
+}

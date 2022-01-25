@@ -1,6 +1,7 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind } from "./types";
+import { keybindEquals } from "./utils/configUtils";
 
 interface SBConfig {
     userID: string,
@@ -11,9 +12,6 @@ interface SBConfig {
     defaultCategory: Category,
     whitelistedChannels: string[],
     forceChannelCheck: boolean,
-    skipKeybind: string,
-    startSponsorKeybind: string,
-    submitKeybind: string,
     minutesSaved: number,
     skipCount: number,
     sponsorTimesContributed: number,
@@ -54,6 +52,11 @@ interface SBConfig {
     },
     scrollToEditTimeUpdate: boolean,
     categoryPillUpdate: boolean,
+    darkMode: boolean,
+
+    skipKeybind: Keybind,
+    startSponsorKeybind: Keybind,
+    submitKeybind: Keybind,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -170,9 +173,6 @@ const Config: SBObject = {
         defaultCategory: "chooseACategory" as Category,
         whitelistedChannels: [],
         forceChannelCheck: false,
-        skipKeybind: "Enter",
-        startSponsorKeybind: ";",
-        submitKeybind: "'",
         minutesSaved: 0,
         skipCount: 0,
         sponsorTimesContributed: 0,
@@ -208,6 +208,18 @@ const Config: SBObject = {
         autoSkipOnMusicVideos: false,
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
         categoryPillUpdate: false,
+        darkMode: true,
+
+        /**
+         * Default keybinds should not set "code" as that's gonna be different based on the user's locale. They should also only use EITHER ctrl OR alt modifiers (or none).
+         * Using ctrl+alt, or shift may produce a different character that we will not be able to recognize in different locales.
+         * The exception for shift is letters, where it only capitalizes. So shift+A is fine, but shift+1 isn't.
+         * Don't forget to add the new keybind to the checks in "KeybindDialogComponent.isKeybindAvailable()" and in "migrateOldFormats()"!
+         *      TODO: Find a way to skip having to update these checks. Maybe storing keybinds in a Map?
+         */
+        skipKeybind: {key: "Enter"},
+        startSponsorKeybind: {key: ";"},
+        submitKeybind: {key: "'"},
 
         categorySelections: [{
             name: "sponsor" as Category,
@@ -447,6 +459,29 @@ function migrateOldFormats(config: SBConfig) {
 
                 chrome.storage.sync.remove("disableAutoSkip");
             }
+        }
+    }
+
+    if (typeof config["skipKeybind"] == "string") {
+        config["skipKeybind"] = {key: config["skipKeybind"]};
+    }
+
+    if (typeof config["startSponsorKeybind"] == "string") {
+        config["startSponsorKeybind"] = {key: config["startSponsorKeybind"]};
+    }
+
+    if (typeof config["submitKeybind"] == "string") {
+        config["submitKeybind"] = {key: config["submitKeybind"]};
+    }
+
+    // Unbind key if it matches a previous one set by the user (should be ordered oldest to newest)
+    const keybinds = ["skipKeybind", "startSponsorKeybind", "submitKeybind"];
+    for (let i = keybinds.length-1; i >= 0; i--) {
+        for (let j = 0; j < keybinds.length; j++) {
+            if (i == j)
+                continue;
+            if (keybindEquals(config[keybinds[i]], config[keybinds[j]]))
+                config[keybinds[i]] = null;
         }
     }
 

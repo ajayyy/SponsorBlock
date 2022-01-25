@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<!-- Link to specific tabs by using their ID in the URL like: options.html#keybinds -->
 
 <head>
   <title>Options - SponsorBlock</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <link rel="icon" href="../icons/IconSponsorBlocker32px.png" type="image/png">
   
   <link href="options.css" rel="stylesheet"/>
 
@@ -13,608 +15,478 @@
 
 <body class="sponsorBlockPageBody">
 
-	<div id="title" class="titleBar">
-		<img src="../icons/LogoSponsorBlocker256px.png" height="80" class="profilepic"/>
-		SponsorBlock
-	</div>
+	<div id="options-container">
 
-	<div class="center">
-		<p class="createdBy titleBar">
-			<img src="../icons/newprofilepic.jpg" height="30" class="profilepiccircle"/>
-			__MSG_createdBy__ 
-			<a href="https://ajay.app">Ajay Ramachandran</a> 
-			<a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">(__MSG_Donate__)</a>
-		</p>
+		<div id="menubar" class="center">
 
-		<h1>__MSG_Options__</h1>
-	
-		<div id="options" class="hidden">
-
-			<div id="category-type" option-type="react-CategoryChooserComponent">
-
+			<div id="title" class="titleBar">
+				<img src="../icons/LogoSponsorBlocker256px.png" class="profilepic" alt="SponsorBlock logo"/>
+				SponsorBlock
+				<div id="version"></div>
 			</div>
 
-			<div option-type="toggle" sync-option="autoSkipOnMusicVideos">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_autoSkipOnMusicVideos__
-					</div>
-				</label>
-
-				<br/>
-				<br/>
-				<br/>
-			</div>
-
-			<div option-type="toggle" sync-option="muteSegments">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_muteSegments__
-					</div>
-				</label>
-
-				<br/>
-				<br/>
-				<br/>
-			</div>
-
-			<div option-type="toggle" sync-option="fullVideoSegments">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_fullVideoSegments__
-					</div>
-				</label>
-
-				<br/>
-				<br/>
-				<br/>
-			</div>
-
-			<br/>
-			<br/>
-
-			<div id="support-invidious" option-type="toggle" sync-option="supportInvidious" no-safari="true">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox">
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_supportOtherSites__
-					</div>
-				</label>
-	
-				<br/>
-				<br/>
-				<br/>
-	
-				<div class="small-description">(__MSG_supportedSites__ Invidious, CloudTube)</div>
-				<br/>
-				<span class="small-description">__MSG_supportOtherSitesDescription__ </span>
-
-				<br/>
-				<br/>
-				<br/>
-			</div>
-	
-			<div option-type="private-text-change" sync-option="invidiousInstances" no-safari="true">
-				<div class="option-button trigger-button">
-					__MSG_addInvidiousInstance__
-				</div>
-	
-				<br/>
-	
-				<div class="small-description">__MSG_addInvidiousInstanceDescription__</div>
-	
-				<div class="option-hidden-section hidden">
-					<br/>
-	
-					<input class="option-text-box" type="text">
-	
-					<br/>
-					<br/>
-	
-					<div class="option-button text-change-set inline">
-						__MSG_add__
-					</div>
-
-					<div class="option-button invidious-instance-reset inline">
-						__MSG_resetInvidiousInstance__
-					</div>
-					
-					<br/>
-					<br/>
-
-					<span class="small-description">__MSG_currentInstances__</span>
-					<span class="small-description" option-type="display" sync-option="invidiousInstances"></span>
+			<div id="navigation">
+				<div class="tab-heading" data-for="behavior">
+					__MSG_optionsTabBehavior__
 				</div>
 
-				<br/>
-				<br/>
-			</div>
-
-			<div option-type="keybind-change" sync-option="skipKeybind">
-				<div class="option-button trigger-button">
-					__MSG_setSkipShortcut__
-				</div>
-	
-				<div class="option-hidden-section hidden">
-					<br/>
-	
-					<div class="medium-description keybind-status">
-						__MSG_keybindDescription__
-					</div>
-
-					<span class="medium-description bold keybind-status-key">
-						
-					</span>
-				</div>
-			</div>
-
-			<br/>
-			<br/>
-	
-			<div option-type="keybind-change" sync-option="startSponsorKeybind">
-				<div class="option-button trigger-button">
-					__MSG_setStartSponsorShortcut__
-				</div>
-	
-				<div class="option-hidden-section hidden">
-					<br/>
-	
-					<div class="medium-description keybind-status">
-						__MSG_keybindDescription__
-					</div>
-
-					<span class="medium-description bold keybind-status-key">
-						
-					</span>
-				</div>
-			</div>
-
-			<br/>
-			<br/>
-	
-			<div option-type="keybind-change" sync-option="submitKeybind">
-				<div class="option-button trigger-button">
-						__MSG_setSubmitKeybind__
-				</div>
-	
-				<div class="option-hidden-section hidden">
-					<br/>
-	
-					<div class="medium-description keybind-status">
-						__MSG_keybindDescription__
-					</div>
-
-					<span class="medium-description bold keybind-status-key">
-						
-					</span>
-				</div>
-			</div>
-
-			<br/>
-			<br/>
-
-			<div option-type="number-change" sync-option="skipNoticeDuration">
-				<label class="number-container">
-					<input type="number" step="1" min="1">
-				</label>
-
-				<br/>
-				<br/>
-
-				<div class="small-description">__MSG_skipNoticeDurationDescription__</div>
-			</div>
-
-			<br/>
-			<br/>
-	
-			<div option-type="number-change" sync-option="minDuration">
-				<label class="number-container">
-					<input type="number" step="0.1" min="0">
-				</label>
-
-				<br/>
-				<br/>
-
-				<div class="small-description">__MSG_minDurationDescription__</div>
-			</div>
-
-			<br/>
-			<br/>
-	
-			<div option-type="toggle" toggle-type="reverse" sync-option="dontShowNotice">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_showSkipNotice__
-					</div>
-				</label>
-			</div>
-
-			<br/>
-			<br/>
-			<br/>
-
-			<div option-type="selector" sync-option="noticeVisibilityMode">
-				<select class="selector-element optionsSelector" >
-					<option value="0">__MSG_noticeVisibilityMode0__</option>
-					<option value="1">__MSG_noticeVisibilityMode1__</option>
-					<option value="2">__MSG_noticeVisibilityMode2__</option>
-					<option value="3">__MSG_noticeVisibilityMode3__</option>
-					<option value="4">__MSG_noticeVisibilityMode4__</option>
-				</select>
-			</div>
-	
-			<br/>
-			<br/>
-
-			<div option-type="toggle" sync-option="forceChannelCheck">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_forceChannelCheck__
-					</div>
-				</label>
-	
-				<br/>
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_whatForceChannelCheck__</div>
-			</div>
-	
-			<br/>
-			<br/>
-	
-			<div option-type="toggle" toggle-type="reverse" sync-option="hideVideoPlayerControls">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_showButtons__
-					</div>
-				</label>
-	
-				<br/>
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_hideButtonsDescription__</div>
-			</div>
-
-			<br/>
-
-			<div option-type="toggle" toggle-type="reverse" sync-option="hideSkipButtonPlayerControls">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_showSkipButton__
-					</div>
-				</label>
-			</div>
-	
-			<br/>
-			<br/>
-			<br/>
-	
-			<div option-type="toggle" toggle-type="reverse" sync-option="hideInfoButtonPlayerControls">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_showInfoButton__
-					</div>
-				</label>
-			</div>
-
-			<br/>
-			<br/>
-			<br/>
-
-			<div option-type="toggle" sync-option="autoHideInfoButton" if-false="hideInfoButtonPlayerControls">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_autoHideInfoButton__
-					</div>
-				</label>
-			</div>
-
-			<br/>
-			<br/>
-			<br/>
-	
-			<div option-type="toggle" toggle-type="reverse" sync-option="hideDeleteButtonPlayerControls">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_showDeleteButton__
-					</div>
-				</label>
-			</div>
-
-			<br/>
-			<br/>
-			<br/>
-	
-			<div option-type="toggle" toggle-type="reverse" sync-option="hideUploadButtonPlayerControls">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_showUploadButton__
-					</div>
-				</label>
-			</div>
-
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-
-			<div option-type="toggle" sync-option="audioNotificationOnSkip">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_audioNotification__
-					</div>
-				</label>
-	
-				<br/>
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_audioNotificationDescription__</div>
-			</div>
-
-			<br/>
-			<br/>
-
-			<div option-type="toggle" sync-option="showTimeWithSkips">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_showTimeWithSkips__
-					</div>
-				</label>
-	
-				<br/>
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_showTimeWithSkipsDescription__</div>
-			</div>
-
-			<br/>
-			<br/>
-	
-			<div option-type="toggle" sync-option="trackViewCount">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_enableViewTracking__
-					</div>
-				</label>
-	
-				<br/>
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_whatViewTracking__</div>
-			</div>
-
-			<br/>
-			<br/>
-
-			<div option-type="toggle" sync-option="trackViewCountInPrivate" private-mode-only="true">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_enableViewTrackingInPrivate__
-					</div>
-				</label>
-
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-			</div>
-
-			<div option-type="toggle" sync-option="refetchWhenNotFound">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_enableRefetchWhenNotFound__
-					</div>
-				</label>
-	
-				<br/>
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_whatRefetchWhenNotFound__</div>
-			</div>
-
-			<br/>
-			<br/>
-
-			<div option-type="toggle" toggle-type="reverse" sync-option="showDonationLink" no-safari="true">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox" checked>
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_hideDonationLink__
-					</div>
-				</label>
-	
-			</div>
-
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-	
-			<div option-type="private-text-change" sync-option="userID" confirm-message="userIDChangeWarning">
-				<div class="option-button trigger-button">
-					__MSG_changeUserID__
-				</div>
-	
-				<br/>
-	
-				<div class="small-description">__MSG_whatChangeUserID__</div>
-	
-				<div class="option-hidden-section hidden">
-					<br/>
-	
-					<input class="option-text-box" type="text">
-	
-					<br/>
-					<br/>
-	
-					<div class="option-button text-change-set">
-						__MSG_setUserID__
-					</div>
-				</div>
-			</div>
-
-			<br/>
-			<br/>
-	
-			<div option-type="private-text-change" sync-option="*" confirm-message="exportOptionsWarning">
-				<div class="option-button trigger-button">
-					__MSG_exportOptions__
-				</div>
-	
-				<br/>
-	
-				<div class="small-description">__MSG_whatExportOptions__</div>
-	
-				<div class="option-hidden-section hidden">
-					<br/>
-	
-					<input class="option-text-box" type="text">
-	
-					<br/>
-					<br/>
-	
-					<div class="option-button text-change-set">
-						__MSG_setOptions__
-					</div>
-				</div>
-			</div>
-
-			<br/>
-			<br/>
-
-			<div option-type="button-press" sync-option="copyDebugInformation" confirm-message="copyDebugInformation">
-				<div class="option-button trigger-button">
-					__MSG_copyDebugInformation__
-				</div>
-	
-				<br/>
-	
-				<div class="small-description">__MSG_copyDebugInformationOptions__</div>
-			</div>
-
-			<br/>
-			<br/>
-	
-			<div option-type="toggle" sync-option="testingServer" confirm-message="testingServerWarning" no-safari="true">
-				<label class="switch-container">
-					<label class="switch">
-						<input type="checkbox">
-						<span class="slider round"></span>
-					</label>
-					<div class="switch-label">
-						__MSG_enableTestingServer__
-					</div>
-				</label>
-	
-				<br/>
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_whatEnableTestingServer__</div>
-
-				<br/>
-				<br/>
-				<br/>
-			</div>
-
-			<div option-type="text-change" sync-option="serverAddress">
-				<label class="text-label-container">
-					<div>__MSG_customServerAddress__</div>
-
-					<input class="option-text-box" type="text">
-				</label>
-
-				<div class="option-button text-change-set inline">
-					__MSG_save__
+				<div class="tab-heading" data-for="interface">
+					__MSG_optionsTabInterface__
 				</div>
 
-				<div class="option-button text-change-reset inline">
-					__MSG_reset__
+				<div class="tab-heading" data-for="keybinds">
+					__MSG_optionsTabKeyBinds__
 				</div>
-	
-				<br/>
-				<br/>
-	
-				<div class="small-description">__MSG_customServerAddressDescription__</div>
-			</div>
-	
+
+				<div class="tab-heading" data-for="import">
+					__MSG_optionsTabBackup__
+				</div>
+
+				<div class="tab-heading" data-for="advanced">
+					__MSG_optionsTabAdvanced__
+				</div>
 		</div>
+
+			<div id="createdBy" class="titleBar">
+				<div>
+					<img src="../icons/newprofilepic.jpg" height="30" class="profilepiccircle" alt="profile picture of creator"/>
+					__MSG_createdBy__ 
+					<a href="https://ajay.app">Ajay Ramachandran</a> 
+				</div>
+				<a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">(__MSG_Donate__)</a>
+			</div>
+
+		</div>
+
+		<div id="options">
+
+			<div id="behavior" class="option-group hidden">
+
+				<div id="category-type" data-type="react-CategoryChooserComponent">
+
+				</div>
+
+				<div data-type="toggle" data-sync="autoSkipOnMusicVideos">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="autoSkipOnMusicVideos" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="autoSkipOnMusicVideos">
+							__MSG_autoSkipOnMusicVideos__
+						</label>
+					</div>
+				</div>
+	
+				<div data-type="toggle" data-sync="muteSegments">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="muteSegments" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="muteSegments">
+							__MSG_muteSegments__
+						</label>
+					</div>
+				</div>
+				
+				<div option-type="toggle" data-sync="fullVideoSegments">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="fullVideoSegments" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="fullVideoSegments">
+							__MSG_fullVideoSegments__
+						</label>
+					</div>
+				</div>
+
+				<div data-type="number-change" data-sync="minDuration">
+					<label class="number-container">
+						<span class="optionLabel">__MSG_minDuration__</span>
+						<input type="number" step="0.1" min="0">
+					</label>
+	
+					<div class="small-description">__MSG_minDurationDescription__</div>
+				</div>
+
+				<div data-type="toggle" data-sync="forceChannelCheck">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="forceChannelCheck" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="forceChannelCheck">
+							__MSG_forceChannelCheck__
+						</label>
+					</div>
+	
+					<div class="small-description">__MSG_whatForceChannelCheck__</div>
+				</div>
+
+				<div data-type="toggle" data-sync="refetchWhenNotFound">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="refetchWhenNotFound" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="refetchWhenNotFound">
+							__MSG_enableRefetchWhenNotFound__
+						</label>
+					</div>
+	
+					<div class="small-description">__MSG_whatRefetchWhenNotFound__</div>
+				</div>
+
+			</div>
+
+			<div id="interface" class="option-group hidden">
+
+				<div data-type="number-change" data-sync="skipNoticeDuration">
+					<label class="number-container">
+						<span class="optionLabel">__MSG_skipNoticeDuration__</span>
+						<input type="number" step="1" min="1">
+					</label>
+	
+					<div class="small-description">__MSG_skipNoticeDurationDescription__</div>
+				</div>
+	
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="dontShowNotice">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="dontShowNotice" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="dontShowNotice">
+							__MSG_showSkipNotice__
+						</label>
+					</div>
+				</div>
+	
+				<div data-type="selector" data-sync="noticeVisibilityMode">
+					<label class="optionLabel" for="noticeVisibilityMode">__MSG_noticeVisibilityLabel__:</label>
+
+					<select id="noticeVisibilityMode" class="selector-element optionsSelector" >
+						<option value="0">__MSG_noticeVisibilityMode0__</option>
+						<option value="1">__MSG_noticeVisibilityMode1__</option>
+						<option value="2">__MSG_noticeVisibilityMode2__</option>
+						<option value="3">__MSG_noticeVisibilityMode3__</option>
+						<option value="4">__MSG_noticeVisibilityMode4__</option>
+					</select>
+				</div>
+	
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideVideoPlayerControls">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="hideVideoPlayerControls" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="hideVideoPlayerControls">
+							__MSG_showButtons__
+						</label>
+					</div>
+	
+					<div class="small-description">__MSG_hideButtonsDescription__</div>
+				</div>
+
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideDeleteButtonPlayerControls" data-dependent-on="hideVideoPlayerControls">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="hideDeleteButtonPlayerControls" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="hideDeleteButtonPlayerControls">
+							__MSG_showDeleteButton__
+						</label>
+					</div>
+				</div>
+	
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideUploadButtonPlayerControls" data-dependent-on="hideVideoPlayerControls">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="hideUploadButtonPlayerControls" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="hideUploadButtonPlayerControls">
+							__MSG_showUploadButton__
+						</label>
+					</div>
+				</div>
+	
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideSkipButtonPlayerControls">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="hideSkipButtonPlayerControls" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="hideSkipButtonPlayerControls">
+							__MSG_showSkipButton__
+						</label>
+					</div>
+				</div>
+	
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="hideInfoButtonPlayerControls">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="hideInfoButtonPlayerControls" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="hideInfoButtonPlayerControls">
+							__MSG_showInfoButton__
+						</label>
+					</div>
+				</div>
+	
+				<div data-type="toggle" data-sync="autoHideInfoButton" data-dependent-on="hideInfoButtonPlayerControls">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="autoHideInfoButton" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="autoHideInfoButton">
+							__MSG_autoHideInfoButton__
+						</label>
+					</div>
+				</div>
+	
+				<div data-type="toggle" data-sync="audioNotificationOnSkip">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="audioNotificationOnSkip" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="audioNotificationOnSkip">
+							__MSG_audioNotification__
+						</label>
+					</div>
+	
+					<div class="small-description">__MSG_audioNotificationDescription__</div>
+				</div>
+	
+				<div data-type="toggle" data-sync="showTimeWithSkips">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="showTimeWithSkips" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="showTimeWithSkips">
+							__MSG_showTimeWithSkips__
+						</label>
+					</div>
+	
+					<div class="small-description">__MSG_showTimeWithSkipsDescription__</div>
+				</div>
+
+				<div data-type="toggle" data-sync="darkMode">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="darkMode" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="darkMode">
+							__MSG_darkModeOptionsPage__
+						</label>
+					</div>
+				</div>
+
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="showDonationLink" data-no-safari="true">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="showDonationLink" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="showDonationLink">
+							__MSG_hideDonationLink__
+						</label>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="keybinds" class="option-group hidden">
+
+				<div data-type="keybind-change" data-sync="skipKeybind">	
+					<label class="optionLabel">__MSG_setSkipShortcut__:</label>
+					<div class="inline"></div>
+				</div>
+
+				<div data-type="keybind-change" data-sync="startSponsorKeybind">	
+					<label class="optionLabel">__MSG_setStartSponsorShortcut__:</label>
+					<div class="inline"></div>
+				</div>
+
+				<div data-type="keybind-change" data-sync="submitKeybind">	
+					<label class="optionLabel">__MSG_setSubmitKeybind__:</label>
+					<div class="inline"></div>
+				</div>
+
+			</div>
+
+			<div id="import" class="option-group hidden">
+
+				<div data-type="private-text-change" data-sync="userID" data-confirm-message="userIDChangeWarning">
+					<div class="option-button trigger-button">
+						__MSG_changeUserID__
+					</div>
+	
+					<div class="small-description">__MSG_whatChangeUserID__</div>
+	
+					<div class="option-hidden-section hidden spacing indent">
+						<input class="option-text-box" type="text">
+	
+						<div class="option-button text-change-set inline low-profile">
+							__MSG_setUserID__
+						</div>
+					</div>
+				</div>
+	
+				<div data-type="private-text-change" data-sync="*" data-confirm-message="exportOptionsWarning">
+					<h2>__MSG_exportOptions__</h2>
+					
+					<div>
+						<div class="option-button trigger-button inline">
+							__MSG_exportOptionsCopy__
+						</div>
+						<div class="option-button download-button inline">
+							__MSG_exportOptionsDownload__
+						</div>
+						<label for="importOptions" class="option-button inline">
+							__MSG_exportOptionsUpload__
+						</label>
+						<input id="importOptions" type="file" class="upload-button hidden" />
+					</div>
+	
+					<div class="small-description">__MSG_whatExportOptions__</div>
+	
+					<div class="option-hidden-section hidden spacing indent">	
+						<textarea class="option-text-box" rows="10" style="width:80%"></textarea>
+	
+						<div class="option-button text-change-set">
+							__MSG_setOptions__
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="advanced" class="option-group hidden">
+
+				<div id="support-invidious" data-type="toggle" data-sync="supportInvidious" data-no-safari="true">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="supportInvidious" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="supportInvidious">
+							__MSG_supportOtherSites__
+						</label>
+					</div>
+	
+					<div class="small-description">(__MSG_supportedSites__ Invidious, CloudTube)</div>
+					<div class="small-description">__MSG_supportOtherSitesDescription__ </div>
+				</div>
+	
+				<div data-type="private-text-change" data-sync="invidiousInstances" data-no-safari="true" data-dependent-on="supportInvidious">
+					<div class="option-button trigger-button">
+						__MSG_addInvidiousInstance__
+					</div>
+	
+					<div class="small-description">__MSG_addInvidiousInstanceDescription__</div>
+	
+					<div class="indent option-hidden-section hidden spacing">
+						<input class="option-text-box" type="text">
+						<div class="inline">
+							<div class="option-button text-change-set inline low-profile">
+								__MSG_add__
+							</div>
+							<div class="option-button text-change-reset inline low-profile">
+								__MSG_cancel__
+							</div>
+						</div>
+					</div>
+
+					<div style="margin-top:15px">
+						<span>__MSG_currentInstances__</span>
+						<span data-type="display" data-sync="invidiousInstances"></span>
+						<div class="option-button invidious-instance-reset spacing hidden">
+							__MSG_resetInvidiousInstance__
+						</div>
+					</div>
+				</div>
+
+				<div data-type="toggle" data-sync="trackViewCount">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="trackViewCount" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="trackViewCount">
+							__MSG_enableViewTracking__
+						</label>
+					</div>
+	
+					<div class="small-description">__MSG_whatViewTracking__</div>
+				</div>
+	
+				<div data-type="toggle" data-sync="trackViewCountInPrivate" data-dependent-on="trackViewCount" data-private-only="true">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="trackViewCountInPrivate" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="trackViewCountInPrivate">
+							__MSG_enableViewTrackingInPrivate__
+						</label>
+					</div>
+				</div>
+	
+				<div data-type="button-press" data-sync="copyDebugInformation" data-confirm-message="copyDebugInformation">
+					<div class="option-button trigger-button">
+						__MSG_copyDebugInformation__
+					</div>
+	
+					<div class="small-description">__MSG_copyDebugInformationOptions__</div>
+				</div>
+	
+				<div data-type="toggle" data-sync="testingServer" data-confirm-message="testingServerWarning" data-no-safari="true">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="testingServer" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="testingServer">
+							__MSG_enableTestingServer__
+						</label>
+					</div>
+	
+					<div class="small-description">__MSG_whatEnableTestingServer__</div>
+				</div>
+	
+				<div data-type="text-change" data-sync="serverAddress" data-dependent-on="testingServer" data-dependent-on-inverted="true">
+					<label class="optionLabel inline">
+						<span class="optionLabel">__MSG_customServerAddress__:</span>
+	
+						<input class="option-text-box" type="text" style="margin-right:10px">
+					</label>
+
+					<div class="small-description">__MSG_customServerAddressDescription__</div>
+	
+					<div class="next-line">
+						<div class="option-button text-change-set inline">
+							__MSG_save__
+						</div>
+		
+						<div class="option-button text-change-reset inline">
+							__MSG_reset__
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
 	</div>
 
 </body>
