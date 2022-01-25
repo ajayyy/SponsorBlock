@@ -97,10 +97,11 @@ html, body {
     overflow: hidden;
     background-color: var(--tab-color);
     color: var(--white);
+    transition: background-color 0.1s;
 }
 
 .tab-heading:hover {
-    outline: 3px solid var(--tab-hover);
+    background-color: #4d0000;
 }
 
 .tab-heading.selected {
