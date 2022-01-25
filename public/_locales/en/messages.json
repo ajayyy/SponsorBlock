@@ -790,6 +790,9 @@
     "hideDonationLink": {
         "message": "Hide Donation Link"
     },
+    "lightModeOptionsPage": {
+        "message": "Light Mode On Options Page"
+    },
     "helpPageThanksForInstalling": {
         "message": "Thanks for installing SponsorBlock."
     },
