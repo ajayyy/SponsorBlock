@@ -13,7 +13,7 @@
         "preview": ["skip", "mute"],
         "filler": ["skip", "mute"],
         "music_offtopic": ["skip"],
-        "poi_highlight": ["skip"]
+        "poi_highlight": ["poi"]
     },
     "wikiLinks": {
         "sponsor": "https://wiki.sponsor.ajay.app/w/Sponsor",

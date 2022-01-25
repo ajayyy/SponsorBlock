@@ -52,15 +52,11 @@ export enum SponsorHideType {
     MinimumDuration
 }
 
-export enum CategoryActionType {
-    Skippable = "", // Strings are used to find proper language configs
-    POI = "_POI"
-}
-
 export enum ActionType {
     Skip = "skip",
     Mute = "mute",
-    Full = "full"
+    Full = "full",
+    Poi = "poi"
 }
 
 export const ActionTypes = [ActionType.Skip, ActionType.Mute];

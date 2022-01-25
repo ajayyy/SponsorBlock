@@ -1,10 +1,9 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, CategoryActionType, ActionType } from "./types";
+import { SponsorTime, SponsorHideType, ActionType } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
-import { getCategoryActionType } from "./utils/categoryUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
 const utils = new Utils();
@@ -411,7 +410,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
                 } else {
                     segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
-                            (getCategoryActionType(segmentTimes[i].category) !== CategoryActionType.POI 
+                            (segmentTimes[i].actionType !== ActionType.Poi
                                 ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) 
                                 : "");
                 }
