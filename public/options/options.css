@@ -308,14 +308,18 @@ input[type='number'] {
     text-align: left;
     padding: 80px 15% 0 3%;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 
     transition: padding 0.3s;
 }
 
-#options.embed {
+#options > div {
+    max-width: 60%;
+}
+
+#options.embed > div {
     max-width: 100%;
-    text-align: left;
-    display: inline-block;
 }
 
 #title .profilepic {
@@ -610,6 +614,7 @@ svg {
     #options {
         padding: 0 50px;
     }
+
     .tab-heading {
         width: unset;
         min-width: unset;
@@ -659,5 +664,9 @@ svg {
   @media only screen and (max-width: 800px) {
     #options {
         padding: 0 15px;
+    }
+
+    #options > div {
+        max-width: 100%;
     }
   }
