@@ -258,6 +258,8 @@ export default class Utils {
 
     localizeHtmlPage(): void {
         //Localize by replacing __MSG_***__ meta tags
+        const localizedMessage = this.getLocalizedMessage(document.title);
+        if (localizedMessage) document.title = localizedMessage;
         const objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
         for (let j = 0; j < objects.length; j++) {
             const obj = objects[j];
