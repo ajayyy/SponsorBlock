@@ -682,17 +682,14 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     setupVideoMutationListener();
 
     // Create categories list
-    const categories: string[] = [];
-    for (const categorySelection of Config.config.categorySelections) {
-        categories.push(categorySelection.name);
-    }
+    const categories: string[] = Config.config.categorySelections.map((category) => category.name);
 
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
     // Check for hashPrefix setting
-    const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
+    const hashPrefix = (await utils.getHash(id, 1)).slice(0, 4);
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
         actionTypes: getEnabledActionTypes(), 
@@ -727,11 +724,10 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
         // Hide all submissions smaller than the minimum duration
         if (Config.config.minDuration !== 0) {
-            for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] < Config.config.minDuration
-                        && sponsorTimes[i].actionType !== ActionType.Poi) {
-                    sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
-                }
+            for (const segment of sponsorTimes) {
+                if (segment.segment[1] - segment.segment[0] < Config.config.minDuration
+                        && segment.actionType !== ActionType.Poi)
+                    segment.hidden = SponsorHideType.MinimumDuration;
             }
         }
 
@@ -808,7 +804,7 @@ async function updateVipInfo(): Promise<boolean> {
 }
 
 async function lockedCategoriesLookup(id: string): Promise<void> {
-    const hashPrefix = (await utils.getHash(id, 1)).substr(0, 4);
+    const hashPrefix = (await utils.getHash(id, 1)).slice(0, 4);
     const response = await utils.asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix);
 
     if (response.ok) {
@@ -971,8 +967,7 @@ function getYouTubeVideoIDFromURL(url: string): string | boolean {
         return id.length == 11 ? id : false;
     } else if (urlObject.pathname.startsWith("/embed/") || urlObject.pathname.startsWith("/shorts/")) {
         try {
-            const id = urlObject.pathname.split("/")[2];
-            if (id && id.length >= 11) return id.substr(0, 11);
+            return urlObject.pathname.split("/")[2].slice(0, 11);
         } catch (e) {
             console.error("[SB] Video ID not valid for " + url);
             return false;
@@ -1044,7 +1039,8 @@ async function whitelistCheck() {
     const getChannelID = () => videoInfo?.videoDetails?.channelId
         ?? document.querySelector(".ytd-channel-name a")?.getAttribute("href")?.replace(/\/.+\//, "") // YouTube
         ?? document.querySelector(".ytp-title-channel-logo")?.getAttribute("href")?.replace(/https:\/.+\//, "") // YouTube Embed
-        ?? document.querySelector("a > .channel-profile")?.parentElement?.getAttribute("href")?.replace(/\/.+\//, ""); // Invidious
+        ?? document.querySelector("a > .channel-profile")?.parentElement?.getAttribute("href")?.replace(/\/.+\//, "") // Invidious
+        ?? document.querySelector("a.slim-owner-icon-and-title")?.getAttribute("href")?.replace(/\/.+\//, ""); // Mobile YouTube
 
     try {
         await utils.wait(() => !!getChannelID(), 6000, 20);
@@ -1277,6 +1273,10 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
         const beep = new Audio(chrome.runtime.getURL("icons/beep.ogg"));
         beep.volume = video.volume * 0.1;
         beep.play();
+        beep.controls = false;
+        // hijack media function
+        navigator.mediaSession.setActionHandler('play', () => video.play())
+        navigator.mediaSession.setActionHandler("pause", () => video.pause())
     }
 
     if (!autoSkip 
