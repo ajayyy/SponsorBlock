@@ -1873,7 +1873,7 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
             let timeMessage = utils.getFormattedTime(sponsorTimes[i].segment[s]);
             //if this is an end time
             if (s == 1) {
-                timeMessage = " to " + timeMessage;
+                timeMessage = " " + chrome.i18n.getMessage("to") + " " + timeMessage;
             } else if (i > 0) {
                 //add commas if necessary
                 timeMessage = ", " + timeMessage;
