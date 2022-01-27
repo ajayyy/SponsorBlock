@@ -628,6 +628,7 @@ input::-webkit-inner-spin-button {
 	font-size: 75%;
 	height: 100%;
 	align-items: center;
+	inline-size: max-content;
 }
 
 .sponsorBlockCategoryPillTitleSection {
