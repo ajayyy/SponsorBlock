@@ -730,12 +730,6 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
                     segment.hidden = SponsorHideType.MinimumDuration;
                 }
             }
-            for (let i = 0; i < sponsorTimes.length; i++) {
-                const duration = sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] ;
-                if (duration > 0 && duration < Config.config.minDuration) {
-                    sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
-                }
-            }
         }
 
         if (keepOldSubmissions) {
