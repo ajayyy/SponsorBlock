@@ -728,8 +728,8 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         // Hide all submissions smaller than the minimum duration
         if (Config.config.minDuration !== 0) {
             for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] < Config.config.minDuration
-                        && sponsorTimes[i].actionType !== ActionType.Poi) {
+                const duration = sponsorTimes[i].segment[1] - sponsorTimes[i].segment[0] ;
+                if (duration > 0 && duration < Config.config.minDuration) {
                     sponsorTimes[i].hidden = SponsorHideType.MinimumDuration;
                 }
             }
