@@ -1273,10 +1273,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
         const beep = new Audio(chrome.runtime.getURL("icons/beep.ogg"));
         beep.volume = video.volume * 0.1;
         beep.play();
-        beep.controls = false;
-        // hijack media function
-        navigator.mediaSession.setActionHandler('play', () => video.play())
-        navigator.mediaSession.setActionHandler("pause", () => video.pause())
+        window.addEventListener("keydown", mediaPauseListener);
     }
 
     if (!autoSkip 
@@ -2041,4 +2038,9 @@ function checkForPreloadedSegment() {
             }
         }
     }
+}
+
+function mediaPauseListener(e: KeyboardEvent) {
+    if (e.key === "MediaPlayPause")
+        video?.paused ? video.play() : video.pause();
 }
