@@ -438,7 +438,7 @@
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
     },
     "liveOrPremiere": {
-        "message": "Submitting on an active livesteam or premiere is not allowed. Please wait until it finishes, then refresh the page and verify that the segments are still valid."
+        "message": "Submitting on an active livestream or premiere is not allowed. Please wait until it finishes, then refresh the page and verify that the segments are still valid."
     },
     "showUploadButton": {
         "message": "Show Upload Button"
