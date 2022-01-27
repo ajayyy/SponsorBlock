@@ -1273,7 +1273,8 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
         const beep = new Audio(chrome.runtime.getURL("icons/beep.ogg"));
         beep.volume = video.volume * 0.1;
         beep.play();
-        window.addEventListener("keydown", mediaPauseListener);
+        if (Config.config.audioNotificationOnSkip && Config.config.bindMediaKey)
+            window.addEventListener("keydown", mediaPauseListener);
     }
 
     if (!autoSkip 

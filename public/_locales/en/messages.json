@@ -918,5 +918,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "This is a built-in YouTube shortcut. Are you sure you want to use it?"
+    },
+    "bindMediaKey": {
+        "message": "Play/Pause Current Video with Media Keys"
+    },
+    "bindMediaKeyDescription": {
+        "message": "Enable this if your media keys stop working after the audio notification is played."
     }
 }
