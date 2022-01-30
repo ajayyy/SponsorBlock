@@ -322,10 +322,6 @@ input[type='number'] {
     transition: padding 0.3s;
 }
 
-#options > div {
-    max-width: 60%;
-}
-
 #options.embed > div {
     max-width: 100%;
 }
@@ -596,14 +592,8 @@ svg {
 }
 
 
-/* Handle smaller screensizes */
-@media only screen and (max-width: 1600px){
-    #options {
-        padding-right: 8%;
-    }
-}
-
-@media only screen and (max-height: 770px), only screen and (max-width: 1200px) {
+/* Top bar navigation for smaller screens */
+@media only screen and (max-height: 650px), only screen and (max-width: 1200px) {
     #options-container {
         flex-direction: column;
     }
@@ -621,6 +611,10 @@ svg {
     }
     #options {
         padding: 0 50px;
+    }
+
+    #options > div {
+        max-width: 70%;
     }
 
     .tab-heading {
@@ -667,14 +661,11 @@ svg {
     .sticky #title, .sticky #createdBy {
         display: none;
     }
-  }
+}
 
-  @media only screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
     #options {
         padding: 0 15px;
+        justify-content: left;
     }
-
-    #options > div {
-        max-width: 100%;
-    }
-  }
+}
