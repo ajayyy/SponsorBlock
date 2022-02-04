@@ -31,6 +31,7 @@
     "selenium-webdriver": "^4.0.0-beta.4",
     "ts-jest": "^27.0.3",
     "ts-loader": "^6.2.1",
+    "ts-node": "^10.4.0",
     "typescript": "~4.3",
     "web-ext": "^6.2.0",
     "webpack": "~4.46.0",

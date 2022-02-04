@@ -12,7 +12,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Download instance list
         run: |
-          wget https://api.invidious.io/instances.json -O data.json
+          wget https://api.invidious.io/instances.json -O ci/data.json
+      - name: Install dependencies
+        run: npm ci
       - name: "Run CI"
         run: npm run ci:invidious
 
