@@ -262,21 +262,6 @@
         "message": "Eğer hala beğenmediyseniz, asla gösterme butonuna basın.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Kısım atlamak için bir tuş ata"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Kısım başlatmak/durdurmak için kısayol ayarla"
-    },
-    "setSubmitKeybind": {
-        "message": "Gönderim için bir tuş belirleyin"
-    },
-    "keybindDescription": {
-        "message": "Yazarak bir tuş seçin"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Tuş seçimi şu tuşa ayarlandı: "
-    },
     "0": {
         "message": "Bağlantı zaman aşımına uğradı. İnternet bağlantınızı kontrol ediniz. Eğer internetiniz çalışıyor ise, büyük ihtimalle sunucuya erişilemiyor veya sunucuya aşırı yüklenilmiş olabilir."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Oluşturan"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Şu an buna ayarlı:"
     },
     "supportOtherSites": {
         "message": "3. Taraf Youtube Sitelerini Destekle"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Bu çözüm bilgisi panoya kopyalandı. Paylaşmak istemediğiniz herhangi bir bilgiyi silmekte özgürsünüz. Bir yazı dosyası olarak kaydedin veya hata raporuna kopyalayın."
-    },
-    "theKey": {
-        "message": "Anahtar"
-    },
-    "keyAlreadyUsed": {
-        "message": "başka bir eyleme bağlı. Lütfen başka bir anahtar seçin."
     },
     "to": {
         "message": "'e",

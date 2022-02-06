@@ -263,19 +263,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Призначити гарячу клавішу для пропуску сегмента"
+        "message": "Пропустити сегмент",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Призначити гарячу клавішу для початку/зупинки сегмента"
+        "message": "Почати/зупинити сегмент",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Призначити гарячу клавішу для надсилання"
+        "message": "Надіслати сегменти",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Натисніть, щоб вибрати її"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Кнопка призначена на: "
+        "message": "Виберіть клавішу, набравши її та виберіть бажану клавішу-модифікатор."
     },
     "0": {
         "message": "Таймаут підключення. Перевірте ваше з'єднання з інтернетом. Якщо ваш інтернет працює, сервер, швидше за все, перевантажений або лежить."
@@ -388,9 +388,6 @@
     "createdBy": {
         "message": "Створено"
     },
-    "keybindCurrentlySet": {
-        "message": ". Він зараз призначений на:"
-    },
     "supportOtherSites": {
         "message": "Підтримувати сторонні YouTube-сайти"
     },
@@ -470,6 +467,15 @@
     "exportOptions": {
         "message": "Імпорт/Експорт всіх налаштувань"
     },
+    "exportOptionsCopy": {
+        "message": "Змінити/копіювати"
+    },
+    "exportOptionsDownload": {
+        "message": "Зберегти до файлу"
+    },
+    "exportOptionsUpload": {
+        "message": "Завантажити з файлу"
+    },
     "whatExportOptions": {
         "message": "Це вся конфігурація в форматі JSON. Цей файл містить Ваш ідентифікатор користувача, тому не забудьте ділитися з цим розумно."
     },
@@ -518,11 +524,8 @@
     "copyDebugInformationComplete": {
         "message": "Інформація про налагодження скопійована в буфер обміну. Ви можете видалити будь-яку інформацію, якої не хочете ділитися. Збережіть її в текстовий файл, вставте в звіт про помилку."
     },
-    "theKey": {
-        "message": "Ключ"
-    },
     "keyAlreadyUsed": {
-        "message": "прив'язана до іншого дії. Будь ласка, оберіть іншу клавішу."
+        "message": "Ця клавіша/комбінація клавіш прив'язана до іншої дії. Будь ласка виберіть іншу клавішу."
     },
     "to": {
         "message": "до",
@@ -787,6 +790,9 @@
     "hideDonationLink": {
         "message": "Приховати посилання на пожертвування"
     },
+    "darkModeOptionsPage": {
+        "message": "Темний режим на сторінці налаштувань"
+    },
     "helpPageThanksForInstalling": {
         "message": "Дякую за встановлення SponsorBlock."
     },
@@ -875,5 +881,42 @@
     "hourAbbreviation": {
         "message": "г",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Поведінка",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Інтерфейс",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Комбінації клавіш",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Резервування/Відновлення",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Різне",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Вигляд сповіщення про пропуск",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Відв'язати",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Не задано"
+    },
+    "change": {
+        "message": "Змінити"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Це вбудована комбінація YouTube. Ви впевнені що хочете її використовувати?"
     }
 }

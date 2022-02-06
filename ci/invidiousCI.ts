@@ -8,12 +8,12 @@ import { writeFile, existsSync } from 'fs';
 import { join } from 'path';
 
 // import file from https://api.invidious.io/instances.json
-if (!existsSync('./data.json')) {
+if (!existsSync(join(__dirname, "data.json"))) {
   process.exit(1);
 }
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import * as data from "./data.json";
+import * as data from "../ci/data.json";
 
 type instanceMap = {
   name: string,

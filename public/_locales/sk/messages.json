@@ -262,21 +262,6 @@
         "message": "Ak sa vám to stále nepáčí, stlačte tlačidlo Nikdy nezobrazovať.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Nastaviť kláves pre preskočenie segmentu"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Nastaviť kláves pre začiatok/ukončenie segmentu"
-    },
-    "setSubmitKeybind": {
-        "message": "Nastaviť kláves pre odoslanie segmentu"
-    },
-    "keybindDescription": {
-        "message": "Stlačte požadovaný kláves"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Kláves bol nastavený na: "
-    },
     "0": {
         "message": "Spojenie vypršalo. Skontrolujte svoje internetové pripojenie. Ak vám internet funguje, server je pravdepodobne preťažený alebo nefunkčný."
     },
@@ -388,9 +373,6 @@
     "createdBy": {
         "message": "Vytvoril"
     },
-    "keybindCurrentlySet": {
-        "message": ". Aktuálne je nastavené na:"
-    },
     "supportOtherSites": {
         "message": "Podpora alternatívnych Youtube webov"
     },
@@ -439,6 +421,9 @@
     },
     "shortCheck": {
         "message": "Segment je kratší ako vami nastavená minimálna dĺžka. Možno už bol niekým odoslaný a kvôli tomuto nastaveniu je teraz ignorovaný. Naozaj ho chcete odoslať?"
+    },
+    "liveOrPremiere": {
+        "message": "Vytváranie segmentov v aktívnom živom prenose alebo premiére nie je dovolené. Počkajte prosím na jeho ukončenie, potom obnovte stránku a skontrolujte, či sú segmenty správne vytvorené."
     },
     "showUploadButton": {
         "message": "Ukázať Nahrávacie Tlačidlo"
@@ -514,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Debug informácie boli skopírované do schránky. Ak chcete, môžete odstrániť akékoľvek informácie, ktoré nechcete zdieľať. Uložte si ich do textového súboru alebo ich vložte do nahlásenia chyby."
-    },
-    "theKey": {
-        "message": "Kľúč"
-    },
-    "keyAlreadyUsed": {
-        "message": "je pridelený pre inú akciu. Prosím zvoľte inú klávesu."
     },
     "to": {
         "message": "do",

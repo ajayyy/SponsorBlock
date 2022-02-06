@@ -20,10 +20,10 @@
         "message": "Kanava lisätty valkolistalle!"
     },
     "Segment": {
-        "message": "segmentti"
+        "message": "osio"
     },
     "Segments": {
-        "message": "segmentit"
+        "message": "osiot"
     },
     "upvoteButtonInfo": {
         "message": "Äänestä tätä lähetystä"
@@ -74,10 +74,10 @@
         "message": "Tällä videolla on segmenttejä tietokannassa!"
     },
     "sponsor404": {
-        "message": "Segmenttejä ei löytynyt"
+        "message": "Osioita ei löytynyt"
     },
     "sponsorStart": {
-        "message": "Segmentti alkaa nyt"
+        "message": "Osio alkaa nyt"
     },
     "sponsorEnd": {
         "message": "Segmentti päättyy nyt"
@@ -263,19 +263,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Aseta näppäin segmentin ohittamista varten"
+        "message": "Ohita osio",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Aseta pikanäppäin segmentin aloittamiseen/lopettamiseen"
+        "message": "Aloita/lopeta osio",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Aseta pikanäppäin tietojen lähetykseen"
+        "message": "Lähetä osiot",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Valitse näppäin painamalla sitä"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Pikanäppäin on asetettu näppäimeen: "
+        "message": "Valitse näppäin painamalla sitä ja valitse haluamasi vaihtonäppäin."
     },
     "0": {
         "message": "Yhteyden aikakatkaisu. Tarkista internet-yhteytesi. Jos internetyhteytesi toimii, palvelin on todennäköisesti ylikuormittunut tai alhaalla."
@@ -388,9 +388,6 @@
     "createdBy": {
         "message": "Luonut"
     },
-    "keybindCurrentlySet": {
-        "message": ". Tällä hetkellä se on asetettu näppäimeen:"
-    },
     "supportOtherSites": {
         "message": "Tue kolmansien osapuolien YouTube-sivustoja"
     },
@@ -470,6 +467,15 @@
     "exportOptions": {
         "message": "Vie/tuo kaikki asetukset"
     },
+    "exportOptionsCopy": {
+        "message": "Muokkaa/kopioi"
+    },
+    "exportOptionsDownload": {
+        "message": "Tallenna tiedostoon"
+    },
+    "exportOptionsUpload": {
+        "message": "Lataa tiedostosta"
+    },
     "whatExportOptions": {
         "message": "Tämä on koko konfiguraatiosi JSON-tiedostona. Tämä sisältää userID:si, joten jaa sitä viisaasti."
     },
@@ -518,11 +524,8 @@
     "copyDebugInformationComplete": {
         "message": "Virheenkorjaustiedot on kopioitu leikepöydälle. Voit poistaa mitä tahansa tietoa mitä et mielummin jakaisi. Tallenna tämä tekstitiedostoon tai liitä se virheraporttiin."
     },
-    "theKey": {
-        "message": "Näppäin"
-    },
     "keyAlreadyUsed": {
-        "message": "on jo liitetty toiseen toimintoon. Valitse toinen näppäin."
+        "message": "Pikänäppäin on jo liitetty toiselle toiminnolle. Valitse eri näppäin."
     },
     "to": {
         "message": "-",
@@ -584,7 +587,7 @@
         "message": "Epäolennainen täytesisältö"
     },
     "category_filler_description": {
-        "message": "Täytteeksi tai huumoriksi lisättyjä sekundaarisia kohtauksia, joita ei vaadita videon pääsisällön ymmärtämiseen. Tämän ei tulisi sisältää segmenttejä, jotka tarjoavat kontekstia tai taustatietoja."
+        "message": "Täytteeksi tai huumoriksi lisättyjä toissijaisia kohtauksia, joita videon pääsisällön ymmärrys ei edellytä. Tämän ei tulisi sisältää aiheeseen liittyviä tai taustatietoja tarjoavia osioita."
     },
     "category_filler_short": {
         "message": "Täytesisältö"
@@ -787,6 +790,9 @@
     "hideDonationLink": {
         "message": "Piilota lahjoituslinkki"
     },
+    "darkModeOptionsPage": {
+        "message": "Tumma tila asetussivulla"
+    },
     "helpPageThanksForInstalling": {
         "message": "Kiitos, että asensit SponsorBlockin."
     },
@@ -875,5 +881,42 @@
     "hourAbbreviation": {
         "message": "t",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Käyttäytyminen",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Käyttöliittymä",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Pikanäppäimet",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Varmuuskopioi/palauta",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Sekalaiset",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Ohitusilmoituksen ulkoasu",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Poista valinta",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Ei määritetty"
+    },
+    "change": {
+        "message": "Vaihda"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Tämä on YouTuben sisäänrakennettu pikanäppäin. Haluatko varmasti käyttää sitä?"
     }
 }

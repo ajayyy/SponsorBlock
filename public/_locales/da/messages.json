@@ -262,21 +262,6 @@
         "message": "Hvis du stadig ikke kan lide det, så tryk på aldrig vis knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Indstil tast for at springe et segment over"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Indstil tast til start/stop segment tastaturbinding"
-    },
-    "setSubmitKeybind": {
-        "message": "Indstil tast til indsendelse tastaturbinding"
-    },
-    "keybindDescription": {
-        "message": "Vælg en tast ved at skrive den"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Tastaturbindingen er blevet sat til: "
-    },
     "0": {
         "message": "Forbindelsestimeout. Tjek din internetforbindelse. Hvis dit internet fungerer, er serveren sandsynligvis overbelastet eller nede."
     },
@@ -383,9 +368,6 @@
     },
     "createdBy": {
         "message": "Oprettet Af"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Det er i øjeblikket sat til:"
     },
     "supportOtherSites": {
         "message": "Understøtter tredjeparts YouTube sider"
@@ -510,12 +492,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Fejlfindingsinformationen er blevet kopieret til klippebordet. Du er velkommen til at fjerne alle oplysninger, du helst ikke vil dele. Gem dette i en tekstfil eller indsæt i fejlrapporten."
-    },
-    "theKey": {
-        "message": "Tasten"
-    },
-    "keyAlreadyUsed": {
-        "message": "er bundet til en anden handling. Venligst vælg en anden nøgle."
     },
     "to": {
         "message": "til",

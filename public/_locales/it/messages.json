@@ -262,21 +262,6 @@
         "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Imposta un tasto per saltare un segmento"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Imposta un tasto personalizzato per iniziare/finire il segmento"
-    },
-    "setSubmitKeybind": {
-        "message": "Imposta un comando rapido per l'invio"
-    },
-    "keybindDescription": {
-        "message": "Seleziona un tasto premendolo sulla tastiera"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Il comando rapido è stato impostato come: "
-    },
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Creato da"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Attualmente è impostato su:"
     },
     "supportOtherSites": {
         "message": "Supporta siti di YouTube di terze parti"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Le informazioni di debug sono state copiate nel clip board. Sentiti libero di rimuovere tutte le informazioni che preferisci non condividere. Salva in un file di testo o incollale nella segnalazione di bug."
-    },
-    "theKey": {
-        "message": "La chiave"
-    },
-    "keyAlreadyUsed": {
-        "message": "è abbinata ad un'altra azione. Si prega di selezionare un'altra chiave."
     },
     "to": {
         "message": "a",

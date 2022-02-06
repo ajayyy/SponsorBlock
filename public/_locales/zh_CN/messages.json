@@ -229,18 +229,6 @@
         "message": "如果您依然不喜欢它，请按下不再显示按钮。",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "设置用于跳过片段的按键"
-    },
-    "setSubmitKeybind": {
-        "message": "设定提交的绑定按键"
-    },
-    "keybindDescription": {
-        "message": "点击您想选择的按键"
-    },
-    "keybindDescriptionComplete": {
-        "message": "绑定按键已被设定为： "
-    },
     "0": {
         "message": "连接超时。请检查您的网络连接。如果您的网络运行正常，则可能是服务器过载或宕机。"
     },
@@ -322,9 +310,6 @@
     },
     "createdBy": {
         "message": "创建者"
-    },
-    "keybindCurrentlySet": {
-        "message": "。目前被设定为："
     },
     "supportOtherSites": {
         "message": "支持第三方 YouTube 网站"
@@ -427,12 +412,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "调试信息已复制到剪切板中。 您可以随意移除任何您不想分享的信息。请将其另存为 .txt 文件或粘贴到错误报告中。"
-    },
-    "theKey": {
-        "message": "按键"
-    },
-    "keyAlreadyUsed": {
-        "message": "已绑定其他操作。请选择其他按键。"
     },
     "to": {
         "message": "到",

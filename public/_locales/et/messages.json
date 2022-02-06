@@ -262,21 +262,6 @@
         "message": "Kui sulle see ikka ei meeldi, vajuta \"ära kunagi näita\" nuppu.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Seadista segmendi vahelejätmise klahv"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Seadista segmendi alustamise/lõpetamise klahv"
-    },
-    "setSubmitKeybind": {
-        "message": "Seadista segmendi saatmise klahv"
-    },
-    "keybindDescription": {
-        "message": "Vali klahv, seda vajutades"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Otsetee on seatud: "
-    },
     "0": {
         "message": "Ühenduse ajalõpp. Kontrolli oma võrguühendust. Kui internet töötab, on ilmselt server ülekoormatud või maas."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Autor"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Hetkel on selleks määratud:"
     },
     "supportOtherSites": {
         "message": "Toeta 3. osapoole YouTube-saite"
@@ -514,12 +496,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Silumisinfo on lõikelauale kopeeritud. Võid sellelt vabalt eemaldada mistahes info, mida ei soovi jagada. Salvesta see tekstifaili või kleebi vearaportisse."
-    },
-    "theKey": {
-        "message": "Klahv"
-    },
-    "keyAlreadyUsed": {
-        "message": "on juba teisele tegevusele määratud. Palun vali teine klahv."
     },
     "to": {
         "message": "kuni",

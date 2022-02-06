@@ -98,6 +98,7 @@ addHotkeyListener();
 
 /** Segments created by the user which have not yet been submitted. */
 let sponsorTimesSubmitting: SponsorTime[] = [];
+let loadedPreloadedSegment = false;
 
 //becomes true when isInfoFound is called
 //this is used to close the popup on YouTube when the other popup opens
@@ -915,6 +916,8 @@ async function getVideoInfo(): Promise<void> {
 
 function getYouTubeVideoID(document: Document): string | boolean {
     const url = document.URL;
+    // clips should never skip, going from clip to full video has no indications.
+    if (url.includes("youtube.com/clip/")) return false;
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
     if ((!url.includes("youtube.com")) || url.includes("/watch") || url.includes("/shorts/") || url.includes("playlist")) return getYouTubeVideoIDFromURL(url);
     // skip to document and don't hide if on /embed/
@@ -2027,8 +2030,12 @@ function showTimeWithoutSkips(skippedDuration: number): void {
 }
 
 function checkForPreloadedSegment() {
+    if (loadedPreloadedSegment) return;
+    
+    loadedPreloadedSegment = true;
     const hashParams = getHashParams();
 
+    let pushed = false;
     const segments = hashParams.segments;
     if (Array.isArray(segments)) {
         for (const segment of segments) {
@@ -2041,8 +2048,14 @@ function checkForPreloadedSegment() {
                         actionType: segment.actionType ? segment.actionType : ActionType.Skip,
                         source: SponsorSourceType.Local
                     });
+
+                    pushed = true;
                 }
             }
         }
+    }
+
+    if (pushed) {
+        Config.config.segmentTimes.set(sponsorVideoID, sponsorTimesSubmitting);
     }
 }

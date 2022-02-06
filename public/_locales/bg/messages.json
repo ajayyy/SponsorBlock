@@ -263,19 +263,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Задайте клавиш за пропускане на сегмент"
+        "message": "Пропускане на сегмент",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Задайте клавиш за начало/край на сегмент"
+        "message": "Начало/край на сегмент",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Задайте клавиш за изпращане"
+        "message": "Изпращане на сегментите",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Изберете клавиш, като го натиснете"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Клавишът е зададен за: "
+        "message": "Изберете клавиш, като го натиснете, заедно с всички клавишни модификатори, които искате да използвате."
     },
     "0": {
         "message": "Времето за изчакване на връзката изтече. Проверете връзката си с интернет. Ако вашият интернет работи, вероятно сървърът е претоварен или не работи."
@@ -388,9 +388,6 @@
     "createdBy": {
         "message": "Създаден от"
     },
-    "keybindCurrentlySet": {
-        "message": ". В момента е настроено на:"
-    },
     "supportOtherSites": {
         "message": "Поддръжка на YouTube-сайтове на трети страни"
     },
@@ -470,6 +467,15 @@
     "exportOptions": {
         "message": "Импортиране/експортиране на всички опции"
     },
+    "exportOptionsCopy": {
+        "message": "Редактиране/копиране"
+    },
+    "exportOptionsDownload": {
+        "message": "Записване във файл"
+    },
+    "exportOptionsUpload": {
+        "message": "Зареждане от файл"
+    },
     "whatExportOptions": {
         "message": "Това е цялата ви конфигурация в JSON. Това включва вашия userID, така че се уверете, че споделяте това разумно."
     },
@@ -518,11 +524,8 @@
     "copyDebugInformationComplete": {
         "message": "Информацията за отстраняване на грешки е копирана в клипборда. Чувствайте се свободни да премахнете всяка информация, която предпочитате да не споделяте. Запазете това в текстов файл или го поставете в доклада за грешки."
     },
-    "theKey": {
-        "message": "Клавишът"
-    },
     "keyAlreadyUsed": {
-        "message": "е обвързан с друго действие. Моля, изберете друг клавиш."
+        "message": "Тази клавишна комбинация е свързана с друго действие. Моля, изберете друга."
     },
     "to": {
         "message": "до",
@@ -787,6 +790,9 @@
     "hideDonationLink": {
         "message": "Скриване на връзката за дарение"
     },
+    "darkModeOptionsPage": {
+        "message": "Тъмен режим на страницата с опции"
+    },
     "helpPageThanksForInstalling": {
         "message": "Благодарим ви, че инсталирахте SponsorBlock."
     },
@@ -875,5 +881,42 @@
     "hourAbbreviation": {
         "message": "ч",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Поведение",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Интерфейс",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Клавишни комбинации",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Архивиране/Възстановяване",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Други",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Изглед на известията за пропускане",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Освобождаване",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Не е зададено"
+    },
+    "change": {
+        "message": "Промяна"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Това е вградена клавишна комбинация в YouTube. Наистина ли искате да я използвате?"
     }
 }

@@ -226,18 +226,6 @@
         "message": "Dacă nu îți place, apasă butonul nu mai arăta niciodată.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Setați cheia pentru omiterea unui segment"
-    },
-    "setSubmitKeybind": {
-        "message": "Setează tasta pentru trimiterea sponsorizării"
-    },
-    "keybindDescription": {
-        "message": "Selectează o tastă apasând-o"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Tasta a fost setată la: "
-    },
     "0": {
         "message": "Eroare de Conexiune. Verifică-ți conexiunea la internet. Daca internetul functionează, serverul este probabil supraîncărcat sau a căzut."
     },
@@ -319,9 +307,6 @@
     },
     "createdBy": {
         "message": "Creat De"
-    },
-    "keybindCurrentlySet": {
-        "message": ". În prezent este setat:"
     },
     "optionsInfo": {
         "message": "Activează suportul Invidious, dezactivează autoskip-ul, ascunde butoanele și altele."
@@ -421,12 +406,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Informația de depanare a fost copiată în clipboard. Puteți elimina orice informație pe care nu doriți să o partajați. Salvați într-un fișier sau lipiți-o în raportul de erori."
-    },
-    "theKey": {
-        "message": "Tasta"
-    },
-    "keyAlreadyUsed": {
-        "message": "este deja setată la o altă acțiune. Vă rugăm să selectați o altă tastă."
     },
     "to": {
         "message": "până la",

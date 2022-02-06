@@ -54,6 +54,14 @@ interface SBConfig {
     categoryPillUpdate: boolean,
     darkMode: boolean,
 
+    // Used to cache calculated text color info
+    categoryPillColors: {
+        [key in Category]: {
+            lastColor: string,
+            textColor: string
+        }
+    }
+
     skipKeybind: Keybind,
     startSponsorKeybind: Keybind,
     submitKeybind: Keybind,
@@ -209,6 +217,8 @@ const Config: SBObject = {
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
         categoryPillUpdate: false,
         darkMode: true,
+
+        categoryPillColors: {},
 
         /**
          * Default keybinds should not set "code" as that's gonna be different based on the user's locale. They should also only use EITHER ctrl OR alt modifiers (or none).

@@ -262,21 +262,6 @@
         "message": "Falls es dir trotzdem nicht gefällt, drücke auf \"Verstecken\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Taste zum Überspringen eines Segments festlegen"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Taste für das Starten/Stoppen eines Segments festlegen"
-    },
-    "setSubmitKeybind": {
-        "message": "Taste für das Einsenden festlegen"
-    },
-    "keybindDescription": {
-        "message": "Zum Festlegen eine Taste drücken"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Die Taste wurde festgelegt auf: "
-    },
     "0": {
         "message": "Zeitüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
     },
@@ -388,9 +373,6 @@
     "createdBy": {
         "message": "Erstellt von"
     },
-    "keybindCurrentlySet": {
-        "message": ". Aktuelle Einstellung:"
-    },
     "supportOtherSites": {
         "message": "Drittanbieter YouTube-Sites unterstützen"
     },
@@ -435,7 +417,7 @@
         "message": "Benachrichtigungsdauer überspringen (Sekunden):"
     },
     "skipNoticeDurationDescription": {
-        "message": "Die Überspringen Benachrichtigung wird mindestens so lange angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
+        "message": "Die überspringen Benachrichtigung wird mindestens für so viele Sekunden angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
     },
     "shortCheck": {
         "message": "Die folgende Einreichung ist kürzer als deine Mindestdauer. Das könnte bedeuten, dass dieses Videosegment bereits eingereicht wurde und aufgrund dieser Option einfach ignoriert wird. Bist du dir sicher, dass du es übermitteln möchtest?"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Die Debug-Informationen wurden in die Zwischenablage kopiert. Du kannst alle Informationen entfernen, die du nicht teilen möchtest. Verwende einen Texteditor um die Informationen in einer Textdatei zu speichern (um diese ggf. einem Fehlerbericht hinzuzufügen)."
-    },
-    "theKey": {
-        "message": "Die Taste"
-    },
-    "keyAlreadyUsed": {
-        "message": "wird bereits für eine andere Aktion verwendet. Bitte wähle eine andere Taste."
     },
     "to": {
         "message": "bis",
