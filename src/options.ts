@@ -22,7 +22,7 @@ async function init() {
 
     // selected tab
     if (location.hash != "") {
-        const substr = location.hash.substring(1);
+        const substr = location.hash.slice(1);
         let menuItem = document.querySelector(`[data-for='${substr}']`);
         if (menuItem == null)
             menuItem = document.querySelector(`[data-for='behavior']`);

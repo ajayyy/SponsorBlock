@@ -36,7 +36,7 @@ interface SBConfig {
     serverAddress: string,
     minDuration: number,
     skipNoticeDuration: number,
-    audioNotificationOnSkip,
+    audioNotificationOnSkip: boolean,
     checkForUnlistedVideos: boolean,
     testingServer: boolean,
     refetchWhenNotFound: boolean,
