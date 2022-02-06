@@ -494,20 +494,14 @@ function activatePrivateTextChange(element: HTMLElement) {
     }
     
     let result = Config.config[option];
-
     // See if anything extra must be done
     switch (option) {
         case "*": {
-            const jsonData = JSON.parse(JSON.stringify(Config.localConfig));
-
-            // Fix segmentTimes data as it is destroyed from the JSON stringify
-            jsonData.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
-
-            result = JSON.stringify(jsonData);
+            result = JSON.stringify(Config.localConfig);
             break;
         }
     }
-
+    
     textBox.value = result;
     
     const setButton = element.querySelector(".text-change-set");
@@ -557,7 +551,6 @@ async function setTextOption(option: string, element: HTMLElement, value: string
                     for (const key in newConfig) {
                         Config.config[key] = newConfig[key];
                     }
-                    Config.convertJSON();
 
                     if (newConfig.supportInvidious) {
                         const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > div > label > input");
@@ -585,7 +578,6 @@ async function setTextOption(option: string, element: HTMLElement, value: string
 function downloadConfig() {
     const file = document.createElement("a");
     const jsonData = JSON.parse(JSON.stringify(Config.localConfig));
-    jsonData.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
     file.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonData)));
     file.setAttribute("download", "SponsorBlockConfig.json");
     document.body.append(file);
@@ -642,9 +634,6 @@ function copyDebugOutputToClipboard() {
         config: JSON.parse(JSON.stringify(Config.localConfig)) // Deep clone config object
     };
 
-    // Fix segmentTimes data as it is destroyed from the JSON stringify
-    output.config.segmentTimes = Config.encodeStoredItem(Config.localConfig.segmentTimes);
-    
     // Sanitise sensitive user config values
     delete output.config.userID;
     output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress) 

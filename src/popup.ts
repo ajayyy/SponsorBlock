@@ -262,7 +262,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             return;
         }
 
-        sponsorTimes = Config.config.segmentTimes.get(currentVideoID) ?? [];
+        sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
         updateSegmentEditingUI();
 
         messageHandler.sendMessage(
@@ -360,7 +360,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         // Only update the segments after a segment was created
         if (!creatingSegment) {
-            sponsorTimes = Config.config.segmentTimes.get(currentVideoID) || [];
+            sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] || [];
         }
 
         // Update the UI

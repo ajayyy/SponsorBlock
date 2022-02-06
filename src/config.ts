@@ -8,7 +8,7 @@ interface SBConfig {
     isVip: boolean,
     lastIsVipUpdate: number,
     /* Contains unsubmitted segments that the user has created. */
-    segmentTimes: SBMap<string, SponsorTime[]>,
+    unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
     whitelistedChannels: string[],
     forceChannelCheck: boolean,
@@ -99,73 +99,7 @@ export interface SBObject {
     defaults: SBConfig;
     localConfig: SBConfig;
     config: SBConfig;
-
-    // Functions
-    encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes;
-    convertJSON(): void;
-}
-
-// Allows a SBMap to be conveted into json form
-// Currently used for local storage
-class SBMap<T, U> extends Map {
-    id: string;
-
-    constructor(id: string, entries?: [T, U][]) {
-        super();
-
-        this.id = id;
-
-        // Import all entries if they were given
-        if (entries !== undefined) {
-            for (const item of entries) {
-                super.set(item[0], item[1])
-            }
-        }
-    }
-
-    get(key): U {
-        return super.get(key);
-    }
-
-    rawSet(key, value) {
-        return super.set(key, value);
-    }
-
-    update() {
-        // Store updated SBMap locally
-        chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this)
-        });
-    }
-
-    set(key: T, value: U) {
-        const result = super.set(key, value);
-
-        this.update();
-        return result;
-    }
-	
-    delete(key) {
-        const result = super.delete(key);
-
-        // Make sure there are no empty elements
-        for (const entry of this.entries()) {
-            if (entry[1].length === 0) {
-                super.delete(entry[0]);
-            }
-        }
-
-        this.update();
-
-        return result;
-    }
-
-    clear() {
-        const result = super.clear();
-
-        this.update();
-        return result;
-    }
+    forceUpdate(prop: string): void;
 }
 
 const Config: SBObject = {
@@ -177,7 +111,7 @@ const Config: SBObject = {
         userID: null,
         isVip: false,
         lastIsVipUpdate: 0,
-        segmentTimes: new SBMap("segmentTimes"),
+        unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
         whitelistedChannels: [],
         forceChannelCheck: false,
@@ -334,52 +268,15 @@ const Config: SBObject = {
     },
     localConfig: null,
     config: null,
-    
-    // Functions
-    encodeStoredItem,
-    convertJSON
+    forceUpdate
 };
 
 // Function setup
 
-/**
- * A SBMap cannot be stored in the chrome storage. 
- * This data will be encoded into an array instead
- * 
- * @param data 
- */
-function encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes  {
-    // if data is SBMap convert to json for storing
-    if(!(data instanceof SBMap)) return data;
-    return Array.from(data.entries()).filter((element) => element[1].length > 0); // Remove empty entries
-}
-
-/**
- * An SBMap cannot be stored in the chrome storage. 
- * This data will be decoded from the array it is stored in
- * 
- * @param {*} data 
- */
-function decodeStoredItem<T>(id: string, data: T): T | SBMap<string, SponsorTime[]> {
-    if (!Config.defaults[id]) return data;
-
-    if (Config.defaults[id] instanceof SBMap) {
-        try {
-            if (!Array.isArray(data)) return data;
-            return new SBMap(id, data as UnencodedSegmentTimes);
-        } catch(e) {
-            console.error("Failed to parse SBMap: " + id);
-        }
-    }
-
-    // If all else fails, return the data
-    return data;
-}
-
 function configProxy(): SBConfig {
     chrome.storage.onChanged.addListener((changes: {[key: string]: chrome.storage.StorageChange}) => {
         for (const key in changes) {
-            Config.localConfig[key] = decodeStoredItem(key, changes[key].newValue);
+            Config.localConfig[key] = changes[key].newValue;
         }
 
         for (const callback of Config.configListeners) {
@@ -392,7 +289,7 @@ function configProxy(): SBConfig {
             Config.localConfig[prop] = value;
 
             chrome.storage.sync.set({
-                [prop]: encodeStoredItem(value)
+                [prop]: value
             });
 
             return true;
@@ -415,6 +312,12 @@ function configProxy(): SBConfig {
     return new Proxy<SBConfig>({handler} as unknown as SBConfig, handler);
 }
 
+function forceUpdate(prop: string): void {
+    chrome.storage.sync.set({
+        [prop]: Config.localConfig[prop]
+    });
+}
+
 function fetchConfig(): Promise<void> { 
     return new Promise((resolve) => {
         chrome.storage.sync.get(null, function(items) {
@@ -425,6 +328,14 @@ function fetchConfig(): Promise<void> {
 }
 
 function migrateOldFormats(config: SBConfig) {
+    if (config["segmentTimes"]) {
+        for (const item of config["segmentTimes"]) {
+            config.unsubmittedSegments[item[0]] = item[1];
+        }
+
+        chrome.storage.sync.remove("segmentTimes");
+    }
+
     if (!config["exclusive_accessCategoryAdded"] && !config.categorySelections.some((s) => s.name === "exclusive_access")) {
         config["exclusive_accessCategoryAdded"] = true;
 
@@ -512,17 +423,10 @@ function migrateOldFormats(config: SBConfig) {
 async function setupConfig() {
     await fetchConfig();
     addDefaults();
-    convertJSON();
     const config = configProxy();
     migrateOldFormats(config);
 
     Config.config = config;
-}
-
-function convertJSON(): void {
-    Object.keys(Config.localConfig).forEach(key => {
-        Config.localConfig[key] = decodeStoredItem(key, Config.localConfig[key]);
-    });
 }
 
 // Add defaults
