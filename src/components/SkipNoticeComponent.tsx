@@ -645,18 +645,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         this.addVoteButtonInfo(chrome.i18n.getMessage("voted"));
 
-        // Change the sponsor locally
-        if (segment) {
-            if (type === 0) {
-                segment.hidden = SponsorHideType.Downvoted;
-            } else if (category) {
-                segment.category = category; // This is the actual segment on the video page
-                this.segments[index].category = category; //this is the segment inside the skip notice. 
-            } else if (type === 1) {
-                segment.hidden = SponsorHideType.Visible;
-            }
-            
-            this.contentContainer().updatePreviewBar();
+        if (segment && category) {
+            // This is the segment inside the skip notice
+            this.segments[index].category = category;
         }
     }
 

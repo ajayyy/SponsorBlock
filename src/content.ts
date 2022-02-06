@@ -204,6 +204,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             }));
 
             return true;
+        case "submitVote":
+            vote(request.type, request.UUID).then((response) => sendResponse(response));
+            return true;
     }
 }
 
@@ -1689,7 +1692,7 @@ function clearSponsorTimes() {
 }
 
 //if skipNotice is null, it will not affect the UI
-async function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent): Promise<void> {
+async function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent): Promise<VoteResponse> {
     if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
         skipNotice.addVoteButtonInfo.bind(skipNotice)(chrome.i18n.getMessage("Loading"))
@@ -1717,6 +1720,8 @@ async function vote(type: number, UUID: SegmentUUID, category?: Category, skipNo
             }
         }
     }
+
+    return response;
 }
 
 async function voteAsync(type: number, UUID: SegmentUUID, category?: Category): Promise<VoteResponse> {
@@ -1746,7 +1751,25 @@ async function voteAsync(type: number, UUID: SegmentUUID, category?: Category): 
             type: type,
             UUID: UUID,
             category: category
-        }, resolve);
+        }, (response) => {
+            if (response.successType === 1) {
+                // Change the sponsor locally
+                const segment = utils.getSponsorTimeFromUUID(sponsorTimes, UUID);
+                if (segment) {
+                    if (type === 0) {
+                        segment.hidden = SponsorHideType.Downvoted;
+                    } else if (category) {
+                        segment.category = category;
+                    } else if (type === 1) {
+                        segment.hidden = SponsorHideType.Visible;
+                    }
+                    
+                    updatePreviewBar();
+                }
+            }
+
+            resolve(response);
+        });
     });
 }
 
