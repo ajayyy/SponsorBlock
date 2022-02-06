@@ -787,6 +787,9 @@
     "Donate": {
         "message": "Donate"
     },
+    "considerDonating": {
+        "message": "Help fund development"
+    },
     "hideDonationLink": {
         "message": "Hide Donation Link"
     },

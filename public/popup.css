@@ -393,7 +393,7 @@ label>p, #disableExtension>p, #usernameValue, #usernameElement > div > p,#sponso
 
 /* footer */
 
-#sbFooter > a {
+#sbFooter a {
   color: var(--sb-main-fg-color);
   text-decoration: none;
 }

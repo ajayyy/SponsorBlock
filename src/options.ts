@@ -54,8 +54,10 @@ async function init() {
         document.documentElement.setAttribute("data-theme", "light");
     }
 
+    const donate = document.getElementById("sbDonate");
+    donate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
     if (!showDonationLink()) {
-        document.getElementById("sbDonate").classList.add("hidden");
+        donate.classList.add("hidden");
     }
 
     // Set all of the toggle options to the correct option
@@ -501,7 +503,7 @@ function activatePrivateTextChange(element: HTMLElement) {
             break;
         }
     }
-    
+
     textBox.value = result;
     
     const setButton = element.querySelector(".text-change-set");

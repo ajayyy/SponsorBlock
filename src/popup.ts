@@ -108,13 +108,17 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         //"downloadedSponsorMessageTimes",
         "refreshSegmentsButton",
         "whitelistButton",
-        "sbDonate"
+        "sbDonate",
+        "sponsorTimesDonateContainer",
+        "sbConsiderDonateLink",
+        "sbCloseDonate"
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     // Hide donate button if wanted (Safari, or user choice)
     if (!showDonationLink()) {
         PageElements.sbDonate.style.display = "none";
     }
+    PageElements.sbDonate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
@@ -192,6 +196,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                         PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
                         PageElements.sponsorTimesViewsContainer.style.display = "unset";
                     }
+
+                    showDonateWidget(viewCount);
                 }
             });
 
@@ -240,6 +246,23 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     setTimeout(() => PageElements.sponsorblockPopup.classList.remove("preload"), 250);
 
     getSegmentsFromContentScript(false);
+
+    function showDonateWidget(viewCount: number) {
+        if (Config.config.showDonationLink && Config.config.donateClicked <= 0 && Config.config.showPopupDonationCount < 5
+                && viewCount < 50000 && !Config.config.isVip && Config.config.skipCount > 10) {
+            PageElements.sponsorTimesDonateContainer.style.display = "flex";
+            PageElements.sbConsiderDonateLink.addEventListener("click", () => {
+                Config.config.donateClicked = Config.config.donateClicked + 1;
+            });
+            
+            PageElements.sbCloseDonate.addEventListener("click", () => {
+                PageElements.sponsorTimesDonateContainer.style.display = "none";
+                Config.config.showPopupDonationCount = 100;
+            });
+
+            Config.config.showPopupDonationCount = Config.config.showPopupDonationCount + 1;
+        }
+    }
 
     function onTabs(tabs, updating: boolean): void {
         messageHandler.sendMessage(tabs[0].id, { message: 'getVideoID' }, function (result) {
