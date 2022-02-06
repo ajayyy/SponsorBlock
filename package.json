@@ -4,39 +4,35 @@
   "description": "",
   "main": "background.js",
   "dependencies": {
-    "@types/react": "^16.9.22",
-    "@types/react-dom": "^16.9.5",
-    "@types/selenium-webdriver": "^4.0.15",
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.6",
-    "babel-preset-env": "^1.7.0",
-    "concurrently": "^5.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/chrome": "0.0.91",
-    "@types/firefox-webext-browser": "70.0.1",
-    "@types/jest": "^24.0.23",
-    "@types/jquery": "^3.3.31",
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
-    "@typescript-eslint/parser": "^4.9.1",
-    "chromedriver": "^92.0.0",
-    "copy-webpack-plugin": "^6.4.1",
-    "eslint": "^7.15.0",
-    "eslint-plugin-react": "^7.21.5",
-    "jest": "^27.0.6",
-    "rimraf": "^3.0.0",
-    "selenium-webdriver": "^4.0.0-beta.4",
-    "ts-jest": "^27.0.3",
-    "ts-loader": "^6.2.1",
+    "@types/chrome": "^0.0.178",
+    "@types/firefox-webext-browser": "^94.0.1",
+    "@types/jest": "^27.4.0",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@types/selenium-webdriver": "^4.0.17",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "chromedriver": "^97.0.4",
+    "concurrently": "^7.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "eslint": "^8.8.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^27.5.0",
+    "rimraf": "^3.0.2",
+    "schema-utils": "^4.0.0",
+    "selenium-webdriver": "^4.1.1",
+    "ts-jest": "^27.1.3",
+    "ts-loader": "^9.2.6",
     "ts-node": "^10.4.0",
-    "typescript": "~4.3",
-    "web-ext": "^6.2.0",
-    "webpack": "~4.46.0",
-    "webpack-cli": "~3.3.10",
-    "webpack-merge": "~4.2.2"
+    "typescript": "4.5",
+    "web-ext": "^6.6.0",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^4.2.2"
   },
   "scripts": {
     "web-run": "npm run web-run:chrome",
@@ -45,16 +41,16 @@
     "web-run:firefox-android": "cd dist && web-ext run -t firefox-android --firefox-apk org.mozilla.fenix",
     "web-run:chrome": "cd dist && web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm -t chromium",
     "build": "npm run build:chrome",
-    "build:chrome": "webpack --env.browser=chrome --config webpack/webpack.prod.js",
-    "build:firefox": "webpack --env.browser=firefox --config webpack/webpack.prod.js",
-    "build:safari": "webpack --env.browser=safari --config webpack/webpack.prod.js",
-    "build:edge": "webpack --env.browser=edge --config webpack/webpack.prod.js",
+    "build:chrome": "webpack --env browser=chrome --config webpack/webpack.prod.js",
+    "build:firefox": "webpack --env browser=firefox --config webpack/webpack.prod.js",
+    "build:safari": "webpack --env browser=safari --config webpack/webpack.prod.js",
+    "build:edge": "webpack --env browser=edge --config webpack/webpack.prod.js",
     "build:dev": "npm run build:dev:chrome",
-    "build:dev:chrome": "webpack --env.browser=chrome --config webpack/webpack.dev.js",
-    "build:dev:firefox": "webpack --env.browser=firefox --config webpack/webpack.dev.js",
+    "build:dev:chrome": "webpack --env browser=chrome --config webpack/webpack.dev.js",
+    "build:dev:firefox": "webpack --env browser=firefox --config webpack/webpack.dev.js",
     "build:watch": "npm run build:watch:chrome",
-    "build:watch:chrome": "webpack --env.browser=chrome --config webpack/webpack.dev.js --watch",
-    "build:watch:firefox": "webpack --env.browser=firefox --config webpack/webpack.dev.js --watch",
+    "build:watch:chrome": "webpack --env browser=chrome --config webpack/webpack.dev.js --watch",
+    "build:watch:firefox": "webpack --env browser=firefox --config webpack/webpack.dev.js --watch",
     "ci:invidious": "ts-node ci/invidiousCI.ts",
     "dev": "npm run build:dev && concurrently \"npm run web-run\" \"npm run build:watch\"",
     "dev:firefox": "npm run build:dev:firefox && concurrently \"npm run web-run:firefox\" \"npm run build:watch:firefox\"",
@@ -65,6 +61,22 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
+  "engines": {
+    "node": ">=12.20.0"
+  },
+  "funding": [{
+      "type": "individual",
+      "url": "hhttps://sponsor.ajay.app/donate"
+    }, {
+      "type": "github",
+      "url": "https://github.com/sponsors/ajayyy-org"
+    }, {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ajayyy"
+    }, {
+      "type": "individual",
+      "url": "https://paypal.me/ajayyy"
+  }],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ajayyy/SponsorBlock.git"

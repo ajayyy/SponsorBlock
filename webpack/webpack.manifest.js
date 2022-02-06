@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const webpack = require("webpack");
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const validateOptions = require('schema-utils');
+const { validate } = require('schema-utils');
 
 const fs = require('fs');
 
@@ -30,12 +31,12 @@ const schema = {
 
 class BuildManifest {
     constructor (options = {}) {
-        validateOptions(schema, options, "Build Manifest Plugin");
+        validate(schema, options, "Build Manifest Plugin");
 
         this.options = options;
     }
 
-    apply(compiler) {
+    apply() {
         const distFolder = path.resolve(__dirname, "../dist/");
         const distManifestFile = path.resolve(distFolder, "manifest.json");
 
