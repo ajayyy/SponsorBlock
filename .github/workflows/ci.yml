@@ -47,7 +47,7 @@ jobs:
 
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
-        run: npm run build:chrome -- --env.stream=beta
+        run: npm run build:chrome -- --env stream=beta
       - uses: actions/upload-artifact@v2
         with:
           name: ChromeExtensionBeta
@@ -57,7 +57,7 @@ jobs:
           args: zip -qq -r ./builds/ChromeExtensionBeta.zip ./dist
 
       - name: Create Firefox Beta artifacts
-        run: npm run build:firefox -- --env.stream=beta
+        run: npm run build:firefox -- --env stream=beta
       - uses: actions/upload-artifact@v2
         with:
           name: FirefoxExtensionBeta
