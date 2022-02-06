@@ -10,8 +10,8 @@ export interface TooltipProps {
     timeout?: number;
     opacity?: number;
     displayTriangle?: boolean;
-    showLogo: boolean;
-    showGotIt: boolean;
+    showLogo?: boolean;
+    showGotIt?: boolean;
 }
 
 export class Tooltip {
