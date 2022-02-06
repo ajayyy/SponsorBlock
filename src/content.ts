@@ -919,6 +919,8 @@ async function getVideoInfo(): Promise<void> {
 
 function getYouTubeVideoID(document: Document): string | boolean {
     const url = document.URL;
+    // clips should never skip, going from clip to full video has no indications.
+    if (url.includes("youtube.com/clip/")) return false;
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
     if ((!url.includes("youtube.com")) || url.includes("/watch") || url.includes("/shorts/") || url.includes("playlist")) return getYouTubeVideoIDFromURL(url);
     // skip to document and don't hide if on /embed/
