@@ -262,21 +262,6 @@
         "message": "もしそれでも気に入らない場合は、非表示ボタンをクリックしてください。",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "セグメントをスキップするキーを設定"
-    },
-    "setStartSponsorShortcut": {
-        "message": "セグメントの開始/停止キーのバインドを設定"
-    },
-    "setSubmitKeybind": {
-        "message": "提案キーのバインドを設定"
-    },
-    "keybindDescription": {
-        "message": "キーを入力して設定します"
-    },
-    "keybindDescriptionComplete": {
-        "message": "キーバインドは次のように設定されました: "
-    },
     "0": {
         "message": "接続がタイムアウトになりました。インターネット接続をご確認ください。接続に問題がない場合、サーバーが混雑またはダウンしている可能性があります。"
     },
@@ -383,9 +368,6 @@
     },
     "createdBy": {
         "message": "作成者:"
-    },
-    "keybindCurrentlySet": {
-        "message": "。現在の設定は:"
     },
     "supportOtherSites": {
         "message": "第三者製のYouTube関連サイトに対応"
@@ -510,12 +492,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "診断用情報がクリップボードに複製されました。共有したくない情報があればそこから削除できます。これをファイルに保存したり，不具合報告に貼り付けてください。"
-    },
-    "theKey": {
-        "message": "キー"
-    },
-    "keyAlreadyUsed": {
-        "message": "は他の動作に割り当てられています。異なったキーを選択してください。"
     },
     "to": {
         "message": "～",

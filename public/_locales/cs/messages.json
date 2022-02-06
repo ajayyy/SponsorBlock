@@ -262,21 +262,6 @@
         "message": "Pokud se vám to stále nelíbí, klikněte na tlačítko Nikdy nezobrazovat.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Nastavit klávesu pro přeskočení segmentu"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Nastavte klávesu pro spuštění/zastavení segmentu"
-    },
-    "setSubmitKeybind": {
-        "message": "Nastavte klávesu pro odeslání"
-    },
-    "keybindDescription": {
-        "message": "Nastavte klávesu jejím zadáním"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Klávesa byla nastavena na: "
-    },
     "0": {
         "message": "Vypršel časový limit připojení. Zkontrolujte vaše připojení k internetu. Pokud váš internet funguje, server je nejspíš přetížený nebo spadnul."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Vytvořil"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Je momentálně nastaveno na:"
     },
     "supportOtherSites": {
         "message": "Podpora pro weby YouTube třetích stran"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Ladící informace byly zkopírovány do schránky. Můžete odstranit jakékoli informace, které raději nechcete sdílet. Uložte text do textového souboru nebo vložte do chybového hlášení."
-    },
-    "theKey": {
-        "message": "Klávesa"
-    },
-    "keyAlreadyUsed": {
-        "message": "je přiřazena k jiné akci. Zvolte prosím jinou klávesu."
     },
     "to": {
         "message": "do",

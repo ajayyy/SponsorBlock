@@ -262,21 +262,6 @@
         "message": "Als het u nog steeds niet bevalt, druk dan op de knop \"nooit weergeven\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Sleutel instellen voor het overslaan van een segment"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Sneltoets instellen voor begin/einde van segment"
-    },
-    "setSubmitKeybind": {
-        "message": "Sneltoets instellen voor inzending"
-    },
-    "keybindDescription": {
-        "message": "Selecteer een toets door hem in te drukken"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Deze sneltoets is ingesteld op: "
-    },
     "0": {
         "message": "Time-out van de verbinding. Controleer uw internetverbinding. Als uw internet werkt, is de server waarschijnlijk overbelast of offline."
     },
@@ -388,9 +373,6 @@
     "createdBy": {
         "message": "Gemaakt door"
     },
-    "keybindCurrentlySet": {
-        "message": ". Hij is momenteel ingesteld op:"
-    },
     "supportOtherSites": {
         "message": "Ondersteuning voor YouTube-sites van derden"
     },
@@ -441,7 +423,7 @@
         "message": "De volgende inzending is korter dan uw \"minimale tijdsduur\"-instelling. Dit kan betekenen dat dit al is ingediend en genegeerd wordt door deze optie. Weet u zeker dat u dit wilt indienen?"
     },
     "liveOrPremiere": {
-        "message": "Indienen op een actieve livesteam of première is niet toegestaan. Wacht tot hij klaar is, vernieuw dan de pagina en controleer of de segmenten nog geldig zijn."
+        "message": "Indienen op een actieve livesteam of première is niet toegestaan. Wacht tot hij geëindigd is, vernieuw dan de pagina en controleer of de segmenten nog geldig zijn."
     },
     "showUploadButton": {
         "message": "Uploaden-knop weergeven"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "De foutopsporingsinformatie is gekopieerd naar het klembord. Voel u vrij om alle informatie die u liever niet wilt delen, te verwijderen. Sla dit op in een tekstbestand of plak het in het foutenrapport."
-    },
-    "theKey": {
-        "message": "De toets"
-    },
-    "keyAlreadyUsed": {
-        "message": "is gekoppeld aan een andere actie. Selecteer een andere toets."
     },
     "to": {
         "message": "tot",

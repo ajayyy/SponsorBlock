@@ -263,19 +263,8 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Ustaw klawisz do pomijania segmentów"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Ustaw klawisz do oznaczania początku/końca segmentu"
-    },
-    "setSubmitKeybind": {
-        "message": "Ustaw klawisz do wysyłania czasów"
-    },
-    "keybindDescription": {
-        "message": "Wybierz klawisz, wciskając go na klawiaturze"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Ustawiony klawisz to: "
+        "message": "Pomiń segment",
+        "description": "Keybind label"
     },
     "0": {
         "message": "Połączenie przerwane z powodu braku odpowiedzi. Sprawdź swoje połączenie z internetem. Jeśli wszystko z nim w porządku oznacza to, że serwer jest prawdopodobnie przeciążony lub nie działa."
@@ -307,7 +296,7 @@
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
-        "message": "Pominąć {0}?"
+        "message": "{0} — pominąć?"
     },
     "mute_category": {
         "message": "Wyciszyć {0}?"
@@ -387,9 +376,6 @@
     },
     "createdBy": {
         "message": "Stworzony przez"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Obecnie ustawiony:"
     },
     "supportOtherSites": {
         "message": "Obsługa stron YouTube firm trzecich"
@@ -514,12 +500,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
-    },
-    "theKey": {
-        "message": "Klucz"
-    },
-    "keyAlreadyUsed": {
-        "message": "jest przypisane do innej akcji. Wybierz proszę inny klawisz."
     },
     "to": {
         "message": "do",
@@ -859,5 +839,9 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabInterface": {
+        "message": "Interfejs",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     }
 }

@@ -226,18 +226,6 @@
         "message": "Hvis du fortsatt ikke liker det, klikk på «Aldri vis»-knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Angi tast for å hoppe over et segment"
-    },
-    "setSubmitKeybind": {
-        "message": "Angi tast for innsending"
-    },
-    "keybindDescription": {
-        "message": "Velg en tast ved å trykke på den"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Hurtigtasten har blitt satt til: "
-    },
     "0": {
         "message": "Tidsavbrudd for tilkobling. Sjekk internettilkoblingen din. Hvis internettet ditt virker, er tjeneren sannsynligvis overbelastet eller nede."
     },
@@ -319,9 +307,6 @@
     },
     "createdBy": {
         "message": "Opprettet av"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Den er før øyeblikket satt til:"
     },
     "optionsInfo": {
         "message": "Skru på Invidious-støtte, skru av autohopp, skjul knapper, og mer."
@@ -421,12 +406,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Avlusingsinformasjonen har blitt kopiert til utklippstavlen. Du er velkommen til å fjerne det av informasjon som du helst ikke vil dele. Lagre dette i en tekstfil, eller lim det inn i feilrapporten."
-    },
-    "theKey": {
-        "message": "Nøkkelen"
-    },
-    "keyAlreadyUsed": {
-        "message": "er bundet til en annen handling. Vennligst velg en annen tast."
     },
     "to": {
         "message": "til",

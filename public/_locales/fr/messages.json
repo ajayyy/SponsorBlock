@@ -262,21 +262,6 @@
         "message": "Si elle ne vous plaît pas, cliquez sur le bouton \"Ne plus montrer\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Définir une touche pour passer un segment"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Définir le raccourci pour démarrer/terminer un segment"
-    },
-    "setSubmitKeybind": {
-        "message": "Changer le raccourci pour soumettre les segments"
-    },
-    "keybindDescription": {
-        "message": "Appuyez sur une touche"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Le raccourci choisi est : "
-    },
     "0": {
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
     },
@@ -384,9 +369,6 @@
     "createdBy": {
         "message": "Créé par"
     },
-    "keybindCurrentlySet": {
-        "message": ". Il est actuellement réglé sur :"
-    },
     "supportOtherSites": {
         "message": "Support de YouTube-Sites tierces"
     },
@@ -463,6 +445,9 @@
     "exportOptions": {
         "message": "Importer/Exporter toutes les options"
     },
+    "exportOptionsUpload": {
+        "message": "Charger à partir du fichier"
+    },
     "whatExportOptions": {
         "message": "C'est votre configuration complète au format JSON. Elle inclut votre identifiant utilisateur, gardez-la pour vous."
     },
@@ -510,12 +495,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous ne préférez pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
-    },
-    "theKey": {
-        "message": "La clé"
-    },
-    "keyAlreadyUsed": {
-        "message": "est lié à une autre action. Veuillez sélectionner une autre clé."
     },
     "to": {
         "message": "à",
@@ -842,5 +821,27 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportement",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interface",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Raccourcis clavier",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Divers",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "change": {
+        "message": "Changer"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Il s'agit d'un raccourci YouTube intégré. Êtes-vous sûr de vouloir l'utiliser ?"
     }
 }

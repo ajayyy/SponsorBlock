@@ -263,19 +263,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Billentyű beállítása szegmens átugráshoz"
+        "message": "Szegmens átugrása",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Billentyű beállítása a szegmens kezdéséhez/befejezéséhez"
+        "message": "Szegmens kezdése/befejezése",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Billentyű beállítása a beküldés gombhoz"
+        "message": "Szegmensek beküldése",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Válassz egy billentyűt azzal, hogy lenyomod"
-    },
-    "keybindDescriptionComplete": {
-        "message": "A funkció erre a billentyűre lett állítva: "
+        "message": "Válassz egy billentyűt azzal, hogy lenyomod és válaszd ki a módosító billentyű(ke)t, amiket használni szeretnél."
     },
     "0": {
         "message": "Kapcsolati időtúllépés. Ellenőrizd az internetkapcsolatodat! Ha az internet működik, a kiszolgáló valószínűleg túlterhelt vagy leállt."
@@ -388,9 +388,6 @@
     "createdBy": {
         "message": "Készítette"
     },
-    "keybindCurrentlySet": {
-        "message": ". Jelenleg erre van állítva:"
-    },
     "supportOtherSites": {
         "message": "Harmadik fél Youtube oldalainak támogatása"
     },
@@ -470,6 +467,15 @@
     "exportOptions": {
         "message": "Összes beállítás importálása / exportálása"
     },
+    "exportOptionsCopy": {
+        "message": "Szerkesztés/másolás"
+    },
+    "exportOptionsDownload": {
+        "message": "Mentés fájlba"
+    },
+    "exportOptionsUpload": {
+        "message": "Betöltés fájlból"
+    },
     "whatExportOptions": {
         "message": "Ez az összes beállításod JSON formátumban. Ebbe bele tartozik a userID-d is, szóval csak ésszel oszd meg."
     },
@@ -518,11 +524,8 @@
     "copyDebugInformationComplete": {
         "message": "A hibakeresési információ másolva lett a vágólapjára. Nyugodtan távolíts el belőle olyan információkat, amiket nem szívesen osztanál meg. Mentsd el szöveges fájlként, vagy másold a hibajelentésbe."
     },
-    "theKey": {
-        "message": "A(z)"
-    },
     "keyAlreadyUsed": {
-        "message": "billentyű már máshoz van állítva. Kérlek, válassz egy másik billentyűt."
+        "message": "Ez a billentyűparancs egy másik művelethez tartozik. Kérjük, válassz egy újat."
     },
     "to": {
         "message": "–",
@@ -787,6 +790,9 @@
     "hideDonationLink": {
         "message": "Támogatás link elrejtése"
     },
+    "darkModeOptionsPage": {
+        "message": "Sötét téma a Beállításokban"
+    },
     "helpPageThanksForInstalling": {
         "message": "Köszönjük, hogy telepítetted a SponsorBlockot."
     },
@@ -875,5 +881,42 @@
     "hourAbbreviation": {
         "message": "ó",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Működés",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Felület",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Gyorsbillentyűk",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Biztonsági mentés",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Egyéb",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Átugrási értesítés kinézete",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Megszüntetés",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Nincs beállítva"
+    },
+    "change": {
+        "message": "Megváltoztat"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Ez egy beépített YouTube gyorsbillentyű. Biztosan ezt szeretnéd használni?"
     }
 }

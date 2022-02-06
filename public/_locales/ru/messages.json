@@ -263,19 +263,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Назначить горячую клавишу для пропуска сегмента"
+        "message": "Пропустить сегмент",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Назначить горячую клавишу для начала/остановки сегмента"
+        "message": "Начало/конец сегмента",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Назначить горячую клавишу для отправки"
+        "message": "Отправить сегменты",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Нажмите клавишу, чтобы выбрать её"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Клавиша назначена на: "
+        "message": "Нажмите на любую кнопку, чтобы выбрать её, а так же выберите модификаторы, если нужно."
     },
     "0": {
         "message": "Таймаут подключения. Проверьте ваше соединение с интернетом. Если ваш интернет работает, сервер, скорее всего, перегружен или лежит."
@@ -388,9 +388,6 @@
     "createdBy": {
         "message": "Создано"
     },
-    "keybindCurrentlySet": {
-        "message": ". Он сейчас назначен на:"
-    },
     "supportOtherSites": {
         "message": "Поддерживать сторонние YouTube-сайты"
     },
@@ -470,6 +467,15 @@
     "exportOptions": {
         "message": "Импорт/Экспорт всех настроек"
     },
+    "exportOptionsCopy": {
+        "message": "Редактировать/скопировать"
+    },
+    "exportOptionsDownload": {
+        "message": "Сохранить в файл"
+    },
+    "exportOptionsUpload": {
+        "message": "Загрузить из файла"
+    },
     "whatExportOptions": {
         "message": "Все настройки в формате JSON. Этот файл содержит Ваш идентификатор пользователя, будьте осторожны когда делитесь этими данными."
     },
@@ -518,11 +524,8 @@
     "copyDebugInformationComplete": {
         "message": "Отладочная информация скопирована в буфер обмена. Вы можете удалить любую информацию, которой не хотите делиться. Сохраните ее в текстовом файле или вставьте в отчет об ошибке."
     },
-    "theKey": {
-        "message": "Клавиша"
-    },
     "keyAlreadyUsed": {
-        "message": "привязана к другому действию. Пожалуйста, выберите другую клавишу."
+        "message": "Это сочетание клавиш привязано к другому действию. Пожалуйста, выберите другое сочетание."
     },
     "to": {
         "message": "до",
@@ -765,7 +768,7 @@
         "message": "Этот сегмент большой. Если в видео только одна тема, то измените значение с «Пропустить» на «Всё видео». Дополнительную информацию смотрите в руководстве."
     },
     "categoryPillTitleText": {
-        "message": "Это видео помечено как данная категория и слишком сильно интегрировано для разделения"
+        "message": "Данная категория применена для всего видео, так как она тесно интегрирована в видео"
     },
     "experiementOptOut": {
         "message": "Отказаться от всех будущих экспериментов",
@@ -786,6 +789,9 @@
     },
     "hideDonationLink": {
         "message": "Скрыть ссылку на пожертвование"
+    },
+    "darkModeOptionsPage": {
+        "message": "Тёмный режим на странице настроек"
     },
     "helpPageThanksForInstalling": {
         "message": "Спасибо за установку SponsorBlock."
@@ -875,5 +881,42 @@
     "hourAbbreviation": {
         "message": "ч",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Поведение",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Интерфейс",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Сочетания клавиш",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Бэкап/Восстановление",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Разное",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Внешний вид уведомления о пропуске",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Отвязать",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Не задано"
+    },
+    "change": {
+        "message": "Изменить"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Это сочетание используется на сайте YouTube. Вы уверены, что хотите его использовать?"
     }
 }

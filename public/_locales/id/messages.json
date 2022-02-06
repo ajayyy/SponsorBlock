@@ -262,21 +262,6 @@
         "message": "Jika anda masih tidak menyukainya, tekan tombol jangan tampilkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Atur tombol untuk melewati sebuah segmen"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Atur tombol untuk mulai/hentikan segmen"
-    },
-    "setSubmitKeybind": {
-        "message": "Atur tombol untuk kirim submisi"
-    },
-    "keybindDescription": {
-        "message": "Pilih tombol dengan mengetikkannya"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Tombol diatur menjadi: "
-    },
     "0": {
         "message": "Koneksi Timeout. Cek koneksi internet anda. Jika internet anda berfungsi, server mungkin kewalahan atau down."
     },
@@ -383,9 +368,6 @@
     },
     "createdBy": {
         "message": "Dibuat Oleh"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Saat ini diatur pada:"
     },
     "supportOtherSites": {
         "message": "Dukung Situs Youtube Pihak Ketiga"
@@ -510,12 +492,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "Informasi debug telah disalin ke papan klip. Jangan ragu untuk menghapus informasi yang tidak ingin anda bagikan. Simpan ini di file teks atau salin ke laporan bug."
-    },
-    "theKey": {
-        "message": "Tombolnya"
-    },
-    "keyAlreadyUsed": {
-        "message": "terikat pada tindakan lain. Mohon memilih tombol lain."
     },
     "to": {
         "message": "sampai",

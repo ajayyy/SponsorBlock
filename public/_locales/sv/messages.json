@@ -263,19 +263,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Ställ in knapp för att hoppa över ett segment"
+        "message": "Hoppa över segment",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Ange den genväg som ska fungera som start-/stopptangent för ett segment"
+        "message": "Starta/stoppa segment",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Ange den tangent som ska fungera som inskickningstangent"
+        "message": "Skicka in segment",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Ange tangent genom att trycka på den"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Kopplad till: "
+        "message": "Välj en tangent genom att trycka på den och välj sedan en av modifieringstangenterna som du vill använda."
     },
     "0": {
         "message": "Anslutningsfel. Se över din internetanslutning. Om du kan komma åt internet så är servern förmodligen överbelastad eller nere."
@@ -388,9 +388,6 @@
     "createdBy": {
         "message": "Skapad av"
     },
-    "keybindCurrentlySet": {
-        "message": ". Nuvarande snabbtangent är:"
-    },
     "supportOtherSites": {
         "message": "Stöd för tredjeparts YouTube-webbplatser"
     },
@@ -470,6 +467,15 @@
     "exportOptions": {
         "message": "Importera/Exportera alla alternativen"
     },
+    "exportOptionsCopy": {
+        "message": "Redigera/kopiera"
+    },
+    "exportOptionsDownload": {
+        "message": "Spara till fil"
+    },
+    "exportOptionsUpload": {
+        "message": "Ladda från fil"
+    },
     "whatExportOptions": {
         "message": "Detta är alla dina alternativ i JSON-format. Det inkluderar ditt användar-ID, så var noga med hur du hanterar informationen."
     },
@@ -518,11 +524,8 @@
     "copyDebugInformationComplete": {
         "message": "Debuginformationen har kopierats till urklipp. Ta bort eventuell information du inte vill dela med dig av. Spara informationen i en textfil eller klistra in den i en buggrapport."
     },
-    "theKey": {
-        "message": "Nyckeln"
-    },
     "keyAlreadyUsed": {
-        "message": "är kopplad till en annan funktion. Välj en annan knapp."
+        "message": "Denna genväg är bunden till en annan åtgärd. Du måste välja en annan."
     },
     "to": {
         "message": "till",
@@ -787,6 +790,9 @@
     "hideDonationLink": {
         "message": "Dölj donationslänk"
     },
+    "darkModeOptionsPage": {
+        "message": "Mörkt läge på Alternativsidan"
+    },
     "helpPageThanksForInstalling": {
         "message": "Tack för att du installerade SponsorBlock."
     },
@@ -875,5 +881,38 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Beteende",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Gränssnitt",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Tangentbordsgenvägar",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Säkerhetskopiera/Återställ",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Diverse",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "unbind": {
+        "message": "Ta bort genväg",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Inte inställd"
+    },
+    "change": {
+        "message": "Ändra"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Detta är en inbyggd YouTube-genväg. Är du säker på att du vill använda den?"
     }
 }

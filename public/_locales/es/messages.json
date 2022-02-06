@@ -262,21 +262,6 @@
         "message": "Si aún no te gusta, pulsa el botón de nunca mostrar.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Establecer tecla para omitir un segmento"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Establecer tecla para iniciar/detener un segmento"
-    },
-    "setSubmitKeybind": {
-        "message": "Establecer tecla para el envío"
-    },
-    "keybindDescription": {
-        "message": "Seleccione una tecla escribiéndola"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Ese atajo de teclas se ha establecido como: "
-    },
     "0": {
         "message": "Tiempo de espera agotado. Compruebe su conexión a Internet. Si su internet está funcionando, el servidor probablemente esta sobrecargado o desconectado."
     },
@@ -387,9 +372,6 @@
     },
     "createdBy": {
         "message": "Creado Por"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Actualmente está configurado para:"
     },
     "supportOtherSites": {
         "message": "Soportar sitios de YouTube de terceros"
@@ -517,12 +499,6 @@
     },
     "copyDebugInformationComplete": {
         "message": "La información de depuración ha sido copiada al portapapeles. Siéntase libre de eliminar cualquier información que prefiera no compartir. Guarde esto en un archivo de texto o péguelo en el informe de errores."
-    },
-    "theKey": {
-        "message": "La tecla"
-    },
-    "keyAlreadyUsed": {
-        "message": "está enlazada a otra acción. Por favor, seleccione otra tecla."
     },
     "to": {
         "message": "a",
