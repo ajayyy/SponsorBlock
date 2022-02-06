@@ -124,7 +124,6 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
             return existingCalculatedColor.textColor;
         } else {
             const luminance = GenericUtils.getLuminance(color);
-            console.log(luminance)
             const textColor = luminance > 128 ? "black" : "white";
             Config.config.categoryPillColors[this.state.segment?.category] = {
                 lastColor: color,
