@@ -6,6 +6,7 @@ on:
     paths:
       - 'package.json'
       - 'package-lock.json'
+  workflow_dispatch:
 
 jobs:
   update-oss:
