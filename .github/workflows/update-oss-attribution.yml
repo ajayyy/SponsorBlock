@@ -18,6 +18,7 @@ jobs:
           node-version: '16'
       - name: Install and generate attribution
         run: |
+          npm ci
           npm i -g oss-attribution-generator
           generate-attribution
           mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
