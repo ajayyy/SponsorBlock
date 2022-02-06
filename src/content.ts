@@ -1277,10 +1277,10 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
         const oldMetadata = navigator.mediaSession.metadata
         beep.play();
         beep.addEventListener("ended", () => {
-            navigator.mediaSession.metadata = null
+            navigator.mediaSession.metadata = null;
             setTimeout(() =>
                 navigator.mediaSession.metadata = oldMetadata
-            )
+            );
         })
     }
 
