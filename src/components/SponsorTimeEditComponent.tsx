@@ -511,7 +511,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimesSubmitting;
         Config.forceUpdate("unsubmittedSegments");
-        
+
         this.props.contentContainer().updatePreviewBar();
 
         if (sponsorTimesSubmitting[this.props.index].actionType === ActionType.Full 
@@ -556,7 +556,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         sponsorTimes.splice(index, 1);
   
         //save this
-        Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimes;
+        if (sponsorTimes.length > 0) {
+            Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimes;
+        } else {
+            delete Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID];
+        }
         Config.forceUpdate("unsubmittedSegments");
 
         this.props.contentContainer().updatePreviewBar();
