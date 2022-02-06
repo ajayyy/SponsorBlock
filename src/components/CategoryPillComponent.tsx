@@ -35,8 +35,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         const style: React.CSSProperties = {
             backgroundColor: this.getColor(),
             display: this.state.show ? "flex" : "none",
-            color: this.state.segment?.category === "sponsor" 
-                || this.state.segment?.category === "exclusive_access" ? "white" : "black",
+            color: this.getTextColor(),
         }
 
         return (
@@ -114,6 +113,26 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         const configObject = Config.config.barTypes["preview-" + this.state.segment?.category] 
             || Config.config.barTypes[this.state.segment?.category];
         return configObject?.color;
+    }
+
+    private getTextColor(): string {
+        const color = this.getColor();
+        if (!color) return null;
+
+        const existingCalculatedColor = Config.config.categoryPillColors[this.state.segment?.category];
+        if (existingCalculatedColor && existingCalculatedColor.lastColor === color) {
+            return existingCalculatedColor.textColor;
+        } else {
+            const luminance = GenericUtils.getLuminance(color);
+            console.log(luminance)
+            const textColor = luminance > 128 ? "black" : "white";
+            Config.config.categoryPillColors[this.state.segment?.category] = {
+                lastColor: color,
+                textColor
+            };
+
+            return textColor;
+        }
     }
 
     getTitleText(): string {
