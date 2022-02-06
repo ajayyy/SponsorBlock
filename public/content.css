@@ -594,7 +594,7 @@ input::-webkit-inner-spin-button {
 	color: white;
 }
 
-.sponsorBlockTooltip::after {
+.sponsorBlockTooltip.sbTriangle::after {
     content: " ";
     position: absolute;
     top: 100%;
