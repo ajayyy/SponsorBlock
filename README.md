@@ -82,17 +82,6 @@ Known chromium bug: Extension is not loaded properly on first start. Visit `chro
 
 For Firefox for Android, use `npm run dev:firefox-android -- --adb-device <ip-address of the device>`. See the [Firefox documentation](https://extensionworkshop.com/documentation/develop/developing-extensions-for-firefox-for-android/#debug-your-extension) for more information.
 
-### Attribution Generation
-
-If you contribute and add a dependency, update the attribution file using the following steps:
-
-Make sure the attribution generator is installed: `npm i -g oss-attribution-generator`
-
-```bash
-generate-attribution
-mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
-```
-
 # Credit
 
 The awesome [Invidious API](https://docs.invidious.io/API.md) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) as a to get video info from YouTube.
