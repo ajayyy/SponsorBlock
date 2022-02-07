@@ -1,5 +1,5 @@
 import Config from "./config";
-import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration } from "./types";
+import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue } from "./types";
 
 import * as CompileConfig from "../config.json";
 import { findValidElementFromSelector } from "./utils/pageUtils";
@@ -475,10 +475,10 @@ export default class Utils {
         return typeof(browser) !== "undefined";
     }
 
-    async getHash(value: string, times = 5000): Promise<string> {
-        if (times <= 0) return "";
+    async getHash<T extends string>(value: T, times = 5000): Promise<T & HashedValue> {
+        if (times <= 0) return "" as T & HashedValue;
 
-        let hashHex = value;
+        let hashHex: string = value;
         for (let i = 0; i < times; i++) {
             const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(hashHex).buffer);
 
@@ -486,6 +486,6 @@ export default class Utils {
             hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         }
 
-        return hashHex;
+        return hashHex as T & HashedValue;
     }
 }

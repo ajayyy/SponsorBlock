@@ -31,6 +31,8 @@ export interface FetchResponse {
     ok: boolean
 }
 
+export type HashedValue = string & { __hashBrand: unknown };
+
 export interface VideoDurationResponse {
     duration: number;
 }
