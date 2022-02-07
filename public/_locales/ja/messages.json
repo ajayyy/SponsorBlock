@@ -330,9 +330,6 @@
     "youHaveSkipped": {
         "message": "スキップしたセグメント数: "
     },
-    "youHaveSaved": {
-        "message": "ご自身の時間をこれだけ節約しました: "
-    },
     "minLower": {
         "message": "分"
     },
@@ -346,10 +343,12 @@
         "message": "時間"
     },
     "youHaveSavedTime": {
-        "message": "他の人々の時間をこれだけ節約しました:"
+        "message": "他の人々の時間をこれだけ節約しました:",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": "（彼らの人生のうち）"
+        "message": "（彼らの人生のうち）",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "サーバーの状態についてはstatus.sponsor.ajay.appを確認してください。"
@@ -592,9 +591,6 @@
     },
     "muteSegments": {
         "message": "スキップする代わりに音声をミュートしてセグメントを許可"
-    },
-    "colorFormatIncorrect": {
-        "message": "カラーコードの書式が間違っています。 #から始まる3桁または6桁の16進数コードでなければなりません。"
     },
     "previewColor": {
         "message": "未確定の色",
