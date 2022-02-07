@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Anda sudah melewati "
     },
-    "youHaveSaved": {
-        "message": "Anda sudah menghemat waktu "
-    },
     "minLower": {
         "message": "menit"
     },
@@ -365,10 +362,12 @@
         "message": "jam"
     },
     "youHaveSavedTime": {
-        "message": "Anda sudah menghemat waktu orang lain"
+        "message": "Anda sudah menghemat waktu orang lain",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " dari hidup mereka"
+        "message": " dari hidup mereka",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Cek status.sponsor.ajay.app untuk status server."
@@ -643,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Tunjukkan ikon ketika keseluruhan video merupakan iklan",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Warna anda tidak diformat dengan benar. Harusnya terdiri dari 3 atau 6 digit kode heksa dengan tagar di awal."
     },
     "previewColor": {
         "message": "Warna yang Belum Dikirim",
