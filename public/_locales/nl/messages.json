@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "U heeft overgeslagen: "
     },
-    "youHaveSaved": {
-        "message": "U heeft zichzelf bespaard: "
-    },
     "minLower": {
         "message": "minuut"
     },
@@ -365,10 +362,12 @@
         "message": "uren"
     },
     "youHaveSavedTime": {
-        "message": "U heeft mensen bespaard:"
+        "message": "U heeft mensen bespaard:",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " van hun leven"
+        "message": " van hun leven",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Controleer status.sponsor.ajay.app voor de serverstatus."
@@ -643,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Een pictogram weergeven wanneer de volledige video een advertentie is",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Uw kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
     },
     "previewColor": {
         "message": "Niet ingediend kleur",
