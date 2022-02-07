@@ -701,6 +701,9 @@
     "hiddenDueToDuration": {
         "message": "gizlendi: çok kısa"
     },
+    "manuallyHidden": {
+        "message": "elle gizlendi"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal kimliği henüz yüklenmedi. Gömülü bir video kullanıyorsanız, bunun yerine YouTube ana sayfasından izlemeyi deneyin. Bu, YouTube düzenindeki değişikliklerden de kaynaklanabilir, eğer öyleyse, buraya bir yorum yazın:"
@@ -786,6 +789,9 @@
     },
     "Donate": {
         "message": "Bağış Yap"
+    },
+    "considerDonating": {
+        "message": "Geliştirme sürecinin fonlanmasına yardım et"
     },
     "hideDonationLink": {
         "message": "Bağış Bağlantısını Gizle"
