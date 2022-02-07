@@ -227,8 +227,8 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
     }
 }
 
-if (!Config.configListeners.includes(contentConfigUpdateListener)) {
-    Config.configListeners.push(contentConfigUpdateListener);
+if (!Config.configSyncListeners.includes(contentConfigUpdateListener)) {
+    Config.configSyncListeners.push(contentConfigUpdateListener);
 }
 
 function resetValues() {

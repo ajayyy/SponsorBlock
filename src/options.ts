@@ -44,8 +44,8 @@ async function init() {
         createStickyHeader();
     }
 
-    if (!Config.configListeners.includes(optionsConfigUpdateListener)) {
-        Config.configListeners.push(optionsConfigUpdateListener);
+    if (!Config.configSyncListeners.includes(optionsConfigUpdateListener)) {
+        Config.configSyncListeners.push(optionsConfigUpdateListener);
     }
 
     await utils.wait(() => Config.config !== null);
@@ -499,7 +499,7 @@ function activatePrivateTextChange(element: HTMLElement) {
     // See if anything extra must be done
     switch (option) {
         case "*": {
-            result = JSON.stringify(Config.localConfig);
+            result = JSON.stringify(Config.cachedSyncConfig);
             break;
         }
     }
@@ -579,7 +579,7 @@ async function setTextOption(option: string, element: HTMLElement, value: string
 
 function downloadConfig() {
     const file = document.createElement("a");
-    const jsonData = JSON.parse(JSON.stringify(Config.localConfig));
+    const jsonData = JSON.parse(JSON.stringify(Config.cachedSyncConfig));
     file.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonData)));
     file.setAttribute("download", "SponsorBlockConfig.json");
     document.body.append(file);
@@ -633,7 +633,7 @@ function copyDebugOutputToClipboard() {
             language: navigator.language,
             extensionVersion: chrome.runtime.getManifest().version
         },
-        config: JSON.parse(JSON.stringify(Config.localConfig)) // Deep clone config object
+        config: JSON.parse(JSON.stringify(Config.cachedSyncConfig)) // Deep clone config object
     };
 
     // Sanitise sensitive user config values

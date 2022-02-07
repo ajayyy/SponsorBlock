@@ -72,7 +72,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         // Add as a config listener
         if (!this.configUpdateListener) {
             this.configUpdateListener = () => this.configUpdate();
-            Config.configListeners.push(this.configUpdate.bind(this));
+            Config.configSyncListeners.push(this.configUpdate.bind(this));
         }
 
         this.checkToShowFullVideoWarning();
@@ -80,7 +80,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     componentWillUnmount(): void {
         if (this.configUpdateListener) {
-            Config.configListeners.splice(Config.configListeners.indexOf(this.configUpdate.bind(this)), 1);
+            Config.configSyncListeners.splice(Config.configSyncListeners.indexOf(this.configUpdate.bind(this)), 1);
         }
     }
 

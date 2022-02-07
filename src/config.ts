@@ -96,11 +96,16 @@ interface SBConfig {
     }
 }
 
+interface SBStorage {
+}
+
 export interface SBObject {
-    configListeners: Array<(changes: StorageChangesObject) => unknown>;
+    configSyncListeners: Array<(changes: StorageChangesObject) => unknown>;
     defaults: SBConfig;
-    localConfig: SBConfig;
+    cachedSyncConfig: SBConfig;
+    cachedLocalStorage: SBStorage;
     config: SBConfig;
+    local: SBStorage;
     forceUpdate(prop: string): void;
 }
 
@@ -108,7 +113,7 @@ const Config: SBObject = {
     /**
      * Callback function when an option is updated
      */
-    configListeners: [],
+    configSyncListeners: [],
     defaults: {
         userID: null,
         isVip: false,
@@ -270,27 +275,35 @@ const Config: SBObject = {
             }
         }
     },
-    localConfig: null,
+    cachedSyncConfig: null,
+    cachedLocalStorage: null,
     config: null,
+    local: null,
     forceUpdate
 };
 
 // Function setup
 
-function configProxy(): SBConfig {
-    chrome.storage.onChanged.addListener((changes: {[key: string]: chrome.storage.StorageChange}) => {
-        for (const key in changes) {
-            Config.localConfig[key] = changes[key].newValue;
-        }
-
-        for (const callback of Config.configListeners) {
-            callback(changes);
+function configProxy(): { sync: SBConfig, local: SBStorage } {
+    chrome.storage.onChanged.addListener((changes: {[key: string]: chrome.storage.StorageChange}, areaName) => {
+        if (areaName === "sync") {
+            for (const key in changes) {
+                Config.cachedSyncConfig[key] = changes[key].newValue;
+            }
+    
+            for (const callback of Config.configSyncListeners) {
+                callback(changes);
+            }
+        } else if (areaName === "local") {
+            for (const key in changes) {
+                Config.cachedLocalStorage[key] = changes[key].newValue;
+            }
         }
     });
 	
-    const handler: ProxyHandler<SBConfig> = {
+    const syncHandler: ProxyHandler<SBConfig> = {
         set<K extends keyof SBConfig>(obj: SBConfig, prop: K, value: SBConfig[K]) {
-            Config.localConfig[prop] = value;
+            Config.cachedSyncConfig[prop] = value;
 
             chrome.storage.sync.set({
                 [prop]: value
@@ -300,7 +313,7 @@ function configProxy(): SBConfig {
         },
 
         get<K extends keyof SBConfig>(obj: SBConfig, prop: K): SBConfig[K] {
-            const data = Config.localConfig[prop];
+            const data = Config.cachedSyncConfig[prop];
 
             return obj[prop] || data;
         },
@@ -313,25 +326,53 @@ function configProxy(): SBConfig {
 
     };
 
-    return new Proxy<SBConfig>({handler} as unknown as SBConfig, handler);
+    const localHandler: ProxyHandler<SBStorage> = {
+        set<K extends keyof SBStorage>(obj: SBStorage, prop: K, value: SBStorage[K]) {
+            Config.cachedLocalStorage[prop] = value;
+
+            chrome.storage.local.set({
+                [prop]: value
+            });
+
+            return true;
+        },
+
+        get<K extends keyof SBStorage>(obj: SBStorage, prop: K): SBStorage[K] {
+            const data = Config.cachedLocalStorage[prop];
+
+            return obj[prop] || data;
+        },
+	
+        deleteProperty(obj: SBConfig, prop: keyof SBStorage) {
+            chrome.storage.local.remove(<string> prop);
+            
+            return true;
+        }
+
+    };
+
+    return {
+        sync: new Proxy<SBConfig>({handler: syncHandler} as unknown as SBConfig, syncHandler),
+        local: new Proxy<SBStorage>({handler: localHandler} as unknown as SBConfig, localHandler)
+    };
 }
 
 function forceUpdate(prop: string): void {
     chrome.storage.sync.set({
-        [prop]: Config.localConfig[prop]
+        [prop]: Config.cachedSyncConfig[prop]
     });
 }
 
 function fetchConfig(): Promise<void> { 
     return new Promise((resolve) => {
         chrome.storage.sync.get(null, function(items) {
-            Config.localConfig = <SBConfig> <unknown> items;  // Data is ready
+            Config.cachedSyncConfig = <SBConfig> <unknown> items;  // Data is ready
             resolve();
         });
     });
 }
 
-function migrateOldFormats(config: SBConfig) {
+function migrateOldSyncFormats(config: SBConfig) {
     if (config["segmentTimes"]) {
         for (const item of config["segmentTimes"]) {
             config.unsubmittedSegments[item[0]] = item[1];
@@ -428,20 +469,21 @@ async function setupConfig() {
     await fetchConfig();
     addDefaults();
     const config = configProxy();
-    migrateOldFormats(config);
+    migrateOldSyncFormats(config.sync);
 
-    Config.config = config;
+    Config.config = config.sync;
+    Config.local = config.local;
 }
 
 // Add defaults
 function addDefaults() {
     for (const key in Config.defaults) {
-        if(!Object.prototype.hasOwnProperty.call(Config.localConfig, key)) {
-            Config.localConfig[key] = Config.defaults[key];
+        if(!Object.prototype.hasOwnProperty.call(Config.cachedSyncConfig, key)) {
+            Config.cachedSyncConfig[key] = Config.defaults[key];
         } else if (key === "barTypes") {
             for (const key2 in Config.defaults[key]) {
-                if(!Object.prototype.hasOwnProperty.call(Config.localConfig[key], key2)) {
-                    Config.localConfig[key][key2] = Config.defaults[key][key2];
+                if(!Object.prototype.hasOwnProperty.call(Config.cachedSyncConfig[key], key2)) {
+                    Config.cachedSyncConfig[key][key2] = Config.defaults[key][key2];
                 }
             }
         }

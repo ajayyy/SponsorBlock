@@ -360,8 +360,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                     // Perform a second update after the config changes take effect as a workaround for a race condition
                     const removeListener = (listener: typeof lateUpdate) => {
-                        const index = Config.configListeners.indexOf(listener);
-                        if (index !== -1) Config.configListeners.splice(index, 1);
+                        const index = Config.configSyncListeners.indexOf(listener);
+                        if (index !== -1) Config.configSyncListeners.splice(index, 1);
                     };
 
                     const lateUpdate = () => {
@@ -369,7 +369,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                         removeListener(lateUpdate);
                     };
 
-                    Config.configListeners.push(lateUpdate);
+                    Config.configSyncListeners.push(lateUpdate);
 
                     // Remove the listener after 200ms in case the changes were propagated by the time we got the response
                     setTimeout(() => removeListener(lateUpdate), 200);
