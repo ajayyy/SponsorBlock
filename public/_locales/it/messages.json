@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Hai saltato "
     },
-    "youHaveSaved": {
-        "message": "Ti sei salvato "
-    },
     "minLower": {
         "message": "minuto"
     },
@@ -365,10 +362,12 @@
         "message": "ore"
     },
     "youHaveSavedTime": {
-        "message": "Hai fatto risparmiare"
+        "message": "Hai fatto risparmiare",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " delle loro vite"
+        "message": " delle loro vite",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Controlla status.sponsor.ajay.app per lo stato del server."
@@ -643,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Mostra un'icona quando un video è interamente una pubblicità",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
     },
     "previewColor": {
         "message": "Segmento non inviato",
