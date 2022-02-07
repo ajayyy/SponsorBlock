@@ -334,9 +334,6 @@
     "youHaveSkipped": {
         "message": "Bạn đã bỏ qua "
     },
-    "youHaveSaved": {
-        "message": "Bạn đã tiết kiệm cho mình "
-    },
     "minLower": {
         "message": "phút"
     },
@@ -350,10 +347,12 @@
         "message": "giờ"
     },
     "youHaveSavedTime": {
-        "message": "Bạn đã giúp người khác tiết kiệm được"
+        "message": "Bạn đã giúp người khác tiết kiệm được",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " của cuộc đời họ"
+        "message": " của cuộc đời họ",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Truy cập trang status.sponsor.ajay.app để biết tình trạng máy chủ."
@@ -599,9 +598,6 @@
     },
     "muteSegments": {
         "message": "Cho phép các phân đoạn bị tắt tiếng hay vì bỏ qua"
-    },
-    "colorFormatIncorrect": {
-        "message": "Mã màu sai định dạng. Mã màu phải có 3 hoặc 6 ký tự hệ hex và có dấu thăng ở đầu."
     },
     "previewColor": {
         "message": "Màu khi chưa được gửi đi",
