@@ -1785,7 +1785,7 @@ async function voteAsync(type: number, UUID: SegmentUUID, category?: Category): 
                         segment.hidden = SponsorHideType.Visible;
                     }
 
-                    if (!category) {
+                    if (!category && !Config.config.isVip) {
                         utils.addHiddenSegment(sponsorVideoID, segment.UUID, segment.hidden);
                     }
 
