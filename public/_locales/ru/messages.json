@@ -701,6 +701,9 @@
     "hiddenDueToDuration": {
         "message": "скрыто: слишком коротко"
     },
+    "manuallyHidden": {
+        "message": "скрыто вручную"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID канала еще не загружен. Если вы используете встроенное видео, попробуйте вместо этого воспользоваться домашней страницей YouTube. Это также может быть вызвано изменениями в дизайне YouTube, если вы считаете, что это так, оставьте комментарий здесь:"
@@ -786,6 +789,9 @@
     },
     "Donate": {
         "message": "Пожертвовать"
+    },
+    "considerDonating": {
+        "message": "Помогите финансировать разработку"
     },
     "hideDonationLink": {
         "message": "Скрыть ссылку на пожертвование"
