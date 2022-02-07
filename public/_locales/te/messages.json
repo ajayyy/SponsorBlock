@@ -272,9 +272,6 @@
     "youHaveSkipped": {
         "message": "మీరు దాటవేశారు "
     },
-    "youHaveSaved": {
-        "message": "మీరు మీరే రక్షించుకున్నారు "
-    },
     "minLower": {
         "message": "నిమిషం"
     },
@@ -288,10 +285,12 @@
         "message": "గంటలు"
     },
     "youHaveSavedTime": {
-        "message": "మీరు ప్రజలను రక్షించారు"
+        "message": "మీరు ప్రజలను రక్షించారు",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " వారి జీవితాల"
+        "message": " వారి జీవితాల",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "సర్వర్ స్థితి కోసం status.sponsor.ajay.app ని తనిఖీ చేయండి."
@@ -473,9 +472,6 @@
     },
     "disable": {
         "message": "డిసేబుల్"
-    },
-    "colorFormatIncorrect": {
-        "message": "మీ రంగు తప్పుగా ఆకృతీకరించబడింది. ఇది ప్రారంభంలో సంఖ్య గుర్తుతో 3 లేదా 6 అంకెల హెక్స్ కోడ్ అయి ఉండాలి."
     },
     "seekBarColor": {
         "message": "బార్ కలర్ కోరుకుంటారు"
