@@ -397,11 +397,12 @@ async function fetchConfig(): Promise<void> {
 
 function migrateOldSyncFormats(config: SBConfig) {
     if (config["segmentTimes"]) {
+        const unsubmittedSegments = {};
         for (const item of config["segmentTimes"]) {
-            config.unsubmittedSegments[item[0]] = item[1];
+            unsubmittedSegments[item[0]] = item[1];
         }
 
-        chrome.storage.sync.remove("segmentTimes");
+        chrome.storage.sync.remove("segmentTimes", () => config.unsubmittedSegments = unsubmittedSegments);
     }
 
     if (!config["exclusive_accessCategoryAdded"] && !config.categorySelections.some((s) => s.name === "exclusive_access")) {
