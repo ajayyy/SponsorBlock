@@ -546,9 +546,6 @@
     "category_preview_description": {
         "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
     },
-    "category_filler": {
-        "message": "Cảnh phụ"
-    },
     "category_filler_description": {
         "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
     },
