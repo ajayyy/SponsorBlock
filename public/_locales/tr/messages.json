@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Şu kadar kısım atladınız: "
     },
-    "youHaveSaved": {
-        "message": "Şu kadar süre kazandınız "
-    },
     "minLower": {
         "message": "dakika"
     },
@@ -365,10 +362,12 @@
         "message": "saat"
     },
     "youHaveSavedTime": {
-        "message": "İnsanların şu kadar vaktini kurtardınız:"
+        "message": "İnsanların şu kadar vaktini kurtardınız:",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " yaşam süresi"
+        "message": " yaşam süresi",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Sunucu durumu için status.sponsor.ajay.app kontrol edin."
@@ -643,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Video bütünüyle bir reklamsa simge göster",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
     },
     "previewColor": {
         "message": "Gönderilmemiş Renk",
