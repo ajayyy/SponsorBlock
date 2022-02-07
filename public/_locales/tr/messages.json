@@ -583,9 +583,6 @@
     "category_preview_description": {
         "message": "Önceki bölümlerin bir özeti veya geçerli videonun içeriğine yönelik bir ön izleme. Bu özellik birleştirilmiş klipler içindir, konuşarak anlatılan özetleri kapsamaz."
     },
-    "category_filler": {
-        "message": "Alakasız Konu"
-    },
     "category_filler_description": {
         "message": "Videonun ana içeriğini anlamak için gerekli olmayan, yalnızca alakasız konu veya mizah için eklenen sahneler. Bu, alakalı veya arka plan ayrıntısı veren kısımları içermemelidir."
     },
