@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Du har sprunget over "
     },
-    "youHaveSaved": {
-        "message": "Du har gemt dig selv "
-    },
     "minLower": {
         "message": "minut"
     },
@@ -365,10 +362,12 @@
         "message": "timer"
     },
     "youHaveSavedTime": {
-        "message": "Du har sparret folk"
+        "message": "Du har sparret folk",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " af deres liv"
+        "message": " af deres liv",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Tjek status.sponsor.ajay.app for serverstatus."
@@ -643,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Vis et ikon, når en video udelukkende er en reklame",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Din farve er formateret forkert. Det skal være en 3-6 cifret hex-kode med et nummerskilt i begyndelsen."
     },
     "previewColor": {
         "message": "Ikke-Indsendt Farve",
