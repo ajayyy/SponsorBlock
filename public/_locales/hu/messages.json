@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Átugrottál: "
     },
-    "youHaveSaved": {
-        "message": "Megtakarítottál magadnak: "
-    },
     "minLower": {
         "message": "perc"
     },
@@ -365,10 +362,12 @@
         "message": "óra"
     },
     "youHaveSavedTime": {
-        "message": "Megspóroltál másoknak"
+        "message": "Megspóroltál másoknak",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " az életükből"
+        "message": " az életükből",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "A szerver állapotához tekintsd meg a status.sponsor.ajay.app oldalt."
@@ -643,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Mutasson egy ikont, amikor egy videó egésze reklám",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "A szín helytelenül van formázva. Egy 3 vagy 6 számjegyből álló hex kódnak kell lennie egy kettőskereszttel az elején."
     },
     "previewColor": {
         "message": "Beküldetlen színe",
