@@ -486,6 +486,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     hideButton.src = chrome.runtime.getURL("icons/visible.svg");
                 }
                 hideButton.addEventListener("click", () => {
+                    const stopAnimation = AnimationUtils.applyLoadingAnimation(hideButton, 0.4);
+                    stopAnimation();
+
                     if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
                         hideButton.src = chrome.runtime.getURL("icons/visible.svg");
                         segmentTimes[i].hidden = SponsorHideType.Visible;
