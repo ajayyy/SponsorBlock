@@ -701,6 +701,9 @@
     "hiddenDueToDuration": {
         "message": "piilotettu: liian lyhyt"
     },
+    "manuallyHidden": {
+        "message": "manuaalisesti piilotettu"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanavan ID ei ole vielä latautunut. Jos käytät upotettua videota, kokeile sen sijaan käyttää YouTuben kotisivua. Tämä voi myös johtua muutoksista YouTuben ulkoasussa. Jos luulet luulet niin, tee kommenti tänne:"
@@ -786,6 +789,9 @@
     },
     "Donate": {
         "message": "Lahjoita"
+    },
+    "considerDonating": {
+        "message": "Auta rahoittamalla kehitystä"
     },
     "hideDonationLink": {
         "message": "Piilota lahjoituslinkki"
