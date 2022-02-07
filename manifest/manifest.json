@@ -1,7 +1,7 @@
 {
     "name": "__MSG_fullName__",
     "short_name": "SponsorBlock",
-    "version": "4.1",
+    "version": "4.1.1",
     "default_locale": "en",
     "description": "__MSG_Description__",
     "homepage_url": "https://sponsor.ajay.app",
