@@ -232,7 +232,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(segment[1])) ? (
+                {(!isNaN(segment[1]) && sponsorTime.actionType != ActionType.Full) ? (
                     <span id={"sponsorTimeInspectButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.inspectTime.bind(this)}>
@@ -240,7 +240,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(segment[1])) ? (
+                {(!isNaN(segment[1]) && sponsorTime.actionType != ActionType.Full) ? (
                     <span id={"sponsorTimeEditButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.toggleEditTime.bind(this)}>
