@@ -38,7 +38,7 @@
         "message": "Abbrechen"
     },
     "Loading": {
-        "message": "Laden..."
+        "message": "Lädt..."
     },
     "Hide": {
         "message": "Verstecken"
@@ -183,7 +183,7 @@
         "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
     "showSkipButton": {
-        "message": "\"Zum Highlight springen\"-Knopf im Player behalten"
+        "message": "\"Zum Highlight springen\"-Button im Player behalten"
     },
     "showInfoButton": {
         "message": "Zeige Info-Knopf im Youtube-Videoplayer"
@@ -261,6 +261,21 @@
     "noticeUpdate2": {
         "message": "Falls es dir trotzdem nicht gefällt, drücke auf \"Verstecken\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Segment überspringen",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Starte/Stoppe Segment",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Segmente senden",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Wähle eine Taste durch Eingeben aus, und wähle (optional) gewünschte Hilfstasten."
     },
     "0": {
         "message": "Zeitüberschreibung. Überprüfe deine Internetverbindung. Bist du mit dem Internet verbunden, ist der Server wahrscheinlich offline."
@@ -414,7 +429,7 @@
         "message": "Videosegmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
     },
     "skipNoticeDuration": {
-        "message": "Benachrichtigungsdauer überspringen (Sekunden):"
+        "message": "Dauer der Überspringenbenachrichtigung (Sekunden):"
     },
     "skipNoticeDurationDescription": {
         "message": "Die überspringen Benachrichtigung wird mindestens für so viele Sekunden angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
@@ -451,6 +466,15 @@
     },
     "exportOptions": {
         "message": "Import/Export aller Einstellungen"
+    },
+    "exportOptionsCopy": {
+        "message": "Bearbeiten/kopieren"
+    },
+    "exportOptionsDownload": {
+        "message": "Als Datei speichern"
+    },
+    "exportOptionsUpload": {
+        "message": "Aus Datei laden"
     },
     "whatExportOptions": {
         "message": "Dies ist deine gesamte Konfiguration im JSON-Format. Da diese auch deine Benutzer-ID enthält, solltest du dir genau überlegen, mit wem du diese teilen möchtest."
@@ -499,6 +523,9 @@
     },
     "copyDebugInformationComplete": {
         "message": "Die Debug-Informationen wurden in die Zwischenablage kopiert. Du kannst alle Informationen entfernen, die du nicht teilen möchtest. Verwende einen Texteditor um die Informationen in einer Textdatei zu speichern (um diese ggf. einem Fehlerbericht hinzuzufügen)."
+    },
+    "keyAlreadyUsed": {
+        "message": "Diese Verknüpfung ist an eine andere Aktion gebunden. Bitte wählen Sie eine andere."
     },
     "to": {
         "message": "bis",
@@ -741,7 +768,7 @@
         "message": "Dieses Segment ist lang. Wenn das gesamte Video nur ein Thema behandelt, wechsle von \"Überspringen\" zu \"Ganzes Video\". Erfahre mehr in den Richtlinien."
     },
     "categoryPillTitleText": {
-        "message": "Das gesamte Video ist dieser Kategorie zugeordnet, da diese zu sehr im Video eingebaut ist, um einzelne Segmente zu erstellen"
+        "message": "Das gesamte Video fällt unter diese Kategorie und ist zu stark integriert, um es zu trennen"
     },
     "experiementOptOut": {
         "message": "Aus allen zukünftigen Experimenten abmelden",
@@ -762,6 +789,9 @@
     },
     "hideDonationLink": {
         "message": "Verstecke Spendenlink"
+    },
+    "darkModeOptionsPage": {
+        "message": "Dunkler Modus auf der Optionsseite"
     },
     "helpPageThanksForInstalling": {
         "message": "Danke fürs installieren von SponsorBlock."
@@ -851,5 +881,42 @@
     "hourAbbreviation": {
         "message": "S",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Verhalten",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Aussehen",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Tastenkürzel",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Sichern/Wiederherstellen",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Verschiedenes",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Überspringen-Benachrichtigungs aussehen",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Aufheben",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Nicht gesetzt"
+    },
+    "change": {
+        "message": "Ändern"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Dies ist ein vorhandenes YouTube-Kürzel. Sind Sie sicher, dass Sie diese verwenden möchten?"
     }
 }
