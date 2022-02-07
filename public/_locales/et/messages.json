@@ -262,6 +262,18 @@
         "message": "Kui sulle see ikka ei meeldi, vajuta \"ära kunagi näita\" nuppu.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Jäta segment vahele",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Alusta/lõpeta segmenti",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Esita segmendid",
+        "description": "Keybind label"
+    },
     "0": {
         "message": "Ühenduse ajalõpp. Kontrolli oma võrguühendust. Kui internet töötab, on ilmselt server ülekoormatud või maas."
     },
@@ -448,6 +460,15 @@
     },
     "exportOptions": {
         "message": "Impordi/ekspordi kõik valikud"
+    },
+    "exportOptionsCopy": {
+        "message": "Muuda/kopeeri"
+    },
+    "exportOptionsDownload": {
+        "message": "Salvesta faili"
+    },
+    "exportOptionsUpload": {
+        "message": "Laadi failist"
     },
     "whatExportOptions": {
         "message": "See on sinu kogu seadistus JSON-formaadis. Selle hulgas on ka UserID, seega jaga seda targalt."
@@ -671,6 +692,9 @@
     "hiddenDueToDuration": {
         "message": "peidetud: liiga lühike"
     },
+    "manuallyHidden": {
+        "message": "käsitsi peidetud"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanali ID pole veel laaditud. Kui vaatad manustatud videot, proovi seda vaadata YouTube'i kodulehelt. See võib olla põhjustatud ka YouTube'i paigutuse muudatustest - kui arvad et see nii on, kommenteeri siin:"
@@ -754,8 +778,14 @@
     "Donate": {
         "message": "Anneta"
     },
+    "considerDonating": {
+        "message": "Aita arendust toetada"
+    },
     "hideDonationLink": {
         "message": "Peida annetuste link"
+    },
+    "darkModeOptionsPage": {
+        "message": "Tume režiim valikute lehel"
     },
     "helpPageThanksForInstalling": {
         "message": "Täname SponsorBlocki paigaldamise eest."
@@ -767,7 +797,7 @@
         "message": "Kuidas vahelejätmine töötab"
     },
     "Submitting": {
-        "message": "Segmentide saatmine"
+        "message": "Saatmine"
     },
     "Editing": {
         "message": "Redigeerimine"
@@ -821,5 +851,39 @@
     "hourAbbreviation": {
         "message": "t",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Käitumine",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Liides",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Klaviatuuriotseteed",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Varunda/taasta",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Varia",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Vahelejätmise teavituse välimus",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Tühista määrang",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Määramata"
+    },
+    "change": {
+        "message": "Muuda"
     }
 }
