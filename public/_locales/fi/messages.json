@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Ota ohitusten lukumäärän seuranta käyttöön yksityis-/incognito-välilehdissä"
     },
+    "enableTrackDownvotes": {
+        "message": "Säilytä osion negatiiviset äänet"
+    },
+    "whatTrackDownvotes": {
+        "message": "Negatiivisesti äänestämäsi osiot pysyvät piilotettuina myös päivityksen jälkeen"
+    },
+    "trackDownvotesWarning": {
+        "message": "Varoitus: Tämän käytöstä poisto poistaa kaikki negatiiviset äänet"
+    },
     "enableQueryByHashPrefix": {
         "message": "Kysely tiiviste-etuliittellä"
     },
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Olet ohittanut "
     },
-    "youHaveSaved": {
-        "message": "Olet säästänyt itseltäsi "
-    },
     "minLower": {
         "message": "minuutin"
     },
@@ -365,10 +371,12 @@
         "message": "tuntia"
     },
     "youHaveSavedTime": {
-        "message": "Olet säästänyt ihmisiltä"
+        "message": "Olet säästänyt ihmisiltä",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " heidän elämistään"
+        "message": " heidän elämistään",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Tarkista palvelimen tila osoitteessa status.sponsor.ajay.app."
@@ -647,9 +655,6 @@
         "message": "Näytä kuvake, kun video on kokonaan mainos",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on # alussa."
-    },
     "previewColor": {
         "message": "Lähettämättömien väri",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -771,7 +776,7 @@
         "message": "Tämä osio on suuri. Jos koko video koskee yhtä aihetta, vaihda \"Ohita\" valintaan \"Koko video\". Katso lisätietoja säännöistä."
     },
     "categoryPillTitleText": {
-        "message": "Tämä koko video on merkitty täksi kategoriaksi ja on liian tiiviisti integroitu jotta ne voitaisiin erottaa"
+        "message": "Koko video on merkitty tällä luokituksella ja se on liian tiiviisti integroitu eroteltavaksi"
     },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
