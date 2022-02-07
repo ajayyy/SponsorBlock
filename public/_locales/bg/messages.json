@@ -701,6 +701,9 @@
     "hiddenDueToDuration": {
         "message": "скрито: твърде кратко"
     },
+    "manuallyHidden": {
+        "message": "ръчно скрито"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID на канала все още не е зареден. Ако използвате вграден видеоклип, опитайте вместо това да използвате началната страница на YouTube. Това може да бъде причинено и от промени в оформлението на YouTube, ако мислите така, направете коментар тук:"
@@ -786,6 +789,9 @@
     },
     "Donate": {
         "message": "Дарение"
+    },
+    "considerDonating": {
+        "message": "Помогнете с финансиране на разработката"
     },
     "hideDonationLink": {
         "message": "Скриване на връзката за дарение"
