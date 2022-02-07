@@ -701,6 +701,9 @@
     "hiddenDueToDuration": {
         "message": "nascosto: troppo corto"
     },
+    "manuallyHidden": {
+        "message": "nascosta manualmente"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "L'ID del canale non è ancora caricato. Se stai usando un video incorporato, prova piuttosto a usare la pagina principale di YouTube. Questo potrebbe esser causato dalle modifiche al layout di YouTube, se pensi che sia così, scrivi qui un commento:"
@@ -786,6 +789,9 @@
     },
     "Donate": {
         "message": "Dona"
+    },
+    "considerDonating": {
+        "message": "Contribuisci allo sviluppo del fondo"
     },
     "hideDonationLink": {
         "message": "Nascondi Link di Donazione"
