@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Du har hoppat över "
     },
-    "youHaveSaved": {
-        "message": "Du har sparat "
-    },
     "minLower": {
         "message": "minuter"
     },
@@ -365,10 +362,12 @@
         "message": "timmar"
     },
     "youHaveSavedTime": {
-        "message": "Du har sparat andra"
+        "message": "Du har sparat andra",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " av deras liv"
+        "message": " av deras liv",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Gå till status.sponsor.ajay.app för serverstatus."
@@ -643,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Visa en ikon när hela videon är en annons",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Din färg är felaktigt formaterad. Det ska vara en 3- eller 6-siffrig hex-kod med en siffra i början."
     },
     "previewColor": {
         "message": "Färg på ej inskickade",
