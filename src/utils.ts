@@ -490,6 +490,8 @@ export default class Utils {
     }
 
     async addHiddenSegment(videoID: VideoID, segmentUUID: string, hidden: SponsorHideType) {
+        if (chrome.extension.inIncognitoContext) return;
+        
         const hashedVideoID = (await this.getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
         const UUIDHash = await this.getHash(segmentUUID, 1);
 
