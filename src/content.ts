@@ -207,6 +207,11 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "submitVote":
             vote(request.type, request.UUID).then((response) => sendResponse(response));
             return true;
+        case "hideSegment":
+            utils.getSponsorTimeFromUUID(sponsorTimes, request.UUID).hidden = request.type;
+            updatePreviewBar();
+            break;
+
     }
 }
 

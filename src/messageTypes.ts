@@ -2,7 +2,7 @@
 // Message and Response Types
 //
 
-import { SegmentUUID, SponsorTime } from "./types";
+import { SegmentUUID, SponsorHideType, SponsorTime } from "./types";
 
 interface BaseMessage {
     from?: string;
@@ -29,13 +29,19 @@ interface IsInfoFoundMessage {
     updating: boolean;
 }
 
-interface submitVoteMessage {
+interface SubmitVoteMessage {
     message: "submitVote";
     type: number;
     UUID: SegmentUUID;
 }
 
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | submitVoteMessage);
+interface HideSegmentMessage {
+    message: "hideSegment";
+    type: SponsorHideType;
+    UUID: SegmentUUID;
+}
+
+export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SubmitVoteMessage | HideSegmentMessage);
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;

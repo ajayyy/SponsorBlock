@@ -425,6 +425,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 } else if (segmentTimes[i].hidden === SponsorHideType.MinimumDuration) {
                     //this one is too short
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
+                } else if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                    extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
                 }
 
                 const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
@@ -465,8 +467,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 downvoteButton.src = locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
-                //uuid button
-
                 const uuidButton = document.createElement("img");
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 uuidButton.className = "voteButton";
@@ -477,10 +477,46 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     stopAnimation();
                 });
 
+                const hideButton = document.createElement("img");
+                hideButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
+                hideButton.className = "voteButton";
+                if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                    hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
+                } else {
+                    hideButton.src = chrome.runtime.getURL("icons/visible.svg");
+                }
+                hideButton.addEventListener("click", () => {
+                    if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                        hideButton.src = chrome.runtime.getURL("icons/visible.svg");
+                        segmentTimes[i].hidden = SponsorHideType.Visible;
+                    } else {
+                        hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
+                        segmentTimes[i].hidden = SponsorHideType.Hidden;
+                    }
+
+                    messageHandler.query({
+                        active: true,
+                        currentWindow: true
+                    }, tabs => {
+                        messageHandler.sendMessage(
+                            tabs[0].id,
+                            {
+                                message: "hideSegment",
+                                type: segmentTimes[i].hidden,
+                                UUID: UUID
+                            }
+                        );
+                    });
+                });
+
                 //add thumbs up, thumbs down and uuid copy buttons to the container
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
                 voteButtonsContainer.appendChild(uuidButton);
+                if (segmentTimes[i].actionType === ActionType.Skip 
+                        && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segmentTimes[i].hidden)) {
+                    voteButtonsContainer.appendChild(hideButton);
+                }
 
                 //add click listener to open up vote panel
                 sponsorTimeButton.addEventListener("click", function () {

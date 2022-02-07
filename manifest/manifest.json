@@ -48,6 +48,8 @@
         "icons/pause.svg",
         "icons/stop.svg",
         "icons/heart.svg",
+        "icons/visible.svg",
+        "icons/not_visible.svg",
         "icons/PlayerInfoIconSponsorBlocker.svg",
         "icons/PlayerDeleteIconSponsorBlocker.svg",
         "popup.html",
