@@ -87,6 +87,7 @@ async function init() {
                 const reverse = optionsElements[i].getAttribute("data-toggle-type") === "reverse";
 
                 const confirmMessage = optionsElements[i].getAttribute("data-confirm-message");
+                const confirmOnTrue = optionsElements[i].getAttribute("data-confirm-on") !== "false";
 
                 if (optionResult != undefined)
                     checkbox.checked =  reverse ? !optionResult : optionResult;
@@ -101,8 +102,9 @@ async function init() {
                 // Add click listener
                 checkbox.addEventListener("click", async () => {
                     // Confirm if required
-                    if (checkbox.checked && confirmMessage && !confirm(chrome.i18n.getMessage(confirmMessage))){
-                        checkbox.checked = false;
+                    if (confirmMessage && ((confirmOnTrue && checkbox.checked) || (!confirmOnTrue && !checkbox.checked)) 
+                            && !confirm(chrome.i18n.getMessage(confirmMessage))){
+                        checkbox.checked = !checkbox.checked;
                         return;
                     }
 
@@ -133,6 +135,11 @@ async function init() {
                                 document.documentElement.setAttribute("data-theme", "dark");
                             } else {
                                 document.documentElement.setAttribute("data-theme", "light");
+                            }
+                            break;
+                        case "trackDownvotes":
+                            if (!checkbox.checked) {
+                                Config.local.downvotedSegments = {};
                             }
                             break;
                     }

@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Enable Skip Count Tracking In Private/Incognito tabs"
     },
+    "enableTrackDownvotes": {
+        "message": "Store segment downvotes"
+    },
+    "whatTrackDownvotes": {
+        "message": "Any segments you downvote will remain hidden even after refreshing"
+    },
+    "trackDownvotesWarning": {
+        "message": "Warning: Disabling this will delete all previously stored downvotes"
+    },
     "enableQueryByHashPrefix": {
         "message": "Query By Hash Prefix"
     },
