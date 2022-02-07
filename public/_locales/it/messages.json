@@ -262,6 +262,21 @@
         "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Salta segmento",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Inizio/Fine segmento",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Invia i segmenti",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Selezionare una chiave digitandola e scegliere qualsiasi tasto modificatore che si desidera utilizzare."
+    },
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
     },
@@ -452,6 +467,15 @@
     "exportOptions": {
         "message": "Importa/Esporta Tutte Le Opzioni"
     },
+    "exportOptionsCopy": {
+        "message": "Modifica/copia"
+    },
+    "exportOptionsDownload": {
+        "message": "Salva su file"
+    },
+    "exportOptionsUpload": {
+        "message": "Carica da file"
+    },
     "whatExportOptions": {
         "message": "Questa è la tua intera configurazione in formaro JSON. Questo include il tuo ID utente, quindi presta attenzione se vuoi condividerlo."
     },
@@ -499,6 +523,9 @@
     },
     "copyDebugInformationComplete": {
         "message": "Le informazioni di debug sono state copiate nel clip board. Sentiti libero di rimuovere tutte le informazioni che preferisci non condividere. Salva in un file di testo o incollale nella segnalazione di bug."
+    },
+    "keyAlreadyUsed": {
+        "message": "Questa scorciatoia è associata ad un'altra azione. Selezionane una diversa."
     },
     "to": {
         "message": "a",
@@ -763,6 +790,9 @@
     "hideDonationLink": {
         "message": "Nascondi Link di Donazione"
     },
+    "darkModeOptionsPage": {
+        "message": "Pagina Delle Opzioni In Modalità Scura"
+    },
     "helpPageThanksForInstalling": {
         "message": "Grazie per aver installato SponsorBlock."
     },
@@ -851,5 +881,42 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportamento",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interfaccia",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Scorciatoie da tastiera",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Backup/Ripristina",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Varie",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Salta l'aspetto del preavviso",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Dissocia",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Non impostato"
+    },
+    "change": {
+        "message": "Modifica"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Questa è una scorciatoia integrata da YouTube. Sei sicuro di volerla usare?"
     }
 }
