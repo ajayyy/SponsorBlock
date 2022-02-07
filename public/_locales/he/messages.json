@@ -176,10 +176,12 @@
         "message": "שעות"
     },
     "youHaveSavedTime": {
-        "message": "חסכת לאנשים"
+        "message": "חסכת לאנשים",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " מחייהם"
+        "message": " מחייהם",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "createdBy": {
         "message": "נוצר על ידי"
