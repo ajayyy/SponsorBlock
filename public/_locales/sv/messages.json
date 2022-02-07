@@ -222,7 +222,7 @@
         "message": "Om videon är ny och inga segment hittades då kommer den att uppdateras med några minuters mellanrum medan du tittar på videon."
     },
     "showNotice": {
-        "message": "Visa Notisen Igen"
+        "message": "Visa meddelandet igen"
     },
     "showSkipNotice": {
         "message": "Visa ett meddelande efter att ett segment har hoppats över"
@@ -255,11 +255,11 @@
         "description": "Used on Firefox Store Page"
     },
     "noticeUpdate": {
-        "message": "Den här notisen har förbättrats!",
+        "message": "Det här meddelandet har förbättrats!",
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "Om du ändå inte gillar det, tryck på \"Visa aldrig\"-knappen.",
+        "message": "Om du ändå inte gillar det, tryck på knappen visa aldrig.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
@@ -429,7 +429,7 @@
         "message": "Segment som är kortare än det angivna värdet kommer inte att hoppas över eller visas i spelaren."
     },
     "skipNoticeDuration": {
-        "message": "Hoppa över varaktighet (sekunder):"
+        "message": "Varaktighet på hoppa över-meddelande (sekunder):"
     },
     "skipNoticeDurationDescription": {
         "message": "Meddelandet om att hoppa över kommer att visas på skärmen åtminstone så här länge. För manuell överhoppning kan det visas längre."
@@ -489,7 +489,7 @@
         "message": "Denna JSON är inte korrekt formaterad. Dina alternativ har inte ändrats."
     },
     "confirmNoticeTitle": {
-        "message": "Rapportera Segment"
+        "message": "Skicka in segment"
     },
     "submit": {
         "message": "Skicka"
@@ -901,6 +901,10 @@
     "optionsTabAdvanced": {
         "message": "Diverse",
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Utseende på hoppa över-meddelandet",
+        "description": "Option label"
     },
     "unbind": {
         "message": "Ta bort genväg",
