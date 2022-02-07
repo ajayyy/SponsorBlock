@@ -272,9 +272,6 @@
     "youHaveSkipped": {
         "message": "Anda telah melangkau "
     },
-    "youHaveSaved": {
-        "message": "Anda telah menyelamatkan diri "
-    },
     "minLower": {
         "message": "minit"
     },
@@ -288,10 +285,12 @@
         "message": "jam"
     },
     "youHaveSavedTime": {
-        "message": "Anda telah menyelamatkan orang"
+        "message": "Anda telah menyelamatkan orang",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " kehidupan mereka"
+        "message": " kehidupan mereka",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Periksa status.sponsor.ajay.app untuk status pelayan."
@@ -473,9 +472,6 @@
     },
     "disable": {
         "message": "Nyahaktifkan"
-    },
-    "colorFormatIncorrect": {
-        "message": "Warna anda tidak diformat dengan betul. Ia mestilah kod hex 3 atau 6 digit dengan tanda nombor pada awalnya."
     },
     "seekBarColor": {
         "message": "Cari Warna Bar"
