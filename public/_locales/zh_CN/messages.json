@@ -275,9 +275,6 @@
     "youHaveSkipped": {
         "message": "您已跳过 "
     },
-    "youHaveSaved": {
-        "message": "您为自己节省了 "
-    },
     "minLower": {
         "message": "分钟"
     },
@@ -291,10 +288,12 @@
         "message": "小时"
     },
     "youHaveSavedTime": {
-        "message": "您为大家节省了"
+        "message": "您为大家节省了",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " 的生命"
+        "message": " 的生命",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 检查服务器状态。"
@@ -479,9 +478,6 @@
     },
     "disable": {
         "message": "禁用"
-    },
-    "colorFormatIncorrect": {
-        "message": "颜色格式错误。应为以“#”开头的 3 位或 6 位十六进制数字。"
     },
     "seekBarColor": {
         "message": "拖动条颜色"
