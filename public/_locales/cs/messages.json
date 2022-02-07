@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Povolit sledování počtu přeskočení v soukromých/anonymních oknech"
     },
+    "enableTrackDownvotes": {
+        "message": "Ukládat hlasy proti segmentům"
+    },
+    "whatTrackDownvotes": {
+        "message": "Jakékoli segmenty, proti kterým budete hlasovat, zůstanou skryté i po obnovení karty"
+    },
+    "trackDownvotesWarning": {
+        "message": "Varování: Zakázání této možnosti odstraní všechny dříve uložené hlasy proti"
+    },
     "enableQueryByHashPrefix": {
         "message": "Dotaz podle hash předpony"
     },
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Přeskočili jste "
     },
-    "youHaveSaved": {
-        "message": "Ušetřili jste si "
-    },
     "minLower": {
         "message": "minutu"
     },
@@ -365,10 +371,12 @@
         "message": "hodin"
     },
     "youHaveSavedTime": {
-        "message": "Ušetřili jste lidem"
+        "message": "Ušetřili jste lidem",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " jejich života"
+        "message": " jejich života",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Podívejte se na status.sponsor.ajay.app pro stav serverů."
@@ -583,6 +591,9 @@
     "category_preview_description": {
         "message": "Rychlé shrnutí předchozích epizod nebo náhled toho, co se objeví v aktuálním videu. Myšleno pro upravené sloučené klipy, ne pro mluvená shrnutí."
     },
+    "category_filler": {
+        "message": "Výplň/vtipy"
+    },
     "category_filler_description": {
         "message": "Výplňové scény přidané jen jako přídavek nebo humor, které nejsou vyžadovány pro pochopení hlavního obsahu videa. Toto by nemělo zahrnovat segmenty poskytující kontext nebo podrobnosti na pozadí."
     },
@@ -644,9 +655,6 @@
         "message": "Zobrazit ikonu, když je celé video reklama",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Vaše barva má nesprávný formát. Měl by to být 3 nebo 6 znaků dlouhý HEX kód s křížkem na začátku."
-    },
     "previewColor": {
         "message": "Barva neodeslaného segmentu",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -697,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "skryté: moc krátké"
+    },
+    "manuallyHidden": {
+        "message": "ručně skryto"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -783,6 +794,9 @@
     },
     "Donate": {
         "message": "Přispět"
+    },
+    "considerDonating": {
+        "message": "Pomozte s financováním vývoje"
     },
     "hideDonationLink": {
         "message": "Skrýt odkaz na přispění"
