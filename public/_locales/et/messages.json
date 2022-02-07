@@ -574,9 +574,6 @@
     "category_preview_description": {
         "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
     },
-    "category_filler": {
-        "message": "Täitesisu"
-    },
     "category_filler_description": {
         "message": "Video täiteks või huumori eesmärgil lisatud sisu, mis ei ole vajalik video põhieesmärgi mõistmiseks. Selle alla ei kuulu segmendid, mis annavad kontekstiteavet või taustainfot."
     },
