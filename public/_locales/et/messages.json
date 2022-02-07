@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Luba vahelejätmiste arvu jälgimine privaatsetel/inkognito kaartidel"
     },
+    "enableTrackDownvotes": {
+        "message": "Säilita segmentide vastuhääled"
+    },
+    "whatTrackDownvotes": {
+        "message": "Segmendid, millele annad vastuhääle, peidetakse ka pärast lehe uuesti laadimist"
+    },
+    "trackDownvotesWarning": {
+        "message": "Hoiatus: selle keelamine kustutab kõik varasemalt säilitatud vastuhääled"
+    },
     "enableQueryByHashPrefix": {
         "message": "Küsi räsi eesliite järgi"
     },
@@ -346,9 +355,6 @@
     "youHaveSkipped": {
         "message": "Oled vahele jätnud "
     },
-    "youHaveSaved": {
-        "message": "Oled enda aega säästnud "
-    },
     "minLower": {
         "message": "minut"
     },
@@ -362,10 +368,12 @@
         "message": "tundi"
     },
     "youHaveSavedTime": {
-        "message": "Oled inimestel säästnud"
+        "message": "Oled inimestel säästnud",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " nende eludest"
+        "message": " nende eludest",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
@@ -574,6 +582,9 @@
     "category_preview_description": {
         "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
     },
+    "category_filler": {
+        "message": "Täitesisu/naljad"
+    },
     "category_filler_description": {
         "message": "Video täiteks või huumori eesmärgil lisatud sisu, mis ei ole vajalik video põhieesmärgi mõistmiseks. Selle alla ei kuulu segmendid, mis annavad kontekstiteavet või taustainfot."
     },
@@ -634,9 +645,6 @@
     "fullVideoSegments": {
         "message": "Kuva ikoon, kui terve video on reklaam",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
     },
     "previewColor": {
         "message": "Saatmata värv",
