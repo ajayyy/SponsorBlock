@@ -262,6 +262,21 @@
         "message": "Jika anda masih tidak menyukainya, tekan tombol jangan tampilkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Lewati segmen",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Mulai/hentikan segmen",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Kirim segmen",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Pilih sebuah tombol dengan mengetikkannya dan pilih tombol modifier apa saja yang Anda ingin gunakan."
+    },
     "0": {
         "message": "Koneksi Timeout. Cek koneksi internet anda. Jika internet anda berfungsi, server mungkin kewalahan atau down."
     },
@@ -286,6 +301,10 @@
     },
     "mute": {
         "message": "Bisukan"
+    },
+    "full": {
+        "message": "Video Penuh",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
         "message": "Lewati {0}?"
@@ -418,6 +437,9 @@
     "shortCheck": {
         "message": "Submisi ini lebih pendek dari opsi durasi minimalmu. Ini dapat berarti ini sudah dikirim, dan hanya akan diabaikan karena opsi ini. Apakah anda yakin ingin mengirim?"
     },
+    "liveOrPremiere": {
+        "message": "Mengirim pada livestream atau premiere tidak diperbolehkan. Mohon tunggu sampai selesai, lalu muat ulang halamannya dan verifikasi bahwa segmentnya masih valid."
+    },
     "showUploadButton": {
         "message": "Tampilkan Tombol Unggah"
     },
@@ -444,6 +466,15 @@
     },
     "exportOptions": {
         "message": "Impor/Ekspor Semua Pengaturan"
+    },
+    "exportOptionsCopy": {
+        "message": "Edit/salin"
+    },
+    "exportOptionsDownload": {
+        "message": "Simpan ke file"
+    },
+    "exportOptionsUpload": {
+        "message": "Muat dari file"
     },
     "whatExportOptions": {
         "message": "Ini adalah seluruh konfigurasi anda di JSON. Ini mencakup userID anda, maka pastikan anda membagikan ini dengan bijak."
@@ -493,6 +524,9 @@
     "copyDebugInformationComplete": {
         "message": "Informasi debug telah disalin ke papan klip. Jangan ragu untuk menghapus informasi yang tidak ingin anda bagikan. Simpan ini di file teks atau salin ke laporan bug."
     },
+    "keyAlreadyUsed": {
+        "message": "Pintasan ini telah diatur ke aksi yang lain. Mohon pilih yang lain."
+    },
     "to": {
         "message": "sampai",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -508,6 +542,16 @@
     },
     "category_selfpromo_description": {
         "message": "Mirip dengan \"sponsor\" kecuali ini tidak dibayar atau promosi diri sendiri. Ini termasuk merchandise, donasi, atau informasi tentang siapa yang berkolaborasi dengan mereka."
+    },
+    "category_exclusive_access": {
+        "message": "Akses Eksklusif"
+    },
+    "category_exclusive_access_description": {
+        "message": "Hanya untuk menandai seluruh video. Digunakan ketika sebuah video mempromosikan sebuah produk, layanan atau lokasi yang diterima secara gratis atau mendapatkan izin."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Video ini mempromosikan sebuah produk, layanan atau lokasi yang diterima secara gratis atau mendapatkan izin",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "Pengingat Interaksi (Berlangganan)"
@@ -589,6 +633,9 @@
     },
     "showOverlay_POI": {
         "message": "Tampilkan di Bilah Waktu"
+    },
+    "showOverlay_full": {
+        "message": "Tampilkan Label"
     },
     "autoSkipOnMusicVideos": {
         "message": "Lewati semua segmen secara otomatis ketika ada segmen non-music"
@@ -717,6 +764,12 @@
         "message": "Mengerti",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Segmen ini besar. Jika seluruh video tentang satu topik, ubah dari \"Lewati\" ke \"Video Penuh\". Lihat pedoman untuk informasi lanjutan."
+    },
+    "categoryPillTitleText": {
+        "message": "Seluruh video ini ditandai sebagai kategori ini dan terlalu terintegrasi untuk dapat dipisahkan"
+    },
     "experiementOptOut": {
         "message": "Tidak ikut eksperimen masa depan",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -736,6 +789,9 @@
     },
     "hideDonationLink": {
         "message": "Sembunyikan tautan donasi"
+    },
+    "darkModeOptionsPage": {
+        "message": "Mode Gelap Di Halaman Opsi"
     },
     "helpPageThanksForInstalling": {
         "message": "Terima kasih telah menginstall SponsorBlock."
@@ -814,5 +870,53 @@
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gunakan roda mouse ketika berada di kotak edit untuk mengatur waktu dengan cepat. Kombinasi dengan tombol [Ctrl + Shift] bisa digunakan untuk perubahan yang halus."
+    },
+    "categoryPillNewFeature": {
+        "message": "Baru! Lihat jika sebuah video disponsori seluruhnya atau mempromosikan diri"
+    },
+    "dayAbbreviation": {
+        "message": "h",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "j",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Perilaku",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Tampilan",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Pintasan keyboard",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Cadangkan/Pulihkan",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Lain-lain",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Lewati pelihatan pemberitahuan",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Lepaskan",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Tidak diatur"
+    },
+    "change": {
+        "message": "Ubah"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Ini adalah pintasan YouTube. Apakah Anda yakin untuk menggunakannya?"
     }
 }
