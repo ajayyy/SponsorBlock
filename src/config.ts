@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
 import { keybindEquals } from "./utils/configUtils";
 
 interface SBConfig {
@@ -96,17 +96,23 @@ interface SBConfig {
     }
 }
 
+export type VideoDownvotes = { segments: { uuid: HashedValue, hidden: SponsorHideType }[] , lastAccess: number };
+
 interface SBStorage {
+    /* VideoID prefixes to UUID prefixes */
+    downvotedSegments: Record<VideoID & HashedValue, VideoDownvotes>,
 }
 
 export interface SBObject {
     configSyncListeners: Array<(changes: StorageChangesObject) => unknown>;
-    defaults: SBConfig;
+    syncDefaults: SBConfig;
+    localDefaults: SBStorage;
     cachedSyncConfig: SBConfig;
     cachedLocalStorage: SBStorage;
     config: SBConfig;
     local: SBStorage;
-    forceUpdate(prop: string): void;
+    forceSyncUpdate(prop: string): void;
+    forceLocalUpdate(prop: string): void;
 }
 
 const Config: SBObject = {
@@ -114,7 +120,7 @@ const Config: SBObject = {
      * Callback function when an option is updated
      */
     configSyncListeners: [],
-    defaults: {
+    syncDefaults: {
         userID: null,
         isVip: false,
         lastIsVipUpdate: 0,
@@ -275,11 +281,15 @@ const Config: SBObject = {
             }
         }
     },
+    localDefaults: {
+        downvotedSegments: {}
+    },
     cachedSyncConfig: null,
     cachedLocalStorage: null,
     config: null,
     local: null,
-    forceUpdate
+    forceSyncUpdate,
+    forceLocalUpdate
 };
 
 // Function setup
@@ -343,7 +353,7 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
             return obj[prop] || data;
         },
 	
-        deleteProperty(obj: SBConfig, prop: keyof SBStorage) {
+        deleteProperty(obj: SBStorage, prop: keyof SBStorage) {
             chrome.storage.local.remove(<string> prop);
             
             return true;
@@ -352,24 +362,35 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
     };
 
     return {
-        sync: new Proxy<SBConfig>({handler: syncHandler} as unknown as SBConfig, syncHandler),
-        local: new Proxy<SBStorage>({handler: localHandler} as unknown as SBConfig, localHandler)
+        sync: new Proxy<SBConfig>({ handler: syncHandler } as unknown as SBConfig, syncHandler),
+        local: new Proxy<SBStorage>({ handler: localHandler } as unknown as SBStorage, localHandler)
     };
 }
 
-function forceUpdate(prop: string): void {
+function forceSyncUpdate(prop: string): void {
     chrome.storage.sync.set({
         [prop]: Config.cachedSyncConfig[prop]
     });
 }
 
-function fetchConfig(): Promise<void> { 
-    return new Promise((resolve) => {
+function forceLocalUpdate(prop: string): void {
+    chrome.storage.local.set({
+        [prop]: Config.cachedLocalStorage[prop]
+    });
+}
+
+async function fetchConfig(): Promise<void> { 
+    await Promise.all([new Promise<void>((resolve) => {
         chrome.storage.sync.get(null, function(items) {
-            Config.cachedSyncConfig = <SBConfig> <unknown> items;  // Data is ready
+            Config.cachedSyncConfig = <SBConfig> <unknown> items;
             resolve();
         });
-    });
+    }), new Promise<void>((resolve) => {
+        chrome.storage.local.get(null, function(items) {
+            Config.cachedLocalStorage = <SBStorage> <unknown> items; 
+            resolve();
+        });
+    })]);
 }
 
 function migrateOldSyncFormats(config: SBConfig) {
@@ -477,15 +498,21 @@ async function setupConfig() {
 
 // Add defaults
 function addDefaults() {
-    for (const key in Config.defaults) {
+    for (const key in Config.syncDefaults) {
         if(!Object.prototype.hasOwnProperty.call(Config.cachedSyncConfig, key)) {
-            Config.cachedSyncConfig[key] = Config.defaults[key];
+            Config.cachedSyncConfig[key] = Config.syncDefaults[key];
         } else if (key === "barTypes") {
-            for (const key2 in Config.defaults[key]) {
+            for (const key2 in Config.syncDefaults[key]) {
                 if(!Object.prototype.hasOwnProperty.call(Config.cachedSyncConfig[key], key2)) {
-                    Config.cachedSyncConfig[key][key2] = Config.defaults[key][key2];
+                    Config.cachedSyncConfig[key][key2] = Config.syncDefaults[key][key2];
                 }
             }
+        }
+    }
+
+    for (const key in Config.localDefaults) {
+        if(!Object.prototype.hasOwnProperty.call(Config.cachedLocalStorage, key)) {
+            Config.cachedLocalStorage[key] = Config.localDefaults[key];
         }
     }
 }

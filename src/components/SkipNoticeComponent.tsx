@@ -520,7 +520,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         const segmentTimes = Config.config.unsubmittedSegments[sponsorVideoID] || [];
         segmentTimes.push(sponsorTimesSubmitting);
         Config.config.unsubmittedSegments[sponsorVideoID] = segmentTimes;
-        Config.forceUpdate("unsubmittedSegments");
+        Config.forceSyncUpdate("unsubmittedSegments");
 
         this.props.contentContainer().sponsorTimesSubmitting.push(sponsorTimesSubmitting);
         this.props.contentContainer().updatePreviewBar();

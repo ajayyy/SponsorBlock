@@ -195,7 +195,7 @@ async function init() {
                 textChangeResetButton.addEventListener("click", () => {
                     if (!confirm(chrome.i18n.getMessage("areYouSureReset"))) return;
 
-                    Config.config[option] = Config.defaults[option];
+                    Config.config[option] = Config.syncDefaults[option];
 
                     textChangeInput.value = Config.config[option];
                 });
@@ -247,7 +247,7 @@ async function init() {
                 const numberInput = optionsElements[i].querySelector("input");
 
                 if (isNaN(configValue) || configValue < 0) {
-                    numberInput.value = Config.defaults[option];
+                    numberInput.value = Config.syncDefaults[option];
                 } else {
                     numberInput.value = configValue;
                 }

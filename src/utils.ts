@@ -1,5 +1,5 @@
-import Config from "./config";
-import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue } from "./types";
+import Config, { VideoDownvotes } from "./config";
+import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
 
 import * as CompileConfig from "../config.json";
 import { findValidElementFromSelector } from "./utils/pageUtils";
@@ -487,5 +487,44 @@ export default class Utils {
         }
 
         return hashHex as T & HashedValue;
+    }
+
+    async addHiddenSegment(videoID: VideoID, segmentUUID: string, hidden: SponsorHideType) {
+        const hashedVideoID = (await this.getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
+        const UUIDHash = await this.getHash(segmentUUID, 1);
+
+        const allDownvotes = Config.local.downvotedSegments;
+        const currentVideoData = allDownvotes[hashedVideoID] || { segments: [], lastAccess: 0 };
+
+        currentVideoData.lastAccess = Date.now();
+        const existingData = currentVideoData.segments.find((segment) => segment.uuid === UUIDHash);
+        if (hidden === SponsorHideType.Visible) {
+            delete allDownvotes[hashedVideoID];
+        } else {
+            if (existingData) {
+                existingData.hidden = hidden;
+            } else {
+                currentVideoData.segments.push({
+                    uuid: UUIDHash,
+                    hidden
+                });
+            }
+
+            allDownvotes[hashedVideoID] = currentVideoData;
+        }
+
+        const entries = Object.entries(allDownvotes);
+        if (entries.length > 10000) {
+            let min: [string, VideoDownvotes] = null;
+            for (let i = 0; i < entries[0].length; i++) {
+                if (min === null || entries[i][1].lastAccess < min[1].lastAccess) {
+                    min = entries[i];
+                }
+            }
+
+            delete allDownvotes[min[0]];
+        }
+
+        Config.forceLocalUpdate("downvotedSegments");
     }
 }
