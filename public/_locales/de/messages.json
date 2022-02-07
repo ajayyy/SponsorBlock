@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Aktiviere den Übersprungen Zähler in Privaten/Incognito Tabs"
     },
+    "enableTrackDownvotes": {
+        "message": "Speichere Abschnitts-downvotes"
+    },
+    "whatTrackDownvotes": {
+        "message": "Alle Segmente welche du negativ bewertest werden versteckt, selbst nach einer aktualisierung"
+    },
+    "trackDownvotesWarning": {
+        "message": "Warnung: Das deaktivieren wird alle vorher gespeicherten Downvotes löschen"
+    },
     "enableQueryByHashPrefix": {
         "message": "Abfrage nach Hash-Präfix"
     },
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Du übersprangst "
     },
-    "youHaveSaved": {
-        "message": " und erspartest dir damit "
-    },
     "minLower": {
         "message": "Minute"
     },
@@ -365,10 +371,12 @@
         "message": "Stunden"
     },
     "youHaveSavedTime": {
-        "message": "Du erspartest anderen"
+        "message": "Du erspartest anderen",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " ihres Lebens"
+        "message": " ihres Lebens",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Du kannst den Serverstatus auf https://status.sponsor.ajay.app überprüfen."
@@ -583,6 +591,9 @@
     "category_preview_description": {
         "message": "Kurze Zusammenfassung bisheriger Videos oder eine Vorschau auf das aktuelle Video. Für zusammengeschnittene Clips gedacht, jedoch nicht für mündliche Zusammenfassungen."
     },
+    "category_filler": {
+        "message": "Füller/Witze"
+    },
     "category_filler_description": {
         "message": "Nebensächliche Szenen, die nur als Füller oder Witz dienen und nicht benötigt sind um den Hauptinhalt des Videos zu verstehen. Dies bezieht sich nicht auf Segmente, die Kontext oder Hintergrunddetails liefern."
     },
@@ -644,9 +655,6 @@
         "message": "Zeige ein Icon, wenn ein ganzes Video Werbung ist",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Die Farbe ist falsch formatiert. Sie sollte ein 3-6-stelliger Hex-Code mit einer Raute am Anfang sein."
-    },
     "previewColor": {
         "message": "Nicht eingereichte Farbe",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -697,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "Ausgeblendet: zu kurz"
+    },
+    "manuallyHidden": {
+        "message": "Manuell versteckt"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -783,6 +794,9 @@
     },
     "Donate": {
         "message": "Spenden"
+    },
+    "considerDonating": {
+        "message": "Hilf beim finanzieren der Entwicklung"
     },
     "hideDonationLink": {
         "message": "Verstecke Spendenlink"
