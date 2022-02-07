@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Вы пропустили "
     },
-    "youHaveSaved": {
-        "message": "Вы сэкономили "
-    },
     "minLower": {
         "message": "минуту"
     },
@@ -365,10 +362,12 @@
         "message": "часов"
     },
     "youHaveSavedTime": {
-        "message": "Вы сэкономили людям"
+        "message": "Вы сэкономили людям",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " их жизней"
+        "message": " их жизней",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Смотрите состояние сервера на status.sponsor.ajay.app."
@@ -643,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Показывать иконку, когда всё видео является рекламой",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Вы ввели цвет в неправильном формате. Это должно быть 3-х или 6-ти значное шестнадцатеричное число с символом # в начале."
     },
     "previewColor": {
         "message": "Цвет неотправленного сегмента",
