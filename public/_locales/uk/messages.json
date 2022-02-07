@@ -701,6 +701,9 @@
     "hiddenDueToDuration": {
         "message": "приховано: занадто коротко"
     },
+    "manuallyHidden": {
+        "message": "приховано вручну"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID каналу ще не завантажений. Якщо ви використовуєте вбудоване відео, спробуйте замість цього скористатися домашньою сторінкою YouTube. Це також може бути викликано змінами в дизайні YouTube, якщо ви вважаєте, що це так, залиште коментар тут:"
@@ -786,6 +789,9 @@
     },
     "Donate": {
         "message": "Пожертвувати"
+    },
+    "considerDonating": {
+        "message": "Допомогти з фінансуванням розробки"
     },
     "hideDonationLink": {
         "message": "Приховати посилання на пожертвування"
