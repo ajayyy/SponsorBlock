@@ -701,6 +701,9 @@
     "hiddenDueToDuration": {
         "message": "elrejtve: túl rövid"
     },
+    "manuallyHidden": {
+        "message": "kézzel elrejtve"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "A csatorna ID még nem került betöltésre. Ha beágyazott videót használsz, próbáld meg inkább a YouTube oldalon keresztül. Ezt okozhatja még a YouTube elrendezésének változása is. Ha így gondolod, hagyj egy kommentet itt:"
@@ -786,6 +789,9 @@
     },
     "Donate": {
         "message": "Támogatás"
+    },
+    "considerDonating": {
+        "message": "Segíts a fejlesztés támogatásában"
     },
     "hideDonationLink": {
         "message": "Támogatás link elrejtése"
