@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Aktifkan Pelacakan Jumlah Lewati Pada Tab Privat/Penyamaran"
     },
+    "enableTrackDownvotes": {
+        "message": "Tampung segmen yang dijempolbawahkan"
+    },
+    "whatTrackDownvotes": {
+        "message": "Semua segmen yang dijempolbawahkan akan tetap tersembunyi bahkan jika disegarkan"
+    },
+    "trackDownvotesWarning": {
+        "message": "Peringatan: Menonaktifkan ini akan menghapus semua jempol bawah yang ditampung"
+    },
     "enableQueryByHashPrefix": {
         "message": "Kueri dengan Hash Prefix"
     },
@@ -582,6 +591,9 @@
     "category_preview_description": {
         "message": "Rekapan singkat dari episode sebelumnya, atau pratinjau tentang apa yang akan terjadi nanti di video. Dimaksudkan untuk klip bersama yang di edit, bukan ringkasan yang diucapkan."
     },
+    "category_filler": {
+        "message": "Pengisi Tangent/Jokes"
+    },
     "category_filler_description": {
         "message": "Adegan tangensial ditambahkan hanya untuk pengisi atau humor yang tidak diperlukan untuk memahami isi utama video. Ini tidak boleh mencakup segmen yang memberikan detail konteks atau latar belakang."
     },
@@ -694,6 +706,9 @@
     "hiddenDueToDuration": {
         "message": "disembunyikan: terlalu pendek"
     },
+    "manuallyHidden": {
+        "message": "disembunyikan sendiri"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID Channel belum dimuat. Apabila anda menggunakan video yang tersematkan, coba menggunakan halaman utama YouTube. Hal ini juga dapat disebabkan oleh perubahan yang ada pada tampilan YouTUbe, apabila anda mengira seperti itu, buat komentar disini:"
@@ -779,6 +794,9 @@
     },
     "Donate": {
         "message": "Donasi"
+    },
+    "considerDonating": {
+        "message": "Bantu danai perkembangan"
     },
     "hideDonationLink": {
         "message": "Sembunyikan tautan donasi"
