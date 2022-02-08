@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Activer le suivi du nombre de sauts dans les onglets privés/incognito"
     },
+    "enableTrackDownvotes": {
+        "message": "Enregistrer les segments votés contre"
+    },
+    "whatTrackDownvotes": {
+        "message": "Tous les segments que vous votez contre vous resteront cachés même après rafraîchissement"
+    },
+    "trackDownvotesWarning": {
+        "message": "Attention : Désactiver ceci supprimera tous les votes contre précédemment enregistrés"
+    },
     "enableQueryByHashPrefix": {
         "message": "Requête par préfixe du hash"
     },
@@ -275,7 +284,7 @@
         "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Sélectionnez une clé en la tapant et choisissez les touches de modification que vous souhaitez utiliser."
+        "message": "Sélectionnez une touche en la tapant et choisissez n'importe quelles touches de modification que vous souhaitez utiliser."
     },
     "0": {
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
@@ -582,6 +591,9 @@
     "category_preview_description": {
         "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
     },
+    "category_filler": {
+        "message": "Digressions/Blagues"
+    },
     "category_filler_description": {
         "message": "Des digressions ajoutées uniquement pour le remplissage ou l'humour qui ne sont pas requis pour comprendre le contenu principal de la vidéo. Cela ne devrait pas inclure des segments fournissant du contexte ou des détails de fond."
     },
@@ -694,6 +706,9 @@
     "hiddenDueToDuration": {
         "message": "masqué : trop court"
     },
+    "manuallyHidden": {
+        "message": "masquer manuellement"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Le Channel ID n'est pas encore chargé. Si vous utilisez une vidéo intégrée, essayez d'utiliser la page d'accueil de YouTube. Cela pourrait également être causé par des changements dans l'interface de YouTube. Si vous pensez que c'est le cas, écrivez un commentaire ici :"
@@ -780,6 +795,9 @@
     "Donate": {
         "message": "Faire un don"
     },
+    "considerDonating": {
+        "message": "Aider à financer le développement"
+    },
     "hideDonationLink": {
         "message": "Cacher le lien de don"
     },
@@ -865,7 +883,7 @@
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
     },
     "categoryPillNewFeature": {
-        "message": "Nouveau! Voir quand une vidéo est entièrement sponsorisée ou de l'auto-promotion"
+        "message": "Nouveau! Voir quand une vidéo est entièrement sponsorisée ou de l'autopromotion"
     },
     "dayAbbreviation": {
         "message": "j",
