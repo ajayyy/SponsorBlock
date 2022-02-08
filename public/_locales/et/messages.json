@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Luba vahelejätmiste arvu jälgimine privaatsetel/inkognito kaartidel"
     },
+    "enableTrackDownvotes": {
+        "message": "Säilita segmentide vastuhääled"
+    },
+    "whatTrackDownvotes": {
+        "message": "Segmendid, millele annad vastuhääle, peidetakse ka pärast lehe uuesti laadimist"
+    },
+    "trackDownvotesWarning": {
+        "message": "Hoiatus: selle keelamine kustutab kõik varasemalt säilitatud vastuhääled"
+    },
     "enableQueryByHashPrefix": {
         "message": "Küsi räsi eesliite järgi"
     },
@@ -261,6 +270,18 @@
     "noticeUpdate2": {
         "message": "Kui sulle see ikka ei meeldi, vajuta \"ära kunagi näita\" nuppu.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Jäta segment vahele",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Alusta/lõpeta segmenti",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Esita segmendid",
+        "description": "Keybind label"
     },
     "0": {
         "message": "Ühenduse ajalõpp. Kontrolli oma võrguühendust. Kui internet töötab, on ilmselt server ülekoormatud või maas."
@@ -334,9 +355,6 @@
     "youHaveSkipped": {
         "message": "Oled vahele jätnud "
     },
-    "youHaveSaved": {
-        "message": "Oled enda aega säästnud "
-    },
     "minLower": {
         "message": "minut"
     },
@@ -350,10 +368,12 @@
         "message": "tundi"
     },
     "youHaveSavedTime": {
-        "message": "Oled inimestel säästnud"
+        "message": "Oled inimestel säästnud",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " nende eludest"
+        "message": " nende eludest",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
@@ -448,6 +468,15 @@
     },
     "exportOptions": {
         "message": "Impordi/ekspordi kõik valikud"
+    },
+    "exportOptionsCopy": {
+        "message": "Muuda/kopeeri"
+    },
+    "exportOptionsDownload": {
+        "message": "Salvesta faili"
+    },
+    "exportOptionsUpload": {
+        "message": "Laadi failist"
     },
     "whatExportOptions": {
         "message": "See on sinu kogu seadistus JSON-formaadis. Selle hulgas on ka UserID, seega jaga seda targalt."
@@ -554,7 +583,7 @@
         "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
     },
     "category_filler": {
-        "message": "Täitesisu"
+        "message": "Täitesisu/naljad"
     },
     "category_filler_description": {
         "message": "Video täiteks või huumori eesmärgil lisatud sisu, mis ei ole vajalik video põhieesmärgi mõistmiseks. Selle alla ei kuulu segmendid, mis annavad kontekstiteavet või taustainfot."
@@ -617,9 +646,6 @@
         "message": "Kuva ikoon, kui terve video on reklaam",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Sinu värv on sobimatult vormistatud. See peaks olema 3- või 6-numbriline 16-kümmendsüsteemis kood, arvu ees trellid."
-    },
     "previewColor": {
         "message": "Saatmata värv",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -670,6 +696,9 @@
     },
     "hiddenDueToDuration": {
         "message": "peidetud: liiga lühike"
+    },
+    "manuallyHidden": {
+        "message": "käsitsi peidetud"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -754,8 +783,14 @@
     "Donate": {
         "message": "Anneta"
     },
+    "considerDonating": {
+        "message": "Aita arendust toetada"
+    },
     "hideDonationLink": {
         "message": "Peida annetuste link"
+    },
+    "darkModeOptionsPage": {
+        "message": "Tume režiim valikute lehel"
     },
     "helpPageThanksForInstalling": {
         "message": "Täname SponsorBlocki paigaldamise eest."
@@ -767,7 +802,7 @@
         "message": "Kuidas vahelejätmine töötab"
     },
     "Submitting": {
-        "message": "Segmentide saatmine"
+        "message": "Saatmine"
     },
     "Editing": {
         "message": "Redigeerimine"
@@ -821,5 +856,39 @@
     "hourAbbreviation": {
         "message": "t",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Käitumine",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Liides",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Klaviatuuriotseteed",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Varunda/taasta",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Varia",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Vahelejätmise teavituse välimus",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Tühista määrang",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Määramata"
+    },
+    "change": {
+        "message": "Muuda"
     }
 }

@@ -349,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Átugrottál: "
     },
-    "youHaveSaved": {
-        "message": "Megtakarítottál magadnak: "
-    },
     "minLower": {
         "message": "perc"
     },
@@ -365,10 +362,12 @@
         "message": "óra"
     },
     "youHaveSavedTime": {
-        "message": "Megspóroltál másoknak"
+        "message": "Megspóroltál másoknak",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " az életükből"
+        "message": " az életükből",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "A szerver állapotához tekintsd meg a status.sponsor.ajay.app oldalt."
@@ -583,9 +582,6 @@
     "category_preview_description": {
         "message": "Az előző részekben történtek rövid ismétlése, vagy a videó további tartalmának előzetese. Összevágott jelenetekhez, nem szóbeli összegzéshez."
     },
-    "category_filler": {
-        "message": "Témától eltérő töltelék"
-    },
     "category_filler_description": {
         "message": "Csak töltelékként, vagy humornak hozzáadott részek, amik nem szükségesek a videó fő tartalmának megértéséhez. Ne tartalmazzon olyan szegmenseket, amik kontextust, vagy alapvető információkat szolgáltatnak."
     },
@@ -647,9 +643,6 @@
         "message": "Mutasson egy ikont, amikor egy videó egésze reklám",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "A szín helytelenül van formázva. Egy 3 vagy 6 számjegyből álló hex kódnak kell lennie egy kettőskereszttel az elején."
-    },
     "previewColor": {
         "message": "Beküldetlen színe",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -700,6 +693,9 @@
     },
     "hiddenDueToDuration": {
         "message": "elrejtve: túl rövid"
+    },
+    "manuallyHidden": {
+        "message": "kézzel elrejtve"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -786,6 +782,9 @@
     },
     "Donate": {
         "message": "Támogatás"
+    },
+    "considerDonating": {
+        "message": "Segíts a fejlesztés támogatásában"
     },
     "hideDonationLink": {
         "message": "Támogatás link elrejtése"

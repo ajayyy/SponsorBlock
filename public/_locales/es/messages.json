@@ -262,6 +262,21 @@
         "message": "Si aún no te gusta, pulsa el botón de nunca mostrar.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Omitir segmento",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Iniciar/detener segmento",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Enviar segmentos",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Selecciona una tecla escribiéndola y elige las teclas modificadoras que desees utilizar."
+    },
     "0": {
         "message": "Tiempo de espera agotado. Compruebe su conexión a Internet. Si su internet está funcionando, el servidor probablemente esta sobrecargado o desconectado."
     },
@@ -334,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Has saltado "
     },
-    "youHaveSaved": {
-        "message": "Te has ahorrado "
-    },
     "minLower": {
         "message": "minuto"
     },
@@ -350,10 +362,12 @@
         "message": "horas"
     },
     "youHaveSavedTime": {
-        "message": "Has salvado personas"
+        "message": "Has salvado personas",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " de sus vidas"
+        "message": " de sus vidas",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
@@ -452,6 +466,15 @@
     "exportOptions": {
         "message": "Importar/Exportar todas las opciones"
     },
+    "exportOptionsCopy": {
+        "message": "Editar/copiar"
+    },
+    "exportOptionsDownload": {
+        "message": "Guardar en archivo"
+    },
+    "exportOptionsUpload": {
+        "message": "Cargar desde archivo"
+    },
     "whatExportOptions": {
         "message": "Esta es toda su configuración en JSON. Esto incluye tu ID de usuario, así que asegúrate de compartir esto sabiamente."
     },
@@ -499,6 +522,9 @@
     },
     "copyDebugInformationComplete": {
         "message": "La información de depuración ha sido copiada al portapapeles. Siéntase libre de eliminar cualquier información que prefiera no compartir. Guarde esto en un archivo de texto o péguelo en el informe de errores."
+    },
+    "keyAlreadyUsed": {
+        "message": "Este atajo está vinculado a otra acción. Por favor, selecciona uno diferente."
     },
     "to": {
         "message": "a",
@@ -555,9 +581,6 @@
     },
     "category_preview_description": {
         "message": "Recapitulación rápida de los episodios anteriores, o una vista previa de lo que va a ocurrir más adelante en el vídeo actual. Está pensado para clips editados juntos, no para resúmenes hablados."
-    },
-    "category_filler": {
-        "message": "Tangente de Relleno"
     },
     "category_filler_description": {
         "message": "Escenas tangenciales añadidas solo para relleno o humor que no son necesarias para entender el contenido principal del video. Esto no debe incluir segmentos que proporcionen contexto o detalles de fondo."
@@ -619,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Mostrar un icono cuando un video es enteramente un anuncio",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
     },
     "previewColor": {
         "message": "Color No Enviado",
@@ -763,6 +783,9 @@
     "hideDonationLink": {
         "message": "Ocular Enlace de Donación"
     },
+    "darkModeOptionsPage": {
+        "message": "Modo Oscuro en la página de Opciones"
+    },
     "helpPageThanksForInstalling": {
         "message": "Gracias por instalar SponsorBlock."
     },
@@ -851,5 +874,42 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportamiento",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interfaz",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Atajos de teclado",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Respaldar/Restaurar",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Miscelánea",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Apariencia del aviso de omisión",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Desvincular",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "No establecido"
+    },
+    "change": {
+        "message": "Cambiar"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Este un atajo incorporado de YouTube. ¿Estás seguro de que quieres usarlo?"
     }
 }

@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "시크릿/사생활 보호 탭에서 스킵 개수 추적 활성화"
     },
+    "enableTrackDownvotes": {
+        "message": "구간 비추천 저장"
+    },
+    "whatTrackDownvotes": {
+        "message": "비추천한 구간을 새로고침 이후에도 계속 숨깁니다"
+    },
+    "trackDownvotesWarning": {
+        "message": "경고: 비활성화하는 경우 이전에 저장한 모든 비추천이 삭제됩니다"
+    },
     "enableQueryByHashPrefix": {
         "message": "Hash Prefix가 쿼리를 제공함"
     },
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "건너뛴 구간: "
     },
-    "youHaveSaved": {
-        "message": "지금까지 절약한 시간: "
-    },
     "minLower": {
         "message": "분"
     },
@@ -365,10 +371,12 @@
         "message": "시간"
     },
     "youHaveSavedTime": {
-        "message": "사람들의"
+        "message": "사람들의",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " 의 시간을 아꼈습니다."
+        "message": " 의 시간을 아꼈습니다.",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
@@ -584,7 +592,7 @@
         "message": "이전 에피소드를 간략히 요약하거나 현재 동영상에서 나중에 나올 내용을 예고해줍니다. 음성 요약이 아니라 편집된 동영상을 통한 요약입니다."
     },
     "category_filler": {
-        "message": "쓸데없는 잡담"
+        "message": "쓸데없는 잡담/농담"
     },
     "category_filler_description": {
         "message": "쓸데없는 잡담은 동영상의 주요 콘텐츠를 이해하는 데 필요없는 시간 떼우기 장면이나 농담만을 말합니다. 맥락이나 상세한 배경지식을 설명하는 부분은 해당하지 않습니다."
@@ -647,9 +655,6 @@
         "message": "동영상 전체가 광고인 경우 아이콘 표시",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
-    },
     "previewColor": {
         "message": "미제출한 색상",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -700,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "숨겨짐: 너무 짧음"
+    },
+    "manuallyHidden": {
+        "message": "수동으로 숨김"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -786,6 +794,9 @@
     },
     "Donate": {
         "message": "후원"
+    },
+    "considerDonating": {
+        "message": "개발 자금 지원"
     },
     "hideDonationLink": {
         "message": "후원 링크 숨기기"

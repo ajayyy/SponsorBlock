@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Активиране проследяването на броя пропускания в раздели „Инкогнито“"
     },
+    "enableTrackDownvotes": {
+        "message": "Съхраняване на отрицателните гласове за сегменти"
+    },
+    "whatTrackDownvotes": {
+        "message": "Всички сегменти, за които гласувате против, ще останат скрити дори след опресняване"
+    },
+    "trackDownvotesWarning": {
+        "message": "Внимание: Деактивирането на това ще изтрие всички по-рано запазени отрицателни гласове"
+    },
     "enableQueryByHashPrefix": {
         "message": "Заявка по префикс на хеш"
     },
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Пропуснали сте "
     },
-    "youHaveSaved": {
-        "message": "Спестили сте "
-    },
     "minLower": {
         "message": "минута"
     },
@@ -365,10 +371,12 @@
         "message": "часа"
     },
     "youHaveSavedTime": {
-        "message": "Спестили сте на хората"
+        "message": "Спестили сте на хората",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " от живота им"
+        "message": " от живота им",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Проверете status.sponsor.ajay.app за състоянието на сървъра."
@@ -584,7 +592,7 @@
         "message": "Бързо обобщение на предишни епизоди или преглед на това, което предстои по-късно в текущия видеоклип. Предназначен за монтирани заедно клипове, а не за речеви обобщения."
     },
     "category_filler": {
-        "message": "Пълнеж извън темата"
+        "message": "Пълнеж/Шеги"
     },
     "category_filler_description": {
         "message": "Съпътстващи сцени, добавени само за пълнеж или хумор, които не са необходими за разбирането на основното съдържание на видеоклипа. Това не трябва да включва сегменти, предоставящи контекст или справочни данни."
@@ -647,9 +655,6 @@
         "message": "Показване на икона, когато видеоклипът е изцяло реклама",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Вашият цвят не е форматиран правилно. Трябва да бъде 3- или 6-цифрен шестнадесетичен код с „#“ в началото."
-    },
     "previewColor": {
         "message": "Цвят на неизпратен сегмент",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -700,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "скрито: твърде кратко"
+    },
+    "manuallyHidden": {
+        "message": "ръчно скрито"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -786,6 +794,9 @@
     },
     "Donate": {
         "message": "Дарение"
+    },
+    "considerDonating": {
+        "message": "Помогнете с финансиране на разработката"
     },
     "hideDonationLink": {
         "message": "Скриване на връзката за дарение"

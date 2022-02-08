@@ -26,7 +26,7 @@
         "message": "osiot"
     },
     "upvoteButtonInfo": {
-        "message": "Äänestä tätä lähetystä"
+        "message": "Äänestä lähetystä"
     },
     "reportButtonTitle": {
         "message": "Ilmoita"
@@ -44,7 +44,7 @@
         "message": "Älä näytä koskaan"
     },
     "hitGoBack": {
-        "message": "Paina 'älä ohita' mennäksesi takaisin kohtaan jossa olit."
+        "message": "Paina 'älä ohita' palatakasesi edeltävään kohtaan."
     },
     "unskip": {
         "message": "Älä ohita"
@@ -71,7 +71,7 @@
         "message": "Sponsorointiaikoja lähetettäessä tapahtui virhe, yritä myöhemmin uudelleen."
     },
     "sponsorFound": {
-        "message": "Tällä videolla on segmenttejä tietokannassa!"
+        "message": "Tällä videolla on osioita tietokannassa!"
     },
     "sponsor404": {
         "message": "Osioita ei löytynyt"
@@ -80,16 +80,16 @@
         "message": "Osio alkaa nyt"
     },
     "sponsorEnd": {
-        "message": "Segmentti päättyy nyt"
+        "message": "Osio päättyy nyt"
     },
     "sponsorCancel": {
-        "message": "Peruuta segmentin luominen"
+        "message": "Peruuta osion luominen"
     },
     "noVideoID": {
-        "message": "YouTube-videota ei löytynyt.\nJos tämä on väärässä, päivitä välilehti."
+        "message": "YouTube-videota ei löytynyt.\nJos tämä ei pidä paikkaansa, päivitä välilehti."
     },
     "refreshSegments": {
-        "message": "Päivitä segmentit"
+        "message": "Päivitä osiot"
     },
     "success": {
         "message": "Onnistui!"
@@ -104,7 +104,7 @@
         "message": "Yhteysvirhe on tapahtunut. Virhekoodi: "
     },
     "clearTimes": {
-        "message": "Tyhjennä segmentit"
+        "message": "Tyhjennä osiot"
     },
     "openPopup": {
         "message": "Avaa SponsorBlock-ponnahdusikkuna"
@@ -113,19 +113,19 @@
         "message": "Sulje ponnahdusikkuna"
     },
     "SubmitTimes": {
-        "message": "Lähetä segmentit"
+        "message": "Lähetä osiot"
     },
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
     },
     "whitelistChannel": {
-        "message": "Laita kanava valkolistalle"
+        "message": "Lisää kanava valkolistalle"
     },
     "removeFromWhitelist": {
         "message": "Poista kanava valkolistalta"
     },
     "voteOnTime": {
-        "message": "Äänestä segmenttiä"
+        "message": "Äänestä osiota"
     },
     "Submissions": {
         "message": "Lähetykset"
@@ -140,11 +140,11 @@
         "message": "Lähetä"
     },
     "submissionEditHint": {
-        "message": "Osien muokkaus ilmestyy sen jälkeen, kun klikkaat lähetä-painiketta",
+        "message": "Osioiden muokkaus ilmestyy klikattuasi lähetä",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Vihje: Voit asettaa lähettämisen pikanäppäimet asetuksissa"
+        "message": "Vihje: Voit määrittää lähetyksen pikanäppäimet asetuksista"
     },
     "clearTimesButton": {
         "message": "Tyhjennä ajat"
@@ -165,7 +165,7 @@
         "message": "Kopio julkinen UserID"
     },
     "discordAdvert": {
-        "message": "Liity mukaan viralliselle Discord-palvelimelle, jotta voit antaa ehdotuksia ja palautetta!"
+        "message": "Liity viralliselle Discord-palvelimelle antaaksesi ehdotuksia ja palautetta!"
     },
     "hideThis": {
         "message": "Piilota tämä"
@@ -177,7 +177,7 @@
         "message": "Näytä painikkeet YouTuben soittimessa"
     },
     "hideButtons": {
-        "message": "Piilota painikkeet YouTuben soittimessa"
+        "message": "Piilota painikkeet YouTuben soittimesta"
     },
     "hideButtonsDescription": {
         "message": "Tämä piilottaa YouTuben soittimessa näkyvät, ohitettavien aikojen lähettämiseen käytetyt painikkeet."
@@ -189,43 +189,52 @@
         "message": "Näytä info-painike YouTuben soittimessa"
     },
     "hideInfoButton": {
-        "message": "Piilota info-painike YouTuben soittimessa"
+        "message": "Piilota info-painike YouTuben soittimesta"
     },
     "autoHideInfoButton": {
         "message": "Piilota info-painike automaattisesti"
     },
     "hideDeleteButton": {
-        "message": "Piilota poista-painike YouTuben soittimessa"
+        "message": "Piilota poista-painike YouTuben soittimesta"
     },
     "showDeleteButton": {
         "message": "Näytä poista-painike YouTuben soittimessa"
     },
     "enableViewTracking": {
-        "message": "Ota ohitusten lukumäärän seuranta käyttöön"
+        "message": "Käytä ohitusten lukumäärän seurantaa"
     },
     "whatViewTracking": {
-        "message": "Tämä toiminto seuraa, mitä segmenttejä olet ohittanut. Sen avulla käyttäjät saavat tietää, kuinka paljon heidän lähetyksensä ovat auttaneet muita, ja sitä käytetään myös mittarina äänestysten kanssa estääksemme spämmin pääsyn tietokantaan. Laajennus lähettää viestin palvelimelle aina, kun ohitat segmentin. Toivottavasti useimmat eivät muuta tätä asetusta, jotta katselunumerot pysyisivät tarkkoina. :)"
+        "message": "Tämä toiminto seuraa, mitä osioita olet ohittanut. Sen avulla käyttäjät saavat tietää, kuinka paljon heidän lähetyksensä ovat auttaneet muita, ja sitä käytetään myös mittarina äänestysten kanssa estääksemme spämmin pääsyn tietokantaan. Laajennus lähettää viestin palvelimelle aina kun ohitat osion. Toivottavasti useimmat eivät muuta tätä asetusta, jotta katselunumerot pysyisivät tarkkoina. :)"
     },
     "enableViewTrackingInPrivate": {
         "message": "Ota ohitusten lukumäärän seuranta käyttöön yksityis-/incognito-välilehdissä"
+    },
+    "enableTrackDownvotes": {
+        "message": "Säilytä osion negatiiviset äänet"
+    },
+    "whatTrackDownvotes": {
+        "message": "Negatiivisesti äänestämäsi osiot pysyvät piilotettuina myös päivityksen jälkeen"
+    },
+    "trackDownvotesWarning": {
+        "message": "Varoitus: Tämän käytöstä poisto poistaa kaikki negatiiviset äänet"
     },
     "enableQueryByHashPrefix": {
         "message": "Kysely tiiviste-etuliittellä"
     },
     "whatQueryByHashPrefix": {
-        "message": "Sen sijaan, että videoID:tä käyttäen pyydettäisiin segmenttejä palvelimelta, videoID:n tiivisteen 4 ensimmäistä merkkiä lähetetään. Tämä palvelin lähettää takaisin dataa kaikista videoista, joilla on samankaltaiset tiivisteet."
+        "message": "Sen sijaan, että videoID:tä käyttäen pyydettäisiin osioita palvelimelta, videoID:n tiivisteen 4 ensimmäistä merkkiä lähetetään. Palvelin lähettää takaisin dataa kaikista videoista, joilla on samankaltaiset tiivisteet."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Hae segmentit uudelleen uusissa videoissa"
+        "message": "Hae osiot uudelleen uusissa videoissa"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Jos video on uusi, eikä segmenttejä löydy, niitä haetaan uudelleen muutaman minuutin välein katsoessasi."
+        "message": "Jos video on uusi, eikä osioita löydy, niitä haetaan uudelleen muutaman minuutin välein katsoessasi."
     },
     "showNotice": {
         "message": "Näytä ilmoitus uudelleen"
     },
     "showSkipNotice": {
-        "message": "Näytä ilmoitus ohitetun segmentin jälkeen"
+        "message": "Näytä ilmoitus ohitetun osion jälkeen"
     },
     "noticeVisibilityMode0": {
         "message": "Täysikokoiset ohitusilmoitukset"
@@ -243,7 +252,7 @@
         "message": "Kaikki haalistuneet ohitusilmoitukset"
     },
     "longDescription": {
-        "message": "SponsorBlockin avulla voit ohittaa sponsorit, introt, outrot, tilausmuistutukset ja muut ärsyttävät osat YouTube-videoissa. SponsorBlock on joukkoistettu selainlaajennus, jonka avulla kuka tahansa voi lähettää Youtube-videoiden sponsoroitujen ja muiden segmenttien aloitus- ja päättymisajat. Kun yksi henkilö on lähettänyt tämän tiedon, kaikki muut, joilla on tämä laajennus, ohittavat sponsoroidun segmentin. Voit myös ohittaa musiikkivideoiden musiikittomat osat.",
+        "message": "SponsorBlockin avulla voit ohittaa sponsorit, introt, outrot, tilausmuistutukset ja muut ärsyttävät osat YouTube-videoissa. SponsorBlock on käyttäjälähteinen selainlaajennus, jonka avulla kuka tahansa voi lähettää Youtube-videoiden sponsoroitujen ja muiden osioiden aloitus- ja päättymisajat. Kun yksi henkilö on lähettänyt tämän tiedon, kaikki muut, joilla on tämä laajennus, ohittavat sponsoroidun osion. Voit myös ohittaa musiikkivideoiden musiikittomat osat.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -338,19 +347,16 @@
         "message": "Ääni-ilmoitus ohitettaessa"
     },
     "audioNotificationDescription": {
-        "message": "Ääni-ilmoitus ohittaessa toistaa äänen kun segmentti ohitetaan. Jos asetus on pois päältä (tai automaattinen ohitus on pois käytöstä), ääntä ei soiteta."
+        "message": "Ääni-ilmoitus ohittaessa toistaa äänen kun osio ohitetaan. Jos asetus on pois päältä (tai automaattinen ohitus on pois käytöstä), ääntä ei soiteta."
     },
     "showTimeWithSkips": {
         "message": "Näytä kesto ilman ohitettuja osioita"
     },
     "showTimeWithSkipsDescription": {
-        "message": "Tämä aika näkyy sulkeissa nykyisen ajan vieressä liukusäätimen alapuolella. Se näyttää videon koko pituuden ilman segmenttejä. Se sisältää vain segmentit, jotka on merkitty \"Näytä liukusäätimessä\"."
+        "message": "Tämä aika näkyy sulkeissa nykyisen ajan vieressä liukusäätimen alapuolella. Se näyttää videon koko pituuden ilman osioita. Se sisältää vain osiot, jotka on merkitty \"Näytä liukusäätimessä\"."
     },
     "youHaveSkipped": {
         "message": "Olet ohittanut "
-    },
-    "youHaveSaved": {
-        "message": "Olet säästänyt itseltäsi "
     },
     "minLower": {
         "message": "minuutin"
@@ -365,10 +371,12 @@
         "message": "tuntia"
     },
     "youHaveSavedTime": {
-        "message": "Olet säästänyt ihmisiltä"
+        "message": "Olet säästänyt ihmisiltä",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " heidän elämistään"
+        "message": " heidän elämistään",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Tarkista palvelimen tila osoitteessa status.sponsor.ajay.app."
@@ -426,7 +434,7 @@
         "message": "Vähimmäiskesto (sekuntia):"
     },
     "minDurationDescription": {
-        "message": "Segmenttejä jotka ovat asetettua arvoa lyhyempiä ei ohiteta tai näytetä soittimessa."
+        "message": "Osioita jotka ovat asetettua arvoa lyhyempiä ei ohiteta tai näytetä soittimessa."
     },
     "skipNoticeDuration": {
         "message": "Ohitusilmoituksen kesto (sekuntia):"
@@ -438,7 +446,7 @@
         "message": "Seuraava lähetys on lyhyempi kuin vähimmäiskeston asetuksesi. Tämä voi tarkoittaa sitä, että tämä on jo lähetetty, ja sitä ei vain oteta huomioon tämän asetuksen vuoksi. Oletko varma, että haluat lähettää?"
     },
     "liveOrPremiere": {
-        "message": "Aktiivisen livestriimin tai ensiesityksen aikana lähettäminen ei ole sallittua. Odota kunnes se loppuu, sitten päivitä sivu ja varmista, että segmentit ovat yhä oikein."
+        "message": "Aktiivisen livestriimin tai ensiesityksen aikana lähettäminen ei ole sallittua. Odota kunnes se loppuu, sitten päivitä sivu ja varmista, että osiot ovat yhä oikein."
     },
     "showUploadButton": {
         "message": "Näytä lähetä-painike"
@@ -453,7 +461,7 @@
         "message": "Tallenna"
     },
     "reset": {
-        "message": "Nollaa"
+        "message": "Palauta"
     },
     "customAddressError": {
         "message": "Tämä osoite ei ole oikeassa muodossa. Varmista, että sinulla on http:// tai https:// alussa eikä perässä kauttaviivoja."
@@ -489,7 +497,7 @@
         "message": "Tämä JSON ei ole muotoiltu oikein. Asetuksiasi ei ole muutettu."
     },
     "confirmNoticeTitle": {
-        "message": "Lähetä segmentti"
+        "message": "Lähetä osio"
     },
     "submit": {
         "message": "Lähetä"
@@ -584,7 +592,7 @@
         "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
     },
     "category_filler": {
-        "message": "Epäolennainen täytesisältö"
+        "message": "Epäolennainen täytesisältö/Vitsit"
     },
     "category_filler_description": {
         "message": "Täytteeksi tai huumoriksi lisättyjä toissijaisia kohtauksia, joita videon pääsisällön ymmärrys ei edellytä. Tämän ei tulisi sisältää aiheeseen liittyviä tai taustatietoja tarjoavia osioita."
@@ -638,17 +646,14 @@
         "message": "Näytä merkki"
     },
     "autoSkipOnMusicVideos": {
-        "message": "Ohita kaikki segmentit automaattisesti, kun videossa on \"Musiikiton\" segmentti"
+        "message": "Ohita kaikki osiot automaattisesti, kun videossa on \"Musiikiton\" osio"
     },
     "muteSegments": {
-        "message": "Salli segmentit, jotka mykistävät äänen ohittamisen sijaan"
+        "message": "Salli osiot, jotka mykistävät äänen ohittamisen sijaan"
     },
     "fullVideoSegments": {
         "message": "Näytä kuvake, kun video on kokonaan mainos",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Väriformaattisi on muotoiltu väärin. Sen pitäisi olla 3 tai 6 numeroinen hex-koodi, jossa on # alussa."
     },
     "previewColor": {
         "message": "Lähettämättömien väri",
@@ -665,7 +670,7 @@
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
-        "message": "Ota betatestauspalvelin käyttöön"
+        "message": "Käytä betatestauspalvelinta"
     },
     "whatEnableTestingServer": {
         "message": "Lähetyksiäsi ja ääniäsi EI LASKETA pääpalvelimella. Käytä tätä vain testaamiseen."
@@ -683,14 +688,14 @@
         "message": "Valitse kategoria"
     },
     "enableThisCategoryFirst": {
-        "message": "Lähettääksesi segmenttejä \"{0}\" kategorialla, sinun täytyy aktivoida se asetuksista. Sinut uudelleenohjataan asetuksiin nyt.",
+        "message": "Lähettääksesi osioita \"{0}\" kategorialla, sinun täytyy aktivoida se asetuksista. Sinut uudelleenohjataan asetuksiin nyt.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
-        "message": "Varoitus: Tämäntyyppisiä segmenttejä voi olla aktiivisena enintään yksi. Usean lähettäminen aiheuttaa sen, että satunnainen segmentti näytetään."
+        "message": "Varoitus: Tämäntyyppisiä osioita voi olla aktiivisena enintään yksi. Usean lähettäminen aiheuttaa sen, että satunnainen osio näytetään."
     },
     "youMustSelectACategory": {
-        "message": "Sinun täytyy valita kategoria kaikille segmenteille, joita olet lähettämässä!"
+        "message": "Sinun täytyy valita kategoria kaikille osioille, joita olet lähettämässä!"
     },
     "bracketEnd": {
         "message": "(Loppu)"
@@ -700,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "piilotettu: liian lyhyt"
+    },
+    "manuallyHidden": {
+        "message": "manuaalisesti piilotettu"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -727,7 +735,7 @@
         "message": "Pakota kanavan tarkistus ennen ohittamista"
     },
     "whatForceChannelCheck": {
-        "message": "Oletuksena segmentit ohitetaan heti ennen kuin kanava tiedetään. Oletuksena jotkut segmentit videon alussa saattavat tulla ohitetuiksi sallituilla kanavilla. Tämän vaihtoehdon ottaminen käyttöön estää sen, mutta kaikki ohitukset viivästyvät hieman, koska kanavatunnuksen saaminen voi kestää jonkin aikaa. Tämä viive saattaa olla huomaamaton, jos sinulla on nopea internetyhteys."
+        "message": "Oletuksena osiot ohitetaan heti ennen kuin kanava tiedetään. Oletuksena, jotkut osiot videon alussa saattavat tulla ohitetuiksi sallituilla kanavilla. Tämän vaihtoehdon ottaminen käyttöön estää sen, mutta kaikki ohitukset viivästyvät hieman, koska kanavatunnuksen saaminen voi kestää jonkin aikaa. Tämä viive saattaa olla huomaamaton, jos sinulla on nopea internetyhteys."
     },
     "forceChannelCheckPopup": {
         "message": "Harkitse asetuksen \"Pakota kanavan tarkistus ennen ohittamista\" käyttöön ottaminen"
@@ -739,10 +747,10 @@
         "message": "Vaihda kategoria"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Tämä video on luokiteltu musiikiksi. Oletko varma, että siinä on sponsori? Jos tämä on oikeasti \"Musiikiton segmentti\", avaa laajennuksen asetukset ja ota tämä kategoria käyttöön. Sitten voit lähettää tämän segmentin oikeassa kategoriassa. Lue säännöt, jos olet vielä hämilläsi."
+        "message": "Tämä video on luokiteltu musiikiksi. Oletko varma, että siinä on sponsori? Jos tämä on oikeasti \"Musiikiton osio\", avaa laajennuksen asetukset ja ota tämä kategoria käyttöön. Sitten voit lähettää tämän osion oikeassa kategoriassa. Lue säännöt, jos olet vielä hämilläsi."
     },
     "multipleSegments": {
-        "message": "Useita segmenttejä"
+        "message": "Useita osioita"
     },
     "guidelines": {
         "message": "Säännöt"
@@ -765,10 +773,10 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "Tämä segmentti on suuri. Jos koko video koskee yhtä aihetta, vaihda \"Ohita\" valintaan \"Koko video\". Katso lisätietoja säännöistä."
+        "message": "Tämä osio on suuri. Jos koko video koskee yhtä aihetta, vaihda \"Ohita\" valintaan \"Koko video\". Katso lisätietoja säännöistä."
     },
     "categoryPillTitleText": {
-        "message": "Tämä koko video on merkitty täksi kategoriaksi ja on liian tiiviisti integroitu jotta ne voitaisiin erottaa"
+        "message": "Koko video on merkitty tällä luokituksella ja se on liian tiiviisti integroitu eroteltavaksi"
     },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
@@ -778,7 +786,7 @@
         "message": "Piilota ikuisesti"
     },
     "warningChatInfo": {
-        "message": "Sait varoituksen ja et voi lähettää segmenttejä väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, joten vahvistakaa, että ymmärrätte säännöt ja poistamme varoituksen. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/#sponsor:ajay.app"
+        "message": "Sait varoituksen ja et voi lähettää osioita väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, joten vahvistakaa, että ymmärrätte säännöt ja poistamme varoituksen. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Ääni hylättiin varoituksen takia. Klikkaa avataksesi chatin sen ratkaisemiseksi, tai tule takaisin myöhemmin kun sinulla on siihen aikaa.",
@@ -786,6 +794,9 @@
     },
     "Donate": {
         "message": "Lahjoita"
+    },
+    "considerDonating": {
+        "message": "Auta rahoittamalla kehitystä"
     },
     "hideDonationLink": {
         "message": "Piilota lahjoituslinkki"
@@ -806,31 +817,31 @@
         "message": "Miten ohittaminen toimii"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Videosegmentit ohitetaan automaattisesti, jos ne löytyvät tietokannasta. Voit avata ponnahdusikkunan klikkaamalla laajennuksen kuvaketta saadaksesi esikatselun siitä, mitä ne ovat."
+        "message": "Video-osiot ohitetaan automaattisesti, jos ne löytyvät tietokannasta. Voit avata ponnahdusikkunan klikkaamalla laajennuksen kuvaketta saadaksesi esikatselun siitä, mitä ne ovat."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Aina kun ohitat segmentin, saat ilmoituksen. Jos ajoitus näyttää väärältä, äänestä alaspäin klikkaamalla 👎! Voit myös äänestää ponnahdusikkunassa."
+        "message": "Aina kun ohitat osion, saat ilmoituksen. Jos ajoitus näyttää väärältä, äänestä alaspäin klikkaamalla 👎! Voit myös äänestää ponnahdusikkunassa."
     },
     "Submitting": {
         "message": "Lähettäminen"
     },
     "helpPageSubmitting1": {
-        "message": "Lähettäminen voidaan tehdä joko ponnahdusikkunassa painamalla \"Segmentti alkaa nyt\" -painiketta tai videosoittimessa olevilla painikkeilla."
+        "message": "Lähettäminen voidaan tehdä joko ponnahdusikkunassa painamalla \"Osio alkaa nyt\" -painiketta, tai videosoittimessa olevilla painikkeilla."
     },
     "helpPageSubmitting2": {
-        "message": "Toistopainikkeen klikkaaminen osoittaa segmentin alun ja pysäytyskuvakkeen klikkaaminen sen lopun. Voit valmistella useita sponsoreita ennen kuin painat lähetä. Lähetä-painikkeen klikkaaminen lähettää segmentin. Roskakorin klikkaaminen poistaa."
+        "message": "Toistopainikkeen klikkaaminen osoittaa osion alun ja pysäytyskuvakkeen klikkaaminen sen lopun. Voit valmistella useita sponsoreita ennen kuin painat lähetä. Lähetä-painikkeen klikkaaminen lähettää osion. Roskakorin klikkaaminen poistaa."
     },
     "Editing": {
         "message": "Muokkaus"
     },
     "helpPageEditing1": {
-        "message": "Jos jokin meni pieleen, voit muokata tai poistaa segmenttisi ylänuolipainikkeen klikkaamisen jälkeen."
+        "message": "Jos jokin meni pieleen, voit muokata tai poistaa osiosi ylänuolipainikkeen klikkaamisen jälkeen."
     },
     "helpPageTooSlow": {
         "message": "Tämä on liian hidasta"
     },
     "helpPageTooSlow1": {
-        "message": "Voit käyttää pikanäppäimiä jos haluat. Paina puolipiste näppäintä merkitäksesi sponsori segmentin alun/lopun, ja paina heittomerkkiä lähettääksesi sen. Nämä voidaan vaihtaa asetuksista. Jos et käytä QWERTYä, sinun varmaan kannattaisi vaihtaa pikanäppäimet."
+        "message": "Voit käyttää pikanäppäimiä jos haluat. Paina puolipiste näppäintä merkitäksesi sponsori osion alun/lopun, ja paina heittomerkkiä lähettääksesi sen. Nämä voidaan vaihtaa asetuksista. Jos et käytä QWERTYä, sinun varmaan kannattaisi vaihtaa pikanäppäimet."
     },
     "helpPageCopyOfDatabase": {
         "message": "Voinko saada kopion tietokannasta? Mitä tapahtuu, jos katoat?"
@@ -866,7 +877,7 @@
         "message": "Jatka äänestystä"
     },
     "ChangeCategoryTooltip": {
-        "message": "Tämä vaikuttaa sinun segmentteihin välittömästi"
+        "message": "Tämä vaikuttaa sinun osioihin välittömästi"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."

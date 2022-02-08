@@ -334,9 +334,6 @@
     "youHaveSkipped": {
         "message": "Preskočili ste "
     },
-    "youHaveSaved": {
-        "message": "Ušetrili ste "
-    },
     "minLower": {
         "message": "minúta"
     },
@@ -350,10 +347,12 @@
         "message": "hodiny"
     },
     "youHaveSavedTime": {
-        "message": "Ostatným ste ušetrili"
+        "message": "Ostatným ste ušetrili",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " z ich života"
+        "message": " z ich života",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Stav servera skontrolujete na status.sponsor.ajay.app."
@@ -556,9 +555,6 @@
     "category_preview_description": {
         "message": "Rýchla rekapitulácia predošlej epizódy alebo ukážka toho, čo bude nasledovať neskôr v aktuálnom videu. Myslené pre zostrihané videá, nie pre hovorený súhrn."
     },
-    "category_filler": {
-        "message": "Odbočka mimo tému"
-    },
     "category_filler_description": {
         "message": "Odbočky mimo tému pridané len pre zábavu, nepotrebné pre pochopenie hlavného obsahu videa. Nemalo by zahŕňať segmenty, ktoré vysvetľujú kontext alebo vedľajšie detaily."
     },
@@ -619,9 +615,6 @@
     "fullVideoSegments": {
         "message": "Zobraziť ikonu, ak je celé video reklama",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Vaša farba je nesprávne naformátovaná. Mal by to byť 3 alebo 6-miestny hexadecimálny kód so znakom čísla na začiatku."
     },
     "previewColor": {
         "message": "Neodoslaná farba",

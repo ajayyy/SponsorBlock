@@ -262,6 +262,21 @@
         "message": "Als het u nog steeds niet bevalt, druk dan op de knop \"nooit weergeven\".",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Segment overslaan",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Segment starten/stoppen",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Segmenten indienen",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Selecteer een toets door hem in te typen en kies de modificatietoetsen die u wilt gebruiken."
+    },
     "0": {
         "message": "Time-out van de verbinding. Controleer uw internetverbinding. Als uw internet werkt, is de server waarschijnlijk overbelast of offline."
     },
@@ -334,9 +349,6 @@
     "youHaveSkipped": {
         "message": "U heeft overgeslagen: "
     },
-    "youHaveSaved": {
-        "message": "U heeft zichzelf bespaard: "
-    },
     "minLower": {
         "message": "minuut"
     },
@@ -350,10 +362,12 @@
         "message": "uren"
     },
     "youHaveSavedTime": {
-        "message": "U heeft mensen bespaard:"
+        "message": "U heeft mensen bespaard:",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " van hun leven"
+        "message": " van hun leven",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Controleer status.sponsor.ajay.app voor de serverstatus."
@@ -452,6 +466,15 @@
     "exportOptions": {
         "message": "Alle opties importeren/exporteren"
     },
+    "exportOptionsCopy": {
+        "message": "Bewerken/kopiëren"
+    },
+    "exportOptionsDownload": {
+        "message": "Opslaan naar bestand"
+    },
+    "exportOptionsUpload": {
+        "message": "Laden uit bestand"
+    },
     "whatExportOptions": {
         "message": "Dit is uw volledige configuratie in JSON. Dit is inclusief uw gebruikers-ID, dus zorg ervoor dat u dit verstandig deelt."
     },
@@ -499,6 +522,9 @@
     },
     "copyDebugInformationComplete": {
         "message": "De foutopsporingsinformatie is gekopieerd naar het klembord. Voel u vrij om alle informatie die u liever niet wilt delen, te verwijderen. Sla dit op in een tekstbestand of plak het in het foutenrapport."
+    },
+    "keyAlreadyUsed": {
+        "message": "Deze snelkoppeling is gebonden aan een andere actie. Kies een andere."
     },
     "to": {
         "message": "tot",
@@ -555,9 +581,6 @@
     },
     "category_preview_description": {
         "message": "Snelle samenvatting van vorige afleveringen of een voorbeeld van wat er later komt in de huidige video. Bedoeld voor samengevoegde clips, niet voor gesproken samenvattingen."
-    },
-    "category_filler": {
-        "message": "Zijspoor-opvulling"
     },
     "category_filler_description": {
         "message": "Zijspoor-scènes die alleen ter opvulling of als humor worden toegevoegd en niet noodzakelijk zijn om de hoofdinhoud van de video te begrijpen. Segmenten die context of achtergrondinformatie verschaffen, mogen hier niet onder vallen."
@@ -619,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Een pictogram weergeven wanneer de volledige video een advertentie is",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Uw kleur is verkeerd geformatteerd. Het moet een hexadecimale code van 3 of 6 cijfers zijn met een hekje aan het begin."
     },
     "previewColor": {
         "message": "Niet ingediend kleur",
@@ -763,6 +783,9 @@
     "hideDonationLink": {
         "message": "Donatiekoppeling verbergen"
     },
+    "darkModeOptionsPage": {
+        "message": "Donkere modus op opties-pagina"
+    },
     "helpPageThanksForInstalling": {
         "message": "Bedankt voor het installeren van SponsorBlock."
     },
@@ -851,5 +874,42 @@
     "hourAbbreviation": {
         "message": " h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Gedrag",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interface",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Sneltoetsen",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Back-up maken/herstellen",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Overige",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Uiterlijk van overslaan-meldingen",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Ontkoppelen",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Niet ingesteld"
+    },
+    "change": {
+        "message": "Wijzigen"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Dit is een ingebouwde YouTube-snelkoppeling. Weet u zeker dat u deze wilt gebruiken?"
     }
 }

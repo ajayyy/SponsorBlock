@@ -272,9 +272,6 @@
     "youHaveSkipped": {
         "message": "നിങ്ങൾ ഒഴിവാക്കി "
     },
-    "youHaveSaved": {
-        "message": "നിങ്ങൾ സ്വയം രക്ഷിച്ചു "
-    },
     "minLower": {
         "message": "മിനിറ്റ്"
     },
@@ -288,10 +285,12 @@
         "message": "മണിക്കൂറുകൾ"
     },
     "youHaveSavedTime": {
-        "message": "നിങ്ങൾ ആളുകളെ സംരക്ഷിച്ചു"
+        "message": "നിങ്ങൾ ആളുകളെ സംരക്ഷിച്ചു",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " അവരുടെ ജീവിതത്തിന്റെ"
+        "message": " അവരുടെ ജീവിതത്തിന്റെ",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "സെർവർ നിലയ്ക്കായി status.sponsor.ajay.app പരിശോധിക്കുക."
@@ -473,9 +472,6 @@
     },
     "disable": {
         "message": "പ്രവർത്തനരഹിതമാക്കുക"
-    },
-    "colorFormatIncorrect": {
-        "message": "നിങ്ങളുടെ നിറം തെറ്റായി ഫോർമാറ്റുചെയ്‌തു. ഇത് തുടക്കത്തിൽ ഒരു നമ്പർ ചിഹ്നമുള്ള 3 അല്ലെങ്കിൽ 6 അക്ക ഹെക്സ് കോഡായിരിക്കണം."
     },
     "seekBarColor": {
         "message": "ബാർ കളർ തേടുക"

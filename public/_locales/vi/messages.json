@@ -334,9 +334,6 @@
     "youHaveSkipped": {
         "message": "Bạn đã bỏ qua "
     },
-    "youHaveSaved": {
-        "message": "Bạn đã tiết kiệm cho mình "
-    },
     "minLower": {
         "message": "phút"
     },
@@ -350,10 +347,12 @@
         "message": "giờ"
     },
     "youHaveSavedTime": {
-        "message": "Bạn đã giúp người khác tiết kiệm được"
+        "message": "Bạn đã giúp người khác tiết kiệm được",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " của cuộc đời họ"
+        "message": " của cuộc đời họ",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Truy cập trang status.sponsor.ajay.app để biết tình trạng máy chủ."
@@ -546,9 +545,6 @@
     "category_preview_description": {
         "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
     },
-    "category_filler": {
-        "message": "Cảnh phụ"
-    },
     "category_filler_description": {
         "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
     },
@@ -602,9 +598,6 @@
     },
     "muteSegments": {
         "message": "Cho phép các phân đoạn bị tắt tiếng hay vì bỏ qua"
-    },
-    "colorFormatIncorrect": {
-        "message": "Mã màu sai định dạng. Mã màu phải có 3 hoặc 6 ký tự hệ hex và có dấu thăng ở đầu."
     },
     "previewColor": {
         "message": "Màu khi chưa được gửi đi",

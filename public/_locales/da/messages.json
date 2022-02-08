@@ -262,6 +262,21 @@
         "message": "Hvis du stadig ikke kan lide det, så tryk på aldrig vis knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Spring segment over",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Start/stop segment",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Indsend segmenter",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Velg en tast ved at trykke på den og vælg de modificeringstaster du ønsker at bruge."
+    },
     "0": {
         "message": "Forbindelsestimeout. Tjek din internetforbindelse. Hvis dit internet fungerer, er serveren sandsynligvis overbelastet eller nede."
     },
@@ -286,6 +301,10 @@
     },
     "mute": {
         "message": "Gør Tavs"
+    },
+    "full": {
+        "message": "Fuld Video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
         "message": "Spring {0} over?"
@@ -330,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Du har sprunget over "
     },
-    "youHaveSaved": {
-        "message": "Du har gemt dig selv "
-    },
     "minLower": {
         "message": "minut"
     },
@@ -346,10 +362,12 @@
         "message": "timer"
     },
     "youHaveSavedTime": {
-        "message": "Du har sparret folk"
+        "message": "Du har sparret folk",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " af deres liv"
+        "message": " af deres liv",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Tjek status.sponsor.ajay.app for serverstatus."
@@ -418,6 +436,9 @@
     "shortCheck": {
         "message": "Den følgende indsendelse er kortere end din minimums varighed indstilling. Dette kan betyde, at den allerede er indsendt, og bare bliver ignoreret på grund af denne indstilling. Er du sikker på, at du vil indsende?"
     },
+    "liveOrPremiere": {
+        "message": "Indendeslse på en aktiv livestream eller premiere er ikke tilladt. Vent venligst indtil den er færdig og opdater derefter siden og bekræft, at segmenterne stadig er gyldige."
+    },
     "showUploadButton": {
         "message": "Vis Upload-Knap"
     },
@@ -444,6 +465,15 @@
     },
     "exportOptions": {
         "message": "Importer/Eksporter Alle Indstillinger"
+    },
+    "exportOptionsCopy": {
+        "message": "Rediger/kopier"
+    },
+    "exportOptionsDownload": {
+        "message": "Gem til fil"
+    },
+    "exportOptionsUpload": {
+        "message": "Indlæs fra fil"
     },
     "whatExportOptions": {
         "message": "Dette er hele din konfiguration i JSON. Dette inkluderer dit bruger-ID, så sørg for at dele dette med omtanke."
@@ -493,6 +523,9 @@
     "copyDebugInformationComplete": {
         "message": "Fejlfindingsinformationen er blevet kopieret til klippebordet. Du er velkommen til at fjerne alle oplysninger, du helst ikke vil dele. Gem dette i en tekstfil eller indsæt i fejlrapporten."
     },
+    "keyAlreadyUsed": {
+        "message": "Denne genvej er budnet til en anden handling. Vælg venligst en anden."
+    },
     "to": {
         "message": "til",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -508,6 +541,16 @@
     },
     "category_selfpromo_description": {
         "message": "Ligesom \"sponsor\" bortset fra ubetalt- eller selfmarkedsføring. Dette inkluderer sektioner om merchandise, donationer eller oplysninger om hvem, de har samarbejdet med."
+    },
+    "category_exclusive_access": {
+        "message": "Eksklusiv Adgang"
+    },
+    "category_exclusive_access_description": {
+        "message": "Kun til mærkning af hele videor. Bruges, når en video viser et produkt, tjeneste eller sted, som de har modtaget gratis eller subsidieret adgang til."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Denne video viser et produkt, tjeneste eller et sted, som de har modtaget gratis eller subsidieret adgang til",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "Påmindelse Om Interaktion (Abonnement)"
@@ -538,9 +581,6 @@
     },
     "category_preview_description": {
         "message": "Hurtig opsummering af tidligere episoder eller en forsmag på, hvad der kommer senere i den aktuelle video. Er beregnet til sammenklippede klip, ikke til talte resuméer."
-    },
-    "category_filler": {
-        "message": "Fyldningstangent"
     },
     "category_filler_description": {
         "message": "Tangential scener kun tilføjet for fyldstof eller humor, som ikke er nødvendige for at forstå videoens hovedindhold. Dette bør ikke omfatte segmenter, der gtiver kontekst eller bagrundsoplysninger."
@@ -590,14 +630,18 @@
     "showOverlay_POI": {
         "message": "Vis I Søgebar"
     },
+    "showOverlay_full": {
+        "message": "Vis Etiket"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Spring automatisk over alle segmenter, når der er et ikke-musik-segment"
     },
     "muteSegments": {
         "message": "Tillad segmenter som dæmper lyden i stedet for at springe over"
     },
-    "colorFormatIncorrect": {
-        "message": "Din farve er formateret forkert. Det skal være en 3-6 cifret hex-kode med et nummerskilt i begyndelsen."
+    "fullVideoSegments": {
+        "message": "Vis et ikon, når en video udelukkende er en reklame",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
         "message": "Ikke-Indsendt Farve",
@@ -713,6 +757,12 @@
         "message": "Forstået",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Dette segment er stort. Hvis hele videon handler om et emne, så skift fra \"Skip\" til \"Fuld Video\". Se retningslinjerne for mere information."
+    },
+    "categoryPillTitleText": {
+        "message": "Hele denne video er mærket som denne kategori og er for tæt integreret til at være i stand til at adskille"
+    },
     "experiementOptOut": {
         "message": "Fravælg alle fremtidige eksperimenter",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -732,6 +782,9 @@
     },
     "hideDonationLink": {
         "message": "Skjul Donationslink"
+    },
+    "darkModeOptionsPage": {
+        "message": "Mørk Tilstand På Indstillingssiden"
     },
     "helpPageThanksForInstalling": {
         "message": "Tak for at installere SponsorBlock."
@@ -811,6 +864,9 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Brug musehjulet, mens du holder musen over redigeringsfeltet for hurtigt at justere tiden. Kombinationer af ctrl eller shift-tastenerne kan bruges til at finjustere ændringerne."
     },
+    "categoryPillNewFeature": {
+        "message": "Ny! Se når en video er helt sponsoreret eller selvpromoverende"
+    },
     "dayAbbreviation": {
         "message": "d",
         "description": "100d"
@@ -818,5 +874,42 @@
     "hourAbbreviation": {
         "message": "t",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Adfærd",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Grænseflade",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Tastaturgenveje",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Sikkerhedskopier/Gendan",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Diverse",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Spring meddelelsesvisning over",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Adskil",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Ikke indstillet"
+    },
+    "change": {
+        "message": "Skift"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Dette er en indbygget Youtube-genvej. Er du sikker på, at du vil bruge den?"
     }
 }

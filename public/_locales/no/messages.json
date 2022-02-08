@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Hopp igjen"
     },
+    "unmute": {
+        "message": "Lyd"
+    },
     "paused": {
         "message": "På pause"
     },
@@ -79,8 +82,14 @@
     "sponsorEnd": {
         "message": "Segmentet slutter nå"
     },
+    "sponsorCancel": {
+        "message": "Avbryt opprettelse av segment"
+    },
     "noVideoID": {
         "message": "Ingen YouTube-video ble funnet.\nHvis dette er feil, oppfrisk fanen."
+    },
+    "refreshSegments": {
+        "message": "Oppdater segmenter"
     },
     "success": {
         "message": "Suksess!"
@@ -152,6 +161,9 @@
     "setUsername": {
         "message": "Angi brukernavn"
     },
+    "copyPublicID": {
+        "message": "Kopiér offentlig bruker-ID"
+    },
     "discordAdvert": {
         "message": "Bli med i den offisielle Discord-tjeneren for å gi forslag og tilbakemeldinger!"
     },
@@ -170,11 +182,17 @@
     "hideButtonsDescription": {
         "message": "Dette skjuler knappene som dukker opp på YouTube-avspilleren for å sende inn hoppesegmenter."
     },
+    "showSkipButton": {
+        "message": "Behold Hopp til høydepunkt-knappen på avspilleren"
+    },
     "showInfoButton": {
         "message": "Vis infoknappen på YouTube-avspilleren"
     },
     "hideInfoButton": {
         "message": "Skjul infoknappen på YouTube-avspilleren"
+    },
+    "autoHideInfoButton": {
+        "message": "Skjul infoknappen automatisk"
     },
     "hideDeleteButton": {
         "message": "Skjul Slett-knappen på YouTube-avspilleren"
@@ -187,6 +205,9 @@
     },
     "whatViewTracking": {
         "message": "Denne funksjonen sporer hvilke segmenter du har hoppet over, sånn at brukere vet hvor mye bidragene deres har hjulpet andre, og brukes som et målesystem sammen med plusstemmer for å sikre at spam ikke kommer inn i databasen. Utvidelsen sender en melding til tjeneren hver gang du hopper over et segment. Forhåpentligvis endrer ikke de fleste folk på denne innstillingene, sånn at visningstallene er nøyaktige. :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "Aktiver telling av antall hopp i privat/inkognito-faner"
     },
     "enableQueryByHashPrefix": {
         "message": "Forespør ut i fra saltings-prefiks"
@@ -205,6 +226,21 @@
     },
     "showSkipNotice": {
         "message": "Vis varsel etter at et segment har blitt hoppet over"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Hopp over-varsel i full størrelse"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Små hopp over-varsler for autohopp"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Alle små hopp over-varsler"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Tonet hopp over-varsel for autohopp"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Alle tonede hopp over-varsler"
     },
     "longDescription": {
         "message": "SponsorBlock lar deg hoppe over sponsorer, introer, outro-er, abonnementspåminnelser, og andre irriterende deler av YouTube-videoer. SponsorBlock er en fellesskapsdrevet nettleserutvidelser som lar alle sende inn start- og sluttidspunktene til sponsede segmenter og andre segmenter i YouTube-videoer. Når en person sender inn denne informasjonen, vil alle andre med denne utvidelsen hoppe rett over det sponsede segmentet. Du kan også hoppe over ikke-musikk-seksjoner i musikkvideoer.",
@@ -225,6 +261,21 @@
     "noticeUpdate2": {
         "message": "Hvis du fortsatt ikke liker det, klikk på «Aldri vis»-knappen.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Hopp over segment",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Start/stopp segment",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Send inn segmenter",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Velg en tast ved å trykke på den, velg deretter hvilke modifikasjonstaster du ønsker å bruke."
     },
     "0": {
         "message": "Tidsavbrudd for tilkobling. Sjekk internettilkoblingen din. Hvis internettet ditt virker, er tjeneren sannsynligvis overbelastet eller nede."
@@ -248,8 +299,34 @@
     "skip": {
         "message": "Hopp over"
     },
+    "mute": {
+        "message": "Lydløs"
+    },
+    "full": {
+        "message": "Full video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Vil du hoppe over {0}?"
+    },
+    "mute_category": {
+        "message": "Gjør {0} lydløs?"
+    },
+    "skip_to_category": {
+        "message": "Hopp til {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} hoppet over",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} lydløs",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "Hoppet til {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Skru av autohopping"
@@ -272,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Du har hoppet over "
     },
-    "youHaveSaved": {
-        "message": "Du har spart deg selv for "
-    },
     "minLower": {
         "message": "minutt"
     },
@@ -288,16 +362,21 @@
         "message": "timer"
     },
     "youHaveSavedTime": {
-        "message": "Du har spart folk for"
+        "message": "Du har spart folk for",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": "av sine liv"
+        "message": "av sine liv",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Sjekk status.sponsor.ajay.app for tjenerstatus."
     },
     "changeUserID": {
         "message": "Importer/Eksporter din bruker-ID"
+    },
+    "whatChangeUserID": {
+        "message": "Dette bør holdes privat. Det er som et passord og bør ikke deles med noen. Hvis noen har dette kan de utgi seg som deg. Hvis du leter etter din offentlige bruker-ID, klikker du på utklippstavlen i oppsprettsvinduet."
     },
     "setUserID": {
         "message": "Angi bruker-ID"
@@ -308,8 +387,24 @@
     "createdBy": {
         "message": "Opprettet av"
     },
+    "supportOtherSites": {
+        "message": "Støtt tredjeparts YouTube-nettsteder"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Støtt tredjeparts YouTube-klienter. For å aktivere støtte må du akseptere ytterlige vilkår. Dette fungerer IKKE i inkognitomodus i Chrome og andre Chromium-varianter.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Støttede nettsteder: "
+    },
     "optionsInfo": {
         "message": "Skru på Invidious-støtte, skru av autohopp, skjul knapper, og mer."
+    },
+    "addInvidiousInstance": {
+        "message": "Legg til tredjeparts klientinstans"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Legg til en egendefinert instans. Den må formatteres med KUN domenet. Eksempel: invidious.ajay.app"
     },
     "add": {
         "message": "Legg til"
@@ -332,8 +427,17 @@
     "minDurationDescription": {
         "message": "Segmenter som er kortere enn den valgte verdien, vil ikke bli hoppet over eller vises i avspilleren."
     },
+    "skipNoticeDuration": {
+        "message": "Varighet for hopp over-varsel (sekunder):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Hopp over-varselet vil bli værende på skjermen i minst så mange sekunder. For manuell hopping kan det være synlig lenger."
+    },
     "shortCheck": {
         "message": "Den følgende innsendingen er kortere enn din valgte minimumsvarighetsinnstilling. Dette kan bety at den allerede er sendt inn, og at den simpelthen blir ignorert på grunn av denne innstillingen. Er du sikker på at du vil sende den inn?"
+    },
+    "liveOrPremiere": {
+        "message": "Innsendelse på en aktiv direktesending eller premiere er ikke tillatt. Vennligst vent til den er ferdig, last så siden på nytt og kontroller at segmentene fortsatt er gyldige."
     },
     "showUploadButton": {
         "message": "Vis opplastingsknapp"
@@ -362,6 +466,15 @@
     "exportOptions": {
         "message": "Importer/Eksporter alle innstillinger"
     },
+    "exportOptionsCopy": {
+        "message": "Rediger/kopiér"
+    },
+    "exportOptionsDownload": {
+        "message": "Lagre til fil"
+    },
+    "exportOptionsUpload": {
+        "message": "Last fra fil"
+    },
     "whatExportOptions": {
         "message": "Dette er hele oppsettet ditt i JSON. Det inkluderer bruker-ID-en din, så sørg for å være beskjeden med å dele det."
     },
@@ -389,6 +502,9 @@
     "preview": {
         "message": "Forhåndsvisning"
     },
+    "unsubmitted": {
+        "message": "Ikke innsendt"
+    },
     "inspect": {
         "message": "Inspiser"
     },
@@ -407,6 +523,9 @@
     "copyDebugInformationComplete": {
         "message": "Avlusingsinformasjonen har blitt kopiert til utklippstavlen. Du er velkommen til å fjerne det av informasjon som du helst ikke vil dele. Lagre dette i en tekstfil, eller lim det inn i feilrapporten."
     },
+    "keyAlreadyUsed": {
+        "message": "Denne hurtigtasten er knyttet til en annen handling. Vennligst velg en annen kombinasjon."
+    },
     "to": {
         "message": "til",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -422,6 +541,16 @@
     },
     "category_selfpromo_description": {
         "message": "Minner om «Sponsor», men er ubetalt eller selvpromotering. Dette inkluderer segmenter om merchandise, donasjoner, eller info om hvem de samarbeidet med."
+    },
+    "category_exclusive_access": {
+        "message": "Ekslusiv tilgang"
+    },
+    "category_exclusive_access_description": {
+        "message": "Kun for merking av hele videoer. Brukes når en video demonstrerer et produkt, tjeneste eller sted de har fått gratis eller subsidiert tilgang til."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Denne videoen demonstrerer et produkt, tjeneste eller sted som de har fått gratis eller subsidiert tilgang til",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "Samhandlingspåminnelse (Abonner)"
@@ -447,6 +576,18 @@
     "category_outro_description": {
         "message": "Rulletekster eller når YouTube-sluttkortene dukker opp. Ikke for avslutninger med informasjon."
     },
+    "category_preview": {
+        "message": "Forhåndsvisning/Oppsummering"
+    },
+    "category_preview_description": {
+        "message": "Hurtig oppsummering av tidligere episoder, eller forhåndsvisning av hva som kommer senere i denne videoen. Ment for redigerte klipp, ikke muntlige sammendrag."
+    },
+    "category_filler_description": {
+        "message": "Intetsigende segmenter kun lagt til som fyllstoff eller humor som ikke er nødvendig for å forstå hovedinnholdet i videoen. Dette bør ikke inkludere segmenter som gir kontekst eller bakgrunnsdetaljer."
+    },
+    "category_filler_short": {
+        "message": "Fyllstoff"
+    },
     "category_music_offtopic": {
         "message": "Musikk: Seksjon uten musikk"
     },
@@ -455,6 +596,12 @@
     },
     "category_music_offtopic_short": {
         "message": "Ikke-musikk"
+    },
+    "category_poi_highlight": {
+        "message": "Høydepunkt"
+    },
+    "category_poi_highlight_description": {
+        "message": "Den del av videoen som de fleste er interessert i. Tilsvarende kommentarer som \"Videoen begynner på x\"."
     },
     "category_livestream_messages": {
         "message": "Direktesending: Donasjons-/Meldingshøytlesninger"
@@ -474,8 +621,31 @@
     "disable": {
         "message": "Deaktiver"
     },
-    "colorFormatIncorrect": {
-        "message": "Fargen din er formattert feil. Det burde være en 3- eller 6-sifret heksadesimal kode med et nummertegn foran."
+    "autoSkip_POI": {
+        "message": "Autohopp til starten"
+    },
+    "manualSkip_POI": {
+        "message": "Spør når videoen laster"
+    },
+    "showOverlay_POI": {
+        "message": "Vis i tidsstripen"
+    },
+    "showOverlay_full": {
+        "message": "Vis merke"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "Autohopp over alle segmenter når det er et segment uten musikk"
+    },
+    "muteSegments": {
+        "message": "Tillat segmenter som slår av lyden i stedet for å hoppe over"
+    },
+    "fullVideoSegments": {
+        "message": "Vis et ikon når en video utelukkende er reklame",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "previewColor": {
+        "message": "Ikke innsendt-farge",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Tidsstripefarge"
@@ -509,6 +679,9 @@
         "message": "For å sende inn segmenter i «{0}»-kategorien, må du skru det på i innstillingene. Du vil nå bli omdirigert til innstillingene.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Advarsel: Denne type segment kan ha maksimalt én aktiv om gangen. Å legge inn flere vil forårsake en tilfeldig framvisning."
+    },
     "youMustSelectACategory": {
         "message": "Du må velge en kategori for alle segmentene du sender inn!"
     },
@@ -520,6 +693,13 @@
     },
     "hiddenDueToDuration": {
         "message": "skjult: for kort"
+    },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "Kanal-ID er ikke lastet enda. Hvis du bruker en innebygd video, prøv å bruke YouTube-hjemmesiden i stedet. Dette kan også forårsakes av endringer i YouTube-oppsett, hvis du mistenker det, kommenter her:"
+    },
+    "videoInfoFetchFailed": {
+        "message": "Det virker som om noe blokkerer SponsorBlock's mulighet til å få videodata. Vennligst se https://github.com/ajayyy/SponsorBlock/issues/741 for mer info."
     },
     "youtubePermissionRequest": {
         "message": "Det ser ut til at SponsorBlock ikke klarer å nå YouTube-API-en. For å fikse dette, godta tillatelsesspørringen som dukker opp etter dette, vent noen sekunder, og så last inn siden på nytt."
@@ -533,6 +713,9 @@
     "permissionRequestFailed": {
         "message": "Tillatelsesforespørselen mislyktes, klikket du på Avvis?"
     },
+    "adblockerIssueWhitelist": {
+        "message": "Om du ikke er i stand til å løse dette, forsøk å deaktiver innstillingen 'Fremtving kanalsjekk før hopp', siden SponsorBlock ikke kan hente kanalinformasjon for denne videoen"
+    },
     "forceChannelCheck": {
         "message": "Fremtving kanalsjekk før hopp"
     },
@@ -544,6 +727,9 @@
     },
     "downvoteDescription": {
         "message": "Feil tidtaking"
+    },
+    "incorrectCategory": {
+        "message": "Endre kategori"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Denne videoen er kategorisert som musikk. Er du sikker på at dette har en sponsor? Hvis det egentlig er et \"Ikke-musikk-segment\", åpne opp innstillingene til utvidelsen og skru på denne kategorien. Deretter kan du sende dette segmentet som \"Ikke-musikk\" i stedet for som sponsing. Vennligst les retningslinjene hvis du er forvirret."
@@ -563,5 +749,167 @@
     },
     "categoryUpdate2": {
         "message": "Åpne innstillingene for å hoppe over introer, outro-er, merchandise, osv."
+    },
+    "help": {
+        "message": "Hjelp"
+    },
+    "GotIt": {
+        "message": "Jeg forstår",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "fullVideoTooltipWarning": {
+        "message": "Dette segmentet er stort. Dersom hele videoen er omtrent ett emne, så endre fra \"Hopp Over\" til \"Full Video\". Se retningslinjene for mer informasjon."
+    },
+    "categoryPillTitleText": {
+        "message": "Hele denne videoen er merket som denne kategorien og er for tett knyttet til å kunne separeres"
+    },
+    "experiementOptOut": {
+        "message": "Reservér deg mot alle fremtidige eksperimenter",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "Skjul for alltid"
+    },
+    "warningChatInfo": {
+        "message": "Du fikk en advarsel og vil midlertidig ikke kunne sende inn segmenter. Dette betyr at vi la merke til at du gjorde noen vanlige feil som ikke var vondt ment, vennligst bare bekreft at du er inneforstått med reglene og vi vil fjerne advarslen. Du kan også bli med i denne chatten på discord.gg/SponsorBlock eller matrix.to/#/#sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "Stemme avvist på grunn av en advarsel. Klikk for å åpne chatten for å løse dette, eller kom tilbake senere når du har tid.",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "Donér"
+    },
+    "hideDonationLink": {
+        "message": "Skjul donasjonslenke"
+    },
+    "darkModeOptionsPage": {
+        "message": "Mørk modus på instillingssiden"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Takk for at du installerte SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Vennligst se gjennom innstillingene nedenfor"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Mange funksjoner er deaktivert som standard. Om du vil hoppe over introer, outro-er, benytte Invidious osv., aktiver dem nedenfor. Du kan også vise eller skjule UI-elementer."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Hvordan hopping fungerer"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Videosegmenter vil automatisk bli hoppet over hvis de finnes i databasen. Du kan åpne oppsprettsvinduet ved å klikke på utvidelsesikonet for å få en forhåndsvisning av hva de er."
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "Hver gang du hopper over et segment vil du få et varsel. Hvis tidtakingen ser feil ut stem ned ved å klikke på nedstemme! Du kan også stemme i oppsprettsvinduet."
+    },
+    "Submitting": {
+        "message": "Innsending"
+    },
+    "helpPageSubmitting1": {
+        "message": "Innsending kan enten gjøres i oppsprettsvinduet ved å klikke på \"Segmentet starter nå\"-knappen eller i videoavspilleren ved å klikke på knappene på avspilleren."
+    },
+    "helpPageSubmitting2": {
+        "message": "Klikk på avspillingsknappen angir starten av et segment og klikk på stopp-ikonet angir slutten. Du kan gjøre klar flere sponsorer før du sender inn. Klikk på opplastningsknappen for å sende inn. Klikk på papirkurven for å slette."
+    },
+    "Editing": {
+        "message": "Redigering"
+    },
+    "helpPageEditing1": {
+        "message": "Hvis du rotet det til kan du redigere eller slette segmentene dine etter at du har klikket på pil opp-knappen."
+    },
+    "helpPageTooSlow": {
+        "message": "Dette er for tidkrevende"
+    },
+    "helpPageTooSlow1": {
+        "message": "Om du vil kan du bruke hurtigtaster. Trykk på semikolon-tasten for å angi start/stopp av et sponsorsegment og klikk på apostrof for å sende inn. Disse kan endres i innstillinger. Om du ikke bruker QWERTY bør du sannsynligvis endre hurtigtastene."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Kan jeg få en kopi av databasen? Hva hender hvis du forsvinner?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Databasen er offentlig og tilgjengelig på"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Kildekoden er fritt tilgjengelig. Så selv om noe skulle skje med meg vil ikke dine bidrag gå tapt."
+    },
+    "helpPageNews": {
+        "message": "Nyheter og hvordan det er laget"
+    },
+    "helpPageSourceCode": {
+        "message": "Hvor kan jeg finne kildekoden?"
+    },
+    "Credits": {
+        "message": "Anerkjennelser"
+    },
+    "LearnMore": {
+        "message": "Les mer"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Stemmer ned og oppretter en lokal kopi som du kan sende inn på nytt"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Åpne denne kategoriens wiki-side."
+    },
+    "CopyAndDownvote": {
+        "message": "Kopiér og stem ned"
+    },
+    "ContinueVoting": {
+        "message": "Fortsett å stemme"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Dette vil umiddelbart gjelde for dine segmenter"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Bruk musehjulet mens du peker over redigeringsboksen for å raskt justere tiden. Kombinasjoner av ctrl- eller shift-tasten kan brukes til å finjustere endringene."
+    },
+    "categoryPillNewFeature": {
+        "message": "Nyhet! Se om en video er fullstendig sponset eller selvpromotert"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "t",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Oppførsel",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Grensesnitt",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Hurtigtaster",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Sikkerhetskopiér/gjenskap",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Diverse",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Hopp over-varselutseende",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Fjern",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Ikke angitt"
+    },
+    "change": {
+        "message": "Endre"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Dette er en innebygget YouTube-hurtigtast. Er du sikker på at du vil bruke den?"
     }
 }

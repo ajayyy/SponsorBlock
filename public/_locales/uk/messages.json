@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Увімкнути відстеження пропусків у вкладках інкогніто"
     },
+    "enableTrackDownvotes": {
+        "message": "Зберігати голоси \"проти\" сегментів"
+    },
+    "whatTrackDownvotes": {
+        "message": "Усі сегменти, за які ви проголосуєте \"проти\", залишаться прихованими навіть після оновлення"
+    },
+    "trackDownvotesWarning": {
+        "message": "Попередження: вимкнення цієї опції призведе до видалення всіх раніше збережених голосів \"проти\""
+    },
     "enableQueryByHashPrefix": {
         "message": "Пошук по частині хеша"
     },
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Ви пропустили "
     },
-    "youHaveSaved": {
-        "message": "Ви заощадили "
-    },
     "minLower": {
         "message": "хвилину"
     },
@@ -365,10 +371,12 @@
         "message": "годин"
     },
     "youHaveSavedTime": {
-        "message": "Ви заощадили людям"
+        "message": "Ви заощадили людям",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " їх життів"
+        "message": " їх життів",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Дивіться стан сервера на status.sponsor.ajay.app."
@@ -584,7 +592,7 @@
         "message": "Короткий зміст попередніх епізодів або попередній перегляд того, що буде в даному відео. Призначено для сегментів, змонтованих зі шматків відео, а не для усних переказів."
     },
     "category_filler": {
-        "message": "Дотичне наповнення"
+        "message": "Дотичне наповнення/Жарти"
     },
     "category_filler_description": {
         "message": "Дотичні сцени додані лише для наповнення або гумору, які не потрібні для розуміння основного вмісту відео. Це не повинно включати сегменти, що надають контекст або передісторію."
@@ -647,9 +655,6 @@
         "message": "Показувати значок, коли все відео є рекламою",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Ви ввели колір в неправильному форматі. Це повинно бути 3-х або 6-ти значне шістнадцяткове число з символом # на початку."
-    },
     "previewColor": {
         "message": "Колір не надісланого сегмента",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -700,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "приховано: занадто коротко"
+    },
+    "manuallyHidden": {
+        "message": "приховано вручну"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -768,7 +776,7 @@
         "message": "Цей сегмент великий. Якщо все відео на одну тему, тоді змініть значення з \"Пропустити\" на \"Повне відео\". Продивіться керівництво для додаткової інформації."
     },
     "categoryPillTitleText": {
-        "message": "Все це відео позначене як ця категорія, і воно занадто інтегровано, щоб його було розділити"
+        "message": "Все відео позначене цією категорією, воно є її уособленням, тож категорію неможливо виокремити."
     },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",
@@ -786,6 +794,9 @@
     },
     "Donate": {
         "message": "Пожертвувати"
+    },
+    "considerDonating": {
+        "message": "Допомогти з фінансуванням розробки"
     },
     "hideDonationLink": {
         "message": "Приховати посилання на пожертвування"

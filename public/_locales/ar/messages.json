@@ -87,5 +87,124 @@
     },
     "refreshSegments": {
         "message": "تحديث الأجزاء"
+    },
+    "Username": {
+        "message": "اسم المستخدم"
+    },
+    "permissionRequestSuccess": {
+        "message": "نجح طلب الإذن!"
+    },
+    "permissionRequestFailed": {
+        "message": "فشل طلب الإذن ، هل نقرت على رفض؟"
+    },
+    "downvoteDescription": {
+        "message": "خاطئ/التوقيت غير صحيح"
+    },
+    "incorrectCategory": {
+        "message": "تغيير الفئة"
+    },
+    "guidelines": {
+        "message": "الإرشادات"
+    },
+    "readTheGuidelines": {
+        "message": "اقرأ الإرشادات!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "الفئات هنا!"
+    },
+    "help": {
+        "message": "المساعدة"
+    },
+    "GotIt": {
+        "message": "فهمت",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "Donate": {
+        "message": "تبرع"
+    },
+    "hideDonationLink": {
+        "message": "إخفاء رابط التبرع"
+    },
+    "darkModeOptionsPage": {
+        "message": "الوضع الداكن في صفحة الخيارات"
+    },
+    "Editing": {
+        "message": "التعديل"
+    },
+    "helpPageTooSlow": {
+        "message": "هذا بطيء جداً"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "هل يمكنني الحصول على نسخة من قاعدة البيانات؟ ماذا يحدث إذا اختفيت؟"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "قاعدة البيانات عامة ومتاحة على"
+    },
+    "helpPageNews": {
+        "message": "الأخبار وكيف تم صنعها"
+    },
+    "helpPageSourceCode": {
+        "message": "أين يمكنني الحصول على شفرة المصدر؟"
+    },
+    "LearnMore": {
+        "message": "معرفة المزيد"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "افتح صفحة ويكي هذه الفئة."
+    },
+    "CopyAndDownvote": {
+        "message": "نسخ وتصويت معارض"
+    },
+    "ContinueVoting": {
+        "message": "متابعة التصويت"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "استخدم عجلة الماوس أثناء التمرير فوق مربع التعديل لضبط الوقت بسرعة. يمكن استخدام مجموعات مفتاح ctrl أو Shift لضبط التغييرات."
+    },
+    "dayAbbreviation": {
+        "message": "ي",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "س",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "سلوك",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "واجهه المستخدم",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "اختصارات لوحة المفاتيح",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "النسخ الاحتياطي/الاستعادة",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "متنوع",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "تخطي ظهور الإشعار",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "إلغاء ربط",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "لم يتم التعيين"
+    },
+    "change": {
+        "message": "تغيير"
+    },
+    "youtubeKeybindWarning": {
+        "message": "هذا اختصار يوتيوب مدمج. هل أنت متأكد أنك تريد استخدامه؟"
     }
 }

@@ -272,9 +272,6 @@
     "youHaveSkipped": {
         "message": "Ai omis "
     },
-    "youHaveSaved": {
-        "message": "V-ați salvat "
-    },
     "minLower": {
         "message": "minut"
     },
@@ -288,10 +285,12 @@
         "message": "ore"
     },
     "youHaveSavedTime": {
-        "message": "Tu ai salvat alte persoane"
+        "message": "Tu ai salvat alte persoane",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " din viața lor"
+        "message": " din viața lor",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Verificați status.sponsor.ajay.app pentru starea serverului."
@@ -470,9 +469,6 @@
     },
     "disable": {
         "message": "Dezactivare"
-    },
-    "colorFormatIncorrect": {
-        "message": "Culoarea ta este formatată incorect. Ar trebui să fie un cod hexadecimal de 3 sau 6 cifre cu un hash la început."
     },
     "seekBarColor": {
         "message": "Culoarea Barei de Derulare"

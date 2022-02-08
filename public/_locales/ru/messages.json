@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Включить отслеживание пропусков во вкладках инкогнито"
     },
+    "enableTrackDownvotes": {
+        "message": "Хранить отрицательные оценки сегментов"
+    },
+    "whatTrackDownvotes": {
+        "message": "Все сегменты, которым вы поставите отрицательную оценку, будут скрыты даже после обновления страницы"
+    },
+    "trackDownvotesWarning": {
+        "message": "Предупреждение: Отключение этой настройки удалит все ранее сохранённые оценки"
+    },
     "enableQueryByHashPrefix": {
         "message": "Запрос по префиксу хэша"
     },
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Вы пропустили "
     },
-    "youHaveSaved": {
-        "message": "Вы сэкономили "
-    },
     "minLower": {
         "message": "минуту"
     },
@@ -365,10 +371,12 @@
         "message": "часов"
     },
     "youHaveSavedTime": {
-        "message": "Вы сэкономили людям"
+        "message": "Вы сэкономили людям",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " их жизней"
+        "message": " их жизней",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Смотрите состояние сервера на status.sponsor.ajay.app."
@@ -583,9 +591,6 @@
     "category_preview_description": {
         "message": "Краткое содержание предыдущих эпизодов или предварительный просмотр того, что будет в данном видео. Предназначено для сегментов, смонтированных из кусков видео, а не для устных пересказов."
     },
-    "category_filler": {
-        "message": "Заполнение отвлечёнными темами"
-    },
     "category_filler_description": {
         "message": "Сегменты, которые увеличивают длительность видео за счёт отвлечённых тем или шуток, но не требуются для понимания основного содержания. Не должно иметь сегментов, объясняющие контекст или предысторию."
     },
@@ -647,9 +652,6 @@
         "message": "Показывать иконку, когда всё видео является рекламой",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Вы ввели цвет в неправильном формате. Это должно быть 3-х или 6-ти значное шестнадцатеричное число с символом # в начале."
-    },
     "previewColor": {
         "message": "Цвет неотправленного сегмента",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -700,6 +702,9 @@
     },
     "hiddenDueToDuration": {
         "message": "скрыто: слишком коротко"
+    },
+    "manuallyHidden": {
+        "message": "скрыто вручную"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -786,6 +791,9 @@
     },
     "Donate": {
         "message": "Пожертвовать"
+    },
+    "considerDonating": {
+        "message": "Помогите финансировать разработку"
     },
     "hideDonationLink": {
         "message": "Скрыть ссылку на пожертвование"

@@ -262,6 +262,21 @@
         "message": "Eğer hala beğenmediyseniz, asla gösterme butonuna basın.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Kısmı atla",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Kısmı başlat/durdur",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Kısımları gönder",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Kullanmak istediğiniz tuşu yazın ve kombine etmek istediğiniz tuşları seçin."
+    },
     "0": {
         "message": "Bağlantı zaman aşımına uğradı. İnternet bağlantınızı kontrol ediniz. Eğer internetiniz çalışıyor ise, büyük ihtimalle sunucuya erişilemiyor veya sunucuya aşırı yüklenilmiş olabilir."
     },
@@ -334,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Şu kadar kısım atladınız: "
     },
-    "youHaveSaved": {
-        "message": "Şu kadar süre kazandınız "
-    },
     "minLower": {
         "message": "dakika"
     },
@@ -350,10 +362,12 @@
         "message": "saat"
     },
     "youHaveSavedTime": {
-        "message": "İnsanların şu kadar vaktini kurtardınız:"
+        "message": "İnsanların şu kadar vaktini kurtardınız:",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " yaşam süresi"
+        "message": " yaşam süresi",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Sunucu durumu için status.sponsor.ajay.app kontrol edin."
@@ -452,6 +466,15 @@
     "exportOptions": {
         "message": "Bütün Ayarlarını İçe/Dışa Aktar"
     },
+    "exportOptionsCopy": {
+        "message": "Düzenle/kopyala"
+    },
+    "exportOptionsDownload": {
+        "message": "Dosyaya kaydet"
+    },
+    "exportOptionsUpload": {
+        "message": "Dosyadan yükle"
+    },
     "whatExportOptions": {
         "message": "Bu, JSON formatında bütün kurulumunuzu gösterir. Kullanıcı kimliğinizi içerir, bu sebeple paylaşırken dikkatli olun."
     },
@@ -499,6 +522,9 @@
     },
     "copyDebugInformationComplete": {
         "message": "Bu çözüm bilgisi panoya kopyalandı. Paylaşmak istemediğiniz herhangi bir bilgiyi silmekte özgürsünüz. Bir yazı dosyası olarak kaydedin veya hata raporuna kopyalayın."
+    },
+    "keyAlreadyUsed": {
+        "message": "Bu kısayol başka bir eyleme atanmış. Lütfen başka kısayol seçin."
     },
     "to": {
         "message": "'e",
@@ -555,9 +581,6 @@
     },
     "category_preview_description": {
         "message": "Önceki bölümlerin bir özeti veya geçerli videonun içeriğine yönelik bir ön izleme. Bu özellik birleştirilmiş klipler içindir, konuşarak anlatılan özetleri kapsamaz."
-    },
-    "category_filler": {
-        "message": "Alakasız Konu"
     },
     "category_filler_description": {
         "message": "Videonun ana içeriğini anlamak için gerekli olmayan, yalnızca alakasız konu veya mizah için eklenen sahneler. Bu, alakalı veya arka plan ayrıntısı veren kısımları içermemelidir."
@@ -620,9 +643,6 @@
         "message": "Video bütünüyle bir reklamsa simge göster",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Renginiz yanlış biçimlendirilmiştir. Başında bir kare işareti bulunan 3 veya 6 basamaklı bir onaltılık kod olmalıdır."
-    },
     "previewColor": {
         "message": "Gönderilmemiş Renk",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -673,6 +693,9 @@
     },
     "hiddenDueToDuration": {
         "message": "gizlendi: çok kısa"
+    },
+    "manuallyHidden": {
+        "message": "elle gizlendi"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -760,8 +783,14 @@
     "Donate": {
         "message": "Bağış Yap"
     },
+    "considerDonating": {
+        "message": "Geliştirme sürecinin fonlanmasına yardım et"
+    },
     "hideDonationLink": {
         "message": "Bağış Bağlantısını Gizle"
+    },
+    "darkModeOptionsPage": {
+        "message": "Ayarlar Sayfasında Karanlık Modu"
     },
     "helpPageThanksForInstalling": {
         "message": "SponsorBlock'u yüklediğiniz için teşekkürler."
@@ -851,5 +880,42 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Davranış",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Arayüz",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Klavye kısayolları",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Yedekle/Geri Yükle",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Çeşitli",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Atlama uyarısı görünümü",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Klavye kısayolunu kaldır",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Ayarlanmadı"
+    },
+    "change": {
+        "message": "Değiştir"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Bu kısayol YouTube tarafından kullanılıyor. Bunu kullanmak istediğinize emin misiniz?"
     }
 }

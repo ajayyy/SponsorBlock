@@ -330,9 +330,6 @@
     "youHaveSkipped": {
         "message": "நீங்கள் தவிர்த்துவிட்டீர்கள் "
     },
-    "youHaveSaved": {
-        "message": "உங்களை நீங்களே காப்பாற்றிக் கொண்டீர்கள் "
-    },
     "minLower": {
         "message": "நிமிடம்"
     },
@@ -346,10 +343,12 @@
         "message": "மணி"
     },
     "youHaveSavedTime": {
-        "message": "நீங்கள் மக்களைக் காப்பாற்றியுள்ளீர்கள்"
+        "message": "நீங்கள் மக்களைக் காப்பாற்றியுள்ளீர்கள்",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " அவர்களின் வாழ்க்கையில்"
+        "message": " அவர்களின் வாழ்க்கையில்",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "சேவையக நிலைக்கு status.sponsor.ajay.app ஐச் சரிபார்க்கவும்."
@@ -571,9 +570,6 @@
     },
     "disable": {
         "message": "முடக்கு"
-    },
-    "colorFormatIncorrect": {
-        "message": "உங்கள் நிறம் தவறாக வடிவமைக்கப்பட்டுள்ளது. இது ஆரம்பத்தில் எண் அடையாளத்துடன் 3 அல்லது 6 இலக்க ஹெக்ஸ் குறியீடாக இருக்க வேண்டும்."
     },
     "seekBarColor": {
         "message": "பார் வண்ணத்தைத் தேடுங்கள்"

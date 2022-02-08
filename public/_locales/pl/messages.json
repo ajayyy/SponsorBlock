@@ -228,7 +228,7 @@
         "message": "Pokaż informację po pominięciu segmentu"
     },
     "noticeVisibilityMode0": {
-        "message": "Duże powiadomienia o przewinięciu"
+        "message": "Pełnowymiarowe powiadomienia o przewinięciu"
     },
     "noticeVisibilityMode1": {
         "message": "Małe powiadomienia o automatycznym przewijaniu"
@@ -265,6 +265,17 @@
     "setSkipShortcut": {
         "message": "Pomiń segment",
         "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Rozpocznij/zatrzymaj segment",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Prześlij segmenty",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Wybierz przycisk, wpisując go i wybierz dowolne klucze modyfikujące, których chcesz użyć."
     },
     "0": {
         "message": "Połączenie przerwane z powodu braku odpowiedzi. Sprawdź swoje połączenie z internetem. Jeśli wszystko z nim w porządku oznacza to, że serwer jest prawdopodobnie przeciążony lub nie działa."
@@ -338,9 +349,6 @@
     "youHaveSkipped": {
         "message": "Przewinięto "
     },
-    "youHaveSaved": {
-        "message": "Oszczędzono sobie "
-    },
     "minLower": {
         "message": "min"
     },
@@ -354,10 +362,12 @@
         "message": "godz."
     },
     "youHaveSavedTime": {
-        "message": "Oszczędzono innym"
+        "message": "Oszczędzono innym",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " życia"
+        "message": " życia",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Sprawdź status serwera na status.sponsor.ajay.app"
@@ -366,7 +376,7 @@
         "message": "Importuj/Eksportuj swój identyfikator użytkownika"
     },
     "whatChangeUserID": {
-        "message": "Powinno pozostać prywatne. Jest to niczym hasło i nie powinno być nikomu udostępniane. Przy jego użyciu może się pod ciebie podszywać. Jeśli szukasz publicznego ID użytkownika, kliknij ikonę schowka w wyskakującym oknie."
+        "message": "To powinno pozostać prywatne. Jest to niczym hasło i nie powinno zostać nikomu udostępnione. Przy jego użyciu ktoś może się pod ciebie podszywać. Jeśli szukasz publicznego ID użytkownika, kliknij ikonę schowka w wyskakującym oknie."
     },
     "setUserID": {
         "message": "Ustaw identyfikator użytkownika"
@@ -426,6 +436,9 @@
     "shortCheck": {
         "message": "Ten segment jest krótszy od ustawionego przez Ciebie minimalnego czasu trwania. Może to oznaczać, że ktoś już to zamieścił, ale nie widzisz tego przez to ustawienie. Czy na pewno chcesz to zamieścić?"
     },
+    "liveOrPremiere": {
+        "message": "Przesyłanie na aktywnej transmisji na żywo lub premierze jest niedozwolone. Poczekaj aż ona się zakończy, a następnie odśwież stronę i sprawdź, czy te segmenty są nadal prawidłowe."
+    },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
     },
@@ -452,6 +465,15 @@
     },
     "exportOptions": {
         "message": "Importuj/Eksportuj wszystkie ustawienia"
+    },
+    "exportOptionsCopy": {
+        "message": "Edytuj/kopiuj"
+    },
+    "exportOptionsDownload": {
+        "message": "Zapisz do pliku"
+    },
+    "exportOptionsUpload": {
+        "message": "Wczytaj z pliku"
     },
     "whatExportOptions": {
         "message": "Jest to cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój identyfikator użytkownika, więc uważaj, komu ją udostępniasz."
@@ -501,6 +523,9 @@
     "copyDebugInformationComplete": {
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
     },
+    "keyAlreadyUsed": {
+        "message": "Ten skrót jest przypisany do innej akcji. Proszę wybrać inny."
+    },
     "to": {
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -516,6 +541,16 @@
     },
     "category_selfpromo_description": {
         "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
+    },
+    "category_exclusive_access": {
+        "message": "Ekskluzywny dostęp"
+    },
+    "category_exclusive_access_description": {
+        "message": "Tylko do oznaczania całych filmów. Używane, gdy wideo wyświetla produkt, usługę lub lokalizację, do których otrzymali darmowy lub subsydiowany dostęp."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Ten film pokazuje produkt, usługę lub lokalizację, do których otrzymali darmowy lub subsydiowany dostęp",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "Przypomnienie o interakcji (Subskrybuj)"
@@ -547,11 +582,8 @@
     "category_preview_description": {
         "message": "Szybkie podsumowanie poprzednich odcinków lub podgląd tego, co pojawia się później w bieżącym filmie. Dotyczy zmontowanych klipów, a nie ustnych podsumowań."
     },
-    "category_filler": {
-        "message": "Filtr nietematyczny"
-    },
     "category_filler_description": {
-        "message": "Sceny nietematyczne dodawane tylko dla wypełniacza lub humoru, które nie są wymagane do zrozumienia głównej treści wideo. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
+        "message": "Sceny nietematyczne dodawane tylko jako wypełniacz lub dla humoru, które nie są wymagane do zrozumienia głównej treści filmu. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
     },
     "category_filler_short": {
         "message": "Wypełniacz"
@@ -598,6 +630,9 @@
     "showOverlay_POI": {
         "message": "Pokaż na pasku"
     },
+    "showOverlay_full": {
+        "message": "Wyświetl etykietę"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"
     },
@@ -607,9 +642,6 @@
     "fullVideoSegments": {
         "message": "Pokaż ikonę, gdy film jest w całości reklamą",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Nieprawidłowy format koloru. Powinien to być zapis szesnastkowy (heksadecymalny) składający się z 3 lub 6 znaków poprzedzonych kratką (#)."
     },
     "previewColor": {
         "message": "Nieprzesłany kolor",
@@ -739,7 +771,7 @@
         "message": "Schowaj na zawsze"
     },
     "warningChatInfo": {
-        "message": "Otrzymałeś ostrzeżenie i nie możesz tymczasowo przesyłać segmentów. Oznacza to, że zauważyliśmy, że popełniłeś/aś pewne powszechne błędy, które nie są złośliwe, Proszę tylko potwierdzić, że rozumiesz zasady i usuniemy ostrzeżenie. Możesz również dołączyć do tego czatu używając discord.gg/SponsorBlock lub matrix.to/#/#sponsor:ajay.app"
+        "message": "Otrzymałeś ostrzeżenie i tymczasowo nie możesz przesyłać segmentów. Oznacza to, że zauważyliśmy, że popełniłeś/aś pewne powszechne błędy, które nie są złośliwe, proszę tylko potwierdzić, że rozumiesz zasady i usuniemy ostrzeżenie. Możesz również dołączyć do tego czatu używając discord.gg/SponsorBlock lub matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Głosowanie odrzucone z powodu ostrzeżenia. Kliknij, aby otworzyć czat w celu rozwiązania problemu lub wróć później, gdy będziesz miał czas.",
@@ -749,7 +781,10 @@
         "message": "Dotacje"
     },
     "hideDonationLink": {
-        "message": "Ukryj opcję dotacji"
+        "message": "Ukryj Link Do Dotacji"
+    },
+    "darkModeOptionsPage": {
+        "message": "Tryb ciemny na stronie opcji"
     },
     "helpPageThanksForInstalling": {
         "message": "Dziękujemy za zainstalowanie SponsorBlock."
@@ -840,8 +875,41 @@
         "message": "h",
         "description": "100h"
     },
+    "optionsTabBehavior": {
+        "message": "Zachowanie",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
     "optionsTabInterface": {
         "message": "Interfejs",
         "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Skróty klawiszowe",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Kopia/przywracanie",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Różne",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Pomiń wygląd wpisu",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Usuń przypisanie",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Nie ustawiono"
+    },
+    "change": {
+        "message": "Zmień"
+    },
+    "youtubeKeybindWarning": {
+        "message": "To jest wbudowany skrót YouTube. Czy na pewno chcesz go użyć?"
     }
 }

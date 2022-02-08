@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Abilita il conteggio dei salti nelle schede private/anonime"
     },
+    "enableTrackDownvotes": {
+        "message": "Memorizza i voti negativi del segmento"
+    },
+    "whatTrackDownvotes": {
+        "message": "Qualsiasi segmento voti negativamente rimarrà nascosto anche dopo aver ricaricato"
+    },
+    "trackDownvotesWarning": {
+        "message": "Attenzione: Disabilitarlo eliminerà tutti i voti negativi precedentemente memorizzati"
+    },
     "enableQueryByHashPrefix": {
         "message": "Ricerca tramite prefisso hash"
     },
@@ -261,6 +270,21 @@
     "noticeUpdate2": {
         "message": "Se non ti piace ancora, premi il pulsante \"non mostrare mai\".",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Salta segmento",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Inizio/Fine segmento",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Invia i segmenti",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Selezionare una chiave digitandola e scegliere qualsiasi tasto modificatore che si desidera utilizzare."
     },
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
@@ -334,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Hai saltato "
     },
-    "youHaveSaved": {
-        "message": "Ti sei salvato "
-    },
     "minLower": {
         "message": "minuto"
     },
@@ -350,10 +371,12 @@
         "message": "ore"
     },
     "youHaveSavedTime": {
-        "message": "Hai fatto risparmiare"
+        "message": "Hai fatto risparmiare",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " delle loro vite"
+        "message": " delle loro vite",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Controlla status.sponsor.ajay.app per lo stato del server."
@@ -452,6 +475,15 @@
     "exportOptions": {
         "message": "Importa/Esporta Tutte Le Opzioni"
     },
+    "exportOptionsCopy": {
+        "message": "Modifica/copia"
+    },
+    "exportOptionsDownload": {
+        "message": "Salva su file"
+    },
+    "exportOptionsUpload": {
+        "message": "Carica da file"
+    },
     "whatExportOptions": {
         "message": "Questa è la tua intera configurazione in formaro JSON. Questo include il tuo ID utente, quindi presta attenzione se vuoi condividerlo."
     },
@@ -499,6 +531,9 @@
     },
     "copyDebugInformationComplete": {
         "message": "Le informazioni di debug sono state copiate nel clip board. Sentiti libero di rimuovere tutte le informazioni che preferisci non condividere. Salva in un file di testo o incollale nella segnalazione di bug."
+    },
+    "keyAlreadyUsed": {
+        "message": "Questa scorciatoia è associata ad un'altra azione. Selezionane una diversa."
     },
     "to": {
         "message": "a",
@@ -555,9 +590,6 @@
     },
     "category_preview_description": {
         "message": "Riepilogo rapido degli episodi precedenti, o un'anteprima di ciò che sta arrivando più tardi nel video attuale. Inteso per clip, non per riassunti a voce."
-    },
-    "category_filler": {
-        "message": "Tangente riempitiva"
     },
     "category_filler_description": {
         "message": "Le scene riempitive sono aggiunte solo per riempire o per umorismo che non sono richieste per comprendere il contenuto principale del video. Questo non dovrebbe includere segmenti che forniscono contesto o dettagli di sfondo."
@@ -620,9 +652,6 @@
         "message": "Mostra un'icona quando un video è interamente una pubblicità",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Il tuo colore è formattato in modo errato. Dovrebbe essere un codice esadecimale a 3 o 6 cifre con un segno numerico iniziale."
-    },
     "previewColor": {
         "message": "Segmento non inviato",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -673,6 +702,9 @@
     },
     "hiddenDueToDuration": {
         "message": "nascosto: troppo corto"
+    },
+    "manuallyHidden": {
+        "message": "nascosta manualmente"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -760,8 +792,14 @@
     "Donate": {
         "message": "Dona"
     },
+    "considerDonating": {
+        "message": "Contribuisci allo sviluppo del fondo"
+    },
     "hideDonationLink": {
         "message": "Nascondi Link di Donazione"
+    },
+    "darkModeOptionsPage": {
+        "message": "Pagina Delle Opzioni In Modalità Scura"
     },
     "helpPageThanksForInstalling": {
         "message": "Grazie per aver installato SponsorBlock."
@@ -851,5 +889,42 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportamento",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interfaccia",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Scorciatoie da tastiera",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Backup/Ripristina",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Varie",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Salta l'aspetto del preavviso",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Dissocia",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Non impostato"
+    },
+    "change": {
+        "message": "Modifica"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Questa è una scorciatoia integrata da YouTube. Sei sicuro di volerla usare?"
     }
 }
