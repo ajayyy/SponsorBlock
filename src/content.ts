@@ -533,10 +533,10 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
         if (delayTime < 300 && utils.isFirefox()) {
             // For Firefox, use interval instead of timeout near the end to combat imprecise video time
-            const startIntervalTime = Date.now();
+            const startIntervalTime = performance.now();
             const startVideoTime = video.currentTime;
             currentSkipInterval = setInterval(() => {
-                const intervalDuration = Date.now() - startIntervalTime;
+                const intervalDuration = performance.now() - startIntervalTime;
                 console.log(startVideoTime + intervalDuration / 1000)
                 if (intervalDuration >= delayTime) {
                     clearInterval(currentSkipInterval);
