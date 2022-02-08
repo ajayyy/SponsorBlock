@@ -26,7 +26,7 @@
         "message": "osiot"
     },
     "upvoteButtonInfo": {
-        "message": "Äänestä tätä lähetystä"
+        "message": "Äänestä lähetystä"
     },
     "reportButtonTitle": {
         "message": "Ilmoita"
@@ -44,7 +44,7 @@
         "message": "Älä näytä koskaan"
     },
     "hitGoBack": {
-        "message": "Paina 'älä ohita' mennäksesi takaisin kohtaan jossa olit."
+        "message": "Paina 'älä ohita' palatakasesi edeltävään kohtaan."
     },
     "unskip": {
         "message": "Älä ohita"
@@ -177,7 +177,7 @@
         "message": "Näytä painikkeet YouTuben soittimessa"
     },
     "hideButtons": {
-        "message": "Piilota painikkeet YouTuben soittimessa"
+        "message": "Piilota painikkeet YouTuben soittimesta"
     },
     "hideButtonsDescription": {
         "message": "Tämä piilottaa YouTuben soittimessa näkyvät, ohitettavien aikojen lähettämiseen käytetyt painikkeet."
@@ -189,19 +189,19 @@
         "message": "Näytä info-painike YouTuben soittimessa"
     },
     "hideInfoButton": {
-        "message": "Piilota info-painike YouTuben soittimessa"
+        "message": "Piilota info-painike YouTuben soittimesta"
     },
     "autoHideInfoButton": {
         "message": "Piilota info-painike automaattisesti"
     },
     "hideDeleteButton": {
-        "message": "Piilota poista-painike YouTuben soittimessa"
+        "message": "Piilota poista-painike YouTuben soittimesta"
     },
     "showDeleteButton": {
         "message": "Näytä poista-painike YouTuben soittimessa"
     },
     "enableViewTracking": {
-        "message": "Ota ohitusten lukumäärän seuranta käyttöön"
+        "message": "Käytä ohitusten lukumäärän seurantaa"
     },
     "whatViewTracking": {
         "message": "Tämä toiminto seuraa, mitä osioita olet ohittanut. Sen avulla käyttäjät saavat tietää, kuinka paljon heidän lähetyksensä ovat auttaneet muita, ja sitä käytetään myös mittarina äänestysten kanssa estääksemme spämmin pääsyn tietokantaan. Laajennus lähettää viestin palvelimelle aina kun ohitat osion. Toivottavasti useimmat eivät muuta tätä asetusta, jotta katselunumerot pysyisivät tarkkoina. :)"
@@ -461,7 +461,7 @@
         "message": "Tallenna"
     },
     "reset": {
-        "message": "Nollaa"
+        "message": "Palauta"
     },
     "customAddressError": {
         "message": "Tämä osoite ei ole oikeassa muodossa. Varmista, että sinulla on http:// tai https:// alussa eikä perässä kauttaviivoja."
@@ -670,7 +670,7 @@
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
-        "message": "Ota betatestauspalvelin käyttöön"
+        "message": "Käytä betatestauspalvelinta"
     },
     "whatEnableTestingServer": {
         "message": "Lähetyksiäsi ja ääniäsi EI LASKETA pääpalvelimella. Käytä tätä vain testaamiseen."
