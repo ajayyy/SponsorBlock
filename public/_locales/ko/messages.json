@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "시크릿/사생활 보호 탭에서 스킵 개수 추적 활성화"
     },
+    "enableTrackDownvotes": {
+        "message": "구간 비추천 저장"
+    },
+    "whatTrackDownvotes": {
+        "message": "비추천한 구간을 새로고침 이후에도 계속 숨깁니다"
+    },
+    "trackDownvotesWarning": {
+        "message": "경고: 비활성화하는 경우 이전에 저장한 모든 비추천이 삭제됩니다"
+    },
     "enableQueryByHashPrefix": {
         "message": "Hash Prefix가 쿼리를 제공함"
     },
@@ -581,6 +590,9 @@
     },
     "category_preview_description": {
         "message": "이전 에피소드를 간략히 요약하거나 현재 동영상에서 나중에 나올 내용을 예고해줍니다. 음성 요약이 아니라 편집된 동영상을 통한 요약입니다."
+    },
+    "category_filler": {
+        "message": "쓸데없는 잡담/농담"
     },
     "category_filler_description": {
         "message": "쓸데없는 잡담은 동영상의 주요 콘텐츠를 이해하는 데 필요없는 시간 떼우기 장면이나 농담만을 말합니다. 맥락이나 상세한 배경지식을 설명하는 부분은 해당하지 않습니다."
