@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Abilita il conteggio dei salti nelle schede private/anonime"
     },
+    "enableTrackDownvotes": {
+        "message": "Memorizza i voti negativi del segmento"
+    },
+    "whatTrackDownvotes": {
+        "message": "Qualsiasi segmento voti negativamente rimarrà nascosto anche dopo aver ricaricato"
+    },
+    "trackDownvotesWarning": {
+        "message": "Attenzione: Disabilitarlo eliminerà tutti i voti negativi precedentemente memorizzati"
+    },
     "enableQueryByHashPrefix": {
         "message": "Ricerca tramite prefisso hash"
     },
