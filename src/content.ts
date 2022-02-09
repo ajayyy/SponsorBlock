@@ -961,6 +961,15 @@ function getYouTubeVideoIDFromDocument(document: Document, hideIcon = true): str
 }
 
 function getYouTubeVideoIDFromURL(url: string): string | boolean {
+    // get ID from ytPlayer object
+    interface ytPlayerWindow extends Window {
+        ytplayer: { config: { video_id: string; }}
+    }
+    // fall back to window.ytPlayer object
+    const ytWindow = (window as unknown as ytPlayerWindow);
+    const ytPID = ytWindow.ytplayer?.config?.video_id;
+    if (ytPID) return ytPID;
+
     if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 
     //Attempt to parse url
@@ -999,14 +1008,6 @@ function getYouTubeVideoIDFromURL(url: string): string | boolean {
             return false;
         }
     }
-
-    interface ytPlayerWindow extends Window {
-        ytplayer: { config: { video_id: string; }}
-    }
-    // fall back to window.ytPlayer object
-    const ytWindow = (window as unknown as ytPlayerWindow);
-    const ytPID = ytWindow.ytplayer?.config?.video_id;
-    if (ytPID) return ytPID;
 
     // not found, return false
     return false;
