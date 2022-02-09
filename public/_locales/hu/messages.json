@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Átugrások számlálásának engedélyezése privát/inkognitó füleken"
     },
+    "enableTrackDownvotes": {
+        "message": "Leszavazások tárolása"
+    },
+    "whatTrackDownvotes": {
+        "message": "Minden szegmens amit leszavazol rejtve marad újratöltés után is"
+    },
+    "trackDownvotesWarning": {
+        "message": "Figyelem: A beállítás kikapcsolása letöröl minden korábban eltárolt szavazatot"
+    },
     "enableQueryByHashPrefix": {
         "message": "Lekérdezés Hash előtaggal"
     },
@@ -581,6 +590,9 @@
     },
     "category_preview_description": {
         "message": "Az előző részekben történtek rövid ismétlése, vagy a videó további tartalmának előzetese. Összevágott jelenetekhez, nem szóbeli összegzéshez."
+    },
+    "category_filler": {
+        "message": "Témától eltérő töltelék/viccek"
     },
     "category_filler_description": {
         "message": "Csak töltelékként, vagy humornak hozzáadott részek, amik nem szükségesek a videó fő tartalmának megértéséhez. Ne tartalmazzon olyan szegmenseket, amik kontextust, vagy alapvető információkat szolgáltatnak."
