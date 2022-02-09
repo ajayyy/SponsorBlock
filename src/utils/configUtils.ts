@@ -5,6 +5,10 @@ export function showDonationLink(): boolean {
     return navigator.vendor !== "Apple Computer, Inc." && Config.config.showDonationLink;
 }
 
+export function isSafari(): boolean {
+    return navigator.vendor === "Apple Computer, Inc.";
+}
+
 export function keybindEquals(first: Keybind, second: Keybind): boolean {
     if (first == null || second == null ||
             Boolean(first.alt) != Boolean(second.alt) || Boolean(first.ctrl) != Boolean(second.ctrl) || Boolean(first.shift) != Boolean(second.shift) ||
