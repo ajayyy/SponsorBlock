@@ -45,6 +45,7 @@ let lockedCategories: Category[] = [];
 // Skips are rescheduled every seeking event.
 // Skips are canceled every seeking event
 let currentSkipSchedule: NodeJS.Timeout = null;
+let currentSkipInterval: NodeJS.Timeout = null;
 
 /** Has the sponsor been skipped */
 let sponsorSkipped: boolean[] = [];
@@ -427,8 +428,12 @@ function videoOnReadyListener(): void {
 function cancelSponsorSchedule(): void {
     if (currentSkipSchedule !== null) {
         clearTimeout(currentSkipSchedule);
-
         currentSkipSchedule = null;
+    }
+
+    if (currentSkipInterval !== null) {
+        clearInterval(currentSkipInterval);
+        currentSkipInterval = null;
     }
 }
 
@@ -491,14 +496,15 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     // Don't skip if this category should not be skipped
     if (!shouldSkip(currentSkip) && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) return;
 
-    const skippingFunction = () => {
+    const skippingFunction = (forceVideoTime?: number) => {
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
         let forcedIncludeNonIntersectingSegments = true;
 
         if (incorrectVideoCheck(videoID, currentSkip)) return;
+        forceVideoTime ||= video.currentTime;
 
-        if (video.currentTime >= skipTime[0] && video.currentTime < skipTime[1]) {
+        if (forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
             skipToTime({
                 v: video, 
                 skipTime, 
@@ -522,7 +528,22 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     if (timeUntilSponsor <= 0) {
         skippingFunction();
     } else {
-        currentSkipSchedule = setTimeout(skippingFunction, timeUntilSponsor * 1000 * (1 / video.playbackRate));
+        const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
+        if (delayTime < 300 && utils.isFirefox()) {
+            // For Firefox, use interval instead of timeout near the end to combat imprecise video time
+            const startIntervalTime = performance.now();
+            const startVideoTime = video.currentTime;
+            currentSkipInterval = setInterval(() => {
+                const intervalDuration = performance.now() - startIntervalTime;
+                if (intervalDuration >= delayTime || video.currentTime >= skipTime[0]) {
+                    clearInterval(currentSkipInterval);
+                    skippingFunction(Math.max(video.currentTime, startVideoTime + intervalDuration / 1000));
+                }
+            }, 5);
+        } else {
+            // Schedule for right before to be more precise than normal timeout
+            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - 30));
+        }
     }
 }
 
