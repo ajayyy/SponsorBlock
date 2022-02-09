@@ -538,9 +538,9 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
             currentSkipInterval = setInterval(() => {
                 const intervalDuration = performance.now() - startIntervalTime;
                 console.log(startVideoTime + intervalDuration / 1000)
-                if (intervalDuration >= delayTime) {
+                if (intervalDuration >= delayTime || video.currentTime >= skipTime[0]) {
                     clearInterval(currentSkipInterval);
-                    skippingFunction(startVideoTime + intervalDuration / 1000);
+                    skippingFunction(Math.max(video.currentTime, startVideoTime + intervalDuration / 1000));
                 }
             }, 5);
         } else {
