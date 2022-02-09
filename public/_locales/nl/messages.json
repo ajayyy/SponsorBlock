@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Bijhouden van het aantal keren overslaan inschakelen in privé-/incognito-tabbladen"
     },
+    "enableTrackDownvotes": {
+        "message": "Segment-downvotes opslaan"
+    },
+    "whatTrackDownvotes": {
+        "message": "Segmenten waarop u een downvote doet, blijven verborgen, zelfs na vernieuwen"
+    },
+    "trackDownvotesWarning": {
+        "message": "Waarschuwing: als u dit uitschakelt, worden alle eerder opgeslagen downvotes verwijderd"
+    },
     "enableQueryByHashPrefix": {
         "message": "Opvragen via hash-voorvoegsel"
     },
@@ -582,6 +591,9 @@
     "category_preview_description": {
         "message": "Snelle samenvatting van vorige afleveringen of een voorbeeld van wat er later komt in de huidige video. Bedoeld voor samengevoegde clips, niet voor gesproken samenvattingen."
     },
+    "category_filler": {
+        "message": "Opvulling zijspoor/humor"
+    },
     "category_filler_description": {
         "message": "Zijspoor-scènes die alleen ter opvulling of als humor worden toegevoegd en niet noodzakelijk zijn om de hoofdinhoud van de video te begrijpen. Segmenten die context of achtergrondinformatie verschaffen, mogen hier niet onder vallen."
     },
@@ -694,6 +706,9 @@
     "hiddenDueToDuration": {
         "message": "verborgen: te kort"
     },
+    "manuallyHidden": {
+        "message": "handmatig verborgen"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanaal-ID is nog niet geladen. Als u een ingesloten video gebruikt, probeer dan in plaats daarvan de YouTube-homepagina. Dit kan ook worden veroorzaakt door wijzigingen in de YouTube-lay-out. Als u denkt dat dit het geval is, maak dan hier een opmerking:"
@@ -779,6 +794,9 @@
     },
     "Donate": {
         "message": "Doneren"
+    },
+    "considerDonating": {
+        "message": "Ontwikkeling helpen"
     },
     "hideDonationLink": {
         "message": "Donatiekoppeling verbergen"
