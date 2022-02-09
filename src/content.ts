@@ -504,8 +504,6 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         if (incorrectVideoCheck(videoID, currentSkip)) return;
         forceVideoTime ||= video.currentTime;
 
-        console.log(video.currentTime + "\t" + forceVideoTime + "\t" + skipTime[0] + "\t" + (video.currentTime - skipTime[0]) * 1000 + "\t" + (forceVideoTime - skipTime[0]) * 1000);
-
         if (forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
             skipToTime({
                 v: video, 
@@ -537,7 +535,6 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
             const startVideoTime = video.currentTime;
             currentSkipInterval = setInterval(() => {
                 const intervalDuration = performance.now() - startIntervalTime;
-                console.log(startVideoTime + intervalDuration / 1000)
                 if (intervalDuration >= delayTime || video.currentTime >= skipTime[0]) {
                     clearInterval(currentSkipInterval);
                     skippingFunction(Math.max(video.currentTime, startVideoTime + intervalDuration / 1000));
