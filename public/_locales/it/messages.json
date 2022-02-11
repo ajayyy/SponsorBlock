@@ -591,6 +591,9 @@
     "category_preview_description": {
         "message": "Riepilogo rapido degli episodi precedenti, o un'anteprima di ciò che sta arrivando più tardi nel video attuale. Inteso per clip, non per riassunti a voce."
     },
+    "category_filler": {
+        "message": "Riempitivi irrilevanti/Battute"
+    },
     "category_filler_description": {
         "message": "Le scene riempitive sono aggiunte solo per riempire o per umorismo che non sono richieste per comprendere il contenuto principale del video. Questo non dovrebbe includere segmenti che forniscono contesto o dettagli di sfondo."
     },
