@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Activar el seguimiento del número de saltos en las pestañas privadas/de incógnito"
     },
+    "enableTrackDownvotes": {
+        "message": "Almacenar los votos negativos de los segmentos"
+    },
+    "whatTrackDownvotes": {
+        "message": "Los segmentos que votes negativamente permanecerán ocultos incluso después de actualizar la página"
+    },
+    "trackDownvotesWarning": {
+        "message": "Advertencia: Desactivar esto eliminará todos los votos negativos previamente almacenados"
+    },
     "enableQueryByHashPrefix": {
         "message": "Consulta Por Prefijo Hash"
     },
@@ -582,6 +591,9 @@
     "category_preview_description": {
         "message": "Recapitulación rápida de los episodios anteriores, o una vista previa de lo que va a ocurrir más adelante en el vídeo actual. Está pensado para clips editados juntos, no para resúmenes hablados."
     },
+    "category_filler": {
+        "message": "Tangentes de Relleno/Chistes"
+    },
     "category_filler_description": {
         "message": "Escenas tangenciales añadidas solo para relleno o humor que no son necesarias para entender el contenido principal del video. Esto no debe incluir segmentos que proporcionen contexto o detalles de fondo."
     },
@@ -694,6 +706,9 @@
     "hiddenDueToDuration": {
         "message": "oculto: demasiado corto"
     },
+    "manuallyHidden": {
+        "message": "manualmente oculto"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "El ID del canal no está cargado todavía. Si está usando un vídeo incrustado, intente usar la página de inicio de YouTube en su lugar. Esto también podría ser causado por cambios en el diseño de YouTube, si lo cree, haga un comentario aquí:"
@@ -779,6 +794,9 @@
     },
     "Donate": {
         "message": "Donar"
+    },
+    "considerDonating": {
+        "message": "Ayuda a financiar el desarrollo"
     },
     "hideDonationLink": {
         "message": "Ocular Enlace de Donación"
