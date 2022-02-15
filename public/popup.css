@@ -7,46 +7,13 @@
 }
 
 /*
- * Default browser styles
+ * IDs on container element (when inserted in page), <html> element,
+ * <body> element and main container
  */
 
-html {
-  box-sizing: border-box;
+#sponsorBlockPopupContainer {
+  margin-bottom: 16px;
 }
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-p {
-  margin: 0;
-}
-
-a {
-  color: var(--sb-main-fg-color);
-  text-decoration: none;
-}
-
-button {
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-}
-
-/*
- * Disable transition on all elements until the extension has loaded
- */
-
-.preload * {
-  transition: none !important;
-}
-
-/*
- * IDs on <html> element, <body> element and main container
- */
 
 #sponsorBlockPopupHTML {
   color-scheme: dark;
@@ -67,10 +34,18 @@ button {
 }
 
 /*
+ * Disable transition on all elements until the extension has loaded
+ */
+
+.preload * {
+  transition: none !important;
+}
+
+/*
  * Header logo
  */
 
-.logo {
+.sbPopupLogo {
   display: flex;
   align-items: center;
   font-size: 32px;
@@ -80,7 +55,7 @@ button {
   padding: 20px 0 10px;
 }
 
-.logo img {
+.sbPopupLogo img {
   margin-right: 8px;
 }
 
@@ -89,7 +64,10 @@ button {
  */
 
 #refreshSegmentsButton {
+  background: transparent;
+  border: 0;
   border-radius: 50%;
+  cursor: pointer;
   display: flex;
   padding: 5px;
   margin: 5px auto;
@@ -105,8 +83,11 @@ button {
  */
 
 .segmentTimeButton {
-  font-weight: bold;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
   color: var(--sb-main-fg-color);
+  font-weight: bold;
   padding: 7px;
   outline: none;
   width: 100%;
@@ -150,14 +131,14 @@ button {
  * Main controls menu
  */
 
-.controlsMenu {
+.sbControlsMenu {
   background-color: var(--sb-grey-bg-color);
   display: flex;
   justify-content: space-evenly;
   margin-top: 10px;
 }
 
-.controlsMenu-item {
+.sbControlsMenu-item {
   background-color: var(--sb-grey-bg-color);
   border: 0;
   padding: 0;
@@ -171,11 +152,11 @@ button {
   justify-content: center;
 }
 
-.controlsMenu-item:hover {
+.sbControlsMenu-item:hover {
   background-color: #444;
 }
 
-.controlsMenu-itemIcon {
+.sbControlsMenu-itemIcon {
   margin-bottom: 6px;
 }
 
@@ -292,12 +273,14 @@ button {
  * Generic buttons used for "Segment Starts Now" and "Submit Times"
  */
 
-.mediumButton {
+.sbMediumButton {
   background-color: var(--sb-red-bg-color);
+  border: 0;
   -moz-border-radius: 28px;
   -webkit-border-radius: 28px;
   border-radius: 28px;
   display: inline-block;
+  cursor: pointer;
   color: var(--sb-main-fg-color);
   font-size: 16px;
   padding: 8px 37px;
@@ -305,13 +288,13 @@ button {
   transition: 0.01s background-color;
 }
 
-.mediumButton:hover,
-.mediumButton:focus {
+.sbMediumButton:hover,
+.sbMediumButton:focus {
   outline: none;
   background-color: #ec1c1c;
 }
 
-.mediumButton:active {
+.sbMediumButton:active {
   position: relative;
   top: 1px;
 }
@@ -325,15 +308,44 @@ button {
 }
 
 /*
+ * Heading utility class
+ */
+
+.sbHeader {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+/*
+ * Side-by-side section of "Your Work"
+ */
+
+.sbYourWorkCols {
+  display: flex;
+  margin: 0 20px 12px;
+}
+
+.sbYourWorkCols > div {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  justify-content: center;
+}
+
+/*
  * <button> elements that have icons
  */
 
 #setUsernameButton,
 #submitUsername,
 #copyUserID {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
   color: var(--sb-main-fg-color);
   width: fit-content;
-  padding-left: 0;
 }
 
 /*
@@ -377,7 +389,7 @@ button {
  * Enable flexbox for buttons with SVG icon
  */
 
-#c > button {
+#setUsernameContainer > button {
   display: flex;
 }
 
@@ -407,12 +419,6 @@ button {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
-}
-
-.sidebyside > #usernameElement,
-.sidebyside > #sponsorTimesContributionsContainer {
-  display: flex;
-  align-items: center;
 }
 
 /*
@@ -456,7 +462,14 @@ button {
  */
 
 #sbFooter {
-  margin: 10px 0 20px;
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
+#sbFooter a {
+  color: var(--sb-main-fg-color);
+  cursor: pointer;
+  text-decoration: none;
 }
 
 /*
@@ -464,11 +477,21 @@ button {
  */
 
 #showNoticeAgain {
-  margin-top: 30px;
-  color: var(--sb-main-fg-color);
+  background: transparent;
   border: 1px solid #fff;
-  padding: 5px;
   border-radius: 5px;
+  color: var(--sb-main-fg-color);
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+/*
+ * Generic spacing classes
+ */
+
+.u-mZ {
+  margin: 0 !important;
 }
 
 /*
@@ -481,28 +504,4 @@ button {
 
 .voteButtonsContainer--hide {
   display: none;
-}
-
-/*
- * Generic heading utility class
- */
-
-.sbHeader {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 0 5px;
-}
-
-/*
- * Generic flexbox "side by side" utility class
- */
-
-.sidebyside {
-  display: flex;
-  margin: 0 20px 12px;
-}
-
-.sidebyside > div {
-  width: 50%;
-  justify-content: center;
 }

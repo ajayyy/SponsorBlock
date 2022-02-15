@@ -11,16 +11,16 @@
   <body id="sponsorBlockPopupBody">
     <div id="sponsorblockPopup" class="sponsorBlockPageBody preload">
 
-      <header class="logo">
+      <header class="sbPopupLogo">
         <img src="icons/IconSponsorBlocker256px.png" alt="SponsorBlock" width="40" height="40" id="sponsorBlockPopupLogo">
-        <p>SponsorBlock</p>
+        <p class="u-mZ">SponsorBlock</p>
       </header>
 
       <div id="videoInfo">
         <!-- Loading text -->
-        <p id="loadingIndicator">__MSG_noVideoID__</p>
+        <p id="loadingIndicator" class="u-mZ">__MSG_noVideoID__</p>
         <!-- If the video was found in the database -->
-        <p id="videoFound"></p>
+        <p id="videoFound" class="u-mZ"></p>
         <button id="refreshSegmentsButton" title="__MSG_refreshSegments__">
           <img src="/icons/refresh.svg" alt="Refresh icon" id="refreshSegments" />
         </button>
@@ -29,17 +29,17 @@
         </div>
       </div>
 
-      <div class="controlsMenu">
-        <label id="whitelistButton" for="whitelistToggle" class="hidden controlsMenu-item" title="__MSG_forceChannelCheckPopup__">
+      <div class="sbControlsMenu">
+        <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item" title="__MSG_forceChannelCheckPopup__">
           <input type="checkbox" style="display:none;" id="whitelistToggle">
-          <svg viewBox="0 0 24 24" width="23" height="23" class="SBWhitelistIcon controlsMenu-itemIcon">
+          <svg viewBox="0 0 24 24" width="23" height="23" class="SBWhitelistIcon sbControlsMenu-itemIcon">
             <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
           </svg>
           <span id="whitelistChannel">__MSG_whitelistChannel__</span>
           <span id="unwhitelistChannel" style="display: none">__MSG_removeFromWhitelist__</span>
         </label>
         <!--github: mbledkowski/toggle-switch-->
-        <label id="disableExtension" for="toggleSwitch" class="toggleSwitchContainer controlsMenu-item">
+        <label id="disableExtension" for="toggleSwitch" class="toggleSwitchContainer sbControlsMenu-item">
           <span class="toggleSwitchContainer-switch">
             <input type="checkbox" style="display:none;" id="toggleSwitch" checked>
             <span class="switchBg shadow"></span>
@@ -50,13 +50,13 @@
           <span id="disableSkipping">__MSG_disableSkipping__</span>
           <span id="enableSkipping" style="display: none">__MSG_enableSkipping__</span>
         </label>
-        <button id="optionsButton" class="controlsMenu-item" title="__MSG_optionsInfo__">
-          <img src="/icons/settings.svg" alt="Settings icon" width="23" height="23" class="controlsMenu-itemIcon" id="sbPopupIconSettings" />
+        <button id="optionsButton" class="sbControlsMenu-item" title="__MSG_optionsInfo__">
+          <img src="/icons/settings.svg" alt="Settings icon" width="23" height="23" class="sbControlsMenu-itemIcon" id="sbPopupIconSettings" />
           __MSG_Options__
         </button>
       </div>
 
-      <p id="whitelistForceCheck" class="hidden">
+      <p id="whitelistForceCheck" class="u-mZ hidden">
         __MSG_forceChannelCheckPopup__
       </p>
 
@@ -66,20 +66,21 @@
         </p>
         <sub style="margin-bottom: 12px;">__MSG_popupHint__</sub>
         <div>
-          <button id="sponsorStart" class="mediumButton">__MSG_sponsorStart__</button>
+          <button id="sponsorStart" class="sbMediumButton">__MSG_sponsorStart__</button>
         </div>
         <div id="submissionSection" style="display: none">
           <b style="display: block; margin-top: 12px;">__MSG_submissionEditHint__</b>
-          <button id="submitTimes" class="mediumButton">__MSG_submitTimesButton__</button>
+          <button id="submitTimes" class="sbMediumButton">__MSG_submitTimesButton__</button>
         </div>
       </div>
+
       <h1 class="recordingSubtitle sbHeader">__MSG_yourWork__</h1>
-      <div class="sidebyside">
+      <div class="sbYourWorkCols">
         <div id="usernameElement">
           <div>
-            <p>__MSG_Username__:</p>
+            <p class="u-mZ">__MSG_Username__:</p>
             <div id="setUsernameContainer">
-              <p id="usernameValue"></p>
+              <p id="usernameValue" class="u-mZ"></p>
               <button id="setUsernameButton" title="__MSG_setUsername__">
                 <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
               </button>
@@ -89,7 +90,7 @@
             </div>
             <div id="setUsername" style="display: none">
               <div id="setUsernameStatusContainer" style="display: none">
-                <p id="setUsernameStatus"></p>
+                <p id="setUsernameStatus" class="u-mZ"></p>
               </div>
               <input id="usernameInput" placeholder="Username">
               <button id="submitUsername">
@@ -100,7 +101,7 @@
         </div>
         <div id="sponsorTimesContributionsContainer" class="hidden">
           <div>
-            <p>__MSG_Submissions__:</p>
+            <p class="u-mZ">__MSG_Submissions__:</p>
             <span id="sponsorTimesContributionsDisplay">
               0
             </span>
@@ -108,7 +109,7 @@
         </div>
       </div>
 
-      <p id="sponsorTimesViewsContainer" style="display: none">
+      <p id="sponsorTimesViewsContainer" style="display: none" class="u-mZ">
         __MSG_savedPeopleFrom__
         <b><span id="sponsorTimesViewsDisplay">
             0
@@ -119,7 +120,7 @@
           <span id="sponsorTimesOthersTimeSavedEndWord">__MSG_minsLower__</span></b>
         <span>__MSG_youHaveSavedTimeEnd__</span>).
       </p>
-      <p id="sponsorTimesSkipsDoneContainer" style="display: none">
+      <p id="sponsorTimesSkipsDoneContainer" style="display: none" class="u-mZ">
         __MSG_youHaveSkipped__
         <b><span id="sponsorTimesSkipsDoneDisplay">
             0
@@ -146,11 +147,11 @@
         <br/>
         <a href="https://discord.gg/SponsorBlock" target="_blank" rel="noopener">Discord</a> |
         <a href="https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org" target="_blank" rel="noopener">Matrix</a> |
-        <a id="helpButton" style="cursor: pointer;">__MSG_help__</a> |
+        <a id="helpButton">__MSG_help__</a> |
         <a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">$</a>
       </footer>
 
-      <button id="showNoticeAgain" style="display: none" class="dangerButton popupElement">__MSG_showNotice__</button>
+      <button id="showNoticeAgain" style="display: none">__MSG_showNotice__</button>
 
     </div>
     <!-- Scripts that need to load after the html -->
