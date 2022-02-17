@@ -52,6 +52,9 @@
     "reskip": {
         "message": "اعاده التخطي"
     },
+    "unmute": {
+        "message": "إلغاء الكتم"
+    },
     "paused": {
         "message": "ايقاف مؤقت"
     },
@@ -87,6 +90,39 @@
     },
     "refreshSegments": {
         "message": "تحديث الأجزاء"
+    },
+    "success": {
+        "message": "تم بنجاح!"
+    },
+    "voted": {
+        "message": "تم التصويت!"
+    },
+    "serverDown": {
+        "message": "يبدو أن الخادم غير متصل. تواصل مع المطوّر على الفور."
+    },
+    "connectionError": {
+        "message": "حدث خطأ في الاتصال. رمز الخطأ: "
+    },
+    "clearTimes": {
+        "message": "مسح الأقسام"
+    },
+    "openPopup": {
+        "message": "فتح نافذة سبونسر بلوك المنبثقة"
+    },
+    "closePopup": {
+        "message": "إغلاق النافذة المنبثقة"
+    },
+    "SubmitTimes": {
+        "message": "إرسال الأقسام"
+    },
+    "submitCheck": {
+        "message": "هل أنت متيقّن من إرسال هذا؟"
+    },
+    "whitelistChannel": {
+        "message": "إضافة القناة إلى القائمة البيضاء"
+    },
+    "removeFromWhitelist": {
+        "message": "إزالة القناة من القائمة البيضاء"
     },
     "Username": {
         "message": "اسم المستخدم"
