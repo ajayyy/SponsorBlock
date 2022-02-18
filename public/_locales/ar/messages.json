@@ -200,6 +200,53 @@
     "showDeleteButton": {
         "message": "إظهار زر \"حذف\" على مشغّل اليوتيوب"
     },
+    "skip": {
+        "message": "تخطي"
+    },
+    "mute": {
+        "message": "كتم"
+    },
+    "full": {
+        "message": "فيديو كامل",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
+    "skip_category": {
+        "message": "تخطي {0}؟"
+    },
+    "mute_category": {
+        "message": "كتم {0}؟"
+    },
+    "skip_to_category": {
+        "message": "تخطي إلى {0}؟",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "تم تخطي {0}",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "تم كتم {0}",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "تم التخطي إلى {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
+    "disableAutoSkip": {
+        "message": "تعطيل التخطي التلقائي"
+    },
+    "enableAutoSkip": {
+        "message": "تفعيل التخطي التلقائي"
+    },
+    "minLower": {
+        "message": "دقيقة"
+    },
+    "minsLower": {
+        "message": "دقائق"
+    },
+    "add": {
+        "message": "أضِف"
+    },
     "permissionRequestSuccess": {
         "message": "نجح طلب الإذن!"
     },
