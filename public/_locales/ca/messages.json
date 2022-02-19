@@ -42,5 +42,23 @@
     },
     "Hide": {
         "message": "No mostris mai"
+    },
+    "hitGoBack": {
+        "message": "Premeu \"no saltar\" per tornar on estàveu."
+    },
+    "unskip": {
+        "message": "No saltar"
+    },
+    "reskip": {
+        "message": "Saltar de nou"
+    },
+    "unmute": {
+        "message": "Deixa de silenciar"
+    },
+    "paused": {
+        "message": "Pausat"
+    },
+    "manualPaused": {
+        "message": "S'ha aturat el temporitzador"
     }
 }
