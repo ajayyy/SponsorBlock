@@ -1,5 +1,31 @@
+:root {
+  --color-scheme: dark;
+  --background: #333333;
+  --header-color: #212121;
+  --dialog-background: #181818;
+  --dialog-border: white;
+  --text: #c4c4c4;
+  --title: #dad8d8;
+  --disabled: #520000;
+  --black: black;
+  --white: white;
+}
+
+[data-theme="light"] {
+  --color-scheme: light;
+  --background: #f9f9f9;
+  --header-color: white;
+  --dialog-background: #f9f9f9;
+  --dialog-border: #282828;
+  --text: #262626;
+  --title: #707070;
+  --disabled: #ffcaca;
+  --black: white;
+  --white: black;
+}
+
 html {
-  color-scheme: dark;
+  color-scheme: var(--color-scheme);
 }
 
 .bigText {
@@ -7,12 +33,16 @@ html {
 }
 
 body {
-  background-color: #333333;
+  background-color: var(--background);
   font-family: sans-serif;
 }
 
 .center {
   text-align: center;
+}
+
+.inline {
+  display: inline-block;
 }
 
 .container {
@@ -54,11 +84,13 @@ body {
   vertical-align: middle;
 
   font-size: 50px;
-  color: #212121;
+  color: var(--header-color);
 
   padding: 20px;
   
   text-decoration: none;
+
+  border-radius: 15px;
 
   transition: font-size 1s;
 }
@@ -125,8 +157,8 @@ p,li {
   font-size: 16px;
 }
 
-p,li,a {
-  color: #c4c4c4;
+p,li,a,span,div {
+  color: var(--text);
 }
 
 p,li,code,a {
@@ -160,7 +192,7 @@ img {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  color: #dad8d8;
+  color: var(--title);
   text-align: center;
 }
 
@@ -199,4 +231,95 @@ svg {
   p,li,code,a {
     text-align: center;
   }
+}
+
+/* keybind dialog */
+.key {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  display: inline-block;
+  min-width: 33px;
+  text-align: center;
+  font-weight: bold;
+  border-color: var(--white);
+  box-sizing: border-box;
+}
+
+.unbound, .key {
+  padding: 8px;
+}
+
+#keybind-dialog .dialog {
+  position: fixed;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 15px;
+  max-height: 100vh;
+  width: 400px;
+  overflow-x: auto;
+  z-index: 100;
+  padding: 15px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  background-color: var(--dialog-background);
+  border-color: var(--dialog-border);
+}
+
+#change-keybind-buttons {
+  float: right;
+}
+
+#change-keybind-buttons > .option-button {
+  margin: 0 2px;
+}
+
+#change-keybind-settings {
+  margin: 15px 15px 30px;
+}
+
+#change-keybind-settings .key {
+  vertical-align: top;
+  margin: 15px 0 0 40px;
+  height: 34px;
+}
+
+#change-keybind-error {
+  margin-bottom: 15px;
+  color: red;
+  font-weight: bold;
+}
+
+.blocker {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 90;
+  background-color: #00000080;
+}
+
+.option-button {
+  cursor: pointer;
+
+  background-color: #c00000;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+
+  width: max-content;
+}
+
+.option-button:hover:not(.disabled) {
+  background-color: #fc0303;
+}
+
+.option-button.disabled {
+  cursor: default;
+  background-color: var(--disabled);
+  color: grey;
 }

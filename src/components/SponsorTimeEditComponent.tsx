@@ -85,7 +85,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         // Add as a config listener
         if (!this.configUpdateListener) {
             this.configUpdateListener = () => this.configUpdate();
-            Config.configListeners.push(this.configUpdate.bind(this));
+            Config.configSyncListeners.push(this.configUpdate.bind(this));
         }
 
         this.checkToShowFullVideoWarning();
@@ -93,7 +93,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     componentWillUnmount(): void {
         if (this.configUpdateListener) {
-            Config.configListeners.splice(Config.configListeners.indexOf(this.configUpdate.bind(this)), 1);
+            Config.configSyncListeners.splice(Config.configSyncListeners.indexOf(this.configUpdate.bind(this)), 1);
         }
     }
 
@@ -266,7 +266,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(segment[1])) ? (
+                {(!isNaN(segment[1]) && sponsorTime.actionType != ActionType.Full) ? (
                     <span id={"sponsorTimeInspectButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.inspectTime.bind(this)}>
@@ -274,7 +274,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(segment[1])) ? (
+                {(!isNaN(segment[1]) && sponsorTime.actionType != ActionType.Full) ? (
                     <span id={"sponsorTimeEditButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.toggleEditTime.bind(this)}>
@@ -409,7 +409,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             if (confirm(chrome.i18n.getMessage("enableThisCategoryFirst")
                             .replace("{0}", chrome.i18n.getMessage("category_" + chosenCategory)))) {
                 // Open options page
-                chrome.runtime.sendMessage({message: "openConfig", hash: chosenCategory + "OptionsName"});
+                chrome.runtime.sendMessage({message: "openConfig", hash: "behavior"});
             }
             
             return;
@@ -547,7 +547,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const description = actionType === ActionType.Chapter ? this.descriptionOptionRef?.current?.value : "";
         sponsorTimesSubmitting[this.props.index].description = description;
 
-        Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimesSubmitting);
+        Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimesSubmitting;
+        Config.forceSyncUpdate("unsubmittedSegments");
 
         this.props.contentContainer().updatePreviewBar();
 
@@ -593,7 +594,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         sponsorTimes.splice(index, 1);
   
         //save this
-        Config.config.segmentTimes.set(this.props.contentContainer().sponsorVideoID, sponsorTimes);
+        if (sponsorTimes.length > 0) {
+            Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimes;
+        } else {
+            delete Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID];
+        }
+        Config.forceSyncUpdate("unsubmittedSegments");
 
         this.props.contentContainer().updatePreviewBar();
         

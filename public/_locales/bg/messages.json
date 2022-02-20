@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Активиране проследяването на броя пропускания в раздели „Инкогнито“"
     },
+    "enableTrackDownvotes": {
+        "message": "Съхраняване на отрицателните гласове за сегменти"
+    },
+    "whatTrackDownvotes": {
+        "message": "Всички сегменти, за които гласувате против, ще останат скрити дори след опресняване"
+    },
+    "trackDownvotesWarning": {
+        "message": "Внимание: Деактивирането на това ще изтрие всички по-рано запазени отрицателни гласове"
+    },
     "enableQueryByHashPrefix": {
         "message": "Заявка по префикс на хеш"
     },
@@ -263,19 +272,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Задайте клавиш за пропускане на сегмент"
+        "message": "Пропускане на сегмент",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Задайте клавиш за начало/край на сегмент"
+        "message": "Начало/край на сегмент",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Задайте клавиш за изпращане"
+        "message": "Изпращане на сегментите",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Изберете клавиш, като го натиснете"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Клавишът е зададен за: "
+        "message": "Изберете клавиш, като го натиснете, заедно с всички клавишни модификатори, които искате да използвате."
     },
     "0": {
         "message": "Времето за изчакване на връзката изтече. Проверете връзката си с интернет. Ако вашият интернет работи, вероятно сървърът е претоварен или не работи."
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Пропуснали сте "
     },
-    "youHaveSaved": {
-        "message": "Спестили сте "
-    },
     "minLower": {
         "message": "минута"
     },
@@ -365,10 +371,12 @@
         "message": "часа"
     },
     "youHaveSavedTime": {
-        "message": "Спестили сте на хората"
+        "message": "Спестили сте на хората",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " от живота им"
+        "message": " от живота им",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Проверете status.sponsor.ajay.app за състоянието на сървъра."
@@ -387,9 +395,6 @@
     },
     "createdBy": {
         "message": "Създаден от"
-    },
-    "keybindCurrentlySet": {
-        "message": ". В момента е настроено на:"
     },
     "supportOtherSites": {
         "message": "Поддръжка на YouTube-сайтове на трети страни"
@@ -470,6 +475,15 @@
     "exportOptions": {
         "message": "Импортиране/експортиране на всички опции"
     },
+    "exportOptionsCopy": {
+        "message": "Редактиране/копиране"
+    },
+    "exportOptionsDownload": {
+        "message": "Записване във файл"
+    },
+    "exportOptionsUpload": {
+        "message": "Зареждане от файл"
+    },
     "whatExportOptions": {
         "message": "Това е цялата ви конфигурация в JSON. Това включва вашия userID, така че се уверете, че споделяте това разумно."
     },
@@ -518,11 +532,8 @@
     "copyDebugInformationComplete": {
         "message": "Информацията за отстраняване на грешки е копирана в клипборда. Чувствайте се свободни да премахнете всяка информация, която предпочитате да не споделяте. Запазете това в текстов файл или го поставете в доклада за грешки."
     },
-    "theKey": {
-        "message": "Клавишът"
-    },
     "keyAlreadyUsed": {
-        "message": "е обвързан с друго действие. Моля, изберете друг клавиш."
+        "message": "Тази клавишна комбинация е свързана с друго действие. Моля, изберете друга."
     },
     "to": {
         "message": "до",
@@ -581,7 +592,7 @@
         "message": "Бързо обобщение на предишни епизоди или преглед на това, което предстои по-късно в текущия видеоклип. Предназначен за монтирани заедно клипове, а не за речеви обобщения."
     },
     "category_filler": {
-        "message": "Пълнеж извън темата"
+        "message": "Пълнеж/Шеги"
     },
     "category_filler_description": {
         "message": "Съпътстващи сцени, добавени само за пълнеж или хумор, които не са необходими за разбирането на основното съдържание на видеоклипа. Това не трябва да включва сегменти, предоставящи контекст или справочни данни."
@@ -644,9 +655,6 @@
         "message": "Показване на икона, когато видеоклипът е изцяло реклама",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Вашият цвят не е форматиран правилно. Трябва да бъде 3- или 6-цифрен шестнадесетичен код с „#“ в началото."
-    },
     "previewColor": {
         "message": "Цвят на неизпратен сегмент",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -697,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "скрито: твърде кратко"
+    },
+    "manuallyHidden": {
+        "message": "ръчно скрито"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -784,8 +795,14 @@
     "Donate": {
         "message": "Дарение"
     },
+    "considerDonating": {
+        "message": "Помогнете с финансиране на разработката"
+    },
     "hideDonationLink": {
         "message": "Скриване на връзката за дарение"
+    },
+    "darkModeOptionsPage": {
+        "message": "Тъмен режим на страницата с опции"
     },
     "helpPageThanksForInstalling": {
         "message": "Благодарим ви, че инсталирахте SponsorBlock."
@@ -875,5 +892,42 @@
     "hourAbbreviation": {
         "message": "ч",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Поведение",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Интерфейс",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Клавишни комбинации",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Архивиране/Възстановяване",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Други",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Изглед на известията за пропускане",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Освобождаване",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Не е зададено"
+    },
+    "change": {
+        "message": "Промяна"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Това е вградена клавишна комбинация в YouTube. Наистина ли искате да я използвате?"
     }
 }

@@ -8,6 +8,7 @@ import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 import { VoteResponse } from "../messageTypes";
 import { AnimationUtils } from "../utils/animationUtils";
 import { GenericUtils } from "../utils/genericUtils";
+import { Tooltip } from "../render/Tooltip";
 
 export interface CategoryPillProps {
     vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>;
@@ -20,6 +21,8 @@ export interface CategoryPillState {
 }
 
 class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryPillState> {
+
+    tooltip?: Tooltip;
 
     constructor(props: CategoryPillProps) {
         super(props);
@@ -35,15 +38,16 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         const style: React.CSSProperties = {
             backgroundColor: this.getColor(),
             display: this.state.show ? "flex" : "none",
-            color: this.state.segment?.category === "sponsor" 
-                || this.state.segment?.category === "exclusive_access" ? "white" : "black",
+            color: this.getTextColor(),
         }
 
         return (
             <span style={style}
                 className={"sponsorBlockCategoryPill"} 
-                title={this.getTitleText()}
-                onClick={(e) => this.toggleOpen(e)}>
+                aria-label={this.getTitleText()}
+                onClick={(e) => this.toggleOpen(e)}
+                onMouseEnter={() => this.openTooltip()}
+                onMouseLeave={() => this.closeTooltip()}>
                 <span className="sponsorBlockCategoryPillTitleSection">
                     <img className="sponsorSkipLogo sponsorSkipObject"
                         src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
@@ -114,6 +118,45 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         const configObject = Config.config.barTypes["preview-" + this.state.segment?.category] 
             || Config.config.barTypes[this.state.segment?.category];
         return configObject?.color;
+    }
+
+    private getTextColor(): string {
+        const color = this.getColor();
+        if (!color) return null;
+
+        const existingCalculatedColor = Config.config.categoryPillColors[this.state.segment?.category];
+        if (existingCalculatedColor && existingCalculatedColor.lastColor === color) {
+            return existingCalculatedColor.textColor;
+        } else {
+            const luminance = GenericUtils.getLuminance(color);
+            const textColor = luminance > 128 ? "black" : "white";
+            Config.config.categoryPillColors[this.state.segment?.category] = {
+                lastColor: color,
+                textColor
+            };
+
+            return textColor;
+        }
+    }
+
+    private openTooltip(): void {
+        const tooltipMount = document.querySelector("ytd-video-primary-info-renderer > #container") as HTMLElement;
+        if (tooltipMount) {
+            this.tooltip = new Tooltip({
+                text: this.getTitleText(),
+                referenceNode: tooltipMount,
+                bottomOffset: "70px",
+                opacity: 0.95,
+                displayTriangle: false,
+                showLogo: false,
+                showGotIt: false
+            });
+        }
+    }
+
+    private closeTooltip(): void {
+        this.tooltip?.close();
+        this.tooltip = null;
     }
 
     getTitleText(): string {

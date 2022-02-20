@@ -215,6 +215,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Enable Skip Count Tracking In Private/Incognito tabs"
     },
+    "enableTrackDownvotes": {
+        "message": "Store segment downvotes"
+    },
+    "whatTrackDownvotes": {
+        "message": "Any segments you downvote will remain hidden even after refreshing"
+    },
+    "trackDownvotesWarning": {
+        "message": "Warning: Disabling this will delete all previously stored downvotes"
+    },
     "enableQueryByHashPrefix": {
         "message": "Query By Hash Prefix"
     },
@@ -249,7 +258,7 @@
         "message": "All Faded Skip Notices"
     },
     "longDescription": {
-        "message": "SponsorBlock lets you skip over sponsors, intros, outros, subscription reminders, and other annoying parts of YouTube videos. SponsorBlock is a crowdsourced browser extension that let's anyone submit the start and end time's of sponsored segments and other segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment. You can also skip over non music sections of music videos.",
+        "message": "SponsorBlock lets you skip over sponsors, intros, outros, subscription reminders, and other annoying parts of YouTube videos. SponsorBlock is a crowdsourced browser extension that lets anyone submit the start and end times of sponsored segments and other segments of YouTube videos. Once one person submits this information, everyone else with this extension will skip right over the sponsored segment. You can also skip over non music sections of music videos.",
         "description": "Full description of the extension on the store pages."
     },
     "website": {
@@ -269,19 +278,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Set key for skipping a segment"
+        "message": "Skip segment",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Set key for start/stop segment keybind"
+        "message": "Start/stop segment",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Set key for submission keybind"
+        "message": "Submit segments",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Select a key by typing it"
-    },
-    "keybindDescriptionComplete": {
-        "message": "The keybind has been set to: "
+        "message": "Select a key by typing it and choose any modifier keys you wish to use."
     },
     "0": {
         "message": "Connection Timeout. Check your internet connection. If your internet is working, the server is probably overloaded or down."
@@ -355,9 +364,6 @@
     "youHaveSkipped": {
         "message": "You've skipped "
     },
-    "youHaveSaved": {
-        "message": "You have saved yourself "
-    },
     "minLower": {
         "message": "minute"
     },
@@ -371,10 +377,12 @@
         "message": "hours"
     },
     "youHaveSavedTime": {
-        "message": "You've saved people"
+        "message": "You've saved people",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " of their lives"
+        "message": " of their lives",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Check status.sponsor.ajay.app for server status."
@@ -393,9 +401,6 @@
     },
     "createdBy": {
         "message": "Created By"
-    },
-    "keybindCurrentlySet": {
-        "message": ". It is currently set to:"
     },
     "supportOtherSites": {
         "message": "Support 3rd Party YouTube-Sites"
@@ -441,13 +446,13 @@
         "message": "Skip notice duration (seconds):"
     },
     "skipNoticeDurationDescription": {
-        "message": "The skip notice will stay on screen for at least this long. For manual skipping, it may be visible for longer."
+        "message": "The skip notice will stay on screen for at least this many seconds. For manual skipping, it may be visible for longer."
     },
     "shortCheck": {
         "message": "The following submission is shorter than your minimum duration option. This could mean that this is already submitted, and just being ignored due to this option. Are you sure you would like to submit?"
     },
     "liveOrPremiere": {
-        "message": "Submitting on an active livesteam or premiere is not allowed. Please wait until it finishes, then refresh the page and verify that the segments are still valid."
+        "message": "Submitting on an active livestream or premiere is not allowed. Please wait until it finishes, then refresh the page and verify that the segments are still valid."
     },
     "showUploadButton": {
         "message": "Show Upload Button"
@@ -475,6 +480,15 @@
     },
     "exportOptions": {
         "message": "Import/Export All Options"
+    },
+    "exportOptionsCopy": {
+        "message": "Edit/copy"
+    },
+    "exportOptionsDownload": {
+        "message": "Save to file"
+    },
+    "exportOptionsUpload": {
+        "message": "Load from file"
     },
     "whatExportOptions": {
         "message": "This is your entire configuration in JSON. This includes your userID, so be sure to share this wisely."
@@ -524,11 +538,8 @@
     "copyDebugInformationComplete": {
         "message": "The debug information has been copied to the clip board. Feel free to remove any information you would rather not share. Save this in a text file or paste into the bug report."
     },
-    "theKey": {
-        "message": "The key"
-    },
     "keyAlreadyUsed": {
-        "message": "is bound to another action. Please select another key."
+        "message": "This shortcut is bound to another action. Please select a different one."
     },
     "to": {
         "message": "to",
@@ -587,7 +598,7 @@
         "message": "Quick recap of previous episodes, or a preview of what's coming up later in the current video. Meant for edited together clips, not for spoken summaries."
     },
     "category_filler": {
-        "message": "Filler Tangent"
+        "message": "Filler Tangent/Jokes"
     },
     "category_filler_description": {
         "message": "Tangential scenes added only for filler or humor that are not required to understand the main content of the video. This should not include segments providing context or background details."
@@ -656,9 +667,6 @@
         "message": "Show an icon when a video is entirely an advertisement",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Your color is formatted incorrectly. It should be a 3 or 6 digit hex code with a number sign at the beginning."
-    },
     "previewColor": {
         "message": "Unsubmitted Color",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -709,6 +717,9 @@
     },
     "hiddenDueToDuration": {
         "message": "hidden: too short"
+    },
+    "manuallyHidden": {
+        "message": "manually hidden"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -796,8 +807,14 @@
     "Donate": {
         "message": "Donate"
     },
+    "considerDonating": {
+        "message": "Help fund development"
+    },
     "hideDonationLink": {
         "message": "Hide Donation Link"
+    },
+    "darkModeOptionsPage": {
+        "message": "Dark Mode On Options Page"
     },
     "helpPageThanksForInstalling": {
         "message": "Thanks for installing SponsorBlock."
@@ -887,5 +904,42 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Behavior",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interface",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Keyboard shortcuts",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Backup/Restore",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Miscellaneous",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Skip notice appearance",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Unbind",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Not set"
+    },
+    "change": {
+        "message": "Change"
+    },
+    "youtubeKeybindWarning": {
+        "message": "This is a built-in YouTube shortcut. Are you sure you want to use it?"
     }
 }

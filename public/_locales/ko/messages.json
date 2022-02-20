@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "시크릿/사생활 보호 탭에서 스킵 개수 추적 활성화"
     },
+    "enableTrackDownvotes": {
+        "message": "구간 비추천 저장"
+    },
+    "whatTrackDownvotes": {
+        "message": "비추천한 구간을 새로고침 이후에도 계속 숨깁니다"
+    },
+    "trackDownvotesWarning": {
+        "message": "경고: 비활성화하는 경우 이전에 저장한 모든 비추천이 삭제됩니다"
+    },
     "enableQueryByHashPrefix": {
         "message": "Hash Prefix가 쿼리를 제공함"
     },
@@ -263,19 +272,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "구간 건너뛰기 키 설정"
+        "message": "구간 건너뛰기",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "시작/끝 부분 키 할당 설정"
+        "message": "구간 시작/중지",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "제출 키 할당 설정"
+        "message": "구간 제출",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "입력해서 키를 선택하세요"
-    },
-    "keybindDescriptionComplete": {
-        "message": "키가 다음에 할당되었습니다: "
+        "message": "키를 눌러서 선택하고 함께 사용하고 싶은 조합 키를 선택하십시오."
     },
     "0": {
         "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "건너뛴 구간: "
     },
-    "youHaveSaved": {
-        "message": "지금까지 절약한 시간: "
-    },
     "minLower": {
         "message": "분"
     },
@@ -365,10 +371,12 @@
         "message": "시간"
     },
     "youHaveSavedTime": {
-        "message": "사람들의"
+        "message": "사람들의",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " 의 시간을 아꼈습니다."
+        "message": " 의 시간을 아꼈습니다.",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
@@ -387,9 +395,6 @@
     },
     "createdBy": {
         "message": "개발자: "
-    },
-    "keybindCurrentlySet": {
-        "message": ". 현재 다음으로 설정되어 있습니다:"
     },
     "supportOtherSites": {
         "message": "제3자 YouTube 사이트 지원"
@@ -440,6 +445,9 @@
     "shortCheck": {
         "message": "다음 제출은 최소 기간 옵션보다 짧습니다. 이 말은 이미 제출되었으며, 이 옵션으로 인해 무시될 수 있습니다. 제출하시겠습니까?"
     },
+    "liveOrPremiere": {
+        "message": "진행 중인 실시간 스트림 및 최초 공개 동영상에는 제출할 수 없습니다. 끝날 때까지 대기한 후, 페이지를 새로고침하고 구간이 여전히 유효한지 확인해주십시오."
+    },
     "showUploadButton": {
         "message": "업로드 버튼 표시"
     },
@@ -466,6 +474,15 @@
     },
     "exportOptions": {
         "message": "모든 설정 가져오기/내보내기"
+    },
+    "exportOptionsCopy": {
+        "message": "수정/복사"
+    },
+    "exportOptionsDownload": {
+        "message": "파일로 저장"
+    },
+    "exportOptionsUpload": {
+        "message": "파일에서 불러오기"
     },
     "whatExportOptions": {
         "message": "JSON의 전체 구성입니다. 사용자ID가 포함되므로 주의하세요."
@@ -515,11 +532,8 @@
     "copyDebugInformationComplete": {
         "message": "디버그 정보가 복사되었습니다. 공유하고 싶지 않은 내용이 있는 경우 자유롭게 수정하신 후, 텍스트 파일로 저장하시거나 버그 신고 페이지에 붙여넣으시면 됩니다."
     },
-    "theKey": {
-        "message": "키"
-    },
     "keyAlreadyUsed": {
-        "message": "이 키는 다른 행동과 연동되었습니다. 다른 키를 선택하세요."
+        "message": "이 단축키는 다른 동작에 할당되어 있습니다. 다른 키를 선택하세요."
     },
     "to": {
         "message": "-",
@@ -536,6 +550,16 @@
     },
     "category_selfpromo_description": {
         "message": "'스폰서 광고'와 비슷하지만 협찬 없이 자기 채널을 홍보하는 구간입니다. 여기에는 채널 굿즈 광고, 기부 광고와 영상에 참여한 사람들을 홍보하는 광고가 해당됩니다."
+    },
+    "category_exclusive_access": {
+        "message": "협찬"
+    },
+    "category_exclusive_access_description": {
+        "message": "전체 동영상 전용 카테고리입니다. 동영상이 유/무료 협찬을 받은 제품, 서비스, 장소를 소개하는 경우 사용합니다."
+    },
+    "category_exclusive_access_pill": {
+        "message": "본 동영상은 무료/유료 협찬을 받은 제품, 서비스, 장소를 소개합니다",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "상호 작용 알림 (구독)"
@@ -568,7 +592,7 @@
         "message": "이전 에피소드를 간략히 요약하거나 현재 동영상에서 나중에 나올 내용을 예고해줍니다. 음성 요약이 아니라 편집된 동영상을 통한 요약입니다."
     },
     "category_filler": {
-        "message": "쓸데없는 잡담"
+        "message": "쓸데없는 잡담/농담"
     },
     "category_filler_description": {
         "message": "쓸데없는 잡담은 동영상의 주요 콘텐츠를 이해하는 데 필요없는 시간 떼우기 장면이나 농담만을 말합니다. 맥락이나 상세한 배경지식을 설명하는 부분은 해당하지 않습니다."
@@ -631,9 +655,6 @@
         "message": "동영상 전체가 광고인 경우 아이콘 표시",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "올바르지 않은 색상 코드입니다. 색상 코드는 샵 (#) 기호로 시작하여 3자리 또는 6자리의 16진수로 구성되어야 합니다."
-    },
     "previewColor": {
         "message": "미제출한 색상",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -684,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "숨겨짐: 너무 짧음"
+    },
+    "manuallyHidden": {
+        "message": "수동으로 숨김"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -771,8 +795,14 @@
     "Donate": {
         "message": "후원"
     },
+    "considerDonating": {
+        "message": "개발 자금 지원"
+    },
     "hideDonationLink": {
         "message": "후원 링크 숨기기"
+    },
+    "darkModeOptionsPage": {
+        "message": "설정 페이지 내 다크 모드"
     },
     "helpPageThanksForInstalling": {
         "message": "SponsorBlock을 설치해 주셔서 감사드립니다."
@@ -862,5 +892,42 @@
     "hourAbbreviation": {
         "message": "시간",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "동작",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "인터페이스",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "키보드 단축키",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "백업/복원",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "기타",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "건너뛰기 알림 표시",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "할당 해제",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "설정되지 않음"
+    },
+    "change": {
+        "message": "변경"
+    },
+    "youtubeKeybindWarning": {
+        "message": "기본 YouTube 단축키와 겹칩니다. 그래도 사용하시겠습니까?"
     }
 }

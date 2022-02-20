@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Увімкнути відстеження пропусків у вкладках інкогніто"
     },
+    "enableTrackDownvotes": {
+        "message": "Зберігати голоси \"проти\" сегментів"
+    },
+    "whatTrackDownvotes": {
+        "message": "Усі сегменти, за які ви проголосуєте \"проти\", залишаться прихованими навіть після оновлення"
+    },
+    "trackDownvotesWarning": {
+        "message": "Попередження: вимкнення цієї опції призведе до видалення всіх раніше збережених голосів \"проти\""
+    },
     "enableQueryByHashPrefix": {
         "message": "Пошук по частині хеша"
     },
@@ -263,19 +272,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Призначити гарячу клавішу для пропуску сегмента"
+        "message": "Пропустити сегмент",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Призначити гарячу клавішу для початку/зупинки сегмента"
+        "message": "Почати/зупинити сегмент",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Призначити гарячу клавішу для надсилання"
+        "message": "Надіслати сегменти",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Натисніть, щоб вибрати її"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Кнопка призначена на: "
+        "message": "Виберіть клавішу, набравши її та виберіть бажану клавішу-модифікатор."
     },
     "0": {
         "message": "Таймаут підключення. Перевірте ваше з'єднання з інтернетом. Якщо ваш інтернет працює, сервер, швидше за все, перевантажений або лежить."
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Ви пропустили "
     },
-    "youHaveSaved": {
-        "message": "Ви заощадили "
-    },
     "minLower": {
         "message": "хвилину"
     },
@@ -365,10 +371,12 @@
         "message": "годин"
     },
     "youHaveSavedTime": {
-        "message": "Ви заощадили людям"
+        "message": "Ви заощадили людям",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " їх життів"
+        "message": " їх життів",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Дивіться стан сервера на status.sponsor.ajay.app."
@@ -387,9 +395,6 @@
     },
     "createdBy": {
         "message": "Створено"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Він зараз призначений на:"
     },
     "supportOtherSites": {
         "message": "Підтримувати сторонні YouTube-сайти"
@@ -470,6 +475,15 @@
     "exportOptions": {
         "message": "Імпорт/Експорт всіх налаштувань"
     },
+    "exportOptionsCopy": {
+        "message": "Змінити/копіювати"
+    },
+    "exportOptionsDownload": {
+        "message": "Зберегти до файлу"
+    },
+    "exportOptionsUpload": {
+        "message": "Завантажити з файлу"
+    },
     "whatExportOptions": {
         "message": "Це вся конфігурація в форматі JSON. Цей файл містить Ваш ідентифікатор користувача, тому не забудьте ділитися з цим розумно."
     },
@@ -518,11 +532,8 @@
     "copyDebugInformationComplete": {
         "message": "Інформація про налагодження скопійована в буфер обміну. Ви можете видалити будь-яку інформацію, якої не хочете ділитися. Збережіть її в текстовий файл, вставте в звіт про помилку."
     },
-    "theKey": {
-        "message": "Ключ"
-    },
     "keyAlreadyUsed": {
-        "message": "прив'язана до іншого дії. Будь ласка, оберіть іншу клавішу."
+        "message": "Ця клавіша/комбінація клавіш прив'язана до іншої дії. Будь ласка виберіть іншу клавішу."
     },
     "to": {
         "message": "до",
@@ -581,7 +592,7 @@
         "message": "Короткий зміст попередніх епізодів або попередній перегляд того, що буде в даному відео. Призначено для сегментів, змонтованих зі шматків відео, а не для усних переказів."
     },
     "category_filler": {
-        "message": "Дотичне наповнення"
+        "message": "Дотичне наповнення/Жарти"
     },
     "category_filler_description": {
         "message": "Дотичні сцени додані лише для наповнення або гумору, які не потрібні для розуміння основного вмісту відео. Це не повинно включати сегменти, що надають контекст або передісторію."
@@ -644,9 +655,6 @@
         "message": "Показувати значок, коли все відео є рекламою",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Ви ввели колір в неправильному форматі. Це повинно бути 3-х або 6-ти значне шістнадцяткове число з символом # на початку."
-    },
     "previewColor": {
         "message": "Колір не надісланого сегмента",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -697,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "приховано: занадто коротко"
+    },
+    "manuallyHidden": {
+        "message": "приховано вручну"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -765,7 +776,7 @@
         "message": "Цей сегмент великий. Якщо все відео на одну тему, тоді змініть значення з \"Пропустити\" на \"Повне відео\". Продивіться керівництво для додаткової інформації."
     },
     "categoryPillTitleText": {
-        "message": "Все це відео позначене як ця категорія, і воно занадто інтегровано, щоб його було розділити"
+        "message": "Все відео позначене цією категорією, воно є її уособленням, тож категорію неможливо виокремити."
     },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",
@@ -784,8 +795,14 @@
     "Donate": {
         "message": "Пожертвувати"
     },
+    "considerDonating": {
+        "message": "Допомогти з фінансуванням розробки"
+    },
     "hideDonationLink": {
         "message": "Приховати посилання на пожертвування"
+    },
+    "darkModeOptionsPage": {
+        "message": "Темний режим на сторінці налаштувань"
     },
     "helpPageThanksForInstalling": {
         "message": "Дякую за встановлення SponsorBlock."
@@ -875,5 +892,42 @@
     "hourAbbreviation": {
         "message": "г",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Поведінка",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Інтерфейс",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Комбінації клавіш",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Резервування/Відновлення",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Різне",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Вигляд сповіщення про пропуск",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Відв'язати",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Не задано"
+    },
+    "change": {
+        "message": "Змінити"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Це вбудована комбінація YouTube. Ви впевнені що хочете її використовувати?"
     }
 }

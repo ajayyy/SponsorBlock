@@ -31,24 +31,24 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
                     {/* Headers */}
                     <tr id={"CategoryOptionsRow"}
                             className="categoryTableElement categoryTableHeader">
-                        <td id={"CategoryOptionName"}>
+                        <th id={"CategoryOptionName"}>
                             {chrome.i18n.getMessage("category")}
-                        </td>
+                        </th>
 
-                        <td id={"CategorySkipOption"}
+                        <th id={"CategorySkipOption"}
                             className="skipOption">
                             {chrome.i18n.getMessage("skipOption")}
-                        </td>
+                        </th>
 
-                        <td id={"CategoryColorOption"}
+                        <th id={"CategoryColorOption"}
                             className="colorOption">
                             {chrome.i18n.getMessage("seekBarColor")}
-                        </td>
+                        </th>
 
-                        <td id={"CategoryPreviewColorOption"}
+                        <th id={"CategoryPreviewColorOption"}
                             className="previewColorOption">
                             {chrome.i18n.getMessage("previewColor")}
-                        </td>
+                        </th>
                     </tr>
 
                     {this.getCategorySkipOptions()}

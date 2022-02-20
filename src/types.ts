@@ -32,6 +32,8 @@ export interface FetchResponse {
     ok: boolean
 }
 
+export type HashedValue = string & { __hashBrand: unknown };
+
 export interface VideoDurationResponse {
     duration: number;
 }
@@ -50,7 +52,8 @@ export interface CategorySelection {
 export enum SponsorHideType {
     Visible = undefined,
     Downvoted = 1,
-    MinimumDuration
+    MinimumDuration,
+    Hidden,
 }
 
 export enum ActionType {
@@ -225,4 +228,12 @@ export enum NoticeVisbilityMode {
     MiniForAll = 2,
     FadedForAutoSkip = 3,
     FadedForAll = 4
+}
+
+export type Keybind = {
+    key: string,
+    code?: string,
+    ctrl?: boolean,
+    alt?: boolean,
+    shift?: boolean
 }

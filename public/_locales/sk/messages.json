@@ -262,21 +262,6 @@
         "message": "Ak sa vám to stále nepáčí, stlačte tlačidlo Nikdy nezobrazovať.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Nastaviť kláves pre preskočenie segmentu"
-    },
-    "setStartSponsorShortcut": {
-        "message": "Nastaviť kláves pre začiatok/ukončenie segmentu"
-    },
-    "setSubmitKeybind": {
-        "message": "Nastaviť kláves pre odoslanie segmentu"
-    },
-    "keybindDescription": {
-        "message": "Stlačte požadovaný kláves"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Kláves bol nastavený na: "
-    },
     "0": {
         "message": "Spojenie vypršalo. Skontrolujte svoje internetové pripojenie. Ak vám internet funguje, server je pravdepodobne preťažený alebo nefunkčný."
     },
@@ -349,9 +334,6 @@
     "youHaveSkipped": {
         "message": "Preskočili ste "
     },
-    "youHaveSaved": {
-        "message": "Ušetrili ste "
-    },
     "minLower": {
         "message": "minúta"
     },
@@ -365,10 +347,12 @@
         "message": "hodiny"
     },
     "youHaveSavedTime": {
-        "message": "Ostatným ste ušetrili"
+        "message": "Ostatným ste ušetrili",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " z ich života"
+        "message": " z ich života",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Stav servera skontrolujete na status.sponsor.ajay.app."
@@ -387,9 +371,6 @@
     },
     "createdBy": {
         "message": "Vytvoril"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Aktuálne je nastavené na:"
     },
     "supportOtherSites": {
         "message": "Podpora alternatívnych Youtube webov"
@@ -439,6 +420,9 @@
     },
     "shortCheck": {
         "message": "Segment je kratší ako vami nastavená minimálna dĺžka. Možno už bol niekým odoslaný a kvôli tomuto nastaveniu je teraz ignorovaný. Naozaj ho chcete odoslať?"
+    },
+    "liveOrPremiere": {
+        "message": "Vytváranie segmentov v aktívnom živom prenose alebo premiére nie je dovolené. Počkajte prosím na jeho ukončenie, potom obnovte stránku a skontrolujte, či sú segmenty správne vytvorené."
     },
     "showUploadButton": {
         "message": "Ukázať Nahrávacie Tlačidlo"
@@ -515,12 +499,6 @@
     "copyDebugInformationComplete": {
         "message": "Debug informácie boli skopírované do schránky. Ak chcete, môžete odstrániť akékoľvek informácie, ktoré nechcete zdieľať. Uložte si ich do textového súboru alebo ich vložte do nahlásenia chyby."
     },
-    "theKey": {
-        "message": "Kľúč"
-    },
-    "keyAlreadyUsed": {
-        "message": "je pridelený pre inú akciu. Prosím zvoľte inú klávesu."
-    },
     "to": {
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -576,9 +554,6 @@
     },
     "category_preview_description": {
         "message": "Rýchla rekapitulácia predošlej epizódy alebo ukážka toho, čo bude nasledovať neskôr v aktuálnom videu. Myslené pre zostrihané videá, nie pre hovorený súhrn."
-    },
-    "category_filler": {
-        "message": "Odbočka mimo tému"
     },
     "category_filler_description": {
         "message": "Odbočky mimo tému pridané len pre zábavu, nepotrebné pre pochopenie hlavného obsahu videa. Nemalo by zahŕňať segmenty, ktoré vysvetľujú kontext alebo vedľajšie detaily."
@@ -640,9 +615,6 @@
     "fullVideoSegments": {
         "message": "Zobraziť ikonu, ak je celé video reklama",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
-    },
-    "colorFormatIncorrect": {
-        "message": "Vaša farba je nesprávne naformátovaná. Mal by to byť 3 alebo 6-miestny hexadecimálny kód so znakom čísla na začiatku."
     },
     "previewColor": {
         "message": "Neodoslaná farba",

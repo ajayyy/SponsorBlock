@@ -1,19 +1,17 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
+import { keybindEquals } from "./utils/configUtils";
 
 interface SBConfig {
     userID: string,
     isVip: boolean,
     lastIsVipUpdate: number,
     /* Contains unsubmitted segments that the user has created. */
-    segmentTimes: SBMap<string, SponsorTime[]>,
+    unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
     whitelistedChannels: string[],
     forceChannelCheck: boolean,
-    skipKeybind: string,
-    startSponsorKeybind: string,
-    submitKeybind: string,
     minutesSaved: number,
     skipCount: number,
     sponsorTimesContributed: number,
@@ -24,6 +22,7 @@ interface SBConfig {
     fullVideoSegments: boolean,
     trackViewCount: boolean,
     trackViewCountInPrivate: boolean,
+    trackDownvotes: boolean,
     dontShowNotice: boolean,
     noticeVisibilityMode: NoticeVisbilityMode,
     hideVideoPlayerControls: boolean,
@@ -38,13 +37,15 @@ interface SBConfig {
     serverAddress: string,
     minDuration: number,
     skipNoticeDuration: number,
-    audioNotificationOnSkip,
+    audioNotificationOnSkip: boolean,
     checkForUnlistedVideos: boolean,
     testingServer: boolean,
     refetchWhenNotFound: boolean,
     ytInfoPermissionGranted: boolean,
     allowExpirements: boolean,
     showDonationLink: boolean,
+    showPopupDonationCount: number,
+    donateClicked: number,
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
     colorPalette: {
@@ -54,6 +55,19 @@ interface SBConfig {
     },
     scrollToEditTimeUpdate: boolean,
     categoryPillUpdate: boolean,
+    darkMode: boolean,
+
+    // Used to cache calculated text color info
+    categoryPillColors: {
+        [key in Category]: {
+            lastColor: string,
+            textColor: string
+        }
+    }
+
+    skipKeybind: Keybind,
+    startSponsorKeybind: Keybind,
+    submitKeybind: Keybind,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -83,96 +97,38 @@ interface SBConfig {
     }
 }
 
-export interface SBObject {
-    configListeners: Array<(changes: StorageChangesObject) => unknown>;
-    defaults: SBConfig;
-    localConfig: SBConfig;
-    config: SBConfig;
+export type VideoDownvotes = { segments: { uuid: HashedValue, hidden: SponsorHideType }[] , lastAccess: number };
 
-    // Functions
-    encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes;
-    convertJSON(): void;
+interface SBStorage {
+    /* VideoID prefixes to UUID prefixes */
+    downvotedSegments: Record<VideoID & HashedValue, VideoDownvotes>,
 }
 
-// Allows a SBMap to be conveted into json form
-// Currently used for local storage
-class SBMap<T, U> extends Map {
-    id: string;
-
-    constructor(id: string, entries?: [T, U][]) {
-        super();
-
-        this.id = id;
-
-        // Import all entries if they were given
-        if (entries !== undefined) {
-            for (const item of entries) {
-                super.set(item[0], item[1])
-            }
-        }
-    }
-
-    get(key): U {
-        return super.get(key);
-    }
-
-    rawSet(key, value) {
-        return super.set(key, value);
-    }
-
-    update() {
-        // Store updated SBMap locally
-        chrome.storage.sync.set({
-            [this.id]: encodeStoredItem(this)
-        });
-    }
-
-    set(key: T, value: U) {
-        const result = super.set(key, value);
-
-        this.update();
-        return result;
-    }
-	
-    delete(key) {
-        const result = super.delete(key);
-
-        // Make sure there are no empty elements
-        for (const entry of this.entries()) {
-            if (entry[1].length === 0) {
-                super.delete(entry[0]);
-            }
-        }
-
-        this.update();
-
-        return result;
-    }
-
-    clear() {
-        const result = super.clear();
-
-        this.update();
-        return result;
-    }
+export interface SBObject {
+    configSyncListeners: Array<(changes: StorageChangesObject) => unknown>;
+    syncDefaults: SBConfig;
+    localDefaults: SBStorage;
+    cachedSyncConfig: SBConfig;
+    cachedLocalStorage: SBStorage;
+    config: SBConfig;
+    local: SBStorage;
+    forceSyncUpdate(prop: string): void;
+    forceLocalUpdate(prop: string): void;
 }
 
 const Config: SBObject = {
     /**
      * Callback function when an option is updated
      */
-    configListeners: [],
-    defaults: {
+    configSyncListeners: [],
+    syncDefaults: {
         userID: null,
         isVip: false,
         lastIsVipUpdate: 0,
-        segmentTimes: new SBMap("segmentTimes"),
+        unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
         whitelistedChannels: [],
         forceChannelCheck: false,
-        skipKeybind: "Enter",
-        startSponsorKeybind: ";",
-        submitKeybind: "'",
         minutesSaved: 0,
         skipCount: 0,
         sponsorTimesContributed: 0,
@@ -183,6 +139,7 @@ const Config: SBObject = {
         fullVideoSegments: true,
         trackViewCount: true,
         trackViewCountInPrivate: true,
+        trackDownvotes: true,
         dontShowNotice: false,
         noticeVisibilityMode: NoticeVisbilityMode.FadedForAutoSkip,
         hideVideoPlayerControls: false,
@@ -204,10 +161,26 @@ const Config: SBObject = {
         ytInfoPermissionGranted: false,
         allowExpirements: true,
         showDonationLink: true,
+        showPopupDonationCount: 0,
+        donateClicked: 0,
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
         categoryPillUpdate: false,
+        darkMode: true,
+
+        categoryPillColors: {},
+
+        /**
+         * Default keybinds should not set "code" as that's gonna be different based on the user's locale. They should also only use EITHER ctrl OR alt modifiers (or none).
+         * Using ctrl+alt, or shift may produce a different character that we will not be able to recognize in different locales.
+         * The exception for shift is letters, where it only capitalizes. So shift+A is fine, but shift+1 isn't.
+         * Don't forget to add the new keybind to the checks in "KeybindDialogComponent.isKeybindAvailable()" and in "migrateOldFormats()"!
+         *      TODO: Find a way to skip having to update these checks. Maybe storing keybinds in a Map?
+         */
+        skipKeybind: {key: "Enter"},
+        startSponsorKeybind: {key: ";"},
+        submitKeybind: {key: "'"},
 
         categorySelections: [{
             name: "sponsor" as Category,
@@ -310,74 +283,49 @@ const Config: SBObject = {
             }
         }
     },
-    localConfig: null,
+    localDefaults: {
+        downvotedSegments: {}
+    },
+    cachedSyncConfig: null,
+    cachedLocalStorage: null,
     config: null,
-    
-    // Functions
-    encodeStoredItem,
-    convertJSON
+    local: null,
+    forceSyncUpdate,
+    forceLocalUpdate
 };
 
 // Function setup
 
-/**
- * A SBMap cannot be stored in the chrome storage. 
- * This data will be encoded into an array instead
- * 
- * @param data 
- */
-function encodeStoredItem<T>(data: T): T | UnencodedSegmentTimes  {
-    // if data is SBMap convert to json for storing
-    if(!(data instanceof SBMap)) return data;
-    return Array.from(data.entries()).filter((element) => element[1].length > 0); // Remove empty entries
-}
-
-/**
- * An SBMap cannot be stored in the chrome storage. 
- * This data will be decoded from the array it is stored in
- * 
- * @param {*} data 
- */
-function decodeStoredItem<T>(id: string, data: T): T | SBMap<string, SponsorTime[]> {
-    if (!Config.defaults[id]) return data;
-
-    if (Config.defaults[id] instanceof SBMap) {
-        try {
-            if (!Array.isArray(data)) return data;
-            return new SBMap(id, data as UnencodedSegmentTimes);
-        } catch(e) {
-            console.error("Failed to parse SBMap: " + id);
-        }
-    }
-
-    // If all else fails, return the data
-    return data;
-}
-
-function configProxy(): SBConfig {
-    chrome.storage.onChanged.addListener((changes: {[key: string]: chrome.storage.StorageChange}) => {
-        for (const key in changes) {
-            Config.localConfig[key] = decodeStoredItem(key, changes[key].newValue);
-        }
-
-        for (const callback of Config.configListeners) {
-            callback(changes);
+function configProxy(): { sync: SBConfig, local: SBStorage } {
+    chrome.storage.onChanged.addListener((changes: {[key: string]: chrome.storage.StorageChange}, areaName) => {
+        if (areaName === "sync") {
+            for (const key in changes) {
+                Config.cachedSyncConfig[key] = changes[key].newValue;
+            }
+    
+            for (const callback of Config.configSyncListeners) {
+                callback(changes);
+            }
+        } else if (areaName === "local") {
+            for (const key in changes) {
+                Config.cachedLocalStorage[key] = changes[key].newValue;
+            }
         }
     });
 	
-    const handler: ProxyHandler<SBConfig> = {
+    const syncHandler: ProxyHandler<SBConfig> = {
         set<K extends keyof SBConfig>(obj: SBConfig, prop: K, value: SBConfig[K]) {
-            Config.localConfig[prop] = value;
+            Config.cachedSyncConfig[prop] = value;
 
             chrome.storage.sync.set({
-                [prop]: encodeStoredItem(value)
+                [prop]: value
             });
 
             return true;
         },
 
         get<K extends keyof SBConfig>(obj: SBConfig, prop: K): SBConfig[K] {
-            const data = Config.localConfig[prop];
+            const data = Config.cachedSyncConfig[prop];
 
             return obj[prop] || data;
         },
@@ -390,19 +338,73 @@ function configProxy(): SBConfig {
 
     };
 
-    return new Proxy<SBConfig>({handler} as unknown as SBConfig, handler);
+    const localHandler: ProxyHandler<SBStorage> = {
+        set<K extends keyof SBStorage>(obj: SBStorage, prop: K, value: SBStorage[K]) {
+            Config.cachedLocalStorage[prop] = value;
+
+            chrome.storage.local.set({
+                [prop]: value
+            });
+
+            return true;
+        },
+
+        get<K extends keyof SBStorage>(obj: SBStorage, prop: K): SBStorage[K] {
+            const data = Config.cachedLocalStorage[prop];
+
+            return obj[prop] || data;
+        },
+	
+        deleteProperty(obj: SBStorage, prop: keyof SBStorage) {
+            chrome.storage.local.remove(<string> prop);
+            
+            return true;
+        }
+
+    };
+
+    return {
+        sync: new Proxy<SBConfig>({ handler: syncHandler } as unknown as SBConfig, syncHandler),
+        local: new Proxy<SBStorage>({ handler: localHandler } as unknown as SBStorage, localHandler)
+    };
 }
 
-function fetchConfig(): Promise<void> { 
-    return new Promise((resolve) => {
-        chrome.storage.sync.get(null, function(items) {
-            Config.localConfig = <SBConfig> <unknown> items;  // Data is ready
-            resolve();
-        });
+function forceSyncUpdate(prop: string): void {
+    chrome.storage.sync.set({
+        [prop]: Config.cachedSyncConfig[prop]
     });
 }
 
-function migrateOldFormats(config: SBConfig) {
+function forceLocalUpdate(prop: string): void {
+    chrome.storage.local.set({
+        [prop]: Config.cachedLocalStorage[prop]
+    });
+}
+
+async function fetchConfig(): Promise<void> { 
+    await Promise.all([new Promise<void>((resolve) => {
+        chrome.storage.sync.get(null, function(items) {
+            Config.cachedSyncConfig = <SBConfig> <unknown> items;
+            resolve();
+        });
+    }), new Promise<void>((resolve) => {
+        chrome.storage.local.get(null, function(items) {
+            Config.cachedLocalStorage = <SBStorage> <unknown> items; 
+            resolve();
+        });
+    })]);
+}
+
+function migrateOldSyncFormats(config: SBConfig) {
+    if (config["segmentTimes"]) {
+        const unsubmittedSegments = {};
+        for (const item of config["segmentTimes"]) {
+            unsubmittedSegments[item[0]] = item[1];
+        }
+
+        chrome.storage.sync.remove("segmentTimes", () => config.unsubmittedSegments = unsubmittedSegments);
+    }
+
     if (!config["exclusive_accessCategoryAdded"] && !config.categorySelections.some((s) => s.name === "exclusive_access")) {
         config["exclusive_accessCategoryAdded"] = true;
 
@@ -450,6 +452,29 @@ function migrateOldFormats(config: SBConfig) {
         }
     }
 
+    if (typeof config["skipKeybind"] == "string") {
+        config["skipKeybind"] = {key: config["skipKeybind"]};
+    }
+
+    if (typeof config["startSponsorKeybind"] == "string") {
+        config["startSponsorKeybind"] = {key: config["startSponsorKeybind"]};
+    }
+
+    if (typeof config["submitKeybind"] == "string") {
+        config["submitKeybind"] = {key: config["submitKeybind"]};
+    }
+
+    // Unbind key if it matches a previous one set by the user (should be ordered oldest to newest)
+    const keybinds = ["skipKeybind", "startSponsorKeybind", "submitKeybind"];
+    for (let i = keybinds.length-1; i >= 0; i--) {
+        for (let j = 0; j < keybinds.length; j++) {
+            if (i == j)
+                continue;
+            if (keybindEquals(config[keybinds[i]], config[keybinds[j]]))
+                config[keybinds[i]] = null;
+        }
+    }
+
     // Remove some old unused options
     if (config["sponsorVideoID"] !== undefined) {
         chrome.storage.sync.remove("sponsorVideoID");
@@ -469,30 +494,30 @@ async function setupConfig() {
 
     await fetchConfig();
     addDefaults();
-    convertJSON();
     const config = configProxy();
-    migrateOldFormats(config);
+    migrateOldSyncFormats(config.sync);
 
-    Config.config = config;
-}
-
-function convertJSON(): void {
-    Object.keys(Config.localConfig).forEach(key => {
-        Config.localConfig[key] = decodeStoredItem(key, Config.localConfig[key]);
-    });
+    Config.config = config.sync;
+    Config.local = config.local;
 }
 
 // Add defaults
 function addDefaults() {
-    for (const key in Config.defaults) {
-        if(!Object.prototype.hasOwnProperty.call(Config.localConfig, key)) {
-            Config.localConfig[key] = Config.defaults[key];
+    for (const key in Config.syncDefaults) {
+        if(!Object.prototype.hasOwnProperty.call(Config.cachedSyncConfig, key)) {
+            Config.cachedSyncConfig[key] = Config.syncDefaults[key];
         } else if (key === "barTypes") {
-            for (const key2 in Config.defaults[key]) {
-                if(!Object.prototype.hasOwnProperty.call(Config.localConfig[key], key2)) {
-                    Config.localConfig[key][key2] = Config.defaults[key][key2];
+            for (const key2 in Config.syncDefaults[key]) {
+                if(!Object.prototype.hasOwnProperty.call(Config.cachedSyncConfig[key], key2)) {
+                    Config.cachedSyncConfig[key][key2] = Config.syncDefaults[key][key2];
                 }
             }
+        }
+    }
+
+    for (const key in Config.localDefaults) {
+        if(!Object.prototype.hasOwnProperty.call(Config.cachedLocalStorage, key)) {
+            Config.cachedLocalStorage[key] = Config.localDefaults[key];
         }
     }
 }

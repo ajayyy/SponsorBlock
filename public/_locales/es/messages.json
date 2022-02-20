@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Activar el seguimiento del número de saltos en las pestañas privadas/de incógnito"
     },
+    "enableTrackDownvotes": {
+        "message": "Almacenar los votos negativos de los segmentos"
+    },
+    "whatTrackDownvotes": {
+        "message": "Los segmentos que votes negativamente permanecerán ocultos incluso después de actualizar la página"
+    },
+    "trackDownvotesWarning": {
+        "message": "Advertencia: Desactivar esto eliminará todos los votos negativos previamente almacenados"
+    },
     "enableQueryByHashPrefix": {
         "message": "Consulta Por Prefijo Hash"
     },
@@ -263,19 +272,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Establecer tecla para omitir un segmento"
+        "message": "Omitir segmento",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Establecer tecla para iniciar/detener un segmento"
+        "message": "Iniciar/detener segmento",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Establecer tecla para el envío"
+        "message": "Enviar segmentos",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Seleccione una tecla escribiéndola"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Ese atajo de teclas se ha establecido como: "
+        "message": "Selecciona una tecla escribiéndola y elige las teclas modificadoras que desees utilizar."
     },
     "0": {
         "message": "Tiempo de espera agotado. Compruebe su conexión a Internet. Si su internet está funcionando, el servidor probablemente esta sobrecargado o desconectado."
@@ -349,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Has saltado "
     },
-    "youHaveSaved": {
-        "message": "Te has ahorrado "
-    },
     "minLower": {
         "message": "minuto"
     },
@@ -365,10 +371,12 @@
         "message": "horas"
     },
     "youHaveSavedTime": {
-        "message": "Has salvado personas"
+        "message": "Has salvado personas",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " de sus vidas"
+        "message": " de sus vidas",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
@@ -387,9 +395,6 @@
     },
     "createdBy": {
         "message": "Creado Por"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Actualmente está configurado para:"
     },
     "supportOtherSites": {
         "message": "Soportar sitios de YouTube de terceros"
@@ -470,6 +475,15 @@
     "exportOptions": {
         "message": "Importar/Exportar todas las opciones"
     },
+    "exportOptionsCopy": {
+        "message": "Editar/copiar"
+    },
+    "exportOptionsDownload": {
+        "message": "Guardar en archivo"
+    },
+    "exportOptionsUpload": {
+        "message": "Cargar desde archivo"
+    },
     "whatExportOptions": {
         "message": "Esta es toda su configuración en JSON. Esto incluye tu ID de usuario, así que asegúrate de compartir esto sabiamente."
     },
@@ -518,11 +532,8 @@
     "copyDebugInformationComplete": {
         "message": "La información de depuración ha sido copiada al portapapeles. Siéntase libre de eliminar cualquier información que prefiera no compartir. Guarde esto en un archivo de texto o péguelo en el informe de errores."
     },
-    "theKey": {
-        "message": "La tecla"
-    },
     "keyAlreadyUsed": {
-        "message": "está enlazada a otra acción. Por favor, seleccione otra tecla."
+        "message": "Este atajo está vinculado a otra acción. Por favor, selecciona uno diferente."
     },
     "to": {
         "message": "a",
@@ -581,7 +592,7 @@
         "message": "Recapitulación rápida de los episodios anteriores, o una vista previa de lo que va a ocurrir más adelante en el vídeo actual. Está pensado para clips editados juntos, no para resúmenes hablados."
     },
     "category_filler": {
-        "message": "Tangente de Relleno"
+        "message": "Tangentes de Relleno/Chistes"
     },
     "category_filler_description": {
         "message": "Escenas tangenciales añadidas solo para relleno o humor que no son necesarias para entender el contenido principal del video. Esto no debe incluir segmentos que proporcionen contexto o detalles de fondo."
@@ -644,9 +655,6 @@
         "message": "Mostrar un icono cuando un video es enteramente un anuncio",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
-    "colorFormatIncorrect": {
-        "message": "Su color está formateado incorrectamente. Debería ser un código hexadecimal de 3 o 6 dígitos con un signo numérico al principio."
-    },
     "previewColor": {
         "message": "Color No Enviado",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -697,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "oculto: demasiado corto"
+    },
+    "manuallyHidden": {
+        "message": "manualmente oculto"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -784,8 +795,14 @@
     "Donate": {
         "message": "Donar"
     },
+    "considerDonating": {
+        "message": "Ayuda a financiar el desarrollo"
+    },
     "hideDonationLink": {
         "message": "Ocular Enlace de Donación"
+    },
+    "darkModeOptionsPage": {
+        "message": "Modo Oscuro en la página de Opciones"
     },
     "helpPageThanksForInstalling": {
         "message": "Gracias por instalar SponsorBlock."
@@ -875,5 +892,42 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportamiento",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interfaz",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Atajos de teclado",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Respaldar/Restaurar",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Miscelánea",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Apariencia del aviso de omisión",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Desvincular",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "No establecido"
+    },
+    "change": {
+        "message": "Cambiar"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Este un atajo incorporado de YouTube. ¿Estás seguro de que quieres usarlo?"
     }
 }

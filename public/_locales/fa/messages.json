@@ -182,9 +182,6 @@
         "message": "اگر همچنان این را نمی‌پسندید، گزینه هرگز نمایش نده را انتخاب کنید.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "keybindDescription": {
-        "message": "یک کلید را با تایپ نمودن انتخاب نمایید"
-    },
     "disableSkipping": {
         "message": "ردکردن فعال است"
     },
@@ -230,9 +227,6 @@
     "createdBy": {
         "message": "ایجاد شده توسط"
     },
-    "keybindCurrentlySet": {
-        "message": ". در حال حاضر تنظیم شده است به:"
-    },
     "supportedSites": {
         "message": "وب‌سایت‌های پشتیبانی شده: "
     },
@@ -277,9 +271,6 @@
     },
     "edit": {
         "message": "ویرایش"
-    },
-    "theKey": {
-        "message": "کلید"
     },
     "to": {
         "message": "به",

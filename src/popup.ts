@@ -111,13 +111,17 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sbDonate",
         "issueReporterTabs",
         "issueReporterTabSegments",
-        "issueReporterTabChapters"
+        "issueReporterTabChapters",
+        "sponsorTimesDonateContainer",
+        "sbConsiderDonateLink",
+        "sbCloseDonate"
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     // Hide donate button if wanted (Safari, or user choice)
     if (!showDonationLink()) {
         PageElements.sbDonate.style.display = "none";
     }
+    PageElements.sbDonate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
@@ -128,7 +132,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             unwhitelistChannel();
         }
     });
-    PageElements.whitelistForceCheck.addEventListener("click", openOptions);
+    PageElements.whitelistForceCheck.addEventListener("click", () => {openOptionsAt("behavior")});
     PageElements.toggleSwitch.addEventListener("change", function () {
         toggleSkipping(!this.checked);
     });
@@ -201,6 +205,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                         PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
                         PageElements.sponsorTimesViewsContainer.style.display = "unset";
                     }
+
+                    showDonateWidget(viewCount);
                 }
             });
 
@@ -266,6 +272,23 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         getSegmentsFromContentScript(true);
     });
 
+    function showDonateWidget(viewCount: number) {
+        if (Config.config.showDonationLink && Config.config.donateClicked <= 0 && Config.config.showPopupDonationCount < 5
+                && viewCount < 50000 && !Config.config.isVip && Config.config.skipCount > 10) {
+            PageElements.sponsorTimesDonateContainer.style.display = "flex";
+            PageElements.sbConsiderDonateLink.addEventListener("click", () => {
+                Config.config.donateClicked = Config.config.donateClicked + 1;
+            });
+            
+            PageElements.sbCloseDonate.addEventListener("click", () => {
+                PageElements.sponsorTimesDonateContainer.style.display = "none";
+                Config.config.showPopupDonationCount = 100;
+            });
+
+            Config.config.showPopupDonationCount = Config.config.showPopupDonationCount + 1;
+        }
+    }
+
     function onTabs(tabs, updating: boolean): void {
         messageHandler.sendMessage(tabs[0].id, { message: 'getVideoID' }, function (result) {
             if (result !== undefined && result.videoID) {
@@ -287,7 +310,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             return;
         }
 
-        sponsorTimes = Config.config.segmentTimes.get(currentVideoID) ?? [];
+        sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
         updateSegmentEditingUI();
 
         messageHandler.sendMessage(
@@ -362,8 +385,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                     // Perform a second update after the config changes take effect as a workaround for a race condition
                     const removeListener = (listener: typeof lateUpdate) => {
-                        const index = Config.configListeners.indexOf(listener);
-                        if (index !== -1) Config.configListeners.splice(index, 1);
+                        const index = Config.configSyncListeners.indexOf(listener);
+                        if (index !== -1) Config.configSyncListeners.splice(index, 1);
                     };
 
                     const lateUpdate = () => {
@@ -371,7 +394,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                         removeListener(lateUpdate);
                     };
 
-                    Config.configListeners.push(lateUpdate);
+                    Config.configSyncListeners.push(lateUpdate);
 
                     // Remove the listener after 200ms in case the changes were propagated by the time we got the response
                     setTimeout(() => removeListener(lateUpdate), 200);
@@ -385,7 +408,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         // Only update the segments after a segment was created
         if (!creatingSegment) {
-            sponsorTimes = Config.config.segmentTimes.get(currentVideoID) || [];
+            sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] || [];
         }
 
         // Update the UI
@@ -446,6 +469,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 } else if (segmentTimes[i].hidden === SponsorHideType.MinimumDuration) {
                     //this one is too short
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
+                } else if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                    extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
                 }
 
                 const name = segmentTimes[i].description || utils.shortCategoryName(category);
@@ -487,7 +512,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 downvoteButton.src = locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
-                //uuid button
                 const uuidButton = document.createElement("img");
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 uuidButton.className = "voteButton";
@@ -496,6 +520,41 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     navigator.clipboard.writeText(UUID);
                     const stopAnimation = AnimationUtils.applyLoadingAnimation(uuidButton, 0.3);
                     stopAnimation();
+                });
+
+                const hideButton = document.createElement("img");
+                hideButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
+                hideButton.className = "voteButton";
+                if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                    hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
+                } else {
+                    hideButton.src = chrome.runtime.getURL("icons/visible.svg");
+                }
+                hideButton.addEventListener("click", () => {
+                    const stopAnimation = AnimationUtils.applyLoadingAnimation(hideButton, 0.4);
+                    stopAnimation();
+
+                    if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                        hideButton.src = chrome.runtime.getURL("icons/visible.svg");
+                        segmentTimes[i].hidden = SponsorHideType.Visible;
+                    } else {
+                        hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
+                        segmentTimes[i].hidden = SponsorHideType.Hidden;
+                    }
+
+                    messageHandler.query({
+                        active: true,
+                        currentWindow: true
+                    }, tabs => {
+                        messageHandler.sendMessage(
+                            tabs[0].id,
+                            {
+                                message: "hideSegment",
+                                type: segmentTimes[i].hidden,
+                                UUID: UUID
+                            }
+                        );
+                    });
                 });
 
                 const skipButton = document.createElement("img");
@@ -509,7 +568,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
                 voteButtonsContainer.appendChild(uuidButton);
+                if (segmentTimes[i].actionType === ActionType.Skip 
+                        && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segmentTimes[i].hidden)) {
+                    voteButtonsContainer.appendChild(hideButton);
+                }
                 voteButtonsContainer.appendChild(skipButton);
+
 
                 //add click listener to open up vote panel
                 sponsorTimeButton.addEventListener("click", function () {
@@ -566,6 +630,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //make the options div visible
     function openOptions() {
         chrome.runtime.sendMessage({ "message": "openConfig" });
+    }
+
+    function openOptionsAt(location) {
+        chrome.runtime.sendMessage({ "message": "openConfig", "hash": location });
     }
 
     function openHelp() {
@@ -639,21 +707,28 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         //add loading info
         addVoteMessage(chrome.i18n.getMessage("Loading"), UUID);
 
-        //send the vote message to the tab
-        chrome.runtime.sendMessage({
-            message: "submitVote",
-            type: type,
-            UUID: UUID
-        }, function (response) {
-            if (response != undefined) {
-                //see if it was a success or failure
-                if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
-                    //success (treat rate limits as a success)
-                    addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
-                } else if (response.successType == -1) {
-                    addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                {
+                    message: "submitVote",
+                    type: type,
+                    UUID: UUID
+                }, function (response) {
+                    if (response != undefined) {
+                        //see if it was a success or failure
+                        if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
+                            //success (treat rate limits as a success)
+                            addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
+                        } else if (response.successType == -1) {
+                            addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
+                        }
+                    }
                 }
-            }
+            );
         });
     }
 

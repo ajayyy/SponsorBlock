@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const webpack = require("webpack");
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -32,7 +34,6 @@ module.exports = env => ({
     },
     output: {
         path: path.join(__dirname, '../dist/js'),
-        filename: '[name].js'
     },
     optimization: {
         splitChunks: {
@@ -84,12 +85,12 @@ module.exports = env => ({
                             if (env.browser.toLowerCase() === "safari") {
                                 parsed.fullName.message = parsed.fullName.message.match(/^.+(?= -)/)?.[0] || parsed.fullName.message;
                                 if (parsed.fullName.message.length > 50) {
-                                    parsed.fullName.message = parsed.fullName.message.substr(0, 47) + "...";
+                                    parsed.fullName.message = parsed.fullName.message.slice(0, 47) + "...";
                                 }
 
                                 parsed.Description.message = parsed.Description.message.match(/^.+(?=\. )/)?.[0] || parsed.Description.message;
                                 if (parsed.Description.message.length > 80) {
-                                    parsed.Description.message = parsed.Description.message.substr(0, 77) + "...";
+                                    parsed.Description.message = parsed.Description.message.slice(0, 77) + "...";
                                 }
                             }
             

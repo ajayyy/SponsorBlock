@@ -1,6 +1,7 @@
 import Config from "../config";
 import { SponsorTime } from "../types";
 import { getSkippingText } from "../utils/categoryUtils";
+import { keybindToString } from "../utils/configUtils";
 
 import Utils from "../utils";
 import { AnimationUtils } from "../utils/animationUtils";
@@ -180,7 +181,7 @@ export class SkipButtonControlBar {
     }
 
     private getTitle(): string {
-        return getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + Config.config.skipKeybind + ")" : "");
+        return getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + keybindToString(Config.config.skipKeybind) + ")" : "");
     }
 
     private getChapterPrefix(): HTMLElement {

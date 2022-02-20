@@ -11,6 +11,10 @@ async function init() {
 
     await utils.wait(() => Config.config !== null);
 
+    if (!Config.config.darkMode) {
+        document.documentElement.setAttribute("data-theme", "light");
+    }
+
     if (!showDonationLink()) {
         document.getElementById("sbDonate").style.display = "none";
     }

@@ -226,18 +226,6 @@
         "message": "Sekiranya anda masih tidak menyukainya, tekan butang jangan tunjukkan.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
-    "setSkipShortcut": {
-        "message": "Tetapkan kunci untuk melangkau segmen"
-    },
-    "setSubmitKeybind": {
-        "message": "Tetapkan kunci untuk pengikat kunci penyerahan"
-    },
-    "keybindDescription": {
-        "message": "Pilih kekunci dengan menaipnya"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Ikatan kunci telah ditetapkan ke: "
-    },
     "0": {
         "message": "Masa sambungan telah tamat. Periksa sambungan internet anda. Sekiranya internet anda berfungsi, pelayan mungkin berlebihan atau tidak berfungsi."
     },
@@ -284,9 +272,6 @@
     "youHaveSkipped": {
         "message": "Anda telah melangkau "
     },
-    "youHaveSaved": {
-        "message": "Anda telah menyelamatkan diri "
-    },
     "minLower": {
         "message": "minit"
     },
@@ -300,10 +285,12 @@
         "message": "jam"
     },
     "youHaveSavedTime": {
-        "message": "Anda telah menyelamatkan orang"
+        "message": "Anda telah menyelamatkan orang",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " kehidupan mereka"
+        "message": " kehidupan mereka",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Periksa status.sponsor.ajay.app untuk status pelayan."
@@ -319,9 +306,6 @@
     },
     "createdBy": {
         "message": "Dicipta oleh"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Pada masa ini ditetapkan untuk:"
     },
     "optionsInfo": {
         "message": "Dayakan sokongan Invidious, lumpuhkan autoskip, sembunyikan butang dan banyak lagi."
@@ -422,12 +406,6 @@
     "copyDebugInformationComplete": {
         "message": "Maklumat debug telah disalin ke papan klip. Jangan ragu untuk membuang maklumat yang anda tidak mahu kongsi Simpan ini dalam fail teks atau tampal ke laporan pepijat."
     },
-    "theKey": {
-        "message": "Kunci"
-    },
-    "keyAlreadyUsed": {
-        "message": "terikat dengan tindakan lain. Sila pilih kunci lain."
-    },
     "to": {
         "message": "ke",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -494,9 +472,6 @@
     },
     "disable": {
         "message": "Nyahaktifkan"
-    },
-    "colorFormatIncorrect": {
-        "message": "Warna anda tidak diformat dengan betul. Ia mestilah kod hex 3 atau 6 digit dengan tanda nombor pada awalnya."
     },
     "seekBarColor": {
         "message": "Cari Warna Bar"

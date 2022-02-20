@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Activer le suivi du nombre de sauts dans les onglets privés/incognito"
     },
+    "enableTrackDownvotes": {
+        "message": "Enregistrer les segments votés contre"
+    },
+    "whatTrackDownvotes": {
+        "message": "Tous les segments que vous votez contre vous resteront cachés même après rafraîchissement"
+    },
+    "trackDownvotesWarning": {
+        "message": "Attention : Désactiver ceci supprimera tous les votes contre précédemment enregistrés"
+    },
     "enableQueryByHashPrefix": {
         "message": "Requête par préfixe du hash"
     },
@@ -263,19 +272,19 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Définir une touche pour passer un segment"
+        "message": "Sauter le segment",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Définir le raccourci pour démarrer/terminer un segment"
+        "message": "Commencer/arrêter le segment",
+        "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Changer le raccourci pour soumettre les segments"
+        "message": "Soumettre les segments",
+        "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Appuyez sur une touche"
-    },
-    "keybindDescriptionComplete": {
-        "message": "Le raccourci choisi est : "
+        "message": "Sélectionnez une touche en la tapant et choisissez n'importe quelles touches de modification que vous souhaitez utiliser."
     },
     "0": {
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
@@ -301,6 +310,10 @@
     },
     "mute": {
         "message": "Couper le son"
+    },
+    "full": {
+        "message": "Toute la vidéo",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
         "message": "Passer {0} ?"
@@ -345,9 +358,6 @@
     "youHaveSkipped": {
         "message": "Vous avez passé "
     },
-    "youHaveSaved": {
-        "message": "Vous vous êtes économisé "
-    },
     "minLower": {
         "message": "minute"
     },
@@ -361,10 +371,12 @@
         "message": "heures"
     },
     "youHaveSavedTime": {
-        "message": "Vous avez fait économiser les utilisateurs"
+        "message": "Vous avez fait économiser les utilisateurs",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " de leurs vies"
+        "message": " de leurs vies",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
@@ -383,9 +395,6 @@
     },
     "createdBy": {
         "message": "Créé par"
-    },
-    "keybindCurrentlySet": {
-        "message": ". Il est actuellement réglé sur :"
     },
     "supportOtherSites": {
         "message": "Support de YouTube-Sites tierces"
@@ -436,6 +445,9 @@
     "shortCheck": {
         "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
     },
+    "liveOrPremiere": {
+        "message": "La soumission sur un livestream actif ou une première n'est pas autorisée. Veuillez attendre qu'il termine, puis actualisez la page et vérifiez que les segments sont toujours valides."
+    },
     "showUploadButton": {
         "message": "Afficher le bouton de téléchargement"
     },
@@ -462,6 +474,15 @@
     },
     "exportOptions": {
         "message": "Importer/Exporter toutes les options"
+    },
+    "exportOptionsCopy": {
+        "message": "Modifier/copier"
+    },
+    "exportOptionsDownload": {
+        "message": "Enregistrer dans un fichier"
+    },
+    "exportOptionsUpload": {
+        "message": "Charger à partir du fichier"
     },
     "whatExportOptions": {
         "message": "C'est votre configuration complète au format JSON. Elle inclut votre identifiant utilisateur, gardez-la pour vous."
@@ -511,11 +532,8 @@
     "copyDebugInformationComplete": {
         "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous ne préférez pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
     },
-    "theKey": {
-        "message": "La clé"
-    },
     "keyAlreadyUsed": {
-        "message": "est lié à une autre action. Veuillez sélectionner une autre clé."
+        "message": "Ce raccourci est lié à une autre action. Veuillez en sélectionner un autre."
     },
     "to": {
         "message": "à",
@@ -532,6 +550,16 @@
     },
     "category_selfpromo_description": {
         "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
+    },
+    "category_exclusive_access": {
+        "message": "Accès exclusif"
+    },
+    "category_exclusive_access_description": {
+        "message": "Seulement pour étiqueter des vidéos entières. Utilisé quand une vidéo présente un produit, un service ou un emplacement auquel ils ont reçu un accès gratuit ou subventionné."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Cette vidéo présente un produit, un service ou un emplacement auquel ils ont reçu un accès gratuit ou subventionné",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
@@ -564,7 +592,7 @@
         "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
     },
     "category_filler": {
-        "message": "Digressions"
+        "message": "Digressions/Blagues"
     },
     "category_filler_description": {
         "message": "Des digressions ajoutées uniquement pour le remplissage ou l'humour qui ne sont pas requis pour comprendre le contenu principal de la vidéo. Cela ne devrait pas inclure des segments fournissant du contexte ou des détails de fond."
@@ -614,14 +642,18 @@
     "showOverlay_POI": {
         "message": "Afficher dans la barre de recherche"
     },
+    "showOverlay_full": {
+        "message": "Afficher l'étiquette"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Ignorer automatiquement tous les segments lorsqu'il y a un segment non-musical"
     },
     "muteSegments": {
         "message": "Autoriser les segments qui bloquent l'audio au lieu de le passer"
     },
-    "colorFormatIncorrect": {
-        "message": "Votre couleur est mal formatée. Il devrait s'agir d'un code hexadécimal à 3 ou 6 chiffres avec un signe numérique au début."
+    "fullVideoSegments": {
+        "message": "Afficher une icône lorsqu'une vidéo est promotionnelle",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
         "message": "Couleur non soumise",
@@ -673,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "masqué : trop court"
+    },
+    "manuallyHidden": {
+        "message": "masquer manuellement"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -737,6 +772,12 @@
         "message": "Compris",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Ce segment est long. Si toute la vidéo parle d'un seul sujet, changer \"Passer\" en \"Toute la vidéo\". Voir les directives pour plus d'informations."
+    },
+    "categoryPillTitleText": {
+        "message": "Cette vidéo entière est étiquetée avec cette catégorie qui est trop intégrée pour l'en séparer"
+    },
     "experiementOptOut": {
         "message": "Se désinscrire de toutes les futures expériences",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -754,8 +795,14 @@
     "Donate": {
         "message": "Faire un don"
     },
+    "considerDonating": {
+        "message": "Aider à financer le développement"
+    },
     "hideDonationLink": {
         "message": "Cacher le lien de don"
+    },
+    "darkModeOptionsPage": {
+        "message": "Mode sombre sur la page options"
     },
     "helpPageThanksForInstalling": {
         "message": "Merci d'avoir installé SponsorBlock."
@@ -835,6 +882,9 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
     },
+    "categoryPillNewFeature": {
+        "message": "Nouveau! Voir quand une vidéo est entièrement sponsorisée ou de l'autopromotion"
+    },
     "dayAbbreviation": {
         "message": "j",
         "description": "100d"
@@ -842,5 +892,42 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportement",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interface",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Raccourcis clavier",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Sauvegarde/Restauration",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Divers",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Apparence d'avis de saut",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Délier",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Non configuré"
+    },
+    "change": {
+        "message": "Changer"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Il s'agit d'un raccourci YouTube intégré. Êtes-vous sûr de vouloir l'utiliser ?"
     }
 }
