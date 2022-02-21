@@ -291,6 +291,11 @@ div:hover > .sponsorBlockChapterBar {
 	transition: background-color 0.4s;
 }
 
+.sponsorSkipNoticeFirstRow .sponsorSkipNoticeButton.sponsorSkipSmallButton {
+	height: 1.3em;
+	padding: 0;
+}
+
 .sponsorTimesVoteButtonsContainer {
 	float: left;
 	vertical-align:middle;
