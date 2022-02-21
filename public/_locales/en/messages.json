@@ -31,6 +31,10 @@
     "Chapters": {
         "message": "Chapters"
     },
+    "renderAsChapters": {
+        "message": "Render segments as chapters",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Upvote this submission"
     },

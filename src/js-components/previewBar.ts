@@ -226,7 +226,10 @@ class PreviewBar {
 
         bar.style.position = "absolute";
         const duration = Math.min(segment[1], this.videoDuration) - segment[0];
-        if (duration > 0) bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${this.chapterFilter(barSegment) ? ' - 2px' : ''})`;
+        if (duration > 0) {
+            bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${
+                Config.config.renderAsChapters && this.chapterFilter(barSegment) ? ' - 2px' : ''})`;
+        }
         
         const time = segment[1] ? Math.min(this.videoDuration, segment[0]) : segment[0];
         bar.style.left = this.timeToPercentage(time);
@@ -240,6 +243,10 @@ class PreviewBar {
         if (!progressBar || !chapterBar) return;
 
         this.customChaptersBar?.remove();
+        if (!Config.config.renderAsChapters) {
+            chapterBar.style.removeProperty("display");
+            return;
+        }
 
         // Merge overlapping chapters
         const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
