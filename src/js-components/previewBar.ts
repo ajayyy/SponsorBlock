@@ -453,7 +453,7 @@ class PreviewBar {
                             // Prevent transition from occuring
                             if (firstUpdate) {
                                 customChangedElement.style.transition = "none";
-                                setTimeout(() => customChangedElement.style.transition = "inherit", 50);
+                                setTimeout(() => customChangedElement.style.removeProperty("transition"), 50);
                             }
                         }
 
