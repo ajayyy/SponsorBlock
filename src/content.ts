@@ -767,7 +767,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         // Hide all submissions smaller than the minimum duration
         if (Config.config.minDuration !== 0) {
             for (const segment of sponsorTimes) {
-                const duration = segment[1] - segment[0];
+                const duration = segment.segment[1] - segment.segment[0];
                 if (duration > 0 && duration < Config.config.minDuration) {
                     segment.hidden = SponsorHideType.MinimumDuration;
                 }
@@ -1947,6 +1947,11 @@ async function sendSubmitMessage() {
         sponsorTimesSubmitting = [];
 
         updatePreviewBar();
+
+        const fullVideoSegment = sponsorTimes.filter((time) => time.actionType === ActionType.Full)[0];
+        if (fullVideoSegment) {
+            categoryPill?.setSegment(fullVideoSegment);
+        }
     } else {
         // Show that the upload failed
         playerButtons.submit.button.style.animation = "unset";
