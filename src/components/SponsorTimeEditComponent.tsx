@@ -381,21 +381,21 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
 
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
-        this.handleReplacingLostTimes(event.target.value as Category, sponsorTime.actionType);
+        this.handleReplacingLostTimes(event.target.value as Category, sponsorTime.actionType, sponsorTime);
         this.saveEditTimes();
     }
 
     actionTypeSelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
 
-        this.handleReplacingLostTimes(sponsorTime.category, event.target.value as ActionType);
+        this.handleReplacingLostTimes(sponsorTime.category, event.target.value as ActionType, sponsorTime);
         this.saveEditTimes();
     }
 
-    private handleReplacingLostTimes(category: Category, actionType: ActionType): void {
+    private handleReplacingLostTimes(category: Category, actionType: ActionType, segment: SponsorTime): void {
         if (CompileConfig.categorySupport[category]?.includes(ActionType.Poi)) {
             if (this.previousSkipType !== ActionType.Poi) {
-                this.timesBeforeChanging = [null, utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1])];
+                this.timesBeforeChanging = [null, segment.segment[1]];
             }
 
             this.setTimeTo(1, null);
@@ -410,12 +410,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         } else if (CompileConfig.categorySupport[category]?.length === 1 
                 && CompileConfig.categorySupport[category]?.[0] === ActionType.Full) {
             if (this.previousSkipType !== ActionType.Full) {
-                this.timesBeforeChanging = [utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]), utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1])];
+                this.timesBeforeChanging = [...segment.segment];
             }
 
             this.previousSkipType = ActionType.Full;
-        } else if (CompileConfig.categorySupport[category]?.includes(ActionType.Skip) 
-                && ![ActionType.Poi, ActionType.Full].includes(this.getNextActionType(category, actionType)) && this.previousSkipType !== ActionType.Skip) {
+        } else if ((category === "chooseACategory" || (CompileConfig.categorySupport[category]?.includes(ActionType.Skip) 
+                        && ![ActionType.Poi, ActionType.Full].includes(this.getNextActionType(category, actionType))))
+                    && this.previousSkipType !== ActionType.Skip) {
             if (this.timesBeforeChanging[0]) {
                 this.setTimeTo(0, this.timesBeforeChanging[0]);
             }
