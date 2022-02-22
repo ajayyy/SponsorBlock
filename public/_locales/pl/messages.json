@@ -209,11 +209,14 @@
     "enableViewTrackingInPrivate": {
         "message": "Włącz licznik śledzenia pominięć w zakładkach Prywatnych/Incognito"
     },
+    "enableTrackDownvotes": {
+        "message": "Zapamiętaj segmenty z łapkami w dół"
+    },
     "whatTrackDownvotes": {
-        "message": "Wszystkie segmenty, które zminusujesz pozostaną ukryte nawet po odświeżeniu"
+        "message": "Wszystkie segmenty, którym dasz łapkę w dół, pozostaną ukryte nawet po odświeżeniu"
     },
     "trackDownvotesWarning": {
-        "message": "Uwaga: Wyłączenie tego usunie wszystkie poprzednio zapisane minusy"
+        "message": "Uwaga: Wyłączenie tego usunie wszystkie poprzednio zapisane łapki w dół"
     },
     "enableQueryByHashPrefix": {
         "message": "Zapytanie według prefiksu Hash"
@@ -856,13 +859,13 @@
         "message": "Dowiedz się więcej"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Minusuje i tworzy lokalną kopię, abyś mógł przesłać poprawioną wersję"
+        "message": "Daje łapkę w dół i tworzy lokalną kopię, abyś mógł przesłać poprawioną wersję"
     },
     "OpenCategoryWikiPage": {
         "message": "Otwórz stronę wiki dla tej kategorii."
     },
     "CopyAndDownvote": {
-        "message": "Skopiuj i zminusuj"
+        "message": "Skopiuj i daj łapkę w dół"
     },
     "ContinueVoting": {
         "message": "Kontynuuj głosowanie"
