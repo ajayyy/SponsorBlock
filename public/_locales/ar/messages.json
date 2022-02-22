@@ -52,6 +52,9 @@
     "reskip": {
         "message": "اعاده التخطي"
     },
+    "unmute": {
+        "message": "إلغاء الكتم"
+    },
     "paused": {
         "message": "ايقاف مؤقت"
     },
@@ -88,8 +91,161 @@
     "refreshSegments": {
         "message": "تحديث الأجزاء"
     },
+    "success": {
+        "message": "تم بنجاح!"
+    },
+    "voted": {
+        "message": "تم التصويت!"
+    },
+    "serverDown": {
+        "message": "يبدو أن الخادم غير متصل. تواصل مع المطوّر على الفور."
+    },
+    "connectionError": {
+        "message": "حدث خطأ في الاتصال. رمز الخطأ: "
+    },
+    "clearTimes": {
+        "message": "مسح الأقسام"
+    },
+    "openPopup": {
+        "message": "فتح نافذة سبونسر بلوك المنبثقة"
+    },
+    "closePopup": {
+        "message": "إغلاق النافذة المنبثقة"
+    },
+    "SubmitTimes": {
+        "message": "إرسال الأقسام"
+    },
+    "submitCheck": {
+        "message": "هل أنت متيقّن من إرسال هذا؟"
+    },
+    "whitelistChannel": {
+        "message": "إضافة القناة إلى القائمة البيضاء"
+    },
+    "removeFromWhitelist": {
+        "message": "إزالة القناة من القائمة البيضاء"
+    },
+    "voteOnTime": {
+        "message": "صوّت لقسم"
+    },
+    "Submissions": {
+        "message": "المشاركات"
+    },
+    "savedPeopleFrom": {
+        "message": "لقد وفّرت على الناس "
+    },
+    "viewLeaderboard": {
+        "message": "لوحة الصدارة"
+    },
+    "recordTimesDescription": {
+        "message": "إرسال"
+    },
+    "submissionEditHint": {
+        "message": "سيظهر تحرير القسم بعد النقر على إرسال",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "تلميح: يمكنك إعداد اختصارات مفاتيح للتقديم في الخيارات"
+    },
+    "clearTimesButton": {
+        "message": "مسح الأوقات"
+    },
+    "submitTimesButton": {
+        "message": "إرسال الأوقات"
+    },
+    "publicStats": {
+        "message": "يستخدم هذا في صفحة الإحصائيات العامة لإظهار مقدار مساهمتك. قم برؤيتها"
+    },
     "Username": {
         "message": "اسم المستخدم"
+    },
+    "setUsername": {
+        "message": "تعيين اسم مستخدم"
+    },
+    "copyPublicID": {
+        "message": "نسخ معرف المستخدم العام"
+    },
+    "discordAdvert": {
+        "message": "انضم إلى سيرفر \"ديسكورد\" الرسمي لتقديم اقتراحات وتعليقات!"
+    },
+    "hideThis": {
+        "message": "إخفاء هذا"
+    },
+    "Options": {
+        "message": "خيارات"
+    },
+    "showButtons": {
+        "message": "إظهار الأزرار على مشغل اليوتيوب"
+    },
+    "hideButtons": {
+        "message": "إخفاء الأزرار على مشغل اليوتيوب"
+    },
+    "hideButtonsDescription": {
+        "message": "هذا يخفي الأزرار التي تظهر على مشغل اليوتيوب لإرسال أقسام للتخطي."
+    },
+    "showSkipButton": {
+        "message": "إبقاء زر \"تخطي للعنوان الرئيس\" على المشغّل"
+    },
+    "showInfoButton": {
+        "message": "إظهار زر \"معلومات\" على مشغّل اليوتيوب"
+    },
+    "hideInfoButton": {
+        "message": "إخفاء زر \"معلومات\" على مشغّل اليوتيوب"
+    },
+    "autoHideInfoButton": {
+        "message": "إخفاء تلقائي لزر \"معلومات\""
+    },
+    "hideDeleteButton": {
+        "message": "إخفاء زر \"حذف\" على مشغّل اليوتيوب"
+    },
+    "showDeleteButton": {
+        "message": "إظهار زر \"حذف\" على مشغّل اليوتيوب"
+    },
+    "skip": {
+        "message": "تخطي"
+    },
+    "mute": {
+        "message": "كتم"
+    },
+    "full": {
+        "message": "فيديو كامل",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
+    "skip_category": {
+        "message": "تخطي {0}؟"
+    },
+    "mute_category": {
+        "message": "كتم {0}؟"
+    },
+    "skip_to_category": {
+        "message": "تخطي إلى {0}؟",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "تم تخطي {0}",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "تم كتم {0}",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "تم التخطي إلى {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
+    "disableAutoSkip": {
+        "message": "تعطيل التخطي التلقائي"
+    },
+    "enableAutoSkip": {
+        "message": "تفعيل التخطي التلقائي"
+    },
+    "minLower": {
+        "message": "دقيقة"
+    },
+    "minsLower": {
+        "message": "دقائق"
+    },
+    "add": {
+        "message": "أضِف"
     },
     "permissionRequestSuccess": {
         "message": "نجح طلب الإذن!"

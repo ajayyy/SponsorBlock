@@ -652,7 +652,7 @@
         "message": "Autoriser les segments qui bloquent l'audio au lieu de le passer"
     },
     "fullVideoSegments": {
-        "message": "Afficher une icône lorsqu'une vidéo est promotionnelle",
+        "message": "Afficher une icône lorsqu'une vidéo est entièrement promotionnelle",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {

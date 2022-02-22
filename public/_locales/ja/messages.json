@@ -14,7 +14,7 @@
         "message": "一つの動画に対してあまりに多くのセグメントを提案しています。本当にこれだけ必要ですか？"
     },
     "409": {
-        "message": "これは既に提案されています。"
+        "message": "これは既に提出されています。"
     },
     "channelWhitelisted": {
         "message": "チャンネルをホワイトリストに登録しました!"
@@ -23,7 +23,7 @@
         "message": "セグメント"
     },
     "Segments": {
-        "message": "セグメント"
+        "message": "ｾｸﾞﾒﾝﾄ"
     },
     "upvoteButtonInfo": {
         "message": "この提案を支持"
@@ -41,7 +41,7 @@
         "message": "読み込み中..."
     },
     "Hide": {
-        "message": "非表示"
+        "message": "再度表示しない"
     },
     "hitGoBack": {
         "message": "スキップ解除を押すと元の場所へ戻ります"
@@ -119,7 +119,7 @@
         "message": "本当に提出してよろしいですか？"
     },
     "whitelistChannel": {
-        "message": "ホワイトリストのチャンネル"
+        "message": "チャンネルをホワイトリストに追加"
     },
     "removeFromWhitelist": {
         "message": "ホワイトリストからチャンネルを削除"
@@ -183,13 +183,13 @@
         "message": "YouTube再生画面のセグメント提出ボタンを非表示にします。"
     },
     "showSkipButton": {
-        "message": "プレイヤーの「ハイライトまでスキップ」ボタン表示を維持する"
+        "message": "「ハイライトまでスキップ」ボタンをプレイヤーに常に表示する"
     },
     "showInfoButton": {
-        "message": "YouTubeプレーヤーに情報ボタンを表示する"
+        "message": "YouTubeプレイヤーに情報ボタンを表示する"
     },
     "hideInfoButton": {
-        "message": "YouTubeプレーヤーに情報ボタンを表示しない"
+        "message": "YouTubeプレイヤーに情報ボタンを表示しない"
     },
     "autoHideInfoButton": {
         "message": "情報ボタンを自動的に隠す"
@@ -201,13 +201,13 @@
         "message": "YouTubeプレーヤーに削除ボタンを表示"
     },
     "enableViewTracking": {
-        "message": "スキップ回数の追跡を有効にする"
+        "message": "スキップの集計を有効にする"
     },
     "whatViewTracking": {
         "message": "この機能は、あなたがスキップしたセグメントを追跡して、そのセグメントがどれだけ役に立ったかを他のユーザーに知らせることで、スパムがデータベースに紛れないようにするための評価基準として使用されます。あなたがセグメントをスキップするたびに、拡張機能はサーバーにメッセージを送信します。使用回数の統計が正確になるよう、できる限り多くの人がこの設定を変更しないことを望みます。:)"
     },
     "enableViewTrackingInPrivate": {
-        "message": "プライベート/シークレット タブでスキップカウントトラッキングを有効にする"
+        "message": "プライベート/シークレット タブでのスキップ回数の集計を有効にする"
     },
     "enableTrackDownvotes": {
         "message": "セグメントの低評価を記録"
@@ -237,19 +237,19 @@
         "message": "セグメントがスキップされた後に通知を表示する"
     },
     "noticeVisibilityMode0": {
-        "message": "標準サイズのスキップ通知"
+        "message": "通常サイズのスキップ通知"
     },
     "noticeVisibilityMode1": {
-        "message": "自動スキップ時に小型の通知"
+        "message": "自動スキップ時に小サイズの通知"
     },
     "noticeVisibilityMode2": {
-        "message": "常に小型のスキップ通知"
+        "message": "常に小サイズのスキップ通知"
     },
     "noticeVisibilityMode3": {
-        "message": "自動スキップ時に半透明の通知"
+        "message": "自動スキップ時に透過タイプの通知"
     },
     "noticeVisibilityMode4": {
-        "message": "常に半透明のスキップ通知"
+        "message": "常に透過タイプのスキップ通知"
     },
     "longDescription": {
         "message": "SponsorBlockはスポンサー、イントロ、アウトロ、チャンネル登録のお願いなど、YouTube動画の煩わしい部分をスキップします。SponsorBlockはYouTube動画のスポンサー付きセグメントなどの開始時間と終了時間を誰でも投稿できる、クラウドソースのブラウザ拡張機能です。一人がセグメントの情報を送信すると、この拡張機能を使用している他の全員が、スポンサー付きセグメントをスキップできるようになります。また、ミュージックビデオの音楽がない部分をスキップすることもできます。",
@@ -319,14 +319,14 @@
         "message": "{0} をスキップしますか?"
     },
     "mute_category": {
-        "message": "{0} をミュートしますか?"
+        "message": "{0} をミュートしますか？"
     },
     "skip_to_category": {
-        "message": "{0}まで飛び越しますか？",
+        "message": "{0}までスキップしますか？",
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
-        "message": "{0}を飛び越しました",
+        "message": "{0}をスキップしました",
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
@@ -334,7 +334,7 @@
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
-        "message": "{0}まで飛び越しました",
+        "message": "{0}までスキップしました",
         "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
@@ -356,7 +356,7 @@
         "message": "この時間は、シークバーの下にある現在の時間の隣に表示されます。これは、動画の合計時間からすべてのセグメントの時間を差し引いたもので「シークバーに表示」として設定されているセグメントも含まれます。"
     },
     "youHaveSkipped": {
-        "message": "スキップしたセグメント数: "
+        "message": "スキップした数: "
     },
     "minLower": {
         "message": "分"
@@ -385,7 +385,7 @@
         "message": "ユーザーIDのインポート/エクスポート"
     },
     "whatChangeUserID": {
-        "message": "この情報を誰にも開示しないでください。これはパスワードのように、誰とも共有するべきではありません。 誰かがこれを持っている場合、あなたになりすますことができます。パブリックユーザーIDを探している場合は、ポップアップのクリップボードアイコンをクリックしてください。"
+        "message": "これは厳重に保管してください。これはパスワードのようなもので、誰とも共有すべきではありません。 他の誰かがこれを使って、あなたになりすますことができてしまいます。なおパブリックユーザーIDを探している場合は、ポップアップ内のクリップボードアイコンをクリックしてください。"
     },
     "setUserID": {
         "message": "ユーザーIDを設定"
@@ -407,7 +407,7 @@
         "message": "対応サイト: "
     },
     "optionsInfo": {
-        "message": "Invidious対応を有効にし，自動飛越を無効にし，GUIを非表示にします。"
+        "message": "Invidious対応を有効にし、自動スキップを無効、GUIを非表示にします。"
     },
     "addInvidiousInstance": {
         "message": "サードパーティーのクライアントインスタンスを追加"
@@ -437,7 +437,7 @@
         "message": "設定値より短いセグメントはスキップされず、プレーヤーにも表示されません。"
     },
     "skipNoticeDuration": {
-        "message": "飛び越し通知の表示時間（秒）:"
+        "message": "スキップ通知の表示時間（秒）:"
     },
     "skipNoticeDurationDescription": {
         "message": "飛び越し通知が画面上に表示され続ける時間です。手動で飛び越した場合は，より長く表示される可能性があります。"
@@ -485,7 +485,7 @@
         "message": "ファイルから読み込み"
     },
     "whatExportOptions": {
-        "message": "JSON形式の個人設定全体です。利用者IDが含まれているので，共有するときは注意してください。"
+        "message": "JSON形式のすべての個人設定です。これにはあなたのユーザーIDが含まれているので、共有するときは注意してください。"
     },
     "setOptions": {
         "message": "オプション設定"
@@ -500,7 +500,7 @@
         "message": "セグメントを送信"
     },
     "submit": {
-        "message": "送信"
+        "message": "提出"
     },
     "cancel": {
         "message": "キャンセル"
@@ -549,13 +549,13 @@
         "message": "無報酬 / セルフプロモーション"
     },
     "category_selfpromo_description": {
-        "message": "無報酬での宣伝あるいは自己販促を除いて「提供者」と同様です。商品・寄付・合作情報にかんする節を含みます。"
+        "message": "無報酬での宣伝あるいは自己販促であるという点を除いては「スポンサー」と同様です。商品、寄付、コラボ情報に関する内容を含みます。"
     },
     "category_exclusive_access": {
         "message": "限定アクセス"
     },
     "category_exclusive_access_description": {
-        "message": "動画全体に対してのみ付与できます。無償または補助金を受けて、製品、サービス、場所を紹介する動画。"
+        "message": "動画全体に対してのみ付与できます。無償または補助金を受けて、製品、サービス、場所を紹介する動画に使用。"
     },
     "category_exclusive_access_pill": {
         "message": "この動画は無償または補助金を受けて利用した製品、サービス、または場所を紹介するものです",
@@ -595,10 +595,10 @@
         "message": "無駄な脱線/冗談"
     },
     "category_filler_description": {
-        "message": "脱線したシーンには、動画の主な内容を理解するのに必要がない穴埋めやユーモアのみを追加してください。これには、文脈や背景の詳細を提供するセグメントを含めないでください。"
+        "message": "動画の本編を理解するのに必要のない、繋ぎの話やユーモアによって脱線したシーン。これには、文脈や背景の詳細を提供しているセグメントを含めないでください。"
     },
     "category_filler_short": {
-        "message": "フィラー"
+        "message": "繋ぎの話"
     },
     "category_music_offtopic": {
         "message": "音楽: 音楽以外のセクション"
@@ -613,7 +613,7 @@
         "message": "ハイライト"
     },
     "category_poi_highlight_description": {
-        "message": "多くの人が求めている動画の部分。「動画はXからスタート」のようなコメントです。"
+        "message": "多くの人が求めている動画の部分。「本編はXから開始」といったコメントのような機能です。"
     },
     "category_livestream_messages": {
         "message": "ライブ配信: 寄付/メッセージの読み上げ"
@@ -652,7 +652,7 @@
         "message": "スキップする代わりに音声をミュートしてセグメントを許可"
     },
     "fullVideoSegments": {
-        "message": "動画全体が広告の場合アイコンを表示",
+        "message": "動画全体が広告の場合にアイコンを表示",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
@@ -673,10 +673,10 @@
         "message": "ベータテストサーバーを有効にする"
     },
     "whatEnableTestingServer": {
-        "message": "提出した区域と区域への投票が主サーバーで**取り扱われなく**なります。試験目的にのみ利用してください。"
+        "message": "提出したセグメントと投票がメインサーバーで**取り扱われなく**なります。試験目的にのみ利用してください。"
     },
     "testingServerWarning": {
-        "message": "試サーバーに接続している間，全ての提出・投票は主サーバーで取り扱われなくなります。実際の提出・投票を行う際は，この設定を無効にしてください。"
+        "message": "テストサーバーに接続している間、全ての提出・投票はメインサーバーでは取り扱われなくなります。実際の提出・投票を行う際は、この設定を無効にしてください。"
     },
     "bracketNow": {
         "message": "(今)"
@@ -747,7 +747,7 @@
         "message": "カテゴリーを変更"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "この動画は音楽として分類されています。本当にこの動画にスポンサー部分がありますか? 本セグメントが本当に「音楽以外の区域」だった場合は、設定画面からこの分類を有効にしてください。その後、「スポンサー部分」の代わりに「音楽以外のセグメント」としてセグメントを提出できます。よく分からない場合は、ガイドラインを参照してください。"
+        "message": "この動画は音楽として分類されています。本当にこの動画にスポンサー部分がありますか？ このセグメントが実際には「音楽以外のセグメント」である場合、設定画面からこのカテゴリーを有効にしてください。「スポンサー」の代わりに「音楽以外」としてセグメントを提出できます。お困りの場合は、ガイドラインを参照してください。"
     },
     "multipleSegments": {
         "message": "複数のセグメント"
@@ -786,7 +786,7 @@
         "message": "二度と表示しない"
     },
     "warningChatInfo": {
-        "message": "警告によりあなたは一時的にセグメントを提出することができなくなりました。これはあなたが悪意のない一般的なミスを犯していることに私たちが気づいた事を意味します。ルールを理解していることを確認していただければこの警告は解除します。discord.gg/SponsorBlock または matrix.to/#/#sponsor:ajay.app よりこのチャットに参加することもできます。"
+        "message": "警告によりあなたは一時的にセグメントを提出することができません。これはあなたが悪意からではなく、単に誤った行為をしていることを私たちが認識したためです。ルールを理解していることを確認していただければこの警告は解除します。discord.gg/SponsorBlock または matrix.to/#/#sponsor:ajay.app よりチャットに参加することもできます。"
     },
     "voteRejectedWarning": {
         "message": "警告により投票が拒否されました。クリックして運営に連絡するか，少し時間を置いてからやりなおしてください。",
@@ -796,7 +796,7 @@
         "message": "寄付"
     },
     "considerDonating": {
-        "message": "開発資金を援助する"
+        "message": "開発を支援する"
     },
     "hideDonationLink": {
         "message": "寄付のお願いを表示しない"
@@ -811,10 +811,10 @@
         "message": "以下の設定を確認してください"
     },
     "helpPageFeatureDisclaimer": {
-        "message": "多くの機能は既定では無効となっています。動画の導入部や最後の余計な部分を飛び越したい場合は「非本質的な内容」を飛び越すようにしてください。また，UI要素の表示・非表示を切り替えることもできます。"
+        "message": "多くの機能がデフォルトでは無効となっています。イントロ・アウトロをスキップしたり、Invidiousで使用したりするにはこの下で有効にしてください。また画面の表示設定を切り替えることもできます。"
     },
     "helpPageHowSkippingWorks": {
-        "message": "飛び越しの仕組み"
+        "message": "スキップの仕組み"
     },
     "helpPageHowSkippingWorks1": {
         "message": "データベースにある動画区域が自動的に飛び越されます。この拡張機能のアイコンをクリックすると，区域の位置や範囲を確かめることができます。"
@@ -823,7 +823,7 @@
         "message": "区域を飛び越すたびに通知されます。区域の範囲がおかしいと思ったら，その区域を低評価してください。ポップアップ画面でも同様に投票ができます。"
     },
     "Submitting": {
-        "message": "提出中"
+        "message": "提出する"
     },
     "helpPageSubmitting1": {
         "message": "提出するにはポップアップの「セグメント開始を記録」ボタン、またはビデオプレーヤー内にあるボタンを押してください。"
@@ -832,22 +832,22 @@
         "message": "再生ボタンをクリックするとセグメントの開始、停止アイコンをクリックすると終了となります。 複数のスポンサーを用意してから送信ボタンを押すことができます。アップロードボタンをクリックすると提出されます。ゴミ箱をクリックすると削除されます。"
     },
     "Editing": {
-        "message": "編集中"
+        "message": "編集する"
     },
     "helpPageEditing1": {
-        "message": "もし失敗しても、上矢印ボタンをクリックすれば、セグメントを編集・削除することができます。"
+        "message": "もし間違えてしまっても、上矢印ボタンをクリックでセグメントを編集・削除することができます。"
     },
     "helpPageTooSlow": {
-        "message": "遅すぎます"
+        "message": "操作が面倒"
     },
     "helpPageTooSlow1": {
-        "message": "利用可能なホットキーがあります。セミコロンキーを押してスポンサーセグメントの開始/終了を示し、アポストロフィキーを押して送信します。これらはオプションで変更できます。QWERTYを使わない場合は、キーバインドを変更したほうがいいでしょう。"
+        "message": "ショートカットキーが利用可能です。セミコロンキーでスポンサーセグメントを開始/終了し、アポストロフィキーで送信できます。またこれらはオプションで変更できます。QWERTYキーを使わない場合は、キー割り当てを変更したほうがいいでしょう。"
     },
     "helpPageCopyOfDatabase": {
-        "message": "データベースのコピーを取得できますか? あなたがいなくなった場合はどうなりますか?"
+        "message": "データベースのコピーを利用できますか？ 作者が失踪した場合はどうなりますか？"
     },
     "helpPageCopyOfDatabase1": {
-        "message": "データベースは公開されており、こちらから閲覧できます:"
+        "message": "データベースは公開されており、こちらから利用できます:"
     },
     "helpPageCopyOfDatabase2": {
         "message": "ソースコードは自由に利用できます。運営になにがあろうとも，あなたの貢献（提出された区域）が失われることはありません。"
@@ -865,19 +865,19 @@
         "message": "さらに詳しく"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "反対票を投じ、再提出するためにローカルコピーを作成します。"
+        "message": "低評価を押し、再提出するためのローカルコピーを作成"
     },
     "OpenCategoryWikiPage": {
         "message": "このカテゴリーのWikiページを開きます。"
     },
     "CopyAndDownvote": {
-        "message": "コピーして反対票を投じる"
+        "message": "コピーして低評価"
     },
     "ContinueVoting": {
         "message": "投票を続ける"
     },
     "ChangeCategoryTooltip": {
-        "message": "この変更は即座にあなたのセグメントに適用されます"
+        "message": "この変更はすぐにあなたのセグメントに適用されます"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "編集ボックスにカーソルを合わせながらマウスホイールを使用すると、時間をすばやく調整できます。 CtrlキーまたはShiftキーの組み合わせを使用して変更を微調整できます。"
@@ -886,11 +886,11 @@
         "message": "新機能！動画全体がスポンサー付きもしくはセルフプロモーションかがわかります"
     },
     "dayAbbreviation": {
-        "message": "d",
+        "message": "日",
         "description": "100d"
     },
     "hourAbbreviation": {
-        "message": "h",
+        "message": "時間",
         "description": "100h"
     },
     "optionsTabBehavior": {
@@ -898,7 +898,7 @@
         "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabInterface": {
-        "message": "UI",
+        "message": "表示設定",
         "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabKeyBinds": {
@@ -914,7 +914,7 @@
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "noticeVisibilityLabel": {
-        "message": "スキップ通知の外観",
+        "message": "スキップ通知の形式",
         "description": "Option label"
     },
     "unbind": {

@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Ativar Pular Contagem de Rastreamento em Abas Privadas/Incógnito"
     },
+    "enableTrackDownvotes": {
+        "message": "Armazenar votos negativos de segmentos"
+    },
+    "whatTrackDownvotes": {
+        "message": "Qualquer segmento que você der voto negative permanecerá oculto mesmo após recarregar"
+    },
+    "trackDownvotesWarning": {
+        "message": "Aviso: Desativar isto excluirá todos os votos negativos armazenados anteriormente"
+    },
     "enableQueryByHashPrefix": {
         "message": "Consulta Por Prefixo Hash"
     },
@@ -582,6 +591,9 @@
     "category_preview_description": {
         "message": "Recapitulação rápida de episódios anteriores, ou uma prévia do que está chegando mais tarde no vídeo atual. Destinado a clipes editados juntos, não para resumos falados."
     },
+    "category_filler": {
+        "message": "Enrolação/Piadas"
+    },
     "category_filler_description": {
         "message": "Cenas tangenciais inseridas apenas por enrolação ou humor que não são necessárias para compreender o tópico principal do vídeo. Isto não deve incluir segmentos que fornecem contexto ou detalhes de segundo plano."
     },
@@ -694,6 +706,9 @@
     "hiddenDueToDuration": {
         "message": "oculto: muito curto"
     },
+    "manuallyHidden": {
+        "message": "oculto manualmente"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "O ID do canal ainda não foi carregado. Se você estiver usando um vídeo embutido, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se você achar que este é o caso, faça um comentário aqui:"
@@ -779,6 +794,9 @@
     },
     "Donate": {
         "message": "Doar"
+    },
+    "considerDonating": {
+        "message": "Ajude a financiar o desenvolvimento"
     },
     "hideDonationLink": {
         "message": "Ocultar o Link de Doação"
