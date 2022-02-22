@@ -1934,6 +1934,11 @@ async function sendSubmitMessage() {
         sponsorTimesSubmitting = [];
 
         updatePreviewBar();
+
+        const fullVideoSegment = sponsorTimes.filter((time) => time.actionType === ActionType.Full)[0];
+        if (fullVideoSegment) {
+            categoryPill?.setSegment(fullVideoSegment);
+        }
     } else {
         // Show that the upload failed
         playerButtons.submit.button.style.animation = "unset";
