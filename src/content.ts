@@ -509,22 +509,25 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         if (incorrectVideoCheck(videoID, currentSkip)) return;
         forceVideoTime ||= video.currentTime;
 
-        if ((shouldSkip(currentSkip) || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) 
-                && forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
-            skipToTime({
-                v: video, 
-                skipTime, 
-                skippingSegments, 
-                openNotice: skipInfo.openNotice
-            });
-
-            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip 
-                    || currentSkip.actionType === ActionType.Mute) {
-                forcedSkipTime = skipTime[0] + 0.001;
+        if ((shouldSkip(currentSkip) || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment))) {
+            if (forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
+                skipToTime({
+                    v: video, 
+                    skipTime, 
+                    skippingSegments, 
+                    openNotice: skipInfo.openNotice
+                });
+    
+                if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip 
+                        || currentSkip.actionType === ActionType.Mute) {
+                    forcedSkipTime = skipTime[0] + 0.001;
+                } else {
+                    forcedSkipTime = skipTime[1];
+                    forcedIncludeIntersectingSegments = true;
+                    forcedIncludeNonIntersectingSegments = false;
+                }
             } else {
-                forcedSkipTime = skipTime[1];
-                forcedIncludeIntersectingSegments = true;
-                forcedIncludeNonIntersectingSegments = false;
+                forcedSkipTime = forceVideoTime + 0.001;
             }
         }
 
