@@ -581,7 +581,7 @@ class PreviewBar {
                     } else if (a.actionType !== ActionType.Chapter && b.actionType === ActionType.Chapter) {
                         return 1;
                     } else {
-                        return (a.segment[0] - b.segment[1]);
+                        return (b.segment[0] - a.segment[0]);
                     }
                 })[0];
 
