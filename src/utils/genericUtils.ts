@@ -1,5 +1,5 @@
 /** Function that can be used to wait for a condition before returning. */
-async function wait<T>(condition: () => T | false, timeout = 5000, check = 100): Promise<T> {
+async function wait<T>(condition: () => T, timeout = 5000, check = 100, predicate?: (obj: T) => boolean): Promise<T> {
     return await new Promise((resolve, reject) => {
         setTimeout(() => {
             clearInterval(interval);
@@ -8,7 +8,7 @@ async function wait<T>(condition: () => T | false, timeout = 5000, check = 100):
 
         const intervalCheck = () => {
             const result = condition();
-            if (result) {
+            if (predicate ? predicate(result) : result) {
                 resolve(result);
                 clearInterval(interval);
             }
@@ -19,6 +19,20 @@ async function wait<T>(condition: () => T | false, timeout = 5000, check = 100):
         //run the check once first, this speeds it up a lot
         intervalCheck();
     });
+}
+
+function getFormattedTimeToSeconds(formatted: string): number | null {
+    const fragments = /^(?:(?:(\d+):)?(\d+):)?(\d*(?:[.,]\d+)?)$/.exec(formatted);
+
+    if (fragments === null) {
+        return null;
+    }
+
+    const hours = fragments[1] ? parseInt(fragments[1]) : 0;
+    const minutes = fragments[2] ? parseInt(fragments[2] || '0') : 0;
+    const seconds = fragments[3] ? parseFloat(fragments[3].replace(',', '.')) : 0;
+
+    return hours * 3600 + minutes * 60 + seconds;
 }
 
 /**
@@ -64,10 +78,11 @@ function hexToRgb(hex: string): {r: number, g: number, b: number} {
       g: parseInt(result[2], 16),
       b: parseInt(result[3], 16)
     } : null;
-  }
+}
 
 export const GenericUtils = {
     wait,
+    getFormattedTimeToSeconds,
     getErrorMessage,
     getLuminance
 }

@@ -71,7 +71,8 @@ export type Category = string & { __categoryBrand: unknown };
 
 export enum SponsorSourceType {
     Server = undefined,
-    Local = 1
+    Local = 1,
+    YouTube = 2
 }
 
 export interface SegmentContainer {

@@ -6,6 +6,7 @@ import Utils from "../utils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
 import SelectorComponent, { SelectorOption } from "./SelectorComponent";
+import { GenericUtils } from "../utils/genericUtils";
 
 
 const utils = new Utils();
@@ -289,8 +290,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
         
         // check if change is small engough to show tooltip
-        const before = utils.getFormattedTimeToSeconds(sponsorTimeEdits[index]);
-        const after = utils.getFormattedTimeToSeconds(targetValue);
+        const before = GenericUtils.getFormattedTimeToSeconds(sponsorTimeEdits[index]);
+        const after = GenericUtils.getFormattedTimeToSeconds(targetValue);
         const difference = Math.abs(before - after);
         if (0 < difference && difference < 0.5) this.showScrollToEditToolTip();
 
@@ -313,7 +314,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
         
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
-        let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
+        let timeAsNumber = GenericUtils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
         if (timeAsNumber !== null && e.deltaY != 0) {
             if (e.deltaY < 0) {
                 timeAsNumber += step;
@@ -530,8 +531,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
 
         if (this.state.editing) {
-            const startTime = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
-            const endTime = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
+            const startTime = GenericUtils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
+            const endTime = GenericUtils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
 
             // Change segment time only if the format was correct
             if (startTime !== null && endTime !== null) {

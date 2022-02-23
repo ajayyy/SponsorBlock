@@ -15,7 +15,7 @@ import { Message, MessageResponse, VoteResponse } from "./messageTypes";
 import * as Chat from "./js-components/chat";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { getStartTimeFromUrl } from "./utils/urlParser";
-import { findValidElement, getControls, getHashParams, isVisible } from "./utils/pageUtils";
+import { findValidElement, getControls, getExistingChapters, getHashParams, isVisible } from "./utils/pageUtils";
 import { isSafari, keybindEquals } from "./utils/configUtils";
 import { CategoryPill } from "./render/CategoryPill";
 import { AnimationUtils } from "./utils/animationUtils";
@@ -805,6 +805,17 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
             //set it now
             //otherwise the listener can handle it
             updatePreviewBar();
+        }
+
+        // Add existing chapters if we can
+        if (utils.chaptersEnabled()) {
+            GenericUtils.wait(() => getExistingChapters(sponsorVideoID, video.duration),
+                        5000, 100, (c) => c?.length > 0).then((chapters) => {
+                if (chapters?.length > 0) {
+                    sponsorTimes = sponsorTimes.concat(...chapters);
+                    updatePreviewBar();
+                }
+            });
         }
     } else if (response?.status === 404) {
         retryFetch();

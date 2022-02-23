@@ -29,7 +29,7 @@ export default class Utils {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
-    async wait<T>(condition: () => T | false, timeout = 5000, check = 100): Promise<T> {
+    async wait<T>(condition: () => T, timeout = 5000, check = 100): Promise<T> {
         return GenericUtils.wait(condition, timeout, check);
     }
 
@@ -442,20 +442,6 @@ export default class Utils {
         return formatted;
     }
 
-    getFormattedTimeToSeconds(formatted: string): number | null {
-        const fragments = /^(?:(?:(\d+):)?(\d+):)?(\d*(?:[.,]\d+)?)$/.exec(formatted);
-
-        if (fragments === null) {
-            return null;
-        }
-
-        const hours = fragments[1] ? parseInt(fragments[1]) : 0;
-        const minutes = fragments[2] ? parseInt(fragments[2] || '0') : 0;
-        const seconds = fragments[3] ? parseFloat(fragments[3].replace(',', '.')) : 0;
-
-        return hours * 3600 + minutes * 60 + seconds;
-    }
-
     shortCategoryName(categoryName: string): string {
         return chrome.i18n.getMessage("category_" + categoryName + "_short") || chrome.i18n.getMessage("category_" + categoryName);
     }
@@ -528,5 +514,9 @@ export default class Utils {
         }
 
         Config.forceLocalUpdate("downvotedSegments");
+    }
+
+    chaptersEnabled(): boolean {
+        return Config.config.renderAsChapters && !!this.getCategorySelection("chapter");
     }
 }

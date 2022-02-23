@@ -9,6 +9,7 @@ import Config from "../config";
 import { ActionType, Category, SegmentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
 import { partition } from "../utils/arrayUtils";
+import { GenericUtils } from "../utils/genericUtils";
 const utils = new Utils();
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
@@ -111,7 +112,7 @@ class PreviewBar {
                 const tooltipText = tooltipTextElement.textContent;
                 if (tooltipText === null || tooltipText.length === 0) continue;
 
-                timeInSeconds = utils.getFormattedTimeToSeconds(tooltipText);
+                timeInSeconds = GenericUtils.getFormattedTimeToSeconds(tooltipText);
 
                 if (timeInSeconds !== null) break;
             }
@@ -389,6 +390,8 @@ class PreviewBar {
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar) return;
 
+        // todo: Can this same mutation observer be reused to import chapters
+        //          maybe not, looks like it has to be imported from the skipping to chapters page
         const observer = new MutationObserver((mutations) => {
             const changes: Record<string, HTMLElement> = {};
             for (const mutation of mutations) {
