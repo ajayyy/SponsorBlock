@@ -390,8 +390,6 @@ class PreviewBar {
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar) return;
 
-        // todo: Can this same mutation observer be reused to import chapters
-        //          maybe not, looks like it has to be imported from the skipping to chapters page
         const observer = new MutationObserver((mutations) => {
             const changes: Record<string, HTMLElement> = {};
             for (const mutation of mutations) {
