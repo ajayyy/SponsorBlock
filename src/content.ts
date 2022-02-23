@@ -28,6 +28,7 @@ utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
 let sponsorDataFound = false;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 let sponsorTimes: SponsorTime[] = null;
+let existingChaptersImported = false;
 //what video id are these sponsors for
 let sponsorVideoID: VideoID = null;
 // List of open skip notices
@@ -246,8 +247,8 @@ function resetValues() {
     lastCheckTime = 0;
     lastCheckVideoTime = -1;
 
-    //reset sponsor times
     sponsorTimes = null;
+    existingChaptersImported = false;
     sponsorSkipped = [];
 
     videoInfo = null;
@@ -763,6 +764,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
         const oldSegments = sponsorTimes || [];
         sponsorTimes = recievedSegments;
+        existingChaptersImported = false;
 
         // Hide all submissions smaller than the minimum duration
         if (Config.config.minDuration !== 0) {
@@ -811,8 +813,9 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         if (Config.config.renderAsChapters) {
             GenericUtils.wait(() => getExistingChapters(sponsorVideoID, video.duration),
                         5000, 100, (c) => c?.length > 0).then((chapters) => {
-                if (chapters?.length > 0) {
+                if (!existingChaptersImported && chapters?.length > 0) {
                     sponsorTimes = sponsorTimes.concat(...chapters);
+                    existingChaptersImported = true;
                     updatePreviewBar();
                 }
             });
