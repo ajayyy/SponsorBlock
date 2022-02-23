@@ -552,9 +552,10 @@ class PreviewBar {
         }
     }
 
-    updateChapterText(segments: SponsorTime[], currentTime: number): void {
+    updateChapterText(segments: SponsorTime[], submittingSegments: SponsorTime[], currentTime: number): void {
         if (!segments) return;
 
+        if (submittingSegments?.length > 0) segments = segments.concat(submittingSegments);
         const activeSegments = segments.filter((segment) => {
             return segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
         });
