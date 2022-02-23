@@ -209,7 +209,7 @@ class PreviewBar {
             this.container.appendChild(bar);
         }
 
-        this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]));
+        this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]))
     }
 
     createBar(barSegment: PreviewBarSegment): HTMLLIElement {
@@ -241,10 +241,10 @@ class PreviewBar {
     createChaptersBar(segments: PreviewBarSegment[]): void {
         const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
-        if (!progressBar || !chapterBar) return;
+        if (!progressBar || !chapterBar || chapterBar.childElementCount <= 0) return;
 
-        this.customChaptersBar?.remove();
         if (!Config.config.renderAsChapters) {
+            if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             chapterBar.style.removeProperty("display");
             return;
         }
@@ -254,38 +254,56 @@ class PreviewBar {
         const chaptersToRender = this.createChapterRenderGroups(filteredSegments).filter((segment) => this.chapterGroupFilter(segment));
 
         if (chaptersToRender?.length <= 0) {
+            if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             chapterBar.style.removeProperty("display");
             return;
         }
 
         // Create it from cloning
-        const newChapterBar = chapterBar.cloneNode(true) as HTMLElement;
-        newChapterBar.classList.add("sponsorBlockChapterBar");
-        newChapterBar.style.removeProperty("display");
-        const originalSections = newChapterBar.querySelectorAll(".ytp-chapter-hover-container");
+        let createFromScratch = false;
+        if (!this.customChaptersBar) {
+            createFromScratch = true;
+            this.customChaptersBar = chapterBar.cloneNode(true) as HTMLElement;
+            this.customChaptersBar.classList.add("sponsorBlockChapterBar");
+        }
+        this.customChaptersBar.style.removeProperty("display");
+        const originalSections = this.customChaptersBar.querySelectorAll(".ytp-chapter-hover-container");
         const originalSection = originalSections[0];
 
-        this.customChaptersBar = newChapterBar;
+        this.customChaptersBar = this.customChaptersBar;
         this.chaptersBarSegments = segments;
+
+        // For switching to a video with less chapters
+        if (originalSections.length > chaptersToRender.length) {
+            for (let i = originalSections.length - 1; i >= chaptersToRender.length; i--) {
+                this.customChaptersBar.removeChild(originalSections[i]);
+            }
+        }
 
         // Modify it to have sections for each segment
         for (let i = 0; i < chaptersToRender.length; i++) {
             const chapter = chaptersToRender[i].segment;
             const duration = chapter[1] - chapter[0];
-            const newSection = originalSection.cloneNode(true) as HTMLElement;
+            let newSection = originalSections[i] as HTMLElement;
+            if (!newSection) {
+                newSection = originalSection.cloneNode(true) as HTMLElement;
+
+                this.firstTimeSetupChapterSection(newSection);
+                this.customChaptersBar.appendChild(newSection);
+            }
 
             this.setupChapterSection(newSection, duration, i !== chaptersToRender.length - 1);
-            newChapterBar.appendChild(newSection);
         }
 
         // Hide old bar
         chapterBar.style.display = "none";
 
-        originalSections.forEach((section) => section.remove());
-        if (this.container?.parentElement === progressBar) {
-            progressBar.insertBefore(newChapterBar, this.container.nextSibling);
-        } else {
-            progressBar.prepend(newChapterBar);
+        if (createFromScratch) {
+            if (this.container?.parentElement === progressBar) {
+                progressBar.insertBefore(this.customChaptersBar, this.container.nextSibling);
+            } else {
+                progressBar.prepend(this.customChaptersBar);
+            }
         }
 
         this.updateChapterAllMutation(chapterBar, progressBar, true);
@@ -345,9 +363,10 @@ class PreviewBar {
                 }
 
                 // Normal case
+                const endTime = Math.min(segment.segment[1], this.videoDuration);
                 result.push({
-                    segment: [segment.segment[0], segment.segment[1]],
-                    originalDuration: segment.segment[1] - segment.segment[0]
+                    segment: [segment.segment[0], endTime],
+                    originalDuration: endTime - segment.segment[0]
                 });
             }
 
@@ -377,7 +396,9 @@ class PreviewBar {
             section.style.width = this.timeToPercentage(duration);
         }
         section.setAttribute("decimal-width", String(this.timeToDecimal(duration)));
+    }
 
+    private firstTimeSetupChapterSection(section: HTMLElement): void {
         section.addEventListener("mouseenter", () => {
             this.hoveredSection?.classList.remove("ytp-exp-chapter-hover-effect");
             section.classList.add("ytp-exp-chapter-hover-effect");
@@ -395,7 +416,7 @@ class PreviewBar {
             for (const mutation of mutations) {
                 const currentElement = mutation.target as HTMLElement;
                 if (mutation.type === "attributes"
-                    && currentElement.parentElement.classList.contains("ytp-progress-list")) {
+                    && currentElement.parentElement?.classList.contains("ytp-progress-list")) {
                     changes[currentElement.classList[0]] = mutation.target as HTMLElement;
                 }
             }
@@ -447,18 +468,17 @@ class PreviewBar {
                         if (changedData.scale !== null) {
                             const transformScale = (changedData.scale) / progressBar.clientWidth;
                             
-                            customChangedElement.style.transform =
-                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft,
-                                    (transformScale - cursor) / sectionWidthDecimal - calculatedLeft))}`;
-
-                            // Prevent transition from occuring
+                            customChangedElement.style.transform = 
+                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, (transformScale - cursor) / sectionWidthDecimal - calculatedLeft))}`;
                             if (firstUpdate) {
                                 customChangedElement.style.transition = "none";
                                 setTimeout(() => customChangedElement.style.removeProperty("transition"), 50);
                             }
                         }
 
-                        customChangedElement.className = changedElement.className;
+                        if (customChangedElement.className !== changedElement.className) {
+                            customChangedElement.className = changedElement.className;
+                        }
                     }
                 }
 
