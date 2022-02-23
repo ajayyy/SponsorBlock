@@ -1,7 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, ActionType, SegmentUUID } from "./types";
+import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
@@ -432,7 +432,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     if (currentSegmentTab === SegmentTab.Segments) {
                         return segment.actionType !== ActionType.Chapter;
                     } else if (currentSegmentTab === SegmentTab.Chapters) {
-                        return segment.actionType === ActionType.Chapter;
+                        return segment.actionType === ActionType.Chapter 
+                            && segment.source !== SponsorSourceType.YouTube;
                     } else {
                         return true;
                     }
