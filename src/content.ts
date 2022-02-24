@@ -879,7 +879,8 @@ function retryFetch(): void {
  * Ex. When segments are first loaded
  */
 function startSkipScheduleCheckingForStartSponsors() {
-    if (!switchingVideos && sponsorTimes) {
+	// switchingVideos is ignored in Safari due to event fire order. See #1142
+    if ((!switchingVideos || isSafari) && sponsorTimes) {
         // See if there are any starting sponsors
         let startingSegmentTime = getStartTimeFromUrl(document.URL) || -1;
         let found = false;
