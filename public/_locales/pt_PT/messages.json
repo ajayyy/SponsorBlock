@@ -3,6 +3,10 @@
         "message": "SponsorBlock para o YouTube - Salte patrocínios",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "Salte patrocinios, pedidos de subscrição e mais em videos do YouTube. Submeta anúncios nos videos que visualiza para poupar tempo a outros.",
+        "description": "Description of the extension."
+    },
     "400": {
         "message": "O servidor disse que este pedido foi inválido"
     },
@@ -15,8 +19,20 @@
     "channelWhitelisted": {
         "message": "Canal adicionado à whitelist!"
     },
+    "Segment": {
+        "message": "segmento"
+    },
+    "Segments": {
+        "message": "segmentos"
+    },
+    "upvoteButtonInfo": {
+        "message": "Votar positivamente esta submissão"
+    },
     "reportButtonTitle": {
         "message": "Reportar"
+    },
+    "reportButtonInfo": {
+        "message": "Reportar esta submissão como incorrecta."
     },
     "Dismiss": {
         "message": "Ignorar"
@@ -36,8 +52,14 @@
     "reskip": {
         "message": "Saltar novamente"
     },
+    "unmute": {
+        "message": "Ativar som"
+    },
     "paused": {
         "message": "Pausado"
+    },
+    "manualPaused": {
+        "message": "Temporizador parado"
     },
     "confirmMSG": {
         "message": "\n\nPara editar ou remover linhas individuais, carregue com o botão direito ou abra o popup da extensão pelo icone no canto superior direito."
@@ -48,17 +70,50 @@
     "Unknown": {
         "message": "Erro ao enviar os seus segmentos, tente novamente mais tarde."
     },
+    "sponsorFound": {
+        "message": "Este vídeo tem segmentos na base de dados!"
+    },
+    "sponsor404": {
+        "message": "Nenhum segmento encontrado"
+    },
+    "sponsorStart": {
+        "message": "O Segmento Começa Agora"
+    },
+    "sponsorEnd": {
+        "message": "O Segmento Acaba Agora"
+    },
+    "sponsorCancel": {
+        "message": "Cancelar Criação de Segmento"
+    },
+    "noVideoID": {
+        "message": "Nenhum vídeo do YouTube encontrado.\nSe isto não estiver correto, atualize o separador."
+    },
+    "refreshSegments": {
+        "message": "Atualizar segmentos"
+    },
     "success": {
         "message": "Sucesso!"
     },
     "voted": {
         "message": "Votado!"
     },
+    "serverDown": {
+        "message": "Parece que o servidor está em baixo. Contacte o desenvolvedor imediatamente."
+    },
     "connectionError": {
         "message": "Deu-se um erro de conecção: Código: "
     },
+    "clearTimes": {
+        "message": "Limpar Segmentos"
+    },
     "openPopup": {
         "message": "Abrir o Popup SponsorBlock"
+    },
+    "closePopup": {
+        "message": "Fechar Popup"
+    },
+    "SubmitTimes": {
+        "message": "Submeter Segmentos"
     },
     "submitCheck": {
         "message": "Tem a certeza que pretende submeter?"
