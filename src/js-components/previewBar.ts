@@ -553,8 +553,9 @@ class PreviewBar {
     }
 
     updateChapterText(segments: SponsorTime[], submittingSegments: SponsorTime[], currentTime: number): void {
-        if (!segments) return;
+        if (!segments && submittingSegments?.length <= 0) return;
 
+        segments ??= [];
         if (submittingSegments?.length > 0) segments = segments.concat(submittingSegments);
         const activeSegments = segments.filter((segment) => {
             return segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
@@ -584,6 +585,15 @@ class PreviewBar {
                         return (b.segment[0] - a.segment[0]);
                     }
                 })[0];
+                console.log(segments.sort((a, b) => {
+                    if (a.actionType === ActionType.Chapter && b.actionType !== ActionType.Chapter) {
+                        return -1;
+                    } else if (a.actionType !== ActionType.Chapter && b.actionType === ActionType.Chapter) {
+                        return 1;
+                    } else {
+                        return (b.segment[0] - a.segment[0]);
+                    }
+                }))
 
                 const chapterButton = chaptersContainer.querySelector("button.ytp-chapter-title") as HTMLButtonElement;
                 chapterButton.classList.remove("ytp-chapter-container-disabled");
