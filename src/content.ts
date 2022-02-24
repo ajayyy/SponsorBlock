@@ -812,22 +812,26 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
             updatePreviewBar();
         }
 
-        // Add existing chapters if we can
-        if (Config.config.renderAsChapters) {
-            GenericUtils.wait(() => getExistingChapters(sponsorVideoID, video.duration),
-                        5000, 100, (c) => c?.length > 0).then((chapters) => {
-                if (!existingChaptersImported && chapters?.length > 0) {
-                    sponsorTimes = sponsorTimes.concat(...chapters);
-                    existingChaptersImported = true;
-                    updatePreviewBar();
-                }
-            });
-        }
+        importExistingChapters(true);
     } else if (response?.status === 404) {
         retryFetch();
     }
     
     lookupVipInformation(id);
+}
+
+function importExistingChapters(wait: boolean) {
+    if (Config.config.renderAsChapters && !existingChaptersImported
+            && (sponsorTimes?.length > 0 || sponsorTimesSubmitting.length > 0)) {
+        GenericUtils.wait(() => video && getExistingChapters(sponsorVideoID, video.duration),
+            wait ? 5000 : 0, 100, (c) => c?.length > 0).then((chapters) => {
+                if (!existingChaptersImported && chapters?.length > 0) {
+                    sponsorTimes = (sponsorTimes ?? []).concat(...chapters);
+                    existingChaptersImported = true;
+                    updatePreviewBar();
+                }
+            });
+    }
 }
 
 function getEnabledActionTypes(): ActionType[] {
@@ -1586,6 +1590,8 @@ function startOrEndTimingNewSegment() {
 
     updateEditButtonsOnPlayer();
     updateSponsorTimesSubmitting(false);
+
+    importExistingChapters(false);
 }
 
 function getIncompleteSegment(): SponsorTime {
@@ -1627,6 +1633,10 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
                 description: segmentTime.description,
                 source: segmentTime.source
             });
+        }
+
+        if (sponsorTimesSubmitting.length > 0) {
+            importExistingChapters(true);
         }
     }
 
