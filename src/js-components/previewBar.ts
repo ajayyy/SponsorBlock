@@ -6,7 +6,7 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 'use strict';
 
 import Config from "../config";
-import { ActionType, Category, SegmentContainer, SponsorTime } from "../types";
+import { ActionType, Category, SegmentContainer, SponsorSourceType, SponsorTime } from "../types";
 import Utils from "../utils";
 import { partition } from "../utils/arrayUtils";
 import { GenericUtils } from "../utils/genericUtils";
@@ -22,6 +22,7 @@ export interface PreviewBarSegment {
     unsubmitted: boolean;
     showLarger: boolean;
     description: string;
+    source: SponsorSourceType;
 }
 
 interface ChapterGroup extends SegmentContainer {
@@ -120,7 +121,9 @@ class PreviewBar {
             if (timeInSeconds === null) return;
 
             // Find the segment at that location, using the shortest if multiple found
-            const [normalSegments, chapterSegments] = partition(this.segments, (segment) => segment.actionType !== ActionType.Chapter)
+            const [normalSegments, chapterSegments] = 
+                partition(this.segments.filter((s) => s.source !== SponsorSourceType.YouTube), 
+                    (segment) => segment.actionType !== ActionType.Chapter);
             const normalSegment = this.getSmallestSegment(timeInSeconds, normalSegments);
             const chapterSegment = this.getSmallestSegment(timeInSeconds, chapterSegments);
 
@@ -128,7 +131,7 @@ class PreviewBar {
                 this.categoryTooltipContainer.classList.remove(TOOLTIP_VISIBLE_CLASS);
             } else {
                 this.categoryTooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
-                if (noYoutubeChapters && normalSegment !== null && chapterSegment !== null) {
+                if (normalSegment !== null && chapterSegment !== null) {
                     this.categoryTooltipContainer.classList.add("sponsorTwoTooltips");
                 } else {
                     this.categoryTooltipContainer.classList.remove("sponsorTwoTooltips");

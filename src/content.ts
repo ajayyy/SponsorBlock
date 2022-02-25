@@ -1085,7 +1085,8 @@ function updatePreviewBar(): void {
                 actionType: segment.actionType,
                 unsubmitted: false,
                 showLarger: segment.actionType === ActionType.Poi,
-                description: segment.description
+                description: segment.description,
+                source: segment.source,
             });
         });
     }
@@ -1097,7 +1098,8 @@ function updatePreviewBar(): void {
             actionType: segment.actionType,
             unsubmitted: true,
             showLarger: segment.actionType === ActionType.Poi,
-            description: segment.description
+            description: segment.description,
+            source: segment.source
         });
     });
 
