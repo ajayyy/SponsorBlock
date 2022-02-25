@@ -773,7 +773,7 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "Ce segment est long. Si toute la vidéo parle d'un seul sujet, changer \"Passer\" en \"Toute la vidéo\". Voir les directives pour plus d'informations."
+        "message": "Ce segment est long. Si toute la vidéo parle d'un seul sujet, changer \"Passer\" en \"Toute la vidéo\". Voir les instructions pour plus d'informations."
     },
     "categoryPillTitleText": {
         "message": "Cette vidéo entière est étiquetée avec cette catégorie qui est trop intégrée pour l'en séparer"
