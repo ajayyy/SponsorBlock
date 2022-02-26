@@ -6,6 +6,7 @@ import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageT
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
+import { shortCategoryName } from "./utils/categoryUtils";
 const utils = new Utils();
 
 interface MessageListener {
@@ -474,15 +475,15 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
                 }
 
-                const name = segmentTimes[i].description || utils.shortCategoryName(category);
+                const name = segmentTimes[i].description || shortCategoryName(category);
                 const textNode = document.createTextNode(name + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
                 if (segmentTimes[i].actionType === ActionType.Full) {
                     segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
                 } else {
-                    segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
+                    segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(segmentTimes[i].segment[0], true) + 
                             (actionType !== ActionType.Poi
-                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) 
+                                ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(segmentTimes[i].segment[1], true) 
                                 : "");
                 }
                 

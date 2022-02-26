@@ -9,6 +9,7 @@ import Config from "../config";
 import { ActionType, Category, SegmentContainer, SponsorSourceType, SponsorTime } from "../types";
 import Utils from "../utils";
 import { partition } from "../utils/arrayUtils";
+import { shortCategoryName } from "../utils/categoryUtils";
 import { GenericUtils } from "../utils/genericUtils";
 const utils = new Utils();
 
@@ -154,7 +155,7 @@ class PreviewBar {
 
     private setTooltipTitle(segment: PreviewBarSegment, tooltip: HTMLElement): void {
         if (segment) {
-            const name = segment.description || utils.shortCategoryName(segment.category);
+            const name = segment.description || shortCategoryName(segment.category);
             if (segment.unsubmitted) {
                 tooltip.textContent = chrome.i18n.getMessage("unsubmitted") + " " + name;
             } else {
@@ -603,7 +604,7 @@ class PreviewBar {
                 chapterButton.disabled = false;
 
                 const chapterTitle = chaptersContainer.querySelector(".ytp-chapter-title-content") as HTMLDivElement;
-                chapterTitle.innerText = chosenSegment.description || utils.shortCategoryName(chosenSegment.category);
+                chapterTitle.innerText = chosenSegment.description || shortCategoryName(chosenSegment.category);
             } else {
                 // Hide chapters menu again
                 chaptersContainer.style.display = "none";

@@ -35,6 +35,36 @@ function getFormattedTimeToSeconds(formatted: string): number | null {
     return hours * 3600 + minutes * 60 + seconds;
 }
 
+function getFormattedTime(seconds: number, precise?: boolean): string {
+    seconds = Math.max(seconds, 0);
+    
+    const hours = Math.floor(seconds / 60 / 60);
+    const minutes = Math.floor(seconds / 60) % 60;
+    let minutesDisplay = String(minutes);
+    let secondsNum = seconds % 60;
+    if (!precise) {
+        secondsNum = Math.floor(secondsNum);
+    }
+
+    let secondsDisplay = String(precise ? secondsNum.toFixed(3) : secondsNum);
+    
+    if (secondsNum < 10) {
+        //add a zero
+        secondsDisplay = "0" + secondsDisplay;
+    }
+    if (hours && minutes < 10) {
+        //add a zero
+        minutesDisplay = "0" + minutesDisplay;
+    }
+    if (isNaN(hours) || isNaN(minutes)) {
+        return null;
+    }
+
+    const formatted = (hours ? hours + ":" : "") + minutesDisplay + ":" + secondsDisplay;
+
+    return formatted;
+}
+
 /**
  * Gets the error message in a nice string
  * 
@@ -80,9 +110,29 @@ function hexToRgb(hex: string): {r: number, g: number, b: number} {
     } : null;
 }
 
+function generateUserID(length = 36): string {
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    if (window.crypto && window.crypto.getRandomValues) {
+            const values = new Uint32Array(length);
+            window.crypto.getRandomValues(values);
+            for (let i = 0; i < length; i++) {
+                    result += charset[values[i] % charset.length];
+            }
+            return result;
+    } else {
+            for (let i = 0; i < length; i++) {
+                result += charset[Math.floor(Math.random() * charset.length)];
+            }
+            return result;
+    }
+}
+
 export const GenericUtils = {
     wait,
+    getFormattedTime,
     getFormattedTimeToSeconds,
     getErrorMessage,
-    getLuminance
+    getLuminance,
+    generateUserID
 }

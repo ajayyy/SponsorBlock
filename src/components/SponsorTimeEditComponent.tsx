@@ -180,9 +180,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     style={timeDisplayStyle}
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
-                        {utils.getFormattedTime(segment[0], true) +
+                        {GenericUtils.getFormattedTime(segment[0], true) +
                             ((!isNaN(segment[1]) && sponsorTime.actionType !== ActionType.Poi)
-                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
+                                ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(segment[1], true) : "")}
                 </div>
             );
         }
@@ -324,7 +324,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 timeAsNumber = 0;
             }
             
-            sponsorTimeEdits[index] = utils.getFormattedTime(timeAsNumber, true);
+            sponsorTimeEdits[index] = GenericUtils.getFormattedTime(timeAsNumber, true);
             if (sponsorTime.actionType === ActionType.Poi) sponsorTimeEdits[1] = sponsorTimeEdits[0];
 
             this.setState({sponsorTimeEdits});
@@ -523,8 +523,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     /** Returns an array in the sponsorTimeEdits form (formatted time string) from a normal seconds sponsor time */
     getFormattedSponsorTimesEdits(sponsorTime: SponsorTime): [string, string] {
-        return [utils.getFormattedTime(sponsorTime.segment[0], true),
-            utils.getFormattedTime(sponsorTime.segment[1], true)];
+        return [GenericUtils.getFormattedTime(sponsorTime.segment[0], true),
+            GenericUtils.getFormattedTime(sponsorTime.segment[1], true)];
     }
 
     saveEditTimes(): void {

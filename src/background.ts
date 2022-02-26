@@ -8,6 +8,7 @@ import { Registration } from "./types";
 window.SB = Config;
 
 import Utils from "./utils";
+import { GenericUtils } from "./utils/genericUtils";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -77,7 +78,7 @@ chrome.runtime.onInstalled.addListener(function () {
             chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
 
             //generate a userID
-            const newUserID = utils.generateUserID();
+            const newUserID = GenericUtils.generateUserID();
             //save this UUID
             Config.config.userID = newUserID;
 
@@ -120,7 +121,7 @@ async function submitVote(type: number, UUID: string, category: string) {
 
     if (userID == undefined || userID === "undefined") {
         //generate one
-        userID = utils.generateUserID();
+        userID = GenericUtils.generateUserID();
         Config.config.userID = userID;
     }
 
