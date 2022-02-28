@@ -138,9 +138,6 @@ const manualSkipPercentCount = 0.5;
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
 
-//store pressed modifier keys
-const pressedKeys = new Set();
-  
 function messageListener(request: Message, sender: unknown, sendResponse: (response: MessageResponse) => void): void | boolean {
     //messages from popup script
     switch(request.message){
@@ -1987,37 +1984,34 @@ function addPageListeners(): void {
 
 function addHotkeyListener(): void {
     document.addEventListener("keydown", hotkeyListener);
-    document.addEventListener("keyup", (e) => pressedKeys.delete(e.key));
-    window.addEventListener("focus", (e) => pressedKeys.clear());
 }
 
 function hotkeyListener(e: KeyboardEvent): void {
     if (["textarea", "input"].includes(document.activeElement?.tagName?.toLowerCase())
         || document.activeElement?.id?.toLowerCase()?.includes("editable")) return;
 
-    if (["Alt", "Control", "Shift", "AltGraph"].includes(e.key)) {
-        pressedKeys.add(e.key);
-        return;
-    }
-
-    const key:Keybind = {key: e.key, code: e.code, alt: pressedKeys.has("Alt"), ctrl: pressedKeys.has("Control"), shift: pressedKeys.has("Shift")};
+    const key: Keybind = {
+        key: e.key, 
+        code: e.code, 
+        alt: e.altKey, 
+        ctrl: e.ctrlKey, 
+        shift: e.shiftKey
+    };
 
     const skipKey = Config.config.skipKeybind;
     const startSponsorKey = Config.config.startSponsorKeybind;
     const submitKey = Config.config.submitKeybind;
 
-    if (!pressedKeys.has("AltGraph")) {
-        if (keybindEquals(key, skipKey)) {
-            if (activeSkipKeybindElement)
-                activeSkipKeybindElement.toggleSkip.call(activeSkipKeybindElement);
-            return;
-        } else if (keybindEquals(key, startSponsorKey)) {
-            startOrEndTimingNewSegment();
-            return;
-        } else if (keybindEquals(key, submitKey)) {
-            submitSponsorTimes();
-            return;
-        }
+    if (keybindEquals(key, skipKey)) {
+        if (activeSkipKeybindElement)
+            activeSkipKeybindElement.toggleSkip.call(activeSkipKeybindElement);
+        return;
+    } else if (keybindEquals(key, startSponsorKey)) {
+        startOrEndTimingNewSegment();
+        return;
+    } else if (keybindEquals(key, submitKey)) {
+        submitSponsorTimes();
+        return;
     }
 
     //legacy - to preserve keybinds for skipKey, startSponsorKey and submitKey for people who set it before the update. (shouldn't be changed for future keybind options)
