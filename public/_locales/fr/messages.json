@@ -284,7 +284,7 @@
         "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Sélectionnez une touche en la tapant et choisissez n'importe quelles touches de modification que vous souhaitez utiliser."
+        "message": "Sélectionnez une touche en utilisant le clavier et choisissez les touches de modification que vous souhaitez utiliser."
     },
     "0": {
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
@@ -446,7 +446,7 @@
         "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
     },
     "liveOrPremiere": {
-        "message": "La soumission de segments sur un live en cours ou une première n'est pas autorisée. Veuillez attendre qu'il soit terminé puis actualisez la page et vérifiez que les segments sont toujours valides."
+        "message": "La soumission de segments sur un direct en cours ou une première n'est pas autorisée. Veuillez attendre qu'il soit terminé puis actualisez la page et vérifiez que les segments sont toujours valides."
     },
     "showUploadButton": {
         "message": "Afficher le bouton de téléchargement"
@@ -533,7 +533,7 @@
         "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous ne préférez pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
     },
     "keyAlreadyUsed": {
-        "message": "Ce raccourci est lié à une autre action. Veuillez en sélectionner un autre."
+        "message": "Ce raccourci est lié à une autre action. Veuillez en choisir un autre."
     },
     "to": {
         "message": "à",
@@ -707,7 +707,7 @@
         "message": "masqué : trop court"
     },
     "manuallyHidden": {
-        "message": "masquer manuellement"
+        "message": "masqué manuellement"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -802,7 +802,7 @@
         "message": "Cacher le lien de don"
     },
     "darkModeOptionsPage": {
-        "message": "Mode sombre sur la page options"
+        "message": "Page options affichée en mode sombre"
     },
     "helpPageThanksForInstalling": {
         "message": "Merci d'avoir installé SponsorBlock."
@@ -883,7 +883,7 @@
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
     },
     "categoryPillNewFeature": {
-        "message": "Nouveau! Voir quand une vidéo est entièrement sponsorisée ou de l'autopromotion"
+        "message": "Nouveau ! Soyez prévenu-e quand une vidéo est entièrement sponsorisée ou autopromotionnelle"
     },
     "dayAbbreviation": {
         "message": "j",
@@ -928,6 +928,6 @@
         "message": "Changer"
     },
     "youtubeKeybindWarning": {
-        "message": "Il s'agit d'un raccourci YouTube intégré. Êtes-vous sûr de vouloir l'utiliser ?"
+        "message": "Il s'agit d'un raccourci intégré à YouTube. Êtes-vous sûr de vouloir l'utiliser ?"
     }
 }
