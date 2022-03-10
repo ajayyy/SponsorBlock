@@ -167,56 +167,40 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, (res) => {
+    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&userID=" + Config.config.userID, (res) => {
         if (res.status === 200) {
-            PageElements.usernameValue.innerText = JSON.parse(res.responseText).userName
+            const userInfo = JSON.parse(res.responseText);
+            PageElements.usernameValue.innerText = userInfo.userName;
+
+            const viewCount = userInfo.viewCount;
+            if (viewCount != 0) {
+                if (viewCount > 1) {
+                    PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
+                } else {
+                    PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
+                }
+                PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
+                PageElements.sponsorTimesViewsContainer.style.display = "unset";
+            }
+
+            showDonateWidget(viewCount);
+
+            const minutesSaved = userInfo.minutesSaved;
+            if (minutesSaved != 0) {
+                if (minutesSaved != 1) {
+                    PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+                } else {
+                    PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
+                }
+                PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
+            }
         }
-    })
+    });
 
     //get the amount of times this user has contributed and display it to thank them
     if (Config.config.sponsorTimesContributed != undefined) {
         PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
         PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
-
-        //get the userID
-        const userID = Config.config.userID;
-        if (userID != undefined) {
-            //there are probably some views on these submissions then
-            //get the amount of views from the sponsors submitted
-            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function (response) {
-                if (response.status == 200) {
-                    const viewCount = JSON.parse(response.responseText).viewCount;
-                    if (viewCount != 0) {
-                        if (viewCount > 1) {
-                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
-                        } else {
-                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-                        }
-
-                        PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
-                        PageElements.sponsorTimesViewsContainer.style.display = "unset";
-                    }
-
-                    showDonateWidget(viewCount);
-                }
-            });
-
-            //get this time in minutes
-            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function (response) {
-                if (response.status == 200) {
-                    const minutesSaved = JSON.parse(response.responseText).timeSaved;
-                    if (minutesSaved != 0) {
-                        if (minutesSaved != 1) {
-                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-                        } else {
-                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-                        }
-
-                        PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                    }
-                }
-            });
-        }
     }
 
     //get the amount of times this user has skipped a sponsor
