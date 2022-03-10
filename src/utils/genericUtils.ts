@@ -28,20 +28,18 @@ async function wait<T>(condition: () => T | false, timeout = 5000, check = 100):
  * @returns {string} errorMessage
  */
 function getErrorMessage(statusCode: number, responseText: string): string {
-    let errorMessage = "";
     const postFix = (responseText ? "\n\n" + responseText : "");
-                        
-    if([400, 429, 409, 502, 503, 0].includes(statusCode)) {
-        //treat them the same
+    // display response body for 4xx
+    if([400, 429, 409, 0].includes(statusCode)) {
+        return chrome.i18n.getMessage(statusCode + "") + " " + chrome.i18n.getMessage("errorCode") + statusCode + postFix;
+    } else if (statusCode >= 500 && statusCode <= 599) {
+        // 503 == 502
         if (statusCode == 503) statusCode = 502;
-
-        errorMessage = chrome.i18n.getMessage(statusCode + "") + " " + chrome.i18n.getMessage("errorCode") + statusCode
-                        + "\n\n" + chrome.i18n.getMessage("statusReminder");
+        return chrome.i18n.getMessage(statusCode + "") + " " + chrome.i18n.getMessage("errorCode") + statusCode
+        + "\n\n" + chrome.i18n.getMessage("statusReminder");
     } else {
-        errorMessage = chrome.i18n.getMessage("connectionError") + statusCode;
+        return chrome.i18n.getMessage("connectionError") + statusCode + postFix;
     }
-
-    return errorMessage + postFix;
 }
 
 /* Gets percieved luminance of a color */
