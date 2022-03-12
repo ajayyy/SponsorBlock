@@ -263,8 +263,14 @@
     "skip": {
         "message": "略過"
     },
+    "mute": {
+        "message": "靜音"
+    },
     "skip_category": {
         "message": "跳過 {0}？"
+    },
+    "mute_category": {
+        "message": "要靜音 {0} 嗎？"
     },
     "muted": {
         "message": "{0} 已靜音",
@@ -641,6 +647,9 @@
     "hideForever": {
         "message": "永久隱藏"
     },
+    "helpPageThanksForInstalling": {
+        "message": "感謝你安裝 SponsorBlock。"
+    },
     "Submitting": {
         "message": "正在提交"
     },
@@ -652,5 +661,17 @@
     },
     "LearnMore": {
         "message": "了解更多"
+    },
+    "optionsTabInterface": {
+        "message": "介面",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "鍵盤快捷鍵",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "其他",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     }
 }

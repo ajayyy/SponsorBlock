@@ -14,7 +14,7 @@
         "message": "Vous cherchez à envoyer beaucoup de segments, y en a-t-il vraiment autant ?"
     },
     "409": {
-        "message": "Déja soumis"
+        "message": "Ce segment a déjà été soumis auparavant"
     },
     "channelWhitelisted": {
         "message": "Chaîne mise sur liste blanche !"
@@ -32,7 +32,7 @@
         "message": "Signaler"
     },
     "reportButtonInfo": {
-        "message": "Signaler que ce segment commercial est incorrect."
+        "message": "Signaler que cette soumission est incorrecte."
     },
     "Dismiss": {
         "message": "Fermer"
@@ -98,7 +98,7 @@
         "message": "A voté !"
     },
     "serverDown": {
-        "message": "Le serveur ne fonctionne pas. Contactez le développeur."
+        "message": "Il semblerait que le serveur soit hors service. Contactez le développeur."
     },
     "connectionError": {
         "message": "Erreur de connexion. Code d'erreur : "
@@ -171,7 +171,7 @@
         "message": "Cacher"
     },
     "Options": {
-        "message": "Paramètres"
+        "message": "Options"
     },
     "showButtons": {
         "message": "Montrer les boutons sur le lecteur YouTube"
@@ -180,7 +180,7 @@
         "message": "Cacher les boutons sur le lecteur YouTube"
     },
     "hideButtonsDescription": {
-        "message": "Cela permet de cacher du lecteur YouTube les boutons utilisés pour soumettre des segments commerciaux. Je peux \ncomprendre que certaines personnes les trouvent perturbants. Au lieu d'utiliser ces boutons, cette fenêtre peut être utilisée \npour soumettre des segments commerciaux. Pour cacher la notification, utilisez le bouton \"Ne plus montrer\" sur la notification. Vous pouvez toujours réactiver ces paramètres plus tard."
+        "message": "Ceci enlève du lecteur YouTube les boutons permettant de soumettre des segments."
     },
     "showSkipButton": {
         "message": "Conserver le bouton \"Aller au point essentiel\" sur le lecteur"
@@ -192,7 +192,7 @@
         "message": "Cacher le bouton Info sur le lecteur YouTube"
     },
     "autoHideInfoButton": {
-        "message": "Masquer Automatiquement Le Button Info"
+        "message": "Masquer automatiquement le bouton Info"
     },
     "hideDeleteButton": {
         "message": "Cacher le bouton Supprimer sur le lecteur YouTube"
@@ -210,13 +210,13 @@
         "message": "Activer le suivi du nombre de sauts dans les onglets privés/incognito"
     },
     "enableTrackDownvotes": {
-        "message": "Enregistrer les segments votés contre"
+        "message": "Enregistrer les segments contre lesquels vous avez voté"
     },
     "whatTrackDownvotes": {
-        "message": "Tous les segments que vous votez contre vous resteront cachés même après rafraîchissement"
+        "message": "Tous les segments que contre lesquels vous votez resteront cachés même après rafraîchissement de la page"
     },
     "trackDownvotesWarning": {
-        "message": "Attention : Désactiver ceci supprimera tous les votes contre précédemment enregistrés"
+        "message": "Attention : la désactivation supprimera tous vos votes précédemment enregistrés"
     },
     "enableQueryByHashPrefix": {
         "message": "Requête par préfixe du hash"
@@ -228,7 +228,7 @@
         "message": "Récupérer les segments sur les nouvelles vidéos"
     },
     "whatRefetchWhenNotFound": {
-        "message": "Si la vidéo est nouvelle et qu'aucun segment n'a été trouvé, ils seront réactualisés toutes les quelques minutes pendant le visionnage."
+        "message": "Si la vidéo vient de sortir et qu'aucun segment n'a été encore trouvé, SponsorBlock en cherchera durant la lecture de la vidéo."
     },
     "showNotice": {
         "message": "Afficher la notification"
@@ -272,7 +272,7 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "Sauter le segment",
+        "message": "Passer le segment",
         "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
@@ -284,7 +284,7 @@
         "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Sélectionnez une touche en la tapant et choisissez n'importe quelles touches de modification que vous souhaitez utiliser."
+        "message": "Sélectionnez une touche en utilisant le clavier et choisissez les touches de modification que vous souhaitez utiliser."
     },
     "0": {
         "message": "Délai de connexion dépassé. Vérifiez votre connexion internet. Si votre connexion internet fonctionne, le serveur est probablement surchargé ou hors service."
@@ -446,7 +446,7 @@
         "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
     },
     "liveOrPremiere": {
-        "message": "La soumission sur un livestream actif ou une première n'est pas autorisée. Veuillez attendre qu'il termine, puis actualisez la page et vérifiez que les segments sont toujours valides."
+        "message": "La soumission de segments sur un direct en cours ou une première n'est pas autorisée. Veuillez attendre qu'il soit terminé puis actualisez la page et vérifiez que les segments sont toujours valides."
     },
     "showUploadButton": {
         "message": "Afficher le bouton de téléchargement"
@@ -485,7 +485,7 @@
         "message": "Charger à partir du fichier"
     },
     "whatExportOptions": {
-        "message": "C'est votre configuration complète au format JSON. Elle inclut votre identifiant utilisateur, gardez-la pour vous."
+        "message": "Contient toute votre configuration au format JSON. Inclut votre UserID privé, donc ne partagez pas ce fichier."
     },
     "setOptions": {
         "message": "Définir les options"
@@ -527,20 +527,20 @@
         "message": "Impossible de copier dans le presse-papiers"
     },
     "copyDebugInformationOptions": {
-        "message": "Copie les informations dans le presse-papiers pour les fournir aux développeurs lors d'un rapport de bug ou lorsqu'un développeur le demande. Les informations sensibles telles que l'ID d'utilisateur, les chaînes sur liste blanche ou l'adresse du serveur personnalisé ont été supprimées. Cependant, ça contient des informations telles que votre user-agent, votre navigateur, votre système d'exploitation et le numéro de version d'extension. "
+        "message": "Copie les informations dans le presse-papiers de manière à les fournir à l'équipe de développement dans un rapport de bug ou si on vous le demande. Les informations personnelles telles que le UserID privé, les chaînes sur liste blanche ou l'adresse du serveur personnalisé sont retirées des données copiées. Cependant, des informations telles que votre user-agent, votre navigateur web, votre système d'exploitation ou le numéro de version d'extension de SponsorBlock font partie des données copiées. "
     },
     "copyDebugInformationComplete": {
-        "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous ne préférez pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
+        "message": "Les informations de débogage ont été copiées dans le presse-papiers. N'hésitez pas à supprimer toute information que vous ne souhaitez pas partager. Enregistrez-les dans un fichier texte ou collez-les dans le rapport de bug."
     },
     "keyAlreadyUsed": {
-        "message": "Ce raccourci est lié à une autre action. Veuillez en sélectionner un autre."
+        "message": "Ce raccourci est lié à une autre action. Veuillez en choisir un autre."
     },
     "to": {
         "message": "à",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
-        "message": "Message commercial"
+        "message": "Message sponsorisé"
     },
     "category_sponsor_description": {
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
@@ -555,10 +555,10 @@
         "message": "Accès exclusif"
     },
     "category_exclusive_access_description": {
-        "message": "Seulement pour étiqueter des vidéos entières. Utilisé quand une vidéo présente un produit, un service ou un emplacement auquel ils ont reçu un accès gratuit ou subventionné."
+        "message": "Sert uniquement à étiqueter les vidéos entièrement sponsorisées. Utilisé quand une vidéo présente un produit, un service ou un emplacement pour lesquels un accès gratuit ou subventionné a été reçu."
     },
     "category_exclusive_access_pill": {
-        "message": "Cette vidéo présente un produit, un service ou un emplacement auquel ils ont reçu un accès gratuit ou subventionné",
+        "message": "Cette vidéo présente un produit, un service ou un lieu pour lequel un accès gratuit ou subventionné a été reçu",
         "description": "Short description for this category"
     },
     "category_interaction": {
@@ -574,7 +574,7 @@
         "message": "Entracte/Animation d'intro"
     },
     "category_intro_description": {
-        "message": "Un intervalle sans réel contenu, comme une pause, une image statique ou une animation répétitive. Ne doit pas être utilisé pour les transitions avec des informations."
+        "message": "Un intervalle sans réel contenu, par exemple une pause, une image statique ou une animation répétitive. N'utilisez pas cette catégorie pour les transitions contenant de l'information."
     },
     "category_intro_short": {
         "message": "Entracte"
@@ -595,7 +595,7 @@
         "message": "Digressions/Blagues"
     },
     "category_filler_description": {
-        "message": "Des digressions ajoutées uniquement pour le remplissage ou l'humour qui ne sont pas requis pour comprendre le contenu principal de la vidéo. Cela ne devrait pas inclure des segments fournissant du contexte ou des détails de fond."
+        "message": "Digressions ajoutées uniquement dans un but de remplissage ou de l'humour non requis pour comprendre le sujet principal de la vidéo. Ne doit pas inclure des segments fournissant du contexte ou des détails de fond."
     },
     "category_filler_short": {
         "message": "Remplissage"
@@ -692,7 +692,7 @@
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
-        "message": "Avertissement: Ce type de segment peut avoir au maximum un seul actif à la fois. En soumettant plusieurs segments, un seul aléatoire sera affiché."
+        "message": "Attention : un seul segment de ce type de segment peut être actif à la fois. En soumettant plusieurs segments, un seul d'entre eux sera aléatoirement affiché."
     },
     "youMustSelectACategory": {
         "message": "Vous devez sélectionner une catégorie pour tous les segments que vous soumettez !"
@@ -707,7 +707,7 @@
         "message": "masqué : trop court"
     },
     "manuallyHidden": {
-        "message": "masquer manuellement"
+        "message": "masqué manuellement"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -735,7 +735,7 @@
         "message": "Forcer la vérification du canal avant de passer"
     },
     "whatForceChannelCheck": {
-        "message": "Par défaut, passer les segments avant même de savoir à quelle chaîne appartient la vidéo. Par défaut, les segments en début des vidéos des chaînes sur liste blanche peuvent être passés. Activer cette option empêchera cela mais passer les segments aura un délai, car obtenir l'id des chaînes peut prendre du temps. Ce délai sera imperceptible si votre connexion est rapide."
+        "message": "Par défaut, les segments sont passés avant même de savoir à quelle chaîne la vidéo appartient. Par défaut, certains segments en début de vidéo des chaînes sur liste blanche peuvent être involontairement passés. Activer cette option évitera ce problème mais le passage des segments aura un léger retard, du fait que l'obtention du ChannelID prend du temps. Ce retard devrait être imperceptible si vous avez un haut débit internet."
     },
     "forceChannelCheckPopup": {
         "message": "Envisagez d'activer \"Forcez la vérification de la chaîne avant de passer\""
@@ -773,10 +773,10 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "Ce segment est long. Si toute la vidéo parle d'un seul sujet, changer \"Passer\" en \"Toute la vidéo\". Voir les directives pour plus d'informations."
+        "message": "Ce segment est long. Si toute la vidéo parle d'un seul sujet, changer de \"Passer\" à \"Toute la vidéo\". Voir les instructions pour plus d'informations."
     },
     "categoryPillTitleText": {
-        "message": "Cette vidéo entière est étiquetée avec cette catégorie qui est trop intégrée pour l'en séparer"
+        "message": "L'intégralité de cette vidéo est classée dans cette catégorie ce qui la rend trop intriquée pour l'en séparer"
     },
     "experiementOptOut": {
         "message": "Se désinscrire de toutes les futures expériences",
@@ -786,7 +786,7 @@
         "message": "Cacher pour toujours"
     },
     "warningChatInfo": {
-        "message": "Vous avez reçu un avertissement et ne pouvez pas soumettre de segments temporairement. Cela signifie que nous avons remarqué que vous commettiez des erreurs courantes qui ne sont pas malveillantes. Veuillez simplement confirmer que vous comprenez les règles et nous supprimerons l'avertissement. Vous pouvez également rejoindre cette discussion en utilisant discord.gg/SponsorBlock ou matrix.to/#/#sponsor:ajay.app"
+        "message": "Vous avez reçu un avertissement et ne pouvez temporairement pas soumettre de segments. Cela signifie que nous avons remarqué que vous commettiez des erreurs courantes non malveillantes. Veuillez confirmer que vous comprenez le règlement et nous supprimerons l'avertissement. Vous pouvez également rejoindre cette discussion en utilisant discord.gg/SponsorBlock ou matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Le vote a été rejeté en raison d'un avertissement. Cliquez pour ouvrir un chat et y mettre fin , ou revenez plus tard lorsque vous avez le temps.",
@@ -802,7 +802,7 @@
         "message": "Cacher le lien de don"
     },
     "darkModeOptionsPage": {
-        "message": "Mode sombre sur la page options"
+        "message": "Page options affichée en mode sombre"
     },
     "helpPageThanksForInstalling": {
         "message": "Merci d'avoir installé SponsorBlock."
@@ -865,10 +865,10 @@
         "message": "En savoir plus"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Voter contre et crée une copie locale pour la resoumettre"
+        "message": "Vote contre et crée une copie locale à soumettre à nouveau"
     },
     "OpenCategoryWikiPage": {
-        "message": "Ouvrez la page wiki de cette catégorie."
+        "message": "Ouvrir la page wiki de cette catégorie."
     },
     "CopyAndDownvote": {
         "message": "Copier et voter contre"
@@ -880,10 +880,10 @@
         "message": "Cela s'appliquera instantanément à vos segments"
     },
     "SponsorTimeEditScrollNewFeature": {
-        "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches Ctrl ou Shift peuvent être utilisées pour affiner les modifications."
+        "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches ctrl ou maj peuvent être utilisées pour affiner les modifications."
     },
     "categoryPillNewFeature": {
-        "message": "Nouveau! Voir quand une vidéo est entièrement sponsorisée ou de l'autopromotion"
+        "message": "Nouveau ! Soyez prévenu-e quand une vidéo est entièrement sponsorisée ou autopromotionnelle"
     },
     "dayAbbreviation": {
         "message": "j",
@@ -914,7 +914,7 @@
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "noticeVisibilityLabel": {
-        "message": "Apparence d'avis de saut",
+        "message": "Sauter l'affichage de l'avertissement",
         "description": "Option label"
     },
     "unbind": {
@@ -928,6 +928,6 @@
         "message": "Changer"
     },
     "youtubeKeybindWarning": {
-        "message": "Il s'agit d'un raccourci YouTube intégré. Êtes-vous sûr de vouloir l'utiliser ?"
+        "message": "Il s'agit d'un raccourci intégré à YouTube. Êtes-vous sûr de vouloir l'utiliser ?"
     }
 }

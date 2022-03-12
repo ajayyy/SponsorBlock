@@ -104,7 +104,7 @@
         "message": "حدث خطأ في الاتصال. رمز الخطأ: "
     },
     "clearTimes": {
-        "message": "مسح الأقسام"
+        "message": "مسح الأجزاء"
     },
     "openPopup": {
         "message": "فتح نافذة سبونسر بلوك المنبثقة"
@@ -113,7 +113,7 @@
         "message": "إغلاق النافذة المنبثقة"
     },
     "SubmitTimes": {
-        "message": "إرسال الأقسام"
+        "message": "إرسال الأجزاء"
     },
     "submitCheck": {
         "message": "هل أنت متيقّن من إرسال هذا؟"
@@ -125,7 +125,7 @@
         "message": "إزالة القناة من القائمة البيضاء"
     },
     "voteOnTime": {
-        "message": "صوّت لقسم"
+        "message": "صوّت لجزء"
     },
     "Submissions": {
         "message": "المشاركات"
@@ -180,7 +180,7 @@
         "message": "إخفاء الأزرار على مشغل اليوتيوب"
     },
     "hideButtonsDescription": {
-        "message": "هذا يخفي الأزرار التي تظهر على مشغل اليوتيوب لإرسال أقسام للتخطي."
+        "message": "هذا يخفي الأزرار التي تظهر على مشغل اليوتيوب لإرسال أجزاء للتخطي."
     },
     "showSkipButton": {
         "message": "إبقاء زر \"تخطي للعنوان الرئيس\" على المشغّل"
@@ -199,6 +199,32 @@
     },
     "showDeleteButton": {
         "message": "إظهار زر \"حذف\" على مشغّل اليوتيوب"
+    },
+    "showNotice": {
+        "message": "إظهار الإشعار مرة أخرى"
+    },
+    "website": {
+        "message": "موقع الويب",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "الشفرة المصدرية",
+        "description": "Used on Firefox Store Page"
+    },
+    "setSkipShortcut": {
+        "message": "تخطي الجزء",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "بدء/إيقاف الجزء",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "إرسال الأجزاء",
+        "description": "Keybind label"
+    },
+    "errorCode": {
+        "message": "رمز الخطأ: "
     },
     "skip": {
         "message": "تخطي"
@@ -244,8 +270,101 @@
     "minsLower": {
         "message": "دقائق"
     },
+    "hourLower": {
+        "message": "ساعة"
+    },
+    "hoursLower": {
+        "message": "ساعات"
+    },
+    "youHaveSavedTime": {
+        "message": "لقد وفّرت على الناس",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " من حياتهم",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "createdBy": {
+        "message": "أنشئت من قِبل"
+    },
+    "supportOtherSites": {
+        "message": "دعم مواقع يوتيوب الطرف الثالث"
+    },
+    "supportedSites": {
+        "message": "المواقع المدعومة: "
+    },
     "add": {
         "message": "أضِف"
+    },
+    "save": {
+        "message": "حفظ"
+    },
+    "reset": {
+        "message": "إعادة تعيين"
+    },
+    "exportOptionsCopy": {
+        "message": "تعديل/نسخ"
+    },
+    "exportOptionsDownload": {
+        "message": "حفظ إلى ملف"
+    },
+    "exportOptionsUpload": {
+        "message": "تحميل من ملف"
+    },
+    "submit": {
+        "message": "إرسال"
+    },
+    "cancel": {
+        "message": "إلغاء"
+    },
+    "delete": {
+        "message": "حذف"
+    },
+    "preview": {
+        "message": "معاينة"
+    },
+    "unsubmitted": {
+        "message": "غير مرسلة"
+    },
+    "inspect": {
+        "message": "فحص"
+    },
+    "edit": {
+        "message": "تعديل"
+    },
+    "to": {
+        "message": "إلى",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "الراعي"
+    },
+    "category_exclusive_access": {
+        "message": "وصول حصري"
+    },
+    "category_outro": {
+        "message": "الخاتمة/تترات النهاية"
+    },
+    "category_preview": {
+        "message": "معاينة/خلاصة"
+    },
+    "category_filler_short": {
+        "message": "حشو"
+    },
+    "category_music_offtopic": {
+        "message": "الموسيقى: مقطع غير موسيقي"
+    },
+    "category": {
+        "message": "الفئة"
+    },
+    "bracketNow": {
+        "message": "(الآن)"
+    },
+    "moreCategories": {
+        "message": "المزيد من الفئات"
+    },
+    "chooseACategory": {
+        "message": "اختر فئة"
     },
     "permissionRequestSuccess": {
         "message": "نجح طلب الإذن!"
@@ -258,6 +377,9 @@
     },
     "incorrectCategory": {
         "message": "تغيير الفئة"
+    },
+    "multipleSegments": {
+        "message": "أجزاء متعددة"
     },
     "guidelines": {
         "message": "الإرشادات"
