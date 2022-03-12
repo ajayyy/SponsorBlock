@@ -79,18 +79,26 @@
 }
 
 /*
- * Individual segments (<button> elements)
+ * <details> wrapper around each segment
  */
 
-.segmentTimeButton {
-  background: transparent;
-  border: 0;
+.votingButtons[open] {
+  padding-bottom: 5px;
+}
+
+.votingButtons:hover {
+  background-color: var(--sb-grey-bg-color);
+}
+
+/*
+ * Individual segments summaries (clickable <summary>)
+ */
+
+.segmentSummary {
   cursor: pointer;
-  color: var(--sb-main-fg-color);
   font-weight: bold;
   padding: 7px;
-  outline: none;
-  width: 100%;
+  list-style: none;
   white-space: nowrap;
 }
 
@@ -500,8 +508,4 @@
 
 #sponsorBlockPopupBody .hidden {
   display: none !important;
-}
-
-.voteButtonsContainer--hide {
-  display: none;
 }
