@@ -37,7 +37,7 @@
  * Disable transition on all elements until the extension has loaded
  */
 
-.preload * {
+.sb-preload * {
   transition: none !important;
 }
 
