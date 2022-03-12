@@ -238,7 +238,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             PageElements.sbConsiderDonateLink.addEventListener("click", () => {
                 Config.config.donateClicked = Config.config.donateClicked + 1;
             });
-            
+
             PageElements.sbCloseDonate.addEventListener("click", () => {
                 PageElements.sponsorTimesDonateContainer.style.display = "none";
                 Config.config.showPopupDonationCount = 100;
@@ -393,8 +393,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const UUID = segmentTimes[i].UUID;
                 const locked = segmentTimes[i].locked;
 
-                const sponsorTimeButton = document.createElement("button");
-                sponsorTimeButton.className = "segmentTimeButton popupElement";
+                const segmentSummary = document.createElement("summary");
+                segmentSummary.className = "segmentSummary";
 
                 const categoryColorCircle = document.createElement("span");
                 categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
@@ -418,26 +418,25 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 if (segmentTimes[i].actionType === ActionType.Full) {
                     segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
                 } else {
-                    segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) + 
+                    segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) +
                             (segmentTimes[i].actionType !== ActionType.Poi
-                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true) 
+                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true)
                                 : "");
                 }
-                
+
                 segmentTimeFromToNode.style.margin = "5px";
 
-                sponsorTimeButton.appendChild(categoryColorCircle);
-                sponsorTimeButton.appendChild(textNode);
-                sponsorTimeButton.appendChild(segmentTimeFromToNode);
+                segmentSummary.appendChild(categoryColorCircle);
+                segmentSummary.appendChild(textNode);
+                segmentSummary.appendChild(segmentTimeFromToNode);
 
-                const votingButtons = document.createElement("div");
+                const votingButtons = document.createElement("details");
                 votingButtons.classList.add("votingButtons");
 
                 //thumbs up and down buttons
                 const voteButtonsContainer = document.createElement("div");
                 voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
                 voteButtonsContainer.setAttribute("align", "center");
-                voteButtonsContainer.classList.add('voteButtonsContainer--hide');
 
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
@@ -500,15 +499,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
                 voteButtonsContainer.appendChild(uuidButton);
-                if (segmentTimes[i].actionType === ActionType.Skip 
+                if (segmentTimes[i].actionType === ActionType.Skip
                         && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segmentTimes[i].hidden)) {
                     voteButtonsContainer.appendChild(hideButton);
                 }
-
-                //add click listener to open up vote panel
-                sponsorTimeButton.addEventListener("click", function () {
-                    voteButtonsContainer.classList.toggle("voteButtonsContainer--hide");
-                });
 
                 // Will contain request status
                 const voteStatusContainer = document.createElement("div");
@@ -521,7 +515,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
                 voteStatusContainer.appendChild(thanksForVotingText);
 
-                votingButtons.append(sponsorTimeButton);
+                votingButtons.append(segmentSummary);
                 votingButtons.append(voteButtonsContainer);
                 votingButtons.append(voteStatusContainer);
 
@@ -796,8 +790,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     /**
      * Converts time in minutes to 2d 5h 25.1
      * If less than 1 hour, just returns minutes
-     * 
-     * @param {float} minutes 
+     *
+     * @param {float} minutes
      * @returns {string}
      */
     function getFormattedHours(minutes) {
