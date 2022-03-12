@@ -3,7 +3,213 @@
         "message": "ইউটিউবের জন্য স্পনসরব্লক - স্পনসরশিপ এড়িয়ে যান",
         "description": "Name of the extension."
     },
+    "Description": {
+        "message": "YouTube ভিডিওতে স্পনসরশিপ, সাবস্ক্রিপশন ভিক্ষা এবং আরও অনেক কিছু এড়িয়ে যান। অন্যদের সময় বাঁচাতে আপনার দেখা ভিডিওগুলিতে স্পনসরদের রিপোর্ট করুন।",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "সার্ভার বলেছে এই অনুরোধটি অবৈধ"
+    },
+    "429": {
+        "message": "আপনি এই একটি ভিডিওর জন্য অনেক বেশি স্পনসর জমা দিয়েছেন, আপনি কি নিশ্চিত যে এই একটি ভিডিওর জন্য অনেকগুলি স্পনসর আছে?"
+    },
     "409": {
         "message": "এটি আগেই জমা দেওয়া হয়েছে"
+    },
+    "channelWhitelisted": {
+        "message": "চ্যানেল সাদা তালিকাভুক্ত!"
+    },
+    "Segment": {
+        "message": "অংশ"
+    },
+    "Segments": {
+        "message": "অংশগুলো"
+    },
+    "upvoteButtonInfo": {
+        "message": "এই জমাটিকে সমর্থন করুন"
+    },
+    "reportButtonTitle": {
+        "message": "রিপোর্ট"
+    },
+    "reportButtonInfo": {
+        "message": "এই জমাটি ভুল হিসাবে রিপোর্ট করুন।"
+    },
+    "Dismiss": {
+        "message": "খারিজ করুন"
+    },
+    "Loading": {
+        "message": "লোড করা হচ্ছে..."
+    },
+    "Hide": {
+        "message": "কখনো দেখাবে না"
+    },
+    "hitGoBack": {
+        "message": "আপনি যেখান থেকে এসেছেন সেখানে যেতে আনস্কিপ টিপুন"
+    },
+    "unskip": {
+        "message": "বাদ দিন"
+    },
+    "reskip": {
+        "message": "বাদ দিন"
+    },
+    "unmute": {
+        "message": "সরব করুন"
+    },
+    "paused": {
+        "message": "বিরতি"
+    },
+    "manualPaused": {
+        "message": "টাইমার থেমেছে"
+    },
+    "confirmMSG": {
+        "message": "পৃথক মান সম্পাদনা করতে বা মুছতে, তথ্য বোতামে ক্লিক করুন বা উপরের ডানদিকের কোণায় এক্সটেনশন আইকনে ক্লিক করে এক্সটেনশন পপআপ খুলুন।"
+    },
+    "clearThis": {
+        "message": "আপনি কি পরিষ্কার করতে চান?"
+    },
+    "Unknown": {
+        "message": "আপনার স্পনসর জমা দেওয়ার সময় একটি ত্রুটি হয়েছে, অনুগ্রহ করে পরে আবার চেষ্টা করুন৷"
+    },
+    "sponsorFound": {
+        "message": "এই ভিডিওটি ডাটাবেসে সেগমেন্ট আছে!"
+    },
+    "sponsor404": {
+        "message": "কোনো সেগমেন্ট পাওয়া যায়নি"
+    },
+    "sponsorStart": {
+        "message": "অংশ এখন শুরু হয়"
+    },
+    "sponsorEnd": {
+        "message": "অংশ এখন শেষ হয়"
+    },
+    "sponsorCancel": {
+        "message": "সেগমেন্ট তৈরি করা বাতিল করুন"
+    },
+    "noVideoID": {
+        "message": "কোনো ইউটিউব ভিডিও পাওয়া যায়নি।\nযদি এটি ভুল হয়, ট্যাব রিফ্রেশ করুন।"
+    },
+    "refreshSegments": {
+        "message": "সেগমেন্ট রিফ্রেশ করুন"
+    },
+    "success": {
+        "message": "সফল!"
+    },
+    "voted": {
+        "message": "ভোট দিয়েছেন!"
+    },
+    "serverDown": {
+        "message": "মনে হচ্ছে সার্ভার ডাউন। অবিলম্বে বিকাশকারীর সাথে যোগাযোগ করুন।"
+    },
+    "connectionError": {
+        "message": "একটি সংযোগ ত্রুটি ঘটেছে. ভুল সংকেত: "
+    },
+    "clearTimes": {
+        "message": "বিভাগগুলি পরিষ্কার করুন"
+    },
+    "openPopup": {
+        "message": "স্পনসরব্লক পপআপ খুলুন"
+    },
+    "closePopup": {
+        "message": "পপআপ বন্ধ করুন"
+    },
+    "SubmitTimes": {
+        "message": "সেগমেন্ট জমা দিন"
+    },
+    "submitCheck": {
+        "message": "আপনি কি এটি জমা দেওয়ার বিষয়ে নিশ্চিত?"
+    },
+    "whitelistChannel": {
+        "message": "সাদা তালিকার চ্যানেল"
+    },
+    "removeFromWhitelist": {
+        "message": "সাদা তালিকা থেকে চ্যানেল সরান"
+    },
+    "voteOnTime": {
+        "message": "একটি বিভাগে ভোট দিন"
+    },
+    "Submissions": {
+        "message": "জমা"
+    },
+    "savedPeopleFrom": {
+        "message": "আপনি মানুষকে রক্ষা করেছেন "
+    },
+    "viewLeaderboard": {
+        "message": "শীর্ষতালিকা"
+    },
+    "recordTimesDescription": {
+        "message": "সাবমিট"
+    },
+    "submissionEditHint": {
+        "message": "আপনি জমা ক্লিক করার পরে বিভাগ সম্পাদনা প্রদর্শিত হবে",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "ইঙ্গিত: আপনি বিকল্পগুলিতে জমা দেওয়ার জন্য কীবাইন্ড সেটআপ করতে পারেন"
+    },
+    "clearTimesButton": {
+        "message": "সময় মুছুন"
+    },
+    "submitTimesButton": {
+        "message": "সময় জমা দিন"
+    },
+    "publicStats": {
+        "message": "আপনি কতটা অবদান রেখেছেন তা দেখানোর জন্য এটি সর্বজনীন পরিসংখ্যান পৃষ্ঠায় ব্যবহার করা হয়। এটা দেখ"
+    },
+    "Username": {
+        "message": "ব্যবহারকারীর নাম"
+    },
+    "setUsername": {
+        "message": "ব্যবহারকারীর নাম দিন"
+    },
+    "copyPublicID": {
+        "message": "পাবলিক ইউজারআইডি কপি করুন"
+    },
+    "discordAdvert": {
+        "message": "পরামর্শ এবং প্রতিক্রিয়া জানাতে অফিসিয়াল ডিসকর্ড সার্ভারে যোগ দিন!"
+    },
+    "hideThis": {
+        "message": "এই বিষয়বস্তু লুকান"
+    },
+    "Options": {
+        "message": "বিকল্পসমূহ"
+    },
+    "showButtons": {
+        "message": "ইউটিউব প্লেয়ারে বোতাম দেখান"
+    },
+    "hideButtons": {
+        "message": "ইউটিউব প্লেয়ারে বোতাম বাদ দিন"
+    },
+    "hideButtonsDescription": {
+        "message": "এটি স্কিপ সেগমেন্ট জমা দেওয়ার জন্য ইউটিউব প্লেয়ারে প্রদর্শিত বোতামগুলিকে লুকিয়ে রাখে।"
+    },
+    "showSkipButton": {
+        "message": "প্লেয়ারে বোতাম হাইলাইট করতে এড়িয়ে যান"
+    },
+    "showInfoButton": {
+        "message": "ইউটিউব প্লেয়ারে তথ্য বোতাম দেখান"
+    },
+    "hideInfoButton": {
+        "message": "ইউটিউব প্লেয়ারে তথ্য বোতাম লুকান"
+    },
+    "autoHideInfoButton": {
+        "message": "অটো-লুকান তথ্য বোতাম"
+    },
+    "hideDeleteButton": {
+        "message": "ইউটিউব প্লেয়ারে ডিলিট বোতাম লুকান"
+    },
+    "showDeleteButton": {
+        "message": "ইউটিউব প্লেয়ারে ডিলিট বোতাম দেখান"
+    },
+    "enableViewTracking": {
+        "message": "স্কিপ কাউন্ট ট্র্যাকিং সক্ষম করুন"
+    },
+    "whatViewTracking": {
+        "message": "এই বৈশিষ্ট্যটি ট্র্যাক করে যে আপনি কোন বিভাগগুলি এড়িয়ে গেছেন ব্যবহারকারীদের জানাতে যে তাদের জমা দেওয়া অন্যদের কতটা সাহায্য করেছে এবং স্প্যাম ডাটাবেসে প্রবেশ না করে তা নিশ্চিত করার জন্য আপভোট সহ একটি মেট্রিক হিসাবে ব্যবহার করা হয়েছে৷ আপনি যখনই একটি সেগমেন্ট এড়িয়ে যান তখন এক্সটেনশনটি সার্ভারে একটি বার্তা পাঠায়। আশা করি অধিকাংশ মানুষ এই সেটিং পরিবর্তন করবেন না যাতে ভিউ সংখ্যা সঠিক হয়। :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "ব্যক্তিগত/ছদ্মবেশী ট্যাবে গণনা ট্র্যাকিং এড়িয়ে যাওয়া সক্ষম করুন৷"
+    },
+    "enableTrackDownvotes": {
+        "message": "স্টোর সেগমেন্ট ডাউনভোট"
     }
 }

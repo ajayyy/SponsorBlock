@@ -586,7 +586,7 @@
         "message": "I titoli di coda o quando vengono mostrate annotazioni a fine video su YouTube. Non per conclusioni provviste di informazioni."
     },
     "category_preview": {
-        "message": "Anteprima"
+        "message": "Anteprima/Riepilogo"
     },
     "category_preview_description": {
         "message": "Riepilogo rapido degli episodi precedenti, o un'anteprima di ciò che sta arrivando più tardi nel video attuale. Inteso per clip, non per riassunti a voce."

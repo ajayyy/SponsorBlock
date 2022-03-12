@@ -593,7 +593,7 @@ svg {
 
 
 /* Top bar navigation for smaller screens */
-@media only screen and (max-height: 650px), only screen and (max-width: 1200px) {
+@media only screen and (max-height: 725px), only screen and (max-width: 1200px) {
     #options-container {
         flex-direction: column;
     }
@@ -666,6 +666,8 @@ svg {
 @media only screen and (max-width: 800px) {
     #options {
         padding: 0 15px;
-        justify-content: left;
+    }
+    #options > div {
+        max-width: 100%;
     }
 }

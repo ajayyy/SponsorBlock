@@ -177,56 +177,40 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    utils.sendRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID, (res) => {
+    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&userID=" + Config.config.userID, (res) => {
         if (res.status === 200) {
-            PageElements.usernameValue.innerText = JSON.parse(res.responseText).userName
+            const userInfo = JSON.parse(res.responseText);
+            PageElements.usernameValue.innerText = userInfo.userName;
+
+            const viewCount = userInfo.viewCount;
+            if (viewCount != 0) {
+                if (viewCount > 1) {
+                    PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
+                } else {
+                    PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
+                }
+                PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
+                PageElements.sponsorTimesViewsContainer.style.display = "unset";
+            }
+
+            showDonateWidget(viewCount);
+
+            const minutesSaved = userInfo.minutesSaved;
+            if (minutesSaved != 0) {
+                if (minutesSaved != 1) {
+                    PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+                } else {
+                    PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
+                }
+                PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
+            }
         }
-    })
+    });
 
     //get the amount of times this user has contributed and display it to thank them
     if (Config.config.sponsorTimesContributed != undefined) {
         PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
         PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
-
-        //get the userID
-        const userID = Config.config.userID;
-        if (userID != undefined) {
-            //there are probably some views on these submissions then
-            //get the amount of views from the sponsors submitted
-            utils.sendRequestToServer("GET", "/api/getViewsForUser?userID=" + userID, function (response) {
-                if (response.status == 200) {
-                    const viewCount = JSON.parse(response.responseText).viewCount;
-                    if (viewCount != 0) {
-                        if (viewCount > 1) {
-                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segments");
-                        } else {
-                            PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
-                        }
-
-                        PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
-                        PageElements.sponsorTimesViewsContainer.style.display = "unset";
-                    }
-
-                    showDonateWidget(viewCount);
-                }
-            });
-
-            //get this time in minutes
-            utils.sendRequestToServer("GET", "/api/getSavedTimeForUser?userID=" + userID, function (response) {
-                if (response.status == 200) {
-                    const minutesSaved = JSON.parse(response.responseText).timeSaved;
-                    if (minutesSaved != 0) {
-                        if (minutesSaved != 1) {
-                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
-                        } else {
-                            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minLower");
-                        }
-
-                        PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
-                    }
-                }
-            });
-        }
     }
 
     //get the amount of times this user has skipped a sponsor
@@ -280,7 +264,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             PageElements.sbConsiderDonateLink.addEventListener("click", () => {
                 Config.config.donateClicked = Config.config.donateClicked + 1;
             });
-            
+
             PageElements.sbCloseDonate.addEventListener("click", () => {
                 PageElements.sponsorTimesDonateContainer.style.display = "none";
                 Config.config.showPopupDonationCount = 100;
@@ -455,8 +439,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const category = segmentTimes[i].category;
                 const actionType = segmentTimes[i].actionType;
 
-                const sponsorTimeButton = document.createElement("button");
-                sponsorTimeButton.className = "segmentTimeButton popupElement";
+                const segmentSummary = document.createElement("summary");
+                segmentSummary.className = "segmentSummary";
 
                 const categoryColorCircle = document.createElement("span");
                 categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
@@ -483,24 +467,23 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 } else {
                     segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(segmentTimes[i].segment[0], true) + 
                             (actionType !== ActionType.Poi
-                                ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(segmentTimes[i].segment[1], true) 
+                                ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(segmentTimes[i].segment[1], true)
                                 : "");
                 }
-                
+
                 segmentTimeFromToNode.style.margin = "5px";
 
-                if (actionType !== ActionType.Chapter) sponsorTimeButton.appendChild(categoryColorCircle);
-                sponsorTimeButton.appendChild(textNode);
-                sponsorTimeButton.appendChild(segmentTimeFromToNode);
+                if (actionType !== ActionType.Chapter) segmentSummary.appendChild(categoryColorCircle);
+                segmentSummary.appendChild(textNode);
+                segmentSummary.appendChild(segmentTimeFromToNode);
 
-                const votingButtons = document.createElement("div");
+                const votingButtons = document.createElement("details");
                 votingButtons.classList.add("votingButtons");
 
                 //thumbs up and down buttons
                 const voteButtonsContainer = document.createElement("div");
                 voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
                 voteButtonsContainer.setAttribute("align", "center");
-                voteButtonsContainer.classList.add('voteButtonsContainer--hide');
 
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
@@ -570,17 +553,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
                 voteButtonsContainer.appendChild(uuidButton);
-                if (segmentTimes[i].actionType === ActionType.Skip 
+                if (segmentTimes[i].actionType === ActionType.Skip
                         && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segmentTimes[i].hidden)) {
                     voteButtonsContainer.appendChild(hideButton);
                 }
                 voteButtonsContainer.appendChild(skipButton);
 
-
-                //add click listener to open up vote panel
-                sponsorTimeButton.addEventListener("click", function () {
-                    voteButtonsContainer.classList.toggle("voteButtonsContainer--hide");
-                });
 
                 // Will contain request status
                 const voteStatusContainer = document.createElement("div");
@@ -593,7 +571,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
                 voteStatusContainer.appendChild(thanksForVotingText);
 
-                votingButtons.append(sponsorTimeButton);
+                votingButtons.append(segmentSummary);
                 votingButtons.append(voteButtonsContainer);
                 votingButtons.append(voteStatusContainer);
 
@@ -901,8 +879,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     /**
      * Converts time in minutes to 2d 5h 25.1
      * If less than 1 hour, just returns minutes
-     * 
-     * @param {float} minutes 
+     *
+     * @param {float} minutes
      * @returns {string}
      */
     function getFormattedHours(minutes) {

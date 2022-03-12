@@ -183,7 +183,7 @@
         "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
     "showSkipButton": {
-        "message": "\"Zum Highlight springen\"-Button im Player behalten"
+        "message": "\"Zum Highlight springen\"-Button im Youtube-Player anzeigen"
     },
     "showInfoButton": {
         "message": "Zeige Info-Knopf im Youtube-Videoplayer"
@@ -210,13 +210,13 @@
         "message": "Aktiviere den Übersprungen Zähler in Privaten/Incognito Tabs"
     },
     "enableTrackDownvotes": {
-        "message": "Speichere Abschnitts-downvotes"
+        "message": "Speichere Downvotes von Segmenten"
     },
     "whatTrackDownvotes": {
-        "message": "Alle Segmente welche du negativ bewertest werden versteckt, selbst nach einer aktualisierung"
+        "message": "Alle Segmente, welche du downvotest, werden verborgen und bleiben es auch dauerhaft"
     },
     "trackDownvotesWarning": {
-        "message": "Warnung: Das deaktivieren wird alle vorher gespeicherten Downvotes löschen"
+        "message": "Warnung: Das Deaktivieren wird alle vorher gespeicherten Downvotes löschen"
     },
     "enableQueryByHashPrefix": {
         "message": "Abfrage nach Hash-Präfix"
@@ -437,7 +437,7 @@
         "message": "Videosegmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
     },
     "skipNoticeDuration": {
-        "message": "Dauer der Überspringenbenachrichtigung (Sekunden):"
+        "message": "Dauer der Überspringen-Meldung (Sekunden):"
     },
     "skipNoticeDurationDescription": {
         "message": "Die überspringen Benachrichtigung wird mindestens für so viele Sekunden angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
@@ -533,7 +533,7 @@
         "message": "Die Debug-Informationen wurden in die Zwischenablage kopiert. Du kannst alle Informationen entfernen, die du nicht teilen möchtest. Verwende einen Texteditor um die Informationen in einer Textdatei zu speichern (um diese ggf. einem Fehlerbericht hinzuzufügen)."
     },
     "keyAlreadyUsed": {
-        "message": "Diese Verknüpfung ist an eine andere Aktion gebunden. Bitte wählen Sie eine andere."
+        "message": "Diese Verknüpfung ist an eine andere Aktion gebunden. Bitte wähle eine andere."
     },
     "to": {
         "message": "bis",
@@ -796,7 +796,7 @@
         "message": "Spenden"
     },
     "considerDonating": {
-        "message": "Hilf beim finanzieren der Entwicklung"
+        "message": "Unterstütze die Entwicklung mit einer Spende"
     },
     "hideDonationLink": {
         "message": "Verstecke Spendenlink"
@@ -865,7 +865,7 @@
         "message": "Erfahre mehr"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Abwerten, und eine lokale Kopie zum erneuten Einreichen erstellen"
+        "message": "Downvotet, und erstellt eine lokale Kopie zum erneuten Einreichen"
     },
     "OpenCategoryWikiPage": {
         "message": "Öffne den Wiki-Artikel dieser Kategorie."
@@ -883,7 +883,7 @@
         "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schnell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
     },
     "categoryPillNewFeature": {
-        "message": "Neu! Sehe, ob ein Video ausschließlich Sponsor oder Eigenwerbung ist"
+        "message": "Neu! Sieh, ob ein Video ausschließlich Sponsor oder Eigenwerbung ist"
     },
     "dayAbbreviation": {
         "message": "T",
@@ -914,7 +914,7 @@
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "noticeVisibilityLabel": {
-        "message": "Überspringen-Benachrichtigungs aussehen",
+        "message": "Aussehen der Überspringen-Meldung",
         "description": "Option label"
     },
     "unbind": {
@@ -928,6 +928,6 @@
         "message": "Ändern"
     },
     "youtubeKeybindWarning": {
-        "message": "Dies ist ein vorhandenes YouTube-Kürzel. Sind Sie sicher, dass Sie diese verwenden möchten?"
+        "message": "Dies ist ein vorhandenes YouTube-Kürzel. Bist du sicher, dass du es verwenden möchtest?"
     }
 }

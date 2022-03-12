@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Özel/Gizli sekmelerde atlama sayısı takibini etkinleştir"
     },
+    "enableTrackDownvotes": {
+        "message": "Kısımların olumsuz oylarını depola"
+    },
+    "whatTrackDownvotes": {
+        "message": "Olumsuz oy verdiğiniz kısımlar, sayfayı tazeledikten sonra da gizli kalacaktır"
+    },
+    "trackDownvotesWarning": {
+        "message": "Uyarı: Bu ayarı devre dışı bırakırsanız, halihazırda saklanan olumsuz oylar silinecek"
+    },
     "enableQueryByHashPrefix": {
         "message": "Karma Ön eki ile Sorgula"
     },
@@ -581,6 +590,9 @@
     },
     "category_preview_description": {
         "message": "Önceki bölümlerin bir özeti veya geçerli videonun içeriğine yönelik bir ön izleme. Bu özellik birleştirilmiş klipler içindir, konuşarak anlatılan özetleri kapsamaz."
+    },
+    "category_filler": {
+        "message": "Konuyla Alakasız / Şaka"
     },
     "category_filler_description": {
         "message": "Videonun ana içeriğini anlamak için gerekli olmayan, yalnızca alakasız konu veya mizah için eklenen sahneler. Bu, alakalı veya arka plan ayrıntısı veren kısımları içermemelidir."
