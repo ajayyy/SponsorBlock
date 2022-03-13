@@ -34,6 +34,14 @@
 }
 
 /*
+ * Disable fixed popup width when displayed inline
+ */
+
+#sponsorBlockPopupContainer #sponsorBlockPopupBody {
+  width: auto;
+}
+
+/*
  * Disable transition on all elements until the extension has loaded
  */
 
