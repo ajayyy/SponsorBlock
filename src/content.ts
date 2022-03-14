@@ -1680,8 +1680,8 @@ function openInfoMenu() {
             const closeButton = document.createElement("button");
             const closeButtonIcon = document.createElement("img");
             closeButtonIcon.src = chrome.extension.getURL("icons/close.png");
-            closeButtonIcon.width = 16;
-            closeButtonIcon.height = 16;
+            closeButtonIcon.width = 15;
+            closeButtonIcon.height = 15;
             closeButton.appendChild(closeButtonIcon);
             closeButton.setAttribute("title", chrome.i18n.getMessage("closePopup"));
             closeButton.classList.add("sbCloseButton");
