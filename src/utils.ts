@@ -372,13 +372,15 @@ export default class Utils {
 
     findReferenceNode(): HTMLElement {
         const selectors = [
+            "#player-container-id", // Mobile YouTube
             "#movie_player",
             "#c4-player", // Channel Trailer
             "#player-container", // Preview on hover
             "#main-panel.ytmusic-player-page", // YouTube music
             "#player-container .video-js", // Invidious
             ".main-video-section > .video-container" // Cloudtube  
-        ]
+        ];
+
         let referenceNode = findValidElementFromSelector(selectors)
         if (referenceNode == null) {
             //for embeds
