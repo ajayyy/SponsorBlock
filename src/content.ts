@@ -40,6 +40,11 @@ let videoInfo: VideoInfo = null;
 let channelIDInfo: ChannelIDInfo;
 // Locked Categories in this tab, like: ["sponsor","intro","outro"]
 let lockedCategories: Category[] = [];
+// Used to calculate a more precise "virtual" video time
+let lastKnownVideoTime: { videoTime: number, preciseTime: number } = {
+    videoTime: null,
+    preciseTime: null
+};
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -450,7 +455,15 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     }
 
     if (!video || video.paused) return;
-    if (currentTime === undefined || currentTime === null) currentTime = video.currentTime;
+    if (currentTime === undefined || currentTime === null) {
+        const virtualTime = lastKnownVideoTime.videoTime ? 
+            (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null;
+        if (virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6){
+            currentTime = virtualTime;
+        } else {
+            currentTime = video.currentTime;
+        }
+    }
 
     if (videoMuted && !inMuteSegment(currentTime)) {
         video.muted = false;
@@ -526,20 +539,26 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         skippingFunction();
     } else {
         const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
-        if (delayTime < 300 && utils.isFirefox() && !isSafari()) {
+        if (delayTime < 300 && !isSafari()) {
             // For Firefox, use interval instead of timeout near the end to combat imprecise video time
             const startIntervalTime = performance.now();
-            const startVideoTime = video.currentTime;
+            const startVideoTime = Math.max(currentTime, video.currentTime);
             currentSkipInterval = setInterval(() => {
                 const intervalDuration = performance.now() - startIntervalTime;
                 if (intervalDuration >= delayTime || video.currentTime >= skipTime[0]) {
                     clearInterval(currentSkipInterval);
-                    skippingFunction(Math.max(video.currentTime, startVideoTime + intervalDuration / 1000));
+                    if (!utils.isFirefox() && !video.muted) {
+                        // Workaround for more accurate skipping on Chromium
+                        video.muted = true;
+                        video.muted = false;
+                    }
+
+                    skippingFunction(Math.max(video.currentTime, startVideoTime + video.playbackRate * intervalDuration / 1000));
                 }
-            }, 5);
+            }, 1);
         } else {
             // Schedule for right before to be more precise than normal timeout
-            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - 30));
+            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - 100));
         }
     }
 }
@@ -621,6 +640,8 @@ function setupVideoListeners() {
             if (!firstEvent && video.currentTime === 0) return;
             firstEvent = false;
 
+            updateVirtualTime();
+
             if (switchingVideos) {
                 switchingVideos = false;
                 // If already segments loaded before video, retry to skip starting segments
@@ -641,6 +662,8 @@ function setupVideoListeners() {
     
         });
         video.addEventListener('playing', () => {
+            updateVirtualTime();
+
             // Make sure it doesn't get double called with the play event
             if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
                     || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
@@ -655,6 +678,8 @@ function setupVideoListeners() {
                 // Reset lastCheckVideoTime
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
+
+                updateVirtualTime();
     
                 startSponsorSchedule();
             }
@@ -662,16 +687,30 @@ function setupVideoListeners() {
         video.addEventListener('ratechange', () => startSponsorSchedule());
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
         video.addEventListener('videoSpeed_ratechange', () => startSponsorSchedule());
-        video.addEventListener('pause', () => {
+        const paused = () => {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
             lastCheckTime = 0;
+
+            lastKnownVideoTime = {
+                videoTime: null,
+                preciseTime: null
+            }
     
             cancelSponsorSchedule();
-        });
+        };
+        video.addEventListener('pause', paused);
+        video.addEventListener('waiting', paused);
     
         startSponsorSchedule();
     }
+}
+
+function updateVirtualTime() {
+    lastKnownVideoTime = {
+        videoTime: video.currentTime,
+        preciseTime: performance.now()
+    };
 }
 
 function setupSkipButtonControlBar() {
