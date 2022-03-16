@@ -82,6 +82,10 @@
  * <details> wrapper around each segment
  */
 
+.votingButtons {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .votingButtons[open] {
   padding-bottom: 5px;
 }
