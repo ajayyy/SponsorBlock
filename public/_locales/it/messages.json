@@ -562,7 +562,7 @@
         "description": "Short description for this category"
     },
     "category_interaction": {
-        "message": "Promemoria di Interazione (Sottoscrizione)"
+        "message": "Promemoria d'Interazione (Iscrizione)"
     },
     "category_interaction_description": {
         "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per aggiunta di mi piace, iscrizione o seguito. Se dovesse risultare esteso o riguardare qualcosa di specifico, potrebbe essere un'autopromozione."
