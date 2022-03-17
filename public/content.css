@@ -352,6 +352,10 @@
 	filter: brightness(80%);
 }
 
+.segmentSummary {
+	outline: none;
+}
+
 .submitButton {
 	background-color:#ec1c1c;
 	-moz-border-radius:28px;

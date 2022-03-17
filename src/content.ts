@@ -458,7 +458,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     if (currentTime === undefined || currentTime === null) {
         const virtualTime = lastKnownVideoTime.videoTime ? 
             (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null;
-        if (virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6){
+        if (!isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6){
             currentTime = virtualTime;
         } else {
             currentTime = video.currentTime;
@@ -539,7 +539,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         skippingFunction();
     } else {
         const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
-        if (delayTime < 300 && !isSafari()) {
+        if (delayTime < 300) {
             // For Firefox, use interval instead of timeout near the end to combat imprecise video time
             const startIntervalTime = performance.now();
             const startVideoTime = Math.max(currentTime, video.currentTime);
