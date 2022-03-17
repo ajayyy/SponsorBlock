@@ -353,7 +353,7 @@
 }
 
 .segmentSummary {
-	outline: none;
+	outline: none !important;
 }
 
 .submitButton {
