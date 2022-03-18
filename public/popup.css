@@ -7,13 +7,25 @@
 }
 
 /*
- * IDs on container element (when inserted in page), <html> element,
- * <body> element and main container
+ * Container when popup displayed in-page
  */
 
 #sponsorBlockPopupContainer {
+  position: relative;
   margin-bottom: 16px;
 }
+
+/*
+ * Disable fixed popup width when displayed in-page
+ */
+
+#sponsorBlockPopupContainer #sponsorBlockPopupBody {
+  width: auto;
+}
+
+/*
+ * Main containers
+ */
 
 #sponsorBlockPopupHTML {
   color-scheme: dark;
@@ -39,6 +51,25 @@
 
 .sb-preload * {
   transition: none !important;
+}
+
+/*
+ * Close popup button when displayed in-page
+ */
+
+.sbCloseButton {
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0.5;
+}
+
+.sbCloseButton:hover {
+  opacity: 1;
 }
 
 /*

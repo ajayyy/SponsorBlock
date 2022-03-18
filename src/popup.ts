@@ -180,7 +180,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                 }
                 PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
-                PageElements.sponsorTimesViewsContainer.style.display = "unset";
+                PageElements.sponsorTimesViewsContainer.style.display = "block";
             }
 
             showDonateWidget(viewCount);
@@ -212,7 +212,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
 
         PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount.toLocaleString();
-        PageElements.sponsorTimesSkipsDoneContainer.style.display = "unset";
+        PageElements.sponsorTimesSkipsDoneContainer.style.display = "block";
     }
 
     //get the amount of time this user has saved.
