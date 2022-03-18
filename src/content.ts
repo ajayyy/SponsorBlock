@@ -458,7 +458,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     if (currentTime === undefined || currentTime === null) {
         const virtualTime = lastKnownVideoTime.videoTime ? 
             (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null;
-        if (!isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6){
+        if (!utils.isFirefox() && !isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6){
             currentTime = virtualTime;
         } else {
             currentTime = video.currentTime;
