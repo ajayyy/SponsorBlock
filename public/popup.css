@@ -317,7 +317,7 @@
 
 .sponsorStartHint {
   display: block;
-  margin-bottom: 12px;
+  padding: 0 10px 12px;
 }
 
 /*
@@ -379,7 +379,7 @@
 .sbYourWorkCols > div {
   display: flex;
   align-items: center;
-  width: 50%;
+  flex-basis: 50%;
   justify-content: center;
 }
 
