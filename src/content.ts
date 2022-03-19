@@ -318,9 +318,6 @@ async function videoIDChange(id) {
         }
     }
 
-    // Get new video info
-    // getVideoInfo(); // Seems to have been replaced
-
     // Update whitelist data when the video data is loaded
     whitelistCheck();
 
@@ -898,12 +895,10 @@ function startSkipScheduleCheckingForStartSponsors() {
         // See if there are any starting sponsors
         let startingSegmentTime = getStartTimeFromUrl(document.URL) || -1;
         let found = false;
-        let startingSegment: SponsorTime = null;
         for (const time of sponsorTimes) {
             if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime
                     && time.actionType !== ActionType.Poi) {
                         startingSegmentTime = time.segment[0];
-                        startingSegment = time;
                         found = true;
                 break;
             }
@@ -913,7 +908,6 @@ function startSkipScheduleCheckingForStartSponsors() {
                 if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime
                         && time.actionType !== ActionType.Poi) {
                             startingSegmentTime = time.segment[0];
-                            startingSegment = time;
                             found = true;
                     break;
                 }
@@ -948,26 +942,6 @@ function startSkipScheduleCheckingForStartSponsors() {
         } else {
             startSponsorSchedule();
         }
-    }
-}
-
-/**
- * Get the video info for the current tab from YouTube
- *
- * TODO: Replace
- */
-async function getVideoInfo(): Promise<void> {
-    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID + "&html5=1&c=TVHTML5&cver=7.20190319");
-
-    if (result.ok) {
-        const decodedData = decodeURIComponent(result.responseText).match(/player_response=([^&]*)/)[1];
-        if (!decodedData) {
-            console.error("[SB] Failed at getting video info from YouTube.");
-            console.error("[SB] Data returned from YouTube: " + result.responseText);
-            return;
-        }
-
-        videoInfo = JSON.parse(decodedData);
     }
 }
 
