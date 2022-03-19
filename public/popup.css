@@ -45,6 +45,7 @@
   text-align: center;
 }
 
+#sponsorblockPopup a,
 #sponsorblockPopup button {
   cursor: pointer;
 }
@@ -210,7 +211,6 @@
  */
 
 .toggleSwitchContainer {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -297,11 +297,14 @@
  */
 
 #whitelistForceCheck {
-  font-weight: bold;
-  text-decoration: underline;
-  font-size: large;
-  cursor: pointer;
-  padding: 10px 0;
+  background-color: #fff3cd;
+  color: #664d03;
+  display: block;
+  padding: 10px 15px;
+}
+
+#whitelistForceCheck:hover {
+  background-color: #f2e4b7;
 }
 
 /*
@@ -511,7 +514,6 @@
 
 #sbFooter a {
   color: var(--sb-main-fg-color);
-  cursor: pointer;
   text-decoration: none;
 }
 
