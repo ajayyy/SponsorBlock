@@ -312,8 +312,11 @@
  */
 
 #mainControls {
-  flex-flow: column;
-  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sponsorStartHint {
+  display: block;
   margin-bottom: 12px;
 }
 

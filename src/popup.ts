@@ -304,7 +304,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         //if request is undefined, then the page currently being browsed is not YouTube
         if (request != undefined) {
             //remove loading text
-            PageElements.mainControls.style.display = "flex";
+            PageElements.mainControls.style.display = "block";
             if (request.onMobileYouTube) PageElements.mainControls.classList.add("hidden");
             PageElements.whitelistButton.classList.remove("hidden");
             PageElements.loadingIndicator.style.display = "none";
