@@ -52,6 +52,9 @@
     "reskip": {
         "message": "Sari peste"
     },
+    "unmute": {
+        "message": "Activare sunet"
+    },
     "paused": {
         "message": "Pauză"
     },
@@ -79,8 +82,14 @@
     "sponsorEnd": {
         "message": "Segmentul se termină acum"
     },
+    "sponsorCancel": {
+        "message": "Anulare creare segment"
+    },
     "noVideoID": {
         "message": "Nu s-a găsit niciun videoclip YouTube.\nDacă acest lucru este incorect, actualizați fila."
+    },
+    "refreshSegments": {
+        "message": "Reîmprospătare segmente"
     },
     "success": {
         "message": "Succes!"
@@ -151,6 +160,9 @@
     },
     "setUsername": {
         "message": "Setează Numele De Utilizator"
+    },
+    "copyPublicID": {
+        "message": "Copiază ID-Utilizator Public"
     },
     "discordAdvert": {
         "message": "Vino și alătură-te serverului oficial de discord pentru a oferi sugestii și feedback!"
