@@ -29,6 +29,8 @@
 
 #sponsorBlockPopupHTML {
   color-scheme: dark;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 #sponsorBlockPopupBody {
