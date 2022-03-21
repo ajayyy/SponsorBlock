@@ -16,6 +16,14 @@
 }
 
 /*
+ * Disable popup max height when displayed in-page
+ */
+
+#sponsorBlockPopupContainer #sponsorBlockPopupHTML {
+  max-height: none;
+}
+
+/*
  * Disable fixed popup width when displayed in-page
  */
 
