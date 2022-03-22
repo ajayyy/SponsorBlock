@@ -592,6 +592,7 @@ input::-webkit-inner-spin-button {
     line-height: 1.5em;
 	color: white;
 	font-size: 12px;
+	z-index: 1000;
 }
 
 .sponsorBlockTooltip a {
