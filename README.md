@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://sponsor.ajay.app"><img src="public/icons/LogoSponsorBlocker256px.png" alt="Logo"></img></a>
-  
+
   <br/>
   <sub>Logo by <a href="https://github.com/munadikieh">@munadikieh</a></sub>
 </p>
@@ -72,7 +72,7 @@ You must have [Node.js 16](https://nodejs.org/) and npm installed.
 
     - You can also run `npm run build` (for Chrome) or `npm run build:firefox` (for Firefox) to generate a production build.
 
-4. The built extension is now in `dist/`. You can load it in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest) or in Firefox as a [temporary extension](https://developer.mozilla.org/en-US/docs/Tools/about:debugging#loading_a_temporary_extension).
+4. The built extension is now in `dist/`. You can load this folder directly in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest), or convert it to a zip file to load it as a [temporary extension](https://developer.mozilla.org/en-US/docs/Tools/about:debugging#loading_a_temporary_extension) in Firefox.
 
 ### Developing with a clean profile and hot reloading
 
