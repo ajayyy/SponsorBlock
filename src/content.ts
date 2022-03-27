@@ -90,7 +90,7 @@ let skipButtonControlBar: SkipButtonControlBar = null;
 let categoryPill: CategoryPill = null;
 
 /** Element containing the player controls on the YouTube player. */
-let controls: HTMLElement | null = null;
+const controls: HTMLElement | null = null;
 
 /** Contains buttons created by `createButton()`. */
 const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImageElement, setupListener: boolean}> = {};
