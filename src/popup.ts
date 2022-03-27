@@ -114,12 +114,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sbCloseDonate"
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
-    // Hide donate button if wanted (Safari, or user choice)
-    if (!showDonationLink()) {
-        PageElements.sbDonate.style.display = "none";
-    }
-    PageElements.sbDonate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
-
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
     PageElements.whitelistToggle.addEventListener("change", function () {
@@ -297,7 +291,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         if (request != undefined) {
             //remove loading text
             PageElements.mainControls.style.display = "flex";
-            if (request.onMobileYouTube) PageElements.mainControls.classList.add("hidden");
+            PageElements.mainControls.classList.add("hidden");
             PageElements.whitelistButton.classList.remove("hidden");
             PageElements.loadingIndicator.style.display = "none";
 

@@ -186,11 +186,11 @@ const Config: SBObject = {
             name: "sponsor" as Category,
             option: CategorySkipOption.AutoSkip
         }, {
-            name: "poi_highlight" as Category,
-            option: CategorySkipOption.ManualSkip
+            name: "interaction" as Category,
+            option: CategorySkipOption.AutoSkip
         }, {
-            name: "exclusive_access" as Category,
-            option: CategorySkipOption.ShowOverlay
+            name: "selfpromo" as Category,
+            option: CategorySkipOption.AutoSkip
         }],
 
         colorPalette: {
@@ -396,97 +396,7 @@ async function fetchConfig(): Promise<void> {
 }
 
 function migrateOldSyncFormats(config: SBConfig) {
-    if (config["segmentTimes"]) {
-        const unsubmittedSegments = {};
-        for (const item of config["segmentTimes"]) {
-            unsubmittedSegments[item[0]] = item[1];
-        }
-
-        chrome.storage.sync.remove("segmentTimes", () => config.unsubmittedSegments = unsubmittedSegments);
-    }
-
-    if (!config["exclusive_accessCategoryAdded"] && !config.categorySelections.some((s) => s.name === "exclusive_access")) {
-        config["exclusive_accessCategoryAdded"] = true;
-
-        config.categorySelections.push({
-            name: "exclusive_access" as Category,
-            option: CategorySkipOption.ShowOverlay
-        });
-
-        config.categorySelections = config.categorySelections;
-    }
-
-    if (config["fillerUpdate"] !== undefined) {
-        chrome.storage.sync.remove("fillerUpdate");
-    }
-    if (config["highlightCategoryAdded"] !== undefined) {
-        chrome.storage.sync.remove("highlightCategoryAdded");
-    }
-    if (config["highlightCategoryUpdate"] !== undefined) {
-        chrome.storage.sync.remove("highlightCategoryUpdate");
-    }
-
-    if (config["askAboutUnlistedVideos"]) {
-        chrome.storage.sync.remove("askAboutUnlistedVideos");
-    }
-
-    if (!config["autoSkipOnMusicVideosUpdate"]) {
-        config["autoSkipOnMusicVideosUpdate"] = true;
-        for (const selection of config.categorySelections) {
-            if (selection.name === "music_offtopic" 
-                    && selection.option === CategorySkipOption.AutoSkip) {
-                
-                config.autoSkipOnMusicVideos = true;
-                break;
-            }
-        }
-    }
-
-    if (config["disableAutoSkip"]) {
-        for (const selection of config.categorySelections) {
-            if (selection.name === "sponsor") {
-                selection.option = CategorySkipOption.ManualSkip;
-
-                chrome.storage.sync.remove("disableAutoSkip");
-            }
-        }
-    }
-
-    if (typeof config["skipKeybind"] == "string") {
-        config["skipKeybind"] = {key: config["skipKeybind"]};
-    }
-
-    if (typeof config["startSponsorKeybind"] == "string") {
-        config["startSponsorKeybind"] = {key: config["startSponsorKeybind"]};
-    }
-
-    if (typeof config["submitKeybind"] == "string") {
-        config["submitKeybind"] = {key: config["submitKeybind"]};
-    }
-
-    // Unbind key if it matches a previous one set by the user (should be ordered oldest to newest)
-    const keybinds = ["skipKeybind", "startSponsorKeybind", "submitKeybind"];
-    for (let i = keybinds.length-1; i >= 0; i--) {
-        for (let j = 0; j < keybinds.length; j++) {
-            if (i == j)
-                continue;
-            if (keybindEquals(config[keybinds[i]], config[keybinds[j]]))
-                config[keybinds[i]] = null;
-        }
-    }
-
-    // Remove some old unused options
-    if (config["sponsorVideoID"] !== undefined) {
-        chrome.storage.sync.remove("sponsorVideoID");
-    }
-    if (config["previousVideoID"] !== undefined) {
-        chrome.storage.sync.remove("previousVideoID");
-    }
-
-    // populate invidiousInstances with new instances if 3p support is **DISABLED**
-    if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
-        config["invidiousInstances"] = invidiousList;
-    }
+    //
 }
 
 async function setupConfig() {

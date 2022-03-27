@@ -152,12 +152,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             noticeStyle.transform = "scale(0.8) translate(10%, 10%)";
         }
 
-        // If it started out as smaller, always keep the 
-        // skip button there
-        const firstColumn = this.props.smaller ? (
-            this.getSkipButton()
-        ) : null;
-
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 amountOfPreviousNotices={this.amountOfPreviousNotices}
@@ -174,8 +168,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 closeListener={() => this.closeListener()}
                 smaller={this.state.smaller}
                 limitWidth={true}
-                firstColumn={firstColumn}
-                bottomRow={[...this.getMessageBoxes(), ...this.getBottomRow() ]}
+                bottomRow={[...this.getMessageBoxes()]}
                 onMouseEnter={() => this.onMouseEnter() } >
             </NoticeComponent>
         );
@@ -388,11 +381,11 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     onMouseEnter(): void {
-        if (this.state.smaller) {
-            this.setState({
-                smaller: false
-            });
-        }
+        // if (this.state.smaller) {
+        //     this.setState({
+        //         smaller: false
+        //     });
+        // }
     }
 
     getMessageBoxes(): JSX.Element[] {

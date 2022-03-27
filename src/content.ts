@@ -442,7 +442,7 @@ function cancelSponsorSchedule(): void {
 /**
  * @param currentTime Optional if you don't want to use the actual current time
  */
-function startSponsorSchedule(includeIntersectingSegments = false, currentTime?: number, includeNonIntersectingSegments = true): void {
+function startSponsorSchedule(includeIntersectingSegments = true, currentTime?: number, includeNonIntersectingSegments = true): void {
     cancelSponsorSchedule();
 
     // Don't skip if advert playing and reset last checked time
@@ -807,40 +807,18 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
                 cursor = Math.max(cursor, time.segment[1]);
             }
+
+            if (cursor < video.duration) {
+                newTimes.push({
+                    segment: [cursor, video.duration],
+                    source: SponsorSourceType.Local,
+                    actionType: ActionType.Skip,
+                    category: "sponsor" as Category,
+                    UUID: null
+                });
+            }
+
             sponsorTimes = newTimes;
-        }
-
-        // Hide all submissions smaller than the minimum duration
-        if (Config.config.minDuration !== 0) {
-            for (const segment of sponsorTimes) {
-                const duration = segment.segment[1] - segment.segment[0];
-                if (duration > 0 && duration < Config.config.minDuration) {
-                    segment.hidden = SponsorHideType.MinimumDuration;
-                }
-            }
-        }
-
-        if (keepOldSubmissions) {
-            for (const segment of oldSegments) {
-                const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
-                if (otherSegment) {
-                    // If they downvoted it, or changed the category, keep it
-                    otherSegment.hidden = segment.hidden;
-                    otherSegment.category = segment.category;
-                }
-            }
-        }
-
-        // See if some segments should be hidden
-        const downvotedData = Config.local.downvotedSegments[hashPrefix];
-        if (downvotedData) {
-            for (const segment of sponsorTimes) {
-                const hashedUUID = await utils.getHash(segment.UUID, 1);
-                const segmentDownvoteData = downvotedData.segments.find((downvote) => downvote.uuid === hashedUUID);
-                if (segmentDownvoteData) {
-                    segment.hidden = segmentDownvoteData.hidden;
-                }
-            }
         }
 
         startSkipScheduleCheckingForStartSponsors();
@@ -860,14 +838,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 }
 
 function getEnabledActionTypes(): ActionType[] {
-    const actionTypes = [ActionType.Skip, ActionType.Poi];
-    if (Config.config.muteSegments) {
-        actionTypes.push(ActionType.Mute);
-    }
-    if (Config.config.fullVideoSegments) {
-        actionTypes.push(ActionType.Full);
-    }
-
+    const actionTypes = [ActionType.Skip, ActionType.Mute];
     return actionTypes;
 }
 
@@ -1521,40 +1492,6 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<void> {
 function updateEditButtonsOnPlayer(): void {
     // Don't try to update the buttons if we aren't on a YouTube video page
     if (!sponsorVideoID || onMobileYouTube) return;
-
-    const buttonsEnabled = !Config.config.hideVideoPlayerControls && !onInvidious;
-
-    let creatingSegment = false;
-    let submitButtonVisible = false;
-    let deleteButtonVisible = false;
-
-    // Only check if buttons should be visible if they're enabled
-    if (buttonsEnabled) {
-        creatingSegment = isSegmentCreationInProgress();
-
-        // Show only if there are any segments to submit
-        submitButtonVisible = sponsorTimesSubmitting.length > 0;
-
-        // Show only if there are any segments to delete
-        deleteButtonVisible = sponsorTimesSubmitting.length > 1 || (sponsorTimesSubmitting.length > 0 && !creatingSegment);
-    }
-
-    // Update the elements
-    playerButtons.startSegment.button.style.display = buttonsEnabled ? "unset" : "none";
-    playerButtons.cancelSegment.button.style.display = buttonsEnabled && creatingSegment ? "unset" : "none";
-
-    if (buttonsEnabled) {
-        if (creatingSegment) {
-            playerButtons.startSegment.image.src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker.svg");
-            playerButtons.startSegment.button.setAttribute("title", chrome.i18n.getMessage("sponsorEnd"));
-        } else {
-            playerButtons.startSegment.image.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker.svg");
-            playerButtons.startSegment.button.setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
-        }
-    }
-
-    playerButtons.submit.button.style.display = submitButtonVisible && !Config.config.hideUploadButtonPlayerControls ? "unset" : "none";
-    playerButtons.delete.button.style.display = deleteButtonVisible && !Config.config.hideDeleteButtonPlayerControls ? "unset" : "none";
 }
 
 /**
@@ -1900,9 +1837,9 @@ function submitSponsorTimes() {
         return;
     }
 
-    if (sponsorTimesSubmitting !== undefined && sponsorTimesSubmitting.length > 0) {
-        submissionNotice = new SubmissionNotice(skipNoticeContentContainer, sendSubmitMessage);
-    }
+    // if (sponsorTimesSubmitting !== undefined && sponsorTimesSubmitting.length > 0) {
+    //     submissionNotice = new SubmissionNotice(skipNoticeContentContainer, sendSubmitMessage);
+    // }
 
 }
 

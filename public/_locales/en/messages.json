@@ -540,7 +540,7 @@
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "category_sponsor": {
-        "message": "Sponsor"
+        "message": "Useful Content"
     },
     "category_sponsor_description": {
         "message": "Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shoutouts to causes/creators/websites/products they like."

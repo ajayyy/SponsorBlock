@@ -1,9 +1,9 @@
 {
-    "name": "__MSG_fullName__",
-    "short_name": "SponsorBlock",
+    "name": "SponsorLock - The Solution",
+    "short_name": "SponsorLlock",
     "version": "4.2.1",
     "default_locale": "en",
-    "description": "__MSG_Description__",
+    "description": "SponsorLock only shows you promotion, and skips all useful informaton.",
     "homepage_url": "https://sponsor.ajay.app",
     "content_scripts": [{
         "run_at": "document_start",
@@ -73,8 +73,8 @@
         ]
     },
     "icons": {
-        "16": "icons/IconSponsorBlocker16px.png",
-        "32": "icons/IconSponsorBlocker32px.png",
+        "16": "icons/LogoSponsorBlocker64px.png",
+        "32": "icons/LogoSponsorBlocker64px.png",
         "64": "icons/LogoSponsorBlocker64px.png",
         "128": "icons/LogoSponsorBlocker128px.png",
         "256": "icons/LogoSponsorBlocker256px.png",
@@ -82,7 +82,7 @@
         "1024": "icons/LogoSponsorBlocker1024px.png"
     },
     "options_ui": {
-        "page": "options/options.html",
+        "page": "options/lock-options.html",
         "open_in_tab": true
     },
     "manifest_version": 2
