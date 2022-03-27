@@ -206,7 +206,7 @@ const Config: SBObject = {
                 opacity: "0.7"
             },
             "sponsor": {
-                color: "#00d400",
+                color: "#807EFB",
                 opacity: "0.7"
             },
             "preview-sponsor": {

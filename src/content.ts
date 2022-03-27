@@ -789,6 +789,27 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         const oldSegments = sponsorTimes || [];
         sponsorTimes = recievedSegments;
 
+        if (sponsorTimes) {
+            // Reverse times so that it only watches the skipped info
+            const newTimes: SponsorTime[] = [];
+            const oldTimes = sponsorTimes.sort((a, b) => a.segment[0] - b.segment[0]);
+            let cursor = 0;
+            for (const time of oldTimes) {
+                if (time.segment[0] > cursor) {
+                    newTimes.push({
+                        segment: [cursor, time.segment[0]],
+                        source: SponsorSourceType.Local,
+                        actionType: ActionType.Skip,
+                        category: "sponsor" as Category,
+                        UUID: null
+                    });
+                }
+
+                cursor = Math.max(cursor, time.segment[1]);
+            }
+            sponsorTimes = newTimes;
+        }
+
         // Hide all submissions smaller than the minimum duration
         if (Config.config.minDuration !== 0) {
             for (const segment of sponsorTimes) {
@@ -1472,21 +1493,10 @@ function shouldSkip(segment: SponsorTime): boolean {
 async function createButtons(): Promise<void> {
     if (onMobileYouTube) return;
 
-    controls = await utils.wait(getControls).catch();
-
-    // Add button if does not already exist in html
-    createButton("startSegment", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker.svg");
-    createButton("cancelSegment", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerCancelSegmentIconSponsorBlocker.svg");
-    createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker.svg");
-    createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
-
     const controlsContainer = getControls();
     if (Config.config.autoHideInfoButton && !onInvidious && controlsContainer
             && playerButtons["info"]?.button && !controlsWithEventListeners.includes(controlsContainer)) {
         controlsWithEventListeners.push(controlsContainer);
-
-        AnimationUtils.setupAutoHideAnimation(playerButtons["info"].button, controlsContainer);
     }
 }
 
