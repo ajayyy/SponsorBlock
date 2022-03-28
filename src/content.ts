@@ -1126,11 +1126,12 @@ function updatePreviewBar(): void {
 async function whitelistCheck() {
     const whitelistedChannels = Config.config.whitelistedChannels;
 
-    const getChannelID = () => videoInfo?.videoDetails?.channelId
-        ?? document.querySelector(".ytd-channel-name a")?.getAttribute("href")?.replace(/\/.+\//, "") // YouTube
-        ?? document.querySelector(".ytp-title-channel-logo")?.getAttribute("href")?.replace(/https:\/.+\//, "") // YouTube Embed
-        ?? document.querySelector("a > .channel-profile")?.parentElement?.getAttribute("href")?.replace(/\/.+\//, "") // Invidious
-        ?? document.querySelector("a.slim-owner-icon-and-title")?.getAttribute("href")?.replace(/\/.+\//, ""); // Mobile YouTube
+    const getChannelID = () =>
+        (document.querySelector("a.ytd-video-owner-renderer") // YouTube
+        ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
+        ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
+        ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
+            ?.getAttribute("href")?.match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1];
 
     try {
         await utils.wait(() => !!getChannelID(), 6000, 20);
