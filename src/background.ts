@@ -4,8 +4,7 @@ import Config from "./config";
 import { Registration } from "./types";
 
 // Make the config public for debugging purposes
-
-window.SB = Config;
+// window.SB = Config; //no window for service workers
 
 import Utils from "./utils";
 const utils = new Utils({

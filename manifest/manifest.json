@@ -22,55 +22,54 @@
             "popup.css"
         ]
     }],
-    "web_accessible_resources": [
-        "icons/LogoSponsorBlocker256px.png",
-        "icons/IconSponsorBlocker256px.png",
-        "icons/PlayerStartIconSponsorBlocker.svg",
-        "icons/PlayerStopIconSponsorBlocker.svg",
-        "icons/PlayerUploadIconSponsorBlocker.svg",
-        "icons/PlayerUploadFailedIconSponsorBlocker.svg",
-        "icons/PlayerCancelSegmentIconSponsorBlocker.svg",
-        "icons/clipboard.svg",
-        "icons/settings.svg",
-        "icons/pencil.svg",
-        "icons/check.svg",
-        "icons/upvote.png",
-        "icons/downvote.png",
-        "icons/thumbs_down.svg",
-        "icons/thumbs_down_locked.svg",
-        "icons/thumbs_up.svg",
-        "icons/help.svg",
-        "icons/report.png",
-        "icons/close.png",
-        "icons/skipIcon.svg",
-        "icons/refresh.svg",
-        "icons/beep.ogg",
-        "icons/pause.svg",
-        "icons/stop.svg",
-        "icons/heart.svg",
-        "icons/visible.svg",
-        "icons/not_visible.svg",
-        "icons/PlayerInfoIconSponsorBlocker.svg",
-        "icons/PlayerDeleteIconSponsorBlocker.svg",
-        "popup.html",
-        "content.css"
-    ],
+    "web_accessible_resources": [{
+        "resources": [
+            "icons/LogoSponsorBlocker256px.png",
+            "icons/IconSponsorBlocker256px.png",
+            "icons/PlayerStartIconSponsorBlocker.svg",
+            "icons/PlayerStopIconSponsorBlocker.svg",
+            "icons/PlayerUploadIconSponsorBlocker.svg",
+            "icons/PlayerUploadFailedIconSponsorBlocker.svg",
+            "icons/PlayerCancelSegmentIconSponsorBlocker.svg",
+            "icons/clipboard.svg",
+            "icons/settings.svg",
+            "icons/pencil.svg",
+            "icons/check.svg",
+            "icons/upvote.png",
+            "icons/downvote.png",
+            "icons/thumbs_down.svg",
+            "icons/thumbs_down_locked.svg",
+            "icons/thumbs_up.svg",
+            "icons/help.svg",
+            "icons/report.png",
+            "icons/close.png",
+            "icons/skipIcon.svg",
+            "icons/refresh.svg",
+            "icons/beep.ogg",
+            "icons/pause.svg",
+            "icons/stop.svg",
+            "icons/heart.svg",
+            "icons/visible.svg",
+            "icons/not_visible.svg",
+            "icons/PlayerInfoIconSponsorBlocker.svg",
+            "icons/PlayerDeleteIconSponsorBlocker.svg",
+            "popup.html",
+            "content.css"
+        ],
+        "matches": ["<all_urls>"]
+    }],
     "permissions": [
-        "storage",
+        "storage"
+    ],
+    "host_permissions": [
         "https://sponsor.ajay.app/*"
     ],
-    "optional_permissions": [
-        "*://*/*"
-    ],
-    "browser_action": {
+    "action": {
         "default_title": "SponsorBlock",
         "default_popup": "popup.html"
     }, 
     "background": {
-        "scripts":[
-        "./js/vendor.js",
-        "./js/background.js"
-        ]
+        "service_worker": "./js/background.js"
     },
     "icons": {
         "16": "icons/LogoSponsorBlocker64px.png",
@@ -85,5 +84,5 @@
         "page": "options/lock-options.html",
         "open_in_tab": true
     },
-    "manifest_version": 2
+    "manifest_version": 3
 }  

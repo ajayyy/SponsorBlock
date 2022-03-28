@@ -19,7 +19,7 @@ export function openChat(config: ChatConfig): void {
 
     const closeButton  = document.createElement("img");
     closeButton.classList.add("sbChatClose");
-    closeButton.src = chrome.extension.getURL("icons/close.png");
+    closeButton.src = chrome.runtime.getURL("icons/close.png");
     closeButton.addEventListener("click", () => {
         chat.remove();
         closeButton.remove();

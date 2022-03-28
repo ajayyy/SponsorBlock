@@ -1430,7 +1430,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
     newButton.draggable = isDraggable;
     newButtonImage.id = baseID + "Image";
     newButtonImage.className = "playerButtonImage";
-    newButtonImage.src = chrome.extension.getURL("icons/" + imageName);
+    newButtonImage.src = chrome.runtime.getURL("icons/" + imageName);
 
     // Append image to button
     newButton.appendChild(newButtonImage);
@@ -1607,7 +1607,7 @@ function openInfoMenu() {
     //hide info button
     if (playerButtons.info) playerButtons.info.button.style.display = "none";
 
-    sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
+    sendRequestToCustomServer('GET', chrome.runtime.getURL("popup.html"), function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             const popup = document.createElement("div");
             popup.id = "sponsorBlockPopupContainer";
@@ -1626,7 +1626,7 @@ function openInfoMenu() {
             //close button
             const closeButton = document.createElement("button");
             const closeButtonIcon = document.createElement("img");
-            closeButtonIcon.src = chrome.extension.getURL("icons/close.png");
+            closeButtonIcon.src = chrome.runtime.getURL("icons/close.png");
             closeButtonIcon.width = 15;
             closeButtonIcon.height = 15;
             closeButton.appendChild(closeButtonIcon);
@@ -1659,14 +1659,14 @@ function openInfoMenu() {
             const refreshSegments = <HTMLImageElement> popup.querySelector("#refreshSegments");
             const heart = <HTMLImageElement> popup.querySelector(".sbHeart");
             const close = <HTMLImageElement> popup.querySelector("#sbCloseDonate");
-            logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
-            settings.src = chrome.extension.getURL("icons/settings.svg");
-            edit.src = chrome.extension.getURL("icons/pencil.svg");
-            copy.src = chrome.extension.getURL("icons/clipboard.svg");
-            check.src = chrome.extension.getURL("icons/check.svg");
-            heart.src = chrome.extension.getURL("icons/heart.svg");
-            close.src = chrome.extension.getURL("icons/close.png");
-            refreshSegments.src = chrome.extension.getURL("icons/refresh.svg");
+            logo.src = chrome.runtime.getURL("icons/IconSponsorBlocker256px.png");
+            settings.src = chrome.runtime.getURL("icons/settings.svg");
+            edit.src = chrome.runtime.getURL("icons/pencil.svg");
+            copy.src = chrome.runtime.getURL("icons/clipboard.svg");
+            check.src = chrome.runtime.getURL("icons/check.svg");
+            heart.src = chrome.runtime.getURL("icons/heart.svg");
+            close.src = chrome.runtime.getURL("icons/close.png");
+            refreshSegments.src = chrome.runtime.getURL("icons/refresh.svg");
 
             parentNode.insertBefore(popup, parentNode.firstChild);
 
@@ -1853,7 +1853,7 @@ async function sendSubmitMessage() {
     }
 
     // Add loading animation
-    playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
+    playerButtons.submit.image.src = chrome.runtime.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
     const stopAnimation = AnimationUtils.applyLoadingAnimation(playerButtons.submit.button, 1, () => updateEditButtonsOnPlayer());
 
     //check if a sponsor exceeds the duration of the video
@@ -1928,7 +1928,7 @@ async function sendSubmitMessage() {
     } else {
         // Show that the upload failed
         playerButtons.submit.button.style.animation = "unset";
-        playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker.svg");
+        playerButtons.submit.image.src = chrome.runtime.getURL("icons/PlayerUploadFailedIconSponsorBlocker.svg");
 
         if (response.status === 403 && response.responseText.startsWith("Submission rejected due to a warning from a moderator.")) {
             Chat.openWarningChat(response.responseText);
@@ -2026,7 +2026,7 @@ function addCSS() {
 
                 fileref.rel = "stylesheet";
                 fileref.type = "text/css";
-                fileref.href = chrome.extension.getURL(file);
+                fileref.href = chrome.runtime.getURL(file);
 
                 head.appendChild(fileref);
             }

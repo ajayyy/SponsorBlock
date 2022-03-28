@@ -35,12 +35,6 @@ module.exports = env => ({
     output: {
         path: path.join(__dirname, '../dist/js'),
     },
-    optimization: {
-        splitChunks: {
-            name: 'vendor',
-            chunks: "initial"
-        }
-    },
     module: {
         rules: [
             {
