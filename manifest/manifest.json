@@ -13,7 +13,6 @@
         ],
         "all_frames": true,
         "js": [
-            "./js/vendor.js",
             "./js/content.js"
         ],
         "css": [
