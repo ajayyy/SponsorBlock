@@ -206,7 +206,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
 
         PageElements.sponsorTimesSkipsDoneDisplay.innerText = Config.config.skipCount.toLocaleString();
-        PageElements.sponsorTimesSkipsDoneContainer.style.display = "block";
+        // PageElements.sponsorTimesSkipsDoneContainer.style.display = "block";
     }
 
     //get the amount of time this user has saved.
@@ -510,8 +510,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 voteStatusContainer.appendChild(thanksForVotingText);
 
                 votingButtons.append(segmentSummary);
-                votingButtons.append(voteButtonsContainer);
-                votingButtons.append(voteStatusContainer);
+                // votingButtons.append(voteButtonsContainer);
+                // votingButtons.append(voteStatusContainer);
 
                 container.appendChild(votingButtons);
             }

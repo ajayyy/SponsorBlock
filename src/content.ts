@@ -776,17 +776,6 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
         sponsorDataFound = true;
 
-        // Check if any old submissions should be kept
-        if (sponsorTimes !== null && keepOldSubmissions) {
-            for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i].source === SponsorSourceType.Local)  {
-                    // This is a user submission, keep it
-                    recievedSegments.push(sponsorTimes[i]);
-                }
-            }
-        }
-
-        const oldSegments = sponsorTimes || [];
         sponsorTimes = recievedSegments;
 
         if (sponsorTimes) {
