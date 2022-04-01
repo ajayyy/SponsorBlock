@@ -424,7 +424,6 @@ function durationChangeListener(): void {
 function videoOnReadyListener(): void {
     createPreviewBar();
     updatePreviewBar();
-    createButtons();
 }
 
 function cancelSponsorSchedule(): void {
@@ -1476,16 +1475,7 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<void> {
     // Not on a proper video yet
     if (!sponsorVideoID || onMobileYouTube) return;
 
-    await createButtons();
-
     updateEditButtonsOnPlayer();
-
-    // Don't show the info button on embeds
-    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
-        playerButtons.info.button.style.display = "none";
-    } else {
-        playerButtons.info.button.style.removeProperty("display");
-    }
 }
 
 /** Updates the visibility of buttons on the player related to creating segments. */
@@ -1604,8 +1594,6 @@ function openInfoMenu() {
 
     popupInitialised = false;
 
-    //hide info button
-    if (playerButtons.info) playerButtons.info.button.style.display = "none";
 
     sendRequestToCustomServer('GET', chrome.runtime.getURL("popup.html"), function(xmlhttp) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -1682,10 +1670,6 @@ function closeInfoMenu() {
 
     popup.remove();
 
-    // Show info button if it's not an embed
-    if (!document.URL.includes("/embed/") && playerButtons.info) {
-        playerButtons.info.button.style.display = "unset";
-    }
 }
 
 /**
