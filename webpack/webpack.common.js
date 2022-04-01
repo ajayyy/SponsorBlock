@@ -6,6 +6,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const BuildManifest = require('./webpack.manifest');
 const srcDir = '../src/';
 const fs = require("fs");
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const edgeLanguages = [
     "de",
@@ -45,8 +46,12 @@ module.exports = env => ({
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                    // disable type checker for user in fork plugin
+                    transpileOnly: true
+                }
             }
         ]
     },
@@ -54,6 +59,8 @@ module.exports = env => ({
         extensions: ['.ts', '.tsx', '.js']
     },
     plugins: [
+        // fork TS checker
+        new ForkTsCheckerWebpackPlugin(),
         // exclude locale files in moment
         new CopyPlugin({
             patterns: [
