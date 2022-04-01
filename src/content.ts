@@ -316,7 +316,8 @@ async function videoIDChange(id) {
     }
 
     // Get new video info
-    // getVideoInfo(); // Seems to have been replaced
+    // impossible as of March 31, 2022 - see issue #1257
+    // getVideoInfo();
 
     // Update whitelist data when the video data is loaded
     whitelistCheck();
@@ -979,26 +980,6 @@ function startSkipScheduleCheckingForStartSponsors() {
     }
 }
 
-/**
- * Get the video info for the current tab from YouTube
- *
- * TODO: Replace
- */
-async function getVideoInfo(): Promise<void> {
-    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID + "&html5=1&c=TVHTML5&cver=7.20190319");
-
-    if (result.ok) {
-        const decodedData = decodeURIComponent(result.responseText).match(/player_response=([^&]*)/)[1];
-        if (!decodedData) {
-            console.error("[SB] Failed at getting video info from YouTube.");
-            console.error("[SB] Data returned from YouTube: " + result.responseText);
-            return;
-        }
-
-        videoInfo = JSON.parse(decodedData);
-    }
-}
-
 function getYouTubeVideoID(document: Document): string | boolean {
     const url = document.URL;
     // clips should never skip, going from clip to full video has no indications.
@@ -1138,14 +1119,13 @@ async function whitelistCheck() {
 
         channelIDInfo = {
             status: ChannelIDStatus.Found,
-            id: getChannelID().match(/^\/?([^\s/]+)/)[0]
+            id: getChannelID()
         }
     } catch (e) {
         channelIDInfo = {
             status: ChannelIDStatus.Failed,
             id: null
         }
-
         return;
     }
 
