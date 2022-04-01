@@ -24,6 +24,7 @@ module.exports = {
         // TODO: Remove warn rules when not needed anymore
         "no-self-assign": "off",
         "@typescript-eslint/no-empty-interface": "off",
+        "react/prop-types": [2, { ignore: ['children'] }]
     },
     settings: {
         react: {
