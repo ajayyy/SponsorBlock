@@ -111,8 +111,7 @@ export interface BackgroundScriptContainer {
 
 export interface VideoInfo {
     channelID: string,
-    channelTitle: string,
-    channelIsArtist: boolean
+    channelTitle: string
 }
 
 export type VideoID = string;

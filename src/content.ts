@@ -288,36 +288,24 @@ function resetValues() {
 
 async function getVideoInfo(): Promise<void> {
     // Works as of April 1, 2022
-    const data = {
-        "context": {
-            "client": {
-                "clientName": "WEB",
-                "clientVersion": "2.20200720.00.02"
-            }
-        },
-        "videoId": sponsorVideoID
-    }
+    const body = JSON.stringify({
+        context: { client: { clientName: "WEB", clientVersion: "2.20200720.00.02" }},
+        videoId: sponsorVideoID
+    })
     const url = "https://www.youtube.com/youtubei/v1/next?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
     const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        }
+        method: "POST", body,
+        headers: { "Content-Type": "application/json" }
     });
     try {
         const resultData = await response.json()
-        const ownerObj = resultData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer
-        const channelTitle = ownerObj.title.runs[0].text
-        const channelID = ownerObj.title.runs[0].navigationEndpoint.browseEndpoint.browseId
-        const channelArtistBadge = ownerObj.badges.find(badge => badge.metadataBadgeRenderer.style === "BADGE_STYLE_TYPE_VERIFIED_ARTIST")
+        const ownerObj = resultData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.title.runs[0]
+        const channelTitle = ownerObj.text
+        const channelID = ownerObj.navigationEndpoint.browseEndpoint.browseId
         videoInfo = {
             channelID,
-            channelTitle,
-            channelIsArtist: Boolean(channelArtistBadge)
+            channelTitle
         }
-        console.log("vinfo", Date.now())
-        console.log(channelTitle, "is", Boolean(channelArtistBadge))
     } catch (e) {
         console.error("[SB] Failed at getting video info from YouTube.");
         return;
@@ -1148,29 +1136,13 @@ async function getChannelID() {
         ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
             ?.getAttribute("href")?.match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1];
     
-    const sleep = (millis) => new Promise(resolve => setTimeout(resolve, millis));
-    // fetch first from videoInfo if available
-    console.log("start", Date.now())
-    await sleep(2500);
-    console.log("waitfinish")
-    console.log(Date.now())
-    if (videoInfo) {
-        console.log(videoInfo)
-        console.log("videoInfo won")
-        return channelIDInfo = {
-            status: ChannelIDStatus.Found,
-            id: videoInfo.channelID
-        }
-    } else {
-        console.log('videoInfo fail')
-    }
+    const videoInfoWait: Promise<string> = utils.wait(() => videoInfo?.channelID, 6000, 20);
+    const documentWait: Promise<string>  = utils.wait(() => channelIDFromDocument(), 6000, 20);
     try {
-        await utils.wait(() => !!channelIDFromDocument(), 6000, 20);
-        console.log("document won")
-
+        const channelID = await Promise.race([documentWait, videoInfoWait])
         return channelIDInfo = {
             status: ChannelIDStatus.Found,
-            id: channelIDFromDocument()
+            id: channelID
         }
     } catch (e) {
         console.log("no response")
