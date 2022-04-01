@@ -286,6 +286,44 @@ function resetValues() {
     categoryPill?.setVisibility(false);
 }
 
+async function getVideoInfo(): Promise<void> {
+    // Works as of April 1, 2022
+    const data = {
+        "context": {
+            "client": {
+                "clientName": "WEB",
+                "clientVersion": "2.20200720.00.02"
+            }
+        },
+        "videoId": sponsorVideoID
+    }
+    const url = "https://www.youtube.com/youtubei/v1/next?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
+    const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    try {
+        const resultData = await response.json()
+        const ownerObj = resultData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer
+        const channelTitle = ownerObj.title.runs[0].text
+        const channelID = ownerObj.title.runs[0].navigationEndpoint.browseEndpoint.browseId
+        const channelArtistBadge = ownerObj.badges.find(badge => badge.metadataBadgeRenderer.style === "BADGE_STYLE_TYPE_VERIFIED_ARTIST")
+        videoInfo = {
+            channelID,
+            channelTitle,
+            channelIsArtist: Boolean(channelArtistBadge)
+        }
+        console.log("vinfo", Date.now())
+        console.log(channelTitle, "is", Boolean(channelArtistBadge))
+    } catch (e) {
+        console.error("[SB] Failed at getting video info from YouTube.");
+        return;
+    }
+}
+
 async function videoIDChange(id) {
     //if the id has not changed return unless the video element has changed
     if (sponsorVideoID === id && isVisible(video)) return;
@@ -315,9 +353,8 @@ async function videoIDChange(id) {
         }
     }
 
-    // Get new video info
-    // impossible as of March 31, 2022 - see issue #1257
-    // getVideoInfo();
+    // update videoInfo
+    getVideoInfo()
 
     // Update whitelist data when the video data is loaded
     whitelistCheck();
@@ -1103,31 +1140,51 @@ function updatePreviewBar(): void {
     lastPreviewBarUpdate = sponsorVideoID;
 }
 
-//checks if this channel is whitelisted, should be done only after the channelID has been loaded
-async function whitelistCheck() {
-    const whitelistedChannels = Config.config.whitelistedChannels;
-
-    const getChannelID = () =>
+async function getChannelID() {
+    const channelIDFromDocument = () =>
         (document.querySelector("a.ytd-video-owner-renderer") // YouTube
         ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
         ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
         ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
             ?.getAttribute("href")?.match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1];
-
-    try {
-        await utils.wait(() => !!getChannelID(), 6000, 20);
-
-        channelIDInfo = {
+    
+    const sleep = (millis) => new Promise(resolve => setTimeout(resolve, millis));
+    // fetch first from videoInfo if available
+    console.log("start", Date.now())
+    await sleep(2500);
+    console.log("waitfinish")
+    console.log(Date.now())
+    if (videoInfo) {
+        console.log(videoInfo)
+        console.log("videoInfo won")
+        return channelIDInfo = {
             status: ChannelIDStatus.Found,
-            id: getChannelID()
+            id: videoInfo.channelID
+        }
+    } else {
+        console.log('videoInfo fail')
+    }
+    try {
+        await utils.wait(() => !!channelIDFromDocument(), 6000, 20);
+        console.log("document won")
+
+        return channelIDInfo = {
+            status: ChannelIDStatus.Found,
+            id: channelIDFromDocument()
         }
     } catch (e) {
-        channelIDInfo = {
+        console.log("no response")
+        return channelIDInfo = {
             status: ChannelIDStatus.Failed,
             id: null
         }
-        return;
     }
+}
+
+//checks if this channel is whitelisted, should be done only after the channelID has been loaded
+async function whitelistCheck() {
+    const whitelistedChannels = Config.config.whitelistedChannels;
+    const channelIDInfo = await getChannelID();
 
     //see if this is a whitelisted channel
     if (whitelistedChannels != undefined &&
