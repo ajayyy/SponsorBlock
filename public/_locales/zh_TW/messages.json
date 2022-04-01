@@ -53,7 +53,7 @@
         "message": "繼續跳過"
     },
     "unmute": {
-        "message": "解除靜音"
+        "message": "取消靜音"
     },
     "paused": {
         "message": "已暫停"
@@ -162,7 +162,7 @@
         "message": "設定使用者名稱"
     },
     "copyPublicID": {
-        "message": "複製公開使用者ID"
+        "message": "複製公開使用者名稱"
     },
     "discordAdvert": {
         "message": "快加入官方 Discord 伺服器來給予建議和反應！"
