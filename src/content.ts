@@ -1146,12 +1146,12 @@ async function whitelistCheck(videoID: string) {
             ?? document.querySelector("a.slim-owner-icon-and-title"); // Mobile YouTube
         if (!channelNameTag || !channelNameTag.getAttribute("href")) {
             return null;
-        } else {
-            // This could be merged into getYouTubeVideoIDFromDocument, but they serve different purposes
-            const documentVideoId = document.querySelector("[video-id]")?.getAttribute("video-id");
-            if (documentVideoId != null && documentVideoId != videoID)
-                return null;
         }
+        // This could be merged into getYouTubeVideoIDFromDocument, but they serve different purposes
+        const documentVideoId = document.querySelector("[video-id]")?.getAttribute("video-id");
+        if (documentVideoId != null && documentVideoId != videoID)
+            return null;
+
         return {
             channelID: channelNameTag.getAttribute("href").match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1],
             channelTitle: channelNameTag.textContent.trim()
@@ -1161,7 +1161,6 @@ async function whitelistCheck(videoID: string) {
     try {
         const videoInfoWait: Promise<VideoInfo> = utils.wait(() => videoInfo, 6000, 20);
         const documentWait: Promise<VideoInfo>  = utils.wait(() => channelInfoFromDocument(videoID), 6000, 20);
-
         const channelInfo = await Promise.race([videoInfoWait, documentWait])
 
         channelIDInfo = {
