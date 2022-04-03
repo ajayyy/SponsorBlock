@@ -66,6 +66,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         // Top toggles
         "whitelistChannel",
         "unwhitelistChannel",
+        "whitelistButton",
         "whitelistToggle",
         "whitelistForceCheck",
         "disableSkipping",
@@ -107,7 +108,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sponsorMessageTimes",
         //"downloadedSponsorMessageTimes",
         "refreshSegmentsButton",
-        "whitelistButton",
         "sbDonate",
         "sponsorTimesDonateContainer",
         "sbConsiderDonateLink",
@@ -122,13 +122,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
-    PageElements.whitelistToggle.addEventListener("change", function () {
-        if (this.checked) {
-            whitelistChannel();
-        } else {
-            unwhitelistChannel();
-        }
-    });
+    PageElements.whitelistButton.addEventListener("click", whitelistChannelClick);
     PageElements.whitelistForceCheck.addEventListener("click", () => {openOptionsAt("behavior")});
     PageElements.toggleSwitch.addEventListener("change", function () {
         toggleSkipping(!this.checked);
@@ -654,7 +648,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     }
 
-    function whitelistChannel() {
+    function whitelistChannelClick(event) {
         //get the channel url
         messageHandler.query({
             active: true,
@@ -662,92 +656,123 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                { message: 'getChannelID' },
+                { message: 'getChannelInfo' },
                 function (response) {
                     if (!response.channelID) {
                         alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
                         return;
                     }
 
-                    //get whitelisted channels
-                    let whitelistedChannels = Config.config.whitelistedChannels;
-                    if (whitelistedChannels == undefined) {
-                        whitelistedChannels = [];
+                    // Ctrl+clicking opens the Options menu with the channel selected for customisation
+                    if (event.ctrlKey) {
+                        let channelSpecificSettings = Config.config.channelSpecificSettings;
+                        if (channelSpecificSettings == undefined) {
+                            channelSpecificSettings = {};
+                        }
+
+                        if (channelSpecificSettings[response.channelID] == undefined) {
+                            channelSpecificSettings[response.channelID] = {
+                                name: response.channelName,
+                                whitelisted: false,
+                                categorySelections: []
+                            };
+                        } else {
+                            // Update the channel name (old whitelisted channels don't have this, and this also handles channels changing their names if it happens)
+                            channelSpecificSettings[response.channelID].name = response.channelName;
+                        }
+
+                        // Save the settings
+                        Config.config.channelSpecificSettings = channelSpecificSettings;
+
+                        openOptionsAt("behavior/" + response.channelID);
+                    } else {
+                        // Otherwise, (un)whitelist the channel
+                        if ((PageElements.whitelistToggle.checked = !PageElements.whitelistToggle.checked)) {
+                            whitelistChannel(response.channelID, response.channelName);
+                        } else {
+                            unwhitelistChannel(response.channelID);
+                        }
                     }
-
-                    //add on this channel
-                    whitelistedChannels.push(response.channelID);
-
-                    //change button
-                    PageElements.whitelistChannel.style.display = "none";
-                    PageElements.unwhitelistChannel.style.display = "unset";
-                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
-
-                    if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
-
-                    //save this
-                    Config.config.whitelistedChannels = whitelistedChannels;
-
-                    //send a message to the client
-                    messageHandler.query({
-                        active: true,
-                        currentWindow: true
-                    }, tabs => {
-                        messageHandler.sendMessage(
-                            tabs[0].id, {
-                            message: 'whitelistChange',
-                            value: true
-                        });
-                    }
-                    );
                 }
             );
+            event.preventDefault();
         });
     }
 
-    function unwhitelistChannel() {
-        //get the channel url
+    function whitelistChannel(channelID: string, channelName: string) {
+        //get whitelisted channels
+        let channelSpecificSettings = Config.config.channelSpecificSettings;
+        if (channelSpecificSettings == undefined) {
+            channelSpecificSettings = {};
+        }
+
+        //add on this channel
+        if (channelSpecificSettings[channelID] != undefined) {
+            channelSpecificSettings[channelID].whitelisted = true;
+        } else {
+            channelSpecificSettings[channelID] = {
+                name: channelName,
+                whitelisted: true,
+                categorySelections: []
+            };
+        }
+
+        //change button
+        PageElements.whitelistChannel.style.display = "none";
+        PageElements.unwhitelistChannel.style.display = "unset";
+        document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
+
+        if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
+
+        //save this
+        Config.config.channelSpecificSettings = channelSpecificSettings;
+
+        //send a message to the client
         messageHandler.query({
             active: true,
             currentWindow: true
         }, tabs => {
             messageHandler.sendMessage(
                 tabs[0].id,
-                { message: 'getChannelID' },
-                function (response) {
-                    //get whitelisted channels
-                    let whitelistedChannels = Config.config.whitelistedChannels;
-                    if (whitelistedChannels == undefined) {
-                        whitelistedChannels = [];
-                    }
-
-                    //remove this channel
-                    const index = whitelistedChannels.indexOf(response.channelID);
-                    whitelistedChannels.splice(index, 1);
-
-                    //change button
-                    PageElements.whitelistChannel.style.display = "unset";
-                    PageElements.unwhitelistChannel.style.display = "none";
-                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
-
-                    //save this
-                    Config.config.whitelistedChannels = whitelistedChannels;
-
-                    //send a message to the client
-                    messageHandler.query({
-                        active: true,
-                        currentWindow: true
-                    }, tabs => {
-                        messageHandler.sendMessage(
-                            tabs[0].id, {
-                            message: 'whitelistChange',
-                            value: false
-                        });
-                    }
-                    );
-                }
-            );
+                {
+                    message: 'whitelistChange',
+                    value: true
+                });
         });
+    }
+
+    function unwhitelistChannel(channelID: string) {
+        //get whitelisted channels
+        let channelSpecificSettings = Config.config.channelSpecificSettings;
+        if (channelSpecificSettings == undefined) {
+            channelSpecificSettings = {};
+        }
+
+        //Un-whitelist
+        if (channelSpecificSettings[channelID] != undefined) {
+            channelSpecificSettings[channelID].whitelisted = false;
+        }
+
+        //change button
+        PageElements.whitelistChannel.style.display = "unset";
+        PageElements.unwhitelistChannel.style.display = "none";
+        document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
+
+        //save this
+        Config.config.channelSpecificSettings = channelSpecificSettings;
+
+        //send a message to the client
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id, {
+                message: 'whitelistChange',
+                value: false
+            });
+        }
+        );
     }
 
     function refreshSegments() {

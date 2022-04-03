@@ -38,6 +38,7 @@ export interface VideoDurationResponse {
 }
 
 export enum CategorySkipOption {
+    Disabled = -1,
     ShowOverlay,
     ManualSkip,
     AutoSkip
@@ -128,7 +129,14 @@ export enum ChannelIDStatus {
 
 export interface ChannelIDInfo {
     id: string,
+    name: string,
     status: ChannelIDStatus
+}
+
+export interface ChannelSpecificSettings {
+    name: string,
+    whitelisted: boolean,
+    categorySelections: CategorySelection[]
 }
 
 export interface SkipToTimeParams {

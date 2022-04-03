@@ -22,8 +22,9 @@ async function init() {
 
     // selected tab
     if (location.hash != "") {
-        const substr = location.hash.slice(1);
-        let menuItem = document.querySelector(`[data-for='${substr}']`);
+        const slashIndex = location.hash.indexOf("/");
+        const tabName = location.hash.slice(1, slashIndex > -1 ? slashIndex : undefined);
+        let menuItem = document.querySelector(`[data-for='${tabName}']`);
         if (menuItem == null)
             menuItem = document.querySelector(`[data-for='behavior']`);
         menuItem.classList.add("selected");
@@ -648,7 +649,7 @@ function copyDebugOutputToClipboard() {
     output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress) 
         ? "Default server address" : "Custom server address";
     output.config.invidiousInstances = output.config.invidiousInstances.length;
-    output.config.whitelistedChannels = output.config.whitelistedChannels.length;
+    output.config.channelSpecificSettings = output.config.channelSpecificSettings.length;
 
     // Copy object to clipboard
     navigator.clipboard.writeText(JSON.stringify(output, null, 4))
