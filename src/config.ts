@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, CategorySkipOption, ChannelSpecificSettings, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
 import { keybindEquals } from "./utils/configUtils";
 
 interface SBConfig {
@@ -10,7 +10,6 @@ interface SBConfig {
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
-    whitelistedChannels: string[],
     forceChannelCheck: boolean,
     minutesSaved: number,
     skipCount: number,
@@ -71,6 +70,7 @@ interface SBConfig {
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
+    channelSpecificSettings: Record<string, ChannelSpecificSettings>,
 
     // Preview bar
     barTypes: {
@@ -127,7 +127,6 @@ const Config: SBObject = {
         lastIsVipUpdate: 0,
         unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
-        whitelistedChannels: [],
         forceChannelCheck: false,
         minutesSaved: 0,
         skipCount: 0,
@@ -192,6 +191,7 @@ const Config: SBObject = {
             name: "exclusive_access" as Category,
             option: CategorySkipOption.ShowOverlay
         }],
+        channelSpecificSettings: {},
 
         colorPalette: {
             red: "#780303",
@@ -486,6 +486,18 @@ function migrateOldSyncFormats(config: SBConfig) {
     // populate invidiousInstances with new instances if 3p support is **DISABLED**
     if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
         config["invidiousInstances"] = invidiousList;
+    }
+
+    // Migrate from whitelistedChannels to channelSpecificSettings
+    if (config["whitelistedChannels"] !== undefined) {
+        for (const whitelistedChannel of config["whitelistedChannels"]) {
+            config["channelSpecificSettings"][whitelistedChannel] = {
+                name: null, // This gets filled in when the user uses the button later on
+                whitelisted: true,
+                categorySelections: []
+            };
+        }
+        chrome.storage.sync.remove("whitelistedChannels");
     }
 }
 

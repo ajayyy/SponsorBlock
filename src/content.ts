@@ -181,9 +181,10 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             });
 
             break;
-        case "getChannelID":
+        case "getChannelInfo":
             sendResponse({
-                channelID: channelIDInfo.id
+                channelID: channelIDInfo.id,
+                channelName: channelIDInfo.name
             });
 
             break;
@@ -254,7 +255,8 @@ function resetValues() {
     channelWhitelisted = false;
     channelIDInfo = {
         status: ChannelIDStatus.Fetching,
-        id: null
+        id: null,
+        name: null
     };
     lockedCategories = [];
 
@@ -319,7 +321,7 @@ async function videoIDChange(id) {
     // getVideoInfo(); // Seems to have been replaced
 
     // Update whitelist data when the video data is loaded
-    whitelistCheck();
+    const whitelistCheckResult = whitelistCheck(id);
 
     //setup the preview bar
     if (previewBar === null) {
@@ -345,6 +347,10 @@ async function videoIDChange(id) {
 
     //close popup
     closeInfoMenu();
+
+    // To attempt to ensure the channel ID has been fetched so that channel-specific categories can be requested
+    if (Config.config.forceChannelCheck)
+        await whitelistCheckResult;
 
     sponsorsLookup(id);
 
@@ -526,7 +532,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
                 openNotice: skipInfo.openNotice
             });
 
-            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
+            if (utils.getCategorySelection(currentSkip.category, channelIDInfo.id)?.option === CategorySkipOption.ManualSkip
                     || currentSkip.actionType === ActionType.Mute) {
                 forcedSkipTime = skipTime[0] + 0.001;
             } else {
@@ -755,7 +761,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     setupVideoMutationListener();
 
     // Create categories list
-    const categories: string[] = Config.config.categorySelections.map((category) => category.name);
+    const categories: string[] = utils.createCategorySelectionList(channelIDInfo.id).map((category) => category.name);
 
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
@@ -953,7 +959,7 @@ function startSkipScheduleCheckingForStartSponsors() {
             .filter((time) => time.segment[1] > video.currentTime && time.actionType === ActionType.Poi)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
-            const skipOption = utils.getCategorySelection(time.category)?.option;
+            const skipOption = utils.getCategorySelection(time.category, channelIDInfo.id)?.option;
             if (skipOption !== CategorySkipOption.ShowOverlay) {
                 skipToTime({
                     v: video,
@@ -1123,37 +1129,52 @@ function updatePreviewBar(): void {
 }
 
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
-async function whitelistCheck() {
-    const whitelistedChannels = Config.config.whitelistedChannels;
+async function whitelistCheck(videoID: string) {
+    const channelSpecificSettings = Config.config.channelSpecificSettings;
 
-    const getChannelID = () =>
-        (document.querySelector("a.ytd-video-owner-renderer") // YouTube
-        ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
-        ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
-        ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
-            ?.getAttribute("href")?.match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1];
+    const getChannelInfo = (videoID: string) => {
+        const channelNameTag: HTMLElement = document.querySelector('a.ytd-video-owner-renderer')?.parentElement?.querySelector('#channel-name a') // YouTube Desktop
+            ?? document.querySelector("#channel-info #channel-name") // YouTube Desktop Channel Page
+            ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
+            ?? (onInvidious ? document.querySelector("a > .channel-profile > #channel-name")?.parentElement?.parentElement : null) // Invidious
+            ?? document.querySelector("a.slim-owner-icon-and-title"); // Mobile YouTube
+        if (!channelNameTag || !channelNameTag.getAttribute("href")) {
+            return null;
+        } else {
+            // This could be merged into getYouTubeVideoIDFromDocument, but they serve different purposes
+            const documentVideoId = document.querySelector("[video-id]")?.getAttribute("video-id");
+            if (documentVideoId != null && documentVideoId != videoID)
+                return null;
+        }
+        return {
+            id: channelNameTag.getAttribute("href").match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1],
+            name: channelNameTag.textContent.trim()
+        };
+    };
 
     try {
-        await utils.wait(() => !!getChannelID(), 6000, 20);
+        let tempChannelInfo;
+        await utils.wait(() => !!(tempChannelInfo = getChannelInfo(videoID))?.id, 6000, 20);
 
         channelIDInfo = {
             status: ChannelIDStatus.Found,
-            id: getChannelID().match(/^\/?([^\s/]+)/)[0]
+            id: tempChannelInfo.id,
+            name: tempChannelInfo.name
         }
     } catch (e) {
         channelIDInfo = {
             status: ChannelIDStatus.Failed,
-            id: null
+            id: null,
+            name: null
         }
 
         return;
     }
 
     //see if this is a whitelisted channel
-    if (whitelistedChannels != undefined &&
-            channelIDInfo.status === ChannelIDStatus.Found && whitelistedChannels.includes(channelIDInfo.id)) {
-        channelWhitelisted = true;
-    }
+    channelWhitelisted = channelSpecificSettings != undefined &&
+        channelIDInfo.status === ChannelIDStatus.Found &&
+        !!channelSpecificSettings[channelIDInfo.id]?.whitelisted;
 
     // check if the start of segments were missed
     if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
@@ -1464,15 +1485,16 @@ function createButton(baseID: string, title: string, callback: () => void, image
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
-    return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+    return utils.getCategorySelection(segment.category, channelIDInfo.id)?.option === CategorySkipOption.AutoSkip ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType !== ActionType.Poi);
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
-    return (segment.actionType !== ActionType.Full
-            && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay)
-            || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
+    const skipOption = utils.getCategorySelection(segment.category, channelIDInfo.id)?.option;
+    return segment.actionType !== ActionType.Full &&
+        (skipOption === CategorySkipOption.ManualSkip || skipOption === CategorySkipOption.AutoSkip
+            || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")));
 }
 
 /** Creates any missing buttons on the YouTube player if possible. */

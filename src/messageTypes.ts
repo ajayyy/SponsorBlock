@@ -13,7 +13,7 @@ interface DefaultMessage {
         "update"
         | "sponsorStart"
         | "getVideoID"
-        | "getChannelID"
+        | "getChannelInfo"
         | "isChannelWhitelisted"
         | "submitTimes"
         | "refreshSegments";
@@ -53,8 +53,9 @@ interface GetVideoIdResponse {
     videoID: string;
 }
 
-interface GetChannelIDResponse {
+interface GetChannelInfoResponse {
     channelID: string;
+    channelName: string;
 }
 
 interface SponsorStartResponse {
@@ -68,7 +69,7 @@ interface IsChannelWhitelistedResponse {
 export type MessageResponse = 
     IsInfoFoundMessageResponse
     | GetVideoIdResponse
-    | GetChannelIDResponse
+    | GetChannelInfoResponse
     | SponsorStartResponse
     | IsChannelWhitelistedResponse
     | Record<string, never>
