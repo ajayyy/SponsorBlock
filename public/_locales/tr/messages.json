@@ -817,16 +817,16 @@
         "message": "Atlama nasıl çalışıyor"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Video segments will automatically be skipped if they are found in the database. You can open the popup by clicking the extension icon to get a preview of what they are."
+        "message": "Segmen video akan otomatis dilewati jika ditemukan di databasis. Kamu bisa buka munculan dengan klik ikon ekstensi untuk mendapatkan pratinjau apa adanya."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Whenever you skip a segment, you will get notice. If the timing seems wrong vote down by clicking downvote! You can also vote in the popup."
+        "message": "Når du springer et segment over, får du besked, når du springer et segment over. Hvis timingen virker forkert, kan du stemme ned ved at klikke på downvote! Du kan også stemme i popup-vinduet."
     },
     "Submitting": {
-        "message": "Gönderme"
+        "message": "Submitting"
     },
     "helpPageSubmitting1": {
-        "message": "Gönderi, açılır pencerede \"Kısım Şimdi Başlıyor\" düğmesine basılarak veya oynatıcıdaki düğmelerle video oynatıcıda yapılabilir."
+        "message": "Indsendelse kan enten ske i popup-vinduet ved at trykke på \"Segment Begynder Nu\"-knappen eller i videoafspilleren med knapperne på afspilleren."
     },
     "helpPageSubmitting2": {
         "message": "Clicking the play button indicated the start of a segment and clicking the stop icon indicates the end. You can prepare multiple sponsors before hitting submit. Clicking the upload button will submit. Clicking the garbage can will delete."
