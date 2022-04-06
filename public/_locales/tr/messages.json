@@ -817,10 +817,10 @@
         "message": "Atlama nasıl çalışıyor"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Video kısımları veri tabanında mevcut ise otomatikman atlanır. Eklentinin simgesine tıklayınca açılan pencereden, video için mevcut olan kısımları görebilirsiniz."
+        "message": "Video segments will automatically be skipped if they are found in the database. You can open the popup by clicking the extension icon to get a preview of what they are."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Bir kısmı atladığınızda size bildirim gönderilir. Eğer kısım hatalıysa bunu eksi oylayınız. Eklentinin penceresinde de oy verebilirsiniz."
+        "message": "Whenever you skip a segment, you will get notice. If the timing seems wrong vote down by clicking downvote! You can also vote in the popup."
     },
     "Submitting": {
         "message": "Gönderme"
@@ -829,7 +829,7 @@
         "message": "Gönderi, açılır pencerede \"Kısım Şimdi Başlıyor\" düğmesine basılarak veya oynatıcıdaki düğmelerle video oynatıcıda yapılabilir."
     },
     "helpPageSubmitting2": {
-        "message": "Oynat düğmesine tıklamak bir kısımın başlangıcını, durdurma simgesine tıklamak ise bitişini gösterir. Gönder düğmesine basmadan önce birden fazla sponsor hazırlayabilirsiniz. Yükle düğmesine tıklamak kısımları gönderir. Çöp kutusuna tıkladığınızda silinir."
+        "message": "Clicking the play button indicated the start of a segment and clicking the stop icon indicates the end. You can prepare multiple sponsors before hitting submit. Clicking the upload button will submit. Clicking the garbage can will delete."
     },
     "Editing": {
         "message": "Düzenleme"
