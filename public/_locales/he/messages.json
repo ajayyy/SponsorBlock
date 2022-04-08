@@ -214,6 +214,12 @@
     "errorCode": {
         "message": "קוד שגיאה: "
     },
+    "skip": {
+        "message": "דלג"
+    },
+    "mute": {
+        "message": "השתק"
+    },
     "mute_category": {
         "message": "השתק {0}?"
     },
@@ -298,11 +304,54 @@
     "category_exclusive_access": {
         "message": "גישה אקסקלוסיבית"
     },
+    "category_music_offtopic": {
+        "message": "מוזיקה: קטעים ללא מוזיקה"
+    },
+    "category_music_offtopic_short": {
+        "message": "ללא מוזיקה"
+    },
+    "category_poi_highlight": {
+        "message": "קטע חשוב"
+    },
     "autoSkip": {
         "message": "דילוג אוטומטי"
     },
+    "manualSkip": {
+        "message": "דלג ידנית"
+    },
+    "showOverlay": {
+        "message": "הראה בטיימליין"
+    },
+    "showOverlay_POI": {
+        "message": "הראה בטיימליין"
+    },
+    "category": {
+        "message": "קטגוריה"
+    },
+    "skipOption": {
+        "message": "אפשרות דילוג",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "bracketNow": {
+        "message": "(עכשיו)"
+    },
+    "moreCategories": {
+        "message": "עוד קטגוריות"
+    },
+    "chooseACategory": {
+        "message": "בחר קטגוריה"
+    },
+    "bracketEnd": {
+        "message": "(סוף)"
+    },
+    "downvoteDescription": {
+        "message": "זמן שגוי/לא נכון"
+    },
     "incorrectCategory": {
         "message": "שנה קטגוריה"
+    },
+    "multipleSegments": {
+        "message": "מספר מקטעים"
     },
     "guidelines": {
         "message": "הנחיות"
@@ -346,6 +395,9 @@
     "helpPageHowSkippingWorks": {
         "message": "כיצד דילוג עובד"
     },
+    "Submitting": {
+        "message": "שולח"
+    },
     "Editing": {
         "message": "עריכה"
     },
@@ -367,8 +419,28 @@
     "LearnMore": {
         "message": "למידע נוסף"
     },
+    "CopyAndDownvote": {
+        "message": "העתק ועשה דיסלייק"
+    },
+    "ContinueVoting": {
+        "message": "המשך להצביע"
+    },
     "ChangeCategoryTooltip": {
         "message": "זה מיידית ישפיע על כל המקטעים שלך"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "השתמש בגלגלת בזמן שהעכבר מעל הזמן בשלב העריכה על מנת לשנות את הזמן יותר מהר. שילוב של הלחצן Ctrl/Shift יכולים לשנות את מהירות השינוי."
+    },
+    "categoryPillNewFeature": {
+        "message": "חדש! ראה מתי וידאו בשלמותו הוא פרסומת או פרסום עצמי"
+    },
+    "dayAbbreviation": {
+        "message": "ימים",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "שעות",
+        "description": "100h"
     },
     "optionsTabBehavior": {
         "message": "התנהגות",
@@ -386,7 +458,13 @@
         "message": "גיבוי/שחזור",
         "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
+    "notSet": {
+        "message": "לא הוגדר"
+    },
     "change": {
         "message": "שנה"
+    },
+    "youtubeKeybindWarning": {
+        "message": "זה הוא קיצור דרך מובנה ביוטיוב. האם אתה בטוח שאתה רוצה להשתמש בו?"
     }
 }
