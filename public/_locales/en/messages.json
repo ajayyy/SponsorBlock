@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "This is a built-in YouTube shortcut. Are you sure you want to use it?"
+    },
+    "betaServerWarning": {
+        "message": "BETA Server is enabled!"
+    },
+    "openOptionsPage": {
+        "message": "Open options page"
     }
 }

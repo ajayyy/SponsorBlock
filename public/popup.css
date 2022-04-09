@@ -544,3 +544,13 @@
 #sponsorBlockPopupBody .hidden {
   display: none !important;
 }
+
+#sbBetaServerWarning {
+  padding: 8px;
+  font-size: 1em;
+  font-weight: 700;
+  word-break: break-word;
+  color: var(--sb-main-fg-color);
+  background: var(--sb-red-bg-color);
+  cursor: pointer;
+}
