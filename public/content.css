@@ -653,3 +653,9 @@ input::-webkit-inner-spin-button {
 .sponsorBlockCategoryPill:hover .categoryPillClose {
 	display: inherit;
 }
+
+/* tweak for mobile duration */
+#sponsorBlockDurationAfterSkips.ytm-time-display {
+	padding-left: 4px;
+	margin: 0px;
+}
