@@ -2126,14 +2126,15 @@ function updateAdFlag(): void {
 }
 
 function showTimeWithoutSkips(skippedDuration: number): void {
-    if (onMobileYouTube || onInvidious) return;
+    if (onInvidious) return;
 
     if (isNaN(skippedDuration) || skippedDuration < 0) {
         skippedDuration = 0;
     }
 
     // YouTube player time display
-    const display = document.querySelector(".ytp-time-display.notranslate");
+    const displayClass = onMobileYouTube ? "ytm-time-display" : "ytp-time-display.notranslate"
+    const display = document.querySelector(`.${displayClass}`);
     if (!display) return;
 
     const durationID = "sponsorBlockDurationAfterSkips";
@@ -2143,7 +2144,7 @@ function showTimeWithoutSkips(skippedDuration: number): void {
     if (duration === null) {
         duration = document.createElement('span');
         duration.id = durationID;
-        duration.classList.add("ytp-time-duration");
+        duration.classList.add(displayClass);
 
         display.appendChild(duration);
     }
