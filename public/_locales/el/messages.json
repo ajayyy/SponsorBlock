@@ -715,5 +715,19 @@
     },
     "helpPageHowSkippingWorks2": {
         "message": "Κάθε φορά που παραλείπετε κάποιο τμήμα, θα λαμβάνετε ειδοποίηση. Εάν ο συγχρονισμός σας φαίνεται λάθος, ψηφίστε αρνητικά πατώντας το εικονίδιο! Μπορείτε επίσης να ψηφίσετε μέσω του αναδυόμενου παράθυρου."
+    },
+    "helpPageSourceCode": {
+        "message": "Πού μπορώ να βρω τον πηγαίο κώδικα;"
+    },
+    "LearnMore": {
+        "message": "Μάθετε περισσότερα"
+    },
+    "optionsTabBehavior": {
+        "message": "Συμπεριφορά",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Διάφορα",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     }
 }
