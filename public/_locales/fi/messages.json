@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Tämä on YouTuben sisäänrakennettu pikanäppäin. Haluatko varmasti käyttää sitä?"
+    },
+    "betaServerWarning": {
+        "message": "BETA-palvelin on käytössä!"
+    },
+    "openOptionsPage": {
+        "message": "Avaa asetussivu"
     }
 }
