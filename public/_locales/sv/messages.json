@@ -929,5 +929,8 @@
     },
     "youtubeKeybindWarning": {
         "message": "Detta är en inbyggd YouTube-genväg. Är du säker på att du vill använda den?"
+    },
+    "betaServerWarning": {
+        "message": "BETA-servern är aktiverad!"
     }
 }
