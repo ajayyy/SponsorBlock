@@ -111,7 +111,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sbDonate",
         "sponsorTimesDonateContainer",
         "sbConsiderDonateLink",
-        "sbCloseDonate"
+        "sbCloseDonate",
+        "sbBetaServerWarning"
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     // Hide donate button if wanted (Safari, or user choice)
@@ -119,6 +120,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.sbDonate.style.display = "none";
     }
     PageElements.sbDonate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
+
+    if (Config.config.testingServer) {
+        PageElements.sbBetaServerWarning.classList.remove("hidden");
+        PageElements.sbBetaServerWarning.addEventListener("click", function () {
+            openOptionsAt("advanced");
+        });
+    }
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
