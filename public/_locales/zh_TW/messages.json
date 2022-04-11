@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "這是YouTube內建捷徑，你真的要取代它嗎？"
+    },
+    "betaServerWarning": {
+        "message": "測試版伺服器已啟用！"
+    },
+    "openOptionsPage": {
+        "message": "打開選項頁面"
     }
 }
