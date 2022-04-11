@@ -391,6 +391,10 @@ div:hover > .sponsorBlockChapterBar {
 	filter: brightness(80%);
 }
 
+.segmentSummary {
+	outline: none !important;
+}
+
 .submitButton {
 	background-color:#ec1c1c;
 	-moz-border-radius:28px;
@@ -666,6 +670,7 @@ input::-webkit-inner-spin-button {
     line-height: 1.5em;
 	color: white;
 	font-size: 12px;
+	z-index: 1000;
 }
 
 .sponsorBlockTooltip a {
@@ -725,4 +730,10 @@ input::-webkit-inner-spin-button {
 
 .sponsorBlockCategoryPill:hover .categoryPillClose {
 	display: inherit;
+}
+
+/* tweak for mobile duration */
+#sponsorBlockDurationAfterSkips.ytm-time-display {
+	padding-left: 4px;
+	margin: 0px;
 }

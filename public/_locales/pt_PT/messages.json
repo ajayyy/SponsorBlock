@@ -118,6 +118,34 @@
     "submitCheck": {
         "message": "Tem a certeza que pretende submeter?"
     },
+    "whitelistChannel": {
+        "message": "Meter canal na Lista Branca"
+    },
+    "removeFromWhitelist": {
+        "message": "Remover canal da Lista Branca"
+    },
+    "voteOnTime": {
+        "message": "Votar em um segmento"
+    },
+    "Submissions": {
+        "message": "Submissões"
+    },
+    "savedPeopleFrom": {
+        "message": "Salvaste pessoas de "
+    },
+    "viewLeaderboard": {
+        "message": "Tabela de Classificação"
+    },
+    "recordTimesDescription": {
+        "message": "Enviar"
+    },
+    "submissionEditHint": {
+        "message": "A edição da seção aparecerá depois que você clicar em enviar",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
+    },
+    "popupHint": {
+        "message": "Dica: Você pode configurar atalhos de teclado para enviar nas opções"
+    },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
     },
@@ -127,8 +155,14 @@
     "publicStats": {
         "message": "Isto é usado na página pública de estatísticas que mostra o quanto já contríbuíu. Veje-a"
     },
+    "Username": {
+        "message": "Nome de Utilizador"
+    },
     "setUsername": {
         "message": "Criar nomde de utilizador"
+    },
+    "copyPublicID": {
+        "message": "Copiar UserID Publico"
     },
     "discordAdvert": {
         "message": "Junte-se ao discord oficial para sugerir dicas e sugestões!"
@@ -148,17 +182,47 @@
     "hideButtonsDescription": {
         "message": "Isto esconde os botões que aparecem no player do Youtube para submeter patrocínios. Entendemos que possa ser\n incómodo a algumas pessoas. Em vez de usar esses botões pode usar os do popup. Para esconder a mensagem que aparece, \n ususe o botão na mesma que diz \"Don't show this again\". Pode sempre reactivar estas definições novamente."
     },
+    "showSkipButton": {
+        "message": "Mantenha o Botão Saltar para Destaque no Player"
+    },
     "showInfoButton": {
         "message": "Mostrar botão de Informações no player do Youtube"
     },
     "hideInfoButton": {
         "message": "Esconder botão de Informações no player do Youtube"
     },
+    "autoHideInfoButton": {
+        "message": "Ocultar automaticamente o Botão de Informação"
+    },
     "hideDeleteButton": {
         "message": "Esconder botão de Apagar no player do Youtube"
     },
     "showDeleteButton": {
         "message": "Mostrar botão de Apagar no player do Youtube"
+    },
+    "enableViewTracking": {
+        "message": "Ativar Rastreamento de Contagem de Saltos"
+    },
+    "whatViewTracking": {
+        "message": "Esse recurso rastreia quais segmentos você pulou para permitir que os usuários saibam o quanto seu envio ajudou outras pessoas e é usado como métrica junto com votos positivos para garantir que o spam não entre no banco de dados. A extensão envia uma mensagem ao servidor cada vez que você pular um segmento. Espero que a maioria das pessoas não altere essa configuração para que os números de visualização sejam precisos. :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "Ativar o Rastreamento de Contagem de Saltos nas Guias Privadas/Anônimas"
+    },
+    "enableTrackDownvotes": {
+        "message": "Guardar segmentos de votos negativos"
+    },
+    "whatTrackDownvotes": {
+        "message": "Quaisquer segmentos que você votar negativo permanecerão ocultos mesmo após a atualização"
+    },
+    "trackDownvotesWarning": {
+        "message": "Aviso: Ao desabilitar isso excluirá todos os votos negativos armazenados anteriormente"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Consulta por Prefixo de Hash"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Em vez de solicitar segmentos do servidor usando o ID do Vídeo, são enviados os primeiros 4 caracteres do hash do ID do Vídeo. Este servidor enviará de volta dados para todos os vídeos com hashes semelhantes."
     },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
