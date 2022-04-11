@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Il s'agit d'un raccourci intégré à YouTube. Êtes-vous sûr de vouloir l'utiliser ?"
+    },
+    "betaServerWarning": {
+        "message": "Le serveur BETA est actif !"
+    },
+    "openOptionsPage": {
+        "message": "Ouvrir la page d'options"
     }
 }
