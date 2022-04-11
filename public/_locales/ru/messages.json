@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Это сочетание используется на сайте YouTube. Вы уверены, что хотите его использовать?"
+    },
+    "betaServerWarning": {
+        "message": "Используется BETA сервер!"
+    },
+    "openOptionsPage": {
+        "message": "Открыть страницу настроек"
     }
 }
