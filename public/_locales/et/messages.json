@@ -849,6 +849,9 @@
     "SponsorTimeEditScrollNewFeature": {
         "message": "Kiireks aja reguleerimiseks keri hiirega muutmiskasti kohal. Täpsemaks reguleerimiseks hoia kerimise ajal all Ctrl või Shift klahvi."
     },
+    "categoryPillNewFeature": {
+        "message": "Uus! Näe, kui video on täielikult sponsoreeritud või enesepromo"
+    },
     "dayAbbreviation": {
         "message": "p",
         "description": "100d"
@@ -890,5 +893,11 @@
     },
     "change": {
         "message": "Muuda"
+    },
+    "betaServerWarning": {
+        "message": "BEETAserver on lubatud!"
+    },
+    "openOptionsPage": {
+        "message": "Ava valikute leht"
     }
 }
