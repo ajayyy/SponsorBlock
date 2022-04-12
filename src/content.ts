@@ -1915,6 +1915,8 @@ async function sendSubmitMessage() {
         return;
     }
 
+    sponsorsLookup(sponsorVideoID);
+
     // Add loading animation
     playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
     const stopAnimation = AnimationUtils.applyLoadingAnimation(playerButtons.submit.button, 1, () => updateEditButtonsOnPlayer());
