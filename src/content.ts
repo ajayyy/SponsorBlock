@@ -234,6 +234,9 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
             case "hideDeleteButtonPlayerControls":
                 updateVisibilityOfPlayerControlsButton()
                 break;
+            case "categorySelections":
+                sponsorsLookup(sponsorVideoID);
+                break;
         }
     }
 }
