@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Este un atajo incorporado de YouTube. ¿Estás seguro de que quieres usarlo?"
+    },
+    "betaServerWarning": {
+        "message": "¡El servidor BETA está activado!"
+    },
+    "openOptionsPage": {
+        "message": "Abrir página de opciones"
     }
 }
