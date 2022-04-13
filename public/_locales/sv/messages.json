@@ -932,5 +932,8 @@
     },
     "betaServerWarning": {
         "message": "BETA-servern är aktiverad!"
+    },
+    "openOptionsPage": {
+        "message": "Öppna alternativsidan"
     }
 }
