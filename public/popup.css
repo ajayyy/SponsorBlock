@@ -89,6 +89,19 @@
 }
 
 /*
+ * Alert indicating that Beta server is enabled
+ */
+
+#sbBetaServerWarning {
+  padding: 8px;
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--sb-main-fg-color);
+  background-color: var(--sb-red-bg-color);
+  cursor: pointer;
+}
+
+/*
  * Header logo
  */
 
@@ -554,14 +567,4 @@
 
 #sponsorBlockPopupBody .hidden {
   display: none !important;
-}
-
-#sbBetaServerWarning {
-  padding: 8px;
-  font-size: 1em;
-  font-weight: 700;
-  word-break: break-word;
-  color: var(--sb-main-fg-color);
-  background: var(--sb-red-bg-color);
-  cursor: pointer;
 }
