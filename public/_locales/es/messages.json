@@ -562,13 +562,13 @@
         "description": "Short description for this category"
     },
     "category_interaction": {
-        "message": "Recordatorio de interacción (subscribir)"
+        "message": "Recordatorio de Interacción (Suscribir)"
     },
     "category_interaction_description": {
         "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
     },
     "category_interaction_short": {
-        "message": "Recordatorio de interacción"
+        "message": "Recordatorio de Interacción"
     },
     "category_intro": {
         "message": "Intermisión/Animación de Introducción"
