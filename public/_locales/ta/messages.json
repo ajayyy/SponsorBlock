@@ -769,5 +769,11 @@
     },
     "change": {
         "message": "மாற்று"
+    },
+    "betaServerWarning": {
+        "message": "பீட்டா சேவையகம் இயக்கப்பட்டுள்ளது!"
+    },
+    "openOptionsPage": {
+        "message": "தெரிவுகள் பக்கத்தைத் திற"
     }
 }
