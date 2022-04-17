@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Dette er en indbygget Youtube-genvej. Er du sikker på, at du vil bruge den?"
+    },
+    "betaServerWarning": {
+        "message": "BETA Server er aktiveret!"
+    },
+    "openOptionsPage": {
+        "message": "Åbn indstillinger"
     }
 }
