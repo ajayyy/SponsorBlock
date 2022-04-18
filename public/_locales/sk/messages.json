@@ -844,5 +844,11 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "betaServerWarning": {
+        "message": "Je zapnutý BETA server!"
+    },
+    "openOptionsPage": {
+        "message": "Otvoriť stránku s nastaveniami"
     }
 }
