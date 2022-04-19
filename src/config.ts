@@ -6,7 +6,6 @@ import { keybindEquals } from "./utils/configUtils";
 interface SBConfig {
     userID: string,
     isVip: boolean,
-    lastIsVipUpdate: number,
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
@@ -124,7 +123,6 @@ const Config: SBObject = {
     syncDefaults: {
         userID: null,
         isVip: false,
-        lastIsVipUpdate: 0,
         unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
         whitelistedChannels: [],
