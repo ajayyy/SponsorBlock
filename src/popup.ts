@@ -175,7 +175,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&userID=" + Config.config.userID, (res) => {
+    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&value=vip&userID=" + Config.config.userID, (res) => {
         if (res.status === 200) {
             const userInfo = JSON.parse(res.responseText);
             PageElements.usernameValue.innerText = userInfo.userName;
@@ -202,6 +202,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 }
                 PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
             }
+            
+            Config.config.isVip = userInfo.vip;
         }
     });
 
