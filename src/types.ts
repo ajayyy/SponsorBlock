@@ -38,6 +38,7 @@ export interface VideoDurationResponse {
 }
 
 export enum CategorySkipOption {
+    Disabled = -1,
     ShowOverlay,
     ManualSkip,
     AutoSkip
@@ -110,79 +111,8 @@ export interface BackgroundScriptContainer {
 }
 
 export interface VideoInfo {
-    responseContext: {
-        serviceTrackingParams: Array<{service: string, params: Array<{key: string, value: string}>}>,
-        webResponseContextExtensionData: {
-            hasDecorated: boolean
-        }
-    },
-    playabilityStatus: {
-        status: string,
-        playableInEmbed: boolean,
-        miniplayer: {
-            miniplayerRenderer: {
-                playbackMode: string
-            }
-        }
-    };
-    streamingData: unknown;
-    playbackTracking: unknown;
-    videoDetails: {
-        videoId: string,
-        title: string,
-        lengthSeconds: string,
-        keywords: string[],
-        channelId: string,
-        isOwnerViewing: boolean,
-        shortDescription: string,
-        isCrawlable: boolean,
-        thumbnail: {
-            thumbnails: Array<{url: string, width: number, height: number}>
-        },
-        averageRating: number,
-        allowRatings: boolean,
-        viewCount: string,
-        author: string,
-        isPrivate: boolean,
-        isUnpluggedCorpus: boolean,
-        isLiveContent: boolean,
-    };
-    playerConfig: unknown;
-    storyboards: unknown;
-    microformat: {
-        playerMicroformatRenderer: {
-            thumbnail: {
-                thumbnails: Array<{url: string, width: number, height: number}>
-            },
-            embed: {
-                iframeUrl: string,
-                flashUrl: string,
-                width: number,
-                height: number,
-                flashSecureUrl: string,
-            },
-            title: {
-                simpleText: string,
-            },
-            description: {
-                simpleText: string,
-            },
-            lengthSeconds: string,
-            ownerProfileUrl: string,
-            externalChannelId: string,
-            availableCountries: string[],
-            isUnlisted: boolean,
-            hasYpcMetadata: boolean,
-            viewCount: string,
-            category: Category,
-            publishDate: string,
-            ownerChannelName: string,
-            uploadDate: string,
-        }
-    };
-    trackingParams: string;
-    attestation: unknown;
-    messages: unknown;
+    channelID: string,
+    channelTitle: string
 }
 
 export type VideoID = string;
@@ -199,7 +129,14 @@ export enum ChannelIDStatus {
 
 export interface ChannelIDInfo {
     id: string,
+    name: string,
     status: ChannelIDStatus
+}
+
+export interface ChannelSpecificSettings {
+    name: string,
+    whitelisted: boolean,
+    categorySelections: CategorySelection[]
 }
 
 export interface SkipToTimeParams {

@@ -558,6 +558,10 @@ svg {
 
 /* React styles */
 
+.categoryTableHeader {
+    height: 3em; /* So the height doesn't change when switching to/from global channel settings (which have two-line headers) */
+}
+
 .categoryTableElement {
     font-size: 16px;
 }

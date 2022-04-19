@@ -181,9 +181,10 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             });
 
             break;
-        case "getChannelID":
+        case "getChannelInfo":
             sendResponse({
-                channelID: channelIDInfo.id
+                channelID: channelIDInfo.id,
+                channelName: channelIDInfo.name
             });
 
             break;
@@ -257,7 +258,8 @@ function resetValues() {
     channelWhitelisted = false;
     channelIDInfo = {
         status: ChannelIDStatus.Fetching,
-        id: null
+        id: null,
+        name: null
     };
     lockedCategories = [];
 
@@ -289,6 +291,32 @@ function resetValues() {
     categoryPill?.setVisibility(false);
 }
 
+async function getVideoInfo(): Promise<void> {
+    // Works as of April 1, 2022
+    const body = JSON.stringify({
+        context: { client: { clientName: "WEB", clientVersion: "2.20200720.00.02" }},
+        videoId: sponsorVideoID
+    })
+    const url = "https://www.youtube.com/youtubei/v1/next?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
+    const response = await fetch(url, {
+        method: "POST", body,
+        headers: { "Content-Type": "application/json" }
+    });
+    try {
+        const resultData = await response.json()
+        const ownerObj = resultData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.title.runs[0]
+        const channelTitle = ownerObj.text
+        const channelID = ownerObj.navigationEndpoint.browseEndpoint.browseId
+        videoInfo = {
+            channelID,
+            channelTitle
+        }
+    } catch (e) {
+        console.error("[SB] Failed at getting video info from YouTube.");
+        return;
+    }
+}
+
 async function videoIDChange(id) {
     //if the id has not changed return unless the video element has changed
     if (sponsorVideoID === id && isVisible(video)) return;
@@ -318,11 +346,11 @@ async function videoIDChange(id) {
         }
     }
 
-    // Get new video info
-    // getVideoInfo(); // Seems to have been replaced
+    // update videoInfo
+    getVideoInfo()
 
     // Update whitelist data when the video data is loaded
-    whitelistCheck();
+    const whitelistCheckResult = whitelistCheck(id);
 
     //setup the preview bar
     if (previewBar === null) {
@@ -348,6 +376,10 @@ async function videoIDChange(id) {
 
     //close popup
     closeInfoMenu();
+
+    // To attempt to ensure the channel ID has been fetched so that channel-specific categories can be requested
+    if (Config.config.forceChannelCheck)
+        await whitelistCheckResult;
 
     sponsorsLookup(id);
 
@@ -529,7 +561,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
                 openNotice: skipInfo.openNotice
             });
 
-            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
+            if (utils.getCategorySelection(currentSkip.category, channelIDInfo.id)?.option === CategorySkipOption.ManualSkip
                     || currentSkip.actionType === ActionType.Mute) {
                 forcedSkipTime = skipTime[0] + 0.001;
             } else {
@@ -758,7 +790,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     setupVideoMutationListener();
 
     // Create categories list
-    const categories: string[] = Config.config.categorySelections.map((category) => category.name);
+    const categories: string[] = utils.createCategorySelectionList(channelIDInfo.id).map((category) => category.name);
 
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
@@ -956,7 +988,7 @@ function startSkipScheduleCheckingForStartSponsors() {
             .filter((time) => time.segment[1] > video.currentTime && time.actionType === ActionType.Poi)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
-            const skipOption = utils.getCategorySelection(time.category)?.option;
+            const skipOption = utils.getCategorySelection(time.category, channelIDInfo.id)?.option;
             if (skipOption !== CategorySkipOption.ShowOverlay) {
                 skipToTime({
                     v: video,
@@ -979,26 +1011,6 @@ function startSkipScheduleCheckingForStartSponsors() {
         } else {
             startSponsorSchedule();
         }
-    }
-}
-
-/**
- * Get the video info for the current tab from YouTube
- *
- * TODO: Replace
- */
-async function getVideoInfo(): Promise<void> {
-    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID + "&html5=1&c=TVHTML5&cver=7.20190319");
-
-    if (result.ok) {
-        const decodedData = decodeURIComponent(result.responseText).match(/player_response=([^&]*)/)[1];
-        if (!decodedData) {
-            console.error("[SB] Failed at getting video info from YouTube.");
-            console.error("[SB] Data returned from YouTube: " + result.responseText);
-            return;
-        }
-
-        videoInfo = JSON.parse(decodedData);
     }
 }
 
@@ -1125,41 +1137,48 @@ function updatePreviewBar(): void {
     lastPreviewBarUpdate = sponsorVideoID;
 }
 
-//checks if this channel is whitelisted, should be done only after the channelID has been loaded
-async function whitelistCheck() {
-    const whitelistedChannels = Config.config.whitelistedChannels;
+//checks if this channel is whitelisted
+async function whitelistCheck(videoID: string) {
+    const channelSpecificSettings = Config.config.channelSpecificSettings;
 
-    const getChannelID = () =>
-        (document.querySelector("a.ytd-video-owner-renderer") // YouTube
-        ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
-        ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
-        ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
-            ?.getAttribute("href")?.match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1];
+    const channelInfoFromDocument = (videoID: string): VideoInfo => {
+        const channelNameTag: HTMLElement = document.querySelector('a.ytd-video-owner-renderer')?.parentElement?.querySelector('#channel-name a') // YouTube Desktop
+            ?? document.querySelector("#channel-info #channel-name") // YouTube Desktop Channel Page
+            ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
+            ?? (onInvidious ? document.querySelector("a > .channel-profile > #channel-name")?.parentElement?.parentElement : null) // Invidious
+            ?? document.querySelector("a.slim-owner-icon-and-title"); // Mobile YouTube
+        if (!channelNameTag || !channelNameTag.getAttribute("href")) {
+            return null;
+        }
+        // This could be merged into getYouTubeVideoIDFromDocument, but they serve different purposes
+        const documentVideoId = document.querySelector("[video-id]")?.getAttribute("video-id");
+        if (documentVideoId != null && documentVideoId != videoID)
+            return null;
+
+        return {
+            channelID: channelNameTag.getAttribute("href").match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1],
+            channelTitle: channelNameTag.textContent.trim()
+        };
+    };
 
     try {
-        await utils.wait(() => !!getChannelID(), 6000, 20);
+        const videoInfoWait: Promise<VideoInfo> = utils.wait(() => videoInfo, 6000, 20);
+        const documentWait: Promise<VideoInfo>  = utils.wait(() => channelInfoFromDocument(videoID), 6000, 20);
+        const channelInfo = await Promise.race([videoInfoWait, documentWait])
 
         channelIDInfo = {
             status: ChannelIDStatus.Found,
-            id: getChannelID().match(/^\/?([^\s/]+)/)[0]
+            id: channelInfo.channelID,
+            name: channelInfo.channelTitle
         }
     } catch (e) {
-        channelIDInfo = {
+        console.log("[SB] Failed getting channel info")
+        return channelIDInfo = {
             status: ChannelIDStatus.Failed,
-            id: null
+            id: null,
+            name: null
         }
-
-        return;
     }
-
-    //see if this is a whitelisted channel
-    if (whitelistedChannels != undefined &&
-            channelIDInfo.status === ChannelIDStatus.Found && whitelistedChannels.includes(channelIDInfo.id)) {
-        channelWhitelisted = true;
-    }
-
-    // check if the start of segments were missed
-    if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
 /**
@@ -1467,15 +1486,16 @@ function createButton(baseID: string, title: string, callback: () => void, image
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
-    return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+    return utils.getCategorySelection(segment.category, channelIDInfo.id)?.option === CategorySkipOption.AutoSkip ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType !== ActionType.Poi);
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
-    return (segment.actionType !== ActionType.Full
-            && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay)
-            || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
+    const skipOption = utils.getCategorySelection(segment.category, channelIDInfo.id)?.option;
+    return segment.actionType !== ActionType.Full &&
+        (skipOption === CategorySkipOption.ManualSkip || skipOption === CategorySkipOption.AutoSkip
+            || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")));
 }
 
 /** Creates any missing buttons on the YouTube player if possible. */

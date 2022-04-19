@@ -200,6 +200,9 @@
     "showDeleteButton": {
         "message": "Show Delete Button On YouTube Player"
     },
+    "removeChannelSettingsButton": {
+        "message": "Remove Channel-Specific Settings"
+    },
     "enableViewTracking": {
         "message": "Enable Skip Count Tracking"
     },
@@ -621,6 +624,9 @@
     "category_livestream_messages_short": {
         "message": "Message Reading"
     },
+    "inherit": {
+        "message": "Inherit"
+    },
     "autoSkip": {
         "message": "Auto Skip"
     },
@@ -737,8 +743,14 @@
     "whatForceChannelCheck": {
         "message": "By default, it will skip segments right away before it even knows what the channel is. By default, some segments at the start of the video might be skipped on whitelisted channels. Enabling this option will prevent this but making all skipping have a slight delay as getting the channelID can take some time. This delay might be unnoticeable if you have fast internet."
     },
+    "channelSettingsPopup": {
+        "message": "Ctrl-click to open the channel-specific settings for this channel."
+    },
     "forceChannelCheckPopup": {
         "message": "Consider Enabling \"Force Channel Check Before Skipping\""
+    },
+    "forceChannelCheckRequired": {
+        "message": "\"Force Channel Check Before Skipping\" is required for channel-specific category selections to work properly."
     },
     "downvoteDescription": {
         "message": "Incorrect/Wrong Timing"
