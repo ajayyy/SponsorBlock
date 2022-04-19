@@ -532,6 +532,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const index = this.props.index;
 
         const skipTime = sponsorTimes[index].segment[0];
+        // If segment starts at 0:00, start playback at the end of the segment
+        if (skipTime === 0) {
+            this.props.contentContainer().previewTime(sponsorTimes[index].segment[1]);
+            return;
+        }
 
         let seekTime = 2;
         if (ctrlPressed) seekTime = 0.5;
