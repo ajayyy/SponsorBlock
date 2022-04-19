@@ -844,7 +844,9 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
         retryFetch();
     }
 
-    lookupVipInformation(id);
+    if (Config.config.isVip) {
+        lockedCategoriesLookup(id);
+    }
 }
 
 function getEnabledActionTypes(): ActionType[] {
@@ -857,39 +859,6 @@ function getEnabledActionTypes(): ActionType[] {
     }
 
     return actionTypes;
-}
-
-function lookupVipInformation(id: string): void {
-    updateVipInfo().then((isVip) => {
-        if (isVip) {
-            lockedCategoriesLookup(id);
-        }
-    });
-}
-
-async function updateVipInfo(): Promise<boolean> {
-    const currentTime = Date.now();
-    const lastUpdate = Config.config.lastIsVipUpdate;
-    if (currentTime - lastUpdate > 1000 * 60 * 60 * 72) { // 72 hours
-        Config.config.lastIsVipUpdate = currentTime;
-
-        const response = await utils.asyncRequestToServer("GET", "/api/isUserVIP", { userID: Config.config.userID});
-
-        if (response.ok) {
-            let isVip = false;
-            try {
-                const vipResponse = JSON.parse(response.responseText)?.vip;
-                if (typeof(vipResponse) === "boolean") {
-                    isVip = vipResponse;
-                }
-            } catch (e) { } //eslint-disable-line no-empty
-
-            Config.config.isVip = isVip;
-            return isVip;
-        }
-    }
-
-    return Config.config.isVip;
 }
 
 async function lockedCategoriesLookup(id: string): Promise<void> {

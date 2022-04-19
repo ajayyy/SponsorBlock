@@ -487,6 +487,10 @@ function migrateOldSyncFormats(config: SBConfig) {
     if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
         config["invidiousInstances"] = invidiousList;
     }
+    
+    if (config["lastIsVipUpdate"]) {
+        chrome.storage.sync.remove("lastIsVipUpdate");
+    }
 }
 
 async function setupConfig() {
