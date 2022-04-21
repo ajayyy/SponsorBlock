@@ -125,21 +125,25 @@ class PreviewBar {
             const [normalSegments, chapterSegments] = 
                 partition(this.segments.filter((s) => s.source !== SponsorSourceType.YouTube), 
                     (segment) => segment.actionType !== ActionType.Chapter);
-            const normalSegment = this.getSmallestSegment(timeInSeconds, normalSegments);
-            const chapterSegment = this.getSmallestSegment(timeInSeconds, chapterSegments);
+            let mainSegment = this.getSmallestSegment(timeInSeconds, normalSegments);
+            let secondarySegment = this.getSmallestSegment(timeInSeconds, chapterSegments);
+            if (mainSegment === null && secondarySegment !== null) {
+                mainSegment = secondarySegment;
+                secondarySegment = this.getSmallestSegment(timeInSeconds, chapterSegments.filter((s) => s !== secondarySegment));
+            }
 
-            if (normalSegment === null && chapterSegment === null) {
+            if (mainSegment === null && secondarySegment === null) {
                 this.categoryTooltipContainer.classList.remove(TOOLTIP_VISIBLE_CLASS);
             } else {
                 this.categoryTooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
-                if (normalSegment !== null && chapterSegment !== null) {
+                if (mainSegment !== null && secondarySegment !== null) {
                     this.categoryTooltipContainer.classList.add("sponsorTwoTooltips");
                 } else {
                     this.categoryTooltipContainer.classList.remove("sponsorTwoTooltips");
                 }
 
-                this.setTooltipTitle(normalSegment, this.categoryTooltip);
-                this.setTooltipTitle(chapterSegment, this.chapterTooltip);
+                this.setTooltipTitle(mainSegment, this.categoryTooltip);
+                this.setTooltipTitle(secondarySegment, this.chapterTooltip);
 
                 // Used to prevent overlapping
                 this.categoryTooltip.classList.toggle("ytp-tooltip-text-no-title", noYoutubeChapters);
