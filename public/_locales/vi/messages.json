@@ -209,6 +209,12 @@
     "enableViewTrackingInPrivate": {
         "message": "Bật việc theo dõi số lượng người bỏ qua phân đoạn trong tab Riêng tư/Ẩn danh"
     },
+    "whatTrackDownvotes": {
+        "message": "Bất kỳ phân đoạn nào bạn phản đối sẽ vẫn bị ẩn ngay cả sau khi làm mới"
+    },
+    "trackDownvotesWarning": {
+        "message": "Cảnh báo: Tắt tính năng này sẽ xóa tất cả các phiếu phản đối đã lưu trữ trước đó"
+    },
     "enableQueryByHashPrefix": {
         "message": "Truy vấn theo Hash Prefix"
     },
@@ -261,6 +267,21 @@
     "noticeUpdate2": {
         "message": "Nếu bạn vẫn không thích, hãy nhấn nút không hiển thị lại.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Bỏ qua phân đoạn",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Bắt đầu/dừng phân đoạn",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Gửi phân đoạn",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Chọn một phím bằng cách nhập nó và chọn bất kỳ phím bổ trợ nào bạn muốn sử dụng."
     },
     "0": {
         "message": "Kết nối quá hạn thời gian. Hãy kiểm tra đường truyền mạng của bạn. Nếu mạng của bạn vẫn hoạt động, có thể máy chủ đang bị quá tải hoặc không hoạt động."
@@ -421,6 +442,9 @@
     "shortCheck": {
         "message": "Đoạn quảng cáo sau ngắn hơn tùy chọn độ dài ngắn nhất của bạn. Điều này có thể có nghĩa là nó đã được đăng rồi, và không được bỏ qua vì tùy chọn này. Bạn có chắc muốn đăng nó không?"
     },
+    "liveOrPremiere": {
+        "message": "Không được phép gửi trên một buổi phát trực tiếp hoặc buổi ra mắt đang hoạt động. Vui lòng đợi cho đến khi kết thúc, sau đó làm mới trang xác minh rằng các phân đoạn vẫn hợp lệ."
+    },
     "showUploadButton": {
         "message": "Hiển thị nút tải lên"
     },
@@ -447,6 +471,15 @@
     },
     "exportOptions": {
         "message": "Nhập/xuất tất cả tùy chọn"
+    },
+    "exportOptionsCopy": {
+        "message": "Chỉnh sửa/sao chép"
+    },
+    "exportOptionsDownload": {
+        "message": "Lưu vào tệp"
+    },
+    "exportOptionsUpload": {
+        "message": "Tải từ tệp"
     },
     "whatExportOptions": {
         "message": "Đây là toàn bộ cấu hình của bạn trong tệp JSON. Nó chứa cả mã người dùng của bạn, nên hãy chia sẻ cẩn thận."
@@ -496,6 +529,9 @@
     "copyDebugInformationComplete": {
         "message": "Thông tin gỡ lỗi đã được sao chép vào bộ nhớ tạm. Hãy thoải mái xóa thông tin mà bạn không muốn chia sẻ. Lưu thông tin này vào một tập tin văn bản hoặc dán nó vào bản báo cáo lỗi."
     },
+    "keyAlreadyUsed": {
+        "message": "Phím tắt này liên kết với một hành động khác. Vui lòng chọn một cái khác."
+    },
     "to": {
         "message": "đến",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -514,6 +550,13 @@
     },
     "category_exclusive_access": {
         "message": "Truy cập riêng"
+    },
+    "category_exclusive_access_description": {
+        "message": "Chỉ để dán nhãn cho toàn bộ video. Được sử dụng khi video giới thiệu một sản phẩm, dịch vụ hoặc vị trí mà họ đã nhận được quyền truy cập miễn phí hoặc được trợ cấp."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Video này giới thiệu sản phẩm, dịch vụ hoặc vị trí mà họ đã nhận được quyền truy cập miễn phí hoặc được trợ cấp",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "Nhắc tương tác (Đăng ký)"
