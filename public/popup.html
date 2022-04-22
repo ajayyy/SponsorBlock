@@ -34,7 +34,7 @@
       </div>
 
       <div class="sbControlsMenu">
-        <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item" title="__MSG_forceChannelCheckPopup__">
+        <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item">
           <input type="checkbox" style="display:none;" id="whitelistToggle">
           <svg viewBox="0 0 24 24" width="23" height="23" class="SBWhitelistIcon sbControlsMenu-itemIcon">
             <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
@@ -60,15 +60,15 @@
         </button>
       </div>
 
-      <p id="whitelistForceCheck" class="u-mZ hidden">
+      <a id="whitelistForceCheck" class="hidden">
         __MSG_forceChannelCheckPopup__
-      </p>
+      </a>
 
       <div id="mainControls" style="display: none">
         <p class="sbHeader">
           __MSG_recordTimesDescription__
         </p>
-        <sub style="margin-bottom: 12px;">__MSG_popupHint__</sub>
+        <sub class="sponsorStartHint">__MSG_popupHint__</sub>
         <div>
           <button id="sponsorStart" class="sbMediumButton">__MSG_sponsorStart__</button>
         </div>
@@ -84,7 +84,7 @@
           <div>
             <p class="u-mZ">__MSG_Username__:</p>
             <div id="setUsernameContainer">
-              <p id="usernameValue" class="u-mZ"></p>
+              <p id="usernameValue"></p>
               <button id="setUsernameButton" title="__MSG_setUsername__">
                 <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
               </button>
