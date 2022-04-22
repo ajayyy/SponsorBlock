@@ -14,6 +14,12 @@ import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import PencilSvg from "../svg-icons/pencil_svg";
 import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 
+enum SkipButtonState {
+    Undo, // Unskip
+    Redo, // Reskip
+    Start // Skip
+}
+
 export interface SkipNoticeProps {
     segments: SponsorTime[];
 
@@ -39,8 +45,8 @@ export interface SkipNoticeState {
     maxCountdownTime?: () => number;
     countdownText?: string;
 
-    skipButtonText?: string;
-    skipButtonCallback?: (index: number) => void;
+    skipButtonState?: SkipButtonState;
+    skipButtonCallback?: (index: number, forceSeek: boolean) => void;
     showSkipButton?: boolean;
 
     editing?: boolean;
@@ -121,10 +127,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             countdownTime: Config.config.skipNoticeDuration,
             countdownText: null,
 
-            skipButtonText: this.props.startReskip
-                ? this.getReskipText() : this.getUnskipText(),
+            skipButtonState: this.props.startReskip
+                ? SkipButtonState.Redo : SkipButtonState.Undo,
             skipButtonCallback: this.props.startReskip
-                ? (index) => this.reskip(index) : (index) => this.unskip(index),
+                ? this.reskip.bind(this) : this.unskip.bind(this),
             showSkipButton: true,
 
             editing: false,
@@ -144,7 +150,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         if (!this.autoSkip) {
             // Assume manual skip is only skipping 1 submission
-            Object.assign(this.state, this.getUnskippedModeInfo(0, this.getSkipText()));
+            Object.assign(this.state, this.getUnskippedModeInfo(0, SkipButtonState.Start));
         }
     }
 
@@ -157,7 +163,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
         // If it started out as smaller, always keep the 
         // skip button there
-        const firstColumn = this.props.smaller ? (
+        const firstColumn = this.props.smaller || this.segments[0].actionType === ActionType.Mute ? (
             this.getSkipButton()
         ) : null;
 
@@ -250,7 +256,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 }
 
                 {/* Unskip/Skip Button */}
-                {!this.props.smaller ? this.getSkipButton() : null}
+                {!this.props.smaller || this.segments[0].actionType === ActionType.Mute
+                    ? this.getSkipButton(this.segments[0].actionType === ActionType.Mute) : null}
 
                 {/* Never show button */}
                 {!this.autoSkip || this.props.startReskip ? "" : 
@@ -327,14 +334,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         ];
     }
 
-    getSkipButton(): JSX.Element {
+    getSkipButton(forceSeek = false): JSX.Element {
         if (this.state.showSkipButton && (this.segments.length > 1 
                 || this.segments[0].actionType !== ActionType.Poi
                 || this.props.unskipTime)) {
 
             const style: React.CSSProperties = {
                 marginLeft: "4px",
-                color: (this.state.actionState === SkipNoticeAction.Unskip) ? this.selectedColor : this.unselectedColor
+                color: ([SkipNoticeAction.Unskip, SkipNoticeAction.UnskipForceSeek].includes(this.state.actionState))
+                    ? this.selectedColor : this.unselectedColor
             };
             if (this.contentContainer().onMobileYouTube) {
                 style.padding = "20px";
@@ -346,8 +354,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     <button id={"sponsorSkipUnskipButton" + this.idSuffix}
                             className="sponsorSkipObject sponsorSkipNoticeButton"
                             style={style}
-                            onClick={() => this.prepAction(SkipNoticeAction.Unskip)}>
-                        {this.state.skipButtonText + (this.state.showKeybindHint ? " (" + keybindToString(Config.config.skipKeybind) + ")" : "")}
+                            onClick={() => this.prepAction(forceSeek ? SkipNoticeAction.UnskipForceSeek : SkipNoticeAction.Unskip)}>
+                        {this.getSkipButtonText(forceSeek ? ActionType.Skip : null) + (!forceSeek && this.state.showKeybindHint ? " (" + keybindToString(Config.config.skipKeybind) + ")" : "")}
                     </button>
                 </span>
             );
@@ -451,6 +459,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 case SkipNoticeAction.Unskip:
                     this.resetStateToStart(SkipNoticeAction.Unskip);
                     break;
+                case SkipNoticeAction.UnskipForceSeek:
+                    this.resetStateToStart(SkipNoticeAction.UnskipForceSeek);
+                    break;
             }
         }
     }
@@ -478,7 +489,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 this.copyDownvote(index);
                 break;
             case SkipNoticeAction.Unskip:
-                this.unskipAction(index);
+                this.unskipAction(index, false);
+                break;
+            case SkipNoticeAction.UnskipForceSeek:
+                this.unskipAction(index, true);
                 break;
             default:
                 this.resetStateToStart();
@@ -540,8 +554,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
     }
 
-    unskipAction(index: number): void {
-        this.state.skipButtonCallback(index);
+    unskipAction(index: number, forceSeek: boolean): void {
+        this.state.skipButtonCallback(index, forceSeek);
     }
 
     openEditingOptions(): void {
@@ -568,17 +582,17 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         return this.props.contentContainer().lockedCategories.includes(category) ? "sponsorBlockLockedColor" : ""
     }
 
-    unskip(index: number): void {
-        this.contentContainer().unskipSponsorTime(this.segments[index], this.props.unskipTime);
+    unskip(index: number, forceSeek: boolean): void {
+        this.contentContainer().unskipSponsorTime(this.segments[index], this.props.unskipTime, forceSeek);
 
-        this.unskippedMode(index, this.getReskipText());
+        this.unskippedMode(index, SkipButtonState.Redo);
     }
 
-    reskip(index: number): void {
-        this.contentContainer().reskipSponsorTime(this.segments[index]);
+    reskip(index: number, forceSeek: boolean): void {
+        this.contentContainer().reskipSponsorTime(this.segments[index], forceSeek);
 
         const newState: SkipNoticeState = {
-            skipButtonText: this.getUnskipText(),
+            skipButtonState: SkipButtonState.Undo,
             skipButtonCallback: this.unskip.bind(this),
 
             maxCountdownTime: () => Config.config.skipNoticeDuration,
@@ -597,14 +611,14 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     /** Sets up notice to be not skipped yet */
-    unskippedMode(index: number, buttonText: string): void {
+    unskippedMode(index: number, skipButtonState: SkipButtonState): void {
         //setup new callback and reset countdown
-        this.setState(this.getUnskippedModeInfo(index, buttonText), () => {
+        this.setState(this.getUnskippedModeInfo(index, skipButtonState), () => {
             this.noticeRef.current.resetCountdown();
         });
     }
 
-    getUnskippedModeInfo(index: number, buttonText: string): SkipNoticeState {
+    getUnskippedModeInfo(index: number, skipButtonState: SkipButtonState): SkipNoticeState {
         const changeCountdown = this.segments[index].actionType !== ActionType.Poi;
 
         const maxCountdownTime = changeCountdown ? () => {
@@ -615,8 +629,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         } : this.state.maxCountdownTime;
 
         return {
-            skipButtonText: buttonText,
-            skipButtonCallback: (index) => this.reskip(index),
+            skipButtonState: skipButtonState,
+            skipButtonCallback: this.reskip.bind(this),
             // change max duration to however much of the sponsor is left
             maxCountdownTime: maxCountdownTime,
             countdownTime: maxCountdownTime()
@@ -713,8 +727,20 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         });
     }
 
-    private getUnskipText(): string {
-        switch (this.props.segments[0].actionType) {
+    private getSkipButtonText(forceType?: ActionType): string {
+        switch (this.state.skipButtonState) {
+            case SkipButtonState.Undo:
+                return this.getUndoText(forceType);
+            case SkipButtonState.Redo:
+                return this.getRedoText(forceType);
+            case SkipButtonState.Start:
+                return this.getStartText(forceType);
+        }
+    }
+
+    private getUndoText(forceType?: ActionType): string {
+        const actionType = forceType || this.segments[0].actionType;
+        switch (actionType) {
             case ActionType.Mute: {
                 return chrome.i18n.getMessage("unmute");
             }
@@ -725,8 +751,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    private getReskipText(): string {
-        switch (this.props.segments[0].actionType) {
+    private getRedoText(forceType?: ActionType): string {
+        const actionType = forceType || this.segments[0].actionType;
+        switch (actionType) {
             case ActionType.Mute: {
                 return chrome.i18n.getMessage("mute");
             }
@@ -737,8 +764,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    private getSkipText(): string {
-        switch (this.props.segments[0].actionType) {
+    private getStartText(forceType?: ActionType): string {
+        const actionType = forceType || this.segments[0].actionType;
+        switch (actionType) {
             case ActionType.Mute: {
                 return chrome.i18n.getMessage("mute");
             }

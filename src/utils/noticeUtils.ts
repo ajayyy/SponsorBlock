@@ -7,7 +7,8 @@ export enum SkipNoticeAction {
     Downvote,
     CategoryVote,
     CopyDownvote,
-    Unskip
+    Unskip,
+    UnskipForceSeek
 }
 
 export function downvoteButtonColor(segments: SponsorTime[], actionState: SkipNoticeAction, downvoteType: SkipNoticeAction): string {

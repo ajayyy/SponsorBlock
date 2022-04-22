@@ -1385,19 +1385,21 @@ function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, un
     activeSkipKeybindElement = newSkipNotice;
 }
 
-function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null) {
+function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forceSeek = false) {
     if (segment.actionType === ActionType.Mute) {
         video.muted = false;
         videoMuted = false;
-    } else {
+    }
+    
+    if (forceSeek || segment.actionType === ActionType.Skip) {
         //add a tiny bit of time to make sure it is not skipped again
         video.currentTime = unskipTime ?? segment.segment[0] + 0.001;
     }
 
 }
 
-function reskipSponsorTime(segment: SponsorTime) {
-    if (segment.actionType === ActionType.Mute) {
+function reskipSponsorTime(segment: SponsorTime, forceSeek = false) {
+    if (segment.actionType === ActionType.Mute && !forceSeek) {
         video.muted = true;
         videoMuted = true;
     } else {
