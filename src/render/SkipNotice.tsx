@@ -71,11 +71,11 @@ class SkipNotice {
     }
 
     toggleSkip(): void {
-        this.skipNoticeRef?.current?.prepAction(SkipNoticeAction.Unskip);
+        this.skipNoticeRef?.current?.prepAction(SkipNoticeAction.Unskip0);
     }
 
-    unmutedListener(): void {
-        this.skipNoticeRef?.current?.unmutedListener();
+    unmutedListener(time: number): void {
+        this.skipNoticeRef?.current?.unmutedListener(time);
     }
 }
 

@@ -478,7 +478,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
         for (const notice of skipNotices) {
             // So that the notice can hide buttons
-            notice.unmutedListener();
+            notice.unmutedListener(currentTime);
         }
     }
 
