@@ -116,6 +116,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.unselectedColor = Config.config.colorPalette.white;
         this.lockedColor = Config.config.colorPalette.locked;
 
+        const isMuteSegment = this.segments[0].actionType === ActionType.Mute;
+        const maxCountdownTime = isMuteSegment ? this.getFullDurationCountdown(0) : () => Config.config.skipNoticeDuration;
+
         // Setup state
         this.state = {
             noticeTitle,
@@ -123,8 +126,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             messageOnClick: null,
 
             //the countdown until this notice closes
-            maxCountdownTime: () => Config.config.skipNoticeDuration,
-            countdownTime: Config.config.skipNoticeDuration,
+            maxCountdownTime,
+            countdownTime: maxCountdownTime(),
             countdownText: null,
 
             skipButtonState: this.props.startReskip
@@ -621,12 +624,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     getUnskippedModeInfo(index: number, skipButtonState: SkipButtonState): SkipNoticeState {
         const changeCountdown = this.segments[index].actionType !== ActionType.Poi;
 
-        const maxCountdownTime = changeCountdown ? () => {
-            const sponsorTime = this.segments[index];
-            const duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
-
-            return Math.max(duration, Config.config.skipNoticeDuration);
-        } : this.state.maxCountdownTime;
+        const maxCountdownTime = changeCountdown ?
+            this.getFullDurationCountdown(index) : this.state.maxCountdownTime;
 
         return {
             skipButtonState: skipButtonState,
@@ -635,6 +634,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             maxCountdownTime: maxCountdownTime,
             countdownTime: maxCountdownTime()
         } as SkipNoticeState;
+    }
+
+    getFullDurationCountdown(index: number): () => number {
+        return () => {
+            const sponsorTime = this.segments[index];
+            const duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
+
+            return Math.max(duration, Config.config.skipNoticeDuration);
+        };
     }
 
     afterVote(segment: SponsorTime, type: number, category: Category): void {
