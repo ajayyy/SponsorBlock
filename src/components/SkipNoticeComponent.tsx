@@ -121,9 +121,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             countdownTime: Config.config.skipNoticeDuration,
             countdownText: null,
 
-            skipButtonText: this.props.startReskip 
+            skipButtonText: this.props.startReskip
                 ? this.getReskipText() : this.getUnskipText(),
-            skipButtonCallback: this.props.startReskip 
+            skipButtonCallback: this.props.startReskip
                 ? (index) => this.reskip(index) : (index) => this.unskip(index),
             showSkipButton: true,
 
@@ -252,8 +252,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 {/* Unskip/Skip Button */}
                 {!this.props.smaller ? this.getSkipButton() : null}
 
-                {/* Never show button if autoSkip is enabled */}
-                {!this.autoSkip ? "" : 
+                {/* Never show button */}
+                {!this.autoSkip || this.props.startReskip ? "" : 
                     <td className="sponsorSkipNoticeRightSection"
                         key={1}>
                         <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
