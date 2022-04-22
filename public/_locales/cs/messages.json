@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Toto je vestavěná zkratka YouTube. Opravdu ji chcete použít?"
+    },
+    "betaServerWarning": {
+        "message": "BETA server je povolen!"
+    },
+    "openOptionsPage": {
+        "message": "Otevřít stránku s možnostmi"
     }
 }

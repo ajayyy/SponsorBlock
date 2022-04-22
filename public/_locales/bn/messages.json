@@ -211,5 +211,51 @@
     },
     "enableTrackDownvotes": {
         "message": "স্টোর সেগমেন্ট ডাউনভোট"
+    },
+    "whatTrackDownvotes": {
+        "message": "যেকোন ডাউনভোটকৃত অংশ রিফ্রেশ করার পরেও অদৃশ্য থাকবে"
+    },
+    "trackDownvotesWarning": {
+        "message": "সতর্কীকরণ: এটি বন্ধ করলে পূর্বে সংরক্ষিত সব ডাউনভোট মুছে যাবে"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "সার্ভার থেকে videoID দিয়ে অংশ অনুরোধ করার পরিবর্তে videoID এর হ্যাশ এর প্রথম ৪ অক্ষর পাঠানো হয়। এই সার্ভার সমতুল্য হ্যাশ এর সকল ভিডিও এর তথ্য ফেরত পাঠাবে।"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "যদি ভিডিওটি নতুন হয়, এবং কোন অংশ পাওয়া না যায়, আপনার দেখার সময় কয়েক মিনিট পর পরই এটি তথ্য আনতে থাকবে।"
+    },
+    "showNotice": {
+        "message": "নোটিশ পুনরায় প্রদর্শন করুন"
+    },
+    "showSkipNotice": {
+        "message": "একটি অংশ এড়ানোর পরে নোটিস প্রদর্শন করুন"
+    },
+    "longDescription": {
+        "message": "SponsorBlock আপনাকে YouTube ভিডিওসমূহের স্পন্সর বার্তা, সূচনাবার্তা, সমাপ্তিবার্তা, সাবস্ক্রাইব করার জন্য স্মরণ করানো, এবং অন্যান্য বিবিধ বিরক্তিকর অংশ এড়িয়ে যেতে সাহায্য করে। SponsorBlock জনসংগৃহীত তথ্যসম্বলিত একটি ব্রাউজার এক্সটেনশন যা যে কাউকে একটি ভিডিওর স্পন্সর বার্তা এবং অন্যান্য অংশের শুরু এবং শেষ সময় সাবমিট করতে দেয়। যখন কেউ একজন এই তথ্য সাবমিট করে, এই এক্সটেনশন ব্যবহারকারী সবাই ঐ স্পন্সর বার্তা সম্বলিত অংশ এড়িয়ে যাবে। মিউজিক ভিডিও এর মিউজিক বহির্ভুত অংশও আপনি এড়িয়ে যেতে পারেন।",
+        "description": "Full description of the extension on the store pages."
+    },
+    "website": {
+        "message": "ওয়েবসাইট",
+        "description": "Used on Firefox Store Page"
+    },
+    "sourceCode": {
+        "message": "সোর্স কোড",
+        "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "নোটিসটি আপগ্রেড করা হয়েছে!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "সেগমেন্ট এড়িয়ে যান",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "সেগমেন্ট শুরু/শেষ",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "সেগমেন্ট জমা দিন",
+        "description": "Keybind label"
     }
 }

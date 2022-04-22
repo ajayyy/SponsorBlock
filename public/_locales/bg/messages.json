@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Това е вградена клавишна комбинация в YouTube. Наистина ли искате да я използвате?"
+    },
+    "betaServerWarning": {
+        "message": "Сървърът BETA е активиран!"
+    },
+    "openOptionsPage": {
+        "message": "Отваряне на страницата с опции"
     }
 }

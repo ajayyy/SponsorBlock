@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Este já é um atalho padrão do YouTube. Tem certeza que deseja utilizá-lo?"
+    },
+    "betaServerWarning": {
+        "message": "Os Servidores BETA estão ativos!"
+    },
+    "openOptionsPage": {
+        "message": "Abrir página de opções"
     }
 }

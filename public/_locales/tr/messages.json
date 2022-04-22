@@ -817,19 +817,19 @@
         "message": "Atlama nasıl çalışıyor"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Video kısımları veri tabanında mevcut ise otomatikman atlanır. Eklentinin simgesine tıklayınca açılan pencereden, video için mevcut olan kısımları görebilirsiniz."
+        "message": "Segmen video akan otomatis dilewati jika ditemukan di databasis. Kamu bisa buka munculan dengan klik ikon ekstensi untuk mendapatkan pratinjau apa adanya."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Bir kısmı atladığınızda size bildirim gönderilir. Eğer kısım hatalıysa bunu eksi oylayınız. Eklentinin penceresinde de oy verebilirsiniz."
+        "message": "Når du springer et segment over, får du besked, når du springer et segment over. Hvis timingen virker forkert, kan du stemme ned ved at klikke på downvote! Du kan også stemme i popup-vinduet."
     },
     "Submitting": {
-        "message": "Gönderme"
+        "message": "Submitting"
     },
     "helpPageSubmitting1": {
-        "message": "Gönderi, açılır pencerede \"Kısım Şimdi Başlıyor\" düğmesine basılarak veya oynatıcıdaki düğmelerle video oynatıcıda yapılabilir."
+        "message": "Indsendelse kan enten ske i popup-vinduet ved at trykke på \"Segment Begynder Nu\"-knappen eller i videoafspilleren med knapperne på afspilleren."
     },
     "helpPageSubmitting2": {
-        "message": "Oynat düğmesine tıklamak bir kısımın başlangıcını, durdurma simgesine tıklamak ise bitişini gösterir. Gönder düğmesine basmadan önce birden fazla sponsor hazırlayabilirsiniz. Yükle düğmesine tıklamak kısımları gönderir. Çöp kutusuna tıkladığınızda silinir."
+        "message": "Clicking the play button indicated the start of a segment and clicking the stop icon indicates the end. You can prepare multiple sponsors before hitting submit. Clicking the upload button will submit. Clicking the garbage can will delete."
     },
     "Editing": {
         "message": "Düzenleme"

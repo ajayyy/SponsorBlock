@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "தனிப்பட்ட/மறைநிலை தாவல்களில் ஸ்கிப் கவுண்ட் டிராக்கிங்கை இயக்கவும்"
     },
+    "enableTrackDownvotes": {
+        "message": "துண்டத்தின் வாக்கிறக்கங்களைச் சேமி"
+    },
+    "whatTrackDownvotes": {
+        "message": "புதுப்பித்தப் பின் நீங்கள் வாக்கிறக்கிய துண்டங்கள் மறைந்தே இருக்கும்"
+    },
+    "trackDownvotesWarning": {
+        "message": "எச்சரிக்கை: இதை முடக்குதல் முன்னர் சேமித்த எல்லா வாக்கிறக்கங்களையும் அழிக்கும்"
+    },
     "enableQueryByHashPrefix": {
         "message": "ஹாஷ் முன்னொட்டு மூலம் வினவல்"
     },
@@ -262,6 +271,18 @@
         "message": "உங்களுக்கு இன்னும் பிடிக்கவில்லை என்றால், ஒருபோதும் காண்பி பொத்தானை அழுத்தவும்.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "துண்டத்தைக் கெந்து",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "துண்டத்தை ஆரம்பி/நிறுத்து",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "துண்டங்களைச் சமர்ப்பி",
+        "description": "Keybind label"
+    },
     "0": {
         "message": "இணைப்பு நேரம் முடிந்தது. உங்கள் இணைய இணைப்பைச் சரிபார்க்கவும். உங்கள் இணையம் இயங்கினால், சேவையகம் அதிக சுமை அல்லது கீழே இருக்கும்."
     },
@@ -286,6 +307,10 @@
     },
     "mute": {
         "message": "ஒலியடக்கு"
+    },
+    "full": {
+        "message": "முழு காணொளி",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
         "message": "{0} ஐ தவிர்?"
@@ -444,6 +469,15 @@
     "exportOptions": {
         "message": "அனைத்து விருப்பங்களையும் இறக்குமதி / ஏற்றுமதி"
     },
+    "exportOptionsCopy": {
+        "message": "திருத்து/நகலெடு"
+    },
+    "exportOptionsDownload": {
+        "message": "கோப்பிற்கு சேமி"
+    },
+    "exportOptionsUpload": {
+        "message": "கோப்பிலிருந்து ஏற்று"
+    },
     "whatExportOptions": {
         "message": "இது JSON இல் உங்கள் முழு உள்ளமைவு. இது உங்கள் பயனர் ஐடியை உள்ளடக்கியது, எனவே இதை புத்திசாலித்தனமாக பகிர்ந்து கொள்ளுங்கள்."
     },
@@ -508,6 +542,9 @@
     "category_selfpromo_description": {
         "message": "செலுத்தப்படாத அல்லது சுய விளம்பரத்தைத் தவிர \"ஸ்பான்சர்\" போன்றது. பொருட்கள், நன்கொடைகள் அல்லது அவர்கள் யாருடன் ஒத்துழைத்தார்கள் என்பது பற்றிய தகவல்கள் இதில் அடங்கும்."
     },
+    "category_exclusive_access": {
+        "message": "பிரத்யேக அணுகல்"
+    },
     "category_interaction": {
         "message": "தொடர்பு நினைவூட்டல் (குழுசேர்)"
     },
@@ -537,6 +574,9 @@
     },
     "category_preview_description": {
         "message": "முந்தைய எபிசோடுகளின் விரைவான மறுபரிசீலனை அல்லது தற்போதைய வீடியோவில் பின்னர் என்ன வரப்போகிறது என்பதற்கான முன்னோட்டம். ஒன்றாக தொகுக்கப்பட்ட கிளிப்புகள், பேசப்பட்ட சுருக்கங்களுக்கு அல்ல."
+    },
+    "category_filler_short": {
+        "message": "நிரப்பி"
     },
     "category_music_offtopic": {
         "message": "இசை: இசை அல்லாத பிரிவு"
@@ -570,6 +610,16 @@
     },
     "disable": {
         "message": "முடக்கு"
+    },
+    "autoSkip_POI": {
+        "message": "துவக்கத்திற்கு தானாகக் கெந்து"
+    },
+    "manualSkip_POI": {
+        "message": "காணொளி ஏறுகையில் கேள்"
+    },
+    "previewColor": {
+        "message": "சமர்ப்பிக்கப்படாதவை நிறம்",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "பார் வண்ணத்தைத் தேடுங்கள்"
@@ -615,6 +665,15 @@
     "hiddenDueToDuration": {
         "message": "மறைக்கப்பட்ட: மிகக் குறுகிய"
     },
+    "manuallyHidden": {
+        "message": "கைமுறையாக மறைக்கப்பட்டது"
+    },
+    "acceptPermission": {
+        "message": "அனுமதியை ஏற்றுக்கொள்"
+    },
+    "permissionRequestSuccess": {
+        "message": "அனுமதி கோரிக்கை வெற்றி!"
+    },
     "forceChannelCheck": {
         "message": "தவிர்ப்பதற்கு முன் சேனல் சோதனை கட்டாயப்படுத்தவும்"
     },
@@ -626,6 +685,9 @@
     },
     "downvoteDescription": {
         "message": "தவறான / தவறான நேரம்"
+    },
+    "incorrectCategory": {
+        "message": "வகையை மாற்று"
     },
     "nonMusicCategoryOnMusic": {
         "message": "இந்த வீடியோ இசை என வகைப்படுத்தப்பட்டுள்ளது. இதற்கு ஒரு ஸ்பான்சர் இருப்பதை நீங்கள் உறுதியாக நம்புகிறீர்களா? இது உண்மையில் \"இசை அல்லாத பிரிவு\" என்றால், நீட்டிப்பு விருப்பங்களைத் திறந்து இந்த வகையை இயக்கவும். பின்னர், நீங்கள் இந்த பகுதியை ஸ்பான்சருக்கு பதிலாக \"இசை அல்லாதது\" என்று சமர்ப்பிக்கலாம். நீங்கள் குழப்பமாக இருந்தால் வழிகாட்டுதல்களைப் படிக்கவும்."
@@ -645,5 +707,73 @@
     },
     "categoryUpdate2": {
         "message": "அறிமுகங்கள், அவுட்ரோஸ், மெர்ச் போன்றவற்றைத் தவிர்க்க விருப்பங்களைத் திறக்கவும்."
+    },
+    "help": {
+        "message": "உதவி"
+    },
+    "GotIt": {
+        "message": "புரிந்தது",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "hideForever": {
+        "message": "என்றென்றும் மறை"
+    },
+    "Donate": {
+        "message": "கொடையளி"
+    },
+    "hideDonationLink": {
+        "message": "நன்கொடை இணைப்பை மறை"
+    },
+    "darkModeOptionsPage": {
+        "message": "தெரிவுகள் பக்கத்தில் இருண்ட பயன்முறை"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "ஸ்பான்சர்ப்ளாக் நிறுவியதற்கு நன்றி."
+    },
+    "ContinueVoting": {
+        "message": "தொடர்ந்து வாக்களி"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "இது உம் துண்டங்களை உடனடியாகச் செயல்படுத்தும்"
+    },
+    "dayAbbreviation": {
+        "message": "நா",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "ம",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "நடத்தை",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "இடைமுகம்",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "விசைப்பலகை குறுக்குவழிகள்",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "காப்புநகல்/மீட்டெடுப்பு",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "இதர",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "notSet": {
+        "message": "அமைக்கவில்லை"
+    },
+    "change": {
+        "message": "மாற்று"
+    },
+    "betaServerWarning": {
+        "message": "பீட்டா சேவையகம் இயக்கப்பட்டுள்ளது!"
+    },
+    "openOptionsPage": {
+        "message": "தெரிவுகள் பக்கத்தைத் திற"
     }
 }

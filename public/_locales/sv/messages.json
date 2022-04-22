@@ -11,10 +11,10 @@
         "message": "Servern sa att denna begäran var ogiltig"
     },
     "429": {
-        "message": "Du har rapporterat för många sponsormeddelanden för den här videon, är du säker att det finns så många?"
+        "message": "Du har skickat in för många sponsormeddelanden för den här videon. Är du säker på att det finns så många?"
     },
     "409": {
-        "message": "Den här har redan blivit rapporterad"
+        "message": "Den här har redan skickats in"
     },
     "channelWhitelisted": {
         "message": "Kanalen är vitlistad!"
@@ -116,7 +116,7 @@
         "message": "Skicka in segment"
     },
     "submitCheck": {
-        "message": "Är du säker på att du vill rapportera detta?"
+        "message": "Är du säker på att du vill skicka in detta?"
     },
     "whitelistChannel": {
         "message": "Vitlistkanal"
@@ -150,7 +150,7 @@
         "message": "Rensa tider"
     },
     "submitTimesButton": {
-        "message": "Skicka tider"
+        "message": "Skicka in tider"
     },
     "publicStats": {
         "message": "Detta kommer att användas på den publika statistiksidan för att visa hur mycket du har bidragit. Spana in den"
@@ -280,7 +280,7 @@
         "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Skicka in segment",
+        "message": "Skicka segment",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -497,7 +497,7 @@
         "message": "Denna JSON är inte korrekt formaterad. Dina alternativ har inte ändrats."
     },
     "confirmNoticeTitle": {
-        "message": "Skicka in segment"
+        "message": "Skicka segment"
     },
     "submit": {
         "message": "Skicka"
@@ -688,7 +688,7 @@
         "message": "Välj en kategori"
     },
     "enableThisCategoryFirst": {
-        "message": "För att skicka segment med kategorin \"{0}\" måste du först aktivera det i alternativen. Du kommer nu att bli omdirigerad till alternativen.",
+        "message": "För att skicka in segment med kategorin \"{0}\" måste du först aktivera det i alternativen. Du kommer nu att bli omdirigerad till alternativen.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
@@ -865,7 +865,7 @@
         "message": "Läs mer"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Rösta ner och skapar en lokal kopia för dig att skicka igen"
+        "message": "Rösta ner och skapar en lokal kopia för dig att skicka in igen"
     },
     "OpenCategoryWikiPage": {
         "message": "Öppna denna kategoris wiki-sida."
@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Detta är en inbyggd YouTube-genväg. Är du säker på att du vill använda den?"
+    },
+    "betaServerWarning": {
+        "message": "BETA-servern är aktiverad!"
+    },
+    "openOptionsPage": {
+        "message": "Öppna alternativsidan"
     }
 }

@@ -17,7 +17,7 @@
         "message": "Esto ya ha sido enviado antes"
     },
     "channelWhitelisted": {
-        "message": "Canal Permitido!"
+        "message": "¡Canal Permitido!"
     },
     "Segment": {
         "message": "segmento"
@@ -562,13 +562,13 @@
         "description": "Short description for this category"
     },
     "category_interaction": {
-        "message": "Recordatorio de interacción (subscribir)"
+        "message": "Recordatorio de Interacción (Suscribir)"
     },
     "category_interaction_description": {
         "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
     },
     "category_interaction_short": {
-        "message": "Recordatorio de interacción"
+        "message": "Recordatorio de Interacción"
     },
     "category_intro": {
         "message": "Intermisión/Animación de Introducción"
@@ -732,13 +732,13 @@
         "message": "Si no puede resolverlo, desactive la opción \"Forzar Comprobación de Canal antes de Saltar\", ya que SponsorBlock no puede recuperar la información del canal de este video"
     },
     "forceChannelCheck": {
-        "message": "Comprobación forzada del canal antes de saltarse"
+        "message": "Forzar Comprobación de Canal antes de Saltar"
     },
     "whatForceChannelCheck": {
         "message": "Por defecto, se saltará los segmentos inmediatamente antes de saber cuál es el canal. Por defecto, algunos segmentos al principio del vídeo pueden ser salteados en los canales de la lista blanca. Al activar esta opción se evitará esto, pero haciendo que todos los saltos tengan un ligero retraso, ya que obtener el ID del canal puede llevar algún tiempo. Este retraso podría ser imperceptible si tienes una Internet rápida."
     },
     "forceChannelCheckPopup": {
-        "message": "Considere la posibilidad de activar \"Comprobación del canal de fuerza antes de saltar\""
+        "message": "Considere la posibilidad de activar \"Forzar Comprobación de Canal antes de Saltar\""
     },
     "downvoteDescription": {
         "message": "Tiempo incorrecto/equivocado"
@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Este un atajo incorporado de YouTube. ¿Estás seguro de que quieres usarlo?"
+    },
+    "betaServerWarning": {
+        "message": "¡El servidor BETA está activado!"
+    },
+    "openOptionsPage": {
+        "message": "Abrir página de opciones"
     }
 }

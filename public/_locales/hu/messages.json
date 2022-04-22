@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Ez egy beépített YouTube gyorsbillentyű. Biztosan ezt szeretnéd használni?"
+    },
+    "betaServerWarning": {
+        "message": "BÉTA szerver engedélyezve van!"
+    },
+    "openOptionsPage": {
+        "message": "Beállítások megnyitása"
     }
 }
