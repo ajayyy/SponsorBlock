@@ -18,6 +18,7 @@ export interface SkipNoticeProps {
     segments: SponsorTime[];
 
     autoSkip: boolean;
+    startReskip?: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
@@ -120,8 +121,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             countdownTime: Config.config.skipNoticeDuration,
             countdownText: null,
 
-            skipButtonText: this.getUnskipText(),
-            skipButtonCallback: (index) => this.unskip(index),
+            skipButtonText: this.props.startReskip 
+                ? this.getReskipText() : this.getUnskipText(),
+            skipButtonCallback: this.props.startReskip 
+                ? (index) => this.reskip(index) : (index) => this.unskip(index),
             showSkipButton: true,
 
             editing: false,

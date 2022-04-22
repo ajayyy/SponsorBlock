@@ -1357,18 +1357,32 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
         if (openNotice) {
             //send out the message saying that a sponsor message was skipped
             if (!Config.config.dontShowNotice || !autoSkip) {
-                const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime);
-                if (onMobileYouTube || Config.config.skipKeybind == null) newSkipNotice.setShowKeybindHint(false);
-                skipNotices.push(newSkipNotice);
-
+                createSkipNotice(skippingSegments, autoSkip, unskipTime, false);
+            } else if (autoSkip) {
                 activeSkipKeybindElement?.setShowKeybindHint(false);
-                activeSkipKeybindElement = newSkipNotice;
+                activeSkipKeybindElement = {
+                    setShowKeybindHint: () => {}, //eslint-disable-line @typescript-eslint/no-empty-function
+                    toggleSkip: () => {
+                        unskipSponsorTime(skippingSegments[0], unskipTime);
+
+                        createSkipNotice(skippingSegments, autoSkip, unskipTime, true);
+                    }
+                };
             }
         }
     }
 
     //send telemetry that a this sponsor was skipped
     if (autoSkip) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true);
+}
+
+function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, unskipTime: number, startReskip: boolean) {
+    const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime, startReskip);
+    if (onMobileYouTube || Config.config.skipKeybind == null) newSkipNotice.setShowKeybindHint(false);
+    skipNotices.push(newSkipNotice);
+
+    activeSkipKeybindElement?.setShowKeybindHint(false);
+    activeSkipKeybindElement = newSkipNotice;
 }
 
 function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null) {
