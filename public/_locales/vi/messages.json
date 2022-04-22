@@ -209,6 +209,9 @@
     "enableViewTrackingInPrivate": {
         "message": "Bật việc theo dõi số lượng người bỏ qua phân đoạn trong tab Riêng tư/Ẩn danh"
     },
+    "enableTrackDownvotes": {
+        "message": "Lưu trữ phiếu phản đối phân đoạn"
+    },
     "whatTrackDownvotes": {
         "message": "Bất kỳ phân đoạn nào bạn phản đối sẽ vẫn bị ẩn ngay cả sau khi làm mới"
     },
@@ -636,11 +639,18 @@
     "showOverlay_POI": {
         "message": "Hiện ở thanh xem trước"
     },
+    "showOverlay_full": {
+        "message": "Hiển thị nhãn"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Tự động bỏ qua tất cả các phân đoạn nếu trong video có phân đoạn không phải nhạc"
     },
     "muteSegments": {
         "message": "Cho phép các phân đoạn bị tắt tiếng hay vì bỏ qua"
+    },
+    "fullVideoSegments": {
+        "message": "Hiển thị biểu tượng khi video hoàn toàn là quảng cáo",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
         "message": "Màu khi chưa được gửi đi",
@@ -692,6 +702,9 @@
     },
     "hiddenDueToDuration": {
         "message": "đã bị ẩn: quá ngắn"
+    },
+    "manuallyHidden": {
+        "message": "ẩn thủ công"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -756,6 +769,9 @@
         "message": "Đã hiểu",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Phân đoạn này là lớn. Nếu toàn bộ video nói về một chủ đề, hãy chuyển từ \"Bỏ qua\" thành \"Toàn bộ video\". Xem hướng dẫn để biết thêm thông tin."
+    },
     "categoryPillTitleText": {
         "message": "Toàn bộ video này được gắn thẻ vào thể loại này và được tích hợp quá chặt chẽ để có thể tách ra"
     },
@@ -776,8 +792,14 @@
     "Donate": {
         "message": "Ủng hộ"
     },
+    "considerDonating": {
+        "message": "Hỗ trợ phát triển cấp quỹ"
+    },
     "hideDonationLink": {
         "message": "Ẩn link donate"
+    },
+    "darkModeOptionsPage": {
+        "message": "Chế độ tối trên trang tùy chọn"
     },
     "helpPageThanksForInstalling": {
         "message": "Cảm ơn bạn đã cài đặt SponsorBlock."
@@ -867,5 +889,48 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Hành vi",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Giao diện",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Phím tắt bàn phím",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Sao lưu/Khôi phục",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Điều khoản khác",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Bỏ qua thông báo xuất hiện",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Gỡ liên kết",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Chưa thiết lập"
+    },
+    "change": {
+        "message": "Thay đổi"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Đây là lối tắt YouTube được tích hợp sẵn. Bạn có chắc chắn muốn sử dụng nó không?"
+    },
+    "betaServerWarning": {
+        "message": "Máy chủ BETA đã được kích hoạt!"
+    },
+    "openOptionsPage": {
+        "message": "Mở trang tùy chọn"
     }
 }
