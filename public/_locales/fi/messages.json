@@ -883,10 +883,10 @@
         "message": "Tämä vaikuttaa sinun osioihin välittömästi"
     },
     "downvote": {
-        "message": "Äänestä alas"
+        "message": "Äänestä puolesta"
     },
     "upvote": {
-        "message": "Äänestä ylös"
+        "message": "Äänestä vastaan"
     },
     "hideSegment": {
         "message": "Piilota osio"
