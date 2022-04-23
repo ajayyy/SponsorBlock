@@ -1,10 +1,10 @@
 {
     "fullName": {
-        "message": "SponsorBlock for YouTube - Skip Sponsorships",
+        "message": "SponsorBlock för YouTube - Hoppa över sponsringar",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Hoppa över sponsring, prenumerationstiggande och mer på YouTube-videor. Rapportera sponsorer på videor du tittar på för att spara andras tid.",
+        "message": "Hoppa över sponsringar, prenumerationstiggande och mer på YouTube-videor. Rapportera sponsorer på videor du tittar på för att spara andras tid.",
         "description": "Description of the extension."
     },
     "400": {
@@ -44,7 +44,7 @@
         "message": "Visa aldrig"
     },
     "hitGoBack": {
-        "message": "Tryck på Tillbaka för att ångra åtgärden."
+        "message": "Tryck på Hoppa inte över för att återgå till där du kom i från."
     },
     "unskip": {
         "message": "Hoppa inte över"
@@ -163,6 +163,9 @@
     },
     "copyPublicID": {
         "message": "Kopiera publikt Användar-ID"
+    },
+    "copySegmentID": {
+        "message": "Kopiera Segment-ID"
     },
     "discordAdvert": {
         "message": "Gå med i den officiella discordservern för att ge förslag och feedback!"
@@ -878,6 +881,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Detta kommer omedelbart att verkställas till dina segment"
+    },
+    "downvote": {
+        "message": "Rösta ner"
+    },
+    "upvote": {
+        "message": "Rösta upp"
+    },
+    "hideSegment": {
+        "message": "Dölj segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Använd mushjulet medan du håller muspekaren över redigeringsrutan för att snabbt justera tiden. Kombinationer av CTRL- eller SKIFT-tangenten kan användas för att finjustera tiden."
