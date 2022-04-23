@@ -451,12 +451,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
                 upvoteButton.className = "voteButton";
+                upvoteButton.title = chrome.i18n.getMessage("upvote");
                 upvoteButton.src = chrome.runtime.getURL("icons/thumbs_up.svg");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
 
                 const downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton";
+                downvoteButton.title = chrome.i18n.getMessage("downvote");
                 downvoteButton.src = locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
@@ -464,6 +466,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 uuidButton.className = "voteButton";
                 uuidButton.src = chrome.runtime.getURL("icons/clipboard.svg");
+                uuidButton.title = chrome.i18n.getMessage("copySegmentID");
                 uuidButton.addEventListener("click", () => {
                     navigator.clipboard.writeText(UUID);
                     const stopAnimation = AnimationUtils.applyLoadingAnimation(uuidButton, 0.3);
@@ -473,6 +476,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const hideButton = document.createElement("img");
                 hideButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 hideButton.className = "voteButton";
+                hideButton.title = chrome.i18n.getMessage("hideSegment");
                 if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
                     hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
                 } else {

@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Copy Public UserID"
     },
+    "copySegmentID": {
+        "message": "Copy Segment ID"
+    },
     "discordAdvert": {
         "message": "Come join the official discord server to give suggestions and feedback!"
     },
@@ -867,17 +870,26 @@
 	  "CopyDownvoteButtonInfo": {
         "message": "Downvotes and creates a local copy for you to resubmit"
     },
-	  "OpenCategoryWikiPage": {
-		    "message": "Open this category's wiki page."
-	  },
-	  "CopyAndDownvote": {
+    "OpenCategoryWikiPage": {
+        "message": "Open this category's wiki page."
+    },
+    "CopyAndDownvote": {
         "message": "Copy and downvote"
     },
-	  "ContinueVoting": {
+    "ContinueVoting": {
         "message": "Continue Voting"
     },
-	  "ChangeCategoryTooltip": {
+    "ChangeCategoryTooltip": {
         "message": "This will instantly apply to your segments"
+    },
+    "downvote": {
+        "message": "Downvote"
+    },
+    "upvote": {
+        "message": "Upvote"
+    },
+    "hideSegment": {
+        "message": "Hide segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use your mousewheel while hovering over the edit box to quickly adjust the time. Combinations of the ctrl or shift key can be used to fine tune the changes."
