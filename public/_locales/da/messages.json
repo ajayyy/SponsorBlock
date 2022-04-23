@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Kopier Offentligt Bruger-ID"
     },
+    "copySegmentID": {
+        "message": "Kopier Segment-Id"
+    },
     "discordAdvert": {
         "message": "Kom til den officielle Discord-server for at give forslag og feedback!"
     },
@@ -878,6 +881,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Dette vil øjeblikkeligt gælde for dine indsendelser"
+    },
+    "downvote": {
+        "message": "Downvote"
+    },
+    "upvote": {
+        "message": "Upvote"
+    },
+    "hideSegment": {
+        "message": "Skjul segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Brug musehjulet, mens du holder musen over redigeringsfeltet for hurtigt at justere tiden. Kombinationer af ctrl eller shift-tastenerne kan bruges til at finjustere ændringerne."
