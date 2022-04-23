@@ -16,6 +16,14 @@
 }
 
 /*
+ * Disable popup max height when displayed in-page
+ */
+
+#sponsorBlockPopupContainer #sponsorBlockPopupHTML {
+  max-height: none;
+}
+
+/*
  * Disable fixed popup width when displayed in-page
  */
 
@@ -29,11 +37,14 @@
 
 #sponsorBlockPopupHTML {
   color-scheme: dark;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 #sponsorBlockPopupBody {
   margin: 0;
   width: 374px;
+  max-width: 100%; /* NOTE: Ensures content doesn't exceed restricted popup widths in Firefox */
   font-family: var(--sb-main-font-family);
   font-size: 14px;
   background-color: var(--sb-main-bg-color);
@@ -43,6 +54,11 @@
 
 #sponsorblockPopup {
   text-align: center;
+}
+
+#sponsorblockPopup a,
+#sponsorblockPopup button {
+  cursor: pointer;
 }
 
 /*
@@ -73,6 +89,19 @@
 }
 
 /*
+ * Alert indicating that Beta server is enabled
+ */
+
+#sbBetaServerWarning {
+  padding: 8px;
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--sb-main-fg-color);
+  background-color: var(--sb-red-bg-color);
+  cursor: pointer;
+}
+
+/*
  * Header logo
  */
 
@@ -98,7 +127,6 @@
   background: transparent;
   border: 0;
   border-radius: 50%;
-  cursor: pointer;
   display: flex;
   padding: 5px;
   margin: 5px auto;
@@ -182,9 +210,8 @@
 }
 
 .sbControlsMenu-item {
-  background-color: var(--sb-grey-bg-color);
+  background: transparent;
   border: 0;
-  padding: 0;
   cursor: pointer;
   user-select: none;
   padding: 10px 15px;
@@ -208,7 +235,6 @@
  */
 
 .toggleSwitchContainer {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -295,11 +321,14 @@
  */
 
 #whitelistForceCheck {
-  font-weight: bold;
-  text-decoration: underline;
-  font-size: large;
-  cursor: pointer;
-  padding: 10px 0;
+  background-color: #fff3cd;
+  color: #664d03;
+  display: block;
+  padding: 10px 15px;
+}
+
+#whitelistForceCheck:hover {
+  background-color: #f2e4b7;
 }
 
 /*
@@ -307,9 +336,12 @@
  */
 
 #mainControls {
-  flex-flow: column;
-  align-items: center;
   margin-bottom: 12px;
+}
+
+.sponsorStartHint {
+  display: block;
+  padding: 0 10px 12px;
 }
 
 /*
@@ -323,7 +355,6 @@
   -webkit-border-radius: 28px;
   border-radius: 28px;
   display: inline-block;
-  cursor: pointer;
   color: var(--sb-main-fg-color);
   font-size: 16px;
   padding: 8px 37px;
@@ -372,7 +403,7 @@
 .sbYourWorkCols > div {
   display: flex;
   align-items: center;
-  width: 50%;
+  flex-basis: 50%;
   justify-content: center;
 }
 
@@ -381,11 +412,10 @@
  */
 
 #setUsernameButton,
-#submitUsername,
-#copyUserID {
+#copyUserID,
+#submitUsername {
   background: transparent;
   border: 0;
-  cursor: pointer;
   padding: 0;
   color: var(--sb-main-fg-color);
   width: fit-content;
@@ -472,7 +502,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 130px;
-  margin-right: 8px;
+  margin: 0 8px 0 0;
 }
 
 /*
@@ -511,7 +541,6 @@
 
 #sbFooter a {
   color: var(--sb-main-fg-color);
-  cursor: pointer;
   text-decoration: none;
 }
 
@@ -524,33 +553,18 @@
   border: 1px solid #fff;
   border-radius: 5px;
   color: var(--sb-main-fg-color);
-  cursor: pointer;
   margin-bottom: 20px;
   padding: 5px;
 }
 
 /*
- * Generic spacing classes
+ * Generic utilities
  */
 
-.u-mZ {
+ #sponsorBlockPopupBody .u-mZ {
   margin: 0 !important;
 }
 
-/*
- * Generic hide utility classes
- */
-
 #sponsorBlockPopupBody .hidden {
   display: none !important;
-}
-
-#sbBetaServerWarning {
-  padding: 8px;
-  font-size: 1em;
-  font-weight: 700;
-  word-break: break-word;
-  color: var(--sb-main-fg-color);
-  background: var(--sb-red-bg-color);
-  cursor: pointer;
 }

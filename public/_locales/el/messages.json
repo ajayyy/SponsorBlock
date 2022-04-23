@@ -162,7 +162,7 @@
         "message": "Ορισμός ονόματος χρήστη"
     },
     "copyPublicID": {
-        "message": "Αντιγραφή δημόσιου αναγνωριστικού"
+        "message": "Αντιγραφή δημόσιου αναγνωριστικού χρήστη"
     },
     "discordAdvert": {
         "message": "Μπείτε στον επίσημο διακομιστή μας στο Discord για ανατροφοδότηση και προτάσεις!"
@@ -715,5 +715,34 @@
     },
     "helpPageHowSkippingWorks2": {
         "message": "Κάθε φορά που παραλείπετε κάποιο τμήμα, θα λαμβάνετε ειδοποίηση. Εάν ο συγχρονισμός σας φαίνεται λάθος, ψηφίστε αρνητικά πατώντας το εικονίδιο! Μπορείτε επίσης να ψηφίσετε μέσω του αναδυόμενου παράθυρου."
+    },
+    "Submitting": {
+        "message": "Υποβολή"
+    },
+    "helpPageSubmitting1": {
+        "message": "Η υποβολή μπορεί είτε να γίνει στο αναδυόμενο παράθυρο πατώντας το κουμπί «Το τμήμα ξεκινάει εδώ» είτε στα κουμπιά κάτω από την μπάρα χρόνου κατά την αναπαραγωγή βίντεο."
+    },
+    "helpPageSubmitting2": {
+        "message": "Πατώντας το κουμπί αναπαραγωγής δείχνετε την αρχή του τμήματος και πατώντας το κουμπί της διακοπής δείχνετε το τέλος του τμήματος. Μπορείτε να ετοιμάσετε πολλαπλά τμήματα χορηγιών πρώτου πατήσετε υποβολή. Πατώντας το κουμπί της αποστολής τα τμήματα υποβάλλονται, ενώ πατώντας το εικονίδιο του κάδου απορριμάτων τα διαγραφεί."
+    },
+    "Editing": {
+        "message": "Επεξεργασία"
+    },
+    "helpPageEditing1": {
+        "message": "Αν κάνατε κάτι λάθος, μπορείτε να διορθώσετε ή να διαγράψετε τα τμήματα σας πατώντας το εικονίδιο πάνω βελάκι."
+    },
+    "helpPageSourceCode": {
+        "message": "Πού μπορώ να βρω τον πηγαίο κώδικα;"
+    },
+    "LearnMore": {
+        "message": "Μάθετε περισσότερα"
+    },
+    "optionsTabBehavior": {
+        "message": "Συμπεριφορά",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Διάφορα",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     }
 }

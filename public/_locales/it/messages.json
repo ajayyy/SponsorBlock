@@ -929,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Questa è una scorciatoia integrata da YouTube. Sei sicuro di volerla usare?"
+    },
+    "betaServerWarning": {
+        "message": "Il server BETA è abilitato!"
+    },
+    "openOptionsPage": {
+        "message": "Apri la pagina delle opzioni"
     }
 }

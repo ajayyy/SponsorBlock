@@ -53,7 +53,7 @@
         "message": "繼續跳過"
     },
     "unmute": {
-        "message": "解除靜音"
+        "message": "取消靜音"
     },
     "paused": {
         "message": "已暫停"
@@ -161,6 +161,9 @@
     "setUsername": {
         "message": "設定使用者名稱"
     },
+    "copyPublicID": {
+        "message": "複製公開使用者名稱"
+    },
     "discordAdvert": {
         "message": "快加入官方 Discord 伺服器來給予建議和反應！"
     },
@@ -178,6 +181,9 @@
     },
     "hideButtonsDescription": {
         "message": "這會隱藏 YouTube 播放器上提交片段的按鈕"
+    },
+    "showSkipButton": {
+        "message": "在播放器保留跳至精華按鈕"
     },
     "showInfoButton": {
         "message": "在 YouTube 播放器上顯示資訊按鈕"
@@ -203,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "在私人/無痕分頁啟用跳過次數追蹤"
     },
+    "enableTrackDownvotes": {
+        "message": "儲存片段倒讚"
+    },
+    "whatTrackDownvotes": {
+        "message": "所有你按倒讚的片段在重新整理後仍會保留"
+    },
+    "trackDownvotesWarning": {
+        "message": "警告：停用此將刪除所有之前儲存的倒讚"
+    },
     "enableQueryByHashPrefix": {
         "message": "使用雜湊前綴查詢"
     },
@@ -220,6 +235,21 @@
     },
     "showSkipNotice": {
         "message": "在跳過片段後顯示通知"
+    },
+    "noticeVisibilityMode0": {
+        "message": "完整大小的略過提醒"
+    },
+    "noticeVisibilityMode1": {
+        "message": "小的自動略過提醒"
+    },
+    "noticeVisibilityMode2": {
+        "message": "所有小的略過提醒"
+    },
+    "noticeVisibilityMode3": {
+        "message": "消逝的自動跳過提醒"
+    },
+    "noticeVisibilityMode4": {
+        "message": "所有消逝的略過提醒"
     },
     "longDescription": {
         "message": "SponsorBlock 讓您可以跳過贊助工商，開場動畫，結束動畫，訂閱提醒等煩人的 YouTube 影片片段。SponsorBlock 是個大眾外包的網頁瀏覽器擴充功能，能讓任何人提交贊助片段的始與末。當一個人提交這個片段後，所有使用這個擴充功能的人都可以跳過該片段。您也可以跳過在音樂中的非音樂片段",
@@ -240,6 +270,21 @@
     "noticeUpdate2": {
         "message": "如果您還是不喜歡它，請按下永不顯示按鈕",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "略過片段",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "開始／停止片段",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "提交片段",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "按下按鍵以選擇並選擇想要使用的修飾鍵"
     },
     "0": {
         "message": "連線超時。請檢查您的網路連線。若您的網路運作正常，則可能是伺服器超載或離線"
@@ -266,15 +311,31 @@
     "mute": {
         "message": "靜音"
     },
+    "full": {
+        "message": "整部影片",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "跳過 {0}？"
     },
     "mute_category": {
         "message": "要靜音 {0} 嗎？"
     },
+    "skip_to_category": {
+        "message": "跳到 {0}？",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} 已略過",
+        "description": "Example: Sponsor Skipped"
+    },
     "muted": {
         "message": "{0} 已靜音",
         "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "已跳到 {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "停用自動跳過"
@@ -323,6 +384,9 @@
     "changeUserID": {
         "message": "匯入/匯出您的使用者 ID"
     },
+    "whatChangeUserID": {
+        "message": "密鑰應被保密。它就像是密碼，不應與他人分享。若密鑰落入他人手中，他人將可以冒充你。若你在尋找你的公開使用者ID，點擊彈出視窗上的剪貼簿圖示"
+    },
     "setUserID": {
         "message": "設定使用者 ID"
     },
@@ -347,6 +411,9 @@
     },
     "addInvidiousInstance": {
         "message": "新增第三方的客戶端實例"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "添加一個自定進程。它必須只有域名。例如：invidious.ajay.app"
     },
     "add": {
         "message": "新增"
@@ -378,6 +445,9 @@
     "shortCheck": {
         "message": "以下的提交小於您的最小時間設定。這表是它們可能已經被提交，只是被該設定忽略了。您確定要提交嗎？"
     },
+    "liveOrPremiere": {
+        "message": "在進行中的直播或首播提交片段是不被允許的。請等到該直播完成後，重新整理頁面再重新確認片段並提交。"
+    },
     "showUploadButton": {
         "message": "顯示上傳按鈕"
     },
@@ -404,6 +474,15 @@
     },
     "exportOptions": {
         "message": "匯入/匯出所有設定"
+    },
+    "exportOptionsCopy": {
+        "message": "編輯／複製"
+    },
+    "exportOptionsDownload": {
+        "message": "儲存到檔案"
+    },
+    "exportOptionsUpload": {
+        "message": "從檔案載入"
     },
     "whatExportOptions": {
         "message": "這是您全部設定的 JSON 格式。它包含了您的用戶 ID ，所以您一定要謹慎的保管它。"
@@ -453,6 +532,9 @@
     "copyDebugInformationComplete": {
         "message": "除錯資訊已複製到剪貼板中。您可以任意移除任何您不想分享的資訊。請將其另存為文字文件或貼到錯誤報告中。"
     },
+    "keyAlreadyUsed": {
+        "message": "這個快捷鍵已被綁定到另一個動作，請另擇快捷鍵。"
+    },
     "to": {
         "message": "到",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -468,6 +550,16 @@
     },
     "category_selfpromo_description": {
         "message": "類似 “贊助商廣告” ，但是非付費或自我推廣。這包括有關商品、捐贈或與他人合作的信息。"
+    },
+    "category_exclusive_access": {
+        "message": "獨家限定"
+    },
+    "category_exclusive_access_description": {
+        "message": "只限於標記整部影片，用於影片在獲得特殊或免費存取後，展示產品、服務或位置時使用。"
+    },
+    "category_exclusive_access_pill": {
+        "message": "此影片展示了獲得特殊或免費存取的產品、服務或位置",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "互動提醒 (訂閱)"
@@ -499,6 +591,15 @@
     "category_preview_description": {
         "message": "係指影片的前情提要或內容預告等刻意編輯過的內容"
     },
+    "category_filler": {
+        "message": "離題閒聊/玩笑"
+    },
+    "category_filler_description": {
+        "message": "與影片主要內容無關的填充詞或笑話，但不應包含與前後或背景有關者"
+    },
+    "category_filler_short": {
+        "message": "填充詞"
+    },
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
     },
@@ -510,6 +611,9 @@
     },
     "category_poi_highlight": {
         "message": "重點"
+    },
+    "category_poi_highlight_description": {
+        "message": "大部分的人在影片尋找的部分。類似「影片在幾分幾秒開始」的留言"
     },
     "category_livestream_messages": {
         "message": "直播：捐贈/訊息閱讀"
@@ -529,8 +633,27 @@
     "disable": {
         "message": "停用"
     },
+    "autoSkip_POI": {
+        "message": "自動略過至開頭"
+    },
+    "manualSkip_POI": {
+        "message": "在影片載入時詢問"
+    },
+    "showOverlay_POI": {
+        "message": "在時間條顯示"
+    },
+    "showOverlay_full": {
+        "message": "顯示標籤"
+    },
     "autoSkipOnMusicVideos": {
         "message": "自動跳過非音樂片段（如果有的話）"
+    },
+    "muteSegments": {
+        "message": "允許靜音式片段"
+    },
+    "fullVideoSegments": {
+        "message": "在整個影片都是廣告時顯示圖示",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
         "message": "未提交的顏色",
@@ -568,6 +691,9 @@
         "message": "若想要提交{0} 類的分段，您必須要在選項內將其啟用。您現在將被重新導向至選項頁面。",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "注意：這種片段同時只能有一個啟用，提交多個片段將顯示隨機一個"
+    },
     "youMustSelectACategory": {
         "message": "您必須為所有您要提交的片段選擇類別！"
     },
@@ -579,6 +705,9 @@
     },
     "hiddenDueToDuration": {
         "message": "隱藏：太短"
+    },
+    "manuallyHidden": {
+        "message": "手動隱藏"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -614,6 +743,9 @@
     "downvoteDescription": {
         "message": "不正確/錯誤的時間"
     },
+    "incorrectCategory": {
+        "message": "變更類別"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "這個影片被分類為音樂。您確定這有贊助內容嗎？如果這其實是\"非音樂片段\"的話，開啟擴充功能設定並啟用這個類別。接下來您即可提交這個片段為\"非音樂片段\"。如果您感到困惑，請閱讀方針"
     },
@@ -640,6 +772,12 @@
         "message": "知道了",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "這個片段有點長，如果整部影片都跟一個主題有關，請將「跳過」改為「整部影片」。請參照方針以獲得更多資訊"
+    },
+    "categoryPillTitleText": {
+        "message": "這整部影片都被標示為此類別且過於相關而不可分開"
+    },
     "experiementOptOut": {
         "message": "關閉所有未來的實驗性功能",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -647,20 +785,117 @@
     "hideForever": {
         "message": "永久隱藏"
     },
+    "warningChatInfo": {
+        "message": "你被記了警告所以暫時不能提交片段。這意味著我們注意到你在犯下常見的但不是可疑的錯誤，請確認你真的瞭解方針之內容後我們就會移除警告。你也可以加入 discord.gg/SponsorBlock 或 matrix.to/#/#sponsor:ajay.app"
+    },
+    "voteRejectedWarning": {
+        "message": "投票因警告而被駁回。點擊以打開聊天室並解決之",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "贊助"
+    },
+    "considerDonating": {
+        "message": "資助開發"
+    },
+    "hideDonationLink": {
+        "message": "隱藏贊助選項"
+    },
+    "darkModeOptionsPage": {
+        "message": "選項頁面深色模式"
+    },
     "helpPageThanksForInstalling": {
         "message": "感謝你安裝 SponsorBlock。"
+    },
+    "helpPageReviewOptions": {
+        "message": "請確認以下選項"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "許多功能預設為停用，若欲跳過開頭、結尾或使用Invidious等，在下方啟用它們。你也可以隱藏／顯示介面內容"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "略過如何運作"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "影片片段如果出現於資料庫將自動被略過，你可以點擊擴充功能圖示以打開浮窗以便預覽"
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "當你略過片段時，你會被提醒。若你認為跳過時間有誤，請按下倒讚以反對之。你也可以用浮窗投票。"
     },
     "Submitting": {
         "message": "正在提交"
     },
+    "helpPageSubmitting1": {
+        "message": "提交可以透過在浮窗內點擊「片段由此開始」按鈕或在影片播放器中的按鈕執行"
+    },
+    "helpPageSubmitting2": {
+        "message": "點擊播放按鈕表示片段的開始，停止按鈕表示結束。你可以在提交前設定多個片段。點擊上傳按鈕將會提交片段，點擊垃圾桶按鈕將會刪除片段"
+    },
     "Editing": {
         "message": "編輯中"
+    },
+    "helpPageEditing1": {
+        "message": "若你失誤了，你可以按下箭頭向上按鍵以編輯或刪除你的片段"
+    },
+    "helpPageTooSlow": {
+        "message": "這太慢了"
+    },
+    "helpPageTooSlow1": {
+        "message": "快捷鍵是被支援的，按下分號以標示片段的開始或結束，並按下逗號以提交。你可以在選項裡更改快捷鍵設定。若你不是用QWERTY鍵盤的話，你應該更改設定。"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "我可以下載資料庫嗎？作者消失怎麼辦？"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "資料庫是公開的且可以在這取用："
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "原始碼是公開的，若作者發生狀況，你的提交將不會化為烏有"
+    },
+    "helpPageNews": {
+        "message": "消息和製作過程"
+    },
+    "helpPageSourceCode": {
+        "message": "我在哪裡可以找到原始碼？"
     },
     "Credits": {
         "message": "致謝"
     },
     "LearnMore": {
         "message": "了解更多"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "按倒讚和建立本機副本以便你重新提交"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "打開此類別之維基頁面"
+    },
+    "CopyAndDownvote": {
+        "message": "複製並按倒讚"
+    },
+    "ContinueVoting": {
+        "message": "繼續投票"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "這將會立即套用至你的片段"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "在滑鼠鼠標放在編輯框上時使用滾輪以快速調製時間。Ctrl和Shift可以用於精密調整"
+    },
+    "categoryPillNewFeature": {
+        "message": "新功能》知道整部影片是不是贊助或自我推廣"
+    },
+    "dayAbbreviation": {
+        "message": "天",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "小時",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "行為",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabInterface": {
         "message": "介面",
@@ -670,8 +905,35 @@
         "message": "鍵盤快捷鍵",
         "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
+    "optionsTabBackup": {
+        "message": "備份/還原",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
     "optionsTabAdvanced": {
         "message": "其他",
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "略過通知外觀",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "取消綁定",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "未設定"
+    },
+    "change": {
+        "message": "更改"
+    },
+    "youtubeKeybindWarning": {
+        "message": "這是YouTube內建捷徑，你真的要取代它嗎？"
+    },
+    "betaServerWarning": {
+        "message": "測試版伺服器已啟用！"
+    },
+    "openOptionsPage": {
+        "message": "打開選項頁面"
     }
 }

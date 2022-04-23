@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Bật việc theo dõi số lượng người bỏ qua phân đoạn trong tab Riêng tư/Ẩn danh"
     },
+    "enableTrackDownvotes": {
+        "message": "Lưu trữ phiếu phản đối phân đoạn"
+    },
+    "whatTrackDownvotes": {
+        "message": "Bất kỳ phân đoạn nào bạn phản đối sẽ vẫn bị ẩn ngay cả sau khi làm mới"
+    },
+    "trackDownvotesWarning": {
+        "message": "Cảnh báo: Tắt tính năng này sẽ xóa tất cả các phiếu phản đối đã lưu trữ trước đó"
+    },
     "enableQueryByHashPrefix": {
         "message": "Truy vấn theo Hash Prefix"
     },
@@ -261,6 +270,21 @@
     "noticeUpdate2": {
         "message": "Nếu bạn vẫn không thích, hãy nhấn nút không hiển thị lại.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Bỏ qua phân đoạn",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Bắt đầu/dừng phân đoạn",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Gửi phân đoạn",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Chọn một phím bằng cách nhập nó và chọn bất kỳ phím bổ trợ nào bạn muốn sử dụng."
     },
     "0": {
         "message": "Kết nối quá hạn thời gian. Hãy kiểm tra đường truyền mạng của bạn. Nếu mạng của bạn vẫn hoạt động, có thể máy chủ đang bị quá tải hoặc không hoạt động."
@@ -421,6 +445,9 @@
     "shortCheck": {
         "message": "Đoạn quảng cáo sau ngắn hơn tùy chọn độ dài ngắn nhất của bạn. Điều này có thể có nghĩa là nó đã được đăng rồi, và không được bỏ qua vì tùy chọn này. Bạn có chắc muốn đăng nó không?"
     },
+    "liveOrPremiere": {
+        "message": "Không được phép gửi trên một buổi phát trực tiếp hoặc buổi ra mắt đang hoạt động. Vui lòng đợi cho đến khi kết thúc, sau đó làm mới trang xác minh rằng các phân đoạn vẫn hợp lệ."
+    },
     "showUploadButton": {
         "message": "Hiển thị nút tải lên"
     },
@@ -447,6 +474,15 @@
     },
     "exportOptions": {
         "message": "Nhập/xuất tất cả tùy chọn"
+    },
+    "exportOptionsCopy": {
+        "message": "Chỉnh sửa/sao chép"
+    },
+    "exportOptionsDownload": {
+        "message": "Lưu vào tệp"
+    },
+    "exportOptionsUpload": {
+        "message": "Tải từ tệp"
     },
     "whatExportOptions": {
         "message": "Đây là toàn bộ cấu hình của bạn trong tệp JSON. Nó chứa cả mã người dùng của bạn, nên hãy chia sẻ cẩn thận."
@@ -496,6 +532,9 @@
     "copyDebugInformationComplete": {
         "message": "Thông tin gỡ lỗi đã được sao chép vào bộ nhớ tạm. Hãy thoải mái xóa thông tin mà bạn không muốn chia sẻ. Lưu thông tin này vào một tập tin văn bản hoặc dán nó vào bản báo cáo lỗi."
     },
+    "keyAlreadyUsed": {
+        "message": "Phím tắt này liên kết với một hành động khác. Vui lòng chọn một cái khác."
+    },
     "to": {
         "message": "đến",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -514,6 +553,13 @@
     },
     "category_exclusive_access": {
         "message": "Truy cập riêng"
+    },
+    "category_exclusive_access_description": {
+        "message": "Chỉ để dán nhãn cho toàn bộ video. Được sử dụng khi video giới thiệu một sản phẩm, dịch vụ hoặc vị trí mà họ đã nhận được quyền truy cập miễn phí hoặc được trợ cấp."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Video này giới thiệu sản phẩm, dịch vụ hoặc vị trí mà họ đã nhận được quyền truy cập miễn phí hoặc được trợ cấp",
+        "description": "Short description for this category"
     },
     "category_interaction": {
         "message": "Nhắc tương tác (Đăng ký)"
@@ -593,11 +639,18 @@
     "showOverlay_POI": {
         "message": "Hiện ở thanh xem trước"
     },
+    "showOverlay_full": {
+        "message": "Hiển thị nhãn"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Tự động bỏ qua tất cả các phân đoạn nếu trong video có phân đoạn không phải nhạc"
     },
     "muteSegments": {
         "message": "Cho phép các phân đoạn bị tắt tiếng hay vì bỏ qua"
+    },
+    "fullVideoSegments": {
+        "message": "Hiển thị biểu tượng khi video hoàn toàn là quảng cáo",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
         "message": "Màu khi chưa được gửi đi",
@@ -649,6 +702,9 @@
     },
     "hiddenDueToDuration": {
         "message": "đã bị ẩn: quá ngắn"
+    },
+    "manuallyHidden": {
+        "message": "ẩn thủ công"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -713,6 +769,9 @@
         "message": "Đã hiểu",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Phân đoạn này là lớn. Nếu toàn bộ video nói về một chủ đề, hãy chuyển từ \"Bỏ qua\" thành \"Toàn bộ video\". Xem hướng dẫn để biết thêm thông tin."
+    },
     "categoryPillTitleText": {
         "message": "Toàn bộ video này được gắn thẻ vào thể loại này và được tích hợp quá chặt chẽ để có thể tách ra"
     },
@@ -733,8 +792,14 @@
     "Donate": {
         "message": "Ủng hộ"
     },
+    "considerDonating": {
+        "message": "Hỗ trợ phát triển cấp quỹ"
+    },
     "hideDonationLink": {
         "message": "Ẩn link donate"
+    },
+    "darkModeOptionsPage": {
+        "message": "Chế độ tối trên trang tùy chọn"
     },
     "helpPageThanksForInstalling": {
         "message": "Cảm ơn bạn đã cài đặt SponsorBlock."
@@ -824,5 +889,48 @@
     "hourAbbreviation": {
         "message": "h",
         "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Hành vi",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Giao diện",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Phím tắt bàn phím",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Sao lưu/Khôi phục",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Điều khoản khác",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Bỏ qua thông báo xuất hiện",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Gỡ liên kết",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Chưa thiết lập"
+    },
+    "change": {
+        "message": "Thay đổi"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Đây là lối tắt YouTube được tích hợp sẵn. Bạn có chắc chắn muốn sử dụng nó không?"
+    },
+    "betaServerWarning": {
+        "message": "Máy chủ BETA đã được kích hoạt!"
+    },
+    "openOptionsPage": {
+        "message": "Mở trang tùy chọn"
     }
 }

@@ -52,6 +52,9 @@
     "reskip": {
         "message": "דלג קדימה"
     },
+    "unmute": {
+        "message": "ביטול השתקה"
+    },
     "paused": {
         "message": "מושהה"
     },
@@ -79,8 +82,14 @@
     "sponsorEnd": {
         "message": "מקטע נגמר עכשיו"
     },
+    "sponsorCancel": {
+        "message": "ביטול יצירת מקטע"
+    },
     "noVideoID": {
         "message": "לא נמצא סרטון יוטיוב.\nאם זה לא נכון, רענן את הכרטיסייה."
+    },
+    "refreshSegments": {
+        "message": "רענן מקטעים"
     },
     "success": {
         "message": "הצלחה!"
@@ -137,20 +146,62 @@
     "popupHint": {
         "message": "רמז: אתה יכול להגדיר קיצורים מהמקלדת דרך תפריט אפשרויות כדי להזין זמנים"
     },
+    "clearTimesButton": {
+        "message": "נקה זמנים"
+    },
+    "submitTimesButton": {
+        "message": "הגש זמנים"
+    },
+    "publicStats": {
+        "message": "זה משומש בעמוד הסטטים הפומביים כדי להראות כמה תרמת. צפה בזה"
+    },
     "Username": {
         "message": "שם משתמש"
+    },
+    "setUsername": {
+        "message": "הגדר שם משתמש"
+    },
+    "copyPublicID": {
+        "message": "העתק קוד משתמש פומבי"
+    },
+    "discordAdvert": {
+        "message": "הצטרף לשרת הדיסקורד הרשמי כדי לביא הצעות וחוות דעת!"
+    },
+    "hideThis": {
+        "message": "הסתר"
     },
     "Options": {
         "message": "אפשרויות"
     },
+    "showButtons": {
+        "message": "הראה כפתורים על הנגן של יוטיוב"
+    },
+    "hideButtons": {
+        "message": "הסתר כפתורים על הנגן של יוטיוב"
+    },
     "hideButtonsDescription": {
         "message": "זה מחביא את הכפתורים שמופיעים בנגן YouTube להגיש מקטעי דילוג."
+    },
+    "showSkipButton": {
+        "message": "השאר את כפתור הדילוג לשיא הסרטון על הנגן באופן קבוע"
     },
     "showInfoButton": {
         "message": "הראה כפתור מידע בנגן YouTube"
     },
     "hideInfoButton": {
         "message": "החבא כפתור מידע בנגן YouTube"
+    },
+    "autoHideInfoButton": {
+        "message": "הסתר אוטומטית כפתורי אינפורמציה"
+    },
+    "hideDeleteButton": {
+        "message": "הסתר כפתור מחיקה על הנגן של יוטיוב"
+    },
+    "showDeleteButton": {
+        "message": "הצג כפתור מחיקה על הנגן של יוטיוב"
+    },
+    "whatViewTracking": {
+        "message": "הפיצ'ר הזה עוקב אחרי מקטעים שדילגת עליהם בכדי ליידע משתמשים אחרים כמה ההגשות שלך עזרו לאחרים ושומשו כמטריקה יחד עם ההצבעות בעד בכדי להבטיח שלא ייכנס ספאם אל תוך המערכת. ההרחבה שולחת הודעה לשרת בכל פעם שאתה מדלג על מקטע. התקווה היא שרוב האנשים לא ישנו את ההגדרה הזו כדי שהמספרי צפייה יהיו מדוייקים :)"
     },
     "website": {
         "message": "אתר",
@@ -162,6 +213,15 @@
     },
     "errorCode": {
         "message": "קוד שגיאה: "
+    },
+    "skip": {
+        "message": "דלג"
+    },
+    "mute": {
+        "message": "השתק"
+    },
+    "mute_category": {
+        "message": "השתק {0}?"
     },
     "minLower": {
         "message": "דקה"
@@ -186,10 +246,225 @@
     "createdBy": {
         "message": "נוצר על ידי"
     },
+    "supportedSites": {
+        "message": "אתרים נתמכים: "
+    },
     "add": {
         "message": "הוסף"
     },
+    "save": {
+        "message": "שמור"
+    },
+    "reset": {
+        "message": "אתחל"
+    },
+    "exportOptionsCopy": {
+        "message": "ערוך/העתק"
+    },
+    "exportOptionsDownload": {
+        "message": "שמור לקובץ"
+    },
+    "exportOptionsUpload": {
+        "message": "טען מקובץ"
+    },
+    "setOptions": {
+        "message": "הגדר אפשרויות"
+    },
+    "confirmNoticeTitle": {
+        "message": "הגש מקטע"
+    },
+    "submit": {
+        "message": "הגש"
+    },
+    "cancel": {
+        "message": "ביטול"
+    },
+    "delete": {
+        "message": "מחק"
+    },
+    "preview": {
+        "message": "תצוגה מקדימה"
+    },
+    "unsubmitted": {
+        "message": "לא מוגש"
+    },
+    "inspect": {
+        "message": "סקור"
+    },
+    "edit": {
+        "message": "עריכה"
+    },
+    "to": {
+        "message": "עד ל",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "נותן חסות"
+    },
+    "category_exclusive_access": {
+        "message": "גישה אקסקלוסיבית"
+    },
+    "category_music_offtopic": {
+        "message": "מוזיקה: קטעים ללא מוזיקה"
+    },
+    "category_music_offtopic_short": {
+        "message": "ללא מוזיקה"
+    },
+    "category_poi_highlight": {
+        "message": "קטע חשוב"
+    },
     "autoSkip": {
         "message": "דילוג אוטומטי"
+    },
+    "manualSkip": {
+        "message": "דלג ידנית"
+    },
+    "showOverlay": {
+        "message": "הראה בטיימליין"
+    },
+    "showOverlay_POI": {
+        "message": "הראה בטיימליין"
+    },
+    "category": {
+        "message": "קטגוריה"
+    },
+    "skipOption": {
+        "message": "אפשרות דילוג",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "bracketNow": {
+        "message": "(עכשיו)"
+    },
+    "moreCategories": {
+        "message": "עוד קטגוריות"
+    },
+    "chooseACategory": {
+        "message": "בחר קטגוריה"
+    },
+    "bracketEnd": {
+        "message": "(סוף)"
+    },
+    "downvoteDescription": {
+        "message": "זמן שגוי/לא נכון"
+    },
+    "incorrectCategory": {
+        "message": "שנה קטגוריה"
+    },
+    "multipleSegments": {
+        "message": "מספר מקטעים"
+    },
+    "guidelines": {
+        "message": "הנחיות"
+    },
+    "readTheGuidelines": {
+        "message": "קראו את ההנחיות!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "קטגוריות נמצאות כאן!"
+    },
+    "help": {
+        "message": "עזרה"
+    },
+    "GotIt": {
+        "message": "הבנתי",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "experiementOptOut": {
+        "message": "לא מעוניין להשתתף בניסויים עתידיים",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "הסתר לעד"
+    },
+    "Donate": {
+        "message": "תרום"
+    },
+    "considerDonating": {
+        "message": "עזרו לממן את הפיתוח"
+    },
+    "hideDonationLink": {
+        "message": "הסתר כפתור תרומה"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "תודה שהתקנת את ספונסרבלוק."
+    },
+    "helpPageReviewOptions": {
+        "message": "אנא סקור את האפשרויות הבאות"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "כיצד דילוג עובד"
+    },
+    "Submitting": {
+        "message": "שולח"
+    },
+    "Editing": {
+        "message": "עריכה"
+    },
+    "helpPageTooSlow": {
+        "message": "הקצב איטי מדי"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "קוד המקור זמין באופן חופשי ובחינם. אז, אפילו אם משהו יקרה לי, המקטעים שהגשתם לא יאבדו."
+    },
+    "helpPageNews": {
+        "message": "חדשות וכיצד זה נעשה"
+    },
+    "helpPageSourceCode": {
+        "message": "היכן אוכל להשיג את קוד המקור?"
+    },
+    "Credits": {
+        "message": "קרדיטים"
+    },
+    "LearnMore": {
+        "message": "למידע נוסף"
+    },
+    "CopyAndDownvote": {
+        "message": "העתק ועשה דיסלייק"
+    },
+    "ContinueVoting": {
+        "message": "המשך להצביע"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "זה מיידית ישפיע על כל המקטעים שלך"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "השתמש בגלגלת בזמן שהעכבר מעל הזמן בשלב העריכה על מנת לשנות את הזמן יותר מהר. שילוב של הלחצן Ctrl/Shift יכולים לשנות את מהירות השינוי."
+    },
+    "categoryPillNewFeature": {
+        "message": "חדש! ראה מתי וידאו בשלמותו הוא פרסומת או פרסום עצמי"
+    },
+    "dayAbbreviation": {
+        "message": "ימים",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "שעות",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "התנהגות",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "ממשק",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "קיצורי מקלדת",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "גיבוי/שחזור",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "notSet": {
+        "message": "לא הוגדר"
+    },
+    "change": {
+        "message": "שנה"
+    },
+    "youtubeKeybindWarning": {
+        "message": "זה הוא קיצור דרך מובנה ביוטיוב. האם אתה בטוח שאתה רוצה להשתמש בו?"
     }
 }

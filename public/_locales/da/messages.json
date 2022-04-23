@@ -209,6 +209,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Aktiver Optælling Af Antal Spring Over I Private-/Inkognitovinduer"
     },
+    "enableTrackDownvotes": {
+        "message": "Gem segment nedstemmer"
+    },
+    "whatTrackDownvotes": {
+        "message": "Ethvert segment, du nedstemmer vil forblive skjult selv efter genindlæsning"
+    },
+    "trackDownvotesWarning": {
+        "message": "Advarsel: Deaktivering af dette vil slette alle tidligere gemte nedstemmer"
+    },
     "enableQueryByHashPrefix": {
         "message": "Forespørg Efter Hashpræfiks"
     },
@@ -582,6 +591,9 @@
     "category_preview_description": {
         "message": "Hurtig opsummering af tidligere episoder eller en forsmag på, hvad der kommer senere i den aktuelle video. Er beregnet til sammenklippede klip, ikke til talte resuméer."
     },
+    "category_filler": {
+        "message": "Fyldningstangent/Jokes"
+    },
     "category_filler_description": {
         "message": "Tangential scener kun tilføjet for fyldstof eller humor, som ikke er nødvendige for at forstå videoens hovedindhold. Dette bør ikke omfatte segmenter, der gtiver kontekst eller bagrundsoplysninger."
     },
@@ -689,10 +701,13 @@
         "message": "(Slut)"
     },
     "hiddenDueToDownvote": {
-        "message": "skjult: downvote"
+        "message": "skjult: nedstem"
     },
     "hiddenDueToDuration": {
         "message": "skjult: for kort"
+    },
+    "manuallyHidden": {
+        "message": "manuelt skjult"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -780,6 +795,9 @@
     "Donate": {
         "message": "Doner"
     },
+    "considerDonating": {
+        "message": "Hjælp til at finansiere udvikling"
+    },
     "hideDonationLink": {
         "message": "Skjul Donationslink"
     },
@@ -802,7 +820,7 @@
         "message": "Videosegmenter vil automatisk blive sprunget over, hvis de findes i databasen. Du kan åbne popup-vinduet ved at klikke på ikonet for udvidelsen for at få et eksempel på, hvad de er."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Når du springer et segment over, får du besked, når du springer et segment over. Hvis timingen virker forkert, kan du stemme ned ved at klikke på downvote! Du kan også stemme i popup-vinduet."
+        "message": "Når du springer et segment over, får du besked, når du springer et segment over. Hvis timingen virker forkert, kan du stemme ned ved at klikke på nedstem! Du kan også stemme i popup-vinduet."
     },
     "Submitting": {
         "message": "Indsendelse"
@@ -811,7 +829,7 @@
         "message": "Indsendelse kan enten ske i popup-vinduet ved at trykke på \"Segment Begynder Nu\"-knappen eller i videoafspilleren med knapperne på afspilleren."
     },
     "helpPageSubmitting2": {
-        "message": "Ved at klikke på play-knappen vises starten af et segment, og ved at klikke på stop-ikonet vises slutningen. Du kan forberede flere sponsorer, før du trykker på Send. Hvis du klikker på upload-knappen, sendes det. Hvis du klikker på skraldespanden, slettes den."
+        "message": "Clicking the play button indicated the start of a segment and clicking the stop icon indicates the end. You can prepare multiple sponsors before hitting submit. Clicking the upload button will submit. Clicking the garbage can will delete."
     },
     "Editing": {
         "message": "Redigering"
@@ -911,5 +929,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Dette er en indbygget Youtube-genvej. Er du sikker på, at du vil bruge den?"
+    },
+    "betaServerWarning": {
+        "message": "BETA Server er aktiveret!"
+    },
+    "openOptionsPage": {
+        "message": "Åbn indstillinger"
     }
 }
