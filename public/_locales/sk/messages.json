@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Skopírovať verejné ID používateľa"
     },
+    "copySegmentID": {
+        "message": "Skopírovať ID segmentu"
+    },
     "discordAdvert": {
         "message": "Pripojte sa k oficiálnemu Discord serveru a zanechajte nám pripomienky!"
     },
@@ -830,6 +833,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Týmto ihneď vykonáte zmeny v segmentoch"
+    },
+    "downvote": {
+        "message": "Hlasovať proti"
+    },
+    "upvote": {
+        "message": "Hlasovať za"
+    },
+    "hideSegment": {
+        "message": "Skryť segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Čas môžete rýchlo zmeniť kolieskom myši, ak je kurzor nad zadávacím políčkom. Pre jemné zmeny pritom držte kláves ctrl alebo shift."
