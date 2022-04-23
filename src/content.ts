@@ -1377,6 +1377,14 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
 }
 
 function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, unskipTime: number, startReskip: boolean) {
+    for (const skipNotice of skipNotices) {
+        if (skippingSegments.length === skipNotice.segments.length 
+                && skippingSegments.every((segment) => skipNotice.segments.some((s) => s.UUID === segment.UUID))) {
+            // Skip notice already exists
+            return;
+        }
+    }
+    
     const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime, startReskip);
     if (onMobileYouTube || Config.config.skipKeybind == null) newSkipNotice.setShowKeybindHint(false);
     skipNotices.push(newSkipNotice);
