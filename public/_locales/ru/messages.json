@@ -882,6 +882,12 @@
     "ChangeCategoryTooltip": {
         "message": "Это мгновенно применится к вашим сегментам"
     },
+    "downvote": {
+        "message": "Голос «против»"
+    },
+    "upvote": {
+        "message": "Голос «за»"
+    },
     "hideSegment": {
         "message": "Скрыть сегмент"
     },
