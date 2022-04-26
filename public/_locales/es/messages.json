@@ -882,6 +882,12 @@
     "ChangeCategoryTooltip": {
         "message": "Esto se aplicará instantáneamente a tus segmentos"
     },
+    "downvote": {
+        "message": "Voto negativo"
+    },
+    "upvote": {
+        "message": "Voto positivo"
+    },
     "hideSegment": {
         "message": "Ocultar segmento"
     },
