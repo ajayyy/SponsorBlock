@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "பொது பயனர் IDயை நகலெடுக்கவும்"
     },
+    "copySegmentID": {
+        "message": "துண்டத்தின் IDஐ நகலெடு"
+    },
     "discordAdvert": {
         "message": "பரிந்துரைகள் மற்றும் கருத்துக்களை வழங்க அதிகாரப்பூர்வ டிஸ்கார்ட் சேவையகத்தில் சேர வாருங்கள்!"
     },
@@ -735,6 +738,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "இது உம் துண்டங்களை உடனடியாகச் செயல்படுத்தும்"
+    },
+    "downvote": {
+        "message": "வாக்கிறக்கு"
+    },
+    "upvote": {
+        "message": "வாக்கேற்று"
+    },
+    "hideSegment": {
+        "message": "துண்டத்தை மறை"
     },
     "dayAbbreviation": {
         "message": "நா",
