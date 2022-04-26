@@ -53,7 +53,7 @@
         "message": "繼續跳過"
     },
     "unmute": {
-        "message": "取消靜音"
+        "message": "解除靜音"
     },
     "paused": {
         "message": "已暫停"
@@ -162,7 +162,10 @@
         "message": "設定使用者名稱"
     },
     "copyPublicID": {
-        "message": "複製公開使用者名稱"
+        "message": "複製公開使用者ID"
+    },
+    "copySegmentID": {
+        "message": "複製片段ID"
     },
     "discordAdvert": {
         "message": "快加入官方 Discord 伺服器來給予建議和反應！"
@@ -878,6 +881,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "這將會立即套用至你的片段"
+    },
+    "downvote": {
+        "message": "按倒讚"
+    },
+    "upvote": {
+        "message": "按讚"
+    },
+    "hideSegment": {
+        "message": "隱藏片段"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "在滑鼠鼠標放在編輯框上時使用滾輪以快速調製時間。Ctrl和Shift可以用於精密調整"
