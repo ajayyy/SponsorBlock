@@ -111,8 +111,10 @@ export interface BackgroundScriptContainer {
 }
 
 export interface VideoInfo {
-    channelID: string,
-    channelTitle: string
+    channelID?: string,
+    channelTitle?: string,
+    isLive?: boolean,
+    isPremiere?: boolean,
 }
 
 export type VideoID = string;
@@ -168,3 +170,5 @@ export type Keybind = {
     alt?: boolean,
     shift?: boolean
 }
+
+export type PageType = "shorts" | "watch" | "search" | "browse" | "channel" | "search"
