@@ -611,7 +611,7 @@
   padding: 5px 16px;
   border-radius: 4px;
   font-weight: 500;
-  transition: 0.4s;
+  transition: background 0.3s ease !important;
   margin: 2px 1px;
 }
 
