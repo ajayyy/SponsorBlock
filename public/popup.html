@@ -15,16 +15,17 @@
         __MSG_betaServerWarning__
       </div>
 
+      
       <header class="sbPopupLogo">
         <img src="icons/IconSponsorBlocker256px.png" alt="SponsorBlock" width="40" height="40" id="sponsorBlockPopupLogo">
         <p class="u-mZ">SponsorBlock</p>
       </header>
-
+      
       <div id="videoInfo">
         <!-- Loading text -->
-        <p id="loadingIndicator" class="u-mZ">__MSG_noVideoID__</p>
+        <p id="loadingIndicator" class="u-mZ grey-text">__MSG_noVideoID__</p>
         <!-- If the video was found in the database -->
-        <p id="videoFound" class="u-mZ"></p>
+        <p id="videoFound" class="u-mZ grey-text"></p>
         <button id="refreshSegmentsButton" title="__MSG_refreshSegments__">
           <img src="/icons/refresh.svg" alt="Refresh icon" id="refreshSegments" />
         </button>
@@ -32,7 +33,7 @@
           <div id="issueReporterTimeButtons"></div>
         </div>
       </div>
-
+      
       <div class="sbControlsMenu">
         <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item">
           <input type="checkbox" style="display:none;" id="whitelistToggle">
@@ -54,9 +55,8 @@
           <span id="disableSkipping">__MSG_disableSkipping__</span>
           <span id="enableSkipping" style="display: none">__MSG_enableSkipping__</span>
         </label>
-        <button id="optionsButton" class="sbControlsMenu-item" title="__MSG_optionsInfo__">
-          <img src="/icons/settings.svg" alt="Settings icon" width="23" height="23" class="sbControlsMenu-itemIcon" id="sbPopupIconSettings" />
-          __MSG_Options__
+        <button id="optionsButton" data-hover="__MSG_Options__" title="__MSG_OptionsInfo__">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"  fill="currentColor"><path d="M24 13.6v-3.2c-1.7-.6-2.7-.8-3.2-2h0c-.5-1.3.1-2.1.8-3.7l-2.3-2.3c-1.6.7-2.4 1.4-3.7.8h0c-1.3-.5-1.4-1.6-2-3.2h-3.2c-.6 1.6-.7 2.7-2 3.2h0c-1.3.5-2.1-.1-3.7-.8L2.4 4.7c.7 1.6 1.4 2.4.8 3.7s-1.6 1.4-3.2 2v3.2c1.6.6 2.7.7 3.2 2 .5 1.3-.1 2.2-.8 3.7l2.3 2.3c1.6-.7 2.4-1.4 3.7-.8h0c1.3.5 1.4 1.6 2 3.2h3.2c.6-1.6.8-2.7 2-3.2h0c1.3-.5 2.1.1 3.7.9l2.3-2.3c-.7-1.6-1.4-2.4-.8-3.7s1.6-1.4 3.2-2zM12 16a4 4 0 1 1 0-8 4 4 0 1 1 0 8z"/></svg>
         </button>
       </div>
 
@@ -80,9 +80,17 @@
 
       <h1 class="recordingSubtitle sbHeader">__MSG_yourWork__</h1>
       <div class="sbYourWorkCols">
+        <div id="sponsorTimesContributionsContainer" class="hidden">
+          <div>
+            <p class="u-mZ grey-text">__MSG_Submissions__:</p>
+            <span id="sponsorTimesContributionsDisplay">
+              0
+            </span>
+          </div>
+        </div>
         <div id="usernameElement">
           <div>
-            <p class="u-mZ">__MSG_Username__:</p>
+            <p class="u-mZ grey-text">__MSG_Username__:</p>
             <div id="setUsernameContainer">
               <p id="usernameValue"></p>
               <button id="setUsernameButton" title="__MSG_setUsername__">
@@ -101,14 +109,6 @@
                 <img src="/icons/check.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconCheck">
               </button>
             </div>
-          </div>
-        </div>
-        <div id="sponsorTimesContributionsContainer" class="hidden">
-          <div>
-            <p class="u-mZ">__MSG_Submissions__:</p>
-            <span id="sponsorTimesContributionsDisplay">
-              0
-            </span>
           </div>
         </div>
       </div>
@@ -145,13 +145,13 @@
           <img id="sbCloseDonate" src="/icons/close.png" alt="Close icon" height="8" style="padding-left: 5px; cursor: pointer;" />
         </div>
 
-        <a href="https://sponsor.ajay.app" target="_blank" rel="noopener">__MSG_website__</a> |
-        <a href="https://sponsor.ajay.app/stats" target="_blank" rel="noopener">__MSG_viewLeaderboard__</a> |
+        <a href="https://sponsor.ajay.app" target="_blank" rel="noopener">__MSG_website__</a>
+        <a href="https://sponsor.ajay.app/stats" target="_blank" rel="noopener">__MSG_viewLeaderboard__</a>
         <a href="https://github.com/ajayyy/SponsorBlock" target="_blank" rel="noopener">GitHub</a>
         <br/>
-        <a href="https://discord.gg/SponsorBlock" target="_blank" rel="noopener">Discord</a> |
-        <a href="https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org" target="_blank" rel="noopener">Matrix</a> |
-        <a id="helpButton">__MSG_help__</a> |
+        <a href="https://discord.gg/SponsorBlock" target="_blank" rel="noopener">Discord</a>
+        <a href="https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org" target="_blank" rel="noopener">Matrix</a>
+        <a id="helpButton">__MSG_help__</a>
         <a href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener" id="sbDonate">$</a>
       </footer>
 

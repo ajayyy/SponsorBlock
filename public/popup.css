@@ -1,9 +1,14 @@
 :root {
   --sb-main-font-family: "Source Sans Pro", sans-serif;
-  --sb-main-bg-color: #222626;
+  --sb-main-bg-color: #111;
   --sb-main-fg-color: #fff;
   --sb-grey-bg-color: #333;
+  --sb-grey-fg-color: #999;
   --sb-red-bg-color: #cc1717;
+}
+
+.grey-text {
+  color: var(--sb-grey-fg-color);
 }
 
 /*
@@ -107,17 +112,75 @@
 
 .sbPopupLogo {
   display: flex;
+  flex-direction: column;
   align-items: center;
   font-size: 32px;
   font-weight: bold;
   justify-content: center;
   user-select: none;
-  padding: 20px 0 10px;
+  padding: 1rem;
 }
 
 .sbPopupLogo img {
-  margin-right: 8px;
+  margin: 0.5rem 0;
 }
+
+/* 
+ * Options button
+ */
+
+#optionsButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background: none;
+  box-shadow: none;
+  border: none;
+  top: 26px;
+  right: 26px;
+  padding: 5px;
+  z-index: 69;
+  height: 2rem;
+  width: 2rem;
+}
+#optionsButton svg {
+  transition: transform 0.15s ease-in-out !important;
+  transform-origin: center center;
+  color: var(--sb-grey-fg-color);
+}
+
+#optionsButton:hover svg {
+  color: var(--sb-main-fg-color);
+  transform: rotate(90deg);
+}
+
+#optionsButton:active svg {
+  transform: scale(1.5);
+}
+
+#optionsButton:before {
+  content: attr(data-hover);
+  opacity: 0;
+  pointer-events: none;
+  width: content;
+  color: var(--sb-main-fg-color);
+  background-color: var(--sb-grey-bg-color);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  transition: .3s;
+
+  position: absolute;
+  z-index: 1;
+  left: -200%;
+  top: 0.25rem;
+}
+
+#optionsButton:hover:before {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
 
 /*
  * Refresh segments button
@@ -397,7 +460,7 @@
 
 .sbYourWorkCols {
   display: flex;
-  margin: 0 20px 12px;
+  margin: 1rem;
 }
 
 .sbYourWorkCols > div {
@@ -540,10 +603,21 @@
 }
 
 #sbFooter a {
+  display: inline-block;
   color: var(--sb-main-fg-color);
   text-decoration: none;
+  background: #222;
+  cursor: pointer;
+  padding: 5px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: 0.4s;
+  margin: 2px 1px;
 }
 
+#sbFooter a:hover {
+  background: #444;
+}
 /*
  * "Show Notice Again" button
  */
@@ -561,7 +635,7 @@
  * Generic utilities
  */
 
- #sponsorBlockPopupBody .u-mZ {
+#sponsorBlockPopupBody .u-mZ {
   margin: 0 !important;
 }
 
