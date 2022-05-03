@@ -65,6 +65,7 @@ let videoMutationObserver: MutationObserver = null;
 const videosWithEventListeners: HTMLVideoElement[] = [];
 const controlsWithEventListeners: HTMLElement[] = []
 
+// This misleading variable name will be fixed soon
 let onInvidious;
 let onMobileYouTube;
 
