@@ -421,7 +421,7 @@
 
 #mainControls {
   margin: 16px;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 8px;
   text-align: left;
   border: 2px solid var(--sb-grey-bg-color);
