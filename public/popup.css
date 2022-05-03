@@ -1,48 +1,52 @@
 :root {
   --sb-main-font-family: "Source Sans Pro", sans-serif;
-  --sb-main-bg-color: #212121;
+  --sb-main-bg-color: #222;
   --sb-main-fg-color: #fff;
   --sb-grey-bg-color: #333;
   --sb-grey-fg-color: #999;
   --sb-red-bg-color: #cc1717;
 }
 
+/*
+ * Generic utilities
+ */
 .grey-text {
   color: var(--sb-grey-fg-color);
 }
 .white-text {
   color: var(--sb-main-fg-color);
 }
-
-/*
- * Container when popup displayed in-page
- */
-
-#sponsorBlockPopupContainer {
+.sbHeader {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin: 0;
+}
+#sponsorBlockPopupBody .u-mZ {
+  margin: 0 !important;
   position: relative;
-  margin-bottom: 16px;
+}
+
+#sponsorBlockPopupBody .hidden {
+  display: none !important;
 }
 
 /*
- * Disable popup max height when displayed in-page
+ * <button> elements that have icons
  */
-
-#sponsorBlockPopupContainer #sponsorBlockPopupHTML {
-  max-height: none;
-}
-
-/*
- * Disable fixed popup width when displayed in-page
- */
-
-#sponsorBlockPopupContainer #sponsorBlockPopupBody {
-  width: auto;
-}
+ #setUsernameButton,
+ #copyUserID,
+ #submitUsername {
+   color: var(--sb-main-fg-color);
+   background: transparent;
+   width: fit-content;
+   padding: none;
+   border: none;
+ }
 
 /*
  * Main containers
  */
-
 #sponsorBlockPopupHTML {
   color-scheme: dark;
   max-height: 600px;
@@ -53,8 +57,8 @@
   margin: 0;
   width: 374px;
   max-width: 100%; /* NOTE: Ensures content doesn't exceed restricted popup widths in Firefox */
-  font-family: var(--sb-main-font-family);
   font-size: 14px;
+  font-family: var(--sb-main-font-family);
   background-color: var(--sb-main-bg-color);
   color: var(--sb-main-fg-color);
   color-scheme: dark;
@@ -72,7 +76,6 @@
 /*
  * Disable transition on all elements until the extension has loaded
  */
-
 .sb-preload * {
   transition: none !important;
 }
@@ -80,7 +83,6 @@
 /*
  * Alert indicating that Beta server is enabled
  */
-
 #sbBetaServerWarning {
   padding: 8px;
   font-size: 1em;
@@ -91,114 +93,126 @@
 }
 
 /*
- * Header logo
+ * Container when popup displayed in-page (content.ts)
  */
-
-.sbPopupLogo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 32px;
-  font-weight: bold;
-  justify-content: center;
-  user-select: none;
-  padding-top: 16px;
+#sponsorBlockPopupContainer {
+  position: relative;
+  margin-bottom: 16px;
 }
 
-.sbPopupLogo img {
-  margin: 8px;
+/*
+ * Disable popup max height when displayed in-page (content.ts)
+ */
+#sponsorBlockPopupContainer #sponsorBlockPopupHTML {
+  max-height: none;
+}
+
+/*
+ * Disable fixed popup width when displayed in-page (content.ts)
+ */
+#sponsorBlockPopupContainer #sponsorBlockPopupBody {
+  width: auto;
 }
 
 /*
  * Close popup button when displayed in-page (top-left corner)
  */
-
 .sbCloseButton {
-  background: transparent;
-  border: 0;
-  padding: 8px;
+  border: none;
   cursor: pointer;
   position: absolute;
-  top: 26px;
-  left: 26px;
+  background: transparent;
   opacity: 0.5;
+  padding: 8px;
+  left: 26px;
+  top: 26px;
 }
-
 .sbCloseButton:hover {
   opacity: 1;
+}
+
+/*
+ * Header logo
+ */
+.sbPopupLogo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  user-select: none;
+  padding-top: 16px;
+  font-size: 32px;
+}
+.sbPopupLogo img {
+  margin: 8px;
 }
 
 /* 
  * Options button (top-right corner)
  */
-
 #optionsButton {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  background: none;
   box-shadow: none;
+  background: none;
   border: none;
-  top: 26px;
-  right: 26px;
   padding: 5px;
-  z-index: 69;
   height: 32px;
   width: 32px;
+  right: 26px;
+  top: 26px;
 }
 #optionsButton svg {
   transition: transform 0.15s ease-in-out !important;
   transform-origin: center center;
   color: var(--sb-grey-fg-color);
 }
-
 #optionsButton:hover svg {
   color: var(--sb-main-fg-color);
   transform: rotate(90deg);
 }
-
 #optionsButton:active svg {
   transform: scale(1.5);
 }
 
+/*
+ * Options button Tooltip
+ */
 #optionsButton:before {
-  content: attr(data-hover);
-  opacity: 0;
-  pointer-events: none;
-  width: content;
-  color: var(--sb-main-fg-color);
   background-color: var(--sb-grey-bg-color);
+  color: var(--sb-main-fg-color);
+  content: attr(data-hover);
+  pointer-events: none;
   border-radius: 16px;
+  position: absolute;
   padding: 4px 8px;
   transition: .3s;
-
-  position: absolute;
-  z-index: 1;
+  width: content;
   left: -200%;
+  z-index: 1;
+  opacity: 0;
   top: 4px;
 }
-
 #optionsButton:hover:before {
-  opacity: 1;
   transform: translateX(-5px);
+  opacity: 1;
 }
-
 
 /*
  * Refresh segments button
  */
-
 #refreshSegmentsButton {
-  background: transparent;
-  border: 0;
-  border-radius: 50%;
   display: flex;
-  padding: 5px;
-  margin: 5px auto;
   align-items: center;
+  background: transparent;
+  border-radius: 50%;
+  margin: 5px auto;
+  border: none;
+  padding: 5px;
 }
-
 #refreshSegmentsButton:hover {
   background-color: var(--sb-grey-bg-color);
 }
@@ -206,17 +220,14 @@
 /*
  * <details> wrapper around each segment
  */
-
 .votingButtons {
-  margin: 4px 16px;
-  border-radius: 8px;
   font-family: Arial, Helvetica, sans-serif;
+  border-radius: 8px;
+  margin: 4px 16px;
 }
-
 .votingButtons[open] {
   padding-bottom: 5px;
 }
-
 .votingButtons:hover {
   background-color: var(--sb-grey-bg-color);
 }
@@ -224,57 +235,50 @@
 /*
  * Individual segments summaries (clickable <summary>)
  */
-
 .segmentSummary {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 4px 8px;
-  list-style: none;
+  justify-content: space-between;
   white-space: nowrap;
+  font-weight: bold;
+  list-style: none;
+  cursor: pointer;
+  padding: 4px 8px;
 }
-
 .segmentSummary > div {
   text-align: left;
 }
-
-.summaryLabel {
-  overflow-wrap: break-word !important;
-  max-width: 50px !important;
-  white-space: normal;
-}
-
 /*
  * Category dot in segment
  */
-
 .sponsorTimesCategoryColorCircle {
   margin-right: 8px;
 }
-
 .dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   display: inline-block;
 }
+/* 
+ * Category name in segment
+ */
+.summaryLabel {
+  overflow-wrap: break-word;
+  white-space: normal;
+}
 
 /*
  * Buttons that appear under a segment on click
  */
-
 .voteButton {
   height: 20px;
   padding: 0 5px;
   cursor: pointer;
 }
-
 /*
  * "Voted!" text that appears after voting on a segment
  */
-
 .sponsorTimesThanksForVotingText {
   font-size: large;
 }
@@ -282,114 +286,44 @@
 /*
  * Main controls menu
  */
-
 .sbControlsMenu {
   margin: 16px;
+  margin-top: 6px;
   border-radius: 8px;
+  background-color: var(--sb-grey-bg-color);
+  justify-content: space-evenly;
   overflow: hidden;
   display: flex;
-  justify-content: space-evenly;
-  background-color: var(--sb-grey-bg-color);
 }
-
 .sbControlsMenu-item {
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  user-select: none;
-  padding: 10px 15px;
-  flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
+  background: transparent;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  flex: 1;
+  padding: 10px 15px;
   trasition: background-color 0.2s ease-in-out;
 }
-
 .sbControlsMenu-item:hover {
   background-color: #444;
 }
-
 .sbControlsMenu-itemIcon {
   margin-bottom: 6px;
 }
 
 /*
- * "Skipping is enabled" toggle
- */
-
-.toggleSwitchContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.toggleSwitchContainer-switch {
-  display: flex;
-  margin-bottom: 6px;
-}
-
-.switchBg {
-  display: block;
-  width: 50px;
-  height: 23px;
-  border-radius: 18.5px;
-}
-
-.switchBg.shadow {
-  box-shadow: 0.75px 0.75px 10px 0px rgba(50, 50, 50, 0.5);
-  opacity: 1;
-}
-
-.switchBg.white {
-  position: absolute;
-  background-color: #ccc;
-  opacity: 1;
-}
-
-.switchBg.green {
-  position: absolute;
-  background-color: #00a205;
-  opacity: 0;
-  transition: opacity 0.2s ease-out;
-}
-
-.switchDot {
-  background-color: var(--sb-main-fg-color);
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  margin: 4px;
-  position: absolute;
-  box-shadow: 0.75px 0.75px 3.8px 0px rgba(50, 50, 50, 0.45);
-  transition: transform 0.2s ease-out;
-}
-
-#toggleSwitch:checked ~ .switchDot {
-  transform: translateX(27px);
-}
-
-#toggleSwitch:checked ~ .switchBg.green {
-  opacity: 1;
-}
-
-#toggleSwitch:checked ~ .switchBg.white {
-  opacity: 0;
-  transition: opacity 0.2s step-end;
-}
-
-/*
  * Whitelist add/remove icon
  */
-
 .SBWhitelistIcon > path {
   fill: var(--sb-main-fg-color);
 }
-
 .SBWhitelistIcon.rotated {
   transform: rotate(45deg);
 }
-
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -400,33 +334,83 @@
 }
 
 /*
+ * "Skipping is enabled" toggle
+ */
+.toggleSwitchContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.toggleSwitchContainer-switch {
+  display: flex;
+  margin-bottom: 6px;
+}
+.switchBg {
+  width: 50px;
+  height: 23px;
+  display: block;
+  border-radius: 18.5px;
+}
+.switchBg.shadow {
+  box-shadow: 0.75px 0.75px 10px 0px rgba(50, 50, 50, 0.5);
+  opacity: 1;
+}
+.switchBg.white {
+  opacity: 1;
+  position: absolute;
+  background-color: #ccc;
+}
+.switchBg.green {
+  opacity: 0;
+  position: absolute;
+  background-color: #00a205;
+  transition: opacity 0.2s ease-out;
+}
+.switchDot {
+  width: 15px;
+  margin: 4px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  transition: transform 0.2s ease-out;
+  background-color: var(--sb-main-fg-color);
+  box-shadow: 0.75px 0.75px 3.8px 0px rgba(50, 50, 50, 0.45);
+}
+#toggleSwitch:checked ~ .switchDot {
+  transform: translateX(27px);
+}
+#toggleSwitch:checked ~ .switchBg.green {
+  opacity: 1;
+}
+#toggleSwitch:checked ~ .switchBg.white {
+  transition: opacity 0.2s step-end;
+  opacity: 0;
+}
+
+/*
  * Notice that appears when whitelisting a channel, that recommends
  * enabling the "Force Channel Check Before Skipping" option
  */
-
 #whitelistForceCheck {
   background-color: #fff3cd;
-  color: #664d03;
-  display: block;
   padding: 10px 15px;
+  display: block;
+  color: #664d03;
 }
-
 #whitelistForceCheck:hover {
   background-color: #f2e4b7;
 }
 
 /*
- * Container around the "Segment Starts Now" and "Submit Times" buttons
+ * Submit box
  */
-
 #mainControls {
   margin: 16px;
   padding: 8px 12px;
-  border-radius: 8px;
   text-align: left;
+  border-radius: 8px;
   border: 2px solid var(--sb-grey-bg-color);
 }
-
 .sponsorStartHint {
   display: block;
   text-align: left;
@@ -435,120 +419,66 @@
 /*
  * Generic buttons used for "Segment Starts Now" and "Submit Times"
  */
-
 .sbMediumButton {
-  background-color: var(--sb-red-bg-color);
-  border: 0;
-  -moz-border-radius: 28px;
-  -webkit-border-radius: 28px;
-  border-radius: 28px;
-  display: inline-block;
-  color: var(--sb-main-fg-color);
+  border: none;
   font-size: 16px;
   padding: 8px 16px;
-  font-family: var(--sb-main-font-family);
+  border-radius: 28px;
+  display: inline-block;
+  -moz-border-radius: 28px;
+  -webkit-border-radius: 28px;
+  color: var(--sb-main-fg-color);
   transition: 0.01s background-color;
+  font-family: var(--sb-main-font-family);
+  background-color: var(--sb-red-bg-color);
 }
-
 .sbMediumButton:hover,
 .sbMediumButton:focus {
-  outline: none;
   background-color: #ec1c1c;
+  outline: none;
 }
-
 .sbMediumButton:active {
   position: relative;
   top: 1px;
 }
-
 /*
  * "Submit Times" button
  */
-
 #submitTimes {
   margin-top: 12px;
 }
 
 /*
- * Heading utility class
+ * Your Work box
  */
-
-.sbHeader {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: left;
-  margin: 0;
-}
-
-/*
- * Side-by-side section of "Your Work"
- */
-
 .sbYourWorkCols {
   margin: 16px;
+  margin-bottom: 8px;
   border-radius: 8px;
   border: 2px solid var(--sb-grey-bg-color);
 }
-
 .sbYourWorkCols > div {
   display: flex;
   border-top: 2px solid var(--sb-grey-bg-color);
 }
-
-#usernameElement {
-  padding: 8px;
-}
-
-#sponsorTimesContributionsContainer {
-  padding: 8px;
-}
-
-/*
- * <button> elements that have icons
- */
-
-#setUsernameButton,
-#copyUserID,
-#submitUsername {
-  background: transparent;
-  border: 0;
-  padding: 0;
-  color: var(--sb-main-fg-color);
-  width: fit-content;
-}
-
-/*
- * Prevent username from wrapping
- */
-
-#setUsernameButton {
-  flex: 0 1;
-  margin-right: 5px;
-}
-
-/*
- * Set username button
- */
-
-#submitUsername {
-  padding-left: 16px;
-}
-
 /*
  * Increase font size of username input and display
  */
-
 #usernameValue,
 #usernameInput,
 #sponsorTimesContributionsDisplay {
   font-size: 16px;
   flex: 1 0;
 }
-
-/*
- * Left align "Username" and "Submissions" labels
+ /*
+ * Improve alignment of username and submissions
  */
-
+#usernameElement,
+#sponsorTimesContributionsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
 #usernameElement > span,
 #sponsorTimesContributionsContainer {
   text-align: start;
@@ -561,66 +491,48 @@
 }
 
 /*
- * Enable flexbox for buttons with SVG icon
+ * Username
  */
-
+#usernameElement {
+  padding: 8px;
+}
+#setUsernameContainer {
+  display: flex;
+}
 #setUsernameContainer > button {
   display: flex;
 }
-
-/*
- * Improve position of "Copy User ID" button
- */
-
+#setUsernameButton {
+  margin-right: 5px;
+  flex: 0 1;
+}
+#submitUsername {
+  padding-left: 16px;
+}
 #copyUserID {
   width: 100%;
   flex: 0 1;
 }
-
-/*
- * Container around username display and edit
- */
-
-#setUsernameContainer {
-  display: flex;
-}
-
-/*
- * Improve alignment of username and submissions
- */
-
-#usernameElement,
-#sponsorTimesContributionsContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-}
-
 /*
  * Truncate username display
  */
-
 #usernameValue {
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
   margin: 0 8px 0 0;
   max-width: 130px;
 }
-
 /*
  * Set username form container with "expanded" state
  */
-
 #setUsername.SBExpanded {
-  text-align: left;
   width: calc(200% - 130px);
+  text-align: left;
 }
-
 /*
  * Set username input
  */
-
 #usernameInput {
   border: none;
   padding: 4px 8px;
@@ -631,34 +543,38 @@
   background: var(--sb-grey-bg-color);
 }
 
+/* 
+ * Submissions
+*/
+#sponsorTimesContributionsContainer {
+  padding: 8px;
+}
+
 /*
  * Footer
  */
-
 #sbFooter {
   padding: 8px 0;
 }
-
 #sbFooter a {
-  display: inline-block;
+  transition: background 0.3s ease !important;
   color: var(--sb-main-fg-color);
+  display: inline-block;
   text-decoration: none;
+  border-radius: 4px;
   background: #333;
   cursor: pointer;
   padding: 4px 8px;
-  border-radius: 4px;
   font-weight: 500;
-  transition: background 0.3s ease !important;
   margin: 2px 1px;
 }
-
 #sbFooter a:hover {
   background: #444;
 }
+
 /*
  * "Show Notice Again" button
  */
-
 #showNoticeAgain {
   background: transparent;
   border: 1px solid #fff;
@@ -666,17 +582,4 @@
   color: var(--sb-main-fg-color);
   margin-bottom: 20px;
   padding: 5px;
-}
-
-/*
- * Generic utilities
- */
-
-#sponsorBlockPopupBody .u-mZ {
-  margin: 0 !important;
-  position: relative;
-}
-
-#sponsorBlockPopupBody .hidden {
-  display: none !important;
 }
