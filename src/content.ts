@@ -1708,7 +1708,6 @@ function openInfoMenu() {
             //make the logo source not 404
             //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
             const logo = <HTMLImageElement> popup.querySelector("#sponsorBlockPopupLogo");
-            const settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
             const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
             const copy = <HTMLImageElement> popup.querySelector("#sbPopupIconCopyUserID");
             const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
@@ -1716,7 +1715,6 @@ function openInfoMenu() {
             const heart = <HTMLImageElement> popup.querySelector(".sbHeart");
             const close = <HTMLImageElement> popup.querySelector("#sbCloseDonate");
             logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
-            settings.src = chrome.extension.getURL("icons/settings.svg");
             edit.src = chrome.extension.getURL("icons/pencil.svg");
             copy.src = chrome.extension.getURL("icons/clipboard.svg");
             check.src = chrome.extension.getURL("icons/check.svg");

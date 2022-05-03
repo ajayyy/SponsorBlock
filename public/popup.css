@@ -1,6 +1,6 @@
 :root {
   --sb-main-font-family: "Source Sans Pro", sans-serif;
-  --sb-main-bg-color: #111;
+  --sb-main-bg-color: #212121;
   --sb-main-fg-color: #fff;
   --sb-grey-bg-color: #333;
   --sb-grey-fg-color: #999;
@@ -9,6 +9,9 @@
 
 .grey-text {
   color: var(--sb-grey-fg-color);
+}
+.white-text {
+  color: var(--sb-main-fg-color);
 }
 
 /*
@@ -75,25 +78,6 @@
 }
 
 /*
- * Close popup button when displayed in-page
- */
-
-.sbCloseButton {
-  background: transparent;
-  border: 0;
-  padding: 8px;
-  cursor: pointer;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  opacity: 0.5;
-}
-
-.sbCloseButton:hover {
-  opacity: 1;
-}
-
-/*
  * Alert indicating that Beta server is enabled
  */
 
@@ -118,15 +102,34 @@
   font-weight: bold;
   justify-content: center;
   user-select: none;
-  padding: 1rem;
+  padding-top: 16px;
 }
 
 .sbPopupLogo img {
-  margin: 0.5rem 0;
+  margin: 0.5rem;
+}
+
+/*
+ * Close popup button when displayed in-page (top-left corner)
+ */
+
+.sbCloseButton {
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  opacity: 0.5;
+}
+
+.sbCloseButton:hover {
+  opacity: 1;
 }
 
 /* 
- * Options button
+ * Options button (top-right corner)
  */
 
 #optionsButton {
@@ -141,8 +144,8 @@
   right: 26px;
   padding: 5px;
   z-index: 69;
-  height: 2rem;
-  width: 2rem;
+  height: 32px;
+  width: 32px;
 }
 #optionsButton svg {
   transition: transform 0.15s ease-in-out !important;
@@ -205,6 +208,8 @@
  */
 
 .votingButtons {
+  margin: 4px 16px;
+  border-radius: 8px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -221,11 +226,24 @@
  */
 
 .segmentSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
   font-weight: bold;
-  padding: 7px;
+  padding: 4px 8px;
   list-style: none;
   white-space: nowrap;
+}
+
+.segmentSummary > div {
+  text-align: left;
+}
+
+.summaryLabel {
+  overflow-wrap: break-word !important;
+  max-width: 50px !important;
+  white-space: normal;
 }
 
 /*
@@ -233,7 +251,7 @@
  */
 
 .sponsorTimesCategoryColorCircle {
-  margin: 0 8px;
+  margin-right: 8px;
 }
 
 .dot {
@@ -266,10 +284,12 @@
  */
 
 .sbControlsMenu {
-  background-color: var(--sb-grey-bg-color);
+  margin: 16px;
+  border-radius: 8px;
+  overflow: hidden;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 10px;
+  background-color: var(--sb-grey-bg-color);
 }
 
 .sbControlsMenu-item {
@@ -283,6 +303,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  trasition: background-color 0.2s ease-in-out;
 }
 
 .sbControlsMenu-item:hover {
@@ -399,12 +420,16 @@
  */
 
 #mainControls {
-  margin-bottom: 12px;
+  margin: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: left;
+  border: 2px solid var(--sb-grey-bg-color);
 }
 
 .sponsorStartHint {
   display: block;
-  padding: 0 10px 12px;
+  text-align: left;
 }
 
 /*
@@ -420,7 +445,7 @@
   display: inline-block;
   color: var(--sb-main-fg-color);
   font-size: 16px;
-  padding: 8px 37px;
+  padding: 8px 16px;
   font-family: var(--sb-main-font-family);
   transition: 0.01s background-color;
 }
@@ -451,7 +476,8 @@
 .sbHeader {
   font-size: 20px;
   font-weight: bold;
-  margin: 10px 0 5px;
+  text-align: left;
+  margin: 0;
 }
 
 /*
@@ -459,15 +485,23 @@
  */
 
 .sbYourWorkCols {
-  display: flex;
-  margin: 1rem;
+  margin: 16px;
+  border-radius: 8px;
+  border: 2px solid var(--sb-grey-bg-color);
 }
 
 .sbYourWorkCols > div {
   display: flex;
-  align-items: center;
-  flex-basis: 50%;
-  justify-content: center;
+  border-top: 2px solid var(--sb-grey-bg-color);
+}
+
+#usernameElement {
+  z-index: 2;
+  padding: 8px;
+}
+
+#sponsorTimesContributionsContainer {
+  padding: 8px;
 }
 
 /*
@@ -498,7 +532,7 @@
  */
 
 #submitUsername {
-  padding-left: 7px;
+  padding-left: 16px;
 }
 
 /*
@@ -516,9 +550,15 @@
  * Left align "Username" and "Submissions" labels
  */
 
-#usernameElement > div > p,
+#usernameElement > div > span,
 #sponsorTimesContributionsContainer {
   text-align: start;
+}
+
+#sponsorTimesContributionsContainer {
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 2px solid var(--sb-grey-bg-color);
 }
 
 /*
@@ -553,8 +593,10 @@
 #usernameElement > div,
 #sponsorTimesContributionsContainer > div {
   display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: start;
+  /* flex-flow: column nowrap; */
+  /* align-items: flex-start; */
 }
 
 /*
@@ -564,20 +606,18 @@
 #usernameValue {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 130px;
+  white-space: nowrap;
   margin: 0 8px 0 0;
+  max-width: 130px;
 }
 
 /*
  * Set username form container with "expanded" state
  */
 
-#setUsername {
-  display: flex;
-}
-
 #setUsername.SBExpanded {
-  width: 200%;
+  text-align: left;
+  width: calc(200% - 130px);
 }
 
 /*
@@ -585,12 +625,13 @@
  */
 
 #usernameInput {
-  background: transparent;
-  padding: 2px;
-  border: var(--sb-main-fg-color) 1px solid;
-  color: var(--sb-main-fg-color);
-  width: calc(100% - 24px);
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: calc(100% - 68px);
   text-overflow: ellipsis;
+  color: var(--sb-main-fg-color);
+  background: var(--sb-grey-bg-color);
 }
 
 /*
@@ -598,17 +639,16 @@
  */
 
 #sbFooter {
-  margin-top: 10px;
-  padding-bottom: 20px;
+  padding: 8px 0;
 }
 
 #sbFooter a {
   display: inline-block;
   color: var(--sb-main-fg-color);
   text-decoration: none;
-  background: #222;
+  background: #333;
   cursor: pointer;
-  padding: 5px 16px;
+  padding: 4px 8px;
   border-radius: 4px;
   font-weight: 500;
   transition: background 0.3s ease !important;
@@ -637,6 +677,7 @@
 
 #sponsorBlockPopupBody .u-mZ {
   margin: 0 !important;
+  position: relative;
 }
 
 #sponsorBlockPopupBody .hidden {

@@ -100,7 +100,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "submitUsername",
         "sbPopupIconCopyUserID",
         // More
-        "submissionSection",
+        "submissionHint",
         "mainControls",
         "loadingIndicator",
         "videoFound",
@@ -411,7 +411,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category]?.color;
                 categoryColorCircle.classList.add("dot");
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
-
+                
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
                     //this one is downvoted
@@ -420,26 +420,35 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     //this one is too short
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 } else if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
-                    extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
+                    extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") +")";
                 }
-
+                
                 const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
                 if (segmentTimes[i].actionType === ActionType.Full) {
                     segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
                 } else {
                     segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) +
-                            (segmentTimes[i].actionType !== ActionType.Poi
-                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true)
-                                : "");
+                    (segmentTimes[i].actionType !== ActionType.Poi
+                        ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true)
+                        : "");
                 }
-
+                
                 segmentTimeFromToNode.style.margin = "5px";
+                
+                // for inline-styling purposes
+                const labelContainer = document.createElement("div");
+                labelContainer.appendChild(categoryColorCircle);
 
-                segmentSummary.appendChild(categoryColorCircle);
-                segmentSummary.appendChild(textNode);
+                const span = document.createElement('span');
+                span.className = "summaryLabel";
+                span.appendChild(textNode);
+                labelContainer.appendChild(span);
+                // for inline-styling purposes
+
+                segmentSummary.appendChild(labelContainer);
                 segmentSummary.appendChild(segmentTimeFromToNode);
-
+                
                 const votingButtons = document.createElement("details");
                 votingButtons.classList.add("votingButtons");
 
@@ -562,7 +571,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function updateSegmentEditingUI() {
         PageElements.sponsorStart.innerText = chrome.i18n.getMessage(creatingSegment ? "sponsorEnd" : "sponsorStart");
 
-        PageElements.submissionSection.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
+        PageElements.submitTimes.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
+        PageElements.submissionHint.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
     }
 
     //make the options div visible
