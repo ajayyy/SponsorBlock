@@ -1019,7 +1019,9 @@ function getYouTubeVideoIDFromURL(url: string): string | boolean {
             utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoIDFromURL(url)));
         }
 
-        return false
+        return false;
+    } else {
+        onInvidious = false;
     }
 
     //Get ID from searchParam
