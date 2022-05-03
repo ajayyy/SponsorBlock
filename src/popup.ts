@@ -92,7 +92,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         // Username
         "setUsernameContainer",
         "setUsernameButton",
-        "setUsernameStatusContainer",
+        "setUsernameStatus",
         "setUsernameStatus",
         "setUsername",
         "usernameInput",
@@ -599,7 +599,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.setUsername.style.display = "flex";
         PageElements.setUsername.classList.add("SBExpanded");
 
-        PageElements.setUsernameStatusContainer.style.display = "none";
+        PageElements.setUsernameStatus.style.display = "none";
 
         PageElements.sponsorTimesContributionsContainer.classList.add("hidden");
     }
@@ -607,7 +607,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //submit the new username
     function submitUsername() {
         //add loading indicator
-        PageElements.setUsernameStatusContainer.style.display = "unset";
+        PageElements.setUsernameStatus.style.display = "unset";
         PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("Loading");
 
         utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (response) {
@@ -620,7 +620,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 PageElements.setUsername.classList.remove("SBExpanded");
                 PageElements.usernameValue.innerText = PageElements.usernameInput.value;
 
-                PageElements.setUsernameStatusContainer.style.display = "none";
+                PageElements.setUsernameStatus.style.display = "none";
 
                 PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
             } else {

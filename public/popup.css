@@ -496,7 +496,6 @@
 }
 
 #usernameElement {
-  z-index: 2;
   padding: 8px;
 }
 
@@ -550,7 +549,7 @@
  * Left align "Username" and "Submissions" labels
  */
 
-#usernameElement > div > span,
+#usernameElement > span,
 #sponsorTimesContributionsContainer {
   text-align: start;
 }
@@ -590,13 +589,11 @@
  * Improve alignment of username and submissions
  */
 
-#usernameElement > div,
-#sponsorTimesContributionsContainer > div {
+#usernameElement,
+#sponsorTimesContributionsContainer {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  /* flex-flow: column nowrap; */
-  /* align-items: flex-start; */
 }
 
 /*

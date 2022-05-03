@@ -15,7 +15,6 @@
         __MSG_betaServerWarning__
       </div>
 
-      
       <header class="sbPopupLogo">
         <img src="icons/IconSponsorBlocker256px.png" alt="SponsorBlock" width="40" height="40" id="sponsorBlockPopupLogo">
         <p class="u-mZ" style="margin: auto;">SponsorBlock</p>
@@ -29,11 +28,13 @@
         <button id="refreshSegmentsButton" title="__MSG_refreshSegments__">
           <img src="/icons/refresh.svg" alt="Refresh icon" id="refreshSegments" />
         </button>
+        <!-- Video Segments -->
         <div id="issueReporterContainer">
           <div id="issueReporterTimeButtons"></div>
         </div>
       </div>
       
+      <!-- Toggle Box -->
       <div class="sbControlsMenu">
         <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item">
           <input type="checkbox" style="display:none;" id="whitelistToggle">
@@ -55,6 +56,7 @@
           <span id="disableSkipping">__MSG_disableSkipping__</span>
           <span id="enableSkipping" style="display: none">__MSG_enableSkipping__</span>
         </label>
+        <!-- Settings link, re-positioned to top-right -->
         <button id="optionsButton" data-hover="__MSG_Options__" title="__MSG_OptionsInfo__">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"  fill="currentColor"><path d="M24 13.6v-3.2c-1.7-.6-2.7-.8-3.2-2h0c-.5-1.3.1-2.1.8-3.7l-2.3-2.3c-1.6.7-2.4 1.4-3.7.8h0c-1.3-.5-1.4-1.6-2-3.2h-3.2c-.6 1.6-.7 2.7-2 3.2h0c-1.3.5-2.1-.1-3.7-.8L2.4 4.7c.7 1.6 1.4 2.4.8 3.7s-1.6 1.4-3.2 2v3.2c1.6.6 2.7.7 3.2 2 .5 1.3-.1 2.2-.8 3.7l2.3 2.3c1.6-.7 2.4-1.4 3.7-.8h0c1.3.5 1.4 1.6 2 3.2h3.2c.6-1.6.8-2.7 2-3.2h0c1.3-.5 2.1.1 3.7.9l2.3-2.3c-.7-1.6-1.4-2.4-.8-3.7s1.6-1.4 3.2-2zM12 16a4 4 0 1 1 0-8 4 4 0 1 1 0 8z"/></svg>
         </button>
@@ -64,6 +66,7 @@
         __MSG_forceChannelCheckPopup__
       </a>
 
+      <!-- Submit box -->
       <div id="mainControls" style="display: none">
         <p class="sbHeader">
           __MSG_recordTimesDescription__
@@ -76,69 +79,67 @@
         <span id="submissionHint" style="display: none;">__MSG_submissionEditHint__</span>
       </div>
 
-      <!-- Your Work -->
+      <!-- Your Work dropdown -->
       <details class="sbYourWorkCols">
-        <summary class="recordingSubtitle sbHeader" style="padding: 8px 16px; cursor: pointer;">&nbsp;&nbsp;__MSG_yourWork__</summary>
+        <summary class="sbHeader" style="padding: 8px 16px; cursor: pointer;">&nbsp;&nbsp;__MSG_yourWork__</summary>
         <div>
           <!-- Username -->
           <div id="usernameElement">
-            <div>
-              <span class="u-mZ grey-text">__MSG_Username__:
-                <!-- loading/errors -->
-                <span id="setUsernameStatusContainer" style="display: none">
-                  <span id="setUsernameStatus" class="u-mZ white-text"></span>
-                </span>
-              </span>
-              <div id="setUsernameContainer">
-                <p id="usernameValue"></p>
-                <button id="setUsernameButton" title="__MSG_setUsername__">
-                  <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
-                </button>
-                <button id="copyUserID" title="__MSG_copyPublicID__">
-                  <img src="/icons/clipboard.svg" alt="__MSG_copyPublicID__" width="16" height="16" id="sbPopupIconCopyUserID">
-                </button>
-              </div>
-              <div id="setUsername" style="display: none">
-                <input id="usernameInput" placeholder="Username">
-                <button id="submitUsername">
-                  <img src="/icons/check.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconCheck">
-                </button>
-              </div>
+            <span class="u-mZ grey-text">__MSG_Username__:
+              <!-- loading/errors -->
+              <span id="setUsernameStatus" class="u-mZ white-text" style="display: none"></span>
+            </span>
+            <div id="setUsernameContainer">
+              <p id="usernameValue"></p>
+              <button id="setUsernameButton" title="__MSG_setUsername__">
+                <img src="/icons/pencil.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconEdit">
+              </button>
+              <button id="copyUserID" title="__MSG_copyPublicID__">
+                <img src="/icons/clipboard.svg" alt="__MSG_copyPublicID__" width="16" height="16" id="sbPopupIconCopyUserID">
+              </button>
+            </div>
+            <div id="setUsername" style="display: none">
+              <input id="usernameInput" placeholder="Username">
+              <button id="submitUsername">
+                <img src="/icons/check.svg" alt="__MSG_setUsername__" width="16" height="16" id="sbPopupIconCheck">
+              </button>
             </div>
           </div>
           <!-- Submissions -->
           <div id="sponsorTimesContributionsContainer" class="hidden">
-            <div>
-              <p class="u-mZ grey-text">__MSG_Submissions__:</p>
-              <span id="sponsorTimesContributionsDisplay">
-                0
-              </span>
-            </div>
+            <p class="u-mZ grey-text">__MSG_Submissions__:</p>
+            <span id="sponsorTimesContributionsDisplay">0</span>
           </div>
         </div>
       </details>
 
       <p id="sponsorTimesViewsContainer" style="display: none" class="u-mZ">
         __MSG_savedPeopleFrom__
-        <b><span id="sponsorTimesViewsDisplay">
-            0
-          </span></b>
+        <b>
+          <span id="sponsorTimesViewsDisplay">0</span>
+        </b>
         <span id="sponsorTimesViewsDisplayEndWord">__MSG_Segments__</span>
-        <br>
-        (<b><span id="sponsorTimesOthersTimeSavedDisplay">0</span>
-          <span id="sponsorTimesOthersTimeSavedEndWord">__MSG_minsLower__</span></b>
-        <span>__MSG_youHaveSavedTimeEnd__</span>).
+        <br />
+        (
+        <b>
+          <span id="sponsorTimesOthersTimeSavedDisplay">0</span>
+          <span id="sponsorTimesOthersTimeSavedEndWord">__MSG_minsLower__</span>
+        </b>
+        <span>__MSG_youHaveSavedTimeEnd__</span>
+        ).
       </p>
       <p id="sponsorTimesSkipsDoneContainer" style="display: none" class="u-mZ">
         __MSG_youHaveSkipped__
-        <b><span id="sponsorTimesSkipsDoneDisplay">
-            0
-          </span></b>
+        <b>
+          <span id="sponsorTimesSkipsDoneDisplay">0</span>
+        </b>
         <span id="sponsorTimesSkipsDoneEndWord">__MSG_Segments__</span>
-        (<b><span id="sponsorTimeSavedDisplay">
-            0
-          </span>
-          <span id="sponsorTimeSavedEndWord">__MSG_minsLower__</span></b>).
+        (
+          <b>
+            <span id="sponsorTimeSavedDisplay">0</span>
+            <span id="sponsorTimeSavedEndWord">__MSG_minsLower__</span>
+          </b>
+        ).
       </p>
 
       <footer id="sbFooter">
