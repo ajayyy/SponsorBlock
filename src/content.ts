@@ -195,14 +195,14 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             break;
         case "whitelistChange":
             channelWhitelisted = request.value;
-            sponsorsLookup(sponsorVideoID);
+            sponsorsLookup();
 
             break;
         case "submitTimes":
             submitSponsorTimes();
             break;
         case "refreshSegments":
-            sponsorsLookup(sponsorVideoID, false).then(() => sendResponse({
+            sponsorsLookup(false).then(() => sendResponse({
                 found: sponsorDataFound,
                 sponsorTimes: sponsorTimes,
                 onMobileYouTube
@@ -235,7 +235,7 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 updateVisibilityOfPlayerControlsButton()
                 break;
             case "categorySelections":
-                sponsorsLookup(sponsorVideoID);
+                sponsorsLookup();
                 break;
         }
     }
@@ -747,11 +747,11 @@ function setupCategoryPill() {
     categoryPill.attachToPage(onMobileYouTube, onInvidious, voteAsync);
 }
 
-async function sponsorsLookup(id: string, keepOldSubmissions = true) {
+async function sponsorsLookup(keepOldSubmissions = true) {
     if (!video || !isVisible(video)) refreshVideoAttachments();
     //there is still no video here
     if (!video) {
-        setTimeout(() => sponsorsLookup(id), 100);
+        setTimeout(() => sponsorsLookup(), 100);
         return;
     }
 
@@ -765,7 +765,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
     // Check for hashPrefix setting
-    const hashPrefix = (await utils.getHash(id, 1)).slice(0, 4) as VideoID & HashedValue;
+    const hashPrefix = (await utils.getHash(sponsorVideoID, 1)).slice(0, 4) as VideoID & HashedValue;
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
         actionTypes: getEnabledActionTypes(),
@@ -775,7 +775,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
     if (response?.ok) {
         const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
-                    ?.filter((video) => video.videoID === id)
+                    ?.filter((video) => video.videoID === sponsorVideoID)
                     ?.map((video) => video.segments)[0];
         if (!recievedSegments || !recievedSegments.length) {
             // return if no video found
@@ -835,7 +835,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
 
         //update the preview bar
         //leave the type blank for now until categories are added
-        if (lastPreviewBarUpdate == id || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
+        if (lastPreviewBarUpdate == sponsorVideoID || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
             //set it now
             //otherwise the listener can handle it
             updatePreviewBar();
@@ -845,7 +845,7 @@ async function sponsorsLookup(id: string, keepOldSubmissions = true) {
     }
 
     if (Config.config.isVip) {
-        lockedCategoriesLookup(id);
+        lockedCategoriesLookup();
     }
 }
 
@@ -861,13 +861,13 @@ function getEnabledActionTypes(): ActionType[] {
     return actionTypes;
 }
 
-async function lockedCategoriesLookup(id: string): Promise<void> {
-    const hashPrefix = (await utils.getHash(id, 1)).slice(0, 4);
+async function lockedCategoriesLookup(): Promise<void> {
+    const hashPrefix = (await utils.getHash(sponsorVideoID, 1)).slice(0, 4);
     const response = await utils.asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix);
 
     if (response.ok) {
         try {
-            const categoriesResponse = JSON.parse(response.responseText).filter((lockInfo) => lockInfo.videoID === id)[0]?.categories;
+            const categoriesResponse = JSON.parse(response.responseText).filter((lockInfo) => lockInfo.videoID === sponsorVideoID)[0]?.categories;
             if (Array.isArray(categoriesResponse)) {
                 lockedCategories = categoriesResponse;
             }
@@ -882,7 +882,7 @@ function retryFetch(): void {
 
     setTimeout(() => {
         if (sponsorVideoID && sponsorTimes?.length === 0) {
-            sponsorsLookup(sponsorVideoID);
+            sponsorsLookup();
         }
     }, 10000 + Math.random() * 30000);
 }
@@ -1593,7 +1593,7 @@ function startOrEndTimingNewSegment() {
     Config.forceSyncUpdate("unsubmittedSegments");
 
     // Make sure they know if someone has already submitted something it while they were watching
-    sponsorsLookup(sponsorVideoID);
+    sponsorsLookup();
 
     updateEditButtonsOnPlayer();
     updateSponsorTimesSubmitting(false);
@@ -1908,7 +1908,7 @@ async function sendSubmitMessage() {
         return;
     }
 
-    sponsorsLookup(sponsorVideoID);
+    sponsorsLookup();
 
     // Add loading animation
     playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
