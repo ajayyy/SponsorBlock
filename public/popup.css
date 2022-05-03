@@ -106,7 +106,7 @@
 }
 
 .sbPopupLogo img {
-  margin: 0.5rem;
+  margin: 8px;
 }
 
 /*
@@ -169,14 +169,14 @@
   width: content;
   color: var(--sb-main-fg-color);
   background-color: var(--sb-grey-bg-color);
-  border-radius: 1rem;
-  padding: 0.25rem 0.5rem;
+  border-radius: 16px;
+  padding: 4px 8px;
   transition: .3s;
 
   position: absolute;
   z-index: 1;
   left: -200%;
-  top: 0.25rem;
+  top: 4px;
 }
 
 #optionsButton:hover:before {
