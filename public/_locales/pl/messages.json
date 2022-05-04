@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Kopiuj publiczny identyfikator użytkownika"
     },
+    "copySegmentID": {
+        "message": "Kopiuj ID segmentu"
+    },
     "discordAdvert": {
         "message": "Dołącz do oficjalnego serwera na discordzie i podziel się wrażeniami i sugestiami!"
     },
@@ -591,6 +594,9 @@
     "category_preview_description": {
         "message": "Szybkie podsumowanie poprzednich odcinków lub podgląd tego, co pojawia się później w bieżącym filmie. Dotyczy zmontowanych klipów, a nie ustnych podsumowań."
     },
+    "category_filler": {
+        "message": "Wypełniacz Nietematyczny/Żart"
+    },
     "category_filler_description": {
         "message": "Sceny nietematyczne dodawane tylko jako wypełniacz lub dla humoru, które nie są wymagane do zrozumienia głównej treści filmu. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
     },
@@ -873,6 +879,9 @@
     "ChangeCategoryTooltip": {
         "message": "To natychmiastowo zostanie zastosowane do twoich segmentów"
     },
+    "hideSegment": {
+        "message": "Ukryj segment"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Użyj scroll'a myszy po najechaniu nad pole edycji, aby szybko dostosować czas. Kombinacje z ctrl'em i shift'em mogą być użyte, aby doszlifować zmiany."
     },
@@ -923,5 +932,8 @@
     },
     "youtubeKeybindWarning": {
         "message": "To jest wbudowany skrót YouTube. Czy na pewno chcesz go użyć?"
+    },
+    "betaServerWarning": {
+        "message": "Serwer BETA jest włączony!"
     }
 }

@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Копировать публичный UserID"
     },
+    "copySegmentID": {
+        "message": "Копировать ID сегмента"
+    },
     "discordAdvert": {
         "message": "Присоединяйтесь к официальному серверу Discord, чтобы оставить предложения и обратную связь!"
     },
@@ -878,6 +881,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Это мгновенно применится к вашим сегментам"
+    },
+    "downvote": {
+        "message": "Голос «против»"
+    },
+    "upvote": {
+        "message": "Голос «за»"
+    },
+    "hideSegment": {
+        "message": "Скрыть сегмент"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Наведите курсор на поле редактирования и используйте колесо мыши для быстрой настройки времени. Клавиши Ctrl или Shift могут быть использованы для точной настройки."

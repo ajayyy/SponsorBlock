@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Copier l'ID utilisateur"
     },
+    "copySegmentID": {
+        "message": "Copier l'identifiant du segment"
+    },
     "discordAdvert": {
         "message": "Rejoignez le serveur Discord officiel pour toutes suggestions ou remarques!"
     },
@@ -878,6 +881,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Cela s'appliquera instantanément à vos segments"
+    },
+    "downvote": {
+        "message": "Voter contre"
+    },
+    "upvote": {
+        "message": "Voter pour"
+    },
+    "hideSegment": {
+        "message": "Cacher le segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches ctrl ou maj peuvent être utilisées pour affiner les modifications."

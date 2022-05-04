@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Kopírovat veřejné uživatelské ID"
     },
+    "copySegmentID": {
+        "message": "Zkopírovat ID segmentu"
+    },
     "discordAdvert": {
         "message": "Připojte se k oficiálnímu Discord serveru k podání návrhů a zpětné vazby!"
     },
@@ -878,6 +881,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Toto bude okamžitě platit pro vaše segmenty"
+    },
+    "downvote": {
+        "message": "Hlas proti"
+    },
+    "upvote": {
+        "message": "Hlas pro"
+    },
+    "hideSegment": {
+        "message": "Skrýt segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Použijte kolečko myši při přechodu přes editační okno pro rychlou úpravu času. Kombinace kláves Ctrl nebo Shift mohou být použity k doladění změn."

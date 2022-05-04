@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Kopeeri avalik UserID"
     },
+    "copySegmentID": {
+        "message": "Kopeeri segmendi ID"
+    },
     "discordAdvert": {
         "message": "Tule liitu ametliku Discordi serveriga, et anda soovitusi ja tagasisidet!"
     },
@@ -845,6 +848,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "See rakendub sinu segmentidele koheselt"
+    },
+    "downvote": {
+        "message": "Vastuhääl"
+    },
+    "upvote": {
+        "message": "Poolthääl"
+    },
+    "hideSegment": {
+        "message": "Peida segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Kiireks aja reguleerimiseks keri hiirega muutmiskasti kohal. Täpsemaks reguleerimiseks hoia kerimise ajal all Ctrl või Shift klahvi."

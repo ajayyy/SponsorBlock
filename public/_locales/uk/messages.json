@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Копіювати публічний UserID"
     },
+    "copySegmentID": {
+        "message": "Копіювати ID сегменту"
+    },
     "discordAdvert": {
         "message": "Приєднуйтесь до офіційного сервера Discord, щоб залишити пропозиції і зворотний зв'язок!"
     },
@@ -879,6 +882,15 @@
     "ChangeCategoryTooltip": {
         "message": "Це миттєво буде застосовано до ваших сегментів"
     },
+    "downvote": {
+        "message": "Голос \"проти\""
+    },
+    "upvote": {
+        "message": "Голос \"за\""
+    },
+    "hideSegment": {
+        "message": "Приховати сегмент"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Навівши курсор на поле редагування, користуйтеся колесом прокрутки, щоб швидко відрегулювати час. Комбінації клавіш ctrl або shift можуть бути використані для точнішої настройки змін."
     },
@@ -929,5 +941,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Це вбудована комбінація YouTube. Ви впевнені що хочете її використовувати?"
+    },
+    "betaServerWarning": {
+        "message": "BETA сервер увімкнено!"
+    },
+    "openOptionsPage": {
+        "message": "Відкрити сторінку налаштувань"
     }
 }

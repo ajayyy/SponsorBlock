@@ -929,5 +929,8 @@
     },
     "youtubeKeybindWarning": {
         "message": "Bu kısayol YouTube tarafından kullanılıyor. Bunu kullanmak istediğinize emin misiniz?"
+    },
+    "openOptionsPage": {
+        "message": "Seçenekler sayfasını aç"
     }
 }
