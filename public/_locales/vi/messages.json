@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Sao chép Public UserID"
     },
+    "copySegmentID": {
+        "message": "Sao chép ID phân đoạn"
+    },
     "discordAdvert": {
         "message": "Hãy tham gia server Discord chính thức để đưa ra gợi ý và phản hồi!"
     },
@@ -875,6 +878,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Điều này sẽ ngay lập tức áp dụng cho phân đoạn của bạn"
+    },
+    "downvote": {
+        "message": "Phản đối"
+    },
+    "upvote": {
+        "message": "Bình chọn"
+    },
+    "hideSegment": {
+        "message": "Ẩn phân đoạn"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Sử dụng con lăn chuột của bạn khi di chuột qua hộp chỉnh sửa để nhanh chóng điều chỉnh thời gian. Kết hợp phím ctrl hoặc shift có thể được sử dụng để tinh chỉnh các thay đổi."

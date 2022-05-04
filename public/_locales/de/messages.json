@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Öffentliche Benutzer-ID kopieren"
     },
+    "copySegmentID": {
+        "message": "Segment-ID kopieren"
+    },
     "discordAdvert": {
         "message": "Tritt dem offiziellen Discord-Server bei und teile Anregungen und Feedback!"
     },
@@ -312,7 +315,7 @@
         "message": "Ton aus"
     },
     "full": {
-        "message": "Vollständiges Video",
+        "message": "Ganzes Video",
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
@@ -879,6 +882,15 @@
     "ChangeCategoryTooltip": {
         "message": "Dies wirkt sich sofort auf eigene Segmente aus"
     },
+    "downvote": {
+        "message": "Negativ bewertet"
+    },
+    "upvote": {
+        "message": "Positiv bewerten"
+    },
+    "hideSegment": {
+        "message": "Segment verbergen"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schnell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
     },
@@ -929,5 +941,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Dies ist ein vorhandenes YouTube-Kürzel. Bist du sicher, dass du es verwenden möchtest?"
+    },
+    "betaServerWarning": {
+        "message": "BETA Server wurde aktiviert!"
+    },
+    "openOptionsPage": {
+        "message": "Einstellungen öffnen"
     }
 }

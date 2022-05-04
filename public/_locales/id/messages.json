@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Salin UserID Publik"
     },
+    "copySegmentID": {
+        "message": "Salin ID Segmen"
+    },
     "discordAdvert": {
         "message": "Gabung dengan server resmi discord untuk memberikan kritik dan saran!"
     },
@@ -879,6 +882,15 @@
     "ChangeCategoryTooltip": {
         "message": "Ini akan menerapkan ke segmen Anda"
     },
+    "downvote": {
+        "message": "Jempol bawah"
+    },
+    "upvote": {
+        "message": "Jempol atas"
+    },
+    "hideSegment": {
+        "message": "Sembunyikan segmen"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gunakan roda mouse ketika berada di kotak edit untuk mengatur waktu dengan cepat. Kombinasi dengan tombol [Ctrl + Shift] bisa digunakan untuk perubahan yang halus."
     },
@@ -929,5 +941,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Ini adalah pintasan YouTube. Apakah Anda yakin untuk menggunakannya?"
+    },
+    "betaServerWarning": {
+        "message": "Server BETA diaktifkan!"
+    },
+    "openOptionsPage": {
+        "message": "Buka laman opsi"
     }
 }

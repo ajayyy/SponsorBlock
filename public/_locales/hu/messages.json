@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Nyilvános UserID másolása"
     },
+    "copySegmentID": {
+        "message": "Szegmens ID másolása"
+    },
     "discordAdvert": {
         "message": "Gyere, csatlakozz a hivatalos discord szerverhez, hogy javaslatokat és visszajelzést adhass!"
     },
@@ -878,6 +881,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Ez azonnal érvényes lesz a szegmenseidre"
+    },
+    "downvote": {
+        "message": "Leszavazás"
+    },
+    "upvote": {
+        "message": "Felszavazás"
+    },
+    "hideSegment": {
+        "message": "Szegmens elrejtése"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Használd egérgörgődet a szerkesztő mező fölött, hogy gyorsan módosíthasd az időt. A ctrl vagy shift billentyűk kombinációjával finomhangolhatod a változás mértékét."

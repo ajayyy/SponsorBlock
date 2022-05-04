@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Publieke gebruikers-ID kopiëren"
     },
+    "copySegmentID": {
+        "message": "Segment-ID kopiëren"
+    },
     "discordAdvert": {
         "message": "Word lid van de officiële Discord-server om suggesties en feedback te geven!"
     },
@@ -210,13 +213,13 @@
         "message": "Bijhouden van het aantal keren overslaan inschakelen in privé-/incognito-tabbladen"
     },
     "enableTrackDownvotes": {
-        "message": "Segment-downvotes opslaan"
+        "message": "Segment-tegenstemmen opslaan"
     },
     "whatTrackDownvotes": {
-        "message": "Segmenten waarop u een downvote doet, blijven verborgen, zelfs na vernieuwen"
+        "message": "Segmenten waarop u een tegenstem doet, blijven verborgen, zelfs na vernieuwen"
     },
     "trackDownvotesWarning": {
-        "message": "Waarschuwing: als u dit uitschakelt, worden alle eerder opgeslagen downvotes verwijderd"
+        "message": "Waarschuwing: als u dit uitschakelt, worden alle eerder opgeslagen tegenstemmen verwijderd"
     },
     "enableQueryByHashPrefix": {
         "message": "Opvragen via hash-voorvoegsel"
@@ -701,7 +704,7 @@
         "message": "(einde)"
     },
     "hiddenDueToDownvote": {
-        "message": "verborgen: downvote"
+        "message": "verborgen: tegenstem"
     },
     "hiddenDueToDuration": {
         "message": "verborgen: te kort"
@@ -820,7 +823,7 @@
         "message": "Videosegmenten zullen automatisch worden overgeslagen als ze in de database worden gevonden. U kunt de popup openen door op het pictogram van de extensie te klikken om een voorbeeld te krijgen van wat ze zijn."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Als u een segment overslaat, krijgt u een bericht. Als de timing verkeerd lijkt, stem dan door op downvote te klikken! U kunt ook stemmen in de popup."
+        "message": "Als u een segment overslaat, krijgt u een bericht. Als de timing verkeerd lijkt, stem dan door op tegenstemmen te klikken! U kunt ook stemmen in de popup."
     },
     "Submitting": {
         "message": "Indienen"
@@ -865,19 +868,28 @@
         "message": "Meer informatie"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Doet een downvote en maakt een lokale kopie aan die u opnieuw kunt indienen"
+        "message": "Doet een tegenstem en maakt een lokale kopie aan die u opnieuw kunt indienen"
     },
     "OpenCategoryWikiPage": {
         "message": "Wikipagina van deze categorie openen."
     },
     "CopyAndDownvote": {
-        "message": "Kopiëren en downvote doen"
+        "message": "Kopiëren en tegenstemmen"
     },
     "ContinueVoting": {
         "message": "Doorgaan met stemmen"
     },
     "ChangeCategoryTooltip": {
         "message": "Dit is direct van toepassing op uw segmenten"
+    },
+    "downvote": {
+        "message": "Tegenstemmen"
+    },
+    "upvote": {
+        "message": "Stemmen"
+    },
+    "hideSegment": {
+        "message": "Segment verbergen"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gebruik het muiswiel terwijl u over het invoerveld beweegt om de tijd snel aan te passen. Combinaties van de ctrl- of shift-toets kunnen worden gebruikt om de wijzigingen te verfijnen."
@@ -929,5 +941,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Dit is een ingebouwde YouTube-snelkoppeling. Weet u zeker dat u deze wilt gebruiken?"
+    },
+    "betaServerWarning": {
+        "message": "BETAserver is ingeschakeld!"
+    },
+    "openOptionsPage": {
+        "message": "Pagina met opties openen"
     }
 }
