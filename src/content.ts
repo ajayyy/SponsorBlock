@@ -292,7 +292,7 @@ function resetValues() {
 
 async function videoIDChange(id) {
     //if the id has not changed return unless the video element has changed
-    if (sponsorVideoID === id && isVisible(video)) return;
+    if (sponsorVideoID === id && (isVisible(video) || !video)) return;
 
     //set the global videoID
     sponsorVideoID = id;
