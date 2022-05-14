@@ -257,5 +257,80 @@
     "setSubmitKeybind": {
         "message": "সেগমেন্ট জমা দিন",
         "description": "Keybind label"
+    },
+    "permissionRequestSuccess": {
+        "message": "অনুমতির অনুরোধ সফল হয়েছে!"
+    },
+    "ContinueVoting": {
+        "message": "ভোট করা চালিয়ে যান"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "এটি তাৎক্ষনিকভাবে আপনার অংশে দেওয়া হবে"
+    },
+    "downvote": {
+        "message": "ডাউনভোট"
+    },
+    "upvote": {
+        "message": "আপভোট"
+    },
+    "hideSegment": {
+        "message": "অংশ আড়াল করুন"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "দ্রুত সময়টি পরিবর্কতন করতে সম্পাদনা বাক্সে ঘুরে দেখার সময় আপনার মাউস এর হুইয়িলটি ব্যবহার করুন। কন্ট্রল বা শিফট কী এর সংমিশ্রণগুলি পরিবর্তনগুলি আরো নিখুতভাবে টিউন করতে ব্যবহার করা যেতে পারে।"
+    },
+    "categoryPillNewFeature": {
+        "message": "নতুন! দেখুন যখন কোনও ভিডিও সম্পূর্ণ স্পনসর করা বা স্ব-প্রচার হয়"
+    },
+    "dayAbbreviation": {
+        "message": " দিন",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": " ঘণ্টা",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "আচরণ",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "ইন্টারফেস",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "কীবোর্ড শর্টকাট",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "ব্যাকআপ এবং পুনঃস্থাপন",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "বিবিধ",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "নোটিশ প্রদর্শন করা বন্ধ করুন",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "বাদ দিন",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "নির্ধারণ করা হয়নি"
+    },
+    "change": {
+        "message": "বদল করুন"
+    },
+    "youtubeKeybindWarning": {
+        "message": "এটি একটি অন্তর্নির্মিত ইউটিউব শর্টকাট। আপনি কি নিশ্চিত যে আপনি এটি ব্যবহার করতে চান?"
+    },
+    "betaServerWarning": {
+        "message": "বেটা সার্ভার চালু করা হয়েছে!"
+    },
+    "openOptionsPage": {
+        "message": "বিকল্প পাতা খুলুন"
     }
 }
