@@ -649,4 +649,6 @@ input::-webkit-inner-spin-button {
 #sponsorBlockDurationAfterSkips.ytm-time-display {
 	padding-left: 4px;
 	margin: 0px;
+	color: #fff;
+	opacity: .7;
 }
