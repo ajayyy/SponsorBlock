@@ -456,6 +456,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         // Reset lastCheckVideoTime
         lastCheckVideoTime = -1;
         lastCheckTime = 0;
+        console.warn("[SB] Ad playing, pausing skipping");
 
         return;
     }
@@ -548,7 +549,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     } else {
         const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
         if (delayTime < 300) {
-            // For Firefox, use interval instead of timeout near the end to combat imprecise video time
+            // Use interval instead of timeout near the end to combat imprecise video time
             const startIntervalTime = performance.now();
             const startVideoTime = Math.max(currentTime, video.currentTime);
             currentSkipInterval = setInterval(() => {
@@ -709,8 +710,12 @@ function setupVideoListeners() {
 
             cancelSponsorSchedule();
         };
-        video.addEventListener('pause', paused);
-        video.addEventListener('waiting', paused);
+        video.addEventListener('pause', () => paused());
+        video.addEventListener('waiting', () => {
+            paused();
+            
+            console.warn("[SB] Not skipping due to buffering");
+        });
 
         startSponsorSchedule();
     }
