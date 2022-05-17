@@ -391,20 +391,32 @@ function handleMobileControlsMutations(): void {
 function createPreviewBar(): void {
     if (previewBar !== null) return;
 
-    const progressElementSelectors = [
-        // For mobile YouTube
-        ".progress-bar-background",
-        // for new mobile YouTube (#1287)
-        ".ytm-progress-bar",
-        // For YouTube
-        ".ytp-progress-bar-container",
-        ".no-model.cue-range-markers",
-        // For Invidious/VideoJS
-        ".vjs-progress-holder"
+    const progressElementOptions = [{
+            // For mobile YouTube
+            selector: ".progress-bar-background",
+            isVisibleCheck: true
+        }, {
+            // For new mobile YouTube (#1287)
+            selector: ".ytm-progress-bar",
+            isVisibleCheck: true
+        }, {
+            // For Desktop YouTube
+            selector: ".ytp-progress-bar-container",
+            isVisibleCheck: true
+        }, {
+            // For Desktop YouTube
+            selector: ".no-model.cue-range-marker",
+            isVisibleCheck: true
+        }, {
+            // For Invidious/VideoJS
+            selector: ".vjs-progress-holder",
+            isVisibleCheck: false
+        }
     ];
 
-    for (const selector of progressElementSelectors) {
-        const el = findValidElement(document.querySelectorAll(selector));
+    for (const option of progressElementOptions) {
+        const allElements = document.querySelectorAll(option.selector) as NodeListOf<HTMLElement>;
+        const el = option.isVisibleCheck ? findValidElement(allElements) : allElements[0];
 
         if (el) {
             previewBar = new PreviewBar(el, onMobileYouTube, onInvidious);
