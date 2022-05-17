@@ -115,7 +115,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "issueReporterTabChapters",
         "sponsorTimesDonateContainer",
         "sbConsiderDonateLink",
-        "sbCloseDonate"
+        "sbCloseDonate",
+        "sbBetaServerWarning"
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     // Hide donate button if wanted (Safari, or user choice)
@@ -123,6 +124,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.sbDonate.style.display = "none";
     }
     PageElements.sbDonate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
+
+    if (Config.config.testingServer) {
+        PageElements.sbBetaServerWarning.classList.remove("hidden");
+        PageElements.sbBetaServerWarning.addEventListener("click", function () {
+            openOptionsAt("advanced");
+        });
+    }
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
@@ -177,7 +185,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&userID=" + Config.config.userID, (res) => {
+    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&value=vip&userID=" + Config.config.userID, (res) => {
         if (res.status === 200) {
             const userInfo = JSON.parse(res.responseText);
             PageElements.usernameValue.innerText = userInfo.userName;
@@ -204,6 +212,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 }
                 PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
             }
+            
+            Config.config.isVip = userInfo.vip;
         }
     });
 
@@ -322,7 +332,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         //if request is undefined, then the page currently being browsed is not YouTube
         if (request != undefined) {
             //remove loading text
-            PageElements.mainControls.style.display = "flex";
+            PageElements.mainControls.style.display = "block";
             if (request.onMobileYouTube) PageElements.mainControls.classList.add("hidden");
             PageElements.whitelistButton.classList.remove("hidden");
             PageElements.loadingIndicator.style.display = "none";
@@ -488,12 +498,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
                 upvoteButton.className = "voteButton";
+                upvoteButton.title = chrome.i18n.getMessage("upvote");
                 upvoteButton.src = chrome.runtime.getURL("icons/thumbs_up.svg");
                 upvoteButton.addEventListener("click", () => vote(1, UUID));
 
                 const downvoteButton = document.createElement("img");
                 downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
                 downvoteButton.className = "voteButton";
+                downvoteButton.title = chrome.i18n.getMessage("downvote");
                 downvoteButton.src = locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg");
                 downvoteButton.addEventListener("click", () => vote(0, UUID));
 
@@ -501,6 +513,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 uuidButton.className = "voteButton";
                 uuidButton.src = chrome.runtime.getURL("icons/clipboard.svg");
+                uuidButton.title = chrome.i18n.getMessage("copySegmentID");
                 uuidButton.addEventListener("click", () => {
                     navigator.clipboard.writeText(UUID);
                     const stopAnimation = AnimationUtils.applyLoadingAnimation(uuidButton, 0.3);
@@ -510,6 +523,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 const hideButton = document.createElement("img");
                 hideButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 hideButton.className = "voteButton";
+                hideButton.title = chrome.i18n.getMessage("hideSegment");
                 if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
                     hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
                 } else {
@@ -741,6 +755,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     PageElements.unwhitelistChannel.style.display = "unset";
                     document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
 
+                    //show 'consider force channel check' alert
                     if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
 
                     //save this
@@ -787,6 +802,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     PageElements.whitelistChannel.style.display = "unset";
                     PageElements.unwhitelistChannel.style.display = "none";
                     document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
+
+                    //hide 'consider force channel check' alert
+                    PageElements.whitelistForceCheck.classList.add("hidden");
 
                     //save this
                     Config.config.whitelistedChannels = whitelistedChannels;

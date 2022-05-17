@@ -6,7 +6,6 @@ import { keybindEquals } from "./utils/configUtils";
 interface SBConfig {
     userID: string,
     isVip: boolean,
-    lastIsVipUpdate: number,
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
@@ -125,7 +124,6 @@ const Config: SBObject = {
     syncDefaults: {
         userID: null,
         isVip: false,
-        lastIsVipUpdate: 0,
         unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
         renderAsChapters: true,
@@ -488,6 +486,10 @@ function migrateOldSyncFormats(config: SBConfig) {
     // populate invidiousInstances with new instances if 3p support is **DISABLED**
     if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
         config["invidiousInstances"] = invidiousList;
+    }
+    
+    if (config["lastIsVipUpdate"]) {
+        chrome.storage.sync.remove("lastIsVipUpdate");
     }
 }
 

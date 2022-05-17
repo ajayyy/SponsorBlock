@@ -1,20 +1,20 @@
 {
     "fullName": {
-        "message": "SponsorBlock for YouTube - Skip Sponsorships",
+        "message": "SponsorBlock för YouTube - Hoppa över sponsringar",
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Hoppa över sponsring, prenumerationstiggande och mer på YouTube-videor. Rapportera sponsorer på videor du tittar på för att spara andras tid.",
+        "message": "Hoppa över sponsringar, prenumerationstiggande och mer på YouTube-videor. Rapportera sponsorer på videor du tittar på för att spara andras tid.",
         "description": "Description of the extension."
     },
     "400": {
         "message": "Servern sa att denna begäran var ogiltig"
     },
     "429": {
-        "message": "Du har rapporterat för många sponsormeddelanden för den här videon, är du säker att det finns så många?"
+        "message": "Du har skickat in för många sponsormeddelanden för den här videon. Är du säker på att det finns så många?"
     },
     "409": {
-        "message": "Den här har redan blivit rapporterad"
+        "message": "Den här har redan skickats in"
     },
     "channelWhitelisted": {
         "message": "Kanalen är vitlistad!"
@@ -44,7 +44,7 @@
         "message": "Visa aldrig"
     },
     "hitGoBack": {
-        "message": "Tryck på Tillbaka för att ångra åtgärden."
+        "message": "Tryck på Hoppa inte över för att återgå till där du kom i från."
     },
     "unskip": {
         "message": "Hoppa inte över"
@@ -116,7 +116,7 @@
         "message": "Skicka in segment"
     },
     "submitCheck": {
-        "message": "Är du säker på att du vill rapportera detta?"
+        "message": "Är du säker på att du vill skicka in detta?"
     },
     "whitelistChannel": {
         "message": "Vitlistkanal"
@@ -150,7 +150,7 @@
         "message": "Rensa tider"
     },
     "submitTimesButton": {
-        "message": "Skicka tider"
+        "message": "Skicka in tider"
     },
     "publicStats": {
         "message": "Detta kommer att användas på den publika statistiksidan för att visa hur mycket du har bidragit. Spana in den"
@@ -163,6 +163,9 @@
     },
     "copyPublicID": {
         "message": "Kopiera publikt Användar-ID"
+    },
+    "copySegmentID": {
+        "message": "Kopiera Segment-ID"
     },
     "discordAdvert": {
         "message": "Gå med i den officiella discordservern för att ge förslag och feedback!"
@@ -280,7 +283,7 @@
         "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Skicka in segment",
+        "message": "Skicka segment",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -497,7 +500,7 @@
         "message": "Denna JSON är inte korrekt formaterad. Dina alternativ har inte ändrats."
     },
     "confirmNoticeTitle": {
-        "message": "Skicka in segment"
+        "message": "Skicka segment"
     },
     "submit": {
         "message": "Skicka"
@@ -688,7 +691,7 @@
         "message": "Välj en kategori"
     },
     "enableThisCategoryFirst": {
-        "message": "För att skicka segment med kategorin \"{0}\" måste du först aktivera det i alternativen. Du kommer nu att bli omdirigerad till alternativen.",
+        "message": "För att skicka in segment med kategorin \"{0}\" måste du först aktivera det i alternativen. Du kommer nu att bli omdirigerad till alternativen.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
@@ -865,7 +868,7 @@
         "message": "Läs mer"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "Rösta ner och skapar en lokal kopia för dig att skicka igen"
+        "message": "Rösta ner och skapar en lokal kopia för dig att skicka in igen"
     },
     "OpenCategoryWikiPage": {
         "message": "Öppna denna kategoris wiki-sida."
@@ -878,6 +881,15 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Detta kommer omedelbart att verkställas till dina segment"
+    },
+    "downvote": {
+        "message": "Rösta ner"
+    },
+    "upvote": {
+        "message": "Rösta upp"
+    },
+    "hideSegment": {
+        "message": "Dölj segment"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Använd mushjulet medan du håller muspekaren över redigeringsrutan för att snabbt justera tiden. Kombinationer av CTRL- eller SKIFT-tangenten kan användas för att finjustera tiden."
@@ -929,5 +941,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Detta är en inbyggd YouTube-genväg. Är du säker på att du vill använda den?"
+    },
+    "betaServerWarning": {
+        "message": "BETA-servern är aktiverad!"
+    },
+    "openOptionsPage": {
+        "message": "Öppna alternativsidan"
     }
 }

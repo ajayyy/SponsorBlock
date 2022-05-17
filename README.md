@@ -13,7 +13,7 @@
   <a href="https://addons.mozilla.org/addon/sponsorblock/?src=external-github">Firefox</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Android">Android</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Edge">Edge</a> |
-  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Safari">Safari for MacOS</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Safari">Safari for MacOS and iOS</a> |
   <a href="https://sponsor.ajay.app">Website</a> |
   <a href="https://sponsor.ajay.app/stats">Stats</a>
 </p>

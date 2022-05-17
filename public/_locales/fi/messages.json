@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Kopio julkinen UserID"
     },
+    "copySegmentID": {
+        "message": "Kopioi osion ID"
+    },
     "discordAdvert": {
         "message": "Liity viralliselle Discord-palvelimelle antaaksesi ehdotuksia ja palautetta!"
     },
@@ -879,6 +882,15 @@
     "ChangeCategoryTooltip": {
         "message": "Tämä vaikuttaa sinun osioihin välittömästi"
     },
+    "downvote": {
+        "message": "Äänestä puolesta"
+    },
+    "upvote": {
+        "message": "Äänestä vastaan"
+    },
+    "hideSegment": {
+        "message": "Piilota osio"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."
     },
@@ -929,5 +941,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "Tämä on YouTuben sisäänrakennettu pikanäppäin. Haluatko varmasti käyttää sitä?"
+    },
+    "betaServerWarning": {
+        "message": "BETA-palvelin on käytössä!"
+    },
+    "openOptionsPage": {
+        "message": "Avaa asetussivu"
     }
 }

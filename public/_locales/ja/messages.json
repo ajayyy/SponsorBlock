@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "パブリックユーザIDをコピー"
     },
+    "copySegmentID": {
+        "message": "セグメントIDをコピー"
+    },
     "discordAdvert": {
         "message": "公式Discordサーバーに参加して意見やフィードバックをお寄せください！"
     },
@@ -879,6 +882,15 @@
     "ChangeCategoryTooltip": {
         "message": "この変更はすぐにあなたのセグメントに適用されます"
     },
+    "downvote": {
+        "message": "低評価"
+    },
+    "upvote": {
+        "message": "高評価"
+    },
+    "hideSegment": {
+        "message": "セグメントを表示しない"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "編集ボックスにカーソルを合わせながらマウスホイールを使用すると、時間をすばやく調整できます。 CtrlキーまたはShiftキーの組み合わせを使用して変更を微調整できます。"
     },
@@ -929,5 +941,11 @@
     },
     "youtubeKeybindWarning": {
         "message": "これはYouTubeにデフォルトで使用されているショートカットです。本当にこれを使用しますか？"
+    },
+    "betaServerWarning": {
+        "message": "ベータサーバーが有効です！"
+    },
+    "openOptionsPage": {
+        "message": "オプションページを開く"
     }
 }
