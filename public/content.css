@@ -17,6 +17,10 @@
 	transition: transform .1s cubic-bezier(0,0,0.2,1);
 }
 
+.ytm-progress-bar > #previewbar {
+	height: 3px;
+}
+
 #previewbar.hovered {
 	transform: scaleY(1)
 }
@@ -649,4 +653,6 @@ input::-webkit-inner-spin-button {
 #sponsorBlockDurationAfterSkips.ytm-time-display {
 	padding-left: 4px;
 	margin: 0px;
+	color: #fff;
+	opacity: .7;
 }
