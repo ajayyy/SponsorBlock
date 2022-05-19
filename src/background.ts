@@ -29,6 +29,7 @@ chrome.tabs.onUpdated.addListener(function(tabId) {
 	}, () => void chrome.runtime.lastError ); // Suppress error on Firefox
 });
 
+// Due to site isolation prefer to not trust the content script.
 const whitelistNetwork = new Set(["https://www.youtube.com/get_video_info", Config.config.serverAddress]);
 const whitelistJS = new Set(["./js/vendor.js", "./js/content.js"]);
 const whitelistCSS = new Set(["content.css", "./libs/Source+Sans+Pro.css", "popup.css"]);
