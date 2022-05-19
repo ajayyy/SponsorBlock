@@ -5,8 +5,6 @@ import { ContentContainer, Keybind } from "./types";
 import Utils from "./utils";
 const utils = new Utils();
 
-import runThePopup from "./popup";
-
 import PreviewBar, {PreviewBarSegment} from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
@@ -1725,9 +1723,6 @@ function openInfoMenu() {
     }
     
     parentNode.insertBefore(popup, parentNode.firstChild);
-    
-    //run the popup init script
-    runThePopup(messageListener);
 }
 
 function closeInfoMenu() {

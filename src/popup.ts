@@ -831,9 +831,4 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //end of function
 }
 
-if (chrome.tabs != undefined) {
-    //this means it is actually opened in the popup
-    runThePopup();
-}
-
-export default runThePopup;
+runThePopup();
