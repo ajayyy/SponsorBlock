@@ -41,6 +41,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
             return;
         case "sendRequest":
+            const whitelist = new Set(['https://www.youtube.com/get_video_info']);
+            let targetURL = new URL(request.url);
+            if (!whitelist.has(targetURL.origin + targetURL.pathname)) return;
             sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
                 callback({
                     responseText: await response.text(),
@@ -56,6 +59,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             //this allows the callback to be called later
             return true;
         case "registerContentScript": 
+            const whitelistJS = new Set(['./js/vendor.js', './js/content.js']);
+            for (const file of request.js) {
+                if (!whitelistJS.has(file)) return
+            }
+            const whitelistCSS = new Set(["content.css", "./libs/Source+Sans+Pro.css", "popup.css"]);
+            for (const file of request.css) {
+                if (!whitelistCSS.has(file)) return
+            }
             registerFirefoxContentScript(request);
             return false;
         case "unregisterContentScript": 
