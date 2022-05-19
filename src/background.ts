@@ -42,7 +42,7 @@ function checkURL(url) {
     }
 }
 
-chrome.runtime.onMessage.addListener(function (request, sender, callback) {
+chrome.runtime.onMessage.addListener(async function (request, sender, callback) {
 	switch(request.message) {
         case "openConfig":
             chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
@@ -54,6 +54,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
             return;
         case "sendRequest":
+            await utils.wait(() => Config.config !== null);
             if (!checkURL(request.url)) return
             sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
                 callback({
