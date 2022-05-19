@@ -34,8 +34,8 @@ const whitelistJS = new Set(["./js/vendor.js", "./js/content.js"]);
 const whitelistCSS = new Set(["content.css", "./libs/Source+Sans+Pro.css", "popup.css"]);
 
 function checkURL(url) {
-    for (const url of whitelistNetwork) {
-        if (url.startsWith(url)) {
+    for (const endpoint of whitelistNetwork) {
+        if (url.startsWith(endpoint)) {
             return true;
         }
     }
