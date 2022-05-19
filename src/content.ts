@@ -20,6 +20,7 @@ import { isSafari, keybindEquals } from "./utils/configUtils";
 import { CategoryPill } from "./render/CategoryPill";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
+import { logDebug } from "./utils/logger";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -448,6 +449,8 @@ function videoOnReadyListener(): void {
 }
 
 function cancelSponsorSchedule(): void {
+    logDebug("Pausing skipping");
+
     if (currentSkipSchedule !== null) {
         clearTimeout(currentSkipSchedule);
         currentSkipSchedule = null;
@@ -470,10 +473,12 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         // Reset lastCheckVideoTime
         lastCheckVideoTime = -1;
         lastCheckTime = 0;
-        console.warn("[SB] Ad playing, pausing skipping");
+        logDebug("[SB] Ad playing, pausing skipping");
 
         return;
     }
+
+    logDebug(`Considering to start skipping: ${!video}, ${video?.paused}`);
 
     if (!video || video.paused) return;
     if (currentTime === undefined || currentTime === null) {
@@ -506,6 +511,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
     const skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
 
+    logDebug(`Ready to start skipping: ${skipInfo.index} at ${currentTime}`);
     if (skipInfo.index === -1) return;
 
     const currentSkip = skipInfo.array[skipInfo.index];
@@ -525,6 +531,8 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
             }
         }
     }
+
+    logDebug(`Next step in starting skipping: ${!shouldSkip(currentSkip)}, ${!sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)}`);
 
     // Don't skip if this category should not be skipped
     if (!shouldSkip(currentSkip) && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) return;
@@ -691,7 +699,7 @@ function setupVideoListeners() {
             
             if (startedWaiting) {
                 startedWaiting = false;
-                console.warn(`[SB] Starting schedule after buffering: ${Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
+                logDebug(`[SB] Playing event after buffering: ${Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
                     || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)}`);
             }
 
@@ -734,7 +742,7 @@ function setupVideoListeners() {
         };
         video.addEventListener('pause', () => paused());
         video.addEventListener('waiting', () => {
-            console.warn("[SB] Not skipping due to buffering");
+            logDebug("[SB] Not skipping due to buffering");
             startedWaiting = true;
 
             paused();
