@@ -41,10 +41,19 @@ class MessageHandler {
     }
 }
 
+let allowPopup = (window === window.top);
 
+window.onmessage = async e => {
+    if (e.source !== window.parent) return
+    if (e.origin.endsWith('.youtube.com')) return allowPopup = true;
+    await utils.wait(() => Config.config !== null);
+    if (Config.config.supportInvidious && e.origin.includes(Config.config.invidiousInstances)) return allowPopup = true;
+}
 
 //make this a function to allow this to run on the content page
 async function runThePopup(messageListener?: MessageListener): Promise<void> {
+    if (window !== window.top) await utils.wait(() => allowPopup === true);
+    
     const messageHandler = new MessageHandler(messageListener);
 
     utils.localizeHtmlPage();
