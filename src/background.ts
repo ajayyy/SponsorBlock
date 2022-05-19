@@ -29,13 +29,13 @@ chrome.tabs.onUpdated.addListener(function(tabId) {
 	}, () => void chrome.runtime.lastError ); // Suppress error on Firefox
 });
 
-const whitelistNetwork = new Set(['https://www.youtube.com/get_video_info', Config.config.testingServer, Config.config.serverAddress]);
-const whitelistJS = new Set(['./js/vendor.js', './js/content.js']);
+const whitelistNetwork = new Set(["https://www.youtube.com/get_video_info", Config.config.serverAddress]);
+const whitelistJS = new Set(["./js/vendor.js", "./js/content.js"]);
 const whitelistCSS = new Set(["content.css", "./libs/Source+Sans+Pro.css", "popup.css"]);
 
 function checkURL(url) {
     for (const url of whitelistNetwork) {
-        if (request.url.startsWith(url)) {
+        if (url.startsWith(url)) {
             return true;
         }
     }
