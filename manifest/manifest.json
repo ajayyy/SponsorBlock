@@ -64,7 +64,12 @@
     ],
     "browser_action": {
         "default_title": "SponsorBlock",
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/IconSponsorBlocker16px.png",
+            "32": "icons/IconSponsorBlocker32px.png",
+            "64": "icons/LogoSponsorBlocker64px.png"
+        }
     }, 
     "background": {
         "scripts":[
