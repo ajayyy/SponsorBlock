@@ -2083,25 +2083,6 @@ function addCSS() {
     }
 }
 
-function sendRequestToCustomServer(type, fullAddress, callback) {
-    const xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.open(type, fullAddress, true);
-
-    if (callback != undefined) {
-        xmlhttp.onreadystatechange = function () {
-            callback(xmlhttp, false);
-        };
-
-        xmlhttp.onerror = function() {
-            callback(xmlhttp, true);
-        };
-    }
-
-    //submit this request
-    xmlhttp.send();
-}
-
 /**
  * Update the isAdPlaying flag and hide preview bar/controls if ad is playing
  */
