@@ -43,6 +43,7 @@ class MessageHandler {
 
 let allowPopup = (window === window.top);
 
+// To prevent clickjacking
 window.onmessage = async e => {
     if (e.source !== window.parent) return
     if (e.origin.endsWith('.youtube.com')) return allowPopup = true;
