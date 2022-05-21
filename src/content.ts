@@ -1150,14 +1150,12 @@ async function whitelistCheck() {
         channelIDInfo = {
             status: ChannelIDStatus.Found,
             id: getChannelID().match(/^\/?([^\s/]+)/)[0]
-        }
+        };
     } catch (e) {
         channelIDInfo = {
             status: ChannelIDStatus.Failed,
             id: null
-        }
-
-        return;
+        };
     }
 
     //see if this is a whitelisted channel
