@@ -276,6 +276,7 @@ function resetValues() {
         switchingVideos = false;
     } else {
         switchingVideos = true;
+        logDebug("Setting switching videos to true (reset data)");
     }
 
     firstEvent = true;
@@ -677,6 +678,8 @@ function setupVideoListeners() {
 
             if (switchingVideos) {
                 switchingVideos = false;
+                logDebug("Setting switching videos to false");
+
                 // If already segments loaded before video, retry to skip starting segments
                 if (sponsorTimes) startSkipScheduleCheckingForStartSponsors();
             }
