@@ -113,6 +113,7 @@ export interface SBObject {
     local: SBStorage;
     forceSyncUpdate(prop: string): void;
     forceLocalUpdate(prop: string): void;
+    resetToDefault(): void;
 }
 
 const Config: SBObject = {
@@ -289,7 +290,8 @@ const Config: SBObject = {
     config: null,
     local: null,
     forceSyncUpdate,
-    forceLocalUpdate
+    forceLocalUpdate,
+    resetToDefault
 };
 
 // Function setup
@@ -520,6 +522,10 @@ function addDefaults() {
             Config.cachedLocalStorage[key] = Config.localDefaults[key];
         }
     }
+}
+
+function resetToDefault() {
+    chrome.storage.sync.set(Config.syncDefaults);
 }
 
 // Sync config
