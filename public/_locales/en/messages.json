@@ -101,7 +101,7 @@
         "message": "It seems the server is down. Contact the dev immediately."
     },
     "connectionError": {
-        "message": "A connection error has occured. Error code: "
+        "message": "A connection error has occurred. Error code: "
     },
     "clearTimes": {
         "message": "Clear Segments"
@@ -356,7 +356,7 @@
         "message": "Show Time With Skips Removed"
     },
     "showTimeWithSkipsDescription": {
-        "message": "This time appears in brackets next to the current time on below the seekbar. This shows the total video duration minus any segments. This includes segments marked as only \"Show In Seekbar\"."
+        "message": "This time appears in brackets next to the current time on below the Seek Bar. This shows the total video duration minus any segments. This includes segments marked as only \"Show In Seek Bar\"."
     },
     "youHaveSkipped": {
         "message": "You've skipped "
@@ -410,7 +410,7 @@
         "message": "Supported Sites: "
     },
     "optionsInfo": {
-        "message": "Enable Invidious support, disable autoskip, hide buttons and more."
+        "message": "Enable Invidious support, disable auto skip, hide buttons and more."
     },
     "addInvidiousInstance": {
         "message": "Add 3rd-Party Client Instance"
@@ -499,7 +499,7 @@
     "incorrectlyFormattedOptions": {
         "message": "This JSON is not formatted correctly. Your options have not been changed."
     },
-    "confirmNoticeTitle" : {
+    "confirmNoticeTitle": {
         "message": "Submit Segment"
     },
     "submit": {
@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Open options page"
+    },
+    "resetToDefault": {
+        "message": "Reset settings to default"
+    },
+    "confirmResetToDefault": {
+        "message": "Are you sure you want to reset all settings to their default values? This cannot be undone."
     }
 }

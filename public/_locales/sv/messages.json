@@ -186,7 +186,7 @@
         "message": "Detta döljer knapparna på YouTube-spelaren som du kan skicka in segment med som ska hoppas över."
     },
     "showSkipButton": {
-        "message": "Behåll knappen hoppa till markerat på spelaren"
+        "message": "Behåll knappen hoppa till höjdpunkt på spelaren"
     },
     "showInfoButton": {
         "message": "Visa Infoknapp På YouTube-spelaren"
@@ -613,7 +613,7 @@
         "message": "Icke-musik"
     },
     "category_poi_highlight": {
-        "message": "Markera"
+        "message": "Höjdpunkt"
     },
     "category_poi_highlight_description": {
         "message": "Den del av videon som de flesta letar efter. Liknande kommentarer \"Video börjar på x\"."

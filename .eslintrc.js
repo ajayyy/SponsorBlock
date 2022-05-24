@@ -21,6 +21,7 @@ module.exports = {
     },
     plugins: ["react", "@typescript-eslint"],
     rules: {
+        '@typescript-eslint/no-unused-vars': 'error',
         // TODO: Remove warn rules when not needed anymore
         "no-self-assign": "off",
         "@typescript-eslint/no-empty-interface": "off",
