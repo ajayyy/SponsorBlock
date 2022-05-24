@@ -525,7 +525,13 @@ function addDefaults() {
 }
 
 function resetToDefault() {
-    chrome.storage.sync.set(Config.syncDefaults);
+    chrome.storage.sync.set({
+        ...Config.syncDefaults,
+        userID: Config.config.userID,
+        minutesSaved: Config.config.minutesSaved,
+        skipCount: Config.config.skipCount,
+        sponsorTimesContributed: Config.config.sponsorTimesContributed
+    });
 }
 
 // Sync config
