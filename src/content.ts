@@ -1149,7 +1149,7 @@ async function whitelistCheck() {
         ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
         ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
         ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
-            ?.getAttribute("href")?.match(/\/channel\/(UC[a-zA-Z0-9_-]{22})|\/c\/([a-zA-Z0-9_-]+)/)?.[1];
+            ?.getAttribute("href")?.match(/(?:\/c\/|\/channel\/)(UC[a-zA-Z0-9_-]{22}|[a-zA-Z0-9_-]+)/)?.[1];
 
     try {
         await utils.wait(() => !!getChannelID(), 6000, 20);
