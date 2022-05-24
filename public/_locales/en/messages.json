@@ -949,12 +949,9 @@
         "message": "Open options page"
     },
     "resetToDefault": {
-        "message": "Reset to default"
+        "message": "Reset settings to default"
     },
     "confirmResetToDefault": {
         "message": "Are you sure you want to reset all settings to their default values? This cannot be undone."
-    },
-    "whatResetToDefault": {
-       "message": "This resets all settings to their default values." 
     }
 }
