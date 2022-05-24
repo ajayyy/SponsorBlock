@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
 import { keybindEquals } from "./utils/configUtils";
 
 interface SBConfig {
@@ -302,7 +302,7 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
             for (const key in changes) {
                 Config.cachedSyncConfig[key] = changes[key].newValue;
             }
-    
+
             for (const callback of Config.configSyncListeners) {
                 callback(changes);
             }
@@ -312,7 +312,7 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
             }
         }
     });
-	
+
     const syncHandler: ProxyHandler<SBConfig> = {
         set<K extends keyof SBConfig>(obj: SBConfig, prop: K, value: SBConfig[K]) {
             Config.cachedSyncConfig[prop] = value;
@@ -329,10 +329,10 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
 
             return obj[prop] || data;
         },
-	
+
         deleteProperty(obj: SBConfig, prop: keyof SBConfig) {
             chrome.storage.sync.remove(<string> prop);
-            
+
             return true;
         }
 
@@ -354,10 +354,10 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
 
             return obj[prop] || data;
         },
-	
+
         deleteProperty(obj: SBStorage, prop: keyof SBStorage) {
             chrome.storage.local.remove(<string> prop);
-            
+
             return true;
         }
 
@@ -381,7 +381,7 @@ function forceLocalUpdate(prop: string): void {
     });
 }
 
-async function fetchConfig(): Promise<void> { 
+async function fetchConfig(): Promise<void> {
     await Promise.all([new Promise<void>((resolve) => {
         chrome.storage.sync.get(null, function(items) {
             Config.cachedSyncConfig = <SBConfig> <unknown> items;
@@ -389,7 +389,7 @@ async function fetchConfig(): Promise<void> {
         });
     }), new Promise<void>((resolve) => {
         chrome.storage.local.get(null, function(items) {
-            Config.cachedLocalStorage = <SBStorage> <unknown> items; 
+            Config.cachedLocalStorage = <SBStorage> <unknown> items;
             resolve();
         });
     })]);
@@ -433,9 +433,9 @@ function migrateOldSyncFormats(config: SBConfig) {
     if (!config["autoSkipOnMusicVideosUpdate"]) {
         config["autoSkipOnMusicVideosUpdate"] = true;
         for (const selection of config.categorySelections) {
-            if (selection.name === "music_offtopic" 
+            if (selection.name === "music_offtopic"
                     && selection.option === CategorySkipOption.AutoSkip) {
-                
+
                 config.autoSkipOnMusicVideos = true;
                 break;
             }
