@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Copia UserID Pubblico"
     },
+    "copySegmentID": {
+        "message": "Copia ID Segmento"
+    },
     "discordAdvert": {
         "message": "Entra nel server Discord ufficiale per darci suggerimenti e feedback!"
     },
@@ -879,6 +882,9 @@
     "ChangeCategoryTooltip": {
         "message": "Questo si applicherà istantaneamente ai tuoi segmenti"
     },
+    "hideSegment": {
+        "message": "Nascondi segmento"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Usa la rotellina del mouse passando sulla casella di modifica per regolare rapidamente il tempo. Le combinazioni dei tasti ctrl o shift sono utilizzabili per perfezionare le modifiche."
     },
@@ -935,5 +941,11 @@
     },
     "openOptionsPage": {
         "message": "Apri la pagina delle opzioni"
+    },
+    "resetToDefault": {
+        "message": "Ripristina le impostazioni predefinite"
+    },
+    "confirmResetToDefault": {
+        "message": "Sei sicuro di voler reimpostare tutte le impostazioni ai valori predefiniti? Questo non può essere annullato."
     }
 }
