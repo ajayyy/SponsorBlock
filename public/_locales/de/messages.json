@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Einstellungen öffnen"
+    },
+    "resetToDefault": {
+        "message": "Einstellungen zurücksetzen"
+    },
+    "confirmResetToDefault": {
+        "message": "Sind Sie sicher, dass Sie alle Einstellungen auf ihre Standardwerte zurücksetzen wollen? Dies kann nicht rückgängig gemacht werden."
     }
 }
