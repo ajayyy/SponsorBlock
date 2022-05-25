@@ -911,5 +911,11 @@
     },
     "openOptionsPage": {
         "message": "Ava valikute leht"
+    },
+    "resetToDefault": {
+        "message": "Lähtesta sätted vaikeväärtustele"
+    },
+    "confirmResetToDefault": {
+        "message": "Kas soovid kindlasti kõik sätted vaikeväärtustele lähtestada? Seda ei saa tagasi võtta."
     }
 }
