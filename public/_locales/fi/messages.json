@@ -883,10 +883,10 @@
         "message": "Tämä vaikuttaa sinun osioihin välittömästi"
     },
     "downvote": {
-        "message": "Äänestä puolesta"
+        "message": "Äänestä alas"
     },
     "upvote": {
-        "message": "Äänestä vastaan"
+        "message": "Äänestä ylös"
     },
     "hideSegment": {
         "message": "Piilota osio"
@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Avaa asetussivu"
+    },
+    "resetToDefault": {
+        "message": "Palauta oletusasetukset"
+    },
+    "confirmResetToDefault": {
+        "message": "Oletko varma, että haluat palauttaa kaikki asetukset oletusarvoihin? Tätä ei voi perua."
     }
 }
