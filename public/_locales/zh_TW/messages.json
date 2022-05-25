@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "打開選項頁面"
+    },
+    "resetToDefault": {
+        "message": "重設設定為預設值"
+    },
+    "confirmResetToDefault": {
+        "message": "你確定要將所有設定重設為預設值嗎？此動作無法還原。"
     }
 }
