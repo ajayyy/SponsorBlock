@@ -193,7 +193,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         // Make listener get called
         this.setBarColorTimeout = setTimeout(() => {
             Config.config.barTypes = Config.config.barTypes;
-        }, 300);
+        }, 50);
     }
 }
 
