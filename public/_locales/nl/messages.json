@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Pagina met opties openen"
+    },
+    "resetToDefault": {
+        "message": "Instellingen terugzetten op standaard"
+    },
+    "confirmResetToDefault": {
+        "message": "Weet u zeker dat u alle instellingen wilt terugzetten naar hun standaardwaarden? Dit kan niet ongedaan worden gemaakt."
     }
 }
