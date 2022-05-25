@@ -480,14 +480,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
     if (!video || video.paused) return;
     if (currentTime === undefined || currentTime === null) {
-        const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime ?
-            (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null);
-        if ((lastTimeFromWaitingEvent || !utils.isFirefox()) 
-                && !isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6){
-            currentTime = virtualTime;
-        } else {
-            currentTime = video.currentTime;
-        }
+        currentTime = getVirtualTime();
     }
     lastTimeFromWaitingEvent = null;
 
@@ -541,7 +534,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         let forcedIncludeNonIntersectingSegments = true;
 
         if (incorrectVideoCheck(videoID, currentSkip)) return;
-        forceVideoTime ||= video.currentTime;
+        forceVideoTime ||= Math.max(video.currentTime, getVirtualTime());
 
         if (forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
             skipToTime({
@@ -591,8 +584,20 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
             logDebug(`Starting timeout to skip ${video.currentTime} to skip at ${skipTime[0]}`);
             
             // Schedule for right before to be more precise than normal timeout
-            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - 100));
+            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - 150));
         }
+    }
+}
+
+function getVirtualTime(): number {
+    const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime ?
+        (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null);
+
+    if ((lastTimeFromWaitingEvent || !utils.isFirefox())
+        && !isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6) {
+        return virtualTime;
+    } else {
+        return video.currentTime;
     }
 }
 
