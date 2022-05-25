@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Beállítások megnyitása"
+    },
+    "resetToDefault": {
+        "message": "Beállítások visszaállítása alapértelmezettre"
+    },
+    "confirmResetToDefault": {
+        "message": "Biztosan vissza szeretnéd állítani az összes beállítást az alapértelmezett értékekre? A műveletet nem lehet visszavonni."
     }
 }
