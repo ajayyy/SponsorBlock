@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+import { merge } from "webpack-merge";
+import common from './webpack.common.js';
 
-module.exports = env => {
+export default env => {
     let mode = "production";
     env.mode = mode;
 
