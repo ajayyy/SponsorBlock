@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Öppna alternativsidan"
+    },
+    "resetToDefault": {
+        "message": "Återställ inställningar till standard"
+    },
+    "confirmResetToDefault": {
+        "message": "Är du säker på att du vill återställa alla inställningar till deras standardvärden? Detta kan inte ångras."
     }
 }
