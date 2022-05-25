@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Buka laman opsi"
+    },
+    "resetToDefault": {
+        "message": "Atur ulang pengaturan ke bawaan"
+    },
+    "confirmResetToDefault": {
+        "message": "Apakah Anda yakin ingin mengatur ulang semua pengaturan ke nilai bawaan?\nTindakan ini tidak dapat diurungkan."
     }
 }
