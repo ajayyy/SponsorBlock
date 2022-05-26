@@ -952,6 +952,6 @@
         "message": "Palauta oletusasetukset"
     },
     "confirmResetToDefault": {
-        "message": "Oletko varma, että haluat palauttaa kaikki asetukset oletusarvoihin? Tätä ei voi perua."
+        "message": "Haluatko varmasti palauttaa kaikki asetukset oletusarvoihin? Tätä ei voi perua."
     }
 }
