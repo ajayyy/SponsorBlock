@@ -68,8 +68,31 @@
         "default_icon": {
             "16": "icons/IconSponsorBlocker16px.png",
             "32": "icons/IconSponsorBlocker32px.png",
-            "64": "icons/LogoSponsorBlocker64px.png"
-        }
+            "64": "icons/LogoSponsorBlocker64px.png",
+            "128": "icons/LogoSponsorBlocker128px.png"
+        },
+        "theme_icons": [
+            {
+                "light": "icons/IconSponsorBlocker16px.png",
+                "dark": "icons/IconSponsorBlocker16px.png",
+                "size": 16
+            },
+            {
+                "light": "icons/IconSponsorBlocker32px.png",
+                "dark": "icons/IconSponsorBlocker32px.png",
+                "size": 32
+            },
+            {
+                "light": "icons/LogoSponsorBlocker64px.png",
+                "dark": "icons/LogoSponsorBlocker64px.png",
+                "size": 64
+            },
+            {
+                "light": "icons/LogoSponsorBlocker128px.png",
+                "dark": "icons/LogoSponsorBlocker128px.png",
+                "size": 128
+            }
+        ]
     }, 
     "background": {
         "scripts":[
