@@ -303,7 +303,7 @@
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
-        "message": "Der Server scheint überlastet zu sein. Probiere es in ein paar Sekunden erneut."
+        "message": "Der Server ist wahrescheinlich überlastet. Probiere es später nochmal."
     },
     "errorCode": {
         "message": "Fehlermeldung: "
@@ -832,7 +832,7 @@
         "message": "Das übermitteln kann entweder im Popup durch das drücken vom \"Segment Started Jetzt\" Knopf oder im Videoplayer mit den Knöpfen im Player gemacht werden."
     },
     "helpPageSubmitting2": {
-        "message": "Mit einem Klick auf den Play-Knopf wird der Beginn eines Segments und mit dem klick auf den Stop-Knopf das ende eines Segments markiert. Du kannst mehrere Sponsoren vorbereiten, bevor du auf Absenden klickst. Das klicken des Upload-Knopfes wird die Segmente übermitteln. Das klicken des Mülleimers löscht es."
+        "message": "Mit einem Klick auf den Play-Button wird der Beginn eines Segments markiert, und mit einem Klick auf den Stop-Button dessen Ende. Du kannst mehrere Segmente anlegen, bevor du durch Klicken des Upload-Buttons zum Einreichen fortfährst. Ein Klick auf die Mülltonne löscht deine angelegten Segmente."
     },
     "Editing": {
         "message": "Bearbeitung"
