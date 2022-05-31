@@ -58,7 +58,7 @@ export function getGuidelineInfo(category: Category): TextBox[] {
             }];
         case "intro":
             return [{
-                icon: "icons/check.svg",
+                icon: "icons/check-smaller.svg",
                 text: chrome.i18n.getMessage(`category_${category}_guideline1`)
             }, {
                 icon: "icons/close-smaller.svg",
@@ -83,10 +83,10 @@ export function getGuidelineInfo(category: Category): TextBox[] {
             }];
         case "preview":
             return [{
-                icon: "icons/check.svg",
+                icon: "icons/check-smaller.svg",
                 text: chrome.i18n.getMessage(`category_${category}_guideline1`)
             }, {
-                icon: "icons/check.svg",
+                icon: "icons/check-smaller.svg",
                 text: chrome.i18n.getMessage(`category_${category}_guideline2`)
             }, {
                 icon: "icons/close-smaller.svg",

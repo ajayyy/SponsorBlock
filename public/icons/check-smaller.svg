@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   height="48"
-   width="48"
+   width="24"
+   height="24"
    version="1.1"
    id="svg4"
-   sodipodi:docname="right-arrow.svg"
+   sodipodi:docname="check-smaller.svg"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -21,9 +21,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="13.125"
-     inkscape:cx="24.07619"
-     inkscape:cy="24"
+     inkscape:zoom="26.25"
+     inkscape:cx="12.038095"
+     inkscape:cy="12"
      inkscape:window-width="1920"
      inkscape:window-height="983"
      inkscape:window-x="482"
@@ -31,7 +31,8 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg4" />
   <path
-     d="M 17.039265,39.62264 14.838095,37.382164 28.320259,23.9 14.838095,10.417836 17.039265,8.1773601 32.761905,23.9 Z"
+     fill="#ffffff"
+     d="M 17.69347,4.9833775 9.9421192,12.940517 6.3065298,9.5107153 3.7684768,12.048769 9.9421192,18.016623 20.231523,7.5214304 Z"
      id="path2"
-     style="fill:#ffffff;stroke-width:0.786132" />
+     style="stroke-width:0.68596" />
 </svg>
