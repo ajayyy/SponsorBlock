@@ -945,7 +945,10 @@
     "LearnMore": {
         "message": "Learn More"
     },
-	  "CopyDownvoteButtonInfo": {
+    "FullDetails": {
+        "message": "Full Details"
+    },
+	"CopyDownvoteButtonInfo": {
         "message": "Downvotes and creates a local copy for you to resubmit"
     },
     "OpenCategoryWikiPage": {

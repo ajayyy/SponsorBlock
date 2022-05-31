@@ -206,7 +206,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                 title:  chrome.i18n.getMessage(`category_${category}`),
                 textBoxes: getGuidelineInfo(category),
                 buttons: [{
-                        name: chrome.i18n.getMessage("learnMore"),
+                        name: chrome.i18n.getMessage("FullDetails"),
                         listener: () => window.open(CompileConfig.wikiLinks[category])
                     },
                     {
