@@ -230,6 +230,9 @@
     "showSkipNotice": {
         "message": "Zobraziť upozornenie pri preskočení segmentu"
     },
+    "showCategoryGuidelines": {
+        "message": "Zobraziť pomocníka ku kategórii"
+    },
     "noticeVisibilityMode0": {
         "message": "Veľké upozornenia o preskočení"
     },
@@ -506,17 +509,38 @@
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Zahŕňa plynulé prechody"
+    },
+    "generic_guideline2": {
+        "message": "Prehrať tak, ako keby nebolo nič preskočené"
+    },
     "category_sponsor": {
         "message": "Sponzor"
     },
     "category_sponsor_description": {
         "message": "Platená propagácia, platené odporúčania a priame reklamy. Neplatí pre vlastnú propagáciu alebo neplatenú propagáciu dobročinností/tvorcov/webových stránok/produktov, ktoré sa im páčia."
     },
+    "category_sponsor_guideline1": {
+        "message": "Platené promo"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Nie pre dary a vlastný merch"
+    },
     "category_selfpromo": {
         "message": "Neplatená/Vlastná propagácia"
     },
     "category_selfpromo_description": {
         "message": "Podobné ako sponzor, okrem neplatenej alebo vlastnej propagácie. Patria sem sekcie týkajúce sa merchu, donatov alebo informácií o tom, s kým spolupracovali."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Dary, členstvo a vlastný merch"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Obsah mimo témy, ktorý nepridáva žiadne informácie"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Nie pre firemne navrhnuté produkty a merch"
     },
     "category_exclusive_access": {
         "message": "Exkluzívny Prístup"
@@ -528,11 +552,23 @@
         "message": "Toto video predstavuje produkt, službu alebo miesto, ku ktorým získali bezplatný alebo dotovaný prístup",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Celé video predstavuje niečo, kde sa dá získať voľný alebo zľavnený prístup"
+    },
     "category_interaction": {
         "message": "Pripomienka interakcie (Prihlásiť sa na odber)"
     },
     "category_interaction_description": {
         "message": "Krátka výzva dať like, prihlásiť sa na odber alebo sledovať ich v strede obsahu. Ak je to dlhé alebo sa týka niečoho konkrétneho, malo by to radšej byť v ramci vlastnej propagácie."
+    },
+    "category_interaction_guideline1": {
+        "message": "Krátke pripomienky na \"Páči sa mi to\", Odber a Sledovanie"
+    },
+    "category_interaction_guideline2": {
+        "message": "Zahŕňa nepriame pripomienky na komentovanie"
+    },
+    "category_interaction_guideline3": {
+        "message": "Nie pre všeobecné promo, iba výzvy k akcii"
     },
     "category_interaction_short": {
         "message": "Pripomienka interakcie"
@@ -546,11 +582,20 @@
     "category_intro_short": {
         "message": "Prerušenie"
     },
+    "category_intro_guideline1": {
+        "message": "Interval bez samotného obsahu"
+    },
+    "category_intro_guideline2": {
+        "message": "Nie pre prechody bez informácie"
+    },
     "category_outro": {
         "message": "Koncové karty / titulky"
     },
     "category_outro_description": {
         "message": "Kredity alebo keď sa zobrazia YouTube koncové karty. Neplatí pre zhrnutia s informáciami."
+    },
+    "category_outro_guideline1": {
+        "message": "Nezahrňte obsah, aj keby už boli vidieť koncové karty"
     },
     "category_preview": {
         "message": "Ukážka/Rekapitulácia"
@@ -558,11 +603,29 @@
     "category_preview_description": {
         "message": "Rýchla rekapitulácia predošlej epizódy alebo ukážka toho, čo bude nasledovať neskôr v aktuálnom videu. Myslené pre zostrihané videá, nie pre hovorený súhrn."
     },
+    "category_preview_guideline1": {
+        "message": "Ukážky, ktoré sa zobrazia neskôr alebo v budúcom videu"
+    },
+    "category_preview_guideline2": {
+        "message": "Zhrnutie predošlého videa"
+    },
+    "category_preview_guideline3": {
+        "message": "Nie pre sekcie, ktoré majú dodatočný obsah"
+    },
     "category_filler_description": {
         "message": "Odbočky mimo tému pridané len pre zábavu, nepotrebné pre pochopenie hlavného obsahu videa. Nemalo by zahŕňať segmenty, ktoré vysvetľujú kontext alebo vedľajšie detaily."
     },
     "category_filler_short": {
         "message": "Odbočka"
+    },
+    "category_filler_guideline1": {
+        "message": "Nepodstatné scény slúžiace len ako výplň alebo humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Nepodarené a opakované zábery"
+    },
+    "category_filler_guideline3": {
+        "message": "Nie pre scény vyžadované pre pochopenie témy"
     },
     "category_music_offtopic": {
         "message": "Hudba: časť bez hudby"
@@ -573,11 +636,26 @@
     "category_music_offtopic_short": {
         "message": "Bez hudby"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Sekcie, ktoré nie sú v oficiálnom vydaní"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Sekcia bez hudby v živom vystúpení"
+    },
     "category_poi_highlight": {
         "message": "Hlavný obsah videa"
     },
     "category_poi_highlight_description": {
         "message": "Tá časť videa, ktorú ľudia vyhľadávajú. Podobné komentárom \"Video začína v čase x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Sekcia, ktorú vyhľadáva väčšina ľudí"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Môže pomôcť preskočiť predošlý obsah"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Môže preskočiť na hlavný obsah alebo náhľad"
     },
     "category_livestream_messages": {
         "message": "Živé vysielanie: oznamy a dary"
@@ -818,6 +896,9 @@
     },
     "LearnMore": {
         "message": "Zistiť viac"
+    },
+    "FullDetails": {
+        "message": "Úplné podrobnosti"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Dá palec dole a vytvorí kópiu, aby ste mohli segment znova odoslať"
