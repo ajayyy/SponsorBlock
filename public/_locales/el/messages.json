@@ -227,6 +227,9 @@
     "showSkipNotice": {
         "message": "Εμφάνιση ειδοποιήσεων μετά την παράλειψη κάθε τμήματος"
     },
+    "showCategoryGuidelines": {
+        "message": "Εμφάνιση βοήθειας κατηγοριών"
+    },
     "noticeVisibilityMode0": {
         "message": "Ειδοποιήσεις παράλειψης πλήρους μεγέθους"
     },
