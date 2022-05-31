@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Show Notice After A Segment Is Skipped"
     },
+    "showCategoryGuidelines": {
+        "message": "Show Category Help"
+    },
     "noticeVisibilityMode0": {
         "message": "Full Size Skip Notices"
     },
@@ -542,17 +545,38 @@
         "message": "to",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Include segue transitions"
+    },
+    "generic_guideline2": {
+        "message": "Plays as if nothing was skipped"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
     "category_sponsor_description": {
         "message": "Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shoutouts to causes/creators/websites/products they like."
     },
+    "category_sponsor_guideline1": {
+        "message": "Paid promotions"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Not for donations or custom merch"
+    },
     "category_selfpromo": {
         "message": "Unpaid/Self Promotion"
     },
     "category_selfpromo_description": {
         "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Applies to donations, memberships and custom merch"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Free shoutouts that don't add to the video"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Generic and company-created merch is Sponsor"
     },
     "category_exclusive_access": {
         "message": "Exclusive Access"

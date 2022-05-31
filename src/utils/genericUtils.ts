@@ -62,7 +62,7 @@ function hexToRgb(hex: string): {r: number, g: number, b: number} {
       g: parseInt(result[2], 16),
       b: parseInt(result[3], 16)
     } : null;
-  }
+}
 
 export const GenericUtils = {
     wait,
