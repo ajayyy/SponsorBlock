@@ -156,14 +156,20 @@
 }
 
 .sponsorSkipNoticeParent, .sponsorSkipNotice {
-	min-width: 350px;
-	max-width: 50%;
-
 	border-spacing: 5px 10px;
 	padding-left: 5px;
 	padding-right: 5px;
 
 	border-collapse: unset;
+}
+
+.sponsorSkipNoticeParent {
+	min-width: 350px;
+	max-width: 50%;
+}
+
+.sponsorSkipNotice {
+	width: 100%;
 }
 
 .sponsorSkipNoticeTableContainer {
