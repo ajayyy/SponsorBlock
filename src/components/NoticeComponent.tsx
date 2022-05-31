@@ -24,6 +24,7 @@ export interface NoticeProps {
 
     smaller?: boolean,
     limitWidth?: boolean,
+    extraClass?: string,
 
     // Callback for when this is closed
     closeListener: () => void,
@@ -35,8 +36,6 @@ export interface NoticeProps {
 }
 
 export interface NoticeState {
-    noticeTitle: string,
-
     maxCountdownTime: () => number,
 
     countdownTime: number,
@@ -54,8 +53,12 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
     amountOfPreviousNotices: number;
 
+    parentRef: React.RefObject<HTMLDivElement>;
+
     constructor(props: NoticeProps) {
         super(props);
+
+        this.parentRef = React.createRef();
 
         const maxCountdownTime = () => {
             if (this.props.maxCountdownTime) return this.props.maxCountdownTime();
@@ -71,8 +74,6 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
         // Setup state
         this.state = {
-            noticeTitle: props.noticeTitle,
-
             maxCountdownTime,
 
             //the countdown until this notice closes
@@ -97,9 +98,11 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         return (
             <div id={"sponsorSkipNotice" + this.idSuffix} 
                 className={"sponsorSkipObject sponsorSkipNoticeParent"
-                    + (this.props.showInSecondSlot ? " secondSkipNotice" : "")}
+                    + (this.props.showInSecondSlot ? " secondSkipNotice" : "")
+                    + (this.props.extraClass ? ` ${this.props.extraClass}` : "")}
                 onMouseEnter={(e) => this.onMouseEnter(e) }
                 onMouseLeave={() => this.timerMouseLeave()}
+                ref={this.parentRef}
                 style={noticeStyle} >
                 <div className={"sponsorSkipNoticeTableContainer" 
                         + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")
@@ -123,7 +126,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                                         style={{float: "left"}}
                                         className="sponsorSkipMessage sponsorSkipObject">
                                         
-                                        {this.state.noticeTitle}
+                                        {this.props.noticeTitle}
                                     </span>
 
                                     {this.props.firstColumn}
@@ -344,12 +347,6 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         if (!silent) this.props.closeListener();
     }
 
-    changeNoticeTitle(title: string): void {
-        this.setState({
-            noticeTitle: title
-        });
-    }
-    
     addNoticeInfoMessage(message: string, message2 = ""): void {
         //TODO: Replace
 
@@ -383,6 +380,10 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             //add element to div
             document.querySelector("#sponsorSkipNotice" + this.idSuffix + " > tbody").insertBefore(thanksForVotingText2, document.getElementById("sponsorSkipNoticeSpacer" + this.idSuffix));
         }
+    }
+
+    getElement(): React.RefObject<HTMLDivElement> {
+        return this.parentRef;
     }
 }
 

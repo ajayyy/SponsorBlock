@@ -617,11 +617,6 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             countdownTime: Config.config.skipNoticeDuration
         };
 
-        // See if the title should be changed
-        if (!this.autoSkip) {
-            newState.noticeTitle = chrome.i18n.getMessage("noticeTitle");
-        }
-
         //reset countdown
         this.setState(newState, () => {
             this.noticeRef.current.resetCountdown();

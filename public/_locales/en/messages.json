@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Show Notice After A Segment Is Skipped"
     },
+    "showCategoryGuidelines": {
+        "message": "Show Category Help"
+    },
     "noticeVisibilityMode0": {
         "message": "Full Size Skip Notices"
     },
@@ -542,17 +545,38 @@
         "message": "to",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Include segue transitions"
+    },
+    "generic_guideline2": {
+        "message": "Plays as if nothing was skipped"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
     "category_sponsor_description": {
         "message": "Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shoutouts to causes/creators/websites/products they like."
     },
+    "category_sponsor_guideline1": {
+        "message": "Paid promotions"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Not for donations or custom merch"
+    },
     "category_selfpromo": {
         "message": "Unpaid/Self Promotion"
     },
     "category_selfpromo_description": {
         "message": "Similar to \"sponsor\" except for unpaid or self promotion. This includes sections about merchandise, donations, or information about who they collaborated with."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donations, memberships and custom merch"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Free shoutouts that don't add to the video"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Not for corporate designed products and merch"
     },
     "category_exclusive_access": {
         "message": "Exclusive Access"
@@ -564,11 +588,23 @@
         "message": "This video showcases a product, service or location that they've received free or subsidized access to",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Entire video showcases something where recieved free or subsidized access"
+    },
     "category_interaction": {
         "message": "Interaction Reminder (Subscribe)"
     },
     "category_interaction_description": {
         "message": "When there is a short reminder to like, subscribe or follow them in the middle of content. If it is long or about something specific, it should be under self promotion instead."
+    },
+    "category_interaction_guideline1": {
+        "message": "Short reminders to like, subscribe or follow"
+    },
+    "category_interaction_guideline2": {
+        "message": "Includes indirect reminders to comment"
+    },
+    "category_interaction_guideline3": {
+        "message": "Not for general promotion, only calls to action"
     },
     "category_interaction_short": {
         "message": "Interaction Reminder"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Intermission"
     },
+    "category_intro_guideline1": {
+        "message": "Interval without actual content"
+    },
+    "category_intro_guideline2": {
+        "message": "Not for transitions with information"
+    },
     "category_outro": {
         "message": "Endcards/Credits"
     },
     "category_outro_description": {
         "message": "Credits or when the YouTube endcards appear. Not for conclusions with information."
     },
+    "category_outro_guideline1": {
+        "message": "Don't include content, even if endcards are on screen"
+    },
     "category_preview": {
         "message": "Preview/Recap"
     },
     "category_preview_description": {
         "message": "Quick recap of previous episodes, or a preview of what's coming up later in the current video. Meant for edited together clips, not for spoken summaries."
+    },
+    "category_preview_guideline1": {
+        "message": "Clips that appear later, or in a future video"
+    },
+    "category_preview_guideline2": {
+        "message": "Recap of a previous video"
+    },
+    "category_preview_guideline3": {
+        "message": "Not for sections that add additional content"
     },
     "category_filler": {
         "message": "Filler Tangent/Jokes"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Filler"
     },
+    "category_filler_guideline1": {
+        "message": "Tangential scenes only for filler or humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Distractions, bloopers, replays"
+    },
+    "category_filler_guideline3": {
+        "message": "Not for scenes required to understand the topic"
+    },
     "category_music_offtopic": {
         "message": "Music: Non-Music Section"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Non-Music"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Sections not in official releases"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Non-music in a live performance"
+    },
     "category_poi_highlight": {
         "message": "Highlight"
     },
     "category_poi_highlight_description": {
         "message": "The part of the video that most people are looking for. Similar to \"Video starts at x\" comments."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Section most people are looking for"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Can help skip past context"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Can skip to the title or thumbnail"
     },
     "category_livestream_messages": {
         "message": "Livestream: Donation/Message Readings"
@@ -867,7 +945,10 @@
     "LearnMore": {
         "message": "Learn More"
     },
-	  "CopyDownvoteButtonInfo": {
+    "FullDetails": {
+        "message": "Full Details"
+    },
+	"CopyDownvoteButtonInfo": {
         "message": "Downvotes and creates a local copy for you to resubmit"
     },
     "OpenCategoryWikiPage": {
