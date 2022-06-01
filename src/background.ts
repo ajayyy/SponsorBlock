@@ -29,7 +29,22 @@ chrome.tabs.onUpdated.addListener(function(tabId) {
 	}, () => void chrome.runtime.lastError ); // Suppress error on Firefox
 });
 
-chrome.runtime.onMessage.addListener(function (request, sender, callback) {
+// Due to site isolation prefer to not trust the content script.
+const whitelistNetwork = new Set(["https://www.youtube.com/get_video_info"]);
+const whitelistJS = new Set(["./js/vendor.js", "./js/content.js"]);
+const whitelistCSS = new Set(["content.css", "./libs/Source+Sans+Pro.css", "popup.css"]);
+
+async function checkURL(url) {
+    await utils.wait(() => Config.config !== null);
+    if (url.startsWith(Config.config.serverAddress)) return true
+    for (const endpoint of whitelistNetwork) {
+        if (url.startsWith(endpoint)) {
+            return true;
+        }
+    }
+}
+
+chrome.runtime.onMessage.addListener(async function (request, sender, callback) {
 	switch(request.message) {
         case "openConfig":
             chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
@@ -41,6 +56,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
             return;
         case "sendRequest":
+            if (!await checkURL(request.url)) return
             sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
                 callback({
                     responseText: await response.text(),
@@ -56,6 +72,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             //this allows the callback to be called later
             return true;
         case "registerContentScript": 
+            for (const file of request.js) {
+                if (!whitelistJS.has(file)) return
+            }
+            for (const file of request.css) {
+                if (!whitelistCSS.has(file)) return
+            }
             registerFirefoxContentScript(request);
             return false;
         case "unregisterContentScript": 
