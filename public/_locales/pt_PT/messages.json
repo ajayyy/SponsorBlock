@@ -17,7 +17,7 @@
         "message": "Isso já foi enviado antes"
     },
     "channelWhitelisted": {
-        "message": "Canal adicionado à whitelist!"
+        "message": "Canal adicionado à lista de autorizados!"
     },
     "Segment": {
         "message": "segmento"
@@ -159,7 +159,7 @@
         "message": "Nome de Utilizador"
     },
     "setUsername": {
-        "message": "Criar nomde de utilizador"
+        "message": "Criar nome de utilizador"
     },
     "copyPublicID": {
         "message": "Copiar ID público de utilizador"
@@ -253,7 +253,7 @@
         "description": "Used on Firefox Store Page"
     },
     "sourceCode": {
-        "message": "Código fonte",
+        "message": "Código-fonte",
         "description": "Used on Firefox Store Page"
     },
     "errorCode": {
