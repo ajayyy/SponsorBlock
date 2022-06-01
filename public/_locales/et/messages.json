@@ -536,6 +536,9 @@
         "message": "kuni",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Kasuta sujuvaid üleminekuid"
+    },
     "generic_guideline2": {
         "message": "Mängib nii, nagu midagi poleks vahele jäetud"
     },
@@ -575,6 +578,9 @@
     "category_exclusive_access_pill": {
         "message": "See video esitleb toodet, teenust või asukohta, millele isik on tasuta või toetusega ligipääsu saanud",
         "description": "Short description for this category"
+    },
+    "category_exclusive_access_guideline1": {
+        "message": "Kogu video kuvab midagi tasuta või toetusega ligipääsuga"
     },
     "category_interaction": {
         "message": "Tegutsemise meeldetuletus (kanali tellimine)"
@@ -641,6 +647,12 @@
     },
     "category_filler_short": {
         "message": "Täide"
+    },
+    "category_filler_guideline1": {
+        "message": "Sisuga mitteseonduvad täite- või huumoristseenid"
+    },
+    "category_filler_guideline2": {
+        "message": "Tähelepanu hajutajad, saatevead, kordused"
     },
     "category_filler_guideline3": {
         "message": "Mitte stseenid, mida on teema mõistmiseks vaja vaadata"
@@ -974,6 +986,9 @@
     },
     "change": {
         "message": "Muuda"
+    },
+    "youtubeKeybindWarning": {
+        "message": "See on YouTube'i sisseehitatud otsetee. Kas soovid kindlasti seda kasutada?"
     },
     "betaServerWarning": {
         "message": "BEETAserver on lubatud!"
