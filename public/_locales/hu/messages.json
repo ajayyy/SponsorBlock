@@ -588,6 +588,9 @@
         "message": "Ez a videó olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyenes vagy kedvezményes hozzáférést kaptak",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "A teljes videó olyan dolgot mutat be, amihez ingyenes vagy kedvezményes hozzáférést kaptak"
+    },
     "category_interaction": {
         "message": "Emlékeztető (Feliratkozás)"
     },
