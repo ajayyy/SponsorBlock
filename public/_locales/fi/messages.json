@@ -588,6 +588,9 @@
         "message": "Tämä video esittelee tuotteen, palvelun tai sijainnin, johon he ovat saaneet ilmaisen tai tuetun käyttöoikeuden",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Koko video keskittyy johonkin, jonka käyttöoikeus on saatu veloituksetta tai tuetusti"
+    },
     "category_interaction": {
         "message": "Vuorovaikutusmuistutus (tilaaminen)"
     },
@@ -599,6 +602,9 @@
     },
     "category_interaction_guideline2": {
         "message": "Sisältää epäsuorat muistutukset kommenttien jättämisestä"
+    },
+    "category_interaction_guideline3": {
+        "message": "Ei yleiselle mainostukselle, vain toimintapyynnöille"
     },
     "category_interaction_short": {
         "message": "Vuorovaikutusmuistutus"
@@ -683,6 +689,9 @@
     },
     "category_poi_highlight_guideline1": {
         "message": "Kohta mitä useimmat ihmiset etsivät"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Voi ohittaa kontekstin"
     },
     "category_poi_highlight_guideline3": {
         "message": "Voi ohittaa otsikon tai pikkukuvan viittaamaan kohtaan"
@@ -1002,7 +1011,7 @@
         "description": "Option label"
     },
     "unbind": {
-        "message": "Poista valinta",
+        "message": "Poista kytkös",
         "description": "Unbind keyboard shortcut"
     },
     "notSet": {
