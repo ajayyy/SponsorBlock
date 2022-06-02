@@ -41,10 +41,12 @@ function onNavigationApiAvailableChange(changes: {[key: string]: chrome.storage.
 
 // If Navigation API is not supported, then background has to inform content script about video change.
 // This happens on Safari, Firefox, and Chromium 101 (inclusive) and below.
+chrome.tabs.onUpdated.addListener(onTabUpdatedListener);
 utils.wait(() => Config.local !== null).then(() => {
-    if (!Config.local.navigationApiAvailable)
-        chrome.tabs.onUpdated.addListener(onTabUpdatedListener);
-})
+    if (Config.local.navigationApiAvailable) {
+        chrome.tabs.onUpdated.removeListener(onTabUpdatedListener);
+    }
+});
 
 if (!Config.configSyncListeners.includes(onNavigationApiAvailableChange)) {
         Config.configSyncListeners.push(onNavigationApiAvailableChange);

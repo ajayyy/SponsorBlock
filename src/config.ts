@@ -287,7 +287,7 @@ const Config: SBObject = {
     },
     localDefaults: {
         downvotedSegments: {},
-        navigationApiAvailable: null,
+        navigationApiAvailable: null
     },
     cachedSyncConfig: null,
     cachedLocalStorage: null,
