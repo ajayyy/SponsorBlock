@@ -122,8 +122,15 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sponsorTimesDonateContainer",
         "sbConsiderDonateLink",
         "sbCloseDonate",
-        "sbBetaServerWarning"
+        "sbBetaServerWarning",
+        "sbCloseButton"
     ].forEach(id => PageElements[id] = document.getElementById(id));
+
+    PageElements.sbCloseButton.addEventListener("click", () => {
+        sendTabMessage({
+            message: "closePopup"
+        });
+    });
 
     // Hide donate button if wanted (Safari, or user choice)
     if (!showDonationLink()) {
@@ -586,6 +593,22 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     function openHelp() {
         chrome.runtime.sendMessage({ "message": "openHelp" });
+    }
+
+    function sendTabMessage(data: Message): Promise<unknown> {
+        return new Promise((resolve) => {
+            messageHandler.query({
+                active: true,
+                currentWindow: true
+            }, tabs => {
+                messageHandler.sendMessage(
+                    tabs[0].id,
+                    data,
+                    (response) => resolve(response)
+                );
+            }
+            );
+        });
     }
 
     //make the options username setting option visible

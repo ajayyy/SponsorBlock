@@ -217,6 +217,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             utils.addHiddenSegment(sponsorVideoID, request.UUID, request.type);
             updatePreviewBar();
             break;
+        case "closePopup":
+            closeInfoMenu();
+            break;
 
     }
 }
@@ -1689,26 +1692,11 @@ function openInfoMenu() {
     popup.id = "sponsorBlockPopupContainer";
    
     const frame = document.createElement("iframe");
-    frame.width = "410";
-    frame.height = "400";
+    frame.width = "374";
+    frame.height = "500";
     frame.onload = () => frame.contentWindow.postMessage("", "*");
     frame.src = chrome.extension.getURL("popup.html");
     popup.appendChild(frame);
-    
-
-    //close button
-    const closeButton = document.createElement("button");
-    const closeButtonIcon = document.createElement("img");
-    closeButtonIcon.src = chrome.extension.getURL("icons/close.png");
-    closeButtonIcon.width = 15;
-    closeButtonIcon.height = 15;
-    closeButton.appendChild(closeButtonIcon);
-    closeButton.setAttribute("title", chrome.i18n.getMessage("closePopup"));
-    closeButton.classList.add("sbCloseButton");
-    closeButton.addEventListener("click", closeInfoMenu);
-
-    //add the close button
-    popup.prepend(closeButton);
 
     const parentNodes = document.querySelectorAll("#secondary");
     let parentNode = null;
