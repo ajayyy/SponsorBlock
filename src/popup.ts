@@ -22,13 +22,15 @@ class MessageHandler {
     sendMessage(id: number, request: Message, callback?) {
         if (this.messageListener) {
             this.messageListener(request, null, callback);
-        } else {
+        } else if (chrome.tabs) {
             chrome.tabs.sendMessage(id, request, callback);
+        } else {
+            chrome.runtime.sendMessage({ message: "tabs", data: request }, callback);
         }
     }
 
     query(config, callback) {
-        if (this.messageListener) {
+        if (this.messageListener || !chrome.tabs) {
             // Send back dummy info
             callback([{
                 url: document.URL,

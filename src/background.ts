@@ -84,7 +84,20 @@ chrome.runtime.onMessage.addListener(function (request, _, callback) {
         case "unregisterContentScript": 
             unregisterFirefoxContentScript(request.id)
             return false;
-    }
+        case "tabs":
+            chrome.tabs.query({
+                active: true,
+                currentWindow: true
+            }, tabs => {
+                chrome.tabs.sendMessage(
+                    tabs[0].id,
+                    request.data,
+                    (response) => callback(response)
+                );
+            }
+            );
+            return true;
+	}
 });
 
 //add help page on install
