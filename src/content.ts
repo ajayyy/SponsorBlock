@@ -2204,3 +2204,18 @@ function checkForPreloadedSegment() {
         Config.forceSyncUpdate("unsubmittedSegments");
     }
 }
+
+// Register listener for URL change via Navigation API
+const navigationApiAvailable = "navigation" in window;
+if (navigationApiAvailable) {
+    // TODO: Remove type cast once type declarations are updated
+    (window as unknown as { navigation: EventTarget }).navigation.addEventListener("navigate", () => videoIDChange(getYouTubeVideoID(document)));
+}
+
+// Record availability of Navigation API
+utils.wait(() => Config.local !== null).then(() => {
+    if (Config.local.navigationApiAvailable !== navigationApiAvailable) {
+        Config.local.navigationApiAvailable = navigationApiAvailable;
+        Config.forceLocalUpdate("navigationApiAvailable");
+    }
+});

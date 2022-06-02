@@ -23,14 +23,37 @@ if (utils.isFirefox()) {
     });
 } 
 
-chrome.tabs.onUpdated.addListener(function(tabId) {
-	chrome.tabs.sendMessage(tabId, {
+function onTabUpdatedListener(tabId: number) {
+    chrome.tabs.sendMessage(tabId, {
         message: 'update',
-	}, () => void chrome.runtime.lastError ); // Suppress error on Firefox
+    }, () => void chrome.runtime.lastError ); // Suppress error on Firefox
+}
+
+function onNavigationApiAvailableChange(changes: {[key: string]: chrome.storage.StorageChange}) {
+    if (changes.navigationApiAvailable) {
+        if (changes.navigationApiAvailable.newValue) {
+            chrome.tabs.onUpdated.removeListener(onTabUpdatedListener);
+        } else {
+            chrome.tabs.onUpdated.addListener(onTabUpdatedListener);
+        }
+    }
+}
+
+// If Navigation API is not supported, then background has to inform content script about video change.
+// This happens on Safari, Firefox, and Chromium 101 (inclusive) and below.
+chrome.tabs.onUpdated.addListener(onTabUpdatedListener);
+utils.wait(() => Config.local !== null).then(() => {
+    if (Config.local.navigationApiAvailable) {
+        chrome.tabs.onUpdated.removeListener(onTabUpdatedListener);
+    }
 });
 
-chrome.runtime.onMessage.addListener(function (request, sender, callback) {
-	switch(request.message) {
+if (!Config.configSyncListeners.includes(onNavigationApiAvailableChange)) {
+        Config.configSyncListeners.push(onNavigationApiAvailableChange);
+}
+
+chrome.runtime.onMessage.addListener(function (request, _, callback) {
+    switch(request.message) {
         case "openConfig":
             chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
             return;
@@ -61,7 +84,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "unregisterContentScript": 
             unregisterFirefoxContentScript(request.id)
             return false;
-	}
+    }
 });
 
 //add help page on install
