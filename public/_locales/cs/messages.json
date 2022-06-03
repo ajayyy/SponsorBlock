@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Zobrazit upozornění po přeskočení segmentu"
     },
+    "showCategoryGuidelines": {
+        "message": "Zobrazit nápovědu ke kategorii"
+    },
     "noticeVisibilityMode0": {
         "message": "Oznámení o přeskočení v plné velikosti"
     },
@@ -542,17 +545,38 @@
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Zahrnout přechody segmentů"
+    },
+    "generic_guideline2": {
+        "message": "Hraje, jako kdyby nebylo nic přeskočeno"
+    },
     "category_sponsor": {
         "message": "Sponzor"
     },
     "category_sponsor_description": {
         "message": "Placená propagace, placená doporučení a přímé reklamy. Nezahrnuje sebepropagaci nebo shout-outy uživatelů/tvůrců/webů/produktů, které se tvůrcovi líbí."
     },
+    "category_sponsor_guideline1": {
+        "message": "Placené propagace"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Není pro dary nebo vlastní merch"
+    },
     "category_selfpromo": {
         "message": "Neplacená / vlastní propagace"
     },
     "category_selfpromo_description": {
         "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Dary, členství a vlastní merch"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Bezplatné propagace, které nepřidávají nic k videu"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Není pro podnikové produkty a merch"
     },
     "category_exclusive_access": {
         "message": "Exkluzivní přístup"
@@ -564,11 +588,23 @@
         "message": "V tomto videu je zobrazován produkt, služba nebo místo, které autor obdržel zdarma nebo s bezplatným přístupem",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Celé video zobrazuje místo, kam autor obdržel bezplatný nebo dotovaný přístup"
+    },
     "category_interaction": {
         "message": "Připomenutí interakce (odběr)"
     },
     "category_interaction_description": {
         "message": "Při krátké připomínce dát like, odběr nebo sledování tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
+    },
+    "category_interaction_guideline1": {
+        "message": "Krátká připomenutí pro lajknutí, odebírání či sledování"
+    },
+    "category_interaction_guideline2": {
+        "message": "Zahrnuje nepřímé připomenutí komentování"
+    },
+    "category_interaction_guideline3": {
+        "message": "Není pro obecnou propagaci, pouze výzvy k akci"
     },
     "category_interaction_short": {
         "message": "Připomenutí interakce"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Přestávka"
     },
+    "category_intro_guideline1": {
+        "message": "Část bez skutečného obsahu"
+    },
+    "category_intro_guideline2": {
+        "message": "Není pro přechody s informacemi"
+    },
     "category_outro": {
         "message": "Koncové karty / titulky"
     },
     "category_outro_description": {
         "message": "Titulky nebo když se objeví konečné karty YouTube. Není pro závěry s informacemi."
     },
+    "category_outro_guideline1": {
+        "message": "Nezahrnuje obsah, i když jsou na obrazovce závěrečné karty"
+    },
     "category_preview": {
         "message": "Náhled / shrnutí"
     },
     "category_preview_description": {
         "message": "Rychlé shrnutí předchozích epizod nebo náhled toho, co se objeví v aktuálním videu. Myšleno pro upravené sloučené klipy, ne pro mluvená shrnutí."
+    },
+    "category_preview_guideline1": {
+        "message": "Klipy které se objeví později nebo v budoucím videu"
+    },
+    "category_preview_guideline2": {
+        "message": "Shrnutí předchozího videa"
+    },
+    "category_preview_guideline3": {
+        "message": "Není pro sekce, které přidávají další obsah"
     },
     "category_filler": {
         "message": "Výplň / vtipy"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Výplň"
     },
+    "category_filler_guideline1": {
+        "message": "Tangenciální scény pouze pro výplň nebo humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Rozptýlení, nepovedené scénky, opakování"
+    },
+    "category_filler_guideline3": {
+        "message": "Není pro scény vyžadované k pochopení tématu"
+    },
     "category_music_offtopic": {
         "message": "Hudba: nehudební sekce"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Jiné než hudba"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Sekce, které nejsou v oficiálních vydáních"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Nehudební sekce na živém vystoupení"
+    },
     "category_poi_highlight": {
         "message": "Zvýraznění"
     },
     "category_poi_highlight_description": {
         "message": "Část videa, kterou hledá většina lidí. Podobné komentářům typu \"Video začíná v x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Sekce, kterou hledá většina lidí"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Může pomoci přeskočit předchozí kontext"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Může přeskočit k názvu nebo náhledu"
     },
     "category_livestream_messages": {
         "message": "Livestream: Čtení donatů / zpráv"
@@ -867,6 +945,9 @@
     "LearnMore": {
         "message": "Zjistit více"
     },
+    "FullDetails": {
+        "message": "Úplné podrobnosti"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Zahlasuje proti a vytvoří pro vás lokální kopii pro opětovné odeslání"
     },
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "Otevřít stránku s možnostmi"
+    },
+    "resetToDefault": {
+        "message": "Obnovit nastavení na výchozí hodnoty"
+    },
+    "confirmResetToDefault": {
+        "message": "Opravdu chcete obnovit všechna nastavení na jejich výchozí hodnoty? Tato akce je nevratná."
     }
 }

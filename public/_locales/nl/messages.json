@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Melding weergeven nadat een segment is overgeslagen"
     },
+    "showCategoryGuidelines": {
+        "message": "Categorie-hulp weergeven"
+    },
     "noticeVisibilityMode0": {
         "message": "Volledige grootte overslaan-meldingen"
     },
@@ -542,17 +545,38 @@
         "message": "tot",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Inclusief vlotte overgangen"
+    },
+    "generic_guideline2": {
+        "message": "Speelt af alsof niets overgeslagen werd"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
     "category_sponsor_description": {
         "message": "Betaalde promotie, betaalde aanbevelingen en directe reclame. Niet voor zelfpromotie of gratis uitroepen naar zaken/makers/websites/producten waar ze van houden."
     },
+    "category_sponsor_guideline1": {
+        "message": "Betaalde promoties"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Niet voor donaties of aangepaste koopwaar"
+    },
     "category_selfpromo": {
         "message": "Onbetaalde promotie of zelfpromotie"
     },
     "category_selfpromo_description": {
         "message": "Vergelijkbaar met \"sponsor\", behalve voor onbetaalde of zelfpromotie. Dit is inclusief secties over koopwaar, donaties of informatie over met wie ze hebben samengewerkt."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donaties, lidmaatschappen en aangepaste koopwaar"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Gratis uitroepen die niet aan de video toevoegen"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Niet voor bedrijfsontworpen producten en koopwaar"
     },
     "category_exclusive_access": {
         "message": "Exclusieve toegang"
@@ -564,11 +588,23 @@
         "message": "Deze video toont een product, dienst of locatie waartoe men gratis of gesubsidieerd toegang heeft gekregen",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Volledige video laat iets zien met gratis of gesubsidieerde toegang"
+    },
     "category_interaction": {
         "message": "Interactieherinnering (abonneren)"
     },
     "category_interaction_description": {
         "message": "Als er een korte herinnering is om ze leuk te vinden, u te abonneren of ze te volgen in het midden van de inhoud. Als het lang is of over iets specifieks gaat, moet het in plaats daarvan onder zelfpromotie vallen."
+    },
+    "category_interaction_guideline1": {
+        "message": "Korte herinneringen om leuk te vinden, te abonneren of te volgen"
+    },
+    "category_interaction_guideline2": {
+        "message": "Bevat indirecte herinneringen voor commentaar"
+    },
+    "category_interaction_guideline3": {
+        "message": "Niet voor algemene promotie, roept alleen op tot actie"
     },
     "category_interaction_short": {
         "message": "Interactieherinnering"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Onderbreking"
     },
+    "category_intro_guideline1": {
+        "message": "Interval zonder werkelijke inhoud"
+    },
+    "category_intro_guideline2": {
+        "message": "Niet voor overgangen met informatie"
+    },
     "category_outro": {
         "message": "Eindkaarten/aftiteling"
     },
     "category_outro_description": {
         "message": "Aftiteling of wanneer de YouTube-eindkaarten verschijnen. Niet voor conclusies met informatie."
     },
+    "category_outro_guideline1": {
+        "message": "Inhoud niet toevoegen, zelfs niet als eindkaarten op het scherm staan"
+    },
     "category_preview": {
         "message": "Voorbeeld/samenvatting"
     },
     "category_preview_description": {
         "message": "Snelle samenvatting van vorige afleveringen of een voorbeeld van wat er later komt in de huidige video. Bedoeld voor samengevoegde clips, niet voor gesproken samenvattingen."
+    },
+    "category_preview_guideline1": {
+        "message": "Clips die later of in een toekomstige video verschijnen"
+    },
+    "category_preview_guideline2": {
+        "message": "Samenvatting van een vorige video"
+    },
+    "category_preview_guideline3": {
+        "message": "Niet voor secties die extra inhoud toevoegen"
     },
     "category_filler": {
         "message": "Opvulling zijspoor/humor"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Opvulling"
     },
+    "category_filler_guideline1": {
+        "message": "Zijspoor-scènes alleen voor opvulling of humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Afleidingen, bloopers, herhalingen"
+    },
+    "category_filler_guideline3": {
+        "message": "Niet voor scènes vereist om het onderwerp te begrijpen"
+    },
     "category_music_offtopic": {
         "message": "Muziek: sectie niet-muziek"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Niet-muziek"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Secties niet in officiële releases"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Niet-muziek in een live optreden"
+    },
     "category_poi_highlight": {
         "message": "Hoogtepunt"
     },
     "category_poi_highlight_description": {
         "message": "Het deel van de video waar de meeste mensen naar op zoek zijn. Gelijkaardig aan \"video begint bij x\"-opmerkingen."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Sectie die de meeste mensen zoeken"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Kan context overslaan"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Kan naar titel of pictogram overslaan"
     },
     "category_livestream_messages": {
         "message": "Livestream: donaties/lezen van berichten"
@@ -867,6 +945,9 @@
     "LearnMore": {
         "message": "Meer informatie"
     },
+    "FullDetails": {
+        "message": "Volledige details"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Doet een tegenstem en maakt een lokale kopie aan die u opnieuw kunt indienen"
     },
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "Pagina met opties openen"
+    },
+    "resetToDefault": {
+        "message": "Instellingen terugzetten op standaard"
+    },
+    "confirmResetToDefault": {
+        "message": "Weet u zeker dat u alle instellingen wilt terugzetten naar hun standaardwaarden? Dit kan niet ongedaan worden gemaakt."
     }
 }

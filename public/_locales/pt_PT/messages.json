@@ -17,7 +17,7 @@
         "message": "Isso já foi enviado antes"
     },
     "channelWhitelisted": {
-        "message": "Canal adicionado à whitelist!"
+        "message": "Canal adicionado à lista de autorizados!"
     },
     "Segment": {
         "message": "segmento"
@@ -159,10 +159,13 @@
         "message": "Nome de Utilizador"
     },
     "setUsername": {
-        "message": "Criar nomde de utilizador"
+        "message": "Criar nome de utilizador"
     },
     "copyPublicID": {
-        "message": "Copiar UserID Publico"
+        "message": "Copiar ID público de utilizador"
+    },
+    "copySegmentID": {
+        "message": "Copiar ID do segmento"
     },
     "discordAdvert": {
         "message": "Junte-se ao discord oficial para sugerir dicas e sugestões!"
@@ -224,15 +227,280 @@
     "whatQueryByHashPrefix": {
         "message": "Em vez de solicitar segmentos do servidor usando o ID do Vídeo, são enviados os primeiros 4 caracteres do hash do ID do Vídeo. Este servidor enviará de volta dados para todos os vídeos com hashes semelhantes."
     },
+    "enableRefetchWhenNotFound": {
+        "message": "Recuperar segmentos em novos vídeos"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Se o vídeo for novo e nenhum segmento for encontrado, continuaremos a monitorizar enquanto assiste."
+    },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
+    },
+    "showSkipNotice": {
+        "message": "Mostrar aviso após um segmento ser ignorado"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Avisos de ignorar em tamanho inteiro"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Avisos pequenos quando ignorado automaticamente"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Todos os avisos de ignorar em tamanho pequeno"
     },
     "website": {
         "message": "Site",
         "description": "Used on Firefox Store Page"
     },
     "sourceCode": {
-        "message": "Código fonte",
+        "message": "Código-fonte",
         "description": "Used on Firefox Store Page"
+    },
+    "errorCode": {
+        "message": "Código de erro: "
+    },
+    "skip": {
+        "message": "Saltar"
+    },
+    "mute": {
+        "message": "Silenciar"
+    },
+    "full": {
+        "message": "Vídeo completo",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
+    "skip_category": {
+        "message": "Saltar {0}?"
+    },
+    "mute_category": {
+        "message": "Silenciar {0}?"
+    },
+    "skip_to_category": {
+        "message": "Avançar para {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} ignorado",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} silenciado",
+        "description": "Example: Sponsor Muted"
+    },
+    "minLower": {
+        "message": "minuto"
+    },
+    "minsLower": {
+        "message": "minutos"
+    },
+    "hourLower": {
+        "message": "hora"
+    },
+    "hoursLower": {
+        "message": "horas"
+    },
+    "youHaveSavedTime": {
+        "message": "Poupou pessoas de",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " das suas vidas",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "setUserID": {
+        "message": "Definir ID de utilizador"
+    },
+    "userIDChangeWarning": {
+        "message": "Atenção: A alteração do ID de utilizador é permanente. Tem certeza que a deseja? Certifique-se de fazer uma cópia de segurança do seu ID antigo por precaução."
+    },
+    "areYouSureReset": {
+        "message": "Tem certeza que deseja redefinir?"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com é agora suportado"
+    },
+    "exportOptions": {
+        "message": "Importar/Exportar todas as opções"
+    },
+    "exportOptionsCopy": {
+        "message": "Editar/copiar"
+    },
+    "exportOptionsDownload": {
+        "message": "Guardar num ficheiro"
+    },
+    "exportOptionsUpload": {
+        "message": "Carregar a partir de ficheiro"
+    },
+    "setOptions": {
+        "message": "Definir opções"
+    },
+    "submit": {
+        "message": "Enviar"
+    },
+    "cancel": {
+        "message": "Cancelar"
+    },
+    "delete": {
+        "message": "Eliminar"
+    },
+    "preview": {
+        "message": "Pré-visualizar"
+    },
+    "inspect": {
+        "message": "Inspecionar"
+    },
+    "edit": {
+        "message": "Editar"
+    },
+    "copyDebugInformation": {
+        "message": "Copiar informações de depuração para a área de transferência"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Falha ao copiar para a área de transferência"
+    },
+    "to": {
+        "message": "até",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "generic_guideline2": {
+        "message": "Reproduz como se nada tivesse sido ignorado"
+    },
+    "category_sponsor": {
+        "message": "Patrocinador"
+    },
+    "category_exclusive_access": {
+        "message": "Acesso exclusivo"
+    },
+    "category_interaction_short": {
+        "message": "Lembrete de interação"
+    },
+    "category_livestream_messages_short": {
+        "message": "Leitura de mensagens"
+    },
+    "autoSkip": {
+        "message": "Saltar automaticamente"
+    },
+    "manualSkip": {
+        "message": "Saltar manualmente"
+    },
+    "disable": {
+        "message": "Desativar"
+    },
+    "category": {
+        "message": "Categoria"
+    },
+    "bracketNow": {
+        "message": "(agora)"
+    },
+    "moreCategories": {
+        "message": "Mais categorias"
+    },
+    "chooseACategory": {
+        "message": "Escolher uma categoria"
+    },
+    "bracketEnd": {
+        "message": "(fim)"
+    },
+    "manuallyHidden": {
+        "message": "ocultado manualmente"
+    },
+    "incorrectCategory": {
+        "message": "Alterar categoria"
+    },
+    "guidelines": {
+        "message": "Orientações"
+    },
+    "readTheGuidelines": {
+        "message": "Leia as nossas orientações!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "darkModeOptionsPage": {
+        "message": "Modo escuro na página de opções"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Obrigado por instalar o SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Por favor, reveja as opções abaixo"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Como a função saltar funciona"
+    },
+    "Submitting": {
+        "message": "A enviar"
+    },
+    "Editing": {
+        "message": "A editar"
+    },
+    "helpPageTooSlow": {
+        "message": "Está demasiado lento"
+    },
+    "Credits": {
+        "message": "Créditos"
+    },
+    "LearnMore": {
+        "message": "Saber mais"
+    },
+    "FullDetails": {
+        "message": "Todos os detalhes"
+    },
+    "CopyAndDownvote": {
+        "message": "Copiar e dar voto negativo"
+    },
+    "ContinueVoting": {
+        "message": "Continuar a votar"
+    },
+    "downvote": {
+        "message": "Voto negativo"
+    },
+    "upvote": {
+        "message": "Voto positivo"
+    },
+    "hideSegment": {
+        "message": "Ocultar segmento"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportamento",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interface",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Atalhos de teclado",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Cópia de seg./restauro",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Diversos",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "unbind": {
+        "message": "Desvincular",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Não definido"
+    },
+    "change": {
+        "message": "Alterar"
+    },
+    "betaServerWarning": {
+        "message": "O servidor BETA está ativado!"
+    },
+    "openOptionsPage": {
+        "message": "Abrir página de opções"
     }
 }

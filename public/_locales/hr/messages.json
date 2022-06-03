@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Kopiraj javni UserID"
     },
+    "copySegmentID": {
+        "message": "Kopiraj ID odsječka"
+    },
     "discordAdvert": {
         "message": "Pridružite nam se u službenoj Discord zajednici i pošaljite svoje prijedloge i povrate informacije!"
     },
@@ -214,6 +217,21 @@
         "message": "Izvorni kod",
         "description": "Used on Firefox Store Page"
     },
+    "setSkipShortcut": {
+        "message": "Preskoči odsječak",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Pokreni/prekini odsječak",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Pošalji odsječke",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Odaberi tipku upisom tipke i odaberi modifikatorske tipke koje želiš koristiti."
+    },
     "0": {
         "message": "Veza istekla. Provjerite svoju internetski vezu. Ako vaš internet radi, poslužitelj je vjerojatno preopterećen ili nedostupan."
     },
@@ -236,6 +254,13 @@
     "skip": {
         "message": "Preskoči"
     },
+    "mute": {
+        "message": "Isključi zvuk"
+    },
+    "full": {
+        "message": "Cijeli video",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Preskočiti {0}?"
     },
@@ -246,6 +271,14 @@
         "message": "Preskočiti na {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
     },
+    "skipped": {
+        "message": "Preskočeno: {0}",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "Isključen zvuk: {0}",
+        "description": "Example: Sponsor Muted"
+    },
     "skipped_to_category": {
         "message": "Preskočeno na {0}",
         "description": "Used for skipping to things (Skipped to Highlight)"
@@ -255,6 +288,12 @@
     },
     "enableAutoSkip": {
         "message": "Aktiviraj automatsko preskakanje"
+    },
+    "audioNotification": {
+        "message": "Zvučna obavijest pri preskakanju"
+    },
+    "audioNotificationDescription": {
+        "message": "Zvučna obavijest o preskakanju reproducirat će zvuk kad god se odsječak preskoči. Ako je deaktivirano (ili je automatsko preskakanje deaktivirano), zvuk se neće reproducirati."
     },
     "minLower": {
         "message": "min"
@@ -270,6 +309,9 @@
     },
     "statusReminder": {
         "message": "Provjerite status.sponsor.ajay.app za status poslužitelja."
+    },
+    "changeUserID": {
+        "message": "Uvezi/Izvezi svoj korisnički ID"
     },
     "setUserID": {
         "message": "Postavi UserID"
@@ -313,6 +355,9 @@
     "skipNoticeDurationDescription": {
         "message": "Obavijest o preskakanju ostat će na zaslonu barem ovoliko dugo. Za ručno preskakanje može biti duže vidljivo."
     },
+    "showUploadButton": {
+        "message": "Prikaži gumb za prijenos"
+    },
     "customServerAddress": {
         "message": "Adresa SponsorBlock poslužitelja"
     },
@@ -322,8 +367,20 @@
     "reset": {
         "message": "Resetiraj"
     },
+    "mobileUpdateInfo": {
+        "message": "Sada se podržava m.youtube.com"
+    },
     "exportOptions": {
         "message": "Uvezi/Izvezi sve postavke"
+    },
+    "exportOptionsCopy": {
+        "message": "Uredi/kopiraj"
+    },
+    "exportOptionsDownload": {
+        "message": "Spremi u datoteku"
+    },
+    "exportOptionsUpload": {
+        "message": "Učitaj iz datoteke"
     },
     "setOptions": {
         "message": "Postavi opcije"
@@ -370,6 +427,12 @@
     },
     "category_selfpromo_description": {
         "message": "Slično kao „sponzor”, osim za neplaćenu promociju i samopromociju. To uključuje odlomke marketinga, donacija ili informacija o tome, s kim su surađivali."
+    },
+    "category_exclusive_access": {
+        "message": "Eksluzivni pristup"
+    },
+    "category_exclusive_access_description": {
+        "message": "Samo za označavanje cijelih videa. Koristi se kad video prikazuje proizvod, uslugu ili lokaciju za koje su dobili besplatan ili subvencionirani pristup."
     },
     "category_interaction": {
         "message": "Podsjetnik interakcije (Pretplati se)"
@@ -419,6 +482,18 @@
     "manualSkip": {
         "message": "Ručno preskakanje"
     },
+    "disable": {
+        "message": "Deaktiviraj"
+    },
+    "autoSkip_POI": {
+        "message": "Automatski skoči na početak"
+    },
+    "manualSkip_POI": {
+        "message": "Pitaj kad se učitava video"
+    },
+    "showOverlay_full": {
+        "message": "Prikaži oznaku"
+    },
     "muteSegments": {
         "message": "Dopustite isječke koji isključuju zvuk umjesto da ga preskaču"
     },
@@ -436,6 +511,9 @@
     "enableTestingServer": {
         "message": "Omogućite poslužitelj za beta testiranje"
     },
+    "testingServerWarning": {
+        "message": "Svi podnesci i glasovi NEĆE BROJATI u glavnom poslužitelju dok se povezuješ s testnim poslužiteljem. Obavezno deaktiviraj ovo kada želiš slati podneske."
+    },
     "bracketNow": {
         "message": "(sada)"
     },
@@ -446,7 +524,7 @@
         "message": "Odaberi kategoriju"
     },
     "enableThisCategoryFirst": {
-        "message": "Da biste poslali segmente s kategorijom \"{0}\", morate je omogućiti u postavkama. Sada ćete biti preusmjereni na postavke.",
+        "message": "Za slanje odsječaka kategorije „{0}”, moraš je aktivirati u postavkama. Sada ćemo te preusmjeriti na postavke.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "youMustSelectACategory": {
@@ -454,6 +532,9 @@
     },
     "bracketEnd": {
         "message": "(kraj)"
+    },
+    "manuallyHidden": {
+        "message": "ručno skriveno"
     },
     "downvoteDescription": {
         "message": "Neispravno/krivo vrijeme"
@@ -480,11 +561,27 @@
     "categoryUpdate2": {
         "message": "Otvori opcije za preskakanje uvoda, kraja, proizvoda itd."
     },
+    "help": {
+        "message": "Pomoć"
+    },
+    "GotIt": {
+        "message": "Razumijem",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "categoryPillTitleText": {
+        "message": "Ovaj cijeli video označen je kao ova kategorija i previše je integriran da bi se mogao odvojiti"
+    },
+    "hideForever": {
+        "message": "Sakrij zauvijek"
+    },
     "Donate": {
         "message": "Doniraj"
     },
     "helpPageThanksForInstalling": {
         "message": "Hvala na instaliranju SponsorBlocka."
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Mnoge funkcije su standardno deaktivirane. Ako želiš preskočiti uvode, završne dijelove, koristiti Invidious, itd., aktiviraj ih niže dolje. Također možeš sakriti/prikazati elemente korisničkog sučelja."
     },
     "Submitting": {
         "message": "Slanje"
@@ -518,5 +615,61 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Ovo će se odmah primijeniti na vaše isječke"
+    },
+    "hideSegment": {
+        "message": "Sakri odsječak"
+    },
+    "dayAbbreviation": {
+        "message": "d",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "h",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Ponašanje",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Sučelje",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Tipkovni prečaci",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Sigurnosna kopija/Obnova",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Razno",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Izgled napomene preskakanja",
+        "description": "Option label"
+    },
+    "notSet": {
+        "message": "Nije postavljeno"
+    },
+    "change": {
+        "message": "Promijeni"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Ovo je ugrađeni YouTube prečac. Stvarno ga želiš koristiti?"
+    },
+    "betaServerWarning": {
+        "message": "BETA poslužitelj je aktiviran!"
+    },
+    "openOptionsPage": {
+        "message": "Otvori stranicu opcija"
+    },
+    "resetToDefault": {
+        "message": "Vrati standardne postavke"
+    },
+    "confirmResetToDefault": {
+        "message": "Stvarno želiš vratiti sve postavke na standardne vrijednosti? To je nepovratna radnja."
     }
 }

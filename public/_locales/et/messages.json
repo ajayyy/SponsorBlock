@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Kuva segmendi vahelejätmisel teatis"
     },
+    "showCategoryGuidelines": {
+        "message": "Kuva kategooria abi"
+    },
     "noticeVisibilityMode0": {
         "message": "Täissuuruses vahelejätmise teavitused"
     },
@@ -533,17 +536,38 @@
         "message": "kuni",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Kasuta sujuvaid üleminekuid"
+    },
+    "generic_guideline2": {
+        "message": "Mängib nii, nagu midagi poleks vahele jäetud"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
     "category_sponsor_description": {
         "message": "Tasulised promod, tasulised viited ja otsesed reklaamid. Pole mõeldud enesepromo või tasuta petitsioonide/autorite/veebilehtede/toodete mainimiste puhul."
     },
+    "category_sponsor_guideline1": {
+        "message": "Tasulised kampaaniad"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Mitte annetuste ja oma loodud kauba jaoks"
+    },
     "category_selfpromo": {
         "message": "Tasumata/enesepromo"
     },
     "category_selfpromo_description": {
         "message": "Sarnaneb \"sponsorile\", ent on mõeldud tasumata või enesepromo jaoks. Selle alla kuuluvad jaotised oma müüdava kauba, annetuste ja koostööpartnerite kohta."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Annetused, liikmesused ja oma loodud kaup"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Tasuta mainimised, mis ei ole video sisuks olulised"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Mitte ettevõtete disainitud toodete ja kauba jaoks"
     },
     "category_exclusive_access": {
         "message": "Eksklusiivne ligipääs"
@@ -555,11 +579,23 @@
         "message": "See video esitleb toodet, teenust või asukohta, millele isik on tasuta või toetusega ligipääsu saanud",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Kogu video kuvab midagi tasuta või toetusega ligipääsuga"
+    },
     "category_interaction": {
         "message": "Tegutsemise meeldetuletus (kanali tellimine)"
     },
     "category_interaction_description": {
         "message": "Lühike sisukeskne meeldetuletus anda videole meeldib, tellida kanalit või jälgida autorit. Kui see on pikk või millegi kindlaga seotud, peaks see olema enesepromo all."
+    },
+    "category_interaction_guideline1": {
+        "message": "Lühikesed meeldetuletused vajutada \"meeldib\", \"telli\" või \"jälgi\""
+    },
+    "category_interaction_guideline2": {
+        "message": "Sisaldab mitteotseseid meeldetuletusi kommenteerimiseks"
+    },
+    "category_interaction_guideline3": {
+        "message": "Mitte üldise promo jaoks, vaid üleskutsed tegevustele"
     },
     "category_interaction_short": {
         "message": "Tegutsemise meeldetuletus"
@@ -573,17 +609,35 @@
     "category_intro_short": {
         "message": "Vaheaeg"
     },
+    "category_intro_guideline1": {
+        "message": "Intervall ilma tegeliku sisuta"
+    },
+    "category_intro_guideline2": {
+        "message": "Mitte informatsiooniga üleminekute jaoks"
+    },
     "category_outro": {
         "message": "Lõpukaardid/-tiitrid"
     },
     "category_outro_description": {
         "message": "Tiitrid või YouTube'i lõpukaardid. Pole mõeldud informatsiooniga järelduste jaoks."
     },
+    "category_outro_guideline1": {
+        "message": "Ära kaasa sisu, isegi kui lõputiitrid on ekraanil"
+    },
     "category_preview": {
         "message": "Eelvaade/kokkuvõte"
     },
     "category_preview_description": {
         "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
+    },
+    "category_preview_guideline1": {
+        "message": "Klipid, mida kuvatakse hiljem või tulevases videos"
+    },
+    "category_preview_guideline2": {
+        "message": "Eelmise video kokkuvõte"
+    },
+    "category_preview_guideline3": {
+        "message": "Mitte jaotistele, mis lisavad täiendavat sisu"
     },
     "category_filler": {
         "message": "Täitesisu/naljad"
@@ -594,6 +648,15 @@
     "category_filler_short": {
         "message": "Täide"
     },
+    "category_filler_guideline1": {
+        "message": "Sisuga mitteseonduvad täite- või huumoristseenid"
+    },
+    "category_filler_guideline2": {
+        "message": "Tähelepanu hajutajad, saatevead, kordused"
+    },
+    "category_filler_guideline3": {
+        "message": "Mitte stseenid, mida on teema mõistmiseks vaja vaadata"
+    },
     "category_music_offtopic": {
         "message": "Muusika: mitte-muusika jaotis"
     },
@@ -603,11 +666,26 @@
     "category_music_offtopic_short": {
         "message": "Mitte-muusika"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Jaotised, mida avalikes väljalasetes pole"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Mitte-muusika kontserdil"
+    },
     "category_poi_highlight": {
         "message": "Esiletõst"
     },
     "category_poi_highlight_description": {
         "message": "Video osa, mida enamus inimesed otsivad. Sarnaneb kommentaaridele stiilis \"video algab ajal x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Jaotis, mida inimesed enim otsivad"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Aitab konteksti vahele jätta"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Aitab pealkirja või pisipildi sisuni viia"
     },
     "category_livestream_messages": {
         "message": "Otseülekanne: annetuste ja sõnumite lugemine"
@@ -834,6 +912,9 @@
     "LearnMore": {
         "message": "Lisateave"
     },
+    "FullDetails": {
+        "message": "Täielikud üksikasjad"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Annab vastuhääle ja loob kohaliku koopia, mida saad uuesti saata"
     },
@@ -906,10 +987,19 @@
     "change": {
         "message": "Muuda"
     },
+    "youtubeKeybindWarning": {
+        "message": "See on YouTube'i sisseehitatud otsetee. Kas soovid kindlasti seda kasutada?"
+    },
     "betaServerWarning": {
         "message": "BEETAserver on lubatud!"
     },
     "openOptionsPage": {
         "message": "Ava valikute leht"
+    },
+    "resetToDefault": {
+        "message": "Lähtesta sätted vaikeväärtustele"
+    },
+    "confirmResetToDefault": {
+        "message": "Kas soovid kindlasti kõik sätted vaikeväärtustele lähtestada? Seda ei saa tagasi võtta."
     }
 }

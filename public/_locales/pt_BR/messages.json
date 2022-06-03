@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Abrir página de opções"
+    },
+    "resetToDefault": {
+        "message": "Redefinir configurações para o padrão"
+    },
+    "confirmResetToDefault": {
+        "message": "Tem certeza de que deseja redefinir todas as configurações para os valores padrão? Essa ação não poderá ser desfeita."
     }
 }

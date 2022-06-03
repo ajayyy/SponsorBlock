@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Показывать уведомление после пропуска сегмента"
     },
+    "showCategoryGuidelines": {
+        "message": "Показать справку для категории"
+    },
     "noticeVisibilityMode0": {
         "message": "Полноразмерные уведомления о пропусках"
     },
@@ -542,17 +545,38 @@
         "message": "до",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Содержит плавный переход от одной темы к другой"
+    },
+    "generic_guideline2": {
+        "message": "Пропуск должен произойти незаметно"
+    },
     "category_sponsor": {
         "message": "Спонсор"
     },
     "category_sponsor_description": {
         "message": "Рекламные интеграции, реферальные ссылки и реклама напрямую. Не для саморекламы или рекомендаций разных событий/создателей/сайтов/продуктов, которые нравятся автору видео."
     },
+    "category_sponsor_guideline1": {
+        "message": "Реклама"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Не для доната или мерчендайза"
+    },
     "category_selfpromo": {
         "message": "Самореклама/рекомендация"
     },
     "category_selfpromo_description": {
         "message": "Похоже на \"Спонсора\", но для бесплатной рекламы и саморекламы. Включает себя вставки про мерчендайз, пожертвования или информацию о тех, вместе с кем было сделано видео."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Донаты, платное членство и мерчендайз"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Рекомендации, не добавляющие контекста видео"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Не для корпоративной продукции"
     },
     "category_exclusive_access": {
         "message": "Эксклюзивный доступ"
@@ -564,11 +588,23 @@
         "message": "Это видео демонстрирует продукт, сервис или местоположение, к которому автор получил бесплатный или проспонсированный доступ",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Всё видео - демонстрация чего-либо, к чему авторам был дан эксклюзивный доступ"
+    },
     "category_interaction": {
         "message": "Напоминание о взаимодействии (подписка)"
     },
     "category_interaction_description": {
         "message": "Когда есть краткое напоминание поставить лайк, подписаться на канал или в соцсетях в середине содержимого. Если эта вставка длительная или о чём-то конкретном, она должна классифицироваться как самореклама."
+    },
+    "category_interaction_guideline1": {
+        "message": "Краткие напоминания поставить лайк, подписаться или нажать на колокольчик"
+    },
+    "category_interaction_guideline2": {
+        "message": "Включает косвенные предложения оставить комментарий"
+    },
+    "category_interaction_guideline3": {
+        "message": "Не для рекламы, только призывы к действию"
     },
     "category_interaction_short": {
         "message": "Напоминание о взаимодействии"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Заставка"
     },
+    "category_intro_guideline1": {
+        "message": "Сегмент без контента"
+    },
+    "category_intro_guideline2": {
+        "message": "Не для переходных сегментов с информацией"
+    },
     "category_outro": {
         "message": "Конечная заставка/титры"
     },
     "category_outro_description": {
         "message": "Титры или время появления конечных заставок YouTube. Не для подведения итогов сказанного в видео."
     },
+    "category_outro_guideline1": {
+        "message": "Не для сегментов с контентом, даже если на видео показываются конечные заставки"
+    },
     "category_preview": {
         "message": "Предпросмотр/краткое содержание"
     },
     "category_preview_description": {
         "message": "Краткое содержание предыдущих эпизодов или предварительный просмотр того, что будет в данном видео. Предназначено для сегментов, смонтированных из кусков видео, а не для устных пересказов."
+    },
+    "category_preview_guideline1": {
+        "message": "Фрагменты, которые появляются позже или в будущем видео"
+    },
+    "category_preview_guideline2": {
+        "message": "Пересказ предыдущего видео"
+    },
+    "category_preview_guideline3": {
+        "message": "Не для сегментов с дополнительным контентом"
     },
     "category_filler": {
         "message": "Заполнение отвлечёнными темами/шутками"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Заполнитель"
     },
+    "category_filler_guideline1": {
+        "message": "Сцены с отвлечёнными темами или шутками"
+    },
+    "category_filler_guideline2": {
+        "message": "Разговоры не по теме, неудачные дубли, повторы"
+    },
+    "category_filler_guideline3": {
+        "message": "Не для сегментов, необходимых для понимания темы"
+    },
     "category_music_offtopic": {
         "message": "Музыка: Сегмент без музыки"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Без музыки"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Сегменты, не включённые в официальные релизы"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Сегменты без музыки во время живого выступления"
+    },
     "category_poi_highlight": {
         "message": "Важное"
     },
     "category_poi_highlight_description": {
         "message": "Часть видео, которую ищет большинство людей. По сути заменяет комментарии типа \"Видео начинается с x:xx\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Момент, который будет интересен большинству людей"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Может помочь пропустить контекст"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Может пропустить до объекта заголовка или превью"
     },
     "category_livestream_messages": {
         "message": "Прямые трансляции: пожертвование/чтение сообщения"
@@ -867,6 +945,9 @@
     "LearnMore": {
         "message": "Узнать больше"
     },
+    "FullDetails": {
+        "message": "Полная информация"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Голосует против и создаёт локальную копию сегмента для повторной отправки"
     },
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "Открыть страницу настроек"
+    },
+    "resetToDefault": {
+        "message": "Восстановить настройки по умолчанию"
+    },
+    "confirmResetToDefault": {
+        "message": "Вы уверены, что вы хотите восстановить настройки по умолчанию? Это действие не может быть отменено."
     }
 }

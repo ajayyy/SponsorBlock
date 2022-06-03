@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Zeige Pop-up nach dem Überspringen eines Segments"
     },
+    "showCategoryGuidelines": {
+        "message": "Zeige Kategorien-Hilfe"
+    },
     "noticeVisibilityMode0": {
         "message": "Skip-Meldung in voller größe"
     },
@@ -303,7 +306,7 @@
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
-        "message": "Der Server scheint überlastet zu sein. Probiere es in ein paar Sekunden erneut."
+        "message": "Der Server ist wahrescheinlich überlastet. Probiere es später nochmal."
     },
     "errorCode": {
         "message": "Fehlermeldung: "
@@ -542,17 +545,38 @@
         "message": "bis",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Geschmeidige Übergänge einbeziehen"
+    },
+    "generic_guideline2": {
+        "message": "Spielt, als ob nichts übersprungen worden wäre"
+    },
     "category_sponsor": {
         "message": "Gesponserte Videosegmente"
     },
     "category_sponsor_description": {
         "message": "Bezahlte Werbung, bezahlte Empfehlungen und direkte Werbung, nicht für Eigenwerbung, kostenlose Fremdwerbung oder Empfehlungen für Anlässe/Personen/Webseiten/Produkte."
     },
+    "category_sponsor_guideline1": {
+        "message": "Bezahlte Aktionen"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Nicht für Spenden oder eigenen Merch"
+    },
     "category_selfpromo": {
         "message": "Unbezahlt/Eigenwerbung"
     },
     "category_selfpromo_description": {
         "message": "Ähnlich wie bei \"gesponserte Videosegmente\", mit Ausnahme von unbezahlten oder Selbstpromotionen. Dies beinhaltet Merchandising (Fan-Artikel), Spenden oder Informationen darüber, mit wem für das Video zusammengearbeitet wurde."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Spenden, Mitgliedschaften und eigener Merch"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Kostenlose Erwähnungen welche nicht zum Video beitragen"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Nicht für Produkte und Merch von Firmen"
     },
     "category_exclusive_access": {
         "message": "Exklusiver Zugriff"
@@ -564,11 +588,23 @@
         "message": "Dieses Video präsentiert ein Produkt, eine Dienstleistung oder einen Ort, zu welchem sie freien oder subventionierten Zugriff erhalten haben",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Das gesamte Video zeigt etwas, zu dem man kostenlosen oder subventionierten Zugang erhalten hat"
+    },
     "category_interaction": {
         "message": "Interaktions-Erinnerungen (Abonnieren, etc.)"
     },
     "category_interaction_description": {
         "message": "Wenn es im Video eine kurze Erinnerung gibt, den Kanal zu abonnieren oder das Video mit \"Mag ich\" zu markieren."
+    },
+    "category_interaction_guideline1": {
+        "message": "Kurze Erinnerungen um zu Liken, Abonnieren oder zu Folgen"
+    },
+    "category_interaction_guideline2": {
+        "message": "Enthält indirekte Erinnerungen zu kommentieren"
+    },
+    "category_interaction_guideline3": {
+        "message": "Nicht für allgemeine Förderung, nur Aufruf zum Handeln"
     },
     "category_interaction_short": {
         "message": "Interaktions-Erinnerung"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Unterbrechung"
     },
+    "category_intro_guideline1": {
+        "message": "Intervall ohne aktuellen Inhalt"
+    },
+    "category_intro_guideline2": {
+        "message": "Nicht für Übergänge mit Informationen"
+    },
     "category_outro": {
         "message": "Endkarten/Quellen/Anerkennungen"
     },
     "category_outro_description": {
         "message": "Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für videobeendende Schlussfolgerungen mit Informationen."
     },
+    "category_outro_guideline1": {
+        "message": "Enthalten keinen Inhalt, selbst wenn Endcards zu sehen sind"
+    },
     "category_preview": {
         "message": "Vorschau/Zusammenfassung"
     },
     "category_preview_description": {
         "message": "Kurze Zusammenfassung bisheriger Videos oder eine Vorschau auf das aktuelle Video. Für zusammengeschnittene Clips gedacht, jedoch nicht für mündliche Zusammenfassungen."
+    },
+    "category_preview_guideline1": {
+        "message": "Clips welche später oder in einem zukünftigen Video erscheinen"
+    },
+    "category_preview_guideline2": {
+        "message": "Recap eines vorherigen Videos"
+    },
+    "category_preview_guideline3": {
+        "message": "Nicht für Bereiche, welche zusätzliche Inhalte geben"
     },
     "category_filler": {
         "message": "Füller/Witze"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Füller"
     },
+    "category_filler_guideline1": {
+        "message": "Tangentielle Szenen nur für Füller oder Humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Ablenkungen, Patzer, Replays"
+    },
+    "category_filler_guideline3": {
+        "message": "Nicht für Szenen, welche zum verstehen des Topics sind"
+    },
     "category_music_offtopic": {
         "message": "Musikvideoteile ohne Musik"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Musikvideoteile ohne Musik"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Bereiche nicht in offiziellen Veröffentlichungen"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Nicht-Musik in einer Live-Performance"
+    },
     "category_poi_highlight": {
         "message": "Highlight"
     },
     "category_poi_highlight_description": {
         "message": "Der Teil des Videos, nach dem die meisten Leute suchen, ähnlich wie \"Video startet bei x\" Kommentare."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Bereiche die die meisten Personen suchen"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Kann helfen, vergangene Inhalte zu überspringen"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Kann zum Titel oder Thumbnail überspringen"
     },
     "category_livestream_messages": {
         "message": "In Livestreams Spenden/Nachrichten vorlesen"
@@ -832,7 +910,7 @@
         "message": "Das übermitteln kann entweder im Popup durch das drücken vom \"Segment Started Jetzt\" Knopf oder im Videoplayer mit den Knöpfen im Player gemacht werden."
     },
     "helpPageSubmitting2": {
-        "message": "Mit einem Klick auf den Play-Knopf wird der Beginn eines Segments und mit dem klick auf den Stop-Knopf das ende eines Segments markiert. Du kannst mehrere Sponsoren vorbereiten, bevor du auf Absenden klickst. Das klicken des Upload-Knopfes wird die Segmente übermitteln. Das klicken des Mülleimers löscht es."
+        "message": "Mit einem Klick auf den Play-Button wird der Beginn eines Segments markiert, und mit einem Klick auf den Stop-Button dessen Ende. Du kannst mehrere Segmente anlegen, bevor du durch Klicken des Upload-Buttons zum Einreichen fortfährst. Ein Klick auf die Mülltonne löscht deine angelegten Segmente."
     },
     "Editing": {
         "message": "Bearbeitung"
@@ -866,6 +944,9 @@
     },
     "LearnMore": {
         "message": "Erfahre mehr"
+    },
+    "FullDetails": {
+        "message": "Vollständige Details"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Downvotet, und erstellt eine lokale Kopie zum erneuten Einreichen"
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "Einstellungen öffnen"
+    },
+    "resetToDefault": {
+        "message": "Einstellungen zurücksetzen"
+    },
+    "confirmResetToDefault": {
+        "message": "Sind Sie sicher, dass Sie alle Einstellungen auf ihre Standardwerte zurücksetzen wollen? Dies kann nicht rückgängig gemacht werden."
     }
 }

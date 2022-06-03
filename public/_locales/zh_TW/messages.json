@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "在跳過片段後顯示通知"
     },
+    "showCategoryGuidelines": {
+        "message": "顯示分類說明"
+    },
     "noticeVisibilityMode0": {
         "message": "完整大小的略過提醒"
     },
@@ -542,17 +545,38 @@
         "message": "到",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "包含轉場"
+    },
+    "generic_guideline2": {
+        "message": "如同沒有略過任何片段般播放"
+    },
     "category_sponsor": {
         "message": "贊助廣告"
     },
     "category_sponsor_description": {
         "message": "有收錢的工商廣告和直接廣告。不是為了自我推銷或為了其他創作的免費推銷"
     },
+    "category_sponsor_guideline1": {
+        "message": "付費促銷"
+    },
+    "category_sponsor_guideline2": {
+        "message": "並非捐款或客製週邊商品"
+    },
     "category_selfpromo": {
         "message": "非付費/自我推廣"
     },
     "category_selfpromo_description": {
         "message": "類似 “贊助商廣告” ，但是非付費或自我推廣。這包括有關商品、捐贈或與他人合作的信息。"
+    },
+    "category_selfpromo_guideline1": {
+        "message": "贊助、會員或客製週邊商品"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "與影片無關之免費的推廣"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "不是企業設計的商品和週邊商品"
     },
     "category_exclusive_access": {
         "message": "獨家限定"
@@ -947,5 +971,11 @@
     },
     "openOptionsPage": {
         "message": "打開選項頁面"
+    },
+    "resetToDefault": {
+        "message": "重設設定為預設值"
+    },
+    "confirmResetToDefault": {
+        "message": "你確定要將所有設定重設為預設值嗎？此動作無法還原。"
     }
 }

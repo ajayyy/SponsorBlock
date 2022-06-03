@@ -935,5 +935,11 @@
     },
     "betaServerWarning": {
         "message": "Serwer BETA jest włączony!"
+    },
+    "resetToDefault": {
+        "message": "Resetuj do ustawień domyślnych"
+    },
+    "confirmResetToDefault": {
+        "message": "Czy na pewno chcesz przywrócić wszystkie ustawienia do ich domyślnych wartości? Tego nie można cofnąć."
     }
 }
