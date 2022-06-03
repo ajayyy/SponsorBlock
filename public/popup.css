@@ -268,6 +268,10 @@
   white-space: normal;
 }
 
+.sbVoteButtonsContainer {
+  text-align: right;
+}
+
 /*
  * Buttons that appear under a segment on click
  */
@@ -465,7 +469,14 @@
 .sbYourWorkCols > div {
   display: flex;
   border-top: 2px solid var(--sb-grey-bg-color);
+  border-bottom: 2px solid var(--sb-grey-bg-color);
 }
+
+.sbStatsSentence {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 /*
  * Increase font size of username input and display
  */

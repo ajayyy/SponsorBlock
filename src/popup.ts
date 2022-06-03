@@ -474,7 +474,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 //thumbs up and down buttons
                 const voteButtonsContainer = document.createElement("div");
                 voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
-                voteButtonsContainer.setAttribute("align", "center");
+                voteButtonsContainer.classList.add("sbVoteButtonsContainer");
 
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;

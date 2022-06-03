@@ -84,8 +84,10 @@
       </div>
 
       <!-- Your Work box -->
-      <details class="sbYourWorkCols">
-        <summary class="sbHeader" style="padding: 8px 16px; cursor: pointer;">&nbsp;&nbsp;__MSG_yourWork__</summary>
+      <div class="sbYourWorkCols">
+        <p class="sbHeader" style="padding: 8px 16px; cursor: pointer;">
+          __MSG_yourWork__
+        </p>
         <div>
           <!-- Username -->
           <div id="usernameElement">
@@ -115,36 +117,36 @@
             <span id="sponsorTimesContributionsDisplay">0</span>
           </div>
         </div>
-      </details>
 
-      <p id="sponsorTimesViewsContainer" style="display: none" class="u-mZ">
-        __MSG_savedPeopleFrom__
-        <b>
-          <span id="sponsorTimesViewsDisplay">0</span>
-        </b>
-        <span id="sponsorTimesViewsDisplayEndWord">__MSG_Segments__</span>
-        <br />
-        (
-        <b>
-          <span id="sponsorTimesOthersTimeSavedDisplay">0</span>
-          <span id="sponsorTimesOthersTimeSavedEndWord">__MSG_minsLower__</span>
-        </b>
-        <span>__MSG_youHaveSavedTimeEnd__</span>
-        ).
-      </p>
-      <p id="sponsorTimesSkipsDoneContainer" style="display: none" class="u-mZ">
-        __MSG_youHaveSkipped__
-        <b>
-          <span id="sponsorTimesSkipsDoneDisplay">0</span>
-        </b>
-        <span id="sponsorTimesSkipsDoneEndWord">__MSG_Segments__</span>
-        (
+        <p id="sponsorTimesViewsContainer" style="display: none" class="u-mZ sbStatsSentence">
+          __MSG_savedPeopleFrom__
           <b>
-            <span id="sponsorTimeSavedDisplay">0</span>
-            <span id="sponsorTimeSavedEndWord">__MSG_minsLower__</span>
+            <span id="sponsorTimesViewsDisplay">0</span>
           </b>
-        ).
-      </p>
+          <span id="sponsorTimesViewsDisplayEndWord">__MSG_Segments__</span>
+          <br />
+          (
+          <b>
+            <span id="sponsorTimesOthersTimeSavedDisplay">0</span>
+            <span id="sponsorTimesOthersTimeSavedEndWord">__MSG_minsLower__</span>
+          </b>
+          <span>__MSG_youHaveSavedTimeEnd__</span>
+          )
+        </p>
+        <p id="sponsorTimesSkipsDoneContainer" style="display: none" class="u-mZ sbStatsSentence">
+          __MSG_youHaveSkipped__
+          <b>
+            <span id="sponsorTimesSkipsDoneDisplay">0</span>
+          </b>
+          <span id="sponsorTimesSkipsDoneEndWord">__MSG_Segments__</span>
+          (
+            <b>
+              <span id="sponsorTimeSavedDisplay">0</span>
+              <span id="sponsorTimeSavedEndWord">__MSG_minsLower__</span>
+            </b>
+          )
+        </p>
+      </div>
 
       <footer id="sbFooter">
         <div id="sponsorTimesDonateContainer" style="display: none; align-items: center; justify-content: center;">
