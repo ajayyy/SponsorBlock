@@ -12,13 +12,14 @@ import Utils from "./utils";
 import CategoryChooser from "./render/CategoryChooser";
 import KeybindComponent from "./components/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
+import { localizeHtmlPage } from "./utils/pageUtils";
 const utils = new Utils();
 let embed = false;
 
 window.addEventListener('DOMContentLoaded', init);
 
 async function init() {
-    utils.localizeHtmlPage();
+    localizeHtmlPage();
 
     // selected tab
     if (location.hash != "") {

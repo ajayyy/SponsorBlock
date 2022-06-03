@@ -1,15 +1,15 @@
 import Config from "./config";
 import { showDonationLink } from "./utils/configUtils";
 
-import Utils from "./utils";
-const utils = new Utils();
+import { localizeHtmlPage } from "./utils/pageUtils";
+import { GenericUtils } from "./utils/genericUtils";
 
 window.addEventListener('DOMContentLoaded', init);
 
 async function init() {
-    utils.localizeHtmlPage();
+    localizeHtmlPage();
 
-    await utils.wait(() => Config.config !== null);
+    await GenericUtils.wait(() => Config.config !== null);
 
     if (!Config.config.darkMode) {
         document.documentElement.setAttribute("data-theme", "light");
