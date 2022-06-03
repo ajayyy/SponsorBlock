@@ -5,8 +5,6 @@ import { ContentContainer, Keybind } from "./types";
 import Utils from "./utils";
 const utils = new Utils();
 
-import runThePopup from "./popup";
-
 import PreviewBar, {PreviewBarSegment} from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
@@ -218,6 +216,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             utils.getSponsorTimeFromUUID(sponsorTimes, request.UUID).hidden = request.type;
             utils.addHiddenSegment(sponsorVideoID, request.UUID, request.type);
             updatePreviewBar();
+            break;
+        case "closePopup":
+            closeInfoMenu();
             break;
 
     }
@@ -1686,73 +1687,30 @@ function openInfoMenu() {
     //hide info button
     if (playerButtons.info) playerButtons.info.button.style.display = "none";
 
-    sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            const popup = document.createElement("div");
-            popup.id = "sponsorBlockPopupContainer";
+    
+    const popup = document.createElement("div");
+    popup.id = "sponsorBlockPopupContainer";
+   
+    const frame = document.createElement("iframe");
+    frame.width = "374";
+    frame.height = "500";
+    frame.addEventListener("load", () => frame.contentWindow.postMessage("", "*"));
+    frame.src = chrome.extension.getURL("popup.html");
+    popup.appendChild(frame);
 
-            let htmlData = xmlhttp.responseText;
-            // Hack to replace head data (title, favicon)
-            htmlData = htmlData.replace(/<head>[\S\s]*<\/head>/gi, "");
-            // Hack to replace body and html tag with div
-            htmlData = htmlData.replace(/<body/gi, "<div");
-            htmlData = htmlData.replace(/<\/body/gi, "</div");
-            htmlData = htmlData.replace(/<html/gi, "<div");
-            htmlData = htmlData.replace(/<\/html/gi, "</div");
-
-            popup.innerHTML = htmlData;
-
-            //close button
-            const closeButton = document.createElement("button");
-            const closeButtonIcon = document.createElement("img");
-            closeButtonIcon.src = chrome.extension.getURL("icons/close.png");
-            closeButtonIcon.width = 15;
-            closeButtonIcon.height = 15;
-            closeButton.appendChild(closeButtonIcon);
-            closeButton.setAttribute("title", chrome.i18n.getMessage("closePopup"));
-            closeButton.classList.add("sbCloseButton");
-            closeButton.addEventListener("click", closeInfoMenu);
-
-            //add the close button
-            popup.prepend(closeButton);
-
-            const parentNodes = document.querySelectorAll("#secondary");
-            let parentNode = null;
-            for (let i = 0; i < parentNodes.length; i++) {
-                if (parentNodes[i].firstElementChild !== null) {
-                    parentNode = parentNodes[i];
-                }
-            }
-            if (parentNode == null) {
-                //old youtube theme
-                parentNode = document.getElementById("watch7-sidebar-contents");
-            }
-
-            //make the logo source not 404
-            //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
-            const logo = <HTMLImageElement> popup.querySelector("#sponsorBlockPopupLogo");
-            const settings = <HTMLImageElement> popup.querySelector("#sbPopupIconSettings");
-            const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
-            const copy = <HTMLImageElement> popup.querySelector("#sbPopupIconCopyUserID");
-            const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
-            const refreshSegments = <HTMLImageElement> popup.querySelector("#refreshSegments");
-            const heart = <HTMLImageElement> popup.querySelector(".sbHeart");
-            const close = <HTMLImageElement> popup.querySelector("#sbCloseDonate");
-            logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
-            settings.src = chrome.extension.getURL("icons/settings.svg");
-            edit.src = chrome.extension.getURL("icons/pencil.svg");
-            copy.src = chrome.extension.getURL("icons/clipboard.svg");
-            check.src = chrome.extension.getURL("icons/check.svg");
-            heart.src = chrome.extension.getURL("icons/heart.svg");
-            close.src = chrome.extension.getURL("icons/close.png");
-            refreshSegments.src = chrome.extension.getURL("icons/refresh.svg");
-
-            parentNode.insertBefore(popup, parentNode.firstChild);
-
-            //run the popup init script
-            runThePopup(messageListener);
+    const parentNodes = document.querySelectorAll("#secondary");
+    let parentNode = null;
+    for (let i = 0; i < parentNodes.length; i++) {
+        if (parentNodes[i].firstElementChild !== null) {
+            parentNode = parentNodes[i];
         }
-    });
+    }
+    if (parentNode == null) {
+        //old youtube theme
+        parentNode = document.getElementById("watch7-sidebar-contents");
+    }
+    
+    parentNode.insertBefore(popup, parentNode.firstChild);
 }
 
 function closeInfoMenu() {
@@ -2111,25 +2069,6 @@ function addCSS() {
             }
         });
     }
-}
-
-function sendRequestToCustomServer(type, fullAddress, callback) {
-    const xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.open(type, fullAddress, true);
-
-    if (callback != undefined) {
-        xmlhttp.onreadystatechange = function () {
-            callback(xmlhttp, false);
-        };
-
-        xmlhttp.onerror = function() {
-            callback(xmlhttp, true);
-        };
-    }
-
-    //submit this request
-    xmlhttp.send();
 }
 
 /**
