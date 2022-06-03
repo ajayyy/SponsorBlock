@@ -140,6 +140,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     });
 
+    if (window !== window.top) {
+        PageElements.sbCloseButton.classList.remove("hidden");
+    }
+
     // Hide donate button if wanted (Safari, or user choice)
     if (!showDonationLink()) {
         PageElements.sbDonate.style.display = "none";
