@@ -1,6 +1,7 @@
 import * as React from "react";
 
 export interface NoticeTextSelectionProps {
+    icon?: string,
     text: string,
     idSuffix: string,
     onClick?: (event: React.MouseEvent) => unknown
@@ -24,12 +25,21 @@ class NoticeTextSelectionComponent extends React.Component<NoticeTextSelectionPr
         }
 
         return (
-            <p id={"sponsorTimesInfoMessage" + this.props.idSuffix}
+            <tr id={"sponsorTimesInfoMessage" + this.props.idSuffix}
                 onClick={this.props.onClick}
                 style={style}
                 className="sponsorTimesInfoMessage">
-                    {this.props.text}
-            </p>
+                    
+                <td>
+                    {this.props.icon ? 
+                        <img src={chrome.runtime.getURL(this.props.icon)} className="sponsorTimesInfoIcon" /> 
+                    : null}
+
+                    <span>
+                        {this.props.text}
+                    </span>
+                </td>
+            </tr>
         );
     }
 }

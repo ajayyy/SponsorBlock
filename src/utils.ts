@@ -256,31 +256,6 @@ export default class Utils {
         }
     }
 
-    localizeHtmlPage(): void {
-        //Localize by replacing __MSG_***__ meta tags
-        const localizedMessage = this.getLocalizedMessage(document.title);
-        if (localizedMessage) document.title = localizedMessage;
-        const objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
-        for (let j = 0; j < objects.length; j++) {
-            const obj = objects[j];
-            const localizedMessage = this.getLocalizedMessage(obj.innerHTML.toString());
-            if (localizedMessage) obj.innerHTML = localizedMessage;
-        }
-    }
-
-    getLocalizedMessage(text: string): string | false {
-        const valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
-            return v1 ? chrome.i18n.getMessage(v1).replace(/</g, "&#60;")
-                .replace(/"/g, "&quot;").replace(/\n/g, "<br/>") : "";
-        });
-
-        if(valNewH != text) {
-            return valNewH;
-        } else {
-            return false;
-        }
-    }
-
     /**
      * @returns {String[]} Domains in regex form
      */

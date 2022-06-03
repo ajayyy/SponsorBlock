@@ -1,12 +1,15 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const webpack = require("webpack");
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const BuildManifest = require('./webpack.manifest');
-const srcDir = '../src/';
-const fs = require("fs");
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+import webpack from "webpack"
+import path from "path"
+import { fileURLToPath } from "url"
+import CopyPlugin from "copy-webpack-plugin"
+import BuildManifest from "./webpack.manifest.cjs";
+const srcDir = "../src/";
+import fs from "fs";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const edgeLanguages = [
     "de",
@@ -24,7 +27,7 @@ const edgeLanguages = [
     "zh_CN"
 ]
 
-module.exports = env => ({
+export default env => ({
     entry: {
         popup: path.join(__dirname, srcDir + 'popup.ts'),
         background: path.join(__dirname, srcDir + 'background.ts'),

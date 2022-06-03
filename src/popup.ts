@@ -7,6 +7,7 @@ import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
 import { shortCategoryName } from "./utils/categoryUtils";
+import { localizeHtmlPage } from "./utils/pageUtils";
 const utils = new Utils();
 
 interface MessageListener {
@@ -23,13 +24,15 @@ class MessageHandler {
     sendMessage(id: number, request: Message, callback?) {
         if (this.messageListener) {
             this.messageListener(request, null, callback);
-        } else {
+        } else if (chrome.tabs) {
             chrome.tabs.sendMessage(id, request, callback);
+        } else {
+            chrome.runtime.sendMessage({ message: "tabs", data: request }, callback);
         }
     }
 
     query(config, callback) {
-        if (this.messageListener) {
+        if (this.messageListener || !chrome.tabs) {
             // Send back dummy info
             callback([{
                 url: document.URL,
@@ -42,15 +45,17 @@ class MessageHandler {
     }
 }
 
-
+// To prevent clickjacking
+let allowPopup = window === window.top;
+window.addEventListener("message", async (e) => {
+    if (e.source !== window.parent) return;
+    if (e.origin.endsWith('.youtube.com')) return allowPopup = true;
+});
 
 //make this a function to allow this to run on the content page
 async function runThePopup(messageListener?: MessageListener): Promise<void> {
     const messageHandler = new MessageHandler(messageListener);
-
-    utils.localizeHtmlPage();
-
-    await utils.wait(() => Config.config !== null);
+    localizeHtmlPage();
 
     type InputPageElements = {
         whitelistToggle?: HTMLInputElement,
@@ -58,6 +63,21 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         usernameInput?: HTMLInputElement,
     };
     type PageElements = { [key: string]: HTMLElement } & InputPageElements
+
+    /** If true, the content script is in the process of creating a new segment. */
+    let creatingSegment = false;
+
+    //the start and end time pairs (2d)
+    let sponsorTimes: SponsorTime[] = [];
+
+    //current video ID of this tab
+    let currentVideoID = null;
+
+    enum SegmentTab {
+        Segments,
+        Chapters
+    }
+    let segmentTab = SegmentTab.Segments;
 
     const PageElements: PageElements = {};
 
@@ -93,7 +113,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         // Username
         "setUsernameContainer",
         "setUsernameButton",
-        "setUsernameStatusContainer",
+        "setUsernameStatus",
         "setUsernameStatus",
         "setUsername",
         "usernameInput",
@@ -101,7 +121,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "submitUsername",
         "sbPopupIconCopyUserID",
         // More
-        "submissionSection",
+        "submissionHint",
         "mainControls",
         "loadingIndicator",
         "videoFound",
@@ -116,8 +136,23 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sponsorTimesDonateContainer",
         "sbConsiderDonateLink",
         "sbCloseDonate",
-        "sbBetaServerWarning"
+        "sbBetaServerWarning",
+        "sbCloseButton"
     ].forEach(id => PageElements[id] = document.getElementById(id));
+
+    getSegmentsFromContentScript(false);
+    await utils.wait(() => Config.config !== null && allowPopup, 5000, 5);
+    document.querySelector("body").style.removeProperty("visibility");
+
+    PageElements.sbCloseButton.addEventListener("click", () => {
+        sendTabMessage({
+            message: "closePopup"
+        });
+    });
+
+    if (window !== window.top) {
+        PageElements.sbCloseButton.classList.remove("hidden");
+    }
 
     // Hide donate button if wanted (Safari, or user choice)
     if (!showDonationLink()) {
@@ -154,21 +189,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.helpButton.addEventListener("click", openHelp);
     PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
     PageElements.sbPopupIconCopyUserID.addEventListener("click", async () => navigator.clipboard.writeText(await utils.getHash(Config.config.userID)));
-
-    /** If true, the content script is in the process of creating a new segment. */
-    let creatingSegment = false;
-
-    //the start and end time pairs (2d)
-    let sponsorTimes: SponsorTime[] = [];
-
-    //current video ID of this tab
-    let currentVideoID = null;
-
-    enum SegmentTab {
-        Segments,
-        Chapters
-    }
-    let segmentTab = SegmentTab.Segments;
 
     //show proper disable skipping button
     const disableSkipping = Config.config.disableSkipping;
@@ -249,8 +269,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     // Must be delayed so it only happens once loaded
     setTimeout(() => PageElements.sponsorblockPopup.classList.remove("preload"), 250);
 
-    getSegmentsFromContentScript(false);
-
     PageElements.issueReporterTabSegments.addEventListener("click", () => {
         PageElements.issueReporterTabSegments.classList.add("sbSelected");
         PageElements.issueReporterTabChapters.classList.remove("sbSelected");
@@ -298,13 +316,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     }
 
-    function loadTabData(tabs, updating: boolean): void {
+    async function loadTabData(tabs, updating: boolean): Promise<void> {
         if (!currentVideoID) {
             //this isn't a YouTube video then
             displayNoVideo();
             return;
         }
 
+        await utils.wait(() => Config.config !== null, 5000, 10);
         sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
         updateSegmentEditingUI();
 
@@ -482,9 +501,17 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 }
 
                 segmentTimeFromToNode.style.margin = "5px";
+                
+                // for inline-styling purposes
+                const labelContainer = document.createElement("div");
+                if (actionType !== ActionType.Chapter) labelContainer.appendChild(categoryColorCircle);
 
-                if (actionType !== ActionType.Chapter) segmentSummary.appendChild(categoryColorCircle);
-                segmentSummary.appendChild(textNode);
+                const span = document.createElement('span');
+                span.className = "summaryLabel";
+                span.appendChild(textNode);
+                labelContainer.appendChild(span);
+
+                segmentSummary.appendChild(labelContainer);
                 segmentSummary.appendChild(segmentTimeFromToNode);
 
                 const votingButtons = document.createElement("details");
@@ -493,7 +520,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 //thumbs up and down buttons
                 const voteButtonsContainer = document.createElement("div");
                 voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
-                voteButtonsContainer.setAttribute("align", "center");
+                voteButtonsContainer.classList.add("sbVoteButtonsContainer");
 
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
@@ -618,7 +645,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function updateSegmentEditingUI() {
         PageElements.sponsorStart.innerText = chrome.i18n.getMessage(creatingSegment ? "sponsorEnd" : "sponsorStart");
 
-        PageElements.submissionSection.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
+        PageElements.submitTimes.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
+        PageElements.submissionHint.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
     }
 
     //make the options div visible
@@ -634,6 +662,22 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         chrome.runtime.sendMessage({ "message": "openHelp" });
     }
 
+    function sendTabMessage(data: Message): Promise<unknown> {
+        return new Promise((resolve) => {
+            messageHandler.query({
+                active: true,
+                currentWindow: true
+            }, tabs => {
+                messageHandler.sendMessage(
+                    tabs[0].id,
+                    data,
+                    (response) => resolve(response)
+                );
+            }
+            );
+        });
+    }
+
     //make the options username setting option visible
     function setUsernameButton() {
         PageElements.usernameInput.value = PageElements.usernameValue.innerText;
@@ -645,7 +689,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.setUsername.style.display = "flex";
         PageElements.setUsername.classList.add("SBExpanded");
 
-        PageElements.setUsernameStatusContainer.style.display = "none";
+        PageElements.setUsernameStatus.style.display = "none";
 
         PageElements.sponsorTimesContributionsContainer.classList.add("hidden");
     }
@@ -653,7 +697,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //submit the new username
     function submitUsername() {
         //add loading indicator
-        PageElements.setUsernameStatusContainer.style.display = "unset";
+        PageElements.setUsernameStatus.style.display = "unset";
         PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("Loading");
 
         utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (response) {
@@ -666,7 +710,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 PageElements.setUsername.classList.remove("SBExpanded");
                 PageElements.usernameValue.innerText = PageElements.usernameInput.value;
 
-                PageElements.setUsernameStatusContainer.style.display = "none";
+                PageElements.setUsernameStatus.style.display = "none";
 
                 PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
             } else {
@@ -911,9 +955,4 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //end of function
 }
 
-if (chrome.tabs != undefined) {
-    //this means it is actually opened in the popup
-    runThePopup();
-}
-
-export default runThePopup;
+runThePopup();

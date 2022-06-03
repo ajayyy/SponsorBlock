@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, UnEncodedSegmentTimes as UnencodedSegmentTimes, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
 import { keybindEquals } from "./utils/configUtils";
 
 interface SBConfig {
@@ -56,6 +56,7 @@ interface SBConfig {
     scrollToEditTimeUpdate: boolean,
     categoryPillUpdate: boolean,
     darkMode: boolean,
+    showCategoryGuidelines: boolean,
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -102,9 +103,11 @@ export type VideoDownvotes = { segments: { uuid: HashedValue, hidden: SponsorHid
 interface SBStorage {
     /* VideoID prefixes to UUID prefixes */
     downvotedSegments: Record<VideoID & HashedValue, VideoDownvotes>,
+    navigationApiAvailable: boolean,
 }
 
 export interface SBObject {
+    configLocalListeners: Array<(changes: StorageChangesObject) => unknown>;
     configSyncListeners: Array<(changes: StorageChangesObject) => unknown>;
     syncDefaults: SBConfig;
     localDefaults: SBStorage;
@@ -114,12 +117,14 @@ export interface SBObject {
     local: SBStorage;
     forceSyncUpdate(prop: string): void;
     forceLocalUpdate(prop: string): void;
+    resetToDefault(): void;
 }
 
 const Config: SBObject = {
     /**
      * Callback function when an option is updated
      */
+    configLocalListeners: [],
     configSyncListeners: [],
     syncDefaults: {
         userID: null,
@@ -168,6 +173,7 @@ const Config: SBObject = {
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
         categoryPillUpdate: false,
         darkMode: true,
+        showCategoryGuidelines: true,
 
         categoryPillColors: {},
 
@@ -284,14 +290,16 @@ const Config: SBObject = {
         }
     },
     localDefaults: {
-        downvotedSegments: {}
+        downvotedSegments: {},
+        navigationApiAvailable: null
     },
     cachedSyncConfig: null,
     cachedLocalStorage: null,
     config: null,
     local: null,
     forceSyncUpdate,
-    forceLocalUpdate
+    forceLocalUpdate,
+    resetToDefault
 };
 
 // Function setup
@@ -302,7 +310,7 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
             for (const key in changes) {
                 Config.cachedSyncConfig[key] = changes[key].newValue;
             }
-    
+
             for (const callback of Config.configSyncListeners) {
                 callback(changes);
             }
@@ -310,9 +318,13 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
             for (const key in changes) {
                 Config.cachedLocalStorage[key] = changes[key].newValue;
             }
+
+            for (const callback of Config.configLocalListeners) {
+                callback(changes);
+            }
         }
     });
-	
+
     const syncHandler: ProxyHandler<SBConfig> = {
         set<K extends keyof SBConfig>(obj: SBConfig, prop: K, value: SBConfig[K]) {
             Config.cachedSyncConfig[prop] = value;
@@ -329,10 +341,10 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
 
             return obj[prop] || data;
         },
-	
+
         deleteProperty(obj: SBConfig, prop: keyof SBConfig) {
             chrome.storage.sync.remove(<string> prop);
-            
+
             return true;
         }
 
@@ -354,10 +366,10 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
 
             return obj[prop] || data;
         },
-	
+
         deleteProperty(obj: SBStorage, prop: keyof SBStorage) {
             chrome.storage.local.remove(<string> prop);
-            
+
             return true;
         }
 
@@ -370,8 +382,20 @@ function configProxy(): { sync: SBConfig, local: SBStorage } {
 }
 
 function forceSyncUpdate(prop: string): void {
+    const value = Config.cachedSyncConfig[prop];
+    if (prop === "unsubmittedSegments") {
+        // Early to be safe
+        if (JSON.stringify(value).length + prop.length > 8000) {
+            for (const key in value) {
+                if (!value[key] || value[key].length <= 0) {
+                    delete value[key];
+                }
+            }
+        }
+    }
+
     chrome.storage.sync.set({
-        [prop]: Config.cachedSyncConfig[prop]
+        [prop]: value
     });
 }
 
@@ -381,7 +405,7 @@ function forceLocalUpdate(prop: string): void {
     });
 }
 
-async function fetchConfig(): Promise<void> { 
+async function fetchConfig(): Promise<void> {
     await Promise.all([new Promise<void>((resolve) => {
         chrome.storage.sync.get(null, function(items) {
             Config.cachedSyncConfig = <SBConfig> <unknown> items;
@@ -389,7 +413,7 @@ async function fetchConfig(): Promise<void> {
         });
     }), new Promise<void>((resolve) => {
         chrome.storage.local.get(null, function(items) {
-            Config.cachedLocalStorage = <SBStorage> <unknown> items; 
+            Config.cachedLocalStorage = <SBStorage> <unknown> items;
             resolve();
         });
     })]);
@@ -433,9 +457,9 @@ function migrateOldSyncFormats(config: SBConfig) {
     if (!config["autoSkipOnMusicVideosUpdate"]) {
         config["autoSkipOnMusicVideosUpdate"] = true;
         for (const selection of config.categorySelections) {
-            if (selection.name === "music_offtopic" 
+            if (selection.name === "music_offtopic"
                     && selection.option === CategorySkipOption.AutoSkip) {
-                
+
                 config.autoSkipOnMusicVideos = true;
                 break;
             }
@@ -524,6 +548,16 @@ function addDefaults() {
             Config.cachedLocalStorage[key] = Config.localDefaults[key];
         }
     }
+}
+
+function resetToDefault() {
+    chrome.storage.sync.set({
+        ...Config.syncDefaults,
+        userID: Config.config.userID,
+        minutesSaved: Config.config.minutesSaved,
+        skipCount: Config.config.skipCount,
+        sponsorTimesContributed: Config.config.sponsorTimesContributed
+    });
 }
 
 // Sync config

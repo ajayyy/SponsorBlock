@@ -190,14 +190,20 @@ div:hover > .sponsorBlockChapterBar {
 }
 
 .sponsorSkipNoticeParent, .sponsorSkipNotice {
-	min-width: 350px;
-	max-width: 50%;
-
 	border-spacing: var(--skip-notice-border-horizontal) var(--skip-notice-border-vertical);
 	padding-left: var(--skip-notice-padding);
 	padding-right: var(--skip-notice-padding);
 
 	border-collapse: unset;
+}
+
+.sponsorSkipNoticeParent {
+	min-width: 350px;
+	max-width: 50%;
+}
+
+.sponsorSkipNotice {
+	width: 100%;
 }
 
 .sponsorSkipNoticeTableContainer {
@@ -211,7 +217,7 @@ div:hover > .sponsorBlockChapterBar {
 }
 
 .sponsorSkipNoticeLimitWidth {
-	min-width: calc(100% - 50px);
+	max-width: calc(100% - 50px);
 }
 
 .sponsorSkipNotice .hidden {
@@ -384,6 +390,22 @@ div:hover > .sponsorBlockChapterBar {
 .sponsorTimesInfoMessage {
 	font-size: 13.3333px;
     color: rgb(235, 235, 235);
+}
+
+.sb-guidelines-notice .sponsorTimesInfoMessage td {
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+    font-size: 15px;
+
+	display: flex;
+	align-items: center;
+}
+
+.sponsorTimesInfoIcon {
+	width: 30px;
+	padding-right: 10px;
+    padding-left: 10px;
 }
 
 .segmentSummary {

@@ -20,6 +20,7 @@ export interface SponsorTimeEditProps {
 
     submissionNotice: SubmissionNoticeComponent;
     categoryList?: Category[];
+    categoryChangeListener?: (index: number, category: Category) => void;
 }
 
 export interface SponsorTimeEditState {
@@ -419,6 +420,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
         this.handleReplacingLostTimes(chosenCategory, sponsorTime.actionType, sponsorTime);
         this.saveEditTimes();
+
+        if (this.props.categoryChangeListener) {
+            this.props.categoryChangeListener(this.props.index, chosenCategory);
+        }
     }
 
     actionTypeSelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
