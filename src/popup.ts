@@ -106,7 +106,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         // Username
         "setUsernameContainer",
         "setUsernameButton",
-        "setUsernameStatusContainer",
+        "setUsernameStatus",
         "setUsernameStatus",
         "setUsername",
         "usernameInput",
@@ -114,7 +114,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "submitUsername",
         "sbPopupIconCopyUserID",
         // More
-        "submissionSection",
+        "submissionHint",
         "mainControls",
         "loadingIndicator",
         "videoFound",
@@ -448,15 +448,24 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
                 } else {
                     segmentTimeFromToNode.innerText = utils.getFormattedTime(segmentTimes[i].segment[0], true) +
-                            (segmentTimes[i].actionType !== ActionType.Poi
-                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true)
-                                : "");
+                    (segmentTimes[i].actionType !== ActionType.Poi
+                        ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true)
+                        : "");
                 }
 
                 segmentTimeFromToNode.style.margin = "5px";
+                
+                // for inline-styling purposes
+                const labelContainer = document.createElement("div");
+                labelContainer.appendChild(categoryColorCircle);
 
-                segmentSummary.appendChild(categoryColorCircle);
-                segmentSummary.appendChild(textNode);
+                const span = document.createElement('span');
+                span.className = "summaryLabel";
+                span.appendChild(textNode);
+                labelContainer.appendChild(span);
+                // for inline-styling purposes
+
+                segmentSummary.appendChild(labelContainer);
                 segmentSummary.appendChild(segmentTimeFromToNode);
 
                 const votingButtons = document.createElement("details");
@@ -465,7 +474,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 //thumbs up and down buttons
                 const voteButtonsContainer = document.createElement("div");
                 voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
-                voteButtonsContainer.setAttribute("align", "center");
+                voteButtonsContainer.classList.add("sbVoteButtonsContainer");
 
                 const upvoteButton = document.createElement("img");
                 upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
@@ -581,7 +590,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function updateSegmentEditingUI() {
         PageElements.sponsorStart.innerText = chrome.i18n.getMessage(creatingSegment ? "sponsorEnd" : "sponsorStart");
 
-        PageElements.submissionSection.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
+        PageElements.submitTimes.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
+        PageElements.submissionHint.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
     }
 
     //make the options div visible
@@ -624,7 +634,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.setUsername.style.display = "flex";
         PageElements.setUsername.classList.add("SBExpanded");
 
-        PageElements.setUsernameStatusContainer.style.display = "none";
+        PageElements.setUsernameStatus.style.display = "none";
 
         PageElements.sponsorTimesContributionsContainer.classList.add("hidden");
     }
@@ -632,7 +642,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //submit the new username
     function submitUsername() {
         //add loading indicator
-        PageElements.setUsernameStatusContainer.style.display = "unset";
+        PageElements.setUsernameStatus.style.display = "unset";
         PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("Loading");
 
         utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (response) {
@@ -645,7 +655,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 PageElements.setUsername.classList.remove("SBExpanded");
                 PageElements.usernameValue.innerText = PageElements.usernameInput.value;
 
-                PageElements.setUsernameStatusContainer.style.display = "none";
+                PageElements.setUsernameStatus.style.display = "none";
 
                 PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
             } else {
