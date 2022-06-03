@@ -1,10 +1,13 @@
 import * as React from "react";
 import Config from "../config"
-import { ContentContainer } from "../types";
+import GenericNotice from "../render/GenericNotice";
+import { Category, ContentContainer } from "../types";
+import * as CompileConfig from "../../config.json";
 
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import SponsorTimeEditComponent from "./SponsorTimeEditComponent";
+import { getGuidelineInfo } from "../utils/constants";
 
 export interface SubmissionNoticeProps { 
     // Contains functions and variables from the content script needed by the skip notice
@@ -31,6 +34,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     timeEditRefs: React.RefObject<SponsorTimeEditComponent>[];
 
     videoObserver: MutationObserver;
+
+    guidelinesReminder: GenericNotice;
 
     constructor(props: SubmissionNoticeProps) {
         super(props);
@@ -128,6 +133,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                     index={i}
                     contentContainer={this.props.contentContainer}
                     submissionNotice={this}
+                    categoryChangeListener={this.categoryChangeListener.bind(this)}
                     ref={timeRef}>
                 </SponsorTimeEditComponent>
             );
@@ -154,6 +160,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     cancel(): void {
+        this.guidelinesReminder?.close();
         this.noticeRef.current.close(true);
 
         this.contentContainer().resetSponsorSubmissionNotice();
@@ -189,6 +196,45 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.props.callback();
 
         this.cancel();
+    }
+
+    categoryChangeListener(index: number, category: Category): void {
+        const dialogWidth = this.noticeRef?.current?.getElement()?.current?.offsetWidth;
+        if (category !== "chooseACategory" && Config.config.showCategoryGuidelines
+                && this.contentContainer().v.offsetWidth > dialogWidth * 2) {
+            const options = {
+                title:  chrome.i18n.getMessage(`category_${category}`),
+                textBoxes: getGuidelineInfo(category),
+                buttons: [{
+                        name: chrome.i18n.getMessage("FullDetails"),
+                        listener: () => window.open(CompileConfig.wikiLinks[category])
+                    },
+                    {
+                        name: chrome.i18n.getMessage("Hide"),
+                        listener: () => {
+                            Config.config.showCategoryGuidelines = false;
+                            this.guidelinesReminder?.close();
+                            this.guidelinesReminder = null;
+                        }
+                }],
+                timed: false,
+                style: {
+                    right: `${dialogWidth + 10}px`,
+                },
+                extraClass: "sb-guidelines-notice"
+            };
+
+            if (options.textBoxes) {
+                if (this.guidelinesReminder) {
+                    this.guidelinesReminder.update(options);
+                } else {
+                    this.guidelinesReminder = new GenericNotice(null, "GuidelinesReminder", options);
+                }
+            } else {
+                this.guidelinesReminder?.close();
+                this.guidelinesReminder = null;
+            }
+        }
     }
 }
 

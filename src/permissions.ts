@@ -1,5 +1,6 @@
 import Config from "./config";
 import Utils from "./utils";
+import { localizeHtmlPage } from "./utils/pageUtils";
 const utils = new Utils();
 
 // This is needed, if Config is not imported before Utils, things break.
@@ -9,7 +10,7 @@ Config.config;
 window.addEventListener('DOMContentLoaded', init);
 
 async function init() {
-    utils.localizeHtmlPage();
+    localizeHtmlPage();
 
     const domains = document.location.hash.replace("#", "").split(",");
 

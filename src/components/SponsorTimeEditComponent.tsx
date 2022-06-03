@@ -18,6 +18,7 @@ export interface SponsorTimeEditProps {
 
     submissionNotice: SubmissionNoticeComponent;
     categoryList?: Category[];
+    categoryChangeListener?: (index: number, category: Category) => void;
 }
 
 export interface SponsorTimeEditState {
@@ -365,9 +366,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
+        const chosenCategory = event.target.value as Category;
+
         // See if show more categories was pressed
         if (event.target.value !== DEFAULT_CATEGORY && !Config.config.categorySelections.some((category) => category.name === event.target.value)) {
-            const chosenCategory = event.target.value;
             event.target.value = DEFAULT_CATEGORY;
             
             // Alert that they have to enable this category first
@@ -381,8 +383,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
 
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
-        this.handleReplacingLostTimes(event.target.value as Category, sponsorTime.actionType, sponsorTime);
+        this.handleReplacingLostTimes(chosenCategory, sponsorTime.actionType, sponsorTime);
         this.saveEditTimes();
+
+        if (this.props.categoryChangeListener) {
+            this.props.categoryChangeListener(this.props.index, chosenCategory);
+        }
     }
 
     actionTypeSelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {

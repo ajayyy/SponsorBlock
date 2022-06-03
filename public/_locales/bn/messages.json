@@ -162,7 +162,10 @@
         "message": "ব্যবহারকারীর নাম দিন"
     },
     "copyPublicID": {
-        "message": "পাবলিক ইউজারআইডি কপি করুন"
+        "message": "পাবলিক ইউজার আইডি কপি করুন"
+    },
+    "copySegmentID": {
+        "message": "অংশের আইডি কপি করুন"
     },
     "discordAdvert": {
         "message": "পরামর্শ এবং প্রতিক্রিয়া জানাতে অফিসিয়াল ডিসকর্ড সার্ভারে যোগ দিন!"
@@ -218,8 +221,14 @@
     "trackDownvotesWarning": {
         "message": "সতর্কীকরণ: এটি বন্ধ করলে পূর্বে সংরক্ষিত সব ডাউনভোট মুছে যাবে"
     },
+    "enableQueryByHashPrefix": {
+        "message": "হ্যাশের প্রিফিক্স দিয়ে খুজুন "
+    },
     "whatQueryByHashPrefix": {
         "message": "সার্ভার থেকে videoID দিয়ে অংশ অনুরোধ করার পরিবর্তে videoID এর হ্যাশ এর প্রথম ৪ অক্ষর পাঠানো হয়। এই সার্ভার সমতুল্য হ্যাশ এর সকল ভিডিও এর তথ্য ফেরত পাঠাবে।"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "নতুন ভিডিওতে আবার অংশটি যোগার করুন"
     },
     "whatRefetchWhenNotFound": {
         "message": "যদি ভিডিওটি নতুন হয়, এবং কোন অংশ পাওয়া না যায়, আপনার দেখার সময় কয়েক মিনিট পর পরই এটি তথ্য আনতে থাকবে।"
@@ -229,6 +238,21 @@
     },
     "showSkipNotice": {
         "message": "একটি অংশ এড়ানোর পরে নোটিস প্রদর্শন করুন"
+    },
+    "noticeVisibilityMode0": {
+        "message": "পূর্ণ আকারের স্কিপ নোটিস"
+    },
+    "noticeVisibilityMode1": {
+        "message": "স্বয়ংক্রিয় স্কিপের জন্য ক্ষুদ্র আকারের স্কিপ নোটিস"
+    },
+    "noticeVisibilityMode2": {
+        "message": "সব ক্ষুদ্র আকারের স্কিপ নোটিস"
+    },
+    "noticeVisibilityMode3": {
+        "message": "স্বয়ংক্রিয় স্কিপের জন্য অনুজ্বল স্কিপ নোটিস"
+    },
+    "noticeVisibilityMode4": {
+        "message": "সব অনুজ্বল স্কিপ নোটিস"
     },
     "longDescription": {
         "message": "SponsorBlock আপনাকে YouTube ভিডিওসমূহের স্পন্সর বার্তা, সূচনাবার্তা, সমাপ্তিবার্তা, সাবস্ক্রাইব করার জন্য স্মরণ করানো, এবং অন্যান্য বিবিধ বিরক্তিকর অংশ এড়িয়ে যেতে সাহায্য করে। SponsorBlock জনসংগৃহীত তথ্যসম্বলিত একটি ব্রাউজার এক্সটেনশন যা যে কাউকে একটি ভিডিওর স্পন্সর বার্তা এবং অন্যান্য অংশের শুরু এবং শেষ সময় সাবমিট করতে দেয়। যখন কেউ একজন এই তথ্য সাবমিট করে, এই এক্সটেনশন ব্যবহারকারী সবাই ঐ স্পন্সর বার্তা সম্বলিত অংশ এড়িয়ে যাবে। মিউজিক ভিডিও এর মিউজিক বহির্ভুত অংশও আপনি এড়িয়ে যেতে পারেন।",
@@ -246,6 +270,10 @@
         "message": "নোটিসটি আপগ্রেড করা হয়েছে!",
         "description": "The first line of the message displayed after the notice was upgraded."
     },
+    "noticeUpdate2": {
+        "message": "আপনি যদি এখনও এটি পছন্দ না করেন তবে কখনই দেখাবে না বোতামটি চাপুন।",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
     "setSkipShortcut": {
         "message": "সেগমেন্ট এড়িয়ে যান",
         "description": "Keybind label"
@@ -257,5 +285,667 @@
     "setSubmitKeybind": {
         "message": "সেগমেন্ট জমা দিন",
         "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "এটি টাইপ করে একটি কী নির্বাচন করুন এবং আপনি যে কোনও সংশোধক কীগুলি ব্যবহার করতে চান তা চয়ন করুন।"
+    },
+    "0": {
+        "message": "সংযোগের সময়সীমা অতিক্রান্ত। আপনার ইন্টারনেট সংযোগ যাচাই করুন. যদি আপনার ইন্টারনেট কাজ করে থাকে তবে সার্ভারটি সম্ভবত ওভারলোডেড বা ডাউন।"
+    },
+    "disableSkipping": {
+        "message": "স্কিপিং চালু করা হয়েছে"
+    },
+    "enableSkipping": {
+        "message": "স্কিপিং বন্ধ করা হয়েছে"
+    },
+    "yourWork": {
+        "message": "আপনার কাজ",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "সার্ভারটি সম্ভবত ওভারলোডেড। কয়েক সেকেন্ডের মধ্যে আবার চেষ্টা করুন।"
+    },
+    "errorCode": {
+        "message": "ইরোর কোডঃ "
+    },
+    "skip": {
+        "message": "এড়িয়ে যান"
+    },
+    "mute": {
+        "message": "নিঃশব্দ করুন"
+    },
+    "full": {
+        "message": "সমপূর্ণ ভিডিও",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
+    "skip_category": {
+        "message": "{0} এড়িয়ে যান?"
+    },
+    "mute_category": {
+        "message": "{0} নিঃশব্দ করুন?"
+    },
+    "skip_to_category": {
+        "message": "{0} তে চলে যান?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} এড়িয়ে যাওয়া হয়েছে",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} নিঃশব্দ করা হয়েছে",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "{0} তে চলে যাওয়া হয়েছে",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
+    "disableAutoSkip": {
+        "message": "স্বয়ংক্রিয়ভাবে স্কিপ করা বন্ধ করুন"
+    },
+    "enableAutoSkip": {
+        "message": "স্বয়ংক্রিয়ভাবে স্কিপ করা চালু করুন"
+    },
+    "audioNotification": {
+        "message": "স্কিপের জন্য অডিও নোটিস"
+    },
+    "audioNotificationDescription": {
+        "message": "যখনই কোনও অংশ এড়িয়ে যাওয়া হয় তখন একটি শব্দ বাজাবে। যদি বন্ধ করা হয় (বা অটো স্কিপ বন্ধ থাকে) তবে কোনও শব্দ বাজানো হবে না।"
+    },
+    "showTimeWithSkips": {
+        "message": "স্কিপগুলি সরানো সহ সময় দেখান"
+    },
+    "showTimeWithSkipsDescription": {
+        "message": "এই সময়টি সময় বারের নীচে বর্তমান সময়ের পাশের বন্ধনীগুলিতে উপস্থিত হয়। এটি মোট ভিডিও সময়কাল যে কোনও বিভাগকে বিয়োগ করে তা দেখায়। এর মধ্যে কেবল \"সময় বার এ দেখান\" হিসাবে চিহ্নিত বিভাগগুলি অন্তর্ভুক্ত রয়েছে।"
+    },
+    "youHaveSkipped": {
+        "message": "আপনি এড়িয়েছেন "
+    },
+    "minLower": {
+        "message": "মিনিট"
+    },
+    "minsLower": {
+        "message": "মিনিট"
+    },
+    "hourLower": {
+        "message": "ঘন্টা"
+    },
+    "hoursLower": {
+        "message": "ঘন্টা"
+    },
+    "youHaveSavedTime": {
+        "message": "আপনি মানুষকে রক্ষা করেছেন",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "youHaveSavedTimeEnd": {
+        "message": "তাদের জীবন থেকে",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "statusReminder": {
+        "message": "সার্ভারের স্ট্যাটাস এর জন্য status.sponsor.ajay.app দেখুন করুন।"
+    },
+    "changeUserID": {
+        "message": "আপনার ইউজার আইডি ইম্পোর্ট/এক্সপোর্ট করুন"
+    },
+    "whatChangeUserID": {
+        "message": "এটি ব্যক্তিগত রাখা উচিত। এটি একটি পাসওয়ার্ডের মতো এবং কারও সাথে ভাগ করা উচিত নয়। কারও যদি এটি থাকে তবে তারা আপনার ছদ্মবেশ ধারণ করতে পারে। আপনি যদি আপনার পাবলিক ইউজারআইডি খুঁজছেন তবে পপআপে ক্লিপবোর্ড আইকনটি ক্লিক করুন।"
+    },
+    "setUserID": {
+        "message": "ইউজার আইডি দিন"
+    },
+    "userIDChangeWarning": {
+        "message": "সতর্কতা: ইউজারআইডি পরিবর্তন করা চিরস্থায়ী। আপনি কি নিশ্চিত যে আপনি এটি করতে চান? আপনার পুরানোটিকে সাবধানতার সার্থে ব্যাকআপ করার বিষয়টি নিশ্চিত করুন।"
+    },
+    "createdBy": {
+        "message": "সৃষ্টি করেছেন"
+    },
+    "supportOtherSites": {
+        "message": "এটি ৩য় পক্ষের ইউটইউব সাইট সাপোর্ট করে"
+    },
+    "supportOtherSitesDescription": {
+        "message": "তৃতীয় পক্ষের ইউটিউব ক্লায়েন্টদের সমর্থন করুন। সমর্থন সক্ষম করতে, আপনাকে অবশ্যই অতিরিক্ত অনুমতিগুলি গ্রহণ করতে হবে। এটি ক্রোম এবং অন্যান্য ক্রোমিয়াম ভেরিয়েন্টগুলিতে ছদ্মবেশে কাজ করে না।",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "সমর্থিত সাইটসমুহ:"
+    },
+    "optionsInfo": {
+        "message": "Indivious সমর্থন সক্ষম করুন, অটোস্কিপ বন্ধ করুন, বোতামগুলি লুকান এবং আরও অনেক কিছু করুন।"
+    },
+    "addInvidiousInstance": {
+        "message": "তৃতীয় পক্ষের ক্লায়েন্ট যুক্ত করুন"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "একটি কাস্টম উদাহরণ যুক্ত করুন। এটি অবশ্যই ডোমেন দিয়ে ফর্ম্যাট করা উচিত। উদাহরণ: invidious.ajay.app"
+    },
+    "add": {
+        "message": "যোগ করুন"
+    },
+    "addInvidiousInstanceError": {
+        "message": "এটি একটি অবৈধ ডোমেন। এটিতে কেবল ডোমেন অংশ অন্তর্ভুক্ত করা উচিত। উদাহরণ: invidious.ajay.app"
+    },
+    "resetInvidiousInstance": {
+        "message": "Invidious Instance এর তালিকা পুনরায় সেট করুন"
+    },
+    "resetInvidiousInstanceAlert": {
+        "message": "আপনি এখন Invidious Instance এর তালিকা পুনরায় আগের মত করে দিবেন"
+    },
+    "currentInstances": {
+        "message": "বর্তমান Instance এর তালিকা"
+    },
+    "minDuration": {
+        "message": "সর্বনিম্ন দৈর্ঘ্য (সেকেন্ড):"
+    },
+    "minDurationDescription": {
+        "message": "সেট করা মান (সেকেন্ডে) থেকে ছোট সেগমেন্টগুলি প্লেয়ারে এড়িয়ে যাওয়া হবে বা দেখানো হবে না"
+    },
+    "skipNoticeDuration": {
+        "message": "নোটিশ প্রদর্শন করার দৈর্ঘ্য (সেকেন্ড):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "স্কিপ নোটিশটি কমপক্ষে এত সেকেন্ডের জন্য স্ক্রিনে থাকবে। নিজে এড়িয়ে যাওয়ার জন্য, এটি দীর্ঘকাল ধরে দৃশ্যমান হতে পারে।"
+    },
+    "shortCheck": {
+        "message": "নিম্নলিখিত সাবমিশনটি আপনার ন্যূনতম সময়কাল অপশনের চেয়ে কম। এর মানে এই হতে পারে যে এটি ইতিমধ্যে জমা দেওয়া হয়েছে, এবং এই অপশনের কারণে উপেক্ষা করা হচ্ছে। আপনি কি জমা দিতে চান?"
+    },
+    "liveOrPremiere": {
+        "message": "একটি সক্রিয় লাইভস্ট্রিম বা প্রিমিয়ারে জমা দেওয়ার অনুমতি নেই। এটি শেষ না হওয়া পর্যন্ত অপেক্ষা করুন, তারপরে পৃষ্ঠাটি রিফ্রেশ করুন এবং অংশগুলি এখনও বৈধ কিনা তা যাচাই করুন।"
+    },
+    "showUploadButton": {
+        "message": "আপলোড করার বোতামটি দেখান"
+    },
+    "customServerAddress": {
+        "message": "স্পনসরব্লক সার্ভার ঠিকানা"
+    },
+    "customServerAddressDescription": {
+        "message": "এ ঠিকানা SponsorBlock সার্ভারে সাথে যোগাযোগ করতে ব্যবহার করে।\nআপনার নিজের সার্ভার না থাকলে এটি পরিবর্তন করবেন না।"
+    },
+    "save": {
+        "message": "সংরক্ষণ করুন"
+    },
+    "reset": {
+        "message": "পুনরায় সেট করুন"
+    },
+    "customAddressError": {
+        "message": "এই ঠিকানাটি সঠিক আকারে নেই। এটিতে http: // বা https: // শুরুতে এবং কোনও পিছনের স্ল্যাশ নেই তা নিশ্চিত করুন।"
+    },
+    "areYouSureReset": {
+        "message": "আপনি কি নিশ্চিতভাবে এটি মুছে ফেলতে চান??"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com এখন সাপর্টেড"
+    },
+    "exportOptions": {
+        "message": "সব অপশন ইম্পোর্ট/এক্সপোর্ট করুন"
+    },
+    "exportOptionsCopy": {
+        "message": "সম্পাদন/কপি করুন"
+    },
+    "exportOptionsDownload": {
+        "message": "ফাইল এ সেভ করুন"
+    },
+    "exportOptionsUpload": {
+        "message": "ফাইল থেকে লোড করুন"
+    },
+    "whatExportOptions": {
+        "message": "এটি আপনার সম্পূর্ণ কনফিগারেশন এতে আপনার ইউজারআইডি অন্তর্ভুক্ত রয়েছে, তাই বিজ্ঞতার সাথে শেয়ার করতে ভুলবেন না।."
+    },
+    "setOptions": {
+        "message": "অপশন সেট করুন"
+    },
+    "exportOptionsWarning": {
+        "message": "সতর্কতা: অপশনগুলি পরিবর্তন করা চিরস্থায়ী এবং আপনার ইনস্টলটি ভাঙতে পারে। আপনি কি নিশ্চিত যে আপনি এটি করতে চান? আপনার পুরানোটিকে সাবধানতার সার্থে ব্যাকআপ করার বিষয়টি নিশ্চিত করুন।"
+    },
+    "incorrectlyFormattedOptions": {
+        "message": "এই JSON সঠিকভাবে ফর্ম্যাট করা হয় নাই। আপনার অপশনগুলি পরিবর্তন করা হয়নি।"
+    },
+    "confirmNoticeTitle": {
+        "message": "অংশ জমা দিন"
+    },
+    "submit": {
+        "message": "জমা দিন"
+    },
+    "cancel": {
+        "message": "বাতিল করুন"
+    },
+    "delete": {
+        "message": "মুছে ফেলুন"
+    },
+    "preview": {
+        "message": "প্রিভিউ দেখুন"
+    },
+    "unsubmitted": {
+        "message": "জমাকৃত নয়"
+    },
+    "inspect": {
+        "message": "পরিদর্শন করুন"
+    },
+    "edit": {
+        "message": "সম্পাদন করুন"
+    },
+    "copyDebugInformation": {
+        "message": "ডিবাগ তথ্য ক্লিপবোর্ডে কপি করুন"
+    },
+    "copyDebugInformationFailed": {
+        "message": "ক্লিপবোর্ডে কপি করা যায় নি"
+    },
+    "copyDebugInformationOptions": {
+        "message": " কোনও বাগ উত্থাপন করার সময় / যখন কোনও ডেভেলপার এটির জন্য অনুরোধ করে তখন ক্লিপবোর্ডে তথ্য কপি করে। সংবেদনশীল তথ্য যেমন আপনার ইউজার আইডি, সাদা তালিকাভুক্ত চ্যানেল এবং কাস্টম সার্ভারের ঠিকানা সরানো হয়েছে। তবে এটিতে আপনার ব্যবহারকারীর, ব্রাউজার, অপারেটিং সিস্টেম এবং এক্সটেনশন সংস্করণ নম্বরের মতো তথ্য রয়েছে।"
+    },
+    "copyDebugInformationComplete": {
+        "message": "ডিবাগের তথ্য ক্লিপ বোর্ডে কপি করা হয়েছে। আপনি কোনও তথ্য দিতে অনিচ্ছুক হলে তা নির্দ্বিধায় অপসারণ করতে পারেন। এটি একটি টেক্সট ফাইলে সংরক্ষণ করুন বা বাগ প্রতিবেদনে পেস্ট করুন।"
+    },
+    "keyAlreadyUsed": {
+        "message": "এই শর্টকাটটি অন্য ক্রিয়ায় আবদ্ধ। দয়া করে একটি আলাদা নির্বাচন করুন।"
+    },
+    "to": {
+        "message": "থেকে",
+        "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "category_sponsor": {
+        "message": "স্পন্সর"
+    },
+    "category_sponsor_description": {
+        "message": "পেইড প্রমোশন, পেইড রেফারেল এবং সরাসরি বিজ্ঞাপন। নিজের পছন্দসই কারণ/স্রষ্টা/ওয়েবসাইট/পণ্যগুলিতে স্ব-প্রচার বা বিনামূল্যে প্রচারের জন্য নয়।"
+    },
+    "category_selfpromo": {
+        "message": "বিনা অর্থপ্রাপ্ত/স্ব-প্রচার"
+    },
+    "category_selfpromo_description": {
+        "message": "অবৈতনিক বা স্ব -প্রচার ব্যতীত \"স্পনসর\" এর মতো। এর মধ্যে পণ্যদ্রব্য, অনুদান বা তারা কার সাথে সহযোগিতা করেছে সে সম্পর্কে তথ্য অন্তর্ভুক্ত রয়েছে।"
+    },
+    "category_exclusive_access": {
+        "message": "এক্সক্লুসিভ অ্যাক্সেস"
+    },
+    "category_exclusive_access_description": {
+        "message": "শুধুমাত্র পুরো ভিডিও লেবেল করার জন্য। যখন কোনও ভিডিও কোনও পণ্য, পরিষেবা বা অবস্থান প্রদর্শন করে যা তারা নিখরচায় বা ভর্তুকিযুক্ত অ্যাক্সেস পেয়েছে।"
+    },
+    "category_exclusive_access_pill": {
+        "message": "এই ভিডিওটি এমন একটি পণ্য, পরিষেবা বা অবস্থান প্রদর্শন করে যা তারা নিখরচায় বা ভর্তুকিযুক্ত অ্যাক্সেস পেয়েছে",
+        "description": "Short description for this category"
+    },
+    "category_interaction": {
+        "message": "ইন্টারঅ্যাকশন রেমাইন্ডার (সাবস্ক্রাইব)"
+    },
+    "category_interaction_description": {
+        "message": "যখন সামগ্রীর মাঝখানে তাদেরকে লাইক, সাবস্ক্রাইব বা ফলো করার জন্য একটি সংক্ষিপ্ত অনুস্মারক থাকে। যদি এটি দীর্ঘ বা নির্দিষ্ট কিছু সম্পর্কে হয় তবে পরিবর্তে এটি স্ব -প্রচারের অধীনে থাকা উচিত।"
+    },
+    "category_interaction_short": {
+        "message": "ইন্টারঅ্যাকশন রেমাইন্ডার"
+    },
+    "category_intro": {
+        "message": "ইন্টারমিশন/ইন্ট্র অ্যানিমেশন"
+    },
+    "category_intro_description": {
+        "message": "প্রকৃত বিষয়বস্তু ছাড়াই একটি বিরতি। বিরতি, স্থির ফ্রেম, অ্যানিমেশন পুনরাবৃত্তি হতে পারে। এটি তথ্যযুক্ত ট্রানজিশনের জন্য ব্যবহার করা উচিত নয়।"
+    },
+    "category_intro_short": {
+        "message": "ইন্টারমিশন"
+    },
+    "category_outro": {
+        "message": "এন্ডকার্ডস/ক্রেডিট"
+    },
+    "category_outro_description": {
+        "message": "ক্রেডিট বা যখন ইউটিউব এন্ডকার্ডগুলি উপস্থিত হয়। তথ্য সহ সিদ্ধান্তের জন্য নয়।"
+    },
+    "category_preview": {
+        "message": "প্রিভিউ/রিক্যাপ"
+    },
+    "category_preview_description": {
+        "message": "পূর্ববর্তী পর্বগুলির দ্রুত পুনরুদ্ধার, বা বর্তমান ভিডিওতে পরে কী ঘটছে তার পূর্বরূপ। একসাথে সম্পাদিত ক্লিপ এর জন্য, কথ্য সংক্ষিপ্তসার এর জন্য নয়।"
+    },
+    "category_filler": {
+        "message": "ফিলার ট্যানজেন্ট/জোকস"
+    },
+    "category_filler_description": {
+        "message": "স্পর্শকাতর দৃশ্য যেগুলি কেবল ফিলার বা হাস্যরসের জন্য যুক্ত হয়েছে যা ভিডিওর মূল বিষয়বস্তু বোঝার জন্য প্রয়োজন হয় না। এর মধ্যে প্রসঙ্গ বা পটভূমির বিশদ সরবরাহকারী বিভাগগুলি অন্তর্ভুক্ত করা উচিত নয়।"
+    },
+    "category_filler_short": {
+        "message": "ফিলার"
+    },
+    "category_music_offtopic": {
+        "message": "সঙ্গীত: অসঙ্গীত বিভাগ"
+    },
+    "category_music_offtopic_description": {
+        "message": "শুধুমাত্র সঙ্গীত ভিডিওতে ব্যবহারের জন্য। এটি কেবলমাত্র সংগীত ভিডিওর সেসব বিভাগের জন্য ব্যবহার করা উচিত যা ইতিমধ্যে অন্য কোনও বিভাগ দ্বারা আচ্ছাদিত নয়।"
+    },
+    "category_music_offtopic_short": {
+        "message": "মিউসিক নয়"
+    },
+    "category_poi_highlight": {
+        "message": "গুরুত্বপূর্ণ"
+    },
+    "category_poi_highlight_description": {
+        "message": "ভিডিওর অংশটি যা বেশিরভাগ লোকেরা খুঁজছেন। \"ভিডিওটি x এ শুরু হয়\" মন্তব্যের মতো।"
+    },
+    "category_livestream_messages": {
+        "message": "লাইভস্ট্রিম: অনুদান/বার্তা পাঠ"
+    },
+    "category_livestream_messages_short": {
+        "message": "বার্তা পাঠ"
+    },
+    "autoSkip": {
+        "message": "স্বয়ংক্রিয়ভাবে এড়িয়ে যান"
+    },
+    "manualSkip": {
+        "message": "নিজে এড়িয়ে যান"
+    },
+    "showOverlay": {
+        "message": "সময় বার এ দেখান"
+    },
+    "disable": {
+        "message": "নিষ্ক্রিয় করুন"
+    },
+    "autoSkip_POI": {
+        "message": "স্বয়ংক্রিয় ভাবে শুরুতে স্কিপ করুন"
+    },
+    "manualSkip_POI": {
+        "message": "ভিডিও লোড হলে জিজ্ঞেস করুন"
+    },
+    "showOverlay_POI": {
+        "message": "সময় বার এ দেখান"
+    },
+    "showOverlay_full": {
+        "message": "লেবেল দেখান"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "যখন অ-সংগীত বিভাগ থাকে তখন স্বয়ংক্রিয়ভাবে সমস্ত বিভাগগুলি এড়িয়ে যান"
+    },
+    "muteSegments": {
+        "message": "স্কিপের পরিবর্তে অডিও নিঃশব্দ এমন বিভাগগুলিকে দেখানোর অনুমতি দিন"
+    },
+    "fullVideoSegments": {
+        "message": "যখন কোনও ভিডিও সম্পূর্ণ বিজ্ঞাপন হয় তখন একটি আইকন দেখান",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "previewColor": {
+        "message": "জমাকৃত নয় এমন অংশের রঙ",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "সময় বারের রঙ"
+    },
+    "category": {
+        "message": "বিভাগ"
+    },
+    "skipOption": {
+        "message": "সেগমেন্ট এড়িয়ে যাওয়ার অপশন",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "enableTestingServer": {
+        "message": "বিটা টেস্টিং প্রোগ্রামে যোগদান করুন"
+    },
+    "whatEnableTestingServer": {
+        "message": "আপনার জমাকৃত অংশ এবং ভোটগুলি মূল সার্ভারের হিসাবে গণনা করা হবে না। কেবল পরীক্ষার জন্য এটি ব্যবহার করুন।"
+    },
+    "testingServerWarning": {
+        "message": "সমস্ত জমাকৃত অংশ এবং ভোট টেস্ট সার্ভারের সাথে সংযোগ করার সময় মূল সার্ভারের হিসাবে গণনা করা হবেনা। আপনি যখন সত্যিকারের অংশ ও ভোট জমা দিতে চান তখন এটি বন্ধ করার বিষয়টি নিশ্চিত করুন।"
+    },
+    "bracketNow": {
+        "message": "(এখন)"
+    },
+    "moreCategories": {
+        "message": "আরো বিভাগ"
+    },
+    "chooseACategory": {
+        "message": "বিভাগ নির্বাচন করুন"
+    },
+    "enableThisCategoryFirst": {
+        "message": "\"{0}\" বিভাগের অন্তর্ভুক্ত অংশ জমা দিতে, আপনাকে এটি অপশন এ গিয়ে চালু করতে হবে। আপনাকে এখন অপশন এ পাঠানো হবে।",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
+    "poiOnlyOneSegment": {
+        "message": "সতর্কতা: এই ধরণের বিভাগে একসময়ে সর্বাধিক একবার সক্রিয় থাকতে পারে। একাধিক জমা দেওয়া হলে যেকোন একটি এলোমেলোভাবে বেছে সেটি দেখানো হবে।"
+    },
+    "youMustSelectACategory": {
+        "message": "আপনাকে প্রত্যেকটি অংশের জন্য কমপক্ষে একটি করে ক্যাটাগরি সিলেক্ট করতে হবে!"
+    },
+    "bracketEnd": {
+        "message": "(শেষ)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "লুক্কায়িতঃ ডাউনভোট"
+    },
+    "hiddenDueToDuration": {
+        "message": "লুক্কায়িতঃ খুব ছোট"
+    },
+    "manuallyHidden": {
+        "message": "নিজে লুক্কায়িত"
+    },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "চ্যানেল আইডি এখনও লোড হয় না। আপনি যদি এম্বেডে থাকা ভিডিও দেখছেন তবে পরিবর্তে ইউটিউব হোমপেজটি ব্যবহার করার চেষ্টা করুন। এটি ইউটিউব লেআউটে পরিবর্তনের কারণেও হতে পারে, আপনার যদি মনেহয় এটি লেআউটে পরিবর্তনের কারণে হয়েছে তাহলে এখানে একটি মন্তব্য করুনঃ "
+    },
+    "videoInfoFetchFailed": {
+        "message": "দেখে মনে হচ্ছে যে কোনও কিছু স্পনসরব্লকের ভিডিওর ডেটা পাওয়ার ক্ষমতা অবরুদ্ধ করছে। আরও তথ্যের জন্য দয়া করে https://github.com/ajayy/sponsorblock/issues/741 দেখুন।"
+    },
+    "youtubePermissionRequest": {
+        "message": "দেখে মনে হচ্ছে স্পনসরব্লক YouTube API তে পৌঁছাতে অক্ষম। এটি ঠিক করতে, এরপর উপস্থিত হবে সেই অনুমতি প্রম্পটটি গ্রহণ করবেন, তারপর কয়েক সেকেন্ড অপেক্ষা করে পৃষ্ঠাটি পুনরায় লোড করুন।"
+    },
+    "acceptPermission": {
+        "message": "অনুমতি একসেপ্ট করুন"
+    },
+    "permissionRequestSuccess": {
+        "message": "অনুমতির অনুরোধ সফল হয়েছে!"
+    },
+    "permissionRequestFailed": {
+        "message": "অনুমতির অনুরোধ ব্যর্থ হয়েছে, আপনি কি ডেনাই ক্লিক করেছেন?"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "আপনি যদি এটি সমাধান করতে অক্ষম হন তবে সেটিংস এ গিয়ে 'এড়িয়ে যাওয়ার আগে চ্যানেল চেক করুন' বন্ধ করুন, কারণ স্পনসরব্লক এই ভিডিওটির জন্য চ্যানেলের তথ্য পুনরুদ্ধার করতে অক্ষম"
+    },
+    "forceChannelCheck": {
+        "message": "এড়িয়ে যাওয়ার আগে চ্যানেল চেক করুন"
+    },
+    "whatForceChannelCheck": {
+        "message": "সাধারণত, এটি চ্যানেলটি কী তা জানার আগেই এটি এখনই বিভাগগুলি এড়িয়ে যাবে। সাধারণত, ভিডিওর শুরুতে কিছু বিভাগগুলি সাদা তালিকাভুক্ত চ্যানেলগুলিতে এড়িয়ে যেতে পারে। এই বিকল্পটি সক্ষম করা এটিকে প্রতিরোধ করবে তবে চ্যানেলআইডি পেতে কিছুটা সময় নিতে পারে বলে সমস্ত এড়িয়ে যাওয়া কিছুটা বিলম্বিত করে। আপনার যদি দ্রুত ইন্টারনেট থাকে তবে এই বিলম্বটি অদৃশ্য হতে পারে।"
+    },
+    "forceChannelCheckPopup": {
+        "message": "\"এড়িয়ে যাওয়ার আগে চ্যানেল চেক করুন\" সেটিংস টি চালু করার বিষয়টি বিবেচনা করুন"
+    },
+    "downvoteDescription": {
+        "message": "সময় ভুল দেওয়া হয়েছে"
+    },
+    "incorrectCategory": {
+        "message": "বিভাগ পরিবর্তন করুন"
+    },
+    "nonMusicCategoryOnMusic": {
+        "message": "এই ভিডিওটি সংগীত হিসাবে শ্রেণীবদ্ধ করা হয়েছে। আপনি কি নিশ্চিত যে এটি একটি স্পনসর আছে? যদি এটি আসলে একটি \"অ-সংগীত বিভাগ\" হয় তবে এক্সটেনশন এর অপশন এ যান এবং এই বিভাগটি চালু করুন। তারপরে, আপনি এই বিভাগটিকে স্পনসর পরিবর্তে \"অ-সংগীত\" হিসাবে জমা দিতে পারেন। আপনি বিভ্রান্ত হলে দয়া করে নিয়মকানুনপড়ুন।"
+    },
+    "multipleSegments": {
+        "message": "অনেকগুলো অংশ"
+    },
+    "guidelines": {
+        "message": "নিয়মকানুন"
+    },
+    "readTheGuidelines": {
+        "message": "নিয়মকানুন পড়ুন!!",
+        "description": "Show the first time they submit or if they are \"high risk\""
+    },
+    "categoryUpdate1": {
+        "message": "বিভাগ ফিচার এসেছে!"
+    },
+    "categoryUpdate2": {
+        "message": "ইন্ট্রোস, আউট্রোস, মার্চ ইত্যাদি এড়িয়ে যাওয়ার জন্য অপশন খুলুন।"
+    },
+    "help": {
+        "message": "সাহায্য"
+    },
+    "GotIt": {
+        "message": "বুঝেছি",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "fullVideoTooltipWarning": {
+        "message": "এই বিভাগটি বিশাল। যদি পুরো ভিডিওটি একটি বিষয় নিয়ে হয় তবে \"Skip\" থেকে \"Full Video\" এ পরিবর্তন করুন। আরও তথ্যের জন্য নিয়মকানুন দেখুন।"
+    },
+    "categoryPillTitleText": {
+        "message": "এই পুরো ভিডিওটি এই বিভাগ হিসাবে লেবেলযুক্ত এবং পৃথক করা সম্ভব না কারন এটি খুব ঘন ঘন সংযুক্ত করা হয়েছে"
+    },
+    "experiementOptOut": {
+        "message": "ভবিষ্যতের সমস্ত পরীক্ষা-নিরীক্ষা পাওয়া থেকে বিরত থাকুন",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
+    "hideForever": {
+        "message": "চিরকালের জন্য এই বিষয়বস্তু লুকান"
+    },
+    "warningChatInfo": {
+        "message": "আপনি একটি সতর্কতা পেয়েছেন এবং অস্থায়ীভাবে বিভাগগুলি জমা দিতে পারবেন না। এর অর্থ হ'ল আমরা লক্ষ্য করেছি যে আপনি কিছু সাধারণ ভুল করছেন যা দূষিত নয়, দয়া করে কেবল নিশ্চিত করুন যে আপনি নিয়মগুলি বুঝতে পেরেছেন এবং আমরা সতর্কতাটি সরিয়ে দেব। আপনি আমাদের চ্যাটটি discord.gg/SponsorBlock or matrix.to/#/#sponsor:ajay.app ব্যবহার করে যোগ দিতে পারেন"
+    },
+    "voteRejectedWarning": {
+        "message": "একটি সতর্কতার কারণে ভোট প্রত্যাখ্যান করা হয়েছে। এটি সমাধানের জন্য চ্যাট খুলতে ক্লিক করুন বা আপনার এখন সময় না থাকলে পরে আবার ফিরে আসুন।",
+        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    },
+    "Donate": {
+        "message": "অনুদান"
+    },
+    "considerDonating": {
+        "message": "অনুদানের মাধ্যমে ভবিষ্যতেে এর উন্নয়নের কাজে সাহায্য হবে"
+    },
+    "hideDonationLink": {
+        "message": "অনুদানের লিঙ্ক লুকান"
+    },
+    "darkModeOptionsPage": {
+        "message": "অপশন পেজে ডার্ক মোড "
+    },
+    "helpPageThanksForInstalling": {
+        "message": "স্পনসরব্লক ইনস্টল করার জন্য আপনাকে ধন্যবাদ."
+    },
+    "helpPageReviewOptions": {
+        "message": "নীচের অপশনগুলি পর্যালোচনা করুন"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "অনেকগুলি বৈশিষ্ট্য সাধারণত অক্ষম থাকে। আপনি যদি ইন্ট্রোস, আউট্রোস এড়িয়ে যেতে চান, Invidious ইত্যাদি ব্যবহার করতে চান তবে সেগুলি নীচে সক্ষম করুন। আপনি UI উপাদানগুলিও লুকাতে/দেখাতে পারেন।"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "এটি কীভাবে কাজ করে"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "ভিডিও এর অংশ ডাটাবেসে পাওয়া গেলে সেগুলি স্বয়ংক্রিয়ভাবে এড়িয়ে যাবে। তারা কীরকম তা পূর্বরূপ দেখতেআপনি এক্সটেনশন আইকনে ক্লিক করে পপআপটি খুলতে পারেন।"
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "আপনি যখনই কোনও বিভাগ এড়িয়ে যান, আপনি একটা নোটিস পাবেন। সময়টি যদি ভুল বলে মনে হয় তবে ডাউনভোটে ক্লিক করে ভোট দিন! আপনি পপআপ থেকেও ভোট দিতে পারেন।"
+    },
+    "Submitting": {
+        "message": "নতুন অংশ জমা দেওয়া"
+    },
+    "helpPageSubmitting1": {
+        "message": "জমা দেওয়া যায় পপআপে \"অংশ এখন শুরু হয়\" বোতামটি টিপ মেরে বা প্লেয়ারের বোতামগুলি সহ ভিডিও প্লেয়ারে টিপ মেরে করে।"
+    },
+    "helpPageSubmitting2": {
+        "message": "প্লে বোতামটি ক্লিক করা একটি বিভাগের শুরু নির্দেশ করে এবং স্টপ আইকনটি ক্লিক করা শেষটি নির্দেশ করে। আপনি জমা দেওয়ার আগে একাধিক স্পনসর প্রস্তুত করতে পারেন। আপলোড বোতামটি ক্লিক করা জমা দেওয়া হবে। আবর্জনায় ক্লিক করে বাদ দিতে পারেন এটি।"
+    },
+    "Editing": {
+        "message": "সম্পাদন করা"
+    },
+    "helpPageEditing1": {
+        "message": "যদি আপনি ভুল করে বসেন তবে আপনি উপড়ের তীর বোতামটি ক্লিক করার পরে আপনার বিভাগগুলি সম্পাদনা বা মুছতে পারেন।"
+    },
+    "helpPageTooSlow": {
+        "message": "গতি অত্যন্ত ধীর।"
+    },
+    "helpPageTooSlow1": {
+        "message": "আপনি যদি ব্যবহার করতে চান তাইলে হটকি রয়েছে। স্পনসর বিভাগের শুরু/শেষ নির্দেশ করতে সেমিকোলন কী টিপুন এবং জমা দেওয়ার জন্য অ্যাপোস্ট্রোফে ক্লিক করুন। এগুলি পরিবর্তন করা যেতে পারে। আপনি যদি QWERTY ব্যবহার না করেন তবে আপনার সম্ভবত কীবাইন্ডিং পরিবর্তন করা উচিত।"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "আমি কি ডাটাবেসের একটি অনুলিপি পেতে পারি? আপনি হারিয়ে গেলে হলে কি হবে?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "ডাটাবেসটি সবার জন্য প্রকাশিত এবং পাওয়া যাবে এখানেঃ "
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "এটির সোর্স কোড অবাধে উপলব্ধ। সুতরাং, যদি আমার কিছু ঘটেও যায় তবে আপনার জমাকৃত অংশগুলি হারিয়ে যাবে না।"
+    },
+    "helpPageNews": {
+        "message": "খবর এবং এটি কীভাবে তৈরি হয়"
+    },
+    "helpPageSourceCode": {
+        "message": "আমি সোর্স কোডটি কোথায় পেতে পারি?"
+    },
+    "Credits": {
+        "message": "কৃতিত্ব"
+    },
+    "LearnMore": {
+        "message": "আরও জানুন"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "ডাউনভোট করে আপনার জন্য পুনরায় জমা দেওয়ার জন্য একটি স্থানীয় অনুলিপি তৈরি করে"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "এই বিভাগের উইকি পাতা খুলুন."
+    },
+    "CopyAndDownvote": {
+        "message": "কপি এবং ডাউনভোট"
+    },
+    "ContinueVoting": {
+        "message": "ভোট করা চালিয়ে যান"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "এটি তাৎক্ষনিকভাবে আপনার অংশে দেওয়া হবে"
+    },
+    "downvote": {
+        "message": "ডাউনভোট"
+    },
+    "upvote": {
+        "message": "আপভোট"
+    },
+    "hideSegment": {
+        "message": "অংশ আড়াল করুন"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "দ্রুত সময়টি পরিবর্কতন করতে সম্পাদনা বাক্সে ঘুরে দেখার সময় আপনার মাউস এর হুইয়িলটি ব্যবহার করুন। কন্ট্রল বা শিফট কী এর সংমিশ্রণগুলি পরিবর্তনগুলি আরো নিখুতভাবে টিউন করতে ব্যবহার করা যেতে পারে।"
+    },
+    "categoryPillNewFeature": {
+        "message": "নতুন! দেখুন যখন কোনও ভিডিও সম্পূর্ণ স্পনসর করা বা স্ব-প্রচার হয়"
+    },
+    "dayAbbreviation": {
+        "message": " দিন",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": " ঘণ্টা",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "আচরণ",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "ইন্টারফেস",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "কীবোর্ড শর্টকাট",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "ব্যাকআপ এবং পুনঃস্থাপন",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "বিবিধ",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "নোটিশ প্রদর্শন করা বন্ধ করুন",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "বাদ দিন",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "নির্ধারণ করা হয়নি"
+    },
+    "change": {
+        "message": "বদল করুন"
+    },
+    "youtubeKeybindWarning": {
+        "message": "এটি একটি অন্তর্নির্মিত ইউটিউব শর্টকাট। আপনি কি নিশ্চিত যে আপনি এটি ব্যবহার করতে চান?"
+    },
+    "betaServerWarning": {
+        "message": "বেটা সার্ভার চালু করা হয়েছে!"
+    },
+    "openOptionsPage": {
+        "message": "বিকল্প পাতা খুলুন"
     }
 }

@@ -13,12 +13,19 @@ export interface ButtonListener {
     listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
+export interface TextBox {
+    icon: string,
+    text: string
+}
+
 export interface NoticeOptions {
     title: string,
-    textBoxes?: string[],
+    textBoxes?: TextBox[],
     buttons?: ButtonListener[],
     fadeIn?: boolean,
     timed?: boolean
+    style?: React.CSSProperties;
+    extraClass?: string;
 }
 
 export default class GenericNotice {
@@ -27,9 +34,11 @@ export default class GenericNotice {
 
     noticeElement: HTMLDivElement;
     noticeRef: React.MutableRefObject<NoticeComponent>;
+    idSuffix: string;
 
     constructor(contentContainer: ContentContainer, idSuffix: string, options: NoticeOptions) {
         this.noticeRef = React.createRef();
+        this.idSuffix = idSuffix;
 
         this.contentContainer = contentContainer;
 
@@ -40,39 +49,47 @@ export default class GenericNotice {
 
         referenceNode.prepend(this.noticeElement);
 
+        this.update(options);        
+    }
+
+    update(options: NoticeOptions): void {
         ReactDOM.render(
             <NoticeComponent
                 noticeTitle={options.title}
-                idSuffix={idSuffix}
+                idSuffix={this.idSuffix}
                 fadeIn={options.fadeIn ?? true}
                 timed={options.timed ?? true}
                 ref={this.noticeRef}
+                style={options.style}
+                extraClass={options.extraClass}
                 closeListener={() => this.close()} >
                     
-                    {this.getMessageBox(idSuffix, options.textBoxes)}
+                    {this.getMessageBox(this.idSuffix, options.textBoxes)}
 
-                    <tr id={"sponsorSkipNoticeSpacer" + idSuffix}
+                    <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
                         className="sponsorBlockSpacer">
                     </tr>
 
-                    <div className="sponsorSkipNoticeRightSection"
+                    <tr className="sponsorSkipNoticeRightSection"
                         style={{position: "relative"}}>
-
-                        {this.getButtons(options.buttons)}
-                    </div>
+                        <td>
+                            {this.getButtons(options.buttons)}
+                        </td>
+                    </tr>
             </NoticeComponent>,
             this.noticeElement
         );
     }
 
-    getMessageBox(idSuffix: string, textBoxes: string[]): JSX.Element[] { 
+    getMessageBox(idSuffix: string, textBoxes: TextBox[]): JSX.Element[] { 
         if (textBoxes) {
             const result = [];
             for (let i = 0; i < textBoxes.length; i++) {
                 result.push(
                     <NoticeTextSelectionComponent idSuffix={idSuffix}
                         key={i}
-                        text={textBoxes[i]} />
+                        icon={textBoxes[i].icon}
+                        text={textBoxes[i].text} />
                 )
             }
 

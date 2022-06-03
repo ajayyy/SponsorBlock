@@ -3,39 +3,40 @@
   "version": "1.0.0",
   "description": "",
   "main": "background.js",
+  "type": "module",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.180",
+    "@types/chrome": "^0.0.188",
     "@types/firefox-webext-browser": "^94.0.1",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^27.5.1",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
-    "@types/selenium-webdriver": "^4.0.18",
+    "@types/selenium-webdriver": "^4.1.0",
     "@types/wicg-mediasession": "^1.1.3",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
-    "chromedriver": "^100.0.0",
-    "concurrently": "^7.0.0",
-    "copy-webpack-plugin": "^10.2.4",
-    "eslint": "^8.12.0",
-    "eslint-plugin-react": "^7.29.4",
-    "fork-ts-checker-webpack-plugin": "^7.2.1",
-    "jest": "^27.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "chromedriver": "^101.0.0",
+    "concurrently": "^7.2.1",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.16.0",
+    "eslint-plugin-react": "^7.30.0",
+    "fork-ts-checker-webpack-plugin": "^7.2.11",
+    "jest": "^28.1.0",
     "rimraf": "^3.0.2",
     "schema-utils": "^4.0.0",
-    "selenium-webdriver": "^4.1.1",
+    "selenium-webdriver": "^4.1.2",
     "speed-measure-webpack-plugin": "^1.5.0",
-    "ts-jest": "^27.1.4",
-    "ts-loader": "^9.2.8",
-    "ts-node": "^10.7.0",
-    "typescript": "4.6",
+    "ts-jest": "^28.0.3",
+    "ts-loader": "^9.3.0",
+    "ts-node": "^10.8.0",
+    "typescript": "4.7",
     "web-ext": "^6.8.0",
-    "webpack": "^5.64.4",
+    "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^5.8.0"
   },
   "scripts": {
     "web-run": "npm run web-run:chrome",
@@ -65,7 +66,7 @@
     "lint:fix": "eslint src --fix"
   },
   "engines": {
-    "node": ">=12.20.0"
+    "node": ">=16"
   },
   "funding": [
     {

@@ -1,6 +1,4 @@
 import * as React from "react";
-import Config from "../config";
-import { Category, SegmentUUID, SponsorTime } from "../types";
 
 export interface TooltipProps {
     text: string;

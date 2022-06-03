@@ -5,8 +5,6 @@ import { ContentContainer, Keybind } from "./types";
 import Utils from "./utils";
 const utils = new Utils();
 
-import runThePopup from "./popup";
-
 import PreviewBar, {PreviewBarSegment} from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
@@ -20,6 +18,7 @@ import { isSafari, keybindEquals } from "./utils/configUtils";
 import { CategoryPill } from "./render/CategoryPill";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
+import { logDebug } from "./utils/logger";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -218,6 +217,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             utils.addHiddenSegment(sponsorVideoID, request.UUID, request.type);
             updatePreviewBar();
             break;
+        case "closePopup":
+            closeInfoMenu();
+            break;
 
     }
 }
@@ -275,6 +277,7 @@ function resetValues() {
         switchingVideos = false;
     } else {
         switchingVideos = true;
+        logDebug("Setting switching videos to true (reset data)");
     }
 
     firstEvent = true;
@@ -292,7 +295,7 @@ function resetValues() {
 
 async function videoIDChange(id) {
     //if the id has not changed return unless the video element has changed
-    if (sponsorVideoID === id && isVisible(video)) return;
+    if (sponsorVideoID === id && (isVisible(video) || !video)) return;
 
     //set the global videoID
     sponsorVideoID = id;
@@ -318,9 +321,6 @@ async function videoIDChange(id) {
             return;
         }
     }
-
-    // Get new video info
-    // getVideoInfo(); // Seems to have been replaced
 
     // Update whitelist data when the video data is loaded
     whitelistCheck();
@@ -391,18 +391,32 @@ function handleMobileControlsMutations(): void {
 function createPreviewBar(): void {
     if (previewBar !== null) return;
 
-    const progressElementSelectors = [
-        // For mobile YouTube
-        ".progress-bar-background",
-        // For YouTube
-        ".ytp-progress-bar-container",
-        ".no-model.cue-range-markers",
-        // For Invidious/VideoJS
-        ".vjs-progress-holder"
+    const progressElementOptions = [{
+            // For mobile YouTube
+            selector: ".progress-bar-background",
+            isVisibleCheck: true
+        }, {
+            // For new mobile YouTube (#1287)
+            selector: ".ytm-progress-bar",
+            isVisibleCheck: true
+        }, {
+            // For Desktop YouTube
+            selector: ".ytp-progress-bar-container",
+            isVisibleCheck: true
+        }, {
+            // For Desktop YouTube
+            selector: ".no-model.cue-range-marker",
+            isVisibleCheck: true
+        }, {
+            // For Invidious/VideoJS
+            selector: ".vjs-progress-holder",
+            isVisibleCheck: false
+        }
     ];
 
-    for (const selector of progressElementSelectors) {
-        const el = findValidElement(document.querySelectorAll(selector));
+    for (const option of progressElementOptions) {
+        const allElements = document.querySelectorAll(option.selector) as NodeListOf<HTMLElement>;
+        const el = option.isVisibleCheck ? findValidElement(allElements) : allElements[0];
 
         if (el) {
             previewBar = new PreviewBar(el, onMobileYouTube, onInvidious);
@@ -434,6 +448,8 @@ function videoOnReadyListener(): void {
 }
 
 function cancelSponsorSchedule(): void {
+    logDebug("Pausing skipping");
+
     if (currentSkipSchedule !== null) {
         clearTimeout(currentSkipSchedule);
         currentSkipSchedule = null;
@@ -456,20 +472,16 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         // Reset lastCheckVideoTime
         lastCheckVideoTime = -1;
         lastCheckTime = 0;
+        logDebug("[SB] Ad playing, pausing skipping");
 
         return;
     }
 
+    logDebug(`Considering to start skipping: ${!video}, ${video?.paused}`);
+
     if (!video || video.paused) return;
     if (currentTime === undefined || currentTime === null) {
-        const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime ?
-            (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null);
-        if ((lastTimeFromWaitingEvent || !utils.isFirefox()) 
-                && !isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6){
-            currentTime = virtualTime;
-        } else {
-            currentTime = video.currentTime;
-        }
+        currentTime = getVirtualTime();
     }
     lastTimeFromWaitingEvent = null;
 
@@ -491,6 +503,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
     const skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
 
+    logDebug(`Ready to start skipping: ${skipInfo.index} at ${currentTime}`);
     if (skipInfo.index === -1) return;
 
     const currentSkip = skipInfo.array[skipInfo.index];
@@ -511,6 +524,8 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         }
     }
 
+    logDebug(`Next step in starting skipping: ${!shouldSkip(currentSkip)}, ${!sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)}`);
+
     // Don't skip if this category should not be skipped
     if (!shouldSkip(currentSkip) && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) return;
 
@@ -520,7 +535,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         let forcedIncludeNonIntersectingSegments = true;
 
         if (incorrectVideoCheck(videoID, currentSkip)) return;
-        forceVideoTime ||= video.currentTime;
+        forceVideoTime ||= Math.max(video.currentTime, getVirtualTime());
 
         if (forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
             skipToTime({
@@ -548,9 +563,11 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     } else {
         const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
         if (delayTime < 300) {
-            // For Firefox, use interval instead of timeout near the end to combat imprecise video time
+            // Use interval instead of timeout near the end to combat imprecise video time
             const startIntervalTime = performance.now();
             const startVideoTime = Math.max(currentTime, video.currentTime);
+            logDebug(`Starting setInterval skipping ${video.currentTime} to skip at ${skipTime[0]}`);
+
             currentSkipInterval = setInterval(() => {
                 const intervalDuration = performance.now() - startIntervalTime;
                 if (intervalDuration >= delayTime || video.currentTime >= skipTime[0]) {
@@ -565,9 +582,23 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
                 }
             }, 1);
         } else {
+            logDebug(`Starting timeout to skip ${video.currentTime} to skip at ${skipTime[0]}`);
+            
             // Schedule for right before to be more precise than normal timeout
-            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - 100));
+            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - 150));
         }
+    }
+}
+
+function getVirtualTime(): number {
+    const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime ?
+        (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null);
+
+    if ((lastTimeFromWaitingEvent || !utils.isFirefox())
+        && !isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6) {
+        return virtualTime;
+    } else {
+        return video.currentTime;
     }
 }
 
@@ -641,6 +672,8 @@ function setupVideoListeners() {
     if (!Config.config.disableSkipping) {
         switchingVideos = false;
 
+        let startedWaiting = false;
+
         video.addEventListener('play', () => {
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
@@ -652,6 +685,8 @@ function setupVideoListeners() {
 
             if (switchingVideos) {
                 switchingVideos = false;
+                logDebug("Setting switching videos to false");
+
                 // If already segments loaded before video, retry to skip starting segments
                 if (sponsorTimes) startSkipScheduleCheckingForStartSponsors();
             }
@@ -671,6 +706,12 @@ function setupVideoListeners() {
         });
         video.addEventListener('playing', () => {
             updateVirtualTime();
+            
+            if (startedWaiting) {
+                startedWaiting = false;
+                logDebug(`[SB] Playing event after buffering: ${Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
+                    || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)}`);
+            }
 
             // Make sure it doesn't get double called with the play event
             if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
@@ -709,8 +750,13 @@ function setupVideoListeners() {
 
             cancelSponsorSchedule();
         };
-        video.addEventListener('pause', paused);
-        video.addEventListener('waiting', paused);
+        video.addEventListener('pause', () => paused());
+        video.addEventListener('waiting', () => {
+            logDebug("[SB] Not skipping due to buffering");
+            startedWaiting = true;
+
+            paused();
+        });
 
         startSponsorSchedule();
     }
@@ -899,12 +945,10 @@ function startSkipScheduleCheckingForStartSponsors() {
         // See if there are any starting sponsors
         let startingSegmentTime = getStartTimeFromUrl(document.URL) || -1;
         let found = false;
-        let startingSegment: SponsorTime = null;
         for (const time of sponsorTimes) {
             if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime
                     && time.actionType !== ActionType.Poi) {
                         startingSegmentTime = time.segment[0];
-                        startingSegment = time;
                         found = true;
                 break;
             }
@@ -914,7 +958,6 @@ function startSkipScheduleCheckingForStartSponsors() {
                 if (time.segment[0] <= video.currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > video.currentTime
                         && time.actionType !== ActionType.Poi) {
                             startingSegmentTime = time.segment[0];
-                            startingSegment = time;
                             found = true;
                     break;
                 }
@@ -949,26 +992,6 @@ function startSkipScheduleCheckingForStartSponsors() {
         } else {
             startSponsorSchedule();
         }
-    }
-}
-
-/**
- * Get the video info for the current tab from YouTube
- *
- * TODO: Replace
- */
-async function getVideoInfo(): Promise<void> {
-    const result = await utils.asyncRequestToCustomServer("GET", "https://www.youtube.com/get_video_info?video_id=" + sponsorVideoID + "&html5=1&c=TVHTML5&cver=7.20190319");
-
-    if (result.ok) {
-        const decodedData = decodeURIComponent(result.responseText).match(/player_response=([^&]*)/)[1];
-        if (!decodedData) {
-            console.error("[SB] Failed at getting video info from YouTube.");
-            console.error("[SB] Data returned from YouTube: " + result.responseText);
-            return;
-        }
-
-        videoInfo = JSON.parse(decodedData);
     }
 }
 
@@ -1106,7 +1129,7 @@ async function whitelistCheck() {
         ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
         ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
         ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
-            ?.getAttribute("href")?.match(/\/channel\/(UC[a-zA-Z0-9_-]{22})/)[1];
+            ?.getAttribute("href")?.match(/\/(?:channel|c|user)\/(UC[a-zA-Z0-9_-]{22}|[a-zA-Z0-9_-]+)/)?.[1];
 
     try {
         await utils.wait(() => !!getChannelID(), 6000, 20);
@@ -1114,14 +1137,12 @@ async function whitelistCheck() {
         channelIDInfo = {
             status: ChannelIDStatus.Found,
             id: getChannelID().match(/^\/?([^\s/]+)/)[0]
-        }
+        };
     } catch (e) {
         channelIDInfo = {
             status: ChannelIDStatus.Failed,
             id: null
-        }
-
-        return;
+        };
     }
 
     //see if this is a whitelisted channel
@@ -1666,71 +1687,30 @@ function openInfoMenu() {
     //hide info button
     if (playerButtons.info) playerButtons.info.button.style.display = "none";
 
-    sendRequestToCustomServer('GET', chrome.extension.getURL("popup.html"), function(xmlhttp) {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            const popup = document.createElement("div");
-            popup.id = "sponsorBlockPopupContainer";
+    
+    const popup = document.createElement("div");
+    popup.id = "sponsorBlockPopupContainer";
+   
+    const frame = document.createElement("iframe");
+    frame.width = "374";
+    frame.height = "500";
+    frame.addEventListener("load", () => frame.contentWindow.postMessage("", "*"));
+    frame.src = chrome.extension.getURL("popup.html");
+    popup.appendChild(frame);
 
-            let htmlData = xmlhttp.responseText;
-            // Hack to replace head data (title, favicon)
-            htmlData = htmlData.replace(/<head>[\S\s]*<\/head>/gi, "");
-            // Hack to replace body and html tag with div
-            htmlData = htmlData.replace(/<body/gi, "<div");
-            htmlData = htmlData.replace(/<\/body/gi, "</div");
-            htmlData = htmlData.replace(/<html/gi, "<div");
-            htmlData = htmlData.replace(/<\/html/gi, "</div");
-
-            popup.innerHTML = htmlData;
-
-            //close button
-            const closeButton = document.createElement("button");
-            const closeButtonIcon = document.createElement("img");
-            closeButtonIcon.src = chrome.extension.getURL("icons/close.png");
-            closeButtonIcon.width = 15;
-            closeButtonIcon.height = 15;
-            closeButton.appendChild(closeButtonIcon);
-            closeButton.setAttribute("title", chrome.i18n.getMessage("closePopup"));
-            closeButton.classList.add("sbCloseButton");
-            closeButton.addEventListener("click", closeInfoMenu);
-
-            //add the close button
-            popup.prepend(closeButton);
-
-            const parentNodes = document.querySelectorAll("#secondary");
-            let parentNode = null;
-            for (let i = 0; i < parentNodes.length; i++) {
-                if (parentNodes[i].firstElementChild !== null) {
-                    parentNode = parentNodes[i];
-                }
-            }
-            if (parentNode == null) {
-                //old youtube theme
-                parentNode = document.getElementById("watch7-sidebar-contents");
-            }
-
-            //make the logo source not 404
-            //query selector must be used since getElementByID doesn't work on a node and this isn't added to the document yet
-            const logo = <HTMLImageElement> popup.querySelector("#sponsorBlockPopupLogo");
-            const edit = <HTMLImageElement> popup.querySelector("#sbPopupIconEdit");
-            const copy = <HTMLImageElement> popup.querySelector("#sbPopupIconCopyUserID");
-            const check = <HTMLImageElement> popup.querySelector("#sbPopupIconCheck");
-            const refreshSegments = <HTMLImageElement> popup.querySelector("#refreshSegments");
-            const heart = <HTMLImageElement> popup.querySelector(".sbHeart");
-            const close = <HTMLImageElement> popup.querySelector("#sbCloseDonate");
-            logo.src = chrome.extension.getURL("icons/IconSponsorBlocker256px.png");
-            edit.src = chrome.extension.getURL("icons/pencil.svg");
-            copy.src = chrome.extension.getURL("icons/clipboard.svg");
-            check.src = chrome.extension.getURL("icons/check.svg");
-            heart.src = chrome.extension.getURL("icons/heart.svg");
-            close.src = chrome.extension.getURL("icons/close.png");
-            refreshSegments.src = chrome.extension.getURL("icons/refresh.svg");
-
-            parentNode.insertBefore(popup, parentNode.firstChild);
-
-            //run the popup init script
-            runThePopup(messageListener);
+    const parentNodes = document.querySelectorAll("#secondary");
+    let parentNode = null;
+    for (let i = 0; i < parentNodes.length; i++) {
+        if (parentNodes[i].firstElementChild !== null) {
+            parentNode = parentNodes[i];
         }
-    });
+    }
+    if (parentNode == null) {
+        //old youtube theme
+        parentNode = document.getElementById("watch7-sidebar-contents");
+    }
+    
+    parentNode.insertBefore(popup, parentNode.firstChild);
 }
 
 function closeInfoMenu() {
@@ -1908,8 +1888,6 @@ async function sendSubmitMessage() {
         alert(chrome.i18n.getMessage("liveOrPremiere"));
         return;
     }
-
-    sponsorsLookup();
 
     // Add loading animation
     playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
@@ -2093,25 +2071,6 @@ function addCSS() {
     }
 }
 
-function sendRequestToCustomServer(type, fullAddress, callback) {
-    const xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.open(type, fullAddress, true);
-
-    if (callback != undefined) {
-        xmlhttp.onreadystatechange = function () {
-            callback(xmlhttp, false);
-        };
-
-        xmlhttp.onerror = function() {
-            callback(xmlhttp, true);
-        };
-    }
-
-    //submit this request
-    xmlhttp.send();
-}
-
 /**
  * Update the isAdPlaying flag and hide preview bar/controls if ad is playing
  */
@@ -2184,3 +2143,18 @@ function checkForPreloadedSegment() {
         Config.forceSyncUpdate("unsubmittedSegments");
     }
 }
+
+// Register listener for URL change via Navigation API
+const navigationApiAvailable = "navigation" in window;
+if (navigationApiAvailable) {
+    // TODO: Remove type cast once type declarations are updated
+    (window as unknown as { navigation: EventTarget }).navigation.addEventListener("navigate", () => videoIDChange(getYouTubeVideoID(document)));
+}
+
+// Record availability of Navigation API
+utils.wait(() => Config.local !== null).then(() => {
+    if (Config.local.navigationApiAvailable !== navigationApiAvailable) {
+        Config.local.navigationApiAvailable = navigationApiAvailable;
+        Config.forceLocalUpdate("navigationApiAvailable");
+    }
+});

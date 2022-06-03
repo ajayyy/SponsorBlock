@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="48"
+   width="48"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="campaign.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="13.125"
+     inkscape:cx="24"
+     inkscape:cy="24"
+     inkscape:window-width="1920"
+     inkscape:window-height="983"
+     inkscape:window-x="482"
+     inkscape:window-y="768"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M36.5 25.5V22.5H44V25.5ZM39 40 32.95 35.5 34.75 33.1 40.8 37.6ZM34.9 14.85 33.1 12.45 39 8 40.8 10.4ZM10.5 38V30H7Q5.75 30 4.875 29.125Q4 28.25 4 27V21Q4 19.75 4.875 18.875Q5.75 18 7 18H16L26 12V36L16 30H13.5V38ZM28 30.7V17.3Q29.35 18.5 30.175 20.225Q31 21.95 31 24Q31 26.05 30.175 27.775Q29.35 29.5 28 30.7Z"
+     id="path2"
+     style="fill:#ffffff" />
+</svg>

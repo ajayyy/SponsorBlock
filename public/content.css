@@ -17,6 +17,10 @@
 	transition: transform .1s cubic-bezier(0,0,0.2,1);
 }
 
+.ytm-progress-bar > #previewbar {
+	height: 3px;
+}
+
 #previewbar.hovered {
 	transform: scaleY(1)
 }
@@ -152,14 +156,20 @@
 }
 
 .sponsorSkipNoticeParent, .sponsorSkipNotice {
-	min-width: 350px;
-	max-width: 50%;
-
 	border-spacing: 5px 10px;
 	padding-left: 5px;
 	padding-right: 5px;
 
 	border-collapse: unset;
+}
+
+.sponsorSkipNoticeParent {
+	min-width: 350px;
+	max-width: 50%;
+}
+
+.sponsorSkipNotice {
+	width: 100%;
 }
 
 .sponsorSkipNoticeTableContainer {
@@ -173,7 +183,7 @@
 }
 
 .sponsorSkipNoticeLimitWidth {
-	min-width: calc(100% - 50px);
+	max-width: calc(100% - 50px);
 }
 
 .sponsorSkipNotice .hidden {
@@ -341,6 +351,22 @@
 .sponsorTimesInfoMessage {
 	font-size: 13.3333px;
     color: rgb(235, 235, 235);
+}
+
+.sb-guidelines-notice .sponsorTimesInfoMessage td {
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+    font-size: 15px;
+
+	display: flex;
+	align-items: center;
+}
+
+.sponsorTimesInfoIcon {
+	width: 30px;
+	padding-right: 10px;
+    padding-left: 10px;
 }
 
 .segmentSummary {
@@ -649,4 +675,6 @@ input::-webkit-inner-spin-button {
 #sponsorBlockDurationAfterSkips.ytm-time-display {
 	padding-left: 4px;
 	margin: 0px;
+	color: #fff;
+	opacity: .7;
 }

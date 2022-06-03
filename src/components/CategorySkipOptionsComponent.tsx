@@ -18,6 +18,7 @@ export interface CategorySkipOptionsState {
 }
 
 class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsProps, CategorySkipOptionsState> {
+    setBarColorTimeout: NodeJS.Timeout;
 
     constructor(props: CategorySkipOptionsProps) {
         super(props);
@@ -172,6 +173,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     }
 
     setColorState(event: React.FormEvent<HTMLInputElement>, preview: boolean): void {
+        clearTimeout(this.setBarColorTimeout);
+
         if (preview) {
             this.setState({
                 previewColor: event.currentTarget.value
@@ -188,7 +191,9 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         }
 
         // Make listener get called
-        Config.config.barTypes = Config.config.barTypes;
+        this.setBarColorTimeout = setTimeout(() => {
+            Config.config.barTypes = Config.config.barTypes;
+        }, 50);
     }
 }
 
