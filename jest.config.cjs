@@ -5,5 +5,5 @@ module.exports = {
     "transform": {
         "^.+\\.ts$": "ts-jest"
     },
-    "reporters": ["github-actions"]
+    "reporters": ["default", "github-actions"]
 }; 
