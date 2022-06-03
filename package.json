@@ -25,6 +25,7 @@
     "eslint-plugin-react": "^7.30.0",
     "fork-ts-checker-webpack-plugin": "^7.2.11",
     "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "rimraf": "^3.0.2",
     "schema-utils": "^4.0.0",
     "selenium-webdriver": "^4.1.2",
