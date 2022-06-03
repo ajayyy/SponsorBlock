@@ -138,11 +138,10 @@
 .sbPopupLogo {
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   font-weight: bold;
   user-select: none;
-  padding-top: 16px;
+  padding: 10px 0px 0px;
   font-size: 32px;
 }
 .sbPopupLogo img {
