@@ -65,14 +65,12 @@ export function getHashParams(): Record<string, unknown> {
 
 export function localizeHtmlPage(): void {
     //Localize by replacing __MSG_***__ meta tags
-    const localizedMessage = getLocalizedMessage(document.title);
-    if (localizedMessage) document.title = localizedMessage;
-    const objects = document.getElementsByClassName("sponsorBlockPageBody")[0].children;
-    for (let j = 0; j < objects.length; j++) {
-        const obj = objects[j];
-        const localizedMessage = getLocalizedMessage(obj.innerHTML.toString());
-        if (localizedMessage) obj.innerHTML = localizedMessage;
-    }
+    const localizedTitle = getLocalizedMessage(document.title);
+    if (localizedTitle) document.title = localizedTitle;
+
+    const body = document.querySelector(".sponsorBlockPageBody");
+    const localizedMessage = getLocalizedMessage(body.innerHTML.toString());
+    if (localizedMessage) body.innerHTML = localizedMessage;
 }
 
 export function getLocalizedMessage(text: string): string | false {
