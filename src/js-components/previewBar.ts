@@ -7,11 +7,9 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 
 import Config from "../config";
 import { ActionType, Category, SegmentContainer, SponsorSourceType, SponsorTime } from "../types";
-import Utils from "../utils";
 import { partition } from "../utils/arrayUtils";
 import { shortCategoryName } from "../utils/categoryUtils";
 import { GenericUtils } from "../utils/genericUtils";
-const utils = new Utils();
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;
