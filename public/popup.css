@@ -115,18 +115,19 @@
 }
 
 /*
- * Close popup button when displayed in-page (top-left corner)
+ * Close popup button when displayed in-page (top-right corner)
  */
 .sbCloseButton {
-  border: none;
+  background: transparent;
+  border: 0;
+  padding: 8px;
   cursor: pointer;
   position: absolute;
-  background: transparent;
+  top: 5px;
+  right: 5px;
   opacity: 0.5;
-  padding: 8px;
-  left: 26px;
-  top: 26px;
 }
+
 .sbCloseButton:hover {
   opacity: 1;
 }
@@ -146,59 +147,6 @@
 }
 .sbPopupLogo img {
   margin: 8px;
-}
-
-/* 
- * Options button (top-right corner)
- */
-#optionsButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  box-shadow: none;
-  background: none;
-  border: none;
-  padding: 5px;
-  height: 32px;
-  width: 32px;
-  right: 26px;
-  top: 26px;
-}
-#optionsButton svg {
-  transition: transform 0.15s ease-in-out !important;
-  transform-origin: center center;
-  color: var(--sb-grey-fg-color);
-}
-#optionsButton:hover svg {
-  color: var(--sb-main-fg-color);
-  transform: rotate(90deg);
-}
-#optionsButton:active svg {
-  transform: scale(1.5);
-}
-
-/*
- * Options button Tooltip
- */
-#optionsButton:before {
-  background-color: var(--sb-grey-bg-color);
-  color: var(--sb-main-fg-color);
-  content: attr(data-hover);
-  pointer-events: none;
-  border-radius: 16px;
-  position: absolute;
-  padding: 4px 8px;
-  transition: .3s;
-  width: content;
-  left: -200%;
-  z-index: 1;
-  opacity: 0;
-  top: 4px;
-}
-#optionsButton:hover:before {
-  transform: translateX(-5px);
-  opacity: 1;
 }
 
 /*
