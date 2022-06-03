@@ -430,7 +430,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 categoryColorCircle.style.backgroundColor = Config.config.barTypes[segmentTimes[i].category]?.color;
                 categoryColorCircle.classList.add("dot");
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
-                
+
                 let extraInfo = "";
                 if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
                     //this one is downvoted
@@ -439,9 +439,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     //this one is too short
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
                 } else if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
-                    extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") +")";
+                    extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
                 }
-                
+
                 const textNode = document.createTextNode(utils.shortCategoryName(segmentTimes[i].category) + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
                 if (segmentTimes[i].actionType === ActionType.Full) {
@@ -452,7 +452,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                         ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segmentTimes[i].segment[1], true)
                         : "");
                 }
-                
+
                 segmentTimeFromToNode.style.margin = "5px";
                 
                 // for inline-styling purposes
@@ -467,7 +467,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 segmentSummary.appendChild(labelContainer);
                 segmentSummary.appendChild(segmentTimeFromToNode);
-                
+
                 const votingButtons = document.createElement("details");
                 votingButtons.classList.add("votingButtons");
 
