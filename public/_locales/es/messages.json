@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Abrir página de opciones"
+    },
+    "resetToDefault": {
+        "message": "Restablecer los ajustes por defecto"
+    },
+    "confirmResetToDefault": {
+        "message": "¿Estás seguro de que quieres restablecer todos los ajustes a sus valores por defecto? Esto no se puede deshacer."
     }
 }

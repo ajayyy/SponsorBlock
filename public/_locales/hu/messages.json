@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Jelezzen, ha egy szegmens át lett ugorva"
     },
+    "showCategoryGuidelines": {
+        "message": "Kategória útmutató megjelenítése"
+    },
     "noticeVisibilityMode0": {
         "message": "Teljes méretű átugrási értesítők"
     },
@@ -542,17 +545,38 @@
         "message": "–",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Tartalmazza a felkonferálást/átvezetőket is"
+    },
+    "generic_guideline2": {
+        "message": "Olyan a lejátszás, mintha semmi sem lett volna átugorva"
+    },
     "category_sponsor": {
         "message": "Szponzor"
     },
     "category_sponsor_description": {
-        "message": "Fizetett promóció, vagy közvetlen reklám. Nem önpromóció vagy ingyenes ajánlat (shoutout) emberekről/termékekről/weboldalakról amik tetszenek nekik."
+        "message": "Fizetett promóció, vagy közvetlen reklám. Nem önpromóció, vagy ingyenes említése ügyeknek/tartalomkészítőknek/weboldalaknak/termékeknek amik tetszenek nekik."
+    },
+    "category_sponsor_guideline1": {
+        "message": "Fizetett promóciók"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Nem adományok vagy saját termékek"
     },
     "category_selfpromo": {
         "message": "Nem fizetett/önpromóció"
     },
     "category_selfpromo_description": {
         "message": "Hasonló a szponzorhoz, de nem fizetett, vagy önpromóció. Beletartozik a saját ruhaáru, adományok, vagy infó arról, hogy kivel működtek együtt."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Adományok, tagságok és saját termékek"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Ingyenes köszönetnyilvánítások/említések, amik nem adnak hozzá a videóhoz"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Nem cégek által tervezett termékekhez"
     },
     "category_exclusive_access": {
         "message": "Exkluzív hozzáférés"
@@ -564,11 +588,23 @@
         "message": "Ez a videó olyan terméket, szolgáltatást vagy helyszínt mutat be, amihez ingyenes vagy kedvezményes hozzáférést kaptak",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "A teljes videó olyan dolgot mutat be, amihez ingyenes vagy kedvezményes hozzáférést kaptak"
+    },
     "category_interaction": {
         "message": "Emlékeztető (Feliratkozás)"
     },
     "category_interaction_description": {
         "message": "Egy rövid emlékeztető arról, hogy likeoljunk, iratkozzunk fel, vagy kövessük a tartalom közben. Ha hosszabb szakasz, vagy egy adott témáról van, inkább az önpromóció alá tartozik."
+    },
+    "category_interaction_guideline1": {
+        "message": "Rövid emlékeztető lájkolásra, feliratkozásra, vagy követésre"
+    },
+    "category_interaction_guideline2": {
+        "message": "Beletartoznak a közvetett emlékeztetők kommentelésre"
+    },
+    "category_interaction_guideline3": {
+        "message": "Nem általános promóciók, csak felhívások cselekvésre"
     },
     "category_interaction_short": {
         "message": "Emlékeztető"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Megszakítás"
     },
+    "category_intro_guideline1": {
+        "message": "Tényleges tartalom nélküli szakasz"
+    },
+    "category_intro_guideline2": {
+        "message": "Nem információt is tartalmazó átmenetekhez"
+    },
     "category_outro": {
         "message": "Záróképernyő/ Stáblista"
     },
     "category_outro_description": {
         "message": "Stáblista, vagy amikor megjelennek a YouTube zárókártyák. Nem használandó információt tartalmazó következtetésekkor."
     },
+    "category_outro_guideline1": {
+        "message": "Ne legyen benne tartalom, akkor sem, ha a zárókártyák már a képernyőn vannak"
+    },
     "category_preview": {
         "message": "Előzetes/Ismétlés"
     },
     "category_preview_description": {
         "message": "Az előző részekben történtek rövid ismétlése, vagy a videó további tartalmának előzetese. Összevágott jelenetekhez, nem szóbeli összegzéshez."
+    },
+    "category_preview_guideline1": {
+        "message": "Klipek amik megjelennek később, vagy egy jövőbeli videóban"
+    },
+    "category_preview_guideline2": {
+        "message": "Korábbi videó összefoglalója"
+    },
+    "category_preview_guideline3": {
+        "message": "Nem olyan részekhez, amik új tartalmat adnak a videóhoz"
     },
     "category_filler": {
         "message": "Témától eltérő töltelék/viccek"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Töltelék"
     },
+    "category_filler_guideline1": {
+        "message": "Témától eltérő jelenetek tölteléknek, vagy humornak"
+    },
+    "category_filler_guideline2": {
+        "message": "Figyelemelterelődés, bakik, újrajátszások"
+    },
+    "category_filler_guideline3": {
+        "message": "Nem olyan jelenetek, amik a téma megértéséhez szükségesek"
+    },
     "category_music_offtopic": {
         "message": "Zene: nem-zene szegmens"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Nem-Zene"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Olyan részek, amik nincsenek a hivatalos kiadásokban"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Nem zene egy élő előadásban"
+    },
     "category_poi_highlight": {
         "message": "Kiemelés"
     },
     "category_poi_highlight_description": {
         "message": "A videónak az a része, amelyiket a legtöbb ember látni szeretne. Hasonlít az \"A videó x percnél kezdődik\" jellegű hozzászólásokhoz."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "A rész, amit a legtöbb ember keres"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Segíthet a kontextus átugrásában"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "A címhez, vagy indexképhez ugorhat"
     },
     "category_livestream_messages": {
         "message": "Élő adás: Adomány / üzenet olvasások"
@@ -867,6 +945,9 @@
     "LearnMore": {
         "message": "Tudj meg többet"
     },
+    "FullDetails": {
+        "message": "Teljes részletek"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Leszavazza és készít egy helyi másolatot, amit beküldhetsz"
     },
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "Beállítások megnyitása"
+    },
+    "resetToDefault": {
+        "message": "Beállítások visszaállítása alapértelmezettre"
+    },
+    "confirmResetToDefault": {
+        "message": "Biztosan vissza szeretnéd állítani az összes beállítást az alapértelmezett értékekre? A műveletet nem lehet visszavonni."
     }
 }

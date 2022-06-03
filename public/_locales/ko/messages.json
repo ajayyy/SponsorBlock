@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "구간을 건너뛴 후 알림 표시"
     },
+    "showCategoryGuidelines": {
+        "message": "카테고리 도움말 표시"
+    },
     "noticeVisibilityMode0": {
         "message": "건너뛰기 알림 크게"
     },
@@ -947,5 +950,11 @@
     },
     "openOptionsPage": {
         "message": "설정 페이지 열기"
+    },
+    "resetToDefault": {
+        "message": "기본 설정으로 초기화"
+    },
+    "confirmResetToDefault": {
+        "message": "정말로 모든 설정을 기본값으로 초기화하시겠습니까? 되돌릴 수 없습니다."
     }
 }

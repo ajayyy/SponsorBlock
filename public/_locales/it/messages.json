@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Copia UserID Pubblico"
     },
+    "copySegmentID": {
+        "message": "Copia ID Segmento"
+    },
     "discordAdvert": {
         "message": "Entra nel server Discord ufficiale per darci suggerimenti e feedback!"
     },
@@ -235,6 +238,9 @@
     },
     "showSkipNotice": {
         "message": "Mostra Avviso Dopo Aver Saltato un Segmento"
+    },
+    "showCategoryGuidelines": {
+        "message": "Mostra Aiuto della Categoria"
     },
     "noticeVisibilityMode0": {
         "message": "Salta Avvisi di Dimensioni Complete"
@@ -539,17 +545,32 @@
         "message": "a",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline2": {
+        "message": "Riproduci come se nulla fosse stato saltato"
+    },
     "category_sponsor": {
         "message": "Sponsorizzazione"
     },
     "category_sponsor_description": {
         "message": "Promozione a pagamento, referral a pagamento e pubblicità diretta. Non per auto-promozione o ringraziamenti gratuiti a cause/creatori/siti web/ prodotti di loro gradimento."
     },
+    "category_sponsor_guideline1": {
+        "message": "Promozioni a pagamento"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Non per donazioni o merchandise personalizzato"
+    },
     "category_selfpromo": {
         "message": "Promozione non pagata/Autopromozione"
     },
     "category_selfpromo_description": {
         "message": "Simile alle \"sponsorizzazioni\" tranne che per promozioni non pagate o autopromozioni. Ciò include sezioni riguardanti vendita di merce, donazioni o informazioni in merito a collaboratori."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donazioni, abbonamenti e merce personalizzata"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Non per prodotti progettati da aziende e merce"
     },
     "category_exclusive_access": {
         "message": "Accesso Esclusivo"
@@ -561,11 +582,23 @@
         "message": "Questo video mostra un prodotto, un servizio o un posto che hanno ricevuto gratuitamente o a cui hanno avuto un accesso sovvenzionato",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "L'intero video mostra qualcosa con accesso gratuito o sovvenzionato"
+    },
     "category_interaction": {
         "message": "Promemoria d'Interazione (Iscrizione)"
     },
     "category_interaction_description": {
         "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per aggiunta di mi piace, iscrizione o seguito. Se dovesse risultare esteso o riguardare qualcosa di specifico, potrebbe essere un'autopromozione."
+    },
+    "category_interaction_guideline1": {
+        "message": "Brevi promemoria per mi piace, iscrizioni o follow"
+    },
+    "category_interaction_guideline2": {
+        "message": "Include promemoria indiretti al commento"
+    },
+    "category_interaction_guideline3": {
+        "message": "Non per promozione generale, solo chiamata all'azione"
     },
     "category_interaction_short": {
         "message": "Promemoria di Interazione"
@@ -579,11 +612,20 @@
     "category_intro_short": {
         "message": "Interruzione"
     },
+    "category_intro_guideline1": {
+        "message": "Intervallo senza contenuto effettivo"
+    },
+    "category_intro_guideline2": {
+        "message": "Non per transizioni con informazioni"
+    },
     "category_outro": {
         "message": "Conclusioni/Titoli di Coda"
     },
     "category_outro_description": {
         "message": "I titoli di coda o quando vengono mostrate annotazioni a fine video su YouTube. Non per conclusioni provviste di informazioni."
+    },
+    "category_outro_guideline1": {
+        "message": "Non include contenuti, anche se le schede finali sono a schermo"
     },
     "category_preview": {
         "message": "Anteprima/Riepilogo"
@@ -879,6 +921,9 @@
     "ChangeCategoryTooltip": {
         "message": "Questo si applicherà istantaneamente ai tuoi segmenti"
     },
+    "hideSegment": {
+        "message": "Nascondi segmento"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Usa la rotellina del mouse passando sulla casella di modifica per regolare rapidamente il tempo. Le combinazioni dei tasti ctrl o shift sono utilizzabili per perfezionare le modifiche."
     },
@@ -935,5 +980,11 @@
     },
     "openOptionsPage": {
         "message": "Apri la pagina delle opzioni"
+    },
+    "resetToDefault": {
+        "message": "Ripristina le impostazioni predefinite"
+    },
+    "confirmResetToDefault": {
+        "message": "Sei sicuro di voler reimpostare tutte le impostazioni ai valori predefiniti? Questo non può essere annullato."
     }
 }

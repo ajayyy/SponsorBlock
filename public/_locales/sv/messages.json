@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Visa ett meddelande efter att ett segment har hoppats över"
     },
+    "showCategoryGuidelines": {
+        "message": "Visa kategorihjälp"
+    },
     "noticeVisibilityMode0": {
         "message": "Hoppa över-meddelanden i fullstorlek"
     },
@@ -542,17 +545,26 @@
         "message": "till",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline2": {
+        "message": "Spelar som om ingenting hoppades över"
+    },
     "category_sponsor": {
         "message": "Sponsormeddelande"
     },
     "category_sponsor_description": {
         "message": "Betald marknadsföring, betalda hänvisningar och direktannonser, men inte till självbefodran eller gratis shoutouts till skapare/webbplatser/produkter de gillar."
     },
+    "category_sponsor_guideline1": {
+        "message": "Betalda kampanjer"
+    },
     "category_selfpromo": {
         "message": "Obetald/självbefodran"
     },
     "category_selfpromo_description": {
         "message": "Som \"sponsormeddelande\" men med undantag för obetald eller självkampanj. Detta inkluderar avsnitt om varor, donationer eller information om vem de samarbetade med."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donationer, medlemskap och anpassade varor"
     },
     "category_exclusive_access": {
         "message": "Exklusiv tillgång"
@@ -569,6 +581,9 @@
     },
     "category_interaction_description": {
         "message": "När där är en kort påminnelse att gilla, prenumerera eller följa dem. Om det är långt eller om det gäller något specifikt bör det istället vara under självbefodran."
+    },
+    "category_interaction_guideline1": {
+        "message": "Korta påminnelser om att gilla, prenumerera eller följa"
     },
     "category_interaction_short": {
         "message": "Interaktionspåminnelse"
@@ -593,6 +608,9 @@
     },
     "category_preview_description": {
         "message": "Snabb sammanfattning av tidigare avsnitt eller en förhandsvisning av vad som kommer upp senare i den aktuella videon. Avsett för redigerade klipp, inte för sammanfattningar."
+    },
+    "category_preview_guideline2": {
+        "message": "Sammanfattning av en tidigare video"
     },
     "category_filler": {
         "message": "Ämnesavvikelse/Skämt"
@@ -867,6 +885,9 @@
     "LearnMore": {
         "message": "Läs mer"
     },
+    "FullDetails": {
+        "message": "Fullständiga detaljer"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Rösta ner och skapar en lokal kopia för dig att skicka in igen"
     },
@@ -947,5 +968,11 @@
     },
     "openOptionsPage": {
         "message": "Öppna alternativsidan"
+    },
+    "resetToDefault": {
+        "message": "Återställ inställningar till standard"
+    },
+    "confirmResetToDefault": {
+        "message": "Är du säker på att du vill återställa alla inställningar till deras standardvärden? Detta kan inte ångras."
     }
 }

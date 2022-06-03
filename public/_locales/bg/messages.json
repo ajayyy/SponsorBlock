@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Показване на известие след пропускане на сегмент"
     },
+    "showCategoryGuidelines": {
+        "message": "Показване на помощ за категорията"
+    },
     "noticeVisibilityMode0": {
         "message": "Известия за пропускане в пълен размер"
     },
@@ -542,17 +545,38 @@
         "message": "до",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Включване на преходи"
+    },
+    "generic_guideline2": {
+        "message": "Възпроизвежда се, сякаш нищо не е пропуснато"
+    },
     "category_sponsor": {
         "message": "Спонсорство"
     },
     "category_sponsor_description": {
         "message": "Платена промоция, платени препоръки и директни реклами. Не за самореклама или безплатни препоръки за каузи/създатели/уебсайтове/продукти, които се харесват на автора."
     },
+    "category_sponsor_guideline1": {
+        "message": "Платени промоции"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Не за дарения или персонализирани стоки"
+    },
     "category_selfpromo": {
         "message": "Неплатена/Самореклама"
     },
     "category_selfpromo_description": {
         "message": "Подобно на „спонсорство“, но за безплатна реклама или самореклама. Това включва търговия със стоки, дарения или информация с кого каналът има сътрудничество."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Дарения, членства и персонализирани стоки"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Безплатни възгласи, които не допринасят за видеоклипа"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Не за продукти и стоки с корпоративен дизайн"
     },
     "category_exclusive_access": {
         "message": "Ексклузивен достъп"
@@ -564,11 +588,23 @@
         "message": "Този видеоклип представя продукт, услуга или място, до което е получен безплатен или субсидиран достъп",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Целият видеоклип показва нещо, до което е получен безплатен или субсидиран достъп"
+    },
     "category_interaction": {
         "message": "Напомняне за действие (абониране)"
     },
     "category_interaction_description": {
         "message": "Когато има кратко напомняне да харесате, да се абонирате или да последвате канала по средата на съдържанието. Ако е дълго или за нещо специфично, трябва да е под „самореклама“."
+    },
+    "category_interaction_guideline1": {
+        "message": "Кратки напомняния за харесване, абониране или следване"
+    },
+    "category_interaction_guideline2": {
+        "message": "Включва непреки напомняния за коментиране"
+    },
+    "category_interaction_guideline3": {
+        "message": "Не за общо популяризиране, а само за призиви за действие"
     },
     "category_interaction_short": {
         "message": "Напомняне за взаимодействие"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Антракт"
     },
+    "category_intro_guideline1": {
+        "message": "Интервал без реално съдържание"
+    },
+    "category_intro_guideline2": {
+        "message": "Не за преходи с информация"
+    },
     "category_outro": {
         "message": "Крайни картички/Заслуги"
     },
     "category_outro_description": {
         "message": "Заслуги или когато се показват крайните карти на YouTube. Не за заключения с информация."
     },
+    "category_outro_guideline1": {
+        "message": "Без съдържание, дори ако крайните карти са на екрана"
+    },
     "category_preview": {
         "message": "Кратко резюме/Обобщение"
     },
     "category_preview_description": {
         "message": "Бързо обобщение на предишни епизоди или преглед на това, което предстои по-късно в текущия видеоклип. Предназначен за монтирани заедно клипове, а не за речеви обобщения."
+    },
+    "category_preview_guideline1": {
+        "message": "Клипове, които се появяват по-късно или в бъдещ видеоклип"
+    },
+    "category_preview_guideline2": {
+        "message": "Резюме на предишен видеоклип"
+    },
+    "category_preview_guideline3": {
+        "message": "Не за части, които добавят допълнително съдържание"
     },
     "category_filler": {
         "message": "Пълнеж/Шеги"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Пълнеж"
     },
+    "category_filler_guideline1": {
+        "message": "Съпътстващи сцени само за пълнеж или хумор"
+    },
+    "category_filler_guideline2": {
+        "message": "Отвличане на вниманието, гафове, повторения"
+    },
+    "category_filler_guideline3": {
+        "message": "Не за сцени, необходими за разбиране на темата"
+    },
     "category_music_offtopic": {
         "message": "Музика: Част без музика"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Без музика"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Секции, които не са в официалните издания"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Немузикална част от изпълнение на живо"
+    },
     "category_poi_highlight": {
         "message": "Акцент"
     },
     "category_poi_highlight_description": {
         "message": "Частта от видеото, която повечето хора търсят. Подобно на коментарите „Видеото започва от х“."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Секция, която повечето хора търсят"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Може да помогне за прескачане на миналия контекст"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Може да прескочи до заглавието или миниатюрата"
     },
     "category_livestream_messages": {
         "message": "Поточно предаване: Четене на съобщения/дарения"
@@ -867,6 +945,9 @@
     "LearnMore": {
         "message": "Научете повече"
     },
+    "FullDetails": {
+        "message": "Пълна информация"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Гласуване против и създаване на локално копие, за да го изпратите отново"
     },
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "Отваряне на страницата с опции"
+    },
+    "resetToDefault": {
+        "message": "Възстановяване на първоначалните настройки"
+    },
+    "confirmResetToDefault": {
+        "message": "Наистина ли искате да възстановите всички настройки до стойностите им по подразбиране? Това не може да бъде отменено."
     }
 }

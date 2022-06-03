@@ -227,6 +227,9 @@
     "showSkipNotice": {
         "message": "Εμφάνιση ειδοποιήσεων μετά την παράλειψη κάθε τμήματος"
     },
+    "showCategoryGuidelines": {
+        "message": "Εμφάνιση βοήθειας κατηγοριών"
+    },
     "noticeVisibilityMode0": {
         "message": "Ειδοποιήσεις παράλειψης πλήρους μεγέθους"
     },
@@ -737,6 +740,9 @@
     "LearnMore": {
         "message": "Μάθετε περισσότερα"
     },
+    "ContinueVoting": {
+        "message": "Συνεχίστε την ψηφοφορία"
+    },
     "optionsTabBehavior": {
         "message": "Συμπεριφορά",
         "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
@@ -744,5 +750,14 @@
     "optionsTabAdvanced": {
         "message": "Διάφορα",
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "openOptionsPage": {
+        "message": "Άνοιγμα σελίδας επιλογών"
+    },
+    "resetToDefault": {
+        "message": "Επαναφορά των προκαθορισμένων ρυθμίσεων"
+    },
+    "confirmResetToDefault": {
+        "message": "Είστε βέβαιοι ότι θέλετε να επαναφέρετε όλες τις ρυθμίσεις στις προεπιλεγμένες τιμές τους; Αυτό δεν μπορεί να αναιρεθεί."
     }
 }

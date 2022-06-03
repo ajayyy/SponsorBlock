@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Tampilkan pemberitahuan setelah melewati segmen"
     },
+    "showCategoryGuidelines": {
+        "message": "Tampilkan Bantuan Kategori"
+    },
     "noticeVisibilityMode0": {
         "message": "Lewati maklumat ukuran penuh"
     },
@@ -542,17 +545,38 @@
         "message": "sampai",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Tampilkan transisi segue"
+    },
+    "generic_guideline2": {
+        "message": "Memainkan sebagai tidak apa pun yang dilewati"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
     "category_sponsor_description": {
         "message": "Promosi dibayar, tautan dibayar dan iklan langsung. Tidak untuk promosi diri sendiri atau dukungan gratis untuk gerakan/kreator/situs/produk yang mereka suka."
     },
+    "category_sponsor_guideline1": {
+        "message": "Promosi berbayar"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Bukan untuk donasi atau barang dagangan kustom"
+    },
     "category_selfpromo": {
         "message": "Promosi Diri Sendiri/Tidak Dibayar"
     },
     "category_selfpromo_description": {
         "message": "Mirip dengan \"sponsor\" kecuali ini tidak dibayar atau promosi diri sendiri. Ini termasuk merchandise, donasi, atau informasi tentang siapa yang berkolaborasi dengan mereka."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donasi, langganan, dan barang dagangan kustom"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Sebutan gratis yang tidak menambahkan apa pun ke videonya"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Bukan untuk produk dan barang dagangan yang didesain oleh koperasi"
     },
     "category_exclusive_access": {
         "message": "Akses Eksklusif"
@@ -564,11 +588,23 @@
         "message": "Video ini mempromosikan sebuah produk, layanan atau lokasi yang diterima secara gratis atau mendapatkan izin",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Seluruh video pertunjukkan sesuatu dengan akses gratis atau berbayar"
+    },
     "category_interaction": {
         "message": "Pengingat Interaksi (Berlangganan)"
     },
     "category_interaction_description": {
         "message": "Saat ada pengingat singkat untuk meminta suka, berlangganan atau mengikuti mereka di tengah konten. Jika panjang atau tentang sesuatu yang spesifik, sebaiknya pakai kategori promosi diri sendiri."
+    },
+    "category_interaction_guideline1": {
+        "message": "Pengingat pendek untuk menyukai video, berlangganan, atau ikuti"
+    },
+    "category_interaction_guideline2": {
+        "message": "Menampilkan pengingat tidak langsung untuk berkomentar"
+    },
+    "category_interaction_guideline3": {
+        "message": "Bukan untuk promosi umum, hanya bilang untuk melakukan tindakan"
     },
     "category_interaction_short": {
         "message": "Pengingat Interaksi"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Jeda"
     },
+    "category_intro_guideline1": {
+        "message": "Interval tanpa konten aslinya"
+    },
+    "category_intro_guideline2": {
+        "message": "Bukan untuk transisi dengan informasi"
+    },
     "category_outro": {
         "message": "Kartu Akhir/Kredit"
     },
     "category_outro_description": {
         "message": "Kredit atau saat kartu akhir YouTube muncul. Tidak untuk kesimpulan dengan informasi."
     },
+    "category_outro_guideline1": {
+        "message": "Jangan tampilkan konten, bahkan jika kartu akhir ada di layar"
+    },
     "category_preview": {
         "message": "Pratinjau/Rekap"
     },
     "category_preview_description": {
         "message": "Rekapan singkat dari episode sebelumnya, atau pratinjau tentang apa yang akan terjadi nanti di video. Dimaksudkan untuk klip bersama yang di edit, bukan ringkasan yang diucapkan."
+    },
+    "category_preview_guideline1": {
+        "message": "Klip yang ditampilkan nanti, atau di video di masa mendatang"
+    },
+    "category_preview_guideline2": {
+        "message": "Rekap dari video sebelumnya"
+    },
+    "category_preview_guideline3": {
+        "message": "Bukan untuk bagian yang menambahkan konten tambahan"
     },
     "category_filler": {
         "message": "Pengisi Tak berkaitan/Lawakan"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Isian"
     },
+    "category_filler_guideline1": {
+        "message": "Scene tangen hanya untuk isian atau humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Gangguan, blooper, replay"
+    },
+    "category_filler_guideline3": {
+        "message": "Bukan untuk scene yang dibutuhkan untuk mengerti topik"
+    },
     "category_music_offtopic": {
         "message": "Musik: Bagian Non-Musik"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Non-Musik"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Bagian bukan di rilis resmi"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Non-musik di pertunjukkan langsung"
+    },
     "category_poi_highlight": {
         "message": "Sorotan"
     },
     "category_poi_highlight_description": {
         "message": "Bagian video yang banyak orang lihat. Sama untuk komentar \"Video dimulai di x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Bagian banyak orang yang mencari"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Dapat melewati topik"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Dapat melewati ke judul atau thumbnail"
     },
     "category_livestream_messages": {
         "message": "Livestream: Baca Pesan/Donasi"
@@ -789,7 +867,7 @@
         "message": "Sembunyikan selamanya"
     },
     "warningChatInfo": {
-        "message": "Anda mendapatkan peringatan dan tidak bisa mengirim segmen sementara. Ini dikarenakan kami melihat kamu melakukan beberapa kesalahan yang umum, mohon konfirmasi bahwa kamu mengerti perundangan dan kami akan hapus peringatan. Kamu bisa bergabung ke obrolan menggunakan discord.gg/SponsorBlock atau matrix.io/#/#sponsor:ajay.app"
+        "message": "Anda mendapatkan peringatan dan tidak bisa mengirim segmen sementara. Ini dikarenakan kami melihat Anda melakukan beberapa kesalahan yang umum, mohon konfirmasi bahwa Anda mengerti perundangan dan kami akan hapus peringatan. Anda dapat bergabung ke obrolan menggunakan discord.gg/SponsorBlock atau matrix.io/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Suara ditolak karena peringatan. Klik untuk buka obrolan untuk menyelesaikannya, atau kembali beberapa saat lagi ketika ada waktu.",
@@ -866,6 +944,9 @@
     },
     "LearnMore": {
         "message": "Pelajari Lebih Lanjut"
+    },
+    "FullDetails": {
+        "message": "Detail Penuh"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Menurunkan suara dan membuat salinan lokal untuk Anda kirim ulang"
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "Buka laman opsi"
+    },
+    "resetToDefault": {
+        "message": "Atur ulang pengaturan ke bawaan"
+    },
+    "confirmResetToDefault": {
+        "message": "Apakah Anda yakin ingin mengatur ulang semua pengaturan ke nilai bawaan?\nTindakan ini tidak dapat diurungkan."
     }
 }

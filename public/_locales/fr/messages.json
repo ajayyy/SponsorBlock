@@ -86,7 +86,7 @@
         "message": "Annuler la création de segment"
     },
     "noVideoID": {
-        "message": "Aucune vidéo YouTube trouvée.\nActualisez l'onglet si il est censé y en avoir une."
+        "message": "Aucune vidéo YouTube trouvée.\nActualisez l'onglet s'il s'agit d'une erreur."
     },
     "refreshSegments": {
         "message": "Rafraîchir les segments"
@@ -552,7 +552,7 @@
         "message": "Non rémunéré/autopromotion"
     },
     "category_selfpromo_description": {
-        "message": "Semblable au \"sponsor\", excepté pour la promotion non rémunérée ou l'auto-promotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
+        "message": "Semblable aux \"messages commerciaux\", excepté pour la promotion non rémunérée ou l'autopromotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
     },
     "category_exclusive_access": {
         "message": "Accès exclusif"
@@ -832,7 +832,7 @@
         "message": "La soumission peut être effectuée dans le popup en appuyant sur le bouton \"le segment commence maintenant\" ou dans le lecteur vidéo avec les boutons du lecteur."
     },
     "helpPageSubmitting2": {
-        "message": "Cliquer sur le bouton de lecture indique le début d'un segment et cliquer sur l'icône d'arrêt indique la fin. Vous pouvez préparer plusieurs sponsors avant d'appuyer sur Soumettre. Cliquer sur le bouton de soumission enverra le segment. Cliquer sur le poubelle supprimera vos segments."
+        "message": "Cliquer sur le bouton de lecture indique le début d'un segment et cliquer sur l'icône d'arrêt indique sa fin. Vous pouvez préparer plusieurs messages commerciaux avant d'appuyer sur Soumettre. Cliquer sur le bouton Téléverser soumettra vos segments. Cliquer sur la poubelle supprimera vos segments."
     },
     "Editing": {
         "message": "Édition en cours"
@@ -947,5 +947,11 @@
     },
     "openOptionsPage": {
         "message": "Ouvrir la page d'options"
+    },
+    "resetToDefault": {
+        "message": "Rétablir les paramètres par défaut"
+    },
+    "confirmResetToDefault": {
+        "message": "Êtes-vous sûr de vouloir rétablir tous les paramètres ? Cette action ne peut pas être annulée."
     }
 }

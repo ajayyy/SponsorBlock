@@ -44,7 +44,7 @@
         "message": "Älä näytä koskaan"
     },
     "hitGoBack": {
-        "message": "Paina 'älä ohita' palatakasesi kohtaan, jossa olit."
+        "message": "Paina 'älä ohita' palataksesi kohtaan, jossa olit."
     },
     "unskip": {
         "message": "Älä ohita"
@@ -180,7 +180,7 @@
         "message": "Näytä painikkeet YouTuben soittimessa"
     },
     "hideButtons": {
-        "message": "Piilota painikkeet YouTuben soittimesta"
+        "message": "Piilota painikkeet YouTuben soittimessa"
     },
     "hideButtonsDescription": {
         "message": "Tämä piilottaa YouTuben soittimessa näkyvät, ohitettavien aikojen lähettämiseen käytetyt painikkeet."
@@ -198,7 +198,7 @@
         "message": "Piilota info-painike automaattisesti"
     },
     "hideDeleteButton": {
-        "message": "Piilota poista-painike YouTuben soittimesta"
+        "message": "Piilota poista-painike YouTuben soittimessa"
     },
     "showDeleteButton": {
         "message": "Näytä poista-painike YouTuben soittimessa"
@@ -238,6 +238,9 @@
     },
     "showSkipNotice": {
         "message": "Näytä ilmoitus ohitetun osion jälkeen"
+    },
+    "showCategoryGuidelines": {
+        "message": "Näytä kategorian ohje"
     },
     "noticeVisibilityMode0": {
         "message": "Täysikokoiset ohitusilmoitukset"
@@ -542,17 +545,38 @@
         "message": "-",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Sisällytä siirtymät osioon"
+    },
+    "generic_guideline2": {
+        "message": "Video toistuu ikään kuin mitään ei olisi ohitettu"
+    },
     "category_sponsor": {
         "message": "Sponsori"
     },
     "category_sponsor_description": {
-        "message": "Maksettu mainostus, maksetut viittaukset ja suorat mainokset. Ei itsensä mainostukselle tai huikkauksille kampanjoista/luojista/nettisivuista/tuotteista, joista he pitävät."
+        "message": "Maksettu mainostus, maksetut viittaukset ja suorat mainokset. Ei itsensä mainostukselle tai ilmaisille maininnoille kampanjoista/luojista/nettisivuista/tuotteista, joista he pitävät."
+    },
+    "category_sponsor_guideline1": {
+        "message": "Maksetut mainostukset"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Ei lahjoituksille tai omalle kauppatavaralle"
     },
     "category_selfpromo": {
         "message": "Maksamaton/Itsensä mainostus"
     },
     "category_selfpromo_description": {
         "message": "Samankaltainen \"sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Lahjoitukset, jäsenyydet ja oma kauppatavara"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Ilmaiset maininnat, jotka eivät tuo videolle lisäarvoa"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Ei yritysten luomille tuotteille tai kauppatavaralle"
     },
     "category_exclusive_access": {
         "message": "Yksinoikeudellinen ensikatsaus"
@@ -564,11 +588,23 @@
         "message": "Tämä video esittelee tuotteen, palvelun tai sijainnin, johon he ovat saaneet ilmaisen tai tuetun käyttöoikeuden",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Koko video keskittyy johonkin, jonka käyttöoikeus on saatu veloituksetta tai tuetusti"
+    },
     "category_interaction": {
         "message": "Vuorovaikutusmuistutus (tilaaminen)"
     },
     "category_interaction_description": {
         "message": "Lyhyt muistutus tykätä, tilata tai seurata sisällön keskellä. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi."
+    },
+    "category_interaction_guideline1": {
+        "message": "Lyhyet muistutukset tykätä, tilata tai seurata"
+    },
+    "category_interaction_guideline2": {
+        "message": "Sisältää epäsuorat muistutukset kommenttien jättämisestä"
+    },
+    "category_interaction_guideline3": {
+        "message": "Ei yleiselle mainostukselle, vain toimintapyynnöille"
     },
     "category_interaction_short": {
         "message": "Vuorovaikutusmuistutus"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Tauko"
     },
+    "category_intro_guideline1": {
+        "message": "Tauko ilman varsinaista sisältöä"
+    },
+    "category_intro_guideline2": {
+        "message": "Ei tietoa sisältäville siirtymille"
+    },
     "category_outro": {
         "message": "Loppukortit/-tekstit"
     },
     "category_outro_description": {
         "message": "Lopputekstit tai kun YouTuben loppukortit tulevat näkyviin. Ei lopetuksille joissa on tietoa."
     },
+    "category_outro_guideline1": {
+        "message": "Älä sisällytä sisältöä, vaikka loppukortit olisivatkin näytöllä"
+    },
     "category_preview": {
         "message": "Esikatselu/Kertaus"
     },
     "category_preview_description": {
         "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
+    },
+    "category_preview_guideline1": {
+        "message": "Myöhemmin tai tulevassa videossa ilmestyvät klipit"
+    },
+    "category_preview_guideline2": {
+        "message": "Kertaus edellisestä videosta"
+    },
+    "category_preview_guideline3": {
+        "message": "Ei osioille, jotka lisäävät uutta sisältöä"
     },
     "category_filler": {
         "message": "Epäolennainen täytesisältö/Vitsit"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Täytesisältö"
     },
+    "category_filler_guideline1": {
+        "message": "Täytteeksi tai huumoriksi lisätyt toissijaiset kohtaukset"
+    },
+    "category_filler_guideline2": {
+        "message": "Häiriöt, blooperit, uusinnat"
+    },
+    "category_filler_guideline3": {
+        "message": "Ei aiheen ymmärtämiseen tarvittavia kohtauksia varten"
+    },
     "category_music_offtopic": {
         "message": "Musiikki: Musiikiton osa"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Musiikiton"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Osat, jotka eivät ole virallisissa julkaisuissa"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Musiikittomat kohdat live-esityksissä"
+    },
     "category_poi_highlight": {
         "message": "Kohokohta"
     },
     "category_poi_highlight_description": {
         "message": "Kohta videossa, mitä suurin osa ihmisistä etsivät.\nSamankaltainen \"Video alkaa kohdassa x\" kommenttien kanssa."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Kohta mitä useimmat ihmiset etsivät"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Voi ohittaa kontekstin"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Voi ohittaa otsikon tai pikkukuvan viittaamaan kohtaan"
     },
     "category_livestream_messages": {
         "message": "Livestream: lahjoitusten/viestien lukeminen"
@@ -779,7 +857,7 @@
         "message": "Tämä osio on suuri. Jos koko video koskee yhtä aihetta, vaihda \"Ohita\" valintaan \"Koko video\". Katso lisätietoja säännöistä."
     },
     "categoryPillTitleText": {
-        "message": "Koko video on merkitty tällä luokituksella ja se on liian tiiviisti integroitu eroteltavaksi"
+        "message": "Koko video on merkitty tällä kategorialla ja on erotettavaksi liian tiiviisti integroitu"
     },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
@@ -867,6 +945,9 @@
     "LearnMore": {
         "message": "Opi lisää"
     },
+    "FullDetails": {
+        "message": "Täydet tiedot"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Äänestää alas ja luo paikallisen kopion, jonka voit lähettää uudelleen"
     },
@@ -883,10 +964,10 @@
         "message": "Tämä vaikuttaa sinun osioihin välittömästi"
     },
     "downvote": {
-        "message": "Äänestä puolesta"
+        "message": "Äänestä alas"
     },
     "upvote": {
-        "message": "Äänestä vastaan"
+        "message": "Äänestä ylös"
     },
     "hideSegment": {
         "message": "Piilota osio"
@@ -930,7 +1011,7 @@
         "description": "Option label"
     },
     "unbind": {
-        "message": "Poista valinta",
+        "message": "Poista kytkös",
         "description": "Unbind keyboard shortcut"
     },
     "notSet": {
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "Avaa asetussivu"
+    },
+    "resetToDefault": {
+        "message": "Palauta oletusasetukset"
+    },
+    "confirmResetToDefault": {
+        "message": "Haluatko varmasti palauttaa kaikki asetukset oletusarvoihin? Tätä ei voi perua."
     }
 }

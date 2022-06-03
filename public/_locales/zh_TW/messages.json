@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "在跳過片段後顯示通知"
     },
+    "showCategoryGuidelines": {
+        "message": "顯示分類說明"
+    },
     "noticeVisibilityMode0": {
         "message": "完整大小的略過提醒"
     },
@@ -542,17 +545,38 @@
         "message": "到",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "包含轉場"
+    },
+    "generic_guideline2": {
+        "message": "如同沒有略過任何片段般播放"
+    },
     "category_sponsor": {
         "message": "贊助廣告"
     },
     "category_sponsor_description": {
         "message": "有收錢的工商廣告和直接廣告。不是為了自我推銷或為了其他創作的免費推銷"
     },
+    "category_sponsor_guideline1": {
+        "message": "付費促銷"
+    },
+    "category_sponsor_guideline2": {
+        "message": "並非捐款或客製週邊商品"
+    },
     "category_selfpromo": {
         "message": "非付費/自我推廣"
     },
     "category_selfpromo_description": {
         "message": "類似 “贊助商廣告” ，但是非付費或自我推廣。這包括有關商品、捐贈或與他人合作的信息。"
+    },
+    "category_selfpromo_guideline1": {
+        "message": "贊助、會員或客製週邊商品"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "與影片無關之免費的推廣"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "不是企業設計的商品和週邊商品"
     },
     "category_exclusive_access": {
         "message": "獨家限定"
@@ -564,11 +588,23 @@
         "message": "此影片展示了獲得特殊或免費存取的產品、服務或位置",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "整部影片在展示收到的免費或付費存取權"
+    },
     "category_interaction": {
         "message": "互動提醒 (訂閱)"
     },
     "category_interaction_description": {
         "message": "當有短提醒來請觀眾按讚、訂閱或跟隨他們時。如果該片段很長或很針對某事，它應該歸類為自我推銷。"
+    },
+    "category_interaction_guideline1": {
+        "message": "要求點讚、訂閱或跟隨的短暫提醒"
+    },
+    "category_interaction_guideline2": {
+        "message": "包含要求評論的非直接提醒"
+    },
+    "category_interaction_guideline3": {
+        "message": "並非一般促銷、只限於要求進行某動作"
     },
     "category_interaction_short": {
         "message": "互動提醒"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "開場"
     },
+    "category_intro_guideline1": {
+        "message": "無實際內容的片段"
+    },
+    "category_intro_guideline2": {
+        "message": "不是含有資訊的轉場"
+    },
     "category_outro": {
         "message": "結束畫面/鳴謝"
     },
     "category_outro_description": {
         "message": "鳴謝或當 YouTube 結尾資訊卡出現時。不是含有資訊的總結"
     },
+    "category_outro_guideline1": {
+        "message": "即使結尾的資訊卡已開始顯示也不應包含內容"
+    },
     "category_preview": {
         "message": "預覽/摘要"
     },
     "category_preview_description": {
         "message": "係指影片的前情提要或內容預告等刻意編輯過的內容"
+    },
+    "category_preview_guideline1": {
+        "message": "出現在後面或未來影片的片段"
+    },
+    "category_preview_guideline2": {
+        "message": "上一部影片的回顧"
+    },
+    "category_preview_guideline3": {
+        "message": "不是有額外內容的部分"
     },
     "category_filler": {
         "message": "離題閒聊/玩笑"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "填充詞"
     },
+    "category_filler_guideline1": {
+        "message": "為了幽默而離題的片段"
+    },
+    "category_filler_guideline2": {
+        "message": "分心、失誤、重播"
+    },
+    "category_filler_guideline3": {
+        "message": "不是需要觀看才能理解主題的片段"
+    },
     "category_music_offtopic": {
         "message": "音樂：非音樂部分"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "非音樂"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "不在官方釋出內容的片段"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "在現場演出的非音樂片段"
+    },
     "category_poi_highlight": {
         "message": "重點"
     },
     "category_poi_highlight_description": {
         "message": "大部分的人在影片尋找的部分。類似「影片在幾分幾秒開始」的留言"
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "大部分觀眾想要看的部分"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "可以幫助略過前後文"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "可以跳過到標題或縮圖的內容"
     },
     "category_livestream_messages": {
         "message": "直播：捐贈/訊息閱讀"
@@ -867,6 +945,9 @@
     "LearnMore": {
         "message": "了解更多"
     },
+    "FullDetails": {
+        "message": "完整詳細資料"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "按倒讚和建立本機副本以便你重新提交"
     },
@@ -947,5 +1028,11 @@
     },
     "openOptionsPage": {
         "message": "打開選項頁面"
+    },
+    "resetToDefault": {
+        "message": "重設設定為預設值"
+    },
+    "confirmResetToDefault": {
+        "message": "你確定要將所有設定重設為預設值嗎？此動作無法還原。"
     }
 }
