@@ -8,6 +8,7 @@ import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
 import { shortCategoryName } from "./utils/categoryUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
+import { exportTimes } from "./utils/exporter";
 const utils = new Utils();
 
 interface MessageListener {
@@ -69,6 +70,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     //the start and end time pairs (2d)
     let sponsorTimes: SponsorTime[] = [];
+    let downloadedTimes: SponsorTime[] = [];
 
     //current video ID of this tab
     let currentVideoID = null;
@@ -137,7 +139,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sbConsiderDonateLink",
         "sbCloseDonate",
         "sbBetaServerWarning",
-        "sbCloseButton"
+        "sbCloseButton",
+        "issueReporterImportExport",
+        "importSegmentsButton",
+        "exportSegmentsButton"
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     getSegmentsFromContentScript(false);
@@ -167,7 +172,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     }
 
-    //setup click listeners
+    PageElements.exportSegmentsButton.addEventListener("click", exportSegments);
+
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
     PageElements.whitelistToggle.addEventListener("change", function () {
         if (this.checked) {
@@ -441,7 +447,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             }
 
             // Sort list by start time
-            const segmentTimes = request.sponsorTimes
+            downloadedTimes = request.sponsorTimes
                 .filter((segment) => {
                     if (currentSegmentTab === SegmentTab.Segments) {
                         return segment.actionType !== ActionType.Chapter;
@@ -461,12 +467,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 container.removeChild(container.firstChild);
             }
 
+            if (downloadedTimes.length > 0) {
+                PageElements.issueReporterImportExport.classList.remove("hidden");
+            } else {
+                PageElements.issueReporterImportExport.classList.add("hidden");
+            }
+
             const isVip = Config.config.isVip;
-            for (let i = 0; i < segmentTimes.length; i++) {
-                const UUID = segmentTimes[i].UUID;
-                const locked = segmentTimes[i].locked;
-                const category = segmentTimes[i].category;
-                const actionType = segmentTimes[i].actionType;
+            for (let i = 0; i < downloadedTimes.length; i++) {
+                const UUID = downloadedTimes[i].UUID;
+                const locked = downloadedTimes[i].locked;
+                const category = downloadedTimes[i].category;
+                const actionType = downloadedTimes[i].actionType;
 
                 const segmentSummary = document.createElement("summary");
                 segmentSummary.className = "segmentSummary";
@@ -478,25 +490,25 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
 
                 let extraInfo = "";
-                if (segmentTimes[i].hidden === SponsorHideType.Downvoted) {
+                if (downloadedTimes[i].hidden === SponsorHideType.Downvoted) {
                     //this one is downvoted
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
-                } else if (segmentTimes[i].hidden === SponsorHideType.MinimumDuration) {
+                } else if (downloadedTimes[i].hidden === SponsorHideType.MinimumDuration) {
                     //this one is too short
                     extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
-                } else if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                } else if (downloadedTimes[i].hidden === SponsorHideType.Hidden) {
                     extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
                 }
 
-                const name = segmentTimes[i].description || shortCategoryName(category);
+                const name = downloadedTimes[i].description || shortCategoryName(category);
                 const textNode = document.createTextNode(name + extraInfo);
                 const segmentTimeFromToNode = document.createElement("div");
-                if (segmentTimes[i].actionType === ActionType.Full) {
+                if (downloadedTimes[i].actionType === ActionType.Full) {
                     segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
                 } else {
-                    segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(segmentTimes[i].segment[0], true) + 
+                    segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(downloadedTimes[i].segment[0], true) + 
                             (actionType !== ActionType.Poi
-                                ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(segmentTimes[i].segment[1], true)
+                                ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(downloadedTimes[i].segment[1], true)
                                 : "");
                 }
 
@@ -551,7 +563,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 hideButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
                 hideButton.className = "voteButton";
                 hideButton.title = chrome.i18n.getMessage("hideSegment");
-                if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                if (downloadedTimes[i].hidden === SponsorHideType.Hidden) {
                     hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
                 } else {
                     hideButton.src = chrome.runtime.getURL("icons/visible.svg");
@@ -560,12 +572,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     const stopAnimation = AnimationUtils.applyLoadingAnimation(hideButton, 0.4);
                     stopAnimation();
 
-                    if (segmentTimes[i].hidden === SponsorHideType.Hidden) {
+                    if (downloadedTimes[i].hidden === SponsorHideType.Hidden) {
                         hideButton.src = chrome.runtime.getURL("icons/visible.svg");
-                        segmentTimes[i].hidden = SponsorHideType.Visible;
+                        downloadedTimes[i].hidden = SponsorHideType.Visible;
                     } else {
                         hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
-                        segmentTimes[i].hidden = SponsorHideType.Hidden;
+                        downloadedTimes[i].hidden = SponsorHideType.Hidden;
                     }
 
                     messageHandler.query({
@@ -576,7 +588,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                             tabs[0].id,
                             {
                                 message: "hideSegment",
-                                type: segmentTimes[i].hidden,
+                                type: downloadedTimes[i].hidden,
                                 UUID: UUID
                             }
                         );
@@ -594,8 +606,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 voteButtonsContainer.appendChild(upvoteButton);
                 voteButtonsContainer.appendChild(downvoteButton);
                 voteButtonsContainer.appendChild(uuidButton);
-                if (segmentTimes[i].actionType === ActionType.Skip
-                        && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segmentTimes[i].hidden)) {
+                if (downloadedTimes[i].actionType === ActionType.Skip
+                        && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(downloadedTimes[i].hidden)) {
                     voteButtonsContainer.appendChild(hideButton);
                 }
                 voteButtonsContainer.appendChild(skipButton);
@@ -947,6 +959,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 text
             });
         }
+    }
+
+    function exportSegments() {
+        copyToClipboard(exportTimes(downloadedTimes));
+
+        const stopAnimation = AnimationUtils.applyLoadingAnimation(PageElements.exportSegmentsButton, 0.3);
+        stopAnimation();
     }
 
     /**

@@ -148,20 +148,32 @@
   margin: 8px;
 }
 
-/*
- * Refresh segments button
- */
 #refreshSegmentsButton {
   display: flex;
   align-items: center;
+  padding: 5px;
+  margin: 5px auto;
+}
+
+#refreshSegmentsButton, #issueReporterImportExport button {
   background: transparent;
   border-radius: 50%;
-  margin: 5px auto;
   border: none;
-  padding: 5px;
 }
-#refreshSegmentsButton:hover {
+
+#refreshSegmentsButton:hover, #issueReporterImportExport button:hover {
   background-color: var(--sb-grey-bg-color);
+}
+
+#issueReporterImportExport button {
+  padding: 5px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#issueReporterImportExport img {
+  width: 24px;
+  display: block;
 }
 
 /*

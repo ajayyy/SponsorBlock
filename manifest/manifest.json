@@ -63,6 +63,8 @@
         "icons/bolt.svg",
         "icons/stopwatch.svg",
         "icons/music-note.svg",
+        "icons/import.svg",
+        "icons/export.svg",
         "icons/PlayerInfoIconSponsorBlocker.svg",
         "icons/PlayerDeleteIconSponsorBlocker.svg",
         "popup.html",
