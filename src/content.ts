@@ -220,6 +220,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "closePopup":
             closeInfoMenu();
             break;
+        case "copyToClipboard":
+            navigator.clipboard.writeText(request.text);
+            break;
 
     }
 }
