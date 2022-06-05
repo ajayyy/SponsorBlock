@@ -1003,7 +1003,7 @@ function getYouTubeVideoID(document: Document): string | boolean {
     const pathname = document.location.pathname;
     const url = document.URL;
     // clips should never skip, going from clip to full video has no indications.
-    if (pathname.startsWith("/clip/")) return false;
+    if (pathname.startsWith("/clip/") && origin.endsWith(".youtube.com")) return false;
     // skip to document and don't hide if on /embed/
     if (pathname.includes("/embed/") && origin.endsWith(".youtube.com")) return getYouTubeVideoIDFromDocument(document, false);
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
