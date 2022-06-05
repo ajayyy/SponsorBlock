@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Mostrar Aviso Após Um Segmento Ser Ignorado"
     },
+    "showCategoryGuidelines": {
+        "message": "Mostrar Categoria de Ajuda"
+    },
     "noticeVisibilityMode0": {
         "message": "Avisos de Ignorar em Tamanho Inteiro"
     },
