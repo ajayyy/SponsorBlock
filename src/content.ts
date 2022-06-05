@@ -1010,7 +1010,7 @@ function getYouTubeVideoID(document: Document): string | boolean {
     // skip to document if matches pattern
     if (pathname.includes("/channel/") || pathname.includes("/user/") || pathname.includes("/c/")) return getYouTubeVideoIDFromDocument(document);
     // not sure, try URL then document
-    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document, false);
+    return getYouTubeVideoIDFromURL(document.URL) || getYouTubeVideoIDFromDocument(document, false);
 }
 
 function getYouTubeVideoIDFromDocument(document: Document, hideIcon = true): string | boolean {
