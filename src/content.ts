@@ -1001,6 +1001,7 @@ function startSkipScheduleCheckingForStartSponsors() {
 function getYouTubeVideoID(document: Document): string | boolean {
     const origin = document.location.origin;
     const pathname = document.location.pathname;
+    const url = document.URL;
     // clips should never skip, going from clip to full video has no indications.
     if (pathname.startsWith("/clip/")) return false;
     // skip to document and don't hide if on /embed/
@@ -1010,7 +1011,7 @@ function getYouTubeVideoID(document: Document): string | boolean {
     // skip to document if matches pattern
     if (pathname.includes("/channel/") || pathname.includes("/user/") || pathname.includes("/c/")) return getYouTubeVideoIDFromDocument(document);
     // not sure, try URL then document
-    return getYouTubeVideoIDFromURL(document.URL) || getYouTubeVideoIDFromDocument(document, false);
+    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document, false);
 }
 
 function getYouTubeVideoIDFromDocument(document: Document, hideIcon = true): string | boolean {
