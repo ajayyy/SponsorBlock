@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Mostrar aviso después de que se omita un segmento"
     },
+    "showCategoryGuidelines": {
+        "message": "Mostrar Ayuda de la Categoría"
+    },
     "noticeVisibilityMode0": {
         "message": "Avisos de Omisión de Tamaño Completo"
     },
@@ -542,17 +545,32 @@
         "message": "a",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline2": {
+        "message": "Se reproduce como si no se hubiera omitido nada"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
     "category_sponsor_description": {
-        "message": "Promoción pagada, recomendaciones pagadas y anuncios directos. No para promoción propia o anuncios gratuitos a causas/creadores/sitios web/productos que les gusten."
+        "message": "Promoción pagada, recomendaciones pagadas y anuncios directos. No para promoción propia o agradecimientos gratuitos a causas/creadores/sitios web/productos que les gusten."
+    },
+    "category_sponsor_guideline1": {
+        "message": "Promociones pagadas"
+    },
+    "category_sponsor_guideline2": {
+        "message": "No para donaciones o mercancía personalizada"
     },
     "category_selfpromo": {
         "message": "Promoción Propia/No Remunerada"
     },
     "category_selfpromo_description": {
         "message": "Similar a \"sponsor\", excepto que para la promoción propia o no remunerada. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donaciones, membresías y mercancía personalizada"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Agradecimientos gratuitos que no añaden al video"
     },
     "category_exclusive_access": {
         "message": "Acceso Exclusivo"
