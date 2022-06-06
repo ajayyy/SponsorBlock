@@ -588,6 +588,9 @@
         "message": "Este video exhibe un producto, servicio o ubicación al que han recibido acceso gratuito o subsidiado",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Todo el video muestra algo con acceso gratuito o subsidiado"
+    },
     "category_interaction": {
         "message": "Recordatorio de Interacción (Suscribir)"
     },
