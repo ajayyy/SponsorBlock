@@ -84,7 +84,7 @@ chrome.runtime.onMessage.addListener(function (request, _, callback) {
         case "unregisterContentScript": 
             unregisterFirefoxContentScript(request.id)
             return false;
-        case "tabs":
+        case "tabs": {
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
@@ -92,11 +92,13 @@ chrome.runtime.onMessage.addListener(function (request, _, callback) {
                 chrome.tabs.sendMessage(
                     tabs[0].id,
                     request.data,
-                    (response) => callback(response)
+                    (response) => {
+                        callback(response);
+                    }
                 );
-            }
-            );
+            });
             return true;
+        }
 	}
 });
 

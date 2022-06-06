@@ -47,7 +47,19 @@ interface CopyToClipboardMessage {
     text: string;
 }
 
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage);
+interface KeyDownMessage {
+    message: "keydown";
+    key: string;
+    keyCode: number;
+    code: string;
+    which: number;
+    shiftKey: boolean;
+    ctrlKey: boolean;
+    altKey: boolean;
+    metaKey: boolean;
+}
+
+export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | KeyDownMessage);
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;

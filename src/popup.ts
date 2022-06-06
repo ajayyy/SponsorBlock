@@ -180,6 +180,36 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
     PageElements.sbPopupIconCopyUserID.addEventListener("click", async () => copyToClipboard(await utils.getHash(Config.config.userID)));
 
+    // Forward click events
+    if (window !== window.top) {
+        document.addEventListener("keydown", (e) => {
+            const target = e.target as HTMLElement;
+            if (target.tagName === "INPUT" 
+                || target.tagName === "TEXTAREA"
+                || e.key === "ArrowUp"
+                || e.key === "ArrowDown") {
+                return;
+            }
+
+            if (e.key === " ") {
+                // No scrolling
+                e.preventDefault();
+            }
+
+            sendTabMessage({
+                message: "keydown",
+                key: e.key,
+                keyCode: e.keyCode,
+                code: e.code,
+                which: e.which,
+                shiftKey: e.shiftKey,
+                ctrlKey: e.ctrlKey,
+                altKey: e.altKey,
+                metaKey: e.metaKey
+            });
+        });
+    }
+
     //show proper disable skipping button
     const disableSkipping = Config.config.disableSkipping;
     if (disableSkipping != undefined && disableSkipping) {

@@ -223,8 +223,21 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "copyToClipboard":
             navigator.clipboard.writeText(request.text);
             break;
-
+        case "keydown":
+            document.dispatchEvent(new KeyboardEvent('keydown', {
+                key: request.key,
+                keyCode: request.keyCode,
+                code: request.code,
+                which: request.which,
+                shiftKey: request.shiftKey,
+                ctrlKey: request.ctrlKey,
+                altKey: request.altKey,
+                metaKey: request.metaKey
+            }));
+            break;
     }
+
+    sendResponse({});
 }
 
 /**
