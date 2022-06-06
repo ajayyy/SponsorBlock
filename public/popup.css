@@ -424,6 +424,10 @@
   padding-bottom: 5px;
 }
 
+.sbStatsSentence .sbExtraInfo {
+  display: inline-block;
+}
+
 /*
  * Increase font size of username input and display
  */
