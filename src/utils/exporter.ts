@@ -11,7 +11,7 @@ export function exportTimes(segments: SponsorTime[]): string {
         }
     }
 
-    return result;
+    return result.replace(/\n$/, "");
 }
 
 function exportTime(segment: SponsorTime): string {
