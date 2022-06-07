@@ -18,6 +18,7 @@
         ],
         "css": [
             "content.css",
+            "shared.css",
             "./libs/Source+Sans+Pro.css",
             "popup.css"
         ]

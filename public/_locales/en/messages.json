@@ -555,6 +555,10 @@
         "message": "to",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Copied!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Include segue transitions"
     },
@@ -1050,5 +1054,11 @@
     },
     "confirmResetToDefault": {
         "message": "Are you sure you want to reset all settings to their default values? This cannot be undone."
+    },
+    "exportSegments": {
+        "message": "Export segments"
+    },
+    "importSegments": {
+        "message": "Import segments"
     }
 }

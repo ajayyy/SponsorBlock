@@ -155,6 +155,10 @@
   margin: 5px auto;
 }
 
+#issueReporterImportExport {
+  position: relative;
+}
+
 #refreshSegmentsButton, #issueReporterImportExport button {
   background: transparent;
   border-radius: 50%;

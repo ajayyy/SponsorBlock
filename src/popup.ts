@@ -9,6 +9,7 @@ import { GenericUtils } from "./utils/genericUtils";
 import { shortCategoryName } from "./utils/categoryUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
 import { exportTimes } from "./utils/exporter";
+import GenericNotice from "./render/GenericNotice";
 const utils = new Utils();
 
 interface MessageListener {
@@ -966,6 +967,23 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         const stopAnimation = AnimationUtils.applyLoadingAnimation(PageElements.exportSegmentsButton, 0.3);
         stopAnimation();
+        new GenericNotice(null, "exportCopied", {
+            title:  chrome.i18n.getMessage(`CopiedExclamation`),
+            timed: true,
+            maxCountdownTime: () => 0.6,
+            referenceNode: PageElements.exportSegmentsButton.parentElement,
+            dontPauseCountdown: true,
+            style: {
+                top: 0,
+                bottom: 0,
+                minWidth: 0,
+                right: "30px",
+                margin: "auto",
+                height: "max-content"
+            },
+            hideLogo: true,
+            hideRightInfo: true
+        });
     }
 
     /**

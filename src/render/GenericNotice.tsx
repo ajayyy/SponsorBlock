@@ -20,12 +20,17 @@ export interface TextBox {
 
 export interface NoticeOptions {
     title: string,
+    referenceNode?: HTMLElement,
     textBoxes?: TextBox[],
     buttons?: ButtonListener[],
     fadeIn?: boolean,
     timed?: boolean
     style?: React.CSSProperties;
     extraClass?: string;
+    maxCountdownTime?: () => number;
+    dontPauseCountdown?: boolean;
+    hideLogo?: boolean;
+    hideRightInfo?: boolean;
 }
 
 export default class GenericNotice {
@@ -42,7 +47,7 @@ export default class GenericNotice {
 
         this.contentContainer = contentContainer;
 
-        const referenceNode = utils.findReferenceNode();
+        const referenceNode = options.referenceNode ?? utils.findReferenceNode();
     
         this.noticeElement = document.createElement("div");
         this.noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
@@ -62,6 +67,10 @@ export default class GenericNotice {
                 ref={this.noticeRef}
                 style={options.style}
                 extraClass={options.extraClass}
+                maxCountdownTime={options.maxCountdownTime}
+                dontPauseCountdown={options.dontPauseCountdown}
+                hideLogo={options.hideLogo}
+                hideRightInfo={options.hideRightInfo}
                 closeListener={() => this.close()} >
                     
                     {this.getMessageBox(this.idSuffix, options.textBoxes)}
