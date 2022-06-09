@@ -1878,8 +1878,8 @@ function dontShowNoticeAgain() {
 /**
  * Helper method for the submission notice to clear itself when it closes
  */
-function resetSponsorSubmissionNotice() {
-    submissionNotice?.close();
+function resetSponsorSubmissionNotice(callRef = true) {
+    submissionNotice?.close(callRef);
     submissionNotice = null;
 }
 
