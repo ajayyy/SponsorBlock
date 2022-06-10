@@ -545,6 +545,9 @@
         "message": "a",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Includi transizioni"
+    },
     "generic_guideline2": {
         "message": "Riproduci come se nulla fosse stato saltato"
     },
