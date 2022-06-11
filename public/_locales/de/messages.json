@@ -4,14 +4,14 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Überspringe Sponsoren, Betteln um Abonnenten und mehr in YouTube-Videos. Melde Sponsoren in Videos, die du schaust, um Anderen Zeit zu ersparen.",
+        "message": "Überspringe gesponserte Inhalte, Aufforderungen zum Interagieren und mehr in YouTube-Videos. Markiere Sponsoren in Videos, um anderen die Zeit zu ersparen.",
         "description": "Description of the extension."
     },
     "400": {
         "message": "Der Server meldet, dass diese Anfrage ungültig war."
     },
     "429": {
-        "message": "Du hast zu viele Segmente für dieses Video eingereicht. Sind es wirklich so viele?"
+        "message": "Du hast zu viele Segmente für dieses Video markiert. Sind es wirklich so viele?"
     },
     "409": {
         "message": "Dieser Inhalt wurde bereits eingereicht."
@@ -86,7 +86,7 @@
         "message": "Segmenterstellung abbrechen"
     },
     "noVideoID": {
-        "message": "Kein YouTube-Video gefunden.\nWenn dies falsch ist, aktualisiere den Tab."
+        "message": "Kein YouTube-Video gefunden.\nLade den Tab neu, falls dies nicht stimmt"
     },
     "refreshSegments": {
         "message": "Segmente aktualisieren"
@@ -886,28 +886,28 @@
         "message": "Dunkler Modus auf der Optionsseite"
     },
     "helpPageThanksForInstalling": {
-        "message": "Danke fürs installieren von SponsorBlock."
+        "message": "Danke für das installieren von SponsorBlock."
     },
     "helpPageReviewOptions": {
-        "message": "Bitte überprüfe die unten stehenden Optionen"
+        "message": "Passe die unten stehenden Optionen auf dich an"
     },
     "helpPageFeatureDisclaimer": {
-        "message": "Viele Funktionen sind standardmäßig deaktiviert. Wenn du Intros und Outtros überspringen willst, Invidious verwenden willst, usw. aktiviere sie unten. Du kannst auch UI-Elemente verstecken/anzeigen."
+        "message": "Viele Funktionen sind standardmäßig deaktiviert. Wenn du Intros und Outtros überspringen, Invidious verwenden, o.ä. willst aktiviere diese unten. Du kannst auch UI-Elemente verstecken/anzeigen."
     },
     "helpPageHowSkippingWorks": {
-        "message": "Wie überspringen funktioniert"
+        "message": "Wie das Überspringen funktioniert"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Videosegmente werden automatisch übersprungen, wenn sie in der Datenbank gefunden werden. Du kannst das Popup öffnen, indem du auf das Erweiterungssymbol klickst, um eine Vorschau darüber zu erhalten, was diese sind."
+        "message": "Videosegmente werden automatisch übersprungen, wenn sie in der Datenbank gefunden werden. Du kannst das Popup öffnen, indem du auf das Erweiterungssymbol klickst, um mehr zu Erfahren."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Wannimmer du ein Segment überspringst, wirst du benachrichtigt. Wenn das Timing falsch erscheint, kannst du as durch klicken auf den Downvote button downvoten! Du kannst auch im Popup voten."
+        "message": "Du wirst benachrichtigt, wenn ein Segment übersprungen wird. Falss dir das Timing falsch erscheint, kannst du uns das durch klicken auf den Downvote button im PopUp wissen lassen!"
     },
     "Submitting": {
         "message": "Übermitteln"
     },
     "helpPageSubmitting1": {
-        "message": "Das übermitteln kann entweder im Popup durch das drücken vom \"Segment Started Jetzt\" Knopf oder im Videoplayer mit den Knöpfen im Player gemacht werden."
+        "message": "Das Übermitteln kann entweder im Popup durch das drücken vom \"Segment Started Jetzt\" Knopf oder im Videoplayer mit den entsprechenden Knöpfen gemacht werden."
     },
     "helpPageSubmitting2": {
         "message": "Mit einem Klick auf den Play-Button wird der Beginn eines Segments markiert, und mit einem Klick auf den Stop-Button dessen Ende. Du kannst mehrere Segmente anlegen, bevor du durch Klicken des Upload-Buttons zum Einreichen fortfährst. Ein Klick auf die Mülltonne löscht deine angelegten Segmente."
@@ -919,25 +919,25 @@
         "message": "Wenn du etwas falsch gemacht hast, kannst du ein Segment bearbeiten oder löschen nachdem du auf den Auf-Pfeil Knopf gedrückt hast."
     },
     "helpPageTooSlow": {
-        "message": "Das ist zu langsam"
+        "message": "Das dauert zu lange"
     },
     "helpPageTooSlow1": {
-        "message": "Es gibt Hotkeys, wenn du diese verwenden möchtest. Drücke die Semikolon-Taste um den Anfang/das Ende eines Sponsor-Segments zu markieren und die Abostrophe-Taste um es zu übermitteln. Diese können in den Optionen geändert werden. Wenn du keine QWERTY-Tastatur verwendest, solltest du eventuell die Keybinds ändern."
+        "message": "Es gibt auch Hotkeys, wenn du diese verwenden möchtest. Drücke die Semikolon-Taste um den Anfang/das Ende eines Sponsor-Segments zu markieren und die Abostrophe-Taste um es zu übermitteln. Diese können in den Optionen geändert werden. Falls dies für dich nicht funktioniert, kannst du die Hotkeys auch ändern."
     },
     "helpPageCopyOfDatabase": {
-        "message": "Kann ich eine kopie der Datenbank erhalten? Was passiert wenn du verschwindest?"
+        "message": "Kann ich eine Kopie der Datenbank erhalten und was passiert wenn die verschwindet?"
     },
     "helpPageCopyOfDatabase1": {
-        "message": "Die Datenbank ist öffentlich und verfügbar unter"
+        "message": "Die Datenbank ist öffentlich und frei verfügbar unter"
     },
     "helpPageCopyOfDatabase2": {
-        "message": "Der Quellcode ist frei verfügbar. Selbst wenn mir etwas passieren würde wären deine Übermittlungen nicht verloren."
+        "message": "Der Quellcode ist frei zugänglich. Selbst wenn mir etwas passieren würde, wären deine Übermittlungen nicht verloren."
     },
     "helpPageNews": {
-        "message": "Nachrichten und wie es gemacht wird"
+        "message": "Neuigkeiten und wie dies gemacht wurde"
     },
     "helpPageSourceCode": {
-        "message": "Wo kann ich den Quellcode kriegen?"
+        "message": "Wo kann ich den Quellcode einsehen?"
     },
     "Credits": {
         "message": "Mitwirkende"
