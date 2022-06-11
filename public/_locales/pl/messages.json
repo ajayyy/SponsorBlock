@@ -11,7 +11,7 @@
         "message": "Serwer odpowiedział, że to zapytanie jest niepoprawne"
     },
     "429": {
-        "message": "Zgłosiłeś za dużo segmentów sponsora dla tego jednego filmu. Jesteś pewien, że jest ich tak dużo?"
+        "message": "Zgłoszono za dużo segmentów sponsora dla tego jednego filmu. Czy na pewno jest ich tak dużo?"
     },
     "409": {
         "message": "To już zostało wysłane wcześniej"
@@ -53,7 +53,7 @@
         "message": "Pomiń"
     },
     "unmute": {
-        "message": "Odcisz"
+        "message": "Wyłącz wyciszenie"
     },
     "paused": {
         "message": "Zatrzymany"
@@ -322,7 +322,7 @@
         "message": "{0} — pominąć?"
     },
     "mute_category": {
-        "message": "Wyciszyć {0}?"
+        "message": "{0} — wyciszyć?"
     },
     "skip_to_category": {
         "message": "Przejść do {0}?",
@@ -449,7 +449,7 @@
         "message": "Ten segment jest krótszy od ustawionego przez Ciebie minimalnego czasu trwania. Może to oznaczać, że ktoś już to zamieścił, ale nie widzisz tego przez to ustawienie. Czy na pewno chcesz to zamieścić?"
     },
     "liveOrPremiere": {
-        "message": "Przesyłanie na aktywnej transmisji na żywo lub premierze jest niedozwolone. Poczekaj aż ona się zakończy, a następnie odśwież stronę i sprawdź, czy te segmenty są nadal prawidłowe."
+        "message": "Przesyłanie segmentów podczas transmisji na żywo lub trwającej premiery jest niedozwolone. Poczekaj, aż się zakończy, a następnie odśwież stronę i sprawdź, czy te segmenty są nadal prawidłowe."
     },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
@@ -464,7 +464,7 @@
         "message": "Zapisz"
     },
     "reset": {
-        "message": "Reset"
+        "message": "Resetuj"
     },
     "customAddressError": {
         "message": "Ten adres nie jest w prawidłowej formie. Upewnij się, że http:// lub https:// znajduje się na początku i nie ma końcowych ukośników."
@@ -536,7 +536,7 @@
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
     },
     "keyAlreadyUsed": {
-        "message": "Ten skrót jest przypisany do innej akcji. Proszę wybrać inny."
+        "message": "Ten skrót jest przypisany do innej czynności. Wybierz inny."
     },
     "to": {
         "message": "do",
@@ -555,13 +555,13 @@
         "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
     },
     "category_exclusive_access": {
-        "message": "Ekskluzywny dostęp"
+        "message": "Dostęp na wyłączność"
     },
     "category_exclusive_access_description": {
-        "message": "Tylko do oznaczania całych filmów. Używane, gdy wideo wyświetla produkt, usługę lub lokalizację, do których otrzymali darmowy lub subsydiowany dostęp."
+        "message": "Tylko do oznaczania całych filmów. Używane, gdy materiał wideo przedstawia produkt, usługę lub miejsce, do którego dostęp został otrzymany bezpłatnie lub dzięki dofinansowaniu."
     },
     "category_exclusive_access_pill": {
-        "message": "Ten film pokazuje produkt, usługę lub lokalizację, do których otrzymali darmowy lub subsydiowany dostęp",
+        "message": "Ten materiał wideo przedstawia produkt, usługę lub miejsce, do którego dostęp został otrzymany bezpłatnie lub dzięki dofinansowaniu",
         "description": "Short description for this category"
     },
     "category_interaction": {
@@ -595,7 +595,7 @@
         "message": "Szybkie podsumowanie poprzednich odcinków lub podgląd tego, co pojawia się później w bieżącym filmie. Dotyczy zmontowanych klipów, a nie ustnych podsumowań."
     },
     "category_filler": {
-        "message": "Wypełniacz Nietematyczny/Żart"
+        "message": "Wypełniacz nietematyczny/Żart"
     },
     "category_filler_description": {
         "message": "Sceny nietematyczne dodawane tylko jako wypełniacz lub dla humoru, które nie są wymagane do zrozumienia głównej treści filmu. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
@@ -695,7 +695,7 @@
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
-        "message": "Ostrzeżenie: Ten typ segmentu, może być maksymalnie jeden. Przesyłanie kilku na raz spowoduje, że pojawi się losowy."
+        "message": "Ostrzeżenie: Ten typ segmentu może być maksymalnie jeden. Przesyłanie kilku na raz spowoduje, że pojawi się losowy."
     },
     "youMustSelectACategory": {
         "message": "Musisz wybrać kategorię dla każdego segmentu, który zamieszczasz!"
@@ -793,13 +793,13 @@
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
-        "message": "Dotacje"
+        "message": "Wesprzyj nas"
     },
     "considerDonating": {
-        "message": "Wesprzyj"
+        "message": "Wesprzyj rozwój wtyczki"
     },
     "hideDonationLink": {
-        "message": "Ukryj Link Do Dotacji"
+        "message": "Ukryj link do darowizny"
     },
     "darkModeOptionsPage": {
         "message": "Tryb ciemny na stronie opcji"
@@ -823,10 +823,10 @@
         "message": "Za każdym razem, gdy pominiesz segment, otrzymasz powiadomienie. Jeśli moment nie wydaje się być poprawny, kliknij łapkę w dół! Możesz również głosować w okienku pop-up."
     },
     "Submitting": {
-        "message": "Wysyłanie"
+        "message": "Przesyłanie"
     },
     "helpPageSubmitting1": {
-        "message": "Wysyłanie może być wykonane w wyskakującym okienku, poprzez kliknięcie przycisku \"Początek segmentu\" lub za pomocą przycisków na odtwarzaczu wideo."
+        "message": "Zgłoszenia można dokonać w wyskakującym okienku, naciskając przycisk „Początek segmentu”, lub za pomocą przycisków w odtwarzaczu wideo."
     },
     "helpPageSubmitting2": {
         "message": "Kliknięcie przycisku odtwarzania wskazuje początek segmentu a kliknięcie ikony stop wskazuje koniec segmentu. Możesz przygotować wielu segmentów przed wysłaniem. Aby wysłać kliknij przycisk potwierdzający, a aby usunąć - na śmietnik."
