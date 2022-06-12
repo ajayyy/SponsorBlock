@@ -546,7 +546,7 @@
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "generic_guideline1": {
-        "message": "Geschmeidige Übergänge einbeziehen"
+        "message": "Fließende Übergänge einbeziehen"
     },
     "generic_guideline2": {
         "message": "Spielt, als ob nichts übersprungen worden wäre"
