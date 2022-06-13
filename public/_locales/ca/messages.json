@@ -56,7 +56,7 @@
         "message": "Deixa de silenciar"
     },
     "paused": {
-        "message": "Pausat"
+        "message": "En pausa"
     },
     "manualPaused": {
         "message": "S'ha aturat el temporitzador"
@@ -222,5 +222,8 @@
     },
     "whatChangeUserID": {
         "message": "Això hauria de romandre privat: és semblant a una contrasenya i no s'hauria de compartir amb cap persona. Si algú hi té accés, poden suplantar-vos. Si esteu cercant el vostre identificador d'usuari públic, premeu la icona del portanotes a la finestra."
+    },
+    "help": {
+        "message": "Ajuda"
     }
 }
