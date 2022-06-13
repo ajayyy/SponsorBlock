@@ -496,7 +496,6 @@
  * Set username form container with "expanded" state
  */
 #setUsername.SBExpanded {
-  width: calc(200% - 130px);
   text-align: left;
 }
 /*
