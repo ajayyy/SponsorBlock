@@ -539,6 +539,11 @@
   background: #444;
 }
 
+#sponsorTimesDonateContainer a {
+  color: var(--sb-main-fg-color);
+  text-decoration: none;
+}
+
 /*
  * "Show Notice Again" button
  */
