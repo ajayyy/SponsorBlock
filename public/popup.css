@@ -462,9 +462,11 @@
  */
 #usernameElement {
   padding: 8px;
+  min-width: 50%;
 }
 #setUsernameContainer {
   display: flex;
+  width: fit-content;
 }
 #setUsernameContainer > button {
   display: flex;
