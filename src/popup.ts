@@ -714,6 +714,17 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         thanksForVotingText.innerText = message;
     }
 
+    function removeVoteMessage(UUID) {
+        const voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
+        voteButtonsContainer.style.display = "block";
+
+        const voteStatusContainer = document.getElementById("sponsorTimesVoteStatusContainer" + UUID);
+        voteStatusContainer.style.display = "none";
+
+        const thanksForVotingText = document.getElementById("sponsorTimesThanksForVotingText" + UUID);
+        thanksForVotingText.removeAttribute("innerText");
+    }
+
     function vote(type, UUID) {
         //add loading info
         addVoteMessage(chrome.i18n.getMessage("Loading"), UUID);
@@ -737,6 +748,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                         } else if (response.successType == -1) {
                             addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
                         }
+                        setTimeout(() => removeVoteMessage(UUID), 1500);
                     }
                 }
             );
