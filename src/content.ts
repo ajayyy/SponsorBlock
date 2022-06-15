@@ -545,6 +545,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     // Don't skip if this category should not be skipped
     if (!shouldSkip(currentSkip) && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) return;
 
+    const skipBuffer = 0.003;
     const skippingFunction = (forceVideoTime?: number) => {
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
@@ -553,7 +554,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         if (incorrectVideoCheck(videoID, currentSkip)) return;
         forceVideoTime ||= Math.max(video.currentTime, getVirtualTime());
 
-        if (forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
+        if (forceVideoTime >= skipTime[0] - skipBuffer && forceVideoTime < skipTime[1]) {
             skipToTime({
                 v: video,
                 skipTime,
@@ -574,7 +575,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
     };
 
-    if (timeUntilSponsor < 0.003) {
+    if (timeUntilSponsor < skipBuffer) {
         skippingFunction(currentTime);
     } else {
         const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
