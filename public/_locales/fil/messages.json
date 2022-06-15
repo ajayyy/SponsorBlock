@@ -1,1 +1,6 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock para YouTube - I-skip ang mga Sponsorships",
+        "description": "Name of the extension."
+    }
+}
