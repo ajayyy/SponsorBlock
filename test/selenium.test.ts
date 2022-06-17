@@ -32,6 +32,9 @@ test("Selenium Chrome test", async () => {
         await setSegmentActionType(driver, 0, 2, false);
         await driver.wait(until.elementIsNotVisible(await getDisplayTimeBox(driver, 0)));
 
+        await toggleWhitelist(driver);
+        await toggleWhitelist(driver);
+
     } finally {
         await driver.quit();
     }
@@ -43,6 +46,7 @@ async function setup(): Promise<WebDriver> {
     options.addArguments("--mute-audio");
     options.addArguments("--disable-features=PreloadMediaEngagementData, MediaEngagementBypassAutoplayPolicies");
     options.addArguments("--headless=chrome");
+    options.addArguments("--window-size=1920,1080");
 
     const driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
     driver.manage().setTimeouts({
@@ -184,4 +188,31 @@ async function muteSkipSegment(driver: WebDriver, startTime: number, endTime: nu
     await driver.sleep(duration * 1000 + 300);
     expect(await video.getAttribute("muted")).toBeNull(); // Default is null for some reason
     await driver.executeScript("document.querySelector('video').pause()");
+}
+
+async function toggleWhitelist(driver: WebDriver): Promise<void> {
+    const popupButton = await driver.findElement(By.id("infoButton"));
+    if ((await popupButton.getCssValue("display")) !== "none") {
+        await driver.actions().move({ origin: popupButton }).perform();
+        await popupButton.click();
+    }
+
+    const popupFrame = await driver.findElement(By.css("#sponsorBlockPopupContainer iframe"));
+    await driver.switchTo().frame(popupFrame);
+
+    const whitelistButton = await driver.findElement(By.id("whitelistButton"));
+
+    let whitelistText = await driver.findElement(By.id("whitelistChannel"));
+    const whitelistDisplayed = await whitelistText.isDisplayed();
+
+    await whitelistButton.click();
+    if (whitelistDisplayed) {
+        const unwhitelistText = await driver.findElement(By.id("unwhitelistChannel"));
+        await driver.wait(until.elementIsVisible(unwhitelistText));
+    } else {
+        whitelistText = await driver.findElement(By.id("whitelistChannel"));
+        await driver.wait(until.elementIsVisible(whitelistText));
+    }
+
+    await driver.switchTo().defaultContent();
 }
