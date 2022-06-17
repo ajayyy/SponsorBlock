@@ -3,8 +3,7 @@ name: Tests
 on: [push, pull_request]
 
 jobs:
-
-  build:
+  test:
     name: Run tests
     runs-on: ubuntu-latest
 
@@ -15,6 +14,9 @@ jobs:
         with:
           node-version: '18'
       - run: npm ci
-
+      - run: sudo apt-get install chromium-chromedriver
+      
+      - name: Copy configuration
+        run: cp config.json.example config.json
       - name: Run tests
-        run: npm run test-without-building
+        run: npm run test

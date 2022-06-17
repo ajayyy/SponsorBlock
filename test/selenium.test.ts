@@ -37,6 +37,7 @@ async function setup(): Promise<WebDriver> {
     options.addArguments("--load-extension=" + Path.join(__dirname, "../dist/"));
     options.addArguments("--mute-audio");
     options.addArguments("--disable-features=PreloadMediaEngagementData, MediaEngagementBypassAutoplayPolicies");
+    options.addArguments("--headless=chrome");
 
     const driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
     driver.manage().setTimeouts({
