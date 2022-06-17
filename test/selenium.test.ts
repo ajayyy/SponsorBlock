@@ -1,4 +1,4 @@
-import { Builder, By, until, WebDriver } from "selenium-webdriver";
+import { Builder, By, until, WebDriver, WebElement } from "selenium-webdriver";
 import * as Chrome from "selenium-webdriver/chrome";
 import * as Path from "path";
 
@@ -27,6 +27,11 @@ test("Selenium Chrome test", async () => {
         await setSegmentActionType(driver, 0, 1, false);
         await editSegments(driver, 0, "0:05.000", "0:13.211", "5", "7.5", "0:05.000 to 0:07.500", false);
         await muteSkipSegment(driver, 5, 7.5);
+
+        // Full video
+        await setSegmentActionType(driver, 0, 2, false);
+        await driver.wait(until.elementIsNotVisible(await getDisplayTimeBox(driver, 0)));
+
     } finally {
         await driver.quit();
     }
@@ -58,7 +63,7 @@ async function waitForInstall(driver: WebDriver, startingTab = 0): Promise<void>
 
 async function goToVideo(driver: WebDriver, videoId: string): Promise<void> {
     await driver.get("https://www.youtube.com/watch?v=" + videoId);
-    await driver.wait(until.elementIsVisible(await driver.findElement(By.className("ytd-video-primary-info-renderer"))));
+    await driver.wait(until.elementIsVisible(await driver.findElement(By.css(".ytd-video-primary-info-renderer, #above-the-fold"))));
 }
 
 async function createSegment(driver: WebDriver, startTime: string, endTime: string, expectedDisplayedTime: string): Promise<void> {
@@ -91,8 +96,7 @@ async function editSegments(driver: WebDriver, index: number, expectedStartTimeB
     }
 
     let editButton = await driver.findElement(By.id("sponsorTimeEditButtonSubmissionNotice" + index));
-    let sponsorTimeDisplays = await driver.findElements(By.className("sponsorTimeDisplay"));
-    let sponsorTimeDisplay = sponsorTimeDisplays[index];
+    const sponsorTimeDisplay = await getDisplayTimeBox(driver, index);
     await sponsorTimeDisplay.click();
     // Ensure edit time appears
     await driver.findElement(By.id("submittingTime0SubmissionNotice" + index));
@@ -101,22 +105,39 @@ async function editSegments(driver: WebDriver, index: number, expectedStartTimeB
     await editButton.click();
     await editButton.click();
 
-    const startTimeBox = await driver.findElement(By.id("submittingTime0SubmissionNotice" + index));
-    expect((await startTimeBox.getAttribute("value"))).toBe(expectedStartTimeBox);
+    const startTimeBox = await getStartTimeBox(driver, index, expectedStartTimeBox);
     await startTimeBox.clear();
     await startTimeBox.sendKeys(startTime);
 
-    const endTimeBox = await driver.findElement(By.id("submittingTime1SubmissionNotice" + index));
-    expect((await endTimeBox.getAttribute("value"))).toBe(expectedEndTimeBox);
+    const endTimeBox = await getEndTimeBox(driver, index, expectedEndTimeBox);
     await endTimeBox.clear();
     await endTimeBox.sendKeys(endTime);
 
     editButton = await driver.findElement(By.id("sponsorTimeEditButtonSubmissionNotice" + index));
     await editButton.click();
 
-    sponsorTimeDisplays = await driver.findElements(By.className("sponsorTimeDisplay"));
-    sponsorTimeDisplay = sponsorTimeDisplays[index];
-    await driver.wait(until.elementTextIs(sponsorTimeDisplay, expectedDisplayedTime));
+    await getDisplayTimeBox(driver, index, expectedDisplayedTime);
+}
+
+async function getStartTimeBox(driver: WebDriver, index: number, expectedStartTimeBox: string): Promise<WebElement> {
+    const startTimeBox = await driver.findElement(By.id("submittingTime0SubmissionNotice" + index));
+    expect((await startTimeBox.getAttribute("value"))).toBe(expectedStartTimeBox);
+    return startTimeBox;
+}
+
+async function getEndTimeBox(driver: WebDriver, index: number, expectedEndTimeBox: string): Promise<WebElement> {
+    const endTimeBox = await driver.findElement(By.id("submittingTime1SubmissionNotice" + index));
+    expect((await endTimeBox.getAttribute("value"))).toBe(expectedEndTimeBox);
+    return endTimeBox;
+}
+
+async function getDisplayTimeBox(driver: WebDriver, index: number, expectedDisplayedTime?: string): Promise<WebElement> {
+    const sponsorTimeDisplay = (await driver.findElements(By.className("sponsorTimeDisplay")))[index];
+    if (expectedDisplayedTime) {
+        driver.wait(until.elementTextIs(sponsorTimeDisplay, expectedDisplayedTime));
+    }
+
+    return sponsorTimeDisplay;
 }
 
 async function setSegmentCategory(driver: WebDriver, index: number, categoryIndex: number, openSubmitBox: boolean): Promise<void> {
