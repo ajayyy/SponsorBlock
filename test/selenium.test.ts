@@ -3,7 +3,7 @@ import * as Chrome from "selenium-webdriver/chrome";
 import * as Path from "path";
 
 test("Selenium Chrome test", async () => {
-    let driver;
+    let driver: WebDriver;
     try {
         driver = await setup();   
     } catch (e) {
@@ -201,8 +201,9 @@ async function toggleWhitelist(driver: WebDriver): Promise<void> {
     await driver.switchTo().frame(popupFrame);
 
     const whitelistButton = await driver.findElement(By.id("whitelistButton"));
+    await driver.wait(until.elementIsVisible(whitelistButton));
 
-    let whitelistText = await driver.findElement(By.id("whitelistChannel"));
+    const whitelistText = await driver.findElement(By.id("whitelistChannel"));
     const whitelistDisplayed = await whitelistText.isDisplayed();
 
     await whitelistButton.click();
@@ -210,7 +211,6 @@ async function toggleWhitelist(driver: WebDriver): Promise<void> {
         const unwhitelistText = await driver.findElement(By.id("unwhitelistChannel"));
         await driver.wait(until.elementIsVisible(unwhitelistText));
     } else {
-        whitelistText = await driver.findElement(By.id("whitelistChannel"));
         await driver.wait(until.elementIsVisible(whitelistText));
     }
 
