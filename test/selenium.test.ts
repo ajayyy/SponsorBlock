@@ -2,6 +2,8 @@ import { Builder, By, until, WebDriver, WebElement } from "selenium-webdriver";
 import * as Chrome from "selenium-webdriver/chrome";
 import * as Path from "path";
 
+import * as fs from "fs";
+
 test("Selenium Chrome test", async () => {
     let driver: WebDriver;
     try {
@@ -35,6 +37,14 @@ test("Selenium Chrome test", async () => {
         await toggleWhitelist(driver);
         await toggleWhitelist(driver);
 
+    } catch (e) {
+        // Save file incase there is a layout change
+        const source = await driver.getPageSource();
+
+        fs.mkdirSync("./test-results"); 
+        fs.writeFileSync("./test-results/source.html", source);
+        
+        throw e;
     } finally {
         await driver.quit();
     }

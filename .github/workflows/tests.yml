@@ -20,3 +20,10 @@ jobs:
         run: cp config.json.example config.json
       - name: Run tests
         run: npm run test
+
+      - name: Upload results on fail
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Results
+          path: ./test-results
