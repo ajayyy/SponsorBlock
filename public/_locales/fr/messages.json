@@ -548,11 +548,23 @@
     "category_sponsor_description": {
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
     },
+    "category_sponsor_guideline1": {
+        "message": "Promotions rémunérées"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Pas pour les dons ou les produits dérivés"
+    },
     "category_selfpromo": {
         "message": "Non rémunéré/autopromotion"
     },
     "category_selfpromo_description": {
         "message": "Semblable aux \"messages commerciaux\", excepté pour la promotion non rémunérée ou l'autopromotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Dons, abonnements (payant) et produits dérivés"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Pas pour des produits dérivés fait par des marques"
     },
     "category_exclusive_access": {
         "message": "Accès exclusif"
@@ -564,11 +576,23 @@
         "message": "Cette vidéo présente un produit, un service ou un lieu pour lequel un accès gratuit ou subventionné a été reçu",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Toute la vidéo présente quelque chose dont le créateur a eu un accès gratuit ou subventionné"
+    },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
     },
     "category_interaction_description": {
         "message": "Lorsqu'il y a un bref rappel pour aimer, s'abonner ou les suivre parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
+    },
+    "category_interaction_guideline1": {
+        "message": "Rappels courts à like, s'abonner ou suivre"
+    },
+    "category_interaction_guideline2": {
+        "message": "Inclut des rappels indirects à commenter"
+    },
+    "category_interaction_guideline3": {
+        "message": "Pas pour la promotion générale, seulement les appels à l'interaction"
     },
     "category_interaction_short": {
         "message": "Rappel d'interaction"
@@ -582,11 +606,20 @@
     "category_intro_short": {
         "message": "Entracte"
     },
+    "category_intro_guideline1": {
+        "message": "Intervalle sans contenu réel"
+    },
+    "category_intro_guideline2": {
+        "message": "Pas pour les transitions avec des informations"
+    },
     "category_outro": {
         "message": "Générique de fin"
     },
     "category_outro_description": {
         "message": "Crédits ou écrans de fin YouTube. Pas pour les conclusions contenant des informations."
+    },
+    "category_outro_guideline1": {
+        "message": "Ne dois pas inclure de contenu, même si les écrans de fin sont apparus"
     },
     "category_preview": {
         "message": "Aperçu/Résumé"
@@ -602,6 +635,9 @@
     },
     "category_filler_short": {
         "message": "Remplissage"
+    },
+    "category_filler_guideline2": {
+        "message": "Distractions, bêtisiers, replays"
     },
     "category_music_offtopic": {
         "message": "Musique : Segment non musical"
@@ -866,6 +902,9 @@
     },
     "LearnMore": {
         "message": "En savoir plus"
+    },
+    "FullDetails": {
+        "message": "Tous les détails"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Vote contre et crée une copie locale à soumettre à nouveau"
