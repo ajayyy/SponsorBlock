@@ -282,7 +282,7 @@
         "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Inizio/Fine segmento",
+        "message": "Inizia/Finisci segmento",
         "description": "Keybind label"
     },
     "setSubmitKeybind": {
@@ -290,7 +290,7 @@
         "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Selezionare una chiave digitandola e scegliere qualsiasi tasto modificatore che si desidera utilizzare."
+        "message": "Seleziona un tasto digitandolo e scegli qualsiasi tasto modificatore che desideri utilizzare."
     },
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
@@ -655,10 +655,10 @@
         "message": "Le scene riempitive sono aggiunte solo per riempire o per umorismo che non sono richieste per comprendere il contenuto principale del video. Questo non dovrebbe includere segmenti che forniscono contesto o dettagli di sfondo."
     },
     "category_filler_short": {
-        "message": "Riempimento"
+        "message": "Filler"
     },
     "category_filler_guideline1": {
-        "message": "Scene non correlate usate solo per riempimenti o umorismo"
+        "message": "Scene non correlate usate solo per filler o umorismo"
     },
     "category_filler_guideline2": {
         "message": "Distrazioni, blooper, replay"
@@ -688,7 +688,7 @@
         "message": "La parte del video che gran parte delle persone stanno cercando. Simile ai commenti \"Il video inizia a x\"."
     },
     "category_poi_highlight_guideline1": {
-        "message": "La sezione che la maggior parte delle persone sta cercando"
+        "message": "La parte che la maggior parte delle persone sta cercando"
     },
     "category_poi_highlight_guideline2": {
         "message": "Può ignorare il contesto"
