@@ -545,6 +545,9 @@
         "message": "a",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Incluye transiciones entre segmentos"
+    },
     "generic_guideline2": {
         "message": "Se reproduce como si no se hubiera omitido nada"
     },
@@ -570,7 +573,10 @@
         "message": "Donaciones, membresías y mercancía personalizada"
     },
     "category_selfpromo_guideline2": {
-        "message": "Agradecimientos gratuitos que no añaden al video"
+        "message": "Agradecimientos gratuitos que no contribuyen al video"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "No para productos ni mercancía diseñados por empresas"
     },
     "category_exclusive_access": {
         "message": "Acceso Exclusivo"
@@ -582,11 +588,23 @@
         "message": "Este video exhibe un producto, servicio o ubicación al que han recibido acceso gratuito o subsidiado",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Todo el video muestra algo con acceso gratuito o subsidiado"
+    },
     "category_interaction": {
         "message": "Recordatorio de Interacción (Suscribir)"
     },
     "category_interaction_description": {
-        "message": "Cuando hay un breve recordatorio para dar like, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo autopromoción en su lugar."
+        "message": "Cuando hay un breve recordatorio para dar me gusta, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo promoción propia en su lugar."
+    },
+    "category_interaction_guideline1": {
+        "message": "Breve recordatorio para dar me gusta, suscribirse o seguir"
+    },
+    "category_interaction_guideline2": {
+        "message": "Incluye recordatorios indirectos para comentar"
+    },
+    "category_interaction_guideline3": {
+        "message": "No para promoción general, solo llamadas a la acción"
     },
     "category_interaction_short": {
         "message": "Recordatorio de Interacción"
@@ -600,17 +618,35 @@
     "category_intro_short": {
         "message": "Intermisión"
     },
+    "category_intro_guideline1": {
+        "message": "Intervalo sin contenido real"
+    },
+    "category_intro_guideline2": {
+        "message": "No para transiciones con información"
+    },
     "category_outro": {
         "message": "Tarjetas/Créditos"
     },
     "category_outro_description": {
         "message": "Créditos o cuando aparecen las tarjetas finales de YouTube. No para conclusiones con información."
     },
+    "category_outro_guideline1": {
+        "message": "No incluyas contenido, aun si las tarjetas finales están en pantalla"
+    },
     "category_preview": {
         "message": "Vista previa/Recapitulación"
     },
     "category_preview_description": {
         "message": "Recapitulación rápida de los episodios anteriores, o una vista previa de lo que va a ocurrir más adelante en el vídeo actual. Está pensado para clips editados juntos, no para resúmenes hablados."
+    },
+    "category_preview_guideline1": {
+        "message": "Clips que aparecen más tarde o en un video futuro"
+    },
+    "category_preview_guideline2": {
+        "message": "Recapitulación de un video anterior"
+    },
+    "category_preview_guideline3": {
+        "message": "No para secciones que añaden contenido adicional"
     },
     "category_filler": {
         "message": "Tangentes de Relleno/Chistes"
@@ -621,6 +657,15 @@
     "category_filler_short": {
         "message": "Relleno"
     },
+    "category_filler_guideline1": {
+        "message": "Escenas tangenciales solo de relleno o humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Distracciones, bloopers, repeticiones"
+    },
+    "category_filler_guideline3": {
+        "message": "No para escenas requeridas para entender el tema"
+    },
     "category_music_offtopic": {
         "message": "Música: Sección sin musica"
     },
@@ -630,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Sin Música"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Secciones que no están en versiones oficiales"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Secciones sin música en un espectáculo en vivo"
+    },
     "category_poi_highlight": {
         "message": "Destacado"
     },
     "category_poi_highlight_description": {
         "message": "La parte del video que la mayoría de gente está buscando. Similar a los comentarios que dicen \"El video comienza en x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "La sección que la mayoría de personas están buscando"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Puede omitir contexto"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Puede saltar al título o miniatura"
     },
     "category_livestream_messages": {
         "message": "Directo: Lecturas de donaciones y mensajes"
@@ -884,6 +944,9 @@
     },
     "LearnMore": {
         "message": "Aprenda Más"
+    },
+    "FullDetails": {
+        "message": "Detalles Completos"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Vota negativamente y crea una copia local para que la puedas volver a enviar"

@@ -546,7 +546,7 @@
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "generic_guideline1": {
-        "message": "Geschmeidige Übergänge einbeziehen"
+        "message": "Fließende Übergänge einbeziehen"
     },
     "generic_guideline2": {
         "message": "Spielt, als ob nichts übersprungen worden wäre"
@@ -558,7 +558,7 @@
         "message": "Bezahlte Werbung, bezahlte Empfehlungen und direkte Werbung, nicht für Eigenwerbung, kostenlose Fremdwerbung oder Empfehlungen für Anlässe/Personen/Webseiten/Produkte."
     },
     "category_sponsor_guideline1": {
-        "message": "Bezahlte Aktionen"
+        "message": "Bezahlte Werbeaktionen"
     },
     "category_sponsor_guideline2": {
         "message": "Nicht für Spenden oder eigenen Merch"
@@ -598,10 +598,10 @@
         "message": "Wenn es im Video eine kurze Erinnerung gibt, den Kanal zu abonnieren oder das Video mit \"Mag ich\" zu markieren."
     },
     "category_interaction_guideline1": {
-        "message": "Kurze Erinnerungen um zu Liken, Abonnieren oder zu Folgen"
+        "message": "Kurze Erinnerungen zum Liken, Abonnieren oder Folgen"
     },
     "category_interaction_guideline2": {
-        "message": "Enthält indirekte Erinnerungen zu kommentieren"
+        "message": "Enthält indirekte Erinnerungen zum Kommentieren"
     },
     "category_interaction_guideline3": {
         "message": "Nicht für allgemeine Förderung, nur Aufruf zum Handeln"
@@ -619,7 +619,7 @@
         "message": "Unterbrechung"
     },
     "category_intro_guideline1": {
-        "message": "Intervall ohne aktuellen Inhalt"
+        "message": "Intervall ohne tatsächlichen Inhalt"
     },
     "category_intro_guideline2": {
         "message": "Nicht für Übergänge mit Informationen"
