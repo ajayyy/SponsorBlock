@@ -801,6 +801,10 @@
     "bracketEnd": {
         "message": "(End)"
     },
+    "End": {
+        "message": "End",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "hidden: downvote"
     },

@@ -264,7 +264,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <span id={"sponsorTimePreviewButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey)}>
-                        {chrome.i18n.getMessage("preview")}
+                        {sponsorTime.actionType !== ActionType.Chapter ? chrome.i18n.getMessage("preview")
+                            : chrome.i18n.getMessage("End")}
                     </span>
                 ): ""}
 
@@ -574,19 +575,19 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     previewTime(ctrlPressed = false, shiftPressed = false): void {
         const sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
         const index = this.props.index;
-
-        const skipTime = sponsorTimes[index].segment[0];
-        // If segment starts at 0:00, start playback at the end of the segment
-        if (skipTime === 0) {
-            this.props.contentContainer().previewTime(sponsorTimes[index].segment[1]);
-            return;
-        }
-
         let seekTime = 2;
         if (ctrlPressed) seekTime = 0.5;
         if (shiftPressed) seekTime = 0.25;
 
-        this.props.contentContainer().previewTime(skipTime - (seekTime * this.props.contentContainer().v.playbackRate));
+        const startTime = sponsorTimes[index].segment[0];
+        const endTime = sponsorTimes[index].segment[1];
+        const isChapter = sponsorTimes[index].actionType === ActionType.Chapter;
+
+        // If segment starts at 0:00, start playback at the end of the segment
+        const skipToEndTime = startTime === 0 || isChapter;
+        const skipTime = skipToEndTime ? endTime : (startTime - (seekTime * this.props.contentContainer().v.playbackRate));
+
+        this.props.contentContainer().previewTime(skipTime, !isChapter);
     }
 
     inspectTime(): void {
