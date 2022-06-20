@@ -216,7 +216,7 @@
         "message": "Memorizza i voti negativi del segmento"
     },
     "whatTrackDownvotes": {
-        "message": "Qualsiasi segmento voti negativamente rimarrà nascosto anche dopo aver ricaricato"
+        "message": "Segmenti votati negativamente rimarranno nascosti anche dopo aver ricaricato la pagina"
     },
     "trackDownvotesWarning": {
         "message": "Attenzione: Disabilitarlo eliminerà tutti i voti negativi precedentemente memorizzati"
