@@ -883,6 +883,9 @@
     "categoryPillTitleText": {
         "message": "This entire video is labeled as this category and is too tightly integrated to be able to separate"
     },
+    "chapterNameTooltipWarning": {
+        "message": "One of your chapter names is similar to a category. You should use categories when possible instead."
+    },
     "experiementOptOut": {
         "message": "Opt-out of all future experiments",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."

@@ -34,6 +34,9 @@ export interface SponsorTimeEditState {
 
 const DEFAULT_CATEGORY = "chooseACategory";
 
+const categoryNames = CompileConfig.categoryList.filter((name) => name !== "chapter")
+    .map((name) => chrome.i18n.getMessage("category_" + name));
+
 class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, SponsorTimeEditState> {
 
     idSuffix: string;
@@ -48,6 +51,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     // Used when selecting POI or Full
     timesBeforeChanging: number[] = [];
     fullVideoWarningShown = false;
+    categoryNameWarningShown = false;
 
     // For description auto-complete
     fetchingSuggestions: boolean;
@@ -101,6 +105,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     render(): React.ReactElement {
         this.checkToShowFullVideoWarning();
+        this.checkToShowChapterWarning();
 
         const style: React.CSSProperties = {
             textAlign: "center"
@@ -336,26 +341,29 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     showScrollToEditToolTip(): void {
         if (!Config.config.scrollToEditTimeUpdate && document.getElementById("sponsorRectangleTooltip" + "sponsorTimesContainer" + this.idSuffix) === null) {
-            this.showToolTip(chrome.i18n.getMessage("SponsorTimeEditScrollNewFeature"), () => { Config.config.scrollToEditTimeUpdate = true });
+            this.showToolTip(chrome.i18n.getMessage("SponsorTimeEditScrollNewFeature"), "scrollToEdit", () => { Config.config.scrollToEditTimeUpdate = true });
         }
     }
 
-    showToolTip(text: string, buttonFunction?: () => void): boolean {
+    showToolTip(text: string, id: string, buttonFunction?: () => void): boolean {
         const element = document.getElementById("sponsorTimesContainer" + this.idSuffix);
-        if (element) { 
-            new RectangleTooltip({
-                text,
-                referenceNode: element.parentElement,
-                prependElement: element,
-                timeout: 15,
-                bottomOffset: 0 + "px",
-                leftOffset: -318 + "px",
-                backgroundColor: "rgba(28, 28, 28, 1.0)",
-                htmlId: "sponsorTimesContainer" + this.idSuffix,
-                buttonFunction,
-                fontSize: "14px",
-                maxHeight: "200px"
-            });
+        if (element) {
+            const htmlId = `sponsorRectangleTooltip${id + this.idSuffix}`;
+            if (!document.getElementById(htmlId)) {
+                new RectangleTooltip({
+                    text,
+                    referenceNode: element.parentElement,
+                    prependElement: element,
+                    timeout: 15,
+                    bottomOffset: 0 + "px",
+                    leftOffset: -318 + "px",
+                    backgroundColor: "rgba(28, 28, 28, 1.0)",
+                    htmlId,
+                    buttonFunction,
+                    fontSize: "14px",
+                    maxHeight: "200px"
+                });
+            }
 
             return true;
         } else {
@@ -370,8 +378,21 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         if (videoPercentage > 0.6 && !this.fullVideoWarningShown 
                 && (sponsorTime.category === "sponsor" || sponsorTime.category === "selfpromo" || sponsorTime.category === "chooseACategory")) {
-            if (this.showToolTip(chrome.i18n.getMessage("fullVideoTooltipWarning"))) {
+            if (this.showToolTip(chrome.i18n.getMessage("fullVideoTooltipWarning"), "fullVideoWarning")) {
                 this.fullVideoWarningShown = true;
+            }
+        }
+    }
+
+    checkToShowChapterWarning(): void {
+        const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+
+        if (sponsorTime.actionType === ActionType.Chapter && sponsorTime.description
+                && !this.categoryNameWarningShown
+                && categoryNames.some(
+                    (category) => sponsorTime.description.toLowerCase().includes(category.toLowerCase()))) {
+            if (this.showToolTip(chrome.i18n.getMessage("chapterNameTooltipWarning"), "chapterWarning")) {
+                this.categoryNameWarningShown = true;
             }
         }
     }
