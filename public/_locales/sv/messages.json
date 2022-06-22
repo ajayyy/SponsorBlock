@@ -545,6 +545,9 @@
         "message": "till",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Inkludera segmentövergångar"
+    },
     "generic_guideline2": {
         "message": "Spelar som om ingenting hoppades över"
     },
@@ -557,6 +560,9 @@
     "category_sponsor_guideline1": {
         "message": "Betalda kampanjer"
     },
+    "category_sponsor_guideline2": {
+        "message": "Inte för donationer eller anpassade varor"
+    },
     "category_selfpromo": {
         "message": "Obetald/självbefodran"
     },
@@ -565,6 +571,12 @@
     },
     "category_selfpromo_guideline1": {
         "message": "Donationer, medlemskap och anpassade varor"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Gratis shoutouts som inte läggs till i videon"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Inte för företagsdesignade produkter och varor"
     },
     "category_exclusive_access": {
         "message": "Exklusiv tillgång"
@@ -576,6 +588,9 @@
         "message": "Denna video visar en produkt, tjänst eller plats som de har fått gratis eller subventionerad tillgång till",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Hela videon visar något med gratis eller subventionerad tillgång"
+    },
     "category_interaction": {
         "message": "Interaktionspåminnelse (Prenumerera)"
     },
@@ -584,6 +599,12 @@
     },
     "category_interaction_guideline1": {
         "message": "Korta påminnelser om att gilla, prenumerera eller följa"
+    },
+    "category_interaction_guideline2": {
+        "message": "Inkluderar indirekta påminnelser att kommentera"
+    },
+    "category_interaction_guideline3": {
+        "message": "Inte för allmän marknadsföring, endast för uppmaningar"
     },
     "category_interaction_short": {
         "message": "Interaktionspåminnelse"
@@ -597,11 +618,20 @@
     "category_intro_short": {
         "message": "Uppehåll"
     },
+    "category_intro_guideline1": {
+        "message": "Intervall utan egentligt innehåll"
+    },
+    "category_intro_guideline2": {
+        "message": "Inte för övergångar med information"
+    },
     "category_outro": {
         "message": "Slutkort/Credits"
     },
     "category_outro_description": {
         "message": "Credits eller när YouTube-slutkort visas. Inte för slut med information."
+    },
+    "category_outro_guideline1": {
+        "message": "Inkludera inte innehåll, även om slutkort visas på skärmen"
     },
     "category_preview": {
         "message": "Förhandsgranska/sammanfatta"
@@ -609,8 +639,14 @@
     "category_preview_description": {
         "message": "Snabb sammanfattning av tidigare avsnitt eller en förhandsvisning av vad som kommer upp senare i den aktuella videon. Avsett för redigerade klipp, inte för sammanfattningar."
     },
+    "category_preview_guideline1": {
+        "message": "Klipp som visas senare, eller i en framtida video"
+    },
     "category_preview_guideline2": {
         "message": "Sammanfattning av en tidigare video"
+    },
+    "category_preview_guideline3": {
+        "message": "Inte för sektioner som lägger till ytterligare innehåll"
     },
     "category_filler": {
         "message": "Ämnesavvikelse/Skämt"
@@ -621,6 +657,15 @@
     "category_filler_short": {
         "message": "Utfyllnad"
     },
+    "category_filler_guideline1": {
+        "message": "Tangentiella scener endast för utfyllnad eller humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Distraktioner, bloopers, repriser"
+    },
+    "category_filler_guideline3": {
+        "message": "Inte för scener som krävs för att förstå ämnet"
+    },
     "category_music_offtopic": {
         "message": "Musik: Icke-musikavsnitt"
     },
@@ -630,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Icke-musik"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Avsnitt som inte finns i officiella utgåvor"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Icke-musik i ett liveframträdande"
+    },
     "category_poi_highlight": {
         "message": "Höjdpunkt"
     },
     "category_poi_highlight_description": {
         "message": "Den del av videon som de flesta letar efter. Liknande kommentarer \"Video börjar på x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Avsnitt som de flesta personer letar efter"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Kan hoppa över sammanhang"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Kan hoppa över till titeln eller miniatyrbilden"
     },
     "category_livestream_messages": {
         "message": "Liveström: Donations-/meddelandeavläsningar"

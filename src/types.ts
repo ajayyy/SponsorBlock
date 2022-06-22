@@ -16,7 +16,7 @@ export interface ContentContainer {
         updatePreviewBar: () => void,
         onMobileYouTube: boolean,
         sponsorSubmissionNotice: SubmissionNotice,
-        resetSponsorSubmissionNotice: () => void,
+        resetSponsorSubmissionNotice: (callRef?: boolean) => void,
         updateEditButtonsOnPlayer: () => void,
         previewTime: (time: number, unpause?: boolean) => void,
         videoInfo: VideoInfo,

@@ -35,7 +35,7 @@ class SubmissionNotice {
                 contentContainer={contentContainer}
                 callback={callback} 
                 ref={this.noticeRef}
-                closeListener={() => this.close()} />,
+                closeListener={() => this.close(false)} />,
             this.noticeElement
         );
     }
@@ -44,7 +44,8 @@ class SubmissionNotice {
         this.noticeRef.current.forceUpdate();
     }
 
-    close(): void {
+    close(callRef = true): void {
+        if (callRef) this.noticeRef.current.cancel();
         ReactDOM.unmountComponentAtNode(this.noticeElement);
 
         this.noticeElement.remove();

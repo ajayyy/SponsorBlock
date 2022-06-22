@@ -448,6 +448,10 @@
   padding-bottom: 5px;
 }
 
+.sbStatsSentence .sbExtraInfo {
+  display: inline-block;
+}
+
 /*
  * Increase font size of username input and display
  */
@@ -482,9 +486,11 @@
  */
 #usernameElement {
   padding: 8px;
+  min-width: 50%;
 }
 #setUsernameContainer {
   display: flex;
+  width: fit-content;
 }
 #setUsernameContainer > button {
   display: flex;
@@ -514,7 +520,6 @@
  * Set username form container with "expanded" state
  */
 #setUsername.SBExpanded {
-  width: calc(200% - 130px);
   text-align: left;
 }
 /*
@@ -557,6 +562,11 @@
 }
 #sbFooter a:hover {
   background: #444;
+}
+
+#sponsorTimesDonateContainer a {
+  color: var(--sb-main-fg-color);
+  text-decoration: none;
 }
 
 /*

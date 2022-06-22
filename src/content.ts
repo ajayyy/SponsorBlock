@@ -255,7 +255,21 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             });
             break;
         }
+        case "keydown":
+            document.dispatchEvent(new KeyboardEvent('keydown', {
+                key: request.key,
+                keyCode: request.keyCode,
+                code: request.code,
+                which: request.which,
+                shiftKey: request.shiftKey,
+                ctrlKey: request.ctrlKey,
+                altKey: request.altKey,
+                metaKey: request.metaKey
+            }));
+            break;
     }
+
+    sendResponse({});
 }
 
 /**
@@ -558,6 +572,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         }
     }
 
+    const skipBuffer = 0.003;
     const skippingFunction = (forceVideoTime?: number) => {
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
@@ -567,7 +582,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         forceVideoTime ||= Math.max(video.currentTime, getVirtualTime());
 
         if ((shouldSkip(currentSkip) || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment))) {
-            if (forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
+            if (forceVideoTime >= skipTime[0] - skipBuffer && forceVideoTime < skipTime[1]) {
                 skipToTime({
                     v: video,
                     skipTime,
@@ -591,7 +606,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
     };
 
-    if (timeUntilSponsor < 0.003) {
+    if (timeUntilSponsor < skipBuffer) {
         skippingFunction(currentTime);
     } else {
         const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
@@ -1561,9 +1576,9 @@ async function createButtons(): Promise<void> {
     controls = await utils.wait(getControls).catch();
 
     // Add button if does not already exist in html
-    createButton("startSegment", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker.svg");
-    createButton("cancelSegment", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerCancelSegmentIconSponsorBlocker.svg");
-    createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker.svg");
+    createButton("startSegment", "sponsorStart", () => startOrEndTimingNewSegment(), "PlayerStartIconSponsorBlocker.svg");
+    createButton("cancelSegment", "sponsorCancel", () => cancelCreatingSegment(), "PlayerCancelSegmentIconSponsorBlocker.svg");
+    createButton("delete", "clearTimes", () => clearSponsorTimes(), "PlayerDeleteIconSponsorBlocker.svg");
     createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
     createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
 
@@ -1791,17 +1806,6 @@ function closeInfoMenu() {
     }
 }
 
-/**
- * The content script currently has no way to notify the info menu of changes. As a workaround we close it, thus making it query the new information when reopened.
- *
- * This function and all its uses should be removed when this issue is fixed.
- * */
-function closeInfoMenuAnd<T>(func: () => T): T {
-    closeInfoMenu();
-
-    return func();
-}
-
 function clearSponsorTimes() {
     const currentVideoID = sponsorVideoID;
 
@@ -1928,8 +1932,8 @@ function dontShowNoticeAgain() {
 /**
  * Helper method for the submission notice to clear itself when it closes
  */
-function resetSponsorSubmissionNotice() {
-    submissionNotice?.close();
+function resetSponsorSubmissionNotice(callRef = true) {
+    submissionNotice?.close(callRef);
     submissionNotice = null;
 }
 
