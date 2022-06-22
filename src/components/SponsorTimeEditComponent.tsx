@@ -34,8 +34,8 @@ export interface SponsorTimeEditState {
 
 const DEFAULT_CATEGORY = "chooseACategory";
 
-const categoryNames = CompileConfig.categoryList.filter((name) => name !== "chapter")
-    .map((name) => chrome.i18n.getMessage("category_" + name));
+const categoryNamesGrams: string[] = [].concat(...CompileConfig.categoryList.filter((name) => name !== "chapter")
+    .map((name) => chrome.i18n.getMessage("category_" + name).split(/\/|\s|-/)));
 
 class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, SponsorTimeEditState> {
 
@@ -389,7 +389,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         if (sponsorTime.actionType === ActionType.Chapter && sponsorTime.description
                 && !this.categoryNameWarningShown
-                && categoryNames.some(
+                && categoryNamesGrams.some(
                     (category) => sponsorTime.description.toLowerCase().includes(category.toLowerCase()))) {
             if (this.showToolTip(chrome.i18n.getMessage("chapterNameTooltipWarning"), "chapterWarning")) {
                 this.categoryNameWarningShown = true;
