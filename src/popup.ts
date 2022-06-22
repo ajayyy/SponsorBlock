@@ -1,7 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType, StorageChangesObject } from "./types";
+import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType, StorageChangesObject, CategorySkipOption } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse, ImportSegmentsResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
@@ -510,7 +510,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             if (downloadedTimes.length > 0) {
                 PageElements.issueReporterImportExport.classList.remove("hidden");
-            } else {
+                if (utils.getCategorySelection("chapter")?.option === CategorySkipOption.ShowOverlay) {
+                    PageElements.importSegmentsButton.classList.remove("hidden");
+                }
+            } else { 
                 PageElements.issueReporterImportExport.classList.add("hidden");
             }
 
