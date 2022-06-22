@@ -1,7 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, ActionType } from "./types";
+import { SponsorTime, SponsorHideType, ActionType, StorageChangesObject } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
@@ -133,6 +133,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     getSegmentsFromContentScript(false);
     await utils.wait(() => Config.config !== null && allowPopup, 5000, 5);
     document.querySelector("body").style.removeProperty("visibility");
+    if (!Config.configSyncListeners.includes(contentConfigUpdateListener)) {
+        Config.configSyncListeners.push(contentConfigUpdateListener);
+    }
 
     PageElements.sbCloseButton.addEventListener("click", () => {
         sendTabMessage({
@@ -917,7 +920,16 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         return (days > 0 ? days + chrome.i18n.getMessage("dayAbbreviation") + " " : "") + (hours > 0 ? hours + chrome.i18n.getMessage("hourAbbreviation") + " " : "") + (minutes % 60).toFixed(1);
     }
 
-    //end of function
+    function contentConfigUpdateListener(changes: StorageChangesObject) {
+        for (const key in changes) {
+            switch(key) {
+                case "unsubmittedSegments":
+                    sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
+                    updateSegmentEditingUI();
+                    break;
+            }
+        }
+    }
 }
 
 runThePopup();

@@ -1519,9 +1519,9 @@ async function createButtons(): Promise<void> {
     controls = await utils.wait(getControls).catch();
 
     // Add button if does not already exist in html
-    createButton("startSegment", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker.svg");
-    createButton("cancelSegment", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerCancelSegmentIconSponsorBlocker.svg");
-    createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker.svg");
+    createButton("startSegment", "sponsorStart", () => startOrEndTimingNewSegment(), "PlayerStartIconSponsorBlocker.svg");
+    createButton("cancelSegment", "sponsorCancel", () => cancelCreatingSegment(), "PlayerCancelSegmentIconSponsorBlocker.svg");
+    createButton("delete", "clearTimes", () => clearSponsorTimes(), "PlayerDeleteIconSponsorBlocker.svg");
     createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
     createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
 
@@ -1740,17 +1740,6 @@ function closeInfoMenu() {
     if (!document.URL.includes("/embed/") && playerButtons.info) {
         playerButtons.info.button.style.display = "unset";
     }
-}
-
-/**
- * The content script currently has no way to notify the info menu of changes. As a workaround we close it, thus making it query the new information when reopened.
- *
- * This function and all its uses should be removed when this issue is fixed.
- * */
-function closeInfoMenuAnd<T>(func: () => T): T {
-    closeInfoMenu();
-
-    return func();
 }
 
 function clearSponsorTimes() {
