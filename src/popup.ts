@@ -2,7 +2,7 @@ import Config from "./config";
 
 import Utils from "./utils";
 import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType } from "./types";
-import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
+import { Message, MessageResponse, IsInfoFoundMessageResponse, ImportSegmentsResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
@@ -143,7 +143,11 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sbCloseButton",
         "issueReporterImportExport",
         "importSegmentsButton",
-        "exportSegmentsButton"
+        "exportSegmentsButton",
+        "importSegmentsMenu",
+        "importSegmentsText",
+        "importSegmentsSubmit"
+
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     getSegmentsFromContentScript(false);
@@ -174,6 +178,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     PageElements.exportSegmentsButton.addEventListener("click", exportSegments);
+    PageElements.importSegmentsButton.addEventListener("click", 
+        () => PageElements.importSegmentsMenu.classList.toggle("hidden"));
+    PageElements.importSegmentsSubmit.addEventListener("click", importSegments);
 
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
     PageElements.whitelistToggle.addEventListener("change", function () {
@@ -960,6 +967,17 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 text
             });
         }
+    }
+
+    async function importSegments() {
+        const text = (PageElements.importSegmentsText as HTMLInputElement).value;
+
+        await sendTabMessage({
+            message: "importSegments",
+            data: text
+        }) as ImportSegmentsResponse;
+
+        PageElements.importSegmentsMenu.classList.add("hidden");
     }
 
     function exportSegments() {

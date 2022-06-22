@@ -17,9 +17,9 @@ export function exportTimes(segments: SponsorTime[]): string {
 function exportTime(segment: SponsorTime): string {
     const name = segment.description || shortCategoryName(segment.category);
 
-    return `${GenericUtils.getFormattedTime(segment.segment[0])}${
+    return `${GenericUtils.getFormattedTime(segment.segment[0], true)}${
         segment.segment[1] && segment.segment[0] !== segment.segment[1] 
-            ? ` - ${GenericUtils.getFormattedTime(segment.segment[1])}` : ""} ${name}`;
+            ? ` - ${GenericUtils.getFormattedTime(segment.segment[1], true)}` : ""} ${name}`;
 }
 
 export function importTimes(data: string, videoDuration: number): SponsorTime[] {

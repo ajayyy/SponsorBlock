@@ -19,6 +19,7 @@ import { CategoryPill } from "./render/CategoryPill";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
 import { logDebug } from "./utils/logger";
+import { importTimes } from "./utils/exporter";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
 utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
@@ -231,7 +232,29 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "copyToClipboard":
             navigator.clipboard.writeText(request.text);
             break;
+        case "importSegments": {
+            const importedSegments = importTimes(request.data, video.duration);
+            let addedSegments = false;
+            for (const segment of importedSegments) {
+                if (!sponsorTimesSubmitting.some((s) => s.segment[0] === segment.segment[0] && s.segment[1] === s.segment[1])) {
+                    sponsorTimesSubmitting.push(segment);
+                    addedSegments = true;
+                }
+            }
 
+            if (addedSegments) {
+                Config.config.unsubmittedSegments[sponsorVideoID] = sponsorTimesSubmitting;
+                Config.forceSyncUpdate("unsubmittedSegments");
+
+                updateEditButtonsOnPlayer();
+                updateSponsorTimesSubmitting(false);
+            }
+
+            sendResponse({
+                importedSegments
+            });
+            break;
+        }
     }
 }
 

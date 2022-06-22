@@ -180,6 +180,14 @@
   display: block;
 }
 
+#importSegmentsText {
+  margin-top: 7px;
+}
+
+#importSegmentsMenu button {
+  padding: 10px;
+}
+
 /*
  * <details> wrapper around each segment
  */

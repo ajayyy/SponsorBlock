@@ -45,12 +45,22 @@
           </div>
           <div id="issueReporterTimeButtons"></div>
           <div id="issueReporterImportExport" class="hidden">
-            <button id="importSegmentsButton" title="__MSG_importSegments__">
-              <img src="/icons/import.svg" alt="Refresh icon" id="importSegments" />
-            </button>
-            <button id="exportSegmentsButton" title="__MSG_exportSegments__">
-              <img src="/icons/export.svg" alt="Export icon" id="exportSegments" />
-            </button>
+            <div id="importExportButtons">
+              <button id="importSegmentsButton" title="__MSG_importSegments__">
+                <img src="/icons/import.svg" alt="Refresh icon" id="importSegments" />
+              </button>
+              <button id="exportSegmentsButton" title="__MSG_exportSegments__">
+                <img src="/icons/export.svg" alt="Export icon" id="exportSegments" />
+              </button>
+            </div>
+
+            <span id="importSegmentsMenu" class="hidden">
+              <textarea id="importSegmentsText" rows="5" style="width:80%"></textarea>
+
+              <button id="importSegmentsSubmit" title="__MSG_importSegments__">
+                __MSG_Import__
+              </button>
+            </span>
           </div>
         </div>
       </div>

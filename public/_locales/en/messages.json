@@ -1063,6 +1063,10 @@
         "message": "Export segments"
     },
     "importSegments": {
-        "message": "Import segments"
+        "message": "Import chapters"
+    },
+    "Import": {
+        "message": "Import",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     }
 }

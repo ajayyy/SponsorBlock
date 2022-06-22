@@ -52,7 +52,12 @@ interface CopyToClipboardMessage {
     text: string;
 }
 
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage);
+interface ImportSegmentsMessage {
+    message: "importSegments";
+    data: string;
+}
+
+export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage);
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;
@@ -83,10 +88,15 @@ export type MessageResponse =
     | SponsorStartResponse
     | IsChannelWhitelistedResponse
     | Record<string, never>
-    | VoteResponse;
+    | VoteResponse
+    | ImportSegmentsResponse;
 
 export interface VoteResponse {
     successType: number;
     statusCode: number;
     responseText: string;
+}
+
+export interface ImportSegmentsResponse {
+    importedSegments: SponsorTime[];
 }
