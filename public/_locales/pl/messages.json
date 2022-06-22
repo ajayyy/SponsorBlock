@@ -11,7 +11,7 @@
         "message": "Serwer odpowiedział, że to zapytanie jest niepoprawne"
     },
     "429": {
-        "message": "Zgłosiłeś za dużo segmentów sponsora dla tego jednego filmu. Jesteś pewien, że jest ich tak dużo?"
+        "message": "Zgłoszono za dużo segmentów sponsora dla tego jednego filmu. Czy na pewno jest ich tak dużo?"
     },
     "409": {
         "message": "To już zostało wysłane wcześniej"
@@ -239,20 +239,23 @@
     "showSkipNotice": {
         "message": "Pokaż informację po pominięciu segmentu"
     },
+    "showCategoryGuidelines": {
+        "message": "Pokaż pomoc kategorii"
+    },
     "noticeVisibilityMode0": {
         "message": "Pełnowymiarowe powiadomienia o przewinięciu"
     },
     "noticeVisibilityMode1": {
-        "message": "Małe powiadomienia o automatycznym przewijaniu"
+        "message": "Małe powiadomienia o automatycznym pomijaniu"
     },
     "noticeVisibilityMode2": {
         "message": "Małe powiadomienia o przewinięciu"
     },
     "noticeVisibilityMode3": {
-        "message": "Znikające powiadomienia o automatycznym przewijaniu"
+        "message": "Znikające powiadomienia o automatycznym pomijaniu"
     },
     "noticeVisibilityMode4": {
-        "message": "Znikające powiadomienia o przewijaniu"
+        "message": "Znikające powiadomienia o pomijaniu"
     },
     "longDescription": {
         "message": "SponsorBlock pozwala pomijać sponsorów, intra, outra, przypomnienia o subskrypcjach i inne irytujące fragmenty filmów na YouTube. SponsorBlock jest opartym na crowdsourcingu rozszerzeniem do przeglądarki, które pozwala każdemu zgłosić początek i koniec segmentów sponsorowanych oraz innych segmentów w filmach na YouTube. Kiedy ktoś już zamieści te informacje, wszyscy pozostali z tym rozszerzeniem będą pomijać segment sponsorowany. Możesz również pomijać fragmenty teledysków bez muzyki.",
@@ -322,7 +325,7 @@
         "message": "{0} — pominąć?"
     },
     "mute_category": {
-        "message": "Wyciszyć {0}?"
+        "message": "{0} — wyciszyć?"
     },
     "skip_to_category": {
         "message": "Przejść do {0}?",
@@ -449,7 +452,7 @@
         "message": "Ten segment jest krótszy od ustawionego przez Ciebie minimalnego czasu trwania. Może to oznaczać, że ktoś już to zamieścił, ale nie widzisz tego przez to ustawienie. Czy na pewno chcesz to zamieścić?"
     },
     "liveOrPremiere": {
-        "message": "Przesyłanie na aktywnej transmisji na żywo lub premierze jest niedozwolone. Poczekaj aż ona się zakończy, a następnie odśwież stronę i sprawdź, czy te segmenty są nadal prawidłowe."
+        "message": "Przesyłanie segmentów podczas transmisji na żywo lub trwającej premiery jest niedozwolone. Poczekaj, aż się zakończy, a następnie odśwież stronę i sprawdź, czy te segmenty są nadal prawidłowe."
     },
     "showUploadButton": {
         "message": "Pokaż przycisk wysyłania"
@@ -464,7 +467,7 @@
         "message": "Zapisz"
     },
     "reset": {
-        "message": "Reset"
+        "message": "Resetuj"
     },
     "customAddressError": {
         "message": "Ten adres nie jest w prawidłowej formie. Upewnij się, że http:// lub https:// znajduje się na początku i nie ma końcowych ukośników."
@@ -536,11 +539,17 @@
         "message": "Informacje do debugowania zostały skopiowane do schowka. Możesz usunąć dane, których nie chcesz udostępniać. Zapisz je w pliku tekstowym albo wklej do raportu podczas zgłaszania błędu."
     },
     "keyAlreadyUsed": {
-        "message": "Ten skrót jest przypisany do innej akcji. Proszę wybrać inny."
+        "message": "Ten skrót jest przypisany do innej czynności. Wybierz inny."
     },
     "to": {
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "generic_guideline1": {
+        "message": "Zawiera płynne przejścia"
+    },
+    "generic_guideline2": {
+        "message": "Odtwarza się, jakby nic nie zostało pominięte"
     },
     "category_sponsor": {
         "message": "Sponsor"
@@ -548,27 +557,54 @@
     "category_sponsor_description": {
         "message": "Płatna promocja, płatne rekomendacje oraz bezpośrednie reklamy. Nie do autopromocji ani darmowych wyrazów uznania dla kwestii/twórców/stron/produktów, które im się podobają."
     },
+    "category_sponsor_guideline1": {
+        "message": "Segmenty sponsorowane"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Nie dla donateów lub merchu"
+    },
     "category_selfpromo": {
         "message": "Nieopłacona/Własna promocja"
     },
     "category_selfpromo_description": {
         "message": "Podobnie jak \"sponsor\", ale nieodpłatnie bądź w ramach promocji własnej. Obejmuje to sekcje o własnych produktach, donacjach czy informacje o tym, z kim współpracowali."
     },
+    "category_selfpromo_guideline1": {
+        "message": "Dotacje, płatne członkostwo i merch"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Szybkie przypomnienia, które nie wnoszą nic do filmu"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Nie dla produktów zaprojektowanych przez duże firmy"
+    },
     "category_exclusive_access": {
-        "message": "Ekskluzywny dostęp"
+        "message": "Dostęp na wyłączność"
     },
     "category_exclusive_access_description": {
-        "message": "Tylko do oznaczania całych filmów. Używane, gdy wideo wyświetla produkt, usługę lub lokalizację, do których otrzymali darmowy lub subsydiowany dostęp."
+        "message": "Tylko do oznaczania całych filmów. Używane, gdy materiał wideo przedstawia produkt, usługę lub miejsce, do którego dostęp został otrzymany bezpłatnie lub dzięki dofinansowaniu."
     },
     "category_exclusive_access_pill": {
-        "message": "Ten film pokazuje produkt, usługę lub lokalizację, do których otrzymali darmowy lub subsydiowany dostęp",
+        "message": "Ten materiał wideo przedstawia produkt, usługę lub miejsce, do którego dostęp został otrzymany bezpłatnie lub dzięki dofinansowaniu",
         "description": "Short description for this category"
+    },
+    "category_exclusive_access_guideline1": {
+        "message": "Cały film jest poświęcony czemuś z darmowym lub płatnym dostępem"
     },
     "category_interaction": {
         "message": "Przypomnienie o interakcji (Subskrybuj)"
     },
     "category_interaction_description": {
         "message": "Gdy ma miejsce krótkie przypomnienie, by lajkować, subskrybować lub śledzić ich w trakcie kontentu. Jeśli trwa to długo lub dotyczy czegoś konkretnego, powinno być zamiast tego jako promocja własna."
+    },
+    "category_interaction_guideline1": {
+        "message": "Krótkie przypomnienia, by polubić lub zasubskrybować"
+    },
+    "category_interaction_guideline2": {
+        "message": "Zawiera niebezpośrednie zachęcanie do komentowania"
+    },
+    "category_interaction_guideline3": {
+        "message": "Nie dla ogólnej promocji, tylko zaproszenia do działania"
     },
     "category_interaction_short": {
         "message": "Przypomnienie o interakcji"
@@ -582,11 +618,20 @@
     "category_intro_short": {
         "message": "Przerwa"
     },
+    "category_intro_guideline1": {
+        "message": "Przerwy bez rzeczywistej zawartości"
+    },
+    "category_intro_guideline2": {
+        "message": "Nie dla przejść zawierających informacje"
+    },
     "category_outro": {
         "message": "Ekran końcowy/Napisy"
     },
     "category_outro_description": {
         "message": "Napisy końcowe lub gdy pojawia się ekran końcowy. Nie do konkluzji zawierających informacje."
+    },
+    "category_outro_guideline1": {
+        "message": "Nie zawiera treści, nawet jeśli na ekranie są karty końcowe"
     },
     "category_preview": {
         "message": "Zapowiedź/Podsumowanie"
@@ -594,14 +639,32 @@
     "category_preview_description": {
         "message": "Szybkie podsumowanie poprzednich odcinków lub podgląd tego, co pojawia się później w bieżącym filmie. Dotyczy zmontowanych klipów, a nie ustnych podsumowań."
     },
+    "category_preview_guideline1": {
+        "message": "Klipy, które pojawiają się później lub w następnym filmie"
+    },
+    "category_preview_guideline2": {
+        "message": "Podsumowanie poprzedniego filmu"
+    },
+    "category_preview_guideline3": {
+        "message": "Nie dla sekcji, które zawierają potrzebne informacje"
+    },
     "category_filler": {
-        "message": "Wypełniacz Nietematyczny/Żart"
+        "message": "Wypełniacz nietematyczny/Żart"
     },
     "category_filler_description": {
         "message": "Sceny nietematyczne dodawane tylko jako wypełniacz lub dla humoru, które nie są wymagane do zrozumienia głównej treści filmu. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
     },
     "category_filler_short": {
         "message": "Wypełniacz"
+    },
+    "category_filler_guideline1": {
+        "message": "Przerywniki lub sceny czysto humorystyczne"
+    },
+    "category_filler_guideline2": {
+        "message": "Rozpraszacze, wpadki, powtórki"
+    },
+    "category_filler_guideline3": {
+        "message": "Nie dla scen wymaganych, by zrozumieć temat"
     },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Bez muzyki"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Sekcje, których nie ma w oficjalnych wydaniach"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Niemuzyczna część wystąpienia na żywo"
+    },
     "category_poi_highlight": {
         "message": "Wyróżnione"
     },
     "category_poi_highlight_description": {
         "message": "Część filmu, która interesuje większość osób. Podobne do komentarzy typu „Filmik zaczyna się od x”."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Część filmu, której szuka większość osób"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Może pomijać kontekst"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Może pomijać do tytułu lub miniaturki"
     },
     "category_livestream_messages": {
         "message": "Transmisja live: Dotacja/Czytanie wiadomości"
@@ -695,7 +773,7 @@
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
-        "message": "Ostrzeżenie: Ten typ segmentu, może być maksymalnie jeden. Przesyłanie kilku na raz spowoduje, że pojawi się losowy."
+        "message": "Ostrzeżenie: Ten typ segmentu może być maksymalnie jeden. Przesyłanie kilku na raz spowoduje, że pojawi się losowy."
     },
     "youMustSelectACategory": {
         "message": "Musisz wybrać kategorię dla każdego segmentu, który zamieszczasz!"
@@ -708,6 +786,9 @@
     },
     "hiddenDueToDuration": {
         "message": "ukryty: zbyt krótki"
+    },
+    "manuallyHidden": {
+        "message": "ręcznie ukryty"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -793,13 +874,13 @@
         "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
-        "message": "Dotacje"
+        "message": "Wesprzyj nas"
     },
     "considerDonating": {
-        "message": "Wesprzyj"
+        "message": "Wesprzyj rozwój wtyczki"
     },
     "hideDonationLink": {
-        "message": "Ukryj Link Do Dotacji"
+        "message": "Ukryj link do darowizny"
     },
     "darkModeOptionsPage": {
         "message": "Tryb ciemny na stronie opcji"
@@ -823,10 +904,10 @@
         "message": "Za każdym razem, gdy pominiesz segment, otrzymasz powiadomienie. Jeśli moment nie wydaje się być poprawny, kliknij łapkę w dół! Możesz również głosować w okienku pop-up."
     },
     "Submitting": {
-        "message": "Wysyłanie"
+        "message": "Przesyłanie"
     },
     "helpPageSubmitting1": {
-        "message": "Wysyłanie może być wykonane w wyskakującym okienku, poprzez kliknięcie przycisku \"Początek segmentu\" lub za pomocą przycisków na odtwarzaczu wideo."
+        "message": "Zgłoszenia można dokonać w wyskakującym okienku, naciskając przycisk „Początek segmentu”, lub za pomocą przycisków w odtwarzaczu wideo."
     },
     "helpPageSubmitting2": {
         "message": "Kliknięcie przycisku odtwarzania wskazuje początek segmentu a kliknięcie ikony stop wskazuje koniec segmentu. Możesz przygotować wielu segmentów przed wysłaniem. Aby wysłać kliknij przycisk potwierdzający, a aby usunąć - na śmietnik."
@@ -864,6 +945,9 @@
     "LearnMore": {
         "message": "Dowiedz się więcej"
     },
+    "FullDetails": {
+        "message": "Pełne szczegóły"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Daje łapkę w dół i tworzy lokalną kopię, abyś mógł przesłać poprawioną wersję"
     },
@@ -878,6 +962,12 @@
     },
     "ChangeCategoryTooltip": {
         "message": "To natychmiastowo zostanie zastosowane do twoich segmentów"
+    },
+    "downvote": {
+        "message": "Głos przeciw"
+    },
+    "upvote": {
+        "message": "Głos za"
     },
     "hideSegment": {
         "message": "Ukryj segment"
@@ -935,6 +1025,9 @@
     },
     "betaServerWarning": {
         "message": "Serwer BETA jest włączony!"
+    },
+    "openOptionsPage": {
+        "message": "Otwórz stronę ustawień"
     },
     "resetToDefault": {
         "message": "Resetuj do ustawień domyślnych"
