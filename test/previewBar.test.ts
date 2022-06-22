@@ -322,7 +322,7 @@ describe("createChapterRenderGroups", () => {
                 "videoDuration": 315.061,
                 "userID": "e0238059ae4e711567af5b08a3afecfe45601c995b0ea2f37ca43f15fca4e298",
                 "description": ""
-        }] as unknown as PreviewBarSegment[]);
+            }] as unknown as PreviewBarSegment[]);
 
         expect(groups).toStrictEqual([
             {
@@ -572,4 +572,94 @@ describe("createChapterRenderGroups", () => {
             }
         ]);
     })
+
+    it("Multiple overlapping", () => {
+        previewBar.videoDuration = 3615.161;
+        const groups = previewBar.createChapterRenderGroups([{
+                "segment": [
+                    160,
+                    2797.323
+                ],
+                "category": "chooseACategory",
+                "unsubmitted": true,
+                "showLarger": false,
+            },{
+                "segment": [
+                    169,
+                    3432.255
+                ],
+                "category": "chooseACategory",
+                "unsubmitted": true,
+                "showLarger": false,
+            },{
+                "segment": [
+                    169,
+                    3412.413
+                ],
+                "category": "chooseACategory",
+                "unsubmitted": true,
+                "showLarger": false,
+            },{
+                "segment": [
+                    1594.92,
+                    1674.286
+                ],
+                "category": "sponsor",
+                "unsubmitted": false,
+                "showLarger": false,
+            }
+        ] as unknown as PreviewBarSegment[]);
+
+        expect(groups).toStrictEqual([
+            {
+                "segment": [
+                    0,
+                    160
+                ],
+                "originalDuration": 0
+            },
+            {
+                "segment": [
+                    160,
+                    169
+                ],
+                "originalDuration": 2637.323
+            },
+            {
+                "segment": [
+                    169,
+                    1594.92
+                ],
+                "originalDuration": 3243.413
+            },
+            {
+                "segment": [
+                    1594.92,
+                    1674.286
+                ],
+                "originalDuration": 79.36599999999999
+            },
+            {
+                "segment": [
+                    1674.286,
+                    3412.413
+                ],
+                "originalDuration": 3243.413
+            },
+            {
+                "segment": [
+                    3412.413,
+                    3432.255
+                ],
+                "originalDuration": 3263.255
+            },
+            {
+                "segment": [
+                    3432.255,
+                    3615.161
+                ],
+                "originalDuration": 0
+            }
+        ]);
+    });
 })

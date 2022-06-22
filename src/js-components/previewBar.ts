@@ -324,7 +324,8 @@ class PreviewBar {
             const latestChapter = result[result.length - 1];
             if (latestChapter && latestChapter.segment[1] > segment.segment[0]) {
                 const segmentDuration = segment.segment[1] - segment.segment[0];
-                if (segmentDuration < latestChapter.originalDuration) {
+                if (segment.segment[0] < latestChapter.segment[0] 
+                        || segmentDuration < latestChapter.originalDuration) {
                     // Remove latest if it starts too late
                     let latestValidChapter = latestChapter;
                     const chaptersToAddBack: ChapterGroup[] = []
@@ -334,6 +335,7 @@ class PreviewBar {
                             if (invalidChapter.segment[0] === segment.segment[0]) {
                                 invalidChapter.segment[0] = segment.segment[1];
                             }
+
                             chaptersToAddBack.push(invalidChapter);
                         }
                         latestValidChapter = result[result.length - 1];
@@ -351,10 +353,19 @@ class PreviewBar {
                         });
                     }
 
+                    chaptersToAddBack.reverse();
+                    let lastChapterChecked: number[] = segment.segment;
+                    for (const chapter of chaptersToAddBack) {
+                        if (chapter.segment[0] < lastChapterChecked[1]) {
+                            chapter.segment[0] = lastChapterChecked[1];
+                        }
+
+                        lastChapterChecked = chapter.segment;
+                    }
                     result.push(...chaptersToAddBack);
                     if (latestValidChapter) latestValidChapter.segment[1] = segment.segment[0];
                 } else {
-                    // Start at end of old one if bigger
+                    // Start at end of old one otherwise
                     result.push({
                         segment: [latestChapter.segment[1], segment.segment[1]],
                         originalDuration: segmentDuration
