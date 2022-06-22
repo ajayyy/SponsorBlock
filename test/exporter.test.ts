@@ -54,9 +54,9 @@ describe("Export segments", () => {
         const result = exportTimes(segments);
 
         expect(result).toBe(
-            "0:00 - 0:10 Chapter 1\n" +
-            "0:20 Highlight\n" +
-            "0:30 - 0:40 Sponsor\n"
+            "0:00.000 - 0:10.000 Chapter 1\n" +
+            "0:20.000 Highlight\n" +
+            "0:30.000 - 0:40.000 Sponsor"
         );
     });
 
