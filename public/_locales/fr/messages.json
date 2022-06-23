@@ -542,6 +542,12 @@
         "message": "à",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Inclure les transitions entre les segments"
+    },
+    "generic_guideline2": {
+        "message": "Jouer comme si rien n'avait été passé"
+    },
     "category_sponsor": {
         "message": "Message sponsorisé"
     },
