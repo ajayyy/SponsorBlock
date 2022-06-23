@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Notifier après qu'un segment ait été sauté"
     },
+    "showCategoryGuidelines": {
+        "message": "Affiche l'aide de la catégorie"
+    },
     "noticeVisibilityMode0": {
         "message": "Notifications de passage"
     },
@@ -569,6 +572,9 @@
     "category_selfpromo_guideline1": {
         "message": "Dons, abonnements (payant) et produits dérivés"
     },
+    "category_selfpromo_guideline2": {
+        "message": "Remerciements gratuits qui n'apportent aucune information à la vidéo"
+    },
     "category_selfpromo_guideline3": {
         "message": "Pas pour des produits dérivés fait par des marques"
     },
@@ -633,6 +639,15 @@
     "category_preview_description": {
         "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
     },
+    "category_preview_guideline1": {
+        "message": "Clips apparaissant plus tard ou dans une prochaine vidéo"
+    },
+    "category_preview_guideline2": {
+        "message": "Récapitulatif d'une vidéo précédente"
+    },
+    "category_preview_guideline3": {
+        "message": "Pas pour les sections qui ajoutent du contenu supplémentaire"
+    },
     "category_filler": {
         "message": "Digressions/Blagues"
     },
@@ -642,8 +657,14 @@
     "category_filler_short": {
         "message": "Remplissage"
     },
+    "category_filler_guideline1": {
+        "message": "Scènes digressives uniquement pour le remplissage ou l'humour"
+    },
     "category_filler_guideline2": {
         "message": "Distractions, bêtisiers, replays"
+    },
+    "category_filler_guideline3": {
+        "message": "Pas pour les scènes requises pour comprendre le sujet"
     },
     "category_music_offtopic": {
         "message": "Musique : Segment non musical"
@@ -654,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Hors musique"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Sections qui ne sont pas dans la musique officielle"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Pas de musique pendant les concerts en direct"
+    },
     "category_poi_highlight": {
         "message": "Point essentiel"
     },
     "category_poi_highlight_description": {
         "message": "La partie de la vidéo que la plupart des gens veulent voir. Similaire à \"la vidéo commence à x mins\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Section la plus regardée"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Peut sauter le contexte"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Peut passer au sujet cité dans le titre ou la miniature"
     },
     "category_livestream_messages": {
         "message": "Stream : lecture de dons et messages"
