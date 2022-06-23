@@ -236,7 +236,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             const importedSegments = importTimes(request.data, video.duration);
             let addedSegments = false;
             for (const segment of importedSegments) {
-                if (!sponsorTimesSubmitting.some((s) => s.segment[0] === segment.segment[0] && s.segment[1] === s.segment[1])) {
+                if (!sponsorTimesSubmitting.concat(sponsorTimes ?? []).some(
+                        (s) => Math.abs(s.segment[0] - segment.segment[0]) < 1 
+                            && Math.abs(s.segment[1] - segment.segment[1]) < 1)) {
                     sponsorTimesSubmitting.push(segment);
                     addedSegments = true;
                 }
