@@ -65,8 +65,8 @@ const videosWithEventListeners: HTMLVideoElement[] = [];
 const controlsWithEventListeners: HTMLElement[] = []
 
 // This misleading variable name will be fixed soon
-let onInvidious;
-let onMobileYouTube;
+let onInvidious: boolean;
+let onMobileYouTube: boolean;
 
 //the video id of the last preview bar update
 let lastPreviewBarUpdate;
@@ -117,6 +117,9 @@ let submissionNotice: SubmissionNotice = null;
 // If there is an advert playing (or about to be played), this is true
 let isAdPlaying = false;
 
+// last response status
+let lastResponseStatus: number;
+
 // Contains all of the functions and variables needed by the skip notice
 const skipNoticeContentContainer: ContentContainer = () => ({
     vote,
@@ -163,6 +166,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             //send the sponsor times along with if it's found
             sendResponse({
                 found: sponsorDataFound,
+                status: lastResponseStatus,
                 sponsorTimes: sponsorTimes,
                 onMobileYouTube
             });
@@ -204,6 +208,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "refreshSegments":
             sponsorsLookup(false).then(() => sendResponse({
                 found: sponsorDataFound,
+                status: lastResponseStatus,
                 sponsorTimes: sponsorTimes,
                 onMobileYouTube
             }));
@@ -828,7 +833,6 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
-    // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(sponsorVideoID, 1)).slice(0, 4) as VideoID & HashedValue;
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
@@ -836,6 +840,9 @@ async function sponsorsLookup(keepOldSubmissions = true) {
         userAgent: `${chrome.runtime.id}`,
         ...extraRequestData
     });
+
+    // store last response status
+    lastResponseStatus = response?.status;
 
     if (response?.ok) {
         const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
@@ -904,8 +911,10 @@ async function sponsorsLookup(keepOldSubmissions = true) {
             //otherwise the listener can handle it
             updatePreviewBar();
         }
-    } else if (response?.status === 404) {
-        retryFetch();
+    } else {
+        if (lastResponseStatus === 404) {
+            retryFetch();
+        }
     }
 
     if (Config.config.isVip) {
