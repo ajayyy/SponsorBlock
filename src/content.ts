@@ -833,7 +833,6 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
-    // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(sponsorVideoID, 1)).slice(0, 4) as VideoID & HashedValue;
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
@@ -841,6 +840,9 @@ async function sponsorsLookup(keepOldSubmissions = true) {
         userAgent: `${chrome.runtime.id}`,
         ...extraRequestData
     });
+
+    // store last response status
+    lastResponseStatus = response?.status;
 
     if (response?.ok) {
         const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
@@ -910,7 +912,6 @@ async function sponsorsLookup(keepOldSubmissions = true) {
             updatePreviewBar();
         }
     } else {
-        lastResponseStatus = response?.status;
         if (lastResponseStatus === 404) {
             retryFetch();
         }
