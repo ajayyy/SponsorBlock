@@ -84,8 +84,6 @@ let lastCheckVideoTime = -1;
 
 //is this channel whitelised from getting sponsors skipped
 let channelWhitelisted = false;
-//enable custom channel overrides
-let channelOverridesEnabled = false;
 
 let previewBar: PreviewBar = null;
 // Skip to highlight button
@@ -276,7 +274,6 @@ function resetValues() {
 
     videoInfo = null;
     channelWhitelisted = false;
-    channelOverridesEnabled = false;
     channelIDInfo = {
         status: ChannelIDStatus.Fetching,
         id: null

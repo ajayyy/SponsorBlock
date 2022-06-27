@@ -2,7 +2,7 @@ import Config from "./config";
 import * as CompileConfig from "../config.json";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, ActionType, StorageChangesObject, Category, CategorySkipOption } from "./types";
+import { SponsorTime, SponsorHideType, ActionType, StorageChangesObject } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
