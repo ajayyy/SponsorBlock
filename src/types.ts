@@ -231,3 +231,8 @@ export type Keybind = {
     alt?: boolean,
     shift?: boolean
 }
+
+export type ChannelOverride = {
+    enabled?: boolean,
+    categories?: Record<Category, number>
+}

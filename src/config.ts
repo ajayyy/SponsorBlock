@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, Keybind, HashedValue, VideoID, SponsorHideType, ChannelOverride, ChannelIDInfo } from "./types";
 import { keybindEquals } from "./utils/configUtils";
 
 interface SBConfig {
@@ -17,7 +17,7 @@ interface SBConfig {
     submissionCountSinceCategories: number, // New count used to show the "Read The Guidelines!!" message
     showTimeWithSkips: boolean,
     disableSkipping: boolean,
-    channelOverrides: any, // todo: define type!
+    channelOverrides: Record<string, ChannelOverride>,
     muteSegments: boolean,
     fullVideoSegments: boolean,
     trackViewCount: boolean,
