@@ -17,6 +17,7 @@ interface SBConfig {
     submissionCountSinceCategories: number, // New count used to show the "Read The Guidelines!!" message
     showTimeWithSkips: boolean,
     disableSkipping: boolean,
+    channelOverrides: any, // todo: define type!
     muteSegments: boolean,
     fullVideoSegments: boolean,
     trackViewCount: boolean,
@@ -138,6 +139,7 @@ const Config: SBObject = {
         submissionCountSinceCategories: 0,
         showTimeWithSkips: true,
         disableSkipping: false,
+        channelOverrides: {},
         muteSegments: true,
         fullVideoSegments: true,
         trackViewCount: true,

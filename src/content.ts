@@ -84,6 +84,8 @@ let lastCheckVideoTime = -1;
 
 //is this channel whitelised from getting sponsors skipped
 let channelWhitelisted = false;
+//enable custom channel overrides
+let channelOverridesEnabled = false;
 
 let previewBar: PreviewBar = null;
 // Skip to highlight button
@@ -274,6 +276,7 @@ function resetValues() {
 
     videoInfo = null;
     channelWhitelisted = false;
+    channelOverridesEnabled = false;
     channelIDInfo = {
         status: ChannelIDStatus.Fetching,
         id: null
@@ -562,7 +565,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
                 openNotice: skipInfo.openNotice
             });
 
-            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
+            if (utils.getSkipOption(currentSkip.category, channelIDInfo.id)?.option === CategorySkipOption.ManualSkip
                     || currentSkip.actionType === ActionType.Mute) {
                 forcedSkipTime = skipTime[0] + 0.001;
             } else {
@@ -986,7 +989,7 @@ function startSkipScheduleCheckingForStartSponsors() {
             .filter((time) => time.segment[1] > video.currentTime && time.actionType === ActionType.Poi)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
-            const skipOption = utils.getCategorySelection(time.category)?.option;
+            const skipOption = utils.getSkipOption(time.category, channelIDInfo.id)?.option;
             if (skipOption !== CategorySkipOption.ShowOverlay) {
                 skipToTime({
                     v: video,
@@ -1501,14 +1504,14 @@ function createButton(baseID: string, title: string, callback: () => void, image
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
-    return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+    return utils.getSkipOption(segment.category, channelIDInfo.id)?.option === CategorySkipOption.AutoSkip ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType !== ActionType.Poi);
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
     return (segment.actionType !== ActionType.Full
-            && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay)
+            && utils.getSkipOption(segment.category, channelIDInfo.id)?.option !== CategorySkipOption.ShowOverlay)
             || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
 }
 

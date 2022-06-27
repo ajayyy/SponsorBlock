@@ -13,15 +13,18 @@
 .grey-text {
   color: var(--sb-grey-fg-color);
 }
+
 .white-text {
   color: var(--sb-main-fg-color);
 }
+
 .sbHeader {
   font-size: 20px;
   font-weight: bold;
   text-align: left;
   margin: 0;
 }
+
 #sponsorBlockPopupBody .u-mZ {
   margin: 0 !important;
   position: relative;
@@ -34,15 +37,15 @@
 /*
  * <button> elements that have icons
  */
- #setUsernameButton,
- #copyUserID,
- #submitUsername {
-   color: var(--sb-main-fg-color);
-   background: transparent;
-   width: fit-content;
-   padding: none;
-   border: none;
- }
+#setUsernameButton,
+#copyUserID,
+#submitUsername {
+  color: var(--sb-main-fg-color);
+  background: transparent;
+  width: fit-content;
+  padding: none;
+  border: none;
+}
 
 /*
  * Main containers
@@ -56,7 +59,8 @@
 #sponsorBlockPopupBody {
   margin: 0;
   width: 374px;
-  max-width: 100%; /* NOTE: Ensures content doesn't exceed restricted popup widths in Firefox */
+  max-width: 100%;
+  /* NOTE: Ensures content doesn't exceed restricted popup widths in Firefox */
   font-size: 14px;
   font-family: var(--sb-main-font-family);
   background-color: var(--sb-main-bg-color);
@@ -144,6 +148,7 @@
   padding: 10px 0px 0px;
   font-size: 32px;
 }
+
 .sbPopupLogo img {
   margin: 8px;
 }
@@ -160,6 +165,7 @@
   border: none;
   padding: 5px;
 }
+
 #refreshSegmentsButton:hover {
   background-color: var(--sb-grey-bg-color);
 }
@@ -172,9 +178,11 @@
   border-radius: 8px;
   margin: 4px 16px;
 }
+
 .votingButtons[open] {
   padding-bottom: 5px;
 }
+
 .votingButtons:hover {
   background-color: var(--sb-grey-bg-color);
 }
@@ -192,21 +200,25 @@
   cursor: pointer;
   padding: 4px 8px;
 }
-.segmentSummary > div {
+
+.segmentSummary>div {
   text-align: left;
 }
+
 /*
  * Category dot in segment
  */
 .sponsorTimesCategoryColorCircle {
   margin-right: 8px;
 }
+
 .dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   display: inline-block;
 }
+
 /* 
  * Category name in segment
  */
@@ -251,6 +263,7 @@
   overflow: hidden;
   display: flex;
 }
+
 .sbControlsMenu-item {
   display: flex;
   align-items: center;
@@ -264,9 +277,11 @@
   padding: 10px 15px;
   trasition: background-color 0.2s ease-in-out;
 }
+
 .sbControlsMenu-item:hover {
   background-color: #444;
 }
+
 .sbControlsMenu-itemIcon {
   margin-bottom: 6px;
 }
@@ -274,16 +289,19 @@
 /*
  * Whitelist add/remove icon
  */
-.SBWhitelistIcon > path {
+.SBWhitelistIcon>path {
   fill: var(--sb-main-fg-color);
 }
+
 .SBWhitelistIcon.rotated {
   transform: rotate(45deg);
 }
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -297,31 +315,37 @@
   align-items: center;
   flex-direction: column;
 }
+
 .toggleSwitchContainer-switch {
   display: flex;
   margin-bottom: 6px;
 }
+
 .switchBg {
   width: 50px;
   height: 23px;
   display: block;
   border-radius: 18.5px;
 }
+
 .switchBg.shadow {
   box-shadow: 0.75px 0.75px 10px 0px rgba(50, 50, 50, 0.5);
   opacity: 1;
 }
+
 .switchBg.white {
   opacity: 1;
   position: absolute;
   background-color: #ccc;
 }
+
 .switchBg.green {
   opacity: 0;
   position: absolute;
   background-color: #00a205;
   transition: opacity 0.2s ease-out;
 }
+
 .switchDot {
   width: 15px;
   margin: 4px;
@@ -332,15 +356,52 @@
   background-color: var(--sb-main-fg-color);
   box-shadow: 0.75px 0.75px 3.8px 0px rgba(50, 50, 50, 0.45);
 }
-#toggleSwitch:checked ~ .switchDot {
+
+#toggleSwitch:checked~.switchDot {
   transform: translateX(27px);
 }
-#toggleSwitch:checked ~ .switchBg.green {
+
+#toggleSwitch:checked~.switchBg.green {
   opacity: 1;
 }
-#toggleSwitch:checked ~ .switchBg.white {
+
+#toggleSwitch:checked~.switchBg.white {
   transition: opacity 0.2s step-end;
   opacity: 0;
+}
+
+/*
+ * "Channel Overrides are enabled" toggle
+ */
+#channelOverridesToggleSwitch:checked~.switchDot {
+  transform: translateX(27px);
+}
+
+#channelOverridesToggleSwitch:checked~.switchBg.green {
+  opacity: 1;
+}
+
+#channelOverridesToggleSwitch:checked~.switchBg.white {
+  transition: opacity 0.2s step-end;
+  opacity: 0;
+}
+
+#channelOverridesList {
+  margin: 16px;
+  margin-top: 0;
+  padding: 8px 12px;
+  text-align: left;
+  border-radius: 8px;
+  border: 2px solid var(--sb-grey-bg-color);
+}
+
+.popupCategory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /*
@@ -353,6 +414,7 @@
   display: block;
   color: #664d03;
 }
+
 #whitelistForceCheck:hover {
   background-color: #f2e4b7;
 }
@@ -367,6 +429,7 @@
   border-radius: 8px;
   border: 2px solid var(--sb-grey-bg-color);
 }
+
 .sponsorStartHint {
   display: block;
   text-align: left;
@@ -388,15 +451,18 @@
   font-family: var(--sb-main-font-family);
   background-color: var(--sb-red-bg-color);
 }
+
 .sbMediumButton:hover,
 .sbMediumButton:focus {
   background-color: #ec1c1c;
   outline: none;
 }
+
 .sbMediumButton:active {
   position: relative;
   top: 1px;
 }
+
 /*
  * "Submit Times" button
  */
@@ -413,7 +479,8 @@
   border-radius: 8px;
   border: 2px solid var(--sb-grey-bg-color);
 }
-.sbYourWorkCols > div {
+
+.sbYourWorkCols>div {
   display: flex;
   border-top: 2px solid var(--sb-grey-bg-color);
   border-bottom: 2px solid var(--sb-grey-bg-color);
@@ -437,7 +504,8 @@
   font-size: 16px;
   flex: 1 0;
 }
- /*
+
+/*
  * Improve alignment of username and submissions
  */
 #usernameElement,
@@ -446,7 +514,8 @@
   flex-direction: column;
   justify-content: start;
 }
-#usernameElement > span,
+
+#usernameElement>span,
 #sponsorTimesContributionsContainer {
   text-align: start;
 }
@@ -464,24 +533,30 @@
   padding: 8px;
   min-width: 50%;
 }
+
 #setUsernameContainer {
   display: flex;
   width: fit-content;
 }
-#setUsernameContainer > button {
+
+#setUsernameContainer>button {
   display: flex;
 }
+
 #setUsernameButton {
   margin-right: 5px;
   flex: 0 1;
 }
+
 #submitUsername {
   padding-left: 16px;
 }
+
 #copyUserID {
   width: 100%;
   flex: 0 1;
 }
+
 /*
  * Truncate username display
  */
@@ -492,12 +567,14 @@
   margin: 0 8px 0 0;
   max-width: 130px;
 }
+
 /*
  * Set username form container with "expanded" state
  */
 #setUsername.SBExpanded {
   text-align: left;
 }
+
 /*
  * Set username input
  */
@@ -524,6 +601,7 @@
 #sbFooter {
   padding: 8px 0;
 }
+
 #sbFooter a {
   transition: background 0.3s ease !important;
   color: var(--sb-main-fg-color);
@@ -536,6 +614,7 @@
   font-weight: 500;
   margin: 2px 1px;
 }
+
 #sbFooter a:hover {
   background: #444;
 }

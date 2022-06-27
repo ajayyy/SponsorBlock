@@ -17,7 +17,7 @@ interface DefaultMessage {
         | "isChannelWhitelisted"
         | "submitTimes"
         | "refreshSegments"
-        | "closePopup";
+        | "closePopup"
 }
 
 interface BoolValueMessage {

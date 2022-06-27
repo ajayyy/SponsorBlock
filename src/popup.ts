@@ -1,7 +1,8 @@
 import Config from "./config";
+import * as CompileConfig from "../config.json";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, ActionType, StorageChangesObject } from "./types";
+import { SponsorTime, SponsorHideType, ActionType, StorageChangesObject, Category, CategorySkipOption } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
@@ -60,6 +61,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         whitelistToggle?: HTMLInputElement,
         toggleSwitch?: HTMLInputElement,
         usernameInput?: HTMLInputElement,
+        channelOverridesToggleSwitch?: HTMLInputElement,
     };
     type PageElements = { [key: string]: HTMLElement } & InputPageElements
 
@@ -127,7 +129,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sbConsiderDonateLink",
         "sbCloseDonate",
         "sbBetaServerWarning",
-        "sbCloseButton"
+        "sbCloseButton",
+        // Channel Overrides
+        "channelOverridesToggleSwitch",
+        "channelOverrides",
+        "disableChannelOverrides",
+        "enableChannelOverrides",
+        "channelOverridesList",
+        "channelOverridesContainer",
     ].forEach(id => PageElements[id] = document.getElementById(id));
 
     getSegmentsFromContentScript(false);
@@ -182,6 +191,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.helpButton.addEventListener("click", openHelp);
     PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
     PageElements.sbPopupIconCopyUserID.addEventListener("click", async () => copyToClipboard(await utils.getHash(Config.config.userID)));
+
+    PageElements.channelOverridesToggleSwitch.addEventListener("change", toggleChannelOverrides);
 
     // Forward click events
     if (window !== window.top) {
@@ -757,6 +768,166 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             );
         });
     }
+
+    // ********************************** Channel Override Logic Start ********************************* //
+    initChannelOverrides();
+
+    function initChannelOverrides() {
+        //get the channel url
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                { message: 'getChannelID' },
+                function (response) {
+                    if (!response.channelID) {
+                        alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
+                        return;
+                    }
+
+                    //get channel overrides
+                    const channelOverrides = Config.config.channelOverrides?.[response.channelID] || {};
+
+                    const channelOverridesEnabled = channelOverrides.enabled || false;
+                    
+                    //change button
+                    PageElements.enableChannelOverrides.style.display = channelOverridesEnabled ? "none" : "unset";
+                    PageElements.disableChannelOverrides.style.display = channelOverridesEnabled ? "unset" : "none";
+                    PageElements.channelOverridesToggleSwitch.checked = channelOverridesEnabled;
+                    PageElements.channelOverridesContainer.style.display = channelOverridesEnabled ? "unset" : "none";
+                    
+                    loadChannelOverridesOptions(channelOverrides);
+                }
+            );
+        });
+    }
+
+    function loadChannelOverridesOptions(channelOverrides) {
+        CompileConfig.categoryList.forEach(category => {
+            const categorySelection = Config.config.categorySelections.find(categorySelection => categorySelection.name === category);
+            const channelOverride = channelOverrides.categories[category];
+
+            // Name element
+            const categoryName = document.createElement("span");
+            categoryName.innerText = chrome.i18n.getMessage(`category_${category}`);
+
+            // Option selector
+            let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+            if (category === "exclusive_access") optionNames = ["disable", "showOverlay"];
+
+            const optionNameIndex = channelOverride !== undefined ? channelOverride : categorySelection.option + 1
+            const optionName = optionNames[optionNameIndex] || 'disable';
+
+            const categoryOption = document.createElement("select");
+            categoryOption.addEventListener("change", handleChannelOverrideChange);
+
+            optionNames.forEach(option => {
+                const el = document.createElement("option");
+                el.setAttribute("value", `${category}:${option}`);
+                el.innerText = chrome.i18n.getMessage(option);
+                if (option === optionName) el.setAttribute("selected", "selected");
+                categoryOption.appendChild(el);
+            });
+
+            const categoryLi = document.createElement("li");
+            categoryLi.classList.add("popupCategory");
+
+            categoryLi.appendChild(categoryName);
+            categoryLi.appendChild(categoryOption);
+
+            PageElements.channelOverridesList.appendChild(categoryLi);
+        })
+    }
+
+    function handleChannelOverrideChange(event) {
+        //get the channel url
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                { message: 'getChannelID' },
+                function (response) {
+                    if (!response.channelID) {
+                        alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
+                        return;
+                    }
+                    
+                    const [categoryName, optionName] = event.target.value.split(":");
+                    
+                    // Save config change
+                    if (!Config.config.channelOverrides) {
+                        Config.config.channelOverrides = {};
+                    }
+
+                    if (!Config.config.channelOverrides[response.channelID]) {
+                        Config.config.channelOverrides[response.channelID] = {};
+                    }
+
+                    let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+                    if (categoryName === "exclusive_access") optionNames = ["disable", "showOverlay"];
+
+                    const optionIndex = optionNames.indexOf(optionName);
+
+                    Config.config.channelOverrides[response.channelID].categories = {
+                        ...Config.config.channelOverrides[response.channelID].categories,
+                        [categoryName]: optionIndex
+                    }
+
+                    // Force update, the change event handler doesn't fire for nested object changes
+                    Config.forceSyncUpdate('channelOverrides');
+                }
+            );
+        });
+    }
+
+    function toggleChannelOverrides() {
+        //get the channel url
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                { message: 'getChannelID' },
+                function (response) {
+                    if (!response.channelID) {
+                        alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
+                        return;
+                    }
+                    
+                    //get channel overrides
+                    const channelOverrides = Config.config.channelOverrides?.[response.channelID] || {};
+
+                    const channelOverridesEnabled = channelOverrides.enabled || false;
+
+                    //change button
+                    PageElements.enableChannelOverrides.style.display = channelOverridesEnabled ? "unset" : "none";
+                    PageElements.disableChannelOverrides.style.display = channelOverridesEnabled ? "none" : "unset";
+                    PageElements.channelOverridesToggleSwitch.checked = !channelOverridesEnabled;
+                    PageElements.channelOverridesContainer.style.display = channelOverridesEnabled ? "none" : "unset";
+
+                    // Save config change
+                    if (!Config.config.channelOverrides) {
+                        Config.config.channelOverrides = {};
+                    }
+
+                    Config.config.channelOverrides[response.channelID] = { 
+                        ...Config.config.channelOverrides[response.channelID],
+                        enabled: !channelOverridesEnabled
+                    };
+
+                    // Force update, the change event handler doesn't fire for nested object changes
+                    Config.forceSyncUpdate('channelOverrides');
+                }
+            );
+        });
+    }
+
+    // ********************************** Channel Override Logic End ********************************* //
 
     function whitelistChannel() {
         //get the channel url

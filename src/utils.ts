@@ -1,5 +1,5 @@
 import Config, { VideoDownvotes } from "./config";
-import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
 
 import * as CompileConfig from "../config.json";
 import { findValidElementFromSelector } from "./utils/pageUtils";
@@ -248,12 +248,28 @@ export default class Utils {
         return sponsorTimes[this.getSponsorIndexFromUUID(sponsorTimes, UUID)];
     }
 
-    getCategorySelection(category: string): CategorySelection {
+    /**
+     * Returns a category selection shaped override configuration for a given channel ID.
+     */
+    getChannelOverrideSelection(category: Category, channelID: string): CategorySelection {
+        if (channelID && Config.config.channelOverrides[channelID]?.enabled === true) {
+            const override = Config.config.channelOverrides[channelID].categories?.[category];
+            if (override !== undefined && override !== null && override !== 0) {
+                return { name: category, option: override - 1 };
+            }
+        }
+    }
+
+    getCategorySelection(category: Category): CategorySelection {
         for (const selection of Config.config.categorySelections) {
             if (selection.name === category) {
                 return selection;
             }
         }
+    }
+
+    getSkipOption(category: Category, channelID: string): CategorySelection {
+        return this.getChannelOverrideSelection(category, channelID) || this.getCategorySelection(category);
     }
 
     /**

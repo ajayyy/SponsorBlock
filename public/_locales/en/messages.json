@@ -119,32 +119,32 @@
         "message": "Are you sure you want to submit this?"
     },
     "whitelistChannel": {
-         "message": "Whitelist channel"
+        "message": "Whitelist channel"
     },
     "removeFromWhitelist": {
-         "message": "Remove channel from whitelist"
+        "message": "Remove channel from whitelist"
     },
     "voteOnTime": {
-         "message": "Vote On A Segment"
+        "message": "Vote On A Segment"
     },
     "Submissions": {
-         "message": "Submissions"
+        "message": "Submissions"
     },
     "savedPeopleFrom": {
-         "message": "You've saved people from "
+        "message": "You've saved people from "
     },
     "viewLeaderboard": {
-         "message": "Leaderboard"
+        "message": "Leaderboard"
     },
     "recordTimesDescription": {
-         "message": "Submit"
+        "message": "Submit"
     },
     "submissionEditHint": {
         "message": "Section editing will appear after you click submit",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-         "message": "Hint: You can setup keybinds for submitting in the options"
+        "message": "Hint: You can setup keybinds for submitting in the options"
     },
     "clearTimesButton": {
         "message": "Clear Times"
@@ -300,6 +300,12 @@
     },
     "enableSkipping": {
         "message": "Skipping is disabled"
+    },
+    "disableChannelOverrides": {
+        "message": "Channel Overrides are enabled"
+    },
+    "enableChannelOverrides": {
+        "message": "Channel Overrides are disabled"
     },
     "yourWork": {
         "message": "Your Work",
@@ -948,7 +954,7 @@
     "FullDetails": {
         "message": "Full Details"
     },
-	"CopyDownvoteButtonInfo": {
+    "CopyDownvoteButtonInfo": {
         "message": "Downvotes and creates a local copy for you to resubmit"
     },
     "OpenCategoryWikiPage": {
