@@ -100,7 +100,10 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
 // wait for hover preview to appear, and refresh attachments if ever found
-window.addEventListener("DOMContentLoaded", () => utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments()));
+window.addEventListener("DOMContentLoaded", () => {
+    utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments())
+    utils.waitForElement("[data-sessionlink='feature=player-title']").then(() => videoIDChange(getYouTubeVideoID(document)))
+});
 addPageListeners();
 addHotkeyListener();
 
@@ -206,6 +209,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             submitSponsorTimes();
             break;
         case "refreshSegments":
+            // update video on refresh if videoID invalid
+            if (!sponsorVideoID) videoIDChange(getYouTubeVideoID(document));
+            // fetch segments
             sponsorsLookup(false).then(() => sendResponse({
                 found: sponsorDataFound,
                 status: lastResponseStatus,
