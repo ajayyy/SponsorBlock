@@ -186,7 +186,7 @@
         "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
     "showSkipButton": {
-        "message": "\"Zum Highlight springen\"-Button im Youtube-Player anzeigen"
+        "message": "Behalte \"Zum Highlight springen\"-Knopf in der Leiste"
     },
     "showInfoButton": {
         "message": "Zeige Info-Knopf im Youtube-Videoplayer"
@@ -867,7 +867,7 @@
         "message": "Dauerhaft verbergen"
     },
     "warningChatInfo": {
-        "message": "Du hast eine Warnung erhalten und kannst vorübergehend keine Segmente einreichen. Uns ist nämlich aufgefallen, dass du nicht bösartige Fehler in deinen Einreichungen machst. Bitte bestätige, dass du die Regeln verstanden hast. Darauffolgend können wir die Warnung entfernen. Du kannst diesem Chat auch mit discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app beitreten"
+        "message": "Du hast eine Warnung erhalten und kannst vorübergehend keine Segmente einreichen. Dies bedeutet, dass du Fehler gemacht hast welche nicht bösartig sind, bitte bestätige, dass du die Regeln verstanden hast, wir werden dann die Warnung entfernen. Du kannst diesem Chat auch mit discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app beitreten"
     },
     "voteRejectedWarning": {
         "message": "Abstimmung wegen einer Warnung abgelehnt. Klicke hier um einen Chat zu öffnen, oder versuch es später erneut, wenn du Zeit hast.",
@@ -964,7 +964,7 @@
         "message": "Dies wirkt sich sofort auf eigene Segmente aus"
     },
     "downvote": {
-        "message": "Negativ bewertet"
+        "message": "Dagegen stimmen"
     },
     "upvote": {
         "message": "Positiv bewerten"
