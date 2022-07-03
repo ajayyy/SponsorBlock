@@ -424,7 +424,7 @@ function createPreviewBar(): void {
             isVisibleCheck: true
         }, {
             // For new mobile YouTube (#1287)
-            selector: ".ytm-progress-bar",
+            selector: ".progress-bar-line",
             isVisibleCheck: true
         }, {
             // For Desktop YouTube
