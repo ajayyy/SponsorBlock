@@ -367,8 +367,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
 
                 displayDownloadedSponsorTimes(request);
-            } else {
+            } else if (request.status == 404 || request.status == 200) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
+            } else {
+                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("connectionError") + request.status;
             }
         }
 
