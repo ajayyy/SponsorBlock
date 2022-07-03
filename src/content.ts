@@ -695,7 +695,8 @@ function setupVideoListeners() {
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
             // gone back to the begining
-            if (!firstEvent && video.currentTime === 0) return;
+            if (video.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA 
+                    && !firstEvent && video.currentTime === 0) return;
             firstEvent = false;
 
             updateVirtualTime();
