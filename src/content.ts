@@ -1569,6 +1569,7 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 
 function shouldSkip(segment: SponsorTime): boolean {
     return (segment.actionType !== ActionType.Full
+            && segment.source !== SponsorSourceType.YouTube
             && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay)
             || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic"));
 }
