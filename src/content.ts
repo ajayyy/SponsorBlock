@@ -167,6 +167,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             sendResponse({
                 found: sponsorDataFound,
                 sponsorTimes: sponsorTimes,
+                time: video.currentTime,
                 onMobileYouTube
             });
 
@@ -208,6 +209,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             sponsorsLookup(false).then(() => sendResponse({
                 found: sponsorDataFound,
                 sponsorTimes: sponsorTimes,
+                time: video.currentTime,
                 onMobileYouTube
             }));
 
@@ -532,7 +534,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     }
     lastTimeFromWaitingEvent = null;
 
-    previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, currentTime);
+    updateActiveSegment(currentTime);
 
     if (video.paused) return;
     if (videoMuted && !inMuteSegment(currentTime)) {
@@ -783,7 +785,7 @@ function setupVideoListeners() {
 
                 startSponsorSchedule();
             } else {
-                previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, video.currentTime);
+                updateActiveSegment(video.currentTime);
             }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
@@ -2067,6 +2069,14 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
     }
 
     return sponsorTimesMessage;
+}
+
+function updateActiveSegment(currentTime: number): void {
+    previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, currentTime);
+    chrome.runtime.sendMessage({
+        message: "time",
+        time: currentTime
+    });
 }
 
 function addPageListeners(): void {

@@ -2,7 +2,7 @@ import Config from "./config";
 
 import Utils from "./utils";
 import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType, StorageChangesObject, CategorySkipOption } from "./types";
-import { Message, MessageResponse, IsInfoFoundMessageResponse, ImportSegmentsResponse } from "./messageTypes";
+import { Message, MessageResponse, IsInfoFoundMessageResponse, ImportSegmentsResponse, PopupMessage } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
@@ -81,6 +81,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         Chapters
     }
     let segmentTab = SegmentTab.Segments;
+    let port: chrome.runtime.Port = null;
 
     const PageElements: PageElements = {};
 
@@ -236,6 +237,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             });
         });
     }
+
+    setupComPort();
 
     //show proper disable skipping button
     const disableSkipping = Config.config.disableSkipping;
@@ -403,10 +406,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             PageElements.whitelistButton.classList.remove("hidden");
             PageElements.loadingIndicator.style.display = "none";
 
+            downloadedTimes = request.sponsorTimes ?? [];
             if (request.found) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
 
-                displayDownloadedSponsorTimes(request);
+                if (request.sponsorTimes) {
+                    displayDownloadedSponsorTimes(request.sponsorTimes, request.time);
+                }
             } else {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
             }
@@ -477,203 +483,208 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     //display the video times from the array at the top, in a different section
-    function displayDownloadedSponsorTimes(request: { found: boolean, sponsorTimes: SponsorTime[] }) {
-        if (request.sponsorTimes != undefined) {
-            let currentSegmentTab = segmentTab;
-            if (!request.sponsorTimes.some((segment) => segment.actionType === ActionType.Chapter)) {
-                PageElements.issueReporterTabs.classList.add("hidden");
-                currentSegmentTab = SegmentTab.Segments;
+    function displayDownloadedSponsorTimes(sponsorTimes: SponsorTime[], time: number) {
+        let currentSegmentTab = segmentTab;
+        if (!sponsorTimes.some((segment) => segment.actionType === ActionType.Chapter)) {
+            PageElements.issueReporterTabs.classList.add("hidden");
+            currentSegmentTab = SegmentTab.Segments;
+        } else {
+            PageElements.issueReporterTabs.classList.remove("hidden");
+        }
+
+        // Sort list by start time
+        const downloadedTimes = sponsorTimes
+            .filter((segment) => {
+                if (currentSegmentTab === SegmentTab.Segments) {
+                    return segment.actionType !== ActionType.Chapter;
+                } else if (currentSegmentTab === SegmentTab.Chapters) {
+                    return segment.actionType === ActionType.Chapter 
+                        && segment.source !== SponsorSourceType.YouTube;
+                } else {
+                    return true;
+                }
+            })
+            .sort((a, b) => a.segment[1] - b.segment[1])
+            .sort((a, b) => a.segment[0] - b.segment[0]);
+
+        //add them as buttons to the issue reporting container
+        const container = document.getElementById("issueReporterTimeButtons");
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        if (downloadedTimes.length > 0) {
+            PageElements.issueReporterImportExport.classList.remove("hidden");
+            if (utils.getCategorySelection("chapter")?.option === CategorySkipOption.ShowOverlay) {
+                PageElements.importSegmentsButton.classList.remove("hidden");
+            }
+        } else { 
+            PageElements.issueReporterImportExport.classList.add("hidden");
+        }
+
+        const isVip = Config.config.isVip;
+        for (let i = 0; i < downloadedTimes.length; i++) {
+            const UUID = downloadedTimes[i].UUID;
+            const locked = downloadedTimes[i].locked;
+            const category = downloadedTimes[i].category;
+            const actionType = downloadedTimes[i].actionType;
+
+            const segmentSummary = document.createElement("summary");
+            segmentSummary.classList.add("segmentSummary");
+            if (time >= downloadedTimes[i].segment[0]) {
+                if (time < downloadedTimes[i].segment[1]) {
+                    segmentSummary.classList.add("segmentActive");
+                } else {
+                    segmentSummary.classList.add("segmentPassed");
+                }
+            }
+
+            const categoryColorCircle = document.createElement("span");
+            categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
+            categoryColorCircle.style.backgroundColor = Config.config.barTypes[category]?.color;
+            categoryColorCircle.classList.add("dot");
+            categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
+
+            let extraInfo = "";
+            if (downloadedTimes[i].hidden === SponsorHideType.Downvoted) {
+                //this one is downvoted
+                extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
+            } else if (downloadedTimes[i].hidden === SponsorHideType.MinimumDuration) {
+                //this one is too short
+                extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
+            } else if (downloadedTimes[i].hidden === SponsorHideType.Hidden) {
+                extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
+            }
+
+            const name = downloadedTimes[i].description || shortCategoryName(category);
+            const textNode = document.createTextNode(name + extraInfo);
+            const segmentTimeFromToNode = document.createElement("div");
+            if (downloadedTimes[i].actionType === ActionType.Full) {
+                segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
             } else {
-                PageElements.issueReporterTabs.classList.remove("hidden");
+                segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(downloadedTimes[i].segment[0], true) + 
+                        (actionType !== ActionType.Poi
+                            ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(downloadedTimes[i].segment[1], true)
+                            : "");
             }
 
-            // Sort list by start time
-            downloadedTimes = request.sponsorTimes
-                .filter((segment) => {
-                    if (currentSegmentTab === SegmentTab.Segments) {
-                        return segment.actionType !== ActionType.Chapter;
-                    } else if (currentSegmentTab === SegmentTab.Chapters) {
-                        return segment.actionType === ActionType.Chapter 
-                            && segment.source !== SponsorSourceType.YouTube;
-                    } else {
-                        return true;
-                    }
-                })
-                .sort((a, b) => a.segment[1] - b.segment[1])
-                .sort((a, b) => a.segment[0] - b.segment[0]);
+            segmentTimeFromToNode.style.margin = "5px";
+            
+            // for inline-styling purposes
+            const labelContainer = document.createElement("div");
+            if (actionType !== ActionType.Chapter) labelContainer.appendChild(categoryColorCircle);
 
-            //add them as buttons to the issue reporting container
-            const container = document.getElementById("issueReporterTimeButtons");
-            while (container.firstChild) {
-                container.removeChild(container.firstChild);
+            const span = document.createElement('span');
+            span.className = "summaryLabel";
+            span.appendChild(textNode);
+            labelContainer.appendChild(span);
+
+            segmentSummary.appendChild(labelContainer);
+            segmentSummary.appendChild(segmentTimeFromToNode);
+
+            const votingButtons = document.createElement("details");
+            votingButtons.classList.add("votingButtons");
+
+            //thumbs up and down buttons
+            const voteButtonsContainer = document.createElement("div");
+            voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
+            voteButtonsContainer.classList.add("sbVoteButtonsContainer");
+
+            const upvoteButton = document.createElement("img");
+            upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
+            upvoteButton.className = "voteButton";
+            upvoteButton.title = chrome.i18n.getMessage("upvote");
+            upvoteButton.src = chrome.runtime.getURL("icons/thumbs_up.svg");
+            upvoteButton.addEventListener("click", () => vote(1, UUID));
+
+            const downvoteButton = document.createElement("img");
+            downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
+            downvoteButton.className = "voteButton";
+            downvoteButton.title = chrome.i18n.getMessage("downvote");
+            downvoteButton.src = locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg");
+            downvoteButton.addEventListener("click", () => vote(0, UUID));
+
+            const uuidButton = document.createElement("img");
+            uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
+            uuidButton.className = "voteButton";
+            uuidButton.src = chrome.runtime.getURL("icons/clipboard.svg");
+            uuidButton.title = chrome.i18n.getMessage("copySegmentID");
+            uuidButton.addEventListener("click", () => {
+                copyToClipboard(UUID);
+                const stopAnimation = AnimationUtils.applyLoadingAnimation(uuidButton, 0.3);
+                stopAnimation();
+            });
+
+            const hideButton = document.createElement("img");
+            hideButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
+            hideButton.className = "voteButton";
+            hideButton.title = chrome.i18n.getMessage("hideSegment");
+            if (downloadedTimes[i].hidden === SponsorHideType.Hidden) {
+                hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
+            } else {
+                hideButton.src = chrome.runtime.getURL("icons/visible.svg");
             }
+            hideButton.addEventListener("click", () => {
+                const stopAnimation = AnimationUtils.applyLoadingAnimation(hideButton, 0.4);
+                stopAnimation();
 
-            if (downloadedTimes.length > 0) {
-                PageElements.issueReporterImportExport.classList.remove("hidden");
-                if (utils.getCategorySelection("chapter")?.option === CategorySkipOption.ShowOverlay) {
-                    PageElements.importSegmentsButton.classList.remove("hidden");
-                }
-            } else { 
-                PageElements.issueReporterImportExport.classList.add("hidden");
-            }
-
-            const isVip = Config.config.isVip;
-            for (let i = 0; i < downloadedTimes.length; i++) {
-                const UUID = downloadedTimes[i].UUID;
-                const locked = downloadedTimes[i].locked;
-                const category = downloadedTimes[i].category;
-                const actionType = downloadedTimes[i].actionType;
-
-                const segmentSummary = document.createElement("summary");
-                segmentSummary.className = "segmentSummary";
-
-                const categoryColorCircle = document.createElement("span");
-                categoryColorCircle.id = "sponsorTimesCategoryColorCircle" + UUID;
-                categoryColorCircle.style.backgroundColor = Config.config.barTypes[category]?.color;
-                categoryColorCircle.classList.add("dot");
-                categoryColorCircle.classList.add("sponsorTimesCategoryColorCircle");
-
-                let extraInfo = "";
-                if (downloadedTimes[i].hidden === SponsorHideType.Downvoted) {
-                    //this one is downvoted
-                    extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
-                } else if (downloadedTimes[i].hidden === SponsorHideType.MinimumDuration) {
-                    //this one is too short
-                    extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
-                } else if (downloadedTimes[i].hidden === SponsorHideType.Hidden) {
-                    extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
-                }
-
-                const name = downloadedTimes[i].description || shortCategoryName(category);
-                const textNode = document.createTextNode(name + extraInfo);
-                const segmentTimeFromToNode = document.createElement("div");
-                if (downloadedTimes[i].actionType === ActionType.Full) {
-                    segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
-                } else {
-                    segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(downloadedTimes[i].segment[0], true) + 
-                            (actionType !== ActionType.Poi
-                                ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(downloadedTimes[i].segment[1], true)
-                                : "");
-                }
-
-                segmentTimeFromToNode.style.margin = "5px";
-                
-                // for inline-styling purposes
-                const labelContainer = document.createElement("div");
-                if (actionType !== ActionType.Chapter) labelContainer.appendChild(categoryColorCircle);
-
-                const span = document.createElement('span');
-                span.className = "summaryLabel";
-                span.appendChild(textNode);
-                labelContainer.appendChild(span);
-
-                segmentSummary.appendChild(labelContainer);
-                segmentSummary.appendChild(segmentTimeFromToNode);
-
-                const votingButtons = document.createElement("details");
-                votingButtons.classList.add("votingButtons");
-
-                //thumbs up and down buttons
-                const voteButtonsContainer = document.createElement("div");
-                voteButtonsContainer.id = "sponsorTimesVoteButtonsContainer" + UUID;
-                voteButtonsContainer.classList.add("sbVoteButtonsContainer");
-
-                const upvoteButton = document.createElement("img");
-                upvoteButton.id = "sponsorTimesUpvoteButtonsContainer" + UUID;
-                upvoteButton.className = "voteButton";
-                upvoteButton.title = chrome.i18n.getMessage("upvote");
-                upvoteButton.src = chrome.runtime.getURL("icons/thumbs_up.svg");
-                upvoteButton.addEventListener("click", () => vote(1, UUID));
-
-                const downvoteButton = document.createElement("img");
-                downvoteButton.id = "sponsorTimesDownvoteButtonsContainer" + UUID;
-                downvoteButton.className = "voteButton";
-                downvoteButton.title = chrome.i18n.getMessage("downvote");
-                downvoteButton.src = locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg");
-                downvoteButton.addEventListener("click", () => vote(0, UUID));
-
-                const uuidButton = document.createElement("img");
-                uuidButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
-                uuidButton.className = "voteButton";
-                uuidButton.src = chrome.runtime.getURL("icons/clipboard.svg");
-                uuidButton.title = chrome.i18n.getMessage("copySegmentID");
-                uuidButton.addEventListener("click", () => {
-                    copyToClipboard(UUID);
-                    const stopAnimation = AnimationUtils.applyLoadingAnimation(uuidButton, 0.3);
-                    stopAnimation();
-                });
-
-                const hideButton = document.createElement("img");
-                hideButton.id = "sponsorTimesCopyUUIDButtonContainer" + UUID;
-                hideButton.className = "voteButton";
-                hideButton.title = chrome.i18n.getMessage("hideSegment");
                 if (downloadedTimes[i].hidden === SponsorHideType.Hidden) {
-                    hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
-                } else {
                     hideButton.src = chrome.runtime.getURL("icons/visible.svg");
+                    downloadedTimes[i].hidden = SponsorHideType.Visible;
+                } else {
+                    hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
+                    downloadedTimes[i].hidden = SponsorHideType.Hidden;
                 }
-                hideButton.addEventListener("click", () => {
-                    const stopAnimation = AnimationUtils.applyLoadingAnimation(hideButton, 0.4);
-                    stopAnimation();
 
-                    if (downloadedTimes[i].hidden === SponsorHideType.Hidden) {
-                        hideButton.src = chrome.runtime.getURL("icons/visible.svg");
-                        downloadedTimes[i].hidden = SponsorHideType.Visible;
-                    } else {
-                        hideButton.src = chrome.runtime.getURL("icons/not_visible.svg");
-                        downloadedTimes[i].hidden = SponsorHideType.Hidden;
-                    }
-
-                    messageHandler.query({
-                        active: true,
-                        currentWindow: true
-                    }, tabs => {
-                        messageHandler.sendMessage(
-                            tabs[0].id,
-                            {
-                                message: "hideSegment",
-                                type: downloadedTimes[i].hidden,
-                                UUID: UUID
-                            }
-                        );
-                    });
+                messageHandler.query({
+                    active: true,
+                    currentWindow: true
+                }, tabs => {
+                    messageHandler.sendMessage(
+                        tabs[0].id,
+                        {
+                            message: "hideSegment",
+                            type: downloadedTimes[i].hidden,
+                            UUID: UUID
+                        }
+                    );
                 });
+            });
 
-                const skipButton = document.createElement("img");
-                skipButton.id = "sponsorTimesSkipButtonContainer" + UUID;
-                skipButton.className = "voteButton";
-                skipButton.src = chrome.runtime.getURL("icons/skip.svg");
-                skipButton.addEventListener("click", () => skipSegment(actionType, UUID, skipButton));
-                container.addEventListener("dblclick", () => skipSegment(actionType, UUID));
+            const skipButton = document.createElement("img");
+            skipButton.id = "sponsorTimesSkipButtonContainer" + UUID;
+            skipButton.className = "voteButton";
+            skipButton.src = chrome.runtime.getURL("icons/skip.svg");
+            skipButton.addEventListener("click", () => skipSegment(actionType, UUID, skipButton));
+            container.addEventListener("dblclick", () => skipSegment(actionType, UUID));
 
-                //add thumbs up, thumbs down and uuid copy buttons to the container
-                voteButtonsContainer.appendChild(upvoteButton);
-                voteButtonsContainer.appendChild(downvoteButton);
-                voteButtonsContainer.appendChild(uuidButton);
-                if (downloadedTimes[i].actionType === ActionType.Skip
-                        && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(downloadedTimes[i].hidden)) {
-                    voteButtonsContainer.appendChild(hideButton);
-                }
-                voteButtonsContainer.appendChild(skipButton);
-
-
-                // Will contain request status
-                const voteStatusContainer = document.createElement("div");
-                voteStatusContainer.id = "sponsorTimesVoteStatusContainer" + UUID;
-                voteStatusContainer.classList.add("sponsorTimesVoteStatusContainer");
-                voteStatusContainer.style.display = "none";
-
-                const thanksForVotingText = document.createElement("div");
-                thanksForVotingText.id = "sponsorTimesThanksForVotingText" + UUID;
-                thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
-                voteStatusContainer.appendChild(thanksForVotingText);
-
-                votingButtons.append(segmentSummary);
-                votingButtons.append(voteButtonsContainer);
-                votingButtons.append(voteStatusContainer);
-
-                container.appendChild(votingButtons);
+            //add thumbs up, thumbs down and uuid copy buttons to the container
+            voteButtonsContainer.appendChild(upvoteButton);
+            voteButtonsContainer.appendChild(downvoteButton);
+            voteButtonsContainer.appendChild(uuidButton);
+            if (downloadedTimes[i].actionType === ActionType.Skip
+                    && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(downloadedTimes[i].hidden)) {
+                voteButtonsContainer.appendChild(hideButton);
             }
+            voteButtonsContainer.appendChild(skipButton);
+
+
+            // Will contain request status
+            const voteStatusContainer = document.createElement("div");
+            voteStatusContainer.id = "sponsorTimesVoteStatusContainer" + UUID;
+            voteStatusContainer.classList.add("sponsorTimesVoteStatusContainer");
+            voteStatusContainer.style.display = "none";
+
+            const thanksForVotingText = document.createElement("div");
+            thanksForVotingText.id = "sponsorTimesThanksForVotingText" + UUID;
+            thanksForVotingText.classList.add("sponsorTimesThanksForVotingText");
+            voteStatusContainer.appendChild(thanksForVotingText);
+
+            votingButtons.append(segmentSummary);
+            votingButtons.append(voteButtonsContainer);
+            votingButtons.append(voteStatusContainer);
+
+            container.appendChild(votingButtons);
         }
     }
 
@@ -1074,6 +1085,20 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     updateSegmentEditingUI();
                     break;
             }
+        }
+    }
+
+    function setupComPort(): void {
+        port = chrome.runtime.connect({ name: "popup" });
+        port.onDisconnect.addListener(() => setupComPort());
+        port.onMessage.addListener((msg) => onMessage(msg));
+    }
+
+    function onMessage(msg: PopupMessage) {
+        switch (msg.message) {
+            case "time":
+                displayDownloadedSponsorTimes(downloadedTimes, msg.time);
+                break;
         }
     }
 }

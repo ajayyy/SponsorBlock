@@ -74,6 +74,7 @@ export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoF
 export interface IsInfoFoundMessageResponse {
     found: boolean;
     sponsorTimes: SponsorTime[];
+    time: number;
     onMobileYouTube: boolean;
 }
 
@@ -112,3 +113,10 @@ export interface VoteResponse {
 export interface ImportSegmentsResponse {
     importedSegments: SponsorTime[];
 }
+
+export interface TimeUpdateMessage {
+    message: "time";
+    time: number;
+}
+
+export type PopupMessage = TimeUpdateMessage;

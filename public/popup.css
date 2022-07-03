@@ -219,6 +219,15 @@
 .segmentSummary > div {
   text-align: left;
 }
+
+.segmentActive {
+  color: #bdfffb;
+}
+
+.segmentPassed {
+  color: #adadad;
+}
+
 /*
  * Category dot in segment
  */

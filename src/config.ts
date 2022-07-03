@@ -57,7 +57,7 @@ interface SBConfig {
     categoryPillUpdate: boolean,
     darkMode: boolean,
     showCategoryGuidelines: boolean,
-    chaptersActivated: boolean,
+    chaptersAvailable: boolean,
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -175,7 +175,7 @@ const Config: SBObject = {
         categoryPillUpdate: false,
         darkMode: true,
         showCategoryGuidelines: true,
-        chaptersActivated: true,
+        chaptersAvailable: true,
 
         categoryPillColors: {},
 
