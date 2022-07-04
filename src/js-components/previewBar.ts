@@ -217,7 +217,14 @@ class PreviewBar {
             this.container.appendChild(bar);
         }
 
-        this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]))
+        this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]));
+
+        const chapterChevron = document.querySelector(".ytp-chapter-title-chevron") as HTMLElement;
+        if (!Config.config.renderAsChapters || segments.some((segment) => segment.source === SponsorSourceType.YouTube)) {
+            chapterChevron.style.removeProperty("display");
+        } else {
+            chapterChevron.style.display = "none";
+        }
     }
 
     createBar(barSegment: PreviewBarSegment): HTMLLIElement {
