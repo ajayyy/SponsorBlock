@@ -9,7 +9,7 @@ interface SBConfig {
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
-    renderAsChapters: boolean,
+    renderSegmentsAsChapters: boolean,
     whitelistedChannels: string[],
     forceChannelCheck: boolean,
     minutesSaved: number,
@@ -132,7 +132,7 @@ const Config: SBObject = {
         isVip: false,
         unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
-        renderAsChapters: true,
+        renderSegmentsAsChapters: true,
         whitelistedChannels: [],
         forceChannelCheck: false,
         minutesSaved: 0,

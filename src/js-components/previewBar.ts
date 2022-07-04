@@ -220,7 +220,8 @@ class PreviewBar {
         this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]));
 
         const chapterChevron = document.querySelector(".ytp-chapter-title-chevron") as HTMLElement;
-        if (!Config.config.renderAsChapters || segments.some((segment) => segment.source === SponsorSourceType.YouTube)) {
+        if (!Config.config.renderSegmentsAsChapters 
+                || segments.some((segment) => segment.source === SponsorSourceType.YouTube)) {
             chapterChevron.style.removeProperty("display");
         } else {
             chapterChevron.style.display = "none";
@@ -243,8 +244,7 @@ class PreviewBar {
         bar.style.position = "absolute";
         const duration = Math.min(segment[1], this.videoDuration) - segment[0];
         if (duration > 0) {
-            bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${
-                Config.config.renderAsChapters && this.chapterFilter(barSegment) ? ' - 2px' : ''})`;
+            bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${this.chapterFilter(barSegment) ? ' - 2px' : ''})`;
         }
         
         const time = segment[1] ? Math.min(this.videoDuration, segment[0]) : segment[0];
@@ -258,7 +258,7 @@ class PreviewBar {
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar || chapterBar.childElementCount <= 0) return;
 
-        if (!Config.config.renderAsChapters) {
+        if (!Config.config.renderSegmentsAsChapters && segments.every((segment) => segment.actionType !== ActionType.Chapter)) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             chapterBar.style.removeProperty("display");
             return;
@@ -649,7 +649,8 @@ class PreviewBar {
     }
 
     private chapterFilter(segment: PreviewBarSegment): boolean {
-        return segment.actionType !== ActionType.Poi
+        return (Config.config.renderSegmentsAsChapters || segment.actionType === ActionType.Chapter)
+                && segment.actionType !== ActionType.Poi
                 && this.chapterGroupFilter(segment);
     }
 

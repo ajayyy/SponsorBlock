@@ -440,8 +440,4 @@ export default class Utils {
 
         Config.forceLocalUpdate("downvotedSegments");
     }
-
-    chaptersEnabled(): boolean {
-        return Config.config.renderAsChapters && !!this.getCategorySelection("chapter");
-    }
 }

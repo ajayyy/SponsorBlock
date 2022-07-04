@@ -958,7 +958,11 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 }
 
 function importExistingChapters(wait: boolean) {
-    if (Config.config.renderAsChapters && !existingChaptersImported
+    const containsChapter = sponsorTimes?.some((segment) => segment.actionType === ActionType.Chapter)
+        || sponsorTimesSubmitting.some((segment) => segment.actionType === ActionType.Chapter);
+    
+    if ((Config.config.renderSegmentsAsChapters || containsChapter)
+            && !existingChaptersImported
             && (sponsorTimes?.length > 0 || sponsorTimesSubmitting.length > 0)) {
         GenericUtils.wait(() => video && getExistingChapters(sponsorVideoID, video.duration),
             wait ? 5000 : 0, 100, (c) => c?.length > 0).then((chapters) => {
