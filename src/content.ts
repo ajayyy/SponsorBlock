@@ -1522,7 +1522,7 @@ function reskipSponsorTime(segment: SponsorTime, forceSeek = false) {
         const fullSkip = skippedTime / segmentDuration > manualSkipPercentCount;
 
         video.currentTime = segment.segment[1];
-        sendTelemetryAndCount([segment], skippedTime, fullSkip);
+        sendTelemetryAndCount([segment], segment.actionType !== ActionType.Chapter ? skippedTime : 0, fullSkip);
         startSponsorSchedule(true, segment.segment[1], false);
     }
 }
