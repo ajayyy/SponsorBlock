@@ -215,10 +215,10 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
 
             return true;
         case "unskip":
-            unskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID));
+            unskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID), null, true);
             break;
         case "reskip":
-            reskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID));
+            reskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID), true);
             break;
         case "submitVote":
             vote(request.type, request.UUID).then((response) => sendResponse(response));
