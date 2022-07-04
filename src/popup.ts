@@ -656,7 +656,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             skipButton.className = "voteButton";
             skipButton.src = chrome.runtime.getURL("icons/skip.svg");
             skipButton.addEventListener("click", () => skipSegment(actionType, UUID, skipButton));
-            container.addEventListener("dblclick", () => skipSegment(actionType, UUID));
+            votingButtons.addEventListener("dblclick", () => skipSegment(actionType, UUID));
 
             //add thumbs up, thumbs down and uuid copy buttons to the container
             voteButtonsContainer.appendChild(upvoteButton);
