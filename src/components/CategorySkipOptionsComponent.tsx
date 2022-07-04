@@ -111,8 +111,6 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     skipOptionSelected(event: React.ChangeEvent<HTMLSelectElement>): void {
         let option: CategorySkipOption;
 
-        this.removeCurrentCategorySelection();
-
         switch (event.target.value) {
             case "disable": 
                 return;
@@ -130,28 +128,17 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 break;
         }
 
-        Config.config.categorySelections.push({
-            name: this.props.category,
-            option: option
-        });
-
-        // Forces the Proxy to send this to the chrome storage API
-        Config.config.categorySelections = Config.config.categorySelections;
-    }
-
-    /** Removes this category from the config list of category selections */
-    removeCurrentCategorySelection(): void {
-        // Remove it if it exists
-        for (let i = 0; i < Config.config.categorySelections.length; i++) {
-            if (Config.config.categorySelections[i].name === this.props.category) {
-                Config.config.categorySelections.splice(i, 1);
-
-                // Forces the Proxy to send this to the chrome storage API
-                Config.config.categorySelections = Config.config.categorySelections;
-
-                break;
-            }
+        const existingSelection = Config.config.categorySelections.find(selection => selection.name === this.props.category);
+        if (existingSelection) {
+            existingSelection.option = option;
+        } else {
+            Config.config.categorySelections.push({
+                name: this.props.category,
+                option: option
+            });
         }
+
+        Config.forceSyncUpdate("categorySelections");
     }
 
     getCategorySkipOptions(): JSX.Element[] {
