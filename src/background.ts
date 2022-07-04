@@ -104,7 +104,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         }
         case "time":
             if (sender.tab) {
-                popupPort[sender.tab.id].postMessage(request);
+                popupPort[sender.tab.id]?.postMessage(request);
             }
             return false;
 	}
