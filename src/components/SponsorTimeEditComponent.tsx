@@ -406,6 +406,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         )];
 
         for (const category of (this.props.categoryList ?? CompileConfig.categoryList)) {
+            if (category === "chapter" && !Config.config.canSubmitChapter) break;
+
             elements.push(
                 <option value={category}
                         key={category}

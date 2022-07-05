@@ -6,6 +6,7 @@ import { keybindEquals } from "./utils/configUtils";
 interface SBConfig {
     userID: string,
     isVip: boolean,
+    canSubmitChapter: boolean,
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
@@ -130,6 +131,7 @@ const Config: SBObject = {
     syncDefaults: {
         userID: null,
         isVip: false,
+        canSubmitChapter: false,
         unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
         renderSegmentsAsChapters: true,
