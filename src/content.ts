@@ -74,9 +74,6 @@ let lastPreviewBarUpdate;
 // Is the video currently being switched
 let switchingVideos = null;
 
-// Made true every videoID change
-let firstEvent = false;
-
 // Used by the play and playing listeners to make sure two aren't
 // called at the same time
 let lastCheckTime = 0;
@@ -306,8 +303,6 @@ function resetValues() {
         switchingVideos = true;
         logDebug("Setting switching videos to true (reset data)");
     }
-
-    firstEvent = true;
 
     // Reset advert playing flag
     isAdPlaying = false;
@@ -707,8 +702,7 @@ function setupVideoListeners() {
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
             // gone back to the begining
             if (video.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA 
-                    && !firstEvent && video.currentTime === 0) return;
-            firstEvent = false;
+                    && video.currentTime === 0) return;
 
             updateVirtualTime();
 
