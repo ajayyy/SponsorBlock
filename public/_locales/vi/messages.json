@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Hiển thị thông báo sau khi bỏ qua phân đoạn"
     },
+    "showCategoryGuidelines": {
+        "message": "Hiển thị Danh mục Trợ giúp"
+    },
     "noticeVisibilityMode0": {
         "message": "Thông báo bỏ qua với kích thước đầy đủ"
     },
@@ -542,17 +545,35 @@
         "message": "đến",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline2": {
+        "message": "Chơi như thể không có gì bị bỏ qua"
+    },
     "category_sponsor": {
         "message": "Nhà tài trợ"
     },
     "category_sponsor_description": {
         "message": "Nội dung được trả tiền để quảng cáo, giới thiệu và quảng cáo trực tiếp. Không phải là quảng cáo không trả công hay được đề cập miễn phí."
     },
+    "category_sponsor_guideline1": {
+        "message": "Quảng cáo trả phí"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Không dành cho các khoản đóng góp"
+    },
     "category_selfpromo": {
         "message": "Quảng cáo không trả công/Tự quảng cáo"
     },
     "category_selfpromo_description": {
         "message": "Tương tự như 'nhà tài trợ' ngoại trừ việc quảng cáo không được trả tiền hay tự quảng cáo. Điều này bao gồm các phần hàng hóa, đóng góp, hoặc thông tin về người mà họ hợp tác cùng."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Quyên góp, tư cách thành viên và hàng hóa tùy chỉnh"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Lời cảm ơn miễn phí không thêm vào video"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Không dành cho các sản phẩm và hàng hóa do công ty thiết kế"
     },
     "category_exclusive_access": {
         "message": "Truy cập riêng"
@@ -564,11 +585,23 @@
         "message": "Video này giới thiệu sản phẩm, dịch vụ hoặc vị trí mà họ đã nhận được quyền truy cập miễn phí hoặc được trợ cấp",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Toàn bộ video giới thiệu nội dung nào đó có quyền truy cập miễn phí hoặc được trợ cấp"
+    },
     "category_interaction": {
         "message": "Nhắc tương tác (Đăng ký)"
     },
     "category_interaction_description": {
         "message": "Nhắc nhở người xem Thích, Đăng ký hoặc Theo dõi. Nếu nó dài hoặc là một cái gì cụ thể, nó nên là danh mục \"Tự quảng cáo\"."
+    },
+    "category_interaction_guideline1": {
+        "message": "Lời nhắc ngắn gọn để thích, đăng ký hoặc theo dõi"
+    },
+    "category_interaction_guideline2": {
+        "message": "Bao gồm lời nhắc gián tiếp để nhận xét"
+    },
+    "category_interaction_guideline3": {
+        "message": "Không dành cho quảng cáo chung, chỉ dành cho lời kêu gọi hành động"
     },
     "category_interaction_short": {
         "message": "Nhắc nhở tương tác"
@@ -582,17 +615,35 @@
     "category_intro_short": {
         "message": "Tạm ngừng"
     },
+    "category_intro_guideline1": {
+        "message": "Khoảng thời gian không có nội dung thực tế"
+    },
+    "category_intro_guideline2": {
+        "message": "Không dành cho chuyển tiếp với thông tin"
+    },
     "category_outro": {
         "message": "Màn hình kết thúc/Danh đề"
     },
     "category_outro_description": {
         "message": "Credits hoặc khi thẻ màn hình kết thúc của YouTube xuất hiện. Không dùng với những đoạn có thông tin."
     },
+    "category_outro_guideline1": {
+        "message": "Không bao gồm nội dung, ngay cả khi thẻ kết thúc ở trên màn hình"
+    },
     "category_preview": {
         "message": "Xem trước/Tóm tắt"
     },
     "category_preview_description": {
         "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
+    },
+    "category_preview_guideline1": {
+        "message": "Các clip xuất hiện sau đó hoặc trong một video trong tương lai"
+    },
+    "category_preview_guideline2": {
+        "message": "Tóm tắt video trước đó"
+    },
+    "category_preview_guideline3": {
+        "message": "Không dành cho các phần thêm nội dung bổ sung"
     },
     "category_filler_description": {
         "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
