@@ -41,6 +41,8 @@ export function getCategorySuffix(category: Category): string {
         return "_POI";
     } else if (category === "exclusive_access") {
         return "_full";
+    } else if (category === "chapter") {
+        return "_chapter";
     } else {
         return "";
     }
