@@ -737,7 +737,7 @@
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
-        "message": "Nieprzesłany kolor",
+        "message": "Kolor nieprzesłanego segmentu",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
