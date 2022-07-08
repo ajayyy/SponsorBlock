@@ -186,7 +186,7 @@
         "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
     "showSkipButton": {
-        "message": "\"Zum Highlight springen\"-Button im Youtube-Player anzeigen"
+        "message": "Behalte \"Zum Highlight springen\"-Knopf in der Leiste"
     },
     "showInfoButton": {
         "message": "Zeige Info-Knopf im Youtube-Videoplayer"
@@ -546,7 +546,7 @@
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "generic_guideline1": {
-        "message": "Geschmeidige Übergänge einbeziehen"
+        "message": "Fließende Übergänge einbeziehen"
     },
     "generic_guideline2": {
         "message": "Spielt, als ob nichts übersprungen worden wäre"
@@ -558,7 +558,7 @@
         "message": "Bezahlte Werbung, bezahlte Empfehlungen und direkte Werbung, nicht für Eigenwerbung, kostenlose Fremdwerbung oder Empfehlungen für Anlässe/Personen/Webseiten/Produkte."
     },
     "category_sponsor_guideline1": {
-        "message": "Bezahlte Aktionen"
+        "message": "Bezahlte Werbeaktionen"
     },
     "category_sponsor_guideline2": {
         "message": "Nicht für Spenden oder eigenen Merch"
@@ -598,10 +598,10 @@
         "message": "Wenn es im Video eine kurze Erinnerung gibt, den Kanal zu abonnieren oder das Video mit \"Mag ich\" zu markieren."
     },
     "category_interaction_guideline1": {
-        "message": "Kurze Erinnerungen um zu Liken, Abonnieren oder zu Folgen"
+        "message": "Kurze Erinnerungen zum Liken, Abonnieren oder Folgen"
     },
     "category_interaction_guideline2": {
-        "message": "Enthält indirekte Erinnerungen zu kommentieren"
+        "message": "Enthält indirekte Erinnerungen zum Kommentieren"
     },
     "category_interaction_guideline3": {
         "message": "Nicht für allgemeine Förderung, nur Aufruf zum Handeln"
@@ -619,7 +619,7 @@
         "message": "Unterbrechung"
     },
     "category_intro_guideline1": {
-        "message": "Intervall ohne aktuellen Inhalt"
+        "message": "Intervall ohne tatsächlichen Inhalt"
     },
     "category_intro_guideline2": {
         "message": "Nicht für Übergänge mit Informationen"
@@ -867,7 +867,7 @@
         "message": "Dauerhaft verbergen"
     },
     "warningChatInfo": {
-        "message": "Du hast eine Warnung erhalten und kannst vorübergehend keine Segmente einreichen. Uns ist nämlich aufgefallen, dass du nicht bösartige Fehler in deinen Einreichungen machst. Bitte bestätige, dass du die Regeln verstanden hast. Darauffolgend können wir die Warnung entfernen. Du kannst diesem Chat auch mit discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app beitreten"
+        "message": "Du hast eine Warnung erhalten und kannst vorübergehend keine Segmente einreichen. Dies bedeutet, dass du Fehler gemacht hast welche nicht bösartig sind, bitte bestätige, dass du die Regeln verstanden hast, wir werden dann die Warnung entfernen. Du kannst diesem Chat auch mit discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app beitreten"
     },
     "voteRejectedWarning": {
         "message": "Abstimmung wegen einer Warnung abgelehnt. Klicke hier um einen Chat zu öffnen, oder versuch es später erneut, wenn du Zeit hast.",
@@ -964,7 +964,7 @@
         "message": "Dies wirkt sich sofort auf eigene Segmente aus"
     },
     "downvote": {
-        "message": "Negativ bewertet"
+        "message": "Dagegen stimmen"
     },
     "upvote": {
         "message": "Positiv bewerten"

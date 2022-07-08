@@ -65,17 +65,14 @@ const videosWithEventListeners: HTMLVideoElement[] = [];
 const controlsWithEventListeners: HTMLElement[] = []
 
 // This misleading variable name will be fixed soon
-let onInvidious;
-let onMobileYouTube;
+let onInvidious: boolean;
+let onMobileYouTube: boolean;
 
 //the video id of the last preview bar update
 let lastPreviewBarUpdate;
 
 // Is the video currently being switched
 let switchingVideos = null;
-
-// Made true every videoID change
-let firstEvent = false;
 
 // Used by the play and playing listeners to make sure two aren't
 // called at the same time
@@ -100,7 +97,10 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
 // wait for hover preview to appear, and refresh attachments if ever found
-window.addEventListener("DOMContentLoaded", () => utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments()));
+window.addEventListener("DOMContentLoaded", () => {
+    utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments())
+    utils.waitForElement("[data-sessionlink='feature=player-title']").then(() => videoIDChange(getYouTubeVideoID(document)))
+});
 addPageListeners();
 addHotkeyListener();
 
@@ -116,6 +116,9 @@ let submissionNotice: SubmissionNotice = null;
 
 // If there is an advert playing (or about to be played), this is true
 let isAdPlaying = false;
+
+// last response status
+let lastResponseStatus: number;
 
 // Contains all of the functions and variables needed by the skip notice
 const skipNoticeContentContainer: ContentContainer = () => ({
@@ -163,6 +166,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             //send the sponsor times along with if it's found
             sendResponse({
                 found: sponsorDataFound,
+                status: lastResponseStatus,
                 sponsorTimes: sponsorTimes,
                 onMobileYouTube
             });
@@ -202,8 +206,12 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             submitSponsorTimes();
             break;
         case "refreshSegments":
+            // update video on refresh if videoID invalid
+            if (!sponsorVideoID) videoIDChange(getYouTubeVideoID(document));
+            // fetch segments
             sponsorsLookup(false).then(() => sendResponse({
                 found: sponsorDataFound,
+                status: lastResponseStatus,
                 sponsorTimes: sponsorTimes,
                 onMobileYouTube
             }));
@@ -223,8 +231,21 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "copyToClipboard":
             navigator.clipboard.writeText(request.text);
             break;
-
+        case "keydown":
+            document.dispatchEvent(new KeyboardEvent('keydown', {
+                key: request.key,
+                keyCode: request.keyCode,
+                code: request.code,
+                which: request.which,
+                shiftKey: request.shiftKey,
+                ctrlKey: request.ctrlKey,
+                altKey: request.altKey,
+                metaKey: request.metaKey
+            }));
+            break;
     }
+
+    sendResponse({});
 }
 
 /**
@@ -282,8 +303,6 @@ function resetValues() {
         switchingVideos = true;
         logDebug("Setting switching videos to true (reset data)");
     }
-
-    firstEvent = true;
 
     // Reset advert playing flag
     isAdPlaying = false;
@@ -400,7 +419,7 @@ function createPreviewBar(): void {
             isVisibleCheck: true
         }, {
             // For new mobile YouTube (#1287)
-            selector: ".ytm-progress-bar",
+            selector: ".progress-bar-line",
             isVisibleCheck: true
         }, {
             // For Desktop YouTube
@@ -532,6 +551,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     // Don't skip if this category should not be skipped
     if (!shouldSkip(currentSkip) && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) return;
 
+    const skipBuffer = 0.003;
     const skippingFunction = (forceVideoTime?: number) => {
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
@@ -540,7 +560,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         if (incorrectVideoCheck(videoID, currentSkip)) return;
         forceVideoTime ||= Math.max(video.currentTime, getVirtualTime());
 
-        if (forceVideoTime >= skipTime[0] && forceVideoTime < skipTime[1]) {
+        if (forceVideoTime >= skipTime[0] - skipBuffer && forceVideoTime < skipTime[1]) {
             skipToTime({
                 v: video,
                 skipTime,
@@ -561,7 +581,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
     };
 
-    if (timeUntilSponsor < 0.003) {
+    if (timeUntilSponsor < skipBuffer) {
         skippingFunction(currentTime);
     } else {
         const delayTime = timeUntilSponsor * 1000 * (1 / video.playbackRate);
@@ -681,8 +701,8 @@ function setupVideoListeners() {
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
             // gone back to the begining
-            if (!firstEvent && video.currentTime === 0) return;
-            firstEvent = false;
+            if (video.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA 
+                    && video.currentTime === 0) return;
 
             updateVirtualTime();
 
@@ -814,7 +834,6 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
-    // Check for hashPrefix setting
     const hashPrefix = (await utils.getHash(sponsorVideoID, 1)).slice(0, 4) as VideoID & HashedValue;
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
@@ -822,6 +841,9 @@ async function sponsorsLookup(keepOldSubmissions = true) {
         userAgent: `${chrome.runtime.id}`,
         ...extraRequestData
     });
+
+    // store last response status
+    lastResponseStatus = response?.status;
 
     if (response?.ok) {
         const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
@@ -890,8 +912,10 @@ async function sponsorsLookup(keepOldSubmissions = true) {
             //otherwise the listener can handle it
             updatePreviewBar();
         }
-    } else if (response?.status === 404) {
-        retryFetch();
+    } else {
+        if (lastResponseStatus === 404) {
+            retryFetch();
+        }
     }
 
     if (Config.config.isVip) {
@@ -1507,9 +1531,9 @@ async function createButtons(): Promise<void> {
     controls = await utils.wait(getControls).catch();
 
     // Add button if does not already exist in html
-    createButton("startSegment", "sponsorStart", () => closeInfoMenuAnd(() => startOrEndTimingNewSegment()), "PlayerStartIconSponsorBlocker.svg");
-    createButton("cancelSegment", "sponsorCancel", () => closeInfoMenuAnd(() => cancelCreatingSegment()), "PlayerCancelSegmentIconSponsorBlocker.svg");
-    createButton("delete", "clearTimes", () => closeInfoMenuAnd(() => clearSponsorTimes()), "PlayerDeleteIconSponsorBlocker.svg");
+    createButton("startSegment", "sponsorStart", () => startOrEndTimingNewSegment(), "PlayerStartIconSponsorBlocker.svg");
+    createButton("cancelSegment", "sponsorCancel", () => cancelCreatingSegment(), "PlayerCancelSegmentIconSponsorBlocker.svg");
+    createButton("delete", "clearTimes", () => clearSponsorTimes(), "PlayerDeleteIconSponsorBlocker.svg");
     createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
     createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
 
@@ -1730,17 +1754,6 @@ function closeInfoMenu() {
     }
 }
 
-/**
- * The content script currently has no way to notify the info menu of changes. As a workaround we close it, thus making it query the new information when reopened.
- *
- * This function and all its uses should be removed when this issue is fixed.
- * */
-function closeInfoMenuAnd<T>(func: () => T): T {
-    closeInfoMenu();
-
-    return func();
-}
-
 function clearSponsorTimes() {
     const currentVideoID = sponsorVideoID;
 
@@ -1867,8 +1880,8 @@ function dontShowNoticeAgain() {
 /**
  * Helper method for the submission notice to clear itself when it closes
  */
-function resetSponsorSubmissionNotice() {
-    submissionNotice?.close();
+function resetSponsorSubmissionNotice(callRef = true) {
+    submissionNotice?.close(callRef);
     submissionNotice = null;
 }
 

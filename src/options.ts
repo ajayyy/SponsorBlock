@@ -598,8 +598,9 @@ async function setTextOption(option: string, element: HTMLElement, value: string
 function downloadConfig() {
     const file = document.createElement("a");
     const jsonData = JSON.parse(JSON.stringify(Config.cachedSyncConfig));
-    file.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonData)));
-    file.setAttribute("download", "SponsorBlockConfig.json");
+    const dateTimeString = new Date().toJSON().replace("T", "_").replace(/:/g, ".").replace(/.\d+Z/g, "")
+    file.setAttribute("href", `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(jsonData))}`);
+    file.setAttribute("download", `SponsorBlockConfig_${dateTimeString}.json`);
     document.body.append(file);
     file.click();
     file.remove();

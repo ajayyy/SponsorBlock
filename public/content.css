@@ -17,7 +17,7 @@
 	transition: transform .1s cubic-bezier(0,0,0.2,1);
 }
 
-.ytm-progress-bar > #previewbar {
+.progress-bar-line > #previewbar {
 	height: 3px;
 }
 

@@ -1,1 +1,25 @@
-{}
+{
+    "fullName": {
+        "message": "SponsorBlock priekš YouTube - Izlaid sponsorus",
+        "description": "Name of the extension."
+    },
+    "Description": {
+        "message": "Izlaidiet sponsorus, abonēšanas lūgumus un vairāk, skatoties YouTube video. Ziņojiet par sponsoriem video, kurus jūs skatāties, lai ietaupītu citu laiku.",
+        "description": "Description of the extension."
+    },
+    "400": {
+        "message": "Serveris ziņo, ka šis pieprasījums ir nederīgs"
+    },
+    "429": {
+        "message": "Jūs esat aizsūtījis pārāk daudz sponsoru laika sprīžus šim video; vai esat pārliecināts, ka šeit ir tik daudz?"
+    },
+    "409": {
+        "message": "Šis jau ir ticis aizsūtīts iepriekš"
+    },
+    "channelWhitelisted": {
+        "message": "Kanāls iekļauts baltajā sarakstā!"
+    },
+    "Segment": {
+        "message": "segments"
+    }
+}

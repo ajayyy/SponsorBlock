@@ -186,7 +186,7 @@
         "message": "Nasconde i pulsanti che appaiono sul video per inviare i segmenti da nascondere."
     },
     "showSkipButton": {
-        "message": "Mantieni Salta Per Evidenziare il Pulsante Sul Lettore"
+        "message": "Mantieni l'Highlight del Video sulla Barra del Video"
     },
     "showInfoButton": {
         "message": "Mostra il pulsante delle informazioni sopra al video"
@@ -216,7 +216,7 @@
         "message": "Memorizza i voti negativi del segmento"
     },
     "whatTrackDownvotes": {
-        "message": "Qualsiasi segmento voti negativamente rimarrà nascosto anche dopo aver ricaricato"
+        "message": "Segmenti votati negativamente rimarranno nascosti anche dopo aver ricaricato la pagina"
     },
     "trackDownvotesWarning": {
         "message": "Attenzione: Disabilitarlo eliminerà tutti i voti negativi precedentemente memorizzati"
@@ -282,7 +282,7 @@
         "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Inizio/Fine segmento",
+        "message": "Inizia/Finisci segmento",
         "description": "Keybind label"
     },
     "setSubmitKeybind": {
@@ -290,7 +290,7 @@
         "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Selezionare una chiave digitandola e scegliere qualsiasi tasto modificatore che si desidera utilizzare."
+        "message": "Seleziona un tasto digitandolo e scegli qualsiasi tasto modificatore che desideri utilizzare."
     },
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
@@ -328,7 +328,7 @@
         "message": "Silenziare {0}?"
     },
     "skip_to_category": {
-        "message": "Saltare a {0}?",
+        "message": "Salta a {0}?",
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
@@ -545,6 +545,9 @@
         "message": "a",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Includi transizioni"
+    },
     "generic_guideline2": {
         "message": "Riproduci come se nulla fosse stato saltato"
     },
@@ -569,6 +572,9 @@
     "category_selfpromo_guideline1": {
         "message": "Donazioni, abbonamenti e merce personalizzata"
     },
+    "category_selfpromo_guideline2": {
+        "message": "Shoutout non pagati che non aggiungono nulla al video"
+    },
     "category_selfpromo_guideline3": {
         "message": "Non per prodotti progettati da aziende e merce"
     },
@@ -589,7 +595,7 @@
         "message": "Promemoria d'Interazione (Iscrizione)"
     },
     "category_interaction_description": {
-        "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per aggiunta di mi piace, iscrizione o seguito. Se dovesse risultare esteso o riguardare qualcosa di specifico, potrebbe essere un'autopromozione."
+        "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per like, iscrizione o follow. Se dovesse risultare esteso o riguardante qualcosa di specifico, potrebbe essere auto-promozione."
     },
     "category_interaction_guideline1": {
         "message": "Brevi promemoria per mi piace, iscrizioni o follow"
@@ -601,16 +607,16 @@
         "message": "Non per promozione generale, solo chiamata all'azione"
     },
     "category_interaction_short": {
-        "message": "Promemoria di Interazione"
+        "message": "Promemoria d'Interazione"
     },
     "category_intro": {
-        "message": "Animazione Interruzione/Introduzione"
+        "message": "Intermezzo/Intro Animata"
     },
     "category_intro_description": {
         "message": "Un intervallo senza contenuto effettivo. Potrebbe essere una pausa, una schermata statica, un'animazione ripetuta. Non dovrebbe essere usato per transizioni contenenti informazioni."
     },
     "category_intro_short": {
-        "message": "Interruzione"
+        "message": "Intermezzo"
     },
     "category_intro_guideline1": {
         "message": "Intervallo senza contenuto effettivo"
@@ -633,6 +639,15 @@
     "category_preview_description": {
         "message": "Riepilogo rapido degli episodi precedenti, o un'anteprima di ciò che sta arrivando più tardi nel video attuale. Inteso per clip, non per riassunti a voce."
     },
+    "category_preview_guideline1": {
+        "message": "Clip che appaiono più tardi in questo video, oppure in un video futuro"
+    },
+    "category_preview_guideline2": {
+        "message": "Riepilogo o riassunto di un video precedente"
+    },
+    "category_preview_guideline3": {
+        "message": "Non per sezioni che aggiungono contenuti in più"
+    },
     "category_filler": {
         "message": "Riempitivi irrilevanti/Battute"
     },
@@ -640,7 +655,16 @@
         "message": "Le scene riempitive sono aggiunte solo per riempire o per umorismo che non sono richieste per comprendere il contenuto principale del video. Questo non dovrebbe includere segmenti che forniscono contesto o dettagli di sfondo."
     },
     "category_filler_short": {
-        "message": "Riempimento"
+        "message": "Filler"
+    },
+    "category_filler_guideline1": {
+        "message": "Scene non correlate usate solo per filler o umorismo"
+    },
+    "category_filler_guideline2": {
+        "message": "Distrazioni, blooper, replay"
+    },
+    "category_filler_guideline3": {
+        "message": "Non per scene necessarie a capire l'argomento"
     },
     "category_music_offtopic": {
         "message": "Musica: Sezione Non-Musicale"
@@ -651,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Non-Musicale"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Sezioni non presenti nelle release ufficiali"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Sezioni senza musica in una performance dal vivo"
+    },
     "category_poi_highlight": {
-        "message": "Evidenzia"
+        "message": "Highlight"
     },
     "category_poi_highlight_description": {
         "message": "La parte del video che gran parte delle persone stanno cercando. Simile ai commenti \"Il video inizia a x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "La parte che la maggior parte delle persone sta cercando"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Può ignorare il contesto"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Può portare al titolo o alla miniatura del video"
     },
     "category_livestream_messages": {
         "message": "Livestream: Donazione/Letture dei Messaggi"
@@ -777,7 +816,7 @@
         "message": "Forza controllo canale prima di andare avanti"
     },
     "whatForceChannelCheck": {
-        "message": "Per impostazione predefinita, si salteranno subito i segmenti prima che si sappia anche che canale è. Per impostazione predefinita, alcuni segmenti all'inizio del video potrebbero essere saltati sui canali sulla whitelist. Abilitare questa opzione impedirà questo, ma fare saltare tutti hanno un leggero ritardo in quanto ottenere il channelID può richiedere un certo tempo. Questo ritardo potrebbe essere invisibile se si dispone di internet veloce."
+        "message": "Di default, verranno saltati i segmenti subito, anche prima che si sappia il canale. Di default, alcuni segmenti all'inizio del video potrebbero essere saltati sui canali nella whitelist. L'attivazione di questa opzione eviterà che ciò accada, ma ogni salto avrà un leggero ritardo in quanto ottenere l'ID del canale può richiedere un certo tempo. Questo ritardo potrebbe essere impercettibile se si dispone di una connessione internet veloce."
     },
     "forceChannelCheckPopup": {
         "message": "Considera l'Attivazione dell'opzione \"Forza la Verifica del Canale Prima del Salto\""
@@ -906,6 +945,9 @@
     "LearnMore": {
         "message": "Scopri di Più"
     },
+    "FullDetails": {
+        "message": "Visualizza Dettagli Completi"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Vota negativamente e crea una copia locale da reinviare"
     },
@@ -920,6 +962,12 @@
     },
     "ChangeCategoryTooltip": {
         "message": "Questo si applicherà istantaneamente ai tuoi segmenti"
+    },
+    "downvote": {
+        "message": "Voto negativo"
+    },
+    "upvote": {
+        "message": "Voto positivo"
     },
     "hideSegment": {
         "message": "Nascondi segmento"

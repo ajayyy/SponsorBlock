@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Αντιγραφή δημόσιου αναγνωριστικού χρήστη"
     },
+    "copySegmentID": {
+        "message": "Αντιγραφή ταυτότητας τμήματος"
+    },
     "discordAdvert": {
         "message": "Μπείτε στον επίσημο διακομιστή μας στο Discord για ανατροφοδότηση και προτάσεις!"
     },
@@ -183,7 +186,7 @@
         "message": "Αυτό αποκρύπτει τα κουμπιά που εμφανίζονται στο πρόγραμμα αναπαραγωγής YouTube ώστε να υποβάλετε τμήματα προς παράλειψη."
     },
     "showSkipButton": {
-        "message": "Διατήρηση του κουμπιού παράλειψης προς την καλύτερη στιγμή στο πρόγραμμα αναπαραγωγής"
+        "message": "Διατήρηση του κουμπιού παράλειψης προς το κυριότερο περιεχόμενο του βίντεο στην οθόνη αναπαραγωγής"
     },
     "showInfoButton": {
         "message": "Εμφάνιση κουμπιού «πληροφορίες» στο πρόγραμμα αναπαραγωγής YouTube"
@@ -208,6 +211,15 @@
     },
     "enableViewTrackingInPrivate": {
         "message": "Ενεργοποίηση του μετρητή παραλείψεων σε καρτέλες Ιδιωτικής/Ανώνυμης περιήγησης"
+    },
+    "enableTrackDownvotes": {
+        "message": "Αποθήκευση καταψηφίσεων τμημάτων"
+    },
+    "whatTrackDownvotes": {
+        "message": "Όποια τμήματα καταψηφίζετε θα παραμένουν κρυμμένα ακόμα και μετά από ανανέωση της σελίδας"
+    },
+    "trackDownvotesWarning": {
+        "message": "Προειδοποίηση: Η απενεργοποίηση αυτής της επιλογής θα διαγράψει όλες τις προηγούμενες αποθηκευμένες καταψηφίσεις"
     },
     "enableQueryByHashPrefix": {
         "message": "Αιτήματα μέσω προθέματος Hash"
@@ -265,6 +277,21 @@
         "message": "Εάν δεν σας αρέσουν, πατήστε το κουμπί «Να μην ξαναεμφανιστεί».",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Παράλειψη τμήματος",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Έναρξη/Τέλος τμήματος",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Υποβολή Τμημάτων",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Επιλέξτε ένα πλήκτρο πατώντας το και επιλέξτε όποιο πρόσθετο πλήκτρο ελέγχου επιθυμείτε."
+    },
     "0": {
         "message": "Λήξη χρονικού ορίου σύνδεσης. Παρακαλώ ελέγξτε ότι η σύνδεσή σας με το διαδίκτυο λειτουργεί, αλλιώς ο διακομιστής μπορεί να υπερφορτώθηκε ή να έπεσε."
     },
@@ -285,13 +312,20 @@
         "message": "Κωδικός σφάλματος: "
     },
     "skip": {
-        "message": "Παράκαμψη"
+        "message": "Παράλειψη"
     },
     "mute": {
         "message": "Σίγαση"
     },
+    "full": {
+        "message": "Όλο το βίντεο",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Παράλειψη {0};"
+    },
+    "mute_category": {
+        "message": "Σίγαση {0};"
     },
     "skip_to_category": {
         "message": "Παράλειψη προς το σημείο «{0}»;",
@@ -301,15 +335,19 @@
         "message": "Παραλείφθηκε «{0}»",
         "description": "Example: Sponsor Skipped"
     },
+    "muted": {
+        "message": "Σίγαση {0}",
+        "description": "Example: Sponsor Muted"
+    },
     "skipped_to_category": {
         "message": "Παραλείφθηκε προς το σημείο «{0}»",
         "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
-        "message": "Απενεργοποίηση Αυτόματης Παράληψης"
+        "message": "Απενεργοποίηση Αυτόματης Παράλειψης"
     },
     "enableAutoSkip": {
-        "message": "Ενεργοποίηση Αυτόματης Παράληψης"
+        "message": "Ενεργοποίηση Αυτόματης Παράλειψης"
     },
     "audioNotification": {
         "message": "Ηχητική ειδοποίηση κατά την παράληψη"
@@ -318,7 +356,7 @@
         "message": "Οι ειδοποιήσεις μετά την παράλειψη κάθε τμήματος θα αναπαράγουν ήχο. Εάν είναι ανενεργή αυτή η επιλογή εκτός αν η αυτόματη παράλειψη είναι ανενεργή."
     },
     "showTimeWithSkips": {
-        "message": "Εμφάνιση χρόνου συμπεριλαμβάνοντας τις παραλήψεις"
+        "message": "Εμφάνιση χρόνου συμπεριλαμβάνοντας τις παραλείψεις"
     },
     "showTimeWithSkipsDescription": {
         "message": "Αυτός ο χρόνος εμφανίζεται σε παρενθέσεις δίπλα από τον τρέχων χρόνο που είναι κάτω από την μπάρα χρόνου. Αυτό δείχνει την συνολική διάρκεια του βίντεο πλην οποιουδήποτε τμήματος. Αυτό περιλαμβάνει και τα τμήματα που εμφανίζονται μόνο στην μπάρα χρόνου."
@@ -352,6 +390,9 @@
     "changeUserID": {
         "message": "Εισαγωγή/Εξαγωγή της Ταυτότητας Χρήστη σας"
     },
+    "whatChangeUserID": {
+        "message": "Κρατείστε το μυστικό. Αυτό είναι σαν ένα κωδικό πρόσβασης όπου δε θα έπρεπε να μοιράζεστε με κανένα. Εάν το αποκτήσει κάποιος, μπορεί να σας υποδυθεί. Εάν ψάχνετε για τη δημόσια ταυτότητα χρήστη σας, πατήστε πάνω στο αναδυόμενο εικονίδιο πρόχειρου."
+    },
     "setUserID": {
         "message": "Ορισμός Ταυτότητας Χρήστη"
     },
@@ -372,7 +413,7 @@
         "message": "Υποστηριζόμενες Ιστοσελίδες: "
     },
     "optionsInfo": {
-        "message": "Ενεργοποίηση υποστήριξης «Invidious», απενεργοποίηση αυτόματης παράληψης, απόκρυψη κουμπιών και άλλα."
+        "message": "Ενεργοποίηση υποστήριξης «Invidious», απενεργοποίηση αυτόματης παράλειψης, απόκρυψη κουμπιών και άλλα."
     },
     "addInvidiousInstance": {
         "message": "Προσθήκη 3ου πελάτη συνεδρίας"
@@ -410,6 +451,9 @@
     "shortCheck": {
         "message": "Η ακόλουθη υποβολή είναι μικρότερη από την επιλεγμένη ελάχιστη διάρκεια. Αυτό θα μπορούσε να σημαίνει ότι αυτό το τμήμα έχει ήδη υποβληθεί, και απλά αγνοείται λόγω αυτής της επιλογής. Είστε σίγουροι ότι θα θέλατε να το υποβάλετε;"
     },
+    "liveOrPremiere": {
+        "message": "Η υποβολή σε μια ζωντανή μετάδοση σε εξέλιξη ή σε μια πρεμιέρα δεν επιτρέπεται. Παρακαλώ περιμένετε μέχρι να τελειώσει, στην συνέχεια ανανεώστε την σελίδα και επαληθεύστε ότι τα τμήματα είναι έγκυρα."
+    },
     "showUploadButton": {
         "message": "Εμφάνιση κουμπιού υποβολής"
     },
@@ -436,6 +480,15 @@
     },
     "exportOptions": {
         "message": "Εισαγωγή/Εξαγωγή όλων των ρυθμίσεων"
+    },
+    "exportOptionsCopy": {
+        "message": "Επεξεργασία/αντιγραφή"
+    },
+    "exportOptionsDownload": {
+        "message": "Αποθήκευση σε αρχείο"
+    },
+    "exportOptionsUpload": {
+        "message": "Φόρτωση από αρχείο"
     },
     "whatExportOptions": {
         "message": "Αυτές είναι όλες σας οι ρυθμίσεις σε αρχείο JSON. Αυτό περιλαμβάνει και την Ταυτότητα Χρήστη, οπότε μοιραστείτε το με προσοχή."
@@ -485,9 +538,18 @@
     "copyDebugInformationComplete": {
         "message": "Οι πληροφορίες εντοπισμού σφαλμάτων έχουν αντιγραφεί στο πρόχειρο. Μη διστάσετε να αφαιρέσετε οποιαδήποτε πληροφορία που προτιμάτε να μη μοιραστείτε. Αποθηκεύστε τες σε ένα αρχείο κειμένου ή επικολλήστε στην αναφορά σφάλματός σας."
     },
+    "keyAlreadyUsed": {
+        "message": "Αυτό το πλήκτρο έχει οριστεί ως συντόμευση για άλλη ενέργεια. Παρακαλώ επιλέξτε ένα άλλο πλήκτρο."
+    },
     "to": {
         "message": "έως",
         "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "generic_guideline1": {
+        "message": "Συμπερίληψη τμημάτων μεταβάσεων"
+    },
+    "generic_guideline2": {
+        "message": "Ροή περιεχομένου σαν να μην υπήρξε ποτέ παράλειψη"
     },
     "category_sponsor": {
         "message": "Χορηγία"
@@ -495,17 +557,54 @@
     "category_sponsor_description": {
         "message": "Προώθηση επί πληρωμή, παραπομπές επί πληρωμή και άμεσες διαφημίσεις. Όχι, για προσωπική προώθηση ή δωρεάν αναφορές σε δημιουργούς/ιστοσελίδες/προϊόντα που τους αρέσουν."
     },
+    "category_sponsor_guideline1": {
+        "message": "Προώθηση επί πληρωμή"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Όχι για δωρεές ή προσαρμοσμένα προϊόντα"
+    },
     "category_selfpromo": {
         "message": "Αφιλοκέρδεια/Προσωπική Προώθηση"
     },
     "category_selfpromo_description": {
         "message": "Παρόμοιο με τη «χορηγία» αλλά για μη κερδοσκοπικό σκοπό ή για προσωπική προώθηση. Αυτό συμπεριλαμβάνει τμήματα από εμπορεύματα, δωρεές, ή πληροφορίες σχετικές με το ποιους συνεργάστηκαν."
     },
+    "category_selfpromo_guideline1": {
+        "message": "Δωρεές, συνδρομές και προσαρμοσμένα προϊόντα"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Δωρεάν αναφορές που δεν προστίθενται στο βίντεο"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Όχι για προϊόντα ή ρουχισμό που έχει κατασκευαστεί από αλυσίδες επιχειρήσεων"
+    },
+    "category_exclusive_access": {
+        "message": "Αποκλειστική Πρόσβαση"
+    },
+    "category_exclusive_access_description": {
+        "message": "Μόνο για χαρακτηρισμό ολοκλήρου του βίντεο. Χρησιμοποιείται όταν ένα βίντεο παρουσιάζει ένα προϊόν, υπηρεσία, ή τοποθεσία αποκλειστικής ή δωρεάν πρόσβασής τους."
+    },
+    "category_exclusive_access_pill": {
+        "message": "Αυτό το βίντεο παρουσιάζει ένα προϊόν, υπηρεσία, ή τοποθεσία αποκλειστικής ή δωρεάν πρόσβασής τους",
+        "description": "Short description for this category"
+    },
+    "category_exclusive_access_guideline1": {
+        "message": "Ολόκληρο το βίντεο παρουσιάζει κάτι με δωρεάν ή επιδοτούμενη πρόσβαση"
+    },
     "category_interaction": {
         "message": "Υπενθύμιση Αλληλεπίδρασης (Εγγραφή)"
     },
     "category_interaction_description": {
         "message": "Όταν υπάρχει μια σύντομη υπενθύμιση για να προσθέσετε το βίντεο στα βίντεο που σας αρέσουν, να εγγραφείτε ή να τους ακολουθήσετε στη μέση του περιεχομένου. Εάν διαρκεί για αρκετή ώρα, τότε αυτό περιλαμβάνεται στη κατηγορία «προσωπική προώθηση»."
+    },
+    "category_interaction_guideline1": {
+        "message": "Σύντομες υπενθυμίσεις εγγραφής, μου αρέσει και ακολούθησης"
+    },
+    "category_interaction_guideline2": {
+        "message": "Περιλαμβάνει έμμεσες υπενθυμίσεις για σχόλια"
+    },
+    "category_interaction_guideline3": {
+        "message": "Όχι για γενικότερες προωθήσεις, μόνο για εκκλήσεις βοήθειας"
     },
     "category_interaction_short": {
         "message": "Υπενθύμιση Αλληλεπίδρασης"
@@ -519,17 +618,53 @@
     "category_intro_short": {
         "message": "Διάλειμμα"
     },
+    "category_intro_guideline1": {
+        "message": "Χρονικό διάστημα χωρίς ουσιαστικό περιεχόμενο"
+    },
+    "category_intro_guideline2": {
+        "message": "Όχι για μεταβάσεις που συμπεριλαμβάνουν πληροφορίες"
+    },
     "category_outro": {
         "message": "Προτεινόμενα βίντεο καναλιών/Εύσημα"
     },
     "category_outro_description": {
         "message": "Όταν εμφανίζονται τα εύσημα ή τα προτεινόμενα βίντεο των καναλιών. Όχι, για επίλογους που περιέχουν πληροφορίες."
     },
+    "category_outro_guideline1": {
+        "message": "Μη συμπερίληψη περιεχομένου, ακόμα και αν τα προτεινόμενα βίντεο βρίσκονται στην οθόνη"
+    },
     "category_preview": {
         "message": "Προεπισκόπηση/Αναθεώρηση"
     },
     "category_preview_description": {
         "message": "Γρήγορη ανακεφαλαίωση προηγουμένων επεισοδίων, ή προεπισκόπηση του τι ακολουθεί στο τρέχων βίντεο. Εννοώντας επεξεργασία μερικών κλιπ μαζί, όχι για προφορικές περιγραφές."
+    },
+    "category_preview_guideline1": {
+        "message": "Κλιπ που εμφανίζονται μετά, ή σε μελλοντικά βίντεο"
+    },
+    "category_preview_guideline2": {
+        "message": "Ανακεφαλαίωση προηγούμενου βίντεο"
+    },
+    "category_preview_guideline3": {
+        "message": "Όχι για μέρη που περιλαμβάνουν πρόσθετο περιεχόμενο"
+    },
+    "category_filler": {
+        "message": "Σπατάλη Χρόνου/Περιττό σχόλιο"
+    },
+    "category_filler_description": {
+        "message": "Σκηνές εκτός θέματος προστίθενται μόνο για σπατάλη χρόνου και περιττά σχόλια τα οποία δεν απαιτούνται για να κατανοήσετε το κύριο περιεχόμενο του βίντεο. Δεν πρέπει να περιλαμβάνονται τμήματα που συμβάλουν στην κατανόηση του θέματος του βίντεο ή επιπλέον πληροφορίες."
+    },
+    "category_filler_short": {
+        "message": "Περιττό"
+    },
+    "category_filler_guideline1": {
+        "message": "Άσχετες σκηνές μόνο για σπατάλη χρόνου ή περιττά σχόλια"
+    },
+    "category_filler_guideline2": {
+        "message": "Αποσπάσεις, επαναλήψεις, αποτυχημένες λήψεις"
+    },
+    "category_filler_guideline3": {
+        "message": "Όχι για σκηνές που απαιτούνται για την κατανόηση του θέματος"
     },
     "category_music_offtopic": {
         "message": "Μουσική: Τμήμα χωρίς μουσική"
@@ -540,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Χωρίς Μουσική"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Μέρη τα οποία δεν έχουν κυκλοφορήσει επίσημα"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Χωρίς μουσική σε ζωντανή συναυλία"
+    },
     "category_poi_highlight": {
         "message": "Καλύτερη στιγμή"
     },
     "category_poi_highlight_description": {
         "message": "Το κομμάτι του βίντεο που ψάχνουν να δουν οι περισσότεροι άνθρωποι. Παρόμοιο με το «Το βίντεο ξεκινάει από το x σημείο» στα σχόλια."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Το μέρος που ψάχνουν οι περισσότεροι"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Ίσως παραλειφθεί κάτι που συμβάλει στην κατανόηση"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Παράλειψη προς το περιεχόμενο όπου παρουσιάζεται στον τίτλο ή το εικονίδιο"
     },
     "category_livestream_messages": {
         "message": "Ζωντανή μετάδοση: Δωρεές/Ανάγνωση Μηνυμάτων από δωρεές"
@@ -553,10 +703,10 @@
         "message": "Ανάγνωση Μηνυμάτων"
     },
     "autoSkip": {
-        "message": "Αυτόματη Παράληψη"
+        "message": "Αυτόματη Παράλειψη"
     },
     "manualSkip": {
-        "message": "Χειροκίνητη Παράληψη"
+        "message": "Χειροκίνητη Παράλειψη"
     },
     "showOverlay": {
         "message": "Εμφάνιση στην μπάρα χρόνου"
@@ -573,8 +723,18 @@
     "showOverlay_POI": {
         "message": "Εμφάνιση στην μπάρα χρόνου"
     },
+    "showOverlay_full": {
+        "message": "Εμφάνιση Ετικέτας"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Αυτόματη παράλειψη όλων των τμημάτων όταν είναι «Χωρίς μουσική»"
+    },
+    "muteSegments": {
+        "message": "Επιτρέψτε τμήματα που κάνουν σίγαση αντί για παράλειψη"
+    },
+    "fullVideoSegments": {
+        "message": "Εμφάνιση εικονιδίου όταν όλο το βίντεο είναι διαφημιστικό εξολοκλήρου",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
         "message": "Χρώμα Μη Υποβληθέντων",
@@ -612,6 +772,9 @@
         "message": "Για να υποβάλετε τμήματα της «{0}» κατηγορίας, πρέπει να την ενεργοποιήσετε στις ρυθμίσεις. Θα μεταφερθείτε στις ρυθμίσεις τώρα.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Προσοχή: Αυτός ο τύπος τμήματος μπορεί να υπάρξει μόνο μια φορά. Εάν υποβάλετε πολλαπλά τότε εμφανίζεται ένα από τα τμήματα στην τύχη."
+    },
     "youMustSelectACategory": {
         "message": "Πρέπει να επιλέξετε Κατηγορία για όλα τα τμήματα που υποβάλετε!"
     },
@@ -623,6 +786,9 @@
     },
     "hiddenDueToDuration": {
         "message": "κρυφό: πολύ κοντό"
+    },
+    "manuallyHidden": {
+        "message": "χειροκίνητη απόκρυψη"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -658,6 +824,9 @@
     "downvoteDescription": {
         "message": "Λάθος Συγχρονισμός"
     },
+    "incorrectCategory": {
+        "message": "Αλλαγή κατηγορίας"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "Αυτό το βίντεο έχει κατηγοριοποιηθεί ως μουσική. Είσαστε σίγουροι ότι έχει χορηγία; Εάν είναι ένα τμήμα «Χωρίς μουσική», ανοίξτε τις επιλογές της επέκτασης και ενεργοποιήστε αυτήν την κατηγορία. Μετά μπορείτε, να υποβάλετε αυτό το τμήμα ως «Χωρίς μουσική», αντί για χορηγία. Παρακαλώ διαβάστε τις οδηγίες, εάν είστε μπερδεμένοι."
     },
@@ -684,12 +853,21 @@
         "message": "Το' χω",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "Αυτό το τμήμα είναι μεγάλο. Αν όλο το βίντεο έχει να κάνει με ένα θέμα, τότε αλλάξτε την επιλογή από \"Παράλειψη\" σε \"Όλο το βίντεο\". Δείτε τις οδηγίες για περισσότερες πληροφορίες."
+    },
+    "categoryPillTitleText": {
+        "message": "Ολόκληρο το βίντεο έχει χαρακτηριστεί ως αυτής της κατηγορίας οπότε είναι αυστηρά ενσωματωμένη ώστε να μπορείτε να το διαφοροποιήσετε σε τμήματα"
+    },
     "experiementOptOut": {
         "message": "Αποχή από μελλοντικά πειράματα",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Απόκρυψη για πάντα"
+    },
+    "warningChatInfo": {
+        "message": "Λάβατε προειδοποίηση οπότε δεν μπορείτε να υποβάλετε τμήματα προσωρινά. Αυτό σημαίνει ότι παρατηρήσαμε ότι κάνατε κάποια λάθη των πρωτάριδων και όχι κάτι ύποπτο, παρακαλώ επιβεβαιώστε ότι κατανοείτε τους κανόνες και θα σας αφαιρέσουμε την προειδοποίηση. Μπορείτε και να μας στείλετε μήνυμα στο discord.gg/SponsorBlock ή στο matrix.to/#/#sponsor:ajay.app"
     },
     "voteRejectedWarning": {
         "message": "Η ψήφος απορρίφθηκε λόγο μιας προειδοποίησης. Πατήστε για να ανοίξετε μια συνομιλία ώστε να το διορθώσετε, ή επιστρέψτε όταν έχετε περισσότερο χρόνο.",
@@ -698,8 +876,14 @@
     "Donate": {
         "message": "Δωρεά"
     },
+    "considerDonating": {
+        "message": "Χρηματική βοήθεια για την ανάπτυξή μας"
+    },
     "hideDonationLink": {
         "message": "Απόκρυψη Συνδέσμου Δωρεάς"
+    },
+    "darkModeOptionsPage": {
+        "message": "Σκουρόχρωμη Λειτουργία στη σελίδα Ρυθμίσεις"
     },
     "helpPageThanksForInstalling": {
         "message": "Ευχαριστούμε που εγκαταστήσατε το SponsorBlock."
@@ -734,25 +918,116 @@
     "helpPageEditing1": {
         "message": "Αν κάνατε κάτι λάθος, μπορείτε να διορθώσετε ή να διαγράψετε τα τμήματα σας πατώντας το εικονίδιο πάνω βελάκι."
     },
+    "helpPageTooSlow": {
+        "message": "Το να υποβάλεις τμήματα παίρνει χρόνο, υπάρχει ποιο γρήγορος τρόπος;"
+    },
+    "helpPageTooSlow1": {
+        "message": "Συντομεύσεις που μπορείτε να χρησιμοποιήσετε εάν το επιθυμείτε. Πατήστε την αγγλική άνω τελεία «;» για να δείξετε την αρχή/το τέλος ενός τμήματος χορηγίας και πατήστε την απόστροφο για υποβολή. Αυτές οι συντομεύσεις αλλάζουν στις ρυθμίσεις. Εάν δεν χρησιμοποιείτε το σύστημα πληκτρολόγησης «QWERTY», θα ήταν καλύτερο τα τις αλλάξετε."
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "Μπορώ να λάβω ένα αντίγραφο της βάσης δεδομένων; Τι θα συμβεί αν η επέκταση εξαφανιστεί;"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Η βάση δεδομένων είναι δημόσια διαθέσιμη στη σελίδα"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Ο πηγαίος κώδικας είναι δημόσια διαθέσιμος. Έτσι ώστε, ακόμα και αν συμβεί κάτι σε εμάς, οι υποβολές σας δε θα χαθούν."
+    },
+    "helpPageNews": {
+        "message": "Νέα και πως δημιουργήθηκε η επέκταση"
+    },
     "helpPageSourceCode": {
         "message": "Πού μπορώ να βρω τον πηγαίο κώδικα;"
+    },
+    "Credits": {
+        "message": "Εύσημα"
     },
     "LearnMore": {
         "message": "Μάθετε περισσότερα"
     },
+    "FullDetails": {
+        "message": "Πλήρεις Λεπτομέρειες"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "Καταψήφιση και δημιουργία τοπικού αντίγραφου για επανάληψη υποβολής"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "Άνοιγμα σελίδας wiki της κατηγορίας."
+    },
+    "CopyAndDownvote": {
+        "message": "Αντίγραφο και καταψήφιση"
+    },
     "ContinueVoting": {
         "message": "Συνεχίστε την ψηφοφορία"
     },
+    "ChangeCategoryTooltip": {
+        "message": "Αυτό θα εφαρμοστεί απευθείας στα τμήματά σας"
+    },
+    "downvote": {
+        "message": "Αρνητική ψήφος"
+    },
+    "upvote": {
+        "message": "Θετική ψήφος"
+    },
+    "hideSegment": {
+        "message": "Απόκρυψη τμήματος"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Χρήση της ροδέλας ποντικιού καθώς είναι πάνω από το παράθυρο επεξεργασίας για να αλλάξετε γρηγορότερα τον χρόνο. Συνδυασμοί όπως το ctrl ή το shift χρησιμοποιούνται για να τελειοποιήσετε τις αλλαγές."
+    },
+    "categoryPillNewFeature": {
+        "message": "Νέο! Δείτε ποτέ ένα βίντεο αποτελείται εξολοκλήρου από προσωπικές προωθήσεις ή χορηγίες"
+    },
+    "dayAbbreviation": {
+        "message": "ημ",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "ω",
+        "description": "100h"
+    },
     "optionsTabBehavior": {
-        "message": "Συμπεριφορά",
+        "message": "Συμπεριφορά παραλ.",
         "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Διεπαφή",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Συντομεύσεις πλήκτρων",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Αντίγραφο/Επαναφορά",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabAdvanced": {
         "message": "Διάφορα",
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
+    "noticeVisibilityLabel": {
+        "message": "Εμφάνιση ειδοποίησης παράλειψης",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Αφαίρεση",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Δεν έχει οριστεί"
+    },
+    "change": {
+        "message": "Αλλαγή"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Αυτή η συντόμευση χρησιμοποιείται από το YouTube. Σίγουρα θέλετε να την χρησιμοποιήσετε;"
+    },
+    "betaServerWarning": {
+        "message": "Ο Δοκιμαστικός Διακομιστής είναι ενεργός!"
+    },
     "openOptionsPage": {
-        "message": "Άνοιγμα σελίδας επιλογών"
+        "message": "Άνοιγμα σελίδας ρυθμίσεων"
     },
     "resetToDefault": {
         "message": "Επαναφορά των προκαθορισμένων ρυθμίσεων"

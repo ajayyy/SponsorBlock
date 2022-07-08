@@ -545,17 +545,38 @@
         "message": "-",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "연속적인 전환 포함"
+    },
+    "generic_guideline2": {
+        "message": "건너뛰지 않은 것처럼 자연스럽게"
+    },
     "category_sponsor": {
         "message": "스폰서 광고"
     },
     "category_sponsor_description": {
         "message": "유료 광고, 유료 협찬과 직접 광고입니다. 원인/크리에이터/웹사이트/제품에 자체 홍보나 대가 없는 홍보는 여기에 해당되지 않습니다."
     },
+    "category_sponsor_guideline1": {
+        "message": "유료 광고"
+    },
+    "category_sponsor_guideline2": {
+        "message": "후원이나 자체 상품은 해당되지 않음"
+    },
     "category_selfpromo": {
         "message": "자체 홍보 구간"
     },
     "category_selfpromo_description": {
         "message": "'스폰서 광고'와 비슷하지만 협찬 없이 자기 채널을 홍보하는 구간입니다. 여기에는 채널 굿즈 광고, 기부 광고와 영상에 참여한 사람들을 홍보하는 광고가 해당됩니다."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "후원, 멤버십 및 자체 상품"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "동영상과 무관한 무료 홍보"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "기업 제품 및 상품은 해당되지 않음"
     },
     "category_exclusive_access": {
         "message": "협찬"
@@ -567,11 +588,23 @@
         "message": "본 동영상은 무료/유료 협찬을 받은 제품, 서비스, 장소를 소개합니다",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "전체 동영상이 유/무료 협찬을 받은 대상을 소개함"
+    },
     "category_interaction": {
         "message": "상호 작용 알림 (구독)"
     },
     "category_interaction_description": {
         "message": "컨텐츠 중앙의 좋아요, 구독이나 팔로우에 대한 짧은 설명이 뜨는 경우입니다. 길거나 특정적인 거라면 자가 홍보에 해당됩니다."
+    },
+    "category_interaction_guideline1": {
+        "message": "좋아요, 구독, 팔로우를 요청하는 구간"
+    },
+    "category_interaction_guideline2": {
+        "message": "간접적인 댓글 작성 유도도 포함"
+    },
+    "category_interaction_guideline3": {
+        "message": "일반적인 홍보는 해당되지 않음, 행동을 요청하는 경우만"
     },
     "category_interaction_short": {
         "message": "상호 작용 알림"
@@ -585,17 +618,35 @@
     "category_intro_short": {
         "message": "휴식 시간"
     },
+    "category_intro_guideline1": {
+        "message": "실제 콘텐츠가 없는 구간"
+    },
+    "category_intro_guideline2": {
+        "message": "정보가 포함된 전환은 해당되지 않음"
+    },
     "category_outro": {
         "message": "최종 화면 / 크레딧"
     },
     "category_outro_description": {
         "message": "엔딩 크레딧이나 최종 화면이 나타나는 구간입니다. 단순히 결론을 말하는 부분은 여기에 포함되지 않습니다."
     },
+    "category_outro_guideline1": {
+        "message": "최종 화면 카드가 표시되더라도, 콘텐츠가 포함되도록 하지 말 것"
+    },
     "category_preview": {
         "message": "미리보기/요약"
     },
     "category_preview_description": {
         "message": "이전 에피소드를 간략히 요약하거나 현재 동영상에서 나중에 나올 내용을 예고해줍니다. 음성 요약이 아니라 편집된 동영상을 통한 요약입니다."
+    },
+    "category_preview_guideline1": {
+        "message": "다음 동영상이나 이후 구간에 나타나는 클립"
+    },
+    "category_preview_guideline2": {
+        "message": "이전 동영상 요약"
+    },
+    "category_preview_guideline3": {
+        "message": "추가적인 콘텐츠가 들어가는 구간은 해당되지 않음"
     },
     "category_filler": {
         "message": "쓸데없는 잡담/농담"
@@ -606,6 +657,15 @@
     "category_filler_short": {
         "message": "잡담"
     },
+    "category_filler_guideline1": {
+        "message": "잡담이나 유머를 구사하고 주제에서 벗어난 장면"
+    },
+    "category_filler_guideline2": {
+        "message": "집중을 방해하는 구간, 실수, 리플레이"
+    },
+    "category_filler_guideline3": {
+        "message": "주제를 이해하는 데 필요한 장면은 해당되지 않음"
+    },
     "category_music_offtopic": {
         "message": "음악이 아닌 구간"
     },
@@ -615,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "음악이 아닌 구간"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "정식 음악에는 없는 구간"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "실시간 공연에서 음악이 아닌 부분"
+    },
     "category_poi_highlight": {
         "message": "하이라이트"
     },
     "category_poi_highlight_description": {
         "message": "대부분의 사람들이 찾는 동영상의 파트를 말합니다. \"바쁘신 분들은...\" 댓글과 유사합니다."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "대부분의 사람들이 찾는 구간"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "맥락을 건너뛰어도 됨"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "제목, 썸네일 구간으로 건너뛰어도 됨"
     },
     "category_livestream_messages": {
         "message": "라이브스트림: 후원/메시지 읽기"
@@ -869,6 +944,9 @@
     },
     "LearnMore": {
         "message": "더보기"
+    },
+    "FullDetails": {
+        "message": "전체 자세한 정보"
     },
     "CopyDownvoteButtonInfo": {
         "message": "비추천에 투표한 뒤 다시 제출할 수 있도록 미제출 사본을 생성합니다"

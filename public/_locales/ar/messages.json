@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "نسخ معرف المستخدم العام"
     },
+    "copySegmentID": {
+        "message": "نسخ معرف الجزء"
+    },
     "discordAdvert": {
         "message": "انضم إلى سيرفر \"ديسكورد\" الرسمي لتقديم اقتراحات وتعليقات!"
     },
@@ -199,6 +202,9 @@
     },
     "showDeleteButton": {
         "message": "إظهار زر \"حذف\" على مشغّل اليوتيوب"
+    },
+    "enableViewTracking": {
+        "message": "تمكين تتبع مرات التخطي"
     },
     "showNotice": {
         "message": "إظهار الإشعار مرة أخرى"
@@ -401,11 +407,17 @@
     "Donate": {
         "message": "تبرع"
     },
+    "considerDonating": {
+        "message": "ساعد في تمويل التطوير"
+    },
     "hideDonationLink": {
         "message": "إخفاء رابط التبرع"
     },
     "darkModeOptionsPage": {
         "message": "الوضع الداكن في صفحة الخيارات"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "شكرا على تثبيت SponsorBlock."
     },
     "Editing": {
         "message": "التعديل"

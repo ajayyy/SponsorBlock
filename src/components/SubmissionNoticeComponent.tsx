@@ -163,7 +163,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.guidelinesReminder?.close();
         this.noticeRef.current.close(true);
 
-        this.contentContainer().resetSponsorSubmissionNotice();
+        this.contentContainer().resetSponsorSubmissionNotice(false);
 
         this.props.closeListener();
     }
