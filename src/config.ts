@@ -71,6 +71,8 @@ interface SBConfig {
     skipKeybind: Keybind,
     startSponsorKeybind: Keybind,
     submitKeybind: Keybind,
+    nextChapterKeybind: Keybind,
+    previousChapterKeybind: Keybind,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
@@ -191,6 +193,8 @@ const Config: SBObject = {
         skipKeybind: {key: "Enter"},
         startSponsorKeybind: {key: ";"},
         submitKeybind: {key: "'"},
+        nextChapterKeybind: {key: "]"},
+        previousChapterKeybind: {key: "["},
 
         categorySelections: [{
             name: "sponsor" as Category,

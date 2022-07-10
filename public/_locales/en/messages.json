@@ -299,6 +299,14 @@
         "message": "Submit segments",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "Next chapter",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Previous chapter",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "Select a key by typing it and choose any modifier keys you wish to use."
     },

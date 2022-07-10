@@ -881,7 +881,8 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                     ?.map((segment) => ({
                         ...segment,
                         source: SponsorSourceType.Server
-                    }));
+                    }))
+                    ?.sort((a, b) => a.segment[0] - b.segment[0]);
         if (!recievedSegments || !recievedSegments.length) {
             // return if no video found
             retryFetch();
@@ -962,7 +963,7 @@ function importExistingChapters(wait: boolean) {
         GenericUtils.wait(() => video && getExistingChapters(sponsorVideoID, video.duration),
             wait ? 5000 : 0, 100, (c) => c?.length > 0).then((chapters) => {
                 if (!existingChaptersImported && chapters?.length > 0) {
-                    sponsorTimes = (sponsorTimes ?? []).concat(...chapters);
+                    sponsorTimes = (sponsorTimes ?? []).concat(...chapters).sort((a, b) => a.segment[0] - b.segment[0]);
                     existingChaptersImported = true;
                     updatePreviewBar();
                 }
@@ -2019,7 +2020,7 @@ async function sendSubmitMessage() {
         } catch(e) {} // eslint-disable-line no-empty
 
         // Add submissions to current sponsors list
-        sponsorTimes = (sponsorTimes || []).concat(newSegments);
+        sponsorTimes = (sponsorTimes || []).concat(newSegments).sort((a, b) => a.segment[0] - b.segment[0]);
 
         // Increase contribution count
         Config.config.sponsorTimesContributed = Config.config.sponsorTimesContributed + sponsorTimesSubmitting.length;
@@ -2080,6 +2081,35 @@ function updateActiveSegment(currentTime: number): void {
     });
 }
 
+function nextChapter(): void {
+    const chapters = sponsorTimes.filter((time) => time.actionType === ActionType.Chapter);
+    if (chapters.length <= 0) return;
+
+    const nextChapter = chapters.findIndex((time) => time.actionType === ActionType.Chapter 
+        && time.segment[0] > video.currentTime);
+    if (nextChapter !== -1) {
+        unskipSponsorTime(chapters[nextChapter], null, true);
+    } else {
+        video.currentTime = video.duration;
+    }
+}
+
+function previousChapter(): void {
+    const chapters = sponsorTimes.filter((time) => time.actionType === ActionType.Chapter);
+    if (chapters.length <= 0) return;
+
+    // subtract 5 seconds to allow skipping back to the previous chapter if close to start of
+    // the current one
+    const nextChapter = chapters.findIndex((time) => time.actionType === ActionType.Chapter 
+        && time.segment[0] > video.currentTime - Math.min(5, time.segment[1] - time.segment[0]));
+    const previousChapter = nextChapter !== -1 ? (nextChapter - 1) : (chapters.length - 1);
+    if (previousChapter !== -1) {
+        unskipSponsorTime(chapters[previousChapter], null, true);
+    } else {
+        video.currentTime = 0;
+    }
+}
+
 function addPageListeners(): void {
     const refreshListners = () => {
         if (!isVisible(video)) {
@@ -2109,6 +2139,8 @@ function hotkeyListener(e: KeyboardEvent): void {
     const skipKey = Config.config.skipKeybind;
     const startSponsorKey = Config.config.startSponsorKeybind;
     const submitKey = Config.config.submitKeybind;
+    const nextChapterKey = Config.config.nextChapterKeybind;
+    const previousChapterKey = Config.config.previousChapterKeybind;
 
     if (keybindEquals(key, skipKey)) {
         if (activeSkipKeybindElement)
@@ -2119,6 +2151,12 @@ function hotkeyListener(e: KeyboardEvent): void {
         return;
     } else if (keybindEquals(key, submitKey)) {
         submitSponsorTimes();
+        return;
+    } else if (keybindEquals(key, nextChapterKey)) {
+        nextChapter();
+        return;
+    } else if (keybindEquals(key, previousChapterKey)) {
+        previousChapter();
         return;
     }
 
