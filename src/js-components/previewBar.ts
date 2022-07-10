@@ -220,8 +220,8 @@ class PreviewBar {
         this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]));
 
         const chapterChevron = document.querySelector(".ytp-chapter-title-chevron") as HTMLElement;
-        if (!Config.config.renderSegmentsAsChapters 
-                || segments.some((segment) => segment.source === SponsorSourceType.YouTube)) {
+        if (segments.some((segment) => segment.actionType !== ActionType.Chapter 
+                && segment.source === SponsorSourceType.YouTube)) {
             chapterChevron.style.removeProperty("display");
         } else {
             chapterChevron.style.display = "none";
@@ -258,7 +258,9 @@ class PreviewBar {
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar || chapterBar.childElementCount <= 0) return;
 
-        if (!Config.config.renderSegmentsAsChapters && segments.every((segment) => segment.actionType !== ActionType.Chapter)) {
+        if (!Config.config.renderSegmentsAsChapters 
+                && segments.every((segment) => segment.actionType !== ActionType.Chapter 
+                    || segment.source === SponsorSourceType.YouTube)) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             chapterBar.style.removeProperty("display");
             return;
