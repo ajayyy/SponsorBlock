@@ -258,9 +258,10 @@ class PreviewBar {
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar || chapterBar.childElementCount <= 0) return;
 
-        if (!Config.config.renderSegmentsAsChapters 
+        if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
+            || (!Config.config.renderSegmentsAsChapters 
                 && segments.every((segment) => segment.actionType !== ActionType.Chapter 
-                    || segment.source === SponsorSourceType.YouTube)) {
+                    || segment.source === SponsorSourceType.YouTube))) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             chapterBar.style.removeProperty("display");
             return;
