@@ -947,11 +947,11 @@ async function sponsorsLookup(keepOldSubmissions = true) {
             //otherwise the listener can handle it
             updatePreviewBar();
         }
-
-        importExistingChapters(true);
     } else if (response?.status === 404) {
         retryFetch();
     }
+
+    importExistingChapters(true);
 
     if (Config.config.isVip) {
         lockedCategoriesLookup();
