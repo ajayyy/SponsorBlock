@@ -716,6 +716,15 @@
     "category_chapter_description": {
         "message": "Custom named chapters describing major sections of a video."
     },
+    "category_chapter_guideline1": {
+        "message": "Don't mention sponsor brand names"
+    },
+    "category_chapter_guideline2": {
+        "message": "Use larger chapters for general sections"
+    },
+    "category_chapter_guideline3": {
+        "message": "Smaller chapters can be placed inside larger ones"
+    },
     "category_livestream_messages": {
         "message": "Livestream: Donation/Message Readings"
     },

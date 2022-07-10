@@ -137,5 +137,16 @@ export function getGuidelineInfo(category: Category): TextBox[] {
                 icon: "icons/bolt.svg",
                 text: chrome.i18n.getMessage(`category_${category}_guideline3`)
             }];
+        case "chapter":
+            return [{
+                icon: "icons/close-smaller.svg",
+                text: chrome.i18n.getMessage(`category_${category}_guideline1`)
+            }, {
+                icon: "icons/check-smaller.svg",
+                text: chrome.i18n.getMessage(`category_${category}_guideline2`)
+            }, {
+                icon: "icons/check-smaller.svg",
+                text: chrome.i18n.getMessage(`category_${category}_guideline3`)
+            }];
     }
 }
