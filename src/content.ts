@@ -27,7 +27,7 @@ utils.wait(() => Config.config !== null, 5000, 10).then(addCSS);
 //was sponsor data found when doing SponsorsLookup
 let sponsorDataFound = false;
 //the actual sponsorTimes if loaded and UUIDs associated with them
-let sponsorTimes: SponsorTime[] = null;
+let sponsorTimes: SponsorTime[] = [];
 let existingChaptersImported = false;
 //what video id are these sponsors for
 let sponsorVideoID: VideoID = null;
@@ -302,7 +302,7 @@ function resetValues() {
     lastCheckTime = 0;
     lastCheckVideoTime = -1;
 
-    sponsorTimes = null;
+    sponsorTimes = [];
     existingChaptersImported = false;
     sponsorSkipped = [];
 
@@ -958,8 +958,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 }
 
 function importExistingChapters(wait: boolean) {
-    if (!existingChaptersImported
-            && (sponsorTimes?.length > 0 || sponsorTimesSubmitting.length > 0)) {
+    if (!existingChaptersImported) {
         GenericUtils.wait(() => video && getExistingChapters(sponsorVideoID, video.duration),
             wait ? 5000 : 0, 100, (c) => c?.length > 0).then((chapters) => {
                 if (!existingChaptersImported && chapters?.length > 0) {
@@ -1003,7 +1002,8 @@ function retryFetch(): void {
     sponsorDataFound = false;
 
     setTimeout(() => {
-        if (sponsorVideoID && sponsorTimes?.length === 0) {
+        if (sponsorVideoID && sponsorTimes?.length === 0 
+                || sponsorTimes.every((segment) => segment.source !== SponsorSourceType.Server)) {
             sponsorsLookup();
         }
     }, 10000 + Math.random() * 30000);
