@@ -117,8 +117,8 @@ let submissionNotice: SubmissionNotice = null;
 // If there is an advert playing (or about to be played), this is true
 let isAdPlaying = false;
 
-// last response status
 let lastResponseStatus: number;
+let retryCount = 0;
 
 // Contains all of the functions and variables needed by the skip notice
 const skipNoticeContentContainer: ContentContainer = () => ({
@@ -275,6 +275,7 @@ if (!Config.configSyncListeners.includes(contentConfigUpdateListener)) {
 function resetValues() {
     lastCheckTime = 0;
     lastCheckVideoTime = -1;
+    retryCount = 0;
 
     //reset sponsor times
     sponsorTimes = null;
@@ -851,7 +852,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                     ?.map((video) => video.segments)[0];
         if (!recievedSegments || !recievedSegments.length) {
             // return if no video found
-            retryFetch();
+            retryFetch(404);
             return;
         }
 
@@ -913,9 +914,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
             updatePreviewBar();
         }
     } else {
-        if (lastResponseStatus === 404) {
-            retryFetch();
-        }
+        retryFetch(lastResponseStatus);
     }
 
     if (Config.config.isVip) {
@@ -949,16 +948,23 @@ async function lockedCategoriesLookup(): Promise<void> {
     }
 }
 
-function retryFetch(): void {
+function retryFetch(errorCode: number): void {
     if (!Config.config.refetchWhenNotFound) return;
-
     sponsorDataFound = false;
 
+    if (errorCode !== 404 && retryCount > 1) {
+        // Too many errors (50x), give up 
+        return;
+    }
+
+    retryCount++;
+
+    const delay = errorCode === 404 ? (10000 + Math.random() * 30000) : (2000 + Math.random() * 10000);
     setTimeout(() => {
         if (sponsorVideoID && sponsorTimes?.length === 0) {
             sponsorsLookup();
         }
-    }, 10000 + Math.random() * 30000);
+    }, delay);
 }
 
 /**
