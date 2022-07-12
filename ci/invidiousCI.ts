@@ -49,7 +49,7 @@ const reliableCheck = mapped
   .filter(instance => instance.url.includes(instance.name))
 
 // finally map to array
-const result: string[] = reliableCheck.map(instance => instance.name)
+const result: string[] = reliableCheck.map(instance => instance.name).sort()
 writeFile(join(__dirname, "./invidiouslist.json"), JSON.stringify(result), (err) => {
   if (err) return console.log(err);
 })
