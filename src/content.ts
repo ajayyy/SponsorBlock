@@ -569,6 +569,18 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
                 openNotice: skipInfo.openNotice
             });
 
+            for (const extra of skipInfo.extraIndexes) {
+                const extraSkip = skipInfo.array[extra];
+                if (shouldSkip(extraSkip)) {
+                    skipToTime({
+                        v: video,
+                        skipTime: [extraSkip.scheduledTime, extraSkip.segment[1]],
+                        skippingSegments: [extraSkip],
+                        openNotice: skipInfo.openNotice
+                    });
+                }
+            }
+
             if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
                     || currentSkip.actionType === ActionType.Mute) {
                 forcedSkipTime = skipTime[0] + 0.001;
@@ -1192,13 +1204,30 @@ async function whitelistCheck() {
  * Returns info about the next upcoming sponsor skip
  */
 function getNextSkipIndex(currentTime: number, includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean):
-        {array: ScheduledTime[], index: number, endIndex: number, openNotice: boolean} {
+        {array: ScheduledTime[], index: number, endIndex: number, extraIndexes: number[], openNotice: boolean} {
+
+    const autoSkipSorter = (segment: ScheduledTime) => {
+        const skipOption = utils.getCategorySelection(segment.category)?.option;
+        if (skipOption === CategorySkipOption.AutoSkip 
+                && segment.actionType === ActionType.Skip) {
+            return 0;
+        } else if (skipOption !== CategorySkipOption.ShowOverlay) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
 
     const { includedTimes: submittedArray, scheduledTimes: sponsorStartTimes } =
         getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments);
     const { scheduledTimes: sponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true, true);
 
-    const minSponsorTimeIndex = sponsorStartTimes.indexOf(Math.min(...sponsorStartTimesAfterCurrentTime));
+    const minSponsorTimeIndexes = GenericUtils.indexesOf(sponsorStartTimes, Math.min(...sponsorStartTimesAfterCurrentTime));
+    const minSponsorTimeIndex = minSponsorTimeIndexes.sort(
+        (a, b) => ((autoSkipSorter(submittedArray[a]) - autoSkipSorter(submittedArray[b])) 
+        || (submittedArray[a].segment[1] - submittedArray[a].segment[0]) - (submittedArray[b].segment[1] - submittedArray[b].segment[0])))[0] ?? -1;
+    const extraIndexes = minSponsorTimeIndexes.filter((i) => i === minSponsorTimeIndex || autoSkipSorter(submittedArray[i]) !== 0);
+
     const endTimeIndex = getLatestEndTimeIndex(submittedArray, minSponsorTimeIndex);
 
     const { includedTimes: unsubmittedArray, scheduledTimes: unsubmittedSponsorStartTimes } =
@@ -1214,6 +1243,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
             array: submittedArray,
             index: minSponsorTimeIndex,
             endIndex: endTimeIndex,
+            extraIndexes, // Segments at same time that need seperate notices
             openNotice: true
         };
     } else {
@@ -1221,6 +1251,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
             array: unsubmittedArray,
             index: minUnsubmittedSponsorTimeIndex,
             endIndex: previewEndTimeIndex,
+            extraIndexes: [], // No manual things for unsubmitted
             openNotice: false
         };
     }

@@ -64,8 +64,17 @@ function hexToRgb(hex: string): {r: number, g: number, b: number} {
     } : null;
 }
 
+/**
+ * List of all indexes that have the specified value
+ * https://stackoverflow.com/a/54954694/1985387
+ */
+function indexesOf<T>(array: T[], value: T): number[] {
+    return array.map((v, i) => v === value ? i : -1).filter(i => i !== -1);
+}
+
 export const GenericUtils = {
     wait,
     getErrorMessage,
-    getLuminance
+    getLuminance,
+    indexesOf
 }
