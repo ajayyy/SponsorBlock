@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Показувати сповіщення після пропуску сегмента"
     },
+    "showCategoryGuidelines": {
+        "message": "Показати Довідку по Категоріях"
+    },
     "noticeVisibilityMode0": {
         "message": "Повнорозмірні сповіщення про пропуски"
     },
