@@ -1230,7 +1230,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
         (a, b) => ((autoSkipSorter(submittedArray[a]) - autoSkipSorter(submittedArray[b])) 
         || (submittedArray[a].segment[1] - submittedArray[a].segment[0]) - (submittedArray[b].segment[1] - submittedArray[b].segment[0])))[0] ?? -1;
     // Store extra indexes for the non-auto skipping segments if others occur at the exact same start time
-    const extraIndexes = minSponsorTimeIndexes.filter((i) => i === minSponsorTimeIndex || autoSkipSorter(submittedArray[i]) !== 0);
+    const extraIndexes = minSponsorTimeIndexes.filter((i) => i !== minSponsorTimeIndex && autoSkipSorter(submittedArray[i]) !== 0);
 
     const endTimeIndex = getLatestEndTimeIndex(submittedArray, minSponsorTimeIndex);
 
