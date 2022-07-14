@@ -508,7 +508,16 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     }
     lastTimeFromWaitingEvent = null;
 
-    if (videoMuted && !inMuteSegment(currentTime)) {
+    const skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
+
+    const currentSkip = skipInfo.array[skipInfo.index];
+    const skipTime: number[] = [currentSkip?.scheduledTime, skipInfo.array[skipInfo.endIndex]?.segment[1]];
+    const timeUntilSponsor = skipTime?.[0] - currentTime;
+    const videoID = sponsorVideoID;
+    const skipBuffer = 0.003;
+
+    if (videoMuted && !inMuteSegment(currentTime, skipInfo.index !== -1 
+            && timeUntilSponsor < skipBuffer && shouldAutoSkip(currentSkip))) {
         video.muted = false;
         videoMuted = false;
 
@@ -518,21 +527,14 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         }
     }
 
+    logDebug(`Ready to start skipping: ${skipInfo.index} at ${currentTime}`);
+    if (skipInfo.index === -1) return;
+
     if (Config.config.disableSkipping || channelWhitelisted || (channelIDInfo.status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
         return;
     }
 
     if (incorrectVideoCheck()) return;
-
-    const skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
-
-    logDebug(`Ready to start skipping: ${skipInfo.index} at ${currentTime}`);
-    if (skipInfo.index === -1) return;
-
-    const currentSkip = skipInfo.array[skipInfo.index];
-    const skipTime: number[] = [currentSkip.scheduledTime, skipInfo.array[skipInfo.endIndex].segment[1]];
-    const timeUntilSponsor = skipTime[0] - currentTime;
-    const videoID = sponsorVideoID;
 
     // Find all indexes in between the start and end
     let skippingSegments = [skipInfo.array[skipInfo.index]];
@@ -552,7 +554,6 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     // Don't skip if this category should not be skipped
     if (!shouldSkip(currentSkip) && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)) return;
 
-    const skipBuffer = 0.003;
     const skippingFunction = (forceVideoTime?: number) => {
         let forcedSkipTime: number = null;
         let forcedIncludeIntersectingSegments = false;
@@ -639,8 +640,10 @@ function getVirtualTime(): number {
     }
 }
 
-function inMuteSegment(currentTime: number): boolean {
-    const checkFunction = (segment) => segment.actionType === ActionType.Mute && segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
+function inMuteSegment(currentTime: number, includeOverlap: boolean): boolean {
+    const checkFunction = (segment) => segment.actionType === ActionType.Mute 
+        && segment.segment[0] <= currentTime 
+        && (segment.segment[1] > currentTime || (includeOverlap && segment.segment[1] + 0.02 > currentTime));
     return sponsorTimes?.some(checkFunction) || sponsorTimesSubmitting.some(checkFunction);
 }
 
