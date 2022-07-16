@@ -328,7 +328,7 @@
         "message": "Mettre en sourdine {0} ?"
     },
     "skip_to_category": {
-        "message": "Passer à {0}?",
+        "message": "Passer à {0} ?",
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
@@ -391,7 +391,7 @@
         "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
     "whatChangeUserID": {
-        "message": "Cela devrait rester privé. C'est comme un mot de passe et ne devrait être partagé avec personne. Si quelqu'un a cela, il peut vous usurper. Si vous recherchez votre identifiant d'utilisateur public, cliquez sur l'icône du presse-papiers dans le popup."
+        "message": "Il doit rester privé. 0 l'instar d'un mot de passe, il ne doit être partagé avec personne. Si une autre personne est en possession de cette information, elle peut usurper votre identité SponsorBlock. Si vous cherchez votre UserID public, cliquez sur l'icône du presse-papiers dans l'encart."
     },
     "setUserID": {
         "message": "Définir \"UserID\""
@@ -403,7 +403,7 @@
         "message": "Créé par"
     },
     "supportOtherSites": {
-        "message": "Support de YouTube-Sites tierces"
+        "message": "Support de sites tiers YouTube"
     },
     "supportOtherSitesDescription": {
         "message": "Support de clients YouTube tierces. Pour habiliter le support, vous devez accepter les autorisations supplémentaires. Cela ne fonctionne PAS en incognito sur Chrome et d'autres variantes de Chromium.",
@@ -449,7 +449,7 @@
         "message": "L'avis du saut restera à l'écran pendant au moins aussi longtemps. Pour passer manuellement, il peut être visible plus longtemps."
     },
     "shortCheck": {
-        "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
+        "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il a déjà été soumis et est simplement ignoré à cause de cette option. Êtes-vous sûr de vouloir soumettre ce segment ?"
     },
     "liveOrPremiere": {
         "message": "La soumission de segments sur un direct en cours ou une première n'est pas autorisée. Veuillez attendre qu'il soit terminé puis actualisez la page et vérifiez que les segments sont toujours valides."
@@ -497,7 +497,7 @@
         "message": "Définir les options"
     },
     "exportOptionsWarning": {
-        "message": "Attention : La modification des options est permanente et peut casser votre installation. Êtes-vous sûr de vouloir faire ça ? Sauvegardez les anciennes au cas où."
+        "message": "Attention : La modification des options est définitive et peut rendre instable voire planter votre installation. Êtes-vous sûr de vouloir faire ça ? Faites une sauvegarde de votre ancienne configuration au cas où."
     },
     "incorrectlyFormattedOptions": {
         "message": "Ce JSON n'est pas formaté correctement. Vos options n'ont pas été modifiées."
@@ -595,7 +595,7 @@
         "message": "Rappel d'interaction (abonnement)"
     },
     "category_interaction_description": {
-        "message": "Lorsqu'il y a un bref rappel pour aimer, s'abonner ou les suivre parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
+        "message": "Bref rappel d'aimer la vidéo ou de s'abonner à la chaîne au milieu de la vidéo. Si le message est long ou porte sur quelque chose de précis, classez plutôt le segment comme autopromotion."
     },
     "category_interaction_guideline1": {
         "message": "Rappels courts à like, s'abonner ou suivre"
@@ -792,7 +792,7 @@
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
-        "message": "Le Channel ID n'est pas encore chargé. Si vous utilisez une vidéo intégrée, essayez d'utiliser la page d'accueil de YouTube. Cela pourrait également être causé par des changements dans l'interface de YouTube. Si vous pensez que c'est le cas, écrivez un commentaire ici :"
+        "message": "Le Channel ID n'est pas encore chargé. Si vous utilisez une vidéo intégrée, essayez plutôt d'utiliser la page d'accueil de YouTube. Le problème peut également être causé par des changements dans l'interface de YouTube, si vous pensez que c'est le cas, écrivez un commentaire ici :"
     },
     "videoInfoFetchFailed": {
         "message": "Il semblerait que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. Veuillez consulter https://github.com/ajayyy/SponsorBlock/issues/741 pour plus d'informations."
