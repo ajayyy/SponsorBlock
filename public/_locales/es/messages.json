@@ -8,7 +8,7 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "Servidor dijo que esta solicitud no es valida"
+        "message": "El servidor dijo que esta solicitud no era válida"
     },
     "429": {
         "message": "Has enviado demasiados tiempos de sponsor en este video, ¿estas seguro de que hay tantos?"
@@ -964,10 +964,10 @@
         "message": "Esto se aplicará instantáneamente a tus segmentos"
     },
     "downvote": {
-        "message": "Voto negativo"
+        "message": "Votar negativamente"
     },
     "upvote": {
-        "message": "Voto positivo"
+        "message": "Votar positivamente"
     },
     "hideSegment": {
         "message": "Ocultar segmento"
