@@ -595,7 +595,7 @@
         "message": "Przypomnienie o interakcji (Subskrybuj)"
     },
     "category_interaction_description": {
-        "message": "Gdy ma miejsce krótkie przypomnienie, by lajkować, subskrybować lub śledzić ich w trakcie kontentu. Jeśli trwa to długo lub dotyczy czegoś konkretnego, powinno być zamiast tego jako promocja własna."
+        "message": "Gdy w materiale zostaje zawarte krótkie przypomnienie o polubieniu, subskrypcji lub obserwowaniu. Jeśli trwa długo lub dotyczy czegoś konkretnego, powinno być oznaczone jako autopromocja."
     },
     "category_interaction_guideline1": {
         "message": "Krótkie przypomnienia, by polubić lub zasubskrybować"
