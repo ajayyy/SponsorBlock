@@ -115,7 +115,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     style={timeDisplayStyle}
                     className="sponsorTimeDisplay">
-
+                        <span id={"nowButton0" + this.idSuffix}
+                            className="sponsorNowButton"
+                            onClick={() => this.setTimeToStart()}>
+                                {chrome.i18n.getMessage("bracketStart")}
+                        </span>
                         <span id={"nowButton0" + this.idSuffix}
                             className="sponsorNowButton"
                             onClick={() => this.setTimeToNow(0)}>
@@ -451,6 +455,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     setTimeToNow(index: number): void {
         this.setTimeTo(index, this.props.contentContainer().getRealCurrentTime());
+    }
+
+    setTimeToStart(): void {
+        this.setTimeTo(0, 0);
     }
 
     setTimeToEnd(): void {
