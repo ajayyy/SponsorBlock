@@ -17,7 +17,7 @@
         "message": "이전에 이미 제출되었습니다"
     },
     "channelWhitelisted": {
-        "message": "채널이 화이트리스트에 추가되었습니다!"
+        "message": "채널이 화이트리스트에 추가됐어요!"
     },
     "Segment": {
         "message": "구간"
