@@ -351,6 +351,7 @@
 .sponsorTimesInfoMessage {
 	font-size: 13.3333px;
     color: rgb(235, 235, 235);
+	overflow-wrap: anywhere;
 }
 
 .sb-guidelines-notice .sponsorTimesInfoMessage td {
@@ -541,17 +542,6 @@ input::-webkit-inner-spin-button {
 }
 .helpButton:hover {
 	opacity: 0.8;
-}
-
-.sbChatNotice iframe {
-	height: 32px;
-	cursor: pointer;
-	height: 100%;
-}
-
-.sbChatClose {
-	height: 14px;
-	cursor: pointer;
 }
 
 .skipButtonControlBarContainer {

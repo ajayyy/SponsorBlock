@@ -867,11 +867,19 @@
         "message": "Hide forever"
     },
     "warningChatInfo": {
-        "message": "You got a warning and cannot submit segments temporarily. This means that we noticed you were making some common mistakes that are not malicious, please just confirm that you understand the rules and we will remove the warning. You can also join this chat using discord.gg/SponsorBlock or matrix.to/#/#sponsor:ajay.app"
+        "message": "We noticed you were making some common mistakes that are not malicious"
     },
-    "voteRejectedWarning": {
-        "message": "Vote rejected due to a warning. Click to open a chat to resolve it, or come back later when you have time.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "You got a warning"
+    },
+    "questionButton": {
+        "message": "I have a question"
+    },
+    "warningConfirmButton": {
+        "message": "I understand the reason"
+    },
+    "warningError": {
+        "message": "Error when trying to acknowledge warning:"
     },
     "Donate": {
         "message": "Donate"
