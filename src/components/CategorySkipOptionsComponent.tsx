@@ -112,7 +112,9 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         let option: CategorySkipOption;
 
         switch (event.target.value) {
-            case "disable": 
+            case "disable":
+                Config.config.categorySelections = Config.config.categorySelections.filter(
+                    categorySelection => categorySelection.name !== this.props.category);
                 return;
             case "showOverlay":
                 option = CategorySkipOption.ShowOverlay;
