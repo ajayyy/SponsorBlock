@@ -1212,7 +1212,7 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
 
     const autoSkipSorter = (segment: ScheduledTime) => {
         const skipOption = utils.getCategorySelection(segment.category)?.option;
-        if (skipOption === CategorySkipOption.AutoSkip 
+        if ((skipOption === CategorySkipOption.AutoSkip || shouldAutoSkip(segment))
                 && segment.actionType === ActionType.Skip) {
             return 0;
         } else if (skipOption !== CategorySkipOption.ShowOverlay) {
