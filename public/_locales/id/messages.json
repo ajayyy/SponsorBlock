@@ -866,13 +866,6 @@
     "hideForever": {
         "message": "Sembunyikan selamanya"
     },
-    "warningChatInfo": {
-        "message": "Anda mendapatkan peringatan dan tidak bisa mengirim segmen sementara. Ini dikarenakan kami melihat Anda melakukan beberapa kesalahan yang umum, mohon konfirmasi bahwa Anda mengerti perundangan dan kami akan hapus peringatan. Anda dapat bergabung ke obrolan menggunakan discord.gg/SponsorBlock atau matrix.io/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Suara ditolak karena peringatan. Klik untuk buka obrolan untuk menyelesaikannya, atau kembali beberapa saat lagi ketika ada waktu.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Donasi"
     },
