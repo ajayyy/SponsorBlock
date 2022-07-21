@@ -866,6 +866,21 @@
     "hideForever": {
         "message": "Cacher pour toujours"
     },
+    "warningChatInfo": {
+        "message": "Nous avons remarqué que vous faisiez des erreurs courantes qui ne sont pas intentionnelles"
+    },
+    "warningTitle": {
+        "message": "Vous avez reçu un avertissement"
+    },
+    "questionButton": {
+        "message": "J’ai une question"
+    },
+    "warningConfirmButton": {
+        "message": "Je comprends les risques"
+    },
+    "warningError": {
+        "message": "Erreur lors de la tentative de reconnaissance de l'avertissement :"
+    },
     "Donate": {
         "message": "Faire un don"
     },
