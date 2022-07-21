@@ -867,11 +867,19 @@
         "message": "Nascondi per sempre"
     },
     "warningChatInfo": {
-        "message": "Hai ricevuto un avviso e non puoi inviare temporaneamente i segmenti. Questo significa che abbiamo notato che stavi commettendo degli errori comuni, non malevoli; sei pregato di confermare di comprendere le regole e rimuoveremo l'avviso. Puoi anche unirti a questa chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
+        "message": "Abbiamo notato che stavi facendo alcuni errori comuni che non sono dannosi"
     },
-    "voteRejectedWarning": {
-        "message": "Voto rifiutato a causa di un ammonimento. Clicca per aprire una chat per risolverlo, oppure torna dopo quando hai tempo.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Hai ricevuto un avviso"
+    },
+    "questionButton": {
+        "message": "Ho una domanda"
+    },
+    "warningConfirmButton": {
+        "message": "Capisco il motivo"
+    },
+    "warningError": {
+        "message": "Errore durante il tentativo di riconoscere l'avviso:"
     },
     "Donate": {
         "message": "Dona"
