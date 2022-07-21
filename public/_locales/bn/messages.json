@@ -788,13 +788,6 @@
     "hideForever": {
         "message": "চিরকালের জন্য এই বিষয়বস্তু লুকান"
     },
-    "warningChatInfo": {
-        "message": "আপনি একটি সতর্কতা পেয়েছেন এবং অস্থায়ীভাবে বিভাগগুলি জমা দিতে পারবেন না। এর অর্থ হ'ল আমরা লক্ষ্য করেছি যে আপনি কিছু সাধারণ ভুল করছেন যা দূষিত নয়, দয়া করে কেবল নিশ্চিত করুন যে আপনি নিয়মগুলি বুঝতে পেরেছেন এবং আমরা সতর্কতাটি সরিয়ে দেব। আপনি আমাদের চ্যাটটি discord.gg/SponsorBlock or matrix.to/#/#sponsor:ajay.app ব্যবহার করে যোগ দিতে পারেন"
-    },
-    "voteRejectedWarning": {
-        "message": "একটি সতর্কতার কারণে ভোট প্রত্যাখ্যান করা হয়েছে। এটি সমাধানের জন্য চ্যাট খুলতে ক্লিক করুন বা আপনার এখন সময় না থাকলে পরে আবার ফিরে আসুন।",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "অনুদান"
     },
