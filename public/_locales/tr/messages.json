@@ -866,13 +866,6 @@
     "hideForever": {
         "message": "Asla gösterme"
     },
-    "warningChatInfo": {
-        "message": "Bir uyarı aldınız ve geçici olarak gönderim yapamazsınız. Bu, kötü niyetli olmayan bazı yaygın hatalar yaptığınızı fark ettiğimiz anlamına gelir, lütfen kuralları anladığınızı onaylayın, uyarıyı sonra kaldıracağız. Bu konuşmaya discord.gg/SponsorBlock ya da matrix.to/#/#sponsor:ajay.app kullanarak katılabilirsiniz."
-    },
-    "voteRejectedWarning": {
-        "message": "Bir uyarı nedeniyle oy reddedildi. Çözüm bulmak için buraya tıklayarak bir sohbet açın veya daha sonra vaktiniz olduğunda uğrayın.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Bağış Yap"
     },
