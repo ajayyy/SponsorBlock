@@ -867,11 +867,19 @@
         "message": "Скриване завинаги"
     },
     "warningChatInfo": {
-        "message": "Получихте предупреждение и временно не можете да изпращате сегменти. Това означава, че забелязахме, че допускате някои често срещани грешки, които не са злонамерени. Моля, просто потвърдете, че разбирате правилата и ние ще премахнем предупреждението. Можете също да се присъедините към този чат от discord.gg/SponsorBlock или matrix.to/#/#sponsor:ajay.app"
+        "message": "Забелязахме, че правите някои често срещани грешки, които не са злонамерени"
     },
-    "voteRejectedWarning": {
-        "message": "Гласуването е отхвърлено поради предупреждение. Щракнете, за да отворите чат и да го разрешите, или се върнете по-късно, когато имате време.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Имате предупреждение"
+    },
+    "questionButton": {
+        "message": "Имам въпрос"
+    },
+    "warningConfirmButton": {
+        "message": "Разбирам причината"
+    },
+    "warningError": {
+        "message": "Грешка при опит за потвърждаване на предупреждение:"
     },
     "Donate": {
         "message": "Дарение"
