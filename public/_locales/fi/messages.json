@@ -867,11 +867,19 @@
         "message": "Piilota ikuisesti"
     },
     "warningChatInfo": {
-        "message": "Sait varoituksen ja et voi lähettää osioita väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, joten vahvistakaa, että ymmärrätte säännöt ja poistamme varoituksen. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/#sponsor:ajay.app"
+        "message": "Huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole haitallisia"
     },
-    "voteRejectedWarning": {
-        "message": "Ääni hylättiin varoituksen takia. Klikkaa avataksesi chatin sen ratkaisemiseksi, tai tule takaisin myöhemmin kun sinulla on siihen aikaa.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Sinua on varoitettu"
+    },
+    "questionButton": {
+        "message": "Minulla on kysymys"
+    },
+    "warningConfirmButton": {
+        "message": "Ymmärrän syyn"
+    },
+    "warningError": {
+        "message": "Virhe yritettäessä kuitata varoitusta:"
     },
     "Donate": {
         "message": "Lahjoita"
