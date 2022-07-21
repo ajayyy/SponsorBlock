@@ -770,13 +770,6 @@
     "hideForever": {
         "message": "Skjul for alltid"
     },
-    "warningChatInfo": {
-        "message": "Du fikk en advarsel og vil midlertidig ikke kunne sende inn segmenter. Dette betyr at vi la merke til at du gjorde noen vanlige feil som ikke var vondt ment, vennligst bare bekreft at du er inneforstått med reglene og vi vil fjerne advarslen. Du kan også bli med i denne chatten på discord.gg/SponsorBlock eller matrix.to/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Stemme avvist på grunn av en advarsel. Klikk for å åpne chatten for å løse dette, eller kom tilbake senere når du har tid.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Donér"
     },
