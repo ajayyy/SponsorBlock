@@ -866,13 +866,6 @@
     "hideForever": {
         "message": "Dauerhaft verbergen"
     },
-    "warningChatInfo": {
-        "message": "Du hast eine Warnung erhalten und kannst vorübergehend keine Segmente einreichen. Dies bedeutet, dass du Fehler gemacht hast welche nicht bösartig sind, bitte bestätige, dass du die Regeln verstanden hast, wir werden dann die Warnung entfernen. Du kannst diesem Chat auch mit discord.gg/SponsorBlock oder matrix.to/#/#sponsor:ajay.app beitreten"
-    },
-    "voteRejectedWarning": {
-        "message": "Abstimmung wegen einer Warnung abgelehnt. Klicke hier um einen Chat zu öffnen, oder versuch es später erneut, wenn du Zeit hast.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Spenden"
     },
