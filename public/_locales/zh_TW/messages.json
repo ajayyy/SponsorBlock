@@ -866,13 +866,6 @@
     "hideForever": {
         "message": "永久隱藏"
     },
-    "warningChatInfo": {
-        "message": "你被記了警告所以暫時不能提交片段。這意味著我們注意到你在犯下常見的但不是可疑的錯誤，請確認你真的瞭解方針之內容後我們就會移除警告。你也可以加入 discord.gg/SponsorBlock 或 matrix.to/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "投票因警告而被駁回。點擊以打開聊天室並解決之",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "贊助"
     },
