@@ -866,6 +866,21 @@
     "hideForever": {
         "message": "Скрыть навсегда"
     },
+    "warningChatInfo": {
+        "message": "Мы заметили, что вы совершаете распространённые и не злонамеренные ошибки"
+    },
+    "warningTitle": {
+        "message": "Вы получили предупреждение"
+    },
+    "questionButton": {
+        "message": "У меня есть вопрос"
+    },
+    "warningConfirmButton": {
+        "message": "Я понимаю причину"
+    },
+    "warningError": {
+        "message": "Не удалось подтвердить предупреждение:"
+    },
     "Donate": {
         "message": "Пожертвовать"
     },
