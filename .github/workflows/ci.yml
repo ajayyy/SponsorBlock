@@ -30,7 +30,7 @@ jobs:
           name: ChromeExtension
           path: dist
       - run: mkdir ./builds
-      - uses: montudor/action-zip@v1
+      - uses: montudor/action-zip@0852c26906e00f8a315c704958823928d8018b28
         with:
           args: zip -qq -r ./builds/ChromeExtension.zip ./dist
 
@@ -41,7 +41,7 @@ jobs:
         with:
           name: FirefoxExtension
           path: dist
-      - uses: montudor/action-zip@v1
+      - uses: montudor/action-zip@0852c26906e00f8a315c704958823928d8018b28
         with:
           args: zip -qq -r ./builds/FirefoxExtension.zip ./dist
 
@@ -52,7 +52,7 @@ jobs:
         with:
           name: ChromeExtensionBeta
           path: dist
-      - uses: montudor/action-zip@v1
+      - uses: montudor/action-zip@0852c26906e00f8a315c704958823928d8018b28
         with:
           args: zip -qq -r ./builds/ChromeExtensionBeta.zip ./dist
 
@@ -62,7 +62,7 @@ jobs:
         with:
           name: FirefoxExtensionBeta
           path: dist
-      - uses: montudor/action-zip@v1
+      - uses: montudor/action-zip@0852c26906e00f8a315c704958823928d8018b28
         with:
           args: zip -qq -r ./builds/FirefoxExtensionBeta.zip ./dist
 
