@@ -788,13 +788,6 @@
     "hideForever": {
         "message": "Skjul for evigt"
     },
-    "warningChatInfo": {
-        "message": "Du har fået en advarsel og kan midlertidigt ikke indsende segmenter. Det betyder, at vi har bemærket, at du har begået nogle almindelige fejl, som ikke er skadelige. Bekræft venligst, at du har forstået reglerne, så fjerner vi advarslen. Du kan også deltage i denne chat ved hjælp af discord.gg/SponsorBlock eller matrix.to/#/##sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Afstemningen blev afvist på grund af en advarsel. Klik for at åbne en chat for at løse problemet, eller kom tilbage senere, når du har tid.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Doner"
     },
