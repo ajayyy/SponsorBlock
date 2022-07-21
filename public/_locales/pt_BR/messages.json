@@ -791,13 +791,6 @@
     "hideForever": {
         "message": "Ocultar para sempre"
     },
-    "warningChatInfo": {
-        "message": "Você recebeu um aviso e não pode enviar segmentos temporariamente. Isso significa que notamos que você estava cometendo erros comuns não maliciosos, por favor confirme que você entende as regras e removeremos o aviso. Você também pode participar do chat usando discord.gg/SponsorBlock ou matrix.to/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Voto rejeitado devido a um aviso. Clique para abrir um chat para resolvê-lo, ou volte mais tarde quando tiver tempo.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Doar"
     },
