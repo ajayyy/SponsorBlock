@@ -854,13 +854,6 @@
     "hideForever": {
         "message": "Peida igaveseks"
     },
-    "warningChatInfo": {
-        "message": "Sa said hoiatuse ning ei saa ajutiselt segmente saata. See tähendab, et me leidsime sind tegemast teatud sagedasi, mitte-pahatahtlikke vigu - palun kinnita (inglise keeles), et mõistad reegleid ning me eemaldame hoiatuse. Sa võid selle vestlusega liituda ka discord.gg/SponsorBlock või matrix.to/#/#sponsor:ajay.app kaudu."
-    },
-    "voteRejectedWarning": {
-        "message": "Hääletus hoiatuse tõttu tagasilükatud. Klõpsa, et avada selle lahendamiseks vestlus või tule hiljem tagasi, kui aega saad.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Anneta"
     },
