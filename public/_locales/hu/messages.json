@@ -867,11 +867,19 @@
         "message": "Eltüntetés örökre"
     },
     "warningChatInfo": {
-        "message": "Figyelmeztetést kaptál, és ideiglenesen nem tudsz szegmenseket beküldeni. Ez azt jelenti, hogy észrevettük, hogy néhány ártalmatlan gyakori hibát vétettél. Kérjük erősítsd meg, hogy megértetted a szabályokat és eltávolítjuk a figyelmeztetést. Ehhez a beszélgetéshez csatlakozhatsz a discord.gg/SponsorBlock vagy matrix.to/#/#sponsor:ajay.app címeken is."
+        "message": "Észrevettük, hogy néhány nem rossz szándékú, gyakran előforduló hibát ejtettél"
     },
-    "voteRejectedWarning": {
-        "message": "Szavazás visszautasítva figyelmeztetés miatt. Kattints, hogy megnyiss egy beszélgetést a tisztázásához, vagy gyere vissza később, amikor időd van rá.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Figyelmeztetést kaptál"
+    },
+    "questionButton": {
+        "message": "Kérdésem van"
+    },
+    "warningConfirmButton": {
+        "message": "Megértettem az okot"
+    },
+    "warningError": {
+        "message": "Hiba a figyelmeztetés nyugtázása közben:"
     },
     "Donate": {
         "message": "Támogatás"
