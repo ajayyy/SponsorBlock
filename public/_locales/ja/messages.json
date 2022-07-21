@@ -788,13 +788,6 @@
     "hideForever": {
         "message": "二度と表示しない"
     },
-    "warningChatInfo": {
-        "message": "警告によりあなたは一時的にセグメントを提出することができません。これはあなたが悪意からではなく、単に誤った行為をしていることを私たちが認識したためです。ルールを理解していることを確認していただければこの警告は解除します。discord.gg/SponsorBlock または matrix.to/#/#sponsor:ajay.app よりチャットに参加することもできます。"
-    },
-    "voteRejectedWarning": {
-        "message": "警告により投票が拒否されました。クリックして運営に連絡するか，少し時間を置いてからやりなおしてください。",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "寄付"
     },
