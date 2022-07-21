@@ -866,13 +866,6 @@
     "hideForever": {
         "message": "Скрыть навсегда"
     },
-    "warningChatInfo": {
-        "message": "Вы получили предупреждение и временно не можете отправлять сегменты. Мы заметили, что вы совершали распространенные ошибки, которые не были злонамеренными. Пожалуйста, подтвердите, что вы прочитали правила и предупреждение будет удалено. Вы также можете присоединиться к нашему чату, используя discord.gg/SponsorBlock или matrix.to/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Голосование отклонено из-за предупреждения. Нажмите, чтобы открыть чат, где вы можете решить проблему, или вернитесь, когда у вас будет время.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Пожертвовать"
     },
