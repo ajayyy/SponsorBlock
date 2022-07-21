@@ -1837,7 +1837,7 @@ async function vote(type: number, UUID: SegmentUUID, category?: Category, skipNo
                 skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
             } else if (response.successType == -1) {
                 if (response.statusCode === 403 && response.responseText.startsWith("Vote rejected due to a warning from a moderator.")) {
-                    openWarningDialog(response.responseText);
+                    openWarningDialog(skipNoticeContentContainer);
                 } else {
                     skipNotice.setNoticeInfoMessage.bind(skipNotice)(GenericUtils.getErrorMessage(response.statusCode, response.responseText))
                 }
