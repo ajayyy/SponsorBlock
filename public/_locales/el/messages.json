@@ -866,13 +866,6 @@
     "hideForever": {
         "message": "Απόκρυψη για πάντα"
     },
-    "warningChatInfo": {
-        "message": "Λάβατε προειδοποίηση οπότε δεν μπορείτε να υποβάλετε τμήματα προσωρινά. Αυτό σημαίνει ότι παρατηρήσαμε ότι κάνατε κάποια λάθη των πρωτάριδων και όχι κάτι ύποπτο, παρακαλώ επιβεβαιώστε ότι κατανοείτε τους κανόνες και θα σας αφαιρέσουμε την προειδοποίηση. Μπορείτε και να μας στείλετε μήνυμα στο discord.gg/SponsorBlock ή στο matrix.to/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Η ψήφος απορρίφθηκε λόγο μιας προειδοποίησης. Πατήστε για να ανοίξετε μια συνομιλία ώστε να το διορθώσετε, ή επιστρέψτε όταν έχετε περισσότερο χρόνο.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Δωρεά"
     },
