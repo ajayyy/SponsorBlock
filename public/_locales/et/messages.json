@@ -854,6 +854,21 @@
     "hideForever": {
         "message": "Peida igaveseks"
     },
+    "warningChatInfo": {
+        "message": "Panime tähele, et tegid teatud sagedasi vigu, mis ei olnud pahatahtlikud"
+    },
+    "warningTitle": {
+        "message": "Sa said hoiatuse"
+    },
+    "questionButton": {
+        "message": "Mul on küsimus"
+    },
+    "warningConfirmButton": {
+        "message": "Ma mõistan põhjust"
+    },
+    "warningError": {
+        "message": "Hoiatuse mõistmise kinnitamisel esines viga:"
+    },
     "Donate": {
         "message": "Anneta"
     },
