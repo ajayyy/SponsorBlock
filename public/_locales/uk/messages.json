@@ -791,6 +791,21 @@
     "hideForever": {
         "message": "Сховати назавжди"
     },
+    "warningChatInfo": {
+        "message": "Ми помітили, що ви не зловмисно робили деякі поширені помилки"
+    },
+    "warningTitle": {
+        "message": "Ви отримали попередження"
+    },
+    "questionButton": {
+        "message": "У мене є питання"
+    },
+    "warningConfirmButton": {
+        "message": "Я розумію причину"
+    },
+    "warningError": {
+        "message": "Помилка при спробі визнати попередження:"
+    },
     "Donate": {
         "message": "Пожертвувати"
     },
