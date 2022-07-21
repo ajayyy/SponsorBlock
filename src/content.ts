@@ -1044,8 +1044,8 @@ function startSkipScheduleCheckingForStartSponsors() {
     }
 }
 
-function getYouTubeVideoID(document: Document): string | boolean {
-    const url = document.URL;
+function getYouTubeVideoID(document: Document, url?: string): string | boolean {
+    url ||= document.URL;
     // clips should never skip, going from clip to full video has no indications.
     if (url.includes("youtube.com/clip/")) return false;
     // skip to document and don't hide if on /embed/
@@ -2205,7 +2205,8 @@ function checkForPreloadedSegment() {
 const navigationApiAvailable = "navigation" in window;
 if (navigationApiAvailable) {
     // TODO: Remove type cast once type declarations are updated
-    (window as unknown as { navigation: EventTarget }).navigation.addEventListener("navigate", () => videoIDChange(getYouTubeVideoID(document)));
+    (window as unknown as { navigation: EventTarget }).navigation.addEventListener("navigate", (e) => 
+        videoIDChange(getYouTubeVideoID(document, (e as unknown as Record<string, Record<string, string>>).destination.url)));
 }
 
 // Record availability of Navigation API
