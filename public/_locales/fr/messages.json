@@ -866,13 +866,6 @@
     "hideForever": {
         "message": "Cacher pour toujours"
     },
-    "warningChatInfo": {
-        "message": "Vous avez reçu un avertissement et ne pouvez temporairement pas soumettre de segments. Cela signifie que nous avons remarqué que vous commettiez des erreurs courantes non malveillantes. Veuillez confirmer que vous comprenez le règlement et nous supprimerons l'avertissement. Vous pouvez également rejoindre cette discussion en utilisant discord.gg/SponsorBlock ou matrix.to/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Le vote a été rejeté en raison d'un avertissement. Cliquez pour ouvrir un chat et y mettre fin , ou revenez plus tard lorsque vous avez le temps.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "Faire un don"
     },
