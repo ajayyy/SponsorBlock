@@ -567,7 +567,7 @@
         "message": "Neplacená / vlastní propagace"
     },
     "category_selfpromo_description": {
-        "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
+        "message": "Podobné jako „sponzor“, ale pro neplacenou nebo vlastní propagaci. Zahrnuje sekce o zboží, darech nebo informace o tom, s kým spolupracují."
     },
     "category_selfpromo_guideline1": {
         "message": "Dary, členství a vlastní merch"
@@ -595,7 +595,7 @@
         "message": "Připomenutí interakce (odběr)"
     },
     "category_interaction_description": {
-        "message": "Při krátké připomínce dát like, odběr nebo sledování tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
+        "message": "Krátká připomínka, abyste dali like, odběr nebo jste sledovali tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
     },
     "category_interaction_guideline1": {
         "message": "Krátká připomenutí pro lajknutí, odebírání či sledování"
@@ -670,7 +670,7 @@
         "message": "Hudba: nehudební sekce"
     },
     "category_music_offtopic_description": {
-        "message": "Použijte pouze u hudebních videí. Mělo by to být použito pouze pro části hudebních videí, které nepokrývá jiná kategorie."
+        "message": "Použijte pouze u hudebních videí. Mělo by být použito pouze pro části hudebních videí, které nepokrývá jiná kategorie."
     },
     "category_music_offtopic_short": {
         "message": "Jiné než hudba"
