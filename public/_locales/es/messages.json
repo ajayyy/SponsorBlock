@@ -867,11 +867,19 @@
         "message": "Ocultar para siempre"
     },
     "warningChatInfo": {
-        "message": "Has recibido una advertencia y no puedes enviar segmentos temporalmente. Esto significa que hemos notado que estabas cometiendo algunos errores comunes que no son maliciosos, por favor, solo confirma que entiendes las reglas y anularemos la advertencia. También puedes unirte a este chat usando discord.gg/SponsorBlock o matrix.to/#/#sponsor:ajay.app"
+        "message": "Hemos notado que has estado cometiendo algunos errores comunes que no son maliciosos"
     },
-    "voteRejectedWarning": {
-        "message": "Voto rechazado debido a una advertencia. Haga clic aquí para abrir un chat para resolverlo, o vuelva más tarde cuando tenga tiempo.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Tienes una advertencia"
+    },
+    "questionButton": {
+        "message": "Tengo una pregunta"
+    },
+    "warningConfirmButton": {
+        "message": "Entiendo la razón"
+    },
+    "warningError": {
+        "message": "Error al intentar confirmar la advertencia:"
     },
     "Donate": {
         "message": "Donar"
