@@ -1,3 +1,5 @@
+import Config from "./config";
+
 export function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     url ||= document.URL;
     const urlObj = new URL(url);
