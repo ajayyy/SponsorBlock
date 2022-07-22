@@ -8,16 +8,16 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "서버에서 유효하지 않은 요청이라고 응답했습니다"
+        "message": "서버에서 유효하지 않은 요청이라고 응답했어요"
     },
     "429": {
-        "message": "이 영상에 너무 많은 스폰서 광고 시간을 제출했습니다, 정말로 확신하십니까?"
+        "message": "이 영상에 많은 스폰서 광고 시간을 제출했어요, 정말로 확실한가요?"
     },
     "409": {
-        "message": "이전에 이미 제출되었습니다"
+        "message": "이미 제출된 적이 있어요"
     },
     "channelWhitelisted": {
-        "message": "채널이 화이트리스트에 추가됐어요!"
+        "message": "채널이 화이트리스트됐어요!"
     },
     "Segment": {
         "message": "구간"
@@ -26,19 +26,19 @@
         "message": "구간"
     },
     "upvoteButtonInfo": {
-        "message": "이 제출을 추천하기"
+        "message": "해당 제출을 추천해요"
     },
     "reportButtonTitle": {
         "message": "신고"
     },
     "reportButtonInfo": {
-        "message": "잘못된 제출로 신고하기."
+        "message": "해당 제출을 잘못된 제출로 신고해요"
     },
     "Dismiss": {
         "message": "무시"
     },
     "Loading": {
-        "message": "로딩 중..."
+        "message": "불러오는 중..."
     },
     "Hide": {
         "message": "보지 않기"
@@ -62,31 +62,31 @@
         "message": "타이머가 정지됨"
     },
     "confirmMSG": {
-        "message": "독립 값을 수정하거나 삭제하려면 정보 버튼을 클릭하거나 우측 상단에 있는 확장 프로그램 아이콘을 눌러 확장 프로그램 팝업을 여세요."
+        "message": "구간의 길이를 수정하거나 삭제하고 싶다면 정보 버튼을 클릭하거나 우측 상단에 있는 확장 프로그램 아이콘을 눌러 확장 프로그램 팝업을 열 수 있어요."
     },
     "clearThis": {
-        "message": "정말로 삭제하시겠습니까?\n\n"
+        "message": "정말로 삭제하실 건가요?\n\n"
     },
     "Unknown": {
         "message": "스폰서 시간을 제출하는 동안 오류가 발생했습니다, 나중에 다시 시도하세요."
     },
     "sponsorFound": {
-        "message": "이 영상의 광고 구간을 서버 데이터베이스에서 찾았습니다!"
+        "message": "이 동영상은 데이터베이스에 있는 구간을 포함해요!"
     },
     "sponsor404": {
-        "message": "광고 구간을 찾지 못했습니다"
+        "message": "구간을 찾지 못했어요"
     },
     "sponsorStart": {
-        "message": "광고 구간 시작"
+        "message": "구간 시작"
     },
     "sponsorEnd": {
-        "message": "광고 구간 끝"
+        "message": "구간 종료"
     },
     "sponsorCancel": {
         "message": "구간 생성 취소"
     },
     "noVideoID": {
-        "message": "유튜브 동영상을 찾을 수 없습니다.\n오류라면, 탭을 새로고침해보세요."
+        "message": "YouTube 동영상을 찾지 못했어요.\n오류라고 생각된다면, 탭을 새로고침하세요."
     },
     "refreshSegments": {
         "message": "구간 새로고침"
@@ -98,13 +98,13 @@
         "message": "투표 완료!"
     },
     "serverDown": {
-        "message": "서버가 다운된 것 같습니다. 즉시 개발 부에 연락하세요."
+        "message": "서버가 다운된 것 같아요. 개발자 분께 연락해주세요."
     },
     "connectionError": {
-        "message": "서버 오류가 발생하였습니다. 오류 코드: "
+        "message": "연결 오류가 발생했어요. 오류 코드: "
     },
     "clearTimes": {
-        "message": "구간 제거"
+        "message": "구간 삭제"
     },
     "openPopup": {
         "message": "SponsorBlock 팝업 열기"
@@ -116,13 +116,13 @@
         "message": "구간 제출"
     },
     "submitCheck": {
-        "message": "정말로 제출하시겠습니까?"
+        "message": "정말로 제출할까요?"
     },
     "whitelistChannel": {
-        "message": "화이트리스트 체널"
+        "message": "화이트리스트에 채널 추가"
     },
     "removeFromWhitelist": {
-        "message": "항목을 화이트리스트에서 삭제하기"
+        "message": "화이트리스트에서 채널 제거"
     },
     "voteOnTime": {
         "message": "구간 투표"
@@ -134,7 +134,7 @@
         "message": "사람들의 "
     },
     "viewLeaderboard": {
-        "message": "순위표"
+        "message": "리더보드"
     },
     "recordTimesDescription": {
         "message": "제출"
@@ -144,7 +144,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "팁: 설정에서 제출 단축키를 설정할 수 있습니다"
+        "message": "도움말: 설정에서 제출 단축키를 설정하실 수 있어요."
     },
     "clearTimesButton": {
         "message": "시간 초기화"
@@ -159,7 +159,7 @@
         "message": "사용자명"
     },
     "setUsername": {
-        "message": "사용자 이름 설정"
+        "message": "사용자명 설정"
     },
     "copyPublicID": {
         "message": "공개 사용자 ID 복사"
@@ -177,49 +177,49 @@
         "message": "설정"
     },
     "showButtons": {
-        "message": "YouTube 플레이어에서 버튼 표시하기"
+        "message": "YouTube 탐색 바에서 버튼 표시"
     },
     "hideButtons": {
-        "message": "YouTube 플레이어에서 버튼 숨기기"
+        "message": "YouTube 탐색 바에서 버튼 숨김"
     },
     "hideButtonsDescription": {
-        "message": "스킵할 구간을 제출하기 위해 YouTube 플레이어에 나타나는 버튼을 숨깁니다"
+        "message": "건너뛸 구간을 제출할 수 있는 YouTube 탐색 바에 있는 버튼을 숨겨요."
     },
     "showSkipButton": {
-        "message": "플레이어에 하이라이트로 건너뛰기 버튼 표시"
+        "message": "탐색 바에 하이라이트로 건너뛰기 버튼 표시"
     },
     "showInfoButton": {
-        "message": "YouTube 플레이어에서 정보 버튼 표시하기"
+        "message": "YouTube 탐색 바에서 정보 버튼 표시"
     },
     "hideInfoButton": {
-        "message": "YouTube 플레이어에서 정보 버튼 숨기기"
+        "message": "YouTube 탐색 바에서 정보 버튼 숨김"
     },
     "autoHideInfoButton": {
         "message": "정보 버튼 자동 숨김"
     },
     "hideDeleteButton": {
-        "message": "YouTube 플레이어에서 삭제 버튼 숨기기"
+        "message": "YouTube 탐색 바에서 삭제 버튼 숨김"
     },
     "showDeleteButton": {
-        "message": "YouTube 플레이어에서 삭제 버튼 표시하기"
+        "message": "YouTube 탐색 바에서 삭제 버튼 표시"
     },
     "enableViewTracking": {
-        "message": "스킵 개수 추적 활성화"
+        "message": "건너뛴 횟수 추적 활성화"
     },
     "whatViewTracking": {
-        "message": "이 기능은 건너 뛴 부분을 추적하여 사용자가 제출한 내용이 다른 사람에게 얼마나 도움이 되는지 알려주고 스팸이 데이터베이스에 들어가지 않도록 추천과 함께 분석에 사용합니다. 확장 프로그램은 부분을 건너뛸 때마다 서버에 메시지를 보냅니다. 조회수가 정확하도록 대부분의 사람들이 이 설정을 변경하지 않기를 바랍니다. :)"
+        "message": "이 기능으로 건너 뛴 구간을 추적해서 사용자가 제출한 내용이 다른 분께 얼마나 도움이 되는지 알려주고 잘못된 구간이 데이터베이스에 들어가지 않도록 추천과 함께 분석에 사용해요. 이 확장 프로그램이 구간을 건너뛸 때마다 서버에 메시지를 보낼 거에요. 조회수가 정확하기 위해서는 이 설정을 변경하지 않기를 바라요. :)"
     },
     "enableViewTrackingInPrivate": {
-        "message": "시크릿/사생활 보호 탭에서 스킵 개수 추적 활성화"
+        "message": "시크릿/사생활 보호 탭에서 건너뛴 횟수 추적 활성화"
     },
     "enableTrackDownvotes": {
-        "message": "구간 비추천 저장"
+        "message": "비추천한 구간 저장"
     },
     "whatTrackDownvotes": {
-        "message": "비추천한 구간을 새로고침 이후에도 계속 숨깁니다"
+        "message": "비추천한 구간을 새로고침 이후에도 계속 숨겨요"
     },
     "trackDownvotesWarning": {
-        "message": "경고: 비활성화하는 경우 이전에 저장한 모든 비추천이 삭제됩니다"
+        "message": "경고: 비활성화하면 이전에 저장된 비추천 구간이 삭제돼요."
     },
     "enableQueryByHashPrefix": {
         "message": "Hash Prefix가 쿼리를 제공함"
@@ -228,7 +228,7 @@
         "message": "영상 ID를 사용하여 서버에서 부분을 요청하는 대신 영상 ID 해시의 처음 4자리를 전송합니다. 이 서버는 유사한 해시를 가진 모든 비디오에 대한 데이터를 다시 보냅니다."
     },
     "enableRefetchWhenNotFound": {
-        "message": "새 영상에서 부분 재갱신"
+        "message": "새 동영상에서 구간을 가져오기"
     },
     "whatRefetchWhenNotFound": {
         "message": "새로운 영상이고 부분을 찾을 수 없다면, 보고 있는 동안 몇 분 단위로 갱신됩니다."
@@ -282,7 +282,7 @@
         "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "구간 시작/중지",
+        "message": "구간 시작/종료",
         "description": "Keybind label"
     },
     "setSubmitKeybind": {
@@ -290,10 +290,10 @@
         "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "키를 눌러서 선택하고 함께 사용하고 싶은 조합 키를 선택하십시오."
+        "message": "등록하고 싶은 키를 눌러주세요. 필요하다면 Ctrl/Alt/Shift 키를 선택하실 수도 있어요."
     },
     "0": {
-        "message": "연결 타임아웃 오류입니다. 인터넷이 연결되어 있는지 확인해주세요. 인터넷이 연결되어 있는 경우, 서버가 과부하되어 있거나 다운되어 있어서 오류가 발생하는 것일 수도 있습니다."
+        "message": "연결에 오류가 발생했어요. 인터넷 연결을 확인하세요. 인터넷 연결이 되어 있는 경우, 서버가 과부화됐거나 다운된 것일 수도 있어요."
     },
     "disableSkipping": {
         "message": "건너뛰기 켜짐"
@@ -306,19 +306,19 @@
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
-        "message": "서버가 과부화된 것 같습니다. 몇 초 후에 다시 시도해보세요."
+        "message": "서버가 과부화된 것 같아요. 몇 초 후에 다시 시도해보세요."
     },
     "errorCode": {
         "message": "오류 코드: "
     },
     "skip": {
-        "message": "스킵"
+        "message": "건너뛰기"
     },
     "mute": {
         "message": "음소거"
     },
     "full": {
-        "message": "전체 동영상",
+        "message": "동영상 전체",
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
@@ -332,7 +332,7 @@
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
-        "message": "{0} 건너뜀",
+        "message": "{0}을 건너뜀",
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
@@ -350,16 +350,16 @@
         "message": "자동 스킵 활성화"
     },
     "audioNotification": {
-        "message": "스킵시 소리 알림"
+        "message": "건너뛸 때 소리 재생"
     },
     "audioNotificationDescription": {
-        "message": "구간을 건너뛸 때마다 소리를 재생합니다. 비활성화시(혹은 자동 스킵이 꺼져있을 경우) 아무 소리도 재생되지 않습니다."
+        "message": "구간을 건너뛸 때마다 소리를 재생해요. 자동 건너뛰기가 비활성화된 경우 아무 소리도 재생되지 않아요."
     },
     "showTimeWithSkips": {
-        "message": "스킵이 제거한 시간 보기"
+        "message": "건너뛰기가 포함된 시간 표시"
     },
     "showTimeWithSkipsDescription": {
-        "message": "이 시간은 탐색 막대 아래의 현재 시간 옆에 있는 괄호 안에 표시되며 부분을 제외한 총 동영상 길이를 보여줍니다. 여기에는 \"슬라이드바에 표시\"로만 표시된 부분도 포함됩니다."
+        "message": "탐색 바 아래에 있는 동영상 시간 옆 괄호에 시간이 표시돼요. 건너뛸 구간을 제외할 실제로 재생하게 될 동영상의 길이를 보여줘요. \"탐색 바에 표시\"로만 지정된 구간을 포함해요."
     },
     "youHaveSkipped": {
         "message": "건너뛴 구간: "
@@ -391,13 +391,13 @@
         "message": "사용자 ID 가져오기/내보내기"
     },
     "whatChangeUserID": {
-        "message": "이 정보는 다른 사람에게 공개하지 마세요. 이것은 비밀번호처럼 절대로 알려주면 안되는 정보입니다. 다른 사람이 이 정보를 습득했을 경우 사용자를 사칭할 수도 있습니다. 혹시 공개 사용자 ID를 찾고 있다면, 팝업 내 클립보드 아이콘을 누르시기 바랍니다."
+        "message": "이 정보를 다른 분께 공개하면 안돼요. 비밀번호처럼 알려주면 안되는 정보랍니다. 다른 분이 이 정보를 가지고 나를 사칭할 수도 있어요. 공개 사용자 ID를 찾고 있다면, 팝업 내 클립보드 아이콘을 눌러주세요."
     },
     "setUserID": {
-        "message": "사용자ID 설정"
+        "message": "사용자 ID 설정"
     },
     "userIDChangeWarning": {
-        "message": "경고: 사용자ID 변경은 영구적입니다. 정말로 하시겠습니까? 예전 사용자ID를 꼭 백업하세요."
+        "message": "경고: 사용자 ID를 변경하면 되돌릴 수 없어요. 정말로 확실한가요? 혹시 모르니 예전 사용자 ID를 백업해두는 걸 권장해요."
     },
     "createdBy": {
         "message": "개발자: "
@@ -406,7 +406,7 @@
         "message": "제3자 YouTube 사이트 지원"
     },
     "supportOtherSitesDescription": {
-        "message": "제3자 YouTube 클라이언트를 지원합니다. 이 기능을 사용하려면 추가 권한을 허용하여야 합니다. 크롬 및 기타 크로미움 계열 브라우저의 시크릿 모드에서는 작동하지 않습니다.",
+        "message": "제3자 YouTube 클라이언트에서도 기능을 지원하도록 해요. 이 기능을 사용하려면 추가 권한을 허용해야 해요. Chrome 및 다른 Chromium 계열 브라우저의 시크릿 모드에서는 작동하지 않아요. ",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -440,19 +440,19 @@
         "message": "최소 기간 (초):"
     },
     "minDurationDescription": {
-        "message": "설정 값보다 작은 구간은 건너뛰거나 플레이어에서 표시하지 않습니다"
+        "message": "설정 값보다 작은 구간은 건너뛰지 않으며 탐색 바에 표시되지 않아요."
     },
     "skipNoticeDuration": {
         "message": "건너뛰기 알림 길이 (초):"
     },
     "skipNoticeDurationDescription": {
-        "message": "건너뛰기 알림이 최소한 이 길이 동안 표시됩니다. 수동 건너뛰기를 한 경우 알림이 더 길게 표시될 수 있습니다."
+        "message": "몇 초간 건너뛰기 알림이 표시될 지를 지정해요. 수동 건너뛰기를 한 경우, 알림이 더 길게 표시될 수 있어요."
     },
     "shortCheck": {
         "message": "다음 제출은 최소 기간 옵션보다 짧습니다. 이 말은 이미 제출되었으며, 이 옵션으로 인해 무시될 수 있습니다. 제출하시겠습니까?"
     },
     "liveOrPremiere": {
-        "message": "진행 중인 실시간 스트림 및 최초 공개 동영상에는 제출할 수 없습니다. 끝날 때까지 대기한 후, 페이지를 새로고침하고 구간이 여전히 유효한지 확인해주십시오."
+        "message": "진행 중인 실시간 스트림 및 최초 공개 동영상에는 제출할 수 없어요. 끝날 때까지 기다리신 후, 페이지를 새로고침한 후 유효한 구간을 확인해주세요."
     },
     "showUploadButton": {
         "message": "업로드 버튼 표시"
@@ -491,16 +491,16 @@
         "message": "파일에서 불러오기"
     },
     "whatExportOptions": {
-        "message": "JSON의 전체 구성입니다. 사용자ID가 포함되므로 주의하세요."
+        "message": "JSON의 전체 구성 파일이에요. 사용자 ID가 포함되어 있으니, 공유할 때 주의하세요."
     },
     "setOptions": {
         "message": "옵션 설정"
     },
     "exportOptionsWarning": {
-        "message": "경고: 옵션을 변경하면 영구적이며 설치에 오류가 날 수 있습니다. 정말로 하시겠습니까? 예전 옵션을 꼭 백업하세요."
+        "message": "경고: 옵션을 변경하면 되돌릴 수 없고 불러올 때 오류가 발생할 수 있어요. 정말로 확실한가요? 혹시 모르니 예전 옵션을 백업해두는 걸 권장해요."
     },
     "incorrectlyFormattedOptions": {
-        "message": "이 JSON의 형식이 잘못되었습니다. 옵션이 변경되지 않았습니다."
+        "message": "JSON 형식이 잘못됐어요. 옵션이 변경되지 않았어요."
     },
     "confirmNoticeTitle": {
         "message": "구간 제출"
@@ -515,31 +515,31 @@
         "message": "삭제"
     },
     "preview": {
-        "message": "미리보기"
+        "message": "처음부터 보기"
     },
     "unsubmitted": {
         "message": "미제출됨"
     },
     "inspect": {
-        "message": "보기"
+        "message": "구간 보기"
     },
     "edit": {
         "message": "수정"
     },
     "copyDebugInformation": {
-        "message": "디버그 정보 복사하기"
+        "message": "디버그 정보를 클립보드에 복사하기"
     },
     "copyDebugInformationFailed": {
-        "message": "클립보드로 복사하는 데 실패했습니다"
+        "message": "클립보드에 복사하지 못했어요."
     },
     "copyDebugInformationOptions": {
-        "message": "버그를 신고할 때나 개발자가 요청했을 때 필요한 디버그 정보를 복사합니다. 사용자 ID, 화이트리스트 채널 목록와 커스텀 서버 주소 같이 민감한 정보는 절대 포함되지 않습니다. 디버그 정보에는 사용자 에이전트, 브라우저 정보, 사용 중인 운영 체제와 확장 프로그램의 버전 정보가 포함됩니다. "
+        "message": "버그를 신고할 때나 개발자가 요청했을 때 필요한 디버그 정보를 클립보드에 복사해요. 사용자 ID, 화이트리스트 채널 목록, 맞춤 서버 주소 같은 민감한 정보는 포함되지 않아요. 디버그 정보에는 사용자 에이전트, 브라우저 정보, 사용 중인 운영 체제, 확장 프로그램의 버전 정보가 포함돼요. "
     },
     "copyDebugInformationComplete": {
-        "message": "디버그 정보가 복사되었습니다. 공유하고 싶지 않은 내용이 있는 경우 자유롭게 수정하신 후, 텍스트 파일로 저장하시거나 버그 신고 페이지에 붙여넣으시면 됩니다."
+        "message": "디버그 정보가 복사됐어요. 공유하고 싶지 않은 정보를 지우셔도 돼요. 텍스트 파일로 저장하거나 버그 신고시 이걸 붙여넣기 해주세요."
     },
     "keyAlreadyUsed": {
-        "message": "이 단축키는 다른 동작에 할당되어 있습니다. 다른 키를 선택하세요."
+        "message": "이 단축키는 다른 동작에 할당됐어요. 다른 키를 선택해주세요."
     },
     "to": {
         "message": "-",
@@ -709,7 +709,7 @@
         "message": "수동 스킵"
     },
     "showOverlay": {
-        "message": "재생 시간 바 표시"
+        "message": "탐색 바에 표시"
     },
     "disable": {
         "message": "비활성화"
@@ -721,7 +721,7 @@
         "message": "동영상을 불러왔을 때 묻기"
     },
     "showOverlay_POI": {
-        "message": "재생 시간 바에 표시"
+        "message": "탐색 바에 표시"
     },
     "showOverlay_full": {
         "message": "라벨 표시"
@@ -751,16 +751,16 @@
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
-        "message": "베타 테스팅 서버 활성화"
+        "message": "베타 서버 활성화"
     },
     "whatEnableTestingServer": {
-        "message": "제출과 투표는 메인 서버에 반영되지 않습니다. 테스트를 목적으로 사용하세요."
+        "message": "제출과 투표가 메인 서버에 반영되지 않을 거에요. 테스트를 목적으로 사용하세요."
     },
     "testingServerWarning": {
-        "message": "제출과 투표는 테스트 서버와 연결하는 동안 메인 서버에 반영되지 않습니다. 실제 제출을 원할 때 이 기능을 비활성화 하세요."
+        "message": "제출과 투표가 베타 서버에 연결하는 동안은 메인 서버에 반영되지 않을 거에요. 실제 제출을 원하시면 비활성화하는 걸 잊지 마세요."
     },
     "bracketNow": {
-        "message": "(지금)"
+        "message": "(현재 시간)"
     },
     "moreCategories": {
         "message": "많은 카테고리"
@@ -769,7 +769,7 @@
         "message": "카테고리 선택"
     },
     "enableThisCategoryFirst": {
-        "message": "\"{0}\" 카테고리의 세그먼트를 제출하려면 설정에서 활성화 해주셔야 합니다. 지금 설정으로 이동합니다.",
+        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 활성화를 해주셔야 해요. 설정 창으로 이동할까요?",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
@@ -779,7 +779,7 @@
         "message": "제출 해야하는 모든 구간의 카테고리를 설정해야합니다!"
     },
     "bracketEnd": {
-        "message": "(끝)"
+        "message": "(끝 시간)"
     },
     "hiddenDueToDownvote": {
         "message": "숨겨짐: 비추천"
@@ -792,7 +792,7 @@
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
-        "message": "채널 ID를 아직 불러오지 못했습니다. 임베디드 동영상에서 시도한 경우 YouTube 페이지에서 시도해주십시오. 이 오류는 YouTube의 레이아웃 변경으로 인해서도 발생할 수 있습니다. 레이아웃 변경에 의해 오류가 발생했다고 생각하면 여기에 의견을 남겨주십시오."
+        "message": "채널 ID를 불러오지 못했어요. 임베디드 동영상인 경우, YouTube 홈페이지에서 시도해보세요. YouTube 레이아웃 변화로 인해 발생한 문제일 수도 있어요. 그렇게 생각하신다면 다음 사이트에서 의견을 남겨주세요: "
     },
     "videoInfoFetchFailed": {
         "message": "무언가가 SponsorBlock의 동영상 데이터 수집을 막고 있는 것 같습니다. https://github.com/ajayyy/SponsorBlock/issues/741 사이트를 참조하세요."
@@ -810,16 +810,16 @@
         "message": "권한 요청에 실패했습니다. 거부를 누르셨나요?"
     },
     "adblockerIssueWhitelist": {
-        "message": "이 문제를 해결할 수 없는 경우, SponsorBlock이 이 동영상에 대한 채널 정보를 찾을 수 없으므로 '건너뛰기 전 채널 강제 체크' 설정을 꺼주십시오."
+        "message": "이 문제를 해결할 수 없는 경우 SponsorBlock이 이 동영상의 채널 정보를 찾을 수 없는 것일 수 있으니, '건너뛰기 전 채널 강제 확인' 설정을 비활성화해주세요."
     },
     "forceChannelCheck": {
-        "message": "건너뛰기 전 채널 강제 체크"
+        "message": "건너뛰기 전 채널 강제 확인"
     },
     "whatForceChannelCheck": {
-        "message": "기본적으로 채널이 무엇인지 알기 전에 즉시 부분을 건너뜁니다. 기본적으로 동영상 시작 부분의 일부 부분은 허용 목록에있는 채널에서 건너뛸 수 있습니다. 이 옵션을 활성화하면 이를 방지할 수 있지만 채널 ID를 가져오는 데에 시간이 걸릴 수 있으므로 모든 건너뛰기가 약간 느려집니다. 고속 인터넷을 사용한다면 이러한 지연이 눈에 띄지 않을 수 있습니다."
+        "message": "기본적으로, 무슨 채널인지 알기 전 구간을 건너뛰어요. 화이트리스트 내 채널의 동영상 시작 부분에 있는 일부 구간이 건너뛰어질 수 있는 현상을 방지할 수 있지만 채널 ID를 가져오는 데 시간이 소요되어 건너뛰기에 지연이 발생할 수 있어요. 고속 인터넷을 사용하고 있다면 체감되지 않을 수도 있어요."
     },
     "forceChannelCheckPopup": {
-        "message": "\"스킵하기 전에 채널 확인을 강제하기\"를 활성화하는 것을 고려해보세요"
+        "message": "\"건너뛰기 전 채널 강제 확인\"를 설정에서 활성화하는 것을 고려해보세요."
     },
     "downvoteDescription": {
         "message": "잘못된 타이밍입니다"
@@ -847,17 +847,17 @@
         "message": "인트로, 아웃트로, 기타 등을 스킵하는 설정을 여세요"
     },
     "help": {
-        "message": "도움"
+        "message": "도움말"
     },
     "GotIt": {
         "message": "확인",
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "구간이 큽니다. 전체 동영상이 주제 하나에 대한 것이라면 \"건너뛰기\"를 \"전체 동영상\"으로 변경하십시오. 자세한 정보는 가이드라인을 참고하십시오."
+        "message": "제출될 구간이 길어요. 전반적인 동영상의 내용이 한 주제에 대한 것이라면, \"건너뛰기\"를 \"동영상 전체\"로 변경해주세요. 자세한 정보는 가이드라인을 확인하세요."
     },
     "categoryPillTitleText": {
-        "message": "동영상 전체가 해당 카테고리로 지정되었으며 나누기에는 너무 밀접하게 통합되어 있습니다"
+        "message": "동영상 전체가 해당 카테고리로 지정됐고 부분적으로 나누기 어려워요."
     },
     "experiementOptOut": {
         "message": "향후 모든 실험 기능 비활성화",
@@ -891,7 +891,7 @@
         "message": "건너뛰기가 어떻게 작동하나요?"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "데이터베이스에서 동영상 구간을 찾으면 이를 자동으로 건너뛸 것입니다. 확장 프로그램 아이콘을 눌러 팝업 창을 열면 어떤 것이 무엇인지 미리 확인할 수 있습니다."
+        "message": "데이터베이스에서 찾은 구간이 있다면 자동으로 건너뛰어요. 확장 프로그램 아이콘을 눌러 팝업 창을 열어서 구간을 미리 확인하실 수도 있답니다."
     },
     "helpPageHowSkippingWorks2": {
         "message": "구간을 건너뛰면 알림을 받게 됩니다. 알림 팝업에서는 투표도 진행할 수 있습니다. 타이밍이 잘못되었다면 반대 아이콘을 눌러 반대 투표를 보낼 수 있습니다!"
@@ -942,7 +942,7 @@
         "message": "전체 자세한 정보"
     },
     "CopyDownvoteButtonInfo": {
-        "message": "비추천에 투표한 뒤 다시 제출할 수 있도록 미제출 사본을 생성합니다"
+        "message": "비추천 후 다시 제출할 수 있는 제출되지 않은 복사본을 생성해요"
     },
     "OpenCategoryWikiPage": {
         "message": "해당 카테고리의 위키 페이지를 엽니다."
@@ -954,7 +954,7 @@
         "message": "계속 투표"
     },
     "ChangeCategoryTooltip": {
-        "message": "당신의 구간에 즉시 적용될 것입니다"
+        "message": "변경된 카테고리가 구간에 적용돼요"
     },
     "downvote": {
         "message": "비추천"
@@ -1014,10 +1014,10 @@
         "message": "변경"
     },
     "youtubeKeybindWarning": {
-        "message": "기본 YouTube 단축키와 겹칩니다. 그래도 사용하시겠습니까?"
+        "message": "설정한 키에 기본 YouTube 단축키가 포함됐어요. 그래도 진행할까요?"
     },
     "betaServerWarning": {
-        "message": "베타 서버가 활성화되었습니다!"
+        "message": "현재 베타 서버를 이용 중이에요!"
     },
     "openOptionsPage": {
         "message": "설정 페이지 열기"
@@ -1026,6 +1026,6 @@
         "message": "기본 설정으로 초기화"
     },
     "confirmResetToDefault": {
-        "message": "정말로 모든 설정을 기본값으로 초기화하시겠습니까? 되돌릴 수 없습니다."
+        "message": "모든 설정을 기본값으로 초기화할까요? 되돌릴 수 없어요!"
     }
 }
