@@ -376,19 +376,6 @@ export default class Utils {
         return referenceNode;
     }
 
-    objectToURI<T>(url: string, data: T, includeQuestionMark: boolean): string {
-        let counter = 0;
-        for (const key in data) {
-            const seperator = (url.includes("?") || counter > 0) ? "&" : (includeQuestionMark ? "?" : "");
-            const value = (typeof(data[key]) === "string") ? data[key] as unknown as string : JSON.stringify(data[key]);
-            url += seperator + encodeURIComponent(key) + "=" + encodeURIComponent(value);
-
-            counter++;
-        }
-
-        return url;
-    }
-
     getFormattedTime(seconds: number, precise?: boolean): string {
         seconds = Math.max(seconds, 0);
         

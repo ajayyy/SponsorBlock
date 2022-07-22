@@ -53,7 +53,7 @@
         "message": "Pomiń"
     },
     "unmute": {
-        "message": "Odcisz"
+        "message": "Anuluj wyciszenie"
     },
     "paused": {
         "message": "Zatrzymany"
@@ -246,16 +246,16 @@
         "message": "Pełnowymiarowe powiadomienia o przewinięciu"
     },
     "noticeVisibilityMode1": {
-        "message": "Małe powiadomienia o automatycznym pomijaniu"
+        "message": "Małe powiadomienia o automatycznym przewinięciu"
     },
     "noticeVisibilityMode2": {
         "message": "Małe powiadomienia o przewinięciu"
     },
     "noticeVisibilityMode3": {
-        "message": "Znikające powiadomienia o automatycznym pomijaniu"
+        "message": "Półprzezroczyste powiadomienie o automatycznym przewinięciu"
     },
     "noticeVisibilityMode4": {
-        "message": "Znikające powiadomienia o pomijaniu"
+        "message": "Półprzezroczyste powiadomienie dla wszystkich przewinięć"
     },
     "longDescription": {
         "message": "SponsorBlock pozwala pomijać sponsorów, intra, outra, przypomnienia o subskrypcjach i inne irytujące fragmenty filmów na YouTube. SponsorBlock jest opartym na crowdsourcingu rozszerzeniem do przeglądarki, które pozwala każdemu zgłosić początek i koniec segmentów sponsorowanych oraz innych segmentów w filmach na YouTube. Kiedy ktoś już zamieści te informacje, wszyscy pozostali z tym rozszerzeniem będą pomijać segment sponsorowany. Możesz również pomijać fragmenty teledysków bez muzyki.",
@@ -549,7 +549,7 @@
         "message": "Zawiera płynne przejścia"
     },
     "generic_guideline2": {
-        "message": "Odtwarza się, jakby nic nie zostało pominięte"
+        "message": "Pominięcie bez zauważalnego przeskoku"
     },
     "category_sponsor": {
         "message": "Sponsor"
@@ -649,7 +649,7 @@
         "message": "Nie dla sekcji, które zawierają potrzebne informacje"
     },
     "category_filler": {
-        "message": "Wypełniacz nietematyczny/Żart"
+        "message": "Wypełniacz nietematyczny/żart"
     },
     "category_filler_description": {
         "message": "Sceny nietematyczne dodawane tylko jako wypełniacz lub dla humoru, które nie są wymagane do zrozumienia głównej treści filmu. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
@@ -664,7 +664,7 @@
         "message": "Rozpraszacze, wpadki, powtórki"
     },
     "category_filler_guideline3": {
-        "message": "Nie dla scen wymaganych, by zrozumieć temat"
+        "message": "Nie nadaje się do scen wymaganych do zrozumienia tematu"
     },
     "category_music_offtopic": {
         "message": "Muzyka: Sekcja niemuzyczna"
@@ -691,10 +691,10 @@
         "message": "Część filmu, której szuka większość osób"
     },
     "category_poi_highlight_guideline2": {
-        "message": "Może pomijać kontekst"
+        "message": "Może pomóc pominąć kontekst"
     },
     "category_poi_highlight_guideline3": {
-        "message": "Może pomijać do tytułu lub miniaturki"
+        "message": "Może pominąć do karty tytułowej lub miniaturki"
     },
     "category_livestream_messages": {
         "message": "Transmisja live: Dotacja/Czytanie wiadomości"
@@ -737,7 +737,7 @@
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
-        "message": "Nieprzesłany kolor",
+        "message": "Kolor nieprzesłanego segmentu",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -1007,7 +1007,7 @@
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "noticeVisibilityLabel": {
-        "message": "Pomiń wygląd wpisu",
+        "message": "Wygląd okna pomijania",
         "description": "Option label"
     },
     "unbind": {

@@ -8,6 +8,7 @@ import { Registration } from "./types";
 window.SB = Config;
 
 import Utils from "./utils";
+import { GenericUtils } from "./utils/genericUtils";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -205,7 +206,7 @@ async function asyncRequestToServer(type: string, address: string, data = {}) {
 async function sendRequestToCustomServer(type: string, url: string, data = {}) {
     // If GET, convert JSON to parameters
     if (type.toLowerCase() === "get") {
-        url = utils.objectToURI(url, data, true);
+        url = GenericUtils.objectToURI(url, data, true);
 
         data = null;
     }

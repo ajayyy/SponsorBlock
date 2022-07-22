@@ -25,7 +25,7 @@ jobs:
           mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
 
       - name: Create pull request to update list
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@923ad837f191474af6b1721408744feb989a4c27
         with:
           commit-message: Update OSS Attribution
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>

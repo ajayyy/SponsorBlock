@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: take the issue
-      uses: bdougie/take-action@main
+      uses: bdougie/take-action@28b86cd8d25593f037406ecbf96082db2836e928
       env:
         GITHUB_TOKEN: ${{ github.token }}
