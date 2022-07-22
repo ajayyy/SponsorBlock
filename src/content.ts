@@ -1044,7 +1044,7 @@ function startSkipScheduleCheckingForStartSponsors() {
     }
 }
 
-function getYouTubeVideoID(document: Document, url?: string): string | boolean {
+export function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     url ||= document.URL;
     const urlObj = new URL(url);
     const origin = urlObj.origin;
