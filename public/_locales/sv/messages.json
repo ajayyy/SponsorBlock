@@ -866,6 +866,9 @@
     "hideForever": {
         "message": "Dölj för alltid"
     },
+    "warningChatInfo": {
+        "message": "Vi märkte att du gjorde några vanliga misstag som inte var uppsåtligt"
+    },
     "warningTitle": {
         "message": "Du har fått en varning"
     },
