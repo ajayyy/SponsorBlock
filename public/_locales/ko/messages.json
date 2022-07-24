@@ -219,7 +219,7 @@
         "message": "경고: 비활성화하면 이전에 저장된 비추천 구간이 삭제돼요."
     },
     "enableQueryByHashPrefix": {
-        "message": "해시 접두사로 쿼리 사용"
+        "message": "해시 접두사로 요청 전송"
     },
     "whatQueryByHashPrefix": {
         "message": "동영상 ID로 구간을 요청하는 대신, 동영상 ID의 처음 해시 4자리를 전송해요. 서버가 유사한 해시가 포함된 동영상의 데이터를 보낼 거예요."
