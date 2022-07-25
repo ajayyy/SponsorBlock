@@ -824,6 +824,21 @@
     "hideForever": {
         "message": "Navždy skryť"
     },
+    "warningChatInfo": {
+        "message": "Zaznamenali sme, že robíte omylom chyby"
+    },
+    "warningTitle": {
+        "message": "Dostali ste varovanie"
+    },
+    "questionButton": {
+        "message": "Mám otázku"
+    },
+    "warningConfirmButton": {
+        "message": "Rozumiem dôvodu"
+    },
+    "warningError": {
+        "message": "Chyb a pri pokuse o súhlas s upozornením:"
+    },
     "Donate": {
         "message": "Prispieť"
     },
