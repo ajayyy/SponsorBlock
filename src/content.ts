@@ -753,6 +753,14 @@ function setupVideoListeners() {
                     || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)}`);
             }
 
+            if (switchingVideos) {
+                switchingVideos = false;
+                logDebug("Setting switching videos to false");
+
+                // If already segments loaded before video, retry to skip starting segments
+                if (sponsorTimes) startSkipScheduleCheckingForStartSponsors();
+            }
+
             // Make sure it doesn't get double called with the play event
             if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
                     || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
