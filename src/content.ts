@@ -60,6 +60,7 @@ let sponsorSkipped: boolean[] = [];
 let video: HTMLVideoElement;
 let videoMuted = false; // Has it been attempted to be muted
 let videoMutationObserver: MutationObserver = null;
+let waitingForNewVideo = false;
 // List of videos that have had event listeners added to them
 const videosWithEventListeners: HTMLVideoElement[] = [];
 const controlsWithEventListeners: HTMLElement[] = []
@@ -97,10 +98,8 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
 // wait for hover preview to appear, and refresh attachments if ever found
-window.addEventListener("DOMContentLoaded", () => {
-    utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments())
-    utils.waitForElement("[data-sessionlink='feature=player-title']").then(() => videoIDChange(getYouTubeVideoID(document)))
-});
+utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments())
+utils.waitForElement("[data-sessionlink='feature=player-title']").then(() => videoIDChange(getYouTubeVideoID(document)))
 addPageListeners();
 addHotkeyListener();
 
@@ -316,7 +315,7 @@ function resetValues() {
     categoryPill?.setVisibility(false);
 }
 
-async function videoIDChange(id) {
+async function videoIDChange(id): Promise<void> {
     //if the id has not changed return unless the video element has changed
     if (sponsorVideoID === id && (isVisible(video) || !video)) return;
 
@@ -497,6 +496,13 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
         lastCheckTime = 0;
         logDebug("[SB] Ad playing, pausing skipping");
 
+        return;
+    }
+
+    // ensure we are on the correct video
+    const newVideoID = getYouTubeVideoID(document);
+    if (newVideoID !== sponsorVideoID) {
+        videoIDChange(newVideoID);
         return;
     }
 
@@ -681,27 +687,30 @@ function setupVideoMutationListener() {
     });
 }
 
-function refreshVideoAttachments() {
-    const newVideo = findValidElement(document.querySelectorAll('video')) as HTMLVideoElement;
-    if (newVideo && newVideo !== video) {
-        video = newVideo;
+async function refreshVideoAttachments(): Promise<void> {
+    if (waitingForNewVideo) return;
 
-        if (!videosWithEventListeners.includes(video)) {
-            videosWithEventListeners.push(video);
+    waitingForNewVideo = true;
+    const newVideo = await utils.waitForElement("video", true) as HTMLVideoElement;
+    waitingForNewVideo = false;
 
-            setupVideoListeners();
-            setupSkipButtonControlBar();
-            setupCategoryPill();
-        }
+    video = newVideo;
+    if (!videosWithEventListeners.includes(video)) {
+        videosWithEventListeners.push(video);
 
-        // Create a new bar in the new video element
-        if (previewBar && !utils.findReferenceNode()?.contains(previewBar.container)) {
-            previewBar.remove();
-            previewBar = null;
-
-            createPreviewBar();
-        }
+        setupVideoListeners();
+        setupSkipButtonControlBar();
+        setupCategoryPill();
     }
+
+    if (previewBar && !utils.findReferenceNode()?.contains(previewBar.container)) {
+        previewBar.remove();
+        previewBar = null;
+
+        createPreviewBar();
+    }
+
+    videoIDChange(getYouTubeVideoID(document));
 }
 
 function setupVideoListeners() {
@@ -1057,23 +1066,24 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     // clips should never skip, going from clip to full video has no indications.
     if (url.includes("youtube.com/clip/")) return false;
     // skip to document and don't hide if on /embed/
-    if (url.includes("/embed/") && url.includes("youtube.com")) return getYouTubeVideoIDFromDocument(document, false);
+    if (url.includes("/embed/") && url.includes("youtube.com")) return getYouTubeVideoIDFromDocument(false);
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
     if ((!url.includes("youtube.com")) || url.includes("/watch") || url.includes("/shorts/") || url.includes("playlist")) return getYouTubeVideoIDFromURL(url);
     // skip to document if matches pattern
-    if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument(document);
+    if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument();
     // not sure, try URL then document
-    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(document, false);
+    return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(false);
 }
 
-function getYouTubeVideoIDFromDocument(document: Document, hideIcon = true): string | boolean {
+function getYouTubeVideoIDFromDocument(hideIcon = true): string | boolean {
     // get ID from document (channel trailer / embedded playlist)
-    const videoURL = document.querySelector("[data-sessionlink='feature=player-title']")?.getAttribute("href");
+    const element = video?.parentElement?.parentElement?.querySelector("[data-sessionlink='feature=player-title']");
+    const videoURL = element?.getAttribute("href");
     if (videoURL) {
         onInvidious = hideIcon;
         return getYouTubeVideoIDFromURL(videoURL);
     } else {
-        return false
+        return false;
     }
 }
 

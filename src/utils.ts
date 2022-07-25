@@ -2,7 +2,7 @@ import Config, { VideoDownvotes } from "./config";
 import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
 
 import * as CompileConfig from "../config.json";
-import { findValidElementFromSelector } from "./utils/pageUtils";
+import { findValidElement, findValidElementFromSelector } from "./utils/pageUtils";
 import { GenericUtils } from "./utils/genericUtils";
 
 export default class Utils {
@@ -22,8 +22,9 @@ export default class Utils {
     ];
 
     /* Used for waitForElement */
-    waitingMutationObserver:MutationObserver = null;
-    waitingElements: { selector: string, callback: (element: Element) => void }[] = [];
+    creatingWaitingMutationObserver = false;
+    waitingMutationObserver: MutationObserver = null;
+    waitingElements: { selector: string, visibleCheck: boolean, callback: (element: Element) => void }[] = [];
 
     constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
@@ -34,38 +35,64 @@ export default class Utils {
     }
 
     /* Uses a mutation observer to wait asynchronously */
-    async waitForElement(selector: string): Promise<Element> {
+    async waitForElement(selector: string, visibleCheck = false): Promise<Element> {
         return await new Promise((resolve) => {
+            const initialElement = this.getElement(selector, visibleCheck);
+            if (initialElement) {
+                resolve(initialElement);
+                return;
+            }
+
             this.waitingElements.push({
                 selector,
+                visibleCheck,
                 callback: resolve
             });
 
-            if (!this.waitingMutationObserver) {
-                this.waitingMutationObserver = new MutationObserver(() => {
-                    const foundSelectors = [];
-                    for (const { selector, callback } of this.waitingElements) {
-                        const element = document.querySelector(selector);
-                        if (element) {
-                            callback(element);
-                            foundSelectors.push(selector);
-                        }
-                    }
+            if (!this.creatingWaitingMutationObserver) {
+                this.creatingWaitingMutationObserver = true;
 
-                    this.waitingElements = this.waitingElements.filter((element) => !foundSelectors.includes(element.selector));
-                    
-                    if (this.waitingElements.length === 0) {
-                        this.waitingMutationObserver.disconnect();
-                        this.waitingMutationObserver = null;
-                    }
-                });
-
-                this.waitingMutationObserver.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                });
+                if (document.body) {
+                    this.setupWaitingMutationListener();
+                } else {
+                    window.addEventListener("DOMContentLoaded", () => {
+                        this.setupWaitingMutationListener();
+                    });
+                }
             }
         });
+    }
+
+    private setupWaitingMutationListener(): void {
+        if (!this.waitingMutationObserver) {
+            this.waitingMutationObserver = new MutationObserver(() => {
+                const foundSelectors = [];
+                for (const { selector, visibleCheck, callback } of this.waitingElements) {
+                    const element = this.getElement(selector, visibleCheck);
+                    if (element) {
+                        callback(element);
+                        foundSelectors.push(selector);
+                    }
+                }
+
+                this.waitingElements = this.waitingElements.filter((element) => !foundSelectors.includes(element.selector));
+                
+                if (this.waitingElements.length === 0) {
+                    this.waitingMutationObserver.disconnect();
+                    this.waitingMutationObserver = null;
+                    this.creatingWaitingMutationObserver = false;
+                }
+            });
+
+            this.waitingMutationObserver.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        }
+    }
+
+    private getElement(selector: string, visibleCheck: boolean) {
+        return visibleCheck ? findValidElement(document.querySelectorAll(selector)) : document.querySelector(selector);
     }
 
     containsPermission(permissions: chrome.permissions.Permissions): Promise<boolean> {
