@@ -99,7 +99,7 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
 // wait for hover preview to appear, and refresh attachments if ever found
 utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments())
-utils.waitForElement("[data-sessionlink='feature=player-title']").then(() => videoIDChange(getYouTubeVideoID(document)))
+utils.waitForElement("a.ytp-title-link[data-sessionlink='feature=player-title']").then(() => videoIDChange(getYouTubeVideoID(document)).then())
 addPageListeners();
 addHotkeyListener();
 
@@ -1077,7 +1077,7 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
 
 function getYouTubeVideoIDFromDocument(hideIcon = true): string | boolean {
     // get ID from document (channel trailer / embedded playlist)
-    const element = video?.parentElement?.parentElement?.querySelector("[data-sessionlink='feature=player-title']");
+    const element = video?.parentElement?.parentElement?.querySelector("a.ytp-title-link[data-sessionlink='feature=player-title']");
     const videoURL = element?.getAttribute("href");
     if (videoURL) {
         onInvidious = hideIcon;
