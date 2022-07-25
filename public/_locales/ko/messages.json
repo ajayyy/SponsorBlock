@@ -373,6 +373,10 @@
     "hoursLower": {
         "message": "시간"
     },
+    "youHaveSavedTimeEnd": {
+        "message": "의 시간을 절약함",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
     "statusReminder": {
         "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
     },
