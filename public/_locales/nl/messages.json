@@ -866,6 +866,21 @@
     "hideForever": {
         "message": "Voor altijd verbergen"
     },
+    "warningChatInfo": {
+        "message": "We hebben gemerkt dat u een aantal veelvoorkomende fouten maakte zonder slechte bedoelingen"
+    },
+    "warningTitle": {
+        "message": "U heeft een waarschuwing gekregen"
+    },
+    "questionButton": {
+        "message": "Ik heb een vraag"
+    },
+    "warningConfirmButton": {
+        "message": "Ik begrijp de reden"
+    },
+    "warningError": {
+        "message": "Fout bij het bevestigen van de waarschuwing:"
+    },
     "Donate": {
         "message": "Doneren"
     },
