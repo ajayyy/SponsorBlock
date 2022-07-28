@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Copiază ID-Utilizator Public"
     },
+    "copySegmentID": {
+        "message": "Copiază ID-ul Segmentului"
+    },
     "discordAdvert": {
         "message": "Vino și alătură-te serverului oficial de discord pentru a oferi sugestii și feedback!"
     },
@@ -187,6 +190,9 @@
     },
     "hideInfoButton": {
         "message": "Ascunde Butoanele De Informații Pe Playerul De YouTube"
+    },
+    "autoHideInfoButton": {
+        "message": "Ascunde Automat Butonul De Info"
     },
     "hideDeleteButton": {
         "message": "Ascunde Butonul De Ștergere Pe Playerul De YouTube"
@@ -260,8 +266,26 @@
     "skip": {
         "message": "Sari"
     },
+    "mute": {
+        "message": "Mut"
+    },
+    "full": {
+        "message": "Întregul Videoclip",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Omiteți {0}?"
+    },
+    "mute_category": {
+        "message": "Mut {0}?"
+    },
+    "skip_to_category": {
+        "message": "Sari la {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "Sărit peste {0}",
+        "description": "Example: Sponsor Skipped"
     },
     "disableAutoSkip": {
         "message": "Dezactivează Autoskip"
@@ -433,6 +457,9 @@
     },
     "category_selfpromo_description": {
         "message": "Similar cu \"sponsorizare\" doar că este neplătit sau autopromovare. Aceasta include secțiuni despre merchandise, donații, sau informații despre cei cu care au colaborat."
+    },
+    "category_exclusive_access": {
+        "message": "Acces Exclusiv"
     },
     "category_interaction": {
         "message": "Reamintire de Interactiune (Abonare)"
