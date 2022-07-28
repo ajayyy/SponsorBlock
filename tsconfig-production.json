@@ -8,11 +8,18 @@
         "noEmitOnError": false,
         "typeRoots": [ "node_modules/@types" ],
         "resolveJsonModule": true,
-        "jsx": "react",
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact",
         "lib": [
             "es2019",
             "dom",
             "dom.iterable"
-        ]
+        ],
+        "skipLibCheck": true,
+        "baseUrl": "./",
+        "paths": {
+            "react": ["./node_modules/preact/compat/"],
+            "react-dom": ["./node_modules/preact/compat/"]
+        }
     }
 }

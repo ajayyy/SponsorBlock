@@ -5,5 +5,9 @@ module.exports = {
     "transform": {
         "^.+\\.ts$": "ts-jest"
     },
-    "reporters": ["default", "github-actions"]
+    "reporters": ["default", "github-actions"],
+    "moduleNameMapper": {
+        "^react$": "preact/compat",
+        "^react-dom$": "preact/compat",
+      }
 }; 

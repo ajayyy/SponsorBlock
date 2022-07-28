@@ -4,8 +4,8 @@
   "description": "",
   "main": "background.js",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@preact/compat": "^17.1.1",
+    "preact": "^10.10.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.193",
