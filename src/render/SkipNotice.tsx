@@ -17,7 +17,7 @@ class SkipNotice {
 
     noticeElement: HTMLDivElement;
 
-    skipNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
+    skipNoticeRef: React.RefObject<SkipNoticeComponent>;
 
     constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer, unskipTime: number = null, startReskip = false) {
         this.skipNoticeRef = React.createRef();

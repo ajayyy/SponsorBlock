@@ -18,9 +18,9 @@ export interface NoticeProps {
 
     fadeIn?: boolean,
     startFaded?: boolean,
-    firstColumn?: React.ReactElement,
-    firstRow?: React.ReactElement,
-    bottomRow?: React.ReactElement[],
+    firstColumn?: React.JSX.Element,
+    firstRow?: React.JSX.Element,
+    bottomRow?: React.JSX.Element[],
 
     smaller?: boolean,
     limitWidth?: boolean,
@@ -28,7 +28,7 @@ export interface NoticeProps {
 
     // Callback for when this is closed
     closeListener: () => void,
-    onMouseEnter?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void,
+    onMouseEnter?: (e: React.JSX.TargetedMouseEvent<HTMLElement>) => void,
 
     zIndex?: number,
     style?: React.CSSProperties
@@ -89,7 +89,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         this.startCountdown();
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const noticeStyle: React.CSSProperties = {
             zIndex: this.props.zIndex || (1000 + this.amountOfPreviousNotices),
             ...(this.props.style ?? {})
@@ -181,7 +181,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         );
     }
 
-    getCountdownElements(): React.ReactElement[] {
+    getCountdownElements(): React.JSX.Element[] {
         return [(
                     <span 
                         id={"skipNoticeTimerText" + this.idSuffix}
@@ -206,7 +206,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
         )];
     }
 
-    onMouseEnter(event: React.MouseEvent<HTMLElement, MouseEvent>): void {
+    onMouseEnter(event: React.JSX.TargetedMouseEvent<HTMLElement>): void {
         if (this.props.onMouseEnter) this.props.onMouseEnter(event);
 
         this.fadedMouseEnter();

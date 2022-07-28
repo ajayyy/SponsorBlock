@@ -4,7 +4,7 @@ export interface NoticeTextSelectionProps {
     icon?: string,
     text: string,
     idSuffix: string,
-    onClick?: (event: React.MouseEvent) => unknown
+    onClick?: (event: MouseEvent) => unknown
 }
 
 export interface NoticeTextSelectionState {
@@ -17,7 +17,7 @@ class NoticeTextSelectionComponent extends React.Component<NoticeTextSelectionPr
         super(props);
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const style: React.CSSProperties = {};
         if (this.props.onClick) {
             style.cursor = "pointer";
@@ -43,8 +43,8 @@ class NoticeTextSelectionComponent extends React.Component<NoticeTextSelectionPr
         );
     }
 
-    private getTextElements(text: string): Array<string | React.ReactElement> {
-        const elements: Array<string | React.ReactElement> = [];
+    private getTextElements(text: string): Array<string | React.JSX.Element> {
+        const elements: Array<string | React.JSX.Element> = [];
         const textParts = text.split(/(?=\s+)/);
         for (const textPart of textParts) {
             if (textPart.match(/^\s*http/)) {

@@ -30,7 +30,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
 
     callback: () => unknown;
 
-    noticeRef: React.MutableRefObject<NoticeComponent>;
+    noticeRef: React.RefObject<NoticeComponent>;
     timeEditRefs: React.RefObject<SponsorTimeEditComponent>[];
 
     videoObserver: MutationObserver;
@@ -72,7 +72,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         }
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 idSuffix={this.state.idSuffix}

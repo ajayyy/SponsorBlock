@@ -39,7 +39,7 @@ export interface SkipNoticeState {
     noticeTitle?: string;
 
     messages?: string[];
-    messageOnClick?: (event: React.MouseEvent) => unknown;
+    messageOnClick?: (event: MouseEvent) => unknown;
 
     countdownTime?: number;
     maxCountdownTime?: () => number;
@@ -75,7 +75,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     idSuffix: string;
 
-    noticeRef: React.MutableRefObject<NoticeComponent>;
+    noticeRef: React.RefObject<NoticeComponent>;
     categoryOptionRef: React.RefObject<HTMLSelectElement>;
 
     selectedColor: string;
@@ -161,7 +161,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const noticeStyle: React.CSSProperties = { }
         if (this.contentContainer().onMobileYouTube) {
             noticeStyle.bottom = "4em";
@@ -574,7 +574,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.resetStateToStart(undefined, true);
     }
 
-    getCategoryOptions(): React.ReactElement[] {
+    getCategoryOptions(): React.JSX.Element[] {
         const elements = [];
 
         const categories = (CompileConfig.categoryList.filter((cat => CompileConfig.categorySupport[cat].includes(ActionType.Skip)))) as Category[];
@@ -706,7 +706,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         }
     }
 
-    setNoticeInfoMessageWithOnClick(onClick: (event: React.MouseEvent) => unknown, ...messages: string[]): void {
+    setNoticeInfoMessageWithOnClick(onClick: (event: MouseEvent) => unknown, ...messages: string[]): void {
         this.setState({
             messages,
             messageOnClick: (event) => onClick(event)

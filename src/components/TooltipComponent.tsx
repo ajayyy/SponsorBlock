@@ -15,7 +15,7 @@ class TooltipComponent extends React.Component<TooltipProps, TooltipState> {
         super(props);
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const style: React.CSSProperties = {
             display: this.props.show ? "flex" : "none",
             position: "absolute",

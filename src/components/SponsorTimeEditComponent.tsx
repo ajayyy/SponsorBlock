@@ -85,7 +85,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         this.checkToShowFullVideoWarning();
 
         const style: React.CSSProperties = {
@@ -126,7 +126,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             ref={oldYouTubeDarkStyles}
                             type="text"
                             value={this.state.sponsorTimeEdits[0]}
-                            onChange={(e) => {this.handleOnChange(0, e, sponsorTime, e.target.value)}}
+                            onChange={(e) => {this.handleOnChange(0, e, sponsorTime, (e.target as HTMLInputElement).value)}}
                             onWheel={(e) => {this.changeTimesWhenScrolling(0, e, sponsorTime)}}>
                         </input>
 
@@ -141,7 +141,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                     ref={oldYouTubeDarkStyles}
                                     type="text"
                                     value={this.state.sponsorTimeEdits[1]}
-                                    onChange={(e) => {this.handleOnChange(1, e, sponsorTime, e.target.value)}}
+                                    onChange={(e) => {this.handleOnChange(1, e, sponsorTime, (e.target as HTMLInputElement).value)}}
                                     onWheel={(e) => {this.changeTimesWhenScrolling(1, e, sponsorTime)}}>
                                 </input>
 
@@ -268,7 +268,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.saveEditTimes();
     }
 
-    changeTimesWhenScrolling(index: number, e: React.WheelEvent, sponsorTime: SponsorTime): void {
+    changeTimesWhenScrolling(index: number, e: WheelEvent, sponsorTime: SponsorTime): void {
         let step = 0;
         // shift + ctrl = 1
         // ctrl = 0.1
@@ -340,7 +340,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
     }
 
-    getCategoryOptions(): React.ReactElement[] {
+    getCategoryOptions(): React.JSX.Element[] {
         const elements = [(
             <option value={DEFAULT_CATEGORY}
                     key={DEFAULT_CATEGORY}>
@@ -366,11 +366,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
-        const chosenCategory = event.target.value as Category;
+        const target = event.target as HTMLSelectElement;
+        const chosenCategory = target.value as Category;
 
         // See if show more categories was pressed
-        if (event.target.value !== DEFAULT_CATEGORY && !Config.config.categorySelections.some((category) => category.name === event.target.value)) {
-            event.target.value = DEFAULT_CATEGORY;
+        if (target.value !== DEFAULT_CATEGORY && !Config.config.categorySelections.some((category) => category.name === target.value)) {
+            target.value = DEFAULT_CATEGORY;
             
             // Alert that they have to enable this category first
             if (confirm(chrome.i18n.getMessage("enableThisCategoryFirst")
@@ -393,8 +394,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     actionTypeSelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+        const target = event.target as HTMLSelectElement;
 
-        this.handleReplacingLostTimes(sponsorTime.category, event.target.value as ActionType, sponsorTime);
+        this.handleReplacingLostTimes(sponsorTime.category, target.value as ActionType, sponsorTime);
         this.saveEditTimes();
     }
 
@@ -434,7 +436,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
     }
 
-    getActionTypeOptions(sponsorTime: SponsorTime): React.ReactElement[] {
+    getActionTypeOptions(sponsorTime: SponsorTime): React.JSX.Element[] {
         const elements = [];
 
         for (const actionType of CompileConfig.categorySupport[sponsorTime.category]) {

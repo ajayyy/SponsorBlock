@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from "preact";
 
 import * as CompileConfig from "../../config.json";
 import { Category } from "../types";
@@ -23,7 +23,7 @@ class CategoryChooserComponent extends React.Component<CategoryChooserProps, Cat
         }
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         return (
             <table id="categoryChooserTable"
                 className="categoryChooserTable"> 

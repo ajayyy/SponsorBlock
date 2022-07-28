@@ -13,7 +13,7 @@ class SubmissionNotice {
 
     callback: () => unknown;
 
-    noticeRef: React.MutableRefObject<SubmissionNoticeComponent>;
+    noticeRef: React.RefObject<SubmissionNoticeComponent>;
 
     noticeElement: HTMLDivElement;
 

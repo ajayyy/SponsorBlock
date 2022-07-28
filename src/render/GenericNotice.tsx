@@ -10,7 +10,7 @@ import NoticeTextSelectionComponent from "../components/NoticeTextSectionCompone
 
 export interface ButtonListener {
     name: string,
-    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    listener: (e?: React.JSX.TargetedMouseEvent<HTMLButtonElement>) => void
 }
 
 export interface TextBox {
@@ -33,7 +33,7 @@ export default class GenericNotice {
     contentContainer: ContentContainer;
 
     noticeElement: HTMLDivElement;
-    noticeRef: React.MutableRefObject<NoticeComponent>;
+    noticeRef: React.RefObject<NoticeComponent>;
     idSuffix: string;
 
     constructor(contentContainer: ContentContainer, idSuffix: string, options: NoticeOptions) {

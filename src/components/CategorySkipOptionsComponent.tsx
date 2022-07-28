@@ -30,7 +30,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         }
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         let defaultOption = "disable";
         // Set the default opton properly
         for (const categorySelection of Config.config.categorySelections) {
@@ -110,8 +110,9 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
     skipOptionSelected(event: React.ChangeEvent<HTMLSelectElement>): void {
         let option: CategorySkipOption;
+        const target = event.target as HTMLSelectElement;
 
-        switch (event.target.value) {
+        switch (target.value) {
             case "disable":
                 Config.config.categorySelections = Config.config.categorySelections.filter(
                     categorySelection => categorySelection.name !== this.props.category);
@@ -161,7 +162,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         return elements;
     }
 
-    setColorState(event: React.FormEvent<HTMLInputElement>, preview: boolean): void {
+    setColorState(event: React.JSX.TargetedEvent<HTMLInputElement>, preview: boolean): void {
         clearTimeout(this.setBarColorTimeout);
 
         if (preview) {

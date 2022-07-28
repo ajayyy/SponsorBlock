@@ -34,7 +34,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         };
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const style: React.CSSProperties = {
             backgroundColor: this.getColor(),
             display: this.state.show ? "flex" : "none",
@@ -87,7 +87,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         );
     }
 
-    private toggleOpen(event: React.MouseEvent): void {
+    private toggleOpen(event: MouseEvent): void {
         event.stopPropagation();
 
         if (this.state.show) {
@@ -95,7 +95,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         }
     }
 
-    private async vote(event: React.MouseEvent, type: number): Promise<void> {
+    private async vote(event: MouseEvent, type: number): Promise<void> {
         event.stopPropagation();
         if (this.state.segment) {
             const stopAnimation = AnimationUtils.applyLoadingAnimation(event.currentTarget as HTMLElement, 0.3);

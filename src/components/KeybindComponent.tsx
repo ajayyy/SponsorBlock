@@ -21,7 +21,7 @@ class KeybindComponent extends React.Component<KeybindProps, KeybindState> {
         this.state = {keybind: Config.config[this.props.option]};
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         return(
             <>
                 <div className="keybind-buttons inline" title={chrome.i18n.getMessage("change")} onClick={() => this.openEditDialog()}>

@@ -38,7 +38,7 @@ class KeybindDialogComponent extends React.Component<KeybindDialogProps, Keybind
         };
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         return(
             <>
                 <div className="blocker"></div>
@@ -104,8 +104,9 @@ class KeybindDialogComponent extends React.Component<KeybindDialogProps, Keybind
     }
     
     keybindModifierChecked = (e: ChangeEvent<HTMLInputElement>): void => {
-        const id = e.target.id;
-        const val = e.target.checked;
+        const target = e.target as HTMLInputElement;
+        const id = target.id;
+        const val = target.checked;
     
         this.setState({
             key: {
