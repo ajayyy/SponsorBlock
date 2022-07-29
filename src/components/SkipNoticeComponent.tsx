@@ -265,7 +265,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
                 {/* Unskip/Skip Button */}
                 {!this.props.smaller || this.segments[0].actionType === ActionType.Mute
-                    ? this.getSkipButton(1) : null}
+                    ? this.getSkipButton(0) : null}
 
                 {/* Never show button */}
                 {!this.autoSkip || this.props.startReskip ? "" :
