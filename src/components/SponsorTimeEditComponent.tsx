@@ -96,14 +96,6 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             style.marginTop = "15px";
         }
 
-        // This method is required to get !important
-        // https://stackoverflow.com/a/45669262/1985387
-        const oldYouTubeDarkStyles = (node) => {
-            if (node) {
-                node.style.setProperty("color", "black", "important");
-                node.style.setProperty("text-shadow", "none", "important");
-            }
-        };
         // Create time display
         let timeDisplay: JSX.Element;
         const timeDisplayStyle: React.CSSProperties = {};
@@ -123,8 +115,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         </span>
                         <input id={"submittingTime0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput"
-                            ref={oldYouTubeDarkStyles}
                             type="text"
+                            style={{color: "inherit", backgroundColor: "inherit"}}
                             value={this.state.sponsorTimeEdits[0]}
                             onChange={(e) => {this.handleOnChange(0, e, sponsorTime, e.target.value)}}
                             onWheel={(e) => {this.changeTimesWhenScrolling(0, e, sponsorTime)}}>
@@ -138,8 +130,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                                 <input id={"submittingTime1" + this.idSuffix}
                                     className="sponsorTimeEdit sponsorTimeEditInput"
-                                    ref={oldYouTubeDarkStyles}
                                     type="text"
+                                    style={{color: "inherit", backgroundColor: "inherit"}}
                                     value={this.state.sponsorTimeEdits[1]}
                                     onChange={(e) => {this.handleOnChange(1, e, sponsorTime, e.target.value)}}
                                     onWheel={(e) => {this.changeTimesWhenScrolling(1, e, sponsorTime)}}>
@@ -185,6 +177,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         className="sponsorTimeEditSelector sponsorTimeCategories"
                         defaultValue={sponsorTime.category}
                         ref={this.categoryOptionRef}
+                        style={{color: "inherit", backgroundColor: "inherit"}}
                         onChange={this.categorySelectionChange.bind(this)}>
                         {this.getCategoryOptions()}
                     </select>
@@ -208,6 +201,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
                             defaultValue={sponsorTime.actionType}
+                            style={{color: "inherit", backgroundColor: "inherit"}}
                             ref={this.actionTypeOptionRef}
                             onChange={(e) => this.actionTypeSelectionChange(e)}>
                             {this.getActionTypeOptions(sponsorTime)}
