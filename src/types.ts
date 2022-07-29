@@ -239,6 +239,14 @@ export type Keybind = {
     shift?: boolean
 }
 
+export enum PageType {
+    Shorts = "shorts",
+    Watch = "watch",
+    Search = "search",
+    Browse = "browse",
+    Channel = "channel"
+}
+
 export interface ButtonListener {
     name: string,
     listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
