@@ -53,7 +53,7 @@
         "message": "Hopp igjen"
     },
     "unmute": {
-        "message": "Lyd"
+        "message": "Skru av demping"
     },
     "paused": {
         "message": "På pause"
@@ -770,6 +770,9 @@
     "hideForever": {
         "message": "Skjul for alltid"
     },
+    "questionButton": {
+        "message": "SpørsmålsKnapp"
+    },
     "Donate": {
         "message": "Donér"
     },
@@ -854,6 +857,9 @@
     "ChangeCategoryTooltip": {
         "message": "Dette vil umiddelbart gjelde for dine segmenter"
     },
+    "hideSegment": {
+        "message": "Skjul segment"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Bruk musehjulet mens du peker over redigeringsboksen for å raskt justere tiden. Kombinasjoner av ctrl- eller shift-tasten kan brukes til å finjustere endringene."
     },
@@ -904,5 +910,17 @@
     },
     "youtubeKeybindWarning": {
         "message": "Dette er en innebygget YouTube-hurtigtast. Er du sikker på at du vil bruke den?"
+    },
+    "betaServerWarning": {
+        "message": "BETA Server er aktivert!"
+    },
+    "openOptionsPage": {
+        "message": "Åpne innstillingsside"
+    },
+    "resetToDefault": {
+        "message": "Tilbakestill innstillinger til standard"
+    },
+    "confirmResetToDefault": {
+        "message": "Er du sikker på at du vil tilbakestille alle innstillingene til standardverdiene? Dette kan ikke angres."
     }
 }
