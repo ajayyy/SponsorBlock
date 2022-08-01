@@ -866,6 +866,21 @@
     "hideForever": {
         "message": "Dauerhaft verbergen"
     },
+    "warningChatInfo": {
+        "message": "Wir haben bemerkt, dass du einige häufige Fehler machst welche nicht bösartig sind"
+    },
+    "warningTitle": {
+        "message": "Du hast eine Verwarnung erhalten"
+    },
+    "questionButton": {
+        "message": "Ich habe eine Frage"
+    },
+    "warningConfirmButton": {
+        "message": "Ich verstehe den Grund"
+    },
+    "warningError": {
+        "message": "Fehler beim Anerkennen der Verwarnung:"
+    },
     "Donate": {
         "message": "Spenden"
     },
