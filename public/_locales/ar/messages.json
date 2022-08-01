@@ -107,7 +107,7 @@
         "message": "مسح الأجزاء"
     },
     "openPopup": {
-        "message": "فتح نافذة سبونسر بلوك المنبثقة"
+        "message": "فتح نافذة SponsorBlock المنبثقة"
     },
     "closePopup": {
         "message": "إغلاق النافذة المنبثقة"
@@ -116,7 +116,7 @@
         "message": "إرسال الأجزاء"
     },
     "submitCheck": {
-        "message": "هل أنت متيقّن من إرسال هذا؟"
+        "message": "هل أنت متأكد أنك تريد إرسال هذا؟"
     },
     "whitelistChannel": {
         "message": "إضافة القناة إلى القائمة البيضاء"
@@ -134,13 +134,13 @@
         "message": "لقد وفّرت على الناس "
     },
     "viewLeaderboard": {
-        "message": "لوحة الصدارة"
+        "message": "المتصدرين"
     },
     "recordTimesDescription": {
         "message": "إرسال"
     },
     "submissionEditHint": {
-        "message": "سيظهر تحرير القسم بعد النقر على إرسال",
+        "message": "سيظهر تحرير الجزء بعد النقر على إرسال",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -162,7 +162,7 @@
         "message": "تعيين اسم مستخدم"
     },
     "copyPublicID": {
-        "message": "نسخ معرف المستخدم العام"
+        "message": "نسخ رمز المستخدم"
     },
     "copySegmentID": {
         "message": "نسخ معرف الجزء"
