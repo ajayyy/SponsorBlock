@@ -866,6 +866,21 @@
     "hideForever": {
         "message": "Απόκρυψη για πάντα"
     },
+    "warningChatInfo": {
+        "message": "Παρατηρήσαμε ότι κάνατε συνηθισμένα μη κακόβουλα λάθη"
+    },
+    "warningTitle": {
+        "message": "Λάβατε προειδοποίηση"
+    },
+    "questionButton": {
+        "message": "Έχω μια ερώτηση"
+    },
+    "warningConfirmButton": {
+        "message": "Κατανοώ το λόγο"
+    },
+    "warningError": {
+        "message": "Σφάλμα προσπάθειας γνωστοποίησης προειδοποίησης:"
+    },
     "Donate": {
         "message": "Δωρεά"
     },
