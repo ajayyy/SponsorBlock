@@ -645,11 +645,17 @@
     "category_preview_guideline3": {
         "message": "Không dành cho các phần thêm nội dung bổ sung"
     },
+    "category_filler": {
+        "message": "Cảnh phụ"
+    },
     "category_filler_description": {
         "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
     },
     "category_filler_short": {
         "message": "Cảnh phụ"
+    },
+    "category_filler_guideline3": {
+        "message": "Không dùng cho các cảnh cần thiết để hiểu chủ đề"
     },
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
@@ -908,6 +914,9 @@
     "LearnMore": {
         "message": "Tìm hiểu thêm"
     },
+    "FullDetails": {
+        "message": "Xem toàn bộ đầy đủ thông tin"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Hạ bình chọn và tạo một bản sao cục bộ cho bạn gửi lại"
     },
@@ -988,5 +997,11 @@
     },
     "openOptionsPage": {
         "message": "Mở trang tùy chọn"
+    },
+    "resetToDefault": {
+        "message": "Thiết lập lại cài đặt gốc"
+    },
+    "confirmResetToDefault": {
+        "message": "Bạn chắc chắn muốn đặt lại cài đặt về mặc định? Điều này sẽ không thể hoàn tác được."
     }
 }
