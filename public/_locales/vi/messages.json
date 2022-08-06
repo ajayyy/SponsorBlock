@@ -666,11 +666,26 @@
     "category_music_offtopic_short": {
         "message": "Không có nhạc"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Phần không có trong bản phát hành chính thức"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Phần không nhạc trong một buổi biểu diễn trực tiếp"
+    },
     "category_poi_highlight": {
         "message": "Điểm/Khoảnh khắc quan trọng"
     },
     "category_poi_highlight_description": {
         "message": "Phần của video mà hầu hết mọi người đang tìm kiếm. Tương tự với câu nói \"Video bắt đầu từ x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Phần mà hầu hết mọi người đang tìm kiếm"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Có thể bỏ qua ngữ cảnh"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Có thể bỏ qua để đến tiêu đề hoặc hình thu nhỏ"
     },
     "category_livestream_messages": {
         "message": "Luồng phát trực tiếp: Đọc Quyên góp/Tin nhắn"
@@ -842,6 +857,15 @@
     "hideForever": {
         "message": "Ẩn vĩnh viễn"
     },
+    "warningTitle": {
+        "message": "Bạn đã bị cảnh cáo"
+    },
+    "questionButton": {
+        "message": "Tôi có một câu hỏi"
+    },
+    "warningConfirmButton": {
+        "message": "Tôi hiểu lí do này"
+    },
     "Donate": {
         "message": "Ủng hộ"
     },
@@ -993,7 +1017,7 @@
         "message": "Đây là lối tắt YouTube được tích hợp sẵn. Bạn có chắc chắn muốn sử dụng nó không?"
     },
     "betaServerWarning": {
-        "message": "Máy chủ BETA đã được kích hoạt!"
+        "message": "Máy chủ THỬ NGHIỆM đã được kích hoạt!"
     },
     "openOptionsPage": {
         "message": "Mở trang tùy chọn"
