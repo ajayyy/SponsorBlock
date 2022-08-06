@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "セグメントがスキップされた後に通知を表示する"
     },
+    "showCategoryGuidelines": {
+        "message": "カテゴリーのヘルプを表示"
+    },
     "noticeVisibilityMode0": {
         "message": "通常サイズのスキップ通知"
     },
@@ -267,11 +270,11 @@
         "description": "Used on Firefox Store Page"
     },
     "noticeUpdate": {
-        "message": "通知がアップグレードされました！",
+        "message": "お知らせが更新されました！",
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "もしそれでも気に入らない場合は、非表示ボタンをクリックしてください。",
+        "message": "もしそれでも気に入らない場合は、再度表示しないボタンをクリックしてください。",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
@@ -542,17 +545,38 @@
         "message": "～",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "場面転換のつなぎ目も含める"
+    },
+    "generic_guideline2": {
+        "message": "スキップしても自然に見えるようにする"
+    },
     "category_sponsor": {
         "message": "スポンサー"
     },
     "category_sponsor_description": {
         "message": "報酬のある販売促進・製品紹介，および直接広告です。自己販促や好きな運動・製作者・Webサイト・製品に対する無報酬での宣伝とは違います。"
     },
+    "category_sponsor_guideline1": {
+        "message": "有料のプロモーション"
+    },
+    "category_sponsor_guideline2": {
+        "message": "寄付やオリジナルグッズには使わない"
+    },
     "category_selfpromo": {
         "message": "無報酬 / セルフプロモーション"
     },
     "category_selfpromo_description": {
         "message": "無報酬での宣伝あるいは自己販促であるという点を除いては「スポンサー」と同様です。商品、寄付、コラボ情報に関する内容を含みます。"
+    },
+    "category_selfpromo_guideline1": {
+        "message": "寄付、メンバーシップ、オリジナルグッズ"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "動画とは関係のない呼びかけ"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "企業がデザインした製品やグッズには使わない"
     },
     "category_exclusive_access": {
         "message": "限定アクセス"
@@ -564,11 +588,23 @@
         "message": "この動画は無償または補助金を受けて利用した製品、サービス、または場所を紹介するものです",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "動画全体が無料または補助金を受けてアクセスしたものを紹介するものである"
+    },
     "category_interaction": {
         "message": "行動を促すメッセージ(チャンネル登録)"
     },
     "category_interaction_description": {
         "message": "動画の途中に挟まれる，高評価，チャンネル登録・通知の有効化を促す短かい場面。長かったり具体的な商品についての場面は，中断ではなく自己販売促進に分類するべきです。"
+    },
+    "category_interaction_guideline1": {
+        "message": "高評価、登録、フォローの短いお願い"
+    },
+    "category_interaction_guideline2": {
+        "message": "間接的なコメントのお願いも含む"
+    },
+    "category_interaction_guideline3": {
+        "message": "一般的なプロモーションではなく、直接的な呼びかけのみに使用すること"
     },
     "category_interaction_short": {
         "message": "動画の間に挟まる告知"
@@ -582,11 +618,20 @@
     "category_intro_short": {
         "message": "インターミッション"
     },
+    "category_intro_guideline1": {
+        "message": "実際のコンテンツを含まないインターバル"
+    },
+    "category_intro_guideline2": {
+        "message": "情報を含むトランジションには使用しない"
+    },
     "category_outro": {
         "message": "エンドカード/クレジット"
     },
     "category_outro_description": {
         "message": "提供表示やYouTubeの終了画面が表示されている場面。動画の内容を結論している場面には使用しないで下さい。"
+    },
+    "category_outro_guideline1": {
+        "message": "画面上にエンドカードが表示されているかに関わらず、コンテンツを含めない"
     },
     "category_preview": {
         "message": "予告と前回の粗筋"
@@ -594,14 +639,32 @@
     "category_preview_description": {
         "message": "前回の粗筋，または動画の後半内容の予告。音声による要約ではなく，編集された映像を指します。"
     },
+    "category_preview_guideline1": {
+        "message": "動画後ほどや将来の動画に登場する場面"
+    },
+    "category_preview_guideline2": {
+        "message": "前回の動画のあらすじ"
+    },
+    "category_preview_guideline3": {
+        "message": "新たなコンテンツを含むセクションには使用しない"
+    },
     "category_filler": {
-        "message": "無駄な脱線/冗談"
+        "message": "繋ぎの話/冗談"
     },
     "category_filler_description": {
         "message": "動画の本編を理解するのに必要のない、繋ぎの話やユーモアによって脱線したシーン。これには、文脈や背景の詳細を提供しているセグメントを含めないでください。"
     },
     "category_filler_short": {
         "message": "繋ぎの話"
+    },
+    "category_filler_guideline1": {
+        "message": "繋ぎの話やユーモアのみを含む本筋とは無関係な場面"
+    },
+    "category_filler_guideline2": {
+        "message": "逸脱シーン、NGシーン、リプレイ"
+    },
+    "category_filler_guideline3": {
+        "message": "トピックの理解に必要な場面には使用しない"
     },
     "category_music_offtopic": {
         "message": "音楽: 音楽以外のセクション"
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "音楽以外の部分"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "公式リリースには含まれないセクション"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "ライブパフォーマンスにおける音楽以外の部分"
+    },
     "category_poi_highlight": {
         "message": "ハイライト"
     },
     "category_poi_highlight_description": {
         "message": "多くの人が求めている動画の部分。「本編はXから開始」といったコメントのような機能です。"
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "多くの人々が求めているであろう内容のセクション"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "それまでの文脈はスキップできるものである"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "タイトルやサムネイルの場面までスキップできるものである"
     },
     "category_livestream_messages": {
         "message": "ライブ配信: 寄付/メッセージの読み上げ"
@@ -788,6 +866,21 @@
     "hideForever": {
         "message": "二度と表示しない"
     },
+    "warningChatInfo": {
+        "message": "悪意によるものではないよくある間違いを犯していたようです"
+    },
+    "warningTitle": {
+        "message": "警告を付与されました"
+    },
+    "questionButton": {
+        "message": "質問があります"
+    },
+    "warningConfirmButton": {
+        "message": "理由を理解しました"
+    },
+    "warningError": {
+        "message": "警告の確認中にエラーが発生しました:"
+    },
     "Donate": {
         "message": "寄付"
     },
@@ -859,6 +952,9 @@
     },
     "LearnMore": {
         "message": "さらに詳しく"
+    },
+    "FullDetails": {
+        "message": "詳細"
     },
     "CopyDownvoteButtonInfo": {
         "message": "低評価を押し、再提出するためのローカルコピーを作成"
@@ -940,5 +1036,11 @@
     },
     "openOptionsPage": {
         "message": "オプションページを開く"
+    },
+    "resetToDefault": {
+        "message": "設定をデフォルトに戻す"
+    },
+    "confirmResetToDefault": {
+        "message": "全ての設定をデフォルトの値にリセってしてもよろしいですか？元に戻すことはできません。"
     }
 }
