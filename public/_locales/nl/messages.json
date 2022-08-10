@@ -62,7 +62,7 @@
         "message": "Timer gestopt"
     },
     "confirmMSG": {
-        "message": "Om individuele waarden te bewerken of te verwijderen, klikt u op de info-knop of opent u de extensie-popup door op het extensie-pictogram in de rechterbovenhoek te klikken."
+        "message": "Om individuele waarden te bewerken of te verwijderen, klikt u op de info-knop of opent u de extensie-pop-up door op het extensie-pictogram in de rechterbovenhoek te klikken."
     },
     "clearThis": {
         "message": "Weet u zeker dat u dit wilt wissen?\n\n"
@@ -107,10 +107,10 @@
         "message": "Segmenten verwijderen"
     },
     "openPopup": {
-        "message": "SponsorBlock-popup openen"
+        "message": "SponsorBlock-pop-up openen"
     },
     "closePopup": {
-        "message": "Popup sluiten"
+        "message": "Pop-up sluiten"
     },
     "SubmitTimes": {
         "message": "Segmenten indienen"
@@ -391,7 +391,7 @@
         "message": "Uw gebruikers-ID importeren/exporteren"
     },
     "whatChangeUserID": {
-        "message": "Dit moet privé gehouden worden. Dit is als een wachtwoord en mag met niemand gedeeld worden. Als iemand dit heeft, kan hij zich voordoen als u. Klik op het klembordpictogram in de popup als u op zoek bent naar uw publieke gebrukers-ID."
+        "message": "Dit moet privé gehouden worden. Dit is als een wachtwoord en mag met niemand gedeeld worden. Als iemand dit heeft, kan hij zich voordoen als u. Klik op het klembordpictogram in de pop-up als u op zoek bent naar uw publieke gebruikers-ID."
     },
     "setUserID": {
         "message": "Gebruikers-ID instellen"
@@ -906,16 +906,16 @@
         "message": "Hoe overslaan werkt"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Videosegmenten zullen automatisch worden overgeslagen als ze in de database worden gevonden. U kunt de popup openen door op het pictogram van de extensie te klikken om een voorbeeld te krijgen van wat ze zijn."
+        "message": "Videosegmenten zullen automatisch worden overgeslagen als ze in de database worden gevonden. U kunt de pop-up openen door op het pictogram van de extensie te klikken om een voorbeeld te krijgen van wat ze zijn."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Als u een segment overslaat, krijgt u een bericht. Als de timing verkeerd lijkt, stem dan door op tegenstemmen te klikken! U kunt ook stemmen in de popup."
+        "message": "Als u een segment overslaat, krijgt u een bericht. Als de timing verkeerd lijkt, stem dan door op tegenstemmen te klikken! U kunt ook stemmen in de pop-up."
     },
     "Submitting": {
         "message": "Indienen"
     },
     "helpPageSubmitting1": {
-        "message": "Indienen kan ofwel in de popup door op de knop \"segment begint nu\" te drukken of in de videospeler met de knoppen op de speler."
+        "message": "Indienen kan ofwel in de pop-up door op de knop \"segment begint nu\" te drukken of in de videospeler met de knoppen op de speler."
     },
     "helpPageSubmitting2": {
         "message": "Klikken op de afspelen-knop geeft het begin van een segment aan en klikken op het stop-pictogram geeft het einde aan. U kunt meerdere sponsors voorbereiden voordat u op indienen klikt. Klikken op de uploadknop zal indienen. Klikken op de vuilnisbak zal verwijderen."
@@ -1041,6 +1041,6 @@
         "message": "Instellingen terugzetten op standaard"
     },
     "confirmResetToDefault": {
-        "message": "Weet u zeker dat u alle instellingen wilt terugzetten naar hun standaardwaarden? Dit kan niet ongedaan worden gemaakt."
+        "message": "Weet u zeker dat u alle instellingen wilt terugzetten naar hun standaardwaarden? Dit kan niet ongedaan gemaakt worden."
     }
 }
