@@ -173,6 +173,7 @@
 }
 
 .sponsorSkipNoticeTableContainer {
+	color: white;
 	background-color: rgba(28, 28, 28, 0.9);
 	border-radius: 5px;
 	min-width: 100%;
@@ -528,6 +529,11 @@ input::-webkit-inner-spin-button {
     color: white;
     border-width: 3px;
     padding: 3px;
+}
+
+.sponsorTimeEditSelector > option {
+	background-color: rgba(28, 28, 28, 0.9);
+	color: white;
 }
 
 .helpButton {
