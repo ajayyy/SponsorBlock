@@ -255,7 +255,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&value=vip&value=canSubmitChapter&userID="
+    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&value=vip&value=permissions&userID="
              + Config.config.userID, (res) => {
         if (res.status === 200) {
             const userInfo = JSON.parse(res.responseText);
@@ -285,7 +285,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             }
             
             Config.config.isVip = userInfo.vip;
-            Config.config.canSubmitChapter = userInfo.canSubmitChapter;
+            Config.config.permissions = userInfo.permissions;
         }
     });
 

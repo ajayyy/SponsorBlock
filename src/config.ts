@@ -3,10 +3,14 @@ import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
 import { keybindEquals } from "./utils/configUtils";
 
+export interface Permission {
+    canSubmit: boolean;
+}
+
 interface SBConfig {
     userID: string,
     isVip: boolean,
-    canSubmitChapter: boolean,
+    permissions: Record<Category, Permission>,
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
@@ -133,7 +137,7 @@ const Config: SBObject = {
     syncDefaults: {
         userID: null,
         isVip: false,
-        canSubmitChapter: false,
+        permissions: {},
         unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
         renderSegmentsAsChapters: true,

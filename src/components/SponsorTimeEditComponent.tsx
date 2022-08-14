@@ -406,7 +406,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         )];
 
         for (const category of (this.props.categoryList ?? CompileConfig.categoryList)) {
-            if (category === "chapter" && !Config.config.canSubmitChapter) break;
+            // If permission not loaded, treat it like we have permission except chapter
+            const defaultBlockCategories = ["chapter"];
+            const permission = Config.config.permissions[category as Category];
+            if ((defaultBlockCategories.includes(category) || permission !== undefined) && !permission) continue;
 
             elements.push(
                 <option value={category}
