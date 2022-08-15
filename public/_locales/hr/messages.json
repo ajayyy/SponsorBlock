@@ -131,7 +131,7 @@
         "message": "Prijava"
     },
     "savedPeopleFrom": {
-        "message": "Sačuvali ste ljude od"
+        "message": "Spasili ste ljude od "
     },
     "viewLeaderboard": {
         "message": "Ljestvica"
@@ -171,7 +171,7 @@
         "message": "Pridružite nam se u službenoj Discord zajednici i pošaljite svoje prijedloge i povrate informacije!"
     },
     "hideThis": {
-        "message": "Sakrijte ovo"
+        "message": "Sakrij ovo"
     },
     "Options": {
         "message": "Opcije"
@@ -206,8 +206,41 @@
     "enableViewTracking": {
         "message": "Omogući brojanje preskakanja"
     },
+    "whatViewTracking": {
+        "message": "Ova značajka prati koje dijelove ste preskočili, kako bi korisnicima dali doznanja koliko je njihova prijava pomogla drugima, koristi se kao mjerni podatak zajedni s goreglasom, kako bi se osiguralo da spam ne ulazi u bazu podataka. Proširenje šalje poruku poslužitelju svaki put kada preskočite dio. Nadamo se da puno ljudi neće mijenjati ovu postavku, kako bi broj pregleda bio točan. :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "Omogući praćenje broja preskakanja u Privatnim/Incognito karticama"
+    },
+    "enableTrackDownvotes": {
+        "message": "Pohranjuj doljeglasove dijelova"
+    },
+    "whatTrackDownvotes": {
+        "message": "Svaki odjeljak koji doljeglasate ostati će skriven čak i nakon osvježavanja"
+    },
+    "trackDownvotesWarning": {
+        "message": "Upozorenje: Onemogućavanjem ovoga izbrisati će svi prijašnje spremljeni doljeglasovi"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Upit po prefiksu kontrolnog identifikacijskog broja"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Umjesto zahtijeva za odjeljke sa poslužitelja koristeći videoID, prva 4 znaka sigurnosnog kontrolnog broja videoID-a su poslani. Taj poslužitelj poslat će nazad podatke za sva videa sa sličnim sigurnosnim kontrolnim brojevima."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Ponovno dohvati odjeljke za nova videa"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Ukoliko je video nov, a nisu pronađeni novi odjeljci, nastavit će s dohvaćanjem svako par minuta dok gledate."
+    },
+    "showNotice": {
+        "message": "Prikaži napomenu opet"
+    },
     "showSkipNotice": {
         "message": "Pokaži obavijest nakon preskakanja isječka"
+    },
+    "showCategoryGuidelines": {
+        "message": "Prikaži pomoć za kategorije"
     },
     "website": {
         "message": "Web-stranica",
@@ -295,6 +328,9 @@
     "audioNotificationDescription": {
         "message": "Zvučna obavijest o preskakanju reproducirat će zvuk kad god se odsječak preskoči. Ako je deaktivirano (ili je automatsko preskakanje deaktivirano), zvuk se neće reproducirati."
     },
+    "youHaveSkipped": {
+        "message": "Do sad ste preskočili "
+    },
     "minLower": {
         "message": "min"
     },
@@ -306,6 +342,14 @@
     },
     "hoursLower": {
         "message": "h"
+    },
+    "youHaveSavedTime": {
+        "message": "Spasili ste ljude od",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "youHaveSavedTimeEnd": {
+        "message": " njihova života",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
         "message": "Provjerite status.sponsor.ajay.app za status poslužitelja."
