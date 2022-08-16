@@ -719,12 +719,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "O ID do canal ainda não foi carregado. Se você estiver usando um vídeo embutido, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se você achar que este é o caso, faça um comentário aqui:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Parece que algo está bloqueando a habilidade do SponsorBlock de obter dados de vídeo. Por favor, veja https://github.com/ajayyy/SponsorBlock/issues/741 para mais informações."
-    },
-    "youtubePermissionRequest": {
-        "message": "Parece que o SponsorBlock não foi capaz de acessar a API do YouTube. Para corrigir isso, aceite a permissão do prompt que aparecerá a seguir, espere alguns segundos, e recarregue a página."
-    },
     "acceptPermission": {
         "message": "Aceitar permissão"
     },
