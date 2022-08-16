@@ -794,12 +794,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Η ταυτότητα καναλιού δεν έχει φορτώσει ακόμα. Εάν χρησιμοποιείτε ενσωματωμένο βίντεο, δοκιμάστε αντιθέτως να το ανοίξετε στο YouTube. Μπορεί επίσης να ευθύνονται αλλαγές στη διάταξη του YouTube, εάν το πιστεύετε, γράψτε ένα σχόλιο εδώ:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Φαίνεται ότι κάτι εμποδίζει το SponsorBlock να ανακτήσει δεδομένα βίντεο. Παρακαλώ δείτε αυτό https://github.com/ajayyy/SponsorBlock/issues/741 για περισσότερες πληροφορίες."
-    },
-    "youtubePermissionRequest": {
-        "message": "Φαίνεται ότι το SponsorBlock δεν μπορεί να επικοινωνήσει με το YouTube API. Για να το διορθώσετε αυτό, αποδεχτείτε την προτροπή άδειας, που θα εμφανιστεί στη συνέχεια, περιμένετε μερικά δευτερόλεπτα και στη συνέχεια ανανεώστε τη σελίδα."
-    },
     "acceptPermission": {
         "message": "Αποδεχτείτε την άδεια"
     },
