@@ -785,12 +785,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Không xác định được ID kênh. Nếu bạn đang xem video này trên 1 trang web thứ 3, hãy mở lại video này trên trang chủ Youtube rồi thử lại. Điều này cũng có thể do những thay đổi trong mã nguồn trang web YouTube, nếu bạn nghĩ vậy, hãy bình luận tại đây:"
     },
-    "videoInfoFetchFailed": {
-        "message": "SponsorBlock không thể truy vấn dữ liệu lịch sử phân đoạn video. Có thể do trình chặn quảng cáo của bạn. Bạn có thể tìm hiểu nguyên nhân và cách fix ở đây: https://github.com/ajayyy/SponsorBlock/issues/741."
-    },
-    "youtubePermissionRequest": {
-        "message": "Có vẻ như SponsorBlock không thể truy cập API YouTube. Để khắc phục điều này, hãy chấp nhận lời nhắc cấp quyền sẽ xuất hiện tiếp theo, đợi vài giây rồi tải lại trang."
-    },
     "acceptPermission": {
         "message": "Cho phép truy cập"
     },
