@@ -781,12 +781,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "채널 ID를 불러오지 못했어요. 임베디드 동영상인 경우, YouTube 홈페이지에서 시도해보세요. YouTube 레이아웃 변화로 인해 발생한 문제일 수도 있어요. 그렇게 생각하신다면 다음 사이트에서 의견을 남겨주세요: "
     },
-    "videoInfoFetchFailed": {
-        "message": "무언가가 SponsorBlock의 동영상 데이터 수집을 막고 있는 것 같아요. https://github.com/ajayyy/SponsorBlock/issues/741 사이트를 참고하세요."
-    },
-    "youtubePermissionRequest": {
-        "message": "SponsorBlock이 YouTube API에 접근할 수 없는 것으로 보여요. 이 문제를 해결하려면, 권한 창에서 권한을 허용해주시고 잠시 기다린 뒤 페이지를 새로고침해주세요."
-    },
     "acceptPermission": {
         "message": "권한 허용"
     },
