@@ -794,12 +794,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "未偵測到頻道ID，如果您正在使用嵌入式YouTube播放器，請移至YouTube網站上觀看本影片。此問題亦有可能是由於YouTube改變了系統架構，如果你認為這是造成此問題的原因，請留言告訴我們："
     },
-    "videoInfoFetchFailed": {
-        "message": "似乎有東西在阻止 SponsorBlock 取得影片資料。請至 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"
-    },
-    "youtubePermissionRequest": {
-        "message": "SponsorBlock 貌似無法存取 YouTube API。若要解決此問題，請同意稍後出現的權限提示，等待幾秒鐘，然後重新載入頁面。"
-    },
     "acceptPermission": {
         "message": "允許權限"
     },
