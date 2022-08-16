@@ -107,7 +107,7 @@ chrome.runtime.onMessage.addListener(function (request, _, callback) {
 chrome.runtime.onInstalled.addListener(function () {
     // This let's the config sync to run fully before checking.
     // This is required on Firefox
-    setTimeout(function() {
+    setTimeout(async () => {
         const userID = Config.config.userID;
 
         // If there is no userID, then it is the first install.
@@ -122,6 +122,12 @@ chrome.runtime.onInstalled.addListener(function () {
 
             // Don't show update notification
             Config.config.categoryPillUpdate = true;
+        }
+
+        if (Config.config.supportInvidious) {
+            if (!(await utils.containsInvidiousPermission())) {
+                chrome.tabs.create({url: chrome.extension.getURL("/permissions/index.html")});
+            }
         }
     }, 1500);
 });

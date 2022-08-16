@@ -210,6 +210,37 @@ export default class Utils {
         });
     }
 
+    applyInvidiousPermissions(enable: boolean, option = "supportInvidious"): Promise<boolean> {
+        return new Promise((resolve) => {
+            if (enable) {
+                this.setupExtraSitePermissions((granted) => {
+                    if (!granted) {
+                        Config.config[option] = false;
+                    }
+
+                    resolve(granted);
+                });
+            } else {
+                this.removeExtraSiteRegistration();
+                resolve(false);
+            }
+        });
+    }
+
+    containsInvidiousPermission(): Promise<boolean> {
+        return new Promise((resolve) => {
+            let permissions = ["declarativeContent"];
+            if (this.isFirefox()) permissions = [];
+
+            chrome.permissions.contains({
+                origins: this.getPermissionRegex(),
+                permissions: permissions
+            }, function (result) {
+                resolve(result);
+            });
+        })
+    }
+
     /**
      * Merges any overlapping timestamp ranges into single segments and returns them as a new array.
      */
