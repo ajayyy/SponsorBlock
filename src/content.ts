@@ -639,7 +639,7 @@ function getVirtualTime(): number {
         (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null);
 
     if ((lastTimeFromWaitingEvent || !utils.isFirefox())
-        && !isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6) {
+        && !isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6 && video.currentTime !== 0) {
         return virtualTime;
     } else {
         return video.currentTime;
@@ -722,6 +722,7 @@ function setupVideoListeners() {
         switchingVideos = false;
 
         let startedWaiting = false;
+        let lastPausedAtZero = true;
 
         video.addEventListener('play', () => {
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
@@ -732,13 +733,15 @@ function setupVideoListeners() {
 
             updateVirtualTime();
 
-            if (switchingVideos) {
+            if (switchingVideos || lastPausedAtZero) {
                 switchingVideos = false;
                 logDebug("Setting switching videos to false");
 
                 // If already segments loaded before video, retry to skip starting segments
                 if (sponsorTimes) startSkipScheduleCheckingForStartSponsors();
             }
+
+            lastPausedAtZero = false;
 
             // Check if an ad is playing
             updateAdFlag();
@@ -755,6 +758,7 @@ function setupVideoListeners() {
         });
         video.addEventListener('playing', () => {
             updateVirtualTime();
+            lastPausedAtZero = false;
             
             if (startedWaiting) {
                 startedWaiting = false;
@@ -789,6 +793,8 @@ function setupVideoListeners() {
                 lastTimeFromWaitingEvent = null;
 
                 startSponsorSchedule();
+            } else if (video.currentTime === 0) {
+                lastPausedAtZero = true;
             }
         });
         video.addEventListener('ratechange', () => startSponsorSchedule());
