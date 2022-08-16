@@ -794,12 +794,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID kanálu ještě není načteno. Pokud používáte vložené video, zkuste místo toho použít domovskou stránku YouTube. Toto může být také způsobeno změnami v rozložení YouTube, pokud si myslíte, že tomu tak bude, zanechte zde komentář:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Vypadá to, že něco blokuje schopnost SponsorBlocku získat údaje o videu. Pro více informací prosím navštivte https://github.com/ajayyy/SponsorBlock/issues/741."
-    },
-    "youtubePermissionRequest": {
-        "message": "Vypadá to, že se SponsorBlock nemůže připojit k YouTube API. Pro opravení tohoto problému přijměte žádost o oprávnění, která se dále objeví, a poté znovu načtěte stránku."
-    },
     "acceptPermission": {
         "message": "Přijmout oprávnění"
     },
