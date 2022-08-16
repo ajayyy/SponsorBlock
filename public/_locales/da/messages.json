@@ -716,12 +716,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal-ID er ikke indlæst endnu. Hvis du bruger en integreret video, så prøv i stedet at bruge YouTube-hjemmesiden. Dette kunne også være forårsaget af ændringer i YouTube-layout. Hvis du mener det, så lav en kommentar her:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Det ser ud til, at noget blokerer SponsorBlock's evne til at hente videodata. Se https://github.com/ajayyy/SponsorBlock/issues/741 for mere info."
-    },
-    "youtubePermissionRequest": {
-        "message": "Det ser ud til, at SponsorBlock ikke kan nå YouTube APIen. Acceptér tilladelsesprompten som vises næste gang, vent et par sekunder, og genindlæs siden."
-    },
     "acceptPermission": {
         "message": "Accepter tilladelse"
     },
