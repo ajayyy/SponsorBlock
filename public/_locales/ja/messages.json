@@ -794,12 +794,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "番組IDがまだ読み込まれていません。埋め込み動画でご覧になっている場合は，代わりにYouTubeの公式サイトで再生してみてください。この問題はYouTubeの画面構成を変えた際にも発生する可能性があります。その場合は，こちらに意見をお書きください:"
     },
-    "videoInfoFetchFailed": {
-        "message": "SponsorBlockの動画情報取得が拒否されています。詳細は https://github.com/ajayyy/SponsorBlock/issues/741 を参照してください。"
-    },
-    "youtubePermissionRequest": {
-        "message": "SponsorBlockがYouTube APIを参照できないようです。修正するには，次に表示される画面で許可を承認してから，数秒後に再読み込みしてください。"
-    },
     "acceptPermission": {
         "message": "許可を承認する"
     },
