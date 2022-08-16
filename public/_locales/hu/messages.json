@@ -794,12 +794,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "A csatorna ID még nem került betöltésre. Ha beágyazott videót használsz, próbáld meg inkább a YouTube oldalon keresztül. Ezt okozhatja még a YouTube elrendezésének változása is. Ha így gondolod, hagyj egy kommentet itt:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Úgy tűnik, valami korlátozza a SponsorBlock hozzáférését a videó adataihoz. További információkért látogass el ide: https://github.com/ajayyy/SponsorBlock/issues/741 (angol nyelvű)."
-    },
-    "youtubePermissionRequest": {
-        "message": "Úgy tűnik, a SponsorBlock nem tud csatlakozni a YouTube API-hoz. A javításhoz fogadd el a megjelenő engedélykérést, várj néhány másodpercet, majd töltsd újra az oldalt."
-    },
     "acceptPermission": {
         "message": "Engedély jóváhagyása"
     },
