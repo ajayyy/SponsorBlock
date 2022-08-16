@@ -794,12 +794,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID канала еще не загружен. Если вы используете встроенное видео, попробуйте вместо этого воспользоваться домашней страницей YouTube. Это также может быть вызвано изменениями в дизайне YouTube, если вы считаете, что это так, оставьте комментарий здесь:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Похоже, что-то блокирует возможность SponsorBlock'а получать данные о видео. Подробнее: https://github.com/ajayyy/SponsorBlock/issues/741."
-    },
-    "youtubePermissionRequest": {
-        "message": "Кажется, SponsorBlock не может получить доступ к API YouTube. Чтобы исправить эту ошибку, дайте разрешение в окне, которое сейчас появится, подождите несколько секунд и затем перезагрузите страницу."
-    },
     "acceptPermission": {
         "message": "Дать разрешение"
     },
