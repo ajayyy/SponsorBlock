@@ -794,12 +794,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID Channel belum dimuat. Apabila anda menggunakan video yang tersematkan, coba menggunakan halaman utama YouTube. Hal ini juga dapat disebabkan oleh perubahan yang ada pada tampilan YouTUbe, apabila anda mengira seperti itu, buat komentar disini:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Sepertinya sesuatu memnghalangi abilitas SponsorBlock untuk mendapatkan data video. Silahkan lihat https://github.com/ajayyy/SponsorBlock/issues/741 untuk info lebih lanjut."
-    },
-    "youtubePermissionRequest": {
-        "message": "Sepertinya SponsorBlock tidak dapat menjangkau API YouTube. Untuk menyelesaikan masalah ini, terima permintaan izin yang akan muncul selanjutnya, tunggu beberapa detik, dan muat ulang halaman ini."
-    },
     "acceptPermission": {
         "message": "Terima permintaan izin"
     },
