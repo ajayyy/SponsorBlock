@@ -203,6 +203,13 @@ class PreviewBar {
         this.segments = segments ?? [];
         this.videoDuration = videoDuration ?? 0;
 
+        const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
+        // Sometimes video duration is inaccurate, pull from accessibility info
+        const ariaDuration = parseInt(progressBar?.getAttribute('aria-valuemax')) ?? 0;
+        if (ariaDuration && Math.abs(ariaDuration - this.videoDuration) > 3) {
+            this.videoDuration = ariaDuration;
+        }
+
         this.update();
     }
 
