@@ -794,6 +794,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal-ID ist noch nicht geladen. Falls es sich um ein eingebettetes Video handelt, probiere stattdessen die YouTube-Webseite. Dies könnte auch durch Änderungen im YouTube-Layout verursacht werden. Sollte das der Fall sein, kannst du es hier vermerken:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "Der Browser hat die Berechtigung, welche zum vewenden von Invidious und anderen Drittanbieter-Seiten benötigt wird, verweigert. Bitte klicke auf die Schaltfläche unten, um diese Berechtigung zu ractivieren."
+    },
     "acceptPermission": {
         "message": "Berechtigung erteilen"
     },
