@@ -794,6 +794,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "A csatorna ID még nem került betöltésre. Ha beágyazott videót használsz, próbáld meg inkább a YouTube oldalon keresztül. Ezt okozhatja még a YouTube elrendezésének változása is. Ha így gondolod, hagyj egy kommentet itt:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "A böngésző visszavonta az engedélyt, ami az Invidious és egyéb oldalakon való működéshez szükséges. Kérjük, kattints a lenti gombra az engedély újbóli megadásához!"
+    },
     "acceptPermission": {
         "message": "Engedély jóváhagyása"
     },
