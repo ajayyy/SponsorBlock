@@ -719,6 +719,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID каналу ще не завантажений. Якщо ви використовуєте вбудоване відео, спробуйте замість цього скористатися домашньою сторінкою YouTube. Це також може бути викликано змінами в дизайні YouTube, якщо ви вважаєте, що це так, залиште коментар тут:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "Браузер відкликав дозвіл, необхідний для роботи на Invidious та інших сторонніх сайтах. Будь ласка, натисніть кнопку нижче, щоб повторно активувати цей дозвіл."
+    },
     "acceptPermission": {
         "message": "Надати дозвіл"
     },
