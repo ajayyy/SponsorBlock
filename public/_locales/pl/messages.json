@@ -794,6 +794,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID kanału nie zostało jeszcze załadowane. Jeśli używasz embeddowanego filmu, spróbuj użyć strony głównej YouTube'a. Może to być również spowodowane zmianami w layout'cie YouTube'a, jeśli myślisz, że to przez to, dodaj swój komentarz tutaj:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "Przeglądarka cofnęła uprawnienia potrzebne do działania na witrynach Invidious i innych witrynach stron trzecich. Kliknij poniższy przycisk, aby reaktywować to uprawnienie."
+    },
     "acceptPermission": {
         "message": "Zaakceptuj uprawnienie"
     },
