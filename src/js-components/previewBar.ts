@@ -39,12 +39,14 @@ class PreviewBar {
     onInvidious: boolean;
 
     segments: PreviewBarSegment[] = [];
+    existingChapters: PreviewBarSegment[] = [];
     videoDuration = 0;
 
     // For chapter bar
     hoveredSection: HTMLElement;
     customChaptersBar: HTMLElement;
-    chaptersBarSegments: PreviewBarSegment[];
+    originalChapterBar: HTMLElement;
+    originalChapterBarBlocks: NodeListOf<HTMLElement>;
 
     constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean, test=false) {
         if (test) return;
@@ -56,7 +58,7 @@ class PreviewBar {
         this.onInvidious = onInvidious;
 
         this.createElement(parent);
-        this.createChapterMutationObserver();
+        this.createChapterMutationObservers();
 
         this.setupHoverText();
     }
@@ -192,20 +194,25 @@ class PreviewBar {
     }
 
     clear(): void {
-        this.videoDuration = 0;
-        this.segments = [];
-
         while (this.container.firstChild) {
             this.container.removeChild(this.container.firstChild);
         }
     }
 
     set(segments: PreviewBarSegment[], videoDuration: number): void {
-        this.clear();
-        if (!segments) return;
+        this.segments = segments ?? [];
+        this.videoDuration = videoDuration ?? 0;
 
-        this.segments = segments;
-        this.videoDuration = videoDuration;
+        this.update();
+    }
+
+    private update(): void {
+        this.clear();
+        if (!this.segments) return;
+
+        this.originalChapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
+        this.originalChapterBarBlocks = this.originalChapterBar.querySelectorAll(":scope > div") as NodeListOf<HTMLElement>
+        this.existingChapters = this.segments.filter((s) => s.source === SponsorSourceType.YouTube).sort((a, b) => a.segment[0] - b.segment[0])
 
         const sortedSegments = this.segments.sort(({ segment: a }, { segment: b }) => {
             // Sort longer segments before short segments to make shorter segments render later
@@ -217,10 +224,10 @@ class PreviewBar {
             this.container.appendChild(bar);
         }
 
-        this.createChaptersBar(segments.sort((a, b) => a.segment[0] - b.segment[0]));
+        this.createChaptersBar(this.segments.sort((a, b) => a.segment[0] - b.segment[0]));
 
         const chapterChevron = document.querySelector(".ytp-chapter-title-chevron") as HTMLElement;
-        if (segments.some((segment) => segment.actionType !== ActionType.Chapter 
+        if (this.segments.some((segment) => segment.actionType !== ActionType.Chapter 
                 && segment.source === SponsorSourceType.YouTube)) {
             chapterChevron.style.removeProperty("display");
         } else {
@@ -244,7 +251,7 @@ class PreviewBar {
         bar.style.position = "absolute";
         const duration = Math.min(segment[1], this.videoDuration) - segment[0];
         if (duration > 0) {
-            bar.style.width = `calc(${this.timeToPercentage(segment[1] - segment[0])}${this.chapterFilter(barSegment) ? ' - 2px' : ''})`;
+            bar.style.width = `calc(${this.intervalToPercentage(segment[0], segment[1])}${this.chapterFilter(barSegment) ? ' - 2px' : ''})`;
         }
         
         const time = segment[1] ? Math.min(this.videoDuration, segment[0]) : segment[0];
@@ -255,15 +262,14 @@ class PreviewBar {
 
     createChaptersBar(segments: PreviewBarSegment[]): void {
         const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
-        const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
-        if (!progressBar || !chapterBar || chapterBar.childElementCount <= 0) return;
+        if (!progressBar || !this.originalChapterBar || this.originalChapterBar.childElementCount <= 0) return;
 
         if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
             || (!Config.config.renderSegmentsAsChapters 
                 && segments.every((segment) => segment.actionType !== ActionType.Chapter 
                     || segment.source === SponsorSourceType.YouTube))) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
-            chapterBar.style.removeProperty("display");
+            this.originalChapterBar.style.removeProperty("display");
             return;
         }
 
@@ -273,7 +279,7 @@ class PreviewBar {
 
         if (chaptersToRender?.length <= 0) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
-            chapterBar.style.removeProperty("display");
+            this.originalChapterBar.style.removeProperty("display");
             return;
         }
 
@@ -281,7 +287,7 @@ class PreviewBar {
         let createFromScratch = false;
         if (!this.customChaptersBar) {
             createFromScratch = true;
-            this.customChaptersBar = chapterBar.cloneNode(true) as HTMLElement;
+            this.customChaptersBar = this.originalChapterBar.cloneNode(true) as HTMLElement;
             this.customChaptersBar.classList.add("sponsorBlockChapterBar");
         }
         this.customChaptersBar.style.removeProperty("display");
@@ -289,7 +295,6 @@ class PreviewBar {
         const originalSection = originalSections[0];
 
         this.customChaptersBar = this.customChaptersBar;
-        this.chaptersBarSegments = segments;
 
         // For switching to a video with less chapters
         if (originalSections.length > chaptersToRender.length) {
@@ -301,7 +306,6 @@ class PreviewBar {
         // Modify it to have sections for each segment
         for (let i = 0; i < chaptersToRender.length; i++) {
             const chapter = chaptersToRender[i].segment;
-            const duration = chapter[1] - chapter[0];
             let newSection = originalSections[i] as HTMLElement;
             if (!newSection) {
                 newSection = originalSection.cloneNode(true) as HTMLElement;
@@ -310,11 +314,11 @@ class PreviewBar {
                 this.customChaptersBar.appendChild(newSection);
             }
 
-            this.setupChapterSection(newSection, duration, i !== chaptersToRender.length - 1);
+            this.setupChapterSection(newSection, chapter[0], chapter[1], i !== chaptersToRender.length - 1);
         }
 
         // Hide old bar
-        chapterBar.style.display = "none";
+        this.originalChapterBar.style.display = "none";
 
         if (createFromScratch) {
             if (this.container?.parentElement === progressBar) {
@@ -324,7 +328,7 @@ class PreviewBar {
             }
         }
 
-        this.updateChapterAllMutation(chapterBar, progressBar, true);
+        this.updateChapterAllMutation(this.originalChapterBar, progressBar, true);
     }
 
     createChapterRenderGroups(segments: PreviewBarSegment[]): ChapterGroup[] {
@@ -404,7 +408,7 @@ class PreviewBar {
                 const nextSegment = segments[index + 1];
                 const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
                 const lastTime = result[result.length - 1]?.segment[1] || segment.segment[1];
-                if (this.timeToDecimal(nextTime - lastTime) > MIN_CHAPTER_SIZE) {
+                if (this.intervalToDecimal(lastTime, nextTime) > MIN_CHAPTER_SIZE) {
                     result.push({
                         segment: [lastTime, nextTime],
                         originalDuration: 0
@@ -416,15 +420,17 @@ class PreviewBar {
         return result;
     }
 
-    private setupChapterSection(section: HTMLElement, duration: number, addMargin: boolean): void {
+    private setupChapterSection(section: HTMLElement, startTime: number, endTime: number, addMargin: boolean): void {
+        const sizePercent = this.intervalToPercentage(startTime, endTime);
         if (addMargin) {
             section.style.marginRight = "2px";
-            section.style.width = `calc(${this.timeToPercentage(duration)} - 2px)`;
+            section.style.width = `calc(${sizePercent} - 2px)`;
         } else {
             section.style.marginRight = "0";
-            section.style.width = this.timeToPercentage(duration);
+            section.style.width = sizePercent;
         }
-        section.setAttribute("decimal-width", String(this.timeToDecimal(duration)));
+
+        section.setAttribute("decimal-width", String(this.intervalToDecimal(startTime, endTime)));
     }
 
     private firstTimeSetupChapterSection(section: HTMLElement): void {
@@ -435,12 +441,12 @@ class PreviewBar {
         });
     }
 
-    private createChapterMutationObserver(): void {
+    private createChapterMutationObservers(): void {
         const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
         const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (!progressBar || !chapterBar) return;
 
-        const observer = new MutationObserver((mutations) => {
+        const attributeObserver = new MutationObserver((mutations) => {
             const changes: Record<string, HTMLElement> = {};
             for (const mutation of mutations) {
                 const currentElement = mutation.target as HTMLElement;
@@ -453,10 +459,26 @@ class PreviewBar {
             this.updateChapterMutation(changes, progressBar);
         });
 
-        observer.observe(chapterBar, {
+        attributeObserver.observe(chapterBar, {
             subtree: true,
             attributes: true,
-            attributeFilter: ["style", "class"],
+            attributeFilter: ["style", "class"]
+        });
+
+        const childListObserver = new MutationObserver((mutations) => {
+            const changes: Record<string, HTMLElement> = {};
+            for (const mutation of mutations) {
+                if (mutation.type === "childList") {
+                    this.update();
+                }
+            }
+
+            this.updateChapterMutation(changes, progressBar);
+        });
+
+        // Only direct children, no subtree
+        childListObserver.observe(chapterBar, {
+            childList: true
         });
     }
 
@@ -614,15 +636,6 @@ class PreviewBar {
                         return (b.segment[0] - a.segment[0]);
                     }
                 })[0];
-                console.log(segments.sort((a, b) => {
-                    if (a.actionType === ActionType.Chapter && b.actionType !== ActionType.Chapter) {
-                        return -1;
-                    } else if (a.actionType !== ActionType.Chapter && b.actionType === ActionType.Chapter) {
-                        return 1;
-                    } else {
-                        return (b.segment[0] - a.segment[0]);
-                    }
-                }))
 
                 const chapterButton = chaptersContainer.querySelector("button.ytp-chapter-title") as HTMLButtonElement;
                 chapterButton.classList.remove("ytp-chapter-container-disabled");
@@ -658,14 +671,52 @@ class PreviewBar {
     }
 
     private chapterGroupFilter(segment: SegmentContainer): boolean {
-        return segment.segment.length === 2 && this.timeToDecimal(segment.segment[1] - segment.segment[0]) > MIN_CHAPTER_SIZE;
+        return segment.segment.length === 2 && this.intervalToDecimal(segment.segment[0], segment.segment[1]) > MIN_CHAPTER_SIZE;
+    }
+
+    intervalToPercentage(startTime: number, endTime: number) {
+        return `${this.intervalToDecimal(startTime, endTime) * 100}%`;
+    }
+
+    intervalToDecimal(startTime: number, endTime: number) {
+        return (this.timeToDecimal(endTime) - this.timeToDecimal(startTime));
     }
 
     timeToPercentage(time: number): string {
-        return Math.min(100, time / this.videoDuration * 100) + '%';
+        return `${this.timeToDecimal(time) * 100}%`
     }
 
     timeToDecimal(time: number): number {
+        if (this.originalChapterBarBlocks?.length > 1 && this.existingChapters.length === this.originalChapterBarBlocks?.length) {
+            // Parent element to still work when display: none
+            const totalPixels = this.originalChapterBar.parentElement.clientWidth;
+            let pixelOffset = 0;
+            let lastCheckedChapter = -1;
+            for (let i = 0; i < this.originalChapterBarBlocks.length; i++) {
+                const chapterElement = this.originalChapterBarBlocks[i];
+                const widthPixels = parseFloat(chapterElement.style.width.replace("px", ""));
+                
+                if (time >= this.existingChapters[i].segment[1]) {
+                    const marginPixels = chapterElement.style.marginRight ? parseFloat(chapterElement.style.marginRight.replace("px", "")) : 0;
+                    pixelOffset += widthPixels + marginPixels;
+                    lastCheckedChapter = i;
+                } else {
+                    break;
+                }
+            }
+
+            // The next chapter is the one we are currently inside of
+            const latestChapter = this.existingChapters[lastCheckedChapter + 1];
+            if (latestChapter) {
+                const latestWidth = parseFloat(this.originalChapterBarBlocks[lastCheckedChapter + 1].style.width.replace("px", ""));
+                const latestChapterDuration = latestChapter.segment[1] - latestChapter.segment[0];
+    
+                const percentageInCurrentChapter = (time - latestChapter.segment[0]) / latestChapterDuration; 
+                const sizeOfCurrentChapter = latestWidth / totalPixels;
+                return Math.min(1, ((pixelOffset / totalPixels) + (percentageInCurrentChapter * sizeOfCurrentChapter)));
+            }
+        }
+
         return Math.min(1, time / this.videoDuration);
     }
 
