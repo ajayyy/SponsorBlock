@@ -794,6 +794,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID на канала все още не е зареден. Ако използвате вграден видеоклип, опитайте вместо това да използвате началната страница на YouTube. Това може да бъде причинено и от промени в оформлението на YouTube, ако мислите така, направете коментар тук:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "Браузърът е отменил разрешението, необходимо за функциониране на Invidious и други сайтове на трети страни. Моля, щракнете върху бутона по-долу, за да активирате отново това разрешение."
+    },
     "acceptPermission": {
         "message": "Даване на разрешение"
     },
