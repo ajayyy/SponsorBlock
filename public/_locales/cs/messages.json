@@ -794,6 +794,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID kanálu ještě není načteno. Pokud používáte vložené video, zkuste místo toho použít domovskou stránku YouTube. Toto může být také způsobeno změnami v rozložení YouTube, pokud si myslíte, že tomu tak bude, zanechte zde komentář:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "Prohlížeč odvolal oprávnění potřebné k funkci na Invidious a dalších webech třetích stran. Klikněte prosím na tlačítko níže pro opětovnou aktivaci tohoto oprávnění."
+    },
     "acceptPermission": {
         "message": "Přijmout oprávnění"
     },
