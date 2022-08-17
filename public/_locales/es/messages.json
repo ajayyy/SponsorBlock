@@ -794,6 +794,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "El ID del canal no está cargado todavía. Si está usando un vídeo incrustado, intente usar la página de inicio de YouTube en su lugar. Esto también podría ser causado por cambios en el diseño de YouTube, si lo cree, haga un comentario aquí:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "El navegador ha revocado el permiso necesario para funcionar en Invidious y otros sitios de terceros. Por favor, haga clic en el botón de abajo para reactivar este permiso."
+    },
     "acceptPermission": {
         "message": "Aceptar permiso"
     },
