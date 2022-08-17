@@ -130,6 +130,9 @@
     "Submissions": {
         "message": "제출"
     },
+    "savedPeopleFrom": {
+        "message": "나 덕분에 다른 사람들이 건너뛴 구간: "
+    },
     "viewLeaderboard": {
         "message": "리더보드"
     },
@@ -372,6 +375,10 @@
     },
     "hoursLower": {
         "message": "시간"
+    },
+    "youHaveSavedTime": {
+        "message": "나 덕분에 다른 사람들이 건너뛴 구간:",
+        "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
         "message": "의 시간을 절약함",
@@ -752,6 +759,9 @@
     "testingServerWarning": {
         "message": "제출과 투표가 테스트 서버에 연결하는 동안은 메인 서버에 반영되지 않을 거예요. 실제 제출을 원하시면 비활성화하는 걸 잊지 마세요."
     },
+    "bracketNow": {
+        "message": "(지금)"
+    },
     "moreCategories": {
         "message": "많은 카테고리"
     },
@@ -768,6 +778,9 @@
     "youMustSelectACategory": {
         "message": "제출해야 하는 모든 구간의 카테고리를 선택해 주세요!"
     },
+    "bracketEnd": {
+        "message": "(끝)"
+    },
     "hiddenDueToDownvote": {
         "message": "숨겨짐: 비추천"
     },
@@ -780,6 +793,9 @@
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "채널 ID를 불러오지 못했어요. 임베디드 동영상인 경우, YouTube 홈페이지에서 시도해보세요. YouTube 레이아웃 변화로 인해 발생한 문제일 수도 있어요. 그렇게 생각하신다면 다음 사이트에서 의견을 남겨주세요: "
+    },
+    "invidiousPermissionRefresh": {
+        "message": "브라우저가 Invidious와 기타 제3자 사이트에서 동작하기 위한 권한을 회수했습니다. 권한을 다시 부여하려면 아래 버튼을 눌러 주십시오."
     },
     "acceptPermission": {
         "message": "권한 허용"
