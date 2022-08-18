@@ -600,9 +600,6 @@
     "category_preview": {
         "message": "Ukážka/Rekapitulácia"
     },
-    "category_preview_description": {
-        "message": "Rýchla rekapitulácia predošlej epizódy alebo ukážka toho, čo bude nasledovať neskôr v aktuálnom videu. Myslené pre zostrihané videá, nie pre hovorený súhrn."
-    },
     "category_preview_guideline1": {
         "message": "Ukážky, ktoré sa zobrazia neskôr alebo v budúcom videu"
     },
