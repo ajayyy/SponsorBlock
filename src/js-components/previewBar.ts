@@ -506,18 +506,22 @@ class PreviewBar {
             let cursor = 0;
 
             const sections = this.customChaptersBar.querySelectorAll(".ytp-chapter-hover-container") as NodeListOf<HTMLElement>;
-            for (const section of sections) {
+            for (let i = 0; i < sections.length; i++) {
+                const section = sections[i];
+
                 const sectionWidthDecimal = parseFloat(section.getAttribute("decimal-width"));
+                const sectionWidthDecimalNoMargin = sectionWidthDecimal - 2 / progressBar.clientWidth;
 
                 for (const className in changes) {
                     const selector = `.${className}`
                     const customChangedElement = section.querySelector(selector) as HTMLElement;
                     if (customChangedElement) {
+                        const fullSectionWidth = i === sections.length - 1 ? sectionWidthDecimal : sectionWidthDecimalNoMargin;
                         const changedElement = changes[className];
                         const changedData = this.findLeftAndScale(selector, changedElement, progressBar);
 
                         const left = (changedData.left) / progressBar.clientWidth;
-                        const calculatedLeft = Math.max(0, Math.min(1, (left - cursor) / sectionWidthDecimal));
+                        const calculatedLeft = Math.max(0, Math.min(1, (left - cursor) / fullSectionWidth));
                         if (!isNaN(left) && !isNaN(calculatedLeft)) {
                             customChangedElement.style.left = `${calculatedLeft * 100}%`;
                             customChangedElement.style.removeProperty("display");
@@ -525,9 +529,9 @@ class PreviewBar {
 
                         if (changedData.scale !== null) {
                             const transformScale = (changedData.scale) / progressBar.clientWidth;
-                            
+
                             customChangedElement.style.transform = 
-                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, (transformScale - cursor) / sectionWidthDecimal - calculatedLeft))}`;
+                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, (transformScale - cursor) / fullSectionWidth - calculatedLeft))}`;
                             if (firstUpdate) {
                                 customChangedElement.style.transition = "none";
                                 setTimeout(() => customChangedElement.style.removeProperty("transition"), 50);
@@ -577,7 +581,7 @@ class PreviewBar {
                 const transformScale = parseFloat(transformMatch[1]);
                 if (transformScale < 1 && transformScale + checkLeft / currentSectionWidthNoMargin < 0.99999) {
                     scale = transformScale;
-                    scaleWidth = currentSectionWidth;
+                    scaleWidth = currentSectionWidthNoMargin;
 
                     if (transformScale > 0) {
                         // reached the end of this section for sure, since the scale is now between 0 and 1
