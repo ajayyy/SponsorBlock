@@ -636,9 +636,6 @@
     "category_preview": {
         "message": "Vorschau/Zusammenfassung"
     },
-    "category_preview_description": {
-        "message": "Kurze Zusammenfassung bisheriger Videos oder eine Vorschau auf das aktuelle Video. Für zusammengeschnittene Clips gedacht, jedoch nicht für mündliche Zusammenfassungen."
-    },
     "category_preview_guideline1": {
         "message": "Clips welche später oder in einem zukünftigen Video erscheinen"
     },
