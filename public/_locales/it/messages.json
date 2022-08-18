@@ -636,9 +636,6 @@
     "category_preview": {
         "message": "Anteprima/Riepilogo"
     },
-    "category_preview_description": {
-        "message": "Riepilogo rapido degli episodi precedenti, o un'anteprima di ciò che sta arrivando più tardi nel video attuale. Inteso per clip, non per riassunti a voce."
-    },
     "category_preview_guideline1": {
         "message": "Clip che appaiono più tardi in questo video, oppure in un video futuro"
     },
