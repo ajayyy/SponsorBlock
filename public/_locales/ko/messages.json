@@ -636,9 +636,6 @@
     "category_preview": {
         "message": "미리보기/요약 구간"
     },
-    "category_preview_description": {
-        "message": "이 구간은 이전 동영상을 간략히 요약하거나 나중에 나올 동영상의 내용을 예고하는 내용이 포함됐어요. 말로 된 요약이 아닌 편집된 동영상을 통한 요약만이 해당돼요."
-    },
     "category_preview_guideline1": {
         "message": "향후 동영상에 나타나는 장면이 있는 구간이어야 함"
     },
