@@ -561,8 +561,8 @@ class PreviewBar {
         let scalePosition = 0;
         let scaleWidth = 0;
 
-        for (const sectionElement of sections) {
-            const section = sectionElement as HTMLElement;
+        for (let i = 0; i < sections.length; i++) {
+            const section = sections[i] as HTMLElement;
             const checkElement = section.querySelector(selector) as HTMLElement;
             const currentSectionWidthNoMargin = this.getPartialChapterSectionStyle(section, "width") || progressBar.clientWidth;
             const currentSectionWidth = currentSectionWidthNoMargin 
@@ -579,7 +579,7 @@ class PreviewBar {
             const transformMatch = checkElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
             if (transformMatch) {
                 const transformScale = parseFloat(transformMatch[1]);
-                if (transformScale < 1 && transformScale + checkLeft / currentSectionWidthNoMargin < 0.99999) {
+                if (i === sections.length - 1 || (transformScale < 1 && transformScale + checkLeft / currentSectionWidthNoMargin < 0.99999)) {
                     scale = transformScale;
                     scaleWidth = currentSectionWidthNoMargin;
 
