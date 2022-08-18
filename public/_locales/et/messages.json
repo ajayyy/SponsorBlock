@@ -627,9 +627,6 @@
     "category_preview": {
         "message": "Eelvaade/kokkuvõte"
     },
-    "category_preview_description": {
-        "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
-    },
     "category_preview_guideline1": {
         "message": "Klipid, mida kuvatakse hiljem või tulevases videos"
     },
