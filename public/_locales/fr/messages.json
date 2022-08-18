@@ -637,7 +637,7 @@
         "message": "Aperçu/Résumé"
     },
     "category_preview_description": {
-        "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
+        "message": "Collection de clips qui montrent ce qui se passe dans cette vidéo ou d'autres vidéos d'une série où toutes les informations sont répétées plus tard dans la vidéo."
     },
     "category_preview_guideline1": {
         "message": "Clips apparaissant plus tard ou dans une prochaine vidéo"
@@ -793,6 +793,9 @@
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Le Channel ID n'est pas encore chargé. Si vous utilisez une vidéo intégrée, essayez plutôt d'utiliser la page d'accueil de YouTube. Le problème peut également être causé par des changements dans l'interface de YouTube, si vous pensez que c'est le cas, écrivez un commentaire ici :"
+    },
+    "invidiousPermissionRefresh": {
+        "message": "Le navigateur a refusé l'autorisation nécessaire pour pouvoir fonctionner sur Invidious et d'autres sites tiers. Veuillez cliquer sur le bouton ci-dessous pour réactiver cette autorisation."
     },
     "acceptPermission": {
         "message": "Accepter l'autorisation"
