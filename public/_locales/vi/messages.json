@@ -633,9 +633,6 @@
     "category_preview": {
         "message": "Xem trước/Tóm tắt"
     },
-    "category_preview_description": {
-        "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
-    },
     "category_preview_guideline1": {
         "message": "Các clip xuất hiện sau đó hoặc trong một video trong tương lai"
     },
