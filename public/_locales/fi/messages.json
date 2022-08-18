@@ -636,6 +636,9 @@
     "category_preview": {
         "message": "Esikatselu/Kertaus"
     },
+    "category_preview_description": {
+        "message": "Kokoelma leikkeitä, jotka kertovat mitä video sisältää tai sarjan muut videot sisältävät ja joiden kaikki informaatio toistuu videossa myöhemmin."
+    },
     "category_preview_guideline1": {
         "message": "Myöhemmin tai tulevassa videossa ilmestyvät klipit"
     },
@@ -792,7 +795,7 @@
         "message": "Kanavan ID ei ole vielä latautunut. Jos käytät upotettua videota, kokeile sen sijaan käyttää YouTuben kotisivua. Tämä voi myös johtua muutoksista YouTuben ulkoasussa. Jos luulet luulet niin, tee kommenti tänne:"
     },
     "invidiousPermissionRefresh": {
-        "message": "Selain on poistanut laajennuksen luvan toimia Invidious- ja muilla kolmannen osapuolen sivuilla. Paina alhaalla olevaa nappia aktivoidaksesi luvan uudelleen."
+        "message": "Selain on perunut laajennuksen oikeuden toimia Invidious- ja muilla kolmannen osapuolen sivustoilla. Palauta käyttöoikeus painamalla alla olevaa painiketta."
     },
     "acceptPermission": {
         "message": "Hyväksy käyttöoikeus"
