@@ -636,9 +636,6 @@
     "category_preview": {
         "message": "Náhled / shrnutí"
     },
-    "category_preview_description": {
-        "message": "Rychlé shrnutí předchozích epizod nebo náhled toho, co se objeví v aktuálním videu. Myšleno pro upravené sloučené klipy, ne pro mluvená shrnutí."
-    },
     "category_preview_guideline1": {
         "message": "Klipy které se objeví později nebo v budoucím videu"
     },
