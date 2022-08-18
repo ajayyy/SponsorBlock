@@ -636,9 +636,6 @@
     "category_preview": {
         "message": "Pratinjau/Rekap"
     },
-    "category_preview_description": {
-        "message": "Rekapan singkat dari episode sebelumnya, atau pratinjau tentang apa yang akan terjadi nanti di video. Dimaksudkan untuk klip bersama yang di edit, bukan ringkasan yang diucapkan."
-    },
     "category_preview_guideline1": {
         "message": "Klip yang ditampilkan nanti, atau di video di masa mendatang"
     },
