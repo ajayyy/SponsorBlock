@@ -857,6 +857,15 @@
     "hideForever": {
         "message": "Asla gösterme"
     },
+    "warningTitle": {
+        "message": "Bir uyarı aldın"
+    },
+    "questionButton": {
+        "message": "Bir sorum var"
+    },
+    "warningConfirmButton": {
+        "message": "Nedenini anlıyorum"
+    },
     "Donate": {
         "message": "Bağış Yap"
     },
