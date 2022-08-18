@@ -627,6 +627,9 @@
     "category_preview": {
         "message": "Eelvaade/kokkuvõte"
     },
+    "category_preview_description": {
+        "message": "Klippide kogum, mis näitab selles või teistes videotes tulevat sisu seerias, kus kogu info kuvatakse uuesti video sees."
+    },
     "category_preview_guideline1": {
         "message": "Klipid, mida kuvatakse hiljem või tulevases videos"
     },
