@@ -636,9 +636,6 @@
     "category_preview": {
         "message": "予告と前回の粗筋"
     },
-    "category_preview_description": {
-        "message": "前回の粗筋，または動画の後半内容の予告。音声による要約ではなく，編集された映像を指します。"
-    },
     "category_preview_guideline1": {
         "message": "動画後ほどや将来の動画に登場する場面"
     },
