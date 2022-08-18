@@ -637,7 +637,7 @@
         "message": "Voorbeeld/samenvatting"
     },
     "category_preview_description": {
-        "message": "Snelle samenvatting van vorige afleveringen of een voorbeeld van wat er later komt in de huidige video. Bedoeld voor samengevoegde clips, niet voor gesproken samenvattingen."
+        "message": "Collectie van clips die laten zien wat er in deze video of andere video's komt in een serie waar alle informatie later in de video wordt herhaald."
     },
     "category_preview_guideline1": {
         "message": "Clips die later of in een toekomstige video verschijnen"
@@ -793,6 +793,9 @@
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanaal-ID is nog niet geladen. Als u een ingesloten video gebruikt, probeer dan in plaats daarvan de YouTube-homepagina. Dit kan ook worden veroorzaakt door wijzigingen in de YouTube-lay-out. Als u denkt dat dit het geval is, maak dan hier een opmerking:"
+    },
+    "invidiousPermissionRefresh": {
+        "message": "De browser heeft de toestemming ingetrokken die nodig is om te functioneren op kwaadwillende en andere sites van derden. Klik alstublieft op de knop hieronder om deze toestemming opnieuw te activeren."
     },
     "acceptPermission": {
         "message": "Machtiging accepteren"
