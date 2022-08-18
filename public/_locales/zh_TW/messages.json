@@ -637,7 +637,7 @@
         "message": "預覽/摘要"
     },
     "category_preview_description": {
-        "message": "係指影片的前情提要或內容預告等刻意編輯過的內容"
+        "message": "展示即將播放的影片或整系列內容的短片集錦，所有內容都會在後面影片中重複"
     },
     "category_preview_guideline1": {
         "message": "出現在後面或未來影片的片段"
