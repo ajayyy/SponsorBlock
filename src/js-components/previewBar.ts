@@ -6,7 +6,7 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 'use strict';
 
 import Config from "../config";
-import { ActionType, Category, SegmentContainer, SponsorSourceType, SponsorTime } from "../types";
+import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceType, SponsorTime } from "../types";
 import { partition } from "../utils/arrayUtils";
 import { shortCategoryName } from "../utils/categoryUtils";
 import { GenericUtils } from "../utils/genericUtils";
@@ -620,7 +620,8 @@ class PreviewBar {
         segments ??= [];
         if (submittingSegments?.length > 0) segments = segments.concat(submittingSegments);
         const activeSegments = segments.filter((segment) => {
-            return segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
+            return segment.hidden === SponsorHideType.Visible 
+                && segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
         });
 
         this.setActiveSegments(activeSegments);
