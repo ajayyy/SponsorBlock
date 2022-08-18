@@ -594,9 +594,6 @@
     "category_preview": {
         "message": "Pré-visualização/Recapitulação"
     },
-    "category_preview_description": {
-        "message": "Recapitulação rápida de episódios anteriores, ou uma prévia do que está chegando mais tarde no vídeo atual. Destinado a clipes editados juntos, não para resumos falados."
-    },
     "category_filler": {
         "message": "Enrolação/Piadas"
     },
