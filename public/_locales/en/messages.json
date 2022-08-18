@@ -637,7 +637,7 @@
         "message": "Preview/Recap"
     },
     "category_preview_description": {
-        "message": "Quick recap of previous episodes, or a preview of what's coming up later in the current video. Meant for edited together clips, not for spoken summaries."
+        "message": "Collection of clips that show what is coming up in in this video or other videos in a series where all information is repeated later in the video."
     },
     "category_preview_guideline1": {
         "message": "Clips that appear later, or in a future video"
