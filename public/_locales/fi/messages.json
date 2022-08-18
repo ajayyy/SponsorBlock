@@ -636,9 +636,6 @@
     "category_preview": {
         "message": "Esikatselu/Kertaus"
     },
-    "category_preview_description": {
-        "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
-    },
     "category_preview_guideline1": {
         "message": "Myöhemmin tai tulevassa videossa ilmestyvät klipit"
     },
