@@ -795,7 +795,7 @@
         "message": "Kanaal-ID is nog niet geladen. Als u een ingesloten video gebruikt, probeer dan in plaats daarvan de YouTube-homepagina. Dit kan ook worden veroorzaakt door wijzigingen in de YouTube-lay-out. Als u denkt dat dit het geval is, maak dan hier een opmerking:"
     },
     "invidiousPermissionRefresh": {
-        "message": "De browser heeft de toestemming ingetrokken die nodig is om te functioneren op kwaadwillende en andere sites van derden. Klik alstublieft op de knop hieronder om deze toestemming opnieuw te activeren."
+        "message": "De browser heeft de toestemming ingetrokken die nodig is om te functioneren op Invidious en andere sites van derden. Klik op de knop hieronder om deze toestemming opnieuw te activeren."
     },
     "acceptPermission": {
         "message": "Machtiging accepteren"
