@@ -636,6 +636,9 @@
     "category_preview": {
         "message": "미리보기/요약 구간"
     },
+    "category_preview_description": {
+        "message": "이 구간은 같은 동영상 혹은 시리즈의 다른 동영상에 완전히 반복해서 나올 내용을 보여주는 클립 모음이 해당돼요."
+    },
     "category_preview_guideline1": {
         "message": "향후 동영상에 나타나는 장면이 있는 구간이어야 함"
     },
