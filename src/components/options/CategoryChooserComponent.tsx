@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import * as CompileConfig from "../../config.json";
-import { Category } from "../types";
+import * as CompileConfig from "../../../config.json";
+import { Category } from "../../types";
 import CategorySkipOptionsComponent from "./CategorySkipOptionsComponent";
 
 export interface CategoryChooserProps { 

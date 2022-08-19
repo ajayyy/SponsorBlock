@@ -123,6 +123,14 @@ html, body {
     border-image: linear-gradient(to right, var(--border-color), #00000000 80%)  1;
 }
 
+.categoryExtraOptions {
+    padding-bottom: 20px;
+}
+
+#music_offtopic_autoSkipOnMusicVideos {
+    padding-bottom: 0;
+}
+
 .option-group > div:last-child, .option-group > #keybind-dialog {
     border-bottom: inherit;
 }

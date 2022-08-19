@@ -1,10 +1,11 @@
 import * as React from "react";
 
-import Config from "../config"
-import * as CompileConfig from "../../config.json";
-import { Category, CategorySkipOption } from "../types";
+import Config from "../../config"
+import * as CompileConfig from "../../../config.json";
+import { Category, CategorySkipOption } from "../../types";
 
-import { getCategorySuffix } from "../utils/categoryUtils";
+import { getCategorySuffix } from "../../utils/categoryUtils";
+import ToggleOptionComponent, { ToggleOptionProps } from "./ToggleOptionComponent";
 
 export interface CategorySkipOptionsProps { 
     category: Category;
@@ -105,6 +106,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             </a>
                         </td>
                 </tr>
+                
+                {this.getExtraOptionComponents(this.props.category)}
 
             </>
         );
@@ -197,6 +200,41 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         this.setBarColorTimeout = setTimeout(() => {
             Config.config.barTypes = Config.config.barTypes;
         }, 50);
+    }
+
+    getExtraOptionComponents(category: string): JSX.Element[] {
+        const result = [];
+        for (const option of this.getExtraOptions(category)) {
+            result.push(
+                <tr key={option.configKey}>
+                    <td id={`${category}_${option.configKey}`} className="categoryExtraOptions">
+                        <ToggleOptionComponent 
+                            configKey={option.configKey} 
+                            label={option.label} 
+                        />
+                    </td>
+                </tr>
+            )
+        }
+
+        return result;
+    }
+
+    getExtraOptions(category: string): ToggleOptionProps[] {
+        switch (category) {
+            case "chapter":
+                return [{
+                    configKey: "renderSegmentsAsChapters",
+                    label: chrome.i18n.getMessage("renderAsChapters"),
+                }];
+            case "music_offtopic":
+                return [{
+                    configKey: "autoSkipOnMusicVideos",
+                    label: chrome.i18n.getMessage("autoSkipOnMusicVideos"),
+                }];
+            default:
+                return [];
+        }
     }
 }
 
