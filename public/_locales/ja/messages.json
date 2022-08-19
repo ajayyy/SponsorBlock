@@ -636,6 +636,9 @@
     "category_preview": {
         "message": "予告と前回の粗筋"
     },
+    "category_preview_description": {
+        "message": "この動画や他の動画でこのあと起きる内容など、今後再び登場する場面を連続的にまとめたクリップ。"
+    },
     "category_preview_guideline1": {
         "message": "動画後ほどや将来の動画に登場する場面"
     },
@@ -790,6 +793,9 @@
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "番組IDがまだ読み込まれていません。埋め込み動画でご覧になっている場合は，代わりにYouTubeの公式サイトで再生してみてください。この問題はYouTubeの画面構成を変えた際にも発生する可能性があります。その場合は，こちらに意見をお書きください:"
+    },
+    "invidiousPermissionRefresh": {
+        "message": "Invidiousなどのサードパーティーサイトで機能するために必要な権限をブラウザーが拒否しています。この権限を許可するには下のボタンをクリックしてください。"
     },
     "acceptPermission": {
         "message": "許可を承認する"
