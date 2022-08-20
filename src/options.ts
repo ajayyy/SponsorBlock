@@ -452,13 +452,7 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
  * @param option 
  */
 function invidiousInit(checkbox: HTMLInputElement, option: string) {
-    let permissions = ["declarativeContent"];
-    if (utils.isFirefox()) permissions = [];
-
-    chrome.permissions.contains({
-        origins: utils.getPermissionRegex(),
-        permissions: permissions
-    }, function (result) {
+    utils.containsInvidiousPermission().then((result) => {
         if (result != checkbox.checked) {
             Config.config[option] = result;
 
@@ -474,22 +468,8 @@ function invidiousInit(checkbox: HTMLInputElement, option: string) {
  * @param option 
  */
 async function invidiousOnClick(checkbox: HTMLInputElement, option: string): Promise<void> {
-    return new Promise((resolve) => {
-        if (checkbox.checked) {
-            utils.setupExtraSitePermissions(function (granted) {
-                if (!granted) {
-                    Config.config[option] = false;
-                    checkbox.checked = false;
-                } else {
-                    checkbox.checked = true;
-                }
-
-                resolve();
-            });
-        } else {
-            utils.removeExtraSiteRegistration();
-        }
-    });
+    const enabled = await utils.applyInvidiousPermissions(checkbox.checked, option);
+    checkbox.checked = enabled;
 }
 
 /**
@@ -598,8 +578,9 @@ async function setTextOption(option: string, element: HTMLElement, value: string
 function downloadConfig() {
     const file = document.createElement("a");
     const jsonData = JSON.parse(JSON.stringify(Config.cachedSyncConfig));
-    file.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonData)));
-    file.setAttribute("download", "SponsorBlockConfig.json");
+    const dateTimeString = new Date().toJSON().replace("T", "_").replace(/:/g, ".").replace(/.\d+Z/g, "")
+    file.setAttribute("href", `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(jsonData))}`);
+    file.setAttribute("download", `SponsorBlockConfig_${dateTimeString}.json`);
     document.body.append(file);
     file.click();
     file.remove();

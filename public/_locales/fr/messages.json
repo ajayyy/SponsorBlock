@@ -239,6 +239,9 @@
     "showSkipNotice": {
         "message": "Notifier après qu'un segment ait été sauté"
     },
+    "showCategoryGuidelines": {
+        "message": "Affiche l'aide de la catégorie"
+    },
     "noticeVisibilityMode0": {
         "message": "Notifications de passage"
     },
@@ -542,17 +545,38 @@
         "message": "à",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "generic_guideline1": {
+        "message": "Inclure les transitions entre les segments"
+    },
+    "generic_guideline2": {
+        "message": "Jouer comme si rien n'avait été passé"
+    },
     "category_sponsor": {
         "message": "Message sponsorisé"
     },
     "category_sponsor_description": {
         "message": "Promotion rémunérée, parrainage rémunéré et publicité directe. Pas pour l'autopromotion ou les présentations gratuites de causes, de créateurs, de sites web ou de produits qu'ils aiment."
     },
+    "category_sponsor_guideline1": {
+        "message": "Promotions rémunérées"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Pas pour les dons ou les produits dérivés"
+    },
     "category_selfpromo": {
         "message": "Non rémunéré/autopromotion"
     },
     "category_selfpromo_description": {
         "message": "Semblable aux \"messages commerciaux\", excepté pour la promotion non rémunérée ou l'autopromotion. Cela inclut les marchandises, les dons et les informations sur leurs collaborateurs."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Dons, abonnements (payant) et produits dérivés"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Remerciements gratuits qui n'apportent aucune information à la vidéo"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Pas pour des produits dérivés fait par des marques"
     },
     "category_exclusive_access": {
         "message": "Accès exclusif"
@@ -564,11 +588,23 @@
         "message": "Cette vidéo présente un produit, un service ou un lieu pour lequel un accès gratuit ou subventionné a été reçu",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Toute la vidéo présente quelque chose dont le créateur a eu un accès gratuit ou subventionné"
+    },
     "category_interaction": {
         "message": "Rappel d'interaction (abonnement)"
     },
     "category_interaction_description": {
         "message": "Lorsqu'il y a un bref rappel pour aimer, s'abonner ou les suivre parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
+    },
+    "category_interaction_guideline1": {
+        "message": "Rappels courts à like, s'abonner ou suivre"
+    },
+    "category_interaction_guideline2": {
+        "message": "Inclut des rappels indirects à commenter"
+    },
+    "category_interaction_guideline3": {
+        "message": "Pas pour la promotion générale, seulement les appels à l'interaction"
     },
     "category_interaction_short": {
         "message": "Rappel d'interaction"
@@ -582,17 +618,35 @@
     "category_intro_short": {
         "message": "Entracte"
     },
+    "category_intro_guideline1": {
+        "message": "Intervalle sans contenu réel"
+    },
+    "category_intro_guideline2": {
+        "message": "Pas pour les transitions avec des informations"
+    },
     "category_outro": {
         "message": "Générique de fin"
     },
     "category_outro_description": {
         "message": "Crédits ou écrans de fin YouTube. Pas pour les conclusions contenant des informations."
     },
+    "category_outro_guideline1": {
+        "message": "Ne dois pas inclure de contenu, même si les écrans de fin sont apparus"
+    },
     "category_preview": {
         "message": "Aperçu/Résumé"
     },
     "category_preview_description": {
         "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
+    },
+    "category_preview_guideline1": {
+        "message": "Clips apparaissant plus tard ou dans une prochaine vidéo"
+    },
+    "category_preview_guideline2": {
+        "message": "Récapitulatif d'une vidéo précédente"
+    },
+    "category_preview_guideline3": {
+        "message": "Pas pour les sections qui ajoutent du contenu supplémentaire"
     },
     "category_filler": {
         "message": "Digressions/Blagues"
@@ -603,6 +657,15 @@
     "category_filler_short": {
         "message": "Remplissage"
     },
+    "category_filler_guideline1": {
+        "message": "Scènes digressives uniquement pour le remplissage ou l'humour"
+    },
+    "category_filler_guideline2": {
+        "message": "Distractions, bêtisiers, replays"
+    },
+    "category_filler_guideline3": {
+        "message": "Pas pour les scènes requises pour comprendre le sujet"
+    },
     "category_music_offtopic": {
         "message": "Musique : Segment non musical"
     },
@@ -612,11 +675,26 @@
     "category_music_offtopic_short": {
         "message": "Hors musique"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Sections qui ne sont pas dans la musique officielle"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Pas de musique pendant les concerts en direct"
+    },
     "category_poi_highlight": {
         "message": "Point essentiel"
     },
     "category_poi_highlight_description": {
         "message": "La partie de la vidéo que la plupart des gens veulent voir. Similaire à \"la vidéo commence à x mins\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Section la plus regardée"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Peut sauter le contexte"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Peut passer au sujet cité dans le titre ou la miniature"
     },
     "category_livestream_messages": {
         "message": "Stream : lecture de dons et messages"
@@ -866,6 +944,9 @@
     },
     "LearnMore": {
         "message": "En savoir plus"
+    },
+    "FullDetails": {
+        "message": "Tous les détails"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Vote contre et crée une copie locale à soumettre à nouveau"

@@ -36,11 +36,30 @@ class NoticeTextSelectionComponent extends React.Component<NoticeTextSelectionPr
                     : null}
 
                     <span>
-                        {this.props.text}
+                        {this.getTextElements(this.props.text)}
                     </span>
                 </td>
             </tr>
         );
+    }
+
+    private getTextElements(text: string): Array<string | React.ReactElement> {
+        const elements: Array<string | React.ReactElement> = [];
+        const textParts = text.split(/(?=\s+)/);
+        for (const textPart of textParts) {
+            if (textPart.match(/^\s*http/)) {
+                elements.push(
+                    <a href={textPart} target="_blank" rel="noreferrer">
+                        {textPart}
+                    </a>
+                );
+            } else {
+                elements.push(textPart);
+            }
+
+        }
+
+        return elements;
     }
 }
 

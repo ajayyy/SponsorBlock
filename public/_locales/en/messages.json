@@ -659,7 +659,7 @@
         "message": "Preview/Recap"
     },
     "category_preview_description": {
-        "message": "Quick recap of previous episodes, or a preview of what's coming up later in the current video. Meant for edited together clips, not for spoken summaries."
+        "message": "Collection of clips that show what is coming up in in this video or other videos in a series where all information is repeated later in the video."
     },
     "category_preview_guideline1": {
         "message": "Clips that appear later, or in a future video"
@@ -838,11 +838,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Channel ID is not loaded yet. If you are using an embedded video, try using the YouTube homepage instead. This could also be caused by changes in the YouTube layout, if you think so, make a comment here:"
     },
-    "videoInfoFetchFailed": {
-        "message": "It seems that something is blocking SponsorBlock's ability to get video data. Please see https://github.com/ajayyy/SponsorBlock/issues/741 for more info."
-    },
-    "youtubePermissionRequest": {
-        "message": "It seems that SponsorBlock is unable to reach the YouTube API. To fix this, accept the permission prompt that will appear next, wait a few seconds, and then reload the page."
+    "invidiousPermissionRefresh": {
+        "message": "The browser has revoked the permission needed to function on Invidious and other 3rd-party sites. Please click the button below to reactivate this permission."
     },
     "acceptPermission": {
         "message": "Accept permission"
@@ -914,11 +911,19 @@
         "message": "Hide forever"
     },
     "warningChatInfo": {
-        "message": "You got a warning and cannot submit segments temporarily. This means that we noticed you were making some common mistakes that are not malicious, please just confirm that you understand the rules and we will remove the warning. You can also join this chat using discord.gg/SponsorBlock or matrix.to/#/#sponsor:ajay.app"
+        "message": "We noticed you were making some common mistakes that are not malicious"
     },
-    "voteRejectedWarning": {
-        "message": "Vote rejected due to a warning. Click to open a chat to resolve it, or come back later when you have time.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "You got a warning"
+    },
+    "questionButton": {
+        "message": "I have a question"
+    },
+    "warningConfirmButton": {
+        "message": "I understand the reason"
+    },
+    "warningError": {
+        "message": "Error when trying to acknowledge warning:"
     },
     "Donate": {
         "message": "Donate"

@@ -73,7 +73,13 @@ export default class GenericNotice {
                 hideRightInfo={options.hideRightInfo}
                 closeListener={() => this.close()} >
                     
-                    {this.getMessageBox(this.idSuffix, options.textBoxes)}
+                    <tr id={"sponsorSkipNoticeMiddleRow" + this.idSuffix}
+                        className="sponsorTimeMessagesRow"
+                        style={{maxHeight: (this.contentContainer().v.offsetHeight - 200) + "px"}}>
+                        <td style={{width: "100%"}}>
+                            {this.getMessageBoxes(this.idSuffix, options.textBoxes)}
+                        </td>
+                    </tr>
 
                     <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
                         className="sponsorBlockSpacer">
@@ -90,7 +96,7 @@ export default class GenericNotice {
         );
     }
 
-    getMessageBox(idSuffix: string, textBoxes: TextBox[]): JSX.Element[] { 
+    getMessageBoxes(idSuffix: string, textBoxes: TextBox[]): JSX.Element[] { 
         if (textBoxes) {
             const result = [];
             for (let i = 0; i < textBoxes.length; i++) {

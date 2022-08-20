@@ -73,6 +73,7 @@ export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoF
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;
+    status: number;
     sponsorTimes: SponsorTime[];
     time: number;
     onMobileYouTube: boolean;
@@ -100,7 +101,7 @@ export type MessageResponse =
     | GetChannelIDResponse
     | SponsorStartResponse
     | IsChannelWhitelistedResponse
-    | Record<string, never>
+    | Record<string, never> // empty object response {}
     | VoteResponse
     | ImportSegmentsResponse;
 

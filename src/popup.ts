@@ -415,8 +415,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 if (request.sponsorTimes) {
                     displayDownloadedSponsorTimes(request.sponsorTimes, request.time);
                 }
-            } else {
+            } else if (request.status == 404 || request.status == 200) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
+            } else {
+                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("connectionError") + request.status;
             }
         }
 
@@ -664,7 +666,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             voteButtonsContainer.appendChild(upvoteButton);
             voteButtonsContainer.appendChild(downvoteButton);
             voteButtonsContainer.appendChild(uuidButton);
-            if (downloadedTimes[i].actionType === ActionType.Skip
+            if (downloadedTimes[i].actionType === ActionType.Skip || downloadedTimes[i].actionType === ActionType.Mute
                     && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(downloadedTimes[i].hidden)) {
                 voteButtonsContainer.appendChild(hideButton);
             }
