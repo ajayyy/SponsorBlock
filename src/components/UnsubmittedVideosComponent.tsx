@@ -27,7 +27,12 @@ class UnsubmittedVideosComponent extends React.Component<UnsubmittedVideosProps,
 
         return <>
             <div>
-                {chrome.i18n.getMessage("unsubmittedSegmentCounts").replace("{0}", segmentCount.toString()).replace("{1}", videoCount.toString())}
+                {segmentCount == 0 ?
+                    chrome.i18n.getMessage("unsubmittedSegmentCountsZero") :
+                    chrome.i18n.getMessage("unsubmittedSegmentCounts")
+                        .replace("{0}", `${segmentCount} ${chrome.i18n.getMessage("unsubmittedSegments" + (segmentCount == 1 ? "Singular" : "Plural"))}`)
+                        .replace("{1}", `${videoCount} ${chrome.i18n.getMessage("videos" + (videoCount == 1 ? "Singular" : "Plural"))}`)
+                }
             </div>
 
             {videoCount > 0 && <div className="option-button inline" onClick={() => this.setState({tableVisible: !this.state.tableVisible})}>
