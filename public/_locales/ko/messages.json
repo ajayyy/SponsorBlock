@@ -470,7 +470,7 @@
         "message": "초기화"
     },
     "customAddressError": {
-        "message": "올바르지 않은 주소예요. http:// 또는 https://로 시작해야 하고 마지막 문자에 빗금이 있지 않아야 해요."
+        "message": "올바르지 않은 주소예요. http:// 혹은 https://로 시작해야 하고 마지막 문자에 빗금이 있지 않아야 해요."
     },
     "areYouSureReset": {
         "message": "이 제출 형식을 초기화하실 건가요?"
@@ -795,7 +795,7 @@
         "message": "채널 ID를 불러오지 못했어요. 임베디드 동영상인 경우, YouTube 홈페이지에서 시도해보세요. YouTube 레이아웃 변화로 인해 발생한 문제일 수도 있어요. 그렇게 생각하신다면 다음 사이트에서 의견을 남겨주세요: "
     },
     "invidiousPermissionRefresh": {
-        "message": "브라우저가 Invidious와 기타 제3자 사이트에서 동작하기 위한 권한을 회수했습니다. 권한을 다시 부여하려면 아래 버튼을 눌러 주십시오."
+        "message": "브라우저가 Invidious와 다른 제삼자 사이트에서 동작하기 위한 권한을 회수했어요. 권한을 다시 부여하려면 아래 버튼을 눌러주세요."
     },
     "acceptPermission": {
         "message": "권한 허용"
