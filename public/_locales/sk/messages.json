@@ -600,6 +600,9 @@
     "category_preview": {
         "message": "Ukážka/Rekapitulácia"
     },
+    "category_preview_description": {
+        "message": "Zbierka klipov, ktoré ukazujú, čo nasleduje v tomto alebo ďalších videách zo série, kde sa potom všetky informácie opakujú."
+    },
     "category_preview_guideline1": {
         "message": "Ukážky, ktoré sa zobrazia neskôr alebo v budúcom videu"
     },
