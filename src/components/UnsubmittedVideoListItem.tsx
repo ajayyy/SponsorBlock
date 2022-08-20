@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Config from "../config"
+import Config from "../config";
 
 export interface UnsubmittedVideosListItemProps {
     videoID: string;
@@ -54,10 +54,10 @@ class UnsubmittedVideoListItem extends React.Component<UnsubmittedVideosListItem
     }
 
     clearSegments(): void {
-        if (confirm(chrome.i18n.getMessage("clearThis")))
+        if (confirm(chrome.i18n.getMessage("clearThis"))) {
             delete Config.config.unsubmittedSegments[this.props.videoID]
-
-        Config.forceSyncUpdate("unsubmittedSegments")
+            Config.forceSyncUpdate("unsubmittedSegments")
+        }
     }
 }
 
