@@ -636,6 +636,9 @@
     "category_preview": {
         "message": "Vorschau/Zusammenfassung"
     },
+    "category_preview_description": {
+        "message": "Sammlung von Clips, welche zeigen, was in diesem Video oder anderen Videos in einer Serie kommen wird, wo alle Informationen später wiederholt werden."
+    },
     "category_preview_guideline1": {
         "message": "Clips welche später oder in einem zukünftigen Video erscheinen"
     },
