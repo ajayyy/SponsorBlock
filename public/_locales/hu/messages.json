@@ -491,7 +491,7 @@
         "message": "Betöltés fájlból"
     },
     "whatExportOptions": {
-        "message": "Ez az összes beállításod JSON formátumban. Ebbe bele tartozik a userID-d is, szóval csak ésszel oszd meg."
+        "message": "Ez az összes beállításod JSON formátumban. Ebbe bele tartozik a userID-d is, úgyhogy csak elővigyázatosan oszd meg."
     },
     "setOptions": {
         "message": "Beállítások módosítása"
@@ -635,6 +635,9 @@
     },
     "category_preview": {
         "message": "Előzetes/Ismétlés"
+    },
+    "category_preview_description": {
+        "message": "Olyan klipek gyűjteménye, amik azt mutatják, hogy mi következik majd ebben, vagy a sorozat más videóiban és minden információ megismétlődik később a videóban."
     },
     "category_preview_guideline1": {
         "message": "Klipek amik megjelennek később, vagy egy jövőbeli videóban"
