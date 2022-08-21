@@ -456,8 +456,7 @@
   border: 2px solid var(--sb-grey-bg-color);
 }
 .sbYourWorkCols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   border-top: 2px solid var(--sb-grey-bg-color);
   border-bottom: 2px solid var(--sb-grey-bg-color);
 }
@@ -494,6 +493,8 @@
  */
 #usernameElement {
   padding: 8px 14px;
+  min-width: 50%;
+  width: 100%;
 }
 #setUsernameContainer {
   display: flex;
