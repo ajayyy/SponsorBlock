@@ -216,7 +216,7 @@
         "message": "Speichere Downvotes von Segmenten"
     },
     "whatTrackDownvotes": {
-        "message": "Alle Segmente, welche du downvotest, werden verborgen und bleiben es auch dauerhaft"
+        "message": "Alle von dir negativ bewerteten Segmente bleiben auch nach neu laden der Seite verborgen"
     },
     "trackDownvotesWarning": {
         "message": "Warnung: Das Deaktivieren wird alle vorher gespeicherten Downvotes löschen"
