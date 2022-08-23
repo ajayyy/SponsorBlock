@@ -558,7 +558,7 @@
         "message": "Bezahlte Werbung, bezahlte Empfehlungen und direkte Werbung, nicht für Eigenwerbung, kostenlose Fremdwerbung oder Empfehlungen für Anlässe/Personen/Webseiten/Produkte."
     },
     "category_sponsor_guideline1": {
-        "message": "Bezahlte Werbeaktionen"
+        "message": "Bezahlte Werbung"
     },
     "category_sponsor_guideline2": {
         "message": "Nicht für Spenden oder eigenen Merch"
@@ -573,7 +573,7 @@
         "message": "Spenden, Mitgliedschaften und eigener Merch"
     },
     "category_selfpromo_guideline2": {
-        "message": "Kostenlose Erwähnungen welche nicht zum Video beitragen"
+        "message": "Unentgeltliche Erwähnungen, die nicht zum Video beitragen"
     },
     "category_selfpromo_guideline3": {
         "message": "Nicht für Produkte und Merch von Firmen"
