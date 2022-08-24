@@ -38,7 +38,7 @@ class UnsubmittedVideosComponent extends React.Component<UnsubmittedVideosProps,
             {videoCount > 0 && <div className="option-button inline" onClick={() => this.setState({tableVisible: !this.state.tableVisible})}>
                 {chrome.i18n.getMessage(this.state.tableVisible ? "hideUnsubmittedSegments" : "showUnsubmittedSegments")}
             </div>}
-
+            {" "}
             <div className="option-button inline" onClick={this.clearAllSegments}>
                 {chrome.i18n.getMessage("clearUnsubmittedSegments")}
             </div>

@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import Config from "../config";
+import { exportTimes } from "../utils/exporter";
 
 export interface UnsubmittedVideosListItemProps {
     videoID: string;
@@ -40,6 +41,12 @@ class UnsubmittedVideoListItem extends React.Component<UnsubmittedVideosListItem
                     </td>
 
                     <td id={this.props.videoID + "UnsubmittedVideoActions"}>
+                        <div id={this.props.videoID + "ExportSegmentsAction"}
+                             className="option-button inline low-profile"
+                             onClick={this.exportSegments.bind(this)}>
+                            {chrome.i18n.getMessage("exportSegments")}
+                        </div>
+                        {" "}
                         <div id={this.props.videoID + "ClearSegmentsAction"}
                              className="option-button inline low-profile"
                              onClick={this.clearSegments.bind(this)}>
@@ -55,9 +62,19 @@ class UnsubmittedVideoListItem extends React.Component<UnsubmittedVideosListItem
 
     clearSegments(): void {
         if (confirm(chrome.i18n.getMessage("clearThis"))) {
-            delete Config.config.unsubmittedSegments[this.props.videoID]
-            Config.forceSyncUpdate("unsubmittedSegments")
+            delete Config.config.unsubmittedSegments[this.props.videoID];
+            Config.forceSyncUpdate("unsubmittedSegments");
         }
+    }
+
+    exportSegments(): void {
+        navigator.clipboard.writeText(exportTimes(Config.config.unsubmittedSegments[this.props.videoID]))
+            .then(() => {
+                alert(chrome.i18n.getMessage("CopiedExclamation"));
+            })
+            .catch(() => {
+                alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
+            });
     }
 }
 
