@@ -452,7 +452,7 @@
         "message": "Đoạn quảng cáo sau ngắn hơn tùy chọn độ dài ngắn nhất của bạn. Điều này có thể có nghĩa là nó đã được đăng rồi, và không được bỏ qua vì tùy chọn này. Bạn có chắc muốn đăng nó không?"
     },
     "liveOrPremiere": {
-        "message": "Không được phép gửi trên một buổi phát trực tiếp hoặc buổi ra mắt đang hoạt động. Vui lòng đợi cho đến khi kết thúc, sau đó làm mới trang xác minh rằng các phân đoạn vẫn hợp lệ."
+        "message": "Không được phép gửi trên một buổi phát trực tiếp hoặc buổi ra mắt đang hoạt động. Vui lòng đợi cho đến khi kết thúc, sau đó làm mới trang và xác minh rằng các phân đoạn vẫn hợp lệ."
     },
     "showUploadButton": {
         "message": "Hiển thị nút tải lên"
@@ -598,7 +598,7 @@
         "message": "Lời nhắc ngắn gọn để thích, đăng ký hoặc theo dõi"
     },
     "category_interaction_guideline2": {
-        "message": "Bao gồm lời nhắc gián tiếp để nhận xét"
+        "message": "Bao gồm lời nhắc gián tiếp để bình luận"
     },
     "category_interaction_guideline3": {
         "message": "Không dành cho quảng cáo chung, chỉ dành cho lời kêu gọi hành động"
@@ -616,10 +616,10 @@
         "message": "Tạm ngừng"
     },
     "category_intro_guideline1": {
-        "message": "Khoảng thời gian không có nội dung thực tế"
+        "message": "Khoảng thời gian không thực sự chứa nội dung"
     },
     "category_intro_guideline2": {
-        "message": "Không dành cho chuyển tiếp với thông tin"
+        "message": "Không dành cho chuyển tiếp có chứa thông tin"
     },
     "category_outro": {
         "message": "Màn hình kết thúc/Danh đề"
