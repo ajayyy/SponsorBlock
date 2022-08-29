@@ -1259,7 +1259,9 @@ function updatePreviewBar(): void {
     updateActiveSegment(video.currentTime);
 
     if (Config.config.showTimeWithSkips) {
-        const skippedDuration = utils.getTimestampsDuration(previewBarSegments.map(({segment}) => segment));
+        const skippedDuration = utils.getTimestampsDuration(previewBarSegments
+            .filter(({actionType}) => actionType !== ActionType.Chapter)
+            .map(({segment}) => segment));
 
         showTimeWithoutSkips(skippedDuration);
     }
