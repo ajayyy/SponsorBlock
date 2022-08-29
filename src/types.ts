@@ -238,3 +238,8 @@ export type Keybind = {
     alt?: boolean,
     shift?: boolean
 }
+
+export interface ButtonListener {
+    name: string,
+    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+}

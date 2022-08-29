@@ -19,6 +19,7 @@ import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
 import { logDebug } from "./utils/logger";
 import { importTimes } from "./utils/exporter";
+import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 
 // Hack to get the CSS loaded on permission-based sites (Invidious)
@@ -475,7 +476,8 @@ function createPreviewBar(): void {
         const el = option.isVisibleCheck ? findValidElement(allElements) : allElements[0];
 
         if (el) {
-            previewBar = new PreviewBar(el, onMobileYouTube, onInvidious);
+            const chapterVote = new ChapterVote(voteAsync);
+            previewBar = new PreviewBar(el, onMobileYouTube, onInvidious, chapterVote);
 
             updatePreviewBar();
 

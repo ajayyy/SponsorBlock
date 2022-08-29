@@ -1,13 +1,17 @@
 import * as React from "react";
 
 const thumbsUpSvg = ({
-  fill = "#ffffff"
+  fill = "#ffffff",
+  className = "",
+  width = "18",
+  height = "18"
   }): JSX.Element => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
       fill={fill}
+      width={width}
+      height={height}
+      className={className}
       viewBox="0 0 24 24"
       >
       <path

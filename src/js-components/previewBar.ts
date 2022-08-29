@@ -6,6 +6,7 @@ https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd
 'use strict';
 
 import Config from "../config";
+import { ChapterVote } from "../render/ChapterVote";
 import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceType, SponsorTime } from "../types";
 import { partition } from "../utils/arrayUtils";
 import { shortCategoryName } from "../utils/categoryUtils";
@@ -45,10 +46,12 @@ class PreviewBar {
     // For chapter bar
     hoveredSection: HTMLElement;
     customChaptersBar: HTMLElement;
+    chaptersBarSegments: PreviewBarSegment[];
+    chapterVote: ChapterVote;
     originalChapterBar: HTMLElement;
     originalChapterBarBlocks: NodeListOf<HTMLElement>;
 
-    constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean, test=false) {
+    constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean, chapterVote: ChapterVote, test=false) {
         if (test) return;
         this.container = document.createElement('ul');
         this.container.id = 'previewbar';
@@ -56,6 +59,7 @@ class PreviewBar {
         this.parent = parent;
         this.onMobileYouTube = onMobileYouTube;
         this.onInvidious = onInvidious;
+        this.chapterVote = chapterVote;
 
         this.createElement(parent);
         this.createChapterMutationObservers();
@@ -233,7 +237,7 @@ class PreviewBar {
 
         this.createChaptersBar(this.segments.sort((a, b) => a.segment[0] - b.segment[0]));
 
-        const chapterChevron = document.querySelector(".ytp-chapter-title-chevron") as HTMLElement;
+        const chapterChevron = this.getChapterChevron();
         if (this.segments.some((segment) => segment.actionType !== ActionType.Chapter 
                 && segment.source === SponsorSourceType.YouTube)) {
             chapterChevron.style.removeProperty("display");
@@ -655,6 +659,18 @@ class PreviewBar {
 
                 const chapterTitle = chaptersContainer.querySelector(".ytp-chapter-title-content") as HTMLDivElement;
                 chapterTitle.innerText = chosenSegment.description || shortCategoryName(chosenSegment.category);
+
+                const chapterVoteContainer = this.chapterVote.getContainer();
+                if (chosenSegment.source === SponsorSourceType.Server) {
+                    if (!chapterButton.contains(chapterVoteContainer)) {
+                        chapterButton.insertBefore(chapterVoteContainer, this.getChapterChevron());
+                    }
+
+                    this.chapterVote.setVisibility(true);
+                    this.chapterVote.setSegment(chosenSegment);
+                } else {
+                    this.chapterVote.setVisibility(false);
+                }
             } else {
                 // Hide chapters menu again
                 chaptersContainer.style.display = "none";
@@ -758,6 +774,10 @@ class PreviewBar {
         }
 
         return segment;
+    }
+
+    private getChapterChevron(): HTMLElement {
+        return document.querySelector(".ytp-chapter-title-chevron");
     }
 }
 

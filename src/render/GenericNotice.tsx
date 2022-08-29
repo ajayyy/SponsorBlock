@@ -5,13 +5,8 @@ import NoticeComponent from "../components/NoticeComponent";
 import Utils from "../utils";
 const utils = new Utils();
 
-import { ContentContainer } from "../types";
+import { ButtonListener, ContentContainer } from "../types";
 import NoticeTextSelectionComponent from "../components/NoticeTextSectionComponent";
-
-export interface ButtonListener {
-    name: string,
-    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-}
 
 export interface TextBox {
     icon: string,

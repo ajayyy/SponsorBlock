@@ -865,6 +865,13 @@
     "downvoteDescription": {
         "message": "Incorrect/Wrong Timing"
     },
+    "incorrectVote": {
+        "message": "Incorrect"
+    },
+    "harmfulVote": {
+        "message": "Harmful",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Change Category"
     },
