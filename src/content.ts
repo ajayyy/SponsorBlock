@@ -1256,6 +1256,7 @@ function updatePreviewBar(): void {
     });
 
     previewBar.set(previewBarSegments.filter((segment) => segment.actionType !== ActionType.Full), video?.duration)
+    updateActiveSegment(video.currentTime);
 
     if (Config.config.showTimeWithSkips) {
         const skippedDuration = utils.getTimestampsDuration(previewBarSegments.map(({segment}) => segment));
