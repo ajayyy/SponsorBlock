@@ -6,6 +6,7 @@ export interface ToggleOptionProps {
     configKey: string;
     label: string;
     disabled?: boolean;
+    style?: React.CSSProperties;
 }
 
 export interface ToggleOptionState {
@@ -26,7 +27,7 @@ class ToggleOptionComponent extends React.Component<ToggleOptionProps, ToggleOpt
     render(): React.ReactElement {
         return (
             <div>
-                <div className="switch-container">
+                <div className="switch-container" style={this.props.style}>
                     <label className="switch">
                         <input id={this.props.configKey} 
                             type="checkbox" 

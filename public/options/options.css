@@ -317,6 +317,10 @@ input[type='number'] {
     color: grey;
 }
 
+.disabled .slider {
+    cursor: default;
+}
+
 tr.disabled {
     opacity: 0.3;
 }
@@ -356,6 +360,10 @@ tr.disabled {
     vertical-align: middle;
 
     padding: 4px;
+}
+
+.switch-label {
+    width: inherit;
 }
 
 .switch {

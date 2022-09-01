@@ -78,9 +78,6 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                     className={`categoryTableElement${extraClasses}`} >
                     <td id={this.props.category + "OptionName"}
                         className="categoryTableLabel">
-                            {disabled &&
-                                <LockSvg className="upsellButton" onClick={() => chrome.tabs.create({url: chrome.runtime.getURL('upsell/index.html')})}/>
-                            }
                             {chrome.i18n.getMessage("category_" + this.props.category)}
                     </td>
 
@@ -93,6 +90,10 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             onChange={this.skipOptionSelected.bind(this)}>
                                 {this.getCategorySkipOptions()}
                         </select>
+
+                        {disabled &&
+                            <LockSvg className="upsellButton" onClick={() => chrome.tabs.create({url: chrome.runtime.getURL('upsell/index.html')})}/>
+                        }
                     </td>
                     
                     {this.props.category !== "chapter" &&
@@ -226,6 +227,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             configKey={option.configKey} 
                             label={option.label}
                             disabled={disabled}
+                            style={{width: "300px"}}
                         />
                     </td>
                 </tr>
