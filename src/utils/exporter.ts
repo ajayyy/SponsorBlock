@@ -1,6 +1,13 @@
 import { ActionType, Category, SegmentUUID, SponsorSourceType, SponsorTime } from "../types";
 import { shortCategoryName } from "./categoryUtils";
 import { GenericUtils } from "./genericUtils";
+import * as CompileConfig from "../../config.json";
+
+const chapterNames = CompileConfig.categoryList.filter((code) => code !== "chapter")
+    .map((code) => ({
+        code,
+        name: chrome.i18n.getMessage("category_" + code)
+    }));
 
 export function exportTimes(segments: SponsorTime[]): string {
     let result = "";
@@ -38,10 +45,12 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
 
                 const title = titleLeft?.length > titleRight?.length ? titleLeft : titleRight;
                 if (title) {
+                    const determinedCategory = chapterNames.find(c => c.name === title)?.code as Category;
+
                     const segment: SponsorTime = {
                         segment: [startTime, GenericUtils.getFormattedTimeToSeconds(match[1])],
-                        category: "chapter" as Category,
-                        actionType: ActionType.Chapter,
+                        category: determinedCategory ?? ("chapter" as Category),
+                        actionType: determinedCategory ? ActionType.Skip : ActionType.Chapter,
                         description: title,
                         source: SponsorSourceType.Local,
                         UUID: GenericUtils.generateUserID() as SegmentUUID
