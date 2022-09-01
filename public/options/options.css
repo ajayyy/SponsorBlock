@@ -317,6 +317,10 @@ input[type='number'] {
     color: grey;
 }
 
+tr.disabled {
+    opacity: 0.3;
+}
+
 #options {
     height: 100vh;
     flex-basis: 80%;
@@ -678,4 +682,9 @@ svg {
     #options > div {
         max-width: 100%;
     }
+}
+
+.upsellButton {
+    cursor: pointer;
+    vertical-align: middle;
 }

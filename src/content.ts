@@ -1026,7 +1026,7 @@ function importExistingChapters(wait: boolean) {
                     existingChaptersImported = true;
                     updatePreviewBar();
                 }
-            });
+            }).catch(() => {}); // eslint-disable-line @typescript-eslint/no-empty-function
     }
 }
 

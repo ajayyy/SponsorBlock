@@ -255,7 +255,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&value=vip&value=permissions&userID="
+    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&value=vip&value=permissions&value=freeChaptersAccess&userID="
              + Config.config.userID, (res) => {
         if (res.status === 200) {
             const userInfo = JSON.parse(res.responseText);
@@ -286,6 +286,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             
             Config.config.isVip = userInfo.vip;
             Config.config.permissions = userInfo.permissions;
+
+            if (userInfo.freeChaptersAccess) {
+                Config.config.payments.chaptersAllowed = userInfo.freeChaptersAccess;
+                Config.config.payments.freeAccess = userInfo.freeChaptersAccess;
+                Config.config.payments.lastCheck = Date.now();
+                Config.forceSyncUpdate("payments");
+            }
         }
     });
 

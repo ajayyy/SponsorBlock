@@ -31,7 +31,8 @@ module.exports = env => ({
         content: path.join(__dirname, srcDir + 'content.ts'),
         options:  path.join(__dirname, srcDir + 'options.ts'),
         help:  path.join(__dirname, srcDir + 'help.ts'),
-        permissions:  path.join(__dirname, srcDir + 'permissions.ts')
+        permissions:  path.join(__dirname, srcDir + 'permissions.ts'),
+        upsell:  path.join(__dirname, srcDir + 'upsell.ts')
     },
     output: {
         path: path.join(__dirname, '../dist/js'),

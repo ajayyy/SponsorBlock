@@ -1103,5 +1103,52 @@
     "Import": {
         "message": "Import",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Reedem Successful!"
+    },
+    "redeemFailed": {
+        "message": "License key is invalid"
+    },
+    "hideUpsells": {
+        "message": "Hide options not available without extra payment"
+    },
+    "chooseACountry": {
+        "message": "Choose a country"
+    },
+    "noDiscount": {
+        "message": "You do not qualify for a discount"
+    },
+    "discountLink": {
+        "message": "Discount Link (See the pink price)"
+    },
+    "selectYourCountry": {
+        "message": "Select your country"
+    },
+    "alreadyDonated": {
+        "message": "If you've donated any amount before now, you may redeem free access by emailing:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "If you can't afford to purchase a license, click {here} to see if you are eligible for a discount",
+        "description": "Keep the curly braces"
+    },
+    "patreonSignIn": {
+        "message": "Sign in with Patreon"
+    },
+    "redeem": {
+        "message": "Redeem"
+    },
+    "joinOnPatreon": {
+        "message": "Subscribe on Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "One Time Purchase"
+    },
+    "enterLicenseKey": {
+        "message": "Enter License Key"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlock crowd-sourced chapters feature is only available to people who purchase a license, or for people who are granted access for free due their past contributions"
     }
 }

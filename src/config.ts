@@ -50,6 +50,7 @@ interface SBConfig {
     allowExpirements: boolean,
     showDonationLink: boolean,
     showPopupDonationCount: number,
+    showUpsells: boolean,
     donateClicked: number,
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
@@ -80,6 +81,13 @@ interface SBConfig {
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
+
+    payments: {
+        licenseKey: string,
+        lastCheck: number,
+        freeAccess: boolean,
+        chaptersAllowed: boolean
+    }
 
     // Preview bar
     barTypes: {
@@ -140,7 +148,7 @@ const Config: SBObject = {
         permissions: {},
         unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
-        renderSegmentsAsChapters: true,
+        renderSegmentsAsChapters: false,
         whitelistedChannels: [],
         forceChannelCheck: false,
         minutesSaved: 0,
@@ -176,6 +184,7 @@ const Config: SBObject = {
         allowExpirements: true,
         showDonationLink: true,
         showPopupDonationCount: 0,
+        showUpsells: true,
         donateClicked: 0,
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
@@ -210,6 +219,13 @@ const Config: SBObject = {
             name: "exclusive_access" as Category,
             option: CategorySkipOption.ShowOverlay
         }],
+
+        payments: {
+            licenseKey: null,
+            lastCheck: 0,
+            freeAccess: false,
+            chaptersAllowed: false
+        },
 
         colorPalette: {
             red: "#780303",
