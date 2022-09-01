@@ -1205,5 +1205,8 @@
     "actions": {
         "message": "Actions",
         "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Export segments as URL"
     }
 }

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import Config from "../../config";
-import { exportTimes } from "../../utils/exporter";
+import { exportTimes, exportTimesAsHashParam } from "../../utils/exporter";
 
 export interface UnsubmittedVideosListItemProps {
     videoID: string;
@@ -47,6 +47,12 @@ class UnsubmittedVideoListItem extends React.Component<UnsubmittedVideosListItem
                             {chrome.i18n.getMessage("exportSegments")}
                         </div>
                         {" "}
+                        <div id={this.props.videoID + "ExportSegmentsAsURLAction"}
+                             className="option-button inline low-profile"
+                             onClick={this.exportSegmentsAsURL.bind(this)}>
+                            {chrome.i18n.getMessage("exportSegmentsAsURL")}
+                        </div>
+                        {" "}
                         <div id={this.props.videoID + "ClearSegmentsAction"}
                              className="option-button inline low-profile"
                              onClick={this.clearSegments.bind(this)}>
@@ -68,7 +74,15 @@ class UnsubmittedVideoListItem extends React.Component<UnsubmittedVideosListItem
     }
 
     exportSegments(): void {
-        navigator.clipboard.writeText(exportTimes(Config.config.unsubmittedSegments[this.props.videoID]))
+        this.copyToClipboard(exportTimes(Config.config.unsubmittedSegments[this.props.videoID]));
+    }
+
+    exportSegmentsAsURL(): void {
+        this.copyToClipboard(`https://youtube.com/watch?v=${this.props.videoID}${exportTimesAsHashParam(Config.config.unsubmittedSegments[this.props.videoID])}`)
+    }
+
+    copyToClipboard(text: string): void {
+        navigator.clipboard.writeText(text)
             .then(() => {
                 alert(chrome.i18n.getMessage("CopiedExclamation"));
             })

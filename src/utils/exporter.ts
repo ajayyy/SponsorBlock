@@ -74,3 +74,14 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
 
     return result;
 }
+
+export function exportTimesAsHashParam(segments: SponsorTime[]): string {
+    const hashparamSegments = segments.map(segment => ({
+        actionType: segment.actionType,
+        category: segment.category,
+        segment: segment.segment,
+        ...(segment.description ? {description: segment.description} : {})  // don't include the description param if empty
+    }));
+
+    return `#segments=${JSON.stringify(hashparamSegments)}`;
+}
