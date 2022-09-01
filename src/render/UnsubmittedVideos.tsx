@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import UnsubmittedVideosComponent from "../components/UnsubmittedVideosComponent";
+import UnsubmittedVideosComponent from "../components/options/UnsubmittedVideosComponent";
 
 class UnsubmittedVideos {
 

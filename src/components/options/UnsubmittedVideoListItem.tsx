@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import Config from "../config";
-import { exportTimes } from "../utils/exporter";
+import Config from "../../config";
+import { exportTimes } from "../../utils/exporter";
 
 export interface UnsubmittedVideosListItemProps {
     videoID: string;

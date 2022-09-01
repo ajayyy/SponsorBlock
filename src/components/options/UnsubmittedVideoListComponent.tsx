@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Config from "../config";
+import Config from "../../config";
 import UnsubmittedVideoListItem from "./UnsubmittedVideoListItem";
 
 export interface UnsubmittedVideoListProps {
