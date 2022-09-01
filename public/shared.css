@@ -1,0 +1,219 @@
+.sponsorSkipNoticeParent {
+    position: absolute;
+
+	bottom: 100px;
+	right: var(--skip-notice-right);
+}
+
+.sponsorSkipNoticeParent, .sponsorSkipNotice {
+	border-spacing: var(--skip-notice-border-horizontal) var(--skip-notice-border-vertical);
+	padding-left: var(--skip-notice-padding);
+	padding-right: var(--skip-notice-padding);
+
+	border-collapse: unset;
+}
+
+.sponsorSkipNoticeParent {
+	min-width: 350px;
+	max-width: 50%;
+}
+
+.sponsorSkipNotice {
+	width: 100%;
+}
+
+.sponsorSkipNoticeTableContainer {
+	background-color: rgba(28, 28, 28, 0.9);
+	border-radius: 5px;
+	min-width: 100%;
+}
+
+.sponsorSkipNotice {
+	transition: all 0.1s ease-out;
+}
+
+.sponsorSkipNoticeLimitWidth {
+	max-width: calc(100% - 50px);
+}
+
+.sponsorSkipNotice .hidden {
+	display: none;
+}
+
+/* For Cloudtube */
+.sponsorSkipNotice td, .sponsorSkipNotice table, .sponsorSkipNotice th {
+	border: none;
+}
+
+.sponsorSkipNoticeFadeIn {
+	animation: fadeIn 0.5s ease-out;
+}
+
+.sponsorSkipNoticeFaded {
+	opacity: 0.5;
+}
+
+.sponsorSkipNoticeFadeOut {
+	transition: opacity 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	opacity: 0 !important;
+	animation: none !important;
+}
+
+.sponsorSkipNotice .sponsorSkipNoticeTimeLeft {
+	color: #eeeeee;
+
+	border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 12px;
+
+	display: flex;
+    align-items: center;
+
+	border: 1px solid #eeeeee;
+}
+
+.sponsorSkipNoticeTimeLeft img {
+	vertical-align: middle;
+    height: 13px;
+
+	padding-top: 7.8%;
+    padding-bottom: 7.8%;
+}
+
+/* if two are very close to eachother */
+.secondSkipNotice {
+	bottom: 290px;
+}
+
+.noticeLeftIcon {
+	display: flex;
+  	align-items: center;
+}
+
+.sponsorSkipNotice .sponsorSkipNoticeUnskipSection {
+	float: left;
+
+	border-left: 1px solid rgb(150, 150, 150);
+}
+
+.sponsorSkipNoticeButton {
+	background: none;
+	color: rgb(235, 235, 235);
+	border: none;
+	display: inline-block;
+	font-size: 13.3333px !important;
+
+	cursor: pointer;
+
+	margin-right: 10px;
+
+    padding: 2px 5px;
+}
+
+.sponsorSkipNoticeButton:hover {
+	background-color: rgba(235, 235, 235,0.2);
+	border-radius: 4px;
+
+	transition: background-color 0.4s;
+}
+
+.sponsorSkipNoticeFirstRow .sponsorSkipNoticeButton.sponsorSkipSmallButton {
+	height: 1.3em;
+	padding: 0;
+}
+
+.sponsorTimesVoteButtonsContainer {
+	float: left;
+	vertical-align:middle;
+	padding: 2px 5px;
+
+	margin-right: 4px;
+}
+
+.sponsorTimesVoteButtonsContainer div{
+	display: inline-block;
+}
+
+.sponsorSkipNoticeRightSection {
+    right: 0;
+	position: absolute;
+
+	float: right;
+
+	margin-right: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.sponsorSkipNoticeRightButton {
+	margin-right: 0;
+}
+
+.sponsorSkipNoticeCloseButton {
+	height: 10px;
+	width: 10px;
+	box-sizing: unset;
+
+	padding: 2px 5px;
+
+	margin-left: 2px;
+    float: right;
+}
+
+.sponsorSkipNoticeCloseButton.biggerCloseButton {
+	padding: 20px;
+}
+
+.sponsorSkipMessage {
+	font-size: 14px;
+	font-weight: bold;
+	color: rgb(235, 235, 235);
+
+	margin-top: auto;
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: auto;
+}
+
+.sponsorSkipInfo {
+	font-size: 10px;
+    color: #000000;
+	text-align: center;
+	margin-top: 0px;
+}
+
+#sponsorTimesThanksForVotingText {
+	font-size: 20px;
+	font-weight: bold;
+    color: #000000;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#sponsorTimesThanksForVotingInfoText {
+	font-size: 12px;
+	font-weight: bold;
+    color: #000000;
+	text-align: center;
+	margin-top: 0px;
+}
+
+.sponsorTimesVoteButtonMessage {
+	float: left;
+}
+
+.sponsorTimesInfoMessage {
+	font-size: 13.3333px;
+    color: rgb(235, 235, 235);
+}
+
+.sb-guidelines-notice .sponsorTimesInfoMessage td {
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+    font-size: 15px;
+
+	display: flex;
+	align-items: center;
+}

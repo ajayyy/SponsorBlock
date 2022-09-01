@@ -1,4 +1,7 @@
-export function getControls(): HTMLElement | false {
+import { ActionType, Category, SponsorSourceType, SponsorTime, VideoID } from "../types";
+import { GenericUtils } from "./genericUtils";
+
+export function getControls(): HTMLElement {
     const controlsSelectors = [
         // YouTube
         ".ytp-right-controls",
@@ -16,7 +19,7 @@ export function getControls(): HTMLElement | false {
         }
     }
 
-    return false;
+    return null;
 }
 
 export function isVisible(element: HTMLElement): boolean {
@@ -61,6 +64,44 @@ export function getHashParams(): Record<string, unknown> {
     }
 
     return {};
+}
+
+export function getExistingChapters(currentVideoID: VideoID, duration: number): SponsorTime[] {
+    const chaptersBox = document.querySelector("ytd-macro-markers-list-renderer");
+
+    const chapters: SponsorTime[] = [];
+    if (chaptersBox) {
+        let lastSegment: SponsorTime = null;
+        const links = chaptersBox.querySelectorAll("ytd-macro-markers-list-item-renderer > a");
+        for (const link of links) {
+            const timeElement = link.querySelector("#time") as HTMLElement;
+            const description = link.querySelector("#details h4") as HTMLElement;
+            if (timeElement && description?.innerText?.length > 0 && link.getAttribute("href")?.includes(currentVideoID)) {
+                const time = GenericUtils.getFormattedTimeToSeconds(timeElement.innerText);
+                
+                if (lastSegment) {
+                    lastSegment.segment[1] = time;
+                    chapters.push(lastSegment);
+                }
+                
+                lastSegment = {
+                    segment: [time, null],
+                    category: "chapter" as Category,
+                    actionType: ActionType.Chapter,
+                    description: description.innerText,
+                    source: SponsorSourceType.YouTube,
+                    UUID: null
+                };
+            }
+        }
+
+        if (lastSegment) {
+            lastSegment.segment[1] = duration;
+            chapters.push(lastSegment);
+        }
+    }
+
+    return chapters;
 }
 
 export function localizeHtmlPage(): void {

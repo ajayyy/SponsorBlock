@@ -5,13 +5,8 @@ import NoticeComponent from "../components/NoticeComponent";
 import Utils from "../utils";
 const utils = new Utils();
 
-import { ContentContainer } from "../types";
+import { ButtonListener, ContentContainer } from "../types";
 import NoticeTextSelectionComponent from "../components/NoticeTextSectionComponent";
-
-export interface ButtonListener {
-    name: string,
-    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-}
 
 export interface TextBox {
     icon: string,
@@ -20,12 +15,17 @@ export interface TextBox {
 
 export interface NoticeOptions {
     title: string,
+    referenceNode?: HTMLElement,
     textBoxes?: TextBox[],
     buttons?: ButtonListener[],
     fadeIn?: boolean,
     timed?: boolean
     style?: React.CSSProperties;
     extraClass?: string;
+    maxCountdownTime?: () => number;
+    dontPauseCountdown?: boolean;
+    hideLogo?: boolean;
+    hideRightInfo?: boolean;
 }
 
 export default class GenericNotice {
@@ -42,7 +42,7 @@ export default class GenericNotice {
 
         this.contentContainer = contentContainer;
 
-        const referenceNode = utils.findReferenceNode();
+        const referenceNode = options.referenceNode ?? utils.findReferenceNode();
     
         this.noticeElement = document.createElement("div");
         this.noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
@@ -62,6 +62,10 @@ export default class GenericNotice {
                 ref={this.noticeRef}
                 style={options.style}
                 extraClass={options.extraClass}
+                maxCountdownTime={options.maxCountdownTime}
+                dontPauseCountdown={options.dontPauseCountdown}
+                hideLogo={options.hideLogo}
+                hideRightInfo={options.hideRightInfo}
                 closeListener={() => this.close()} >
                     
                     <tr id={"sponsorSkipNoticeMiddleRow" + this.idSuffix}

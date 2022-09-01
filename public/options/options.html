@@ -66,18 +66,6 @@
 
 				</div>
 
-				<div data-type="toggle" data-sync="autoSkipOnMusicVideos">
-					<div class="switch-container">
-						<label class="switch">
-							<input id="autoSkipOnMusicVideos" type="checkbox" checked>
-							<span class="slider round"></span>
-						</label>
-						<label class="switch-label" for="autoSkipOnMusicVideos">
-							__MSG_autoSkipOnMusicVideos__
-						</label>
-					</div>
-				</div>
-	
 				<div data-type="toggle" data-sync="muteSegments">
 					<div class="switch-container">
 						<label class="switch">
@@ -314,6 +302,18 @@
 					</div>
 				</div>
 
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="showUpsells" data-no-safari="true">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="showUpsell" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="showUpsells">
+							__MSG_hideUpsells__
+						</label>
+					</div>
+				</div>
+
 			</div>
 
 			<div id="keybinds" class="option-group hidden">
@@ -330,6 +330,16 @@
 
 				<div data-type="keybind-change" data-sync="submitKeybind">	
 					<label class="optionLabel">__MSG_setSubmitKeybind__:</label>
+					<div class="inline"></div>
+				</div>
+
+				<div data-type="keybind-change" data-sync="nextChapterKeybind">	
+					<label class="optionLabel">__MSG_nextChapterKeybind__:</label>
+					<div class="inline"></div>
+				</div>
+
+				<div data-type="keybind-change" data-sync="previousChapterKeybind">	
+					<label class="optionLabel">__MSG_previousChapterKeybind__:</label>
 					<div class="inline"></div>
 				</div>
 

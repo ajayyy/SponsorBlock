@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link id="sponsorBlockPopupFont" href="/libs/Source+Sans+Pro.css" rel="stylesheet">
     <link id="sponsorBlockStyleSheet" href="popup.css" rel="stylesheet">
+    <link id="sponsorBlockStyleSheet" href="shared.css" rel="stylesheet">
   </head>
 
   <body id="sponsorBlockPopupBody" style="visibility: hidden">
@@ -34,7 +35,33 @@
         </button>
         <!-- Video Segments -->
         <div id="issueReporterContainer">
+          <div id="issueReporterTabs" class="hidden">
+            <span id="issueReporterTabSegments" class="sbSelected">
+              <span>__MSG_SegmentsCap__</span>
+            </span>
+            <span id="issueReporterTabChapters">
+              <span>__MSG_Chapters__</span>
+            </span>
+          </div>
           <div id="issueReporterTimeButtons"></div>
+          <div id="issueReporterImportExport" class="hidden">
+            <div id="importExportButtons">
+              <button id="importSegmentsButton" title="__MSG_importSegments__" class="hidden">
+                <img src="/icons/import.svg" alt="Refresh icon" id="importSegments" />
+              </button>
+              <button id="exportSegmentsButton" title="__MSG_exportSegments__">
+                <img src="/icons/export.svg" alt="Export icon" id="exportSegments" />
+              </button>
+            </div>
+
+            <span id="importSegmentsMenu" class="hidden">
+              <textarea id="importSegmentsText" rows="5" style="width:80%"></textarea>
+
+              <button id="importSegmentsSubmit" title="__MSG_importSegments__">
+                __MSG_Import__
+              </button>
+            </span>
+          </div>
         </div>
       </div>
       

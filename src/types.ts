@@ -21,7 +21,8 @@ export interface ContentContainer {
         previewTime: (time: number, unpause?: boolean) => void,
         videoInfo: VideoInfo,
         getRealCurrentTime: () => number,
-        lockedCategories: string[]
+        lockedCategories: string[],
+        channelIDInfo: ChannelIDInfo
     }
 }
 
@@ -58,6 +59,7 @@ export enum SponsorHideType {
 export enum ActionType {
     Skip = "skip",
     Mute = "mute",
+    Chapter = "chapter",
     Full = "full",
     Poi = "poi"
 }
@@ -69,19 +71,24 @@ export type Category = string & { __categoryBrand: unknown };
 
 export enum SponsorSourceType {
     Server = undefined,
-    Local = 1
+    Local = 1,
+    YouTube = 2
 }
 
-export interface SponsorTime {
+export interface SegmentContainer {
     segment: [number] | [number, number];
+}
+
+export interface SponsorTime extends SegmentContainer {
     UUID: SegmentUUID;
     locked?: number;
 
     category: Category;
     actionType: ActionType;
+    description?: string;
 
     hidden?: SponsorHideType;
-    source?: SponsorSourceType;
+    source: SponsorSourceType;
     videoDuration?: number;
 }
 
@@ -230,4 +237,9 @@ export type Keybind = {
     ctrl?: boolean,
     alt?: boolean,
     shift?: boolean
+}
+
+export interface ButtonListener {
+    name: string,
+    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }

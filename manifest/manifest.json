@@ -18,6 +18,7 @@
         ],
         "css": [
             "content.css",
+            "shared.css",
             "./libs/Source+Sans+Pro.css",
             "popup.css"
         ]
@@ -48,9 +49,11 @@
         "icons/beep.ogg",
         "icons/pause.svg",
         "icons/stop.svg",
+        "icons/skip.svg",
         "icons/heart.svg",
         "icons/visible.svg",
         "icons/not_visible.svg",
+        "icons/sort.svg",
         "icons/money.svg",
         "icons/segway.png",
         "icons/close-smaller.svg",
@@ -61,6 +64,8 @@
         "icons/bolt.svg",
         "icons/stopwatch.svg",
         "icons/music-note.svg",
+        "icons/import.svg",
+        "icons/export.svg",
         "icons/PlayerInfoIconSponsorBlocker.svg",
         "icons/PlayerDeleteIconSponsorBlocker.svg",
         "popup.html",

@@ -152,20 +152,44 @@
   margin: 8px;
 }
 
-/*
- * Refresh segments button
- */
 #refreshSegmentsButton {
   display: flex;
   align-items: center;
+  padding: 5px;
+  margin: 5px auto;
+}
+
+#issueReporterImportExport {
+  position: relative;
+}
+
+#refreshSegmentsButton, #issueReporterImportExport button {
   background: transparent;
   border-radius: 50%;
-  margin: 5px auto;
   border: none;
-  padding: 5px;
 }
-#refreshSegmentsButton:hover {
+
+#refreshSegmentsButton:hover, #issueReporterImportExport button:hover {
   background-color: var(--sb-grey-bg-color);
+}
+
+#issueReporterImportExport button {
+  padding: 5px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#issueReporterImportExport img {
+  width: 24px;
+  display: block;
+}
+
+#importSegmentsText {
+  margin-top: 7px;
+}
+
+#importSegmentsMenu button {
+  padding: 10px;
 }
 
 /*
@@ -199,6 +223,15 @@
 .segmentSummary > div {
   text-align: left;
 }
+
+.segmentActive {
+  color: #bdfffb;
+}
+
+.segmentPassed {
+  color: #adadad;
+}
+
 /*
  * Category dot in segment
  */
@@ -559,4 +592,46 @@
   color: var(--sb-main-fg-color);
   margin-bottom: 20px;
   padding: 5px;
+}
+
+#sponsorBlockPopupBody .u-mZ {
+  margin: 0 !important;
+}
+
+#sponsorBlockPopupBody .hidden {
+  display: none !important;
+}
+
+#issueReporterTabs {
+  margin: 5px;
+}
+
+#issueReporterTabs > span {
+  padding: 2px 4px;
+  margin: 0 3px;
+  cursor: pointer;
+  background-color: #444848;
+  border-radius: 10px;
+}
+
+#issueReporterTabs > span > span {
+  position: relative;
+  padding: 0.2em 0;
+}
+
+#issueReporterTabs > span > span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: rgb(145, 0, 0);
+  transition: transform 300ms;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+#issueReporterTabs > span.sbSelected > span::after {
+  transform: scaleX(0.8);
 }

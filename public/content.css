@@ -1,3 +1,12 @@
+:root {
+	--skip-notice-right: 10px;
+	--skip-notice-padding: 5px;
+	--skip-notice-margin: 5px;
+	--skip-notice-border-horizontal: 5px;
+	--skip-notice-border-vertical: 10px;
+	--sb-dark-red-outline: rgb(130,0,0,0.9);
+}
+
 .hidden {
 	display: none;
 }
@@ -12,7 +21,7 @@
 
 	height: 100%;
 	transform: scaleY(0.6) translateY(-30%) translateY(1.5px);
-	z-index: 40;
+	z-index: 42;
 
 	transition: transform .1s cubic-bezier(0,0,0.2,1);
 }
@@ -45,21 +54,46 @@
 	transform: translateY(-1em) !important;
 }
 
+.ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips {
+	transform: translateY(-2em) !important;
+}
+
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible {
 	transform: translateY(-2em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips {
+	transform: translateY(-4em) !important;
 }
 
 #movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
 	transform: translateY(1em) !important;
 }
 
+#movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper {
+	transform: translateY(2em) !important;
+}
+
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
 	transform: translateY(0.5em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper {
+	transform: translateY(1em) !important;
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
 	display: block !important;
 	transform: translateY(1em) !important;
+}
+
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
+	display: block !important;
+	transform: translateY(2em) !important;
+}
+
+div:hover > .sponsorBlockChapterBar {
+	z-index: 41 !important;
 }
 
 /*  */
@@ -88,6 +122,16 @@
 	vertical-align: top;
 }
 
+/* Removes auto width from being a ytp-player-button */
+.sbPlayerDownvote {
+	width: auto !important;
+}
+
+/* Adds back the padding */
+.sbPlayerDownvote svg {
+	padding-right: 3.6px;
+}
+
 .autoHiding {
 	overflow: visible !important;
 }
@@ -113,8 +157,8 @@
 .sponsorSkipObject {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 
-	margin-left: 2px;
-	margin-right: 2px;
+	margin-left: var(--skip-notice-margin);
+	margin-right: var(--skip-notice-margin);
 }
 
 .sponsorSkipLogo {
@@ -145,7 +189,7 @@
 	position: absolute;
 	right: 5px;
 	bottom: 100px;
-	right: 10px;
+	right: var(--skip-notice-right);
 }
 
 .sponsorSkipNoticeParent {
@@ -525,7 +569,7 @@ input::-webkit-inner-spin-button {
 	margin-bottom: 5px;
 
 	background-color: rgba(28, 28, 28, 0.9);
-    border-color: rgb(130,0,0,0.9);
+    border-color: var(--sb-dark-red-outline);
     color: white;
     border-width: 3px;
     padding: 3px;
@@ -535,6 +579,45 @@ input::-webkit-inner-spin-button {
 	background-color: rgba(28, 28, 28, 0.9);
 	color: white;
 }
+
+/* Start SelectorComponent */
+
+.sbSelector {
+	position: absolute;
+	text-align: center;
+	width: calc(100% - var(--skip-notice-right) - var(--skip-notice-padding) * 2 - var(--skip-notice-margin) * 2 - var(--skip-notice-border-horizontal) * 2);
+
+	z-index: 1000;
+}
+
+.sbSelectorBackground {
+	text-align: center;
+
+	background-color: rgba(28, 28, 28, 0.9);
+	border-radius: 6px;
+	padding: 3px;
+	margin: auto;
+	width: 170px;
+}
+
+.sbSelectorOption {
+    cursor: pointer;
+    background-color: rgb(43, 43, 43);
+    padding: 5px;
+	margin: 5px;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.sbSelectorOption:hover {
+    background-color: #3a0000;
+}
+
+/* End SelectorComponent */
 
 .helpButton {
 	height: 25px;
@@ -621,6 +704,11 @@ input::-webkit-inner-spin-button {
     border-width: 15px;
     border-style: solid;
     border-color: rgba(28, 28, 28, 0.7) transparent transparent transparent;
+}
+
+.sponsorBlockTooltip.sbTriangle.centeredSBTriangle::after {
+	left: 50%;
+	right: 50%;
 }
 
 .sponsorBlockLockedColor {

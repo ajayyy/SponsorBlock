@@ -1,10 +1,13 @@
 import * as React from "react";
 
-import Config from "../config"
-import * as CompileConfig from "../../config.json";
-import { Category, CategorySkipOption } from "../types";
+import Config from "../../config"
+import * as CompileConfig from "../../../config.json";
+import { Category, CategorySkipOption } from "../../types";
 
-import { getCategorySuffix } from "../utils/categoryUtils";
+import { getCategorySuffix } from "../../utils/categoryUtils";
+import ToggleOptionComponent, { ToggleOptionProps } from "./ToggleOptionComponent";
+import { fetchingChaptersAllowed } from "../../utils/licenseKey";
+import LockSvg from "../../svg-icons/lock_svg";
 
 export interface CategorySkipOptionsProps { 
     category: Category;
@@ -15,6 +18,7 @@ export interface CategorySkipOptionsProps {
 export interface CategorySkipOptionsState {
     color: string;
     previewColor: string;
+    hideChapter: boolean;
 }
 
 class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsProps, CategorySkipOptionsState> {
@@ -27,7 +31,14 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         this.state = {
             color: props.defaultColor || Config.config.barTypes[this.props.category]?.color,
             previewColor: props.defaultPreviewColor || Config.config.barTypes["preview-" + this.props.category]?.color,
-        }
+            hideChapter: true
+        };
+
+        fetchingChaptersAllowed().then((allowed) => {
+            this.setState({
+                hideChapter: !allowed
+            });
+        })
     }
 
     render(): React.ReactElement {
@@ -51,12 +62,25 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
             }
         }
 
+        let extraClasses = "";
+        const disabled = this.props.category === "chapter" && this.state.hideChapter;
+        if (disabled) {
+            extraClasses += " disabled";
+
+            if (!Config.config.showUpsells) {
+                return <></>;
+            }
+        }
+
         return (
             <>
                 <tr id={this.props.category + "OptionsRow"}
-                    className="categoryTableElement">
+                    className={`categoryTableElement${extraClasses}`} >
                     <td id={this.props.category + "OptionName"}
                         className="categoryTableLabel">
+                            {disabled &&
+                                <LockSvg className="upsellButton" onClick={() => chrome.tabs.create({url: chrome.runtime.getURL('upsell/index.html')})}/>
+                            }
                             {chrome.i18n.getMessage("category_" + this.props.category)}
                     </td>
 
@@ -65,21 +89,25 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         <select
                             className="optionsSelector"
                             defaultValue={defaultOption}
+                            disabled={disabled}
                             onChange={this.skipOptionSelected.bind(this)}>
                                 {this.getCategorySkipOptions()}
                         </select>
                     </td>
                     
-                    <td id={this.props.category + "ColorOption"}
-                        className="colorOption">
-                        <input
-                            className="categoryColorTextBox option-text-box"
-                            type="color"
-                            onChange={(event) => this.setColorState(event, false)}
-                            value={this.state.color} />
-                    </td>
+                    {this.props.category !== "chapter" &&
+                        <td id={this.props.category + "ColorOption"}
+                            className="colorOption">
+                            <input
+                                className="categoryColorTextBox option-text-box"
+                                type="color"
+                                disabled={disabled}
+                                onChange={(event) => this.setColorState(event, false)}
+                                value={this.state.color} />
+                        </td>
+                    }
 
-                    {this.props.category !== "exclusive_access" &&
+                    {!["chapter", "exclusive_access"].includes(this.props.category) &&
                         <td id={this.props.category + "PreviewColorOption"}
                             className="previewColorOption">
                             <input
@@ -93,7 +121,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 </tr>
 
                 <tr id={this.props.category + "DescriptionRow"}
-                    className="small-description categoryTableDescription">
+                    className={`small-description categoryTableDescription${extraClasses}`}>
                         <td
                             colSpan={2}>
                             {chrome.i18n.getMessage("category_" + this.props.category + "_description")}
@@ -103,6 +131,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             </a>
                         </td>
                 </tr>
+                
+                {this.getExtraOptionComponents(this.props.category, extraClasses, disabled)}
 
             </>
         );
@@ -147,7 +177,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         const elements: JSX.Element[] = [];
 
         let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
-        if (this.props.category === "exclusive_access") optionNames = ["disable", "showOverlay"];
+        if (this.props.category === "chapter") optionNames = ["disable", "showOverlay"]
+        else if (this.props.category === "exclusive_access") optionNames = ["disable", "showOverlay"];
 
         for (const optionName of optionNames) {
             elements.push(
@@ -183,6 +214,42 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         this.setBarColorTimeout = setTimeout(() => {
             Config.config.barTypes = Config.config.barTypes;
         }, 50);
+    }
+
+    getExtraOptionComponents(category: string, extraClasses: string, disabled: boolean): JSX.Element[] {
+        const result = [];
+        for (const option of this.getExtraOptions(category)) {
+            result.push(
+                <tr key={option.configKey} className={extraClasses}>
+                    <td id={`${category}_${option.configKey}`} className="categoryExtraOptions">
+                        <ToggleOptionComponent 
+                            configKey={option.configKey} 
+                            label={option.label}
+                            disabled={disabled}
+                        />
+                    </td>
+                </tr>
+            )
+        }
+
+        return result;
+    }
+
+    getExtraOptions(category: string): ToggleOptionProps[] {
+        switch (category) {
+            case "chapter":
+                return [{
+                    configKey: "renderSegmentsAsChapters",
+                    label: chrome.i18n.getMessage("renderAsChapters"),
+                }];
+            case "music_offtopic":
+                return [{
+                    configKey: "autoSkipOnMusicVideos",
+                    label: chrome.i18n.getMessage("autoSkipOnMusicVideos"),
+                }];
+            default:
+                return [];
+        }
     }
 }
 

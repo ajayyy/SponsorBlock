@@ -13,6 +13,7 @@ import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import PencilSvg from "../svg-icons/pencil_svg";
 import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
+import { GenericUtils } from "../utils/genericUtils";
 
 enum SkipButtonState {
     Undo, // Unskip
@@ -540,7 +541,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         const sponsorVideoID = this.props.contentContainer().sponsorVideoID;
         const sponsorTimesSubmitting : SponsorTime = {
             segment: this.segments[index].segment,
-            UUID: utils.generateUserID() as SegmentUUID,
+            UUID: GenericUtils.generateUserID() as SegmentUUID,
             category: this.segments[index].category,
             actionType: this.segments[index].actionType,
             source: SponsorSourceType.Local

@@ -2,7 +2,7 @@
     "serverAddress": "https://sponsor.ajay.app",
     "testingServerAddress": "https://sponsor.ajay.app/test",
     "serverAddressComment": "This specifies the default SponsorBlock server to connect to",
-    "categoryList": ["sponsor", "selfpromo", "exclusive_access", "interaction", "poi_highlight", "intro", "outro", "preview", "filler", "music_offtopic"],
+    "categoryList": ["sponsor", "selfpromo", "exclusive_access", "interaction", "poi_highlight", "intro", "outro", "preview", "filler", "chapter", "music_offtopic"],
     "categorySupport": {
         "sponsor": ["skip", "mute", "full"],
         "selfpromo": ["skip", "mute", "full"],
@@ -13,7 +13,8 @@
         "preview": ["skip", "mute"],
         "filler": ["skip", "mute"],
         "music_offtopic": ["skip"],
-        "poi_highlight": ["poi"]
+        "poi_highlight": ["poi"],
+        "chapter": ["chapter"]
     },
     "wikiLinks": {
         "sponsor": "https://wiki.sponsor.ajay.app/w/Sponsor",
@@ -27,6 +28,7 @@
         "music_offtopic": "https://wiki.sponsor.ajay.app/w/Music:_Non-Music_Section",
         "poi_highlight": "https://wiki.sponsor.ajay.app/w/Highlight",
         "guidelines": "https://wiki.sponsor.ajay.app/w/Guidelines",
-        "mute": "https://wiki.sponsor.ajay.app/w/Mute_Segment"
+        "mute": "https://wiki.sponsor.ajay.app/w/Mute_Segment",
+        "chapter": "https://wiki.sponsor.ajay.app/w/Chapter"
     }
 }

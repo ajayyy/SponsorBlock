@@ -30,6 +30,11 @@ interface IsInfoFoundMessage {
     updating: boolean;
 }
 
+interface SkipMessage {
+    message: "unskip" | "reskip";
+    UUID: SegmentUUID;
+}
+
 interface SubmitVoteMessage {
     message: "submitVote";
     type: number;
@@ -47,6 +52,11 @@ interface CopyToClipboardMessage {
     text: string;
 }
 
+interface ImportSegmentsMessage {
+    message: "importSegments";
+    data: string;
+}
+
 interface KeyDownMessage {
     message: "keydown";
     key: string;
@@ -59,12 +69,13 @@ interface KeyDownMessage {
     metaKey: boolean;
 }
 
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | KeyDownMessage);
+export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage);
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;
     status: number;
     sponsorTimes: SponsorTime[];
+    time: number;
     onMobileYouTube: boolean;
 }
 
@@ -90,11 +101,23 @@ export type MessageResponse =
     | GetChannelIDResponse
     | SponsorStartResponse
     | IsChannelWhitelistedResponse
-    | Record<never, never> // empty object response {}
-    | VoteResponse;
+    | Record<string, never> // empty object response {}
+    | VoteResponse
+    | ImportSegmentsResponse;
 
 export interface VoteResponse {
     successType: number;
     statusCode: number;
     responseText: string;
 }
+
+export interface ImportSegmentsResponse {
+    importedSegments: SponsorTime[];
+}
+
+export interface TimeUpdateMessage {
+    message: "time";
+    time: number;
+}
+
+export type PopupMessage = TimeUpdateMessage;

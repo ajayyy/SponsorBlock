@@ -41,7 +41,13 @@ export function getCategorySuffix(category: Category): string {
         return "_POI";
     } else if (category === "exclusive_access") {
         return "_full";
+    } else if (category === "chapter") {
+        return "_chapter";
     } else {
         return "";
     }
+}
+
+export function shortCategoryName(categoryName: string): string {
+    return chrome.i18n.getMessage("category_" + categoryName + "_short") || chrome.i18n.getMessage("category_" + categoryName);
 }

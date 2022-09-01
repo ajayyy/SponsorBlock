@@ -14,6 +14,8 @@ const utils = new Utils({
     unregisterFirefoxContentScript
 });
 
+const popupPort: Record<string, chrome.runtime.Port> = {};
+
 // Used only on Firefox, which does not support non persistent background pages.
 const contentScriptRegistrations = {};
 
@@ -53,7 +55,7 @@ if (!Config.configSyncListeners.includes(onNavigationApiAvailableChange)) {
         Config.configSyncListeners.push(onNavigationApiAvailableChange);
 }
 
-chrome.runtime.onMessage.addListener(function (request, _, callback) {
+chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     switch(request.message) {
         case "openConfig":
             chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
@@ -100,7 +102,23 @@ chrome.runtime.onMessage.addListener(function (request, _, callback) {
             });
             return true;
         }
+        case "time":
+            if (sender.tab) {
+                popupPort[sender.tab.id]?.postMessage(request);
+            }
+            return false;
 	}
+});
+
+chrome.runtime.onConnect.addListener((port) => {
+    if (port.name === "popup") {
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            popupPort[tabs[0].id] = port;
+        });
+    }
 });
 
 //add help page on install
@@ -116,7 +134,7 @@ chrome.runtime.onInstalled.addListener(function () {
             chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
 
             //generate a userID
-            const newUserID = utils.generateUserID();
+            const newUserID = GenericUtils.generateUserID();
             //save this UUID
             Config.config.userID = newUserID;
 
@@ -165,7 +183,7 @@ async function submitVote(type: number, UUID: string, category: string) {
 
     if (userID == undefined || userID === "undefined") {
         //generate one
-        userID = utils.generateUserID();
+        userID = GenericUtils.generateUserID();
         Config.config.userID = userID;
     }
 

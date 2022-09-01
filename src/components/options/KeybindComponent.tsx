@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Config from "../config";
-import { Keybind } from "../types";
+import Config from "../../config";
+import { Keybind } from "../../types";
 import KeybindDialogComponent from "./KeybindDialogComponent";
-import { keybindEquals, keybindToString, formatKey } from "../utils/configUtils";
+import { keybindEquals, keybindToString, formatKey } from "../../utils/configUtils";
 
 export interface KeybindProps { 
     option: string;

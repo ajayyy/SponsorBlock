@@ -3,12 +3,18 @@ import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, StorageChangesObject, Keybind, HashedValue, VideoID, SponsorHideType } from "./types";
 import { keybindEquals } from "./utils/configUtils";
 
+export interface Permission {
+    canSubmit: boolean;
+}
+
 interface SBConfig {
     userID: string,
     isVip: boolean,
+    permissions: Record<Category, Permission>,
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>,
     defaultCategory: Category,
+    renderSegmentsAsChapters: boolean,
     whitelistedChannels: string[],
     forceChannelCheck: boolean,
     minutesSaved: number,
@@ -44,6 +50,7 @@ interface SBConfig {
     allowExpirements: boolean,
     showDonationLink: boolean,
     showPopupDonationCount: number,
+    showUpsells: boolean,
     donateClicked: number,
     autoHideInfoButton: boolean,
     autoSkipOnMusicVideos: boolean,
@@ -56,6 +63,7 @@ interface SBConfig {
     categoryPillUpdate: boolean,
     darkMode: boolean,
     showCategoryGuidelines: boolean,
+    chaptersAvailable: boolean,
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -68,9 +76,18 @@ interface SBConfig {
     skipKeybind: Keybind,
     startSponsorKeybind: Keybind,
     submitKeybind: Keybind,
+    nextChapterKeybind: Keybind,
+    previousChapterKeybind: Keybind,
 
     // What categories should be skipped
     categorySelections: CategorySelection[],
+
+    payments: {
+        licenseKey: string,
+        lastCheck: number,
+        freeAccess: boolean,
+        chaptersAllowed: boolean
+    }
 
     // Preview bar
     barTypes: {
@@ -128,8 +145,10 @@ const Config: SBObject = {
     syncDefaults: {
         userID: null,
         isVip: false,
+        permissions: {},
         unsubmittedSegments: {},
         defaultCategory: "chooseACategory" as Category,
+        renderSegmentsAsChapters: false,
         whitelistedChannels: [],
         forceChannelCheck: false,
         minutesSaved: 0,
@@ -165,6 +184,7 @@ const Config: SBObject = {
         allowExpirements: true,
         showDonationLink: true,
         showPopupDonationCount: 0,
+        showUpsells: true,
         donateClicked: 0,
         autoHideInfoButton: true,
         autoSkipOnMusicVideos: false,
@@ -172,6 +192,7 @@ const Config: SBObject = {
         categoryPillUpdate: false,
         darkMode: true,
         showCategoryGuidelines: true,
+        chaptersAvailable: true,
 
         categoryPillColors: {},
 
@@ -185,6 +206,8 @@ const Config: SBObject = {
         skipKeybind: {key: "Enter"},
         startSponsorKeybind: {key: ";"},
         submitKeybind: {key: "'"},
+        nextChapterKeybind: {key: "]"},
+        previousChapterKeybind: {key: "["},
 
         categorySelections: [{
             name: "sponsor" as Category,
@@ -196,6 +219,13 @@ const Config: SBObject = {
             name: "exclusive_access" as Category,
             option: CategorySkipOption.ShowOverlay
         }],
+
+        payments: {
+            licenseKey: null,
+            lastCheck: 0,
+            freeAccess: false,
+            chaptersAllowed: false
+        },
 
         colorPalette: {
             red: "#780303",
@@ -516,6 +546,8 @@ function migrateOldSyncFormats(config: SBConfig) {
 }
 
 async function setupConfig() {
+    if (typeof(chrome) === "undefined") return;
+
     await fetchConfig();
     addDefaults();
     const config = configProxy();

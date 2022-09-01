@@ -73,12 +73,19 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     render(): React.ReactElement {
+        const sortButton = 
+            <img id={"sponsorSkipSortButton" + this.state.idSuffix} 
+                className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipSmallButton"
+                onClick={() => this.sortSegments()}
+                src={chrome.extension.getURL("icons/sort.svg")}>
+            </img>;
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
                 idSuffix={this.state.idSuffix}
                 ref={this.noticeRef}
                 closeListener={this.cancel.bind(this)}
-                zIndex={5000}>
+                zIndex={5000}
+                firstColumn={sortButton}>
 
                 {/* Text Boxes */}
                 {this.getMessageBoxes()}
@@ -196,6 +203,16 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.props.callback();
 
         this.cancel();
+    }
+
+    sortSegments(): void {
+        let sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
+        sponsorTimesSubmitting = sponsorTimesSubmitting.sort((a, b) => a.segment[0] - b.segment[0]);
+
+        Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimesSubmitting;
+        Config.forceSyncUpdate("unsubmittedSegments");
+
+        this.forceUpdate();
     }
 
     categoryChangeListener(index: number, category: Category): void {

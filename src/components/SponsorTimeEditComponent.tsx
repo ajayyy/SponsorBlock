@@ -1,10 +1,12 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config";
-import { ActionType, Category, ContentContainer, SponsorTime } from "../types";
+import { ActionType, Category, ChannelIDStatus, ContentContainer, SponsorTime } from "../types";
 import Utils from "../utils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
+import SelectorComponent, { SelectorOption } from "./SelectorComponent";
+import { GenericUtils } from "../utils/genericUtils";
 
 
 const utils = new Utils();
@@ -25,9 +27,15 @@ export interface SponsorTimeEditState {
     editing: boolean;
     sponsorTimeEdits: [string, string];
     selectedCategory: Category;
+    description: string;
+    suggestedNames: SelectorOption[];
+    chapterNameSelectorOpen: boolean;
 }
 
 const DEFAULT_CATEGORY = "chooseACategory";
+
+const categoryNamesGrams: string[] = [].concat(...CompileConfig.categoryList.filter((name) => name !== "chapter")
+    .map((name) => chrome.i18n.getMessage("category_" + name).split(/\/|\s|-/)));
 
 class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, SponsorTimeEditState> {
 
@@ -35,6 +43,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     categoryOptionRef: React.RefObject<HTMLSelectElement>;
     actionTypeOptionRef: React.RefObject<HTMLSelectElement>;
+    descriptionOptionRef: React.RefObject<HTMLInputElement>;
 
     configUpdateListener: () => void;
 
@@ -42,26 +51,35 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     // Used when selecting POI or Full
     timesBeforeChanging: number[] = [];
     fullVideoWarningShown = false;
+    categoryNameWarningShown = false;
+
+    // For description auto-complete
+    fetchingSuggestions: boolean;
 
     constructor(props: SponsorTimeEditProps) {
         super(props);
 
         this.categoryOptionRef = React.createRef();
         this.actionTypeOptionRef = React.createRef();
+        this.descriptionOptionRef = React.createRef();
 
         this.idSuffix = this.props.idSuffix;
-
         this.previousSkipType = ActionType.Skip;
+
+        const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
         this.state = {
             editing: false,
             sponsorTimeEdits: [null, null],
-            selectedCategory: DEFAULT_CATEGORY as Category
+            selectedCategory: DEFAULT_CATEGORY as Category,
+            description: sponsorTime.description || "",
+            suggestedNames: [],
+            chapterNameSelectorOpen: false
         };
     }
 
     componentDidMount(): void {
         // Prevent inputs from triggering key events
-        document.getElementById("sponsorTimesContainer" + this.idSuffix).addEventListener('keydown', function (event) {
+        document.getElementById("sponsorTimeEditContainer" + this.idSuffix).addEventListener('keydown', function (event) {
             event.stopPropagation();
         });
 
@@ -87,6 +105,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     render(): React.ReactElement {
         this.checkToShowFullVideoWarning();
+        this.checkToShowChapterWarning();
 
         const style: React.CSSProperties = {
             textAlign: "center"
@@ -118,8 +137,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             type="text"
                             style={{color: "inherit", backgroundColor: "inherit"}}
                             value={this.state.sponsorTimeEdits[0]}
-                            onChange={(e) => {this.handleOnChange(0, e, sponsorTime, e.target.value)}}
-                            onWheel={(e) => {this.changeTimesWhenScrolling(0, e, sponsorTime)}}>
+                            onChange={(e) => this.handleOnChange(0, e, sponsorTime, e.target.value)}
+                            onWheel={(e) => this.changeTimesWhenScrolling(0, e, sponsorTime)}>
                         </input>
 
                         {sponsorTime.actionType !== ActionType.Poi ? (
@@ -133,8 +152,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                     type="text"
                                     style={{color: "inherit", backgroundColor: "inherit"}}
                                     value={this.state.sponsorTimeEdits[1]}
-                                    onChange={(e) => {this.handleOnChange(1, e, sponsorTime, e.target.value)}}
-                                    onWheel={(e) => {this.changeTimesWhenScrolling(1, e, sponsorTime)}}>
+                                    onChange={(e) => this.handleOnChange(1, e, sponsorTime, e.target.value)}
+                                    onWheel={(e) => this.changeTimesWhenScrolling(1, e, sponsorTime)}>
                                 </input>
 
                                 <span id={"nowButton1" + this.idSuffix}
@@ -159,15 +178,15 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     style={timeDisplayStyle}
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
-                        {utils.getFormattedTime(segment[0], true) +
+                        {GenericUtils.getFormattedTime(segment[0], true) +
                             ((!isNaN(segment[1]) && sponsorTime.actionType !== ActionType.Poi)
-                                ? " " + chrome.i18n.getMessage("to") + " " + utils.getFormattedTime(segment[1], true) : "")}
+                                ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(segment[1], true) : "")}
                 </div>
             );
         }
 
         return (
-            <div style={style}>
+            <div id={"sponsorTimeEditContainer" + this.idSuffix} style={style}>
                 
                 {timeDisplay}
 
@@ -178,7 +197,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         defaultValue={sponsorTime.category}
                         ref={this.categoryOptionRef}
                         style={{color: "inherit", backgroundColor: "inherit"}}
-                        onChange={this.categorySelectionChange.bind(this)}>
+                        onChange={(event) => this.categorySelectionChange(event)}>
                         {this.getCategoryOptions()}
                     </select>
 
@@ -209,6 +228,27 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </div>
                 ): ""}
 
+                {/* Chapter Name */}
+                {sponsorTime.actionType === ActionType.Chapter ? (
+                    <div onMouseLeave={() => this.setState({chapterNameSelectorOpen: false})}>
+                        <input id={"chapterName" + this.idSuffix}
+                            className="sponsorTimeEdit"
+                            ref={this.descriptionOptionRef}
+                            type="text"
+                            value={this.state.description}
+                            onChange={(e) => this.descriptionUpdate(e.target.value)}
+                            onFocus={() => this.setState({chapterNameSelectorOpen: true})}>
+                        </input>
+                        {this.state.chapterNameSelectorOpen && this.state.description &&
+                            <SelectorComponent
+                                id={"chapterNameSelector" + this.idSuffix}
+                                options={this.state.suggestedNames}
+                                onChange={(v) => this.descriptionUpdate(v)}
+                            />
+                        }
+                    </div>
+                ): ""}
+
                 <br/>
 
                 {/* Editing Tools */}
@@ -223,7 +263,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <span id={"sponsorTimePreviewButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey)}>
-                        {chrome.i18n.getMessage("preview")}
+                        {sponsorTime.actionType !== ActionType.Chapter ? chrome.i18n.getMessage("preview")
+                            : chrome.i18n.getMessage("End")}
                     </span>
                 ): ""}
 
@@ -250,16 +291,15 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
         
         // check if change is small engough to show tooltip
-        const before = utils.getFormattedTimeToSeconds(sponsorTimeEdits[index]);
-        const after = utils.getFormattedTimeToSeconds(targetValue);
+        const before = GenericUtils.getFormattedTimeToSeconds(sponsorTimeEdits[index]);
+        const after = GenericUtils.getFormattedTimeToSeconds(targetValue);
         const difference = Math.abs(before - after);
-        if (0 < difference && difference< 0.5) this.showScrollToEditToolTip();
+        if (0 < difference && difference < 0.5) this.showScrollToEditToolTip();
 
         sponsorTimeEdits[index] = targetValue;
         if (index === 0 && sponsorTime.actionType === ActionType.Poi) sponsorTimeEdits[1] = targetValue;
 
-        this.setState({sponsorTimeEdits});
-        this.saveEditTimes();
+        this.setState({sponsorTimeEdits}, () => this.saveEditTimes());
     }
 
     changeTimesWhenScrolling(index: number, e: React.WheelEvent, sponsorTime: SponsorTime): void {
@@ -275,7 +315,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         }
         
         const sponsorTimeEdits = this.state.sponsorTimeEdits;
-        let timeAsNumber = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
+        let timeAsNumber = GenericUtils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[index]);
         if (timeAsNumber !== null && e.deltaY != 0) {
             if (e.deltaY < 0) {
                 timeAsNumber += step;
@@ -284,7 +324,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             } else {
                 timeAsNumber = 0;
             }
-            sponsorTimeEdits[index] = utils.getFormattedTime(timeAsNumber, true);
+            
+            sponsorTimeEdits[index] = GenericUtils.getFormattedTime(timeAsNumber, true);
             if (sponsorTime.actionType === ActionType.Poi) sponsorTimeEdits[1] = sponsorTimeEdits[0];
 
             this.setState({sponsorTimeEdits});
@@ -294,26 +335,29 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     showScrollToEditToolTip(): void {
         if (!Config.config.scrollToEditTimeUpdate && document.getElementById("sponsorRectangleTooltip" + "sponsorTimesContainer" + this.idSuffix) === null) {
-            this.showToolTip(chrome.i18n.getMessage("SponsorTimeEditScrollNewFeature"), () => { Config.config.scrollToEditTimeUpdate = true });
+            this.showToolTip(chrome.i18n.getMessage("SponsorTimeEditScrollNewFeature"), "scrollToEdit", () => { Config.config.scrollToEditTimeUpdate = true });
         }
     }
 
-    showToolTip(text: string, buttonFunction?: () => void): boolean {
+    showToolTip(text: string, id: string, buttonFunction?: () => void): boolean {
         const element = document.getElementById("sponsorTimesContainer" + this.idSuffix);
-        if (element) { 
-            new RectangleTooltip({
-                text,
-                referenceNode: element.parentElement,
-                prependElement: element,
-                timeout: 15,
-                bottomOffset: 0 + "px",
-                leftOffset: -318 + "px",
-                backgroundColor: "rgba(28, 28, 28, 1.0)",
-                htmlId: "sponsorTimesContainer" + this.idSuffix,
-                buttonFunction,
-                fontSize: "14px",
-                maxHeight: "200px"
-            });
+        if (element) {
+            const htmlId = `sponsorRectangleTooltip${id + this.idSuffix}`;
+            if (!document.getElementById(htmlId)) {
+                new RectangleTooltip({
+                    text,
+                    referenceNode: element.parentElement,
+                    prependElement: element,
+                    timeout: 15,
+                    bottomOffset: 0 + "px",
+                    leftOffset: -318 + "px",
+                    backgroundColor: "rgba(28, 28, 28, 1.0)",
+                    htmlId,
+                    buttonFunction,
+                    fontSize: "14px",
+                    maxHeight: "200px"
+                });
+            }
 
             return true;
         } else {
@@ -328,8 +372,21 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         if (videoPercentage > 0.6 && !this.fullVideoWarningShown 
                 && (sponsorTime.category === "sponsor" || sponsorTime.category === "selfpromo" || sponsorTime.category === "chooseACategory")) {
-            if (this.showToolTip(chrome.i18n.getMessage("fullVideoTooltipWarning"))) {
+            if (this.showToolTip(chrome.i18n.getMessage("fullVideoTooltipWarning"), "fullVideoWarning")) {
                 this.fullVideoWarningShown = true;
+            }
+        }
+    }
+
+    checkToShowChapterWarning(): void {
+        const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+
+        if (sponsorTime.actionType === ActionType.Chapter && sponsorTime.description
+                && !this.categoryNameWarningShown
+                && categoryNamesGrams.some(
+                    (category) => sponsorTime.description.toLowerCase().includes(category.toLowerCase()))) {
+            if (this.showToolTip(chrome.i18n.getMessage("chapterNameTooltipWarning"), "chapterWarning")) {
+                this.categoryNameWarningShown = true;
             }
         }
     }
@@ -343,6 +400,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         )];
 
         for (const category of (this.props.categoryList ?? CompileConfig.categoryList)) {
+            // If permission not loaded, treat it like we have permission except chapter
+            const defaultBlockCategories = ["chapter"];
+            const permission = Config.config.permissions[category as Category];
+            if ((defaultBlockCategories.includes(category) || permission !== undefined) && !permission) continue;
+
             elements.push(
                 <option value={category}
                         key={category}
@@ -363,7 +425,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const chosenCategory = event.target.value as Category;
 
         // See if show more categories was pressed
-        if (event.target.value !== DEFAULT_CATEGORY && !Config.config.categorySelections.some((category) => category.name === event.target.value)) {
+        if (chosenCategory !== DEFAULT_CATEGORY && !Config.config.categorySelections.some((category) => category.name === chosenCategory)) {
             event.target.value = DEFAULT_CATEGORY;
             
             // Alert that they have to enable this category first
@@ -464,7 +526,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         this.setState({
             sponsorTimeEdits: this.getFormattedSponsorTimesEdits(sponsorTime)
-        }, this.saveEditTimes);
+        }, () => this.saveEditTimes());
     }
 
     toggleEditTime(): void {
@@ -487,16 +549,16 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     /** Returns an array in the sponsorTimeEdits form (formatted time string) from a normal seconds sponsor time */
     getFormattedSponsorTimesEdits(sponsorTime: SponsorTime): [string, string] {
-        return [utils.getFormattedTime(sponsorTime.segment[0], true),
-            utils.getFormattedTime(sponsorTime.segment[1], true)];
+        return [GenericUtils.getFormattedTime(sponsorTime.segment[0], true),
+            GenericUtils.getFormattedTime(sponsorTime.segment[1], true)];
     }
 
     saveEditTimes(): void {
         const sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
 
         if (this.state.editing) {
-            const startTime = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
-            const endTime = utils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
+            const startTime = GenericUtils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
+            const endTime = GenericUtils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[1]);
 
             // Change segment time only if the format was correct
             if (startTime !== null && endTime !== null) {
@@ -507,8 +569,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const category = this.categoryOptionRef.current.value as Category
         sponsorTimesSubmitting[this.props.index].category = category;
 
-        const inputActionType = this.actionTypeOptionRef?.current?.value as ActionType;
-        sponsorTimesSubmitting[this.props.index].actionType = this.getNextActionType(category, inputActionType);
+        const actionType = this.getNextActionType(category, this.actionTypeOptionRef?.current?.value as ActionType);
+        sponsorTimesSubmitting[this.props.index].actionType = actionType;
+
+        const description = actionType === ActionType.Chapter ? this.descriptionOptionRef?.current?.value : "";
+        sponsorTimesSubmitting[this.props.index].description = description;
 
         Config.config.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimesSubmitting;
         Config.forceSyncUpdate("unsubmittedSegments");
@@ -530,19 +595,19 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     previewTime(ctrlPressed = false, shiftPressed = false): void {
         const sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
         const index = this.props.index;
-
-        const skipTime = sponsorTimes[index].segment[0];
-        // If segment starts at 0:00, start playback at the end of the segment
-        if (skipTime === 0) {
-            this.props.contentContainer().previewTime(sponsorTimes[index].segment[1]);
-            return;
-        }
-
         let seekTime = 2;
         if (ctrlPressed) seekTime = 0.5;
         if (shiftPressed) seekTime = 0.25;
 
-        this.props.contentContainer().previewTime(skipTime - (seekTime * this.props.contentContainer().v.playbackRate));
+        const startTime = sponsorTimes[index].segment[0];
+        const endTime = sponsorTimes[index].segment[1];
+        const isChapter = sponsorTimes[index].actionType === ActionType.Chapter;
+
+        // If segment starts at 0:00, start playback at the end of the segment
+        const skipToEndTime = startTime === 0 || isChapter;
+        const skipTime = skipToEndTime ? endTime : (startTime - (seekTime * this.props.contentContainer().v.playbackRate));
+
+        this.props.contentContainer().previewTime(skipTime, !isChapter);
     }
 
     inspectTime(): void {
@@ -584,6 +649,41 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             //update video player
             this.props.contentContainer().updateEditButtonsOnPlayer();
         }
+    }
+
+    descriptionUpdate(description: string): void {
+        this.setState({
+            description
+        });
+
+        if (!this.fetchingSuggestions) {
+            this.fetchSuggestions(description);
+        }
+
+        this.saveEditTimes();
+    }
+
+    async fetchSuggestions(description: string): Promise<void> {
+        if (this.props.contentContainer().channelIDInfo.status !== ChannelIDStatus.Found) return;
+
+        this.fetchingSuggestions = true;
+        const result = await utils.asyncRequestToServer("GET", "/api/chapterNames", {
+            description,
+            channelID: this.props.contentContainer().channelIDInfo.id
+        });
+
+        if (result.ok) {
+            try {
+                const names = JSON.parse(result.responseText) as {description: string}[];
+                this.setState({
+                    suggestedNames: names.map(n => ({
+                        label: n.description
+                    }))
+                });
+            } catch (e) {} //eslint-disable-line no-empty
+        }
+
+        this.fetchingSuggestions = false;
     }
 
     configUpdate(): void {
