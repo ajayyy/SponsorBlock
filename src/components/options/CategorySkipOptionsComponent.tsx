@@ -227,7 +227,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             configKey={option.configKey} 
                             label={option.label}
                             disabled={disabled}
-                            style={{width: "300px"}}
+                            style={{width: "inherit"}}
                         />
                     </td>
                 </tr>
