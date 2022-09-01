@@ -527,12 +527,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
 
         if (downloadedTimes.length > 0) {
-            PageElements.issueReporterImportExport.classList.remove("hidden");
-            if (utils.getCategorySelection("chapter")?.option === CategorySkipOption.ShowOverlay) {
-                PageElements.importSegmentsButton.classList.remove("hidden");
-            }
+            PageElements.exportSegmentsButton.classList.remove("hidden");
         } else { 
-            PageElements.issueReporterImportExport.classList.add("hidden");
+            PageElements.exportSegmentsButton.classList.add("hidden");
         }
 
         const isVip = Config.config.isVip;
