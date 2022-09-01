@@ -7,6 +7,7 @@ import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
 import SelectorComponent, { SelectorOption } from "./SelectorComponent";
 import { GenericUtils } from "../utils/genericUtils";
+import { noRefreshFetchingChaptersAllowed } from "../utils/licenseKey";
 
 
 const utils = new Utils();
@@ -402,7 +403,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         for (const category of (this.props.categoryList ?? CompileConfig.categoryList)) {
             // If permission not loaded, treat it like we have permission except chapter
             const defaultBlockCategories = ["chapter"];
-            const permission = Config.config.permissions[category as Category];
+            const permission = Config.config.permissions[category as Category] && (category !== "chapter" || noRefreshFetchingChaptersAllowed());
             if ((defaultBlockCategories.includes(category) || permission !== undefined) && !permission) continue;
 
             elements.push(

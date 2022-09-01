@@ -22,6 +22,13 @@ export async function checkLicenseKey(licenseKey: string): Promise<boolean> {
     return false
 }
 
+/**
+ * The other one also tried refreshing, so returns a promise
+ */
+export function noRefreshFetchingChaptersAllowed(): boolean {
+    return Config.config.payments.chaptersAllowed || CompileConfig["freeChapterAccess"];
+}
+
 export async function fetchingChaptersAllowed(): Promise<boolean> {
     if (Config.config.payments.freeAccess || CompileConfig["freeChapterAccess"]) {
         return true;
