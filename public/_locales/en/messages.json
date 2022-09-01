@@ -125,6 +125,9 @@
     "SubmitTimes": {
         "message": "Submit Segments"
     },
+    "sortSegments": {
+        "message": "Sort Segments"
+    },
     "submitCheck": {
         "message": "Are you sure you want to submit this?"
     },

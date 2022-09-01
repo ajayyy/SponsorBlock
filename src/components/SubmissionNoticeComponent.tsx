@@ -77,6 +77,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
             <img id={"sponsorSkipSortButton" + this.state.idSuffix} 
                 className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipSmallButton"
                 onClick={() => this.sortSegments()}
+                title={chrome.i18n.getMessage("sortSegments")}
                 src={chrome.extension.getURL("icons/sort.svg")}>
             </img>;
         return (
