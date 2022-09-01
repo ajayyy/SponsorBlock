@@ -3,10 +3,12 @@ import { shortCategoryName } from "./categoryUtils";
 import { GenericUtils } from "./genericUtils";
 import * as CompileConfig from "../../config.json";
 
+const inTest = typeof chrome === "undefined";
+
 const chapterNames = CompileConfig.categoryList.filter((code) => code !== "chapter")
     .map((code) => ({
         code,
-        name: chrome.i18n.getMessage("category_" + code)
+        name: !inTest ? chrome.i18n.getMessage("category_" + code) : code
     }));
 
 export function exportTimes(segments: SponsorTime[]): string {
