@@ -86,6 +86,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     const PageElements: PageElements = {};
 
     [
+        "sponsorBlockPopupBody",
         "sponsorblockPopup",
         "sponsorStart",
         // Top toggles
@@ -153,7 +154,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     getSegmentsFromContentScript(false);
     await utils.wait(() => Config.config !== null && allowPopup, 5000, 5);
-    document.querySelector("body").style.removeProperty("visibility");
+    PageElements.sponsorBlockPopupBody.style.removeProperty("visibility");
     if (!Config.configSyncListeners.includes(contentConfigUpdateListener)) {
         Config.configSyncListeners.push(contentConfigUpdateListener);
     }
@@ -166,6 +167,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     if (window !== window.top) {
         PageElements.sbCloseButton.classList.remove("hidden");
+        PageElements.sponsorBlockPopupBody.classList.add("is-embedded");
     }
 
     // Hide donate button if wanted (Safari, or user choice)
@@ -212,7 +214,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     if (window !== window.top) {
         document.addEventListener("keydown", (e) => {
             const target = e.target as HTMLElement;
-            if (target.tagName === "INPUT" 
+            if (target.tagName === "INPUT"
                 || target.tagName === "TEXTAREA"
                 || e.key === "ArrowUp"
                 || e.key === "ArrowDown") {
@@ -283,7 +285,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 }
                 PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
             }
-            
+
             Config.config.isVip = userInfo.vip;
             Config.config.permissions = userInfo.permissions;
 
@@ -580,7 +582,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             }
 
             segmentTimeFromToNode.style.margin = "5px";
-            
+
             // for inline-styling purposes
             const labelContainer = document.createElement("div");
             if (actionType !== ActionType.Chapter) labelContainer.appendChild(categoryColorCircle);
