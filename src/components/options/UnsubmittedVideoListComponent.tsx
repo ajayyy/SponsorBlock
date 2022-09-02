@@ -29,7 +29,8 @@ class UnsubmittedVideoListComponent extends React.Component<UnsubmittedVideoList
 
         return (
             <table id="unsubmittedVideosList"
-                className="categoryChooserTable">
+                className="categoryChooserTable"
+                style={{marginTop: "10px"}} >
                 <tbody>
                     {/* Headers */}
                     <tr id="UnsubmittedVideosListHeader"

@@ -15,7 +15,6 @@ class UnsubmittedVideosComponent extends React.Component<UnsubmittedVideosProps,
     constructor(props: UnsubmittedVideosProps) {
         super(props);
 
-        // Setup state
         this.state = {
             tableVisible: false,
         };
@@ -23,10 +22,10 @@ class UnsubmittedVideosComponent extends React.Component<UnsubmittedVideosProps,
 
     render(): React.ReactElement {
         const videoCount = Object.keys(Config.config.unsubmittedSegments).length;
-        const segmentCount = Object.values(Config.config.unsubmittedSegments).reduce((acc: number, vid: Array<unknown>) => acc+vid.length, 0);
+        const segmentCount = Object.values(Config.config.unsubmittedSegments).reduce((acc: number, vid: Array<unknown>) => acc + vid.length, 0);
 
         return <>
-            <div>
+            <div style={{marginBottom: "10px"}}>
                 {segmentCount == 0 ?
                     chrome.i18n.getMessage("unsubmittedSegmentCountsZero") :
                     chrome.i18n.getMessage("unsubmittedSegmentCounts")
