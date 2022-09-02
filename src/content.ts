@@ -2199,15 +2199,18 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 
 function windowListenerHandler(event: MessageEvent): void {
     const data = event.data;
-    const dataType = data.type
+    const dataType = data.type;
     if (data.source !== "sponsorblock") return;
 
     if (dataType === "navigation") {
         sponsorVideoID = data.videoID;
-        pageType = data.pageType
-        channelIDInfo = {
-            id: data.channelID,
-            status: ChannelIDStatus.Found
+        pageType = data.pageType;
+
+        if (data.channelID) {
+            channelIDInfo = {
+                id: data.channelID,
+                status: ChannelIDStatus.Found
+            };
         }
     } else if (dataType === "ad") {
         if (isAdPlaying != data.playing) {
