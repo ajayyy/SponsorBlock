@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmentos"
     },
+    "SegmentsCap": {
+        "message": "Segmentos"
+    },
+    "Chapters": {
+        "message": "Capítulos"
+    },
+    "renderAsChapters": {
+        "message": "Procesar segmentos como capítulos",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Votar positivamente este envío"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Enviar Segmentos"
+    },
+    "sortSegments": {
+        "message": "Ordenar Segmentos"
     },
     "submitCheck": {
         "message": "¿Estás seguro de que quieres enviar esto?"
@@ -287,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "Enviar segmentos",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Siguiente capítulo",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Capítulo anterior",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -545,6 +566,10 @@
         "message": "a",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "¡Copiado!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Incluye transiciones entre segmentos"
     },
@@ -696,6 +721,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Puede saltar al título o miniatura"
     },
+    "category_chapter": {
+        "message": "Capítulo"
+    },
+    "category_chapter_description": {
+        "message": "Capítulos con nombre personalizado que describen las secciones principales de un vídeo."
+    },
+    "category_chapter_guideline1": {
+        "message": "No mencione las marcas del patrocinador"
+    },
+    "category_chapter_guideline2": {
+        "message": "Usar capítulos más grandes para secciones generales"
+    },
+    "category_chapter_guideline3": {
+        "message": "Los capítulos más pequeños pueden colocarse dentro de capítulos más grandes"
+    },
     "category_livestream_messages": {
         "message": "Directo: Lecturas de donaciones y mensajes"
     },
@@ -725,6 +765,9 @@
     },
     "showOverlay_full": {
         "message": "Mostrar Etiqueta"
+    },
+    "showOverlay_chapter": {
+        "message": "Mostrar capítulos"
     },
     "autoSkipOnMusicVideos": {
         "message": "Omitir automáticamente todos los segmentos cuando hay un segmento sin música"
@@ -781,6 +824,10 @@
     "bracketEnd": {
         "message": "(Final)"
     },
+    "End": {
+        "message": "Final",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "oculto: voto negativo"
     },
@@ -821,6 +868,13 @@
     "downvoteDescription": {
         "message": "Tiempo incorrecto/equivocado"
     },
+    "incorrectVote": {
+        "message": "Incorrecto"
+    },
+    "harmfulVote": {
+        "message": "Perjudicial",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Cambiar Categoría"
     },
@@ -855,6 +909,9 @@
     },
     "categoryPillTitleText": {
         "message": "Todo el video está etiquetado como esta categoría y está muy estrechamente integrado como para poder separarlo"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Uno de los nombres de sus capítulos es similar a una categoría. Debería usar categorías cuando sea posible en su lugar."
     },
     "experiementOptOut": {
         "message": "No participar en futuros experimentos",
@@ -1039,5 +1096,59 @@
     },
     "confirmResetToDefault": {
         "message": "¿Estás seguro de que quieres restablecer todos los ajustes a sus valores por defecto? Esto no se puede deshacer."
+    },
+    "exportSegments": {
+        "message": "Exportar segmentos"
+    },
+    "importSegments": {
+        "message": "Importar capítulos"
+    },
+    "Import": {
+        "message": "Importar",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "La clave de la licencia no es válida"
+    },
+    "hideUpsells": {
+        "message": "Ocultar opciones no disponibles sin pago extra"
+    },
+    "chooseACountry": {
+        "message": "Seleccione un país"
+    },
+    "noDiscount": {
+        "message": "No calificas para un descuento"
+    },
+    "discountLink": {
+        "message": "Enlace del descuento (ver el precio rosado)"
+    },
+    "selectYourCountry": {
+        "message": "Seleccione su país"
+    },
+    "alreadyDonated": {
+        "message": "Si has donado cualquier cantidad antes del presente, puedes canjear el acceso gratuito vía correo electrónico:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Si no puedes permitirte comprar una licencia, haz clic en {here} para ver si eres elegible para un descuento",
+        "description": "Keep the curly braces"
+    },
+    "patreonSignIn": {
+        "message": "Iniciar sesión con Patreon"
+    },
+    "redeem": {
+        "message": "Canje"
+    },
+    "joinOnPatreon": {
+        "message": "Danos tu apoyo en Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Compra única"
+    },
+    "enterLicenseKey": {
+        "message": "Ingresar clave de licencia"
+    },
+    "chaptersPage1": {
+        "message": "La característica de los capítulos de origen de SponsorBlock sólo está disponible para personas que compran una licencia, o para las personas a las que se les concede acceso gratis debido a sus contribuciones anteriores"
     }
 }
