@@ -1107,6 +1107,9 @@
         "message": "Импортиране",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemSuccess": {
+        "message": "Осребряването е успешно!"
+    },
     "redeemFailed": {
         "message": "Лицензионният ключ е невалиден"
     },
