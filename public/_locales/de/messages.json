@@ -199,7 +199,7 @@
         "message": "Versteckt die Schaltflächen im YouTube-Videoplayer, um Segmente einzusenden."
     },
     "showSkipButton": {
-        "message": "Behalte \"Zum Highlight springen\"-Knopf in der Leiste"
+        "message": "Behalte „Zum beliebtesten Teil springen“-Schaltfläche im Wiedergabefenster"
     },
     "showInfoButton": {
         "message": "Zeige Info-Knopf im Youtube-Videoplayer"
@@ -554,7 +554,7 @@
         "message": "Fehler beim Kopieren in die Zwischenablage"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopiert Informationen in die Zwischenablage, welche einem Entwickler gegebenenfalls (z. B. um einen Fehler zu melden) zur Verfügung gestellt werden können. Personenbezogene Daten wie die Benutzer-ID, Kanäle auf der Whitelist und die benutzerdefinierte Serveradresse wurden entfernt. Die Debug-Informationen enthalten jedoch unter anderem den Useragent, den Browser, das Betriebssystem und die Versionsnummer der Erweiterung. "
+        "message": "Kopiert Informationen in die Zwischenablage, die Entwickelnden gegebenenfalls bei Fehlermeldungen oder spezifischen Anfragen zur Verfügung gestellt werden können. Personenbezogene Daten wie deine Profilkennung, Kanäle auf der Positivliste und angepasste Server-Adressen wurden entfernt. Die Fehlerinformationen enthalten jedoch unter anderem den User Agent, den Browser, das Betriebssystem und die Versionsnummer der Erweiterung. "
     },
     "copyDebugInformationComplete": {
         "message": "Die Debug-Informationen wurden in die Zwischenablage kopiert. Du kannst alle Informationen entfernen, die du nicht teilen möchtest. Verwende einen Texteditor um die Informationen in einer Textdatei zu speichern (um diese ggf. einem Fehlerbericht hinzuzufügen)."
@@ -574,7 +574,7 @@
         "message": "Fließende Übergänge einbeziehen"
     },
     "generic_guideline2": {
-        "message": "Spielt, als ob nichts übersprungen worden wäre"
+        "message": "Wiedergeben, als ob nichts übersprungen worden wäre"
     },
     "category_sponsor": {
         "message": "Gesponserte Videosegmente"
@@ -586,7 +586,7 @@
         "message": "Bezahlte Werbung"
     },
     "category_sponsor_guideline2": {
-        "message": "Nicht für Spenden oder eigenen Merch"
+        "message": "Nicht für Spenden oder eigene Fanartikel"
     },
     "category_selfpromo": {
         "message": "Unbezahlt/Eigenwerbung"
@@ -595,7 +595,7 @@
         "message": "Ähnlich wie \"Gesponsorte Videosegmente\", jedoch für unbezahlte oder Eigenwerbung. Dies beinhaltet Bereiche über Merchandise, Spenden, oder Informationen darüber, mit wem zusammengearbeitet wurde."
     },
     "category_selfpromo_guideline1": {
-        "message": "Spenden, Mitgliedschaften und eigener Merch"
+        "message": "Spenden, Mitgliedschaften und eigene Fanartikel"
     },
     "category_selfpromo_guideline2": {
         "message": "Unentgeltliche Erwähnungen, die nicht zum Video beitragen"
@@ -1053,7 +1053,7 @@
         "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabInterface": {
-        "message": "Aussehen",
+        "message": "Oberfläche",
         "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabKeyBinds": {
@@ -1107,6 +1107,9 @@
         "message": "Importieren",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemSuccess": {
+        "message": "Einlösen erfolgreich!"
+    },
     "redeemFailed": {
         "message": "Lizenzschlüssel ist ungültig"
     },
@@ -1150,5 +1153,60 @@
     },
     "chaptersPage1": {
         "message": "Die Crowd-sourced Kapitel-Funktion von SponsorBlock ist nur für Personen verfügbar, welche eine Lizenz kaufen, oder gratis Zugriff für Ihre bisherigen Beiträge erhalten haben"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Du hast derzeit {0} in {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Du hast aktuell keine nicht eingereichten Segmente",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "nicht eingereichtes Segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "nicht eingereichte Segmente",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "Video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "Videos",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Alle Segmente löschen",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Möchtest du wirklich alle nicht eingereichten Segmente löschen?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Segmente anzeigen",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Segmente ausblenden",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Video ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Segmentanzahl",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Aktionen",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Als URL teilen"
     }
 }
