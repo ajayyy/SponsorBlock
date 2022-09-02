@@ -18,6 +18,7 @@ import {
     ToggleSkippable,
     VideoID,
     VideoInfo,
+    PageType
 } from "./types";
 import Utils from "./utils";
 import PreviewBar, { PreviewBarSegment } from "./js-components/previewBar";
@@ -55,6 +56,10 @@ let activeSkipKeybindElement: ToggleSkippable = null;
 
 // JSON video info
 let videoInfo: VideoInfo = null;
+// Page Type - browse/watch etc...
+let pageType: PageType;
+// if video is live or premiere
+let isLivePremiere: boolean
 // The channel this video is about
 let channelIDInfo: ChannelIDInfo;
 // Locked Categories in this tab, like: ["sponsor","intro","outro"]
@@ -90,7 +95,7 @@ let onInvidious: boolean;
 let onMobileYouTube: boolean;
 
 //the video id of the last preview bar update
-let lastPreviewBarUpdate;
+let lastPreviewBarUpdate: VideoID;
 
 // Is the video currently being switched
 let switchingVideos = null;
@@ -334,12 +339,14 @@ function resetValues() {
     sponsorSkipped = [];
 
     videoInfo = null;
+    pageType = null;
     channelWhitelisted = false;
     channelIDInfo = {
         status: ChannelIDStatus.Fetching,
         id: null
     };
     lockedCategories = [];
+    isLivePremiere = false;
 
     //empty the preview bar
     if (previewBar !== null) {
@@ -1157,6 +1164,8 @@ function startSkipScheduleCheckingForStartSponsors() {
 
 function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     url ||= document.URL;
+    // pageType shortcut
+    if (pageType === PageType.Channel) return getYouTubeVideoIDFromDocument()
     // clips should never skip, going from clip to full video has no indications.
     if (url.includes("youtube.com/clip/")) return false;
     // skip to document and don't hide if on /embed/
@@ -1164,17 +1173,19 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
     if ((!url.includes("youtube.com")) || url.includes("/watch") || url.includes("/shorts/") || url.includes("playlist")) return getYouTubeVideoIDFromURL(url);
     // skip to document if matches pattern
-    if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument();
+    if (url.includes("/channel/") || url.includes("/user/") || url.includes("/c/")) return getYouTubeVideoIDFromDocument(true, PageType.Channel);
     // not sure, try URL then document
     return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(false);
 }
 
-function getYouTubeVideoIDFromDocument(hideIcon = true): string | boolean {
+function getYouTubeVideoIDFromDocument(hideIcon = true, pageHint = PageType.Watch): string | boolean {
     // get ID from document (channel trailer / embedded playlist)
     const element = video?.parentElement?.parentElement?.querySelector("a.ytp-title-link[data-sessionlink='feature=player-title']");
     const videoURL = element?.getAttribute("href");
     if (videoURL) {
         onInvidious = hideIcon;
+        // if href found, hint was correct
+        pageType = pageHint;
         return getYouTubeVideoIDFromURL(videoURL);
     } else {
         return false;
@@ -1294,25 +1305,29 @@ function updatePreviewBar(): void {
 async function whitelistCheck() {
     const whitelistedChannels = Config.config.whitelistedChannels;
 
-    const getChannelID = () =>
-        (document.querySelector("a.ytd-video-owner-renderer") // YouTube
-        ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
-        ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
-        ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
-            ?.getAttribute("href")?.match(/\/(?:channel|c|user)\/(UC[a-zA-Z0-9_-]{22}|[a-zA-Z0-9_-]+)/)?.[1];
-
     try {
-        await utils.wait(() => !!getChannelID(), 6000, 20);
+        await utils.wait(() => channelIDInfo.status === ChannelIDStatus.Found, 6000, 20);
 
-        channelIDInfo = {
-            status: ChannelIDStatus.Found,
-            id: getChannelID().match(/^\/?([^\s/]+)/)[0]
-        };
+        // If found, continue on, it was set by the listener
     } catch (e) {
-        channelIDInfo = {
-            status: ChannelIDStatus.Failed,
-            id: null
-        };
+        // Try fallback
+        const channelIDFallback = (document.querySelector("a.ytd-video-owner-renderer") // YouTube
+            ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
+            ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
+            ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
+                ?.getAttribute("href")?.match(/\/(?:channel|c|user)\/(UC[a-zA-Z0-9_-]{22}|[a-zA-Z0-9_-]+)/)?.[1];
+
+        if (channelIDFallback) {
+            channelIDInfo = {
+                status: ChannelIDStatus.Found,
+                id: channelIDFallback
+            };
+        } else {
+            channelIDInfo = {
+                status: ChannelIDStatus.Failed,
+                id: null
+            };
+        }
     }
 
     //see if this is a whitelisted channel
@@ -1731,7 +1746,7 @@ function updateEditButtonsOnPlayer(): void {
     // Don't try to update the buttons if we aren't on a YouTube video page
     if (!sponsorVideoID || onMobileYouTube) return;
 
-    const buttonsEnabled = !Config.config.hideVideoPlayerControls && !onInvidious;
+    const buttonsEnabled = !(Config.config.hideVideoPlayerControls || onInvidious);
 
     let creatingSegment = false;
     let submitButtonVisible = false;
@@ -2069,7 +2084,7 @@ function submitSponsorTimes() {
 //called after all the checks have been made that it's okay to do so
 async function sendSubmitMessage() {
     // Block if submitting on a running livestream or premiere
-    if (isVisible(document.querySelector(".ytp-live-badge"))) {
+    if (isLivePremiere || isVisible(document.querySelector(".ytp-live-badge"))) {
         alert(chrome.i18n.getMessage("liveOrPremiere"));
         return;
     }
@@ -2182,6 +2197,36 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
     return sponsorTimesMessage;
 }
 
+function windowListenerHandler(event: MessageEvent): void {
+    const data = event.data;
+    const dataType = data.type;
+    if (data.source !== "sponsorblock") return;
+
+    if (dataType === "navigation") {
+        sponsorVideoID = data.videoID;
+        pageType = data.pageType;
+
+        if (data.channelID) {
+            channelIDInfo = {
+                id: data.channelID,
+                status: ChannelIDStatus.Found
+            };
+        }
+    } else if (dataType === "ad") {
+        if (isAdPlaying != data.playing) {
+            isAdPlaying = data.playing
+            updatePreviewBar();
+            updateVisibilityOfPlayerControlsButton();
+        }
+    } else if (dataType === "data") {
+        if (data.video !== sponsorVideoID) {
+            sponsorVideoID = data.videoID;
+            videoIDChange(sponsorVideoID);
+        }
+        isLivePremiere = data.isLive || data.isPremiere
+    }
+}
+
 function updateActiveSegment(currentTime: number): void {
     previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, currentTime);
     chrome.runtime.sendMessage({
@@ -2227,7 +2272,14 @@ function addPageListeners(): void {
         }
     };
 
+    // inject into document
+    const docScript = document.createElement("script");
+    docScript.src = chrome.runtime.getURL("js/document.js");
+    (document.head || document.documentElement).appendChild(docScript);
+
+    document.addEventListener("yt-navigate-start", resetValues);
     document.addEventListener("yt-navigate-finish", refreshListners);
+    window.addEventListener("message", windowListenerHandler);
 }
 
 function addHotkeyListener(): void {
