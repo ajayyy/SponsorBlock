@@ -25,6 +25,16 @@
     "Segments": {
         "message": "Segmente"
     },
+    "SegmentsCap": {
+        "message": "Segmente"
+    },
+    "Chapters": {
+        "message": "Kapitel"
+    },
+    "renderAsChapters": {
+        "message": "Zeige Segmente als Kapitel",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Diese Einreichung positiv bewerten"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Senden"
+    },
+    "sortSegments": {
+        "message": "Segmente sortieren"
     },
     "submitCheck": {
         "message": "Bist du sicher, dass du dies übermitteln willst?"
@@ -219,7 +232,7 @@
         "message": "Alle von dir negativ bewerteten Segmente bleiben auch nach neu laden der Seite verborgen"
     },
     "trackDownvotesWarning": {
-        "message": "Warnung: Das Deaktivieren wird alle vorher gespeicherten Downvotes löschen"
+        "message": "Warnung: Das Deaktivieren wird alle zuvor gespeicherten negativen Bewertungen löschen"
     },
     "enableQueryByHashPrefix": {
         "message": "Abfrage nach Hash-Präfix"
@@ -286,7 +299,15 @@
         "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Segmente senden",
+        "message": "Segmente einreichen",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Nächstes Kapitel",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Vorheriges Kapitel",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -318,7 +339,7 @@
         "message": "Ton aus"
     },
     "full": {
-        "message": "Ganzes Video",
+        "message": "Vollständiges Video",
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
@@ -336,7 +357,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} stummgeschaltet",
+        "message": "{0} stumm geschaltet",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -391,7 +412,7 @@
         "message": "Benutzer-ID importieren/exportieren"
     },
     "whatChangeUserID": {
-        "message": "Dies sollte geheim gehalten werden, da es wie ein Passwort ist und sollte mit niemandem geteilt werden. Sollte es jemand haben, könnte er sich als dich ausgeben. Wenn du nach deiner öffentlichen Benutzer-ID suchst, klicke auf das \"Kopieren\"-Symbol bei deinem Benutzernamen im Popup."
+        "message": "Dies sollte geheim gehalten und wie ein Passwort behandelt, also mit niemandem geteilt werden. Andere könnten sich damit als dich ausgeben. Wenn du nach deiner öffentlichen Profilkennung suchst, klicke auf das „Kopieren“-Symbol neben deinem Anmeldenamen im Pop-up."
     },
     "setUserID": {
         "message": "Interne Benutzer-ID festlegen"
@@ -443,7 +464,7 @@
         "message": "Videosegmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
     },
     "skipNoticeDuration": {
-        "message": "Dauer der Überspringen-Meldung (Sekunden):"
+        "message": "Dauer des Überspringenhinweises (Sekunden):"
     },
     "skipNoticeDurationDescription": {
         "message": "Die überspringen Benachrichtigung wird mindestens für so viele Sekunden angezeigt. Für manuelles Überspringen kann sie länger sichtbar sein."
@@ -544,6 +565,10 @@
     "to": {
         "message": "bis",
         "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "CopiedExclamation": {
+        "message": "Kopiert!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
     "generic_guideline1": {
         "message": "Fließende Übergänge einbeziehen"
@@ -696,6 +721,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Kann zum Titel oder Thumbnail überspringen"
     },
+    "category_chapter": {
+        "message": "Kapitel"
+    },
+    "category_chapter_description": {
+        "message": "Benutzerdefinierte Kapitel, welche grosse Bereiche eines Videos beschreiben."
+    },
+    "category_chapter_guideline1": {
+        "message": "Sponsor-Markennamen nicht erwähnen"
+    },
+    "category_chapter_guideline2": {
+        "message": "Benutze grössere Kapitel für allgemeine Abschnitte"
+    },
+    "category_chapter_guideline3": {
+        "message": "Kleinere Kapitel können innerhalb von grösseren platziert werden"
+    },
     "category_livestream_messages": {
         "message": "Livestream: Spenden/Nachrichten vorlesen"
     },
@@ -725,6 +765,9 @@
     },
     "showOverlay_full": {
         "message": "Zeige Label"
+    },
+    "showOverlay_chapter": {
+        "message": "Kapitel zeigen"
     },
     "autoSkipOnMusicVideos": {
         "message": "Alle Segmente automatisch überspringen, wenn ein nicht-Musiksegment vorhanden ist"
@@ -781,6 +824,10 @@
     "bracketEnd": {
         "message": "(Ende)"
     },
+    "End": {
+        "message": "Ende",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "Ausgeblendet: negativ bewertet"
     },
@@ -821,6 +868,13 @@
     "downvoteDescription": {
         "message": "Nicht korrekt oder falsches Timing"
     },
+    "incorrectVote": {
+        "message": "Falsch"
+    },
+    "harmfulVote": {
+        "message": "Schädlich",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Kategorie ändern"
     },
@@ -855,6 +909,9 @@
     },
     "categoryPillTitleText": {
         "message": "Das gesamte Video fällt unter diese Kategorie und ist zu stark integriert, um es zu trennen"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Eines deiner Kapitelnamen ähnlet einer Kategorie. Du solltest Kategorien verwenden, wenn möglich."
     },
     "experiementOptOut": {
         "message": "Aus allen zukünftigen Experimenten abmelden",
@@ -1039,5 +1096,59 @@
     },
     "confirmResetToDefault": {
         "message": "Sind Sie sicher, dass Sie alle Einstellungen auf ihre Standardwerte zurücksetzen wollen? Dies kann nicht rückgängig gemacht werden."
+    },
+    "exportSegments": {
+        "message": "Segmente exportieren"
+    },
+    "importSegments": {
+        "message": "Kapitel importieren"
+    },
+    "Import": {
+        "message": "Importieren",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "Lizenzschlüssel ist ungültig"
+    },
+    "hideUpsells": {
+        "message": "Verstecke Optionen, welche ohne extra Zahlung nicht verfügbar sind"
+    },
+    "chooseACountry": {
+        "message": "Wähle ein Land"
+    },
+    "noDiscount": {
+        "message": "Du bist nicht für einen Rabatt qualifiziert"
+    },
+    "discountLink": {
+        "message": "Rabatt-Link (Siehe rosa Preis)"
+    },
+    "selectYourCountry": {
+        "message": "Wähle dein Land"
+    },
+    "alreadyDonated": {
+        "message": "Wenn du zuvor etwas gespendet hast, kannst du einen kostenlosen Zugang per E-Mail einlösen:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Wenn du dir keine Lizenz leisten kannst, klicke {hier} um zu sehen, ob du für einen Rabatt in Frage kommen",
+        "description": "Keep the curly braces"
+    },
+    "patreonSignIn": {
+        "message": "Mit Patreon anmelden"
+    },
+    "redeem": {
+        "message": "Einlösen"
+    },
+    "joinOnPatreon": {
+        "message": "Auf Patreon abonnieren"
+    },
+    "oneTimePurchase": {
+        "message": "Einmaliger Kauf"
+    },
+    "enterLicenseKey": {
+        "message": "Lizenzschlüssel eingeben"
+    },
+    "chaptersPage1": {
+        "message": "Die Crowd-sourced Kapitel-Funktion von SponsorBlock ist nur für Personen verfügbar, welche eine Lizenz kaufen, oder gratis Zugriff für Ihre bisherigen Beiträge erhalten haben"
     }
 }
