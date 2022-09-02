@@ -1,7 +1,7 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType, StorageChangesObject, CategorySkipOption } from "./types";
+import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType, StorageChangesObject } from "./types";
 import { Message, MessageResponse, IsInfoFoundMessageResponse, ImportSegmentsResponse, PopupMessage } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
