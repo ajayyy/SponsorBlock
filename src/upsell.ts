@@ -23,8 +23,9 @@ async function init() {
     cantAfford.appendChild(document.createTextNode(cantAffordTexts[2]));
 
     const redeemButton = document.getElementById("redeemButton") as HTMLInputElement;
+    const redeemInput = document.getElementById("redeemCodeInput") as HTMLInputElement;
     redeemButton.addEventListener("click", async () => {
-        const licenseKey = redeemButton.value;
+        const licenseKey = redeemInput.value;
 
         if (await checkLicenseKey(licenseKey)) {
             Config.config.payments.licenseKey = licenseKey;
