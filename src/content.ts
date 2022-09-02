@@ -1227,6 +1227,7 @@ function updatePreviewBar(): void {
 
     if (video === null) return;
 
+    const hashParams = getHashParams();
     const previewBarSegments: PreviewBarSegment[] = [];
     if (sponsorTimes) {
         sponsorTimes.forEach((segment) => {
@@ -1240,6 +1241,7 @@ function updatePreviewBar(): void {
                 showLarger: segment.actionType === ActionType.Poi,
                 description: segment.description,
                 source: segment.source,
+                requiredSegment: hashParams.requiredSegment && segment.UUID === hashParams.requiredSegment
             });
         });
     }

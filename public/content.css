@@ -39,6 +39,10 @@
 	height: 100%;
 }
 
+.previewbar.requiredSegment {
+	transform: scaleY(3)
+}
+
 /* Make sure settings are upfront */
 .ytp-settings-menu {
 	z-index: 6000 !important;

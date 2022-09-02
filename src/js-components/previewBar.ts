@@ -23,6 +23,7 @@ export interface PreviewBarSegment {
     showLarger: boolean;
     description: string;
     source: SponsorSourceType;
+    requiredSegment?: boolean;
 }
 
 interface ChapterGroup extends SegmentContainer {
@@ -251,6 +252,7 @@ class PreviewBar {
 
         const bar = document.createElement('li');
         bar.classList.add('previewbar');
+        if (barSegment.requiredSegment) bar.classList.add("requiredSegment");
         bar.innerHTML = showLarger ? '&nbsp;&nbsp;' : '&nbsp;';
 
         const fullCategoryName = (unsubmitted ? 'preview-' : '') + category;
