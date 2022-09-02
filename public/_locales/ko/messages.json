@@ -545,6 +545,10 @@
         "message": "-",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "복사 완료!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "연속적인 전환이 포함된 구간이어야 함"
     },
@@ -821,6 +825,10 @@
     "downvoteDescription": {
         "message": "구간의 시간이 잘못 입력됐어요"
     },
+    "harmfulVote": {
+        "message": "유해함",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "카테고리를 변경해요"
     },
@@ -1039,5 +1047,8 @@
     },
     "confirmResetToDefault": {
         "message": "모든 설정을 기본값으로 초기화할까요? 되돌릴 수 없어요!"
+    },
+    "enterLicenseKey": {
+        "message": "라이선스 키 입력"
     }
 }
