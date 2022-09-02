@@ -1107,6 +1107,9 @@
         "message": "Importar",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemSuccess": {
+        "message": "¡Canje exitoso!"
+    },
     "redeemFailed": {
         "message": "La clave de la licencia no es válida"
     },
@@ -1150,5 +1153,56 @@
     },
     "chaptersPage1": {
         "message": "La característica de los capítulos de origen de SponsorBlock sólo está disponible para personas que compran una licencia, o para las personas a las que se les concede acceso gratis debido a sus contribuciones anteriores"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Actualmente tienes {0} en {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Actualmente no tiene segmentos no enviados",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "segmento no enviado",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "segmentos no enviados",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "vídeos",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Borrar todos los segmentos",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "¿Estás seguro de que quieres borrar todos tus segmentos no enviados?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Mostrar segmentos",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Ocultar segmentos",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID del vídeo",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Acciones",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Compartir como URL"
     }
 }
