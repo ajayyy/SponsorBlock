@@ -25,6 +25,16 @@
     "Segments": {
         "message": "odsječci"
     },
+    "SegmentsCap": {
+        "message": "Odsječci"
+    },
+    "Chapters": {
+        "message": "Poglavlja"
+    },
+    "renderAsChapters": {
+        "message": "Iscrtaj isječke kao poglavlja",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Glasaj za ovaj unos"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Podnesi isječke"
+    },
+    "sortSegments": {
+        "message": "Razvrstaj isječke"
     },
     "submitCheck": {
         "message": "Jesi li siguran da želiš unijeti ovo?"
@@ -250,6 +263,14 @@
         "message": "Izvorni kod",
         "description": "Used on Firefox Store Page"
     },
+    "noticeUpdate": {
+        "message": "Napomena je nadograđena!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Ako ti se i dalje ne sviđa, pritisni gumb „Nikad ne prikazuj”.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
     "setSkipShortcut": {
         "message": "Preskoči odsječak",
         "description": "Keybind label"
@@ -260,6 +281,14 @@
     },
     "setSubmitKeybind": {
         "message": "Pošalji odsječke",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Sljedeće poglavlje",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Prethodno poglavlje",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -429,6 +458,9 @@
     "setOptions": {
         "message": "Postavi opcije"
     },
+    "incorrectlyFormattedOptions": {
+        "message": "Ovaj JSON nije ispravno formatiran. Tvoje opcije nisu promijenjene."
+    },
     "confirmNoticeTitle": {
         "message": "Pošalji segment"
     },
@@ -460,11 +492,27 @@
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Kopirano!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
+    "generic_guideline1": {
+        "message": "Uključi glatke prijelaze"
+    },
+    "generic_guideline2": {
+        "message": "Reproducira kao da ništa nije preskočeno"
+    },
     "category_sponsor": {
         "message": "Sponzor"
     },
     "category_sponsor_description": {
         "message": "Plaćene promocije, plaćene preporuke i izravne reklame. Nije za samopromociju ili besplatno pozivanje na događaje/kreatore/web stranice/proizvode koji im se sviđaju."
+    },
+    "category_sponsor_guideline1": {
+        "message": "Plaćeni oglasi"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Ne za donacije ili proizvode"
     },
     "category_selfpromo": {
         "message": "Neplaćena promocija ili samopromocija"
@@ -517,6 +565,21 @@
     "category_poi_highlight": {
         "message": "Istaknuto"
     },
+    "category_chapter": {
+        "message": "Poglavlje"
+    },
+    "category_chapter_description": {
+        "message": "Prilagođeno imenovana poglavlja koja opisuju glavne dijelove videa."
+    },
+    "category_chapter_guideline1": {
+        "message": "Ne spominji imena brendova sponzora"
+    },
+    "category_chapter_guideline2": {
+        "message": "Koristi veća poglavlja za opće dijelove"
+    },
+    "category_chapter_guideline3": {
+        "message": "Manja poglavlja se mogu smjestiti unutar većih"
+    },
     "category_livestream_messages": {
         "message": "Livestream: čitanje donacija/poruka"
     },
@@ -540,6 +603,9 @@
     },
     "showOverlay_full": {
         "message": "Prikaži oznaku"
+    },
+    "showOverlay_chapter": {
+        "message": "Prikaži poglavlja"
     },
     "muteSegments": {
         "message": "Dopustite isječke koji isključuju zvuk umjesto da ga preskaču"
@@ -580,6 +646,10 @@
     "bracketEnd": {
         "message": "(kraj)"
     },
+    "End": {
+        "message": "Kraj",
+        "description": "Button that skips to the end of a segment"
+    },
     "manuallyHidden": {
         "message": "ručno skriveno"
     },
@@ -588,6 +658,13 @@
     },
     "downvoteDescription": {
         "message": "Neispravno/krivo vrijeme"
+    },
+    "incorrectVote": {
+        "message": "Neispravno"
+    },
+    "harmfulVote": {
+        "message": "Štetno",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Promijenite kategoriju"
@@ -620,6 +697,9 @@
     },
     "categoryPillTitleText": {
         "message": "Ovaj cijeli video označen je kao ova kategorija i previše je integriran da bi se mogao odvojiti"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Jedno od tvojih imena poglavlja je slično kategoriji. Kad god moguće koristi kategorije."
     },
     "hideForever": {
         "message": "Sakrij zauvijek"
@@ -721,5 +801,59 @@
     },
     "confirmResetToDefault": {
         "message": "Stvarno želiš vratiti sve postavke na standardne vrijednosti? To je nepovratna radnja."
+    },
+    "exportSegments": {
+        "message": "Izvezi odsječke"
+    },
+    "importSegments": {
+        "message": "Uvezi poglavlja"
+    },
+    "Import": {
+        "message": "Uvezi",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Uspješno korištenje kupona!"
+    },
+    "redeemFailed": {
+        "message": "Licencni ključ je neispravan"
+    },
+    "hideUpsells": {
+        "message": "Sakrij opcije koje nisu dostupne bez dodatnog plaćanja"
+    },
+    "chooseACountry": {
+        "message": "Odaberi zemlju"
+    },
+    "noDiscount": {
+        "message": "Ne ispunjavaš uvjete za popust"
+    },
+    "discountLink": {
+        "message": "Poveznica za popust (pogledaj ružičastu cijenu)"
+    },
+    "selectYourCountry": {
+        "message": "Odaberi svoju zemlju"
+    },
+    "alreadyDonated": {
+        "message": "Ako si već donirao/la, možeš iskoristiti kupon za besplatan pristup putem e-pošte:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Ako si ne možeš priuštiti kupnju licence, pritisni {here} da vidiš imaš li pravo na popust",
+        "description": "Keep the curly braces"
+    },
+    "patreonSignIn": {
+        "message": "Prijavi se putem Patreona"
+    },
+    "redeem": {
+        "message": "Iskoristi kupon"
+    },
+    "joinOnPatreon": {
+        "message": "Pretplati se na Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Jednokratna kupnja"
+    },
+    "enterLicenseKey": {
+        "message": "Upiši licencni ključ"
     }
 }
