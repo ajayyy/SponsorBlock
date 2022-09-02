@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmentów"
     },
+    "SegmentsCap": {
+        "message": "Segmenty"
+    },
+    "Chapters": {
+        "message": "Rozdziały"
+    },
+    "renderAsChapters": {
+        "message": "Pokazuj segmenty jako rozdziały",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Zagłosuj na ten segment"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Prześlij segmenty"
+    },
+    "sortSegments": {
+        "message": "Sortuj segmenty"
     },
     "submitCheck": {
         "message": "Czy na pewno chcesz to zamieścić?"
@@ -287,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "Prześlij segmenty",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Następny rozdział",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Poprzedni rozdział",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -545,6 +566,10 @@
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Skopiowano!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Zawiera płynne przejścia"
     },
@@ -696,6 +721,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Może pominąć do karty tytułowej lub miniaturki"
     },
+    "category_chapter": {
+        "message": "Rozdział"
+    },
+    "category_chapter_description": {
+        "message": "Innaczej nazwane rozdziały opisujące znaczące fragmenty filmu."
+    },
+    "category_chapter_guideline1": {
+        "message": "Nie wspominaj o nazwach sponsorów"
+    },
+    "category_chapter_guideline2": {
+        "message": "Używaj większych rozdziałów dla ogólnych sekcji"
+    },
+    "category_chapter_guideline3": {
+        "message": "Mniejsze rozdziały mogą być wstawione w większe"
+    },
     "category_livestream_messages": {
         "message": "Transmisja live: Dotacja/Czytanie wiadomości"
     },
@@ -725,6 +765,9 @@
     },
     "showOverlay_full": {
         "message": "Wyświetl etykietę"
+    },
+    "showOverlay_chapter": {
+        "message": "Pokaż rozdziały"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"
@@ -781,6 +824,10 @@
     "bracketEnd": {
         "message": "(Koniec)"
     },
+    "End": {
+        "message": "Koniec",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "ukryty: zminusowany"
     },
@@ -821,6 +868,13 @@
     "downvoteDescription": {
         "message": "Niepoprawne/Zły czas"
     },
+    "incorrectVote": {
+        "message": "Nieprawidłowy"
+    },
+    "harmfulVote": {
+        "message": "Szkodliwy",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Zmień kategorię"
     },
@@ -855,6 +909,9 @@
     },
     "categoryPillTitleText": {
         "message": "Cały film jest oznaczony jako ta kategoria i jest za bardzo zintegrowany, aby można było go podzielić"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Jedna z nazw twojego rozdziału jest podobna do kategorii. Powinieneś używać kategorii, jeśli to możliwe."
     },
     "experiementOptOut": {
         "message": "Wyłączenie wszystkich przyszłych eksperymentów",
@@ -1039,5 +1096,21 @@
     },
     "confirmResetToDefault": {
         "message": "Czy na pewno chcesz przywrócić wszystkie ustawienia do ich domyślnych wartości? Tego nie można cofnąć."
+    },
+    "exportSegments": {
+        "message": "Eksportuj segmenty"
+    },
+    "importSegments": {
+        "message": "Importuj rozdziały"
+    },
+    "Import": {
+        "message": "Importuj",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Pomyślnie zrealizowano!"
+    },
+    "redeemFailed": {
+        "message": "Klucz licencji jest nieprawidłowy"
     }
 }
