@@ -4,12 +4,21 @@ import UnsubmittedVideosComponent from "../components/options/UnsubmittedVideosC
 
 class UnsubmittedVideos {
 
+    ref: React.RefObject<UnsubmittedVideosComponent>;
+
     constructor(element: Element) {
+        this.ref = React.createRef();
+
         ReactDOM.render(
-            <UnsubmittedVideosComponent/>,
+            <UnsubmittedVideosComponent ref={this.ref} />,
             element
         );
     }
+
+    update(): void {
+        this.ref.current?.forceUpdate();
+    }
+
 }
 
 export default UnsubmittedVideos;

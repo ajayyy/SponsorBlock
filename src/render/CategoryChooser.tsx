@@ -4,11 +4,19 @@ import CategoryChooserComponent from "../components/options/CategoryChooserCompo
 
 class CategoryChooser {
 
+    ref: React.RefObject<CategoryChooserComponent>;
+
     constructor(element: Element) {
+        this.ref = React.createRef();
+
         ReactDOM.render(
-            <CategoryChooserComponent/>,
+            <CategoryChooserComponent ref={this.ref} />,
             element
         );
+    }
+
+    update(): void {
+        this.ref.current?.forceUpdate();
     }
 }
 

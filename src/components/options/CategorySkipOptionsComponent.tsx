@@ -38,10 +38,21 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
             this.setState({
                 hideChapter: !allowed
             });
-        })
+        });
     }
 
     render(): React.ReactElement {
+        if (this.state.hideChapter) {
+            // Ensure force update refreshes this
+            fetchingChaptersAllowed().then((allowed) => {
+                if (allowed) {
+                    this.setState({
+                        hideChapter: !allowed
+                    });
+                }
+            });
+        }
+
         let defaultOption = "disable";
         // Set the default opton properly
         for (const categorySelection of Config.config.categorySelections) {

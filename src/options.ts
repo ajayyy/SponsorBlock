@@ -14,8 +14,12 @@ import UnsubmittedVideos from "./render/UnsubmittedVideos";
 import KeybindComponent from "./components/options/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
+import { StorageChangesObject } from "./types";
 const utils = new Utils();
 let embed = false;
+
+const categoryChoosers: CategoryChooser[] = [];
+const unsubmittedVideos: UnsubmittedVideos[] = [];
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -291,10 +295,10 @@ async function init() {
                 break;
             }
             case "react-CategoryChooserComponent":
-                new CategoryChooser(optionsElements[i]);
+                categoryChoosers.push(new CategoryChooser(optionsElements[i]));
                 break;
             case "react-UnsubmittedVideosComponent":
-                new UnsubmittedVideos(optionsElements[i])
+                unsubmittedVideos.push(new UnsubmittedVideos(optionsElements[i]));
                 break;
         }
     }
@@ -352,10 +356,8 @@ async function shouldHideOption(element: Element): Promise<boolean> {
 
 /**
  * Called when the config is updated
- *
- * @param {String} element
  */
-function optionsConfigUpdateListener() {
+function optionsConfigUpdateListener(changes: StorageChangesObject) {
     const optionsContainer = document.getElementById("options");
     const optionsElements = optionsContainer.querySelectorAll("*");
 
@@ -364,9 +366,16 @@ function optionsConfigUpdateListener() {
             case "display":
                 updateDisplayElement(<HTMLElement> optionsElements[i])
                 break;
-            case "react-UnsubmittedVideosComponent":
-                new UnsubmittedVideos(optionsElements[i])
-                break;
+        }
+    }
+
+    if (changes.categorySelections || changes.payments) {
+        for (const chooser of categoryChoosers) {
+            chooser.update();
+        }
+    } else if (changes.unsubmittedSegments) {
+        for (const chooser of unsubmittedVideos) {
+            chooser.update();
         }
     }
 }
