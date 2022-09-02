@@ -1039,5 +1039,63 @@
     },
     "confirmResetToDefault": {
         "message": "Weet u zeker dat u alle instellingen wilt terugzetten naar hun standaardwaarden? Dit kan niet ongedaan gemaakt worden."
+    },
+    "redeemSuccess": {
+        "message": "Inwisselen geslaagd!"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Je hebt momenteel {0} in {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Je hebt momenteel geen niet ingediende segmenten",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "niet ingediend segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "niet ingediende segmenten",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "video's",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Verwijder alle segmenten",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Weet je zeker dat je alle niet ingediende segmenten wilt verwijderen?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Toon segmenten",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Verberg segmenten",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Video ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Aantal segmenten",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Acties",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Deel als URL"
     }
 }
