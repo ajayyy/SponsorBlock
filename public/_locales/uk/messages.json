@@ -25,6 +25,16 @@
     "Segments": {
         "message": "сегментів"
     },
+    "SegmentsCap": {
+        "message": "Сегменти"
+    },
+    "Chapters": {
+        "message": "Розділи"
+    },
+    "renderAsChapters": {
+        "message": "Показувати сегменти як розділи",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Проголосувати за цей сегмент"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Надіслати сегменти"
+    },
+    "sortSegments": {
+        "message": "Сортувати сегменти"
     },
     "submitCheck": {
         "message": "Ви впевнені, що хочете надіслати цю інформацію?"
@@ -287,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "Надіслати сегменти",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Наступний розділ",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Попередній розділ",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -545,6 +566,16 @@
         "message": "до",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Скопійовано!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
+    "generic_guideline1": {
+        "message": "Включає плавний перехід до наступної теми"
+    },
+    "generic_guideline2": {
+        "message": "Програється, наче нічого не пропущено"
+    },
     "category_sponsor": {
         "message": "Спонсор"
     },
@@ -618,6 +649,9 @@
     "category_music_offtopic_short": {
         "message": "Без музики"
     },
+    "category_music_offtopic_guideline2": {
+        "message": "Не музика під час виступу наживо"
+    },
     "category_poi_highlight": {
         "message": "Основне"
     },
@@ -629,6 +663,9 @@
     },
     "category_poi_highlight_guideline3": {
         "message": "Можна перейти до назви або ескізу"
+    },
+    "category_chapter": {
+        "message": "Розділ"
     },
     "category_livestream_messages": {
         "message": "Прямі трансляції: пожертвування/читання повідомлення"
@@ -659,6 +696,9 @@
     },
     "showOverlay_full": {
         "message": "Показати мітку"
+    },
+    "showOverlay_chapter": {
+        "message": "Показати розділи"
     },
     "autoSkipOnMusicVideos": {
         "message": "Автоматично пропустити усі сегменти, якщо присутній сегмент без музики"
@@ -715,6 +755,10 @@
     "bracketEnd": {
         "message": "(Кінець)"
     },
+    "End": {
+        "message": "Кінець",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "приховано: проголосували проти"
     },
@@ -754,6 +798,13 @@
     },
     "downvoteDescription": {
         "message": "Невірно вказано час"
+    },
+    "incorrectVote": {
+        "message": "Неправильно"
+    },
+    "harmfulVote": {
+        "message": "Шкідливе",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Змінити категорію"
@@ -973,5 +1024,91 @@
     },
     "confirmResetToDefault": {
         "message": "Ви впевнені, що хочете скинути всі налаштування до значень за замовчуванням? Це не можна буде скасувати."
+    },
+    "exportSegments": {
+        "message": "Експортувати сегменти"
+    },
+    "importSegments": {
+        "message": "Імпортувати розділи"
+    },
+    "Import": {
+        "message": "Імпорт",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "Ліцензійний ключ недійсний"
+    },
+    "chooseACountry": {
+        "message": "Виберіть країну"
+    },
+    "selectYourCountry": {
+        "message": "Виберіть вашу країну"
+    },
+    "patreonSignIn": {
+        "message": "Вхід через Patreon"
+    },
+    "joinOnPatreon": {
+        "message": "Підписатися на Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Разова покупка"
+    },
+    "enterLicenseKey": {
+        "message": "Введіть ліцензійний ключ"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Наразі у вас є {0} на {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "У вас наразі немає не надісланих сегментів",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "не надісланий сегмент",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "не надіслані сегменти",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "відео",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "відео",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Очистити всі сегменти",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Ви впевнені, що хочете очистити всі ваші не надіслані сегменти?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Показати сегменти",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Приховати сегменти",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID відео",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Кількість сегментів",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Дії",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Поділитися посиланням"
     }
 }
