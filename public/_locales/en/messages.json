@@ -1108,7 +1108,7 @@
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
     "redeemSuccess": {
-        "message": "Reedem Successful!"
+        "message": "Redeem Successful!"
     },
     "redeemFailed": {
         "message": "License key is invalid"
