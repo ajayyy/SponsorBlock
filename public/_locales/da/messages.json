@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmenter"
     },
+    "SegmentsCap": {
+        "message": "Segmenter"
+    },
+    "Chapters": {
+        "message": "Kapitler"
+    },
+    "renderAsChapters": {
+        "message": "Render segmenter som kapitler",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Stem for dette forslag"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Indsend Segmenter"
+    },
+    "sortSegments": {
+        "message": "Sortér Segmenter"
     },
     "submitCheck": {
         "message": "Er du sikker på, at du vil indsende dette?"
@@ -284,6 +297,14 @@
     },
     "setSubmitKeybind": {
         "message": "Indsend segmenter",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Næste kapitel",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Forrige kapitel",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -542,6 +563,10 @@
         "message": "til",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Kopieret!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
@@ -615,6 +640,21 @@
     "category_poi_highlight_description": {
         "message": "Den del af videoen, som de fleste mennesker leder efter. Svarende til \"Video starter ved x\" kommentarer."
     },
+    "category_chapter": {
+        "message": "Kapitel"
+    },
+    "category_chapter_description": {
+        "message": "Brugerdefinerede navngivne kapitler, der beskriver store afsnit af en video."
+    },
+    "category_chapter_guideline1": {
+        "message": "Undlad at nævne sponsor mærkenavne"
+    },
+    "category_chapter_guideline2": {
+        "message": "Brug større kapitler til generelle sektioner"
+    },
+    "category_chapter_guideline3": {
+        "message": "Mindre kapitler kan placeres inde i større kapitler"
+    },
     "category_livestream_messages": {
         "message": "Livestream: Donations-/Beskedsaflæsning"
     },
@@ -644,6 +684,9 @@
     },
     "showOverlay_full": {
         "message": "Vis Etiket"
+    },
+    "showOverlay_chapter": {
+        "message": "Vis Kapitler"
     },
     "autoSkipOnMusicVideos": {
         "message": "Spring automatisk over alle segmenter, når der er et ikke-musik-segment"
@@ -700,6 +743,10 @@
     "bracketEnd": {
         "message": "(Slut)"
     },
+    "End": {
+        "message": "Slutning",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "skjult: nedstem"
     },
@@ -737,6 +784,13 @@
     "downvoteDescription": {
         "message": "Ukorrekt/Forkert Timing"
     },
+    "incorrectVote": {
+        "message": "Forkert"
+    },
+    "harmfulVote": {
+        "message": "Skadelig",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Skift Kategori"
     },
@@ -771,6 +825,9 @@
     },
     "categoryPillTitleText": {
         "message": "Hele denne video er mærket som denne kategori og er for tæt integreret til at være i stand til at adskille"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Et af dine kapitelnavne er magen til en kategori. Du bør bruge kategorier, når det er muligt i stedet."
     },
     "experiementOptOut": {
         "message": "Fravælg alle fremtidige eksperimenter",
@@ -931,5 +988,114 @@
     },
     "openOptionsPage": {
         "message": "Åbn indstillinger"
+    },
+    "exportSegments": {
+        "message": "Eksporter segmenter"
+    },
+    "importSegments": {
+        "message": "Importér kapitler"
+    },
+    "Import": {
+        "message": "Importer",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "Licensnøglen er ugyldig"
+    },
+    "hideUpsells": {
+        "message": "Skjul utilgængelige muligheder uden ekstra betaling"
+    },
+    "chooseACountry": {
+        "message": "Vælg et land"
+    },
+    "noDiscount": {
+        "message": "Du kvalificerer dig ikke til en rabat"
+    },
+    "discountLink": {
+        "message": "Rabat Link (Se den lyserøde pris)"
+    },
+    "selectYourCountry": {
+        "message": "Vælg dit land"
+    },
+    "alreadyDonated": {
+        "message": "Hvis du har doneret et beløb før, kan du indløse gratis adgang via e-mail:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Hvis du ikke har råd til at købe en licens, så klik på {here} for at se, om du er berettiget til en rabat",
+        "description": "Keep the curly braces"
+    },
+    "patreonSignIn": {
+        "message": "Log på med Patreon"
+    },
+    "redeem": {
+        "message": "Indløs"
+    },
+    "joinOnPatreon": {
+        "message": "Abonner på Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Engangskøb"
+    },
+    "enterLicenseKey": {
+        "message": "Indtast Licensnøgle"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlock crowd-sourced kapitler funktion er kun tilgængelig for personer, der køber en licens, eller for personer, der har fået gratis adgang på grund af deres tidligere bidrag"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Du har lige nu {0} på {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Du har i øjeblikket ingen uindsendte segmenter",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "ikke-indsendt segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "ikke-indsendte segmenter",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videoer",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Ryd alle segmenter",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Er du sikker på, at du vil rydde alle dine uindsendte segmenter?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Vis segmenter",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Skjul segmenter",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Video ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Segmentantal",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Handlinger",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Del som URL"
     }
 }
