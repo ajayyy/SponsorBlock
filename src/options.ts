@@ -10,6 +10,7 @@ window.SB = Config;
 
 import Utils from "./utils";
 import CategoryChooser from "./render/CategoryChooser";
+import UnsubmittedVideos from "./render/UnsubmittedVideos";
 import KeybindComponent from "./components/options/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
@@ -103,7 +104,7 @@ async function init() {
                 // Add click listener
                 checkbox.addEventListener("click", async () => {
                     // Confirm if required
-                    if (confirmMessage && ((confirmOnTrue && checkbox.checked) || (!confirmOnTrue && !checkbox.checked)) 
+                    if (confirmMessage && ((confirmOnTrue && checkbox.checked) || (!confirmOnTrue && !checkbox.checked))
                             && !confirm(chrome.i18n.getMessage(confirmMessage))){
                         checkbox.checked = !checkbox.checked;
                         return;
@@ -120,7 +121,7 @@ async function init() {
                             if (!checkbox.checked) {
                                 // Enable the notice
                                 Config.config["dontShowNotice"] = false;
-                                
+
                                 const showNoticeSwitch = <HTMLInputElement> document.querySelector("[data-sync='dontShowNotice'] > div > label > input");
                                 showNoticeSwitch.checked = true;
                             }
@@ -162,7 +163,7 @@ async function init() {
             }
             case "text-change": {
                 const textChangeInput = <HTMLInputElement> optionsElements[i].querySelector(".option-text-box");
-                
+
                 const textChangeSetButton = <HTMLElement> optionsElements[i].querySelector(".text-change-set");
 
                 textChangeInput.value = Config.config[option];
@@ -292,6 +293,9 @@ async function init() {
             case "react-CategoryChooserComponent":
                 new CategoryChooser(optionsElements[i]);
                 break;
+            case "react-UnsubmittedVideosComponent":
+                new UnsubmittedVideos(optionsElements[i])
+                break;
         }
     }
 
@@ -338,8 +342,8 @@ function createStickyHeader() {
 
 /**
  * Handle special cases where an option shouldn't show
- * 
- * @param {String} element 
+ *
+ * @param {String} element
  */
 async function shouldHideOption(element: Element): Promise<boolean> {
     return (element.getAttribute("data-private-only") === "true" && !(await isIncognitoAllowed()))
@@ -348,8 +352,8 @@ async function shouldHideOption(element: Element): Promise<boolean> {
 
 /**
  * Called when the config is updated
- * 
- * @param {String} element 
+ *
+ * @param {String} element
  */
 function optionsConfigUpdateListener() {
     const optionsContainer = document.getElementById("options");
@@ -359,14 +363,18 @@ function optionsConfigUpdateListener() {
         switch (optionsElements[i].getAttribute("data-type")) {
             case "display":
                 updateDisplayElement(<HTMLElement> optionsElements[i])
+                break;
+            case "react-UnsubmittedVideosComponent":
+                new UnsubmittedVideos(optionsElements[i])
+                break;
         }
     }
 }
 
 /**
  * Will set display elements to the proper text
- * 
- * @param element 
+ *
+ * @param element
  */
 function updateDisplayElement(element: HTMLElement) {
     const displayOption = element.getAttribute("data-sync")
@@ -393,9 +401,9 @@ function updateDisplayElement(element: HTMLElement) {
 
 /**
  * Initializes the option to add Invidious instances
- * 
- * @param element 
- * @param option 
+ *
+ * @param element
+ * @param option
  */
 function invidiousInstanceAddInit(element: HTMLElement, option: string) {
     const textBox = <HTMLInputElement> element.querySelector(".option-text-box");
@@ -447,9 +455,9 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
 
 /**
  * Run when the invidious button is being initialized
- * 
- * @param checkbox 
- * @param option 
+ *
+ * @param checkbox
+ * @param option
  */
 function invidiousInit(checkbox: HTMLInputElement, option: string) {
     utils.containsInvidiousPermission().then((result) => {
@@ -463,9 +471,9 @@ function invidiousInit(checkbox: HTMLInputElement, option: string) {
 
 /**
  * Run whenever the invidious checkbox is clicked
- * 
- * @param checkbox 
- * @param option 
+ *
+ * @param checkbox
+ * @param option
  */
 async function invidiousOnClick(checkbox: HTMLInputElement, option: string): Promise<void> {
     const enabled = await utils.applyInvidiousPermissions(checkbox.checked, option);
@@ -474,8 +482,8 @@ async function invidiousOnClick(checkbox: HTMLInputElement, option: string): Pro
 
 /**
  * Will trigger the textbox to appear to be able to change an option's text.
- * 
- * @param element 
+ *
+ * @param element
  */
 function activatePrivateTextChange(element: HTMLElement) {
     const button = element.querySelector(".trigger-button");
@@ -492,7 +500,7 @@ function activatePrivateTextChange(element: HTMLElement) {
             element.querySelector(".option-hidden-section").classList.remove("hidden");
             return;
     }
-    
+
     let result = Config.config[option];
     // See if anything extra must be done
     switch (option) {
@@ -503,7 +511,7 @@ function activatePrivateTextChange(element: HTMLElement) {
     }
 
     textBox.value = result;
-    
+
     const setButton = element.querySelector(".text-change-set");
     setButton.addEventListener("click", async () => {
         setTextOption(option, element, textBox.value);
@@ -532,7 +540,7 @@ function activatePrivateTextChange(element: HTMLElement) {
 
 /**
  * Function to run when a textbox change is submitted
- * 
+ *
  * @param option data-sync value
  * @param element main container div
  * @param value new text
@@ -542,7 +550,7 @@ async function setTextOption(option: string, element: HTMLElement, value: string
     const confirmMessage = element.getAttribute("data-confirm-message");
 
     if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
-        
+
         // See if anything extra must be done
         switch (option) {
             case "*":
@@ -554,13 +562,13 @@ async function setTextOption(option: string, element: HTMLElement, value: string
 
                     if (newConfig.supportInvidious) {
                         const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > div > label > input");
-                        
+
                         checkbox.checked = true;
                         await invidiousOnClick(checkbox, "supportInvidious");
                     }
 
                     window.location.reload();
-                    
+
                 } catch (e) {
                     alert(chrome.i18n.getMessage("incorrectlyFormattedOptions"));
                 }
@@ -603,7 +611,7 @@ function uploadConfig(e) {
 /**
  * Validates the value used for the database server address.
  * Returns null and alerts the user if there is an issue.
- * 
+ *
  * @param input Input server address
  */
 function validateServerAddress(input: string): string {
@@ -637,7 +645,7 @@ function copyDebugOutputToClipboard() {
 
     // Sanitise sensitive user config values
     delete output.config.userID;
-    output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress) 
+    output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress)
         ? "Default server address" : "Custom server address";
     output.config.invidiousInstances = output.config.invidiousInstances.length;
     output.config.whitelistedChannels = output.config.whitelistedChannels.length;
