@@ -25,6 +25,16 @@
     "Segments": {
         "message": "сегмента"
     },
+    "SegmentsCap": {
+        "message": "Сегменти"
+    },
+    "Chapters": {
+        "message": "Глави"
+    },
+    "renderAsChapters": {
+        "message": "Изобразяване на сегментите като глави",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Одобряване на това предложение"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Изпращане на сегментите"
+    },
+    "sortSegments": {
+        "message": "Сортиране на сегментите"
     },
     "submitCheck": {
         "message": "Наистина ли искате да изпратите това?"
@@ -287,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "Изпращане на сегментите",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Следваща глава",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Предишна глава",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -545,6 +566,10 @@
         "message": "до",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Копирано!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Включване на преходи"
     },
@@ -696,6 +721,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Може да прескочи до заглавието или миниатюрата"
     },
+    "category_chapter": {
+        "message": "Глава"
+    },
+    "category_chapter_description": {
+        "message": "Потребителски наименувани глави, описващи основните части на видеоклипа."
+    },
+    "category_chapter_guideline1": {
+        "message": "Без споменаване имена на марки на спонсори"
+    },
+    "category_chapter_guideline2": {
+        "message": "Използване на по-големи глави за общи раздели"
+    },
+    "category_chapter_guideline3": {
+        "message": "По-малките глави могат да бъдат поставени в по-големите"
+    },
     "category_livestream_messages": {
         "message": "Поточно предаване: Четене на съобщения/дарения"
     },
@@ -725,6 +765,9 @@
     },
     "showOverlay_full": {
         "message": "Показване на етикета"
+    },
+    "showOverlay_chapter": {
+        "message": "Показване на глави"
     },
     "autoSkipOnMusicVideos": {
         "message": "Автоматично пропускане на всички сегменти, когато има сегмент без музика"
@@ -781,6 +824,10 @@
     "bracketEnd": {
         "message": "(Край)"
     },
+    "End": {
+        "message": "Край",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "скрито: глас против"
     },
@@ -821,6 +868,13 @@
     "downvoteDescription": {
         "message": "Грешно/Неправилно време"
     },
+    "incorrectVote": {
+        "message": "Неправилно"
+    },
+    "harmfulVote": {
+        "message": "Вредно",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Промяна на категорията"
     },
@@ -855,6 +909,9 @@
     },
     "categoryPillTitleText": {
         "message": "Целият видеоклип е обозначен с тази категория и е твърде тясно интегриран, за да може да се раздели"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Едно от имената на вашите глави е подобно на категория. Вместо това трябва да използвате категории, когато е възможно."
     },
     "experiementOptOut": {
         "message": "Отказ от всички бъдещи експерименти",
@@ -1039,5 +1096,114 @@
     },
     "confirmResetToDefault": {
         "message": "Наистина ли искате да възстановите всички настройки до стойностите им по подразбиране? Това не може да бъде отменено."
+    },
+    "exportSegments": {
+        "message": "Експортиране на сегменти"
+    },
+    "importSegments": {
+        "message": "Импортиране на глави"
+    },
+    "Import": {
+        "message": "Импортиране",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "Лицензионният ключ е невалиден"
+    },
+    "hideUpsells": {
+        "message": "Скриване на опциите, които не са налични без допълнително заплащане"
+    },
+    "chooseACountry": {
+        "message": "Изберете държава"
+    },
+    "noDiscount": {
+        "message": "Не отговаряте на условията за отстъпка"
+    },
+    "discountLink": {
+        "message": "Връзка за отстъпка (вижте розовата цена)"
+    },
+    "selectYourCountry": {
+        "message": "Изберете вашата държава"
+    },
+    "alreadyDonated": {
+        "message": "Ако сте дарили някаква сума преди, можете да осребрите безплатен достъп чрез имейл:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Ако не можете да си позволите да закупите лиценз, щракнете {тук}, за да видите дали отговаряте на условията за отстъпка",
+        "description": "Keep the curly braces"
+    },
+    "patreonSignIn": {
+        "message": "Влезте с Patreon"
+    },
+    "redeem": {
+        "message": "Осребряване"
+    },
+    "joinOnPatreon": {
+        "message": "Абонирайте се в Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Еднократна покупка"
+    },
+    "enterLicenseKey": {
+        "message": "Въведете лицензния ключ"
+    },
+    "chaptersPage1": {
+        "message": "Функцията за групови глави на SponsorBlock е достъпна само за хора, закупили лиценз, или за хора, на които е предоставен безплатен достъп поради техния минал принос"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "В момента имате {0} в {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "В момента нямате неизпратени сегменти",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "неизпратен сегмент",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "неизпратени сегменти",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "видеоклип",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "видеоклипа",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Изчистване на всички сегменти",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Наистина ли искате да изтриете всички неизпратени сегменти?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Показване на сегментите",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Скриване на сегментите",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Идентификатор на видеоклипа",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Брой сегменти",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Действия",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Споделяне като URL"
     }
 }
