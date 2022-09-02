@@ -788,6 +788,10 @@
     "bracketEnd": {
         "message": "(Loppu)"
     },
+    "End": {
+        "message": "Loppu",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "piilotettu: miinusääniä"
     },
@@ -827,6 +831,9 @@
     },
     "downvoteDescription": {
         "message": "Virheellinen/väärä aika"
+    },
+    "incorrectVote": {
+        "message": "Väärä"
     },
     "incorrectCategory": {
         "message": "Vaihda kategoria"
@@ -1046,5 +1053,80 @@
     },
     "confirmResetToDefault": {
         "message": "Haluatko varmasti palauttaa kaikki asetukset oletusarvoihin? Tätä ei voi perua."
+    },
+    "exportSegments": {
+        "message": "Vie osiot"
+    },
+    "Import": {
+        "message": "Tuo",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "Lisenssiavain on virheellinen"
+    },
+    "chooseACountry": {
+        "message": "Valitse maa"
+    },
+    "selectYourCountry": {
+        "message": "Valitse maasi"
+    },
+    "patreonSignIn": {
+        "message": "Kirjaudu sisään Patreonilla"
+    },
+    "redeem": {
+        "message": "Lunasta"
+    },
+    "joinOnPatreon": {
+        "message": "Tilaa Patreonissa"
+    },
+    "enterLicenseKey": {
+        "message": "Syötä lisenssiavain"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Sinulla on tällä hetkellä {0} {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Sinulla ei ole lähettämättömiä osioita",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "lähettämätön osio",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "lähettämätöntä osiota",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "videossa",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videossa",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Tyhjennä kaikki osiot",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Haluatko varmasti tyhjentää kaikki lähettämättömät osiosi?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Näytä osiot",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Piilota osiot",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Osiomäärä",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Jaa URLina"
     }
 }
