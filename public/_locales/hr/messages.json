@@ -499,6 +499,9 @@
     "category_preview": {
         "message": "Pregled/Sažetak"
     },
+    "category_preview_description": {
+        "message": "Zbirka isječaka koji pokazuju što dolazi u ovom videu ili drugim videima u nizu gdje se sve informacije kasnije ponavljaju u videu."
+    },
     "category_filler_short": {
         "message": "Popuna"
     },
@@ -579,6 +582,9 @@
     },
     "manuallyHidden": {
         "message": "ručno skriveno"
+    },
+    "invidiousPermissionRefresh": {
+        "message": "Preglednik je opozvao dopuštenje potrebno za funkcioniranje na Invidiousu i drugim stranicama trećih strana. Pritisni donji gumb za ponovno aktiviranje ove dozvole."
     },
     "downvoteDescription": {
         "message": "Neispravno/krivo vrijeme"
