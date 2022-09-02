@@ -346,6 +346,7 @@ function resetValues() {
         id: null
     };
     lockedCategories = [];
+    isLivePremiere = false;
 
     //empty the preview bar
     if (previewBar !== null) {
@@ -1304,25 +1305,29 @@ function updatePreviewBar(): void {
 async function whitelistCheck() {
     const whitelistedChannels = Config.config.whitelistedChannels;
 
-    const getChannelID = () =>
-        (document.querySelector("a.ytd-video-owner-renderer") // YouTube
-        ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
-        ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
-        ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
-            ?.getAttribute("href")?.match(/\/(?:channel|c|user)\/(UC[a-zA-Z0-9_-]{22}|[a-zA-Z0-9_-]+)/)?.[1];
-
     try {
-        await utils.wait(() => !!getChannelID(), 6000, 20);
+        await utils.wait(() => channelIDInfo.status === ChannelIDStatus.Found, 6000, 20);
 
-        channelIDInfo = {
-            status: ChannelIDStatus.Found,
-            id: getChannelID().match(/^\/?([^\s/]+)/)[0]
-        };
+        // If found, continue on, it was set by the listener
     } catch (e) {
-        channelIDInfo = {
-            status: ChannelIDStatus.Failed,
-            id: null
-        };
+        // Try fallback
+        const channelIDFallback = (document.querySelector("a.ytd-video-owner-renderer") // YouTube
+            ?? document.querySelector("a.ytp-title-channel-logo") // YouTube Embed
+            ?? document.querySelector(".channel-profile #channel-name")?.parentElement.parentElement // Invidious
+            ?? document.querySelector("a.slim-owner-icon-and-title")) // Mobile YouTube
+                ?.getAttribute("href")?.match(/\/(?:channel|c|user)\/(UC[a-zA-Z0-9_-]{22}|[a-zA-Z0-9_-]+)/)?.[1];
+
+        if (channelIDFallback) {
+            channelIDInfo = {
+                status: ChannelIDStatus.Found,
+                id: channelIDFallback
+            };
+        } else {
+            channelIDInfo = {
+                status: ChannelIDStatus.Failed,
+                id: null
+            };
+        }
     }
 
     //see if this is a whitelisted channel
@@ -2196,25 +2201,25 @@ function windowListenerHandler(event: MessageEvent): void {
     const data = event.data;
     const dataType = data.type
     if (data.source !== "sponsorblock") return;
+
     if (dataType === "navigation") {
         sponsorVideoID = data.videoID;
         pageType = data.pageType
-        /* for use with category-specific
         channelIDInfo = {
             id: data.channelID,
-            name: data.channelTitle,
-            status: 1
+            status: ChannelIDStatus.Found
         }
-        */
     } else if (dataType === "ad") {
-        // update isAdPlaying
-        if(isAdPlaying != data.playing) {
+        if (isAdPlaying != data.playing) {
             isAdPlaying = data.playing
             updatePreviewBar();
             updateVisibilityOfPlayerControlsButton();
         }
     } else if (dataType === "data") {
-        sponsorVideoID = data.videoID;
+        if (data.video !== sponsorVideoID) {
+            sponsorVideoID = data.videoID;
+            videoIDChange(sponsorVideoID);
+        }
         isLivePremiere = data.isLive || data.isPremiere
     }
 }
@@ -2263,13 +2268,15 @@ function addPageListeners(): void {
             refreshVideoAttachments();
         }
     };
+
     // inject into document
     const docScript = document.createElement("script");
     docScript.src = chrome.runtime.getURL("js/document.js");
     (document.head || document.documentElement).appendChild(docScript);
+
     document.addEventListener("yt-navigate-start", resetValues);
     document.addEventListener("yt-navigate-finish", refreshListners);
-    window.addEventListener("message", windowListenerHandler)
+    window.addEventListener("message", windowListenerHandler);
 }
 
 function addHotkeyListener(): void {
