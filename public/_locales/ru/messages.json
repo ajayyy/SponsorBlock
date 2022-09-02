@@ -1107,6 +1107,9 @@
         "message": "Импортировать",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemSuccess": {
+        "message": "Купон активирован!"
+    },
     "redeemFailed": {
         "message": "Ключ лицензии недействителен"
     },
@@ -1150,5 +1153,60 @@
     },
     "chaptersPage1": {
         "message": "Функция SponsorBlock \"эпизоды от сообщества\" доступна только для людей, которые приобрели лицензию, или для людей, которым предоставлен бесплатный доступ благодаря их прошлым вкладам"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Сейчас у вас есть {0} в {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "В настоящее время у вас нет неопубликованных сегментов",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "неопубликованный сегмент",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "неопубликованных сегмент(-а, -ов)",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "видео",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "видео",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Очистить все сегменты",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Вы уверены, что хотите очистить все неопубликованные сегменты?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Показать сегменты",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Скрыть сегменты",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID видео",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Количество сегментов",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Действия",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Поделиться ссылкой"
     }
 }
