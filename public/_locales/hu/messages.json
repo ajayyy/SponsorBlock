@@ -25,6 +25,16 @@
     "Segments": {
         "message": "szegmens"
     },
+    "SegmentsCap": {
+        "message": "Szegmensek"
+    },
+    "Chapters": {
+        "message": "Fejezetek"
+    },
+    "renderAsChapters": {
+        "message": "Szegmensek megjelenítése fejezetekként",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Részlet felszavazása"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Szegmensek beküldése"
+    },
+    "sortSegments": {
+        "message": "Szegmensek rendezése"
     },
     "submitCheck": {
         "message": "Biztosan be akarod küldeni?"
@@ -287,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "Szegmensek beküldése",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Következő fejezet",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Előző fejezet",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -545,6 +566,10 @@
         "message": "–",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Másolva!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Tartalmazza a felkonferálást/átvezetőket is"
     },
@@ -696,6 +721,21 @@
     "category_poi_highlight_guideline3": {
         "message": "A címhez, vagy indexképhez ugorhat"
     },
+    "category_chapter": {
+        "message": "Fejezet"
+    },
+    "category_chapter_description": {
+        "message": "Egyedileg elnevezett fejezetek a videó nagyobb részeinek leírására."
+    },
+    "category_chapter_guideline1": {
+        "message": "Ne említs szponzor márkaneveket"
+    },
+    "category_chapter_guideline2": {
+        "message": "Használj hosszabb fejezeteket általános részekhez"
+    },
+    "category_chapter_guideline3": {
+        "message": "Nagyobb fejezeteken belül lehetnek kisebb fejezetek"
+    },
     "category_livestream_messages": {
         "message": "Élő adás: Adomány / üzenet olvasások"
     },
@@ -725,6 +765,9 @@
     },
     "showOverlay_full": {
         "message": "Címke megjelenítése"
+    },
+    "showOverlay_chapter": {
+        "message": "Fejezetek megtekintése"
     },
     "autoSkipOnMusicVideos": {
         "message": "Minden szegmens automatikus átugrása, ha van nem-zene szegmens"
@@ -781,6 +824,10 @@
     "bracketEnd": {
         "message": "(Vége)"
     },
+    "End": {
+        "message": "Vége",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "elrejtve: leszavazva"
     },
@@ -821,6 +868,13 @@
     "downvoteDescription": {
         "message": "Helytelen/rossz időzítés"
     },
+    "incorrectVote": {
+        "message": "Helytelen"
+    },
+    "harmfulVote": {
+        "message": "Káros",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Kategória módosítása"
     },
@@ -855,6 +909,9 @@
     },
     "categoryPillTitleText": {
         "message": "Az egész videó ezzel a kategóriával van megjelölve és túl szorosan kapcsolódik hozzá, hogy le lehessen választani"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Az egyik fejezeted neve hasonlít egy kategóriára. Amikor lehetséges, mindig használj kategóriákat."
     },
     "experiementOptOut": {
         "message": "Minden további kísérlet elutasítása",
@@ -1039,5 +1096,62 @@
     },
     "confirmResetToDefault": {
         "message": "Biztosan vissza szeretnéd állítani az összes beállítást az alapértelmezett értékekre? A műveletet nem lehet visszavonni."
+    },
+    "exportSegments": {
+        "message": "Szegmensek exportálása"
+    },
+    "importSegments": {
+        "message": "Fejezetek importálása"
+    },
+    "Import": {
+        "message": "Importálás",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "A licenc kulcs érvénytelen"
+    },
+    "hideUpsells": {
+        "message": "Fizetős opciók elrejtése"
+    },
+    "chooseACountry": {
+        "message": "Válassz országot"
+    },
+    "noDiscount": {
+        "message": "Nem vagy jogosult kedvezményre"
+    },
+    "discountLink": {
+        "message": "Kedvezményes link (A rózsaszín árat figyeld)"
+    },
+    "selectYourCountry": {
+        "message": "Válaszd ki az országodat"
+    },
+    "alreadyDonated": {
+        "message": "Ha korábban már támogattad a bővítményt, kérhetsz ingyenes hozzáférést emailben:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Ha nem engedheted meg magadnak a licenc megvásárlását, kattints {ide}, hogy megtudd, jogosult vagy-e kedvezményre",
+        "description": "Keep the curly braces"
+    },
+    "patreonSignIn": {
+        "message": "Bejelentkezés Patreonnal"
+    },
+    "redeem": {
+        "message": "Beváltás"
+    },
+    "joinOnPatreon": {
+        "message": "Feliratkozás Patreonon"
+    },
+    "oneTimePurchase": {
+        "message": "Egyszeri vásárlás"
+    },
+    "enterLicenseKey": {
+        "message": "Add meg a licenc kulcsot"
+    },
+    "chaptersPage1": {
+        "message": "A SponsorBlock közösség által karbantartott fejezetek funkció csak azok számára érhető el, akik licencet vásárolnak, vagy ingyenes hozzáférést kaptak múltbeli hozzájárulásaikért"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Megosztás linkként"
     }
 }
