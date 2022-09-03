@@ -42,7 +42,7 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                         onClick={(e) => this.vote(e, 1)}>
                     <ThumbsUpSvg className="playerButtonImage" 
                         fill={Config.config.colorPalette.white} 
-                        width={"inherit"} height={"inherit"} />
+                        width={null} height={null} />
                 </button>
 
                 {/* Downvote Button */}
@@ -92,8 +92,8 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                     <ThumbsDownSvg 
                         className="playerButtonImage" 
                         fill={downvoteButtonColor(this.state.segment ? [this.state.segment] : null, SkipNoticeAction.Downvote, SkipNoticeAction.Downvote)} 
-                        width={"inherit"} 
-                        height={"inherit"} />
+                        width={null} 
+                        height={null} />
                 </button>
             </>
         );
