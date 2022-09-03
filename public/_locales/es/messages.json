@@ -1198,6 +1198,10 @@
         "message": "ID del vídeo",
         "description": "Header of the unsubmitted segments list"
     },
+    "segmentCount": {
+        "message": "Conteo de segmentos",
+        "description": "Header of the unsubmitted segments list"
+    },
     "actions": {
         "message": "Acciones",
         "description": "Header of the unsubmitted segments list"
