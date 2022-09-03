@@ -70,7 +70,7 @@ export default class GenericNotice {
                     
                     <tr id={"sponsorSkipNoticeMiddleRow" + this.idSuffix}
                         className="sponsorTimeMessagesRow"
-                        style={{maxHeight: (this.contentContainer().v.offsetHeight - 200) + "px"}}>
+                        style={{maxHeight: this.contentContainer ? (this.contentContainer().v.offsetHeight - 200) + "px" : null}}>
                         <td style={{width: "100%"}}>
                             {this.getMessageBoxes(this.idSuffix, options.textBoxes)}
                         </td>
