@@ -498,7 +498,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     //display the video times from the array at the top, in a different section
     function displayDownloadedSponsorTimes(sponsorTimes: SponsorTime[], time: number) {
         let currentSegmentTab = segmentTab;
-        if (!sponsorTimes.some((segment) => segment.actionType === ActionType.Chapter)) {
+        if (!sponsorTimes.some((segment) => segment.actionType === ActionType.Chapter && segment.source !== SponsorSourceType.YouTube)) {
             PageElements.issueReporterTabs.classList.add("hidden");
             currentSegmentTab = SegmentTab.Segments;
         } else {
