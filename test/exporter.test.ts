@@ -238,4 +238,20 @@ describe("Import segments", () => {
             category: "chapter" as Category
         }]);
     });
+
+    it ("22. 2:04:22 some name", () => {
+        const input = ` 22. 2:04:22 some name
+                        23. 2:04:22.23 some other name`;
+                        
+        const result = importTimes(input, 8000);
+        expect(result).toMatchObject([{
+            segment: [7462, 7462.23],
+            description: "some name",
+            category: "chapter" as Category
+        }, {
+            segment: [7462.23, 8000],
+            description: "some other name",
+            category: "chapter" as Category
+        }]);
+    });
 });
