@@ -2275,7 +2275,8 @@ function addPageListeners(): void {
     // inject into document
     const docScript = document.createElement("script");
     docScript.src = chrome.runtime.getURL("js/document.js");
-    (document.head || document.documentElement).appendChild(docScript);
+    // Not injected on invidious
+    (document.head || document.documentElement)?.appendChild(docScript);
 
     document.addEventListener("yt-navigate-start", resetValues);
     document.addEventListener("yt-navigate-finish", refreshListners);
