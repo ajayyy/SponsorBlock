@@ -252,6 +252,9 @@
     "showSkipNotice": {
         "message": "Vis Bemærkning Efter Et Segment Skippes"
     },
+    "showCategoryGuidelines": {
+        "message": "Vis Kategorihjælp"
+    },
     "noticeVisibilityMode0": {
         "message": "Fuld Størrelse Skip-Bemærkninger"
     },
@@ -567,17 +570,38 @@
         "message": "Kopieret!",
         "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
+    "generic_guideline1": {
+        "message": "Inkludér segue-overgange"
+    },
+    "generic_guideline2": {
+        "message": "Spiller som om intet blev sprunget over"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
     "category_sponsor_description": {
         "message": "Betalt kampagne, betalte henvisninger og direkte reklamer. Ikke for selvpromoverende eller gratis shoutouts til årsager/skabere/hjemmesider/produkter, de kan lide."
     },
+    "category_sponsor_guideline1": {
+        "message": "Betalt markedsføring"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Ikke til donationer eller custom merch"
+    },
     "category_selfpromo": {
         "message": "Ubetalt/Egen Markedsføring"
     },
     "category_selfpromo_description": {
         "message": "Ligesom \"sponsor\" bortset fra ubetalt- eller selfmarkedsføring. Dette inkluderer sektioner om merchandise, donationer eller oplysninger om hvem, de har samarbejdet med."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donationer, medlemskaber og custom merch"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Gratis shoutouts, der ikke føjer til videoen"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Ikke for produkter og merchandise designet af virksomheder"
     },
     "category_exclusive_access": {
         "message": "Eksklusiv Adgang"
@@ -589,11 +613,23 @@
         "message": "Denne video viser et produkt, tjeneste eller et sted, som de har modtaget gratis eller subsidieret adgang til",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Hele videoen viser noget med gratis eller subsidieret adgang"
+    },
     "category_interaction": {
         "message": "Påmindelse Om Interaktion (Abonnement)"
     },
     "category_interaction_description": {
         "message": "Når der er en kort påmindelse om at like, abonnere eller følge dem midt i indholdet. Hvis den er lang eller om noget specifikt, bør den i stedet være under selvpromovering."
+    },
+    "category_interaction_guideline1": {
+        "message": "Korte påmindelser om at synes godt om, abonnere eller følge"
+    },
+    "category_interaction_guideline2": {
+        "message": "Indeholder indirekte påmindelser om at kommentere"
+    },
+    "category_interaction_guideline3": {
+        "message": "Ikke til generel markedsføring, kun opfordringer til handling"
     },
     "category_interaction_short": {
         "message": "Påmindelse Om Interaktion"
@@ -607,14 +643,35 @@
     "category_intro_short": {
         "message": "Pause"
     },
+    "category_intro_guideline1": {
+        "message": "Interval uden egentligt indhold"
+    },
+    "category_intro_guideline2": {
+        "message": "Ikke for overgange med information"
+    },
     "category_outro": {
         "message": "Slutkort/Kreditter"
     },
     "category_outro_description": {
         "message": "Medvirkende eller når YouTube-endcards vises. Ikke for konklusioner med information."
     },
+    "category_outro_guideline1": {
+        "message": "Inkludér ikke indhold, selvom endcards er på skærmen"
+    },
     "category_preview": {
         "message": "Forhåndsvisning/Opsamling"
+    },
+    "category_preview_description": {
+        "message": "Samling af klip, der viser, hvad der kommer op i denne video eller andre videoer i en serie, hvor alle oplysninger gentages senere i videoen."
+    },
+    "category_preview_guideline1": {
+        "message": "Klip, der vises senere eller i en fremtidig video"
+    },
+    "category_preview_guideline2": {
+        "message": "Resumé af en tidligere video"
+    },
+    "category_preview_guideline3": {
+        "message": "Ikke for afsnit, der tilføjer yderligere indhold"
     },
     "category_filler": {
         "message": "Fyldningstangent/Jokes"
@@ -625,6 +682,15 @@
     "category_filler_short": {
         "message": "Fyldstof"
     },
+    "category_filler_guideline1": {
+        "message": "Tangentielle scener kun for fyld eller humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Distraktioner, bloopers, replays"
+    },
+    "category_filler_guideline3": {
+        "message": "Ikke for scener, der er nødvendige for at forstå emnet"
+    },
     "category_music_offtopic": {
         "message": "Musik: Ikke-Musikalsk Sektion"
     },
@@ -634,11 +700,26 @@
     "category_music_offtopic_short": {
         "message": "Ikke-Musikalsk"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Afsnit, der ikke findes i officielle udgivelser"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Ikke-musik i en live-optræden"
+    },
     "category_poi_highlight": {
         "message": "Fremhæv"
     },
     "category_poi_highlight_description": {
         "message": "Den del af videoen, som de fleste mennesker leder efter. Svarende til \"Video starter ved x\" kommentarer."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Afsnit, som de fleste mennesker leder efter"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Kan springe kontekst over"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Kan springe til titlen eller thumbnailen"
     },
     "category_chapter": {
         "message": "Kapitel"
@@ -760,6 +841,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal-ID er ikke indlæst endnu. Hvis du bruger en integreret video, så prøv i stedet at bruge YouTube-hjemmesiden. Dette kunne også være forårsaget af ændringer i YouTube-layout. Hvis du mener det, så lav en kommentar her:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "Browseren har ophævet tilladelserne til at fungere på Invidious eller andre tredjepartssider. Klik venligst op knappen nedenfor for at genaktivere denne tilladelse."
+    },
     "acceptPermission": {
         "message": "Accepter tilladelse"
     },
@@ -836,6 +920,21 @@
     "hideForever": {
         "message": "Skjul for evigt"
     },
+    "warningChatInfo": {
+        "message": "Vi bemærkede, at du lavede nogle almindelige fejl, som ikke er ondsindede"
+    },
+    "warningTitle": {
+        "message": "Du fik en advarsel"
+    },
+    "questionButton": {
+        "message": "Jeg har et spørgsmål"
+    },
+    "warningConfirmButton": {
+        "message": "Jeg forstår årsagen"
+    },
+    "warningError": {
+        "message": "Fejl under anerkendelse af advarsel:"
+    },
     "Donate": {
         "message": "Doner"
     },
@@ -907,6 +1006,9 @@
     },
     "LearnMore": {
         "message": "Læs mere"
+    },
+    "FullDetails": {
+        "message": "Alle Detaljer"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Nedstemmer og opretter en lokal kopi for dig at genindsende"
@@ -989,6 +1091,12 @@
     "openOptionsPage": {
         "message": "Åbn indstillinger"
     },
+    "resetToDefault": {
+        "message": "Nulstil indstillinger til standard"
+    },
+    "confirmResetToDefault": {
+        "message": "Er du sikker på, at du vil nulstille alle indstillinger til deres standardværdier? Dette kan ikke fortrydes."
+    },
     "exportSegments": {
         "message": "Eksporter segmenter"
     },
@@ -998,6 +1106,9 @@
     "Import": {
         "message": "Importer",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Indløsning Lykkedes!"
     },
     "redeemFailed": {
         "message": "Licensnøglen er ugyldig"
