@@ -105,7 +105,7 @@ class PreviewBar {
             if (!mouseOnSeekBar || !this.categoryTooltip || !this.categoryTooltipContainer) return;
 
             // If the mutation observed is only for our tooltip text, ignore
-            if (mutations.length === 1 && (mutations[0].target as HTMLElement).classList.contains("sponsorCategoryTooltip")) {
+            if (mutations.some((mutation) => (mutation.target as HTMLElement).classList.contains("sponsorCategoryTooltip"))) {
                 return;
             }
 
