@@ -1112,5 +1112,48 @@
     },
     "redeemFailed": {
         "message": "Klucz licencji jest nieprawidłowy"
+    },
+    "hideUpsells": {
+        "message": "Ukryj opcje niedostępne bez dodatkowej płatności"
+    },
+    "chooseACountry": {
+        "message": "Wybierz kraj"
+    },
+    "selectYourCountry": {
+        "message": "Wybierz swój kraj"
+    },
+    "patreonSignIn": {
+        "message": "Zaloguj się za pomocą Patreon"
+    },
+    "redeem": {
+        "message": "Wykorzystaj"
+    },
+    "joinOnPatreon": {
+        "message": "Wesprzyj na Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Jednorazowy zakup"
+    },
+    "enterLicenseKey": {
+        "message": "Wprowadź klucz licencyjny"
+    },
+    "videosSingular": {
+        "message": "film",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "filmy",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Wyczyść wszystkie segmenty",
+        "description": "Label for a button in settings"
+    },
+    "videoID": {
+        "message": "ID filmu",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Udostępnij jako adres URL"
     }
 }
