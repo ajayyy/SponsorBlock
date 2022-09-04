@@ -463,6 +463,12 @@
     "minDurationDescription": {
         "message": "Segmenter kortere end den indstillede værdi vil ikke blive sprunget over eller vist i spilleren."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Spring manuelt over, når en fuld video etiket findes"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "For folk, der ønsker at se videoen uafbrudt, hvis det er fuldt sponsoreret eller selvpromovering."
+    },
     "skipNoticeDuration": {
         "message": "Spring meddelelsesvarighed over (sekunder):"
     },
