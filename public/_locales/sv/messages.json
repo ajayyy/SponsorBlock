@@ -463,6 +463,12 @@
     "minDurationDescription": {
         "message": "Segment som är kortare än det angivna värdet kommer inte att hoppas över eller visas i spelaren."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Använd manuellt hoppa över när en fullständig videoetikett visas"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "För personer som vill titta på videon utan avbrott om den är fullt sponsrad eller självbefordran."
+    },
     "skipNoticeDuration": {
         "message": "Antalet sekunder meddelandet för hoppa över ska visas:"
     },
