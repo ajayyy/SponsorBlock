@@ -463,6 +463,12 @@
     "minDurationDescription": {
         "message": "Segments shorter than the set value will not be skipped or show in the player."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Use manual skip when a full video label exists"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "For people who want to watch the video uninteruppted if it is fully sponsored or self promotion."
+    },
     "skipNoticeDuration": {
         "message": "Skip notice duration (seconds):"
     },

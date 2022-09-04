@@ -1690,9 +1690,10 @@ function createButton(baseID: string, title: string, callback: () => void, image
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
-    return utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+    return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full)) 
+        && (utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
-                && segment.actionType !== ActionType.Poi);
+                && segment.actionType !== ActionType.Poi));
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
