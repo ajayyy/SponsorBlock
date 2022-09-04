@@ -463,6 +463,12 @@
     "minDurationDescription": {
         "message": "設定値より短いセグメントはスキップされず、プレーヤーにも表示されません。"
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "動画全体のラベルが存在する場合は手動スキップを使用する"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "動画全体がスポンサー付きまたはセルフプロモーションである場合に、動画を邪魔されずに観たい方向け。"
+    },
     "skipNoticeDuration": {
         "message": "スキップ通知の表示時間（秒）:"
     },
