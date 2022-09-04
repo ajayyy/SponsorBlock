@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmenten"
     },
+    "SegmentsCap": {
+        "message": "Segmenten"
+    },
+    "Chapters": {
+        "message": "Hoofdstukken"
+    },
+    "renderAsChapters": {
+        "message": "Segmenten weergeven als hoofdstukken",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Stemmen op deze inzending"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Segmenten indienen"
+    },
+    "sortSegments": {
+        "message": "Segmenten sorteren"
     },
     "submitCheck": {
         "message": "Weet u zeker dat u dit wilt indienen?"
@@ -289,6 +302,14 @@
         "message": "Segmenten indienen",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "Volgend hoofdstuk",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Vorig hoofdstuk",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "Selecteer een toets door hem in te typen en kies de modificatietoetsen die u wilt gebruiken."
     },
@@ -442,6 +463,12 @@
     "minDurationDescription": {
         "message": "Segmenten korter dan de ingestelde waarde worden niet overgeslagen of weergegeven in de speler."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Handmatig overslaan gebruiken wanneer een label voor volledige video bestaat"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Voor mensen die de video ononderbroken willen bekijken als hij volledig gesponsord is of zelfpromotie is."
+    },
     "skipNoticeDuration": {
         "message": "Duur van overslaan-melding (seconden):"
     },
@@ -544,6 +571,10 @@
     "to": {
         "message": "tot",
         "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "CopiedExclamation": {
+        "message": "Gekopieerd!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
     "generic_guideline1": {
         "message": "Inclusief vlotte overgangen"
@@ -696,6 +727,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Kan naar titel of pictogram overslaan"
     },
+    "category_chapter": {
+        "message": "Hoofdstuk"
+    },
+    "category_chapter_description": {
+        "message": "Hoofdstukken met een aangepaste naam die de belangrijkste delen van een video beschrijven."
+    },
+    "category_chapter_guideline1": {
+        "message": "Merknamen van sponsors niet vermelden"
+    },
+    "category_chapter_guideline2": {
+        "message": "Grotere hoofdstukken gebruiken voor algemene secties"
+    },
+    "category_chapter_guideline3": {
+        "message": "Kleinere hoofdstukken kunnen in grotere worden geplaatst"
+    },
     "category_livestream_messages": {
         "message": "Livestream: donaties/lezen van berichten"
     },
@@ -725,6 +771,9 @@
     },
     "showOverlay_full": {
         "message": "Label weergeven"
+    },
+    "showOverlay_chapter": {
+        "message": "Hoofdstukken weergeven"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automatisch alle segmenten overslaan wanneer er een niet-muziek-segment is"
@@ -781,6 +830,10 @@
     "bracketEnd": {
         "message": "(einde)"
     },
+    "End": {
+        "message": "Einde",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "verborgen: tegenstem"
     },
@@ -821,6 +874,13 @@
     "downvoteDescription": {
         "message": "Verkeerde timing"
     },
+    "incorrectVote": {
+        "message": "Onjuist"
+    },
+    "harmfulVote": {
+        "message": "Schadelijk",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Categorie wijzigen"
     },
@@ -855,6 +915,9 @@
     },
     "categoryPillTitleText": {
         "message": "De hele video is gelabeld als deze categorie en is te strak geïntegreerd om te kunnen scheiden"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Een van uw hoofdstuknamen lijkt op een categorie. Gebruik in plaats daarvan waar mogelijk categorieën."
     },
     "experiementOptOut": {
         "message": "Uitschrijven van alle toekomstige experimenten",
@@ -1040,23 +1103,77 @@
     "confirmResetToDefault": {
         "message": "Weet u zeker dat u alle instellingen wilt terugzetten naar hun standaardwaarden? Dit kan niet ongedaan gemaakt worden."
     },
+    "exportSegments": {
+        "message": "Segmenten exporteren"
+    },
+    "importSegments": {
+        "message": "Hoofdstukken importeren"
+    },
+    "Import": {
+        "message": "Importeren",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
     "redeemSuccess": {
         "message": "Inwisselen geslaagd!"
     },
+    "redeemFailed": {
+        "message": "Licentiesleutel is ongeldig"
+    },
+    "hideUpsells": {
+        "message": "Opties verbergen die niet beschikbaar zijn zonder extra betaling"
+    },
+    "chooseACountry": {
+        "message": "Land kiezen"
+    },
+    "noDiscount": {
+        "message": "U komt niet in aanmerking voor een korting"
+    },
+    "discountLink": {
+        "message": "Kortingslink (zie de roze prijs)"
+    },
+    "selectYourCountry": {
+        "message": "Selecteer uw land"
+    },
+    "alreadyDonated": {
+        "message": "Als u al eerder een bedrag hebt gedoneerd, kunt u gratis toegang krijgen door een e-mail te sturen:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Als u het zich niet kunt veroorloven om een licentie aan te schaffen, klik dan {hier} om te zien of u in aanmerking komt voor een korting",
+        "description": "Keep the curly braces"
+    },
+    "patreonSignIn": {
+        "message": "Aanmelden met Patreon"
+    },
+    "redeem": {
+        "message": "Inwisselen"
+    },
+    "joinOnPatreon": {
+        "message": "Abonneren op Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Eenmalige aankoop"
+    },
+    "enterLicenseKey": {
+        "message": "Licentiesleutel invoeren"
+    },
+    "chaptersPage1": {
+        "message": "De SponsorBlock-functie voor crowd-sourced hoofdstukken is alleen beschikbaar voor mensen die een licentie kopen of voor mensen die gratis toegang krijgen vanwege hun bijdragen in het verleden"
+    },
     "unsubmittedSegmentCounts": {
-        "message": "Je hebt momenteel {0} in {1}",
+        "message": "U hebt momenteel {0} in {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
     },
     "unsubmittedSegmentCountsZero": {
-        "message": "Je hebt momenteel geen niet ingediende segmenten",
+        "message": "U hebt momenteel geen niet-ingediende segmenten",
         "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
     },
     "unsubmittedSegmentsSingular": {
-        "message": "niet ingediend segment",
+        "message": "niet-ingediend segment",
         "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
     },
     "unsubmittedSegmentsPlural": {
-        "message": "niet ingediende segmenten",
+        "message": "niet-ingediende segmenten",
         "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
     },
     "videosSingular": {
@@ -1068,23 +1185,23 @@
         "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
     },
     "clearUnsubmittedSegments": {
-        "message": "Verwijder alle segmenten",
+        "message": "Alle segmenten wissen",
         "description": "Label for a button in settings"
     },
     "clearUnsubmittedSegmentsConfirm": {
-        "message": "Weet je zeker dat je alle niet ingediende segmenten wilt verwijderen?",
+        "message": "Weet u zeker dat u al uw niet-ingediende segmenten wilt wissen?",
         "description": "Confirmation message for the Clear unsubmitted segments button"
     },
     "showUnsubmittedSegments": {
-        "message": "Toon segmenten",
+        "message": "Segmenten weergeven",
         "description": "Show/hide button for the unsubmitted segments list"
     },
     "hideUnsubmittedSegments": {
-        "message": "Verberg segmenten",
+        "message": "Segmenten verbergen",
         "description": "Show/hide button for the unsubmitted segments list"
     },
     "videoID": {
-        "message": "Video ID",
+        "message": "Video-ID",
         "description": "Header of the unsubmitted segments list"
     },
     "segmentCount": {
@@ -1096,6 +1213,6 @@
         "description": "Header of the unsubmitted segments list"
     },
     "exportSegmentsAsURL": {
-        "message": "Deel als URL"
+        "message": "Delen als URL"
     }
 }
