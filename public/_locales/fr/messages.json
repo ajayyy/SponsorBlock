@@ -463,6 +463,9 @@
     "minDurationDescription": {
         "message": "Les segments plus courts que la valeur fixée ne seront pas sautés ou affichés dans le lecteur."
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "Pour les personnes qui veulent regarder la vidéo sans interruptions si elle est complétement sponsorisée ou auto-promu."
+    },
     "skipNoticeDuration": {
         "message": "Durée du saut de segment (secondes):"
     },
