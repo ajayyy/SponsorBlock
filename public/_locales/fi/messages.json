@@ -28,6 +28,13 @@
     "SegmentsCap": {
         "message": "Osiot"
     },
+    "Chapters": {
+        "message": "Kappaleet"
+    },
+    "renderAsChapters": {
+        "message": "Piirrä osiot kappaleina",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Äänestä lähetystä"
     },
@@ -117,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Lähetä osiot"
+    },
+    "sortSegments": {
+        "message": "Järjestä osiot"
     },
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
@@ -292,6 +302,14 @@
         "message": "Lähetä osiot",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "Seuraava kappale",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Edellinen kappale",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "Valitse näppäin painamalla sitä ja valitse haluamasi vaihtonäppäin."
     },
@@ -444,6 +462,12 @@
     },
     "minDurationDescription": {
         "message": "Osioita jotka ovat asetettua arvoa lyhyempiä ei ohiteta tai näytetä soittimessa."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Käytä manuaalista ohitusta, kun video on merkitty \"Koko video\" osiolla"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Niille, jotka haluavat katsella täysin sponsoroitua sisältöä tai julkaisijan omaa markkinointia sisältävät videot keskeytyksettä."
     },
     "skipNoticeDuration": {
         "message": "Ohitusilmoituksen kesto (sekuntia):"
@@ -703,6 +727,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Voi ohittaa otsikon tai pikkukuvan viittaamaan kohtaan"
     },
+    "category_chapter": {
+        "message": "Kappale"
+    },
+    "category_chapter_description": {
+        "message": "Videon merkittäviä osioita kuvaavat mukautetut nimetyt kappaleet."
+    },
+    "category_chapter_guideline1": {
+        "message": "Älä mainitse sponsoreiden tuotemerkkejä"
+    },
+    "category_chapter_guideline2": {
+        "message": "Käytä yleisille osioille suurempia kappaleita"
+    },
+    "category_chapter_guideline3": {
+        "message": "Pienemmät kappaleet voidaan sijoittaa suurempien kappaleiden sisälle"
+    },
     "category_livestream_messages": {
         "message": "Livestream: lahjoitusten/viestien lukeminen"
     },
@@ -732,6 +771,9 @@
     },
     "showOverlay_full": {
         "message": "Näytä merkki"
+    },
+    "showOverlay_chapter": {
+        "message": "Näytä kappaleet"
     },
     "autoSkipOnMusicVideos": {
         "message": "Ohita kaikki osiot automaattisesti, kun videossa on \"Musiikiton\" osio"
@@ -835,6 +877,10 @@
     "incorrectVote": {
         "message": "Väärä"
     },
+    "harmfulVote": {
+        "message": "Haitallinen",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Vaihda kategoria"
     },
@@ -869,6 +915,9 @@
     },
     "categoryPillTitleText": {
         "message": "Koko video on merkitty tällä kategorialla ja on erotettavaksi liian tiiviisti integroitu"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Jonkin kappaleen ja kategorian nimet ovat samantapaisia. On suositeltavaa käyttää kappaleiden sijaan kategorioita, mikäli mahdollista."
     },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
@@ -1057,6 +1106,9 @@
     "exportSegments": {
         "message": "Vie osiot"
     },
+    "importSegments": {
+        "message": "Tuo kappaleet"
+    },
     "Import": {
         "message": "Tuo",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
@@ -1067,11 +1119,28 @@
     "redeemFailed": {
         "message": "Lisenssiavain on virheellinen"
     },
+    "hideUpsells": {
+        "message": "Piilotusvalinnat ovat käytettävissä vain lisämaksusta"
+    },
     "chooseACountry": {
         "message": "Valitse maa"
     },
+    "noDiscount": {
+        "message": "Et ole oikeutettu alennukseen"
+    },
+    "discountLink": {
+        "message": "Alennuslinkki (ks. vaaleanpunainen hinta)"
+    },
     "selectYourCountry": {
         "message": "Valitse maasi"
+    },
+    "alreadyDonated": {
+        "message": "Jos olet aiemmin lahjoittanut jonkin summan, voit lunastaa käyttöoikeuden veloituksetta sähköpostitse:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Jos sinulla ei ole varaa lisenssiin, paina {tästä} nähdäksesi oletko oikeutettu alennukseen",
+        "description": "Keep the curly braces"
     },
     "patreonSignIn": {
         "message": "Kirjaudu sisään Patreonilla"
@@ -1082,8 +1151,14 @@
     "joinOnPatreon": {
         "message": "Tilaa Patreonissa"
     },
+    "oneTimePurchase": {
+        "message": "Kertaluontoinen osto"
+    },
     "enterLicenseKey": {
         "message": "Syötä lisenssiavain"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlockin joukkolähteinen kappaletoiminto on vain lisenssin ostaneiden tai aiempien tukien perusteella veloituksettoman käyttöoikeuden saaneiden henkilöiden käytettävissä"
     },
     "unsubmittedSegmentCounts": {
         "message": "Sinulla on tällä hetkellä {0} {1}",
@@ -1125,8 +1200,16 @@
         "message": "Piilota osiot",
         "description": "Show/hide button for the unsubmitted segments list"
     },
+    "videoID": {
+        "message": "Videon tunniste",
+        "description": "Header of the unsubmitted segments list"
+    },
     "segmentCount": {
         "message": "Osiomäärä",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Toiminnot",
         "description": "Header of the unsubmitted segments list"
     },
     "exportSegmentsAsURL": {
