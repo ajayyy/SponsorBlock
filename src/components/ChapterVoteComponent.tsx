@@ -32,6 +32,11 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
     }
 
     render(): React.ReactElement {
+        if (this.tooltip && !this.state.show) {
+            this.tooltip.close();
+            this.tooltip = null;
+        }
+
         return (
             <>
                 {/* Upvote Button */}

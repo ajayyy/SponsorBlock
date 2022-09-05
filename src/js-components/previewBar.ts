@@ -685,6 +685,7 @@ class PreviewBar {
             } else {
                 // Hide chapters menu again
                 chaptersContainer.style.display = "none";
+                this.chapterVote.setVisibility(false);
             }
         }
     }
