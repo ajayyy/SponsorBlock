@@ -463,6 +463,12 @@
     "minDurationDescription": {
         "message": "Los segmentos más cortos que el valor configurado no se omitirán ni se mostrarán en el reproductor."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Usar omisión manual cuando existe una etiqueta de vídeo completa"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Para las personas que quieren ver el video sin interrupción si es totalmente patrocinado o autopromoción."
+    },
     "skipNoticeDuration": {
         "message": "Duración del aviso de omisión (segundos):"
     },
@@ -1134,7 +1140,7 @@
     },
     "cantAfford": {
         "message": "Si no puedes permitirte comprar una licencia, haz clic en {here} para ver si eres elegible para un descuento",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Iniciar sesión con Patreon"
