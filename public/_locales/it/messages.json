@@ -463,6 +463,9 @@
     "minDurationDescription": {
         "message": "I segmenti più brevi del valore impostato non verranno saltati o visualizzati nel lettore."
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "Per le persone che vogliono guardare il video senza interruzioni se contiene sponsorizzazioni o auto-promozioni."
+    },
     "skipNoticeDuration": {
         "message": "Salta durata avviso (secondi):"
     },
@@ -1121,7 +1124,7 @@
     },
     "cantAfford": {
         "message": "Se non puoi permetterti di acquistare una licenza, premi {here} per vedere se hai diritto a uno sconto",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Accedi con Patreon"
