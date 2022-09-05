@@ -467,7 +467,7 @@
         "message": "Handmatig overslaan gebruiken wanneer een label voor volledige video bestaat"
     },
     "whatManualSkipOnFullVideo": {
-        "message": "Voor mensen die de video ononderbroken willen bekijken als hij volledig gesponsord is of zelfpromotie is."
+        "message": "Voor mensen die de video ononderbroken willen bekijken als deze volledig gesponsord of zelfpromotie is."
     },
     "skipNoticeDuration": {
         "message": "Duur van overslaan-melding (seconden):"
@@ -1140,7 +1140,7 @@
     },
     "cantAfford": {
         "message": "Als u het zich niet kunt veroorloven om een licentie aan te schaffen, klik dan {hier} om te zien of u in aanmerking komt voor een korting",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Aanmelden met Patreon"
