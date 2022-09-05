@@ -466,9 +466,6 @@
     "enableManualSkipOnFullVideo": {
         "message": "Spring manuelt over, når en fuld video etiket findes"
     },
-    "whatManualSkipOnFullVideo": {
-        "message": "For folk, der ønsker at se videoen uafbrudt, hvis det er fuldt sponsoreret eller selvpromovering."
-    },
     "skipNoticeDuration": {
         "message": "Spring meddelelsesvarighed over (sekunder):"
     },
@@ -1140,7 +1137,7 @@
     },
     "cantAfford": {
         "message": "Hvis du ikke har råd til at købe en licens, så klik på {here} for at se, om du er berettiget til en rabat",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Log på med Patreon"
