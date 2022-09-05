@@ -442,6 +442,9 @@
     "minDurationDescription": {
         "message": "Segmen yang lebih kecil dari nilai yang diatur tidak akan dilewati atau tampil di pemutar."
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "Untung yang ingin menonton video tanpa gangguan jika sepenuhnya disponsori atau promosi sendiri."
+    },
     "skipNoticeDuration": {
         "message": "Lewati maklumat berdurasi (detik):"
     },
