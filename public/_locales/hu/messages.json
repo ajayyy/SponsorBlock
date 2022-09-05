@@ -1134,7 +1134,7 @@
     },
     "cantAfford": {
         "message": "Ha nem engedheted meg magadnak a licenc megvásárlását, kattints {ide}, hogy megtudd, jogosult vagy-e kedvezményre",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Bejelentkezés Patreonnal"
