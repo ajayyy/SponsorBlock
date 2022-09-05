@@ -466,9 +466,6 @@
     "enableManualSkipOnFullVideo": {
         "message": "動画全体のラベルが存在する場合は手動スキップを使用する"
     },
-    "whatManualSkipOnFullVideo": {
-        "message": "動画全体がスポンサー付きまたはセルフプロモーションである場合に、動画を邪魔されずに観たい方向け。"
-    },
     "skipNoticeDuration": {
         "message": "スキップ通知の表示時間（秒）:"
     },
@@ -1140,7 +1137,7 @@
     },
     "cantAfford": {
         "message": "ライセンスを購入する余裕がない方は、{こちら} をクリックして割引が適用されるかどうか確認できます",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Patreonでサインイン"
