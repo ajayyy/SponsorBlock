@@ -41,7 +41,10 @@ class SelectorComponent extends React.Component<SelectorProps, SelectorState> {
         for (const option of this.props.options) {
             result.push(
                 <div className="sbSelectorOption"
-                    onClick={() => this.props.onChange(option.label)}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        this.props.onChange(option.label);
+                    }}
                     key={option.label}>
                     {option.label}
                 </div>

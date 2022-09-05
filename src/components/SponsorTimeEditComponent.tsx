@@ -237,6 +237,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             ref={this.descriptionOptionRef}
                             type="text"
                             value={this.state.description}
+                            onContextMenu={(e) => e.stopPropagation()}
                             onChange={(e) => this.descriptionUpdate(e.target.value)}
                             onFocus={() => this.setState({chapterNameSelectorOpen: true})}>
                         </input>
