@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmentů"
     },
+    "SegmentsCap": {
+        "message": "Segmenty"
+    },
+    "Chapters": {
+        "message": "Kapitoly"
+    },
+    "renderAsChapters": {
+        "message": "Zobrazit segmenty jako kapitoly",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Hlasovat pro tento příspěvek"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Odeslat segmenty"
+    },
+    "sortSegments": {
+        "message": "Seřadit segmenty"
     },
     "submitCheck": {
         "message": "Opravdu to chcete odeslat?"
@@ -289,6 +302,14 @@
         "message": "Odeslat segmenty",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "Další kapitola",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Předchozí kapitola",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "Vyberte klávesu jejím zadáním a zvolte si modifikátory, které chcete použít."
     },
@@ -442,6 +463,12 @@
     "minDurationDescription": {
         "message": "Segmenty kratší než nastavená hodnota nebudou přeskočeny nebo zobrazeny v přehrávači."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Použít manuální přeskočení, pokud existuje štítek na celém videu"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Pro lidi, kteří chtějí sledovat video bez přerušení, pokud je celé sponzorované nebo sebepropagace."
+    },
     "skipNoticeDuration": {
         "message": "Délka trvání oznámení o přeskočení (v sekundách):"
     },
@@ -544,6 +571,10 @@
     "to": {
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "CopiedExclamation": {
+        "message": "Zkopírováno!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
     "generic_guideline1": {
         "message": "Zahrnout přechody segmentů"
@@ -696,6 +727,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Může přeskočit k názvu nebo náhledu"
     },
+    "category_chapter": {
+        "message": "Kapitola"
+    },
+    "category_chapter_description": {
+        "message": "Vlastní názvy kapitol popisující hlavní části videa."
+    },
+    "category_chapter_guideline1": {
+        "message": "Nezmiňujte názvy značek sponzorů"
+    },
+    "category_chapter_guideline2": {
+        "message": "Používejte větší kapitoly pro obecné části"
+    },
+    "category_chapter_guideline3": {
+        "message": "Menší kapitoly mohou být umístěny uvnitř větších"
+    },
     "category_livestream_messages": {
         "message": "Livestream: Čtení donatů / zpráv"
     },
@@ -725,6 +771,9 @@
     },
     "showOverlay_full": {
         "message": "Zobrazit štítek"
+    },
+    "showOverlay_chapter": {
+        "message": "Zobrazit kapitoly"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky přeskočit všechny segmenty, když je ve videu nehudební segment"
@@ -781,6 +830,10 @@
     "bracketEnd": {
         "message": "(Konec)"
     },
+    "End": {
+        "message": "Konec",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "skryté: protihlas"
     },
@@ -821,6 +874,13 @@
     "downvoteDescription": {
         "message": "Nesprávné / špatné časování"
     },
+    "incorrectVote": {
+        "message": "Nesprávné"
+    },
+    "harmfulVote": {
+        "message": "Škodlivé",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Změnit kategorii"
     },
@@ -855,6 +915,9 @@
     },
     "categoryPillTitleText": {
         "message": "Toto celé video je označeno jako tato kategorie a je příliš integrované na to, aby se dalo rozdělit"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Jeden z názvů kapitol je podobný kategorii. Pokud je to možné, raději používejte kategorie."
     },
     "experiementOptOut": {
         "message": "Odhlásit se ze všech budoucích experimentů",
@@ -1040,6 +1103,63 @@
     "confirmResetToDefault": {
         "message": "Opravdu chcete obnovit všechna nastavení na jejich výchozí hodnoty? Tato akce je nevratná."
     },
+    "exportSegments": {
+        "message": "Exportovat segmenty"
+    },
+    "importSegments": {
+        "message": "Importovat kapitoly"
+    },
+    "Import": {
+        "message": "Importovat",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Uplatnění bylo úspěšné!"
+    },
+    "redeemFailed": {
+        "message": "Licenční klíč není platný"
+    },
+    "hideUpsells": {
+        "message": "Skrýt možnosti nedostupné bez další platby"
+    },
+    "chooseACountry": {
+        "message": "Vyberte zemi"
+    },
+    "noDiscount": {
+        "message": "Nemáte nárok na slevu"
+    },
+    "discountLink": {
+        "message": "Slevový odkaz (viz růžová cena)"
+    },
+    "selectYourCountry": {
+        "message": "Vyberte vaši zemi"
+    },
+    "alreadyDonated": {
+        "message": "Pokud jste již přispěli jakoukoli částkou, můžete získat bezplatný přístup odesláním e-mailu na:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Pokud si nemůžete dovolit zakoupení licence, klikněte {sem}, abyste zjistili, zda máte nárok na slevu",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Přihlásit se pomocí Patreonu"
+    },
+    "redeem": {
+        "message": "Uplatnit"
+    },
+    "joinOnPatreon": {
+        "message": "Odebírat na Patreonu"
+    },
+    "oneTimePurchase": {
+        "message": "Jednorázový nákup"
+    },
+    "enterLicenseKey": {
+        "message": "Zadejte licenční klíč"
+    },
+    "chaptersPage1": {
+        "message": "Funkce komunitních kapitol je dostupná pouze lidem, kteří si zakoupili licenci, nebo lidem, kteří získali přístup zdarma díky jejich příspěvkům"
+    },
     "unsubmittedSegmentCounts": {
         "message": "Momentálně máte {0} na {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
@@ -1053,15 +1173,15 @@
         "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
     },
     "unsubmittedSegmentsPlural": {
-        "message": "neodeslané segmenty",
+        "message": "neodeslaných segmentů",
         "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
     },
     "videosSingular": {
-        "message": "video",
+        "message": "videu",
         "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
     },
     "videosPlural": {
-        "message": "videa",
+        "message": "videích",
         "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
     },
     "clearUnsubmittedSegments": {
@@ -1069,7 +1189,7 @@
         "description": "Label for a button in settings"
     },
     "clearUnsubmittedSegmentsConfirm": {
-        "message": "Opravdu, chcete vymazat všechny vaše neodeslané segmenty?",
+        "message": "Opravdu chcete vymazat všechny své neodeslané segmenty?",
         "description": "Confirmation message for the Clear unsubmitted segments button"
     },
     "showUnsubmittedSegments": {
@@ -1080,8 +1200,16 @@
         "message": "Skrýt segmenty",
         "description": "Show/hide button for the unsubmitted segments list"
     },
+    "videoID": {
+        "message": "ID videa",
+        "description": "Header of the unsubmitted segments list"
+    },
     "segmentCount": {
         "message": "Počet segmentů",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Akce",
         "description": "Header of the unsubmitted segments list"
     },
     "exportSegmentsAsURL": {
