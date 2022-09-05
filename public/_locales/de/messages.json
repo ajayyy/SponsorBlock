@@ -1134,7 +1134,7 @@
     },
     "cantAfford": {
         "message": "Wenn du dir keine Lizenz leisten kannst, klicke {hier} um zu sehen, ob du für einen Rabatt in Frage kommen",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Mit Patreon anmelden"
