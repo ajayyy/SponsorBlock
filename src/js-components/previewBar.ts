@@ -11,6 +11,7 @@ import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceT
 import { partition } from "../utils/arrayUtils";
 import { shortCategoryName } from "../utils/categoryUtils";
 import { GenericUtils } from "../utils/genericUtils";
+import { findValidElement } from "../utils/pageUtils";
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;
@@ -39,6 +40,7 @@ class PreviewBar {
     parent: HTMLElement;
     onMobileYouTube: boolean;
     onInvidious: boolean;
+    progressBar: HTMLElement;
 
     segments: PreviewBarSegment[] = [];
     existingChapters: PreviewBarSegment[] = [];
@@ -62,6 +64,7 @@ class PreviewBar {
         this.onInvidious = onInvidious;
         this.chapterVote = chapterVote;
 
+        this.updatePageElements();
         this.createElement(parent);
         this.createChapterMutationObservers();
 
@@ -208,9 +211,9 @@ class PreviewBar {
         this.segments = segments ?? [];
         this.videoDuration = videoDuration ?? 0;
 
-        const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
+        this.updatePageElements();
         // Sometimes video duration is inaccurate, pull from accessibility info
-        const ariaDuration = parseInt(progressBar?.getAttribute('aria-valuemax')) ?? 0;
+        const ariaDuration = parseInt(this.progressBar?.getAttribute('aria-valuemax')) ?? 0;
         if (ariaDuration && Math.abs(ariaDuration - this.videoDuration) > 3) {
             this.videoDuration = ariaDuration;
         }
@@ -218,11 +221,17 @@ class PreviewBar {
         this.update();
     }
 
+    private updatePageElements(): void {
+        const allProgressBars = document.querySelectorAll('.ytp-progress-bar') as NodeListOf<HTMLElement>;
+        this.progressBar = findValidElement(allProgressBars) ?? allProgressBars?.[0];
+
+        this.originalChapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
+    }
+
     private update(): void {
         this.clear();
         if (!this.segments) return;
 
-        this.originalChapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
         if (this.originalChapterBar) {
             this.originalChapterBarBlocks = this.originalChapterBar.querySelectorAll(":scope > div") as NodeListOf<HTMLElement>
             this.existingChapters = this.segments.filter((s) => s.source === SponsorSourceType.YouTube).sort((a, b) => a.segment[0] - b.segment[0]);
@@ -278,8 +287,7 @@ class PreviewBar {
     }
 
     createChaptersBar(segments: PreviewBarSegment[]): void {
-        const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
-        if (!progressBar || !this.originalChapterBar || this.originalChapterBar.childElementCount <= 0) return;
+        if (!this.progressBar || !this.originalChapterBar || this.originalChapterBar.childElementCount <= 0) return;
 
         if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
             || (!Config.config.renderSegmentsAsChapters 
@@ -302,7 +310,10 @@ class PreviewBar {
 
         // Create it from cloning
         let createFromScratch = false;
-        if (!this.customChaptersBar) {
+        if (!this.customChaptersBar || !this.progressBar.contains(this.customChaptersBar)) {
+            // Clear anything remaining
+            document.querySelectorAll(".sponsorBlockChapterBar").forEach((element) => element.remove());
+
             createFromScratch = true;
             this.customChaptersBar = this.originalChapterBar.cloneNode(true) as HTMLElement;
             this.customChaptersBar.classList.add("sponsorBlockChapterBar");
@@ -310,8 +321,6 @@ class PreviewBar {
         this.customChaptersBar.style.removeProperty("display");
         const originalSections = this.customChaptersBar.querySelectorAll(".ytp-chapter-hover-container");
         const originalSection = originalSections[0];
-
-        this.customChaptersBar = this.customChaptersBar;
 
         // For switching to a video with less chapters
         if (originalSections.length > chaptersToRender.length) {
@@ -338,14 +347,14 @@ class PreviewBar {
         this.originalChapterBar.style.display = "none";
 
         if (createFromScratch) {
-            if (this.container?.parentElement === progressBar) {
-                progressBar.insertBefore(this.customChaptersBar, this.container.nextSibling);
+            if (this.container?.parentElement === this.progressBar) {
+                this.progressBar.insertBefore(this.customChaptersBar, this.container.nextSibling);
             } else {
-                progressBar.prepend(this.customChaptersBar);
+                this.progressBar.prepend(this.customChaptersBar);
             }
         }
 
-        this.updateChapterAllMutation(this.originalChapterBar, progressBar, true);
+        this.updateChapterAllMutation(this.originalChapterBar, this.progressBar, true);
     }
 
     createChapterRenderGroups(segments: PreviewBarSegment[]): ChapterGroup[] {
@@ -459,9 +468,7 @@ class PreviewBar {
     }
 
     private createChapterMutationObservers(): void {
-        const progressBar = document.querySelector('.ytp-progress-bar') as HTMLElement;
-        const chapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
-        if (!progressBar || !chapterBar) return;
+        if (!this.progressBar || !this.originalChapterBar) return;
 
         const attributeObserver = new MutationObserver((mutations) => {
             const changes: Record<string, HTMLElement> = {};
@@ -473,10 +480,10 @@ class PreviewBar {
                 }
             }
 
-            this.updateChapterMutation(changes, progressBar);
+            this.updateChapterMutation(changes, this.progressBar);
         });
 
-        attributeObserver.observe(chapterBar, {
+        attributeObserver.observe(this.originalChapterBar, {
             subtree: true,
             attributes: true,
             attributeFilter: ["style", "class"]
@@ -490,11 +497,11 @@ class PreviewBar {
                 }
             }
 
-            this.updateChapterMutation(changes, progressBar);
+            this.updateChapterMutation(changes, this.progressBar);
         });
 
         // Only direct children, no subtree
-        childListObserver.observe(chapterBar, {
+        childListObserver.observe(this.originalChapterBar, {
             childList: true
         });
     }
