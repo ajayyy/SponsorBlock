@@ -466,6 +466,9 @@
     "enableManualSkipOnFullVideo": {
         "message": "Använd manuellt hoppa över när en fullständig videoetikett visas"
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "För personer som vill titta på videon utan avbrott om den är fullt sponsrad eller självbefordran."
+    },
     "skipNoticeDuration": {
         "message": "Antalet sekunder meddelandet för hoppa över ska visas:"
     },
