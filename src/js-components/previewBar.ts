@@ -669,6 +669,11 @@ class PreviewBar {
                 const chapterVoteContainer = this.chapterVote.getContainer();
                 if (chosenSegment.source === SponsorSourceType.Server) {
                     if (!chapterButton.contains(chapterVoteContainer)) {
+                        const oldVoteContainers = document.querySelectorAll("#chapterVote");
+                        if (oldVoteContainers.length > 0) {
+                            oldVoteContainers.forEach((oldVoteContainer) => oldVoteContainer.remove());
+                        }
+                        
                         chapterButton.insertBefore(chapterVoteContainer, this.getChapterChevron());
                     }
 
