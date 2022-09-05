@@ -54,27 +54,40 @@ document.addEventListener("yt-navigate-finish", navigateFinishSend);
 
 function navigationParser(event: CustomEvent): StartMessage {
     const pageType: PageType = event.detail.pageType;
-    const result: StartMessage = { type: "navigation", pageType, videoID: null };
-    if (pageType === "shorts" || pageType === "watch") {
-        const endpoint = event.detail.endpoint
-        result.videoID = (pageType === "shorts" ? endpoint.reelWatchEndpoint : endpoint.watchEndpoint).videoId;
-    }
+    if (pageType) {
+        const result: StartMessage = { type: "navigation", pageType, videoID: null };
+        if (pageType === "shorts" || pageType === "watch") {
+            const endpoint = event.detail.endpoint
+            if (!endpoint) return null;
+            
+            result.videoID = (pageType === "shorts" ? endpoint.reelWatchEndpoint : endpoint.watchEndpoint).videoId;
+        }
 
-    return result;
+        return result;
+    } else {
+        return null;
+    }
 }
 
 function navigationStartSend(event: CustomEvent): void {
-    sendMessage(navigationParser(event) as StartMessage);
+    const message = navigationParser(event) as StartMessage;
+    if (message) {
+        sendMessage(message);
+    }
 }
 
 function navigateFinishSend(event: CustomEvent): void {
     sendVideoData(); // arrived at new video, send video data
     const videoDetails = event.detail?.response?.playerResponse?.videoDetails;
-    sendMessage({ channelID: videoDetails.channelId, channelTitle: videoDetails.author, ...navigationParser(event) } as FinishMessage);
+    if (videoDetails) {
+        sendMessage({ channelID: videoDetails.channelId, channelTitle: videoDetails.author, ...navigationParser(event) } as FinishMessage);
+    }
 }
 
 function sendVideoData(): void {
     if (!playerClient) return;
-    const { video_id, isLive, isPremiere } = playerClient.getVideoData();
-    sendMessage({ type: "data", videoID: video_id, isLive, isPremiere } as VideoData);
+    const videoData = playerClient.getVideoData();
+    if (videoData) {
+        sendMessage({ type: "data", videoID: videoData.video_id, isLive: videoData.isLive, isPremiere: videoData.isPremiere } as VideoData);
+    }
 }
