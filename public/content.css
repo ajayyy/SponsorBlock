@@ -126,6 +126,10 @@ div:hover > .sponsorBlockChapterBar {
 	vertical-align: top;
 }
 
+.playerButton.hidden {
+	display: none !important;
+}
+
 /* Removes auto width from being a ytp-player-button */
 .sbPlayerDownvote {
 	width: auto !important;

@@ -37,6 +37,7 @@ export class ChapterVote {
     setVisibility(show: boolean): void {
         const newState = {
             show,
+            ...(!show ? { segment: null } : {})
         };
 
         if (this.ref.current) {
