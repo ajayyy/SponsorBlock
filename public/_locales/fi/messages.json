@@ -466,6 +466,9 @@
     "enableManualSkipOnFullVideo": {
         "message": "Käytä manuaalista ohitusta, kun video on merkitty \"Koko video\" osiolla"
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "Niille, jotka haluavat katsella täysin sponsoroitua sisältöä tai julkaisijan omaa markkinointia sisältävät videot keskeytyksettä."
+    },
     "skipNoticeDuration": {
         "message": "Ohitusilmoituksen kesto (sekuntia):"
     },
