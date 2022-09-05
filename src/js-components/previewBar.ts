@@ -318,7 +318,8 @@ class PreviewBar {
             this.customChaptersBar = this.originalChapterBar.cloneNode(true) as HTMLElement;
             this.customChaptersBar.classList.add("sponsorBlockChapterBar");
         }
-        this.customChaptersBar.style.removeProperty("display");
+
+        this.customChaptersBar.style.display = "none";
         const originalSections = this.customChaptersBar.querySelectorAll(".ytp-chapter-hover-container");
         const originalSection = originalSections[0];
 
@@ -345,6 +346,7 @@ class PreviewBar {
 
         // Hide old bar
         this.originalChapterBar.style.display = "none";
+        this.customChaptersBar.style.removeProperty("display");
 
         if (createFromScratch) {
             if (this.container?.parentElement === this.progressBar) {
