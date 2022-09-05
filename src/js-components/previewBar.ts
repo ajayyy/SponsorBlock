@@ -225,7 +225,7 @@ class PreviewBar {
         const allProgressBars = document.querySelectorAll('.ytp-progress-bar') as NodeListOf<HTMLElement>;
         this.progressBar = findValidElement(allProgressBars) ?? allProgressBars?.[0];
 
-        this.originalChapterBar = document.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
+        this.originalChapterBar = this.progressBar.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
     }
 
     private update(): void {
