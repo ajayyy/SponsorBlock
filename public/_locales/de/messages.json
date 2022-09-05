@@ -463,6 +463,12 @@
     "minDurationDescription": {
         "message": "Videosegmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Verwende manuelles überspringen wenn ein vollständiges Video Label existiert"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Für Personen, welche ein Video ohne unterbrechungen schauen wollen, während es eine komplette Eigenwerbung oder gesponsert ist."
+    },
     "skipNoticeDuration": {
         "message": "Dauer des Überspringenhinweises (Sekunden):"
     },
