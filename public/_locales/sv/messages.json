@@ -466,9 +466,6 @@
     "enableManualSkipOnFullVideo": {
         "message": "Använd manuellt hoppa över när en fullständig videoetikett visas"
     },
-    "whatManualSkipOnFullVideo": {
-        "message": "För personer som vill titta på videon utan avbrott om den är fullt sponsrad eller självbefordran."
-    },
     "skipNoticeDuration": {
         "message": "Antalet sekunder meddelandet för hoppa över ska visas:"
     },
@@ -1140,7 +1137,7 @@
     },
     "cantAfford": {
         "message": "Om du inte har råd att köpa en licens kan du klicka {här} för att se om du är berättigad till rabatt",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Logga in med Patreon"
