@@ -839,7 +839,7 @@
     },
     "cantAfford": {
         "message": "Ako si ne možeš priuštiti kupnju licence, pritisni {here} da vidiš imaš li pravo na popust",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Prijavi se putem Patreona"
