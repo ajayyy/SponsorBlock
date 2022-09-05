@@ -466,9 +466,6 @@
     "enableManualSkipOnFullVideo": {
         "message": "Käytä manuaalista ohitusta, kun video on merkitty \"Koko video\" osiolla"
     },
-    "whatManualSkipOnFullVideo": {
-        "message": "Niille, jotka haluavat katsella täysin sponsoroitua sisältöä tai julkaisijan omaa markkinointia sisältävät videot keskeytyksettä."
-    },
     "skipNoticeDuration": {
         "message": "Ohitusilmoituksen kesto (sekuntia):"
     },
@@ -1140,7 +1137,7 @@
     },
     "cantAfford": {
         "message": "Jos sinulla ei ole varaa lisenssiin, paina {tästä} nähdäksesi oletko oikeutettu alennukseen",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Kirjaudu sisään Patreonilla"
