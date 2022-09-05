@@ -202,6 +202,8 @@ async function muteSkipSegment(driver: WebDriver, startTime: number, endTime: nu
 
 async function toggleWhitelist(driver: WebDriver): Promise<void> {
     const popupButton = await driver.findElement(By.id("infoButton"));
+    const rightControls = await driver.findElement(By.css(".ytp-right-controls"));
+    await driver.actions().move({ origin: rightControls }).perform();
     if ((await popupButton.getCssValue("display")) !== "none") {
         await driver.actions().move({ origin: popupButton }).perform();
         await popupButton.click();
