@@ -1140,7 +1140,7 @@
     },
     "cantAfford": {
         "message": "Ако не можете да си позволите да закупите лиценз, щракнете {тук}, за да видите дали отговаряте на условията за отстъпка",
-        "description": "Keep the curly braces"
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Влезте с Patreon"
