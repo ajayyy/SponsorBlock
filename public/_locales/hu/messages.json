@@ -463,6 +463,12 @@
     "minDurationDescription": {
         "message": "A beállított értéknél rövidebb szegmenseket nem ugorja át és nem jeleníti meg a lejátszó."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Manuális átugrás használata, ha van teljes videó címke"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Azoknak, akik megszakítás nélkül szeretnék végignézni a videót, ha az teljes egészében szponzorált, vagy önpromóció."
+    },
     "skipNoticeDuration": {
         "message": "Átugrási értesítés hossza (másodpercekben):"
     },
