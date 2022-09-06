@@ -25,6 +25,12 @@
     "Segments": {
         "message": "구간"
     },
+    "SegmentsCap": {
+        "message": "구간"
+    },
+    "Chapters": {
+        "message": "챕터"
+    },
     "upvoteButtonInfo": {
         "message": "이 제출을 추천해요"
     },
