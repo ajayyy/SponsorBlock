@@ -1056,5 +1056,21 @@
     },
     "enterLicenseKey": {
         "message": "라이선스 키 입력"
+    },
+    "videosSingular": {
+        "message": "동영상",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "동영상",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "모든 구간 지우기",
+        "description": "Label for a button in settings"
+    },
+    "showUnsubmittedSegments": {
+        "message": "구간 표시",
+        "description": "Show/hide button for the unsubmitted segments list"
     }
 }
