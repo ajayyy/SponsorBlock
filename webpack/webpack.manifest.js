@@ -12,6 +12,8 @@ const chromeManifestExtra = require("../manifest/chrome-manifest-extra.json");
 const safariManifestExtra = require("../manifest/safari-manifest-extra.json");
 const betaManifestExtra = require("../manifest/beta-manifest-extra.json");
 const firefoxBetaManifestExtra = require("../manifest/firefox-beta-manifest-extra.json");
+const firefoxAndroidManifestExtra = require("../manifest/firefox-android-manifest-extra.json")
+const invidiousList = require('../ci/invidiouslist.json');
 
 // schema for options object
 const schema = {
@@ -49,6 +51,13 @@ class BuildManifest {
             mergeObjects(manifest, chromeManifestExtra);
         }  else if (this.options.browser.toLowerCase() === "safari") {
             mergeObjects(manifest, safariManifestExtra);
+        } else if (this.options.browser.toLowerCase() === "firefox-android") {
+            mergeObjects(manifest, firefoxAndroidManifestExtra);
+            // generate list of domains
+            const matchList = invidiousList.map(domain => `https://${domain}/*`)
+            // manual merge since it is in an arry
+            const oldMatches = manifest.content_scripts[0].matches
+            manifest.content_scripts[0].matches = oldMatches.concat(matchList)
         }
 
         if (this.options.stream === "beta") {
