@@ -229,10 +229,10 @@
         "message": "Enregistrer les segments contre lesquels vous avez voté"
     },
     "whatTrackDownvotes": {
-        "message": "Tous les segments que contre lesquels vous votez resteront cachés même après rafraîchissement de la page"
+        "message": "Tous les segments contre-votés resteront cachés même après rafraîchissement de la page"
     },
     "trackDownvotesWarning": {
-        "message": "Attention : la désactivation supprimera tous vos votes précédemment enregistrés"
+        "message": "Attention : Désactiver ceci supprimera tous les contre-votes précédemment enregistrés"
     },
     "enableQueryByHashPrefix": {
         "message": "Requête par préfixe du hash"
