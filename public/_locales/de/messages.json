@@ -1051,7 +1051,7 @@
         "description": "100d"
     },
     "hourAbbreviation": {
-        "message": "S",
+        "message": "Std",
         "description": "100h"
     },
     "optionsTabBehavior": {
