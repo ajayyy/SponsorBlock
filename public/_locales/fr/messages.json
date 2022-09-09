@@ -229,7 +229,7 @@
         "message": "Enregistrer les segments contre lesquels vous avez voté"
     },
     "whatTrackDownvotes": {
-        "message": "Tous les segments contre-votés resteront cachés même après rafraîchissement de la page"
+        "message": "Tous les segments votés négativement resteront cachés même après rafraîchissement de la page"
     },
     "trackDownvotesWarning": {
         "message": "Attention : Désactiver ceci supprimera tous les contre-votes précédemment enregistrés"
@@ -339,7 +339,7 @@
         "message": "Couper le son"
     },
     "full": {
-        "message": "Toute la vidéo",
+        "message": "Vidéo entière",
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
@@ -462,6 +462,9 @@
     },
     "minDurationDescription": {
         "message": "Les segments plus courts que la valeur fixée ne seront pas sautés ou affichés dans le lecteur."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Utiliser le saut manuel quand une étiquette vidéo complète existe"
     },
     "whatManualSkipOnFullVideo": {
         "message": "Pour les personnes qui veulent regarder la vidéo sans interruptions si elle est complétement sponsorisée ou auto-promu."
@@ -1125,12 +1128,19 @@
     "noDiscount": {
         "message": "Vous n'êtes pas éligibles à une réduction"
     },
+    "discountLink": {
+        "message": "Lien de réduction (Voir le prix rose)"
+    },
     "selectYourCountry": {
-        "message": "Sélectionnez un pays"
+        "message": "Sélectionne ton pays"
     },
     "alreadyDonated": {
         "message": "Si tu as fait un don de n'importe quel montant avant, tu peux avoir un accès gratuit en envoyant un e-mail :",
         "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Si vous ne pouvez pas vous permettre d'acheter une licence, cliquez sur {here} pour voir si vous êtes admissible à une réduction",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Se connecter avec Patreon"
