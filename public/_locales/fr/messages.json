@@ -1145,6 +1145,9 @@
     "patreonSignIn": {
         "message": "Se connecter avec Patreon"
     },
+    "redeem": {
+        "message": "Réclamer"
+    },
     "joinOnPatreon": {
         "message": "Soutenir sur Patreon"
     },
@@ -1153,6 +1156,9 @@
     },
     "enterLicenseKey": {
         "message": "Entrer la clé de licence"
+    },
+    "chaptersPage1": {
+        "message": "La fonctionnalité participative des chapitres de SponsorBlock n'est disponible que pour les personnes qui achètent une licence, ou pour les personnes qui en ont l'accès gratuitement grâce à leurs contributions passées"
     },
     "unsubmittedSegmentCounts": {
         "message": "Vous avez actuellement {0} sur {1}",
