@@ -466,6 +466,9 @@
     "enableManualSkipOnFullVideo": {
         "message": "Spring manuelt over, når en fuld video etiket findes"
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "For folk, som ønsker at se videoen uafbrudt, hvis det er fuldt sponsoreret eller selvpromovering."
+    },
     "skipNoticeDuration": {
         "message": "Spring meddelelsesvarighed over (sekunder):"
     },
