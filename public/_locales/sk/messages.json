@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmentov"
     },
+    "SegmentsCap": {
+        "message": "Segmenty"
+    },
+    "Chapters": {
+        "message": "Kapitoly"
+    },
+    "renderAsChapters": {
+        "message": "Zobraziť segmenty ako kapitoly",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Hlasovať pre tento príspevok"
     },
@@ -268,6 +278,14 @@
         "message": "Ak sa vám to stále nepáčí, stlačte tlačidlo Nikdy nezobrazovať.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "nextChapterKeybind": {
+        "message": "Ďalšia kapitola",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Predošlá kapitola",
+        "description": "Keybind label"
+    },
     "0": {
         "message": "Spojenie vypršalo. Skontrolujte svoje internetové pripojenie. Ak vám internet funguje, server je pravdepodobne preťažený alebo nefunkčný."
     },
@@ -509,6 +527,10 @@
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Skopírované!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Zahŕňa plynulé prechody"
     },
@@ -657,6 +679,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Môže preskočiť na hlavný obsah alebo náhľad"
     },
+    "category_chapter": {
+        "message": "Kapitola"
+    },
+    "category_chapter_description": {
+        "message": "Vlastné pomenovania kapitol opisujúce hlavné sekcie videa."
+    },
+    "category_chapter_guideline1": {
+        "message": "Nezmieňovať sponzorove značky"
+    },
+    "category_chapter_guideline2": {
+        "message": "Použiť veľké kapitoly pre všeobecné sekcie"
+    },
+    "category_chapter_guideline3": {
+        "message": "Menšie kapitoly môžu byť umiestnené vo väčších"
+    },
     "category_livestream_messages": {
         "message": "Živé vysielanie: oznamy a dary"
     },
@@ -686,6 +723,9 @@
     },
     "showOverlay_full": {
         "message": "Ukázať Označenie"
+    },
+    "showOverlay_chapter": {
+        "message": "Zobraziť kapitoly"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky preskočiť všetky segmenty ak neexistuje segment bez hudby"
@@ -742,6 +782,10 @@
     "bracketEnd": {
         "message": "(Koniec)"
     },
+    "End": {
+        "message": "Koniec",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "skryté: negatívne hlasy"
     },
@@ -779,6 +823,13 @@
     "downvoteDescription": {
         "message": "Nesprávne/Zlé načasovanie"
     },
+    "incorrectVote": {
+        "message": "Nesprávne"
+    },
+    "harmfulVote": {
+        "message": "Škodlivé",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "incorrectCategory": {
         "message": "Zmeniť kategóriu"
     },
@@ -813,6 +864,9 @@
     },
     "categoryPillTitleText": {
         "message": "Celé video je označené touto kategóriou a je príliš previazané, aby sa to dalo rozlíšiť"
+    },
+    "chapterNameTooltipWarning": {
+        "message": "Jedna z vašich kapitol sa volá podobne ako kategória. Ak je to možné, použite radšej kategóriu."
     },
     "experiementOptOut": {
         "message": "Odmietnuť všetky budúce experimenty",
@@ -948,5 +1002,59 @@
     },
     "openOptionsPage": {
         "message": "Otvoriť stránku s nastaveniami"
+    },
+    "exportSegments": {
+        "message": "Exportovať segmenty"
+    },
+    "importSegments": {
+        "message": "Importovať kapitoly"
+    },
+    "Import": {
+        "message": "Import",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "Licenčný kľúč nie je platný"
+    },
+    "hideUpsells": {
+        "message": "Skryť platené nastavenia"
+    },
+    "chooseACountry": {
+        "message": "Vybrať krajinu"
+    },
+    "noDiscount": {
+        "message": "Nemáte nárok na zľavu"
+    },
+    "discountLink": {
+        "message": "Odkaz na zľavu (ružová cena)"
+    },
+    "selectYourCountry": {
+        "message": "Vyberte krajinu"
+    },
+    "alreadyDonated": {
+        "message": "Ak ste už v minulosti prispeli, získajte voľný prístup napísaním emailu:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Ak si nemôžete dovoliť kúpiť licenciu, kliknite {sem} a zistite, či máte nárok na zľavu",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Prihlásiť sa cez Patreon"
+    },
+    "redeem": {
+        "message": "Uplatniť"
+    },
+    "joinOnPatreon": {
+        "message": "Kúpte si Patreon predplatné"
+    },
+    "oneTimePurchase": {
+        "message": "Jednorazový nákup"
+    },
+    "enterLicenseKey": {
+        "message": "Zadajte licenčný kľúč"
+    },
+    "chaptersPage1": {
+        "message": "Crowd-sourcované kapitovly v SponsorBlock-u sú dostupné len po zakúpení licencie alebo zadarmo pre ľudí, ktorí už v minulosti prispeli"
     }
 }
