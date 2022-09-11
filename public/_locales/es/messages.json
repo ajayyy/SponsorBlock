@@ -87,10 +87,10 @@
         "message": "No se han encontrado segmentos"
     },
     "sponsorStart": {
-        "message": "El Segmento Inicia Ahora"
+        "message": "Marcar inicio de segmento"
     },
     "sponsorEnd": {
-        "message": "El Segmento Termina Ahora"
+        "message": "Marcar final de segmento"
     },
     "sponsorCancel": {
         "message": "Cancelar Creación de Segmento"
