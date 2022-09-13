@@ -74,6 +74,10 @@ class PreviewBar {
     setupHoverText(): void {
         if (this.onMobileYouTube || this.onInvidious) return;
 
+        // delete old ones
+        document.querySelectorAll(`.sponsorCategoryTooltip`)
+            .forEach((e) => e.remove());
+
         // Create label placeholder
         this.categoryTooltip = document.createElement("div");
         this.categoryTooltip.className = "ytp-tooltip-title sponsorCategoryTooltip";
