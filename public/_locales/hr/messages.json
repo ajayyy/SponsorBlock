@@ -805,9 +805,6 @@
     "exportSegments": {
         "message": "Izvezi odsječke"
     },
-    "importSegments": {
-        "message": "Uvezi poglavlja"
-    },
     "Import": {
         "message": "Uvezi",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
