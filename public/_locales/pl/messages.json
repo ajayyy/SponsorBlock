@@ -1100,9 +1100,6 @@
     "exportSegments": {
         "message": "Eksportuj segmenty"
     },
-    "importSegments": {
-        "message": "Importuj rozdziały"
-    },
     "Import": {
         "message": "Importuj",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
