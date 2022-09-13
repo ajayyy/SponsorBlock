@@ -1106,9 +1106,6 @@
     "exportSegments": {
         "message": "匯出片段"
     },
-    "importSegments": {
-        "message": "匯入章節"
-    },
     "Import": {
         "message": "匯入",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
