@@ -1107,7 +1107,7 @@
         "message": "Export segments"
     },
     "importSegments": {
-        "message": "Import chapters"
+        "message": "Import segments"
     },
     "Import": {
         "message": "Import",
