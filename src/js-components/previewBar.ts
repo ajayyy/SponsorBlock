@@ -682,8 +682,6 @@ class PreviewBar {
         const chaptersContainer = document.querySelector(".ytp-chapter-container") as HTMLDivElement;
 
         if (chaptersContainer) {
-            // TODO: Check if existing chapters exist (if big chapters menu is available?)
-
             if (segments.length > 0) {
                 chaptersContainer.style.removeProperty("display");
 
@@ -721,7 +719,6 @@ class PreviewBar {
                     this.chapterVote.setVisibility(false);
                 }
             } else {
-                // Hide chapters menu again
                 chaptersContainer.style.display = "none";
                 this.chapterVote.setVisibility(false);
             }

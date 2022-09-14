@@ -1044,7 +1044,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
 function importExistingChapters(wait: boolean) {
     if (!existingChaptersImported) {
-        GenericUtils.wait(() => video && getExistingChapters(sponsorVideoID, video.duration),
+        GenericUtils.wait(() => video?.duration && getExistingChapters(sponsorVideoID, video.duration),
             wait ? 5000 : 0, 100, (c) => c?.length > 0).then((chapters) => {
                 if (!existingChaptersImported && chapters?.length > 0) {
                     sponsorTimes = (sponsorTimes ?? []).concat(...chapters).sort((a, b) => a.segment[0] - b.segment[0]);
