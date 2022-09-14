@@ -313,6 +313,12 @@ class PreviewBar {
         // Merge overlapping chapters
         const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
         const chaptersToRender = this.createChapterRenderGroups(filteredSegments).filter((segment) => this.chapterGroupFilter(segment));
+        // Fix missing sections due to filtered segments
+        for (let i = 1; i < chaptersToRender.length; i++) {
+            if (chaptersToRender[i].segment[0] !== chaptersToRender[i - 1].segment[1]) {
+                chaptersToRender[i - 1].segment[1] = chaptersToRender[i].segment[0]
+            }
+        }
 
         if (chaptersToRender?.length <= 0) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
