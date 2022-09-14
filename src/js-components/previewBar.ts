@@ -584,6 +584,7 @@ class PreviewBar {
             { left: number, scale: number } {
         const sections = currentElement.parentElement.parentElement.parentElement.children;
         let currentWidth = 0;
+        let lastWidth = 0;
 
         let left = 0;
         let leftPosition = 0;
@@ -591,6 +592,7 @@ class PreviewBar {
         let scale = null;
         let scalePosition = 0;
         let scaleWidth = 0;
+        let lastScalePosition = 0;
 
         for (let i = 0; i < sections.length; i++) {
             const section = sections[i] as HTMLElement;
@@ -610,24 +612,33 @@ class PreviewBar {
             const transformMatch = checkElement.style.transform.match(/scaleX\(([0-9.]+?)\)/);
             if (transformMatch) {
                 const transformScale = parseFloat(transformMatch[1]);
-                if (i === sections.length - 1 || (transformScale < 1 && transformScale + checkLeft / currentSectionWidthNoMargin < 0.99999)) {
-                    scale = transformScale;
-                    scaleWidth = currentSectionWidthNoMargin;
+                const endPosition = transformScale + checkLeft / currentSectionWidthNoMargin;
 
-                    if (transformScale > 0) {
-                        // reached the end of this section for sure, since the scale is now between 0 and 1
-                        // if the scale is always zero, then it will go through all sections but still return 0
+                if (lastScalePosition > 0.99999 && endPosition === 0) {
+                    // Last one was an end section that was fully filled
+                    scalePosition = currentWidth - lastWidth;
+                    break;
+                }
 
-                        scalePosition = currentWidth;
-                        if (checkLeft !== 0) {
-                            scalePosition += left;
-                        }
-                        break;
+                lastScalePosition = endPosition;
+
+                scale = transformScale;
+                scaleWidth = currentSectionWidthNoMargin;
+
+                if ((i === sections.length - 1 || endPosition < 0.99999) && endPosition > 0) {
+                    // reached the end of this section for sure
+                    // if the scale is always zero, then it will go through all sections but still return 0
+
+                    scalePosition = currentWidth;
+                    if (checkLeft !== 0) {
+                        scalePosition += left;
                     }
+                    break;
                 }
             }
 
-            currentWidth += currentSectionWidth;
+            lastWidth = currentSectionWidth;
+            currentWidth += lastWidth;
         }
 
         return { 
