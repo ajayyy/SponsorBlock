@@ -1106,6 +1106,9 @@
     "exportSegments": {
         "message": "Szegmensek exportálása"
     },
+    "importSegments": {
+        "message": "Szegmensek importálása"
+    },
     "Import": {
         "message": "Importálás",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
