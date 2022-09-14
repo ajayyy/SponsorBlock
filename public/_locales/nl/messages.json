@@ -1106,6 +1106,9 @@
     "exportSegments": {
         "message": "Segmenten exporteren"
     },
+    "importSegments": {
+        "message": "Segmenten importeren"
+    },
     "Import": {
         "message": "Importeren",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
