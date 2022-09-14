@@ -1134,6 +1134,10 @@
     "selectYourCountry": {
         "message": "국가 선택"
     },
+    "cantAfford": {
+        "message": "요금을 결제할 여력이 아니시라면, {여기}서 할인 혜택을 받을 수 있는지 확인해보세요",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
     "patreonSignIn": {
         "message": "Patreon으로 로그인"
     },
