@@ -26,6 +26,10 @@
 	transition: transform .1s cubic-bezier(0,0,0.2,1);
 }
 
+.ytp-big-mode #previewbar {
+	transform: scaleY(0.625) translateY(-30%) translateY(1.5px);
+}
+
 .progress-bar-line > #previewbar {
 	height: 3px;
 }
