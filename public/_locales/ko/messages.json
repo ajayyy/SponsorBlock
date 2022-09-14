@@ -8,7 +8,7 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "서버에서 유효하지 않은 요청이라고 응답했어요."
+        "message": "서버에서 유효하지 않은 요청이라고 응답했어요"
     },
     "429": {
         "message": "이 영상에 많은 스폰서 광고 구간을 제출했어요, 정말로 확실한가요?"
@@ -153,11 +153,11 @@
         "message": "제출"
     },
     "submissionEditHint": {
-        "message": "제출하고 나면 구간을 수정할 수 있게 돼요.",
+        "message": "제출하고 나면 구간을 수정할 수 있게 돼요",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "도움말: 설정에서 제출 단축키를 설정하실 수 있어요."
+        "message": "도움말: 설정에서 제출 단축키를 설정하실 수 있어요"
     },
     "clearTimesButton": {
         "message": "구간 삭제"
@@ -497,7 +497,7 @@
         "message": "초기화"
     },
     "customAddressError": {
-        "message": "올바르지 않은 주소예요. http:// 혹은 https://로 시작해야 하고 마지막 문자에 빗금이 있지 않아야 해요."
+        "message": "올바르지 않은 주소예요. http:// 또는 https://로 시작해야 하고 마지막 문자에 빗금이 있지 않아야 해요."
     },
     "areYouSureReset": {
         "message": "이 제출 형식을 초기화하시겠어요?"
@@ -668,7 +668,7 @@
         "message": "미리보기/요약 구간"
     },
     "category_preview_description": {
-        "message": "이 구간은 같은 동영상 혹은 시리즈의 다른 동영상에 완전히 반복해서 나올 내용을 보여주는 클립 모음이 해당돼요."
+        "message": "이 구간은 동영상의 뒷부분에서 반복되는 현재 동영상 또는 시리즈의 다른 동영상에 나온 정보를 보여주는 클립 모음이 해당돼요."
     },
     "category_preview_guideline1": {
         "message": "향후 동영상에 나타나는 장면이 있는 구간이어야 함"
@@ -732,6 +732,15 @@
     },
     "category_chapter_description": {
         "message": "챕터는 동영상의 주요 구간을 설명해요."
+    },
+    "category_chapter_guideline1": {
+        "message": "스폰서 브랜드 이름을 언급하지 않아야 함"
+    },
+    "category_chapter_guideline2": {
+        "message": "일반적인 부분에서는 큰 챕터를 사용해야 함"
+    },
+    "category_chapter_guideline3": {
+        "message": "큰 챕터 내 작은 챕터를 배치할 수 있음"
     },
     "category_livestream_messages": {
         "message": "실시간: 후원자 메시지 구간"
@@ -1097,15 +1106,39 @@
     "exportSegments": {
         "message": "구간 내보내기"
     },
+    "importSegments": {
+        "message": "구간 불러오기"
+    },
     "Import": {
         "message": "불러오기",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemSuccess": {
+        "message": "적용 성공!"
+    },
     "redeemFailed": {
         "message": "라이선스 키가 잘못됐어요"
     },
+    "hideUpsells": {
+        "message": "추가 결제 없이는 숨김 설정을 이용하실 수 없습니다"
+    },
+    "chooseACountry": {
+        "message": "국가 선택"
+    },
+    "noDiscount": {
+        "message": "할인 조건에 해당하시지 않습니다"
+    },
+    "discountLink": {
+        "message": "할인 링크 (분홍색 가격 확인)"
+    },
+    "selectYourCountry": {
+        "message": "국가 선택"
+    },
     "patreonSignIn": {
         "message": "Patreon으로 로그인"
+    },
+    "redeem": {
+        "message": "적용"
     },
     "joinOnPatreon": {
         "message": "Patreon에서 구독"
