@@ -53,6 +53,7 @@ class PreviewBar {
     chapterVote: ChapterVote;
     originalChapterBar: HTMLElement;
     originalChapterBarBlocks: NodeListOf<HTMLElement>;
+    chapterMargin: number;
 
     constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean, chapterVote: ChapterVote, test=false) {
         if (test) return;
@@ -236,9 +237,15 @@ class PreviewBar {
         this.clear();
         if (!this.segments) return;
 
+        this.chapterMargin = 2;
         if (this.originalChapterBar) {
             this.originalChapterBarBlocks = this.originalChapterBar.querySelectorAll(":scope > div") as NodeListOf<HTMLElement>
             this.existingChapters = this.segments.filter((s) => s.source === SponsorSourceType.YouTube).sort((a, b) => a.segment[0] - b.segment[0]);
+        
+            if (this.existingChapters?.length > 0) {
+                const margin = parseFloat(this.originalChapterBarBlocks?.[0]?.style?.marginRight?.replace("px", ""));
+                if (margin) this.chapterMargin = margin;
+            }
         }
 
         const sortedSegments = this.segments.sort(({ segment: a }, { segment: b }) => {
@@ -282,7 +289,7 @@ class PreviewBar {
         const duration = Math.min(segment[1], this.videoDuration) - segment[0];
         if (duration > 0) {
             bar.style.width = `calc(${this.intervalToPercentage(segment[0], segment[1])}${
-                this.chapterFilter(barSegment) && segment[1] < this.videoDuration ? ' - 2px' : ''})`;
+                this.chapterFilter(barSegment) && segment[1] < this.videoDuration ? ` - ${this.chapterMargin}px` : ''})`;
         }
         
         const time = segment[1] ? Math.min(this.videoDuration, segment[0]) : segment[0];
@@ -456,8 +463,8 @@ class PreviewBar {
     private setupChapterSection(section: HTMLElement, startTime: number, endTime: number, addMargin: boolean): void {
         const sizePercent = this.intervalToPercentage(startTime, endTime);
         if (addMargin) {
-            section.style.marginRight = "2px";
-            section.style.width = `calc(${sizePercent} - 2px)`;
+            section.style.marginRight = `${this.chapterMargin}px`;
+            section.style.width = `calc(${sizePercent} - ${this.chapterMargin}px)`;
         } else {
             section.style.marginRight = "0";
             section.style.width = sizePercent;
@@ -534,7 +541,7 @@ class PreviewBar {
                 const section = sections[i];
 
                 const sectionWidthDecimal = parseFloat(section.getAttribute("decimal-width"));
-                const sectionWidthDecimalNoMargin = sectionWidthDecimal - 2 / progressBar.clientWidth;
+                const sectionWidthDecimalNoMargin = sectionWidthDecimal - this.chapterMargin / progressBar.clientWidth;
 
                 for (const className in changes) {
                     const selector = `.${className}`
