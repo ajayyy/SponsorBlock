@@ -338,6 +338,7 @@ function resetValues() {
     existingChaptersImported = false;
     sponsorSkipped = [];
 
+    sponsorVideoID = null;
     videoInfo = null;
     pageType = null;
     channelWhitelisted = false;
@@ -379,10 +380,8 @@ async function videoIDChange(id): Promise<void> {
     //if the id has not changed return unless the video element has changed
     if (sponsorVideoID === id && (isVisible(video) || !video)) return;
 
-    //set the global videoID
-    sponsorVideoID = id;
-
     resetValues();
+    sponsorVideoID = id;
 
 	//id is not valid
     if (!id) return;
@@ -2203,8 +2202,7 @@ function windowListenerHandler(event: MessageEvent): void {
     const dataType = data.type;
     if (data.source !== "sponsorblock") return;
 
-    if (dataType === "navigation") {
-        sponsorVideoID = data.videoID;
+    if (dataType === "navigation" && data.videoID) {
         pageType = data.pageType;
 
         if (data.channelID) {
@@ -2213,17 +2211,17 @@ function windowListenerHandler(event: MessageEvent): void {
                 status: ChannelIDStatus.Found
             };
         }
+
+        videoIDChange(data.videoID);
     } else if (dataType === "ad") {
         if (isAdPlaying != data.playing) {
             isAdPlaying = data.playing
             updatePreviewBar();
             updateVisibilityOfPlayerControlsButton();
         }
-    } else if (dataType === "data") {
-        if (data.video !== sponsorVideoID) {
-            sponsorVideoID = data.videoID;
-            videoIDChange(sponsorVideoID);
-        }
+    } else if (dataType === "data" && data.videoID) {
+        videoIDChange(data.videoID);
+
         isLivePremiere = data.isLive || data.isPremiere
     }
 }
