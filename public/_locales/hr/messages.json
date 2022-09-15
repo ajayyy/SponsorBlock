@@ -422,6 +422,12 @@
     "minDurationDescription": {
         "message": "Isječci kraći od postavljene vrijednosti neće biti preskočeni ili prikazani u playeru."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Koristi ručno preskakanje kad postoji etiketa za potuni video"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Za osobe koji žele gledati video bez prekida ako je u potpunosti sponzoriran ili samopromocija."
+    },
     "skipNoticeDuration": {
         "message": "Duljina trajanja obavijesti o preskakanju (sekunde):"
     },
@@ -804,6 +810,9 @@
     },
     "exportSegments": {
         "message": "Izvezi odsječke"
+    },
+    "importSegments": {
+        "message": "Uvezi odsječke"
     },
     "Import": {
         "message": "Uvezi",
