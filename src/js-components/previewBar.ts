@@ -230,7 +230,14 @@ class PreviewBar {
         const allProgressBars = document.querySelectorAll('.ytp-progress-bar') as NodeListOf<HTMLElement>;
         this.progressBar = findValidElement(allProgressBars) ?? allProgressBars?.[0];
 
-        this.originalChapterBar = this.progressBar.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
+        const newChapterBar = this.progressBar.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
+        if (this.originalChapterBar !== newChapterBar) {
+            // Make sure changes are undone on old bar
+            this.originalChapterBar?.style?.removeProperty("display");
+
+            this.originalChapterBar = newChapterBar;
+        }
+        
     }
 
     private update(): void {
@@ -299,7 +306,10 @@ class PreviewBar {
     }
 
     createChaptersBar(segments: PreviewBarSegment[]): void {
-        if (!this.progressBar || !this.originalChapterBar || this.originalChapterBar.childElementCount <= 0) return;
+        if (!this.progressBar || !this.originalChapterBar || this.originalChapterBar.childElementCount <= 0) {
+            if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
+            return;
+        }
 
         if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
             || (!Config.config.renderSegmentsAsChapters 
