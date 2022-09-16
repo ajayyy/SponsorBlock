@@ -367,6 +367,8 @@ class PreviewBar {
 
                 this.firstTimeSetupChapterSection(newSection);
                 this.customChaptersBar.appendChild(newSection);
+            } else if (createFromScratch) {
+                this.firstTimeSetupChapterSection(newSection);
             }
 
             this.setupChapterSection(newSection, chapter[0], chapter[1], i !== chaptersToRender.length - 1);
