@@ -196,10 +196,7 @@ class PreviewBar {
 
             this.container.style.transform = "none";
         } else if (!this.onInvidious) {
-            // Hover listener
-            this.parent.addEventListener("mouseenter", () => this.container.classList.add("hovered"));
-
-            this.parent.addEventListener("mouseleave", () => this.container.classList.remove("hovered"));
+            this.container.classList.add("sbNotInvidious");
         }
 
         // On the seek bar

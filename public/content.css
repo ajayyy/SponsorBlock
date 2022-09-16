@@ -34,7 +34,7 @@
 	height: 3px;
 }
 
-#previewbar.hovered {
+div:hover > #previewbar.sbNotInvidious {
 	transform: scaleY(1)
 }
 
