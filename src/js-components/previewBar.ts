@@ -313,19 +313,6 @@ class PreviewBar {
 
         // Merge overlapping chapters
         this.unfilteredChapterGroups = this.createChapterRenderGroups(segments);
-        const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
-        if (filteredSegments && filteredSegments.length !== segments.length) {
-            this.chapterGroups = this.createChapterRenderGroups(filteredSegments).filter((segment) => this.chapterGroupFilter(segment));
-
-            // Fix missing sections due to filtered segments
-            for (let i = 1; i < this.chapterGroups.length; i++) {
-                if (this.chapterGroups[i].segment[0] !== this.chapterGroups[i - 1].segment[1]) {
-                    this.chapterGroups[i - 1].segment[1] = this.chapterGroups[i].segment[0]
-                }
-            }
-        } else {
-            this.chapterGroups = this.unfilteredChapterGroups;
-        }
 
         if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
             || (!Config.config.renderSegmentsAsChapters 
@@ -335,6 +322,26 @@ class PreviewBar {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             this.originalChapterBar.style.removeProperty("display");
             return;
+        }
+
+        const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
+        if (filteredSegments) {
+            let groups = this.unfilteredChapterGroups;
+            if (filteredSegments.length !== segments.length) {
+                groups = this.createChapterRenderGroups(filteredSegments);
+            }
+            this.chapterGroups = groups.filter((segment) => this.chapterGroupFilter(segment));
+
+            if (groups.length !== this.chapterGroups.length) {
+                // Fix missing sections due to filtered segments
+                for (let i = 1; i < this.chapterGroups.length; i++) {
+                    if (this.chapterGroups[i].segment[0] !== this.chapterGroups[i - 1].segment[1]) {
+                        this.chapterGroups[i - 1].segment[1] = this.chapterGroups[i].segment[0]
+                    }
+                }
+            }
+        } else {
+            this.chapterGroups = this.unfilteredChapterGroups;
         }
 
         // Create it from cloning
