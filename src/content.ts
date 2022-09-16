@@ -71,6 +71,10 @@ let lastKnownVideoTime: { videoTime: number, preciseTime: number } = {
 };
 // It resumes with a slightly later time on chromium
 let lastTimeFromWaitingEvent = null;
+const lastNextChapterKeybind = {
+    time: 0,
+    date: 0
+};
 
 // Skips are scheduled to ensure precision.
 // Skips are rescheduled every seeking event.
@@ -2233,30 +2237,39 @@ function updateActiveSegment(currentTime: number): void {
 }
 
 function nextChapter(): void {
-    const chapters = sponsorTimes.filter((time) => time.actionType === ActionType.Chapter)
-        .sort((a, b) => a.segment[1] - b.segment[1]);
-    if (chapters.length <= 0) return;
+    const chapters = previewBar.chapterGroups?.filter((time) => [ActionType.Chapter, null].includes(time.actionType));
+    if (!chapters || chapters.length <= 0) return;
 
-    const nextChapter = chapters.findIndex((time) => time.actionType === ActionType.Chapter
-        && time.segment[1] > video.currentTime);
+    lastNextChapterKeybind.time = video.currentTime;
+    lastNextChapterKeybind.date = Date.now();
+
+    const nextChapter = chapters.findIndex((time) => time.segment[0] > video.currentTime);
     if (nextChapter !== -1) {
-        reskipSponsorTime(chapters[nextChapter], true);
+        video.currentTime = chapters[nextChapter].segment[0];
     } else {
         video.currentTime = video.duration;
     }
 }
 
 function previousChapter(): void {
-    const chapters = sponsorTimes.filter((time) => time.actionType === ActionType.Chapter);
-    if (chapters.length <= 0) return;
+    if (Date.now() - lastNextChapterKeybind.date < 3000) {
+        video.currentTime = lastNextChapterKeybind.time;
+        lastNextChapterKeybind.date = 0;
+        return;
+    }
+
+    const chapters = previewBar.chapterGroups?.filter((time) => [ActionType.Chapter, null].includes(time.actionType));
+    if (!chapters || chapters.length <= 0) {
+        video.currentTime = 0;
+        return;
+    }
 
     // subtract 5 seconds to allow skipping back to the previous chapter if close to start of
     // the current one
-    const nextChapter = chapters.findIndex((time) => time.actionType === ActionType.Chapter
-        && time.segment[0] > video.currentTime - Math.min(5, time.segment[1] - time.segment[0]));
+    const nextChapter = chapters.findIndex((time) => time.segment[0] > video.currentTime - Math.min(5, time.segment[1] - time.segment[0]));
     const previousChapter = nextChapter !== -1 ? (nextChapter - 1) : (chapters.length - 1);
     if (previousChapter !== -1) {
-        unskipSponsorTime(chapters[previousChapter], null, true);
+        video.currentTime = chapters[previousChapter].segment[0];
     } else {
         video.currentTime = 0;
     }
