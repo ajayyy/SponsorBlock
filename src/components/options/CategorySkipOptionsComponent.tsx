@@ -106,7 +106,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             <LockSvg className="upsellButton" onClick={() => chrome.tabs.create({url: chrome.runtime.getURL('upsell/index.html')})}/>
                         }
                     </td>
-                    
+
                     {this.props.category !== "chapter" &&
                         <td id={this.props.category + "ColorOption"}
                             className="colorOption">

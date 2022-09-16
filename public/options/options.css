@@ -321,7 +321,8 @@ input[type='number'] {
     cursor: default;
 }
 
-tr.disabled {
+/* To hide everything except upsell button */
+.disabled td:not(.skipOption), .disabled td.skipOption > :not(.upsellButton) {
     opacity: 0.3;
 }
 
