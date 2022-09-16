@@ -11,12 +11,14 @@ describe("createChapterRenderGroups", () => {
         const groups = previewBar.createChapterRenderGroups([{
             segment: [2, 30],
             category: "sponsor",
+            actionType: "skip",
             unsubmitted: false,
             showLarger: false,
             description: ""
         }, {
             segment: [50, 80],
             category: "sponsor",
+            actionType: "skip",
             unsubmitted: false,
             showLarger: false,
             description: ""
@@ -24,19 +26,24 @@ describe("createChapterRenderGroups", () => {
 
         expect(groups).toStrictEqual([{
             segment: [0, 2],
-            originalDuration: 0
+            originalDuration: 0,
+            actionType: null
         }, {
             segment: [2, 30],
-            originalDuration: 30 - 2
+            originalDuration: 30 - 2,
+            actionType: "skip"
         }, {
             segment: [30, 50],
-            originalDuration: 0
+            originalDuration: 0,
+            actionType: null
         }, {
             segment: [50, 80],
-            originalDuration: 80 - 50
+            originalDuration: 80 - 50,
+            actionType: "skip"
         }, {
             segment: [80, 315],
-            originalDuration: 0
+            originalDuration: 0,
+            actionType: null
         }]);
     });
 
@@ -45,12 +52,14 @@ describe("createChapterRenderGroups", () => {
         const groups = previewBar.createChapterRenderGroups([{
             segment: [2.52, 30],
             category: "sponsor",
+            actionType: "skip",
             unsubmitted: false,
             showLarger: false,
             description: ""
         }, {
             segment: [20, 25],
             category: "sponsor",
+            actionType: "skip",
             unsubmitted: false,
             showLarger: false,
             description: ""
@@ -58,19 +67,24 @@ describe("createChapterRenderGroups", () => {
 
         expect(groups).toStrictEqual([{
             segment: [0, 2.52],
-            originalDuration: 0
+            originalDuration: 0,
+            actionType: null
         }, {
             segment: [2.52, 20],
-            originalDuration: 30 - 2.52
+            originalDuration: 30 - 2.52,
+            actionType: "skip"
         }, {
             segment: [20, 25],
-            originalDuration: 25 - 20
+            originalDuration: 25 - 20,
+            actionType: "skip"
         }, {
             segment: [25, 30],
-            originalDuration: 30 - 2.52
+            originalDuration: 30 - 2.52,
+            actionType: "skip"
         }, {
             segment: [30, 315],
-            originalDuration: 0
+            originalDuration: 0,
+            actionType: null
         }]);
     });
 
@@ -79,12 +93,14 @@ describe("createChapterRenderGroups", () => {
         const groups = previewBar.createChapterRenderGroups([{
             segment: [2.52, 30],
             category: "sponsor",
+            actionType: "skip",
             unsubmitted: false,
             showLarger: false,
             description: ""
         }, {
             segment: [2.52, 40],
             category: "sponsor",
+            actionType: "skip",
             unsubmitted: false,
             showLarger: false,
             description: ""
@@ -92,16 +108,20 @@ describe("createChapterRenderGroups", () => {
 
         expect(groups).toStrictEqual([{
             segment: [0, 2.52],
-            originalDuration: 0
+            originalDuration: 0,
+            actionType: null
         }, {
             segment: [2.52, 30],
-            originalDuration: 30 - 2.52
+            originalDuration: 30 - 2.52,
+            actionType: "skip"
         }, {
             segment: [30, 40],
-            originalDuration: 40 - 2.52
+            originalDuration: 40 - 2.52,
+            actionType: "skip"
         }, {
             segment: [40, 315],
-            originalDuration: 0
+            originalDuration: 0,
+            actionType: null
         }]);
     });
 
@@ -110,6 +130,7 @@ describe("createChapterRenderGroups", () => {
         const groups = previewBar.createChapterRenderGroups([
             {
                 "category": "chapter",
+                "actionType": "chapter",
                 "segment": [
                     0,
                     49.977
@@ -122,6 +143,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     2.926,
                     5
@@ -134,6 +156,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "chapter",
+                "actionType": "chapter",
                 "segment": [
                     14.487,
                     37.133
@@ -146,6 +169,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     23.450537,
                     34.486084
@@ -158,6 +182,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "interaction",
+                "actionType": "skip",
                 "segment": [
                     50.015343,
                     56.775314
@@ -170,6 +195,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     62.51888,
                     74.33331
@@ -182,6 +208,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     88.71328,
                     96.05933
@@ -194,6 +221,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     101.50703,
                     115.088326
@@ -205,6 +233,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     122.211845,
                     137.42178
@@ -217,6 +246,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     144.08913,
                     160.14084
@@ -229,6 +259,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     164.22084,
                     170.98082
@@ -241,6 +272,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     180.56674,
                     189.16516
@@ -253,6 +285,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     204.10468,
                     211.87865
@@ -265,6 +298,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     214.92064,
                     222.0186
@@ -277,6 +311,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     233.0754,
                     244.56734
@@ -289,6 +324,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     260.64053,
                     269.35938
@@ -301,6 +337,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     288.686,
                     301.96
@@ -313,6 +350,7 @@ describe("createChapterRenderGroups", () => {
             },
             {
                 "category": "sponsor",
+                "actionType": "skip",
                 "segment": [
                     288.686,
                     295
@@ -330,245 +368,280 @@ describe("createChapterRenderGroups", () => {
                     0,
                     2.926
                 ],
-                "originalDuration": 49.977
+                "originalDuration": 49.977,
+                "actionType": "chapter"
             },
             {
                 "segment": [
                     2.926,
                     5
                 ],
-                "originalDuration": 2.074
+                "originalDuration": 2.074,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     5,
                     14.487
                 ],
-                "originalDuration": 49.977
+                "originalDuration": 49.977,
+                "actionType": "chapter"
             },
             {
                 "segment": [
                     14.487,
                     23.450537
                 ],
-                "originalDuration": 22.646
+                "originalDuration": 22.646,
+                "actionType": "chapter"
             },
             {
                 "segment": [
                     23.450537,
                     34.486084
                 ],
-                "originalDuration": 11.035546999999998
+                "originalDuration": 11.035546999999998,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     34.486084,
                     37.133
                 ],
-                "originalDuration": 22.646
+                "originalDuration": 22.646,
+                "actionType": "chapter"
             },
             {
                 "segment": [
                     37.133,
                     49.977
                 ],
-                "originalDuration": 49.977
+                "originalDuration": 49.977,
+                "actionType": "chapter"
             },
             {
                 "segment": [
                     49.977,
                     50.015343
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     50.015343,
                     56.775314
                 ],
-                "originalDuration": 6.759971
+                "originalDuration": 6.759971,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     56.775314,
                     62.51888
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     62.51888,
                     74.33331
                 ],
-                "originalDuration": 11.814429999999994
+                "originalDuration": 11.814429999999994,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     74.33331,
                     88.71328
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     88.71328,
                     96.05933
                 ],
-                "originalDuration": 7.346050000000005
+                "originalDuration": 7.346050000000005,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     96.05933,
                     101.50703
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     101.50703,
                     115.088326
                 ],
-                "originalDuration": 13.581295999999995
+                "originalDuration": 13.581295999999995,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     115.088326,
                     122.211845
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     122.211845,
                     137.42178
                 ],
-                "originalDuration": 15.209935000000016
+                "originalDuration": 15.209935000000016,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     137.42178,
                     144.08913
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     144.08913,
                     160.14084
                 ],
-                "originalDuration": 16.051709999999986
+                "originalDuration": 16.051709999999986,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     160.14084,
                     164.22084
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     164.22084,
                     170.98082
                 ],
-                "originalDuration": 6.759979999999985
+                "originalDuration": 6.759979999999985,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     170.98082,
                     180.56674
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     180.56674,
                     189.16516
                 ],
-                "originalDuration": 8.598419999999976
+                "originalDuration": 8.598419999999976,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     189.16516,
                     204.10468
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     204.10468,
                     211.87865
                 ],
-                "originalDuration": 7.773969999999991
+                "originalDuration": 7.773969999999991,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     211.87865,
                     214.92064
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     214.92064,
                     222.0186
                 ],
-                "originalDuration": 7.0979600000000005
+                "originalDuration": 7.0979600000000005,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     222.0186,
                     233.0754
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     233.0754,
                     244.56734
                 ],
-                "originalDuration": 11.49194
+                "originalDuration": 11.49194,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     244.56734,
                     260.64053
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     260.64053,
                     269.35938
                 ],
-                "originalDuration": 8.718849999999975
+                "originalDuration": 8.718849999999975,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     269.35938,
                     288.686
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     288.686,
                     295
                 ],
-                "originalDuration": 6.314000000000021
+                "originalDuration": 6.314000000000021,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     295,
                     301.96
                 ],
-                "originalDuration": 13.274000000000001
+                "originalDuration": 13.274000000000001,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     301.96,
                     315.061
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             }
         ]);
     })
@@ -581,6 +654,7 @@ describe("createChapterRenderGroups", () => {
                     2797.323
                 ],
                 "category": "chooseACategory",
+                "actionType": "skip",
                 "unsubmitted": true,
                 "showLarger": false,
             },{
@@ -589,6 +663,7 @@ describe("createChapterRenderGroups", () => {
                     3432.255
                 ],
                 "category": "chooseACategory",
+                "actionType": "skip",
                 "unsubmitted": true,
                 "showLarger": false,
             },{
@@ -597,6 +672,7 @@ describe("createChapterRenderGroups", () => {
                     3412.413
                 ],
                 "category": "chooseACategory",
+                "actionType": "skip",
                 "unsubmitted": true,
                 "showLarger": false,
             },{
@@ -605,6 +681,7 @@ describe("createChapterRenderGroups", () => {
                     1674.286
                 ],
                 "category": "sponsor",
+                "actionType": "skip",
                 "unsubmitted": false,
                 "showLarger": false,
             }
@@ -616,49 +693,56 @@ describe("createChapterRenderGroups", () => {
                     0,
                     160
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             },
             {
                 "segment": [
                     160,
                     169
                 ],
-                "originalDuration": 2637.323
+                "originalDuration": 2637.323,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     169,
                     1594.92
                 ],
-                "originalDuration": 3243.413
+                "originalDuration": 3243.413,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     1594.92,
                     1674.286
                 ],
-                "originalDuration": 79.36599999999999
+                "originalDuration": 79.36599999999999,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     1674.286,
                     3412.413
                 ],
-                "originalDuration": 3243.413
+                "originalDuration": 3243.413,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     3412.413,
                     3432.255
                 ],
-                "originalDuration": 3263.255
+                "originalDuration": 3263.255,
+                "actionType": "skip"
             },
             {
                 "segment": [
                     3432.255,
                     3615.161
                 ],
-                "originalDuration": 0
+                "originalDuration": 0,
+                "actionType": null
             }
         ]);
     });
