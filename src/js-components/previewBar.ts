@@ -55,6 +55,7 @@ class PreviewBar {
     originalChapterBar: HTMLElement;
     originalChapterBarBlocks: NodeListOf<HTMLElement>;
     chapterMargin: number;
+    unfilteredChapterGroups: ChapterGroup[];
     chapterGroups: ChapterGroup[];
 
     constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean, chapterVote: ChapterVote, test=false) {
@@ -311,13 +312,19 @@ class PreviewBar {
         }
 
         // Merge overlapping chapters
+        this.unfilteredChapterGroups = this.createChapterRenderGroups(segments);
         const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
-        this.chapterGroups = this.createChapterRenderGroups(filteredSegments).filter((segment) => this.chapterGroupFilter(segment));
-        // Fix missing sections due to filtered segments
-        for (let i = 1; i < this.chapterGroups.length; i++) {
-            if (this.chapterGroups[i].segment[0] !== this.chapterGroups[i - 1].segment[1]) {
-                this.chapterGroups[i - 1].segment[1] = this.chapterGroups[i].segment[0]
+        if (filteredSegments && filteredSegments.length !== segments.length) {
+            this.chapterGroups = this.createChapterRenderGroups(filteredSegments).filter((segment) => this.chapterGroupFilter(segment));
+
+            // Fix missing sections due to filtered segments
+            for (let i = 1; i < this.chapterGroups.length; i++) {
+                if (this.chapterGroups[i].segment[0] !== this.chapterGroups[i - 1].segment[1]) {
+                    this.chapterGroups[i - 1].segment[1] = this.chapterGroups[i].segment[0]
+                }
             }
+        } else {
+            this.chapterGroups = this.unfilteredChapterGroups;
         }
 
         if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
@@ -407,11 +414,13 @@ class PreviewBar {
                         latestValidChapter = result[result.length - 1];
                     }
 
+                    const priorityActionType = this.getActionTypePrioritized([segment.actionType, latestChapter?.actionType]);
+
                     // Split the latest chapter if smaller
                     result.push({
                         segment: [segment.segment[0], segment.segment[1]],
                         originalDuration: segmentDuration,
-                        actionType: segment.actionType
+                        actionType: priorityActionType
                     });
                     if (latestValidChapter?.segment[1] > segment.segment[1]) {
                         result.push({
@@ -476,6 +485,16 @@ class PreviewBar {
         });
 
         return result;
+    }
+
+    private getActionTypePrioritized(actionTypes: ActionType[]): ActionType {
+        if (actionTypes.includes(ActionType.Skip)) {
+            return ActionType.Skip;
+        } else if (actionTypes.includes(ActionType.Mute)) {
+            return ActionType.Mute;
+        } else {
+            return actionTypes.find(a => a) ?? actionTypes[0];
+        }
     }
 
     private setupChapterSection(section: HTMLElement, startTime: number, endTime: number, addMargin: boolean): void {

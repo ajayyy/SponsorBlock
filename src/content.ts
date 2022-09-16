@@ -2237,7 +2237,7 @@ function updateActiveSegment(currentTime: number): void {
 }
 
 function nextChapter(): void {
-    const chapters = previewBar.chapterGroups?.filter((time) => [ActionType.Chapter, null].includes(time.actionType));
+    const chapters = previewBar.unfilteredChapterGroups?.filter((time) => [ActionType.Chapter, null].includes(time.actionType));
     if (!chapters || chapters.length <= 0) return;
 
     lastNextChapterKeybind.time = video.currentTime;
@@ -2258,7 +2258,7 @@ function previousChapter(): void {
         return;
     }
 
-    const chapters = previewBar.chapterGroups?.filter((time) => [ActionType.Chapter, null].includes(time.actionType));
+    const chapters = previewBar.unfilteredChapterGroups?.filter((time) => [ActionType.Chapter, null].includes(time.actionType));
     if (!chapters || chapters.length <= 0) {
         video.currentTime = 0;
         return;
