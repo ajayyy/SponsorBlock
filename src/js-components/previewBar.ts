@@ -308,6 +308,7 @@ class PreviewBar {
     createChaptersBar(segments: PreviewBarSegment[]): void {
         if (!this.progressBar || !this.originalChapterBar || this.originalChapterBar.childElementCount <= 0) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
+            if (this.originalChapterBar) this.originalChapterBar.style.removeProperty("display");
             return;
         }
 
