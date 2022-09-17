@@ -289,6 +289,16 @@ p,li {
     padding: 10px;
 }
 
+.smaller {
+    font-size: 12px;
+    text-align: center;
+}
+
+.no-margin {
+    padding: 0;
+    margin: 0;
+}
+
 p,li,code,a {
     max-width: 60%;
     text-align: left;

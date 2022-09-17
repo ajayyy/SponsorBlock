@@ -1160,6 +1160,10 @@
     "chaptersPage1": {
         "message": "SponsorBlock crowd-sourced chapters feature is only available to people who purchase a license, or for people who are granted access for free due their past contributions"
     },
+    "chaptersPage2": {
+        "message": "Note: Permission to submit chapters is still based on calculated reputation. Purchasing a license only allows you to view chapters submitted by others",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
     "unsubmittedSegmentCounts": {
         "message": "You currently have {0} on {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
