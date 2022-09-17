@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Om videon är ny och inga segment hittades då kommer den att uppdateras med några minuters mellanrum medan du tittar på videon."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Visa kategorier i inlämningsmenyn även utan inlämningstillstånd"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Vissa kategorier kräver tillstånd att lämna in på grund av minimikrav på rykte"
+    },
     "showNotice": {
         "message": "Visa meddelandet igen"
     },
@@ -1159,6 +1165,10 @@
     },
     "chaptersPage1": {
         "message": "SponsorBlock crowd-sourced kapitelfunktionen är endast tillgänglig för personer som köper en licens eller för de personer som beviljats gratis tillgång på grund av att de bidragit tidigare"
+    },
+    "chaptersPage2": {
+        "message": "Obs: Tillstånd att skicka in kapitel är fortfarande baserat på beräknat rykte. Köpa en licens låter dig bara visa kapitel som lämnats in av andra",
+        "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "unsubmittedSegmentCounts": {
         "message": "Du har för närvarande {0} på {1}",
