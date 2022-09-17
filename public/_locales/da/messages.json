@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Hvis videoen er ny, og der ikke er nogle segmenter fundet, vil den opdatere hvert par minutter, mens du ser."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Vis kategorier i indsendelsesmenu selv uden indsendelse tilladelse"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Nogle kategorier kræver tilladelse til at indsende på grund af minimumskrav til omdømme"
+    },
     "showNotice": {
         "message": "Vis Bemærkning Igen"
     },
