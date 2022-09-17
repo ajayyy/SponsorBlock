@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Jos video on uusi, eikä osioita löydy, niitä haetaan uudelleen muutaman minuutin välein katsoessasi."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Näytä kategoriat lähetysvalikossa myös ilman lähetyslupaa"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Jotkin kategoriat vaativat lähetysluvan maineen vähimmäisvaatimusten vuoksi"
+    },
     "showNotice": {
         "message": "Näytä ilmoitus uudelleen"
     },
@@ -1159,6 +1165,10 @@
     },
     "chaptersPage1": {
         "message": "SponsorBlockin joukkolähteinen kappaletoiminto on vain lisenssin ostaneiden tai aiempien tukien perusteella veloituksettoman käyttöoikeuden saaneiden henkilöiden käytettävissä"
+    },
+    "chaptersPage2": {
+        "message": "Huomioi: Kappaleiden lähetysoikeus perustuu edelleen laskettuun maineeseen. Lisenssin hankinta sallii sinun ainoastaan tarkastella muiden lähettämiä kappaleita",
+        "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "unsubmittedSegmentCounts": {
         "message": "Sinulla on tällä hetkellä {0} {1}",
