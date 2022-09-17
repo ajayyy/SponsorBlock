@@ -234,6 +234,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Ak je video nové a nenašli sa žiadne segmenty, opakovane sa budú každých pár minút načítavať kým sa video prehráva."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Zobraziť kategórie v odosielacom menu aj bez oprávnenia na odosielanie"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Niektoré kategórie vyžadujú oprávnenie na odoslanie kvôli požiadavke na minimálnu reputáciu"
+    },
     "showNotice": {
         "message": "Znovu zobraziť upozornenie"
     },
