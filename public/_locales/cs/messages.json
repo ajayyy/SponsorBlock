@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Pokud je video nové a nejsou nalezeny žádné segmenty, bude rozšíření každých několik minut refetchovat data, zatímco sledujete video."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Zobrazit kategorie v nabídce odeslání i bez oprávnění k odeslání"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Některé kategorie vyžadují oprávnění k odeslání z důvodu minimálních požadavků na reputaci"
+    },
     "showNotice": {
         "message": "Znovu zobrazit upozornění"
     },
@@ -1159,6 +1165,10 @@
     },
     "chaptersPage1": {
         "message": "Funkce komunitních kapitol je dostupná pouze lidem, kteří si zakoupili licenci, nebo lidem, kteří získali přístup zdarma díky jejich příspěvkům"
+    },
+    "chaptersPage2": {
+        "message": "Poznámka: Oprávnění k odesílání kapitol je stále založené na vypočítané reputaci. Zakoupení licence vám pouze umožní zobrazit si kapitoly odeslané ostatními uživateli",
+        "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "unsubmittedSegmentCounts": {
         "message": "Momentálně máte {0} na {1}",
