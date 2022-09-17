@@ -404,8 +404,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         for (const category of (this.props.categoryList ?? CompileConfig.categoryList)) {
             // If permission not loaded, treat it like we have permission except chapter
             const defaultBlockCategories = ["chapter"];
-            const permission = Config.config.permissions[category as Category] && (category !== "chapter" || noRefreshFetchingChaptersAllowed());
-            if ((defaultBlockCategories.includes(category) || permission !== undefined) && !permission) continue;
+            const permission = (Config.config.showCategoryWithoutPermission
+                || Config.config.permissions[category as Category]) && (category !== "chapter" || noRefreshFetchingChaptersAllowed());
+            if ((defaultBlockCategories.includes(category) 
+                || (permission !== undefined && !Config.config.showCategoryWithoutPermission)) && !permission) continue;
 
             elements.push(
                 <option value={category}

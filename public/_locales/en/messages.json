@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "If the video is new, and there are no segments found, it will keep refetching every few minutes while you watch."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Show categories in submission menu even without submission permission"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Some categories require permission to submit due to minimum reputation requirements"
+    },
     "showNotice": {
         "message": "Show Notice Again"
     },
