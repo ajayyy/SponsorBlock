@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Se il video è nuovo, e non risultano esserci segmenti, continueremo a cercarne di nuovi ogni pochi minuti."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Mostra le categorie nel menu d'invio anche senza l'autorizzazione all'invio"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Alcune categorie richiedono l'autorizzazione all'invio a causa dei requisiti di reputazione minimi"
+    },
     "showNotice": {
         "message": "Mostra di nuovo l'avviso"
     },
@@ -463,6 +469,9 @@
     "minDurationDescription": {
         "message": "I segmenti più brevi del valore impostato non verranno saltati o visualizzati nel lettore."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Usa il salto manuale quando esiste un'etichetta del video completo"
+    },
     "whatManualSkipOnFullVideo": {
         "message": "Per le persone che vogliono guardare il video senza interruzioni se contiene sponsorizzazioni o auto-promozioni."
     },
@@ -663,6 +672,9 @@
     },
     "category_preview": {
         "message": "Anteprima/Riepilogo"
+    },
+    "category_preview_description": {
+        "message": "Raccolta di clip che mostra cosa succederà in questo video o altri video in una serie, in cui tutte le informazioni sono ripetute in seguito nel video."
     },
     "category_preview_guideline1": {
         "message": "Clip che appaiono più tardi in questo video, oppure in un video futuro"
@@ -870,6 +882,10 @@
     },
     "incorrectVote": {
         "message": "Non corretto"
+    },
+    "harmfulVote": {
+        "message": "Dannoso",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Cambia Categoria"
@@ -1096,6 +1112,9 @@
     "exportSegments": {
         "message": "Esporta segmenti"
     },
+    "importSegments": {
+        "message": "Importa i segmenti"
+    },
     "Import": {
         "message": "Importa",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
@@ -1111,6 +1130,12 @@
     },
     "chooseACountry": {
         "message": "Scegli un paese"
+    },
+    "noDiscount": {
+        "message": "Non ti qualifichi per uno sconto"
+    },
+    "discountLink": {
+        "message": "Link Sconto (Vedi il prezzo rosa)"
     },
     "selectYourCountry": {
         "message": "Seleziona il tuo paese"
@@ -1137,6 +1162,13 @@
     },
     "enterLicenseKey": {
         "message": "Inserisci chiave di licenza"
+    },
+    "chaptersPage1": {
+        "message": "La funzionalità dei capitoli in crowd-sourcing di SponsorBlock è disponibile soltanto a coloro che acquistano una licenza o a coloro aventi l'accesso garantito gratuitamente grazie ai loro contributi passati"
+    },
+    "chaptersPage2": {
+        "message": "Nota: L'autorizzazione a inviare i capitoli si basa ancora sulla reputazione calcolata. Acquistare una licenza ti consente di visualizzare soltanto i capitoli inviati dagli altri",
+        "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "unsubmittedSegmentCounts": {
         "message": "Al momento hai {0} su {1}",
