@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Ha a videó új, és még nem találhatóak szegmensek, a bővítmény pár percenkét újra keresi őket, miközben nézed."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Kategóriák megjelenítése a beküldési menüben beküldési engedély nélkül is"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Néhány kategóriánál a beküldés engedélyhez kötött, ami egy minimum hírnév-szinttől függ"
+    },
     "showNotice": {
         "message": "Értesítés megjelenítése ismét"
     },
@@ -1159,6 +1165,10 @@
     },
     "chaptersPage1": {
         "message": "A SponsorBlock közösség által karbantartott fejezetek funkció csak azok számára érhető el, akik licencet vásárolnak, vagy ingyenes hozzáférést kaptak múltbeli hozzájárulásaikért"
+    },
+    "chaptersPage2": {
+        "message": "Fontos: A fejezetek beküldésére való engedély még mindig a számolt hírnévtől függ. A megvásárolt licenc csak a mások által beküldött fejezetek megtekintésére vonatkozik.",
+        "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "unsubmittedSegmentCounts": {
         "message": "Jelenleg {0} van {1}",
