@@ -323,7 +323,7 @@
         "message": "건너뛰기 꺼짐"
     },
     "yourWork": {
-        "message": "지금까지 한 일",
+        "message": "내가 한 일",
         "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
