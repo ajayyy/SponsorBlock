@@ -62,9 +62,9 @@ interface SBConfig {
     },
     scrollToEditTimeUpdate: boolean,
     categoryPillUpdate: boolean,
+    showChapterInfoMessage: boolean,
     darkMode: boolean,
     showCategoryGuidelines: boolean,
-    chaptersAvailable: boolean,
     showCategoryWithoutPermission: boolean,
 
     // Used to cache calculated text color info
@@ -193,9 +193,9 @@ const Config: SBObject = {
         autoSkipOnMusicVideos: false,
         scrollToEditTimeUpdate: false, // false means the tooltip will be shown
         categoryPillUpdate: false,
+        showChapterInfoMessage: true,
         darkMode: true,
         showCategoryGuidelines: true,
-        chaptersAvailable: true,
         showCategoryWithoutPermission: false,
 
         categoryPillColors: {},

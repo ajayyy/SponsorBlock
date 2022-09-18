@@ -63,6 +63,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "openHelp":
             chrome.tabs.create({url: chrome.runtime.getURL('help/index.html')});
             return;
+        case "openUpsell":
+            chrome.tabs.create({url: chrome.runtime.getURL('upsell/index.html')});
+            return;
         case "openPage":
             chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
             return;

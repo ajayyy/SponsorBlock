@@ -12,6 +12,7 @@ export async function checkLicenseKey(licenseKey: string): Promise<boolean> {
     try {
         if (result.ok && JSON.parse(result.responseText).allowed) {
             Config.config.payments.chaptersAllowed = true;
+            Config.config.showChapterInfoMessage = false;
             Config.config.payments.lastCheck = Date.now();
             Config.forceSyncUpdate("payments");
             
@@ -60,6 +61,7 @@ export async function fetchingChaptersAllowed(): Promise<boolean> {
                 if (userInfo.freeChaptersAccess) {
                     Config.config.payments.freeAccess = true;
                     Config.config.payments.chaptersAllowed = true;
+                    Config.config.showChapterInfoMessage = false;
                     Config.forceSyncUpdate("payments");
     
                     return true;

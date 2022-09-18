@@ -5,6 +5,7 @@ import { ButtonListener } from "../types";
 export interface TooltipProps {
     text?: string; 
     link?: string;
+    linkOnClick?: () => void;
     referenceNode: HTMLElement;
     prependElement?: HTMLElement; // Element to append before
     bottomOffset?: string;
@@ -16,6 +17,7 @@ export interface TooltipProps {
     extraClass?: string;
     showLogo?: boolean;
     showGotIt?: boolean;
+    positionRealtive?: boolean;
     buttons?: ButtonListener[];
 }
 
@@ -34,11 +36,12 @@ export class Tooltip {
         props.extraClass ??= "";
         props.showLogo ??= true;
         props.showGotIt ??= true;
+        props.positionRealtive ??= true;
         this.text = props.text;
 
         this.container = document.createElement('div');
         this.container.id = "sponsorTooltip" + props.text;
-        this.container.style.position = "relative";
+        if (props.positionRealtive) this.container.style.position = "relative";
 
         if (props.prependElement) {
             props.referenceNode.insertBefore(this.container, props.prependElement);
@@ -71,7 +74,12 @@ export class Tooltip {
                                         href={props.link}>
                                     {chrome.i18n.getMessage("LearnMore")}
                                 </a> 
-                            : null}
+                            : (props.linkOnClick ? 
+                                <a style={{textDecoration: "underline", marginLeft: "5px", cursor: "pointer"}} 
+                                        onClick={props.linkOnClick}>
+                                    {chrome.i18n.getMessage("LearnMore")}
+                                </a> 
+                            : null)}
                         </span>
                     : null}
 

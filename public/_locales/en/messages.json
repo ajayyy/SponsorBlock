@@ -1170,6 +1170,10 @@
         "message": "Note: Permission to submit chapters is still based on calculated reputation. Purchasing a license only allows you to view chapters submitted by others",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
+    "chapterNewFeature": {
+        "message": "New Feature: Crowd-sourced custom chapters. These are custom-named sections in videos that can be stacked to get more and more precise. Purchase a license to view the chapters submitted on this video such as: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
     "unsubmittedSegmentCounts": {
         "message": "You currently have {0} on {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
