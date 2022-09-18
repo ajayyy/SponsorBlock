@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Si el video es nuevo, y no hay segmentos encontrados, seguirá recuperándose cada pocos minutos mientras veas."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Mostrar categorías en el menú de envío, incluso al no tener permiso de envío"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Algunas categorías requieren permiso para enviar debido a los requisitos mínimos de reputación"
+    },
     "showNotice": {
         "message": "Mostrar aviso de nuevo"
     },
@@ -1159,6 +1165,10 @@
     },
     "chaptersPage1": {
         "message": "La característica de los capítulos de origen de SponsorBlock sólo está disponible para personas que compran una licencia, o para las personas a las que se les concede acceso gratis debido a sus contribuciones anteriores"
+    },
+    "chaptersPage2": {
+        "message": "Nota: El permiso para enviar capítulos todavía está basado en la reputación calculada. Comprar una licencia solo le permite ver los capítulos enviados por otros",
+        "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "unsubmittedSegmentCounts": {
         "message": "Actualmente tienes {0} en {1}",
