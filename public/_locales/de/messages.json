@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Wenn das Video neu ist und keine Segmente gefunden wurden, wird während des Betrachtens alle paar Minuten erneut eine Anfrage gesendet."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Zeige Kategorien im Einsendungsmenü auch ohne Einreichungsberechtigungen"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Einige Kategorien benötigen Erlaubnis zum übermitteln aufgrund von einem Mindestmass an Reputation"
+    },
     "showNotice": {
         "message": "Hinweis erneut anzeigen"
     },
@@ -1159,6 +1165,14 @@
     },
     "chaptersPage1": {
         "message": "Die Crowd-sourced Kapitel-Funktion von SponsorBlock ist nur für Personen verfügbar, welche eine Lizenz kaufen, oder gratis Zugriff für Ihre bisherigen Beiträge erhalten haben"
+    },
+    "chaptersPage2": {
+        "message": "Hinweis: Erlaubnis zum Einreichen von Kapiteln basiert immer noch auf dem berechneten Ruf. Der kauf einer Lizenz berechtigt dich nur, die eingereichten Kapitel der anderen zu sehen",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Neues Feature: Crowdsourced benutzerdefinierte Kapitel. Dies sind benutzerdefinierte Abschnitte in Videos, die gestapelt werden können, um mehr und mehr präzise zu werden. Kauf eine Lizenz, um Kapitel, die in diesem Video eingereicht wurden, anzusehen: ",
+        "description": "After the comma, a list of chapters for this video will appear"
     },
     "unsubmittedSegmentCounts": {
         "message": "Du hast derzeit {0} in {1}",
