@@ -1160,6 +1160,10 @@
     "chaptersPage1": {
         "message": "La fonctionnalité participative des chapitres de SponsorBlock n'est disponible que pour les personnes qui achètent une licence, ou pour les personnes qui en ont l'accès gratuitement grâce à leurs contributions passées"
     },
+    "chapterNewFeature": {
+        "message": "Nouvelle fonctionnalité : Chapitres personnalisés crowd-sourcés. Ce sont des sections dans les vidéos avec un nom personnalisé qui s'améliore au fur et à mesure. Achetez une licence pour voir les chapitres soumis sur cette vidéo tels que: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
     "unsubmittedSegmentCounts": {
         "message": "Vous avez actuellement {0} sur {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
