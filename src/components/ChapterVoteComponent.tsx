@@ -12,11 +12,13 @@ import { Tooltip } from "../render/Tooltip";
 
 export interface ChapterVoteProps {
     vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>;
+    size?: string;
 }
 
 export interface ChapterVoteState {
     segment?: SponsorTime;
     show: boolean;
+    size: string;
 }
 
 class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVoteState> {
@@ -27,7 +29,8 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
 
         this.state = {
             segment: null,
-            show: false
+            show: false,
+            size: props.size ?? "22px"
         };
     }
 
@@ -47,7 +50,7 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                         onClick={(e) => this.vote(e, 1)}>
                     <ThumbsUpSvg className="playerButtonImage" 
                         fill={Config.config.colorPalette.white} 
-                        width={null} height={null} />
+                        width={this.state.size} height={this.state.size} />
                 </button>
 
                 {/* Downvote Button */}
@@ -97,8 +100,8 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                     <ThumbsDownSvg 
                         className="playerButtonImage" 
                         fill={downvoteButtonColor(this.state.segment ? [this.state.segment] : null, SkipNoticeAction.Downvote, SkipNoticeAction.Downvote)} 
-                        width={null} 
-                        height={null} />
+                        width={this.state.size} 
+                        height={this.state.size} />
                 </button>
             </>
         );
