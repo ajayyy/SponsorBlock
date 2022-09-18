@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "새로운 동영상이고 구간을 찾지 못했다면, 동영상을 보는 동안 몇 분 단위로 구간 정보를 갱신해요."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "제출 권한이 없는 카테고리도 제출 메뉴에 표시"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "일부 카테고리는 최소 평판 요건을 만족해야 제출할 수 있는 권한이 부여돼요"
+    },
     "showNotice": {
         "message": "알림을 다시 표시하기"
     },
@@ -1160,8 +1166,12 @@
     "chaptersPage1": {
         "message": "SponsorBlock 사용자 참여 챕터 기능은 라이선스 결제 사용자나 이전 기여를 통해 접근을 허가받은 사용자만 이용할 수 있어요"
     },
+    "chaptersPage2": {
+        "message": "참고: 여전히 챕터 제출 권한은 산정된 평판만을 바탕으로 부여돼요. 요금을 결제하면 다른 사람들이 제출한 챕터를 확인하는 기능만 추가로 이용할 수 있어요",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
     "unsubmittedSegmentCounts": {
-        "message": "현재 동영상 {1}개에 {0}이 있어요",
+        "message": "현재 {1}개에 {0}이 있어요",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
     },
     "unsubmittedSegmentCountsZero": {
