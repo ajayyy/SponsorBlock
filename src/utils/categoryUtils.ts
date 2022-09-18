@@ -51,3 +51,5 @@ export function getCategorySuffix(category: Category): string {
 export function shortCategoryName(categoryName: string): string {
     return chrome.i18n.getMessage("category_" + categoryName + "_short") || chrome.i18n.getMessage("category_" + categoryName);
 }
+
+export const DEFAULT_CATEGORY = "chooseACategory";

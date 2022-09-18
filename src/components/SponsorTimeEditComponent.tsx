@@ -8,6 +8,7 @@ import { RectangleTooltip } from "../render/RectangleTooltip";
 import SelectorComponent, { SelectorOption } from "./SelectorComponent";
 import { GenericUtils } from "../utils/genericUtils";
 import { noRefreshFetchingChaptersAllowed } from "../utils/licenseKey";
+import { DEFAULT_CATEGORY } from "../utils/categoryUtils";
 
 
 const utils = new Utils();
@@ -32,8 +33,6 @@ export interface SponsorTimeEditState {
     suggestedNames: SelectorOption[];
     chapterNameSelectorOpen: boolean;
 }
-
-const DEFAULT_CATEGORY = "chooseACategory";
 
 const categoryNamesGrams: string[] = [].concat(...CompileConfig.categoryList.filter((name) => name !== "chapter")
     .map((name) => chrome.i18n.getMessage("category_" + name).split(/\/|\s|-/)));

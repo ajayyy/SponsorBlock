@@ -9,7 +9,7 @@ import Config from "../config";
 import { ChapterVote } from "../render/ChapterVote";
 import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceType, SponsorTime } from "../types";
 import { partition } from "../utils/arrayUtils";
-import { shortCategoryName } from "../utils/categoryUtils";
+import { DEFAULT_CATEGORY, shortCategoryName } from "../utils/categoryUtils";
 import { GenericUtils } from "../utils/genericUtils";
 import { findValidElement } from "../utils/pageUtils";
 
@@ -708,7 +708,8 @@ class PreviewBar {
         if (submittingSegments?.length > 0) segments = segments.concat(submittingSegments);
         const activeSegments = segments.filter((segment) => {
             return segment.hidden === SponsorHideType.Visible 
-                && segment.segment[0] <= currentTime && segment.segment[1] > currentTime;
+                && segment.segment[0] <= currentTime && segment.segment[1] > currentTime
+                && segment.category !== DEFAULT_CATEGORY;
         });
 
         this.setActiveSegments(activeSegments);
