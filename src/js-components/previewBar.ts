@@ -322,8 +322,7 @@ class PreviewBar {
         if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
             || (!Config.config.renderSegmentsAsChapters 
                 && segments.every((segment) => segment.actionType !== ActionType.Chapter 
-                    || segment.source === SponsorSourceType.YouTube))
-            || this.chapterGroups?.length <= 0) {
+                    || segment.source === SponsorSourceType.YouTube))) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             this.originalChapterBar.style.removeProperty("display");
             return;
@@ -347,6 +346,12 @@ class PreviewBar {
             }
         } else {
             this.chapterGroups = this.unfilteredChapterGroups;
+        }
+
+        if (!this.chapterGroups || this.chapterGroups.length <= 0) {
+            if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
+            this.originalChapterBar.style.removeProperty("display");
+            return;
         }
 
         // Create it from cloning
