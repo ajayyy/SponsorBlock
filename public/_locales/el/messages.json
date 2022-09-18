@@ -25,6 +25,16 @@
     "Segments": {
         "message": "τμήματα"
     },
+    "SegmentsCap": {
+        "message": "Τμήματα"
+    },
+    "Chapters": {
+        "message": "Κεφάλαια"
+    },
+    "renderAsChapters": {
+        "message": "Θεώρηση τμημάτων ως κεφάλαια",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Θετική ψήφος για αυτήν την υποβολή"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Υποβολή Τμημάτων"
+    },
+    "sortSegments": {
+        "message": "Ταξινόμηση Τμημάτων"
     },
     "submitCheck": {
         "message": "Είσαστε σίγουροι για την υποβολή σας;"
