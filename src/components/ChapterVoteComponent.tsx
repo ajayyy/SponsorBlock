@@ -18,7 +18,7 @@ export interface ChapterVoteProps {
 export interface ChapterVoteState {
     segment?: SponsorTime;
     show: boolean;
-    size: string;
+    size?: string;
 }
 
 class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVoteState> {
