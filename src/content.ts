@@ -943,7 +943,8 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
     setupVideoMutationListener();
 
-    const showChapterMessage = Config.config.payments.lastCheck !== 0 
+    const showChapterMessage = Config.config.showUpsells
+        && Config.config.payments.lastCheck !== 0 
         && !noRefreshFetchingChaptersAllowed()
         && Config.config.showChapterInfoMessage
         && Config.config.skipCount > 200
