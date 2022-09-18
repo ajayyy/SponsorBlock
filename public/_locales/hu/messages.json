@@ -1170,6 +1170,10 @@
         "message": "Fontos: A fejezetek beküldésére való engedély még mindig a számolt hírnévtől függ. A megvásárolt licenc csak a mások által beküldött fejezetek megtekintésére vonatkozik.",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
+    "chapterNewFeature": {
+        "message": "Új funkció: Közösség által karbantartott fejezetek. Ezek egyedileg elnevezett részei a videóknak, amiket egymásba is lehet ágyazni, hogy egyre pontosabbak lehessenek. Vásárolj licencet, hogy láthasd az ezen a videón beküldött fejezeteket, mint: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
     "unsubmittedSegmentCounts": {
         "message": "Jelenleg {0} van {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
