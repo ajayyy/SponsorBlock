@@ -29,7 +29,7 @@
         "message": "Osiot"
     },
     "Chapters": {
-        "message": "Kappaleet"
+        "message": "Osiot"
     },
     "renderAsChapters": {
         "message": "Piirrä osiot kappaleina",
@@ -309,11 +309,11 @@
         "description": "Keybind label"
     },
     "nextChapterKeybind": {
-        "message": "Seuraava kappale",
+        "message": "Seuraava osio",
         "description": "Keybind label"
     },
     "previousChapterKeybind": {
-        "message": "Edellinen kappale",
+        "message": "Edellinen osio",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -734,19 +734,19 @@
         "message": "Voi ohittaa otsikon tai pikkukuvan viittaamaan kohtaan"
     },
     "category_chapter": {
-        "message": "Kappale"
+        "message": "Osio"
     },
     "category_chapter_description": {
-        "message": "Videon merkittäviä osioita kuvaavat mukautetut nimetyt kappaleet."
+        "message": "Nimetyt osiot, jotka kuvaavat videon merkittäviä jaksoja."
     },
     "category_chapter_guideline1": {
         "message": "Älä mainitse sponsoreiden tuotemerkkejä"
     },
     "category_chapter_guideline2": {
-        "message": "Käytä yleisille osioille suurempia kappaleita"
+        "message": "Käytä yleisille jaksoille suurempia osioita"
     },
     "category_chapter_guideline3": {
-        "message": "Pienemmät kappaleet voidaan sijoittaa suurempien kappaleiden sisälle"
+        "message": "Pienemmät osiot voidaan sijoittaa suurempien osioiden sisään"
     },
     "category_livestream_messages": {
         "message": "Livestream: lahjoitusten/viestien lukeminen"
@@ -779,7 +779,7 @@
         "message": "Näytä merkki"
     },
     "showOverlay_chapter": {
-        "message": "Näytä kappaleet"
+        "message": "Näytä osiot"
     },
     "autoSkipOnMusicVideos": {
         "message": "Ohita kaikki osiot automaattisesti, kun videossa on \"Musiikiton\" osio"
@@ -923,7 +923,7 @@
         "message": "Koko video on merkitty tällä kategorialla ja on erotettavaksi liian tiiviisti integroitu"
     },
     "chapterNameTooltipWarning": {
-        "message": "Jonkin kappaleen ja kategorian nimet ovat samantapaisia. On suositeltavaa käyttää kappaleiden sijaan kategorioita, mikäli mahdollista."
+        "message": "Jonkin osion ja kategorian nimet ovat samankaltaisia. Kun mahdollista, osioiden sijaan on suositeltavaa käyttää kategorioita."
     },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
@@ -1164,10 +1164,10 @@
         "message": "Syötä lisenssiavain"
     },
     "chaptersPage1": {
-        "message": "SponsorBlockin joukkolähteinen kappaletoiminto on vain lisenssin ostaneiden tai aiempien tukien perusteella veloituksettoman käyttöoikeuden saaneiden henkilöiden käytettävissä"
+        "message": "SponsorBlockin joukkolähteinen osiotoiminto on vain lisenssin ostaneiden tai aiempien tukien perusteella veloituksettoman käyttöoikeuden saaneiden henkilöiden käytettävissä"
     },
     "chaptersPage2": {
-        "message": "Huomioi: Kappaleiden lähetysoikeus perustuu edelleen laskettuun maineeseen. Lisenssin hankinta sallii sinun ainoastaan tarkastella muiden lähettämiä kappaleita",
+        "message": "Huomioi: Osioiden lähetysoikeus perustuu edelleen laskettuun maineeseen. Lisenssin hankinta sallii sinun ainoastaan tarkastella muiden lähettämiä osioita",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "unsubmittedSegmentCounts": {
