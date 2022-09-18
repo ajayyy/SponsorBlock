@@ -1059,5 +1059,9 @@
     },
     "chaptersPage1": {
         "message": "Crowd-sourcované kapitovly v SponsorBlock-u sú dostupné len po zakúpení licencie alebo zadarmo pre ľudí, ktorí už v minulosti prispeli"
+    },
+    "chapterNewFeature": {
+        "message": "Nová funkcia: Crowd-sourcované vlastné kapitoly. Toto sú sekcie videa s vlastnými názvami, ktoré môžu byť pre väčšiu presnosť vyskladané. Ak si kúpite licenciu, uvidíte kapitoly v tomto videu, ako napr.: ",
+        "description": "After the comma, a list of chapters for this video will appear"
     }
 }
