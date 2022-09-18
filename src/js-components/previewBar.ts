@@ -93,7 +93,7 @@ class PreviewBar {
 
         // Grab the tooltip from the text wrapper as the tooltip doesn't have its classes on init
         this.categoryTooltipContainer = tooltipTextWrapper.parentElement;
-        const titleTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title");
+        const titleTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title") as HTMLElement;
         if (!this.categoryTooltipContainer || !titleTooltip) return;
 
         tooltipTextWrapper.insertBefore(this.categoryTooltip, titleTooltip.nextSibling);
@@ -164,6 +164,10 @@ class PreviewBar {
                 // Used to prevent overlapping
                 this.categoryTooltip.classList.toggle("ytp-tooltip-text-no-title", noYoutubeChapters);
                 this.chapterTooltip.classList.toggle("ytp-tooltip-text-no-title", noYoutubeChapters);
+
+                // To prevent offset issue
+                this.categoryTooltip.style.right = titleTooltip.style.right;
+                this.chapterTooltip.style.right = titleTooltip.style.right;
             }
         });
 
