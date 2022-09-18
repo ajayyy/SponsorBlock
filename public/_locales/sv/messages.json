@@ -1170,6 +1170,10 @@
         "message": "Obs: Tillstånd att skicka in kapitel är fortfarande baserat på beräknat rykte. Köpa en licens låter dig bara visa kapitel som lämnats in av andra",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
+    "chapterNewFeature": {
+        "message": "Ny funktion: Crowd-sourced anpassade kapitel. Dessa är anpassade namngivna avsnitt i videor som kan staplas för att få mer och mer exakt. Köp en licens för att se de kapitel som lämnats på denna video såsom: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
     "unsubmittedSegmentCounts": {
         "message": "Du har för närvarande {0} på {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
