@@ -1170,6 +1170,10 @@
         "message": "Примечание: разрешение на отправку эпизодов все еще основано на рассчитываемой репутации. Приобретая лицензию, вы можете просматривать только те главы, которые представлены другими",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
+    "chapterNewFeature": {
+        "message": "Новая функция: эпизоды от сообщества. Это разделы видео с пользовательскими названиями, которые могут быть помещены внутри других эпизодов для более точной разметки. Приобретите лицензию, чтобы видеть названия эпизодов, как, например, эпизоды в этом видео: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
     "unsubmittedSegmentCounts": {
         "message": "Сейчас у вас есть {0} в {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
