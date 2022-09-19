@@ -232,7 +232,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 {sponsorTime.actionType === ActionType.Chapter ? (
                     <div onMouseLeave={() => this.setState({chapterNameSelectorOpen: false})}>
                         <input id={"chapterName" + this.idSuffix}
-                            className="sponsorTimeEdit"
+                            className="sponsorTimeEdit sponsorTimeEditInput sponsorChapterNameInput"
+                            style={{color: "inherit", backgroundColor: "inherit"}}
                             ref={this.descriptionOptionRef}
                             type="text"
                             value={this.state.description}
