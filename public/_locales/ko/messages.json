@@ -1170,6 +1170,10 @@
         "message": "참고: 여전히 챕터 제출 권한은 산정된 평판만을 바탕으로 부여돼요. 요금을 결제하면 다른 사람들이 제출한 챕터를 확인하는 기능만 추가로 이용할 수 있어요",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
+    "chapterNewFeature": {
+        "message": "새 기능: 사용자 참여 챕터. 사용자가 직접 이름을 지정할 수 있고 챕터를 중첩시킬 수 있어 더더욱 정확해요. 이 동영상에 제출된 챕터들을 보려면 요금을 결제하세요. 챕터 목록 미리보기: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
     "unsubmittedSegmentCounts": {
         "message": "현재 {1}개에 {0}이 있어요",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
