@@ -1170,6 +1170,10 @@
         "message": "Nota: El permiso para enviar capítulos todavía está basado en la reputación calculada. Comprar una licencia solo le permite ver los capítulos enviados por otros",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
+    "chapterNewFeature": {
+        "message": "Nueva Función: Capítulos personalizados marcados por la comunidad. Estos son secciones con nombres personalizados en los videos que pueden ser acumulados para ser cada vez más precisos. Compre una licencia para ver los capítulos enviados en este video, como: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
     "unsubmittedSegmentCounts": {
         "message": "Actualmente tienes {0} en {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
