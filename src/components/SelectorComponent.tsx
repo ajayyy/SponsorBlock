@@ -28,6 +28,7 @@ class SelectorComponent extends React.Component<SelectorProps, SelectorState> {
     render(): React.ReactElement {
         return (
             <div id={this.props.id}
+                style={{display: this.props.options.length > 0 ? "inherit" : "none"}}
                 className="sbSelector">
                 <div className="sbSelectorBackground">
                     {this.getOptions()}
