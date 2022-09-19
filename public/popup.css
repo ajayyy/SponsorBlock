@@ -224,6 +224,10 @@
   text-align: left;
 }
 
+.segmentSummary::-webkit-details-marker {
+  display: none !important;
+}
+
 .segmentActive {
   color: #bdfffb;
 }
