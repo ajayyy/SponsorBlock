@@ -711,7 +711,15 @@ class PreviewBar {
     }
 
     updateChapterText(segments: SponsorTime[], submittingSegments: SponsorTime[], currentTime: number): void {
-        if (!segments && submittingSegments?.length <= 0) return;
+        if ((!segments || segments.length <= 0) && submittingSegments?.length <= 0) {
+            const chaptersContainer = this.getChaptersContainer();
+            const chapterButton = this.getChapterButton(chaptersContainer);
+            if (chapterButton.classList.contains("ytp-chapter-container-disabled")) {
+                chaptersContainer.style.display = "none";
+            }
+
+            return;
+        }
 
         segments ??= [];
         if (submittingSegments?.length > 0) segments = segments.concat(submittingSegments);
@@ -728,7 +736,7 @@ class PreviewBar {
      * Adds the text to the chapters slot if not filled by default
      */
     private setActiveSegments(segments: SponsorTime[]): void {
-        const chaptersContainer = document.querySelector(".ytp-chapter-container") as HTMLDivElement;
+        const chaptersContainer = this.getChaptersContainer();
 
         if (chaptersContainer) {
             if (segments.length > 0) {
@@ -744,7 +752,7 @@ class PreviewBar {
                     }
                 })[0];
 
-                const chapterButton = chaptersContainer.querySelector("button.ytp-chapter-title") as HTMLButtonElement;
+                const chapterButton = this.getChapterButton(chaptersContainer);
                 chapterButton.classList.remove("ytp-chapter-container-disabled");
                 chapterButton.disabled = false;
 
@@ -772,6 +780,15 @@ class PreviewBar {
                 this.chapterVote.setVisibility(false);
             }
         }
+    }
+
+    private getChaptersContainer(): HTMLElement {
+        return document.querySelector(".ytp-chapter-container") as HTMLElement;
+    }
+
+    private getChapterButton(chaptersContainer: HTMLElement): HTMLButtonElement {
+        return (chaptersContainer ?? this.getChaptersContainer())
+            .querySelector("button.ytp-chapter-title") as HTMLButtonElement;
     }
 
     remove(): void {
