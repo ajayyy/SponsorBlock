@@ -303,7 +303,7 @@
   border: none;
   flex: 1;
   padding: 10px 15px;
-  trasition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 .sbControlsMenu-item:hover {
   background-color: #444;
