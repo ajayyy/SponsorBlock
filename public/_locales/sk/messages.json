@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmentov"
     },
+    "SegmentsCap": {
+        "message": "Segmenty"
+    },
+    "Chapters": {
+        "message": "Kapitoly"
+    },
+    "renderAsChapters": {
+        "message": "Zobraziť segmenty ako kapitoly",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Hlasovať pre tento príspevok"
     },
@@ -224,6 +234,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Ak je video nové a nenašli sa žiadne segmenty, opakovane sa budú každých pár minút načítavať kým sa video prehráva."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Zobraziť kategórie v odosielacom menu aj bez oprávnenia na odosielanie"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Niektoré kategórie vyžadujú oprávnenie na odoslanie kvôli požiadavke na minimálnu reputáciu"
+    },
     "showNotice": {
         "message": "Znovu zobraziť upozornenie"
     },
@@ -267,6 +283,14 @@
     "noticeUpdate2": {
         "message": "Ak sa vám to stále nepáčí, stlačte tlačidlo Nikdy nezobrazovať.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "nextChapterKeybind": {
+        "message": "Ďalšia kapitola",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Predošlá kapitola",
+        "description": "Keybind label"
     },
     "0": {
         "message": "Spojenie vypršalo. Skontrolujte svoje internetové pripojenie. Ak vám internet funguje, server je pravdepodobne preťažený alebo nefunkčný."
@@ -509,6 +533,10 @@
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Skopírované!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Zahŕňa plynulé prechody"
     },
@@ -601,7 +629,7 @@
         "message": "Ukážka/Rekapitulácia"
     },
     "category_preview_description": {
-        "message": "Rýchla rekapitulácia predošlej epizódy alebo ukážka toho, čo bude nasledovať neskôr v aktuálnom videu. Myslené pre zostrihané videá, nie pre hovorený súhrn."
+        "message": "Zbierka klipov, ktoré ukazujú, čo nasleduje v tomto alebo ďalších videách zo série, kde sa potom všetky informácie opakujú."
     },
     "category_preview_guideline1": {
         "message": "Ukážky, ktoré sa zobrazia neskôr alebo v budúcom videu"
@@ -657,6 +685,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Môže preskočiť na hlavný obsah alebo náhľad"
     },
+    "category_chapter": {
+        "message": "Kapitola"
+    },
+    "category_chapter_description": {
+        "message": "Vlastné pomenovania kapitol opisujúce hlavné sekcie videa."
+    },
+    "category_chapter_guideline1": {
+        "message": "Nezmieňovať sponzorove značky"
+    },
+    "category_chapter_guideline2": {
+        "message": "Použiť veľké kapitoly pre všeobecné sekcie"
+    },
+    "category_chapter_guideline3": {
+        "message": "Menšie kapitoly môžu byť umiestnené vo väčších"
+    },
     "category_livestream_messages": {
         "message": "Živé vysielanie: oznamy a dary"
     },
@@ -686,6 +729,9 @@
     },
     "showOverlay_full": {
         "message": "Ukázať Označenie"
+    },
+    "showOverlay_chapter": {
+        "message": "Zobraziť kapitoly"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky preskočiť všetky segmenty ak neexistuje segment bez hudby"
@@ -742,6 +788,10 @@
     "bracketEnd": {
         "message": "(Koniec)"
     },
+    "End": {
+        "message": "Koniec",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "skryté: negatívne hlasy"
     },
@@ -752,11 +802,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID kanála sa ešte nenačítalo. Ak pozeráte video vložené na stránke, skúste ísť radšej priamo na YouTube. Problém mohli spôsobiť zmeny na YouTube. Ak je tomu tak, zanechajte komentár:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Zdá sa, že niečo blokuje SponsorBlocku možnosť získať dáta o videu. Prosím navštívte https://github.com/ajayyy/SponsorBlock/issues/741 pre viac informácií."
-    },
-    "youtubePermissionRequest": {
-        "message": "SponsorBlock nemá prístup k YouTube API. Povoľte oprávnenie v nasledovnej výzve, počkajte pár sekúnd a znovu nahrajte stránku."
+    "invidiousPermissionRefresh": {
+        "message": "Prehliadač odmietol oprávnenia potrebné pre Invidious a iné stránky 3. strany. Pre opätovnú aktiváciu oprávnení kliknite na tlačidlo nižšie."
     },
     "acceptPermission": {
         "message": "Povoľte oprávnenie"
@@ -781,6 +828,13 @@
     },
     "downvoteDescription": {
         "message": "Nesprávne/Zlé načasovanie"
+    },
+    "incorrectVote": {
+        "message": "Nesprávne"
+    },
+    "harmfulVote": {
+        "message": "Škodlivé",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Zmeniť kategóriu"
@@ -817,6 +871,9 @@
     "categoryPillTitleText": {
         "message": "Celé video je označené touto kategóriou a je príliš previazané, aby sa to dalo rozlíšiť"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Jedna z vašich kapitol sa volá podobne ako kategória. Ak je to možné, použite radšej kategóriu."
+    },
     "experiementOptOut": {
         "message": "Odmietnuť všetky budúce experimenty",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -825,11 +882,19 @@
         "message": "Navždy skryť"
     },
     "warningChatInfo": {
-        "message": "Dostali ste varovanie a nemôžete tak dočasne odosielať segmenty. To znamená, že sme si všimli, že ste spravili nejaké chyby, ktoré nie sú myslené zle, a chceme Vám len objasniť pravidlá a potom Vám to varovanie odoberieme. Môžete sa pripojiť do konverzácie pomocou discord.gg/SponsorBlock alebo matrix.to/#/#sponsor:ajay.app"
+        "message": "Zaznamenali sme, že robíte omylom chyby"
     },
-    "voteRejectedWarning": {
-        "message": "Hlasovanie bolo zamietnuté kvôli varovaniu. Kliknite pre otvorenie chatu, aby ste ho vyriešili, alebo sa vráťte až budete mať čas.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Dostali ste varovanie"
+    },
+    "questionButton": {
+        "message": "Mám otázku"
+    },
+    "warningConfirmButton": {
+        "message": "Rozumiem dôvodu"
+    },
+    "warningError": {
+        "message": "Chyb a pri pokuse o súhlas s upozornením:"
     },
     "Donate": {
         "message": "Prispieť"
@@ -943,5 +1008,60 @@
     },
     "openOptionsPage": {
         "message": "Otvoriť stránku s nastaveniami"
+    },
+    "exportSegments": {
+        "message": "Exportovať segmenty"
+    },
+    "Import": {
+        "message": "Import",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "Licenčný kľúč nie je platný"
+    },
+    "hideUpsells": {
+        "message": "Skryť platené nastavenia"
+    },
+    "chooseACountry": {
+        "message": "Vybrať krajinu"
+    },
+    "noDiscount": {
+        "message": "Nemáte nárok na zľavu"
+    },
+    "discountLink": {
+        "message": "Odkaz na zľavu (ružová cena)"
+    },
+    "selectYourCountry": {
+        "message": "Vyberte krajinu"
+    },
+    "alreadyDonated": {
+        "message": "Ak ste už v minulosti prispeli, získajte voľný prístup napísaním emailu:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Ak si nemôžete dovoliť kúpiť licenciu, kliknite {sem} a zistite, či máte nárok na zľavu",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Prihlásiť sa cez Patreon"
+    },
+    "redeem": {
+        "message": "Uplatniť"
+    },
+    "joinOnPatreon": {
+        "message": "Kúpte si Patreon predplatné"
+    },
+    "oneTimePurchase": {
+        "message": "Jednorazový nákup"
+    },
+    "enterLicenseKey": {
+        "message": "Zadajte licenčný kľúč"
+    },
+    "chaptersPage1": {
+        "message": "Crowd-sourcované kapitovly v SponsorBlock-u sú dostupné len po zakúpení licencie alebo zadarmo pre ľudí, ktorí už v minulosti prispeli"
+    },
+    "chapterNewFeature": {
+        "message": "Nová funkcia: Crowd-sourcované vlastné kapitoly. Toto sú sekcie videa s vlastnými názvami, ktoré môžu byť pre väčšiu presnosť vyskladané. Ak si kúpite licenciu, uvidíte kapitoly v tomto videu, ako napr.: ",
+        "description": "After the comma, a list of chapters for this video will appear"
     }
 }

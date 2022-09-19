@@ -53,7 +53,7 @@
         "message": "Hopp igjen"
     },
     "unmute": {
-        "message": "Lyd"
+        "message": "Skru av demping"
     },
     "paused": {
         "message": "På pause"
@@ -579,9 +579,6 @@
     "category_preview": {
         "message": "Forhåndsvisning/Oppsummering"
     },
-    "category_preview_description": {
-        "message": "Hurtig oppsummering av tidligere episoder, eller forhåndsvisning av hva som kommer senere i denne videoen. Ment for redigerte klipp, ikke muntlige sammendrag."
-    },
     "category_filler_description": {
         "message": "Intetsigende segmenter kun lagt til som fyllstoff eller humor som ikke er nødvendig for å forstå hovedinnholdet i videoen. Dette bør ikke inkludere segmenter som gir kontekst eller bakgrunnsdetaljer."
     },
@@ -698,12 +695,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal-ID er ikke lastet enda. Hvis du bruker en innebygd video, prøv å bruke YouTube-hjemmesiden i stedet. Dette kan også forårsakes av endringer i YouTube-oppsett, hvis du mistenker det, kommenter her:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Det virker som om noe blokkerer SponsorBlock's mulighet til å få videodata. Vennligst se https://github.com/ajayyy/SponsorBlock/issues/741 for mer info."
-    },
-    "youtubePermissionRequest": {
-        "message": "Det ser ut til at SponsorBlock ikke klarer å nå YouTube-API-en. For å fikse dette, godta tillatelsesspørringen som dukker opp etter dette, vent noen sekunder, og så last inn siden på nytt."
-    },
     "acceptPermission": {
         "message": "Godta tillatelse"
     },
@@ -770,12 +761,8 @@
     "hideForever": {
         "message": "Skjul for alltid"
     },
-    "warningChatInfo": {
-        "message": "Du fikk en advarsel og vil midlertidig ikke kunne sende inn segmenter. Dette betyr at vi la merke til at du gjorde noen vanlige feil som ikke var vondt ment, vennligst bare bekreft at du er inneforstått med reglene og vi vil fjerne advarslen. Du kan også bli med i denne chatten på discord.gg/SponsorBlock eller matrix.to/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Stemme avvist på grunn av en advarsel. Klikk for å åpne chatten for å løse dette, eller kom tilbake senere når du har tid.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "questionButton": {
+        "message": "SpørsmålsKnapp"
     },
     "Donate": {
         "message": "Donér"
@@ -861,6 +848,9 @@
     "ChangeCategoryTooltip": {
         "message": "Dette vil umiddelbart gjelde for dine segmenter"
     },
+    "hideSegment": {
+        "message": "Skjul segment"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Bruk musehjulet mens du peker over redigeringsboksen for å raskt justere tiden. Kombinasjoner av ctrl- eller shift-tasten kan brukes til å finjustere endringene."
     },
@@ -911,5 +901,17 @@
     },
     "youtubeKeybindWarning": {
         "message": "Dette er en innebygget YouTube-hurtigtast. Er du sikker på at du vil bruke den?"
+    },
+    "betaServerWarning": {
+        "message": "BETA Server er aktivert!"
+    },
+    "openOptionsPage": {
+        "message": "Åpne innstillingsside"
+    },
+    "resetToDefault": {
+        "message": "Tilbakestill innstillinger til standard"
+    },
+    "confirmResetToDefault": {
+        "message": "Er du sikker på at du vil tilbakestille alle innstillingene til standardverdiene? Dette kan ikke angres."
     }
 }

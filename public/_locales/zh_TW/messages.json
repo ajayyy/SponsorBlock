@@ -25,6 +25,16 @@
     "Segments": {
         "message": "片段"
     },
+    "SegmentsCap": {
+        "message": "片段"
+    },
+    "Chapters": {
+        "message": "章節"
+    },
+    "renderAsChapters": {
+        "message": "以章節的方式渲染片段",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "為這個提交按讚"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "提交分段"
+    },
+    "sortSegments": {
+        "message": "排序片段"
     },
     "submitCheck": {
         "message": "您確定要提交這個嗎？"
@@ -289,6 +302,14 @@
         "message": "提交片段",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "下一章節",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "上一章節",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "按下按鍵以選擇並選擇想要使用的修飾鍵"
     },
@@ -442,6 +463,12 @@
     "minDurationDescription": {
         "message": "小於設定值的片段不會被跳過或在播放器中顯示"
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "當完整影片標籤存在時使用手動跳過"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "給在一部都是贊助或都是自我推廣的影片中，想要享受不間斷觀看體驗的人使用。"
+    },
     "skipNoticeDuration": {
         "message": "跳過通知持續顯示時間（秒）："
     },
@@ -545,6 +572,10 @@
         "message": "到",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "已複製！",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "包含轉場"
     },
@@ -637,7 +668,7 @@
         "message": "預覽/摘要"
     },
     "category_preview_description": {
-        "message": "係指影片的前情提要或內容預告等刻意編輯過的內容"
+        "message": "展示即將播放的影片或整系列內容的短片集錦，所有內容都會在後面影片中重複"
     },
     "category_preview_guideline1": {
         "message": "出現在後面或未來影片的片段"
@@ -696,6 +727,21 @@
     "category_poi_highlight_guideline3": {
         "message": "可以跳過到標題或縮圖的內容"
     },
+    "category_chapter": {
+        "message": "章節"
+    },
+    "category_chapter_description": {
+        "message": "用以描述影片主要區段自定義的章節。"
+    },
+    "category_chapter_guideline1": {
+        "message": "不要提及贊助商名稱"
+    },
+    "category_chapter_guideline2": {
+        "message": "再較通泛的區段使用較大的章節"
+    },
+    "category_chapter_guideline3": {
+        "message": "較小的章節可以放在較大的裡面"
+    },
     "category_livestream_messages": {
         "message": "直播：捐贈/訊息閱讀"
     },
@@ -725,6 +771,9 @@
     },
     "showOverlay_full": {
         "message": "顯示標籤"
+    },
+    "showOverlay_chapter": {
+        "message": "顯示所有章節"
     },
     "autoSkipOnMusicVideos": {
         "message": "自動跳過非音樂片段（如果有的話）"
@@ -781,6 +830,10 @@
     "bracketEnd": {
         "message": "(結束)"
     },
+    "End": {
+        "message": "結束",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "隱藏：負評"
     },
@@ -794,11 +847,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "未偵測到頻道ID，如果您正在使用嵌入式YouTube播放器，請移至YouTube網站上觀看本影片。此問題亦有可能是由於YouTube改變了系統架構，如果你認為這是造成此問題的原因，請留言告訴我們："
     },
-    "videoInfoFetchFailed": {
-        "message": "似乎有東西在阻止 SponsorBlock 取得影片資料。請至 https://github.com/ajayyy/SponsorBlock/issues/741 以了解更多資訊。"
-    },
-    "youtubePermissionRequest": {
-        "message": "SponsorBlock 貌似無法存取 YouTube API。若要解決此問題，請同意稍後出現的權限提示，等待幾秒鐘，然後重新載入頁面。"
+    "invidiousPermissionRefresh": {
+        "message": "瀏覽器已收回存取第三方網頁 (例如 Invidious) 的權限，請點擊下方按鈕以重新給予此權限。"
     },
     "acceptPermission": {
         "message": "允許權限"
@@ -823,6 +873,13 @@
     },
     "downvoteDescription": {
         "message": "不正確/錯誤的時間"
+    },
+    "incorrectVote": {
+        "message": "不正確的"
+    },
+    "harmfulVote": {
+        "message": "有害的",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "變更類別"
@@ -859,6 +916,9 @@
     "categoryPillTitleText": {
         "message": "這整部影片都被標示為此類別且過於相關而不可分開"
     },
+    "chapterNameTooltipWarning": {
+        "message": "你有一個與類別名稱相似的章節，你應該盡可能地使用類別。"
+    },
     "experiementOptOut": {
         "message": "關閉所有未來的實驗性功能",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +927,19 @@
         "message": "永久隱藏"
     },
     "warningChatInfo": {
-        "message": "你被記了警告所以暫時不能提交片段。這意味著我們注意到你在犯下常見的但不是可疑的錯誤，請確認你真的瞭解方針之內容後我們就會移除警告。你也可以加入 discord.gg/SponsorBlock 或 matrix.to/#/#sponsor:ajay.app"
+        "message": "我們注意到你犯下了一些不帶有惡意的常見錯誤"
     },
-    "voteRejectedWarning": {
-        "message": "投票因警告而被駁回。點擊以打開聊天室並解決之",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "你收到了一支警告"
+    },
+    "questionButton": {
+        "message": "我要發問"
+    },
+    "warningConfirmButton": {
+        "message": "我了解原因"
+    },
+    "warningError": {
+        "message": "在認知警告時發生錯誤："
     },
     "Donate": {
         "message": "贊助"
@@ -1034,5 +1102,114 @@
     },
     "confirmResetToDefault": {
         "message": "你確定要將所有設定重設為預設值嗎？此動作無法還原。"
+    },
+    "exportSegments": {
+        "message": "匯出片段"
+    },
+    "Import": {
+        "message": "匯入",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "兌換成功！"
+    },
+    "redeemFailed": {
+        "message": "授權金鑰無效"
+    },
+    "hideUpsells": {
+        "message": "隱藏選項需要額外付款才可使用"
+    },
+    "chooseACountry": {
+        "message": "選擇國家"
+    },
+    "noDiscount": {
+        "message": "你不能使用優惠"
+    },
+    "discountLink": {
+        "message": "優惠連結 (看粉色的價格)"
+    },
+    "selectYourCountry": {
+        "message": "選擇國家"
+    },
+    "alreadyDonated": {
+        "message": "如果你在之前捐獻過 (任何金額)，你可以發送電子郵件到以下地址以獲得免費存取權：",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "若你無法購買授權，請點 {here} 以檢查你是否可用優惠",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "使用 Patreon 登入"
+    },
+    "redeem": {
+        "message": "兌換"
+    },
+    "joinOnPatreon": {
+        "message": "在 Patreon 上訂閱"
+    },
+    "oneTimePurchase": {
+        "message": "一次性購買"
+    },
+    "enterLicenseKey": {
+        "message": "請輸入授權金鑰"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlock 僅供有購買授權或在過去有貢獻者使用"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "你現在在 {1} 上有 {0}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "你現在沒有未提交的片段",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "未提交的片段",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "未提交的片段",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "影片",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "影片",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "清除所有片段",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "你確定要清除所有未提交的片段嗎？",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "顯示片段",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "隱藏片段",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "影片ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "片段數量",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "操作",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "分享連結"
     }
 }

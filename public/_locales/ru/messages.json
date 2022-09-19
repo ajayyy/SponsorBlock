@@ -25,6 +25,16 @@
     "Segments": {
         "message": "сегментов"
     },
+    "SegmentsCap": {
+        "message": "Сегменты"
+    },
+    "Chapters": {
+        "message": "Эпизоды"
+    },
+    "renderAsChapters": {
+        "message": "Отображать сегменты как эпизоды",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Проголосовать за этот сегмент"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Отправить сегменты"
+    },
+    "sortSegments": {
+        "message": "Сортировать сегменты"
     },
     "submitCheck": {
         "message": "Вы уверены, что хотите это отправить?"
@@ -233,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Если видео новое и для него не найдено сегментов, то информация о них будет обновляться каждые пару минут, пока вы смотрите видео."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Показывать категории в меню отправки даже без разрешения на публикацию"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Некоторые категории требуют разрешения для отправки из-за минимальных требований к репутации"
+    },
     "showNotice": {
         "message": "Показать уведомление снова"
     },
@@ -287,6 +306,14 @@
     },
     "setSubmitKeybind": {
         "message": "Отправить сегменты",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Следующий эпизод",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Предыдущий эпизод",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -442,6 +469,12 @@
     "minDurationDescription": {
         "message": "Сегменты короче этого значения не будут пропускаться и не будут показаны в плеере."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Использовать пропуск вручную, когда видео помечено целиком"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Для тех, кто хочет просматривать полностью проспонсированные или саморекламные видео без автоматических пропусков."
+    },
     "skipNoticeDuration": {
         "message": "Длительность отображения окошка о пропуске (в секундах):"
     },
@@ -545,6 +578,10 @@
         "message": "до",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Скопировано!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Содержит плавный переход от одной темы к другой"
     },
@@ -637,7 +674,7 @@
         "message": "Предпросмотр/краткое содержание"
     },
     "category_preview_description": {
-        "message": "Краткое содержание предыдущих эпизодов или предварительный просмотр того, что будет в данном видео. Предназначено для сегментов, смонтированных из кусков видео, а не для устных пересказов."
+        "message": "Коллекция клипов, которые показывают, что происходит в этом видео или других эпизодах, все клипы позже повторяются в видео."
     },
     "category_preview_guideline1": {
         "message": "Фрагменты, которые появляются позже или в будущем видео"
@@ -696,6 +733,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Может пропустить до объекта заголовка или превью"
     },
+    "category_chapter": {
+        "message": "Эпизод"
+    },
+    "category_chapter_description": {
+        "message": "Пользовательские названия эпизодов, описывающие основные разделы видео."
+    },
+    "category_chapter_guideline1": {
+        "message": "Не упоминайте названия спонсорских брендов"
+    },
+    "category_chapter_guideline2": {
+        "message": "Используйте длинные эпизоды для разделов на общие темы"
+    },
+    "category_chapter_guideline3": {
+        "message": "Короткие эпизоды могут быть помещены внутри длинных"
+    },
     "category_livestream_messages": {
         "message": "Прямые трансляции: пожертвование/чтение сообщения"
     },
@@ -725,6 +777,9 @@
     },
     "showOverlay_full": {
         "message": "Показывать категорию"
+    },
+    "showOverlay_chapter": {
+        "message": "Показывать эпизоды"
     },
     "autoSkipOnMusicVideos": {
         "message": "Пропускать все сегменты автоматически при наличии сегмента без музыки"
@@ -781,6 +836,10 @@
     "bracketEnd": {
         "message": "(Конец)"
     },
+    "End": {
+        "message": "Конец",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "скрыто: проголосовали против"
     },
@@ -794,11 +853,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID канала еще не загружен. Если вы используете встроенное видео, попробуйте вместо этого воспользоваться домашней страницей YouTube. Это также может быть вызвано изменениями в дизайне YouTube, если вы считаете, что это так, оставьте комментарий здесь:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Похоже, что-то блокирует возможность SponsorBlock'а получать данные о видео. Подробнее: https://github.com/ajayyy/SponsorBlock/issues/741."
-    },
-    "youtubePermissionRequest": {
-        "message": "Кажется, SponsorBlock не может получить доступ к API YouTube. Чтобы исправить эту ошибку, дайте разрешение в окне, которое сейчас появится, подождите несколько секунд и затем перезагрузите страницу."
+    "invidiousPermissionRefresh": {
+        "message": "Браузер отозвал разрешение, необходимое для работы на Invidious и других сторонних сайтах. Пожалуйста, нажмите на кнопку ниже, чтобы восстановить это разрешение."
     },
     "acceptPermission": {
         "message": "Дать разрешение"
@@ -823,6 +879,13 @@
     },
     "downvoteDescription": {
         "message": "Не нужен/неверно указано время"
+    },
+    "incorrectVote": {
+        "message": "Неверно"
+    },
+    "harmfulVote": {
+        "message": "Оскорбительно",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Изменить категорию"
@@ -859,6 +922,9 @@
     "categoryPillTitleText": {
         "message": "Данная категория применена для всего видео, так как она тесно интегрирована в видео"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Название одного из ваших эпизодов похоже на категорию. Постарайтесь использовать категории когда возможно."
+    },
     "experiementOptOut": {
         "message": "Отказаться от всех будущих экспериментов",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +933,19 @@
         "message": "Скрыть навсегда"
     },
     "warningChatInfo": {
-        "message": "Вы получили предупреждение и временно не можете отправлять сегменты. Мы заметили, что вы совершали распространенные ошибки, которые не были злонамеренными. Пожалуйста, подтвердите, что вы прочитали правила и предупреждение будет удалено. Вы также можете присоединиться к нашему чату, используя discord.gg/SponsorBlock или matrix.to/#/#sponsor:ajay.app"
+        "message": "Мы заметили, что вы совершаете распространённые и не злонамеренные ошибки"
     },
-    "voteRejectedWarning": {
-        "message": "Голосование отклонено из-за предупреждения. Нажмите, чтобы открыть чат, где вы можете решить проблему, или вернитесь, когда у вас будет время.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Вы получили предупреждение"
+    },
+    "questionButton": {
+        "message": "У меня есть вопрос"
+    },
+    "warningConfirmButton": {
+        "message": "Я понимаю причину"
+    },
+    "warningError": {
+        "message": "Не удалось подтвердить предупреждение:"
     },
     "Donate": {
         "message": "Пожертвовать"
@@ -1034,5 +1108,121 @@
     },
     "confirmResetToDefault": {
         "message": "Вы уверены, что вы хотите восстановить настройки по умолчанию? Это действие не может быть отменено."
+    },
+    "exportSegments": {
+        "message": "Экспортировать сегменты"
+    },
+    "importSegments": {
+        "message": "Импортировать сегменты"
+    },
+    "Import": {
+        "message": "Импортировать",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Купон активирован!"
+    },
+    "redeemFailed": {
+        "message": "Ключ лицензии недействителен"
+    },
+    "hideUpsells": {
+        "message": "Скрыть опции, не доступные без дополнительной платы"
+    },
+    "chooseACountry": {
+        "message": "Выберите страну"
+    },
+    "noDiscount": {
+        "message": "Вы не подпадаете под условия скидки"
+    },
+    "discountLink": {
+        "message": "Ссылка на скидку (смотрите розовую цену)"
+    },
+    "selectYourCountry": {
+        "message": "Выберите вашу страну"
+    },
+    "alreadyDonated": {
+        "message": "Если вы когда-то жертвовали любую сумму, вы можете получить доступ, отправив электронное письмо сюда:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Если вы не можете позволить себе приобрести лицензию, нажмите {сюда}, чтобы увидеть, имеете ли вы право на скидку",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Войти через Patreon"
+    },
+    "redeem": {
+        "message": "Использовать купон"
+    },
+    "joinOnPatreon": {
+        "message": "Подписаться на Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Единоразовая покупка"
+    },
+    "enterLicenseKey": {
+        "message": "Введите лицензионный ключ"
+    },
+    "chaptersPage1": {
+        "message": "Функция SponsorBlock \"эпизоды от сообщества\" доступна только для людей, которые приобрели лицензию, или для людей, которым предоставлен бесплатный доступ благодаря их прошлым вкладам"
+    },
+    "chaptersPage2": {
+        "message": "Примечание: разрешение на отправку эпизодов все еще основано на рассчитываемой репутации. Приобретая лицензию, вы можете просматривать только те главы, которые представлены другими",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Сейчас у вас есть {0} в {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "В настоящее время у вас нет неопубликованных сегментов",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "неопубликованный сегмент",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "неопубликованных сегмент(-а, -ов)",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "видео",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "видео",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Очистить все сегменты",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Вы уверены, что хотите очистить все неопубликованные сегменты?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Показать сегменты",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Скрыть сегменты",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID видео",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Количество сегментов",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Действия",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Поделиться ссылкой"
     }
 }

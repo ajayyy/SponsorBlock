@@ -164,6 +164,9 @@
     "copyPublicID": {
         "message": "Copiază ID-Utilizator Public"
     },
+    "copySegmentID": {
+        "message": "Copiază ID-ul Segmentului"
+    },
     "discordAdvert": {
         "message": "Vino și alătură-te serverului oficial de discord pentru a oferi sugestii și feedback!"
     },
@@ -182,11 +185,17 @@
     "hideButtonsDescription": {
         "message": "Asta ascunde butoanele ce apar pe playerul de YouTube pentru a trimite segmente."
     },
+    "showSkipButton": {
+        "message": "Păstrează Butonul de Sari Peste Secțiunea Evidențiată În Player"
+    },
     "showInfoButton": {
         "message": "Arată Butoanele De Informații Pe Playerul De YouTube"
     },
     "hideInfoButton": {
         "message": "Ascunde Butoanele De Informații Pe Playerul De YouTube"
+    },
+    "autoHideInfoButton": {
+        "message": "Ascunde Automat Butonul De Info"
     },
     "hideDeleteButton": {
         "message": "Ascunde Butonul De Ștergere Pe Playerul De YouTube"
@@ -199,6 +208,18 @@
     },
     "whatViewTracking": {
         "message": "Acest lucru urmărește peste ce segmente ai sărit pentru a informa utilizatorii cât de mult înregistrările lor i-au ajutat pe alții și este folosit ca un contor împreună cu upvoturile pentru a ne asigura că spamul nu pătrunde în baza de date. Extensia trimite un mesaj serverului de fiecare dată când sari peste un segment. Sperăm că majoritatea oamenilor nu vor schimba această setare astfel că numerele să fie exacte. :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "Activează Monitorizarea Numărului de Segmente Omise în Ferestre Private/Incognito"
+    },
+    "enableTrackDownvotes": {
+        "message": "Stochează Segmente Downvotuite"
+    },
+    "whatTrackDownvotes": {
+        "message": "Segmentele la care ați dat downvote vor rămâne ascunse chiar si după reîncărcarea paginii"
+    },
+    "trackDownvotesWarning": {
+        "message": "Atenție: Dezactivarea acestei opțiuni va șterge toate downvote-urile stocate anterior"
     },
     "enableQueryByHashPrefix": {
         "message": "Interogare după Prefix Hash"
@@ -217,6 +238,24 @@
     },
     "showSkipNotice": {
         "message": "Arată o notificare după ce un segment este sărit"
+    },
+    "showCategoryGuidelines": {
+        "message": "Afișează Categoria de Ajutor"
+    },
+    "noticeVisibilityMode0": {
+        "message": "Notificări de Omiteri de Dimensiune Originală"
+    },
+    "noticeVisibilityMode1": {
+        "message": "Notificări de Omiteri de Dimensiune Mică Pentru Omiteri Automate"
+    },
+    "noticeVisibilityMode2": {
+        "message": "Toate Notificările de Omiteri de Dimensiune Mică"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Notificări Estompate pentru Omiteri Automate"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Toate Notificările de Omiteri Estompate"
     },
     "longDescription": {
         "message": "SponsorBlock vă permite să săriți peste sponsori, intro, outros, memento-uri pentru abonament și alte părți enervante ale videoclipurilor YouTube SponsorBlock este o extensie crowdsourced de browser, care hai să trimită oricui timpul de început și de sfârșit pentru segmente sponsorizate și alte segmente de videoclipuri YouTube. Odată ce o persoană transmite aceste informații, toți ceilalți cu această extensie vor sări peste segmentul sponsorizat. De asemenea, poți sări peste secțiunile non-muzicale ale videoclipurilor.",
@@ -237,6 +276,21 @@
     "noticeUpdate2": {
         "message": "Dacă nu îți place, apasă butonul nu mai arăta niciodată.",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Sari peste segment",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Pornește/oprește segmentul",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Predă segmentele",
+        "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Selectează o tastă prin a o tasta, și alege orice taste modificatoare pe care dorești să o folosești."
     },
     "0": {
         "message": "Eroare de Conexiune. Verifică-ți conexiunea la internet. Daca internetul functionează, serverul este probabil supraîncărcat sau a căzut."
@@ -260,8 +314,34 @@
     "skip": {
         "message": "Sari"
     },
+    "mute": {
+        "message": "Mut"
+    },
+    "full": {
+        "message": "Întregul Videoclip",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "Omiteți {0}?"
+    },
+    "mute_category": {
+        "message": "Mut {0}?"
+    },
+    "skip_to_category": {
+        "message": "Sari la {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "Sărit peste {0}",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} pus pe mut",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "Sărit la {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
         "message": "Dezactivează Autoskip"
@@ -310,6 +390,9 @@
     "changeUserID": {
         "message": "Importă/Exportă Id-ul Tău De Utilizator"
     },
+    "whatChangeUserID": {
+        "message": "Aceste informații sunt private și nu ar trebui să fie dezvăluite nimănui. Dacă cineva are aceste informații, pot fi folosite pentru a vă imita. În cazul în care vă căutați ID-ul public de utilizator, dați click pe icoana de clipboard din popup."
+    },
     "setUserID": {
         "message": "Setează Id-ul Utilizatorului"
     },
@@ -319,8 +402,21 @@
     "createdBy": {
         "message": "Creat De"
     },
+    "supportOtherSites": {
+        "message": "Sprijină Site-uri YouTube 3rd Party"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Sprijină Clienți YouTube 3rd party. Pentru a activa setarea, trebuie să acceptați permisiunile suprimentare. Această funcție NU funcționează în incognito pe Chrome sau în alte variante Chromium.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
+    "supportedSites": {
+        "message": "Site-uri cu Sprijin: "
+    },
     "optionsInfo": {
         "message": "Activează suportul Invidious, dezactivează autoskip-ul, ascunde butoanele și altele."
+    },
+    "addInvidiousInstance": {
+        "message": "Adaugă Instanță pentru clienți 3rd-party"
     },
     "add": {
         "message": "Adaugă"
@@ -342,6 +438,9 @@
     },
     "minDurationDescription": {
         "message": "Segmentele mai scurte decât valoarea setată nu vor fi omise sau afișate în player."
+    },
+    "skipNoticeDuration": {
+        "message": "Durata notificărilor de omitere (secunde):"
     },
     "shortCheck": {
         "message": "Următoarea înregistrare este mai mică decât opțiunea voastră de durată minimă. Acest lucru ar putea însemna că a fost deja trimisă și a fost ignorat datorită acestei opțiuni. Sunteți sigur că doriți să trimiteți?"
@@ -373,6 +472,15 @@
     "exportOptions": {
         "message": "Importă/Exportă Toate Opțiunile"
     },
+    "exportOptionsCopy": {
+        "message": "Editare/Copiere"
+    },
+    "exportOptionsDownload": {
+        "message": "Salvează în Fișier"
+    },
+    "exportOptionsUpload": {
+        "message": "Încarcă din fișier"
+    },
     "whatExportOptions": {
         "message": "Aceasta este întreaga configurație în format JSON. Asta include si ID-ul tău de utilizator, așa că fi sigur să împărtășești asta cu înțelepciune."
     },
@@ -399,6 +507,9 @@
     },
     "preview": {
         "message": "Previzualizare"
+    },
+    "unsubmitted": {
+        "message": "Nepredat"
     },
     "inspect": {
         "message": "Inspectează"
@@ -428,11 +539,26 @@
     "category_sponsor_description": {
         "message": "Promovare plătită, refferali plătiți și reclame directe. Nu pentru autopromovări sau promovări gratis ale cauzelor/creatorilor/website-urilor/produselor."
     },
+    "category_sponsor_guideline1": {
+        "message": "Promoții plătite"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Nu este pentru donații sau mărfuri personalizate"
+    },
     "category_selfpromo": {
         "message": "Promovare neplătită/autopromovare"
     },
     "category_selfpromo_description": {
         "message": "Similar cu \"sponsorizare\" doar că este neplătit sau autopromovare. Aceasta include secțiuni despre merchandise, donații, sau informații despre cei cu care au colaborat."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donații, abonamente și mărfuri personalizate"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Mențiuni neplătite care nu ajută videoclipul"
+    },
+    "category_exclusive_access": {
+        "message": "Acces Exclusiv"
     },
     "category_interaction": {
         "message": "Reamintire de Interactiune (Abonare)"
@@ -458,6 +584,9 @@
     "category_outro_description": {
         "message": "Credite sau atunci când apare ecranul de final YouTube. Nu pentru concluzii cu informații."
     },
+    "category_filler_short": {
+        "message": "Materiale de umplutură"
+    },
     "category_music_offtopic": {
         "message": "Muzică: Secţiune Non-Muzicală"
     },
@@ -481,6 +610,14 @@
     },
     "disable": {
         "message": "Dezactivare"
+    },
+    "fullVideoSegments": {
+        "message": "Arată o icoană atunci când un videoclip este în întregime o reclamă",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "previewColor": {
+        "message": "Culoare Nepredată",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "Culoarea Barei de Derulare"
@@ -514,6 +651,9 @@
         "message": "Pentru a trimite segmente cu categoria \"{0}\", trebuie să o activați în opțiuni. Veți fi redirecționat către opțiuni acum.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Atenție: Acest tip de segment poate avea un singur segment activ. Predarea mai multor segmente va cauza un segment aleatoriu să fie afișat."
+    },
     "youMustSelectACategory": {
         "message": "Trebuie să selectaţi o categorie pentru toate segmentele pe care le trimiteţi!"
     },
@@ -525,6 +665,12 @@
     },
     "hiddenDueToDuration": {
         "message": "ascuns: prea scurt"
+    },
+    "manuallyHidden": {
+        "message": "ascuns manual"
+    },
+    "acceptPermission": {
+        "message": "Acceptă permisiunea"
     },
     "forceChannelCheck": {
         "message": "Forțează verificarea canalului înainte de a sări"
@@ -556,5 +702,61 @@
     },
     "categoryUpdate2": {
         "message": "Deschide opțiunile pentru a sări peste intro-uri, outro-uri, merch, etc."
+    },
+    "Credits": {
+        "message": "Contribuții"
+    },
+    "LearnMore": {
+        "message": "Află mai multe"
+    },
+    "FullDetails": {
+        "message": "Detalii Complete"
+    },
+    "CopyAndDownvote": {
+        "message": "Copiază și dă downvote"
+    },
+    "downvote": {
+        "message": "Downvote"
+    },
+    "upvote": {
+        "message": "Upvote"
+    },
+    "dayAbbreviation": {
+        "message": "zile",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "ore",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "Comportament",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Interfață",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Shortcut-uri pentru taste",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Backup/Restaurare",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Diverse",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Aspectul notificării de omiteri",
+        "description": "Option label"
+    },
+    "resetToDefault": {
+        "message": "Resetați setările la valori implicite"
+    },
+    "confirmResetToDefault": {
+        "message": "Ești sigur că vrei sa resetezi toate setările la valorile lor implicite? Această acțiune nu poate fi anulată."
     }
 }

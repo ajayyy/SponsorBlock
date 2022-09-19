@@ -452,7 +452,7 @@
         "message": "Đoạn quảng cáo sau ngắn hơn tùy chọn độ dài ngắn nhất của bạn. Điều này có thể có nghĩa là nó đã được đăng rồi, và không được bỏ qua vì tùy chọn này. Bạn có chắc muốn đăng nó không?"
     },
     "liveOrPremiere": {
-        "message": "Không được phép gửi trên một buổi phát trực tiếp hoặc buổi ra mắt đang hoạt động. Vui lòng đợi cho đến khi kết thúc, sau đó làm mới trang xác minh rằng các phân đoạn vẫn hợp lệ."
+        "message": "Không được phép gửi trên một buổi phát trực tiếp hoặc buổi ra mắt đang hoạt động. Vui lòng đợi cho đến khi kết thúc, sau đó làm mới trang và xác minh rằng các phân đoạn vẫn hợp lệ."
     },
     "showUploadButton": {
         "message": "Hiển thị nút tải lên"
@@ -598,7 +598,7 @@
         "message": "Lời nhắc ngắn gọn để thích, đăng ký hoặc theo dõi"
     },
     "category_interaction_guideline2": {
-        "message": "Bao gồm lời nhắc gián tiếp để nhận xét"
+        "message": "Bao gồm lời nhắc gián tiếp để bình luận"
     },
     "category_interaction_guideline3": {
         "message": "Không dành cho quảng cáo chung, chỉ dành cho lời kêu gọi hành động"
@@ -616,10 +616,10 @@
         "message": "Tạm ngừng"
     },
     "category_intro_guideline1": {
-        "message": "Khoảng thời gian không có nội dung thực tế"
+        "message": "Khoảng thời gian không thực sự chứa nội dung"
     },
     "category_intro_guideline2": {
-        "message": "Không dành cho chuyển tiếp với thông tin"
+        "message": "Không dành cho chuyển tiếp có chứa thông tin"
     },
     "category_outro": {
         "message": "Màn hình kết thúc/Danh đề"
@@ -633,9 +633,6 @@
     "category_preview": {
         "message": "Xem trước/Tóm tắt"
     },
-    "category_preview_description": {
-        "message": "Tóm tắt nhanh về tập trước/tập sau trong 1 chuỗi video (series) dài (hoặc cũng có thể là tóm tắt trước về video sắp chiếu)."
-    },
     "category_preview_guideline1": {
         "message": "Các clip xuất hiện sau đó hoặc trong một video trong tương lai"
     },
@@ -645,11 +642,17 @@
     "category_preview_guideline3": {
         "message": "Không dành cho các phần thêm nội dung bổ sung"
     },
+    "category_filler": {
+        "message": "Cảnh phụ"
+    },
     "category_filler_description": {
         "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
     },
     "category_filler_short": {
         "message": "Cảnh phụ"
+    },
+    "category_filler_guideline3": {
+        "message": "Không dùng cho các cảnh cần thiết để hiểu chủ đề"
     },
     "category_music_offtopic": {
         "message": "Nhạc: Phần không nhạc"
@@ -660,11 +663,26 @@
     "category_music_offtopic_short": {
         "message": "Không có nhạc"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Phần không có trong bản phát hành chính thức"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Phần không nhạc trong một buổi biểu diễn trực tiếp"
+    },
     "category_poi_highlight": {
         "message": "Điểm/Khoảnh khắc quan trọng"
     },
     "category_poi_highlight_description": {
         "message": "Phần của video mà hầu hết mọi người đang tìm kiếm. Tương tự với câu nói \"Video bắt đầu từ x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Phần mà hầu hết mọi người đang tìm kiếm"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Có thể bỏ qua ngữ cảnh"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Có thể bỏ qua để đến tiêu đề hoặc hình thu nhỏ"
     },
     "category_livestream_messages": {
         "message": "Luồng phát trực tiếp: Đọc Quyên góp/Tin nhắn"
@@ -764,12 +782,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Không xác định được ID kênh. Nếu bạn đang xem video này trên 1 trang web thứ 3, hãy mở lại video này trên trang chủ Youtube rồi thử lại. Điều này cũng có thể do những thay đổi trong mã nguồn trang web YouTube, nếu bạn nghĩ vậy, hãy bình luận tại đây:"
     },
-    "videoInfoFetchFailed": {
-        "message": "SponsorBlock không thể truy vấn dữ liệu lịch sử phân đoạn video. Có thể do trình chặn quảng cáo của bạn. Bạn có thể tìm hiểu nguyên nhân và cách fix ở đây: https://github.com/ajayyy/SponsorBlock/issues/741."
-    },
-    "youtubePermissionRequest": {
-        "message": "Có vẻ như SponsorBlock không thể truy cập API YouTube. Để khắc phục điều này, hãy chấp nhận lời nhắc cấp quyền sẽ xuất hiện tiếp theo, đợi vài giây rồi tải lại trang."
-    },
     "acceptPermission": {
         "message": "Cho phép truy cập"
     },
@@ -836,12 +848,14 @@
     "hideForever": {
         "message": "Ẩn vĩnh viễn"
     },
-    "warningChatInfo": {
-        "message": "Bạn đã nhận được một cảnh báo và tạm thời không thể gửi các phân đoạn. Bạn đã mắc lỗi trong việc tạo phân đoạn quá nhiều lần (có thể là chọn sai kiểu phân đoạn hoặc sai thời gian phân đoạn). Chúng tôi muốn bạn nhận ra điều đó để giúp bạn không mắc lỗi trong tương lai. Bạn có thể gặp các Vip User tại đây: discord.gg/SponsorBlock hoặc matrix.to/#/#sponsor:ajay.app. Bọn họ sẽ giúp bạn gỡ cảnh báo sau khi bạn đã hiểu ra lỗi sai của bạn"
+    "warningTitle": {
+        "message": "Bạn đã bị cảnh cáo"
     },
-    "voteRejectedWarning": {
-        "message": "Bỏ phiếu bị từ chối do có cảnh báo. Nhấp để mở cuộc trò chuyện để giải quyết hoặc quay lại sau.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "questionButton": {
+        "message": "Tôi có một câu hỏi"
+    },
+    "warningConfirmButton": {
+        "message": "Tôi hiểu lí do này"
     },
     "Donate": {
         "message": "Ủng hộ"
@@ -914,6 +928,9 @@
     },
     "LearnMore": {
         "message": "Tìm hiểu thêm"
+    },
+    "FullDetails": {
+        "message": "Xem toàn bộ đầy đủ thông tin"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Hạ bình chọn và tạo một bản sao cục bộ cho bạn gửi lại"
@@ -991,9 +1008,15 @@
         "message": "Đây là lối tắt YouTube được tích hợp sẵn. Bạn có chắc chắn muốn sử dụng nó không?"
     },
     "betaServerWarning": {
-        "message": "Máy chủ BETA đã được kích hoạt!"
+        "message": "Máy chủ THỬ NGHIỆM đã được kích hoạt!"
     },
     "openOptionsPage": {
         "message": "Mở trang tùy chọn"
+    },
+    "resetToDefault": {
+        "message": "Thiết lập lại cài đặt gốc"
+    },
+    "confirmResetToDefault": {
+        "message": "Bạn chắc chắn muốn đặt lại cài đặt về mặc định? Điều này sẽ không thể hoàn tác được."
     }
 }

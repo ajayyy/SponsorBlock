@@ -442,6 +442,9 @@
     "minDurationDescription": {
         "message": "Segmen yang lebih kecil dari nilai yang diatur tidak akan dilewati atau tampil di pemutar."
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "Untuk yang ingin menonton video tanpa gangguan jika sepenuhnya disponsori atau promosi sendiri."
+    },
     "skipNoticeDuration": {
         "message": "Lewati maklumat berdurasi (detik):"
     },
@@ -636,9 +639,6 @@
     "category_preview": {
         "message": "Pratinjau/Rekap"
     },
-    "category_preview_description": {
-        "message": "Rekapan singkat dari episode sebelumnya, atau pratinjau tentang apa yang akan terjadi nanti di video. Dimaksudkan untuk klip bersama yang di edit, bukan ringkasan yang diucapkan."
-    },
     "category_preview_guideline1": {
         "message": "Klip yang ditampilkan nanti, atau di video di masa mendatang"
     },
@@ -794,12 +794,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID Channel belum dimuat. Apabila anda menggunakan video yang tersematkan, coba menggunakan halaman utama YouTube. Hal ini juga dapat disebabkan oleh perubahan yang ada pada tampilan YouTUbe, apabila anda mengira seperti itu, buat komentar disini:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Sepertinya sesuatu memnghalangi abilitas SponsorBlock untuk mendapatkan data video. Silahkan lihat https://github.com/ajayyy/SponsorBlock/issues/741 untuk info lebih lanjut."
-    },
-    "youtubePermissionRequest": {
-        "message": "Sepertinya SponsorBlock tidak dapat menjangkau API YouTube. Untuk menyelesaikan masalah ini, terima permintaan izin yang akan muncul selanjutnya, tunggu beberapa detik, dan muat ulang halaman ini."
-    },
     "acceptPermission": {
         "message": "Terima permintaan izin"
     },
@@ -865,13 +859,6 @@
     },
     "hideForever": {
         "message": "Sembunyikan selamanya"
-    },
-    "warningChatInfo": {
-        "message": "Anda mendapatkan peringatan dan tidak bisa mengirim segmen sementara. Ini dikarenakan kami melihat Anda melakukan beberapa kesalahan yang umum, mohon konfirmasi bahwa Anda mengerti perundangan dan kami akan hapus peringatan. Anda dapat bergabung ke obrolan menggunakan discord.gg/SponsorBlock atau matrix.io/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Suara ditolak karena peringatan. Klik untuk buka obrolan untuk menyelesaikannya, atau kembali beberapa saat lagi ketika ada waktu.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
         "message": "Donasi"

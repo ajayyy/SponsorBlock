@@ -344,13 +344,6 @@
     "hideForever": {
         "message": "مخفی‌سازی برای همیشه"
     },
-    "warningChatInfo": {
-        "message": "شما یک اخطار دریافت کرده اید و موقتاً نمیتوانید بخشی را ثبت کنید. این یعنی ما متوجه شدیم که شما یک سری اشتباهات متداول داشتید اما قصد و نیت خرابکاری نداشتید، لطفاً فقط تایید کنید که شما از قوانین آگاهی دارید و سپس ما این اخطار را حذف خواهیم کرد. شما میتوانید به کمک discord.gg/SponsorBlock یا matrix.to/#/#sponsor:ajay.app عضو گروه ما بشوید."
-    },
-    "voteRejectedWarning": {
-        "message": "رای شما رد شد چون شما یک اخطار دارید. برای حل این مشکل یک کلیک کنید تا گروه چت ما باز بشود، یا اینکه بعداً هر موقع وقت داشتید این کار را انجام بدهید.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
-    },
     "Donate": {
         "message": "کمک مالی"
     },

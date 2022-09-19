@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmenten"
     },
+    "SegmentsCap": {
+        "message": "Segmenten"
+    },
+    "Chapters": {
+        "message": "Hoofdstukken"
+    },
+    "renderAsChapters": {
+        "message": "Segmenten weergeven als hoofdstukken",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Stemmen op deze inzending"
     },
@@ -62,7 +72,7 @@
         "message": "Timer gestopt"
     },
     "confirmMSG": {
-        "message": "Om individuele waarden te bewerken of te verwijderen, klikt u op de info-knop of opent u de extensie-popup door op het extensie-pictogram in de rechterbovenhoek te klikken."
+        "message": "Om individuele waarden te bewerken of te verwijderen, klikt u op de info-knop of opent u de extensie-pop-up door op het extensie-pictogram in de rechterbovenhoek te klikken."
     },
     "clearThis": {
         "message": "Weet u zeker dat u dit wilt wissen?\n\n"
@@ -107,13 +117,16 @@
         "message": "Segmenten verwijderen"
     },
     "openPopup": {
-        "message": "SponsorBlock-popup openen"
+        "message": "SponsorBlock-pop-up openen"
     },
     "closePopup": {
-        "message": "Popup sluiten"
+        "message": "Pop-up sluiten"
     },
     "SubmitTimes": {
         "message": "Segmenten indienen"
+    },
+    "sortSegments": {
+        "message": "Segmenten sorteren"
     },
     "submitCheck": {
         "message": "Weet u zeker dat u dit wilt indienen?"
@@ -289,6 +302,14 @@
         "message": "Segmenten indienen",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "Volgend hoofdstuk",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Vorig hoofdstuk",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "Selecteer een toets door hem in te typen en kies de modificatietoetsen die u wilt gebruiken."
     },
@@ -391,7 +412,7 @@
         "message": "Uw gebruikers-ID importeren/exporteren"
     },
     "whatChangeUserID": {
-        "message": "Dit moet privé gehouden worden. Dit is als een wachtwoord en mag met niemand gedeeld worden. Als iemand dit heeft, kan hij zich voordoen als u. Klik op het klembordpictogram in de popup als u op zoek bent naar uw publieke gebrukers-ID."
+        "message": "Dit moet privé gehouden worden. Dit is als een wachtwoord en mag met niemand gedeeld worden. Als iemand dit heeft, kan hij zich voordoen als u. Klik op het klembordpictogram in de pop-up als u op zoek bent naar uw publieke gebruikers-ID."
     },
     "setUserID": {
         "message": "Gebruikers-ID instellen"
@@ -441,6 +462,12 @@
     },
     "minDurationDescription": {
         "message": "Segmenten korter dan de ingestelde waarde worden niet overgeslagen of weergegeven in de speler."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Handmatig overslaan gebruiken wanneer een label voor volledige video bestaat"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Voor mensen die de video ononderbroken willen bekijken als deze volledig gesponsord of zelfpromotie is."
     },
     "skipNoticeDuration": {
         "message": "Duur van overslaan-melding (seconden):"
@@ -545,6 +572,10 @@
         "message": "tot",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Gekopieerd!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Inclusief vlotte overgangen"
     },
@@ -573,7 +604,7 @@
         "message": "Donaties, lidmaatschappen en aangepaste koopwaar"
     },
     "category_selfpromo_guideline2": {
-        "message": "Gratis uitroepen die niet aan de video toevoegen"
+        "message": "Gratis uitroepen die niets aan de video toevoegen"
     },
     "category_selfpromo_guideline3": {
         "message": "Niet voor bedrijfsontworpen producten en koopwaar"
@@ -637,7 +668,7 @@
         "message": "Voorbeeld/samenvatting"
     },
     "category_preview_description": {
-        "message": "Snelle samenvatting van vorige afleveringen of een voorbeeld van wat er later komt in de huidige video. Bedoeld voor samengevoegde clips, niet voor gesproken samenvattingen."
+        "message": "Collectie van clips die laten zien wat er in deze video of andere video's komt in een serie waar alle informatie later in de video wordt herhaald."
     },
     "category_preview_guideline1": {
         "message": "Clips die later of in een toekomstige video verschijnen"
@@ -696,6 +727,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Kan naar titel of pictogram overslaan"
     },
+    "category_chapter": {
+        "message": "Hoofdstuk"
+    },
+    "category_chapter_description": {
+        "message": "Hoofdstukken met een aangepaste naam die de belangrijkste delen van een video beschrijven."
+    },
+    "category_chapter_guideline1": {
+        "message": "Merknamen van sponsors niet vermelden"
+    },
+    "category_chapter_guideline2": {
+        "message": "Grotere hoofdstukken gebruiken voor algemene secties"
+    },
+    "category_chapter_guideline3": {
+        "message": "Kleinere hoofdstukken kunnen in grotere worden geplaatst"
+    },
     "category_livestream_messages": {
         "message": "Livestream: donaties/lezen van berichten"
     },
@@ -725,6 +771,9 @@
     },
     "showOverlay_full": {
         "message": "Label weergeven"
+    },
+    "showOverlay_chapter": {
+        "message": "Hoofdstukken weergeven"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automatisch alle segmenten overslaan wanneer er een niet-muziek-segment is"
@@ -781,6 +830,10 @@
     "bracketEnd": {
         "message": "(einde)"
     },
+    "End": {
+        "message": "Einde",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "verborgen: tegenstem"
     },
@@ -794,11 +847,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanaal-ID is nog niet geladen. Als u een ingesloten video gebruikt, probeer dan in plaats daarvan de YouTube-homepagina. Dit kan ook worden veroorzaakt door wijzigingen in de YouTube-lay-out. Als u denkt dat dit het geval is, maak dan hier een opmerking:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Het lijkt erop dat iets de mogelijkheid van SponsorBlock om videogegevens op te halen, blokkeert. Zie https://github.com/ajayyy/SponsorBlock/issues/741 voor meer informatie."
-    },
-    "youtubePermissionRequest": {
-        "message": "Het lijkt erop dat SponsorBlock de YouTube API niet kan bereiken. Om dit op te lossen, accepteer het machtigingsverzoek dat hierna wordt weergegeven, wacht een aantal seconden en laad de pagina vervolgens opnieuw."
+    "invidiousPermissionRefresh": {
+        "message": "De browser heeft de toestemming ingetrokken die nodig is om te functioneren op Invidious en andere sites van derden. Klik op de knop hieronder om deze toestemming opnieuw te activeren."
     },
     "acceptPermission": {
         "message": "Machtiging accepteren"
@@ -823,6 +873,13 @@
     },
     "downvoteDescription": {
         "message": "Verkeerde timing"
+    },
+    "incorrectVote": {
+        "message": "Onjuist"
+    },
+    "harmfulVote": {
+        "message": "Schadelijk",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Categorie wijzigen"
@@ -859,6 +916,9 @@
     "categoryPillTitleText": {
         "message": "De hele video is gelabeld als deze categorie en is te strak geïntegreerd om te kunnen scheiden"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Een van uw hoofdstuknamen lijkt op een categorie. Gebruik in plaats daarvan waar mogelijk categorieën."
+    },
     "experiementOptOut": {
         "message": "Uitschrijven van alle toekomstige experimenten",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +927,19 @@
         "message": "Voor altijd verbergen"
     },
     "warningChatInfo": {
-        "message": "U heeft een waarschuwing gekregen en kunt tijdelijk geen segmenten indienen. Dit betekent dat we gemerkt hebben dat u een aantal veelvoorkomende fouten maakt die niet kwaadaardig zijn. Bevestig dat u de regels begrijpt en we zullen de waarschuwing verwijderen. U kunt ook deelnemen aan deze chat via discord.gg/SponsorBlock of matrix.to/#/#sponsor:ajay.app"
+        "message": "We hebben gemerkt dat u een aantal veelvoorkomende fouten maakte zonder slechte bedoelingen"
     },
-    "voteRejectedWarning": {
-        "message": "Stem geweigerd vanwege een waarschuwing. Klik om een chat te openen om het op te lossen, of kom later terug als u tijd hebt.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "U heeft een waarschuwing gekregen"
+    },
+    "questionButton": {
+        "message": "Ik heb een vraag"
+    },
+    "warningConfirmButton": {
+        "message": "Ik begrijp de reden"
+    },
+    "warningError": {
+        "message": "Fout bij het bevestigen van de waarschuwing:"
     },
     "Donate": {
         "message": "Doneren"
@@ -898,16 +966,16 @@
         "message": "Hoe overslaan werkt"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Videosegmenten zullen automatisch worden overgeslagen als ze in de database worden gevonden. U kunt de popup openen door op het pictogram van de extensie te klikken om een voorbeeld te krijgen van wat ze zijn."
+        "message": "Videosegmenten zullen automatisch worden overgeslagen als ze in de database worden gevonden. U kunt de pop-up openen door op het pictogram van de extensie te klikken om een voorbeeld te krijgen van wat ze zijn."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Als u een segment overslaat, krijgt u een bericht. Als de timing verkeerd lijkt, stem dan door op tegenstemmen te klikken! U kunt ook stemmen in de popup."
+        "message": "Als u een segment overslaat, krijgt u een bericht. Als de timing verkeerd lijkt, stem dan door op tegenstemmen te klikken! U kunt ook stemmen in de pop-up."
     },
     "Submitting": {
         "message": "Indienen"
     },
     "helpPageSubmitting1": {
-        "message": "Indienen kan ofwel in de popup door op de knop \"segment begint nu\" te drukken of in de videospeler met de knoppen op de speler."
+        "message": "Indienen kan ofwel in de pop-up door op de knop \"segment begint nu\" te drukken of in de videospeler met de knoppen op de speler."
     },
     "helpPageSubmitting2": {
         "message": "Klikken op de afspelen-knop geeft het begin van een segment aan en klikken op het stop-pictogram geeft het einde aan. U kunt meerdere sponsors voorbereiden voordat u op indienen klikt. Klikken op de uploadknop zal indienen. Klikken op de vuilnisbak zal verwijderen."
@@ -1033,6 +1101,118 @@
         "message": "Instellingen terugzetten op standaard"
     },
     "confirmResetToDefault": {
-        "message": "Weet u zeker dat u alle instellingen wilt terugzetten naar hun standaardwaarden? Dit kan niet ongedaan worden gemaakt."
+        "message": "Weet u zeker dat u alle instellingen wilt terugzetten naar hun standaardwaarden? Dit kan niet ongedaan gemaakt worden."
+    },
+    "exportSegments": {
+        "message": "Segmenten exporteren"
+    },
+    "importSegments": {
+        "message": "Segmenten importeren"
+    },
+    "Import": {
+        "message": "Importeren",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Inwisselen geslaagd!"
+    },
+    "redeemFailed": {
+        "message": "Licentiesleutel is ongeldig"
+    },
+    "hideUpsells": {
+        "message": "Opties verbergen die niet beschikbaar zijn zonder extra betaling"
+    },
+    "chooseACountry": {
+        "message": "Land kiezen"
+    },
+    "noDiscount": {
+        "message": "U komt niet in aanmerking voor een korting"
+    },
+    "discountLink": {
+        "message": "Kortingslink (zie de roze prijs)"
+    },
+    "selectYourCountry": {
+        "message": "Selecteer uw land"
+    },
+    "alreadyDonated": {
+        "message": "Als u al eerder een bedrag hebt gedoneerd, kunt u gratis toegang krijgen door een e-mail te sturen:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Als u het zich niet kunt veroorloven om een licentie aan te schaffen, klik dan {hier} om te zien of u in aanmerking komt voor een korting",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Aanmelden met Patreon"
+    },
+    "redeem": {
+        "message": "Inwisselen"
+    },
+    "joinOnPatreon": {
+        "message": "Abonneren op Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Eenmalige aankoop"
+    },
+    "enterLicenseKey": {
+        "message": "Licentiesleutel invoeren"
+    },
+    "chaptersPage1": {
+        "message": "De SponsorBlock-functie voor crowd-sourced hoofdstukken is alleen beschikbaar voor mensen die een licentie kopen of voor mensen die gratis toegang krijgen vanwege hun bijdragen in het verleden"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "U hebt momenteel {0} in {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "U hebt momenteel geen niet-ingediende segmenten",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "niet-ingediend segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "niet-ingediende segmenten",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "video's",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Alle segmenten wissen",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Weet u zeker dat u al uw niet-ingediende segmenten wilt wissen?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Segmenten weergeven",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Segmenten verbergen",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Video-ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Aantal segmenten",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Acties",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Delen als URL"
     }
 }

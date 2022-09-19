@@ -591,9 +591,6 @@
     "category_preview": {
         "message": "প্রিভিউ/রিক্যাপ"
     },
-    "category_preview_description": {
-        "message": "পূর্ববর্তী পর্বগুলির দ্রুত পুনরুদ্ধার, বা বর্তমান ভিডিওতে পরে কী ঘটছে তার পূর্বরূপ। একসাথে সম্পাদিত ক্লিপ এর জন্য, কথ্য সংক্ষিপ্তসার এর জন্য নয়।"
-    },
     "category_filler": {
         "message": "ফিলার ট্যানজেন্ট/জোকস"
     },
@@ -716,12 +713,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "চ্যানেল আইডি এখনও লোড হয় না। আপনি যদি এম্বেডে থাকা ভিডিও দেখছেন তবে পরিবর্তে ইউটিউব হোমপেজটি ব্যবহার করার চেষ্টা করুন। এটি ইউটিউব লেআউটে পরিবর্তনের কারণেও হতে পারে, আপনার যদি মনেহয় এটি লেআউটে পরিবর্তনের কারণে হয়েছে তাহলে এখানে একটি মন্তব্য করুনঃ "
     },
-    "videoInfoFetchFailed": {
-        "message": "দেখে মনে হচ্ছে যে কোনও কিছু স্পনসরব্লকের ভিডিওর ডেটা পাওয়ার ক্ষমতা অবরুদ্ধ করছে। আরও তথ্যের জন্য দয়া করে https://github.com/ajayy/sponsorblock/issues/741 দেখুন।"
-    },
-    "youtubePermissionRequest": {
-        "message": "দেখে মনে হচ্ছে স্পনসরব্লক YouTube API তে পৌঁছাতে অক্ষম। এটি ঠিক করতে, এরপর উপস্থিত হবে সেই অনুমতি প্রম্পটটি গ্রহণ করবেন, তারপর কয়েক সেকেন্ড অপেক্ষা করে পৃষ্ঠাটি পুনরায় লোড করুন।"
-    },
     "acceptPermission": {
         "message": "অনুমতি একসেপ্ট করুন"
     },
@@ -787,13 +778,6 @@
     },
     "hideForever": {
         "message": "চিরকালের জন্য এই বিষয়বস্তু লুকান"
-    },
-    "warningChatInfo": {
-        "message": "আপনি একটি সতর্কতা পেয়েছেন এবং অস্থায়ীভাবে বিভাগগুলি জমা দিতে পারবেন না। এর অর্থ হ'ল আমরা লক্ষ্য করেছি যে আপনি কিছু সাধারণ ভুল করছেন যা দূষিত নয়, দয়া করে কেবল নিশ্চিত করুন যে আপনি নিয়মগুলি বুঝতে পেরেছেন এবং আমরা সতর্কতাটি সরিয়ে দেব। আপনি আমাদের চ্যাটটি discord.gg/SponsorBlock or matrix.to/#/#sponsor:ajay.app ব্যবহার করে যোগ দিতে পারেন"
-    },
-    "voteRejectedWarning": {
-        "message": "একটি সতর্কতার কারণে ভোট প্রত্যাখ্যান করা হয়েছে। এটি সমাধানের জন্য চ্যাট খুলতে ক্লিক করুন বা আপনার এখন সময় না থাকলে পরে আবার ফিরে আসুন।",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
         "message": "অনুদান"

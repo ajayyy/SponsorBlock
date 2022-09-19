@@ -25,6 +25,16 @@
     "Segments": {
         "message": "ｾｸﾞﾒﾝﾄ"
     },
+    "SegmentsCap": {
+        "message": "セグメント"
+    },
+    "Chapters": {
+        "message": "チャプター"
+    },
+    "renderAsChapters": {
+        "message": "セグメントをチャプターとしてレンダリングする",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "この提案を支持"
     },
@@ -115,6 +125,9 @@
     "SubmitTimes": {
         "message": "セグメントを送信"
     },
+    "sortSegments": {
+        "message": "セグメントを並び替え"
+    },
     "submitCheck": {
         "message": "本当に提出してよろしいですか？"
     },
@@ -131,7 +144,7 @@
         "message": "提案数"
     },
     "savedPeopleFrom": {
-        "message": "次のセグメント数から人々を救いました: "
+        "message": "みんなの時間をこれだけ節約しました: "
     },
     "viewLeaderboard": {
         "message": "リーダーボード"
@@ -239,6 +252,9 @@
     "showSkipNotice": {
         "message": "セグメントがスキップされた後に通知を表示する"
     },
+    "showCategoryGuidelines": {
+        "message": "カテゴリーのヘルプを表示"
+    },
     "noticeVisibilityMode0": {
         "message": "通常サイズのスキップ通知"
     },
@@ -267,11 +283,11 @@
         "description": "Used on Firefox Store Page"
     },
     "noticeUpdate": {
-        "message": "通知がアップグレードされました！",
+        "message": "お知らせが更新されました！",
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "もしそれでも気に入らない場合は、非表示ボタンをクリックしてください。",
+        "message": "もしそれでも気に入らない場合は、再度表示しないボタンをクリックしてください。",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
@@ -284,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "セグメントを提出",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "次のチャプター",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "前のチャプター",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -439,6 +463,12 @@
     "minDurationDescription": {
         "message": "設定値より短いセグメントはスキップされず、プレーヤーにも表示されません。"
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "動画全体のラベルが存在する場合は手動スキップを使用する"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "動画全体がスポンサー付きまたはセルフプロモーションである場合に、動画を邪魔されずに観たい方向け。"
+    },
     "skipNoticeDuration": {
         "message": "スキップ通知の表示時間（秒）:"
     },
@@ -542,17 +572,42 @@
         "message": "～",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "コピーしました！",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
+    "generic_guideline1": {
+        "message": "場面転換のつなぎ目も含める"
+    },
+    "generic_guideline2": {
+        "message": "スキップしても自然に見えるようにする"
+    },
     "category_sponsor": {
         "message": "スポンサー"
     },
     "category_sponsor_description": {
         "message": "報酬のある販売促進・製品紹介，および直接広告です。自己販促や好きな運動・製作者・Webサイト・製品に対する無報酬での宣伝とは違います。"
     },
+    "category_sponsor_guideline1": {
+        "message": "有料のプロモーション"
+    },
+    "category_sponsor_guideline2": {
+        "message": "寄付やオリジナルグッズには使わない"
+    },
     "category_selfpromo": {
         "message": "無報酬 / セルフプロモーション"
     },
     "category_selfpromo_description": {
         "message": "無報酬での宣伝あるいは自己販促であるという点を除いては「スポンサー」と同様です。商品、寄付、コラボ情報に関する内容を含みます。"
+    },
+    "category_selfpromo_guideline1": {
+        "message": "寄付、メンバーシップ、オリジナルグッズ"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "動画とは関係のない呼びかけ"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "企業がデザインした製品やグッズには使わない"
     },
     "category_exclusive_access": {
         "message": "限定アクセス"
@@ -564,11 +619,23 @@
         "message": "この動画は無償または補助金を受けて利用した製品、サービス、または場所を紹介するものです",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "動画全体が無料または補助金を受けてアクセスしたものを紹介するものである"
+    },
     "category_interaction": {
         "message": "行動を促すメッセージ(チャンネル登録)"
     },
     "category_interaction_description": {
         "message": "動画の途中に挟まれる，高評価，チャンネル登録・通知の有効化を促す短かい場面。長かったり具体的な商品についての場面は，中断ではなく自己販売促進に分類するべきです。"
+    },
+    "category_interaction_guideline1": {
+        "message": "高評価、登録、フォローの短いお願い"
+    },
+    "category_interaction_guideline2": {
+        "message": "間接的なコメントのお願いも含む"
+    },
+    "category_interaction_guideline3": {
+        "message": "一般的なプロモーションではなく、直接的な呼びかけのみに使用すること"
     },
     "category_interaction_short": {
         "message": "動画の間に挟まる告知"
@@ -582,26 +649,53 @@
     "category_intro_short": {
         "message": "インターミッション"
     },
+    "category_intro_guideline1": {
+        "message": "実際のコンテンツを含まないインターバル"
+    },
+    "category_intro_guideline2": {
+        "message": "情報を含むトランジションには使用しない"
+    },
     "category_outro": {
         "message": "エンドカード/クレジット"
     },
     "category_outro_description": {
         "message": "提供表示やYouTubeの終了画面が表示されている場面。動画の内容を結論している場面には使用しないで下さい。"
     },
+    "category_outro_guideline1": {
+        "message": "画面上にエンドカードが表示されているかに関わらず、コンテンツを含めない"
+    },
     "category_preview": {
         "message": "予告と前回の粗筋"
     },
     "category_preview_description": {
-        "message": "前回の粗筋，または動画の後半内容の予告。音声による要約ではなく，編集された映像を指します。"
+        "message": "この動画や他の動画でこのあと起きる内容など、今後再び登場する場面を連続的にまとめたクリップ。"
+    },
+    "category_preview_guideline1": {
+        "message": "動画後ほどや将来の動画に登場する場面"
+    },
+    "category_preview_guideline2": {
+        "message": "前回の動画のあらすじ"
+    },
+    "category_preview_guideline3": {
+        "message": "新たなコンテンツを含むセクションには使用しない"
     },
     "category_filler": {
-        "message": "無駄な脱線/冗談"
+        "message": "繋ぎの話/冗談"
     },
     "category_filler_description": {
         "message": "動画の本編を理解するのに必要のない、繋ぎの話やユーモアによって脱線したシーン。これには、文脈や背景の詳細を提供しているセグメントを含めないでください。"
     },
     "category_filler_short": {
         "message": "繋ぎの話"
+    },
+    "category_filler_guideline1": {
+        "message": "繋ぎの話やユーモアのみを含む本筋とは無関係な場面"
+    },
+    "category_filler_guideline2": {
+        "message": "逸脱シーン、NGシーン、リプレイ"
+    },
+    "category_filler_guideline3": {
+        "message": "トピックの理解に必要な場面には使用しない"
     },
     "category_music_offtopic": {
         "message": "音楽: 音楽以外のセクション"
@@ -612,11 +706,41 @@
     "category_music_offtopic_short": {
         "message": "音楽以外の部分"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "公式リリースには含まれないセクション"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "ライブパフォーマンスにおける音楽以外の部分"
+    },
     "category_poi_highlight": {
         "message": "ハイライト"
     },
     "category_poi_highlight_description": {
         "message": "多くの人が求めている動画の部分。「本編はXから開始」といったコメントのような機能です。"
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "多くの人々が求めているであろう内容のセクション"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "それまでの文脈はスキップできるものである"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "タイトルやサムネイルの場面までスキップできるものである"
+    },
+    "category_chapter": {
+        "message": "チャプター"
+    },
+    "category_chapter_description": {
+        "message": "動画の主要なセクションを説明するカスタムのチャプター名"
+    },
+    "category_chapter_guideline1": {
+        "message": "スポンサーのブランド名には言及しない"
+    },
+    "category_chapter_guideline2": {
+        "message": "全般的なセクションには大きなチャプターを使用する"
+    },
+    "category_chapter_guideline3": {
+        "message": "大きいチャプターの中には小さいチャプターを設けられます"
     },
     "category_livestream_messages": {
         "message": "ライブ配信: 寄付/メッセージの読み上げ"
@@ -647,6 +771,9 @@
     },
     "showOverlay_full": {
         "message": "ラベルを表示"
+    },
+    "showOverlay_chapter": {
+        "message": "チャプターを表示"
     },
     "autoSkipOnMusicVideos": {
         "message": "非音楽区域がある場合，全区域を自動的に飛び越す"
@@ -703,6 +830,10 @@
     "bracketEnd": {
         "message": "（終了）"
     },
+    "End": {
+        "message": "終端へ",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "低い評価の区間を無視する"
     },
@@ -716,11 +847,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "番組IDがまだ読み込まれていません。埋め込み動画でご覧になっている場合は，代わりにYouTubeの公式サイトで再生してみてください。この問題はYouTubeの画面構成を変えた際にも発生する可能性があります。その場合は，こちらに意見をお書きください:"
     },
-    "videoInfoFetchFailed": {
-        "message": "SponsorBlockの動画情報取得が拒否されています。詳細は https://github.com/ajayyy/SponsorBlock/issues/741 を参照してください。"
-    },
-    "youtubePermissionRequest": {
-        "message": "SponsorBlockがYouTube APIを参照できないようです。修正するには，次に表示される画面で許可を承認してから，数秒後に再読み込みしてください。"
+    "invidiousPermissionRefresh": {
+        "message": "Invidiousなどのサードパーティーサイトで機能するために必要な権限をブラウザーが拒否しています。この権限を許可するには下のボタンをクリックしてください。"
     },
     "acceptPermission": {
         "message": "許可を承認する"
@@ -745,6 +873,13 @@
     },
     "downvoteDescription": {
         "message": "不正確あるいは間違った時刻です"
+    },
+    "incorrectVote": {
+        "message": "間違っている"
+    },
+    "harmfulVote": {
+        "message": "有害である",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "カテゴリーを変更"
@@ -781,6 +916,9 @@
     "categoryPillTitleText": {
         "message": "この動画は全体がこのカテゴリーとして指定されており、密に結合されているため分割することができません"
     },
+    "chapterNameTooltipWarning": {
+        "message": "一部のチャプター名はカテゴリーにした方が良さそうです。可能な場合はカテゴリーを使用してください。"
+    },
     "experiementOptOut": {
         "message": "実験的機能をすべて無効にする",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -789,11 +927,19 @@
         "message": "二度と表示しない"
     },
     "warningChatInfo": {
-        "message": "警告によりあなたは一時的にセグメントを提出することができません。これはあなたが悪意からではなく、単に誤った行為をしていることを私たちが認識したためです。ルールを理解していることを確認していただければこの警告は解除します。discord.gg/SponsorBlock または matrix.to/#/#sponsor:ajay.app よりチャットに参加することもできます。"
+        "message": "悪意によるものではないよくある間違いを犯していたようです"
     },
-    "voteRejectedWarning": {
-        "message": "警告により投票が拒否されました。クリックして運営に連絡するか，少し時間を置いてからやりなおしてください。",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "警告を付与されました"
+    },
+    "questionButton": {
+        "message": "質問があります"
+    },
+    "warningConfirmButton": {
+        "message": "理由を理解しました"
+    },
+    "warningError": {
+        "message": "警告の確認中にエラーが発生しました:"
     },
     "Donate": {
         "message": "寄付"
@@ -866,6 +1012,9 @@
     },
     "LearnMore": {
         "message": "さらに詳しく"
+    },
+    "FullDetails": {
+        "message": "詳細"
     },
     "CopyDownvoteButtonInfo": {
         "message": "低評価を押し、再提出するためのローカルコピーを作成"
@@ -947,5 +1096,123 @@
     },
     "openOptionsPage": {
         "message": "オプションページを開く"
+    },
+    "resetToDefault": {
+        "message": "設定をデフォルトに戻す"
+    },
+    "confirmResetToDefault": {
+        "message": "全ての設定を初期値にリセットしてもよろしいですか？元に戻すことはできません。"
+    },
+    "exportSegments": {
+        "message": "セグメントをエクスポート"
+    },
+    "importSegments": {
+        "message": "セグメントをインポート"
+    },
+    "Import": {
+        "message": "インポート",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "適用に成功しました！"
+    },
+    "redeemFailed": {
+        "message": "ライセンスキーが無効です"
+    },
+    "hideUpsells": {
+        "message": "追加課金が必要なオプションを非表示にする"
+    },
+    "chooseACountry": {
+        "message": "国を選択"
+    },
+    "noDiscount": {
+        "message": "割引の資格を満たしていません"
+    },
+    "discountLink": {
+        "message": "割引リンク (ピンク色の価格を参照)"
+    },
+    "selectYourCountry": {
+        "message": "国を選択してください"
+    },
+    "alreadyDonated": {
+        "message": "今までにいくらかの寄付をしていただいた方は、メールにて無料アクセスの引き換えが可能です:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "ライセンスを購入する余裕がない方は、{こちら} をクリックして割引が適用されるかどうか確認できます",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Patreonでサインイン"
+    },
+    "redeem": {
+        "message": "適用する"
+    },
+    "joinOnPatreon": {
+        "message": "Patreonで購読する"
+    },
+    "oneTimePurchase": {
+        "message": "買い切り購入"
+    },
+    "enterLicenseKey": {
+        "message": "ライセンスキーを入力"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlockのクラウドソーシングによるチャプター機能は、ライセンス購入をされた方、もしくは過去の貢献により許可された方のみが利用できます"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "現在、{1} に {0} があります",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "現在、未送信のセグメントはありません",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "個の未送信セグメント",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "個の未送信セグメント",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "本の動画",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "本の動画",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "全てのセグメントを消去",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "本当に全ての未送信セグメントを消去してもよろしいですか？",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "セグメントを表示",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "セグメントを非表示",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "動画ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "セグメント数",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "操作",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "URLとして共有"
     }
 }

@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmentů"
     },
+    "SegmentsCap": {
+        "message": "Segmenty"
+    },
+    "Chapters": {
+        "message": "Kapitoly"
+    },
+    "renderAsChapters": {
+        "message": "Zobrazit segmenty jako kapitoly",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Hlasovat pro tento příspěvek"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Odeslat segmenty"
+    },
+    "sortSegments": {
+        "message": "Seřadit segmenty"
     },
     "submitCheck": {
         "message": "Opravdu to chcete odeslat?"
@@ -233,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Pokud je video nové a nejsou nalezeny žádné segmenty, bude rozšíření každých několik minut refetchovat data, zatímco sledujete video."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Zobrazit kategorie v nabídce odeslání i bez oprávnění k odeslání"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Některé kategorie vyžadují oprávnění k odeslání z důvodu minimálních požadavků na reputaci"
+    },
     "showNotice": {
         "message": "Znovu zobrazit upozornění"
     },
@@ -287,6 +306,14 @@
     },
     "setSubmitKeybind": {
         "message": "Odeslat segmenty",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Další kapitola",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Předchozí kapitola",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -442,6 +469,12 @@
     "minDurationDescription": {
         "message": "Segmenty kratší než nastavená hodnota nebudou přeskočeny nebo zobrazeny v přehrávači."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Použít manuální přeskočení, pokud existuje štítek na celém videu"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Pro lidi, kteří chtějí sledovat video bez přerušení, pokud je celé sponzorované nebo sebepropagace."
+    },
     "skipNoticeDuration": {
         "message": "Délka trvání oznámení o přeskočení (v sekundách):"
     },
@@ -545,6 +578,10 @@
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Zkopírováno!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Zahrnout přechody segmentů"
     },
@@ -567,7 +604,7 @@
         "message": "Neplacená / vlastní propagace"
     },
     "category_selfpromo_description": {
-        "message": "Podobně jako \"sponzor\" s výjimkou neplacených nebo propagačních akcí. Zahrnuje sekce o zboží, dary nebo informace o tom, s kým spolupracují."
+        "message": "Podobné jako „sponzor“, ale pro neplacenou nebo vlastní propagaci. Zahrnuje sekce o zboží, darech nebo informace o tom, s kým spolupracují."
     },
     "category_selfpromo_guideline1": {
         "message": "Dary, členství a vlastní merch"
@@ -595,7 +632,7 @@
         "message": "Připomenutí interakce (odběr)"
     },
     "category_interaction_description": {
-        "message": "Při krátké připomínce dát like, odběr nebo sledování tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
+        "message": "Krátká připomínka, abyste dali like, odběr nebo jste sledovali tvůrce uprostřed obsahu. Pokud je segment dlouhý nebo zahrnuje něco specifického, mělo by být místo toho zařazeno do vlastní propagace."
     },
     "category_interaction_guideline1": {
         "message": "Krátká připomenutí pro lajknutí, odebírání či sledování"
@@ -637,7 +674,7 @@
         "message": "Náhled / shrnutí"
     },
     "category_preview_description": {
-        "message": "Rychlé shrnutí předchozích epizod nebo náhled toho, co se objeví v aktuálním videu. Myšleno pro upravené sloučené klipy, ne pro mluvená shrnutí."
+        "message": "Sbírka klipů, které zobrazují, co se objeví v tomto videu nebo v jiných videích v sérii, kdy jsou všechny informace zopakovány později ve videu."
     },
     "category_preview_guideline1": {
         "message": "Klipy které se objeví později nebo v budoucím videu"
@@ -670,7 +707,7 @@
         "message": "Hudba: nehudební sekce"
     },
     "category_music_offtopic_description": {
-        "message": "Použijte pouze u hudebních videí. Mělo by to být použito pouze pro části hudebních videí, které nepokrývá jiná kategorie."
+        "message": "Použijte pouze u hudebních videí. Mělo by být použito pouze pro části hudebních videí, které nepokrývá jiná kategorie."
     },
     "category_music_offtopic_short": {
         "message": "Jiné než hudba"
@@ -695,6 +732,21 @@
     },
     "category_poi_highlight_guideline3": {
         "message": "Může přeskočit k názvu nebo náhledu"
+    },
+    "category_chapter": {
+        "message": "Kapitola"
+    },
+    "category_chapter_description": {
+        "message": "Vlastní názvy kapitol popisující hlavní části videa."
+    },
+    "category_chapter_guideline1": {
+        "message": "Nezmiňujte názvy značek sponzorů"
+    },
+    "category_chapter_guideline2": {
+        "message": "Používejte větší kapitoly pro obecné části"
+    },
+    "category_chapter_guideline3": {
+        "message": "Menší kapitoly mohou být umístěny uvnitř větších"
     },
     "category_livestream_messages": {
         "message": "Livestream: Čtení donatů / zpráv"
@@ -725,6 +777,9 @@
     },
     "showOverlay_full": {
         "message": "Zobrazit štítek"
+    },
+    "showOverlay_chapter": {
+        "message": "Zobrazit kapitoly"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automaticky přeskočit všechny segmenty, když je ve videu nehudební segment"
@@ -781,6 +836,10 @@
     "bracketEnd": {
         "message": "(Konec)"
     },
+    "End": {
+        "message": "Konec",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "skryté: protihlas"
     },
@@ -794,11 +853,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID kanálu ještě není načteno. Pokud používáte vložené video, zkuste místo toho použít domovskou stránku YouTube. Toto může být také způsobeno změnami v rozložení YouTube, pokud si myslíte, že tomu tak bude, zanechte zde komentář:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Vypadá to, že něco blokuje schopnost SponsorBlocku získat údaje o videu. Pro více informací prosím navštivte https://github.com/ajayyy/SponsorBlock/issues/741."
-    },
-    "youtubePermissionRequest": {
-        "message": "Vypadá to, že se SponsorBlock nemůže připojit k YouTube API. Pro opravení tohoto problému přijměte žádost o oprávnění, která se dále objeví, a poté znovu načtěte stránku."
+    "invidiousPermissionRefresh": {
+        "message": "Prohlížeč odvolal oprávnění potřebné k funkci na Invidious a dalších webech třetích stran. Klikněte prosím na tlačítko níže pro opětovnou aktivaci tohoto oprávnění."
     },
     "acceptPermission": {
         "message": "Přijmout oprávnění"
@@ -823,6 +879,13 @@
     },
     "downvoteDescription": {
         "message": "Nesprávné / špatné časování"
+    },
+    "incorrectVote": {
+        "message": "Nesprávné"
+    },
+    "harmfulVote": {
+        "message": "Škodlivé",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Změnit kategorii"
@@ -859,6 +922,9 @@
     "categoryPillTitleText": {
         "message": "Toto celé video je označeno jako tato kategorie a je příliš integrované na to, aby se dalo rozdělit"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Jeden z názvů kapitol je podobný kategorii. Pokud je to možné, raději používejte kategorie."
+    },
     "experiementOptOut": {
         "message": "Odhlásit se ze všech budoucích experimentů",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +933,19 @@
         "message": "Skrýt napořád"
     },
     "warningChatInfo": {
-        "message": "Dostali jste varování a nemůžete dočasně přidávat segmenty. To znamená, že jsme si všimli, že děláte běžné chyby, které nejsou škodlivé, stačí potvrdit přečtení pravidel a odebereme varování. Tají se můžete připojit do tohoto chatu pomocí discord.gg/SponsorBlock nebo matrix.to/#/#sponsor:ajay.app"
+        "message": "Všimli jsme si, že děláte některé běžné chyby, které nejsou úmyslně zlé"
     },
-    "voteRejectedWarning": {
-        "message": "Hlas zamítnut kvůli varování. Klikněte pro otevření chatu pro vyřešení, nebo se vraťte později, až budete mít čas.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Dostali jste varování"
+    },
+    "questionButton": {
+        "message": "Mám otázku"
+    },
+    "warningConfirmButton": {
+        "message": "Chápu důvod"
+    },
+    "warningError": {
+        "message": "Chyba při pokusu o potvrzení varování:"
     },
     "Donate": {
         "message": "Přispět"
@@ -1034,5 +1108,121 @@
     },
     "confirmResetToDefault": {
         "message": "Opravdu chcete obnovit všechna nastavení na jejich výchozí hodnoty? Tato akce je nevratná."
+    },
+    "exportSegments": {
+        "message": "Exportovat segmenty"
+    },
+    "importSegments": {
+        "message": "Importovat segmenty"
+    },
+    "Import": {
+        "message": "Importovat",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Uplatnění bylo úspěšné!"
+    },
+    "redeemFailed": {
+        "message": "Licenční klíč není platný"
+    },
+    "hideUpsells": {
+        "message": "Skrýt možnosti nedostupné bez další platby"
+    },
+    "chooseACountry": {
+        "message": "Vyberte zemi"
+    },
+    "noDiscount": {
+        "message": "Nemáte nárok na slevu"
+    },
+    "discountLink": {
+        "message": "Slevový odkaz (viz růžová cena)"
+    },
+    "selectYourCountry": {
+        "message": "Vyberte vaši zemi"
+    },
+    "alreadyDonated": {
+        "message": "Pokud jste již přispěli jakoukoli částkou, můžete získat bezplatný přístup odesláním e-mailu na:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Pokud si nemůžete dovolit zakoupení licence, klikněte {sem}, abyste zjistili, zda máte nárok na slevu",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Přihlásit se pomocí Patreonu"
+    },
+    "redeem": {
+        "message": "Uplatnit"
+    },
+    "joinOnPatreon": {
+        "message": "Odebírat na Patreonu"
+    },
+    "oneTimePurchase": {
+        "message": "Jednorázový nákup"
+    },
+    "enterLicenseKey": {
+        "message": "Zadejte licenční klíč"
+    },
+    "chaptersPage1": {
+        "message": "Funkce komunitních kapitol je dostupná pouze lidem, kteří si zakoupili licenci, nebo lidem, kteří získali přístup zdarma díky jejich příspěvkům"
+    },
+    "chaptersPage2": {
+        "message": "Poznámka: Oprávnění k odesílání kapitol je stále založené na vypočítané reputaci. Zakoupení licence vám pouze umožní zobrazit si kapitoly odeslané ostatními uživateli",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Momentálně máte {0} na {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "V současné době nemáte žádné neodeslané segmenty",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "neodeslaný segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "neodeslaných segmentů",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "videu",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videích",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Vymazat všechny segmenty",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Opravdu chcete vymazat všechny své neodeslané segmenty?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Zobrazit segmenty",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Skrýt segmenty",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID videa",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Počet segmentů",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Akce",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Sdílet jako URL"
     }
 }

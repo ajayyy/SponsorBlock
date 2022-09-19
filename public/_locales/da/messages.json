@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmenter"
     },
+    "SegmentsCap": {
+        "message": "Segmenter"
+    },
+    "Chapters": {
+        "message": "Kapitler"
+    },
+    "renderAsChapters": {
+        "message": "Render segmenter som kapitler",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Stem for dette forslag"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Indsend Segmenter"
+    },
+    "sortSegments": {
+        "message": "Sortér Segmenter"
     },
     "submitCheck": {
         "message": "Er du sikker på, at du vil indsende dette?"
@@ -233,11 +246,20 @@
     "whatRefetchWhenNotFound": {
         "message": "Hvis videoen er ny, og der ikke er nogle segmenter fundet, vil den opdatere hvert par minutter, mens du ser."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Vis kategorier i indsendelsesmenu selv uden indsendelse tilladelse"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Nogle kategorier kræver tilladelse til at indsende på grund af minimumskrav til omdømme"
+    },
     "showNotice": {
         "message": "Vis Bemærkning Igen"
     },
     "showSkipNotice": {
         "message": "Vis Bemærkning Efter Et Segment Skippes"
+    },
+    "showCategoryGuidelines": {
+        "message": "Vis Kategorihjælp"
     },
     "noticeVisibilityMode0": {
         "message": "Fuld Størrelse Skip-Bemærkninger"
@@ -284,6 +306,14 @@
     },
     "setSubmitKeybind": {
         "message": "Indsend segmenter",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Næste kapitel",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Forrige kapitel",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -439,6 +469,12 @@
     "minDurationDescription": {
         "message": "Segmenter kortere end den indstillede værdi vil ikke blive sprunget over eller vist i spilleren."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Spring manuelt over, når en fuld video etiket findes"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "For folk, som ønsker at se videoen uafbrudt, hvis det er fuldt sponsoreret eller selvpromovering."
+    },
     "skipNoticeDuration": {
         "message": "Spring meddelelsesvarighed over (sekunder):"
     },
@@ -542,17 +578,42 @@
         "message": "til",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Kopieret!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
+    "generic_guideline1": {
+        "message": "Inkludér segue-overgange"
+    },
+    "generic_guideline2": {
+        "message": "Spiller som om intet blev sprunget over"
+    },
     "category_sponsor": {
         "message": "Sponsor"
     },
     "category_sponsor_description": {
         "message": "Betalt kampagne, betalte henvisninger og direkte reklamer. Ikke for selvpromoverende eller gratis shoutouts til årsager/skabere/hjemmesider/produkter, de kan lide."
     },
+    "category_sponsor_guideline1": {
+        "message": "Betalt markedsføring"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Ikke til donationer eller custom merch"
+    },
     "category_selfpromo": {
         "message": "Ubetalt/Egen Markedsføring"
     },
     "category_selfpromo_description": {
         "message": "Ligesom \"sponsor\" bortset fra ubetalt- eller selfmarkedsføring. Dette inkluderer sektioner om merchandise, donationer eller oplysninger om hvem, de har samarbejdet med."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Donationer, medlemskaber og custom merch"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Gratis shoutouts, der ikke føjer til videoen"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Ikke for produkter og merchandise designet af virksomheder"
     },
     "category_exclusive_access": {
         "message": "Eksklusiv Adgang"
@@ -564,11 +625,23 @@
         "message": "Denne video viser et produkt, tjeneste eller et sted, som de har modtaget gratis eller subsidieret adgang til",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Hele videoen viser noget med gratis eller subsidieret adgang"
+    },
     "category_interaction": {
         "message": "Påmindelse Om Interaktion (Abonnement)"
     },
     "category_interaction_description": {
         "message": "Når der er en kort påmindelse om at like, abonnere eller følge dem midt i indholdet. Hvis den er lang eller om noget specifikt, bør den i stedet være under selvpromovering."
+    },
+    "category_interaction_guideline1": {
+        "message": "Korte påmindelser om at synes godt om, abonnere eller følge"
+    },
+    "category_interaction_guideline2": {
+        "message": "Indeholder indirekte påmindelser om at kommentere"
+    },
+    "category_interaction_guideline3": {
+        "message": "Ikke til generel markedsføring, kun opfordringer til handling"
     },
     "category_interaction_short": {
         "message": "Påmindelse Om Interaktion"
@@ -582,17 +655,35 @@
     "category_intro_short": {
         "message": "Pause"
     },
+    "category_intro_guideline1": {
+        "message": "Interval uden egentligt indhold"
+    },
+    "category_intro_guideline2": {
+        "message": "Ikke for overgange med information"
+    },
     "category_outro": {
         "message": "Slutkort/Kreditter"
     },
     "category_outro_description": {
         "message": "Medvirkende eller når YouTube-endcards vises. Ikke for konklusioner med information."
     },
+    "category_outro_guideline1": {
+        "message": "Inkludér ikke indhold, selvom endcards er på skærmen"
+    },
     "category_preview": {
         "message": "Forhåndsvisning/Opsamling"
     },
     "category_preview_description": {
-        "message": "Hurtig opsummering af tidligere episoder eller en forsmag på, hvad der kommer senere i den aktuelle video. Er beregnet til sammenklippede klip, ikke til talte resuméer."
+        "message": "Samling af klip, der viser, hvad der kommer op i denne video eller andre videoer i en serie, hvor alle oplysninger gentages senere i videoen."
+    },
+    "category_preview_guideline1": {
+        "message": "Klip, der vises senere eller i en fremtidig video"
+    },
+    "category_preview_guideline2": {
+        "message": "Resumé af en tidligere video"
+    },
+    "category_preview_guideline3": {
+        "message": "Ikke for afsnit, der tilføjer yderligere indhold"
     },
     "category_filler": {
         "message": "Fyldningstangent/Jokes"
@@ -603,6 +694,15 @@
     "category_filler_short": {
         "message": "Fyldstof"
     },
+    "category_filler_guideline1": {
+        "message": "Tangentielle scener kun for fyld eller humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Distraktioner, bloopers, replays"
+    },
+    "category_filler_guideline3": {
+        "message": "Ikke for scener, der er nødvendige for at forstå emnet"
+    },
     "category_music_offtopic": {
         "message": "Musik: Ikke-Musikalsk Sektion"
     },
@@ -612,11 +712,41 @@
     "category_music_offtopic_short": {
         "message": "Ikke-Musikalsk"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Afsnit, der ikke findes i officielle udgivelser"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Ikke-musik i en live-optræden"
+    },
     "category_poi_highlight": {
         "message": "Fremhæv"
     },
     "category_poi_highlight_description": {
         "message": "Den del af videoen, som de fleste mennesker leder efter. Svarende til \"Video starter ved x\" kommentarer."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Afsnit, som de fleste mennesker leder efter"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Kan springe kontekst over"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Kan springe til titlen eller thumbnailen"
+    },
+    "category_chapter": {
+        "message": "Kapitel"
+    },
+    "category_chapter_description": {
+        "message": "Brugerdefinerede navngivne kapitler, der beskriver store afsnit af en video."
+    },
+    "category_chapter_guideline1": {
+        "message": "Undlad at nævne sponsor mærkenavne"
+    },
+    "category_chapter_guideline2": {
+        "message": "Brug større kapitler til generelle sektioner"
+    },
+    "category_chapter_guideline3": {
+        "message": "Mindre kapitler kan placeres inde i større kapitler"
     },
     "category_livestream_messages": {
         "message": "Livestream: Donations-/Beskedsaflæsning"
@@ -647,6 +777,9 @@
     },
     "showOverlay_full": {
         "message": "Vis Etiket"
+    },
+    "showOverlay_chapter": {
+        "message": "Vis Kapitler"
     },
     "autoSkipOnMusicVideos": {
         "message": "Spring automatisk over alle segmenter, når der er et ikke-musik-segment"
@@ -703,6 +836,10 @@
     "bracketEnd": {
         "message": "(Slut)"
     },
+    "End": {
+        "message": "Slutning",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "skjult: nedstem"
     },
@@ -716,11 +853,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal-ID er ikke indlæst endnu. Hvis du bruger en integreret video, så prøv i stedet at bruge YouTube-hjemmesiden. Dette kunne også være forårsaget af ændringer i YouTube-layout. Hvis du mener det, så lav en kommentar her:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Det ser ud til, at noget blokerer SponsorBlock's evne til at hente videodata. Se https://github.com/ajayyy/SponsorBlock/issues/741 for mere info."
-    },
-    "youtubePermissionRequest": {
-        "message": "Det ser ud til, at SponsorBlock ikke kan nå YouTube APIen. Acceptér tilladelsesprompten som vises næste gang, vent et par sekunder, og genindlæs siden."
+    "invidiousPermissionRefresh": {
+        "message": "Browseren har ophævet tilladelserne til at fungere på Invidious eller andre tredjepartssider. Klik venligst op knappen nedenfor for at genaktivere denne tilladelse."
     },
     "acceptPermission": {
         "message": "Accepter tilladelse"
@@ -745,6 +879,13 @@
     },
     "downvoteDescription": {
         "message": "Ukorrekt/Forkert Timing"
+    },
+    "incorrectVote": {
+        "message": "Forkert"
+    },
+    "harmfulVote": {
+        "message": "Skadelig",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Skift Kategori"
@@ -781,6 +922,9 @@
     "categoryPillTitleText": {
         "message": "Hele denne video er mærket som denne kategori og er for tæt integreret til at være i stand til at adskille"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Et af dine kapitelnavne er magen til en kategori. Du bør bruge kategorier, når det er muligt i stedet."
+    },
     "experiementOptOut": {
         "message": "Fravælg alle fremtidige eksperimenter",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -789,11 +933,19 @@
         "message": "Skjul for evigt"
     },
     "warningChatInfo": {
-        "message": "Du har fået en advarsel og kan midlertidigt ikke indsende segmenter. Det betyder, at vi har bemærket, at du har begået nogle almindelige fejl, som ikke er skadelige. Bekræft venligst, at du har forstået reglerne, så fjerner vi advarslen. Du kan også deltage i denne chat ved hjælp af discord.gg/SponsorBlock eller matrix.to/#/##sponsor:ajay.app"
+        "message": "Vi bemærkede, at du lavede nogle almindelige fejl, som ikke er ondsindede"
     },
-    "voteRejectedWarning": {
-        "message": "Afstemningen blev afvist på grund af en advarsel. Klik for at åbne en chat for at løse problemet, eller kom tilbage senere, når du har tid.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Du fik en advarsel"
+    },
+    "questionButton": {
+        "message": "Jeg har et spørgsmål"
+    },
+    "warningConfirmButton": {
+        "message": "Jeg forstår årsagen"
+    },
+    "warningError": {
+        "message": "Fejl under anerkendelse af advarsel:"
     },
     "Donate": {
         "message": "Doner"
@@ -866,6 +1018,9 @@
     },
     "LearnMore": {
         "message": "Læs mere"
+    },
+    "FullDetails": {
+        "message": "Alle Detaljer"
     },
     "CopyDownvoteButtonInfo": {
         "message": "Nedstemmer og opretter en lokal kopi for dig at genindsende"
@@ -947,5 +1102,123 @@
     },
     "openOptionsPage": {
         "message": "Åbn indstillinger"
+    },
+    "resetToDefault": {
+        "message": "Nulstil indstillinger til standard"
+    },
+    "confirmResetToDefault": {
+        "message": "Er du sikker på, at du vil nulstille alle indstillinger til deres standardværdier? Dette kan ikke fortrydes."
+    },
+    "exportSegments": {
+        "message": "Eksporter segmenter"
+    },
+    "importSegments": {
+        "message": "Importer segmenter"
+    },
+    "Import": {
+        "message": "Importer",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Indløsning Lykkedes!"
+    },
+    "redeemFailed": {
+        "message": "Licensnøglen er ugyldig"
+    },
+    "hideUpsells": {
+        "message": "Skjul utilgængelige muligheder uden ekstra betaling"
+    },
+    "chooseACountry": {
+        "message": "Vælg et land"
+    },
+    "noDiscount": {
+        "message": "Du kvalificerer dig ikke til en rabat"
+    },
+    "discountLink": {
+        "message": "Rabat Link (Se den lyserøde pris)"
+    },
+    "selectYourCountry": {
+        "message": "Vælg dit land"
+    },
+    "alreadyDonated": {
+        "message": "Hvis du har doneret et beløb før, kan du indløse gratis adgang via e-mail:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Hvis du ikke har råd til at købe en licens, så klik på {here} for at se, om du er berettiget til en rabat",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Log på med Patreon"
+    },
+    "redeem": {
+        "message": "Indløs"
+    },
+    "joinOnPatreon": {
+        "message": "Abonner på Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Engangskøb"
+    },
+    "enterLicenseKey": {
+        "message": "Indtast Licensnøgle"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlock crowd-sourced kapitler funktion er kun tilgængelig for personer, der køber en licens, eller for personer, der har fået gratis adgang på grund af deres tidligere bidrag"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Du har lige nu {0} på {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Du har i øjeblikket ingen uindsendte segmenter",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "ikke-indsendt segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "ikke-indsendte segmenter",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videoer",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Ryd alle segmenter",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Er du sikker på, at du vil rydde alle dine uindsendte segmenter?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Vis segmenter",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Skjul segmenter",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Video ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Segmentantal",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Handlinger",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Del som URL"
     }
 }

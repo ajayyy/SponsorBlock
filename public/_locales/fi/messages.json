@@ -25,6 +25,16 @@
     "Segments": {
         "message": "osiot"
     },
+    "SegmentsCap": {
+        "message": "Osiot"
+    },
+    "Chapters": {
+        "message": "Osiot"
+    },
+    "renderAsChapters": {
+        "message": "Piirrä osiot kappaleina",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Äänestä lähetystä"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Lähetä osiot"
+    },
+    "sortSegments": {
+        "message": "Järjestä osiot"
     },
     "submitCheck": {
         "message": "Haluatko varmasti lähettää tämän?"
@@ -233,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Jos video on uusi, eikä osioita löydy, niitä haetaan uudelleen muutaman minuutin välein katsoessasi."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Näytä kategoriat lähetysvalikossa myös ilman lähetyslupaa"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Jotkin kategoriat vaativat lähetysluvan maineen vähimmäisvaatimusten vuoksi"
+    },
     "showNotice": {
         "message": "Näytä ilmoitus uudelleen"
     },
@@ -287,6 +306,14 @@
     },
     "setSubmitKeybind": {
         "message": "Lähetä osiot",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Seuraava osio",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Edellinen osio",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -442,6 +469,12 @@
     "minDurationDescription": {
         "message": "Osioita jotka ovat asetettua arvoa lyhyempiä ei ohiteta tai näytetä soittimessa."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Käytä manuaalista ohitusta, kun video on merkitty \"Koko video\" osiolla"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Niille, jotka haluavat katsella täysin sponsoroitua sisältöä tai julkaisijan omaa markkinointia sisältävät videot keskeytyksettä."
+    },
     "skipNoticeDuration": {
         "message": "Ohitusilmoituksen kesto (sekuntia):"
     },
@@ -545,6 +578,10 @@
         "message": "-",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Kopioitu!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Sisällytä siirtymät osioon"
     },
@@ -637,7 +674,7 @@
         "message": "Esikatselu/Kertaus"
     },
     "category_preview_description": {
-        "message": "Nopea kertaus aiemmista jaksoista, tai esikatselu siitä, mitä on tulossa myöhemmin nykyisessä videossa. Tarkoitettu yhteen editoituja klippejä varten, ei puhutuille yhteenvedoille."
+        "message": "Kokoelma leikkeitä, jotka kertovat mitä video sisältää tai sarjan muut videot sisältävät ja joiden kaikki informaatio toistuu videossa myöhemmin."
     },
     "category_preview_guideline1": {
         "message": "Myöhemmin tai tulevassa videossa ilmestyvät klipit"
@@ -696,6 +733,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Voi ohittaa otsikon tai pikkukuvan viittaamaan kohtaan"
     },
+    "category_chapter": {
+        "message": "Osio"
+    },
+    "category_chapter_description": {
+        "message": "Nimetyt osiot, jotka kuvaavat videon merkittäviä jaksoja."
+    },
+    "category_chapter_guideline1": {
+        "message": "Älä mainitse sponsoreiden tuotemerkkejä"
+    },
+    "category_chapter_guideline2": {
+        "message": "Käytä yleisille jaksoille suurempia osioita"
+    },
+    "category_chapter_guideline3": {
+        "message": "Pienemmät osiot voidaan sijoittaa suurempien osioiden sisään"
+    },
     "category_livestream_messages": {
         "message": "Livestream: lahjoitusten/viestien lukeminen"
     },
@@ -725,6 +777,9 @@
     },
     "showOverlay_full": {
         "message": "Näytä merkki"
+    },
+    "showOverlay_chapter": {
+        "message": "Näytä osiot"
     },
     "autoSkipOnMusicVideos": {
         "message": "Ohita kaikki osiot automaattisesti, kun videossa on \"Musiikiton\" osio"
@@ -781,6 +836,10 @@
     "bracketEnd": {
         "message": "(Loppu)"
     },
+    "End": {
+        "message": "Loppu",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "piilotettu: miinusääniä"
     },
@@ -794,11 +853,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanavan ID ei ole vielä latautunut. Jos käytät upotettua videota, kokeile sen sijaan käyttää YouTuben kotisivua. Tämä voi myös johtua muutoksista YouTuben ulkoasussa. Jos luulet luulet niin, tee kommenti tänne:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Näyttää siltä, että jokin estää SponsorBlockin kykyä saada videotietoja. Katso https://github.com/ajayyy/SponsorBlock/issues/741 lisätietoja varten."
-    },
-    "youtubePermissionRequest": {
-        "message": "Näyttää siltä, että SponsorBlock ei pysty saavuttamaan YouTube-APIa. Korjataksesi tämän, hyväksy seuraavaksi ilmestyvä käyttöoikeusilmoitus, odota muutama sekunti ja lataa sitten sivu uudelleen."
+    "invidiousPermissionRefresh": {
+        "message": "Selain on perunut laajennuksen oikeuden toimia Invidious- ja muilla kolmannen osapuolen sivustoilla. Palauta käyttöoikeus painamalla alla olevaa painiketta."
     },
     "acceptPermission": {
         "message": "Hyväksy käyttöoikeus"
@@ -823,6 +879,13 @@
     },
     "downvoteDescription": {
         "message": "Virheellinen/väärä aika"
+    },
+    "incorrectVote": {
+        "message": "Väärä"
+    },
+    "harmfulVote": {
+        "message": "Haitallinen",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Vaihda kategoria"
@@ -859,6 +922,9 @@
     "categoryPillTitleText": {
         "message": "Koko video on merkitty tällä kategorialla ja on erotettavaksi liian tiiviisti integroitu"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Jonkin osion ja kategorian nimet ovat samankaltaisia. Kun mahdollista, osioiden sijaan on suositeltavaa käyttää kategorioita."
+    },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +933,19 @@
         "message": "Piilota ikuisesti"
     },
     "warningChatInfo": {
-        "message": "Sait varoituksen ja et voi lähettää osioita väliaikaisesti. Tämä tarkoittaa, että huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahallisia, joten vahvistakaa, että ymmärrätte säännöt ja poistamme varoituksen. Voit myös liittyä tähän keskusteluun käyttäen discord.gg/SponsorBlock tai matrix.to/#/#sponsor:ajay.app"
+        "message": "Huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole pahansuopia"
     },
-    "voteRejectedWarning": {
-        "message": "Ääni hylättiin varoituksen takia. Klikkaa avataksesi chatin sen ratkaisemiseksi, tai tule takaisin myöhemmin kun sinulla on siihen aikaa.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Sait varoituksen"
+    },
+    "questionButton": {
+        "message": "Minulla on kysymys"
+    },
+    "warningConfirmButton": {
+        "message": "Ymmärrän syyn"
+    },
+    "warningError": {
+        "message": "Virhe yritettäessä kuitata varoitusta:"
     },
     "Donate": {
         "message": "Lahjoita"
@@ -1034,5 +1108,121 @@
     },
     "confirmResetToDefault": {
         "message": "Haluatko varmasti palauttaa kaikki asetukset oletusarvoihin? Tätä ei voi perua."
+    },
+    "exportSegments": {
+        "message": "Vie osiot"
+    },
+    "importSegments": {
+        "message": "Tuo osiot"
+    },
+    "Import": {
+        "message": "Tuo",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Lunastus onnistui!"
+    },
+    "redeemFailed": {
+        "message": "Lisenssiavain on virheellinen"
+    },
+    "hideUpsells": {
+        "message": "Piilotusvalinnat ovat käytettävissä vain lisämaksusta"
+    },
+    "chooseACountry": {
+        "message": "Valitse maa"
+    },
+    "noDiscount": {
+        "message": "Et ole oikeutettu alennukseen"
+    },
+    "discountLink": {
+        "message": "Alennuslinkki (ks. vaaleanpunainen hinta)"
+    },
+    "selectYourCountry": {
+        "message": "Valitse maasi"
+    },
+    "alreadyDonated": {
+        "message": "Jos olet aiemmin lahjoittanut jonkin summan, voit lunastaa käyttöoikeuden veloituksetta sähköpostitse:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Jos sinulla ei ole varaa lisenssiin, paina {tästä} nähdäksesi oletko oikeutettu alennukseen",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Kirjaudu sisään Patreonilla"
+    },
+    "redeem": {
+        "message": "Lunasta"
+    },
+    "joinOnPatreon": {
+        "message": "Tilaa Patreonissa"
+    },
+    "oneTimePurchase": {
+        "message": "Kertaluontoinen osto"
+    },
+    "enterLicenseKey": {
+        "message": "Syötä lisenssiavain"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlockin joukkolähteinen osiotoiminto on vain lisenssin ostaneiden tai aiempien tukien perusteella veloituksettoman käyttöoikeuden saaneiden henkilöiden käytettävissä"
+    },
+    "chaptersPage2": {
+        "message": "Huomioi: Osioiden lähetysoikeus perustuu edelleen laskettuun maineeseen. Lisenssin hankinta sallii sinun ainoastaan tarkastella muiden lähettämiä osioita",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Sinulla on tällä hetkellä {0} {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Sinulla ei ole lähettämättömiä osioita",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "lähettämätön osio",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "lähettämätöntä osiota",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "videossa",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videossa",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Tyhjennä kaikki osiot",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Haluatko varmasti tyhjentää kaikki lähettämättömät osiosi?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Näytä osiot",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Piilota osiot",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Videon tunniste",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Osiomäärä",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Toiminnot",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Jaa URLina"
     }
 }

@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmenti"
     },
+    "SegmentsCap": {
+        "message": "Segmendid"
+    },
+    "Chapters": {
+        "message": "Peatükid"
+    },
+    "renderAsChapters": {
+        "message": "Kuva segmendid peatükkidena",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Anna segmendile poolthääl"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Esita segmendid"
+    },
+    "sortSegments": {
+        "message": "Sorteeri segmendid"
     },
     "submitCheck": {
         "message": "Kas soovid kindlasti selle saata?"
@@ -287,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "Esita segmendid",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Järgmine peatükk",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Eelmine peatükk",
         "description": "Keybind label"
     },
     "0": {
@@ -536,6 +557,10 @@
         "message": "kuni",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Kopeeritud!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Kasuta sujuvaid üleminekuid"
     },
@@ -552,7 +577,7 @@
         "message": "Tasulised kampaaniad"
     },
     "category_sponsor_guideline2": {
-        "message": "Mitte annetuste ja oma loodud kauba jaoks"
+        "message": "Mitte annetuste ja omaloodud kauba jaoks"
     },
     "category_selfpromo": {
         "message": "Tasumata/enesepromo"
@@ -561,13 +586,13 @@
         "message": "Sarnaneb \"sponsorile\", ent on mõeldud tasumata või enesepromo jaoks. Selle alla kuuluvad jaotised oma müüdava kauba, annetuste ja koostööpartnerite kohta."
     },
     "category_selfpromo_guideline1": {
-        "message": "Annetused, liikmesused ja oma loodud kaup"
+        "message": "Annetused, liikmesused ja omaloodud kaup"
     },
     "category_selfpromo_guideline2": {
-        "message": "Tasuta mainimised, mis ei ole video sisuks olulised"
+        "message": "Tasuta mainimised, mis ei anna videole lisaväärtust"
     },
     "category_selfpromo_guideline3": {
-        "message": "Mitte ettevõtete disainitud toodete ja kauba jaoks"
+        "message": "Mitte ettevõtete-disainitud toodete ja kauba jaoks"
     },
     "category_exclusive_access": {
         "message": "Eksklusiivne ligipääs"
@@ -580,7 +605,7 @@
         "description": "Short description for this category"
     },
     "category_exclusive_access_guideline1": {
-        "message": "Kogu video kuvab midagi tasuta või toetusega ligipääsuga"
+        "message": "Kogu video esitleb midagi, millele autor on saanud tasuta või toetusega ligipääsu"
     },
     "category_interaction": {
         "message": "Tegutsemise meeldetuletus (kanali tellimine)"
@@ -628,7 +653,7 @@
         "message": "Eelvaade/kokkuvõte"
     },
     "category_preview_description": {
-        "message": "Kiire kokkuvõte eelmistest episoodidest või eelvaade videos hiljem tulevast. Mõeldud valmis töödeldud klippide, mitte suuliste kokkuvõtete jaoks."
+        "message": "Klippide kogum, mis näitab selles või teistes videotes tulevat sisu seerias, kus kogu info kuvatakse uuesti video sees."
     },
     "category_preview_guideline1": {
         "message": "Klipid, mida kuvatakse hiljem või tulevases videos"
@@ -687,6 +712,9 @@
     "category_poi_highlight_guideline3": {
         "message": "Aitab pealkirja või pisipildi sisuni viia"
     },
+    "category_chapter": {
+        "message": "Peatükk"
+    },
     "category_livestream_messages": {
         "message": "Otseülekanne: annetuste ja sõnumite lugemine"
     },
@@ -716,6 +744,9 @@
     },
     "showOverlay_full": {
         "message": "Kuva silt"
+    },
+    "showOverlay_chapter": {
+        "message": "Kuva peatükid"
     },
     "autoSkipOnMusicVideos": {
         "message": "Jäta automaatselt kõik segmendid vahele, kui eksisteerib mitte-muusika segment"
@@ -772,6 +803,10 @@
     "bracketEnd": {
         "message": "(lõpp)"
     },
+    "End": {
+        "message": "Lõpp",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "peidetud: vastuhääl"
     },
@@ -784,12 +819,6 @@
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanali ID pole veel laaditud. Kui vaatad manustatud videot, proovi seda vaadata YouTube'i kodulehelt. See võib olla põhjustatud ka YouTube'i paigutuse muudatustest - kui arvad et see nii on, kommenteeri siin:"
-    },
-    "videoInfoFetchFailed": {
-        "message": "Tundub, et miski segab SponsorBlocki video andmete hankimise võimalust. Rohkema abi saamiseks palun vaata: https://github.com/ajayyy/SponsorBlock/issues/741"
-    },
-    "youtubePermissionRequest": {
-        "message": "Tundub, et SponsorBlock ei pääse YouTube'i rakendusliidesele ligi. Selle parandamiseks nõustu järgnevalt kuvatava loataotlusega, oota paar sekundit ning seejärel laadi leht uuesti."
     },
     "acceptPermission": {
         "message": "Nõustu loaga"
@@ -814,6 +843,13 @@
     },
     "downvoteDescription": {
         "message": "Sobimatu/vale ajastus"
+    },
+    "incorrectVote": {
+        "message": "Ebakorrektne"
+    },
+    "harmfulVote": {
+        "message": "Kahjulik",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Muuda kategooriat"
@@ -855,11 +891,19 @@
         "message": "Peida igaveseks"
     },
     "warningChatInfo": {
-        "message": "Sa said hoiatuse ning ei saa ajutiselt segmente saata. See tähendab, et me leidsime sind tegemast teatud sagedasi, mitte-pahatahtlikke vigu - palun kinnita (inglise keeles), et mõistad reegleid ning me eemaldame hoiatuse. Sa võid selle vestlusega liituda ka discord.gg/SponsorBlock või matrix.to/#/#sponsor:ajay.app kaudu."
+        "message": "Panime tähele, et tegid teatud sagedasi vigu, mis ei olnud pahatahtlikud"
     },
-    "voteRejectedWarning": {
-        "message": "Hääletus hoiatuse tõttu tagasilükatud. Klõpsa, et avada selle lahendamiseks vestlus või tule hiljem tagasi, kui aega saad.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Sa said hoiatuse"
+    },
+    "questionButton": {
+        "message": "Mul on küsimus"
+    },
+    "warningConfirmButton": {
+        "message": "Ma mõistan põhjust"
+    },
+    "warningError": {
+        "message": "Hoiatuse mõistmise kinnitamisel esines viga:"
     },
     "Donate": {
         "message": "Anneta"
@@ -1001,5 +1045,103 @@
     },
     "confirmResetToDefault": {
         "message": "Kas soovid kindlasti kõik sätted vaikeväärtustele lähtestada? Seda ei saa tagasi võtta."
+    },
+    "exportSegments": {
+        "message": "Ekspordi segmendid"
+    },
+    "importSegments": {
+        "message": "Impordi segmendid"
+    },
+    "Import": {
+        "message": "Impordi",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Lunastamine õnnestus!"
+    },
+    "redeemFailed": {
+        "message": "Litsentsivõti on sobimatu"
+    },
+    "chooseACountry": {
+        "message": "Vali riik"
+    },
+    "discountLink": {
+        "message": "Soodushinna link (vaata roosat hinda)"
+    },
+    "selectYourCountry": {
+        "message": "Vali oma riik"
+    },
+    "patreonSignIn": {
+        "message": "Logi Patreoniga sisse"
+    },
+    "redeem": {
+        "message": "Lunasta"
+    },
+    "joinOnPatreon": {
+        "message": "Telli Patreonis"
+    },
+    "oneTimePurchase": {
+        "message": "Ühekordne ost"
+    },
+    "enterLicenseKey": {
+        "message": "Sisesta litsentsivõti"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlocki kogukonna-loodud peatükkide funktsioon on saadaval vaid inimestele, kes ostavad litsentsi või neile, kes saavad tasuta ligipääsu varasemate panuste tõttu"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Sul on hetkel {0} {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Sul pole hetkel saatmata segmente",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "esitamata segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "esitamata segmenti",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "videol",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videol",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Tühjenda kõik segmendid",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Kas soovid kindlasti tühjendada kõik oma saatmata segmendid?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Kuva segmendid",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Peida segmendid",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Video ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Segmentide arv",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Tegevused",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Jaga URLina"
     }
 }

@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmentos"
     },
+    "SegmentsCap": {
+        "message": "Segmentos"
+    },
+    "Chapters": {
+        "message": "Capítulos"
+    },
+    "renderAsChapters": {
+        "message": "Renderizar segmentos como capítulos",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Votar nesse segmento positivamente"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Enviar Segmentos"
+    },
+    "sortSegments": {
+        "message": "Organizar Segmentos"
     },
     "submitCheck": {
         "message": "Você tem certeza que deseja enviar isto?"
@@ -287,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "Enviar Segmentos",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Próximo capítulo",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Capítulo anterior",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -545,17 +566,42 @@
         "message": "até",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Copiado!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
+    "generic_guideline1": {
+        "message": "Inclui âncoras de transição"
+    },
+    "generic_guideline2": {
+        "message": "Reproduzir como se nada tivesse sido pulado"
+    },
     "category_sponsor": {
         "message": "Patrocinador"
     },
     "category_sponsor_description": {
         "message": "Promoção paga, referências pagas e anúncios diretos. Não deve ser usado para Auto promoção ou mensagens grátis para causas/criadores/sites/produtos que eles gostam."
     },
+    "category_sponsor_guideline1": {
+        "message": "Promoções pagas"
+    },
+    "category_sponsor_guideline2": {
+        "message": "Não é para doações ou mercadoria personalizada"
+    },
     "category_selfpromo": {
         "message": "Não-pago/Auto promoção"
     },
     "category_selfpromo_description": {
         "message": "Similar a \"patrocinador\", mas para auto promoções e segmentos não-pagos. Isso inclui seções sobre vendas, doações ou informações sobre com quem colaboraram."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Doações, programa de membros e mercadoria personalizada"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Divulgação gratuita que não acrescenta ao vídeo"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Não é para produtos de origem corporativa ou mercadorias"
     },
     "category_exclusive_access": {
         "message": "Acesso Exclusivo"
@@ -567,11 +613,23 @@
         "message": "Este vídeo apresenta um produto, serviço ou local ao qual eles receberam acesso gratuito ou subsidiado",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "Todo o vídeo promove algo de acesso gratuito ou subsidiado"
+    },
     "category_interaction": {
         "message": "Lembrete de interação (inscrever-se)"
     },
     "category_interaction_description": {
         "message": "Quando houver um pequeno lembrete para curtir, inscrever-se ou segui-los no meio do conteúdo. Se é longo ou sobre algo em específico, deveria ser sob Não-pago/Auto promoção."
+    },
+    "category_interaction_guideline1": {
+        "message": "Lembretes rápidos para curtir, inscrever ou seguir"
+    },
+    "category_interaction_guideline2": {
+        "message": "Inclui lembretes indiretos para comentar"
+    },
+    "category_interaction_guideline3": {
+        "message": "Não é para promoção geral, apenas chamado à ação"
     },
     "category_interaction_short": {
         "message": "Lembrete de interação"
@@ -585,17 +643,35 @@
     "category_intro_short": {
         "message": "Intervalo"
     },
+    "category_intro_guideline1": {
+        "message": "Intervalo sem conteúdo real"
+    },
+    "category_intro_guideline2": {
+        "message": "Não é para transições com informações"
+    },
     "category_outro": {
         "message": "Finalização/Créditos"
     },
     "category_outro_description": {
         "message": "Créditos ou quando os cards finais do YouTube aparecem. Não deve ser usado para conclusões informativas."
     },
+    "category_outro_guideline1": {
+        "message": "Não inclue conteúdo, mesmo que cartões de finalização estejam na tela"
+    },
     "category_preview": {
         "message": "Pré-visualização/Recapitulação"
     },
     "category_preview_description": {
-        "message": "Recapitulação rápida de episódios anteriores, ou uma prévia do que está chegando mais tarde no vídeo atual. Destinado a clipes editados juntos, não para resumos falados."
+        "message": "Coleção de clipes que mostram o que está por vir neste vídeo ou em outros vídeos em uma série onde todas as informações são repetidas mais tarde no vídeo."
+    },
+    "category_preview_guideline1": {
+        "message": "Clipes que aparecem mais tarde ou em um vídeo futuro"
+    },
+    "category_preview_guideline2": {
+        "message": "Recapitulação de um vídeo anterior"
+    },
+    "category_preview_guideline3": {
+        "message": "Não é para seções que adicionam conteúdo adicional"
     },
     "category_filler": {
         "message": "Enrolação/Piadas"
@@ -606,6 +682,15 @@
     "category_filler_short": {
         "message": "Enrolação"
     },
+    "category_filler_guideline1": {
+        "message": "Cenas tangenciais apenas para enrolação ou humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Distrações, erros de gravação, replays"
+    },
+    "category_filler_guideline3": {
+        "message": "Não é para cenas necessárias para o entendimento do tópico"
+    },
     "category_music_offtopic": {
         "message": "Música: Seção sem música"
     },
@@ -615,11 +700,29 @@
     "category_music_offtopic_short": {
         "message": "Não musical"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Seções que não estão nos lançamentos oficiais"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Sem música numa performance ao vivo"
+    },
     "category_poi_highlight": {
         "message": "Destaques"
     },
     "category_poi_highlight_description": {
         "message": "A parte do vídeo que a maioria das pessoas procura. Similar aos comentários \"Vídeo começa aos x\"."
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "A seção que maioria das pessoas está procurando"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Pode pular o contexto"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "Pode pular para o título ou miniatura"
+    },
+    "category_chapter": {
+        "message": "Capítulo"
     },
     "category_livestream_messages": {
         "message": "Livestream: Leituras de Doação/Mensagem"
@@ -719,12 +822,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "O ID do canal ainda não foi carregado. Se você estiver usando um vídeo embutido, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se você achar que este é o caso, faça um comentário aqui:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Parece que algo está bloqueando a habilidade do SponsorBlock de obter dados de vídeo. Por favor, veja https://github.com/ajayyy/SponsorBlock/issues/741 para mais informações."
-    },
-    "youtubePermissionRequest": {
-        "message": "Parece que o SponsorBlock não foi capaz de acessar a API do YouTube. Para corrigir isso, aceite a permissão do prompt que aparecerá a seguir, espere alguns segundos, e recarregue a página."
-    },
     "acceptPermission": {
         "message": "Aceitar permissão"
     },
@@ -790,13 +887,6 @@
     },
     "hideForever": {
         "message": "Ocultar para sempre"
-    },
-    "warningChatInfo": {
-        "message": "Você recebeu um aviso e não pode enviar segmentos temporariamente. Isso significa que notamos que você estava cometendo erros comuns não maliciosos, por favor confirme que você entende as regras e removeremos o aviso. Você também pode participar do chat usando discord.gg/SponsorBlock ou matrix.to/#/#sponsor:ajay.app"
-    },
-    "voteRejectedWarning": {
-        "message": "Voto rejeitado devido a um aviso. Clique para abrir um chat para resolvê-lo, ou volte mais tarde quando tiver tempo.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
     },
     "Donate": {
         "message": "Doar"
