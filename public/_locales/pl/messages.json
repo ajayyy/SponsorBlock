@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmentów"
     },
+    "SegmentsCap": {
+        "message": "Segmenty"
+    },
+    "Chapters": {
+        "message": "Rozdziały"
+    },
+    "renderAsChapters": {
+        "message": "Pokazuj segmenty jako rozdziały",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Zagłosuj na ten segment"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Prześlij segmenty"
+    },
+    "sortSegments": {
+        "message": "Sortuj segmenty"
     },
     "submitCheck": {
         "message": "Czy na pewno chcesz to zamieścić?"
@@ -287,6 +300,14 @@
     },
     "setSubmitKeybind": {
         "message": "Prześlij segmenty",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Następny rozdział",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Poprzedni rozdział",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -545,6 +566,10 @@
         "message": "do",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Skopiowano!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Zawiera płynne przejścia"
     },
@@ -595,7 +620,7 @@
         "message": "Przypomnienie o interakcji (Subskrybuj)"
     },
     "category_interaction_description": {
-        "message": "Gdy ma miejsce krótkie przypomnienie, by lajkować, subskrybować lub śledzić ich w trakcie kontentu. Jeśli trwa to długo lub dotyczy czegoś konkretnego, powinno być zamiast tego jako promocja własna."
+        "message": "Gdy w materiale zostaje zawarte krótkie przypomnienie o polubieniu, subskrypcji lub obserwowaniu. Jeśli trwa długo lub dotyczy czegoś konkretnego, powinno być oznaczone jako autopromocja."
     },
     "category_interaction_guideline1": {
         "message": "Krótkie przypomnienia, by polubić lub zasubskrybować"
@@ -637,7 +662,7 @@
         "message": "Zapowiedź/Podsumowanie"
     },
     "category_preview_description": {
-        "message": "Szybkie podsumowanie poprzednich odcinków lub podgląd tego, co pojawia się później w bieżącym filmie. Dotyczy zmontowanych klipów, a nie ustnych podsumowań."
+        "message": "Zbiór klipów pokazujących to, co pojawi się w tym filmie lub innych filmach w serii, w której wszystkie informacje są powtarzane później w filmie."
     },
     "category_preview_guideline1": {
         "message": "Klipy, które pojawiają się później lub w następnym filmie"
@@ -696,6 +721,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Może pominąć do karty tytułowej lub miniaturki"
     },
+    "category_chapter": {
+        "message": "Rozdział"
+    },
+    "category_chapter_description": {
+        "message": "Innaczej nazwane rozdziały opisujące znaczące fragmenty filmu."
+    },
+    "category_chapter_guideline1": {
+        "message": "Nie wspominaj o nazwach sponsorów"
+    },
+    "category_chapter_guideline2": {
+        "message": "Używaj większych rozdziałów dla ogólnych sekcji"
+    },
+    "category_chapter_guideline3": {
+        "message": "Mniejsze rozdziały mogą być wstawione w większe"
+    },
     "category_livestream_messages": {
         "message": "Transmisja live: Dotacja/Czytanie wiadomości"
     },
@@ -725,6 +765,9 @@
     },
     "showOverlay_full": {
         "message": "Wyświetl etykietę"
+    },
+    "showOverlay_chapter": {
+        "message": "Pokaż rozdziały"
     },
     "autoSkipOnMusicVideos": {
         "message": "Automatycznie pomiń wszystkie segmenty, gdy istnieje segment niemuzyczny"
@@ -781,6 +824,10 @@
     "bracketEnd": {
         "message": "(Koniec)"
     },
+    "End": {
+        "message": "Koniec",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "ukryty: zminusowany"
     },
@@ -794,11 +841,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID kanału nie zostało jeszcze załadowane. Jeśli używasz embeddowanego filmu, spróbuj użyć strony głównej YouTube'a. Może to być również spowodowane zmianami w layout'cie YouTube'a, jeśli myślisz, że to przez to, dodaj swój komentarz tutaj:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Wygląda na to, że coś blokuje możliwość pobierania danych o filmach przez SponsorBlock. Sprawdź proszę https://github.com/ajayyy/SponsorBlock/issues/741 po więcej informacji."
-    },
-    "youtubePermissionRequest": {
-        "message": "Wygląda na to, że SponsorBlock nie jest w stanie połączyć się z API YouTube. Aby to naprawić, zaakceptuj monit o pozwolenie, który pojawi się za chwilę, odczekaj kilka sekund, a następnie odśwież stronę."
+    "invidiousPermissionRefresh": {
+        "message": "Przeglądarka cofnęła uprawnienia potrzebne do działania na witrynach Invidious i innych witrynach stron trzecich. Kliknij poniższy przycisk, aby reaktywować to uprawnienie."
     },
     "acceptPermission": {
         "message": "Zaakceptuj uprawnienie"
@@ -823,6 +867,13 @@
     },
     "downvoteDescription": {
         "message": "Niepoprawne/Zły czas"
+    },
+    "incorrectVote": {
+        "message": "Nieprawidłowy"
+    },
+    "harmfulVote": {
+        "message": "Szkodliwy",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Zmień kategorię"
@@ -859,6 +910,9 @@
     "categoryPillTitleText": {
         "message": "Cały film jest oznaczony jako ta kategoria i jest za bardzo zintegrowany, aby można było go podzielić"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Jedna z nazw twojego rozdziału jest podobna do kategorii. Powinieneś używać kategorii, jeśli to możliwe."
+    },
     "experiementOptOut": {
         "message": "Wyłączenie wszystkich przyszłych eksperymentów",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +921,19 @@
         "message": "Schowaj na zawsze"
     },
     "warningChatInfo": {
-        "message": "Otrzymałeś ostrzeżenie i tymczasowo nie możesz przesyłać segmentów. Oznacza to, że zauważyliśmy, że popełniłeś/aś pewne powszechne błędy, które nie są złośliwe, proszę tylko potwierdzić, że rozumiesz zasady i usuniemy ostrzeżenie. Możesz również dołączyć do tego czatu używając discord.gg/SponsorBlock lub matrix.to/#/#sponsor:ajay.app"
+        "message": "Zauważyliśmy, że popełniałeś pewne powszechne błędy, które nie są złośliwe"
     },
-    "voteRejectedWarning": {
-        "message": "Głosowanie odrzucone z powodu ostrzeżenia. Kliknij, aby otworzyć czat w celu rozwiązania problemu lub wróć później, gdy będziesz miał czas.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Otrzymałeś ostrzeżenie"
+    },
+    "questionButton": {
+        "message": "Mam pytanie"
+    },
+    "warningConfirmButton": {
+        "message": "Rozumiem powód"
+    },
+    "warningError": {
+        "message": "Błąd podczas próby potwierdzenia ostrzeżenia:"
     },
     "Donate": {
         "message": "Wesprzyj nas"
@@ -1034,5 +1096,61 @@
     },
     "confirmResetToDefault": {
         "message": "Czy na pewno chcesz przywrócić wszystkie ustawienia do ich domyślnych wartości? Tego nie można cofnąć."
+    },
+    "exportSegments": {
+        "message": "Eksportuj segmenty"
+    },
+    "Import": {
+        "message": "Importuj",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Pomyślnie zrealizowano!"
+    },
+    "redeemFailed": {
+        "message": "Klucz licencji jest nieprawidłowy"
+    },
+    "hideUpsells": {
+        "message": "Ukryj opcje niedostępne bez dodatkowej płatności"
+    },
+    "chooseACountry": {
+        "message": "Wybierz kraj"
+    },
+    "selectYourCountry": {
+        "message": "Wybierz swój kraj"
+    },
+    "patreonSignIn": {
+        "message": "Zaloguj się za pomocą Patreon"
+    },
+    "redeem": {
+        "message": "Wykorzystaj"
+    },
+    "joinOnPatreon": {
+        "message": "Wesprzyj na Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Jednorazowy zakup"
+    },
+    "enterLicenseKey": {
+        "message": "Wprowadź klucz licencyjny"
+    },
+    "videosSingular": {
+        "message": "film",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "filmy",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Wyczyść wszystkie segmenty",
+        "description": "Label for a button in settings"
+    },
+    "videoID": {
+        "message": "ID filmu",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Udostępnij jako adres URL"
     }
 }

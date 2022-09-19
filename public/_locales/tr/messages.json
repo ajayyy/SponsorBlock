@@ -25,6 +25,12 @@
     "Segments": {
         "message": "kısım"
     },
+    "SegmentsCap": {
+        "message": "Segmentler"
+    },
+    "Chapters": {
+        "message": "Bölümler"
+    },
     "upvoteButtonInfo": {
         "message": "Bu öneriye oy ver"
     },
@@ -289,6 +295,14 @@
         "message": "Kısımları gönder",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "Sonraki bölüm",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Önceki bölüm",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "Kullanmak istediğiniz tuşu yazın ve kombine etmek istediğiniz tuşları seçin."
     },
@@ -545,6 +559,10 @@
         "message": "'e",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Kopyalandı!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Segue geçişlerini dahil et"
     },
@@ -636,9 +654,6 @@
     "category_preview": {
         "message": "Ön İzleme/Özet"
     },
-    "category_preview_description": {
-        "message": "Önceki bölümlerin bir özeti veya geçerli videonun içeriğine yönelik bir ön izleme. Bu özellik birleştirilmiş klipler içindir, konuşarak anlatılan özetleri kapsamaz."
-    },
     "category_preview_guideline1": {
         "message": "Daha sonra veya gelecekteki bir videoda görünen klipler"
     },
@@ -696,6 +711,12 @@
     "category_poi_highlight_guideline3": {
         "message": "Başlığa veya küçük resme atlayabilir"
     },
+    "category_chapter": {
+        "message": "Bölüm"
+    },
+    "category_chapter_guideline1": {
+        "message": "Sponsor marka isimlerinden bahsetme"
+    },
     "category_livestream_messages": {
         "message": "Canlı Yayın: Bağış/Mesaj Okuma"
     },
@@ -725,6 +746,9 @@
     },
     "showOverlay_full": {
         "message": "Etiketi Göster"
+    },
+    "showOverlay_chapter": {
+        "message": "Bölümleri Göster"
     },
     "autoSkipOnMusicVideos": {
         "message": "Müzik olmayan kısım varsa tüm kısımları otomatik atla"
@@ -781,6 +805,10 @@
     "bracketEnd": {
         "message": "(Son)"
     },
+    "End": {
+        "message": "Son",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "gizlendi: eksile"
     },
@@ -793,12 +821,6 @@
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal kimliği henüz yüklenmedi. Gömülü bir video kullanıyorsanız, bunun yerine YouTube ana sayfasından izlemeyi deneyin. Bu, YouTube düzenindeki değişikliklerden de kaynaklanabilir, eğer öyleyse, buraya bir yorum yazın:"
-    },
-    "videoInfoFetchFailed": {
-        "message": "SponsorBlock'un video verilerini almasını engelleyen bir şey var gibi görünüyor. Lütfen daha fazla bilgi için şuraya göz atın: https://github.com/ajayyy/SponsorBlock/issues/741"
-    },
-    "youtubePermissionRequest": {
-        "message": "SponsorBlock YouTube API'sine ulaşamıyor gibi gözüküyor. Bunu düzeltmek için, bundan sonra görünecek izin isteğini kabul edin, birkaç saniye bekleyin ve ardından sayfayı yeniden yükleyin."
     },
     "acceptPermission": {
         "message": "İzni kabul et"
@@ -823,6 +845,13 @@
     },
     "downvoteDescription": {
         "message": "Hatalı/Yanlış Zaman"
+    },
+    "incorrectVote": {
+        "message": "Hatalı"
+    },
+    "harmfulVote": {
+        "message": "Zararlı",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Kategoriyi değiştir"
@@ -866,12 +895,14 @@
     "hideForever": {
         "message": "Asla gösterme"
     },
-    "warningChatInfo": {
-        "message": "Bir uyarı aldınız ve geçici olarak gönderim yapamazsınız. Bu, kötü niyetli olmayan bazı yaygın hatalar yaptığınızı fark ettiğimiz anlamına gelir, lütfen kuralları anladığınızı onaylayın, uyarıyı sonra kaldıracağız. Bu konuşmaya discord.gg/SponsorBlock ya da matrix.to/#/#sponsor:ajay.app kullanarak katılabilirsiniz."
+    "warningTitle": {
+        "message": "Bir uyarı aldın"
     },
-    "voteRejectedWarning": {
-        "message": "Bir uyarı nedeniyle oy reddedildi. Çözüm bulmak için buraya tıklayarak bir sohbet açın veya daha sonra vaktiniz olduğunda uğrayın.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "questionButton": {
+        "message": "Bir sorum var"
+    },
+    "warningConfirmButton": {
+        "message": "Nedenini anlıyorum"
     },
     "Donate": {
         "message": "Bağış Yap"
@@ -1034,5 +1065,33 @@
     },
     "confirmResetToDefault": {
         "message": "Tüm ayarları varsayılan değerlerine sıfırlamak istediğinizden emin misiniz? Bu geri alınamaz."
+    },
+    "exportSegments": {
+        "message": "Segmentleri dışa aktar"
+    },
+    "Import": {
+        "message": "İçeri aktar",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemFailed": {
+        "message": "Lisans anahtarı geçersiz"
+    },
+    "chooseACountry": {
+        "message": "Bir ülke seçiniz"
+    },
+    "selectYourCountry": {
+        "message": "Ülkenizi seçin"
+    },
+    "patreonSignIn": {
+        "message": "Patreon ile giriş yap"
+    },
+    "joinOnPatreon": {
+        "message": "Patreon'da Destekle"
+    },
+    "oneTimePurchase": {
+        "message": "Tek seferlik satın alım"
+    },
+    "enterLicenseKey": {
+        "message": "Lisans Anahtarını Girin"
     }
 }

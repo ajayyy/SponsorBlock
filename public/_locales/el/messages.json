@@ -25,6 +25,16 @@
     "Segments": {
         "message": "τμήματα"
     },
+    "SegmentsCap": {
+        "message": "Τμήματα"
+    },
+    "Chapters": {
+        "message": "Κεφάλαια"
+    },
+    "renderAsChapters": {
+        "message": "Θεώρηση τμημάτων ως κεφάλαια",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Θετική ψήφος για αυτήν την υποβολή"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Υποβολή Τμημάτων"
+    },
+    "sortSegments": {
+        "message": "Ταξινόμηση Τμημάτων"
     },
     "submitCheck": {
         "message": "Είσαστε σίγουροι για την υποβολή σας;"
@@ -636,9 +649,6 @@
     "category_preview": {
         "message": "Προεπισκόπηση/Αναθεώρηση"
     },
-    "category_preview_description": {
-        "message": "Γρήγορη ανακεφαλαίωση προηγουμένων επεισοδίων, ή προεπισκόπηση του τι ακολουθεί στο τρέχων βίντεο. Εννοώντας επεξεργασία μερικών κλιπ μαζί, όχι για προφορικές περιγραφές."
-    },
     "category_preview_guideline1": {
         "message": "Κλιπ που εμφανίζονται μετά, ή σε μελλοντικά βίντεο"
     },
@@ -794,12 +804,6 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Η ταυτότητα καναλιού δεν έχει φορτώσει ακόμα. Εάν χρησιμοποιείτε ενσωματωμένο βίντεο, δοκιμάστε αντιθέτως να το ανοίξετε στο YouTube. Μπορεί επίσης να ευθύνονται αλλαγές στη διάταξη του YouTube, εάν το πιστεύετε, γράψτε ένα σχόλιο εδώ:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Φαίνεται ότι κάτι εμποδίζει το SponsorBlock να ανακτήσει δεδομένα βίντεο. Παρακαλώ δείτε αυτό https://github.com/ajayyy/SponsorBlock/issues/741 για περισσότερες πληροφορίες."
-    },
-    "youtubePermissionRequest": {
-        "message": "Φαίνεται ότι το SponsorBlock δεν μπορεί να επικοινωνήσει με το YouTube API. Για να το διορθώσετε αυτό, αποδεχτείτε την προτροπή άδειας, που θα εμφανιστεί στη συνέχεια, περιμένετε μερικά δευτερόλεπτα και στη συνέχεια ανανεώστε τη σελίδα."
-    },
     "acceptPermission": {
         "message": "Αποδεχτείτε την άδεια"
     },
@@ -867,11 +871,19 @@
         "message": "Απόκρυψη για πάντα"
     },
     "warningChatInfo": {
-        "message": "Λάβατε προειδοποίηση οπότε δεν μπορείτε να υποβάλετε τμήματα προσωρινά. Αυτό σημαίνει ότι παρατηρήσαμε ότι κάνατε κάποια λάθη των πρωτάριδων και όχι κάτι ύποπτο, παρακαλώ επιβεβαιώστε ότι κατανοείτε τους κανόνες και θα σας αφαιρέσουμε την προειδοποίηση. Μπορείτε και να μας στείλετε μήνυμα στο discord.gg/SponsorBlock ή στο matrix.to/#/#sponsor:ajay.app"
+        "message": "Παρατηρήσαμε ότι κάνατε συνηθισμένα μη κακόβουλα λάθη"
     },
-    "voteRejectedWarning": {
-        "message": "Η ψήφος απορρίφθηκε λόγο μιας προειδοποίησης. Πατήστε για να ανοίξετε μια συνομιλία ώστε να το διορθώσετε, ή επιστρέψτε όταν έχετε περισσότερο χρόνο.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Λάβατε προειδοποίηση"
+    },
+    "questionButton": {
+        "message": "Έχω μια ερώτηση"
+    },
+    "warningConfirmButton": {
+        "message": "Κατανοώ το λόγο"
+    },
+    "warningError": {
+        "message": "Σφάλμα κατά τη γνωστοποίηση της προειδοποίησης:"
     },
     "Donate": {
         "message": "Δωρεά"

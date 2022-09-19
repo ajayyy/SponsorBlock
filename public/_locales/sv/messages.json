@@ -25,8 +25,18 @@
     "Segments": {
         "message": "segment"
     },
+    "SegmentsCap": {
+        "message": "Segment"
+    },
+    "Chapters": {
+        "message": "Kapitel"
+    },
+    "renderAsChapters": {
+        "message": "Gör segment som kapitel",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
-        "message": "Rösta på detta inlägg"
+        "message": "Rösta på detta inskick"
     },
     "reportButtonTitle": {
         "message": "Rapportera"
@@ -44,13 +54,13 @@
         "message": "Visa aldrig"
     },
     "hitGoBack": {
-        "message": "Tryck på Hoppa inte över för att återgå till där du kom i från."
+        "message": "Tryck på hoppa inte över för att återgå till där du kom i från."
     },
     "unskip": {
         "message": "Hoppa inte över"
     },
     "reskip": {
-        "message": "Hoppa över igen"
+        "message": "Hoppa över"
     },
     "unmute": {
         "message": "Ljud"
@@ -62,13 +72,13 @@
         "message": "Timern stoppad"
     },
     "confirmMSG": {
-        "message": "Klicka på infoknappen eller öppna popup-rutan genom att klicka på tilläggets ikon i hörnet uppe till höger för att redigera eller ta bort inviduella värden."
+        "message": "Klicka på infoknappen eller öppna popup-rutan genom att klicka på tilläggets ikon i det översta högra hörnet för att redigera eller ta bort individuella värden."
     },
     "clearThis": {
         "message": "Är du säker på att du vill rensa detta?\n\n"
     },
     "Unknown": {
-        "message": "Ett fel uppstod vid rapportering av sponsormeddelandet, försök igen senare."
+        "message": "Ett fel uppstod vid inskickningen av sponsortiderna, försök igen senare."
     },
     "sponsorFound": {
         "message": "Denna video har segment i databasen!"
@@ -98,7 +108,7 @@
         "message": "Röstat!"
     },
     "serverDown": {
-        "message": "Det verkar som att servern är nere. Kontakta utvecklaren omedelbart."
+        "message": "Det verkar som att servern ligger nere. Kontakta utvecklaren omedelbart."
     },
     "connectionError": {
         "message": "Anslutningsfel. Felkod: "
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Skicka in segment"
+    },
+    "sortSegments": {
+        "message": "Sortera segment"
     },
     "submitCheck": {
         "message": "Är du säker på att du vill skicka in detta?"
@@ -144,7 +157,7 @@
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Tips: Du kan ställa in snabbtangenter för att skicka in i alternativen"
+        "message": "Tips: Du kan i alternativen ställa in snabbtangenter för att skicka in"
     },
     "clearTimesButton": {
         "message": "Rensa tider"
@@ -153,7 +166,7 @@
         "message": "Skicka in tider"
     },
     "publicStats": {
-        "message": "Detta kommer att användas på den publika statistiksidan för att visa hur mycket du har bidragit. Spana in den"
+        "message": "Detta används på den offentliga statistiksidan för att visa hur mycket du har bidragit. Ta en titt"
     },
     "Username": {
         "message": "Användarnamn"
@@ -168,7 +181,7 @@
         "message": "Kopiera Segment-ID"
     },
     "discordAdvert": {
-        "message": "Gå med i den officiella discordservern för att ge förslag och feedback!"
+        "message": "Gå med i den officiella Discord-servern för att ge förslag och feedback!"
     },
     "hideThis": {
         "message": "Dölj detta"
@@ -180,28 +193,28 @@
         "message": "Visa knappar på YouTube-spelaren"
     },
     "hideButtons": {
-        "message": "Dölj Knappar På YouTube-spelaren"
+        "message": "Dölj knappar på YouTube-spelaren"
     },
     "hideButtonsDescription": {
-        "message": "Detta döljer knapparna på YouTube-spelaren som du kan skicka in segment med som ska hoppas över."
+        "message": "Detta döljer knapparna på YouTube-spelaren som du skickar in överhoppade segment med."
     },
     "showSkipButton": {
         "message": "Behåll knappen hoppa till höjdpunkt på spelaren"
     },
     "showInfoButton": {
-        "message": "Visa Infoknapp På YouTube-spelaren"
+        "message": "Visa infoknappen på YouTube-spelaren"
     },
     "hideInfoButton": {
-        "message": "Dölj Infoknapp På YouTube-spelaren"
+        "message": "Dölj infoknappen på YouTube-spelaren"
     },
     "autoHideInfoButton": {
         "message": "Dölj informationsknappen automatiskt"
     },
     "hideDeleteButton": {
-        "message": "Dölj \"Ta Bort\"-knappen På YouTube-spelaren"
+        "message": "Dölj borttagningsknappen på YouTube-spelaren"
     },
     "showDeleteButton": {
-        "message": "Visa knappen ta bort på YouTube-spelaren"
+        "message": "Visa borttagningsknappen på YouTube-spelaren"
     },
     "enableViewTracking": {
         "message": "Aktivera spåra antalet hoppa över"
@@ -233,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Om videon är ny och inga segment hittades då kommer den att uppdateras med några minuters mellanrum medan du tittar på videon."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Visa kategorier i inlämningsmenyn även utan inlämningstillstånd"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Vissa kategorier kräver tillstånd att lämna in på grund av minimikrav på rykte"
+    },
     "showNotice": {
         "message": "Visa meddelandet igen"
     },
@@ -243,19 +262,19 @@
         "message": "Visa kategorihjälp"
     },
     "noticeVisibilityMode0": {
-        "message": "Hoppa över-meddelanden i fullstorlek"
+        "message": "Fullstorlek"
     },
     "noticeVisibilityMode1": {
-        "message": "Små meddelanden för automatisk hoppa över"
+        "message": "Litet meddelande för hoppa över automatiskt"
     },
     "noticeVisibilityMode2": {
-        "message": "Alla hoppa över-meddelanden är små"
+        "message": "Alla meddelanden är små"
     },
     "noticeVisibilityMode3": {
-        "message": "Meddelanden som tonar bort för automatisk hoppa över"
+        "message": "Tonat meddelande för hoppa över automatiskt"
     },
     "noticeVisibilityMode4": {
-        "message": "Alla hoppa över-meddelanden tonas bort"
+        "message": "Tonat meddelande"
     },
     "longDescription": {
         "message": "SponsorBlock låter dig hoppa över sponsormeddelanden, introduktioner, eftertexter, prenumerationspåminnelser och andra irriterande delar av YouTube-videor. SponsorBlock är ett crowdsourced webbläsartillägg som låter vem som helst att skicka in start- och sluttid på sponsorsegment och andra segment av YouTube-videor. När en person skickar in denna information kommer alla andra som har detta tillägg installerat att hoppa över det sponsrade segmentet. Du kan även hoppa över icke-musikavsnitt i musikvideor.",
@@ -289,11 +308,19 @@
         "message": "Skicka segment",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "Nästa kapitel",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Föregående kapitel",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "Välj en tangent genom att trycka på den och välj sedan en av modifieringstangenterna som du vill använda."
     },
     "0": {
-        "message": "Anslutningsfel. Se över din internetanslutning. Om du kan komma åt internet så är servern förmodligen överbelastad eller nere."
+        "message": "Anslutningsfel. Kontrollera din internetanslutning. Om du kan komma åt internet är servern förmodligen överbelastad eller så ligger den nere."
     },
     "disableSkipping": {
         "message": "Hoppa över är aktiverat"
@@ -332,11 +359,11 @@
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
-        "message": "{0} överhoppad",
+        "message": "{0} överhoppade",
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} ljudlös",
+        "message": "{0} ljudlösa",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -347,7 +374,7 @@
         "message": "Inaktivera hoppa över automatiskt"
     },
     "enableAutoSkip": {
-        "message": "Aktivera Hoppa Över Automatiskt"
+        "message": "Aktivera hoppa över automatiskt"
     },
     "audioNotification": {
         "message": "Ljudavisering vid hoppa över"
@@ -365,13 +392,13 @@
         "message": "Du har hoppat över "
     },
     "minLower": {
-        "message": "minuter"
+        "message": "minut"
     },
     "minsLower": {
         "message": "minuter"
     },
     "hourLower": {
-        "message": "timma"
+        "message": "timme"
     },
     "hoursLower": {
         "message": "timmar"
@@ -388,16 +415,16 @@
         "message": "Gå till status.sponsor.ajay.app för serverstatus."
     },
     "changeUserID": {
-        "message": "Importera/Exportera Ditt AnvändarID"
+        "message": "Importera/Exportera ditt Användar-ID"
     },
     "whatChangeUserID": {
         "message": "Detta ska hållas privat. Detta är som ett lösenord och ska inte delas med någon. Om andra får tag i det kan de utge sig för att vara dig. Om du letar efter ditt offentliga Användar-ID kan du klicka på urklippsikonen i popupen."
     },
     "setUserID": {
-        "message": "Ange AnvändarID"
+        "message": "Ange Användar-ID"
     },
     "userIDChangeWarning": {
-        "message": "Varning: Ändring av AnvändarID är permanent. Är du säker att du vill göra det? Se till att ta en backup av ditt gamla för säkerhets skull."
+        "message": "Varning: Ändring av Användar-ID är permanent. Är du säker att du vill göra detta? Se till att ta en säkerhetskopia av ditt gamla för säkerhets skull."
     },
     "createdBy": {
         "message": "Skapad av"
@@ -428,10 +455,10 @@
         "message": "Detta är en ogiltig domän. Den ska ENDAST inkludera domändelen. Exempelvis: invidious.ajay.app"
     },
     "resetInvidiousInstance": {
-        "message": "Rensa Invidious instanslista"
+        "message": "Återställa Invidious instanslista"
     },
     "resetInvidiousInstanceAlert": {
-        "message": "Du kommer nu att rensa Invidious instanslista"
+        "message": "Du kommer nu att återställa Invidious instanslista"
     },
     "currentInstances": {
         "message": "Nuvarande Instanser:"
@@ -442,14 +469,20 @@
     "minDurationDescription": {
         "message": "Segment som är kortare än det angivna värdet kommer inte att hoppas över eller visas i spelaren."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Använd manuellt hoppa över när en fullständig videoetikett visas"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "För personer som vill titta på videon utan avbrott om den är fullt sponsrad eller självbefordran."
+    },
     "skipNoticeDuration": {
-        "message": "Varaktighet på hoppa över-meddelande (sekunder):"
+        "message": "Antalet sekunder meddelandet för hoppa över ska visas:"
     },
     "skipNoticeDurationDescription": {
-        "message": "Meddelandet om att hoppa över kommer att visas på skärmen åtminstone så här länge. För manuell överhoppning kan det visas längre."
+        "message": "Meddelandet om att hoppa över kommer att visas på skärmen åtminstone så här många sekunder. För manuell överhoppning kan det visas längre."
     },
     "shortCheck": {
-        "message": "Följande rapport är kortare än ditt minstavärde i inställningarna. Det skulle kunna betyda att det redan är rapporterat och bara ignorerat på grund av denna inställning. Är du säker på att du vill rapportera?"
+        "message": "Följande inskickning är kortare än ditt minstavärde i alternativen. Det skulle kunna betyda att det redan är inskickat och bara ignorerat på grund av detta alternativ. Är du säker på att du vill skicka in?"
     },
     "liveOrPremiere": {
         "message": "Att skicka in på en aktiv liveström eller premiär är inte tillåtet. Vänta tills den är färdig, uppdatera sedan sidan och kontrollera att segmenten fortfarande är giltiga."
@@ -461,22 +494,22 @@
         "message": "Serveradress för SponsorBlock"
     },
     "customServerAddressDescription": {
-        "message": "Adressen SponsorBlock använder för att kommunicera med servern.\nOm du inte har din egen serverinstans ska den här inställningen inte ändras."
+        "message": "Adressen SponsorBlock använder för att kommunicera med servern.\nOm du inte har en egen serverinstans ska den här inställningen inte ändras."
     },
     "save": {
         "message": "Spara"
     },
     "reset": {
-        "message": "Rensa"
+        "message": "Återställ"
     },
     "customAddressError": {
         "message": "Denna adressen är inte korrekt formaterad. Se till att du har http:// eller https:// i början och inga snedstreck i slutet."
     },
     "areYouSureReset": {
-        "message": "Är du säker på att du vill rensa?"
+        "message": "Är du säker på att du vill återställa detta?"
     },
     "mobileUpdateInfo": {
-        "message": "m.youtube.com stöds nu"
+        "message": "Nu stöds även m.youtube.com"
     },
     "exportOptions": {
         "message": "Importera/Exportera alla alternativen"
@@ -491,7 +524,7 @@
         "message": "Ladda från fil"
     },
     "whatExportOptions": {
-        "message": "Detta är alla dina alternativ i JSON-format. Det inkluderar ditt användar-ID, så var noga med hur du hanterar informationen."
+        "message": "Detta är alla dina alternativ i JSON-format. Det inkluderar ditt Användar-ID, så var noga med hur du hanterar informationen."
     },
     "setOptions": {
         "message": "Ange alternativ"
@@ -518,7 +551,7 @@
         "message": "Förhandsgranska"
     },
     "unsubmitted": {
-        "message": "Ej inskickade"
+        "message": "Oinskickade"
     },
     "inspect": {
         "message": "Granska"
@@ -530,13 +563,13 @@
         "message": "Kopiera felsökningsinformation till urklippet"
     },
     "copyDebugInformationFailed": {
-        "message": "Misslyckades med att kopiera debuginformation till urklipp"
+        "message": "Misslyckades med att skriva till urklippet"
     },
     "copyDebugInformationOptions": {
-        "message": "Kopierar information till urklipp för att dela med en utvecklare vid rapportering av en bugg / när en utvecklare ber om det. Känslig data som användar-ID, vitlistade kanaler, och anpassad serveradress följer inte med. Däremot innehåller det information om useragent, webbläsare, operativsystem, och tilläggsversion. "
+        "message": "Kopierar information till urklippet för att dela med en utvecklare vid rapportering av ett fel / när en utvecklare ber om det. Känslig data som Användar-ID, vitlistade kanaler, och anpassad serveradress följer inte med. Däremot innehåller det information om useragent, webbläsare, operativsystem, och tilläggsversion. "
     },
     "copyDebugInformationComplete": {
-        "message": "Debuginformationen har kopierats till urklipp. Ta bort eventuell information du inte vill dela med dig av. Spara informationen i en textfil eller klistra in den i en buggrapport."
+        "message": "Felsökningsinformation har kopierats till urklippet. Ta bort eventuell information du inte vill dela med dig av. Spara informationen i en textfil eller klistra in den i en felrapport."
     },
     "keyAlreadyUsed": {
         "message": "Denna genväg är bunden till en annan åtgärd. Du måste välja en annan."
@@ -545,14 +578,18 @@
         "message": "till",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Kopierad!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
-        "message": "Inkludera segmentövergångar"
+        "message": "Inkludera mjuka övergångar"
     },
     "generic_guideline2": {
         "message": "Spelar som om ingenting hoppades över"
     },
     "category_sponsor": {
-        "message": "Sponsormeddelande"
+        "message": "Sponsor"
     },
     "category_sponsor_description": {
         "message": "Betald marknadsföring, betalda hänvisningar och direktannonser, men inte till självbefodran eller gratis shoutouts till skapare/webbplatser/produkter de gillar."
@@ -610,7 +647,7 @@
         "message": "Interaktionspåminnelse"
     },
     "category_intro": {
-        "message": "Paus/Introduktion"
+        "message": "Uppehåll/Introduktion"
     },
     "category_intro_description": {
         "message": "Ett intervall utan faktiskt innehåll. Kan vara en paus, statisk ram, upprepande animation. Denna bör inte användas för övergångar som innehåller information."
@@ -637,7 +674,7 @@
         "message": "Förhandsgranska/sammanfatta"
     },
     "category_preview_description": {
-        "message": "Snabb sammanfattning av tidigare avsnitt eller en förhandsvisning av vad som kommer upp senare i den aktuella videon. Avsett för redigerade klipp, inte för sammanfattningar."
+        "message": "Samling av klipp som visar vad som kommer upp i den här videon eller andra videos i en serie där all information upprepas senare i videon."
     },
     "category_preview_guideline1": {
         "message": "Klipp som visas senare, eller i en framtida video"
@@ -696,6 +733,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Kan hoppa över till titeln eller miniatyrbilden"
     },
+    "category_chapter": {
+        "message": "Kapitel"
+    },
+    "category_chapter_description": {
+        "message": "Anpassade namngivna kapitel som beskriver större delar av en video."
+    },
+    "category_chapter_guideline1": {
+        "message": "Nämn inte sponsormärkets namn"
+    },
+    "category_chapter_guideline2": {
+        "message": "Använd större kapitel för allmänna sektioner"
+    },
+    "category_chapter_guideline3": {
+        "message": "Mindre kapitel kan placeras inuti större kapitel"
+    },
     "category_livestream_messages": {
         "message": "Liveström: Donations-/meddelandeavläsningar"
     },
@@ -726,6 +778,9 @@
     "showOverlay_full": {
         "message": "Visa etikett"
     },
+    "showOverlay_chapter": {
+        "message": "Visa kapitel"
+    },
     "autoSkipOnMusicVideos": {
         "message": "Hoppa över alla segment automatiskt när det finns ett icke-musiksegment"
     },
@@ -737,7 +792,7 @@
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
-        "message": "Färg på ej inskickade",
+        "message": "Färg på oinskickade",
         "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
@@ -751,10 +806,10 @@
         "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
     },
     "enableTestingServer": {
-        "message": "Aktivera Server För Betatestning"
+        "message": "Aktivera server för betatestning"
     },
     "whatEnableTestingServer": {
-        "message": "Dina rapporter och röster KOMMER INTE RÄKNAS mot huvudservern. Använd endast detta för testning."
+        "message": "Dina inskickningar och röster KOMMER INTE ATT RÄKNAS mot huvudservern. Använd endast detta för testning."
     },
     "testingServerWarning": {
         "message": "Alla inskickningar och röster KOMMER INTE ATT RÄKNAS mot huvudservern så länge du är ansluten mot testservern. Se till att inaktivera detta när du vill skicka in riktiga inskickningar."
@@ -763,7 +818,7 @@
         "message": "(Nu)"
     },
     "moreCategories": {
-        "message": "Fler Kategorier"
+        "message": "Fler kategorier"
     },
     "chooseACategory": {
         "message": "Välj en kategori"
@@ -781,6 +836,10 @@
     "bracketEnd": {
         "message": "(Slut)"
     },
+    "End": {
+        "message": "Slut",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "dold: rösta ner"
     },
@@ -794,11 +853,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal-ID:t är inte laddat ännu. Om du använder en inbäddad video, prova att använda YouTube-hemsidan istället. Detta kan också bero på förändringar i layouten hos YouTube och om du tror så är fallet kommentera det här:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Det verkar som om något blockerar SponsorBlock från att hämta videodata. Gå till https://github.com/ajayyy/SponsorBlock/issues/741 för mer info."
-    },
-    "youtubePermissionRequest": {
-        "message": "Det verkar som att SponsorBlock inte kan nå YouTube-API:t. För att åtgärda problemet ska du acceptera behörighetsfrågan som visas härnäst och vänta några sekunder och sedan ladda om sidan."
+    "invidiousPermissionRefresh": {
+        "message": "Webbläsaren har återkallat behörigheten som behövs för att fungera på Invidious och andra tredjepartssajter. Klicka på knappen nedan för att återaktivera denna behörighet."
     },
     "acceptPermission": {
         "message": "Godkänn behörighet"
@@ -823,6 +879,13 @@
     },
     "downvoteDescription": {
         "message": "Fel/Fel tidsintervall"
+    },
+    "incorrectVote": {
+        "message": "Felaktig"
+    },
+    "harmfulVote": {
+        "message": "Skadlig",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Ändra kategori"
@@ -859,6 +922,9 @@
     "categoryPillTitleText": {
         "message": "Hela den här videon är märkt som denna kategori och är alltför tätt integrerad för att kunna separeras"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Ett av dina kapitelnamn liknar en kategori. Du bör i stället använda kategorier när det är möjligt."
+    },
     "experiementOptOut": {
         "message": "Hoppa av alla framtida experiment",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +933,19 @@
         "message": "Dölj för alltid"
     },
     "warningChatInfo": {
-        "message": "Du har fått en tillfällig varning och kan inte längre skicka in segment. Vi har upptäckt att du har gjort några vanliga misstag som inte är uppsåtliga. Bekräfta därför att du förstår reglerna, så tar vi bort varningen. Du kan också gå med i den här chatten genom att använda discord.gg/SponsorBlock eller matrix.to/#/#sponsor:ajay.app"
+        "message": "Vi märkte att du gjorde några vanliga misstag som inte var uppsåtligt"
     },
-    "voteRejectedWarning": {
-        "message": "Rösten avvisades på grund av en varning. Klicka för att öppna ett chattfönster för att lösa problemet eller kom tillbaka senare när du har tid.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Du har fått en varning"
+    },
+    "questionButton": {
+        "message": "Jag har en fråga"
+    },
+    "warningConfirmButton": {
+        "message": "Jag förstår varför"
+    },
+    "warningError": {
+        "message": "Fel vid försök att bekräfta varning:"
     },
     "Donate": {
         "message": "Donera"
@@ -910,7 +984,7 @@
         "message": "Skicka in kan antingen göras i popup-fönstret genom att trycka på knappen \"Segmentet startar nu\" eller i videospelaren med knapparna på spelaren."
     },
     "helpPageSubmitting2": {
-        "message": "Genom att klicka på uppspelningsknappen anges början på ett segment och genom att klicka på stopp-ikonen anges slutet. Du kan förbereda flera sponsorer innan du trycker på skicka. Klicka på uppladdningsknappen för att skicka in. Klicka på papperskorgen för att ta bort."
+        "message": "Genom att klicka på uppspelningsknappen anges början på ett segment och genom att klicka på stoppikonen anges slutet. Du kan förbereda flera sponsorer innan du trycker på skicka. Klicka på uppladdningsknappen för att skicka in. Klicka på papperskorgen för att ta bort."
     },
     "Editing": {
         "message": "Redigerar"
@@ -1007,7 +1081,7 @@
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "noticeVisibilityLabel": {
-        "message": "Utseende på hoppa över-meddelandet",
+        "message": "Utseende på meddelandet för hoppa över",
         "description": "Option label"
     },
     "unbind": {
@@ -1034,5 +1108,125 @@
     },
     "confirmResetToDefault": {
         "message": "Är du säker på att du vill återställa alla inställningar till deras standardvärden? Detta kan inte ångras."
+    },
+    "exportSegments": {
+        "message": "Exportera segment"
+    },
+    "importSegments": {
+        "message": "Importera segment"
+    },
+    "Import": {
+        "message": "Importera",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Inlöst!"
+    },
+    "redeemFailed": {
+        "message": "Licensnyckeln är ogiltig"
+    },
+    "hideUpsells": {
+        "message": "Dölj alternativ som inte är tillgängliga utan extra betalning"
+    },
+    "chooseACountry": {
+        "message": "Välj ett land"
+    },
+    "noDiscount": {
+        "message": "Du kvalificerar dig inte för att få rabatt"
+    },
+    "discountLink": {
+        "message": "Rabattlänk (se priset i rosa)"
+    },
+    "selectYourCountry": {
+        "message": "Välj ditt land"
+    },
+    "alreadyDonated": {
+        "message": "Om du har donerat tidigare kan du lösa in fri åtkomst genom att skicka e-post till:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Om du inte har råd att köpa en licens kan du klicka {här} för att se om du är berättigad till rabatt",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Logga in med Patreon"
+    },
+    "redeem": {
+        "message": "Lös in"
+    },
+    "joinOnPatreon": {
+        "message": "Prenumerera på Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Engångsköp"
+    },
+    "enterLicenseKey": {
+        "message": "Ange licensnyckel"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlock crowd-sourced kapitelfunktionen är endast tillgänglig för personer som köper en licens eller för de personer som beviljats gratis tillgång på grund av att de bidragit tidigare"
+    },
+    "chaptersPage2": {
+        "message": "Obs: Tillstånd att skicka in kapitel är fortfarande baserat på beräknat rykte. Köpa en licens låter dig bara visa kapitel som lämnats in av andra",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Ny funktion: Crowd-sourced anpassade kapitel. Dessa är anpassade namngivna avsnitt i videor som kan staplas för att få mer och mer exakt. Köp en licens för att se de kapitel som lämnats på denna video såsom: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Du har för närvarande {0} på {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Du har för närvarande inga oinskickade segment",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "oinskickade segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "oinskickade segment",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videor",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Rensa alla segment",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Är du säker på att du vill rensa alla dina oinskickade segment?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Visa segment",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Dölj segment",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Video-ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Antal segment",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Åtgärder",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Dela som webbadress"
     }
 }

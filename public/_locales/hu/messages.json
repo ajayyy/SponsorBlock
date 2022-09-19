@@ -25,6 +25,16 @@
     "Segments": {
         "message": "szegmens"
     },
+    "SegmentsCap": {
+        "message": "Szegmensek"
+    },
+    "Chapters": {
+        "message": "Fejezetek"
+    },
+    "renderAsChapters": {
+        "message": "Szegmensek megjelenítése fejezetekként",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Részlet felszavazása"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Szegmensek beküldése"
+    },
+    "sortSegments": {
+        "message": "Szegmensek rendezése"
     },
     "submitCheck": {
         "message": "Biztosan be akarod küldeni?"
@@ -233,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Ha a videó új, és még nem találhatóak szegmensek, a bővítmény pár percenkét újra keresi őket, miközben nézed."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Kategóriák megjelenítése a beküldési menüben beküldési engedély nélkül is"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Néhány kategóriánál a beküldés engedélyhez kötött, ami egy minimum hírnév-szinttől függ"
+    },
     "showNotice": {
         "message": "Értesítés megjelenítése ismét"
     },
@@ -287,6 +306,14 @@
     },
     "setSubmitKeybind": {
         "message": "Szegmensek beküldése",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Következő fejezet",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Előző fejezet",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -442,6 +469,12 @@
     "minDurationDescription": {
         "message": "A beállított értéknél rövidebb szegmenseket nem ugorja át és nem jeleníti meg a lejátszó."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Manuális átugrás használata, ha van teljes videó címke"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Azoknak, akik megszakítás nélkül szeretnék végignézni a videót, ha az teljes egészében szponzorált, vagy önpromóció."
+    },
     "skipNoticeDuration": {
         "message": "Átugrási értesítés hossza (másodpercekben):"
     },
@@ -491,7 +524,7 @@
         "message": "Betöltés fájlból"
     },
     "whatExportOptions": {
-        "message": "Ez az összes beállításod JSON formátumban. Ebbe bele tartozik a userID-d is, szóval csak ésszel oszd meg."
+        "message": "Ez az összes beállításod JSON formátumban. Ebbe bele tartozik a userID-d is, úgyhogy csak elővigyázatosan oszd meg."
     },
     "setOptions": {
         "message": "Beállítások módosítása"
@@ -544,6 +577,10 @@
     "to": {
         "message": "–",
         "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "CopiedExclamation": {
+        "message": "Másolva!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
     "generic_guideline1": {
         "message": "Tartalmazza a felkonferálást/átvezetőket is"
@@ -637,7 +674,7 @@
         "message": "Előzetes/Ismétlés"
     },
     "category_preview_description": {
-        "message": "Az előző részekben történtek rövid ismétlése, vagy a videó további tartalmának előzetese. Összevágott jelenetekhez, nem szóbeli összegzéshez."
+        "message": "Olyan klipek gyűjteménye, amik azt mutatják, hogy mi következik majd ebben, vagy a sorozat más videóiban és minden információ megismétlődik később a videóban."
     },
     "category_preview_guideline1": {
         "message": "Klipek amik megjelennek később, vagy egy jövőbeli videóban"
@@ -696,6 +733,21 @@
     "category_poi_highlight_guideline3": {
         "message": "A címhez, vagy indexképhez ugorhat"
     },
+    "category_chapter": {
+        "message": "Fejezet"
+    },
+    "category_chapter_description": {
+        "message": "Egyedileg elnevezett fejezetek a videó nagyobb részeinek leírására."
+    },
+    "category_chapter_guideline1": {
+        "message": "Ne említs szponzor márkaneveket"
+    },
+    "category_chapter_guideline2": {
+        "message": "Használj hosszabb fejezeteket általános részekhez"
+    },
+    "category_chapter_guideline3": {
+        "message": "Nagyobb fejezeteken belül lehetnek kisebb fejezetek"
+    },
     "category_livestream_messages": {
         "message": "Élő adás: Adomány / üzenet olvasások"
     },
@@ -725,6 +777,9 @@
     },
     "showOverlay_full": {
         "message": "Címke megjelenítése"
+    },
+    "showOverlay_chapter": {
+        "message": "Fejezetek megtekintése"
     },
     "autoSkipOnMusicVideos": {
         "message": "Minden szegmens automatikus átugrása, ha van nem-zene szegmens"
@@ -781,6 +836,10 @@
     "bracketEnd": {
         "message": "(Vége)"
     },
+    "End": {
+        "message": "Vége",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "elrejtve: leszavazva"
     },
@@ -794,11 +853,8 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "A csatorna ID még nem került betöltésre. Ha beágyazott videót használsz, próbáld meg inkább a YouTube oldalon keresztül. Ezt okozhatja még a YouTube elrendezésének változása is. Ha így gondolod, hagyj egy kommentet itt:"
     },
-    "videoInfoFetchFailed": {
-        "message": "Úgy tűnik, valami korlátozza a SponsorBlock hozzáférését a videó adataihoz. További információkért látogass el ide: https://github.com/ajayyy/SponsorBlock/issues/741 (angol nyelvű)."
-    },
-    "youtubePermissionRequest": {
-        "message": "Úgy tűnik, a SponsorBlock nem tud csatlakozni a YouTube API-hoz. A javításhoz fogadd el a megjelenő engedélykérést, várj néhány másodpercet, majd töltsd újra az oldalt."
+    "invidiousPermissionRefresh": {
+        "message": "A böngésző visszavonta az engedélyt, ami az Invidious és egyéb oldalakon való működéshez szükséges. Kérjük, kattints a lenti gombra az engedély újbóli megadásához!"
     },
     "acceptPermission": {
         "message": "Engedély jóváhagyása"
@@ -823,6 +879,13 @@
     },
     "downvoteDescription": {
         "message": "Helytelen/rossz időzítés"
+    },
+    "incorrectVote": {
+        "message": "Helytelen"
+    },
+    "harmfulVote": {
+        "message": "Káros",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Kategória módosítása"
@@ -859,6 +922,9 @@
     "categoryPillTitleText": {
         "message": "Az egész videó ezzel a kategóriával van megjelölve és túl szorosan kapcsolódik hozzá, hogy le lehessen választani"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Az egyik fejezeted neve hasonlít egy kategóriára. Amikor lehetséges, mindig használj kategóriákat."
+    },
     "experiementOptOut": {
         "message": "Minden további kísérlet elutasítása",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +933,19 @@
         "message": "Eltüntetés örökre"
     },
     "warningChatInfo": {
-        "message": "Figyelmeztetést kaptál, és ideiglenesen nem tudsz szegmenseket beküldeni. Ez azt jelenti, hogy észrevettük, hogy néhány ártalmatlan gyakori hibát vétettél. Kérjük erősítsd meg, hogy megértetted a szabályokat és eltávolítjuk a figyelmeztetést. Ehhez a beszélgetéshez csatlakozhatsz a discord.gg/SponsorBlock vagy matrix.to/#/#sponsor:ajay.app címeken is."
+        "message": "Észrevettük, hogy néhány nem rossz szándékú, gyakran előforduló hibát ejtettél"
     },
-    "voteRejectedWarning": {
-        "message": "Szavazás visszautasítva figyelmeztetés miatt. Kattints, hogy megnyiss egy beszélgetést a tisztázásához, vagy gyere vissza később, amikor időd van rá.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Figyelmeztetést kaptál"
+    },
+    "questionButton": {
+        "message": "Kérdésem van"
+    },
+    "warningConfirmButton": {
+        "message": "Megértettem az okot"
+    },
+    "warningError": {
+        "message": "Hiba a figyelmeztetés nyugtázása közben:"
     },
     "Donate": {
         "message": "Támogatás"
@@ -1034,5 +1108,125 @@
     },
     "confirmResetToDefault": {
         "message": "Biztosan vissza szeretnéd állítani az összes beállítást az alapértelmezett értékekre? A műveletet nem lehet visszavonni."
+    },
+    "exportSegments": {
+        "message": "Szegmensek exportálása"
+    },
+    "importSegments": {
+        "message": "Szegmensek importálása"
+    },
+    "Import": {
+        "message": "Importálás",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Beváltás sikeres!"
+    },
+    "redeemFailed": {
+        "message": "A licenc kulcs érvénytelen"
+    },
+    "hideUpsells": {
+        "message": "Fizetős opciók elrejtése"
+    },
+    "chooseACountry": {
+        "message": "Válassz országot"
+    },
+    "noDiscount": {
+        "message": "Nem vagy jogosult kedvezményre"
+    },
+    "discountLink": {
+        "message": "Kedvezményes link (A rózsaszín árat figyeld)"
+    },
+    "selectYourCountry": {
+        "message": "Válaszd ki az országodat"
+    },
+    "alreadyDonated": {
+        "message": "Ha korábban már támogattad a bővítményt, kérhetsz ingyenes hozzáférést emailben:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Ha nem engedheted meg magadnak a licenc megvásárlását, kattints {ide}, hogy megtudd, jogosult vagy-e kedvezményre",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Bejelentkezés Patreonnal"
+    },
+    "redeem": {
+        "message": "Beváltás"
+    },
+    "joinOnPatreon": {
+        "message": "Feliratkozás Patreonon"
+    },
+    "oneTimePurchase": {
+        "message": "Egyszeri vásárlás"
+    },
+    "enterLicenseKey": {
+        "message": "Add meg a licenc kulcsot"
+    },
+    "chaptersPage1": {
+        "message": "A SponsorBlock közösség által karbantartott fejezetek funkció csak azok számára érhető el, akik licencet vásárolnak, vagy ingyenes hozzáférést kaptak múltbeli hozzájárulásaikért"
+    },
+    "chaptersPage2": {
+        "message": "Fontos: A fejezetek beküldésére való engedély még mindig a számolt hírnévtől függ. A megvásárolt licenc csak a mások által beküldött fejezetek megtekintésére vonatkozik.",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Új funkció: Közösség által karbantartott fejezetek. Ezek egyedileg elnevezett részei a videóknak, amiket egymásba is lehet ágyazni, hogy egyre pontosabbak lehessenek. Vásárolj licencet, hogy láthasd az ezen a videón beküldött fejezeteket, mint: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Jelenleg {0} van {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Jelenleg nincsenek beküldetlen szegmensek",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "beküldetlen szegmensed",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "beküldetlen szegmensed",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "videón",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videón",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Szegmensek törlése",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Biztosan törölni szeretnéd az összes beküldetlen szegmensedet?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Szegmensek mutatása",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Szegmensek elrejtése",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Videó ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Szegmensek",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Műveletek",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Megosztás linkként"
     }
 }

@@ -52,6 +52,9 @@
     "reskip": {
         "message": "ข้ามใหม่"
     },
+    "unmute": {
+        "message": "เปิดเสียง"
+    },
     "paused": {
         "message": "กำลังหยุดชั่วคราว"
     },

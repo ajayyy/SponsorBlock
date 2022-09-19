@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segments"
     },
+    "SegmentsCap": {
+        "message": "Segments"
+    },
+    "Chapters": {
+        "message": "Chapitres"
+    },
+    "renderAsChapters": {
+        "message": "Affiche les segments en tant que chapitre",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Voter pour cette entrée"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "Soumettre des segments"
+    },
+    "sortSegments": {
+        "message": "Trier les segments"
     },
     "submitCheck": {
         "message": "Êtes-vous sûr de vouloir soumettre ces segments?"
@@ -216,10 +229,10 @@
         "message": "Enregistrer les segments contre lesquels vous avez voté"
     },
     "whatTrackDownvotes": {
-        "message": "Tous les segments que contre lesquels vous votez resteront cachés même après rafraîchissement de la page"
+        "message": "Tous les segments votés négativement resteront cachés même après rafraîchissement de la page"
     },
     "trackDownvotesWarning": {
-        "message": "Attention : la désactivation supprimera tous vos votes précédemment enregistrés"
+        "message": "Attention : Désactiver ceci supprimera tous les contre-votes précédemment enregistrés"
     },
     "enableQueryByHashPrefix": {
         "message": "Requête par préfixe du hash"
@@ -289,6 +302,14 @@
         "message": "Soumettre les segments",
         "description": "Keybind label"
     },
+    "nextChapterKeybind": {
+        "message": "Chapitre suivant",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Chapitre précédent",
+        "description": "Keybind label"
+    },
     "keybindDescription": {
         "message": "Sélectionnez une touche en utilisant le clavier et choisissez les touches de modification que vous souhaitez utiliser."
     },
@@ -318,7 +339,7 @@
         "message": "Couper le son"
     },
     "full": {
-        "message": "Toute la vidéo",
+        "message": "Vidéo entière",
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
@@ -328,7 +349,7 @@
         "message": "Mettre en sourdine {0} ?"
     },
     "skip_to_category": {
-        "message": "Passer à {0}?",
+        "message": "Passer à {0} ?",
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
@@ -391,7 +412,7 @@
         "message": "Importer/Exporter Votre ID d'Utilisateur"
     },
     "whatChangeUserID": {
-        "message": "Cela devrait rester privé. C'est comme un mot de passe et ne devrait être partagé avec personne. Si quelqu'un a cela, il peut vous usurper. Si vous recherchez votre identifiant d'utilisateur public, cliquez sur l'icône du presse-papiers dans le popup."
+        "message": "Il doit rester privé. 0 l'instar d'un mot de passe, il ne doit être partagé avec personne. Si une autre personne est en possession de cette information, elle peut usurper votre identité SponsorBlock. Si vous cherchez votre UserID public, cliquez sur l'icône du presse-papiers dans l'encart."
     },
     "setUserID": {
         "message": "Définir \"UserID\""
@@ -403,7 +424,7 @@
         "message": "Créé par"
     },
     "supportOtherSites": {
-        "message": "Support de YouTube-Sites tierces"
+        "message": "Support de sites tiers YouTube"
     },
     "supportOtherSitesDescription": {
         "message": "Support de clients YouTube tierces. Pour habiliter le support, vous devez accepter les autorisations supplémentaires. Cela ne fonctionne PAS en incognito sur Chrome et d'autres variantes de Chromium.",
@@ -442,6 +463,12 @@
     "minDurationDescription": {
         "message": "Les segments plus courts que la valeur fixée ne seront pas sautés ou affichés dans le lecteur."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Utiliser le saut manuel quand une étiquette vidéo complète existe"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Pour les personnes qui veulent regarder la vidéo sans interruptions si elle est complétement sponsorisée ou auto-promu."
+    },
     "skipNoticeDuration": {
         "message": "Durée du saut de segment (secondes):"
     },
@@ -449,7 +476,7 @@
         "message": "L'avis du saut restera à l'écran pendant au moins aussi longtemps. Pour passer manuellement, il peut être visible plus longtemps."
     },
     "shortCheck": {
-        "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il est déjà soumis, et just ignoré par cette option. Êtes-vous sûr de vouloir soumettre ?"
+        "message": "Le segment suivant est plus court que votre option de durée minimale. Cela pourrait signifier qu'il a déjà été soumis et est simplement ignoré à cause de cette option. Êtes-vous sûr de vouloir soumettre ce segment ?"
     },
     "liveOrPremiere": {
         "message": "La soumission de segments sur un direct en cours ou une première n'est pas autorisée. Veuillez attendre qu'il soit terminé puis actualisez la page et vérifiez que les segments sont toujours valides."
@@ -497,7 +524,7 @@
         "message": "Définir les options"
     },
     "exportOptionsWarning": {
-        "message": "Attention : La modification des options est permanente et peut casser votre installation. Êtes-vous sûr de vouloir faire ça ? Sauvegardez les anciennes au cas où."
+        "message": "Attention : La modification des options est définitive et peut rendre instable voire planter votre installation. Êtes-vous sûr de vouloir faire ça ? Faites une sauvegarde de votre ancienne configuration au cas où."
     },
     "incorrectlyFormattedOptions": {
         "message": "Ce JSON n'est pas formaté correctement. Vos options n'ont pas été modifiées."
@@ -544,6 +571,10 @@
     "to": {
         "message": "à",
         "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "CopiedExclamation": {
+        "message": "Copié!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
     "generic_guideline1": {
         "message": "Inclure les transitions entre les segments"
@@ -595,7 +626,7 @@
         "message": "Rappel d'interaction (abonnement)"
     },
     "category_interaction_description": {
-        "message": "Lorsqu'il y a un bref rappel pour aimer, s'abonner ou les suivre parmi le contenu. Si le message est long ou porte sur quelque chose de spécifique, cela devrait plutôt être classé comme une autopromotion."
+        "message": "Bref rappel d'aimer la vidéo ou de s'abonner à la chaîne au milieu de la vidéo. Si le message est long ou porte sur quelque chose de précis, classez plutôt le segment comme autopromotion."
     },
     "category_interaction_guideline1": {
         "message": "Rappels courts à like, s'abonner ou suivre"
@@ -637,7 +668,7 @@
         "message": "Aperçu/Résumé"
     },
     "category_preview_description": {
-        "message": "Résumé rapide des épisodes précédents, ou aperçu de ce qui se passera plus tard dans la vidéo en cours. Pour les plans collectifs édités, pas pour les résumés parlés."
+        "message": "Collection de clips qui montrent ce qui se passe dans cette vidéo ou d'autres vidéos d'une série où toutes les informations sont répétées plus tard dans la vidéo."
     },
     "category_preview_guideline1": {
         "message": "Clips apparaissant plus tard ou dans une prochaine vidéo"
@@ -696,6 +727,21 @@
     "category_poi_highlight_guideline3": {
         "message": "Peut passer au sujet cité dans le titre ou la miniature"
     },
+    "category_chapter": {
+        "message": "Chapitre"
+    },
+    "category_chapter_description": {
+        "message": "Noms de chapitres personnalisés décrivant les sections importantes d'une vidéo."
+    },
+    "category_chapter_guideline1": {
+        "message": "Ne pas mentionner les marques du sponsor"
+    },
+    "category_chapter_guideline2": {
+        "message": "Utiliser de plus grands chapitres pour les sections générales"
+    },
+    "category_chapter_guideline3": {
+        "message": "Les plus petits chapitres peuvent être placés dans les plus grands"
+    },
     "category_livestream_messages": {
         "message": "Stream : lecture de dons et messages"
     },
@@ -725,6 +771,9 @@
     },
     "showOverlay_full": {
         "message": "Afficher l'étiquette"
+    },
+    "showOverlay_chapter": {
+        "message": "Montre les chapitres"
     },
     "autoSkipOnMusicVideos": {
         "message": "Ignorer automatiquement tous les segments lorsqu'il y a un segment non-musical"
@@ -781,6 +830,10 @@
     "bracketEnd": {
         "message": "(Fin)"
     },
+    "End": {
+        "message": "Fin",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "masqué : vote négatif"
     },
@@ -792,13 +845,10 @@
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
-        "message": "Le Channel ID n'est pas encore chargé. Si vous utilisez une vidéo intégrée, essayez d'utiliser la page d'accueil de YouTube. Cela pourrait également être causé par des changements dans l'interface de YouTube. Si vous pensez que c'est le cas, écrivez un commentaire ici :"
+        "message": "Le Channel ID n'est pas encore chargé. Si vous utilisez une vidéo intégrée, essayez plutôt d'utiliser la page d'accueil de YouTube. Le problème peut également être causé par des changements dans l'interface de YouTube, si vous pensez que c'est le cas, écrivez un commentaire ici :"
     },
-    "videoInfoFetchFailed": {
-        "message": "Il semblerait que quelque chose empêche SponsorBlock de récupérer les données de la vidéo. Veuillez consulter https://github.com/ajayyy/SponsorBlock/issues/741 pour plus d'informations."
-    },
-    "youtubePermissionRequest": {
-        "message": "Il semblerait que SponsorBlock ne puisse pas accéder à l'API YouTube. Pour corriger cela, acceptez la demande de permission qui apparaîtra, attendez quelques secondes, puis rechargez la page."
+    "invidiousPermissionRefresh": {
+        "message": "Le navigateur a refusé l'autorisation nécessaire pour pouvoir fonctionner sur Invidious et d'autres sites tiers. Veuillez cliquer sur le bouton ci-dessous pour réactiver cette autorisation."
     },
     "acceptPermission": {
         "message": "Accepter l'autorisation"
@@ -823,6 +873,13 @@
     },
     "downvoteDescription": {
         "message": "Segment de mauvaise qualité"
+    },
+    "incorrectVote": {
+        "message": "Incorrect"
+    },
+    "harmfulVote": {
+        "message": "Néfaste",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Changer de catégorie"
@@ -859,6 +916,9 @@
     "categoryPillTitleText": {
         "message": "L'intégralité de cette vidéo est classée dans cette catégorie ce qui la rend trop intriquée pour l'en séparer"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Un des noms du chapitre est similaire à la catégorie. Tu devrais plutôt utiliser une catégorie si possible."
+    },
     "experiementOptOut": {
         "message": "Se désinscrire de toutes les futures expériences",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -867,11 +927,19 @@
         "message": "Cacher pour toujours"
     },
     "warningChatInfo": {
-        "message": "Vous avez reçu un avertissement et ne pouvez temporairement pas soumettre de segments. Cela signifie que nous avons remarqué que vous commettiez des erreurs courantes non malveillantes. Veuillez confirmer que vous comprenez le règlement et nous supprimerons l'avertissement. Vous pouvez également rejoindre cette discussion en utilisant discord.gg/SponsorBlock ou matrix.to/#/#sponsor:ajay.app"
+        "message": "Nous avons remarqué que vous faisiez des erreurs courantes qui ne sont pas intentionnelles"
     },
-    "voteRejectedWarning": {
-        "message": "Le vote a été rejeté en raison d'un avertissement. Cliquez pour ouvrir un chat et y mettre fin , ou revenez plus tard lorsque vous avez le temps.",
-        "description": "This is an integrated chat panel that will appearing allowing them to talk to the Discord/Matrix chat without leaving their browser."
+    "warningTitle": {
+        "message": "Vous avez reçu un avertissement"
+    },
+    "questionButton": {
+        "message": "J’ai une question"
+    },
+    "warningConfirmButton": {
+        "message": "Je comprends les risques"
+    },
+    "warningError": {
+        "message": "Erreur lors de la tentative de reconnaissance de l'avertissement :"
     },
     "Donate": {
         "message": "Faire un don"
@@ -1034,5 +1102,121 @@
     },
     "confirmResetToDefault": {
         "message": "Êtes-vous sûr de vouloir rétablir tous les paramètres ? Cette action ne peut pas être annulée."
+    },
+    "exportSegments": {
+        "message": "Exporter les segments"
+    },
+    "importSegments": {
+        "message": "Importer des segments"
+    },
+    "Import": {
+        "message": "Importer",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Code échangé avec succès!"
+    },
+    "redeemFailed": {
+        "message": "La clé de licence est invalide"
+    },
+    "hideUpsells": {
+        "message": "Cache les potions non disponibles sans paiement supplémentaire"
+    },
+    "chooseACountry": {
+        "message": "Sélectionnez un pays"
+    },
+    "noDiscount": {
+        "message": "Vous n'êtes pas éligibles à une réduction"
+    },
+    "discountLink": {
+        "message": "Lien de réduction (Voir le prix rose)"
+    },
+    "selectYourCountry": {
+        "message": "Sélectionne ton pays"
+    },
+    "alreadyDonated": {
+        "message": "Si tu as fait un don de n'importe quel montant avant, tu peux avoir un accès gratuit en envoyant un e-mail :",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Si vous ne pouvez pas vous permettre d'acheter une licence, cliquez sur {here} pour voir si vous êtes admissible à une réduction",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Se connecter avec Patreon"
+    },
+    "redeem": {
+        "message": "Réclamer"
+    },
+    "joinOnPatreon": {
+        "message": "Soutenir sur Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Achat unique"
+    },
+    "enterLicenseKey": {
+        "message": "Entrer la clé de licence"
+    },
+    "chaptersPage1": {
+        "message": "La fonctionnalité participative des chapitres de SponsorBlock n'est disponible que pour les personnes qui achètent une licence, ou pour les personnes qui en ont l'accès gratuitement grâce à leurs contributions passées"
+    },
+    "chapterNewFeature": {
+        "message": "Nouvelle fonctionnalité : Chapitres personnalisés crowd-sourcés. Ce sont des sections dans les vidéos avec un nom personnalisé qui s'améliore au fur et à mesure. Achetez une licence pour voir les chapitres soumis sur cette vidéo tels que: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Vous avez actuellement {0} sur {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Vous avez actuellement soumis aucun segment",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "segment non soumis",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "segments non soumis",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "vidéo",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "vidéos",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Effacer tous les segments",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Êtes-vous sûr de vouloir effacer tout les segments non soumis?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Montrer les segments",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Cacher les segments",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID de la vidéo",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Nombre de segments",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Actions",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Partager un URL"
     }
 }

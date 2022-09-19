@@ -107,7 +107,7 @@
         "message": "مسح الأجزاء"
     },
     "openPopup": {
-        "message": "فتح نافذة سبونسر بلوك المنبثقة"
+        "message": "فتح نافذة SponsorBlock المنبثقة"
     },
     "closePopup": {
         "message": "إغلاق النافذة المنبثقة"
@@ -116,7 +116,7 @@
         "message": "إرسال الأجزاء"
     },
     "submitCheck": {
-        "message": "هل أنت متيقّن من إرسال هذا؟"
+        "message": "هل أنت متأكد أنك تريد إرسال هذا؟"
     },
     "whitelistChannel": {
         "message": "إضافة القناة إلى القائمة البيضاء"
@@ -134,13 +134,13 @@
         "message": "لقد وفّرت على الناس "
     },
     "viewLeaderboard": {
-        "message": "لوحة الصدارة"
+        "message": "المتصدرين"
     },
     "recordTimesDescription": {
         "message": "إرسال"
     },
     "submissionEditHint": {
-        "message": "سيظهر تحرير القسم بعد النقر على إرسال",
+        "message": "سيظهر تحرير الجزء بعد النقر على إرسال",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -162,7 +162,7 @@
         "message": "تعيين اسم مستخدم"
     },
     "copyPublicID": {
-        "message": "نسخ معرف المستخدم العام"
+        "message": "نسخ رمز المستخدم"
     },
     "copySegmentID": {
         "message": "نسخ معرف الجزء"
@@ -206,8 +206,17 @@
     "enableViewTracking": {
         "message": "تمكين تتبع مرات التخطي"
     },
+    "enableTrackDownvotes": {
+        "message": "حفظ التصويت السلبي للمقاطع"
+    },
+    "whatTrackDownvotes": {
+        "message": "أي مقاطع قمت بالتصويت السلبي لها ستبقى مخفية حتى بعد التحديث"
+    },
     "showNotice": {
         "message": "إظهار الإشعار مرة أخرى"
+    },
+    "showCategoryGuidelines": {
+        "message": "إظهار مساعدة الفئة"
     },
     "website": {
         "message": "موقع الويب",
@@ -228,6 +237,10 @@
     "setSubmitKeybind": {
         "message": "إرسال الأجزاء",
         "description": "Keybind label"
+    },
+    "yourWork": {
+        "message": "عملك",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "errorCode": {
         "message": "رمز الخطأ: "
@@ -269,6 +282,9 @@
     },
     "enableAutoSkip": {
         "message": "تفعيل التخطي التلقائي"
+    },
+    "youHaveSkipped": {
+        "message": "قمت بتخطي "
     },
     "minLower": {
         "message": "دقيقة"
@@ -317,6 +333,12 @@
     "exportOptionsUpload": {
         "message": "تحميل من ملف"
     },
+    "setOptions": {
+        "message": "تعيين الخيارات"
+    },
+    "confirmNoticeTitle": {
+        "message": "إرسال المقطع"
+    },
     "submit": {
         "message": "إرسال"
     },
@@ -338,6 +360,9 @@
     "edit": {
         "message": "تعديل"
     },
+    "copyDebugInformationFailed": {
+        "message": "فشل في الكتابة إلى الحافظة"
+    },
     "to": {
         "message": "إلى",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -345,8 +370,20 @@
     "category_sponsor": {
         "message": "الراعي"
     },
+    "category_sponsor_guideline1": {
+        "message": "دعايات مدفوعة"
+    },
+    "category_selfpromo": {
+        "message": "دعاية غير مدفوعة/ذاتية"
+    },
     "category_exclusive_access": {
         "message": "وصول حصري"
+    },
+    "category_intro_short": {
+        "message": "استراحة"
+    },
+    "category_intro_guideline1": {
+        "message": "فاصل بدون محتوى فعلي"
     },
     "category_outro": {
         "message": "الخاتمة/تترات النهاية"
@@ -360,8 +397,55 @@
     "category_music_offtopic": {
         "message": "الموسيقى: مقطع غير موسيقي"
     },
+    "category_music_offtopic_short": {
+        "message": "غير موسيقي"
+    },
+    "category_poi_highlight": {
+        "message": "ابراز"
+    },
+    "category_livestream_messages_short": {
+        "message": "قراءة الرسالة"
+    },
+    "autoSkip": {
+        "message": "تخطي تلقائي"
+    },
+    "manualSkip": {
+        "message": "تخطي يدوي"
+    },
+    "showOverlay": {
+        "message": "إظهار في شريط البحث"
+    },
+    "disable": {
+        "message": "تعطيل"
+    },
+    "autoSkip_POI": {
+        "message": "تخطي تلقائي حتى البدء"
+    },
+    "manualSkip_POI": {
+        "message": "اسأل عند تحميل الفيديو"
+    },
+    "showOverlay_POI": {
+        "message": "إظهار في شريط البحث"
+    },
+    "showOverlay_full": {
+        "message": "إظهار التسمية"
+    },
+    "previewColor": {
+        "message": "لون غير المرسل",
+        "description": "Referring to submissions that have not been sent to the server yet."
+    },
+    "seekBarColor": {
+        "message": "لون شريط البحث"
+    },
     "category": {
         "message": "الفئة"
+    },
+    "skipOption": {
+        "message": "خيار التخطي",
+        "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)"
+    },
+    "enableTestingServer": {
+        "message": "تمكين الخادم التجريبي"
     },
     "bracketNow": {
         "message": "(الآن)"
@@ -371,6 +455,18 @@
     },
     "chooseACategory": {
         "message": "اختر فئة"
+    },
+    "bracketEnd": {
+        "message": "(النهاية)"
+    },
+    "hiddenDueToDownvote": {
+        "message": "مخفي: تصويت سلبي"
+    },
+    "hiddenDueToDuration": {
+        "message": "مخفي: قصير جداً"
+    },
+    "manuallyHidden": {
+        "message": "مخفي يدوياً"
     },
     "permissionRequestSuccess": {
         "message": "نجح طلب الإذن!"
@@ -404,6 +500,18 @@
         "message": "فهمت",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "hideForever": {
+        "message": "إخفاء دائم"
+    },
+    "warningTitle": {
+        "message": "لقد حصلت على تحذير"
+    },
+    "questionButton": {
+        "message": "لدي سؤال"
+    },
+    "warningConfirmButton": {
+        "message": "أنا أفهم السبب"
+    },
     "Donate": {
         "message": "تبرع"
     },
@@ -418,6 +526,15 @@
     },
     "helpPageThanksForInstalling": {
         "message": "شكرا على تثبيت SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "يرجى مراجعة الخيارات أدناه"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "كيف يعمل التخطي"
+    },
+    "Submitting": {
+        "message": "إرسال"
     },
     "Editing": {
         "message": "التعديل"
@@ -440,6 +557,9 @@
     "LearnMore": {
         "message": "معرفة المزيد"
     },
+    "FullDetails": {
+        "message": "التفاصيل الكاملة"
+    },
     "OpenCategoryWikiPage": {
         "message": "افتح صفحة ويكي هذه الفئة."
     },
@@ -448,6 +568,15 @@
     },
     "ContinueVoting": {
         "message": "متابعة التصويت"
+    },
+    "downvote": {
+        "message": "تصويت سلبي"
+    },
+    "upvote": {
+        "message": "تصويت إيجابي"
+    },
+    "hideSegment": {
+        "message": "إخفاء المقطع"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "استخدم عجلة الماوس أثناء التمرير فوق مربع التعديل لضبط الوقت بسرعة. يمكن استخدام مجموعات مفتاح ctrl أو Shift لضبط التغييرات."
@@ -496,5 +625,17 @@
     },
     "youtubeKeybindWarning": {
         "message": "هذا اختصار يوتيوب مدمج. هل أنت متأكد أنك تريد استخدامه؟"
+    },
+    "betaServerWarning": {
+        "message": "الخادم التجريبي مفعّل!"
+    },
+    "openOptionsPage": {
+        "message": "فتح صفحة الخيارات"
+    },
+    "resetToDefault": {
+        "message": "إعادة تعيين الإعدادات الإفتراضية"
+    },
+    "confirmResetToDefault": {
+        "message": "هل أنت متأكد من أنك تريد إعادة تعيين كافة الإعدادات إلى حالتها الافتراضية؟ لا يمكنك التراجع عن ذلك."
     }
 }
