@@ -210,8 +210,8 @@ const Config: SBObject = {
         skipKeybind: {key: "Enter"},
         startSponsorKeybind: {key: ";"},
         submitKeybind: {key: "'"},
-        nextChapterKeybind: {key: "]"},
-        previousChapterKeybind: {key: "["},
+        nextChapterKeybind: {key: "]", ctrl: true},
+        previousChapterKeybind: {key: "[", ctrl: true},
 
         categorySelections: [{
             name: "sponsor" as Category,
