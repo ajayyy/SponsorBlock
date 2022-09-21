@@ -247,7 +247,7 @@
         "message": "Als de video nieuw is en er geen segmenten worden gevonden, zal om de zoveel minuten opnieuw worden gecontroleerd terwijl u kijkt."
     },
     "enableShowCategoryWithoutPermission": {
-        "message": "Toon categorieën in indieningsmenu zelfs zonder toestemming voor indienen"
+        "message": "Categorieën in indieningsmenu weergeven, zelfs zonder toestemming voor indienen"
     },
     "whatShowCategoryWithoutPermission": {
         "message": "Sommige categorieën vereisen toestemming om in te dienen vanwege minimale reputatie vereisten"
