@@ -234,14 +234,15 @@ class PreviewBar {
         const allProgressBars = document.querySelectorAll('.ytp-progress-bar') as NodeListOf<HTMLElement>;
         this.progressBar = findValidElement(allProgressBars) ?? allProgressBars?.[0];
 
-        const newChapterBar = this.progressBar.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
-        if (this.originalChapterBar !== newChapterBar) {
-            // Make sure changes are undone on old bar
-            this.originalChapterBar?.style?.removeProperty("display");
+        if (this.progressBar) {
+            const newChapterBar = this.progressBar.querySelector(".ytp-chapters-container:not(.sponsorBlockChapterBar)") as HTMLElement;
+            if (this.originalChapterBar !== newChapterBar) {
+                // Make sure changes are undone on old bar
+                this.originalChapterBar?.style?.removeProperty("display");
 
-            this.originalChapterBar = newChapterBar;
+                this.originalChapterBar = newChapterBar;
+            }
         }
-        
     }
 
     private update(): void {
