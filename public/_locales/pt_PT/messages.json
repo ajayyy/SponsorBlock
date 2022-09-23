@@ -307,12 +307,6 @@
         "message": " das suas vidas",
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
-    "setUserID": {
-        "message": "Definir ID de utilizador"
-    },
-    "userIDChangeWarning": {
-        "message": "Atenção: A alteração do ID de utilizador é permanente. Tem certeza que a deseja? Certifique-se de fazer uma cópia de segurança do seu ID antigo por precaução."
-    },
     "areYouSureReset": {
         "message": "Tem certeza que deseja redefinir?"
     },
