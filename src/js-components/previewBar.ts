@@ -316,6 +316,9 @@ class PreviewBar {
         if (!this.progressBar || !this.originalChapterBar || this.originalChapterBar.childElementCount <= 0) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             if (this.originalChapterBar) this.originalChapterBar.style.removeProperty("display");
+
+            // Make sure other video types lose their chapter bar
+            document.querySelectorAll(".sponsorBlockChapterBar").forEach((element) => element.remove());
             return;
         }
 
