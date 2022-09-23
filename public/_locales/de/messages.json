@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "Füller/Witze"
     },
-    "category_filler_description": {
-        "message": "Nebensächliche Szenen, die nur als Füller oder Witz dienen und nicht benötigt sind um den Hauptinhalt des Videos zu verstehen. Dies bezieht sich nicht auf Segmente, die Kontext oder Hintergrunddetails liefern."
-    },
     "category_filler_short": {
         "message": "Füller"
     },
