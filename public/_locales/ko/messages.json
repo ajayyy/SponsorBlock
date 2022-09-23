@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "주제와 관련 없는 구간"
     },
-    "category_filler_description": {
-        "message": "이 구간은 전반적인 동영상의 주제를 이해하는 데 필요 없는 내용이 포함됐어요. 상세한 배경지식이나 맥락을 설명하는 구간은 여기에 해당하지 않아요."
-    },
     "category_filler_short": {
         "message": "주제와 관련 없는 구간"
     },
