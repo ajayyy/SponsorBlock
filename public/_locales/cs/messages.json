@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "Výplň / vtipy"
     },
-    "category_filler_description": {
-        "message": "Výplňové scény přidané jen jako přídavek nebo humor, které nejsou vyžadovány pro pochopení hlavního obsahu videa. Toto by nemělo zahrnovat segmenty poskytující kontext nebo podrobnosti na pozadí."
-    },
     "category_filler_short": {
         "message": "Výplň"
     },
