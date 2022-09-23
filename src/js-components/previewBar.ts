@@ -247,7 +247,11 @@ class PreviewBar {
 
     private update(): void {
         this.clear();
-        if (!this.segments) return;
+        const chapterChevron = this.getChapterChevron();
+
+        if (!this.segments) {
+            chapterChevron?.style?.removeProperty("display");
+        }
 
         this.chapterMargin = 2;
         if (this.originalChapterBar) {
@@ -272,10 +276,8 @@ class PreviewBar {
 
         this.createChaptersBar(this.segments.sort((a, b) => a.segment[0] - b.segment[0]));
 
-        const chapterChevron = this.getChapterChevron();
         if (chapterChevron) {
-            if (this.segments.some((segment) => segment.actionType !== ActionType.Chapter 
-                && segment.source === SponsorSourceType.YouTube)) {
+            if (this.segments.some((segment) => segment.source === SponsorSourceType.YouTube)) {
                 chapterChevron.style.removeProperty("display");
             } else {
                 chapterChevron.style.display = "none";
