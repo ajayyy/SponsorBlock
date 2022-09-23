@@ -579,9 +579,6 @@
     "category_preview": {
         "message": "Forhåndsvisning/Oppsummering"
     },
-    "category_filler_description": {
-        "message": "Intetsigende segmenter kun lagt til som fyllstoff eller humor som ikke er nødvendig for å forstå hovedinnholdet i videoen. Dette bør ikke inkludere segmenter som gir kontekst eller bakgrunnsdetaljer."
-    },
     "category_filler_short": {
         "message": "Fyllstoff"
     },
