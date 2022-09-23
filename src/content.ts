@@ -950,6 +950,26 @@ async function sponsorsLookup(keepOldSubmissions = true) {
         && Config.config.skipCount > 200
         && Math.random() > 0.8;
 
+    if (!showChapterMessage 
+            && Config.config.showChapterInfoMessage 
+            && Config.config.payments.freeAccess
+            && !utils.getCategorySelection("chapter")) {
+        Config.config.showChapterInfoMessage = false;
+        const prependElement = document.querySelector(".ytp-chrome-bottom") as HTMLElement;
+        if (prependElement) {
+            Config.config.showChapterInfoMessage = false;
+            new Tooltip({
+                text: chrome.i18n.getMessage("chapterNewFeature2"),
+                linkOnClick: () => void chrome.runtime.sendMessage({ "message": "openConfig" }),
+                referenceNode: prependElement.parentElement,
+                prependElement,
+                timeout: 1500,
+                leftOffset: "20px",
+                positionRealtive: false
+            });
+        }
+    }
+
     const categories: string[] = Config.config.categorySelections.map((category) => category.name);
     if (showChapterMessage && !categories.includes("chapter")) categories.push("chapter");
 
@@ -999,7 +1019,6 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                         positionRealtive: false
                     });
                 }
-
             }
 
             recievedSegments = recievedSegments.filter((s) => s.actionType !== ActionType.Chapter);
