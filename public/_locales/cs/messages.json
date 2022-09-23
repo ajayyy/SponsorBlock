@@ -414,17 +414,8 @@
     "statusReminder": {
         "message": "Podívejte se na status.sponsor.ajay.app pro stav serverů."
     },
-    "changeUserID": {
-        "message": "Importovat / exportovat vaše UserID"
-    },
     "whatChangeUserID": {
         "message": "Toto by mělo být ponecháno v soukromí. Je to jako heslo a nemělo by být s nikým sdíleno. Pokud to někdo má, může se za vás vydávat. Pokud hledáte vaše veřejné uživatelské ID, klikněte na ikonu schránky ve vyskakovacím okně."
-    },
-    "setUserID": {
-        "message": "Nastavit UserID"
-    },
-    "userIDChangeWarning": {
-        "message": "Varování: Změna UserID je nevratná. Opravdu to chcete udělat? Pro jistotu si zálohujte vaše staré ID, jen kdyby něco."
     },
     "createdBy": {
         "message": "Vytvořil"
@@ -522,9 +513,6 @@
     },
     "exportOptionsUpload": {
         "message": "Načíst ze souboru"
-    },
-    "whatExportOptions": {
-        "message": "Toto je celá vaše konfigurace ve formátu JSON. Zahrnuje vaše userID, takže s ní nakládejte opatrně."
     },
     "setOptions": {
         "message": "Nastavit možnosti"
