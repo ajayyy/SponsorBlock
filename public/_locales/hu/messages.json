@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "Témától eltérő töltelék/viccek"
     },
-    "category_filler_description": {
-        "message": "Csak töltelékként, vagy humornak hozzáadott részek, amik nem szükségesek a videó fő tartalmának megértéséhez. Ne tartalmazzon olyan szegmenseket, amik kontextust, vagy alapvető információkat szolgáltatnak."
-    },
     "category_filler_short": {
         "message": "Töltelék"
     },
