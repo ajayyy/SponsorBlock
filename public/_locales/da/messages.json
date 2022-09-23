@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "Fyldningstangent/Jokes"
     },
-    "category_filler_description": {
-        "message": "Tangential scener kun tilføjet for fyldstof eller humor, som ikke er nødvendige for at forstå videoens hovedindhold. Dette bør ikke omfatte segmenter, der gtiver kontekst eller bagrundsoplysninger."
-    },
     "category_filler_short": {
         "message": "Fyldstof"
     },
