@@ -651,9 +651,6 @@
     "category_filler": {
         "message": "Pengisi Tak berkaitan/Lawakan"
     },
-    "category_filler_description": {
-        "message": "Adegan tangensial ditambahkan hanya untuk pengisi atau humor yang tidak diperlukan untuk memahami isi utama video. Ini tidak boleh mencakup segmen yang memberikan detail konteks atau latar belakang."
-    },
     "category_filler_short": {
         "message": "Isian"
     },
