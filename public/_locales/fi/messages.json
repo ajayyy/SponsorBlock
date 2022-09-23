@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "Epäolennainen täytesisältö/Vitsit"
     },
-    "category_filler_description": {
-        "message": "Täytteeksi tai huumoriksi lisättyjä toissijaisia kohtauksia, joita videon pääsisällön ymmärrys ei edellytä. Tämän ei tulisi sisältää aiheeseen liittyviä tai taustatietoja tarjoavia osioita."
-    },
     "category_filler_short": {
         "message": "Täytesisältö"
     },
