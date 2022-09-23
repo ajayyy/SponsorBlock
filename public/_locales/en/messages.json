@@ -415,16 +415,16 @@
         "message": "Check status.sponsor.ajay.app for server status."
     },
     "changeUserID": {
-        "message": "Import/Export Your UserID"
+        "message": "Import/Export Your Private UserID"
     },
     "whatChangeUserID": {
         "message": "This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you. If you are looking for your public userID, click the clipboard icon in the popup."
     },
     "setUserID": {
-        "message": "Set UserID"
+        "message": "Set Private UserID"
     },
     "userIDChangeWarning": {
-        "message": "Warning: Changing the UserID is permanent. Are you sure you would like to do this? Make sure to backup your old one just in case."
+        "message": "Warning: Changing the Private UserID is permanent. Are you sure you would like to do this? Make sure to backup your old one just in case."
     },
     "createdBy": {
         "message": "Created By"
@@ -524,7 +524,7 @@
         "message": "Load from file"
     },
     "whatExportOptions": {
-        "message": "This is your entire configuration in JSON. This includes your userID, so be sure to share this wisely."
+        "message": "This is your entire configuration in JSON. This includes your Private UserID, so be sure to share this wisely."
     },
     "setOptions": {
         "message": "Set Options"
