@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "動画がまだ新しくセグメントが見つからない場合は、動画を視聴している間、数分おきにセグメントを検索し続けます。"
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "提出権限を持っていないカテゴリーも提出メニューに表示する"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "一部のカテゴリーは提出に一定以上の評判が必要です"
+    },
     "showNotice": {
         "message": "再度通知を表示する"
     },
@@ -1159,6 +1165,14 @@
     },
     "chaptersPage1": {
         "message": "SponsorBlockのクラウドソーシングによるチャプター機能は、ライセンス購入をされた方、もしくは過去の貢献により許可された方のみが利用できます"
+    },
+    "chaptersPage2": {
+        "message": "注: チャプターの提出権限は算出された評判に基づいています。ライセンスを購入することで、他の人が提出したチャプターを閲覧できるようになります",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "新機能: クラウドソーシングによるカスタムチャプター。動画内のセクションを入れ子構造にできるので、より精密な区分けができます。この動画に登録されたチャプターを表示するにはライセンスをご購入ください。チャプターはこのように表示されます: ",
+        "description": "After the comma, a list of chapters for this video will appear"
     },
     "unsubmittedSegmentCounts": {
         "message": "現在、{1} に {0} があります",

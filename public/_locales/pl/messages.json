@@ -1134,20 +1134,60 @@
     "enterLicenseKey": {
         "message": "Wprowadź klucz licencyjny"
     },
+    "chapterNewFeature": {
+        "message": "Nowa funkcja: niestandardowe rozdziały ze źródeł społecznościowych. Są to sekcje niestandardowo nazwane w filmach, które mogą być ustawione w sposób bardziej precyzyjny. Kup licencję, aby wyświetlić rozdziały przedstawione na tym filmie, takie jak: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Aktualnie masz {0} na {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Aktualnie nie masz żadnych nieprzesłanych segmentów",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "nieprzesłany segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "nieprzesłanych segmentów",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
     "videosSingular": {
-        "message": "film",
+        "message": "filmie",
         "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
     },
     "videosPlural": {
-        "message": "filmy",
+        "message": "filmach",
         "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
     },
     "clearUnsubmittedSegments": {
         "message": "Wyczyść wszystkie segmenty",
         "description": "Label for a button in settings"
     },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Czy na pewno chcesz wyczyścić wszystkie nieprzesłane segmenty?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Pokaż segmenty",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Ukryj segmenty",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
     "videoID": {
         "message": "ID filmu",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Liczba segmentów",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Akcje",
         "description": "Header of the unsubmitted segments list"
     },
     "exportSegmentsAsURL": {

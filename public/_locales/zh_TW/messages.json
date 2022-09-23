@@ -32,7 +32,7 @@
         "message": "章節"
     },
     "renderAsChapters": {
-        "message": "以章節的方式渲染片段",
+        "message": "以章節渲染片段",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
     "upvoteButtonInfo": {
@@ -63,7 +63,7 @@
         "message": "繼續跳過"
     },
     "unmute": {
-        "message": "解除靜音"
+        "message": "取消靜音"
     },
     "paused": {
         "message": "已暫停"
@@ -178,7 +178,7 @@
         "message": "複製公開使用者ID"
     },
     "copySegmentID": {
-        "message": "複製片段ID"
+        "message": "複製片段 ID"
     },
     "discordAdvert": {
         "message": "快加入官方 Discord 伺服器來給予建議和反應！"
@@ -232,7 +232,7 @@
         "message": "所有你按倒讚的片段在重新整理後仍會保留"
     },
     "trackDownvotesWarning": {
-        "message": "警告：停用此將刪除所有之前儲存的倒讚"
+        "message": "警告: 停用此項將全數刪除先前儲存的倒讚"
     },
     "enableQueryByHashPrefix": {
         "message": "使用雜湊前綴查詢"
@@ -259,10 +259,10 @@
         "message": "完整大小的略過提醒"
     },
     "noticeVisibilityMode1": {
-        "message": "小的自動略過提醒"
+        "message": "較小大小的自動略過提醒"
     },
     "noticeVisibilityMode2": {
-        "message": "所有小的略過提醒"
+        "message": "所有大小為小的略過提醒"
     },
     "noticeVisibilityMode3": {
         "message": "消逝的自動跳過提醒"
@@ -295,7 +295,7 @@
         "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "開始／停止片段",
+        "message": "開始/停止片段",
         "description": "Keybind label"
     },
     "setSubmitKeybind": {

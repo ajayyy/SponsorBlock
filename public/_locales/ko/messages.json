@@ -11,10 +11,10 @@
         "message": "서버에서 유효하지 않은 요청이라고 응답했어요"
     },
     "429": {
-        "message": "이 영상에 많은 스폰서 광고 구간을 제출했어요, 정말로 확실한가요?"
+        "message": "이 영상에 많은 스폰서 광고 구간을 제출했어요. 정말로 확실하신가요?"
     },
     "409": {
-        "message": "이 구간은 이미 제출된 적이 있어요."
+        "message": "이전에 이미 제출된 적이 있어요"
     },
     "channelWhitelisted": {
         "message": "채널이 화이트리스트에 추가됐어요!"
@@ -75,10 +75,10 @@
         "message": "구간의 길이를 수정하거나 삭제하고 싶다면, 정보 버튼을 클릭하거나 우측 상단에 있는 확장 프로그램 아이콘을 눌러 확장 프로그램 팝업을 열 수 있어요."
     },
     "clearThis": {
-        "message": "정말로 삭제하시겠어요?\n\n"
+        "message": "정말로 초기화하시겠어요?\n\n"
     },
     "Unknown": {
-        "message": "스폰서 광고 구간을 제출하는 동안 오류가 발생했어요, 나중에 다시 시도해주세요."
+        "message": "스폰서 광고 구간을 제출하는 동안 오류가 발생했어요. 나중에 다시 시도해주세요."
     },
     "sponsorFound": {
         "message": "이 동영상은 데이터베이스에 있는 구간을 포함해요!"
@@ -114,7 +114,7 @@
         "message": "연결 오류가 발생했어요. 오류 코드: "
     },
     "clearTimes": {
-        "message": "구간 삭제"
+        "message": "구간 초기화"
     },
     "openPopup": {
         "message": "SponsorBlock 팝업 열기"
@@ -129,7 +129,7 @@
         "message": "구간 정렬"
     },
     "submitCheck": {
-        "message": "정말로 제출할까요?"
+        "message": "정말로 이걸 제출하시겠어요?"
     },
     "whitelistChannel": {
         "message": "화이트리스트에 채널 추가"
@@ -160,13 +160,13 @@
         "message": "도움말: 설정에서 제출 단축키를 설정하실 수 있어요"
     },
     "clearTimesButton": {
-        "message": "구간 삭제"
+        "message": "구간 초기화"
     },
     "submitTimesButton": {
         "message": "구간 제출"
     },
     "publicStats": {
-        "message": "얼마나 구간 제출에 기여했는지 확인할 수 있는 정보 페이지로, 여기서 확인하실 수 있어요:"
+        "message": "얼마나 기여했는지 확인할 수 있는 공개 통계 페이지로 다음에서 확인하실 수 있어요."
     },
     "Username": {
         "message": "사용자명"
@@ -229,10 +229,10 @@
         "message": "비추천한 구간 저장"
     },
     "whatTrackDownvotes": {
-        "message": "비추천한 구간을 새로고침 이후에도 계속 숨겨요."
+        "message": "비추천한 구간을 새로고침 이후에도 계속 숨겨요"
     },
     "trackDownvotesWarning": {
-        "message": "경고: 비활성화하면 이전에 저장된 비추천 구간이 삭제돼요."
+        "message": "경고: 비활성화하면 이전에 저장된 비추천 구간이 삭제돼요"
     },
     "enableQueryByHashPrefix": {
         "message": "해시 접두사로 요청 전송"
@@ -470,7 +470,7 @@
         "message": "설정한 값보다 작은 구간은 건너뛰지 않으며 탐색 바에 표시되지 않아요."
     },
     "enableManualSkipOnFullVideo": {
-        "message": "동영상 전체 라벨이 존재하는 경우 수동 스킵 사용"
+        "message": "동영상 전체 라벨이 존재하는 경우 수동 건너뛰기 사용"
     },
     "whatManualSkipOnFullVideo": {
         "message": "전반적인 동영상 내용이 협찬이거나 자체 홍보인 경우에도 동영상을 계속 시청하고자 하는 분을 위한 설정이에요."
@@ -494,7 +494,7 @@
         "message": "SponsorBlock 서버 주소"
     },
     "customServerAddressDescription": {
-        "message": "SponsorBlock이 서버에 연결을 보낼 주소에요.\n따로 구축한 서버 인스턴스가 없으면, 이 주소를 변경하지 않는 게 좋아요."
+        "message": "SponsorBlock이 서버에 연결을 보낼 주소예요.\n따로 구축한 서버 인스턴스가 없으면, 이 주소를 변경하지 않는 게 좋아요."
     },
     "save": {
         "message": "저장"
@@ -506,7 +506,7 @@
         "message": "올바르지 않은 주소예요. http:// 또는 https://로 시작해야 하고 마지막 문자에 빗금이 있지 않아야 해요."
     },
     "areYouSureReset": {
-        "message": "이 제출 형식을 초기화하시겠어요?"
+        "message": "이걸 정말로 초기화하시겠어요?"
     },
     "mobileUpdateInfo": {
         "message": "이제 m.youtube.com 링크를 지원해요."
@@ -579,7 +579,7 @@
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
     "CopiedExclamation": {
-        "message": "복사 완료!",
+        "message": "복사했어요!",
         "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
     "generic_guideline1": {
@@ -632,7 +632,7 @@
         "message": "상호작용 알림 구간"
     },
     "category_interaction_description": {
-        "message": "이 구간은 동영상 내 좋아요, 구독, 팔로우를 요청하는 내용이 포함됐어요. 특정 무언가에 관한 내용이라면, \"홍보 구간\" 카테고리로 지정해야 해요."
+        "message": "이 구간은 동영상 속에 좋아요, 구독, 팔로우를 요청하는 내용이 포함됐어요. 특정 무언가에 관한 내용이라면, \"홍보 구간\" 카테고리로 지정해야 해요."
     },
     "category_interaction_guideline1": {
         "message": "좋아요, 구독, 팔로우 등을 요청하는 구간이어야 함"
@@ -650,7 +650,7 @@
         "message": "인트로/무음 구간"
     },
     "category_intro_description": {
-        "message": "이 구간은 동영상 내 반복되는 애니메이션이나 정적 프레임과 같은 내용이 포함됐어요. 전환 시 정보를 포함하는 구간은 여기에 해당하지 않아요."
+        "message": "이 구간은 동영상 속에 반복되는 애니메이션이나 정적 프레임과 같은 내용이 포함됐어요. 전환 시 정보를 포함하는 구간은 여기에 해당하지 않아요."
     },
     "category_intro_short": {
         "message": "인트로/무음 구간"
@@ -746,7 +746,7 @@
         "message": "일반적인 부분에서는 큰 챕터를 사용해야 함"
     },
     "category_chapter_guideline3": {
-        "message": "큰 챕터 내 작은 챕터를 배치할 수 있음"
+        "message": "큰 챕터 속에 작은 챕터를 배치할 수 있음"
     },
     "category_livestream_messages": {
         "message": "실시간: 후원자 메시지 구간"
@@ -891,7 +891,7 @@
         "message": "카테고리를 변경해요"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "이 동영상은 음악 동영상으로 분류되어 있어요. 동영상에 스폰서 광고 구간이 있나요? \"음악이 아닌 구간\"으로 지정된 카테고리인 경우, 확장 프로그램 설정을 열어 이 카테고리를 활성화하세요. 그리고, 이 구간을 \"스폰서 광고 구간\" 대신 \"음악이 아닌 구간\"으로 지정하세요. 혼동될 때 가이드라인을 읽어보세요."
+        "message": "이 동영상은 음악 동영상으로 분류되어 있어요. 동영상에 스폰서 광고 구간이 있나요? \"음악이 아닌 구간\"으로 지정된 카테고리인 경우, 확장 프로그램 설정을 열어 이 카테고리를 활성화하세요. 그리고, 이 구간을 \"스폰서 광고 구간\" 대신 \"음악이 아닌 구간\"으로 지정하세요. 혼동된다면 가이드라인을 읽어주세요."
     },
     "multipleSegments": {
         "message": "여러 구간"
@@ -936,10 +936,10 @@
         "message": "악의적인 의도는 없었던 듯 보이지만 제출하신 구간 중에 일부 문제가 있는 것 같아요."
     },
     "warningTitle": {
-        "message": "경고를 받으셨어요!"
+        "message": "경고를 받으셨어요"
     },
     "questionButton": {
-        "message": "경고 사유에 대해 질문이 있어요"
+        "message": "아직 질문이 있어요"
     },
     "warningConfirmButton": {
         "message": "네, 이해했어요"
@@ -1035,7 +1035,7 @@
         "message": "계속 투표"
     },
     "ChangeCategoryTooltip": {
-        "message": "변경된 카테고리가 구간에 적용돼요"
+        "message": "이게 내 구간에 바로 적용될 거예요"
     },
     "downvote": {
         "message": "비추천"
@@ -1050,7 +1050,7 @@
         "message": "편집 상자 위에 마우스 커서를 올린 채 스크롤해서 시간을 빠르게 조정해 보세요. Ctrl이나 Shift 키를 누른 채로 스크롤하면 세밀하게 조정할 수 있어요."
     },
     "categoryPillNewFeature": {
-        "message": "새로운 기능! 이제 동영상 전체가 광고거나 홍보면 표시할 수 있어요."
+        "message": "새로운 기능! 이제 동영상 전체가 광고거나 자체 홍보인지 확인해 보세요"
     },
     "dayAbbreviation": {
         "message": "일",
@@ -1120,28 +1120,28 @@
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
     "redeemSuccess": {
-        "message": "요청 성공!"
+        "message": "등록에 성공했어요!"
     },
     "redeemFailed": {
-        "message": "라이선스 키가 잘못됐어요"
+        "message": "라이선스 키가 유효하지 않아요"
     },
     "hideUpsells": {
-        "message": "추가 결제 없이는 숨김 설정을 이용하실 수 없습니다"
+        "message": "추가 결제 없이는 숨김 설정을 이용하실 수 없어요"
     },
     "chooseACountry": {
         "message": "국가 선택"
     },
     "noDiscount": {
-        "message": "할인 조건에 해당하시지 않습니다"
+        "message": "할인 조건에 해당하시지 않아요"
     },
     "discountLink": {
         "message": "할인 링크 (분홍색 가격 확인)"
     },
     "selectYourCountry": {
-        "message": "국가 선택"
+        "message": "국가를 선택하세요"
     },
     "alreadyDonated": {
-        "message": "이전에 후원한 이력이 있다면, 메일을 보내 라이선스를 요청하실 수 있어요. 문의 주소:",
+        "message": "이전에 후원한 이력이 있다면, 메일을 보내 라이선스를 등록하실 수 있어요. 문의 주소:",
         "description": "After the colon is an email address"
     },
     "cantAfford": {
@@ -1152,7 +1152,7 @@
         "message": "Patreon으로 로그인"
     },
     "redeem": {
-        "message": "요청"
+        "message": "등록"
     },
     "joinOnPatreon": {
         "message": "Patreon에서 구독"
@@ -1161,41 +1161,21 @@
         "message": "일회성 구매"
     },
     "enterLicenseKey": {
-        "message": "라이선스 키 입력"
+        "message": "라이선스 키를 입력하세요"
     },
     "chaptersPage1": {
-        "message": "SponsorBlock 사용자 참여 챕터 기능은 라이선스 결제 사용자나 이전 기여를 통해 접근을 허가받은 사용자만 이용할 수 있어요"
+        "message": "SponsorBlock 사용자 참여 챕터 기능은 라이선스 결제 사용자나, 이전 기여를 통해 접근을 허가받은 사용자만 이용할 수 있어요"
     },
     "chaptersPage2": {
-        "message": "참고: 여전히 챕터 제출 권한은 산정된 평판만을 바탕으로 부여돼요. 요금을 결제하면 다른 사람들이 제출한 챕터를 확인하는 기능만 추가로 이용할 수 있어요",
+        "message": "참고: 여전히 챕터 제출 권한은 산정된 평판만을 바탕으로 부여돼요. 라이선스를 결제하면 다른 분이 제출한 챕터를 확인하는 기능만 추가로 이용할 수 있어요",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
-    "unsubmittedSegmentCounts": {
-        "message": "현재 {1}개에 {0}이 있어요",
-        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
-    },
-    "unsubmittedSegmentCountsZero": {
-        "message": "미제출한 구간이 없어요",
-        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
-    },
-    "unsubmittedSegmentsSingular": {
-        "message": "개의 미제출한 구간",
-        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
-    },
-    "unsubmittedSegmentsPlural": {
-        "message": "개의 미제출한 구간",
-        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
-    },
-    "videosSingular": {
-        "message": "동영상",
-        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
-    },
-    "videosPlural": {
-        "message": "동영상",
-        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    "chapterNewFeature": {
+        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 이 동영상에 제출된 챕터를 보려면 라이선스를 결제하세요. 챕터 목록 미리보기: ",
+        "description": "After the comma, a list of chapters for this video will appear"
     },
     "clearUnsubmittedSegments": {
-        "message": "모든 구간 지우기",
+        "message": "모든 구간 초기화",
         "description": "Label for a button in settings"
     },
     "clearUnsubmittedSegmentsConfirm": {
@@ -1223,6 +1203,6 @@
         "description": "Header of the unsubmitted segments list"
     },
     "exportSegmentsAsURL": {
-        "message": "URL 공유"
+        "message": "URL로 공유"
     }
 }

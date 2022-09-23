@@ -1170,6 +1170,10 @@
         "message": "Poznámka: Oprávnění k odesílání kapitol je stále založené na vypočítané reputaci. Zakoupení licence vám pouze umožní zobrazit si kapitoly odeslané ostatními uživateli",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
+    "chapterNewFeature": {
+        "message": "Nová funkce: komunitní vlastní kapitoly. Jedná se o komunitou vytvořené sekce ve videích, které lze slučovat, aby byly stále přesnější. Zakupte si licenci pro zobrazení kapitol u tohoto videa, jako například: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
     "unsubmittedSegmentCounts": {
         "message": "Momentálně máte {0} na {1}",
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"

@@ -246,6 +246,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Als de video nieuw is en er geen segmenten worden gevonden, zal om de zoveel minuten opnieuw worden gecontroleerd terwijl u kijkt."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Categorieën in indieningsmenu weergeven, zelfs zonder toestemming voor indienen"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Voor sommige categorieën is toestemming nodig om in te dienen vanwege minimale reputatie-eisen"
+    },
     "showNotice": {
         "message": "Melding opnieuw weergeven"
     },
@@ -1159,6 +1165,14 @@
     },
     "chaptersPage1": {
         "message": "De SponsorBlock-functie voor crowd-sourced hoofdstukken is alleen beschikbaar voor mensen die een licentie kopen of voor mensen die gratis toegang krijgen vanwege hun bijdragen in het verleden"
+    },
+    "chaptersPage2": {
+        "message": "Opmerking: toestemming om hoofdstukken in te dienen is nog steeds gebaseerd op berekende reputatie. Door een licentie te kopen kunt u enkel hoofdstukken bekijken die door anderen zijn ingediend",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Nieuwe functie: gecrowdsourcete aangepaste hoofdstukken. Dit zijn hoofdstukken met een eigen naam in video's die gestapeld kunnen worden om steeds preciezer te worden. Koop een licentie om de ingezonden hoofdstukken op deze video te bekijken, zoals: ",
+        "description": "After the comma, a list of chapters for this video will appear"
     },
     "unsubmittedSegmentCounts": {
         "message": "U hebt momenteel {0} in {1}",
