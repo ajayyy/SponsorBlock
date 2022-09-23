@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "繋ぎの話/冗談"
     },
-    "category_filler_description": {
-        "message": "動画の本編を理解するのに必要のない、繋ぎの話やユーモアによって脱線したシーン。これには、文脈や背景の詳細を提供しているセグメントを含めないでください。"
-    },
     "category_filler_short": {
         "message": "繋ぎの話"
     },
