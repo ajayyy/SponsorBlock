@@ -667,9 +667,6 @@
     "category_filler": {
         "message": "Täitesisu/naljad"
     },
-    "category_filler_description": {
-        "message": "Video täiteks või huumori eesmärgil lisatud sisu, mis ei ole vajalik video põhieesmärgi mõistmiseks. Selle alla ei kuulu segmendid, mis annavad kontekstiteavet või taustainfot."
-    },
     "category_filler_short": {
         "message": "Täide"
     },
