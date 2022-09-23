@@ -235,6 +235,10 @@ div:hover > .sponsorBlockChapterBar {
 	min-width: 100%;
 }
 
+.exportCopiedNotice .sponsorSkipNoticeTableContainer {
+	background-color: transparent; 
+}
+
 .sponsorSkipNotice {
 	transition: all 0.1s ease-out;
 }
@@ -254,6 +258,10 @@ div:hover > .sponsorBlockChapterBar {
 
 .sponsorSkipNoticeFadeIn {
 	animation: fadeIn 0.5s ease-out;
+}
+
+.exportCopiedNotice .sponsorSkipNoticeFadeIn {
+	animation: none;
 }
 
 .sponsorSkipNoticeFaded {

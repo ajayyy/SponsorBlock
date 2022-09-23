@@ -19,7 +19,7 @@ export interface NoticeProps {
 
     fadeIn?: boolean,
     startFaded?: boolean,
-    firstColumn?: React.ReactElement,
+    firstColumn?: React.ReactElement[] | React.ReactElement,
     firstRow?: React.ReactElement,
     bottomRow?: React.ReactElement[],
 

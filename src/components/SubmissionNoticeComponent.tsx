@@ -8,6 +8,7 @@ import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import SponsorTimeEditComponent from "./SponsorTimeEditComponent";
 import { getGuidelineInfo } from "../utils/constants";
+import { exportTimes } from "../utils/exporter";
 
 export interface SubmissionNoticeProps { 
     // Contains functions and variables from the content script needed by the skip notice
@@ -78,7 +79,16 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                 className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipSmallButton"
                 onClick={() => this.sortSegments()}
                 title={chrome.i18n.getMessage("sortSegments")}
+                key="sortButton"
                 src={chrome.extension.getURL("icons/sort.svg")}>
+            </img>;
+        const exportButton = 
+            <img id={"sponsorSkipExportButton" + this.state.idSuffix} 
+                className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipSmallButton"
+                onClick={() => this.exportSegments()}
+                title={chrome.i18n.getMessage("exportSegments")}
+                key="exportButton"
+                src={chrome.extension.getURL("icons/export.svg")}>
             </img>;
         return (
             <NoticeComponent noticeTitle={this.state.noticeTitle}
@@ -86,7 +96,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                 ref={this.noticeRef}
                 closeListener={this.cancel.bind(this)}
                 zIndex={5000}
-                firstColumn={sortButton}>
+                firstColumn={[sortButton, exportButton]}>
 
                 {/* Text Boxes */}
                 {this.getMessageBoxes()}
@@ -214,6 +224,30 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         Config.forceSyncUpdate("unsubmittedSegments");
 
         this.forceUpdate();
+    }
+
+    exportSegments() {
+        const sponsorTimesSubmitting = this.props.contentContainer()
+            .sponsorTimesSubmitting.sort((a, b) => a.segment[0] - b.segment[0]);
+        window.navigator.clipboard.writeText(exportTimes(sponsorTimesSubmitting));
+
+        new GenericNotice(null, "exportCopied", {
+            title: chrome.i18n.getMessage(`CopiedExclamation`),
+            timed: true,
+            maxCountdownTime: () => 0.6,
+            referenceNode: document.querySelector(".noticeLeftIcon"),
+            dontPauseCountdown: true,
+            style: {
+                top: 0,
+                bottom: 0,
+                minWidth: 0,
+                right: "30px",
+                margin: "auto"
+            },
+            hideLogo: true,
+            hideRightInfo: true,
+            extraClass: "exportCopiedNotice"
+        });
     }
 
     categoryChangeListener(index: number, category: Category): void {

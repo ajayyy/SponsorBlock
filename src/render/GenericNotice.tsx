@@ -67,25 +67,31 @@ export default class GenericNotice {
                 hideLogo={options.hideLogo}
                 hideRightInfo={options.hideRightInfo}
                 closeListener={() => this.close()} >
-                    
-                    <tr id={"sponsorSkipNoticeMiddleRow" + this.idSuffix}
-                        className="sponsorTimeMessagesRow"
-                        style={{maxHeight: this.contentContainer ? (this.contentContainer().v.offsetHeight - 200) + "px" : null}}>
-                        <td style={{width: "100%"}}>
-                            {this.getMessageBoxes(this.idSuffix, options.textBoxes)}
-                        </td>
-                    </tr>
+                    {options.textBoxes?.length > 0 ?
+                        <tr id={"sponsorSkipNoticeMiddleRow" + this.idSuffix}
+                            className="sponsorTimeMessagesRow"
+                            style={{maxHeight: this.contentContainer ? (this.contentContainer().v.offsetHeight - 200) + "px" : null}}>
+                            <td style={{width: "100%"}}>
+                                {this.getMessageBoxes(this.idSuffix, options.textBoxes)}
+                            </td>
+                        </tr>
+                    : null}
 
-                    <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
-                        className="sponsorBlockSpacer">
-                    </tr>
+                    {!options.hideLogo ?
+                        <>
+                            <tr id={"sponsorSkipNoticeSpacer" + this.idSuffix}
+                                className="sponsorBlockSpacer">
+                            </tr>
 
-                    <tr className="sponsorSkipNoticeRightSection"
-                        style={{position: "relative"}}>
-                        <td>
-                            {this.getButtons(options.buttons)}
-                        </td>
-                    </tr>
+                            <tr className="sponsorSkipNoticeRightSection"
+                                style={{position: "relative"}}>
+                                <td>
+                                    {this.getButtons(options.buttons)}
+                                </td>
+                            </tr>
+                        </>
+                    : null}
+
             </NoticeComponent>,
             this.noticeElement
         );
