@@ -682,9 +682,6 @@
     "category_filler": {
         "message": "離題閒聊/玩笑"
     },
-    "category_filler_description": {
-        "message": "與影片主要內容無關的填充詞或笑話，但不應包含與前後或背景有關者"
-    },
     "category_filler_short": {
         "message": "填充詞"
     },
