@@ -298,15 +298,6 @@
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 检查服务器状态。"
     },
-    "changeUserID": {
-        "message": "导入/导出您的用户 ID"
-    },
-    "setUserID": {
-        "message": "设定用户 ID"
-    },
-    "userIDChangeWarning": {
-        "message": "警告：更改用户 ID 是永久性的。您确定要这么做吗？请务必备份您的旧用户 ID 以防万一。"
-    },
     "createdBy": {
         "message": "创建者"
     },
@@ -366,9 +357,6 @@
     },
     "exportOptions": {
         "message": "导入/导出所有选项"
-    },
-    "whatExportOptions": {
-        "message": "这是您全部配置的 JSON 格式。它包含了您的用户 ID ，所以您一定要谨慎的保管它。"
     },
     "setOptions": {
         "message": "设定选项"
