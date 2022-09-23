@@ -682,9 +682,6 @@
     "category_filler": {
         "message": "Digressions/Blagues"
     },
-    "category_filler_description": {
-        "message": "Digressions ajoutées uniquement dans un but de remplissage ou de l'humour non requis pour comprendre le sujet principal de la vidéo. Ne doit pas inclure des segments fournissant du contexte ou des détails de fond."
-    },
     "category_filler_short": {
         "message": "Remplissage"
     },
