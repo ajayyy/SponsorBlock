@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "Tangentes de Relleno/Chistes"
     },
-    "category_filler_description": {
-        "message": "Escenas tangenciales añadidas solo para relleno o humor que no son necesarias para entender el contenido principal del video. Esto no debe incluir segmentos que proporcionen contexto o detalles de fondo."
-    },
     "category_filler_short": {
         "message": "Relleno"
     },
