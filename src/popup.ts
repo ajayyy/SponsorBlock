@@ -505,7 +505,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             PageElements.issueReporterTabs.classList.add("hidden");
             currentSegmentTab = SegmentTab.Segments;
         } else {
-            PageElements.issueReporterTabs.classList.remove("hidden");
+            if (currentSegmentTab === SegmentTab.Segments 
+                    && sponsorTimes.every((segment) => segment.actionType === ActionType.Chapter)) {
+                PageElements.issueReporterTabs.classList.add("hidden");
+                currentSegmentTab = SegmentTab.Chapters;
+            } else {
+                PageElements.issueReporterTabs.classList.remove("hidden");
+            }
         }
 
         // Sort list by start time
