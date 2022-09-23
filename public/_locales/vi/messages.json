@@ -645,9 +645,6 @@
     "category_filler": {
         "message": "Cảnh phụ"
     },
-    "category_filler_description": {
-        "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
-    },
     "category_filler_short": {
         "message": "Cảnh phụ"
     },
