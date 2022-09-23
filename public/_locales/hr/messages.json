@@ -383,15 +383,6 @@
     "statusReminder": {
         "message": "Provjerite status.sponsor.ajay.app za status poslužitelja."
     },
-    "changeUserID": {
-        "message": "Uvezi/Izvezi svoj korisnički ID"
-    },
-    "setUserID": {
-        "message": "Postavi UserID"
-    },
-    "userIDChangeWarning": {
-        "message": "Oprez: Promjena UserID-a je trajna. Jesi li siguran da želiš ovo napraviti? Napravi kopiju starog UserID-a za svaki slučaj."
-    },
     "createdBy": {
         "message": "Izradio"
     },
