@@ -87,10 +87,10 @@
         "message": "No segments found"
     },
     "sponsorStart": {
-        "message": "Segment Starts Now"
+        "message": "Start Segment Now"
     },
     "sponsorEnd": {
-        "message": "Segment Ends Now"
+        "message": "End Segment Now"
     },
     "sponsorCancel": {
         "message": "Cancel Creating Segment"
