@@ -230,7 +230,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                 {/* Chapter Name */}
                 {sponsorTime.actionType === ActionType.Chapter ? (
-                    <div onMouseLeave={() => this.setState({chapterNameSelectorOpen: false})}>
+                    <div>
                         <input id={"chapterName" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput sponsorChapterNameInput"
                             style={{color: "inherit", backgroundColor: "inherit"}}
@@ -239,6 +239,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             value={this.state.description}
                             onContextMenu={(e) => e.stopPropagation()}
                             onChange={(e) => this.descriptionUpdate(e.target.value)}
+                            onBlur={() => this.setState({chapterNameSelectorOpen: false})}
                             onFocus={() => this.setState({chapterNameSelectorOpen: true})}>
                         </input>
                         {this.state.chapterNameSelectorOpen && this.state.description &&
