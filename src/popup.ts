@@ -421,13 +421,16 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             if (request.found) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
 
+                PageElements.issueReporterImportExport.classList.remove("hidden");
                 if (request.sponsorTimes) {
                     displayDownloadedSponsorTimes(request.sponsorTimes, request.time);
                 }
             } else if (request.status == 404 || request.status == 200) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
+                PageElements.issueReporterImportExport.classList.add("hidden");
             } else {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("connectionError") + request.status;
+                PageElements.issueReporterImportExport.classList.add("hidden");
             }
         }
 
