@@ -666,9 +666,6 @@
     "category_filler": {
         "message": "Konuyla Alakasız / Şaka"
     },
-    "category_filler_description": {
-        "message": "Videonun ana içeriğini anlamak için gerekli olmayan, yalnızca alakasız konu veya mizah için eklenen sahneler. Bu, alakalı veya arka plan ayrıntısı veren kısımları içermemelidir."
-    },
     "category_filler_short": {
         "message": "Alakasız Konu"
     },
