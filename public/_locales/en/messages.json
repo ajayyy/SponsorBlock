@@ -689,7 +689,7 @@
         "message": "Filler Tangent/Jokes"
     },
     "category_filler_description": {
-        "message": "Tangential scenes added only for filler or humor that are not required to understand the main content of the video. This should not include segments providing context or background details."
+        "message": "Tangential scenes added only for filler or humor that are not required to understand the main content of the video. This should not include segments providing context or background details. This is a very aggressive category meant for when you aren't in the mood for \"fun\"."
     },
     "category_filler_short": {
         "message": "Filler"
