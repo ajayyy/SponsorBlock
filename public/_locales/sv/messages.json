@@ -688,9 +688,6 @@
     "category_filler": {
         "message": "Ämnesavvikelse/Skämt"
     },
-    "category_filler_description": {
-        "message": "Tangentiella scener endast tillagda för utfyllnad eller humor som inte krävs för att förstå det huvudsakliga innehållet i videon. Detta bör inte omfatta segment som tillhandahåller innehåll eller bakgrundsdetaljer."
-    },
     "category_filler_short": {
         "message": "Utfyllnad"
     },
