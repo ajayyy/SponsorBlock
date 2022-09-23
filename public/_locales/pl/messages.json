@@ -676,9 +676,6 @@
     "category_filler": {
         "message": "Wypełniacz nietematyczny/żart"
     },
-    "category_filler_description": {
-        "message": "Sceny nietematyczne dodawane tylko jako wypełniacz lub dla humoru, które nie są wymagane do zrozumienia głównej treści filmu. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
-    },
     "category_filler_short": {
         "message": "Wypełniacz"
     },
