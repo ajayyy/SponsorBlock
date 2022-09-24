@@ -499,7 +499,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     //saves which detail elemts are opened, by saving the uuids
-    let openedUUIDs: SegmentUUID[] =  [];
+    const openedUUIDs: SegmentUUID[] =  [];
 
     //display the video times from the array at the top, in a different section
     function displayDownloadedSponsorTimes(sponsorTimes: SponsorTime[], time: number) {
@@ -610,7 +610,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             votingButtons.ontoggle = function(){
                 if (votingButtons.open) openedUUIDs.push(UUID);
                 else {
-                    let index: number = openedUUIDs.findIndex(x => x == UUID);
+                    const index: number = openedUUIDs.findIndex(x => x == UUID);
                     if (index) openedUUIDs.splice(index, 1);
                 }
             };
