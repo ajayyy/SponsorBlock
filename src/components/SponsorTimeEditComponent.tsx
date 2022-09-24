@@ -32,6 +32,7 @@ export interface SponsorTimeEditState {
     description: string;
     suggestedNames: SelectorOption[];
     chapterNameSelectorOpen: boolean;
+    chapterNameSelectorHovering: boolean;
 }
 
 const categoryNamesGrams: string[] = [].concat(...CompileConfig.categoryList.filter((name) => name !== "chapter")
@@ -73,7 +74,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             selectedCategory: DEFAULT_CATEGORY as Category,
             description: sponsorTime.description || "",
             suggestedNames: [],
-            chapterNameSelectorOpen: false
+            chapterNameSelectorOpen: false,
+            chapterNameSelectorHovering: false
         };
     }
 
@@ -230,7 +232,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
                 {/* Chapter Name */}
                 {sponsorTime.actionType === ActionType.Chapter ? (
-                    <div>
+                    <div onBlur={() => this.setState({chapterNameSelectorOpen: false})}>
                         <input id={"chapterName" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput sponsorChapterNameInput"
                             style={{color: "inherit", backgroundColor: "inherit"}}
@@ -239,13 +241,15 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             value={this.state.description}
                             onContextMenu={(e) => e.stopPropagation()}
                             onChange={(e) => this.descriptionUpdate(e.target.value)}
-                            onBlur={() => this.setState({chapterNameSelectorOpen: false})}
                             onFocus={() => this.setState({chapterNameSelectorOpen: true})}>
                         </input>
-                        {this.state.chapterNameSelectorOpen && this.state.description &&
+                        {this.state.description 
+                            && (this.state.chapterNameSelectorOpen || this.state.chapterNameSelectorHovering) &&
                             <SelectorComponent
                                 id={"chapterNameSelector" + this.idSuffix}
                                 options={this.state.suggestedNames}
+                                onMouseEnter={() => this.setState({chapterNameSelectorHovering: true})}
+                                onMouseLeave={() => this.setState({chapterNameSelectorHovering: false})}
                                 onChange={(v) => this.descriptionUpdate(v)}
                             />
                         }

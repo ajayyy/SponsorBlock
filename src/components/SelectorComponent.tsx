@@ -8,6 +8,8 @@ export interface SelectorProps {
     id: string;
     options: SelectorOption[];
     onChange: (value: string) => void;
+    onMouseEnter?: () => void;
+    onMouseLeave?: () => void;
 }
 
 export interface SelectorState {
@@ -30,7 +32,9 @@ class SelectorComponent extends React.Component<SelectorProps, SelectorState> {
             <div id={this.props.id}
                 style={{display: this.props.options.length > 0 ? "inherit" : "none"}}
                 className="sbSelector">
-                <div className="sbSelectorBackground">
+                <div onMouseEnter={this.props.onMouseEnter}
+                    onMouseLeave={this.props.onMouseLeave}
+                    className="sbSelectorBackground">
                     {this.getOptions()}
                 </div>
             </div>
