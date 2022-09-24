@@ -498,6 +498,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         updateSegmentEditingUI();
     }
 
+    //saves which detail elemts are opened, by saving the uuids
+    let openedUUIDs: SegmentUUID[] =  [];
+
     //display the video times from the array at the top, in a different section
     function displayDownloadedSponsorTimes(sponsorTimes: SponsorTime[], time: number) {
         let currentSegmentTab = segmentTab;
@@ -603,6 +606,16 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             const votingButtons = document.createElement("details");
             votingButtons.classList.add("votingButtons");
+            votingButtons.id = "votingButtons" + UUID;
+            votingButtons.ontoggle = function(){
+                if (votingButtons.open) openedUUIDs.push(UUID);
+                else {
+                    let index: number = openedUUIDs.findIndex(x => x == UUID);
+                    if (index) openedUUIDs.splice(index, 1);
+                }
+            };
+            if (openedUUIDs.find(x => x == UUID)) votingButtons.open = true;
+            else votingButtons.open = false;
 
             //thumbs up and down buttons
             const voteButtonsContainer = document.createElement("div");
@@ -658,7 +671,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 messageHandler.query({
                     active: true,
                     currentWindow: true
-                }, tabs => {
+                }, tabs =>{
                     messageHandler.sendMessage(
                         tabs[0].id,
                         {
@@ -830,6 +843,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function removeVoteMessage(UUID) {
         const voteButtonsContainer = document.getElementById("sponsorTimesVoteButtonsContainer" + UUID);
         voteButtonsContainer.style.display = "block";
+
+        //voteButtonsContainer.parentElement.open = true;
 
         const voteStatusContainer = document.getElementById("sponsorTimesVoteStatusContainer" + UUID);
         voteStatusContainer.style.display = "none";
@@ -1116,7 +1131,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function onMessage(msg: PopupMessage) {
         switch (msg.message) {
             case "time":
-                displayDownloadedSponsorTimes(downloadedTimes, msg.time);
+                //displayDownloadedSponsorTimes(downloadedTimes, msg.time);
                 break;
         }
     }
