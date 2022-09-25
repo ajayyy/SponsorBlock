@@ -35,6 +35,9 @@
         "message": "Szegmensek megjelenítése fejezetekként",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Aktuális szegmens megjelenítése a videó ideje mellett"
+    },
     "upvoteButtonInfo": {
         "message": "Részlet felszavazása"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Felugró ablak bezárása"
+    },
+    "closeIcon": {
+        "message": "Bezárás ikon"
     },
     "SubmitTimes": {
         "message": "Szegmensek beküldése"
@@ -1045,6 +1051,12 @@
     },
     "hideSegment": {
         "message": "Szegmens elrejtése"
+    },
+    "skipSegment": {
+        "message": "Szegmens átugrása"
+    },
+    "playChapter": {
+        "message": "Fejezet lejátszása"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Használd egérgörgődet a szerkesztő mező fölött, hogy gyorsan módosíthasd az időt. A ctrl vagy shift billentyűk kombinációjával finomhangolhatod a változás mértékét."
