@@ -35,6 +35,9 @@
         "message": "Piirrä osiot kappaleina",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Näytä nykyinen osio videon ajan vieressä"
+    },
     "upvoteButtonInfo": {
         "message": "Äänestä lähetystä"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Sulje ponnahdusikkuna"
+    },
+    "closeIcon": {
+        "message": "Sulje kuvake"
     },
     "SubmitTimes": {
         "message": "Lähetä osiot"
@@ -1045,6 +1051,9 @@
     },
     "hideSegment": {
         "message": "Piilota osio"
+    },
+    "skipSegment": {
+        "message": "Ohita osio"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."
