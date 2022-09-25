@@ -122,6 +122,9 @@
     "closePopup": {
         "message": "팝업 닫기"
     },
+    "closeIcon": {
+        "message": "아이콘 닫기"
+    },
     "SubmitTimes": {
         "message": "구간 제출"
     },
@@ -1045,6 +1048,12 @@
     },
     "hideSegment": {
         "message": "구간 숨기기"
+    },
+    "skipSegment": {
+        "message": "구간 건너뛰기"
+    },
+    "playChapter": {
+        "message": "챕터 재생"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "편집 상자 위에 마우스 커서를 올린 채 스크롤해서 시간을 빠르게 조정해 보세요. Ctrl이나 Shift 키를 누른 채로 스크롤하면 세밀하게 조정할 수 있어요."
