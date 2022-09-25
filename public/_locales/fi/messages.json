@@ -39,7 +39,7 @@
         "message": "Näytä nykyinen osio videon ajan vieressä"
     },
     "upvoteButtonInfo": {
-        "message": "Äänestä lähetystä"
+        "message": "Äänestä lähetyksen puolesta"
     },
     "reportButtonTitle": {
         "message": "Ilmoita"
@@ -126,7 +126,7 @@
         "message": "Sulje ponnahdusikkuna"
     },
     "closeIcon": {
-        "message": "Sulje kuvake"
+        "message": "Sulkukuvake"
     },
     "SubmitTimes": {
         "message": "Lähetä osiot"
@@ -1054,6 +1054,9 @@
     },
     "skipSegment": {
         "message": "Ohita osio"
+    },
+    "playChapter": {
+        "message": "Toista osio"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."
