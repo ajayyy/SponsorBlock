@@ -83,6 +83,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     let segmentTab = SegmentTab.Segments;
     let port: chrome.runtime.Port = null;
 
+    //saves which detail elemts are opened, by saving the uuids
+    const openedUUIDs: SegmentUUID[] =  [];
+
     const PageElements: PageElements = {};
 
     [
@@ -603,6 +606,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             const votingButtons = document.createElement("details");
             votingButtons.classList.add("votingButtons");
+            votingButtons.id = "votingButtons" + UUID;
+            votingButtons.addEventListener("toggle", () => {
+                if (votingButtons.open) {
+                    openedUUIDs.push(UUID);
+                } else {
+                    const index = openedUUIDs.indexOf(UUID);
+                    if (index !== -1) {
+                        openedUUIDs.splice(openedUUIDs.indexOf(UUID), 1);
+                    }
+                }
+            });
+            votingButtons.open = openedUUIDs.some((u) => u === UUID);
 
             //thumbs up and down buttons
             const voteButtonsContainer = document.createElement("div");
