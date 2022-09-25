@@ -35,6 +35,9 @@
         "message": "Render segments as chapters",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Show Current Segment Beside Video Time"
+    },
     "upvoteButtonInfo": {
         "message": "Upvote this submission"
     },

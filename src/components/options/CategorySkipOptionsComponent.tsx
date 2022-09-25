@@ -5,7 +5,7 @@ import * as CompileConfig from "../../../config.json";
 import { Category, CategorySkipOption } from "../../types";
 
 import { getCategorySuffix } from "../../utils/categoryUtils";
-import ToggleOptionComponent, { ToggleOptionProps } from "./ToggleOptionComponent";
+import ToggleOptionComponent from "./ToggleOptionComponent";
 import { fetchingChaptersAllowed } from "../../utils/licenseKey";
 import LockSvg from "../../svg-icons/lock_svg";
 
@@ -19,6 +19,12 @@ export interface CategorySkipOptionsState {
     color: string;
     previewColor: string;
     hideChapter: boolean;
+}
+
+export interface ToggleOption {
+    configKey: string;
+    label: string;
+    dontDisable?: boolean;
 }
 
 class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsProps, CategorySkipOptionsState> {
@@ -237,7 +243,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         <ToggleOptionComponent 
                             configKey={option.configKey} 
                             label={option.label}
-                            disabled={disabled}
+                            disabled={!option.dontDisable && disabled}
                             style={{width: "inherit"}}
                         />
                     </td>
@@ -248,12 +254,17 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         return result;
     }
 
-    getExtraOptions(category: string): ToggleOptionProps[] {
+    getExtraOptions(category: string): ToggleOption[] {
         switch (category) {
             case "chapter":
                 return [{
                     configKey: "renderSegmentsAsChapters",
                     label: chrome.i18n.getMessage("renderAsChapters"),
+                    dontDisable: true
+                }, {
+                    configKey: "showSegmentNameInChapterBar",
+                    label: chrome.i18n.getMessage("showSegmentNameInChapterBar"),
+                    dontDisable: true
                 }];
             case "music_offtopic":
                 return [{

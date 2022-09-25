@@ -26,7 +26,7 @@ class ToggleOptionComponent extends React.Component<ToggleOptionProps, ToggleOpt
 
     render(): React.ReactElement {
         return (
-            <div>
+            <div className={`sb-toggle-option ${this.props.disabled ? "disabled" : ""}`}>
                 <div className="switch-container" style={this.props.style}>
                     <label className="switch">
                         <input id={this.props.configKey} 

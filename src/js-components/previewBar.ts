@@ -717,7 +717,8 @@ class PreviewBar {
     }
 
     updateChapterText(segments: SponsorTime[], submittingSegments: SponsorTime[], currentTime: number): void {
-        if ((!segments || segments.length <= 0) && submittingSegments?.length <= 0) {
+        if (!Config.config.showSegmentNameInChapterBar 
+                || ((!segments || segments.length <= 0) && submittingSegments?.length <= 0)) {
             const chaptersContainer = this.getChaptersContainer();
             const chapterButton = this.getChapterButton(chaptersContainer);
             if (chapterButton.classList.contains("ytp-chapter-container-disabled")) {
