@@ -674,6 +674,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             skipButton.id = "sponsorTimesSkipButtonContainer" + UUID;
             skipButton.className = "voteButton";
             skipButton.src = chrome.runtime.getURL("icons/skip.svg");
+            skipButton.title = actionType === ActionType.Chapter ? chrome.i18n.getMessage("playChapter") 
+                : chrome.i18n.getMessage("skipSegment");
             skipButton.addEventListener("click", () => skipSegment(actionType, UUID, skipButton));
             votingButtons.addEventListener("dblclick", () => skipSegment(actionType, UUID));
 

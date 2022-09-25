@@ -1049,6 +1049,12 @@
     "hideSegment": {
         "message": "Hide segment"
     },
+    "skipSegment": {
+        "message": "Skip segment"
+    },
+    "playChapter": {
+        "message": "Play chapter"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use your mousewheel while hovering over the edit box to quickly adjust the time. Combinations of the ctrl or shift key can be used to fine tune the changes."
     },
