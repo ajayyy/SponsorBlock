@@ -1964,7 +1964,7 @@ function openInfoMenu() {
     frame.src = chrome.extension.getURL("popup.html");
     popup.appendChild(frame);
 
-    const parentNodes = document.querySelectorAll("#secondary");
+    const parentNodes = document.querySelectorAll("#secondary-inner");
     let parentNode = null;
     for (let i = 0; i < parentNodes.length; i++) {
         if (parentNodes[i].firstElementChild !== null) {
