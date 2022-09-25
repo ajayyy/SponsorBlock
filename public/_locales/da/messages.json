@@ -414,17 +414,8 @@
     "statusReminder": {
         "message": "Tjek status.sponsor.ajay.app for serverstatus."
     },
-    "changeUserID": {
-        "message": "Importer/Eksporter Dit Bruger-ID"
-    },
     "whatChangeUserID": {
         "message": "Dette bør holdes privat. Det er ligesom en adgangskode og bør ikke deles med nogen. Hvis nogen har dette, kan de udgive sig for at være dig. Hvis du leder efter dit offentlige bruger-ID, skal du klikke på udklipsholderikonet i popup-vinduet."
-    },
-    "setUserID": {
-        "message": "Indstil Bruger-ID"
-    },
-    "userIDChangeWarning": {
-        "message": "Advarsel: Ændring af Bruger-IDet er permanent. Er du sikker på, at du vil gøre det? Sørg for at sikkerhedskopiere din gamle for en sikkerheds skyld."
     },
     "createdBy": {
         "message": "Oprettet Af"
@@ -522,9 +513,6 @@
     },
     "exportOptionsUpload": {
         "message": "Indlæs fra fil"
-    },
-    "whatExportOptions": {
-        "message": "Dette er hele din konfiguration i JSON. Dette inkluderer dit bruger-ID, så sørg for at dele dette med omtanke."
     },
     "setOptions": {
         "message": "Indstil Indstillinger"
@@ -689,7 +677,7 @@
         "message": "Fyldningstangent/Jokes"
     },
     "category_filler_description": {
-        "message": "Tangential scener kun tilføjet for fyldstof eller humor, som ikke er nødvendige for at forstå videoens hovedindhold. Dette bør ikke omfatte segmenter, der gtiver kontekst eller bagrundsoplysninger."
+        "message": "Tangential scener kun tilføjet for fyldstof eller humor, som ikke er nødvendige for at forstå videoens hovedindhold. Dette bør ikke omfatte segmenter, der gtiver kontekst eller bagrundsoplysninger\"."
     },
     "category_filler_short": {
         "message": "Fyldstof"
@@ -1165,6 +1153,14 @@
     },
     "chaptersPage1": {
         "message": "SponsorBlock crowd-sourced kapitler funktion er kun tilgængelig for personer, der køber en licens, eller for personer, der har fået gratis adgang på grund af deres tidligere bidrag"
+    },
+    "chaptersPage2": {
+        "message": "Bemærk: Tilladelse til at indsende kapitler er stadig baseret på beregnet omdømme. Indkøb af en licens giver dig kun mulighed for at se kapitler indsendt af andre",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Ny funktion: Crowd-sourced brugerdefinerede kapitler. Disse er brugerdefinerede sektioner i videoer, der kan stables for at få mere og mere præcise. Køb en licens til at se kapitlerne indsendt på denne video såsom: ",
+        "description": "After the comma, a list of chapters for this video will appear"
     },
     "unsubmittedSegmentCounts": {
         "message": "Du har lige nu {0} på {1}",

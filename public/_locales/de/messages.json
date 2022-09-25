@@ -414,17 +414,8 @@
     "statusReminder": {
         "message": "Prüfe status.sponsor.ajay.app für den Serverstatus."
     },
-    "changeUserID": {
-        "message": "Benutzer-ID importieren/exportieren"
-    },
     "whatChangeUserID": {
         "message": "Dies sollte geheim gehalten und wie ein Passwort behandelt, also mit niemandem geteilt werden. Andere könnten sich damit als dich ausgeben. Wenn du nach deiner öffentlichen Profilkennung suchst, klicke auf das „Kopieren“-Symbol neben deinem Anmeldenamen im Pop-up."
-    },
-    "setUserID": {
-        "message": "Interne Benutzer-ID festlegen"
-    },
-    "userIDChangeWarning": {
-        "message": "Warnung: Das Ändern der Benutzer-ID ist permanent. Bist du dir sicher, dass du das tun möchtest? Lege dir zur Sicherheit erst eine Sicherheitskopie deiner alten ID an."
     },
     "createdBy": {
         "message": "Erstellt von"
@@ -522,9 +513,6 @@
     },
     "exportOptionsUpload": {
         "message": "Aus Datei laden"
-    },
-    "whatExportOptions": {
-        "message": "Dies ist deine gesamte Konfiguration im JSON-Format. Da diese auch deine Benutzer-ID enthält, solltest du dir genau überlegen, mit wem du diese teilen möchtest."
     },
     "setOptions": {
         "message": "Optionen ändern"
@@ -687,9 +675,6 @@
     },
     "category_filler": {
         "message": "Füller/Witze"
-    },
-    "category_filler_description": {
-        "message": "Nebensächliche Szenen, die nur als Füller oder Witz dienen und nicht benötigt sind um den Hauptinhalt des Videos zu verstehen. Dies bezieht sich nicht auf Segmente, die Kontext oder Hintergrunddetails liefern."
     },
     "category_filler_short": {
         "message": "Füller"

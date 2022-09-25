@@ -387,17 +387,8 @@
     "statusReminder": {
         "message": "Truy cập trang status.sponsor.ajay.app để biết tình trạng máy chủ."
     },
-    "changeUserID": {
-        "message": "Nhập/Xuất mã người dùng của bạn"
-    },
     "whatChangeUserID": {
         "message": "Đây là mã cần được giữ bí mật. Nó giống như mật khẩu và không nên được chia sẻ cho bất kì ai khác. Nếu có ai đó lấy được mã này, họ có thể mạo danh bạn. Còn nếu như bạn đang tìm khoá ID công khai, hãy nhấn vào nút \"Sao chép Public UserID\" trong popup của SponsorBlock."
-    },
-    "setUserID": {
-        "message": "Đặt mã người dùng"
-    },
-    "userIDChangeWarning": {
-        "message": "Cảnh báo: Việc thay đổi mã người dùng có tác dụng vĩnh viễn. Bạn có chắc muốn thay đổi không? Hãy nhớ sao lưu lại mã người dùng cũ để đề phòng."
     },
     "createdBy": {
         "message": "Được tạo bởi"
@@ -489,9 +480,6 @@
     },
     "exportOptionsUpload": {
         "message": "Tải từ tệp"
-    },
-    "whatExportOptions": {
-        "message": "Đây là toàn bộ cấu hình của bạn trong tệp JSON. Nó chứa cả mã người dùng của bạn, nên hãy chia sẻ cẩn thận."
     },
     "setOptions": {
         "message": "Đặt tùy chọn"
@@ -644,9 +632,6 @@
     },
     "category_filler": {
         "message": "Cảnh phụ"
-    },
-    "category_filler_description": {
-        "message": "Tập hợp các cảnh không bắt buộc để xem trong video. Điều này không bao gồm các đoạn chứa nội dung hoặc nói về ngữ cảnh của video."
     },
     "category_filler_short": {
         "message": "Cảnh phụ"

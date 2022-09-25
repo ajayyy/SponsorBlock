@@ -295,15 +295,6 @@
     "statusReminder": {
         "message": "Periksa status.sponsor.ajay.app untuk status pelayan."
     },
-    "changeUserID": {
-        "message": "Import / Eksport Id Pengguna Anda"
-    },
-    "setUserID": {
-        "message": "Tetapkan Id Pengguna"
-    },
-    "userIDChangeWarning": {
-        "message": "Amaran: Mengubah UserID adalah kekal. Adakah anda pasti mahu melakukan ini? Pastikan untuk membuat sandaran lama anda sekiranya berlaku."
-    },
     "createdBy": {
         "message": "Dicipta oleh"
     },
@@ -360,9 +351,6 @@
     },
     "exportOptions": {
         "message": "Import / Eksport Semua Pilihan"
-    },
-    "whatExportOptions": {
-        "message": "Ini adalah keseluruhan konfigurasi anda di JSON. Ini termasuk ID pengguna anda, jadi pastikan untuk membagikannya dengan bijak."
     },
     "setOptions": {
         "message": "Tetapkan Pilihan"

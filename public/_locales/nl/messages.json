@@ -415,16 +415,16 @@
         "message": "Controleer status.sponsor.ajay.app voor de serverstatus."
     },
     "changeUserID": {
-        "message": "Uw gebruikers-ID importeren/exporteren"
+        "message": "Uw privé-gebruikers-ID importeren/exporteren"
     },
     "whatChangeUserID": {
         "message": "Dit moet privé gehouden worden. Dit is als een wachtwoord en mag met niemand gedeeld worden. Als iemand dit heeft, kan hij zich voordoen als u. Klik op het klembordpictogram in de pop-up als u op zoek bent naar uw publieke gebruikers-ID."
     },
     "setUserID": {
-        "message": "Gebruikers-ID instellen"
+        "message": "Privé-gebruikers-ID instellen"
     },
     "userIDChangeWarning": {
-        "message": "Waarschuwing: wijzigen van de gebruikers-ID is permanent. Weet u zeker dat u dit wilt doen? Zorg ervoor dat u een back-up maakt van uw oude ID, voor het geval dat."
+        "message": "Waarschuwing: wijzigen van de privé-gebruikers-ID is permanent. Weet u zeker dat u dit wilt doen? Zorg ervoor dat u een back-up maakt van uw oude ID, voor het geval dat."
     },
     "createdBy": {
         "message": "Gemaakt door"
@@ -524,7 +524,7 @@
         "message": "Laden uit bestand"
     },
     "whatExportOptions": {
-        "message": "Dit is uw volledige configuratie in JSON. Dit is inclusief uw gebruikers-ID, dus zorg ervoor dat u dit verstandig deelt."
+        "message": "Dit is uw volledige configuratie in JSON. Dit is inclusief uw privé-gebruikers-ID, dus zorg ervoor dat u dit verstandig deelt."
     },
     "setOptions": {
         "message": "Opties instellen"
@@ -689,7 +689,7 @@
         "message": "Opvulling zijspoor/humor"
     },
     "category_filler_description": {
-        "message": "Zijspoor-scènes die alleen ter opvulling of als humor worden toegevoegd en niet noodzakelijk zijn om de hoofdinhoud van de video te begrijpen. Segmenten die context of achtergrondinformatie verschaffen, mogen hier niet onder vallen."
+        "message": "Zijspoor-scènes die alleen ter opvulling of als humor worden toegevoegd en niet noodzakelijk zijn om de hoofdinhoud van de video te begrijpen. Segmenten die context of achtergrondinformatie verschaffen, mogen hier niet onder vallen. Dit is een zeer agressieve categorie, bedoeld voor als u niet in de stemming bent voor \"plezier\"."
     },
     "category_filler_short": {
         "message": "Opvulling"
@@ -1173,6 +1173,9 @@
     "chapterNewFeature": {
         "message": "Nieuwe functie: gecrowdsourcete aangepaste hoofdstukken. Dit zijn hoofdstukken met een eigen naam in video's die gestapeld kunnen worden om steeds preciezer te worden. Koop een licentie om de ingezonden hoofdstukken op deze video te bekijken, zoals: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Nieuwe functie: gecrowdsourcete aangepaste hoofdstukken. Dit zijn hoofdstukken met een eigen naam in video's die gestapeld kunnen worden om steeds preciezer te worden. U heeft gratis toegang. In te schakelen via de opties."
     },
     "unsubmittedSegmentCounts": {
         "message": "U hebt momenteel {0} in {1}",

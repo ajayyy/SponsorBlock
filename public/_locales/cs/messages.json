@@ -415,16 +415,16 @@
         "message": "Podívejte se na status.sponsor.ajay.app pro stav serverů."
     },
     "changeUserID": {
-        "message": "Importovat / exportovat vaše UserID"
+        "message": "Importovat / exportovat vaše soukromé UserID"
     },
     "whatChangeUserID": {
         "message": "Toto by mělo být ponecháno v soukromí. Je to jako heslo a nemělo by být s nikým sdíleno. Pokud to někdo má, může se za vás vydávat. Pokud hledáte vaše veřejné uživatelské ID, klikněte na ikonu schránky ve vyskakovacím okně."
     },
     "setUserID": {
-        "message": "Nastavit UserID"
+        "message": "Nastavit soukromé UserID"
     },
     "userIDChangeWarning": {
-        "message": "Varování: Změna UserID je nevratná. Opravdu to chcete udělat? Pro jistotu si zálohujte vaše staré ID, jen kdyby něco."
+        "message": "Varování: Změna soukromého UserID je nevratná. Opravdu to chcete udělat? Pro jistotu si zálohujte vaše staré ID, jen kdyby něco."
     },
     "createdBy": {
         "message": "Vytvořil"
@@ -524,7 +524,7 @@
         "message": "Načíst ze souboru"
     },
     "whatExportOptions": {
-        "message": "Toto je celá vaše konfigurace ve formátu JSON. Zahrnuje vaše userID, takže s ní nakládejte opatrně."
+        "message": "Toto je celá vaše konfigurace ve formátu JSON. Zahrnuje vaše soukromé UserID, takže s ní nakládejte opatrně."
     },
     "setOptions": {
         "message": "Nastavit možnosti"
@@ -689,7 +689,7 @@
         "message": "Výplň / vtipy"
     },
     "category_filler_description": {
-        "message": "Výplňové scény přidané jen jako přídavek nebo humor, které nejsou vyžadovány pro pochopení hlavního obsahu videa. Toto by nemělo zahrnovat segmenty poskytující kontext nebo podrobnosti na pozadí."
+        "message": "Scény přidané pouze jako výplň nebo humor, které nejsou nutné k pochopení hlavního obsahu videa. Kategorie by neměla zahrnovat segmenty poskytující podrobnosti o kontextu nebo pozadí. Jedná se o velmi agresivní kategorii myšlenou pro chvíle, kdy nemáte náladu na „zábavu“."
     },
     "category_filler_short": {
         "message": "Výplň"
@@ -1173,6 +1173,9 @@
     "chapterNewFeature": {
         "message": "Nová funkce: komunitní vlastní kapitoly. Jedná se o komunitou vytvořené sekce ve videích, které lze slučovat, aby byly stále přesnější. Zakupte si licenci pro zobrazení kapitol u tohoto videa, jako například: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Nová funkce: komunitní vlastní kapitoly. Jedná se o komunitou vytvořené sekce ve videích, které lze slučovat, aby byly stále přesnější. Přístup máte zdarma, povolte jej v možnostech."
     },
     "unsubmittedSegmentCounts": {
         "message": "Momentálně máte {0} na {1}",

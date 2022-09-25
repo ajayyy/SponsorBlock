@@ -408,17 +408,8 @@
     "statusReminder": {
         "message": "Sprawdź status serwera na status.sponsor.ajay.app"
     },
-    "changeUserID": {
-        "message": "Importuj/Eksportuj swój identyfikator użytkownika"
-    },
     "whatChangeUserID": {
         "message": "To powinno pozostać prywatne. Jest to niczym hasło i nie powinno zostać nikomu udostępnione. Przy jego użyciu ktoś może się pod ciebie podszywać. Jeśli szukasz publicznego ID użytkownika, kliknij ikonę schowka w wyskakującym oknie."
-    },
-    "setUserID": {
-        "message": "Ustaw identyfikator użytkownika"
-    },
-    "userIDChangeWarning": {
-        "message": "Uwaga: Zmiana identyfikatora użytkownika jest trwała. Czy na pewno chcesz to zrobić? Na wszelki wypadek skopiuj swój poprzedni."
     },
     "createdBy": {
         "message": "Stworzony przez"
@@ -510,9 +501,6 @@
     },
     "exportOptionsUpload": {
         "message": "Wczytaj z pliku"
-    },
-    "whatExportOptions": {
-        "message": "Jest to cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój identyfikator użytkownika, więc uważaj, komu ją udostępniasz."
     },
     "setOptions": {
         "message": "Zapisz ustawienia"
@@ -675,9 +663,6 @@
     },
     "category_filler": {
         "message": "Wypełniacz nietematyczny/żart"
-    },
-    "category_filler_description": {
-        "message": "Sceny nietematyczne dodawane tylko jako wypełniacz lub dla humoru, które nie są wymagane do zrozumienia głównej treści filmu. Nie powinno to obejmować segmentów zawierających informacje kontekstowe lub szczegółowe."
     },
     "category_filler_short": {
         "message": "Wypełniacz"

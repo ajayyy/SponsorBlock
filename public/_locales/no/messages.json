@@ -372,17 +372,8 @@
     "statusReminder": {
         "message": "Sjekk status.sponsor.ajay.app for tjenerstatus."
     },
-    "changeUserID": {
-        "message": "Importer/Eksporter din bruker-ID"
-    },
     "whatChangeUserID": {
         "message": "Dette bør holdes privat. Det er som et passord og bør ikke deles med noen. Hvis noen har dette kan de utgi seg som deg. Hvis du leter etter din offentlige bruker-ID, klikker du på utklippstavlen i oppsprettsvinduet."
-    },
-    "setUserID": {
-        "message": "Angi bruker-ID"
-    },
-    "userIDChangeWarning": {
-        "message": "Advarsel: Å endre bruker-ID-en din er permanent. Er du sikker på at du vil gjøre dette? Sørg for å ta sikkerhetskopi av din gamle for sikkerhets skyld."
     },
     "createdBy": {
         "message": "Opprettet av"
@@ -474,9 +465,6 @@
     },
     "exportOptionsUpload": {
         "message": "Last fra fil"
-    },
-    "whatExportOptions": {
-        "message": "Dette er hele oppsettet ditt i JSON. Det inkluderer bruker-ID-en din, så sørg for å være beskjeden med å dele det."
     },
     "setOptions": {
         "message": "Angi innstillinger"
@@ -578,9 +566,6 @@
     },
     "category_preview": {
         "message": "Forhåndsvisning/Oppsummering"
-    },
-    "category_filler_description": {
-        "message": "Intetsigende segmenter kun lagt til som fyllstoff eller humor som ikke er nødvendig for å forstå hovedinnholdet i videoen. Dette bør ikke inkludere segmenter som gir kontekst eller bakgrunnsdetaljer."
     },
     "category_filler_short": {
         "message": "Fyllstoff"

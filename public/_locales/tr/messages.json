@@ -121,6 +121,9 @@
     "SubmitTimes": {
         "message": "Kısımları gönder"
     },
+    "sortSegments": {
+        "message": "Kısımları Sırala"
+    },
     "submitCheck": {
         "message": "Bunu göndermek istediğinize emin misiniz?"
     },
@@ -238,6 +241,9 @@
     },
     "whatRefetchWhenNotFound": {
         "message": "Eğer video yeni ve kısımları bulunmuyorsa, sen videoyu izlerken her birkaç dakikada bir kısımları edinmeye çalışır."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Gönderim izni olmasa bile gönderim menüsünde kategorileri gösterme"
     },
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
@@ -402,16 +408,16 @@
         "message": "Sunucu durumu için status.sponsor.ajay.app kontrol edin."
     },
     "changeUserID": {
-        "message": "Kullanıcı kimliğini Dışarı/İçeri Aktar"
+        "message": "Özel Kullanıcı Kimliğini İçe/Dışa Aktar"
     },
     "whatChangeUserID": {
         "message": "Bu gizli tutulmalıdır. Bu bir şifre gibidir ve kimseyle paylaşılmamalıdır. Eğer birisi buna sahipse, seni taklit edebilir. Herkese açık kullanıcı kimliğinizi arıyorsanız, açılır pencerede pano simgesine tıklayın."
     },
     "setUserID": {
-        "message": "Kullanıcı kimliği Belirle"
+        "message": "Özel Kullanıcı Kimliğini Ayarla"
     },
     "userIDChangeWarning": {
-        "message": "Uyarı: Kullanıcı kimliği değiştirmek kalıcıdır. Bunu yapmak istediğinizden emin misiniz? Eskisini yedeklediğinizden emin olun."
+        "message": "Uyarı: Özel Kullanıcı Kimliğini değiştirmek kalıcıdır. Bunu yapmak istediğinizden emin misiniz? Her ihtimale karşı eskisini yedeklediğinizden emin olun."
     },
     "createdBy": {
         "message": "Oluşturan"
@@ -503,9 +509,6 @@
     },
     "exportOptionsUpload": {
         "message": "Dosyadan yükle"
-    },
-    "whatExportOptions": {
-        "message": "Bu, JSON formatında bütün kurulumunuzu gösterir. Kullanıcı kimliğinizi içerir, bu sebeple paylaşırken dikkatli olun."
     },
     "setOptions": {
         "message": "Seçenekleri Ayarla"
@@ -665,9 +668,6 @@
     },
     "category_filler": {
         "message": "Konuyla Alakasız / Şaka"
-    },
-    "category_filler_description": {
-        "message": "Videonun ana içeriğini anlamak için gerekli olmayan, yalnızca alakasız konu veya mizah için eklenen sahneler. Bu, alakalı veya arka plan ayrıntısı veren kısımları içermemelidir."
     },
     "category_filler_short": {
         "message": "Alakasız Konu"

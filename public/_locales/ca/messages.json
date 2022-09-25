@@ -217,9 +217,6 @@
     "statusReminder": {
         "message": "Visiteu status.sponsor.ajay.app per conèixer l'estat del servidor."
     },
-    "changeUserID": {
-        "message": "Importa/exporta la vostra identificació d'usuari"
-    },
     "whatChangeUserID": {
         "message": "Això hauria de romandre privat: és semblant a una contrasenya i no s'hauria de compartir amb cap persona. Si algú hi té accés, poden suplantar-vos. Si esteu cercant el vostre identificador d'usuari públic, premeu la icona del portanotes a la finestra."
     },

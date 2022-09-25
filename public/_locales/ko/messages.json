@@ -8,7 +8,7 @@
         "description": "Description of the extension."
     },
     "400": {
-        "message": "서버에서 유효하지 않은 요청이라고 응답했어요"
+        "message": "서버에서 잘못된 요청이라고 응답했어요"
     },
     "429": {
         "message": "이 영상에 많은 스폰서 광고 구간을 제출했어요. 정말로 확실하신가요?"
@@ -42,7 +42,7 @@
         "message": "신고"
     },
     "reportButtonInfo": {
-        "message": "이 제출을 잘못된 제출로 신고해요"
+        "message": "잘못된 제출로 신고해요"
     },
     "Dismiss": {
         "message": "무시"
@@ -317,10 +317,10 @@
         "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "등록하고 싶은 키를 눌러주세요. 필요하다면 Ctrl/Alt/Shift 키를 선택하실 수도 있어요."
+        "message": "등록하고 싶은 키를 눌러주세요. 필요하다면 보조 키를 선택하실 수도 있어요."
     },
     "0": {
-        "message": "연결에 오류가 발생했어요. 인터넷 연결을 확인하세요. 인터넷 연결이 되어 있는 경우, 서버가 과부화됐거나 다운된 것일 수도 있어요."
+        "message": "연결에 실패했어요. 인터넷 연결을 확인하세요. 인터넷 연결이 되어 있는 경우, 서버가 과부화됐거나 다운된 것일 수도 있어요."
     },
     "disableSkipping": {
         "message": "건너뛰기 켜짐"
@@ -367,7 +367,7 @@
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
-        "message": "{0}로 이동했어요",
+        "message": "{0}로 건너뛰었어요",
         "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
@@ -415,16 +415,16 @@
         "message": "Status.sponsor.ajay.app 사이트를 확인하여 서버 상태를 확인하세요."
     },
     "changeUserID": {
-        "message": "사용자 ID 가져오기/내보내기"
+        "message": "비공개 사용자 ID 가져오기/내보내기"
     },
     "whatChangeUserID": {
         "message": "이 정보를 다른 분께 공개하지 마세요. 비밀번호처럼 알려주면 위험한 정보랍니다. 다른 분이 이 정보를 가지고 나를 사칭할 수도 있어요. 공개 사용자 ID를 찾고 있다면, 팝업 내 클립보드 아이콘을 눌러주세요."
     },
     "setUserID": {
-        "message": "사용자 ID 설정"
+        "message": "비공개 사용자 ID 설정"
     },
     "userIDChangeWarning": {
-        "message": "경고: 사용자 ID를 변경하면 되돌릴 수 없어요. 정말로 확실한가요? 혹시 모르니 예전 사용자 ID를 백업해두는 걸 권장해요."
+        "message": "경고: 비공개 사용자 ID를 변경하면 되돌릴 수 없어요. 정말로 확실한가요? 혹시 모르니 예전 사용자 ID를 백업해두는 걸 권장해요."
     },
     "createdBy": {
         "message": "개발자: "
@@ -452,7 +452,7 @@
         "message": "추가"
     },
     "addInvidiousInstanceError": {
-        "message": "유효하지 않은 도메인이에요. 도메인 형식으로 되어있어야 해요. 예: invious.ajay.app"
+        "message": "잘못된 도메인이에요. 도메인 부분만 포함해야 해요. 예: invious.ajay.app"
     },
     "resetInvidiousInstance": {
         "message": "Invidious 인스턴스 목록 초기화"
@@ -524,7 +524,7 @@
         "message": "파일에서 불러오기"
     },
     "whatExportOptions": {
-        "message": "JSON의 전체 구성 파일이에요. 사용자 ID가 포함되어 있으니, 공유할 때 주의하세요."
+        "message": "JSON의 전체 구성 파일이에요. 나의 비공개 사용자 ID가 포함되어 있으니, 공유할 때 주의하세요."
     },
     "setOptions": {
         "message": "옵션 저장"
@@ -539,7 +539,7 @@
         "message": "구간 제출"
     },
     "submit": {
-        "message": "제출"
+        "message": "제출하기"
     },
     "cancel": {
         "message": "취소"
@@ -689,7 +689,7 @@
         "message": "주제와 관련 없는 구간"
     },
     "category_filler_description": {
-        "message": "이 구간은 전반적인 동영상의 주제를 이해하는 데 필요 없는 내용이 포함됐어요. 상세한 배경지식이나 맥락을 설명하는 구간은 여기에 해당하지 않아요."
+        "message": "이 구간은 전반적인 동영상의 주제를 이해하는 데 필요 없는 내용이 포함됐어요. 상세한 배경지식이나 맥락을 설명하는 구간은 여기에 해당하지 않아요. \"재미\"가 없다는 걸 의미하는 적극적인 카테고리예요."
     },
     "category_filler_short": {
         "message": "주제와 관련 없는 구간"
@@ -815,10 +815,10 @@
         "message": "제출과 투표가 테스트 서버에 연결하는 동안은 메인 서버에 반영되지 않을 거예요. 실제 제출을 원하시면 비활성화하는 걸 잊지 마세요."
     },
     "bracketNow": {
-        "message": "(지금)"
+        "message": "(현재)"
     },
     "moreCategories": {
-        "message": "많은 카테고리"
+        "message": "추가 카테고리"
     },
     "chooseACategory": {
         "message": "카테고리 선택"
@@ -888,7 +888,7 @@
         "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
-        "message": "카테고리를 변경해요"
+        "message": "카테고리 변경"
     },
     "nonMusicCategoryOnMusic": {
         "message": "이 동영상은 음악 동영상으로 분류되어 있어요. 동영상에 스폰서 광고 구간이 있나요? \"음악이 아닌 구간\"으로 지정된 카테고리인 경우, 확장 프로그램 설정을 열어 이 카테고리를 활성화하세요. 그리고, 이 구간을 \"스폰서 광고 구간\" 대신 \"음악이 아닌 구간\"으로 지정하세요. 혼동된다면 가이드라인을 읽어주세요."
@@ -920,7 +920,7 @@
         "message": "제출될 구간이 길어요. 전반적인 동영상의 내용이 한 주제에 대한 것이라면, \"건너뛰기\"를 \"동영상 전체\"로 변경해주세요. 자세한 정보는 가이드라인을 확인하세요."
     },
     "categoryPillTitleText": {
-        "message": "동영상 전체가 해당 카테고리로 지정됐고 부분적으로 나누기 어려워요."
+        "message": "동영상 전체가 해당 카테고리로 지정됐고 부분적으로 나누기 어려워요"
     },
     "chapterNameTooltipWarning": {
         "message": "챕터의 이름 중 하나가 카테고리와 유사해요. 가능한 경우 카테고리를 대신 사용해 주세요."
@@ -939,10 +939,10 @@
         "message": "경고를 받으셨어요"
     },
     "questionButton": {
-        "message": "아직 질문이 있어요"
+        "message": "질문이 있어요"
     },
     "warningConfirmButton": {
-        "message": "네, 이해했어요"
+        "message": "사유를 이해했어요"
     },
     "warningError": {
         "message": "경고를 확인하던 도중 오류가 발생했어요:"
@@ -1107,7 +1107,7 @@
         "message": "기본 설정으로 초기화"
     },
     "confirmResetToDefault": {
-        "message": "모든 설정을 기본값으로 초기화할까요? 되돌릴 수 없어요!"
+        "message": "모든 설정을 기본값으로 초기화하시겠어요? 되돌릴 수 없어요!"
     },
     "exportSegments": {
         "message": "구간 내보내기"
@@ -1173,6 +1173,9 @@
     "chapterNewFeature": {
         "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 이 동영상에 제출된 챕터를 보려면 라이선스를 결제하세요. 챕터 목록 미리보기: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 지금 설정에서 활성화해서 무료로 사용하세요."
     },
     "clearUnsubmittedSegments": {
         "message": "모든 구간 초기화",

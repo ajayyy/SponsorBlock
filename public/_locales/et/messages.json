@@ -405,17 +405,8 @@
     "statusReminder": {
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
     },
-    "changeUserID": {
-        "message": "Impordi/ekspordi oma UserID"
-    },
     "whatChangeUserID": {
         "message": "Seda tuleks privaatsena hoida. See on nagu parool ning seda ei tohiks kellegagi jagada. Kui kellelgi see on, saavad nad sinuna esineda.\nKui otsid avalikku UserID'd, klõpsa hüpikus olevat lõikelaua ikooni."
-    },
-    "setUserID": {
-        "message": "Seadista UserID"
-    },
-    "userIDChangeWarning": {
-        "message": "Hoiatus: UserID muutmine on püsiv. Kas soovid kindlasti seda teha? Igaks juhuks soovitame eelmise UserID varundada."
     },
     "createdBy": {
         "message": "Autor"
@@ -504,9 +495,6 @@
     },
     "exportOptionsUpload": {
         "message": "Laadi failist"
-    },
-    "whatExportOptions": {
-        "message": "See on sinu kogu seadistus JSON-formaadis. Selle hulgas on ka UserID, seega jaga seda targalt."
     },
     "setOptions": {
         "message": "Määra valikud"
@@ -666,9 +654,6 @@
     },
     "category_filler": {
         "message": "Täitesisu/naljad"
-    },
-    "category_filler_description": {
-        "message": "Video täiteks või huumori eesmärgil lisatud sisu, mis ei ole vajalik video põhieesmärgi mõistmiseks. Selle alla ei kuulu segmendid, mis annavad kontekstiteavet või taustainfot."
     },
     "category_filler_short": {
         "message": "Täide"

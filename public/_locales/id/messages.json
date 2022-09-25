@@ -387,17 +387,8 @@
     "statusReminder": {
         "message": "Cek status.sponsor.ajay.app untuk status server."
     },
-    "changeUserID": {
-        "message": "Impor/Ekspor UserID"
-    },
     "whatChangeUserID": {
         "message": "Ini harus dirahasiakan. Ini seperti kata sandi dan tidak boleh dibagikan kepada siapa pun. Jika seseorang mempunyai ini, mereka bisa menyamar jadi anda. Jika anda mencari UserID publik anda, klik ikon papan tulis di popup."
-    },
-    "setUserID": {
-        "message": "Atur UserID"
-    },
-    "userIDChangeWarning": {
-        "message": "Peringatan: Pengubahan UserID bersifat permanen. Apakah anda yakin ingin melakukan ini? Pastikan kamu sudah mencadangkan yang lama untuk berjaga."
     },
     "createdBy": {
         "message": "Dibuat Oleh"
@@ -492,9 +483,6 @@
     },
     "exportOptionsUpload": {
         "message": "Muat dari file"
-    },
-    "whatExportOptions": {
-        "message": "Ini adalah seluruh konfigurasi anda di JSON. Ini mencakup userID anda, maka pastikan anda membagikan ini dengan bijak."
     },
     "setOptions": {
         "message": "Atur Opsi"
@@ -650,9 +638,6 @@
     },
     "category_filler": {
         "message": "Pengisi Tak berkaitan/Lawakan"
-    },
-    "category_filler_description": {
-        "message": "Adegan tangensial ditambahkan hanya untuk pengisi atau humor yang tidak diperlukan untuk memahami isi utama video. Ini tidak boleh mencakup segmen yang memberikan detail konteks atau latar belakang."
     },
     "category_filler_short": {
         "message": "Isian"

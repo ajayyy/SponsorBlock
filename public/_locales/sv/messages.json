@@ -415,16 +415,16 @@
         "message": "Gå till status.sponsor.ajay.app för serverstatus."
     },
     "changeUserID": {
-        "message": "Importera/Exportera ditt Användar-ID"
+        "message": "Importera/Exportera ditt privata Användar-ID"
     },
     "whatChangeUserID": {
         "message": "Detta ska hållas privat. Detta är som ett lösenord och ska inte delas med någon. Om andra får tag i det kan de utge sig för att vara dig. Om du letar efter ditt offentliga Användar-ID kan du klicka på urklippsikonen i popupen."
     },
     "setUserID": {
-        "message": "Ange Användar-ID"
+        "message": "Ange privat Användar-ID"
     },
     "userIDChangeWarning": {
-        "message": "Varning: Ändring av Användar-ID är permanent. Är du säker att du vill göra detta? Se till att ta en säkerhetskopia av ditt gamla för säkerhets skull."
+        "message": "Varning: Ändring av ditt Användar-ID är permanent. Är du säker att du vill göra detta? Se till att ta en säkerhetskopia av ditt gamla för säkerhets skull."
     },
     "createdBy": {
         "message": "Skapad av"
@@ -524,7 +524,7 @@
         "message": "Ladda från fil"
     },
     "whatExportOptions": {
-        "message": "Detta är alla dina alternativ i JSON-format. Det inkluderar ditt Användar-ID, så var noga med hur du hanterar informationen."
+        "message": "Detta är hela din konfiguration i JSON-format. Det inkluderar ditt Användar-ID, så var noga med hur du hanterar informationen."
     },
     "setOptions": {
         "message": "Ange alternativ"
@@ -689,7 +689,7 @@
         "message": "Ämnesavvikelse/Skämt"
     },
     "category_filler_description": {
-        "message": "Tangentiella scener endast tillagda för utfyllnad eller humor som inte krävs för att förstå det huvudsakliga innehållet i videon. Detta bör inte omfatta segment som tillhandahåller innehåll eller bakgrundsdetaljer."
+        "message": "Tangentiella scener endast för utfyllnad eller humor som inte krävs för att förstå det huvudsakliga innehållet i videon. Detta bör inte omfatta segment som tillhandahåller kontext eller bakgrundsdetaljer. Detta är en mycket aggressiv kategori avsedd för när du inte är på humör för \"kul\"."
     },
     "category_filler_short": {
         "message": "Utfyllnad"
@@ -1173,6 +1173,9 @@
     "chapterNewFeature": {
         "message": "Ny funktion: Crowd-sourced anpassade kapitel. Dessa är anpassade namngivna avsnitt i videor som kan staplas för att få mer och mer exakt. Köp en licens för att se de kapitel som lämnats på denna video såsom: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Ny funktion: Crowd-sourced anpassade kapitel. Dessa är anpassade namngivna avsnitt i videor som kan staplas för att få mer och mer exakt. För dig är det gratis, aktivera det i alternativen."
     },
     "unsubmittedSegmentCounts": {
         "message": "Du har för närvarande {0} på {1}",

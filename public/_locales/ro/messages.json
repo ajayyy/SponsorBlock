@@ -387,17 +387,8 @@
     "statusReminder": {
         "message": "Verificați status.sponsor.ajay.app pentru starea serverului."
     },
-    "changeUserID": {
-        "message": "Importă/Exportă Id-ul Tău De Utilizator"
-    },
     "whatChangeUserID": {
         "message": "Aceste informații sunt private și nu ar trebui să fie dezvăluite nimănui. Dacă cineva are aceste informații, pot fi folosite pentru a vă imita. În cazul în care vă căutați ID-ul public de utilizator, dați click pe icoana de clipboard din popup."
-    },
-    "setUserID": {
-        "message": "Setează Id-ul Utilizatorului"
-    },
-    "userIDChangeWarning": {
-        "message": "Atenție: Schimbarea Id-ului Utilizatorului este permanentă. Sunteți sigur că doriți să faceți asta? Asigurați-vă că ați făcut o copie de rezervă."
     },
     "createdBy": {
         "message": "Creat De"
@@ -480,9 +471,6 @@
     },
     "exportOptionsUpload": {
         "message": "Încarcă din fișier"
-    },
-    "whatExportOptions": {
-        "message": "Aceasta este întreaga configurație în format JSON. Asta include si ID-ul tău de utilizator, așa că fi sigur să împărtășești asta cu înțelepciune."
     },
     "setOptions": {
         "message": "Setează Opțiuni"

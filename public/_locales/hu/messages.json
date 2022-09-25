@@ -415,16 +415,16 @@
         "message": "A szerver állapotához tekintsd meg a status.sponsor.ajay.app oldalt."
     },
     "changeUserID": {
-        "message": "UserID importálása / exportálása"
+        "message": "Titkos UserID importálása / exportálása"
     },
     "whatChangeUserID": {
         "message": "Ez privát információnak minősül. Ez olyan, mint egy jelszó, így nem ajánlott megosztani senkivel. Ha valakinek birtokában van, megszemélyesíthet téged. Ha a nyilvános userID-dat keresed, kattints a vágólap ikonra a felugró ablakban."
     },
     "setUserID": {
-        "message": "UserID beállítása"
+        "message": "Titkos UserID beállítása"
     },
     "userIDChangeWarning": {
-        "message": "Figyelem: A UserID megváltoztatása végleges. Biztosan szeretnéd megtenni? Minden esetben készíts biztonsági másolatot a régiről!"
+        "message": "Figyelem: A Titkos UserID megváltoztatása végleges. Biztosan szeretnéd megtenni? Minden esetben készíts biztonsági másolatot a régiről!"
     },
     "createdBy": {
         "message": "Készítette"
@@ -524,7 +524,7 @@
         "message": "Betöltés fájlból"
     },
     "whatExportOptions": {
-        "message": "Ez az összes beállításod JSON formátumban. Ebbe bele tartozik a userID-d is, úgyhogy csak elővigyázatosan oszd meg."
+        "message": "Ez az összes beállításod JSON formátumban. Ebbe bele tartozik a Titkos UserID-d is, úgyhogy csak elővigyázatosan oszd meg."
     },
     "setOptions": {
         "message": "Beállítások módosítása"
@@ -689,7 +689,7 @@
         "message": "Témától eltérő töltelék/viccek"
     },
     "category_filler_description": {
-        "message": "Csak töltelékként, vagy humornak hozzáadott részek, amik nem szükségesek a videó fő tartalmának megértéséhez. Ne tartalmazzon olyan szegmenseket, amik kontextust, vagy alapvető információkat szolgáltatnak."
+        "message": "Csak töltelékként, vagy humornak hozzáadott részek, amik nem szükségesek a videó fő tartalmának megértéséhez. Ne tartalmazzon olyan szegmenseket, amik kontextust, vagy alapvető információkat szolgáltatnak\". Ez egy nagyon agresszív kategória arra, amikor nincs kedved a \"szórakozáshoz\"."
     },
     "category_filler_short": {
         "message": "Töltelék"
@@ -1173,6 +1173,9 @@
     "chapterNewFeature": {
         "message": "Új funkció: Közösség által karbantartott fejezetek. Ezek egyedileg elnevezett részei a videóknak, amiket egymásba is lehet ágyazni, hogy egyre pontosabbak lehessenek. Vásárolj licencet, hogy láthasd az ezen a videón beküldött fejezeteket, mint: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Új funkció: Közösség által karbantartott fejezetek. Ezek egyedileg elnevezett részei a videóknak, amiket egymásba is lehet ágyazni, hogy egyre pontosabbak lehessenek. Neked van igyenes hozzáférésed, engedélyezd a beállításokban."
     },
     "unsubmittedSegmentCounts": {
         "message": "Jelenleg {0} van {1}",

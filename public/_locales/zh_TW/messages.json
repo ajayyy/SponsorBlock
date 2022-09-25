@@ -408,17 +408,8 @@
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 檢查伺服器狀態"
     },
-    "changeUserID": {
-        "message": "匯入/匯出您的使用者 ID"
-    },
     "whatChangeUserID": {
         "message": "密鑰應被保密。它就像是密碼，不應與他人分享。若密鑰落入他人手中，他人將可以冒充你。若你在尋找你的公開使用者ID，點擊彈出視窗上的剪貼簿圖示"
-    },
-    "setUserID": {
-        "message": "設定使用者 ID"
-    },
-    "userIDChangeWarning": {
-        "message": "警告：更改用戶 ID 是永久性的。您確定要這麼做嗎？請務必備份您的舊用戶 ID 來以防萬一。"
     },
     "createdBy": {
         "message": "作者"
@@ -516,9 +507,6 @@
     },
     "exportOptionsUpload": {
         "message": "從檔案載入"
-    },
-    "whatExportOptions": {
-        "message": "這是您全部設定的 JSON 格式。它包含了您的用戶 ID ，所以您一定要謹慎的保管它。"
     },
     "setOptions": {
         "message": "設定選項"
@@ -681,9 +669,6 @@
     },
     "category_filler": {
         "message": "離題閒聊/玩笑"
-    },
-    "category_filler_description": {
-        "message": "與影片主要內容無關的填充詞或笑話，但不應包含與前後或背景有關者"
     },
     "category_filler_short": {
         "message": "填充詞"

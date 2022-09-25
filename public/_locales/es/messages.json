@@ -414,17 +414,8 @@
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
     },
-    "changeUserID": {
-        "message": "Importar/Exportar tu ID de usuario"
-    },
     "whatChangeUserID": {
         "message": "Esto se debería mantener privado. Esto es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, puede suplantarte. Si estás buscando tu ID de usuario público, haz clic en el icono de portapapeles en la ventana emergente."
-    },
-    "setUserID": {
-        "message": "Establecer el ID de usuario"
-    },
-    "userIDChangeWarning": {
-        "message": "Advertencia: El cambio del ID de usuario es irreversible. ¿Está seguro de que le desea hacerlo? Asegúrese de hacer una copia de respaldo de la anterior por si acaso."
     },
     "createdBy": {
         "message": "Creado Por"
@@ -522,9 +513,6 @@
     },
     "exportOptionsUpload": {
         "message": "Cargar desde archivo"
-    },
-    "whatExportOptions": {
-        "message": "Esta es toda su configuración en JSON. Esto incluye tu ID de usuario, así que asegúrate de compartir esto sabiamente."
     },
     "setOptions": {
         "message": "Configurar opciones"
@@ -687,9 +675,6 @@
     },
     "category_filler": {
         "message": "Tangentes de Relleno/Chistes"
-    },
-    "category_filler_description": {
-        "message": "Escenas tangenciales añadidas solo para relleno o humor que no son necesarias para entender el contenido principal del video. Esto no debe incluir segmentos que proporcionen contexto o detalles de fondo."
     },
     "category_filler_short": {
         "message": "Relleno"

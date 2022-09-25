@@ -387,17 +387,8 @@
     "statusReminder": {
         "message": "Stav servera skontrolujete na status.sponsor.ajay.app."
     },
-    "changeUserID": {
-        "message": "Import/export vášho ID používateľa"
-    },
     "whatChangeUserID": {
         "message": "Toto si starostlivo uchovajte. Podobne ako heslo by ste to nemali s nikým zdieľať. Ak by to získal niekto ďalší, mohol by vám uškodiť. Ak hľadáte vaše verejné ID používateľa, stlačte ikonu schránky v podokne."
-    },
-    "setUserID": {
-        "message": "Nastaviť Používateľove ID"
-    },
-    "userIDChangeWarning": {
-        "message": "Varovanie: Zmena ID používateľa je nezvratná. Naozaj to chcete spraviť? Pre istotu si staré ID používateľa zazálohujte."
     },
     "createdBy": {
         "message": "Vytvoril"
@@ -480,9 +471,6 @@
     },
     "exportOptions": {
         "message": "Import/export všetkých nastavení"
-    },
-    "whatExportOptions": {
-        "message": "Toto sú vaše kompletné nastavenia vo formáte JSON. Obsahuje aj vaše Používateľské ID, takže s ním narábajte opatrne."
     },
     "setOptions": {
         "message": "Nastaviť Nastavenia"
@@ -639,9 +627,6 @@
     },
     "category_preview_guideline3": {
         "message": "Nie pre sekcie, ktoré majú dodatočný obsah"
-    },
-    "category_filler_description": {
-        "message": "Odbočky mimo tému pridané len pre zábavu, nepotrebné pre pochopenie hlavného obsahu videa. Nemalo by zahŕňať segmenty, ktoré vysvetľujú kontext alebo vedľajšie detaily."
     },
     "category_filler_short": {
         "message": "Odbočka"

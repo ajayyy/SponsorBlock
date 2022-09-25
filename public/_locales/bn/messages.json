@@ -25,6 +25,16 @@
     "Segments": {
         "message": "অংশগুলো"
     },
+    "SegmentsCap": {
+        "message": "অংশগুলো"
+    },
+    "Chapters": {
+        "message": "অধ্যায়সমূহ"
+    },
+    "renderAsChapters": {
+        "message": "অংশসমূহকে অধ্যায়সমূহতে পরিণত করুন",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "এই জমাটিকে সমর্থন করুন"
     },
@@ -114,6 +124,9 @@
     },
     "SubmitTimes": {
         "message": "সেগমেন্ট জমা দিন"
+    },
+    "sortSegments": {
+        "message": "সংক্ষিপ্ত অংশ"
     },
     "submitCheck": {
         "message": "আপনি কি এটি জমা দেওয়ার বিষয়ে নিশ্চিত?"
@@ -233,11 +246,20 @@
     "whatRefetchWhenNotFound": {
         "message": "যদি ভিডিওটি নতুন হয়, এবং কোন অংশ পাওয়া না যায়, আপনার দেখার সময় কয়েক মিনিট পর পরই এটি তথ্য আনতে থাকবে।"
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "জমার অনুমতি ছাড়াই বিভাগসমূহকে জমা মেনুতে দেখান"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "নূন্যতম খ্যাতি প্রয়োজনীয়তার কারণে কিছু বিভাগ জমা দিতে অনুমতি প্রয়োজন"
+    },
     "showNotice": {
         "message": "নোটিশ পুনরায় প্রদর্শন করুন"
     },
     "showSkipNotice": {
         "message": "একটি অংশ এড়ানোর পরে নোটিস প্রদর্শন করুন"
+    },
+    "showCategoryGuidelines": {
+        "message": "বিভাগের সাহায্য দেখান"
     },
     "noticeVisibilityMode0": {
         "message": "পূর্ণ আকারের স্কিপ নোটিস"
@@ -284,6 +306,14 @@
     },
     "setSubmitKeybind": {
         "message": "সেগমেন্ট জমা দিন",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "পরবর্তী অধ্যায়",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "পূর্ববর্তী অধ্যায়",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -384,17 +414,8 @@
     "statusReminder": {
         "message": "সার্ভারের স্ট্যাটাস এর জন্য status.sponsor.ajay.app দেখুন করুন।"
     },
-    "changeUserID": {
-        "message": "আপনার ইউজার আইডি ইম্পোর্ট/এক্সপোর্ট করুন"
-    },
     "whatChangeUserID": {
         "message": "এটি ব্যক্তিগত রাখা উচিত। এটি একটি পাসওয়ার্ডের মতো এবং কারও সাথে ভাগ করা উচিত নয়। কারও যদি এটি থাকে তবে তারা আপনার ছদ্মবেশ ধারণ করতে পারে। আপনি যদি আপনার পাবলিক ইউজারআইডি খুঁজছেন তবে পপআপে ক্লিপবোর্ড আইকনটি ক্লিক করুন।"
-    },
-    "setUserID": {
-        "message": "ইউজার আইডি দিন"
-    },
-    "userIDChangeWarning": {
-        "message": "সতর্কতা: ইউজারআইডি পরিবর্তন করা চিরস্থায়ী। আপনি কি নিশ্চিত যে আপনি এটি করতে চান? আপনার পুরানোটিকে সাবধানতার সার্থে ব্যাকআপ করার বিষয়টি নিশ্চিত করুন।"
     },
     "createdBy": {
         "message": "সৃষ্টি করেছেন"
@@ -438,6 +459,9 @@
     },
     "minDurationDescription": {
         "message": "সেট করা মান (সেকেন্ডে) থেকে ছোট সেগমেন্টগুলি প্লেয়ারে এড়িয়ে যাওয়া হবে বা দেখানো হবে না"
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "সম্পূর্ণ ভিডিওর লেবেল যুক্ত থাকলে ম্যানুয়াল স্কিপ দেখান"
     },
     "skipNoticeDuration": {
         "message": "নোটিশ প্রদর্শন করার দৈর্ঘ্য (সেকেন্ড):"
@@ -486,9 +510,6 @@
     },
     "exportOptionsUpload": {
         "message": "ফাইল থেকে লোড করুন"
-    },
-    "whatExportOptions": {
-        "message": "এটি আপনার সম্পূর্ণ কনফিগারেশন এতে আপনার ইউজারআইডি অন্তর্ভুক্ত রয়েছে, তাই বিজ্ঞতার সাথে শেয়ার করতে ভুলবেন না।."
     },
     "setOptions": {
         "message": "অপশন সেট করুন"
@@ -593,9 +614,6 @@
     },
     "category_filler": {
         "message": "ফিলার ট্যানজেন্ট/জোকস"
-    },
-    "category_filler_description": {
-        "message": "স্পর্শকাতর দৃশ্য যেগুলি কেবল ফিলার বা হাস্যরসের জন্য যুক্ত হয়েছে যা ভিডিওর মূল বিষয়বস্তু বোঝার জন্য প্রয়োজন হয় না। এর মধ্যে প্রসঙ্গ বা পটভূমির বিশদ সরবরাহকারী বিভাগগুলি অন্তর্ভুক্ত করা উচিত নয়।"
     },
     "category_filler_short": {
         "message": "ফিলার"

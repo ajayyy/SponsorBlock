@@ -408,17 +408,8 @@
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
     },
-    "changeUserID": {
-        "message": "Importer/Exporter Votre ID d'Utilisateur"
-    },
     "whatChangeUserID": {
         "message": "Il doit rester privé. 0 l'instar d'un mot de passe, il ne doit être partagé avec personne. Si une autre personne est en possession de cette information, elle peut usurper votre identité SponsorBlock. Si vous cherchez votre UserID public, cliquez sur l'icône du presse-papiers dans l'encart."
-    },
-    "setUserID": {
-        "message": "Définir \"UserID\""
-    },
-    "userIDChangeWarning": {
-        "message": "Avertissement : La modification de \"UserID\" est permanente. Êtes-vous sûr de vouloir faire ça ? Assurez-vous de sauvegarder votre ancien au cas où."
     },
     "createdBy": {
         "message": "Créé par"
@@ -516,9 +507,6 @@
     },
     "exportOptionsUpload": {
         "message": "Charger à partir du fichier"
-    },
-    "whatExportOptions": {
-        "message": "Contient toute votre configuration au format JSON. Inclut votre UserID privé, donc ne partagez pas ce fichier."
     },
     "setOptions": {
         "message": "Définir les options"
@@ -681,9 +669,6 @@
     },
     "category_filler": {
         "message": "Digressions/Blagues"
-    },
-    "category_filler_description": {
-        "message": "Digressions ajoutées uniquement dans un but de remplissage ou de l'humour non requis pour comprendre le sujet principal de la vidéo. Ne doit pas inclure des segments fournissant du contexte ou des détails de fond."
     },
     "category_filler_short": {
         "message": "Remplissage"

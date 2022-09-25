@@ -414,17 +414,8 @@
     "statusReminder": {
         "message": "Controlla status.sponsor.ajay.app per lo stato del server."
     },
-    "changeUserID": {
-        "message": "Importa/Esporta Il Tuo ID Utente"
-    },
     "whatChangeUserID": {
         "message": "Questo dovrebbe esser mantenuto privato. È come una password e non dovrebbe esser condiviso con nessuno. Se qualcuno lo possiede, può impersonarti. Se stai cercando il tuo userID pubblico, clicca l'icona degli appunti nel popup."
-    },
-    "setUserID": {
-        "message": "Imposta ID utente"
-    },
-    "userIDChangeWarning": {
-        "message": "Attenzione: cambiare l'ID utente è permanente. Sei sicuro di volerlo fare? Assicurati di eseguire il backup del tuo vecchio nel caso."
     },
     "createdBy": {
         "message": "Creato da"
@@ -522,9 +513,6 @@
     },
     "exportOptionsUpload": {
         "message": "Carica da file"
-    },
-    "whatExportOptions": {
-        "message": "Questa è la tua intera configurazione in formaro JSON. Questo include il tuo ID utente, quindi presta attenzione se vuoi condividerlo."
     },
     "setOptions": {
         "message": "Imposta Opzioni"
@@ -687,9 +675,6 @@
     },
     "category_filler": {
         "message": "Riempitivi irrilevanti/Battute"
-    },
-    "category_filler_description": {
-        "message": "Le scene riempitive sono aggiunte solo per riempire o per umorismo che non sono richieste per comprendere il contenuto principale del video. Questo non dovrebbe includere segmenti che forniscono contesto o dettagli di sfondo."
     },
     "category_filler_short": {
         "message": "Filler"

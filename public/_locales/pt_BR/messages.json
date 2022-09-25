@@ -408,17 +408,8 @@
     "statusReminder": {
         "message": "Verifique status.sponsor.ajay.app para o status do servidor."
     },
-    "changeUserID": {
-        "message": "Importar/Exportar seu ID de usuário"
-    },
     "whatChangeUserID": {
         "message": "Esta informação deve se mantida privada. Ela é como uma senha e não deve ser compartilhada. Outras pessoas poderão se passar por você caso obtenham acesso. Se estiver procurando por sua ID Pública de Usuário, clique no ícone de prancheta no popup."
-    },
-    "setUserID": {
-        "message": "Definir ID de usuário"
-    },
-    "userIDChangeWarning": {
-        "message": "Atenção: A alteração do ID de usuário é permanente. Você tem certeza que deseja fazer isso? Certifique-se de fazer backup de seu ID antigo por precaução."
     },
     "createdBy": {
         "message": "Criado por"
@@ -510,9 +501,6 @@
     },
     "exportOptionsUpload": {
         "message": "Importar de um arquivo"
-    },
-    "whatExportOptions": {
-        "message": "Essas são suas preferências no formato JSON. Isso inclui seu ID de usuário, então lembre-se de compartilhar com cuidado."
     },
     "setOptions": {
         "message": "Definir Opções"
@@ -675,9 +663,6 @@
     },
     "category_filler": {
         "message": "Enrolação/Piadas"
-    },
-    "category_filler_description": {
-        "message": "Cenas tangenciais inseridas apenas por enrolação ou humor que não são necessárias para compreender o tópico principal do vídeo. Isto não deve incluir segmentos que fornecem contexto ou detalhes de segundo plano."
     },
     "category_filler_short": {
         "message": "Enrolação"
