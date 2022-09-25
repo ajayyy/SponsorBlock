@@ -35,6 +35,9 @@
         "message": "챕터처럼 구간을 불러오기",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "동영상 시간 옆에 현재 구간 표시"
+    },
     "upvoteButtonInfo": {
         "message": "이 제출을 추천해요"
     },
@@ -1185,6 +1188,30 @@
     },
     "chapterNewFeature2": {
         "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 지금 설정에서 활성화해서 무료로 사용하세요."
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "You currently have {0} on {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "You currently have no unsubmitted segments",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "unsubmitted segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "unsubmitted segments",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videos",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
     },
     "clearUnsubmittedSegments": {
         "message": "모든 구간 초기화",
