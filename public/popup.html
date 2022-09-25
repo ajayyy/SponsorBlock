@@ -13,7 +13,7 @@
     <div id="sponsorblockPopup" class="sponsorBlockPageBody sb-preload">
 
       <button id="sbCloseButton" title="__MSG_closePopup__" class="sbCloseButton hidden">
-        <img src="icons/close.png" width="15" height="15">
+        <img src="icons/close.png" width="15" height="15" alt="Close icon">
       </button>
 
       <div id="sbBetaServerWarning" class="hidden" title="__MSG_openOptionsPage__">
@@ -24,7 +24,7 @@
         <img src="icons/IconSponsorBlocker256px.png" alt="SponsorBlock" width="40" height="40" id="sponsorBlockPopupLogo">
         <p class="u-mZ">SponsorBlock</p>
       </header>
-      
+
       <div id="videoInfo">
         <!-- Loading text -->
         <p id="loadingIndicator" class="u-mZ grey-text">__MSG_noVideoID__</p>
@@ -64,11 +64,11 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Toggle Box -->
       <div class="sbControlsMenu">
         <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item">
-          <input type="checkbox" style="display:none;" id="whitelistToggle">
+          <input type="checkbox" style="display: none" id="whitelistToggle">
           <svg viewBox="0 0 24 24" width="23" height="23" class="SBWhitelistIcon sbControlsMenu-itemIcon">
             <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
           </svg>
@@ -78,7 +78,7 @@
         <!--github: mbledkowski/toggle-switch-->
         <label id="disableExtension" for="toggleSwitch" class="toggleSwitchContainer sbControlsMenu-item">
           <span class="toggleSwitchContainer-switch">
-            <input type="checkbox" style="display:none;" id="toggleSwitch" checked>
+            <input type="checkbox" style="display: none" id="toggleSwitch" checked>
             <span class="switchBg shadow"></span>
             <span class="switchBg white"></span>
             <span class="switchBg green"></span>
@@ -99,29 +99,29 @@
 
       <!-- Submit box -->
       <div id="mainControls" style="display: none">
-        <p class="sbHeader">
+        <h1 class="sbHeader">
           __MSG_recordTimesDescription__
-        </p>
+        </h1>
         <sub class="sponsorStartHint grey-text">__MSG_popupHint__</sub>
-        <div align="center" style="margin: 8px 0;">  
+        <div style="text-align: center; margin: 8px 0;">
           <button id="sponsorStart" class="sbMediumButton" style="margin-right: 8px">__MSG_sponsorStart__</button>
-          <button id="submitTimes" class="sbMediumButton" style="display: none;">__MSG_submitTimesButton__</button>
+          <button id="submitTimes" class="sbMediumButton" style="display: none">__MSG_submitTimesButton__</button>
         </div>
-        <span id="submissionHint" style="display: none;">__MSG_submissionEditHint__</span>
+        <span id="submissionHint" style="display: none">__MSG_submissionEditHint__</span>
       </div>
 
       <!-- Your Work box -->
-      <div class="sbYourWorkCols">
-        <p class="sbHeader" style="padding: 8px 16px;">
+      <div class="sbYourWorkBox">
+        <h1 class="sbHeader" style="padding: 8px 15px;">
           __MSG_yourWork__
-        </p>
-        <div>
+        </h1>
+        <div class="sbYourWorkCols">
           <!-- Username -->
           <div id="usernameElement">
-            <span class="u-mZ grey-text">__MSG_Username__:
+            <p class="u-mZ grey-text">__MSG_Username__:
               <!-- loading/errors -->
               <span id="setUsernameStatus" class="u-mZ white-text" style="display: none"></span>
-            </span>
+            </p>
             <div id="setUsernameContainer">
               <p id="usernameValue"></p>
               <button id="setUsernameButton" title="__MSG_setUsername__">
@@ -141,7 +141,7 @@
           <!-- Submissions -->
           <div id="sponsorTimesContributionsContainer" class="hidden">
             <p class="u-mZ grey-text">__MSG_Submissions__:</p>
-            <span id="sponsorTimesContributionsDisplay">0</span>
+            <p id="sponsorTimesContributionsDisplay" class="u-mZ">0</p>
           </div>
         </div>
 
@@ -184,7 +184,7 @@
         <a id="sbConsiderDonateLink" href="https://sponsor.ajay.app/donate" target="_blank" rel="noopener">
           __MSG_considerDonating__
         </a>
-        <img id="sbCloseDonate" src="/icons/close.png" alt="Close icon" height="8" style="padding-left: 5px; cursor: pointer;" />
+        <img id="sbCloseDonate" src="/icons/close.png" alt="__MSG_closeIcon__" height="8" style="padding-left: 5px; cursor: pointer;" />
       </div>
 
       <footer id="sbFooter">

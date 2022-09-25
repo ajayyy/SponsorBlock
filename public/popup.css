@@ -403,7 +403,7 @@
  */
 #mainControls {
   margin: 16px;
-  padding: 8px 12px;
+  padding: 8px 14px;
   text-align: left;
   border-radius: 8px;
   border: 2px solid var(--sb-grey-bg-color);
@@ -411,6 +411,7 @@
 .sponsorStartHint {
   display: block;
   text-align: left;
+  padding-top: 3px;
 }
 
 /*
@@ -448,24 +449,23 @@
 /*
  * Your Work box
  */
-.sbYourWorkCols {
+.sbYourWorkBox {
   margin: 16px;
   margin-bottom: 8px;
   border-radius: 8px;
   border: 2px solid var(--sb-grey-bg-color);
 }
-.sbYourWorkCols > div {
+.sbYourWorkCols {
   display: flex;
   border-top: 2px solid var(--sb-grey-bg-color);
   border-bottom: 2px solid var(--sb-grey-bg-color);
 }
 
 .sbStatsSentence {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 6px 14px;
 }
 
-.sbStatsSentence .sbExtraInfo {
+.sbExtraInfo {
   display: inline-block;
 }
 
@@ -473,37 +473,28 @@
  * Increase font size of username input and display
  */
 #usernameValue,
-#usernameInput,
-#sponsorTimesContributionsDisplay {
+#usernameInput {
   font-size: 16px;
   flex: 1 0;
+}
+#sponsorTimesContributionsDisplay {
+  font-size: 16px;
 }
  /*
  * Improve alignment of username and submissions
  */
-#usernameElement,
+#usernameElement > p,
 #sponsorTimesContributionsContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-}
-#usernameElement > span,
-#sponsorTimesContributionsContainer {
-  text-align: start;
-}
-
-#sponsorTimesContributionsContainer {
-  margin-left: 8px;
-  padding-left: 8px;
-  border-left: 2px solid var(--sb-grey-bg-color);
+  text-align: left;
 }
 
 /*
  * Username
  */
 #usernameElement {
-  padding: 8px;
+  padding: 8px 14px;
   min-width: 50%;
+  width: 100%;
 }
 #setUsernameContainer {
   display: flex;
@@ -549,14 +540,15 @@
   width: calc(100% - 68px);
   text-overflow: ellipsis;
   color: var(--sb-main-fg-color);
-  background: var(--sb-grey-bg-color);
+  background-color: var(--sb-grey-bg-color);
 }
 
 /*
  * Submissions
 */
 #sponsorTimesContributionsContainer {
-  padding: 8px;
+  padding: 8px 14px;
+  border-left: 2px solid var(--sb-grey-bg-color);
 }
 
 /*
@@ -571,14 +563,13 @@
   display: inline-block;
   text-decoration: none;
   border-radius: 4px;
-  background: #333;
-  cursor: pointer;
+  background-color: #333;
   padding: 4px 8px;
   font-weight: 500;
   margin: 2px 1px;
 }
 #sbFooter a:hover {
-  background: #444;
+  background-color: #444;
 }
 
 #sponsorTimesDonateContainer a {

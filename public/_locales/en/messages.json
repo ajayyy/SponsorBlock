@@ -125,6 +125,9 @@
     "closePopup": {
         "message": "Close Popup"
     },
+    "closeIcon": {
+        "message": "Close Icon"
+    },
     "SubmitTimes": {
         "message": "Submit Segments"
     },
