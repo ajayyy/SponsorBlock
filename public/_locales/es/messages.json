@@ -35,6 +35,9 @@
         "message": "Procesar segmentos como capítulos",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Mostrar segmento actual al lado del tiempo del video"
+    },
     "upvoteButtonInfo": {
         "message": "Votar positivamente este envío"
     },
@@ -1045,6 +1048,12 @@
     },
     "hideSegment": {
         "message": "Ocultar segmento"
+    },
+    "skipSegment": {
+        "message": "Omitir segmento"
+    },
+    "playChapter": {
+        "message": "Reproducir capítulo"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilice la rueda del ratón mientras pasa el cursor por encima del cuadro de edición para ajustar el tiempo. Se pueden utilizar combinaciones de la tecla ctrl o shift para afinar los cambios."
