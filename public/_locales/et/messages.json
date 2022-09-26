@@ -35,6 +35,9 @@
         "message": "Kuva segmendid peatükkidena",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Kuva praegune segment video kõrval"
+    },
     "upvoteButtonInfo": {
         "message": "Anna segmendile poolthääl"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Sulge hüpik"
+    },
+    "closeIcon": {
+        "message": "Sulgemisikoon"
     },
     "SubmitTimes": {
         "message": "Esita segmendid"
@@ -967,6 +973,12 @@
     },
     "hideSegment": {
         "message": "Peida segment"
+    },
+    "skipSegment": {
+        "message": "Jäta segment vahele"
+    },
+    "playChapter": {
+        "message": "Esita peatükk"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Kiireks aja reguleerimiseks keri hiirega muutmiskasti kohal. Täpsemaks reguleerimiseks hoia kerimise ajal all Ctrl või Shift klahvi."
