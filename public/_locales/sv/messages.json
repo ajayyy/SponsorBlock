@@ -35,6 +35,9 @@
         "message": "Gör segment som kapitel",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Visa nuvarande segment bredvid videotid"
+    },
     "upvoteButtonInfo": {
         "message": "Rösta på detta inskick"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Stäng popup"
+    },
+    "closeIcon": {
+        "message": "Stäng ikon"
     },
     "SubmitTimes": {
         "message": "Skicka in segment"
@@ -1045,6 +1051,12 @@
     },
     "hideSegment": {
         "message": "Dölj segment"
+    },
+    "skipSegment": {
+        "message": "Hoppa över segment"
+    },
+    "playChapter": {
+        "message": "Spela kapitel"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Använd mushjulet medan du håller muspekaren över redigeringsrutan för att snabbt justera tiden. Kombinationer av CTRL- eller SKIFT-tangenten kan användas för att finjustera tiden."
