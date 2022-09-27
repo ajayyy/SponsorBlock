@@ -383,6 +383,8 @@ function resetValues() {
 }
 
 async function videoIDChange(id): Promise<void> {
+    // don't switch to invalid value
+    if (!id && sponsorVideoID) return;
     //if the id has not changed return unless the video element has changed
     if (sponsorVideoID === id && (isVisible(video) || !video)) return;
 
@@ -532,7 +534,7 @@ function durationChangeListener(): void {
 function videoOnReadyListener(): void {
     createPreviewBar();
     updatePreviewBar();
-    createButtons();
+    updateVisibilityOfPlayerControlsButton()
 }
 
 function cancelSponsorSchedule(): void {
@@ -1218,7 +1220,7 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     // pageType shortcut
     if (pageType === PageType.Channel) return getYouTubeVideoIDFromDocument()
     // clips should never skip, going from clip to full video has no indications.
-    if (url.includes("youtube.com/clip/")) return false;
+    if (url.includes("youtube.com/clip/")) return "clipNoID";
     // skip to document and don't hide if on /embed/
     if (url.includes("/embed/") && url.includes("youtube.com")) return getYouTubeVideoIDFromDocument(false);
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
@@ -1756,16 +1758,14 @@ function shouldSkip(segment: SponsorTime): boolean {
 
 /** Creates any missing buttons on the YouTube player if possible. */
 async function createButtons(): Promise<void> {
-    if (onMobileYouTube) return;
-
     controls = await utils.wait(getControls).catch();
 
     // Add button if does not already exist in html
     createButton("startSegment", "sponsorStart", () => startOrEndTimingNewSegment(), "PlayerStartIconSponsorBlocker.svg");
     createButton("cancelSegment", "sponsorCancel", () => cancelCreatingSegment(), "PlayerCancelSegmentIconSponsorBlocker.svg");
     createButton("delete", "clearTimes", () => clearSponsorTimes(), "PlayerDeleteIconSponsorBlocker.svg");
-    createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
+    createButton("submit", "SubmitTimes", () => submitSponsorTimes(), "PlayerUploadIconSponsorBlocker.svg");
+    createButton("info", "openPopup", () => openInfoMenu(), "PlayerInfoIconSponsorBlocker.svg");
 
     const controlsContainer = getControls();
     if (Config.config.autoHideInfoButton && !onInvidious && controlsContainer
