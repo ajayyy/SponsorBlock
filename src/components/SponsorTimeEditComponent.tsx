@@ -266,6 +266,15 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     {chrome.i18n.getMessage("delete")}
                 </span>
 
+                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(sponsorTime.actionType)) 
+                    && sponsorTime.actionType !== ActionType.Chapter ? (
+                    <span id={"sponsorTimePreviewButton" + this.idSuffix}
+                        className="sponsorTimeEditButton"
+                        onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey)}>
+                        {chrome.i18n.getMessage("preview")}
+                    </span>
+                ): ""}
+
                 {(!isNaN(segment[1]) && sponsorTime.actionType != ActionType.Full) ? (
                     <span id={"sponsorTimeInspectButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
@@ -274,12 +283,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(sponsorTime.actionType)) ? (
+                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(sponsorTime.actionType)) 
+                    && sponsorTime.actionType === ActionType.Chapter ? (
                     <span id={"sponsorTimePreviewButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey)}>
-                        {sponsorTime.actionType !== ActionType.Chapter ? chrome.i18n.getMessage("preview")
-                            : chrome.i18n.getMessage("End")}
+                        {chrome.i18n.getMessage("End")}
                     </span>
                 ): ""}
 
