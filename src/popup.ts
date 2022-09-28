@@ -430,7 +430,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 }
             } else if (request.status == 404 || request.status == 200) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
-                PageElements.issueReporterImportExport.classList.add("hidden");
+                PageElements.issueReporterImportExport.classList.remove("hidden");
             } else {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("connectionError") + request.status;
                 PageElements.issueReporterImportExport.classList.add("hidden");
