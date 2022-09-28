@@ -35,6 +35,9 @@
         "message": "Zeige Segmente als Kapitel",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Aktuelles Segment neben der Videozeit anzeigen"
+    },
     "upvoteButtonInfo": {
         "message": "Diese Einreichung positiv bewerten"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Pop-up schließen"
+    },
+    "closeIcon": {
+        "message": "Symbol schließen"
     },
     "SubmitTimes": {
         "message": "Senden"
@@ -414,8 +420,14 @@
     "statusReminder": {
         "message": "Prüfe status.sponsor.ajay.app für den Serverstatus."
     },
+    "changeUserID": {
+        "message": "Private Benutzer-ID importieren/exportieren"
+    },
     "whatChangeUserID": {
         "message": "Dies sollte geheim gehalten und wie ein Passwort behandelt, also mit niemandem geteilt werden. Andere könnten sich damit als dich ausgeben. Wenn du nach deiner öffentlichen Profilkennung suchst, klicke auf das „Kopieren“-Symbol neben deinem Anmeldenamen im Pop-up."
+    },
+    "setUserID": {
+        "message": "Private Benutzer-ID festlegen"
     },
     "createdBy": {
         "message": "Erstellt von"
@@ -1030,6 +1042,12 @@
     },
     "hideSegment": {
         "message": "Segment verbergen"
+    },
+    "skipSegment": {
+        "message": "Segment überspringen"
+    },
+    "playChapter": {
+        "message": "Kapitel abspielen"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schnell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
