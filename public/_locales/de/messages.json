@@ -429,6 +429,9 @@
     "setUserID": {
         "message": "Private Benutzer-ID festlegen"
     },
+    "userIDChangeWarning": {
+        "message": "Warnung: Das Ändern deiner privaten Benutzer-ID ist permanent. Bist du dir sicher, dass du das tun möchtest? Zur Sicherheit solltest du vorher ein Backup deiner alten ID erstellen."
+    },
     "createdBy": {
         "message": "Erstellt von"
     },
@@ -525,6 +528,9 @@
     },
     "exportOptionsUpload": {
         "message": "Aus Datei laden"
+    },
+    "whatExportOptions": {
+        "message": "Dies ist deine gesamte Konfiguration in JSON. Sie enthält deine private Benutzer-ID, stelle also sicher, sie nicht mit jedem zu teilen."
     },
     "setOptions": {
         "message": "Optionen ändern"
