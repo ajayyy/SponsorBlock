@@ -694,6 +694,9 @@
     "category_filler": {
         "message": "Füller/Witze"
     },
+    "category_filler_description": {
+        "message": "Nebensächliche Szenen, die nur als Füller oder Witz dienen und nicht benötigt sind, um den Hauptinhalt des Videos zu verstehen. Dies bezieht sich nicht auf Segmente, die Kontext oder Hintergrunddetails liefern. Dies ist eine sehr aggressive Kategorie, die dafür gedacht ist, wenn du nicht in der Stimmung für \"Spaß\" bist."
+    },
     "category_filler_short": {
         "message": "Füller"
     },
@@ -1182,6 +1185,9 @@
     "chapterNewFeature": {
         "message": "Neues Feature: Crowdsourced benutzerdefinierte Kapitel. Dies sind benutzerdefinierte Abschnitte in Videos, die gestapelt werden können, um mehr und mehr präzise zu werden. Kauf eine Lizenz, um Kapitel, die in diesem Video eingereicht wurden, anzusehen: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Neues Feature: Crowd-gesourcte benutzerdefinierte Kapitel. Dies sind benutzerdefiniert benannte Abschnitte in Videos, die gestapelt werden können, um mehr und mehr präzise zu werden. Du hast kostenlosen Zugang, aktiviere es in den Optionen."
     },
     "unsubmittedSegmentCounts": {
         "message": "Du hast derzeit {0} in {1}",
