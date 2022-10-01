@@ -947,8 +947,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
         && Config.config.payments.lastCheck !== 0 
         && !noRefreshFetchingChaptersAllowed()
         && Config.config.showChapterInfoMessage
-        && Config.config.skipCount > 200
-        && Math.random() > 0.8;
+        && Config.config.skipCount > 200;
 
     if (!showChapterMessage 
             && Config.config.showChapterInfoMessage 
