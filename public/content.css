@@ -738,7 +738,7 @@ input::-webkit-inner-spin-button {
 }
 
 .sponsorBlockLockedColor {
-	color: #ffc83d;
+	color: #ffc83d !important;
 }
 
 .sponsorBlockRectangleTooltip {
