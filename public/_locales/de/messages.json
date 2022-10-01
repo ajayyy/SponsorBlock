@@ -256,7 +256,7 @@
         "message": "Zeige Kategorien im Einsendungsmenü auch ohne Einreichungsberechtigungen"
     },
     "whatShowCategoryWithoutPermission": {
-        "message": "Einige Kategorien benötigen Erlaubnis zum übermitteln aufgrund von einem Mindestmass an Reputation"
+        "message": "Einige Kategorien benötigen Erlaubnis zum Übermitteln aufgrund von Mindestanforderungen an Reputation"
     },
     "showNotice": {
         "message": "Hinweis erneut anzeigen"
@@ -476,10 +476,10 @@
         "message": "Videosegmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
     },
     "enableManualSkipOnFullVideo": {
-        "message": "Verwende manuelles überspringen wenn ein vollständiges Video Label existiert"
+        "message": "Verwende manuelles Überspringen, wenn ein vollständiges Video Label existiert"
     },
     "whatManualSkipOnFullVideo": {
-        "message": "Für Personen, welche ein Video ohne unterbrechungen schauen wollen, während es eine komplette Eigenwerbung oder gesponsert ist."
+        "message": "Für Personen, welche ein Video ohne Unterbrechungen schauen wollen, während es vollständig gesponsert oder Eigenwerbung ist."
     },
     "skipNoticeDuration": {
         "message": "Dauer des Überspringenhinweises (Sekunden):"
@@ -743,7 +743,7 @@
         "message": "Kapitel"
     },
     "category_chapter_description": {
-        "message": "Benutzerdefinierte Kapitel, welche grosse Bereiche eines Videos beschreiben."
+        "message": "Benutzerdefiniert benannte Kapitel, welche große Abschnitte eines Videos beschreiben."
     },
     "category_chapter_guideline1": {
         "message": "Sponsor-Markennamen nicht erwähnen"
