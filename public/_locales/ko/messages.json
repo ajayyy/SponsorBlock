@@ -126,7 +126,7 @@
         "message": "팝업 닫기"
     },
     "closeIcon": {
-        "message": "아이콘 닫기"
+        "message": "닫기 아이콘"
     },
     "SubmitTimes": {
         "message": "구간 제출"
@@ -1119,7 +1119,7 @@
         "message": "기본 설정으로 초기화"
     },
     "confirmResetToDefault": {
-        "message": "모든 설정을 기본값으로 초기화하시겠어요? 되돌릴 수 없어요!"
+        "message": "모든 설정을 기본값으로 초기화하시겠어요? 되돌릴 수 없어요."
     },
     "exportSegments": {
         "message": "구간 내보내기"
@@ -1157,7 +1157,7 @@
         "description": "After the colon is an email address"
     },
     "cantAfford": {
-        "message": "요금을 결제할 여력이 아니시라면, {여기}서 할인 혜택을 받을 수 있는지 확인해보세요",
+        "message": "요금을 결제할 여력이 아니시라면, {여기}서 할인 혜택을 받을 수 있는지 확인해 보세요",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
@@ -1187,7 +1187,7 @@
         "description": "After the comma, a list of chapters for this video will appear"
     },
     "chapterNewFeature2": {
-        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 지금 설정에서 활성화해서 무료로 사용하세요."
+        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 설정에서 활성화해서 무료로 사용할 수 있어요."
     },
     "unsubmittedSegmentCounts": {
         "message": "You currently have {0} on {1}",
