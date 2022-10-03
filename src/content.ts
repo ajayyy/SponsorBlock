@@ -951,21 +951,23 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
     if (!showChapterMessage 
             && Config.config.showChapterInfoMessage 
-            && Config.config.payments.freeAccess
-            && !utils.getCategorySelection("chapter")) {
+            && Config.config.payments.freeAccess) {
         Config.config.showChapterInfoMessage = false;
-        const prependElement = document.querySelector(".ytp-chrome-bottom") as HTMLElement;
-        if (prependElement) {
-            Config.config.showChapterInfoMessage = false;
-            new Tooltip({
-                text: chrome.i18n.getMessage("chapterNewFeature2"),
-                linkOnClick: () => void chrome.runtime.sendMessage({ "message": "openConfig" }),
-                referenceNode: prependElement.parentElement,
-                prependElement,
-                timeout: 1500,
-                leftOffset: "20px",
-                positionRealtive: false
-            });
+
+        if (!utils.getCategorySelection("chapter")) {
+            const prependElement = document.querySelector(".ytp-chrome-bottom") as HTMLElement;
+            if (prependElement) {
+                Config.config.showChapterInfoMessage = false;
+                new Tooltip({
+                    text: chrome.i18n.getMessage("chapterNewFeature2"),
+                    linkOnClick: () => void chrome.runtime.sendMessage({ "message": "openConfig" }),
+                    referenceNode: prependElement.parentElement,
+                    prependElement,
+                    timeout: 1500,
+                    leftOffset: "20px",
+                    positionRealtive: false
+                });
+            }
         }
     }
 
