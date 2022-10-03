@@ -46,7 +46,10 @@ export async function fetchingChaptersAllowed(): Promise<boolean> {
     
     if (Config.config.payments.chaptersAllowed) return true;
 
-    if (Config.config.payments.lastCheck === 0) {
+    if (Config.config.payments.lastCheck === 0 && Date.now() - Config.config.payments.lastFreeCheck > 2 * 24 * 60 * 60 * 1000) {
+        Config.config.payments.lastFreeCheck = Date.now();
+        Config.forceSyncUpdate("payments");
+
         // Check for free access if no license key, and it is the first time
         const result = await utils.asyncRequestToServer("GET", "/api/userInfo", {
             value: "freeChaptersAccess",
@@ -56,7 +59,7 @@ export async function fetchingChaptersAllowed(): Promise<boolean> {
         try {
             if (result.ok) {
                 const userInfo = JSON.parse(result.responseText);
-    
+
                 Config.config.payments.lastCheck = Date.now();
                 if (userInfo.freeChaptersAccess) {
                     Config.config.payments.freeAccess = true;

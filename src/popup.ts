@@ -10,6 +10,7 @@ import { shortCategoryName } from "./utils/categoryUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
 import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
+import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
 const utils = new Utils();
 
 interface MessageListener {
@@ -259,9 +260,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     if (dontShowNotice != undefined && dontShowNotice) {
         PageElements.showNoticeAgain.style.display = "unset";
     }
+    
+    const values = ["userName", "viewCount", "minutesSaved", "vip", "permissions"];
+    if (!Config.config.payments.freeAccess && !noRefreshFetchingChaptersAllowed()) values.push("freeChaptersAccess");
 
-    utils.sendRequestToServer("GET", "/api/userInfo?value=userName&value=viewCount&value=minutesSaved&value=vip&value=permissions&value=freeChaptersAccess&userID="
-             + Config.config.userID, (res) => {
+    utils.asyncRequestToServer("GET", "/api/userInfo", {
+        userID: Config.config.userID,
+        values
+    }).then((res) => {
         if (res.status === 200) {
             const userInfo = JSON.parse(res.responseText);
             PageElements.usernameValue.innerText = userInfo.userName;

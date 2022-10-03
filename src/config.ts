@@ -88,6 +88,7 @@ interface SBConfig {
     payments: {
         licenseKey: string,
         lastCheck: number,
+        lastFreeCheck: number,
         freeAccess: boolean,
         chaptersAllowed: boolean
     }
@@ -229,6 +230,7 @@ const Config: SBObject = {
         payments: {
             licenseKey: null,
             lastCheck: 0,
+            lastFreeCheck: 0,
             freeAccess: false,
             chaptersAllowed: false
         },
