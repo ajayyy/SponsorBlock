@@ -125,6 +125,9 @@
     "closePopup": {
         "message": "Açılır Pencereyi kapat"
     },
+    "closeIcon": {
+        "message": "Kapat Simgesi"
+    },
     "SubmitTimes": {
         "message": "Kısımları gönder"
     },
@@ -251,6 +254,9 @@
     },
     "enableShowCategoryWithoutPermission": {
         "message": "Gönderim izni olmasa bile gönderim menüsünde kategorileri gösterme"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Bazı kategoriler, minimum itibar gereksinimleri nedeniyle göndermek için izin gerektirir"
     },
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
@@ -469,6 +475,12 @@
     "minDurationDescription": {
         "message": "Ayarlanan değerden daha kısa kısımlar atlanmayacak veya oynatıcıda gösterilmeyecektir."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Tam bir video etiketi mevcut olduğunda manuel atlama özelliğini kullanın"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Video boyunca sponsorlu veya kendi reklamını yapıyorsa videoyu kesintisiz izlemek isteyenler için."
+    },
     "skipNoticeDuration": {
         "message": "Atlandı uyarısı süresi (saniye cinsinden):"
     },
@@ -516,6 +528,9 @@
     },
     "exportOptionsUpload": {
         "message": "Dosyadan yükle"
+    },
+    "whatExportOptions": {
+        "message": "Bu, JSON'daki tüm yapılandırmanızdır. Buna Özel Kullanıcı Kimliğiniz de dahildir, bu yüzden bunu paylaşırken dikkatli olun."
     },
     "setOptions": {
         "message": "Seçenekleri Ayarla"
@@ -664,6 +679,9 @@
     "category_preview": {
         "message": "Ön İzleme/Özet"
     },
+    "category_preview_description": {
+        "message": "Bu videoda veya diğer videolarda neler olduğunu gösteren, videonun ilerleyen zamanında tüm bilgilerin tekrarlandığı bir dizi klip koleksiyonudur."
+    },
     "category_preview_guideline1": {
         "message": "Daha sonra veya gelecekteki bir videoda görünen klipler"
     },
@@ -675,6 +693,9 @@
     },
     "category_filler": {
         "message": "Konuyla Alakasız / Şaka"
+    },
+    "category_filler_description": {
+        "message": "Videonun ana içeriğini anlamak için gerekli olmayan, yalnızca zaman geçirme veya mizah için eklenen teğet sahnelerdir. Bu, bağlam veya arka plan ayrıntılarını sağlayan kısımları içermemelidir. Bu, \"eğlence\" havasında olmadığınız zamanlar için tasarlanmış çok agresif bir kategoridir."
     },
     "category_filler_short": {
         "message": "Alakasız Konu"
@@ -721,8 +742,17 @@
     "category_chapter": {
         "message": "Bölüm"
     },
+    "category_chapter_description": {
+        "message": "Bir videonun ana kısımlarını açıklayan özel adlandırılmış bölümler."
+    },
     "category_chapter_guideline1": {
         "message": "Sponsor marka isimlerinden bahsetme"
+    },
+    "category_chapter_guideline2": {
+        "message": "Genel kısımlar için daha büyük bölümler kullanın"
+    },
+    "category_chapter_guideline3": {
+        "message": "Daha küçük bölümler daha büyük bölümlerin içine yerleştirilebilir"
     },
     "category_livestream_messages": {
         "message": "Canlı Yayın: Bağış/Mesaj Okuma"
@@ -920,6 +950,9 @@
     "warningConfirmButton": {
         "message": "Nedenini anlıyorum"
     },
+    "warningError": {
+        "message": "Uyarıyı tanımlamaya çalışırken hata oluştu:"
+    },
     "Donate": {
         "message": "Bağış Yap"
     },
@@ -1098,6 +1131,9 @@
         "message": "İçeri aktar",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemSuccess": {
+        "message": "Kullanım Başarılı!"
+    },
     "redeemFailed": {
         "message": "Lisans anahtarı geçersiz"
     },
@@ -1109,6 +1145,9 @@
     },
     "noDiscount": {
         "message": "İndirim için uygun değilsiniz"
+    },
+    "discountLink": {
+        "message": "İndirim Bağlantısı (Pembe fiyatı gör)"
     },
     "selectYourCountry": {
         "message": "Ülkenizi seçin"
@@ -1142,6 +1181,13 @@
     "chaptersPage2": {
         "message": "Not: Bölüm gönderme izni hala hesaplanan itibara dayanmaktadır. Bir lisans satın almak, yalnızca başkaları tarafından gönderilen bölümleri görüntülemenize izin verir",
         "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Yeni Özellik: Topluluk kaynaklı özel bölümler. Bunlar, giderek daha doğru hale gelmek için istiflenebilen videolardaki özel adlandırılmış bölümlerdir. Bu videodaki gibi gönderilen bölümleri görüntülemek için bir lisans satın alın: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Yeni Özellik: Topluluk kaynaklı özel bölümler. Bunlar, giderek daha doğru hale gelmek için istiflenebilen videolardaki özel adlandırılmış bölümlerdir. Ücretsiz erişiminiz var, seçeneklerden etkinleştirin."
     },
     "unsubmittedSegmentCounts": {
         "message": "Şu anda {1} da {0} var",
