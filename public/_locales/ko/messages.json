@@ -150,7 +150,7 @@
         "message": "제출"
     },
     "savedPeopleFrom": {
-        "message": "나 덕분에 다른 사람들이 건너뛴 구간: "
+        "message": "나 덕분에 다른 분이 건너뛴 구간: "
     },
     "viewLeaderboard": {
         "message": "순위표"
@@ -410,11 +410,11 @@
         "message": "시간"
     },
     "youHaveSavedTime": {
-        "message": "나 덕분에 다른 사람들이 건너뛴 구간:",
+        "message": "나 덕분에 다른 분이 건너뛴 구간:",
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": "의 시간을 절약함",
+        "message": " 정도를 절약함",
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
@@ -446,7 +446,7 @@
         "message": "지원되는 사이트: "
     },
     "optionsInfo": {
-        "message": "Invidious 지원을 활성화하고, 자동 건너뛰기 기능을 끄거나, 사용하지 않는 버튼을 숨겨보세요."
+        "message": "Invidious 지원 활성화, 자동 건너뛰기 비활성화, 버튼 숨기기 등이 있어요."
     },
     "addInvidiousInstance": {
         "message": "제3자 클라이언트 인스턴스 추가"
@@ -464,7 +464,7 @@
         "message": "Invidious 인스턴스 목록 초기화"
     },
     "resetInvidiousInstanceAlert": {
-        "message": "Invidious 인스턴스 목록을 초기화할까요?"
+        "message": "Invidious 인스턴스 목록을 초기화하시겠어요?"
     },
     "currentInstances": {
         "message": "현재 인스턴스:"
@@ -830,7 +830,7 @@
         "message": "카테고리 선택"
     },
     "enableThisCategoryFirst": {
-        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 활성화를 해주셔야 해요. 설정 창으로 이동할까요?",
+        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 활성화를 해주셔야 해요. 바로 설정 창으로 이동하실 거예요.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
@@ -999,7 +999,7 @@
         "message": "구간을 잘못 설정했다면, 위쪽 화살표 버튼을 누른 다음 구간을 수정하거나 삭제할 수 있어요."
     },
     "helpPageTooSlow": {
-        "message": "구간 수정이 오래 걸리시나요?"
+        "message": "이건 너무 느린 거 같아요"
     },
     "helpPageTooSlow1": {
         "message": "원하는 경우 단축키를 이용할 수 있어요. 쌍반점(세미콜론) 키를 눌러 스폰서 광고 구간의 시점/종점을 설정할 수 있으며 작은따옴표 키를 눌러 구간을 제출할 수 있답니다. 언제든지 설정에서 변경할 수 있어요. QWERTY 자판을 사용하지 않는 경우, 단축키를 변경해야 할 수도 있어요."
@@ -1026,7 +1026,7 @@
         "message": "자세히 보기"
     },
     "FullDetails": {
-        "message": "자세한 정보"
+        "message": "전체 세부 정보"
     },
     "CopyDownvoteButtonInfo": {
         "message": "비추천 후 다시 제출할 수 있는 제출되지 않은 복사본을 생성해요"
@@ -1107,10 +1107,10 @@
         "message": "변경"
     },
     "youtubeKeybindWarning": {
-        "message": "설정한 키와 기존 YouTube 단축키가 중복돼요. 그래도 진행하시겠어요?"
+        "message": "설정한 키와 기존 YouTube 단축키가 중복돼요. 그래도 사용하시겠어요?"
     },
     "betaServerWarning": {
-        "message": "현재 테스트 서버를 이용 중이에요!"
+        "message": "테스트 서버가 활성화됐어요!"
     },
     "openOptionsPage": {
         "message": "설정 페이지 열기"
