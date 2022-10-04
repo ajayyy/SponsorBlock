@@ -55,6 +55,7 @@ let sponsorVideoID: VideoID = null;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
+let retryFetchTimeout: NodeJS.Timeout = null;
 
 // JSON video info
 let videoInfo: VideoInfo = null;
@@ -1137,15 +1138,16 @@ function retryFetch(errorCode: number): void {
     if (!Config.config.refetchWhenNotFound) return;
     sponsorDataFound = false;
 
-    if (errorCode !== 404 && retryCount > 1) {
+    if (retryFetchTimeout) clearTimeout(retryFetchTimeout);
+    if ((errorCode !== 404 && retryCount > 1) || (errorCode !== 404 && retryCount > 10)) {
         // Too many errors (50x), give up
         return;
     }
 
     retryCount++;
 
-    const delay = errorCode === 404 ? (10000 + Math.random() * 30000) : (2000 + Math.random() * 10000);
-    setTimeout(() => {
+    const delay = errorCode === 404 ? (30000 + Math.random() * 30000) : (2000 + Math.random() * 10000);
+    retryFetchTimeout = setTimeout(() => {
         if (sponsorVideoID && sponsorTimes?.length === 0
                 || sponsorTimes.every((segment) => segment.source !== SponsorSourceType.Server)) {
             sponsorsLookup();
