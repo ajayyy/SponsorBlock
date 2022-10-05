@@ -214,6 +214,9 @@ class PreviewBar {
         while (this.container.firstChild) {
             this.container.removeChild(this.container.firstChild);
         }
+
+        if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
+        this.originalChapterBar?.style?.removeProperty("display");
     }
 
     set(segments: PreviewBarSegment[], videoDuration: number): void {
