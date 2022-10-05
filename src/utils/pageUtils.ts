@@ -78,6 +78,7 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
             const description = link.querySelector("#details h4") as HTMLElement;
             if (timeElement && description?.innerText?.length > 0 && link.getAttribute("href")?.includes(currentVideoID)) {
                 const time = GenericUtils.getFormattedTimeToSeconds(timeElement.innerText);
+                if (!time) return [];
                 
                 if (lastSegment) {
                     lastSegment.segment[1] = time;
