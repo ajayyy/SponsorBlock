@@ -35,6 +35,9 @@
         "message": "Visualizza segmenti come capitoli",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Mostra il Segmento Corrente Affianco al Tempo del Video"
+    },
     "upvoteButtonInfo": {
         "message": "Vota questo contributo"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Chiudi il popup"
+    },
+    "closeIcon": {
+        "message": "Icona Chiudi"
     },
     "SubmitTimes": {
         "message": "Invia i segmenti"
@@ -414,8 +420,17 @@
     "statusReminder": {
         "message": "Controlla status.sponsor.ajay.app per lo stato del server."
     },
+    "changeUserID": {
+        "message": "Importa/Esporta il Tuo UserID Privato"
+    },
     "whatChangeUserID": {
         "message": "Questo dovrebbe esser mantenuto privato. È come una password e non dovrebbe esser condiviso con nessuno. Se qualcuno lo possiede, può impersonarti. Se stai cercando il tuo userID pubblico, clicca l'icona degli appunti nel popup."
+    },
+    "setUserID": {
+        "message": "Imposta UserID Privato"
+    },
+    "userIDChangeWarning": {
+        "message": "Attenzione: La modifica dell'UserID Privato è permanente. Sei sicuro di volerlo fare? Assicurati di effettuare il backup di quello precedente."
     },
     "createdBy": {
         "message": "Creato da"
@@ -513,6 +528,9 @@
     },
     "exportOptionsUpload": {
         "message": "Carica da file"
+    },
+    "whatExportOptions": {
+        "message": "Questa è la tua intera configurazione in JSON. Ciò include il tuo UserID Privato, quindi assicurati di condividerla saggiamente."
     },
     "setOptions": {
         "message": "Imposta Opzioni"
@@ -675,6 +693,9 @@
     },
     "category_filler": {
         "message": "Riempitivi irrilevanti/Battute"
+    },
+    "category_filler_description": {
+        "message": "Scene tangenziali aggiunte solo come riempimento o per umorismo, non necessarie alla comprensione del contenuto principale del video. Questo non dovrebbe includere i segmenti che forniscono contesto o dettagli di background. Questa è una categoria molto aggressiva, pensata per quanto non hai voglia di \"divertirti\"."
     },
     "category_filler_short": {
         "message": "Filler"
@@ -1031,6 +1052,12 @@
     "hideSegment": {
         "message": "Nascondi segmento"
     },
+    "skipSegment": {
+        "message": "Salta segmento"
+    },
+    "playChapter": {
+        "message": "Riproduci capitolo"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Usa la rotellina del mouse passando sulla casella di modifica per regolare rapidamente il tempo. Le combinazioni dei tasti ctrl o shift sono utilizzabili per perfezionare le modifiche."
     },
@@ -1154,6 +1181,13 @@
     "chaptersPage2": {
         "message": "Nota: L'autorizzazione a inviare i capitoli si basa ancora sulla reputazione calcolata. Acquistare una licenza ti consente di visualizzare soltanto i capitoli inviati dagli altri",
         "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Nuova Funzionalità: Capitoli personalizzati in crowdsourcing. Sono sezioni dal nome personalizzato nei video, che possono esser impilate per essere sempre più precise. Acquista una licenza per visualizzare i capitoli inviati in questo video come: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Nuova Funzionalità: Capitoli personalizzati in crowdsourcing. Sono sezioni dal nome personalizzato nei video, che possono esser impilate per essere sempre più precise. Hai accesso gratuitamente, abilitalo nelle opzioni."
     },
     "unsubmittedSegmentCounts": {
         "message": "Al momento hai {0} su {1}",

@@ -35,6 +35,9 @@
         "message": "챕터처럼 구간을 불러오기",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "동영상 시간 옆에 현재 구간 표시"
+    },
     "upvoteButtonInfo": {
         "message": "이 제출을 추천해요"
     },
@@ -122,6 +125,9 @@
     "closePopup": {
         "message": "팝업 닫기"
     },
+    "closeIcon": {
+        "message": "닫기 아이콘"
+    },
     "SubmitTimes": {
         "message": "구간 제출"
     },
@@ -144,7 +150,7 @@
         "message": "제출"
     },
     "savedPeopleFrom": {
-        "message": "나 덕분에 다른 사람들이 건너뛴 구간: "
+        "message": "나 덕분에 다른 분이 건너뛴 구간: "
     },
     "viewLeaderboard": {
         "message": "순위표"
@@ -404,11 +410,11 @@
         "message": "시간"
     },
     "youHaveSavedTime": {
-        "message": "나 덕분에 다른 사람들이 건너뛴 구간:",
+        "message": "나 덕분에 다른 분이 건너뛴 구간:",
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": "의 시간을 절약함",
+        "message": " 정도를 절약함",
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
@@ -440,7 +446,7 @@
         "message": "지원되는 사이트: "
     },
     "optionsInfo": {
-        "message": "Invidious 지원을 활성화하고, 자동 건너뛰기 기능을 끄거나, 사용하지 않는 버튼을 숨겨보세요."
+        "message": "Invidious 지원 활성화, 자동 건너뛰기 비활성화, 버튼 숨기기 등이 있어요."
     },
     "addInvidiousInstance": {
         "message": "제3자 클라이언트 인스턴스 추가"
@@ -458,7 +464,7 @@
         "message": "Invidious 인스턴스 목록 초기화"
     },
     "resetInvidiousInstanceAlert": {
-        "message": "Invidious 인스턴스 목록을 초기화할까요?"
+        "message": "Invidious 인스턴스 목록을 초기화하시겠어요?"
     },
     "currentInstances": {
         "message": "현재 인스턴스:"
@@ -824,7 +830,7 @@
         "message": "카테고리 선택"
     },
     "enableThisCategoryFirst": {
-        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 활성화를 해주셔야 해요. 설정 창으로 이동할까요?",
+        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 활성화를 해주셔야 해요. 바로 설정 창으로 이동하실 거예요.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
@@ -993,7 +999,7 @@
         "message": "구간을 잘못 설정했다면, 위쪽 화살표 버튼을 누른 다음 구간을 수정하거나 삭제할 수 있어요."
     },
     "helpPageTooSlow": {
-        "message": "구간 수정이 오래 걸리시나요?"
+        "message": "이건 너무 느린 거 같아요"
     },
     "helpPageTooSlow1": {
         "message": "원하는 경우 단축키를 이용할 수 있어요. 쌍반점(세미콜론) 키를 눌러 스폰서 광고 구간의 시점/종점을 설정할 수 있으며 작은따옴표 키를 눌러 구간을 제출할 수 있답니다. 언제든지 설정에서 변경할 수 있어요. QWERTY 자판을 사용하지 않는 경우, 단축키를 변경해야 할 수도 있어요."
@@ -1020,7 +1026,7 @@
         "message": "자세히 보기"
     },
     "FullDetails": {
-        "message": "자세한 정보"
+        "message": "전체 세부 정보"
     },
     "CopyDownvoteButtonInfo": {
         "message": "비추천 후 다시 제출할 수 있는 제출되지 않은 복사본을 생성해요"
@@ -1045,6 +1051,12 @@
     },
     "hideSegment": {
         "message": "구간 숨기기"
+    },
+    "skipSegment": {
+        "message": "구간 건너뛰기"
+    },
+    "playChapter": {
+        "message": "챕터 재생"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "편집 상자 위에 마우스 커서를 올린 채 스크롤해서 시간을 빠르게 조정해 보세요. Ctrl이나 Shift 키를 누른 채로 스크롤하면 세밀하게 조정할 수 있어요."
@@ -1095,10 +1107,10 @@
         "message": "변경"
     },
     "youtubeKeybindWarning": {
-        "message": "설정한 키와 기존 YouTube 단축키가 중복돼요. 그래도 진행하시겠어요?"
+        "message": "설정한 키와 기존 YouTube 단축키가 중복돼요. 그래도 사용하시겠어요?"
     },
     "betaServerWarning": {
-        "message": "현재 테스트 서버를 이용 중이에요!"
+        "message": "테스트 서버가 활성화됐어요!"
     },
     "openOptionsPage": {
         "message": "설정 페이지 열기"
@@ -1107,7 +1119,7 @@
         "message": "기본 설정으로 초기화"
     },
     "confirmResetToDefault": {
-        "message": "모든 설정을 기본값으로 초기화하시겠어요? 되돌릴 수 없어요!"
+        "message": "모든 설정을 기본값으로 초기화하시겠어요? 되돌릴 수 없어요."
     },
     "exportSegments": {
         "message": "구간 내보내기"
@@ -1145,7 +1157,7 @@
         "description": "After the colon is an email address"
     },
     "cantAfford": {
-        "message": "요금을 결제할 여력이 아니시라면, {여기}서 할인 혜택을 받을 수 있는지 확인해보세요",
+        "message": "요금을 결제할 여력이 아니시라면, {여기}서 할인 혜택을 받을 수 있는지 확인해 보세요",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
@@ -1175,7 +1187,31 @@
         "description": "After the comma, a list of chapters for this video will appear"
     },
     "chapterNewFeature2": {
-        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 지금 설정에서 활성화해서 무료로 사용하세요."
+        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 설정에서 활성화해서 무료로 사용할 수 있어요."
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "You currently have {0} on {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "You currently have no unsubmitted segments",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "unsubmitted segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "unsubmitted segments",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videos",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
     },
     "clearUnsubmittedSegments": {
         "message": "모든 구간 초기화",

@@ -35,6 +35,9 @@
         "message": "Zeige Segmente als Kapitel",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Aktuelles Segment neben der Videozeit anzeigen"
+    },
     "upvoteButtonInfo": {
         "message": "Diese Einreichung positiv bewerten"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Pop-up schließen"
+    },
+    "closeIcon": {
+        "message": "Symbol schließen"
     },
     "SubmitTimes": {
         "message": "Senden"
@@ -250,7 +256,7 @@
         "message": "Zeige Kategorien im Einsendungsmenü auch ohne Einreichungsberechtigungen"
     },
     "whatShowCategoryWithoutPermission": {
-        "message": "Einige Kategorien benötigen Erlaubnis zum übermitteln aufgrund von einem Mindestmass an Reputation"
+        "message": "Einige Kategorien benötigen Erlaubnis zum Übermitteln aufgrund von Mindestanforderungen an Reputation"
     },
     "showNotice": {
         "message": "Hinweis erneut anzeigen"
@@ -414,8 +420,17 @@
     "statusReminder": {
         "message": "Prüfe status.sponsor.ajay.app für den Serverstatus."
     },
+    "changeUserID": {
+        "message": "Private Benutzer-ID importieren/exportieren"
+    },
     "whatChangeUserID": {
         "message": "Dies sollte geheim gehalten und wie ein Passwort behandelt, also mit niemandem geteilt werden. Andere könnten sich damit als dich ausgeben. Wenn du nach deiner öffentlichen Profilkennung suchst, klicke auf das „Kopieren“-Symbol neben deinem Anmeldenamen im Pop-up."
+    },
+    "setUserID": {
+        "message": "Private Benutzer-ID festlegen"
+    },
+    "userIDChangeWarning": {
+        "message": "Warnung: Das Ändern deiner privaten Benutzer-ID ist permanent. Bist du dir sicher, dass du das tun möchtest? Zur Sicherheit solltest du vorher ein Backup deiner alten ID erstellen."
     },
     "createdBy": {
         "message": "Erstellt von"
@@ -461,10 +476,10 @@
         "message": "Videosegmente, die kürzer als der festgelegte Wert sind, werden nicht übersprungen oder im Player angezeigt."
     },
     "enableManualSkipOnFullVideo": {
-        "message": "Verwende manuelles überspringen wenn ein vollständiges Video Label existiert"
+        "message": "Verwende manuelles Überspringen, wenn ein vollständiges Video Label existiert"
     },
     "whatManualSkipOnFullVideo": {
-        "message": "Für Personen, welche ein Video ohne unterbrechungen schauen wollen, während es eine komplette Eigenwerbung oder gesponsert ist."
+        "message": "Für Personen, welche ein Video ohne Unterbrechungen schauen wollen, während es vollständig gesponsert oder Eigenwerbung ist."
     },
     "skipNoticeDuration": {
         "message": "Dauer des Überspringenhinweises (Sekunden):"
@@ -513,6 +528,9 @@
     },
     "exportOptionsUpload": {
         "message": "Aus Datei laden"
+    },
+    "whatExportOptions": {
+        "message": "Dies ist deine gesamte Konfiguration in JSON. Sie enthält deine private Benutzer-ID, stelle also sicher, sie nicht mit jedem zu teilen."
     },
     "setOptions": {
         "message": "Optionen ändern"
@@ -676,6 +694,9 @@
     "category_filler": {
         "message": "Füller/Witze"
     },
+    "category_filler_description": {
+        "message": "Nebensächliche Szenen, die nur als Füller oder Witz dienen und nicht benötigt sind, um den Hauptinhalt des Videos zu verstehen. Dies bezieht sich nicht auf Segmente, die Kontext oder Hintergrunddetails liefern. Dies ist eine sehr aggressive Kategorie, die dafür gedacht ist, wenn du nicht in der Stimmung für \"Spaß\" bist."
+    },
     "category_filler_short": {
         "message": "Füller"
     },
@@ -722,7 +743,7 @@
         "message": "Kapitel"
     },
     "category_chapter_description": {
-        "message": "Benutzerdefinierte Kapitel, welche grosse Bereiche eines Videos beschreiben."
+        "message": "Benutzerdefiniert benannte Kapitel, welche große Abschnitte eines Videos beschreiben."
     },
     "category_chapter_guideline1": {
         "message": "Sponsor-Markennamen nicht erwähnen"
@@ -1031,6 +1052,12 @@
     "hideSegment": {
         "message": "Segment verbergen"
     },
+    "skipSegment": {
+        "message": "Segment überspringen"
+    },
+    "playChapter": {
+        "message": "Kapitel abspielen"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Benutze das Mausrad während der Mauszeiger über dem Eingabefeld schwebt um die Zeit schnell anzupassen. Benutze Strg bzw. Shift für gröbere/genauere Änderungen."
     },
@@ -1158,6 +1185,9 @@
     "chapterNewFeature": {
         "message": "Neues Feature: Crowdsourced benutzerdefinierte Kapitel. Dies sind benutzerdefinierte Abschnitte in Videos, die gestapelt werden können, um mehr und mehr präzise zu werden. Kauf eine Lizenz, um Kapitel, die in diesem Video eingereicht wurden, anzusehen: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Neues Feature: Crowd-gesourcte benutzerdefinierte Kapitel. Dies sind benutzerdefiniert benannte Abschnitte in Videos, die gestapelt werden können, um mehr und mehr präzise zu werden. Du hast kostenlosen Zugang, aktiviere es in den Optionen."
     },
     "unsubmittedSegmentCounts": {
         "message": "Du hast derzeit {0} in {1}",

@@ -35,6 +35,9 @@
         "message": "セグメントをチャプターとしてレンダリングする",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "動画時間の横に現在のセグメントを表示"
+    },
     "upvoteButtonInfo": {
         "message": "この提案を支持"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "ポップアップを閉じる"
+    },
+    "closeIcon": {
+        "message": "閉じるアイコン"
     },
     "SubmitTimes": {
         "message": "セグメントを送信"
@@ -1045,6 +1051,12 @@
     },
     "hideSegment": {
         "message": "セグメントを表示しない"
+    },
+    "skipSegment": {
+        "message": "セグメントをスキップ"
+    },
+    "playChapter": {
+        "message": "チャプターを再生"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "編集ボックスにカーソルを合わせながらマウスホイールを使用すると、時間をすばやく調整できます。 CtrlキーまたはShiftキーの組み合わせを使用して変更を微調整できます。"

@@ -23,17 +23,20 @@
         "message": "osio"
     },
     "Segments": {
-        "message": "osiot"
+        "message": "osiota"
     },
     "SegmentsCap": {
         "message": "Osiot"
     },
     "Chapters": {
-        "message": "Osiot"
+        "message": "Kappaleet"
     },
     "renderAsChapters": {
         "message": "Piirrä osiot kappaleina",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "Näytä nykyinen osio videon ajan vieressä"
     },
     "upvoteButtonInfo": {
         "message": "Äänestä lähetystä"
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Sulje ponnahdusikkuna"
+    },
+    "closeIcon": {
+        "message": "Sulkukuvake"
     },
     "SubmitTimes": {
         "message": "Lähetä osiot"
@@ -232,7 +238,7 @@
         "message": "Negatiivisesti äänestämäsi osiot pysyvät piilotettuina myös päivityksen jälkeen"
     },
     "trackDownvotesWarning": {
-        "message": "Varoitus: Tämän käytöstä poisto poistaa kaikki negatiiviset äänet"
+        "message": "Varoitus: Tämän käytöstä poisto poistaa kaikki aiemmin tallennetut negatiiviset äänet"
     },
     "enableQueryByHashPrefix": {
         "message": "Kysely tiiviste-etuliittellä"
@@ -309,11 +315,11 @@
         "description": "Keybind label"
     },
     "nextChapterKeybind": {
-        "message": "Seuraava osio",
+        "message": "Seuraava kappale",
         "description": "Keybind label"
     },
     "previousChapterKeybind": {
-        "message": "Edellinen osio",
+        "message": "Edellinen kappale",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -524,7 +530,7 @@
         "message": "Lataa tiedostosta"
     },
     "whatExportOptions": {
-        "message": "Tässä ovat kaikki määrityksesi JSON-muodossa. Myös yksityinen UserID sisältyy näihin tietoihin, joten jaa teidostoa harkiten."
+        "message": "Tässä ovat kaikki määrityksesi JSON-muodossa. Myös yksityinen UserID sisältyy näihin tietoihin, joten jaa tiedostoa harkiten."
     },
     "setOptions": {
         "message": "Käytä asetuksia"
@@ -734,19 +740,19 @@
         "message": "Voi ohittaa otsikon tai pikkukuvan viittaamaan kohtaan"
     },
     "category_chapter": {
-        "message": "Osio"
+        "message": "Kappale"
     },
     "category_chapter_description": {
-        "message": "Nimetyt osiot, jotka kuvaavat videon merkittäviä jaksoja."
+        "message": "Nimetyt kappaleet, jotka kuvaavat videon merkittäviä osia."
     },
     "category_chapter_guideline1": {
         "message": "Älä mainitse sponsoreiden tuotemerkkejä"
     },
     "category_chapter_guideline2": {
-        "message": "Käytä yleisille jaksoille suurempia osioita"
+        "message": "Käytä yleisille osille suurempia kappaleita"
     },
     "category_chapter_guideline3": {
-        "message": "Pienemmät osiot voidaan sijoittaa suurempien osioiden sisään"
+        "message": "Pienemmät kappaleet voidaan sijoittaa suurempien kappaleiden sisälle"
     },
     "category_livestream_messages": {
         "message": "Livestream: lahjoitusten/viestien lukeminen"
@@ -779,7 +785,7 @@
         "message": "Näytä merkki"
     },
     "showOverlay_chapter": {
-        "message": "Näytä osiot"
+        "message": "Näytä kappaleet"
     },
     "autoSkipOnMusicVideos": {
         "message": "Ohita kaikki osiot automaattisesti, kun videossa on \"Musiikiton\" osio"
@@ -923,7 +929,7 @@
         "message": "Koko video on merkitty tällä kategorialla ja on erotettavaksi liian tiiviisti integroitu"
     },
     "chapterNameTooltipWarning": {
-        "message": "Jonkin osion ja kategorian nimet ovat samankaltaisia. Kun mahdollista, osioiden sijaan on suositeltavaa käyttää kategorioita."
+        "message": "Jonkin kappaleesi nimi on samankaltainen kategorian kanssa. Kun mahdollista, kappaleiden sijaan on suositeltavaa käyttää kategorioita."
     },
     "experiementOptOut": {
         "message": "Jättäydy pois kaikista tulevista kokeiluista",
@@ -933,7 +939,7 @@
         "message": "Piilota ikuisesti"
     },
     "warningChatInfo": {
-        "message": "Huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole pahansuopia"
+        "message": "Huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahalleen tehtyjä"
     },
     "warningTitle": {
         "message": "Sait varoituksen"
@@ -1046,6 +1052,12 @@
     "hideSegment": {
         "message": "Piilota osio"
     },
+    "skipSegment": {
+        "message": "Ohita osio"
+    },
+    "playChapter": {
+        "message": "Toista kappale"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Käytä hiiren rullaa samalla kun osoitin on muokkauslaatikon päällä säätääksesi aikaa nopeasti. Ctrl- tai Shift-näppäimen yhdistelmiä voi käyttää muutoksien hienosäätelyyn."
     },
@@ -1135,7 +1147,7 @@
         "message": "Et ole oikeutettu alennukseen"
     },
     "discountLink": {
-        "message": "Alennuslinkki (ks. vaaleanpunainen hinta)"
+        "message": "Alennuslinkki (ks. pinkki hinta)"
     },
     "selectYourCountry": {
         "message": "Valitse maasi"
@@ -1164,11 +1176,18 @@
         "message": "Syötä lisenssiavain"
     },
     "chaptersPage1": {
-        "message": "SponsorBlockin joukkolähteinen osiotoiminto on vain lisenssin ostaneiden tai aiempien tukien perusteella veloituksettoman käyttöoikeuden saaneiden henkilöiden käytettävissä"
+        "message": "SponsorBlockin joukkolähteinen kappaletoiminto on vain lisenssin ostaneiden tai aiempien tukien perusteella veloituksettoman käyttöoikeuden saaneiden henkilöiden käytettävissä"
     },
     "chaptersPage2": {
-        "message": "Huomioi: Osioiden lähetysoikeus perustuu edelleen laskettuun maineeseen. Lisenssin hankinta sallii sinun ainoastaan tarkastella muiden lähettämiä osioita",
+        "message": "Huomioi: Kappaleiden lähetysoikeus perustuu edelleen laskettuun maineeseen. Lisenssin hankinta sallii sinun ainoastaan tarkastella muiden lähettämiä kappaleita",
         "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Uusi ominaisuus: Joukkolähteisesti nimetyt kappaleet. Nämä ovat nimettyjä osia videoissa, joita voi pinota yhä paremman tarkkuuden saavuttamiseksi. Osta lisenssi nähdäksesi tähän videoon lisätyt kappaleet, kuten: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Uusi ominaisuus: Joukkolähteisesti nimetyt kappaleet. Nämä ovat nimettyjä osia videoissa, joita voi pinota yhä paremman tarkkuuden saavuttamiseksi. Sinulla on pääsy ominaisuuteen ilmaiseksi, ota se käyttöön asetuksissa."
     },
     "unsubmittedSegmentCounts": {
         "message": "Sinulla on tällä hetkellä {0} {1}",
@@ -1211,7 +1230,7 @@
         "description": "Show/hide button for the unsubmitted segments list"
     },
     "videoID": {
-        "message": "Videon tunniste",
+        "message": "Videon ID",
         "description": "Header of the unsubmitted segments list"
     },
     "segmentCount": {
@@ -1223,6 +1242,6 @@
         "description": "Header of the unsubmitted segments list"
     },
     "exportSegmentsAsURL": {
-        "message": "Jaa URLina"
+        "message": "Jaa web-osoitteena"
     }
 }

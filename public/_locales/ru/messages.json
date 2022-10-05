@@ -35,6 +35,9 @@
         "message": "Отображать сегменты как эпизоды",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Показывать название текущего сегмента рядом со временем"
+    },
     "upvoteButtonInfo": {
         "message": "Проголосовать за этот сегмент"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Закрыть окно"
+    },
+    "closeIcon": {
+        "message": "Кнопка закрытия"
     },
     "SubmitTimes": {
         "message": "Отправить сегменты"
@@ -1045,6 +1051,12 @@
     },
     "hideSegment": {
         "message": "Скрыть сегмент"
+    },
+    "skipSegment": {
+        "message": "Пропустить сегмент"
+    },
+    "playChapter": {
+        "message": "Воспроизвести эпизод"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Наведите курсор на поле редактирования и используйте колесо мыши для быстрой настройки времени. Клавиши Ctrl или Shift могут быть использованы для точной настройки."

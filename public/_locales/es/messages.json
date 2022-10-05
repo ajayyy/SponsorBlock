@@ -35,6 +35,9 @@
         "message": "Procesar segmentos como capítulos",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Mostrar segmento actual al lado del tiempo del video"
+    },
     "upvoteButtonInfo": {
         "message": "Votar positivamente este envío"
     },
@@ -122,6 +125,9 @@
     "closePopup": {
         "message": "Cerrar la ventana"
     },
+    "closeIcon": {
+        "message": "Icono de cerrar"
+    },
     "SubmitTimes": {
         "message": "Enviar Segmentos"
     },
@@ -175,7 +181,7 @@
         "message": "Escoger Nombre De Usuario"
     },
     "copyPublicID": {
-        "message": "Copiar el ID de usuario público"
+        "message": "Copiar el ID de usuario Público"
     },
     "copySegmentID": {
         "message": "Copiar ID de Segmento"
@@ -414,8 +420,17 @@
     "statusReminder": {
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
     },
+    "changeUserID": {
+        "message": "Importar/Exportar su ID de usuario Privado"
+    },
     "whatChangeUserID": {
-        "message": "Esto se debería mantener privado. Esto es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, puede suplantarte. Si estás buscando tu ID de usuario público, haz clic en el icono de portapapeles en la ventana emergente."
+        "message": "Esto se debería mantener privado. Esto es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, puede suplantarte. Si estás buscando tu ID de usuario Público, haz clic en el icono de portapapeles en la ventana emergente."
+    },
+    "setUserID": {
+        "message": "Establecer ID de usuario Privado"
+    },
+    "userIDChangeWarning": {
+        "message": "Advertencia: El cambio del ID de usuario Privado es permanente. ¿Está seguro/a de que desea hacer esto? Asegúrese de respaldar el antiguo por si acaso."
     },
     "createdBy": {
         "message": "Creado Por"
@@ -513,6 +528,9 @@
     },
     "exportOptionsUpload": {
         "message": "Cargar desde archivo"
+    },
+    "whatExportOptions": {
+        "message": "Esta es toda su configuración en JSON. Esto incluye tu ID de usuario Privado, asegúrese de compartir esto con prudencia."
     },
     "setOptions": {
         "message": "Configurar opciones"
@@ -675,6 +693,9 @@
     },
     "category_filler": {
         "message": "Tangentes de Relleno/Chistes"
+    },
+    "category_filler_description": {
+        "message": "Escenas tangenciales añadidas solo de relleno o humor que no son necesarias para entender el contenido principal del video. Esto no debe incluir segmentos que proporcionen contexto o detalles de fondo. Esta es una categoría muy agresiva para cuando no está de humor para la \"diversión\"."
     },
     "category_filler_short": {
         "message": "Relleno"
@@ -1031,6 +1052,12 @@
     "hideSegment": {
         "message": "Ocultar segmento"
     },
+    "skipSegment": {
+        "message": "Omitir segmento"
+    },
+    "playChapter": {
+        "message": "Reproducir capítulo"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilice la rueda del ratón mientras pasa el cursor por encima del cuadro de edición para ajustar el tiempo. Se pueden utilizar combinaciones de la tecla ctrl o shift para afinar los cambios."
     },
@@ -1158,6 +1185,9 @@
     "chapterNewFeature": {
         "message": "Nueva Función: Capítulos personalizados marcados por la comunidad. Estos son secciones con nombres personalizados en los videos que pueden ser acumulados para ser cada vez más precisos. Compre una licencia para ver los capítulos enviados en este video, como: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Nueva Función: Capítulos personalizados marcados por la comunidad. Estos son secciones con nombres personalizados en los videos que pueden ser acumulados para ser cada vez más precisos. Tiene acceso gratuito, habilítelo en opciones."
     },
     "unsubmittedSegmentCounts": {
         "message": "Actualmente tienes {0} en {1}",

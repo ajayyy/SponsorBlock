@@ -35,6 +35,9 @@
         "message": "Изобразяване на сегментите като глави",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Показване на текущия сегмент до времето на клипа"
+    },
     "upvoteButtonInfo": {
         "message": "Одобряване на това предложение"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Затваряне на прозореца"
+    },
+    "closeIcon": {
+        "message": "Икона - затваряне"
     },
     "SubmitTimes": {
         "message": "Изпращане на сегментите"
@@ -1045,6 +1051,12 @@
     },
     "hideSegment": {
         "message": "Скриване на сегмента"
+    },
+    "skipSegment": {
+        "message": "Пропускане на сегмент"
+    },
+    "playChapter": {
+        "message": "Пускане на главата"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Използвайте колелото на мишката, докато държите курсора върху полето за редактиране, за да коригирате бързо времето. Комбинации с клавиша ctrl или shift могат да се използват за фина настройка на промените."

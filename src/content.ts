@@ -385,6 +385,8 @@ function resetValues() {
 }
 
 async function videoIDChange(id): Promise<void> {
+    // don't switch to invalid value
+    if (!id && sponsorVideoID && !document?.URL?.includes("youtube.com/clip/")) return;
     //if the id has not changed return unless the video element has changed
     if (sponsorVideoID === id && (isVisible(video) || !video)) return;
 
@@ -534,7 +536,7 @@ function durationChangeListener(): void {
 function videoOnReadyListener(): void {
     createPreviewBar();
     updatePreviewBar();
-    createButtons();
+    updateVisibilityOfPlayerControlsButton()
 }
 
 function cancelSponsorSchedule(): void {
@@ -1762,16 +1764,14 @@ function shouldSkip(segment: SponsorTime): boolean {
 
 /** Creates any missing buttons on the YouTube player if possible. */
 async function createButtons(): Promise<void> {
-    if (onMobileYouTube) return;
-
     controls = await utils.wait(getControls).catch();
 
     // Add button if does not already exist in html
     createButton("startSegment", "sponsorStart", () => startOrEndTimingNewSegment(), "PlayerStartIconSponsorBlocker.svg");
     createButton("cancelSegment", "sponsorCancel", () => cancelCreatingSegment(), "PlayerCancelSegmentIconSponsorBlocker.svg");
     createButton("delete", "clearTimes", () => clearSponsorTimes(), "PlayerDeleteIconSponsorBlocker.svg");
-    createButton("submit", "SubmitTimes", submitSponsorTimes, "PlayerUploadIconSponsorBlocker.svg");
-    createButton("info", "openPopup", openInfoMenu, "PlayerInfoIconSponsorBlocker.svg");
+    createButton("submit", "SubmitTimes", () => submitSponsorTimes(), "PlayerUploadIconSponsorBlocker.svg");
+    createButton("info", "openPopup", () => openInfoMenu(), "PlayerInfoIconSponsorBlocker.svg");
 
     const controlsContainer = getControls();
     if (Config.config.autoHideInfoButton && !onInvidious && controlsContainer
@@ -2258,7 +2258,8 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 function windowListenerHandler(event: MessageEvent): void {
     const data = event.data;
     const dataType = data.type;
-    if (data.source !== "sponsorblock") return;
+
+    if (data.source !== "sponsorblock" || document?.URL?.includes("youtube.com/clip/")) return;
 
     if (dataType === "navigation" && data.videoID) {
         pageType = data.pageType;

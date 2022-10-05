@@ -26,10 +26,17 @@
         "message": "kısım"
     },
     "SegmentsCap": {
-        "message": "Segmentler"
+        "message": "Kısımlar"
     },
     "Chapters": {
         "message": "Bölümler"
+    },
+    "renderAsChapters": {
+        "message": "Kısımları bölüm olarak göster",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "Geçerli kısmı video zamanının yanında göster"
     },
     "upvoteButtonInfo": {
         "message": "Bu öneriye oy ver"
@@ -117,6 +124,9 @@
     },
     "closePopup": {
         "message": "Açılır Pencereyi kapat"
+    },
+    "closeIcon": {
+        "message": "Kapat Simgesi"
     },
     "SubmitTimes": {
         "message": "Kısımları gönder"
@@ -244,6 +254,9 @@
     },
     "enableShowCategoryWithoutPermission": {
         "message": "Gönderim izni olmasa bile gönderim menüsünde kategorileri gösterme"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Bazı kategoriler, minimum itibar gereksinimleri nedeniyle göndermek için izin gerektirir"
     },
     "showNotice": {
         "message": "Uyarıyı Tekrar Göster"
@@ -462,6 +475,12 @@
     "minDurationDescription": {
         "message": "Ayarlanan değerden daha kısa kısımlar atlanmayacak veya oynatıcıda gösterilmeyecektir."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Tam bir video etiketi mevcut olduğunda manuel atlama özelliğini kullanın"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Video boyunca sponsorlu veya kendi reklamını yapıyorsa videoyu kesintisiz izlemek isteyenler için."
+    },
     "skipNoticeDuration": {
         "message": "Atlandı uyarısı süresi (saniye cinsinden):"
     },
@@ -509,6 +528,9 @@
     },
     "exportOptionsUpload": {
         "message": "Dosyadan yükle"
+    },
+    "whatExportOptions": {
+        "message": "Bu, JSON'daki tüm yapılandırmanızdır. Buna Özel Kullanıcı Kimliğiniz de dahildir, bu yüzden bunu paylaşırken dikkatli olun."
     },
     "setOptions": {
         "message": "Seçenekleri Ayarla"
@@ -657,6 +679,9 @@
     "category_preview": {
         "message": "Ön İzleme/Özet"
     },
+    "category_preview_description": {
+        "message": "Bu videoda veya diğer videolarda neler olduğunu gösteren, videonun ilerleyen zamanında tüm bilgilerin tekrarlandığı bir dizi klip koleksiyonudur."
+    },
     "category_preview_guideline1": {
         "message": "Daha sonra veya gelecekteki bir videoda görünen klipler"
     },
@@ -668,6 +693,9 @@
     },
     "category_filler": {
         "message": "Konuyla Alakasız / Şaka"
+    },
+    "category_filler_description": {
+        "message": "Videonun ana içeriğini anlamak için gerekli olmayan, yalnızca zaman geçirme veya mizah için eklenen teğet sahnelerdir. Bu, bağlam veya arka plan ayrıntılarını sağlayan kısımları içermemelidir. Bu, \"eğlence\" havasında olmadığınız zamanlar için tasarlanmış çok agresif bir kategoridir."
     },
     "category_filler_short": {
         "message": "Alakasız Konu"
@@ -714,8 +742,17 @@
     "category_chapter": {
         "message": "Bölüm"
     },
+    "category_chapter_description": {
+        "message": "Bir videonun ana kısımlarını açıklayan özel adlandırılmış bölümler."
+    },
     "category_chapter_guideline1": {
         "message": "Sponsor marka isimlerinden bahsetme"
+    },
+    "category_chapter_guideline2": {
+        "message": "Genel kısımlar için daha büyük bölümler kullanın"
+    },
+    "category_chapter_guideline3": {
+        "message": "Daha küçük bölümler daha büyük bölümlerin içine yerleştirilebilir"
     },
     "category_livestream_messages": {
         "message": "Canlı Yayın: Bağış/Mesaj Okuma"
@@ -822,6 +859,9 @@
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "Kanal kimliği henüz yüklenmedi. Gömülü bir video kullanıyorsanız, bunun yerine YouTube ana sayfasından izlemeyi deneyin. Bu, YouTube düzenindeki değişikliklerden de kaynaklanabilir, eğer öyleyse, buraya bir yorum yazın:"
     },
+    "invidiousPermissionRefresh": {
+        "message": "Tarayıcınız, eklentinin Invidious ve diğer 3. taraf sitelerde çalışması için gerekli izni kaldırdı. Bu izni yeniden etkinleştirmek için lütfen aşağıdaki butona tıklayın."
+    },
     "acceptPermission": {
         "message": "İzni kabul et"
     },
@@ -888,12 +928,18 @@
     "categoryPillTitleText": {
         "message": "Bu videonun bütünü bu şekilde sınıflandırılmış ve kısımları birbirinden ayrılamayacak kadar sıkı bütünleştirilmiş"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Bölüm adlarınızdan biri bir kategoriye benziyor. Bunun yerine mümkün olduğunda kategorileri kullanmalısınız."
+    },
     "experiementOptOut": {
         "message": "Gelecekteki deneylerin hiçbirine katılma",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Asla gösterme"
+    },
+    "warningChatInfo": {
+        "message": "Kötü amaçlı olmayan bazı yaygın hatalar yaptığınızı fark ettik"
     },
     "warningTitle": {
         "message": "Bir uyarı aldın"
@@ -903,6 +949,9 @@
     },
     "warningConfirmButton": {
         "message": "Nedenini anlıyorum"
+    },
+    "warningError": {
+        "message": "Uyarıyı tanımlamaya çalışırken hata oluştu:"
     },
     "Donate": {
         "message": "Bağış Yap"
@@ -1003,6 +1052,12 @@
     "hideSegment": {
         "message": "Segmenti gizleyin"
     },
+    "skipSegment": {
+        "message": "Kısmı atla"
+    },
+    "playChapter": {
+        "message": "Bölümü oynat"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Zaman aralığını hızlı bir şekilde ayarlamak için düzenleme kutusunun üzerinde fare tekerini kullanın. Değişikliklere ince ayar yapmak için ctrl veya shift tuşunun kombinasyonları kullanılabilir."
     },
@@ -1010,11 +1065,11 @@
         "message": "Yeni! Videonun bütünü sponsor veya kendi reklamıysa bu uyarıyı görün"
     },
     "dayAbbreviation": {
-        "message": "d",
+        "message": "g",
         "description": "100d"
     },
     "hourAbbreviation": {
-        "message": "h",
+        "message": "s",
         "description": "100h"
     },
     "optionsTabBehavior": {
@@ -1069,21 +1124,47 @@
     "exportSegments": {
         "message": "Segmentleri dışa aktar"
     },
+    "importSegments": {
+        "message": "Kısımları içe aktar"
+    },
     "Import": {
         "message": "İçeri aktar",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemSuccess": {
+        "message": "Kullanım Başarılı!"
+    },
     "redeemFailed": {
         "message": "Lisans anahtarı geçersiz"
+    },
+    "hideUpsells": {
+        "message": "Ekstra ödeme olmadan kullanılamayan özellikleri gizle"
     },
     "chooseACountry": {
         "message": "Bir ülke seçiniz"
     },
+    "noDiscount": {
+        "message": "İndirim için uygun değilsiniz"
+    },
+    "discountLink": {
+        "message": "İndirim Bağlantısı (Pembe fiyatı gör)"
+    },
     "selectYourCountry": {
         "message": "Ülkenizi seçin"
     },
+    "alreadyDonated": {
+        "message": "Şimdiye kadar herhangi bir miktarda bağış yaptıysanız, bu adrese e-posta göndererek ücretsiz erişim hakkına sahip olabilirsin:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Lisans satın almaya gücünüz yetmiyorsa, indirim almaya uygun olup olmadığınızı görmek için {here} tıklayın",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
     "patreonSignIn": {
         "message": "Patreon ile giriş yap"
+    },
+    "redeem": {
+        "message": "Kullan"
     },
     "joinOnPatreon": {
         "message": "Patreon'da Destekle"
@@ -1093,5 +1174,74 @@
     },
     "enterLicenseKey": {
         "message": "Lisans Anahtarını Girin"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlock'un topluluk kaynaklı bölümler özelliği yalnızca lisans satın alan veya geçmiş katkılarından dolayı ücretsiz erişim hakkı verilen kişiler tarafından kullanılabilir"
+    },
+    "chaptersPage2": {
+        "message": "Not: Bölüm gönderme izni hala hesaplanan itibara dayanmaktadır. Bir lisans satın almak, yalnızca başkaları tarafından gönderilen bölümleri görüntülemenize izin verir",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Yeni Özellik: Topluluk kaynaklı özel bölümler. Bunlar, giderek daha doğru hale gelmek için istiflenebilen videolardaki özel adlandırılmış bölümlerdir. Bu videodaki gibi gönderilen bölümleri görüntülemek için bir lisans satın alın: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Yeni Özellik: Topluluk kaynaklı özel bölümler. Bunlar, giderek daha doğru hale gelmek için istiflenebilen videolardaki özel adlandırılmış bölümlerdir. Ücretsiz erişiminiz var, seçeneklerden etkinleştirin."
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Şu anda {1} da {0} var",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Gönderilmemiş kısmınız bulunmamaktadır",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "gönderilmemiş kısım",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "gönderilmemiş kısımlar",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videolar",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Tüm kısımları temizle",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Gönderilmemiş tüm kısımları temizlemek istediğinizden emin misiniz?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Kısımları göster",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Kısımları gizle",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "Video ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Kısım Sayısı",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "İşlemler",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "URL olarak paylaş"
     }
 }
