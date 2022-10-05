@@ -244,7 +244,8 @@ export enum PageType {
     Watch = "watch",
     Search = "search",
     Browse = "browse",
-    Channel = "channel"
+    Channel = "channel",
+    Embed = "embed"
 }
 
 export interface ButtonListener {

@@ -65,7 +65,7 @@ export default class Utils {
 
     private setupWaitingMutationListener(): void {
         if (!this.waitingMutationObserver) {
-            this.waitingMutationObserver = new MutationObserver(() => {
+            const checkForObjects = () => {
                 const foundSelectors = [];
                 for (const { selector, visibleCheck, callback } of this.waitingElements) {
                     const element = this.getElement(selector, visibleCheck);
@@ -78,16 +78,23 @@ export default class Utils {
                 this.waitingElements = this.waitingElements.filter((element) => !foundSelectors.includes(element.selector));
                 
                 if (this.waitingElements.length === 0) {
-                    this.waitingMutationObserver.disconnect();
+                    this.waitingMutationObserver?.disconnect();
                     this.waitingMutationObserver = null;
                     this.creatingWaitingMutationObserver = false;
                 }
-            });
+            };
 
-            this.waitingMutationObserver.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
+            // Do an initial check over all objects
+            checkForObjects();
+
+            if (this.waitingElements.length > 0) {
+                this.waitingMutationObserver = new MutationObserver(checkForObjects);
+
+                this.waitingMutationObserver.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            }
         }
     }
 

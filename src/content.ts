@@ -130,8 +130,9 @@ const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImage
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
 // wait for hover preview to appear, and refresh attachments if ever found
-utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments())
-utils.waitForElement("a.ytp-title-link[data-sessionlink='feature=player-title']").then(() => videoIDChange(getYouTubeVideoID(document)).then())
+utils.waitForElement(".ytp-inline-preview-ui").then(() => refreshVideoAttachments());
+utils.waitForElement("a.ytp-title-link[data-sessionlink='feature=player-title']")
+    .then(() => videoIDChange(getYouTubeVideoID(document)));
 addPageListeners();
 addHotkeyListener();
 
@@ -1223,7 +1224,7 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     // clips should never skip, going from clip to full video has no indications.
     if (url.includes("youtube.com/clip/")) return false;
     // skip to document and don't hide if on /embed/
-    if (url.includes("/embed/") && url.includes("youtube.com")) return getYouTubeVideoIDFromDocument(false);
+    if (url.includes("/embed/") && url.includes("youtube.com")) return getYouTubeVideoIDFromDocument(false, PageType.Embed);
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
     if ((!url.includes("youtube.com")) || url.includes("/watch") || url.includes("/shorts/") || url.includes("playlist")) return getYouTubeVideoIDFromURL(url);
     // skip to document if matches pattern
@@ -1233,8 +1234,10 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
 }
 
 function getYouTubeVideoIDFromDocument(hideIcon = true, pageHint = PageType.Watch): string | boolean {
+    const selector = "a.ytp-title-link[data-sessionlink='feature=player-title']";
     // get ID from document (channel trailer / embedded playlist)
-    const element = video?.parentElement?.parentElement?.querySelector("a.ytp-title-link[data-sessionlink='feature=player-title']");
+    const element = pageHint === PageType.Embed ? document.querySelector(selector) 
+        : video?.parentElement?.parentElement?.querySelector(selector);
     const videoURL = element?.getAttribute("href");
     if (videoURL) {
         onInvidious = hideIcon;
