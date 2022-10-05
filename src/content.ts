@@ -1577,7 +1577,9 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
             sponsorSkipped[index] = true;
             if (!counted) {
                 Config.config.minutesSaved = Config.config.minutesSaved + secondsSkipped / 60;
-                Config.config.skipCount = Config.config.skipCount + 1;
+                if (segment.actionType !== ActionType.Chapter) {
+                    Config.config.skipCount = Config.config.skipCount + 1;
+                }
                 counted = true;
             }
 
@@ -2286,11 +2288,16 @@ function windowListenerHandler(event: MessageEvent): void {
 }
 
 function updateActiveSegment(currentTime: number): void {
-    previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, currentTime);
+    const activeSegments = previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, currentTime);
     chrome.runtime.sendMessage({
         message: "time",
         time: currentTime
     });
+
+    const chapterSegments = activeSegments?.filter((segment) => segment.actionType === ActionType.Chapter);
+    if (chapterSegments?.length > 0) {
+        sendTelemetryAndCount(chapterSegments, 0, true);
+    }
 }
 
 function nextChapter(): void {

@@ -719,7 +719,7 @@ class PreviewBar {
         }
     }
 
-    updateChapterText(segments: SponsorTime[], submittingSegments: SponsorTime[], currentTime: number): void {
+    updateChapterText(segments: SponsorTime[], submittingSegments: SponsorTime[], currentTime: number): SponsorTime[] {
         if (!Config.config.showSegmentNameInChapterBar 
                 || ((!segments || segments.length <= 0) && submittingSegments?.length <= 0)) {
             const chaptersContainer = this.getChaptersContainer();
@@ -740,6 +740,7 @@ class PreviewBar {
         });
 
         this.setActiveSegments(activeSegments);
+        return activeSegments;
     }
 
     /**
