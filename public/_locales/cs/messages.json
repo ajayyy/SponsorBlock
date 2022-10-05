@@ -35,6 +35,9 @@
         "message": "Zobrazit segmenty jako kapitoly",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Zobrazit aktuální segment vedle času videa"
+    },
     "upvoteButtonInfo": {
         "message": "Hlasovat pro tento příspěvek"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Zavřít vyskakovací okno"
+    },
+    "closeIcon": {
+        "message": "Ikona pro zavření"
     },
     "SubmitTimes": {
         "message": "Odeslat segmenty"
@@ -1045,6 +1051,12 @@
     },
     "hideSegment": {
         "message": "Skrýt segment"
+    },
+    "skipSegment": {
+        "message": "Přeskočit segment"
+    },
+    "playChapter": {
+        "message": "Přehrát kapitolu"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Použijte kolečko myši při přechodu přes editační okno pro rychlou úpravu času. Kombinace kláves Ctrl nebo Shift mohou být použity k doladění změn."

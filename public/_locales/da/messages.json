@@ -35,6 +35,9 @@
         "message": "Render segmenter som kapitler",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Vis nuværende segmenter ved siden af videotid"
+    },
     "upvoteButtonInfo": {
         "message": "Stem for dette forslag"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Luk Pop-op"
+    },
+    "closeIcon": {
+        "message": "Luk ikon"
     },
     "SubmitTimes": {
         "message": "Indsend Segmenter"
@@ -414,8 +420,17 @@
     "statusReminder": {
         "message": "Tjek status.sponsor.ajay.app for serverstatus."
     },
+    "changeUserID": {
+        "message": "Importer/Eksporter Dit Private User-ID"
+    },
     "whatChangeUserID": {
         "message": "Dette bør holdes privat. Det er ligesom en adgangskode og bør ikke deles med nogen. Hvis nogen har dette, kan de udgive sig for at være dig. Hvis du leder efter dit offentlige bruger-ID, skal du klikke på udklipsholderikonet i popup-vinduet."
+    },
+    "setUserID": {
+        "message": "Set Privat Bruger-ID"
+    },
+    "userIDChangeWarning": {
+        "message": "Advarsel: Ændring af private Bruger-IDet er permanent. Er du sikker på, at du vil gøre det? Sørg for at sikkerhedskopiere din gamle for en sikkerheds skyld."
     },
     "createdBy": {
         "message": "Oprettet Af"
@@ -513,6 +528,9 @@
     },
     "exportOptionsUpload": {
         "message": "Indlæs fra fil"
+    },
+    "whatExportOptions": {
+        "message": "Dette er hele din konfiguration i JSON. Dette inkluderer dit private bruger-ID, så sørg for at dele dette med omtanke."
     },
     "setOptions": {
         "message": "Indstil Indstillinger"
@@ -1034,6 +1052,12 @@
     "hideSegment": {
         "message": "Skjul segment"
     },
+    "skipSegment": {
+        "message": "Spring segment over"
+    },
+    "playChapter": {
+        "message": "Afspil kapitel"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Brug musehjulet, mens du holder musen over redigeringsfeltet for hurtigt at justere tiden. Kombinationer af ctrl eller shift-tastenerne kan bruges til at finjustere ændringerne."
     },
@@ -1161,6 +1185,9 @@
     "chapterNewFeature": {
         "message": "Ny funktion: Crowd-sourced brugerdefinerede kapitler. Disse er brugerdefinerede sektioner i videoer, der kan stables for at få mere og mere præcise. Køb en licens til at se kapitlerne indsendt på denne video såsom: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Ny funktion: Crowd-sourced brugerdefinerede kapitler. Disse er brugerdefinerede sektioner i videoer, der kan stables for at få mere og mere præcise. Du har gratis adgang, aktiver i indstillinger."
     },
     "unsubmittedSegmentCounts": {
         "message": "Du har lige nu {0} på {1}",
