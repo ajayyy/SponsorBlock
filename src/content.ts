@@ -384,7 +384,7 @@ function resetValues() {
 
 async function videoIDChange(id): Promise<void> {
     // don't switch to invalid value
-    if (!id && sponsorVideoID) return;
+    if (!id && sponsorVideoID && !document?.URL?.includes("youtube.com/clip/")) return;
     //if the id has not changed return unless the video element has changed
     if (sponsorVideoID === id && (isVisible(video) || !video)) return;
 
@@ -1220,7 +1220,7 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     // pageType shortcut
     if (pageType === PageType.Channel) return getYouTubeVideoIDFromDocument()
     // clips should never skip, going from clip to full video has no indications.
-    if (url.includes("youtube.com/clip/")) return "clipNoID";
+    if (url.includes("youtube.com/clip/")) return false;
     // skip to document and don't hide if on /embed/
     if (url.includes("/embed/") && url.includes("youtube.com")) return getYouTubeVideoIDFromDocument(false);
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
@@ -2252,7 +2252,8 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 function windowListenerHandler(event: MessageEvent): void {
     const data = event.data;
     const dataType = data.type;
-    if (data.source !== "sponsorblock") return;
+
+    if (data.source !== "sponsorblock" || document?.URL?.includes("youtube.com/clip/")) return;
 
     if (dataType === "navigation" && data.videoID) {
         pageType = data.pageType;
