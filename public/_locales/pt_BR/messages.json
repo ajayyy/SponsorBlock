@@ -35,6 +35,9 @@
         "message": "Renderizar segmentos como capítulos",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Mostrar Segmento Atual ao Lado do Tempo do Vídeo"
+    },
     "upvoteButtonInfo": {
         "message": "Votar nesse segmento positivamente"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Fechar Popup"
+    },
+    "closeIcon": {
+        "message": "Ícone de Fechar"
     },
     "SubmitTimes": {
         "message": "Enviar Segmentos"
@@ -245,6 +251,9 @@
     },
     "whatRefetchWhenNotFound": {
         "message": "Se o vídeo for novo e nenhum segmento for encontrado, continuaremos buscando enquanto você assiste."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Mostrar categorias no menu de envios mesmo sem permissão de envio"
     },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
@@ -738,6 +747,9 @@
     },
     "showOverlay_full": {
         "message": "Mostrar Rótulo"
+    },
+    "showOverlay_chapter": {
+        "message": "Mostrar Capítulos"
     },
     "autoSkipOnMusicVideos": {
         "message": "Pular automaticamente todos os segmentos quando há um segmento que não é música"
