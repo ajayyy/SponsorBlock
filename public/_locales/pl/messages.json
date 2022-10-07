@@ -408,8 +408,14 @@
     "statusReminder": {
         "message": "Sprawdź status serwera na status.sponsor.ajay.app"
     },
+    "changeUserID": {
+        "message": "Importuj/Eksportuj swój prywatny UserID"
+    },
     "whatChangeUserID": {
         "message": "To powinno pozostać prywatne. Jest to niczym hasło i nie powinno zostać nikomu udostępnione. Przy jego użyciu ktoś może się pod ciebie podszywać. Jeśli szukasz publicznego ID użytkownika, kliknij ikonę schowka w wyskakującym oknie."
+    },
+    "setUserID": {
+        "message": "Ustaw prywatny UserID"
     },
     "createdBy": {
         "message": "Stworzony przez"
@@ -501,6 +507,9 @@
     },
     "exportOptionsUpload": {
         "message": "Wczytaj z pliku"
+    },
+    "whatExportOptions": {
+        "message": "Jest to cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój prywatny UserID, więc uważaj, komu ją udostępniasz."
     },
     "setOptions": {
         "message": "Zapisz ustawienia"
@@ -1019,6 +1028,12 @@
     "hideSegment": {
         "message": "Ukryj segment"
     },
+    "skipSegment": {
+        "message": "Pomiń segment"
+    },
+    "playChapter": {
+        "message": "Odtwórz rozdział"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Użyj scroll'a myszy po najechaniu nad pole edycji, aby szybko dostosować czas. Kombinacje z ctrl'em i shift'em mogą być użyte, aby doszlifować zmiany."
     },
@@ -1085,6 +1100,9 @@
     "exportSegments": {
         "message": "Eksportuj segmenty"
     },
+    "importSegments": {
+        "message": "Importuj segmenty"
+    },
     "Import": {
         "message": "Importuj",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
@@ -1101,8 +1119,19 @@
     "chooseACountry": {
         "message": "Wybierz kraj"
     },
+    "noDiscount": {
+        "message": "Nie kwalifikujesz się do przeceny"
+    },
     "selectYourCountry": {
         "message": "Wybierz swój kraj"
+    },
+    "alreadyDonated": {
+        "message": "Jeśli do tej pory przekazałeś jakąkolwiek darowiznę, możesz odebrać darmowy dostęp poprzez wysyłanie maila do:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Jeśli nie możesz sobie pozwolić na zakup licencji, kliknij {tutaj} aby sprawdzić, czy kwalifikujesz się do zniżki",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Zaloguj się za pomocą Patreon"
@@ -1118,6 +1147,9 @@
     },
     "enterLicenseKey": {
         "message": "Wprowadź klucz licencyjny"
+    },
+    "chaptersPage1": {
+        "message": "Funkcja społecznościowych rozdziałów SponsorBlock jest dostępna tylko dla osób, które wykupią licencję, albo którym przyznano dostęp za darmo ze względu na swoje wcześniejszy wkład"
     },
     "chapterNewFeature": {
         "message": "Nowa funkcja: niestandardowe rozdziały ze źródeł społecznościowych. Są to sekcje niestandardowo nazwane w filmach, które mogą być ustawione w sposób bardziej precyzyjny. Kup licencję, aby wyświetlić rozdziały przedstawione na tym filmie, takie jak: ",
