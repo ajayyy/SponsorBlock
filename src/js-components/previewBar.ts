@@ -218,6 +218,12 @@ class PreviewBar {
         if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
         this.originalChapterBar?.style?.removeProperty("display");
         this.chapterVote?.setVisibility(false);
+
+        document.querySelectorAll(`.sponsorBlockChapterBar`).forEach((e) => {
+            if (e !== this.customChaptersBar) {
+                e.remove();
+            }
+        });
     }
 
     set(segments: PreviewBarSegment[], videoDuration: number): void {
