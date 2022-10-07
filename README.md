@@ -13,7 +13,7 @@
   <a href="https://addons.mozilla.org/addon/sponsorblock/?src=external-github">Firefox</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Android">Android</a> |
   <a href="https://github.com/ajayyy/SponsorBlock/wiki/Edge">Edge</a> |
-  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Safari">Safari for MacOS and iOS</a> |
+  <a href="https://github.com/ajayyy/SponsorBlock/wiki/Safari">Safari for macOS and iOS</a> |
   <a href="https://sponsor.ajay.app">Website</a> |
   <a href="https://sponsor.ajay.app/stats">Stats</a>
 </p>
@@ -36,7 +36,7 @@
 
 
 
-SponsorBlock is an open-source crowdsourced browser extension to skip sponsor segments in YouTube videos. Users submit when a sponsor happens from the extension, and the extension automatically skips sponsors it knows about. It also supports skipping other categories, such as intros, outros and reminders to subscribe.
+SponsorBlock is an open-source crowdsourced browser extension to skip sponsor segments in YouTube videos. Users submit when a sponsor happens from the extension, and the extension automatically skips sponsors it knows about. It also supports skipping other categories, such as intros, outros, and reminders to subscribe.
 
 It also supports Invidio.us.
 
@@ -62,7 +62,7 @@ You can read the API docs [here](https://wiki.sponsor.ajay.app/index.php/API_Doc
 
 You must have [Node.js 16](https://nodejs.org/) and npm installed.
 
-1. Copy the file `config.json.example` to `config.json` and adjust configuration as desired.
+1. Copy the file `config.json.example` to `config.json` and adjust the configuration as desired.
 
     - You will need to repeat this step in the future if you get build errors related to `CompileConfig`. This can happen for example when a new category is added.
 
@@ -78,13 +78,13 @@ You must have [Node.js 16](https://nodejs.org/) and npm installed.
 
 Run `npm run dev` (for Chrome) or `npm run dev:firefox` (for Firefox) to run the extension using a clean browser profile with hot reloading. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
 
-Known chromium bug: Extension is not loaded properly on first start. Visit `chrome://extensions/` and reload the extension.
+Known chromium bug: Extension is not loaded properly on the first start. Visit `chrome://extensions/` and reload the extension.
 
 For Firefox for Android, use `npm run dev:firefox-android -- --adb-device <ip-address of the device>`. See the [Firefox documentation](https://extensionworkshop.com/documentation/develop/developing-extensions-for-firefox-for-android/#debug-your-extension) for more information.
 
 # Credit
 
-The awesome [Invidious API](https://docs.invidious.io/API.md) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) as a to get video info from YouTube.
+The awesome [Invidious API](https://docs.invidious.io/API.md) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) to get video info from YouTube.
 
 Originally forked from [YTSponsorSkip](https://github.com/NDevTK/YTSponsorSkip), but very little code remains.
 
