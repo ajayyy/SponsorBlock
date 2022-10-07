@@ -36,6 +36,7 @@ export interface NoticeProps {
     zIndex?: number,
     style?: React.CSSProperties
     biggerCloseButton?: boolean;
+    children?: React.ReactNode
 }
 
 export interface NoticeState {

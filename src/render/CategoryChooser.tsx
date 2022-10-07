@@ -1,5 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
+
 import CategoryChooserComponent from "../components/options/CategoryChooserComponent";
 
 class CategoryChooser {
@@ -9,9 +10,9 @@ class CategoryChooser {
     constructor(element: Element) {
         this.ref = React.createRef();
 
-        ReactDOM.render(
-            <CategoryChooserComponent ref={this.ref} />,
-            element
+        const root = createRoot(element);
+        root.render(
+            <CategoryChooserComponent ref={this.ref} />
         );
     }
 
