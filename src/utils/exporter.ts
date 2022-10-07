@@ -38,7 +38,7 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
         const match = line.match(/(?:((?:\d+:)?\d+:\d+)+(?:\.\d+)?)|(?:\d+(?=s| second))/g);
         if (match) {
             const startTime = GenericUtils.getFormattedTimeToSeconds(match[0]);
-            if (startTime) {
+            if (startTime !== null) {
                 const specialCharsMatcher = /^(?:\s+seconds?)?[-:()\s]*|(?:\s+at)?[-:()\s]+$/g
                 const titleLeft = line.split(match[0])[0].replace(specialCharsMatcher, "");
                 let titleRight = null;
