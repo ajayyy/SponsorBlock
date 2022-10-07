@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 
 export interface RectangleTooltipProps {
     text: string, 
@@ -20,7 +20,7 @@ export interface RectangleTooltipProps {
 export class RectangleTooltip {
     text: string;   
     container: HTMLDivElement;
-
+    root: Root;
     timer: NodeJS.Timeout;
     
     constructor(props: RectangleTooltipProps) {
@@ -31,6 +31,7 @@ export class RectangleTooltip {
         props.backgroundColor ??= "rgba(28, 28, 28, 0.7)";
         this.text = props.text;
         props.fontSize ??= "10px";
+
 
         this.container = document.createElement('div');
         props.htmlId ??= "sponsorRectangleTooltip" + props.text;
@@ -47,7 +48,8 @@ export class RectangleTooltip {
             this.timer = setTimeout(() => this.close(), props.timeout * 1000);
         }
 
-        ReactDOM.render(
+        this.root = createRoot(this.container);
+        this.root.render(
             <div style={{
                 bottom: props.bottomOffset, 
                 left: props.leftOffset,
@@ -81,13 +83,12 @@ export class RectangleTooltip {
 
                         {chrome.i18n.getMessage("GotIt")}
                     </button>
-            </div>,
-            this.container
+            </div>
         )
     }
 
     close(): void {
-        ReactDOM.unmountComponentAtNode(this.container);
+        this.root.unmount();
         this.container.remove();
 
         if (this.timer) clearTimeout(this.timer);

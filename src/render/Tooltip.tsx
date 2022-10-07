@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 import { ButtonListener } from "../types";
 
 export interface TooltipProps {
@@ -26,6 +26,7 @@ export class Tooltip {
     container: HTMLDivElement;
 
     timer: NodeJS.Timeout;
+    root: Root;
     
     constructor(props: TooltipProps) {
         props.bottomOffset ??= "70px";
@@ -54,8 +55,9 @@ export class Tooltip {
         }
 
         const backgroundColor = `rgba(28, 28, 28, ${props.opacity})`;
-        
-        ReactDOM.render(
+
+        this.root = createRoot(this.container);
+        this.root.render(
             <div style={{bottom: props.bottomOffset, left: props.leftOffset, right: props.rightOffset, backgroundColor}} 
                 className={"sponsorBlockTooltip" + (props.displayTriangle ? " sbTriangle" : "") + ` ${props.extraClass}`}>
                 <div>
@@ -93,8 +95,7 @@ export class Tooltip {
                         {chrome.i18n.getMessage("GotIt")}
                     </button>
                 : null}
-            </div>,
-            this.container
+            </div>
         )
     }
 
@@ -120,7 +121,7 @@ export class Tooltip {
     }
 
     close(): void {
-        ReactDOM.unmountComponentAtNode(this.container);
+        this.root.unmount();
         this.container.remove();
 
         if (this.timer) clearTimeout(this.timer);

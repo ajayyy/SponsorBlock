@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 
 import Utils from "../utils";
 const utils = new Utils();
@@ -17,6 +17,8 @@ class SubmissionNotice {
 
     noticeElement: HTMLDivElement;
 
+    root: Root;
+
     constructor(contentContainer: ContentContainer, callback: () => unknown) {
         this.noticeRef = React.createRef();
 
@@ -30,13 +32,13 @@ class SubmissionNotice {
 
         referenceNode.prepend(this.noticeElement);
 
-        ReactDOM.render(
+        this.root = createRoot(this.noticeElement);
+        this.root.render(
             <SubmissionNoticeComponent
                 contentContainer={contentContainer}
                 callback={callback} 
                 ref={this.noticeRef}
-                closeListener={() => this.close(false)} />,
-            this.noticeElement
+                closeListener={() => this.close(false)} />
         );
     }
 
@@ -46,7 +48,7 @@ class SubmissionNotice {
 
     close(callRef = true): void {
         if (callRef) this.noticeRef.current.cancel();
-        ReactDOM.unmountComponentAtNode(this.noticeElement);
+        this.root.unmount();
 
         this.noticeElement.remove();
     }
