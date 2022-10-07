@@ -35,6 +35,9 @@
         "message": "Pokazuj segmenty jako rozdziały",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Pokaż bieżący segment poza czasem wideo"
+    },
     "upvoteButtonInfo": {
         "message": "Zagłosuj na ten segment"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Zamknij okno"
+    },
+    "closeIcon": {
+        "message": "Wyłącz ikonę"
     },
     "SubmitTimes": {
         "message": "Prześlij segmenty"
@@ -245,6 +251,9 @@
     },
     "whatRefetchWhenNotFound": {
         "message": "Jeśli film jest nowy i nie znaleziono żadnych segmentów, dane będą pobierane na nowo co kilka minut w czasie oglądania."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Pokaż kategorie w menu zgłoszeń, nawet bez uprawnień do zgłaszania"
     },
     "showNotice": {
         "message": "Pokaż informacje ponownie"
@@ -417,6 +426,9 @@
     "setUserID": {
         "message": "Ustaw prywatny UserID"
     },
+    "userIDChangeWarning": {
+        "message": "Uwaga: Zmiana ID użytkownika jest trwała. Czy na pewno chcesz to zrobić? Na wszelki wypadek skopiuj swój poprzedni ID."
+    },
     "createdBy": {
         "message": "Stworzony przez"
     },
@@ -459,6 +471,9 @@
     },
     "minDurationDescription": {
         "message": "Segmenty krótsze niż ustawiona wartość nie będą pomijane ani pokazywane w odtwarzaczu."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Użyj ręcznego pomijania, gdy istnieje etykieta na całym filmie"
     },
     "skipNoticeDuration": {
         "message": "Czas trwania powiadomienia pominięcia (sekundy):"
@@ -1122,6 +1137,9 @@
     "noDiscount": {
         "message": "Nie kwalifikujesz się do przeceny"
     },
+    "discountLink": {
+        "message": "Link rabatowy"
+    },
     "selectYourCountry": {
         "message": "Wybierz swój kraj"
     },
@@ -1151,9 +1169,16 @@
     "chaptersPage1": {
         "message": "Funkcja społecznościowych rozdziałów SponsorBlock jest dostępna tylko dla osób, które wykupią licencję, albo którym przyznano dostęp za darmo ze względu na swoje wcześniejszy wkład"
     },
+    "chaptersPage2": {
+        "message": "Uwaga: Przesyłanie rozdziałów jest nadal oparte na skalkulowanej reputacji. Kupowanie licencji pozwala tylko przeglądać rozdziały przesłane przez innych",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
     "chapterNewFeature": {
         "message": "Nowa funkcja: niestandardowe rozdziały ze źródeł społecznościowych. Są to sekcje niestandardowo nazwane w filmach, które mogą być ustawione w sposób bardziej precyzyjny. Kup licencję, aby wyświetlić rozdziały przedstawione na tym filmie, takie jak: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Nowa funkcja: niestandardowe rozdziały ze źródeł społecznościowych. Są to sekcje niestandardowo nazwane w filmach, które mogą być ustawione w sposób bardziej precyzyjny."
     },
     "unsubmittedSegmentCounts": {
         "message": "Aktualnie masz {0} na {1}",
