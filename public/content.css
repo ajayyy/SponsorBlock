@@ -30,6 +30,10 @@
 	transform: scaleY(0.625) translateY(-30%) translateY(1.5px);
 }
 
+.ytp-big-mode .sponsorTwoTooltips .sponsorCategoryTooltip {
+	top: 75px !important;
+}
+
 .progress-bar-line > #previewbar {
 	height: 3px;
 }
