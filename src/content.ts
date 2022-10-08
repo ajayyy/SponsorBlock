@@ -8,6 +8,7 @@ import {
     ContentContainer,
     HashedValue,
     Keybind,
+    PageType,
     ScheduledTime,
     SegmentUUID,
     SkipToTimeParams,
@@ -18,7 +19,6 @@ import {
     ToggleSkippable,
     VideoID,
     VideoInfo,
-    PageType
 } from "./types";
 import Utils from "./utils";
 import PreviewBar, { PreviewBarSegment } from "./js-components/previewBar";
@@ -948,13 +948,13 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     setupVideoMutationListener();
 
     const showChapterMessage = Config.config.showUpsells
-        && Config.config.payments.lastCheck !== 0 
+        && Config.config.payments.lastCheck !== 0
         && !noRefreshFetchingChaptersAllowed()
         && Config.config.showChapterInfoMessage
         && Config.config.skipCount > 200;
 
-    if (!showChapterMessage 
-            && Config.config.showChapterInfoMessage 
+    if (!showChapterMessage
+            && Config.config.showChapterInfoMessage
             && Config.config.payments.freeAccess) {
         Config.config.showChapterInfoMessage = false;
 
@@ -1238,7 +1238,7 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
 function getYouTubeVideoIDFromDocument(hideIcon = true, pageHint = PageType.Watch): string | boolean {
     const selector = "a.ytp-title-link[data-sessionlink='feature=player-title']";
     // get ID from document (channel trailer / embedded playlist)
-    const element = pageHint === PageType.Embed ? document.querySelector(selector) 
+    const element = pageHint === PageType.Embed ? document.querySelector(selector)
         : video?.parentElement?.parentElement?.querySelector(selector);
     const videoURL = element?.getAttribute("href");
     if (videoURL) {
@@ -1751,7 +1751,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
-    return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full)) 
+    return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
         && (utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType !== ActionType.Poi));
@@ -1904,11 +1904,15 @@ function isSegmentCreationInProgress(): boolean {
 
 function cancelCreatingSegment() {
     if (isSegmentCreationInProgress()) {
-        sponsorTimesSubmitting.splice(sponsorTimesSubmitting.length - 1, 1);
-        Config.config.unsubmittedSegments[sponsorVideoID] = sponsorTimesSubmitting;
+        if (sponsorTimesSubmitting.length > 1) {  // If there's more than one segment: remove last
+            sponsorTimesSubmitting.pop();
+            Config.config.unsubmittedSegments[sponsorVideoID] = sponsorTimesSubmitting;
+        } else {  // Otherwise delete the video entry & close submission menu
+            resetSponsorSubmissionNotice();
+            sponsorTimesSubmitting = [];
+            delete Config.config.unsubmittedSegments[sponsorVideoID];
+        }
         Config.forceSyncUpdate("unsubmittedSegments");
-
-        if (sponsorTimesSubmitting.length <= 0) resetSponsorSubmissionNotice();
     }
 
     updateEditButtonsOnPlayer();
