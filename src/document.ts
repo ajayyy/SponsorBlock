@@ -6,26 +6,26 @@
 import { PageType } from "./types";
 
 interface StartMessage {
-    type: "navigation",
-    pageType: PageType
-    videoID: string | null,
+    type: "navigation";
+    pageType: PageType;
+    videoID: string | null;
 }
 
 interface FinishMessage extends StartMessage {
-    channelID: string,
-    channelTitle: string
+    channelID: string;
+    channelTitle: string;
 }
 
 interface AdMessage {
-    type: "ad",
-    playing: boolean
+    type: "ad";
+    playing: boolean;
 }
 
 interface VideoData {
-    type: "data",
-    videoID: string,
-    isLive: boolean,
-    isPremiere: boolean
+    type: "data";
+    videoID: string;
+    isLive: boolean;
+    isPremiere: boolean;
 }
 
 type WindowMessage = StartMessage | FinishMessage | AdMessage | VideoData;

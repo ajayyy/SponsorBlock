@@ -68,7 +68,7 @@ let channelIDInfo: ChannelIDInfo;
 // Locked Categories in this tab, like: ["sponsor","intro","outro"]
 let lockedCategories: Category[] = [];
 // Used to calculate a more precise "virtual" video time
-let lastKnownVideoTime: { videoTime: number, preciseTime: number } = {
+let lastKnownVideoTime: { videoTime: number; preciseTime: number } = {
     videoTime: null,
     preciseTime: null
 };
@@ -125,7 +125,7 @@ let categoryPill: CategoryPill = null;
 let controls: HTMLElement | null = null;
 
 /** Contains buttons created by `createButton()`. */
-const playerButtons: Record<string, {button: HTMLButtonElement, image: HTMLImageElement, setupListener: boolean}> = {};
+const playerButtons: Record<string, {button: HTMLButtonElement; image: HTMLImageElement; setupListener: boolean}> = {};
 
 // Direct Links after the config is loaded
 utils.wait(() => Config.config !== null, 1000, 1).then(() => videoIDChange(getYouTubeVideoID(document)));
@@ -1403,7 +1403,7 @@ async function whitelistCheck() {
  * Returns info about the next upcoming sponsor skip
  */
 function getNextSkipIndex(currentTime: number, includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean):
-        {array: ScheduledTime[], index: number, endIndex: number, extraIndexes: number[], openNotice: boolean} {
+        {array: ScheduledTime[]; index: number; endIndex: number; extraIndexes: number[]; openNotice: boolean} {
 
     const autoSkipSorter = (segment: ScheduledTime) => {
         const skipOption = utils.getCategorySelection(segment.category)?.option;
@@ -1515,7 +1515,7 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
  *  the current time, but end after
  */
 function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments: boolean, includeNonIntersectingSegments: boolean,
-    minimum?: number, hideHiddenSponsors = false): {includedTimes: ScheduledTime[], scheduledTimes: number[]} {
+    minimum?: number, hideHiddenSponsors = false): {includedTimes: ScheduledTime[]; scheduledTimes: number[]} {
     if (!sponsorTimes) return {includedTimes: [], scheduledTimes: []};
 
     const includedTimes: ScheduledTime[] = [];

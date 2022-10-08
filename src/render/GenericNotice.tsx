@@ -9,17 +9,17 @@ import { ButtonListener, ContentContainer } from "../types";
 import NoticeTextSelectionComponent from "../components/NoticeTextSectionComponent";
 
 export interface TextBox {
-    icon: string,
-    text: string
+    icon: string;
+    text: string;
 }
 
 export interface NoticeOptions {
-    title: string,
-    referenceNode?: HTMLElement,
-    textBoxes?: TextBox[],
-    buttons?: ButtonListener[],
-    fadeIn?: boolean,
-    timed?: boolean
+    title: string;
+    referenceNode?: HTMLElement;
+    textBoxes?: TextBox[];
+    buttons?: ButtonListener[];
+    fadeIn?: boolean;
+    timed?: boolean;
     style?: React.CSSProperties;
     extraClass?: string;
     maxCountdownTime?: () => number;

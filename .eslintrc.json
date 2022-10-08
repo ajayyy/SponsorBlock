@@ -23,7 +23,8 @@
         "@typescript-eslint/no-unused-vars": "error",
         "no-self-assign": "off",
         "@typescript-eslint/no-empty-interface": "off",
-        "react/prop-types": [2, { "ignore": ["children"] }]
+        "react/prop-types": [2, { "ignore": ["children"] }],
+        "@typescript-eslint/member-delimiter-style": "warn"
     },
     "settings": {
         "react": {
