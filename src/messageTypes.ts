@@ -83,15 +83,15 @@ interface GetVideoIdResponse {
     videoID: string;
 }
 
-interface GetChannelIDResponse {
+export interface GetChannelIDResponse {
     channelID: string;
 }
 
-interface SponsorStartResponse {
+export interface SponsorStartResponse {
     creatingSegment: boolean;
 }
 
-interface IsChannelWhitelistedResponse {
+export interface IsChannelWhitelistedResponse {
     value: boolean;
 }
 
@@ -111,7 +111,7 @@ export interface VoteResponse {
     responseText: string;
 }
 
-export interface ImportSegmentsResponse {
+interface ImportSegmentsResponse {
     importedSegments: SponsorTime[];
 }
 

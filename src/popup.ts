@@ -10,11 +10,14 @@ import {
     StorageChangesObject,
 } from "./types";
 import {
-    ImportSegmentsResponse,
+    GetChannelIDResponse,
+    IsChannelWhitelistedResponse,
     IsInfoFoundMessageResponse,
     Message,
     MessageResponse,
     PopupMessage,
+    SponsorStartResponse,
+    VoteResponse,
 } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
@@ -425,7 +428,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, (tabs) => onTabs(tabs, updating));
     }
 
-    function infoFound(request: IsInfoFoundMessageResponse) {
+    async function infoFound(request: IsInfoFoundMessageResponse) {
         if (chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
@@ -455,58 +458,38 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
 
         //see if whitelist button should be swapped
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { message: 'isChannelWhitelisted' },
-                function (response) {
-                    if (response.value) {
-                        PageElements.whitelistChannel.style.display = "none";
-                        PageElements.unwhitelistChannel.style.display = "unset";
-                        PageElements.whitelistToggle.checked = true;
-                        document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
-                    }
-                });
+        const response = await sendTabMessageAsync({ message: 'isChannelWhitelisted' }) as IsChannelWhitelistedResponse;
+        if (response.value) {
+            PageElements.whitelistChannel.style.display = "none";
+            PageElements.unwhitelistChannel.style.display = "unset";
+            PageElements.whitelistToggle.checked = true;
+            document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
         }
-        );
     }
 
-    function sendSponsorStartMessage() {
+    async function sendSponsorStartMessage() {
         //the content script will get the message if a YouTube page is open
-        messageHandler.query({
-            active: true,
-            currentWindow: true,
-        }, (tabs) => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { from: 'popup', message: 'sponsorStart' },
-                async (response) => {
-                    startSponsorCallback(response);
+        const response = await sendTabMessageAsync({ from: 'popup', message: 'sponsorStart' }) as SponsorStartResponse;
+        startSponsorCallback(response);
 
-                    // Perform a second update after the config changes take effect as a workaround for a race condition
-                    const removeListener = (listener: typeof lateUpdate) => {
-                        const index = Config.configSyncListeners.indexOf(listener);
-                        if (index !== -1) Config.configSyncListeners.splice(index, 1);
-                    };
+        // Perform a second update after the config changes take effect as a workaround for a race condition
+        const removeListener = (listener: typeof lateUpdate) => {
+            const index = Config.configSyncListeners.indexOf(listener);
+            if (index !== -1) Config.configSyncListeners.splice(index, 1);
+        };
 
-                    const lateUpdate = () => {
-                        startSponsorCallback(response);
-                        removeListener(lateUpdate);
-                    };
+        const lateUpdate = () => {
+            startSponsorCallback(response);
+            removeListener(lateUpdate);
+        };
 
-                    Config.configSyncListeners.push(lateUpdate);
+        Config.configSyncListeners.push(lateUpdate);
 
-                    // Remove the listener after 200ms in case the changes were propagated by the time we got the response
-                    setTimeout(() => removeListener(lateUpdate), 200);
-                },
-            );
-        });
+        // Remove the listener after 200ms in case the changes were propagated by the time we got the response
+        setTimeout(() => removeListener(lateUpdate), 200);
     }
 
-    function startSponsorCallback(response: { creatingSegment: boolean }) {
+    function startSponsorCallback(response: SponsorStartResponse) {
         creatingSegment = response.creatingSegment;
 
         // Only update the segments after a segment was created
@@ -687,19 +670,11 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     downloadedTimes[i].hidden = SponsorHideType.Hidden;
                 }
 
-                messageHandler.query({
-                    active: true,
-                    currentWindow: true
-                }, tabs => {
-                    messageHandler.sendMessage(
-                        tabs[0].id,
-                        {
-                            message: "hideSegment",
-                            type: downloadedTimes[i].hidden,
-                            UUID: UUID
-                        }
-                    );
-                });
+                sendTabMessage({
+                    message: "hideSegment",
+                    type: downloadedTimes[i].hidden,
+                    UUID: UUID
+                })
             });
 
             const skipButton = document.createElement("img");
@@ -743,15 +718,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     function submitTimes() {
         if (sponsorTimes.length > 0) {
-            messageHandler.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
-                messageHandler.sendMessage(
-                    tabs[0].id,
-                    { message: 'submitTimes' },
-                );
-            });
+            sendTabMessage({ message: 'submitTimes' })
         }
     }
 
@@ -782,20 +749,22 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         chrome.runtime.sendMessage({ "message": "openHelp" });
     }
 
-    function sendTabMessage(data: Message): Promise<unknown> {
-        return new Promise((resolve) => {
-            messageHandler.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
-                messageHandler.sendMessage(
-                    tabs[0].id,
-                    data,
-                    (response) => resolve(response)
-                );
-            }
+    function sendTabMessage(data: Message, callback?) {
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                data,
+                callback
             );
-        });
+        }
+        );
+    }
+
+    function sendTabMessageAsync(data: Message): Promise<unknown> {
+        return new Promise((resolve) => sendTabMessage(data, (response) => resolve(response)))
     }
 
     //make the options username setting option visible
@@ -872,163 +841,109 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         thanksForVotingText.removeAttribute("innerText");
     }
 
-    function vote(type, UUID) {
+    async function vote(type, UUID) {
         //add loading info
         addVoteMessage(chrome.i18n.getMessage("Loading"), UUID);
+        const response = await sendTabMessageAsync({
+            message: "submitVote",
+            type: type,
+            UUID: UUID
+        }) as VoteResponse;
 
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                {
-                    message: "submitVote",
-                    type: type,
-                    UUID: UUID
-                }, function (response) {
-                    if (response != undefined) {
-                        //see if it was a success or failure
-                        if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
-                            //success (treat rate limits as a success)
-                            addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
-                        } else if (response.successType == -1) {
-                            addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
-                        }
-                        setTimeout(() => removeVoteMessage(UUID), 1500);
-                    }
-                }
-            );
-        });
+        if (response != undefined) {
+            //see if it was a success or failure
+            if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
+                //success (treat rate limits as a success)
+                addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
+            } else if (response.successType == -1) {
+                addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
+            }
+            setTimeout(() => removeVoteMessage(UUID), 1500);
+        }
     }
 
-    function whitelistChannel() {
+    async function whitelistChannel() {
         //get the channel url
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { message: 'getChannelID' },
-                function (response) {
-                    if (!response.channelID) {
-                        alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
-                        return;
-                    }
+        const response = await sendTabMessageAsync({ message: 'getChannelID' }) as GetChannelIDResponse;
+        if (!response.channelID) {
+            alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
+            return;
+        }
 
-                    //get whitelisted channels
-                    let whitelistedChannels = Config.config.whitelistedChannels;
-                    if (whitelistedChannels == undefined) {
-                        whitelistedChannels = [];
-                    }
+        //get whitelisted channels
+        let whitelistedChannels = Config.config.whitelistedChannels;
+        if (whitelistedChannels == undefined) {
+            whitelistedChannels = [];
+        }
 
-                    //add on this channel
-                    whitelistedChannels.push(response.channelID);
+        //add on this channel
+        whitelistedChannels.push(response.channelID);
 
-                    //change button
-                    PageElements.whitelistChannel.style.display = "none";
-                    PageElements.unwhitelistChannel.style.display = "unset";
-                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
+        //change button
+        PageElements.whitelistChannel.style.display = "none";
+        PageElements.unwhitelistChannel.style.display = "unset";
+        document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
 
-                    //show 'consider force channel check' alert
-                    if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
+        //show 'consider force channel check' alert
+        if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
 
-                    //save this
-                    Config.config.whitelistedChannels = whitelistedChannels;
+        //save this
+        Config.config.whitelistedChannels = whitelistedChannels;
 
-                    //send a message to the client
-                    messageHandler.query({
-                        active: true,
-                        currentWindow: true
-                    }, tabs => {
-                        messageHandler.sendMessage(
-                            tabs[0].id, {
-                            message: 'whitelistChange',
-                            value: true
-                        });
-                    }
-                    );
-                }
-            );
+        //send a message to the client
+        sendTabMessage({
+            message: 'whitelistChange',
+            value: true
         });
     }
 
-    function unwhitelistChannel() {
+    async function unwhitelistChannel() {
         //get the channel url
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { message: 'getChannelID' },
-                function (response) {
-                    //get whitelisted channels
-                    let whitelistedChannels = Config.config.whitelistedChannels;
-                    if (whitelistedChannels == undefined) {
-                        whitelistedChannels = [];
-                    }
+        const response = await sendTabMessageAsync({ message: 'getChannelID' }) as GetChannelIDResponse;
 
-                    //remove this channel
-                    const index = whitelistedChannels.indexOf(response.channelID);
-                    whitelistedChannels.splice(index, 1);
+        //get whitelisted channels
+        let whitelistedChannels = Config.config.whitelistedChannels;
+        if (whitelistedChannels == undefined) {
+            whitelistedChannels = [];
+        }
 
-                    //change button
-                    PageElements.whitelistChannel.style.display = "unset";
-                    PageElements.unwhitelistChannel.style.display = "none";
-                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
+        //remove this channel
+        const index = whitelistedChannels.indexOf(response.channelID);
+        whitelistedChannels.splice(index, 1);
 
-                    //hide 'consider force channel check' alert
-                    PageElements.whitelistForceCheck.classList.add("hidden");
+        //change button
+        PageElements.whitelistChannel.style.display = "unset";
+        PageElements.unwhitelistChannel.style.display = "none";
+        document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
 
-                    //save this
-                    Config.config.whitelistedChannels = whitelistedChannels;
+        //hide 'consider force channel check' alert
+        PageElements.whitelistForceCheck.classList.add("hidden");
 
-                    //send a message to the client
-                    messageHandler.query({
-                        active: true,
-                        currentWindow: true
-                    }, tabs => {
-                        messageHandler.sendMessage(
-                            tabs[0].id, {
-                            message: 'whitelistChange',
-                            value: false
-                        });
-                    }
-                    );
-                }
-            );
+        //save this
+        Config.config.whitelistedChannels = whitelistedChannels;
+
+        //send a message to the client
+        sendTabMessage({
+            message: 'whitelistChange',
+            value: false
         });
     }
 
-    function refreshSegments() {
+    async function refreshSegments() {
         const stopAnimation = AnimationUtils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
 
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { message: 'refreshSegments' },
-                (response) => {
-                    infoFound(response);
-                    stopAnimation();
-                }
-            )
-        }
-        );
+        infoFound(await sendTabMessageAsync({ message: 'refreshSegments' }) as IsInfoFoundMessageResponse)
+        stopAnimation();
     }
 
     function skipSegment(actionType: ActionType, UUID: SegmentUUID, element?: HTMLElement): void {
         if (actionType === ActionType.Chapter) {
-            sendMessage({
+            sendTabMessage({
                 message: "unskip",
                 UUID: UUID
             });
         } else {
-            sendMessage({
+            sendTabMessage({
                 message: "reskip",
                 UUID: UUID
             });
@@ -1038,18 +953,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             const stopAnimation = AnimationUtils.applyLoadingAnimation(element, 0.3);
             stopAnimation();
         }
-    }
-
-    function sendMessage(request: Message): void {
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                request
-            );
-        });
     }
 
     /**
@@ -1084,10 +987,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     async function importSegments() {
         const text = (PageElements.importSegmentsText as HTMLInputElement).value;
 
-        await sendTabMessage({
+        sendTabMessage({
             message: "importSegments",
             data: text
-        }) as ImportSegmentsResponse;
+        });
 
         PageElements.importSegmentsMenu.classList.add("hidden");
     }
