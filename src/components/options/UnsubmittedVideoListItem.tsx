@@ -5,6 +5,7 @@ import { exportTimes, exportTimesAsHashParam } from "../../utils/exporter";
 
 export interface UnsubmittedVideosListItemProps {
     videoID: string;
+    children?: React.ReactNode;
 }
 
 export interface UnsubmittedVideosListItemState {

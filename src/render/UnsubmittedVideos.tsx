@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import UnsubmittedVideosComponent from "../components/options/UnsubmittedVideosComponent";
 
 class UnsubmittedVideos {
@@ -9,9 +9,9 @@ class UnsubmittedVideos {
     constructor(element: Element) {
         this.ref = React.createRef();
 
-        ReactDOM.render(
-            <UnsubmittedVideosComponent ref={this.ref} />,
-            element
+        const root = createRoot(element);
+        root.render(
+            <UnsubmittedVideosComponent ref={this.ref} />
         );
     }
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 import ChapterVoteComponent, { ChapterVoteState } from "../components/ChapterVoteComponent";
 import { VoteResponse } from "../messageTypes";
 import { Category, SegmentUUID, SponsorTime } from "../types";
@@ -7,6 +7,7 @@ import { Category, SegmentUUID, SponsorTime } from "../types";
 export class ChapterVote {
     container: HTMLElement;
     ref: React.RefObject<ChapterVoteComponent>;
+    root: Root;
 
     unsavedState: ChapterVoteState;
 
@@ -19,10 +20,8 @@ export class ChapterVote {
         this.container.id = "chapterVote";
         this.container.style.height = "100%";
 
-        ReactDOM.render(
-            <ChapterVoteComponent ref={this.ref} vote={vote} />,
-            this.container
-        );
+        this.root = createRoot(this.container);
+        this.root.render(<ChapterVoteComponent ref={this.ref} vote={vote} />);
     }
 
     getContainer(): HTMLElement {
@@ -30,7 +29,7 @@ export class ChapterVote {
     }
 
     close(): void {
-        ReactDOM.unmountComponentAtNode(this.container);
+        this.root.unmount();
         this.container.remove();
     }
 

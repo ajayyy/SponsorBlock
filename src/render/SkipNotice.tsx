@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 
 import Utils from "../utils";
 const utils = new Utils();
@@ -18,6 +18,7 @@ class SkipNotice {
     noticeElement: HTMLDivElement;
 
     skipNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
+    root: Root;
 
     constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer, unskipTime: number = null, startReskip = false) {
         this.skipNoticeRef = React.createRef();
@@ -41,7 +42,8 @@ class SkipNotice {
 
         referenceNode.prepend(this.noticeElement);
 
-        ReactDOM.render(
+        this.root = createRoot(this.noticeElement);
+        this.root.render(
             <SkipNoticeComponent segments={segments} 
                 autoSkip={autoSkip} 
                 startReskip={startReskip}
@@ -50,8 +52,7 @@ class SkipNotice {
                 closeListener={() => this.close()}
                 smaller={Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAll 
                     || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAutoSkip && autoSkip)}
-                unskipTime={unskipTime} />,
-            this.noticeElement
+                unskipTime={unskipTime} />
         );
     }
 
@@ -62,7 +63,7 @@ class SkipNotice {
     }
 
     close(): void {
-        ReactDOM.unmountComponentAtNode(this.noticeElement);
+        this.root.unmount();
 
         this.noticeElement.remove();
 

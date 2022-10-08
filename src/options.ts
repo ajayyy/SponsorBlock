@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 
 import Config from "./config";
 import * as CompileConfig from "../config.json";
@@ -258,7 +258,8 @@ async function init() {
                 break;
             }
             case "keybind-change": {
-                ReactDOM.render(React.createElement(KeybindComponent, {option: option}), optionsElements[i].querySelector("div"));
+                const root = createRoot(optionsElements[i].querySelector("div"));
+                root.render(React.createElement(KeybindComponent, {option: option}));
                 break;
             }
             case "display": {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 import Config from "../../config";
 import { Keybind } from "../../types";
 import KeybindDialogComponent from "./KeybindDialogComponent";
@@ -14,6 +14,7 @@ export interface KeybindState {
 }
 
 let dialog;
+let root: Root;
 
 class KeybindComponent extends React.Component<KeybindProps, KeybindState> {
     constructor(props: KeybindProps) {
@@ -56,11 +57,12 @@ class KeybindComponent extends React.Component<KeybindProps, KeybindState> {
         dialog = parent.document.createElement("div");
         dialog.id = "keybind-dialog";
         parent.document.body.prepend(dialog);
-        ReactDOM.render(<KeybindDialogComponent option={this.props.option} closeListener={(updateWith) => this.closeEditDialog(updateWith)} />, dialog);
+        root = createRoot(dialog);
+        root.render(<KeybindDialogComponent option={this.props.option} closeListener={(updateWith) => this.closeEditDialog(updateWith)} />);
     }
 
     closeEditDialog(updateWith: Keybind): void {
-        ReactDOM.unmountComponentAtNode(dialog);
+        root.unmount();
         dialog.remove();
         if (updateWith != null)
             this.setState({keybind: updateWith});

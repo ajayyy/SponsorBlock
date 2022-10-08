@@ -4,15 +4,15 @@
   "description": "",
   "main": "background.js",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.197",
     "@types/firefox-webext-browser": "^94.0.1",
     "@types/jest": "^29.1.2",
-    "@types/react": "^17.0.47",
-    "@types/react-dom": "^17.0.17",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "@types/selenium-webdriver": "^4.1.5",
     "@types/wicg-mediasession": "^1.1.4",
     "@typescript-eslint/eslint-plugin": "^5.39.0",

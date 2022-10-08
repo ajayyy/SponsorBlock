@@ -23,6 +23,7 @@ export interface SponsorTimeEditProps {
     submissionNotice: SubmissionNoticeComponent;
     categoryList?: Category[];
     categoryChangeListener?: (index: number, category: Category) => void;
+    children?: React.ReactNode;
 }
 
 export interface SponsorTimeEditState {
