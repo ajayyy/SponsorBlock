@@ -7,7 +7,7 @@ export interface UnsubmittedVideosProps {
 }
 
 export interface UnsubmittedVideosState {
-    tableVisible: boolean,
+    tableVisible: boolean;
 }
 
 class UnsubmittedVideosComponent extends React.Component<UnsubmittedVideosProps, UnsubmittedVideosState> {

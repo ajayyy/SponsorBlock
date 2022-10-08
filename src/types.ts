@@ -4,32 +4,32 @@ import SkipNotice from "./render/SkipNotice";
 
 export interface ContentContainer {
     (): {
-        vote: (type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) => void,
-        dontShowNoticeAgain: () => void,
-        unskipSponsorTime: (segment: SponsorTime, unskipTime: number, forceSeek?: boolean) => void,
-        sponsorTimes: SponsorTime[],
-        sponsorTimesSubmitting: SponsorTime[],
-        skipNotices: SkipNotice[],
-        v: HTMLVideoElement,
-        sponsorVideoID,
-        reskipSponsorTime: (segment: SponsorTime, forceSeek?: boolean) => void,
-        updatePreviewBar: () => void,
-        onMobileYouTube: boolean,
-        sponsorSubmissionNotice: SubmissionNotice,
-        resetSponsorSubmissionNotice: (callRef?: boolean) => void,
-        updateEditButtonsOnPlayer: () => void,
-        previewTime: (time: number, unpause?: boolean) => void,
-        videoInfo: VideoInfo,
-        getRealCurrentTime: () => number,
-        lockedCategories: string[],
-        channelIDInfo: ChannelIDInfo
-    }
+        vote: (type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) => void;
+        dontShowNoticeAgain: () => void;
+        unskipSponsorTime: (segment: SponsorTime, unskipTime: number, forceSeek?: boolean) => void;
+        sponsorTimes: SponsorTime[];
+        sponsorTimesSubmitting: SponsorTime[];
+        skipNotices: SkipNotice[];
+        v: HTMLVideoElement;
+        sponsorVideoID;
+        reskipSponsorTime: (segment: SponsorTime, forceSeek?: boolean) => void;
+        updatePreviewBar: () => void;
+        onMobileYouTube: boolean;
+        sponsorSubmissionNotice: SubmissionNotice;
+        resetSponsorSubmissionNotice: (callRef?: boolean) => void;
+        updateEditButtonsOnPlayer: () => void;
+        previewTime: (time: number, unpause?: boolean) => void;
+        videoInfo: VideoInfo;
+        getRealCurrentTime: () => number;
+        lockedCategories: string[];
+        channelIDInfo: ChannelIDInfo;
+    };
 }
 
 export interface FetchResponse {
-    responseText: string,
-    status: number,
-    ok: boolean
+    responseText: string;
+    status: number;
+    ok: boolean;
 }
 
 export type HashedValue = string & { __hashBrand: unknown };
@@ -46,7 +46,7 @@ export enum CategorySkipOption {
 
 export interface CategorySelection {
     name: Category;
-    option: CategorySkipOption
+    option: CategorySkipOption;
 }
 
 export enum SponsorHideType {
@@ -97,95 +97,95 @@ export interface ScheduledTime extends SponsorTime {
 }
 
 export interface PreviewBarOption {
-    color: string,
-    opacity: string
+    color: string;
+    opacity: string;
 }
 
 
 export interface Registration {
-    message: string,
-    id: string,
-    allFrames: boolean,
-    js: browser.extensionTypes.ExtensionFileOrCode[],
-    css: browser.extensionTypes.ExtensionFileOrCode[],
-    matches: string[]
+    message: string;
+    id: string;
+    allFrames: boolean;
+    js: browser.extensionTypes.ExtensionFileOrCode[];
+    css: browser.extensionTypes.ExtensionFileOrCode[];
+    matches: string[];
 }
 
 export interface BackgroundScriptContainer {
-    registerFirefoxContentScript: (opts: Registration) => void,
-    unregisterFirefoxContentScript: (id: string) => void
+    registerFirefoxContentScript: (opts: Registration) => void;
+    unregisterFirefoxContentScript: (id: string) => void;
 }
 
 export interface VideoInfo {
     responseContext: {
-        serviceTrackingParams: Array<{service: string, params: Array<{key: string, value: string}>}>,
+        serviceTrackingParams: Array<{service: string; params: Array<{key: string; value: string}>}>;
         webResponseContextExtensionData: {
-            hasDecorated: boolean
-        }
-    },
+            hasDecorated: boolean;
+        };
+    };
     playabilityStatus: {
-        status: string,
-        playableInEmbed: boolean,
+        status: string;
+        playableInEmbed: boolean;
         miniplayer: {
             miniplayerRenderer: {
-                playbackMode: string
-            }
-        }
+                playbackMode: string;
+            };
+        };
     };
     streamingData: unknown;
     playbackTracking: unknown;
     videoDetails: {
-        videoId: string,
-        title: string,
-        lengthSeconds: string,
-        keywords: string[],
-        channelId: string,
-        isOwnerViewing: boolean,
-        shortDescription: string,
-        isCrawlable: boolean,
+        videoId: string;
+        title: string;
+        lengthSeconds: string;
+        keywords: string[];
+        channelId: string;
+        isOwnerViewing: boolean;
+        shortDescription: string;
+        isCrawlable: boolean;
         thumbnail: {
-            thumbnails: Array<{url: string, width: number, height: number}>
-        },
-        averageRating: number,
-        allowRatings: boolean,
-        viewCount: string,
-        author: string,
-        isPrivate: boolean,
-        isUnpluggedCorpus: boolean,
-        isLiveContent: boolean,
+            thumbnails: Array<{url: string; width: number; height: number}>;
+        };
+        averageRating: number;
+        allowRatings: boolean;
+        viewCount: string;
+        author: string;
+        isPrivate: boolean;
+        isUnpluggedCorpus: boolean;
+        isLiveContent: boolean;
     };
     playerConfig: unknown;
     storyboards: unknown;
     microformat: {
         playerMicroformatRenderer: {
             thumbnail: {
-                thumbnails: Array<{url: string, width: number, height: number}>
-            },
+                thumbnails: Array<{url: string; width: number; height: number}>;
+            };
             embed: {
-                iframeUrl: string,
-                flashUrl: string,
-                width: number,
-                height: number,
-                flashSecureUrl: string,
-            },
+                iframeUrl: string;
+                flashUrl: string;
+                width: number;
+                height: number;
+                flashSecureUrl: string;
+            };
             title: {
-                simpleText: string,
-            },
+                simpleText: string;
+            };
             description: {
-                simpleText: string,
-            },
-            lengthSeconds: string,
-            ownerProfileUrl: string,
-            externalChannelId: string,
-            availableCountries: string[],
-            isUnlisted: boolean,
-            hasYpcMetadata: boolean,
-            viewCount: string,
-            category: Category,
-            publishDate: string,
-            ownerChannelName: string,
-            uploadDate: string,
-        }
+                simpleText: string;
+            };
+            lengthSeconds: string;
+            ownerProfileUrl: string;
+            externalChannelId: string;
+            availableCountries: string[];
+            isUnlisted: boolean;
+            hasYpcMetadata: boolean;
+            viewCount: string;
+            category: Category;
+            publishDate: string;
+            ownerChannelName: string;
+            uploadDate: string;
+        };
     };
     trackingParams: string;
     attestation: unknown;
@@ -205,17 +205,17 @@ export enum ChannelIDStatus {
 }
 
 export interface ChannelIDInfo {
-    id: string,
-    status: ChannelIDStatus
+    id: string;
+    status: ChannelIDStatus;
 }
 
 export interface SkipToTimeParams {
-    v: HTMLVideoElement, 
-    skipTime: number[], 
-    skippingSegments: SponsorTime[], 
-    openNotice: boolean, 
-    forceAutoSkip?: boolean,
-    unskipTime?: number
+    v: HTMLVideoElement; 
+    skipTime: number[]; 
+    skippingSegments: SponsorTime[]; 
+    openNotice: boolean; 
+    forceAutoSkip?: boolean;
+    unskipTime?: number;
 }
 
 export interface ToggleSkippable {
@@ -232,11 +232,11 @@ export enum NoticeVisbilityMode {
 }
 
 export type Keybind = {
-    key: string,
-    code?: string,
-    ctrl?: boolean,
-    alt?: boolean,
-    shift?: boolean
+    key: string;
+    code?: string;
+    ctrl?: boolean;
+    alt?: boolean;
+    shift?: boolean;
 }
 
 export enum PageType {
@@ -249,6 +249,6 @@ export enum PageType {
 }
 
 export interface ButtonListener {
-    name: string,
-    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    name: string;
+    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

@@ -651,7 +651,7 @@ class PreviewBar {
     }
 
     private findLeftAndScale(selector: string, currentElement: HTMLElement, progressBar: HTMLElement): 
-            { left: number, scale: number } {
+            { left: number; scale: number } {
         const sections = currentElement.parentElement.parentElement.parentElement.children;
         let currentWidth = 0;
         let lastWidth = 0;

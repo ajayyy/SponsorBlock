@@ -8,122 +8,122 @@ export interface Permission {
 }
 
 interface SBConfig {
-    userID: string,
-    isVip: boolean,
-    permissions: Record<Category, Permission>,
+    userID: string;
+    isVip: boolean;
+    permissions: Record<Category, Permission>;
     /* Contains unsubmitted segments that the user has created. */
-    unsubmittedSegments: Record<string, SponsorTime[]>,
-    defaultCategory: Category,
-    renderSegmentsAsChapters: boolean,
-    whitelistedChannels: string[],
-    forceChannelCheck: boolean,
-    minutesSaved: number,
-    skipCount: number,
-    sponsorTimesContributed: number,
-    submissionCountSinceCategories: number, // New count used to show the "Read The Guidelines!!" message
-    showTimeWithSkips: boolean,
-    disableSkipping: boolean,
-    muteSegments: boolean,
-    fullVideoSegments: boolean,
-    manualSkipOnFullVideo: boolean,
-    trackViewCount: boolean,
-    trackViewCountInPrivate: boolean,
-    trackDownvotes: boolean,
-    dontShowNotice: boolean,
-    noticeVisibilityMode: NoticeVisbilityMode,
-    hideVideoPlayerControls: boolean,
-    hideInfoButtonPlayerControls: boolean,
-    hideDeleteButtonPlayerControls: boolean,
-    hideUploadButtonPlayerControls: boolean,
-    hideSkipButtonPlayerControls: boolean,
-    hideDiscordLaunches: number,
-    hideDiscordLink: boolean,
-    invidiousInstances: string[],
-    supportInvidious: boolean,
-    serverAddress: string,
-    minDuration: number,
-    skipNoticeDuration: number,
-    audioNotificationOnSkip: boolean,
-    checkForUnlistedVideos: boolean,
-    testingServer: boolean,
-    refetchWhenNotFound: boolean,
-    ytInfoPermissionGranted: boolean,
-    allowExpirements: boolean,
-    showDonationLink: boolean,
-    showPopupDonationCount: number,
-    showUpsells: boolean,
-    donateClicked: number,
-    autoHideInfoButton: boolean,
-    autoSkipOnMusicVideos: boolean,
+    unsubmittedSegments: Record<string, SponsorTime[]>;
+    defaultCategory: Category;
+    renderSegmentsAsChapters: boolean;
+    whitelistedChannels: string[];
+    forceChannelCheck: boolean;
+    minutesSaved: number;
+    skipCount: number;
+    sponsorTimesContributed: number;
+    submissionCountSinceCategories: number; // New count used to show the "Read The Guidelines!!" message
+    showTimeWithSkips: boolean;
+    disableSkipping: boolean;
+    muteSegments: boolean;
+    fullVideoSegments: boolean;
+    manualSkipOnFullVideo: boolean;
+    trackViewCount: boolean;
+    trackViewCountInPrivate: boolean;
+    trackDownvotes: boolean;
+    dontShowNotice: boolean;
+    noticeVisibilityMode: NoticeVisbilityMode;
+    hideVideoPlayerControls: boolean;
+    hideInfoButtonPlayerControls: boolean;
+    hideDeleteButtonPlayerControls: boolean;
+    hideUploadButtonPlayerControls: boolean;
+    hideSkipButtonPlayerControls: boolean;
+    hideDiscordLaunches: number;
+    hideDiscordLink: boolean;
+    invidiousInstances: string[];
+    supportInvidious: boolean;
+    serverAddress: string;
+    minDuration: number;
+    skipNoticeDuration: number;
+    audioNotificationOnSkip: boolean;
+    checkForUnlistedVideos: boolean;
+    testingServer: boolean;
+    refetchWhenNotFound: boolean;
+    ytInfoPermissionGranted: boolean;
+    allowExpirements: boolean;
+    showDonationLink: boolean;
+    showPopupDonationCount: number;
+    showUpsells: boolean;
+    donateClicked: number;
+    autoHideInfoButton: boolean;
+    autoSkipOnMusicVideos: boolean;
     colorPalette: {
-        red: string,
-        white: string,
-        locked: string
-    },
-    scrollToEditTimeUpdate: boolean,
-    categoryPillUpdate: boolean,
-    showChapterInfoMessage: boolean,
-    darkMode: boolean,
-    showCategoryGuidelines: boolean,
-    showCategoryWithoutPermission: boolean,
-    showSegmentNameInChapterBar: boolean,
+        red: string;
+        white: string;
+        locked: string;
+    };
+    scrollToEditTimeUpdate: boolean;
+    categoryPillUpdate: boolean;
+    showChapterInfoMessage: boolean;
+    darkMode: boolean;
+    showCategoryGuidelines: boolean;
+    showCategoryWithoutPermission: boolean;
+    showSegmentNameInChapterBar: boolean;
 
     // Used to cache calculated text color info
     categoryPillColors: {
         [key in Category]: {
-            lastColor: string,
-            textColor: string
+            lastColor: string;
+            textColor: string;
         }
-    }
+    };
 
-    skipKeybind: Keybind,
-    startSponsorKeybind: Keybind,
-    submitKeybind: Keybind,
-    nextChapterKeybind: Keybind,
-    previousChapterKeybind: Keybind,
+    skipKeybind: Keybind;
+    startSponsorKeybind: Keybind;
+    submitKeybind: Keybind;
+    nextChapterKeybind: Keybind;
+    previousChapterKeybind: Keybind;
 
     // What categories should be skipped
-    categorySelections: CategorySelection[],
+    categorySelections: CategorySelection[];
 
     payments: {
-        licenseKey: string,
-        lastCheck: number,
-        lastFreeCheck: number,
-        freeAccess: boolean,
-        chaptersAllowed: boolean
-    }
+        licenseKey: string;
+        lastCheck: number;
+        lastFreeCheck: number;
+        freeAccess: boolean;
+        chaptersAllowed: boolean;
+    };
 
     // Preview bar
     barTypes: {
-        "preview-chooseACategory": PreviewBarOption,
-        "sponsor": PreviewBarOption,
-        "preview-sponsor": PreviewBarOption,
-        "selfpromo": PreviewBarOption,
-        "preview-selfpromo": PreviewBarOption,
-        "exclusive_access": PreviewBarOption,
-        "interaction": PreviewBarOption,
-        "preview-interaction": PreviewBarOption,
-        "intro": PreviewBarOption,
-        "preview-intro": PreviewBarOption,
-        "outro": PreviewBarOption,
-        "preview-outro": PreviewBarOption,
-        "preview": PreviewBarOption,
-        "preview-preview": PreviewBarOption,
-        "music_offtopic": PreviewBarOption,
-        "preview-music_offtopic": PreviewBarOption,
-        "poi_highlight": PreviewBarOption,
-        "preview-poi_highlight": PreviewBarOption,
-        "filler": PreviewBarOption,
-        "preview-filler": PreviewBarOption,
-    }
+        "preview-chooseACategory": PreviewBarOption;
+        "sponsor": PreviewBarOption;
+        "preview-sponsor": PreviewBarOption;
+        "selfpromo": PreviewBarOption;
+        "preview-selfpromo": PreviewBarOption;
+        "exclusive_access": PreviewBarOption;
+        "interaction": PreviewBarOption;
+        "preview-interaction": PreviewBarOption;
+        "intro": PreviewBarOption;
+        "preview-intro": PreviewBarOption;
+        "outro": PreviewBarOption;
+        "preview-outro": PreviewBarOption;
+        "preview": PreviewBarOption;
+        "preview-preview": PreviewBarOption;
+        "music_offtopic": PreviewBarOption;
+        "preview-music_offtopic": PreviewBarOption;
+        "poi_highlight": PreviewBarOption;
+        "preview-poi_highlight": PreviewBarOption;
+        "filler": PreviewBarOption;
+        "preview-filler": PreviewBarOption;
+    };
 }
 
-export type VideoDownvotes = { segments: { uuid: HashedValue, hidden: SponsorHideType }[] , lastAccess: number };
+export type VideoDownvotes = { segments: { uuid: HashedValue; hidden: SponsorHideType }[] ; lastAccess: number };
 
 interface SBStorage {
     /* VideoID prefixes to UUID prefixes */
-    downvotedSegments: Record<VideoID & HashedValue, VideoDownvotes>,
-    navigationApiAvailable: boolean,
+    downvotedSegments: Record<VideoID & HashedValue, VideoDownvotes>;
+    navigationApiAvailable: boolean;
 }
 
 export interface SBObject {
@@ -340,7 +340,7 @@ const Config: SBObject = {
 
 // Function setup
 
-function configProxy(): { sync: SBConfig, local: SBStorage } {
+function configProxy(): { sync: SBConfig; local: SBStorage } {
     chrome.storage.onChanged.addListener((changes: {[key: string]: chrome.storage.StorageChange}, areaName) => {
         if (areaName === "sync") {
             for (const key in changes) {

@@ -2,18 +2,18 @@ import * as React from "react";
 import { createRoot, Root } from 'react-dom/client';
 
 export interface RectangleTooltipProps {
-    text: string, 
-    link?: string,
-    referenceNode: HTMLElement,
-    prependElement?: HTMLElement, // Element to append before
-    bottomOffset?: string,
-    leftOffset?: string,
-    timeout?: number,
-    htmlId?: string,
-    maxHeight?: string,
-    maxWidth?: string,
-    backgroundColor?: string,
-    fontSize?: string,
+    text: string; 
+    link?: string;
+    referenceNode: HTMLElement;
+    prependElement?: HTMLElement; // Element to append before
+    bottomOffset?: string;
+    leftOffset?: string;
+    timeout?: number;
+    htmlId?: string;
+    maxHeight?: string;
+    maxWidth?: string;
+    backgroundColor?: string;
+    fontSize?: string;
     buttonFunction?: () => void;
 }
 

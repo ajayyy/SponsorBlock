@@ -24,7 +24,7 @@ export default class Utils {
     /* Used for waitForElement */
     creatingWaitingMutationObserver = false;
     waitingMutationObserver: MutationObserver = null;
-    waitingElements: { selector: string, visibleCheck: boolean, callback: (element: Element) => void }[] = [];
+    waitingElements: { selector: string; visibleCheck: boolean; callback: (element: Element) => void }[] = [];
 
     constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
