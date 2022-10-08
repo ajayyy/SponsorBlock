@@ -13,7 +13,7 @@ export interface CategorySkipOptionsProps {
     category: Category;
     defaultColor?: string;
     defaultPreviewColor?: string;
-    children?: React.ReactNode[];
+    children?: React.ReactNode;
 }
 
 export interface CategorySkipOptionsState {

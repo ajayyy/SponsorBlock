@@ -32,7 +32,6 @@ export class RectangleTooltip {
         this.text = props.text;
         props.fontSize ??= "10px";
 
-
         this.container = document.createElement('div');
         props.htmlId ??= "sponsorRectangleTooltip" + props.text;
         this.container.id = props.htmlId;
