@@ -1004,6 +1004,14 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                     ?.sort((a, b) => a.segment[0] - b.segment[0]);
         if (!recievedSegments || !recievedSegments.length) {
             // return if no video found
+            chrome.runtime.sendMessage({
+                message: "infoUpdated",
+                found: false,
+                status: lastResponseStatus,
+                sponsorTimes: sponsorTimes,
+                time: video.currentTime,
+                onMobileYouTube
+            });
             retryFetch(404);
             return;
         }
@@ -1093,6 +1101,16 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
     importExistingChapters(true);
 
+    // notify popup of segment changes
+    chrome.runtime.sendMessage({
+        message: "infoUpdated",
+        found: sponsorDataFound,
+        status: lastResponseStatus,
+        sponsorTimes: sponsorTimes,
+        time: video.currentTime,
+        onMobileYouTube
+    });
+
     if (Config.config.isVip) {
         lockedCategoriesLookup();
     }
@@ -1138,8 +1156,8 @@ async function lockedCategoriesLookup(): Promise<void> {
 }
 
 function retryFetch(errorCode: number): void {
-    if (!Config.config.refetchWhenNotFound) return;
     sponsorDataFound = false;
+    if (!Config.config.refetchWhenNotFound) return;
 
     if (retryFetchTimeout) clearTimeout(retryFetchTimeout);
     if ((errorCode !== 404 && retryCount > 1) || (errorCode !== 404 && retryCount > 10)) {

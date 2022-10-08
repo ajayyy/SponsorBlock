@@ -9,7 +9,7 @@ interface BaseMessage {
 }
 
 interface DefaultMessage {
-    message: 
+    message:
         "update"
         | "sponsorStart"
         | "getVideoID"
@@ -95,7 +95,7 @@ interface IsChannelWhitelistedResponse {
     value: boolean;
 }
 
-export type MessageResponse = 
+export type MessageResponse =
     IsInfoFoundMessageResponse
     | GetVideoIdResponse
     | GetChannelIDResponse
@@ -120,4 +120,8 @@ export interface TimeUpdateMessage {
     time: number;
 }
 
-export type PopupMessage = TimeUpdateMessage;
+export type InfoUpdatedMessage = IsInfoFoundMessageResponse & {
+    message: "infoUpdated";
+}
+
+export type PopupMessage = TimeUpdateMessage | InfoUpdatedMessage;

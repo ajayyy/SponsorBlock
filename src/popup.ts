@@ -1,8 +1,21 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType, StorageChangesObject } from "./types";
-import { Message, MessageResponse, IsInfoFoundMessageResponse, ImportSegmentsResponse, PopupMessage } from "./messageTypes";
+import {
+    ActionType,
+    SegmentUUID,
+    SponsorHideType,
+    SponsorSourceType,
+    SponsorTime,
+    StorageChangesObject,
+} from "./types";
+import {
+    ImportSegmentsResponse,
+    IsInfoFoundMessageResponse,
+    Message,
+    MessageResponse,
+    PopupMessage,
+} from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
@@ -11,6 +24,7 @@ import { localizeHtmlPage } from "./utils/pageUtils";
 import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
 import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
+
 const utils = new Utils();
 
 interface MessageListener {
@@ -188,7 +202,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     PageElements.exportSegmentsButton.addEventListener("click", exportSegments);
-    PageElements.importSegmentsButton.addEventListener("click", 
+    PageElements.importSegmentsButton.addEventListener("click",
         () => PageElements.importSegmentsMenu.classList.toggle("hidden"));
     PageElements.importSegmentsSubmit.addEventListener("click", importSegments);
 
@@ -260,7 +274,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     if (dontShowNotice != undefined && dontShowNotice) {
         PageElements.showNoticeAgain.style.display = "unset";
     }
-    
+
     const values = ["userName", "viewCount", "minutesSaved", "vip", "permissions"];
     if (!Config.config.payments.freeAccess && !noRefreshFetchingChaptersAllowed()) values.push("freeChaptersAccess");
 
@@ -427,13 +441,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             PageElements.loadingIndicator.style.display = "none";
 
             downloadedTimes = request.sponsorTimes ?? [];
+            displayDownloadedSponsorTimes(downloadedTimes, request.time);
             if (request.found) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
-
                 PageElements.issueReporterImportExport.classList.remove("hidden");
-                if (request.sponsorTimes) {
-                    displayDownloadedSponsorTimes(request.sponsorTimes, request.time);
-                }
             } else if (request.status == 404 || request.status == 200) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
                 PageElements.issueReporterImportExport.classList.remove("hidden");
@@ -514,7 +525,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             PageElements.issueReporterTabs.classList.add("hidden");
             currentSegmentTab = SegmentTab.Segments;
         } else {
-            if (currentSegmentTab === SegmentTab.Segments 
+            if (currentSegmentTab === SegmentTab.Segments
                     && sponsorTimes.every((segment) => segment.actionType === ActionType.Chapter)) {
                 PageElements.issueReporterTabs.classList.add("hidden");
                 currentSegmentTab = SegmentTab.Chapters;
@@ -529,7 +540,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 if (currentSegmentTab === SegmentTab.Segments) {
                     return segment.actionType !== ActionType.Chapter;
                 } else if (currentSegmentTab === SegmentTab.Chapters) {
-                    return segment.actionType === ActionType.Chapter 
+                    return segment.actionType === ActionType.Chapter
                         && segment.source !== SponsorSourceType.YouTube;
                 } else {
                     return true;
@@ -546,7 +557,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         if (downloadedTimes.length > 0) {
             PageElements.exportSegmentsButton.classList.remove("hidden");
-        } else { 
+        } else {
             PageElements.exportSegmentsButton.classList.add("hidden");
         }
 
@@ -590,7 +601,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             if (downloadedTimes[i].actionType === ActionType.Full) {
                 segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
             } else {
-                segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(downloadedTimes[i].segment[0], true) + 
+                segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(downloadedTimes[i].segment[0], true) +
                         (actionType !== ActionType.Poi
                             ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(downloadedTimes[i].segment[1], true)
                             : "");
@@ -695,7 +706,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             skipButton.id = "sponsorTimesSkipButtonContainer" + UUID;
             skipButton.className = "voteButton";
             skipButton.src = chrome.runtime.getURL("icons/skip.svg");
-            skipButton.title = actionType === ActionType.Chapter ? chrome.i18n.getMessage("playChapter") 
+            skipButton.title = actionType === ActionType.Chapter ? chrome.i18n.getMessage("playChapter")
                 : chrome.i18n.getMessage("skipSegment");
             skipButton.addEventListener("click", () => skipSegment(actionType, UUID, skipButton));
             votingButtons.addEventListener("dblclick", () => skipSegment(actionType, UUID));
@@ -1022,7 +1033,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 UUID: UUID
             });
         }
-        
+
         if (element) {
             const stopAnimation = AnimationUtils.applyLoadingAnimation(element, 0.3);
             stopAnimation();
@@ -1140,6 +1151,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         switch (msg.message) {
             case "time":
                 displayDownloadedSponsorTimes(downloadedTimes, msg.time);
+                break;
+            case "infoUpdated":
+                infoFound(msg);
                 break;
         }
     }
