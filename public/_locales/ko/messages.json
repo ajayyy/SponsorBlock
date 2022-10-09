@@ -223,13 +223,13 @@
         "message": "YouTube 탐색 바에서 삭제 버튼 표시"
     },
     "enableViewTracking": {
-        "message": "건너뛴 횟수 추적 활성화"
+        "message": "건너뛴 횟수 추적 사용"
     },
     "whatViewTracking": {
         "message": "이 기능으로 건너뛴 구간을 추적해서 사용자가 제출한 내용이 다른 분께 얼마나 도움이 되는지 알려주고 잘못된 구간이 데이터베이스에 들어가지 않도록 추천과 함께 분석에 사용해요. 이 확장 프로그램이 구간을 건너뛸 때마다 서버에 메시지를 보낼 거예요. 조회수가 정확하기 위해서는 이 설정을 변경하지 않기를 바라요. :)"
     },
     "enableViewTrackingInPrivate": {
-        "message": "시크릿/사생활 보호 탭에서 건너뛴 횟수 추적 활성화"
+        "message": "시크릿/사생활 보호 탭에서 건너뛴 횟수 추적 사용"
     },
     "enableTrackDownvotes": {
         "message": "비추천한 구간 저장"
@@ -377,16 +377,16 @@
         "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
-        "message": "자동 건너뛰기 비활성화"
+        "message": "자동 건너뛰기 사용 안 함"
     },
     "enableAutoSkip": {
-        "message": "자동 건너뛰기 활성화"
+        "message": "자동 건너뛰기 사용"
     },
     "audioNotification": {
         "message": "건너뛸 때 소리 재생"
     },
     "audioNotificationDescription": {
-        "message": "구간을 건너뛸 때마다 소리를 재생해요. 자동 건너뛰기가 비활성화된 경우, 아무 소리도 재생되지 않아요."
+        "message": "구간을 건너뛸 때마다 소리를 재생해요. 자동 건너뛰기를 사용하지 않는 경우, 아무 소리도 재생되지 않아요."
     },
     "showTimeWithSkips": {
         "message": "건너뛰기로 제외된 시간 표시"
@@ -446,7 +446,7 @@
         "message": "지원되는 사이트: "
     },
     "optionsInfo": {
-        "message": "Invidious 지원 활성화, 자동 건너뛰기 비활성화, 버튼 숨기기 등이 있어요."
+        "message": "Invidious 지원 활성화, 자동 건너뛰기 사용 안 함, 버튼 숨기기 등이 있어요."
     },
     "addInvidiousInstance": {
         "message": "제3자 클라이언트 인스턴스 추가"
@@ -830,7 +830,7 @@
         "message": "카테고리 선택"
     },
     "enableThisCategoryFirst": {
-        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 활성화를 해주셔야 해요. 바로 설정 창으로 이동하실 거예요.",
+        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 사용을 해주셔야 해요. 바로 설정 창으로 이동하실 거예요.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
@@ -872,7 +872,7 @@
         "message": "권한 요청에 실패했어요. 거부를 누르셨나요?"
     },
     "adblockerIssueWhitelist": {
-        "message": "이 문제를 해결할 수 없는 경우 SponsorBlock이 이 동영상의 채널 정보를 찾을 수 없는 것일 수 있으니, '건너뛰기 전 채널 강제 확인' 설정을 비활성화해주세요."
+        "message": "이 문제를 해결할 수 없는 경우 SponsorBlock이 이 동영상의 채널 정보를 찾을 수 없는 것일 수 있으니, '건너뛰기 전 채널 강제 확인' 설정을 사용하지 않아야 해요."
     },
     "forceChannelCheck": {
         "message": "건너뛰기 전 채널 강제 확인"
@@ -897,7 +897,7 @@
         "message": "카테고리 변경"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "이 동영상은 음악 동영상으로 분류되어 있어요. 동영상에 스폰서 광고 구간이 있나요? \"음악이 아닌 구간\"으로 지정된 카테고리인 경우, 확장 프로그램 설정을 열어 이 카테고리를 활성화하세요. 그리고, 이 구간을 \"스폰서 광고 구간\" 대신 \"음악이 아닌 구간\"으로 지정하세요. 혼동된다면 가이드라인을 읽어주세요."
+        "message": "이 동영상은 음악 동영상으로 분류되어 있어요. 동영상에 스폰서 광고 구간이 있나요? \"음악이 아닌 구간\"으로 지정된 카테고리인 경우, 확장 프로그램 설정을 열어 이 카테고리를 사용하세요. 그리고, 이 구간을 \"스폰서 광고 구간\" 대신 \"음악이 아닌 구간\"으로 지정하세요. 혼동된다면 가이드라인을 읽어주세요."
     },
     "multipleSegments": {
         "message": "여러 구간"
@@ -972,7 +972,7 @@
         "message": "아래 설정을 확인해 보세요"
     },
     "helpPageFeatureDisclaimer": {
-        "message": "기본값으로 많은 기능이 비활성화되어 있어요. 인트로, 아웃트로 같은 부분을 건너뛰고 싶으시다면 아래 설정을 켜야 해요. 또한 UI 요소를 숨기거나 표시할 수 있답니다."
+        "message": "기본값으로 많은 기능이 사용되지 않아요. 인트로, 아웃트로 같은 부분을 건너뛰고 싶으시다면 아래 설정을 사용해야 해요. 또한 UI 요소를 숨기거나 표시할 수 있답니다."
     },
     "helpPageHowSkippingWorks": {
         "message": "건너뛰기가 작동하는 방법"
@@ -1187,7 +1187,7 @@
         "description": "After the comma, a list of chapters for this video will appear"
     },
     "chapterNewFeature2": {
-        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 설정에서 활성화해서 무료로 사용할 수 있어요."
+        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 설정에서 사용해서 무료로 사용할 수 있어요."
     },
     "unsubmittedSegmentCounts": {
         "message": "You currently have {0} on {1}",
