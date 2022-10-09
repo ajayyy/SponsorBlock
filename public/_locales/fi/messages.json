@@ -238,7 +238,7 @@
         "message": "Negatiivisesti äänestämäsi osiot pysyvät piilotettuina myös päivityksen jälkeen"
     },
     "trackDownvotesWarning": {
-        "message": "Varoitus: Tämän käytöstä poisto poistaa kaikki aiemmin tallennetut negatiiviset äänet"
+        "message": "Varoitus: Tämän poistaminen käytöstä poistaa kaikki aiemmin tallennetut alaäänet"
     },
     "enableQueryByHashPrefix": {
         "message": "Kysely tiiviste-etuliittellä"
@@ -1242,6 +1242,6 @@
         "description": "Header of the unsubmitted segments list"
     },
     "exportSegmentsAsURL": {
-        "message": "Jaa web-osoitteena"
+        "message": "Jaa URL-osoitteena"
     }
 }
