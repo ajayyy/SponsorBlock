@@ -20,8 +20,8 @@ export interface SubmissionNoticeProps {
 }
 
 export interface SubmissionNoticeState {
-    noticeTitle: string,
-    messages: string[],
+    noticeTitle: string;
+    messages: string[];
     idSuffix: string;
 }
 

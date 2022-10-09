@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 import NoticeComponent from "../components/NoticeComponent";
 
 import Utils from "../utils";
@@ -9,17 +9,17 @@ import { ButtonListener, ContentContainer } from "../types";
 import NoticeTextSelectionComponent from "../components/NoticeTextSectionComponent";
 
 export interface TextBox {
-    icon: string,
-    text: string
+    icon: string;
+    text: string;
 }
 
 export interface NoticeOptions {
-    title: string,
-    referenceNode?: HTMLElement,
-    textBoxes?: TextBox[],
-    buttons?: ButtonListener[],
-    fadeIn?: boolean,
-    timed?: boolean
+    title: string;
+    referenceNode?: HTMLElement;
+    textBoxes?: TextBox[];
+    buttons?: ButtonListener[];
+    fadeIn?: boolean;
+    timed?: boolean;
     style?: React.CSSProperties;
     extraClass?: string;
     maxCountdownTime?: () => number;
@@ -35,6 +35,7 @@ export default class GenericNotice {
     noticeElement: HTMLDivElement;
     noticeRef: React.MutableRefObject<NoticeComponent>;
     idSuffix: string;
+    root: Root;
 
     constructor(contentContainer: ContentContainer, idSuffix: string, options: NoticeOptions) {
         this.noticeRef = React.createRef();
@@ -49,11 +50,13 @@ export default class GenericNotice {
 
         referenceNode.prepend(this.noticeElement);
 
-        this.update(options);        
+        this.root = createRoot(this.noticeElement);
+
+        this.update(options);
     }
 
     update(options: NoticeOptions): void {
-        ReactDOM.render(
+        this.root.render(
             <NoticeComponent
                 noticeTitle={options.title}
                 idSuffix={this.idSuffix}
@@ -92,8 +95,7 @@ export default class GenericNotice {
                         </>
                     : null}
 
-            </NoticeComponent>,
-            this.noticeElement
+            </NoticeComponent>
         );
     }
 
@@ -137,7 +139,7 @@ export default class GenericNotice {
     }
 
     close(): void {
-        ReactDOM.unmountComponentAtNode(this.noticeElement);
+        this.root.unmount();
 
         this.noticeElement.remove();
     }

@@ -1,26 +1,26 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 
 export interface RectangleTooltipProps {
-    text: string, 
-    link?: string,
-    referenceNode: HTMLElement,
-    prependElement?: HTMLElement, // Element to append before
-    bottomOffset?: string,
-    leftOffset?: string,
-    timeout?: number,
-    htmlId?: string,
-    maxHeight?: string,
-    maxWidth?: string,
-    backgroundColor?: string,
-    fontSize?: string,
+    text: string; 
+    link?: string;
+    referenceNode: HTMLElement;
+    prependElement?: HTMLElement; // Element to append before
+    bottomOffset?: string;
+    leftOffset?: string;
+    timeout?: number;
+    htmlId?: string;
+    maxHeight?: string;
+    maxWidth?: string;
+    backgroundColor?: string;
+    fontSize?: string;
     buttonFunction?: () => void;
 }
 
 export class RectangleTooltip {
     text: string;   
     container: HTMLDivElement;
-
+    root: Root;
     timer: NodeJS.Timeout;
     
     constructor(props: RectangleTooltipProps) {
@@ -47,7 +47,8 @@ export class RectangleTooltip {
             this.timer = setTimeout(() => this.close(), props.timeout * 1000);
         }
 
-        ReactDOM.render(
+        this.root = createRoot(this.container);
+        this.root.render(
             <div style={{
                 bottom: props.bottomOffset, 
                 left: props.leftOffset,
@@ -81,13 +82,12 @@ export class RectangleTooltip {
 
                         {chrome.i18n.getMessage("GotIt")}
                     </button>
-            </div>,
-            this.container
+            </div>
         )
     }
 
     close(): void {
-        ReactDOM.unmountComponentAtNode(this.container);
+        this.root.unmount();
         this.container.remove();
 
         if (this.timer) clearTimeout(this.timer);

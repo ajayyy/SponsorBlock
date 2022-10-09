@@ -6,9 +6,9 @@ import { GenericUtils } from "./genericUtils";
 const utils = new Utils();
 
 export interface ChatConfig {
-    displayName: string,
-    composerInitialValue?: string,
-    customDescription?: string
+    displayName: string;
+    composerInitialValue?: string;
+    customDescription?: string;
 }
 
 export async function openWarningDialog(contentContainer: ContentContainer): Promise<void> {

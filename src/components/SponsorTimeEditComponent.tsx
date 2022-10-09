@@ -14,15 +14,16 @@ import { DEFAULT_CATEGORY } from "../utils/categoryUtils";
 const utils = new Utils();
 
 export interface SponsorTimeEditProps {
-    index: number,
+    index: number;
 
-    idSuffix: string,
+    idSuffix: string;
     // Contains functions and variables from the content script needed by the skip notice
-    contentContainer: ContentContainer,
+    contentContainer: ContentContainer;
 
     submissionNotice: SubmissionNoticeComponent;
     categoryList?: Category[];
     categoryChangeListener?: (index: number, category: Category) => void;
+    children?: React.ReactNode;
 }
 
 export interface SponsorTimeEditState {

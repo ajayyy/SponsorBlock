@@ -25,7 +25,7 @@ function applyLoadingAnimation(element: HTMLElement, time: number, callback?: ()
     });
 }
 
-function setupCustomHideAnimation(element: Element, container: Element, enabled = true, rightSlide = true): { hide: () => void, show: () => void } {
+function setupCustomHideAnimation(element: Element, container: Element, enabled = true, rightSlide = true): { hide: () => void; show: () => void } {
     if (enabled) element.classList.add("autoHiding");
     element.classList.add("hidden");
     element.classList.add("animationDone");

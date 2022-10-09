@@ -8,41 +8,42 @@ enum CountdownMode {
 }
 
 export interface NoticeProps {
-    noticeTitle: string,
+    noticeTitle: string;
 
-    maxCountdownTime?: () => number,
-    dontPauseCountdown?: boolean,
-    amountOfPreviousNotices?: number,
-    showInSecondSlot?: boolean,
-    timed?: boolean,
-    idSuffix?: string,
+    maxCountdownTime?: () => number;
+    dontPauseCountdown?: boolean;
+    amountOfPreviousNotices?: number;
+    showInSecondSlot?: boolean;
+    timed?: boolean;
+    idSuffix?: string;
 
-    fadeIn?: boolean,
-    startFaded?: boolean,
-    firstColumn?: React.ReactElement[] | React.ReactElement,
-    firstRow?: React.ReactElement,
-    bottomRow?: React.ReactElement[],
+    fadeIn?: boolean;
+    startFaded?: boolean;
+    firstColumn?: React.ReactElement[] | React.ReactElement;
+    firstRow?: React.ReactElement;
+    bottomRow?: React.ReactElement[];
 
-    smaller?: boolean,
-    limitWidth?: boolean,
-    extraClass?: string,
-    hideLogo?: boolean,
-    hideRightInfo?: boolean,
+    smaller?: boolean;
+    limitWidth?: boolean;
+    extraClass?: string;
+    hideLogo?: boolean;
+    hideRightInfo?: boolean;
 
     // Callback for when this is closed
-    closeListener: () => void,
-    onMouseEnter?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void,
+    closeListener: () => void;
+    onMouseEnter?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 
-    zIndex?: number,
-    style?: React.CSSProperties
+    zIndex?: number;
+    style?: React.CSSProperties;
     biggerCloseButton?: boolean;
+    children?: React.ReactNode;
 }
 
 export interface NoticeState {
-    maxCountdownTime: () => number,
+    maxCountdownTime: () => number;
 
-    countdownTime: number,
-    countdownMode: CountdownMode,
+    countdownTime: number;
+    countdownMode: CountdownMode;
 
     mouseHovering: boolean;
 
