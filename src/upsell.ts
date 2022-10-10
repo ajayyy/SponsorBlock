@@ -3,10 +3,14 @@ import { checkLicenseKey } from "./utils/licenseKey";
 import { localizeHtmlPage } from "./utils/pageUtils";
 
 import * as countries from "../public/res/countries.json";
+import Utils from "./utils";
+import { Category, CategorySkipOption } from "./types";
 
 // This is needed, if Config is not imported before Utils, things break.
 // Probably due to cyclic dependencies
 Config.config;
+
+const utils = new Utils();
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -30,6 +34,13 @@ async function init() {
         if (await checkLicenseKey(licenseKey)) {
             Config.config.payments.licenseKey = licenseKey;
             Config.forceSyncUpdate("payments");
+
+            if (!utils.getCategorySelection("chapter")) {
+                Config.config.categorySelections.push({
+                    name: "chapter" as Category,
+                    option: CategorySkipOption.ShowOverlay
+                });
+            }
 
             alert(chrome.i18n.getMessage("redeemSuccess"));
         } else {
