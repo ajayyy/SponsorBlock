@@ -708,8 +708,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(downloadedTimes[i].hidden)) {
                 voteButtonsContainer.appendChild(hideButton);
             }
-            voteButtonsContainer.appendChild(skipButton);
-
+            if (downloadedTimes[i].actionType !== ActionType.Full) {
+                voteButtonsContainer.appendChild(skipButton);
+            }
 
             // Will contain request status
             const voteStatusContainer = document.createElement("div");
