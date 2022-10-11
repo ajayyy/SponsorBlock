@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { createRoot, Root } from "react-dom/client";
 import CategoryPillComponent, { CategoryPillState } from "../components/CategoryPillComponent";
 import Config from "../config";
 import { VoteResponse } from "../messageTypes";
@@ -10,6 +11,7 @@ import { Tooltip } from "./Tooltip";
 export class CategoryPill {
     container: HTMLElement;
     ref: React.RefObject<CategoryPillComponent>;
+    root: Root;
 
     unsavedState: CategoryPillState;
 
@@ -38,10 +40,8 @@ export class CategoryPill {
                 this.unsavedState = this.ref.current.state;
             }
 
-            ReactDOM.render(
-                <CategoryPillComponent ref={this.ref} vote={vote} />,
-                this.container
-            );
+            this.root = createRoot(this.container);
+            this.root.render(<CategoryPillComponent ref={this.ref} vote={vote} />);
 
             if (this.unsavedState) {
                 this.ref.current?.setState(this.unsavedState);
@@ -64,7 +64,7 @@ export class CategoryPill {
     }
 
     close(): void {
-        ReactDOM.unmountComponentAtNode(this.container);
+        this.root.unmount();
         this.container.remove();
     }
 
