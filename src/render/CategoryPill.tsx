@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { createRoot, Root } from "react-dom/client";
 import CategoryPillComponent, { CategoryPillState } from "../components/CategoryPillComponent";
 import Config from "../config";
