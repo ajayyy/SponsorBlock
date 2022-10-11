@@ -438,9 +438,6 @@ async function videoIDChange(id: string): Promise<void> {
         }
     }
 
-    //close popup
-    closeInfoMenu();
-
     sponsorsLookup();
 
     // Make sure all player buttons are properly added
@@ -1812,7 +1809,8 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<void> {
     updateEditButtonsOnPlayer();
 
     // Don't show the info button on embeds
-    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
+    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious
+        || document.getElementById("sponsorBlockPopupContainer") != null) {
         playerButtons.info.button.style.display = "none";
     } else {
         playerButtons.info.button.style.removeProperty("display");
