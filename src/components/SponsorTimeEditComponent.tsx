@@ -575,6 +575,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     saveEditTimes(): void {
         const sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
+        const category = this.categoryOptionRef.current.value as Category
 
         if (this.state.editing) {
             const startTime = GenericUtils.getFormattedTimeToSeconds(this.state.sponsorTimeEdits[0]);
@@ -584,9 +585,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             if (startTime !== null && endTime !== null) {
                 sponsorTimesSubmitting[this.props.index].segment = [startTime, endTime];
             }
+        } else if (this.state.sponsorTimeEdits[1] === null && category === "outro") {
+            sponsorTimesSubmitting[this.props.index].segment[1] = this.props.contentContainer().v.duration;
+            this.props.contentContainer().updateEditButtonsOnPlayer();
         }
 
-        const category = this.categoryOptionRef.current.value as Category
         sponsorTimesSubmitting[this.props.index].category = category;
 
         const actionType = this.getNextActionType(category, this.actionTypeOptionRef?.current?.value as ActionType);
