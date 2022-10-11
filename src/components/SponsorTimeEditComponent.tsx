@@ -541,8 +541,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
         if (time === null) time = sponsorTime.segment[0];
 
+        const addedTime = sponsorTime.segment.length === 1;
         sponsorTime.segment[index] = time;
         if (sponsorTime.actionType === ActionType.Poi) sponsorTime.segment[1] = time;
+
+        if (addedTime) {
+            this.props.contentContainer().updateEditButtonsOnPlayer();
+        }
 
         this.setState({
             sponsorTimeEdits: this.getFormattedSponsorTimesEdits(sponsorTime)
@@ -583,7 +588,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
             // Change segment time only if the format was correct
             if (startTime !== null && endTime !== null) {
+                const addingTime = sponsorTimesSubmitting[this.props.index].segment.length === 1;
                 sponsorTimesSubmitting[this.props.index].segment = [startTime, endTime];
+
+                if (addingTime) {
+                    this.props.contentContainer().updateEditButtonsOnPlayer();
+                }
             }
         } else if (this.state.sponsorTimeEdits[1] === null && category === "outro") {
             sponsorTimesSubmitting[this.props.index].segment[1] = this.props.contentContainer().v.duration;
