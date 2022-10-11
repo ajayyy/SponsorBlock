@@ -3,7 +3,7 @@ import PreviewBar, { PreviewBarSegment } from "../src/js-components/previewBar";
 describe("createChapterRenderGroups", () => {
     let previewBar: PreviewBar;
     beforeEach(() => {
-        previewBar = new PreviewBar(null, null, null, null, true);
+        previewBar = new PreviewBar(null, null, null, null, null, true);
     })
 
     it("Two unrelated times", () => {

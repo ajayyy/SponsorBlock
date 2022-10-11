@@ -46,6 +46,8 @@ class PreviewBar {
     segments: PreviewBarSegment[] = [];
     existingChapters: PreviewBarSegment[] = [];
     videoDuration = 0;
+    updateExistingChapters: () => void;
+    lastChapterUpdate = 0;
 
     // For chapter bar
     hoveredSection: HTMLElement;
@@ -58,7 +60,7 @@ class PreviewBar {
     unfilteredChapterGroups: ChapterGroup[];
     chapterGroups: ChapterGroup[];
 
-    constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean, chapterVote: ChapterVote, test=false) {
+    constructor(parent: HTMLElement, onMobileYouTube: boolean, onInvidious: boolean, chapterVote: ChapterVote, updateExistingChapters: () => void, test=false) {
         if (test) return;
         this.container = document.createElement('ul');
         this.container.id = 'previewbar';
@@ -67,6 +69,7 @@ class PreviewBar {
         this.onMobileYouTube = onMobileYouTube;
         this.onInvidious = onInvidious;
         this.chapterVote = chapterVote;
+        this.updateExistingChapters = updateExistingChapters;
 
         this.updatePageElements();
         this.createElement(parent);
@@ -646,6 +649,12 @@ class PreviewBar {
                 }
 
                 cursor += sectionWidthDecimal;
+            }
+
+            if (sections.length !== 0 && sections.length !== this.existingChapters?.length 
+                    && Date.now() - this.lastChapterUpdate > 3000) {
+                this.lastChapterUpdate = Date.now();
+                this.updateExistingChapters();
             }
         }
     }
