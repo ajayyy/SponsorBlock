@@ -84,8 +84,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     };
     type PageElements = { [key: string]: HTMLElement } & InputPageElements
 
-    /** If true, the content script is in the process of creating a new segment. */
-    let creatingSegment = false;
+    let stopLoadingAnimation = null;
 
     //the start and end time pairs (2d)
     let sponsorTimes: SponsorTime[] = [];
@@ -393,7 +392,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         messageHandler.sendMessage(tabs[0].id, { message: 'getVideoID' }, function (result) {
             if (result !== undefined && result.videoID) {
                 currentVideoID = result.videoID;
-                creatingSegment = result.creatingSegment;
 
                 loadTabData(tabs, updating);
             } else if (result === undefined && chrome.runtime.lastError) {
@@ -429,6 +427,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     async function infoFound(request: IsInfoFoundMessageResponse) {
+        // End any loading animation
+        if (stopLoadingAnimation != null) {
+            stopLoadingAnimation();
+            stopLoadingAnimation = null;
+        }
+
         if (chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
@@ -490,10 +494,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     function startSponsorCallback(response: SponsorStartResponse) {
-        creatingSegment = response.creatingSegment;
-
         // Only update the segments after a segment was created
-        if (!creatingSegment) {
+        if (!response.creatingSegment) {
             sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] || [];
         }
 
@@ -728,9 +730,16 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "none";
     }
 
+    function isCreatingSegment(): boolean {
+        const segments = Config.config.unsubmittedSegments[currentVideoID];
+        if (!segments) return false;
+        const lastSegment = segments[segments.length - 1];
+        return lastSegment && lastSegment?.segment?.length !== 2;
+    }
+
     /** Updates any UI related to segment editing and submission according to the current state. */
     function updateSegmentEditingUI() {
-        PageElements.sponsorStart.innerText = chrome.i18n.getMessage(creatingSegment ? "sponsorEnd" : "sponsorStart");
+        PageElements.sponsorStart.innerText = chrome.i18n.getMessage(isCreatingSegment() ? "sponsorEnd" : "sponsorStart");
 
         PageElements.submitTimes.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
         PageElements.submissionHint.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
@@ -929,11 +938,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     }
 
-    async function refreshSegments() {
-        const stopAnimation = AnimationUtils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
+    function startLoadingAnimation() {
+        stopLoadingAnimation = AnimationUtils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
+    }
 
-        infoFound(await sendTabMessageAsync({ message: 'refreshSegments' }) as IsInfoFoundMessageResponse)
-        stopAnimation();
+    function refreshSegments() {
+        startLoadingAnimation();
+        sendTabMessage({ message: 'refreshSegments' });
     }
 
     function skipSegment(actionType: ActionType, UUID: SegmentUUID, element?: HTMLElement): void {
@@ -1057,6 +1068,24 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 break;
             case "infoUpdated":
                 infoFound(msg);
+                break;
+            case "videoChanged":
+                currentVideoID = msg.videoID
+                sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
+                updateSegmentEditingUI();
+
+                if (msg.whitelisted) {
+                    PageElements.whitelistChannel.style.display = "none";
+                    PageElements.unwhitelistChannel.style.display = "unset";
+                    PageElements.whitelistToggle.checked = true;
+                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
+                }
+
+                // Clear segments list & start loading animation
+                // We'll get a ping once they're loaded
+                startLoadingAnimation();
+                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("Loading");
+                displayDownloadedSponsorTimes([], 0);
                 break;
         }
     }

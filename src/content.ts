@@ -215,7 +215,6 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "getVideoID":
             sendResponse({
                 videoID: sponsorVideoID,
-                creatingSegment: isSegmentCreationInProgress(),
             });
 
             break;
@@ -243,15 +242,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             // update video on refresh if videoID invalid
             if (!sponsorVideoID) videoIDChange(getYouTubeVideoID(document));
             // fetch segments
-            sponsorsLookup(false).then(() => sendResponse({
-                found: sponsorDataFound,
-                status: lastResponseStatus,
-                sponsorTimes: sponsorTimes,
-                time: video.currentTime,
-                onMobileYouTube
-            }));
+            sponsorsLookup(false);
 
-            return true;
+            break;
         case "unskip":
             unskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID), null, true);
             break;
@@ -437,6 +430,13 @@ async function videoIDChange(id: string): Promise<void> {
             utils.wait(getControls).then(createPreviewBar);
         }
     }
+
+    // Notify the popup about the video change
+    chrome.runtime.sendMessage({
+        message: "videoChanged",
+        videoID: sponsorVideoID,
+        whitelisted: channelWhitelisted
+    });
 
     sponsorsLookup();
 

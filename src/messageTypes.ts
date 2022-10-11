@@ -124,4 +124,10 @@ export type InfoUpdatedMessage = IsInfoFoundMessageResponse & {
     message: "infoUpdated";
 }
 
-export type PopupMessage = TimeUpdateMessage | InfoUpdatedMessage;
+export interface VideoChangedPopupMessage {
+    message: "videoChanged";
+    videoID: string;
+    whitelisted: boolean;
+}
+
+export type PopupMessage = TimeUpdateMessage | InfoUpdatedMessage | VideoChangedPopupMessage;

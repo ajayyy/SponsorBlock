@@ -107,6 +107,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         }
         case "time":
         case "infoUpdated":
+        case "videoChanged":
             if (sender.tab) {
                 popupPort[sender.tab.id]?.postMessage(request);
             }
