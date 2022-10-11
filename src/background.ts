@@ -2,13 +2,13 @@ import * as CompileConfig from "../config.json";
 
 import Config from "./config";
 import { Registration } from "./types";
-import Utils from "./utils";
-import { GenericUtils } from "./utils/genericUtils";
 
 // Make the config public for debugging purposes
 
 window.SB = Config;
 
+import Utils from "./utils";
+import { GenericUtils } from "./utils/genericUtils";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
