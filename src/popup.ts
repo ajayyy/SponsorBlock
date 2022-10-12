@@ -1,8 +1,24 @@
 import Config from "./config";
 
 import Utils from "./utils";
-import { SponsorTime, SponsorHideType, ActionType, SegmentUUID, SponsorSourceType, StorageChangesObject } from "./types";
-import { Message, MessageResponse, IsInfoFoundMessageResponse, ImportSegmentsResponse, PopupMessage } from "./messageTypes";
+import {
+    ActionType,
+    SegmentUUID,
+    SponsorHideType,
+    SponsorSourceType,
+    SponsorTime,
+    StorageChangesObject,
+} from "./types";
+import {
+    GetChannelIDResponse,
+    IsChannelWhitelistedResponse,
+    IsInfoFoundMessageResponse,
+    Message,
+    MessageResponse,
+    PopupMessage,
+    SponsorStartResponse,
+    VoteResponse,
+} from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
@@ -11,6 +27,7 @@ import { localizeHtmlPage } from "./utils/pageUtils";
 import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
 import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
+
 const utils = new Utils();
 
 interface MessageListener {
@@ -67,8 +84,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     };
     type PageElements = { [key: string]: HTMLElement } & InputPageElements
 
-    /** If true, the content script is in the process of creating a new segment. */
-    let creatingSegment = false;
+    let stopLoadingAnimation = null;
 
     //the start and end time pairs (2d)
     let sponsorTimes: SponsorTime[] = [];
@@ -188,7 +204,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     PageElements.exportSegmentsButton.addEventListener("click", exportSegments);
-    PageElements.importSegmentsButton.addEventListener("click", 
+    PageElements.importSegmentsButton.addEventListener("click",
         () => PageElements.importSegmentsMenu.classList.toggle("hidden"));
     PageElements.importSegmentsSubmit.addEventListener("click", importSegments);
 
@@ -260,7 +276,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     if (dontShowNotice != undefined && dontShowNotice) {
         PageElements.showNoticeAgain.style.display = "unset";
     }
-    
+
     const values = ["userName", "viewCount", "minutesSaved", "vip", "permissions"];
     if (!Config.config.payments.freeAccess && !noRefreshFetchingChaptersAllowed()) values.push("freeChaptersAccess");
 
@@ -376,7 +392,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         messageHandler.sendMessage(tabs[0].id, { message: 'getVideoID' }, function (result) {
             if (result !== undefined && result.videoID) {
                 currentVideoID = result.videoID;
-                creatingSegment = result.creatingSegment;
 
                 loadTabData(tabs, updating);
             } else if (result === undefined && chrome.runtime.lastError) {
@@ -411,7 +426,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }, (tabs) => onTabs(tabs, updating));
     }
 
-    function infoFound(request: IsInfoFoundMessageResponse) {
+    async function infoFound(request: IsInfoFoundMessageResponse) {
+        // End any loading animation
+        if (stopLoadingAnimation != null) {
+            stopLoadingAnimation();
+            stopLoadingAnimation = null;
+        }
+
         if (chrome.runtime.lastError) {
             //This page doesn't have the injected content script, or at least not yet
             displayNoVideo();
@@ -427,13 +448,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             PageElements.loadingIndicator.style.display = "none";
 
             downloadedTimes = request.sponsorTimes ?? [];
+            displayDownloadedSponsorTimes(downloadedTimes, request.time);
             if (request.found) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsorFound");
-
                 PageElements.issueReporterImportExport.classList.remove("hidden");
-                if (request.sponsorTimes) {
-                    displayDownloadedSponsorTimes(request.sponsorTimes, request.time);
-                }
             } else if (request.status == 404 || request.status == 200) {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
                 PageElements.issueReporterImportExport.classList.remove("hidden");
@@ -444,62 +462,40 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
 
         //see if whitelist button should be swapped
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { message: 'isChannelWhitelisted' },
-                function (response) {
-                    if (response.value) {
-                        PageElements.whitelistChannel.style.display = "none";
-                        PageElements.unwhitelistChannel.style.display = "unset";
-                        PageElements.whitelistToggle.checked = true;
-                        document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
-                    }
-                });
+        const response = await sendTabMessageAsync({ message: 'isChannelWhitelisted' }) as IsChannelWhitelistedResponse;
+        if (response.value) {
+            PageElements.whitelistChannel.style.display = "none";
+            PageElements.unwhitelistChannel.style.display = "unset";
+            PageElements.whitelistToggle.checked = true;
+            document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
         }
-        );
     }
 
-    function sendSponsorStartMessage() {
+    async function sendSponsorStartMessage() {
         //the content script will get the message if a YouTube page is open
-        messageHandler.query({
-            active: true,
-            currentWindow: true,
-        }, (tabs) => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { from: 'popup', message: 'sponsorStart' },
-                async (response) => {
-                    startSponsorCallback(response);
+        const response = await sendTabMessageAsync({ from: 'popup', message: 'sponsorStart' }) as SponsorStartResponse;
+        startSponsorCallback(response);
 
-                    // Perform a second update after the config changes take effect as a workaround for a race condition
-                    const removeListener = (listener: typeof lateUpdate) => {
-                        const index = Config.configSyncListeners.indexOf(listener);
-                        if (index !== -1) Config.configSyncListeners.splice(index, 1);
-                    };
+        // Perform a second update after the config changes take effect as a workaround for a race condition
+        const removeListener = (listener: typeof lateUpdate) => {
+            const index = Config.configSyncListeners.indexOf(listener);
+            if (index !== -1) Config.configSyncListeners.splice(index, 1);
+        };
 
-                    const lateUpdate = () => {
-                        startSponsorCallback(response);
-                        removeListener(lateUpdate);
-                    };
+        const lateUpdate = () => {
+            startSponsorCallback(response);
+            removeListener(lateUpdate);
+        };
 
-                    Config.configSyncListeners.push(lateUpdate);
+        Config.configSyncListeners.push(lateUpdate);
 
-                    // Remove the listener after 200ms in case the changes were propagated by the time we got the response
-                    setTimeout(() => removeListener(lateUpdate), 200);
-                },
-            );
-        });
+        // Remove the listener after 200ms in case the changes were propagated by the time we got the response
+        setTimeout(() => removeListener(lateUpdate), 200);
     }
 
-    function startSponsorCallback(response: { creatingSegment: boolean }) {
-        creatingSegment = response.creatingSegment;
-
+    function startSponsorCallback(response: SponsorStartResponse) {
         // Only update the segments after a segment was created
-        if (!creatingSegment) {
+        if (!response.creatingSegment) {
             sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] || [];
         }
 
@@ -514,7 +510,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             PageElements.issueReporterTabs.classList.add("hidden");
             currentSegmentTab = SegmentTab.Segments;
         } else {
-            if (currentSegmentTab === SegmentTab.Segments 
+            if (currentSegmentTab === SegmentTab.Segments
                     && sponsorTimes.every((segment) => segment.actionType === ActionType.Chapter)) {
                 PageElements.issueReporterTabs.classList.add("hidden");
                 currentSegmentTab = SegmentTab.Chapters;
@@ -529,7 +525,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 if (currentSegmentTab === SegmentTab.Segments) {
                     return segment.actionType !== ActionType.Chapter;
                 } else if (currentSegmentTab === SegmentTab.Chapters) {
-                    return segment.actionType === ActionType.Chapter 
+                    return segment.actionType === ActionType.Chapter
                         && segment.source !== SponsorSourceType.YouTube;
                 } else {
                     return true;
@@ -546,7 +542,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         if (downloadedTimes.length > 0) {
             PageElements.exportSegmentsButton.classList.remove("hidden");
-        } else { 
+        } else {
             PageElements.exportSegmentsButton.classList.add("hidden");
         }
 
@@ -590,7 +586,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             if (downloadedTimes[i].actionType === ActionType.Full) {
                 segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
             } else {
-                segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(downloadedTimes[i].segment[0], true) + 
+                segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(downloadedTimes[i].segment[0], true) +
                         (actionType !== ActionType.Poi
                             ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(downloadedTimes[i].segment[1], true)
                             : "");
@@ -676,26 +672,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     downloadedTimes[i].hidden = SponsorHideType.Hidden;
                 }
 
-                messageHandler.query({
-                    active: true,
-                    currentWindow: true
-                }, tabs => {
-                    messageHandler.sendMessage(
-                        tabs[0].id,
-                        {
-                            message: "hideSegment",
-                            type: downloadedTimes[i].hidden,
-                            UUID: UUID
-                        }
-                    );
-                });
+                sendTabMessage({
+                    message: "hideSegment",
+                    type: downloadedTimes[i].hidden,
+                    UUID: UUID
+                })
             });
 
             const skipButton = document.createElement("img");
             skipButton.id = "sponsorTimesSkipButtonContainer" + UUID;
             skipButton.className = "voteButton";
             skipButton.src = chrome.runtime.getURL("icons/skip.svg");
-            skipButton.title = actionType === ActionType.Chapter ? chrome.i18n.getMessage("playChapter") 
+            skipButton.title = actionType === ActionType.Chapter ? chrome.i18n.getMessage("playChapter")
                 : chrome.i18n.getMessage("skipSegment");
             skipButton.addEventListener("click", () => skipSegment(actionType, UUID, skipButton));
             votingButtons.addEventListener("dblclick", () => skipSegment(actionType, UUID));
@@ -733,15 +721,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     function submitTimes() {
         if (sponsorTimes.length > 0) {
-            messageHandler.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
-                messageHandler.sendMessage(
-                    tabs[0].id,
-                    { message: 'submitTimes' },
-                );
-            });
+            sendTabMessage({ message: 'submitTimes' })
         }
     }
 
@@ -751,9 +731,16 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "none";
     }
 
+    function isCreatingSegment(): boolean {
+        const segments = Config.config.unsubmittedSegments[currentVideoID];
+        if (!segments) return false;
+        const lastSegment = segments[segments.length - 1];
+        return lastSegment && lastSegment?.segment?.length !== 2;
+    }
+
     /** Updates any UI related to segment editing and submission according to the current state. */
     function updateSegmentEditingUI() {
-        PageElements.sponsorStart.innerText = chrome.i18n.getMessage(creatingSegment ? "sponsorEnd" : "sponsorStart");
+        PageElements.sponsorStart.innerText = chrome.i18n.getMessage(isCreatingSegment() ? "sponsorEnd" : "sponsorStart");
 
         PageElements.submitTimes.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
         PageElements.submissionHint.style.display = sponsorTimes && sponsorTimes.length > 0 ? "unset" : "none";
@@ -772,20 +759,22 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         chrome.runtime.sendMessage({ "message": "openHelp" });
     }
 
-    function sendTabMessage(data: Message): Promise<unknown> {
-        return new Promise((resolve) => {
-            messageHandler.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
-                messageHandler.sendMessage(
-                    tabs[0].id,
-                    data,
-                    (response) => resolve(response)
-                );
-            }
+    function sendTabMessage(data: Message, callback?) {
+        messageHandler.query({
+            active: true,
+            currentWindow: true
+        }, tabs => {
+            messageHandler.sendMessage(
+                tabs[0].id,
+                data,
+                callback
             );
-        });
+        }
+        );
+    }
+
+    function sendTabMessageAsync(data: Message): Promise<unknown> {
+        return new Promise((resolve) => sendTabMessage(data, (response) => resolve(response)))
     }
 
     //make the options username setting option visible
@@ -862,184 +851,120 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         thanksForVotingText.removeAttribute("innerText");
     }
 
-    function vote(type, UUID) {
+    async function vote(type, UUID) {
         //add loading info
         addVoteMessage(chrome.i18n.getMessage("Loading"), UUID);
+        const response = await sendTabMessageAsync({
+            message: "submitVote",
+            type: type,
+            UUID: UUID
+        }) as VoteResponse;
 
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                {
-                    message: "submitVote",
-                    type: type,
-                    UUID: UUID
-                }, function (response) {
-                    if (response != undefined) {
-                        //see if it was a success or failure
-                        if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
-                            //success (treat rate limits as a success)
-                            addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
-                        } else if (response.successType == -1) {
-                            addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
-                        }
-                        setTimeout(() => removeVoteMessage(UUID), 1500);
-                    }
-                }
-            );
+        if (response != undefined) {
+            //see if it was a success or failure
+            if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
+                //success (treat rate limits as a success)
+                addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
+            } else if (response.successType == -1) {
+                addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
+            }
+            setTimeout(() => removeVoteMessage(UUID), 1500);
+        }
+    }
+
+    async function whitelistChannel() {
+        //get the channel url
+        const response = await sendTabMessageAsync({ message: 'getChannelID' }) as GetChannelIDResponse;
+        if (!response.channelID) {
+            alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
+            return;
+        }
+
+        //get whitelisted channels
+        let whitelistedChannels = Config.config.whitelistedChannels;
+        if (whitelistedChannels == undefined) {
+            whitelistedChannels = [];
+        }
+
+        //add on this channel
+        whitelistedChannels.push(response.channelID);
+
+        //change button
+        PageElements.whitelistChannel.style.display = "none";
+        PageElements.unwhitelistChannel.style.display = "unset";
+        document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
+
+        //show 'consider force channel check' alert
+        if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
+
+        //save this
+        Config.config.whitelistedChannels = whitelistedChannels;
+
+        //send a message to the client
+        sendTabMessage({
+            message: 'whitelistChange',
+            value: true
         });
     }
 
-    function whitelistChannel() {
+    async function unwhitelistChannel() {
         //get the channel url
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { message: 'getChannelID' },
-                function (response) {
-                    if (!response.channelID) {
-                        alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
-                        return;
-                    }
+        const response = await sendTabMessageAsync({ message: 'getChannelID' }) as GetChannelIDResponse;
 
-                    //get whitelisted channels
-                    let whitelistedChannels = Config.config.whitelistedChannels;
-                    if (whitelistedChannels == undefined) {
-                        whitelistedChannels = [];
-                    }
+        //get whitelisted channels
+        let whitelistedChannels = Config.config.whitelistedChannels;
+        if (whitelistedChannels == undefined) {
+            whitelistedChannels = [];
+        }
 
-                    //add on this channel
-                    whitelistedChannels.push(response.channelID);
+        //remove this channel
+        const index = whitelistedChannels.indexOf(response.channelID);
+        whitelistedChannels.splice(index, 1);
 
-                    //change button
-                    PageElements.whitelistChannel.style.display = "none";
-                    PageElements.unwhitelistChannel.style.display = "unset";
-                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
+        //change button
+        PageElements.whitelistChannel.style.display = "unset";
+        PageElements.unwhitelistChannel.style.display = "none";
+        document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
 
-                    //show 'consider force channel check' alert
-                    if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
+        //hide 'consider force channel check' alert
+        PageElements.whitelistForceCheck.classList.add("hidden");
 
-                    //save this
-                    Config.config.whitelistedChannels = whitelistedChannels;
+        //save this
+        Config.config.whitelistedChannels = whitelistedChannels;
 
-                    //send a message to the client
-                    messageHandler.query({
-                        active: true,
-                        currentWindow: true
-                    }, tabs => {
-                        messageHandler.sendMessage(
-                            tabs[0].id, {
-                            message: 'whitelistChange',
-                            value: true
-                        });
-                    }
-                    );
-                }
-            );
+        //send a message to the client
+        sendTabMessage({
+            message: 'whitelistChange',
+            value: false
         });
     }
 
-    function unwhitelistChannel() {
-        //get the channel url
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { message: 'getChannelID' },
-                function (response) {
-                    //get whitelisted channels
-                    let whitelistedChannels = Config.config.whitelistedChannels;
-                    if (whitelistedChannels == undefined) {
-                        whitelistedChannels = [];
-                    }
-
-                    //remove this channel
-                    const index = whitelistedChannels.indexOf(response.channelID);
-                    whitelistedChannels.splice(index, 1);
-
-                    //change button
-                    PageElements.whitelistChannel.style.display = "unset";
-                    PageElements.unwhitelistChannel.style.display = "none";
-                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
-
-                    //hide 'consider force channel check' alert
-                    PageElements.whitelistForceCheck.classList.add("hidden");
-
-                    //save this
-                    Config.config.whitelistedChannels = whitelistedChannels;
-
-                    //send a message to the client
-                    messageHandler.query({
-                        active: true,
-                        currentWindow: true
-                    }, tabs => {
-                        messageHandler.sendMessage(
-                            tabs[0].id, {
-                            message: 'whitelistChange',
-                            value: false
-                        });
-                    }
-                    );
-                }
-            );
-        });
+    function startLoadingAnimation() {
+        stopLoadingAnimation = AnimationUtils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
     }
 
     function refreshSegments() {
-        const stopAnimation = AnimationUtils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
-
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                { message: 'refreshSegments' },
-                (response) => {
-                    infoFound(response);
-                    stopAnimation();
-                }
-            )
-        }
-        );
+        startLoadingAnimation();
+        sendTabMessage({ message: 'refreshSegments' });
     }
 
     function skipSegment(actionType: ActionType, UUID: SegmentUUID, element?: HTMLElement): void {
         if (actionType === ActionType.Chapter) {
-            sendMessage({
+            sendTabMessage({
                 message: "unskip",
                 UUID: UUID
             });
         } else {
-            sendMessage({
+            sendTabMessage({
                 message: "reskip",
                 UUID: UUID
             });
         }
-        
+
         if (element) {
             const stopAnimation = AnimationUtils.applyLoadingAnimation(element, 0.3);
             stopAnimation();
         }
-    }
-
-    function sendMessage(request: Message): void {
-        messageHandler.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            messageHandler.sendMessage(
-                tabs[0].id,
-                request
-            );
-        });
     }
 
     /**
@@ -1074,10 +999,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     async function importSegments() {
         const text = (PageElements.importSegmentsText as HTMLInputElement).value;
 
-        await sendTabMessage({
+        sendTabMessage({
             message: "importSegments",
             data: text
-        }) as ImportSegmentsResponse;
+        });
 
         PageElements.importSegmentsMenu.classList.add("hidden");
     }
@@ -1141,6 +1066,27 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         switch (msg.message) {
             case "time":
                 displayDownloadedSponsorTimes(downloadedTimes, msg.time);
+                break;
+            case "infoUpdated":
+                infoFound(msg);
+                break;
+            case "videoChanged":
+                currentVideoID = msg.videoID
+                sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
+                updateSegmentEditingUI();
+
+                if (msg.whitelisted) {
+                    PageElements.whitelistChannel.style.display = "none";
+                    PageElements.unwhitelistChannel.style.display = "unset";
+                    PageElements.whitelistToggle.checked = true;
+                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
+                }
+
+                // Clear segments list & start loading animation
+                // We'll get a ping once they're loaded
+                startLoadingAnimation();
+                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("Loading");
+                displayDownloadedSponsorTimes([], 0);
                 break;
         }
     }
