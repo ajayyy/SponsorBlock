@@ -712,10 +712,9 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 
 function getVirtualTime(): number {
     const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime ?
-        (performance.now() - lastKnownVideoTime.preciseTime) / 1000 + lastKnownVideoTime.videoTime : null);
+        (performance.now() - lastKnownVideoTime.preciseTime) * video.playbackRate / 1000 + lastKnownVideoTime.videoTime : null);
 
-    if ((lastTimeFromWaitingEvent || !utils.isFirefox())
-        && !isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6 && video.currentTime !== 0) {
+    if (!isSafari() && virtualTime && Math.abs(virtualTime - video.currentTime) < 0.6 && video.currentTime !== 0) {
         return virtualTime;
     } else {
         return video.currentTime;
@@ -877,9 +876,19 @@ function setupVideoListeners() {
                 }
             }
         });
-        video.addEventListener('ratechange', () => startSponsorSchedule());
+        video.addEventListener('ratechange', () => {
+            updateVirtualTime();
+            lastTimeFromWaitingEvent = null;
+
+            startSponsorSchedule();
+        });
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
-        video.addEventListener('videoSpeed_ratechange', () => startSponsorSchedule());
+        video.addEventListener('videoSpeed_ratechange', () => {
+            updateVirtualTime();
+            lastTimeFromWaitingEvent = null;
+
+            startSponsorSchedule();
+        });
         const paused = () => {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
