@@ -363,6 +363,12 @@
   background-color: #00a205;
   transition: opacity 0.2s ease-out;
 }
+.switchBg.red {
+  opacity: 0;
+  position: absolute;
+  background-color: #fc0303;
+  transition: opacity 0.2s ease-out;
+}
 .switchDot {
   width: 15px;
   margin: 4px;
@@ -378,6 +384,9 @@
 }
 #toggleSwitch:checked ~ .switchBg.green {
   opacity: 1;
+}
+#toggleSwitch:checked ~ .switchBg.red {
+  opacity: 1; 
 }
 #toggleSwitch:checked ~ .switchBg.white {
   transition: opacity 0.2s step-end;
