@@ -35,6 +35,9 @@
         "message": "Pokazuj segmenty jako rozdziały",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Pokaż bieżący segment poza czasem wideo"
+    },
     "upvoteButtonInfo": {
         "message": "Zagłosuj na ten segment"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Zamknij okno"
+    },
+    "closeIcon": {
+        "message": "Wyłącz ikonę"
     },
     "SubmitTimes": {
         "message": "Prześlij segmenty"
@@ -245,6 +251,9 @@
     },
     "whatRefetchWhenNotFound": {
         "message": "Jeśli film jest nowy i nie znaleziono żadnych segmentów, dane będą pobierane na nowo co kilka minut w czasie oglądania."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Pokaż kategorie w menu zgłoszeń, nawet bez uprawnień do zgłaszania"
     },
     "showNotice": {
         "message": "Pokaż informacje ponownie"
@@ -408,8 +417,17 @@
     "statusReminder": {
         "message": "Sprawdź status serwera na status.sponsor.ajay.app"
     },
+    "changeUserID": {
+        "message": "Importuj/Eksportuj swój prywatny UserID"
+    },
     "whatChangeUserID": {
         "message": "To powinno pozostać prywatne. Jest to niczym hasło i nie powinno zostać nikomu udostępnione. Przy jego użyciu ktoś może się pod ciebie podszywać. Jeśli szukasz publicznego ID użytkownika, kliknij ikonę schowka w wyskakującym oknie."
+    },
+    "setUserID": {
+        "message": "Ustaw prywatny UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Uwaga: Zmiana ID użytkownika jest trwała. Czy na pewno chcesz to zrobić? Na wszelki wypadek skopiuj swój poprzedni ID."
     },
     "createdBy": {
         "message": "Stworzony przez"
@@ -453,6 +471,9 @@
     },
     "minDurationDescription": {
         "message": "Segmenty krótsze niż ustawiona wartość nie będą pomijane ani pokazywane w odtwarzaczu."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Użyj ręcznego pomijania, gdy istnieje etykieta na całym filmie"
     },
     "skipNoticeDuration": {
         "message": "Czas trwania powiadomienia pominięcia (sekundy):"
@@ -501,6 +522,9 @@
     },
     "exportOptionsUpload": {
         "message": "Wczytaj z pliku"
+    },
+    "whatExportOptions": {
+        "message": "Jest to cała twoja konfiguracja w formacie JSON. Zawarty jest w niej twój prywatny UserID, więc uważaj, komu ją udostępniasz."
     },
     "setOptions": {
         "message": "Zapisz ustawienia"
@@ -1019,6 +1043,12 @@
     "hideSegment": {
         "message": "Ukryj segment"
     },
+    "skipSegment": {
+        "message": "Pomiń segment"
+    },
+    "playChapter": {
+        "message": "Odtwórz rozdział"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Użyj scroll'a myszy po najechaniu nad pole edycji, aby szybko dostosować czas. Kombinacje z ctrl'em i shift'em mogą być użyte, aby doszlifować zmiany."
     },
@@ -1085,6 +1115,9 @@
     "exportSegments": {
         "message": "Eksportuj segmenty"
     },
+    "importSegments": {
+        "message": "Importuj segmenty"
+    },
     "Import": {
         "message": "Importuj",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
@@ -1101,8 +1134,22 @@
     "chooseACountry": {
         "message": "Wybierz kraj"
     },
+    "noDiscount": {
+        "message": "Nie kwalifikujesz się do przeceny"
+    },
+    "discountLink": {
+        "message": "Link rabatowy"
+    },
     "selectYourCountry": {
         "message": "Wybierz swój kraj"
+    },
+    "alreadyDonated": {
+        "message": "Jeśli do tej pory przekazałeś jakąkolwiek darowiznę, możesz odebrać darmowy dostęp poprzez wysyłanie maila do:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Jeśli nie możesz sobie pozwolić na zakup licencji, kliknij {tutaj} aby sprawdzić, czy kwalifikujesz się do zniżki",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Zaloguj się za pomocą Patreon"
@@ -1119,9 +1166,19 @@
     "enterLicenseKey": {
         "message": "Wprowadź klucz licencyjny"
     },
+    "chaptersPage1": {
+        "message": "Funkcja społecznościowych rozdziałów SponsorBlock jest dostępna tylko dla osób, które wykupią licencję, albo którym przyznano dostęp za darmo ze względu na swoje wcześniejszy wkład"
+    },
+    "chaptersPage2": {
+        "message": "Uwaga: Przesyłanie rozdziałów jest nadal oparte na skalkulowanej reputacji. Kupowanie licencji pozwala tylko przeglądać rozdziały przesłane przez innych",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
     "chapterNewFeature": {
         "message": "Nowa funkcja: niestandardowe rozdziały ze źródeł społecznościowych. Są to sekcje niestandardowo nazwane w filmach, które mogą być ustawione w sposób bardziej precyzyjny. Kup licencję, aby wyświetlić rozdziały przedstawione na tym filmie, takie jak: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Nowa funkcja: niestandardowe rozdziały ze źródeł społecznościowych. Są to sekcje niestandardowo nazwane w filmach, które mogą być ustawione w sposób bardziej precyzyjny."
     },
     "unsubmittedSegmentCounts": {
         "message": "Aktualnie masz {0} na {1}",

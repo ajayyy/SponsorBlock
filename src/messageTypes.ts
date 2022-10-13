@@ -9,7 +9,7 @@ interface BaseMessage {
 }
 
 interface DefaultMessage {
-    message: 
+    message:
         "update"
         | "sponsorStart"
         | "getVideoID"
@@ -83,19 +83,19 @@ interface GetVideoIdResponse {
     videoID: string;
 }
 
-interface GetChannelIDResponse {
+export interface GetChannelIDResponse {
     channelID: string;
 }
 
-interface SponsorStartResponse {
+export interface SponsorStartResponse {
     creatingSegment: boolean;
 }
 
-interface IsChannelWhitelistedResponse {
+export interface IsChannelWhitelistedResponse {
     value: boolean;
 }
 
-export type MessageResponse = 
+export type MessageResponse =
     IsInfoFoundMessageResponse
     | GetVideoIdResponse
     | GetChannelIDResponse
@@ -111,7 +111,7 @@ export interface VoteResponse {
     responseText: string;
 }
 
-export interface ImportSegmentsResponse {
+interface ImportSegmentsResponse {
     importedSegments: SponsorTime[];
 }
 
@@ -120,4 +120,14 @@ export interface TimeUpdateMessage {
     time: number;
 }
 
-export type PopupMessage = TimeUpdateMessage;
+export type InfoUpdatedMessage = IsInfoFoundMessageResponse & {
+    message: "infoUpdated";
+}
+
+export interface VideoChangedPopupMessage {
+    message: "videoChanged";
+    videoID: string;
+    whitelisted: boolean;
+}
+
+export type PopupMessage = TimeUpdateMessage | InfoUpdatedMessage | VideoChangedPopupMessage;

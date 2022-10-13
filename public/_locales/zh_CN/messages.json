@@ -25,6 +25,19 @@
     "Segments": {
         "message": "片段"
     },
+    "SegmentsCap": {
+        "message": "片段"
+    },
+    "Chapters": {
+        "message": "章节"
+    },
+    "renderAsChapters": {
+        "message": "将片段显示为章节",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "在视频时间旁显示当前片段"
+    },
     "upvoteButtonInfo": {
         "message": "为这个提交点赞"
     },
@@ -51,6 +64,9 @@
     },
     "reskip": {
         "message": "继续跳过"
+    },
+    "unmute": {
+        "message": "取消静音"
     },
     "paused": {
         "message": "已暂停"
@@ -85,6 +101,9 @@
     "noVideoID": {
         "message": "未找到 YouTube 视频。\n如果识别错误，请刷新此页面。"
     },
+    "refreshSegments": {
+        "message": "刷新片段"
+    },
     "success": {
         "message": "成功 ！"
     },
@@ -105,6 +124,9 @@
     },
     "closePopup": {
         "message": "关闭弹窗"
+    },
+    "closeIcon": {
+        "message": "关闭图标"
     },
     "SubmitTimes": {
         "message": "提交片段"
@@ -155,6 +177,9 @@
     "setUsername": {
         "message": "设定用户名"
     },
+    "copySegmentID": {
+        "message": "复制片段 ID"
+    },
     "discordAdvert": {
         "message": "快加入官方 Discord 服务器来提供建议与反馈！"
     },
@@ -178,6 +203,9 @@
     },
     "hideInfoButton": {
         "message": "在 Youtube 播放器上隐藏信息按钮"
+    },
+    "autoHideInfoButton": {
+        "message": "自动隐藏信息按钮"
     },
     "hideDeleteButton": {
         "message": "在 Youtube 播放器上隐藏删除按钮"
@@ -251,6 +279,13 @@
     "skip": {
         "message": "跳过"
     },
+    "mute": {
+        "message": "静音"
+    },
+    "full": {
+        "message": "整个视频",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
     "skip_category": {
         "message": "跳过{0}？"
     },
@@ -303,6 +338,9 @@
     },
     "supportOtherSites": {
         "message": "支持第三方 YouTube 网站"
+    },
+    "supportedSites": {
+        "message": "支持的站点： "
     },
     "optionsInfo": {
         "message": "启用 Invidious 支持，禁用自动跳过，隐藏按钮等等。"
@@ -358,6 +396,15 @@
     "exportOptions": {
         "message": "导入/导出所有选项"
     },
+    "exportOptionsCopy": {
+        "message": "编辑/复制"
+    },
+    "exportOptionsDownload": {
+        "message": "保存到文件"
+    },
+    "exportOptionsUpload": {
+        "message": "从文件加载"
+    },
     "setOptions": {
         "message": "设定选项"
     },
@@ -382,6 +429,9 @@
     "preview": {
         "message": "预览"
     },
+    "unsubmitted": {
+        "message": "未提交"
+    },
     "inspect": {
         "message": "检查"
     },
@@ -400,9 +450,16 @@
     "copyDebugInformationComplete": {
         "message": "调试信息已复制到剪切板中。 您可以随意移除任何您不想分享的信息。请将其另存为 .txt 文件或粘贴到错误报告中。"
     },
+    "keyAlreadyUsed": {
+        "message": "此快捷键已绑定到另一个动作。请选择其他快捷键。"
+    },
     "to": {
         "message": "到",
         "description": "Used between segments. Example: 1:20 to 1:30"
+    },
+    "CopiedExclamation": {
+        "message": "复制成功！",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
     "category_sponsor": {
         "message": "赞助商广告"
@@ -410,11 +467,20 @@
     "category_sponsor_description": {
         "message": "付费推广、付费推荐和直接广告。不应用于自我推广或免费提及、推荐他们喜欢的事物/创作者/网站/产品。"
     },
+    "category_sponsor_guideline1": {
+        "message": "付费推广"
+    },
+    "category_sponsor_guideline2": {
+        "message": "捐赠或自制周边不属于此项"
+    },
     "category_selfpromo": {
         "message": "未收钱的/自我推销"
     },
     "category_selfpromo_description": {
         "message": "类似于 “赞助商广告” ，但为无报酬或自我推广。包括有关商品、捐赠的部分或合作者的信息。"
+    },
+    "category_selfpromo_guideline1": {
+        "message": "捐赠、会员和自制周边"
     },
     "category_interaction": {
         "message": "互动提醒（订阅）"

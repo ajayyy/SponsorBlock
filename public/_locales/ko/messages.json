@@ -223,13 +223,13 @@
         "message": "YouTube 탐색 바에서 삭제 버튼 표시"
     },
     "enableViewTracking": {
-        "message": "건너뛴 횟수 추적 활성화"
+        "message": "건너뛴 횟수 추적 사용"
     },
     "whatViewTracking": {
         "message": "이 기능으로 건너뛴 구간을 추적해서 사용자가 제출한 내용이 다른 분께 얼마나 도움이 되는지 알려주고 잘못된 구간이 데이터베이스에 들어가지 않도록 추천과 함께 분석에 사용해요. 이 확장 프로그램이 구간을 건너뛸 때마다 서버에 메시지를 보낼 거예요. 조회수가 정확하기 위해서는 이 설정을 변경하지 않기를 바라요. :)"
     },
     "enableViewTrackingInPrivate": {
-        "message": "시크릿/사생활 보호 탭에서 건너뛴 횟수 추적 활성화"
+        "message": "시크릿/사생활 보호 탭에서 건너뛴 횟수 추적 사용"
     },
     "enableTrackDownvotes": {
         "message": "비추천한 구간 저장"
@@ -238,7 +238,7 @@
         "message": "비추천한 구간을 새로고침 이후에도 계속 숨겨요"
     },
     "trackDownvotesWarning": {
-        "message": "경고: 비활성화하면 이전에 저장된 비추천 구간이 삭제돼요"
+        "message": "경고: 사용하지 않으면 이전에 저장된 비추천 구간이 삭제돼요"
     },
     "enableQueryByHashPrefix": {
         "message": "해시 접두사로 요청 전송"
@@ -377,16 +377,16 @@
         "description": "Used for skipping to things (Skipped to Highlight)"
     },
     "disableAutoSkip": {
-        "message": "자동 건너뛰기 비활성화"
+        "message": "자동 건너뛰기 사용 안 함"
     },
     "enableAutoSkip": {
-        "message": "자동 건너뛰기 활성화"
+        "message": "자동 건너뛰기 사용"
     },
     "audioNotification": {
         "message": "건너뛸 때 소리 재생"
     },
     "audioNotificationDescription": {
-        "message": "구간을 건너뛸 때마다 소리를 재생해요. 자동 건너뛰기가 비활성화된 경우, 아무 소리도 재생되지 않아요."
+        "message": "구간을 건너뛸 때마다 소리를 재생해요. 자동 건너뛰기를 사용하지 않는 경우, 아무 소리도 재생되지 않아요."
     },
     "showTimeWithSkips": {
         "message": "건너뛰기로 제외된 시간 표시"
@@ -446,7 +446,7 @@
         "message": "지원되는 사이트: "
     },
     "optionsInfo": {
-        "message": "Invidious 지원 활성화, 자동 건너뛰기 비활성화, 버튼 숨기기 등이 있어요."
+        "message": "Invidious 지원 활성화, 자동 건너뛰기 사용 안 함, 버튼 숨기기 등이 있어요."
     },
     "addInvidiousInstance": {
         "message": "제3자 클라이언트 인스턴스 추가"
@@ -458,7 +458,7 @@
         "message": "추가"
     },
     "addInvidiousInstanceError": {
-        "message": "잘못된 도메인이에요. 도메인 부분만 포함해야 해요. 예: invious.ajay.app"
+        "message": "잘못된 도메인이에요. 도메인 부분만 포함해야 해요. 예시: invious.ajay.app"
     },
     "resetInvidiousInstance": {
         "message": "Invidious 인스턴스 목록 초기화"
@@ -830,7 +830,7 @@
         "message": "카테고리 선택"
     },
     "enableThisCategoryFirst": {
-        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 활성화를 해주셔야 해요. 바로 설정 창으로 이동하실 거예요.",
+        "message": "\"{0}\" 카테고리의 구간을 제출하려면, 설정에서 사용을 해주셔야 해요. 바로 설정 창으로 이동하실 거예요.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
@@ -872,7 +872,7 @@
         "message": "권한 요청에 실패했어요. 거부를 누르셨나요?"
     },
     "adblockerIssueWhitelist": {
-        "message": "이 문제를 해결할 수 없는 경우 SponsorBlock이 이 동영상의 채널 정보를 찾을 수 없는 것일 수 있으니, '건너뛰기 전 채널 강제 확인' 설정을 비활성화해주세요."
+        "message": "이 문제를 해결할 수 없는 경우 SponsorBlock이 이 동영상의 채널 정보를 찾을 수 없는 것일 수 있으니, '건너뛰기 전 채널 강제 확인' 설정을 사용하지 않아야 해요"
     },
     "forceChannelCheck": {
         "message": "건너뛰기 전 채널 강제 확인"
@@ -897,7 +897,7 @@
         "message": "카테고리 변경"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "이 동영상은 음악 동영상으로 분류되어 있어요. 동영상에 스폰서 광고 구간이 있나요? \"음악이 아닌 구간\"으로 지정된 카테고리인 경우, 확장 프로그램 설정을 열어 이 카테고리를 활성화하세요. 그리고, 이 구간을 \"스폰서 광고 구간\" 대신 \"음악이 아닌 구간\"으로 지정하세요. 혼동된다면 가이드라인을 읽어주세요."
+        "message": "이 동영상은 음악 동영상으로 분류되어 있어요. 동영상에 스폰서 광고 구간이 있나요? \"음악이 아닌 구간\"으로 지정된 카테고리인 경우, 확장 프로그램 설정을 열어 이 카테고리를 사용하세요. 그리고, 이 구간을 \"스폰서 광고 구간\" 대신 \"음악이 아닌 구간\"으로 지정하세요. 혼동된다면 가이드라인을 읽어주세요."
     },
     "multipleSegments": {
         "message": "여러 구간"
@@ -972,7 +972,7 @@
         "message": "아래 설정을 확인해 보세요"
     },
     "helpPageFeatureDisclaimer": {
-        "message": "기본값으로 많은 기능이 비활성화되어 있어요. 인트로, 아웃트로 같은 부분을 건너뛰고 싶으시다면 아래 설정을 켜야 해요. 또한 UI 요소를 숨기거나 표시할 수 있답니다."
+        "message": "기본값으로 많은 기능이 사용되지 않아요. 인트로, 아웃트로 같은 부분을 건너뛰고 싶으시다면 아래 설정을 사용해야 해요. 또한 UI 요소를 숨기거나 표시할 수 있답니다."
     },
     "helpPageHowSkippingWorks": {
         "message": "건너뛰기가 작동하는 방법"
@@ -1002,7 +1002,7 @@
         "message": "이건 너무 느린 거 같아요"
     },
     "helpPageTooSlow1": {
-        "message": "원하는 경우 단축키를 이용할 수 있어요. 쌍반점(세미콜론) 키를 눌러 스폰서 광고 구간의 시점/종점을 설정할 수 있으며 작은따옴표 키를 눌러 구간을 제출할 수 있답니다. 언제든지 설정에서 변경할 수 있어요. QWERTY 자판을 사용하지 않는 경우, 단축키를 변경해야 할 수도 있어요."
+        "message": "원하는 경우 단축키를 사용할 수 있어요. 쌍반점(세미콜론) 키를 눌러 스폰서 광고 구간의 시점/종점을 설정할 수 있으며 작은따옴표 키를 눌러 구간을 제출할 수 있답니다. 언제든지 설정에서 변경할 수 있어요. QWERTY 자판을 사용하지 않는 경우, 단축키를 변경해야 할 수도 있어요."
     },
     "helpPageCopyOfDatabase": {
         "message": "데이터베이스의 복사본을 구할 수 있나요? 개발자분께 무슨 일이 생기면 어떻게 되는 거죠?"
@@ -1011,7 +1011,7 @@
         "message": "데이터베이스는 여기에서 확인하실 수 있어요:"
     },
     "helpPageCopyOfDatabase2": {
-        "message": "또한 소스 코드는 자유롭게 이용할 수 있어요. 따라서 데이터베이스에 무슨 일이 생기더라도, 제출된 구간이 사라지는 일은 없을 거예요."
+        "message": "또한 소스 코드는 자유롭게 사용할 수 있어요. 따라서 데이터베이스에 무슨 일이 생기더라도, 제출된 구간이 사라지는 일은 없을 거예요."
     },
     "helpPageNews": {
         "message": "새로운 변경 사항은 어디에서 확인하나요?"
@@ -1138,7 +1138,7 @@
         "message": "라이선스 키가 유효하지 않아요"
     },
     "hideUpsells": {
-        "message": "추가 결제 없이는 숨김 설정을 이용하실 수 없어요"
+        "message": "(추가 결제 없이는 숨김 설정을 사용할 수 없어요)"
     },
     "chooseACountry": {
         "message": "국가 선택"
@@ -1176,10 +1176,10 @@
         "message": "라이선스 키를 입력하세요"
     },
     "chaptersPage1": {
-        "message": "SponsorBlock 사용자 참여 챕터 기능은 라이선스 결제 사용자나, 이전 기여를 통해 접근을 허가받은 사용자만 이용할 수 있어요"
+        "message": "SponsorBlock 사용자 참여 챕터 기능은 라이선스 결제 사용자나, 이전 기여를 통해 접근을 허가받은 사용자만 사용할 수 있어요"
     },
     "chaptersPage2": {
-        "message": "참고: 여전히 챕터 제출 권한은 산정된 평판만을 바탕으로 부여돼요. 라이선스를 결제하면 다른 분이 제출한 챕터를 확인하는 기능만 추가로 이용할 수 있어요",
+        "message": "참고: 여전히 챕터 제출 권한은 산정된 평판만을 바탕으로 부여돼요. 라이선스를 결제하면 다른 분이 제출한 챕터를 확인하는 기능만 추가로 사용할 수 있어요",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "chapterNewFeature": {
@@ -1187,7 +1187,7 @@
         "description": "After the comma, a list of chapters for this video will appear"
     },
     "chapterNewFeature2": {
-        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 설정에서 활성화해서 무료로 사용할 수 있어요."
+        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 설정에서 사용해서 무료로 사용할 수 있어요."
     },
     "unsubmittedSegmentCounts": {
         "message": "You currently have {0} on {1}",

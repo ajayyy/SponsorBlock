@@ -25,6 +25,12 @@
     "Segments": {
         "message": "מקטעים"
     },
+    "SegmentsCap": {
+        "message": "מקטעים"
+    },
+    "Chapters": {
+        "message": "פרקים"
+    },
     "upvoteButtonInfo": {
         "message": "הצבע לדיווח הזה"
     },
@@ -210,6 +216,14 @@
     "sourceCode": {
         "message": "קוד מקור",
         "description": "Used on Firefox Store Page"
+    },
+    "nextChapterKeybind": {
+        "message": "הפרק הבא",
+        "description": "Keybind label"
+    },
+    "yourWork": {
+        "message": "העבודה שלך",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "errorCode": {
         "message": "קוד שגיאה: "

@@ -24,7 +24,7 @@ if (utils.isFirefox()) {
     utils.wait(() => Config.config !== null).then(function() {
         if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
     });
-} 
+}
 
 function onTabUpdatedListener(tabId: number) {
     chrome.tabs.sendMessage(tabId, {
@@ -77,17 +77,17 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
                     ok: response.ok
                 });
             });
-        
+
             return true;
         case "submitVote":
             submitVote(request.type, request.UUID, request.category).then(callback);
-        
+
             //this allows the callback to be called later
             return true;
-        case "registerContentScript": 
+        case "registerContentScript":
             registerFirefoxContentScript(request);
             return false;
-        case "unregisterContentScript": 
+        case "unregisterContentScript":
             unregisterFirefoxContentScript(request.id)
             return false;
         case "tabs": {
@@ -106,6 +106,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             return true;
         }
         case "time":
+        case "infoUpdated":
+        case "videoChanged":
             if (sender.tab) {
                 popupPort[sender.tab.id]?.postMessage(request);
             }
@@ -156,8 +158,8 @@ chrome.runtime.onInstalled.addListener(function () {
 /**
  * Only works on Firefox.
  * Firefox requires that it be applied after every extension restart.
- * 
- * @param {JSON} options 
+ *
+ * @param {JSON} options
  */
 function registerFirefoxContentScript(options: Registration) {
     const oldRegistration = contentScriptRegistrations[options.id];
@@ -174,7 +176,7 @@ function registerFirefoxContentScript(options: Registration) {
 /**
  * Only works on Firefox.
  * Firefox requires that this is handled by the background script
- * 
+ *
  */
 function unregisterFirefoxContentScript(id: string) {
     contentScriptRegistrations[id].unregister();
@@ -225,10 +227,10 @@ async function asyncRequestToServer(type: string, address: string, data = {}) {
 
 /**
  * Sends a request to the specified url
- * 
+ *
  * @param type The request type "GET", "POST", etc.
  * @param address The address to add to the SponsorBlock server address
- * @param callback 
+ * @param callback
  */
 async function sendRequestToCustomServer(type: string, url: string, data = {}) {
     // If GET, convert JSON to parameters
