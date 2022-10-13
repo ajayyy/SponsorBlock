@@ -215,7 +215,6 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "getVideoID":
             sendResponse({
                 videoID: sponsorVideoID,
-                creatingSegment: isSegmentCreationInProgress(),
             });
 
             break;
@@ -243,15 +242,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             // update video on refresh if videoID invalid
             if (!sponsorVideoID) videoIDChange(getYouTubeVideoID(document));
             // fetch segments
-            sponsorsLookup(false).then(() => sendResponse({
-                found: sponsorDataFound,
-                status: lastResponseStatus,
-                sponsorTimes: sponsorTimes,
-                time: video.currentTime,
-                onMobileYouTube
-            }));
+            sponsorsLookup(false);
 
-            return true;
+            break;
         case "unskip":
             unskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID), null, true);
             break;
@@ -384,7 +377,7 @@ function resetValues() {
     categoryPill?.setVisibility(false);
 }
 
-async function videoIDChange(id): Promise<void> {
+async function videoIDChange(id: string): Promise<void> {
     // don't switch to invalid value
     if (!id && sponsorVideoID && !document?.URL?.includes("youtube.com/clip/")) return;
     //if the id has not changed return unless the video element has changed
@@ -438,10 +431,14 @@ async function videoIDChange(id): Promise<void> {
         }
     }
 
-    //close popup
-    closeInfoMenu();
+    // Notify the popup about the video change
+    chrome.runtime.sendMessage({
+        message: "videoChanged",
+        videoID: sponsorVideoID,
+        whitelisted: channelWhitelisted
+    });
 
-    sponsorsLookup(id);
+    sponsorsLookup();
 
     // Make sure all player buttons are properly added
     updateVisibilityOfPlayerControlsButton();
@@ -1013,6 +1010,14 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                     ?.sort((a, b) => a.segment[0] - b.segment[0]);
         if (!recievedSegments || !recievedSegments.length) {
             // return if no video found
+            chrome.runtime.sendMessage({
+                message: "infoUpdated",
+                found: false,
+                status: lastResponseStatus,
+                sponsorTimes: sponsorTimes,
+                time: video.currentTime,
+                onMobileYouTube
+            });
             retryFetch(404);
             return;
         }
@@ -1102,6 +1107,16 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
     importExistingChapters(true);
 
+    // notify popup of segment changes
+    chrome.runtime.sendMessage({
+        message: "infoUpdated",
+        found: sponsorDataFound,
+        status: lastResponseStatus,
+        sponsorTimes: sponsorTimes,
+        time: video.currentTime,
+        onMobileYouTube
+    });
+
     if (Config.config.isVip) {
         lockedCategoriesLookup();
     }
@@ -1147,8 +1162,8 @@ async function lockedCategoriesLookup(): Promise<void> {
 }
 
 function retryFetch(errorCode: number): void {
-    if (!Config.config.refetchWhenNotFound) return;
     sponsorDataFound = false;
+    if (!Config.config.refetchWhenNotFound) return;
 
     if (retryFetchTimeout) clearTimeout(retryFetchTimeout);
     if ((errorCode !== 404 && retryCount > 1) || (errorCode !== 404 && retryCount > 10)) {
@@ -1228,12 +1243,12 @@ function startSkipScheduleCheckingForStartSponsors() {
     }
 }
 
-function getYouTubeVideoID(document: Document, url?: string): string | boolean {
+function getYouTubeVideoID(document: Document, url?: string): string {
     url ||= document.URL;
     // pageType shortcut
-    if (pageType === PageType.Channel) return getYouTubeVideoIDFromDocument()
+    if (pageType === PageType.Channel) return getYouTubeVideoIDFromDocument();
     // clips should never skip, going from clip to full video has no indications.
-    if (url.includes("youtube.com/clip/")) return false;
+    if (url.includes("youtube.com/clip/")) return null;
     // skip to document and don't hide if on /embed/
     if (url.includes("/embed/") && url.includes("youtube.com")) return getYouTubeVideoIDFromDocument(false, PageType.Embed);
     // skip to URL if matches youtube watch or invidious or matches youtube pattern
@@ -1244,7 +1259,7 @@ function getYouTubeVideoID(document: Document, url?: string): string | boolean {
     return getYouTubeVideoIDFromURL(url) || getYouTubeVideoIDFromDocument(false);
 }
 
-function getYouTubeVideoIDFromDocument(hideIcon = true, pageHint = PageType.Watch): string | boolean {
+function getYouTubeVideoIDFromDocument(hideIcon = true, pageHint = PageType.Watch): string {
     const selector = "a.ytp-title-link[data-sessionlink='feature=player-title']";
     // get ID from document (channel trailer / embedded playlist)
     const element = pageHint === PageType.Embed ? document.querySelector(selector)
@@ -1256,11 +1271,11 @@ function getYouTubeVideoIDFromDocument(hideIcon = true, pageHint = PageType.Watc
         pageType = pageHint;
         return getYouTubeVideoIDFromURL(videoURL);
     } else {
-        return false;
+        return null;
     }
 }
 
-function getYouTubeVideoIDFromURL(url: string): string | boolean {
+function getYouTubeVideoIDFromURL(url: string): string {
     if(url.startsWith("https://www.youtube.com/tv#/")) url = url.replace("#", "");
 
     //Attempt to parse url
@@ -1269,7 +1284,7 @@ function getYouTubeVideoIDFromURL(url: string): string | boolean {
         urlObject = new URL(url);
     } catch (e) {
         console.error("[SB] Unable to parse URL: " + url);
-        return false;
+        return null;
     }
 
     // Check if valid hostname
@@ -1283,7 +1298,7 @@ function getYouTubeVideoIDFromURL(url: string): string | boolean {
             utils.wait(() => Config.config !== null).then(() => videoIDChange(getYouTubeVideoIDFromURL(url)));
         }
 
-        return false;
+        return null;
     } else {
         onInvidious = false;
     }
@@ -1291,17 +1306,17 @@ function getYouTubeVideoIDFromURL(url: string): string | boolean {
     //Get ID from searchParam
     if (urlObject.searchParams.has("v") && ["/watch", "/watch/"].includes(urlObject.pathname) || urlObject.pathname.startsWith("/tv/watch")) {
         const id = urlObject.searchParams.get("v");
-        return id.length == 11 ? id : false;
+        return id.length == 11 ? id : null;
     } else if (urlObject.pathname.startsWith("/embed/") || urlObject.pathname.startsWith("/shorts/")) {
         try {
             const id = urlObject.pathname.split("/")[2]
             if (id?.length >=11 ) return id.slice(0, 11);
         } catch (e) {
             console.error("[SB] Video ID not valid for " + url);
-            return false;
+            return null;
         }
     }
-    return false;
+    return null;
 }
 
 /**
@@ -1803,7 +1818,8 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<void> {
     updateEditButtonsOnPlayer();
 
     // Don't show the info button on embeds
-    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious) {
+    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || onInvidious
+        || document.getElementById("sponsorBlockPopupContainer") != null) {
         playerButtons.info.button.style.display = "none";
     } else {
         playerButtons.info.button.style.removeProperty("display");

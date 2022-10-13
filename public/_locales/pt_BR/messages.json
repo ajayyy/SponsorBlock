@@ -35,6 +35,9 @@
         "message": "Renderizar segmentos como capítulos",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Mostrar Segmento Atual ao Lado do Tempo do Vídeo"
+    },
     "upvoteButtonInfo": {
         "message": "Votar nesse segmento positivamente"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Fechar Popup"
+    },
+    "closeIcon": {
+        "message": "Ícone de Fechar"
     },
     "SubmitTimes": {
         "message": "Enviar Segmentos"
@@ -245,6 +251,12 @@
     },
     "whatRefetchWhenNotFound": {
         "message": "Se o vídeo for novo e nenhum segmento for encontrado, continuaremos buscando enquanto você assiste."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Mostrar categorias no menu de envios mesmo sem permissão de envio"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Algumas categorias exigem autorização de envio devido a requisitos mínimos de reputação"
     },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
@@ -408,8 +420,17 @@
     "statusReminder": {
         "message": "Verifique status.sponsor.ajay.app para o status do servidor."
     },
+    "changeUserID": {
+        "message": "Importar/Exportar Seu UserID Privado"
+    },
     "whatChangeUserID": {
         "message": "Esta informação deve se mantida privada. Ela é como uma senha e não deve ser compartilhada. Outras pessoas poderão se passar por você caso obtenham acesso. Se estiver procurando por sua ID Pública de Usuário, clique no ícone de prancheta no popup."
+    },
+    "setUserID": {
+        "message": "Definir UserID Privado"
+    },
+    "userIDChangeWarning": {
+        "message": "Aviso: A modificação do ID de usuário privado é permanente. Você tem certeza de que quer fazer isso? Certifique-se de fazer backup do anterior."
     },
     "createdBy": {
         "message": "Criado por"
@@ -453,6 +474,12 @@
     },
     "minDurationDescription": {
         "message": "Segmentos menores do que o valor definido não serão pulados ou mostrados no reprodutor."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Usar o pulo manual quando houver um rótulo de vídeo completo"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Para pessoas que desejam assistir ao vídeo sem interrupção se ele for totalmente patrocinado ou autopromoção."
     },
     "skipNoticeDuration": {
         "message": "Duração do aviso prévio de pular (segundos):"
@@ -709,6 +736,12 @@
     "category_chapter": {
         "message": "Capítulo"
     },
+    "category_chapter_description": {
+        "message": "Capítulos personalizados que descrevem as principais seções de um vídeo."
+    },
+    "category_chapter_guideline1": {
+        "message": "Não mencione os nomes dos patrocinadores"
+    },
     "category_livestream_messages": {
         "message": "Livestream: Leituras de Doação/Mensagem"
     },
@@ -738,6 +771,9 @@
     },
     "showOverlay_full": {
         "message": "Mostrar Rótulo"
+    },
+    "showOverlay_chapter": {
+        "message": "Mostrar Capítulos"
     },
     "autoSkipOnMusicVideos": {
         "message": "Pular automaticamente todos os segmentos quando há um segmento que não é música"
@@ -866,12 +902,18 @@
     "categoryPillTitleText": {
         "message": "Este vídeo inteiro está rotulado como esta categoria e está muito integrado para poder ser separado"
     },
+    "chapterNameTooltipWarning": {
+        "message": "Um de seus nomes de capítulo é semelhante a uma categoria. Sempre que possível, você deve usar categorias."
+    },
     "experiementOptOut": {
         "message": "Optar por sair de todos os experimentos futuros",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
         "message": "Ocultar para sempre"
+    },
+    "warningChatInfo": {
+        "message": "Percebemos que você estava cometendo alguns erros comuns que não são prejudiciais"
     },
     "Donate": {
         "message": "Doar"
@@ -945,6 +987,9 @@
     "LearnMore": {
         "message": "Saiba mais"
     },
+    "FullDetails": {
+        "message": "Ver Detalhes Completos"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Dá voto negativo e cria uma cópia local para você reenviar"
     },
@@ -968,6 +1013,12 @@
     },
     "hideSegment": {
         "message": "Ocultar segmento"
+    },
+    "skipSegment": {
+        "message": "Pular segmento"
+    },
+    "playChapter": {
+        "message": "Reproduzir capítulo"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Use a roda do mouse enquanto mantêm o cursor sobre a caixa de edição para ajustar o tempo rapidamente. Combinações das teclas ctrl e shift podem ser usadas para refinar as mudanças."
@@ -1031,5 +1082,69 @@
     },
     "confirmResetToDefault": {
         "message": "Tem certeza de que deseja redefinir todas as configurações para os valores padrão? Essa ação não poderá ser desfeita."
+    },
+    "exportSegments": {
+        "message": "Exportar segmentos"
+    },
+    "importSegments": {
+        "message": "Importar segmentos"
+    },
+    "Import": {
+        "message": "Importar",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "selectYourCountry": {
+        "message": "Selecione o seu país"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "No momento, você não tem segmentos não enviados",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "segmento não enviado",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "segmentos não enviados",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "vídeo",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "vídeos",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Excluir todos os segmentos",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Tem certeza de que deseja excluir todos os segmentos não enviados?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Mostrar segmentos",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Ocultar segmentos",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID do Vídeo",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Número de segmentos",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Ações",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Compartilhar como URL"
     }
 }
