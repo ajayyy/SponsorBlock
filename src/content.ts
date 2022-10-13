@@ -499,6 +499,11 @@ function createPreviewBar(): void {
             // For Invidious/VideoJS
             selector: ".vjs-progress-holder",
             isVisibleCheck: false
+        }, {
+            // For Youtube Music
+            // there are two sliders, one for volume and one for progress - both called #progressContainer
+            selector: "#progress-bar>#sliderContainer>div>#sliderBar>#progressContainer",
+            isVisibleCheck: false
         }
     ];
 
