@@ -676,7 +676,7 @@ class PreviewBar {
         for (let i = 0; i < sections.length; i++) {
             const section = sections[i] as HTMLElement;
             const checkElement = section.querySelector(selector) as HTMLElement;
-            const currentSectionWidthNoMargin = this.getPartialChapterSectionStyle(section, "width") || progressBar.clientWidth;
+            const currentSectionWidthNoMargin = this.getPartialChapterSectionStyle(section, "width") ?? progressBar.clientWidth;
             const currentSectionWidth = currentSectionWidthNoMargin 
                 + this.getPartialChapterSectionStyle(section, "marginRight");
 
