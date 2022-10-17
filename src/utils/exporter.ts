@@ -8,7 +8,7 @@ const inTest = typeof chrome === "undefined";
 const chapterNames = CompileConfig.categoryList.filter((code) => code !== "chapter")
     .map((code) => ({
         code,
-        name: !inTest ? chrome.i18n.getMessage("category_" + code) : code
+        names: !inTest ? [chrome.i18n.getMessage("category_" + code), shortCategoryName(code)] : [code]
     }));
 
 export function exportTimes(segments: SponsorTime[]): string {
@@ -47,7 +47,7 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
 
                 const title = titleLeft?.length > titleRight?.length ? titleLeft : titleRight;
                 if (title) {
-                    const determinedCategory = chapterNames.find(c => c.name === title)?.code as Category;
+                    const determinedCategory = chapterNames.find(c => c.names.includes(title))?.code as Category;
 
                     const segment: SponsorTime = {
                         segment: [startTime, GenericUtils.getFormattedTimeToSeconds(match[1])],
