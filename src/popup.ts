@@ -457,7 +457,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 PageElements.issueReporterImportExport.classList.remove("hidden");
             } else {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("connectionError") + request.status;
-                PageElements.issueReporterImportExport.classList.add("hidden");
+                PageElements.issueReporterImportExport.classList.remove("hidden");
             }
         }
 
