@@ -25,6 +25,19 @@
     "Segments": {
         "message": "segmente"
     },
+    "SegmentsCap": {
+        "message": "Segmente"
+    },
+    "Chapters": {
+        "message": "Capitolele"
+    },
+    "renderAsChapters": {
+        "message": "Randarea segmentelor ca, capitole",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "Arată ora video din segmentul curent"
+    },
     "upvoteButtonInfo": {
         "message": "Votează această înregistrare"
     },
@@ -112,8 +125,14 @@
     "closePopup": {
         "message": "Închide pop-up"
     },
+    "closeIcon": {
+        "message": "Închide pictograma"
+    },
     "SubmitTimes": {
         "message": "Trimite segmente"
+    },
+    "sortSegments": {
+        "message": "Sortare Segmente"
     },
     "submitCheck": {
         "message": "Sunteți sigur că doriți să trimiteți asta?"
@@ -233,6 +252,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Dacă videoclipul este nou și nu sunt segmente găsite, va continua să se refeteze la fiecare câteva minute în timp ce vizionați."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Arată categoriile în meniul de adăugare chiar fără permisiunea de adăugare"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Unele categorii necesită permisiunea de a depune din cauza cerințelor minime de reputație"
+    },
     "showNotice": {
         "message": "Arată Notificarea Din Nou"
     },
@@ -287,6 +312,14 @@
     },
     "setSubmitKeybind": {
         "message": "Predă segmentele",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Capitolul următor",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Capitolul anterior",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -387,8 +420,17 @@
     "statusReminder": {
         "message": "Verificați status.sponsor.ajay.app pentru starea serverului."
     },
+    "changeUserID": {
+        "message": "Importă/Exportă UserID-ul tău Privat"
+    },
     "whatChangeUserID": {
         "message": "Aceste informații sunt private și nu ar trebui să fie dezvăluite nimănui. Dacă cineva are aceste informații, pot fi folosite pentru a vă imita. În cazul în care vă căutați ID-ul public de utilizator, dați click pe icoana de clipboard din popup."
+    },
+    "setUserID": {
+        "message": "Setare UserID privat"
+    },
+    "userIDChangeWarning": {
+        "message": "Avertisment: Modificarea Id-ului de utilizator privat este permanentă. Sunteți sigur că doriți să faceți acest lucru? Asigurați-vă că ați făcut o copie de rezervă pe cea veche, pentru orice eventualitate."
     },
     "createdBy": {
         "message": "Creat De"
