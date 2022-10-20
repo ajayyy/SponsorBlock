@@ -35,6 +35,9 @@
         "message": "Segmenten weergeven als hoofdstukken",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Toon huidige segment naast video tijd"
+    },
     "upvoteButtonInfo": {
         "message": "Stemmen op deze inzending"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "Pop-up sluiten"
+    },
+    "closeIcon": {
+        "message": "Sluit icoon"
     },
     "SubmitTimes": {
         "message": "Segmenten indienen"
@@ -1045,6 +1051,12 @@
     },
     "hideSegment": {
         "message": "Segment verbergen"
+    },
+    "skipSegment": {
+        "message": "Segment overslaan"
+    },
+    "playChapter": {
+        "message": "Hoofdstuk afspelen"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gebruik het muiswiel terwijl u over het invoerveld beweegt om de tijd snel aan te passen. Combinaties van de ctrl- of shift-toets kunnen worden gebruikt om de wijzigingen te verfijnen."
