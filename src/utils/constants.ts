@@ -148,5 +148,13 @@ export function getGuidelineInfo(category: Category): TextBox[] {
                 icon: "icons/check-smaller.svg",
                 text: chrome.i18n.getMessage(`category_${category}_guideline3`)
             }];
+        default:
+            return [{
+                icon: "icons/segway.png",
+                text: chrome.i18n.getMessage(`generic_guideline1`)
+            }, {
+                icon: "icons/right-arrow.svg",
+                text: chrome.i18n.getMessage(`generic_guideline2`)
+            }];
     }
 }

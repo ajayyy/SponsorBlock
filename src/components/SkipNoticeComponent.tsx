@@ -373,6 +373,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 </span>
             );
         }
+        return null;
     }
 
     getSubmissionChooser(): JSX.Element[] {

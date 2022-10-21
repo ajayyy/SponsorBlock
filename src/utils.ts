@@ -319,6 +319,7 @@ export default class Utils {
                 return selection;
             }
         }
+        return { name: "None", option: 0} as CategorySelection;
     }
 
     /**
