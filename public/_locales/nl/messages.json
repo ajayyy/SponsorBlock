@@ -36,7 +36,7 @@
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
     "showSegmentNameInChapterBar": {
-        "message": "Toon huidige segment naast video tijd"
+        "message": "Huidige segment naast video tijd weergeven"
     },
     "upvoteButtonInfo": {
         "message": "Stemmen op deze inzending"
