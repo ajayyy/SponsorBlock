@@ -71,9 +71,7 @@ window.addEventListener("message", async (e): Promise<void> => {
     if (e.source !== window.parent) return;
     if (e.origin.endsWith('.youtube.com')) {
         allowPopup = true;
-        return
     }
-    else return;
 });
 
 //make this a function to allow this to run on the content page
