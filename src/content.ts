@@ -2089,11 +2089,11 @@ async function vote(type: number, UUID: SegmentUUID, category?: Category, skipNo
     return response;
 }
 
-async function voteAsync(type: number, UUID: SegmentUUID, category?: Category): Promise<VoteResponse> {
+async function voteAsync(type: number, UUID: SegmentUUID, category?: Category): Promise<VoteResponse | undefined> {
     const sponsorIndex = utils.getSponsorIndexFromUUID(sponsorTimes, UUID);
 
     // Don't vote for preview sponsors
-    if (sponsorIndex == -1 || sponsorTimes[sponsorIndex].source !== SponsorSourceType.Server) Promise.resolve();
+    if (sponsorIndex == -1 || sponsorTimes[sponsorIndex].source !== SponsorSourceType.Server) return Promise.resolve(undefined);
 
     // See if the local time saved count and skip count should be saved
     if (type === 0 && sponsorSkipped[sponsorIndex] || type === 1 && !sponsorSkipped[sponsorIndex]) {
