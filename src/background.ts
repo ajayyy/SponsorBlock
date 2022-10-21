@@ -59,16 +59,16 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     switch(request.message) {
         case "openConfig":
             chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
-            return true;
+            return false;
         case "openHelp":
             chrome.tabs.create({url: chrome.runtime.getURL('help/index.html')});
-            return true;
+            return false;
         case "openUpsell":
             chrome.tabs.create({url: chrome.runtime.getURL('upsell/index.html')});
-            return true;
+            return false;
         case "openPage":
             chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
-            return true;
+            return false;
         case "sendRequest":
             sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
                 callback({
