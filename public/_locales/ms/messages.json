@@ -25,6 +25,16 @@
     "Segments": {
         "message": "segmen"
     },
+    "SegmentsCap": {
+        "message": "Segmen"
+    },
+    "Chapters": {
+        "message": "Chapter"
+    },
+    "renderAsChapters": {
+        "message": "Render segmen sebagai chapter",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Sokong penyerahan ini"
     },
@@ -82,6 +92,9 @@
     "noVideoID": {
         "message": "Tiada video YouTube dijumpai.\nSekiranya ini tidak betul, muat semula tab."
     },
+    "refreshSegments": {
+        "message": "Muat semula segmen"
+    },
     "success": {
         "message": "Berjaya!"
     },
@@ -103,8 +116,14 @@
     "closePopup": {
         "message": "Tutup Pop timbul"
     },
+    "closeIcon": {
+        "message": "Tutup Icon"
+    },
     "SubmitTimes": {
         "message": "Hantar Segmen"
+    },
+    "sortSegments": {
+        "message": "Susun Segmen"
     },
     "submitCheck": {
         "message": "Adakah anda pasti mahu menghantarnya?"
