@@ -65,6 +65,9 @@
     "reskip": {
         "message": "Reskip"
     },
+    "unmute": {
+        "message": "Nyahredam"
+    },
     "paused": {
         "message": "Dijeda"
     },
@@ -177,6 +180,9 @@
     "setUsername": {
         "message": "Tetapkan Nama Pengguna"
     },
+    "copyPublicID": {
+        "message": "Salin PenggunaID Awam"
+    },
     "copySegmentID": {
         "message": "Salin ID Segmen"
     },
@@ -197,6 +203,9 @@
     },
     "hideButtonsDescription": {
         "message": "Ini menyembunyikan butang yang muncul di pemain YouTube untuk menyerahkan segmen langkau."
+    },
+    "showSkipButton": {
+        "message": "Simpan Butang Langkau Ke Sorotan Di Pemain"
     },
     "showInfoButton": {
         "message": "Tunjukkan Butang Maklumat Pada Pemain YouTube"
@@ -239,6 +248,9 @@
     },
     "whatRefetchWhenNotFound": {
         "message": "Sekiranya videonya baru, dan tidak ada segmen yang dijumpai, video akan terus diambil setiap beberapa minit semasa anda menonton."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Tunjuk kategori dalam menu penghantaran walaupun tanpa kebenaran penghantaran"
     },
     "showNotice": {
         "message": "Tunjukkan Notis Lagi"
@@ -320,12 +332,18 @@
     "skip": {
         "message": "Langkau"
     },
+    "mute": {
+        "message": "Redam"
+    },
     "full": {
         "message": "Seluruh Video",
         "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
     },
     "skip_category": {
         "message": "Langkau {0}?"
+    },
+    "mute_category": {
+        "message": "Redam {0}?"
     },
     "skip_to_category": {
         "message": "Langkau kepada {0}?",
@@ -334,6 +352,10 @@
     "skipped": {
         "message": "{0} Melangkau",
         "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} Diredam",
+        "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
         "message": "Melangkau kepada {0}",
@@ -488,6 +510,9 @@
     "preview": {
         "message": "Pratonton"
     },
+    "unsubmitted": {
+        "message": "Belum Diserahkan"
+    },
     "inspect": {
         "message": "Periksa"
     },
@@ -602,6 +627,18 @@
     "category_preview_description": {
         "message": "Koleksi klip yang menunjukkan apa yang akan datang di dalam video ini atau video lain di dalam siri di mana semua maklumat diulang kemudian di dalam video."
     },
+    "category_filler_short": {
+        "message": "Pengisi"
+    },
+    "category_filler_guideline1": {
+        "message": "Adegan tangensial hanya untuk pengisi atau humor"
+    },
+    "category_filler_guideline2": {
+        "message": "Gangguan, blooper, ulang tayang"
+    },
+    "category_filler_guideline3": {
+        "message": "Bukan untuk adegan diperlukan untuk memahami topik"
+    },
     "category_music_offtopic": {
         "message": "Muzik: Bahagian Bukan Muzik"
     },
@@ -610,6 +647,9 @@
     },
     "category_music_offtopic_short": {
         "message": "Bukan Muzik"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "Boleh langkau konteks"
     },
     "category_poi_highlight_guideline3": {
         "message": "Boleh langkau ke tajuk atau thumbnail"
@@ -771,6 +811,24 @@
     "warningConfirmButton": {
         "message": "Saya memahami sebabnya"
     },
+    "Donate": {
+        "message": "Derma"
+    },
+    "considerDonating": {
+        "message": "Bantu pembangunan dana"
+    },
+    "hideDonationLink": {
+        "message": "Sembunyi Pautan Derma"
+    },
+    "darkModeOptionsPage": {
+        "message": "Mod Gelap Di Halaman Pilihan"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "Terima kasih kerana memasang SponsorBlock."
+    },
+    "helpPageReviewOptions": {
+        "message": "Tolong semak pilihan di bawah"
+    },
     "helpPageHowSkippingWorks": {
         "message": "Bagaimana melangkau berfungsi"
     },
@@ -800,6 +858,9 @@
     },
     "downvote": {
         "message": "Undi turun"
+    },
+    "upvote": {
+        "message": "Undi naik"
     },
     "playChapter": {
         "message": "Main bab"
