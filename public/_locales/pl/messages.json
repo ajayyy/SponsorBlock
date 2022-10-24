@@ -255,6 +255,9 @@
     "enableShowCategoryWithoutPermission": {
         "message": "Pokaż kategorie w menu zgłoszeń, nawet bez uprawnień do zgłaszania"
     },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Niektóre kategorie wymagają specjalnych uprawnień, by przesłać segment ze względu na minimalne wymogi reputacji"
+    },
     "showNotice": {
         "message": "Pokaż informacje ponownie"
     },
@@ -475,6 +478,9 @@
     "enableManualSkipOnFullVideo": {
         "message": "Użyj ręcznego pomijania, gdy istnieje etykieta na całym filmie"
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "Dla osób, które chcą oglądać film nieprzerwanie, jeśli film jest w pełni sponsorowany lub autopromocyjny."
+    },
     "skipNoticeDuration": {
         "message": "Czas trwania powiadomienia pominięcia (sekundy):"
     },
@@ -687,6 +693,9 @@
     },
     "category_filler": {
         "message": "Wypełniacz nietematyczny/żart"
+    },
+    "category_filler_description": {
+        "message": "To jest bardzo agresywna kategoria, której możesz użyć, jeżeli nie masz ochoty, by widzieć scenki humorystyczne/wypełniacze."
     },
     "category_filler_short": {
         "message": "Wypełniacz"
