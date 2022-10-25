@@ -228,6 +228,9 @@
     "whatViewTracking": {
         "message": "Fungsi ini mengesan segmen mana yang telah anda lewati untuk memberi tahu pengguna seberapa banyak penyerahan mereka telah membantu orang lain dan digunakan sebagai metrik bersama dengan suara positif untuk memastikan bahawa spam tidak masuk ke dalam pangkalan data. Sambungan tersebut menghantar mesej ke pelayan setiap kali anda melewatkan segmen. Mudah-mudahan kebanyakan orang tidak mengubah tetapan ini supaya nombor paparan tepat. :)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "Bolehkan Penjejakan kiraan Langkau Di Dalam Tab Persendirian/Inkognito"
+    },
     "enableTrackDownvotes": {
         "message": "Simpan segmen undi turun"
     },
@@ -309,6 +312,9 @@
     "previousChapterKeybind": {
         "message": "Bab sebelumnya",
         "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Pilih kekunci dengan menaipnya dan pilih mana-mana kekunci pengubah suai yang anda ingin gunakan."
     },
     "0": {
         "message": "Masa sambungan telah tamat. Periksa sambungan internet anda. Sekiranya internet anda berfungsi, pelayan mungkin berlebihan atau tidak berfungsi."
@@ -478,7 +484,7 @@
         "message": "Import / Eksport Semua Pilihan"
     },
     "exportOptionsCopy": {
-        "message": "Edit/salin"
+        "message": "Sunting/salin"
     },
     "exportOptionsDownload": {
         "message": "Simpan ke fail"
@@ -678,6 +684,12 @@
     "disable": {
         "message": "Nyahaktifkan"
     },
+    "manualSkip_POI": {
+        "message": "Tanya apabila video dimuatkan"
+    },
+    "showOverlay_POI": {
+        "message": "Tunjuk Dalam Bar Mencari"
+    },
     "showOverlay_full": {
         "message": "Tunjuk Label"
     },
@@ -742,11 +754,17 @@
     "hiddenDueToDuration": {
         "message": "tersembunyi: terlalu pendek"
     },
+    "manuallyHidden": {
+        "message": "disembunyikan secara manual"
+    },
     "acceptPermission": {
         "message": "Terima kebenaran"
     },
     "permissionRequestSuccess": {
         "message": "Permintaan kebenaran berjaya!"
+    },
+    "permissionRequestFailed": {
+        "message": "Permintaan kebenaran gagal, adakah anda menekan menafikan?"
     },
     "adblockerIssueWhitelist": {
         "message": "Jika anda tidak dapat menyelesaikan perkara ini, kemudian lumpuhkan tetapan 'Paksa Semak Saluran Sebelum Langkau', kerana SponsorBlock tidak dapat mengambil semula maklumat saluran untuk video ini"
@@ -763,9 +781,15 @@
     "downvoteDescription": {
         "message": "Pemasaan Tidak Betul / Salah"
     },
+    "incorrectVote": {
+        "message": "Salah"
+    },
     "harmfulVote": {
         "message": "Memudaratkan",
         "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
+    "incorrectCategory": {
+        "message": "Tukar Kategori"
     },
     "nonMusicCategoryOnMusic": {
         "message": "Video ini dikategorikan sebagai muzik. Adakah anda pasti ini mempunyai penaja? Sekiranya ini sebenarnya adalah \"Segmen Bukan Muzik\", buka pilihan peluasan dan aktifkan kategori ini. Kemudian, anda boleh menghantar segmen ini sebagai \"Bukan Muzik\" dan bukannya penaja. Sila baca panduan sekiranya anda keliru."
@@ -796,8 +820,14 @@
     "fullVideoTooltipWarning": {
         "message": "Segmen ini besar. Jika seluruh video adalah mengenai satu topik, kemudian tukar daripada \"Langkau\" ke \"Seluruh Video\". Lihat garis panduan untuk maklumat lanjut."
     },
+    "categoryPillTitleText": {
+        "message": "Keseluruhan video ini dilabel sebagai kategori ini dan terlalu bersepadu erat untuk dapat dipisah"
+    },
     "chapterNameTooltipWarning": {
         "message": "Sebuah nama bab anda ialah serupa dengan kategori. Anda patut guna kategori apabila mungkin sebaliknya."
+    },
+    "hideForever": {
+        "message": "Sembunyi selamanya"
     },
     "warningChatInfo": {
         "message": "Kami perasaan yang anda telah membuat beberapa kesilapan biasa yang tidak berniat jahat"
@@ -810,6 +840,9 @@
     },
     "warningConfirmButton": {
         "message": "Saya memahami sebabnya"
+    },
+    "warningError": {
+        "message": "Kesilapan apabila mencuba untuk mengakui amaran:"
     },
     "Donate": {
         "message": "Derma"
@@ -829,8 +862,14 @@
     "helpPageReviewOptions": {
         "message": "Tolong semak pilihan di bawah"
     },
+    "helpPageFeatureDisclaimer": {
+        "message": "Banyak ciri dilumpuhkan secara lalai. Jika anda ingin langkau intro, outro, gunakan Invidious, dll. Bolehkan mereka di bawah. Anda boleh juga sembunyi/tunjuk elemen UI."
+    },
     "helpPageHowSkippingWorks": {
         "message": "Bagaimana melangkau berfungsi"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "Segmen video akan dilangkau secara automatik jika mereka dijumpa di dalam pangkalan data. Anda boleh membuka popup dengan menekan ikon sambungan untuk mendapat pratonton daripada apa yang mereka ada."
     },
     "helpPageHowSkippingWorks2": {
         "message": "Apabila anda melangkau sebuah segmen, anda akan dapat notis. Jika masa nampak salah mengundi turun dengan menekan undi turun! Anda boleh juga undi di dalam popup."
@@ -841,6 +880,9 @@
     "Editing": {
         "message": "Menyunting"
     },
+    "helpPageEditing1": {
+        "message": "Jika anda tersilap, anda boleh edit atau padam segmen anda selepas menekan butang anak panah atas."
+    },
     "helpPageTooSlow": {
         "message": "Ini terlalu lambat"
     },
@@ -850,11 +892,35 @@
     "helpPageCopyOfDatabase": {
         "message": "Bolehkah saya mendapat salinan pangkalan data? Apakah akan terjadi jika anda hilang?"
     },
+    "helpPageNews": {
+        "message": "Berita dan bagaimana ia dibuat"
+    },
+    "helpPageSourceCode": {
+        "message": "Dimana saya boleh mendapat kod sumber?"
+    },
+    "Credits": {
+        "message": "Penghargaan"
+    },
+    "LearnMore": {
+        "message": "Ketahui Lebih Lanjut"
+    },
+    "FullDetails": {
+        "message": "Perincian Penuh"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "Undi turun dan membuat salinan tempatan untuk anda hantar semula"
     },
+    "OpenCategoryWikiPage": {
+        "message": "Buka halaman wiki kategori ini."
+    },
     "CopyAndDownvote": {
         "message": "Salin dan undi turun"
+    },
+    "ContinueVoting": {
+        "message": "Teruskan Undian"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "Ini akan serta merta dikenakan pada segmen anda"
     },
     "downvote": {
         "message": "Undi turun"
@@ -862,8 +928,17 @@
     "upvote": {
         "message": "Undi naik"
     },
+    "hideSegment": {
+        "message": "Sembunyikan segmen"
+    },
+    "skipSegment": {
+        "message": "Langkau segmen"
+    },
     "playChapter": {
         "message": "Main bab"
+    },
+    "categoryPillNewFeature": {
+        "message": "Baharu! Tengok apabila video ialah penaja atau promosi diri sepenuhnya"
     },
     "dayAbbreviation": {
         "message": "h",
@@ -873,8 +948,159 @@
         "message": "j",
         "description": "100h"
     },
+    "optionsTabBehavior": {
+        "message": "Tingkah Laku",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Antaramuka",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Pintasan papan kekunci",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Sandaran/Memulihkan",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Lain-Lain",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Langkau notis penampilan",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Buka Ikatan",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Tidak ditetapkan"
+    },
+    "change": {
+        "message": "Tukar"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Ini adalah dibina dalam pintasan YouTube. Adakah anda pasti anda mahu menggunakannya?"
+    },
+    "betaServerWarning": {
+        "message": "Pelayan BETA ialah didayakan!"
+    },
+    "openOptionsPage": {
+        "message": "Buka halaman pilihan"
+    },
+    "resetToDefault": {
+        "message": "Set semula tetapan kepada asal"
+    },
+    "confirmResetToDefault": {
+        "message": "Adakah anda pasti anda mahu menetapkan semula semua tetapan kepada nilai asalnya? Perkara ini tidak boleh diubah."
+    },
+    "exportSegments": {
+        "message": "Eksport segmen"
+    },
+    "importSegments": {
+        "message": "Import segmen"
+    },
+    "Import": {
+        "message": "Import",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Tebusan Berjaya!"
+    },
+    "redeemFailed": {
+        "message": "Kunci lesen tidak sah"
+    },
+    "hideUpsells": {
+        "message": "Sembunyikan pilihan tidak tersedia tanpa pembayaran tambahan"
+    },
+    "chooseACountry": {
+        "message": "Pilih negara"
+    },
+    "noDiscount": {
+        "message": "Anda tidak layak untuk diskaun"
+    },
+    "selectYourCountry": {
+        "message": "Pilih negara anda"
+    },
+    "alreadyDonated": {
+        "message": "Jika anda telah menderma apa-apa jumlah sebelum ini, anda boleh tebus akses percuma dengan menghantar emel:",
+        "description": "After the colon is an email address"
+    },
     "cantAfford": {
         "message": "Jika anda tidak mampu untuk membeli lesen, tekan {sini} untuk melihat sama ada anda layak untuk diskaun",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "Daftar masuk dengan Patreon"
+    },
+    "redeem": {
+        "message": "Tebus"
+    },
+    "joinOnPatreon": {
+        "message": "Langgan di Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Pembelian Sekali"
+    },
+    "enterLicenseKey": {
+        "message": "Masukkan Kunci Lesen"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Anda pada masa ini mempunyai {0} di {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "Anda pada masa ini tiada segmen belum dihantar",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "segmen belum dihantar",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "segmen belum dihantar",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "video",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Kosongkan semua segmen",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Adakah anda pasti anda mahu kosongkan semua segmen belum dihantar anda?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Tunjuk segmen",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Sembunyi segmen",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID Video",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Kiraan Segmen",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Tindakan",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Kongsi sebagai URL"
     }
 }
