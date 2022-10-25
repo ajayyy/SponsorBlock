@@ -255,6 +255,9 @@
     "enableShowCategoryWithoutPermission": {
         "message": "Tunjuk kategori dalam menu penghantaran walaupun tanpa kebenaran penghantaran"
     },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Beberapa kategori memerlukan kebenaran untuk menghantar disebabkan oleh keperluan reputasi minimum"
+    },
     "showNotice": {
         "message": "Tunjukkan Notis Lagi"
     },
@@ -421,13 +424,16 @@
         "message": "Dicipta oleh"
     },
     "supportOtherSites": {
-        "message": "Sokong Parti Ke-3 Laman-Youtube"
+        "message": "Sokong Pihak Ke-3 Laman YouTube"
     },
     "supportedSites": {
         "message": "Laman Disokong: "
     },
     "optionsInfo": {
         "message": "Dayakan sokongan Invidious, lumpuhkan autoskip, sembunyikan butang dan banyak lagi."
+    },
+    "addInvidiousInstance": {
+        "message": "Tambah Pihak Ke-3 Contoh Klien"
     },
     "add": {
         "message": "Tambah"
@@ -449,6 +455,9 @@
     },
     "minDurationDescription": {
         "message": "Segmen yang lebih pendek daripada nilai yang ditetapkan tidak akan dilangkau atau ditunjukkan dalam pemain."
+    },
+    "skipNoticeDuration": {
+        "message": "Tenpoh masa notis langkau (saat):"
     },
     "shortCheck": {
         "message": "Penyerahan berikut lebih pendek daripada pilihan tempoh minimum anda. Ini mungkin bermaksud ini sudah dihantar, dan hanya diabaikan kerana pilihan ini. Adakah anda pasti mahu menghantar?"
@@ -633,6 +642,12 @@
     "category_preview_description": {
         "message": "Koleksi klip yang menunjukkan apa yang akan datang di dalam video ini atau video lain di dalam siri di mana semua maklumat diulang kemudian di dalam video."
     },
+    "category_preview_guideline2": {
+        "message": "Imbas kembali video sebelum ini"
+    },
+    "category_filler": {
+        "message": "Tangen Pengisi/Lawak"
+    },
     "category_filler_short": {
         "message": "Pengisi"
     },
@@ -653,6 +668,15 @@
     },
     "category_music_offtopic_short": {
         "message": "Bukan Muzik"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "Bukan muzik di dalam persembahan secara langsung"
+    },
+    "category_poi_highlight": {
+        "message": "Sorotan"
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "Bahagian kebanyakan orang sedang mencari"
     },
     "category_poi_highlight_guideline2": {
         "message": "Boleh langkau konteks"
@@ -684,6 +708,9 @@
     "disable": {
         "message": "Nyahaktifkan"
     },
+    "autoSkip_POI": {
+        "message": "Langkau ke permulaan secara automatik"
+    },
     "manualSkip_POI": {
         "message": "Tanya apabila video dimuatkan"
     },
@@ -701,6 +728,10 @@
     },
     "muteSegments": {
         "message": "Benarkan segmen yang meredamkan audio sebaliknya langkau"
+    },
+    "fullVideoSegments": {
+        "message": "Tunjukkan ikon apabila video ialah iklan sepenuhnya",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
         "message": "Warna Belum Diserahkan",
@@ -738,6 +769,9 @@
         "message": "Untuk menghantar segmen dengan kategori \"{0}\", anda mesti mengaktifkannya dalam pilihan. Anda akan diarahkan ke pilihan sekarang.",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "Amaran: Segmen jenis ini hanya boleh mempunyai maksimum satu aktif pada satu masa. Menghantar pelbagai lagi akan menyebabkan satu ditunjukkan secara rawak."
+    },
     "youMustSelectACategory": {
         "message": "Anda mesti memilih kategori untuk semua segmen yang anda kirimkan!"
     },
@@ -756,6 +790,9 @@
     },
     "manuallyHidden": {
         "message": "disembunyikan secara manual"
+    },
+    "invidiousPermissionRefresh": {
+        "message": "Pelayar telah membatalkan kebenaran diperlukan untuk berfungsi di Invidious dan laman pihak ke-3 yang lain. Sila tekan butang di bawah untuk aktifkan semula kebenaran ini."
     },
     "acceptPermission": {
         "message": "Terima kebenaran"
@@ -826,8 +863,12 @@
     "chapterNameTooltipWarning": {
         "message": "Sebuah nama bab anda ialah serupa dengan kategori. Anda patut guna kategori apabila mungkin sebaliknya."
     },
+    "experiementOptOut": {
+        "message": "Menarik diri daripada semua eksperimen masa depan",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
     "hideForever": {
-        "message": "Sembunyi selamanya"
+        "message": "Sembunyikan selamanya"
     },
     "warningChatInfo": {
         "message": "Kami perasaan yang anda telah membuat beberapa kesilapan biasa yang tidak berniat jahat"
@@ -851,7 +892,7 @@
         "message": "Bantu pembangunan dana"
     },
     "hideDonationLink": {
-        "message": "Sembunyi Pautan Derma"
+        "message": "Sembunyikan Pautan Derma"
     },
     "darkModeOptionsPage": {
         "message": "Mod Gelap Di Halaman Pilihan"
@@ -869,19 +910,22 @@
         "message": "Bagaimana melangkau berfungsi"
     },
     "helpPageHowSkippingWorks1": {
-        "message": "Segmen video akan dilangkau secara automatik jika mereka dijumpa di dalam pangkalan data. Anda boleh membuka popup dengan menekan ikon sambungan untuk mendapat pratonton daripada apa yang mereka ada."
+        "message": "Segmen video akan dilangkau secara automatik jika mereka dijumpa di dalam pangkalan data. Anda boleh membuka pop timbul dengan menekan ikon sambungan untuk mendapat pratonton daripada apa yang mereka ada."
     },
     "helpPageHowSkippingWorks2": {
-        "message": "Apabila anda melangkau sebuah segmen, anda akan dapat notis. Jika masa nampak salah mengundi turun dengan menekan undi turun! Anda boleh juga undi di dalam popup."
+        "message": "Apabila anda melangkau sebuah segmen, anda akan dapat notis. Jika masa nampak salah mengundi turun dengan menekan undi turun! Anda boleh juga undi di dalam pop timbul."
     },
     "Submitting": {
         "message": "Menghantar"
+    },
+    "helpPageSubmitting1": {
+        "message": "Menghantar boleh dilakukan sama ada di dalam pop timbul dengan menekan butang \"Segmen Bermula Sekarang\" atau di dalam pemain video dengan menggunakan butang di pemain."
     },
     "Editing": {
         "message": "Menyunting"
     },
     "helpPageEditing1": {
-        "message": "Jika anda tersilap, anda boleh edit atau padam segmen anda selepas menekan butang anak panah atas."
+        "message": "Jika anda tersilap, anda boleh sunting atau padam segmen anda selepas menekan butang anak panah atas."
     },
     "helpPageTooSlow": {
         "message": "Ini terlalu lambat"
@@ -891,6 +935,9 @@
     },
     "helpPageCopyOfDatabase": {
         "message": "Bolehkah saya mendapat salinan pangkalan data? Apakah akan terjadi jika anda hilang?"
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "Kod sumber tersedia secara percuma. Jadi, walaupun sesuatu berlaku pada saya, penghantaran anda tidak hilang."
     },
     "helpPageNews": {
         "message": "Berita dan bagaimana ia dibuat"
@@ -936,6 +983,9 @@
     },
     "playChapter": {
         "message": "Main bab"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "Gunakan roda tetikus anda sambil di atas kotak edit untuk melaraskan masa dengan cepat. Gabungan kekunci ctrl atau shift boleh digunakan untuk membaiki perubahan."
     },
     "categoryPillNewFeature": {
         "message": "Baharu! Tengok apabila video ialah penaja atau promosi diri sepenuhnya"
@@ -1085,7 +1135,7 @@
         "description": "Show/hide button for the unsubmitted segments list"
     },
     "hideUnsubmittedSegments": {
-        "message": "Sembunyi segmen",
+        "message": "Sembunyikan segmen",
         "description": "Show/hide button for the unsubmitted segments list"
     },
     "videoID": {
